@@ -155,7 +155,7 @@ QString CobrosList::generaFiltro()
 void CobrosList::crear()
 {
     _depura ( "CobrosList::crear", 0 );
-    CobroView *bud = ( ( Company * ) empresaBase() ) ->newCobroView();
+    CobroView *bud = new CobroView( (Company *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDBvalue ( "idcliente", m_cliente->idcliente() );
@@ -191,7 +191,7 @@ void CobrosList::borrar()
     try {
         mdb_idcobro = mui_list->DBvalue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * cv = ( ( Company * ) empresaBase() ) ->newCobroView();
+            CobroView * cv = new CobroView( (Company *) empresaBase(), 0);
             if ( cv->cargar ( mdb_idcobro ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -215,7 +215,7 @@ void CobrosList::editar ( int )
     try {
         mdb_idcobro = mui_list->DBvalue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * bud = ( ( Company * ) empresaBase() ) ->newCobroView();
+            CobroView * bud = new CobroView( (Company *) empresaBase(), 0);
             if ( bud->cargar ( mdb_idcobro ) ) {
                 delete bud;
                 return;

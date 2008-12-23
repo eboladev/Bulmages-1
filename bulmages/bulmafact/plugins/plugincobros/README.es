@@ -4,11 +4,11 @@
 #README.es
 #20080501
 
-Nombre: Pagos
+Nombre: Cobros
 
-Biblioteca: libpluginpagos.so
+Biblioteca: libpluginincobros.so
 
-Descripción: Gestion de pagos a proveedores.
+Descripción: Gestionar los cobros realizados a los clientes.
 
 ParmBD:
 

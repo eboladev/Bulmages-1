@@ -43,14 +43,12 @@ class FacturasList;
 class PedidosClienteList;
 class PedidosProveedorList;
 class AlbaranesProveedor;
-class CobrosList;
 class FacturasProveedorList;
 class PresupuestoView;
 class FacturaView;
 class FacturaProveedorView;
 class PedidoProveedorView;
 class ArticuloView;
-class CobroView;
 class PagoView;
 class AlbaranClienteView;
 class AlbaranProveedorView;
@@ -89,8 +87,6 @@ private:
     PedidosProveedorList *m_pedidosproveedorList;
     /// Puntero a la lista de albaranes de proveedor. Esta ventana se crea una vez al inicio del programa.
     AlbaranesProveedor *m_albaranesproveedor;
-    /// Puntero al a lista de cobros. Esta ventana se crea una vez al inicio del programa.
-    CobrosList *m_cobrosList;
     /// Puntero a la ventan ade facturas de proveedor. Esta ventana se crea una vez al inicio del programa.
     FacturasProveedorList *m_facturasproveedorlist;
 
@@ -114,7 +110,6 @@ public:
     void createMainWindows ( Splash * );
     void refreshArticles();
     void refreshPresupuestos();
-    void refreshCobrosCliente();
     void refreshPedidosCliente();
     void refreshPedidosProveedor();
     void refreshClientDelivNotes();
@@ -143,7 +138,6 @@ public:
     void s_newAlbaranProveedorView();
     void s_newFacturaCli();
     void s_newArticulo();
-    void s_newCobroView();
     void s_newClienteView();
     void s_newProveedorView();
     void s_newListConfiguracionView();
@@ -151,7 +145,6 @@ public:
     void s_newfamiliasview();
     void s_almacenes();
     void viewPagosList();
-    void viewCobrosList();
     void s_TipoIVAView();
     void s_TasaIVAView();
     void guardaConf();
@@ -160,7 +153,6 @@ public:
     PresupuestoView *nuevoPresupuestoView();
     PedidoProveedorView *nuevoPedidoProveedorView();
     FacturaView *newFacturaView();
-    CobroView *newCobroView();
     void *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();
     AlbaranProveedorView *newAlbaranProveedorView();

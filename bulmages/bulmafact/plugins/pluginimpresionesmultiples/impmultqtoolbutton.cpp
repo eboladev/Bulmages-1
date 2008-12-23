@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include "impqtoolbutton.h"
 #include "funcaux.h"
 
 /// Necesarios para importacion de efactura
@@ -41,10 +40,11 @@
 #include "albaranclienteview.h"
 #include "albaranclientelist.h"
 #include "facturaview.h"
-#include "cobroslist.h"
 #include "cobroview.h"
 #include "company.h"
 #include "dbrecord.h"
+
+#include "impmultqtoolbutton.h"
 
 
 ///

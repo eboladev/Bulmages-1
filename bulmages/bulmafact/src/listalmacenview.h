@@ -29,7 +29,6 @@
 #include <QCheckBox>
 
 #include "postgresiface2.h"
-#include "cobroview.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"

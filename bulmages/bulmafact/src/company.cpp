@@ -36,8 +36,6 @@
 #include "articuloview.h"
 #include "clienteview.h"
 #include "clientslist.h"
-#include "cobroslist.h"
-#include "cobroview.h"
 #include "company.h"
 #include "facturapview.h"
 #include "facturaslist.h"
@@ -231,23 +229,6 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionNueva_Factura_Cliente->setEnabled ( TRUE );
     } // end if
 
-    /// pb = 64%
-    _depura ( "Company::createMainWindows inicializamos m_cobrosList", 1 );
-    splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de cobros" ) );
-    splash->setBarraProgreso ( 64 );
-    m_progressbar->setValue ( 64 );
-    /// Comprobamos que tengamos permisos para trabajar con 'Listado de cobros'.
-    m_bulmafact->actionListado_de_Cobros->setEnabled ( FALSE );
-    m_bulmafact->actionNuevo_Cobro->setEnabled ( FALSE );
-
-    if ( has_table_privilege ( "cobro", "SELECT" ) ) {
-        m_cobrosList = new CobrosList ( this );
-        m_pWorkspace->addWindow ( m_cobrosList );
-        m_cobrosList->hide();
-        m_bulmafact->actionListado_de_Cobros->setEnabled ( TRUE );
-        m_bulmafact->actionNuevo_Cobro->setEnabled ( TRUE );
-    } // end if
-
     /// pb = 72%
     _depura ( "Company::createMainWindows inicializamos m_pedidosproveedorlist", 1 );
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de pedidos a proveedores" ) );
@@ -366,21 +347,6 @@ void Company::createMainWindows ( Splash *splash )
     m_bulmafact->setWindowTitle ( QApplication::translate ( "Company", "Facturacion GPL" ) + " :: " + nameDB() );
 
     _depura ( "END Company::createMainWindows", 0 );
-}
-
-
-/** Metodo para ver la ventana de Cobros.
-    Es invocado desde el menu de la aplicacion.
-*/
-/**
-**/
-void Company::viewCobrosList()
-{
-    _depura ( "Company::viewCobrosList", 0 );
-    m_cobrosList->show();
-    m_cobrosList->parentWidget() ->raise();
-    m_pWorkspace->setActiveWindow ( m_cobrosList );
-    _depura ( "END Company::viewCobrosList", 0 );
 }
 
 
@@ -564,43 +530,6 @@ void Company::s_newFacturaPro()
     _depura ( "END Company::s_newFacturaPro", 0 );
 }
 
-
-/** Creacion de una ventana de Cobro
-    Es importante que siempre que se crea un cobro
-    sea mediante este metodo de comany, ya que de esta forma nos
-    aseguramos de que si existe un plugin que sustituye esta ventana,
-    nuestra llamada devolvera el objeto adecuado
-*/
-/**
-\return
-**/
-CobroView *Company::newCobroView()
-{
-    _depura ( "Company::newCobroView", 0 );
-    CobroView *bud;
-    if ( g_plugins->lanza ( "Company_newCobroView", this, ( void ** ) & bud ) )
-        return bud;
-    bud = new CobroView ( this, 0 );
-    _depura ( "END Company::newCobroView", 0 );
-    return bud;
-}
-
-
-/** Crea y agrega al workSpace una instancia de la ficha de Cobro
-    Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
-    Si no se desea que la ventana aparezca en pantalla puede usarse newCobroView()
-*/
-/**
-**/
-void Company::s_newCobroView()
-{
-    _depura ( "Company::s_newCobroView", 0 );
-    CobroView *bud = newCobroView();
-    m_pWorkspace->addWindow ( bud );
-    bud->show();
-    bud->mui_fechacobro->mui_textoFecha->setFocus ( Qt::OtherFocusReason );
-    _depura ( "END Company::s_newCobroView", 0 );
-}
 
 
 /** Crea y agrega al workSpace una instancia de la ficha de Albaran Proveedor
@@ -1000,22 +929,6 @@ void Company::newPedidoCliente()
     m_pWorkspace->addWindow ( bud );
     bud->show();
     _depura ( "END Company::newPedidoCliente", 0 );
-}
-
-
-/** Metodo para refrescar la lista de Cobros a Cliente.
-    Mediante este metodo es sencillo actualizar el listado de cobros a cliente sin disponer
-    de un puntero a dicha ventana.
-*/
-/**
-**/
-void Company::refreshCobrosCliente()
-{
-    _depura ( "Company::refreshCobrosCliente", 0 );
-    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
-        if ( m_cobrosList != NULL )
-            m_cobrosList->presentar();
-    _depura ( "END Company::refreshCobrosCliente", 0 );
 }
 
 

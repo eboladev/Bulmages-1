@@ -206,7 +206,8 @@ void CompraVentaView::on_mui_cobrar_clicked()
 {
     _depura ( "CompraVentaView::on_mui_cobrar_clicked", 0 );
     recogeValores();
-    CobroView *bud = empresaBase() ->newCobroView();
+    CobroView *bud = new CobroView(empresaBase(), 0);
+    empresaBase()->pWorkspace()->addWindow(bud);
     bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
     bud->setDBvalue ( "cantcobro", m_totalalbaran->text() );
     bud->setDBvalue ( "refcobro", DBvalue ( "refalbaran" ) );

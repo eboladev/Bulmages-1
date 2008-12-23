@@ -25,7 +25,7 @@
 #include "pluginimpresionesmultiples.h"
 #include "funcaux.h"
 #include "presupuestolist.h"
-#include "impqtoolbutton.h"
+#include "impmultqtoolbutton.h"
 
 
 ///

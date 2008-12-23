@@ -216,6 +216,43 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>331</width>
+         <height>27</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="1" column="0" >
     <widget class="QTabWidget" name="mui_tab" >
      <property name="enabled" >
@@ -801,8 +838,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>640</width>
-        <height>409</height>
+        <width>736</width>
+        <height>420</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -820,68 +857,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="Tab6" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>640</width>
-        <height>409</height>
-       </rect>
-      </property>
-      <attribute name="title" >
-       <string>Cobros</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>5</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="CobrosList" name="m_listcobros" />
-       </item>
-      </layout>
-     </widget>
     </widget>
-   </item>
-   <item row="2" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>331</width>
-         <height>27</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
-        <string>&amp;Aceptar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>&amp;Cancelar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </item>
   </layout>
  </widget>
@@ -906,11 +882,6 @@
    <class>FacturasList</class>
    <extends>QWidget</extends>
    <header>facturaslist.h</header>
-  </customwidget>
-  <customwidget>
-   <class>CobrosList</class>
-   <extends>QTableWidget</extends>
-   <header>cobroslist.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaRegimenFiscal</class>
@@ -958,7 +929,6 @@
   <tabstop>mui_regimenfiscalcliente</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
-  <tabstop>m_listcobros</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages.qrc" />

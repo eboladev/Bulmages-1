@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef IMPQTOOLBUTTON_H
-#define IMPQTOOLBUTTON_H
+#ifndef IMPMULTQTOOLBUTTON_H
+#define IMPMULTQTOOLBUTTON_H
 
 #include <QWidget>
 #include <QToolButton>
@@ -32,7 +32,7 @@
 #include "presupuestolist.h"
 #include "facturaslist.h"
 
-
+#include "cobroslist.h"
 
 class ImpQToolButton : public QToolButton
 {

@@ -30,7 +30,7 @@
 #include "albaranclienteview.h"
 #include "articulolist.h"
 #include "clientslist.h"
-#include "cobroview.h"
+//#include "cobroview.h"
 #include "company.h"
 #include "configuracion.h"
 #include "facturaslist.h"
@@ -462,64 +462,6 @@ void AlbaranClienteView::agregarFactura()
     _depura ( "END AlbaranClienteView::agregarFactura", 0 );
 }
 
-
-/// Crea un nuevo cobro para el albar&aacute;n seleccionado.
-/// Util con cobros anticipados a la factura. El cobro tendra
-/// la misma cantidad, referencia y cliente que el albaran.
-/// Este metodo crea una pantalla de cobro y le pone los datos necesarios.
-/**
-**/
-void AlbaranClienteView::on_mui_cobrar_clicked()
-{
-    _depura ( "AlbaranClienteView::on_mui_cobrar_clicked", 0 );
-
-    int nuevo = 1;
-    /// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
-    QString query = "SELECT * FROM cobro WHERE refcobro ='"+DBvalue("refalbaran")+"'";
-    cursor2 *cur = empresaBase()->cargacursor(query);
-    if (cur->numregistros() > 0) {
-	QMessageBox msgBox;
-	msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));
-	msgBox.setInformativeText(tr("Desea abrir el cobro existente, registrar un nuevo cobro o salir?"));
-        QPushButton *connectButton = msgBox.addButton(tr("Crear"), QMessageBox::ActionRole);
- 	QPushButton *openButton = msgBox.addButton(QMessageBox::Open);
- 	QPushButton *abortButton = msgBox.addButton(QMessageBox::Cancel);
-	msgBox.setDefaultButton(QMessageBox::Cancel);
-	msgBox.exec();
-		/// Se ha pulsado sobre la opcion abrir
- if (msgBox.clickedButton() == openButton) {
-
-			while (!cur->eof()) {
-				CobroView *bud = empresaBase() ->newCobroView();
-				empresaBase() ->m_pWorkspace->addWindow ( bud );
-				bud->cargar(cur->valor("idcobro"));
-				bud->pintar();
-				bud->show();
-				cur->siguienteregistro();
-			} // end while
-			nuevo = 0;
-} // end if
-
-		/// Se ha pulsado sobre la opcion cancelar
-if (msgBox.clickedButton() == abortButton)
-			nuevo = 0;
-    } // end if
-	delete cur;
-
-	/// Creacion de un cobro nuevo a partir de la factura.
-	if (nuevo) {
-    CobroView *bud = empresaBase() ->newCobroView();
-	empresaBase() ->m_pWorkspace->addWindow ( bud );
-    bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
-    bud->setDBvalue ( "cantcobro", m_totalalbaran->text() );
-    bud->setDBvalue ( "refcobro", DBvalue ( "refalbaran" ) );
-    bud->setDBvalue ( "comentcobro", DBvalue ( "descalbaran" ) );
-    bud->pintar();
-    bud->show();
-	} // end if
-
-    _depura ( "END AlbaranClienteView::on_mui_cobrar_clicked", 0 );
-}
 
 
 ///

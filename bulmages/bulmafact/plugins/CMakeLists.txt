@@ -50,6 +50,7 @@ add_subdirectory(plugincorrectorbf)
 
 
 add_subdirectory(pluginpagos)
+add_subdirectory(plugincobros)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)

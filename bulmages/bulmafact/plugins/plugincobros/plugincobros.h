@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,53 +18,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PEDIDOCLIENTEVIEW_H
-#define PEDIDOCLIENTEVIEW_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include "postgresiface2.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "articuloview.h"
+#include "clienteview.h"
+#include "busquedareferencia.h"
+#include "facturaview.h"
+#include "albaranclienteview.h"
+#include "pedidoclienteview.h"
 
-#include "ui_pedidoclientebase.h"
-#include "listlinpedidoclienteview.h"
-#include "listdescpedidoclienteview.h"
-#include "busquedacliente.h"
-#include "busquedafecha.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
-#include "busquedatrabajador.h"
-#include "dialogchanges.h"
-#include "fixed.h"
-#include "fichabf.h"
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
 
-
-/// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
-/** */
-class PedidoClienteView : public FichaBf, public Ui_PedidoClienteBase
+extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
+extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+// 
+class myplugincob : public QObject, PEmpresaBase
 {
     Q_OBJECT
 
 public:
-    PedidoClienteView ( Company *, QWidget *parent = 0 );
-    ~PedidoClienteView();
-    virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
-    void generarAlbaran();
-    void inicializar();
-    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed, Fixed );
+    Bulmafact *m_bges;
 
+public:
+    myplugincob();
+    ~myplugincob();
+    void inicializa ( Bulmafact * );
 
 public slots:
-
-    virtual void s_pintaTotales();
-    virtual void on_mui_verpresupuesto_clicked();
-    virtual void on_mui_pasaraalbaran_clicked();
-    virtual void on_m_descuentos_editFinish ( int, int );
-    virtual void on_subform3_editFinish ( int, int );
-    virtual void on_mui_idcliente_valueChanged ( QString id );
-    virtual void on_mui_idalmacen_valueChanged ( QString id );
+    void elslot();
+    void elslot1();
 };
-
-#endif
-

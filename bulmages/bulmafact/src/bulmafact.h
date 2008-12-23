@@ -96,8 +96,6 @@ public slots:
     virtual void on_actionVentana_Completa_triggered();
     virtual void on_actionAcerta_de_triggered();
     virtual void on_actionAlmacenes_triggered();
-    virtual void on_actionNuevo_Cobro_triggered();
-    virtual void on_actionListado_de_Cobros_triggered();
     virtual void on_actionParametros_triggered();
     virtual void on_actionFormas_de_Pago_triggered();
     virtual void on_actionIndexador_triggered();
