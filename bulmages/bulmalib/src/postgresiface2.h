@@ -66,16 +66,18 @@ private:
     int ncampos;
     bool m_error;
     QString m_query;
+    QString m_pristineQuery;
+
     QHash<QString, int> m_campos;
 //      QList<QString, int>m_campos;
 //    QMap<QString, int> m_campos;
 
     void inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const char * const *paramValues
+                       const char * const *paramValues, QString pristineQuery=NULL
                        );
 public:
     /// Constructor, inicializa la estructura y realiza la consulta.
-    cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery );
+    cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery=NULL );
 
     /**
      * Constructor para consultas parametrizadas (menos escapes y formateos, 
@@ -92,7 +94,7 @@ public:
      *                    no el formato binario
      */
      cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const QString *paramValues
+                       const QString *paramValues, QString pristineQuery=NULL
                        ) ;
   
 
@@ -111,7 +113,7 @@ public:
      *                    no el formato binario. Sólo los leemos, no los destruimos.
      */
     cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const char *const * const paramValues);
+                       const char *const * const paramValues, QString pristineQuery=NULL);
 
 
     /// Destructor, elimina la memoria ocupada.
@@ -122,6 +124,7 @@ public:
     QString valor ( int posicion, int registro = -1 );
     bool error();
     QString query();
+    QString pristineQuery();
 
     /// Esta funci&oacute;n devuelve el valor entero del campo posicion del registro
     /// pasado, o siNull si el campo es null .

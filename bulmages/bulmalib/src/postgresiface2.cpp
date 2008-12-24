@@ -54,6 +54,12 @@ QString cursor2::query()
     return m_query;
 }
 
+QString cursor2::pristineQuery()
+{
+    _depura ( "cursor2::query", 0 );
+    _depura ( "END cursor2::query", 0 );
+    return m_pristineQuery;
+}
 
 ///
 /**
@@ -75,13 +81,13 @@ int cursor2::regactual()
 /// \param nombre Nombre que obtendra el query (OBSOLETO)
 /// \param conn1 Conexion con la base de datos (Inicializada en \ref postgresiface2
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
-cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery)
+cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery)
 {
-   inicializa(nombre, conn1, SQLQuery, 0, (char **)NULL);
+   inicializa(nombre, conn1, SQLQuery, 0, (char **)NULL,pristineQuery);
 }
 
 cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const QString *paramValues
+                       const QString *paramValues, QString pristineQuery
                        ) {
          char *charValues[numParams]; 
          QByteArray qbaValues[numParams]; //si sabés C++ i Qt sabria si no cal ?
@@ -89,17 +95,17 @@ cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParam
              qbaValues[i] = paramValues[i].toUtf8();
              charValues[i] = qbaValues[i].data();
          };
-      inicializa(nombre, conn1, SQLQuery, numParams, charValues);
+      inicializa(nombre, conn1, SQLQuery, numParams, charValues, pristineQuery);
 }
 
 cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const char * const *paramValues
+                       const char * const *paramValues, QString pristineQuery
                        ) {
-   inicializa(nombre, conn1, SQLQuery, numParams, paramValues);
+   inicializa(nombre, conn1, SQLQuery, numParams, paramValues, pristineQuery);
 }
 
 void cursor2::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const char * const *paramValues
+                       const char * const *paramValues, QString pristineQuery
                        )
 {
     _depura ( "cursor2::cursor2", 0, SQLQuery );
@@ -110,6 +116,11 @@ void cursor2::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int 
         conn = conn1;
         m_error = FALSE;
         m_query = SQLQuery;
+        if (pristineQuery.isNull()) {
+           m_pristineQuery = SQLQuery; // a falta de + info. Qui ens cridi ja ho sobreescriurà
+        } else {
+           m_pristineQuery = pristineQuery;
+        }
         nomcursor = nombre;
         nregistros = 0;
         registroactual = 0;
@@ -671,12 +682,7 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
     cursor2 *cur = NULL;
     /// Iniciamos la depuracion.
     try {
-
-	if (query.contains("LIMIT", Qt::CaseInsensitive) ) {
-		int pos = query.lastIndexOf("LIMIT");
-		query = query.left(pos);
-	}// end if
-
+         QString pristineQuery = query;
         //digitsInt >= longitud expressió decimal d'un int positiu qualsevol 
          int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
          QString newParamValues[midaParams];
@@ -694,7 +700,8 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
              query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
          };
 
-        cur = new cursor2 ( nomcursor, conn, query, numParams, newParamValues );
+        cur = new cursor2 ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
+        
         _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
 
     } catch ( ... ) {

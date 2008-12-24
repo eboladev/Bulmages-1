@@ -1109,7 +1109,7 @@ void SubForm3::cargar ( cursor2 *cur )
     if ( cur == NULL ) return;
 
     /// Ponemos la consulta a la vista para que pueda ser editada.
-    mui_query->setPlainText ( cur->query() );
+    mui_query->setPlainText ( cur->pristineQuery() );
 
     /// Tratramos con la paginacion.
     int filpag = mui_filaspagina->text().toInt();
