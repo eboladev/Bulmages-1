@@ -79,7 +79,12 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
     artl->addSHeader ( "pvpivaincarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, artl->tr ( "PVP IVA Inc" ) );
+    return 0;
+}
 
+int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *l) {
+	l->addSHeader ( "pvpivainclalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNoView, "PVP IVA Inc" );
+    return 0;
 }
 
 

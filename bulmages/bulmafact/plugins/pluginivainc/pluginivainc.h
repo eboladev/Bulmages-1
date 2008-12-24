@@ -30,7 +30,9 @@
 #include "ficha.h"
 #include "subform2bf.h"
 #include "articulolist.h"
+#include "listlinalbaranclienteview.h"
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
+extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *);=======
