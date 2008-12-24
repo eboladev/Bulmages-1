@@ -6,7 +6,7 @@
 
 Nombre: Cobros
 
-Biblioteca: libpluginincobros.so
+Biblioteca: libplugincobros.so
 
 Descripción: Gestionar los cobros realizados a los clientes.
 
