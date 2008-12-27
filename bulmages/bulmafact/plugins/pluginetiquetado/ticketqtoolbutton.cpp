@@ -27,7 +27,6 @@
 #include <QMap>
 #include <QList>
 #include <QTextStream>
-#include "facturapview.h"
 #include "presupuestoview.h"
 #include "fixed.h"
 

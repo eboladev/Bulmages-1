@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,52 +18,32 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PEDIDOPROVEEDORVIEW_H
-#define PEDIDOPROVEEDORVIEW_H
-
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-
-#include "ui_pedidoproveedorbase.h"
-#include "listlinpedidoproveedorview.h"
-#include "listdescpedidoproveedorview.h"
-#include "busquedaproveedor.h"
-#include "busquedafecha.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
-#include "busquedatrabajador.h"
-#include "dialogchanges.h"
-#include "fixed.h"
-#include "fichabf.h"
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
+#include "company.h"
+#include "funcaux.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 
 
-class company;
-
-
-/// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
-/** */
-class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase
+class GenFacProQToolButton : public QToolButton
 {
     Q_OBJECT
 
+private:
+    Company *m_companyact;
+    QWidget *m_object;
+
 public:
-    PedidoProveedorView ( Company *, QWidget *parent = 0 );
-    ~PedidoProveedorView();
-    void generarAlbaran();
-    void inicialize();
-    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
-    virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
-    virtual void imprimir();
-
+    GenFacProQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~GenFacProQToolButton();
+    void setBoton();
+	void generarFacturaProveedor();
+	void generarFacturaProveedor1();
 public slots:
-    virtual void on_mui_proveedor_valueChanged ( QString );
-    virtual void on_mui_facturar_clicked();
-    virtual void on_mui_descuentos_editFinish ( int, int );
-    virtual void on_mui_lineasDetalle_editFinish ( int, int );
-};
+    virtual void click();
 
-#endif
+};
 

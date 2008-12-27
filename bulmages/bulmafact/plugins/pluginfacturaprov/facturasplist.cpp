@@ -199,7 +199,7 @@ void FacturasProveedorList::editar ( int row )
     try {
         mdb_idfacturap = mui_list->DBvalue ( QString ( "idfacturap" ), row );
         if ( modoEdicion() ) {
-            FacturaProveedorView * prov = ( ( Company * ) empresaBase() ) ->newFacturaProveedorView();
+            FacturaProveedorView * prov = new FacturaProveedorView ( ( Company * ) empresaBase(), 0 );
             if ( prov->cargar ( mdb_idfacturap ) ) {
                 delete prov;
                 return;
@@ -234,7 +234,7 @@ void FacturasProveedorList::borrar()
     } // end if
     try {
         mdb_idfacturap = mui_list->DBvalue ( "idfacturap" );
-        FacturaProveedorView *bud = ( ( Company * ) empresaBase() ) ->newFacturaProveedorView();
+        FacturaProveedorView *bud = new FacturaProveedorView( ( Company * ) empresaBase(), 0 );
         bud->cargar ( mdb_idfacturap );
         bud->on_mui_borrar_clicked();
         delete bud;
@@ -312,10 +312,15 @@ void FacturasProveedorList::setidarticulo ( QString val )
 ///
 /**
 **/
+
 void FacturasProveedorList::crear()
 {
     _depura ( "FacturasProveedorList::crear", 0 );
-    ( ( Company * ) empresaBase() ) ->s_newFacturaPro();
+    FacturaProveedorView *fact = new FacturaProveedorView( ( Company * ) empresaBase(), 0 );
+    empresaBase()->pWorkspace()->addWindow ( fact );
+    fact->inicializar();
+    fact->show();
+    fact->mui_descfacturap->setFocus ( Qt::OtherFocusReason );
     _depura ( "END FacturasProveedorList::crear", 0 );
 }
 

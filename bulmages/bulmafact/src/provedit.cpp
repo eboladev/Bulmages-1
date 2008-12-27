@@ -77,9 +77,6 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         m_albaranesprov->setEmpresaBase ( empresaBase() );
         m_albaranesprov->hideBusqueda();
 
-        m_listfacturasprov->setEmpresaBase ( empresaBase() );
-        m_listfacturasprov->hideBusqueda();
-
         /// Cargamos algunos valores por defecto.
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
         mui_idforma_pago->setidforma_pago ( "0" );
@@ -145,9 +142,6 @@ int ProveedorView::cargarPost ( QString idprov )
 
     m_albaranesprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_albaranesprov->presentar();
-
-    m_listfacturasprov->setidproveedor ( DBvalue ( "idproveedor" ) );
-    m_listfacturasprov->presentar();
 
     /// Lanzamos los plugins de carga
     g_plugins->lanza("ProveedorView_cargarPost_Post", this);

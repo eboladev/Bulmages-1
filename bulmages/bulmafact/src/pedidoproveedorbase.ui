@@ -220,44 +220,6 @@
          </spacer>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_facturar" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Generar albaran a partir de este pedido</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Generar albaran a partir de este pedido</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -689,7 +651,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>110</height>
+        <height>142</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1376,7 +1338,6 @@
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>
-  <tabstop>mui_facturar</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
  </tabstops>

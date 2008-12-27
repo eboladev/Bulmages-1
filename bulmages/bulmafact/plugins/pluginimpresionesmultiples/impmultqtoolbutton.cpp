@@ -30,7 +30,6 @@
 #include <QMap>
 #include <QList>
 #include <QTextStream>
-#include "facturapview.h"
 #include "fixed.h"
 
 #include "presupuestolist.h"

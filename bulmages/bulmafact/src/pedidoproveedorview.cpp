@@ -134,26 +134,6 @@ void PedidoProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fix
 }
 
 
-///
-/**
-**/
-void PedidoProveedorView::on_mui_pagar_clicked()
-{
-    _depura ( "PedidoProveedorView::on_mui_pagar_clicked", 0 );
-/*
-    PagoView *bud = empresaBase() ->newPagoView();
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
-    bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
-    bud->setDBvalue ( "cantpago", mui_totalPedido->text() );
-    bud->setDBvalue ( "refpago", DBvalue ( "refpedidoproveedor" ) );
-    bud->setDBvalue ( "comentpago", DBvalue ( "descpedidoproveedor" ) );
-    bud->pintar();
-    bud->show();
-*/
-    _depura ( "END PedidoProveedorView::on_mui_pagar_clicked", 0 );
-}
-
-
 /// Se encarga de generar un albaran a partir del pedido.
 /**
 **/

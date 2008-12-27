@@ -1,9 +1,9 @@
 ###########################################
 # Plugin for bulmafact					  #
 ###########################################
-#plugin_tc_articulos
+#pluginfacturaprov
 
-set (plugin plugin_tc_articulos)
+set (plugin pluginfacturaprov)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -28,6 +28,7 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfacturaprov/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfacturaprov/)
+
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
@@ -40,6 +41,10 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
+
+if(APPLE)
+  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+endif(APPLE)
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
@@ -57,14 +62,3 @@ foreach(dfile ${docs})
 endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib)
-install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
-
-
-
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
-
-install (FILES ${report_files} DESTINATION share/bulmages/openreports)
-
-

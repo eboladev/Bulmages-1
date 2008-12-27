@@ -26,11 +26,8 @@
 #include "pedidoclienteview.h"
 #include "albaranclienteview.h"
 #include "facturaview.h"
-//#include "cobroview.h"
-//#include "pagoview.h"
 #include "pedidoproveedorview.h"
 #include "albaranproveedorview.h"
-#include "facturapview.h"
 #include "ficha.h"
 
 
@@ -202,6 +199,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     delete cur;
 
 
+/*
     SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
@@ -212,7 +210,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         cur->siguienteregistro();
     } // end while
     delete cur;
-
+*/
     g_plugins->lanza("BusquedaReferencia_on_mui_abrirtodo_clicked_Post", this);
 
     _depura ( "END BusquedaReferencia::on_mui_abrirtodo_clicked", 0 );

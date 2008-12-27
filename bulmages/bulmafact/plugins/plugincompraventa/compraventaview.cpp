@@ -483,7 +483,7 @@ void CompraVentaView::generarFacturaProveedor()
 		return;
 
         /// Creamos la factura de proveedor.
-        FacturaProveedorView *bud = empresaBase() ->newFacturaProveedorView();
+        FacturaProveedorView *bud = new FacturaProveedorView((Company *) empresaBase(), 0);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.

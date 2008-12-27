@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,52 +18,47 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PEDIDOPROVEEDORVIEW_H
-#define PEDIDOPROVEEDORVIEW_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+#include "postgresiface2.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "articuloview.h"
+#include "provedit.h"
+#include "busquedareferencia.h"
+#include "facturaview.h"
+#include "presupuestoview.h"
+#include "pedidoclienteview.h"
+#include "albaranclienteview.h"
+#include "facturapview.h"
+#include "albaranproveedorview.h"
+#include "pedidoproveedorview.h"
 
-#include "ui_pedidoproveedorbase.h"
-#include "listlinpedidoproveedorview.h"
-#include "listdescpedidoproveedorview.h"
-#include "busquedaproveedor.h"
-#include "busquedafecha.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
-#include "busquedatrabajador.h"
-#include "dialogchanges.h"
-#include "fixed.h"
-#include "fichabf.h"
-
-
-class company;
-
-
-/// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
-/** */
-class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
+extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
+extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
+extern "C" MY_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
+// 
+class mypluginfactp : public QObject, PEmpresaBase
 {
     Q_OBJECT
 
 public:
-    PedidoProveedorView ( Company *, QWidget *parent = 0 );
-    ~PedidoProveedorView();
-    void generarAlbaran();
-    void inicialize();
-    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
-    virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
-    virtual void imprimir();
+    Bulmafact *m_bges;
+
+public:
+    mypluginfactp();
+    ~mypluginfactp();
+    void inicializa ( Bulmafact * );
 
 public slots:
-    virtual void on_mui_proveedor_valueChanged ( QString );
-    virtual void on_mui_facturar_clicked();
-    virtual void on_mui_descuentos_editFinish ( int, int );
-    virtual void on_mui_lineasDetalle_editFinish ( int, int );
+    void elslot();
+    void elslot1();
 };
-
-#endif
-

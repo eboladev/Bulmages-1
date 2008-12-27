@@ -1,0 +1,219 @@
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <stdio.h>
+
+#include "pluginfacturaprov.h"
+#include "company.h"
+#include "funcaux.h"
+#include "facturapview.h"
+#include "facturasplist.h"
+#include "genfactqtoolbutton.h"
+
+
+FacturasProveedorList *g_facturasProveedorList=NULL;
+
+///
+/**
+**/
+mypluginfactp::mypluginfactp()
+{
+    _depura ( "mypluginfactp::mypluginfactp", 0 );
+    _depura ( "END mypluginfactp::mypluginfactp", 0 );
+}
+
+
+///
+/**
+**/
+mypluginfactp::~mypluginfactp()
+{
+    _depura ( "mypluginfactp::~mypluginfactp", 0 );
+    _depura ( "END mypluginfactp::~mypluginfactp", 0 );
+}
+
+
+///
+/**
+**/
+void mypluginfactp::elslot()
+{
+    _depura ( "mypluginfactp::elslot", 0 );
+    if (g_facturasProveedorList) {
+	g_facturasProveedorList->show();
+    }// end if
+    _depura ( "END mypluginfactp::elslot", 0 );
+}
+
+///
+/**
+**/
+void mypluginfactp::elslot1()
+{
+    _depura ( "mypluginfactp::elslot1", 0 );
+        FacturaProveedorView * bud = new FacturaProveedorView((Company *)empresaBase(), NULL);
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->show();
+    _depura ( "END mypluginfactp::elslot1", 0 );
+}
+
+
+
+///
+/**
+\param bges
+**/
+void mypluginfactp::inicializa ( Bulmafact *bges )
+{
+    _depura ( "mypluginfactp::inicializa", 0 );
+
+    if ( bges->getcompany()->has_table_privilege ( "facturap", "SELECT" ) ) {
+	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+	m_bges = bges;
+	setEmpresaBase ( bges->getcompany() );
+	QAction *planCuentas = new QAction ( tr ( "&Facturas Proveedores" ), 0 );
+	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.svg" ) ));
+	planCuentas->setStatusTip ( tr ( "Facturas de Proveedores" ) );
+	planCuentas->setWhatsThis ( tr ( "Facturas de  Proveedores" ) );
+	bges->menuCompras->addAction ( planCuentas );
+	bges->Listados->addAction (planCuentas);
+	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+
+	QAction *npago = new QAction ( tr ( "&Nueva Factura de Proveedor" ), 0 );
+	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.svg" ) ));
+	npago->setStatusTip ( tr ( "Nueva Factura de Proveedor" ) );
+	npago->setWhatsThis ( tr ( "Nueva Factura de Proveedor" ) );
+	bges->menuCompras->addAction ( npago );
+	bges->Fichas->addAction (npago);
+	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+
+    }// end if
+    _depura ( "END mypluginfactp::inicializa", 0 );
+}
+
+
+///
+/**
+\param bges
+\return
+**/
+int entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
+    mypluginfactp *plug = new mypluginfactp();
+    plug->inicializa ( bges );
+    return 0;
+}
+
+
+int Company_createMainWindows_Post(Company *comp) {
+    if ( comp->has_table_privilege ( "facturap", "SELECT" ) ) {
+	g_facturasProveedorList = new FacturasProveedorList( comp, NULL );	
+	comp->m_pWorkspace->addWindow ( g_facturasProveedorList );
+	g_facturasProveedorList->hide();
+    }// end if
+    return 0;
+}
+
+
+int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
+    if ( prov->empresaBase()->has_table_privilege ( "facturap", "SELECT" ) ) {
+	FacturasProveedorList *facturasProveedorList = new FacturasProveedorList( (Company *)prov->empresaBase(), NULL );
+	facturasProveedorList->setObjectName("listpagosproveedor");
+	facturasProveedorList->hideBusqueda();
+        prov->mui_tab->addTab ( facturasProveedorList, "Facturas" );
+    }// end if
+    return 0;
+}
+
+int ProveedorView_cargarPost_Post (ProveedorView *prov) {
+    if ( prov->empresaBase()->has_table_privilege ( "facturap", "SELECT" ) ) {
+	FacturasProveedorList *facturasProveedorList = prov->findChild<FacturasProveedorList *> ( "listpagosproveedor" );
+        facturasProveedorList->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
+        facturasProveedorList->presentar();
+    }// end if
+    return 0;
+}// end if
+
+
+int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
+    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + ref->mui_referencia->text() + "'";
+    cursor2 *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        FacturaProveedorView * bud = new FacturaProveedorView((Company *)ref->empresaBase(), NULL);
+        ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idfacturap" ) );
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+}// end if
+
+
+///
+/**
+\param l
+\return
+**/
+int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
+{
+    _depura ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
+
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+
+	if (!m_hboxLayout1) {
+		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+		m_hboxLayout1->setSpacing ( 5 );
+		m_hboxLayout1->setMargin ( 5 );
+		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	}// end if
+    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
+
+    _depura ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    return 0;
+}
+
+///
+/**
+\param l
+\return
+**/
+int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
+{
+    _depura ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+
+    GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
+
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+
+	if (!m_hboxLayout1) {
+		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+		m_hboxLayout1->setSpacing ( 5 );
+		m_hboxLayout1->setMargin ( 5 );
+		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	}// end if
+    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
+
+    _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    return 0;
+}
+

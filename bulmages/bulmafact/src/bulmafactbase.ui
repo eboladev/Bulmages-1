@@ -54,8 +54,6 @@
     <addaction name="actionNuevo_Albaran_Proveedor" />
     <addaction name="actionListado_Albaranes_Proveedor" />
     <addaction name="separator" />
-    <addaction name="actionNueva_Factura_Proveedor" />
-    <addaction name="actionListado_Facturas_Proveedor" />
     <addaction name="separator" />
    </widget>
    <widget class="QMenu" name="menuVentas" >
@@ -157,7 +155,7 @@
     <rect>
      <x>0</x>
      <y>24</y>
-     <width>416</width>
+     <width>377</width>
      <height>42</height>
     </rect>
    </property>
@@ -199,7 +197,6 @@
    </attribute>
    <addaction name="actionListado_Pedidos_Proveedor" />
    <addaction name="actionListado_Albaranes_Proveedor" />
-   <addaction name="actionListado_Facturas_Proveedor" />
    <addaction name="separator" />
    <addaction name="actionListado_Presupuestos" />
    <addaction name="actionListado_Pedidos_Cliente" />
@@ -213,9 +210,9 @@
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>416</x>
+     <x>377</x>
      <y>24</y>
-     <width>575</width>
+     <width>614</width>
      <height>42</height>
     </rect>
    </property>
@@ -272,7 +269,6 @@
    </attribute>
    <addaction name="actionNuevo_Pedido_Proveedor" />
    <addaction name="actionNuevo_Albaran_Proveedor" />
-   <addaction name="actionNueva_Factura_Proveedor" />
    <addaction name="separator" />
    <addaction name="actionNuevo_Presupuesto" />
    <addaction name="actionNuevo_Pedido_Cliente" />
@@ -342,24 +338,6 @@
    </property>
    <property name="text" >
     <string>&amp;Albaranes de proveedores</string>
-   </property>
-  </action>
-  <action name="actionNueva_Factura_Proveedor" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/supplier-invoice.svg</normaloff>:/Images/supplier-invoice.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nueva &amp;factura de proveedor...</string>
-   </property>
-  </action>
-  <action name="actionListado_Facturas_Proveedor" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/supplier-invoice-list.svg</normaloff>:/Images/supplier-invoice-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Facturas de proveedores</string>
    </property>
   </action>
   <action name="actionNuevo_Presupuesto" >

@@ -30,7 +30,6 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
-#include "facturapview.h"
 #include "fixed.h"
 #include "cobroslist.h"
 #include "cobroview.h"

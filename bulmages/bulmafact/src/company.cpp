@@ -37,9 +37,7 @@
 #include "clienteview.h"
 #include "clientslist.h"
 #include "company.h"
-#include "facturapview.h"
 #include "facturaslist.h"
-#include "facturasplist.h"
 #include "facturaview.h"
 #include "familiasview.h"
 #include "fpagoview.h"
@@ -265,6 +263,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 88%
     _depura ( "Company::createMainWindows inicializamos m_facturasproveedorlist", 1 );
+/*
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de facturas de proveedores" ) );
     splash->setBarraProgreso ( 88 );
     m_progressbar->setValue ( 88 );
@@ -279,7 +278,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Facturas_Proveedor->setEnabled ( TRUE );
         m_bulmafact->actionNueva_Factura_Proveedor->setEnabled ( TRUE );
     } // end if
-
+*/
     /// Comprobamos que tengamos permisos para trabajar con 'Tipos de IVA'.
     m_bulmafact->actionTasaIVA->setEnabled ( FALSE );
     m_bulmafact->actionTipoIVA->setEnabled ( FALSE );
@@ -501,16 +500,18 @@ void Company::s_newProveedorView()
 /**
 \return
 **/
-FacturaProveedorView *Company::newFacturaProveedorView()
+void *Company::newFacturaProveedorView()
 {
     _depura ( "Company::newFacturaProveedorView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     FacturaProveedorView *bud;
     if ( g_plugins->lanza ( "Company_newFacturaProveedorView", this, ( void ** ) & bud ) )
         return bud;
     bud = new FacturaProveedorView ( this, 0 );
     _depura ( "END Company::newFacturaProveedorView", 0 );
-    return bud;
+*/
+    return NULL;
 }
 
 
@@ -522,12 +523,14 @@ FacturaProveedorView *Company::newFacturaProveedorView()
 **/
 void Company::s_newFacturaPro()
 {
+/*
     FacturaProveedorView * bud = newFacturaProveedorView();
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
     bud->mui_descfacturap->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newFacturaPro", 0 );
+*/
 }
 
 
@@ -636,9 +639,11 @@ void Company::s_listFacturasCli()
 void Company::s_listFacturasPro()
 {
     _depura ( "Company::s_listFacturasPro", 0 );
+/*
     m_facturasproveedorlist->show();
     m_facturasproveedorlist->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_facturasproveedorlist );
+*/
     _depura ( "END Company::s_listFacturasPro", 0 );
 }
 
@@ -801,9 +806,12 @@ void Company::refreshFacturas()
 void Company::refreshFacturasProveedor()
 {
     _depura ( "Company::refreshFacturasProveedor", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_facturasproveedorlist != NULL )
             m_facturasproveedorlist->presentar();
+
+*/
     _depura ( "END Company::refreshFacturasProveedor", 0 );
 
 }
@@ -1325,17 +1333,6 @@ void Company::s_TasaIVAView()
     _depura ( "END Company::s_TasaIVAView", 0 );
 }
 
-
-///
-/**
-\return
-**/
-FacturasProveedorList * Company::facturasProveedorList()
-{
-    _depura ( "Company::facturasProveedorList", 0 );
-    _depura ( "END Company::facturasProveedorList", 0 );
-    return m_facturasproveedorlist;
-}
 
 
 ///
