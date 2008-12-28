@@ -77,8 +77,13 @@ void AlbaranesProveedor::setEmpresaBase ( Company *comp )
 void AlbaranesProveedor::crear()
 {
     _depura ( "AlbaranesProveedor::crear", 0 );
-    if ( empresaBase() != NULL )
-        ( ( Company * ) empresaBase() ) ->s_newAlbaranPro();
+    if ( empresaBase() != NULL ) {
+        AlbaranProveedorView *albp = new AlbaranProveedorView( ( Company * ) empresaBase(), 0 );
+        empresaBase()->pWorkspace()->addWindow ( albp );
+	albp->inicializar();
+	albp->show();
+	albp->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
+    }// end if
     _depura ( "END AlbaranesProveedor::crear", 0 );
 }
 
@@ -318,7 +323,7 @@ void AlbaranesProveedor::borrar()
     try {
         mdb_idalbaranp = mui_list->DBvalue ( QString ( "idalbaranp" ) );
         if ( modoEdicion() ) {
-            AlbaranProveedorView * apv = ( ( Company * ) empresaBase() ) ->newAlbaranProveedorView();
+            AlbaranProveedorView * apv = new AlbaranProveedorView(( Company * ) empresaBase(), 0);
             if ( apv->cargar ( mdb_idalbaranp ) ) {
                 throw - 1;
             } // end if

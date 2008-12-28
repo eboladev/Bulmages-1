@@ -1,9 +1,9 @@
 ###########################################
-# Plugin for bulmafact			  #
+# Plugin for bulmafact					  #
 ###########################################
-#plugincompraventa
+#pluginalbaranprov
 
-set (plugin plugincompraventa)
+set (plugin pluginalbaranprov)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -26,10 +26,6 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/plugincobros/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/plugincobros/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfacturaprov/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfacturaprov/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaranprov/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaranprov/)
 
@@ -65,11 +61,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib plugincobros)
-
-
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
-
-install (FILES ${report_files} DESTINATION share/bulmages/openreports)
-
-
+add_dependencies(${plugin} bulmafact bulmalib)

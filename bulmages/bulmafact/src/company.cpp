@@ -30,8 +30,6 @@
 #include "abreempresaview.h"
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
-#include "albaranesproveedor.h"
-#include "albaranproveedorview.h"
 #include "articulolist.h"
 #include "articuloview.h"
 #include "clienteview.h"
@@ -246,6 +244,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 80%
     _depura ( "Company::createMainWindows inicializamos m_albaranesproveedorlist", 1 );
+/*
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de albaranes de proveedores" ) );
     splash->setBarraProgreso ( 80 );
     m_progressbar->setValue ( 80 );
@@ -260,6 +259,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled ( TRUE );
         m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled ( TRUE );
     } // end if
+*/
 
     /// pb = 88%
     _depura ( "Company::createMainWindows inicializamos m_facturasproveedorlist", 1 );
@@ -544,11 +544,13 @@ void Company::s_newFacturaPro()
 void Company::s_newAlbaranPro()
 {
     _depura ( "Company::s_newAlbaranPro", 0 );
+/*
     AlbaranProveedorView *bud = new AlbaranProveedorView ( this, 0 );
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
     bud->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
+*/
     _depura ( "END Company::s_newAlbaranPro", 0 );
 }
 
@@ -579,9 +581,11 @@ void Company::s_newPedidoPro()
 void Company::lAlbaranesProveedor()
 {
     _depura ( "Company::lAlbaranesProveedor", 0 );
+/*
     m_albaranesproveedor->show();
     m_albaranesproveedor->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_albaranesproveedor );
+*/
     _depura ( "END Company::lAlbaranesProveedor", 0 );
 }
 
@@ -889,9 +893,11 @@ void Company::refreshAlbaranesCliente()
 void Company::refreshAlbaranesProveedor()
 {
     _depura ( "Company::refreshAlbaranesProveedor", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_albaranesproveedor != NULL )
             m_albaranesproveedor->presentar();
+*/
     _depura ( "END Company::refreshAlbaranesProveedor", 0 );
 }
 
@@ -1114,16 +1120,18 @@ void Company::s_newAlbaranClienteView()
 /**
 \return
 **/
-AlbaranProveedorView *Company::newAlbaranProveedorView()
+void *Company::newAlbaranProveedorView()
 {
     _depura ( "Company::newAlbaranProveedorView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     AlbaranProveedorView *bud;
     if ( g_plugins->lanza ( "Company_newAlbaranProveedorView", this, ( void ** ) & bud ) )
         return bud;
     bud = new AlbaranProveedorView ( this, 0 );
+*/
     _depura ( "END Company::newAlbaranProveedorView", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -1135,10 +1143,12 @@ AlbaranProveedorView *Company::newAlbaranProveedorView()
 void Company::s_newAlbaranProveedorView()
 {
     _depura ( "Company::s_newAlbaranProveedorView", 0 );
+/*
     AlbaranProveedorView *bud = newAlbaranProveedorView();
     m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();
+*/
     _depura ( "END Company::s_newAlbaranProveedorView", 0 );
 }
 

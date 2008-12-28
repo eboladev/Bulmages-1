@@ -35,7 +35,7 @@
 #include "presupuestoview.h"
 #include "presupuestolist.h"
 //#include "pagoview.h"
-#include "albaranproveedorview.h"
+//#include "albaranproveedorview.h"
 #include "funcaux.h"
 
 
@@ -140,6 +140,7 @@ void PedidoProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fix
 void PedidoProveedorView::generarAlbaran()
 {
     _depura ( "PedidoProveedorView::generarAlbaran", 0 );
+/*
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue ( "refpedidoproveedor" ) + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
@@ -208,6 +209,7 @@ void PedidoProveedorView::generarAlbaran()
 
     bud->pintar();
     bud->show();
+*/
     _depura ( "END PedidoProveedorView::generarAlbaran", 0 );
 }
 

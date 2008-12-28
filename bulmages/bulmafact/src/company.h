@@ -42,14 +42,12 @@ class AlbaranClienteList;
 class FacturasList;
 class PedidosClienteList;
 class PedidosProveedorList;
-class AlbaranesProveedor;
 class PresupuestoView;
 class FacturaView;
 class PedidoProveedorView;
 class ArticuloView;
 class PagoView;
 class AlbaranClienteView;
-class AlbaranProveedorView;
 class PedidoClienteView;
 class TipoArticuloList;
 class ProveedorView;
@@ -83,8 +81,6 @@ private:
     PedidosClienteList *m_pedidosclienteList;
     /// Puntero a la lista de pedidos a proveedor. Esta ventana se crea una vez al inicoi del programa.
     PedidosProveedorList *m_pedidosproveedorList;
-    /// Puntero a la lista de albaranes de proveedor. Esta ventana se crea una vez al inicio del programa.
-    AlbaranesProveedor *m_albaranesproveedor;
 
 public:
     Company ( Bulmafact *bges );
@@ -150,7 +146,7 @@ public:
     FacturaView *newFacturaView();
     void *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();
-    AlbaranProveedorView *newAlbaranProveedorView();
+    void *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
     TipoArticuloList *newTipoArticuloList ( QWidget *parent = 0, bool modoConsulta = FALSE );
     FamiliasView *newfamiliasview ( QWidget *parent = 0, bool modoConsulta = FALSE );

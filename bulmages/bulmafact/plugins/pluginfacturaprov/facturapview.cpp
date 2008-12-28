@@ -184,7 +184,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue ( "reffacturap" ) + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( query );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * albpro = empresaBase() ->newAlbaranProveedorView();
+        AlbaranProveedorView * albpro = new AlbaranProveedorView((Company *) empresaBase(), 0);
         albpro->cargar ( cur->valor ( "idalbaranp" ) );
         empresaBase() ->m_pWorkspace->addWindow ( albpro );
         albpro->show();
