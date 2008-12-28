@@ -53,6 +53,7 @@ add_subdirectory(pluginpagos)
 add_subdirectory(plugincobros)
 add_subdirectory(pluginfacturaprov)
 add_subdirectory(pluginalbaranprov)
+add_subdirectory(pluginpedidoprov)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)

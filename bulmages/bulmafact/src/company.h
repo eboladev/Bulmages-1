@@ -41,10 +41,8 @@ class PresupuestoList;
 class AlbaranClienteList;
 class FacturasList;
 class PedidosClienteList;
-class PedidosProveedorList;
 class PresupuestoView;
 class FacturaView;
-class PedidoProveedorView;
 class ArticuloView;
 class PagoView;
 class AlbaranClienteView;
@@ -79,8 +77,6 @@ private:
     FacturasList *m_facturasList;
     /// Puntero a la lista de pedidos de cliente. Esta ventana se crea una vez al inicio del programa.
     PedidosClienteList *m_pedidosclienteList;
-    /// Puntero a la lista de pedidos a proveedor. Esta ventana se crea una vez al inicoi del programa.
-    PedidosProveedorList *m_pedidosproveedorList;
 
 public:
     Company ( Bulmafact *bges );
@@ -142,7 +138,7 @@ public:
     void cargaConf();
     void *newFacturaProveedorView();
     PresupuestoView *nuevoPresupuestoView();
-    PedidoProveedorView *nuevoPedidoProveedorView();
+    void *nuevoPedidoProveedorView();
     FacturaView *newFacturaView();
     void *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();

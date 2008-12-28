@@ -192,7 +192,7 @@ void PedidosProveedorList::borrar()
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue ( QString ( "idpedidoproveedor" ) );
         if ( modoEdicion() ) {
-            PedidoProveedorView * ppv = ( ( Company * ) empresaBase() ) ->nuevoPedidoProveedorView();
+            PedidoProveedorView * ppv = new PedidoProveedorView ( ( Company * ) empresaBase(), 0 );
             if ( ppv->cargar ( mdb_idpedidoproveedor ) ) {
                 throw - 1;
             } // end if

@@ -179,6 +179,7 @@ void AlbaranProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fi
     relacionados con el albaran abierto.
     Realiza una consulta sobre los pedidos de proveedor que tienen la misma
     referencia que este pedido de proveedor y los instancia y muestra.
+    NOTA: Este plugin debe ser trasladado al plugin de pedidos de proveedor.
 */
 /**
 **/
@@ -188,7 +189,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue ( "refalbaranp" ) + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( query );
     while ( !cur->eof() ) {
-        PedidoProveedorView * pedpro = empresaBase() ->nuevoPedidoProveedorView();
+        PedidoProveedorView * pedpro = new PedidoProveedorView( (Company *) empresaBase(), 0);
         pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
         empresaBase() ->m_pWorkspace->addWindow ( pedpro );
         pedpro->show();

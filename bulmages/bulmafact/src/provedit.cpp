@@ -70,10 +70,6 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         mui_tab->setTabEnabled ( 6, FALSE );
         mui_tab->setTabEnabled ( 7, FALSE );
 
-        /// Cargamos los documentos relacionados con el proveedor y dejamos presentable.
-        m_listpedidosprov->setEmpresaBase ( empresaBase() );
-        m_listpedidosprov->hideBusqueda();
-
         /// Cargamos algunos valores por defecto.
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
         mui_idforma_pago->setidforma_pago ( "0" );
@@ -132,11 +128,6 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
 int ProveedorView::cargarPost ( QString idprov )
 {
     _depura ( "ProveedorView::cargar", 0, idprov );
-
-    /// Cargamos las ventanas auxiliares.
-    m_listpedidosprov->setidproveedor ( DBvalue ( "idproveedor" ) );
-    m_listpedidosprov->presentar();
-
     /// Lanzamos los plugins de carga
     g_plugins->lanza("ProveedorView_cargarPost_Post", this);
     _depura ( "END ProveedorView::cargar", 0 );

@@ -44,9 +44,7 @@
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
 #include "pedidoclienteview.h"
-#include "pedidoproveedorview.h"
 #include "pedidosclientelist.h"
-#include "pedidosproveedorlist.h"
 #include "plugins.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
@@ -227,6 +225,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 72%
     _depura ( "Company::createMainWindows inicializamos m_pedidosproveedorlist", 1 );
+/*
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de pedidos a proveedores" ) );
     splash->setBarraProgreso ( 72 );
     m_progressbar->setValue ( 72 );
@@ -241,7 +240,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled ( TRUE );
         m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled ( TRUE );
     } // end if
-
+*/
     /// pb = 80%
     _depura ( "Company::createMainWindows inicializamos m_albaranesproveedorlist", 1 );
 /*
@@ -564,11 +563,13 @@ void Company::s_newAlbaranPro()
 void Company::s_newPedidoPro()
 {
     _depura ( "Company::s_newPedidoPro", 0 );
+/*
     PedidoProveedorView *ppv = new PedidoProveedorView ( this, 0 );
     m_pWorkspace->addWindow ( ppv );
     ppv->pintar();
     ppv->show();
     ppv->mui_descpedidoproveedor->setFocus ( Qt::OtherFocusReason );
+*/
     _depura ( "END Company::s_newPedidoPro", 0 );
 }
 
@@ -613,9 +614,11 @@ void Company::s_listPedidosCli()
 void Company::s_listPedidosPro()
 {
     _depura ( "Company::s_listPedidosPro", 0 );
+/*
     m_pedidosproveedorList->show();
     m_pedidosproveedorList->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_pedidosproveedorList );
+*/
     _depura ( "END Company::s_listPedidosPro", 0 );
 }
 
@@ -694,16 +697,18 @@ PresupuestoView *Company::nuevoPresupuestoView()
 /**
 \return
 **/
-PedidoProveedorView *Company::nuevoPedidoProveedorView()
+void *Company::nuevoPedidoProveedorView()
 {
     _depura ( "Company::nuevoPedidoProveedor", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     PedidoProveedorView *bud;
     if ( g_plugins->lanza ( "Company_nuevoPedidoProveedor", this, ( void ** ) & bud ) )
         return bud;
     bud = new PedidoProveedorView ( this, 0 );
+*/
     _depura ( "END Company::nuevoPedidoProveedor", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -971,9 +976,11 @@ void Company::refreshPedidosCliente()
 void Company::refreshPedidosProveedor()
 {
     _depura ( "Company::refreshPedidosProveedor", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_pedidosproveedorList != NULL )
             m_pedidosproveedorList->presentar();
+*/
     _depura ( "END Company::refreshPedidosProveedor", 0 );
 }
 
@@ -1199,10 +1206,12 @@ void Company::s_newPedidoClienteView()
 void Company::s_newPedidoProveedorView()
 {
     _depura ( "Company::s_newPedidoProveedorView", 0 );
+/*
     PedidoProveedorView *bud = nuevoPedidoProveedorView();
     m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();
+*/
     _depura ( "END Company::s_newPedidoProveedorView", 0 );
 }
 

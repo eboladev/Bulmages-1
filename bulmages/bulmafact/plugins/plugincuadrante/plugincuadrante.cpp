@@ -37,7 +37,6 @@
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
 #include "albaranclienteview.h"
-#include "pedidoproveedorview.h"
 #include "cuadranteview.h"
 #include "cuadrantediarioview.h"
 
