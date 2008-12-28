@@ -4,11 +4,11 @@
 #README.es
 #20080501
 
-Nombre: Facturas de Proveedor
+Nombre: Albaranes de Proveedor
 
-Biblioteca: libpluginfacturaprov.so
+Biblioteca: libpluginalbaranprov.so
 
-Descripción:  Soporte para facturas de proveedor.
+Descripción:  Soporte para albaranes de proveedor.
 
 ParmBD:
 
