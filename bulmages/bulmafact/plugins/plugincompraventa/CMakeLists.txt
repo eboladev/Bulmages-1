@@ -65,7 +65,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib plugincobros)
+add_dependencies(${plugin} bulmafact bulmalib plugincobros pluginfacturaprov)
 
 
 file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)

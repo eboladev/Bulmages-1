@@ -63,5 +63,5 @@ install(FILES ${files} DESTINATION share/bulmages/icons)
 set(files1 etiquetas.rml)
 install(FILES ${files1} DESTINATION share/bulmages/openreports)
 
-add_dependencies(${plugin} bulmafact bulmalib)
+add_dependencies(${plugin} bulmafact bulmalib pluginalbaranprov)
 
