@@ -29,9 +29,6 @@
 #include <QTextStream>
 #include "presupuestoview.h"
 #include "fixed.h"
-
-
-#include "facturaview.h"
 #include "company.h"
 #include "dbrecord.h"
 

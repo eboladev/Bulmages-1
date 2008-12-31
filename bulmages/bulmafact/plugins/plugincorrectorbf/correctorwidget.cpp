@@ -168,7 +168,13 @@ void correctorwidget::alink ( const QUrl &url )
         ( ( Company * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idfactura" ) {
-        FacturaView * prov = ( ( Company * ) empresaBase() ) ->newFacturaView();
+		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+		int resur = g_plugins->lanza ("SNewFacturaView", (Company *) empresaBase() );
+		if (!resur) {
+			mensajeInfo("No se pudo crear instancia de factura");
+			return;
+		} // end if
+		FacturaView *prov = (FacturaView *) g_plugParams;
         if ( prov->cargar ( list[1] ) ) {
             delete prov;
             return;

@@ -38,7 +38,6 @@
 #include "ui_compraventabase.h"
 #include "fichabf.h"
 
-
 class company;
 
 

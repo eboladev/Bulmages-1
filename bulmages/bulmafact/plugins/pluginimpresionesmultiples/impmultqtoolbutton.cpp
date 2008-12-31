@@ -153,7 +153,16 @@ void ImpQToolButton::click()
                 if ( val == "TRUE" ) {
                     QString id = rec->DBvalue ( "idfactura" );
 
-                    FacturaView *pres = m_companyact->newFacturaView();
+
+
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de factura");
+						return;
+					} // end if
+					FacturaView *pres = (FacturaView *) g_plugParams;
+
                     pres->cargar ( id );
 
                     if (pres->generaRML()) {
@@ -728,7 +737,13 @@ void EmailQToolButton::click()
                 cursor2 *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-                FacturaView *pres = m_companyact->newFacturaView();
+				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+				int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
+				if (!resur) {
+					mensajeInfo("no se pudo crear instancia de factura");
+					return;
+				} // end if
+				FacturaView *pres = (FacturaView *) g_plugParams;
                 pres->cargar ( id );
 
                 if (pres->generaRML()) {
@@ -742,8 +757,10 @@ void EmailQToolButton::click()
 
                 cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
                 cad += "Adjunto le enviamos la factura número " + serie + num + " con fecha " + fecha + "\n";
-                cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
+                cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
                 cad += " --attach " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
+				
+				mensajeInfo(cad);
                 system ( cad.toAscii().data() );
 
                 res += confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";

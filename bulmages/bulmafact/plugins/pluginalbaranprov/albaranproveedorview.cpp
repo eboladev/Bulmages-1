@@ -31,7 +31,6 @@
 #include "articulolist.h"
 #include "company.h"
 #include "configuracion.h"
-#include "facturaview.h"
 #include "funcaux.h"
 #include "listlinalbaranproveedorview.h"
 #include "pedidoproveedorview.h"

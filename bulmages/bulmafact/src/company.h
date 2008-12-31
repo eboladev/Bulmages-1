@@ -39,7 +39,6 @@ class ArticuloList;
 class orderslist;
 class PresupuestoList;
 class AlbaranClienteList;
-class FacturasList;
 class PedidosClienteList;
 class PresupuestoView;
 class FacturaView;
@@ -73,8 +72,6 @@ private:
     PresupuestoList *m_presupuestosList;
     /// Puntero al a ventana de lista de albarnaes a cliente. Esta ventana se crea una vez al inicio del programa.
     AlbaranClienteList *m_clientDelivNotesList;
-    /// Puntero a la ventana de lista de facturas a cliente. Esta ventana se crea una vez al inicoi del programa.
-    FacturasList *m_facturasList;
     /// Puntero a la lista de pedidos de cliente. Esta ventana se crea una vez al inicio del programa.
     PedidosClienteList *m_pedidosclienteList;
 
@@ -139,7 +136,7 @@ public:
     void *newFacturaProveedorView();
     PresupuestoView *nuevoPresupuestoView();
     void *nuevoPedidoProveedorView();
-    FacturaView *newFacturaView();
+    void *newFacturaView();
     void *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();
     void *newAlbaranProveedorView();

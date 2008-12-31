@@ -371,3 +371,4 @@ void FacturaView::on_mui_idalmacen_valueChanged ( QString id )
 }
 
 
+

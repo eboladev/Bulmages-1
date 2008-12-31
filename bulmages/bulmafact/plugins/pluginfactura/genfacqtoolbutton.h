@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,50 +18,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FACTURAVIEW_H
-#define FACTURAVIEW_H
-
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-
-#include "ui_facturabase.h"
-#include "listlinpresupuestoview.h"
-#include "busquedacliente.h"
-#include "busquedafecha.h"
-#include "busquedaformapago.h"
-#include "busquedaseriefactura.h"
-#include "busquedaalmacen.h"
-#include "dialogchanges.h"
-#include "fichabf.h"
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
+#include "company.h"
+#include "funcaux.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 
 
-class Company;
-
-
-/// Muestra y administra la ventana de una factura a cliente.
-/** */
-class FacturaView : public FichaBf, public Ui_FacturaBase
+class GenFacQToolButton : public QToolButton
 {
     Q_OBJECT
 
-public:
-    FacturaView ( Company *, QWidget *parent = 0 );
-    ~FacturaView();
-    void inicializar();
-    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
-    virtual int cargarPost ( QString );
-    virtual int guardarPost();
-    virtual int borrarPre();
+private:
+    Company *m_companyact;
+    QWidget *m_object;
 
+public:
+    GenFacQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~GenFacQToolButton();
+    void setBoton();
+	void generarFactura();
+	void generarFactura1();
 public slots:
-    virtual void on_mui_agregaralbaran_clicked();
-    virtual void on_m_descuentos_editFinish ( int, int );
-    virtual void on_subform2_editFinish ( int, int );
-    virtual void on_mui_veralbaranes_clicked();
-    virtual void on_mui_idcliente_valueChanged ( QString id );
-    virtual void on_mui_idalmacen_valueChanged ( QString id );
+    virtual void click();
+
 };
 
-#endif
+class AgFacQToolButton : public QToolButton
+{
+    Q_OBJECT
+
+private:
+    Company *m_companyact;
+    QWidget *m_object;
+
+public:
+    AgFacQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~AgFacQToolButton();
+    void setBoton();
+	void generarFactura();
+public slots:
+    virtual void click();
+
+};
 

@@ -29,7 +29,10 @@ include_directories(
     ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpedidoprov/
     ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedidoprov/
  	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbarcodeopen/
-     ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/)
+    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/
+ 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
+    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/)
+
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})

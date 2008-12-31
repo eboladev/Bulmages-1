@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,30 +18,52 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINS_H
-#define PLUGINS_H
-
-#include "QList"
-#include "QLibrary"
-
-
-/** Controla el sistema de carga y disparo segun metodo de los plugins
- */
-class Plugins
-{
-private:
-    QList<QLibrary *> m_lista;
-
-public:
-    Plugins();
-    ~Plugins();
-    void cargaLibs ( const QString &libs );
-    int lanza ( const char *func, void *clase );
-    int lanza ( const char *func, void *clase, void **ret );
-};
-
-extern Plugins *g_plugins;
-extern void *g_plugParams;
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
 
+#include "postgresiface2.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "articuloview.h"
+#include "busquedareferencia.h"
+#include "clienteview.h"
+#include "facturaview.h"
+#include "albaranclienteview.h"
+#include "pedidoclienteview.h"
+#include "company.h"
+
+
+extern "C" MY_EXPORT int SNewFacturaView (Company *);
+
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+
+extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+
+
+
+
+// 
+class mypluginfact : public QObject, PEmpresaBase
+{
+    Q_OBJECT
+
+public:
+    Bulmafact *m_bges;
+
+public:
+    mypluginfact();
+    ~mypluginfact();
+    void inicializa ( Bulmafact * );
+
+public slots:
+    void elslot();
+    void elslot1();
+};

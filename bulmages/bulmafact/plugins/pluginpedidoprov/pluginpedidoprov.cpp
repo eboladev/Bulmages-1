@@ -57,6 +57,7 @@ void mypluginpedp::elslot()
 {
     _depura ( "mypluginpedp::elslot", 0 );
     if (g_pedidosProveedorList) {
+	g_pedidosProveedorList->hide();
 	g_pedidosProveedorList->show();
     }// end if
     _depura ( "END mypluginpedp::elslot", 0 );

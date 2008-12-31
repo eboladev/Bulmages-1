@@ -35,8 +35,6 @@
 #include "clienteview.h"
 #include "clientslist.h"
 #include "company.h"
-#include "facturaslist.h"
-#include "facturaview.h"
 #include "familiasview.h"
 #include "fpagoview.h"
 #include "funcaux.h"
@@ -208,6 +206,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 56%
     _depura ( "Company::createMainWindows inicializamos m_facturasList", 0 );
+/*
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de facturas" ) );
     splash->setBarraProgreso ( 56 );
     m_progressbar->setValue ( 56 );
@@ -222,7 +221,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Facturas_Cliente->setEnabled ( TRUE );
         m_bulmafact->actionNueva_Factura_Cliente->setEnabled ( TRUE );
     } // end if
-
+*/
     /// pb = 72%
     _depura ( "Company::createMainWindows inicializamos m_pedidosproveedorlist", 1 );
 /*
@@ -631,9 +630,11 @@ void Company::s_listPedidosPro()
 void Company::s_listFacturasCli()
 {
     _depura ( "Company::s_listFacturasCli", 0 );
+/*
     m_facturasList->show();
     m_facturasList->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_facturasList );
+*/
     _depura ( "END Company::s_listFacturasCli", 0 );
 }
 
@@ -740,16 +741,18 @@ void Company::s_newPresupuestoCli()
 /**
 \return
 **/
-FacturaView *Company::newFacturaView()
+void *Company::newFacturaView()
 {
     _depura ( "Company::newFacturaView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     FacturaView *bud;
     if ( g_plugins->lanza ( "Company_newFacturaView", this, ( void ** ) & bud ) )
         return bud;
     bud = new FacturaView ( this, 0 );
+*/
     _depura ( "END Company::newFacturaView", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -762,6 +765,7 @@ FacturaView *Company::newFacturaView()
 void Company::s_newFacturaCli()
 {
     _depura ( "Company::s_newFacturaCli", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     if ( g_plugins->lanza ( "Company_s_newFacturaCli", this ) )
         return;
@@ -771,6 +775,7 @@ void Company::s_newFacturaCli()
     bud->pintar();
     bud->show();
     bud->mui_descfactura->setFocus ( Qt::OtherFocusReason );
+*/
     _depura ( "END Company::s_newFacturaCli", 0 );
 }
 
@@ -799,9 +804,11 @@ void Company::refreshPresupuestos()
 void Company::refreshFacturas()
 {
     _depura ( "Company::refreshFacturas", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_facturasList != NULL )
             m_facturasList->presentar();
+*/
     _depura ( "END Company::refreshFacturas", 0 );
 }
 

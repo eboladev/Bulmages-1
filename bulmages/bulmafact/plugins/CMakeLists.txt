@@ -51,6 +51,7 @@ add_subdirectory(plugincorrectorbf)
 
 add_subdirectory(pluginpagos)
 add_subdirectory(plugincobros)
+add_subdirectory(pluginfactura)
 add_subdirectory(pluginfacturaprov)
 add_subdirectory(pluginalbaranprov)
 add_subdirectory(pluginpedidoprov)

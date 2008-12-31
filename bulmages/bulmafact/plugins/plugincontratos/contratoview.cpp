@@ -271,7 +271,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 {
     _depura ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
     QString idfactura = subform2->DBvalue ( QString ( "idfactura" ), subform2->currentRow() );
-    FacturaView *prov = empresaBase() ->newFacturaView();
+    FacturaView *prov = new FacturaView( (Company *) empresaBase(), 0);
     if ( prov->cargar ( idfactura ) ) {
         delete prov;
         return;
@@ -308,7 +308,7 @@ void ContratoView::on_mui_facturar_clicked()
             } // end if
         } else {
             // GENERAMOS LA FACTURA
-            FacturaView *fac = empresaBase() ->newFacturaView();
+            FacturaView *fac = new FacturaView( (Company *) empresaBase(), 0);
             empresaBase() ->m_pWorkspace->addWindow ( fac );
             fac->cargar ( "0" );
             fac->show();

@@ -19,30 +19,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINS_H
-#define PLUGINS_H
+#ifndef FACTURAVIEW_H
+#define FACTURAVIEW_H
 
-#include "QList"
-#include "QLibrary"
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+
+#include "ui_facturabase.h"
+#include "listlinpresupuestoview.h"
+#include "busquedacliente.h"
+#include "busquedafecha.h"
+#include "busquedaformapago.h"
+#include "busquedaseriefactura.h"
+#include "busquedaalmacen.h"
+#include "dialogchanges.h"
+#include "fichabf.h"
+#include "company.h"
 
 
-/** Controla el sistema de carga y disparo segun metodo de los plugins
- */
-class Plugins
+
+/// Muestra y administra la ventana de una factura a cliente.
+/** */
+class FacturaView : public FichaBf, public Ui_FacturaBase
 {
-private:
-    QList<QLibrary *> m_lista;
+    Q_OBJECT
 
 public:
-    Plugins();
-    ~Plugins();
-    void cargaLibs ( const QString &libs );
-    int lanza ( const char *func, void *clase );
-    int lanza ( const char *func, void *clase, void **ret );
+    FacturaView ( Company *, QWidget *parent = 0 );
+    ~FacturaView();
+    void inicializar();
+    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
+    virtual int cargarPost ( QString );
+    virtual int guardarPost();
+    virtual int borrarPre();
+
+public slots:
+    virtual void on_mui_agregaralbaran_clicked();
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform2_editFinish ( int, int );
+    virtual void on_mui_veralbaranes_clicked();
+    virtual void on_mui_idcliente_valueChanged ( QString id );
+    virtual void on_mui_idalmacen_valueChanged ( QString id );
 };
 
-extern Plugins *g_plugins;
-extern void *g_plugParams;
 
 #endif
 

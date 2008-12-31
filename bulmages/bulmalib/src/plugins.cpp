@@ -33,7 +33,7 @@ typedef int ( *MyPrototype1 ) ( void *, void ** );
 MyPrototype1 myFunction1;
 
 Plugins *g_plugins;
-
+void *g_plugParams;
 
 ///
 /**
@@ -137,4 +137,3 @@ int Plugins::lanza ( const char *func, void *clase, void **ret )
     _depura ( "END Plugins::lanza", 0 );
     return a;
 }
-

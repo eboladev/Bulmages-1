@@ -57,6 +57,7 @@ void mypluginalbp::elslot()
 {
     _depura ( "mypluginalbp::elslot", 0 );
     if (g_albaranesProveedor) {
+	g_albaranesProveedor->hide();
 	g_albaranesProveedor->show();
     }// end if
     _depura ( "END mypluginalbp::elslot", 0 );
@@ -193,4 +194,15 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
     _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
     return 0;
 }
+
+
+/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
+/// Sino que se llama desde multiples partes del sistema.
+int SNewAlbaranProveedorView (Company *v)
+{
+	AlbaranProveedorView *h = new AlbaranProveedorView(v, 0);
+	g_plugParams = h;
+	return 1;
+}
+
 

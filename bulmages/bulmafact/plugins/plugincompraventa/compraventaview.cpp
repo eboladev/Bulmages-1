@@ -80,9 +80,6 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
 
         subform3->setEmpresaBase ( comp );
         m_descuentos3->setEmpresaBase ( comp );
-//        m_albaranp->setListaLineas ( subform3 );
-//        m_albaranp->setListaDescuentos ( m_descuentos3 );
-
 
         setTitleName ( tr ( "Compra Venta" ) );
         setDBTableName ( "albaran" );
@@ -591,7 +588,14 @@ void CompraVentaView::generarFactura()
                                          tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
-            bud = empresaBase() ->newFacturaView();
+
+
+			int resur = g_plugins->lanza ("SNewFacturaView", (Company *) empresaBase() );
+			if (!resur) {
+				mensajeInfo("No se pudo crear instancia de factura");
+				return;
+			} // end if
+            bud = (FacturaView *) g_plugParams;
             empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
@@ -604,7 +608,12 @@ void CompraVentaView::generarFactura()
 		return;
 
         /// Creamos la factura.
-        bud = empresaBase() ->newFacturaView();
+		int resur = g_plugins->lanza ("SNewFacturaView", (Company *) empresaBase() );
+		if (!resur) {
+			mensajeInfo("No se pudo crear instancia de factura");
+			return;
+		} // end if
+		bud = (FacturaView *) g_plugParams;
         empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.

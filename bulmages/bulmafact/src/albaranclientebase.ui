@@ -237,76 +237,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_facturar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Generar factura a partir de este albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Generar factura a partir de este albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/client-delivery-note-to-invoice.svg</normaloff>:/Images/client-delivery-note-to-invoice.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_agregarafactura" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Agregar a factura</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Agregar a factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/client-delivery-note-add-to-invoice.svg</normaloff>:/Images/client-delivery-note-add-to-invoice.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
@@ -762,7 +692,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>129</height>
+        <height>126</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -785,8 +715,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>700</width>
-        <height>420</height>
+        <width>736</width>
+        <height>126</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -809,8 +739,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>700</width>
-        <height>420</height>
+        <width>736</width>
+        <height>126</height>
        </rect>
       </property>
       <attribute name="title" >

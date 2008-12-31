@@ -62,8 +62,6 @@
     <addaction name="actionNuevo_Albaran_Cliente" />
     <addaction name="actionListado_Albaranes_Cliente" />
     <addaction name="separator" />
-    <addaction name="actionNueva_Factura_Cliente" />
-    <addaction name="actionListado_Facturas_Cliente" />
     <addaction name="separator" />
    </widget>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -148,7 +146,7 @@
     <rect>
      <x>0</x>
      <y>24</y>
-     <width>299</width>
+     <width>260</width>
      <height>42</height>
     </rect>
    </property>
@@ -192,7 +190,6 @@
    <addaction name="actionListado_Presupuestos" />
    <addaction name="actionListado_Pedidos_Cliente" />
    <addaction name="actionListado_Albaranes_Cliente" />
-   <addaction name="actionListado_Facturas_Cliente" />
    <addaction name="separator" />
    <addaction name="actionListado_de_Articulos" />
    <addaction name="actionListado_Proveedores" />
@@ -201,9 +198,9 @@
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>299</x>
+     <x>260</x>
      <y>24</y>
-     <width>692</width>
+     <width>731</width>
      <height>42</height>
     </rect>
    </property>
@@ -262,7 +259,6 @@
    <addaction name="actionNuevo_Presupuesto" />
    <addaction name="actionNuevo_Pedido_Cliente" />
    <addaction name="actionNuevo_Albaran_Cliente" />
-   <addaction name="actionNueva_Factura_Cliente" />
    <addaction name="separator" />
    <addaction name="actionNuevo_Articulo" />
    <addaction name="actionNuevo_Proveedor" />
@@ -348,27 +344,6 @@
    </property>
    <property name="text" >
     <string>&amp;Albaranes a clientes</string>
-   </property>
-  </action>
-  <action name="actionNueva_Factura_Cliente" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-invoice.svg</normaloff>:/Images/client-invoice.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nueva &amp;factura a cliente...</string>
-   </property>
-   <property name="shortcut" >
-    <string>F6</string>
-   </property>
-  </action>
-  <action name="actionListado_Facturas_Cliente" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-invoice-list.svg</normaloff>:/Images/client-invoice-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Facturas a clientes</string>
    </property>
   </action>
   <action name="actionGestion_Familias" >

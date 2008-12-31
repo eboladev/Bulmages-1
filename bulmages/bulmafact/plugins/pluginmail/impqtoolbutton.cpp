@@ -189,7 +189,6 @@ void EmailQToolButton::click()
         QString email = curs->valor ( "mailcliente" );
 	delete curs;
 
-
         if (m_facturaView->generaRML()) {
 		generaPDF ( "factura" );
 	

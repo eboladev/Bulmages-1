@@ -57,6 +57,7 @@ void mypluginpag::elslot()
 {
     _depura ( "mypluginpag::elslot", 0 );
     if (g_pagosList) {
+	g_pagosList->hide();
 	g_pagosList->show();
     }// end if
     _depura ( "END mypluginpag::elslot", 0 );

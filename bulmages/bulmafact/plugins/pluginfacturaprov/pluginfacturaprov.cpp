@@ -57,6 +57,7 @@ void mypluginfactp::elslot()
 {
     _depura ( "mypluginfactp::elslot", 0 );
     if (g_facturasProveedorList) {
+	g_facturasProveedorList->hide();
 	g_facturasProveedorList->show();
     }// end if
     _depura ( "END mypluginfactp::elslot", 0 );
@@ -215,5 +216,14 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
     _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
     return 0;
+}
+
+/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
+/// Sino que se llama desde multiples partes del sistema.
+int SNewFacturaProveedorView (Company *v)
+{
+	FacturaProveedorView *h = new FacturaProveedorView(v, 0);
+	g_plugParams = h;
+	return 1;
 }
 

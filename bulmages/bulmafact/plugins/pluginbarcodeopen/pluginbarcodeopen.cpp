@@ -75,7 +75,7 @@ void myplugin::elslot()
     if ( ok && !text.isEmpty() ) {
         QStringList listaelem = text.split ( " " );
         if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
-            FacturaView * prov = ( ( Company * ) empresaBase() ) ->newFacturaView();
+            FacturaView * prov = new FacturaView(  ( Company * ) empresaBase(), 0 );
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;

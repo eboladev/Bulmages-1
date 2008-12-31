@@ -203,7 +203,7 @@ void FacturasList::editar ( int row )
     _depura ( "FacturasList::editar", 0 );
     mdb_idfactura = mui_list->DBvalue ( QString ( "idfactura" ), row );
     if ( modoEdicion() ) {
-        FacturaView * prov = ( ( Company * ) empresaBase() ) ->newFacturaView();
+        FacturaView * prov = new FacturaView( ( Company * ) empresaBase(), 0);
         if ( prov->cargar ( mdb_idfactura ) ) {
             delete prov;
             return;
@@ -251,7 +251,7 @@ void FacturasList::borrar()
     try {
         mdb_idfactura = mui_list->DBvalue ( QString ( "idfactura" ) );
         if ( modoEdicion() ) {
-            FacturaView * fv = ( ( Company * ) empresaBase() ) ->newFacturaView();
+            FacturaView * fv = new FacturaView(( Company * ) empresaBase() );
             if ( fv->cargar ( mdb_idfactura ) )
                 throw - 1;
             fv->on_mui_borrar_clicked();

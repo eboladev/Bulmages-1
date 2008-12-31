@@ -30,14 +30,11 @@
 #include "articuloview.h"
 #include "provedit.h"
 #include "busquedareferencia.h"
-#include "facturaview.h"
-#include "presupuestoview.h"
-#include "pedidoclienteview.h"
-#include "albaranclienteview.h"
 #include "facturapview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 
+extern "C" MY_EXPORT int SNewFacturaProveedorView (Company *);
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
 extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);

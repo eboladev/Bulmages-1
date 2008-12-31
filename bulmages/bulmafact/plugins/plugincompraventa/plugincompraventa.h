@@ -30,6 +30,7 @@
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
+
 class myplugincv : public QObject, PEmpresaBase
 {
     Q_OBJECT

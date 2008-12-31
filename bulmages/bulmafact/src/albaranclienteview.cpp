@@ -30,11 +30,8 @@
 #include "albaranclienteview.h"
 #include "articulolist.h"
 #include "clientslist.h"
-//#include "cobroview.h"
 #include "company.h"
 #include "configuracion.h"
-#include "facturaslist.h"
-#include "facturaview.h"
 #include "funcaux.h"
 #include "informereferencia.h"
 #include "listdescalbaranclienteview.h"
@@ -281,7 +278,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
 void AlbaranClienteView::generarFactura()
 {
     _depura ( "AlbaranClienteView::generarFactura", 0 );
-
+/*
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranClienteView_generarFactura", this );
     if ( res != 0 )
@@ -392,7 +389,7 @@ void AlbaranClienteView::generarFactura()
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
-
+*/
     _depura ( "END AlbaranClienteView::generarFactura", 0 );
 }
 
@@ -406,6 +403,7 @@ void AlbaranClienteView::agregarFactura()
 {
     /// Pedimos la factura a la que agregar.
     _depura ( "AlbaranClienteView::agregarFactura", 0 );
+/*
     QDialog *diag = new QDialog ( 0 );
     diag->setWindowTitle ( tr ( "Seleccione la factura a la que agregar el albaran." ) );
     diag->setModal ( true );
@@ -459,6 +457,7 @@ void AlbaranClienteView::agregarFactura()
     bud->calculaypintatotales();
     bud->show();
     mui_procesadoalbaran->setChecked ( TRUE );
+*/
     _depura ( "END AlbaranClienteView::agregarFactura", 0 );
 }
 
