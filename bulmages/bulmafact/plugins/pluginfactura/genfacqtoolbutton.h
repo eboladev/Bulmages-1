@@ -42,6 +42,7 @@ public:
     void setBoton();
 	void generarFactura();
 	void generarFactura1();
+	void generarFactura2();
 public slots:
     virtual void click();
 

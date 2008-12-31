@@ -33,6 +33,7 @@
 #include "facturaview.h"
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
+#include "presupuestoview.h"
 #include "facturaslist.h"
 #include "fixed.h"
 #include "company.h"
@@ -100,6 +101,12 @@ void GenFacQToolButton::click()
 	PedidoClienteView *fpv = (PedidoClienteView *) m_object;
 		generarFactura1();
     }// end if
+
+    if (m_object->objectName() == "PresupuestoClienteBase" ) {
+	PresupuestoView *fpv = (PresupuestoView *) m_object;
+		generarFactura2();
+    }// end if
+
 
     _depura ( "END ImpQToolButton::click", 0 );
 }
@@ -340,6 +347,135 @@ void GenFacQToolButton::generarFactura1()
                 bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
                 linea->setDBvalue ( "conceptdfactura", linea1->DBvalue ( "conceptdpedidocliente" ) );
                 linea->setDBvalue ( "proporciondfactura", linea1->DBvalue ( "proporciondpedidocliente" ) );
+                bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+                bud->getlistadescuentos() ->nuevoRegistro();
+            } // end if
+        } // end for
+        /// Pintamos el pedido y lo presentamos.
+        bud->pintar();
+        bud->calculaypintatotales();
+        bud->show();
+
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error inesperado" ), this );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
+
+
+    _depura ( "END GenFacQToolButton::generarFactura", 0 );
+}
+
+
+
+
+
+
+/// Se encarga de generar una factura a partir de un albar&aacute;n.
+/** Primero de todo busca una factura por referencia que tenga este albaran.
+    Si dicha factura existe entonces la cargamos y terminamos.
+    Si no existe dicha factura el sistema avisa y permite crear una poniendo
+    Todos los datos del albaran automaticamente en ella.
+*/
+/**
+\return
+**/
+void GenFacQToolButton::generarFactura2()
+{
+    _depura ( "GenFacQToolButton::generarFactura2", 0 );
+
+	PresupuestoView *fpv = (PresupuestoView *) m_object;
+
+
+    FacturaView *bud = NULL;
+    cursor2 *cur = NULL;
+
+    try {
+        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+        /// el siguiente cur->eof() el programa fallar&aacute;.
+        /// Comprobamos que existe el albaran con esos datos, y en caso afirmativo lo mostramos.
+
+        QString SQLQuery = "";
+
+        if ( fpv->DBvalue ( "refpresupuesto" ).isEmpty() || fpv->DBvalue ( "idcliente" ).isEmpty() ) {
+            /// El presupuesto no se ha guardado y no se dispone en la base de datos
+            /// de estos datos. Se utilizan en su lugar los del formulario.
+            /// Verifica que exista, por lo menos, un cliente seleccionado.
+            if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
+                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                return;
+            } else {
+                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
+            } // end if
+        } else {
+            SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
+        } // end if
+
+        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+
+        if ( !cur->eof() ) {
+            /// Informamos que ya hay un albaran y que la abriremos.
+            /// Si no salimos de la funci&oacute;n.
+            if ( QMessageBox::question ( this,
+                                         tr ( "Factura ya existe" ),
+                                         tr ( "Existe una factura a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                return;
+            } // end if
+            bud = new FacturaView ( fpv->empresaBase(), NULL );
+            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud->cargar ( cur->valor ( "idfactura" ) );
+            bud->show();
+            return;
+        } // end if
+        delete cur;
+
+        /// Creamos el albaran.
+        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( "0" );
+
+        /// Traspasamos los datos al albaran.
+        fpv->recogeValores();
+        bud->setDBvalue ( "comentfactura", fpv->DBvalue ( "comentpresupuesto" ) );
+        bud->setDBvalue ( "descfactura", fpv->DBvalue ( "descpresupuesto" ) );
+        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDBvalue ( "reffactura", fpv->DBvalue ( "refpresupuesto" ) );
+        bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+        bud->setDBvalue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
+        bud->setDBvalue ( "contactfactura", fpv->DBvalue ( "contactpresupuesto" ) );
+        bud->setDBvalue ( "telfactura", fpv->DBvalue ( "telpresupuesto" ) );
+        bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
+
+        /// Traspasamos las lineas al albaran.
+        SDBRecord *linea, *linea1;
+        for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
+            linea = fpv->m_listalineas->lineaat ( i );
+            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+                linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclpresupuesto" ) );
+                linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlpresupuesto" ) );
+                linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplpresupuesto" ) );
+                linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalpresupuesto" ) );
+                linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolpresupuesto" ) );
+                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+            } // end if
+        } // end for
+
+        /// Traspasamos los descuentos.
+        for ( int i = 0; i < fpv->m_listadescuentos->rowCount(); ++i ) {
+            linea1 = fpv->m_listadescuentos->lineaat ( i );
+            if ( linea1->DBvalue ( "proporciondpresupuesto" ) != "" ) {
+                linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
+                bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+                linea->setDBvalue ( "conceptdfactura", linea1->DBvalue ( "conceptdpresupuesto" ) );
+                linea->setDBvalue ( "proporciondfactura", linea1->DBvalue ( "proporciondpresupuesto" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
                 bud->getlistadescuentos() ->nuevoRegistro();
             } // end if

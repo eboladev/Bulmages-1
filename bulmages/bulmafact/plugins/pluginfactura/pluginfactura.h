@@ -33,6 +33,7 @@
 #include "facturaview.h"
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
+#include "presupuestoview.h"
 #include "company.h"
 
 
@@ -46,6 +47,7 @@ extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
 extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
 
 
