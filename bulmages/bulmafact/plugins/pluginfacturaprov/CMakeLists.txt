@@ -65,4 +65,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib)
+add_dependencies(${plugin} bulmafact bulmalib pluginalbaranprov pluginpedidoprov)

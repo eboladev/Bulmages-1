@@ -42,12 +42,13 @@ add_subdirectory(pluginbulmacont)
 add_subdirectory(pluginsyncbulmacont)
 add_subdirectory(plugininformeclientessxc)
 add_subdirectory(pluginetiquetado)
+add_subdirectory(pluginetiquetas)
 add_subdirectory(plugincompraventa)
 add_subdirectory(pluginclientprov)
 add_subdirectory(pluginopenref)
 
 add_subdirectory(plugincorrectorbf)
-
+add_subdirectory(pluginfacturar)
 
 add_subdirectory(pluginpagos)
 add_subdirectory(plugincobros)

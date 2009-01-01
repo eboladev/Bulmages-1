@@ -1,10 +1,9 @@
 ###########################################
-# Plugin for bulmafact					  #
+# Plugin for bulmafact           	  #
 ###########################################
-#pluginbarcodeopen
+#pluginfacturar
 
-set (plugin pluginbarcodeopen)
-set (docs README.es)
+set (plugin pluginfacturar)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -13,7 +12,7 @@ file(GLOB plugin_UIS *.ui)
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -26,30 +25,24 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-    ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpedidoprov/
-    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedidoprov/
- 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbarcodeopen/
-    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/
- 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
-    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/)
-
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfacturaprov/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfacturaprov/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS})
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
-
-if(APPLE)
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
-endif(APPLE)
-
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
@@ -60,11 +53,7 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
-
-add_dependencies(${plugin} bulmafact bulmalib pluginpedidoprov pluginfactura pluginalbaranprov plugincobros pluginpagos pluginfacturaprov )
+add_dependencies(${plugin} bulmafact bulmalib pluginalbaran pluginfactura pluginfacturaprov)
