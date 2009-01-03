@@ -29,7 +29,6 @@
 #include "company.h"
 #include "presupuestolist.h"
 #include "pedidosclientelist.h"
-#include "albaranclientelist.h"
 #include "busquedaprovincia.h"
 #include "funcaux.h"
 #include "plugins.h"
@@ -91,7 +90,6 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         /// Inicializamos las pantallas auxiliares a esta.
         m_listpresupuestos->setEmpresaBase ( empresaBase() );
         m_listpedidos->setEmpresaBase ( empresaBase() );
-        m_listalbaranes->setEmpresaBase ( empresaBase() );
 
         /// Datos por defecto.
         mui_idprovincia->setEmpresaBase ( empresaBase() );
@@ -152,8 +150,6 @@ int ClienteView::cargarPost ( QString idcliente )
     m_listpresupuestos->presentar();
     m_listpedidos->setidcliente ( idcliente );
     m_listpedidos->presentar();
-    m_listalbaranes->setidcliente ( idcliente );
-    m_listalbaranes->presentar();
 
     /// Lanzamos los plugins de carga
     g_plugins->lanza("ClienteView_cargarPost_Post", this);

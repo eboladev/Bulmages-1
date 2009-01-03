@@ -31,7 +31,7 @@
 
 #include "presupuestolist.h"
 #include "facturaslist.h"
-
+#include "albaranclientelist.h"
 #include "cobroslist.h"
 
 class ImpQToolButton : public QToolButton

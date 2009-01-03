@@ -31,8 +31,9 @@ include_directories(
  	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbarcodeopen/
     ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/
  	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
-    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/)
-
+    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
+ 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
+    ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -67,4 +68,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginpedidoprov pluginfactura pluginalbaranprov plugincobros pluginpagos pluginfacturaprov )
+add_dependencies(${plugin} bulmafact bulmalib pluginpedidoprov pluginfactura pluginalbaranprov plugincobros pluginpagos pluginfacturaprov pluginalbaran )

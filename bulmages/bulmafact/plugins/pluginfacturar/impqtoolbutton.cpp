@@ -126,7 +126,13 @@ void ImpQToolButton::click()
             if ( val == "TRUE" ) {
                 QString id = rec->DBvalue ( "idalbaran" );
 
-                AlbaranClienteView *pres = m_companyact->newAlbaranClienteView();
+			/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+				int resur = g_plugins->lanza ("SNewAlbaranClienteView", m_companyact);
+				if (!resur) {
+					mensajeInfo("no se pudo crear instancia de albaran");
+					return;
+				} // end if
+                    AlbaranClienteView *pres = (AlbaranClienteView *) g_plugParams;
                 pres->cargar ( id );
                 if ( pres->mui_procesadoalbaran->isChecked() ) {
                     pres->close();

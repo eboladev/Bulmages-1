@@ -38,13 +38,11 @@ class ClienteView;
 class ArticuloList;
 class orderslist;
 class PresupuestoList;
-class AlbaranClienteList;
 class PedidosClienteList;
 class PresupuestoView;
 class FacturaView;
 class ArticuloView;
 class PagoView;
-class AlbaranClienteView;
 class PedidoClienteView;
 class TipoArticuloList;
 class ProveedorView;
@@ -70,8 +68,6 @@ private:
     ArticuloList *m_articleslist;
     /// Puntero a la ventana de lista de presupuestos. Esta ventana se abre una vez al inicio del program.a \TODO: Cambiarle el nombre.
     PresupuestoList *m_presupuestosList;
-    /// Puntero al a ventana de lista de albarnaes a cliente. Esta ventana se crea una vez al inicio del programa.
-    AlbaranClienteList *m_clientDelivNotesList;
     /// Puntero a la lista de pedidos de cliente. Esta ventana se crea una vez al inicio del programa.
     PedidosClienteList *m_pedidosclienteList;
 
@@ -138,7 +134,7 @@ public:
     void *nuevoPedidoProveedorView();
     void *newFacturaView();
     void *newPagoView();
-    AlbaranClienteView *newAlbaranClienteView();
+    void *newAlbaranClienteView();
     void *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
     TipoArticuloList *newTipoArticuloList ( QWidget *parent = 0, bool modoConsulta = FALSE );

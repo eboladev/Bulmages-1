@@ -30,9 +30,6 @@
 #include "articuloview.h"
 #include "provedit.h"
 #include "busquedareferencia.h"
-#include "presupuestoview.h"
-#include "pedidoclienteview.h"
-#include "albaranclienteview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 

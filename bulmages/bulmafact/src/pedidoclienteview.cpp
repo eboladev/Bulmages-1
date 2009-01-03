@@ -34,7 +34,6 @@
 #include "clientslist.h"
 #include "presupuestoview.h"
 #include "presupuestolist.h"
-#include "albaranclienteview.h"
 #include "informereferencia.h"
 #include "funcaux.h"
 #include "plugins.h"
@@ -213,6 +212,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked()
 void PedidoClienteView::generarAlbaran()
 {
     _depura ( "PedidoClienteView::generarAlbaran", 0 );
+/*
 
     AlbaranClienteView *bud = NULL;
     cursor2 *cur = NULL;
@@ -317,7 +317,7 @@ void PedidoClienteView::generarAlbaran()
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
-
+*/
     _depura ( "END PedidoClienteView::generarAlbaran", 0 );
 }
 

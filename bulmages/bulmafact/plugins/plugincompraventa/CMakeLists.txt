@@ -26,6 +26,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/plugincobros/
@@ -67,7 +69,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib plugincobros pluginfacturaprov pluginfactura pluginalbaranprov)
+add_dependencies(${plugin} bulmafact bulmalib plugincobros pluginfacturaprov pluginfactura pluginalbaranprov pluginalbaran)
 
 
 file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)

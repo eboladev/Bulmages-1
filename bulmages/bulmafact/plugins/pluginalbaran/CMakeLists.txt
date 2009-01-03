@@ -1,9 +1,9 @@
 ###########################################
 # Plugin for bulmafact					  #
 ###########################################
-#pluginimpresionesmultiples
+#pluginalbaran
 
-set (plugin pluginimpresionesmultiples)
+set (plugin pluginalbaran)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -29,9 +29,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/plugincobros/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/plugincobros/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -45,10 +43,10 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
+
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
-
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
@@ -65,4 +63,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib plugincobros pluginfactura pluginalbaran)
+add_dependencies(${plugin} bulmafact bulmalib)

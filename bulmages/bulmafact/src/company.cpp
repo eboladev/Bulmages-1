@@ -28,8 +28,6 @@
 #include "stdio.h"
 
 #include "abreempresaview.h"
-#include "albaranclientelist.h"
-#include "albaranclienteview.h"
 #include "articulolist.h"
 #include "articuloview.h"
 #include "clienteview.h"
@@ -189,6 +187,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 48%
     _depura ( "Company::createMainWindows inicializamos m_clientDelivNotesList", 1 );
+/*
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de albaranes a clientes" ) );
     splash->setBarraProgreso ( 48 );
     m_progressbar->setValue ( 48 );
@@ -203,7 +202,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Albaranes_Cliente->setEnabled ( TRUE );
         m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled ( TRUE );
     } // end if
-
+*/
     /// pb = 56%
     _depura ( "Company::createMainWindows inicializamos m_facturasList", 0 );
 /*
@@ -841,9 +840,11 @@ void Company::refreshFacturasProveedor()
 void Company::listClientDelivNotes()
 {
     _depura ( "Company::listClientDelivNotes", 0 );
+/*
     m_clientDelivNotesList->show();
     m_clientDelivNotesList->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_clientDelivNotesList );
+*/
     _depura ( "END Company::listClientDelivNotes", 0 );
 }
 
@@ -855,10 +856,13 @@ void Company::listClientDelivNotes()
 **/
 void Company::newClientDelivNote()
 {
+
     _depura ( "Company::newClientDelivNote", 0 );
+/*
     AlbaranClienteView *cDelivNote = new AlbaranClienteView ( this, 0 );
     m_pWorkspace->addWindow ( cDelivNote );
     cDelivNote->showMaximized();
+*/
     _depura ( "END Company::newClientDelivNote", 0 );
 }
 
@@ -873,9 +877,11 @@ void Company::newClientDelivNote()
 void Company::refreshClientDelivNotes()
 {
     _depura ( "Company::refreshClientDelivNotes", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_clientDelivNotesList != NULL )
             m_clientDelivNotesList->presentar();
+*/
     _depura ( "END Company::refreshClientDelivNotes", 0 );
 }
 
@@ -889,9 +895,11 @@ void Company::refreshClientDelivNotes()
 void Company::refreshAlbaranesCliente()
 {
     _depura ( "Company::refreshAlbaranesCliente", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_clientDelivNotesList != NULL )
             m_clientDelivNotesList->presentar();
+*/
     _depura ( "END Company::refreshAlbaranesCliente", 0 );
 }
 
@@ -1095,16 +1103,18 @@ void Company::s_newArticulo()
 /**
 \return
 **/
-AlbaranClienteView *Company::newAlbaranClienteView()
+void *Company::newAlbaranClienteView()
 {
     _depura ( "Company::newAlbaranClienteView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     AlbaranClienteView *bud;
     if ( g_plugins->lanza ( "Company_newAlbaranClienteView", this, ( void ** ) & bud ) )
         return bud;
     bud = new AlbaranClienteView ( this, 0 );
+*/
     _depura ( "END Company::newAlbaranClienteView", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -1116,12 +1126,14 @@ AlbaranClienteView *Company::newAlbaranClienteView()
 void Company::s_newAlbaranClienteView()
 {
     _depura ( "Company::s_newAlbaranClienteView", 0 );
+/*
     AlbaranClienteView *bud = newAlbaranClienteView();
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->pintar();
     bud->show();
     bud->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
+*/
     _depura ( "END Company::s_newAlbaranClienteView", 0 );
 
 }

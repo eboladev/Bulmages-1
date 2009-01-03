@@ -37,7 +37,6 @@
 #include "articulolist.h"
 #include "configuracion.h"
 #include "pedidoclienteview.h"
-#include "albaranclienteview.h"
 #include "busquedacliente.h"
 #include "busquedaformapago.h"
 #include "informereferencia.h"

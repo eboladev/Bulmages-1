@@ -322,7 +322,11 @@ void FacturasList::setidarticulo ( QString val )
 void FacturasList::crear()
 {
     _depura ( "FacturasList::crear", 0 );
-    ( ( Company * ) empresaBase() ) ->s_newFacturaCli();
+    FacturaView * bud = new FacturaView((Company *)empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
+    bud->show();
+    bud->mui_descfactura->setFocus ( Qt::OtherFocusReason );
     _depura ( "END FacturasList::crear", 0 );
 }
 

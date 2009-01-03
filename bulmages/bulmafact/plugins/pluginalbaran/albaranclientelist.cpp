@@ -84,7 +84,12 @@ QString AlbaranClienteList::idCliDelivNote()
 void AlbaranClienteList::crear()
 {
     _depura ( "AlbaranClienteList::crear", 0 );
-    ( ( Company * ) empresaBase() ) ->s_newAlbaranClienteView();
+    AlbaranClienteView *bud = new AlbaranClienteView( (Company *) empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
+    bud->pintar();
+    bud->show();
+    bud->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
     _depura ( "END AlbaranClienteList::crear", 0 );
 }
 
@@ -242,7 +247,7 @@ void AlbaranClienteList::editar ( int row )
     _depura ( "AlbaranClienteList::editar", 0 );
     mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ), row );
     if ( modoEdicion() ) {
-        AlbaranClienteView * prov = ( ( Company * ) empresaBase() ) ->newAlbaranClienteView();
+        AlbaranClienteView * prov = new AlbaranClienteView(( Company * ) empresaBase(), 0);
         if ( prov->cargar ( mdb_idalbaran ) ) {
             delete prov;
             return;
@@ -276,7 +281,7 @@ void AlbaranClienteList::borrar()
     try {
         mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ) );
         if ( modoEdicion() ) {
-            AlbaranClienteView * acv = ( ( Company * ) empresaBase() ) ->newAlbaranClienteView();
+            AlbaranClienteView * acv = new AlbaranClienteView(( Company * ) empresaBase(), 0);
             if ( acv->cargar ( mdb_idalbaran ) )
                 throw - 1;
             acv->on_mui_borrar_clicked();
