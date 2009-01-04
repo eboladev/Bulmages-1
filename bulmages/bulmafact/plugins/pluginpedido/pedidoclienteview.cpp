@@ -28,6 +28,7 @@
 #include <QLayout>
 #include <QCloseEvent>
 
+
 #include "pedidoclienteview.h"
 #include "company.h"
 #include "listlinpedidoclienteview.h"

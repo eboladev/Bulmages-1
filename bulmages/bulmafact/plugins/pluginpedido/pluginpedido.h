@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,37 +18,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QToolButton>
-#include <QString>
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
+
+#include "postgresiface2.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "articuloview.h"
+#include "busquedareferencia.h"
+#include "clienteview.h"
+#include "pedidoclienteview.h"
+#include "presupuestoview.h"
 #include "company.h"
-#include "funcaux.h"
-#include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
 
-#include "pedidosclientelist.h"
-#include "presupuestolist.h"
-#include "albaranclientelist.h"
-#include "facturaslist.h"
 
-class ImpQToolButton : public QToolButton
+extern "C" MY_EXPORT int SNewPedidoClienteView (Company *);
+
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+
+extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
+
+
+
+
+// 
+class mypluginped : public QObject, PEmpresaBase
 {
     Q_OBJECT
 
-private:
-    Company *m_companyact;
-    PresupuestoList *m_presupuestoList;
-    PedidosClienteList *m_pedidosClienteList;
-    AlbaranClienteList *m_albaranClienteList;
-    FacturasList    *m_facturasList;
-
+public:
+    Bulmafact *m_bges;
 
 public:
-    ImpQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , QWidget *parent = NULL );
-    ~ImpQToolButton();
-    void setBoton();
-public slots:
-    virtual void click();
+    mypluginped();
+    ~mypluginped();
+    void inicializa ( Bulmafact * );
 
+public slots:
+    void elslot();
+    void elslot1();
 };

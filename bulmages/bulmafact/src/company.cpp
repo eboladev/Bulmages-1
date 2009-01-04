@@ -39,8 +39,6 @@
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
-#include "pedidoclienteview.h"
-#include "pedidosclientelist.h"
 #include "plugins.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
@@ -170,6 +168,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 40%
     _depura ( "Company::createMainWindows inicializamos m_pedidosclienteList", 1 );
+/*
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de pedidos de clientes" ) );
     splash->setBarraProgreso ( 40 );
     m_progressbar->setValue ( 40 );
@@ -184,7 +183,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Pedidos_Cliente->setEnabled ( TRUE );
         m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled ( TRUE );
     } // end if
-
+*/
     /// pb = 48%
     _depura ( "Company::createMainWindows inicializamos m_clientDelivNotesList", 1 );
 /*
@@ -597,9 +596,11 @@ void Company::lAlbaranesProveedor()
 void Company::s_listPedidosCli()
 {
     _depura ( "Company::s_listPedidosCli", 0 );
+/*
     m_pedidosclienteList->show();
     m_pedidosclienteList->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_pedidosclienteList );
+*/
     _depura ( "END Company::s_listPedidosCli", 0 );
 }
 
@@ -959,9 +960,11 @@ void Company::refreshProveedores()
 void Company::newPedidoCliente()
 {
     _depura ( "Company::newPedidoCliente", 0 );
+/*
     PedidoClienteView *bud = new PedidoClienteView ( this, 0 );
     m_pWorkspace->addWindow ( bud );
     bud->show();
+*/
     _depura ( "END Company::newPedidoCliente", 0 );
 }
 
@@ -975,9 +978,11 @@ void Company::newPedidoCliente()
 void Company::refreshPedidosCliente()
 {
     _depura ( "Company::refreshPedidosCliente", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_pedidosclienteList != NULL )
             m_pedidosclienteList->presentar();
+*/
     _depura ( "END Company::refreshPedidosCliente", 0 );
 }
 
@@ -1186,16 +1191,18 @@ void Company::s_newAlbaranProveedorView()
 /**
 \return
 **/
-PedidoClienteView *Company::newPedidoClienteView()
+void *Company::newPedidoClienteView()
 {
     _depura ( "Company::newPedidoClienteView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     PedidoClienteView *bud;
     if ( g_plugins->lanza ( "Company_newPedidoClienteView", this, ( void ** ) & bud ) )
         return bud;
     bud = new PedidoClienteView ( this, 0 );
+*/
     _depura ( "END Company::newPedidoClienteView", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -1207,12 +1214,14 @@ PedidoClienteView *Company::newPedidoClienteView()
 void Company::s_newPedidoClienteView()
 {
     _depura ( "Company::s_newPedidoClienteView", 0 );
+/*
     PedidoClienteView *bud = newPedidoClienteView();
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->pintar();
     bud->show();
     bud->mui_descpedidocliente->setFocus ( Qt::OtherFocusReason );
+*/
     _depura ( "END Company::s_newPedidoClienteView", 0 );
 }
 

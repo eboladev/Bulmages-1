@@ -36,7 +36,6 @@
 #include "clientslist.h"
 #include "articulolist.h"
 #include "configuracion.h"
-#include "pedidoclienteview.h"
 #include "busquedacliente.h"
 #include "busquedaformapago.h"
 #include "informereferencia.h"
@@ -208,6 +207,7 @@ void PresupuestoView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed d
 void PresupuestoView::generarPedidoCliente()
 {
     _depura ( "PresupuestoView::generarPedidoCliente", 0 );
+/*
     PedidoClienteView *bud = NULL;
     cursor2 *cur = NULL;
 
@@ -320,7 +320,7 @@ void PresupuestoView::generarPedidoCliente()
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
-
+*/
     _depura ( "END PresupuestoView::generarPedidoCliente", 0 );
 }
 

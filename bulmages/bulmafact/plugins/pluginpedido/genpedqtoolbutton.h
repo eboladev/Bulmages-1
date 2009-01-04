@@ -27,28 +27,23 @@
 #include <QMap>
 #include <QString>
 
-#include "pedidosclientelist.h"
-#include "presupuestolist.h"
-#include "albaranclientelist.h"
-#include "facturaslist.h"
 
-class ImpQToolButton : public QToolButton
+class GenPedQToolButton : public QToolButton
 {
     Q_OBJECT
 
 private:
     Company *m_companyact;
-    PresupuestoList *m_presupuestoList;
-    PedidosClienteList *m_pedidosClienteList;
-    AlbaranClienteList *m_albaranClienteList;
-    FacturasList    *m_facturasList;
-
+    QWidget *m_object;
 
 public:
-    ImpQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , QWidget *parent = NULL );
-    ~ImpQToolButton();
+    GenPedQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~GenPedQToolButton();
     void setBoton();
+	void generarFactura1();
 public slots:
     virtual void click();
 
 };
+
+

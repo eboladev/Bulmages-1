@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>750</width>
-    <height>550</height>
+    <height>563</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Nuevo pedido de cliente</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/client-delivery-order.svg</normaloff>:/Images/client-delivery-order.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -47,7 +47,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/client-delivery-order.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/client-delivery-order.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -99,7 +99,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -134,7 +134,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -169,7 +169,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -220,46 +220,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/client-quote.svg</normaloff>:/Images/client-quote.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_pasaraalbaran" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Generar albaran a partir de este pedido</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Generar albaran a partir de este pedido</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/client-delivery-order-to-note.svg</normaloff>:/Images/client-delivery-order-to-note.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -361,7 +323,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >
+        <iconset resource="../../../bulmages.qrc" >
          <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
        </property>
        <property name="iconSize" >
@@ -708,7 +670,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>142</height>
+        <height>73</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1409,7 +1371,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

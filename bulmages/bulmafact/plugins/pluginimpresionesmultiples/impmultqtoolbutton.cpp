@@ -191,7 +191,13 @@ void ImpQToolButton::click()
                 if ( val == "TRUE" ) {
                     QString id = rec->DBvalue ( "idpedidocliente" );
 
-                    PedidoClienteView *pres = m_companyact->newPedidoClienteView();
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de pedido cliente");
+						return;
+					} // end if
+					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;
                     pres->cargar ( id );
 
                     if (pres->generaRML()) {
@@ -660,7 +666,13 @@ void EmailQToolButton::click()
                 cursor2 *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-                PedidoClienteView *pres = m_companyact->newPedidoClienteView();
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de pedido cliente");
+						return;
+					} // end if
+					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;
                 pres->cargar ( id );
 
                 if (pres->generaRML()) {
@@ -699,8 +711,13 @@ void EmailQToolButton::click()
                 cursor2 *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-                PedidoClienteView *pres = m_companyact->newPedidoClienteView();
-                pres->cargar ( id );
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de pedido cliente");
+						return;
+					} // end if
+					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;                pres->cargar ( id );
 
                 if (pres->generaRML()) {
 

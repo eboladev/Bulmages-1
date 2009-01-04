@@ -33,8 +33,6 @@
 #include "plugincuadrante.h"
 #include "company.h"
 #include "funcaux.h"
-#include "presupuestoview.h"
-#include "pedidoclienteview.h"
 #include "cuadranteview.h"
 #include "cuadrantediarioview.h"
 

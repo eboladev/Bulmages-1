@@ -38,7 +38,6 @@ class ClienteView;
 class ArticuloList;
 class orderslist;
 class PresupuestoList;
-class PedidosClienteList;
 class PresupuestoView;
 class FacturaView;
 class ArticuloView;
@@ -68,8 +67,6 @@ private:
     ArticuloList *m_articleslist;
     /// Puntero a la ventana de lista de presupuestos. Esta ventana se abre una vez al inicio del program.a \TODO: Cambiarle el nombre.
     PresupuestoList *m_presupuestosList;
-    /// Puntero a la lista de pedidos de cliente. Esta ventana se crea una vez al inicio del programa.
-    PedidosClienteList *m_pedidosclienteList;
 
 public:
     Company ( Bulmafact *bges );
@@ -136,7 +133,7 @@ public:
     void *newPagoView();
     void *newAlbaranClienteView();
     void *newAlbaranProveedorView();
-    PedidoClienteView *newPedidoClienteView();
+    void *newPedidoClienteView();
     TipoArticuloList *newTipoArticuloList ( QWidget *parent = 0, bool modoConsulta = FALSE );
     FamiliasView *newfamiliasview ( QWidget *parent = 0, bool modoConsulta = FALSE );
 };

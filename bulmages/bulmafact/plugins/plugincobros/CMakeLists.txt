@@ -26,6 +26,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpedido/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/

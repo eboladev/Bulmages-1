@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>66</y>
+     <y>74</y>
      <width>991</width>
-     <height>479</height>
+     <height>463</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>24</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -55,14 +55,6 @@
     </property>
     <addaction name="actionNuevo_Presupuesto" />
     <addaction name="actionListado_Presupuestos" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Pedido_Cliente" />
-    <addaction name="actionListado_Pedidos_Cliente" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Albaran_Cliente" />
-    <addaction name="actionListado_Albaranes_Cliente" />
-    <addaction name="separator" />
-    <addaction name="separator" />
    </widget>
    <widget class="QMenu" name="menuAcerca_de" >
     <property name="title" >
@@ -135,9 +127,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>545</y>
+     <y>537</y>
      <width>991</width>
-     <height>24</height>
+     <height>32</height>
     </rect>
    </property>
   </widget>
@@ -145,8 +137,8 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>24</y>
-     <width>260</width>
+     <y>32</y>
+     <width>182</width>
      <height>42</height>
     </rect>
    </property>
@@ -188,8 +180,6 @@
    </attribute>
    <addaction name="separator" />
    <addaction name="actionListado_Presupuestos" />
-   <addaction name="actionListado_Pedidos_Cliente" />
-   <addaction name="actionListado_Albaranes_Cliente" />
    <addaction name="separator" />
    <addaction name="actionListado_de_Articulos" />
    <addaction name="actionListado_Proveedores" />
@@ -198,9 +188,9 @@
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>260</x>
-     <y>24</y>
-     <width>731</width>
+     <x>182</x>
+     <y>32</y>
+     <width>809</width>
      <height>42</height>
     </rect>
    </property>
@@ -257,8 +247,6 @@
    </attribute>
    <addaction name="separator" />
    <addaction name="actionNuevo_Presupuesto" />
-   <addaction name="actionNuevo_Pedido_Cliente" />
-   <addaction name="actionNuevo_Albaran_Cliente" />
    <addaction name="separator" />
    <addaction name="actionNuevo_Articulo" />
    <addaction name="actionNuevo_Proveedor" />
@@ -308,42 +296,6 @@
    </property>
    <property name="text" >
     <string>&amp;Presupuestos a clientes</string>
-   </property>
-  </action>
-  <action name="actionNuevo_Pedido_Cliente" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-delivery-order.svg</normaloff>:/Images/client-delivery-order.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nuevo pe&amp;dido de cliente...</string>
-   </property>
-  </action>
-  <action name="actionListado_Pedidos_Cliente" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-delivery-order-list.svg</normaloff>:/Images/client-delivery-order-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Pe&amp;didos de clientes</string>
-   </property>
-  </action>
-  <action name="actionNuevo_Albaran_Cliente" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-delivery-note.svg</normaloff>:/Images/client-delivery-note.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nuevo &amp;albaran a cliente...</string>
-   </property>
-  </action>
-  <action name="actionListado_Albaranes_Cliente" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-delivery-note-list.svg</normaloff>:/Images/client-delivery-note-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Albaranes a clientes</string>
    </property>
   </action>
   <action name="actionGestion_Familias" >

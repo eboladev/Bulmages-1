@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "ui_pedidoclientebase.h"
+
 #include "listlinpedidoclienteview.h"
 #include "listdescpedidoclienteview.h"
 #include "busquedacliente.h"
@@ -38,6 +38,7 @@
 #include "fixed.h"
 #include "fichabf.h"
 
+#include "ui_pedidoclientebase.h"
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */

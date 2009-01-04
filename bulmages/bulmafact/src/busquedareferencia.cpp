@@ -23,7 +23,6 @@
 #include "funcaux.h"
 #include "informereferencia.h"
 #include "presupuestoview.h"
-#include "pedidoclienteview.h"
 #include "ficha.h"
 
 
@@ -127,6 +126,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     } // end while
     delete cur;
 
+/*
     SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
@@ -137,7 +137,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         cur->siguienteregistro();
     } // end while
     delete cur;
-
+*/
 /*
     SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );

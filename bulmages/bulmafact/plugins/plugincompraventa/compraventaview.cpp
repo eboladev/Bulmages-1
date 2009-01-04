@@ -40,11 +40,7 @@
 #include "informereferencia.h"
 #include "listdescalbaranclienteview.h"
 #include "listlinalbaranclienteview.h"
-#include "pedidoclienteview.h"
-#include "pedidosclientelist.h"
 #include "postgresiface2.h"
-#include "presupuestolist.h"
-#include "presupuestoview.h"
 #include "plugins.h"
 
 

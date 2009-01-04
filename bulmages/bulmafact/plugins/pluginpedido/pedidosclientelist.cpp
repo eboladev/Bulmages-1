@@ -244,7 +244,7 @@ void PedidosClienteList::borrar()
     try {
         m_idpedidocliente = mui_list->DBvalue ( QString ( "idpedidocliente" ) );
         if ( modoEdicion() ) {
-            PedidoClienteView * pcv = ( ( Company * ) empresaBase() ) ->newPedidoClienteView();
+            PedidoClienteView * pcv = new PedidoClienteView(( Company * ) empresaBase());
             if ( pcv->cargar ( m_idpedidocliente ) ) {
                 throw - 1;
             } // end if

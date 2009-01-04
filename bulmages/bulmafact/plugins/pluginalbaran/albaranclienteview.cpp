@@ -25,8 +25,17 @@
 #include <QMessageBox>
 #include <QObject>
 #include <QToolButton>
-#include <QWidget>
+#include <QCheckBox>
 
+
+
+#include "dialogchanges.h"
+#include "fixed.h"
+#include "busquedacliente.h"
+#include "busquedafecha.h"
+#include "busquedaformapago.h"
+#include "busquedaalmacen.h"
+#include "busquedatrabajador.h"
 #include "albaranclienteview.h"
 #include "articulolist.h"
 #include "clientslist.h"
@@ -243,7 +252,14 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
 
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
-                bud = empresaBase() ->newPedidoClienteView();
+
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewPedidoClienteView", (Company *) empresaBase());
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de factura");
+						return;
+					} // end if
+					bud = (PedidoClienteView *) g_plugParams;
                 empresaBase() ->m_pWorkspace->addWindow ( bud );
                 bud->cargar ( cur->valor ( "idpedidocliente" ) );
                 bud->show();

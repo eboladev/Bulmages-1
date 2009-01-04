@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>750</width>
-    <height>550</height>
+    <height>576</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -210,41 +210,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_pasarapedido" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Generar pedido a partir de este presupuesto</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Generar pedido a partir de este presupuesto</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/client-quote-to-order.svg</normaloff>:/Images/client-quote-to-order.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
         </item>
         <item>
          <widget class="QFrame" name="mui_plugbotones" >
@@ -749,6 +714,14 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>736</width>
+        <height>73</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -772,6 +745,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>512</width>
+        <height>240</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Desc&amp;uentos</string>
       </attribute>
@@ -795,6 +776,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>512</width>
+        <height>240</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Datos &amp;generales</string>
       </attribute>
@@ -1529,7 +1518,6 @@
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>
-  <tabstop>mui_pasarapedido</tabstop>
   <tabstop>mui_refpresupuesto</tabstop>
   <tabstop>mui_detalles</tabstop>
   <tabstop>mui_descpresupuesto</tabstop>

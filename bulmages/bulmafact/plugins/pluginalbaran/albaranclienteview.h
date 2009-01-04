@@ -24,22 +24,13 @@
 #ifndef ALBARANCLIENTEVIEW_H
 #define ALBARANCLIENTEVIEW_H
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-
-#include "dialogchanges.h"
-#include "fixed.h"
-#include "busquedacliente.h"
-#include "busquedafecha.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
-#include "busquedatrabajador.h"
-#include "ui_albaranclientebase.h"
+#include <QWidget>
+#include <QString>
 #include "fichabf.h"
+#include "ui_albaranclientebase.h"
 
+class Company;
 
-class company;
 
 
 /// Muestra el albar&aacute;n a cliente.

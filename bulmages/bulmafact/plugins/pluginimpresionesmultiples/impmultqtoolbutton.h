@@ -28,7 +28,7 @@
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
-
+#include "pedidosclientelist.h"
 #include "presupuestolist.h"
 #include "facturaslist.h"
 #include "albaranclientelist.h"

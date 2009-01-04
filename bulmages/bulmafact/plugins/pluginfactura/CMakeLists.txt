@@ -8,7 +8,7 @@ set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-file(GLOB plugin_UIS *.ui)
+file(GLOB plugin_UIS *.ui ../pluginalbaran/*.ui ../pluginpedido/*.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -26,6 +26,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpedido/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
