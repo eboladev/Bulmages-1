@@ -1,14 +1,13 @@
 ###########################################
 # Plugin for bulmafact					  #
 ###########################################
-#pluginticket
-
-set (plugin pluginticket)
+#pluginpresupuesto
+set (plugin pluginpresupuesto)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-file(GLOB plugin_UIS *.ui)
+file(GLOB plugin_UIS *.ui ../pluginalbaran/*.ui ../pluginpedido/*.ui ../pluginfactura/*.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -34,6 +33,7 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/)
+
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
@@ -66,4 +66,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginalbaran pluginfactura)
+add_dependencies(${plugin} bulmafact bulmalib)

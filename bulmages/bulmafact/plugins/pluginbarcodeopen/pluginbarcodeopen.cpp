@@ -89,7 +89,13 @@ void myplugin::elslot()
             empresaBase() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
-            PresupuestoView * prov = ( ( Company * ) empresaBase() ) ->nuevoPresupuestoView();
+				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+				int resur = g_plugins->lanza ("SNewPresupuestoView", ( Company * ) empresaBase());
+				if (!resur) {
+					mensajeInfo("no se pudo crear instancia de pedido cliente");
+					return;
+				} // end if
+            PresupuestoView * prov =  (PresupuestoView *) g_plugParams;
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;
@@ -97,7 +103,13 @@ void myplugin::elslot()
             empresaBase() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
-            PedidoClienteView * prov = new PedidoClienteView ( ( Company * ) empresaBase(), 0 );
+				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+				int resur = g_plugins->lanza ("SNewPedidoClienteView", ( Company * ) empresaBase());
+				if (!resur) {
+					mensajeInfo("no se pudo crear instancia de pedido cliente");
+					return;
+				} // end if
+            PedidoClienteView * prov = (PedidoClienteView *) g_plugParams;
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;

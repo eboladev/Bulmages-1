@@ -22,9 +22,8 @@
 #include "company.h"
 #include "funcaux.h"
 #include "informereferencia.h"
-#include "presupuestoview.h"
 #include "ficha.h"
-
+#include "plugins.h"
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya
     confusion en determinar si un objeto ha sido creado o no.
@@ -115,6 +114,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 {
     _depura ( "BusquedddaReferencia::on_mui_abrirtodo_clicked", 0 );
     /// Empezamos con los presupuestos.
+/*
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
@@ -125,7 +125,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         cur->siguienteregistro();
     } // end while
     delete cur;
-
+*/
 /*
     SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );

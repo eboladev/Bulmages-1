@@ -171,7 +171,11 @@ void PresupuestoList::setidarticulo ( QString val )
 void PresupuestoList::crear()
 {
     _depura ( "PresupuestoList::crear", 0 );
-    ( ( Company * ) empresaBase() ) ->s_newPresupuestoCli();
+    PresupuestoView * bud = new PresupuestoView((Company *)empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
+    bud->show();
+    bud->mui_descpresupuesto->setFocus ( Qt::OtherFocusReason );
     _depura ( "END PresupuestoList::crear", 0 );
 }
 
@@ -251,7 +255,7 @@ void PresupuestoList::editar ( int row )
     try {
         m_idpresupuesto = mui_list->DBvalue ( QString ( "idpresupuesto" ), row );
         if ( modoEdicion() ) {
-            PresupuestoView * prov = ( ( Company * ) empresaBase() ) ->nuevoPresupuestoView();
+            PresupuestoView * prov = new PresupuestoView( ( Company * ) empresaBase() , 0 );
             if ( prov->cargar ( m_idpresupuesto ) ) {
                 delete prov;
                 return;
@@ -295,7 +299,7 @@ void PresupuestoList::borrar()
     try {
         m_idpresupuesto = mui_list->DBvalue ( QString ( "idpresupuesto" ) );
         if ( modoEdicion() ) {
-            PresupuestoView * pv = ( ( Company * ) empresaBase() ) ->nuevoPresupuestoView();
+            PresupuestoView * pv = new PresupuestoView ( ( Company * ) empresaBase(), 0);
             if ( pv->cargar ( m_idpresupuesto ) )
                 throw - 1;
             pv->on_mui_borrar_clicked();

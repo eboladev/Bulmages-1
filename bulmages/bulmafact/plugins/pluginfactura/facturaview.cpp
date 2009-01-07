@@ -122,7 +122,6 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
 FacturaView::~FacturaView()
 {
     _depura ( "FacturaView::~FacturaView", 0 );
-    empresaBase() ->refreshFacturas();
     _depura ( "END FacturaView::~FacturaView", 0 );
 }
 

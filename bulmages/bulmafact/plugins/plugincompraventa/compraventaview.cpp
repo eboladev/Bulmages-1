@@ -146,7 +146,6 @@ CompraVentaView::~CompraVentaView()
 {
     _depura ( "CompraVentaView::~CompraVentaView", 0 );
     delete m_albaranp;
-    empresaBase() ->refreshAlbaranesCliente();
     _depura ( "END CompraVentaView::~CompraVentaView", 0 );
 }
 

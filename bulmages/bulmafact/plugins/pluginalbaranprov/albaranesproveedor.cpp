@@ -29,7 +29,6 @@
 #include "company.h"
 #include "configuracion.h"
 #include "funcaux.h"
-#include "presupuestoview.h"
 
 
 /** Constructor de AlbaranesProveedor sin inicializar con la clase company.

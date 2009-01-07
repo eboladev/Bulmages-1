@@ -129,7 +129,6 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
 AlbaranClienteView::~AlbaranClienteView()
 {
     _depura ( "AlbaranClienteView::~AlbaranClienteView", 0 );
-    empresaBase() ->refreshAlbaranesCliente();
     _depura ( "END AlbaranClienteView::~AlbaranClienteView", 0 );
 }
 
@@ -170,47 +169,7 @@ void AlbaranClienteView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixe
 }
 
 
-/** Metodo que responde a la opcion de ver el presupuesto correspondiente con
-    este albaran.
 
-    \TODO Este metodo esta en desuso. Revisarlo antes de usar.
-
-    Busca los presupuestos por referencia y abre los que tienen la misma referencia.
-*/
-/**
-**/
-void AlbaranClienteView::s_verpresupuesto()
-{
-    _depura ( "AlbaranClienteView::s_verpresupuesto", 0 );
-    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" +
-                       DBvalue ( "refalbaran" ) + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-
-    if ( cur->numregistros() > 1 ) {
-        /// \TODO Debe pasar por company la creacion de esta ventana
-        PresupuestoList * list = new PresupuestoList ( empresaBase(), NULL );
-        list->setModoConsulta();
-        list->show();
-
-        while ( !list->isHidden() )  {
-            theApp->processEvents();
-        } // end while
-
-        this->setEnabled ( true );
-
-        if ( list->idpresupuesto() != QString ( "" ) ) {
-            PresupuestoView * bud = empresaBase() ->nuevoPresupuestoView();
-            bud->cargar ( list->idpresupuesto() );
-            bud->show();
-        } // end if
-    } else if ( !cur->eof() ) {
-        PresupuestoView * bud = empresaBase() ->nuevoPresupuestoView();
-        bud->cargar ( cur->valor ( "idpresupuesto" ) );
-        bud->show();
-    } // end if
-    delete cur;
-    _depura ( "END AlbaranClienteView::s_verpresupuesto", 0 );
-}
 
 
 /** SLOT de ver el pedidocliente.

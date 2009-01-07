@@ -1,8 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,44 +17,51 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QToolButton>
 
-#include "pluginetiquetas.h"
-#include "funcaux.h"
-#include "ticketqtoolbutton.h"
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
+
+#include "postgresiface2.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "articuloview.h"
+#include "busquedareferencia.h"
+#include "clienteview.h"
+#include "pedidoclienteview.h"
+#include "presupuestoview.h"
+#include "company.h"
 
 
-///
-/**
-\return
-**/
-int entryPoint ( Bulmafact * )
+extern "C" MY_EXPORT int SNewPresupuestoView (Company *);
+
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+
+extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+
+
+
+
+// 
+class mypluginpres : public QObject, PEmpresaBase
 {
-    _depura ( "Estoy dentro del plugin de etiquetado", 0 );
-    return 0;
-}
+    Q_OBJECT
 
+public:
+    Bulmafact *m_bges;
 
-///
-/**
-\param l
-\return
-**/
-int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
-{
-    _depura ( "AlbaranProveedorView_AlbaranProveedorView", 0 );
-//================================
-    TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( l, l->mui_plugbotones );
+public:
+    mypluginpres();
+    ~mypluginpres();
+    void inicializa ( Bulmafact * );
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
-        m_hboxLayout1->setMargin ( 5 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    } // end if
-    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-//================================
-    _depura ( "END AlbaranProveedorView_AlbaranProveedorView", 0 );
-    return 0;
-}
+public slots:
+    void elslot();
+    void elslot1();
+};

@@ -51,7 +51,6 @@ class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase
 public:
     PedidoProveedorView ( Company *, QWidget *parent = 0 );
     ~PedidoProveedorView();
-    void generarAlbaran();
     void inicialize();
     void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
     virtual int cargarPost ( QString );
@@ -61,7 +60,6 @@ public:
 
 public slots:
     virtual void on_mui_proveedor_valueChanged ( QString );
-    virtual void on_mui_facturar_clicked();
     virtual void on_mui_descuentos_editFinish ( int, int );
     virtual void on_mui_lineasDetalle_editFinish ( int, int );
 };

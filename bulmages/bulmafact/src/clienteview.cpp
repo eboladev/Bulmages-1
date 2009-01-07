@@ -27,7 +27,6 @@
 
 #include "clienteview.h"
 #include "company.h"
-#include "presupuestolist.h"
 #include "busquedaprovincia.h"
 #include "funcaux.h"
 #include "plugins.h"
@@ -86,9 +85,6 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
             return;
         } // end if
 
-        /// Inicializamos las pantallas auxiliares a esta.
-        m_listpresupuestos->setEmpresaBase ( empresaBase() );
-
         /// Datos por defecto.
         mui_idprovincia->setEmpresaBase ( empresaBase() );
         mui_idprovincia->setIdProvincia ( "" );
@@ -142,10 +138,6 @@ ClienteView::~ClienteView()
 int ClienteView::cargarPost ( QString idcliente )
 {
     _depura ( "ClienteView::cargarPost", 0 );
-
-    /// Hacemos que el listado de presupuestos de un cliente se inicialize.
-    m_listpresupuestos->setidcliente ( idcliente );
-    m_listpresupuestos->presentar();
 
     /// Lanzamos los plugins de carga
     g_plugins->lanza("ClienteView_cargarPost_Post", this);

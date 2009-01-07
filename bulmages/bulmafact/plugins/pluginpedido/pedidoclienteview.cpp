@@ -33,8 +33,6 @@
 #include "company.h"
 #include "listlinpedidoclienteview.h"
 #include "clientslist.h"
-#include "presupuestoview.h"
-#include "presupuestolist.h"
 #include "informereferencia.h"
 #include "funcaux.h"
 #include "plugins.h"
@@ -103,7 +101,6 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
 PedidoClienteView::~PedidoClienteView()
 {
     _depura ( "PedidoClienteView::~PedidoClienteView", 0 );
-    empresaBase() ->refreshPedidosCliente();
     _depura ( "END PedidoClienteView::~PedidoClienteView", 0 );
 }
 
@@ -150,55 +147,6 @@ void PedidoClienteView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed
 void PedidoClienteView::on_mui_verpresupuesto_clicked()
 {
     _depura ( "PedidoClienteView::on_mui_verpresupuesto_clicked", 0 );
-    PresupuestoView *bud = NULL;
-    cursor2 *cur = NULL;
-
-    try {
-        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
-        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
-        /// el siguiente cur->eof() el programa fallar&aacute;.
-
-        QString SQLQuery = "";
-
-        if ( DBvalue ( "refpedidocliente" ).isEmpty() || DBvalue ( "idcliente" ).isEmpty() ) {
-            /// El presupuesto no se ha guardado y no se dispone en la base de datos
-            /// de estos datos. Se utilizan en su lugar los del formulario.
-            /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
-                return;
-            } else {
-                SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_refpedidocliente->text() + "' AND idcliente = " + mui_idcliente->idcliente();
-            } // end if
-        } else {
-            SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
-        } // end if
-
-        cur = empresaBase() ->cargacursor ( SQLQuery );
-
-        if ( !cur->eof() ) {
-            while ( !cur->eof() ) {
-                bud = empresaBase() ->nuevoPresupuestoView();
-                empresaBase() ->m_pWorkspace->addWindow ( bud );
-                if ( bud->cargar ( cur->valor ( "idpresupuesto" ) ) ) {
-                    delete bud;
-                    return;
-                } // end if
-                bud->show();
-                cur->siguienteregistro();
-            } // end while
-        } else {
-            mensajeInfo ( tr ( "No hay presupuestos con la misma referencia." ), this );
-            _depura ( "No hay presupuestos con la misma referencia.", 2 );
-        } // end if
-
-        delete cur;
-
-    } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado." ), this );
-        if ( cur ) delete cur;
-        if ( bud ) delete bud;
-    } // end try
 
     _depura ( "END PedidoClienteView::on_mui_verpresupuesto_clicked", 0 );
 }

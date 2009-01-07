@@ -106,7 +106,6 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
 FacturaProveedorView::~FacturaProveedorView()
 {
     _depura ( "FacturaProveedorView::~FacturaProveedorView", 0 );
-    empresaBase() ->refreshFacturasProveedor();
     _depura ( "END FacturaProveedorView::~FacturaProveedorView", 0 );
 
 }

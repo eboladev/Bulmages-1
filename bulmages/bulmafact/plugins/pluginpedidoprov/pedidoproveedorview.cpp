@@ -32,10 +32,6 @@
 #include "company.h"
 #include "listlinpedidoproveedorview.h"
 #include "providerslist.h"
-#include "presupuestoview.h"
-#include "presupuestolist.h"
-//#include "pagoview.h"
-//#include "albaranproveedorview.h"
 #include "funcaux.h"
 
 
@@ -107,7 +103,6 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
 PedidoProveedorView::~PedidoProveedorView()
 {
     _depura ( "PedidoProveedorView::~PedidoProveedorView", 0 );
-    empresaBase() ->refreshPedidosProveedor();
     _depura ( "END PedidoProveedorView::~PedidoProveedorView", 0 );
 }
 
@@ -134,84 +129,6 @@ void PedidoProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fix
 }
 
 
-/// Se encarga de generar un albaran a partir del pedido.
-/**
-**/
-void PedidoProveedorView::generarAlbaran()
-{
-    _depura ( "PedidoProveedorView::generarAlbaran", 0 );
-/*
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue ( "refpedidoproveedor" ) + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        /// Informamos que ya hay un albaran y que la abriremos.
-        /// Si no salimos de la funci&oacute;n.
-        if ( QMessageBox::question ( this,
-                                     tr ( "Albaran ya existe" ),
-                                     tr ( "Existe un albaran de proveedor con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                     tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
-            return;
-        } // end if
-        AlbaranProveedorView *bud = new AlbaranProveedorView ( empresaBase(), NULL );
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
-        bud->cargar ( cur->valor ( "idalbaranp" ) );
-        bud->show();
-        return;
-    } // end if
-    delete cur;
-
-    /// Creamos el albaran.
-    AlbaranProveedorView *bud = empresaBase() ->newAlbaranProveedorView();
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
-    bud->inicializar();
-
-    bud->setDBvalue ( "comentalbaranp",  DBvalue ( "comentpedidoproveedor" ) );
-    bud->setDBvalue ( "descalbaranp", DBvalue ( "descpedidoproveedor" ) );
-    bud->setDBvalue ( "idforma_pago", DBvalue ( "idforma_pago" ) );
-    bud->setDBvalue ( "refalbaranp", DBvalue ( "refpedidoproveedor" ) );
-    bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
-    bud->setDBvalue ( "idalmacen", DBvalue ( "idalmacen" ) );
-
-    /// Traspasamos las lineas del presupuesto a lineas del albaran.
-    SDBRecord *linea;
-    SDBRecord *linea2;
-    for ( int i = 0; i < m_listalineas->rowCount(); i++ ) {
-        linea = m_listalineas->lineaat ( i );
-        if ( linea->DBvalue ( "idarticulo" ) != "" ) {
-            linea2 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-            bud->getlistalineas() ->nuevoRegistro();
-            bud->getlistalineas() ->setProcesarCambios ( FALSE );
-            linea2->setDBvalue ( "desclalbaranp", linea->DBvalue ( "desclpedidoproveedor" ) );
-            linea2->setDBvalue ( "cantlalbaranp", linea->DBvalue ( "cantlpedidoproveedor" ) );
-            linea2->setDBvalue ( "pvplalbaranp", linea->DBvalue ( "pvplpedidoproveedor" ) );
-            linea2->setDBvalue ( "descuentolalbaranp", linea->DBvalue ( "descuentolpedidoproveedor" ) );
-            linea2->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-            linea2->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-            linea2->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-            linea2->setDBvalue ( "ivalalbaranp", linea->DBvalue ( "ivalpedidoproveedor" ) );
-            bud->getlistalineas() ->setProcesarCambios ( TRUE );
-        } // end if
-    } // end for
-
-    /// Traspasamos los descuentos del pedido a descuentos del albaran.
-    SDBRecord *linea1;
-    SDBRecord *linea3;
-    for ( int i = 0; i < m_listadescuentos->rowCount(); i++ ) {
-        linea1 = m_listadescuentos->lineaat ( i );
-        if ( linea1->DBvalue ( "proporciondpedidoproveedor" ) != "" ) {
-            linea3 = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-            linea3->setDBvalue ( "conceptdalbaranp", linea1->DBvalue ( "conceptdpedidoproveedor" ) );
-            linea3->setDBvalue ( "proporciondalbaranp", linea1->DBvalue ( "proporciondpedidoproveedor" ) );
-            bud->getlistadescuentos() ->nuevoRegistro();
-        } // end if
-    } // end for
-
-    bud->pintar();
-    bud->show();
-*/
-    _depura ( "END PedidoProveedorView::generarAlbaran", 0 );
-}
 
 
 ///
@@ -224,15 +141,6 @@ void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
     mui_lineasDetalle->setColumnValue ( "idproveedor", id );
     mui_idforma_pago->setIdProveedor ( id );
     _depura ( "END PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
-}
-
-
-///
-/**
-**/
-void PedidoProveedorView::on_mui_facturar_clicked()
-{
-    generarAlbaran();
 }
 
 

@@ -1,8 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,44 +17,52 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include <QWidget>
 #include <QToolButton>
-
-#include "pluginetiquetas.h"
+#include <QString>
+#include "company.h"
 #include "funcaux.h"
-#include "ticketqtoolbutton.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 
 
-///
-/**
-\return
-**/
-int entryPoint ( Bulmafact * )
+class GenPreQToolButton : public QToolButton
 {
-    _depura ( "Estoy dentro del plugin de etiquetado", 0 );
-    return 0;
-}
+    Q_OBJECT
 
+private:
+    Company *m_companyact;
+    QWidget *m_object;
 
-///
-/**
-\param l
-\return
-**/
-int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
+public:
+    GenPreQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~GenPreQToolButton();
+    void setBoton();
+	void generarFactura();
+	void generarFactura1();
+	void generarFactura2();
+public slots:
+    virtual void click();
+
+};
+
+class VerPreQToolButton : public QToolButton
 {
-    _depura ( "AlbaranProveedorView_AlbaranProveedorView", 0 );
-//================================
-    TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( l, l->mui_plugbotones );
+    Q_OBJECT
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
-        m_hboxLayout1->setMargin ( 5 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    } // end if
-    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-//================================
-    _depura ( "END AlbaranProveedorView_AlbaranProveedorView", 0 );
-    return 0;
-}
+private:
+    Company *m_companyact;
+    QWidget *m_object;
+
+public:
+    VerPreQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~VerPreQToolButton();
+    void setBoton();
+	void verPresupuesto();
+public slots:
+    virtual void click();
+
+};
+

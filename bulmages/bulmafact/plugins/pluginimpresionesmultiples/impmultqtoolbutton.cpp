@@ -123,8 +123,13 @@ void ImpQToolButton::click()
                 QString val = rec->DBvalue ( "selector" );
                 if ( val == "TRUE" ) {
                     QString id = rec->DBvalue ( "idpresupuesto" );
-
-                    PresupuestoView *pres = m_companyact->nuevoPresupuestoView();
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewPresupuestoView", m_companyact);
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de presupuesto");
+						return;
+					} // end if
+                    PresupuestoView *pres = (PresupuestoView *) g_plugParams;
                     pres->cargar ( id );
 
                     if (pres->generaRML()) {
@@ -628,7 +633,13 @@ void EmailQToolButton::click()
                 cursor2 *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-                PresupuestoView *pres = m_companyact->nuevoPresupuestoView();
+					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewPresupuestoView", m_companyact);
+					if (!resur) {
+						mensajeInfo("no se pudo crear instancia de presupuesto");
+						return;
+					} // end if
+                    PresupuestoView *pres = (PresupuestoView *) g_plugParams;
                 pres->cargar ( id );
 
                 if (pres->generaRML()) {

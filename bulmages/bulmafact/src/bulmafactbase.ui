@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>74</y>
+     <y>66</y>
      <width>991</width>
-     <height>463</height>
+     <height>479</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>32</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -53,8 +53,6 @@
     <property name="title" >
      <string>&amp;Ventas</string>
     </property>
-    <addaction name="actionNuevo_Presupuesto" />
-    <addaction name="actionListado_Presupuestos" />
    </widget>
    <widget class="QMenu" name="menuAcerca_de" >
     <property name="title" >
@@ -127,9 +125,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>537</y>
+     <y>545</y>
      <width>991</width>
-     <height>32</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -137,8 +135,8 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>32</y>
-     <width>182</width>
+     <y>24</y>
+     <width>143</width>
      <height>42</height>
     </rect>
    </property>
@@ -179,7 +177,6 @@
     <bool>false</bool>
    </attribute>
    <addaction name="separator" />
-   <addaction name="actionListado_Presupuestos" />
    <addaction name="separator" />
    <addaction name="actionListado_de_Articulos" />
    <addaction name="actionListado_Proveedores" />
@@ -188,9 +185,9 @@
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>182</x>
-     <y>32</y>
-     <width>809</width>
+     <x>143</x>
+     <y>24</y>
+     <width>848</width>
      <height>42</height>
     </rect>
    </property>
@@ -246,7 +243,6 @@
     <bool>false</bool>
    </attribute>
    <addaction name="separator" />
-   <addaction name="actionNuevo_Presupuesto" />
    <addaction name="separator" />
    <addaction name="actionNuevo_Articulo" />
    <addaction name="actionNuevo_Proveedor" />
@@ -275,27 +271,6 @@
    </property>
    <property name="toolTip" >
     <string>Propiedades de la empresa</string>
-   </property>
-  </action>
-  <action name="actionNuevo_Presupuesto" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-quote.svg</normaloff>:/Images/client-quote.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nuevo &amp;presupuesto a cliente...</string>
-   </property>
-   <property name="shortcut" >
-    <string>F4</string>
-   </property>
-  </action>
-  <action name="actionListado_Presupuestos" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/client-quote-list.svg</normaloff>:/Images/client-quote-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Presupuestos a clientes</string>
    </property>
   </action>
   <action name="actionGestion_Familias" >

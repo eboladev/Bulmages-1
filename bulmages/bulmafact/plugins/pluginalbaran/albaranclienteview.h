@@ -58,7 +58,6 @@ public:
 public slots:
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales();
-    virtual void s_verpresupuesto();
     virtual void on_mui_verpedidocliente_clicked();
     virtual void on_mui_facturar_clicked();
     virtual void on_mui_agregarafactura_clicked();

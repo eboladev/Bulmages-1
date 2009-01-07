@@ -61,26 +61,10 @@ public:
 
 public slots:
     virtual void closeEvent ( QCloseEvent * );
-    virtual void emitirfactura();
-    virtual void recibirfactura();
     virtual void s_FPago();
     virtual void s_ventanaCompleta();
     virtual void s_About();
     virtual void on_actionDocumentacion_triggered();
-    virtual void on_actionNuevo_Pedido_Proveedor_triggered();
-    virtual void on_actionListado_Pedidos_Proveedor_triggered();
-    virtual void on_actionNuevo_Albaran_Proveedor_triggered();
-    virtual void on_actionListado_Albaranes_Proveedor_triggered();
-    virtual void on_actionNueva_Factura_Proveedor_triggered();
-    virtual void on_actionListado_Facturas_Proveedor_triggered();
-    virtual void on_actionNuevo_Presupuesto_triggered();
-    virtual void on_actionListado_Presupuestos_triggered();
-    virtual void on_actionNuevo_Pedido_Cliente_triggered();
-    virtual void on_actionListado_Pedidos_Cliente_triggered();
-    virtual void on_actionNuevo_Albaran_Cliente_triggered();
-    virtual void on_actionListado_Albaranes_Cliente_triggered();
-    virtual void on_actionNueva_Factura_Cliente_triggered();
-    virtual void on_actionListado_Facturas_Cliente_triggered();
     virtual void on_actionGestion_Familias_triggered();
     virtual void on_actionGestion_Tipos_Articulo_triggered();
     virtual void on_actionNuevo_Articulo_triggered();

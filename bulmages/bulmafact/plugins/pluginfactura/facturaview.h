@@ -27,7 +27,6 @@
 #include <QCheckBox>
 
 #include "ui_facturabase.h"
-#include "listlinpresupuestoview.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"

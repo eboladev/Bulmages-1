@@ -126,8 +126,6 @@ void PresupuestoView::inicializar()
 PresupuestoView::~PresupuestoView()
 {
     _depura ( "PresupuestoView::~PresupuestoView", 0 );
-    ( ( Company * ) empresaBase() ) ->refreshPresupuestos();
-
     /// Disparamos los plugins.
     g_plugins->lanza ( "PresupuestoView_DesPresupuestoView", this );
     _depura ( "END PresupuestoView::~PresupuestoView", 0 );

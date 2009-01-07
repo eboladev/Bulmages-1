@@ -34,9 +34,6 @@
 #include "funcaux.h"
 #include "listlinalbaranproveedorview.h"
 #include "pedidoproveedorview.h"
-#include "postgresiface2.h"
-#include "presupuestolist.h"
-#include "presupuestoview.h"
 #include "plugins.h"
 
 
@@ -109,7 +106,6 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
 AlbaranProveedorView::~AlbaranProveedorView()
 {
     _depura ( "AlbaranProveedorView::~AlbaranProveedorView", 0 );
-    empresaBase() ->refreshAlbaranesProveedor();
     _depura ( "END AlbaranProveedorView::~AlbaranProveedorView", 0 );
 }
 

@@ -27,7 +27,6 @@
 #include <QMap>
 #include <QList>
 #include <QTextStream>
-#include "presupuestoview.h"
 #include "fixed.h"
 #include "company.h"
 #include "dbrecord.h"
