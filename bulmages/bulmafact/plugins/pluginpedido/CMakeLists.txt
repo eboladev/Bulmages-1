@@ -8,7 +8,7 @@ set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-file(GLOB plugin_UIS *.ui)
+file(GLOB plugin_UIS *.ui ../pluginpresupuesto/*.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
