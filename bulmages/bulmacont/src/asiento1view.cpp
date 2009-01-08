@@ -60,7 +60,7 @@ Asiento1View::Asiento1View ( Empresa *emp, QWidget *parent, int )
     mui_ordenasiento->installEventFilter ( eventosOrdenAsiento );
 
     /// Conectamos el siganl returnPressed de mui_fecha
-    connect(mui_fecha, SIGNAL(returnPressed()), this, SLOT(mui_fecha_enterPressed()));
+    connect(mui_fecha, SIGNAL(returnPressed()), this, SLOT(on_mui_fecha_enterPressed()));
 
     mui_list->setEmpresaBase ( emp );
     setListLinAsiento1 ( mui_list );
