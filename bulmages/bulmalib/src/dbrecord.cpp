@@ -853,22 +853,24 @@ int DBRecord::generaRML ( const QString &arch )
          if (!codec) { // sembla que no va, per UTF32 (=UCS4)
              _depura("El fitxer " + archivod + " té una codificació ("+  
                      xmlReader.documentEncoding().toString()+") que no entenem",2);
-             file.close(); 
-             return 0;
+//             file.close(); 
+//             return 0;
+	       codec=QTextCodec::codecForName("UTF-8");
          } else {
             _depura("Usarem un codec per a ",0,codec->name());
-         }
+         }// end if
     } else {
          if (ascii=xmlReader.hasError()) {
             _depura("El fitxer " + archivod + " no l'hem pogut llegir bé i no sabem quina codificació té. S'imaginarem que és ASCII per si de cas");
-         }
-         _depura("El fitxer " + archivod + " no sé quina codificació té. Deu ser UTF-8",0);   codec=QTextCodec::codecForName("UTF-8");
+         }// end if
+         _depura("El fitxer " + archivod + " no sé quina codificació té. Deu ser UTF-8",0);
+	 codec=QTextCodec::codecForName("UTF-8");
          // esto mantendría compatibilidad con el código anterior, pero 
          // me parece que no queremos porque el código anterior no admitía
          // contenidos no ASCII (bgtrml2pdf petaba) y los contenidos ASCII ya funcionan aunque 
          // los trates como UTF-8 
          // encoding=QtextCodec::codecForLocale();
-    } ;
+    }// end if
     file.close();
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );

@@ -78,6 +78,10 @@ QString xmlEscape ( const QString& param ) {
    text.replace('"',"&quot;");
    text.replace("<","&lt;");
    text.replace(">","&gt;");
+   
+   /// Parseo algunos caracteres adicionales ya que tambien se estan procesando archivos de python
+   text.replace("'", " ");
+   
    return text;
 }
 
