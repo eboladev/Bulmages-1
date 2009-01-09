@@ -70,7 +70,10 @@ QDate normalizafecha ( QString );
 /// Escapa los mínimos caracteres necesarios para 
 /// escribir a cadena a XML, sin usar CDATA porque puede no 
 /// estar permitido en todos los lugares de un fichero xml 
-QString xmlEscape ( const QString& text ) ;
+QString xmlEscape ( const QString& text );
+
+/// Escapa una cadena para que pueda ser embebida en un script python.
+QString pythonEscape ( const QString &text);
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect ( const QString& );

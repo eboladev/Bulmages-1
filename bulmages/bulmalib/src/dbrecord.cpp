@@ -765,7 +765,7 @@ void DBRecord::substrConf( QString &buff) {
     } // end for
 }
 
-int DBRecord::trataTags ( QString &buff ) {
+int DBRecord::trataTags ( QString &buff, int tipoEscape ) {
     QString fitxersortidatxt = "";
 
     substrConf(buff); 
@@ -806,6 +806,15 @@ int DBRecord::generaRML ( const QString &arch )
     if ( res != 0 ) {
         return 1;
     } // end if
+
+    /// Dependiendo del tipo de archivo que se trate usaremos un parseo u otro.
+    int tipoescape = 0;
+    if (arch.right(3) == "rml" || arch.right(3) == "xml" ) 
+	tipoescape = 1;
+    else if (arch.right(3) == "pys")
+	tipoescape = 2;
+
+
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
     QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -879,7 +888,7 @@ int DBRecord::generaRML ( const QString &arch )
     file.close();
 
     /// Hacemos el tratamiento avanzado de TAGS
-    if (!trataTags ( buff )) {
+    if (!trataTags ( buff, tipoescape )) {
 	return 0;
     } // end if
 

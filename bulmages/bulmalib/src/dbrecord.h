@@ -134,7 +134,7 @@ public:
     virtual void vaciar();
     virtual void imprimir();
     virtual int cargar ( QString );
-    virtual int trataTags ( QString &buff );
+    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
     virtual QString story ( void );
     virtual int generaRML ( const QString & );
     virtual void substrConf( QString &buff) ;

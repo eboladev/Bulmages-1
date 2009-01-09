@@ -782,7 +782,11 @@ void Ficha::pintarPost()
 
 
 /// Sustituye valores en el texto pasado como variables por su valor.
-void Ficha::substrVars ( QString &buff ) {
+/// tipoEscape puede ser 0 --> Sin parseo
+///			 1 --> ParseoXML
+///			 2 --> ParseoPython
+
+void Ficha::substrVars ( QString &buff, int tipoEscape ) {
 
 	int pos = 0;
 
@@ -802,7 +806,18 @@ void Ficha::substrVars ( QString &buff ) {
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
-            buff.replace ( pos, rx.matchedLength(), xmlEscape(DBvalue ( rx.cap ( 1 ) )) );
+		switch (tipoEscape) {
+			case 1:
+	            	buff.replace ( pos, rx.matchedLength(), xmlEscape(DBvalue ( rx.cap ( 1 ) )) );
+			break;
+			case 2:
+	            	buff.replace ( pos, rx.matchedLength(), pythonEscape(DBvalue ( rx.cap ( 1 ) )) );
+			break;
+			default:
+	            	buff.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
+
+		} // end switch
+			
             pos = 0;
         } else {
             pos += rx.matchedLength();
@@ -820,7 +835,7 @@ void Ficha::substrVars ( QString &buff ) {
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int Ficha::trataTags ( QString &buff )
+int Ficha::trataTags ( QString &buff, int tipoEscape )
 {
     _depura ( "Ficha::trataTags", 0 );
 
@@ -886,7 +901,7 @@ int Ficha::trataTags ( QString &buff )
 	rx54.setMinimal ( TRUE );
 	while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1) {
 		QString valor = rx54.cap(2);
-		substrVars(valor);
+		substrVars(valor, tipoEscape);
 		m_variables[rx54.cap (1)] = valor;
 		buff.replace( pos, rx54.matchedLength(), "");
 		pos = 0;
@@ -923,7 +938,7 @@ int Ficha::trataTags ( QString &buff )
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
     rx1.setMinimal ( TRUE );
     while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ) );
+        QString ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ), tipoEscape );
         buff.replace ( pos, rx1.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -943,7 +958,7 @@ int Ficha::trataTags ( QString &buff )
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
     rx7.setMinimal ( TRUE );
     while ( ( pos = rx7.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ) );
+        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ), tipoEscape );
         buff.replace ( pos, rx7.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -1025,7 +1040,7 @@ QString Ficha::trataIf ( const QString &query, const QString &datos, const QStri
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QString Ficha::trataQuery ( const QString &query, const QString &datos )
+QString Ficha::trataQuery ( const QString &query, const QString &datos, int tipoEscape )
 {
     _depura ( "Ficha::trataQuery", 0 );
     QString result = "";
@@ -1035,14 +1050,13 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
 	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
-    result = trataCursor( empresaBase() ->cargacursor ( query1 ),
-                          datos);
+    result = trataCursor( empresaBase() ->cargacursor ( query1 ), datos, tipoEscape);
     _depura ( "END Ficha::trataQuery", 0 );
     return result;
 
 }
 
-QString Ficha::trataCursor ( cursor2 *cur, const QString &datos )
+QString Ficha::trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape )
 {
     _depura ( "Ficha::trataCursor", 0 );
     QString result = "";
@@ -1062,8 +1076,17 @@ QString Ficha::trataCursor ( cursor2 *cur, const QString &datos )
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             //_depura("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
-                salidatemp.replace ( pos, rx.matchedLength(),
-				     xmlEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
+		switch (tipoEscape) {
+			case 1:
+		                salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
+			break;
+			case 2:
+		                salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
+			break;
+			default:
+		                salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ) ) );
+			break;
+		} // emd switch
                 pos = 0;
             } else {
                 pos += rx.matchedLength();

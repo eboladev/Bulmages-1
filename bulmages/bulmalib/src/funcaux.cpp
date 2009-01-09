@@ -79,9 +79,15 @@ QString xmlEscape ( const QString& param ) {
    text.replace("<","&lt;");
    text.replace(">","&gt;");
    
-   /// Parseo algunos caracteres adicionales ya que tambien se estan procesando archivos de python
-   text.replace("'", " ");
    
+   return text;
+}
+/// Escapa los caracteres necesarios para que la cadena pueda ser embebida dentro de un
+/// script en python
+QString pythonEscape ( const QString& param) {
+   QString text = param;
+   text.replace("'", "\\'");
+   text.replace("\n", "\\n");
    return text;
 }
 
