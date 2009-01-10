@@ -849,7 +849,7 @@ QString data2python(QString string) {
 
 
 /// La tabla de conversion de codigos para el CIF
-QChar codigosCIF[]= {QChar('A'), QChar('B'), QChar('C'), QChar('D'), QChar('E'), QChar('F'), QChar('G'), QChar('H'), QChar('I'), QChar('J')};
+QChar codigosCIF[]= {QChar('A'), QChar('B'), QChar('C'), QChar('D'), QChar('E'), QChar('F'), QChar('G'), QChar('H'), QChar('J'), QChar('P'), QChar('Q'), QChar('R'), QChar('S'), QChar('U'), QChar('V'), QChar('N'), QChar('W')};
 
 
 /// La tabla de conversion de codigos para el NIF
@@ -898,6 +898,30 @@ bool validarNIF (QString nif1) {
 
 
 bool validarCIF(QString cif1) {
+	
+        // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
+	// Orden EHA/451/2008 de 20 de febrero.
+	// BOE Numero: 49 de martes, 26 febrero de 2008. Pagina: 11374.
+        // ------------------------------------------------------------
+        // A. Sociedades anonimas.
+        // B. Sociedades de responsabilidad limitada.
+        // C. Sociedades colectivas.
+        // D. Sociedades comanditarias.
+        // E. Comunidades de bienes y herencias yacentes.
+        // F. Sociedades cooperativas.
+        // G. Asociaciones.
+        // H. Comunidades de propietarios en regimen de propiedad horizontal.
+        // J. Sociedades civiles, con o sin personalidad juridica.
+        // P. Corporaciones Locales.
+        // Q. Organismos publicos.
+        // R. Congregaciones e instituciones religiosas.
+        // S. Organos de la Administracion del Estado y de las Comunidades Autonomas.
+	// U. Uniones Temporales de Empresas.
+        // V. Otros tipos no definidos en el resto de claves.
+	//
+	// N. Entidad extranjera. Con o sin personalidad juridica.
+	// W. Establecimiento permanente de entidad no residente en territorio espanyol.
+
 	QString cif = cif1.replace("-","");
 	cif = cif.replace(".","");
 	cif = cif.replace("_","");
