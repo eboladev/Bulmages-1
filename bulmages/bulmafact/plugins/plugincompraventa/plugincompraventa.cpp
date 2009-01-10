@@ -71,11 +71,25 @@ void myplugincv::inicializa ( Bulmafact *bges )
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase ( bges->getcompany() );
+
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+    	QMenu *pPluginVentas = NULL;
+	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
+		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
+    } // end if
+
     QAction *planCuentas = new QAction ( tr ( "&CompraVenta" ), 0 );
     planCuentas->setStatusTip ( tr ( "CompraVenta" ) );
     planCuentas->setWhatsThis ( tr ( "CompraVenta" ) );
-    bges->menuVentas->addSeparator();
-    bges->menuVentas->addAction ( planCuentas );
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( planCuentas );
+	bges->Listados->addAction (planCuentas);
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     _depura ( "END myplugincv::inicializa", 0 );
 }

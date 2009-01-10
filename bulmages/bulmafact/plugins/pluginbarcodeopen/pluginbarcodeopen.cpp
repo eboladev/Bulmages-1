@@ -162,8 +162,10 @@ void myplugin::inicializa ( Bulmafact *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
+    	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuAcerca_de" );
         pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
+		bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
     } // end if
 
     QAction *accion = new QAction ( "&Apertura Rapida", 0 );
@@ -171,8 +173,6 @@ void myplugin::inicializa ( Bulmafact *bges )
     accion->setWhatsThis ( "Abre documentos a partir del codigo de barras" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
     _depura ( "END myplugin::inicializa", 0 );
 }
 

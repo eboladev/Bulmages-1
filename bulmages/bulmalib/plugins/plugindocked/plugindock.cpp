@@ -144,16 +144,15 @@ void entryPoint ( QMainWindow *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
+    	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuAcerca_de" );
         pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
+		bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
     } // end if
 
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
     pPluginMenu->addAction ( accion1 );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( 0, pPluginMenu );
 
     _depura ( "Iniciado correctamente el plugin dock", 10 );
 }

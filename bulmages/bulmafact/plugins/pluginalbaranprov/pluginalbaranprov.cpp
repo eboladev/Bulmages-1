@@ -86,6 +86,18 @@ void mypluginalbp::inicializa ( Bulmafact *bges )
     _depura ( "mypluginalbp::inicializa", 0 );
 
     if ( bges->getcompany()->has_table_privilege ( "albaranp", "SELECT" ) ) {
+    /// Miramos si existe un menu Compras
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuCompras" );
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+    	QMenu *pPluginMaestro = NULL;
+	    pPluginMaestro = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        pPluginMenu = new QMenu ( "&Compras", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCompras" ));
+		bges->menuBar()->insertMenu(pPluginMaestro->menuAction(), pPluginMenu);
+    } // end if
+
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
@@ -93,15 +105,15 @@ void mypluginalbp::inicializa ( Bulmafact *bges )
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-list.svg" ) ));
 	planCuentas->setStatusTip ( tr ( "Albaranes de Proveedores" ) );
 	planCuentas->setWhatsThis ( tr ( "Albaranes de  Proveedores" ) );
-	bges->menuCompras->addAction ( planCuentas );
+	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
 	QAction *npago = new QAction ( tr ( "&Nuevo Albaran de Proveedor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.svg" ) ));
 	npago->setStatusTip ( tr ( "Nuevo Albaran de Proveedor" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Albaran de Proveedor" ) );
-	bges->menuCompras->addAction ( npago );
+		npago->setWhatsThis ( tr ( "Nuevo Albaran de Proveedor" ) );
+	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 

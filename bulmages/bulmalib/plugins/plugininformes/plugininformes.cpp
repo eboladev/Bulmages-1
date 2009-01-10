@@ -86,26 +86,16 @@ void entryPoint ( QMainWindow *bges )
     MyPluginInformes *mcont = new MyPluginInformes;
 
     QMenu *pPluginMenu = NULL;
-    /// Miramos si existe un menu Herramientas
+    /// Miramos si existe un menu Informes
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuInformes" );
-    /// En BulmaCont el menu de Herramientas tiene otro nombre.
-    if ( !pPluginMenu ) {
-        pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuInformes" );
-    } // end if
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
+    	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
         pPluginMenu = new QMenu ( "&Informes", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Informes" ) );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformes" ) );
+		bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
     } // end if
-
-    /*
-        pPluginMenu->addSeparator();
-        pPluginMenu->addAction ( accion );
-        pPluginMenu->addAction ( accion1 );
-    */
-
-//    QMenu *ajust = menu->addMenu ( tr ( "Informes Personales" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -145,12 +135,6 @@ void entryPoint ( QMainWindow *bges )
         mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
         pPluginMenu->addAction ( accion );
     } // end for
-
-
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( 0, pPluginMenu );
-
     _depura ( "Iniciado correctamente el plugin dock", 10 );
 }
 

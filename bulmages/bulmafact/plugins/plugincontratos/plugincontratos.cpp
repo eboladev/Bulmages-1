@@ -74,13 +74,27 @@ void myplugincont::inicializa ( Bulmafact *bges )
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
+
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+    	QMenu *pPluginVentas = NULL;
+	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
+		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
+    } // end if
+
     QAction *accion = new QAction ( "&Contratos", 0 );
     accion->setStatusTip ( "Listado de Contratos" );
     accion->setWhatsThis ( "Listado de Contratos" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuVentas->addSeparator();
-    bges->menuVentas->addAction ( accion );
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accion );
+	bges->Listados->addAction (accion);
     _depura ( "END myplugincont::inicializa", 0 );
 }
 

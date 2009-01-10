@@ -86,6 +86,19 @@ void myplugincob::inicializa ( Bulmafact *bges )
     _depura ( "myplugincob::inicializa", 0 );
 
     if ( bges->getcompany()->has_table_privilege ( "cobro", "SELECT" ) ) {
+
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+    	QMenu *pPluginVentas = NULL;
+	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
+		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
+    } // end if
+
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
@@ -93,7 +106,7 @@ void myplugincob::inicializa ( Bulmafact *bges )
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ));
 	planCuentas->setStatusTip ( tr ( "Cobros de Clientes" ) );
 	planCuentas->setWhatsThis ( tr ( "Cobros de Clientes" ) );
-	bges->menuVentas->addAction ( planCuentas );
+	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
@@ -101,7 +114,7 @@ void myplugincob::inicializa ( Bulmafact *bges )
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive.svg" ) ));
 	npago->setStatusTip ( tr ( "Nuevo Cobro de Cliente" ) );
 	npago->setWhatsThis ( tr ( "Nuevo Cobro de Cliente" ) );
-	bges->menuVentas->addAction ( npago );
+	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if

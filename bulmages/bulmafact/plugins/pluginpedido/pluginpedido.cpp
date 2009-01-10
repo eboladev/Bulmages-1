@@ -88,6 +88,19 @@ void mypluginped::inicializa ( Bulmafact *bges )
     _depura ( "mypluginped::inicializa", 0 );
 
     if ( bges->getcompany()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+    	QMenu *pPluginVentas = NULL;
+	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
+		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
+    } // end if
+
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
@@ -95,7 +108,7 @@ void mypluginped::inicializa ( Bulmafact *bges )
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.svg" ) ));
 	planCuentas->setStatusTip ( tr ( "Pedidos de Clientes" ) );
 	planCuentas->setWhatsThis ( tr ( "Pedidos de Clientes" ) );
-	bges->menuVentas->addAction ( planCuentas );
+	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
@@ -103,8 +116,8 @@ void mypluginped::inicializa ( Bulmafact *bges )
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.svg" ) ));
 	npago->setStatusTip ( tr ( "Nueva Pedido de Cliente" ) );
 	npago->setWhatsThis ( tr ( "Nueva Pedido de Cliente" ) );
-	bges->menuVentas->addAction ( npago );
-	bges->Fichas->addAction (npago);
+	pPluginMenu->addAction ( npago );
+	pPluginMenu->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 

@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>66</y>
+     <y>67</y>
      <width>991</width>
-     <height>479</height>
+     <height>477</height>
     </rect>
    </property>
   </widget>
@@ -41,19 +41,9 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuCompras" >
-    <property name="title" >
-     <string>Com&amp;pras</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuVentas" >
-    <property name="title" >
-     <string>&amp;Ventas</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuAcerca_de" >
     <property name="title" >
      <string>A&amp;yuda</string>
@@ -114,8 +104,6 @@
     <addaction name="actionIndexador" />
    </widget>
    <addaction name="menuEmpresa" />
-   <addaction name="menuCompras" />
-   <addaction name="menuVentas" />
    <addaction name="menuArticulos" />
    <addaction name="menuMaestro" />
    <addaction name="menuVentana" />
@@ -125,9 +113,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>545</y>
+     <y>544</y>
      <width>991</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -135,7 +123,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>24</y>
+     <y>25</y>
      <width>143</width>
      <height>42</height>
     </rect>
@@ -186,7 +174,7 @@
    <property name="geometry" >
     <rect>
      <x>143</x>
-     <y>24</y>
+     <y>25</y>
      <width>848</width>
      <height>42</height>
     </rect>
@@ -358,7 +346,7 @@
   </action>
   <action name="actionTrabajadores" >
    <property name="icon" >
-    <iconset>
+    <iconset resource="../../bulmages.qrc" >
      <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
    </property>
    <property name="text" >
