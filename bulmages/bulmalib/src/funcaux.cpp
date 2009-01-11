@@ -851,6 +851,7 @@ QString data2python(QString string) {
 /// La tabla de conversion de codigos para el CIF
 QChar codigosCIF[]= {QChar('A'), QChar('B'), QChar('C'), QChar('D'), QChar('E'), QChar('F'), QChar('G'), QChar('H'), QChar('J'), QChar('P'), QChar('Q'), QChar('R'), QChar('S'), QChar('U'), QChar('V'), QChar('N'), QChar('W')};
 
+char validacionesCIF[] = {'A','B','C','D','E','F','G','H','I','J'};
 
 /// La tabla de conversion de codigos para el NIF
 char codigoNIF[] = {'T', 'R', 'W', 'A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'};
@@ -896,7 +897,7 @@ bool validarNIF (QString nif1) {
   
 }
 
-
+// 
 bool validarCIF(QString cif1) {
 	
         // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
@@ -933,7 +934,7 @@ bool validarCIF(QString cif1) {
 	int valimpar = sumaDigitos(cif[1].digitValue() * 2) + sumaDigitos(cif[3].digitValue() *2) + sumaDigitos(cif[5].digitValue() * 2) + sumaDigitos(cif[7].digitValue() * 2);
 	int sumapar = valpar + valimpar;
 	QString textsumapar = QString::number(sumapar);
-	int c = textsumapar[textsumapar.size()-1].digitValue();
+	int c = textsumapar.right(1).toInt();
 	int d = 10 - c;
 	if (cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S') {
 		if (cif[8] == codigosCIF[d-1]) {
@@ -949,7 +950,7 @@ bool validarCIF(QString cif1) {
 			return FALSE;
 		} // end if
 	} //end if
-	if (cif[8] == codigosCIF[d-1] || cif[8].digitValue() == d) {
+	if (cif[8] == QChar(validacionesCIF[d-1]) || cif[8].digitValue() == d) {
 		return TRUE;
 	} //end if
 	return FALSE;
