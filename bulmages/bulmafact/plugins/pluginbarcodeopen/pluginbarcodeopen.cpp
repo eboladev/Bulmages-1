@@ -156,17 +156,9 @@ void myplugin::inicializa ( Bulmafact *bges )
     /// Creamos el men&uacute;.
     setEmpresaBase ( bges->getcompany() );
     m_bulmafact = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
 
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-    	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuAcerca_de" );
-        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
-		bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
-    } // end if
+    /// Miramos si existe un menu Herramientas
+	QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
 
     QAction *accion = new QAction ( "&Apertura Rapida", 0 );
     accion->setStatusTip ( "Abre documentos a partir del codigo de barras" );

@@ -50,7 +50,7 @@
 /**
 \param bd
 **/
-Bulmafact::Bulmafact ( QString bd ) : QMainWindow()
+Bulmafact::Bulmafact ( QString bd ) : BlMainWindow()
 {
     _depura ( "Bulmafact::Bulmafact", 0 );
     setupUi ( this );

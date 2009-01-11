@@ -113,7 +113,7 @@ void myplugincont::elslot1()
 
 
 
-void entryPoint ( QMainWindow *bges )
+void entryPoint ( BlMainWindow *bges )
 {
     _depura ( "Entrada del plugin Docket", 0 );
 
@@ -134,21 +134,8 @@ void entryPoint ( QMainWindow *bges )
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
     mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
 
-    QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
-    /// En BulmaCont el menu de Herramientas tiene otro nombre.
-    if ( !pPluginMenu ) {
-        pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuHerramientas" );
-    } // end if
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-    	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuAcerca_de" );
-        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
-		bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
-    } // end if
+	QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
 
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );

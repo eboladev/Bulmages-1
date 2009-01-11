@@ -63,6 +63,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          qradiobutton2.cpp
          qcombobox2.cpp
          blprogressbar.cpp
+		blmainwindow.cpp
 	 blbancoedit.cpp)
 
 set(bulmalib_MOCS 
@@ -81,6 +82,7 @@ set(bulmalib_MOCS
          qtexteditdelegate.h 
          qdoublespinbox2.h 
          blwidget.h 
+		blmainwindow.h
          listado.h 
          porcentajecarga.h 
          busquedafecha2.h 
@@ -129,7 +131,7 @@ set (bulmalib_HDRS abreempresaview.h
 #			dbrecord.h 
 #			subform.h 
 #			empresabase.h 
-
+#			blmainwindow.h
 
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS logpassbase.ui 

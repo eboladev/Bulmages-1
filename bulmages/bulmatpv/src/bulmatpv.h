@@ -22,7 +22,6 @@
 #ifndef BULMATPV_H
 #define BULMATPV_H
 
-#include <QMainWindow>
 #include <QWorkspace>
 
 #include "qworkspace2.h"
@@ -31,7 +30,7 @@
 #include "listventanas.h"
 #include "funcaux.h"
 #include "splashscreen.h"
-
+#include "blmainwindow.h"
 
 /** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
     Su funcionalidad es servir de base como aplicacion Qt y inicializar los componentes clave.
@@ -40,7 +39,7 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class BulmaTPV: public QMainWindow, public Ui_BulmaTPVBase
+class BulmaTPV: public BlMainWindow, public Ui_BulmaTPVBase
 {
     Q_OBJECT
 

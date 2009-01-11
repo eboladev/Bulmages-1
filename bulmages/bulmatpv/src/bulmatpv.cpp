@@ -30,7 +30,6 @@
 #include <QTextStream>
 #include <QPainter>
 #include <QWorkspace>
-#include <QMainWindow>
 #include <QProgressBar>
 
 #include "qworkspace2.h"
@@ -39,7 +38,7 @@
 #include "funcaux.h"
 #include "aboutview.h"
 #include "busquedaperiodo.h"
-
+#include "blmainwindow.h"
 
 /** Prepara la pantalla principal para que tenga todos los componentes.
     Crea el workspace y lo inicializa.
@@ -49,7 +48,7 @@
 /**
 \param bd
 **/
-BulmaTPV::BulmaTPV ( QString bd ) : QMainWindow()
+BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
 {
     _depura ( "BulmaTPV::BulmaTPV", 0 );
     setupUi ( this );

@@ -88,16 +88,7 @@ void mypluginpedp::inicializa ( Bulmafact *bges )
     if ( bges->getcompany()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
 
     /// Miramos si existe un menu Compras
-    QMenu *pPluginMenu = NULL;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuCompras" );
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-    	QMenu *pPluginMaestro = NULL;
-	    pPluginMaestro = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
-        pPluginMenu = new QMenu ( "&Compras", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCompras" ));
-		bges->menuBar()->insertMenu(pPluginMaestro->menuAction(), pPluginMenu);
-    } // end if
+	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;

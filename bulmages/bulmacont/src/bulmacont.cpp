@@ -38,7 +38,7 @@
 \param DB
 **/
 Bulmacont::Bulmacont ( QWidget *parent, Qt::WFlags f, QString DB )
-        : QMainWindow ( parent, f )
+        : BlMainWindow ( parent, f )
 {
     _depura ( "Bulmacont::Bulmacont", 0 );
     setupUi ( this );

@@ -91,16 +91,7 @@ void mypluginpres::inicializa ( Bulmafact *bges )
 
 
     /// Miramos si existe un menu Ventas
-    QMenu *pPluginMenu = NULL;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-    	QMenu *pPluginMaestro = NULL;
-	    pPluginMaestro = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
-        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
-		bges->menuBar()->insertMenu(pPluginMaestro->menuAction(), pPluginMenu);
-    } // end if
+	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;

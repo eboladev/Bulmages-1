@@ -24,13 +24,11 @@
 
 #include <errno.h>
 
-#include <QMenuBar>
 #include <QPrinter>
 #include <QString>
 #include <QPixmap>
 #include <QMainWindow>
 #include <QEvent>
-#include <QApplication>
 #include <QAction>
 #include <QToolButton>
 #include <QMessageBox>
@@ -41,13 +39,13 @@
 #include "configuracion.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
-
+#include "blmainwindow.h"
 
 /// This Class is the base class for your application. It sets up the main
 /// window and providing a menubar, toolbar
 /// and statusbar. For the main view, an instance of class Bulmages01View is
 /// created which creates your view.
-class Bulmacont : public QMainWindow, public Ui_BulmaContBase
+class Bulmacont : public BlMainWindow, public Ui_BulmaContBase
 {
     Q_OBJECT
 

@@ -73,16 +73,7 @@ void myplugincv::inicializa ( Bulmafact *bges )
     setEmpresaBase ( bges->getcompany() );
 
     /// Miramos si existe un menu Ventas
-    QMenu *pPluginMenu = NULL;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-    	QMenu *pPluginVentas = NULL;
-	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
-        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
-		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
-    } // end if
+	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
 
     QAction *planCuentas = new QAction ( tr ( "&CompraVenta" ), 0 );
     planCuentas->setStatusTip ( tr ( "CompraVenta" ) );

@@ -89,16 +89,7 @@ void mypluginfact::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->has_table_privilege ( "factura", "SELECT" ) ) {
     /// Miramos si existe un menu Ventas
-    QMenu *pPluginMenu = NULL;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-    	QMenu *pPluginVentas = NULL;
-	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
-        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
-		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
-    } // end if
+	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;

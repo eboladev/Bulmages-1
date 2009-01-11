@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,19 +19,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
 
-
-#include "postgresiface2.h"
-#include "empresa.h"
-#include "company.h"
 #include "blmainwindow.h"
 
-extern "C" MY_EXPORT void entryPoint ( BlMainWindow * );
-extern "C" MY_EXPORT int Company_createMainWindows_Post ( Company * );
-extern "C" MY_EXPORT int Empresa_createMainWindows_Post ( Empresa * );
+#include <QString>
+#include <QMenuBar>
 
+BlMainWindow::BlMainWindow ( QWidget * parent, Qt::WindowFlags flags) {
+}
+
+
+BlMainWindow::~BlMainWindow() {
+}
+
+
+QMenu *BlMainWindow::newMenu(const QString &name, const QString &objname, const QString &before) {
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = menuBar() ->findChild<QMenu *> ( objname );
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+    	QMenu *pPluginMaestro = NULL;
+	    pPluginMaestro = menuBar() ->findChild<QMenu *> ( before );
+        pPluginMenu = new QMenu ( name, menuBar() );
+        pPluginMenu->setObjectName (  objname );
+		menuBar()->insertMenu(pPluginMaestro->menuAction(), pPluginMenu);
+    } // end if
+	return pPluginMenu;
+}

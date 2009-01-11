@@ -22,9 +22,9 @@
 #ifndef BULMAFACT_H
 #define BULMAFACT_H
 
-#include <QMainWindow>
 #include <QWorkspace>
 
+#include "blmainwindow.h"
 #include "qworkspace2.h"
 #include "ui_bulmafactbase.h"
 #include "company.h"
@@ -39,7 +39,7 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class Bulmafact: public QMainWindow, public Ui_bulmafactbase
+class Bulmafact: public BlMainWindow, public Ui_bulmafactbase
 {
     Q_OBJECT
 
