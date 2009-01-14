@@ -67,13 +67,14 @@ BEGIN
 	UPDATE controlstock SET stockantcontrolstock= 0 , stocknewcontrolstock=0;
 	UPDATE stock_almacen SET stock =0;
 
-	nstock := 0;
+--	nstock := 0;
 	FOR cs IN SELECT * FROM articulo LOOP
-		SELECT INTO bs sum(cantlalbaranp) AS totalin FROM lalbaranp WHERE idarticulo = cs.idarticulo;
+		nstock := 0;	
+		SELECT INTO bs COALESCE (sum(cantlalbaranp), 0) AS totalin FROM lalbaranp WHERE idarticulo = cs.idarticulo;
 		IF FOUND THEN
 			nstock := nstock + bs.totalin;
 		END IF;
-		SELECT INTO bs sum(cantlalbaran) AS totalin FROM lalbaran WHERE idarticulo = cs.idarticulo;
+		SELECT INTO bs COALESCE (sum(cantlalbaran), 0) AS totalin FROM lalbaran WHERE idarticulo = cs.idarticulo;
 		IF FOUND THEN
 			nstock := nstock - bs.totalin;
 		END IF;
