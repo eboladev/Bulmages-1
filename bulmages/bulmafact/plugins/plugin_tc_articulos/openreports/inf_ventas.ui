@@ -18,7 +18,7 @@
      <item>
       <widget class="QLabel" name="label" >
        <property name="text" >
-        <string>Fecha Inicial</string>
+        <string>Fecha Inicial (dd/mm/yyyy)</string>
        </property>
       </widget>
      </item>
@@ -32,7 +32,7 @@
      <item>
       <widget class="QLabel" name="label_2" >
        <property name="text" >
-        <string>Fecha Final</string>
+        <string>Fecha Final (dd/mm/yyyy)</string>
        </property>
       </widget>
      </item>

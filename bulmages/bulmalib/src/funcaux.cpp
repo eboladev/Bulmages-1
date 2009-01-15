@@ -936,21 +936,21 @@ bool validarCIF(QString cif1) {
 	QString textsumapar = QString::number(sumapar);
 	int c = textsumapar.right(1).toInt();
 	int d = 10 - c;
-	if (cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S') {
+	if (cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W') {
 		if (cif[8] == codigosCIF[d-1]) {
 			 return TRUE;
 		} else {
 			return FALSE;
 		} // end if
 	} // end if
-	if (cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'E' || cif[0] == 'H') {
-		if (cif[8].digitValue() == d) {
+	if (cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'C' || cif[0] == 'D' || cif[0] == 'E' || cif[0] == 'F' || cif[0] == 'G' || cif[0] == 'H' || cif[0] == 'I' || cif[0] == 'J' || cif[0] == 'U' || cif[0] == 'V' ) {
+		if (cif[8].digitValue() == d % 10) {
 			return TRUE;
 		} else {
 			return FALSE;
 		} // end if
 	} //end if
-	if (cif[8] == QChar(validacionesCIF[d-1]) || cif[8].digitValue() == d) {
+	if (cif[8] == QChar(validacionesCIF[d-1]) || cif[8].digitValue() == d % d) {
 		return TRUE;
 	} //end if
 	return FALSE;
