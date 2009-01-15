@@ -89,6 +89,11 @@ int Ficha_guardar_Post ( Ficha *l )
 	fich->setDBvalue("nomproveedor", l->DBvalue("nomcliente"));
 	fich->setDBvalue("cifproveedor", l->DBvalue("cifcliente"));
 	fich->setDBvalue("cpproveedor", l->DBvalue("cpcliente"));
+	fich->setDBvalue("dirproveedor", l->DBvalue("dircliente"));
+	fich->setDBvalue("poblproveedor", l->DBvalue("poblcliente"));
+	fich->setDBvalue("idprovincia", l->DBvalue("idprovincia"));
+	fich->setDBvalue("cpproveedor", l->DBvalue("cpcliente"));
+	fich->setDBvalue("telproveedor", l->DBvalue("telcliente"));
 
 	if (guardar)
 		fich->guardar();

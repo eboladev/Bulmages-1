@@ -64,7 +64,7 @@ add_subdirectory(pluginpedidoprov)
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)
 
-
+add_subdirectory(pluginz2z)
 
 # if you want to add some private code
 # simple put your add_directory in a
