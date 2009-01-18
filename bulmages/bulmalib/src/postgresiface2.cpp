@@ -22,11 +22,12 @@
 /// acceso a las bases de datos de postgres de forma sencilla y eficiente.
 #include <QMessageBox>
 #include <QApplication>
+#include <QLocale>
+
 #include <climits>
 #include <math.h>
 
 #include "postgresiface2.h"
-
 #include "msgerror.h"
 #include "funcaux.h"
 
@@ -250,20 +251,40 @@ int cursor2::numcampo ( const QString &campo )
 }
 
 
+/// Esta funcion devuelve el tipo del campo posicion
+/// \return un OID con el indice a la tabla pg_type (que puede considerarse una constante).
+int cursor2::tipo(int posicion) {
+    _depura ( "cursor2::tipo", 0, QString::number ( posicion ) );
+    _depura ( "END cursor2::tipo", 0);
+    return ( PQftype(result, posicion) );
+}
+
+
 /// Esta funcion devuelve el valor del campo posicion del registro
 /// pasado, si se pasa -1 como registro se devuelve el registro actual
 /// \param posicion El nmero de campo del que se quiere la posicion.
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posicion.
-QString cursor2::valor ( int posicion, int registro )
+QString cursor2::valor ( int posicion, int registro, bool localeformat )
 {
     _depura ( "cursor2::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
+
+	QLocale locale;
+
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
+    QString val = QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ));
+	/// Si el campo es del tipo numeric y esmos con locales lo parseamos.
+	if (localeformat) {
+		if ( tipo(posicion) == 1700) {
+			/// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
+			val.replace(".", locale.decimalPoint ());
+		} // end if
+	} // end if
     _depura ( "END cursor2::valor", 0 );
-    return ( QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ) ) );
+    return ( val );
 }
 
 
@@ -273,7 +294,7 @@ QString cursor2::valor ( int posicion, int registro )
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
-QString cursor2::valor ( const QString &campo, int registro )
+QString cursor2::valor ( const QString &campo, int registro, bool localeformat )
 {
     _depura ( "cursor2::valor", 0, campo + " " + QString::number ( registro ) );
     int i = 0;
@@ -286,7 +307,7 @@ QString cursor2::valor ( const QString &campo, int registro )
         return "";
     } // end if
     _depura ( "END cursor2::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
-    return ( QString::fromUtf8 ( PQgetvalue ( result, registro, i ) ) );
+    return valor(i, registro, localeformat );
 }
 
 /// Esta funci&oacute;n devuelve el valor entero del campo posicion del registro

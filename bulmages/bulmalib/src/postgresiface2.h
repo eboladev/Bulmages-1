@@ -121,7 +121,9 @@ public:
     /// Devuelve el n&uacute;mero de registros del cursor.
     int numregistros();
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString valor ( int posicion, int registro = -1 );
+    QString valor ( int posicion, int registro = -1, bool localeformat = FALSE );
+	/// Devuelve el tipo de dato de una determinada posicion de un query
+	int tipo(int posicion);
     bool error();
     QString query();
     QString pristineQuery();
@@ -136,7 +138,7 @@ public:
 
 public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString valor ( const QString &campo, int registro = -1 );
+    QString valor ( const QString &campo, int registro = -1, bool localeformat = FALSE );
     /// Avanza el puntero de recorrido en forma de cola una posici&oacute;n.
     int siguienteregistro();
     /// Retrocede el puntero de recorrido en forma de cola una posici&oacute;n.

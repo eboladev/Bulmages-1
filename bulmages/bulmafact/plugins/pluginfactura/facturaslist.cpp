@@ -133,12 +133,13 @@ void FacturasList::presentar()
     mui_list->cargar ( "SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalfactura) AS total, SUM(bimpfactura) AS base, SUM(impfactura) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalfactura)::NUMERIC(12,2) AS total, SUM(bimpfactura)::NUMERIC(12,2) AS base, SUM(impfactura)::NUMERIC(12,2) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
     /// Esta consulta podria resultar en NULL y por tanto debe tratarse el caso
+	/// Usamos el localeformat porque los datos son presentados en pantalla y el punto decimal debe salir bien.
     if ( cur ) {
-        mui_totalbimponible->setText ( cur->valor ( "base" ) );
-        mui_totalimpuestos->setText ( cur->valor ( "impuestos" ) );
-        mui_totalfacturas->setText ( cur->valor ( "total" ) );
+        mui_totalbimponible->setText ( cur->valor ( "base", -1, TRUE ) );
+        mui_totalimpuestos->setText ( cur->valor ( "impuestos", -1, TRUE ) );
+        mui_totalfacturas->setText ( cur->valor ( "total", -1, TRUE ) );
         delete cur;
     } // end if
 

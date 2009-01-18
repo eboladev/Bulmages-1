@@ -53,10 +53,10 @@ public:
     virtual int generaRML ( const QString &arch );
     virtual void calculaypintatotales();
     virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed ) {};
-    virtual int trataTags ( QString &buff );
-    virtual void trataTagsBf( QString &buff );
-    virtual QString trataLineasDetalle ( const QString &det );
-    virtual QString trataLineasDescuento ( const QString &det );
+    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
+    virtual void trataTagsBf( QString &buff, int tipoEscape = 0 );
+    virtual QString trataLineasDetalle ( const QString &det, int tipoEscape = 0 );
+    virtual QString trataLineasDescuento ( const QString &det, int tipoEscape = 0 );
     virtual QString trataTotales ( const QString &det, int bimporeq = 1 );
  
 };

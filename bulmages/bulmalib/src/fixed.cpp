@@ -9,6 +9,7 @@
 
 #include <QString>
 #include <QChar>
+#include <QLocale>
 
 #include "stdio.h"
 
@@ -144,6 +145,13 @@ Fixed operator / ( int x, Fixed y )
 QString Fixed::toQString ( QChar separadorDecimal, int precision )
 {
     _depura ( "Fixed::toQString", 0 );
+	/// Si no se pasa separador decimal cogemos el de las locales
+	if  ( separadorDecimal == '0' ) {
+		QLocale locale;
+		separadorDecimal = locale.decimalPoint ();
+	} // end if
+
+
     setprecision ( precision );
     int options = COMMAS;
     Fixed_numerator x = value;
@@ -165,7 +173,6 @@ QString Fixed::toQString ( QChar separadorDecimal, int precision )
         if ( n == precision ) {
             if ( n > 0 || options & DECIMAL )
                 buffer[sizeof ( buffer ) - ++n] = separadorDecimal.toAscii();
-
             units = n;
         }
         Fixed_numerator y;

@@ -1078,13 +1078,13 @@ QString Ficha::trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape 
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
 		switch (tipoEscape) {
 			case 1:
-		                salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
+		                salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
 			break;
 			case 2:
-		                salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
+		                salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
 			break;
 			default:
-		                salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ) ) );
+		                salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ) );
 			break;
 		} // emd switch
                 pos = 0;

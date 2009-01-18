@@ -155,8 +155,18 @@ QString DBCampo::nompresentacion()
 QString DBCampo::valorcampo()
 {
     _depura ( "DBCampo::valorcampo", 0 );
+	QString valor = m_valorcampo;
+	switch (m_tipo) {
+		case DBnumeric:
+				QLocale locale;
+				if (locale.decimalPoint() == '.') 
+					valor.replace ( ",", locale.decimalPoint () );
+				else
+					valor.replace ( ".", locale.decimalPoint () );
+			break;
+	} // end switch
     _depura ( "END DBCampo::valorcampo", 0 );
-    return m_valorcampo;
+    return valor;
 }
 
 
@@ -182,7 +192,7 @@ DBCampo::DBCampo ( postgresiface2 *com, QString nom, dbtype typ, int res, QStrin
 }
 
 
-///
+/// Devuelve el valor del campo preparado para ser insertado en la base de datos.
 /**
 \param error
 \return
@@ -775,6 +785,8 @@ int DBRecord::trataTags ( QString &buff, int tipoEscape ) {
   return 1;
 }
 
+
+/// Este metodo es usado en las impresiones con RML para generar una cuadricula con el registro.
 QString DBRecord::story ( void ) {
   
     QString fitxersortidatxt = "";

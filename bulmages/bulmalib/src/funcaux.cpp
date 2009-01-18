@@ -91,6 +91,22 @@ QString pythonEscape ( const QString& param) {
    return text;
 }
 
+QString genEscape ( const QString &param, int tipoEscape) {
+	QString param1;
+		switch (tipoEscape) {
+			case 1:
+	            	param1 =  xmlEscape(param );
+			break;
+			case 2:
+	            	param1 = pythonEscape(param );
+			break;
+			default:
+	            	param1 = param;
+
+		} // end switch
+	return param1;
+}
+
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 /// Nota: ahora ficha.cpp ya respeta el encoding del XML 
 /// original y pone referencias numéricas de caracter sólo a los caracteres

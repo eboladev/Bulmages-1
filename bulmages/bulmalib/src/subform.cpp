@@ -159,6 +159,7 @@ para la presentacion de valores corregidos a un estandar.
 int SDBCampo::set ( QString val )
 {
     _depura ( "SDBCampo::set", 0, nomcampo() + " = " + val );
+    DBCampo::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
     if ( tipo() == DBCampo::DBboolean ) {
         if ( restrictcampo() == SHeader::DBNoWrite ) {
@@ -170,13 +171,13 @@ int SDBCampo::set ( QString val )
             setCheckState ( Qt::Unchecked );
         } // end if
     } else if ( tipo() == DBCampo::DBnumeric && importe.exactMatch ( val ) ) {
-        setText ( val );
+        setText ( valorcampo() );
     } else if ( tipo() == DBCampo::DBdate ) {
         setText ( val.left ( 10 ) );
     } else {
-        setText ( val );
+        setText ( valorcampo() );
     } // end if
-    DBCampo::set ( val );
+
     _depura ( "END SDBCampo::set", 0, val );
     return 0;
 }

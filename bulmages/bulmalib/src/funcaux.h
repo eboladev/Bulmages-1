@@ -75,6 +75,9 @@ QString xmlEscape ( const QString& text );
 /// Escapa una cadena para que pueda ser embebida en un script python.
 QString pythonEscape ( const QString &text);
 
+/// Sistema general de escape
+QString genEscape (const QString &text, int tipoEscape = 0);
+
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect ( const QString& );
 QString XMLDesProtect ( const QString& );
