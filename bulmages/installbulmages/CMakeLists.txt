@@ -31,7 +31,7 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafa
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in bgtrml2pdf @ONLY)
 
 install(DIRECTORY ainteligentes canuales planescontables rev-conf
-				openreports icons images dbmodels help 
+				openreports icons images dbmodels ayuda
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 
