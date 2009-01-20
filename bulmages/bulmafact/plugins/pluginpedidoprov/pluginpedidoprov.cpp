@@ -141,7 +141,8 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
-	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (Company *)prov->empresaBase(), NULL );
+	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	pedidosProveedorList->setModoEdicion();
 	pedidosProveedorList->setObjectName("listPedidosProveedorList");
 	pedidosProveedorList->hideBusqueda();
         prov->mui_tab->addTab ( pedidosProveedorList, "Pedidos" );

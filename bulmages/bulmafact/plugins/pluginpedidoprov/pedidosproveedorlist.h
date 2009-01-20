@@ -57,8 +57,8 @@ private:
     QString mdb_idpedidoproveedor;
 
 public:
-    PedidosProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
-    PedidosProveedorList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PedidosProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    PedidosProveedorList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~PedidosProveedorList();
     void presentar();
     void imprimir();

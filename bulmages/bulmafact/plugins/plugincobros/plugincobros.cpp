@@ -139,7 +139,8 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "cobro", "SELECT" ) ) {
-		CobrosList *pagosList = new CobrosList( (Company *)prov->empresaBase(), NULL );
+		CobrosList *pagosList = new CobrosList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+		pagosList->setModoEdicion();
 		pagosList->setObjectName("listcobrosproveedor");
 		pagosList->hideBusqueda();
         prov->mui_tab->addTab ( pagosList, "Cobros" );

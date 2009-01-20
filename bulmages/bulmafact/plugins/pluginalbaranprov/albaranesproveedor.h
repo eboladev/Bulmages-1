@@ -64,8 +64,8 @@ private:
     QString mdb_idalbaranp;
 
 public:
-    AlbaranesProveedor ( QWidget *parent = 0, Qt::WFlags flag = 0 );
-    AlbaranesProveedor ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    AlbaranesProveedor ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    AlbaranesProveedor ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~AlbaranesProveedor();
     void presentar();
     void setEmpresaBase ( Company *comp );

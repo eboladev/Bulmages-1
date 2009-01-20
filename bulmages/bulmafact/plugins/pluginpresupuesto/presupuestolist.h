@@ -60,8 +60,8 @@ private:
     QString m_idpresupuesto;
 
 public:
-    PresupuestoList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
-    PresupuestoList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PresupuestoList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    PresupuestoList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~PresupuestoList();
     void presentar();
     void editar ( int );

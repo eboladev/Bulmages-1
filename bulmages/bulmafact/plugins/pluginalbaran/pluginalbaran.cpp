@@ -143,7 +143,8 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "albaran", "SELECT" ) ) {
-	AlbaranClienteList *albaranesList = new AlbaranClienteList( (Company *)prov->empresaBase(), NULL );
+	AlbaranClienteList *albaranesList = new AlbaranClienteList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	albaranesList->setModoEdicion();
 	albaranesList->setObjectName("listalbaranes");
 	albaranesList->hideBusqueda();
         prov->mui_tab->addTab ( albaranesList, "Albaranes" );

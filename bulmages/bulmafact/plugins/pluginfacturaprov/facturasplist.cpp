@@ -41,8 +41,8 @@
 \param flag
 \return
 **/
-FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag )
-        : Listado ( NULL, parent, flag )
+FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : Listado ( NULL, parent, flag, editmodo )
 {
     _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
     setupUi ( this );
@@ -67,8 +67,8 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag 
 \param parent
 \return
 **/
-FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent )
-        : Listado ( comp, parent )
+FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo )
 {
     _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
     setupUi ( this );
@@ -83,7 +83,9 @@ FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent )
     presentar();
     setSubForm ( mui_list );
     mdb_idfacturap = "";
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    if(modoEdicion()) {
+    	empresaBase() ->meteWindow ( windowTitle(), this );
+    } // end if
     hideBusqueda();
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.

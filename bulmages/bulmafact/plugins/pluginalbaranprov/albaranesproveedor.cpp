@@ -42,8 +42,8 @@
 \param parent
 \param flag
 **/
-AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag )
-        : Listado ( NULL, parent, flag )
+AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( NULL, parent, flag, editmodo )
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
     setupUi ( this );
@@ -134,8 +134,8 @@ QString AlbaranesProveedor::idalbaranp()
 \param parent
 \param flag
 **/
-AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFlags flag )
-        : Listado ( comp, parent, flag )
+AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo )
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
     setupUi ( this );
@@ -145,7 +145,9 @@ AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFl
     setSubForm ( mui_list );
     presentar();
     mdb_idalbaranp = "";
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    if (modoEdicion()) {
+    	empresaBase() ->meteWindow ( windowTitle(), this );
+    } // end if
     hideBusqueda();
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.

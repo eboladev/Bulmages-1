@@ -56,8 +56,8 @@ private:
     QString mdb_idpago;
 
 public:
-    PagosList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
-    PagosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PagosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    PagosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~PagosList();
     void presentar();
     void setEmpresaBase ( Company *comp );

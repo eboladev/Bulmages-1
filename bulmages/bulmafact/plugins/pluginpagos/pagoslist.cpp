@@ -38,8 +38,8 @@
 \param parent
 \param flag
 **/
-PagosList::PagosList ( QWidget *parent, Qt::WFlags flag )
-        : Listado ( NULL, parent, flag )
+PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : Listado ( NULL, parent, flag, editmodo )
 {
     _depura ( "PagosList::PagosList", 0 );
     setupUi ( this );
@@ -56,8 +56,8 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag )
 \param parent
 \param flag
 **/
-PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag )
-        : Listado ( comp, parent, flag )
+PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo )
 {
     _depura ( "PagosList::PagosList", 0 );
     setupUi ( this );
@@ -68,7 +68,9 @@ PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag )
     presentar();
     mdb_idpago = "";
     setSubForm ( mui_list );
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    if (modoEdicion()) {
+    	empresaBase() ->meteWindow ( windowTitle(), this );
+    } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pago" );

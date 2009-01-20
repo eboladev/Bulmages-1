@@ -143,10 +143,11 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
-	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (Company *)prov->empresaBase(), NULL );
+	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	pedidosClienteList->setModoEdicion();
 	pedidosClienteList->setObjectName("listpedidoclientees");
 	pedidosClienteList->hideBusqueda();
-        prov->mui_tab->addTab ( pedidosClienteList, "Albaranes" );
+        prov->mui_tab->addTab ( pedidosClienteList, "Pedidos" );
     }// end if
     return 0;
 }

@@ -36,8 +36,8 @@
 \param parent
 \param flag
 **/
-PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag )
-        : Listado ( NULL, parent, flag )
+PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( NULL, parent, flag, editmodo )
 {
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
@@ -55,8 +55,8 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag )
 \param parent
 \param flag
 **/
-PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag )
-        : Listado ( comp, parent, flag )
+PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo )
 {
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
@@ -66,7 +66,9 @@ PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt:
     presentar();
     setSubForm ( mui_list );
     mdb_idpedidoproveedor = "";
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    if (modoEdicion()) {
+    	empresaBase() ->meteWindow ( windowTitle(), this );
+    } // end if
     hideBusqueda();
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.

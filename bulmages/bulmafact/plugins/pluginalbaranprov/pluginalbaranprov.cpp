@@ -140,7 +140,8 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "albaranp", "SELECT" ) ) {
-	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (Company *)prov->empresaBase(), NULL );
+	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	albaranesProveedor->setModoEdicion();
 	albaranesProveedor->setObjectName("listalbaranesproveedor");
 	albaranesProveedor->hideBusqueda();
         prov->mui_tab->addTab ( albaranesProveedor, "Albaranes" );
