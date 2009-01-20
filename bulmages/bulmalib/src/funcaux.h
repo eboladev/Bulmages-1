@@ -116,10 +116,10 @@ QString windowID ( const QString & );
 QString parsearCode ( const QString &cad );
 QString ascii127 ( const QString &orig );
 QString data2python(QString string);
-bool validarCIF(QString cif1);
-bool validarNIF(QString nif1);
+bool validarCIF(QString cif1, QChar &digit);
+bool validarNIF(QString nif1, QChar &digit);
 int sumaDigitos(int val);
-bool validarCIFNIF(QString nifcif);
+bool validarCIFNIF(QString nifcif, QChar &digit);
 
 #endif
 

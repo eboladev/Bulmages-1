@@ -29,7 +29,7 @@
 #include "company.h"
 #include "configuracion.h"
 #include "plugins.h"
-
+#include "albaranclienteview.h"
 #include "funcaux.h"
 
 
@@ -75,12 +75,13 @@ ZView::ZView ( Company *comp, QWidget *parent )
         mui_list->addSHeader ( "refalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Referencia" ) );
         mui_list->addSHeader ( "fechaalbaran",  DBCampo::DBdate, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Fecha" ) );
         mui_list->addSHeader ( "procesadoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Procesado" ) );
+        mui_list->addSHeader ( "idforma_pago",  DBCampo::DBint, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Id Forma Pago" ) );
+        mui_list->addSHeader ( "descforma_pago",  DBCampo::DBint, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Forma Pago" ) );
         mui_list->addSHeader ( "anuladoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Anulado" ) );
         mui_list->addSHeader ( "horaalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Hora" ) );
         mui_list->addSHeader ( "totalalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Total" ) );
         mui_list->addSHeader ( "bimpalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Base Imponible" ) );
         mui_list->addSHeader ( "impalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Impuestos" ) );
-
 
         mui_list->setinsercion ( FALSE );
         mui_list->setDelete ( FALSE );
@@ -113,9 +114,42 @@ ZView::~ZView()
 **/
 int ZView::cargarPost ( QString idz )
 {
-    mui_list->cargar ( "SELECT * FROM albaran WHERE idz=" + idz );
+    mui_list->cargar ( "SELECT * FROM albaran NATURAL LEFT JOIN forma_pago WHERE idz=" + idz );
     return 0;
 }
 
 
+
+
+/**  Este metodo se activa cuando bien pulsando sobre el boton de editar
+     o bien haciendo doble click en el modo de edicion se desea invocar la accion
+     Editar el elemento si estamos en modo editmode o cerrar la ventana y emitir
+     un signal selected() si estamos en el modo selector.
+
+     Primero determina el idalbaran seleccionado, luego crea la instancia de
+     la ventana de edicion AlbaranClienteView y lo mete en el workspace.
+     Por ultimo hace que dicha ventana carge de la base de datos el idalbaran
+     seleccionado.
+*/
+/**
+\param row
+\return
+**/
+void ZView::on_mui_list_cellDoubleClicked ( int row, int )
+{
+    _depura ( "ZView::on_mui_list_doubleClicked", 0 );
+
+    QString idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ), row );
+	if (g_plugins->lanza("SNewAlbaranClienteView", empresaBase()) ) {
+	
+        AlbaranClienteView * prov = (AlbaranClienteView *) g_plugParams;
+        if ( prov->cargar ( idalbaran ) ) {
+            delete prov;
+            return;
+        } // end if
+        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        prov->show();
+	} // end if
+    _depura ( "END ZView::on_mui_list_doubleClicked", 0 );
+}
 

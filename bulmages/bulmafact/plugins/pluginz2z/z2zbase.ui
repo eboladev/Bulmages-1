@@ -376,7 +376,7 @@
         </spacer>
        </item>
        <item row="2" column="1" >
-        <widget class="QPushButton" name="pushButton" >
+        <widget class="QPushButton" name="mui_traspasar" >
          <property name="text" >
           <string>Traspasar</string>
          </property>

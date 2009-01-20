@@ -47,6 +47,11 @@
 #define CONF_FONTSIZE_APUNTES          5
 /// Indica la fuente de la pantalla de introduccion de apuntes.
 #define CONF_FONTFAMILY_APUNTES        6
+/// Indica si hay una facturacion alternativa a la que traspasar datos
+#define CONF_FACT_ALT                 50
+#define CONF_CONT_ALT                 51
+
+
 ///Indica el color de fondo del libro diario.
 #define CONF_BG_DIARIO               106
 /// Indica el color de la letra del diario en el pijama opcion 1.

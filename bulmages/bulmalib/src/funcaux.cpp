@@ -886,16 +886,17 @@ int sumaDigitos (int val) {
 
 
 /// Dependiendo de lo que se haya introducido distingue si es un CIF o un NIF y valida
-bool validarCIFNIF(QString nifcif) {
+bool validarCIFNIF(QString nifcif, QChar &digit) {
   if (nifcif[0].isDigit())
-    return validarNIF(nifcif);
-   return validarCIF(nifcif);
+    return validarNIF(nifcif, digit);
+   return validarCIF(nifcif, digit);
 }
 
 
 /// Valida un nif de 9 digitos. Si el nif pasado es menor de 5 digitos
-bool validarNIF (QString nif1) {
+bool validarNIF (QString nif1, QChar &digit) {
 
+	/// Quitamos los caracteres raros.
 	QString nif = nif1.replace("-","");
 	nif = nif.replace(".","");
 	nif = nif.replace("_","");
@@ -907,6 +908,7 @@ bool validarNIF (QString nif1) {
 	} // end if
 
 	int modulo = nif.toInt() % 23;
+	digit = QChar(codigoNIF[modulo]);
 	if (nif1[8] == QChar(codigoNIF[modulo]))
 	    return TRUE;
 	return FALSE;
@@ -914,7 +916,7 @@ bool validarNIF (QString nif1) {
 }
 
 // 
-bool validarCIF(QString cif1) {
+bool validarCIF(QString cif1, QChar &digit) {
 	
         // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
 	// Orden EHA/451/2008 de 20 de febrero.
@@ -953,6 +955,7 @@ bool validarCIF(QString cif1) {
 	int c = textsumapar.right(1).toInt();
 	int d = 10 - c;
 	if (cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W') {
+		digit = codigosCIF[d-1];
 		if (cif[8] == codigosCIF[d-1]) {
 			 return TRUE;
 		} else {
@@ -960,6 +963,7 @@ bool validarCIF(QString cif1) {
 		} // end if
 	} // end if
 	if (cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'C' || cif[0] == 'D' || cif[0] == 'E' || cif[0] == 'F' || cif[0] == 'G' || cif[0] == 'H' || cif[0] == 'I' || cif[0] == 'J' || cif[0] == 'U' || cif[0] == 'V' ) {
+		digit = QString::number(d %10)[0];
 		if (cif[8].digitValue() == d % 10) {
 			return TRUE;
 		} else {

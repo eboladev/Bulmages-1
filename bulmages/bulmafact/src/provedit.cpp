@@ -109,8 +109,9 @@ ProveedorView::~ProveedorView()
 void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
     _depura ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
-	if (!validarCIFNIF(mui_cifproveedor->text())) {
-		mensajeInfo("Error en el CIF del proveedor");
+	QChar digito;
+	if (!validarCIFNIF(mui_cifproveedor->text(), digito)) {
+		mensajeInfo("Error en el CIF del proveedor. Digito:" + QString(digito));
 	} // end if
     _depura ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 }

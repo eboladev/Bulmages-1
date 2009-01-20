@@ -52,6 +52,7 @@ public:
 public slots:
 	virtual void on_mui_referencia_returnPressed();
 	virtual void on_mui_listarefs_itemDoubleClicked(QListWidgetItem *it);
+	virtual void on_mui_traspasar_clicked();
 };
 
 

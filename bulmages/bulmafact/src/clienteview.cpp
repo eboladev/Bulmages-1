@@ -175,8 +175,9 @@ void ClienteView::on_mui_informe_clicked()
 void ClienteView::on_mui_cifcliente_lostFocus()
 {
     _depura ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
-	if (!validarCIFNIF(mui_cifcliente->text())) {
-		mensajeInfo("Error en el CIF del cliente");
+	QChar digito;
+	if (!validarCIFNIF(mui_cifcliente->text(), digito)) {
+		mensajeInfo("Error en el CIF del cliente. Control:" + QString(digito));
 	} // end if
     _depura ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );
 }

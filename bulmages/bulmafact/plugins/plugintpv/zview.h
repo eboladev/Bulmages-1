@@ -50,6 +50,8 @@ public:
     ZView ( Company *, QWidget * );
     ~ZView();
     int cargarPost ( QString idz );
+public slots:
+     virtual void on_mui_list_cellDoubleClicked(int row, int);
 };
 
 #endif

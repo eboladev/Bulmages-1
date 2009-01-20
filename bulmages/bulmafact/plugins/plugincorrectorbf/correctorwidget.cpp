@@ -107,8 +107,9 @@ void correctorwidget::on_mui_corregir_clicked()
     query = "SELECT * FROM cliente";
     cur = empresaBase()->cargacursor ( query );
     while (! cur->eof() ) {
-	if (! validarCIFNIF(cur->valor("cifcliente"))) {
-	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido.";
+	QChar digito;
+	if (! validarCIFNIF(cur->valor("cifcliente"), digito)) {
+	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ,"+ cur->valor("cifcliente")+" <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString(digito);
 	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
 	} // end if
 	cur->siguienteregistro();
@@ -118,8 +119,9 @@ void correctorwidget::on_mui_corregir_clicked()
     query = "SELECT * FROM proveedor";
     cur = empresaBase()->cargacursor ( query );
     while (! cur->eof() ) {
-	if (! validarCIFNIF(cur->valor("cifproveedor"))) {
-	    cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> tiene CIF invalido.";
+	QChar digito;
+	if (! validarCIFNIF(cur->valor("cifproveedor"), digito)) {
+	    cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + ","+cur->valor("cifproveedor")+ "</B> tiene CIF invalido. Digito de Control: " + QString(digito);
 	    agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
 	} // end if
 	cur->siguienteregistro();
