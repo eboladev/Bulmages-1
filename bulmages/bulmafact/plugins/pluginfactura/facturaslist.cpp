@@ -107,6 +107,7 @@ void FacturasList::iniciaForm()
     mui_procesada->insertItem ( 0, tr ( "Todas las facturas" ) );
     mui_procesada->insertItem ( 1, tr ( "Facturas procesadas" ) );
     mui_procesada->insertItem ( 2, tr ( "Facturas no procesadas" ) );
+	mui_procesada->setCurrentIndex(2);
     _depura ( "END FacturasList::iniciaForm" );
 }
 

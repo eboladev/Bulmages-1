@@ -72,13 +72,13 @@ PedidosClienteList::PedidosClienteList ( Company *comp, QWidget *parent, Qt::WFl
     m_articulo->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
     setSubForm ( mui_list );
+    iniciaForm();
     presentar();
     m_idpedidocliente = "";
     if(modoEdicion()) {
     	empresaBase() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
-    iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pedidocliente" );
     _depura ( "END PedidosClienteList::PedidosClienteList", 0 );
@@ -99,6 +99,7 @@ void PedidosClienteList::iniciaForm()
     mui_procesada->insertItem ( 0, tr ( "Todos los pedidos" ) );
     mui_procesada->insertItem ( 1, tr ( "Pedidos procesados" ) );
     mui_procesada->insertItem ( 2, tr ( "Pedidos no procesados" ) );
+	mui_procesada->setCurrentIndex(2);
     _depura ( "END PedidosClienteList::iniciaForm" );
 }
 

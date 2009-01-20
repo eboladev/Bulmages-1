@@ -75,13 +75,13 @@ PresupuestoList::PresupuestoList ( Company *comp, QWidget *parent, Qt::WFlags fl
     m_articulo->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
     setSubForm ( mui_list );
+    iniciaForm();
     presentar();
     m_idpresupuesto = "";
     if (modoEdicion()) {
     	empresaBase() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
-    iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "presupuesto" );
     _depura ( "END PresupuestoList::PresupuestoList(2)", 0 );
@@ -102,6 +102,7 @@ void PresupuestoList::iniciaForm()
     mui_procesada->insertItem ( 0, tr ( "Todos los presupuestos" ) );
     mui_procesada->insertItem ( 1, tr ( "Presupuestos procesados" ) );
     mui_procesada->insertItem ( 2, tr ( "Presupuestos no procesados" ) );
+	mui_procesada->setCurrentIndex(2);
     _depura ( "END PresupuestoList::iniciaForm" );
 }
 

@@ -149,13 +149,13 @@ AlbaranClienteList::AlbaranClienteList ( Company *comp, QWidget *parent, Qt::WFl
     m_cliente->setEmpresaBase ( comp );
     m_articulo->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
-    presentar();
     setSubForm ( mui_list );
+    iniciaForm();
+    presentar();
     mdb_idalbaran = "";
     if ( modoEdicion() )
         empresaBase() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
-    iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
     _depura ( "END AlbaranClienteList::AlbaranClienteList", 0 );
@@ -176,6 +176,7 @@ void AlbaranClienteList::iniciaForm()
     mui_procesada->insertItem ( 0, tr ( "Todos los albaranes" ) );
     mui_procesada->insertItem ( 1, tr ( "Albaranes procesados" ) );
     mui_procesada->insertItem ( 2, tr ( "Albaranes no procesados" ) );
+	mui_procesada->setCurrentIndex(2);
     _depura ( "END AlbaranClienteList::iniciaForm" );
 }
 
