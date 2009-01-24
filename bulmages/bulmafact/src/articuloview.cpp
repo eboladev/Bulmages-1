@@ -55,25 +55,25 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( tr ( "Articulo" ) );
+        setTitleName ( _( "Articulo" ) );
         setDBTableName ( "articulo" );
         setDBCampoId ( "idarticulo" );
-        addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Articulo", "Identificador" ) );
-        addDBCampo ( "codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Codigo" ) );
-        addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Nombre del articulo" ) );
-        addDBCampo ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Abreviacion" ) );
-        addDBCampo ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Observaciones" ) );
-        addDBCampo ( "presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Incluir en presentaciones" ) );
-        addDBCampo ( "controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Incluir en control de stock" ) );
-        addDBCampo ( "idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Tipo de articulo" ) );
-        addDBCampo ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Tipo de I.V.A." ) );
-        addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Articulo", "Codigo completo" ) );
-        addDBCampo ( "idfamilia", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Familia" ) );
-        addDBCampo ( "stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Stock" ) );
-        addDBCampo ( "inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Inactivo" ) );
-        addDBCampo ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "P.V.P. base" ) );
-        addDBCampo ( "pesoundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Peso Unidad" ) );
-        addDBCampo ( "volumenundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Volumen Unidad" ) );
+        addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador" ) );
+        addDBCampo ( "codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Codigo" ) );
+        addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nombre del articulo" ) );
+        addDBCampo ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Abreviacion" ) );
+        addDBCampo ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Observaciones" ) );
+        addDBCampo ( "presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, _( "Incluir en presentaciones" ) );
+        addDBCampo ( "controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, _( "Incluir en control de stock" ) );
+        addDBCampo ( "idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, _( "Tipo de articulo" ) );
+        addDBCampo ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, _( "Tipo de I.V.A." ) );
+        addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Codigo completo" ) );
+        addDBCampo ( "idfamilia", DBCampo::DBint, DBCampo::DBNotNull, _( "Familia" ) );
+        addDBCampo ( "stockarticulo", DBCampo::DBint, DBCampo::DBNothing, _( "Stock" ) );
+        addDBCampo ( "inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, _( "Inactivo" ) );
+        addDBCampo ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "P.V.P. base" ) );
+        addDBCampo ( "pesoundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Peso Unidad" ) );
+        addDBCampo ( "volumenundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Volumen Unidad" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ArticuloView_ArticuloView", this );
@@ -104,7 +104,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el articulo" ), this );
+        mensajeInfo ( _( "Error al crear el articulo" ) );
     } // end try
     _depura ( "END ArticuloView::ArticuloView", 0 );
 }
@@ -221,7 +221,7 @@ int ArticuloView::guardarPost()
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
         if ( mui_imagen->pixmap()->save ( confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
-            mensajeError ( tr ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ), this );
+            mensajeError ( _( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
         delete cur1;
@@ -275,15 +275,15 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
 
     m_archivoimagen = QFileDialog::getOpenFileName (
                           this,
-                          tr ( "Seleccione un archivo de imagen" ),
+                          _( "Seleccione un archivo de imagen" ),
                           "",
-                          tr ( "Imagenes (*.jpg)" ) );
+                          _( "Imagenes (*.jpg)" ) );
 
     /// Comprueba si se ha seleccionado un archivo.
     if ( !m_archivoimagen.isNull() ) {
         /// Comprueba que la imagen del archivo es valida.
         if ( imagen.load ( m_archivoimagen ) == false ) {
-            mensajeError ( tr ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ), this );
+            mensajeError ( _( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
             return;
         } // end if
 
@@ -307,8 +307,8 @@ void ArticuloView::on_mui_borrarimagen_clicked()
 
     if ( archivo.exists() ) {
         int val = QMessageBox::question ( this,
-                                          tr ( "Borrar imagen del articulo" ),
-                                          tr ( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?" ),
+                                          _( "Borrar imagen del articulo" ),
+                                          _( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?" ),
                                           QMessageBox::Yes,
                                           QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
@@ -316,7 +316,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
             /// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
 
             if ( archivo.remove() == false ) {
-                mensajeError ( tr ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ), this );
+                mensajeError ( _( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
             } // end if
         } // end if
     } // end if

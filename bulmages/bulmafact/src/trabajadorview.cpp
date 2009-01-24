@@ -41,7 +41,7 @@ TrabajadorView::TrabajadorView ( Company *emp, QWidget *parent )
 {
     _depura ( "TrabajadorView::TrabajadorView", 0 );
 
-    setTitleName ( tr ( "Trabajador" ) );
+    setTitleName ( _( "Trabajador" ) );
     setDBTableName ( "trabajador" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -197,7 +197,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar el trabajador" ), this );
+        mensajeInfo ( _( "Error al guardar el trabajador" ) );
         empresaBase() ->rollback();
     } // end try
     _depura ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
@@ -214,9 +214,9 @@ bool TrabajadorView::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar datos del trabajador" ),
-                                    tr ( "Desea guardar los cambios?" ),
-                                    tr ( "&Si" ), tr ( "&No" ), 0, 0, 1 ) == 0 )
+                                    _( "Guardar datos del trabajador" ),
+                                    _( "Desea guardar los cambios?" ),
+                                    _( "&Si" ), _( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
@@ -246,7 +246,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         pintar();
         _depura ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear un nuevo Trabajador" ), this );
+        mensajeInfo ( _( "Error al crear un nuevo Trabajador" ) );
         empresaBase() ->rollback();
     } // end try
 }
@@ -271,7 +271,7 @@ void TrabajadorView::on_mui_borrar_clicked()
         pintar();
         _depura ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el Trabajador" ), this );
+        mensajeInfo ( _( "Error al borrar el Trabajador" ) );
         empresaBase() ->rollback();
     }// end try
 }
@@ -285,9 +285,9 @@ void TrabajadorView::on_mui_imagen_clicked()
 {
     _depura ( "TrabajadorView::on_mui_imagen_clicked", 0 );
     m_archivoimagen = QFileDialog::getOpenFileName ( this,
-                      tr ( "Seleccione archivo" ),
+                      _( "Seleccione archivo" ),
                       "",
-                      tr ( "Imagenes (*.jpg)" ) );
+                      _( "Imagenes (*.jpg)" ) );
     m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
     _depura ( "END TrabajadorView::on_mui_imagen_clicked", 0 );
 }

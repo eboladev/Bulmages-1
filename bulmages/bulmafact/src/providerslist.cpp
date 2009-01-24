@@ -60,7 +60,7 @@ ProveedorList::ProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     if ( modoEdicion() ) {
         empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( tr ( "Selector de proveedores" ) );
+        setWindowTitle ( _( "Selector de proveedores" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
@@ -189,7 +189,7 @@ void ProveedorList::borrar()
         delete prov;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el proveedor" ), this );
+        mensajeInfo ( _( "Error al borrar el proveedor" ) );
     } // end try
     _depura ( "END ProveedorList::borrar", 0 );
 }
@@ -201,7 +201,7 @@ void ProveedorList::borrar()
 void ProveedorList::imprimir()
 {
     _depura ( "ProveedorList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( tr ( "Listado de Proveedores" ) );
+    mui_list->imprimirPDF ( _( "Listado de Proveedores" ) );
     _depura ( "END ProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -212,9 +212,9 @@ void ProveedorList::imprimir()
 void ProveedorList::on_mui_exportar_clicked()
 {
     QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    tr ( "Seleccione el archivo" ),
+                    _( "Seleccione el archivo" ),
                     confpr->valor ( CONF_DIR_USER ),
-                    tr ( "Proveedores (*.xml)" ) ) );
+                    _( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_PROVEEDORES );
@@ -230,9 +230,9 @@ void ProveedorList::on_mui_exportar_clicked()
 void ProveedorList::on_mui_importar_clicked()
 {
     QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    tr ( "Elija el archivo" ),
+                    _( "Elija el archivo" ),
                     confpr->valor ( CONF_DIR_USER ),
-                    tr ( "Proveedores (*.xml)" ) ) );
+                    _( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2BulmaFact ( filexml, IMPORT_PROVEEDORES );
@@ -280,22 +280,22 @@ ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( pa
     _depura ( "ProveedorListSubform::ProveedorListSubform", 0 );
     setDBTableName ( "proveedor" );
     setDBCampoId ( "idproveedor" );
-    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID proveedor" ) );
-    addSHeader ( "codproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
-    addSHeader ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F." ) );
-    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre" ) );
-    addSHeader ( "nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre alternativo" ) );
-    addSHeader ( "codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
-    addSHeader ( "cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de cuenta corriente" ) );
-    addSHeader ( "comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios" ) );
-    addSHeader ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion" ) );
-    addSHeader ( "poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Poblacion" ) );
-    addSHeader ( "cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo postal" ) );
-    addSHeader ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de telefono" ) );
-    addSHeader ( "faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de fax" ) );
-    addSHeader ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion de correo electronico" ) );
-    addSHeader ( "urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion de URL" ) );
-    addSHeader ( "clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Clave de acceso a la web del proveedor" ) );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID proveedor" ) );
+    addSHeader ( "codproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo" ) );
+    addSHeader ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "C.I.F." ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre alternativo" ) );
+    addSHeader ( "codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo" ) );
+    addSHeader ( "cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de cuenta corriente" ) );
+    addSHeader ( "comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentarios" ) );
+    addSHeader ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion" ) );
+    addSHeader ( "poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Poblacion" ) );
+    addSHeader ( "cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo postal" ) );
+    addSHeader ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de telefono" ) );
+    addSHeader ( "faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de fax" ) );
+    addSHeader ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion de correo electronico" ) );
+    addSHeader ( "urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion de URL" ) );
+    addSHeader ( "clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Clave de acceso a la web del proveedor" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

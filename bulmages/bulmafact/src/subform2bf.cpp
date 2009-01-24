@@ -239,7 +239,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
 
             } // end if
         } else {
-            mensajeAviso ( tr ( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ), this );
+            mensajeAviso ( _( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );
             /// \TODO Preparo para revisarlo para la version 0.11.2 o posterior.
             /** El codigo introducido no existe en la base de datos.
             Aqui se tiene que dar la siguiente informacion:
@@ -253,11 +253,11 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
             /*
             QMessageBox msgBox(this);
             msgBox.setIcon(QMessageBox::Question);
-            msgBox.setWindowTitle(tr("Articulo inexistente"));
-            msgBox.setText(tr("El uso de codigos de articulos inexistentes esta prohibido.\nCorrija esta situacion para poder guardar el documento."));
-            QPushButton *botonCrear = msgBox.addButton(tr("&Crear articulo"), QMessageBox::ActionRole);
-            QPushButton *botonSeleccionar = msgBox.addButton(tr("&Seleccionar articulo"), QMessageBox::ActionRole);
-            QPushButton *botonEditar = msgBox.addButton(tr("&Editar codigo"), QMessageBox::ActionRole);
+            msgBox.setWindowTitle(_("Articulo inexistente"));
+            msgBox.setText(_("El uso de codigos de articulos inexistentes esta prohibido.\nCorrija esta situacion para poder guardar el documento."));
+            QPushButton *botonCrear = msgBox.addButton(_("&Crear articulo"), QMessageBox::ActionRole);
+            QPushButton *botonSeleccionar = msgBox.addButton(_("&Seleccionar articulo"), QMessageBox::ActionRole);
+            QPushButton *botonEditar = msgBox.addButton(_("&Editar codigo"), QMessageBox::ActionRole);
             msgBox.setDefaultButton(botonCrear);
             msgBox.setEscapeButton(botonEditar);
 

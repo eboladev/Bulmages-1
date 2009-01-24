@@ -59,7 +59,7 @@ ClientsList::ClientsList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmo
     if ( modoEdicion() ) {
         empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( tr ( "Selector de clientes" ) );
+        setWindowTitle ( _( "Selector de clientes" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
@@ -127,7 +127,7 @@ void ClientsList::editar ( int row )
 void ClientsList::imprimir()
 {
     _depura ( "ClientsList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( tr ( "Listado de Clientes" ) );
+    mui_list->imprimirPDF ( _( "Listado de Clientes" ) );
     _depura ( "ClientsList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -151,7 +151,7 @@ void ClientsList::borrar()
         delete cli;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar un cliente" ), this );
+        mensajeInfo ( _( "Error al borrar un cliente" ) );
     } // end try
     _depura ( "END:ClientsList::on_mui_borrar_clicked", 0 );
 }
@@ -166,9 +166,9 @@ void ClientsList::on_mui_exportar_clicked()
     _depura ( "ClientsList::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName (
                         this,
-                        tr ( "Elija el archivo" ),
+                        _( "Elija el archivo" ),
                         confpr->valor ( CONF_DIR_USER ),
-                        tr ( "Clientes (*.xml)" ) ) );
+                        _( "Clientes (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_CLIENTES );
         filexml.close();
@@ -189,9 +189,9 @@ void ClientsList::on_mui_importar_clicked()
     _depura ( "ClientsList::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName (
                         this,
-                        tr ( "Elija el archivo" ),
+                        _( "Elija el archivo" ),
                         confpr->valor ( CONF_DIR_USER ),
-                        tr ( "Clientes (*.xml)" ) ) );
+                        _( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2BulmaFact ( filexml, IMPORT_CLIENTES );
@@ -244,8 +244,8 @@ void ClientsList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar cliente" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar cliente" ) );
+    QAction *edit = popup->addAction ( _( "Editar cliente" ) );
+    QAction *del = popup->addAction ( _( "Borrar cliente" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -265,23 +265,23 @@ ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : SubFo
     _depura ( "ClienteListSubform::ClienteListSubform", 0 );
     setDBTableName ( "cliente" );
     setDBCampoId ( "idcliente" );
-    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cliente" ) );
-    addSHeader ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
-    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F." ) );
-    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de cliente" ) );
-    addSHeader ( "nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre alternativo del cliente" ) );
-    addSHeader ( "bancocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero cuenta corriente" ) );
-    addSHeader ( "dircliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion" ) );
-    addSHeader ( "poblcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Poblacion" ) );
-    addSHeader ( "cpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo postal" ) );
-    addSHeader ( "telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de telefono" ) );
-    addSHeader ( "faxcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de fax" ) );
-    addSHeader ( "mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion de correo electronica" ) );
-    addSHeader ( "urlcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion URL" ) );
-    addSHeader ( "corpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Empresa" ) );
-    addSHeader ( "faltacliente", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de alta del cliente" ) );
-    addSHeader ( "fbajacliente", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de baja del cliente" ) );
-    addSHeader ( "comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios" ) );
+    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID cliente" ) );
+    addSHeader ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo" ) );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "C.I.F." ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre de cliente" ) );
+    addSHeader ( "nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre alternativo del cliente" ) );
+    addSHeader ( "bancocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero cuenta corriente" ) );
+    addSHeader ( "dircliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion" ) );
+    addSHeader ( "poblcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Poblacion" ) );
+    addSHeader ( "cpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo postal" ) );
+    addSHeader ( "telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de telefono" ) );
+    addSHeader ( "faxcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de fax" ) );
+    addSHeader ( "mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion de correo electronica" ) );
+    addSHeader ( "urlcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion URL" ) );
+    addSHeader ( "corpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Empresa" ) );
+    addSHeader ( "faltacliente", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de alta del cliente" ) );
+    addSHeader ( "fbajacliente", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de baja del cliente" ) );
+    addSHeader ( "comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentarios" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

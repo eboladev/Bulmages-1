@@ -333,9 +333,9 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\">\n";
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "Descuento" ), tipoEscape) + "</td>\n";
-            fitxersortidatxt += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "Porcentaje" ), tipoEscape) + "</td>\n";
-            fitxersortidatxt += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "Total Desc." ), tipoEscape) + "</td>\n";
+            fitxersortidatxt += "    <td>" + genEscape(_( "Descuento" ), tipoEscape) + "</td>\n";
+            fitxersortidatxt += "    <td>" + genEscape(_( "Porcentaje" ), tipoEscape) + "</td>\n";
+            fitxersortidatxt += "    <td>" + genEscape(_( "Total Desc." ), tipoEscape) + "</td>\n";
             fitxersortidatxt += "</tr>\n";
             for ( int i = 0; i < ( m_listadescuentos->rowCount() - 1 ); ++i ) {
                 linea1 = m_listadescuentos->lineaat ( i );
@@ -366,7 +366,7 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
                 parbaseimp = it.value();
             } // end if
             totbaseimp = totbaseimp + parbaseimp;
-            tr1 += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "Base Imponible" ) + " " + genEscape ( it.key() ), tipoEscape) + " %</td>\n";
+            tr1 += "    <td>" + genEscape(_( "Base Imponible" ) + " " + genEscape ( it.key() ), tipoEscape) + " %</td>\n";
             tr2 += "    <td>" + l.sprintf ( " %s ", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
         } // end for
 
@@ -380,7 +380,7 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
                 pariva = it.value() * Fixed ( it.key() ) / 100;
             } // end if
             totiva = totiva + pariva;
-            tr1 += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "I.V.A." ), tipoEscape) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
+            tr1 += "    <td>" + genEscape( _( "I.V.A." ), tipoEscape) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
             tr2 += "    <td>" + l.sprintf ( " %s ", genEscape(pariva.toQString(), tipoEscape).toAscii().constData() ) + "</td>\n";
         } // end for
 
@@ -395,18 +395,18 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
             } // end if
             totreqeq = totreqeq + parreqeq;
             if ( parreqeq > 0 ) {
-                tr1 += "    <td>" + QApplication::translate ( "Presupuesto", "R.E." ) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
+                tr1 += "    <td>" + _( "R.E." ) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
                 tr2 += "    <td>" + l.sprintf ( " %s ", parreqeq.toQString().toAscii().constData() ) + "</td>\n";
             } // end if
         } // end for
 
         Fixed totirpf = totbaseimp * irpf / 100;
         if ( totirpf > 0 ) {
-            tr1 += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "I.R.P.F (-" ) + " " +  irpf.toQString() + ") %", tipoEscape) +"</td>\n";
+            tr1 += "    <td>" + genEscape(_( "I.R.P.F (-" ) + " " +  irpf.toQString() + ") %", tipoEscape) +"</td>\n";
             tr2 += "    <td>" + genEscape(l.sprintf ( " %s ", totirpf.toQString().toAscii().constData() ), tipoEscape) + "</td>\n";
         } // end if
 
-        tr1 += "    <td>" + genEscape(QApplication::translate ( "Presupuesto", "Total" ), tipoEscape) + "</td>\n";
+        tr1 += "    <td>" + genEscape(_( "Total" ), tipoEscape) + "</td>\n";
         tr2 += "    <td>" + genEscape(l.sprintf ( " %s ", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() ), tipoEscape) + "</td>\n";
         fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
         buff.replace ( "[totales]", fitxersortidatxt );
@@ -841,11 +841,11 @@ void FichaBf::imprimir()
     } catch (int e) {
 	if (e == 100) {
 		/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-		mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
+		mensajeInfo ( _( "Tiene que guardar el documento antes de poder procesarlo." ) );
 		throw (-1);
 	} // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado en la impresion" ), this );
+        mensajeInfo ( _( "Error inesperado en la impresion" ) );
     } // end try
 }
 

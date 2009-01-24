@@ -92,7 +92,7 @@ void Company::createMainWindows ( Splash *splash )
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
     _depura ( "Company::createMainWindows inicializamos m_articleslist", 1 );
-    splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de articulos" ) );
+    splash->mensaje ( _( "Inicializando listado de articulos" ) );
     splash->setBarraProgreso ( 7 );
     m_progressbar->setValue ( 0 );
     /// Comprobamos que tengamos permisos para trabajar con 'Articulos'.
@@ -113,7 +113,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 8%
     _depura ( "Company::createMainWindows inicializamos m_providerslist", 1 );
-    splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de proveedores" ) );
+    splash->mensaje ( _( "Inicializando listado de proveedores" ) );
     splash->setBarraProgreso ( 10 );
     m_progressbar->setValue ( 8 );
     /// Comprobamos que tengamos permisos para trabajar con 'Clientes'.
@@ -130,7 +130,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// pb = 16%
     _depura ( "Company::createMainWindows inicializamos m_clientesList", 1 );
-    splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de clientes" ) );
+    splash->mensaje ( _( "Inicializando listado de clientes" ) );
     splash->setBarraProgreso ( 16 );
     m_progressbar->setValue ( 16 );
     /// Comprobamos que tengamos permisos para trabajar con 'Proveedores'.
@@ -209,7 +209,7 @@ void Company::createMainWindows ( Splash *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmafact->statusBar() ->showMessage ( nameDB(), 2000 );
-    m_bulmafact->setWindowTitle ( QApplication::translate ( "Company", "Facturacion GPL" ) + " :: " + nameDB() );
+    m_bulmafact->setWindowTitle ( _( "Facturacion GPL" ) + " :: " + nameDB() );
 
     _depura ( "END Company::createMainWindows", 0 );
 }
@@ -312,7 +312,7 @@ void Company::s_newClienteView()
     m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();
-    bud->setWindowTitle ( QApplication::translate ( "Company", "Nuevo cliente" ) );
+    bud->setWindowTitle ( _( "Nuevo cliente" ) );
     /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
     bud->desactivaDocumentos();
     bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );

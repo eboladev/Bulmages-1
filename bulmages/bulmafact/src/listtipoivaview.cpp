@@ -48,7 +48,7 @@ ListTipoIVAView::ListTipoIVAView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTipoIVAView::ListTipoIVAView", 1 );
-    setTitleName ( tr ( "Tipo IVA" ) );
+    setTitleName ( _( "Tipo IVA" ) );
     setDBTableName ( "tipo_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -69,7 +69,7 @@ void ListTipoIVAView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar los tipos de IVA" ), this );
+        mensajeInfo ( _( "Error al guardar los tipos de IVA" ) );
     } // end try
     _depura ( "END ListTipoIVAView::on_mui_aceptar_clicked", 0 );
 }
@@ -104,8 +104,8 @@ ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
     setDBTableName ( "tipo_iva" );
     setDBCampoId ( "idtipo_iva" );
-    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Tipo IVA" ) );
-    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Tipo IVA" ) );
+    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Id Tipo IVA" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Tipo IVA" ) );
     setinsercion ( TRUE );
     _depura ( "END ListTipoIVASubForm::ListTipoIVASubForm", 0 );
 }

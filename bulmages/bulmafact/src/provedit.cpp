@@ -39,29 +39,29 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
     _depura ( "ProveedorView::ProveedorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setTitleName ( tr ( "Proveedor" ) );
+        setTitleName ( _( "Proveedor" ) );
         setDBTableName ( "proveedor" );
         setDBCampoId ( "idproveedor" );
-        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID proveedor" ) );
-        addDBCampo ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nombre del proveedor" ) );
-        addDBCampo ( "nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Nombre alternativo del proveedor" ) );
-        addDBCampo ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "C.I.F. del proveedor" ) );
-        addDBCampo ( "codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo cliente" ) );
-        addDBCampo ( "cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Banco proveedor" ) );
-        addDBCampo ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion" ) );
-        addDBCampo ( "poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Poblacion" ) );
-        addDBCampo ( "idprovincia", DBCampo::DBint, DBCampo::DBNothing, tr ( "Provincia" ) );
-        addDBCampo ( "cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo postal" ) );
-        addDBCampo ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Numero de telefono" ) );
-        addDBCampo ( "faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Numero de fax" ) );
-        addDBCampo ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion electronica" ) );
-        addDBCampo ( "urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "URL" ) );
-        addDBCampo ( "comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Comentarios" ) );
-        addDBCampo ( "codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo" ) );
-        addDBCampo ( "regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Regimen Fiscal" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Forma_Pago" ) );
-        addDBCampo ( "recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Recargo de Equivalencia" ) );
-        addDBCampo ( "irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "IRPF" ) );
+        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID proveedor" ) );
+        addDBCampo ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nombre del proveedor" ) );
+        addDBCampo ( "nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre alternativo del proveedor" ) );
+        addDBCampo ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "C.I.F. del proveedor" ) );
+        addDBCampo ( "codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo cliente" ) );
+        addDBCampo ( "cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Banco proveedor" ) );
+        addDBCampo ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion" ) );
+        addDBCampo ( "poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Poblacion" ) );
+        addDBCampo ( "idprovincia", DBCampo::DBint, DBCampo::DBNothing, _( "Provincia" ) );
+        addDBCampo ( "cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo postal" ) );
+        addDBCampo ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de telefono" ) );
+        addDBCampo ( "faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de fax" ) );
+        addDBCampo ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion electronica" ) );
+        addDBCampo ( "urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "URL" ) );
+        addDBCampo ( "comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
+        addDBCampo ( "codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo" ) );
+        addDBCampo ( "regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Regimen Fiscal" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Forma_Pago" ) );
+        addDBCampo ( "recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, _( "Recargo de Equivalencia" ) );
+        addDBCampo ( "irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, _( "IRPF" ) );
 
         setupUi ( this );
 
@@ -84,7 +84,7 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         /// Disparamos los plugins.
         g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el proveedor" ), this );
+        mensajeInfo ( _( "Error al crear el proveedor" ) );
     } // end try
 
     _depura ( "END ProveedorView::ProveedorView", 0 );

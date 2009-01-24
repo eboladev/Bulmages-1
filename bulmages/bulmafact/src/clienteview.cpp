@@ -50,34 +50,34 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
 
-        setTitleName ( tr ( "Cliente" ) );
+        setTitleName ( _( "Cliente" ) );
         setDBTableName ( "cliente" );
         setDBCampoId ( "idcliente" );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Cliente", "ID cliente" ) );
-        addDBCampo ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate ( "Cliente", "Nombre del cliente" ) );
-        addDBCampo ( "nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Nombre alternativo del cliente" ) );
-        addDBCampo ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "C.I.F. del cliente" ) );
-        addDBCampo ( "bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Numero cuenta corriente" ) );
-        addDBCampo ( "dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Direccion" ) );
-        addDBCampo ( "poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Poblacion" ) );
-        addDBCampo ( "idprovincia", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Provincia" ) );
-        addDBCampo ( "cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Codigo postal" ) );
-        addDBCampo ( "telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Numero de telefono" ) );
-        addDBCampo ( "teltrabcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Numero de telefono en el trabajo" ) );
-        addDBCampo ( "movilcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Numero de telefono movil" ) );
-        addDBCampo ( "faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Numero de fax" ) );
-        addDBCampo ( "mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Direccion electronica" ) );
-        addDBCampo ( "urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Identificador de presupuesto" ) );
-        addDBCampo ( "faltacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Fecha de alta del cliente" ) );
-        addDBCampo ( "fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Fecha de baja del cliente" ) );
-        addDBCampo ( "comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Comentarios" ) );
-        addDBCampo ( "ecommercedatacliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Datos de comercio electronico" ) );
-        addDBCampo ( "inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Cliente inactivo" ) );
-        addDBCampo ( "regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Regimen fiscal" ) );
-        addDBCampo ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Codigo" ) );
-        addDBCampo ( "corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Empresa" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Forma de pago" ) );
-        addDBCampo ( "recargoeqcliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Recargo de Equivalencia" ) );
+        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID cliente" ) );
+        addDBCampo ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nombre del cliente" ) );
+        addDBCampo ( "nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre alternativo del cliente" ) );
+        addDBCampo ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "C.I.F. del cliente" ) );
+        addDBCampo ( "bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero cuenta corriente" ) );
+        addDBCampo ( "dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion" ) );
+        addDBCampo ( "poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Poblacion" ) );
+        addDBCampo ( "idprovincia", DBCampo::DBint, DBCampo::DBNothing, _( "Provincia" ) );
+        addDBCampo ( "cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo postal" ) );
+        addDBCampo ( "telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de telefono" ) );
+        addDBCampo ( "teltrabcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de telefono en el trabajo" ) );
+        addDBCampo ( "movilcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de telefono movil" ) );
+        addDBCampo ( "faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de fax" ) );
+        addDBCampo ( "mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion electronica" ) );
+        addDBCampo ( "urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Identificador de presupuesto" ) );
+        addDBCampo ( "faltacliente", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de alta del cliente" ) );
+        addDBCampo ( "fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de baja del cliente" ) );
+        addDBCampo ( "comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
+        addDBCampo ( "ecommercedatacliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Datos de comercio electronico" ) );
+        addDBCampo ( "inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Cliente inactivo" ) );
+        addDBCampo ( "regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Regimen fiscal" ) );
+        addDBCampo ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo" ) );
+        addDBCampo ( "corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Empresa" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Forma de pago" ) );
+        addDBCampo ( "recargoeqcliente", DBCampo::DBboolean, DBCampo::DBNothing, _( "Recargo de Equivalencia" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ClienteView_ClienteView", this );
@@ -98,7 +98,7 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         /// Disparamos los plugins.
         res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el cliente" ), this );
+        mensajeInfo ( _( "Error al crear el cliente" ) );
     } // end try
     _depura ( "END ClienteView::ClienteView", 0 );
 }
@@ -157,7 +157,7 @@ void ClienteView::on_mui_informe_clicked()
     _depura ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
-        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ) );
     } else {
         InformeCliente inf ( empresaBase() );
         inf.setCliente ( DBvalue ( "idcliente" ) );

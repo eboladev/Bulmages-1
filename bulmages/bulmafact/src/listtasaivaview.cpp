@@ -48,7 +48,7 @@ ListTasaIVAView::ListTasaIVAView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTasaIVAView::ListTasaIVAView", 1 );
-    setTitleName ( tr ( "Tasa IVA" ) );
+    setTitleName ( _( "Tasa IVA" ) );
     setDBTableName ( "tasa_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -69,7 +69,7 @@ void ListTasaIVAView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar las tasas de IVA" ), this );
+        mensajeInfo ( _( "Error al guardar las tasas de IVA" ) );
     } // end try
     _depura ( "END ListTasaIVAView::on_mui_aceptar_clicked", 0 );
 }
@@ -92,12 +92,12 @@ ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "ListTasaIVASubForm::ListTasaIVASubForm", 0 );
     setDBTableName ( "tasa_iva" );
     setDBCampoId ( "idtasa_iva" );
-    addSHeader ( "idtasa_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Tasa IVA" ) );
-    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Tipo IVA" ) );
-    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id Tipo IVA" ) );
-    addSHeader ( "porcentasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Porcentaje IVA" ) );
-    addSHeader ( "porcentretasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Porcentaje Recargo Equivalencia" ) );
-    addSHeader ( "fechatasa_iva", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Fecha Entrada en Vigor" ) );
+    addSHeader ( "idtasa_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Id Tasa IVA" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Tipo IVA" ) );
+    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Id Tipo IVA" ) );
+    addSHeader ( "porcentasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Porcentaje IVA" ) );
+    addSHeader ( "porcentretasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Porcentaje Recargo Equivalencia" ) );
+    addSHeader ( "fechatasa_iva", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, _( "Fecha Entrada en Vigor" ) );
     setinsercion ( TRUE );
     _depura ( "END ListTasaIVASubForm::ListTasaIVASubForm", 0 );
 }

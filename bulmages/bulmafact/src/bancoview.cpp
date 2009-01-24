@@ -39,7 +39,7 @@ BancoView::BancoView ( Company *emp, QWidget *parent )
         : FichaBf ( emp, parent )
 {
     _depura ( "BancoView::BancoView", 0 );
-    setTitleName ( tr ( "Banco" ) );
+    setTitleName ( _( "Banco" ) );
     /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.
     setDBTableName ( "banco" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -165,7 +165,7 @@ int BancoView::guardar()
         _depura ( "END BancoView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar" ), this );
+        mensajeInfo ( _( "Error al guardar" ) );
         return -1;
     } // end try
 }
@@ -181,9 +181,9 @@ bool BancoView::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar datos del trabajador" ),
-                                    tr ( "Desea guardar los cambios?" ),
-                                    tr ( "&Si" ), tr ( "&No" ), 0, 0, 1 ) == 0 )
+                                    _( "Guardar datos del trabajador" ),
+                                    _( "Desea guardar los cambios?" ),
+                                    _( "&Si" ), _( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
@@ -213,7 +213,7 @@ void BancoView::on_mui_nuevo_clicked()
         pintar();
         _depura ( "END BancoView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado el crear el Banco" ), this );
+        mensajeInfo ( _( "Error inesperado el crear el Banco" ) );
         empresaBase() ->rollback();
     } // end catch
 }
@@ -241,7 +241,7 @@ void BancoView::on_mui_borrar_clicked()
         pintar();
         _depura ( "END BancoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado al borrar el banco" ), this );
+        mensajeInfo ( _( "Error inesperado al borrar el banco" ) );
         empresaBase() ->rollback();
     } // end try
 }

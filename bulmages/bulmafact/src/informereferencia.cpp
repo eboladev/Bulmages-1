@@ -138,11 +138,11 @@ void InformeCliente::generarInforme()
     fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 2.5cm, 2.5cm, 2.5cm, 2.5cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += " <td>" + QApplication::translate ( "InformeCliente", "Articulo" ) + "</td>\n";
-    fitxersortidatxt += " <td>" + QApplication::translate ( "InformeCliente", "Pres." ) + "</td>\n";
-    fitxersortidatxt += " <td>" + QApplication::translate ( "InformeCliente", "Pedido" ) + "</td>\n";
-    fitxersortidatxt += " <td>" + QApplication::translate ( "InformeCliente", "Entregado" ) + "</td>\n";
-    fitxersortidatxt += " <td>" + QApplication::translate ( "InformeCliente", "Facturado" ) + "</td>\n";
+    fitxersortidatxt += " <td>" + _( "Articulo" ) + "</td>\n";
+    fitxersortidatxt += " <td>" + _( "Pres." ) + "</td>\n";
+    fitxersortidatxt += " <td>" + _( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += " <td>" + _( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += " <td>" + _( "Facturado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -171,10 +171,10 @@ void InformeCliente::generarInforme()
     fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Articulo" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -209,11 +209,11 @@ void InformeCliente::generarInforme()
     fitxersortidatxt += "<para>Totales ventas</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"3cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Pres." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Cobrado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Cobrado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.
@@ -257,10 +257,10 @@ void InformeCliente::generarInforme()
     fitxersortidatxt += "<para>Totales compras</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\" 4cm, 4cm, 4cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeCliente", "Pagado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _( "Pagado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.

@@ -38,7 +38,7 @@ FPagoView::FPagoView ( Company *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     groupBox1->setDisabled ( TRUE );
-    setTitleName ( tr ( "Forma de Pago" ) );
+    setTitleName ( _( "Forma de Pago" ) );
     setDBTableName ( "forma_pago" );
     setModoEdicion();
     m_cursorFPagoView = NULL;
@@ -148,8 +148,8 @@ bool FPagoView::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar forma de pago" ),
-                                    tr ( "Desea guardar los cambios." ),
+                                    _( "Guardar forma de pago" ),
+                                    _( "Desea guardar los cambios." ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
@@ -204,7 +204,7 @@ void FPagoView::on_mui_borrar_clicked()
         groupBox1->setDisabled ( TRUE );
         _depura ( "END FPagoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al intentar borrar la forma de pago" ), this );
+        mensajeInfo ( _( "Error al intentar borrar la forma de pago" ) );
         empresaBase() ->rollback();
     } // end try
 }

@@ -50,7 +50,7 @@ ListConfiguracionView::ListConfiguracionView ( Company *comp, QWidget *parent ) 
     _depura ( "ListConfiguracionView::ListConfiguracionView", 1 );
     setupUi ( this );
 
-    setTitleName ( tr ( "Configuracion" ) );
+    setTitleName ( _( "Configuracion" ) );
     setDBTableName ( "configuracion" );
     setDBCampoId ( "nombre" );
 
@@ -88,8 +88,8 @@ ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : SubForm
     setDBTableName ( "configuracion" );
     setDBCampoId ( "nombre" );
     addSHeader ( "nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "nombre" );
-    addSHeader ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr ( "Nombre" ) );
-    addSHeader ( "valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Valor" ) );
+    addSHeader ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Valor" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );

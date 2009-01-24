@@ -43,7 +43,7 @@ TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoCo
     setupUi ( this );
     m_listTipos->setColumnCount ( 3 );
     QStringList headers;
-    headers << tr ( "Id" ) << tr ( "Codigo" ) << tr ( "Descripcion" );
+    headers << _( "Id" ) << _( "Codigo" ) << _( "Descripcion" );
     m_listTipos->setHeaderLabels ( headers );
     m_semaforoPintar = FALSE;
     m_idtipo = "";
@@ -136,7 +136,7 @@ void TipoArticuloList::pintar()
         m_semaforoPintar = FALSE;
         _depura ( "END TipoArticuloList::pintar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error en la carga" ), this );
+        mensajeInfo ( _( "Error en la carga" ) );
         if ( cursoraux1 ) delete cursoraux1;
     } // end try
 }
@@ -287,8 +287,8 @@ bool TipoArticuloList::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar Tipo de Articulo" ),
-                                    tr ( "Desea guardar los cambios?" ),
+                                    _( "Guardar Tipo de Articulo" ),
+                                    _( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
@@ -363,7 +363,7 @@ void TipoArticuloList::on_mui_crear_clicked()
         pintar();
         _depura ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error en la creacion" ), this );
+        mensajeInfo ( _( "Error en la creacion" ) );
         empresaBase()->rollback();
         return;
     } // end try
@@ -381,8 +381,8 @@ void TipoArticuloList::on_mui_borrar_clicked()
 
 
     int val = QMessageBox::question ( this,
-                                      tr ( "Borrar" ) + " " + windowTitle(),
-                                      tr ( "Desea eliminar" ) + " " + windowTitle(),
+                                      _( "Borrar" ) + " " + windowTitle(),
+                                      _( "Desea eliminar" ) + " " + windowTitle(),
                                       QMessageBox::Yes,
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
@@ -391,7 +391,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
             dialogChanges_cargaInicial();
             _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
-            mensajeInfo ( windowTitle() + " " + tr ( "no se ha podido borrar" ), this );
+            mensajeInfo ( windowTitle() + " " + _( "no se ha podido borrar" ) );
         } // end if
     } // end if
 
@@ -408,7 +408,7 @@ int TipoArticuloList::borrar()
 {
     _depura ( "TipoArticuloList::borrar", 0 );
     if ( m_idtipo == "" ) {
-        mensajeInfo ( tr ( "Debe seleccionar un tipo" ), this );
+        mensajeInfo ( _( "Debe seleccionar un tipo" ) );
         return -1;
     } // end if
     try {
@@ -422,7 +422,7 @@ int TipoArticuloList::borrar()
         pintar();
         _depura ( "END TipoArticuloList::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar la familia" ), this );
+        mensajeInfo ( _( "Error al borrar la familia" ) );
         return -1;
     } // end try
     return 0;

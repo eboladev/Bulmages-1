@@ -48,7 +48,7 @@ ListAlmacenView::ListAlmacenView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListAlmacenView::ListAlmacenView", 1 );
-    setTitleName ( tr ( "Almacen" ) );
+    setTitleName ( _( "Almacen" ) );
     setDBTableName ( "almacen" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -69,7 +69,7 @@ void ListAlmacenView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar los almacenes" ), this );
+        mensajeInfo ( _( "Error al guardar los almacenes" ) );
     } // end try
     _depura ( "END ListAlmacenView::on_mui_aceptar_clicked", 0 );
 }
@@ -95,9 +95,9 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "ListAlmacenSubForm::ListAlmacenSubForm", 0 );
     setDBTableName ( "almacen" );
     setDBCampoId ( "idalmacen" );
-    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id almacen" ) );
-    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Codigo almacen" ) );
-    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Nombre almacen" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Id almacen" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Codigo almacen" ) );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Nombre almacen" ) );
     setinsercion ( TRUE );
     _depura ( "END ListAlmacenSubForm::ListAlmacenSubForm", 0 );
 }

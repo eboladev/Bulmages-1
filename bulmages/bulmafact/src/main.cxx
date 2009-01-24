@@ -115,7 +115,7 @@ int main ( int argc, char **argv )
 
         /// Cargamos el splashScreen.
         Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMAFACT ), "BulmaFact", CONFIG_VERSION );
-        splashScr->mensaje ( QApplication::translate ( "main", "Iniciando clases" ) );
+        splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
         /// Leemos los argumentos pasados por la linea de comandos.
@@ -155,7 +155,7 @@ int main ( int argc, char **argv )
         g_main = bges;
 
         splashScr->show();
-        splashScr->mensaje ( QApplication::translate ( "main", "Leyendo configuracion" ) );
+        splashScr->mensaje ( _( "Leyendo configuracion" ) );
         splashScr->setBarraProgreso ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
@@ -168,7 +168,7 @@ int main ( int argc, char **argv )
             confpr->leeconfig ( confEsp );
         } // end if
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Cargando traducciones" ) );
+        splashScr->mensaje ( _( "Cargando traducciones" ) );
         splashScr->setBarraProgreso ( 3 );
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -202,25 +202,25 @@ int main ( int argc, char **argv )
 
 
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Cargando plugins" ) );
+        splashScr->mensaje ( _( "Cargando plugins" ) );
         splashScr->setBarraProgreso ( 4 );
 
         /// Hacemos la carga de las librerias que contienen los plugins.
         g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMAFACT ) );
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Lanzando plugins" ) );
+        splashScr->mensaje ( _( "Lanzando plugins" ) );
         splashScr->setBarraProgreso ( 5 );
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "entryPoint", bges );
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Inicializando componentes" ) );
+        splashScr->mensaje ( _( "Inicializando componentes" ) );
         splashScr->setBarraProgreso ( 6 );
 
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows ( splashScr );
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Terminado" ) );
+        splashScr->mensaje ( _( "Terminado" ) );
         splashScr->setBarraProgreso ( 100 );
 
         delete splashScr;
@@ -231,7 +231,7 @@ int main ( int argc, char **argv )
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "exitPoint", bges );
     } catch ( ... ) {
-        mensajeInfo ( QApplication::translate ( "main", "Error inesperado en BulmaFact. El programa se cerrara." ) );
+        mensajeInfo ( _( "Error inesperado en BulmaFact. El programa se cerrara." ) );
     } // end try
 
     fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );

@@ -61,8 +61,8 @@ void BusquedaReferencia::on_mui_informe_clicked()
     _depura ( "BusquedaReferencia::on_mui_buscar_clicked\n", 0 );
 
     Ficha newfich ( empresaBase(), NULL );
-    newfich.setTitleName ( tr ( "Informe" ) );
-    newfich.addDBCampo ( "referencia", DBCampo::DBvarchar, DBCampo::DBPrimaryKey, QApplication::translate ( "Referencia", "Referencia" ) );
+    newfich.setTitleName ( _( "Informe" ) );
+    newfich.addDBCampo ( "referencia", DBCampo::DBvarchar, DBCampo::DBPrimaryKey, _( "Referencia" ) );
     newfich.setDBvalue ( "referencia", mui_referencia->text() );
     if (newfich.generaRML ( "informereferencia.rml" )) {
     	invocaPDF ( "informereferencia" );

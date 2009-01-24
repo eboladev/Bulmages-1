@@ -47,7 +47,7 @@ ListSerieFacturaView::ListSerieFacturaView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "INIT_ListSerieFacturaView::ListSerieFacturaView", 1 );
-    setTitleName ( tr ( "Serie de Factura" ) );
+    setTitleName ( _( "Serie de Factura" ) );
     setDBTableName ( "serie_factura" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -79,8 +79,8 @@ ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : SubForm2B
     setDBTableName ( "serie_factura" );
     setDBCampoId ( "codigoserie_factura" );
     addSHeader ( "codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "codigoserie_factura" );
-    addSHeader ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Codigo serie factura" ) );
-    addSHeader ( "descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion serie factura" ) );
+    addSHeader ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Codigo serie factura" ) );
+    addSHeader ( "descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Descripcion serie factura" ) );
     setinsercion ( TRUE );
     _depura ( "END ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
 }
