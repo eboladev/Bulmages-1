@@ -24,7 +24,6 @@
 
 #include "fpagoview.h"
 #include "company.h"
-#include "funcaux.h"
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.

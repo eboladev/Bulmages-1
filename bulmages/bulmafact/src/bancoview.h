@@ -22,6 +22,7 @@
 #ifndef BANCOVIEW_H
 #define BANCOVIEW_H
 
+#include "funcaux.h"
 #include <ui_bancobase.h>
 
 #include "fichabf.h"

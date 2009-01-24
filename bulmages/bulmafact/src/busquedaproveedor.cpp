@@ -23,7 +23,6 @@
 #include "busquedaproveedor.h"
 #include "providerslist.h"
 #include "company.h"
-#include "funcaux.h"
 
 
 /** Inicializa los componentes del Widget a NULL para que no haya confusiones en saber

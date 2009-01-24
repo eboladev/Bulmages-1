@@ -36,7 +36,6 @@
 #include "qworkspace2.h"
 #include "bulmafact.h"
 #include "listventanas.h"
-#include "funcaux.h"
 #include "aboutview.h"
 #include "busquedaperiodo.h"
 #include "plugins.h"

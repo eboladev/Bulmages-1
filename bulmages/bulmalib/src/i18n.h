@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2009 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,41 +19,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDAREFERENCIA_H
-#define BUSQUEDAREFERENCIA_H
+#ifndef I18N_H
+#define I18N_H
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QString>
 
-#include "blwidget.h"
-#include "funcaux.h"
-#include "ui_busquedareferenciabase.h"
+#include <libintl.h>
+#include <locale.h>
+
+#define _(String) i18n (String)
 
 
-/// Permite introducir una referencia.
-/** Este Widget permite introducir una referencia. */
-class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase
-{
-    Q_OBJECT
-
-public:
-    BusquedaReferencia ( QWidget *parent = 0 );
-    ~BusquedaReferencia();
-    virtual void setText ( QString val );
-    virtual void setValorCampo ( QString val );
-    virtual QString text();
-    virtual QString valorCampo();
-
-public slots:
-    virtual void on_mui_informe_clicked();
-    virtual void on_mui_referencia_editingFinished();
-    virtual void on_mui_rferencia_returnPressed();
-    virtual void on_mui_abrirtodo_clicked();
-
-signals:
-    void valueChanged ( const QString &);
-    void returnPressed();
-};
+QString i18n(const char *, int = 0);
 
 #endif
 

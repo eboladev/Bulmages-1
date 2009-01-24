@@ -26,7 +26,6 @@
 
 #include "familiasview.h"
 #include "company.h"
-#include "funcaux.h"
 
 #define COL_NOMFAMILIA            0
 #define COL_CODCOMPLETOFAMILIA    1

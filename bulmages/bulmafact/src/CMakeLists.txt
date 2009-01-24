@@ -17,15 +17,15 @@
 # Free Software Foundation, Inc.,                                       #
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
+#                                                                       #
+#########################################################################
+# bulmafact                                                             #
+#########################################################################
 
-###########################################
-# bulmafact					  #
-###########################################
 
 file(GLOB bulmafact_SRC *.c *.cpp)
 file(GLOB bulmafact_MOCS *.hpp *.h)
 file(GLOB bulmafact_UIS *.ui)
-
 
 set(bulmafactEx main.cxx)
 
@@ -33,7 +33,7 @@ set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 set(QT_USE_QTDBUS true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -51,13 +51,24 @@ include_directories(
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr i18n)
 QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
+
+
+
+# delete previous list of files to process (i18n)
+FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
+
+FOREACH(loop ${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafactEx})
+    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list ${loop} "\n")
+ENDFOREACH(loop)
 
 
 
 add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
 		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} )
+
+
 
 set_target_properties( libbulmafact PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
@@ -69,6 +80,14 @@ target_link_libraries( libbulmafact bulmalib ${QT_LIBRARIES}
 
 
 add_executable(bulmafact ${bulmafactEx})
+
+# i18n
+GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_BINARY_DIR}/bulmafact/src ${CMAKE_SOURCE_DIR}/bulmafact/src/ ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
+GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES es_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+
+# i18n commands executed after build.
+ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
 target_link_libraries( bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 

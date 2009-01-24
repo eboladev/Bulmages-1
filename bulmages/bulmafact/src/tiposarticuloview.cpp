@@ -24,7 +24,6 @@
 
 #include "tiposarticuloview.h"
 #include "company.h"
-#include "funcaux.h"
 
 #define COL_IDTIPOARTICULO    0
 #define COL_CODTIPOARTICULO   1

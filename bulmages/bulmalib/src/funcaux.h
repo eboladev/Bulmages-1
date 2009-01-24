@@ -47,6 +47,7 @@
 
 #include "qapplication2.h"
 #include "config.h"
+#include "i18n.h"
 
 extern QMainWindow *g_main;
 

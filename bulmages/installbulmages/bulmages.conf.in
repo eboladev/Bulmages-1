@@ -32,7 +32,8 @@ CONF_EJECUTABLES               @CMAKE_INSTALL_PREFIX@/bin/
 CONF_TRADUCCION                locales
 
 # Este parametro indica en que directorio estan las traducciones.
-CONF_DIR_TRADUCCION            @CMAKE_INSTALL_PREFIX@/share/bulmages/traducciones/
+# (No cambiar: Se usa CMAKE_INSTALL_PREFIX/share/locale para 'gettext')
+CONF_DIR_TRADUCCION            @CMAKE_INSTALL_PREFIX@/share/locale
 
 
 # Parametro que indica donde se encuentra el archivo de log.

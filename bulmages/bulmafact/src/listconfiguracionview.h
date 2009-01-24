@@ -35,8 +35,6 @@
 #include "subform2bf.h"
 
 
-
-
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
 class ListConfiguracionSubForm : public SubForm2Bf

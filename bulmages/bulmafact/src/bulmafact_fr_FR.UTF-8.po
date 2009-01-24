@@ -1,0 +1,1066 @@
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listalmacenbase.h:117
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:575
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:638
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listtipoivabase.h:117
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:240
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:778
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listseriefacturabase.h:84
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listconfiguracionbase.h:118
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listtasaivabase.h:118
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:386
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:341
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:288
+msgid "&Acerca de"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:302
+msgid "&Acerca de BulmaFact"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:305
+msgid "&Almacenes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:798
+msgid "&Aplicar Recargo de Equivalencia."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:292
+msgid "&Articulos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listalmacenbase.h:118
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:576
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:639
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listtipoivabase.h:118
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:241
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:779
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listseriefacturabase.h:83
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listconfiguracionbase.h:119
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listtasaivabase.h:119
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:387
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:342
+msgid "&Cancelar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:297
+msgid "&Cerrar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:297
+msgid "&Clientes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:799
+msgid "&Comentarios:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:826
+msgid "&Contratos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:780
+msgid "&Cdigo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:595
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:635
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:801
+msgid "&Datos generales"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:306
+msgid "&Documentacion"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:304
+msgid "&Formas de pago"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:794
+msgid "&IRPF que aplica:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:628
+msgid "&Incluir en el catalogo."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:308
+msgid "&Indexador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:782
+msgid "&Nombre empresa:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:282
+msgid "&Propiedades de la empresa..."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:294
+msgid "&Proveedores"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:280
+msgid "&Salir del programa"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:790
+msgid "&Telfono:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:289
+msgid "&Tipos de articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:299
+msgid "&Trabajadores"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:239
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:366
+msgid "1"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:406
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:289
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:294
+msgid "A&utores"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:328
+msgid "A&yuda"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedareferenciabase.h:97
+msgid "Abre todos los documentos con esta referencia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:285
+msgid "Acerca de BulmaFact"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:634
+msgid "Activar el &control de stock."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:631
+msgid "Activar el control de stock para este articulo."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:341
+msgid "Activo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:336
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:341
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:358
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:363
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:331
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:336
+msgid "Actualizar listado"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:296
+msgid "Acuerdo de &licencia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listalmacenbase.h:116
+msgid "Almacenes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:288
+msgid "Alt+O"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:345
+msgid "Apellidos:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:593
+msgid "Aplicar Recargo de Equivalencia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaarticulobase.h:95
+msgid "Articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:329
+msgid "Articulo&s"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaarticulobase.h:93
+msgid "Articulo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:284
+msgid "Articulos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:318
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:401
+msgid "Bancos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:292
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:297
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:595
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:600
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:287
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:292
+msgid "Borrar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:335
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:340
+msgid "Borrar Familia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:271
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:276
+msgid "Borrar Tipo de articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:314
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:319
+msgid "Borrar articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:554
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:559
+msgid "Borrar cliente"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:321
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:326
+msgid "Borrar forma de pago"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:611
+msgid "Borrar imagen"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:842
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:847
+msgid "Borrar proveedor"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:353
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:358
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:424
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:429
+msgid "Borrar trabajador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:279
+msgid "BulmaFact - Facturacion GPL"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:367
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:389
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:362
+msgid "Buscar:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:636
+msgid "C&omponentes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:783
+msgid "C.I.&F. / N.I.F."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:577
+msgid "C.I.F./N.I.F./N.I.E.:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:421
+msgid "C.P.:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:608
+msgid "Cam&biar imagen"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:346
+msgid "Cambiar imagen"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:538
+msgid "Cliente"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:100
+msgid "Cliente:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:261
+msgid "Clientes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:604
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:382
+msgid "Codigo completo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:578
+msgid "Codigo de cliente:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:605
+msgid "Codigo del articulo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:583
+msgid "Codigo postal:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:381
+msgid "Codigo reducido:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:243
+msgid "Codigo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:596
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:418
+msgid "Comentarios:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:325
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:330
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:347
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:352
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:320
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:325
+msgid "Configurar listado"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:412
+msgid "Contacto:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:378
+msgid "Contenido de la familia:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:591
+msgid "Correo electronico:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:563
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:280
+msgid "Ctrl+D"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:107
+msgid "Ctrl+F"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:315
+msgid "Ctrl+I"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:292
+msgid "Ctrl+N"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:281
+msgid "Ctrl+Q"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:551
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:268
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:839
+msgid "Ctrl+S"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:787
+msgid "Cdigo &postal:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:403
+msgid "D.C.:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:796
+msgid "Datos &bancarios:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:598
+msgid "Datos bancarios:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:800
+msgid "Datos de comercio &electrnico:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:597
+msgid "Datos de comercio electronico:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:637
+msgid "Descripcio&n"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:244
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:379
+msgid "Descripcion:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:300
+msgid "Descuento:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:807
+msgid "Di&visiones"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:785
+msgid "Di&visin:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:417
+msgid "Direccion"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:582
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:343
+msgid "Direccion:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:786
+msgid "Direcci&n:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:330
+msgid "E&mpresa"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:793
+msgid "E-&mail:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:348
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:414
+msgid "E-mail:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:281
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:286
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:276
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:281
+msgid "Editar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:303
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:308
+msgid "Editar articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:580
+msgid "Empresa:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:419
+msgid "Entidad:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:347
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:352
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:366
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:388
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:342
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:347
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:361
+msgid "Exportar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:369
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:374
+msgid "Exportar articulos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:307
+msgid "F1"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:301
+msgid "F11"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:291
+msgid "F2"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:296
+msgid "F3"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:287
+msgid "Facturacion GPL - Version 0.11.1 -"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedafamiliabase.h:93
+msgid "Familia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedafamiliabase.h:91
+msgid "Familia:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:320
+msgid "Familias"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:405
+msgid "Fax:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:303
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:359
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:362
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:367
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:372
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:377
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:382
+msgid "Fichas"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:314
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:319
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:336
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:341
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:309
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:314
+msgid "Filtrar listado"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedafamiliabase.h:90
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:99
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedatipoarticulobase.h:90
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaarticulobase.h:92
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedareferenciabase.h:89
+msgid "Form1"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:592
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:795
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:306
+msgid "Forma de pago:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:297
+msgid "Formas de pago"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:349
+msgid "General"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:288
+msgid "Gestion de &familias"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:584
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:589
+msgid "Guardar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:346
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:351
+msgid "Guardar Familia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:259
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:264
+msgid "Guardar Tipo de articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:542
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:547
+msgid "Guardar cliente"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:332
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:337
+msgid "Guardar forma de pago"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:830
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:835
+msgid "Guardar proveedor"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:364
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:369
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:435
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:440
+msgid "Guardar trabajador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:607
+msgid "Imagen del articulo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:358
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:363
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:353
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:358
+msgid "Importar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:380
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:385
+msgid "Importar articulos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:357
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:362
+msgid "Imprimir Familias"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:566
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:571
+msgid "Imprimir informe"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:303
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:308
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:325
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:330
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:298
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:303
+msgid "Imprimir listado"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:625
+msgid "Incluir este articulo en el catalogo."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:309
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:312
+msgid "Indexador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:298
+msgid "Informacion de la forma de pago:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:615
+msgid "Informacion del articulo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:402
+msgid "Informacion del banco:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedareferenciabase.h:92
+msgid "Informe por referencia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:110
+msgid "Limpiar campo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:455
+msgid "Lista de bancos:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:350
+msgid "Lista de trabajadores:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:333
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:336
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:341
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:346
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:351
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:356
+msgid "Listados"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:331
+msgid "Maest&ro"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:369
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:374
+msgid "Mostrar / Ocultar Detalle"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:247
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:252
+msgid "Mostrar / Ocultar detalle"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:103
+msgid "Mostrar listado de clientes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:784
+msgid "Nombre comercia&l:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:581
+msgid "Nombre comercial:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:579
+msgid "Nombre completo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:303
+msgid "Nombre de la forma de pago:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:616
+msgid "Nombre del articulo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:342
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:380
+msgid "Nombre:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:781
+msgid "Nuestro cdigo de c&liente:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:324
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:329
+msgid "Nueva Familia"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:310
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:315
+msgid "Nueva forma de pago"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:270
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:275
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:265
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:270
+msgid "Nuevo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:290
+msgid "Nuevo &articulo..."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:295
+msgid "Nuevo &cliente..."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:293
+msgid "Nuevo &proveedor..."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:283
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:288
+msgid "Nuevo Tipo de articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:292
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:297
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:580
+msgid "Nuevo articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:375
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:380
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:446
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:451
+msgid "Nuevo trabajador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:404
+msgid "Numero de cuenta:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:587
+msgid "Numero de fax:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:344
+msgid "Numero de la Seguridad Social:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:301
+msgid "Numero de plazos:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:792
+msgid "Nmero de &fax:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:320
+msgid "Ordenar &ventanas"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:319
+msgid "Organizacio&n en cascada"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:599
+msgid "Otros datos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:622
+msgid "Otros datos:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:590
+msgid "Pagina web:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:321
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:322
+msgid "Paises / Provincias"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:325
+msgid "Paises y provincias"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:620
+msgid "Peso (kg):"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:302
+msgid "Plazo entre recibos (dias):"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:299
+msgid "Plazo primer recibo (dias):"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:584
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:416
+msgid "Poblacion:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:788
+msgid "Poblaci&n:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:618
+msgid "Precio venta. s/IVA:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:363
+msgid "Pro&cesados"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:368
+msgid "Procesa&dos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:385
+msgid "Producto."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:812
+msgid "Productos &suministrados"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listconfiguracionbase.h:117
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:285
+msgid "Propiedades de la empresa"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:777
+msgid "Proveedor"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaproveedorbase.h:97
+msgid "Proveedor:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:266
+msgid "Proveedores"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:585
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:789
+msgid "Provincia:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:791
+msgid "Pgina &web:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:411
+msgid "Razon Social:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:797
+msgid "Regimen &fiscal:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:594
+msgid "Regimen fiscal:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:825
+msgid "Resumen por articulos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:287
+msgid "S&olo presentables"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:298
+msgid "Se&ries de factura"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listseriefacturabase.h:82
+msgid "Series de factura"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:384
+msgid "Servicio."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:285
+msgid "Solo usados"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:295
+msgid "Sopor&te"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:606
+msgid "Subcodigo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:420
+msgid "Sucursal:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listtasaivabase.h:117
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:317
+msgid "Tasas de IVA"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:588
+msgid "Telefono del trabajo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:586
+msgid "Telefono fijo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:589
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:347
+msgid "Telefono movil:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:340
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:415
+msgid "Telefono:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:617
+msgid "Texto para etiqueta:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:383
+msgid "Tipo Articulos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:619
+msgid "Tipo de I.V.A.:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedatipoarticulobase.h:93
+msgid "Tipo de articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:242
+#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedatipoarticulobase.h:91
+msgid "Tipo de articulo:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:304
+msgid "Tipo plazo entre recibos:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:305
+msgid "Tipo plazo primer pago:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_listtipoivabase.h:116
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:316
+msgid "Tipos de IVA"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:238
+msgid "Tipos de articulo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:823
+msgid "Todos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:339
+msgid "Trabajadores"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:413
+msgid "URL:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:822
+msgid "Vencidos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:332
+msgid "Venta&na"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:300
+msgid "Ventana &completa"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:818
+msgid "Ver"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:821
+msgid "Vigentes"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:621
+msgid "Volumen (cm3):"
+msgstr ""

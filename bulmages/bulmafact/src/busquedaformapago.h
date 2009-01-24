@@ -22,6 +22,7 @@
 #ifndef BUSQUEDAFORMA_PAGO_H
 #define BUSQUEDAFORMA_PAGO_H
 
+#include "funcaux.h"
 #include "qcombobox2.h"
 #include "company.h"
 #include "postgresiface2.h"

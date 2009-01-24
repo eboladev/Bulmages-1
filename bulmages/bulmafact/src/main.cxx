@@ -35,9 +35,9 @@
 #include "fixed.h"
 #include "plugins.h"
 #include "config.h"
+#include "i18n.h"
 
 //#include "dbusobject.h"
-
 
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmafact_"
@@ -61,6 +61,11 @@ int main ( int argc, char **argv )
 
         /// Leemos la configuracion que luego podremos usar siempre.
         confpr = new configuracion ( "bulmafact" );
+
+	/// Inicializa el sistema de traducciones 'gettext'.
+	setlocale(LC_ALL, "");
+	bindtextdomain ("bulmafact", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+	textdomain ("bulmafact");
 	
 
         /// Iniciamos la clase QApplication para el uso de las Qt.

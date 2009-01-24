@@ -20,7 +20,6 @@
 
 #include "busquedareferencia.h"
 #include "company.h"
-#include "funcaux.h"
 #include "informereferencia.h"
 #include "ficha.h"
 #include "plugins.h"

@@ -22,6 +22,7 @@
 #ifndef FAMILIASVIEW_H
 #define FAMILIASVIEW_H
 
+#include "funcaux.h"
 #include "ui_familiasbase.h"
 #include "fichabf.h"
 

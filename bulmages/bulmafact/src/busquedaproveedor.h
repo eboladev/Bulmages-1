@@ -24,7 +24,9 @@
 
 #include <QLineEdit>
 #include <QLabel>
+#include <QObject>
 
+#include "funcaux.h"
 #include "ui_busquedaproveedorbase.h"
 #include "blwidget.h"
 

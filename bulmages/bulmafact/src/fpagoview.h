@@ -22,6 +22,7 @@
 #ifndef FPAGOVIEW_H
 #define FPAGOVIEW_H
 
+#include "funcaux.h"
 #include "ui_fpagobase.h"
 #include "fichabf.h"
 #include "postgresiface2.h"
