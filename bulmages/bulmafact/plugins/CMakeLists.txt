@@ -70,6 +70,13 @@ add_subdirectory(pluginz2z)
 # simple put your add_directory in a
 # CMakeLists.txt.private
 
+# ======== PLUGINS DE GESTION ALUMNOS
+add_subdirectory(pluginprofesor)
+add_subdirectory(pluginalumno)
+add_subdirectory(plugintutor)
+add_subdirectory(pluginactividad)
+
+
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")
    message(STATUS "Private code inserted in bulmafact plugins")
    include("${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")

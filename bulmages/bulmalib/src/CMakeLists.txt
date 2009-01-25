@@ -65,6 +65,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          blprogressbar.cpp
 	 blmainwindow.cpp
 	 blbancoedit.cpp
+	 blmonthcalendar.cpp
 	 i18n.cpp)
 
 set(bulmalib_MOCS 
@@ -94,6 +95,7 @@ set(bulmalib_MOCS
          qradiobutton2.h
          qcombobox2.h
 	 blbancoedit.h
+			blmonthcalendar.h
 	 i18n.h)
 
 set (bulmalib_HDRS abreempresaview.h
