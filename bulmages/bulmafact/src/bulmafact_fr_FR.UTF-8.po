@@ -1,8 +1,3 @@
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp:45
-#: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:55
-#: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:57
-=======
 # translation of bulmafact_fr_FR.UTF-8.po to
 # Header entry was created by KBabel!
 #
@@ -21,7 +16,6 @@ msgstr ""
 #: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:57
 #: /opt/bulmages/trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp:45
 #: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:55
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 msgid "% Descuento"
 msgstr "% Remise"
 
@@ -101,16 +95,10 @@ msgstr "&Comentaires:"
 msgid "&Contratos"
 msgstr "&Contracts"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:776
-msgid "&Cdigo:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:780
 #, fuzzy
 msgid "&Código:"
 msgstr "Code:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_articleeditbase.h:631
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_clientebase.h:591
@@ -164,16 +152,10 @@ msgstr "&Sortir du programme"
 msgid "&Si"
 msgstr "&Oui"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:786
-msgid "&Telfono:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:790
 #, fuzzy
 msgid "&Teléfono:"
 msgstr "Téléphone:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_bulmafactbase.h:289
 msgid "&Tipos de articulo"
@@ -615,16 +597,10 @@ msgstr "Ctrl+Q"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:783
-msgid "Cdigo &postal:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:787
 #, fuzzy
 msgid "Código &postal:"
 msgstr "Code postal:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_bancobase.h:399
 msgid "D.C.:"
@@ -638,16 +614,10 @@ msgstr "Donées &bancaires:"
 msgid "Datos bancarios:"
 msgstr "Dates bancaires:"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:796
-msgid "Datos de comercio &electrnico:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:800
 #, fuzzy
 msgid "Datos de comercio &electrónico:"
 msgstr "Donnés de commerce électronique:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:74
 msgid "Datos de comercio electronico"
@@ -726,16 +696,10 @@ msgstr "Voulez vous sauver les changes?"
 msgid "Di&visiones"
 msgstr "Di&visions"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:781
-msgid "Di&visin:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:785
 #, fuzzy
 msgid "Di&visión:"
 msgstr "Di&visions"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_bancobase.h:413
 #: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:61
@@ -771,16 +735,10 @@ msgstr "Direction électronique"
 msgid "Direccion:"
 msgstr "Direction:"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:782
-msgid "Direcci&n:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:786
 #, fuzzy
 msgid "Direcció&n:"
 msgstr "Direction:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:373
 msgid "Disponible en stock"
@@ -1463,16 +1421,10 @@ msgstr "Nom du fournisseur"
 msgid "Nombre:"
 msgstr "Nom:"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:777
-msgid "Nuestro cdigo de c&liente:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:781
 #, fuzzy
 msgid "Nuestro código de c&liente:"
 msgstr "Code de client:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_familiasbase.h:320
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_familiasbase.h:325
@@ -1576,25 +1528,14 @@ msgstr "Numéro de téléphone au travail"
 msgid "Numero de telefono movil"
 msgstr "Numéro de téléphone portable"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:49
-msgid "N linea"
-=======
 #: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:49
 msgid "Nº linea"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 msgstr ""
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:788
-msgid "Nmero de &fax:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:792
 #, fuzzy
 msgid "Número de &fax:"
 msgstr "Numéro de fax:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:65
 msgid "Observaciones"
@@ -1689,16 +1630,10 @@ msgstr "Peuple"
 msgid "Poblacion:"
 msgstr "Peuple:"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:784
-msgid "Poblaci&n:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:788
 #, fuzzy
 msgid "Població&n:"
 msgstr "Peuple:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:337
 msgid "Porcentaje"
@@ -1774,16 +1709,10 @@ msgstr "Province"
 msgid "Provincia:"
 msgstr "Province:"
 
-<<<<<<< HEAD:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_proveditbase.h:787
-msgid "Pgina &web:"
-msgstr ""
-=======
 #: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:791
 #, fuzzy
 msgid "Página &web:"
 msgstr "Page web:"
->>>>>>> Catalan, frances, ingles y castellano (con acentos y demas) pasados al nuevo formato 'gettext'. Hay algunas ca:bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
 
 #: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:398
 msgid "R.E."
