@@ -27,10 +27,15 @@
 #include <libintl.h>
 #include <locale.h>
 
-#define _(String) i18n (String)
+//#define _(String) i18n (String)
 
 
 QString i18n(const char *, int = 0);
+QString _(const char *, int = 0);
+
+/// Gettext con dominio
+QString i18n(const char *, const char *);
+QString _(const char *, const char *);
 
 #endif
 

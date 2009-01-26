@@ -65,6 +65,7 @@ ENDFOREACH(loop)
 
 
 
+
 add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
 		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} )
 
@@ -83,7 +84,7 @@ add_executable(bulmafact ${bulmafactEx})
 
 # i18n
 GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_BINARY_DIR}/bulmafact/src ${CMAKE_SOURCE_DIR}/bulmafact/src/ ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
-GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES es_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 
 # i18n commands executed after build.
 ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})

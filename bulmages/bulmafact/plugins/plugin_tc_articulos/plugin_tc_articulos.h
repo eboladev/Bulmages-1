@@ -33,6 +33,7 @@
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
 
+
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
 extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );

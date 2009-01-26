@@ -61,6 +61,7 @@ void plugin_tc_articulos::colores()
 void plugin_tc_articulos::inicializa ( Bulmafact *bges )
 {
     _depura ( "plugin_tc_articulos::inicializa", 0 );
+    
     m_bulmafact = bges;
     QMenu *pPluginMenuTallasColores;
     /// Miramos si existe un menu Herramientas
@@ -68,20 +69,20 @@ void plugin_tc_articulos::inicializa ( Bulmafact *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenuTallasColores ) {
-        pPluginMenuTallasColores = new QMenu ( "&Tallas y colores", bges->menuBar() );
+        pPluginMenuTallasColores = new QMenu ( _("bf_plugin_tc_articulos","&Tallas y colores"), bges->menuBar() );
         pPluginMenuTallasColores->setObjectName ( QString::fromUtf8 ( "Tallas y colores" ) );
     } // end if
     /// Creamos el men&uacute;.
 
-    QAction *acciontallas = new QAction ( "&Tallas", 0 );
-    acciontallas->setStatusTip ( "Tallas" );
-    acciontallas->setWhatsThis ( "Tallas" );
+    QAction *acciontallas = new QAction ( _("bf_plugin_tc_articulos","&Tallas"), 0 );
+    acciontallas->setStatusTip ( _("bf_plugin_tc_articulos","Tallas") );
+    acciontallas->setWhatsThis ( _("bf_plugin_tc_articulos","Tallas") );
     connect ( acciontallas, SIGNAL ( activated() ), this, SLOT ( tallas() ) );
     pPluginMenuTallasColores->addAction ( acciontallas );
 
-    QAction *accioncolores = new QAction ( "&Colores", 0 );
-    accioncolores->setStatusTip ( "Colores" );
-    accioncolores->setWhatsThis ( "Colores" );
+    QAction *accioncolores = new QAction ( _("bf_plugin_tc_articulos","&Colores"), 0 );
+    accioncolores->setStatusTip ( _("bf_plugin_tc_articulos","Colores") );
+    accioncolores->setWhatsThis ( _("bf_plugin_tc_articulos","Colores") );
     connect ( accioncolores, SIGNAL ( activated() ), this, SLOT ( colores() ) );
     pPluginMenuTallasColores->addAction ( accioncolores );
 
@@ -89,7 +90,5 @@ void plugin_tc_articulos::inicializa ( Bulmafact *bges )
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenuTallasColores );
     _depura ( "END plugin_tc_articulos::inicializa", 0 );
 }
-
-
 
 

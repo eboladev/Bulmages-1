@@ -41,6 +41,9 @@
 void entryPoint ( Bulmafact *bges )
 {
     _depura ( "Estoy dentro del plugin de tallas y colores", 0 );
+    
+    const char *dominio = "bf_plugin_tc_articulos";
+    
     plugin_tc_articulos *plug = new plugin_tc_articulos();
     plug->inicializa ( bges );
 }
@@ -67,15 +70,15 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setEmpresaBase ( art->empresaBase() );
     l->setDBTableName ( "tc_articulo_alias" );
     l->setDBCampoId ( "idarticulo" );
-    l->addSHeader ( "aliastc_articulo_tallacolor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "aliastc_articulo_tallacolor", "Alias" ) );
-    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Articulo" ) );
-    l->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    l->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
+    l->addSHeader ( "aliastc_articulo_tallacolor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , _("bf_plugin_tc_articulos",  "Alias" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , _("bf_plugin_tc_articulos",  "Id Articulo" ) );
+    l->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "color" ) );
+    l->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "Talla" ) );
 
 
-    l->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
+    l->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre color" ) );
 
-    l->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
+    l->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre talla" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
@@ -275,10 +278,10 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProv
 {
     _depura ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0 );
 
-    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
-    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
+    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "color" ) );
+    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "Talla" ) );
+    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre color" ) );
+    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
@@ -297,10 +300,10 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProv
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView *subform )
 {
     _depura ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
-    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
-    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
+    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "color" ) );
+    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "Talla" ) );
+    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre color" ) );
+    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
@@ -320,10 +323,10 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView *subform )
 {
     _depura ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
-    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
-    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
+    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "color" ) );
+    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "Talla" ) );
+    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre color" ) );
+    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
@@ -349,14 +352,15 @@ int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView *subform )
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
     _depura ( "ListLinFacturaView_ListLinFacturaView", 0 );
-    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
-    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
+    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "color" ) );
+    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, _("bf_plugin_tc_articulos",  "Talla" ) );
+    subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre color" ) );
+    subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _("bf_plugin_tc_articulos",  "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
-    subform->mui_list->setItemDelegate ( subform->m_delegate );    _depura ( "END ListLinFacturaView_ListLinFacturaView", 0 );
+    subform->mui_list->setItemDelegate ( subform->m_delegate );
+    _depura ( "END ListLinFacturaView_ListLinFacturaView", 0 );
     return 0;
 }
 

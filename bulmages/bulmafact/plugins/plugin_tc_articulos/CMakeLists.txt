@@ -1,5 +1,5 @@
 ###########################################
-# Plugin for bulmafact					  #
+# Plugin for bulmafact                    #
 ###########################################
 #plugin_tc_articulos
 
@@ -13,7 +13,7 @@ file(GLOB plugin_UIS *.ui)
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -37,9 +37,18 @@ include_directories(
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr i18n)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
+
+# delete previous list of files to process (i18n)
+FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list)
+
+FOREACH(loop ${plugin_UIS_H} ${plugin_SRC})
+    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list ${loop} "\n")
+ENDFOREACH(loop)
+
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -54,7 +63,24 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
+
+
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+
+
+
+# i18n
+GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin} ${CMAKE_SOURCE_DIR}/bulmafact/plugins/${plugin} ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list)
+GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+
+# i18n commands executed after build.
+ADD_CUSTOM_COMMAND(TARGET ${plugin} POST_BUILD COMMAND make ${plugin}.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+ADD_CUSTOM_COMMAND(TARGET ${plugin} POST_BUILD COMMAND make ${plugin}_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+
+
+
+
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 foreach(dfile ${docs})

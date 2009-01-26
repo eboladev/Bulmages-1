@@ -1,0 +1,54 @@
+#: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listcoloresbase.h:117
+#: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listtallasbase.h:117
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listcoloresbase.h:118
+#: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listtallasbase.h:118
+msgid "&Cancelar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listcoloresbase.h:116
+msgid "Colores"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listtallasbase.h:116
+msgid "Tallas"
+msgstr ""
+
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:49
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:71
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:99
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:100
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:101
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:72
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:77
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:78
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:79
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:83
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:84
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:85
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:73
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:74
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:75
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:76
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:79
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:81
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:281
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:282
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:283
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:284
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:303
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:304
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:305
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:306
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:326
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:327
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:328
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:329
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:355
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:356
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:357
+#: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:358
+msgid "bf_plugin_tc_articulos"
+msgstr ""

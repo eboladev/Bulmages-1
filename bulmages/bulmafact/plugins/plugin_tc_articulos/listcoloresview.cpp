@@ -46,7 +46,7 @@ ListColoresView::ListColoresView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListColoresView::ListColoresView", 1 );
-    setTitleName ( tr ( "Colores" ) );
+    setTitleName ( _("bf_plugin_tc_articulos", "Colores" ) );
     setDBTableName ( "tc_color" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -68,7 +68,7 @@ void ListColoresView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar los colores" ), this );
+        mensajeInfo ( _("bf_plugin_tc_articulos", "Error al guardar los colores" ) );
     } // end try
     _depura ( "END ListColoresView::on_mui_aceptar_clicked", 0 );
 }
@@ -96,9 +96,9 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "ListColoresSubForm::ListColoresSubForm", 0 );
     setDBTableName ( "tc_color" );
     setDBCampoId ( "idtc_color" );
-    addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Color" ) );
-    addSHeader ( "rgbtc_color", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "RGB Color" ) );
-    addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Nombre Color" ) );
+    addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _("bf_plugin_tc_articulos", "Id Color" ) );
+    addSHeader ( "rgbtc_color", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _("bf_plugin_tc_articulos", "RGB Color" ) );
+    addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _("bf_plugin_tc_articulos", "Nombre Color" ) );
     setinsercion ( TRUE );
     _depura ( "END ListColoresSubForm::ListColoresSubForm", 0 );
 }
