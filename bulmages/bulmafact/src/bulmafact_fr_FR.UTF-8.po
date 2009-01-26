@@ -1676,6 +1676,10 @@ msgstr ""
 msgid "Productos &suministrados"
 msgstr "Produits &fournis"
 
+#: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/busquedaprofesor.cpp:38
+msgid "Profesor:"
+msgstr ""
+
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_bulmafactbase.h:285
 #: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_listconfiguracionbase.h:117
 msgid "Propiedades de la empresa"

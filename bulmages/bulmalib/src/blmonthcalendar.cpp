@@ -24,12 +24,17 @@
 #include <QtGui>
 
 #include "blmonthcalendar.h"
+#include "funcaux.h"
 
 BLMonthCalendar::BLMonthCalendar(QWidget * parent, Qt::WindowFlags f) : QWidget(parent, f) {
         selectedDate = QDate::currentDate();
         fontSize = 10;
 
 //        QWidget *centralWidget = new QWidget;
+
+/// Algunas pruebas de insercion de datos de prueba.
+ m_textos.insert(selectedDate.toString(), "La madre\n");
+ m_textos.insert(selectedDate.toString(), "del cordero feliz.\n");
 
         QLabel *dateLabel = new QLabel(tr("Date:"));
         QComboBox *monthCombo = new QComboBox;
@@ -70,6 +75,8 @@ BLMonthCalendar::BLMonthCalendar(QWidget * parent, Qt::WindowFlags f) : QWidget(
         centralLayout->addLayout(controlsLayout);
         centralLayout->addWidget(editor, 1);
         setLayout(centralLayout);
+
+
 
 //        setCentralWidget(centralWidget);
     }
@@ -129,9 +136,15 @@ void BLMonthCalendar::insertCalendar() {
             QTextCursor cellCursor = cell.firstCursorPosition();
 
             if (date == QDate::currentDate())
-                cellCursor.insertText(QString("%1").arg(date.day()), highlightedFormat);
+                cellCursor.insertText(QString("%1").arg(date.day()) +" \n", highlightedFormat);
             else
                 cellCursor.insertText(QString("%1").arg(date.day()), format);
+
+			QList<QString> values = m_textos.values(date.toString());
+			for (int i = 0; i < values.size(); ++i) {
+				cellCursor.insertText(values.at(i), format);
+			} // end for
+
 
             date = date.addDays(1);
             if (weekDay == 7 && date.month() == selectedDate.month())

@@ -66,6 +66,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
 	 blmainwindow.cpp
 	 blbancoedit.cpp
 	 blmonthcalendar.cpp
+	 busqueda.cpp
 	 i18n.cpp)
 
 set(bulmalib_MOCS 
@@ -96,6 +97,7 @@ set(bulmalib_MOCS
          qcombobox2.h
 	 blbancoedit.h
 			blmonthcalendar.h
+	busqueda.h
 	 i18n.h)
 
 set (bulmalib_HDRS abreempresaview.h
@@ -147,6 +149,7 @@ set(bulmalib_UIS logpassbase.ui
       fichacfgbase.ui 
       paisbase.ui
       blprogressbarbase.ui
+      busquedabase.ui
       blbancoeditbase.ui)
 
 include_directories(

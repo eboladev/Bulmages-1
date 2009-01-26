@@ -53,6 +53,7 @@ ActividadView::ActividadView ( Company *comp, QWidget *parent )
         addDBCampo ( "nombreactividad", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Actividad", "Nombre del actividad" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
+		mui_idprofesor->setEmpresaBase(comp);
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {

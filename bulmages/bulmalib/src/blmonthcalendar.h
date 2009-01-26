@@ -27,6 +27,8 @@
 #include <QDate>
 #include <QWidget>
 #include <QTextBrowser>
+#include <QMultiHash>
+#include <QString>
 
 class BLMonthCalendar : public QWidget    {
 Q_OBJECT
@@ -45,6 +47,7 @@ private:
         int fontSize;
         QDate selectedDate;
         QTextBrowser *editor;
+		QMultiHash <QString, QString> m_textos;
 };
 
 #endif
