@@ -52,6 +52,7 @@ public:
     int cargarPost ( QString idz );
 public slots:
      virtual void on_mui_list_cellDoubleClicked(int row, int);
+     virtual void on_mui_actualizar_released();
 };
 
 #endif

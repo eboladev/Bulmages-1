@@ -61,7 +61,7 @@ ZView::ZView ( Company *comp, QWidget *parent )
         addDBCampo ( "totalz", DBCampo::DBnumeric, DBCampo::DBNotNull  , tr ( "Total" ) );
         addDBCampo ( "numtickets", DBCampo::DBint, DBCampo::DBNotNull  , tr ( "Num. Tickets" ) );
         addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, tr ( "Id. almacen" ) );
-        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Almacen" ) );
+        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, tr ( "Almacen" ) );
 
         mui_idalmacen->setEmpresaBase ( comp );
 
@@ -152,4 +152,9 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
 	} // end if
     _depura ( "END ZView::on_mui_list_doubleClicked", 0 );
 }
+
+
+void ZView::on_mui_actualizar_released() {
+	cargar(DBvalue("idz"));
+} 
 

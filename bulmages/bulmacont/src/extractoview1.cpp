@@ -712,7 +712,8 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
 
         delete cursorcta;
         /// Aqui va la impresion pero con cabeceras.
-        salida += "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
+//        salida += "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
+        salida += "<blockTable repeatRows=\"1\">\n";
         salida += "<tr>\n";
         salida += "<td> Fecha </td>";
         salida += "<td> Asiento </td>";
@@ -720,6 +721,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
         salida += "<td> Debe </td>";
         salida += "<td> Haber </td>";
         salida += "<td> Saldo </td>";
+	salida += "<td> Contrapartida </td>";
         salida += "</tr>\n";
 
         while ( ! cursorapt->eof() ) {
@@ -727,14 +729,21 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
             debefinal = debefinal + Fixed ( cursorapt->valor ( "debe" ) );
             haberfinal = haberfinal + Fixed ( cursorapt->valor ( "haber" ) );
 
+	    QString contrapartida = "SELECT *, cuenta.descripcion AS desccuenta FROM (SELECT * FROM apunte WHERE idapunte = bcontrapartida("+cursorapt->valor("idapunte")+")) AS t1 LEFT JOIN cuenta ON t1.idcuenta = cuenta.idcuenta";
+	    cursor2 *cur = empresaBase()->cargacursor(contrapartida);
+		
+
             salida +=  "<tr>\n";
             salida +=  "<td>" + cursorapt->valor ( "fecha" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "orden" ) + "</td>";
+            salida +=  "<td>" + cursorapt->valor ( "ordenasiento" ) + "</td>";
             salida +=  "<td>" + cursorapt->valor ( "conceptocontable" ) + "</td>";
             salida +=  "<td>" + cursorapt->valor ( "debe" ) + "</td>";
             salida +=  "<td>" + cursorapt->valor ( "haber" ) + "</td>";
             salida +=  "<td>" + saldofinal.toQString() + "</td>";
+            salida +=  "<td>" + cur->valor("codigo") + " - " +cur->valor("desccuenta") + " - "+ cur->valor("descripcion") + "</td>";
             salida +=  "</tr>\n";
+
+	    delete cur;
             cursorapt->siguienteregistro();
         } // end while
 
@@ -818,8 +827,8 @@ void extractoview1::on_mui_imprimir_clicked()
     while ( ! curcta->eof() ) {
         fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
         curcta->siguienteregistro();
-        if ( ! curcta->eof() )
-            fitxersortidatxt += "<nextFrame/><nextPage/>";
+//        if ( ! curcta->eof() )
+//            fitxersortidatxt += "<nextFrame/><nextPage/>";
     }// end while
     delete curcta;
 

@@ -162,6 +162,16 @@ try {
     } // end if
     QTextStream stream2 ( &file2 );
 
+    QFile file3 ( confpr->valor ( CONF_DIR_USER ) + "refs_z2z_" + empresaBase()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    /// Guardado del orden y de configuraciones varias.
+    if (! file3.open ( QIODevice::WriteOnly ) ) {
+	file.close();
+	file1.close();
+	file2.close();
+	return;
+    } // end if
+    QTextStream stream3 ( &file3 );
+
 
 		QString query7 = "INSERT INTO z (idalmacen) VALUES (2)";
 		db->ejecuta(query7);
@@ -171,6 +181,11 @@ try {
 
 
 	for (int i=0; i < mui_listarefs->count(); i++) {
+
+
+		/// Guardamos la referencia.
+		stream3 << mui_listarefs->item(i)->text();
+
 		/// Buscamos el minimo del albaran pasado.
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
 		cursor2 *cur2 = empresaBase()->cargacursor(query2);
@@ -212,6 +227,7 @@ try {
 	file.close();
 	file1.close();
 	file2.close();
+	file3.close();
 	QString query15 = "UPDATE z set idz=idz";
 	db->ejecuta(query15);
 
