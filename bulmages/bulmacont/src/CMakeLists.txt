@@ -111,6 +111,12 @@ include_directories(
 QT4_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr QObject::trUtf8)
 QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 
+
+# i18n
+ADD_DEFINITIONS("-D'_(String)=i18n(\"bulmacont\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"bulmacont\", String)'" )
+
+
 add_library(libbulmacont SHARED ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
 		${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS} )
 

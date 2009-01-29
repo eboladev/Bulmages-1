@@ -30,7 +30,7 @@
 #include "ui_bulmafactbase.h"
 #include "company.h"
 #include "listventanas.h"
-#include "funcaux.h"
+
 
 
 /** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.

@@ -35,7 +35,7 @@ Busqueda::Busqueda ( QWidget *parent )
     _depura ( "Busqueda::Busqueda", 0 );
     setupUi ( this );
     /// Establecemos los Buddies:
-    mui_labelBusqueda->setText ( _( "Clien&te:" ) );
+    mui_labelBusqueda->setText ( tr( "Clien&te:" ) );
     mui_labelBusqueda->setBuddy ( mui_buscar );
 
     m_textBusqueda->setText ( "" );

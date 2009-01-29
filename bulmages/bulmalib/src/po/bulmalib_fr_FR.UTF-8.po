@@ -1,0 +1,262 @@
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:205
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:112
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:625
+msgid "&Cerrar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:156
+msgid "&Cerrar el programa"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:111
+msgid "&Detalles"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:204
+msgid "&Entra"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:155
+msgid "&Validar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:193
+msgid "Actualizar Listado"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:198
+msgid "Actualizar Listado de Empresas"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:624
+msgid "Aplicar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:289
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:294
+msgid "Borrar pais"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:99
+msgid "Busqueda"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:285
+msgid "Campo ndice"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:274
+msgid "Cancelar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:292
+msgid "Cerrar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:262
+msgid "Codigo 2 letras:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:261
+msgid "Codigo 3 letras:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:607
+msgid "Columnas visibles"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:601
+msgid "Configuracion Subformularios"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:154
+msgid "Contrasenya:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:298
+msgid "Ctrl+D"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedafechabase.h:89
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:106
+msgid "Ctrl+F"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:202
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:286
+msgid "Ctrl+N"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:310
+msgid "Ctrl+S"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:283
+msgid "Database Table"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:290
+msgid "Databse Scripting"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:259
+msgid "Datos del pais:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:622
+msgid "Ejecutar consulta"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:203
+msgid "Empresas disponibles:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:617
+msgid "Escriba aqui la consulta SQL"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:609
+msgid "Filas por pagina:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:281
+#: /opt/bulmages/build_svn/bulmalib/src/ui_blbancoeditbase.h:89
+msgid "Form"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:286
+msgid "Form Elements"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedafechabase.h:86
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:98
+msgid "Form1"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:301
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:306
+msgid "Guardar pais"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:149
+msgid "Lanzador Bulmages"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:109
+msgid "Limpiar campo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:109
+msgid "Mensaje"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:150
+msgid "Mensaje de error:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:102
+msgid "Mostrar listado de profesors"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:265
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:270
+msgid "Mostrar/ocultar detalle"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:282
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:284
+msgid "Nombre de la Tabla"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:153
+msgid "Nombre de usuario:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:260
+msgid "Nombre del pais:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:277
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:282
+msgid "Nuevo pais"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:610
+msgid "Pagina actual:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:612
+msgid "Pagina anterior"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:613
+msgid "Pagina siguiente"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:614
+msgid "Paginacion"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:258
+msgid "Paises"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_porcentajecargabase.h:53
+msgid "Porcentaje de carga..."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:288
+msgid "Propietario de la tablas"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:291
+msgid "Qt Scripting"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:620
+msgid "Query"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:152
+msgid "Registro de entrada:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:623
+msgid "SQL"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:184
+#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:187
+msgid "Seleccione una empresa"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_blprogressbarbase.h:67
+msgid "TextLabel"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:608
+msgid "Total filas:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:611
+msgid "Total paginas:"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_blprogressbarbase.h:66
+msgid "Trabajando"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:289
+msgid "User Preferences"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:287
+msgid "Usuario Actual"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:621
+msgid "Opcion reservada a expertos!"
+msgstr ""

@@ -24,6 +24,7 @@
 
 #include <QDialog>
 
+#include "funcaux.h"
 #include "ui_logpassbase.h"
 #include "postgresiface2.h"
 

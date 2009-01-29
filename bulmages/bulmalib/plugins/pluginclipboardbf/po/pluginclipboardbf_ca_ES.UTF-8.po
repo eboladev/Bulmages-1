@@ -1,0 +1,3 @@
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.cpp:123
+msgid "Pegar desde Hoja de Calculo"
+msgstr "Pegar desde Hoja de Calculo"

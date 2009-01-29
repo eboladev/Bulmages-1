@@ -125,6 +125,11 @@ void mypluginalb::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Albaranes a Clientes\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginalbaran", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginalb *plug = new mypluginalb();
     plug->inicializa ( bges );
     return 0;

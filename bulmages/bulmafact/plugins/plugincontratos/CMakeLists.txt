@@ -41,6 +41,10 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 
+# i18n
+ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)

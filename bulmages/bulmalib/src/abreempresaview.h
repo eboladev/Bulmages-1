@@ -26,6 +26,7 @@
 #include <QDialog>
 #include <QFile>
 
+#include "funcaux.h"
 #include "ui_abreempresabase.h"
 
 /// Abre el di&aacute;logo de seleccionar una empresa.

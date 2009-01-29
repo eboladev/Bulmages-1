@@ -42,6 +42,12 @@ ADD_DEFINITIONS(-DQT_SHARED -DQT_PLUGIN)
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
+
+
+# i18n
+ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}

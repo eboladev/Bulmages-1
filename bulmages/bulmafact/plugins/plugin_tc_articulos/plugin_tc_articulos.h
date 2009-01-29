@@ -24,7 +24,6 @@
 # define MY_EXPORT
 #endif
 
-
 #include "bulmafact.h"
 #include "articuloview.h"
 #include "busquedaarticulo.h"

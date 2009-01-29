@@ -1,0 +1,3 @@
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginsubformods/pluginsubformods.cpp:98
+msgid "Exportar a hoja de calculo (ODS)"
+msgstr "Exportar a hoja de calculo (ODS)"

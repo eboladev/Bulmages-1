@@ -120,7 +120,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 void myplugclipboard::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugclipboard::s_trataMenu", 0 );
-    if ( action->text() == tr ( "Pegar desde Hoja de Calculo" ) ) {
+    if ( action->text() == _( "Pegar desde Hoja de Calculo" ) ) {
         if ( theApp->clipboard() ->text().contains ( "\t" ) ) {
             pegaODS();
         } else {

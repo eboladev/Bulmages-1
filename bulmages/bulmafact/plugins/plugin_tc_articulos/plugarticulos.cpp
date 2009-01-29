@@ -69,20 +69,20 @@ void plugin_tc_articulos::inicializa ( Bulmafact *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenuTallasColores ) {
-        pPluginMenuTallasColores = new QMenu ( _("bf_plugin_tc_articulos","&Tallas y colores"), bges->menuBar() );
+        pPluginMenuTallasColores = new QMenu ( _("&Tallas y colores"), bges->menuBar() );
         pPluginMenuTallasColores->setObjectName ( QString::fromUtf8 ( "Tallas y colores" ) );
     } // end if
     /// Creamos el men&uacute;.
 
-    QAction *acciontallas = new QAction ( _("bf_plugin_tc_articulos","&Tallas"), 0 );
-    acciontallas->setStatusTip ( _("bf_plugin_tc_articulos","Tallas") );
-    acciontallas->setWhatsThis ( _("bf_plugin_tc_articulos","Tallas") );
+    QAction *acciontallas = new QAction ( _("&Tallas"), 0 );
+    acciontallas->setStatusTip ( _("Tallas") );
+    acciontallas->setWhatsThis ( _("Tallas") );
     connect ( acciontallas, SIGNAL ( activated() ), this, SLOT ( tallas() ) );
     pPluginMenuTallasColores->addAction ( acciontallas );
 
-    QAction *accioncolores = new QAction ( _("bf_plugin_tc_articulos","&Colores"), 0 );
-    accioncolores->setStatusTip ( _("bf_plugin_tc_articulos","Colores") );
-    accioncolores->setWhatsThis ( _("bf_plugin_tc_articulos","Colores") );
+    QAction *accioncolores = new QAction ( _("&Colores"), 0 );
+    accioncolores->setStatusTip ( _("Colores") );
+    accioncolores->setWhatsThis ( _("Colores") );
     connect ( accioncolores, SIGNAL ( activated() ), this, SLOT ( colores() ) );
     pPluginMenuTallasColores->addAction ( accioncolores );
 

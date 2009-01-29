@@ -31,11 +31,11 @@
 
 
 QString i18n(const char *, int = 0);
-QString _(const char *, int = 0);
+//QString _(const char *, int = 0);
 
 /// Gettext con dominio
 QString i18n(const char *, const char *);
-QString _(const char *, const char *);
+//QString _(const char *, const char *);
 
 #endif
 

@@ -164,9 +164,18 @@ include_directories(
 
 
 # generate rules for building source files from the resources
-QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
 QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
+
+
+# delete previous list of files to process (i18n)
+FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list)
+
+FOREACH(loop ${bulmalib_UIS_H} ${bulmalib_SRCS})
+    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list ${loop} "\n")
+ENDFOREACH(loop)
+
 
 # generate rules for building source files that moc generates
 
@@ -175,6 +184,11 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 # Defines if we want our own debugging code
 #ADD_DEFINITIONS(-DDEPURA_DEBUG)
+
+# i18n
+ADD_DEFINITIONS("-D'_(String)=i18n(\"bulmalib\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"bulmalib\", String)'" )
+
 
 # build sources, moc'd sources, and rcc'd sources
 
@@ -186,6 +200,17 @@ set_target_properties( bulmalib PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+
+
+# i18n
+GETTEXT_CREATE_TEMPLATE(bulmalib ${CMAKE_BINARY_DIR}/bulmalib/src ${CMAKE_SOURCE_DIR}/bulmalib/src/ ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list)
+GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+
+# i18n commands executed after build.
+ADD_CUSTOM_COMMAND(TARGET bulmalib POST_BUILD COMMAND make bulmalib.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+ADD_CUSTOM_COMMAND(TARGET bulmalib POST_BUILD COMMAND make bulmalib_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+
+
 
 install_targets(/lib bulmalib)
 install (FILES ${bulmalib_HDRS} DESTINATION include)

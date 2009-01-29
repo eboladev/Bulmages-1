@@ -22,27 +22,27 @@
 #include <QLocale>
 
 QString i18n(const char *cadena, int) {
-//    QString salida = QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
-//    fprintf(stderr, salida.toAscii());
+    QString salida = QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
+    fprintf(stderr, salida.toAscii());
     return QString(gettext(cadena));
 }
 
-QString _(const char *cadena, int) {
+//QString _(const char *cadena, int) {
 //    QString salida = QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
 //    fprintf(stderr, salida.toAscii());
-    return QString(gettext(cadena));
-}
+//    return QString(gettext(cadena));
+//}
 
 
 QString i18n(const char *domain, const char *cadena) {
-//    QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");
-//    fprintf(stderr, salida.toAscii());
+    QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");
+    fprintf(stderr, salida.toAscii());
     return QString(dgettext(domain, cadena));
 }
 
-QString _(const char *domain, const char *cadena) {
+//QString _(const char *domain, const char *cadena) {
 //    QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");
 //    fprintf(stderr, salida.toAscii());
-    return QString(dgettext(domain, cadena));
-}
+//    return QString(dgettext(domain, cadena));
+//}
 

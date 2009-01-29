@@ -35,6 +35,7 @@
 #include <unistd.h>
 #endif
 
+
 #include "bulmacont.h"
 #include "splashscreen.h"
 #include "configuracion.h"
@@ -51,6 +52,7 @@
 #endif
 
 #include <iostream>
+
 
 /// Estas son las variables globales de la aplicaci&oacute;n.
 /// El puntero de la aplicaci&oacute;n.

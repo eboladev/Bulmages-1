@@ -86,7 +86,7 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 void myplugsubformsxc::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugsubformsxc::s_trataMenu", 0 );
-    if ( action->text() == tr ( "Exportar a hoja de calculo (SXC)" ) ) {
+    if ( action->text() == _( "Exportar a hoja de calculo (SXC)" ) ) {
         sacaSXC();
     } // end if
     _depura ( "END myplugsubformsxc::s_trataMenu", 0 );
@@ -155,9 +155,9 @@ void myplugsubformsxc::sacaSXC()
     /// Tratamos el progreso de la operacion.
     BLProgressBar barra;
     barra.setRange ( 0, subf->mui_list->rowCount() - 1 );
-    barra.setText ( tr ( "Exportando datos a SXC" ) );
+    barra.setText ( _( "Exportando datos a SXC" ) );
     barra.show();
-    barra.setText ( tr ( "Exportando datos a SXC" ) );
+    barra.setText ( _( "Exportando datos a SXC" ) );
 
     /// Sacamos el contenido
     for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {

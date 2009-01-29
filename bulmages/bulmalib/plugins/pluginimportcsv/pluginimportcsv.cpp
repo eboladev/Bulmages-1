@@ -53,9 +53,9 @@ void entryPoint ( QMainWindow *bges )
     mypluginimportcsv *mcont = new mypluginimportcsv;
 
     /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( "&Importacion CSV", 0 );
-    accion->setStatusTip ( "Importacion CSV" );
-    accion->setWhatsThis ( "Importacion CSV" );
+    QAction *accion = new QAction ( _("&Importacion CSV"), 0 );
+    accion->setStatusTip ( _("Importacion CSV") );
+    accion->setWhatsThis ( _("Importacion CSV") );
 
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
 

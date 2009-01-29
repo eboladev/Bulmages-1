@@ -51,7 +51,7 @@ include_directories(
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr i18n)
+QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
 
@@ -82,7 +82,13 @@ target_link_libraries( libbulmafact bulmalib ${QT_LIBRARIES}
 
 add_executable(bulmafact ${bulmafactEx})
 
+
+
 # i18n
+ADD_DEFINITIONS("-D'_(String)=i18n(\"bulmafact\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"bulmafact\", String)'" )
+
+
 GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_BINARY_DIR}/bulmafact/src ${CMAKE_SOURCE_DIR}/bulmafact/src/ ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
 GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 

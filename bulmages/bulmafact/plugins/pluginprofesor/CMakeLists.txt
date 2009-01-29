@@ -40,6 +40,11 @@ QT4_ADD_RESOURCES(pluginprofesor_RCC_SRCS ${pluginprofesor_RCCS})
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
+
+# i18n
+ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+
 # build sources, moc'd sources, and rcc'd sources
 
 if(APPLE)

@@ -1,0 +1,8 @@
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp:146
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp:147
+msgid "Informe"
+msgstr "Informe"
+
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp:108
+msgid "Informes &ODS"
+msgstr ""

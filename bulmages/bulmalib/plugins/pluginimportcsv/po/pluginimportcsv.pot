@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-28 22:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:196
+msgid "Importar CSV"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:197
+msgid "Archivo"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:198
+msgid "..."
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:199
+msgid "Separador de campos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:200
+msgid "Separado por tabulador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:201
+msgid "Caracter separador"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:202
+msgid "Primera fila son cabeceras"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:203
+msgid "Tabla Destino"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:204
+msgid "Composición de Campos"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:205
+msgid "Aceptar"
+msgstr ""
+
+#: /opt/bulmages/build_svn/bulmalib/plugins/pluginimportcsv/ui_importcsvbase.h:206
+msgid "Cancelar"
+msgstr ""
+
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginimportcsv/pluginimportcsv.cpp:56
+msgid "&Importacion CSV"
+msgstr ""
+
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginimportcsv/pluginimportcsv.cpp:57
+#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginimportcsv/pluginimportcsv.cpp:58
+msgid "Importacion CSV"
+msgstr ""

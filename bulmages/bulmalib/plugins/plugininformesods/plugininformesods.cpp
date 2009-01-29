@@ -105,7 +105,7 @@ void entryPoint ( QMainWindow *bges )
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
     		QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
-			pPluginMenu = new QMenu ( "Informes &ODS", bges->menuBar() );
+			pPluginMenu = new QMenu ( _("Informes &ODS"), bges->menuBar() );
 			pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
 			bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
     } // end if
@@ -143,8 +143,8 @@ void entryPoint ( QMainWindow *bges )
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( titulo, 0 );
         accion->setObjectName ( fileInfo.fileName() );
-        accion->setStatusTip ( "Informe" );
-        accion->setWhatsThis ( "Informe" );
+        accion->setStatusTip ( _("Informe") );
+        accion->setWhatsThis ( _("Informe") );
         mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
         pPluginMenu->addAction ( accion );
     } // end for

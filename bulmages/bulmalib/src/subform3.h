@@ -27,9 +27,9 @@
 #include <QHeaderView>
 #include <QPalette>
 
+#include "funcaux.h"
 #include "ui_subform3base.h"
 #include "postgresiface2.h"
-#include "funcaux.h"
 #include "qtable2.h"
 #include "subform.h"
 #include "fixed.h"
