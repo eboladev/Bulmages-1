@@ -257,26 +257,29 @@ void EmpresaTPV::z()
     /// Imprimimos el almacen
     cur = cargacursor ( "SELECT * FROM familia");
     while ( !cur->eof() ) {
-        file.write ( QString ( "Familia: " ).toAscii() );
-        file.write (cur->valor ( "nomfamilia" ).toAscii() );
-        file.write ( "\n", 1 );
 
-	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
+	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
 	cursor2 *cur1 = cargacursor ( querycont );
 	QString numticketscont = cur1->valor ( "unidades" );
 	QString totalcont = cur1->valor ( "total" );
 	if ( totalcont == "" ) totalcont = "0";
 	delete cur1;
 
-	str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
-	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-	file.write ( "\n", 1 );
+	if ( totalcont != "") {
+		file.write ( QString ( "Familia: " ).toAscii() );
+		file.write (cur->valor ( "nomfamilia" ).toAscii() );
+		file.write ( "\n", 1 );
 	
-	str = "Total:" + totalcont.rightJustified ( 10, ' ' );
-	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-	file.write ( "\n", 1 );
-
-        file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+		str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
+		file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+		file.write ( "\n", 1 );
+		
+		str = "Total:" + totalcont.rightJustified ( 10, ' ' );
+		file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+		file.write ( "\n", 1 );
+	
+		file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+	} // end if
 
 	cur-> siguienteregistro();
     } // end if

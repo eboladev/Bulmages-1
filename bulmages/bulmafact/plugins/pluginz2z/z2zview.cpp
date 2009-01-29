@@ -127,7 +127,12 @@ void Z2ZView::calculaTotalTickets() {
 
 void Z2ZView::on_mui_traspasar_clicked() {
 
+	cursor2 *cur4 = NULL;
+
 try {
+
+    Fixed totaltraspasable (mui_totaltraspasado->text());
+    Fixed totaltraspasado("0.00");
 
     if (confpr->valor(CONF_FACT_ALT) == "") {
 	mensajeInfo("Debe configurar el parametro CONF_FACT_ALT");
@@ -173,7 +178,7 @@ try {
     QTextStream stream3 ( &file3 );
 
 
-		QString query7 = "INSERT INTO z (idalmacen) VALUES (2)";
+		QString query7 = "INSERT INTO z (idalmacen) VALUES (3)";
 		db->ejecuta(query7);
 
 		QString query8 = "SELECT max(idz) as idz from z";
@@ -184,7 +189,7 @@ try {
 
 
 		/// Guardamos la referencia.
-		stream3 << mui_listarefs->item(i)->text();
+		stream3 << mui_listarefs->item(i)->text() << endl;
 
 		/// Buscamos el minimo del albaran pasado.
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
@@ -195,34 +200,52 @@ try {
 		QString query3 = "SELECT * FROM  albaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
 		cursor2 *cur3 = empresaBase()->cargacursor(query3);
 
-		QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz) VALUES ('"+ cur3->valor("refalbaran")+"', "+cur3->valor("idcliente")+", "+cur3->valor("idalmacen")+", "+curz->valor("idz")+")";
-		db->ejecuta(query4);
-		delete cur3;
-
-		QString query5 = "SELECT max(idalbaran) as idalbaran from albaran";
-		cursor2 *cur4 = db->cargacursor(query5);
+		/// Los albaranes con visa no los ponemos
+		if (cur3->valor("idforma_pago") != "2") {
 
 
-		/// Iteramos sobre las lineas de albaran.
-		QString query1 = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		cursor2 *cur1 = empresaBase()->cargacursor(query1);
-		while (!cur1->eof()) {
-			/// Generamos el archivo de cambios.
-			stream << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+");" << endl;
-			
-			QString query6 = "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, ivalalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+", 0,'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+")";
-			db->ejecuta(query6);
+			/// Iteramos sobre las lineas de albaran.
+			QString query1 = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
+			cursor2 *cur1 = empresaBase()->cargacursor(query1);
 
-			/// Hacemos el reversible para que pueda volverse atras el paso.
-			stream1 << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+","+cur1->valor("idalbaran")+");" << endl;
+			if (!cur1->eof() && totaltraspasado < totaltraspasable) {
+				QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz, idforma_pago) VALUES ('"+ cur3->valor("refalbaran")+"', "+cur3->valor("idcliente")+", "+cur3->valor("idalmacen")+", "+curz->valor("idz")+", "+cur3->valor("idforma_pago")+")";
+				db->ejecuta(query4);
+				delete cur3;
+			} // end if
 
-			stream2 << "DELETE FROM lalbaran WHERE numlalbaran="+cur1->valor("numlalbaran") << endl;
-			cur1->siguienteregistro();
-		} // end while
-		delete cur1;
+			QString query5 = "SELECT max(idalbaran) as idalbaran from albaran";
+			cur4 = db->cargacursor(query5);
 
-		delete cur4;
+			while (!cur1->eof() && totaltraspasado < totaltraspasable) {
+
+
+
+
+
+				/// Generamos el archivo de cambios.
+				stream << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+");" << endl;
+				
+				QString query6 = "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, ivalalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+", 0,'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+")";
+				db->ejecuta(query6);
+	
+				totaltraspasado = totaltraspasado + Fixed(cur1->valor("cantlalbaran")) * Fixed(cur1->valor("pvpivainclalbaran"));
+
+				/// Hacemos el reversible para que pueda volverse atras el paso.
+				stream1 << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+","+cur1->valor("idalbaran")+");" << endl;
+	
+				stream2 << "DELETE FROM lalbaran WHERE numlalbaran="+cur1->valor("numlalbaran") << endl;
+				QString query9 = "DELETE FROM lalbaran WHERE numlalbaran = " +cur1->valor("numlalbaran");
+				empresaBase()->ejecuta(query9);
+
+				cur1->siguienteregistro();
+			} // end while
+			delete cur1;
+	
+			delete cur4;
+		} // end if
 	} // end for
+	
 	delete curz;
 	file.close();
 	file1.close();

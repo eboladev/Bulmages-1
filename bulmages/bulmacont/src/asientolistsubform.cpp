@@ -46,6 +46,11 @@ AsientoListSubform::AsientoListSubform ( QWidget *parent, const char * )
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setOrdenPorQuery ( TRUE );
+//    setOrdenEnabled ( TRUE );
+
+    connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
+
     _depura ( "END AsientoListSubform::AsientoListSubform", 0 );
 }
 
@@ -60,10 +65,50 @@ AsientoListSubform::~AsientoListSubform()
 }
 
 
+
+/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+/**
+\param menu
+**/
+void AsientoListSubform::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
+    menu->addSeparator();
+    menu->addAction ( tr ( "Mostrar asiento" ) );
+    menu->addSeparator();
+    menu->addAction ( tr ( "Mostrar extracto (dia)" ) );
+    menu->addAction ( tr ( "Mostrar extracto (mes)" ) );
+    menu->addAction ( tr ( "Mostrar extracto (ano)" ) );
+    _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
+}
+
+/// Slot que trata la activacion de un elemento en el menu contextual.
+/**
+\param action
+/return
+**/
+void AsientoListSubform::s_trataMenu ( QAction *action )
+{
+    _depura ( "ListLinAsiento1View::s_trataMenu", 0 );
+    if ( !action ) return;
+    if ( action->text() == tr ( "Mostrar asiento" ) )
+        boton_asiento();
+    if ( action->text() == tr ( "Mostrar extracto (dia)" ) )
+        boton_extracto1 ( 0 );
+    if ( action->text() == tr ( "Mostrar extracto (mes)" ) )
+        boton_extracto1 ( 1 );
+    if ( action->text() == tr ( "Mostrar extracto (ano)" ) )
+        boton_extracto1 ( 2 );
+
+    _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );
+}
+
 ///
 /**
 \return
 **/
+
+/*
 void AsientoListSubform::contextMenuEvent ( QContextMenuEvent * )
 {
     _depura ( "AsientoListSubform::contextMenuEvent", 0 );
@@ -126,4 +171,4 @@ void AsientoListSubform::contextMenuEvent ( QContextMenuEvent * )
     delete popup;
     _depura ( "END AsientoListSubform::contextMenuEvent", 0 );
 }
-
+*/
