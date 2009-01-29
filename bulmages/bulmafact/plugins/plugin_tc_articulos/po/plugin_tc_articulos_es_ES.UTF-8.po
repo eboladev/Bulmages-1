@@ -21,59 +21,59 @@ msgstr ""
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:84
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:85
 msgid "Colores"
-msgstr "mmm"
+msgstr "Colores"
 
 #: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listcoloresbase.h:117
 #: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listtallasbase.h:117
 msgid "&Aceptar"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listcoloresbase.h:118
 #: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listtallasbase.h:118
 msgid "&Cancelar"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/build_svn/bulmafact/plugins/plugin_tc_articulos/ui_listtallasbase.h:116
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:78
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:79
 msgid "Tallas"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:71
 msgid "Error al guardar los colores"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:99
 msgid "Id Color"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:100
 msgid "RGB Color"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp:101
 msgid "Nombre Color"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:72
 msgid "&Tallas y colores"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:77
 msgid "&Tallas"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.cpp:83
 msgid "&Colores"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:76
 msgid "Alias"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:77
 msgid "Id Articulo"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:78
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:284
@@ -81,7 +81,7 @@ msgstr "mmm"
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:329
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:358
 msgid "color"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:79
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:285
@@ -89,7 +89,7 @@ msgstr "mmm"
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:330
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:359
 msgid "Talla"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:82
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:286
@@ -97,7 +97,7 @@ msgstr "mmm"
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:331
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:360
 msgid "Nombre color"
-msgstr "mmm"
+msgstr ""
 
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:84
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:287
@@ -105,4 +105,4 @@ msgstr "mmm"
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:332
 #: /opt/bulmages/trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cpp:361
 msgid "Nombre talla"
-msgstr "mmm"
+msgstr ""
