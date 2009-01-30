@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-28 23:17+0100\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp:108
+#: plugininformesods.cpp:108
 msgid "Informes &ODS"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp:146
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp:147
+#: plugininformesods.cpp:146 plugininformesods.cpp:147
 msgid "Informe"
 msgstr ""

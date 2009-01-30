@@ -21,6 +21,7 @@
 #ifndef PROMEDIOVIEW_H
 #define PROMEDIOVIEW_H
 
+#include <funcaux.h>
 #include "ui_promediobase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"

@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginprofesor.cpp:96
+msgid "&Profesores"
+msgstr ""
+
+#: pluginprofesor.cpp:98 pluginprofesor.cpp:99 profesoreslist.cpp:144
+#: ui_profesoreslistbase.h:308
+msgid "Profesores"
+msgstr ""
+
+#: pluginprofesor.cpp:104
+msgid "&Nuevo Profesor"
+msgstr ""
+
+#: pluginprofesor.cpp:106 pluginprofesor.cpp:107 ui_profesorbase.h:198
+#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:322
+msgid "Nuevo Profesor"
+msgstr ""
+
+#: profesoreslist.cpp:160
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: profesoreslist.cpp:174
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: profesoreslist.cpp:201
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: profesoreslist.cpp:217 ui_profesoreslistbase.h:329
+#: ui_profesoreslistbase.h:334
+msgid "Editar Profesor"
+msgstr ""
+
+#: profesoreslist.cpp:218 ui_profesoreslistbase.h:341
+#: ui_profesoreslistbase.h:346
+msgid "Borrar Profesor"
+msgstr ""
+
+#: profesoreslist.cpp:262
+msgid "ID Profesor"
+msgstr ""
+
+#: profesoreslist.cpp:263
+msgid "Nombre"
+msgstr ""
+
+#: profesorview.cpp:49
+msgid "Profesor"
+msgstr ""
+
+#: profesorview.cpp:52
+msgid "ID profesor"
+msgstr ""
+
+#: profesorview.cpp:53
+msgid "Nombre del profesor"
+msgstr ""
+
+#: profesorview.cpp:59
+msgid "Error al crear el profesor"
+msgstr ""
+
+#: profesorview.cpp:87
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: ui_profesorbase.h:202 ui_profesorbase.h:207
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_profesorbase.h:211
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_profesorbase.h:214 ui_profesorbase.h:219 ui_profesorbase.h:226
+#: ui_profesorbase.h:231
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_profesorbase.h:223 ui_profesoreslistbase.h:350
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_profesorbase.h:235
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_profesorbase.h:236
+msgid "Nombre Profesor"
+msgstr ""
+
+#: ui_profesorbase.h:237
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_profesorbase.h:238
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_profesoreslistbase.h:309
+msgid "Banco:"
+msgstr ""
+
+#: ui_profesoreslistbase.h:310
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_profesoreslistbase.h:311
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_profesoreslistbase.h:312
+msgid "Cobros previstos"
+msgstr ""
+
+#: ui_profesoreslistbase.h:313
+msgid "Cobros efectivos"
+msgstr ""
+
+#: ui_profesoreslistbase.h:326
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_profesoreslistbase.h:338
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_profesoreslistbase.h:353 ui_profesoreslistbase.h:358
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_profesoreslistbase.h:362
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_profesoreslistbase.h:365 ui_profesoreslistbase.h:370
+msgid "Filtrar Profesores"
+msgstr ""
+
+#: ui_profesoreslistbase.h:374
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_profesoreslistbase.h:377 ui_profesoreslistbase.h:382
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_profesoreslistbase.h:386
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_profesoreslistbase.h:389 ui_profesoreslistbase.h:394
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_profesoreslistbase.h:398
+msgid "F5"
+msgstr ""
+
+#: ui_profesoreslistbase.h:399
+msgid "Buscar:"
+msgstr ""

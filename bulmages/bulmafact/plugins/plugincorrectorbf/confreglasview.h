@@ -21,6 +21,7 @@
 #ifndef CONFREGLASVIEW_H
 #define CONFREGLASVIEW_H
 
+#include <funcaux.h>
 #include "ui_confreglasbase.h"
 
 

@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_promediobase.h:294
+msgid "Compras"
+msgstr ""
+
+#: ui_promediobase.h:295
+msgid "Und. Compradas"
+msgstr ""
+
+#: ui_promediobase.h:296 ui_promediobase.h:311
+msgid "Cantidad Media"
+msgstr ""
+
+#: ui_promediobase.h:297 ui_promediobase.h:305
+msgid "Cantidad mayor"
+msgstr ""
+
+#: ui_promediobase.h:298 ui_promediobase.h:308
+msgid "Cantidad Menor"
+msgstr ""
+
+#: ui_promediobase.h:299 ui_promediobase.h:310
+msgid "Total"
+msgstr ""
+
+#: ui_promediobase.h:300 ui_promediobase.h:306
+msgid "Precio Medio"
+msgstr ""
+
+#: ui_promediobase.h:301 ui_promediobase.h:309
+msgid "Precio Mayor"
+msgstr ""
+
+#: ui_promediobase.h:302 ui_promediobase.h:307
+msgid "Precio Menor"
+msgstr ""
+
+#: ui_promediobase.h:303
+msgid "Ventas"
+msgstr ""
+
+#: ui_promediobase.h:304
+msgid "Und. Vendidas"
+msgstr ""

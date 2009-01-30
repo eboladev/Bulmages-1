@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:58
+msgid "ID almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:57 almaceneslistview.cpp:91
+msgid "Código almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:60
+msgid "Nombre almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:207
+msgid "Error al editar el almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:335
+msgid "Almacenes"
+msgstr ""
+
+#: almaceneslistview.cpp:232
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: almaceneslistview.cpp:254
+msgid "Error al borrar el almacen"
+msgstr ""
+
+#: almacenview.cpp:55 ui_almacenbase.h:346
+msgid "Almacen"
+msgstr ""
+
+#: almacenview.cpp:59
+msgid "Codigo almacen"
+msgstr ""
+
+#: almacenview.cpp:61
+msgid "Direccion almacen"
+msgstr ""
+
+#: almacenview.cpp:62
+msgid "Poblacion almacen"
+msgstr ""
+
+#: almacenview.cpp:63
+msgid "Codigo postal"
+msgstr ""
+
+#: almacenview.cpp:64
+msgid "Telefono almacen"
+msgstr ""
+
+#: almacenview.cpp:65
+msgid "Fax almacen"
+msgstr ""
+
+#: almacenview.cpp:66
+msgid "email almacen"
+msgstr ""
+
+#: almacenview.cpp:67
+msgid "Fecha almacen"
+msgstr ""
+
+#: almacenview.cpp:70
+msgid "Tipo almacen"
+msgstr ""
+
+#: almacenview.cpp:77
+msgid "Error al crear el almacen"
+msgstr ""
+
+#: ui_almacenbase.h:318 ui_almaceneslistbase.h:339 ui_almaceneslistbase.h:344
+msgid "Nuevo almacen"
+msgstr ""
+
+#: ui_almacenbase.h:322 ui_almacenbase.h:327
+msgid "Guardar almacen"
+msgstr ""
+
+#: ui_almacenbase.h:331
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_almacenbase.h:334 ui_almacenbase.h:339 ui_almaceneslistbase.h:363
+#: ui_almaceneslistbase.h:368
+msgid "Borrar almacen"
+msgstr ""
+
+#: ui_almacenbase.h:343 ui_almaceneslistbase.h:372
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_almacenbase.h:344
+msgid "Tipo de Almacen"
+msgstr ""
+
+#: ui_almacenbase.h:345
+msgid "Tienda"
+msgstr ""
+
+#: ui_almacenbase.h:347
+msgid "Email Almacén"
+msgstr ""
+
+#: ui_almacenbase.h:348
+msgid "Fax Almacén"
+msgstr ""
+
+#: ui_almacenbase.h:349
+msgid "Teléfono Almacén"
+msgstr ""
+
+#: ui_almacenbase.h:350
+msgid "Dirección Almacén"
+msgstr ""
+
+#: ui_almacenbase.h:351
+msgid "Nombre Almacén"
+msgstr ""
+
+#: ui_almacenbase.h:352
+msgid "Código Almacén"
+msgstr ""
+
+#: ui_almacenbase.h:353
+msgid "General"
+msgstr ""
+
+#: ui_almacenbase.h:354
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_almacenbase.h:355
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_almaceneslistbase.h:348
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_almaceneslistbase.h:351 ui_almaceneslistbase.h:356
+msgid "Editar almacen"
+msgstr ""
+
+#: ui_almaceneslistbase.h:360
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_almaceneslistbase.h:375 ui_almaceneslistbase.h:380
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_almaceneslistbase.h:384
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_almaceneslistbase.h:387 ui_almaceneslistbase.h:392
+msgid "Filtrar pedidos"
+msgstr ""
+
+#: ui_almaceneslistbase.h:398 ui_almaceneslistbase.h:403
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_almaceneslistbase.h:409 ui_almaceneslistbase.h:414
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_almaceneslistbase.h:418
+msgid "F5"
+msgstr ""
+
+#: ui_almaceneslistbase.h:419
+msgid "Buscar:"
+msgstr ""
+
+#: ui_almaceneslistbase.h:420
+msgid "Mostrar:"
+msgstr ""
+
+#: ui_almaceneslistbase.h:421
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_almaceneslistbase.h:422
+msgid "Fecha final:"
+msgstr ""

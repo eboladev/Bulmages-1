@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: movimientosview.cpp:83
+msgid "Todas las facturas"
+msgstr ""
+
+#: movimientosview.cpp:84
+msgid "Facturas procesadas"
+msgstr ""
+
+#: movimientosview.cpp:85
+msgid "Facturas no procesadas"
+msgstr ""
+
+#: movimientosview.cpp:144
+msgid "Facturas a clientes"
+msgstr ""
+
+#: movimientosview.cpp:170
+msgid "idarticulo"
+msgstr ""
+
+#: movimientosview.cpp:171
+msgid "Fecha"
+msgstr ""
+
+#: movimientosview.cpp:172
+msgid "Id Articulo"
+msgstr ""
+
+#: movimientosview.cpp:173
+msgid "Codigo Articulo"
+msgstr ""
+
+#: movimientosview.cpp:174
+msgid "Nombre Articulo"
+msgstr ""
+
+#: movimientosview.cpp:175
+msgid "Cantidad"
+msgstr ""
+
+#: movimientosview.cpp:176
+msgid "Lote"
+msgstr ""
+
+#: movimientosview.cpp:177
+msgid "Id Almacen"
+msgstr ""
+
+#: movimientosview.cpp:178
+msgid "Codigo Almacen"
+msgstr ""
+
+#: movimientosview.cpp:179
+msgid "Nombre Almacen"
+msgstr ""
+
+#: movimientosview.cpp:180
+msgid "Id Albaran Cliente"
+msgstr ""
+
+#: movimientosview.cpp:181
+msgid "Id Albaran Proveedor"
+msgstr ""
+
+#: ui_movimientosbase.h:259
+msgid "Movimientos"
+msgstr ""
+
+#: ui_movimientosbase.h:263 ui_movimientosbase.h:268
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_movimientosbase.h:272
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_movimientosbase.h:275 ui_movimientosbase.h:280
+msgid "Filtrar"
+msgstr ""
+
+#: ui_movimientosbase.h:284
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_movimientosbase.h:287 ui_movimientosbase.h:292
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_movimientosbase.h:296
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_movimientosbase.h:299 ui_movimientosbase.h:304
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_movimientosbase.h:308
+msgid "F5"
+msgstr ""
+
+#: ui_movimientosbase.h:309
+msgid "Mostrar:"
+msgstr ""
+
+#: ui_movimientosbase.h:310
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_movimientosbase.h:311
+msgid "Fecha inicial:"
+msgstr ""

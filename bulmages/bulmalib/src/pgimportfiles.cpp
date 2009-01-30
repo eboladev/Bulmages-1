@@ -2773,7 +2773,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
-        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "El almaceń del presupuesto no existe<BR>\n" ) );
+        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "El almacen del presupuesto no existe<BR>\n" ) );
         idalmacen = "NULL";
     } // end if
     delete cur;
@@ -2782,7 +2782,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
-        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "El clienteń del presupuesto no existe<BR>\n" ) );
+        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "El clienten del presupuesto no existe<BR>\n" ) );
         idcliente = "NULL";
     } // end if
     delete cur;
@@ -2791,7 +2791,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
-        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "La forma de pagoń del presupuesto no existe<BR>\n" ) );
+        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "La forma de pagon del presupuesto no existe<BR>\n" ) );
         idforma_pago = "NULL";
     } // end if
     delete cur;

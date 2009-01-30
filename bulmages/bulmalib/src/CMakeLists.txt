@@ -170,11 +170,11 @@ QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 
 # delete previous list of files to process (i18n)
-FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list)
+#FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list)
 
-FOREACH(loop ${bulmalib_UIS_H} ${bulmalib_SRCS})
-    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list ${loop} "\n")
-ENDFOREACH(loop)
+#FOREACH(loop ${bulmalib_UIS_H} ${bulmalib_SRCS})
+#    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list ${loop} "\n")
+#ENDFOREACH(loop)
 
 
 # generate rules for building source files that moc generates
@@ -203,13 +203,18 @@ target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
 
 # i18n
-GETTEXT_CREATE_TEMPLATE(bulmalib ${CMAKE_BINARY_DIR}/bulmalib/src ${CMAKE_SOURCE_DIR}/bulmalib/src/ ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list)
-GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+#GETTEXT_CREATE_TEMPLATE(bulmalib ${CMAKE_BINARY_DIR}/bulmalib/src ${CMAKE_SOURCE_DIR}/bulmalib/src/ ${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib_pot_list)
+#GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmalib/src/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 
 # i18n commands executed after build.
-ADD_CUSTOM_COMMAND(TARGET bulmalib POST_BUILD COMMAND make bulmalib.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
-ADD_CUSTOM_COMMAND(TARGET bulmalib POST_BUILD COMMAND make bulmalib_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
-
+#ADD_CUSTOM_COMMAND(TARGET bulmalib POST_BUILD COMMAND make bulmalib.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+#ADD_CUSTOM_COMMAND(TARGET bulmalib POST_BUILD COMMAND make bulmalib_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+if(USE_GETTEXT)
+   set(bulmalib_STR ${bulmalib} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
+                ${bulmalib_UIS_H} ${bulmalib_SRC} ${bulmalib_SRCS})
+   GETTEXT_CREATE_TEMPLATE("bulmalib" ${CMAKE_CURRENT_SOURCE_DIR}/po ${CMAKE_CURRENT_SOURCE_DIR} bulmalib_STR)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_SOURCE_DIR}/po/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+endif(USE_GETTEXT)
 
 
 install_targets(/lib bulmalib)

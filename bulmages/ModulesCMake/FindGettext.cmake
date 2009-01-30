@@ -153,32 +153,34 @@ endmacro(CREATE_FILE_LIST)
 macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
    
    set (MSGID_BUGS_ADDRESS "info@iglues.org")
-   #file(REMOVE ${CMAKE_CURRENT_SOURCE_DIR}/${template}.pot)
-#message (STATUS "Files to create list ${sources}")
+#  file(REMOVE ${CMAKE_CURRENT_SOURCE_DIR}/${template}.pot)
+   #message (STATUS "Files to create list ${${sources}}")
 
+   #we need a list with the files
+   CREATE_FILE_LIST(${sources} ${CMAKE_CURRENT_BINARY_DIR}/${template}.pot_list)
+   
    add_custom_command( 
    OUTPUT ${dirOUT}/${template}.pot
    COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} 
    ARGS --add-comments=TRANSLATORS: 
    ARGS --qt
-#   ARGS --keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
-#   ARGS --keyword=trUtf8 --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
-#   ARGS --keyword=translate:2 --flag=translate:2:pass-c-format --flag=translate:2:pass-qt-format
-#   ARGS --keyword=QT_TR_NOOP --flag=QT_TR_NOOP:1:pass-c-format --flag=QT_TR_NOOP:1:pass-qt-format
-#   ARGS --keyword=QT_TRANSLATE_NOOP:2 --flag=QT_TRANSLATE_NOOP:2:pass-c-format --flag=QT_TRANSLATE_NOOP:2:pass-qt-format
+   ARGS --keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
+   ARGS --keyword=trQtUtf8 --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
+   ARGS --keyword=translate:2 --flag=translate:2:pass-c-format --flag=translate:2:pass-qt-format
+   ARGS --keyword=QT_TR_NOOP --flag=QT_TR_NOOP:1:pass-c-format --flag=QT_TR_NOOP:1:pass-qt-format
+   ARGS --keyword=QT_TRANSLATE_NOOP:2 --flag=QT_TRANSLATE_NOOP:2:pass-c-format --flag=QT_TRANSLATE_NOOP:2:pass-qt-format
    ARGS --keyword=_ --flag=_:1:pass-c-format --flag=_:1:pass-qt-format
    ARGS --keyword=N_ --flag=N_:1:pass-c-format --flag=N_:1:pass-qt-format
-   ARGS --keyword=i18n
    ARGS --from-code=utf-8
    ARGS --directory=${dirIN} --directory=${CMAKE_CURRENT_BINARY_DIR} 
    ARGS --output=${dirOUT}/${template}.pot
-   ARGS --msgid-bugs-address=${MSGID_BUGS_ADDRESS} --files-from=${sources}
+   ARGS --msgid-bugs-address=${MSGID_BUGS_ADDRESS} --files-from=${CMAKE_CURRENT_BINARY_DIR}/${template}.pot_list
    DEPENDS ${template} VERBATIM)
-
+           
    add_custom_target(${template}.pot DEPENDS ${dirOUT}/${template}.pot)
+   add_dependencies(${template}.pot  ${template})
    add_dependencies(messages_extract ${template}.pot)
 endmacro( GETTEXT_CREATE_TEMPLATE)
-
 
 
 
@@ -209,9 +211,9 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
    foreach(_lang ${ARGN})
 
       # Copy _lang.po file to binary directory
-      CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
+#      CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
 
-      set(_absPoFile ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po)
+      set(_absPoFile ${CMAKE_CURRENT_BINARY_DIR}/po/${_potBasename}_${_lang}.po)
       set(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.gmo)
 
       get_filename_component(_gmoBasename ${_gmoFile} NAME)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-28 23:59+0100\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,265 +16,766 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:149
+#: ui_logpassbase.h:149
 msgid "Lanzador Bulmages"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:150
+#: ui_logpassbase.h:150
 msgid "Mensaje de error:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:152
+#: ui_logpassbase.h:152
 msgid "Registro de entrada:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:153
+#: ui_logpassbase.h:153
 msgid "Nombre de usuario:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:154
+#: ui_logpassbase.h:154
 msgid "Contrasenya:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:155
+#: ui_logpassbase.h:155
 msgid "&Validar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:156
+#: ui_logpassbase.h:156
 msgid "&Cerrar el programa"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:184
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:187
+#: ui_abreempresabase.h:184 ui_abreempresabase.h:187
 msgid "Seleccione una empresa"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:193
+#: ui_abreempresabase.h:193
 msgid "Actualizar Listado"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:198
+#: ui_abreempresabase.h:198
 msgid "Actualizar Listado de Empresas"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:202
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:286
+#: ui_abreempresabase.h:202 ui_paisbase.h:286
 msgid "Ctrl+N"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:203
+#: ui_abreempresabase.h:203
 msgid "Empresas disponibles:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:204
+#: ui_abreempresabase.h:204
 msgid "&Entra"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:205
+#: ui_abreempresabase.h:205 ficha.cpp:370 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:109
+#: ui_msgerrorbase.h:109
 msgid "Mensaje"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:111
+#: ui_msgerrorbase.h:111
 msgid "&Detalles"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:112
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:625
+#: ui_msgerrorbase.h:112 ui_subform3base.h:625
 msgid "&Cerrar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedafechabase.h:86
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:98
+#: ui_busquedafechabase.h:86 ui_busquedabase.h:98
 msgid "Form1"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedafechabase.h:89
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:106
+#: ui_busquedafechabase.h:89 ui_busquedabase.h:106
 msgid "Ctrl+F"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:601
+#: ui_subform3base.h:601
 msgid "Configuracion Subformularios"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:607
+#: ui_subform3base.h:607
 msgid "Columnas visibles"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:608
+#: ui_subform3base.h:608
 msgid "Total filas:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:609
+#: ui_subform3base.h:609
 msgid "Filas por pagina:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:610
+#: ui_subform3base.h:610
 msgid "Pagina actual:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:611
+#: ui_subform3base.h:611
 msgid "Total paginas:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:612
+#: ui_subform3base.h:612
 msgid "Pagina anterior"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:613
+#: ui_subform3base.h:613
 msgid "Pagina siguiente"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:614
+#: ui_subform3base.h:614
 msgid "Paginacion"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:617
+#: ui_subform3base.h:617
 msgid "Escriba aqui la consulta SQL"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:620
+#: ui_subform3base.h:620
 msgid "Query"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:621
+#: ui_subform3base.h:621
 msgid "¡Opcion reservada a expertos!"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:622
+#: ui_subform3base.h:622
 msgid "Ejecutar consulta"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:623
+#: ui_subform3base.h:623
 msgid "SQL"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:624
+#: ui_subform3base.h:624
 msgid "Aplicar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_porcentajecargabase.h:53
+#: ui_porcentajecargabase.h:53
 msgid "Porcentaje de carga..."
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:281
-#: /opt/bulmages/build_svn/bulmalib/src/ui_blbancoeditbase.h:89
+#: ui_fichacfgbase.h:281 ui_blbancoeditbase.h:89
 msgid "Form"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:282
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:284
+#: ui_fichacfgbase.h:282 ui_fichacfgbase.h:284
 msgid "Nombre de la Tabla"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:283
+#: ui_fichacfgbase.h:283
 msgid "Database Table"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:285
-msgid "Campo Índice"
+#: ui_fichacfgbase.h:285
+msgid "Campo Indice"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:286
+#: ui_fichacfgbase.h:286
 msgid "Form Elements"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:287
+#: ui_fichacfgbase.h:287
 msgid "Usuario Actual"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:288
+#: ui_fichacfgbase.h:288
 msgid "Propietario de la tablas"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:289
+#: ui_fichacfgbase.h:289
 msgid "User Preferences"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:290
+#: ui_fichacfgbase.h:290
 msgid "Databse Scripting"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:291
+#: ui_fichacfgbase.h:291
 msgid "Qt Scripting"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:292
+#: ui_fichacfgbase.h:292
 msgid "Cerrar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:258
+#: ui_paisbase.h:258
 msgid "Paises"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:259
+#: ui_paisbase.h:259
 msgid "Datos del pais:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:260
+#: ui_paisbase.h:260
 msgid "Nombre del pais:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:261
+#: ui_paisbase.h:261
 msgid "Codigo 3 letras:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:262
+#: ui_paisbase.h:262
 msgid "Codigo 2 letras:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:265
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:270
+#: ui_paisbase.h:265 ui_paisbase.h:270
 msgid "Mostrar/ocultar detalle"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:274
+#: ui_paisbase.h:274
 msgid "Cancelar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:277
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:282
+#: ui_paisbase.h:277 ui_paisbase.h:282
 msgid "Nuevo pais"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:289
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:294
+#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
 msgid "Borrar pais"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:298
+#: ui_paisbase.h:298
 msgid "Ctrl+D"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:301
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:306
+#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
 msgid "Guardar pais"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:310
+#: ui_paisbase.h:310
 msgid "Ctrl+S"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_blprogressbarbase.h:66
+#: ui_blprogressbarbase.h:66
 msgid "Trabajando"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_blprogressbarbase.h:67
+#: ui_blprogressbarbase.h:67
 msgid "TextLabel"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:99
+#: ui_busquedabase.h:99
 msgid "Busqueda"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:102
+#: ui_busquedabase.h:102
 msgid "Mostrar listado de profesors"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:109
+#: ui_busquedabase.h:109
 msgid "Limpiar campo"
+msgstr ""
+
+#: postgresiface2.cpp:139
+msgid "Error al hacer la consulta con la base de datos."
+msgstr ""
+
+#: funcaux.cpp:523
+msgid "Informacion de depuracion"
+msgstr ""
+
+#: funcaux.cpp:525 funcaux.cpp:554 funcaux.cpp:564 funcaux.cpp:574
+msgid "&Continuar"
+msgstr ""
+
+#: funcaux.cpp:526
+msgid "&Omitir"
+msgstr ""
+
+#: funcaux.cpp:527
+msgid "Omitir &clase"
+msgstr ""
+
+#: funcaux.cpp:553
+msgid "Informacion del programa"
+msgstr ""
+
+#: funcaux.cpp:563
+msgid "Aviso del programa"
+msgstr ""
+
+#: funcaux.cpp:573
+msgid "Error del programa"
+msgstr ""
+
+#: logpass.cpp:111
+msgid "Error: usuario y/o contrasenya incorrectos"
+msgstr ""
+
+#: abreempresaview.cpp:214
+msgid "&Cierra el programa"
+msgstr ""
+
+#: abreempresaview.cpp:283
+msgid "Para entrar, antes tiene que seleccionar una empresa."
+msgstr ""
+
+#: abreempresaview.cpp:492 subform3.cpp:93
+msgid "Nombre"
+msgstr ""
+
+#: abreempresaview.cpp:492
+msgid "Anyo"
+msgstr ""
+
+#: abreempresaview.cpp:492
+msgid "Archivo"
+msgstr ""
+
+#: abreempresaview.cpp:492
+msgid "Tipo"
+msgstr ""
+
+#: busquedafecha.cpp:183
+msgid "Seleccione fecha"
+msgstr ""
+
+#: pgimportfiles.cpp:401 pgimportfiles.cpp:1414
+msgid "Exportando :"
+msgstr ""
+
+#: pgimportfiles.cpp:482
+msgid "<LI>Se ha insertado la cuenta "
+msgstr ""
+
+#: pgimportfiles.cpp:485
+msgid "<LI>Ya hay una cuenta con el codigo "
+msgstr ""
+
+#: pgimportfiles.cpp:594
+msgid "<LI>Insercion de asiento"
+msgstr ""
+
+#: pgimportfiles.cpp:622
+msgid "<LI>Insercion de apunte"
+msgstr ""
+
+#: pgimportfiles.cpp:624
+msgid "<LI>Apunte fuera de fecha</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:635
+msgid "<LI>Terminado</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:699
+msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:1471
+msgid "Application name"
+msgstr ""
+
+#: pgimportfiles.cpp:1471
+msgid ""
+"Error en el XML.\n"
+"Documento mal formado."
+msgstr ""
+
+#: pgimportfiles.cpp:1902
+msgid "<HR><B>Tratando el cliente "
+msgstr ""
+
+#: pgimportfiles.cpp:1910
+msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:1915
+msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:1937
+msgid "<HR><B>Tratando el proveedor "
+msgstr ""
+
+#: pgimportfiles.cpp:1945
+msgid "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:1950
+msgid "<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:1971
+msgid "<HR><B>Tratando la froma de pago "
+msgstr ""
+
+#: pgimportfiles.cpp:1979
+msgid "<LI>Datos insuficientes para tratar la forma de pago."
+msgstr ""
+
+#: pgimportfiles.cpp:1988
+msgid "<LI> Ya existe esta forma de pago."
+msgstr ""
+
+#: pgimportfiles.cpp:1998
+msgid "<LI> Forma de pago <B>"
+msgstr ""
+
+#: pgimportfiles.cpp:1998
+msgid "</B> Insertada"
+msgstr ""
+
+#: pgimportfiles.cpp:2014
+msgid "<HR><B>Tratando almacen "
+msgstr ""
+
+#: pgimportfiles.cpp:2028
+msgid "<LI>Datos insuficientes para tratar el almacen."
+msgstr ""
+
+#: pgimportfiles.cpp:2036
+msgid "<LI> Ya existe este almacen."
+msgstr ""
+
+#: pgimportfiles.cpp:2045
+msgid "<LI> Almacen <B>"
+msgstr ""
+
+#: pgimportfiles.cpp:2045
+msgid "</B> Insertado"
+msgstr ""
+
+#: pgimportfiles.cpp:2064
+msgid "<HR><B>Tratando familia "
+msgstr ""
+
+#: pgimportfiles.cpp:2084
+msgid "<P> No se ha encontrado el padre de esta familia.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2089
+msgid "<P>Datos insuficientes para tratar la familia.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2097
+msgid "<P> Ya existe esta familia.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2106
+msgid "<P> Familia <B>"
+msgstr ""
+
+#: pgimportfiles.cpp:2106 pgimportfiles.cpp:2208
+msgid "</B> Insertado</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2125
+msgid "<HR><B>Tratando Articulo "
+msgstr ""
+
+#: pgimportfiles.cpp:2152
+msgid "La familia del articulo no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2177
+msgid "<P>Datos insuficientes para tratar el articulo.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2186
+msgid "<P> Ya existe este articulo.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2208
+msgid "<P> Articulo <B>"
+msgstr ""
+
+#: pgimportfiles.cpp:2223
+msgid "<HR><B>Tratando LPedidoCliente "
+msgstr ""
+
+#: pgimportfiles.cpp:2251
+msgid "<HR><B>Tratando DPedidoCliente "
+msgstr ""
+
+#: pgimportfiles.cpp:2272
+msgid "<HR><B>Tratando Pedido Cliente "
+msgstr ""
+
+#: pgimportfiles.cpp:2322 pgimportfiles.cpp:2551 pgimportfiles.cpp:2776
+#: pgimportfiles.cpp:3014
+msgid "El almacen del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2332 pgimportfiles.cpp:2561 pgimportfiles.cpp:3024
+msgid "El cliente del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2342 pgimportfiles.cpp:2570
+msgid "La forma de pago del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2352 pgimportfiles.cpp:2579 pgimportfiles.cpp:2804
+#: pgimportfiles.cpp:3044
+msgid "El empleado del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2403 pgimportfiles.cpp:2629 pgimportfiles.cpp:2867
+#: pgimportfiles.cpp:3096
+msgid "El articulo de la linea de presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2450
+msgid "<HR><B>Tratando LAlbaran "
+msgstr ""
+
+#: pgimportfiles.cpp:2478
+msgid "<HR><B>Tratando DAlbaran "
+msgstr ""
+
+#: pgimportfiles.cpp:2499
+msgid "<HR><B>Tratando Albaran "
+msgstr ""
+
+#: pgimportfiles.cpp:2676
+msgid "<HR><B>Tratando LFactura "
+msgstr ""
+
+#: pgimportfiles.cpp:2704
+msgid "<HR><B>Tratando DFactura "
+msgstr ""
+
+#: pgimportfiles.cpp:2725
+msgid "<HR><B>Tratando Factura "
+msgstr ""
+
+#: pgimportfiles.cpp:2785
+msgid "El clienten del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2794
+msgid "La forma de pagon del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2814
+msgid "La factura ya existe y no se va a insertar."
+msgstr ""
+
+#: pgimportfiles.cpp:2914
+msgid "<HR><B>Tratando LPresupuesto "
+msgstr ""
+
+#: pgimportfiles.cpp:2942
+msgid "<HR><B>Tratando DPresupuesto "
+msgstr ""
+
+#: pgimportfiles.cpp:2963
+msgid "<HR><B>Tratando Presupuesto "
+msgstr ""
+
+#: pgimportfiles.cpp:3034
+msgid "La forma de pagoń del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: busquedaperiodo.cpp:70
+msgid "Semanal"
+msgstr ""
+
+#: busquedaperiodo.cpp:71
+msgid "Quincenal"
+msgstr ""
+
+#: busquedaperiodo.cpp:72
+msgid "Mensual"
+msgstr ""
+
+#: busquedaperiodo.cpp:73
+msgid "Trimestral"
+msgstr ""
+
+#: busquedaperiodo.cpp:74
+msgid "Semestral"
+msgstr ""
+
+#: busquedaperiodo.cpp:75
+msgid "Anual"
+msgstr ""
+
+#: busquedaperiodo.cpp:76
+msgid "Bienal"
+msgstr ""
+
+#: subform3.cpp:93
+msgid "Nombre de campo"
+msgstr ""
+
+#: subform3.cpp:93
+msgid "Visible"
+msgstr ""
+
+#: subform3.cpp:1075
+msgid "Cargando SubFormulario "
+msgstr ""
+
+#: subform3.cpp:2069
+msgid "Imprimiendo "
+msgstr ""
+
+#: subform3.cpp:2328
+msgid "Borrar registro"
+msgstr ""
+
+#: subform3.cpp:2331
+msgid "Ajustar columa"
+msgstr ""
+
+#: subform3.cpp:2332
+msgid "Ajustar altura"
+msgstr ""
+
+#: subform3.cpp:2334
+msgid "Ajustar columnas"
+msgstr ""
+
+#: subform3.cpp:2335
+msgid "Ajustar alturas"
+msgstr ""
+
+#: subform3.cpp:2338
+msgid "Ver/Ocultar configurador de subformulario"
+msgstr ""
+
+#: listventanas.cpp:150 listventanas.cpp:151
+msgid "Indexador"
+msgstr ""
+
+#: qworkspace2.cpp:91
+msgid "Esc"
+msgstr ""
+
+#: ficha.cpp:339 listado.cpp:377
+msgid "Borrar"
+msgstr ""
+
+#: ficha.cpp:340
+msgid "Desea eliminar '"
+msgstr ""
+
+#: ficha.cpp:350
+msgid "No se ha podido borrar"
+msgstr ""
+
+#: ficha.cpp:368
+msgid "Guardar"
+msgstr ""
+
+#: ficha.cpp:369 paisview.cpp:118 paisview.cpp:189
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: ficha.cpp:370
+msgid "&Si"
+msgstr ""
+
+#: ficha.cpp:370
+msgid "&No"
+msgstr ""
+
+#: ficha.cpp:383
+msgid "No se pudo cerrar la ventana debido a un error"
+msgstr ""
+
+#: ficha.cpp:442
+msgid "Opciones Avanzadas de Ficha"
+msgstr ""
+
+#: ficha.cpp:443
+msgid "Imprimir Ficha"
+msgstr ""
+
+#: listado.cpp:325
+msgid "Tiene que seleccionar un elemento"
+msgstr ""
+
+#: listado.cpp:376
+msgid "Editar"
+msgstr ""
+
+#: paisview.cpp:48 paisview.cpp:60
+msgid "Id. Pais"
+msgstr ""
+
+#: paisview.cpp:49
+msgid "Nombre Pais"
+msgstr ""
+
+#: paisview.cpp:50
+msgid "Codigo 2 Digitos"
+msgstr ""
+
+#: paisview.cpp:51
+msgid "Codigo 3 Digitos"
+msgstr ""
+
+#: paisview.cpp:59
+msgid "Id. Provincia"
+msgstr ""
+
+#: paisview.cpp:61
+msgid "Provincia"
+msgstr ""
+
+#: paisview.cpp:67 paisview.cpp:71
+msgid "Pais"
+msgstr ""
+
+#: paisview.cpp:70
+msgid "idpais"
+msgstr ""
+
+#: paisview.cpp:72
+msgid "Codigo 2 digitos"
+msgstr ""
+
+#: paisview.cpp:73
+msgid "Codigo 3 digitos"
+msgstr ""
+
+#: paisview.cpp:119
+msgid "&Guardar"
+msgstr ""
+
+#: paisview.cpp:160
+msgid "Seleccione un pais para guardar"
+msgstr ""
+
+#: paisview.cpp:206
+msgid "Error al crear el banco"
+msgstr ""
+
+#: paisview.cpp:219
+msgid "Debe seleccionar un elemento de la lista"
+msgstr ""
+
+#: paisview.cpp:224
+msgid ""
+"Se va a borrar el pais seleccionado.\n"
+"Esta operacion puede ocasionar perdida de datos."
+msgstr ""
+
+#: paisview.cpp:225
+msgid "&Borrar"
+msgstr ""
+
+#: paisview.cpp:237
+msgid "Error al intentar borrar el pais"
+msgstr ""
+
+#: blmonthcalendar.cpp:39
+msgid "Date:"
+msgstr ""
+
+#: blmonthcalendar.cpp:52
+msgid "Font size:"
+msgstr ""
+
+#: blmonthcalendar.cpp:154
+#, qt-format
+msgid "Calendar for %1 %2"
+msgstr ""
+
+#: busqueda.cpp:38
+msgid "Clien&te:"
 msgstr ""

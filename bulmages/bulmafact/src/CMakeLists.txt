@@ -57,14 +57,11 @@ QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
 
 # delete previous list of files to process (i18n)
-FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
+#FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
 
-FOREACH(loop ${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafactEx})
-    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list ${loop} "\n")
-ENDFOREACH(loop)
-
-
-
+#FOREACH(loop ${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafactEx})
+#    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list ${loop} "\n")
+#ENDFOREACH(loop)
 
 add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
 		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} )
@@ -85,16 +82,25 @@ add_executable(bulmafact ${bulmafactEx})
 
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=i18n(\"bulmafact\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"bulmafact\", String)'" )
+ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+
+if(USE_GETTEXT)
+   set(bulmafact_i18n ${bulmafactEx} ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
+                ${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS})
+   GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_CURRENT_SOURCE_DIR}/po
+                                ${CMAKE_CURRENT_SOURCE_DIR} bulmafact_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_SOURCE_DIR}/po/bulmafact.pot
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+endif(USE_GETTEXT)
 
 
-GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_BINARY_DIR}/bulmafact/src ${CMAKE_SOURCE_DIR}/bulmafact/src/ ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
-GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+#GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_BINARY_DIR}/bulmafact/src ${CMAKE_SOURCE_DIR}/bulmafact/src/ ${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact_pot_list)
+#GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 
 # i18n commands executed after build.
-ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
-ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+#ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+#ADD_CUSTOM_COMMAND(TARGET bulmafact POST_BUILD COMMAND make bulmafact_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
 target_link_libraries( bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 

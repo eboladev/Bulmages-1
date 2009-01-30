@@ -25,11 +25,11 @@
 #include <QString>
 #include <QObject>
 
+#include <funcaux.h>
 #include "ui_correctorbase.h"
 #include "postgresiface2.h"
 #include "company.h"
 #include "blwidget.h"
-#include "funcaux.h"
 
 
 /** Busca errores y incoherencias en la contabilidad y las reporta al usuario en forma de

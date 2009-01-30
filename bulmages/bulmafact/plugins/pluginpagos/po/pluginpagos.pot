@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pagoview.cpp:60
+msgid "Pago"
+msgstr ""
+
+#: pagoview.cpp:63 pagoslist.cpp:235
+msgid "Id pago"
+msgstr ""
+
+#: pagoview.cpp:64 pagoslist.cpp:236
+msgid "Id proveedor"
+msgstr ""
+
+#: pagoview.cpp:65
+msgid "Previcion de pago"
+msgstr ""
+
+#: pagoview.cpp:66 pagoslist.cpp:241
+msgid "Fecha de pago"
+msgstr ""
+
+#: pagoview.cpp:67 pagoslist.cpp:244
+msgid "Referencia de pago"
+msgstr ""
+
+#: pagoview.cpp:68 pagoslist.cpp:242
+msgid "Cantidad"
+msgstr ""
+
+#: pagoview.cpp:69
+msgid "Comentario del pago"
+msgstr ""
+
+#: pagoview.cpp:70 pagoslist.cpp:243
+msgid "Banco"
+msgstr ""
+
+#: pagoview.cpp:76
+msgid "Error al crear el pago"
+msgstr ""
+
+#: pagoslist.cpp:176 ui_pagoslistbase.h:371
+msgid "Pagos a proveedores"
+msgstr ""
+
+#: pagoslist.cpp:186
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: pagoslist.cpp:198
+msgid "Error al borrar el pago"
+msgstr ""
+
+#: pagoslist.cpp:237
+msgid "Nombre proveedor"
+msgstr ""
+
+#: pagoslist.cpp:238
+msgid "C.I.F. proveedor"
+msgstr ""
+
+#: pagoslist.cpp:239
+msgid "Telefono proveedor"
+msgstr ""
+
+#: pagoslist.cpp:240
+msgid "Email proveedor"
+msgstr ""
+
+#: pagoslist.cpp:245
+msgid "Prevision pago"
+msgstr ""
+
+#: pagoslist.cpp:246
+msgid "Comentario pago"
+msgstr ""
+
+#: pagoslist.cpp:247
+msgid "Id trabajador"
+msgstr ""
+
+#: pagoslist.cpp:248
+msgid "Nombre de trabajador"
+msgstr ""
+
+#: pagoslist.cpp:249
+msgid "Apellidos trabajador"
+msgstr ""
+
+#: pluginpagos.cpp:95
+msgid "&Pagos a Proveedores"
+msgstr ""
+
+#: pluginpagos.cpp:97 pluginpagos.cpp:98
+msgid "Pagos a Proveedores"
+msgstr ""
+
+#: pluginpagos.cpp:103
+msgid "&Nuevo Pago a Proveedor"
+msgstr ""
+
+#: pluginpagos.cpp:105 pluginpagos.cpp:106
+msgid "Nuevo Pago a Proveedor"
+msgstr ""
+
+#: ui_pagoslistbase.h:372 ui_pagobase.h:339
+msgid "Banco:"
+msgstr ""
+
+#: ui_pagoslistbase.h:373
+msgid "Previsiones de Pago"
+msgstr ""
+
+#: ui_pagoslistbase.h:374
+msgid "Pagos efectivos"
+msgstr ""
+
+#: ui_pagoslistbase.h:375
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_pagoslistbase.h:376
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_pagoslistbase.h:380 ui_pagoslistbase.h:385
+msgid "Nuevo pago"
+msgstr ""
+
+#: ui_pagoslistbase.h:391 ui_pagoslistbase.h:396
+msgid "Editar pago"
+msgstr ""
+
+#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:324
+#: ui_pagobase.h:329
+msgid "Borrar pago"
+msgstr ""
+
+#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:418
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_pagoslistbase.h:424 ui_pagoslistbase.h:429
+msgid "Filtrar pagos"
+msgstr ""
+
+#: ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_pagoslistbase.h:455
+msgid "Buscar:"
+msgstr ""
+
+#: ui_pagoslistbase.h:456
+msgid "Total:"
+msgstr ""
+
+#: ui_pagobase.h:309
+msgid "Nuevo pago a proveedor"
+msgstr ""
+
+#: ui_pagobase.h:313 ui_pagobase.h:318
+msgid "Guardar pago"
+msgstr ""
+
+#: ui_pagobase.h:333
+msgid "Referencia:"
+msgstr ""
+
+#: ui_pagobase.h:334
+msgid "Fecha de pago:"
+msgstr ""
+
+#: ui_pagobase.h:335
+msgid "Provision de fondos"
+msgstr ""
+
+#: ui_pagobase.h:336
+msgid "Descripcion del pago:"
+msgstr ""
+
+#: ui_pagobase.h:337
+msgid "Total pago:"
+msgstr ""
+
+#: ui_pagobase.h:340
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_pagobase.h:341
+msgid "&Cancelar"
+msgstr ""

@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginasterisk.cpp:47
+msgid "Password."
+msgstr ""
+
+#: pluginasterisk.cpp:48
+msgid "Valida Siempre."
+msgstr ""
+
+#: pluginasterisk.cpp:93 pluginasterisk.cpp:156
+msgid "Fecha"
+msgstr ""
+
+#: pluginasterisk.cpp:94 pluginasterisk.cpp:157
+msgid "Hora"
+msgstr ""
+
+#: pluginasterisk.cpp:95
+msgid "Almacén"
+msgstr ""
+
+#: pluginasterisk.cpp:96
+msgid "Apertura Mañanas"
+msgstr ""
+
+#: pluginasterisk.cpp:97
+msgid "Cierre Mañanas"
+msgstr ""
+
+#: pluginasterisk.cpp:98
+msgid "Apertura Tardes"
+msgstr ""
+
+#: pluginasterisk.cpp:99
+msgid "Cierre Tardes"
+msgstr ""
+
+#: pluginasterisk.cpp:100 pluginasterisk.cpp:160
+msgid "Audicion"
+msgstr ""
+
+#: pluginasterisk.cpp:101 pluginasterisk.cpp:161
+msgid "Id Almacen"
+msgstr ""
+
+#: pluginasterisk.cpp:102 pluginasterisk.cpp:162
+msgid "ID Validacion"
+msgstr ""
+
+#: pluginasterisk.cpp:103 pluginasterisk.cpp:163
+msgid "ID Trabajador"
+msgstr ""
+
+#: pluginasterisk.cpp:122
+msgid "Extension."
+msgstr ""
+
+#: pluginasterisk.cpp:158
+msgid "Trabajador"
+msgstr ""
+
+#: pluginasterisk.cpp:159
+msgid "Apellidos"
+msgstr ""

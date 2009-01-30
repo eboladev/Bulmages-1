@@ -166,7 +166,7 @@
             <item>
              <widget class="QLabel" name="label_3" >
               <property name="text" >
-               <string>Campo Índice</string>
+               <string>Campo Indice</string>
               </property>
              </widget>
             </item>

@@ -26,6 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
+#include <funcaux.h>
 #include "ui_almacenbase.h"
 #include "postgresiface2.h"
 #include "busquedacliente.h"

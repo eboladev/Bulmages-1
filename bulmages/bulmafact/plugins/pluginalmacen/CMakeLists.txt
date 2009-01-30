@@ -31,7 +31,7 @@ include_directories(
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
@@ -46,6 +46,16 @@ endif(APPLE)
 # i18n
 ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
 ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+
+if(USE_GETTEXT)
+   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
+                        ${plugin_SRCS} ${plugin_MOCS})
+   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR}/po
+                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_SOURCE_DIR}/po/${plugin}.pot
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+endif(USE_GETTEXT)
+
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

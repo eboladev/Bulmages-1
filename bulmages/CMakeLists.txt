@@ -84,6 +84,9 @@ endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.4)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
 
+option(USE_GETTEXT "Enable use gettext mode" ON)
+
+
 if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
 endif(NOT PGSQL_FOUND)

@@ -30,7 +30,7 @@ include_directories(
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
@@ -40,7 +40,6 @@ ADD_DEFINITIONS(-DQT_SHARED)
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
-
 
 # i18n
 ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )

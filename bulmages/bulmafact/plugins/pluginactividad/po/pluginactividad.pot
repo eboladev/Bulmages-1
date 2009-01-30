@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: actividadview.cpp:49
+msgid "Actividad"
+msgstr ""
+
+#: actividadview.cpp:52
+msgid "ID actividad"
+msgstr ""
+
+#: actividadview.cpp:53
+msgid "Nombre del actividad"
+msgstr ""
+
+#: actividadview.cpp:60
+msgid "Error al crear el actividad"
+msgstr ""
+
+#: actividadview.cpp:88
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: pluginactividad.cpp:96
+msgid "&Actividades"
+msgstr ""
+
+#: pluginactividad.cpp:98 pluginactividad.cpp:99 actividadeslist.cpp:144
+#: ui_actividadeslistbase.h:308
+msgid "Actividades"
+msgstr ""
+
+#: pluginactividad.cpp:104
+msgid "&Nuevo Actividad"
+msgstr ""
+
+#: pluginactividad.cpp:106 pluginactividad.cpp:107
+#: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:322
+msgid "Nuevo Actividad"
+msgstr ""
+
+#: actividadeslist.cpp:160
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: actividadeslist.cpp:174
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: actividadeslist.cpp:201
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: actividadeslist.cpp:217 ui_actividadeslistbase.h:329
+#: ui_actividadeslistbase.h:334
+msgid "Editar Actividad"
+msgstr ""
+
+#: actividadeslist.cpp:218 ui_actividadeslistbase.h:341
+#: ui_actividadeslistbase.h:346
+msgid "Borrar Actividad"
+msgstr ""
+
+#: actividadeslist.cpp:262
+msgid "ID Actividad"
+msgstr ""
+
+#: actividadeslist.cpp:263
+msgid "Nombre"
+msgstr ""
+
+#: ui_actividadbase.h:370
+msgid "Nueva Actividad"
+msgstr ""
+
+#: ui_actividadbase.h:374 ui_actividadbase.h:379
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_actividadbase.h:383
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_actividadbase.h:386 ui_actividadbase.h:391 ui_actividadbase.h:398
+#: ui_actividadbase.h:403
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_actividadbase.h:395 ui_actividadeslistbase.h:350
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_actividadbase.h:407
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_actividadbase.h:408
+msgid "Codigo Actividad"
+msgstr ""
+
+#: ui_actividadbase.h:409
+msgid "Nombre completo:"
+msgstr ""
+
+#: ui_actividadbase.h:410
+msgid "Lugar"
+msgstr ""
+
+#: ui_actividadbase.h:411
+msgid "Profesor Encargado"
+msgstr ""
+
+#: ui_actividadbase.h:412
+msgid "Direccion:"
+msgstr ""
+
+#: ui_actividadbase.h:413
+msgid "Vigente"
+msgstr ""
+
+#: ui_actividadbase.h:414
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_actividadbase.h:415
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_actividadbase.h:416
+msgid "Datos de comercio electronico:"
+msgstr ""
+
+#: ui_actividadbase.h:417
+msgid "Otros datos"
+msgstr ""
+
+#: ui_actividadbase.h:418
+msgid "Calendario"
+msgstr ""
+
+#: ui_actividadbase.h:419
+msgid "BLMonthCalendar"
+msgstr ""
+
+#: ui_actividadbase.h:420
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_actividadbase.h:421
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_actividadeslistbase.h:309
+msgid "Banco:"
+msgstr ""
+
+#: ui_actividadeslistbase.h:310
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_actividadeslistbase.h:311
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_actividadeslistbase.h:312
+msgid "Cobros previstos"
+msgstr ""
+
+#: ui_actividadeslistbase.h:313
+msgid "Cobros efectivos"
+msgstr ""
+
+#: ui_actividadeslistbase.h:326
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_actividadeslistbase.h:338
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_actividadeslistbase.h:362
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_actividadeslistbase.h:365 ui_actividadeslistbase.h:370
+msgid "Filtrar Actividades"
+msgstr ""
+
+#: ui_actividadeslistbase.h:374
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_actividadeslistbase.h:377 ui_actividadeslistbase.h:382
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_actividadeslistbase.h:386
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_actividadeslistbase.h:389 ui_actividadeslistbase.h:394
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_actividadeslistbase.h:398
+msgid "F5"
+msgstr ""
+
+#: ui_actividadeslistbase.h:399
+msgid "Buscar:"
+msgstr ""

@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: listlresarticulo.cpp:35 listlresarticulo.cpp:88 listlresarticulo.cpp:139
+#: listlresarticulo.cpp:191
+msgid "CIF"
+msgstr ""
+
+#: listlresarticulo.cpp:37 listlresarticulo.cpp:90
+msgid "Cliente"
+msgstr ""
+
+#: listlresarticulo.cpp:39
+msgid "Serie Factura"
+msgstr ""
+
+#: listlresarticulo.cpp:41 listlresarticulo.cpp:143
+msgid "Num. Factura"
+msgstr ""
+
+#: listlresarticulo.cpp:43 listlresarticulo.cpp:94 listlresarticulo.cpp:145
+#: listlresarticulo.cpp:197
+msgid "Fecha"
+msgstr ""
+
+#: listlresarticulo.cpp:45 listlresarticulo.cpp:96 listlresarticulo.cpp:147
+#: listlresarticulo.cpp:199
+msgid "Descripcion"
+msgstr ""
+
+#: listlresarticulo.cpp:47 listlresarticulo.cpp:98 listlresarticulo.cpp:149
+#: listlresarticulo.cpp:201
+msgid "Cantidad"
+msgstr ""
+
+#: listlresarticulo.cpp:49
+msgid "Precio Venta"
+msgstr ""
+
+#: listlresarticulo.cpp:51 listlresarticulo.cpp:102 listlresarticulo.cpp:153
+#: listlresarticulo.cpp:205
+msgid "IVA"
+msgstr ""
+
+#: listlresarticulo.cpp:53 listlresarticulo.cpp:104 listlresarticulo.cpp:155
+#: listlresarticulo.cpp:207
+msgid "Descuento"
+msgstr ""
+
+#: listlresarticulo.cpp:92 listlresarticulo.cpp:195
+msgid "Num. Albaran"
+msgstr ""
+
+#: listlresarticulo.cpp:100 listlresarticulo.cpp:151 listlresarticulo.cpp:203
+msgid "Precio"
+msgstr ""
+
+#: listlresarticulo.cpp:141 listlresarticulo.cpp:193
+msgid "Proveedor"
+msgstr ""

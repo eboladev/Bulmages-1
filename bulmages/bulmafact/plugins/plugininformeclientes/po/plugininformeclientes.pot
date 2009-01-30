@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: informeqtoolbutton.cpp:138 informeqtoolbutton.cpp:494
+msgid "Generando Informe"
+msgstr ""
+
+#: informeqtoolbutton.cpp:202 informeqtoolbutton.cpp:235
+#: informeqtoolbutton.cpp:469
+msgid "Articulo"
+msgstr ""
+
+#: informeqtoolbutton.cpp:203 informeqtoolbutton.cpp:268
+msgid "Pres."
+msgstr ""
+
+#: informeqtoolbutton.cpp:204 informeqtoolbutton.cpp:236
+#: informeqtoolbutton.cpp:269 informeqtoolbutton.cpp:316
+msgid "Pedido"
+msgstr ""
+
+#: informeqtoolbutton.cpp:205 informeqtoolbutton.cpp:237
+#: informeqtoolbutton.cpp:270 informeqtoolbutton.cpp:317
+msgid "Entregado"
+msgstr ""
+
+#: informeqtoolbutton.cpp:206 informeqtoolbutton.cpp:238
+#: informeqtoolbutton.cpp:271 informeqtoolbutton.cpp:318
+msgid "Facturado"
+msgstr ""
+
+#: informeqtoolbutton.cpp:272
+msgid "Cobrado"
+msgstr ""
+
+#: informeqtoolbutton.cpp:319
+msgid "Pagado"
+msgstr ""
+
+#: informeqtoolbutton.cpp:470
+msgid "C. Ped."
+msgstr ""
+
+#: informeqtoolbutton.cpp:471
+msgid "C. Entr."
+msgstr ""
+
+#: informeqtoolbutton.cpp:472
+msgid "C. Fact."
+msgstr ""
+
+#: informeqtoolbutton.cpp:473
+msgid "V. Pres."
+msgstr ""
+
+#: informeqtoolbutton.cpp:474
+msgid "V. Ped."
+msgstr ""
+
+#: informeqtoolbutton.cpp:475
+msgid "V. Entr."
+msgstr ""
+
+#: informeqtoolbutton.cpp:476
+msgid "V. Fact."
+msgstr ""

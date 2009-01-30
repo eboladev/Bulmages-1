@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_correctorbase.h:92
+msgid "Corrector"
+msgstr ""
+
+#: ui_correctorbase.h:95 ui_correctorbase.h:100
+msgid "Corregir"
+msgstr ""
+
+#: ui_correctorbase.h:106 ui_correctorbase.h:111
+msgid "Configurar"
+msgstr ""
+
+#: ui_confreglasbase.h:275
+msgid "Reglas de Corrector"
+msgstr ""
+
+#: ui_confreglasbase.h:279
+msgid "Regla:"
+msgstr ""
+
+#: ui_confreglasbase.h:280
+msgid "Comprobación por asientos"
+msgstr ""
+
+#: ui_confreglasbase.h:281
+msgid "Condición:"
+msgstr ""
+
+#: ui_confreglasbase.h:282
+msgid "Deben existir registros que cumplan esta condición en el periodo"
+msgstr ""
+
+#: ui_confreglasbase.h:283
+msgid "Apunte con Cuenta"
+msgstr ""
+
+#: ui_confreglasbase.h:284
+msgid "Apunte con Saldo"
+msgstr ""
+
+#: ui_confreglasbase.h:287
+msgid "igual"
+msgstr ""
+
+#: ui_confreglasbase.h:288
+msgid "menor"
+msgstr ""
+
+#: ui_confreglasbase.h:289
+msgid "mayor"
+msgstr ""
+
+#: ui_confreglasbase.h:291
+msgid "Apunte con Descripcion"
+msgstr ""
+
+#: ui_confreglasbase.h:292
+msgid "Reglas sobre Apuntes"
+msgstr ""
+
+#: ui_confreglasbase.h:293
+msgid "Periodicidad"
+msgstr ""
+
+#: ui_confreglasbase.h:294
+msgid "Cerrar"
+msgstr ""
