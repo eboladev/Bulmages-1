@@ -76,8 +76,8 @@ void EmailQToolButton::setBoton()
     _depura ( "EmailQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Enviar por e-mail al cliente" );
-    setToolTip ( "Enviar por e-mail al cliente" );
+    setStatusTip ( i18n("Enviar por e-mail al cliente") );
+    setToolTip ( i18n("Enviar por e-mail al cliente") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );

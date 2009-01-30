@@ -88,8 +88,8 @@ void ImpQToolButton::setBoton()
     _depura ( "ImpQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Imprimir elementos seleccionados" );
-    setToolTip ( "Imprimir elementos seleccionados" );
+    setStatusTip ( i18n("Imprimir elementos seleccionados" ));
+    setToolTip ( i18n("Imprimir elementos seleccionados" ));
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_print1.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -163,7 +163,7 @@ void ImpQToolButton::click()
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
 					if (!resur) {
-						mensajeInfo("no se pudo crear instancia de factura");
+						mensajeInfo(i18n("no se pudo crear instancia de factura"));
 						return;
 					} // end if
 					FacturaView *pres = (FacturaView *) g_plugParams;
@@ -199,7 +199,7 @@ void ImpQToolButton::click()
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
 					if (!resur) {
-						mensajeInfo("no se pudo crear instancia de pedido cliente");
+						mensajeInfo(i18n("no se pudo crear instancia de pedido cliente"));
 						return;
 					} // end if
 					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;
@@ -235,7 +235,7 @@ void ImpQToolButton::click()
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
 				int resur = g_plugins->lanza ("SNewAlbaranClienteView", m_companyact);
 				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de albaran");
+					mensajeInfo(i18n("no se pudo crear instancia de albaran"));
 					return;
 				} // end if
                     AlbaranClienteView *pres = (AlbaranClienteView *) g_plugParams;
@@ -446,8 +446,8 @@ void SelQToolButton::setBoton()
 {
     _depura ( "SelQToolButton::setBoton", 0 );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Invertir seleccion de elementos" );
-    setToolTip ( "Invertir seleccion de elementos" );
+    setStatusTip ( i18n("Invertir seleccion de elementos"));
+    setToolTip ( i18n("Invertir seleccion de elementos") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/selection-invert.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -594,8 +594,8 @@ void EmailQToolButton::setBoton()
     _depura ( "EmailQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Enviar elementos seleccionados por e-mail" );
-    setToolTip ( "Enviar elementos seleccionados por e-mail" );
+    setStatusTip ( i18n("Enviar elementos seleccionados por e-mail") );
+    setToolTip (i18n( "Enviar elementos seleccionados por e-mail") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -636,7 +636,7 @@ void EmailQToolButton::click()
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewPresupuestoView", m_companyact);
 					if (!resur) {
-						mensajeInfo("no se pudo crear instancia de presupuesto");
+						mensajeInfo(i18n("no se pudo crear instancia de presupuesto"));
 						return;
 					} // end if
                     PresupuestoView *pres = (PresupuestoView *) g_plugParams;
@@ -680,7 +680,7 @@ void EmailQToolButton::click()
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
 					if (!resur) {
-						mensajeInfo("no se pudo crear instancia de pedido cliente");
+						mensajeInfo(i18n("no se pudo crear instancia de pedido cliente"));
 						return;
 					} // end if
 					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;
@@ -725,7 +725,7 @@ void EmailQToolButton::click()
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
 					if (!resur) {
-						mensajeInfo("no se pudo crear instancia de pedido cliente");
+						mensajeInfo(i18n("no se pudo crear instancia de pedido cliente"));
 						return;
 					} // end if
 					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;                pres->cargar ( id );
@@ -774,7 +774,7 @@ void EmailQToolButton::click()
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
 				int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
 				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de factura");
+					mensajeInfo(i18n("no se pudo crear instancia de factura"));
 					return;
 				} // end if
 				FacturaView *pres = (FacturaView *) g_plugParams;

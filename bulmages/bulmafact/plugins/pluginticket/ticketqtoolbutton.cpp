@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 #include <QWidget>
+#include <funcaux.h>
 #include "ticketqtoolbutton.h"
-#include "funcaux.h"
 
 
 #include <stdio.h>
@@ -81,8 +81,8 @@ void TicketQToolButton::setBoton()
     _depura ( "TicketQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Imprimir Ticket" );
-    setToolTip ( "Imprimir Ticket" );
+    setStatusTip ( i18n("Imprimir Ticket") );
+    setToolTip ( i18n("Imprimir Ticket") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -150,7 +150,7 @@ void TicketQToolButton::click()
         /// Imprimimos espacios
         file.write ( "\n \n", 3 );
         /// Imprimimos la fecha
-        file.write ( QString ( "Fecha: " ).toAscii() );
+        file.write ( QString ( i18n("Fecha: ") ).toAscii() );
         QDate fecha = QDate::currentDate();
         QString sfecha = fecha.toString ( "d-M-yyyy" );
         file.write ( sfecha.toAscii() );

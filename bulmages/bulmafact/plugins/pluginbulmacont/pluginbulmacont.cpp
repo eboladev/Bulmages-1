@@ -37,7 +37,7 @@ Bulmafact *g_bf;
 **/
 int entryPoint ( Bulmafact *bf )
 {
-    _depura ( "Estoy dentro del plugin BulmaCont", 0 );
+    _depura ( i18n("Estoy dentro del plugin BulmaCont"), 0 );
 	g_bf = bf;
     return 0;
 }

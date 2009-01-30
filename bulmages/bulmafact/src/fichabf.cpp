@@ -425,10 +425,10 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         //   buff.replace("[detallearticulos]", detalleArticulos());
 #endif
     
-// a ver. No sé porque pongo esto aquí. 
-// Como que he sacado código de generaRML(arch) para ponerlo aquí (porque me parece quees trataTags quien debería tratar todos los tags y porque así aprovecho el proceso de escribir el fichero en el encoding correcto que ya está hecho en Ficha) pues he 
-// copiado también esto, pero yo hubiera dicho que C++ ya haría el delete solito y si 
-// no es así ¿porqué en generaRML había dos catchs y solo uno hacía delete ? 
+// a ver. No se porque pongo esto aquí. 
+// Como que he sacado codigo de generaRML(arch) para ponerlo aquí (porque me parece quees trataTags quien debería tratar todos los tags y porque así aprovecho el proceso de escribir el fichero en el encoding correcto que ya esta hecho en Ficha) pues he 
+// copiado tambien esto, pero yo hubiera dicho que C++ ya haría el delete solito y si 
+// no es así ¿porque en generaRML había dos catchs y solo uno hacía delete ? 
   } catch ( ... ) {
      if ( cur ) delete cur;
      throw (-1);

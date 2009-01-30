@@ -3031,7 +3031,7 @@ int ImportBulmaFact::trataPresupuesto()
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
-        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "La forma de pagoń del presupuesto no existe<BR>\n" ) );
+        pgimport->mensajeria ( theApp->translate ( "ImportBulmaFact", "La forma de pagon del presupuesto no existe<BR>\n" ) );
         idforma_pago = "NULL";
     } // end if
     delete cur;

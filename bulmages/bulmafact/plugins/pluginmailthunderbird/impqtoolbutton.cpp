@@ -23,7 +23,7 @@
 
 #include <QWidget>
 #include "impqtoolbutton.h"
-#include "funcaux.h"
+#include <funcaux.h>
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
@@ -81,8 +81,8 @@ void EmailThunderbirdQToolButton::setBoton()
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
 
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Enviar por e-mail con Thunderbird al cliente" );
-    setToolTip ( "Enviar por e-mail con Thunderbird al cliente" );
+    setStatusTip ( i18n("Enviar por e-mail con Thunderbird al cliente" ));
+    setToolTip ( i18n("Enviar por e-mail con Thunderbird al cliente") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );

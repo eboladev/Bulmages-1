@@ -22,7 +22,7 @@
 #include <QToolButton>
 
 #include "pluginticket.h"
-#include "funcaux.h"
+#include <funcaux.h>
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "ticketqtoolbutton.h"

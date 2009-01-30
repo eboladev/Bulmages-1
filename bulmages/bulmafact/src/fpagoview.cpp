@@ -160,7 +160,7 @@ bool FPagoView::trataModificado()
 }
 
 
-/// SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/// SLOT que responde a la pulsacion del boton de nuevo tipo de iva
 /// Inserta en la tabla de IVAs.
 /**
 \return

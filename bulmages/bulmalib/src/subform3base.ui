@@ -2269,7 +2269,7 @@
              <bool>true</bool>
             </property>
             <property name="text" >
-             <string>¡Opcion reservada a expertos!</string>
+             <string>!Opcion reservada a expertos!</string>
             </property>
             <property name="alignment" >
              <set>Qt::AlignCenter</set>

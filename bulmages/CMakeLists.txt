@@ -84,7 +84,7 @@ endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.4)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
 
-option(USE_GETTEXT "Enable use gettext mode" ON)
+option(USE_GETTEXT "Enable use gettext mode" OFF)
 
 
 if(NOT PGSQL_FOUND)

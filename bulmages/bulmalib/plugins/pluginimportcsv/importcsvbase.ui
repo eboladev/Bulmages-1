@@ -123,7 +123,7 @@
      <item>
       <widget class="QLabel" name="label_3" >
        <property name="text" >
-        <string>Composición de Campos</string>
+        <string>Composicion de Campos</string>
        </property>
       </widget>
      </item>

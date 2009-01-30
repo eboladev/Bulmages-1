@@ -404,7 +404,7 @@ void SubForm2Bf::setIdProveedor ( QString id )
 {
     _depura ( "SubForm2Bf::setIdProveedor", 0, id );
 
-    /// En la primera carga no hay reajustes, pero si actualización del proveedor.
+    /// En la primera carga no hay reajustes, pero si actualizacion del proveedor.
     if ( mdb_idproveedor  == "" ) {
         mdb_idproveedor = id;
         return;

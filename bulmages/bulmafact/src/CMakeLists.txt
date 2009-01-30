@@ -51,7 +51,7 @@ include_directories(
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
+QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr i18n)
 QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
 

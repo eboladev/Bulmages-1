@@ -25,11 +25,11 @@
 #include <QObject>
 #include <QMessageBox>
 
-#include <stdio.h>
+#include <cstdio>
 
 #include "plugin.h"
 #include "company.h"
-#include "funcaux.h"
+#include <funcaux.h>
 
 
 ///
@@ -58,10 +58,10 @@ myplugin::~myplugin()
 void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
-    fprintf ( stderr, "Sa ha activado el slot\n" );
+    fprintf ( stderr, "S'ha activado el slot\n" );
     QMessageBox::warning ( 0,
-                           "Titulo de la ventana",
-                           "Mensaje.",
+                           i18n("Titulo de la ventana"),
+                           i18n("Mensaje."),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
     _depura ( "END myplugin::elslot", 0 );
@@ -81,14 +81,14 @@ void myplugin::inicializa ( Bulmafact *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
+        pPluginMenu = new QMenu ( i18n("&Herramientas"), bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
     } // end if
     /// Creamos el men&uacute;.
 
-    QAction *accion = new QAction ( "&Prueba de plugin", 0 );
-    accion->setStatusTip ( "Muestra statustip" );
-    accion->setWhatsThis ( "Muestra que es esto" );
+    QAction *accion = new QAction ( i18n("&Prueba de plugin"), 0 );
+    accion->setStatusTip ( i18n("Muestra statustip") );
+    accion->setWhatsThis ( i18n("Muestra que es esto") );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.

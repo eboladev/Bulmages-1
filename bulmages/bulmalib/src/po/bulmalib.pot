@@ -8,12 +8,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 18:05+0100\n"
+"POT-Creation-Date: 2009-01-30 19:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ui_logpassbase.h:149
@@ -137,7 +137,7 @@ msgid "Query"
 msgstr ""
 
 #: ui_subform3base.h:621
-msgid "¡Opcion reservada a expertos!"
+msgid "!Opcion reservada a expertos!"
 msgstr ""
 
 #: ui_subform3base.h:622
@@ -545,7 +545,7 @@ msgstr ""
 msgid "El clienten del presupuesto no existe<BR>\n"
 msgstr ""
 
-#: pgimportfiles.cpp:2794
+#: pgimportfiles.cpp:2794 pgimportfiles.cpp:3034
 msgid "La forma de pagon del presupuesto no existe<BR>\n"
 msgstr ""
 
@@ -563,10 +563,6 @@ msgstr ""
 
 #: pgimportfiles.cpp:2963
 msgid "<HR><B>Tratando Presupuesto "
-msgstr ""
-
-#: pgimportfiles.cpp:3034
-msgid "La forma de pagoń del presupuesto no existe<BR>\n"
 msgstr ""
 
 #: busquedaperiodo.cpp:70

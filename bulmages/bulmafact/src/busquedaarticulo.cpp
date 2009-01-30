@@ -392,11 +392,11 @@ void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
 		if ( codigo.size() >= 3 )
 		{
                     int pos = codigo.indexOf ( ".-" );
-                    // no sé si es el autoComplete o què però em criden a 
+                    // no se si es el autoComplete o què però em criden a 
                     // aquesta senyal quan omplo el combo, amb el primer valor 
-                    // i si no m'aturo ara, recalcularia el combo amb només 
-                    // aquest valor encara que l'usuari només hagi escrit 
-                    // un prefix que permeti més candidats
+                    // i si no m'aturo ara, recalcularia el combo amb nomes 
+                    // aquest valor encara que l'usuari nomes hagi escrit 
+                    // un prefix que permeti mes candidats
                     if ( pos < 0 ) 
                     {
                         
@@ -422,11 +422,11 @@ void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
 	_depura ( "END BusquedaArticuloDelegate::s_editTextChanged", 0 );
 }
 
-/// Retorna el codi d'article associat a la única entrada del combo que 
+/// Retorna el codi d'article associat a la unica entrada del combo que 
 /// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Això 
 /// permet que abans de donar un error per codi d'article incorrecte 
-/// se li assigni l'únic article trobat per l'entrada (incompleta?) de l'usuari.
-/// Retorna NULL si no se n'ha trobat cap o se n'ha trobat més d'un.
+/// se li assigni l'unic article trobat per l'entrada (incompleta?) de l'usuari.
+/// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
 QString BusquedaArticuloDelegate::unicaEleccion(void) {
    int num = 0;
    QString elec = NULL;
@@ -434,7 +434,7 @@ QString BusquedaArticuloDelegate::unicaEleccion(void) {
        _depura("item "+QString::number(i)+". num= "+QString::number(num)
                +" itemText='"+itemText(i)+"' itemData="+itemData(i).toString(),0);
        if (itemData(i).isValid()) {
-         _depura("aquest item és un article trobat, no entrada de l'usuari",0);
+         _depura("aquest item es un article trobat, no entrada de l'usuari",0);
          elec= itemData(i).toString();
          num++;
        };
@@ -445,7 +445,7 @@ QString BusquedaArticuloDelegate::unicaEleccion(void) {
    return (num==1?elec:NULL);
 }
 
-/// Sii el combo només ha trobat un article a la BD per l'entrada de 
+/// Sii el combo nomes ha trobat un article a la BD per l'entrada de 
 /// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
 QString BusquedaArticuloDelegate::eligeUnico(void) {
    _depura("BusquedaArticuloDelegate::eligeUnico. count=" 
@@ -462,7 +462,7 @@ QString BusquedaArticuloDelegate::eligeUnico(void) {
 } 
 
 /// quan deixa d'editar el camp substituim el que ha posat 
-/// per l'article que volia trobar si només hi ha un article candidat
+/// per l'article que volia trobar si nomes hi ha un article candidat
 void BusquedaArticuloDelegate::focusOutEvent ( QFocusEvent * event ) {
    _depura("BusquedaArticuloDelegate::focusOutEvent. count=" 
            + QString::number(count()),0);

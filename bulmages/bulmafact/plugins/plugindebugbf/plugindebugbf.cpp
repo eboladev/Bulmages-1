@@ -85,8 +85,8 @@ void entryPoint ( Bulmafact *bcont )
         viewCorrector->setChecked ( FALSE );
     }
 
-    viewCorrector->setStatusTip ( "Activa/Desactiva el Modo Debug" );
-    viewCorrector->setWhatsThis ( "Debug.\n\nActiva/Desactiva el Modo Debug" );
+    viewCorrector->setStatusTip ( i18n("Activa/Desactiva el Modo Debug") );
+    viewCorrector->setWhatsThis ( i18n("Debug.\n\nActiva/Desactiva el Modo Debug") );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( viewCorrector );

@@ -74,7 +74,7 @@ private:
     QString mdb_codigocompletoarticulo;
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
-    /// Texto entrado por teclado, para comunicación con pluginalias.
+    /// Texto entrado por teclado, para comunicacion con pluginalias.
     QString m_entrada;
 public:
     BusquedaArticulo ( QWidget *parent = 0 );

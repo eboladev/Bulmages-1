@@ -61,8 +61,8 @@ void TicketQToolButton::setBoton()
     _depura ( "TicketQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Imprimir Etiquetas" );
-    setToolTip ( "Imprimir Etiquetas" );
+    setStatusTip ( i18n("Imprimir Etiquetas") );
+    setToolTip ( i18n("Imprimir Etiquetas") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png" ) );
     setIconSize ( QSize ( 22, 22 ) );

@@ -399,7 +399,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
 }
 
 
-/// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
+/// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
 /**
 \return
