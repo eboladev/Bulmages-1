@@ -1140,6 +1140,10 @@ int Ficha::generaRML ( const QString &arch )
 	/// Vaciamos las variables de RML
 	m_variables.clear();
 
+	/// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
+	m_variables["CONF_DBNAME"] = empresaBase()->nameDB();
+	m_variables["CONF_DBUSER"] = empresaBase()->currentUser();
+
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "Ficha_generaRML", this );
     if ( res != 0 ) {
