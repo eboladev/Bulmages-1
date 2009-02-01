@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:02+0100\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid "&Entra"
 msgstr ""
 
-#: ui_abreempresabase.h:205 ficha.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_abreempresabase.h:205
 msgid "&Cancelar"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Nuevo pais"
 msgstr ""
 
-#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
+#: ui_paisbase.h:289 ui_paisbase.h:294
 msgid "Borrar pais"
 msgstr ""
 
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
+#: ui_paisbase.h:301 ui_paisbase.h:306
 msgid "Guardar pais"
 msgstr ""
 
@@ -266,10 +266,6 @@ msgstr ""
 
 #: ui_busquedabase.h:109
 msgid "Limpiar campo"
-msgstr ""
-
-#: postgresiface2.cpp:139
-msgid "Error al hacer la consulta con la base de datos."
 msgstr ""
 
 #: funcaux.cpp:523
@@ -298,38 +294,6 @@ msgstr ""
 
 #: funcaux.cpp:573
 msgid "Error del programa"
-msgstr ""
-
-#: logpass.cpp:111
-msgid "Error: usuario y/o contrasenya incorrectos"
-msgstr ""
-
-#: abreempresaview.cpp:214
-msgid "&Cierra el programa"
-msgstr ""
-
-#: abreempresaview.cpp:283
-msgid "Para entrar, antes tiene que seleccionar una empresa."
-msgstr ""
-
-#: abreempresaview.cpp:492 subform3.cpp:93
-msgid "Nombre"
-msgstr ""
-
-#: abreempresaview.cpp:492
-msgid "Anyo"
-msgstr ""
-
-#: abreempresaview.cpp:492
-msgid "Archivo"
-msgstr ""
-
-#: abreempresaview.cpp:492
-msgid "Tipo"
-msgstr ""
-
-#: busquedafecha.cpp:183
-msgid "Seleccione fecha"
 msgstr ""
 
 #: pgimportfiles.cpp:401 pgimportfiles.cpp:1414
@@ -563,215 +527,4 @@ msgstr ""
 
 #: pgimportfiles.cpp:2963
 msgid "<HR><B>Tratando Presupuesto "
-msgstr ""
-
-#: busquedaperiodo.cpp:70
-msgid "Semanal"
-msgstr ""
-
-#: busquedaperiodo.cpp:71
-msgid "Quincenal"
-msgstr ""
-
-#: busquedaperiodo.cpp:72
-msgid "Mensual"
-msgstr ""
-
-#: busquedaperiodo.cpp:73
-msgid "Trimestral"
-msgstr ""
-
-#: busquedaperiodo.cpp:74
-msgid "Semestral"
-msgstr ""
-
-#: busquedaperiodo.cpp:75
-msgid "Anual"
-msgstr ""
-
-#: busquedaperiodo.cpp:76
-msgid "Bienal"
-msgstr ""
-
-#: subform3.cpp:93
-msgid "Nombre de campo"
-msgstr ""
-
-#: subform3.cpp:93
-msgid "Visible"
-msgstr ""
-
-#: subform3.cpp:1075
-msgid "Cargando SubFormulario "
-msgstr ""
-
-#: subform3.cpp:2069
-msgid "Imprimiendo "
-msgstr ""
-
-#: subform3.cpp:2328
-msgid "Borrar registro"
-msgstr ""
-
-#: subform3.cpp:2331
-msgid "Ajustar columa"
-msgstr ""
-
-#: subform3.cpp:2332
-msgid "Ajustar altura"
-msgstr ""
-
-#: subform3.cpp:2334
-msgid "Ajustar columnas"
-msgstr ""
-
-#: subform3.cpp:2335
-msgid "Ajustar alturas"
-msgstr ""
-
-#: subform3.cpp:2338
-msgid "Ver/Ocultar configurador de subformulario"
-msgstr ""
-
-#: listventanas.cpp:150 listventanas.cpp:151
-msgid "Indexador"
-msgstr ""
-
-#: qworkspace2.cpp:91
-msgid "Esc"
-msgstr ""
-
-#: ficha.cpp:339 listado.cpp:377
-msgid "Borrar"
-msgstr ""
-
-#: ficha.cpp:340
-msgid "Desea eliminar '"
-msgstr ""
-
-#: ficha.cpp:350
-msgid "No se ha podido borrar"
-msgstr ""
-
-#: ficha.cpp:368
-msgid "Guardar"
-msgstr ""
-
-#: ficha.cpp:369 paisview.cpp:118 paisview.cpp:189
-msgid "Desea guardar los cambios?"
-msgstr ""
-
-#: ficha.cpp:370
-msgid "&Si"
-msgstr ""
-
-#: ficha.cpp:370
-msgid "&No"
-msgstr ""
-
-#: ficha.cpp:383
-msgid "No se pudo cerrar la ventana debido a un error"
-msgstr ""
-
-#: ficha.cpp:442
-msgid "Opciones Avanzadas de Ficha"
-msgstr ""
-
-#: ficha.cpp:443
-msgid "Imprimir Ficha"
-msgstr ""
-
-#: listado.cpp:325
-msgid "Tiene que seleccionar un elemento"
-msgstr ""
-
-#: listado.cpp:376
-msgid "Editar"
-msgstr ""
-
-#: paisview.cpp:48 paisview.cpp:60
-msgid "Id. Pais"
-msgstr ""
-
-#: paisview.cpp:49
-msgid "Nombre Pais"
-msgstr ""
-
-#: paisview.cpp:50
-msgid "Codigo 2 Digitos"
-msgstr ""
-
-#: paisview.cpp:51
-msgid "Codigo 3 Digitos"
-msgstr ""
-
-#: paisview.cpp:59
-msgid "Id. Provincia"
-msgstr ""
-
-#: paisview.cpp:61
-msgid "Provincia"
-msgstr ""
-
-#: paisview.cpp:67 paisview.cpp:71
-msgid "Pais"
-msgstr ""
-
-#: paisview.cpp:70
-msgid "idpais"
-msgstr ""
-
-#: paisview.cpp:72
-msgid "Codigo 2 digitos"
-msgstr ""
-
-#: paisview.cpp:73
-msgid "Codigo 3 digitos"
-msgstr ""
-
-#: paisview.cpp:119
-msgid "&Guardar"
-msgstr ""
-
-#: paisview.cpp:160
-msgid "Seleccione un pais para guardar"
-msgstr ""
-
-#: paisview.cpp:206
-msgid "Error al crear el banco"
-msgstr ""
-
-#: paisview.cpp:219
-msgid "Debe seleccionar un elemento de la lista"
-msgstr ""
-
-#: paisview.cpp:224
-msgid ""
-"Se va a borrar el pais seleccionado.\n"
-"Esta operacion puede ocasionar perdida de datos."
-msgstr ""
-
-#: paisview.cpp:225
-msgid "&Borrar"
-msgstr ""
-
-#: paisview.cpp:237
-msgid "Error al intentar borrar el pais"
-msgstr ""
-
-#: blmonthcalendar.cpp:39
-msgid "Date:"
-msgstr ""
-
-#: blmonthcalendar.cpp:52
-msgid "Font size:"
-msgstr ""
-
-#: blmonthcalendar.cpp:154
-#, qt-format
-msgid "Calendar for %1 %2"
-msgstr ""
-
-#: busqueda.cpp:38
-msgid "Clien&te:"
 msgstr ""

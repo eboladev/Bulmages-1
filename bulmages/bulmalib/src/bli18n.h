@@ -19,22 +19,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef I18N_H
-#define I18N_H
+#ifndef BLI18N_H
+#define BLI18N_H
 
 #include <QString>
 
 #include <libintl.h>
 #include <locale.h>
 
-//#define _(String) i18n (String)
 
-
-QString i18n(const char *, int = 0);
+QString BlI18n(const char *, int = 0);
 //QString _(const char *, int = 0);
 
 /// Gettext con dominio
-QString i18n(const char *, const char *);
+QString BlI18n(const char *, const char *);
 //QString _(const char *, const char *);
 
 #endif

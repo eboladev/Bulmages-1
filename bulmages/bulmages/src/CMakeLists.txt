@@ -79,8 +79,8 @@ QT4_WRAP_CPP(bulmages_MOC_SRCS ${bulmages_MOCS})
 #ADD_DEFINITIONS(-DQT_SHARED)
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=i18n(\"bulmages\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"bulmages\", String)'" )
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmages\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmages\", String)'" )
 
 # build sources, moc'd sources, and rcc'd sources
 # # generate rules for building source files from the resources

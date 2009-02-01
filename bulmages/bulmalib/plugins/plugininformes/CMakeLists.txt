@@ -52,8 +52,8 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"${plugin}\", String)'" )
 
 if(USE_GETTEXT)
    set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}

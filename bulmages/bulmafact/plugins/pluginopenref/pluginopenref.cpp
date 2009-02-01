@@ -33,7 +33,7 @@
 **/
 int entryPoint ( Bulmafact * )
 {
-    _depura ( i18n("Estoy dentro del plugin de Abertura de Referencia"), 0 );
+    _depura ( _("Estoy dentro del plugin de Abertura de Referencia"), 0 );
     return 0;
 }
 

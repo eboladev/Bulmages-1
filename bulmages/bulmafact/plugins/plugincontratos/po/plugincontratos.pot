@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:23+0100\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,164 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listlincontratoview.cpp:41
-msgid "Id articulo"
-msgstr ""
-
-#: listlincontratoview.cpp:42
-msgid "Codigo completo articulo"
-msgstr ""
-
-#: listlincontratoview.cpp:43
-msgid "Nombre articulo"
-msgstr ""
-
-#: listlincontratoview.cpp:44
-msgid "Idl contrato"
-msgstr ""
-
-#: listlincontratoview.cpp:45
-msgid "Descripcionl contrato"
-msgstr ""
-
-#: listlincontratoview.cpp:46
-msgid "Cantidadl contrato"
-msgstr ""
-
-#: listlincontratoview.cpp:47
-msgid "PVPl contrato"
-msgstr ""
-
-#: listlincontratoview.cpp:48 contrato.cpp:42
+#: contrato.cpp:42
 msgid "Id contrato"
 msgstr ""
 
-#: listlincontratoview.cpp:49
-msgid "Orden"
-msgstr ""
-
-#: contratoview.cpp:68
-msgid "Error al crear la contrato"
-msgstr ""
-
-#: contratoview.cpp:113 contrato.cpp:39
-msgid "Contrato"
-msgstr ""
-
-#: contratoview.cpp:397
-msgid "Numero"
-msgstr ""
-
-#: contratoview.cpp:398
-msgid "Fecha"
-msgstr ""
-
-#: contratoview.cpp:399
-msgid "Nombre cliente"
-msgstr ""
-
-#: contratoview.cpp:400
-msgid "Telefono factura"
-msgstr ""
-
-#: contratoview.cpp:401
-msgid "Base imponible"
-msgstr ""
-
-#: contratoview.cpp:402
-msgid "Impuestos"
-msgstr ""
-
-#: contratoview.cpp:403
-msgid "Total"
-msgstr ""
-
-#: contratoview.cpp:404
-msgid "Procesada"
-msgstr ""
-
-#: contratoview.cpp:405
-msgid "Id factura"
-msgstr ""
-
-#: contratoview.cpp:406
-msgid "Ref factura"
-msgstr ""
-
-#: contratoview.cpp:407
-msgid "Serie"
-msgstr ""
-
-#: contratoview.cpp:408
-msgid "CIF cliente"
-msgstr ""
-
-#: contratoview.cpp:409
-msgid "Codigo almacen"
-msgstr ""
-
-#: contratoview.cpp:410
-msgid "Contact factura"
-msgstr ""
-
-#: contratoview.cpp:411
-msgid "Comentario factura"
-msgstr ""
-
-#: contratoview.cpp:412
-msgid "Id trabajador"
-msgstr ""
-
-#: contratoview.cpp:413 contrato.cpp:43
+#: contrato.cpp:43
 msgid "Id cliente"
-msgstr ""
-
-#: contratoview.cpp:414
-msgid "Id almacen"
-msgstr ""
-
-#: contratoslist.cpp:68
-msgid "Selector de contratos"
-msgstr ""
-
-#: contratoslist.cpp:169
-msgid "Listado de Contratos"
-msgstr ""
-
-#: contratoslist.cpp:198
-msgid "Error al borrar un contrato"
-msgstr ""
-
-#: contratoslist.cpp:417
-msgid "ID contrato"
-msgstr ""
-
-#: contratoslist.cpp:418
-msgid "Codigo"
-msgstr ""
-
-#: contratoslist.cpp:419
-msgid "C.I.F."
-msgstr ""
-
-#: contratoslist.cpp:420
-msgid "Referencia"
-msgstr ""
-
-#: contratoslist.cpp:421
-msgid "Nombre de contrato"
-msgstr ""
-
-#: contratoslist.cpp:422
-msgid "Nombre alternativo del contrato"
-msgstr ""
-
-#: contratoslist.cpp:423
-msgid "Fecha de alta del contrato"
-msgstr ""
-
-#: contratoslist.cpp:424 contratoslist.cpp:425
-msgid "Fecha de baja del contrato"
 msgstr ""
 
 #: contrato.cpp:44

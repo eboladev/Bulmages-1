@@ -29,6 +29,7 @@
 #include <QWidget>
 #include <QMap>
 
+#include <funcaux.h>
 #include "ui_archivobase.h"
 #include "postgresiface2.h"
 #include "blwidget.h"

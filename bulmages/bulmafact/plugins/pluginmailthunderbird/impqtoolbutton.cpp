@@ -81,8 +81,8 @@ void EmailThunderbirdQToolButton::setBoton()
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
 
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( i18n("Enviar por e-mail con Thunderbird al cliente" ));
-    setToolTip ( i18n("Enviar por e-mail con Thunderbird al cliente") );
+    setStatusTip ( _("Enviar por e-mail con Thunderbird al cliente" ));
+    setToolTip ( _("Enviar por e-mail con Thunderbird al cliente") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );

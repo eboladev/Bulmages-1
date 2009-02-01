@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:29+0100\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,92 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginpresupuesto.cpp:99
-msgid "&Presupuestos a Clientes"
-msgstr ""
-
-#: pluginpresupuesto.cpp:101 pluginpresupuesto.cpp:102
-msgid "Presupuestos a Clientes"
-msgstr ""
-
-#: pluginpresupuesto.cpp:107
-msgid "&Nuevo Presupuesto a Cliente"
-msgstr ""
-
-#: pluginpresupuesto.cpp:109 pluginpresupuesto.cpp:110
-msgid "Nuevo Presupuesto a Cliente"
-msgstr ""
-
-#: listdescpresupuestoview.cpp:42
-msgid "Id descuento"
-msgstr ""
-
-#: listdescpresupuestoview.cpp:43
-msgid "Concepto descuento"
-msgstr ""
-
-#: listdescpresupuestoview.cpp:44 listlinpresupuestoview.cpp:56
-#: presupuestoview.cpp:72
-msgid "% Descuento"
-msgstr ""
-
-#: listdescpresupuestoview.cpp:45 listlinpresupuestoview.cpp:57
-msgid "Id presupuesto"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:47
-msgid "Id articulo"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:48
-msgid "Codigo completo"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:49
-msgid "Nombre del articulo"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:50
-msgid "No de linea"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:51 presupuestolist.cpp:346
-msgid "Descripcion"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:52
-msgid "Cantidad"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:53
-msgid "Precio de venta s/IVA"
-msgstr ""
-
-#: listlinpresupuestoview.cpp:54
-msgid "% I.V.A."
-msgstr ""
-
-#: listlinpresupuestoview.cpp:55
-msgid "% Recargo E.Q."
-msgstr ""
-
-#: listlinpresupuestoview.cpp:58
-msgid "Orden"
-msgstr ""
-
-#: presupuestoview.cpp:59 presupuestolist.cpp:339
-msgid "Presupuesto"
-msgstr ""
-
-#: presupuestoview.cpp:62 presupuestolist.cpp:338
+#: presupuestoview.cpp:62
 msgid "ID presupuesto"
 msgstr ""
 
-#: presupuestoview.cpp:63 presupuestolist.cpp:341
+#: presupuestoview.cpp:63
 msgid "Cliente"
 msgstr ""
 
-#: presupuestoview.cpp:64 presupuestolist.cpp:350
+#: presupuestoview.cpp:64
 msgid "Almacen"
 msgstr ""
 
@@ -117,7 +40,7 @@ msgstr ""
 msgid "Fecha de vencimiento"
 msgstr ""
 
-#: presupuestoview.cpp:68 presupuestolist.cpp:347
+#: presupuestoview.cpp:68
 msgid "Persona de contacto"
 msgstr ""
 
@@ -134,7 +57,11 @@ msgstr ""
 msgid "Procesado"
 msgstr ""
 
-#: presupuestoview.cpp:73 presupuestolist.cpp:342
+#: presupuestoview.cpp:72
+msgid "% Descuento"
+msgstr ""
+
+#: presupuestoview.cpp:73
 msgid "Referencia"
 msgstr ""
 
@@ -146,130 +73,8 @@ msgstr ""
 msgid "Trabajador"
 msgstr ""
 
-#: presupuestoview.cpp:104
-msgid "Error al crear el presupuesto"
-msgstr ""
-
-#: presupuestolist.cpp:102
-msgid "Todos los presupuestos"
-msgstr ""
-
-#: presupuestolist.cpp:103
-msgid "Presupuestos procesados"
-msgstr ""
-
-#: presupuestolist.cpp:104
-msgid "Presupuestos no procesados"
-msgstr ""
-
-#: presupuestolist.cpp:273
-msgid "Error al editar el presupuesto"
-msgstr ""
-
-#: presupuestolist.cpp:285 ui_presupuestoslistbase.h:363
+#: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
-msgstr ""
-
-#: presupuestolist.cpp:299
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: presupuestolist.cpp:313
-msgid "Error al borrar el presupuesto"
-msgstr ""
-
-#: presupuestolist.cpp:340
-msgid "Fecha"
-msgstr ""
-
-#: presupuestolist.cpp:343
-msgid "Base Imponible"
-msgstr ""
-
-#: presupuestolist.cpp:344
-msgid "Impuestos"
-msgstr ""
-
-#: presupuestolist.cpp:345
-msgid "Total"
-msgstr ""
-
-#: presupuestolist.cpp:348
-msgid "Telefono"
-msgstr ""
-
-#: presupuestolist.cpp:349
-msgid "Comentario"
-msgstr ""
-
-#: presupuestolist.cpp:351
-msgid "ID trabajador"
-msgstr ""
-
-#: presupuestolist.cpp:352
-msgid "ID cliente"
-msgstr ""
-
-#: presupuestolist.cpp:353
-msgid "ID almacen"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:149 genpreqtoolbutton.cpp:277
-#: genpreqtoolbutton.cpp:406 genpreqtoolbutton.cpp:594
-msgid "Tiene que seleccionar un cliente"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:164
-msgid "Factura existente"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:165
-msgid ""
-"Existe una factura a este cliente con la misma referencia que este albaran. "
-"Desea abrirla para verificar?"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
-#: genpreqtoolbutton.cpp:423
-msgid "&Si"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
-#: genpreqtoolbutton.cpp:423
-msgid "&No"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:234 genpreqtoolbutton.cpp:360
-#: genpreqtoolbutton.cpp:489
-msgid "Error inesperado"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:292
-msgid "Albaran ya existe"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:293
-msgid ""
-"Existe un albaran a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:421
-msgid "Factura ya existe"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:422
-msgid ""
-"Existe una factura a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
-msgstr ""
-
-#: genpreqtoolbutton.cpp:617
-msgid "No hay presupuestos con la misma referencia."
-msgstr ""
-
-#: genpreqtoolbutton.cpp:624
-msgid "Error inesperado."
 msgstr ""
 
 #: ui_presupuestoslistbase.h:367 ui_presupuestoslistbase.h:372

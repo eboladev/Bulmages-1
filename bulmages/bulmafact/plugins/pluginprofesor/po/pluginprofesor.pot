@@ -8,65 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:31+0100\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: pluginprofesor.cpp:96
-msgid "&Profesores"
-msgstr ""
-
-#: pluginprofesor.cpp:98 pluginprofesor.cpp:99 profesoreslist.cpp:144
-#: ui_profesoreslistbase.h:308
-msgid "Profesores"
-msgstr ""
-
-#: pluginprofesor.cpp:104
-msgid "&Nuevo Profesor"
-msgstr ""
-
-#: pluginprofesor.cpp:106 pluginprofesor.cpp:107 ui_profesorbase.h:198
-#: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:322
-msgid "Nuevo Profesor"
-msgstr ""
-
-#: profesoreslist.cpp:160
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: profesoreslist.cpp:174
-msgid "Error al borrar el cobro a cliente"
-msgstr ""
-
-#: profesoreslist.cpp:201
-msgid "Debe seleccionar una fila primero"
-msgstr ""
-
-#: profesoreslist.cpp:217 ui_profesoreslistbase.h:329
-#: ui_profesoreslistbase.h:334
-msgid "Editar Profesor"
-msgstr ""
-
-#: profesoreslist.cpp:218 ui_profesoreslistbase.h:341
-#: ui_profesoreslistbase.h:346
-msgid "Borrar Profesor"
-msgstr ""
-
-#: profesoreslist.cpp:262
-msgid "ID Profesor"
-msgstr ""
-
-#: profesoreslist.cpp:263
-msgid "Nombre"
-msgstr ""
-
-#: profesorview.cpp:49
-msgid "Profesor"
-msgstr ""
 
 #: profesorview.cpp:52
 msgid "ID profesor"
@@ -76,12 +24,9 @@ msgstr ""
 msgid "Nombre del profesor"
 msgstr ""
 
-#: profesorview.cpp:59
-msgid "Error al crear el profesor"
-msgstr ""
-
-#: profesorview.cpp:87
-msgid "Tiene que guardar el documento antes de poder imprimirlo."
+#: ui_profesorbase.h:198 ui_profesoreslistbase.h:317
+#: ui_profesoreslistbase.h:322
+msgid "Nuevo Profesor"
 msgstr ""
 
 #: ui_profesorbase.h:202 ui_profesorbase.h:207
@@ -117,6 +62,10 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
+#: ui_profesoreslistbase.h:308
+msgid "Profesores"
+msgstr ""
+
 #: ui_profesoreslistbase.h:309
 msgid "Banco:"
 msgstr ""
@@ -141,8 +90,16 @@ msgstr ""
 msgid "Ctrl+N"
 msgstr ""
 
+#: ui_profesoreslistbase.h:329 ui_profesoreslistbase.h:334
+msgid "Editar Profesor"
+msgstr ""
+
 #: ui_profesoreslistbase.h:338
 msgid "Ctrl+E"
+msgstr ""
+
+#: ui_profesoreslistbase.h:341 ui_profesoreslistbase.h:346
+msgid "Borrar Profesor"
 msgstr ""
 
 #: ui_profesoreslistbase.h:353 ui_profesoreslistbase.h:358

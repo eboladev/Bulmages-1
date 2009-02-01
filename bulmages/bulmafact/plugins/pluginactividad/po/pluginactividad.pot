@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:19+0100\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,72 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: actividadview.cpp:49
-msgid "Actividad"
-msgstr ""
-
 #: actividadview.cpp:52
 msgid "ID actividad"
 msgstr ""
 
 #: actividadview.cpp:53
 msgid "Nombre del actividad"
-msgstr ""
-
-#: actividadview.cpp:60
-msgid "Error al crear el actividad"
-msgstr ""
-
-#: actividadview.cpp:88
-msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-
-#: pluginactividad.cpp:96
-msgid "&Actividades"
-msgstr ""
-
-#: pluginactividad.cpp:98 pluginactividad.cpp:99 actividadeslist.cpp:144
-#: ui_actividadeslistbase.h:308
-msgid "Actividades"
-msgstr ""
-
-#: pluginactividad.cpp:104
-msgid "&Nuevo Actividad"
-msgstr ""
-
-#: pluginactividad.cpp:106 pluginactividad.cpp:107
-#: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:322
-msgid "Nuevo Actividad"
-msgstr ""
-
-#: actividadeslist.cpp:160
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: actividadeslist.cpp:174
-msgid "Error al borrar el cobro a cliente"
-msgstr ""
-
-#: actividadeslist.cpp:201
-msgid "Debe seleccionar una fila primero"
-msgstr ""
-
-#: actividadeslist.cpp:217 ui_actividadeslistbase.h:329
-#: ui_actividadeslistbase.h:334
-msgid "Editar Actividad"
-msgstr ""
-
-#: actividadeslist.cpp:218 ui_actividadeslistbase.h:341
-#: ui_actividadeslistbase.h:346
-msgid "Borrar Actividad"
-msgstr ""
-
-#: actividadeslist.cpp:262
-msgid "ID Actividad"
-msgstr ""
-
-#: actividadeslist.cpp:263
-msgid "Nombre"
 msgstr ""
 
 #: ui_actividadbase.h:370
@@ -165,6 +105,10 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
+#: ui_actividadeslistbase.h:308
+msgid "Actividades"
+msgstr ""
+
 #: ui_actividadeslistbase.h:309
 msgid "Banco:"
 msgstr ""
@@ -185,12 +129,24 @@ msgstr ""
 msgid "Cobros efectivos"
 msgstr ""
 
+#: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:322
+msgid "Nuevo Actividad"
+msgstr ""
+
 #: ui_actividadeslistbase.h:326
 msgid "Ctrl+N"
 msgstr ""
 
+#: ui_actividadeslistbase.h:329 ui_actividadeslistbase.h:334
+msgid "Editar Actividad"
+msgstr ""
+
 #: ui_actividadeslistbase.h:338
 msgid "Ctrl+E"
+msgstr ""
+
+#: ui_actividadeslistbase.h:341 ui_actividadeslistbase.h:346
+msgid "Borrar Actividad"
 msgstr ""
 
 #: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358

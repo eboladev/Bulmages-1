@@ -164,7 +164,7 @@ macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
    COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} 
    ARGS --add-comments=TRANSLATORS: 
    ARGS --qt
-   ARGS --keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
+#   ARGS --keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
    ARGS --keyword=i18n --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
    ARGS --keyword=translate:2 --flag=translate:2:pass-c-format --flag=translate:2:pass-qt-format
    ARGS --keyword=QT_TR_NOOP --flag=QT_TR_NOOP:1:pass-c-format --flag=QT_TR_NOOP:1:pass-qt-format

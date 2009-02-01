@@ -35,7 +35,7 @@
 #include "fixed.h"
 #include "plugins.h"
 #include "config.h"
-#include "i18n.h"
+#include "bli18n.h"
 
 //#include "dbusobject.h"
 

@@ -42,8 +42,8 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 ADD_DEFINITIONS(-DQT_SHARED)
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=i18n(\"${plugin}\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=i18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"${plugin}\", String)'" )
 
 # build sources, moc'd sources, and rcc'd sources
 

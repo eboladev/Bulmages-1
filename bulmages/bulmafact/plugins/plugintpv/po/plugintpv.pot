@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:27+0100\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,96 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: zview.cpp:55 ui_zbase.h:284
+#: ui_zbase.h:284
 msgid "Cuadre de Caja"
-msgstr ""
-
-#: zview.cpp:58
-msgid "ID"
-msgstr ""
-
-#: zview.cpp:59 zview.cpp:76 zlist.cpp:59 ui_zbase.h:322
-msgid "Fecha"
-msgstr ""
-
-#: zview.cpp:60 zview.cpp:81 zlist.cpp:60 ui_zbase.h:323
-msgid "Hora"
-msgstr ""
-
-#: zview.cpp:61 zview.cpp:82 zlist.cpp:62 ui_zbase.h:325
-msgid "Total"
-msgstr ""
-
-#: zview.cpp:62 ui_zbase.h:324
-msgid "Num. Tickets"
-msgstr ""
-
-#: zview.cpp:63 zlist.cpp:64
-msgid "Id. almacen"
-msgstr ""
-
-#: zview.cpp:64 zlist.cpp:61
-msgid "Almacen"
-msgstr ""
-
-#: zview.cpp:72
-msgid "Id. Albaran"
-msgstr ""
-
-#: zview.cpp:73
-msgid "Numero"
-msgstr ""
-
-#: zview.cpp:74
-msgid "Descripcion"
-msgstr ""
-
-#: zview.cpp:75
-msgid "Referencia"
-msgstr ""
-
-#: zview.cpp:77
-msgid "Procesado"
-msgstr ""
-
-#: zview.cpp:78
-msgid "Id Forma Pago"
-msgstr ""
-
-#: zview.cpp:79
-msgid "Forma Pago"
-msgstr ""
-
-#: zview.cpp:80
-msgid "Anulado"
-msgstr ""
-
-#: zview.cpp:83
-msgid "Base Imponible"
-msgstr ""
-
-#: zview.cpp:84
-msgid "Impuestos"
-msgstr ""
-
-#: zview.cpp:93
-msgid "Error al crear el almacen"
-msgstr ""
-
-#: zlist.cpp:58
-msgid "ID Z"
-msgstr ""
-
-#: zlist.cpp:63
-msgid "Tickets"
-msgstr ""
-
-#: zlist.cpp:180
-msgid "Error al editar el almacen"
-msgstr ""
-
-#: zlist.cpp:192
-msgid "Almacenes"
 msgstr ""
 
 #: ui_zbase.h:288 ui_zbase.h:293
@@ -130,6 +42,22 @@ msgstr ""
 
 #: ui_zbase.h:321
 msgid "Almacén"
+msgstr ""
+
+#: ui_zbase.h:322
+msgid "Fecha"
+msgstr ""
+
+#: ui_zbase.h:323
+msgid "Hora"
+msgstr ""
+
+#: ui_zbase.h:324
+msgid "Num. Tickets"
+msgstr ""
+
+#: ui_zbase.h:325
+msgid "Total"
 msgstr ""
 
 #: ui_zbase.h:326

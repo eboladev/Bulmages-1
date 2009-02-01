@@ -122,14 +122,14 @@ void entryPoint ( BlMainWindow *bges )
     myplugincont *mcont = new myplugincont;
 
     /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( i18n("&Dock Aplicacion"), 0 );
-    accion->setStatusTip ( i18n("Dockear Aplicacion") );
-    accion->setWhatsThis ( i18n("Dockear Aplicacion") );
+    QAction *accion = new QAction ( _("&Dock Aplicacion"), 0 );
+    accion->setStatusTip ( _("Dockear Aplicacion") );
+    accion->setWhatsThis ( _("Dockear Aplicacion") );
 
     /// Creamos el men&uacute;.
-    QAction *accion1 = new QAction ( i18n("&Embeber Aplicacion"), 0 );
-    accion1->setStatusTip ( i18n("Embeber Aplicacion") );
-    accion1->setWhatsThis ( i18n("Embeber Aplicacion") );
+    QAction *accion1 = new QAction ( _("&Embeber Aplicacion"), 0 );
+    accion1->setStatusTip ( _("Embeber Aplicacion") );
+    accion1->setWhatsThis ( _("Embeber Aplicacion") );
 
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
     mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
