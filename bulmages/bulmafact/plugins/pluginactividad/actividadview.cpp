@@ -51,9 +51,17 @@ ActividadView::ActividadView ( Company *comp, QWidget *parent )
         setDBCampoId ( "idactividad" );
         addDBCampo ( "idactividad", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Actividad", "ID actividad" ) );
         addDBCampo ( "nombreactividad", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Actividad", "Nombre del actividad" ) );
+		addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBNotNull, "proveedor");
 
         meteWindow ( windowTitle(), this, FALSE );
-		mui_idprofesor->setEmpresaBase(comp);
+
+		/// Establecemos los parametros de busqueda de Profesor
+	mui_idprofesor->setEmpresaBase(comp);
+    mui_idprofesor->setLabel ( _( "Profesor:" ) );
+	mui_idprofesor->setTableName( "profesor" );
+	mui_idprofesor->m_valores["nombreprofesor"] = "";
+
+
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {

@@ -39,13 +39,13 @@ public:
 	/// QHash de los valores a comprobar
 	QMap <QString, QString> m_valores;
 
+private:
 	/// Almacena la tabla sobre la que vamos a buscar.
 	QString m_tabla;
-private:
+
     /// Almacena el idprofesor del profesor seleccionado.
     QString mdb_id;
     /// Almacena el nombreprofesor del profesor seleccionado.
-//    QString mdb_nom;
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
 
@@ -56,9 +56,12 @@ public:
     virtual QString id();
     virtual QString valorCampo();
     virtual QString valorCampo(QString campo);
+	virtual QString tableName();
     virtual void setId ( QString val );
     virtual void setValorCampo ( QString val );
     virtual void setValorCampo ( QString campo, QString val );
+    virtual void setLabel(QString label);
+	virtual void setTableName(QString tableName);
 
 public slots:
     virtual void on_mui_buscar_clicked();

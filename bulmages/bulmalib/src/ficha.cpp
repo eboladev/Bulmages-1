@@ -604,7 +604,7 @@ void Ficha::recogeValores()
         QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
             campo->set ( l2->valorCampo() );
-	} // end if
+	} // end for
 
         /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );

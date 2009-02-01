@@ -108,9 +108,18 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+	QAction *nfapac = new QAction ( tr ( "About FAPAC" ), 0 );
+	bges->menuAcerca_de->addAction(nfapac);
+
+
+
     }// end if
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
+
+
+
 
 
 ///
@@ -128,10 +137,46 @@ int entryPoint ( Bulmafact *bges )
 
 
 int Company_createMainWindows_Post(Company *comp) {
-    if ( comp->has_table_privilege ( "cobro", "SELECT" ) ) {
+    if ( comp->has_table_privilege ( "profesor", "SELECT" ) ) {
 	g_profesoresList = new ProfesoresList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_profesoresList );
 	g_profesoresList->hide();
     }// end if
     return 0;
 }
+
+
+int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
+	if (busq->tableName() == "profesor") {
+
+
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
+    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+    centrarEnPantalla ( diag );
+
+    ProfesoresList *clients = new ProfesoresList ( ( Company * ) busq->empresaBase(), diag, 0, ProfesoresList::SelectMode );
+    busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget ( clients );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( clients->windowTitle() );
+
+    diag->exec();
+    if ( clients->idprofesor() != "" ) {
+        busq->setId ( clients->idprofesor() );
+    } // end if
+    delete diag;
+
+
+		return 1;
+	} // end if
+	return 0;
+
+}
+

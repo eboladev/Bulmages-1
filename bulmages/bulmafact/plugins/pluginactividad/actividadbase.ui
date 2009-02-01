@@ -221,7 +221,7 @@
         <x>0</x>
         <y>0</y>
         <width>719</width>
-        <height>346</height>
+        <height>344</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -361,7 +361,7 @@
         </spacer>
        </item>
        <item row="6" column="1" colspan="2" >
-        <widget class="BusquedaProfesor" native="1" name="mui_idprofesor" >
+        <widget class="Busqueda" native="1" name="mui_idprofesor" >
          <property name="sizePolicy" >
           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
            <horstretch>0</horstretch>
@@ -563,9 +563,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>BusquedaProfesor</class>
+   <class>Busqueda</class>
    <extends>QWidget</extends>
-   <header>busquedaprofesor.h</header>
+   <header>busqueda.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

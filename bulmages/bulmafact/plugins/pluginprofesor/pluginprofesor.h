@@ -28,10 +28,13 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "busquedareferencia.h"
+#include "busqueda.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
+
 
 class MyPlugProf : public QObject, PEmpresaBase
 {

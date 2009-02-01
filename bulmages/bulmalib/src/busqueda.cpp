@@ -35,8 +35,8 @@ Busqueda::Busqueda ( QWidget *parent )
     _depura ( "Busqueda::Busqueda", 0 );
     setupUi ( this );
     /// Establecemos los Buddies:
-    mui_labelBusqueda->setText ( tr( "Clien&te:" ) );
-    mui_labelBusqueda->setBuddy ( mui_buscar );
+//    mui_labelBusqueda->setText ( tr( "Clien&te:" ) );
+//    mui_labelBusqueda->setBuddy ( mui_buscar );
 
     m_textBusqueda->setText ( "" );
     mdb_id = "";
@@ -208,32 +208,8 @@ void Busqueda::on_mui_borrar_clicked()
 void Busqueda::on_mui_buscar_clicked()
 {
     _depura ( "Busqueda::on_mui_buscar_clicked", 0 );
-	mensajeInfo("funcion para ser derivada");
-
-/*
-    QDialog *diag = new QDialog ( 0 );
-    diag->setModal ( true );
-    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-    centrarEnPantalla ( diag );
-
-    ClientsList *clients = new ClientsList ( ( Company * ) empresaBase(), diag, 0, ClientsList::SelectMode );
-    connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
-
-    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
-    /// para que sea redimensionable y aparezca el titulo de la ventana.
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget ( clients );
-    layout->setMargin ( 0 );
-    layout->setSpacing ( 0 );
-    diag->setLayout ( layout );
-    diag->setWindowTitle ( clients->windowTitle() );
-
-    diag->exec();
-    if ( clients->idclient() != "" ) {
-        setidprofesor ( clients->idclient() );
-    } // end if
-    delete diag;
-*/
+    /// Disparamos los plugins
+    int res = g_plugins->lanza ( "Busqueda_on_mui_buscar_clicked", this );
     _depura ( "END Busqueda::on_mui_buscar_clicked", 0 );
 }
 
@@ -383,3 +359,16 @@ QString Busqueda::valorCampo()
 }
 
 
+void Busqueda::setLabel(QString label) {
+    mui_labelBusqueda->setText ( label  );
+    mui_labelBusqueda->setBuddy ( mui_buscar );
+}
+
+
+QString Busqueda::tableName() {
+	return m_tabla;
+}
+
+void Busqueda::setTableName(QString tableName) {
+	m_tabla = tableName;
+}

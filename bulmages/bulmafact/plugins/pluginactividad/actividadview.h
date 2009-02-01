@@ -35,6 +35,8 @@
 
 class Company;
 
+extern "C++" class BusquedaProfesor;
+
 
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos

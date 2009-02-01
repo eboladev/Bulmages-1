@@ -82,12 +82,15 @@ BEGIN
 
         END IF;
 
-
+	DROP TABLE sesionactividad;
+	DROP TABLE actividad;
+	
         SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
         IF NOT FOUND THEN
 
         CREATE TABLE actividad (
 	    idactividad SERIAL PRIMARY KEY,
+	    idprofesor  INTEGER NOT NULL REFERENCES profesor(idprofesor),
 	    nombreactividad VARCHAR NOT NULL
         );
 
