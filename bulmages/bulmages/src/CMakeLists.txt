@@ -21,7 +21,7 @@
 
 
 ###########################################
-# bulmages launcher					  	  #
+# bulmages launcher                       #
 ###########################################
 
 
@@ -44,8 +44,6 @@ set(bulmages_SRC main.cpp
 set(bulmages_MOCS comun/bselector.h 
             comun/bconfiguracion.h 
             comun/bnuevaempresa.h 
-           #comun/nuevafact.h 
-            comun/gongimportfiles.h 
             comun/importContaplus.h 
             comun/importexportbulmafactview.h)
 

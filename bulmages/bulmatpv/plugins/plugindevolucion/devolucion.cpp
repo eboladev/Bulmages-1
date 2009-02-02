@@ -381,3 +381,4 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
 
     pintar();
 }
+

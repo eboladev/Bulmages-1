@@ -96,9 +96,8 @@ set(bulmalib_MOCS
          qradiobutton2.h
          qcombobox2.h
 	 blbancoedit.h
-			blmonthcalendar.h
-	busqueda.h
-	bli18n.h)
+	 blmonthcalendar.h
+	 busqueda.h)
 
 set (bulmalib_HDRS abreempresaview.h
 			busquedafecha.h
@@ -138,6 +137,7 @@ set (bulmalib_HDRS abreempresaview.h
 #			subform.h 
 #			empresabase.h 
 #			blmainwindow.h
+
 
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS logpassbase.ui 
