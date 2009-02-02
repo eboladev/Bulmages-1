@@ -43,6 +43,11 @@
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
+    
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincomercialbf", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
@@ -70,15 +75,15 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
 {
     _depura ( "ClienteView_ClienteView_Post", 0 );
     /// Agregamos los campos de registro que hacen falta.
-    cli->addDBCampo ( "idzonacomercial", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Zona comercial" ) );
-    cli->addDBCampo ( "fechabasecomercialcliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Fecha base" ) );
-    cli->addDBCampo ( "periodocomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Periodo" ) );
-    cli->addDBCampo ( "comentcomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Comentarios para el comercial" ) );
+    cli->addDBCampo ( "idzonacomercial", DBCampo::DBint, DBCampo::DBNothing, _( "Zona comercial" ) );
+    cli->addDBCampo ( "fechabasecomercialcliente", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha base" ) );
+    cli->addDBCampo ( "periodocomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Periodo" ) );
+    cli->addDBCampo ( "comentcomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios para el comercial" ) );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *l = new ComercialClienteView ( cli );
     l->setEmpresaBase ( cli->empresaBase() );
     l->setObjectName ( QString::fromUtf8 ( "lcomercial" ) );
-    cli->mui_tab->addTab ( l, QApplication::translate ( "ClienteView_ClienteView_Post", "&Comercial" ) );
+    cli->mui_tab->addTab ( l, _( "&Comercial" ) );
     _depura ( "END ClienteView_ClienteView_Post", 0 );
     return 0;
 }

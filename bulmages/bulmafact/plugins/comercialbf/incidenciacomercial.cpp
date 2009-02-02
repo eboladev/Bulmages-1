@@ -35,17 +35,17 @@
 IncidenciaComercial::IncidenciaComercial ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
     _depura ( "IncidenciaComercial::IncidenciaComercial", 0 );
-    setTitleName ( tr ( "Incidencia Comercial" ) );
+    setTitleName ( _( "Incidencia comercial" ) );
     setDBTableName ( "incidenciacomercial" );
     setDBCampoId ( "idincidenciacomercial" );
-    addDBCampo ( "idincidenciacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "IncidenciaComercial", "Identificador" ) );
-    addDBCampo ( "fechaincidenciacomercial", DBCampo::DBdate, DBCampo::DBNotNull, QApplication::translate ( "IncidenciaComercial", "Fecha" ) );
-    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "IncidenciaComercial", "Familia" ) );
-    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "IncidenciaComercial", "Trabajador" ) );
-    addDBCampo ( "comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "IncidenciaComercial", "Comentarios" ) );
-    addDBCampo ( "estadoincidenciacomercial", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "IncidenciaComercial", "Estado" ) );
-    addDBCampo ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "IncidenciaComercial", "Hora" ) );
-    addDBCampo ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "IncidenciaComercial", "Referencia" ) );
+    addDBCampo ( "idincidenciacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador" ) );
+    addDBCampo ( "fechaincidenciacomercial", DBCampo::DBdate, DBCampo::DBNotNull, _( "Fecha" ) );
+    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Familia" ) );
+    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, _( "Trabajador" ) );
+    addDBCampo ( "comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
+    addDBCampo ( "estadoincidenciacomercial", DBCampo::DBint, DBCampo::DBNotNull, _( "Estado" ) );
+    addDBCampo ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Hora" ) );
+    addDBCampo ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
     _depura ( "END IncidenciaComercial::IncidenciaComercial", 0 );
 }
 
@@ -89,7 +89,7 @@ int IncidenciaComercial::cargar ( QString id )
         DBload ( cur );
     }
     delete cur;
-    setWindowTitle ( tr ( "Ruta comercial" ) + " " + DBvalue ( "idincidenciacomercial" ) );
+    setWindowTitle ( _( "Ruta comercial" ) + " " + DBvalue ( "idincidenciacomercial" ) );
     dialogChanges_cargaInicial();
     _depura ( "END IncidenciaComercial::cargar", 0 );
     return 0;

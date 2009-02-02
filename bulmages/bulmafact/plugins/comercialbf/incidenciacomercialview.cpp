@@ -90,8 +90,8 @@ void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
     _depura ( "closeEvent", 0 );
     if ( dialogChanges_hayCambios() ) {
         int val = QMessageBox::warning ( this,
-                                         tr ( "Guardar la incidencia" ),
-                                         tr ( "Desea guardar los cambios?" ), tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
+                                         _( "Guardar la incidencia" ),
+                                         _( "Desea guardar los cambios?" ), _( "&Si" ), _( "&No" ), _( "&Cancelar" ), 0, 2 );
         if ( val == 0 )
             guardar();
         if ( val == 2 )
@@ -147,7 +147,7 @@ int IncidenciaComercialView::cargar ( QString id )
 {
     _depura ( "IncidenciaComercialView::cargar", 0 );
     int err = IncidenciaComercial::cargar ( id );
-    setWindowTitle ( tr ( "Incidencia comercial" ) + " " + DBvalue ( "idincidenciacomercial" ) );
+    setWindowTitle ( _( "Incidencia comercial" ) + " " + DBvalue ( "idincidenciacomercial" ) );
     mui_fechaincidenciacomercial->setText ( DBvalue ( "fechaincidenciacomercial" ) );
     mui_idcliente->setidcliente ( DBvalue ( "idcliente" ) );
     mui_comentincidenciacomercial->setPlainText ( DBvalue ( "comentincidenciacomercial" ) );

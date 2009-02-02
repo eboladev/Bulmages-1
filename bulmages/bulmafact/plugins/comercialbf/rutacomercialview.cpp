@@ -123,7 +123,7 @@ int RutaComercialView::cargar ( QString id )
 {
     _depura ( "RutaComercialView::cargar", 0 );
     int err = RutaComercial::cargar ( id );
-    setWindowTitle ( tr ( "Ruta comercial" ) + " " + DBvalue ( "idrutacomercial" ) );
+    setWindowTitle ( _( "Ruta comercial" ) + " " + DBvalue ( "idrutacomercial" ) );
     mui_fecharutacomercial->setText ( DBvalue ( "fecharutacomercial" ) );
     mui_idcliente->setidcliente ( DBvalue ( "idcliente" ) );
     mui_comentrutacomercial->setPlainText ( DBvalue ( "comentariosrutacomercial" ) );

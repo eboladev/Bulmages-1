@@ -138,7 +138,7 @@ void RutaComercialList::editar ( int row )
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     empresaBase() ->m_pWorkspace->addWindow ( rut );
-    empresaBase() ->meteWindow ( "Nueva incidencia Comercial", rut );
+    empresaBase() ->meteWindow ( _("Nueva incidencia comercial"), rut );
     rut->show();
     _depura ( "END RutaComercialList::editar", 0 );
 }
@@ -152,7 +152,7 @@ void RutaComercialList::crear()
     _depura ( "RutaComercialList::crear", 0 );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( rut );
-    empresaBase() ->meteWindow ( "Nueva Incidencia Comercial", rut );
+    empresaBase() ->meteWindow ( _("Nueva incidencia comercial"), rut );
     rut->show();
     _depura ( "END RutaComercialList::crear", 0 );
 }
@@ -267,27 +267,27 @@ RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : SubForm
     _depura ( "RutaComercialListSubForm::RutaComercialListSubForm", 0 );
     setDBTableName ( "rutacomercial" );
     setDBCampoId ( "idrutacomercial" );
-    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "CIF del cliente" ) );
-    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del cliente" ) );
-    addSHeader ( "idzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID zona comercial" ) );
-    addSHeader ( "fecharutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha ruta comercial" ) );
-    addSHeader ( "fechaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha incidencia comercial" ) );
-    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del trabajador" ) );
-    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Apellidos del trabajador" ) );
-    addSHeader ( "idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cliente" ) );
-    addSHeader ( "idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID trabajador" ) );
-    addSHeader ( "idrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID ruta comercial" ) );
-    addSHeader ( "comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios ruta comercial" ) );
-    addSHeader ( "idincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID incidencia comercial" ) );
-    addSHeader ( "comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario de la incidencia comercial" ) );
-    addSHeader ( "estadoincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Estado de la incidencia comercial" ) );
-    addSHeader ( "idpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID pedido cliente" ) );
-    addSHeader ( "idcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cobro" ) );
-    addSHeader ( "nomzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre zona comercial" ) );
-    addSHeader ( "refrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia ruta" ) );
-    addSHeader ( "horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Hora ruta" ) );
-    addSHeader ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia de la incidencia" ) );
-    addSHeader ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Hora de la incidencia" ) );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "CIF del cliente" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del cliente" ) );
+    addSHeader ( "idzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID zona comercial" ) );
+    addSHeader ( "fecharutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha ruta comercial" ) );
+    addSHeader ( "fechaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha incidencia comercial" ) );
+    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del trabajador" ) );
+    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Apellidos del trabajador" ) );
+    addSHeader ( "idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID cliente" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID trabajador" ) );
+    addSHeader ( "idrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID ruta comercial" ) );
+    addSHeader ( "comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentarios ruta comercial" ) );
+    addSHeader ( "idincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID incidencia comercial" ) );
+    addSHeader ( "comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentario de la incidencia comercial" ) );
+    addSHeader ( "estadoincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Estado de la incidencia comercial" ) );
+    addSHeader ( "idpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID pedido cliente" ) );
+    addSHeader ( "idcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID cobro" ) );
+    addSHeader ( "nomzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre zona comercial" ) );
+    addSHeader ( "refrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia ruta" ) );
+    addSHeader ( "horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Hora ruta" ) );
+    addSHeader ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia de la incidencia" ) );
+    addSHeader ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Hora de la incidencia" ) );
     setinsercion ( FALSE );
     _depura ( "END RutaComercialListSubForm::RutaComercialListSubForm", 0 );
 };
