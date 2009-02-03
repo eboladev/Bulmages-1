@@ -147,7 +147,7 @@ void ImpQToolButton::click()
                 Fixed descgen = Fixed ( "1.000" ) - descgen1 / Fixed ( "100" );
 
                 /// Agregamos a comentarios que albaran se corresponde.
-                QString comm = fac->DBvalue ( "comentfactura" ) + "(" + tr ( "ALBARAN: Num " ) + pres->DBvalue ( "numalbaran" ) + tr ( "Ref:" ) + " " + pres->DBvalue ( "refalbaran" ) + tr ( "Fecha:" ) + " " + pres->DBvalue ( "fechaalbaran" ) + ")\n";
+                QString comm = fac->DBvalue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + pres->DBvalue ( "numalbaran" ) + _( "Ref:" ) + " " + pres->DBvalue ( "refalbaran" ) + _( "Fecha:" ) + " " + pres->DBvalue ( "fechaalbaran" ) + ")\n";
                 fac->setDBvalue ( "comentfactura", comm );
                 fac->setDBvalue ( "idforma_pago", pres->DBvalue ( "idforma_pago" ) );
                 fac->setDBvalue ( "reffactura", pres->DBvalue ( "refalbaran" ) );

@@ -146,7 +146,7 @@ void GenPreQToolButton::generarFactura()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refalbaran->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -161,9 +161,9 @@ void GenPreQToolButton::generarFactura()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura existente" ),
-                                         tr ( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura existente" ),
+                                         _( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
             bud = new FacturaView( (Company *) fpv->empresaBase(), 0);
@@ -231,7 +231,7 @@ void GenPreQToolButton::generarFactura()
         fpv->mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -274,7 +274,7 @@ void GenPreQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -289,9 +289,9 @@ void GenPreQToolButton::generarFactura1()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Albaran ya existe" ),
-                                         tr ( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Albaran ya existe" ),
+                                         _( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new FacturaView ( fpv->empresaBase(), NULL );
@@ -357,7 +357,7 @@ void GenPreQToolButton::generarFactura1()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -403,7 +403,7 @@ void GenPreQToolButton::generarFactura2()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -418,9 +418,9 @@ void GenPreQToolButton::generarFactura2()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura ya existe" ),
-                                         tr ( "Existe una factura a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura ya existe" ),
+                                         _( "Existe una factura a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new FacturaView ( fpv->empresaBase(), NULL );
@@ -486,7 +486,7 @@ void GenPreQToolButton::generarFactura2()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -591,7 +591,7 @@ void VerPreQToolButton::verPresupuesto()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -614,14 +614,14 @@ void VerPreQToolButton::verPresupuesto()
                 cur->siguienteregistro();
             } // end while
         } else {
-            mensajeInfo ( tr ( "No hay presupuestos con la misma referencia." ), this );
+            mensajeInfo ( _( "No hay presupuestos con la misma referencia." ), this );
             _depura ( "No hay presupuestos con la misma referencia.", 2 );
         } // end if
 
         delete cur;
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado." ), this );
+        mensajeInfo ( _( "Error inesperado." ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

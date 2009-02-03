@@ -95,6 +95,11 @@ void myplugin::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginVehiculosBF" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginvehiculosbf", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginVehiculosBF" );

@@ -46,7 +46,7 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( tr ( "Profesor" ) );
+        setTitleName ( _( "Profesor" ) );
         setDBTableName ( "profesor" );
         setDBCampoId ( "idprofesor" );
         addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Profesor", "ID profesor" ) );
@@ -56,7 +56,7 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el profesor" ), this );
+        mensajeInfo ( _( "Error al crear el profesor" ), this );
     } // end try
     _depura ( "END ProfesorView::ProfesorView", 0 );
 }
@@ -84,7 +84,7 @@ void ProfesorView::imprimir()
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     } 
     /// Disparamos los plugins

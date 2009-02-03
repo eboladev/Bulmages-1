@@ -169,9 +169,9 @@ void AlbaranesProveedor::iniciaForm()
         _depura ( "END AlbaranesProveedor::iniciaForm", 0, "Salida por Plugin" );
         return;
     } // end if
-    mui_procesada->insertItem ( 0, tr ( "Todos los albaranes" ) );
-    mui_procesada->insertItem ( 1, tr ( "Albaranes procesados" ) );
-    mui_procesada->insertItem ( 2, tr ( "Albaranes no procesados" ) );
+    mui_procesada->insertItem ( 0, _( "Todos los albaranes" ) );
+    mui_procesada->insertItem ( 1, _( "Albaranes procesados" ) );
+    mui_procesada->insertItem ( 2, _( "Albaranes no procesados" ) );
     _depura ( "END AlbaranesProveedor::iniciaForm", 0 );
 }
 
@@ -299,7 +299,7 @@ void AlbaranesProveedor::editar ( int row )
 void AlbaranesProveedor::imprimir()
 {
     _depura ( "AlbaranesProveedor::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Albaranes de proveedor" ) );
+    mui_list->imprimirPDF ( _( "Albaranes de proveedor" ) );
     _depura ( "END AlbaranesProveedor::imprimir", 0 );
 }
 
@@ -318,7 +318,7 @@ void AlbaranesProveedor::borrar()
     _depura ( "AlbaranesProveedor::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -333,7 +333,7 @@ void AlbaranesProveedor::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar albaran de proveedor" ), this );
+        mensajeInfo ( _( "Error al borrar albaran de proveedor" ), this );
     } // end try
     _depura ( "END AlbaranesProveedor::borrar", 0 );
 }
@@ -366,22 +366,22 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
     _depura ( "AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
     setDBTableName ( "albaranp" );
     setDBCampoId ( "idalbaranp" );
-    addSHeader ( "idalbaranp", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID albaran" ) );
-    addSHeader ( "numalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de albaran" ) );
-    addSHeader ( "descalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion" ) );
-    addSHeader ( "refalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia" ) );
-    addSHeader ( "fechaalbaranp", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
-    addSHeader ( "comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario" ) );
-    addSHeader ( "procesadoalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Procesado" ) );
-    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID proveedor" ) );
-    addSHeader ( "idforma_pago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID forma de pago" ) );
-    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID almacen" ) );
-    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del proveedor" ) );
-    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del almacen" ) );
-    addSHeader ( "descforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion de la forma de pago" ) );
-    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base imponible" ) );
-    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
-    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total albaran" ) );
+    addSHeader ( "idalbaranp", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID albaran" ) );
+    addSHeader ( "numalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de albaran" ) );
+    addSHeader ( "descalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion" ) );
+    addSHeader ( "refalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia" ) );
+    addSHeader ( "fechaalbaranp", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha" ) );
+    addSHeader ( "comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentario" ) );
+    addSHeader ( "procesadoalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Procesado" ) );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID proveedor" ) );
+    addSHeader ( "idforma_pago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID forma de pago" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID almacen" ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del proveedor" ) );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del almacen" ) );
+    addSHeader ( "descforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion de la forma de pago" ) );
+    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Base imponible" ) );
+    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Impuestos" ) );
+    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Total albaran" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

@@ -36,18 +36,18 @@
 Contrato::Contrato ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
     _depura ( "Contrato::Contrato", 0 );
-    setTitleName ( tr ( "Contrato" ) );
+    setTitleName ( _( "Contrato" ) );
     setDBTableName ( "contrato" );
     setDBCampoId ( "idcontrato" );
-    addDBCampo ( "idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Contrato", "Id contrato" ) );
-    addDBCampo ( "idcliente",   DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Contrato", "Id cliente" ) );
-    addDBCampo ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Referencia contrato" ) );
-    addDBCampo ( "descontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
-    addDBCampo ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
-    addDBCampo ( "loccontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
-    addDBCampo ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
-    addDBCampo ( "fincontrato",  DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
-    addDBCampo ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    addDBCampo ( "idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id contrato" ) );
+    addDBCampo ( "idcliente",   DBCampo::DBint, DBCampo::DBNotNull, _( "Id cliente" ) );
+    addDBCampo ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia contrato" ) );
+    addDBCampo ( "descontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "loccontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "fincontrato",  DBCampo::DBdate, DBCampo::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNothing, _( "Descripcion contrato" ) );
     _depura ( "END Contrato::Contrato", 0 );
 }
 

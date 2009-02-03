@@ -39,10 +39,10 @@ ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView ( QWidget *parent )
     _depura ( "ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView", 0 );
     setDBTableName ( "dalbaranp" );
     setDBCampoId ( "iddalbaranp" );
-    addSHeader ( "iddalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id descuento" ) );
-    addSHeader ( "conceptdalbaranp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Concepto descuento" ) );
-    addSHeader ( "proporciondalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
-    addSHeader ( "idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id albaran" ) );
+    addSHeader ( "iddalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id descuento" ) );
+    addSHeader ( "conceptdalbaranp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Concepto descuento" ) );
+    addSHeader ( "proporciondalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "% Descuento" ) );
+    addSHeader ( "idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id albaran" ) );
     setinsercion ( TRUE );
     _depura ( "END ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView", 0 );
 }

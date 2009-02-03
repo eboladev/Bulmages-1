@@ -128,6 +128,11 @@ void myplugin4::inicializa ( Bulmafact *bges )
 void entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincuadrante", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {

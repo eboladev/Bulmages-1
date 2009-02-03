@@ -93,18 +93,18 @@ void myplugincob::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Cobros de Clientes" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Cobros a clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Cobros de Clientes" ) );
-	planCuentas->setWhatsThis ( tr ( "Cobros de Clientes" ) );
+	planCuentas->setStatusTip ( _( "Cobros a clientes" ) );
+	planCuentas->setWhatsThis ( _( "Cobros a clientes" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Cobro de Cliente" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo cobro a cliente" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive.svg" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Cobro de Cliente" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Cobro de Cliente" ) );
+	npago->setStatusTip ( _( "Nuevo cobro a cliente" ) );
+	npago->setWhatsThis ( _( "Nuevo cobro a cliente" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -121,6 +121,11 @@ void myplugincob::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Cobros\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincobros", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     myplugincob *plug = new myplugincob();
     plug->inicializa ( bges );
     return 0;

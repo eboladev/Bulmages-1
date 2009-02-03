@@ -52,29 +52,29 @@ AlmacenView::AlmacenView ( Company *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "AlmacenView_AlmacenView", this ) ) return;
 
-        setTitleName ( tr ( "Almacen" ) );
+        setTitleName ( _( "Almacen" ) );
         setDBTableName ( "almacen" );
         setDBCampoId ( "idalmacen" );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID almacen" ) );
-        addDBCampo ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Codigo almacen" ) );
-        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull  , tr ( "Nombre almacen" ) );
-        addDBCampo ( "diralmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion almacen" ) );
-        addDBCampo ( "poblalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Poblacion almacen" ) );
-        addDBCampo ( "cpalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo postal" ) );
-        addDBCampo ( "telalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Telefono almacen" ) );
-        addDBCampo ( "faxalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Fax almacen" ) );
-        addDBCampo ( "emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "email almacen" ) );
-        addDBCampo ( "fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, tr ( "Fecha almacen" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID almacen" ) );
+        addDBCampo ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Codigo almacen" ) );
+        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull  , _( "Nombre almacen" ) );
+        addDBCampo ( "diralmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion almacen" ) );
+        addDBCampo ( "poblalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Poblacion almacen" ) );
+        addDBCampo ( "cpalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo postal" ) );
+        addDBCampo ( "telalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Telefono almacen" ) );
+        addDBCampo ( "faxalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Fax almacen" ) );
+        addDBCampo ( "emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "email almacen" ) );
+        addDBCampo ( "fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, _( "Fecha almacen" ) );
 
 
-        addDBCampo ( "tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Tipo almacen" ) );
+        addDBCampo ( "tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Tipo almacen" ) );
         mui_tipoalmacen_t->setValorCampo ( "Tienda" );
         mui_tipoalmacen_a->setValorCampo ( "Almacen" );
 
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el almacen" ) );
+        mensajeInfo ( _( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END AlmacenView::AlmacenView", 0 );
 }

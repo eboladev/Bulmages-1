@@ -52,16 +52,16 @@ ZView::ZView ( Company *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "ZView_ZView", this ) ) return;
 
-        setTitleName ( tr ( "Cuadre de Caja" ) );
+        setTitleName ( _( "Cuadre de caja" ) );
         setDBTableName ( "z" );
         setDBCampoId ( "idz" );
-        addDBCampo ( "idz", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID" ) );
-        addDBCampo ( "fechaz", DBCampo::DBdate, DBCampo::DBNotNull, tr ( "Fecha" ) );
-        addDBCampo ( "horaz", DBCampo::DBvarchar, DBCampo::DBNotNull  , tr ( "Hora" ) );
-        addDBCampo ( "totalz", DBCampo::DBnumeric, DBCampo::DBNotNull  , tr ( "Total" ) );
-        addDBCampo ( "numtickets", DBCampo::DBint, DBCampo::DBNotNull  , tr ( "Num. Tickets" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, tr ( "Id. almacen" ) );
-        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, tr ( "Almacen" ) );
+        addDBCampo ( "idz", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id" ) );
+        addDBCampo ( "fechaz", DBCampo::DBdate, DBCampo::DBNotNull, _( "Fecha" ) );
+        addDBCampo ( "horaz", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Hora" ) );
+        addDBCampo ( "totalz", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Total" ) );
+        addDBCampo ( "numtickets", DBCampo::DBint, DBCampo::DBNotNull, _( "Num. tickets" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, _( "Id. almacen" ) );
+        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Almacen" ) );
 
         mui_idalmacen->setEmpresaBase ( comp );
 
@@ -69,19 +69,19 @@ ZView::ZView ( Company *comp, QWidget *parent )
         mui_list->setEmpresaBase ( comp );
         mui_list->setDBTableName ( "albaran" );
         mui_list->setDBCampoId ( "idalbaran" );
-        mui_list->addSHeader ( "idalbaran",  DBCampo::DBint, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Id. Albaran" ) );
-        mui_list->addSHeader ( "numalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Numero" ) );
-        mui_list->addSHeader ( "descalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Descripcion" ) );
-        mui_list->addSHeader ( "refalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Referencia" ) );
-        mui_list->addSHeader ( "fechaalbaran",  DBCampo::DBdate, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Fecha" ) );
-        mui_list->addSHeader ( "procesadoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Procesado" ) );
-        mui_list->addSHeader ( "idforma_pago",  DBCampo::DBint, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Id Forma Pago" ) );
-        mui_list->addSHeader ( "descforma_pago",  DBCampo::DBint, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Forma Pago" ) );
-        mui_list->addSHeader ( "anuladoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Anulado" ) );
-        mui_list->addSHeader ( "horaalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Hora" ) );
-        mui_list->addSHeader ( "totalalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Total" ) );
-        mui_list->addSHeader ( "bimpalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Base Imponible" ) );
-        mui_list->addSHeader ( "impalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave,     SHeader::DBNoWrite,                         tr ( "Impuestos" ) );
+        mui_list->addSHeader ( "idalbaran",  DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Id albaran" ) );
+        mui_list->addSHeader ( "numalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Numero" ) );
+        mui_list->addSHeader ( "descalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Descripcion" ) );
+        mui_list->addSHeader ( "refalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Referencia" ) );
+        mui_list->addSHeader ( "fechaalbaran",  DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Fecha" ) );
+        mui_list->addSHeader ( "procesadoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Procesado" ) );
+        mui_list->addSHeader ( "idforma_pago",  DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Id forma de pago" ) );
+        mui_list->addSHeader ( "descforma_pago",  DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite,  _( "Forma de pago" ) );
+        mui_list->addSHeader ( "anuladoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Anulado" ) );
+        mui_list->addSHeader ( "horaalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Hora" ) );
+        mui_list->addSHeader ( "totalalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Total" ) );
+        mui_list->addSHeader ( "bimpalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Base Imponible" ) );
+        mui_list->addSHeader ( "impalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Impuestos" ) );
 
         mui_list->setinsercion ( FALSE );
         mui_list->setDelete ( FALSE );
@@ -90,7 +90,7 @@ ZView::ZView ( Company *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el almacen" ) );
+        mensajeInfo ( _( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END ZView::ZView", 0 );
 }

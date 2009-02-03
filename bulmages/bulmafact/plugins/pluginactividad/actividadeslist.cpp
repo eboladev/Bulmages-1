@@ -141,7 +141,7 @@ void ActividadesList::crear()
 void ActividadesList::imprimir()
 {
     _depura ( "ActividadesList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Actividades" ) );
+    mui_list->imprimirPDF ( _( "Actividades" ) );
     _depura ( "END ActividadesList::imprimir", 0 );
 }
 
@@ -157,7 +157,7 @@ void ActividadesList::borrar()
     _depura ( "ActividadesList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -171,7 +171,7 @@ void ActividadesList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:ActividadesList::borrar", 0 );
 }
@@ -198,7 +198,7 @@ void ActividadesList::editar ( int )
             emit ( selected ( mdb_idactividad ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END ActividadesList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -214,8 +214,8 @@ void ActividadesList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar Actividad" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar Actividad" ) );
+    QAction *edit = popup->addAction ( _( "Editar Actividad" ) );
+    QAction *del = popup->addAction ( _( "Borrar Actividad" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -259,8 +259,8 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : SubForm2Bf 
         return;
     setDBTableName ( "actividad" );
     setDBCampoId ( "idactividad" );
-    addSHeader ( "idactividad", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID Actividad" ) );
-    addSHeader ( "nombreactividad", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre" ) );
+    addSHeader ( "idactividad", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID Actividad" ) );
+    addSHeader ( "nombreactividad", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

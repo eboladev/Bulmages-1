@@ -55,13 +55,13 @@ ZList::ZList ( Company *comp, QWidget *parent, Qt::WFlags flag )
 
     mui_list->setDBTableName ( "z" );
     mui_list->setDBCampoId ( "idz" );
-    mui_list->addSHeader ( "idz", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID Z" ) );
-    mui_list->addSHeader ( "fechaz", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
-    mui_list->addSHeader ( "horaz", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Hora" ) );
-    mui_list->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Almacen" ) );
-    mui_list->addSHeader ( "totalz", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total" ) );
-    mui_list->addSHeader ( "numtickets", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Tickets" ) );
-    mui_list->addSHeader ( "idalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id. almacen" ) );
+    mui_list->addSHeader ( "idz", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID Z" ) );
+    mui_list->addSHeader ( "fechaz", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha" ) );
+    mui_list->addSHeader ( "horaz", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Hora" ) );
+    mui_list->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Almacen" ) );
+    mui_list->addSHeader ( "totalz", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Total" ) );
+    mui_list->addSHeader ( "numtickets", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Tickets" ) );
+    mui_list->addSHeader ( "idalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id. almacen" ) );
 
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
@@ -177,7 +177,7 @@ void ZList::editar ( int row )
         } // end if
         _depura ( "END ZList::editar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al editar el almacen" ) );
+        mensajeInfo ( _( "Error al editar el almacen" ) );
     } // end try
 
 }
@@ -189,7 +189,7 @@ void ZList::editar ( int row )
 void ZList::imprimir()
 {
     _depura ( "ZList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Almacenes" ) );
+    mui_list->imprimirPDF ( _( "Almacenes" ) );
     _depura ( "END ZList::imprimir", 0 );
 }
 

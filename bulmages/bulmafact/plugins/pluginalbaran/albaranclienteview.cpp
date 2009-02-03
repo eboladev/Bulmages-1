@@ -70,7 +70,7 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( tr ( "Albaran" ) );
+        setTitleName ( _( "Albaran" ) );
         setDBTableName ( "albaran" );
         setDBCampoId ( "idalbaran" );
         addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranCliente", "Id albaran" ) );
@@ -113,7 +113,7 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el albaran a cliente" ), this );
+        mensajeInfo ( _( "Error al crear el albaran a cliente" ), this );
     } // end try
     _depura ( "END AlbaranClienteView::AlbaranClienteView", 0 );
 }
@@ -198,7 +198,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -225,14 +225,14 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
                 cur->siguienteregistro();
             } // end while
         } else {
-            mensajeInfo ( tr ( "No hay pedidos con la misma referencia." ), this );
+            mensajeInfo ( _( "No hay pedidos con la misma referencia." ), this );
             _depura ( "no hay pedidos con esta referencia", 2 );
         } // end if
 
         delete cur;
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -275,7 +275,7 @@ void AlbaranClienteView::generarFactura()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -290,9 +290,9 @@ void AlbaranClienteView::generarFactura()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura existente" ),
-                                         tr ( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura existente" ),
+                                         _( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
             bud = empresaBase() ->newFacturaView();
@@ -360,7 +360,7 @@ void AlbaranClienteView::generarFactura()
         mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -380,7 +380,7 @@ void AlbaranClienteView::agregarFactura()
     _depura ( "AlbaranClienteView::agregarFactura", 0 );
 /*
     QDialog *diag = new QDialog ( 0 );
-    diag->setWindowTitle ( tr ( "Seleccione la factura a la que agregar el albaran." ) );
+    diag->setWindowTitle ( _( "Seleccione la factura a la que agregar el albaran." ) );
     diag->setModal ( true );
 
     /// \TODO: Debe pasar por company la creacion del listado
@@ -405,7 +405,7 @@ void AlbaranClienteView::agregarFactura()
     bud->cargar ( idfactura );
 
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
-    bud->setDBvalue ( "comentfactura", bud->DBvalue ( "comentfactura" ) + tr ( "Num. albaran" ) + DBvalue ( "numalbaran" ) + "\n" );
+    bud->setDBvalue ( "comentfactura", bud->DBvalue ( "comentfactura" ) + _( "Num. albaran" ) + DBvalue ( "numalbaran" ) + "\n" );
 
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,

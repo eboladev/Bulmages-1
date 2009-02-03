@@ -52,7 +52,7 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
-        setTitleName ( tr ( "Albaran de proveedor" ) );
+        setTitleName ( _( "Albaran de proveedor" ) );
         setDBTableName ( "albaranp" );
         setDBCampoId ( "idalbaranp" );
         addDBCampo ( "idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranProveedor", "Id albaran proveedor" ) );
@@ -93,7 +93,7 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
         mui_idalmacen->setidalmacen ( "0" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el albaran proveedor" ), this );
+        mensajeInfo ( _( "Error al crear el albaran proveedor" ), this );
     } // end try
     _depura ( "END AlbaranProveedorView::AlbaranProveedorView", 0 );
 }

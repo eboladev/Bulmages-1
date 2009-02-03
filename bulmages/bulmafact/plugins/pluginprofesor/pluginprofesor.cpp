@@ -93,23 +93,23 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Profesores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Profesores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ));
-	planCuentas->setStatusTip ( tr ( "Profesores" ) );
-	planCuentas->setWhatsThis ( tr ( "Profesores" ) );
+	planCuentas->setStatusTip ( _( "Profesores" ) );
+	planCuentas->setWhatsThis ( _( "Profesores" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Profesor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo Profesor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Profesor" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Profesor" ) );
+	npago->setStatusTip ( _( "Nuevo profesor" ) );
+	npago->setWhatsThis ( _( "Nuevo profesor" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
-	QAction *nfapac = new QAction ( tr ( "About FAPAC" ), 0 );
+	QAction *nfapac = new QAction ( _( "About FAPAC" ), 0 );
 	bges->menuAcerca_de->addAction(nfapac);
 
 
@@ -130,6 +130,11 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Profesores\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginprofesor", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
     return 0;

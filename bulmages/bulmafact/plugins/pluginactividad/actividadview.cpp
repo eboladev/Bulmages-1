@@ -46,7 +46,7 @@ ActividadView::ActividadView ( Company *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( tr ( "Actividad" ) );
+        setTitleName ( _( "Actividad" ) );
         setDBTableName ( "actividad" );
         setDBCampoId ( "idactividad" );
         addDBCampo ( "idactividad", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Actividad", "ID actividad" ) );
@@ -65,7 +65,7 @@ ActividadView::ActividadView ( Company *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el actividad" ), this );
+        mensajeInfo ( _( "Error al crear el actividad" ), this );
     } // end try
     _depura ( "END ActividadView::ActividadView", 0 );
 }
@@ -93,7 +93,7 @@ void ActividadView::imprimir()
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     } 
     /// Disparamos los plugins

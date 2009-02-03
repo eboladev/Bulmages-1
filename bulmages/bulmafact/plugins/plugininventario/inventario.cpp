@@ -35,12 +35,12 @@ Inventario::Inventario ( Company *comp, QWidget *parent ) : FichaBf ( comp, pare
 {
     _depura ( "Inventario::Inventario", 0 );
     companyact = comp;
-    setTitleName ( tr ( "Inventario" ) );
+    setTitleName ( _( "Inventario" ) );
     setDBTableName ( "inventario" );
     setDBCampoId ( "idinventario" );
-    addDBCampo ( "idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Inventario", "Identificador inventario" ) );
-    addDBCampo ( "fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Inventario", "Fecha inventario" ) );
-    addDBCampo ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Inventario", "Nombre inventario" ) );
+    addDBCampo ( "idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador inventario" ) );
+    addDBCampo ( "fechainventario", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha inventario" ) );
+    addDBCampo ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre inventario" ) );
     _depura ( "END Inventario::Inventario", 0 );
 }
 

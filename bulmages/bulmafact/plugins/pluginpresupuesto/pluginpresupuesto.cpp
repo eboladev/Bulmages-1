@@ -96,18 +96,18 @@ void mypluginpres::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Presupuestos a Clientes" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Presupuestos a clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Presupuestos a Clientes" ) );
-	planCuentas->setWhatsThis ( tr ( "Presupuestos a Clientes" ) );
+	planCuentas->setStatusTip ( _( "Presupuestos a clientes" ) );
+	planCuentas->setWhatsThis ( _( "Presupuestos a clientes" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Presupuesto a Cliente" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo presupuesto a cliente" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-quote.svg" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Presupuesto a Cliente" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Presupuesto a Cliente" ) );
+	npago->setStatusTip ( _( "Nuevo presupuesto a cliente" ) );
+	npago->setWhatsThis ( _( "Nuevo presupuesto a cliente" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -126,6 +126,11 @@ void mypluginpres::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Presupuestos a Clientes\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginpresupuesto", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginpres *plug = new mypluginpres();
     plug->inicializa ( bges );
     return 0;

@@ -95,18 +95,18 @@ void mypluginped::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Pedidos de Clientes" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Pedidos de clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Pedidos de Clientes" ) );
-	planCuentas->setWhatsThis ( tr ( "Pedidos de Clientes" ) );
+	planCuentas->setStatusTip ( _( "Pedidos de clientes" ) );
+	planCuentas->setWhatsThis ( _( "Pedidos de clientes" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nueva Pedido de Cliente" ), 0 );
+	QAction *npago = new QAction ( _( "&Nueva pedido de cliente" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.svg" ) ));
-	npago->setStatusTip ( tr ( "Nueva Pedido de Cliente" ) );
-	npago->setWhatsThis ( tr ( "Nueva Pedido de Cliente" ) );
+	npago->setStatusTip ( _( "Nueva pedido de cliente" ) );
+	npago->setWhatsThis ( _( "Nueva pedido de cliente" ) );
 	pPluginMenu->addAction ( npago );
 	pPluginMenu->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -125,6 +125,11 @@ void mypluginped::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Pedidos de Clientes\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginpedido", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginped *plug = new mypluginped();
     plug->inicializa ( bges );
     return 0;

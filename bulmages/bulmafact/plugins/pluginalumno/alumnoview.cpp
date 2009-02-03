@@ -46,7 +46,7 @@ AlumnoView::AlumnoView ( Company *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( tr ( "Alumno" ) );
+        setTitleName ( _( "Alumno" ) );
         setDBTableName ( "alumno" );
         setDBCampoId ( "idalumno" );
         addDBCampo ( "idalumno", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Alumno", "ID alumno" ) );
@@ -56,7 +56,7 @@ AlumnoView::AlumnoView ( Company *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el alumno" ), this );
+        mensajeInfo ( _( "Error al crear el alumno" ), this );
     } // end try
     _depura ( "END AlumnoView::AlumnoView", 0 );
 }
@@ -84,7 +84,7 @@ void AlumnoView::imprimir()
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     } 
     /// Disparamos los plugins

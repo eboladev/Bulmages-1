@@ -133,7 +133,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idproveedor->idproveedor().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un proveedor" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->mui_refalbaranp->text() + "' AND idproveedor = " + fpv->mui_idproveedor->idproveedor();
@@ -148,9 +148,9 @@ void GenFacProQToolButton::generarFacturaProveedor()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura de proveedor existente" ),
-                                         tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura de proveedor existente" ),
+                                         _( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             FacturaProveedorView *bud = new FacturaProveedorView((Company *) fpv->empresaBase(), 0);
@@ -198,7 +198,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -239,7 +239,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idproveedor->idproveedor().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un proveedor" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->idproveedor();
@@ -254,9 +254,9 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura de proveedor existente" ),
-                                         tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura de proveedor existente" ),
+                                         _( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             FacturaProveedorView *bud = new FacturaProveedorView((Company *) fpv->empresaBase(), 0);
@@ -304,7 +304,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

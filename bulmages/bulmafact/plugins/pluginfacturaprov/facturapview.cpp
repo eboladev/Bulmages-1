@@ -52,7 +52,7 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi ( this );
 
-        setTitleName ( tr ( "Factura Proveedor" ) );
+        setTitleName ( _( "Factura Proveedor" ) );
         setDBTableName ( "facturap" );
         setDBCampoId ( "idfacturap" );
         addDBCampo ( "idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "FacturaProveedor", "Id facturap" ) );
@@ -93,7 +93,7 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
         m_totalfacturap->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear la factura proveedor" ), this );
+        mensajeInfo ( _( "Error al crear la factura proveedor" ), this );
     } // end try
     _depura ( "END FacturaProveedorView::FacturaProveedorView", 0 );
 }

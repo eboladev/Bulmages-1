@@ -34,6 +34,11 @@
 int entryPoint ( Bulmafact * )
 {
     _depura ( _("Estoy dentro del plugin de Abertura de Referencia"), 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginopenref", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     return 0;
 }
 

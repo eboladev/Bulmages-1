@@ -44,11 +44,11 @@ TarifaView::TarifaView ( Company *comp, QWidget *parent )
     _depura ( "TarifaView::INIT_constructor()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    setTitleName ( tr ( "Tarifa" ) );
+    setTitleName ( _( "Tarifa" ) );
     setDBTableName ( "tarifa" );
     setDBCampoId ( "idtarifa" );
-    addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID tarifa" ) );
-    addDBCampo ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nombre de la tarifa" ) );
+    addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID tarifa" ) );
+    addDBCampo ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nombre de la tarifa" ) );
     ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de 
     ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setEmpresaBase ( comp );
@@ -64,7 +64,7 @@ TarifaView::TarifaView ( Company *comp, QWidget *parent )
     mui_actualizar->setEnabled(FALSE);
     mui_borrar->setEnabled(FALSE);
 
-    meteWindow ( tr ( "Tarifa edicion" ), this );
+    meteWindow ( _( "Tarifa edicion" ), this );
 
     dialogChanges_cargaInicial();
     _depura ( "TarifaView::END_constructor()\n", 0 );
@@ -97,7 +97,7 @@ void TarifaView::pintar()
 {
     _depura ( "TarifaView::pintar", 0 );
     mui_nomtarifa->setText ( DBvalue ( "nomtarifa" ) );
-    setWindowTitle ( tr ( "Tarifa" ) + " " + mui_nomtarifa->text() );
+    setWindowTitle ( _( "Tarifa" ) + " " + mui_nomtarifa->text() );
     _depura ( "END TarifaView::pintar", 1 );
 }
 
@@ -156,7 +156,7 @@ int TarifaView::cargar ( QString idtarifa )
     DBRecord::cargar ( m_idtarifa );
     mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
-    setWindowTitle ( tr ( "Tarifa" ) + " " + DBvalue ( "nomtarifa" ) );
+    setWindowTitle ( _( "Tarifa" ) + " " + DBvalue ( "nomtarifa" ) );
     meteWindow ( windowTitle(), this );
 
     /// Tratamiento de excepciones.
@@ -238,9 +238,9 @@ void TarifaView::on_mui_borrar_clicked()
     _depura ( "TarifaView::INIT_boton_borrar()\n", 0 );
     if ( DBvalue ( "idtarifa" ) != "" ) {
         if ( QMessageBox::question ( this,
-                                     tr ( "Borrar tarifa" ),
-                                     tr ( "Esta a punto de borrar una tarifa. Desea continuar?" ),
-                                     tr ( "&Si" ), tr ( "&No" ), 0, 1, 0 ) == 0 ) {
+                                     _( "Borrar tarifa" ),
+                                     _( "Esta a punto de borrar una tarifa. Desea continuar?" ),
+                                     _( "&Si" ), _( "&No" ), 0, 1, 0 ) == 0 ) {
             empresaBase() ->begin();
             int error = mui_list->borrar();
             error += borrar();

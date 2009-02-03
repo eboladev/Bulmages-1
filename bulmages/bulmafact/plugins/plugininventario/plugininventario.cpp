@@ -69,9 +69,9 @@ void myplugininv::inicializa ( Bulmafact *bges )
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase ( bges->getcompany() );
-    QAction *planCuentas = new QAction ( tr ( "&Inventarios" ), 0 );
-    planCuentas->setStatusTip ( tr ( "Inventarios" ) );
-    planCuentas->setWhatsThis ( tr ( "Inventarios" ) );
+    QAction *planCuentas = new QAction ( _( "&Inventarios" ), 0 );
+    planCuentas->setStatusTip ( _( "Inventarios" ) );
+    planCuentas->setWhatsThis ( _( "Inventarios" ) );
     bges->menuArticulos->addSeparator();
     bges->menuArticulos->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -87,6 +87,11 @@ void myplugininv::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugininventario", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     myplugininv *plug = new myplugininv();
     plug->inicializa ( bges );
     return 0;

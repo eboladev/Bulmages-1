@@ -46,7 +46,7 @@ ListTallasView::ListTallasView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTallasView::ListTallasView", 1 );
-    setTitleName ( tr ( "Tallas" ) );
+    setTitleName ( _( "Tallas" ) );
     setDBTableName ( "tc_talla" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -68,7 +68,7 @@ void ListTallasView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar los colores" ), this );
+        mensajeInfo ( _( "Error al guardar los colores" ), this );
     } // end try
     _depura ( "END ListTallasView::on_mui_aceptar_clicked", 0 );
 }
@@ -96,8 +96,8 @@ ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
     _depura ( "ListTallasSubForm::ListTallasSubForm", 0 );
     setDBTableName ( "tc_talla" );
     setDBCampoId ( "idtc_talla" );
-    addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Color" ) );
-    addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Nombre Talla" ) );
+    addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Id color" ) );
+    addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Nombre talla" ) );
     setinsercion ( TRUE );
     _depura ( "END ListTallasSubForm::ListTallasSubForm", 0 );
 }

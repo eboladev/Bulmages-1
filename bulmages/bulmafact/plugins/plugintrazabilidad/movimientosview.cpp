@@ -80,9 +80,9 @@ void MovimientosView::iniciaForm()
     int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, tr ( "Todas las facturas" ) );
-    mui_procesada->insertItem ( 1, tr ( "Facturas procesadas" ) );
-    mui_procesada->insertItem ( 2, tr ( "Facturas no procesadas" ) );
+    mui_procesada->insertItem ( 0, _( "Todas las facturas" ) );
+    mui_procesada->insertItem ( 1, _( "Facturas procesadas" ) );
+    mui_procesada->insertItem ( 2, _( "Facturas no procesadas" ) );
     _depura ( "END MovimientosView::iniciaForm" );
 }
 
@@ -141,7 +141,7 @@ QString MovimientosView::generaFiltro()
 void MovimientosView::on_mui_imprimir_clicked()
 {
     _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( tr ( "Facturas a clientes" ) );
+    mui_list->imprimirPDF ( _( "Facturas a clientes" ) );
     _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
 }
 
@@ -167,18 +167,18 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : SubFo
         return;
     setDBTableName ( "movimiento" );
     setDBCampoId ( "idmovimiento" );
-    addSHeader ( "idmovimiento", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idarticulo" ) );
-    addSHeader ( "fechamovimiento", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone , tr ( "Fecha" ) );
-    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id Articulo" ) );
-    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo Articulo" ) );
-    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre Articulo" ) );
-    addSHeader ( "cantidadmovimiento", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone , tr ( "Cantidad" ) );
-    addSHeader ( "lotemovimiento", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "Lote" ) );
-    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id Almacen" ) );
-    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo Almacen" ) );
-    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre Almacen" ) );
-    addSHeader ( "idlalbaran", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Id Albaran Cliente" ) );
-    addSHeader ( "idlalbaranp", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Id Albaran Proveedor" ) );
+    addSHeader ( "idmovimiento", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoWrite, _( "idarticulo" ) );
+    addSHeader ( "fechamovimiento", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone , _( "Fecha" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, _( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre articulo" ) );
+    addSHeader ( "cantidadmovimiento", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone , _( "Cantidad" ) );
+    addSHeader ( "lotemovimiento", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "Lote" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, _( "Id almacen" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo almacen" ) );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre almacen" ) );
+    addSHeader ( "idlalbaran", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "Id albaran cliente" ) );
+    addSHeader ( "idlalbaranp", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "Id albaran proveedor" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

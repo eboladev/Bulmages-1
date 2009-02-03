@@ -72,6 +72,10 @@ void entryPoint ( Bulmafact *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugindebugbf", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     myplugin *corr = new myplugin();
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para

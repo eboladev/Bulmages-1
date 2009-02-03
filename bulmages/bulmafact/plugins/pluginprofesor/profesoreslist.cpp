@@ -141,7 +141,7 @@ void ProfesoresList::crear()
 void ProfesoresList::imprimir()
 {
     _depura ( "ProfesoresList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Profesores" ) );
+    mui_list->imprimirPDF ( _( "Profesores" ) );
     _depura ( "END ProfesoresList::imprimir", 0 );
 }
 
@@ -157,7 +157,7 @@ void ProfesoresList::borrar()
     _depura ( "ProfesoresList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -171,7 +171,7 @@ void ProfesoresList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:ProfesoresList::borrar", 0 );
 }
@@ -198,7 +198,7 @@ void ProfesoresList::editar ( int )
             emit ( selected ( mdb_idprofesor ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END ProfesoresList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -214,8 +214,8 @@ void ProfesoresList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar Profesor" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar Profesor" ) );
+    QAction *edit = popup->addAction ( _( "Editar profesor" ) );
+    QAction *del = popup->addAction ( _( "Borrar profesor" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -259,8 +259,8 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : SubForm2Bf ( 
         return;
     setDBTableName ( "profesor" );
     setDBCampoId ( "idprofesor" );
-    addSHeader ( "idprofesor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID Profesor" ) );
-    addSHeader ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre" ) );
+    addSHeader ( "idprofesor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id profesor" ) );
+    addSHeader ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

@@ -53,7 +53,7 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi ( this );
 
-        setTitleName ( tr ( "Pedido Cliente" ) );
+        setTitleName ( _( "Pedido Cliente" ) );
         setDBTableName ( "pedidocliente" );
         setDBCampoId ( "idpedidocliente" );
         addDBCampo ( "idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "PedidoCliente", "Identificador" ) );
@@ -89,7 +89,7 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         mui_idtrabajador->setidtrabajador ( "" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el pedido cliente" ), this );
+        mensajeInfo ( _( "Error al crear el pedido cliente" ), this );
     } // end try
     _depura ( "END PedidoClienteView::PedidoClienteView", 0 );
 }
@@ -179,7 +179,7 @@ void PedidoClienteView::generarAlbaran()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_refpedidocliente->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -194,9 +194,9 @@ void PedidoClienteView::generarAlbaran()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Albaran ya existe" ),
-                                         tr ( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Albaran ya existe" ),
+                                         _( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new AlbaranClienteView ( empresaBase(), NULL );
@@ -262,7 +262,7 @@ void PedidoClienteView::generarAlbaran()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

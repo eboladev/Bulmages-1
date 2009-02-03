@@ -71,7 +71,7 @@ void InventarioView::on_mui_guardar2_clicked()
 {
     _depura ( "InventarioView::on_mui_guardar2_clicked", 0 );
     if ( mui_nominventario->text() == "" ) {
-        mensajeInfo ( tr ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
+        mensajeInfo ( _( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
         return;
     } // end if
     setfechainventario ( mui_fechainventario->text() );
@@ -102,9 +102,9 @@ void InventarioView::on_mui_borrar2_clicked()
     _depura ( "InventarioView::on_mui_borrar2_clicked", 0 );
     if ( DBvalue ( "idinventario" ) != "" ) {
         if ( QMessageBox::question ( this,
-                                     tr ( "Borrar inventario" ),
-                                     tr ( "Esta a punto de borrar un inventario. Desea continuar?" ),
-                                     tr ( "Si" ), tr ( "No" ), 0, 1, 0 ) == 0 ) {
+                                     _( "Borrar inventario" ),
+                                     _( "Esta a punto de borrar un inventario. Desea continuar?" ),
+                                     _( "Si" ), _( "No" ), 0, 1, 0 ) == 0 ) {
             Inventario::borrar();
         } // end if
     } // end if

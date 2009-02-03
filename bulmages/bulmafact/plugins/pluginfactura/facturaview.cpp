@@ -56,7 +56,7 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setTitleName ( tr ( "Factura" ) );
+        setTitleName ( _( "Factura" ) );
         setDBTableName ( "factura" );
         setDBCampoId ( "idfactura" );
         addDBCampo ( "idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Factura", "Id factura" ) );
@@ -73,7 +73,7 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Forma de pago" ) );
 
         /// Establecemos algunos Buddies.
-        mui_labelAlmacen->setText ( tr ( "Al&macen" ) );
+        mui_labelAlmacen->setText ( _( "Al&macen" ) );
         mui_labelAlmacen->setBuddy ( mui_idalmacen );
 
         /// Disparamos los plugins.
@@ -108,7 +108,7 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         m_totalfactura->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear la factura" ), this );
+        mensajeInfo ( _( "Error al crear la factura" ), this );
     }
     _depura ( "END FacturaView::FacturaView" );
 }
@@ -199,7 +199,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
     bud->cargar ( idalbaran );
 
     /// Agregamos a comentarios que albaran se corresponde.
-    QString comm = DBvalue ( "comentfactura" ) + "(" + tr ( "ALBARAN: Num " ) + bud->DBvalue ( "numalbaran" ) + tr ( "Ref:" ) + " " + bud->DBvalue ( "refalbaran" ) + tr ( "Fecha:" ) + " " + bud->DBvalue ( "fechaalbaran" ) + ")\n";
+    QString comm = DBvalue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + bud->DBvalue ( "numalbaran" ) + _( "Ref:" ) + " " + bud->DBvalue ( "refalbaran" ) + _( "Fecha:" ) + " " + bud->DBvalue ( "fechaalbaran" ) + ")\n";
 
     setDBvalue ( "comentfactura", comm );
     pintar();
@@ -256,11 +256,11 @@ void FacturaView::on_mui_veralbaranes_clicked()
                 cur->siguienteregistro();
             } // end while
         } else {
-            mensajeInfo ( tr ( "No hay albaranes con esta referencia" ), this );
+            mensajeInfo ( _( "No hay albaranes con esta referencia" ), this );
         } // end if
         delete cur;
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

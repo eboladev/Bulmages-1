@@ -94,7 +94,7 @@ InventariosView::InventariosView ( Company *comp, QWidget *parent, Qt::WFlags fl
     if ( modoEdicion() ) {
         empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( tr ( "Selector de Inventarios" ) );
+        setWindowTitle ( _( "Selector de Inventarios" ) );
     } // end if
     _depura ( "END InventariosView::InventariosView", 0 );
 }
@@ -119,7 +119,7 @@ void InventariosView::on_mui_editar_clicked()
     _depura ( "InventariosView::on_mui_editar_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Tiene que seleccionar un inventario" ) );
+        mensajeInfo ( _( "Tiene que seleccionar un inventario" ) );
         return;
     } else {
         QString idinventario = mui_listado->DBvalue ( "idinventario" );
@@ -145,7 +145,7 @@ void InventariosView::on_mui_borrar2_clicked()
     _depura ( "InventariosView::on_mui_borrar2_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Tiene que seleccionar un inventario" ) );
+        mensajeInfo ( _( "Tiene que seleccionar un inventario" ) );
         return;
     } else {
         QString idinventario = mui_listado->DBvalue ( "idinventario" );
@@ -276,9 +276,9 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "InventariosSubForm::InventariosSubForm", 0 );
     setDBTableName ( "inventario" );
     setDBCampoId ( "idinventario" );
-    addSHeader ( "idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView, tr ( "Id inventario" ) );
-    addSHeader ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del inventario" ) );
-    addSHeader ( "fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha del inventario" ) );
+    addSHeader ( "idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView, _( "Id inventario" ) );
+    addSHeader ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del inventario" ) );
+    addSHeader ( "fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha del inventario" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

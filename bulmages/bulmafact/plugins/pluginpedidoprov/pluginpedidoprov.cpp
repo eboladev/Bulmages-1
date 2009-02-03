@@ -93,18 +93,18 @@ void mypluginpedp::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Pedidos a Proveedores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Pedidos a proveedores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Pedidos a Proveedores" ) );
-	planCuentas->setWhatsThis ( tr ( "Pedidos a Proveedores" ) );
+	planCuentas->setStatusTip ( _( "Pedidos a proveedores" ) );
+	planCuentas->setWhatsThis ( _( "Pedidos a proveedores" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Pedido a Proveedor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo Pedido a Proveedor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order.svg" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Pedido a Proveedor" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Pedido a Proveedor" ) );
+	npago->setStatusTip ( _( "Nuevo pedido a proveedor" ) );
+	npago->setWhatsThis ( _( "Nuevo pedido a proveedor" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -123,6 +123,11 @@ void mypluginpedp::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Pedidos a Proveedor\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginpedidoprov", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginpedp *plug = new mypluginpedp();
     plug->inicializa ( bges );
     return 0;

@@ -139,6 +139,10 @@ void entryPoint ( Bulmafact *bges )
 {
     _depura ( "Estoy dentro del plugin de e-factura", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginefacturabf", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     efacturabf *efact = new efacturabf();
     efact->inicializa ( bges );
     /// SOLO A MODO DE EJEMPLO: se modifica el titulo de la ventana principal

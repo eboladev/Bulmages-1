@@ -1,9 +1,9 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#comercialbf
+#comercial
 
-set (plugin plugincomercialbf)
+set (plugin pluginbf_comercial)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

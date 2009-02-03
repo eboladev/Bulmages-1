@@ -146,7 +146,7 @@ void GenFacQToolButton::generarFactura()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refalbaran->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -161,9 +161,9 @@ void GenFacQToolButton::generarFactura()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura existente" ),
-                                         tr ( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura existente" ),
+                                         _( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
             bud = new FacturaView( (Company *) fpv->empresaBase(), 0);
@@ -231,7 +231,7 @@ void GenFacQToolButton::generarFactura()
         fpv->mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -274,7 +274,7 @@ void GenFacQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -289,9 +289,9 @@ void GenFacQToolButton::generarFactura1()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Albaran ya existe" ),
-                                         tr ( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Albaran ya existe" ),
+                                         _( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new FacturaView ( fpv->empresaBase(), NULL );
@@ -357,7 +357,7 @@ void GenFacQToolButton::generarFactura1()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -403,7 +403,7 @@ void GenFacQToolButton::generarFactura2()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -418,9 +418,9 @@ void GenFacQToolButton::generarFactura2()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura ya existe" ),
-                                         tr ( "Existe una factura a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura ya existe" ),
+                                         _( "Existe una factura a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new FacturaView ( fpv->empresaBase(), NULL );
@@ -486,7 +486,7 @@ void GenFacQToolButton::generarFactura2()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -577,7 +577,7 @@ void AgFacQToolButton::generarFactura()
 	AlbaranClienteView *fpv = (AlbaranClienteView *) m_object;
 
     QDialog *diag = new QDialog ( 0 );
-    diag->setWindowTitle ( tr ( "Seleccione la factura a la que agregar el albaran." ) );
+    diag->setWindowTitle ( _( "Seleccione la factura a la que agregar el albaran." ) );
     diag->setModal ( true );
 
     /// \TODO: Debe pasar por company la creacion del listado
@@ -602,7 +602,7 @@ void AgFacQToolButton::generarFactura()
     bud->cargar ( idfactura );
 
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
-    bud->setDBvalue ( "comentfactura", bud->DBvalue ( "comentfactura" ) + tr ( "Num. albaran" ) + fpv->DBvalue ( "numalbaran" ) + "\n" );
+    bud->setDBvalue ( "comentfactura", bud->DBvalue ( "comentfactura" ) + _( "Num. albaran" ) + fpv->DBvalue ( "numalbaran" ) + "\n" );
 
     fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,

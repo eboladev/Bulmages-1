@@ -57,7 +57,7 @@ Q19View::Q19View ( FacturasList *fac, Company *comp, QWidget *parent )
         setDBCampoId ( "idfactura" );
 
         /*
-                setTitleName ( tr ( "Cobro" ) );
+                setTitleName ( _( "Cobro" ) );
          
                 addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Cobro", "ID cobro" ) );
                 addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "ID cliente" ) );
@@ -76,7 +76,7 @@ Q19View::Q19View ( FacturasList *fac, Company *comp, QWidget *parent )
         dialogChanges_cargaInicial();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el archivo" ) );
+        mensajeInfo ( _( "Error al crear el archivo" ) );
     } // end try
     _depura ( "END Q19View::Q19View", 0 );
 }
@@ -524,9 +524,9 @@ void Q19View::on_mui_aceptar_clicked()
 
 /// ----------------------------------
 
-//    QString fileName = QFileDialog::getSaveFileName ( this, tr ( "Save File" ),
+//    QString fileName = QFileDialog::getSaveFileName ( this, _( "Save File" ),
 //                       "",
-//                       tr ( "*.q19" ) );
+//                       _( "*.q19" ) );
 
         QFile file ( mui_archivo->text() );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )

@@ -92,18 +92,18 @@ void mypluginalbp::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Albaranes de Proveedores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Albaranes de proveedores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Albaranes de Proveedores" ) );
-	planCuentas->setWhatsThis ( tr ( "Albaranes de  Proveedores" ) );
+	planCuentas->setStatusTip ( _( "Albaranes de proveedores" ) );
+	planCuentas->setWhatsThis ( _( "Albaranes de proveedores" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Albaran de Proveedor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo albaran de proveedor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.svg" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Albaran de Proveedor" ) );
-		npago->setWhatsThis ( tr ( "Nuevo Albaran de Proveedor" ) );
+	npago->setStatusTip ( _( "Nuevo albaran de proveedor" ) );
+		npago->setWhatsThis ( _( "Nuevo albaran de proveedor" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -121,7 +121,12 @@ void mypluginalbp::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
+    _depura ( "Punto de entrada del plugin de facturas de proveedor\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginalbaranprov", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginalbp *plug = new mypluginalbp();
     plug->inicializa ( bges );
     return 0;

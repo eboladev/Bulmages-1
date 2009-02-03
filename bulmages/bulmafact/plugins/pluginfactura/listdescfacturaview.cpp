@@ -39,10 +39,10 @@ ListDescuentoFacturaView::ListDescuentoFacturaView ( QWidget *parent )
     _depura ( "ListDescuentoFacturaView::ListDescuentoFacturaView", 0 );
     setDBTableName ( "dfactura" );
     setDBCampoId ( "iddfactura" );
-    addSHeader ( "iddfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id descuento" ) );
-    addSHeader ( "conceptdfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Concepto descuento" ) );
-    addSHeader ( "proporciondfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
-    addSHeader ( "idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id factura" ) );
+    addSHeader ( "iddfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id descuento" ) );
+    addSHeader ( "conceptdfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Concepto descuento" ) );
+    addSHeader ( "proporciondfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "% Descuento" ) );
+    addSHeader ( "idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id factura" ) );
     setinsercion ( TRUE );
     _depura ( "END ListDescuentoFacturaView::ListDescuentoFacturaView", 0 );
 }

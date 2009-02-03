@@ -95,18 +95,18 @@ void mypluginalb::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Albaranes a Clientes" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Albaranes a clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Albaranes a Clientes" ) );
-	planCuentas->setWhatsThis ( tr ( "Albaranes a Clientes" ) );
+	planCuentas->setStatusTip ( _( "Albaranes a clientes" ) );
+	planCuentas->setWhatsThis ( _( "Albaranes a clientes" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nueva Albaran a Cliente" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo albaran a cliente" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.svg" ) ));
-	npago->setStatusTip ( tr ( "Nueva Albaran a Cliente" ) );
-	npago->setWhatsThis ( tr ( "Nueva Albaran a Cliente" ) );
+	npago->setStatusTip ( _( "Nuevo albaran a cliente" ) );
+	npago->setWhatsThis ( _( "Nuevo albaran a cliente" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );

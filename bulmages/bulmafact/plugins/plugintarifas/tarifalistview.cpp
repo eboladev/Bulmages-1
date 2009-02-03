@@ -40,7 +40,7 @@ TarifaListView::TarifaListView ( Company *comp, QWidget *parent, Qt::WFlags flag
     mui_list->setEmpresaBase ( empresaBase() );
     mui_list->cargar();
     mui_list->setColumnWidth(0, 250);
-    empresaBase() ->meteWindow ( tr ( "Tarifas" ), this );
+    empresaBase() ->meteWindow ( _( "Tarifas" ), this );
     setSubForm(mui_list);
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     //trataPermisos ( "tarifas" );

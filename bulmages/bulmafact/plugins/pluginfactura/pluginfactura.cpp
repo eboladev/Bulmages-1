@@ -94,18 +94,18 @@ void mypluginfact::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Facturas a Clientes" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Facturas a clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Facturas a Clientes" ) );
-	planCuentas->setWhatsThis ( tr ( "Facturas a Clientes" ) );
+	planCuentas->setStatusTip ( _( "Facturas a clientes" ) );
+	planCuentas->setWhatsThis ( _( "Facturas a clientes" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nueva Factura a Cliente" ), 0 );
+	QAction *npago = new QAction ( _( "&Nueva factura a cliente" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.svg" ) ));
-	npago->setStatusTip ( tr ( "Nueva Factura a Cliente" ) );
-	npago->setWhatsThis ( tr ( "Nueva Factura a Cliente" ) );
+	npago->setStatusTip ( _( "Nueva factura a cliente" ) );
+	npago->setWhatsThis ( _( "Nueva factura a cliente" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -124,6 +124,11 @@ void mypluginfact::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Facturas a Clientes\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginfactura", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginfact *plug = new mypluginfact();
     plug->inicializa ( bges );
     return 0;

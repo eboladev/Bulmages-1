@@ -58,7 +58,7 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "CuadranteDiarioView_CuadranteDiarioView", this ) ) return;
 
-        setTitleName ( tr ( "Almacen" ) );
+        setTitleName ( _( "Almacen" ) );
         setDBTableName ( "almacen" );
 
         mui_listtrabajadores->setDragEnabled ( TRUE );
@@ -96,7 +96,7 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al iniciar el cuadrante" ) );
+        mensajeInfo ( _( "Error al iniciar el cuadrante" ) );
     } // end try
     _depura ( "END CuadranteDiarioView::CuadranteDiarioView", 0 );
 }
@@ -163,13 +163,13 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 {
     _depura ( "CuadranteDiarioView::inicializaCuadrante", 0 );
     QString diassem[7];
-    diassem[0] = tr ( "Lunes" );
-    diassem[1] = tr ( "Martes" );
-    diassem[2] = tr ( "Miercoles" );
-    diassem[3] = tr ( "Jueves" );
-    diassem[4] = tr ( "Viernes" );
-    diassem[5] = tr ( "Sabado" );
-    diassem[6] = tr ( "Domingo" );
+    diassem[0] = _( "Lunes" );
+    diassem[1] = _( "Martes" );
+    diassem[2] = _( "Miercoles" );
+    diassem[3] = _( "Jueves" );
+    diassem[4] = _( "Viernes" );
+    diassem[5] = _( "Sabado" );
+    diassem[6] = _( "Domingo" );
 
 
     try {
@@ -287,8 +287,8 @@ void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const Q
     QMenu *popup = new QMenu ( mui_calendario );
 
     popup->addSeparator();
-    QAction *norm = popup->addAction ( tr ( "Normal" ) );
-    QAction *fiesta = popup->addAction ( tr ( "Fiesta General" ) );
+    QAction *norm = popup->addAction ( _( "Normal" ) );
+    QAction *fiesta = popup->addAction ( _( "Fiesta general" ) );
 
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {

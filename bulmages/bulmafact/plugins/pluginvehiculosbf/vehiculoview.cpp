@@ -38,25 +38,25 @@ VehiculoView::VehiculoView ( Company *emp, QWidget *parent )
     mui_listadomantvehiculo->setEmpresaBase ( emp );
 
     /// Inicializamos la clase para la base de datos.
-    setTitleName ( tr ( "Vehiculo" ) );
+    setTitleName ( _( "Vehiculo" ) );
     setDBTableName ( "vehiculo" );
     setDBCampoId ( "idvehiculo" );
-    addDBCampo ( "idvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "idvehiculo" ) );
-    addDBCampo ( "matriculavehiculo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "matriculavehiculo" ) );
-    addDBCampo ( "marcavehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "marcavehiculo" ) );
-    addDBCampo ( "modelovehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "modelovehiculo" ) );
-    addDBCampo ( "bastidorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "bastidorvehiculo" ) );
-    addDBCampo ( "colorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "colorvehiculo" ) );
-    addDBCampo ( "fechacompravehiculo", DBCampo::DBdate, DBCampo::DBNothing, tr ( "fechavehiculo" ) );
-    addDBCampo ( "preciovehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, tr ( "preciovehiculo" ) );
+    addDBCampo ( "idvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "idvehiculo" ) );
+    addDBCampo ( "matriculavehiculo", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "matriculavehiculo" ) );
+    addDBCampo ( "marcavehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "marcavehiculo" ) );
+    addDBCampo ( "modelovehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "modelovehiculo" ) );
+    addDBCampo ( "bastidorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "bastidorvehiculo" ) );
+    addDBCampo ( "colorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "colorvehiculo" ) );
+    addDBCampo ( "fechacompravehiculo", DBCampo::DBdate, DBCampo::DBNothing, _( "fechavehiculo" ) );
+    addDBCampo ( "preciovehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "preciovehiculo" ) );
 
     /// Inicializamos el listado.
     mui_listadomantvehiculo->setDBTableName ( "mantvehiculo" );
     mui_listadomantvehiculo->setDBCampoId ( "idmantvehiculo" );
-    mui_listadomantvehiculo->addSHeader ( "idmantvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, tr ( "idmantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "fechamantvehiculo", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr ( "fechamantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "preciomantvehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "preciomantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "idvehiculo", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "idvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "idmantvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, _( "idmantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "fechamantvehiculo", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, _( "fechamantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "preciomantvehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "preciomantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "idvehiculo", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, _( "idvehiculo" ) );
     mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones
@@ -98,7 +98,7 @@ int VehiculoView::guardar()
         dialogChanges_cargaInicial();
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al guardar la ficha" ) );
+        mensajeInfo ( _( "Error al guardar la ficha" ) );
         return -1;
     } // end try
     _depura ( "END VehiculoView::guardar", 0 );
@@ -131,7 +131,7 @@ int VehiculoView::cargar ( QString idvehiculo )
         _depura ( "END VehiculoView::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al cargar los datos en la ficha." ) );
+        mensajeInfo ( _( "Error al cargar los datos en la ficha." ) );
         return -1;
     }
 }

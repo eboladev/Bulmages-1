@@ -109,9 +109,9 @@ void FacturasProveedorList::iniciaForm()
     int res = g_plugins->lanza ( "FacturasProveedorList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, tr ( "Todas las facturas" ) );
-    mui_procesada->insertItem ( 1, tr ( "Facturas procesadas" ) );
-    mui_procesada->insertItem ( 2, tr ( "Facturas no procesadas" ) );
+    mui_procesada->insertItem ( 0, _( "Todas las facturas" ) );
+    mui_procesada->insertItem ( 1, _( "Facturas procesadas" ) );
+    mui_procesada->insertItem ( 2, _( "Facturas no procesadas" ) );
     _depura ( "END FacturasProveedorList::iniciaForm" );
 }
 
@@ -212,7 +212,7 @@ void FacturasProveedorList::editar ( int row )
             emit ( selected ( mdb_idfacturap ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al cargar la factura proveedor" ), this );
+        mensajeInfo ( _( "Error al cargar la factura proveedor" ), this );
     } // end try
     _depura ( "END FacturasProveedorList::editar", 0 );
 }
@@ -231,7 +231,7 @@ void FacturasProveedorList::borrar()
     _depura ( "FacturasProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -242,7 +242,7 @@ void FacturasProveedorList::borrar()
         delete bud;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar la factura de proveedor" ), this );
+        mensajeInfo ( _( "Error al borrar la factura de proveedor" ), this );
     } // end try
     _depura ( "END FacturasProveedorList::borrar", 0 );
 }
@@ -255,7 +255,7 @@ void FacturasProveedorList::borrar()
 void FacturasProveedorList::imprimir()
 {
     _depura ( "FacturasProveedorList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( tr ( "Facturas de proveedores" ) );
+    mui_list->imprimirPDF ( _( "Facturas de proveedores" ) );
     _depura ( "END FacturasProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -339,19 +339,19 @@ FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) :
     _depura ( "FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
     setDBTableName ( "facturap" );
     setDBCampoId ( "idfacturap" );
-    addSHeader ( "reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia factura" ) );
-    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id factura" ) );
-    addSHeader ( "numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero factura" ) );
-    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre proveedor" ) );
-    addSHeader ( "ffacturap", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha factura" ) );
-    addSHeader ( "contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Persona de contacto" ) );
-    addSHeader ( "telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Telefono factura" ) );
-    addSHeader ( "comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario factura" ) );
-    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id trabajador" ) );
-    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id proveedor" ) );
-    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total" ) );
-    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base imponible" ) );
-    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
+    addSHeader ( "reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia factura" ) );
+    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id factura" ) );
+    addSHeader ( "numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero factura" ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre proveedor" ) );
+    addSHeader ( "ffacturap", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha factura" ) );
+    addSHeader ( "contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Persona de contacto" ) );
+    addSHeader ( "telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Telefono factura" ) );
+    addSHeader ( "comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentario factura" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id trabajador" ) );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id proveedor" ) );
+    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Total" ) );
+    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Base imponible" ) );
+    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Impuestos" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

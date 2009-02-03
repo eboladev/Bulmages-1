@@ -37,8 +37,13 @@ Bulmafact *g_bf;
 **/
 int entryPoint ( Bulmafact *bf )
 {
-    _depura ( _("Estoy dentro del plugin BulmaCont"), 0 );
-	g_bf = bf;
+    _depura ( "Estoy dentro del plugin BulmaCont", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbulmacont", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
+    g_bf = bf;
     return 0;
 }
 

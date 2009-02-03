@@ -46,16 +46,16 @@ ListTiposTrabajoView::ListTiposTrabajoView ( Company *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTiposTrabajoView::ListTiposTrabajoView", 1 );
-    setDBTableName ( tr ( "almacen" ) );
+    setDBTableName ( _( "almacen" ) );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setEmpresaBase ( comp );
 
     mui_listado->setDBTableName ( "tipotrabajo" );
     mui_listado->setDBCampoId ( "idtipotrabajo" );
-    mui_listado->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Tipo Trabajo" ) );
-    mui_listado->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Nombre Tipo Trabajo" ) );
-    mui_listado->addSHeader ( "colortipotrabajo", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, tr ( "Color Tipo Trabajo" ) );
+    mui_listado->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Id tipo trabajo" ) );
+    mui_listado->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Nombre tipo trabajo" ) );
+    mui_listado->addSHeader ( "colortipotrabajo", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, _( "Color tipo trabajo" ) );
     mui_listado->setinsercion ( TRUE );
 
     mui_listado->cargar ( "SELECT * FROM tipotrabajo" );

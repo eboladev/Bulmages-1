@@ -38,10 +38,10 @@ ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView ( QWidget *pa
     _depura ( "ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView", 0 );
     setDBTableName ( "dpedidoproveedor" );
     setDBCampoId ( "iddpedidoproveedor" );
-    addSHeader ( "iddpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id descuento" ) );
-    addSHeader ( "conceptdpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Concepto descuento" ) );
-    addSHeader ( "proporciondpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
-    addSHeader ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pedido" ) );
+    addSHeader ( "iddpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id descuento" ) );
+    addSHeader ( "conceptdpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Concepto descuento" ) );
+    addSHeader ( "proporciondpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "% Descuento" ) );
+    addSHeader ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id pedido" ) );
     setinsercion ( TRUE );
     _depura ( "ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView", 0 );
 }

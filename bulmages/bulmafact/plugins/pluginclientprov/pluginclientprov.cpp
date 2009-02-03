@@ -34,6 +34,11 @@
 int entryPoint ( Bulmafact * )
 {
     _depura ( "Estoy dentro del plugin de Cliente Proveedor", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginclienteprov", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     return 0;
 }
 

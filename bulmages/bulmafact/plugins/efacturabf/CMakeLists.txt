@@ -1,5 +1,5 @@
 ###########################################
-# Plugin for bulmafact					  #
+# Plugin for bulmafact                    #
 ###########################################
 #efacturabf
 

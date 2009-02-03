@@ -33,6 +33,11 @@
 int entryPoint ( Bulmafact * )
 {
     _depura ( "Estoy dentro del plugin de tipos de almacenes", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginalmacen", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     return 0;
 }
 

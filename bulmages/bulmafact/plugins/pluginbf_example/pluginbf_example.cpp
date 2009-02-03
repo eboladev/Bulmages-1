@@ -27,7 +27,7 @@
 
 #include <cstdio>
 
-#include "plugin.h"
+#include "pluginbf_example.h"
 #include "company.h"
 #include <funcaux.h>
 
@@ -104,10 +104,15 @@ void myplugin::inicializa ( Bulmafact *bges )
 void entryPoint ( Bulmafact *bges )
 {
     _depura ( "Estoy dentro del plugin de demo", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbf_example", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bges->setWindowTitle ( "Prueba de plugin." );
+    bges->setWindowTitle ( _("Prueba de plugin para Bulmafact.") );
 }
 

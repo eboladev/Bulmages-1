@@ -65,7 +65,7 @@ ContratosList::ContratosList ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     if ( m_modo == EditMode ) {
         empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( tr ( "Selector de contratos" ) );
+        setWindowTitle ( _( "Selector de contratos" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
@@ -166,7 +166,7 @@ void ContratosList::on_mui_editar_clicked()
 void ContratosList::on_mui_imprimir_clicked()
 {
     _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( tr ( "Listado de Contratos" ) );
+    mui_list->imprimirPDF ( _( "Listado de Contratos" ) );
     _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -195,7 +195,7 @@ void ContratosList::on_mui_borrar_clicked()
                 presenta();
         */
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar un contrato" ) );
+        mensajeInfo ( _( "Error al borrar un contrato" ) );
     } // end try
     _depura ( "END:ContratosList::on_mui_borrar_clicked", 0 );
 }
@@ -414,15 +414,15 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : S
     _depura ( "ContratosListSubform::ContratosListSubform", 0 );
     setDBTableName ( "contrato" );
     setDBCampoId ( "idcontrato" );
-    addSHeader ( "idcontrato", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID contrato" ) );
-    addSHeader ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
-    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F." ) );
-    addSHeader ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia" ) );
-    addSHeader ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de contrato" ) );
-    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre alternativo del contrato" ) );
-    addSHeader ( "fincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de alta del contrato" ) );
-    addSHeader ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de baja del contrato" ) );
-    addSHeader ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de baja del contrato" ) );
+    addSHeader ( "idcontrato", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID contrato" ) );
+    addSHeader ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo" ) );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "C.I.F." ) );
+    addSHeader ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia" ) );
+    addSHeader ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre de contrato" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre alternativo del contrato" ) );
+    addSHeader ( "fincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de alta del contrato" ) );
+    addSHeader ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de baja del contrato" ) );
+    addSHeader ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de baja del contrato" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

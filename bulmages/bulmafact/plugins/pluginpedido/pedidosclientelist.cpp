@@ -96,9 +96,9 @@ void PedidosClienteList::iniciaForm()
     int res = g_plugins->lanza ( "PedidosClienteList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, tr ( "Todos los pedidos" ) );
-    mui_procesada->insertItem ( 1, tr ( "Pedidos procesados" ) );
-    mui_procesada->insertItem ( 2, tr ( "Pedidos no procesados" ) );
+    mui_procesada->insertItem ( 0, _( "Todos los pedidos" ) );
+    mui_procesada->insertItem ( 1, _( "Pedidos procesados" ) );
+    mui_procesada->insertItem ( 2, _( "Pedidos no procesados" ) );
 	mui_procesada->setCurrentIndex(2);
     _depura ( "END PedidosClienteList::iniciaForm" );
 }
@@ -215,7 +215,7 @@ void PedidosClienteList::editar ( int row )
             emit ( selected ( m_idpedidocliente ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al cargar el pedido cliente" ), this );
+        mensajeInfo ( _( "Error al cargar el pedido cliente" ), this );
     } // end try
     _depura ( "END ProveedorList::editar", 0 );
 }
@@ -227,7 +227,7 @@ void PedidosClienteList::editar ( int row )
 void PedidosClienteList::imprimir()
 {
     _depura ( "PedidosClienteList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Pedidos de clientes" ) );
+    mui_list->imprimirPDF ( _( "Pedidos de clientes" ) );
     _depura ( "END PedidosClienteList::imprimir", 0 );
 }
 
@@ -241,7 +241,7 @@ void PedidosClienteList::borrar()
     _depura ( "PedidosClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -256,7 +256,7 @@ void PedidosClienteList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el pedido de cliente" ), this );
+        mensajeInfo ( _( "Error al borrar el pedido de cliente" ), this );
     } // end try
     _depura ( "END PedidosClienteList::borrar", 0 );
 }
@@ -314,22 +314,22 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
         return;
     setDBTableName ( "pedidocliente" );
     setDBCampoId ( "idpedidocliente" );
-    addSHeader ( "idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID pedido" ) );
-    addSHeader ( "numpedidocliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Pedido" ) );
-    addSHeader ( "fechapedidocliente", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
-    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Cliente" ) );
-    addSHeader ( "refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia" ) );
-    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base Imponible" ) );
-    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
-    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total" ) );
-    addSHeader ( "descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion" ) );
-    addSHeader ( "contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Persona de contacto" ) );
-    addSHeader ( "telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Telefono" ) );
-    addSHeader ( "comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario" ) );
-    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Almacen" ) );
-    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID trabajador" ) );
-    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID cliente" ) );
-    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID almacen" ) );
+    addSHeader ( "idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID pedido" ) );
+    addSHeader ( "numpedidocliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Pedido" ) );
+    addSHeader ( "fechapedidocliente", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Cliente" ) );
+    addSHeader ( "refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia" ) );
+    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Base Imponible" ) );
+    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Impuestos" ) );
+    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Total" ) );
+    addSHeader ( "descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion" ) );
+    addSHeader ( "contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Persona de contacto" ) );
+    addSHeader ( "telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Telefono" ) );
+    addSHeader ( "comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentario" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Almacen" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID trabajador" ) );
+    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID cliente" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID almacen" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

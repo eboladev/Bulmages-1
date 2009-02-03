@@ -41,7 +41,12 @@ int g_minLenAlias=0;
 int entryPoint ( Bulmafact *bges )
 {
     
-    _depura ( "Punto de Entrada del plugin de Alias\n", 0 );
+    _depura ( "Punto de entrada del plugin de alias\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginalias", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     g_ultimRefrescAlias.start();
     return 0;
 }

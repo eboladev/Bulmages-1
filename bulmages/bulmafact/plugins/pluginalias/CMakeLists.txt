@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugintrazabilidad
+#pluginalias
 
 set (plugin pluginalias)
 set (docs README.es)

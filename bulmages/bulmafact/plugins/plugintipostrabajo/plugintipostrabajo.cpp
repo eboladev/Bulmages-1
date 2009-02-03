@@ -86,6 +86,11 @@ void mytiptrab::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Estoy dentro del plugin de tipos de trabajo", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugintipostrabajo", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mytiptrab *plug = new mytiptrab();
     plug->inicializa ( bges );
     return 0;

@@ -92,18 +92,18 @@ void mypluginpag::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Pagos a Proveedores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Pagos a proveedores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/pay-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Pagos a Proveedores" ) );
-	planCuentas->setWhatsThis ( tr ( "Pagos a Proveedores" ) );
+	planCuentas->setStatusTip ( _( "Pagos a proveedores" ) );
+	planCuentas->setWhatsThis ( _( "Pagos a proveedores" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Pago a Proveedor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo pago a proveedor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/pay.svg" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Pago a Proveedor" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Pago a Proveedor" ) );
+	npago->setStatusTip ( _( "Nuevo pago a proveedor" ) );
+	npago->setWhatsThis ( _( "Nuevo pago a proveedor" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -122,6 +122,11 @@ void mypluginpag::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginpagos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginpag *plug = new mypluginpag();
     plug->inicializa ( bges );
     return 0;

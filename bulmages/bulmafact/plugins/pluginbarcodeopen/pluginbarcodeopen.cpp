@@ -70,8 +70,8 @@ void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
     bool ok;
-    QString text = QInputDialog::getText ( 0, tr ( "QInputDialog::getText()" ),
-                                           tr ( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
+    QString text = QInputDialog::getText ( 0, _( "QInputDialog::getText()" ),
+                                           _( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
     if ( ok && !text.isEmpty() ) {
         QStringList listaelem = text.split ( " " );
         if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
@@ -176,6 +176,11 @@ void myplugin::inicializa ( Bulmafact *bges )
 void entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbarcodeopen", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {

@@ -173,7 +173,7 @@ void PagosList::crear()
 void PagosList::imprimir()
 {
     _depura ( "PagosList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Pagos a proveedores" ) );
+    mui_list->imprimirPDF ( _( "Pagos a proveedores" ) );
     _depura ( "END PagosList::imprimir", 0 );
 }
 
@@ -183,7 +183,7 @@ void PagosList::borrar()
     _depura ( "PagosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -195,7 +195,7 @@ void PagosList::borrar()
         } // end if
         presentar();
     } catch ( ... )  {
-        mensajeInfo ( tr ( "Error al borrar el pago" ), this );
+        mensajeInfo ( _( "Error al borrar el pago" ), this );
     } // end try
     _depura ( "END PagosList::borrar", 0 );
 }
@@ -232,21 +232,21 @@ PagosListSubForm::PagosListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
 {
     setDBTableName ( "pago" );
     setDBCampoId ( "idpago" );
-    addSHeader ( "idpago", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pago" ) );
-    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id proveedor" ) );
-    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre proveedor" ) );
-    addSHeader ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F. proveedor" ) );
-    addSHeader ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Telefono proveedor" ) );
-    addSHeader ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Email proveedor" ) );
-    addSHeader ( "fechapago", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de pago" ) );
-    addSHeader ( "cantpago", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Cantidad" ) );
-    addSHeader ( "nombanco", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Banco" ) );
-    addSHeader ( "refpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia de pago" ) );
-    addSHeader ( "previsionpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Prevision pago" ) );
-    addSHeader ( "comentpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario pago" ) );
-    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id trabajador" ) );
-    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de trabajador" ) );
-    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Apellidos trabajador" ) );
+    addSHeader ( "idpago", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id pago" ) );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id proveedor" ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre proveedor" ) );
+    addSHeader ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "C.I.F. proveedor" ) );
+    addSHeader ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Telefono proveedor" ) );
+    addSHeader ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Email proveedor" ) );
+    addSHeader ( "fechapago", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de pago" ) );
+    addSHeader ( "cantpago", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Cantidad" ) );
+    addSHeader ( "nombanco", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Banco" ) );
+    addSHeader ( "refpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia de pago" ) );
+    addSHeader ( "previsionpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Prevision pago" ) );
+    addSHeader ( "comentpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentario pago" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id trabajador" ) );
+    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre de trabajador" ) );
+    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Apellidos trabajador" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

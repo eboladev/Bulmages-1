@@ -91,9 +91,9 @@ void Q19QToolButton1::click()
     q19->show();
 
     /*
-        QString fileName = QFileDialog::getSaveFileName ( this, tr ( "Save File" ),
+        QString fileName = QFileDialog::getSaveFileName ( this, _( "Save File" ),
                            "",
-                           tr ( "*.q19" ) );
+                           _( "*.q19" ) );
         QFile file ( fileName );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
             return;

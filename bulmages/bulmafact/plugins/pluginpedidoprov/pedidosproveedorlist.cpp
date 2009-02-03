@@ -98,9 +98,9 @@ void PedidosProveedorList::iniciaForm()
     int res = g_plugins->lanza ( "PedidosProveedorList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, tr ( "Todos los pedidos" ) );
-    mui_procesada->insertItem ( 1, tr ( "Pedidos procesados" ) );
-    mui_procesada->insertItem ( 2, tr ( "Pedidos no procesados" ) );
+    mui_procesada->insertItem ( 0, _( "Todos los pedidos" ) );
+    mui_procesada->insertItem ( 1, _( "Pedidos procesados" ) );
+    mui_procesada->insertItem ( 2, _( "Pedidos no procesados" ) );
     _depura ( "END PedidosProveedorList::iniciaForm" );
 }
 
@@ -174,7 +174,7 @@ QString PedidosProveedorList::generarFiltro()
 void PedidosProveedorList::imprimir()
 {
     _depura ( "PedidosProveedorList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Pedidos a proveedores" ) );
+    mui_list->imprimirPDF ( _( "Pedidos a proveedores" ) );
     _depura ( "END PedidosProveedorList::imprimir", 0 );
 }
 
@@ -188,7 +188,7 @@ void PedidosProveedorList::borrar()
     _depura ( "PedidosProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -203,7 +203,7 @@ void PedidosProveedorList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el pedido a proveedor" ), this );
+        mensajeInfo ( _( "Error al borrar el pedido a proveedor" ), this );
     } // end try
     _depura ( "END PedidosProveedorList::borrar", 0 );
 }
@@ -230,7 +230,7 @@ void PedidosProveedorList::editar ( int row )
             emit ( selected ( mdb_idpedidoproveedor ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al cargar el pedido proveedor" ), this );
+        mensajeInfo ( _( "Error al cargar el pedido proveedor" ), this );
     } // end try
     _depura ( "END PedidosProveedorList::editar", 0 );
 }
@@ -299,22 +299,22 @@ PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : S
     _depura ( "PedidosProveedorListSubform::PedidosProveedorListSubform", 0 );
     setDBTableName ( "pedidoproveedor" );
     setDBCampoId ( "idpedidoproveedor" );
-    addSHeader ( "numpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de pedido" ) );
-    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de proveedor" ) );
-    addSHeader ( "fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha pedido proveedor" ) );
-    addSHeader ( "refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia pedido" ) );
-    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base Imponible" ) );
-    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
-    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total pedido" ) );
-    addSHeader ( "descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion pedido proveedor" ) );
-    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo de almacen" ) );
-    addSHeader ( "contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Persona de contacto proveedor" ) );
-    addSHeader ( "telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Telefono proveedor" ) );
-    addSHeader ( "comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario pedido proveedor" ) );
-    addSHeader ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pedido" ) );
-    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id trabajador" ) );
-    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id proveedor" ) );
-    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id almacen" ) );
+    addSHeader ( "numpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de pedido" ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre de proveedor" ) );
+    addSHeader ( "fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha pedido proveedor" ) );
+    addSHeader ( "refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia pedido" ) );
+    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Base Imponible" ) );
+    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Impuestos" ) );
+    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Total pedido" ) );
+    addSHeader ( "descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion pedido proveedor" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo de almacen" ) );
+    addSHeader ( "contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Persona de contacto proveedor" ) );
+    addSHeader ( "telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Telefono proveedor" ) );
+    addSHeader ( "comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentario pedido proveedor" ) );
+    addSHeader ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id pedido" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id trabajador" ) );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id proveedor" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Id almacen" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

@@ -139,7 +139,7 @@ void GenAlbQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -154,9 +154,9 @@ void GenAlbQToolButton::generarFactura1()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Albaran ya existe" ),
-                                         tr ( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Albaran ya existe" ),
+                                         _( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new AlbaranClienteView ( fpv->empresaBase(), NULL );
@@ -222,7 +222,7 @@ void GenAlbQToolButton::generarFactura1()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -268,7 +268,7 @@ void GenAlbQToolButton::generarFactura2()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -283,9 +283,9 @@ void GenAlbQToolButton::generarFactura2()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura ya existe" ),
-                                         tr ( "Existe una albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura ya existe" ),
+                                         _( "Existe una albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new AlbaranClienteView ( fpv->empresaBase(), NULL );
@@ -351,7 +351,7 @@ void GenAlbQToolButton::generarFactura2()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

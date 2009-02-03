@@ -131,7 +131,7 @@ void GenPedQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
@@ -146,9 +146,9 @@ void GenPedQToolButton::generarFactura1()
             /// Informamos que ya hay un pedidocliente y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Pedido ya existe" ),
-                                         tr ( "Existe un pedidocliente a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Pedido ya existe" ),
+                                         _( "Existe un pedidocliente a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new PedidoClienteView ( fpv->empresaBase(), NULL );
@@ -214,7 +214,7 @@ void GenPedQToolButton::generarFactura1()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

@@ -92,18 +92,18 @@ void mypluginfactp::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Facturas Proveedores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Facturas proveedores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Facturas de Proveedores" ) );
-	planCuentas->setWhatsThis ( tr ( "Facturas de  Proveedores" ) );
+	planCuentas->setStatusTip ( _( "Facturas de proveedores" ) );
+	planCuentas->setWhatsThis ( _( "Facturas de proveedores" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nueva Factura de Proveedor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nueva factura de proveedor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.svg" ) ));
-	npago->setStatusTip ( tr ( "Nueva Factura de Proveedor" ) );
-	npago->setWhatsThis ( tr ( "Nueva Factura de Proveedor" ) );
+	npago->setStatusTip ( _( "Nueva factura de proveedor" ) );
+	npago->setWhatsThis ( _( "Nueva factura de proveedor" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -122,6 +122,11 @@ void mypluginfactp::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginfacturaprov", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     mypluginfactp *plug = new mypluginfactp();
     plug->inicializa ( bges );
     return 0;

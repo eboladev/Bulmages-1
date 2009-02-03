@@ -56,7 +56,7 @@ PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( tr ( "Presupuesto" ) );
+        setTitleName ( _( "Presupuesto" ) );
         setDBTableName ( "presupuesto" );
         setDBCampoId ( "idpresupuesto" );
         addDBCampo ( "idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Presupuesto", "ID presupuesto" ) );
@@ -101,7 +101,7 @@ PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "PresupuestoView_PresupuestoView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el presupuesto" ), this );
+        mensajeInfo ( _( "Error al crear el presupuesto" ), this );
     } // end try
     _depura ( "Fin de la inicializacion de PresupuestoView", 0 );
 }
@@ -222,7 +222,7 @@ void PresupuestoView::generarPedidoCliente()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refpresupuesto->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -237,9 +237,9 @@ void PresupuestoView::generarPedidoCliente()
             /// Informamos que ya hay un pedido y lo abrimos.
             /// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
             if ( QMessageBox::question ( this,
-                                         tr ( "Pedido existente" ),
-                                         tr ( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Pedido existente" ),
+                                         _( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
 
@@ -314,7 +314,7 @@ void PresupuestoView::generarPedidoCliente()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

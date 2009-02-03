@@ -75,9 +75,9 @@ void myplugincv::inicializa ( Bulmafact *bges )
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
 
-    QAction *planCuentas = new QAction ( tr ( "&CompraVenta" ), 0 );
-    planCuentas->setStatusTip ( tr ( "CompraVenta" ) );
-    planCuentas->setWhatsThis ( tr ( "CompraVenta" ) );
+    QAction *planCuentas = new QAction ( _( "&CompraVenta" ), 0 );
+    planCuentas->setStatusTip ( _( "CompraVenta" ) );
+    planCuentas->setWhatsThis ( _( "CompraVenta" ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
@@ -94,6 +94,11 @@ void myplugincv::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Punto de Entrada del plugin de CompraVenta\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincompraventa", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     myplugincv *plug = new myplugincv();
     plug->inicializa ( bges );
     return 0;

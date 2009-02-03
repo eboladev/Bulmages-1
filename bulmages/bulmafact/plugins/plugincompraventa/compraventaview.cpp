@@ -77,7 +77,7 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         subform3->setEmpresaBase ( comp );
         m_descuentos3->setEmpresaBase ( comp );
 
-        setTitleName ( tr ( "Compra Venta" ) );
+        setTitleName ( _( "Compra Venta" ) );
         setDBTableName ( "albaran" );
         setDBCampoId ( "idalbaran" );
         addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranCliente", "Id albaran" ) );
@@ -129,7 +129,7 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "CompraVentaView_CompraVentaView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el albaran a cliente" ), this );
+        mensajeInfo ( _( "Error al crear el albaran a cliente" ), this );
     } // end try
     _depura ( "END CompraVentaView::CompraVentaView", 0 );
 }
@@ -442,7 +442,7 @@ void CompraVentaView::generarFacturaProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( m_albaranp->DBvalue("idproveedor").isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un proveedor" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + m_albaranp->DBvalue("refalbaranp") + "' AND idproveedor = " + m_albaranp->DBvalue("idproveedor");
@@ -457,9 +457,9 @@ void CompraVentaView::generarFacturaProveedor()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura de proveedor existente" ),
-                                         tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea rehacerla ?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura de proveedor existente" ),
+                                         _( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea rehacerla ?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
 		SQLQuery = "DELETE FROM lfacturap WHERE idfacturap=" + cur->valor("idfacturap");
@@ -525,7 +525,7 @@ void CompraVentaView::generarFacturaProveedor()
 	bud->close();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -563,7 +563,7 @@ void CompraVentaView::generarFactura()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -578,9 +578,9 @@ void CompraVentaView::generarFactura()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         tr ( "Factura existente" ),
-                                         tr ( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                                         _( "Factura existente" ),
+                                         _( "Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
 
@@ -676,7 +676,7 @@ void CompraVentaView::generarFactura()
         mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
+        mensajeInfo ( _( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -702,11 +702,11 @@ void CompraVentaView::imprimir() {
     } catch (int e) {
 	if (e == 100) {
 		/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-		mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
+		mensajeInfo ( _( "Tiene que guardar el documento antes de poder procesarlo." ), this );
 		throw (-1);
 	} // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado en la impresion" ), this );
+        mensajeInfo ( _( "Error inesperado en la impresion" ), this );
     } // end try
 
 }

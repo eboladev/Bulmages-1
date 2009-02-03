@@ -135,7 +135,7 @@ void InformeQToolButton::click()
     BLProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
-    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setText ( _( "Generando Informe" ) );
 
     while ( !cur->eof() ) {
         QString gen = generarCliente ( cur->valor ( "idcliente" ) );
@@ -491,7 +491,7 @@ QString InformeArtQToolButton::generarArticulos()
     BLProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
-    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setText ( _( "Generando informe" ) );
 
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";

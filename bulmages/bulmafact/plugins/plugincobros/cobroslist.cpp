@@ -169,7 +169,7 @@ void CobrosList::crear()
 void CobrosList::imprimir()
 {
     _depura ( "CobrosList::imprimir", 0 );
-    mui_list->imprimirPDF ( tr ( "Cobros a clientes" ) );
+    mui_list->imprimirPDF ( _( "Cobros a clientes" ) );
     _depura ( "END CobrosList::imprimir", 0 );
 }
 
@@ -185,7 +185,7 @@ void CobrosList::borrar()
     _depura ( "CobrosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -199,7 +199,7 @@ void CobrosList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:CobrosList::borrar", 0 );
 }
@@ -226,7 +226,7 @@ void CobrosList::editar ( int )
             emit ( selected ( mdb_idcobro ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END CobrosList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -242,8 +242,8 @@ void CobrosList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar cobro" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar cobro" ) );
+    QAction *edit = popup->addAction ( _( "Editar cobro" ) );
+    QAction *del = popup->addAction ( _( "Borrar cobro" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -297,22 +297,22 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
         return;
     setDBTableName ( "cobro" );
     setDBCampoId ( "idcobro" );
-    addSHeader ( "idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cobro" ) );
-    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID cliente" ) );
-    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre" ) );
-    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F." ) );
-    addSHeader ( "telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de telefono" ) );
-    addSHeader ( "mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion de correo electronico" ) );
-    addSHeader ( "fechacobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de cobro" ) );
-    addSHeader ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de vencimiento" ) );
-    addSHeader ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Cantidad" ) );
-    addSHeader ( "nombanco", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Banco" ) );
-    addSHeader ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia del cobro" ) );
-    addSHeader ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Prevision de cobro" ) );
-    addSHeader ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios" ) );
-    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID trabajador" ) );
-    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del trabajador" ) );
-    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Apellidos del trabajador" ) );
+    addSHeader ( "idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID cobro" ) );
+    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID cliente" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "C.I.F." ) );
+    addSHeader ( "telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Numero de telefono" ) );
+    addSHeader ( "mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Direccion de correo electronico" ) );
+    addSHeader ( "fechacobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de cobro" ) );
+    addSHeader ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha de vencimiento" ) );
+    addSHeader ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Cantidad" ) );
+    addSHeader ( "nombanco", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Banco" ) );
+    addSHeader ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Referencia del cobro" ) );
+    addSHeader ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Prevision de cobro" ) );
+    addSHeader ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentarios" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ID trabajador" ) );
+    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del trabajador" ) );
+    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Apellidos del trabajador" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

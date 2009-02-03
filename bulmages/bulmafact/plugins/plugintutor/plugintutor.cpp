@@ -93,18 +93,18 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( tr ( "&Tutores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Tutores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
-	planCuentas->setStatusTip ( tr ( "Tutores" ) );
-	planCuentas->setWhatsThis ( tr ( "Tutores" ) );
+	planCuentas->setStatusTip ( _( "Tutores" ) );
+	planCuentas->setWhatsThis ( _( "Tutores" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( tr ( "&Nuevo Tutor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo tutor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
-	npago->setStatusTip ( tr ( "Nuevo Tutor" ) );
-	npago->setWhatsThis ( tr ( "Nuevo Tutor" ) );
+	npago->setStatusTip ( _( "Nuevo tutor" ) );
+	npago->setWhatsThis ( _( "Nuevo tutor" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -120,7 +120,12 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Tutores\n", 0 );
+    _depura ( "Punto de entrada del plugin de tutores\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugintutor", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
     return 0;

@@ -57,23 +57,23 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
         mui_refpago->setEmpresaBase ( comp );
         mui_idbanco->setEmpresaBase ( comp );
 
-        setTitleName ( tr ( "Pago" ) );
+        setTitleName ( _( "Pago" ) );
         setDBTableName ( "pago" );
         setDBCampoId ( "idpago" );
-        addDBCampo ( "idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Pago", "Id pago" ) );
-        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Pago", "Id proveedor" ) );
-        addDBCampo ( "previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Pago", "Previcion de pago" ) );
-        addDBCampo ( "fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Pago", "Fecha de pago" ) );
-        addDBCampo ( "refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Pago", "Referencia de pago" ) );
-        addDBCampo ( "cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Pago", "Cantidad" ) );
-        addDBCampo ( "comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Pago", "Comentario del pago" ) );
-        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Pago", "Banco" ) );
+        addDBCampo ( "idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id pago" ) );
+        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, _( "Id proveedor" ) );
+        addDBCampo ( "previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, _( "Previcion de pago" ) );
+        addDBCampo ( "fechapago", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de pago" ) );
+        addDBCampo ( "refpago", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia de pago" ) );
+        addDBCampo ( "cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Cantidad" ) );
+        addDBCampo ( "comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario del pago" ) );
+        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, _( "Banco" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el pago" ), this );
+        mensajeInfo ( _( "Error al crear el pago" ), this );
     } // end try
     _depura ( "Fin de la inicializacion de PagoView\n", 0 );
     _depura ( "END PagoView::PagoView", 0 );

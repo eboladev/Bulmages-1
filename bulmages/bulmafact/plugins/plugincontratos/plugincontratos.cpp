@@ -98,6 +98,11 @@ void myplugincont::inicializa ( Bulmafact *bges )
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincontratos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );

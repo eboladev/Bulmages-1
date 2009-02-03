@@ -148,7 +148,7 @@ QString CatalogoQToolButton::detalleArticulos()
 
     BLProgressBar barra;
     barra.show();
-    barra.setText ( tr ( "Generando Catalogo" ) );
+    barra.setText ( _( "Generando catalogo" ) );
 
 
     cursor2 *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );

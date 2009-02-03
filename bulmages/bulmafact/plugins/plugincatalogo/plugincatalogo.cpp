@@ -36,6 +36,10 @@
 void entryPoint ( Bulmafact * )
 {
     _depura ( "Estoy dentro del plugin de catalogo", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincatalogo", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 }
 
 
