@@ -34,15 +34,15 @@ AsientoListSubform::AsientoListSubform ( QWidget *parent, const char * )
     setDBTableName ( "asiento" );
     setFileConfig ( "AsientoListSubform" );
     setDBCampoId ( "idasiento" );
-    addSHeader ( "ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Orden" ) );
-    addSHeader ( "fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
-    addSHeader ( "numap", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Apuntes" ) );
-    addSHeader ( "numborr", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Borrador" ) );
-    addSHeader ( "comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios" ) );
-    addSHeader ( "totaldebe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Debe" ) );
-    addSHeader ( "totalhaber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Haber" ) );
-    addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id asiento" ) );
-    addSHeader ( "clase", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Clase" ) );
+    addSHeader ( "ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Orden" ) );
+    addSHeader ( "fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha" ) );
+    addSHeader ( "numap", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Apuntes" ) );
+    addSHeader ( "numborr", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Borrador" ) );
+    addSHeader ( "comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Comentarios" ) );
+    addSHeader ( "totaldebe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Debe" ) );
+    addSHeader ( "totalhaber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Haber" ) );
+    addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id asiento" ) );
+    addSHeader ( "clase", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Clase" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setOrdenPorQuery ( TRUE );
@@ -74,11 +74,11 @@ void AsientoListSubform::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Mostrar asiento" ) );
+    menu->addAction ( _( "Mostrar asiento" ) );
     menu->addSeparator();
-    menu->addAction ( tr ( "Mostrar extracto (dia)" ) );
-    menu->addAction ( tr ( "Mostrar extracto (mes)" ) );
-    menu->addAction ( tr ( "Mostrar extracto (ano)" ) );
+    menu->addAction ( _( "Mostrar extracto (dia)" ) );
+    menu->addAction ( _( "Mostrar extracto (mes)" ) );
+    menu->addAction ( _( "Mostrar extracto (ano)" ) );
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
 }
 
@@ -91,13 +91,13 @@ void AsientoListSubform::s_trataMenu ( QAction *action )
 {
     _depura ( "ListLinAsiento1View::s_trataMenu", 0 );
     if ( !action ) return;
-    if ( action->text() == tr ( "Mostrar asiento" ) )
+    if ( action->text() == _( "Mostrar asiento" ) )
         boton_asiento();
-    if ( action->text() == tr ( "Mostrar extracto (dia)" ) )
+    if ( action->text() == _( "Mostrar extracto (dia)" ) )
         boton_extracto1 ( 0 );
-    if ( action->text() == tr ( "Mostrar extracto (mes)" ) )
+    if ( action->text() == _( "Mostrar extracto (mes)" ) )
         boton_extracto1 ( 1 );
-    if ( action->text() == tr ( "Mostrar extracto (ano)" ) )
+    if ( action->text() == _( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
     _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );
@@ -129,15 +129,15 @@ void AsientoListSubform::contextMenuEvent ( QContextMenuEvent * )
     QAction *mostextractoano = popup->addAction ( "Mostrar extracto (ano)" );
 
     if ( m_delete ) {
-        del = popup->addAction ( tr ( "Borrar registro" ) );
+        del = popup->addAction ( _( "Borrar registro" ) );
     } // end if
     popup->addSeparator();
-    QAction *ajustc = popup->addAction ( tr ( "Ajustar columa" ) );
-    QAction *ajustac = popup->addAction ( tr ( "Ajustar altura" ) );
-    QAction *ajust = popup->addAction ( tr ( "Ajustar columnas" ) );
-    QAction *ajusta = popup->addAction ( tr ( "Ajustar alturas" ) );
+    QAction *ajustc = popup->addAction ( _( "Ajustar columa" ) );
+    QAction *ajustac = popup->addAction ( _( "Ajustar altura" ) );
+    QAction *ajust = popup->addAction ( _( "Ajustar columnas" ) );
+    QAction *ajusta = popup->addAction ( _( "Ajustar alturas" ) );
     popup->addSeparator();
-    QAction *verconfig = popup->addAction ( tr ( "Ver configurador de subformulario" ) );
+    QAction *verconfig = popup->addAction ( _( "Ver configurador de subformulario" ) );
 
     QAction *opcion = popup->exec ( QCursor::pos() );
 

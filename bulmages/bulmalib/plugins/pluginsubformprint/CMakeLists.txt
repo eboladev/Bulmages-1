@@ -19,7 +19,7 @@
 #                                                                       #
 
 ###########################################
-# Plugin for bulmalib					  #
+# Plugin for bulmalib                     #
 ###########################################
 #pluginsubformprint
 

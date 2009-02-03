@@ -74,7 +74,7 @@ void EmpresaTPV::createMainWindows ( Splash *splash )
     _depura ( "EmpresaTPV::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
-    splash->mensaje ( QApplication::translate ( "EmpresaTPV", "Inicializando listado de articulos" ) );
+    splash->mensaje ( _( "Inicializando listado de articulos" ) );
     splash->setBarraProgreso ( 30 );
     m_progressbar->setValue ( 30 );
 
@@ -97,7 +97,7 @@ void EmpresaTPV::createMainWindows ( Splash *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmaTPV->statusBar() ->showMessage ( nameDB(), 2000 );
-    m_bulmaTPV->setWindowTitle ( QApplication::translate ( "EmpresaTPV", "Terminal Punto de Venta GPL" ) + " :: " + nameDB() );
+    m_bulmaTPV->setWindowTitle ( _( "Terminal Punto de Venta GPL" ) + " :: " + nameDB() );
 
     _depura ( "END EmpresaTPV::createMainWindows", 0 );
 }

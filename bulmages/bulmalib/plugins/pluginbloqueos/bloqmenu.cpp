@@ -67,7 +67,7 @@ BloqMenu::~BloqMenu()
 void BloqMenu::pintaMenu ( QMenu *menu )
 {
     _depura ( "BloqMenu::pintaMenu", 0 );
-    QAction *ajust = menu->addAction ( tr ( "Desbloquear Ficha" ) );
+    QAction *ajust = menu->addAction ( _( "Desbloquear ficha" ) );
     ajust->setObjectName ( "desbloquearficha" );
 
     _depura ( "END BloqMenu::pintaMenu", 0 );

@@ -75,8 +75,8 @@ void RegIVAQToolButton::setBoton()
     _depura ( "RegIVAQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( tr ( "Registro de IVA" ) );
-    setToolTip ( tr ( "Registro de IVA" ) );
+    setStatusTip ( _( "Registro de IVA" ) );
+    setToolTip ( _( "Registro de IVA" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ) );
     setIconSize ( QSize ( 32, 32 ) );

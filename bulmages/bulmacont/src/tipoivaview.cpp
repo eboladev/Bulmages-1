@@ -36,14 +36,14 @@ tipoivaview::tipoivaview ( Empresa *emp, QWidget *parent )
     _depura ( "tipoivaview::tipoivaview", 0 );
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    setTitleName ( tr ( "Tipo IVA" ) );
+    setTitleName ( _( "Tipo IVA" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "tipoiva" );
     setDBCampoId ( "idtipoiva" );
-    addDBCampo ( "idtipoiva", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID tipo iva" ) );
-    addDBCampo ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Nombre Tipo" ) );
-    addDBCampo ( "porcentajetipoiva", DBCampo::DBnumeric, DBCampo::DBNothing, tr ( "Porcentaje" ) );
-    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull, tr ( "Cuenta" ) );
+    addDBCampo ( "idtipoiva", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID tipo iva" ) );
+    addDBCampo ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre Tipo" ) );
+    addDBCampo ( "porcentajetipoiva", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Porcentaje" ) );
+    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull, _( "Cuenta" ) );
 
     mui_idcuenta->setEmpresaBase ( emp );
     m_curtipoiva = NULL;
@@ -106,8 +106,8 @@ void tipoivaview::mostrarplantilla ( int pos )
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar tipo de IVA" ),
-                                    tr ( "Desea guardar los cambios?" ),
+                                    _( "Guardar tipo de IVA" ),
+                                    _( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
@@ -149,8 +149,8 @@ void tipoivaview::on_mui_crear_clicked()
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() && m_curtipoiva->numregistros() != 0 ) {
             if ( QMessageBox::warning ( this,
-                                        tr ( "Guardar tipo de IVA" ),
-                                        tr ( "Desea guardar los cambios?" ),
+                                        _( "Guardar tipo de IVA" ),
+                                        _( "Desea guardar los cambios?" ),
                                         QMessageBox::Ok,
                                         QMessageBox::Cancel ) == QMessageBox::Ok )
                 on_mui_guardar_clicked();

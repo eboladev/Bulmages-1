@@ -59,7 +59,7 @@ BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
     _depura ( "BalanceView::BalanceView", 0 );
     setupUi ( this );
 
-    setTitleName ( tr ( "Balance" ) );
+    setTitleName ( _( "Balance" ) );
     /// EStablezco cual es la tabla en la que basarse para el sistema de permisos.
     setDBTableName ( "asiento" );
 
@@ -256,7 +256,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// Por fin, presentamos los valores.
         /// Aunque antes, prepararemos el Widget con la cabecera a mostrar.
         QStringList headers, datos;
-        headers << tr ( "Codigo" ) << tr ( "Denominacion" ) << tr ( "Saldo anterior" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "Saldo" ) << tr ( "Debe " ) + ffinal.right ( 4 ) << tr ( "Haber " ) + ffinal.right ( 4 ) << tr ( "Saldo " ) + ffinal.right ( 4 );
+        headers << _( "Codigo" ) << _( "Denominacion" ) << _( "Saldo anterior" ) << _( "Debe" ) << _( "Haber" ) << _( "Saldo" ) << _( "Debe " ) + ffinal.right ( 4 ) << _( "Haber " ) + ffinal.right ( 4 ) << _( "Saldo " ) + ffinal.right ( 4 );
         mui_list->setHeaderLabels ( headers );
         mui_list->clear();
 

@@ -41,24 +41,24 @@ ccosteview::ccosteview ( Empresa  *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-    setTitleName ( tr ( "Centro de Coste" ) );
+    setTitleName ( _( "Centro de Coste" ) );
     /// Etablecemos cual va a ser la tabla para obtener los permisos
     setDBTableName ( "c_coste" );
     setDBCampoId ( "idc_coste" );
-    addDBCampo ( "idc_coste", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "Id. Centro Coste" ) );
-    addDBCampo ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nombre" ) );
-    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Descripcion" ) );
+    addDBCampo ( "idc_coste", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id. Centro Coste" ) );
+    addDBCampo ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nombre" ) );
+    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Descripcion" ) );
 
     /// Inicializamos el subformulario de centros distribuidos
     mui_cdistribuidos->setEmpresaBase ( emp );
     mui_cdistribuidos->setDBTableName ( "c_costedist" );
     mui_cdistribuidos->setFileConfig ( "ccostedist" );
     mui_cdistribuidos->setDBCampoId ( "idc_costedist" );
-    mui_cdistribuidos->addSHeader ( "nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Nombre Destinatario" ) );
-    mui_cdistribuidos->addSHeader ( "porcentc_costedist", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Porcentaje" ) );
-    mui_cdistribuidos->addSHeader ( "idc_costedist", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "Id" ) );
-    mui_cdistribuidos->addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "Destinatario" ) );
-    mui_cdistribuidos->addSHeader ( "iddestc_coste", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "Origen" ) );
+    mui_cdistribuidos->addSHeader ( "nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Nombre Destinatario" ) );
+    mui_cdistribuidos->addSHeader ( "porcentc_costedist", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Porcentaje" ) );
+    mui_cdistribuidos->addSHeader ( "idc_costedist", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, _( "Id" ) );
+    mui_cdistribuidos->addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, _( "Destinatario" ) );
+    mui_cdistribuidos->addSHeader ( "iddestc_coste", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, _( "Origen" ) );
     mui_cdistribuidos->setinsercion ( TRUE );
     mui_cdistribuidos->setOrdenEnabled ( FALSE );
     idc_coste = 0;
@@ -73,7 +73,7 @@ ccosteview::ccosteview ( Empresa  *emp, QWidget *parent )
 
     mui_list->setColumnCount ( 3 );
     QStringList headers;
-    headers << tr ( "Nombre" ) << tr ( "Descripcion" ) << tr ( "Id centro de coste" );
+    headers << _( "Nombre" ) << _( "Descripcion" ) << _( "Id centro de coste" );
     mui_list->setColumnWidth ( 0, 200 );
     mui_list->setHeaderLabels ( headers );
     mui_list->setColumnHidden ( COL_IDC_COSTE, TRUE );
@@ -139,7 +139,7 @@ void ccosteview::repintar()
             it->setText ( COL_NOM_COSTE, cursoraux2->valor ( "nombre" ) );
             mui_list->expandItem ( it );
         } else {
-            _depura ( tr ( "Error en la carga de centros de coste" ), 2 );
+            _depura ( _( "Error en la carga de centros de coste" ), 2 );
         } // end if
         cursoraux2->siguienteregistro();
     } // end while
@@ -163,9 +163,9 @@ void ccosteview::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
     int previdccoste = it->text ( COL_IDC_COSTE ).toInt();
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar centro de coste" ),
-                                    tr ( "Desea guardar los cambios?" ),
-                                    tr ( "&Guardar" ), tr ( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
+                                    _( "Guardar centro de coste" ),
+                                    _( "Desea guardar los cambios?" ),
+                                    _( "&Guardar" ), _( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
             on_mui_guardar_clicked();
         } // end if
     } // end if
@@ -223,8 +223,8 @@ void ccosteview::on_mui_crear_clicked()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar centro de coste" ),
-                                    tr ( "Desea guardar los cambios?" ),
+                                    _( "Guardar centro de coste" ),
+                                    _( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok ) {
             on_mui_guardar_clicked();
@@ -262,9 +262,9 @@ void ccosteview::on_mui_borrar_clicked()
     _depura ( "ccosteview::on_mui_borrar_clicked", 0 );
     try {
         switch ( QMessageBox::warning ( this,
-                                        tr ( "Borrar centro de coste" ),
-                                        tr ( "Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos." ),
-                                        tr ( "&Borrar" ), tr ( "&Cancelar" ), 0, 0, 1 ) ) {
+                                        _( "Borrar centro de coste" ),
+                                        _( "Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos." ),
+                                        _( "&Borrar" ), _( "&Cancelar" ), 0, 0, 1 ) ) {
         case 0: /// Retry clicked or Enter pressed.
             QString query;
             query.sprintf ( "DELETE FROM c_coste WHERE idc_coste = %d", idc_coste );
@@ -275,7 +275,7 @@ void ccosteview::on_mui_borrar_clicked()
             repintar();
         } // end switch
     } catch ( ... ) {
-        mensajeInfo ( tr ( "No se pudo borrar el Centro de Coste" ) );
+        mensajeInfo ( _( "No se pudo borrar el Centro de Coste" ) );
         empresaBase() ->rollback();
         return;
     } // end try

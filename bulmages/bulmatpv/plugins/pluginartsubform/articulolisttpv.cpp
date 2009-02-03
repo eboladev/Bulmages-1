@@ -157,8 +157,8 @@ void ArticuloList1::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar articulo" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar articulo" ) );
+    QAction *edit = popup->addAction ( _( "Editar articulo" ) );
+    QAction *del = popup->addAction ( _( "Borrar articulo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -238,15 +238,15 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
     if ( res != 0 )
         return;
 
-    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID articulo" ) );
-    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo completo del articulo" ) );
-    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del articulo" ) );
-    addSHeader ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion abreviada del articulo" ) );
-    addSHeader ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Observaciones sobre el articulo" ) );
-    addSHeader ( "desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion del tipo de articulo" ) );
-    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion tipo de I.V.A." ) );
-    addSHeader ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "P.V.P. articulo" ) );
-    addSHeader ( "stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Disponible en stock" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo completo del articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del articulo" ) );
+    addSHeader ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion abreviada del articulo" ) );
+    addSHeader ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Observaciones sobre el articulo" ) );
+    addSHeader ( "desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion del tipo de articulo" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion tipo de I.V.A." ) );
+    addSHeader ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "P.V.P. articulo" ) );
+    addSHeader ( "stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Disponible en stock" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

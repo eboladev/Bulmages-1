@@ -81,6 +81,10 @@ void entryPoint ( QMainWindow *bges )
 {
     _depura ( "Entrada del plugin Docket", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugininformes", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     g_bges = bges;
 
     MyPluginInformes *mcont = new MyPluginInformes;

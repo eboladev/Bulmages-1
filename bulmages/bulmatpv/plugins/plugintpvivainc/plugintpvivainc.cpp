@@ -31,7 +31,7 @@ typedef QMap<QString, Fixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
 {
-    item->addDBCampo ( "pvpivainclalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Iva Inc" ) );
+    item->addDBCampo ( "pvpivainclalbaran", DBCampo::DBint, DBCampo::DBNothing, _( "IVA inc." ) );
     return 0;
 }
 

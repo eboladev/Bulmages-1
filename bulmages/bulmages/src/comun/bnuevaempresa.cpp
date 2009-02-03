@@ -62,8 +62,8 @@ void BNuevaEmpresa::accept()
 
     /// Comprobamos que se han introducido todos los datos para avisar en caso contrario.
     if ( ( nombredb == "" ) || ( nombreEmp == "" ) || ( ejemp == "" ) ) {
-        QMessageBox::warning ( this, tr ( "Datos incompletos" ),
-                               tr ( "No puede dejar campos en blanco para crear una nueva empresa.\n" ), tr ( "&Aceptar" ), tr ( "&Cancelar" ), 0, 0 );
+        QMessageBox::warning ( this, _( "Datos incompletos" ),
+                               _( "No puede dejar campos en blanco para crear una nueva empresa.\n" ), _( "&Aceptar" ), _( "&Cancelar" ), 0, 0 );
         return;
     } // end if
 

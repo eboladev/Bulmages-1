@@ -13,8 +13,8 @@ Admin::~Admin()
 void Admin::on_mui_z_clicked()
 {
     if ( QMessageBox::warning ( this,
-                                tr ( "Salir" ),
-                                tr ( "Realmente desea Realizar la Z" ),
+                                _( "Salir" ),
+                                _( "Realmente desea Realizar la Z?" ),
                                 QMessageBox::Ok,
                                 QMessageBox::Cancel ) == QMessageBox::Ok ) {
   	  ( ( EmpresaTPV * ) empresaBase() ) ->z();
@@ -30,8 +30,8 @@ void Admin::on_mui_x_clicked()
 void Admin::on_mui_salir_clicked()
 {
     if ( QMessageBox::warning ( this,
-                                tr ( "Salir" ),
-                                tr ( "Realmente desea abandonar el programa ?" ),
+                                _( "Salir" ),
+                                _( "Realmente desea abandonar el programa?" ),
                                 QMessageBox::Ok,
                                 QMessageBox::Cancel ) == QMessageBox::Ok ) {
         g_main->close();

@@ -209,21 +209,21 @@ int Empresa::createMainWindows ( Splash *splash )
 
         /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
         /// pb = 0%
-        splash->mensaje ( QApplication::translate ( "Empresa", "Inicializando Extracto" ) );
+        splash->mensaje ( _( "Inicializando extracto" ) );
         splash->setBarraProgreso ( 7 );
         m_progressbar->setValue ( 0 );
         extracto = new extractoview1 ( this, 0 );
         m_pWorkspace->addWindow ( extracto );
 
         /// pb = 20%
-        splash->mensaje ( QApplication::translate ( "Empresa", "Inicializando Diario" ) );
+        splash->mensaje ( _( "Inicializando diario" ) );
         splash->setBarraProgreso ( 20 );
         m_progressbar->setValue ( 20 );
         diario = new DiarioView ( this, 0 );
         m_pWorkspace->addWindow ( diario );
         /*
                 /// pb = 35%
-                splash->mensaje ( QApplication::translate ( "Empresa", "Inicializando Balance" ) );
+                splash->mensaje ( _( "Inicializando balance" ) );
                 splash->setBarraProgreso ( 35 );
                 m_progressbar->setValue ( 35 );
                 balance = new BalanceView ( this, 0 );
@@ -231,7 +231,7 @@ int Empresa::createMainWindows ( Splash *splash )
         */
         /// pb = 50%
         /*
-                    splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
+                    splash->mensaje( _( "Inicializando balance jerarquico"));
                     splash->setBarraProgreso(50);
                     m_progressbar->setValue(50);
                     balance1 = new BalanceTreeView(this, 0);
@@ -239,14 +239,14 @@ int Empresa::createMainWindows ( Splash *splash )
         */
 
         /// pb = 60%
-        splash->mensaje ( QApplication::translate ( "company", "Inicializando Asientos" ) );
+        splash->mensaje ( _( "Inicializando asientos" ) );
         splash->setBarraProgreso ( 60 );
         m_progressbar->setValue ( 60 );
         introapunts2 = new Asiento1View ( this, 0 );
         m_pWorkspace->addWindow ( introapunts2 );
 
         /// pb = 75%
-        splash->mensaje ( QApplication::translate ( "company", "Inicializando Asientos" ) );
+        splash->mensaje ( _( "Inicializando asientos" ) );
         splash->setBarraProgreso ( 75 );
         m_progressbar->setValue ( 75 );
         m_listasientos = new AsientosView ( this );
@@ -254,7 +254,7 @@ int Empresa::createMainWindows ( Splash *splash )
         m_pWorkspace->addWindow ( m_listasientos );
 
         /// pb = 90%
-        splash->mensaje ( QApplication::translate ( "company", "Inicializando Cuentas" ) );
+        splash->mensaje ( _( "Inicializando cuentas" ) );
         splash->setBarraProgreso ( 90 );
         m_progressbar->setValue ( 90 );
         m_listcuentas = new listcuentasview1 ( this, 0 );
@@ -262,7 +262,7 @@ int Empresa::createMainWindows ( Splash *splash )
         m_pWorkspace->addWindow ( m_listcuentas );
 
         /// pb = 100%
-        splash->mensaje ( QApplication::translate ( "company", "Terminado" ) );
+        splash->mensaje ( _( "Terminado" ) );
         splash->setBarraProgreso ( 100 );
         m_progressbar->setValue ( 100 );
 
@@ -778,7 +778,7 @@ void Empresa::cierraempresa()
 
     bool ok;
     QString text = QInputDialog::getText ( 0,
-                                           QApplication::translate ( "empresa", "Fecha Inicial" ), QApplication::translate ( "empresa", "Fecha Inicial Ejercicio:" ), QLineEdit::Normal,
+                                           _( "Fecha inicial" ), _( "Fecha inicial ejercicio:" ), QLineEdit::Normal,
                                            finicial, &ok );
     if ( ok && !text.isEmpty() ) {
         finicial = text;
@@ -787,7 +787,7 @@ void Empresa::cierraempresa()
     } // end if
 
     QString text1 = QInputDialog::getText ( 0,
-                                            QApplication::translate ( "empresa", "Fecha Final" ), QApplication::translate ( "empresa", "Fecha Final Ejercicio:" ), QLineEdit::Normal,
+                                            _( "Fecha final" ), _( "Fecha final ejercicio:" ), QLineEdit::Normal,
                                             hoy, &ok );
     if ( ok && !text1.isEmpty() ) {
         hoy = text1;
@@ -812,7 +812,7 @@ void Empresa::abreempresa()
 
     bool ok;
     QString text1 = QInputDialog::getText ( 0,
-                                            QApplication::translate ( "empresa", "Fecha" ), QApplication::translate ( "empresa", "Fecha:" ), QLineEdit::Normal,
+                                            _( "Fecha" ), _( "Fecha:" ), QLineEdit::Normal,
                                             hoy, &ok );
     if ( ok && !text1.isEmpty() ) {
         hoy = text1;
@@ -837,7 +837,7 @@ void Empresa::regularizaempresa()
 
     bool ok;
     QString text = QInputDialog::getText ( 0,
-                                           QApplication::translate ( "empresa", "Fecha Inicial" ), QApplication::translate ( "empresa", "Fecha Inicial Regularizacion:" ), QLineEdit::Normal,
+                                           _( "Fecha inicial" ), _( "Fecha inicial regularizacion:" ), QLineEdit::Normal,
                                            finicial, &ok );
     if ( ok && !text.isEmpty() ) {
         finicial = text;
@@ -846,7 +846,7 @@ void Empresa::regularizaempresa()
     } // end if
 
     QString text1 = QInputDialog::getText ( 0,
-                                            QApplication::translate ( "empresa", "Fecha Final" ), QApplication::translate ( "empresa", "Fecha Final Regularizacion:" ), QLineEdit::Normal,
+                                            _( "Fecha final" ), _( "Fecha final regularizacion:" ), QLineEdit::Normal,
                                             hoy, &ok );
     if ( ok && !text1.isEmpty() ) {
         hoy = text1;

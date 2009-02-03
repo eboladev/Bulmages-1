@@ -328,9 +328,9 @@ void Asiento1View::boton_cargarasiento()
     } else {
         /// Si el asiento no existe se da la posibilidad de crear uno nuevo.
         if ( QMessageBox::question ( this,
-                                     tr ( "Asiento inexistente." ),
-                                     tr ( "Desea crear un nuevo asiento en esa posicion?" ),
-                                     tr ( "&Si" ), tr ( "&No" ), 0, 0, 1 ) == 0 ) {
+                                     _( "Asiento inexistente." ),
+                                     _( "Desea crear un nuevo asiento en esa posicion?" ),
+                                     _( "&Si" ), _( "&No" ), 0, 0, 1 ) == 0 ) {
             iniciar_asiento_nuevo ( mui_ordenasiento->text() );
         } // end if
         pintar();

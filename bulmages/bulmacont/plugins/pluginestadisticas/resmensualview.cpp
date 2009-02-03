@@ -2,7 +2,7 @@
                           resmensualview.cpp  -  description
                              -------------------
     begin                : dom jul 20 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -117,7 +117,7 @@ void resmensualview::presentar()
                     milistas[i].push_back ( saldoant + atof ( curs->valor ( "tdebe" ).ascii() ) - atof ( curs->valor ( "thaber" ).ascii() ) );
                     saldoant = saldoant + atof ( curs->valor ( "tdebe" ).ascii() ) - atof ( curs->valor ( "thaber" ).ascii() );
                     movant = movant +  atof ( curs->valor ( "tdebe" ).ascii() ) + atof ( curs->valor ( "thaber" ).ascii() );
-                    fprintf ( stderr, "metido en el gráfico%s\n", curs->valor ( "tdebe" ).ascii() );
+                    fprintf ( stderr, "metido en el grafico%s\n", curs->valor ( "tdebe" ).ascii() );
                 } else {
                     milistad[i].push_back ( movant );
                     //            milistad[i].push_back(0);
@@ -132,11 +132,11 @@ void resmensualview::presentar()
 #ifdef ESTADISTICAS
     line->clear();
     line->showGrid ( 12 );
-    line->setTitle ( tr ( "Progresion de saldos" ) );
+    line->setTitle ( _( "Progresion de saldos" ) );
     line->setSamples ( 12 );
     line1->clear();
     line1->showGrid ( 12 );
-    line1->setTitle ( tr ( "Movimientos menusales" ) );
+    line1->setTitle ( _( "Movimientos menusales" ) );
     line1->setSamples ( 12 );
     for ( int i = 0; i < 12;i++ ) {
         line->addValues ( milistas[i], mes[i] );
@@ -325,7 +325,8 @@ void resmensualview::presentarpie()
 
 
 #ifdef ESTADISTICAS
-// Si se compila con las librerias de estadisticas se supone que no se va a llamar a esta función, por tanto no hace nada.
+// Si se compila con las librerias de estadisticas se supone que no se va a llamar a esta funcion,
+// por tanto no hace nada.
 void resmensualview::generargrafico ( float *, char** )
 {}// end resmensualview
 #endif
@@ -415,7 +416,7 @@ void resmensualview::generargrafico ( float *h1, char**t2 )
 
 
 #ifdef DISLIN
-// Si se compila con las librerias de DISLIN se ejecutará esta versión.
+// Si se compila con las librerias de DISLIN se ejecutara esta version.
 void resmensualview::generargrafico ( float *h1, char**t2 )
 {
     char cbuf[80];

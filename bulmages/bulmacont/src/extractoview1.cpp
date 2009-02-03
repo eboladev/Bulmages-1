@@ -52,7 +52,7 @@ extractoview1::extractoview1 ( Empresa *emp, QWidget *parent, int ) : FichaBc ( 
     _depura ( "extractoview1::extractoview1", 0 );
     setupUi ( this );
 
-    setTitleName ( tr ( "Extracto de Cuentas" ) );
+    setTitleName ( _( "Extracto de Cuentas" ) );
     setDBTableName ( "apunte" );
 
     mui_list->setEmpresaBase ( emp );
@@ -241,9 +241,9 @@ void extractoview1::boton_guardar()
 {
     _depura ( "extractoview1::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
-                 tr ( "Guardar libro diario" ),
+                 _( "Guardar libro diario" ),
                  confpr->valor ( CONF_DIR_USER ),
-                 tr ( "Diarios (*.txt)" ) );
+                 _( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {
         libromayorprint libromayor ( empresaBase() );
@@ -469,7 +469,7 @@ void extractoview1::on_mui_casacion_clicked()
         BLProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
-        barra.setText ( tr ( "Cargando Extracto de Cuentas" ) );
+        barra.setText ( _( "Cargando Extracto de Cuentas" ) );
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->valor ( "haber" ) + " AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
             cursor2 *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );
@@ -501,9 +501,9 @@ void extractoview1::on_mui_guardarpunteo_clicked()
 {
     _depura ( "extractoview1::on_mui_guardarpunteo_clicked", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
-                 tr ( "Guardar punteo" ),
+                 _( "Guardar punteo" ),
                  confpr->valor ( CONF_DIR_USER ),
-                 tr ( "Punteos (*.pto)" ) );
+                 _( "Punteos (*.pto)" ) );
 
     if ( !fn.isEmpty() ) {
         // Si el archivo no tiene extension le ponemos extension .pto
@@ -539,8 +539,8 @@ void extractoview1::on_mui_borrapunteo_clicked()
     _depura ( "extractoview1::on_mui_borrapunteo_clicked", 0 );
     try {
         int valor = QMessageBox::warning ( 0,
-                                           tr ( "Borrar punteo" ),
-                                           tr ( "Se dispone a borrar el punteo. Este cambio \
+                                           _( "Borrar punteo" ),
+                                           _( "Se dispone a borrar el punteo. Este cambio \
                                                 es irrecuperable si no ha guardado su punteo. \
                                                 Desea continuar?" ),
                                            QMessageBox::Yes, QMessageBox::No );
@@ -551,7 +551,7 @@ void extractoview1::on_mui_borrapunteo_clicked()
             presentar();
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Se ha producido un error" ) );
+        mensajeInfo ( _( "Se ha producido un error" ) );
     } // end try
     _depura ( "END extractoview1::on_mui_borrapunteo_clicked", 0 );
 }
@@ -567,9 +567,9 @@ void extractoview1::on_mui_cargarpunteos_clicked()
     _depura ( "extractoview1::on_mui_cargarpunteos_clicked", 0 );
     try {
         QString fn = QFileDialog::getOpenFileName ( this,
-                     tr ( "Cargar punteo" ),
+                     _( "Cargar punteo" ),
                      confpr->valor ( CONF_DIR_USER ),
-                     tr ( "Punteo (*.pto);;Todos los archivos (*)" ) );
+                     _( "Punteo (*.pto);;Todos los archivos (*)" ) );
 
         if ( !fn.isEmpty() ) {
             QFile file ( fn );

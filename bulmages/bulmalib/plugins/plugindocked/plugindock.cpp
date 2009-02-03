@@ -117,6 +117,10 @@ void entryPoint ( BlMainWindow *bges )
 {
     _depura ( "Entrada del plugin Docket", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugindocked", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     g_bges = bges;
 
     myplugincont *mcont = new myplugincont;

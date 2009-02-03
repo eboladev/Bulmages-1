@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
@@ -67,7 +66,7 @@ EQToolButton::~EQToolButton()
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
     _depura ( "EQToolButton::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( tr ( "Informes Personales ODS" ) );
+    QMenu *ajust = menu->addMenu ( _( "Informes personales ODS" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );

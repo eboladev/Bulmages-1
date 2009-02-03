@@ -50,14 +50,14 @@ ProyectoView::ProyectoView ( Empresa *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "ProyectoView_ProyectoView", this ) ) return;
 
-        setTitleName ( tr ( "Proyecto" ) );
+        setTitleName ( _( "Proyecto" ) );
         setDBTableName ( "presupuestoc" );
         setDBCampoId ( "idpresupuestoc" );
-        addDBCampo ( "idpresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID almacen" ) );
-        addDBCampo ( "idc_coste", DBCampo::DBint, DBCampo::DBNotNull, tr ( "Id CCoste" ) );
-        addDBCampo ( "nompresupuestoc", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nom Presupuesto" ) );
-        addDBCampo ( "fechapresupuestoc", DBCampo::DBdate, DBCampo::DBNothing, tr ( "fecha" ) );
-        addDBCampo ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Comentarios" ) );
+        addDBCampo ( "idpresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID almacen" ) );
+        addDBCampo ( "idc_coste", DBCampo::DBint, DBCampo::DBNotNull, _( "Id CCoste" ) );
+        addDBCampo ( "nompresupuestoc", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nom Presupuesto" ) );
+        addDBCampo ( "fechapresupuestoc", DBCampo::DBdate, DBCampo::DBNothing, _( "fecha" ) );
+        addDBCampo ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
 
         /// Inicializamos componentes.
         mui_idc_coste->setEmpresaBase ( comp );
@@ -68,17 +68,17 @@ ProyectoView::ProyectoView ( Empresa *comp, QWidget *parent )
         /// Inicializamos el listado.
         mui_ingresos->setDBTableName ( "lingpresupuestoc" );
         mui_ingresos->setDBCampoId ( "idlingpresupuestoc" );
-        mui_ingresos->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, tr ( "Id. Cuenta" ) );
-        mui_ingresos->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo" ) );
-        mui_ingresos->addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Cuenta" ) );
-        mui_ingresos->addSHeader ( "cantlingpresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
-        mui_ingresos->addSHeader ( "precioundlingpresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Precio Und" ) );
-        mui_ingresos->addSHeader ( "ejerciciolingpresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Ejercicio" ) );
-        mui_ingresos->addSHeader ( "comentlingpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "Comentarios" ) );
-        mui_ingresos->addSHeader ( "desclingpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "Descripcion" ) );
-        mui_ingresos->addSHeader ( "idlingpresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView , tr ( "Id linea de Ingreso Presupuesto" ) );
-        mui_ingresos->addSHeader ( "idpresupuestoc", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id. Proyecto" ) );
-        mui_ingresos->addSHeader ( "ordenlingpresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, tr ( "Orden" ) );
+        mui_ingresos->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "Id. Cuenta" ) );
+        mui_ingresos->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Codigo" ) );
+        mui_ingresos->addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Cuenta" ) );
+        mui_ingresos->addSHeader ( "cantlingpresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad" ) );
+        mui_ingresos->addSHeader ( "precioundlingpresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Precio Und" ) );
+        mui_ingresos->addSHeader ( "ejerciciolingpresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "Ejercicio" ) );
+        mui_ingresos->addSHeader ( "comentlingpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "Comentarios" ) );
+        mui_ingresos->addSHeader ( "desclingpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "Descripcion" ) );
+        mui_ingresos->addSHeader ( "idlingpresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView , _( "Id linea de Ingreso Presupuesto" ) );
+        mui_ingresos->addSHeader ( "idpresupuestoc", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Id. Proyecto" ) );
+        mui_ingresos->addSHeader ( "ordenlingpresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "Orden" ) );
         mui_ingresos->setinsercion ( TRUE );
         mui_ingresos->setOrdenEnabled ( TRUE );
         mui_ingresos->setOrdenPorQuery ( FALSE );
@@ -87,17 +87,17 @@ ProyectoView::ProyectoView ( Empresa *comp, QWidget *parent )
         /// Inicializamos el listado.
         mui_gastos->setDBTableName ( "lgaspresupuestoc" );
         mui_gastos->setDBCampoId ( "idlgaspresupuestoc" );
-        mui_gastos->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, tr ( "Id. Cuenta" ) );
-        mui_gastos->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo" ) );
-        mui_gastos->addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Cuenta" ) );
-        mui_gastos->addSHeader ( "cantlgaspresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
-        mui_gastos->addSHeader ( "precioundlgaspresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Precio Und" ) );
-        mui_gastos->addSHeader ( "ejerciciolgaspresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Ejercicio" ) );
-        mui_gastos->addSHeader ( "comentlgaspresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "Comentarios" ) );
-        mui_gastos->addSHeader ( "desclgaspresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "Descripcion" ) );
-        mui_gastos->addSHeader ( "idlgaspresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView , tr ( "Id linea de Ingreso Presupuesto" ) );
-        mui_gastos->addSHeader ( "idpresupuestoc", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id. Proyecto" ) );
-        mui_gastos->addSHeader ( "ordenlgaspresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, tr ( "Orden" ) );
+        mui_gastos->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "Id. Cuenta" ) );
+        mui_gastos->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Codigo" ) );
+        mui_gastos->addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Cuenta" ) );
+        mui_gastos->addSHeader ( "cantlgaspresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad" ) );
+        mui_gastos->addSHeader ( "precioundlgaspresupuestoc", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Precio Und" ) );
+        mui_gastos->addSHeader ( "ejerciciolgaspresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "Ejercicio" ) );
+        mui_gastos->addSHeader ( "comentlgaspresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "Comentarios" ) );
+        mui_gastos->addSHeader ( "desclgaspresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "Descripcion" ) );
+        mui_gastos->addSHeader ( "idlgaspresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView , _( "Id linea de Ingreso Presupuesto" ) );
+        mui_gastos->addSHeader ( "idpresupuestoc", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Id. Proyecto" ) );
+        mui_gastos->addSHeader ( "ordenlgaspresupuestoc", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "Orden" ) );
         mui_gastos->setinsercion ( TRUE );
         mui_gastos->setOrdenEnabled ( TRUE );
         mui_gastos->setOrdenPorQuery ( FALSE );
@@ -106,7 +106,7 @@ ProyectoView::ProyectoView ( Empresa *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el almacen" ) );
+        mensajeInfo ( _( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END ProyectoView::ProyectoView", 0 );
 }

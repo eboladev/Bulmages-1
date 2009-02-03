@@ -108,7 +108,7 @@ importContaplus::~importContaplus()
 void importContaplus::botonBuscarXML()
 {
     _depura ( "importContaplus::botonBuscarXML", 0 );
-    m_XML->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.xml)" ) ) );
+    m_XML->setText ( QFileDialog::getSaveFileName ( this, _( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), _( "Contaplus (*.xml)" ) ) );
     ;
     _depura ( "END importContaplus::botonBuscarXML", 0 );
 }
@@ -120,7 +120,7 @@ void importContaplus::botonBuscarXML()
 void importContaplus::botonBuscarSubCta()
 {
     _depura ( "importContaplus::botonBuscarSubCta", 0 );
-    m_subCta->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.txt)" ) ) );
+    m_subCta->setText ( QFileDialog::getSaveFileName ( this, _( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), _( "Contaplus (*.txt)" ) ) );
     ;
     _depura ( "END importContaplus::botonBuscarSubCta", 0 );
 }
@@ -132,7 +132,7 @@ void importContaplus::botonBuscarSubCta()
 void importContaplus::botonBuscarDiario()
 {
     _depura ( "importContaplus::botonBuscarDiario", 0 );
-    m_diario->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.txt)" ) ) );
+    m_diario->setText ( QFileDialog::getSaveFileName ( this, _( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), _( "Contaplus (*.txt)" ) ) );
     ;
     _depura ( "END importContaplus::botonBuscarDiario", 0 );
 }

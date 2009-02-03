@@ -31,6 +31,11 @@
 int entryPoint ( QApplication * )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin de PluginImPersMail" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginimpersmail", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     cargaTraducciones ( "pluginimpersmail" );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de PluginImPersMail" );

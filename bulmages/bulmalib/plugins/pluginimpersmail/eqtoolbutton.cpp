@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
@@ -67,7 +66,7 @@ EQToolButtonMail::~EQToolButtonMail()
 void EQToolButtonMail::pintaMenu ( QMenu *menu )
 {
     _depura ( "EQToolButtonMail::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( tr ( "Inf. Personales por e-mail" ) );
+    QMenu *ajust = menu->addMenu ( _( "Inf. personales por e-mail" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );

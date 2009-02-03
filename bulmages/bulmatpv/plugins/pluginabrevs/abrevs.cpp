@@ -98,13 +98,13 @@ void Abrevs::on_mui_aparcar_clicked()
     EmpresaTPV * emp = ( EmpresaTPV * ) empresaBase();
     // El nombre del ticket no puede estar vacio.
     if ( emp->valorInput() == "" ) {
-        mensajeAviso ( tr ( "Asigne un nombre al ticket antes de aparcarlo." ) );
+        mensajeAviso ( _( "Asigne un nombre al ticket antes de aparcarlo." ) );
         return;
     } // end if
 
 
     if ( emp->ticketActual() ->listaLineas() ->count() == 0 ) {
-        mensajeAviso ( tr ( "El ticket esta vacio. No se puede aparcar." ) );
+        mensajeAviso ( _( "El ticket esta vacio. No se puede aparcar." ) );
         return;
     } // end if
 
@@ -114,7 +114,7 @@ void Abrevs::on_mui_aparcar_clicked()
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
         if ( emp->valorInput() == ticket->DBvalue ( "nomticket" ) ) {
-            mensajeAviso ( tr ( "Ya existe un ticket aparcado con el mismo nombre." ) );
+            mensajeAviso ( _( "Ya existe un ticket aparcado con el mismo nombre." ) );
             return;
         }// end if
     }// end for

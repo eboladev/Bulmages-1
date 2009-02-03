@@ -35,33 +35,33 @@ CuentaView::CuentaView ( Empresa  *emp, QWidget *parent, Qt::WFlags fl )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-    setTitleName ( tr ( "Cuenta" ) );
+    setTitleName ( _( "Cuenta" ) );
     /// Establecemos cual es la tabla en la que basarse para el tema de los permisos
     setDBTableName ( "cuenta" );
     setDBCampoId ( "idcuenta" );
 
-    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID cuenta" ) );
-    addDBCampo ( "codigo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo cuenta" ) );
-    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Descripcion" ) );
-    addDBCampo ( "padre", DBCampo::DBint  , DBCampo::DBNothing, tr ( "Padre" ) );
-    addDBCampo ( "imputacion", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "Imputacion" ) );
-    addDBCampo ( "bloqueada", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "Bloqueada" ) );
-    addDBCampo ( "nodebe", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "NoDebe" ) );
-    addDBCampo ( "nohaber", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "NoHaber" ) );
-    addDBCampo ( "regularizacion", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "Regularizacion" ) );
-    addDBCampo ( "tipocuenta", DBCampo::DBint , DBCampo::DBNothing, tr ( "Tipo de Cuenta" ) );
-    addDBCampo ( "debe", DBCampo::DBnumeric , DBCampo::DBNoSave, tr ( "Debe" ) );
-    addDBCampo ( "haber", DBCampo::DBnumeric , DBCampo::DBNoSave, tr ( "Haber" ) );
-    addDBCampo ( "idc_coste", DBCampo::DBint, DBCampo::DBNothing, tr ( "Centro de coste por defecto" ) );
-    addDBCampo ( "nombreent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Entidad de la cuenta" ) );
-    addDBCampo ( "cifent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "CIF de la cuenta" ) );
-    addDBCampo ( "cpent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "CP de la cuenta" ) );
-    addDBCampo ( "telent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Telefono de la cuenta" ) );
-    addDBCampo ( "coment_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Comentarios de la cuenta" ) );
-    addDBCampo ( "bancoent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Banco de la cuenta" ) );
-    addDBCampo ( "webent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Web de la cuenta" ) );
-    addDBCampo ( "emailent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "E-Mail de la cuenta" ) );
-    addDBCampo ( "dirent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion de la cuenta" ) );
+    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID cuenta" ) );
+    addDBCampo ( "codigo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo cuenta" ) );
+    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion" ) );
+    addDBCampo ( "padre", DBCampo::DBint  , DBCampo::DBNothing, _( "Padre" ) );
+    addDBCampo ( "imputacion", DBCampo::DBboolean , DBCampo::DBNothing, _( "Imputacion" ) );
+    addDBCampo ( "bloqueada", DBCampo::DBboolean , DBCampo::DBNothing, _( "Bloqueada" ) );
+    addDBCampo ( "nodebe", DBCampo::DBboolean , DBCampo::DBNothing, _( "NoDebe" ) );
+    addDBCampo ( "nohaber", DBCampo::DBboolean , DBCampo::DBNothing, _( "NoHaber" ) );
+    addDBCampo ( "regularizacion", DBCampo::DBboolean , DBCampo::DBNothing, _( "Regularizacion" ) );
+    addDBCampo ( "tipocuenta", DBCampo::DBint , DBCampo::DBNothing, _( "Tipo de Cuenta" ) );
+    addDBCampo ( "debe", DBCampo::DBnumeric , DBCampo::DBNoSave, _( "Debe" ) );
+    addDBCampo ( "haber", DBCampo::DBnumeric , DBCampo::DBNoSave, _( "Haber" ) );
+    addDBCampo ( "idc_coste", DBCampo::DBint, DBCampo::DBNothing, _( "Centro de coste por defecto" ) );
+    addDBCampo ( "nombreent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Entidad de la cuenta" ) );
+    addDBCampo ( "cifent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "CIF de la cuenta" ) );
+    addDBCampo ( "cpent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "CP de la cuenta" ) );
+    addDBCampo ( "telent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Telefono de la cuenta" ) );
+    addDBCampo ( "coment_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios de la cuenta" ) );
+    addDBCampo ( "bancoent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Banco de la cuenta" ) );
+    addDBCampo ( "webent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Web de la cuenta" ) );
+    addDBCampo ( "emailent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "E-Mail de la cuenta" ) );
+    addDBCampo ( "dirent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion de la cuenta" ) );
 
     mui_padre->setEmpresaBase ( empresaBase() );
     mui_idc_coste->setEmpresaBase ( empresaBase() );

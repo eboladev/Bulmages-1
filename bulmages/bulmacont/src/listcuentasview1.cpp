@@ -52,14 +52,14 @@ listcuentasview1::listcuentasview1 ( Empresa *emp, QWidget *parent, Qt::WFlags f
     _depura ( "listcuentasview1::listcuentasview1", 0 );
     setupUi ( this );
 
-    setTitleName ( tr ( "Cuenta" ) );
+    setTitleName ( _( "Cuenta" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos
     setDBTableName ( "cuenta" );
 
     m_modo = editmode;
     /// Para el listado de columnas hacemos una inicializaci&oacute;n.
     QStringList headers;
-    headers << tr ( "Codigo cuenta" ) << tr ( "Nombre cuenta" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "ID cuenta" ) << tr ( "Bloqueada" ) << tr ( "Nodebe" ) << tr ( "Nohaber" ) << tr ( "Regularizacion" ) << tr ( "Imputacion" ) << tr ( "Grupo" ) << tr ( "Tipo cuenta" );
+    headers << _( "Codigo cuenta" ) << _( "Nombre cuenta" ) << _( "Debe" ) << _( "Haber" ) << _( "ID cuenta" ) << _( "Bloqueada" ) << _( "Nodebe" ) << _( "Nohaber" ) << _( "Regularizacion" ) << _( "Imputacion" ) << _( "Grupo" ) << _( "Tipo cuenta" );
     mui_arbolcuentas->setHeaderLabels ( headers );
     ccuenta = 0;
     cdesccuenta = 1;
@@ -85,7 +85,7 @@ listcuentasview1::listcuentasview1 ( Empresa *emp, QWidget *parent, Qt::WFlags f
     mui_arbolcuentas->hideColumn ( ctipocuenta );
 
     mui_tablacuentas->setColumnCount ( 3 );
-    headers << tr ( "CODIGO" ) << tr ( "NOMBRE" );
+    headers << _( "CODIGO" ) << _( "NOMBRE" );
     mui_tablacuentas->setHorizontalHeaderLabels ( headers );
 
     mui_tablacuentas->hideColumn ( 2 );
@@ -375,7 +375,7 @@ void listcuentasview1::on_mui_editar_clicked()
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
-        mensajeInfo ( tr ( "Debe seleccionar una cuenta" ) );
+        mensajeInfo ( _( "Debe seleccionar una cuenta" ) );
         _depura ( "END listcuentasview1::on_mui_editar_clicked", 0, "Debe seleccionar una cuenta" );
         return;
     }
@@ -401,12 +401,12 @@ void listcuentasview1::on_mui_borrar_clicked()
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
-        mensajeInfo ( tr ( "Debe seleccionar una cuenta" ) );
+        mensajeInfo ( _( "Debe seleccionar una cuenta" ) );
         return;
     } // end if
     int valor = QMessageBox::warning ( 0,
-                                       tr ( "Borrar cuenta" ),
-                                       tr ( "Se procedera a borrar la cuenta." ),
+                                       _( "Borrar cuenta" ),
+                                       _( "Se procedera a borrar la cuenta." ),
                                        QMessageBox::Yes, QMessageBox::No );
     if ( valor ==  QMessageBox::Yes ) {
         int idcuenta = atoi ( ( char * ) it->text ( cidcuenta ).toAscii().constData() );
@@ -542,9 +542,9 @@ void listcuentasview1::on_mui_exportar_clicked()
 {
     _depura ( "listcuentasview1::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    tr ( "Elija el archivo" ),
+                    _( "Elija el archivo" ),
                     confpr->valor ( CONF_DIR_USER ),
-                    tr ( "Plan contable (*.xml)" ) ) );
+                    _( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmages2XML ( filexml, IMPORT_CUENTAS );
         filexml.close();
@@ -561,9 +561,9 @@ void listcuentasview1::on_mui_importar_clicked()
 {
     _depura ( "listcuentasview1::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    tr ( "Elija el archivo" ),
+                    _( "Elija el archivo" ),
                     "/usr/share/bulmages",
-                    tr ( "Plan contable (*.xml)" ) ) );
+                    _( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2Bulmages ( filexml, IMPORT_CUENTAS );
         filexml.close();

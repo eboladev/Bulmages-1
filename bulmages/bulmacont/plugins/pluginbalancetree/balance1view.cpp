@@ -561,13 +561,13 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
     _depura ( "BalanceTreeView::contextmenu", 0 );
 
     QMenu *menupopup = new QMenu ( this );
-    QAction *opt1 = menupopup->addAction ( tr ( "Ver Diario (este dia)" ) );
-    QAction *opt2 = menupopup->addAction ( tr ( "Ver Diario (este mes)" ) );
-    QAction *opt3 = menupopup->addAction ( tr ( "Ver Diario (este anyo)" ) );
+    QAction *opt1 = menupopup->addAction ( _( "Ver Diario (este dia)" ) );
+    QAction *opt2 = menupopup->addAction ( _( "Ver Diario (este mes)" ) );
+    QAction *opt3 = menupopup->addAction ( _( "Ver Diario (este anyo)" ) );
     menupopup->addSeparator();
-    QAction *opt4 = menupopup->addAction ( tr ( "Ver extracto (este dia)" ) );
-    QAction *opt5 = menupopup->addAction ( tr ( "Ver extracto (este mes)" ) );
-    QAction *opt6 = menupopup->addAction ( tr ( "Ver extracto (este anyo)" ) );
+    QAction *opt4 = menupopup->addAction ( _( "Ver extracto (este dia)" ) );
+    QAction *opt5 = menupopup->addAction ( _( "Ver extracto (este mes)" ) );
+    QAction *opt6 = menupopup->addAction ( _( "Ver extracto (este anyo)" ) );
     QAction *opcion = menupopup->exec ( point );
 
     if ( opcion == opt1 ) {

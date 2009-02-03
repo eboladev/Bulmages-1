@@ -40,15 +40,15 @@
 Asiento1::Asiento1 ( Empresa *comp, QWidget *parent ) : FichaBc ( comp, parent )
 {
     _depura ( "Asiento1::Asiento1", 0 );
-    setTitleName ( tr ( "Asiento Contable" ) );
+    setTitleName ( _( "Asiento Contable" ) );
     setDBTableName ( "asiento" );
     setDBCampoId ( "idasiento" );
-    addDBCampo ( "idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Asiento1", "Id asiento" ) );
-    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Asiento1", "Descripcion del asiento" ) );
-    addDBCampo ( "fecha", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Fecha del asiento" ) );
-    addDBCampo ( "comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Comentarios del asiento" ) );
-    addDBCampo ( "ordenasiento", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Orden de asiento" ) );
-    addDBCampo ( "clase", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Tipo de asiento" ) );
+    addDBCampo ( "idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id asiento" ) );
+    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Descripcion del asiento" ) );
+    addDBCampo ( "fecha", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha del asiento" ) );
+    addDBCampo ( "comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios del asiento" ) );
+    addDBCampo ( "ordenasiento", DBCampo::DBint, DBCampo::DBNothing, _( "Orden de asiento" ) );
+    addDBCampo ( "clase", DBCampo::DBint, DBCampo::DBNothing, _( "Tipo de asiento" ) );
     listalineas = NULL;
     _depura ( "END Asiento1::Asiento1", 0 );
 }
@@ -157,8 +157,8 @@ int Asiento1::borrar ( bool atendido )
     if ( DBvalue ( "idasiento" ) != "" ) {
         if ( atendido ) {
             switch ( QMessageBox::warning ( 0,
-                                            QApplication::translate ( "Asiento1", "Borrar asiento" ),
-                                            QApplication::translate ( "Asiento1", "Se va a borrar el asiento. Esta seguro?" ),
+                                            _( "Borrar asiento" ),
+                                            _( "Se va a borrar el asiento. Esta seguro?" ),
                                             QMessageBox::Ok,
                                             QMessageBox::Cancel ) ) {
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
@@ -406,7 +406,7 @@ int Asiento1::guardar()
             empresaBase() ->cierraasiento ( id.toInt() );
         dialogChanges_cargaInicial();
         cargar ( id );
-        g_main->statusBar() ->showMessage ( tr ( "El asiento se ha guardado correctamente." ), 2000 );
+        g_main->statusBar() ->showMessage ( _( "El asiento se ha guardado correctamente." ), 2000 );
         _depura ( "END Asiento1::guardar", 0 );
         return 0;
     } catch ( ... ) {

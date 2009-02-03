@@ -435,7 +435,7 @@ void Devolucion::on_mui_cancelarButton_clicked()
 
 void Devolucion::on_mui_valeButton_clicked()
 {
-    int ret = QMessageBox::information ( this, tr ( "NO IMPLEMENTADO" ),
+    int ret = QMessageBox::information ( this, _( "NO IMPLEMENTADO" ),
                                          QString ( "NO IMPLEMENTADO" ),
                                          QMessageBox::Ok,
                                          QMessageBox::Ok );

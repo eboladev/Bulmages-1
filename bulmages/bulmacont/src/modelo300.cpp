@@ -167,7 +167,7 @@ void Mod300ps::generaps()
             command = "pdftops " + pdfname + " " + tempname;
             system ( command.toAscii().constData() );
         } else {
-            Psprogressdialog progress ( tr ( "Creando formulario" ), tr ( "&Cancelar" ), 0, 50, this, 0 );
+            Psprogressdialog progress ( _( "Creando formulario" ), _( "&Cancelar" ), 0, 50, this, 0 );
             this->convierte_a_postscript = new Genps_thread ( pdfname, tempname, &progress );
             progress.setValue ( 0 );
 

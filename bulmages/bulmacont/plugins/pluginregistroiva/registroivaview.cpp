@@ -66,38 +66,38 @@ RegistroIvaView::RegistroIvaView ( Empresa *comp, QWidget *parent )
 
     mui_listIva->setDBTableName ( "iva" );
     mui_listIva->setDBCampoId ( "idiva" );
-    mui_listIva->addSHeader ( "idiva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, tr ( "idiva" ) );
-    mui_listIva->addSHeader ( "idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite, tr ( "idtipoiva" ) );
-    mui_listIva->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "idcuenta" ) );
-    mui_listIva->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "codigo" ) );
-    mui_listIva->addSHeader ( "tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "tipocuenta" ) );
-    mui_listIva->addSHeader ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "nombretipoiva" ) );
-    mui_listIva->addSHeader ( "idregistroiva", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "idregistroiva" ) );
-    mui_listIva->addSHeader ( "baseiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "baseiva" ) );
-    mui_listIva->addSHeader ( "ivaiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "ivaiva" ) );
+    mui_listIva->addSHeader ( "idiva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, _( "idiva" ) );
+    mui_listIva->addSHeader ( "idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite, _( "idtipoiva" ) );
+    mui_listIva->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "idcuenta" ) );
+    mui_listIva->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, _( "codigo" ) );
+    mui_listIva->addSHeader ( "tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, _( "tipocuenta" ) );
+    mui_listIva->addSHeader ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "nombretipoiva" ) );
+    mui_listIva->addSHeader ( "idregistroiva", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "idregistroiva" ) );
+    mui_listIva->addSHeader ( "baseiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "baseiva" ) );
+    mui_listIva->addSHeader ( "ivaiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "ivaiva" ) );
     mui_listIva->setinsercion ( FALSE );
 
     mui_listPrevCobro->setDBTableName ( "prevcobro" );
     mui_listPrevCobro->setDBCampoId ( "idprevcobro" );
-    mui_listPrevCobro->addSHeader ( "idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, tr ( "idprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "fprevistaprevcobro", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr ( "fprevistaprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "fcobroprevcobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone, tr ( "fcobroprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "idfpago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "idfpago" ) );
-    mui_listPrevCobro->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "idcuenta" ) );
-    mui_listPrevCobro->addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "idasiento" ) );
-    mui_listPrevCobro->addSHeader ( "cantidadprevistaprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "cantidadprevistaprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "cantidadprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "cantidadprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "idregistroiva", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "idregistroiva" ) );
-    mui_listPrevCobro->addSHeader ( "tipoprevcobro", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "tipoprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "docprevcobro", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "docprevcobro" ) );
-    mui_listPrevCobro->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "codigo" ) );
-    mui_listIva->addSHeader ( "tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "tipocuenta" ) );
-    mui_listPrevCobro->addSHeader ( "descripcion", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, tr ( "descripcion" ) );
-    mui_listPrevCobro->addSHeader ( "idctacliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "idctacliente" ) );
-    mui_listPrevCobro->addSHeader ( "codigoctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, tr ( "codigoctacliente" ) );
-    mui_listPrevCobro->addSHeader ( "nomctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, tr ( "nomctacliente" ) );
-    mui_listPrevCobro->addSHeader ( "tipoctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, tr ( "tipoctacliente" ) );
-    mui_listPrevCobro->addSHeader ( "tipocuenta", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, tr ( "tipocuenta" ) );
+    mui_listPrevCobro->addSHeader ( "idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, _( "idprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "fprevistaprevcobro", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, _( "fprevistaprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "fcobroprevcobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone, _( "fcobroprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "idfpago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, _( "idfpago" ) );
+    mui_listPrevCobro->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "idcuenta" ) );
+    mui_listPrevCobro->addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "idasiento" ) );
+    mui_listPrevCobro->addSHeader ( "cantidadprevistaprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "cantidadprevistaprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "cantidadprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "cantidadprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "idregistroiva", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "idregistroiva" ) );
+    mui_listPrevCobro->addSHeader ( "tipoprevcobro", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "tipoprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "docprevcobro", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "docprevcobro" ) );
+    mui_listPrevCobro->addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "codigo" ) );
+    mui_listIva->addSHeader ( "tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, _( "tipocuenta" ) );
+    mui_listPrevCobro->addSHeader ( "descripcion", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, _( "descripcion" ) );
+    mui_listPrevCobro->addSHeader ( "idctacliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "idctacliente" ) );
+    mui_listPrevCobro->addSHeader ( "codigoctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, _( "codigoctacliente" ) );
+    mui_listPrevCobro->addSHeader ( "nomctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, _( "nomctacliente" ) );
+    mui_listPrevCobro->addSHeader ( "tipoctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, _( "tipoctacliente" ) );
+    mui_listPrevCobro->addSHeader ( "tipocuenta", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, _( "tipocuenta" ) );
 
     mui_listPrevCobro->setinsercion ( TRUE );
     empresaBase() ->meteWindow ( windowTitle(), this );
@@ -152,10 +152,10 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
 void RegistroIvaView::on_mui_borrar_clicked() {
     _depura("RegistroIvaView::on_mui_borrar_clicked",0);
     if (QMessageBox::warning(this,
-                             tr("BulmaCont - Registro Factura"),
-                             tr("Desea borrar este registro"),
-                             tr("&Si"),
-                             tr("&No")) == 0) {
+                             _("BulmaCont - Registro Factura"),
+                             _("Desea borrar este registro"),
+                             _("&Si"),
+                             _("&No")) == 0) {
         mui_listIva->borrar();
         borrar();
     } // end if
@@ -183,7 +183,7 @@ int RegistroIvaView::cargar ( QString id )
                                 " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente, tipocuenta AS tipoctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                                 " WHERE idregistroiva = " + id + " ORDER BY fcobroprevcobro " );
 
-    setWindowTitle ( tr ( "Registro factura" ) + " " + factura() );
+    setWindowTitle ( _( "Registro factura" ) + " " + factura() );
     dialogChanges_cargaInicial();
     return 0;
 }

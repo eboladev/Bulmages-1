@@ -592,7 +592,7 @@ void Bulmacont::setActionIndexador ( bool visible )
 void Bulmacont::initStatusBar()
 {
     _depura ( "Bulmacont::initStatusBar", 0 );
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "END Bulmacont::initStatusBar", 0 );
 }
 
@@ -617,8 +617,8 @@ bool Bulmacont::eventFilter ( QObject *object, QEvent *event )
 void Bulmacont::slotEditUndo()
 {
     _depura ( "Bulmacont::slotEditUndo", 0 );
-    statusBar() ->showMessage ( tr ( "Deshaciendo la ultima accion..." ) );
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Deshaciendo la ultima accion..." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "END Bulmacont::slotEditUndo", 0 );
 }
 
@@ -629,8 +629,8 @@ void Bulmacont::slotEditUndo()
 void Bulmacont::slotEditCut()
 {
     _depura ( "Bulmacont::slotEditCut", 0 );
-    statusBar() ->showMessage ( tr ( "Cortando seleccion..." ) );
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Cortando seleccion..." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "EMD Bulmacont::slotEditCut", 0 );
 }
 
@@ -641,8 +641,8 @@ void Bulmacont::slotEditCut()
 void Bulmacont::slotEditCopy()
 {
     _depura ( "Bulmacont::slotEditCopy", 0 );
-    statusBar() ->showMessage ( tr ( "Copiando la seleccion al portapapeles..." ) );
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Copiando la seleccion al portapapeles..." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "END Bulmacont::slotEditCopy", 0 );
 }
 
@@ -653,8 +653,8 @@ void Bulmacont::slotEditCopy()
 void Bulmacont::slotEditPaste()
 {
     _depura ( "Bulmacont::slotEditPaste", 0 );
-    statusBar() ->showMessage ( tr ( "Insertando el contenido del portapapeles..." ) );
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Insertando el contenido del portapapeles..." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "END Bulmacont::slotEditPaste", 0 );
 }
 
@@ -666,13 +666,13 @@ void Bulmacont::slotEditPaste()
 void Bulmacont::slotViewStatusBar ( bool toggle )
 {
     _depura ( "Bulmacont::slotViewStatusBar", 0 );
-    statusBar() ->showMessage ( tr ( "Cambinado barra de estado..." ) );
+    statusBar() ->showMessage ( _( "Cambinado barra de estado..." ) );
     if ( toggle == false ) {
         statusBar() ->hide();
     } else {
         statusBar() ->show();
     } // end if
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "END Bulmacont::slotViewStatusBar", 0 );
 }
 
@@ -684,13 +684,13 @@ void Bulmacont::slotViewStatusBar ( bool toggle )
 void Bulmacont::slotViewFullScreen ( bool toggle )
 {
     _depura ( "Bulmacont::slotViewFullScreen", 0 );
-    statusBar() ->showMessage ( tr ( "Cambiando a modo de pantalla completa..." ) );
+    statusBar() ->showMessage ( _( "Cambiando a modo de pantalla completa..." ) );
     if ( toggle == false ) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
-    statusBar() ->showMessage ( tr ( "Listo." ) );
+    statusBar() ->showMessage ( _( "Listo." ) );
     _depura ( "END Bulmacont::slotViewFullScreen", 0 );
 }
 
@@ -714,7 +714,7 @@ void Bulmacont::slotStatusHelpMsg ( const QString &text )
 void Bulmacont::slotListadoCuentas()
 {
     _depura ( "Bulmacont::slotListadoCuentas", 0 );
-    statusBar() ->showMessage ( tr ( "Listado de cuentas" ) );
+    statusBar() ->showMessage ( _( "Listado de cuentas" ) );
     _depura ( "END Bulmacont::slotListadoCuentas", 0 );
 }
 

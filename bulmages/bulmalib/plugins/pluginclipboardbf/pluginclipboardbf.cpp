@@ -48,6 +48,11 @@
 int entryPoint ( QApplication * )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginclipboardbf", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
@@ -108,7 +113,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugclipboard::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Pegar desde Hoja de Calculo" ) );
+    menu->addAction ( _( "Pegar desde hoja de calculo" ) );
     _depura ( "END myplugclipboard::s_pintaMenu", 0 );
 }
 

@@ -40,18 +40,18 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     /// Inicializamos los parametros del ticket para la base de datos.
     setDBTableName ( "albaran" );
     setDBCampoId ( "idalbaran" );
-    addDBCampo ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "descripcion" ) );
-    addDBCampo ( "nomticket", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "nombre" ) );
-    addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id albaran" ) );
-    addDBCampo ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Id fechaalbaran" ) );
-    addDBCampo ( "horaalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "hora" ) );
-    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Trabajador" ) );
-    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Cliente" ) );
-    addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Almacen" ) );
-    addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Num" ) );
-    addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Referencia" ) );
-    addDBCampo ( "ticketalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Ticket" ) );
-    addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Forma Pago" ) );
+    addDBCampo ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion" ) );
+    addDBCampo ( "nomticket", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Nombre" ) );
+    addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id albaran" ) );
+    addDBCampo ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, _( "Id fechaalbaran" ) );
+    addDBCampo ( "horaalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Hora" ) );
+    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, _( "Trabajador" ) );
+    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
+    addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Almacen" ) );
+    addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, _( "Num" ) );
+    addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
+    addDBCampo ( "ticketalbaran", DBCampo::DBboolean, DBCampo::DBNothing, _( "Ticket" ) );
+    addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Id forma de pago" ) );
 
     setDBvalue ( "ticketalbaran", "TRUE" );
     setDBvalue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
@@ -82,19 +82,19 @@ DBRecord * Ticket::agregarLinea()
     DBRecord * item = new DBRecord ( empresaBase() );
     item->setDBTableName ( "lalbaran" );
     item->setDBCampoId ( "numlalbaran" );
-    item->addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Id Albaran" ) );
-    item->addDBCampo ( "numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id lalbaran" ) );
-    item->addDBCampo ( "cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Cantidad" ) );
-    item->addDBCampo ( "pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Precio" ) );
-    item->addDBCampo ( "ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "IVA" ) );
-    item->addDBCampo ( "descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Descuento" ) );
-    item->addDBCampo ( "ordenlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Orden" ) );
-    item->addDBCampo ( "reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "REQ EQ" ) );
-//    item->addDBCampo ( "lotelalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Lote" ) );
-    item->addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Id Articulo" ) );
-    item->addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "Codigo Articulo" ) );
-    item->addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "Nombre Articulo" ) );
-    item->addDBCampo ( "desclalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Nombre Articulo" ) );
+    item->addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBNotNull, _( "Id Albaran" ) );
+    item->addDBCampo ( "numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id lalbaran" ) );
+    item->addDBCampo ( "cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Cantidad" ) );
+    item->addDBCampo ( "pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Precio" ) );
+    item->addDBCampo ( "ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "IVA" ) );
+    item->addDBCampo ( "descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Descuento" ) );
+    item->addDBCampo ( "ordenlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Orden" ) );
+    item->addDBCampo ( "reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Req. eq." ) );
+//    item->addDBCampo ( "lotelalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Lote" ) );
+    item->addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, _( "Id articulo" ) );
+    item->addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Codigo articulo" ) );
+    item->addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Nombre articulo" ) );
+    item->addDBCampo ( "desclalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre articulo" ) );
 
 
     item->setDBvalue ( "descuentolalbaran", "0" );
@@ -938,7 +938,7 @@ int Ticket::guardar()
     try {
 
 	if ( listaLineas() ->count() == 0 ) {
-		mensajeAviso ( tr ( "El ticket esta vacio." ) );
+		mensajeAviso ( _( "El ticket esta vacio." ) );
 		return -1;
 	} // end if
 

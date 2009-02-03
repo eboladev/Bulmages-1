@@ -67,7 +67,7 @@ EQToolButton::~EQToolButton()
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
     _depura ( "EQToolButton::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( tr ( "Informes Personales" ) );
+    QMenu *ajust = menu->addMenu ( _( "Informes personales" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );

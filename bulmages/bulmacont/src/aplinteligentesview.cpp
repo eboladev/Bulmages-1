@@ -55,7 +55,7 @@ aplinteligentesview::aplinteligentesview ( Empresa *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-    setTitleName ( tr ( "Asiento" ) );
+    setTitleName ( _( "Asiento" ) );
     /// Establezco cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
@@ -612,7 +612,7 @@ void aplinteligentesview::creaasiento()
             empresaBase() ->commit();
         } // end for
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el asiento" ) );
+        mensajeInfo ( _( "Error al crear el asiento" ) );
         empresaBase() ->rollback();
         return;
     } // end try

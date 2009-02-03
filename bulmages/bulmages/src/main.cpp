@@ -90,7 +90,7 @@ int main ( int argc, char **argv )
 
 
     BSelector *bw = new BSelector();
-    bw->setWindowTitle ( theApp->translate ( "main", "Selector de BulmaGes" ) );
+    bw->setWindowTitle ( _( "Selector de BulmaGes" ) );
 
     /// Lo primero que hacemos es comprobar el sistema de autentificacion de
     /// Postgres para pedir un 'login' y un 'password' en caso de que sea necesario para

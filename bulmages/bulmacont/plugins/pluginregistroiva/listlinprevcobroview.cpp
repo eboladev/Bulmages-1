@@ -186,9 +186,9 @@ void ListLinPrevCobroView::pintalistlinprevcobro ( linprevcobro *linea, int pos 
     item ( pos, COL_IDREGISTROIVA ) ->setText ( linea->idregistroiva() );
 
     if ( linea->tipoprevcobro() == "t" ) {
-        item ( pos, COL_TIPOPREVCOBRO ) ->setText ( tr ( "Cobro" ) );
+        item ( pos, COL_TIPOPREVCOBRO ) ->setText ( _( "Cobro" ) );
     } else {
-        item ( pos, COL_TIPOPREVCOBRO ) ->setText ( tr ( "Pago" ) );
+        item ( pos, COL_TIPOPREVCOBRO ) ->setText ( _( "Pago" ) );
     } // end if
 
     item ( pos, COL_DOCPREVCOBRO ) ->setText ( linea->docprevcobro() );
@@ -266,13 +266,13 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
 {
     _depura ( "ListLinPrevCobroView::contextMenu", 0 );
     QMenu *popup = new QMenu();
-    QAction *menuborrarlinea = popup->addAction ( tr ( "Borrar linea" ) );
-    QAction *menugenerarasiento = popup->addAction ( tr ( "Generar asiento de cobro/pago" ) );
-    QAction *menudesvinculaasiento = popup->addAction ( tr ( "Desvincular asiento" ) );
-    QAction *menuverasiento = popup->addAction ( tr ( "Ver asiento" ) );
-    QAction *menuverfact = popup->addAction ( tr ( "Ver factura" ) );
-    QAction *menucobro = popup->addAction ( tr ( "Cobro" ) );
-    QAction *menupago = popup->addAction ( tr ( "Pago" ) );
+    QAction *menuborrarlinea = popup->addAction ( _( "Borrar linea" ) );
+    QAction *menugenerarasiento = popup->addAction ( _( "Generar asiento de cobro/pago" ) );
+    QAction *menudesvinculaasiento = popup->addAction ( _( "Desvincular asiento" ) );
+    QAction *menuverasiento = popup->addAction ( _( "Ver asiento" ) );
+    QAction *menuverfact = popup->addAction ( _( "Ver factura" ) );
+    QAction *menucobro = popup->addAction ( _( "Cobro" ) );
+    QAction *menupago = popup->addAction ( _( "Pago" ) );
 
     menugenerarasiento->setVisible ( FALSE );
     menudesvinculaasiento->setVisible ( FALSE );
@@ -462,10 +462,10 @@ void ListLinPrevCobroView::valueLineChanged ( int row, int col )
         case COL_TIPOPREVCOBRO:
             if ( valor == "COBRO" ) {
                 linea->settipoprevcobro ( "t" );
-                item ( row, col ) ->setText ( tr ( "Cobro" ) );
+                item ( row, col ) ->setText ( _( "Cobro" ) );
             } else {
                 linea->settipoprevcobro ( "f" );
-                item ( row, col ) ->setText ( tr ( "Pago" ) );
+                item ( row, col ) ->setText ( _( "Pago" ) );
             } // end if
             break;
         } // end switch

@@ -88,7 +88,7 @@ ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva
     setColumnCount ( 8 );
     setRowCount ( 0 );
     QStringList etiquetas;
-    etiquetas << tr ( "COL_IDIVA" ) << tr ( "COL_IDTIPOIVA" ) << tr ( "COL_IDCUENTA" ) << tr ( "COL_CODIGO" ) << tr ( "COL_NOMBRETIPOIVA" ) << tr ( "COL_IDREGISTROIVA" ) << tr ( "COL_BASEIVA" ) << tr ( "COL_IVAIVA" );
+    etiquetas << _( "COL_IDIVA" ) << _( "COL_IDTIPOIVA" ) << _( "COL_IDCUENTA" ) << _( "COL_CODIGO" ) << _( "COL_NOMBRETIPOIVA" ) << _( "COL_IDREGISTROIVA" ) << _( "COL_BASEIVA" ) << _( "COL_IVAIVA" );
     setHorizontalHeaderLabels ( etiquetas );
 
     setColumnWidth ( COL_IDIVA, 100 );
@@ -168,7 +168,7 @@ void ListIvaView::contextMenu ( int row, int, const QPoint & pos )
 {
     _depura ( "ListIvaView::contextMenu", 0 );
     QMenu *popup = new QMenu();
-    QAction *borrarlinea = popup->addAction ( tr ( "Borrar linea" ) );
+    QAction *borrarlinea = popup->addAction ( _( "Borrar linea" ) );
     QAction *opcion = popup->exec ( pos );
     delete popup;
     if ( opcion == borrarlinea ) {

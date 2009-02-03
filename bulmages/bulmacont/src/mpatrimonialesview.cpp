@@ -130,7 +130,7 @@ void mpatrimonialesview::inicializatabla()
     mui_tabla->setRowCount ( 0 );
     mui_tabla->setColumnCount ( 2 );
     QStringList etiquetas;
-    etiquetas << tr ( "CODIGO" ) << tr ( "Masa patrimonial" );
+    etiquetas << _( "CODIGO" ) << _( "Masa patrimonial" );
     mui_tabla->setHorizontalHeaderLabels ( etiquetas );
     mui_tabla->hideColumn ( 2 );
     mui_tabla->hideColumn ( 0 );

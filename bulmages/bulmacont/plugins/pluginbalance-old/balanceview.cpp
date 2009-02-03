@@ -66,7 +66,7 @@ BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
     setupUi ( this );
     _depura ( "BalanceView::BalanceView", 0 );
 
-    setTitleName ( tr ( "Asiento Contable" ) );
+    setTitleName ( _( "Asiento Contable" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
@@ -87,18 +87,18 @@ BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
 
         listado->setColumnCount ( 12 );
         QStringList nombrecolumnas;
-        nombrecolumnas << "J" << tr ( "Codigo cuenta" )
-        << tr ( "Nombre de la cuenta" )
-        << tr ( "Saldo anterior" )
-        << tr ( "Debe" )
-        << tr ( "Haber" )
-        << tr ( "Saldo periodo" )
-        << tr ( "Debe ejercicio" )
-        << tr ( "Haber ejercicio" )
-        << tr ( "Saldo ejercicio" )
-        << tr ( "Nivel" )
-        << tr ( "ID cuenta" )
-        << tr ( "Padre" );
+        nombrecolumnas << "J" << _( "Codigo cuenta" )
+        << _( "Nombre de la cuenta" )
+        << _( "Saldo anterior" )
+        << _( "Debe" )
+        << _( "Haber" )
+        << _( "Saldo periodo" )
+        << _( "Debe ejercicio" )
+        << _( "Haber ejercicio" )
+        << _( "Saldo ejercicio" )
+        << _( "Nivel" )
+        << _( "ID cuenta" )
+        << _( "Padre" );
 
         listado->setHeaderLabels ( nombrecolumnas );
     */
@@ -396,13 +396,13 @@ void BalanceView::contextmenu ( const QPoint &point )
     _depura ( "BalanceView::contextmenu", 0 );
 
     QMenu *menupopup = new QMenu ( this );
-    QAction *opt1 = menupopup->addAction ( tr ( "Ver Diario (este dia)" ) );
-    QAction *opt2 = menupopup->addAction ( tr ( "Ver Diario (este mes)" ) );
-    QAction *opt3 = menupopup->addAction ( tr ( "Ver Diario (este anyo)" ) );
+    QAction *opt1 = menupopup->addAction ( _( "Ver Diario (este dia)" ) );
+    QAction *opt2 = menupopup->addAction ( _( "Ver Diario (este mes)" ) );
+    QAction *opt3 = menupopup->addAction ( _( "Ver Diario (este anyo)" ) );
     menupopup->addSeparator();
-    QAction *opt4 = menupopup->addAction ( tr ( "Ver extracto (este dia)" ) );
-    QAction *opt5 = menupopup->addAction ( tr ( "Ver extracto (este mes)" ) );
-    QAction *opt6 = menupopup->addAction ( tr ( "Ver extracto (este anyo)" ) );
+    QAction *opt4 = menupopup->addAction ( _( "Ver extracto (este dia)" ) );
+    QAction *opt5 = menupopup->addAction ( _( "Ver extracto (este mes)" ) );
+    QAction *opt6 = menupopup->addAction ( _( "Ver extracto (este anyo)" ) );
     QAction *opcion = menupopup->exec ( point );
 
     if ( opcion == opt1 ) {

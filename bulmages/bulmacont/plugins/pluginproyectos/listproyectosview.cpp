@@ -44,19 +44,19 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
     mui_listado->setEmpresaBase ( emp );
     mui_listado->setDBTableName ( "presupuestoc" );
     mui_listado->setDBCampoId ( "idpresupuestoc" );
-    mui_listado->addSHeader ( "idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, tr ( "Identificador" ) );
-    mui_listado->addSHeader ( "idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, tr ( "C. Coste" ) );
-    mui_listado->addSHeader ( "fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Fecha" ) );
-    mui_listado->addSHeader ( "nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Nombre" ) );
-    mui_listado->addSHeader ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Comentarios" ) );
-    mui_listado->addSHeader ( "archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Archivo" ) );
+    mui_listado->addSHeader ( "idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, _( "Identificador" ) );
+    mui_listado->addSHeader ( "idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, _( "C. Coste" ) );
+    mui_listado->addSHeader ( "fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Fecha" ) );
+    mui_listado->addSHeader ( "nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Nombre" ) );
+    mui_listado->addSHeader ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Comentarios" ) );
+    mui_listado->addSHeader ( "archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Archivo" ) );
     mui_listado->setinsercion ( FALSE );
 
     presentar();
     if ( modoEdicion() ) {
         empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( tr ( "Selector de Proyectos" ) );
+        setWindowTitle ( _( "Selector de Proyectos" ) );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
     } // end if
@@ -112,7 +112,7 @@ void ListProyectosView::borrar()
             presentar();
         } // end if
     } catch ( ... ) {
-        _depura ( tr ( "Error al borrar la amortizacion" ), 2 );
+        _depura ( _( "Error al borrar la amortizacion" ), 2 );
     } // end try
     _depura ( "END ListProyectosView::on_mui_borrar_clicked", 0 );
 }

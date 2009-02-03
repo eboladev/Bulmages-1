@@ -42,7 +42,7 @@ selectcanalview::selectcanalview ( Empresa *emp, QWidget *parent )
     m_listCanales->setColumnCount ( 5 );
 
     QStringList etiquetas;
-    etiquetas << tr ( "nom_canal" ) << tr ( "desc_canal" ) << tr ( "Status" ) << tr ( "idcanal" ) << tr ( "Seleccion" );
+    etiquetas << _( "nom_canal" ) << _( "desc_canal" ) << _( "Status" ) << _( "idcanal" ) << _( "Seleccion" );
     m_listCanales->setHeaderLabels ( etiquetas );
 
     cargacanales();

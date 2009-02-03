@@ -89,7 +89,7 @@ ImportExportBulmafactView::ImportExportBulmafactView ( postgresiface2 *con, QWid
 void ImportExportBulmafactView::botonBuscarXML()
 {
     _depura ( "ImportExportBulmafactView::botonBuscarXML", 0 );
-    m_XML->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.xml)" ) ) );
+    m_XML->setText ( QFileDialog::getSaveFileName ( this, _( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), _( "Contaplus (*.xml)" ) ) );
     _depura ( "END ImportExportBulmafactView::botonBuscarXML", 0 );
 }
 

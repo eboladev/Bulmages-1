@@ -33,17 +33,17 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( 
     setDBTableName ( "borrador" );
     setFileConfig ( "balancesubform" );
     setDBCampoId ( "idborrador" );
-    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "idcuenta" ) );
-    addSHeader ( "tipocuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "tipocuenta" ) );
-    addSHeader ( "codigo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "codigo" ) );
-    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "descripcion" ) );
-    addSHeader ( "asaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "asaldo" ) );
-    addSHeader ( "tdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tdebe" ) );
-    addSHeader ( "thaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "thaber" ) );
-    addSHeader ( "tsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tsaldo" ) );
-    addSHeader ( "ejdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejdebe" ) );
-    addSHeader ( "ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejhaber" ) );
-    addSHeader ( "ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejsaldo" ) );
+    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "idcuenta" ) );
+    addSHeader ( "tipocuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "tipocuenta" ) );
+    addSHeader ( "codigo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "codigo" ) );
+    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "descripcion" ) );
+    addSHeader ( "asaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "asaldo" ) );
+    addSHeader ( "tdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "tdebe" ) );
+    addSHeader ( "thaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "thaber" ) );
+    addSHeader ( "tsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "tsaldo" ) );
+    addSHeader ( "ejdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ejdebe" ) );
+    addSHeader ( "ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ejhaber" ) );
+    addSHeader ( "ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "ejsaldo" ) );
     setinsercion ( FALSE );
     _depura ( "END BalanceSubForm::BalanceSubForm", 0 );
 }
@@ -74,14 +74,14 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
 
 
     if ( m_delete )
-        del = popup->addAction ( tr ( "Borrar registro" ) );
+        del = popup->addAction ( _( "Borrar registro" ) );
     popup->addSeparator();
-    QAction *ajustc = popup->addAction ( tr ( "Ajustar columa" ) );
-    QAction *ajustac = popup->addAction ( tr ( "Ajustar altura" ) );
-    QAction *ajust = popup->addAction ( tr ( "Ajustar columnas" ) );
-    QAction *ajusta = popup->addAction ( tr ( "Ajustar alturas" ) );
+    QAction *ajustc = popup->addAction ( _( "Ajustar columa" ) );
+    QAction *ajustac = popup->addAction ( _( "Ajustar altura" ) );
+    QAction *ajust = popup->addAction ( _( "Ajustar columnas" ) );
+    QAction *ajusta = popup->addAction ( _( "Ajustar alturas" ) );
     popup->addSeparator();
-    QAction *verconfig = popup->addAction ( tr ( "Ver configurador de subformulario" ) );
+    QAction *verconfig = popup->addAction ( _( "Ver configurador de subformulario" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
 
     if ( opcion == mostapunte ) {

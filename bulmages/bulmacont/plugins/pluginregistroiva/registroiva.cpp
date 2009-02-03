@@ -39,26 +39,26 @@ typedef QMap<QString, Fixed> base;
 RegistroIva::RegistroIva ( Empresa *comp, QWidget *parent ) : FichaBc ( comp, parent )
 {
     _depura ( "RegistroIva::RegistroIva", 0 );
-    setTitleName ( tr ( "Registro IVA" ) );
+    setTitleName ( _( "Registro IVA" ) );
     setDBTableName ( "registroiva" );
     setDBCampoId ( "idregistroiva" );
-    addDBCampo ( "idregistroiva", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador" );
-    addDBCampo ( "contrapartida", DBCampo::DBint, DBCampo::DBNotNull, "Contrapartida" );
-    addDBCampo ( "baseimp", DBCampo::DBnumeric, DBCampo::DBNotNull, "Base Imponible" );
-    addDBCampo ( "iva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Iva" );
-    addDBCampo ( "ffactura", DBCampo::DBdate, DBCampo::DBNotNull, "Fecha Factura" );
-    addDBCampo ( "idborrador", DBCampo::DBint, DBCampo::DBNotNull, "Borrador" );
-    addDBCampo ( "numorden", DBCampo::DBint, DBCampo::DBNotNull, "Orden" );
-    addDBCampo ( "cif", DBCampo::DBvarchar, DBCampo::DBNotNull, "CIF" );
-    addDBCampo ( "idfpago", DBCampo::DBint, DBCampo::DBNothing, "Forma de Pago" );
-    addDBCampo ( "incregistro", DBCampo::DBboolean, DBCampo::DBNotNull, "incregistro" );
-    addDBCampo ( "regularizacion", DBCampo::DBboolean, DBCampo::DBNothing, "regularizacion" );
-    addDBCampo ( "plan349", DBCampo::DBboolean, DBCampo::DBNothing, "plan 349" );
-    addDBCampo ( "factemitida", DBCampo::DBboolean, DBCampo::DBNotNull, "Factura Emitida" );
-    addDBCampo ( "rectificaaregistroiva", DBCampo::DBint, DBCampo::DBNothing, "Rectifica a" );
-    addDBCampo ( "factura", DBCampo::DBvarchar, DBCampo::DBNothing, "Factura" );
-    addDBCampo ( "femisionregistroiva", DBCampo::DBdate, DBCampo::DBNotNull, "Fecha Emision" );
-    addDBCampo ( "serieregistroiva", DBCampo::DBvarchar, DBCampo::DBNothing, "Serie" );
+    addDBCampo ( "idregistroiva", DBCampo::DBint, DBCampo::DBPrimaryKey, _("Identificador") );
+    addDBCampo ( "contrapartida", DBCampo::DBint, DBCampo::DBNotNull, _("Contrapartida") );
+    addDBCampo ( "baseimp", DBCampo::DBnumeric, DBCampo::DBNotNull, _("Base Imponible") );
+    addDBCampo ( "iva", DBCampo::DBnumeric, DBCampo::DBNotNull, _("IVA") );
+    addDBCampo ( "ffactura", DBCampo::DBdate, DBCampo::DBNotNull, _("Fecha factura") );
+    addDBCampo ( "idborrador", DBCampo::DBint, DBCampo::DBNotNull, _("Borrador") );
+    addDBCampo ( "numorden", DBCampo::DBint, DBCampo::DBNotNull, _("Orden") );
+    addDBCampo ( "cif", DBCampo::DBvarchar, DBCampo::DBNotNull, _("CIF") );
+    addDBCampo ( "idfpago", DBCampo::DBint, DBCampo::DBNothing, _("Forma de pago") );
+    addDBCampo ( "incregistro", DBCampo::DBboolean, DBCampo::DBNotNull, _("Inc registro") );
+    addDBCampo ( "regularizacion", DBCampo::DBboolean, DBCampo::DBNothing, _("Regularizacion") );
+    addDBCampo ( "plan349", DBCampo::DBboolean, DBCampo::DBNothing, _("plan 349") );
+    addDBCampo ( "factemitida", DBCampo::DBboolean, DBCampo::DBNotNull, _("Factura emitida") );
+    addDBCampo ( "rectificaaregistroiva", DBCampo::DBint, DBCampo::DBNothing, _("Rectifica a") );
+    addDBCampo ( "factura", DBCampo::DBvarchar, DBCampo::DBNothing, _("Factura") );
+    addDBCampo ( "femisionregistroiva", DBCampo::DBdate, DBCampo::DBNotNull, _("Fecha emision") );
+    addDBCampo ( "serieregistroiva", DBCampo::DBvarchar, DBCampo::DBNothing, _("Serie") );
     _depura ( "END RegistroIva::RegistroIva", 0 );
 }
 

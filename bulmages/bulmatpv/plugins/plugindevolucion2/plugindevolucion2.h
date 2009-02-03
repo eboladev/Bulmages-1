@@ -24,6 +24,7 @@
 #include "bulmatpv.h"
 #include "empresatpv.h"
 
+
 extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );
 

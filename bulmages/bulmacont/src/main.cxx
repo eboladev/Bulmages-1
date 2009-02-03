@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   Copyright (C) 2002 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
@@ -133,7 +132,7 @@ int main ( int argc, char **argv )
 
         /// Cargamos el splashScreen.
         Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", CONFIG_VERSION );
-        splashScr->mensaje ( QApplication::translate ( "main", "Iniciando clases" ) );
+        splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
         /// Miramos en los par&aacute;metros pasados al programa por si ya viene
@@ -163,7 +162,7 @@ int main ( int argc, char **argv )
         g_main = bges;
 
         splashScr->show();
-        splashScr->mensaje ( QApplication::translate ( "main", "Leyendo configuracion" ) );
+        splashScr->mensaje ( _( "Leyendo configuracion" ) );
         splashScr->setBarraProgreso ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
@@ -176,7 +175,7 @@ int main ( int argc, char **argv )
             confpr->leeconfig ( confEsp );
         } // end if
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Cargando Traducciones" ) );
+        splashScr->mensaje ( _( "Cargando traducciones" ) );
         splashScr->setBarraProgreso ( 3 );
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -210,13 +209,13 @@ int main ( int argc, char **argv )
         /// Cargamos las librerias de g_plugins.
         g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMACONT ) );
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Lanzando Plugins" ) );
+        splashScr->mensaje ( _( "Lanzando plugins" ) );
         splashScr->setBarraProgreso ( 5 );
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "entryPoint", bges );
 
-        splashScr->mensaje ( QApplication::translate ( "main", "Inicializando Componentes" ) );
+        splashScr->mensaje ( _( "Inicializando componentes" ) );
         splashScr->setBarraProgreso ( 6 );
 
         bges->empresaactual() ->createMainWindows ( splashScr );

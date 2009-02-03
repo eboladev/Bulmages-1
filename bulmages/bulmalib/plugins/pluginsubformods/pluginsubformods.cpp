@@ -40,6 +40,11 @@
 int entryPoint ( QApplication * )
 {
     _depura ( "entryPoint" , 0, "Punto de Entrada del plugin de Subformods" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginsubformods", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
@@ -83,7 +88,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformods::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Exportar a hoja de calculo (ODS)" ) );
+    menu->addAction ( _( "Exportar a hoja de calculo (ODS)" ) );
     _depura ( "END myplugsubformods::s_pintaMenu", 0 );
 }
 

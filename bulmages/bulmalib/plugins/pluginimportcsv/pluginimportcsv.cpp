@@ -47,6 +47,9 @@ void entryPoint ( QMainWindow *bges )
 {
     _depura ( "Entrada del plugin ImportCSV", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginimportcsv", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_bges_importcsv = bges;
 

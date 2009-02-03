@@ -466,7 +466,7 @@ void SubForm2Bc::boton_balance1 ( int tipo )
 void SubForm2Bc::creaMenu ( QMenu *menu )
 {
     _depura ( "SubForm2Bc::pintaMenu", 0 );
-    menu->addAction ( tr ( "Submenu de contabilidad" ) );
+    menu->addAction ( _( "Submenu de contabilidad" ) );
     menu->addSeparator();
     _depura ( "END SubForm2Bc::pintaMenu", 0 );
 }

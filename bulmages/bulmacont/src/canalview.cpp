@@ -33,7 +33,7 @@ canalview::canalview ( Empresa  *emp, QWidget *parent )
 {
     _depura ( "canalview::canalview", 0 );
 
-    setTitleName ( tr ( "Canal" ) );
+    setTitleName ( _( "Canal" ) );
     /// EStablezco cual es la tabla en la que basarse para los permisos
     setDBTableName ( "canal" );
 
@@ -103,9 +103,9 @@ void canalview::on_mui_idcanal_valueChanged ( QString numcombo )
 
     if ( dialogChanges_hayCambios() && flipflop ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar canal" ),
-                                    tr ( "Desea guardar los cambios." ),
-                                    tr ( "&Guardar" ), tr ( "&Cancelar" ), 0 , 0, 1 ) == 0 )
+                                    _( "Guardar canal" ),
+                                    _( "Desea guardar los cambios." ),
+                                    _( "&Guardar" ), _( "&Cancelar" ), 0 , 0, 1 ) == 0 )
             on_mui_guardar_clicked();
     } // end if
 
@@ -181,13 +181,13 @@ void canalview::on_mui_crear_clicked()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar canal" ),
-                                    tr ( "Desea guardar los cambios." ),
-                                    tr ( "&Guardar" ), tr ( "&Cancelar" ), 0 , 0, 1 ) == 0 )
+                                    _( "Guardar canal" ),
+                                    _( "Desea guardar los cambios." ),
+                                    _( "&Guardar" ), _( "&Cancelar" ), 0 , 0, 1 ) == 0 )
             on_mui_guardar_clicked();
     } // end if
     QString query = "";
-    QTextStream ( &query ) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << tr ( "Nuevo canal" ) << "', '" << tr ( "Escriba su descripcion" ) << "')";
+    QTextStream ( &query ) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << _( "Nuevo canal" ) << "', '" << _( "Escriba su descripcion" ) << "')";
     empresaBase() ->begin();
     empresaBase() ->ejecuta ( query );
     query = "";
@@ -208,9 +208,9 @@ void canalview::on_mui_borrar_clicked()
 {
     _depura ( "canalview::on_mui_borrar_clicked", 0 );
     switch ( QMessageBox::warning ( this,
-                                    tr ( "Borrar canal" ),
-                                    tr ( "Se va a borrar este canal.\nEsto puede ocasionar perdida de datos." ),
-                                    tr ( "&Borrar" ), tr ( "&Cancelar" ), 0 , 0, 1 ) ) {
+                                    _( "Borrar canal" ),
+                                    _( "Se va a borrar este canal.\nEsto puede ocasionar perdida de datos." ),
+                                    _( "&Borrar" ), _( "&Cancelar" ), 0 , 0, 1 ) ) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         query.sprintf ( "DELETE FROM canal WHERE idcanal = %d", idcanal );
@@ -233,9 +233,9 @@ void canalview::closeEvent ( QCloseEvent *e )
     _depura ( "ccosteview::closeEvent", 0 );
     if ( dialogChanges_hayCambios() ) {
         int val = QMessageBox::warning ( this,
-                                         tr ( "Guardar canal" ),
-                                         tr ( "Desea guardar los cambios?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
+                                         _( "Guardar canal" ),
+                                         _( "Desea guardar los cambios?" ),
+                                         _( "&Si" ), _( "&No" ), _( "&Cancelar" ), 0, 2 );
         if ( val == 0 )
             on_mui_guardar_clicked();
         if ( val == 2 )

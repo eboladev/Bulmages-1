@@ -47,7 +47,7 @@ Archivo::Archivo ( EmpresaBase *comp, QWidget *parent )
         setupUi ( this );
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear la ventana de Importacion" ) );
+        mensajeInfo ( _( "Error al crear la ventana de importacion" ) );
     } // end try
     _depura ( "END Archivo::Archivo", 0 );
 }
@@ -65,7 +65,7 @@ Archivo::~Archivo()
 void Archivo::on_mui_buscarArchivo_clicked()
 {
 
-    QString fileName = QFileDialog::getOpenFileName ( this, tr ( "Open File" ), "", tr ( "All files (*)" ) );
+    QString fileName = QFileDialog::getOpenFileName ( this, _( "Open file" ), "", _( "All files (*)" ) );
     mui_archivo->setText ( fileName );
 }
 

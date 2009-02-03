@@ -23,6 +23,7 @@
 #include "QString"
 
 #include "aboutview.h"
+#include "funcaux.h"
 
 
 /// Rellena con datos los QTextEdit y muestra el formulario.
@@ -37,7 +38,7 @@ AboutView::AboutView ( QDialog *parent ) : QDialog ( parent )
     QString str_licencia;
     setupUi ( this );
 
-    mui_lbversion->setText ( mui_lbversion->text() + " " + tr ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
+    mui_lbversion->setText ( mui_lbversion->text() + " " + _( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Facturaci&oacute;n GPL</h2></center>";
     str_autores = "<center><h2>Autores de BulmaFact</h2>" \

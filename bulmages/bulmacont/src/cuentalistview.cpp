@@ -65,7 +65,7 @@ CuentaListView::CuentaListView ( Empresa *comp, QWidget *parent, Qt::WFlags flag
     if ( modoEdicion() ) {
         empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( tr ( "Selector de articulos" ) );
+        setWindowTitle ( _( "Selector de articulos" ) );
         mui_imprimir->setHidden ( TRUE );
     } // end if
 
@@ -158,14 +158,14 @@ void CuentaListView::borrar()
     _depura ( "CuentaListView::on_mui_borrar_clicked", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Tiene que seleccionar un articulo" ), this );
+        mensajeInfo ( _( "Tiene que seleccionar un articulo" ), this );
         return;
     } // end if
     try {
         QString idarticulo = mui_list->DBvalue ( "idarticulo" );
         if ( QMessageBox::Yes == QMessageBox::question ( this,
-                tr ( "Borrar articulo" ),
-                tr ( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
+                _( "Borrar articulo" ),
+                _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
                 QMessageBox::Yes, QMessageBox::No ) ) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
             int error = EmpresaBase() ->ejecuta ( SQLQuery );
@@ -175,7 +175,7 @@ void CuentaListView::borrar()
         } // end if
         _depura ( "END CuentaListView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el articulo" ), this );
+        mensajeInfo ( _( "Error al borrar el articulo" ), this );
     } // end try
 */
 }
@@ -249,9 +249,9 @@ void CuentaListView::on_mui_exportar_clicked()
 /*
     _depura ( "CuentaListView::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    tr ( "Elija el archivo" ),
+                    _( "Elija el archivo" ),
                     confpr->valor ( CONF_DIR_USER ),
-                    tr ( "Clientes (*.xml)" ) ) );
+                    _( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_ARTICULOS );
@@ -276,9 +276,9 @@ void CuentaListView::on_mui_importar_clicked()
 /*
     _depura ( "CuentaListView::INIT_s_importar", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    tr ( "Elija el archivo" ),
+                    _( "Elija el archivo" ),
                     confpr->valor ( CONF_DIR_USER ),
-                    tr ( "Clientes (*.xml)" ) ) );
+                    _( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2BulmaFact ( filexml, IMPORT_ARTICULOS );
@@ -306,8 +306,8 @@ void CuentaListView::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar articulo" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar articulo" ) );
+    QAction *edit = popup->addAction ( _( "Editar articulo" ) );
+    QAction *del = popup->addAction ( _( "Borrar articulo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -383,16 +383,16 @@ CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
     setDBCampoId ( "idcuenta" );
 
 
-    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cuenta" ) );
-    addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo Cuenta" ) );
-    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de la cuenta" ) );
+    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID cuenta" ) );
+    addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo Cuenta" ) );
+    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre de la cuenta" ) );
 /*
-    addSHeader ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion abreviada del articulo" ) );
-    addSHeader ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Observaciones sobre el articulo" ) );
-    addSHeader ( "desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion del tipo de articulo" ) );
-    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion tipo de I.V.A." ) );
-    addSHeader ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "P.V.P. articulo" ) );
-    addSHeader ( "stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Disponible en stock" ) );
+    addSHeader ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion abreviada del articulo" ) );
+    addSHeader ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Observaciones sobre el articulo" ) );
+    addSHeader ( "desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion del tipo de articulo" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion tipo de I.V.A." ) );
+    addSHeader ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "P.V.P. articulo" ) );
+    addSHeader ( "stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Disponible en stock" ) );
 */
     setinsercion ( FALSE );
     setDelete ( FALSE );

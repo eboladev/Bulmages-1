@@ -207,7 +207,7 @@ void correctorwidget::alink ( const QUrl &url )
                 bool ok;
                 view->muestraasiento(linker.toInt(&ok));
         */
-        QMessageBox::warning ( 0, tr ( "Opcion no implementada" ), tr ( "No se puede acceder al error" ), 0, 1, 2 );
+        QMessageBox::warning ( 0, _( "Opcion no implementada" ), _( "No se puede acceder al error" ), 0, 1, 2 );
     } // endif
     _depura ( "END correctorwidget::alink", 0 );
 }

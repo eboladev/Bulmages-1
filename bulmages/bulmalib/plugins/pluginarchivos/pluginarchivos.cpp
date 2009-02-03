@@ -43,6 +43,11 @@ int entryPoint ( QMainWindow *bcont )
 {
     _depura ( "Entrada del plugin Bloqueos", 0 );
     _depura ( "Iniciado correctamente el plugin Bloqueos", 10 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginarchivos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     return ( 0 );
 }
 

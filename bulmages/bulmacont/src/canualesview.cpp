@@ -38,7 +38,7 @@ CAnualesView::CAnualesView ( Empresa  *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "CAnualesView::CAnualesView", 0 );
-    setTitleName ( tr ( "Cuentas Anuales" ) );
+    setTitleName ( _( "Cuentas Anuales" ) );
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
@@ -119,7 +119,7 @@ void CAnualesView::inicializatabla()
     mui_listado->clear();
     mui_listado->setColumnCount ( 2 );
     QStringList headerlabels;
-    headerlabels << tr ( "Archivo" ) << tr ( "Archivo" );
+    headerlabels << _( "Archivo" ) << _( "Archivo" );
     mui_listado->setHorizontalHeaderLabels ( headerlabels );
 
     mui_listado->setColumnWidth ( COL_ARCHIVO, 290 );

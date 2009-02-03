@@ -307,11 +307,11 @@ void BConfiguracion::borrarEmpresa()
     dbEmpresa = PunteroAlSelector->empresaDB();
     if ( dbEmpresa != "" ) {
         if ( dbEmpresa == "bgplangcont" ) {
-            QMessageBox::information ( this, tr ( "Atencion" ), tr ( "Esta base de datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas." ), QMessageBox::Ok );
+            QMessageBox::information ( this, _( "Atencion" ), _( "Esta base de datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas." ), QMessageBox::Ok );
         } else if ( dbEmpresa != PunteroAlSelector->empresaDB() ) {
-            QMessageBox::warning ( this, tr ( "Atencion" ), tr ( "No esta permitido eliminar la base \n\r de datos actualmente abierta." ), QMessageBox::Ok, 0 );
+            QMessageBox::warning ( this, _( "Atencion" ), _( "No esta permitido eliminar la base \n\r de datos actualmente abierta." ), QMessageBox::Ok, 0 );
         } else {
-            int mensaje = QMessageBox::warning ( this, tr ( "Atencion" ), tr ( "Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n" ), QMessageBox::Yes, QMessageBox::No, 0 );
+            int mensaje = QMessageBox::warning ( this, _( "Atencion" ), _( "Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n" ), QMessageBox::Yes, QMessageBox::No, 0 );
             if ( mensaje == QMessageBox::Yes ) {
                 QString sentencia = "dropdb " + dbEmpresa;
                 system ( sentencia.toAscii().constData() );
@@ -344,9 +344,9 @@ void BConfiguracion::salvarEmpresa()
     fprintf ( stderr, "Vamos a guardar la empresa %s\n", dbEmpresa.toAscii().constData() );
 
     if ( dbEmpresa != "" ) {
-        QString fn = QFileDialog::getSaveFileName ( this, tr ( "Guardar empresa" ),
+        QString fn = QFileDialog::getSaveFileName ( this, _( "Guardar empresa" ),
                      confpr->valor ( CONF_DIR_USER ),
-                     tr ( "Empresas (*.pgdump)" ) );
+                     _( "Empresas (*.pgdump)" ) );
 
         if ( !fn.isEmpty() ) {
             if ( fn.right ( 7 ) != ".pgdump" )
@@ -376,9 +376,9 @@ void BConfiguracion::restaurarEmpresa()
 
     dbEmpresa = PunteroAlSelector->empresaDB();
     if ( dbEmpresa != "" ) {
-        QString fn = QFileDialog::getOpenFileName ( this, tr ( "Cargar empresa" ),
+        QString fn = QFileDialog::getOpenFileName ( this, _( "Cargar empresa" ),
                      confpr->valor ( CONF_DIR_USER ),
-                     tr ( "Empresas (*.pgdump)" ) );
+                     _( "Empresas (*.pgdump)" ) );
 
         if ( !fn.isEmpty() ) {
 

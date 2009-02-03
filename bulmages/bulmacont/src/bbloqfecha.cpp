@@ -74,12 +74,12 @@ BbloqFecha::BbloqFecha ( Empresa *emp, QWidget *parent )
 {
     _depura ( "BbloqFecha::BbloqFecha", 0 );
 
-    setTitleName ( tr ( "Bloquear Fechas" ) );
+    setTitleName ( _( "Bloquear Fechas" ) );
     /// Establecemos cual es la tabla en la que basarse para obtener permisos
     setDBTableName ( "asiento" );
 
-    qsbloqueado = tr ( "Bloqueado" );
-    qsabierto = tr ( "Abierto" );
+    qsbloqueado = _( "Bloqueado" );
+    qsabierto = _( "Abierto" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     QString query;
@@ -112,7 +112,7 @@ void BbloqFecha::inicializa()
     QString consultabd;
     mui_treeWidget->setColumnCount ( 2 );
     QStringList cabecera;
-    cabecera << tr ( "Ejercicio" ) << tr ( "Estado" );
+    cabecera << _( "Ejercicio" ) << _( "Estado" );
     mui_treeWidget->setColumnWidth ( 0, 200 );
     mui_treeWidget->setHeaderLabels ( cabecera );
 
@@ -144,51 +144,51 @@ void BbloqFecha::inicializa()
             switch ( curPeri->valor ( "periodo" ).toInt() ) {
             case 12:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Diciembre" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Diciembre" ) ); /// Columna 0.
                 break;
             case 11:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Noviembre" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Noviembre" ) ); /// Columna 0.
                 break;
             case 10:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Octubre" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Octubre" ) ); /// Columna 0.
                 break;
             case 9:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Septiembre" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Septiembre" ) ); /// Columna 0.
                 break;
             case 8:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Agosto" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Agosto" ) ); /// Columna 0.
                 break;
             case 7:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Julio" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Julio" ) ); /// Columna 0.
                 break;
             case 6:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Junio" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Junio" ) ); /// Columna 0.
                 break;
             case 5:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Mayo" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Mayo" ) ); /// Columna 0.
                 break;
             case 4:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Abril" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Abril" ) ); /// Columna 0.
                 break;
             case 3:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Marzo" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Marzo" ) ); /// Columna 0.
                 break;
             case 2:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Febrero" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Febrero" ) ); /// Columna 0.
                 break;
             case 1:
                 itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
-                itemlevel1->setText ( 0, tr ( "Enero" ) ); /// Columna 0.
+                itemlevel1->setText ( 0, _( "Enero" ) ); /// Columna 0.
                 break;
             } // end switch
             itemlevel1->ej = curEjer->valor ( "ejercicio" );
@@ -250,8 +250,8 @@ void BbloqFecha::on_mui_crear_clicked()
 
     /// Presentamos el dialogo preguntado que ejercicio crear.
     bool ok = FALSE;
-    ejer = QInputDialog::getInteger ( this, tr ( "Introduzca Ejercicio a Crear" ),
-                                      tr ( "Ponga el año:" ), ejer, 0, 10000, 1, &ok );
+    ejer = QInputDialog::getInteger ( this, _( "Introduzca Ejercicio a Crear" ),
+                                      _( "Ponga el año:" ), ejer, 0, 10000, 1, &ok );
 
     /// Comprobamos que el ejercicio introducido sea valido.
     if ( !ok ) return;
@@ -264,7 +264,7 @@ void BbloqFecha::on_mui_crear_clicked()
     if ( cur ) {
         if ( cur->numregistros() > 0 ) {
             delete cur;
-            mensajeInfo ( tr ( "Ejercicios ya contemplado" ) );
+            mensajeInfo ( _( "Ejercicios ya contemplado" ) );
             return;
         } // end if
     } // end if

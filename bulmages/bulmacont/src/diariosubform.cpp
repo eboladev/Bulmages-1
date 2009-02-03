@@ -32,33 +32,33 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( pa
     setDBTableName ( "borrador" );
     setFileConfig ( "DiarioSubForm" );
     setDBCampoId ( "idborrador" );
-    addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idasiento" ) );
-//     addSHeader ( "ordenasientoconfecha", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Asiento" ) );
-    addSHeader ( "ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Asiento" ) );
-    addSHeader ( "fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
-    addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Cuenta" ) );
-    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion" ) );
-    addSHeader ( "conceptocontable", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Concepto contable" ) );
-    addSHeader ( "debe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Debe" ) );
-    addSHeader ( "haber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Haber" ) );
-    addSHeader ( "comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoWrite, tr ( "Comentario" ) );
-    addSHeader ( "idborrador", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "idborrador" ) );
-    addSHeader ( "codigoborrador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "codigoborrador" ) );
-    addSHeader ( "tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tipocuenta" ) );
-    addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion de Cuenta" ) );
-    addSHeader ( "contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Contrapartida" ) );
-    addSHeader ( "codcontrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Contrapartida" ) );
-    addSHeader ( "nombrecanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Canal" ) );
-    addSHeader ( "marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "MarcaConciliacion" ) );
-    addSHeader ( "nombrec_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Centro Coste" ) );
-    addSHeader ( "factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Factura" ) );
-    addSHeader ( "idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idapunte" ) );
-    addSHeader ( "idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idtipoiva" ) );
-    addSHeader ( "idregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr ( "idregistroiva" ) );
-    addSHeader ( "idcanal", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView , tr ( "idcanal" ) );
-    addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "idc_coste" ) );
-    addSHeader ( "iddiario", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "iddiario" ) );
-    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idcuenta" ) );
+    addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "idasiento" ) );
+//     addSHeader ( "ordenasientoconfecha", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Asiento" ) );
+    addSHeader ( "ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Asiento" ) );
+    addSHeader ( "fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha" ) );
+    addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Cuenta" ) );
+    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion" ) );
+    addSHeader ( "conceptocontable", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Concepto contable" ) );
+    addSHeader ( "debe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Debe" ) );
+    addSHeader ( "haber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Haber" ) );
+    addSHeader ( "comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoWrite, _( "Comentario" ) );
+    addSHeader ( "idborrador", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "idborrador" ) );
+    addSHeader ( "codigoborrador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "codigoborrador" ) );
+    addSHeader ( "tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "tipocuenta" ) );
+    addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Descripcion de Cuenta" ) );
+    addSHeader ( "contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Contrapartida" ) );
+    addSHeader ( "codcontrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Contrapartida" ) );
+    addSHeader ( "nombrecanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Canal" ) );
+    addSHeader ( "marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "MarcaConciliacion" ) );
+    addSHeader ( "nombrec_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Centro Coste" ) );
+    addSHeader ( "factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Factura" ) );
+    addSHeader ( "idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "idapunte" ) );
+    addSHeader ( "idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "idtipoiva" ) );
+    addSHeader ( "idregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, _( "idregistroiva" ) );
+    addSHeader ( "idcanal", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView , _( "idcanal" ) );
+    addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, _( "idc_coste" ) );
+    addSHeader ( "iddiario", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "iddiario" ) );
+    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "idcuenta" ) );
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
     setListadoPijama ( FALSE );
     setColumnToRowSpan ( "ordenasientoconfecha" );
@@ -93,11 +93,11 @@ void DiarioSubForm::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Mostrar asiento" ) );
+    menu->addAction ( _( "Mostrar asiento" ) );
     menu->addSeparator();
-    menu->addAction ( tr ( "Mostrar extracto (dia)" ) );
-    menu->addAction ( tr ( "Mostrar extracto (mes)" ) );
-    menu->addAction ( tr ( "Mostrar extracto (ano)" ) );
+    menu->addAction ( _( "Mostrar extracto (dia)" ) );
+    menu->addAction ( _( "Mostrar extracto (mes)" ) );
+    menu->addAction ( _( "Mostrar extracto (ano)" ) );
     _depura ( "END ListLinAsiento1View::s_pintaMenu", 0 );
 }
 
@@ -110,13 +110,13 @@ void DiarioSubForm::s_trataMenu ( QAction *action )
 {
     _depura ( "ListLinAsiento1View::s_trataMenu", 0 );
     if ( !action ) return;
-    if ( action->text() == tr ( "Mostrar asiento" ) )
+    if ( action->text() == _( "Mostrar asiento" ) )
         boton_asiento();
-    if ( action->text() == tr ( "Mostrar extracto (dia)" ) )
+    if ( action->text() == _( "Mostrar extracto (dia)" ) )
         boton_extracto1 ( 0 );
-    if ( action->text() == tr ( "Mostrar extracto (mes)" ) )
+    if ( action->text() == _( "Mostrar extracto (mes)" ) )
         boton_extracto1 ( 1 );
-    if ( action->text() == tr ( "Mostrar extracto (ano)" ) )
+    if ( action->text() == _( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
     _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );

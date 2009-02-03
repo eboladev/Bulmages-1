@@ -39,6 +39,11 @@
 int entryPoint ( QApplication * )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginsubformsxc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     cargaTraducciones ( "pluginsubformsxc" );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
     return 0;
@@ -74,7 +79,7 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformsxc::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Exportar a hoja de calculo (SXC)" ) );
+    menu->addAction ( _( "Exportar a hoja de calculo (SXC)" ) );
     _depura ( "END myplugsubformsxc::s_pintaMenu", 0 );
 }
 
