@@ -45,10 +45,10 @@ PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
     /// Preparamos la lista de paises.
     mui_list->setDBTableName ( "pais" );
     mui_list->setDBCampoId ( "idpais" );
-    mui_list->addSHeader ( "idpais", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id. Pais" ) );
-    mui_list->addSHeader ( "descpais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre Pais" ) );
-    mui_list->addSHeader ( "cod2pais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo 2 Digitos" ) );
-    mui_list->addSHeader ( "cod3pais", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo 3 Digitos" ) );
+    mui_list->addSHeader ( "idpais", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id. Pais" ) );
+    mui_list->addSHeader ( "descpais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre Pais" ) );
+    mui_list->addSHeader ( "cod2pais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo 2 Digitos" ) );
+    mui_list->addSHeader ( "cod3pais", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Codigo 3 Digitos" ) );
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
@@ -56,21 +56,21 @@ PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
     /// Preparamos la lista de provincias.
     mui_listprovincias->setDBTableName ( "provincia" );
     mui_listprovincias->setDBCampoId ( "idprovincia" );
-    mui_listprovincias->addSHeader ( "idprovincia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id. Provincia" ) );
-    mui_listprovincias->addSHeader ( "idpais", DBCampo::DBint, DBCampo::DBNotNull , SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id. Pais" ) );
-    mui_listprovincias->addSHeader ( "provincia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Provincia" ) );
+    mui_listprovincias->addSHeader ( "idprovincia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id. Provincia" ) );
+    mui_listprovincias->addSHeader ( "idpais", DBCampo::DBint, DBCampo::DBNotNull , SHeader::DBNoView | SHeader::DBNoWrite, _( "Id. Pais" ) );
+    mui_listprovincias->addSHeader ( "provincia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Provincia" ) );
     mui_listprovincias->setinsercion ( TRUE );
     mui_listprovincias->setDelete ( TRUE );
     mui_listprovincias->setSortingEnabled ( FALSE );
 
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setTitleName ( tr ( "Pais" ) );
+    setTitleName ( _( "Pais" ) );
     setDBTableName ( "pais" );
     setDBCampoId ( "idpais" );
-    addDBCampo ( "idpais", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "idpais" ) );
-    addDBCampo ( "descpais", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Pais" ) );
-    addDBCampo ( "cod2pais", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo 2 digitos" ) );
-    addDBCampo ( "cod3pais", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo 3 digitos" ) );
+    addDBCampo ( "idpais", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "idpais" ) );
+    addDBCampo ( "descpais", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Pais" ) );
+    addDBCampo ( "cod2pais", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo 2 digitos" ) );
+    addDBCampo ( "cod3pais", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo 3 digitos" ) );
 
 
     m_idpais = "0";
@@ -114,9 +114,9 @@ void PaisView::on_mui_list_itemClicked ( QTableWidgetItem * )
 
     if ( m_idpais != "0" && dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar pais" ),
-                                    tr ( "Desea guardar los cambios?" ),
-                                    tr ( "&Guardar" ), tr ( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
+                                    _( "Guardar pais" ),
+                                    _( "Desea guardar los cambios?" ),
+                                    _( "&Guardar" ), _( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
             on_mui_guardar_clicked();
         } // end if
     } // end if
@@ -157,7 +157,7 @@ int PaisView::guardar()
     QString id;
 
     if ( DBvalue ( "idpais" ).isEmpty() ) {
-        mensajeInfo ( tr ( "Seleccione un pais para guardar" ) );
+        mensajeInfo ( _( "Seleccione un pais para guardar" ) );
     } else {
         setDBvalue ( "descpais", mui_descpais->text() );
         setDBvalue ( "cod2pais", mui_cod2pais->text() );
@@ -185,8 +185,8 @@ void PaisView::on_mui_crear_clicked()
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() ) {
             if ( QMessageBox::warning ( this,
-                                        tr ( "Guardar pais" ),
-                                        tr ( "Desea guardar los cambios?" ),
+                                        _( "Guardar pais" ),
+                                        _( "Desea guardar los cambios?" ),
                                         QMessageBox::Ok,
                                         QMessageBox::Cancel ) == QMessageBox::Ok ) {
                 on_mui_guardar_clicked();
@@ -203,7 +203,7 @@ void PaisView::on_mui_crear_clicked()
         mostrarplantilla();
         _depura ( "END PaisView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el banco" ) );
+        mensajeInfo ( _( "Error al crear el banco" ) );
         empresaBase() ->rollback();
     } // end try
 }
@@ -216,13 +216,13 @@ void PaisView::on_mui_borrar_clicked()
 {
     _depura ( "PaisView::on_mui_borrar_clicked", 0 );
     if ( m_idpais == "" | m_idpais == "0" ) {
-        mensajeInfo ( tr ( "Debe seleccionar un elemento de la lista" ) );
+        mensajeInfo ( _( "Debe seleccionar un elemento de la lista" ) );
         return;
     } // end if
     switch ( QMessageBox::warning ( this,
-                                    tr ( "Borrar pais" ),
-                                    tr ( "Se va a borrar el pais seleccionado.\nEsta operacion puede ocasionar perdida de datos." ),
-                                    tr ( "&Borrar" ), tr ( "&Cancelar" ), 0, 0, 1 ) ) {
+                                    _( "Borrar pais" ),
+                                    _( "Se va a borrar el pais seleccionado.\nEsta operacion puede ocasionar perdida de datos." ),
+                                    _( "&Borrar" ), _( "&Cancelar" ), 0, 0, 1 ) ) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         try {
@@ -234,7 +234,7 @@ void PaisView::on_mui_borrar_clicked()
             pintar();
             mui_datospais->setDisabled ( TRUE );
         } catch ( ... ) {
-            mensajeInfo ( tr ( "Error al intentar borrar el pais" ) );
+            mensajeInfo ( _( "Error al intentar borrar el pais" ) );
             empresaBase() ->rollback();
         } // end try
     } // end switch

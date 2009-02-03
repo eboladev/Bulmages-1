@@ -90,7 +90,7 @@ SubForm3::SubForm3 ( QWidget *parent ) : BLWidget ( parent )
 
     /// Para el listado de columnas hacemos una inicializacion.
     QStringList headers;
-    headers << "" << tr ( "Nombre" ) << tr ( "Nombre de campo" ) << tr ( "Visible" );
+    headers << "" << _( "Nombre" ) << _( "Nombre de campo" ) << _( "Visible" );
     mui_listcolumnas->setColumnCount ( 4 );
     mui_listcolumnas->setHorizontalHeaderLabels ( headers );
     mui_listcolumnas->setShowGrid ( FALSE );
@@ -1068,11 +1068,11 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Preparamos la barra de progreso
     BLProgressBar *barra = new BLProgressBar;
-//    barra.setText ( tr ( "Cargando SubFormulario" ) );
+//    barra.setText ( _( "Cargando SubFormulario" ) );
     if ( cur->numregistros() > 100 ) {
         barra->setValue ( 0 );
         barra->show();
-        barra->setText ( tr ( "Cargando SubFormulario " ) + m_tablename );
+        barra->setText ( _( "Cargando SubFormulario " ) + m_tablename );
     } // end if
 
     /// Desactivamos el sorting debido a un error en las Qt4.
@@ -2066,7 +2066,7 @@ QString SubForm3::imprimir()
     BLProgressBar barra;
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
-    barra.setText ( tr ( "Imprimiendo " ) +  m_tablename );
+    barra.setText ( _( "Imprimiendo " ) +  m_tablename );
     barra.setValue ( 0 );
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
     QLocale spanish;
@@ -2325,17 +2325,17 @@ void SubForm3::contextMenuEvent ( QContextMenuEvent * )
     creaMenu ( popup );
 
     if ( m_delete ) {
-        del = popup->addAction ( tr ( "Borrar registro" ) );
+        del = popup->addAction ( _( "Borrar registro" ) );
         popup->addSeparator();
     } // end if
-    QAction *ajustc = popup->addAction ( tr ( "Ajustar columa" ) );
-    QAction *ajustac = popup->addAction ( tr ( "Ajustar altura" ) );
+    QAction *ajustc = popup->addAction ( _( "Ajustar columa" ) );
+    QAction *ajustac = popup->addAction ( _( "Ajustar altura" ) );
 
-    QAction *ajust = popup->addAction ( tr ( "Ajustar columnas" ) );
-    QAction *ajusta = popup->addAction ( tr ( "Ajustar alturas" ) );
+    QAction *ajust = popup->addAction ( _( "Ajustar columnas" ) );
+    QAction *ajusta = popup->addAction ( _( "Ajustar alturas" ) );
 
     popup->addSeparator();
-    QAction *verconfig = popup->addAction ( tr ( "Ver/Ocultar configurador de subformulario" ) );
+    QAction *verconfig = popup->addAction ( _( "Ver/Ocultar configurador de subformulario" ) );
 
     QAction *opcion = popup->exec ( QCursor::pos() );
 

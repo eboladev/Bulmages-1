@@ -147,8 +147,8 @@ ListVentanas::ListVentanas ( QWidget *a ) : QDockWidget ( a )
     m_listBox->setIconSize ( QSize ( 32, 32 ) );
     m_listBox->setContentsMargins ( 0, 0, 0, 0 );
     m_listBox->setSpacing ( 0 );
-    m_listBox->setWindowTitle ( tr ( "Indexador" ) );
-    setWindowTitle ( tr ( "Indexador" ) );
+    m_listBox->setWindowTitle ( _( "Indexador" ) );
+    setWindowTitle ( _( "Indexador" ) );
     setFocusPolicy ( Qt::StrongFocus );
     setWidget ( m_listBox );
     connect ( m_listBox, SIGNAL ( itemDoubleClicked ( QListWidgetItem * ) ), this, SLOT ( dclicked() ) );

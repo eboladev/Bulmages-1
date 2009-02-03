@@ -211,7 +211,7 @@ abreempresaview::abreempresaview ( QWidget *parent, QString tipo, const char *na
     /// Si el m_modo es false (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if ( !modoDestructivo() )
-        botonCancelar->setText ( tr ( "&Cierra el programa" ) );
+        botonCancelar->setText ( _( "&Cierra el programa" ) );
     // end if
     cargaArchivo();
     _depura ( "END abreempresaview::abreempresaview", 0 );
@@ -280,7 +280,7 @@ void abreempresaview::accept()
         setTipoEmpresa ( itemfilaactual3->text() );
         done ( 0 );
     } else
-        mensajeInfo ( tr ( "Para entrar, antes tiene que seleccionar una empresa." ) );
+        mensajeInfo ( _( "Para entrar, antes tiene que seleccionar una empresa." ) );
     _depura ( "END abreempresaview::accept", 0 );
 }
 
@@ -489,7 +489,7 @@ void abreempresaview::preparamui_empresas()
     mui_empresas->setRowCount ( 0 );
     mui_empresas->setColumnCount ( 4 );
     QStringList nombrecolumnas;
-    nombrecolumnas << tr ( "Nombre" ) << tr ( "Anyo" ) << tr ( "Archivo" ) << tr ( "Tipo" );
+    nombrecolumnas << _( "Nombre" ) << _( "Anyo" ) << _( "Archivo" ) << _( "Tipo" );
     mui_empresas->setHorizontalHeaderLabels ( nombrecolumnas );
     mui_empresas->horizontalHeader() ->setResizeMode ( 0, QHeaderView::Stretch );
 

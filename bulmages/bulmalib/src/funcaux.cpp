@@ -520,11 +520,11 @@ void _depura ( const QString &cad, int nivel, const QString &param )
         if ( nivel == 2 || ( supnivel == 2 && nivel == 0 ) || nivel == 3 ) {
             out << cad << " " << param << "\n" << flush;
             int err = QMessageBox::information ( NULL,
-                                                 QApplication::translate ( "funcaux", "Informacion de depuracion" ),
+                                                 _( "Informacion de depuracion" ),
                                                  cad + " " + param,
-                                                 QApplication::translate ( "funcaux", "&Continuar" ),
-                                                 QApplication::translate ( "funcaux", "&Omitir" ),
-                                                 QApplication::translate ( "funcaux", "Omitir &clase" ),
+                                                 _( "&Continuar" ),
+                                                 _( "&Omitir" ),
+                                                 _( "Omitir &clase" ),
                                                  0, 1 );
             if ( err == 1 ) {
                 mensajesanulados[indice++] = cad;
@@ -550,8 +550,8 @@ void mensajeInfo ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.information ( parent,
-                         QApplication::translate ( "funcaux", "Informacion del programa" ),
-                         cad, QApplication::translate ( "funcaux", "&Continuar" ),
+                         _( "Informacion del programa" ),
+                         cad, _( "&Continuar" ),
                          QString::null, 0 );
 }
 
@@ -560,8 +560,8 @@ void mensajeAviso ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.warning ( parent,
-                     QApplication::translate ( "funcaux", "Aviso del programa" ),
-                     cad, QApplication::translate ( "funcaux", "&Continuar" ),
+                     _( "Aviso del programa" ),
+                     cad, _( "&Continuar" ),
                      QString::null, 0 );
 }
 
@@ -570,8 +570,8 @@ void mensajeError ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.critical ( parent,
-                      QApplication::translate ( "funcaux", "Error del programa" ),
-                      cad, QApplication::translate ( "funcaux", "&Continuar" ),
+                      _( "Error del programa" ),
+                      cad, _( "&Continuar" ),
                       QString::null, 0 );
 }
 

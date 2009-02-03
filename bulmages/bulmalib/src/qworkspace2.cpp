@@ -88,7 +88,7 @@ void QWorkspace2::addWindow ( QWidget * w )
 
     /// Crea un QAction para manejar la tecla rapida ESC para cerrar la ventana.
     QAction *accionEsc = new QAction ( w );
-    accionEsc->setShortcut ( tr ( "Esc" ) );
+    accionEsc->setShortcut ( _( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
     _depura ( "END QWorkspace2::addWindow", 0 );

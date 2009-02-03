@@ -336,8 +336,8 @@ void Ficha::on_mui_borrar_clicked()
     _depura ( "Ficha::on_mui_borrar_clicked", 0 );
 
     int val = QMessageBox::question ( this,
-                                      tr ( "Borrar" ) + " " + windowTitle(),
-                                      tr ( "Desea eliminar '" ) + " " + windowTitle() + "' ?",
+                                      _( "Borrar" ) + " " + windowTitle(),
+                                      _( "Desea eliminar '" ) + " " + windowTitle() + "' ?",
                                       QMessageBox::Yes,
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
@@ -347,7 +347,7 @@ void Ficha::on_mui_borrar_clicked()
             _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
             close();
         } else {
-            mensajeInfo ( windowTitle() + tr ( "No se ha podido borrar" ) );
+            mensajeInfo ( windowTitle() + _( "No se ha podido borrar" ) );
         }// end if
     } // end if
     _depura ( "END Ficha::on_mui_borrar_clicked", 0 );
@@ -365,9 +365,9 @@ void Ficha::closeEvent ( QCloseEvent *e )
     try {
         if ( dialogChanges_hayCambios() ) {
             int val = QMessageBox::warning ( this,
-                                             tr ( "Guardar" ) + " " + windowTitle(),
-                                             tr ( "Desea guardar los cambios?" ),
-                                             tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
+                                             _( "Guardar" ) + " " + windowTitle(),
+                                             _( "Desea guardar los cambios?" ),
+                                             _( "&Si" ), _( "&No" ), _( "&Cancelar" ), 0, 2 );
             if ( val == 0 ) {
                 guardar();
             } // end if
@@ -380,7 +380,7 @@ void Ficha::closeEvent ( QCloseEvent *e )
         /// sacar las ventanas de listventanas.
 //        sacaWindow();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "No se pudo cerrar la ventana debido a un error" ) );
+        mensajeInfo ( _( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
     } // end try
     _depura ( "END Ficha::closeEvent", 0 );
@@ -439,8 +439,8 @@ void Ficha::on_customContextMenuRequested ( const QPoint & )
     creaMenu ( popup );
 
 
-    QAction *avconfig = popup->addAction ( tr ( "Opciones Avanzadas de Ficha" ) );
-    QAction *avprint = popup->addAction ( tr ( "Imprimir Ficha" ) );
+    QAction *avconfig = popup->addAction ( _( "Opciones avanzadas de ficha" ) );
+    QAction *avprint = popup->addAction ( _( "Imprimir ficha" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
 
     if ( opcion ) {

@@ -67,13 +67,13 @@ void BusquedaPeriodo::s_activated ( int index )
 BusquedaPeriodo::BusquedaPeriodo ( QWidget *parent ) : QComboBox2 ( parent )
 {
     _depura ( "BusquedaPeriodo::BusquedaPeriodo", 0 );
-    m_textos[0] = tr ( "Semanal" );
-    m_textos[1] = tr ( "Quincenal" );
-    m_textos[2] = tr ( "Mensual" );
-    m_textos[3] = tr ( "Trimestral" );
-    m_textos[4] = tr ( "Semestral" );
-    m_textos[5] = tr ( "Anual" );
-    m_textos[6] = tr ( "Bienal" );
+    m_textos[0] = _( "Semanal" );
+    m_textos[1] = _( "Quincenal" );
+    m_textos[2] = _( "Mensual" );
+    m_textos[3] = _( "Trimestral" );
+    m_textos[4] = _( "Semestral" );
+    m_textos[5] = _( "Anual" );
+    m_textos[6] = _( "Bienal" );
     m_textos[7] = "";
 
     m_valores[0] = "@ 7 days";

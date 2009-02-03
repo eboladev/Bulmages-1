@@ -322,7 +322,7 @@ void Listado::on_mui_editar_clicked()
     _depura ( "ArticuloList::INIT_s_editArticle", 0 );
     int a = m_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Tiene que seleccionar un elemento" ) );
+        mensajeInfo ( _( "Tiene que seleccionar un elemento" ) );
         return;
     } // end if
     editar ( a );
@@ -373,8 +373,8 @@ void Listado::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( tr ( "Editar" ) );
-    QAction *del = popup->addAction ( tr ( "Borrar" ) );
+    QAction *edit = popup->addAction ( _( "Editar" ) );
+    QAction *del = popup->addAction ( _( "Borrar" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();

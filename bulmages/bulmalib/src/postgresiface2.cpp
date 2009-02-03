@@ -136,7 +136,7 @@ void cursor2::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int 
             _depura ( PQerrorMessage ( conn ) );
             _depura ( "QUERY command failed [" + SQLQuery + "]", 10 );
             if ( confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
-                msgError ( QString ( QObject::tr ( "Error al hacer la consulta con la base de datos." ) ) + "\n:: " + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
+                msgError ( _( "Error al hacer la consulta con la base de datos." ) + QString("\n:: ") + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
             throw - 1;
