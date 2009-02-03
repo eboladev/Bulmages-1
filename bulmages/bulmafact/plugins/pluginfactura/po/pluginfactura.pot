@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,228 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: genfacqtoolbutton.cpp:149 genfacqtoolbutton.cpp:277
+#: genfacqtoolbutton.cpp:406
+msgid "Tiene que seleccionar un cliente"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:164
+msgid "Factura existente"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:165
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este albaran. "
+"Desea abrirla para verificar?"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
+#: genfacqtoolbutton.cpp:423
+msgid "&Si"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
+#: genfacqtoolbutton.cpp:423
+msgid "&No"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:234 genfacqtoolbutton.cpp:360
+#: genfacqtoolbutton.cpp:489 facturaview.cpp:263
+msgid "Error inesperado"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:292
+msgid "Albaran ya existe"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:293
+msgid ""
+"Existe un albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:421
+msgid "Factura ya existe"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:422
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: genfacqtoolbutton.cpp:580
+msgid "Seleccione la factura a la que agregar el albaran."
+msgstr ""
+
+#: genfacqtoolbutton.cpp:605
+msgid "Num. albaran"
+msgstr ""
+
+#: pluginfactura.cpp:97
+msgid "&Facturas a clientes"
+msgstr ""
+
+#: pluginfactura.cpp:99 pluginfactura.cpp:100 facturaslist.cpp:231
+#: ui_facturaslistbase.h:427
+msgid "Facturas a clientes"
+msgstr ""
+
+#: pluginfactura.cpp:105
+msgid "&Nueva factura a cliente"
+msgstr ""
+
+#: pluginfactura.cpp:107 pluginfactura.cpp:108 ui_facturabase.h:634
+msgid "Nueva factura a cliente"
+msgstr ""
+
+#: facturaslist.cpp:107
+msgid "Todas las facturas"
+msgstr ""
+
+#: facturaslist.cpp:108
+msgid "Facturas procesadas"
+msgstr ""
+
+#: facturaslist.cpp:109
+msgid "Facturas no procesadas"
+msgstr ""
+
+#: facturaslist.cpp:250
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: facturaslist.cpp:264
+msgid "Error al borrar la factura a cliente"
+msgstr ""
+
+#: facturaslist.cpp:353
+msgid "Numero"
+msgstr ""
+
+#: facturaslist.cpp:354
+msgid "Fecha"
+msgstr ""
+
+#: facturaslist.cpp:355
+msgid "Nombre cliente"
+msgstr ""
+
+#: facturaslist.cpp:356
+msgid "Telefono factura"
+msgstr ""
+
+#: facturaslist.cpp:357
+msgid "Base imponible"
+msgstr ""
+
+#: facturaslist.cpp:358
+msgid "Impuestos"
+msgstr ""
+
+#: facturaslist.cpp:359
+msgid "Total"
+msgstr ""
+
+#: facturaslist.cpp:360 ui_facturabase.h:702
+msgid "Procesada"
+msgstr ""
+
+#: facturaslist.cpp:361 listlinfacturaview.cpp:52 facturaview.cpp:71
+msgid "Descripcion"
+msgstr ""
+
+#: facturaslist.cpp:362 listdescfacturaview.cpp:45 listlinfacturaview.cpp:58
 #: facturaview.cpp:62
 msgid "Id factura"
+msgstr ""
+
+#: facturaslist.cpp:363
+msgid "Ref factura"
+msgstr ""
+
+#: facturaslist.cpp:364 facturaview.cpp:68
+msgid "Serie"
+msgstr ""
+
+#: facturaslist.cpp:365
+msgid "CIF cliente"
+msgstr ""
+
+#: facturaslist.cpp:366
+msgid "Codigo almacen"
+msgstr ""
+
+#: facturaslist.cpp:367
+msgid "Contact factura"
+msgstr ""
+
+#: facturaslist.cpp:368
+msgid "Comentario factura"
+msgstr ""
+
+#: facturaslist.cpp:369
+msgid "Id trabajador"
+msgstr ""
+
+#: facturaslist.cpp:370
+msgid "Id cliente"
+msgstr ""
+
+#: facturaslist.cpp:371
+msgid "Id almacen"
+msgstr ""
+
+#: listdescfacturaview.cpp:42
+msgid "Id descuento"
+msgstr ""
+
+#: listdescfacturaview.cpp:43
+msgid "Concepto descuento"
+msgstr ""
+
+#: listdescfacturaview.cpp:44 listlinfacturaview.cpp:57
+msgid "% Descuento"
+msgstr ""
+
+#: listlinfacturaview.cpp:48
+msgid "Id articulo"
+msgstr ""
+
+#: listlinfacturaview.cpp:49
+msgid "Codigo completo articulo"
+msgstr ""
+
+#: listlinfacturaview.cpp:50
+msgid "Nombre articulo"
+msgstr ""
+
+#: listlinfacturaview.cpp:51
+msgid "Idl factura"
+msgstr ""
+
+#: listlinfacturaview.cpp:53
+msgid "Cantidad"
+msgstr ""
+
+#: listlinfacturaview.cpp:54
+msgid "P.V.P."
+msgstr ""
+
+#: listlinfacturaview.cpp:55
+msgid "I.V.A."
+msgstr ""
+
+#: listlinfacturaview.cpp:56
+msgid "% Recargo E.Q."
+msgstr ""
+
+#: listlinfacturaview.cpp:59
+msgid "Orden"
+msgstr ""
+
+#: facturaview.cpp:59
+msgid "Factura"
 msgstr ""
 
 #: facturaview.cpp:63
@@ -40,20 +260,12 @@ msgstr ""
 msgid "Procesada factura"
 msgstr ""
 
-#: facturaview.cpp:68
-msgid "Serie"
-msgstr ""
-
 #: facturaview.cpp:69
 msgid "Comentario"
 msgstr ""
 
 #: facturaview.cpp:70
 msgid "Referencia"
-msgstr ""
-
-#: facturaview.cpp:71
-msgid "Descripcion"
 msgstr ""
 
 #: facturaview.cpp:72
@@ -64,8 +276,28 @@ msgstr ""
 msgid "Forma de pago"
 msgstr ""
 
-#: ui_facturabase.h:634
-msgid "Nueva factura a cliente"
+#: facturaview.cpp:76
+msgid "Al&macen"
+msgstr ""
+
+#: facturaview.cpp:111
+msgid "Error al crear la factura"
+msgstr ""
+
+#: facturaview.cpp:202
+msgid "ALBARAN: Num "
+msgstr ""
+
+#: facturaview.cpp:202
+msgid "Ref:"
+msgstr ""
+
+#: facturaview.cpp:202
+msgid "Fecha:"
+msgstr ""
+
+#: facturaview.cpp:259
+msgid "No hay albaranes con esta referencia"
 msgstr ""
 
 #: ui_facturabase.h:637 ui_facturabase.h:642
@@ -105,10 +337,6 @@ msgstr ""
 
 #: ui_facturabase.h:701
 msgid "N&umero de factura:"
-msgstr ""
-
-#: ui_facturabase.h:702
-msgid "Procesada"
 msgstr ""
 
 #: ui_facturabase.h:703
@@ -183,10 +411,6 @@ msgstr ""
 
 #: ui_facturabase.h:723 ui_albaranclientebase.h:789 ui_pedidoclientebase.h:715
 msgid "&Cancelar"
-msgstr ""
-
-#: ui_facturaslistbase.h:427
-msgid "Facturas a clientes"
 msgstr ""
 
 #: ui_facturaslistbase.h:428 ui_albaranclientelistbase.h:435

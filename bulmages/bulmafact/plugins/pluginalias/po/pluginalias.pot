@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginalias.cpp:104
+#: pluginalias.cpp:109
 msgid "Alias"
 msgstr ""
 
-#: pluginalias.cpp:105
+#: pluginalias.cpp:110
 msgid "Id Articulo"
 msgstr ""
 
-#: pluginalias.cpp:106
+#: pluginalias.cpp:111
 msgid "ID Validacion"
 msgstr ""

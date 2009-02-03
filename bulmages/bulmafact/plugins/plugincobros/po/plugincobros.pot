@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cobroview.cpp:57
+#: cobroview.cpp:54
+msgid "Cobro"
+msgstr ""
+
+#: cobroview.cpp:57 cobroslist.cpp:300
 msgid "ID cobro"
 msgstr ""
 
@@ -32,7 +36,7 @@ msgstr ""
 msgid "Fecha del cobro"
 msgstr ""
 
-#: cobroview.cpp:61
+#: cobroview.cpp:61 cobroslist.cpp:307
 msgid "Fecha de vencimiento"
 msgstr ""
 
@@ -48,8 +52,105 @@ msgstr ""
 msgid "Descripcion del cobro"
 msgstr ""
 
-#: cobroview.cpp:65
+#: cobroview.cpp:65 cobroslist.cpp:309
 msgid "Banco"
+msgstr ""
+
+#: cobroview.cpp:71
+msgid "Error al crear el cobro"
+msgstr ""
+
+#: cobroview.cpp:117
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: cobroslist.cpp:172 plugincobros.cpp:98 plugincobros.cpp:99
+msgid "Cobros a clientes"
+msgstr ""
+
+#: cobroslist.cpp:188
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: cobroslist.cpp:202
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: cobroslist.cpp:229
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: cobroslist.cpp:245 ui_cobroslistbase.h:395 ui_cobroslistbase.h:400
+msgid "Editar cobro"
+msgstr ""
+
+#: cobroslist.cpp:246 ui_cobroslistbase.h:407 ui_cobroslistbase.h:412
+#: ui_cobrobase.h:381 ui_cobrobase.h:386 ui_cobrobase.h:393 ui_cobrobase.h:398
+msgid "Borrar cobro"
+msgstr ""
+
+#: cobroslist.cpp:301
+msgid "ID cliente"
+msgstr ""
+
+#: cobroslist.cpp:302
+msgid "Nombre"
+msgstr ""
+
+#: cobroslist.cpp:303
+msgid "C.I.F."
+msgstr ""
+
+#: cobroslist.cpp:304
+msgid "Numero de telefono"
+msgstr ""
+
+#: cobroslist.cpp:305
+msgid "Direccion de correo electronico"
+msgstr ""
+
+#: cobroslist.cpp:306
+msgid "Fecha de cobro"
+msgstr ""
+
+#: cobroslist.cpp:308
+msgid "Cantidad"
+msgstr ""
+
+#: cobroslist.cpp:310
+msgid "Referencia del cobro"
+msgstr ""
+
+#: cobroslist.cpp:311
+msgid "Prevision de cobro"
+msgstr ""
+
+#: cobroslist.cpp:312
+msgid "Comentarios"
+msgstr ""
+
+#: cobroslist.cpp:313
+msgid "ID trabajador"
+msgstr ""
+
+#: cobroslist.cpp:314
+msgid "Nombre del trabajador"
+msgstr ""
+
+#: cobroslist.cpp:315
+msgid "Apellidos del trabajador"
+msgstr ""
+
+#: plugincobros.cpp:96
+msgid "&Cobros a clientes"
+msgstr ""
+
+#: plugincobros.cpp:104
+msgid "&Nuevo cobro a cliente"
+msgstr ""
+
+#: plugincobros.cpp:106 plugincobros.cpp:107
+msgid "Nuevo cobro a cliente"
 msgstr ""
 
 #: ui_cobroslistbase.h:373
@@ -88,17 +189,8 @@ msgstr ""
 msgid "Ctrl+N"
 msgstr ""
 
-#: ui_cobroslistbase.h:395 ui_cobroslistbase.h:400
-msgid "Editar cobro"
-msgstr ""
-
 #: ui_cobroslistbase.h:404
 msgid "Ctrl+E"
-msgstr ""
-
-#: ui_cobroslistbase.h:407 ui_cobroslistbase.h:412 ui_cobrobase.h:381
-#: ui_cobrobase.h:386 ui_cobrobase.h:393 ui_cobrobase.h:398
-msgid "Borrar cobro"
 msgstr ""
 
 #: ui_cobroslistbase.h:416 ui_cobrobase.h:390

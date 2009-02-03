@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,12 +16,73 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: pluginprofesor.cpp:96
+msgid "&Profesores"
+msgstr ""
+
+#: pluginprofesor.cpp:98 pluginprofesor.cpp:99 profesoreslist.cpp:144
+#: ui_profesoreslistbase.h:308
+msgid "Profesores"
+msgstr ""
+
+#: pluginprofesor.cpp:104
+msgid "&Nuevo Profesor"
+msgstr ""
+
+#: pluginprofesor.cpp:106 pluginprofesor.cpp:107
+msgid "Nuevo profesor"
+msgstr ""
+
+#: pluginprofesor.cpp:112
+msgid "About FAPAC"
+msgstr ""
+
+#: profesoreslist.cpp:160
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: profesoreslist.cpp:174
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: profesoreslist.cpp:201
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: profesoreslist.cpp:217
+msgid "Editar profesor"
+msgstr ""
+
+#: profesoreslist.cpp:218
+msgid "Borrar profesor"
+msgstr ""
+
+#: profesoreslist.cpp:262
+msgid "Id profesor"
+msgstr ""
+
+#: profesoreslist.cpp:263
+msgid "Nombre"
+msgstr ""
+
+#: profesorview.cpp:49
+msgid "Profesor"
+msgstr ""
+
 #: profesorview.cpp:52
 msgid "ID profesor"
 msgstr ""
 
 #: profesorview.cpp:53
 msgid "Nombre del profesor"
+msgstr ""
+
+#: profesorview.cpp:59
+msgid "Error al crear el profesor"
+msgstr ""
+
+#: profesorview.cpp:87
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
 #: ui_profesorbase.h:198 ui_profesoreslistbase.h:317
@@ -60,10 +121,6 @@ msgstr ""
 
 #: ui_profesorbase.h:238
 msgid "&Cancelar"
-msgstr ""
-
-#: ui_profesoreslistbase.h:308
-msgid "Profesores"
 msgstr ""
 
 #: ui_profesoreslistbase.h:309

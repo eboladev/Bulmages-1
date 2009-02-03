@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,83 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: listdescpedidoclienteview.cpp:42
+msgid "Id descuento"
+msgstr ""
+
+#: listdescpedidoclienteview.cpp:43
+msgid "Concepto descuento"
+msgstr ""
+
+#: listdescpedidoclienteview.cpp:44 listlinpedidoclienteview.cpp:56
+msgid "% Descuento"
+msgstr ""
+
+#: listdescpedidoclienteview.cpp:45
+msgid "Id pedido"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:46
+msgid "Punteo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:47
+msgid "Id articulo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:48
+msgid "Codigo completo articulo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:49
+msgid "Nombre articulo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:50
+msgid "No de linea"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:51 pedidosclientelist.cpp:325
+msgid "Descripcion"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:52
+msgid "Cantidad"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:53
+msgid "Precio de venta s/IVA"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:54
+msgid "% I.V.A."
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:55
+msgid "% Recargo E.Q."
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:57
+msgid "Id pedido cliente"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:58
+msgid "Orden"
+msgstr ""
+
+#: pedidoclienteview.cpp:56
+msgid "Pedido Cliente"
+msgstr ""
+
 #: pedidoclienteview.cpp:59
 msgid "Identificador"
 msgstr ""
 
-#: pedidoclienteview.cpp:60
+#: pedidoclienteview.cpp:60 pedidosclientelist.cpp:320
 msgid "Cliente"
 msgstr ""
 
-#: pedidoclienteview.cpp:61
+#: pedidoclienteview.cpp:61 pedidosclientelist.cpp:329
 msgid "Almacen"
 msgstr ""
 
@@ -36,7 +104,7 @@ msgstr ""
 msgid "Identificador presupuesto"
 msgstr ""
 
-#: pedidoclienteview.cpp:64
+#: pedidoclienteview.cpp:64 pedidosclientelist.cpp:319
 msgid "Fecha"
 msgstr ""
 
@@ -52,7 +120,7 @@ msgstr ""
 msgid "Contacto"
 msgstr ""
 
-#: pedidoclienteview.cpp:68
+#: pedidoclienteview.cpp:68 pedidosclientelist.cpp:327
 msgid "Telefono"
 msgstr ""
 
@@ -64,8 +132,119 @@ msgstr ""
 msgid "Procesado"
 msgstr ""
 
-#: pedidoclienteview.cpp:71
+#: pedidoclienteview.cpp:71 pedidosclientelist.cpp:321
 msgid "Referencia"
+msgstr ""
+
+#: pedidoclienteview.cpp:92
+msgid "Error al crear el pedido cliente"
+msgstr ""
+
+#: genpedqtoolbutton.cpp:134
+msgid "Tiene que seleccionar un cliente"
+msgstr ""
+
+#: genpedqtoolbutton.cpp:149
+msgid "Pedido ya existe"
+msgstr ""
+
+#: genpedqtoolbutton.cpp:150
+msgid ""
+"Existe un pedidocliente a este cliente con la misma referencia que este "
+"pedido. Desea abrirlo para verificar?"
+msgstr ""
+
+#: genpedqtoolbutton.cpp:151
+msgid "&Si"
+msgstr ""
+
+#: genpedqtoolbutton.cpp:151
+msgid "&No"
+msgstr ""
+
+#: genpedqtoolbutton.cpp:217
+msgid "Error inesperado"
+msgstr ""
+
+#: pluginpedido.cpp:98
+msgid "&Pedidos de clientes"
+msgstr ""
+
+#: pluginpedido.cpp:100 pluginpedido.cpp:101 pedidosclientelist.cpp:230
+#: ui_pedidosclientelistbase.h:376
+msgid "Pedidos de clientes"
+msgstr ""
+
+#: pluginpedido.cpp:106
+msgid "&Nueva pedido de cliente"
+msgstr ""
+
+#: pluginpedido.cpp:108 pluginpedido.cpp:109
+msgid "Nueva pedido de cliente"
+msgstr ""
+
+#: pedidosclientelist.cpp:99
+msgid "Todos los pedidos"
+msgstr ""
+
+#: pedidosclientelist.cpp:100
+msgid "Pedidos procesados"
+msgstr ""
+
+#: pedidosclientelist.cpp:101
+msgid "Pedidos no procesados"
+msgstr ""
+
+#: pedidosclientelist.cpp:218
+msgid "Error al cargar el pedido cliente"
+msgstr ""
+
+#: pedidosclientelist.cpp:244
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: pedidosclientelist.cpp:259
+msgid "Error al borrar el pedido de cliente"
+msgstr ""
+
+#: pedidosclientelist.cpp:317
+msgid "ID pedido"
+msgstr ""
+
+#: pedidosclientelist.cpp:318
+msgid "Pedido"
+msgstr ""
+
+#: pedidosclientelist.cpp:322
+msgid "Base Imponible"
+msgstr ""
+
+#: pedidosclientelist.cpp:323
+msgid "Impuestos"
+msgstr ""
+
+#: pedidosclientelist.cpp:324
+msgid "Total"
+msgstr ""
+
+#: pedidosclientelist.cpp:326
+msgid "Persona de contacto"
+msgstr ""
+
+#: pedidosclientelist.cpp:328
+msgid "Comentario"
+msgstr ""
+
+#: pedidosclientelist.cpp:330
+msgid "ID trabajador"
+msgstr ""
+
+#: pedidosclientelist.cpp:331
+msgid "ID cliente"
+msgstr ""
+
+#: pedidosclientelist.cpp:332
+msgid "ID almacen"
 msgstr ""
 
 #: ui_pedidoclientebase.h:644
@@ -177,10 +356,6 @@ msgstr ""
 
 #: ui_pedidoclientebase.h:715 ui_presupuestoclientebase.h:800
 msgid "&Cancelar"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:376
-msgid "Pedidos de clientes"
 msgstr ""
 
 #: ui_pedidosclientelistbase.h:377 ui_presupuestoslistbase.h:448

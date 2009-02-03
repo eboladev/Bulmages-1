@@ -8,13 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: albaranclienteview.cpp:73
+msgid "Albaran"
+msgstr ""
 
 #: albaranclienteview.cpp:76
 msgid "Id albaran"
@@ -28,7 +32,7 @@ msgstr ""
 msgid "Almacen"
 msgstr ""
 
-#: albaranclienteview.cpp:79
+#: albaranclienteview.cpp:79 albaranclientelist.cpp:380
 msgid "Numero de albaran"
 msgstr ""
 
@@ -64,7 +68,7 @@ msgstr ""
 msgid "Procesado"
 msgstr ""
 
-#: albaranclienteview.cpp:88
+#: albaranclienteview.cpp:88 albaranclientelist.cpp:381
 msgid "Descripcion"
 msgstr ""
 
@@ -72,8 +76,143 @@ msgstr ""
 msgid "Referencia"
 msgstr ""
 
+#: albaranclienteview.cpp:116
+msgid "Error al crear el albaran a cliente"
+msgstr ""
+
+#: albaranclienteview.cpp:201 genalbqtoolbutton.cpp:142
+#: genalbqtoolbutton.cpp:271
+msgid "Tiene que seleccionar un cliente"
+msgstr ""
+
+#: albaranclienteview.cpp:228
+msgid "No hay pedidos con la misma referencia."
+msgstr ""
+
+#: albaranclienteview.cpp:235 genalbqtoolbutton.cpp:225
+#: genalbqtoolbutton.cpp:354
+msgid "Error inesperado"
+msgstr ""
+
+#: pluginalbaran.cpp:98
+msgid "&Albaranes a clientes"
+msgstr ""
+
+#: pluginalbaran.cpp:100 pluginalbaran.cpp:101 albaranclientelist.cpp:307
 #: ui_albaranclientelistbase.h:434
 msgid "Albaranes a clientes"
+msgstr ""
+
+#: pluginalbaran.cpp:106
+msgid "&Nuevo albaran a cliente"
+msgstr ""
+
+#: pluginalbaran.cpp:108 pluginalbaran.cpp:109 ui_albaranclientebase.h:705
+msgid "Nuevo albaran a cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:176
+msgid "Todos los albaranes"
+msgstr ""
+
+#: albaranclientelist.cpp:177
+msgid "Albaranes procesados"
+msgstr ""
+
+#: albaranclientelist.cpp:178
+msgid "Albaranes no procesados"
+msgstr ""
+
+#: albaranclientelist.cpp:279
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: albaranclientelist.cpp:293
+msgid "Error al borrar el albaran a cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:378
+msgid "Referencia de albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:379
+msgid "Codigo de almacen"
+msgstr ""
+
+#: albaranclientelist.cpp:382
+msgid "Fecha de albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:383
+msgid "Nombre de cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:384
+msgid "ID forma de pago"
+msgstr ""
+
+#: albaranclientelist.cpp:385
+msgid "Descripcion de forma de pago"
+msgstr ""
+
+#: albaranclientelist.cpp:386
+msgid "ID trabajador"
+msgstr ""
+
+#: albaranclientelist.cpp:387
+msgid "ID cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:388
+msgid "ID albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:389
+msgid "Comentarios del albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:390
+msgid "ID almacen"
+msgstr ""
+
+#: albaranclientelist.cpp:391
+msgid "Base imponible"
+msgstr ""
+
+#: albaranclientelist.cpp:392
+msgid "Impuestos"
+msgstr ""
+
+#: albaranclientelist.cpp:393
+msgid "Total"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:157
+msgid "Albaran ya existe"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:158
+msgid ""
+"Existe un albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+msgid "&Si"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+msgid "&No"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:286
+msgid "Factura ya existe"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:287
+msgid ""
+"Existe una albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
 msgstr ""
 
 #: ui_albaranclientelistbase.h:435
@@ -151,10 +290,6 @@ msgstr ""
 
 #: ui_albaranclientelistbase.h:524
 msgid "Buscar:"
-msgstr ""
-
-#: ui_albaranclientebase.h:705
-msgid "Nuevo albaran a cliente"
 msgstr ""
 
 #: ui_albaranclientebase.h:708 ui_albaranclientebase.h:713

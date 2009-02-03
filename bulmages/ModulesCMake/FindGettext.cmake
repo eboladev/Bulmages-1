@@ -117,6 +117,7 @@ ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
 add_custom_target( translations )
+add_custom_target( update_pots DEPENDS translations)
 
 #To acomplish the messages extract it's needed some macros
 
@@ -180,7 +181,23 @@ macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
    add_custom_target(${template}.pot DEPENDS ${dirOUT}/${template}.pot)
    add_dependencies(${template}.pot  ${template})
    add_dependencies(messages_extract ${template}.pot)
+
+   GETTEXT_UPDATE_POT(${dirOUT}/${template}.pot ${CMAKE_CURRENT_SOURCE_DIR}/po)
+
 endmacro( GETTEXT_CREATE_TEMPLATE)
+
+
+macro (GETTEXT_UPDATE_POT inputPot dirOUT)
+   get_filename_component(_PotFile ${inputPot} NAME)
+   add_custom_command(
+   OUTPUT ${dirOUT}/${_PotFile}
+   COMMAND ${CMAKE_COMMAND} copy ${inputPot} ${dirOUT}/${_PotFile}
+   DEPENDS ${inputPot}
+   )
+   add_dependencies(update_pots ${inputPot})
+endmacro (GETTEXT_UPDATE_POT inputPot dirOUT)
+
+
 
 
 
@@ -240,6 +257,6 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
    endforeach (_lang ${${langs}})
 
    add_custom_target( ${_potBasename}_pos DEPENDS ${_absPotFile} ${_gmoFiles} )
-   add_dependencies(translations ${_potBasename}_pos  )
+   add_dependencies(translations ${_potBasename}_pos  ${potFile})
 
 endmacro(GETTEXT_CREATE_TRANSLATIONS )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginpreciocoste.cpp:47
+#: pluginpreciocoste.cpp:52
 msgid "Precio Coste"
 msgstr ""
 
-#: pluginpreciocoste.cpp:48
+#: pluginpreciocoste.cpp:53
 msgid "Margen"
 msgstr ""
 
-#: pluginpreciocoste.cpp:49
+#: pluginpreciocoste.cpp:54
 msgid "Actualizar PVP"
 msgstr ""

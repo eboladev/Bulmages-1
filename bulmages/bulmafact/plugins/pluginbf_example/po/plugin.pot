@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,26 +16,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: plugin.cpp:63
+#: pluginbf_example.cpp:63
 msgid "Titulo de la ventana"
 msgstr ""
 
-#: plugin.cpp:64
+#: pluginbf_example.cpp:64
 msgid "Mensaje."
 msgstr ""
 
-#: plugin.cpp:84
+#: pluginbf_example.cpp:84
 msgid "&Herramientas"
 msgstr ""
 
-#: plugin.cpp:89
+#: pluginbf_example.cpp:89
 msgid "&Prueba de plugin"
 msgstr ""
 
-#: plugin.cpp:90
+#: pluginbf_example.cpp:90
 msgid "Muestra statustip"
 msgstr ""
 
-#: plugin.cpp:91
+#: pluginbf_example.cpp:91
 msgid "Muestra que es esto"
+msgstr ""
+
+#: pluginbf_example.cpp:116
+msgid "Prueba de plugin para Bulmafact."
 msgstr ""

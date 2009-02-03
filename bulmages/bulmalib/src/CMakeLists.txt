@@ -198,8 +198,8 @@ ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmalib\", String)'" )
 if(USE_GETTEXT)
    set(bulmalib_STR ${bulmalib} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
                 ${bulmalib_UIS_H} ${bulmalib_SRC} ${bulmalib_SRCS})
-   GETTEXT_CREATE_TEMPLATE("bulmalib" ${CMAKE_CURRENT_SOURCE_DIR}/po ${CMAKE_CURRENT_SOURCE_DIR} bulmalib_STR)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_SOURCE_DIR}/po/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+   GETTEXT_CREATE_TEMPLATE("bulmalib" ${CMAKE_CURRENT_BINARY_DIR}/po ${CMAKE_CURRENT_SOURCE_DIR} bulmalib_STR)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/po/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 
 

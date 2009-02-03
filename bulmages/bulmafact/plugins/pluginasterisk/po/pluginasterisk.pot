@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,66 +16,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginasterisk.cpp:47
+#: pluginasterisk.cpp:52
 msgid "Password."
 msgstr ""
 
-#: pluginasterisk.cpp:48
+#: pluginasterisk.cpp:53
 msgid "Valida Siempre."
 msgstr ""
 
-#: pluginasterisk.cpp:93 pluginasterisk.cpp:156
+#: pluginasterisk.cpp:98 pluginasterisk.cpp:161
 msgid "Fecha"
 msgstr ""
 
-#: pluginasterisk.cpp:94 pluginasterisk.cpp:157
+#: pluginasterisk.cpp:99 pluginasterisk.cpp:162
 msgid "Hora"
 msgstr ""
 
-#: pluginasterisk.cpp:95
+#: pluginasterisk.cpp:100
 msgid "Almacén"
 msgstr ""
 
-#: pluginasterisk.cpp:96
+#: pluginasterisk.cpp:101
 msgid "Apertura Mañanas"
 msgstr ""
 
-#: pluginasterisk.cpp:97
+#: pluginasterisk.cpp:102
 msgid "Cierre Mañanas"
 msgstr ""
 
-#: pluginasterisk.cpp:98
+#: pluginasterisk.cpp:103
 msgid "Apertura Tardes"
 msgstr ""
 
-#: pluginasterisk.cpp:99
+#: pluginasterisk.cpp:104
 msgid "Cierre Tardes"
 msgstr ""
 
-#: pluginasterisk.cpp:100 pluginasterisk.cpp:160
+#: pluginasterisk.cpp:105 pluginasterisk.cpp:165
 msgid "Audicion"
 msgstr ""
 
-#: pluginasterisk.cpp:101 pluginasterisk.cpp:161
+#: pluginasterisk.cpp:106 pluginasterisk.cpp:166
 msgid "Id Almacen"
 msgstr ""
 
-#: pluginasterisk.cpp:102 pluginasterisk.cpp:162
+#: pluginasterisk.cpp:107 pluginasterisk.cpp:167
 msgid "ID Validacion"
 msgstr ""
 
-#: pluginasterisk.cpp:103 pluginasterisk.cpp:163
+#: pluginasterisk.cpp:108 pluginasterisk.cpp:168
 msgid "ID Trabajador"
 msgstr ""
 
-#: pluginasterisk.cpp:122
+#: pluginasterisk.cpp:127
 msgid "Extension."
 msgstr ""
 
-#: pluginasterisk.cpp:158
+#: pluginasterisk.cpp:163
 msgid "Trabajador"
 msgstr ""
 
-#: pluginasterisk.cpp:159
+#: pluginasterisk.cpp:164
 msgid "Apellidos"
 msgstr ""

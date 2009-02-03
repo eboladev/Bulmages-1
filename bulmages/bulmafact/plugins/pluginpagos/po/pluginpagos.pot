@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pagoview.cpp:63
+#: pagoview.cpp:60
+msgid "Pago"
+msgstr ""
+
+#: pagoview.cpp:63 pagoslist.cpp:235
 msgid "Id pago"
 msgstr ""
 
-#: pagoview.cpp:64
+#: pagoview.cpp:64 pagoslist.cpp:236
 msgid "Id proveedor"
 msgstr ""
 
@@ -28,15 +32,15 @@ msgstr ""
 msgid "Previcion de pago"
 msgstr ""
 
-#: pagoview.cpp:66
+#: pagoview.cpp:66 pagoslist.cpp:241
 msgid "Fecha de pago"
 msgstr ""
 
-#: pagoview.cpp:67
+#: pagoview.cpp:67 pagoslist.cpp:244
 msgid "Referencia de pago"
 msgstr ""
 
-#: pagoview.cpp:68
+#: pagoview.cpp:68 pagoslist.cpp:242
 msgid "Cantidad"
 msgstr ""
 
@@ -44,12 +48,73 @@ msgstr ""
 msgid "Comentario del pago"
 msgstr ""
 
-#: pagoview.cpp:70
+#: pagoview.cpp:70 pagoslist.cpp:243
 msgid "Banco"
 msgstr ""
 
+#: pagoview.cpp:76
+msgid "Error al crear el pago"
+msgstr ""
+
+#: pagoslist.cpp:176 pluginpagos.cpp:97 pluginpagos.cpp:98
 #: ui_pagoslistbase.h:371
 msgid "Pagos a proveedores"
+msgstr ""
+
+#: pagoslist.cpp:186
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: pagoslist.cpp:198
+msgid "Error al borrar el pago"
+msgstr ""
+
+#: pagoslist.cpp:237
+msgid "Nombre proveedor"
+msgstr ""
+
+#: pagoslist.cpp:238
+msgid "C.I.F. proveedor"
+msgstr ""
+
+#: pagoslist.cpp:239
+msgid "Telefono proveedor"
+msgstr ""
+
+#: pagoslist.cpp:240
+msgid "Email proveedor"
+msgstr ""
+
+#: pagoslist.cpp:245
+msgid "Prevision pago"
+msgstr ""
+
+#: pagoslist.cpp:246
+msgid "Comentario pago"
+msgstr ""
+
+#: pagoslist.cpp:247
+msgid "Id trabajador"
+msgstr ""
+
+#: pagoslist.cpp:248
+msgid "Nombre de trabajador"
+msgstr ""
+
+#: pagoslist.cpp:249
+msgid "Apellidos trabajador"
+msgstr ""
+
+#: pluginpagos.cpp:95
+msgid "&Pagos a proveedores"
+msgstr ""
+
+#: pluginpagos.cpp:103
+msgid "&Nuevo pago a proveedor"
+msgstr ""
+
+#: pluginpagos.cpp:105 pluginpagos.cpp:106 ui_pagobase.h:309
+msgid "Nuevo pago a proveedor"
 msgstr ""
 
 #: ui_pagoslistbase.h:372 ui_pagobase.h:339
@@ -107,10 +172,6 @@ msgstr ""
 
 #: ui_pagoslistbase.h:456
 msgid "Total:"
-msgstr ""
-
-#: ui_pagobase.h:309
-msgid "Nuevo pago a proveedor"
 msgstr ""
 
 #: ui_pagobase.h:313 ui_pagobase.h:318

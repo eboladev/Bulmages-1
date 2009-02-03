@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-30 19:29+0100\n"
+"POT-Creation-Date: 2009-02-03 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,60 +16,64 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listlresarticulo.cpp:35 listlresarticulo.cpp:88 listlresarticulo.cpp:139
-#: listlresarticulo.cpp:191
+#: listlresarticulo.cpp:35 listlresarticulo.cpp:79 listlresarticulo.cpp:122
+#: listlresarticulo.cpp:166
 msgid "CIF"
 msgstr ""
 
-#: listlresarticulo.cpp:37 listlresarticulo.cpp:90
+#: listlresarticulo.cpp:36 listlresarticulo.cpp:80
 msgid "Cliente"
 msgstr ""
 
-#: listlresarticulo.cpp:39
+#: listlresarticulo.cpp:37
 msgid "Serie Factura"
 msgstr ""
 
-#: listlresarticulo.cpp:41 listlresarticulo.cpp:143
+#: listlresarticulo.cpp:38
 msgid "Num. Factura"
 msgstr ""
 
-#: listlresarticulo.cpp:43 listlresarticulo.cpp:94 listlresarticulo.cpp:145
-#: listlresarticulo.cpp:197
+#: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
+#: listlresarticulo.cpp:169
 msgid "Fecha"
 msgstr ""
 
-#: listlresarticulo.cpp:45 listlresarticulo.cpp:96 listlresarticulo.cpp:147
-#: listlresarticulo.cpp:199
+#: listlresarticulo.cpp:40 listlresarticulo.cpp:83 listlresarticulo.cpp:126
+#: listlresarticulo.cpp:170
 msgid "Descripcion"
 msgstr ""
 
-#: listlresarticulo.cpp:47 listlresarticulo.cpp:98 listlresarticulo.cpp:149
-#: listlresarticulo.cpp:201
+#: listlresarticulo.cpp:41 listlresarticulo.cpp:84 listlresarticulo.cpp:127
+#: listlresarticulo.cpp:171
 msgid "Cantidad"
 msgstr ""
 
-#: listlresarticulo.cpp:49
+#: listlresarticulo.cpp:42
 msgid "Precio Venta"
 msgstr ""
 
-#: listlresarticulo.cpp:51 listlresarticulo.cpp:102 listlresarticulo.cpp:153
-#: listlresarticulo.cpp:205
+#: listlresarticulo.cpp:43 listlresarticulo.cpp:86 listlresarticulo.cpp:129
+#: listlresarticulo.cpp:173
 msgid "IVA"
 msgstr ""
 
-#: listlresarticulo.cpp:53 listlresarticulo.cpp:104 listlresarticulo.cpp:155
-#: listlresarticulo.cpp:207
+#: listlresarticulo.cpp:44 listlresarticulo.cpp:87 listlresarticulo.cpp:130
+#: listlresarticulo.cpp:174
 msgid "Descuento"
 msgstr ""
 
-#: listlresarticulo.cpp:92 listlresarticulo.cpp:195
-msgid "Num. Albaran"
+#: listlresarticulo.cpp:81 listlresarticulo.cpp:168
+msgid "Num. albaran"
 msgstr ""
 
-#: listlresarticulo.cpp:100 listlresarticulo.cpp:151 listlresarticulo.cpp:203
+#: listlresarticulo.cpp:85 listlresarticulo.cpp:128 listlresarticulo.cpp:172
 msgid "Precio"
 msgstr ""
 
-#: listlresarticulo.cpp:141 listlresarticulo.cpp:193
+#: listlresarticulo.cpp:123 listlresarticulo.cpp:167
 msgid "Proveedor"
+msgstr ""
+
+#: listlresarticulo.cpp:124
+msgid "Num. factura"
 msgstr ""

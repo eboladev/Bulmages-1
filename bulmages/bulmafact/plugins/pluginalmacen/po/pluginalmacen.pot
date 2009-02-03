@@ -8,13 +8,85 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:58
+msgid "ID almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:57 almaceneslistview.cpp:91
+msgid "Código almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:60
+msgid "Nombre almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:207
+msgid "Error al editar el almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:335
+msgid "Almacenes"
+msgstr ""
+
+#: almaceneslistview.cpp:232
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: almaceneslistview.cpp:254
+msgid "Error al borrar el almacen"
+msgstr ""
+
+#: almacenview.cpp:55 ui_almacenbase.h:346
+msgid "Almacen"
+msgstr ""
+
+#: almacenview.cpp:59
+msgid "Codigo almacen"
+msgstr ""
+
+#: almacenview.cpp:61
+msgid "Direccion almacen"
+msgstr ""
+
+#: almacenview.cpp:62
+msgid "Poblacion almacen"
+msgstr ""
+
+#: almacenview.cpp:63
+msgid "Codigo postal"
+msgstr ""
+
+#: almacenview.cpp:64
+msgid "Telefono almacen"
+msgstr ""
+
+#: almacenview.cpp:65
+msgid "Fax almacen"
+msgstr ""
+
+#: almacenview.cpp:66
+msgid "email almacen"
+msgstr ""
+
+#: almacenview.cpp:67
+msgid "Fecha almacen"
+msgstr ""
+
+#: almacenview.cpp:70
+msgid "Tipo almacen"
+msgstr ""
+
+#: almacenview.cpp:77
+msgid "Error al crear el almacen"
+msgstr ""
 
 #: ui_almacenbase.h:318 ui_almaceneslistbase.h:339 ui_almaceneslistbase.h:344
 msgid "Nuevo almacen"
@@ -43,10 +115,6 @@ msgstr ""
 
 #: ui_almacenbase.h:345
 msgid "Tienda"
-msgstr ""
-
-#: ui_almacenbase.h:346
-msgid "Almacen"
 msgstr ""
 
 #: ui_almacenbase.h:347
@@ -83,10 +151,6 @@ msgstr ""
 
 #: ui_almacenbase.h:355
 msgid "&Cancelar"
-msgstr ""
-
-#: ui_almaceneslistbase.h:335
-msgid "Almacenes"
 msgstr ""
 
 #: ui_almaceneslistbase.h:348

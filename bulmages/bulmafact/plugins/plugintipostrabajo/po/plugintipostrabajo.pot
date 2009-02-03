@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,20 +16,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: plugintipostrabajo.cpp:191
+#: plugintipostrabajo.cpp:196
 msgid "ID nom tipo Trabajo"
 msgstr ""
 
-#: plugintipostrabajo.cpp:192
+#: plugintipostrabajo.cpp:197
 msgid "Numero de Cargos Necesarios"
 msgstr ""
 
-#: plugintipostrabajo.cpp:193
+#: plugintipostrabajo.cpp:198
 msgid "ID almacen"
 msgstr ""
 
-#: plugintipostrabajo.cpp:194
+#: plugintipostrabajo.cpp:199
 msgid "ID tipo Trabajo"
+msgstr ""
+
+#: listtipostrabajoview.cpp:49
+msgid "almacen"
+msgstr ""
+
+#: listtipostrabajoview.cpp:56
+msgid "Id tipo trabajo"
+msgstr ""
+
+#: listtipostrabajoview.cpp:57
+msgid "Nombre tipo trabajo"
+msgstr ""
+
+#: listtipostrabajoview.cpp:58
+msgid "Color tipo trabajo"
 msgstr ""
 
 #: ui_listtipostrabajobase.h:112

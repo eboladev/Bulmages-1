@@ -85,9 +85,9 @@ ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmafact\", String)'" )
 if(USE_GETTEXT)
    set(bulmafact_i18n ${bulmafactEx} ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
                 ${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS})
-   GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_CURRENT_SOURCE_DIR}/po
+   GETTEXT_CREATE_TEMPLATE(bulmafact ${CMAKE_CURRENT_BINARY_DIR}/po
                                 ${CMAKE_CURRENT_SOURCE_DIR} bulmafact_i18n)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_SOURCE_DIR}/po/bulmafact.pot
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/po/bulmafact.pot
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 

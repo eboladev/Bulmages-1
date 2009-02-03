@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-03 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1504,10 +1504,6 @@ msgstr ""
 
 #: fichabf.cpp:848
 msgid "Error inesperado en la impresion"
-msgstr ""
-
-#: busquedaprofesor.cpp:38
-msgid "Profesor:"
 msgstr ""
 
 #: provedit.cpp:46
