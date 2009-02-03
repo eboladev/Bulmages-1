@@ -49,8 +49,8 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
     _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
 
-    trab->addDBCampo ( "passasterisktrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Trabajador", "Password." ) );
-    trab->addDBCampo ( "validasiempreasterisktrabajador", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Trabajador", "Valida Siempre." ) );
+    trab->addDBCampo ( "passasterisktrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Password." ) );
+    trab->addDBCampo ( "validasiempreasterisktrabajador", DBCampo::DBboolean, DBCampo::DBNothing, _( "Valida siempre." ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -95,17 +95,17 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     l->setEmpresaBase ( trab->empresaBase() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
-    l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Fecha" ) );
-    l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Hora" ) );
-    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Almacén" ) );
-    l->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Mañanas" ) );
-    l->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Mañanas" ) );
-    l->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Tardes" ) );
-    l->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Tardes" ) );
-    l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Audicion" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Almacen" ) );
-    l->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Validacion" ) );
-    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Trabajador" ) );
+    l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, _( "Fecha" ) );
+    l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, _( "Hora" ) );
+    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , _( "Almacen" ) );
+    l->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura mañanas" ) );
+    l->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre mañanas" ) );
+    l->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura tardes" ) );
+    l->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre tardes" ) );
+    l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Audicion" ) );
+    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , _( "Id almacen" ) );
+    l->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id validacion" ) );
+    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -124,7 +124,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "AlmacenView_AlmacenView", 0 );
 
-    alm->addDBCampo ( "extasteriskalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Almacen", "Extension." ) );
+    alm->addDBCampo ( "extasteriskalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Extension." ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -158,14 +158,14 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     l->setEmpresaBase ( alm->empresaBase() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
-    l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Fecha" ) );
-    l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Hora" ) );
-    l->addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Trabajador" ) );
-    l->addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apellidos" ) );
-    l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Audicion" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Almacen" ) );
-    l->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Validacion" ) );
-    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Trabajador" ) );
+    l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, _( "Fecha" ) );
+    l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, _( "Hora" ) );
+    l->addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Trabajador" ) );
+    l->addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Apellidos" ) );
+    l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, _( "Audicion" ) );
+    l->addSHeader ( "idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id almacen" ) );
+    l->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id validacion" ) );
+    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

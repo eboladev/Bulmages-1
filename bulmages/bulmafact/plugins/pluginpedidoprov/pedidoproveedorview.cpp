@@ -51,19 +51,19 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Pedido Proveedor" ) );
         setDBTableName ( "pedidoproveedor" );
         setDBCampoId ( "idpedidoproveedor" );
-        addDBCampo ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "PedidoProveedor", "Id pedido proveedor" ) );
-        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "PedidoProveedor", "Id proveedor" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "PedidoProveedor", "Id almacen" ) );
-        addDBCampo ( "numpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Numero pedido proveedor" ) );
-        addDBCampo ( "fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Fecha pedido proveedor" ) );
-        addDBCampo ( "comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Comentario pedido" ) );
-        addDBCampo ( "procesadopedidoproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Pedido procesado" ) );
-        addDBCampo ( "descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Descripcion pedido" ) );
-        addDBCampo ( "refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Referencia pedido" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Id forma de pago" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Id trabajador" ) );
-        addDBCampo ( "contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Persona de contacto proveedor" ) );
-        addDBCampo ( "telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Telefono proveedor" ) );
+        addDBCampo ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id pedido proveedor" ) );
+        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, _( "Id proveedor" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Id almacen" ) );
+        addDBCampo ( "numpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, _( "Numero pedido proveedor" ) );
+        addDBCampo ( "fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha pedido proveedor" ) );
+        addDBCampo ( "comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario pedido" ) );
+        addDBCampo ( "procesadopedidoproveedor", DBCampo::DBboolean, DBCampo::DBNothing, _( "Pedido procesado" ) );
+        addDBCampo ( "descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion pedido" ) );
+        addDBCampo ( "refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia pedido" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Id forma de pago" ) );
+        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, _( "Id trabajador" ) );
+        addDBCampo ( "contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Persona de contacto proveedor" ) );
+        addDBCampo ( "telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Telefono proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PedidoProveedorView_PedidoProveedorView", this );
@@ -329,9 +329,9 @@ void PedidoProveedorView::imprimir()
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Descuento" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Porcentaje" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Total" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + _( "Descuento" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + _( "Porcentaje" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + _( "Total" ) + "</td>\n";
             fitxersortidatxt += "</tr>\n";
             for ( int i = 0; i < m_listadescuentos->rowCount() - 1; ++i ) {
                 linea1 = m_listadescuentos->lineaat ( i );
@@ -361,7 +361,7 @@ void PedidoProveedorView::imprimir()
                 parbaseimp = it.value();
             } // end if
             totbaseimp = totbaseimp + parbaseimp;
-            tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Base " ) + it.key() + " %</td>\n";
+            tr1 += "        <td>" + _( "Base " ) + it.key() + " %</td>\n";
             tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
         } // end for
 
@@ -374,10 +374,10 @@ void PedidoProveedorView::imprimir()
                 pariva = it.value() * Fixed ( it.key() ) / 100;
             } // end if
             totiva = totiva + pariva;
-            tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Iva " ) + it.key() + " %</td>\n";
+            tr1 += "        <td>" + _( "Iva " ) + it.key() + " %</td>\n";
             tr2 += "        <td>" + l.sprintf ( "%s", pariva.toQString().toAscii().constData() ) + "</td>\n";
         } // end for
-        tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Total " ) + " </td>\n";
+        tr1 += "        <td>" + _( "Total " ) + " </td>\n";
         tr2 += "        <td>" + l.sprintf ( "%s", ( totiva + totbaseimp ).toQString().toAscii().constData() ) + "</td>\n";
         fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
         buff.replace ( "[totales]", fitxersortidatxt );

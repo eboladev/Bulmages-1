@@ -49,8 +49,8 @@ TutorView::TutorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Tutor" ) );
         setDBTableName ( "tutor" );
         setDBCampoId ( "idtutor" );
-        addDBCampo ( "idtutor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Tutor", "ID tutor" ) );
-        addDBCampo ( "nombretutor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Tutor", "Nombre del tutor" ) );
+        addDBCampo ( "idtutor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID tutor" ) );
+        addDBCampo ( "nombretutor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del tutor" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

@@ -109,15 +109,15 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     SubForm2Bf *l = new SubForm2Bf ( art );
     l->setEmpresaBase ( art->empresaBase() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
-    art->mui_tab->addTab ( l, "Minimos Almacen" );
+    art->mui_tab->addTab ( l, _("Minimos almacen") );
 
     l->setDBTableName ( "minimsalmacen" );
     l->setDBCampoId ( "idminimsalmacen" );
-    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Almacén" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Almacen" ) );
-    l->addSHeader ( "valminimsalmacen", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Minimo" ) );
-    l->addSHeader ( "idminimsalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Validacion" ) );
-    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Trabajador" ) );
+    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Almacen" ) );
+    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite, _( "Id Almacen" ) );
+    l->addSHeader ( "valminimsalmacen", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Minimo" ) );
+    l->addSHeader ( "idminimsalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID Validacion" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID Trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -202,7 +202,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
             Fixed val = Fixed ( cur->valor ( "valminimsalmacen" ) );
             Fixed valb = Fixed ( camp->valorcampo() );
             if ( stock - valb <= val )
-                mensajeAviso ( "Stock Minimo Superado" );
+                mensajeAviso ( _("Stock minimo superado") );
         } // end if
         delete cur;
     } // end if

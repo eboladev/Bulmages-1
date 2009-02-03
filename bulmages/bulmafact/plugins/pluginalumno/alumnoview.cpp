@@ -49,8 +49,8 @@ AlumnoView::AlumnoView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Alumno" ) );
         setDBTableName ( "alumno" );
         setDBCampoId ( "idalumno" );
-        addDBCampo ( "idalumno", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Alumno", "ID alumno" ) );
-        addDBCampo ( "nombrealumno", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Alumno", "Nombre del alumno" ) );
+        addDBCampo ( "idalumno", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id alumno" ) );
+        addDBCampo ( "nombrealumno", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del alumno" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

@@ -111,7 +111,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 {
     _depura ( "dentro del plugin", 0 );
 
-    cli->addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PluginTarifas", "plugintarifas" ) );
+    cli->addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, _( "plugintarifas" ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -158,7 +158,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
     l1->setEmpresaBase ( art->empresaBase() );
     l1->cargar ( "0" );
-    art->mui_tab->addTab ( l1, QApplication::translate ( "PluginTarifas", "Tarifas") );
+    art->mui_tab->addTab ( l1, _( "Tarifas") );
 
     /// VARIACION DE TARIFAS
 
@@ -174,17 +174,14 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setEmpresaBase ( art->empresaBase() );
     l->setDBTableName ( "variaciontarifa" );
     l->setDBCampoId ( "idarticulo" );
-    l->addSHeader ( "idvariaciontarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , QApplication::translate ( "VariacionTarifa", "ID Variacion Tarifa" ) );
-    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Articulo" ) );
-
-    l->addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Tarifa" ) );
-    l->addSHeader ( "nomtarifa", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Tarifa" ) );
-
-    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Almacen" ) );
-    l->addSHeader ( "nomalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Almacen" ) );
-
-    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Cantidad Mayor o Igual que" ) );
-    l->addSHeader ( "porcentajevariacion", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Porcentaje Variacion" ) );
+    l->addSHeader ( "idvariaciontarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , _( "ID variacion tarifa" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "ID articulo" ) );
+    l->addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "ID tarifa" ) );
+    l->addSHeader ( "nomtarifa", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, _( "Tarifa" ) );
+    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "ID almacen" ) );
+    l->addSHeader ( "nomalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, _( "Almacen" ) );
+    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad mayor o igual que" ) );
+    l->addSHeader ( "porcentajevariacion", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Porcentaje variacion" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );

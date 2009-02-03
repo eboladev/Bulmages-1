@@ -54,15 +54,15 @@ CobroView::CobroView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Cobro" ) );
         setDBTableName ( "cobro" );
         setDBCampoId ( "idcobro" );
-        addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Cobro", "ID cobro" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "Cliente" ) );
-        addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Prevision" ) );
-        addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha del cobro" ) );
-        addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de vencimiento" ) );
-        addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Referencia" ) );
-        addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "Total cobro" ) );
-        addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Descripcion del cobro" ) );
-        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Banco" ) );
+        addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id cobro" ) );
+        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
+        addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, _( "Prevision" ) );
+        addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha del cobro" ) );
+        addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de vencimiento" ) );
+        addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
+        addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Total cobro" ) );
+        addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion del cobro" ) );
+        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, _( "Banco" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

@@ -56,19 +56,19 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Pedido Cliente" ) );
         setDBTableName ( "pedidocliente" );
         setDBCampoId ( "idpedidocliente" );
-        addDBCampo ( "idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "PedidoCliente", "Identificador" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "PedidoCliente", "Cliente" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "PedidoCliente", "Almacen" ) );
-        addDBCampo ( "numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Numero pedido cliente" ) );
-        addDBCampo ( "fechapedidocliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Identificador presupuesto" ) );
-        addDBCampo ( "descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Fecha" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Forma pago" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Trabajador" ) );
-        addDBCampo ( "contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Contacto" ) );
-        addDBCampo ( "telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Telefono" ) );
-        addDBCampo ( "comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Comentarios" ) );
-        addDBCampo ( "procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Procesado" ) );
-        addDBCampo ( "refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoCliente", "Referencia" ) );
+        addDBCampo ( "idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador" ) );
+        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Almacen" ) );
+        addDBCampo ( "numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, _( "Numero pedido cliente" ) );
+        addDBCampo ( "fechapedidocliente", DBCampo::DBdate, DBCampo::DBNothing, _( "Identificador presupuesto" ) );
+        addDBCampo ( "descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Fecha" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Forma pago" ) );
+        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, _( "Trabajador" ) );
+        addDBCampo ( "contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Contacto" ) );
+        addDBCampo ( "telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Telefono" ) );
+        addDBCampo ( "comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
+        addDBCampo ( "procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, _( "Procesado" ) );
+        addDBCampo ( "refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
 
 
         /// Disparamos los plugins.

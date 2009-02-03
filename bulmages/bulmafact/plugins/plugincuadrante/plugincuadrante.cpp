@@ -254,11 +254,11 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     l->setEmpresaBase ( trab->empresaBase() );
     l->setDBTableName ( "ausencia" );
     l->setDBCampoId ( "idausencia" );
-    l->addSHeader ( "fechainausencia", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, QApplication::translate ( "AlmacenView", "Fecha Inicial Ausencia" ) );
-    l->addSHeader ( "fechafinausencia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Fecha Final Ausencia" ) );
-    l->addSHeader ( "motivoausencia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Motivo" ) );
-    l->addSHeader ( "idausencia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID ausencia" ) );
-    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID trabajador" ) );
+    l->addSHeader ( "fechainausencia", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, _( "Fecha inicial ausencia" ) );
+    l->addSHeader ( "fechafinausencia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , _( "Fecha final ausencia" ) );
+    l->addSHeader ( "motivoausencia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , _( "Motivo" ) );
+    l->addSHeader ( "idausencia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID ausencia" ) );
+    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

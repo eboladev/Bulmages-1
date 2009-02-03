@@ -193,11 +193,11 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->setEmpresaBase ( alm->empresaBase() );
     form->setDBTableName ( "almacentipotrabajo" );
     form->setDBCampoId ( "idalmacen" );
-    form->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, QApplication::translate ( "AlmacenView", "ID nom tipo Trabajo" ) );
-    form->addSHeader ( "numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Numero de Cargos Necesarios" ) );
-    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID almacen" ) );
-    form->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID tipo Trabajo" ) );
-    form->addSHeader ( "origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "idtipotrabajo" );
+    form->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
+    form->addSHeader ( "numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, _( "Numero de cargos necesarios" ) );
+    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID almacen" ) );
+    form->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID tipo de trabajo" ) );
+    form->addSHeader ( "origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, _("Id tipo de trabajo") );
 
     form->setinsercion ( TRUE );
     form->setDelete ( TRUE );

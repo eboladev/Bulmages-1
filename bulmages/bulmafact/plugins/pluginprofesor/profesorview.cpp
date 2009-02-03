@@ -49,8 +49,8 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Profesor" ) );
         setDBTableName ( "profesor" );
         setDBCampoId ( "idprofesor" );
-        addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Profesor", "ID profesor" ) );
-        addDBCampo ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Profesor", "Nombre del profesor" ) );
+        addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID profesor" ) );
+        addDBCampo ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del profesor" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

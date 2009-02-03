@@ -49,9 +49,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDBCampo ( "preciocostearticulo", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Precio Coste" ) );
-    trab->addDBCampo ( "margenarticulo", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Margen" ) );
-    trab->addDBCampo ( "actualizarmargenarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Actualizar PVP" ) );
+    trab->addDBCampo ( "preciocostearticulo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Precio Coste" ) );
+    trab->addDBCampo ( "margenarticulo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Margen" ) );
+    trab->addDBCampo ( "actualizarmargenarticulo", DBCampo::DBboolean, DBCampo::DBNothing, _( "Actualizar PVP" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
