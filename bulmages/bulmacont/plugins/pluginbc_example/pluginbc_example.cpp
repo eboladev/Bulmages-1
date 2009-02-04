@@ -27,7 +27,7 @@
 
 #include <stdio.h>
 
-#include "plugin.h"
+#include "pluginbc_example.h"
 #include "empresa.h"
 #include "funcaux.h"
 
