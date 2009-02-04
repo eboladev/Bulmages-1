@@ -20,7 +20,7 @@
 
 add_subdirectory(pluginregistroiva)
 add_subdirectory(plugincorrector)
-add_subdirectory(plugin)
+add_subdirectory(pluginbc_example)
 add_subdirectory(plugindebugbc)
 add_subdirectory(pluginbalancetree)
 add_subdirectory(plugincanualesods)

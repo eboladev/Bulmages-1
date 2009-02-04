@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 #include <QLineEdit>
 #include <QTableWidget>
@@ -45,6 +46,10 @@ MTicket *g_bud;
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginticketbasicoivainc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BDockWidget ( "Ticket", tpv, "ticketbasico" );

@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 #include <QLineEdit>
 #include <QTableWidget>
@@ -38,6 +39,11 @@
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginartsubform", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     _depura ( "END entryPoint", 0 );
     return 0;
 }

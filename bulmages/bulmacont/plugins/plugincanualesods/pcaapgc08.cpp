@@ -568,7 +568,7 @@ doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
 doc.set_cell_value(2,6, 'string', 'A) Resultado de la cuenta de perdidas y ganancias')\n\
-doc.set_cell_value(4,6, 'formula', '=" + trUtf8 ( "PERDIDAS_Y_GANANCIAS" ) + ".D33')\n\
+doc.set_cell_value(4,6, 'formula', '=" + _( "PERDIDAS_Y_GANANCIAS" ) + ".D33')\n\
 doc.set_cell_value(5,6, 'formula', '=PERDIDAS_Y_GANANCIAS.E33')\n\
 doc.set_cell_property('bold', False)\n\
 \
@@ -578,7 +578,7 @@ doc.set_cell_property('bold', False)\n\
 \
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,9, 'string', '" + trUtf8 ( "I. Por valoración de instrumentos financieros." ) + "')\n\
+doc.set_cell_value(2,9, 'string', '" + _( "I. Por valoración de instrumentos financieros." ) + "')\n\
 doc.set_cell_value(4,9, 'float', '" + ( saldoCuenta ( 800 ) + saldoCuenta ( 89 ) + saldoCuenta ( 900 ) + saldoCuenta ( 991 ) + saldoCuenta ( 992 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,9, 'float', '" + ( saldoCuentaAnt ( 800 ) + saldoCuentaAnt ( 89 ) + saldoCuentaAnt ( 900 ) + saldoCuentaAnt ( 991 ) + saldoCuentaAnt ( 992 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\

@@ -1,9 +1,9 @@
 ###########################################
-# Plugin for bulmacont					  #
+# Plugin for bulmacont                    #
 ###########################################
-#pluginregistrodeiva
+#pluginbc_example
 
-set (plugin pluginregistrodeiva)
+set (plugin pluginbc_example)
 set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

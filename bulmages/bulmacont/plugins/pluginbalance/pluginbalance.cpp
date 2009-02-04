@@ -89,9 +89,9 @@ void myplugin4::inicializa ( Bulmacont *bges )
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
     } // end if
 
-    QAction *accion = new QAction ( "&Balance Jerárquico", 0 );
-    accion->setStatusTip ( "Permite realizar Balances" );
-    accion->setWhatsThis ( "Podra disponer de la informacion del balance" );
+    QAction *accion = new QAction ( _("&Balance jerárquico"), 0 );
+    accion->setStatusTip ( _("Permite realizar balances") );
+    accion->setWhatsThis ( _("Podra disponer de la informacion del balance") );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
 
@@ -109,6 +109,11 @@ void myplugin4::inicializa ( Bulmacont *bges )
 void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "entryPoint::entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbalance", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {

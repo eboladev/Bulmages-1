@@ -42,6 +42,10 @@ int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginadmin", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Vamos a probar con un docwindow.
     /*
         g_admin1 = new BDockWidget ( "Administracion", tpv, "pluginadministracion" );

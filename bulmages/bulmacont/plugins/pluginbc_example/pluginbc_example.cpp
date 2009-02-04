@@ -60,8 +60,8 @@ void myplugin::elslot()
     _depura ( "myplugin::elslot", 0 );
     fprintf ( stderr, "Sa ha activado el slot\n" );
     QMessageBox::warning ( 0,
-                           "Titulo de la ventana",
-                           "Mensaje.",
+                           _("Titulo de la ventana"),
+                           ("Mensaje."),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
     _depura ( "END myplugin::elslot", 0 );
@@ -75,11 +75,16 @@ void myplugin::elslot()
 void myplugin::inicializa ( Bulmacont *bcont )
 {
     _depura ( "myplugin::inicializa", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbc_example", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu ( "&Plugin" );
-    QAction *accion = new QAction ( "&Prueba de plugin", 0 );
-    accion->setStatusTip ( "Muestra statustip" );
-    accion->setWhatsThis ( "Muestra que es esto" );
+    QMenu *pPluginMenu = new QMenu ( _("&Plugin") );
+    QAction *accion = new QAction ( _("&Prueba de plugin Bulmacont"), 0 );
+    accion->setStatusTip ( _("Muestra statustip") );
+    accion->setWhatsThis ( _("Muestra que es esto") );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
@@ -99,6 +104,6 @@ void entryPoint ( Bulmacont *bcont )
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bcont->setWindowTitle ( "Prueba de plugin." );
+    bcont->setWindowTitle ( _("Prueba de plugin Bulmacont.") );
 }
 

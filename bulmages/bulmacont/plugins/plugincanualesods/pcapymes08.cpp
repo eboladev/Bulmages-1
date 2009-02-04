@@ -32,7 +32,7 @@ QString pluginCAnualesODS::cuentaAnualCAPYMES08()
     QString ejercicioActual = ejercicioActual_fechaBalance.right ( 4 );
     QString ejercicioAnterior = ejercicioAnterior_fechaBalance.right ( 4 );
     QList <QString> meses; // Para poder indexar los meses de ejercicio según la fecha pasada
-    meses  << trUtf8 ( "ENERO" ) << trUtf8 ( "FEBRERO" ) << trUtf8 ( "MARZO" ) << trUtf8 ( "ABRIL" ) << trUtf8 ( "MAYO" ) << trUtf8 ( "JUNIO" ) << trUtf8 ( "JULIO" ) << trUtf8 ( "AGOSTO" ) << trUtf8 ( "SEPTIEMBRE" ) << trUtf8 ( "OCTUBRE" ) << trUtf8 ( "NOVIEMBRE" ) << trUtf8 ( "DICIEMBRE" );
+    meses  << _( "ENERO" ) << _( "FEBRERO" ) << _( "MARZO" ) << _( "ABRIL" ) << _( "MAYO" ) << _( "JUNIO" ) << _( "JULIO" ) << _( "AGOSTO" ) << _( "SEPTIEMBRE" ) << _( "OCTUBRE" ) << _( "NOVIEMBRE" ) << _( "DICIEMBRE" );
     unsigned int mesInicio = 0;
     unsigned int mesFin = ejercicioActual_fechaBalance.mid ( 3, 2 ).toInt() - 1;
 
@@ -66,12 +66,12 @@ import ooolib\n\
 \
 \
 \n\
-doc = ooolib.Calc(\"" + trUtf8 ( "ACTIVO" ) + "\")\n\n\
+doc = ooolib.Calc(\"" + _( "ACTIVO" ) + "\")\n\n\
 doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,2, 'string', '" + trUtf8 ( "BALANCE DE PYMES A " ) + meses.at ( mesFin ) + " DE " + ejercicioActual + "')\n\
+doc.set_cell_value(2,2, 'string', '" + _( "BALANCE DE PYMES A " ) + meses.at ( mesFin ) + " DE " + ejercicioActual + "')\n\
 doc.set_cell_value(2,4, 'string', 'ACTIVO')\n\
 doc.set_cell_value(3,4, 'string', 'NOTAS')\n\
 doc.set_cell_value(4,4, 'string', '" + ejercicioActual + "')\n\
@@ -199,7 +199,7 @@ doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,2, 'string', '" + trUtf8 ( "BALANCE DE PYMES A " ) + meses.at ( mesFin ) + " DE " + ejercicioActual + "')\n\
+doc.set_cell_value(2,2, 'string', '" + _( "BALANCE DE PYMES A " ) + meses.at ( mesFin ) + " DE " + ejercicioActual + "')\n\
 doc.set_cell_value(2,4, 'string', 'PATRIMONIO NETO Y PASIVO')\n\
 doc.set_cell_value(3,4, 'string', 'NOTAS')\n\
 doc.set_cell_value(4,4, 'string', '" + ejercicioActual + "')\n\
@@ -407,7 +407,7 @@ doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,2, 'string', '" + trUtf8 ( "CUENTA DE PÉRDIDAS Y GANANCIAS DE PYMES A " ) + meses.at ( mesFin ) + " DE " + ejercicioActual + "')\n\
+doc.set_cell_value(2,2, 'string', '" + _( "CUENTA DE PÉRDIDAS Y GANANCIAS DE PYMES A " ) + meses.at ( mesFin ) + " DE " + ejercicioActual + "')\n\
 doc.set_cell_value(2,4, 'string', '(Debe) Haber')\n\
 doc.set_cell_value(3,4, 'string', 'NOTAS')\n\
 doc.set_cell_value(4,4, 'string', '" + ejercicioActual + "')\n\

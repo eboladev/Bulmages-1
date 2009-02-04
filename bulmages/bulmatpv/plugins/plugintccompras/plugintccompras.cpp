@@ -74,6 +74,11 @@ void MyDevButton1::on_click (  )
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugintccompras", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
 /*
     g_doc1 = new BDockWidget ( "Articulo", tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );

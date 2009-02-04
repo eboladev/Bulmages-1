@@ -37,6 +37,11 @@ ArtGraficos *g_graf;
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginartgraficos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     _depura ( "END entryPoint", 0 );
     return 0;
 }

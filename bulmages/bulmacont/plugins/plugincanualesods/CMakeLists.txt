@@ -20,9 +20,9 @@
 
 
 ###########################################
-# Plugin for bulmacont					  #
+# Plugin for bulmacont                    #
 ###########################################
-# plugin#################
+# plugincanualesods
 
 set (plugin plugincanualesods)
 set (docs README.es) #add the README.nn files

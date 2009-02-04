@@ -72,11 +72,15 @@ void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugindebugbc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+	    
     myplugin *corr = new myplugin();
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    QAction *viewCorrector = new QAction ( "&Modo Debug", 0 );
+    QAction *viewCorrector = new QAction ( _("&Modo debug"), 0 );
     viewCorrector->setCheckable ( TRUE );
 
     if ( confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
@@ -85,8 +89,8 @@ void entryPoint ( Bulmacont *bcont )
         viewCorrector->setChecked ( FALSE );
     }
 
-    viewCorrector->setStatusTip ( "Activa/Desactiva el Modo Debug" );
-    viewCorrector->setWhatsThis ( "Debug.\n\nActiva/Desactiva el Modo Debug" );
+    viewCorrector->setStatusTip ( _("Activa/Desactiva el modo debug") );
+    viewCorrector->setWhatsThis ( _("Debug.\n\nActiva/Desactiva el modo debug") );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     bcont->mui_MenuVer() ->addSeparator();
     bcont->mui_MenuVer() ->addAction ( viewCorrector );

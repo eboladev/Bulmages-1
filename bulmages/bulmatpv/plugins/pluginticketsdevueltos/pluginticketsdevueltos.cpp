@@ -74,7 +74,7 @@ void MyDevButtonTD::on_click (  )
     layout->setMargin ( 0 );
     layout->setSpacing ( 0 );
     diag->setLayout ( layout );
-    diag->setWindowTitle ( "Tickets Olvidados" );
+    diag->setWindowTitle ( _("Tickets olvidados") );
 
     diag->exec();
 
@@ -91,6 +91,10 @@ void MyDevButtonTD::on_click (  )
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginticketsdevueltos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     _depura ( "END entryPoint", 0 );
     return 0;

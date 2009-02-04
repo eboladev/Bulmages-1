@@ -34,12 +34,12 @@ QString pluginCAnualesODS::cuentaAnualCAPGC07()
     barra.setRange ( 0, 21 );
     barra.setValue ( 0 );
     barra.show();
-    barra.setText ( trUtf8 ( "Calculando Balance y Resultados" ) );
+    barra.setText ( _( "Calculando Balance y Resultados" ) );
 
     QString ejercicioActual = ejercicioActual_fechaBalance.right ( 4 );
     QString ejercicioAnterior = ejercicioAnterior_fechaBalance.right ( 4 );
     QList <QString> meses; // Para poder indexar los meses de ejercicio según la fecha pasada
-    meses  << trUtf8 ( "Enero" ) << trUtf8 ( "Febrero" ) << trUtf8 ( "Marzo" ) << trUtf8 ( "Abril" ) << trUtf8 ( "Mayo" ) << trUtf8 ( "Junio" ) << trUtf8 ( "Julio" ) << trUtf8 ( "Agosto" ) << trUtf8 ( "Septiembre" ) << trUtf8 ( "Octubre" ) << trUtf8 ( "Noviembre" ) << trUtf8 ( "Diciembre" );
+    meses  << _( "Enero" ) << _( "Febrero" ) << _( "Marzo" ) << _( "Abril" ) << _( "Mayo" ) << _( "Junio" ) << _( "Julio" ) << _( "Agosto" ) << _( "Septiembre" ) << _( "Octubre" ) << _( "Noviembre" ) << _( "Diciembre" );
     unsigned int mesInicio = 0;
     unsigned int mesFin = ejercicioActual_fechaBalance.mid ( 3, 2 ).toInt() - 1;
 

@@ -43,6 +43,10 @@ int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginabrevs", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Vamos a probar con un docwindow.
     g_doc1 = new BDockWidget ( "Abreviaturas", tpv, "abrevsdock" );
     g_doc1->setObjectName ( "abrevsdock" );

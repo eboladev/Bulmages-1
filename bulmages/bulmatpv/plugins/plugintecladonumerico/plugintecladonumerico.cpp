@@ -39,8 +39,13 @@ TecladoNumerico *g_tecl;
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "plugintecladonumerico::entryPoint", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugintecladonumerico", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( "Teclado", tpv, "tecladonumericodock" );
+    g_doc1 = new BDockWidget ( _("Teclado"), tpv, "tecladonumericodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );

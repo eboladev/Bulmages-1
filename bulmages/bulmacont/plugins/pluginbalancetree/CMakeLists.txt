@@ -1,5 +1,5 @@
 ###########################################
-# Plugin for bulmacont					  #
+# Plugin for bulmacont                    #
 ###########################################
 #pluginbalancetree
 

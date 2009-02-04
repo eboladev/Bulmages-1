@@ -71,7 +71,7 @@ bool pluginCAnualesODS::Arboles()
     ramas = conexionbase->cargacursor ( query, "Ramas" );
     conexionbase->commit();
     if ( ramas == NULL ) {
-        mensajeInfo ( trUtf8 ( "Error con la base de datos" ) );
+        mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -100,7 +100,7 @@ bool pluginCAnualesODS::Arboles()
     hojas = conexionbase->cargacursor ( query, "Ejercicio N" );
     conexionbase->commit();
     if ( hojas == NULL ) {
-        mensajeInfo ( trUtf8 ( "Error con la base de datos" ) );
+        mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -117,7 +117,7 @@ bool pluginCAnualesODS::Arboles()
     hojas = conexionbase->cargacursor ( query, "Ejercicio N-1" );
     conexionbase->commit();
     if ( hojas == NULL ) {
-        mensajeInfo ( trUtf8 ( "Error con la base de datos" ) );
+        mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -308,11 +308,11 @@ bool pluginCAnualesODS::formDatosBalance ( CAnuales tipus )
     delete dv;
 
     if ( ejercicioActual_fechaBalance.isEmpty() ) {
-        mensajeError ( trUtf8 ( "ERROR: Debe introducir una fecha en el balance actual." ) );
+        mensajeError ( _( "ERROR: Debe introducir una fecha en el balance actual." ) );
         resultado = 0;
     } else {
         if ( ejercicioAnterior_fechaBalance.isEmpty() ) {
-            mensajeError ( trUtf8 ( "ERROR: Debe introducir una fecha en el balance anterior." ) );
+            mensajeError ( _( "ERROR: Debe introducir una fecha en el balance anterior." ) );
             resultado = 0;
         }
     } // end if
@@ -369,7 +369,7 @@ void pluginCAnualesODS::balanceSituacionODS ( CAnuales tipus )
         break;
 
     default:
-        mensajeError ( trUtf8 ( "ERROR: Funcion no implementada todavia." ) );
+        mensajeError ( _( "ERROR: Funcion no implementada todavia." ) );
         break;
     }
 
@@ -387,7 +387,7 @@ void pluginCAnualesODS::balanceSituacionODS ( CAnuales tipus )
         stream << archivosalida.toAscii();
         file.close();
     } else
-        mensajeError ( trUtf8 ( "ERROR: No se ha podido crear el archivo" ) );
+        mensajeError ( _( "ERROR: No se ha podido crear el archivo" ) );
 
     cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
@@ -411,36 +411,36 @@ void pluginCAnualesODS::inicializa ( Bulmacont *bcont )
     _depura ( "pluginCAnualesODS::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu ( trUtf8 ( "&Cuentas Anuales" ) );
+    QMenu *pPluginMenu = new QMenu ( _( "&Cuentas Anuales" ) );
 
-    QMenu *pgc08 = new QMenu ( trUtf8 ( "&PGC 2008" ) );
-    QMenu *pgc07 = new QMenu ( trUtf8 ( "PGC &Anterior 2008" ) );
+    QMenu *pgc08 = new QMenu ( _( "&PGC 2008" ) );
+    QMenu *pgc07 = new QMenu ( _( "PGC &Anterior 2008" ) );
 
-    QAction *accion4 = new QAction ( trUtf8 ( "&Cuentas Anuales PGC" ), 0 );
-    accion4->setStatusTip ( trUtf8 ( "Cuentas Anuales Plan General Contable 2008" ) );
-    accion4->setWhatsThis ( trUtf8 ( "Cuentas Anuales Plan General Contable 2008" ) );
+    QAction *accion4 = new QAction ( _( "&Cuentas Anuales PGC" ), 0 );
+    accion4->setStatusTip ( _( "Cuentas Anuales Plan General Contable 2008" ) );
+    accion4->setWhatsThis ( _( "Cuentas Anuales Plan General Contable 2008" ) );
     connect ( accion4, SIGNAL ( activated() ), this, SLOT ( balsitCAPGC08() ) );
 
-    QAction *accion5 = new QAction ( trUtf8 ( "Cuentas Anuales &Abreviadas PGC" ), 0 );
-    accion4->setStatusTip ( trUtf8 ( "Cuentas Anuales Abreviadas Plan General Contable 2008" ) );
-    accion4->setWhatsThis ( trUtf8 ( "Cuentas Anuales Abreviadas Plan General Contable 2008" ) );
+    QAction *accion5 = new QAction ( _( "Cuentas Anuales &Abreviadas PGC" ), 0 );
+    accion4->setStatusTip ( _( "Cuentas Anuales Abreviadas Plan General Contable 2008" ) );
+    accion4->setWhatsThis ( _( "Cuentas Anuales Abreviadas Plan General Contable 2008" ) );
     connect ( accion5, SIGNAL ( activated() ), this, SLOT ( balsitCAAPGC08() ) );
 
-    QAction *accion3 = new QAction ( trUtf8 ( "Cuentas Anuales &PYMES" ), 0 );
-    accion3->setStatusTip ( trUtf8 ( "Cuentas Anuales PYMES 2008" ) );
-    accion3->setWhatsThis ( trUtf8 ( "Cuentas Anuales PYMES 2008" ) );
+    QAction *accion3 = new QAction ( _( "Cuentas Anuales &PYMES" ), 0 );
+    accion3->setStatusTip ( _( "Cuentas Anuales PYMES 2008" ) );
+    accion3->setWhatsThis ( _( "Cuentas Anuales PYMES 2008" ) );
     connect ( accion3, SIGNAL ( activated() ), this, SLOT ( balsitCAPYMES08() ) );
 
     /**********************************************/
 
-    QAction *accion2 = new QAction ( trUtf8 ( "&Cuentas Anuales PGC" ), 0 );
-    accion2->setStatusTip ( trUtf8 ( "Cuentas Anuales Plan General Contable hasta 2007" ) );
-    accion2->setWhatsThis ( trUtf8 ( "Cuentas Anuales Plan General Contable hasta 2007" ) );
+    QAction *accion2 = new QAction ( _( "&Cuentas Anuales PGC" ), 0 );
+    accion2->setStatusTip ( _( "Cuentas Anuales Plan General Contable hasta 2007" ) );
+    accion2->setWhatsThis ( _( "Cuentas Anuales Plan General Contable hasta 2007" ) );
     connect ( accion2, SIGNAL ( activated() ), this, SLOT ( balsitCAPGC07() ) );
 
-    QAction *accion1 = new QAction ( trUtf8 ( "Cuentas A. Abreviadas &Sin lucro" ), 0 );
-    accion1->setStatusTip ( trUtf8 ( "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro" ) );
-    accion1->setWhatsThis ( trUtf8 ( "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro" ) );
+    QAction *accion1 = new QAction ( _( "Cuentas A. Abreviadas &Sin lucro" ), 0 );
+    accion1->setStatusTip ( _( "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro" ) );
+    accion1->setWhatsThis ( _( "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro" ) );
     connect ( accion1, SIGNAL ( activated() ), this, SLOT ( balsitCAAASL() ) );
 
 
@@ -473,6 +473,11 @@ void pluginCAnualesODS::inicializa ( Bulmacont *bcont )
 void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincanualesods", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     pluginCAnualesODS *plug = new pluginCAnualesODS();
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
@@ -568,30 +573,30 @@ void pluginCAnualesODS::mensajeAdvertenciaPGC ( CAnuales tipus )
 
     switch ( tipus ) {
     case CAAASL:
-        pgc = trUtf8 ( "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. " );
+        pgc = _( "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. " );
         break;
 
     case CAPGC07:
-        pgc = trUtf8 ( "Cuentas Anuales del Plan General Contable hasta 2007. " );
+        pgc = _( "Cuentas Anuales del Plan General Contable hasta 2007. " );
         break;
 
     case CAPYMES08:
-        pgc = trUtf8 ( "Cuentas Anuales para PYMES 2008. " ) ;
+        pgc = _( "Cuentas Anuales para PYMES 2008. " ) ;
         break;
 
     case CAAPGC08:
-        pgc = trUtf8 ( "Cuentas Anuales Abreviadas del Plan General Contable 2008. " );
+        pgc = _( "Cuentas Anuales Abreviadas del Plan General Contable 2008. " );
         break;
 
     case CAPGC08:
-        pgc = trUtf8 ( "Cuentas Anuales del Plan General Contable 2008. " );
+        pgc = _( "Cuentas Anuales del Plan General Contable 2008. " );
         break;
 
     default:
-        mensajeError ( trUtf8 ( "ERROR: Funcion no implementada todavia." ) );
+        mensajeError ( _( "ERROR: Funcion no implementada todavia." ) );
         break;
     }
 
-    mensajeAviso ( trUtf8 ( "Advertencia: ha escojido las " ) + pgc + trUtf8 ( "El resultado solo sera correcto si coincide con el plan contable de su empresa." ) );
+    mensajeAviso ( _( "Advertencia: ha escojido las " ) + pgc + _( "El resultado solo sera correcto si coincide con el plan contable de su empresa." ) );
 }
 

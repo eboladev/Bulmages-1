@@ -43,9 +43,14 @@ QAction *viewCorrector;
 void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("plugincorrector", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     Empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    doc1 = new BDockWidget ( "Corrector", bcont );
+    doc1 = new BDockWidget ( _("Corrector"), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );
@@ -61,11 +66,11 @@ void entryPoint ( Bulmacont *bcont )
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    viewCorrector = new QAction ( "&Corrector", 0 );
+    viewCorrector = new QAction ( _("&Corrector"), 0 );
     viewCorrector->setCheckable ( TRUE );
 
-    viewCorrector->setStatusTip ( "Muestra/oculta el corrector" );
-    viewCorrector->setWhatsThis ( "Corrector.\n\nMuestra/oculta el corrector" );
+    viewCorrector->setStatusTip ( _("Muestra/oculta el corrector") );
+    viewCorrector->setWhatsThis ( _("Corrector.\n\nMuestra/oculta el corrector") );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     bcont->mui_MenuVer() ->addSeparator();

@@ -73,13 +73,19 @@ int main ( int argc, char **argv )
 {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
     confpr = new configuracion ( "bulmacont" );
-    Bulmacont *bges;
     int valorsalida = 0;
+    bool success = false;
     QString db = "";
     QString us = "";
     QString pass = "";
-	bool success = false;
+    Bulmacont *bges;
+
     try {
+        /// Inicializa el sistema de traducciones 'gettext'.
+        setlocale(LC_ALL, "");
+        bindtextdomain ("bulmacont", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        textdomain ("bulmacont");
+
         /// Inicializamos el objeto global para uso de plugins.
         g_plugins = new Plugins();
 

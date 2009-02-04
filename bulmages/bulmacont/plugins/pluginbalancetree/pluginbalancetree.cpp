@@ -76,6 +76,11 @@ void myplugin4::elslot()
 void myplugin4::inicializa ( Bulmacont *bges )
 {
     _depura ( "myplugin4::inicializa", 0 );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbalancetree", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
     /// Creamos el men&uacute;.
     setEmpresaBase ( bges->empresaactual() );
     m_bulmacont = bges;
@@ -89,9 +94,9 @@ void myplugin4::inicializa ( Bulmacont *bges )
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
     } // end if
 
-    QAction *accion = new QAction ( "&Balance Jerárquico", 0 );
-    accion->setStatusTip ( "Permite realizar Balances" );
-    accion->setWhatsThis ( "Podra disponer de la informacion del balance" );
+    QAction *accion = new QAction ( _("&Balance jerarquico"), 0 );
+    accion->setStatusTip ( _("Permite realizar balances") );
+    accion->setWhatsThis ( _("Podra disponer de la informacion del balance") );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_arbolBalance.xpm" ) ) );
     bges->toolBar->addAction ( accion );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
