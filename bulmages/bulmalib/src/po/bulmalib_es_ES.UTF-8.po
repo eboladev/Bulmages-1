@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-04 15:06+0200\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-01 00:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,548 +12,330 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: BusquedaFecha#1
-msgid "Seleccione fecha"
-msgstr ""
-
-#: BusquedaFechaBase#1
-msgid "Form1"
-msgstr "Busqueda Fecha"
-
-#: BusquedaPeriodo#1
-msgid "Semanal"
-msgstr ""
-
-#: BusquedaPeriodo#2
-msgid "Quincenal"
-msgstr ""
-
-#: BusquedaPeriodo#3
-msgid "Mensual"
-msgstr ""
-
-#: BusquedaPeriodo#4
-msgid "Trimestral"
-msgstr ""
-
-#: BusquedaPeriodo#5
-msgid "Semestral"
-msgstr ""
-
-#: BusquedaPeriodo#6
-msgid "Anual"
-msgstr ""
-
-#: BusquedaPeriodo#7
-msgid "Bienal"
-msgstr ""
-
-#: Ficha#1
-msgid "Borrar"
-msgstr ""
-
-#: Ficha#2
-msgid "&Si"
-msgstr "&Sí"
-
-#: Ficha#3
-msgid "&No"
-msgstr "&No"
-
-#: Ficha#4
-msgid "&Cancelar"
-msgstr "&Cancelar"
-
-#: Ficha#5
-msgid "Guardar"
-msgstr ""
-
-#: Ficha#6
-msgid "Desea guardar los cambios?"
-msgstr "¿Desea guardar los cambios?"
-
-#: Ficha#7
-msgid "No se pudo cerrar la ventana debido a un error"
-msgstr ""
-
-#: Ficha#8
-msgid "Desea eliminar '"
-msgstr "¿Desea eliminar '"
-
-#: Ficha#9
-msgid "No se ha podido borrar"
-msgstr "No se ha podido borrar"
-
-#: ImportBulmaFact#1
-msgid "<HR><B>Tratando el cliente "
-msgstr " <HR><B>Tratando el cliente"
-
-#: ImportBulmaFact#2
-msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
-msgstr "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
-
-#: ImportBulmaFact#3
-msgid "<HR><B>Tratando el proveedor "
-msgstr " <HR><B>Tratando el proveedor"
-
-#: ImportBulmaFact#4
-msgid "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
-msgstr "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
-
-#: ImportBulmaFact#5
-msgid "<HR><B>Tratando la froma de pago "
-msgstr " <HR><B>Tratando la froma de pago"
-
-#: ImportBulmaFact#6
-msgid "<LI>Datos insuficientes para tratar la forma de pago."
-msgstr "<LI>Datos insuficientes para tratar la forma de pago."
-
-#: ImportBulmaFact#7
-msgid "<LI> Ya existe esta forma de pago."
-msgstr "<LI> Ya existe esta forma de pago."
-
-#: ImportBulmaFact#8
-msgid "<LI> Forma de pago <B>"
-msgstr "<LI> Forma de pago <B>"
-
-#: ImportBulmaFact#9
-msgid "</B> Insertada"
-msgstr "</B> Insertada"
-
-#: ImportBulmaFact#10
-msgid "<HR><B>Tratando almacen "
-msgstr " <HR><B>Tratando almacén"
-
-#: ImportBulmaFact#11
-msgid "</B> Insertado"
-msgstr "</B> Insertado"
-
-#: ImportBulmaFact#12
-msgid "<P>Datos insuficientes para tratar la familia.</P>"
-msgstr "<P>Datos insuficientes para tratar la familia.</P>"
-
-#: ImportBulmaFact#13
-msgid "<P> Familia <B>"
-msgstr "<P> Familia <B>"
-
-#: ImportBulmaFact#14
-msgid "</B> Insertado</P>"
-msgstr "</B> Insertado</P>"
-
-#: ImportBulmaFact#15
-msgid "<HR><B>Tratando Articulo "
-msgstr " <HR><B>Tratando Artículo"
-
-#: ImportBulmaFact#16
-msgid "<HR><B>Tratando LPedidoCliente "
-msgstr " <HR><B>Tratando LPedidoCliente"
-
-#: ImportBulmaFact#17
-msgid "<HR><B>Tratando DPedidoCliente "
-msgstr " <HR><B>Tratando DPedidoCliente"
-
-#: ImportBulmaFact#18
-msgid "<HR><B>Tratando Pedido Cliente "
-msgstr " <HR><B>Tratando Pedido Cliente"
-
-#: ImportBulmaFact#19
-msgid "El almaceÅ del presupuesto no existe<BR>\n"
-msgstr "El almacén del presupuesto no existe<BR>\n"
-
-#: ImportBulmaFact#20
-msgid "El clienteÅ del presupuesto no existe<BR>\n"
-msgstr "El cliente del presupuesto no existe<BR>\n"
-
-#: ImportBulmaFact#21
-msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
-msgstr "La forma de pago del presupuesto no existe<BR>\n"
-
-#: ImportBulmaFact#22
-msgid "El empleado del presupuesto no existe<BR>\n"
-msgstr "El empleado del presupuesto no existe<BR>\n"
-
-#: ImportBulmaFact#23
-msgid "<HR><B>Tratando LAlbaran "
-msgstr " <HR><B>Tratando LAlbaran"
-
-#: ImportBulmaFact#24
-msgid "<HR><B>Tratando DAlbaran "
-msgstr " <HR><B>Tratando DAlbaran"
-
-#: ImportBulmaFact#25
-msgid "<HR><B>Tratando Albaran "
-msgstr " <HR><B>Tratando Albaran"
-
-#: ImportBulmaFact#26
-msgid "<HR><B>Tratando LFactura "
-msgstr " <HR><B>Tratando LFactura"
-
-#: ImportBulmaFact#27
-msgid "<HR><B>Tratando DFactura "
-msgstr " <HR><B>Tratando DFactura"
-
-#: ImportBulmaFact#28
-msgid "<HR><B>Tratando Factura "
-msgstr " <HR><B>Tratando Factura"
-
-#: ImportBulmaFact#29
-msgid "La factura ya existe y no se va a insertar."
-msgstr "La factura ya existe y no se va a insertar."
-
-#: ImportBulmaFact#30
-msgid "<HR><B>Tratando LPresupuesto "
-msgstr " <HR><B>Tratando LPresupuesto"
-
-#: ImportBulmaFact#31
-msgid "<HR><B>Tratando DPresupuesto "
-msgstr " <HR><B>Tratando DPresupuesto"
-
-#: ImportBulmaFact#32
-msgid "<HR><B>Tratando Presupuesto "
-msgstr " <HR><B>Tratando Presupuesto"
-
-#: ImportBulmaFact#33
-msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
-msgstr ""
-"<LI> El cliente no existe, se debe hacer una inserción de este</LI>(new "
-"line)"
-
-#: ImportBulmaFact#34
-msgid "<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"
-msgstr ""
-"<LI> El proveedor no existe, se debe hacer una inserción de este</LI>(new "
-"line)"
-
-#: ImportBulmaFact#35
-msgid "<LI>Datos insuficientes para tratar el almacen."
-msgstr "<LI>Datos insuficientes para tratar el almacén."
-
-#: ImportBulmaFact#36
-msgid "<LI> Ya existe este almacen."
-msgstr "<LI> Ya existe este almacén."
-
-#: ImportBulmaFact#37
-msgid "<LI> Almacen <B>"
-msgstr "<LI> Almacén <B>"
-
-#: ImportBulmaFact#38
-msgid "<HR><B>Tratando familia "
-msgstr "(sp)<HR><B>Tratando familia"
-
-#: ImportBulmaFact#39
-msgid "<P> No se ha encontrado el padre de esta familia.</P>"
-msgstr ""
-
-#: ImportBulmaFact#40
-msgid "<P> Ya existe esta familia.</P>"
-msgstr ""
-
-#: ImportBulmaFact#41
-msgid "La familia del articulo no existe<BR>\n"
-msgstr "La familia del artículo no existe<BR>(new line)"
-
-#: ImportBulmaFact#42
-msgid "<P>Datos insuficientes para tratar el articulo.</P>"
-msgstr "<P>Datos insuficientes para tratar el artículo.</P>"
-
-#: ImportBulmaFact#43
-msgid "<P> Ya existe este articulo.</P>"
-msgstr "<P> Ya existe este artículo.</P>"
-
-#: ImportBulmaFact#44
-msgid "<P> Articulo <B>"
-msgstr "<P> Artículo <B>"
-
-#: ImportBulmaFact#45
-msgid "El articulo de la linea de presupuesto no existe<BR>\n"
-msgstr "El artículo de la línea de presupuesto no existe<BR>(new line)"
-
-#: ImportBulmaFact#46
-msgid "El almacen del presupuesto no existe<BR>\n"
-msgstr "El almacén del presupuesto no existe<BR>(new line)"
-
-#: ImportBulmaFact#47
-msgid "El cliente del presupuesto no existe<BR>\n"
-msgstr ""
-
-#: ImportBulmaFact#48
-msgid "La forma de pago del presupuesto no existe<BR>\n"
-msgstr ""
-
-#: Listado#1
-msgid "Tiene que seleccionar un elemento"
-msgstr ""
-
-#: Listado#2
-msgid "Editar"
-msgstr ""
-
-#: Listado#3
-msgid "Borrar"
-msgstr ""
-
-#: QObject#1
-msgid "Error al hacer la consulta con la base de datos."
-msgstr ""
-
-#: QWorkspace2#1
-msgid "Esc"
-msgstr ""
-
-#: SubForm3#1
-msgid "Nombre"
-msgstr "Nombre"
-
-#: SubForm3#2
-msgid "Nombre de campo"
-msgstr ""
-
-#: SubForm3#3
-msgid "Visible"
-msgstr ""
-
-#: SubForm3#4
-msgid "Borrar registro"
-msgstr ""
-
-#: SubForm3#5
-msgid "Ajustar columa"
-msgstr ""
-
-#: SubForm3#6
-msgid "Ajustar altura"
-msgstr ""
-
-#: SubForm3#7
-msgid "Ajustar columnas"
-msgstr ""
-
-#: SubForm3#8
-msgid "Ajustar alturas"
-msgstr ""
-
-#: SubForm3#9
-msgid "Ver/Ocultar configurador de subformulario"
-msgstr ""
-
-#: SubForm3Base#1
-msgid "Configuracion Subformularios"
-msgstr "Configuración Subformularios"
-
-# Consulta SQL
-#: SubForm3Base#2
-msgid "Query"
-msgstr "Consulta SQL"
-
-#: SubForm3Base#3
-msgid "Aplicar"
-msgstr ""
-
-#: SubForm3Base#4
-msgid "&Cerrar"
-msgstr "&Cerrar"
-
-#: SubForm3Base#5
-msgid "Columnas visibles"
-msgstr ""
-
-#: SubForm3Base#6
-msgid "Paginacion"
-msgstr "Paginación"
-
-#: SubForm3Base#7
-msgid "Total filas:"
-msgstr "Total filas:"
-
-#: SubForm3Base#8
-msgid "Filas por pagina:"
-msgstr "Filas por página:"
-
-#: SubForm3Base#9
-msgid "Pagina actual:"
-msgstr "Página actual:"
-
-#: SubForm3Base#10
-msgid "Total paginas:"
-msgstr "Total páginas:"
-
-#: SubForm3Base#11
-msgid "Pagina anterior"
-msgstr "Página anterior"
-
-#: SubForm3Base#12
-msgid "Pagina siguiente"
-msgstr "Página siguiente"
-
-#: SubForm3Base#13
-msgid "SQL"
-msgstr ""
-
-#: SubForm3Base#14
-msgid "¡Opcion reservada a expertos!"
-msgstr "¡Opción reservada a expertos!"
-
-#: SubForm3Base#15
-msgid "Escriba aqui la consulta SQL"
-msgstr "Escriba aquí la consulta SQL"
-
-#: SubForm3Base#16
-msgid "Ejecutar consulta"
-msgstr ""
-
-#: abreempresabase#1
-msgid "Seleccione una empresa"
-msgstr ""
-
-#: abreempresabase#2
-msgid "Empresas disponibles:"
-msgstr "Empresas disponibles:"
-
-#: abreempresabase#3
-msgid "&Entra"
-msgstr "&Entra"
-
-#: abreempresabase#4
-msgid "&Cancelar"
-msgstr "&Cancelar"
-
-#: abreempresabase#5
-msgid "Actualizar Listado"
-msgstr ""
-
-#: abreempresabase#6
-msgid "Actualizar Listado de Empresas"
-msgstr ""
-
-#: abreempresabase#7
-msgid "Ctrl+N"
-msgstr ""
-
-#: abreempresaview#1
-msgid "&Cierra el programa"
-msgstr "&Cierra el programa"
-
-#: abreempresaview#2
-msgid "Para entrar, antes tiene que seleccionar una empresa."
-msgstr "Para entrar, antes tiene que seleccionar una empresa."
-
-#: abreempresaview#3
-msgid "Nombre"
-msgstr "Nombre"
-
-#: abreempresaview#4
-msgid "Anyo"
-msgstr "Año"
-
-#: abreempresaview#5
-msgid "Archivo"
-msgstr "Archivo"
-
-#: abreempresaview#6
-msgid "Tipo"
-msgstr "Tipo"
-
-#: funcaux#1
-msgid "Informacion de depuracion"
-msgstr "Información de depuración"
-
-#: funcaux#2
-msgid "&Continuar"
-msgstr "&Continuar"
-
-#: funcaux#3
-msgid "&Omitir"
-msgstr "&Omitir"
-
-#: funcaux#4
-msgid "Omitir &clase"
-msgstr "Omitir &clase"
-
-#: funcaux#5
-msgid "Informacion del programa"
-msgstr "Información del programa"
-
-#: funcaux#6
-msgid "Aviso del programa"
-msgstr ""
-
-#: funcaux#7
-msgid "Error del programa"
-msgstr ""
-
-#: listventanas#1
-msgid "Indexador"
-msgstr ""
-
-#: logpass#1
-msgid "Error: usuario y/o contrasenya incorrectos"
-msgstr "Error: usuario y/o contraseña incorrectos"
-
-#: logpassbase#1
-msgid "&Validar"
-msgstr "&Validar"
-
-#: logpassbase#2
+#: ui_logpassbase.h:149
 msgid "Lanzador Bulmages"
 msgstr "Lanzador Bulmagés"
 
-#: logpassbase#3
+#: ui_logpassbase.h:150
 msgid "Mensaje de error:"
 msgstr "Mensaje de error:"
 
-#: logpassbase#4
+#: ui_logpassbase.h:152
 msgid "Registro de entrada:"
 msgstr "Registro de entrada:"
 
-#: logpassbase#5
+#: ui_logpassbase.h:153
 msgid "Nombre de usuario:"
 msgstr "Nombre de usuario:"
 
-#: logpassbase#6
+#: ui_logpassbase.h:154
 msgid "Contrasenya:"
 msgstr "Contraseña:"
 
-#: logpassbase#7
+#: ui_logpassbase.h:155
+msgid "&Validar"
+msgstr "&Validar"
+
+#: ui_logpassbase.h:156
 msgid "&Cerrar el programa"
 msgstr "&Cerrar el programa"
 
-#: msgErrorBase#1
+#: ui_abreempresabase.h:184 ui_abreempresabase.h:187
+msgid "Seleccione una empresa"
+msgstr ""
+
+#: ui_abreempresabase.h:193
+msgid "Actualizar Listado"
+msgstr ""
+
+#: ui_abreempresabase.h:198
+msgid "Actualizar Listado de Empresas"
+msgstr ""
+
+#: ui_abreempresabase.h:202 ui_paisbase.h:286
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_abreempresabase.h:203
+msgid "Empresas disponibles:"
+msgstr "Empresas disponibles:"
+
+#: ui_abreempresabase.h:204
+msgid "&Entra"
+msgstr "&Entra"
+
+#: ui_abreempresabase.h:205
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: ui_msgerrorbase.h:109
 msgid "Mensaje"
 msgstr "Mensaje"
 
-#: msgErrorBase#2
+#: ui_msgerrorbase.h:111
 msgid "&Detalles"
 msgstr "&Detalles"
 
-#: msgErrorBase#3
+#: ui_msgerrorbase.h:112 ui_subform3base.h:625
 msgid "&Cerrar"
 msgstr "&Cerrar"
 
-#: pgimportfiles#1
+#: ui_busquedafechabase.h:86 ui_busquedabase.h:98
+msgid "Form1"
+msgstr "Busqueda Fecha"
+
+#: ui_busquedafechabase.h:89 ui_busquedabase.h:106
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_subform3base.h:601
+msgid "Configuracion Subformularios"
+msgstr "Configuración Subformularios"
+
+#: ui_subform3base.h:607
+msgid "Columnas visibles"
+msgstr ""
+
+#: ui_subform3base.h:608
+msgid "Total filas:"
+msgstr "Total filas:"
+
+#: ui_subform3base.h:609
+msgid "Filas por pagina:"
+msgstr "Filas por página:"
+
+#: ui_subform3base.h:610
+msgid "Pagina actual:"
+msgstr "Página actual:"
+
+#: ui_subform3base.h:611
+msgid "Total paginas:"
+msgstr "Total páginas:"
+
+#: ui_subform3base.h:612
+msgid "Pagina anterior"
+msgstr "Página anterior"
+
+#: ui_subform3base.h:613
+msgid "Pagina siguiente"
+msgstr "Página siguiente"
+
+#: ui_subform3base.h:614
+msgid "Paginacion"
+msgstr "Paginación"
+
+#: ui_subform3base.h:617
+msgid "Escriba aqui la consulta SQL"
+msgstr "Escriba aquí la consulta SQL"
+
+# Consulta SQL
+#: ui_subform3base.h:620
+msgid "Query"
+msgstr "Consulta SQL"
+
+#: ui_subform3base.h:621
+#, fuzzy
+msgid "!Opcion reservada a expertos!"
+msgstr "¡Opción reservada a expertos!"
+
+#: ui_subform3base.h:622
+msgid "Ejecutar consulta"
+msgstr ""
+
+#: ui_subform3base.h:623
+msgid "SQL"
+msgstr ""
+
+#: ui_subform3base.h:624
+msgid "Aplicar"
+msgstr ""
+
+#: ui_porcentajecargabase.h:53
+msgid "Porcentaje de carga..."
+msgstr ""
+
+#: ui_fichacfgbase.h:281 ui_blbancoeditbase.h:89
+#, fuzzy
+msgid "Form"
+msgstr "Busqueda Fecha"
+
+#: ui_fichacfgbase.h:282 ui_fichacfgbase.h:284
+#, fuzzy
+msgid "Nombre de la Tabla"
+msgstr "Nombre de usuario:"
+
+#: ui_fichacfgbase.h:283
+msgid "Database Table"
+msgstr ""
+
+#: ui_fichacfgbase.h:285
+msgid "Campo Indice"
+msgstr ""
+
+#: ui_fichacfgbase.h:286
+msgid "Form Elements"
+msgstr ""
+
+#: ui_fichacfgbase.h:287
+msgid "Usuario Actual"
+msgstr ""
+
+#: ui_fichacfgbase.h:288
+msgid "Propietario de la tablas"
+msgstr ""
+
+#: ui_fichacfgbase.h:289
+msgid "User Preferences"
+msgstr ""
+
+#: ui_fichacfgbase.h:290
+msgid "Databse Scripting"
+msgstr ""
+
+#: ui_fichacfgbase.h:291
+msgid "Qt Scripting"
+msgstr ""
+
+#: ui_fichacfgbase.h:292
+#, fuzzy
+msgid "Cerrar"
+msgstr "&Cerrar"
+
+#: ui_paisbase.h:258
+msgid "Paises"
+msgstr ""
+
+#: ui_paisbase.h:259
+msgid "Datos del pais:"
+msgstr ""
+
+#: ui_paisbase.h:260
+#, fuzzy
+msgid "Nombre del pais:"
+msgstr "Nombre de usuario:"
+
+#: ui_paisbase.h:261
+msgid "Codigo 3 letras:"
+msgstr ""
+
+#: ui_paisbase.h:262
+msgid "Codigo 2 letras:"
+msgstr ""
+
+#: ui_paisbase.h:265 ui_paisbase.h:270
+msgid "Mostrar/ocultar detalle"
+msgstr ""
+
+#: ui_paisbase.h:274
+#, fuzzy
+msgid "Cancelar"
+msgstr "&Cancelar"
+
+#: ui_paisbase.h:277 ui_paisbase.h:282
+msgid "Nuevo pais"
+msgstr ""
+
+#: ui_paisbase.h:289 ui_paisbase.h:294
+msgid "Borrar pais"
+msgstr ""
+
+#: ui_paisbase.h:298
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_paisbase.h:301 ui_paisbase.h:306
+msgid "Guardar pais"
+msgstr ""
+
+#: ui_paisbase.h:310
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_blprogressbarbase.h:66
+msgid "Trabajando"
+msgstr ""
+
+#: ui_blprogressbarbase.h:67
+msgid "TextLabel"
+msgstr ""
+
+#: ui_busquedabase.h:99
+msgid "Busqueda"
+msgstr ""
+
+#: ui_busquedabase.h:102
+msgid "Mostrar listado de profesors"
+msgstr ""
+
+#: ui_busquedabase.h:109
+msgid "Limpiar campo"
+msgstr ""
+
+#: funcaux.cpp:523
+msgid "Informacion de depuracion"
+msgstr "Información de depuración"
+
+#: funcaux.cpp:525 funcaux.cpp:554 funcaux.cpp:564 funcaux.cpp:574
+msgid "&Continuar"
+msgstr "&Continuar"
+
+#: funcaux.cpp:526
+msgid "&Omitir"
+msgstr "&Omitir"
+
+#: funcaux.cpp:527
+msgid "Omitir &clase"
+msgstr "Omitir &clase"
+
+#: funcaux.cpp:553
+msgid "Informacion del programa"
+msgstr "Información del programa"
+
+#: funcaux.cpp:563
+msgid "Aviso del programa"
+msgstr ""
+
+#: funcaux.cpp:573
+msgid "Error del programa"
+msgstr ""
+
+#: pgimportfiles.cpp:401 pgimportfiles.cpp:1414
 msgid "Exportando :"
 msgstr "Exportando :"
 
-#: pgimportfiles#2
+#: pgimportfiles.cpp:482
 msgid "<LI>Se ha insertado la cuenta "
 msgstr " <LI>Se ha insertado la cuenta"
 
-#: pgimportfiles#3
+#: pgimportfiles.cpp:485
+msgid "<LI>Ya hay una cuenta con el codigo "
+msgstr "(sp)<LI>Ya hay una cuenta con el código"
+
+#: pgimportfiles.cpp:594
+msgid "<LI>Insercion de asiento"
+msgstr "<LI>Inserción de asiento"
+
+#: pgimportfiles.cpp:622
+msgid "<LI>Insercion de apunte"
+msgstr "<LI>Inserción de apunte"
+
+#: pgimportfiles.cpp:624
 msgid "<LI>Apunte fuera de fecha</LI>\n"
 msgstr "<LI>Apunte fuera de fecha</LI>\n"
 
-#: pgimportfiles#4
+#: pgimportfiles.cpp:635
 msgid "<LI>Terminado</LI>\n"
 msgstr "<LI>Terminado</LI>\n"
 
-#: pgimportfiles#5
+#: pgimportfiles.cpp:699
 msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
 msgstr "<LI>Exportando Nueva Forma de Pago</LI>\n"
 
-#: pgimportfiles#6
+#: pgimportfiles.cpp:1471
 msgid "Application name"
 msgstr "Application name"
 
-#: pgimportfiles#7
+#: pgimportfiles.cpp:1471
 msgid ""
 "Error en el XML.\n"
 "Documento mal formado."
@@ -561,18 +343,237 @@ msgstr ""
 "Error en el XML.\n"
 "Documento mal formado."
 
-#: pgimportfiles#8
-msgid "<LI>Ya hay una cuenta con el codigo "
-msgstr "(sp)<LI>Ya hay una cuenta con el código"
+#: pgimportfiles.cpp:1902
+msgid "<HR><B>Tratando el cliente "
+msgstr " <HR><B>Tratando el cliente"
 
-#: pgimportfiles#9
-msgid "<LI>Insercion de asiento"
-msgstr "<LI>Inserción de asiento"
+#: pgimportfiles.cpp:1910
+msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
 
-#: pgimportfiles#10
-msgid "<LI>Insercion de apunte"
-msgstr "<LI>Inserción de apunte"
-
-#: porcentajeCargaBase#1
-msgid "Porcentaje de carga..."
+#: pgimportfiles.cpp:1915
+msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 msgstr ""
+"<LI> El cliente no existe, se debe hacer una inserción de este</LI>(new line)"
+
+#: pgimportfiles.cpp:1937
+msgid "<HR><B>Tratando el proveedor "
+msgstr " <HR><B>Tratando el proveedor"
+
+#: pgimportfiles.cpp:1945
+msgid "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
+
+#: pgimportfiles.cpp:1950
+msgid "<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"
+msgstr ""
+"<LI> El proveedor no existe, se debe hacer una inserción de este</LI>(new "
+"line)"
+
+#: pgimportfiles.cpp:1971
+msgid "<HR><B>Tratando la froma de pago "
+msgstr " <HR><B>Tratando la froma de pago"
+
+#: pgimportfiles.cpp:1979
+msgid "<LI>Datos insuficientes para tratar la forma de pago."
+msgstr "<LI>Datos insuficientes para tratar la forma de pago."
+
+#: pgimportfiles.cpp:1988
+msgid "<LI> Ya existe esta forma de pago."
+msgstr "<LI> Ya existe esta forma de pago."
+
+#: pgimportfiles.cpp:1998
+msgid "<LI> Forma de pago <B>"
+msgstr "<LI> Forma de pago <B>"
+
+#: pgimportfiles.cpp:1998
+msgid "</B> Insertada"
+msgstr "</B> Insertada"
+
+#: pgimportfiles.cpp:2014
+msgid "<HR><B>Tratando almacen "
+msgstr " <HR><B>Tratando almacén"
+
+#: pgimportfiles.cpp:2028
+msgid "<LI>Datos insuficientes para tratar el almacen."
+msgstr "<LI>Datos insuficientes para tratar el almacén."
+
+#: pgimportfiles.cpp:2036
+msgid "<LI> Ya existe este almacen."
+msgstr "<LI> Ya existe este almacén."
+
+#: pgimportfiles.cpp:2045
+msgid "<LI> Almacen <B>"
+msgstr "<LI> Almacén <B>"
+
+#: pgimportfiles.cpp:2045
+msgid "</B> Insertado"
+msgstr "</B> Insertado"
+
+#: pgimportfiles.cpp:2064
+msgid "<HR><B>Tratando familia "
+msgstr "(sp)<HR><B>Tratando familia"
+
+#: pgimportfiles.cpp:2084
+msgid "<P> No se ha encontrado el padre de esta familia.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2089
+msgid "<P>Datos insuficientes para tratar la familia.</P>"
+msgstr "<P>Datos insuficientes para tratar la familia.</P>"
+
+#: pgimportfiles.cpp:2097
+msgid "<P> Ya existe esta familia.</P>"
+msgstr ""
+
+#: pgimportfiles.cpp:2106
+msgid "<P> Familia <B>"
+msgstr "<P> Familia <B>"
+
+#: pgimportfiles.cpp:2106 pgimportfiles.cpp:2208
+msgid "</B> Insertado</P>"
+msgstr "</B> Insertado</P>"
+
+#: pgimportfiles.cpp:2125
+msgid "<HR><B>Tratando Articulo "
+msgstr " <HR><B>Tratando Artículo"
+
+#: pgimportfiles.cpp:2152
+msgid "La familia del articulo no existe<BR>\n"
+msgstr "La familia del artículo no existe<BR>(new line)"
+
+#: pgimportfiles.cpp:2177
+msgid "<P>Datos insuficientes para tratar el articulo.</P>"
+msgstr "<P>Datos insuficientes para tratar el artículo.</P>"
+
+#: pgimportfiles.cpp:2186
+msgid "<P> Ya existe este articulo.</P>"
+msgstr "<P> Ya existe este artículo.</P>"
+
+#: pgimportfiles.cpp:2208
+msgid "<P> Articulo <B>"
+msgstr "<P> Artículo <B>"
+
+#: pgimportfiles.cpp:2223
+msgid "<HR><B>Tratando LPedidoCliente "
+msgstr " <HR><B>Tratando LPedidoCliente"
+
+#: pgimportfiles.cpp:2251
+msgid "<HR><B>Tratando DPedidoCliente "
+msgstr " <HR><B>Tratando DPedidoCliente"
+
+#: pgimportfiles.cpp:2272
+msgid "<HR><B>Tratando Pedido Cliente "
+msgstr " <HR><B>Tratando Pedido Cliente"
+
+#: pgimportfiles.cpp:2322 pgimportfiles.cpp:2551 pgimportfiles.cpp:2776
+#: pgimportfiles.cpp:3014
+msgid "El almacen del presupuesto no existe<BR>\n"
+msgstr "El almacén del presupuesto no existe<BR>(new line)"
+
+#: pgimportfiles.cpp:2332 pgimportfiles.cpp:2561 pgimportfiles.cpp:3024
+msgid "El cliente del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2342 pgimportfiles.cpp:2570
+msgid "La forma de pago del presupuesto no existe<BR>\n"
+msgstr ""
+
+#: pgimportfiles.cpp:2352 pgimportfiles.cpp:2579 pgimportfiles.cpp:2804
+#: pgimportfiles.cpp:3044
+msgid "El empleado del presupuesto no existe<BR>\n"
+msgstr "El empleado del presupuesto no existe<BR>\n"
+
+#: pgimportfiles.cpp:2403 pgimportfiles.cpp:2629 pgimportfiles.cpp:2867
+#: pgimportfiles.cpp:3096
+msgid "El articulo de la linea de presupuesto no existe<BR>\n"
+msgstr "El artículo de la línea de presupuesto no existe<BR>(new line)"
+
+#: pgimportfiles.cpp:2450
+msgid "<HR><B>Tratando LAlbaran "
+msgstr " <HR><B>Tratando LAlbaran"
+
+#: pgimportfiles.cpp:2478
+msgid "<HR><B>Tratando DAlbaran "
+msgstr " <HR><B>Tratando DAlbaran"
+
+#: pgimportfiles.cpp:2499
+msgid "<HR><B>Tratando Albaran "
+msgstr " <HR><B>Tratando Albaran"
+
+#: pgimportfiles.cpp:2676
+msgid "<HR><B>Tratando LFactura "
+msgstr " <HR><B>Tratando LFactura"
+
+#: pgimportfiles.cpp:2704
+msgid "<HR><B>Tratando DFactura "
+msgstr " <HR><B>Tratando DFactura"
+
+#: pgimportfiles.cpp:2725
+msgid "<HR><B>Tratando Factura "
+msgstr " <HR><B>Tratando Factura"
+
+#: pgimportfiles.cpp:2785
+#, fuzzy
+msgid "El clienten del presupuesto no existe<BR>\n"
+msgstr "El cliente del presupuesto no existe<BR>\n"
+
+#: pgimportfiles.cpp:2794 pgimportfiles.cpp:3034
+#, fuzzy
+msgid "La forma de pagon del presupuesto no existe<BR>\n"
+msgstr "La forma de pago del presupuesto no existe<BR>\n"
+
+#: pgimportfiles.cpp:2814
+msgid "La factura ya existe y no se va a insertar."
+msgstr "La factura ya existe y no se va a insertar."
+
+#: pgimportfiles.cpp:2914
+msgid "<HR><B>Tratando LPresupuesto "
+msgstr " <HR><B>Tratando LPresupuesto"
+
+#: pgimportfiles.cpp:2942
+msgid "<HR><B>Tratando DPresupuesto "
+msgstr " <HR><B>Tratando DPresupuesto"
+
+#: pgimportfiles.cpp:2963
+msgid "<HR><B>Tratando Presupuesto "
+msgstr " <HR><B>Tratando Presupuesto"
+
+#~ msgid "&Si"
+#~ msgstr "&Sí"
+
+#~ msgid "&No"
+#~ msgstr "&No"
+
+#~ msgid "Desea guardar los cambios?"
+#~ msgstr "¿Desea guardar los cambios?"
+
+#~ msgid "Desea eliminar '"
+#~ msgstr "¿Desea eliminar '"
+
+#~ msgid "No se ha podido borrar"
+#~ msgstr "No se ha podido borrar"
+
+#~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
+#~ msgstr "El almacén del presupuesto no existe<BR>\n"
+
+#~ msgid "Nombre"
+#~ msgstr "Nombre"
+
+#~ msgid "&Cierra el programa"
+#~ msgstr "&Cierra el programa"
+
+#~ msgid "Para entrar, antes tiene que seleccionar una empresa."
+#~ msgstr "Para entrar, antes tiene que seleccionar una empresa."
+
+#~ msgid "Anyo"
+#~ msgstr "Año"
+
+#~ msgid "Archivo"
+#~ msgstr "Archivo"
+
+#~ msgid "Tipo"
+#~ msgstr "Tipo"
+
+#~ msgid "Error: usuario y/o contrasenya incorrectos"
+#~ msgstr "Error: usuario y/o contraseña incorrectos"

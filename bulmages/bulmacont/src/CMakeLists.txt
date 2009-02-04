@@ -116,6 +116,18 @@ QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmacont\", String)'" )
 ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmacont\", String)'" )
 
+if(USE_GETTEXT)
+   set(bulmacont_i18n ${bulmacontEx} ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
+                ${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS})
+   GETTEXT_CREATE_TEMPLATE(bulmacont ${CMAKE_CURRENT_BINARY_DIR}/po
+                                ${CMAKE_CURRENT_SOURCE_DIR} bulmacont_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/po/bulmacont.pot
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8
+					      en_US.UTF-8 fr_FR.UTF-8)
+endif(USE_GETTEXT)
+
+
+
 
 add_library(libbulmacont SHARED ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
 		${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS} )
@@ -142,4 +154,3 @@ install_targets(/lib/ libbulmacont)
 set(bulmacont_STR ${bulmacontEx} ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
                 ${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS})
 
-#GETTEXT_CREATE_TEMPLATE("bulmacont" ${CMAKE_CURRENT_SOURCE_DIR} bulmacont_STR)
