@@ -1,8 +1,7 @@
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginsubformsxc/pluginsubformsxc.cpp:158
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginsubformsxc/pluginsubformsxc.cpp:160
+#: pluginsubformsxc.cpp:163 pluginsubformsxc.cpp:165
 msgid "Exportando datos a SXC"
 msgstr "Exportando datos a SXC"
 
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginsubformsxc/pluginsubformsxc.cpp:89
+#: pluginsubformsxc.cpp:82 pluginsubformsxc.cpp:94
 msgid "Exportar a hoja de calculo (SXC)"
 msgstr ""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-26 13:05+0100\n"
+"POT-Creation-Date: 2009-02-04 12:51+0100\n"
 "PO-Revision-Date: 2009-01-26 09:35+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,164 +13,146 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:57
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp:45
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:55
+#: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:45
+#: listlinalbaranclienteview.cpp:55
 msgid "% Descuento"
 msgstr "% Remise"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:55
+#: listlinalbaranproveedorview.cpp:55
 msgid "% I.V.A."
 msgstr "% T.V.A."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:56
+#: listlinalbaranproveedorview.cpp:56
 msgid "% R.E."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:54
+#: listlinalbaranclienteview.cpp:54
 msgid "% Recargo E.Q."
 msgstr "% Recharge E.Q."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listalmacenbase.h:117
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:575
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:638
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listtipoivabase.h:117
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:240
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:778
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listseriefacturabase.h:84
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listconfiguracionbase.h:118
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listtasaivabase.h:118
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:386
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:341
+#: ui_tiposarticulobase.h:240 ui_articleeditbase.h:638 ui_familiasbase.h:386
+#: ui_listalmacenbase.h:117 ui_listtasaivabase.h:118
+#: ui_listseriefacturabase.h:84 ui_clientebase.h:575 ui_fpagobase.h:341
+#: ui_listtipoivabase.h:117 ui_listconfiguracionbase.h:118
+#: ui_proveditbase.h:778
 msgid "&Aceptar"
 msgstr "&Accepter"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:288
+#: ui_aboutbase.h:288
 msgid "&Acerca de"
 msgstr "&A propos de"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:302
+#: ui_bulmafactbase.h:302
 msgid "&Acerca de BulmaFact"
 msgstr "&A propos de BulmaFact"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:305
+#: ui_bulmafactbase.h:305
 msgid "&Almacenes"
 msgstr "&Magasins"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:798
+#: ui_proveditbase.h:798
 msgid "&Aplicar Recargo de Equivalencia."
 msgstr "&Apliquer recharge d'équivalence."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:292
+#: ui_bulmafactbase.h:292
 msgid "&Articulos"
 msgstr "&Articles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listalmacenbase.h:118
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:576
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:639
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listtipoivabase.h:118
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:241
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:779
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listseriefacturabase.h:83
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listconfiguracionbase.h:119
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listtasaivabase.h:119
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:387
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:342
+#: ui_tiposarticulobase.h:241 ui_articleeditbase.h:639 ui_familiasbase.h:387
+#: ui_listalmacenbase.h:118 ui_listtasaivabase.h:119
+#: ui_listseriefacturabase.h:83 ui_clientebase.h:576 ui_fpagobase.h:342
+#: ui_listtipoivabase.h:118 ui_listconfiguracionbase.h:119
+#: ui_proveditbase.h:779
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:297
+#: ui_aboutbase.h:297
 msgid "&Cerrar"
 msgstr "&Fermer"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:297
+#: ui_bulmafactbase.h:297
 msgid "&Clientes"
 msgstr "&Clients"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:799
+#: ui_proveditbase.h:799
 msgid "&Comentarios:"
 msgstr "&Comentaires:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:826
+#: ui_proveditbase.h:826
 msgid "&Contratos"
 msgstr "&Contracts"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:780
+#: ui_proveditbase.h:780
 #, fuzzy
 msgid "&Código:"
 msgstr "Code:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:595
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:635
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:801
+#: ui_articleeditbase.h:635 ui_clientebase.h:595 ui_proveditbase.h:801
 msgid "&Datos generales"
 msgstr "&Données generales"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:306
+#: ui_bulmafactbase.h:306
 msgid "&Documentacion"
 msgstr "&Documentation"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:304
+#: ui_bulmafactbase.h:304
 msgid "&Formas de pago"
 msgstr "&Formes de payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:794
+#: ui_proveditbase.h:794
 msgid "&IRPF que aplica:"
 msgstr "&IR qui aplique:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:628
+#: ui_articleeditbase.h:628
 msgid "&Incluir en el catalogo."
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:308
+#: ui_bulmafactbase.h:308
 msgid "&Indexador"
 msgstr "&Indexeur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:219
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:186
+#: bancoview.cpp:186 trabajadorview.cpp:219
 msgid "&No"
 msgstr "&Non"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:782
+#: ui_proveditbase.h:782
 msgid "&Nombre empresa:"
 msgstr "&Nom d'entrepirise:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:282
+#: ui_bulmafactbase.h:282
 msgid "&Propiedades de la empresa..."
 msgstr "&Propriétées de l'entreprise..."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:294
+#: ui_bulmafactbase.h:294
 msgid "&Proveedores"
 msgstr "&Fournisseurs"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:280
+#: ui_bulmafactbase.h:280
 msgid "&Salir del programa"
 msgstr "&Sortir du programme"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:219
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:186
+#: bancoview.cpp:186 trabajadorview.cpp:219
 msgid "&Si"
 msgstr "&Oui"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:790
+#: ui_proveditbase.h:790
 #, fuzzy
 msgid "&Teléfono:"
 msgstr "Téléphone:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:289
+#: ui_bulmafactbase.h:289
 msgid "&Tipos de articulo"
 msgstr "&Types d'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:299
+#: ui_bulmafactbase.h:299
 msgid "&Trabajadores"
 msgstr "&Ouvriers"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:239
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:366
+#: ui_tiposarticulobase.h:239 ui_familiasbase.h:366
 msgid "1"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:406
+#: ui_bancobase.h:406
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -184,7 +166,7 @@ msgid ""
 "size:9pt;\"></p></body></html>"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:289
+#: ui_aboutbase.h:289
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -198,219 +180,195 @@ msgid ""
 "size:9pt;\"></p></body></html>"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:294
+#: ui_aboutbase.h:294
 msgid "A&utores"
 msgstr "A&uteurs"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:328
+#: ui_bulmafactbase.h:328
 msgid "A&yuda"
 msgstr "A&ide"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedareferenciabase.h:97
+#: ui_busquedareferenciabase.h:97
 msgid "Abre todos los documentos con esta referencia"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:64
+#: articuloview.cpp:64
 msgid "Abreviacion"
 msgstr "Abréviation"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:285
+#: ui_aboutbase.h:285
 msgid "Acerca de BulmaFact"
 msgstr "Auprès de BulmaFact"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:634
+#: ui_articleeditbase.h:634
 msgid "Activar el &control de stock."
 msgstr "Activer le &control de stock."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:631
+#: ui_articleeditbase.h:631
 msgid "Activar el control de stock para este articulo."
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:341
+#: ui_trabajadorbase.h:341
 msgid "Activo"
 msgstr "Actif"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:336
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:341
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:358
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:363
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:331
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:336
+#: ui_providerslistbase.h:336 ui_providerslistbase.h:341
+#: ui_clientslistbase.h:331 ui_clientslistbase.h:336 ui_articleslistbase.h:358
+#: ui_articleslistbase.h:363
 msgid "Actualizar listado"
 msgstr "Actualiser relevé"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:296
+#: ui_aboutbase.h:296
 msgid "Acuerdo de &licencia"
 msgstr "Accord de &licence"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listalmacenview.cpp:51
+#: listalmacenview.cpp:51
 msgid "Almacen"
 msgstr "Magasin"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listalmacenbase.h:116
+#: ui_listalmacenbase.h:116
 msgid "Almacenes"
 msgstr "Magasins"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:288
+#: ui_articleslistbase.h:288
 msgid "Alt+O"
 msgstr "Alt+O"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:345
+#: ui_trabajadorbase.h:345
 msgid "Apellidos:"
 msgstr "Noms:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:593
+#: ui_clientebase.h:593
 msgid "Aplicar Recargo de Equivalencia"
 msgstr "Apliquer recharge d'équivalence"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaarticulobase.h:95
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:58
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:141
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:174
+#: ui_busquedaarticulobase.h:95 articuloview.cpp:58 informereferencia.cpp:141
+#: informereferencia.cpp:174
 msgid "Articulo"
 msgstr "Article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:329
+#: ui_bulmafactbase.h:329
 msgid "Articulo&s"
 msgstr "Article&s"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaarticulobase.h:93
+#: ui_busquedaarticulobase.h:93
 msgid "Articulo:"
 msgstr "Article:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:284
+#: ui_articleslistbase.h:284
 msgid "Articulos"
 msgstr "Articles"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:42
+#: bancoview.cpp:42
 msgid "Banco"
 msgstr "Banque"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:50
+#: provedit.cpp:50
 msgid "Banco proveedor"
 msgstr "Banque fournisseur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:318
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:401
+#: ui_bancobase.h:401 ui_bulmafactbase.h:318
 msgid "Bancos"
 msgstr "Banques"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:369
+#: fichabf.cpp:369
 msgid "Base Imponible"
 msgstr "Assiette imposable"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:292
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:297
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:595
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:600
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:287
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:292
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:384
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:478
+#: ui_providerslistbase.h:292 ui_providerslistbase.h:297
+#: ui_articleeditbase.h:595 ui_articleeditbase.h:600 ui_clientslistbase.h:287
+#: ui_clientslistbase.h:292 familiasview.cpp:478 tiposarticuloview.cpp:384
 msgid "Borrar"
 msgstr "Éraser"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:335
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:340
+#: ui_familiasbase.h:335 ui_familiasbase.h:340
 msgid "Borrar Familia"
 msgstr "Éraser famille"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:271
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:276
+#: ui_tiposarticulobase.h:271 ui_tiposarticulobase.h:276
 msgid "Borrar Tipo de articulo"
 msgstr "Éraser Genres d'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:314
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:319
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:167
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:291
+#: ui_articleslistbase.h:314 ui_articleslistbase.h:319 articulolist.cpp:167
+#: articulolist.cpp:291
 msgid "Borrar articulo"
 msgstr "Éraser article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:554
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:559
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:248
+#: ui_clientebase.h:554 ui_clientebase.h:559 clientslist.cpp:248
 msgid "Borrar cliente"
 msgstr "Éraser client"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:321
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:326
+#: ui_fpagobase.h:321 ui_fpagobase.h:326
 msgid "Borrar forma de pago"
 msgstr "Éraser forme de payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:611
+#: ui_articleeditbase.h:611
 msgid "Borrar imagen"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:310
+#: articuloview.cpp:310
 msgid "Borrar imagen del articulo"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:842
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:847
+#: ui_proveditbase.h:842 ui_proveditbase.h:847
 msgid "Borrar proveedor"
 msgstr "Éraser fournisseur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:353
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:358
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:424
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:429
+#: ui_bancobase.h:424 ui_bancobase.h:429 ui_trabajadorbase.h:353
+#: ui_trabajadorbase.h:358
 msgid "Borrar trabajador"
 msgstr "Éraser ouvrier"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:279
+#: ui_bulmafactbase.h:279
 msgid "BulmaFact - Facturacion GPL"
 msgstr "BulmaFact - Facturacion GPL"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:367
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:389
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:362
+#: ui_providerslistbase.h:367 ui_clientslistbase.h:362
+#: ui_articleslistbase.h:389
 msgid "Buscar:"
 msgstr "Chercher:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:636
+#: ui_articleeditbase.h:636
 msgid "C&omponentes"
 msgstr "C&omposants"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:783
+#: ui_proveditbase.h:783
 msgid "C.I.&F. / N.I.F."
 msgstr "C.I.&F. / N.I.F."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:270
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:285
+#: clientslist.cpp:270 providerslist.cpp:285
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:59
+#: clienteview.cpp:59
 msgid "C.I.F. del cliente"
 msgstr "C.I.F. du client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:48
+#: provedit.cpp:48
 msgid "C.I.F. del proveedor"
 msgstr "C.I.F. du fournisseur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:577
+#: ui_clientebase.h:577
 msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr "C.I.F./N.I.F./N.I.E.:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:421
+#: ui_bancobase.h:421
 msgid "C.P.:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:608
+#: ui_articleeditbase.h:608
 msgid "Cam&biar imagen"
 msgstr "Chan&ger Image"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:346
+#: ui_trabajadorbase.h:346
 msgid "Cambiar imagen"
 msgstr "Changer image"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:53
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:51
+#: listlinalbaranproveedorview.cpp:53 listlinalbaranclienteview.cpp:51
 msgid "Cantidad"
 msgstr "Cantitée"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/comparticulolistview.cpp:44
+#: comparticulolistview.cpp:44
 msgid "Cantidad de componente de articulo"
 msgstr "Cantité de composant d'article"
 
@@ -422,474 +380,426 @@ msgstr ""
 msgid "Cargando traducciones"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:298
+#: providerslist.cpp:298
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clé d'accès à la web du fournisseur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/busquedacliente.cpp:39
+#: busquedacliente.cpp:39
 msgid "Clien&te:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:538
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:53
+#: ui_clientebase.h:538 clienteview.cpp:53
 msgid "Cliente"
 msgstr "Client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:75
+#: clienteview.cpp:75
 msgid "Cliente inactivo"
 msgstr "Client inactif"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:100
+#: ui_busquedaclientebase.h:100
 msgid "Cliente:"
 msgstr "Client:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:261
+#: ui_clientslistbase.h:261
 msgid "Clientes"
 msgstr "Clients"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:171
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:194
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:239
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:264
+#: clientslist.cpp:171 clientslist.cpp:194 articulolist.cpp:239
+#: articulolist.cpp:264
 msgid "Clientes (*.xml)"
 msgstr "Clients (*.xml)"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:216
+#: informereferencia.cpp:216
 msgid "Cobrado"
 msgstr "Encaissé"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:269
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:46
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:62
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:77
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:284
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:288
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:60
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:51
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:568
+#: provedit.cpp:60 clientslist.cpp:269 providerslist.cpp:284
+#: providerslist.cpp:288 articuloview.cpp:62 familiasview.cpp:51
+#: familiasview.cpp:568 clienteview.cpp:77 tiposarticuloview.cpp:46
 msgid "Codigo"
 msgstr "Code"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listalmacenview.cpp:99
+#: listalmacenview.cpp:99
 msgid "Codigo almacen"
 msgstr "Code magasin"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:49
+#: provedit.cpp:49
 msgid "Codigo cliente"
 msgstr "Code client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:70
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:51
+#: articuloview.cpp:70 familiasview.cpp:51
 msgid "Codigo completo"
 msgstr "Code complet"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:49
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:47
+#: listlinalbaranproveedorview.cpp:49 listlinalbaranclienteview.cpp:47
 msgid "Codigo completo articulo"
 msgstr "Code complet article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:366
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/comparticulolistview.cpp:42
+#: comparticulolistview.cpp:42 articulolist.cpp:366
 msgid "Codigo completo del articulo"
 msgstr "Code complet de l'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:604
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:382
+#: ui_articleeditbase.h:604 ui_familiasbase.h:382
 msgid "Codigo completo:"
 msgstr "Code complet:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:578
+#: ui_clientebase.h:578
 msgid "Codigo de cliente:"
 msgstr "Code de client:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:605
+#: ui_articleeditbase.h:605
 msgid "Codigo del articulo:"
 msgstr "Code de l'article:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:276
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:64
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:293
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:54
+#: provedit.cpp:54 clientslist.cpp:276 providerslist.cpp:293
+#: clienteview.cpp:64
 msgid "Codigo postal"
 msgstr "Code postal"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:583
+#: ui_clientebase.h:583
 msgid "Codigo postal:"
 msgstr "Code postal:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:381
+#: ui_familiasbase.h:381
 msgid "Codigo reducido:"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listseriefacturaview.cpp:82
+#: listseriefacturaview.cpp:82
 msgid "Codigo serie factura"
 msgstr "Code série facture"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:243
+#: ui_tiposarticulobase.h:243
 msgid "Codigo:"
 msgstr "Code:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:284
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:73
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:290
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:59
+#: provedit.cpp:59 clientslist.cpp:284 providerslist.cpp:290
+#: clienteview.cpp:73
 msgid "Comentarios"
 msgstr "Commentaires"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:596
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:418
+#: ui_bancobase.h:418 ui_clientebase.h:596
 msgid "Comentarios:"
 msgstr "Commentaires:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp:44
+#: listdescalbaranclienteview.cpp:44
 msgid "Concepto descuento"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listconfiguracionview.cpp:53
+#: listconfiguracionview.cpp:53
 msgid "Configuracion"
 msgstr "Configuration"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:325
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:330
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:347
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:352
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:320
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:325
+#: ui_providerslistbase.h:325 ui_providerslistbase.h:330
+#: ui_clientslistbase.h:320 ui_clientslistbase.h:325 ui_articleslistbase.h:347
+#: ui_articleslistbase.h:352
 msgid "Configurar listado"
 msgstr "Configurer relevé"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:412
+#: ui_bancobase.h:412
 msgid "Contacto:"
 msgstr "Contact:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:378
+#: ui_familiasbase.h:378
 msgid "Contenido de la familia:"
 msgstr "Contenu de la famille:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:591
+#: ui_clientebase.h:591
 msgid "Correo electronico:"
 msgstr "Courrier électronique:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:563
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:280
+#: ui_tiposarticulobase.h:280 ui_clientebase.h:563
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:107
+#: ui_busquedaclientebase.h:107
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:315
+#: ui_bulmafactbase.h:315
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:292
+#: ui_tiposarticulobase.h:292
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:281
+#: ui_bulmafactbase.h:281
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:551
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:268
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:839
+#: ui_tiposarticulobase.h:268 ui_clientebase.h:551 ui_proveditbase.h:839
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:787
+#: ui_proveditbase.h:787
 #, fuzzy
 msgid "Código &postal:"
 msgstr "Code postal:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:403
+#: ui_bancobase.h:403
 msgid "D.C.:"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:796
+#: ui_proveditbase.h:796
 msgid "Datos &bancarios:"
 msgstr "Donées &bancaires:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:598
+#: ui_clientebase.h:598
 msgid "Datos bancarios:"
 msgstr "Dates bancaires:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:800
+#: ui_proveditbase.h:800
 #, fuzzy
 msgid "Datos de comercio &electrónico:"
 msgstr "Donnés de commerce électronique:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:74
+#: clienteview.cpp:74
 msgid "Datos de comercio electronico"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:597
+#: ui_clientebase.h:597
 msgid "Datos de comercio electronico:"
 msgstr "Donnés de commerce électronique:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:411
+#: tiposarticuloview.cpp:411
 msgid "Debe seleccionar un tipo"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:342
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:504
+#: familiasview.cpp:342 familiasview.cpp:504
 msgid "Debe seleccionar una familia"
 msgstr "Vous devez sélèctionner une famille"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:637
+#: ui_articleeditbase.h:637
 msgid "Descripcio&n"
 msgstr "Descriptio&n"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:52
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:46
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:51
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:50
+#: listlinalbaranproveedorview.cpp:52 familiasview.cpp:51
+#: listlinalbaranclienteview.cpp:50 tiposarticuloview.cpp:46
 msgid "Descripcion"
 msgstr "Description"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:368
+#: articulolist.cpp:368
 msgid "Descripcion abreviada del articulo"
 msgstr "Déscription abréviée de l'article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:370
+#: articulolist.cpp:370
 msgid "Descripcion del tipo de articulo"
 msgstr "Description du genre d'article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listseriefacturaview.cpp:83
+#: listseriefacturaview.cpp:83
 msgid "Descripcion serie factura"
 msgstr "Déscription série facture"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:371
+#: articulolist.cpp:371
 msgid "Descripcion tipo de I.V.A."
 msgstr "Description genre de T.V.A."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:244
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:379
+#: ui_tiposarticulobase.h:244 ui_familiasbase.h:379
 msgid "Descripcion:"
 msgstr "Description:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:336
+#: fichabf.cpp:336
 msgid "Descuento"
 msgstr "Remise"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:300
+#: ui_fpagobase.h:300
 msgid "Descuento:"
 msgstr "Remise:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:385
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:479
+#: familiasview.cpp:479 tiposarticuloview.cpp:385
 msgid "Desea eliminar"
 msgstr "Désirez vous éliminer"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fpagoview.cpp:152
+#: fpagoview.cpp:152
 msgid "Desea guardar los cambios."
 msgstr "Voulez vous sauver les changes?"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:291
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:218
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:185
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:320
+#: bancoview.cpp:185 familiasview.cpp:320 trabajadorview.cpp:218
+#: tiposarticuloview.cpp:291
 msgid "Desea guardar los cambios?"
 msgstr "Voulez vous sauver les changes?"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:807
+#: ui_proveditbase.h:807
 msgid "Di&visiones"
 msgstr "Di&visions"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:785
+#: ui_proveditbase.h:785
 #, fuzzy
 msgid "Di&visión:"
 msgstr "Di&visions"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:417
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:274
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:61
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:291
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:51
+#: ui_bancobase.h:417 provedit.cpp:51 clientslist.cpp:274
+#: providerslist.cpp:291 clienteview.cpp:61
 msgid "Direccion"
 msgstr "Direction"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:280
+#: clientslist.cpp:280
 msgid "Direccion URL"
 msgstr "Direction URL"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:297
+#: providerslist.cpp:297
 msgid "Direccion de URL"
 msgstr "Direction d'URL"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:279
+#: clientslist.cpp:279
 msgid "Direccion de correo electronica"
 msgstr "Direction de courier électronique"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:296
+#: providerslist.cpp:296
 msgid "Direccion de correo electronico"
 msgstr "Direction de courrier éléctronique"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:69
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:57
+#: provedit.cpp:57 clienteview.cpp:69
 msgid "Direccion electronica"
 msgstr "Direction électronique"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:582
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:343
+#: ui_clientebase.h:582 ui_trabajadorbase.h:343
 msgid "Direccion:"
 msgstr "Direction:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:786
+#: ui_proveditbase.h:786
 #, fuzzy
 msgid "Direcció&n:"
 msgstr "Direction:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:373
+#: articulolist.cpp:373
 msgid "Disponible en stock"
 msgstr "Disponible en stock"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:330
+#: ui_bulmafactbase.h:330
 msgid "E&mpresa"
 msgstr "E&ntreprise"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:793
+#: ui_proveditbase.h:793
 msgid "E-&mail:"
 msgstr "E-&mail:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:348
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:414
+#: ui_bancobase.h:414 ui_trabajadorbase.h:348
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:281
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:286
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:276
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:281
+#: ui_providerslistbase.h:281 ui_providerslistbase.h:286
+#: ui_clientslistbase.h:276 ui_clientslistbase.h:281
 msgid "Editar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:303
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:308
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:290
+#: ui_articleslistbase.h:303 ui_articleslistbase.h:308 articulolist.cpp:290
 msgid "Editar articulo"
 msgstr "Editer article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:247
+#: clientslist.cpp:247
 msgid "Editar cliente"
 msgstr "Éditer client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/subform2bf.cpp:242
+#: subform2bf.cpp:242
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:169
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:192
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:237
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:262
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:233
+#: clientslist.cpp:169 clientslist.cpp:192 providerslist.cpp:233
+#: articulolist.cpp:237 articulolist.cpp:262
 msgid "Elija el archivo"
 msgstr "choiisissé le fichier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:281
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:78
+#: clientslist.cpp:281 clienteview.cpp:78
 msgid "Empresa"
 msgstr "Entreprise"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:580
+#: ui_clientebase.h:580
 msgid "Empresa:"
 msgstr "Entreprise:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:419
+#: ui_bancobase.h:419
 msgid "Entidad:"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:144
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:176
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:214
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:261
+#: informereferencia.cpp:144 informereferencia.cpp:176
+#: informereferencia.cpp:214 informereferencia.cpp:261
 msgid "Entregado"
 msgstr "Remis"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:274
+#: trabajadorview.cpp:274
 msgid "Error al borrar el Trabajador"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:178
+#: articulolist.cpp:178
 msgid "Error al borrar el articulo"
 msgstr "Erreur en érasan l'article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:192
+#: providerslist.cpp:192
 msgid "Error al borrar el proveedor"
 msgstr "Erreur érasant le fournisseur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:425
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:518
+#: familiasview.cpp:518 tiposarticuloview.cpp:425
 msgid "Error al borrar la familia"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:154
+#: clientslist.cpp:154
 msgid "Error al borrar un cliente"
 msgstr "Érreur éliminant un client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:107
+#: articuloview.cpp:107
 msgid "Error al crear el articulo"
 msgstr "Erreur en créant l'article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:101
+#: clienteview.cpp:101
 msgid "Error al crear el cliente"
 msgstr "Érreur dans la création du client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:87
+#: provedit.cpp:87
 msgid "Error al crear el proveedor"
 msgstr "Erreur à la création du fournisseur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:431
+#: familiasview.cpp:431
 msgid "Error al crear la familia"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:249
+#: trabajadorview.cpp:249
 msgid "Error al crear un nuevo Trabajador"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:168
+#: bancoview.cpp:168
 msgid "Error al guardar"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:200
+#: trabajadorview.cpp:200
 msgid "Error al guardar el trabajador"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:371
+#: familiasview.cpp:371
 msgid "Error al guardar la familia"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:72
+#: listtasaivaview.cpp:72
 msgid "Error al guardar las tasas de IVA"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listalmacenview.cpp:72
+#: listalmacenview.cpp:72
 msgid "Error al guardar los almacenes"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtipoivaview.cpp:72
+#: listtipoivaview.cpp:72
 msgid "Error al guardar los tipos de IVA"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fpagoview.cpp:207
+#: fpagoview.cpp:207
 msgid "Error al intentar borrar la forma de pago"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:139
+#: tiposarticuloview.cpp:139
 msgid "Error en la carga"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:366
+#: tiposarticuloview.cpp:366
 msgid "Error en la creacion"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:244
+#: bancoview.cpp:244
 msgid "Error inesperado al borrar el banco"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:216
+#: bancoview.cpp:216
 msgid "Error inesperado el crear el Banco"
 msgstr ""
 
@@ -897,361 +807,313 @@ msgstr ""
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Erreur inéspéré dans BulmaFact. Le programme fermera."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:848
+#: fichabf.cpp:848
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:168
+#: articulolist.cpp:168
 msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
 msgstr ""
 "Vous êtes sur le point d'éraser un article. Ces données peuvent donner des "
 "problèmes."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:311
+#: articuloview.cpp:311
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:347
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:352
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:366
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:388
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:342
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:347
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:361
+#: ui_providerslistbase.h:347 ui_providerslistbase.h:352
+#: ui_providerslistbase.h:366 ui_clientslistbase.h:342
+#: ui_clientslistbase.h:347 ui_clientslistbase.h:361 ui_articleslistbase.h:388
 msgid "Exportar"
 msgstr "Exporter"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:369
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:374
+#: ui_articleslistbase.h:369 ui_articleslistbase.h:374
 msgid "Exportar articulos"
 msgstr "Exporter articles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:307
+#: ui_bulmafactbase.h:307
 msgid "F1"
 msgstr "F1"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:301
+#: ui_bulmafactbase.h:301
 msgid "F11"
 msgstr "F11"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:291
+#: ui_bulmafactbase.h:291
 msgid "F2"
 msgstr "F2"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:296
+#: ui_bulmafactbase.h:296
 msgid "F3"
 msgstr "F3"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/company.cpp:212
+#: company.cpp:212
 msgid "Facturacion GPL"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:287
+#: ui_aboutbase.h:287
 msgid "Facturacion GPL - Version 0.11.1 -"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:145
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:177
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:215
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:262
+#: informereferencia.cpp:145 informereferencia.cpp:177
+#: informereferencia.cpp:215 informereferencia.cpp:262
 msgid "Facturado"
 msgstr "Facturé"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedafamiliabase.h:93
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:71
+#: ui_busquedafamiliabase.h:93 articuloview.cpp:71
 msgid "Familia"
 msgstr "Famille"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedafamiliabase.h:91
+#: ui_busquedafamiliabase.h:91
 msgid "Familia:"
 msgstr "Famille:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:320
+#: ui_familiasbase.h:320
 msgid "Familias"
 msgstr "Familles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:405
+#: ui_bancobase.h:405
 msgid "Fax:"
 msgstr "Fax:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:100
+#: listtasaivaview.cpp:100
 msgid "Fecha Entrada en Vigor"
 msgstr "Date d'entrée en vigueur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:282
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:71
+#: clientslist.cpp:282 clienteview.cpp:71
 msgid "Fecha de alta del cliente"
 msgstr "Date d'exéat du client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:283
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:72
+#: clientslist.cpp:283 clienteview.cpp:72
 msgid "Fecha de baja del cliente"
 msgstr "Date de cessation du client"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:303
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:359
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:362
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:367
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:372
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:377
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:382
+#: ui_bulmafactbase.h:303 ui_bulmafactbase.h:359 ui_bulmafactbase.h:362
+#: ui_bulmafactbase.h:367 ui_bulmafactbase.h:372 ui_bulmafactbase.h:377
+#: ui_bulmafactbase.h:382
 msgid "Fichas"
 msgstr "Fiches"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:314
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:319
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:336
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:341
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:309
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:314
+#: ui_providerslistbase.h:314 ui_providerslistbase.h:319
+#: ui_clientslistbase.h:309 ui_clientslistbase.h:314 ui_articleslistbase.h:336
+#: ui_articleslistbase.h:341
 msgid "Filtrar listado"
 msgstr "Filtrer relevé"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedafamiliabase.h:90
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:99
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedatipoarticulobase.h:90
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaarticulobase.h:92
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedareferenciabase.h:89
+#: ui_busquedareferenciabase.h:89 ui_busquedatipoarticulobase.h:90
+#: ui_busquedaarticulobase.h:92 ui_busquedaclientebase.h:99
+#: ui_busquedafamiliabase.h:90
 msgid "Form1"
 msgstr "Form1"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fpagoview.cpp:41
+#: fpagoview.cpp:41
 msgid "Forma de Pago"
 msgstr "Forme de payement"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:79
+#: clienteview.cpp:79
 msgid "Forma de pago"
 msgstr "Forme de payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:592
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:795
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:306
+#: ui_clientebase.h:592 ui_fpagobase.h:306 ui_proveditbase.h:795
 msgid "Forma de pago:"
 msgstr "Forme de payement:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:62
+#: provedit.cpp:62
 msgid "Forma_Pago"
 msgstr "Forme_payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:297
+#: ui_fpagobase.h:297
 msgid "Formas de pago"
 msgstr "Forme de payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:349
+#: ui_trabajadorbase.h:349
 msgid "General"
 msgstr "Général"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:288
+#: ui_bulmafactbase.h:288
 msgid "Gestion de &familias"
 msgstr "Gestion de &familles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:584
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:589
+#: ui_articleeditbase.h:584 ui_articleeditbase.h:589
 msgid "Guardar"
 msgstr "Garder"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:346
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:351
+#: ui_familiasbase.h:346 ui_familiasbase.h:351
 msgid "Guardar Familia"
 msgstr "Sauver famille"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:290
+#: tiposarticuloview.cpp:290
 msgid "Guardar Tipo de Articulo"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:259
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:264
+#: ui_tiposarticulobase.h:259 ui_tiposarticulobase.h:264
 msgid "Guardar Tipo de articulo"
 msgstr "Garder Genres d'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:542
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:547
+#: ui_clientebase.h:542 ui_clientebase.h:547
 msgid "Guardar cliente"
 msgstr "Sauver client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:217
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/bancoview.cpp:184
+#: bancoview.cpp:184 trabajadorview.cpp:217
 msgid "Guardar datos del trabajador"
 msgstr "Sauver données de l'ouvrier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:319
+#: familiasview.cpp:319
 msgid "Guardar familia"
 msgstr "Sauver famille"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:332
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:337
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fpagoview.cpp:151
+#: ui_fpagobase.h:332 ui_fpagobase.h:337 fpagoview.cpp:151
 msgid "Guardar forma de pago"
 msgstr "Garder forme de payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:830
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:835
+#: ui_proveditbase.h:830 ui_proveditbase.h:835
 msgid "Guardar proveedor"
 msgstr "Garder fournisseur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:364
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:369
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:435
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:440
+#: ui_bancobase.h:435 ui_bancobase.h:440 ui_trabajadorbase.h:364
+#: ui_trabajadorbase.h:369
 msgid "Guardar trabajador"
 msgstr "Sauver ouvrier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:405
+#: fichabf.cpp:405
 msgid "I.R.P.F (-"
 msgstr "I.R. (-"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:383
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:53
+#: listlinalbaranclienteview.cpp:53 fichabf.cpp:383
 msgid "I.V.A."
 msgstr "T.V.A."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:365
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/comparticulolistview.cpp:46
+#: comparticulolistview.cpp:46 articulolist.cpp:365
 msgid "ID articulo"
 msgstr "ID article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:268
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:56
+#: clientslist.cpp:268 clienteview.cpp:56
 msgid "ID cliente"
 msgstr "Id client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/comparticulolistview.cpp:45
+#: comparticulolistview.cpp:45
 msgid "ID componente"
 msgstr "ID composant"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:283
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:45
+#: provedit.cpp:45 providerslist.cpp:283
 msgid "ID proveedor"
 msgstr "ID fournisseur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:64
+#: provedit.cpp:64
 msgid "IRPF"
 msgstr "IR"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:46
+#: tiposarticuloview.cpp:46
 msgid "Id"
 msgstr "Id"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:95
+#: listtasaivaview.cpp:95
 msgid "Id Tasa IVA"
 msgstr "Id Taux TVA"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtipoivaview.cpp:107
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:97
+#: listtipoivaview.cpp:107 listtasaivaview.cpp:97
 msgid "Id Tipo IVA"
 msgstr "Id Type TVA"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:58
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp:46
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:56
+#: listlinalbaranproveedorview.cpp:58 listdescalbaranclienteview.cpp:46
+#: listlinalbaranclienteview.cpp:56
 msgid "Id albaran"
 msgstr "Id bulletin"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listalmacenview.cpp:98
+#: listalmacenview.cpp:98
 msgid "Id almacen"
 msgstr "Id magasin"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:48
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:46
+#: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
 msgid "Id articulo"
 msgstr "Id article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp:43
+#: listdescalbaranclienteview.cpp:43
 msgid "Id descuento"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:51
+#: familiasview.cpp:51
 msgid "Id familia"
 msgstr "Id famille"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:61
+#: articuloview.cpp:61
 msgid "Identificador"
 msgstr "Identifieur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:70
+#: clienteview.cpp:70
 msgid "Identificador de presupuesto"
 msgstr "Identifieur du budget"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:607
+#: ui_articleeditbase.h:607
 msgid "Imagen del articulo:"
 msgstr "Image de l'article:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:280
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:290
+#: articuloview.cpp:280 trabajadorview.cpp:290
 msgid "Imagenes (*.jpg)"
 msgstr "Images (*.jpg)"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:358
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:363
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:353
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:358
+#: ui_providerslistbase.h:358 ui_providerslistbase.h:363
+#: ui_clientslistbase.h:353 ui_clientslistbase.h:358
 msgid "Importar"
 msgstr "Importer"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:380
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:385
+#: ui_articleslistbase.h:380 ui_articleslistbase.h:385
 msgid "Importar articulos"
 msgstr "Importer articles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:357
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:362
+#: ui_familiasbase.h:357 ui_familiasbase.h:362
 msgid "Imprimir Familias"
 msgstr "Imprimer familles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:566
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:571
+#: ui_clientebase.h:566 ui_clientebase.h:571
 msgid "Imprimir informe"
 msgstr "Imprimer informe"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:303
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:308
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:325
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:330
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:298
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:303
+#: ui_providerslistbase.h:303 ui_providerslistbase.h:308
+#: ui_clientslistbase.h:298 ui_clientslistbase.h:303 ui_articleslistbase.h:325
+#: ui_articleslistbase.h:330
 msgid "Imprimir listado"
 msgstr "Imprimer relevé"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:73
+#: articuloview.cpp:73
 msgid "Inactivo"
 msgstr "Inactif"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:67
+#: articuloview.cpp:67
 msgid "Incluir en control de stock"
 msgstr "Inclure dans le control de stock"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:66
+#: articuloview.cpp:66
 msgid "Incluir en presentaciones"
 msgstr "Inclure en présentations"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:625
+#: ui_articleeditbase.h:625
 msgid "Incluir este articulo en el catalogo."
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:309
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:312
+#: ui_bulmafactbase.h:309 ui_bulmafactbase.h:312
 msgid "Indexador"
 msgstr "Indexeur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:298
+#: ui_fpagobase.h:298
 msgid "Informacion de la forma de pago:"
 msgstr "Information de la forme de payement:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:615
+#: ui_articleeditbase.h:615
 msgid "Informacion del articulo:"
 msgstr "Information de l'article:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:402
+#: ui_bancobase.h:402
 msgid "Informacion del banco:"
 msgstr "Information de la banque:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/busquedareferencia.cpp:64
+#: busquedareferencia.cpp:64
 msgid "Informe"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedareferenciabase.h:92
+#: ui_busquedareferenciabase.h:92
 msgid "Informe por referencia"
 msgstr ""
 
@@ -1259,15 +1121,15 @@ msgstr ""
 msgid "Inicializando componentes"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/company.cpp:95
+#: company.cpp:95
 msgid "Inicializando listado de articulos"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/company.cpp:133
+#: company.cpp:133
 msgid "Inicializando listado de clientes"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/company.cpp:116
+#: company.cpp:116
 msgid "Inicializando listado de proveedores"
 msgstr ""
 
@@ -1283,566 +1145,519 @@ msgstr ""
 msgid "Leyendo configuracion"
 msgstr "Lisant configuration"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:110
+#: ui_busquedaclientebase.h:110
 msgid "Limpiar campo"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:455
+#: ui_bancobase.h:455
 msgid "Lista de bancos:"
 msgstr " Listes de banques:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:350
+#: ui_trabajadorbase.h:350
 msgid "Lista de trabajadores:"
 msgstr "Liste d'ouvriers:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:130
+#: clientslist.cpp:130
 msgid "Listado de Clientes"
 msgstr "Listage de clients"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:204
+#: providerslist.cpp:204
 msgid "Listado de Proveedores"
 msgstr "Liste de fournisseurs"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:333
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:336
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:341
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:346
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:351
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:356
+#: ui_bulmafactbase.h:333 ui_bulmafactbase.h:336 ui_bulmafactbase.h:341
+#: ui_bulmafactbase.h:346 ui_bulmafactbase.h:351 ui_bulmafactbase.h:356
 msgid "Listados"
 msgstr "Relevées"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:331
+#: ui_bulmafactbase.h:331
 msgid "Maest&ro"
 msgstr "Maît&re"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:369
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:374
+#: ui_familiasbase.h:369 ui_familiasbase.h:374
 msgid "Mostrar / Ocultar Detalle"
 msgstr "Montrer/oculter détail"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:247
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:252
+#: ui_tiposarticulobase.h:247 ui_tiposarticulobase.h:252
 msgid "Mostrar / Ocultar detalle"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaclientebase.h:103
+#: ui_busquedaclientebase.h:103
 msgid "Mostrar listado de clientes"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:319
+#: articuloview.cpp:319
 msgid ""
 "No se ha podido borrar el archivo.\n"
 "Compruebe que el archivo tenga los permisos correctos."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:286
+#: articuloview.cpp:286
 msgid ""
 "No se ha podido cargar la imagen.\n"
 "Compruebe que la imagen sea valida."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:224
+#: articuloview.cpp:224
 msgid ""
 "No se ha podido guardar la imagen.\n"
 "Revise los permisos de escritura y que disponga\n"
 "de espacio libre suficiente en el disco duro."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:286
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listconfiguracionview.cpp:91
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:51
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:569
+#: providerslist.cpp:286 familiasview.cpp:51 familiasview.cpp:569
+#: listconfiguracionview.cpp:91
 msgid "Nombre"
 msgstr "Nom"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listalmacenview.cpp:100
+#: listalmacenview.cpp:100
 msgid "Nombre almacen"
 msgstr "Nom du magasin"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:287
+#: providerslist.cpp:287
 msgid "Nombre alternativo"
 msgstr "Nom alternatif"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:272
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:58
+#: clientslist.cpp:272 clienteview.cpp:58
 msgid "Nombre alternativo del cliente"
 msgstr "Nom alternatif du client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:47
+#: provedit.cpp:47
 msgid "Nombre alternativo del proveedor"
 msgstr "Nom alternatif du fournisseur"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:50
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:48
+#: listlinalbaranproveedorview.cpp:50 listlinalbaranclienteview.cpp:48
 msgid "Nombre articulo"
 msgstr "Nom article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:784
+#: ui_proveditbase.h:784
 msgid "Nombre comercia&l:"
 msgstr "Nom comercia&l:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:581
+#: ui_clientebase.h:581
 msgid "Nombre comercial:"
 msgstr "Nom commercial:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:579
+#: ui_clientebase.h:579
 msgid "Nombre completo:"
 msgstr "Nom complet:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:271
+#: clientslist.cpp:271
 msgid "Nombre de cliente"
 msgstr "Nom du client"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:303
+#: ui_fpagobase.h:303
 msgid "Nombre de la forma de pago:"
 msgstr "Nom de la forme de payement:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:367
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:63
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/comparticulolistview.cpp:43
+#: articuloview.cpp:63 comparticulolistview.cpp:43 articulolist.cpp:367
 msgid "Nombre del articulo"
 msgstr "Nom de l'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:616
+#: ui_articleeditbase.h:616
 msgid "Nombre del articulo:"
 msgstr "Nom de l'article:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:57
+#: clienteview.cpp:57
 msgid "Nombre del cliente"
 msgstr "Nom du client"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:46
+#: provedit.cpp:46
 msgid "Nombre del proveedor"
 msgstr "Nom du fournisseur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:342
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:380
+#: ui_familiasbase.h:380 ui_trabajadorbase.h:342
 msgid "Nombre:"
 msgstr "Nom:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:781
+#: ui_proveditbase.h:781
 #, fuzzy
 msgid "Nuestro código de c&liente:"
 msgstr "Code de client:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:324
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:329
+#: ui_familiasbase.h:324 ui_familiasbase.h:329
 msgid "Nueva Familia"
 msgstr "Nouvelle famille"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:310
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:315
+#: ui_fpagobase.h:310 ui_fpagobase.h:315
 msgid "Nueva forma de pago"
 msgstr "Nouvelle forme de payement"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:270
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:275
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:265
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:270
+#: ui_providerslistbase.h:270 ui_providerslistbase.h:275
+#: ui_clientslistbase.h:265 ui_clientslistbase.h:270
 msgid "Nuevo"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:290
+#: ui_bulmafactbase.h:290
 msgid "Nuevo &articulo..."
 msgstr "Nouveau &article..."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:295
+#: ui_bulmafactbase.h:295
 msgid "Nuevo &cliente..."
 msgstr "Nouveau &client..."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:293
+#: ui_bulmafactbase.h:293
 msgid "Nuevo &proveedor..."
 msgstr "Nouveau &fournisseur..."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:283
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:288
+#: ui_tiposarticulobase.h:283 ui_tiposarticulobase.h:288
 msgid "Nuevo Tipo de articulo"
 msgstr "Nouveau Genres d'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:292
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:297
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:580
+#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
+#: ui_articleslistbase.h:297
 msgid "Nuevo articulo"
 msgstr "Nouveau article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/company.cpp:315
+#: company.cpp:315
 msgid "Nuevo cliente"
 msgstr "Nouveau client"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:375
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:380
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:446
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:451
+#: ui_bancobase.h:446 ui_bancobase.h:451 ui_trabajadorbase.h:375
+#: ui_trabajadorbase.h:380
 msgid "Nuevo trabajador"
 msgstr "Nouveau ouvrier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:273
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:60
+#: clientslist.cpp:273 clienteview.cpp:60
 msgid "Numero cuenta corriente"
 msgstr "Numéro compte courant"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:289
+#: providerslist.cpp:289
 msgid "Numero de cuenta corriente"
 msgstr "Numéro de compte courant"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:404
+#: ui_bancobase.h:404
 msgid "Numero de cuenta:"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:278
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:68
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:295
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:56
+#: provedit.cpp:56 clientslist.cpp:278 providerslist.cpp:295
+#: clienteview.cpp:68
 msgid "Numero de fax"
 msgstr "Numéro de fax"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:587
+#: ui_clientebase.h:587
 msgid "Numero de fax:"
 msgstr "Numéro de fax:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:344
+#: ui_trabajadorbase.h:344
 msgid "Numero de la Seguridad Social:"
 msgstr "Numéro de la Sécurité Sociale:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:51
+#: listlinalbaranproveedorview.cpp:51
 msgid "Numero de linea"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:301
+#: ui_fpagobase.h:301
 msgid "Numero de plazos:"
 msgstr "Numéro de tèrmes:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:277
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:65
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:294
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:55
+#: provedit.cpp:55 clientslist.cpp:277 providerslist.cpp:294
+#: clienteview.cpp:65
 msgid "Numero de telefono"
 msgstr "Numéro de téléphone"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:66
+#: clienteview.cpp:66
 msgid "Numero de telefono en el trabajo"
 msgstr "Numéro de téléphone au travail"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:67
+#: clienteview.cpp:67
 msgid "Numero de telefono movil"
 msgstr "Numéro de téléphone portable"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:49
+#: listlinalbaranclienteview.cpp:49
 msgid "Nº linea"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:792
+#: ui_proveditbase.h:792
 #, fuzzy
 msgid "Número de &fax:"
 msgstr "Numéro de fax:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:65
+#: articuloview.cpp:65
 msgid "Observaciones"
 msgstr "Observations"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:369
+#: articulolist.cpp:369
 msgid "Observaciones sobre el articulo"
 msgstr "Observations sur l'article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:59
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:57
+#: listlinalbaranproveedorview.cpp:59 listlinalbaranclienteview.cpp:57
 msgid "Orden"
 msgstr "Ordre"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:320
+#: ui_bulmafactbase.h:320
 msgid "Ordenar &ventanas"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:319
+#: ui_bulmafactbase.h:319
 msgid "Organizacio&n en cascada"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:599
+#: ui_clientebase.h:599
 msgid "Otros datos"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:622
+#: ui_articleeditbase.h:622
 msgid "Otros datos:"
 msgstr "Autres données:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp:52
+#: listlinalbaranclienteview.cpp:52
 msgid "P.V.P."
 msgstr "P.V.P."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:372
+#: articulolist.cpp:372
 msgid "P.V.P. articulo"
 msgstr "P.V.P. article"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:74
+#: articuloview.cpp:74
 msgid "P.V.P. base"
 msgstr "P.V.P. base"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:263
+#: informereferencia.cpp:263
 msgid "Pagado"
 msgstr "Payé"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:590
+#: ui_clientebase.h:590
 msgid "Pagina web:"
 msgstr "Page web:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:321
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:322
+#: ui_bulmafactbase.h:321 ui_bulmafactbase.h:322
 msgid "Paises / Provincias"
 msgstr "Pays / Provinces"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:325
+#: ui_bulmafactbase.h:325
 msgid "Paises y provincias"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:143
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:175
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:213
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:260
+#: informereferencia.cpp:143 informereferencia.cpp:175
+#: informereferencia.cpp:213 informereferencia.cpp:260
 msgid "Pedido"
 msgstr "Demandé"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:620
+#: ui_articleeditbase.h:620
 msgid "Peso (kg):"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:75
+#: articuloview.cpp:75
 msgid "Peso Unidad"
 msgstr "Pois Unité"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:302
+#: ui_fpagobase.h:302
 msgid "Plazo entre recibos (dias):"
 msgstr "Terme entre reçus (jours):"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:299
+#: ui_fpagobase.h:299
 msgid "Plazo primer recibo (dias):"
 msgstr "Terme premier reçu (jours):"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:275
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:62
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:292
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:52
+#: provedit.cpp:52 clientslist.cpp:275 providerslist.cpp:292
+#: clienteview.cpp:62
 msgid "Poblacion"
 msgstr "Peuple"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:584
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:416
+#: ui_bancobase.h:416 ui_clientebase.h:584
 msgid "Poblacion:"
 msgstr "Peuple:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:788
+#: ui_proveditbase.h:788
 #, fuzzy
 msgid "Població&n:"
 msgstr "Peuple:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:337
+#: fichabf.cpp:337
 msgid "Porcentaje"
 msgstr "Pourcentaje"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:98
+#: listtasaivaview.cpp:98
 msgid "Porcentaje IVA"
 msgstr "Pourcentage TVA"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:99
+#: listtasaivaview.cpp:99
 msgid "Porcentaje Recargo Equivalencia"
 msgstr "Pourcentaje recharge d'équivalence"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp:54
+#: listlinalbaranproveedorview.cpp:54
 msgid "Precio"
 msgstr "Prix"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:618
+#: ui_articleeditbase.h:618
 msgid "Precio venta. s/IVA:"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:142
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/informereferencia.cpp:212
+#: informereferencia.cpp:142 informereferencia.cpp:212
 msgid "Pres."
 msgstr "Pres."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientslistbase.h:363
+#: ui_clientslistbase.h:363
 msgid "Pro&cesados"
 msgstr "Tra&ités"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:368
+#: ui_providerslistbase.h:368
 msgid "Procesa&dos"
 msgstr "Trai&tés"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:385
+#: ui_familiasbase.h:385
 msgid "Producto."
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:812
+#: ui_proveditbase.h:812
 msgid "Productos &suministrados"
 msgstr "Produits &fournis"
 
-#: /home/tborras/bulmages/trunk/bulmages/bulmafact/src/busquedaprofesor.cpp:38
-msgid "Profesor:"
-msgstr ""
-
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_bulmafactbase.h:285
-#: /home/tborras/bulmages/trunk/bulmages/build/bulmafact/src/ui_listconfiguracionbase.h:117
+#: ui_listconfiguracionbase.h:117 ui_bulmafactbase.h:285
 msgid "Propiedades de la empresa"
 msgstr "Propriétées de l'entreprise"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:777
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:42
+#: ui_proveditbase.h:777 provedit.cpp:42
 msgid "Proveedor"
 msgstr "Fournisseur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedaproveedorbase.h:97
+#: ui_busquedaproveedorbase.h:97
 msgid "Proveedor:"
 msgstr "Fournisseur:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_providerslistbase.h:266
+#: ui_providerslistbase.h:266
 msgid "Proveedores"
 msgstr "Fournisseurs"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:217
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:235
+#: providerslist.cpp:217 providerslist.cpp:235
 msgid "Proveedores (*.xml)"
 msgstr "Fournisseurs (*.xml)"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:63
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:53
+#: provedit.cpp:53 clienteview.cpp:63
 msgid "Provincia"
 msgstr "Province"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:585
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:789
+#: ui_clientebase.h:585 ui_proveditbase.h:789
 msgid "Provincia:"
 msgstr "Province:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:791
+#: ui_proveditbase.h:791
 #, fuzzy
 msgid "Página &web:"
 msgstr "Page web:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:398
+#: fichabf.cpp:398
 msgid "R.E."
 msgstr "R.E."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:411
+#: ui_bancobase.h:411
 msgid "Razon Social:"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:80
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:63
+#: provedit.cpp:63 clienteview.cpp:80
 msgid "Recargo de Equivalencia"
 msgstr "Recharge d'équivalence"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/busquedareferencia.cpp:65
+#: busquedareferencia.cpp:65
 msgid "Referencia"
 msgstr "Référence"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:797
+#: ui_proveditbase.h:797
 msgid "Regimen &fiscal:"
 msgstr "Régime &fiscal:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:61
+#: provedit.cpp:61
 msgid "Regimen Fiscal"
 msgstr "Régime fiscal"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:76
+#: clienteview.cpp:76
 msgid "Regimen fiscal"
 msgstr "Régime fiscal"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:594
+#: ui_clientebase.h:594
 msgid "Regimen fiscal:"
 msgstr "Régime fiscal:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:825
+#: ui_proveditbase.h:825
 msgid "Resumen por articulos"
 msgstr "Résume par articles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:287
+#: ui_articleslistbase.h:287
 msgid "S&olo presentables"
 msgstr "S&eulement présentables"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:298
+#: ui_bulmafactbase.h:298
 msgid "Se&ries de factura"
 msgstr "Se&ries de facture"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:288
+#: trabajadorview.cpp:288
 msgid "Seleccione archivo"
 msgstr "Sélectionner fichier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:215
+#: providerslist.cpp:215
 msgid "Seleccione el archivo"
 msgstr "Sélectionner le fichier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:278
+#: articuloview.cpp:278
 msgid "Seleccione un archivo de imagen"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:74
+#: articulolist.cpp:74
 msgid "Selector de articulos"
 msgstr "Sélecteur d'articles"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clientslist.cpp:62
+#: clientslist.cpp:62
 msgid "Selector de clientes"
 msgstr "Sélecteur de clients"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/providerslist.cpp:63
+#: providerslist.cpp:63
 msgid "Selector de proveedores"
 msgstr "Sélecteur de fournisseurs"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listseriefacturaview.cpp:50
+#: listseriefacturaview.cpp:50
 msgid "Serie de Factura"
 msgstr "Série de facture"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listseriefacturabase.h:82
+#: ui_listseriefacturabase.h:82
 msgid "Series de factura"
 msgstr "Séries de facture"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:384
+#: ui_familiasbase.h:384
 msgid "Servicio."
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleslistbase.h:285
+#: ui_articleslistbase.h:285
 msgid "Solo usados"
 msgstr "Seulement usés"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_aboutbase.h:295
+#: ui_aboutbase.h:295
 msgid "Sopor&te"
 msgstr "Suppor&t"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:72
+#: articuloview.cpp:72
 msgid "Stock"
 msgstr "Stock"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:606
+#: ui_articleeditbase.h:606
 msgid "Subcodigo:"
 msgstr "Subcode:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:420
+#: ui_bancobase.h:420
 msgid "Sucursal:"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:51
+#: listtasaivaview.cpp:51
 msgid "Tasa IVA"
 msgstr "Taxe TVA"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listtasaivabase.h:117
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:317
+#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:317
 msgid "Tasas de IVA"
 msgstr "Taux de TVA"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:588
+#: ui_clientebase.h:588
 msgid "Telefono del trabajo:"
 msgstr "Téléphone du travail:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:586
+#: ui_clientebase.h:586
 msgid "Telefono fijo:"
 msgstr "Téléphone:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_clientebase.h:589
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:347
+#: ui_clientebase.h:589 ui_trabajadorbase.h:347
 msgid "Telefono movil:"
 msgstr "Téléphone portable:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:340
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:415
+#: ui_bancobase.h:415 ui_trabajadorbase.h:340
 msgid "Telefono:"
 msgstr "Téléphone:"
 
@@ -1850,128 +1665,122 @@ msgstr "Téléphone:"
 msgid "Terminado"
 msgstr "Fini"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:617
+#: ui_articleeditbase.h:617
 msgid "Texto para etiqueta:"
 msgstr "Texte pour étiquette:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/clienteview.cpp:160
+#: clienteview.cpp:160
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:844
+#: fichabf.cpp:844
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articulolist.cpp:161
+#: articulolist.cpp:161
 msgid "Tiene que seleccionar un articulo"
 msgstr "Vouus devez sélectioner un article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_familiasbase.h:383
+#: ui_familiasbase.h:383
 msgid "Tipo Articulos"
 msgstr "Genre Articles"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtipoivaview.cpp:51
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtipoivaview.cpp:108
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listtasaivaview.cpp:96
+#: listtipoivaview.cpp:51 listtipoivaview.cpp:108 listtasaivaview.cpp:96
 msgid "Tipo IVA"
 msgstr "Type TVA"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:69
+#: articuloview.cpp:69
 msgid "Tipo de I.V.A."
 msgstr "Genre de T.V.A."
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:619
+#: ui_articleeditbase.h:619
 msgid "Tipo de I.V.A.:"
 msgstr "Genre de T.V.A.:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedatipoarticulobase.h:93
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:68
+#: ui_busquedatipoarticulobase.h:93 articuloview.cpp:68
 msgid "Tipo de articulo"
 msgstr "Genre d'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:242
-#: /opt/bulmages/build_svn/bulmafact/src/ui_busquedatipoarticulobase.h:91
+#: ui_tiposarticulobase.h:242 ui_busquedatipoarticulobase.h:91
 msgid "Tipo de articulo:"
 msgstr "Genre d'article:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:304
+#: ui_fpagobase.h:304
 msgid "Tipo plazo entre recibos:"
 msgstr "Taux terme entre reçus:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_fpagobase.h:305
+#: ui_fpagobase.h:305
 msgid "Tipo plazo primer pago:"
 msgstr "Taux terme premier reçu:"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_listtipoivabase.h:116
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:316
+#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:316
 msgid "Tipos de IVA"
 msgstr "Types de TVA"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_tiposarticulobase.h:238
+#: ui_tiposarticulobase.h:238
 msgid "Tipos de articulo"
 msgstr "Genres d'article"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:823
+#: ui_proveditbase.h:823
 msgid "Todos"
 msgstr "Touts"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:409
+#: fichabf.cpp:409
 msgid "Total"
 msgstr "Total"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/fichabf.cpp:338
+#: fichabf.cpp:338
 msgid "Total Desc."
 msgstr "Total Rem."
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/trabajadorview.cpp:44
+#: trabajadorview.cpp:44
 msgid "Trabajador"
 msgstr "Ouvrier"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:339
 msgid "Trabajadores"
 msgstr "Ouvrier"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/provedit.cpp:58
+#: provedit.cpp:58
 msgid "URL"
 msgstr "URL"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bancobase.h:413
+#: ui_bancobase.h:413
 msgid "URL:"
 msgstr "URL:"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/listconfiguracionview.cpp:92
+#: listconfiguracionview.cpp:92
 msgid "Valor"
 msgstr "Valeur"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:822
+#: ui_proveditbase.h:822
 msgid "Vencidos"
 msgstr "Échéancés"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:332
+#: ui_bulmafactbase.h:332
 msgid "Venta&na"
 msgstr "Fenêt&re"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_bulmafactbase.h:300
+#: ui_bulmafactbase.h:300
 msgid "Ventana &completa"
 msgstr "Fenêtre &complète"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:818
+#: ui_proveditbase.h:818
 msgid "Ver"
 msgstr "Voir"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_proveditbase.h:821
+#: ui_proveditbase.h:821
 msgid "Vigentes"
 msgstr "Actuelles"
 
-#: /opt/bulmages/build_svn/bulmafact/src/ui_articleeditbase.h:621
+#: ui_articleeditbase.h:621
 msgid "Volumen (cm3):"
 msgstr ""
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/articuloview.cpp:76
+#: articuloview.cpp:76
 msgid "Volumen Unidad"
 msgstr "Volume Unité"
 
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/tiposarticuloview.cpp:394
-#: /opt/bulmages/trunk/bulmages/bulmafact/src/familiasview.cpp:488
+#: familiasview.cpp:488 tiposarticuloview.cpp:394
 msgid "no se ha podido borrar"
 msgstr ""

@@ -230,7 +230,7 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
       # Copy _lang.po file to binary directory
 #      CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
 
-      set(_absPoFile ${CMAKE_CURRENT_BINARY_DIR}/po/${_potBasename}_${_lang}.po)
+      set(_absPoFile ${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po)
       set(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.gmo)
 
       get_filename_component(_gmoBasename ${_gmoFile} NAME)
@@ -257,6 +257,6 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
    endforeach (_lang ${${langs}})
 
    add_custom_target( ${_potBasename}_pos DEPENDS ${_absPotFile} ${_gmoFiles} )
-   add_dependencies(translations ${_potBasename}_pos  ${potFile})
+   add_dependencies(translations ${_potBasename}_pos ${_absPotFile})
 
 endmacro(GETTEXT_CREATE_TRANSLATIONS )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-01-28 00:31+0100\n"
+"POT-Creation-Date: 2009-02-04 12:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,216 +16,389 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:434
-msgid "Albaranes a clientes"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:435
-msgid "Mostrar:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:436
-msgid "Fecha inicial:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:437
-msgid "Fecha final:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:438
-msgid "Total: "
-msgstr "Total:"
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:442
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:447
-msgid "Nuevo albaran"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:451
-msgid "Ctrl+N"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:454
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:459
-msgid "Editar albaran"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:463
-msgid "Ctrl+E"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:466
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:471
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:719
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:724
-msgid "Borrar albaran"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:475
-msgid "Ctrl+D"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:478
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:483
-msgid "Imprimir listado"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:487
-msgid "Ctrl+P"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:490
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:495
-msgid "Filtrar albaranes"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:499
-msgid "Ctrl+F"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:502
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:507
-msgid "Configurar listado"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:511
-msgid "Ctrl+B"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:514
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:519
-msgid "Actualizar listado"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:523
-msgid "F5"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientelistbase.h:524
-msgid "Buscar:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:705
-msgid "Nuevo albaran a cliente"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:708
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:713
-msgid "Guardar albaran"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:730
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:735
-msgid "Imprimir albaran"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:741
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:746
-msgid "Ver pedidos con la misma referencia"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:750
-msgid "Referencia:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:753
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:758
-msgid "Mostrar/ocultar cabecera"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:762
-msgid "Descripcion:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:763
-msgid "Numero de albaran:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:764
-msgid "Procesado"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:765
-msgid "Trabajador:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:766
-msgid "Fecha de creacion:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:767
-msgid "Persona de contacto:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:768
-msgid "Forma de pago:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:769
-msgid "Telefono de contacto:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:770
-msgid "Almacen:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:771
-msgid "&Detalle"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:772
-msgid "Descuen&tos"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:773
-msgid "Comentarios publicos:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:774
-msgid "Comentarios privados:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:775
-msgid "Comentario&s"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:776
-msgid "Descuentos:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:777
-msgid "Base imponible:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:778
-msgid "I.R.P.F.:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:779
-msgid "Impuestos:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:780
-msgid "R.E.:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:781
-msgid "Total:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:782
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:783
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:784
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:785
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:786
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:787
-msgid "0.00"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:788
+#: ui_albaranclientebase.h:788
 msgid "&Aceptar"
 msgstr ""
 
-#: /opt/bulmages/build_svn/bulmafact/plugins/pluginalbaran/ui_albaranclientebase.h:789
+#: pluginalbaran.cpp:98
+msgid "&Albaranes a clientes"
+msgstr ""
+
+#: ui_albaranclientebase.h:789
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_albaranclientebase.h:771
+msgid "&Detalle"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+msgid "&No"
+msgstr ""
+
+#: pluginalbaran.cpp:106
+msgid "&Nuevo albaran a cliente"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+msgid "&Si"
+msgstr ""
+
+#: ui_albaranclientebase.h:782 ui_albaranclientebase.h:783
+#: ui_albaranclientebase.h:784 ui_albaranclientebase.h:785
+#: ui_albaranclientebase.h:786 ui_albaranclientebase.h:787
+msgid "0.00"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:514 ui_albaranclientelistbase.h:519
+msgid "Actualizar listado"
+msgstr ""
+
+#: albaranclienteview.cpp:73
+msgid "Albaran"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:157
+msgid "Albaran ya existe"
+msgstr ""
+
+#: pluginalbaran.cpp:100 pluginalbaran.cpp:101 albaranclientelist.cpp:307
+#: ui_albaranclientelistbase.h:434
+msgid "Albaranes a clientes"
+msgstr ""
+
+#: albaranclientelist.cpp:178
+msgid "Albaranes no procesados"
+msgstr ""
+
+#: albaranclientelist.cpp:177
+msgid "Albaranes procesados"
+msgstr ""
+
+#: albaranclienteview.cpp:78
+msgid "Almacen"
+msgstr ""
+
+#: ui_albaranclientebase.h:770
+msgid "Almacen:"
+msgstr ""
+
+#: albaranclientelist.cpp:391
+msgid "Base imponible"
+msgstr ""
+
+#: ui_albaranclientebase.h:777
+msgid "Base imponible:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:466 ui_albaranclientelistbase.h:471
+#: ui_albaranclientebase.h:719 ui_albaranclientebase.h:724
+msgid "Borrar albaran"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:524
+msgid "Buscar:"
+msgstr ""
+
+#: albaranclienteview.cpp:77
+msgid "Cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:379
+msgid "Codigo de almacen"
+msgstr ""
+
+#: albaranclienteview.cpp:83
+msgid "Comentario"
+msgstr ""
+
+#: albaranclienteview.cpp:84
+msgid "Comentario privado"
+msgstr ""
+
+#: ui_albaranclientebase.h:775
+msgid "Comentario&s"
+msgstr ""
+
+#: albaranclientelist.cpp:389
+msgid "Comentarios del albaran"
+msgstr ""
+
+#: ui_albaranclientebase.h:774
+msgid "Comentarios privados:"
+msgstr ""
+
+#: ui_albaranclientebase.h:773
+msgid "Comentarios publicos:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:502 ui_albaranclientelistbase.h:507
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:511
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:475
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:463
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:499
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:451
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:487
+msgid "Ctrl+P"
+msgstr ""
+
+#: albaranclientelist.cpp:279
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: albaranclienteview.cpp:88 albaranclientelist.cpp:381
+msgid "Descripcion"
+msgstr ""
+
+#: albaranclientelist.cpp:385
+msgid "Descripcion de forma de pago"
+msgstr ""
+
+#: ui_albaranclientebase.h:762
+msgid "Descripcion:"
+msgstr ""
+
+#: ui_albaranclientebase.h:772
+msgid "Descuen&tos"
+msgstr ""
+
+#: ui_albaranclientebase.h:776
+msgid "Descuentos:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:454 ui_albaranclientelistbase.h:459
+msgid "Editar albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:293
+msgid "Error al borrar el albaran a cliente"
+msgstr ""
+
+#: albaranclienteview.cpp:116
+msgid "Error al crear el albaran a cliente"
+msgstr ""
+
+#: albaranclienteview.cpp:235 genalbqtoolbutton.cpp:225
+#: genalbqtoolbutton.cpp:354
+msgid "Error inesperado"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:158
+msgid ""
+"Existe un albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:287
+msgid ""
+"Existe una albaran a este cliente con la misma referencia que este pedido. "
+"Desea abrirlo para verificar?"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:523
+msgid "F5"
+msgstr ""
+
+#: genalbqtoolbutton.cpp:286
+msgid "Factura ya existe"
+msgstr ""
+
+#: albaranclientelist.cpp:382
+msgid "Fecha de albaran"
+msgstr ""
+
+#: albaranclienteview.cpp:80
+msgid "Fecha de creacion"
+msgstr ""
+
+#: ui_albaranclientebase.h:766
+msgid "Fecha de creacion:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:437
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:436
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:490 ui_albaranclientelistbase.h:495
+msgid "Filtrar albaranes"
+msgstr ""
+
+#: albaranclienteview.cpp:85
+msgid "Forma de pago"
+msgstr ""
+
+#: ui_albaranclientebase.h:768
+msgid "Forma de pago:"
+msgstr ""
+
+#: ui_albaranclientebase.h:708 ui_albaranclientebase.h:713
+msgid "Guardar albaran"
+msgstr ""
+
+#: ui_albaranclientebase.h:778
+msgid "I.R.P.F.:"
+msgstr ""
+
+#: albaranclientelist.cpp:388
+msgid "ID albaran"
+msgstr ""
+
+#: albaranclientelist.cpp:390
+msgid "ID almacen"
+msgstr ""
+
+#: albaranclientelist.cpp:387
+msgid "ID cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:384
+msgid "ID forma de pago"
+msgstr ""
+
+#: albaranclientelist.cpp:386
+msgid "ID trabajador"
+msgstr ""
+
+#: albaranclienteview.cpp:76
+msgid "Id albaran"
+msgstr ""
+
+#: ui_albaranclientebase.h:730 ui_albaranclientebase.h:735
+msgid "Imprimir albaran"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:478 ui_albaranclientelistbase.h:483
+msgid "Imprimir listado"
+msgstr ""
+
+#: albaranclientelist.cpp:392
+msgid "Impuestos"
+msgstr ""
+
+#: ui_albaranclientebase.h:779
+msgid "Impuestos:"
+msgstr ""
+
+#: ui_albaranclientebase.h:753 ui_albaranclientebase.h:758
+msgid "Mostrar/ocultar cabecera"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:435
+msgid "Mostrar:"
+msgstr ""
+
+#: albaranclienteview.cpp:228
+msgid "No hay pedidos con la misma referencia."
+msgstr ""
+
+#: albaranclientelist.cpp:383
+msgid "Nombre de cliente"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:442 ui_albaranclientelistbase.h:447
+msgid "Nuevo albaran"
+msgstr ""
+
+#: pluginalbaran.cpp:108 pluginalbaran.cpp:109 ui_albaranclientebase.h:705
+msgid "Nuevo albaran a cliente"
+msgstr ""
+
+#: albaranclienteview.cpp:79 albaranclientelist.cpp:380
+msgid "Numero de albaran"
+msgstr ""
+
+#: ui_albaranclientebase.h:763
+msgid "Numero de albaran:"
+msgstr ""
+
+#: albaranclienteview.cpp:81
+msgid "Persona de contacto"
+msgstr ""
+
+#: ui_albaranclientebase.h:767
+msgid "Persona de contacto:"
+msgstr ""
+
+#: albaranclienteview.cpp:87 ui_albaranclientebase.h:764
+msgid "Procesado"
+msgstr ""
+
+#: ui_albaranclientebase.h:780
+msgid "R.E.:"
+msgstr ""
+
+#: albaranclienteview.cpp:89
+msgid "Referencia"
+msgstr ""
+
+#: albaranclientelist.cpp:378
+msgid "Referencia de albaran"
+msgstr ""
+
+#: ui_albaranclientebase.h:750
+msgid "Referencia:"
+msgstr ""
+
+#: albaranclienteview.cpp:82
+msgid "Telefono de contacto"
+msgstr ""
+
+#: ui_albaranclientebase.h:769
+msgid "Telefono de contacto:"
+msgstr ""
+
+#: albaranclienteview.cpp:201 genalbqtoolbutton.cpp:142
+#: genalbqtoolbutton.cpp:271
+msgid "Tiene que seleccionar un cliente"
+msgstr ""
+
+#: albaranclientelist.cpp:176
+msgid "Todos los albaranes"
+msgstr ""
+
+#: albaranclientelist.cpp:393
+#, fuzzy
+msgid "Total"
+msgstr "Total:"
+
+#: ui_albaranclientebase.h:781
+msgid "Total:"
+msgstr ""
+
+#: ui_albaranclientelistbase.h:438
+msgid "Total: "
+msgstr "Total:"
+
+#: albaranclienteview.cpp:86
+msgid "Trabajador"
+msgstr ""
+
+#: ui_albaranclientebase.h:765
+msgid "Trabajador:"
+msgstr ""
+
+#: ui_albaranclientebase.h:741 ui_albaranclientebase.h:746
+msgid "Ver pedidos con la misma referencia"
 msgstr ""

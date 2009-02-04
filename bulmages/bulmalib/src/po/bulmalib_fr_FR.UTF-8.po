@@ -1,262 +1,575 @@
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:205
-msgid "&Cancelar"
-msgstr "&Cancelar"
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:112
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:625
-msgid "&Cerrar"
+#, fuzzy
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-04 15:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:156
-msgid "&Cerrar el programa"
-msgstr ""
+#: BusquedaFecha#1
+msgid "Seleccione fecha"
+msgstr "Sélectionner date"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:111
-msgid "&Detalles"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:204
-msgid "&Entra"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:155
-msgid "&Validar"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:193
-msgid "Actualizar Listado"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:198
-msgid "Actualizar Listado de Empresas"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:624
-msgid "Aplicar"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:289
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:294
-msgid "Borrar pais"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:99
-msgid "Busqueda"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:285
-msgid "Campo ndice"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:274
-msgid "Cancelar"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:292
-msgid "Cerrar"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:262
-msgid "Codigo 2 letras:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:261
-msgid "Codigo 3 letras:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:607
-msgid "Columnas visibles"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:601
-msgid "Configuracion Subformularios"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:154
-msgid "Contrasenya:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:298
-msgid "Ctrl+D"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedafechabase.h:89
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:106
-msgid "Ctrl+F"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:202
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:286
-msgid "Ctrl+N"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:310
-msgid "Ctrl+S"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:283
-msgid "Database Table"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:290
-msgid "Databse Scripting"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:259
-msgid "Datos del pais:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:622
-msgid "Ejecutar consulta"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:203
-msgid "Empresas disponibles:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:617
-msgid "Escriba aqui la consulta SQL"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:609
-msgid "Filas por pagina:"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:281
-#: /opt/bulmages/build_svn/bulmalib/src/ui_blbancoeditbase.h:89
-msgid "Form"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:286
-msgid "Form Elements"
-msgstr ""
-
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedafechabase.h:86
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:98
+#: BusquedaFechaBase#1
 msgid "Form1"
-msgstr ""
+msgstr "Form 1"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:301
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:306
-msgid "Guardar pais"
-msgstr ""
+#: BusquedaPeriodo#1
+msgid "Semanal"
+msgstr "Semainal"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:149
-msgid "Lanzador Bulmages"
-msgstr ""
+#: BusquedaPeriodo#2
+msgid "Quincenal"
+msgstr "Bimensuel"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:109
-msgid "Limpiar campo"
-msgstr ""
+#: BusquedaPeriodo#3
+msgid "Mensual"
+msgstr "Mensuel"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_msgerrorbase.h:109
-msgid "Mensaje"
-msgstr ""
+#: BusquedaPeriodo#4
+msgid "Trimestral"
+msgstr "Trimestrel"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:150
-msgid "Mensaje de error:"
-msgstr ""
+#: BusquedaPeriodo#5
+msgid "Semestral"
+msgstr "Semestriel"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_busquedabase.h:102
-msgid "Mostrar listado de profesors"
-msgstr ""
+#: BusquedaPeriodo#6
+msgid "Anual"
+msgstr "Annuel"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:265
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:270
-msgid "Mostrar/ocultar detalle"
-msgstr ""
+#: BusquedaPeriodo#7
+msgid "Bienal"
+msgstr "Biannuel"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:282
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:284
-msgid "Nombre de la Tabla"
-msgstr ""
+#: Ficha#1
+msgid "Borrar"
+msgstr "Éraser"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:153
-msgid "Nombre de usuario:"
-msgstr ""
+#: Ficha#2
+msgid "&Si"
+msgstr "&Oui"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:260
-msgid "Nombre del pais:"
-msgstr ""
+#: Ficha#3
+msgid "&No"
+msgstr "&Non"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:277
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:282
-msgid "Nuevo pais"
-msgstr ""
+#: Ficha#4
+msgid "&Cancelar"
+msgstr "&Cancéler"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:610
-msgid "Pagina actual:"
-msgstr ""
+#: Ficha#5
+msgid "Guardar"
+msgstr "Garder"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:612
-msgid "Pagina anterior"
-msgstr ""
+#: Ficha#6
+msgid "Desea guardar los cambios?"
+msgstr "Désirés vous garder les changes?"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:613
-msgid "Pagina siguiente"
-msgstr ""
+#: Ficha#7
+msgid "No se pudo cerrar la ventana debido a un error"
+msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:614
-msgid "Paginacion"
-msgstr ""
+#: Ficha#8
+msgid "Desea eliminar '"
+msgstr "Voulez vouséliminer '"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_paisbase.h:258
-msgid "Paises"
-msgstr ""
+#: Ficha#9
+msgid "No se ha podido borrar"
+msgstr "Il n'a pas pus être érasé"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_porcentajecargabase.h:53
-msgid "Porcentaje de carga..."
-msgstr ""
+#: ImportBulmaFact#1
+msgid "<HR><B>Tratando el cliente "
+msgstr "<HR><B>Traîtant le cliente "
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:288
-msgid "Propietario de la tablas"
-msgstr ""
+#: ImportBulmaFact#2
+msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI>Le client existe déjà, on peut faire des modifications</LI>"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:291
-msgid "Qt Scripting"
-msgstr ""
+#: ImportBulmaFact#3
+msgid "<HR><B>Tratando el proveedor "
+msgstr "<HR><B>Traitant le fournisseur"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:620
+#: ImportBulmaFact#4
+msgid "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI>Le fournisseur éxiste déjà, on peut faire des modifications</LI>"
+
+#: ImportBulmaFact#5
+msgid "<HR><B>Tratando la froma de pago "
+msgstr "<HR><B>Traitant la forme de payement"
+
+#: ImportBulmaFact#6
+msgid "<LI>Datos insuficientes para tratar la forma de pago."
+msgstr "<LI>Données insuficientes pour traiter la forme de payement."
+
+#: ImportBulmaFact#7
+msgid "<LI> Ya existe esta forma de pago."
+msgstr "<LI>Il éxiste déjà cette forme de payement."
+
+#: ImportBulmaFact#8
+msgid "<LI> Forma de pago <B>"
+msgstr "<LI>Forme de payement<B>"
+
+#: ImportBulmaFact#9
+msgid "</B> Insertada"
+msgstr "</B>Insertée"
+
+#: ImportBulmaFact#10
+msgid "<HR><B>Tratando almacen "
+msgstr "<HR><B>Traitant magasin"
+
+#: ImportBulmaFact#11
+msgid "</B> Insertado"
+msgstr "</B>Inserré"
+
+#: ImportBulmaFact#12
+msgid "<P>Datos insuficientes para tratar la familia.</P>"
+msgstr "<P>Données insuficientes pour traiter la famille</P>"
+
+#: ImportBulmaFact#13
+msgid "<P> Familia <B>"
+msgstr "<P>Famille<B>"
+
+#: ImportBulmaFact#14
+msgid "</B> Insertado</P>"
+msgstr "</B>Inserré</P>"
+
+#: ImportBulmaFact#15
+msgid "<HR><B>Tratando Articulo "
+msgstr "<HR><B>Traitant article"
+
+#: ImportBulmaFact#16
+msgid "<HR><B>Tratando LPedidoCliente "
+msgstr "<HR><B>Traitant LPétition Client"
+
+#: ImportBulmaFact#17
+msgid "<HR><B>Tratando DPedidoCliente "
+msgstr "<HR><B>Traitant DPétitionClient"
+
+#: ImportBulmaFact#18
+msgid "<HR><B>Tratando Pedido Cliente "
+msgstr "<HR><B>Traitant Pétition Client"
+
+#: ImportBulmaFact#19
+msgid "El almaceÅ del presupuesto no existe<BR>\n"
+msgstr "Le magasin du bulletin n'éxiste pas<BR>"
+
+#: ImportBulmaFact#20
+msgid "El clienteÅ del presupuesto no existe<BR>\n"
+msgstr "Le client  du bulletin n'éxiste<BR>"
+
+#: ImportBulmaFact#21
+msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
+msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
+
+#: ImportBulmaFact#22
+msgid "El empleado del presupuesto no existe<BR>\n"
+msgstr "L'ouvrier du bulletin n'éxiste pas<BR>"
+
+#: ImportBulmaFact#23
+msgid "<HR><B>Tratando LAlbaran "
+msgstr "<HR><B>Traitant LBulletin"
+
+#: ImportBulmaFact#24
+msgid "<HR><B>Tratando DAlbaran "
+msgstr "<HR><B>Traitant DBulletin"
+
+#: ImportBulmaFact#25
+msgid "<HR><B>Tratando Albaran "
+msgstr "<HR><B>Traitant bulletin"
+
+#: ImportBulmaFact#26
+msgid "<HR><B>Tratando LFactura "
+msgstr "<HR><B>Traitant LFacture"
+
+#: ImportBulmaFact#27
+msgid "<HR><B>Tratando DFactura "
+msgstr "<HR><B>Traitant DFacture"
+
+#: ImportBulmaFact#28
+msgid "<HR><B>Tratando Factura "
+msgstr "<HR><B>Traitant facture"
+
+#: ImportBulmaFact#29
+msgid "La factura ya existe y no se va a insertar."
+msgstr "La facture éxiste déjà et on ne vas pas l'inserré."
+
+#: ImportBulmaFact#30
+msgid "<HR><B>Tratando LPresupuesto "
+msgstr "<HR><B>Traitant LBulletin"
+
+#: ImportBulmaFact#31
+msgid "<HR><B>Tratando DPresupuesto "
+msgstr "<HR><B>Traitant DBulletin"
+
+#: ImportBulmaFact#32
+msgid "<HR><B>Tratando Presupuesto "
+msgstr "<HR><B>Traitant Bulletin"
+
+#: ImportBulmaFact#33
+msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
+msgstr "<LI>Le client n'éxiste pas, ons doit faire une inserction de ce</LI>"
+
+#: ImportBulmaFact#34
+msgid "<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"
+msgstr ""
+"<LI>Le fournisseur n'éxiste pas, ons doit faire une insertion de ce</LI>"
+
+#: ImportBulmaFact#35
+msgid "<LI>Datos insuficientes para tratar el almacen."
+msgstr "<LI>Données insufitients pour traiter le magasin."
+
+#: ImportBulmaFact#36
+msgid "<LI> Ya existe este almacen."
+msgstr "<LI>Il éxiste déjà ce magasin."
+
+#: ImportBulmaFact#37
+msgid "<LI> Almacen <B>"
+msgstr "<LI>Magasin<B>"
+
+#: ImportBulmaFact#38
+msgid "<HR><B>Tratando familia "
+msgstr "<HR><B>Traitant famille"
+
+#: ImportBulmaFact#39
+msgid "<P> No se ha encontrado el padre de esta familia.</P>"
+msgstr "<P>On n'a pas trouvé le père de cette famille</P>"
+
+#: ImportBulmaFact#40
+msgid "<P> Ya existe esta familia.</P>"
+msgstr "<P>Il éxiste déjà cette famille.</P>"
+
+#: ImportBulmaFact#41
+msgid "La familia del articulo no existe<BR>\n"
+msgstr "La famille de l'article n'éxiste pas<BR>"
+
+#: ImportBulmaFact#42
+msgid "<P>Datos insuficientes para tratar el articulo.</P>"
+msgstr "<P>Données insuficients pour traiter l'article.</P>"
+
+#: ImportBulmaFact#43
+msgid "<P> Ya existe este articulo.</P>"
+msgstr "<P><P>Il éxiste déjà cet article.</P>"
+
+#: ImportBulmaFact#44
+msgid "<P> Articulo <B>"
+msgstr "<P>Article<B>"
+
+#: ImportBulmaFact#45
+msgid "El articulo de la linea de presupuesto no existe<BR>\n"
+msgstr "L'article de la ligne du bulletin n'éxiste pas<BR>"
+
+#: ImportBulmaFact#46
+msgid "El almacen del presupuesto no existe<BR>\n"
+msgstr "La magasin du bulletin n'éxiste pas<BR>"
+
+#: ImportBulmaFact#47
+msgid "El cliente del presupuesto no existe<BR>\n"
+msgstr "Le client du bulletin n'éxiste pas<BR>"
+
+#: ImportBulmaFact#48
+msgid "La forma de pago del presupuesto no existe<BR>\n"
+msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
+
+#: Listado#1
+msgid "Tiene que seleccionar un elemento"
+msgstr "Vous devez sélectionner un élément"
+
+#: Listado#2
+msgid "Editar"
+msgstr "Éditer"
+
+#: Listado#3
+msgid "Borrar"
+msgstr "Éraser"
+
+#: QObject#1
+msgid "Error al hacer la consulta con la base de datos."
+msgstr "Erreur faisant la référence avec la base de données."
+
+#: QWorkspace2#1
+msgid "Esc"
+msgstr "Esc"
+
+#: SubForm3#1
+msgid "Nombre"
+msgstr "Nom"
+
+#: SubForm3#2
+msgid "Nombre de campo"
+msgstr "Nom de  champ"
+
+#: SubForm3#3
+msgid "Visible"
+msgstr "Visible"
+
+#: SubForm3#4
+msgid "Borrar registro"
+msgstr "Éraser registre"
+
+#: SubForm3#5
+msgid "Ajustar columa"
+msgstr "Ajuster colonne"
+
+#: SubForm3#6
+msgid "Ajustar altura"
+msgstr "Ajuster hauteur"
+
+#: SubForm3#7
+msgid "Ajustar columnas"
+msgstr "Ajuster colonne"
+
+#: SubForm3#8
+msgid "Ajustar alturas"
+msgstr "Ajuster hauteur"
+
+#: SubForm3#9
+msgid "Ver/Ocultar configurador de subformulario"
+msgstr "Voir/Oculter configurateur de subformulaire"
+
+#: SubForm3Base#1
+msgid "Configuracion Subformularios"
+msgstr "Configuration Subformulaires"
+
+# Consulta SQL
+#: SubForm3Base#2
 msgid "Query"
-msgstr ""
+msgstr "Query"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_logpassbase.h:152
-msgid "Registro de entrada:"
-msgstr ""
+#: SubForm3Base#3
+msgid "Aplicar"
+msgstr "Apliquer"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:623
-msgid "SQL"
-msgstr ""
+#: SubForm3Base#4
+msgid "&Cerrar"
+msgstr "&Fermer"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:184
-#: /opt/bulmages/build_svn/bulmalib/src/ui_abreempresabase.h:187
-msgid "Seleccione una empresa"
-msgstr ""
+#: SubForm3Base#5
+msgid "Columnas visibles"
+msgstr "Colonnes visibles"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_blprogressbarbase.h:67
-msgid "TextLabel"
-msgstr ""
+#: SubForm3Base#6
+msgid "Paginacion"
+msgstr "Paginaison"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:608
+#: SubForm3Base#7
 msgid "Total filas:"
-msgstr ""
+msgstr "Total files:"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:611
+#: SubForm3Base#8
+msgid "Filas por pagina:"
+msgstr "Files par pages:"
+
+#: SubForm3Base#9
+msgid "Pagina actual:"
+msgstr "Page actuelle:"
+
+#: SubForm3Base#10
 msgid "Total paginas:"
-msgstr ""
+msgstr "Total pages:"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_blprogressbarbase.h:66
-msgid "Trabajando"
-msgstr ""
+#: SubForm3Base#11
+msgid "Pagina anterior"
+msgstr "Page antérieure"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:289
-msgid "User Preferences"
-msgstr ""
+#: SubForm3Base#12
+msgid "Pagina siguiente"
+msgstr "Page suivante"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_fichacfgbase.h:287
-msgid "Usuario Actual"
-msgstr ""
+#: SubForm3Base#13
+msgid "SQL"
+msgstr "SQL"
 
-#: /opt/bulmages/build_svn/bulmalib/src/ui_subform3base.h:621
-msgid "Opcion reservada a expertos!"
+#: SubForm3Base#14
+msgid "¡Opcion reservada a expertos!"
+msgstr "¡Option résérvée aux experts!"
+
+#: SubForm3Base#15
+msgid "Escriba aqui la consulta SQL"
+msgstr "Écriver ici la consulte SQL"
+
+#: SubForm3Base#16
+msgid "Ejecutar consulta"
+msgstr "Éxécuter consulte"
+
+#: abreempresabase#1
+msgid "Seleccione una empresa"
+msgstr "Séléctionner une entreprise"
+
+#: abreempresabase#2
+msgid "Empresas disponibles:"
+msgstr "Entreprise disponibles:"
+
+#: abreempresabase#3
+msgid "&Entra"
+msgstr "&Entrer"
+
+#: abreempresabase#4
+msgid "&Cancelar"
+msgstr "&Canceler"
+
+#: abreempresabase#5
+msgid "Actualizar Listado"
+msgstr "Actualiser liste"
+
+#: abreempresabase#6
+msgid "Actualizar Listado de Empresas"
+msgstr "Actualiser liste d'entreprises"
+
+#: abreempresabase#7
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: abreempresaview#1
+msgid "&Cierra el programa"
+msgstr "&Fermer le programme"
+
+#: abreempresaview#2
+msgid "Para entrar, antes tiene que seleccionar una empresa."
+msgstr "Pour entrer, avant vous devez sélectionner une entreprise."
+
+#: abreempresaview#3
+msgid "Nombre"
+msgstr "Nom"
+
+#: abreempresaview#4
+msgid "Anyo"
+msgstr "Année"
+
+#: abreempresaview#5
+msgid "Archivo"
+msgstr "Archive"
+
+#: abreempresaview#6
+msgid "Tipo"
+msgstr "Tipe"
+
+#: funcaux#1
+msgid "Informacion de depuracion"
+msgstr "Information de dépuration"
+
+#: funcaux#2
+msgid "&Continuar"
+msgstr "&Continuer"
+
+#: funcaux#3
+msgid "&Omitir"
+msgstr "&Omettre"
+
+#: funcaux#4
+msgid "Omitir &clase"
+msgstr "Omettre &classe"
+
+#: funcaux#5
+msgid "Informacion del programa"
+msgstr "Information du programme"
+
+#: funcaux#6
+msgid "Aviso del programa"
+msgstr "Avis du programme"
+
+#: funcaux#7
+msgid "Error del programa"
+msgstr "Erreur du progamme"
+
+#: listventanas#1
+msgid "Indexador"
+msgstr "Indéxateur"
+
+#: logpass#1
+msgid "Error: usuario y/o contrasenya incorrectos"
+msgstr "Erreur: usuaire et/ou mot de passe incorrects"
+
+#: logpassbase#1
+msgid "&Validar"
+msgstr "&Valider"
+
+#: logpassbase#2
+msgid "Lanzador Bulmages"
+msgstr "Lanceur Bulmages"
+
+#: logpassbase#3
+msgid "Mensaje de error:"
+msgstr "Mésaje d'érreur:"
+
+#: logpassbase#4
+msgid "Registro de entrada:"
+msgstr "Régistre d'entrée:"
+
+#: logpassbase#5
+msgid "Nombre de usuario:"
+msgstr "Nom d'usuaire:"
+
+#: logpassbase#6
+msgid "Contrasenya:"
+msgstr "Mot de passe:"
+
+#: logpassbase#7
+msgid "&Cerrar el programa"
+msgstr "&Fermer le programme"
+
+#: msgErrorBase#1
+msgid "Mensaje"
+msgstr "Méssaje"
+
+#: msgErrorBase#2
+msgid "&Detalles"
+msgstr "&Détails"
+
+#: msgErrorBase#3
+msgid "&Cerrar"
+msgstr "&Fermer"
+
+#: pgimportfiles#1
+msgid "Exportando :"
+msgstr "Éxportant:"
+
+#: pgimportfiles#2
+msgid "<LI>Se ha insertado la cuenta "
+msgstr "<LI>Il c'est inséré le compte"
+
+#: pgimportfiles#3
+msgid "<LI>Apunte fuera de fecha</LI>\n"
+msgstr "<LI>Note hors de date</LI>"
+
+#: pgimportfiles#4
+msgid "<LI>Terminado</LI>\n"
+msgstr "<LI>Términé</LI>>"
+
+#: pgimportfiles#5
+msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
+msgstr "<LI>Exportant nouvelle forme de payement</LI>"
+
+#: pgimportfiles#6
+msgid "Application name"
+msgstr "Nom d'application"
+
+#: pgimportfiles#7
+msgid ""
+"Error en el XML.\n"
+"Documento mal formado."
 msgstr ""
+"Érreur dans la XML\n"
+"Document mal formé."
+
+#: pgimportfiles#8
+msgid "<LI>Ya hay una cuenta con el codigo "
+msgstr "<LI>Il y a déjà une compte contre le code"
+
+#: pgimportfiles#9
+msgid "<LI>Insercion de asiento"
+msgstr "<LI>Insertion d'assiette"
+
+#: pgimportfiles#10
+msgid "<LI>Insercion de apunte"
+msgstr "<LI>Insertion de note"
+
+#: porcentajeCargaBase#1
+msgid "Porcentaje de carga..."
+msgstr "Pourcentaje de charge..."

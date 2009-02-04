@@ -1,3 +1,8 @@
-#: /opt/bulmages/trunk/bulmages/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.cpp:123
+#: pluginclipboardbf.cpp:128
 msgid "Pegar desde Hoja de Calculo"
+msgstr "Pegar desde Hoja de Calculo"
+
+#: pluginclipboardbf.cpp:116
+#, fuzzy
+msgid "Pegar desde hoja de calculo"
 msgstr "Pegar desde Hoja de Calculo"
