@@ -151,6 +151,7 @@ ListVentanas::ListVentanas ( QWidget *a ) : QDockWidget ( a )
     setWindowTitle ( _( "Indexador" ) );
     setFocusPolicy ( Qt::StrongFocus );
     setWidget ( m_listBox );
+    setObjectName ("Indexador");
     connect ( m_listBox, SIGNAL ( itemDoubleClicked ( QListWidgetItem * ) ), this, SLOT ( dclicked() ) );
     connect ( m_listBox, SIGNAL ( itemClicked ( QListWidgetItem * ) ), this, SLOT ( clicked() ) );
     _depura ( "END ListVentanas::ListVentanas", 0 );

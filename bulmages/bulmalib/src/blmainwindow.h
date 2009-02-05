@@ -32,7 +32,7 @@ class BlMainWindow : public QMainWindow
 public:
     BlMainWindow ( QWidget * parent = 0, Qt::WindowFlags flags = 0 );
     ~BlMainWindow();
-	QMenu *newMenu(const QString &name,const QString &objname, const QString &before="");
+    QMenu *newMenu(const QString &name,const QString &objname, const QString &before="");
 };
 
 #endif

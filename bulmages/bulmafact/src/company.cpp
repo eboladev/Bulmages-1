@@ -638,6 +638,7 @@ void Company::guardaConf()
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmafact->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmafact->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
+	stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString(m_bulmafact->saveState().toBase64()) + "</TOOLBARSDOCKWIDGETS>\n";
         stream << "\t</PRINCIPAL>\n";
 
 
@@ -652,7 +653,7 @@ void Company::guardaConf()
             stream << "\t\t<VHEIGHT>" + QString::number ( wid->height() ) + "</VHEIGHT>\n";
             stream << "\t\t<VVISIBLE>" + ( wid->isVisible() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VVISIBLE>\n";
             stream << "\t\t<VMAXIMIZED>" + ( wid->isMaximized() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VMAXIMIZED>\n";
-            stream << "\t\t<VACTIVEWINDOW>" + ( m_bulmafact->workspace() ->activeWindow() == wid ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VACTIVEWINDOW>";
+            stream << "\t\t<VACTIVEWINDOW>" + ( m_bulmafact->workspace() ->activeWindow() == wid ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</VACTIVEWINDOW>\n";
             stream << "\t</VENTANA>\n";
         } // end for
 
@@ -708,6 +709,9 @@ void Company::cargaConf()
         s_indexadorCambiaEstado ( FALSE );
         m_bulmafact->actionIndexador->setChecked ( FALSE );
     } // end if
+
+    /// Cogemos el ancho del indexador
+    m_bulmafact->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
 
     /// Tratamos cada ventana
     QWidget *activewindow = NULL;
