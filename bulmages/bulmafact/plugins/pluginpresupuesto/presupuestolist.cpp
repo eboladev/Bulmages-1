@@ -49,6 +49,12 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
         return;
     m_idpresupuesto = "";
     setSubForm ( mui_list );
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
+
     hideBusqueda();
     iniciaForm();
     _depura ( "END PresupuestoList::PresupuestoList(1)", 0 );
@@ -75,6 +81,11 @@ PresupuestoList::PresupuestoList ( Company *comp, QWidget *parent, Qt::WFlags fl
     m_articulo->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
     setSubForm ( mui_list );
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
     iniciaForm();
     presentar();
     m_idpresupuesto = "";
@@ -151,7 +162,7 @@ void PresupuestoList::setEmpresaBase ( Company *comp )
 void PresupuestoList::setidcliente ( QString val )
 {
     _depura ( "PresupuestoList::setidcliente", 0 );
-    m_cliente->setidcliente ( val );
+    m_cliente->setId ( val );
     _depura ( "END PresupuestoList::setidcliente", 0 );
 }
 
@@ -221,8 +232,8 @@ QString PresupuestoList::generaFiltro()
         filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
 
-    if ( m_cliente->idcliente() != "" ) {
-        filtro += " AND presupuesto.idcliente = " + m_cliente->idcliente();
+    if ( m_cliente->id() != "" ) {
+        filtro += " AND presupuesto.idcliente = " + m_cliente->id();
     } // end if
 
     /// Tratamos los elementos procesados y no procesados.

@@ -22,7 +22,6 @@
 #ifndef FACTURASLIST_H
 #define FACTURASLIST_H
 
-#include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"

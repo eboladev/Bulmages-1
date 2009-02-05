@@ -30,7 +30,6 @@
 #include "postgresiface2.h"
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
-#include "busquedacliente.h"
 #include "busquedaformapago.h"
 #include "busquedafecha.h"
 #include "busquedaalmacen.h"

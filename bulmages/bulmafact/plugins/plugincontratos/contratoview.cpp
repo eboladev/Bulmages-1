@@ -61,6 +61,11 @@ ContratoView::ContratoView ( Company *comp, QWidget *parent )
         mui_idcliente->setEmpresaBase ( comp );
         mui_refcontrato->setEmpresaBase ( comp );
 
+		/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
         /// Inicializamos FichaBf
         setListaLineas ( mui_lineas );
         meteWindow ( windowTitle(), this, FALSE );
@@ -139,7 +144,7 @@ int ContratoView::guardar()
     try {
         setDBvalue ( "refcontrato", mui_refcontrato->text() );
         setDBvalue ( "nomcontrato", mui_nomcontrato->text() );
-        setDBvalue ( "idcliente", mui_idcliente->idcliente() );
+        setDBvalue ( "idcliente", mui_idcliente->id() );
         setDBvalue ( "fincontrato", mui_fincontrato->text() );
         setDBvalue ( "ffincontrato", mui_ffincontrato->text() );
         setDBvalue ( "loccontrato", mui_loccontrato->text() );
@@ -175,7 +180,7 @@ void ContratoView::on_m_cliente_valueChanged ( QString id )
 void ContratoView::pintaidcliente ( QString id )
 {
     _depura ( "ContratoView::pintaidcliente", 0 );
-    mui_idcliente->setidcliente ( id );
+    mui_idcliente->setId ( id );
     _depura ( "END ContratoView::pintaidcliente", 0 );
 }
 

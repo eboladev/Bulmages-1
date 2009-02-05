@@ -28,9 +28,7 @@
 #include "cobroview.h"
 #include "company.h"
 #include "configuracion.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
-
 #include "funcaux.h"
 
 
@@ -50,6 +48,12 @@ CobroView::CobroView ( Company *comp, QWidget *parent )
         mui_idcliente->setEmpresaBase ( comp );
         mui_refcobro->setEmpresaBase ( comp );
         mui_idbanco->setEmpresaBase ( comp );
+
+			/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
 
         setTitleName ( _( "Cobro" ) );
         setDBTableName ( "cobro" );

@@ -284,7 +284,7 @@ void Busqueda::on_m_inputBusqueda_textChanged ( const QString &val )
 				cador = " OR ";
 			} // end while
 
-        QString SQLQuery = "SELECT * FROM profesor WHERE "+ cadwhere;
+        QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
         cur = empresaBase() ->cargacursor ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
             mdb_id = cur->valor ( "id"+m_tabla );
@@ -331,8 +331,8 @@ void Busqueda::on_m_inputBusqueda_textChanged ( const QString &val )
 **/
 QString Busqueda::valorCampo(QString campo)
 {
-    _depura ( "Busqueda::cifprofesor", 0 );
-    _depura ( "END Busqueda::cifprofesor", 0 );
+    _depura ( "Busqueda::valorCampo", 0 );
+    _depura ( "END Busqueda::valorCampo", 0 );
     return m_valores[campo];
 }
 
@@ -341,8 +341,8 @@ QString Busqueda::valorCampo(QString campo)
 **/
 QString Busqueda::id()
 {
-    _depura ( "Busqueda::idprofesor", 0 );
-    _depura ( "END Busqueda::idprofesor", 0 );
+    _depura ( "Busqueda::id", 0 );
+    _depura ( "END Busqueda::id", 0 );
     return mdb_id;
 }
 

@@ -22,7 +22,6 @@
 #ifndef CLIENTDELIVNOTESLIST_H
 #define CLIENTDELIVNOTESLIST_H
 
-#include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"

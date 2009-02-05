@@ -161,9 +161,9 @@ void TicketQToolButton::click()
         file.write ( "\n", 1 );
 
         file.write ( QString ( "Cliente: " ).toAscii() );
-        file.write ( m_albaranClienteView->mui_idcliente->cifcliente().toAscii() );
+        file.write ( m_albaranClienteView->mui_idcliente->valorCampo("cifcliente").toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_albaranClienteView->mui_idcliente->nomcliente().toAscii() );
+        file.write ( m_albaranClienteView->mui_idcliente->valorCampo("nomcliente").toAscii() );
         file.write ( "\n", 1 );
 
 
@@ -310,9 +310,9 @@ void TicketQToolButton::click()
         file.write ( "\n", 1 );
 
         file.write ( QString ( "Cliente: " ).toAscii() );
-        file.write ( m_facturaView->mui_idcliente->cifcliente().toAscii() );
+        file.write ( m_facturaView->mui_idcliente->valorCampo("cifcliente").toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_facturaView->mui_idcliente->nomcliente().toAscii() );
+        file.write ( m_facturaView->mui_idcliente->valorCampo("nomcliente").toAscii() );
         file.write ( "\n", 1 );
 
 

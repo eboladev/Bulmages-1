@@ -17,7 +17,7 @@
    <string>Presupuestos a clientes</string>
   </property>
   <property name="windowIcon" >
-   <iconset>
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/client-quote-list.svg</normaloff>:/Images/client-quote-list.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -53,7 +53,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/client-quote-list.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/client-quote-list.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -99,7 +99,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -137,7 +137,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -175,7 +175,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -213,7 +213,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -251,7 +251,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -289,7 +289,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -327,7 +327,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -488,7 +488,7 @@
        </widget>
       </item>
       <item rowspan="3" row="3" column="1" >
-       <widget class="BusquedaCliente" name="m_cliente" >
+       <widget class="Busqueda" name="m_cliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -655,6 +655,11 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>../../bulmalib/src/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
    <class>PresupuestoListSubForm</class>
    <extends>QTableWidget</extends>
    <header>presupuestolist.h</header>
@@ -665,18 +670,13 @@
    <header>busquedaarticulo.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>Busqueda</class>
    <extends>QTextEdit</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>busqueda.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

@@ -31,7 +31,6 @@
 
 #include "dialogchanges.h"
 #include "fixed.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
@@ -103,6 +102,13 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
 
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
+
+
+		/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
 
         /// Inicializamos para que no se queden sin ser pintada.
         mui_idforma_pago->setValorCampo ( "0" );
@@ -197,11 +203,11 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             /// El presupuesto no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( mui_idcliente->idcliente().isEmpty() ) {
+            if ( mui_idcliente->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );

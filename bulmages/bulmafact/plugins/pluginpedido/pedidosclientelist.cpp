@@ -48,6 +48,11 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     m_idpedidocliente = "";
     setSubForm ( mui_list );
     hideBusqueda();
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
     iniciaForm();
     _depura ( "END PedidosClienteList::PedidosClienteList", 0 );
 }
@@ -75,6 +80,12 @@ PedidosClienteList::PedidosClienteList ( Company *comp, QWidget *parent, Qt::WFl
     iniciaForm();
     presentar();
     m_idpedidocliente = "";
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
+
     if(modoEdicion()) {
     	empresaBase() ->meteWindow ( windowTitle(), this );
     } // end if
@@ -150,8 +161,8 @@ QString PedidosClienteList::generarFiltro()
     } else {
         filtro = "";
     } // end if
-    if ( m_cliente->idcliente() != "" ) {
-        filtro += " AND pedidocliente.idcliente = " + m_cliente->idcliente();
+    if ( m_cliente->id() != "" ) {
+        filtro += " AND pedidocliente.idcliente = " + m_cliente->id();
     } // end if
 
     /// Tratamos los elementos procesados y no procesados.
@@ -294,7 +305,7 @@ QString PedidosClienteList::idpedidocliente()
 void PedidosClienteList::setidcliente ( QString val )
 {
     _depura ( "PedidosClienteList::setidcliente", 0 );
-    m_cliente->setidcliente ( val );
+    m_cliente->setId ( val );
     _depura ( "END PedidosClienteList::setidcliente", 0 );
 }
 

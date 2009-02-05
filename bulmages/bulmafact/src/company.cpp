@@ -29,8 +29,6 @@
 #include "abreempresaview.h"
 #include "articulolist.h"
 #include "articuloview.h"
-#include "clienteview.h"
-#include "clientslist.h"
 #include "company.h"
 #include "familiasview.h"
 #include "fpagoview.h"
@@ -112,6 +110,7 @@ void Company::createMainWindows ( Splash *splash )
     } // end if
 
     /// pb = 8%
+/*    
     _depura ( "Company::createMainWindows inicializamos m_providerslist", 1 );
     splash->mensaje ( _( "Inicializando listado de proveedores" ) );
     splash->setBarraProgreso ( 10 );
@@ -144,6 +143,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_Proveedores->setEnabled ( TRUE );
         m_bulmafact->actionNuevo_Proveedor->setEnabled ( TRUE );
     } // end if
+*/
 
     /// Comprobamos que tengamos permisos para trabajar con 'Tipos de IVA'.
     m_bulmafact->actionTasaIVA->setEnabled ( FALSE );
@@ -239,9 +239,9 @@ void Company::listproviders()
 void Company::listClients()
 {
     _depura ( "Company::listClients", 0 );
-    m_clientsList->show();
-    m_clientsList->parentWidget() ->raise();
-    m_pWorkspace->setActiveWindow ( m_clientsList );
+//    m_clientsList->show();
+//    m_clientsList->parentWidget() ->raise();
+//    m_pWorkspace->setActiveWindow ( m_clientsList );
     _depura ( "END Company::listClients", 0 );
 }
 
@@ -285,16 +285,16 @@ void Company::refreshArticles()
 /**
 \return
 **/
-ClienteView *Company::newClienteView()
+void *Company::newClienteView()
 {
     _depura ( "Company::newClienteView", 0 );
     /// Lanzamos los plugins necesarios.
-    ClienteView *bud;
-    if ( g_plugins->lanza ( "Company_newClienteView", this, ( void ** ) & bud ) )
-        return bud;
-    bud = new ClienteView ( this, 0 );
-    _depura ( "END Company::newClienteView", 0 );
-    return bud;
+//    ClienteView *bud;
+//    if ( g_plugins->lanza ( "Company_newClienteView", this, ( void ** ) & bud ) )
+//        return bud;
+//    bud = new ClienteView ( this, 0 );
+//    _depura ( "END Company::newClienteView", 0 );
+    return NULL;
 }
 
 
@@ -307,15 +307,15 @@ ClienteView *Company::newClienteView()
 **/
 void Company::s_newClienteView()
 {
-    _depura ( "Company::s_newClienteView", 0 );
-    ClienteView *bud = newClienteView();
-    m_pWorkspace->addWindow ( bud );
-    bud->pintar();
-    bud->show();
-    bud->setWindowTitle ( _( "Nuevo cliente" ) );
+//    _depura ( "Company::s_newClienteView", 0 );
+//    ClienteView *bud = newClienteView();
+//    m_pWorkspace->addWindow ( bud );
+//    bud->pintar();
+//    bud->show();
+//    bud->setWindowTitle ( _( "Nuevo cliente" ) );
     /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
-    bud->desactivaDocumentos();
-    bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
+//    bud->desactivaDocumentos();
+//    bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newClienteView", 0 );
 }
 
@@ -365,11 +365,11 @@ void Company::s_newProveedorView()
 **/
 void Company::refreshClientes()
 {
-    _depura ( "Company::refreshClientes", 0 );
-    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
-        if ( m_clientsList != NULL )
-            m_clientsList->presentar();
-    _depura ( "END Company::refreshClientes", 0 );
+//    _depura ( "Company::refreshClientes", 0 );
+//    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+//        if ( m_clientsList != NULL )
+//            m_clientsList->presentar();
+//    _depura ( "END Company::refreshClientes", 0 );
 }
 
 

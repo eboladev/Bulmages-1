@@ -47,6 +47,8 @@ IncidenciaComercial::IncidenciaComercial ( Company *comp, QWidget *parent ) : Fi
     addDBCampo ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Hora" ) );
     addDBCampo ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
     _depura ( "END IncidenciaComercial::IncidenciaComercial", 0 );
+
+
 }
 
 

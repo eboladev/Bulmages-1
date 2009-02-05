@@ -42,6 +42,13 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_idpresupuesto = "";
+
+		/// Establecemos los parametros de busqueda del Cliente
+    m_idcliente->setLabel ( _( "Cliente:" ) );
+	m_idcliente->setTableName( "cliente" );
+	m_idcliente->m_valores["cifcliente"] = "";
+	m_idcliente->m_valores["nomcliente"] = "";
+
     _depura ( "END RutaComercialList::RutaComercialList", 0 );
 }
 
@@ -58,13 +65,20 @@ RutaComercialList::RutaComercialList ( Company *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setSubForm ( mui_list );
-    m_cliente->setEmpresaBase ( empresaBase() );
+    m_idcliente->setEmpresaBase ( empresaBase() );
     mui_list->setEmpresaBase ( comp );
     presenta();
     m_idpresupuesto = "";
     hideBusqueda();
     empresaBase() ->meteWindow ( windowTitle(), this );
     _depura ( "END RutaComercialList::RutaComercialList", 0 );
+
+		/// Establecemos los parametros de busqueda del Cliente
+	m_idcliente->setEmpresaBase(comp);
+    m_idcliente->setLabel ( _( "Cliente:" ) );
+	m_idcliente->setTableName( "cliente" );
+	m_idcliente->m_valores["cifcliente"] = "";
+	m_idcliente->m_valores["nomcliente"] = "";
 }
 
 
@@ -86,7 +100,7 @@ void RutaComercialList::setEmpresaBase ( Company *comp )
 {
     _depura ( "RutaComercialList::setEmpresaBase", 0 );
     PEmpresaBase::setEmpresaBase ( comp );
-    m_cliente->setEmpresaBase ( comp );
+    m_idcliente->setEmpresaBase ( comp );
     _depura ( "RutaComercialList::setEmpresaBase", 0 );
 }
 
@@ -112,8 +126,8 @@ QString RutaComercialList::generaFiltro()
     _depura ( "RutaComercialList::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
-    if ( m_cliente->idcliente() != "" ) {
-        filtro += " AND t1.idcliente = " + m_cliente->idcliente();
+    if ( m_idcliente->id() != "" ) {
+        filtro += " AND t1.idcliente = " + m_idcliente->id();
     } // end if
     if ( m_fechain->text() != "" )
         filtro += " AND t1.fechaincidenciacomercial >= '" + m_fechain->text() + "' ";
@@ -248,7 +262,7 @@ QString RutaComercialList::idpresupuesto()
 void RutaComercialList::setidcliente ( QString val )
 {
     _depura ( "RutaComercialList::setidcliente", 0 );
-    m_cliente->setidcliente ( val );
+    m_idcliente->setId ( val );
     _depura ( "END RutaComercialList::setidcliente", 0 );
 }
 

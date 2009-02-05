@@ -20,7 +20,7 @@
    <string>Nuevo presupuesto a cliente</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/client-quote.svg</normaloff>:/Images/client-quote.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -53,7 +53,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/client-quote.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/client-quote.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -105,7 +105,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -143,7 +143,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -181,7 +181,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -318,7 +318,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >
+        <iconset resource="../../../bulmages.qrc" >
          <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
        </property>
        <property name="iconSize" >
@@ -467,7 +467,7 @@
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
-       <widget class="BusquedaCliente" name="mui_idcliente" >
+       <widget class="Busqueda" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
           <horstretch>0</horstretch>
@@ -719,7 +719,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>73</height>
+        <height>163</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1489,11 +1489,6 @@
    <header>listlinpresupuestoview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QTextEdit</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaAlmacen</class>
    <extends>QComboBox</extends>
    <header>busquedaalmacen.h</header>
@@ -1512,6 +1507,11 @@
    <class>BusquedaTrabajador</class>
    <extends>QComboBox</extends>
    <header>busquedatrabajador.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Busqueda</class>
+   <extends>QTextEdit</extends>
+   <header>busqueda.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -1537,7 +1537,7 @@
   <tabstop>mui_comentpresupuesto</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

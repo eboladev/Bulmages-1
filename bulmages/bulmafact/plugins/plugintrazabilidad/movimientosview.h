@@ -21,7 +21,6 @@
 #ifndef MOVIMIENTOSVIEW_H
 #define MOVIMIENTOSVIEW_H
 
-#include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"
@@ -101,7 +100,7 @@ public:
         m_busqueda->show();
     };
     void setidcliente ( QString val ) {
-        m_cliente->setidcliente ( val );
+        m_cliente->setId ( val );
     };
     void setidarticulo ( QString val ) {
         m_articulo->setidarticulo ( val );

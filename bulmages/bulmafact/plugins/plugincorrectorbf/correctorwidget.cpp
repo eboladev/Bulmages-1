@@ -162,7 +162,13 @@ void correctorwidget::alink ( const QUrl &url )
     QString linker = url.fragment();
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
-        ClienteView * prov = ( ( Company * ) empresaBase() ) ->newClienteView();
+		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+		int resur = g_plugins->lanza ("SNewClienteView", (Company *) empresaBase() );
+		if (!resur) {
+			mensajeInfo("No se pudo crear instancia de cliente");
+			return;
+		} // end if
+		ClienteView *prov = (ClienteView *) g_plugParams;
         if ( prov->cargar ( list[1] ) ) {
             delete prov;
             return;

@@ -87,6 +87,11 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         mui_idforma_pago->setidforma_pago ( "" );
         mui_idalmacen->setidalmacen ( "" );
         mui_idtrabajador->setidtrabajador ( "" );
+		/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
         mensajeInfo ( _( "Error al crear el pedido cliente" ), this );

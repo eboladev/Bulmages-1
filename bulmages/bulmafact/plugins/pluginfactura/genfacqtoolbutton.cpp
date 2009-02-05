@@ -145,11 +145,11 @@ void GenFacQToolButton::generarFactura()
             /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
+            if ( fpv->mui_idcliente->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refalbaran->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refalbaran->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refalbaran" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
@@ -273,11 +273,11 @@ void GenFacQToolButton::generarFactura1()
             /// El presupuesto no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
+            if ( fpv->mui_idcliente->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
@@ -402,11 +402,11 @@ void GenFacQToolButton::generarFactura2()
             /// El presupuesto no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
+            if ( fpv->mui_idcliente->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
@@ -585,7 +585,7 @@ void AgFacQToolButton::generarFactura()
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
-    fac->m_cliente->setidcliente ( fpv->DBvalue ( "idcliente" ) );
+    fac->m_cliente->setId ( fpv->DBvalue ( "idcliente" ) );
     fac->on_mui_actualizar_clicked();
 
     /// Lanzamos el di&aacute;logo.

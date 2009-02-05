@@ -33,8 +33,6 @@
 #include "splashscreen.h"
 
 class ProveedorList;
-class ClientsList;
-class ClienteView;
 class ArticuloList;
 class orderslist;
 class FacturaView;
@@ -60,7 +58,7 @@ private:
     /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
     ProveedorList *m_providerslist;
     /// Puntero a la ventan ade lista de clientes. Esta ventana se abre una vez al inicio del programa.
-    ClientsList *m_clientsList;
+//    ClientsList *m_clientsList;
     /// Puntero a la ventana de lista de articulos. Esta ventan ase abre una vez al inicio del programa.
     ArticuloList *m_articleslist;
 
@@ -70,7 +68,7 @@ public:
     void listproviders();
     void listClients();
     void listarticles();
-    ClienteView *newClienteView();
+    void *newClienteView();
     ProveedorView *newProveedorView();
     ArticuloView *newArticuloView();
     void createMainWindows ( Splash * );

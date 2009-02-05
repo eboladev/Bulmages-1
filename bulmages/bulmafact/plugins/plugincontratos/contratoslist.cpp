@@ -60,6 +60,11 @@ ContratosList::ContratosList ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
     m_modo = editmode;
+		/// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setLabel ( _( "Cliente:" ) );
+	mui_idcliente->setTableName( "cliente" );
+	mui_idcliente->m_valores["cifcliente"] = "";
+	mui_idcliente->m_valores["nomcliente"] = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( m_modo == EditMode ) {
@@ -99,8 +104,8 @@ void ContratosList::presenta()
     _depura ( "ContratosList::presenta", 0 );
     QString where;
 
-    if ( mui_idcliente->idcliente() != "" ) {
-        where = " AND contrato.idcliente = " + mui_idcliente->idcliente();
+    if ( mui_idcliente->id() != "" ) {
+        where = " AND contrato.idcliente = " + mui_idcliente->id();
     } // end if
 
     mui_list->cargar ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
@@ -373,8 +378,8 @@ void ContratosList::on_mui_facturar_clicked()
     try {
         QString where;
 
-        if ( mui_idcliente->idcliente() != "" ) {
-            where = " AND contrato.idcliente = " + mui_idcliente->idcliente();
+        if ( mui_idcliente->id() != "" ) {
+            where = " AND contrato.idcliente = " + mui_idcliente->id();
         } // end if
 
         cur = empresaBase() ->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );

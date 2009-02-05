@@ -31,7 +31,6 @@
 #include "rutacomercialview.h"
 #include "company.h"
 #include "configuracion.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 
 
@@ -52,7 +51,16 @@ RutaComercialView::RutaComercialView ( Company *comp, QWidget *parent )
     _depura ( "RutaComercialView::RutaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
+
+	/// Establecemos los parametros de busqueda del Cliente
+	mui_idcliente->setEmpresaBase(comp);
+    mui_idcliente->setLabel ( _( "Cliente:" ) );
+	mui_idcliente->setTableName( "cliente" );
+	mui_idcliente->m_valores["cifcliente"] = "";
+	mui_idcliente->m_valores["nomcliente"] = "";
+
     dialogChanges_cargaInicial();
+
     _depura ( "END RutaComercialView::RutaComercialView", 0 );
 }
 
@@ -67,6 +75,13 @@ RutaComercialView::RutaComercialView ( QWidget *parent )
     _depura ( "RutaComercialView::RutaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
+
+	/// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setLabel ( _( "Cliente:" ) );
+	mui_idcliente->setTableName( "cliente" );
+	mui_idcliente->m_valores["cifcliente"] = "";
+	mui_idcliente->m_valores["nomcliente"] = "";
+
     dialogChanges_cargaInicial();
     _depura ( "END RutaComercialView::RutaComercialView", 0 );
 }
@@ -104,7 +119,7 @@ int RutaComercialView::guardar()
     if ( mui_fecharutacomercial->text() == "" )
         return 0;
     setDBvalue ( "fecharutacomercial", mui_fecharutacomercial->text() );
-    setDBvalue ( "idcliente", mui_idcliente->idcliente() );
+    setDBvalue ( "idcliente", mui_idcliente->id() );
     setDBvalue ( "comentariosrutacomercial", mui_comentrutacomercial->toPlainText() );
     setDBvalue ( "horarutacomercial", mui_horarutacomercial->text() );
     setDBvalue ( "refrutacomercial", mui_refrutacomercial->text() );
@@ -125,7 +140,7 @@ int RutaComercialView::cargar ( QString id )
     int err = RutaComercial::cargar ( id );
     setWindowTitle ( _( "Ruta comercial" ) + " " + DBvalue ( "idrutacomercial" ) );
     mui_fecharutacomercial->setText ( DBvalue ( "fecharutacomercial" ) );
-    mui_idcliente->setidcliente ( DBvalue ( "idcliente" ) );
+    mui_idcliente->setId ( DBvalue ( "idcliente" ) );
     mui_comentrutacomercial->setPlainText ( DBvalue ( "comentariosrutacomercial" ) );
     mui_horarutacomercial->setText ( DBvalue ( "horarutacomercial" ) );
     mui_refrutacomercial->setText ( DBvalue ( "refrutacomercial" ) );

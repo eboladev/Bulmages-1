@@ -36,7 +36,6 @@
 #include "clientslist.h"
 #include "articulolist.h"
 #include "configuracion.h"
-#include "busquedacliente.h"
 #include "busquedaformapago.h"
 #include "informereferencia.h"
 #include "plugins.h"
@@ -96,6 +95,11 @@ PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
         mui_idforma_pago->setValorCampo ( "0" );
         mui_idalmacen->setValorCampo ( "0" );
         mui_idtrabajador->setValorCampo ( "0" );
+		/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
 
         meteWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.

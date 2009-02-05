@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ListZonaComercialBase</class>
  <widget class="QWidget" name="ListZonaComercialBase" >
   <property name="geometry" >
@@ -16,13 +14,14 @@
    <string>Zonas comerciales</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >
+    <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item>
@@ -30,18 +29,18 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>277</width>
          <height>27</height>
@@ -68,18 +67,15 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="6" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>ListZonaComercialSubForm</class>
    <extends>QTableWidget</extends>
    <header>listzonacomercialview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
   <include location="../../../bulmages.qrc" />
  </resources>
  <connections>

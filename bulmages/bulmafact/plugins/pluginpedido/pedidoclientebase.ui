@@ -403,7 +403,7 @@
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
-       <widget class="BusquedaCliente" name="mui_idcliente" >
+       <widget class="Busqueda" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
           <horstretch>0</horstretch>
@@ -1330,9 +1330,9 @@
    <header>../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>Busqueda</class>
    <extends>QTextEdit</extends>
-   <header>busquedacliente.h</header>
+   <header>busqueda.h</header>
   </customwidget>
  </customwidgets>
  <resources>

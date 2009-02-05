@@ -28,7 +28,6 @@
 #include "plugins.h"
 #include "ticket.h"
 #include "qapplication2.h"
-#include "busquedacliente.h"
 #include "bdockwidget.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
@@ -36,7 +35,7 @@
 typedef QMap<QString, Fixed> base;
 
 
-BusquedaCliente *g_busc;
+Busqueda *g_busc;
 BDockWidget *g_doc1;
 EmpresaTPV * g_emp;
 ///
@@ -67,17 +66,22 @@ int entryPoint ( BulmaTPV *tpv )
 
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
-    g_busc = new BusquedaCliente ( 0 );
+    g_busc = new Busqueda ( 0 );
     g_busc->setEmpresaBase ( etpv );
+		/// Establecemos los parametros de busqueda del Cliente
+    g_busc->setLabel ( _( "Cliente:" ) );
+	g_busc->setTableName( "cliente" );
+	g_busc->m_valores["cifcliente"] = "";
+	g_busc->m_valores["nomcliente"] = "";
     g_doc1->setWidget ( g_busc );
 
     return 0;
 }
 
-int BusquedaCliente_on_m_cifcliente_editingFinished_Post ( BusquedaCliente *busc )
+int Busqueda_on_m_inputBusqueda_editingFinished_Post ( Busqueda *busc )
 {
-    if ( busc->idcliente() != "" ) {
-        g_emp->ticketActual() ->setDBvalue ( "idcliente", busc->idcliente() );
+    if ( busc->id() != "" && busc == g_busc) {
+        g_emp->ticketActual() ->setDBvalue ( "idcliente", busc->id() );
         g_emp->ticketActual() ->pintar();
         g_emp->setValorInput ( "" );
         g_emp->pulsaTecla ( 0, "" );

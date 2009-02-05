@@ -28,7 +28,6 @@
 
 #include <funcaux.h>
 #include "ui_z2zbase.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaseriefactura.h"

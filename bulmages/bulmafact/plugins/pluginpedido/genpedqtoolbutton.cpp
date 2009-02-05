@@ -130,11 +130,11 @@ void GenPedQToolButton::generarFactura1()
             /// El presupuesto no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( fpv->mui_idcliente->idcliente().isEmpty() ) {
+            if ( fpv->mui_idcliente->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );

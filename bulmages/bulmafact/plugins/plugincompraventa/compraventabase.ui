@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>757</width>
-    <height>651</height>
+    <height>665</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -619,7 +619,7 @@
        </widget>
       </item>
       <item rowspan="2" row="1" column="0" colspan="2" >
-       <widget class="BusquedaCliente" name="mui_idcliente" />
+       <widget class="Busqueda" name="mui_idcliente" />
       </item>
       <item row="2" column="2" >
        <widget class="QLabel" name="label16" >
@@ -828,7 +828,7 @@
         <x>0</x>
         <y>0</y>
         <width>735</width>
-        <height>96</height>
+        <height>98</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1586,7 +1586,7 @@
         <x>0</x>
         <y>0</y>
         <width>735</width>
-        <height>96</height>
+        <height>98</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1705,11 +1705,6 @@
    <header>listdescalbaranclienteview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QTextEdit</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
    <header>../../bulmalib/src/busquedafecha.h</header>
@@ -1734,6 +1729,11 @@
    <extends>QWidget</extends>
    <header>listlinalbaranproveedorview.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Busqueda</class>
+   <extends>QTextEdit</extends>
+   <header>busqueda.h</header>
   </customwidget>
  </customwidgets>
  <resources>

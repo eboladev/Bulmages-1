@@ -29,7 +29,6 @@
 #include "ui_incidenciacomercialbase.h"
 #include "postgresiface2.h"
 #include "incidenciacomercial.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 

@@ -1,9 +1,9 @@
 ###########################################
-# Plugin for bulmafact                    #
+# Plugin for bulmafact					  #
 ###########################################
-#plugincobros
+#pluginbf_cliente
 
-set (plugin plugincobros)
+set (plugin pluginbf_cliente)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -25,17 +25,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpresupuesto/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpresupuesto/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpedido/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedido/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -43,6 +33,7 @@ include_directories(
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT4_ADD_RESOURCES(pluginprofesor_RCC_SRCS ${pluginprofesor_RCCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
@@ -62,13 +53,14 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 
+# build sources, moc'd sources, and rcc'd sources
 
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
-	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS} ${pluginprofesor_RCC_SRCS})
 
 
 set_target_properties( ${plugin} PROPERTIES 
@@ -82,4 +74,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginfactura pluginalbaran pluginpedido pluginpresupuesto)
+add_dependencies(${plugin} bulmafact bulmalib)

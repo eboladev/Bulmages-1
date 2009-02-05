@@ -31,7 +31,6 @@
 #include "incidenciacomercialview.h"
 #include "company.h"
 #include "configuracion.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 
 #include <fstream>
@@ -52,6 +51,13 @@ IncidenciaComercialView::IncidenciaComercialView ( Company *comp, QWidget *paren
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     dialogChanges_cargaInicial();
+
+		/// Establecemos los parametros de busqueda del Cliente
+	mui_idcliente->setEmpresaBase(comp);
+    mui_idcliente->setLabel ( _( "Cliente:" ) );
+	mui_idcliente->setTableName( "cliente" );
+	mui_idcliente->m_valores["cifcliente"] = "";
+	mui_idcliente->m_valores["nomcliente"] = "";
     _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
@@ -68,6 +74,12 @@ IncidenciaComercialView::IncidenciaComercialView ( QWidget *parent )
     setupUi ( this );
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     dialogChanges_cargaInicial();
+
+		/// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setLabel ( _( "Cliente:" ) );
+	mui_idcliente->setTableName( "cliente" );
+	mui_idcliente->m_valores["cifcliente"] = "";
+	mui_idcliente->m_valores["nomcliente"] = "";
     _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
@@ -126,7 +138,7 @@ int IncidenciaComercialView::guardar()
     if ( mui_fechaincidenciacomercial->text() == "" )
         return 0;
     setDBvalue ( "fechaincidenciacomercial", mui_fechaincidenciacomercial->text() );
-    setDBvalue ( "idcliente", mui_idcliente->idcliente() );
+    setDBvalue ( "idcliente", mui_idcliente->id() );
     setDBvalue ( "comentincidenciacomercial", mui_comentincidenciacomercial->toPlainText() );
     setDBvalue ( "idtrabajador", mui_idtrabajador->idtrabajador() );
     setDBvalue ( "estadoincidenciacomercial", mui_estadoincidenciacomercial->estado() );
@@ -149,7 +161,7 @@ int IncidenciaComercialView::cargar ( QString id )
     int err = IncidenciaComercial::cargar ( id );
     setWindowTitle ( _( "Incidencia comercial" ) + " " + DBvalue ( "idincidenciacomercial" ) );
     mui_fechaincidenciacomercial->setText ( DBvalue ( "fechaincidenciacomercial" ) );
-    mui_idcliente->setidcliente ( DBvalue ( "idcliente" ) );
+    mui_idcliente->setId ( DBvalue ( "idcliente" ) );
     mui_comentincidenciacomercial->setPlainText ( DBvalue ( "comentincidenciacomercial" ) );
     mui_idtrabajador->setidtrabajador ( DBvalue ( "idtrabajador" ) );
     mui_estadoincidenciacomercial->setestado ( DBvalue ( "estadoincidenciacomercial" ) );

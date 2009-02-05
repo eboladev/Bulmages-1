@@ -32,7 +32,6 @@
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
 #include "clientslist.h"
-//#include "cobroview.h"
 #include "company.h"
 #include "facturaview.h"
 #include "funcaux.h"
@@ -92,6 +91,12 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         /// Inicializamos FichaBf.
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
+
+		/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
 
 	/// Establecemos valores por defecto en los combo boxes para que no se queden sin inicializar.
         mui_idalmacen->setidalmacen ( "" );
@@ -182,7 +187,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.
-    fac->m_cliente->setidcliente ( DBvalue ( "idcliente" ) );
+    fac->m_cliente->setId ( DBvalue ( "idcliente" ) );
     fac->on_mui_actualizar_clicked();
 
     /// Lanzamos el dialogo.

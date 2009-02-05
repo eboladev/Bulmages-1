@@ -23,7 +23,6 @@
 #include <QTextStream>
 
 #include "busquedaarticulo.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "company.h"
 #include "configuracion.h"
@@ -61,6 +60,11 @@ MovimientosView::MovimientosView ( Company *comp, QWidget *parent, edmode editmo
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
     if ( m_modo == EditMode ) {
         meteWindow ( windowTitle(), this );
     } // end if

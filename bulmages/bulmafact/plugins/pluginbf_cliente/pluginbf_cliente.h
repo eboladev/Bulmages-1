@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Marcos Mezo                                     *
- *   mmezo@selexco.net                                                     *
- *   http://www.iglues.org                                                 *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,36 +18,37 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CLIENTEVIEW_H
-#define CLIENTEVIEW_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include "fichabf.h"
-#include "ui_clientebase.h"
+#include "postgresiface2.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "busquedareferencia.h"
+#include "busqueda.h"
 
 
-/** Clase que se encarga de la pantalla de cliente.
-    Deriva de la clase Ficha para la estandarizacion de pantallas y
-    de la clase Cliente para el manejo con la base de datos.
-    Se encarga de recibir y lanzar eventos.
-*/
-class ClienteView : public FichaBf, public Ui_ClienteBase
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
+
+
+class MyPlugCli : public QObject, PEmpresaBase
 {
     Q_OBJECT
 
 public:
-    ClienteView ( Company *emp, QWidget *parent = 0 );
-    ~ClienteView();
+    Bulmafact *m_bges;
 
 public:
-    int cargarPost ( QString client );
-    void activaDocumentos();
-    void desactivaDocumentos();
+    MyPlugCli();
+    ~MyPlugCli();
+    void inicializa ( Bulmafact * );
 
 public slots:
-    /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.
-    virtual void on_mui_informe_clicked();
-	virtual void on_mui_cifcliente_lostFocus();
+    void elslot();
+    void elslot1();
 };
-
-#endif
-

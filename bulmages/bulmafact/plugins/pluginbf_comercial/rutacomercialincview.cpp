@@ -31,7 +31,6 @@
 #include "rutacomercialincview.h"
 #include "company.h"
 #include "configuracion.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 
 #include <fstream>

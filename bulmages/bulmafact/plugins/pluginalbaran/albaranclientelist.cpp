@@ -61,7 +61,7 @@ void AlbaranClienteListSubform::cargar ( QString query )
 void AlbaranClienteList::setidcliente ( QString val )
 {
     _depura ( "AlbaranClienteList::setidcliente", 0 );
-    m_cliente->setidcliente ( val );
+    m_cliente->setId ( val );
     _depura ( "END AlbaranClienteList::setidcliente", 0 );
 }
 
@@ -151,6 +151,13 @@ AlbaranClienteList::AlbaranClienteList ( Company *comp, QWidget *parent, Qt::WFl
     mui_list->setEmpresaBase ( comp );
     setSubForm ( mui_list );
     iniciaForm();
+
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
+
     presentar();
     mdb_idalbaran = "";
     if ( modoEdicion() )
@@ -329,8 +336,8 @@ QString AlbaranClienteList::generarFiltro()
         filtro = "";
     } // end if
 
-    if ( m_cliente->idcliente() != "" )
-        filtro += " AND albaran.idcliente='" + m_cliente->idcliente() + "'";
+    if ( m_cliente->id() != "" )
+        filtro += " AND albaran.idcliente='" + m_cliente->id() + "'";
 
     if ( m_articulo->idarticulo() != "" )
         filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + m_articulo->idarticulo() + "')";

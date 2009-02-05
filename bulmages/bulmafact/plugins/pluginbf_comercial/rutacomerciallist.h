@@ -24,7 +24,6 @@
 #include <QLineEdit>
 
 #include "company.h"
-#include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
 #include "listado.h"

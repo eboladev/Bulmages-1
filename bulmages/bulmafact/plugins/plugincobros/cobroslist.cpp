@@ -47,7 +47,11 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         return;
     mdb_idcobro = "";
     setSubForm ( mui_list );
-    hideBusqueda();
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";    hideBusqueda();
 
     _depura ( "END CobrosList::CobrosList", 0 );
 }
@@ -71,6 +75,11 @@ CobrosList::CobrosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode
     mui_idbanco->setEmpresaBase ( comp );
     mui_idbanco->setidbanco ( "" );
     setSubForm ( mui_list );
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
     presentar();
     mdb_idcobro = "";
     if ( modoEdicion() )
@@ -120,8 +129,8 @@ QString CobrosList::generaFiltro()
         filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
 
-    if ( m_cliente->idcliente() != "" ) {
-        filtro += " AND cobro.idcliente = " + m_cliente->idcliente();
+    if ( m_cliente->id() != "" ) {
+        filtro += " AND cobro.idcliente = " + m_cliente->id();
     } // end if
 
     QString subfiltro = " AND ";
@@ -158,7 +167,7 @@ void CobrosList::crear()
     CobroView *bud = new CobroView( (Company *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    bud->setDBvalue ( "idcliente", m_cliente->idcliente() );
+    bud->setDBvalue ( "idcliente", m_cliente->id() );
     bud->pintar();
     _depura ( "CobrosList::crear", 0 );
 }
@@ -278,7 +287,7 @@ QString CobrosList::idcobro()
 **/
 void CobrosList::setidcliente ( QString val )
 {
-    m_cliente->setidcliente ( val );
+    m_cliente->setId ( val );
 }
 
 

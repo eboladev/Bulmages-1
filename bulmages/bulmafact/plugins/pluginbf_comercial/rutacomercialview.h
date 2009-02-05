@@ -28,7 +28,6 @@
 #include "ui_rutacomercialbase.h"
 #include "postgresiface2.h"
 #include "rutacomercial.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 

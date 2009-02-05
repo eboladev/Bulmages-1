@@ -17,22 +17,23 @@
    <string>Contratos</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Images/client-list.svg</iconset>
+   <iconset resource="../../../bulmages.qrc" >
+    <normaloff>:/Images/client-list.svg</normaloff>:/Images/client-list.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -53,10 +54,10 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="margin" >
          <number>5</number>
         </property>
         <item>
@@ -71,7 +72,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-new.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >
+            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -93,7 +95,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-open.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >
+            <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -115,7 +118,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset>
+            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -137,7 +141,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >
+            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -159,7 +164,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >
+            <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -184,7 +190,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >
+            <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -209,7 +216,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >
+            <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -243,7 +251,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
+           <iconset>
+            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -256,9 +265,7 @@
         <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>1</hsizetype>
-            <vsizetype>5</vsizetype>
+           <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -282,7 +289,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>101</width>
             <height>34</height>
@@ -321,10 +328,10 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" >
-      <property name="margin" >
+      <property name="spacing" >
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="margin" >
        <number>5</number>
       </property>
       <item>
@@ -345,7 +352,7 @@
        </widget>
       </item>
       <item>
-       <widget class="BusquedaCliente" name="mui_idcliente" />
+       <widget class="Busqueda" native="1" name="mui_idcliente" />
       </item>
       <item>
        <spacer>
@@ -355,7 +362,7 @@
         <property name="sizeType" >
          <enum>QSizePolicy::Expanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>401</width>
           <height>31</height>
@@ -379,9 +386,10 @@
    <header>contratoslist.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QLineEdit</extends>
-   <header>busquedacliente.h</header>
+   <class>Busqueda</class>
+   <extends>QWidget</extends>
+   <header>busqueda.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

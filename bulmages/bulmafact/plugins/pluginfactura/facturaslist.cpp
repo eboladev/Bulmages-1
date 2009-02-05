@@ -23,7 +23,6 @@
 #include <QTextStream>
 
 #include "busquedaarticulo.h"
-#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "company.h"
 #include "configuracion.h"
@@ -53,6 +52,11 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         return;
     iniciaForm();
     mdb_idfactura = "";
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
     setSubForm ( mui_list );
     hideBusqueda();
     _depura ( "END FacturasList::FacturasList", 0 );
@@ -81,6 +85,11 @@ FacturasList::FacturasList ( Company *comp, QWidget *parent, Qt::WFlags flag, ed
     m_articulo->setEmpresaBase ( empresaBase() );
     mui_list->setEmpresaBase ( empresaBase() );
     setSubForm ( mui_list );
+		/// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _( "Cliente:" ) );
+	m_cliente->setTableName( "cliente" );
+	m_cliente->m_valores["cifcliente"] = "";
+	m_cliente->m_valores["nomcliente"] = "";
     presentar();
     mdb_idfactura = "";
     if ( modoEdicion() ) {
@@ -165,8 +174,8 @@ QString FacturasList::generaFiltro()
     } else {
         filtro = "";
     } // end if
-    if ( m_cliente->idcliente() != "" ) {
-        filtro += " AND factura.idcliente = " + m_cliente->idcliente();
+    if ( m_cliente->id() != "" ) {
+        filtro += " AND factura.idcliente = " + m_cliente->id();
     } // end if
 
     /// Tratamos los procesados y no procesados en las facturas para el filtraje.
@@ -301,7 +310,7 @@ QString FacturasList::idfactura()
 void FacturasList::setidcliente ( QString val )
 {
     _depura ( "FacturasList::setidcliente", 0 );
-    m_cliente->setidcliente ( val );
+    m_cliente->setId ( val );
     _depura ( "END FacturasList::setidcliente", 0 );
 }
 

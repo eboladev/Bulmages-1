@@ -108,6 +108,12 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         mui_idtrabajador->setEmpresaBase ( comp );
         mui_refalbaran->setEmpresaBase ( comp );
 
+			/// Establecemos los parametros de busqueda del Cliente
+		mui_idcliente->setLabel ( _( "Cliente:" ) );
+		mui_idcliente->setTableName( "cliente" );
+		mui_idcliente->m_valores["cifcliente"] = "";
+		mui_idcliente->m_valores["nomcliente"] = "";
+
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 
@@ -562,11 +568,11 @@ void CompraVentaView::generarFactura()
             /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( mui_idcliente->idcliente().isEmpty() ) {
+            if ( mui_idcliente->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
