@@ -111,13 +111,11 @@ ELSE (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
    ENDIF (GetText_REQUIRED)
 ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 
-
-
 # This are the two main targets
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
 add_custom_target( translations )
-add_custom_target( update_pots DEPENDS translations)
+add_custom_target( update_pots DEPENDS messages_extract)
 
 #To acomplish the messages extract it's needed some macros
 
@@ -178,9 +176,9 @@ macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
    ARGS --msgid-bugs-address=${MSGID_BUGS_ADDRESS} --files-from=${CMAKE_CURRENT_BINARY_DIR}/${template}.pot_list
    DEPENDS ${template} VERBATIM)
            
-   add_custom_target(${template}.pot DEPENDS ${dirOUT}/${template}.pot)
-   add_dependencies(${template}.pot  ${template})
-   add_dependencies(messages_extract ${template}.pot)
+   add_custom_target(${template}_pot DEPENDS ${dirOUT}/${template}.pot)
+   add_dependencies(${template}_pot  ${template})
+   add_dependencies(messages_extract ${template}_pot)
 
    GETTEXT_UPDATE_POT(${dirOUT}/${template}.pot ${CMAKE_CURRENT_SOURCE_DIR}/po)
 
@@ -196,7 +194,6 @@ macro (GETTEXT_UPDATE_POT inputPot dirOUT)
    )
    add_dependencies(update_pots ${inputPot})
 endmacro (GETTEXT_UPDATE_POT inputPot dirOUT)
-
 
 
 
