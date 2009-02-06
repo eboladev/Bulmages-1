@@ -150,7 +150,7 @@ endmacro(CREATE_FILE_LIST)
 # it's possible to define  MSGID_BUGS_ADDRESS
 
 macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
-   
+
    set (MSGID_BUGS_ADDRESS "info@iglues.org")
 #  file(REMOVE ${CMAKE_CURRENT_SOURCE_DIR}/${template}.pot)
    #message (STATUS "Files to create list ${${sources}}")
@@ -158,7 +158,7 @@ macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
    #we need a list with the files
    CREATE_FILE_LIST(${sources} ${CMAKE_CURRENT_BINARY_DIR}/${template}.pot_list)
    
-   add_custom_command( 
+   add_custom_command(
    OUTPUT ${dirOUT}/${template}.pot
    COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} 
    ARGS --add-comments=TRANSLATORS: 
@@ -174,7 +174,8 @@ macro(GETTEXT_CREATE_TEMPLATE template dirOUT dirIN sources )
    ARGS --directory=${dirIN} --directory=${CMAKE_CURRENT_BINARY_DIR} 
    ARGS --output=${dirOUT}/${template}.pot
    ARGS --msgid-bugs-address=${MSGID_BUGS_ADDRESS} --files-from=${CMAKE_CURRENT_BINARY_DIR}/${template}.pot_list
-   DEPENDS ${template} VERBATIM)
+   DEPENDS ${template} 
+   VERBATIM)
            
    add_custom_target(${template}_pot DEPENDS ${dirOUT}/${template}.pot)
    add_dependencies(${template}_pot  ${template})
