@@ -52,6 +52,11 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
         addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID profesor" ) );
         addDBCampo ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del profesor" ) );
 
+
+        /// Datos por defecto.
+	mui_idprovincia->setEmpresaBase ( empresaBase() );
+        mui_idprovincia->setIdProvincia ( "" );			
+
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();

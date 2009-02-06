@@ -110,7 +110,6 @@ void Company::createMainWindows ( Splash *splash )
     } // end if
 
     /// pb = 8%
-/*    
     _depura ( "Company::createMainWindows inicializamos m_providerslist", 1 );
     splash->mensaje ( _( "Inicializando listado de proveedores" ) );
     splash->setBarraProgreso ( 10 );
@@ -128,6 +127,8 @@ void Company::createMainWindows ( Splash *splash )
     } // end if
 
     /// pb = 16%
+/*    
+
     _depura ( "Company::createMainWindows inicializamos m_clientesList", 1 );
     splash->mensaje ( _( "Inicializando listado de clientes" ) );
     splash->setBarraProgreso ( 16 );

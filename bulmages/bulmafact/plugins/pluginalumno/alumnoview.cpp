@@ -52,6 +52,10 @@ AlumnoView::AlumnoView ( Company *comp, QWidget *parent )
         addDBCampo ( "idalumno", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id alumno" ) );
         addDBCampo ( "nombrealumno", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del alumno" ) );
 
+        /// Datos por defecto.
+        mui_idprovincia->setEmpresaBase ( empresaBase() );
+        mui_idprovincia->setIdProvincia ( "" );
+
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();

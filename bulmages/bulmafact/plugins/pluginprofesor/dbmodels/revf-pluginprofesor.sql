@@ -82,9 +82,6 @@ BEGIN
 
         END IF;
 
-	DROP TABLE sesionactividad;
-	DROP TABLE actividad;
-	
         SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
         IF NOT FOUND THEN
 
