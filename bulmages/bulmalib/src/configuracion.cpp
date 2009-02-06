@@ -382,6 +382,10 @@ QString configuracion::nombre ( int i )
         return "CONF_CONT_ALT";
     if ( i == CONF_STYLESHEET )
         return "CONF_STYLESHEET";
+    if ( i == CONF_BF_BACKGROUND_COLOR )
+        return "CONF_BF_BACKGROUND_COLOR";
+    if ( i == CONF_BF_BACKGROUND_IMAGE )
+        return "CONF_BF_BACKGROUND_IMAGE";
     return "";
 //    _depura("END configuracion::nombre", 0);
 }

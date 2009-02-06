@@ -4,7 +4,7 @@
 #                                                                    #
 #--------------------------------------------------------------------#
 
-CONF_SPLASH_BULMAFACT          @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmafact.jpg
+CONF_SPLASH_BULMAFACT         @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmafact.jpg
 
 
 # Estos parametros indican si los numeradores son automaticos.
@@ -38,10 +38,10 @@ CONF_BG_DESCFACTURASCLIENTE   #C3CC33
 
 CONF_BG_LISTARTICULOS         #DDFFDD
 
-CONF_SERIE_FACTURA_DEFECTO     DD
-CONF_IDTRABAJADOR_DEFECTO      0
-CONF_IDFORMA_PAGO_DEFECTO      0
-CONF_IDALMACEN_DEFECTO         0
+CONF_SERIE_FACTURA_DEFECTO    DD
+CONF_IDTRABAJADOR_DEFECTO     0
+CONF_IDFORMA_PAGO_DEFECTO     0
+CONF_IDALMACEN_DEFECTO        0
 
 CONF_PLUGINS_BULMAFACT        libpluginq19@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginimpresionesmultiples@CMAKE_SHARED_LIBRARY_SUFFIX@; \
@@ -54,6 +54,9 @@ CONF_PLUGINS_BULMAFACT        libpluginq19@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginsubformsxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libplugindocked@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginsubformods@CMAKE_SHARED_LIBRARY_SUFFIX@
+
+CONF_BF_BACKGROUND_COLOR      #A08329
+CONF_BF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmafact-background.png
 
   
 # NOTA PARA DESARROLLADORES:

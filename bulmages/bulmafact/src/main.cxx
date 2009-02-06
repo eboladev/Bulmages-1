@@ -168,6 +168,16 @@ int main ( int argc, char **argv )
             confpr->leeconfig ( confEsp );
         } // end if
 
+	// Pone el color de fondo del workspace si esta definido y es un color valido.
+	if ( QColor(confpr->valor ( CONF_BF_BACKGROUND_COLOR )).isValid() ) {
+	    bges->workspace()->setBackground(QBrush(QColor( confpr->valor ( CONF_BF_BACKGROUND_COLOR ) )));
+	} // end if
+
+	// Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
+	if ( !QImage(confpr->valor ( CONF_BF_BACKGROUND_IMAGE )).isNull() ) {
+	    bges->workspace()->setBackground(QBrush( QImage(confpr->valor ( CONF_BF_BACKGROUND_IMAGE )) ));
+	} // end if
+
         splashScr->mensaje ( _( "Cargando traducciones" ) );
         splashScr->setBarraProgreso ( 3 );
 

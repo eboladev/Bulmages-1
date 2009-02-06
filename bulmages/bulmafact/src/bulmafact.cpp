@@ -56,6 +56,7 @@ Bulmafact::Bulmafact ( QString bd ) : BlMainWindow()
     setUpdatesEnabled ( TRUE );
     pWorkspace = new QWorkspace2 ( this );
     pWorkspace->setScrollBarsEnabled ( TRUE );
+
     QFrame *m_frame1 = new QFrame();
     m_pb = new QProgressBar();
     m_pb->setMaximum ( 100 );
