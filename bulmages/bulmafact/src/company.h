@@ -57,7 +57,7 @@ private:
     Bulmafact *m_bulmafact;
     /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
     ProveedorList *m_providerslist;
-    /// Puntero a la ventan ade lista de clientes. Esta ventana se abre una vez al inicio del programa.
+    /// Puntero a la ventana de lista de clientes. Esta ventana se abre una vez al inicio del programa.
 //    ClientsList *m_clientsList;
     /// Puntero a la ventana de lista de articulos. Esta ventan ase abre una vez al inicio del programa.
     ArticuloList *m_articleslist;

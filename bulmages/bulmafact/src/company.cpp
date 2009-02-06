@@ -118,13 +118,13 @@ void Company::createMainWindows ( Splash *splash )
     m_bulmafact->actionListado_Clientes->setEnabled ( FALSE );
     m_bulmafact->actionNuevo_Cliente->setEnabled ( FALSE );
 
-    if ( has_table_privilege ( "cliente", "SELECT" ) ) {
-        m_clientsList = new ClientsList ( this );
-        m_pWorkspace->addWindow ( m_clientsList );
-        m_clientsList->hide();
-        m_bulmafact->actionListado_Clientes->setEnabled ( TRUE );
-        m_bulmafact->actionNuevo_Cliente->setEnabled ( TRUE );
-    } // end if
+//    if ( has_table_privilege ( "cliente", "SELECT" ) ) {
+//        m_clientsList = new ClientsList ( this );
+//        m_pWorkspace->addWindow ( m_clientsList );
+//        m_clientsList->hide();
+//        m_bulmafact->actionListado_Clientes->setEnabled ( TRUE );
+//        m_bulmafact->actionNuevo_Cliente->setEnabled ( TRUE );
+//    } // end if
 
     /// pb = 16%
 /*    
