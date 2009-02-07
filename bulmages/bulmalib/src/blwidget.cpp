@@ -99,7 +99,7 @@ void PEmpresaBase::setValorCampo ( QString )
 
 
 /// ===========================================================
-/// ================== BLWidget ===============================
+/// ================== BlWidget ===============================
 /// ===========================================================
 
 
@@ -108,11 +108,11 @@ void PEmpresaBase::setValorCampo ( QString )
 \param parent
 \param f
 **/
-BLWidget::BLWidget ( QWidget *parent, Qt::WFlags f )
+BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
         : QWidget ( parent, f ), PEmpresaBase()
 {
-    _depura ( "BLWidget::BLWidget", 0 );
-    _depura ( "END BLWidget::BLWidget", 0 );
+    _depura ( "BlWidget::BlWidget", 0 );
+    _depura ( "END BlWidget::BlWidget", 0 );
 }
 
 
@@ -122,20 +122,20 @@ BLWidget::BLWidget ( QWidget *parent, Qt::WFlags f )
 \param parent
 \param f
 **/
-BLWidget::BLWidget ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f )
+BlWidget::BlWidget ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f )
         : QWidget ( parent, f ), PEmpresaBase ( emp )
 {
-    _depura ( "BLWidget::BLWidget", 0 );
-    _depura ( "END BLWidget::BLWidget", 0 );
+    _depura ( "BlWidget::BlWidget", 0 );
+    _depura ( "END BlWidget::BlWidget", 0 );
 }
 
 
 ///
 /**
 **/
-BLWidget::~BLWidget()
+BlWidget::~BlWidget()
 {
-    _depura ( "BLWidget::~BLWidget", 0 );
-    _depura ( "END BLWidget::~BLWidget", 0 );
+    _depura ( "BlWidget::~BlWidget", 0 );
+    _depura ( "END BlWidget::~BlWidget", 0 );
 }
 

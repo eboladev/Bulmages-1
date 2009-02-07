@@ -24,19 +24,22 @@
 
 #include <QLabel>
 #include <QTableWidget>
+
 #include "ticket.h"
 #include "empresatpv.h"
 #include "ui_mticketbase.h"
 #include "subform2bt.h"
 
 
-class MTicket : public BLWidget, public Ui_MTicketBase
+class MTicket : public BlWidget, public Ui_MTicketBase
 {
     Q_OBJECT
+
 public:
     MTicket ( EmpresaTPV *emp, QWidget *parent );
     virtual ~MTicket();
     virtual void pintar();
+
 public slots:
     virtual void on_mui_subir_clicked();
     virtual void on_mui_bajar_clicked();

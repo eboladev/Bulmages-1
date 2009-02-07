@@ -39,7 +39,7 @@
     Mete la ventana en el workSpace.
 */
 Archivo::Archivo ( EmpresaBase *comp, QWidget *parent )
-        : BLWidget ( comp, parent )
+        : BlWidget ( comp, parent )
 {
     _depura ( "Archivo::Archivo", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

@@ -23,15 +23,17 @@
 #define FICHACFG_H
 
 #include "blwidget.h"
-
 #include "ui_fichacfgbase.h"
 #include "ficha.h"
 
-class FichaCfg : public BLWidget, public Ui_FichaCfgBase
+
+class FichaCfg : public BlWidget, public Ui_FichaCfgBase
 {
     Q_OBJECT
+
 private:
     Ficha *m_ficha;
+
 public:
     FichaCfg ( EmpresaBase *, Ficha *parent = 0, Qt::WFlags f = 0 );
     ~FichaCfg();

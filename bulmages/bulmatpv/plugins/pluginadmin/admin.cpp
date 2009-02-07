@@ -1,7 +1,7 @@
 #include "admin.h"
 #include <QWidget>
 
-Admin::Admin ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+Admin::Admin ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 }

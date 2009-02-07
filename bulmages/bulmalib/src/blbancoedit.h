@@ -23,12 +23,12 @@
 #define BLBANCOEDIT_H
 
 #include <QLineEdit>
-#include "blwidget.h"
 
+#include "blwidget.h"
 #include "ui_blbancoeditbase.h"
 
 
-class BLBancoEdit : public BLWidget, public Ui_BLBancoEditBase
+class BLBancoEdit : public BlWidget, public Ui_BLBancoEditBase
 {
     Q_OBJECT
 

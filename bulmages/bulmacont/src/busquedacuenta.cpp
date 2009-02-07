@@ -30,7 +30,7 @@
 \param parent
 **/
 BusquedaCuenta::BusquedaCuenta ( QWidget *parent )
-        : BLWidget ( parent )
+        : BlWidget ( parent )
 {
     _depura ( "BusquedaCuenta::BusquedaCuenta", 0 );
     setupUi ( this );
@@ -222,7 +222,7 @@ void BusquedaCuenta::setFocus()
 void BusquedaCuenta::setEmpresaBase ( Empresa *emp )
 {
     _depura ( "BusquedaCuenta::setEmpresaBase", 0 );
-    BLWidget::setEmpresaBase ( emp );
+    BlWidget::setEmpresaBase ( emp );
     m_numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
     _depura ( "END BusquedaCuenta::setEmpresaBase", 0 );
 }

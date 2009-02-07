@@ -24,6 +24,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
+
 #include "blwidget.h"
 #include "ui_busquedabase.h"
 
@@ -31,17 +32,17 @@
 /// Permite buscar y seleccionar un profesor.
 /** Implementa un Widget que permite buscar y seleccionar un
     profesor de BulmaFact de forma generica. */
-class Busqueda : public BLWidget, public Ui_BusquedaBase
+class Busqueda : public BlWidget, public Ui_BusquedaBase
 {
     Q_OBJECT
 
 public:
-	/// QHash de los valores a comprobar
-	QMap <QString, QString> m_valores;
+    /// QHash de los valores a comprobar
+    QMap <QString, QString> m_valores;
 
 private:
-	/// Almacena la tabla sobre la que vamos a buscar.
-	QString m_tabla;
+    /// Almacena la tabla sobre la que vamos a buscar.
+    QString m_tabla;
 
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
@@ -56,12 +57,12 @@ public:
     virtual QString id();
     virtual QString valorCampo();
     virtual QString valorCampo(QString campo);
-	virtual QString tableName();
+    virtual QString tableName();
     virtual void setId ( QString val );
     virtual void setValorCampo ( QString val );
     virtual void setValorCampo ( QString campo, QString val );
     virtual void setLabel(QString label);
-	virtual void setTableName(QString tableName);
+    virtual void setTableName(QString tableName);
 
 public slots:
     virtual void on_mui_buscar_clicked();

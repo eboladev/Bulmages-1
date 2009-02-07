@@ -31,9 +31,11 @@
 #include "dbrecord.h"
 #include "fixed.h"
 
-class Ticket :  public BLWidget, public DBRecord
+
+class Ticket :  public BlWidget, public DBRecord
 {
     Q_OBJECT
+
 private:
     QList<DBRecord *> *m_listaLineas;
     DBRecord *m_lineaActual;
@@ -45,7 +47,6 @@ public:
     Ticket ( EmpresaBase *emp = NULL, QWidget *parent = 0 );
     virtual ~Ticket();
     DBRecord *agregarLinea();
-
     QList<DBRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
     /// El parametro nuevalinea indica que se inserte en nueva linea.

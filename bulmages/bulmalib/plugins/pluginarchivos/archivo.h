@@ -30,14 +30,13 @@
 #include <QMap>
 
 #include <funcaux.h>
+
 #include "ui_archivobase.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
 
 
 class EmpresaBase;
-
-
 
 
 /** Ventana de ficha de cobro.
@@ -47,19 +46,21 @@ class EmpresaBase;
     Deriva de Cobro para el manejo de la Base de datos. */
 
 
-class Archivo : public BLWidget, public Ui_ArchivoBase
+class Archivo : public BlWidget, public Ui_ArchivoBase
 {
     Q_OBJECT
+
 private:
     QList<QString> m_claves;
+
 public:
     Archivo ( EmpresaBase *, QWidget * );
     ~Archivo();
+
 public slots:
     void on_mui_aceptar_clicked();
     void on_mui_buscarArchivo_clicked();
 };
-
 
 #endif
 

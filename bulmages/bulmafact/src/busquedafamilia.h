@@ -24,6 +24,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
+
 #include "blwidget.h"
 #include "ui_busquedafamiliabase.h"
 
@@ -34,7 +35,7 @@ class Company;
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
 /** Este Widget permite buscar y seleccionar una familia de art&iacute;culos.
     Para usar en forma de selector de articulos. */
-class BusquedaFamilia : public BLWidget, public Ui_BusquedaFamiliaBase
+class BusquedaFamilia : public BlWidget, public Ui_BusquedaFamiliaBase
 {
     Q_OBJECT
 

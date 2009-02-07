@@ -1,14 +1,17 @@
 #ifndef ABREVS_H
 #define ABREVS_H
 
-#include "blwidget.h"
 #include <QProcess>
 #include <QDockWidget>
+
+#include "blwidget.h"
 #include "ui_abrevsbase.h"
+
 
 class EmpresaTPV;
 
-class Abrevs : public BLWidget, public Ui_AbrevsBase
+
+class Abrevs : public BlWidget, public Ui_AbrevsBase
 {
     Q_OBJECT
 

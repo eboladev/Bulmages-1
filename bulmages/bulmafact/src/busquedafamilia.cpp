@@ -30,7 +30,7 @@
 \param parent
 **/
 BusquedaFamilia::BusquedaFamilia ( QWidget *parent )
-        : BLWidget ( parent )
+        : BlWidget ( parent )
 {
     _depura ( "BusquedaFamilia::BusquedaFamilia", 0 );
     setupUi ( this );

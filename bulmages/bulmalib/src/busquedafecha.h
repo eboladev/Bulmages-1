@@ -23,12 +23,12 @@
 #define BUSQUEDAFECHA_H
 
 #include <QLineEdit>
-#include "blwidget.h"
 
+#include "blwidget.h"
 #include "ui_busquedafechabase.h"
 
 
-class BusquedaFecha : public BLWidget, public Ui_BusquedaFechaBase
+class BusquedaFecha : public BlWidget, public Ui_BusquedaFechaBase
 {
     Q_OBJECT
 

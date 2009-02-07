@@ -53,7 +53,7 @@ public slots:
 };
 
 
-class BusquedaCuenta : public BLWidget, public Ui_BusquedaCuentaBase
+class BusquedaCuenta : public BlWidget, public Ui_BusquedaCuentaBase
 {
     Q_OBJECT
 

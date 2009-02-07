@@ -10,7 +10,7 @@
 #include "funcaux.h"
 #include "configuracion.h"
 
-ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent )
+ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
     setObjectName ( "ArtGraficos" );

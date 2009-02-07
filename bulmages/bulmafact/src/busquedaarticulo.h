@@ -62,7 +62,7 @@ public slots:
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BusquedaArticulo : public BLWidget, public Ui_BusquedaArticuloBase
+class BusquedaArticulo : public BlWidget, public Ui_BusquedaArticuloBase
 {
     Q_OBJECT
 

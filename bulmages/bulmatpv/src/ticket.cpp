@@ -34,7 +34,7 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ), DBRecord ( emp )
+Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ), DBRecord ( emp )
 {
     _depura ( "Ticket::Ticket", 0 );
     /// Inicializamos los parametros del ticket para la base de datos.

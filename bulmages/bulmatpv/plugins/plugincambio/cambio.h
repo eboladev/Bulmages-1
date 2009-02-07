@@ -1,14 +1,17 @@
 #ifndef COBRAR_H
 #define COBRAR_H
 
-#include "blwidget.h"
 #include <QTableWidget>
+
+#include "blwidget.h"
 #include "ui_cambiobase.h"
 #include "empresatpv.h"
 
-class Cambio : public BLWidget, public Ui_CambioBase
+
+class Cambio : public BlWidget, public Ui_CambioBase
 {
     Q_OBJECT
+
 public:
     int m_value;
 

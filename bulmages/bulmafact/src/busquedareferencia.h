@@ -32,7 +32,7 @@
 
 /// Permite introducir una referencia.
 /** Este Widget permite introducir una referencia. */
-class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase
+class BusquedaReferencia : public BlWidget, public Ui_BusquedaReferenciaBase
 {
     Q_OBJECT
 

@@ -1,12 +1,14 @@
 #ifndef COBRAR_H
 #define COBRAR_H
 
-#include "blwidget.h"
 #include <QTableWidget>
+
+#include "blwidget.h"
 #include "ui_cobrarbase.h"
 #include "empresatpv.h"
 
-class Cobrar : public BLWidget, public Ui_CobrarBase
+
+class Cobrar : public BlWidget, public Ui_CobrarBase
 {
     Q_OBJECT
 

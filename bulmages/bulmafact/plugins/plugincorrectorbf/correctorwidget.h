@@ -42,7 +42,7 @@
     El corrector solo tiene una instancia en toda la ejecucion del programa, es la clase
     empresa la que se encarga de construirlo y una vez construido permanece siempre en
     ejecucion. */
-class correctorwidget : public BLWidget, public Ui_correctorbase
+class correctorwidget : public BlWidget, public Ui_correctorbase
 {
     Q_OBJECT
 

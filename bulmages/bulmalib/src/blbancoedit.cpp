@@ -29,7 +29,7 @@ int pesosdc[] = {6,3,7,9,10,5,8,4,2,1};
 /**
 \param parent
 **/
-BLBancoEdit::BLBancoEdit ( QWidget *parent ) : BLWidget ( parent )
+BLBancoEdit::BLBancoEdit ( QWidget *parent ) : BlWidget ( parent )
 {
     _depura ( "BLBancoEdit::BLBancoEdit", 0 );
     setupUi ( this );

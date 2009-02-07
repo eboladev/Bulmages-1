@@ -32,7 +32,7 @@
 \param fl
 **/
 correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
-        : BLWidget ( parent, fl )
+        : BlWidget ( parent, fl )
 {
     _depura ( "correctorwidget::correctorwidget", 0 );
     setupUi ( this );

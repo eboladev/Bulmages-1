@@ -11,7 +11,7 @@
 
 
 
-Abrevs::Abrevs ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent )
+Abrevs::Abrevs ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 

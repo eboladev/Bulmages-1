@@ -48,14 +48,14 @@ public:
 };
 
 
-class BLWidget : public QWidget, public PEmpresaBase
+class BlWidget : public QWidget, public PEmpresaBase
 {
     Q_OBJECT
 
 public:
-    BLWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
-    BLWidget ( EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0 );
-    virtual ~BLWidget();
+    BlWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
+    BlWidget ( EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0 );
+    virtual ~BlWidget();
 };
 
 #endif

@@ -11,7 +11,7 @@
 typedef QMap<QString, Fixed> base;
 
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     _depura ( "MTicket::MTicket", 0 );
     setupUi ( this );

@@ -7,7 +7,7 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-TicketsDevueltos::TicketsDevueltos ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+TicketsDevueltos::TicketsDevueltos ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 }

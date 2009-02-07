@@ -31,7 +31,8 @@
 #include "blwidget.h"
 #include "dbrecord.h"
 
-class Ficha : public BLWidget, public DBRecord, public dialogChanges
+
+class Ficha : public BlWidget, public DBRecord, public dialogChanges
 {
     Q_OBJECT
 
@@ -45,7 +46,7 @@ private:
     /// doble click sobre la lista)
     edmode m_modo;
     QString m_title;
-	QMap<QString,QString> m_variables;
+    QMap<QString,QString> m_variables;
 
 protected:
     void setModoConsulta();
@@ -56,7 +57,7 @@ protected:
 public:
     Ficha ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     Ficha ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
-	void substrVars(QString &buff, int tipoEscape = 0);
+    void substrVars(QString &buff, int tipoEscape = 0);
     virtual ~Ficha();
     virtual int guardar();
     virtual int guardarPost();
@@ -79,7 +80,6 @@ public:
     virtual int trataTags ( QString &buff, int tipoEscape = 0 );
     virtual QString trataQuery ( const QString &query, const QString &datos, int tipoEscape = 0 );
     QString trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape = 0 );
-
     virtual QString trataIfQuery ( const QString &query, const QString &datos );
     virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );
     virtual QString trataExists ( const QString &query, const QString &datos );
@@ -87,7 +87,8 @@ public:
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
     virtual void activaDocumentos();
     virtual void desactivaDocumentos();
- public slots:
+
+public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_eliminar_clicked();

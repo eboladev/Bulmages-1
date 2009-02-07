@@ -41,7 +41,7 @@
 \param f
 \param modo
 **/
-Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( parent, f ), DBRecord ( NULL ), dialogChanges ( this )
+Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), DBRecord ( NULL ), dialogChanges ( this )
 {
     _depura ( "Ficha::Ficha", 0 );
 
@@ -67,7 +67,7 @@ Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( parent,
 \param f
 \param modo
 **/
-Ficha::Ficha ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( emp, parent, f ), DBRecord ( emp ), dialogChanges ( this )
+Ficha::Ficha ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), DBRecord ( emp ), dialogChanges ( this )
 {
     _depura ( "Ficha::Ficha", 0 );
 
@@ -534,9 +534,9 @@ void Ficha::pintar()
         if ( l3 ) {
             l3->setText ( campo->valorcampo() );
         } // end if
-        /// Buscamos BLWidgets que coincidan con el campo supuestamente
+        /// Buscamos BlWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BLWidget *l1 = findChild<BLWidget *> ( "mui_" + campo->nomcampo() );
+        BlWidget *l1 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
         if ( l1 ) {
             l1->setValorCampo ( campo->valorcampo() );
         } // end if
@@ -595,8 +595,8 @@ void Ficha::recogeValores()
         if ( l3 )
             campo->set ( l3->toPlainText() );
 
-        /// Buscamos BLWidgets que coincidan con el campo. Supuestamente sirve para los campos personales.
-        BLWidget *l1 = findChild<BLWidget *> ( "mui_" + campo->nomcampo() );
+        /// Buscamos BlWidgets que coincidan con el campo. Supuestamente sirve para los campos personales.
+        BlWidget *l1 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
         if ( l1 )
             campo->set ( l1->valorCampo() );
 

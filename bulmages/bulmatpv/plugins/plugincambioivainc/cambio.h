@@ -6,7 +6,7 @@
 #include "ui_cambiobase.h"
 #include "empresatpv.h"
 
-class Cambio : public BLWidget, public Ui_CambioBase
+class Cambio : public BlWidget, public Ui_CambioBase
 {
     Q_OBJECT
 public:

@@ -1,7 +1,7 @@
 #include "cobrar.h"
 #include <QWidget>
 
-Cobrar::Cobrar ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+Cobrar::Cobrar ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 }

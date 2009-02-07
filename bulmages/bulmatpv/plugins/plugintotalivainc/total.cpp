@@ -1,7 +1,7 @@
 #include "total.h"
 #include <QWidget>
 
-Total::Total ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+Total::Total ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 }

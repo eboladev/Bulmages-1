@@ -6,7 +6,7 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 

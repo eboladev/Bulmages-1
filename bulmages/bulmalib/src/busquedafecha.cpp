@@ -28,7 +28,7 @@
 /**
 \param parent
 **/
-BusquedaFecha::BusquedaFecha ( QWidget *parent ) : BLWidget ( parent )
+BusquedaFecha::BusquedaFecha ( QWidget *parent ) : BlWidget ( parent )
 {
     _depura ( "BusquedaFecha::BusquedaFecha", 0 );
     setupUi ( this );

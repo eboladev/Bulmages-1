@@ -7,7 +7,7 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( ( QDialog* ) this );
 /*

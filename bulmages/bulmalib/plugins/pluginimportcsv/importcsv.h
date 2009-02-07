@@ -38,8 +38,6 @@
 class EmpresaBase;
 
 
-
-
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
     en dicha ventana.
@@ -47,16 +45,19 @@ class EmpresaBase;
     Deriva de Cobro para el manejo de la Base de datos. */
 
 
-class ImportCSV : public BLWidget, public Ui_ImportCSVBase
+class ImportCSV : public BlWidget, public Ui_ImportCSVBase
 {
     Q_OBJECT
+
 private:
     QList<QString> m_claves;
+
 public:
     ImportCSV ( EmpresaBase *, QWidget * );
     ~ImportCSV();
     void rellenarTablas();
     void procesarLinea ( const QString &linea );
+
 public slots:
     void on_mui_aceptar_clicked();
     void on_mui_combotablas_activated ( const QString & text );

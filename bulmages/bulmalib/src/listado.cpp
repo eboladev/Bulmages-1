@@ -76,7 +76,7 @@ bool Listado::modoConsulta()
 \param f
 \param modo
 **/
-Listado::Listado ( QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( parent, f )
+Listado::Listado ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f )
 {
     _depura ( "Listado::Listado", 0 );
     m_modo = modo;
@@ -91,7 +91,7 @@ Listado::Listado ( QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( par
 \param f
 \param modo
 **/
-Listado::Listado ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( emp, parent, f )
+Listado::Listado ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f )
 {
     _depura ( "Listado::Listado", 0 );
     m_modo = modo;

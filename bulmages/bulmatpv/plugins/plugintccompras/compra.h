@@ -1,15 +1,18 @@
 #ifndef DEVOLUCION_H
 #define DEVOLUCION_H
 
-#include "blwidget.h"
 #include <QTableWidget>
+
+#include "blwidget.h"
 #include "ui_comprabase.h"
 #include "empresatpv.h"
 #include "ticket.h"
 
+
 class MyDevButton1 : public QPushButton
 {
     Q_OBJECT
+
 public:
     EmpresaTPV *m_emp;
     MyDevButton1 ( const QString & text, QWidget * parent = 0, EmpresaTPV *emp = NULL );
@@ -19,12 +22,15 @@ public slots:
     virtual void on_click ( );
 };
 
-class Compra : public BLWidget, public Ui_CompraBase
+
+class Compra : public BlWidget, public Ui_CompraBase
 {
     Q_OBJECT
+
 public:
     int m_value;
     Ticket *m_ticket;
+
 public:
     Compra ( EmpresaTPV *emp, QWidget *parent );
     virtual ~Compra();

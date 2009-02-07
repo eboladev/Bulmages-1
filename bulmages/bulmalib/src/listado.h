@@ -32,9 +32,10 @@
 #include "blwidget.h"
 
 
-class Listado : public BLWidget
+class Listado : public BlWidget
 {
     Q_OBJECT
+
 public:
     enum edmode {
         EditMode = 0, SelectMode = 1

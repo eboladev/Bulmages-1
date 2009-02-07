@@ -43,9 +43,10 @@
 registros de la base de datos proporcionando un potente manejador
 tabular de datos que puede generar desde listados hasta subformularios
 */
-class SubForm3: public BLWidget, public Ui_SubForm3Base
+class SubForm3: public BlWidget, public Ui_SubForm3Base
 {
     Q_OBJECT
+
 public:
     enum edmode {
         EditMode = 0, SelectMode = 1

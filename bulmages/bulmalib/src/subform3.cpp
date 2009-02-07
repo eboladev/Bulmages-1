@@ -37,7 +37,7 @@
 /**
 \param parent
 **/
-SubForm3::SubForm3 ( QWidget *parent ) : BLWidget ( parent )
+SubForm3::SubForm3 ( QWidget *parent ) : BlWidget ( parent )
 {
     _depura ( "SubForm3::SubForm3", 0 );
     setupUi ( this );
