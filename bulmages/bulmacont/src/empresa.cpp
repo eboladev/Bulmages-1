@@ -980,6 +980,7 @@ void Empresa::guardaConf()
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmacont->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmacont->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmacont->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
+		stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString(m_bulmacont->saveState().toBase64()) + "</TOOLBARSDOCKWIDGETS>\n";
         stream << "\t</PRINCIPAL>\n";
 
 
@@ -1055,6 +1056,10 @@ void Empresa::cargaConf()
         s_indexadorCambiaEstado ( FALSE );
         m_bulmacont->actionIndexador->setChecked ( FALSE );
     } // end if
+
+    /// Cogemos el ancho del indexador
+    m_bulmacont->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
+
 
     /// Tratamos cada ventana
     QWidget *activewindow = NULL;

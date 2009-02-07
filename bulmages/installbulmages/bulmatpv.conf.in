@@ -35,3 +35,8 @@ CONF_IDFORMA_PAGO_CONTADO	1
 CONF_SPLASH_BULMATPV       @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmatpv.jpg
 
 CONF_ARTICULOS_VARIOS          ESPECIFICAR
+
+
+CONF_BACKGROUND_COLOR      #0D1164
+CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmatpv-background.png
+

@@ -226,8 +226,8 @@
 #define CONF_SERIE_FACTURA_DEFECTO   526
 #define CONF_IDFORMA_PAGO_DEFECTO    527
 
-#define CONF_BF_BACKGROUND_COLOR     528
-#define CONF_BF_BACKGROUND_IMAGE     529
+#define CONF_BACKGROUND_COLOR     528
+#define CONF_BACKGROUND_IMAGE     529
 
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550

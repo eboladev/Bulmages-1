@@ -115,7 +115,6 @@ void BulmaTPV::createMainWindows ( Splash *splashScr )
 {
     _depura ( "BulmaTPV::createMainWindows", 0 );
     m_empresaTPV->createMainWindows ( splashScr );
-    cargaConf();
     _depura ( "END BulmaTPV::createMainWindows", 0 );
 }
 
@@ -127,7 +126,6 @@ void BulmaTPV::createMainWindows ( Splash *splashScr )
 BulmaTPV::~BulmaTPV()
 {
     _depura ( "BulmaTPV::~BulmaTPV", 0 );
-    guardaConf();
     delete m_empresaTPV;
     delete pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
@@ -218,30 +216,3 @@ EmpresaTPV *BulmaTPV::empresaTPV()
 {
     return m_empresaTPV;
 }
-
-void BulmaTPV::cargaConf()
-{
-    QFile inputFile ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_conf.dat" );
-    if ( inputFile.open ( QIODevice::ReadOnly ) ) {
-        QDataStream inputStream ( &inputFile );
-        QByteArray state;
-        inputStream >> state;
-        restoreState ( state );
-    } else {
-        //ERROR
-    }
-    inputFile.close();
-}
-
-void BulmaTPV::guardaConf()
-{
-    QFile outputFile ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_conf.dat" );
-    if ( outputFile.open ( QIODevice::WriteOnly ) ) {
-        QDataStream outputStream ( &outputFile );
-        outputStream << saveState();
-    } else {
-        //ERROR
-    }
-    outputFile.close();
-}
-

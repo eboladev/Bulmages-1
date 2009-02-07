@@ -476,142 +476,6 @@ void EmpresaTPV::x()
 
 
 
-
-/// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
-/**
-**/
-void EmpresaTPV::guardaConf()
-{
-    _depura ( "EmpresaTPV::guardaConf", 0 );
-    /*
-        QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
-        /// Guardado del orden y de configuraciones varias.
-        if (file.open(QIODevice::WriteOnly)) {
-            QTextStream stream(&file);
-            stream << "<CONFIG>\n";
-            stream << "\t<PRINCIPAL>\n";
-            stream << "\t\t\t<X>" + QString::number(m_bulmafact->x()) + "</X>\n";
-            stream << "\t\t\t<Y>" + QString::number(m_bulmafact->y()) + "</Y>\n";
-            stream << "\t\t\t<WIDTH>" + QString::number(m_bulmafact->width()) + "</WIDTH>\n";
-            stream << "\t\t\t<HEIGHT>" + QString::number(m_bulmafact->height()) + "</HEIGHT>\n";
-            stream << "\t\t\t<INDEXADOR>" + (m_bulmafact->actionIndexador->isChecked() ? QString("TRUE") : QString("FALSE")) + "</INDEXADOR>\n";
-            stream << "\t</PRINCIPAL>\n";
-
-
-            for (int i = 0; i < m_listventanas->numVentanas(); i++) {
-            QObject *obj = m_listventanas->ventana(i);
-                    QWidget *wid = (QWidget *) obj;
-            stream << "\t<VENTANA>\n";
-            stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
-            stream << "\t\t<VX>" + QString::number(wid->parentWidget()->x()) + "</VX>\n";
-            stream << "\t\t<VY>" + QString::number(wid->parentWidget()->y()) + "</VY>\n";
-            stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
-            stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
-            stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
-            stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
-            stream << "\t\t<VACTIVEWINDOW>" + (m_bulmafact->workspace()->activeWindow() == wid ? QString("TRUE") : QString("FALSE")) + "</VACTIVEWINDOW>";
-            stream << "\t</VENTANA>\n";
-        } // end for
-
-            stream << "</CONFIG>\n";
-            file.close();
-        } // end if
-    */
-    _depura ( "END EmpresaTPV::guardaConf", 0 );
-}
-
-
-/// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
-/**
-\return
-**/
-void EmpresaTPV::cargaConf()
-{
-    _depura ( "EmpresaTPV::cargaConf", 0 );
-    /*
-        QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
-        QDomDocument doc("mydocument");
-        if (!file.open(QIODevice::ReadOnly))
-            return;
-        if (!doc.setContent(&file)) {
-            file.close();
-            return;
-        }
-        file.close();
-
-        // print out the element names of all elements that are direct children
-        // of the outermost element.
-        QDomElement docElem = doc.documentElement();
-        QDomElement principal = docElem.firstChildElement("PRINCIPAL");
-        /// Cogemos la coordenada X
-        QString nx = principal.firstChildElement("X").toElement().text();
-
-        /// Cogemos la coordenada Y
-        QString ny = principal.firstChildElement("Y").toElement().text();
-
-        /// Cogemos el ancho
-        QString nwidth = principal.firstChildElement("WIDTH").toElement().text();
-
-        /// Cogemos el alto
-        QString nheight = principal.firstChildElement("HEIGHT").toElement().text();
-
-        /// Establecemos la geometria de la ventana principal.
-        m_bulmafact->setGeometry(nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt());
-
-        /// Cogemos el indexador
-        QString indexador = principal.firstChildElement("INDEXADOR").toElement().text();
-        if (indexador == "TRUE") {
-        s_indexadorCambiaEstado(TRUE);
-        m_bulmafact->actionIndexador->setChecked(TRUE);
-        } else {
-        s_indexadorCambiaEstado(FALSE);
-        m_bulmafact->actionIndexador->setChecked(FALSE);
-        } // end if
-
-        /// Tratamos cada ventana
-       QWidget *activewindow = NULL;
-       QDomNodeList nodos = docElem.elementsByTagName("VENTANA");
-            for (int i = 0; i < nodos.count(); i++) {
-                QDomNode ventana = nodos.item(i);
-                QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
-                if( !e1.isNull() ) { /// the node was really an element.
-                 QString vname = e1.firstChildElement("VNAME").toElement().text();
-                for (int j = 0; j < m_listventanas->numVentanas(); j++) {
-                    QObject *obj = m_listventanas->ventana(j);
-                    QWidget *wid = (QWidget *) obj;
-                    if (obj->objectName() == vname) {
-                        QString vx = e1.firstChildElement("VX").toElement().text();
-                        QString vy = e1.firstChildElement("VY").toElement().text();
-                        QString vwidth = e1.firstChildElement("VWIDTH").toElement().text();
-                        QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
-                        QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
-                        QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
-                        QString vactivewindow = e1.firstChildElement("VACTIVEWINDOW").toElement().text();
-                        /// Establecemos la geometria de la ventana principal.
-                        wid->resize(vwidth.toInt(), vheight.toInt());
-                        wid->parentWidget()->move(vx.toInt(), vy.toInt());
-                        if ( vvisible == "TRUE") {
-                            wid->showNormal();
-                        } // end if
-                        if ( vmaximized == "TRUE") {
-                            wid->showMaximized();
-                        }
-                        if ( vactivewindow == "TRUE") {
-                            activewindow = wid;
-                        }
-                    } // end if
-                } // end for
-                } // end if
-            } // end for
-        /// Si hay una ventana activa se pone como activa.
-        if (activewindow)
-            m_bulmafact->workspace()->setActiveWindow(activewindow);
-    */
-    _depura ( "END EmpresaTPV::cargaConf", 0 );
-}
-
-
-
 Ticket *EmpresaTPV::newTicket()
 {
     _depura ( "EmpresaTPV::newTicket", 0 );
@@ -683,5 +547,77 @@ void EmpresaTPV::setTicketActual ( Ticket *tick )
 {
     m_ticketActual = tick;
 }
+
+
+/// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+/**
+**/
+void EmpresaTPV::guardaConf()
+{
+    _depura ( "Company::guardaConf", 0 );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + nameDB() + ".cfn" );
+    /// Guardado del orden y de configuraciones varias.
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+        stream << "<CONFIG>\n";
+        stream << "\t<PRINCIPAL>\n";
+        stream << "\t\t\t<X>" + QString::number ( m_bulmaTPV->x() ) + "</X>\n";
+        stream << "\t\t\t<Y>" + QString::number ( m_bulmaTPV->y() ) + "</Y>\n";
+        stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmaTPV->width() ) + "</WIDTH>\n";
+        stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmaTPV->height() ) + "</HEIGHT>\n";
+	stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString(m_bulmaTPV->saveState().toBase64()) + "</TOOLBARSDOCKWIDGETS>\n";
+        stream << "\t</PRINCIPAL>\n";
+        stream << "</CONFIG>\n";
+        file.close();
+    } // end if
+    _depura ( "END Company::guardaConf", 0 );
+}
+
+
+
+
+/// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+/**
+\return
+**/
+void EmpresaTPV::cargaConf()
+{
+    _depura ( "Company::cargaConf", 0 );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + nameDB() + ".cfn" );
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) )
+        return;
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+        return;
+    }
+    file.close();
+
+    // print out the element names of all elements that are direct children
+    // of the outermost element.
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement ( "PRINCIPAL" );
+    /// Cogemos la coordenada X
+    QString nx = principal.firstChildElement ( "X" ).toElement().text();
+
+    /// Cogemos la coordenada Y
+    QString ny = principal.firstChildElement ( "Y" ).toElement().text();
+
+    /// Cogemos el ancho
+    QString nwidth = principal.firstChildElement ( "WIDTH" ).toElement().text();
+
+    /// Cogemos el alto
+    QString nheight = principal.firstChildElement ( "HEIGHT" ).toElement().text();
+
+    /// Establecemos la geometria de la ventana principal.
+    m_bulmaTPV->setGeometry ( nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt() );
+
+    /// Cogemos el ancho del indexador
+    m_bulmaTPV->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
+
+    _depura ( "END Company::cargaConf", 0 );
+}
+
+
 
 
