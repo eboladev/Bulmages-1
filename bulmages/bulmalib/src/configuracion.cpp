@@ -443,10 +443,12 @@ bool configuracion::leeconfig ( QString fich )
                 cad = cad.left ( cad.length() - 2 ) + in.readLine().trimmed();
             } // end while
 
-            for ( int i = 0; i < 1000; i++ ) {
-                if ( cad.startsWith ( nombre ( i ) ) && nombre ( i ) != "" ) {
-                    _depura ( "[" + nombre ( i ) + "]" + "--->" + cad, 0 );
+			QString simplificada = cad.simplified();
+			QStringList list = simplificada.split(QRegExp("\\s+"));
 
+            for ( int i = 0; i < 1000; i++ ) {
+                if (  list[0] == nombre ( i )  && nombre ( i ) != "" ) {
+                    _depura ( "[" + nombre ( i ) + "]" + "--->" + cad, 0 );
                     cad = cad.right ( cad.length() - nombre ( i ).length() );
                     cad = cad.trimmed();
                     m_valores[i] = cad;
