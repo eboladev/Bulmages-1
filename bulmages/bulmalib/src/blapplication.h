@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,54 +19,33 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef BLAPPLICATION_H
+#define BLAPPLICATION_H
+
+#include <QApplication>
 #include <QWidget>
+#include <QMainWindow>
 
-#include "qapplication2.h"
-#include "ficha.h"
 
-///
-/**
-\param argc
-\param argv
-**/
-QApplication2::QApplication2 ( int &argc, char **argv ) : QApplication ( argc, argv )
+class Ficha;
+
+
+class BlApplication : public QApplication
 {
-    _depura ( "QApplication2::QApplication2", 0 );
-    _depura ( "END QApplication2::QApplication2", 0 );
-}
+    Q_OBJECT
 
+private:
+    QMainWindow *m_mainWindow;
 
-///
-/**
-**/
-QApplication2::~QApplication2()
-{
-    _depura ( "QApplication2::~QApplication2", 0 );
-    _depura ( "END QApplication2::~QApplication2", 0 );
-}
+public:
+    BlApplication ( int &argc, char **argv );
+    ~BlApplication();
+    bool notify ( QObject *o, QEvent *e );
+    void fichaGuardada1(Ficha *f);
 
+signals:
+    void fichaGuardada(Ficha *);
+};
 
-///
-/**
-\param o
-\param e
-\return
-**/
-bool QApplication2::notify ( QObject *o, QEvent *e )
-{
-//    _depura ( "QApplication2::notify", 0 );
-    try {
-//        _depura ( "END QApplication2::notify", 0 );
-        return QApplication::notify ( o, e );
-    } catch ( ... ) {
-//        _depura ( "END QApplication2::notify", 0, "Error inesperado en la aplicacion" );
-        _depura ( "END QApplication2::notify", 2, "Error inesperado en la aplicacion" );
-        return FALSE;
-    } // end try
-}
-
-void QApplication2::fichaGuardada1(Ficha *f) {
-	emit fichaGuardada(f);
-}
-
+#endif
 

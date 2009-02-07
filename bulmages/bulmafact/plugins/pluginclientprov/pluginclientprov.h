@@ -32,7 +32,7 @@ extern "C" MY_EXPORT int Ficha_guardar_Post ( Ficha * );
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
-// extern QApplication2 *theApp;
+// extern BlApplication *theApp;
 
 /*
 class myplugin : public QObject {

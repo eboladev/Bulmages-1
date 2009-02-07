@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "pgimportfiles.h"
 #include "funcaux.h"
 
@@ -77,7 +77,7 @@
 #define LEN_NUMEROINV        10
 
 
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 /// ---------------------------------------------

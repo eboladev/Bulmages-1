@@ -41,7 +41,7 @@
 #include "qtextcodec.h"
 #include "logpass.h"
 #include "plugins.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "config.h"
 
 #ifdef WIN32
@@ -55,7 +55,7 @@
 
 /// Estas son las variables globales de la aplicaci&oacute;n.
 /// El puntero de la aplicaci&oacute;n.
-QApplication2 *theApp;
+BlApplication *theApp;
 /// El traductor.
 QTranslator *traductorLib;
 QTranslator *traductor;
@@ -90,7 +90,7 @@ int main ( int argc, char **argv )
         g_plugins = new Plugins();
 
         /// Creamos la aplicaci&oacute;n principal.
-        theApp = new QApplication2 ( argc, argv );
+        theApp = new BlApplication ( argc, argv );
         theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii() ) ) );
 
         /// Definimos la codificaci&oacute;n a Unicode.

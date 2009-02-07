@@ -29,17 +29,16 @@
 #include <QIcon>
 #include <QObject>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "subform3.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
 
+
 extern "C" MY_EXPORT int entryPoint ( QApplication * );
 extern "C" MY_EXPORT int SubForm3_SubForm3_Post ( SubForm3 * );
 
-extern QApplication2 *theApp;
-
-
+extern BlApplication *theApp;
 
 
 class myplugclipboard : public QObject

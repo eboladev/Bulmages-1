@@ -25,7 +25,7 @@
 #include <QtDBus/QtDBus>
 #include <QtDBus/QDBusConnection>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "configuracion.h"
 #include "plugins.h"
 #include "bulmafact.h"
@@ -46,7 +46,7 @@
 #endif
 
 
-QApplication2 *theApp;
+BlApplication *theApp;
 Bulmafact *bges;
 QTranslator *traductor;
 
@@ -69,7 +69,7 @@ int main ( int argc, char **argv )
 	
 
         /// Iniciamos la clase QApplication para el uso de las Qt.
-        theApp = new QApplication2 ( argc, argv );
+        theApp = new BlApplication ( argc, argv );
 
         /// Preparamos el sistema de plugins.
         g_plugins = new Plugins();

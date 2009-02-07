@@ -31,7 +31,8 @@
 #include "bdockwidget.h"
 #include "configuracion.h"
 
-extern QApplication2 *theApp;
+
+extern BlApplication *theApp;
 
 ///
 /**

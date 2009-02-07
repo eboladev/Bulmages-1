@@ -45,7 +45,7 @@ extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaV
 extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * );
 
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 class myplugin : public QObject, PEmpresaBase

@@ -24,7 +24,7 @@
 #include <QLocale>
 #include <QDir>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "configuracion.h"
 #include "plugins.h"
 #include "bulmatpv.h"
@@ -42,7 +42,7 @@
 #endif
 
 
-QApplication2* theApp;
+BlApplication* theApp;
 BulmaTPV* bges;
 QTranslator* traductor;
 
@@ -59,7 +59,7 @@ int main ( int argc, char **argv )
         /// Preparamos el sistema de plugins.
         g_plugins = new Plugins();
         /// Iniciamos la clase QApplication para el uso de las Qt.
-        theApp = new QApplication2 ( argc, argv );
+        theApp = new BlApplication ( argc, argv );
 
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );

@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,31 +18,54 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QAPPLICATION2_H
-#define QAPPLICATION2_H
-
-#include <QApplication>
 #include <QWidget>
-#include <QMainWindow>
+
+#include "blapplication.h"
+#include "ficha.h"
 
 
-class Ficha;
-
-class QApplication2 : public QApplication
+///
+/**
+\param argc
+\param argv
+**/
+BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, argv )
 {
-    Q_OBJECT
+    _depura ( "BlApplication::BlApplication", 0 );
+    _depura ( "END BlApplication::BlApplication", 0 );
+}
 
-private:
-    QMainWindow *m_mainWindow;
 
-public:
-    QApplication2 ( int &argc, char **argv );
-    ~QApplication2();
-    bool notify ( QObject *o, QEvent *e );
-    void fichaGuardada1(Ficha *f);
-signals:
-void fichaGuardada(Ficha *);
-};
+///
+/**
+**/
+BlApplication::~BlApplication()
+{
+    _depura ( "BlApplication::~BlApplication", 0 );
+    _depura ( "END BlApplication::~BlApplication", 0 );
+}
 
-#endif
+
+///
+/**
+\param o
+\param e
+\return
+**/
+bool BlApplication::notify ( QObject *o, QEvent *e )
+{
+//    _depura ( "BlApplication::notify", 0 );
+    try {
+//        _depura ( "END BlApplication::notify", 0 );
+        return QApplication::notify ( o, e );
+    } catch ( ... ) {
+//        _depura ( "END BlApplication::notify", 0, "Error inesperado en la aplicacion" );
+        _depura ( "END BlApplication::notify", 2, "Error inesperado en la aplicacion" );
+        return FALSE;
+    } // end try
+}
+
+void BlApplication::fichaGuardada1(Ficha *f) {
+	emit fichaGuardada(f);
+}
 

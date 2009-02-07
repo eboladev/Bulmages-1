@@ -50,7 +50,7 @@ extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
-// extern QApplication2 *theApp;
+// extern BlApplication *theApp;
 
 /*
 class myplugin : public QObject {

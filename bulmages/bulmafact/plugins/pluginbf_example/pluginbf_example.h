@@ -29,14 +29,14 @@
 #include <QIcon>
 #include <QObject>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "bulmafact.h"
 #include "postgresiface2.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 class myplugin : public QObject

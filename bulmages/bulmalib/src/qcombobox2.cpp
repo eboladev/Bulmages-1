@@ -2,7 +2,7 @@
 #include "qcombobox2.h"
 
 /// Existe una instancia del objeto global theApp.
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones

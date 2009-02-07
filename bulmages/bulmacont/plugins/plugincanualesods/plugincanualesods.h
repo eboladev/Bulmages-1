@@ -45,7 +45,7 @@
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07

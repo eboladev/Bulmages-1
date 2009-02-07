@@ -45,13 +45,13 @@
 #include <QMainWindow>
 #include <QStatusBar>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "config.h"
 #include "bli18n.h"
 
 extern QMainWindow *g_main;
 
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 

@@ -23,7 +23,7 @@
 #include <QLocale>
 
 #include "comun/bselector.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "configuracion.h"
 #include "logpass.h"
 #include "postgresiface2.h"
@@ -32,7 +32,7 @@
 
 /// Instancia de la aplicacion. Usada en algunos casos para acceder a determinadas
 /// funcionalidades como la traduccion.
-QApplication2 *theApp;
+BlApplication *theApp;
 /// Instancia de la traduccion que se carga en tiempo de ejecucion y que se usa
 /// de forma global.
 QTranslator *traductor;
@@ -48,7 +48,7 @@ QTranslator *traductor;
 int main ( int argc, char **argv )
 {
     confpr = new configuracion ( "bulmages" );
-    QApplication2 a ( argc, argv );
+    BlApplication a ( argc, argv );
     Q_INIT_RESOURCE ( bulmages );
     theApp = &a;
 

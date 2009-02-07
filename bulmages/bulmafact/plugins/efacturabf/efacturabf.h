@@ -29,16 +29,17 @@
 #include <QIcon>
 #include <QObject>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "bulmafact.h"
 #include "company.h"
 #include "facturasplist.h"
 #include "blwidget.h"
 
+
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 class efacturabf : public QObject, PEmpresaBase

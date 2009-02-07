@@ -31,7 +31,7 @@
 #include <QString>
 #include <QMap>
 
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "postgresiface2.h"
 
 
@@ -275,7 +275,7 @@ public:
 /// Existe una instancia del objeto global confpr.
 extern configuracion *confpr;
 /// Existe una instancia del objeto global theApp.
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 /// Existe una instancia del objeto global traductor.
 //extern QTranslator *traductor;
 

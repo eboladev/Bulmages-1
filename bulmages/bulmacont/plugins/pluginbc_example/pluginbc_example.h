@@ -37,7 +37,7 @@
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 
-extern QApplication2 *theApp;
+extern BlApplication *theApp;
 
 
 class myplugin : public QObject

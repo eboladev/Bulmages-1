@@ -47,7 +47,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          subform3.cpp
          listventanas.cpp
          qworkspace2.cpp
-         qapplication2.cpp
+         blapplication.cpp
          ficha.cpp
          empresabase.cpp
          qtexteditdelegate.cpp
@@ -79,7 +79,7 @@ set(bulmalib_MOCS
          subform3.h 
          listventanas.h 
          qworkspace2.h 
-         qapplication2.h 
+         blapplication.h 
          ficha.h 
          qtexteditdelegate.h 
          qdoublespinbox2.h 
@@ -114,7 +114,7 @@ set (bulmalib_HDRS abreempresaview.h
 			pgimportfiles.h
 			plugins.h
 			postgresiface2.h
-			qapplication2.h
+			blapplication.h
 			qtable2.h
 			qtexteditdelegate.h
 			qworkspace2.h
