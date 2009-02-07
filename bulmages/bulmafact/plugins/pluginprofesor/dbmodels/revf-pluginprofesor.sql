@@ -56,7 +56,8 @@ BEGIN
 
         CREATE TABLE profesor (
             idprofesor SERIAL PRIMARY KEY,
-	    nombreprofesor VARCHAR NOT NULL
+	    nombreprofesor VARCHAR NOT NULL,
+	    idprovincia INTEGER REFERENCES provincia(idprovincia)
         );
 
         END IF;
@@ -67,7 +68,8 @@ BEGIN
 
         CREATE TABLE alumno (
 	    idalumno SERIAL PRIMARY KEY,
-	    nombrealumno VARCHAR NOT NULL
+	    nombrealumno VARCHAR NOT NULL,
+	    idprovincia INTEGER REFERENCES provincia(idprovincia)
         );
 
         END IF;
@@ -77,7 +79,8 @@ BEGIN
 
         CREATE TABLE tutor (
 	    idtutor SERIAL PRIMARY KEY,
-	    nombretutor VARCHAR NOT NULL
+	    nombretutor VARCHAR NOT NULL,
+	    idprovincia INTEGER REFERENCES provincia(idprovincia)
         );
 
         END IF;

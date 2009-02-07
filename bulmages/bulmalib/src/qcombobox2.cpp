@@ -26,6 +26,7 @@ QComboBox2::QComboBox2 ( QWidget *parent )
     m_id = "idprovincia";
     m_valores["nomprovincia"] = "";
     m_valores["descpais"] = "";
+    m_null = TRUE;
 
     _depura ( "END QComboBox2::QComboBox2", 0 );
 }
@@ -71,7 +72,8 @@ void QComboBox2::setId ( QString id )
     int i = 0;
     int i1 = 0;
     clear();
-    addItem ( "--" );
+    if (m_null)
+        addItem ( "--" );
 
     while ( !m_cursorcombo->eof() ) {
         i ++;
@@ -115,7 +117,11 @@ void QComboBox2::m_activated ( int index )
 {
     _depura ( "BusquedaProvincia::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( m_id, index - 1 ) ) );
+	if (m_null) {
+	        emit ( valueChanged ( m_cursorcombo->valor ( m_id, index - 1 ) ) );
+	} else {
+	        emit ( valueChanged ( m_cursorcombo->valor ( m_id, index ) ) );
+	} // end if
     } else {
         emit ( valueChanged ( "" ) );
     }
@@ -160,4 +166,8 @@ void QComboBox2::setTableName(QString tableName) {
 
 void QComboBox2::setCampoId(QString cid) {
 	m_id = cid;
+}
+
+void QComboBox2::allowNull(bool v) {
+	m_null = v;
 }

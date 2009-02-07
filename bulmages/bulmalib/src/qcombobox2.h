@@ -38,13 +38,15 @@ private:
     /// Cursor que almacena en memoria la lista de provincias.
     cursor2 *m_cursorcombo;
     QString m_tabla;
-    /// Almacena el id de la tabla seleccionada.
+    /// Indica cual es el identificador para la tabla.
     QString m_id;
     QString m_query;
     /// Almacena el nombreprofesor del profesor seleccionado.
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
 
+    /// Indica si adminte nulos o no
+    bool m_null;
 
 
 public:
@@ -57,7 +59,7 @@ public:
     void setQuery(QString);
     virtual void setTableName(QString tableName);
     virtual void setCampoId(QString cid);
-
+    void allowNull(bool v);
 public slots:
     virtual void m_activated(int);
     virtual void onFichaGuardada(Ficha *f);

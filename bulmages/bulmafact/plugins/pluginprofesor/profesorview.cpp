@@ -60,7 +60,8 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
     mui_idprovincia->setCampoId ("idprovincia");
     mui_idprovincia->m_valores["nomprovincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
-        mui_idprovincia->setId ( "" );			
+    mui_idprovincia->allowNull(TRUE);
+        mui_idprovincia->setId ( "" );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
