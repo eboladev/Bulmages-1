@@ -24,7 +24,7 @@
 # define MY_EXPORT
 #endif
 
-#include "bldorm.h"
+#include "blform.h"
 #include "bulmafact.h"
 
 
