@@ -18,32 +18,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDesktopWidget>
+
 #include "blprogressbar.h"
 #include "funcaux.h"
 #include "configuracion.h"
-#include <QDesktopWidget>
+
 
 ///
 /**
 **/
-BLProgressBar::BLProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
+BlProgressBar::BlProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 {
-    _depura ( "BLProgressBar::BLProgressBar", 0 );
+    _depura ( "BlProgressBar::BlProgressBar", 0 );
     if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         setupUi ( this );
         QDesktopWidget *pantalla = new QDesktopWidget();
         setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() / 2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
         delete pantalla;
     } // end if
-    _depura ( "END BLProgressBar::BLProgressBar", 0 );
+    _depura ( "END BlProgressBar::BlProgressBar", 0 );
 }
+
 
 ///
 /**
 **/
-void BLProgressBar::setText ( const QString &tex )
+void BlProgressBar::setText ( const QString &tex )
 {
-    _depura ( "BLProgressBar::setText", 0 );
+    _depura ( "BlProgressBar::setText", 0 );
 
     if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         mui_label1->setText ( tex );
@@ -51,38 +54,40 @@ void BLProgressBar::setText ( const QString &tex )
         for ( int i = 0; i < 20; i++ )
             repaint();
     } // end if
-    _depura ( "END BLProgressBar::setText", 0 );
+    _depura ( "END BlProgressBar::setText", 0 );
 }
 
 
 ///
 /**
 **/
-BLProgressBar::~BLProgressBar()
+BlProgressBar::~BlProgressBar()
 {
-    _depura ( "BLProgressBar::~BLProgressBar", 0 );
-    _depura ( "END BLProgressBar::~BLProgressBar", 0 );
+    _depura ( "BlProgressBar::~BlProgressBar", 0 );
+    _depura ( "END BlProgressBar::~BlProgressBar", 0 );
 }
+
 
 ///
 /**
 **/
-void BLProgressBar::setValue ( int value )
+void BlProgressBar::setValue ( int value )
 {
-    _depura ( "BLProgressBar::setValue", 0 );
+    _depura ( "BlProgressBar::setValue", 0 );
     if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setValue ( value );
-    _depura ( "END BLProgressBar::setValue", 0 );
+    _depura ( "END BlProgressBar::setValue", 0 );
 
 }
+
 
 ///
 /**
 **/
-int BLProgressBar::value()
+int BlProgressBar::value()
 {
-    _depura ( "BLProgressBar::value", 0 );
-    _depura ( "END BLProgressBar::value", 0 );
+    _depura ( "BlProgressBar::value", 0 );
+    _depura ( "END BlProgressBar::value", 0 );
     if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         return mui_progressBar->value();
     } else {
@@ -90,25 +95,28 @@ int BLProgressBar::value()
     } // end if
 }
 
-///
-/**
-**/
-void BLProgressBar::setRange ( int range,  int range1 )
-{
-    _depura ( "BLProgressBar::setRange", 0 );
-    if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
-        mui_progressBar->setRange ( range, range1 );
-    _depura ( "END BLProgressBar::setRange", 0 );
-}
 
 ///
 /**
 **/
-void BLProgressBar::show (  )
+void BlProgressBar::setRange ( int range,  int range1 )
 {
-    _depura ( "BLProgressBar::show", 0 );
+    _depura ( "BlProgressBar::setRange", 0 );
+    if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
+        mui_progressBar->setRange ( range, range1 );
+    _depura ( "END BlProgressBar::setRange", 0 );
+}
+
+
+///
+/**
+**/
+void BlProgressBar::show (  )
+{
+    _depura ( "BlProgressBar::show", 0 );
     if ( confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         QWidget::show();
     } // end if
-    _depura ( "END BLProgressBar::show", 0 );
+    _depura ( "END BlProgressBar::show", 0 );
 }
+

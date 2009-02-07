@@ -153,7 +153,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 
 
         int row = 0;
-        BLProgressBar barra;
+        BlProgressBar barra;
         barra.setRange ( 0, cur->numregistros() );
         barra.show();
         barra.setText ( _( "Generando Informe" ) );

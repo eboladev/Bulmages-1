@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>BLProgressBarBase</class>
- <widget class="QWidget" name="BLProgressBarBase" >
+ <class>BlProgressBarBase</class>
+ <widget class="QWidget" name="BlProgressBarBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

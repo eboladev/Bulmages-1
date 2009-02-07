@@ -146,7 +146,7 @@ QString CatalogoQToolButton::detalleArticulos()
     _depura ( "CatalogoQToolButton::detalleArticulos", 0 );
     QString texto = "";
 
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.show();
     barra.setText ( _( "Generando catalogo" ) );
 

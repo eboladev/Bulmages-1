@@ -33,6 +33,7 @@
 #include "subform3.h"
 #include "blprogressbar.h"
 
+
 /// SubForm3, constructor de la clase base para subformularios.
 /**
 \param parent
@@ -1067,7 +1068,7 @@ void SubForm3::cargar ( cursor2 *cur )
     bool coloraponerfondo = FALSE;
 
     /// Preparamos la barra de progreso
-    BLProgressBar *barra = new BLProgressBar;
+    BlProgressBar *barra = new BlProgressBar;
 //    barra.setText ( _( "Cargando SubFormulario" ) );
     if ( cur->numregistros() > 100 ) {
         barra->setValue ( 0 );
@@ -2063,7 +2064,7 @@ void SubForm3::on_mui_list_pressedMinus ( int row, int col )
 QString SubForm3::imprimir()
 {
     _depura ( "SubForm3::imprimir", 0 );
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
     barra.setText ( _( "Imprimiendo " ) +  m_tablename );

@@ -177,7 +177,7 @@ void InformeQToolButton::click()
     QString SQLQuery = "SELECT * FROM cliente ORDER BY nomcliente";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
     /// Tratamos la barra de progreso
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
     barra.setText ( _( "Generando Informe" ) );
@@ -430,7 +430,7 @@ void InformeProveedorQToolButton::click()
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM proveedor ORDER BY nomproveedor";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
     barra.setText ( _( "Generando informe" ) );

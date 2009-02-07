@@ -466,7 +466,7 @@ void extractoview1::on_mui_casacion_clicked()
     try {
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
         cursor2 *curshaber = empresaBase() ->cargacursor ( query );
-        BLProgressBar barra;
+        BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
         barra.setText ( _( "Cargando Extracto de Cuentas" ) );

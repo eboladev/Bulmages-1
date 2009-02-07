@@ -30,7 +30,7 @@
 **/
 QString pluginCAnualesODS::cuentaAnualCAPGC07()
 {
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.setRange ( 0, 21 );
     barra.setValue ( 0 );
     barra.show();

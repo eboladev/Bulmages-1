@@ -28,11 +28,11 @@
 #include "funcaux.h"
 #include "ui_blprogressbarbase.h"
 
-class BLProgressBar : public QDialog, public Ui_BLProgressBarBase
+class BlProgressBar : public QDialog, public Ui_BlProgressBarBase
 {
 public:
-    BLProgressBar (  );
-    virtual ~BLProgressBar();
+    BlProgressBar (  );
+    virtual ~BlProgressBar();
     void setValue ( int );
     int value();
     void setRange ( int,  int );

@@ -132,7 +132,7 @@ void InformeQToolButton::click()
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
     /// Mostramos la barra de progreso
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
     barra.setText ( _( "Generando Informe" ) );
@@ -488,7 +488,7 @@ QString InformeArtQToolButton::generarArticulos()
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
     /// Generamos la barra de progreso.
-    BLProgressBar barra;
+    BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
     barra.setText ( _( "Generando informe" ) );
