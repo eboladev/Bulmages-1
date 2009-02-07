@@ -75,6 +75,13 @@ CuentaView::CuentaView ( Empresa  *emp, QWidget *parent, Qt::WFlags fl )
     mui_tipocuenta_0->setValorCampo ( "0" );
 
     mui_idprovincia->setEmpresaBase ( empresaBase() );
+    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
+    mui_idprovincia->setTableName ("provincia");
+    mui_idprovincia->setCampoId ("idprovincia");
+    mui_idprovincia->m_valores["nomprovincia"] = "";
+    mui_idprovincia->m_valores["descpais"] = "";
+
+
     dialogChanges_cargaInicial();
     empresaBase() ->meteWindow ( windowTitle(), this );
     _depura ( "END CuentaView::CuentaView", 0 );

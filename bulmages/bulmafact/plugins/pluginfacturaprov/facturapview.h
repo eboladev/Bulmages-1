@@ -28,7 +28,6 @@
 
 #include "ui_facturapbase.h"
 #include "fichabf.h"
-#include "busquedaproveedor.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"

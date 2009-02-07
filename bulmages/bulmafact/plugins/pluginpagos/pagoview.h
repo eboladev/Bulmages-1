@@ -28,7 +28,6 @@
 
 #include "ui_pagobase.h"
 #include "postgresiface2.h"
-#include "busquedaproveedor.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 #include "fichabf.h"

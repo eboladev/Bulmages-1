@@ -33,7 +33,6 @@
 #include "pagoview.h"
 #include "company.h"
 #include "configuracion.h"
-#include "busquedaproveedor.h"
 #include "busquedafecha.h"
 
 #include "funcaux.h"
@@ -68,6 +67,12 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
         addDBCampo ( "cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Cantidad" ) );
         addDBCampo ( "comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario del pago" ) );
         addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, _( "Banco" ) );
+
+	/// Establecemos los parametros de busqueda del Cliente
+	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
+	mui_idproveedor->setTableName( "proveedor" );
+	mui_idproveedor->m_valores["cifproveedor"] = "";
+	mui_idproveedor->m_valores["nomproveedor"] = "";
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

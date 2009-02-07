@@ -29,7 +29,6 @@
 #include "ui_pedidoproveedorbase.h"
 #include "listlinpedidoproveedorview.h"
 #include "listdescpedidoproveedorview.h"
-#include "busquedaproveedor.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"

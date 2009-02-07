@@ -19,7 +19,7 @@
    <string>Nuevo albaran de proveedor</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/supplier-delivery-note.svg</normaloff>:/Images/supplier-delivery-note.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -55,7 +55,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/supplier-delivery-note.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/supplier-delivery-note.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -107,7 +107,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -151,7 +151,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -211,7 +211,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
           </property>
           <property name="iconSize" >
@@ -320,7 +320,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >
+        <iconset resource="../../../bulmages.qrc" >
          <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
        </property>
        <property name="iconSize" >
@@ -418,7 +418,7 @@
        <number>5</number>
       </property>
       <item rowspan="3" row="0" column="0" >
-       <widget class="BusquedaProveedor" name="mui_idproveedor" >
+       <widget class="Busqueda" name="mui_idproveedor" >
         <property name="minimumSize" >
          <size>
           <width>250</width>
@@ -546,7 +546,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>232</height>
+        <height>204</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1211,11 +1211,6 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QTextEdit</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaAlmacen</class>
    <extends>QComboBox</extends>
    <header>busquedaalmacen.h</header>
@@ -1230,9 +1225,14 @@
    <extends>QLineEdit</extends>
    <header>../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
+  <customwidget>
+   <class>Busqueda</class>
+   <extends>QTextEdit</extends>
+   <header>busqueda.h</header>
+  </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

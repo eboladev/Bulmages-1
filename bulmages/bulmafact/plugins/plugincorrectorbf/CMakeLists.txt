@@ -27,6 +27,8 @@ include_directories(
 	${QT_QTASSISTANT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente/
 	${CMAKE_BINARY_DIR}/bulmalib/src/

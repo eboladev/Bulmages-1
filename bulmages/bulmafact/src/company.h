@@ -32,7 +32,6 @@
 #include "empresabase.h"
 #include "splashscreen.h"
 
-class ProveedorList;
 class ArticuloList;
 class orderslist;
 class FacturaView;
@@ -40,7 +39,6 @@ class ArticuloView;
 class PagoView;
 class PedidoClienteView;
 class TipoArticuloList;
-class ProveedorView;
 class FamiliasView;
 class ListTipoIVAView;
 
@@ -55,10 +53,7 @@ class Company : public EmpresaBase
 private:
     /// Puntero al mainWindow
     Bulmafact *m_bulmafact;
-    /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
-    ProveedorList *m_providerslist;
-    /// Puntero a la ventana de lista de clientes. Esta ventana se abre una vez al inicio del programa.
-//    ClientsList *m_clientsList;
+
     /// Puntero a la ventana de lista de articulos. Esta ventan ase abre una vez al inicio del programa.
     ArticuloList *m_articleslist;
 
@@ -69,7 +64,7 @@ public:
     void listClients();
     void listarticles();
     void *newClienteView();
-    ProveedorView *newProveedorView();
+    void *newProveedorView();
     ArticuloView *newArticuloView();
     void createMainWindows ( Splash * );
     void refreshArticles();

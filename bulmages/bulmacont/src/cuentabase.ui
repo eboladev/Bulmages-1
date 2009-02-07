@@ -286,9 +286,17 @@
       </sizepolicy>
      </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>746</width>
+        <height>533</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Datos contables</string>
       </attribute>
@@ -1579,6 +1587,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>746</width>
+        <height>533</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Otros datos</string>
       </attribute>
@@ -1767,7 +1783,7 @@
         </widget>
        </item>
        <item row="4" column="5" colspan="2" >
-        <widget class="BusquedaProvincia" name="mui_idprovincia" />
+        <widget class="QComboBox2" name="mui_idprovincia" />
        </item>
       </layout>
      </widget>
@@ -1847,14 +1863,14 @@
    <header>busquedacuenta.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends>QComboBox</extends>
-   <header>busquedaprovincia.h</header>
-  </customwidget>
-  <customwidget>
    <class>QRadioButton2</class>
    <extends>QRadioButton</extends>
    <header>qradiobutton2.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QComboBox2</class>
+   <extends>QComboBox</extends>
+   <header>qcombobox2.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

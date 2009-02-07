@@ -42,6 +42,11 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
     mdb_idpedidoproveedor = "";
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
@@ -63,6 +68,12 @@ PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt:
     m_proveedor->setEmpresaBase ( comp );
     m_articulo->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
+
     presentar();
     setSubForm ( mui_list );
     mdb_idpedidoproveedor = "";
@@ -138,8 +149,8 @@ QString PedidosProveedorList::generarFiltro()
         filtro += " OR refpedidoproveedor LIKE '" + m_filtro->text() + "%' ";
         filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
-    if ( m_proveedor->idproveedor() != "" ) {
-        filtro += " AND pedidoproveedor.idproveedor = " + m_proveedor->idproveedor();
+    if ( m_proveedor->id() != "" ) {
+        filtro += " AND pedidoproveedor.idproveedor = " + m_proveedor->id();
     } // end if
 
 
@@ -282,7 +293,7 @@ QString PedidosProveedorList::idpedidoproveedor()
 void PedidosProveedorList::setidproveedor ( QString val )
 {
     _depura ( "PedidosProveedorList::setidproveedor", 0 );
-    m_proveedor->setidproveedor ( val );
+    m_proveedor->setId ( val );
     _depura ( "END PedidosProveedorList::setidproveedor", 0 );
 }
 

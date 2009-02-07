@@ -22,7 +22,6 @@
 #ifndef FACTURASPROVEEDORLIST_H
 #define FACTURASPROVEEDORLIST_H
 
-#include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"

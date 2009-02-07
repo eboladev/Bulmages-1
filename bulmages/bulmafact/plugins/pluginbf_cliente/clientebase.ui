@@ -17,7 +17,7 @@
    <string>Cliente</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/client.svg</normaloff>:/Images/client.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -53,7 +53,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/client.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/client.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -102,7 +102,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -143,7 +143,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -184,7 +184,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -267,7 +267,7 @@
         <x>0</x>
         <y>0</y>
         <width>773</width>
-        <height>444</height>
+        <height>438</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -476,7 +476,7 @@
         </widget>
        </item>
        <item row="5" column="4" colspan="2" >
-        <widget class="BusquedaProvincia" name="mui_idprovincia" />
+        <widget class="QComboBox2" name="mui_idprovincia" />
        </item>
        <item row="6" column="0" >
         <widget class="QLabel" name="textLabel2_8" >
@@ -778,14 +778,14 @@
    <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends>QComboBox</extends>
-   <header>busquedaprovincia.h</header>
-  </customwidget>
-  <customwidget>
    <class>BLBancoEdit</class>
    <extends>QLineEdit</extends>
    <header>blbancoedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QComboBox2</class>
+   <extends>QComboBox</extends>
+   <header>qcombobox2.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -815,7 +815,7 @@
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

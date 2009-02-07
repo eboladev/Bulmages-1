@@ -27,7 +27,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
         ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginpedidoprov/
-        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedidoprov/)
+        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginpedidoprov/
+        ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor/
+        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor/)
 
 #	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaranprov/
 #	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaranprov/

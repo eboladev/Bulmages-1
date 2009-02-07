@@ -128,11 +128,11 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( fpv->mui_idproveedor->idproveedor().isEmpty() ) {
+            if ( fpv->mui_idproveedor->id().isEmpty() ) {
                 mensajeInfo ( _( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
-                SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->idproveedor();
+                SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
             } // end if
         } else {
             SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->DBvalue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );

@@ -49,6 +49,11 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
     setupUi ( this );
     mdb_idalbaranp = "";
     setSubForm ( mui_list );
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     iniciaForm();
     _depura ( "END AlbaranesProveedor::AlbaranesProveedor", 0 );
@@ -66,6 +71,12 @@ void AlbaranesProveedor::setEmpresaBase ( Company *comp )
     m_proveedor->setEmpresaBase ( comp );
     m_articulo->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
+
     _depura ( "END AlbaranesProveedor::setEmpresaBase", 0 );
 }
 
@@ -94,7 +105,7 @@ void AlbaranesProveedor::crear()
 void AlbaranesProveedor::setidproveedor ( QString val )
 {
     _depura ( "AlbaranesProveedor::setidproveedor", 0 );
-    m_proveedor->setidproveedor ( val );
+    m_proveedor->setId ( val );
     _depura ( "END AlbaranesProveedor::setidproveedor", 0 );
 }
 
@@ -240,8 +251,8 @@ QString AlbaranesProveedor::generaFiltro()
         filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     }
 
-    if ( m_proveedor->idproveedor() != "" )
-        filtro += " AND albaranp.idproveedor = " + m_proveedor->idproveedor();
+    if ( m_proveedor->id() != "" )
+        filtro += " AND albaranp.idproveedor = " + m_proveedor->id();
 
     /// Tratamos los elementos procesados y no procesados.
     if ( mui_procesada->currentIndex() == 1 ) {

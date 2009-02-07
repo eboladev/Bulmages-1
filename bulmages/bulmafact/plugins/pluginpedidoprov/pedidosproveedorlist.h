@@ -22,7 +22,6 @@
 #ifndef PEDIDOSPROVEEDORLIST_H
 #define PEDIDOSPROVEEDORLIST_H
 
-#include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"

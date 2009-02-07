@@ -55,7 +55,12 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
 
         /// Datos por defecto.
 	mui_idprovincia->setEmpresaBase ( empresaBase() );
-        mui_idprovincia->setIdProvincia ( "" );			
+    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
+    mui_idprovincia->setTableName ("provincia");
+    mui_idprovincia->setCampoId ("idprovincia");
+    mui_idprovincia->m_valores["nomprovincia"] = "";
+    mui_idprovincia->m_valores["descpais"] = "";
+        mui_idprovincia->setId ( "" );			
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

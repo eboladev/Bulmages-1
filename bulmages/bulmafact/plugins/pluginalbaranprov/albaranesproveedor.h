@@ -25,7 +25,6 @@
 #include <QLineEdit>
 
 #include "company.h"
-#include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"

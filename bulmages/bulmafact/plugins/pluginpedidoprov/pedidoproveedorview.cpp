@@ -85,6 +85,12 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
         mui_idtrabajador->setidtrabajador ( "0" );
         mui_refpedidoproveedor->setEmpresaBase ( comp );
 
+	/// Establecemos los parametros de busqueda del Cliente
+	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
+	mui_idproveedor->setTableName( "proveedor" );
+	mui_idproveedor->m_valores["cifproveedor"] = "";
+	mui_idproveedor->m_valores["nomproveedor"] = "";
+
         setListaLineas ( mui_lineasDetalle );
         setListaDescuentos ( mui_descuentos );
 

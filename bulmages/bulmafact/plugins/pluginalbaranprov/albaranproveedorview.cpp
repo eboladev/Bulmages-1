@@ -81,6 +81,12 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 
+	/// Establecemos los parametros de busqueda del Cliente
+	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
+	mui_idproveedor->setTableName( "proveedor" );
+	mui_idproveedor->m_valores["cifproveedor"] = "";
+	mui_idproveedor->m_valores["nomproveedor"] = "";
+
         m_totalBases->setReadOnly ( TRUE );
         m_totalBases->setAlignment ( Qt::AlignRight );
         m_totalTaxes->setReadOnly ( TRUE );

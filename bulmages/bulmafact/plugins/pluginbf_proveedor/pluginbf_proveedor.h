@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,61 +18,37 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDAPROVEEDOR_H
-#define BUSQUEDAPROVEEDOR_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QObject>
-
-#include "funcaux.h"
-#include "ui_busquedaproveedorbase.h"
+#include "postgresiface2.h"
+#include "bulmafact.h"
 #include "blwidget.h"
+#include "busquedareferencia.h"
+#include "busqueda.h"
 
 
-class Company;
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
+extern "C" MY_EXPORT int SNewProveedorView (Company *);
 
-
-/// Permite buscar y seleccionar un proveedor.
-/** Widget que permite buscar y seleccionar un
-    proveedor. */
-class BusquedaProveedor : public BLWidget, public Ui_BusquedaProveedorBase
+class MyPlugPro : public QObject, PEmpresaBase
 {
     Q_OBJECT
 
-private:
-    /// Almacena el idproveedor seleccionado.
-    QString mdb_idproveedor;
-    /// Almacena el nomproveedor seleccionado.
-    QString mdb_nomproveedor;
-    /// Almacena el cifproveedor seleccionado.
-    QString mdb_cifproveedor;
-    /// Almacena el codproveedor seleccionado.
-    QString mdb_codproveedor;
-    /// Se usa para evitar un dead-lock entre pintar() y on_mui_textChanged().
-    bool m_semaforo;
+public:
+    Bulmafact *m_bges;
 
 public:
-    BusquedaProveedor ( QWidget *parent = 0 );
-    void pinta();
-    virtual ~BusquedaProveedor();
-    virtual void setidproveedor ( QString val );
-    virtual void setValorCampo ( QString val );
-    virtual void setcifproveedor ( QString val );
-    virtual QString cifproveedor();
-    virtual QString idproveedor();
-    virtual QString valorCampo();
-    virtual QString nomproveedor();
+    MyPlugPro();
+    ~MyPlugPro();
+    void inicializa ( Bulmafact * );
 
 public slots:
-    virtual void on_mui_buscar_clicked();
-    virtual void on_mui_borrar_idproveedor_clicked();
-    virtual void on_m_cifproveedor_textChanged ( const QString & );
-    virtual void on_m_cifproveedor_editingFinished();
-
-signals:
-    void valueChanged ( QString );
+    void elslot();
+    void elslot1();
 };
-
-#endif
-

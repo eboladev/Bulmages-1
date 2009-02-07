@@ -25,7 +25,6 @@
 
 #include "facturasplist.h"
 #include "company.h"
-#include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "configuracion.h"
 #include "facturapview.h"
@@ -53,6 +52,11 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
     } // end if
     mdb_idfacturap = "";
     setSubForm ( mui_list );
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     iniciaForm();
     g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
@@ -83,6 +87,11 @@ FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent, Q
     presentar();
     setSubForm ( mui_list );
     mdb_idfacturap = "";
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
     if(modoEdicion()) {
     	empresaBase() ->meteWindow ( windowTitle(), this );
     } // end if
@@ -161,8 +170,8 @@ QString FacturasProveedorList::generaFiltro()
         filtro += " OR reffacturap LIKE '" + m_filtro->text() + "%' ";
         filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
-    if ( m_proveedor->idproveedor() != "" ) {
-        filtro += " AND facturap.idproveedor = " + m_proveedor->idproveedor();
+    if ( m_proveedor->id() != "" ) {
+        filtro += " AND facturap.idproveedor = " + m_proveedor->id();
     } // end if
 
     /// Tratamos los elementos procesados y no procesados.
@@ -294,7 +303,7 @@ QString FacturasProveedorList::idfacturap()
 void FacturasProveedorList::setidproveedor ( QString val )
 {
     _depura ( "FacturasProveedorList::setidproveedor", 0 );
-    m_proveedor->setidproveedor ( val );
+    m_proveedor->setId ( val );
     _depura ( "END FacturasProveedorList::setidproveedor", 0 );
 }
 

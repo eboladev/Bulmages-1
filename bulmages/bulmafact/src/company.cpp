@@ -37,8 +37,6 @@
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
 #include "plugins.h"
-#include "provedit.h"
-#include "providerslist.h"
 #include "tiposarticuloview.h"
 #include "trabajadorview.h"
 #include "bancoview.h"
@@ -110,6 +108,7 @@ void Company::createMainWindows ( Splash *splash )
     } // end if
 
     /// pb = 8%
+/*
     _depura ( "Company::createMainWindows inicializamos m_providerslist", 1 );
     splash->mensaje ( _( "Inicializando listado de proveedores" ) );
     splash->setBarraProgreso ( 10 );
@@ -125,6 +124,7 @@ void Company::createMainWindows ( Splash *splash )
 //        m_bulmafact->actionListado_Clientes->setEnabled ( TRUE );
 //        m_bulmafact->actionNuevo_Cliente->setEnabled ( TRUE );
 //    } // end if
+*/
 
     /// pb = 16%
 /*    
@@ -225,9 +225,11 @@ void Company::createMainWindows ( Splash *splash )
 void Company::listproviders()
 {
     _depura ( "Company::listproviders", 0 );
+/*
     m_providerslist->show();
     m_providerslist->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_providerslist );
+*/
     _depura ( "END Company::listproviders", 0 );
 }
 
@@ -328,16 +330,18 @@ void Company::s_newClienteView()
 /**
 \return
 **/
-ProveedorView *Company::newProveedorView()
+void *Company::newProveedorView()
 {
     _depura ( "Company::newProveedorView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     ProveedorView *bud;
     if ( g_plugins->lanza ( "Company_newProveedorView", this, ( void ** ) & bud ) )
         return bud;
     bud = new ProveedorView ( this, 0 );
     _depura ( "END Company::newProveedorView", 0 );
-    return bud;
+*/
+    return NULL;
 }
 
 
@@ -351,9 +355,11 @@ ProveedorView *Company::newProveedorView()
 void Company::s_newProveedorView()
 {
     _depura ( "Company::s_newProveedorView", 0 );
+/*
     ProveedorView *bud = newProveedorView();
     m_pWorkspace->addWindow ( bud );
     bud->show();
+*/
     _depura ( "END Company::s_newProveedorView", 0 );
 }
 
@@ -381,9 +387,11 @@ void Company::refreshClientes()
 void Company::refreshProveedores()
 {
     _depura ( "Company::refreshProveedores", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_providerslist != NULL )
             m_providerslist->presentar();
+*/
     _depura ( "END Company::refreshProveedores", 0 );
 }
 

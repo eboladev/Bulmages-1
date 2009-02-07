@@ -20,7 +20,7 @@
    <string>Nuevo pedido a proveedor</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/supplier-purchase-order.svg</normaloff>:/Images/supplier-purchase-order.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -70,7 +70,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/supplier-purchase-order.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/supplier-purchase-order.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -113,7 +113,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -151,7 +151,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -189,7 +189,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -317,7 +317,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >
+        <iconset resource="../../../bulmages.qrc" >
          <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
        </property>
        <property name="iconSize" >
@@ -425,7 +425,7 @@
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
-       <widget class="BusquedaProveedor" name="mui_idproveedor" >
+       <widget class="Busqueda" name="mui_idproveedor" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -651,7 +651,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>142</height>
+        <height>110</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -679,7 +679,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>106</height>
+        <height>110</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -707,7 +707,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>106</height>
+        <height>110</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1288,11 +1288,6 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QTextEdit</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
    <header>busquedafecha.h</header>
@@ -1322,6 +1317,11 @@
    <extends>QComboBox</extends>
    <header>busquedatrabajador.h</header>
   </customwidget>
+  <customwidget>
+   <class>Busqueda</class>
+   <extends>QTextEdit</extends>
+   <header>busqueda.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_refpedidoproveedor</tabstop>
@@ -1342,7 +1342,7 @@
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

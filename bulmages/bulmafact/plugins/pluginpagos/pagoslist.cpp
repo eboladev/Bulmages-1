@@ -45,6 +45,11 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
     setupUi ( this );
     mdb_idpago = "";
     setSubForm ( mui_list );
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     _depura ( "END PagosList::PagosList", 0 );
 }
@@ -65,6 +70,12 @@ PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode e
     mui_list->setEmpresaBase ( comp );
     mui_idbanco->setEmpresaBase ( comp );
     mui_idbanco->setidbanco ( "" );
+	/// Establecemos los parametros de busqueda del Cliente
+	m_proveedor->setLabel ( _( "Proveedor:" ) );
+	m_proveedor->setTableName( "proveedor" );
+	m_proveedor->m_valores["cifproveedor"] = "";
+	m_proveedor->m_valores["nomproveedor"] = "";
+
     presentar();
     mdb_idpago = "";
     setSubForm ( mui_list );
@@ -113,8 +124,8 @@ QString PagosList::generaFiltro()
         filtro = "";
     } // end if
 
-    if ( m_proveedor->idproveedor() != "" ) {
-        filtro += " AND pago.idproveedor = " + m_proveedor->idproveedor();
+    if ( m_proveedor->id() != "" ) {
+        filtro += " AND pago.idproveedor = " + m_proveedor->id();
     } // end if
 
     QString subfiltro = " AND ";
@@ -165,7 +176,7 @@ void PagosList::crear()
     PagoView *bud = new PagoView( ( Company * ) empresaBase(), 0 );
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    bud->setDBvalue ( "idproveedor", m_proveedor->idproveedor() );
+    bud->setDBvalue ( "idproveedor", m_proveedor->id() );
     bud->pintar();
 }
 
@@ -219,7 +230,7 @@ QString PagosList::idpago()
 
 void PagosList::setidproveedor ( QString val )
 {
-    m_proveedor->setidproveedor ( val );
+    m_proveedor->setId ( val );
 }
 
 

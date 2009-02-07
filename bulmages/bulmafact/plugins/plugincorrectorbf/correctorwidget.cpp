@@ -190,7 +190,13 @@ void correctorwidget::alink ( const QUrl &url )
         ( ( Company * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idproveedor" ) {
-        ProveedorView * prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+		int resur = g_plugins->lanza ("SNewProveedorView", (Company *) empresaBase() );
+		if (!resur) {
+			mensajeInfo("No se pudo crear instancia de cliente");
+			return;
+		} // end if
+		ProveedorView *prov = (ProveedorView *) g_plugParams;
         if ( prov->cargar ( list[1] ) ) {
             delete prov;
             return;

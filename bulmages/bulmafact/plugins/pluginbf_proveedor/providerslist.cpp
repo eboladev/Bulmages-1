@@ -138,7 +138,7 @@ void ProveedorList::presentar()
 void ProveedorList::crear()
 {
     _depura ( "ProveedorList::crear", 0 );
-    ProveedorView *prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+    ProveedorView *prov = new ProveedorView( ( Company * ) empresaBase() );
     empresaBase() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END ProveedorList::crear", 0 );
@@ -157,7 +157,7 @@ void ProveedorList::editar ( int row )
     m_cifprovider = mui_list->DBvalue ( QString ( "cifproveedor" ), row );
     m_nomprovider = mui_list->DBvalue ( QString ( "nomproveedor" ), row );
     if ( modoEdicion() ) {
-        ProveedorView * prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+        ProveedorView * prov = new ProveedorView( ( Company * ) empresaBase() );
         if ( prov->cargar ( mui_list->DBvalue ( QString ( "idproveedor" ), row ) ) ) {
             delete prov;
             return;
@@ -183,7 +183,7 @@ void ProveedorList::borrar()
     _depura ( "ProveedorList::borrar", 0 );
     try {
         QString idprov = mui_list->DBvalue ( QString ( "idproveedor" ) );
-        ProveedorView *prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+        ProveedorView *prov = new ProveedorView ( ( Company * ) empresaBase() );
         prov->cargar ( idprov );
         prov->on_mui_borrar_clicked();
         delete prov;

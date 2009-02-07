@@ -42,16 +42,6 @@ private:
 public:
     BusquedaProvincia ( QWidget *parent = 0 );
     ~BusquedaProvincia();
-    virtual void setIdProvincia ( QString idprovincia );
-    virtual void setValorCampo ( QString idprovincia );
-    QString idProvincia();
-    virtual QString valorCampo();
-
-public slots:
-    void m_activated ( int index );
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

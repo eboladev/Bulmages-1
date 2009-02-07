@@ -77,8 +77,14 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
         mui_idforma_pago->setEmpresaBase ( comp );
         mui_idforma_pago->setidforma_pago ( "" );
         mui_idproveedor->setEmpresaBase ( comp );
-        mui_idproveedor->setidproveedor ( "" );
+        mui_idproveedor->setId ( "" );
         mui_reffacturap->setEmpresaBase ( comp );
+
+	/// Establecemos los parametros de busqueda del Cliente
+	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
+	mui_idproveedor->setTableName( "proveedor" );
+	mui_idproveedor->m_valores["cifproveedor"] = "";
+	mui_idproveedor->m_valores["nomproveedor"] = "";
 
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );

@@ -21,8 +21,7 @@
 #include <QWidget>
 
 #include "qapplication2.h"
-#include "funcaux.h"
-
+#include "ficha.h"
 
 ///
 /**
@@ -63,6 +62,10 @@ bool QApplication2::notify ( QObject *o, QEvent *e )
         _depura ( "END QApplication2::notify", 2, "Error inesperado en la aplicacion" );
         return FALSE;
     } // end try
+}
+
+void QApplication2::fichaGuardada1(Ficha *f) {
+	emit fichaGuardada(f);
 }
 
 

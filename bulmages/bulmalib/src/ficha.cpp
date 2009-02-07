@@ -694,6 +694,8 @@ int Ficha::guardar()
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar ( id );
 
+	theApp->fichaGuardada1(this);
+
         _depura ( "END Ficha::guardar", 0 );
         return 0;
     } catch ( int valor ) {

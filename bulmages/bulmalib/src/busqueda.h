@@ -43,7 +43,7 @@ private:
 	/// Almacena la tabla sobre la que vamos a buscar.
 	QString m_tabla;
 
-    /// Almacena el idprofesor del profesor seleccionado.
+    /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
     /// Almacena el nombreprofesor del profesor seleccionado.
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.

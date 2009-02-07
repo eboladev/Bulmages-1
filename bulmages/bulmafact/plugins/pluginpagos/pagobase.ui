@@ -20,7 +20,7 @@
    <string>Nuevo pago a proveedor</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/pay.svg</normaloff>:/Images/pay.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -143,7 +143,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -259,7 +259,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="4" >
-       <widget class="BusquedaProveedor" name="mui_idproveedor" >
+       <widget class="Busqueda" name="mui_idproveedor" >
         <property name="focusPolicy" >
          <enum>Qt::StrongFocus</enum>
         </property>
@@ -463,11 +463,6 @@
    <header>busquedabanco.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QTextEdit</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
    <header>../../../bulmalib/src/busquedafecha.h</header>
@@ -476,6 +471,11 @@
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Busqueda</class>
+   <extends>QTextEdit</extends>
+   <header>busqueda.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

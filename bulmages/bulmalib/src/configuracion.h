@@ -277,7 +277,7 @@ extern configuracion *confpr;
 /// Existe una instancia del objeto global theApp.
 extern QApplication2 *theApp;
 /// Existe una instancia del objeto global traductor.
-extern QTranslator *traductor;
+//extern QTranslator *traductor;
 
 #endif
 
