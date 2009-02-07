@@ -69,7 +69,7 @@ BlComboBox::~BlComboBox()
 ///
 /**
 **/
-void QComboBox2::onTablaCambiada(const QString &t) {
+void BlComboBox::onTablaCambiada(const QString &t) {
 	if (m_tabla == t) {
 		setId(id());
 	} // end if
