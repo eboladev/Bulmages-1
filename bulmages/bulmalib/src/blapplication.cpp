@@ -65,7 +65,7 @@ bool BlApplication::notify ( QObject *o, QEvent *e )
     } // end try
 }
 
-void BlApplication::fichaGuardada1(Ficha *f) {
-	emit fichaGuardada(f);
+void BlApplication::tablaCambiada1(const QString &t) {
+	emit tablaCambiada(t);
 }
 
