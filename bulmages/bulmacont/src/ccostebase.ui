@@ -369,7 +369,7 @@
             </sizepolicy>
            </property>
            <property name="text" >
-            <string>Descripción:</string>
+            <string>Descripcion:</string>
            </property>
           </widget>
          </item>

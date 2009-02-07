@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Configuración Factura Electrónica</string>
+   <string>Configuracion Factura Electronica</string>
   </property>
   <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
@@ -64,7 +64,7 @@
     </rect>
    </property>
    <property name="text" >
-    <string>Fichero con su certificado electrónico</string>
+    <string>Fichero con su certificado electronico</string>
    </property>
   </widget>
   <widget class="Line" name="line" >
@@ -118,7 +118,7 @@
     </rect>
    </property>
    <property name="text" >
-    <string>URL del srvidor que valida su certificado electrónico</string>
+    <string>URL del srvidor que valida su certificado electronico</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="mui_URLServidorTiempo" >
@@ -157,7 +157,7 @@
     </rect>
    </property>
    <property name="text" >
-    <string>Configuración para el envío y recepción de factura electrónica</string>
+    <string>Configuracion para el envio y recepcion de factura electronica</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelServidorTiempo" >
@@ -193,7 +193,7 @@
     </rect>
    </property>
    <property name="text" >
-    <string>Dirección de e-mail donde se reciben las e-factutas</string>
+    <string>Direccion de e-mail donde se reciben las e-factutas</string>
    </property>
   </widget>
  </widget>

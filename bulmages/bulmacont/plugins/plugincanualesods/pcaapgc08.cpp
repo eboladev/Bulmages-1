@@ -158,7 +158,7 @@ doc.set_cell_value(5,25, 'float', '" + ( saldoCuentaAnt ( 480 ) + saldoCuentaAnt
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,26, 'string', 'VII. Efectivo y otros activos líquidos equivalentes.')\n\
+doc.set_cell_value(2,26, 'string', 'VII. Efectivo y otros activos liquidos equivalentes.')\n\
 doc.set_cell_value(4,26, 'float', '" + ( saldoCuenta ( 57 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,26, 'float', '" + ( saldoCuentaAnt ( 57 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -216,7 +216,7 @@ doc.set_cell_value(4,11, 'float', '" + ( saldoCuenta ( 1030 ) + saldoCuenta ( 10
 doc.set_cell_value(5,11, 'float', '" + ( saldoCuentaAnt ( 1030 ) + saldoCuentaAnt ( 1040 ) ).toQString ( '.' ) + "')\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,12, 'string', 'II. Prima de emisión.')\n\
+doc.set_cell_value(2,12, 'string', 'II. Prima de emision.')\n\
 doc.set_cell_value(4,12, 'float', '" + ( saldoCuenta ( 110 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,12, 'float', '" + ( saldoCuentaAnt ( 110 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -294,7 +294,7 @@ doc.set_cell_value(4,26, 'formula', '=D27+D28+D29')\n\
 doc.set_cell_value(5,26, 'formula', '=E27+E28+E29')\n\
 doc.set_cell_property('bold', False)\n\
 \
-doc.set_cell_value(2,27, 'string', '1. Deudas con entidades de crédito.')\n\
+doc.set_cell_value(2,27, 'string', '1. Deudas con entidades de credito.')\n\
 doc.set_cell_value(4,27, 'float', '" + ( saldoCuenta ( 1605 ) + saldoCuenta ( 170 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,27, 'float', '" + ( saldoCuentaAnt ( 1605 ) + saldoCuentaAnt ( 170 ) ).toQString ( '.' ) + "')\n\
 \
@@ -348,7 +348,7 @@ doc.set_cell_value(4,38, 'formula', '=D39+D40+D41')\n\
 doc.set_cell_value(5,38, 'formula', '=E39+E40+E41')\n\
 doc.set_cell_property('bold', False)\n\
 \
-doc.set_cell_value(2,39, 'string', '1. Deudas con entidades de crédito.')\n\
+doc.set_cell_value(2,39, 'string', '1. Deudas con entidades de credito.')\n\
 doc.set_cell_value(4,39, 'float', '" + ( saldoCuenta ( 5105 ) + saldoCuenta ( 520 ) + saldoCuenta ( 527 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,39, 'float', '" + ( saldoCuentaAnt ( 5105 ) + saldoCuentaAnt ( 520 ) + saldoCuentaAnt ( 527 ) ).toQString ( '.' ) + "')\n\
 \
@@ -420,7 +420,7 @@ doc.set_cell_value(5,6, 'float', '" + ( saldoCuentaAnt ( 700 ) + saldoCuentaAnt 
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,7, 'string', '2. Variación de existencias de productos terminados y en curso de fabricación.')\n\
+doc.set_cell_value(2,7, 'string', '2. Variacion de existencias de productos terminados y en curso de fabricacion.')\n\
 doc.set_cell_value(4,7, 'float', '" + ( saldoCuenta ( 6930 ) + saldoCuenta ( 71 ) + saldoCuenta ( 7930 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,7, 'float', '" + ( saldoCuentaAnt ( 6930 ) + saldoCuentaAnt ( 71 ) + saldoCuentaAnt ( 7930 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -438,7 +438,7 @@ doc.set_cell_value(5,9, 'float', '" + ( saldoCuentaAnt ( 600 ) + saldoCuentaAnt 
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,10, 'string', '5. Otros ingresos de explotación.')\n\
+doc.set_cell_value(2,10, 'string', '5. Otros ingresos de explotacion.')\n\
 doc.set_cell_value(4,10, 'float', '" + ( saldoCuenta ( 740 ) + saldoCuenta ( 747 ) + saldoCuenta ( 75 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,10, 'float', '" + ( saldoCuentaAnt ( 740 ) + saldoCuentaAnt ( 747 ) + saldoCuentaAnt ( 75 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -450,19 +450,19 @@ doc.set_cell_value(5,11, 'float', '" + ( saldoCuentaAnt ( 64 ) + saldoCuentaAnt 
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,12, 'string', '7. Otros gastos de explotación.')\n\
+doc.set_cell_value(2,12, 'string', '7. Otros gastos de explotacion.')\n\
 doc.set_cell_value(4,12, 'float', '" + ( saldoCuenta ( 62 ) + saldoCuenta ( 631 ) + saldoCuenta ( 634 ) + saldoCuenta ( 636 ) + saldoCuenta ( 639 ) + saldoCuenta ( 65 ) + saldoCuenta ( 694 ) + saldoCuenta ( 695 ) + saldoCuenta ( 794 ) + saldoCuenta ( 7954 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,12, 'float', '" + ( saldoCuentaAnt ( 62 ) + saldoCuentaAnt ( 631 ) + saldoCuentaAnt ( 634 ) + saldoCuentaAnt ( 636 ) + saldoCuentaAnt ( 639 ) + saldoCuentaAnt ( 65 ) + saldoCuentaAnt ( 694 ) + saldoCuentaAnt ( 695 ) + saldoCuentaAnt ( 794 ) + saldoCuentaAnt ( 7954 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,13, 'string', '8. Amortización del inmovilizado.')\n\
+doc.set_cell_value(2,13, 'string', '8. Amortizacion del inmovilizado.')\n\
 doc.set_cell_value(4,13, 'float', '" + ( saldoCuenta ( 68 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,13, 'float', '" + ( saldoCuentaAnt ( 68 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,14, 'string', '9. Imputación de subvenciones de inmovilizado no financiero y otras.')\n\
+doc.set_cell_value(2,14, 'string', '9. Imputacion de subvenciones de inmovilizado no financiero y otras.')\n\
 doc.set_cell_value(4,14, 'float', '" + ( saldoCuenta ( 746 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,14, 'float', '" + ( saldoCuentaAnt ( 746 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -503,7 +503,7 @@ doc.set_cell_value(5,22, 'float', '" + ( saldoCuentaAnt ( 660 ) + saldoCuentaAnt
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,23, 'string', '14. Variación de valor razonable en instrumentos financieros.')\n\
+doc.set_cell_value(2,23, 'string', '14. Variacion de valor razonable en instrumentos financieros.')\n\
 doc.set_cell_value(4,23, 'float', '" + ( saldoCuenta ( 663 ) + saldoCuenta ( 763 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,23, 'float', '" + ( saldoCuentaAnt ( 663 ) + saldoCuentaAnt ( 763 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -578,7 +578,7 @@ doc.set_cell_property('bold', False)\n\
 \
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,9, 'string', '" + _( "I. Por valoración de instrumentos financieros." ) + "')\n\
+doc.set_cell_value(2,9, 'string', '" + _( "I. Por valoracion de instrumentos financieros." ) + "')\n\
 doc.set_cell_value(4,9, 'float', '" + ( saldoCuenta ( 800 ) + saldoCuenta ( 89 ) + saldoCuenta ( 900 ) + saldoCuenta ( 991 ) + saldoCuenta ( 992 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,9, 'float', '" + ( saldoCuentaAnt ( 800 ) + saldoCuentaAnt ( 89 ) + saldoCuentaAnt ( 900 ) + saldoCuentaAnt ( 991 ) + saldoCuentaAnt ( 992 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -596,7 +596,7 @@ doc.set_cell_value(5,11, 'float', '" + ( saldoCuentaAnt ( 94 ) ).toQString ( '.'
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,12, 'string', 'IV. Por ganancias y pérdidas actuariales y otros ajustes')\n\
+doc.set_cell_value(2,12, 'string', 'IV. Por ganancias y perdidas actuariales y otros ajustes')\n\
 doc.set_cell_value(4,12, 'float', '" + ( saldoCuenta ( 85 ) + saldoCuenta ( 95 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,12, 'float', '" + ( saldoCuentaAnt ( 85 ) + saldoCuentaAnt ( 95 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -619,12 +619,12 @@ doc.set_cell_value(2,16, 'string', '(I+II+III+IV+V)')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,17, 'string', 'Transferencias a la cuenta de pérdidas y ganancias')\n\
+doc.set_cell_value(2,17, 'string', 'Transferencias a la cuenta de perdidas y ganancias')\n\
 doc.set_cell_property('bold', False)\n\
 \
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,19, 'string', 'VI. Por valoración de instrumentos financieros.')\n\
+doc.set_cell_value(2,19, 'string', 'VI. Por valoracion de instrumentos financieros.')\n\
 doc.set_cell_value(4,19, 'float', '" + ( saldoCuenta ( 802 ) + saldoCuenta ( 902 ) + saldoCuenta ( 993 ) + saldoCuenta ( 994 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,19, 'float', '" + ( saldoCuentaAnt ( 802 ) + saldoCuentaAnt ( 902 ) + saldoCuentaAnt ( 993 ) + saldoCuentaAnt ( 994 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -649,7 +649,7 @@ doc.set_cell_property('bold', False)\n\
 \
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,24, 'string', 'C) Total transferencias a la cuenta de pérdidas y ganancias (VI+VII+VIII+IX)')\n\
+doc.set_cell_value(2,24, 'string', 'C) Total transferencias a la cuenta de perdidas y ganancias (VI+VII+VIII+IX)')\n\
 doc.set_cell_value(4,24, 'formula', '=D19+D20+D21+D22')\n\
 doc.set_cell_value(5,24, 'formula', '=E19+E20+E21+E22')\n\
 doc.set_cell_property('bold', False)\n\

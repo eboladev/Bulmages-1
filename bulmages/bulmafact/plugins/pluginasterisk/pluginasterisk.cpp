@@ -98,8 +98,8 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, _( "Fecha" ) );
     l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, _( "Hora" ) );
     l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , _( "Almacen" ) );
-    l->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura mañanas" ) );
-    l->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre mañanas" ) );
+    l->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura manyanas" ) );
+    l->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre manyanas" ) );
     l->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura tardes" ) );
     l->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre tardes" ) );
     l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Audicion" ) );
@@ -134,7 +134,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     QLabel *textLabel2_9_26 = new QLabel ( alm->mui_frameplugin );
     textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_9" ) );
     hboxLayout160->addWidget ( textLabel2_9_26 );
-    textLabel2_9_26->setText ( "Extensión Asterisk" );
+    textLabel2_9_26->setText ( "Extension Asterisk" );
 
     QLineEdit *extalm = new QLineEdit ( alm->mui_frameplugin );
     extalm->setObjectName ( QString::fromUtf8 ( "mui_extasteriskalmacen" ) );
@@ -152,7 +152,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     m_hboxLayout1->addLayout ( hboxLayout160 );
 
 
-    /// Añadimos el subformulario de validaciones
+    /// Anyadimos el subformulario de validaciones
     SubForm2Bf *l = new SubForm2Bf ( alm );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionesalm" ) );
     l->setEmpresaBase ( alm->empresaBase() );

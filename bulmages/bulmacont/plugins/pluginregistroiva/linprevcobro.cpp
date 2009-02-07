@@ -275,7 +275,7 @@ void linprevcobro::setidcuenta ( QString val )
 
 
 /**
-  * \brief SLOT que respoonde a la creación de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
+  * \brief SLOT que respoonde a la creacion de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
   * Descripci&oacute;n:
   * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
   * 2.- Determinamos si es un cobro o un pago.
@@ -288,7 +288,7 @@ void linprevcobro::setidcuenta ( QString val )
 int linprevcobro::creaPago()
 {
     _depura ( "linprevcobro::creaPago", 0 );
-    /// Si la previsi&oacute;n no está guardada en la base de datos salimos para que no
+    /// Si la previsi&oacute;n no esta guardada en la base de datos salimos para que no
     /// haya problemas.
     if ( idprevcobro() == "" )
         return 0;
@@ -322,7 +322,7 @@ int linprevcobro::creaPago()
         delete cur;
     }// end if
     /// Para saber si al final se ha hecho el asiento o no almacenamos el valor
-    /// actual del asiento para ver después cual es el número de asiento y comprobar
+    /// actual del asiento para ver despues cual es el numero de asiento y comprobar
     /// si ha cambiado o no.
     QString idasiento = empresaactual->intapuntsempresa() ->idasiento();
 

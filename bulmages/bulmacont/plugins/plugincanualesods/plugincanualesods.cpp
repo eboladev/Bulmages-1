@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ricardo Díaz de la Calle <richard@galdi.es>     *
+ *   Copyright (C) 2008 by Ricardo Diaz de la Calle <richard@galdi.es>     *
  *   Copyright (C) 2008 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   *
  *   Copyright (C) 2008 by Leopold Palomo Avellaneda <leo@alaxarxa.net>    *
  *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *
@@ -60,7 +60,7 @@ bool pluginCAnualesODS::Arboles()
     _depura ( "pluginCAnualesODS::Arboles", 0 );
 
     /// Para no acceder constantemete a la BD cada vez que se quiere averiguar el saldo
-    /// de una cuenta, vamos a crear una estructura tipo árbol (usando la clase Arbol) donde,
+    /// de una cuenta, vamos a crear una estructura tipo arbol (usando la clase Arbol) donde,
     /// con un par consultas a BD, se averigüen todos los saldos y puedan estar disponibles en la RAM.
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
@@ -78,15 +78,15 @@ bool pluginCAnualesODS::Arboles()
     arbolEjercicioActual = new Arbol;
     arbolEjercicioAnterior = new Arbol;
     while ( !ramas->eof() ) {
-        if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta raíz.
+        if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta raiz.
             arbolEjercicioActual->nuevaRama ( ramas );
             arbolEjercicioAnterior->nuevaRama ( ramas );
         } // end if
         ramas->siguienteregistro();
     } // end while
 
-    /// Inicializamos el árbol desde sus raices (desde sus cuentas de nivel 2)
-    /// con el resto de cuentas (las hojas del árbol)
+    /// Inicializamos el arbol desde sus raices (desde sus cuentas de nivel 2)
+    /// con el resto de cuentas (las hojas del arbol)
     arbolEjercicioActual->inicializa ( ramas );
     arbolEjercicioAnterior->inicializa ( ramas );
 
@@ -111,7 +111,7 @@ bool pluginCAnualesODS::Arboles()
     } // end while
 
     /// Finalmente, recopilamos todos los apuntes agrupados por cuenta para poder
-    /// establecer así los valores de cada cuenta para el Ejercicio N-1.
+    /// establecer asi los valores de cada cuenta para el Ejercicio N-1.
     conexionbase->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicioAnterior_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right ( 4 ) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '01/01/" + ejercicioAnterior_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     hojas = conexionbase->cargacursor ( query, "Ejercicio N-1" );
@@ -121,7 +121,7 @@ bool pluginCAnualesODS::Arboles()
         return 0;
     }
 
-    /// De nuevo, para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del árbol.
+    /// De nuevo, para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del arbol.
     while ( !hojas->eof() ) {
         arbolEjercicioAnterior->actualizaHojas ( hojas );
         hojas->siguienteregistro();
@@ -135,8 +135,8 @@ bool pluginCAnualesODS::Arboles()
 /*
 OK, aqui poden haver passat 3 coses.
 1.- Petada de la base de dades perque el SQL es erroni o s'ha perdut la conexio.
- Aleshores el punter al cursor valdrá NULL.
-    El tractament d'aquesta excepció se pot fer de dues formes:
+ Aleshores el punter al cursor valdra NULL.
+    El tractament d'aquesta excepcio se pot fer de dues formes:
 
     a) comproves que el cursor es distint de NULL abans de seguir.
  if (cur != NULL)
@@ -144,7 +144,7 @@ OK, aqui poden haver passat 3 coses.
  b) Fas tractament de excepcions generalitzat.
      try {
          } catch (...) {
-     // Si hi ha hagut el error estaré en aquest punt i puc donar el missatge
+     // Si hi ha hagut el error estare en aquest punt i puc donar el missatge
         // de error i esborrar les variables que ja no faci servir.
         // Per exemple d'aquesta forma:
            mensajeInfo("Error con la base de datos");
@@ -152,16 +152,16 @@ OK, aqui poden haver passat 3 coses.
         }
 
 
- 2.- El query ha anat bé pero no hi ha resultats.
-     Aquesta no es una excepció. Normalment pot passar i ha de esser contemplat.
+ 2.- El query ha anat be pero no hi ha resultats.
+     Aquesta no es una excepcio. Normalment pot passar i ha de esser contemplat.
         Imagina que per exemple amb un query buid intentem accedir a una dada del
   registre.
 
   valor = cur->valor("idcuenta");
 
-        Això petaría perque es un accés ilegal a una casella que no existeix.
+        Això petaria perque es un acces ilegal a una casella que no existeix.
 
-         Per aixó normalment sempre després de fer un cargacursor solem fer:
+         Per aixo normalment sempre despres de fer un cargacursor solem fer:
          if (! cur->eof()) {
          }
 
@@ -172,11 +172,11 @@ OK, aqui poden haver passat 3 coses.
          }
 
         Nota que pot esser normal obtenir un resultat buid, pero en canvi no sol
-  esser gens normal el tenir un error de execució (només quan ho estas
+  esser gens normal el tenir un error de execucio (nomes quan ho estas
   programant).
 
 
- 3.- El query ha anat bé i hi ha resultats. Aqui no tens problemes,
+ 3.- El query ha anat be i hi ha resultats. Aqui no tens problemes,
 
 */
 
@@ -328,7 +328,7 @@ bool pluginCAnualesODS::formDatosBalance ( CAnuales tipus )
 }
 
 
-//Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
+//Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
 //Cuentas Anuales PYMES 2008 CAPYMES08
 //Cuentas Anuales Plan General Contable 2008 CAPGC08
@@ -396,7 +396,7 @@ void pluginCAnualesODS::balanceSituacionODS ( CAnuales tipus )
     _depura ( "END pluginCAnualesODS::balanceSituacionODS", 0 );
 }
 
-//Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
+//Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
 //Cuentas Anuales PYMES 2008 CAPYMES08
 //Cuentas Anuales Plan General Contable 2008 CAPGC08
@@ -439,8 +439,8 @@ void pluginCAnualesODS::inicializa ( Bulmacont *bcont )
     connect ( accion2, SIGNAL ( activated() ), this, SLOT ( balsitCAPGC07() ) );
 
     QAction *accion1 = new QAction ( _( "Cuentas A. Abreviadas &Sin lucro" ), 0 );
-    accion1->setStatusTip ( _( "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro" ) );
-    accion1->setWhatsThis ( _( "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro" ) );
+    accion1->setStatusTip ( _( "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro" ) );
+    accion1->setWhatsThis ( _( "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro" ) );
     connect ( accion1, SIGNAL ( activated() ), this, SLOT ( balsitCAAASL() ) );
 
 
@@ -493,7 +493,7 @@ void entryPoint ( Bulmacont *bcont )
 Fixed pluginCAnualesODS::cuentaPositiva ( Fixed valor )
 {
     _depura ( "pluginCAnualesODS::cuentaPositiva", 0 );
-    /// Comprueba que sea un número positivo
+    /// Comprueba que sea un numero positivo
     Fixed resultado;
     if ( valor > Fixed ( "0.00" ) )
         resultado = valor;
@@ -510,7 +510,7 @@ Fixed pluginCAnualesODS::cuentaPositiva ( Fixed valor )
 Fixed pluginCAnualesODS::cuentaNegativa ( Fixed valor )
 {
     _depura ( "pluginCAnualesODS::cuentaNegativa", 0 );
-    /// Comprueba que sea un número negativo
+    /// Comprueba que sea un numero negativo
     Fixed resultado;
     if ( valor < Fixed ( "0.00" ) )
         resultado = valor;
@@ -563,7 +563,7 @@ void pluginCAnualesODS::balsitCAAPGC08()
 
 void pluginCAnualesODS::mensajeAdvertenciaPGC ( CAnuales tipus )
 {
-//Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
+//Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
 //Cuentas Anuales PYMES 2008 CAPYMES08
 //Cuentas Anuales Plan General Contable 2008 CAPGC08

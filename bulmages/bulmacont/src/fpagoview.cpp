@@ -195,7 +195,7 @@ int fpagoview::guardar()
 }
 
 
-/// SLOT que responde a la pulsación del botón de nuevo tipo de IVA. Inserta en la tabla
+/// SLOT que responde a la pulsacion del boton de nuevo tipo de IVA. Inserta en la tabla
 /// de IVAs.
 /**
 **/

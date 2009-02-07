@@ -222,7 +222,7 @@ QString ArticuloList::formaQuery()
 void ArticuloList::imprimir()
 {
     _depura ( "ArticuloList::s_imprimir1", 0 );
-    mui_list->imprimirPDF ( "Listado de artículos" );
+    mui_list->imprimirPDF ( "Listado de articulos" );
     _depura ( "END ArticuloList::s_imprimir1", 0 );
 }
 

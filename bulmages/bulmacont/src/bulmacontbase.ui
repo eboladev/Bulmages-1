@@ -379,7 +379,7 @@
   </action>
   <action name="actionOrganizaci_n_en_Cascada" >
    <property name="text" >
-    <string>Organización en &amp;cascada</string>
+    <string>Organizacion en &amp;cascada</string>
    </property>
   </action>
   <action name="actionAyuda" >

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "&Presupuestos a clientes"
 msgstr ""
 
-#: pluginpresupuesto.cpp:101 pluginpresupuesto.cpp:102 presupuestolist.cpp:285
+#: pluginpresupuesto.cpp:101 pluginpresupuesto.cpp:102 presupuestolist.cpp:296
 #: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
 msgstr ""
@@ -43,7 +43,7 @@ msgid "Concepto descuento"
 msgstr ""
 
 #: listdescpresupuestoview.cpp:44 listlinpresupuestoview.cpp:56
-#: presupuestoview.cpp:72
+#: presupuestoview.cpp:71
 msgid "% Descuento"
 msgstr ""
 
@@ -67,7 +67,7 @@ msgstr ""
 msgid "No de linea"
 msgstr ""
 
-#: listlinpresupuestoview.cpp:51 presupuestolist.cpp:346
+#: listlinpresupuestoview.cpp:51 presupuestolist.cpp:357
 msgid "Descripcion"
 msgstr ""
 
@@ -91,124 +91,128 @@ msgstr ""
 msgid "Orden"
 msgstr ""
 
-#: presupuestoview.cpp:59 presupuestolist.cpp:339
+#: presupuestoview.cpp:58 presupuestolist.cpp:350
 msgid "Presupuesto"
 msgstr ""
 
-#: presupuestoview.cpp:62 presupuestolist.cpp:338
+#: presupuestoview.cpp:61 presupuestolist.cpp:349
 msgid "ID presupuesto"
 msgstr ""
 
-#: presupuestoview.cpp:63 presupuestolist.cpp:341
+#: presupuestoview.cpp:62 presupuestolist.cpp:352
 msgid "Cliente"
 msgstr ""
 
-#: presupuestoview.cpp:64 presupuestolist.cpp:350
+#: presupuestoview.cpp:63 presupuestolist.cpp:361
 msgid "Almacen"
 msgstr ""
 
-#: presupuestoview.cpp:65
+#: presupuestoview.cpp:64
 msgid "Numero de presupuesto"
 msgstr ""
 
-#: presupuestoview.cpp:66
+#: presupuestoview.cpp:65
 msgid "Fecha de creacion"
 msgstr ""
 
-#: presupuestoview.cpp:67
+#: presupuestoview.cpp:66
 msgid "Fecha de vencimiento"
 msgstr ""
 
-#: presupuestoview.cpp:68 presupuestolist.cpp:347
+#: presupuestoview.cpp:67 presupuestolist.cpp:358
 msgid "Persona de contacto"
 msgstr ""
 
-#: presupuestoview.cpp:69
+#: presupuestoview.cpp:68
 msgid "Numero de telefono"
 msgstr ""
 
-#: presupuestoview.cpp:70
+#: presupuestoview.cpp:69
 msgid "Comentarios"
 msgstr ""
 
-#: presupuestoview.cpp:71 ui_albaranclientebase.h:764
+#: presupuestoview.cpp:70 ui_albaranclientebase.h:764
 #: ui_pedidoclientebase.h:692
 msgid "Procesado"
 msgstr ""
 
-#: presupuestoview.cpp:73 presupuestolist.cpp:342
+#: presupuestoview.cpp:72 presupuestolist.cpp:353
 msgid "Referencia"
 msgstr ""
 
-#: presupuestoview.cpp:74
+#: presupuestoview.cpp:73
 msgid "Forma de pago"
 msgstr ""
 
-#: presupuestoview.cpp:75
+#: presupuestoview.cpp:74
 msgid "Trabajador"
 msgstr ""
 
-#: presupuestoview.cpp:104
+#: presupuestoview.cpp:99 presupuestolist.cpp:53 presupuestolist.cpp:85
+msgid "Cliente:"
+msgstr ""
+
+#: presupuestoview.cpp:108
 msgid "Error al crear el presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:102
+#: presupuestolist.cpp:113
 msgid "Todos los presupuestos"
 msgstr ""
 
-#: presupuestolist.cpp:103
+#: presupuestolist.cpp:114
 msgid "Presupuestos procesados"
 msgstr ""
 
-#: presupuestolist.cpp:104
+#: presupuestolist.cpp:115
 msgid "Presupuestos no procesados"
 msgstr ""
 
-#: presupuestolist.cpp:273
+#: presupuestolist.cpp:284
 msgid "Error al editar el presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:299
+#: presupuestolist.cpp:310
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: presupuestolist.cpp:313
+#: presupuestolist.cpp:324
 msgid "Error al borrar el presupuesto"
 msgstr ""
 
-#: presupuestolist.cpp:340
+#: presupuestolist.cpp:351
 msgid "Fecha"
 msgstr ""
 
-#: presupuestolist.cpp:343
+#: presupuestolist.cpp:354
 msgid "Base Imponible"
 msgstr ""
 
-#: presupuestolist.cpp:344
+#: presupuestolist.cpp:355
 msgid "Impuestos"
 msgstr ""
 
-#: presupuestolist.cpp:345
+#: presupuestolist.cpp:356
 msgid "Total"
 msgstr ""
 
-#: presupuestolist.cpp:348
+#: presupuestolist.cpp:359
 msgid "Telefono"
 msgstr ""
 
-#: presupuestolist.cpp:349
+#: presupuestolist.cpp:360
 msgid "Comentario"
 msgstr ""
 
-#: presupuestolist.cpp:351
+#: presupuestolist.cpp:362
 msgid "ID trabajador"
 msgstr ""
 
-#: presupuestolist.cpp:352
+#: presupuestolist.cpp:363
 msgid "ID cliente"
 msgstr ""
 
-#: presupuestolist.cpp:353
+#: presupuestolist.cpp:364
 msgid "ID almacen"
 msgstr ""
 

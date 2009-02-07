@@ -28,14 +28,14 @@
    <item>
     <widget class="QRadioButton" name="mui_pendientes" >
      <property name="text" >
-      <string>Inclou només les referències &amp;pendents</string>
+      <string>Inclou nomes les referències &amp;pendents</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QRadioButton" name="mui_todos" >
      <property name="text" >
-      <string>Inclou &amp;totes les referències pendents i també les cobrades (totes o entre les dates següents)</string>
+      <string>Inclou &amp;totes les referències pendents i tambe les cobrades (totes o entre les dates següents)</string>
      </property>
      <property name="checked" >
       <bool>true</bool>
@@ -109,7 +109,7 @@
      <item row="0" column="2" >
       <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>&amp;Bé</string>
+        <string>&amp;Be</string>
        </property>
        <property name="default" >
         <bool>true</bool>

@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Configuración</string>
+   <string>Configuracion</string>
   </property>
   <widget class="QTabWidget" name="tabWidget" >
    <property name="geometry" >
@@ -147,7 +147,7 @@
        </rect>
       </property>
       <property name="text" >
-       <string>Tamaño:</string>
+       <string>Tamanyo:</string>
       </property>
       <property name="wordWrap" >
        <bool>false</bool>
@@ -752,7 +752,7 @@
    </widget>
    <widget class="QWidget" name="TabPage" >
     <attribute name="title" >
-     <string>Facturación</string>
+     <string>Facturacion</string>
     </attribute>
     <widget class="QPushButton" name="pushButtonD_X" >
      <property name="geometry" >

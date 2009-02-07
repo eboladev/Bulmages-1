@@ -89,7 +89,7 @@ void myplugin4::inicializa ( Bulmacont *bges )
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
     } // end if
 
-    QAction *accion = new QAction ( _("&Balance jerárquico"), 0 );
+    QAction *accion = new QAction ( _("&Balance jerarquico"), 0 );
     accion->setStatusTip ( _("Permite realizar balances") );
     accion->setWhatsThis ( _("Podra disponer de la informacion del balance") );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );

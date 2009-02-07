@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ricardo Díaz de la Calle                        *
+ *   Copyright (C) 2008 by Ricardo Diaz de la Calle                        *
  *   richard@galdi.es                                                      *
  *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
@@ -70,7 +70,7 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
 
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
-    setTitleName ( trUtf8 ( "Balance Jerárquico" ) );
+    setTitleName ( trUtf8 ( "Balance Jerarquico" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
@@ -270,7 +270,7 @@ bool BalanceTreeView::generaBalance()
 {
     _depura ( "BalanceTreeView::generaBalance", 0 );
 
-    /// Vamos a crear una estructura tipo árbol (usando la clase Arbol).
+    /// Vamos a crear una estructura tipo arbol (usando la clase Arbol).
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     /// numero de cuentas de nivel 2) y las vamos creando.
@@ -291,8 +291,8 @@ bool BalanceTreeView::generaBalance()
         ramas->siguienteregistro();
     } // end while
 
-    /// Inicializamos el árbol desde sus raices (desde sus cuentas de nivel 2)
-    /// con el resto de cuentas (las hojas del árbol)
+    /// Inicializamos el arbol desde sus raices (desde sus cuentas de nivel 2)
+    /// con el resto de cuentas (las hojas del arbol)
     arbol->inicializa ( ramas );
 
     /// Seguidamente, recopilamos todos los apuntes agrupados por cuenta para poder
@@ -337,7 +337,7 @@ bool BalanceTreeView::generaBalance()
         return 0;
     }
 
-    /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del árbol.
+    /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del arbol.
     while ( !hojas->eof() ) {
         arbol->actualizaHojas ( hojas );
         hojas->siguienteregistro();
@@ -360,7 +360,7 @@ void BalanceTreeView::presentar()
         QTreeWidgetItem* it;
         QList <QTreeWidgetItem *> ptrList, ptrIt;
         for ( int i = 0; i <= empresaBase()->numdigitosempresa(); i++ )
-            ptrIt << NULL; // Reservamos las posiciones de la lista que coincidirán con los niveles de cuentas
+            ptrIt << NULL; // Reservamos las posiciones de la lista que coincidiran con los niveles de cuentas
         Fixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
         QString cinicial = m_codigoinicial->codigocuenta().left ( 1 );
         if ( cinicial == "" ) cinicial = "10";
@@ -396,7 +396,7 @@ void BalanceTreeView::presentar()
                     thaber = thaber + Fixed ( haber );
                 }
 
-                /// Las variables de las filas en formato español.
+                /// Las variables de las filas en formato espanyol.
                 saldoant = spain.toString ( saldoant.toDouble(), 'f', 2 );
                 debe = spain.toString ( debe.toDouble(), 'f', 2 );
                 haber = spain.toString ( haber.toDouble(), 'f', 2 );
@@ -405,16 +405,16 @@ void BalanceTreeView::presentar()
                 haberej = spain.toString ( haberej.toDouble(), 'f', 2 );
                 saldoej = spain.toString ( saldoej.toDouble(), 'f', 2 );
 
-                /// Ahora, vamos a pintar en el Widget cada línea.
+                /// Ahora, vamos a pintar en el Widget cada linea.
                 /// Formamos la l&iacute;nea.
                 datos << cuenta << denominacion << saldoant << debe << haber << saldo << debeej << haberej << saldoej;
 
-                /// Si se van mostrar también las cuentas superiores, habrá que
-                /// jerarquizar el árbol. Sino, se pinta cada línea al mismo nivel.
+                /// Si se van mostrar tambien las cuentas superiores, habra que
+                /// jerarquizar el arbol. Sino, se pinta cada linea al mismo nivel.
                 if ( jerarquico ) { /// jerarquizando...
                     nivelCta = cuenta.length();
                     if ( nivelCta == 2 ) {
-                        /// La hoja cuelga de la raíz principal.
+                        /// La hoja cuelga de la raiz principal.
                         it = new QTreeWidgetItem ( listado, datos );
                         ptrList.append ( it );
                     } else {
@@ -430,7 +430,7 @@ void BalanceTreeView::presentar()
                 } // end if
                 datos.clear();
 
-                /// Formateamos un poquito la información mostrada.
+                /// Formateamos un poquito la informacion mostrada.
                 /// Establecemos los alineados del nuevo elemento creado.
 
                 for ( int col = 0; col < it->columnCount(); col++ ) {

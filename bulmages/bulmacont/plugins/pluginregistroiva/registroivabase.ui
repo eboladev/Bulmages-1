@@ -400,7 +400,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text" >
-                 <string>Fecha recepción:</string>
+                 <string>Fecha recepcion:</string>
                 </property>
                </widget>
               </item>

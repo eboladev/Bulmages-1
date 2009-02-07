@@ -76,7 +76,7 @@ bool posibleAlias(QString alias, EmpresaBase *eb) {
         g_minLenAlias = cur->valorInt("minlenalias");
         g_maxLenAlias = cur->valorInt("maxlenalias");
 
-        // si la taula alias és buida posem un max impossible per evitar tornar 
+        // si la taula alias es buida posem un max impossible per evitar tornar 
         // a buscar fins que en donin un d'alta (en l'alta posen NULL a g_maxAlias)
         if (g_maxAlias == NULL) {
             g_maxAlias="";
@@ -168,10 +168,10 @@ int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArti
 	if ( posibleAlias ( val, busc->empresaBase() ) )
 	{
                 // busco amb l'operador que compara sense locale ~=~ per aprofitar 
-                // els índexos insensibles a locale (si fossin sensibles a 
-                // locale i no hi hagués el mateix locale al servidor PostgreSQL
+                // els indexos insensibles a locale (si fossin sensibles a 
+                // locale i no hi hagues el mateix locale al servidor PostgreSQL
                 // que al client no funcionaria posibleAlias perquè calcularia 
-                // els mínims i màxims de cadalias amb un ordre de col·lació 
+                // els minims i màxims de cadalias amb un ordre de col·lacio 
                 // i compararia el valor entrat amb un altre.
 		QString valors[1] = {val};
 		QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";

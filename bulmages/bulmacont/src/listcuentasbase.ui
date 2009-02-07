@@ -419,7 +419,7 @@
      <item>
       <widget class="QLabel" name="TextLabel2" >
        <property name="text" >
-        <string>Búsqueda:</string>
+        <string>Busqueda:</string>
        </property>
       </widget>
      </item>

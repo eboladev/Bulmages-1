@@ -88,7 +88,7 @@ BalancePrintView::~BalancePrintView()
     cofinal = Indica el c&oacute;digo de cuenta para no mostrar m&aacute;s balances.
     finicial = Indica la fecha a partir de la cual comenzar los saldos.
     ffinal = Indica la fecha para terminar de contar los saldos.
-    arbol = Indica si hay que representar el balance en forma de árbol o no. */
+    arbol = Indica si hay que representar el balance en forma de arbol o no. */
 /**
 **/
 void BalancePrintView::inicializa1 ( QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol )
@@ -237,7 +237,7 @@ void BalancePrintView::presentar ( const char* tipus )
                 /// Presentaci&oacute;n txt normal.
                 fitxersortidatxt << "                                        Balance \n" ;
                 fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() << "   Fecha Final: " << ffinal.toAscii().constData() << endl;
-                fitxersortidatxt << "Cuenta            Denominación                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+                fitxersortidatxt << "Cuenta            Denominacion                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
                 fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
             } // end if
 

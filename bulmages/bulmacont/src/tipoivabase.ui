@@ -212,7 +212,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Información del tipo de IVA:</string>
+      <string>Informacion del tipo de IVA:</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >

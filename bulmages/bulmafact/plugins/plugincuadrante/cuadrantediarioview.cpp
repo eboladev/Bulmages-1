@@ -76,8 +76,8 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
         mui_listvalidaciones->addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , _( "Almacen" ) );
 
         /*
-            mui_listvalidaciones->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura Mañanas" ) );
-            mui_listvalidaciones->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre Mañanas" ) );
+            mui_listvalidaciones->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura Manyanas" ) );
+            mui_listvalidaciones->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre Manyanas" ) );
             mui_listvalidaciones->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Apertura Tardes" ) );
             mui_listvalidaciones->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "Cierre Tardes" ) );
             mui_listvalidaciones->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Audicion" ) );
@@ -115,7 +115,7 @@ CuadranteDiarioView::~CuadranteDiarioView()
 }
 
 
-/** Inicializa la selección de trabajadores
+/** Inicializa la seleccion de trabajadores
 */
 /**
 **/
@@ -153,7 +153,7 @@ void CuadranteDiarioView::inicializaTrabajadores()
 }
 
 
-/** Inicializa la selección de trabajadores
+/** Inicializa la seleccion de trabajadores
 */
 /**
 \param dateorig

@@ -72,8 +72,8 @@ void InformeQToolButton::setBoton()
     _depura ( "InformeQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Informe en Hoja de Cálculo" );
-    setToolTip ( "Informe en Hoja de Cálculo" );
+    setStatusTip ( "Informe en Hoja de Calculo" );
+    setToolTip ( "Informe en Hoja de Calculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -127,7 +127,7 @@ void InformeQToolButton::click()
     fitxersortidatxt += "$doc->oooSet(\"comments\", \"Informe para Clientes\");\n";
     fitxersortidatxt += "$doc->oooSet(\"author\", \"ooolib Example\");\n";
     fitxersortidatxt += "$doc->oooSet(\"meta1-name\", \"Programmer\");\n";
-    fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borrás\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borras\");\n";
     fitxersortidatxt += "\n";
 
     fitxersortidatxt += "$doc->oooSet(\"cell-auto\", \"1,0\");\n";
@@ -326,8 +326,8 @@ void InformeProveedorQToolButton::setBoton()
     _depura ( "InformeProveedorQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Informe en Hoja de Cálculo" );
-    setToolTip ( "Informe en Hoja de Cálculo" );
+    setStatusTip ( "Informe en Hoja de Calculo" );
+    setToolTip ( "Informe en Hoja de Calculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -381,7 +381,7 @@ void InformeProveedorQToolButton::click()
     fitxersortidatxt += "$doc->oooSet(\"comments\", \"Informe de Proveedores\");\n";
     fitxersortidatxt += "$doc->oooSet(\"author\", \"ooolib Example\");\n";
     fitxersortidatxt += "$doc->oooSet(\"meta1-name\", \"Programmer\");\n";
-    fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borrás\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borras\");\n";
     fitxersortidatxt += "\n";
 
     fitxersortidatxt += "$doc->oooSet(\"cell-auto\", \"1,0\");\n";

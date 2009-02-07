@@ -256,7 +256,7 @@
    <item row="3" column="1" >
     <widget class="QLabel" name="textLabel2" >
      <property name="text" >
-      <string>&lt;p align="right">Código&lt;/p></string>
+      <string>&lt;p align="right">Codigo&lt;/p></string>
      </property>
     </widget>
    </item>
@@ -382,14 +382,14 @@
      <item>
       <widget class="QLabel" name="textLabel3" >
        <property name="text" >
-        <string>Código</string>
+        <string>Codigo</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="textLabel3_2" >
        <property name="text" >
-        <string>Descripción</string>
+        <string>Descripcion</string>
        </property>
       </widget>
      </item>

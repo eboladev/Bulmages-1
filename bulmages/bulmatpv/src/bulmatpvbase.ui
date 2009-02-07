@@ -45,7 +45,7 @@
   </action>
   <action name="actionA_adir_Cliente_2" >
    <property name="text" >
-    <string>Añadir</string>
+    <string>Anyadir</string>
    </property>
   </action>
   <action name="actionModificar" >
@@ -60,12 +60,12 @@
   </action>
   <action name="actionIdentificaci_n" >
    <property name="text" >
-    <string>Identificación</string>
+    <string>Identificacion</string>
    </property>
   </action>
   <action name="actionEstad_sticas" >
    <property name="text" >
-    <string>Estadísticas</string>
+    <string>Estadisticas</string>
    </property>
   </action>
   <action name="actionCuentas_Pendientes" >

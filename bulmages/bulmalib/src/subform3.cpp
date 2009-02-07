@@ -1343,7 +1343,7 @@ SDBRecord *SubForm3::lineaact()
 }
 
 
-/// Devuelve la linea especificada o NULL si ésta no existe.
+/// Devuelve la linea especificada o NULL si esta no existe.
 /**
 \param row
 \return
@@ -1628,7 +1628,7 @@ QString SubForm3::DBvalue ( const QString &campo, int row )
 /**
 \param campo Nombre de la columna que debe cambiarse.
 \param row   Fila correspondiente a la casilla
-\param valor Valor que tomará la casilla
+\param valor Valor que tomara la casilla
 **/
 void SubForm3::setDBvalue ( const QString &campo, int row, const QString &valor )
 {

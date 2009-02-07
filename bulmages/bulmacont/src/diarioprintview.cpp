@@ -199,7 +199,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titoldiari> Llibre diari <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"6\" class=periodediari> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripció</td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
+                fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripcio</td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
             } // end if
             QString query = montaQuery();
             empresaBase() ->begin();
@@ -347,11 +347,11 @@ void DiarioPrintView::presentar ( const char *tipus )
             empresaBase() ->commit();
 
             if ( txtapren ) {
-                fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentació text format aprenentatge
+                fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentacio text format aprenentatge
                 filetxt.close();
             } // end if
             if ( htmlapren ) {
-                fitxersortidahtml << "<tr><td colspan=\"7\"  class=liniadiariapren>\n_____________________________________________________________________________________________________________\n<hr></td></tr>\n</table>\n</body></html>\n";     //presentació html format aprenentatge
+                fitxersortidahtml << "<tr><td colspan=\"7\"  class=liniadiariapren>\n_____________________________________________________________________________________________________________\n<hr></td></tr>\n</table>\n</body></html>\n";     //presentacio html format aprenentatge
                 filehtml.close();
             } // end if
             if ( txtapren ) {

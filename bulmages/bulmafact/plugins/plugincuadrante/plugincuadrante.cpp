@@ -160,14 +160,14 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "esxtoy en la clase almacen", 0 );
 
-    alm->addDBCampo ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Mañana" );
-    alm->addDBCampo ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Mañana" );
+    alm->addDBCampo ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Manyana" );
+    alm->addDBCampo ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Manyana" );
     alm->addDBCampo ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Tarde" );
     alm->addDBCampo ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Tarde" );
 
 
 // ---------------
-    /// Creamos el horario de mañana.
+    /// Creamos el horario de manyana.
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
     hboxLayout160->setMargin ( 0 );
@@ -176,7 +176,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     /// Apertura
     QLabel *textLabel2_9_26 = new QLabel ( alm->mui_frameplugin );
     textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
-    textLabel2_9_26->setText ( "Apertura Mañanas" );
+    textLabel2_9_26->setText ( "Apertura Manyanas" );
     hboxLayout160->addWidget ( textLabel2_9_26 );
 
     QLineEdit *horain = new QLineEdit ( alm );
@@ -185,7 +185,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 
     /// Cierre
     QLabel *textLabel2_9_27 = new QLabel ( alm->mui_frameplugin );
-    textLabel2_9_27->setText ( "Cierre Mañanas" );
+    textLabel2_9_27->setText ( "Cierre Manyanas" );
     hboxLayout160->addWidget ( textLabel2_9_27 );
 
     QLineEdit *horafin = new QLineEdit ( alm );

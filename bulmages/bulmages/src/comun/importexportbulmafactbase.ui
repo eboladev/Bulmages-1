@@ -122,7 +122,7 @@
    <item>
     <widget class="QCheckBox" name="m_test" >
      <property name="text" >
-      <string>Realizar sólo &amp;una comprobación.</string>
+      <string>Realizar solo &amp;una comprobacion.</string>
      </property>
     </widget>
    </item>

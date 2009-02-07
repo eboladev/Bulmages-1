@@ -109,10 +109,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nueva amortización</string>
+           <string>Nueva amortizacion</string>
           </property>
           <property name="whatsThis" >
-           <string>Nueva amortización</string>
+           <string>Nueva amortizacion</string>
           </property>
           <property name="text" >
            <string/>
@@ -149,7 +149,7 @@
            <string>Borrar amortizacion</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar amortización</string>
+           <string>Borrar amortizacion</string>
           </property>
           <property name="text" >
            <string/>
@@ -186,7 +186,7 @@
            <string>Borrar amortizacion</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar amortización</string>
+           <string>Borrar amortizacion</string>
           </property>
           <property name="text" >
            <string/>

@@ -688,7 +688,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
         } // end if
         delete cursoraux;
 
-        /// Presentamos la información inicial y de la cuenta.
+        /// Presentamos la informacion inicial y de la cuenta.
         cursor2 *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
         if ( !cursorcta ) throw - 1;
 

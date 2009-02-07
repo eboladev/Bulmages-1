@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,92 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pagoview.cpp:60
+#: pagoview.cpp:59
 msgid "Pago"
 msgstr ""
 
-#: pagoview.cpp:63 pagoslist.cpp:235
+#: pagoview.cpp:62 pagoslist.cpp:246
 msgid "Id pago"
 msgstr ""
 
-#: pagoview.cpp:64 pagoslist.cpp:236
+#: pagoview.cpp:63 pagoslist.cpp:247
 msgid "Id proveedor"
 msgstr ""
 
-#: pagoview.cpp:65
+#: pagoview.cpp:64
 msgid "Previcion de pago"
 msgstr ""
 
-#: pagoview.cpp:66 pagoslist.cpp:241
+#: pagoview.cpp:65 pagoslist.cpp:252
 msgid "Fecha de pago"
 msgstr ""
 
-#: pagoview.cpp:67 pagoslist.cpp:244
+#: pagoview.cpp:66 pagoslist.cpp:255
 msgid "Referencia de pago"
 msgstr ""
 
-#: pagoview.cpp:68 pagoslist.cpp:242
+#: pagoview.cpp:67 pagoslist.cpp:253
 msgid "Cantidad"
 msgstr ""
 
-#: pagoview.cpp:69
+#: pagoview.cpp:68
 msgid "Comentario del pago"
 msgstr ""
 
-#: pagoview.cpp:70 pagoslist.cpp:243
+#: pagoview.cpp:69 pagoslist.cpp:254
 msgid "Banco"
 msgstr ""
 
-#: pagoview.cpp:76
+#: pagoview.cpp:72 pagoslist.cpp:49 pagoslist.cpp:74
+msgid "Proveedor:"
+msgstr ""
+
+#: pagoview.cpp:81
 msgid "Error al crear el pago"
 msgstr ""
 
-#: pagoslist.cpp:176 pluginpagos.cpp:97 pluginpagos.cpp:98
+#: pagoslist.cpp:187 pluginpagos.cpp:97 pluginpagos.cpp:98
 #: ui_pagoslistbase.h:371
 msgid "Pagos a proveedores"
 msgstr ""
 
-#: pagoslist.cpp:186
+#: pagoslist.cpp:197
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: pagoslist.cpp:198
+#: pagoslist.cpp:209
 msgid "Error al borrar el pago"
 msgstr ""
 
-#: pagoslist.cpp:237
+#: pagoslist.cpp:248
 msgid "Nombre proveedor"
 msgstr ""
 
-#: pagoslist.cpp:238
+#: pagoslist.cpp:249
 msgid "C.I.F. proveedor"
 msgstr ""
 
-#: pagoslist.cpp:239
+#: pagoslist.cpp:250
 msgid "Telefono proveedor"
 msgstr ""
 
-#: pagoslist.cpp:240
+#: pagoslist.cpp:251
 msgid "Email proveedor"
 msgstr ""
 
-#: pagoslist.cpp:245
+#: pagoslist.cpp:256
 msgid "Prevision pago"
 msgstr ""
 
-#: pagoslist.cpp:246
+#: pagoslist.cpp:257
 msgid "Comentario pago"
 msgstr ""
 
-#: pagoslist.cpp:247
+#: pagoslist.cpp:258
 msgid "Id trabajador"
 msgstr ""
 
-#: pagoslist.cpp:248
+#: pagoslist.cpp:259
 msgid "Nombre de trabajador"
 msgstr ""
 
-#: pagoslist.cpp:249
+#: pagoslist.cpp:260
 msgid "Apellidos trabajador"
 msgstr ""
 

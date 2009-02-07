@@ -140,10 +140,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Ver Albarán</string>
+           <string>Ver Albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Ver Albarán</string>
+           <string>Ver Albaran</string>
           </property>
           <property name="text" >
            <string/>

@@ -66,7 +66,7 @@ bool ImportBalance::startElement ( const QString &a, const QString &b, const QSt
     _depura ( "END ImportBalance::startElement", 0 );
 }
 
-/// Dependiendo del paso en que nos encontremos hace la llamada a una función u a otra.
+/// Dependiendo del paso en que nos encontremos hace la llamada a una funcion u a otra.
 /**
 \param a
 \param b
@@ -92,7 +92,7 @@ bool ImportBalance::endElement ( const QString &a, const QString &b, const QStri
     Adem&aacute;s se asigna la variable global m_tag con el nombre del tag para poder
     hacer el almacenamiento de datos en el caso de que sea un tag secundario.
     \param qName el nombre del tag que se ha encontrado.
-    \return TRUE para no detener la ejecución del parser en caso de error. */
+    \return TRUE para no detener la ejecucion del parser en caso de error. */
 bool ImportBalance::startElement1 ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
     _depura ( "ImportBalance::startElement1", 0 );
@@ -130,14 +130,14 @@ bool ImportBalance::startElement1 ( const QString&, const QString&, const QStrin
 /// En el primer paso al encontrar un tag de cierre o bien es el de balance o bien es el
 /// de mpatrimonial.
 /** Lo que hacemos en ambos casos es hacer un update de la informaci&oacute;n puesto
-    que toda la información que precisamos ya ha sido extraida del archivo XML.
+    que toda la informacion que precisamos ya ha sido extraida del archivo XML.
     Al finalizar el m&eacute;todo establecemos el campo m_tag a "" para que no se
     asignen posibles transfugas a este valor el mapa m_identmasasp guarda la
     correlaci&oacute;n entre identificadores de masa para que las que son valores
     argumentados en el paso 1 puedan coincidir. (Es el problema de los identificadores
     autonum&eacute;ricos).
     \param qName El nombre del tag cerrado.
-    \return TRUE para no detener la ejecución del parser SAX. */
+    \return TRUE para no detener la ejecucion del parser SAX. */
 bool ImportBalance::endElement1 ( const QString&, const QString&, const QString& qName )
 {
     _depura ( "ImportBalance::endElement1", 0 );
@@ -214,7 +214,7 @@ bool ImportBalance::startElement2 ( const QString&, const QString&, const QStrin
     sencillos. Se usa el mapa m_identmasasp para saber que identificadores de masa se
     han usado en el paso 0.
     \param qName contiene el valor del tag que se acaba de cerrar.
-    \return TRUE para no detener nunca la ejecución del algoritmo.  */
+    \return TRUE para no detener nunca la ejecucion del algoritmo.  */
 bool ImportBalance::endElement2 ( const QString&, const QString&, const QString &qName )
 {
     _depura ( "ImportBalance::endElement2", 0 );
@@ -322,7 +322,7 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
 /// tupla (tag, valor) en el mapa m_tvalores.
 /** Para que pueda ser utilizado posteriormente
     \param ch El valor del tag abierto.
-    \return TRUE porque no nos interesa abortar la ejecución del algoritmo. */
+    \return TRUE porque no nos interesa abortar la ejecucion del algoritmo. */
 bool ImportBalance::characters ( const QString& ch )
 {
     _depura ( "ImportBalance::characters", 0 );

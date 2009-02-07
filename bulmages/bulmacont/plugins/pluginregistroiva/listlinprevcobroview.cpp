@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/// @todo Hay que hacer dos líneas de presentación (una para el listado en las facturas y otro para el listado por si solo)
+/// @todo Hay que hacer dos lineas de presentacion (una para el listado en las facturas y otro para el listado por si solo)
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
@@ -315,7 +315,7 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     } // end if
     if ( opcion == menugenerarasiento ) {
         /// Poner aqu&iacute; el c&oacute;digo necesario para generar el asiento.
-        /// Intentamos la creación del asiento y si funciona repintamos todo.
+        /// Intentamos la creacion del asiento y si funciona repintamos todo.
         if ( linea->creaPago() ) {
             pintalistlinprevcobro();
         } // end if
@@ -380,7 +380,7 @@ void ListLinPrevCobroView::pintalinlistlinprevcobro ( int pos )
 }
 
 
-/// Este m&eacute;todo se encarga de asegurar que la posición del foco es la correcta para
+/// Este m&eacute;todo se encarga de asegurar que la posicion del foco es la correcta para
 /// la tabla.
 /**
 \param row
@@ -536,7 +536,7 @@ QString ListLinPrevCobroView::searchCuenta()
 /**
   * SLOT que respoonde a la creacion de un asiento de cobro o pago a partir de la gestion de
   * cobros y pagos.
-  * Descripción:
+  * Descripcion:
   * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
   * 2.- Determinamos si es un cobro o un pago.
   * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios

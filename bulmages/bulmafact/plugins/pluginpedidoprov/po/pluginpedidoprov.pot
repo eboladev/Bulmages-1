@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgid "% Descuento"
 msgstr ""
 
 #: listdescpedidoproveedorview.cpp:44 listlinpedidoproveedorview.cpp:51
-#: pedidosproveedorlist.cpp:314
+#: pedidosproveedorlist.cpp:325
 msgid "Id pedido"
 msgstr ""
 
@@ -85,11 +85,11 @@ msgstr ""
 msgid "Id pedido proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:316
+#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:327
 msgid "Id proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:317
+#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:328
 msgid "Id almacen"
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Numero pedido proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:304
+#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:315
 msgid "Fecha pedido proveedor"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Descripcion pedido"
 msgstr ""
 
-#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:305
+#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:316
 msgid "Referencia pedido"
 msgstr ""
 
@@ -121,108 +121,113 @@ msgstr ""
 msgid "Id forma de pago"
 msgstr ""
 
-#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:315
+#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:326
 msgid "Id trabajador"
 msgstr ""
 
-#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:311
+#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:322
 msgid "Persona de contacto proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:312
+#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:323
 msgid "Telefono proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:94
+#: pedidoproveedorview.cpp:89 pedidosproveedorlist.cpp:46
+#: pedidosproveedorlist.cpp:72
+msgid "Proveedor:"
+msgstr ""
+
+#: pedidoproveedorview.cpp:100
 msgid "Error al crear el pedido a proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:233
+#: pedidoproveedorview.cpp:239
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: pedidoproveedorview.cpp:332
+#: pedidoproveedorview.cpp:338
 msgid "Descuento"
 msgstr ""
 
-#: pedidoproveedorview.cpp:333
+#: pedidoproveedorview.cpp:339
 msgid "Porcentaje"
 msgstr ""
 
-#: pedidoproveedorview.cpp:334
+#: pedidoproveedorview.cpp:340
 msgid "Total"
 msgstr ""
 
-#: pedidoproveedorview.cpp:364
+#: pedidoproveedorview.cpp:370
 msgid "Base "
 msgstr ""
 
-#: pedidoproveedorview.cpp:377
+#: pedidoproveedorview.cpp:383
 msgid "Iva "
 msgstr ""
 
-#: pedidoproveedorview.cpp:380
+#: pedidoproveedorview.cpp:386
 msgid "Total "
 msgstr ""
 
-#: pedidosproveedorlist.cpp:101
+#: pedidosproveedorlist.cpp:112
 msgid "Todos los pedidos"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:102
+#: pedidosproveedorlist.cpp:113
 msgid "Pedidos procesados"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:103
+#: pedidosproveedorlist.cpp:114
 msgid "Pedidos no procesados"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:177 pluginpedidoprov.cpp:98
+#: pedidosproveedorlist.cpp:188 pluginpedidoprov.cpp:98
 #: pluginpedidoprov.cpp:99 ui_pedidosproveedorlistbase.h:355
 msgid "Pedidos a proveedores"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:191
+#: pedidosproveedorlist.cpp:202
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:206
+#: pedidosproveedorlist.cpp:217
 msgid "Error al borrar el pedido a proveedor"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:233
+#: pedidosproveedorlist.cpp:244
 msgid "Error al cargar el pedido proveedor"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:302
+#: pedidosproveedorlist.cpp:313
 msgid "Numero de pedido"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:303
+#: pedidosproveedorlist.cpp:314
 msgid "Nombre de proveedor"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:306
+#: pedidosproveedorlist.cpp:317
 msgid "Base Imponible"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:307
+#: pedidosproveedorlist.cpp:318
 msgid "Impuestos"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:308
+#: pedidosproveedorlist.cpp:319
 msgid "Total pedido"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:309
+#: pedidosproveedorlist.cpp:320
 msgid "Descripcion pedido proveedor"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:310
+#: pedidosproveedorlist.cpp:321
 msgid "Codigo de almacen"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:313
+#: pedidosproveedorlist.cpp:324
 msgid "Comentario pedido proveedor"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgstr ""
 msgid "No de linea"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:51 pedidosclientelist.cpp:325
+#: listlinpedidoclienteview.cpp:51 pedidosclientelist.cpp:336
 msgid "Descripcion"
 msgstr ""
 
@@ -88,11 +88,11 @@ msgstr ""
 msgid "Identificador"
 msgstr ""
 
-#: pedidoclienteview.cpp:60 pedidosclientelist.cpp:320
+#: pedidoclienteview.cpp:60 pedidosclientelist.cpp:331
 msgid "Cliente"
 msgstr ""
 
-#: pedidoclienteview.cpp:61 pedidosclientelist.cpp:329
+#: pedidoclienteview.cpp:61 pedidosclientelist.cpp:340
 msgid "Almacen"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Identificador presupuesto"
 msgstr ""
 
-#: pedidoclienteview.cpp:64 pedidosclientelist.cpp:319
+#: pedidoclienteview.cpp:64 pedidosclientelist.cpp:330
 msgid "Fecha"
 msgstr ""
 
@@ -120,7 +120,7 @@ msgstr ""
 msgid "Contacto"
 msgstr ""
 
-#: pedidoclienteview.cpp:68 pedidosclientelist.cpp:327
+#: pedidoclienteview.cpp:68 pedidosclientelist.cpp:338
 msgid "Telefono"
 msgstr ""
 
@@ -132,11 +132,16 @@ msgstr ""
 msgid "Procesado"
 msgstr ""
 
-#: pedidoclienteview.cpp:71 pedidosclientelist.cpp:321
+#: pedidoclienteview.cpp:71 pedidosclientelist.cpp:332
 msgid "Referencia"
 msgstr ""
 
-#: pedidoclienteview.cpp:92
+#: pedidoclienteview.cpp:91 pedidosclientelist.cpp:52
+#: pedidosclientelist.cpp:84
+msgid "Cliente:"
+msgstr ""
+
+#: pedidoclienteview.cpp:97
 msgid "Error al crear el pedido cliente"
 msgstr ""
 
@@ -170,7 +175,7 @@ msgstr ""
 msgid "&Pedidos de clientes"
 msgstr ""
 
-#: pluginpedido.cpp:100 pluginpedido.cpp:101 pedidosclientelist.cpp:230
+#: pluginpedido.cpp:100 pluginpedido.cpp:101 pedidosclientelist.cpp:241
 #: ui_pedidosclientelistbase.h:376
 msgid "Pedidos de clientes"
 msgstr ""
@@ -183,67 +188,67 @@ msgstr ""
 msgid "Nueva pedido de cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:99
+#: pedidosclientelist.cpp:110
 msgid "Todos los pedidos"
 msgstr ""
 
-#: pedidosclientelist.cpp:100
+#: pedidosclientelist.cpp:111
 msgid "Pedidos procesados"
 msgstr ""
 
-#: pedidosclientelist.cpp:101
+#: pedidosclientelist.cpp:112
 msgid "Pedidos no procesados"
 msgstr ""
 
-#: pedidosclientelist.cpp:218
+#: pedidosclientelist.cpp:229
 msgid "Error al cargar el pedido cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:244
+#: pedidosclientelist.cpp:255
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: pedidosclientelist.cpp:259
+#: pedidosclientelist.cpp:270
 msgid "Error al borrar el pedido de cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:317
+#: pedidosclientelist.cpp:328
 msgid "ID pedido"
 msgstr ""
 
-#: pedidosclientelist.cpp:318
+#: pedidosclientelist.cpp:329
 msgid "Pedido"
 msgstr ""
 
-#: pedidosclientelist.cpp:322
+#: pedidosclientelist.cpp:333
 msgid "Base Imponible"
 msgstr ""
 
-#: pedidosclientelist.cpp:323
+#: pedidosclientelist.cpp:334
 msgid "Impuestos"
 msgstr ""
 
-#: pedidosclientelist.cpp:324
+#: pedidosclientelist.cpp:335
 msgid "Total"
 msgstr ""
 
-#: pedidosclientelist.cpp:326
+#: pedidosclientelist.cpp:337
 msgid "Persona de contacto"
 msgstr ""
 
-#: pedidosclientelist.cpp:328
+#: pedidosclientelist.cpp:339
 msgid "Comentario"
 msgstr ""
 
-#: pedidosclientelist.cpp:330
+#: pedidosclientelist.cpp:341
 msgid "ID trabajador"
 msgstr ""
 
-#: pedidosclientelist.cpp:331
+#: pedidosclientelist.cpp:342
 msgid "ID cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:332
+#: pedidosclientelist.cpp:343
 msgid "ID almacen"
 msgstr ""
 

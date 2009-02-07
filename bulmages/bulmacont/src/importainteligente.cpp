@@ -26,9 +26,9 @@
 
 /// Constructor de la clase que inicializa las variables y coge los datos de base de
 /// datos a usar y empresa.
-/** \param emp Empresa que construye el objeto y que sirve para inicialización de la
+/** \param emp Empresa que construye el objeto y que sirve para inicializacion de la
     base de datos.
-    Contiene la implementación de la clase importainteligente que sirve para importar
+    Contiene la implementacion de la clase importainteligente que sirve para importar
     ficheros de XML a la base de datos de BulmaCont. */
 importainteligente::importainteligente ( Empresa *emp ) : QXmlDefaultHandler(), PEmpresaBase ( emp )
 {
@@ -88,7 +88,7 @@ bool importainteligente::startElement ( const QString&, const QString&, const QS
     que tag ha finalizado y har&aacute; los UPDATES necesarios en la
     base de datos con los valores almacenados en el mapa \ref tvalores.
     La variable global tag es puesta a "" para que no se hagan consideraciones
-    en los demás elementos de que se est&aacute; en el tag que acaba de cerrarse.
+    en los demas elementos de que se est&aacute; en el tag que acaba de cerrarse.
     \todo Se deber&iacute;a vaciar el Mapa \ref tvalores para que no haya propagaci&oacute;n
     de valores en caso de ausencia de elementos en el XML.
     \todo Deber&iacute;a usarse una pila en lugar de la variable global tag.

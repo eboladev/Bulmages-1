@@ -439,7 +439,7 @@
          <item>
           <widget class="QLabel" name="label_7" >
            <property name="text" >
-            <string>Nº Minimo lineas ticket</string>
+            <string>Num Minimo lineas ticket</string>
            </property>
           </widget>
          </item>

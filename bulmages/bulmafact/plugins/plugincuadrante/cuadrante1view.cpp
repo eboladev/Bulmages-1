@@ -59,8 +59,8 @@ Cuadrante1View::Cuadrante1View ( Company *comp, QWidget *parent )
         addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, _( "Almacen" ) );
         addDBCampo ( "fechacuadrante", DBCampo::DBdate, DBCampo::DBNoSave  , _( "Fecha" ) );
         addDBCampo ( "comentcuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
-        addDBCampo ( "aperturacuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Apertura mañana" ) );
-        addDBCampo ( "cierrecuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Cierre mañana" ) );
+        addDBCampo ( "aperturacuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Apertura manyana" ) );
+        addDBCampo ( "cierrecuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Cierre manyana" ) );
         addDBCampo ( "apertura1cuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Apartura tarde" ) );
         addDBCampo ( "cierre1cuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Cierre tarde" ) );
         addDBCampo ( "fiestacuadrante", DBCampo::DBboolean, DBCampo::DBNothing, _( "Festivo" ) );

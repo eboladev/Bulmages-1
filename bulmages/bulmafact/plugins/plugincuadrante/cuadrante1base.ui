@@ -265,7 +265,7 @@
    <item row="2" column="0" colspan="2" >
     <widget class="QLabel" name="textLabel1_4_4" >
      <property name="text" >
-      <string>Apertura Mañana</string>
+      <string>Apertura Manyana</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -332,7 +332,7 @@
    <item row="2" column="3" >
     <widget class="QLabel" name="textLabel1_4_5" >
      <property name="text" >
-      <string>Cierre Mañana</string>
+      <string>Cierre Manyana</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <author>Tomeu Borrás Riera</author>
- <comment>Impresión de Balances</comment>
+ <author>Tomeu Borras Riera</author>
+ <comment>Impresion de Balances</comment>
  <class>CAnualesPrintBase</class>
  <widget class="QDialog" name="CAnualesPrintBase" >
   <property name="geometry" >
@@ -12,7 +12,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Impresión de Balances</string>
+   <string>Impresion de Balances</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>

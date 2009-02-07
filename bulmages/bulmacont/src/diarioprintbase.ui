@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Impresión del Diario</string>
+   <string>Impresion del Diario</string>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

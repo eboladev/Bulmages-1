@@ -447,7 +447,7 @@ void Devolucion::on_mui_efectivoButton_clicked()
     if ( m_ticket->DBvalue ( "idalbaran" ).isEmpty() ) return;
 
 
-    int ret = QMessageBox::information ( this, QString ( "Confirmación" ),
+    int ret = QMessageBox::information ( this, QString ( "Confirmacion" ),
                                          QString ( "A DEVOLVER\n" + mui_totalLineEdit->text() ),
                                          QMessageBox::Ok | QMessageBox::Cancel,
                                          QMessageBox::Ok );

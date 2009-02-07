@@ -93,7 +93,7 @@
       <item>
        <widget class="QCheckBox" name="checkBox2" >
         <property name="text" >
-         <string>Comprobación por asientos</string>
+         <string>Comprobacion por asientos</string>
         </property>
        </widget>
       </item>
@@ -103,7 +103,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Condición:</string>
+      <string>Condicion:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
@@ -115,7 +115,7 @@
       <item>
        <widget class="QCheckBox" name="checkBox1" >
         <property name="text" >
-         <string>Deben existir registros que cumplan esta condición en el periodo</string>
+         <string>Deben existir registros que cumplan esta condicion en el periodo</string>
         </property>
        </widget>
       </item>

@@ -474,7 +474,7 @@
         <item>
          <widget class="QLabel" name="label" >
           <property name="text" >
-           <string>Ubicación:</string>
+           <string>Ubicacion:</string>
           </property>
           <property name="buddy" >
            <cstring>mui_loccontrato</cstring>

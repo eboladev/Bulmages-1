@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author>Tomeu Borrás Riera</author>
+ <author>Tomeu Borras Riera</author>
  <class>ListTasaIVABase</class>
  <widget class="QWidget" name="ListTasaIVABase" >
   <property name="geometry" >

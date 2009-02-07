@@ -150,7 +150,7 @@ void regivaprintview::presentar ( const char *tipus )
                 fitxersortidatxt << "                                        IVA Repercutido \n" ;
                 fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() <<
                 "   Fecha Final: " << ffinal.toAscii().constData() << endl;
-                fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripción                        Base imponible    Factura \n" ;
+                fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripcion                        Base imponible    Factura \n" ;
                 fitxersortidatxt << "__________________________________________________________________________________________________________\n";
             } // end if
             if ( html ) {
@@ -165,7 +165,7 @@ void regivaprintview::presentar ( const char *tipus )
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"10\" class=titoliva> IVA Repercutido <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripción</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
+                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripcion</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             } // end if
             while ( !cursorapt->eof() ) {
                 datahora = cursorapt->valor ( "fecha" );
@@ -236,7 +236,7 @@ void regivaprintview::presentar ( const char *tipus )
             if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
                 fitxersortidatxt << "                                        IVA Soportado \n" ;
-                fitxersortidatxt << "Asiento   Fecha     Cuenta   Descripción                        Subtotal Cuota   IVA       Total   Factura    CIF\n" ;
+                fitxersortidatxt << "Asiento   Fecha     Cuenta   Descripcion                        Subtotal Cuota   IVA       Total   Factura    CIF\n" ;
                 fitxersortidatxt << "_______________________________________________________________________________________________________________________\n";
             }
             if ( html ) {
@@ -255,7 +255,7 @@ void regivaprintview::presentar ( const char *tipus )
             while ( !cursorapt->eof() ) {
                 datahora = cursorapt->valor ( "fecha" );
                 data = datahora.mid ( 0, 10 );
-                /// Pasamos al formato de representacion español las cantidades a mostrar.
+                /// Pasamos al formato de representacion espanyol las cantidades a mostrar.
                 QString bi = QString::number ( cursorapt->valor ( "baseimp" ).toDouble(), 'f', 2 );
                 QString iva = QString::number ( cursorapt->valor ( "iva" ).toDouble(), 'f', 2 );
                 QString total = QString::number ( cursorapt->valor ( "total" ).toDouble(), 'f', 2 );

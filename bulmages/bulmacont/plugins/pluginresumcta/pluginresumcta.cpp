@@ -121,7 +121,7 @@ int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta *bcta )
     if ( !cur ) return 0;
     if ( ! cur->eof() ) {
         QString mensaje = "<HTML><BODY>";
-        mensaje += "<B>Código:</B> " + cod + "<BR>";
+        mensaje += "<B>Codigo:</B> " + cod + "<BR>";
         mensaje += "<B>Nombre:</B> " + nom + "<BR>";
         mensaje += "<B>Debe:</B> " + cur->valor ( "debe" ) + "<BR>";
         mensaje += "<B>Haber:</B> " + cur->valor ( "haber" ) + "<BR>";
@@ -156,7 +156,7 @@ int SubForm2Bc_on_mui_list_cellChanged_post ( SubForm2Bc *subform )
         if ( !cur ) return 0;
         if ( ! cur->eof() ) {
             QString mensaje = "<HTML><BODY>";
-            mensaje += "<B>Código:</B> " + cod + "<BR>";
+            mensaje += "<B>Codigo:</B> " + cod + "<BR>";
             mensaje += "<B>Nombre:</B> " + nom + "<BR>";
             mensaje += "<B>Debe:</B> " + cur->valor ( "debe" ) + "<BR>";
             mensaje += "<B>Haber:</B> " + cur->valor ( "haber" ) + "<BR>";

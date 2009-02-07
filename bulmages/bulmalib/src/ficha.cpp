@@ -418,7 +418,7 @@ void Ficha::meteWindow ( QString nom, QObject *obj, bool compdup )
     /// De Forma rapida hacemos un tratamiento de los permisos
     setDBTableName ( tableName() );
     /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
-    /// De configuración por lo que si no es este no es ninguno.
+    /// De configuracion por lo que si no es este no es ninguno.
     cargaSpecs();
     _depura ( "END Ficha::meteWindow", 0 );
 }

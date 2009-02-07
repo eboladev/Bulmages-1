@@ -452,7 +452,7 @@
               <item row="1" column="1" >
                <widget class="QCheckBox" name="mui_regularizacion" >
                 <property name="text" >
-                 <string>Reg&amp;ularización</string>
+                 <string>Reg&amp;ularizacion</string>
                 </property>
                </widget>
               </item>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *

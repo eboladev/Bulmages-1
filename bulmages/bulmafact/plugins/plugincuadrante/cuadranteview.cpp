@@ -86,7 +86,7 @@ CuadranteView::~CuadranteView()
 }
 
 
-/** Inicializa la selección de trabajadores
+/** Inicializa la seleccion de trabajadores
 */
 /**
 **/
@@ -124,7 +124,7 @@ void CuadranteView::inicializaTrabajadores()
 }
 
 
-/** Inicializa la selección de trabajadores
+/** Inicializa la seleccion de trabajadores
 */
 /**
 \param dateorig

@@ -226,7 +226,7 @@ void AlbaranClienteList::presentar()
 
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
-    /// Esta consulta podría resultar NULA y debe tratarse el caso
+    /// Esta consulta podria resultar NULA y debe tratarse el caso
     if ( cur ) {
         m_total->setText ( cur->valor ( "total" ) );
         delete cur;

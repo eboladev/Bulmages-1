@@ -46,7 +46,7 @@
      <item>
       <widget class="QComboBox" name="trimestre" >
        <property name="toolTip" >
-        <string>Seleccione periodo de declaración</string>
+        <string>Seleccione periodo de declaracion</string>
        </property>
        <item>
         <property name="text" >

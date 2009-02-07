@@ -60,7 +60,7 @@ int Ficha_cargar ( Ficha *ficha )
     query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo <> '" + ficha->empresaBase()->currentUser() + "'";
     cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
     if ( !cur1->eof() ) {
-        mensajeInfo ( "Ficha Bloqueada por otro usuario, no podrá hacer modificaciones" );
+        mensajeInfo ( "Ficha Bloqueada por otro usuario, no podra hacer modificaciones" );
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
         QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );

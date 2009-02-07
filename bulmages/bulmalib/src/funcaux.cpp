@@ -69,9 +69,9 @@ QString parsearCode ( const QString &cad )
     return result;
 }
 
-/// Escapa los mínimos caracteres necesarios para 
+/// Escapa los minimos caracteres necesarios para 
 /// escribir a cadena a XML, sin usar CDATA, para ahorrar bytes y porque (me suena que) puede no 
-/// estar permitido en todos los lugares de un fichero xml segun esquemas o dtds específicos
+/// estar permitido en todos los lugares de un fichero xml segun esquemas o dtds especificos
 QString xmlEscape ( const QString& param ) {
    QString text = param;
    text.replace("&","&amp;");
@@ -109,9 +109,9 @@ QString genEscape ( const QString &param, int tipoEscape) {
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 /// Nota: ahora ficha.cpp ya respeta el encoding del XML 
-/// original y pone referencias numéricas de caracter sólo a los caracteres
+/// original y pone referencias numericas de caracter solo a los caracteres
 /// no soportados en el encoding. Ya no hace tanta falta
-/// esta función, y creo que con escapeXml pasamos (para 
+/// esta funcion, y creo que con escapeXml pasamos (para 
 /// listados rml al menos). Podemos tener el buffer en 
 /// memoria en unicode hasta escribirlo a fichero en ficha::generaRML
 QString XMLProtect ( const QString &string )
@@ -290,7 +290,7 @@ QDate normalizafecha ( QString fechaintro )
 /// num1 = numero de digitos que debe tener el codigo final.
 /// Devuelve un QString con el codigo ajustado.
 
-/// BUG: --- Esta funcion tiene un uso específico de bulmacont y por eso no
+/// BUG: --- Esta funcion tiene un uso especifico de bulmacont y por eso no
 /// deberia estar en bulmalib.
 QString ajustacodigo ( QString cad, unsigned int num1 )
 {
@@ -812,11 +812,11 @@ QString ascii127 ( const QString &orig )
 
 
     /// Cambia tambien otros caracteres no adecuados.
-    cadena = cadena.replace ( "á", "a" );
-    cadena = cadena.replace ( "é", "e" );
-    cadena = cadena.replace ( "í", "i" );
-    cadena = cadena.replace ( "ó", "o" );
-    cadena = cadena.replace ( "í", "u" );
+    cadena = cadena.replace ( "a", "a" );
+    cadena = cadena.replace ( "e", "e" );
+    cadena = cadena.replace ( "i", "i" );
+    cadena = cadena.replace ( "o", "o" );
+    cadena = cadena.replace ( "i", "u" );
 
     cadena = cadena.replace ( "à", "a" );
     cadena = cadena.replace ( "è", "e" );
@@ -836,7 +836,7 @@ QString ascii127 ( const QString &orig )
     cadena = cadena.replace ( "ô", "o" );
     cadena = cadena.replace ( "û", "u" );
 
-    cadena = cadena.replace ( "ñ", "n" );
+    cadena = cadena.replace ( "ny", "n" );
     cadena = cadena.replace ( "ç", "c" );
 
     cadena = cadena.replace ( "&", "." );

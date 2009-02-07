@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:35+0100\n"
+"POT-Creation-Date: 2009-02-07 16:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,114 +16,118 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: movimientosview.cpp:83
+#: movimientosview.cpp:64
+msgid "Cliente:"
+msgstr ""
+
+#: movimientosview.cpp:87
 msgid "Todas las facturas"
 msgstr ""
 
-#: movimientosview.cpp:84
+#: movimientosview.cpp:88
 msgid "Facturas procesadas"
 msgstr ""
 
-#: movimientosview.cpp:85
+#: movimientosview.cpp:89
 msgid "Facturas no procesadas"
 msgstr ""
 
-#: movimientosview.cpp:144
+#: movimientosview.cpp:148
 msgid "Facturas a clientes"
 msgstr ""
 
-#: movimientosview.cpp:170
+#: movimientosview.cpp:174
 msgid "idarticulo"
 msgstr ""
 
-#: movimientosview.cpp:171
+#: movimientosview.cpp:175
 msgid "Fecha"
 msgstr ""
 
-#: movimientosview.cpp:172
+#: movimientosview.cpp:176
 msgid "Id articulo"
 msgstr ""
 
-#: movimientosview.cpp:173
+#: movimientosview.cpp:177
 msgid "Codigo articulo"
 msgstr ""
 
-#: movimientosview.cpp:174
+#: movimientosview.cpp:178
 msgid "Nombre articulo"
 msgstr ""
 
-#: movimientosview.cpp:175
+#: movimientosview.cpp:179
 msgid "Cantidad"
 msgstr ""
 
-#: movimientosview.cpp:176
+#: movimientosview.cpp:180
 msgid "Lote"
 msgstr ""
 
-#: movimientosview.cpp:177
+#: movimientosview.cpp:181
 msgid "Id almacen"
 msgstr ""
 
-#: movimientosview.cpp:178
+#: movimientosview.cpp:182
 msgid "Codigo almacen"
 msgstr ""
 
-#: movimientosview.cpp:179
+#: movimientosview.cpp:183
 msgid "Nombre almacen"
 msgstr ""
 
-#: movimientosview.cpp:180
+#: movimientosview.cpp:184
 msgid "Id albaran cliente"
 msgstr ""
 
-#: movimientosview.cpp:181
+#: movimientosview.cpp:185
 msgid "Id albaran proveedor"
 msgstr ""
 
-#: ui_movimientosbase.h:259
+#: ui_movimientosbase.h:264
 msgid "Movimientos"
 msgstr ""
 
-#: ui_movimientosbase.h:263 ui_movimientosbase.h:268
+#: ui_movimientosbase.h:268 ui_movimientosbase.h:273
 msgid "Imprimir listado"
 msgstr ""
 
-#: ui_movimientosbase.h:272
+#: ui_movimientosbase.h:277
 msgid "Ctrl+P"
 msgstr ""
 
-#: ui_movimientosbase.h:275 ui_movimientosbase.h:280
+#: ui_movimientosbase.h:280 ui_movimientosbase.h:285
 msgid "Filtrar"
 msgstr ""
 
-#: ui_movimientosbase.h:284
+#: ui_movimientosbase.h:289
 msgid "Ctrl+F"
 msgstr ""
 
-#: ui_movimientosbase.h:287 ui_movimientosbase.h:292
+#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
 msgid "Configurar listado"
 msgstr ""
 
-#: ui_movimientosbase.h:296
+#: ui_movimientosbase.h:301
 msgid "Ctrl+B"
 msgstr ""
 
-#: ui_movimientosbase.h:299 ui_movimientosbase.h:304
+#: ui_movimientosbase.h:304 ui_movimientosbase.h:309
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_movimientosbase.h:308
+#: ui_movimientosbase.h:313
 msgid "F5"
 msgstr ""
 
-#: ui_movimientosbase.h:309
+#: ui_movimientosbase.h:314
 msgid "Mostrar:"
 msgstr ""
 
-#: ui_movimientosbase.h:310
+#: ui_movimientosbase.h:315
 msgid "Fecha final:"
 msgstr ""
 
-#: ui_movimientosbase.h:311
+#: ui_movimientosbase.h:316
 msgid "Fecha inicial:"
 msgstr ""

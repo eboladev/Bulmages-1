@@ -273,7 +273,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Información del canal:</string>
+      <string>Informacion del canal:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="spacing" >
@@ -340,7 +340,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2" >
           <property name="text" >
-           <string>Descripción:</string>
+           <string>Descripcion:</string>
           </property>
          </widget>
         </item>

@@ -88,7 +88,7 @@
        <item row="0" column="0" >
         <widget class="QLabel" name="textLabel2_10" >
          <property name="text" >
-          <string>&amp;Código:</string>
+          <string>&amp;Codigo:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -104,7 +104,7 @@
        <item row="0" column="2" colspan="3" >
         <widget class="QLabel" name="textLabel2_3" >
          <property name="text" >
-          <string>Nuestro código de c&amp;liente:</string>
+          <string>Nuestro codigo de c&amp;liente:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -182,7 +182,7 @@
        <item row="2" column="2" colspan="2" >
         <widget class="QLabel" name="textLabel2_2_2" >
          <property name="text" >
-          <string>Di&amp;visión:</string>
+          <string>Di&amp;vision:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -202,7 +202,7 @@
        <item row="3" column="0" >
         <widget class="QLabel" name="textLabel2_6" >
          <property name="text" >
-          <string>Direcció&amp;n:</string>
+          <string>Direccio&amp;n:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -224,7 +224,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>Código &amp;postal:</string>
+          <string>Codigo &amp;postal:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -260,7 +260,7 @@
        <item row="4" column="0" >
         <widget class="QLabel" name="textLabel2_9" >
          <property name="text" >
-          <string>Població&amp;n:</string>
+          <string>Poblacio&amp;n:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -289,7 +289,7 @@
        <item row="5" column="0" >
         <widget class="QLabel" name="textLabel2_8" >
          <property name="text" >
-          <string>&amp;Teléfono:</string>
+          <string>&amp;Telefono:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -305,7 +305,7 @@
        <item row="5" column="2" colspan="2" >
         <widget class="QLabel" name="textLabel2_8_4" >
          <property name="text" >
-          <string>Página &amp;web:</string>
+          <string>Pagina &amp;web:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -321,7 +321,7 @@
        <item row="6" column="0" >
         <widget class="QLabel" name="textLabel2_8_2" >
          <property name="text" >
-          <string>Número de &amp;fax:</string>
+          <string>Numero de &amp;fax:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -496,7 +496,7 @@
           </size>
          </property>
          <property name="text" >
-          <string>Datos de comercio &amp;electrónico:</string>
+          <string>Datos de comercio &amp;electronico:</string>
          </property>
          <property name="buddy" >
           <cstring>mui_clavewebproveedor</cstring>

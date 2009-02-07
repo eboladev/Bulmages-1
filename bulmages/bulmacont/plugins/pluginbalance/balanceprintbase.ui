@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Impresión del Balance de Sumas y Saldos</string>
+   <string>Impresion del Balance de Sumas y Saldos</string>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -130,7 +130,7 @@
           <item>
            <widget class="QLabel" name="textLabel1" >
             <property name="text" >
-             <string>Código Inicial
+             <string>Codigo Inicial
 </string>
             </property>
            </widget>
@@ -181,7 +181,7 @@
           <item>
            <widget class="QLabel" name="textLabel1_2" >
             <property name="text" >
-             <string>Código Final</string>
+             <string>Codigo Final</string>
             </property>
            </widget>
           </item>

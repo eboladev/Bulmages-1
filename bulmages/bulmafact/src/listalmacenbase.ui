@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author>Tomeu Borrás Riera</author>
+ <author>Tomeu Borras Riera</author>
  <class>ListAlmacenBase</class>
  <widget class="QWidget" name="ListAlmacenBase" >
   <property name="geometry" >

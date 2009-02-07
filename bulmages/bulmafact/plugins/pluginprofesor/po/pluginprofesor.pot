@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,49 +77,117 @@ msgstr ""
 msgid "Nombre del profesor"
 msgstr ""
 
-#: profesorview.cpp:59
+#: profesorview.cpp:70
 msgid "Error al crear el profesor"
 msgstr ""
 
-#: profesorview.cpp:87
+#: profesorview.cpp:98
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: ui_profesorbase.h:198 ui_profesoreslistbase.h:317
+#: ui_profesorbase.h:454 ui_profesoreslistbase.h:317
 #: ui_profesoreslistbase.h:322
 msgid "Nuevo Profesor"
 msgstr ""
 
-#: ui_profesorbase.h:202 ui_profesorbase.h:207
+#: ui_profesorbase.h:458 ui_profesorbase.h:463
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_profesorbase.h:211
+#: ui_profesorbase.h:467
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_profesorbase.h:214 ui_profesorbase.h:219 ui_profesorbase.h:226
-#: ui_profesorbase.h:231
+#: ui_profesorbase.h:470 ui_profesorbase.h:475 ui_profesorbase.h:482
+#: ui_profesorbase.h:487
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_profesorbase.h:223 ui_profesoreslistbase.h:350
+#: ui_profesorbase.h:479 ui_profesoreslistbase.h:350
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_profesorbase.h:235
+#: ui_profesorbase.h:491
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_profesorbase.h:236
-msgid "Nombre Profesor"
+#: ui_profesorbase.h:492
+msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr ""
 
-#: ui_profesorbase.h:237
+#: ui_profesorbase.h:493
+msgid "Nombre completo:"
+msgstr ""
+
+#: ui_profesorbase.h:494
+msgid "Empresa:"
+msgstr ""
+
+#: ui_profesorbase.h:495
+msgid "Direccion:"
+msgstr ""
+
+#: ui_profesorbase.h:496
+msgid "Codigo postal:"
+msgstr ""
+
+#: ui_profesorbase.h:497
+msgid "Poblacion:"
+msgstr ""
+
+#: ui_profesorbase.h:498
+msgid "Provincia:"
+msgstr ""
+
+#: ui_profesorbase.h:499
+msgid "Telefono fijo:"
+msgstr ""
+
+#: ui_profesorbase.h:500
+msgid "Numero de fax:"
+msgstr ""
+
+#: ui_profesorbase.h:501
+msgid "Telefono del trabajo:"
+msgstr ""
+
+#: ui_profesorbase.h:502
+msgid "Telefono movil:"
+msgstr ""
+
+#: ui_profesorbase.h:503
+msgid "Pagina web:"
+msgstr ""
+
+#: ui_profesorbase.h:504
+msgid "Correo electronico:"
+msgstr ""
+
+#: ui_profesorbase.h:505
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_profesorbase.h:506
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_profesorbase.h:507
+msgid "Datos de comercio electronico:"
+msgstr ""
+
+#: ui_profesorbase.h:508
+msgid "Datos bancarios:"
+msgstr ""
+
+#: ui_profesorbase.h:509
+msgid "Otros datos"
+msgstr ""
+
+#: ui_profesorbase.h:510
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_profesorbase.h:238
+#: ui_profesorbase.h:511
 msgid "&Cancelar"
 msgstr ""
 

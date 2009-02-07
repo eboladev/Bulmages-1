@@ -132,7 +132,7 @@ void SubForm2Bt::setIdCliente ( QString id )
 {
     _depura ( "SubForm2Bt::setIdCliente", 0, id );
 
-    /// En la primera carga no hay reajustes, pero si actualización del cliente.
+    /// En la primera carga no hay reajustes, pero si actualizacion del cliente.
     if ( mdb_idcliente  == "" ) {
         mdb_idcliente = id;
         return;
@@ -193,7 +193,7 @@ void SubForm2Bt::setIdProveedor ( QString id )
 {
     _depura ( "SubForm2Bt::setIdProveedor", 0, id );
 
-    /// En la primera carga no hay reajustes, pero si actualización del proveedor.
+    /// En la primera carga no hay reajustes, pero si actualizacion del proveedor.
     if ( mdb_idproveedor  == "" ) {
         mdb_idproveedor = id;
         return;

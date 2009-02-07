@@ -91,7 +91,7 @@ cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParam
                        const QString *paramValues, QString pristineQuery
                        ) {
          char *charValues[numParams]; 
-         QByteArray qbaValues[numParams]; //si sabés C++ i Qt sabria si no cal ?
+         QByteArray qbaValues[numParams]; //si sabes C++ i Qt sabria si no cal ?
          for (int i=0; i<numParams ; i++) {
              qbaValues[i] = paramValues[i].toUtf8();
              charValues[i] = qbaValues[i].data();
@@ -317,7 +317,7 @@ QString cursor2::valor ( const QString &campo, int registro, bool localeformat )
 /// \param posicion El n&uacute;mero de campo del que se quiere la posicion.
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-/// \param siNull Valor a devolver cuando el campo esté a nulo
+/// \param siNull Valor a devolver cuando el campo este a nulo
 /// \return El valor de la posicion.
 int cursor2::valorInt ( int posicion, int registro , int siNull)
 {
@@ -342,7 +342,7 @@ int cursor2::valorInt ( int posicion, int registro , int siNull)
 /// \param campo Nombre del campo a devolver
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-/// \param siNull Valor a devolver cuando el campo esté a nulo
+/// \param siNull Valor a devolver cuando el campo este a nulo
 /// \return El valor de la posici&oacute;n.
 int cursor2::valorInt ( const QString &campo, int registro , int siNull)
 {
@@ -704,14 +704,14 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
     /// Iniciamos la depuracion.
     try {
          QString pristineQuery = query;
-        //digitsInt >= longitud expressió decimal d'un int positiu qualsevol 
+        //digitsInt >= longitud expressio decimal d'un int positiu qualsevol 
          int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
          QString newParamValues[midaParams];
          for (int i=0; i<numParams ; i++) {
              newParamValues[i] = paramValues[i];
          };
          /// Si hay establecidas clausulas limit o offset modificamos el query
-         /// y añadimos parámetros
+         /// y anyadimos parametros
          if ( limit != 0 ) {
              newParamValues[numParams] =  QString::number ( limit);
              query += " LIMIT $" + QString::number ( ++numParams ) +"::int4";

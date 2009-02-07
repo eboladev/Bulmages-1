@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "ID tutor"
 msgstr ""
 
-#: tutoreslist.cpp:263
+#: tutoreslist.cpp:263 ui_tutorbase.h:450
 msgid "Nombre"
 msgstr ""
 
@@ -57,11 +57,11 @@ msgstr ""
 msgid "Nombre del tutor"
 msgstr ""
 
-#: tutorview.cpp:59
+#: tutorview.cpp:69
 msgid "Error al crear el tutor"
 msgstr ""
 
-#: tutorview.cpp:87
+#: tutorview.cpp:97
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
@@ -77,40 +77,104 @@ msgstr ""
 msgid "Nuevo tutor"
 msgstr ""
 
-#: ui_tutorbase.h:198 ui_tutoreslistbase.h:317 ui_tutoreslistbase.h:322
+#: ui_tutorbase.h:396 ui_tutoreslistbase.h:317 ui_tutoreslistbase.h:322
 msgid "Nuevo Tutor"
 msgstr ""
 
-#: ui_tutorbase.h:202 ui_tutorbase.h:207
+#: ui_tutorbase.h:400 ui_tutorbase.h:405
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_tutorbase.h:211
+#: ui_tutorbase.h:409
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_tutorbase.h:214 ui_tutorbase.h:219 ui_tutorbase.h:226 ui_tutorbase.h:231
+#: ui_tutorbase.h:412 ui_tutorbase.h:417 ui_tutorbase.h:424 ui_tutorbase.h:429
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_tutorbase.h:223 ui_tutoreslistbase.h:350
+#: ui_tutorbase.h:421 ui_tutoreslistbase.h:350
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_tutorbase.h:235
+#: ui_tutorbase.h:433
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_tutorbase.h:236
-msgid "Nombre Tutor"
-msgstr ""
-
-#: ui_tutorbase.h:237
+#: ui_tutorbase.h:434
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_tutorbase.h:238
+#: ui_tutorbase.h:435
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_tutorbase.h:436
+msgid "C.I.F./N.I.F./N.I.E.:"
+msgstr ""
+
+#: ui_tutorbase.h:437
+msgid "Nombre completo:"
+msgstr ""
+
+#: ui_tutorbase.h:438
+msgid "Direccion:"
+msgstr ""
+
+#: ui_tutorbase.h:439
+msgid "Poblacion:"
+msgstr ""
+
+#: ui_tutorbase.h:440
+msgid "Telefono fijo:"
+msgstr ""
+
+#: ui_tutorbase.h:441
+msgid "Telefono movil:"
+msgstr ""
+
+#: ui_tutorbase.h:442
+msgid "Codigo postal:"
+msgstr ""
+
+#: ui_tutorbase.h:443
+msgid "Correo electronico:"
+msgstr ""
+
+#: ui_tutorbase.h:444
+msgid "Provincia:"
+msgstr ""
+
+#: ui_tutorbase.h:445
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_tutorbase.h:446
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_tutorbase.h:447
+msgid "Datos bancarios:"
+msgstr ""
+
+#: ui_tutorbase.h:448
+msgid "Otros datos"
+msgstr ""
+
+#: ui_tutorbase.h:449
+msgid "DNI / NIf"
+msgstr ""
+
+#: ui_tutorbase.h:451
+msgid "Relacion"
+msgstr ""
+
+#: ui_tutorbase.h:452
+msgid "Porcentaje de facturacion"
+msgstr ""
+
+#: ui_tutorbase.h:453
+msgid "Hijos"
 msgstr ""
 
 #: ui_tutoreslistbase.h:309

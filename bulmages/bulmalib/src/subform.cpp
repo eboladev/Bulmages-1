@@ -44,7 +44,7 @@ SDBRecord::SDBRecord ( EmpresaBase *con ) : DBRecord ( con )
 
 /// Destruye la clase
 /**
-Mantiene un contador de elementos destruidos para depurar la liberación de memoria
+Mantiene un contador de elementos destruidos para depurar la liberacion de memoria
 \todo Se debe eliminar el contador una vez testeado la correcta liberacion de memoria
 **/
 SDBRecord::~SDBRecord()

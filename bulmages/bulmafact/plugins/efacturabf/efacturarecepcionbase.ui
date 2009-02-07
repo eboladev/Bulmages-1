@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Menú de recepción de eFacturas</string>
+   <string>Menu de recepcion de eFacturas</string>
   </property>
   <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >

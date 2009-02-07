@@ -251,7 +251,7 @@ void BbloqFecha::on_mui_crear_clicked()
     /// Presentamos el dialogo preguntado que ejercicio crear.
     bool ok = FALSE;
     ejer = QInputDialog::getInteger ( this, _( "Introduzca Ejercicio a Crear" ),
-                                      _( "Ponga el año:" ), ejer, 0, 10000, 1, &ok );
+                                      _( "Ponga el anyo:" ), ejer, 0, 10000, 1, &ok );
 
     /// Comprobamos que el ejercicio introducido sea valido.
     if ( !ok ) return;

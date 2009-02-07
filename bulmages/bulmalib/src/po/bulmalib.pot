@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-01 00:49+0100\n"
+"POT-Creation-Date: 2009-02-07 16:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid "&Entra"
 msgstr ""
 
-#: ui_abreempresabase.h:205
+#: ui_abreempresabase.h:205 ficha.cpp:370 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Nuevo pais"
 msgstr ""
 
-#: ui_paisbase.h:289 ui_paisbase.h:294
+#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
 msgid "Borrar pais"
 msgstr ""
 
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_paisbase.h:301 ui_paisbase.h:306
+#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
 msgid "Guardar pais"
 msgstr ""
 
@@ -266,6 +266,10 @@ msgstr ""
 
 #: ui_busquedabase.h:109
 msgid "Limpiar campo"
+msgstr ""
+
+#: postgresiface2.cpp:139
+msgid "Error al hacer la consulta con la base de datos."
 msgstr ""
 
 #: funcaux.cpp:523
@@ -294,6 +298,38 @@ msgstr ""
 
 #: funcaux.cpp:573
 msgid "Error del programa"
+msgstr ""
+
+#: logpass.cpp:111
+msgid "Error: usuario y/o contrasenya incorrectos"
+msgstr ""
+
+#: abreempresaview.cpp:214
+msgid "&Cierra el programa"
+msgstr ""
+
+#: abreempresaview.cpp:283
+msgid "Para entrar, antes tiene que seleccionar una empresa."
+msgstr ""
+
+#: abreempresaview.cpp:492 subform3.cpp:93
+msgid "Nombre"
+msgstr ""
+
+#: abreempresaview.cpp:492
+msgid "Anyo"
+msgstr ""
+
+#: abreempresaview.cpp:492
+msgid "Archivo"
+msgstr ""
+
+#: abreempresaview.cpp:492
+msgid "Tipo"
+msgstr ""
+
+#: busquedafecha.cpp:183
+msgid "Seleccione fecha"
 msgstr ""
 
 #: pgimportfiles.cpp:401 pgimportfiles.cpp:1414
@@ -351,166 +387,160 @@ msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 msgstr ""
 
 #: pgimportfiles.cpp:1937
-msgid "<HR><B>Tratando el proveedor "
+msgid "Tratando el proveedor"
 msgstr ""
 
 #: pgimportfiles.cpp:1945
-msgid "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
+msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr ""
 
 #: pgimportfiles.cpp:1950
-msgid "<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"
+msgid "El proveedor no existe, se debe hacer una insercion de este"
 msgstr ""
 
 #: pgimportfiles.cpp:1971
-msgid "<HR><B>Tratando la froma de pago "
+msgid "Tratando la forma de pago"
 msgstr ""
 
 #: pgimportfiles.cpp:1979
-msgid "<LI>Datos insuficientes para tratar la forma de pago."
+msgid "Datos insuficientes para tratar la forma de pago."
 msgstr ""
 
 #: pgimportfiles.cpp:1988
-msgid "<LI> Ya existe esta forma de pago."
+msgid "Ya existe esta forma de pago."
 msgstr ""
 
 #: pgimportfiles.cpp:1998
-msgid "<LI> Forma de pago <B>"
+msgid "Forma de pago"
 msgstr ""
 
 #: pgimportfiles.cpp:1998
-msgid "</B> Insertada"
+msgid "Insertada"
 msgstr ""
 
 #: pgimportfiles.cpp:2014
-msgid "<HR><B>Tratando almacen "
+msgid "Tratando almacen"
 msgstr ""
 
 #: pgimportfiles.cpp:2028
-msgid "<LI>Datos insuficientes para tratar el almacen."
+msgid "Datos insuficientes para tratar el almacen."
 msgstr ""
 
 #: pgimportfiles.cpp:2036
-msgid "<LI> Ya existe este almacen."
+msgid "Ya existe este almacen."
 msgstr ""
 
 #: pgimportfiles.cpp:2045
-msgid "<LI> Almacen <B>"
+msgid "Almacen"
 msgstr ""
 
-#: pgimportfiles.cpp:2045
-msgid "</B> Insertado"
+#: pgimportfiles.cpp:2045 pgimportfiles.cpp:2208
+msgid "insertado"
 msgstr ""
 
 #: pgimportfiles.cpp:2064
-msgid "<HR><B>Tratando familia "
+msgid "Tratando familia"
 msgstr ""
 
 #: pgimportfiles.cpp:2084
-msgid "<P> No se ha encontrado el padre de esta familia.</P>"
+msgid "No se ha encontrado el padre de esta familia."
 msgstr ""
 
 #: pgimportfiles.cpp:2089
-msgid "<P>Datos insuficientes para tratar la familia.</P>"
+msgid "Datos insuficientes para tratar la familia."
 msgstr ""
 
 #: pgimportfiles.cpp:2097
-msgid "<P> Ya existe esta familia.</P>"
+msgid "Ya existe esta familia."
 msgstr ""
 
 #: pgimportfiles.cpp:2106
-msgid "<P> Familia <B>"
+msgid "Familia"
 msgstr ""
 
-#: pgimportfiles.cpp:2106 pgimportfiles.cpp:2208
-msgid "</B> Insertado</P>"
+#: pgimportfiles.cpp:2106
+msgid "insertada"
 msgstr ""
 
 #: pgimportfiles.cpp:2125
-msgid "<HR><B>Tratando Articulo "
+msgid "Tratando articulo"
 msgstr ""
 
 #: pgimportfiles.cpp:2152
-msgid "La familia del articulo no existe<BR>\n"
+msgid "La familia del articulo no existe"
 msgstr ""
 
 #: pgimportfiles.cpp:2177
-msgid "<P>Datos insuficientes para tratar el articulo.</P>"
+msgid "Datos insuficientes para tratar el articulo."
 msgstr ""
 
 #: pgimportfiles.cpp:2186
-msgid "<P> Ya existe este articulo.</P>"
+msgid "Ya existe este articulo."
 msgstr ""
 
 #: pgimportfiles.cpp:2208
-msgid "<P> Articulo <B>"
+msgid "Articulo"
 msgstr ""
 
 #: pgimportfiles.cpp:2223
-msgid "<HR><B>Tratando LPedidoCliente "
+msgid "Tratando LPedidoCliente"
 msgstr ""
 
 #: pgimportfiles.cpp:2251
-msgid "<HR><B>Tratando DPedidoCliente "
+msgid "Tratando DPedidoCliente"
 msgstr ""
 
 #: pgimportfiles.cpp:2272
-msgid "<HR><B>Tratando Pedido Cliente "
+msgid "Tratando pedido cliente"
 msgstr ""
 
 #: pgimportfiles.cpp:2322 pgimportfiles.cpp:2551 pgimportfiles.cpp:2776
 #: pgimportfiles.cpp:3014
-msgid "El almacen del presupuesto no existe<BR>\n"
+msgid "El almacen del presupuesto no existe"
 msgstr ""
 
-#: pgimportfiles.cpp:2332 pgimportfiles.cpp:2561 pgimportfiles.cpp:3024
-msgid "El cliente del presupuesto no existe<BR>\n"
+#: pgimportfiles.cpp:2332 pgimportfiles.cpp:2561 pgimportfiles.cpp:2785
+#: pgimportfiles.cpp:3024
+msgid "El cliente del presupuesto no existe"
 msgstr ""
 
-#: pgimportfiles.cpp:2342 pgimportfiles.cpp:2570
-msgid "La forma de pago del presupuesto no existe<BR>\n"
+#: pgimportfiles.cpp:2342 pgimportfiles.cpp:2570 pgimportfiles.cpp:2794
+#: pgimportfiles.cpp:3034
+msgid "La forma de pago del presupuesto no existe"
 msgstr ""
 
 #: pgimportfiles.cpp:2352 pgimportfiles.cpp:2579 pgimportfiles.cpp:2804
 #: pgimportfiles.cpp:3044
-msgid "El empleado del presupuesto no existe<BR>\n"
+msgid "El empleado del presupuesto no existe"
 msgstr ""
 
 #: pgimportfiles.cpp:2403 pgimportfiles.cpp:2629 pgimportfiles.cpp:2867
 #: pgimportfiles.cpp:3096
-msgid "El articulo de la linea de presupuesto no existe<BR>\n"
+msgid "El articulo de la linea de presupuesto no existe"
 msgstr ""
 
 #: pgimportfiles.cpp:2450
-msgid "<HR><B>Tratando LAlbaran "
+msgid "Tratando LAlbaran"
 msgstr ""
 
 #: pgimportfiles.cpp:2478
-msgid "<HR><B>Tratando DAlbaran "
+msgid "Tratando DAlbaran"
 msgstr ""
 
 #: pgimportfiles.cpp:2499
-msgid "<HR><B>Tratando Albaran "
+msgid "Tratando albaran"
 msgstr ""
 
 #: pgimportfiles.cpp:2676
-msgid "<HR><B>Tratando LFactura "
+msgid "Tratando LFactura"
 msgstr ""
 
 #: pgimportfiles.cpp:2704
-msgid "<HR><B>Tratando DFactura "
+msgid "Tratando DFactura"
 msgstr ""
 
 #: pgimportfiles.cpp:2725
-msgid "<HR><B>Tratando Factura "
-msgstr ""
-
-#: pgimportfiles.cpp:2785
-msgid "El clienten del presupuesto no existe<BR>\n"
-msgstr ""
-
-#: pgimportfiles.cpp:2794 pgimportfiles.cpp:3034
-msgid "La forma de pagon del presupuesto no existe<BR>\n"
+msgid "Tratando factura"
 msgstr ""
 
 #: pgimportfiles.cpp:2814
@@ -518,13 +548,207 @@ msgid "La factura ya existe y no se va a insertar."
 msgstr ""
 
 #: pgimportfiles.cpp:2914
-msgid "<HR><B>Tratando LPresupuesto "
+msgid "Tratando LPresupuesto"
 msgstr ""
 
 #: pgimportfiles.cpp:2942
-msgid "<HR><B>Tratando DPresupuesto "
+msgid "Tratando DPresupuesto"
 msgstr ""
 
 #: pgimportfiles.cpp:2963
-msgid "<HR><B>Tratando Presupuesto "
+msgid "Tratando presupuesto"
+msgstr ""
+
+#: busquedaperiodo.cpp:70
+msgid "Semanal"
+msgstr ""
+
+#: busquedaperiodo.cpp:71
+msgid "Quincenal"
+msgstr ""
+
+#: busquedaperiodo.cpp:72
+msgid "Mensual"
+msgstr ""
+
+#: busquedaperiodo.cpp:73
+msgid "Trimestral"
+msgstr ""
+
+#: busquedaperiodo.cpp:74
+msgid "Semestral"
+msgstr ""
+
+#: busquedaperiodo.cpp:75
+msgid "Anual"
+msgstr ""
+
+#: busquedaperiodo.cpp:76
+msgid "Bienal"
+msgstr ""
+
+#: subform3.cpp:93
+msgid "Nombre de campo"
+msgstr ""
+
+#: subform3.cpp:93
+msgid "Visible"
+msgstr ""
+
+#: subform3.cpp:1075
+msgid "Cargando SubFormulario "
+msgstr ""
+
+#: subform3.cpp:2069
+msgid "Imprimiendo "
+msgstr ""
+
+#: subform3.cpp:2328
+msgid "Borrar registro"
+msgstr ""
+
+#: subform3.cpp:2331
+msgid "Ajustar columa"
+msgstr ""
+
+#: subform3.cpp:2332
+msgid "Ajustar altura"
+msgstr ""
+
+#: subform3.cpp:2334
+msgid "Ajustar columnas"
+msgstr ""
+
+#: subform3.cpp:2335
+msgid "Ajustar alturas"
+msgstr ""
+
+#: subform3.cpp:2338
+msgid "Ver/Ocultar configurador de subformulario"
+msgstr ""
+
+#: listventanas.cpp:150 listventanas.cpp:151
+msgid "Indexador"
+msgstr ""
+
+#: qworkspace2.cpp:91
+msgid "Esc"
+msgstr ""
+
+#: ficha.cpp:339 listado.cpp:377
+msgid "Borrar"
+msgstr ""
+
+#: ficha.cpp:340
+msgid "Desea eliminar '"
+msgstr ""
+
+#: ficha.cpp:350
+msgid "No se ha podido borrar"
+msgstr ""
+
+#: ficha.cpp:368
+msgid "Guardar"
+msgstr ""
+
+#: ficha.cpp:369 paisview.cpp:118 paisview.cpp:189
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: ficha.cpp:370
+msgid "&Si"
+msgstr ""
+
+#: ficha.cpp:370
+msgid "&No"
+msgstr ""
+
+#: ficha.cpp:383
+msgid "No se pudo cerrar la ventana debido a un error"
+msgstr ""
+
+#: ficha.cpp:442
+msgid "Opciones avanzadas de ficha"
+msgstr ""
+
+#: ficha.cpp:443
+msgid "Imprimir ficha"
+msgstr ""
+
+#: listado.cpp:325
+msgid "Tiene que seleccionar un elemento"
+msgstr ""
+
+#: listado.cpp:376
+msgid "Editar"
+msgstr ""
+
+#: paisview.cpp:48 paisview.cpp:60
+msgid "Id. Pais"
+msgstr ""
+
+#: paisview.cpp:49
+msgid "Nombre Pais"
+msgstr ""
+
+#: paisview.cpp:50
+msgid "Codigo 2 Digitos"
+msgstr ""
+
+#: paisview.cpp:51
+msgid "Codigo 3 Digitos"
+msgstr ""
+
+#: paisview.cpp:59
+msgid "Id. Provincia"
+msgstr ""
+
+#: paisview.cpp:61
+msgid "Provincia"
+msgstr ""
+
+#: paisview.cpp:67 paisview.cpp:71
+msgid "Pais"
+msgstr ""
+
+#: paisview.cpp:70
+msgid "idpais"
+msgstr ""
+
+#: paisview.cpp:72
+msgid "Codigo 2 digitos"
+msgstr ""
+
+#: paisview.cpp:73
+msgid "Codigo 3 digitos"
+msgstr ""
+
+#: paisview.cpp:119
+msgid "&Guardar"
+msgstr ""
+
+#: paisview.cpp:160
+msgid "Seleccione un pais para guardar"
+msgstr ""
+
+#: paisview.cpp:206
+msgid "Error al crear el banco"
+msgstr ""
+
+#: paisview.cpp:219
+msgid "Debe seleccionar un elemento de la lista"
+msgstr ""
+
+#: paisview.cpp:224
+msgid ""
+"Se va a borrar el pais seleccionado.\n"
+"Esta operacion puede ocasionar perdida de datos."
+msgstr ""
+
+#: paisview.cpp:225
+msgid "&Borrar"
+msgstr ""
+
+#: paisview.cpp:237
+msgid "Error al intentar borrar el pais"
 msgstr ""

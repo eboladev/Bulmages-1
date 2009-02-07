@@ -25,7 +25,7 @@
 #include "busquedacuenta.h"
 
 
-/// El constructor de la clase prepara las variables globales y llama a la función pintar.ç
+/// El constructor de la clase prepara las variables globales y llama a la funcion pintar.ç
 /**
 \param emp
 \param parent
@@ -99,7 +99,7 @@ void tipoivaview::pintar ( QString idtipoiva )
 
 /// Esta funci&oacute;n muestra el tipo de IVA en la ventana.
 /** \param pos, si es distinto de cero se busca en el combo la posici&oacute;n indicada
-    sino se usa la posición actual del combo. */
+    sino se usa la posicion actual del combo. */
 void tipoivaview::mostrarplantilla ( int pos )
 {
     _depura ( "tipoivaview::mostrarplantilla", 0 );

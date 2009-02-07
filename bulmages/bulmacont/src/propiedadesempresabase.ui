@@ -114,7 +114,7 @@
      </property>
      <widget class="QWidget" name="tab1" >
       <attribute name="title" >
-       <string>Dí&amp;gitos de cuentas</string>
+       <string>Di&amp;gitos de cuentas</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
@@ -139,7 +139,7 @@
        <item row="1" column="1" colspan="2" >
         <widget class="QGroupBox" name="groupBox" >
          <property name="title" >
-          <string>Modelo del código de cuenta:</string>
+          <string>Modelo del codigo de cuenta:</string>
          </property>
          <layout class="QGridLayout" >
           <property name="margin" >
@@ -159,7 +159,7 @@
             <item>
              <widget class="QLabel" name="TextLabel1_2" >
               <property name="text" >
-               <string>Dígitos estanda&amp;r</string>
+               <string>Digitos estanda&amp;r</string>
               </property>
               <property name="buddy" >
                <cstring>modcodigo</cstring>
@@ -182,8 +182,8 @@
             <item>
              <widget class="QLabel" name="TextLabel2" >
               <property name="text" >
-               <string>xxxx --> Dígitos de plan contable.
-yyyy --> Dígitos de cuenta.</string>
+               <string>xxxx --> Digitos de plan contable.
+yyyy --> Digitos de cuenta.</string>
               </property>
              </widget>
             </item>

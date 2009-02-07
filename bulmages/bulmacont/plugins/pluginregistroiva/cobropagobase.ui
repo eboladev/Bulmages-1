@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Gestión de Cobros y Pagos</string>
+   <string>Gestion de Cobros y Pagos</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Images/bank-list.svg</iconset>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-04 12:51+0100\n"
+"POT-Creation-Date: 2009-02-07 11:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,9 +71,9 @@ msgstr ""
 msgid "Nombre color"
 msgstr ""
 
-#: plugin_tc_articulos.cpp:84 plugin_tc_articulos.cpp:287
-#: plugin_tc_articulos.cpp:309 plugin_tc_articulos.cpp:332
-#: plugin_tc_articulos.cpp:361 listtallasview.cpp:100
+#: listtallasview.cpp:100 plugin_tc_articulos.cpp:84
+#: plugin_tc_articulos.cpp:287 plugin_tc_articulos.cpp:309
+#: plugin_tc_articulos.cpp:332 plugin_tc_articulos.cpp:361
 msgid "Nombre talla"
 msgstr ""
 

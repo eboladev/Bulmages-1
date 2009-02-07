@@ -8,25 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:35+0100\n"
+"POT-Creation-Date: 2009-02-07 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: tarifalistsubform.cpp:36 tarifaview.cpp:51 listltarifaview.cpp:65
 msgid "Nombre de la tarifa"
 msgstr ""
 
-#: tarifalistsubform.cpp:37 tarifaview.cpp:50 listltarifaview.cpp:39
-#: listltarifaview.cpp:63
+#: tarifalistsubform.cpp:37 tarifaview.cpp:50 plugintarifas.cpp:179
+#: listltarifaview.cpp:39 listltarifaview.cpp:63
 msgid "ID tarifa"
 msgstr ""
 
 #: tarifaview.cpp:47 tarifaview.cpp:100 tarifaview.cpp:159
-#: plugintarifas.cpp:181 ui_tarifabase.h:233
+#: plugintarifas.cpp:180 ui_tarifabase.h:233
 msgid "Tarifa"
 msgstr ""
 
@@ -64,31 +64,27 @@ msgid "plugintarifas"
 msgstr ""
 
 #: plugintarifas.cpp:177
-msgid "ID Variacion Tarifa"
+msgid "ID variacion tarifa"
 msgstr ""
 
-#: plugintarifas.cpp:178
-msgid "ID Articulo"
+#: plugintarifas.cpp:178 listltarifaview.cpp:37 listltarifaview.cpp:61
+msgid "ID articulo"
 msgstr ""
 
-#: plugintarifas.cpp:180
-msgid "ID Tarifa"
+#: plugintarifas.cpp:181 listltarifaview.cpp:38 listltarifaview.cpp:62
+msgid "ID almacen"
 msgstr ""
 
-#: plugintarifas.cpp:183
-msgid "ID Almacen"
-msgstr ""
-
-#: plugintarifas.cpp:184
+#: plugintarifas.cpp:182
 msgid "Almacen"
 msgstr ""
 
-#: plugintarifas.cpp:186
-msgid "Cantidad Mayor o Igual que"
+#: plugintarifas.cpp:183
+msgid "Cantidad mayor o igual que"
 msgstr ""
 
-#: plugintarifas.cpp:187
-msgid "Porcentaje Variacion"
+#: plugintarifas.cpp:184
+msgid "Porcentaje variacion"
 msgstr ""
 
 #: listltarifaview.cpp:34
@@ -103,16 +99,8 @@ msgstr ""
 msgid "Precio de venta"
 msgstr ""
 
-#: listltarifaview.cpp:37 listltarifaview.cpp:61
-msgid "ID articulo"
-msgstr ""
-
-#: listltarifaview.cpp:38 listltarifaview.cpp:62
-msgid "ID almacen"
-msgstr ""
-
 #: listltarifaview.cpp:40 listltarifaview.cpp:64
-msgid "Nº de linea"
+msgid "Num de linea"
 msgstr ""
 
 #: listltarifaview.cpp:41 listltarifaview.cpp:58

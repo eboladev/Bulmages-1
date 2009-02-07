@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:36+0100\n"
+"POT-Creation-Date: 2009-02-07 16:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,55 +120,59 @@ msgstr ""
 msgid "Referencia"
 msgstr ""
 
-#: compraventaview.cpp:132
+#: compraventaview.cpp:112
+msgid "Cliente:"
+msgstr ""
+
+#: compraventaview.cpp:138
 msgid "Error al crear el albaran a cliente"
 msgstr ""
 
-#: compraventaview.cpp:445
+#: compraventaview.cpp:451
 msgid "Tiene que seleccionar un proveedor"
 msgstr ""
 
-#: compraventaview.cpp:460
+#: compraventaview.cpp:466
 msgid "Factura de proveedor existente"
 msgstr ""
 
-#: compraventaview.cpp:461
+#: compraventaview.cpp:467
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
 msgstr ""
 
-#: compraventaview.cpp:462 compraventaview.cpp:583
+#: compraventaview.cpp:468 compraventaview.cpp:589
 msgid "&Si"
 msgstr ""
 
-#: compraventaview.cpp:462 compraventaview.cpp:583
+#: compraventaview.cpp:468 compraventaview.cpp:589
 msgid "&No"
 msgstr ""
 
-#: compraventaview.cpp:528 compraventaview.cpp:679
+#: compraventaview.cpp:534 compraventaview.cpp:685
 msgid "Error inesperado"
 msgstr ""
 
-#: compraventaview.cpp:566
+#: compraventaview.cpp:572
 msgid "Tiene que seleccionar un cliente"
 msgstr ""
 
-#: compraventaview.cpp:581
+#: compraventaview.cpp:587
 msgid "Factura existente"
 msgstr ""
 
-#: compraventaview.cpp:582
+#: compraventaview.cpp:588
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: compraventaview.cpp:705
+#: compraventaview.cpp:711
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
-#: compraventaview.cpp:709
+#: compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
 msgstr ""
 

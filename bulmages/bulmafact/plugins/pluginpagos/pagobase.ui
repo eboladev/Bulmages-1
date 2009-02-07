@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author>Tomeu Borrás</author>
+ <author>Tomeu Borras</author>
  <class>PagoBase</class>
  <widget class="QWidget" name="PagoBase" >
   <property name="geometry" >

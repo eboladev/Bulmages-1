@@ -270,7 +270,7 @@
    <item>
     <widget class="QCheckBox" name="m_test" >
      <property name="text" >
-      <string>Realizar sólo &amp;un Testeo</string>
+      <string>Realizar solo &amp;un Testeo</string>
      </property>
     </widget>
    </item>

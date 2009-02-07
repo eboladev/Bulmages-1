@@ -87,7 +87,7 @@ CobroView::~CobroView()
 }
 
 int CobroView::trataTags ( QString &buff ) {
-   // pillar los datos de cliente equivale a un <!--QUERY-->      implícito que contiene toda la plantilla.
+   // pillar los datos de cliente equivale a un <!--QUERY-->      implicito que contiene toda la plantilla.
    QString params[1] = {DBvalue ( "idcliente" )};
    buff = trataCursor(empresaBase() ->cargacursor ( 
           "SELECT * FROM cliente WHERE idcliente = $1" , 

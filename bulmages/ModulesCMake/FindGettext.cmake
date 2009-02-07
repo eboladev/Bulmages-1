@@ -115,7 +115,7 @@ ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
 add_custom_target( translations )
-add_custom_target( update_pots DEPENDS messages_extract)
+add_custom_target( update_pots )
 
 #To acomplish the messages extract it's needed some macros
 
@@ -188,12 +188,16 @@ endmacro( GETTEXT_CREATE_TEMPLATE)
 
 macro (GETTEXT_UPDATE_POT inputPot dirOUT)
    get_filename_component(_PotFile ${inputPot} NAME)
-   add_custom_command(
-   OUTPUT ${dirOUT}/${_PotFile}
-   COMMAND ${CMAKE_COMMAND} copy ${inputPot} ${dirOUT}/${_PotFile}
-   DEPENDS ${inputPot}
-   )
-   add_dependencies(update_pots ${inputPot})
+   get_filename_component(_PotFileName ${inputPot} NAME_WE)
+   #add_custom_command(
+   #OUTPUT ${dirOUT}/${_PotFile}
+   #COMMAND ${CMAKE_COMMAND} copy ${inputPot} ${dirOUT}/${_PotFile}
+   #DEPENDS ${inputPot}
+   #)
+   configure_file( ${inputPot} ${dirOUT}/${_PotFile} COPYONLY)
+   message(STATUS "Updating ${inputPot} in ${dirOUT}/${_PotFile}")
+
+   add_dependencies(update_pots ${_PotFileName}_pot)
 endmacro (GETTEXT_UPDATE_POT inputPot dirOUT)
 
 

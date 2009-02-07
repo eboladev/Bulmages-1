@@ -27,7 +27,7 @@
 #include "busquedacuenta.h"
 
 
-/// Inicia los encabezados de la tabla y llama a la presentación del listado.
+/// Inicia los encabezados de la tabla y llama a la presentacion del listado.
 /**
 \param emp
 \param parent
@@ -75,7 +75,7 @@ cobropagoview::~cobropagoview()
 }
 
 
-/// SLOT que responde a la pulsacion del botón de actualizar.
+/// SLOT que responde a la pulsacion del boton de actualizar.
 /**
 **/
 void cobropagoview::on_mui_actualizar_clicked()

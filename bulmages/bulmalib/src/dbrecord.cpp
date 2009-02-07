@@ -327,8 +327,8 @@ void DBRecord::setDBTableName ( QString nom )
 
 /// Establece el tipo de operacion que se realizara en la base de datos.
 /**
-Si se establece TRUE entonces se hará una inserción del registro en la tabla por
-defecto. Si por el contrario se establece como FALSE se hará una modificacion de los
+Si se establece TRUE entonces se hara una insercion del registro en la tabla por
+defecto. Si por el contrario se establece como FALSE se hara una modificacion de los
 registros que coincidan en sus PrimaryKey con los datos del registro.
 
 Este metodo es de uso interno. Es la propia clase la que regula si es una insercion
@@ -534,7 +534,7 @@ int DBRecord::DBsave ( QString &id )
         } // end if
         m_nuevoCampo = FALSE;
 
-	/// Emitimos la señal apropiada en el qapplication2
+	/// Emitimos la senyal apropiada en el qapplication2
 	theApp->tablaCambiada1(m_tablename);
 
     } catch ( int error ) {
@@ -859,24 +859,24 @@ int DBRecord::generaRML ( const QString &arch )
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
     bool ascii=FALSE; 
-    /// Antes de abrir un fichero como QTextStream debemos saber en qué codificación 
-    /// está, si no leeremos basura (potencialmente). Los ficheros XML deberían 
-    /// declararlo en la primera instrucción de proceso (<?xml ... encoding=""?>)
-    /// Si no lo declaran deberían ser UTF-8. Para parsear la instrucción de proceso
+    /// Antes de abrir un fichero como QTextStream debemos saber en que codificacion 
+    /// esta, si no leeremos basura (potencialmente). Los ficheros XML deberian 
+    /// declararlo en la primera instruccion de proceso (<?xml ... encoding=""?>)
+    /// Si no lo declaran deberian ser UTF-8. Para parsear la instruccion de proceso
     /// uso QXmlStreamReader. Para el resto del fichero dejo lo que estaba 
     /// hecho, que trabaja sobre una QString. Para pasarlo a SAX, DOM o QXmlStreamReader
-    /// habría que cambiarlo todo y no sé si vale la pena.
+    /// habria que cambiarlo todo y no se si vale la pena.
     QXmlStreamReader xmlReader(&file);
     while ((!xmlReader.atEnd())&&(!xmlReader.isStartDocument())) {
           xmlReader.readNext();
     };
     QTextCodec *codec=NULL;
     if (xmlReader.isStartDocument()) {
-         _depura("El fitxer " + archivod + " té una codificació ("+     
+         _depura("El fitxer " + archivod + " te una codificacio ("+     
                      xmlReader.documentEncoding().toString()+") ",0);
          codec=QTextCodec::codecForName(xmlReader.documentEncoding().toString().toUtf8());
          if (!codec) { // sembla que no va, per UTF32 (=UCS4)
-             _depura("El fitxer " + archivod + " té una codificació ("+  
+             _depura("El fitxer " + archivod + " te una codificacio ("+  
                      xmlReader.documentEncoding().toString()+") que no entenem",2);
 //             file.close(); 
 //             return 0;
@@ -886,12 +886,12 @@ int DBRecord::generaRML ( const QString &arch )
          }// end if
     } else {
          if (ascii=xmlReader.hasError()) {
-            _depura("El fitxer " + archivod + " no l'hem pogut llegir bé i no sabem quina codificació té. S'imaginarem que és ASCII per si de cas");
+            _depura("El fitxer " + archivod + " no l'hem pogut llegir be i no sabem quina codificacio te. S'imaginarem que es ASCII per si de cas");
          }// end if
-         _depura("El fitxer " + archivod + " no sé quina codificació té. Deu ser UTF-8",0);
+         _depura("El fitxer " + archivod + " no se quina codificacio te. Deu ser UTF-8",0);
 	 codec=QTextCodec::codecForName("UTF-8");
-         // esto mantendría compatibilidad con el código anterior, pero 
-         // me parece que no queremos porque el código anterior no admitía
+         // esto mantendria compatibilidad con el codigo anterior, pero 
+         // me parece que no queremos porque el codigo anterior no admitia
          // contenidos no ASCII (bgtrml2pdf petaba) y los contenidos ASCII ya funcionan aunque 
          // los trates como UTF-8 
          // encoding=QtextCodec::codecForLocale();
@@ -912,31 +912,31 @@ int DBRecord::generaRML ( const QString &arch )
         QTextStream stream ( &file );
         stream.setCodec(codec);
         if ((!ascii)&&(codec->canEncode(buff))) {  
-           // para ficheros UTF-8, UTF-16, UTF-32 así vale
-           // para otros sin caracteres ajenos al encoding también vale
+           // para ficheros UTF-8, UTF-16, UTF-32 asi vale
+           // para otros sin caracteres ajenos al encoding tambien vale
 	   _depura("Llistat sense referències de caracters",0," ");
            stream << buff;
         } else { // para otros con caracteres no codificables 
-                 // tenemos que usar referencias numéricas de caracteres de XML
+                 // tenemos que usar referencias numericas de caracteres de XML
 	   _depura("Llistat amb referències de caracters",0," ");
            QString::const_iterator i;
            for (i = buff.begin(); i != buff.end(); ++i) {
                if ((codec->canEncode(*i))&&((!ascii)||((*i).unicode()<128)) ) {
                   stream << *i; // si puedo lo escribo
-               } else { // si no pogo referencia numérica de caracter &12345;
+               } else { // si no pogo referencia numerica de caracter &12345;
                     uint codepoint = 0; 
                     // el caracter puede no caber en un QChar.
                     if ((*i).isHighSurrogate()) {
                          // sospecho que o este caso o el siguiente nunca se
-                         // dará pero no lo sé seguro y si es así no sé cuál
+                         // dara pero no lo se seguro y si es asi no se cual
                          codepoint = QChar::surrogateToUcs4(*i,*++i);
                     }  else {
                        if ((*i).isLowSurrogate()) {
                          // sospecho que o este caso o el anterior nunca se
-                         // dará pero no lo sé seguro y si es así no sé cuál
+                         // dara pero no lo se seguro y si es asi no se cual
                         codepoint = QChar::surrogateToUcs4(*++i,*i);
                        } else {
-                          // este caso es más normal, caracter entre 0 i 2^16
+                          // este caso es mas normal, caracter entre 0 i 2^16
                           codepoint = (*i).unicode();
                        }
                     }

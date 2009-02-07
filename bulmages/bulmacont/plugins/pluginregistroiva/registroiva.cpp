@@ -200,8 +200,8 @@ int RegistroIva::guardar()
 /** Si hay varios servicios entonces tb deben pasarse en forma de lista. Aunque solo se
     necesite uno.
     \todo Los servicios no son todos los del grupo 6 y 7 son los 6x y 7x esto provoca que
-    aparezca la ventana más veces de las deseadas.
-    En estos momentos sólo se utiliza para calcular el total de la base imponible.
+    aparezca la ventana mas veces de las deseadas.
+    En estos momentos solo se utiliza para calcular el total de la base imponible.
     Si todo va bien devuelve el idregistro
     Si hay errores devuelve -1
     Si no ha encontrado el registro pero no hay errores devuelve 0 **/
@@ -281,7 +281,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         delete cur;
         /// Se calcula el total.
         /// El c&aacute;lculo se compara con el formato conocido de IVA
-        /// (16, 7, 4: por tanto, formato de 2 dígitos con 0 decimales).
+        /// (16, 7, 4: por tanto, formato de 2 digitos con 0 decimales).
         SQLQuery = "SELECT abs(sum(baseimp)) AS subtotal FROM lacosa, (SELECT baseimp AS iva FROM lacosa WHERE codigo SIMILAR TO " + cuentasIVA + ") AS iva WHERE codigo SIMILAR TO " + cuentas + " AND (iva.iva*100/baseimp)::NUMERIC(2,0) IN (SELECT porcentajetipoiva FROM tipoiva)";
         cur = empresaBase() ->cargacursor ( SQLQuery );
 
@@ -406,7 +406,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
         /// El registro no existe y hay que hacer la propuesta m&aacute;s acertada de registro.
         /// Buscamos en todo el asiento las cuentas de IVA y lo reflejamos.
         buscaborradoriva ( idapunte1 );
-        /// Buscamos la fecha que le corresponderá teoricamente a la factura.
+        /// Buscamos la fecha que le correspondera teoricamente a la factura.
         buscafecha ( idapunte1 );
         /// Buscamos la cuenta de servicio.
         buscaborradorservicio ( idapunte1 );
@@ -424,7 +424,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
   * que corresponden con la partida del asiento.
   * Los pasa en la tabla m_listIva. Tambien busca la fecha del asiento y la pone en m_ffactura
   * Devuelve 0 si todo va bien
-  * Devuelve 1 si ha ocurrido algún error.
+  * Devuelve 1 si ha ocurrido algun error.
   */
 
 

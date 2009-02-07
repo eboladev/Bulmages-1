@@ -112,7 +112,7 @@
            <enum>Qt::LeftToRight</enum>
           </property>
           <property name="text" >
-           <string>Fecha con la que quedará el asiento:</string>
+           <string>Fecha con la que quedara el asiento:</string>
           </property>
           <property name="alignment" >
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

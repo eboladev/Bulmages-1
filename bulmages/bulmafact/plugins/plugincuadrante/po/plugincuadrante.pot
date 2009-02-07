@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-03 21:35+0100\n"
+"POT-Creation-Date: 2009-02-07 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: cuadranteview.cpp:58 cuadrante1view.cpp:59 cuadrantediarioview.cpp:61
-#: ui_cuadrante1base.h:311
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75
+#: cuadrantediarioview.cpp:76 ui_cuadrante1base.h:311
 msgid "Almacen"
 msgstr ""
 
@@ -83,11 +84,11 @@ msgid "Comentarios"
 msgstr ""
 
 #: cuadrante1view.cpp:62
-msgid "Apertura mañana"
+msgid "Apertura manyana"
 msgstr ""
 
 #: cuadrante1view.cpp:63
-msgid "Cierre mañana"
+msgid "Cierre manyana"
 msgstr ""
 
 #: cuadrante1view.cpp:64
@@ -127,11 +128,11 @@ msgid "ID horario"
 msgstr ""
 
 #: plugincuadrante.cpp:257
-msgid "Fecha Inicial Ausencia"
+msgid "Fecha inicial ausencia"
 msgstr ""
 
 #: plugincuadrante.cpp:258
-msgid "Fecha Final Ausencia"
+msgid "Fecha final ausencia"
 msgstr ""
 
 #: plugincuadrante.cpp:259
@@ -144,11 +145,6 @@ msgstr ""
 
 #: cuadrantediarioview.cpp:73
 msgid "Hora"
-msgstr ""
-
-#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75
-#: cuadrantediarioview.cpp:76
-msgid "Almacén"
 msgstr ""
 
 #: cuadrantediarioview.cpp:99
@@ -193,11 +189,11 @@ msgid "Ctrl+D"
 msgstr ""
 
 #: ui_cuadrante1base.h:339
-msgid "Apertura Mañana"
+msgid "Apertura Manyana"
 msgstr ""
 
 #: ui_cuadrante1base.h:340
-msgid "Cierre Mañana"
+msgid "Cierre Manyana"
 msgstr ""
 
 #: ui_cuadrante1base.h:341

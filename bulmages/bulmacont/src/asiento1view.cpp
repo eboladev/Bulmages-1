@@ -897,7 +897,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
     _depura ( "Asiento1View::regularizacion", 0, finicial + "--" + ffinal );
     try {
 
-        /// Para poder generar un asiento de regularización debemos tener un asiento abierto.
+        /// Para poder generar un asiento de regularizacion debemos tener un asiento abierto.
         /// Sino, no merece la pena hacerlo.
 
         int idcuenta;

@@ -242,10 +242,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Exportar a Hoja de Cálculo</string>
+           <string>Exportar a Hoja de Calculo</string>
           </property>
           <property name="whatsThis" >
-           <string>Exportar a Hoja de Cálculo</string>
+           <string>Exportar a Hoja de Calculo</string>
           </property>
           <property name="text" >
            <string/>
