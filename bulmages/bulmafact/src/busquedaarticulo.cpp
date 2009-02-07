@@ -340,7 +340,7 @@ QString BusquedaArticulo::nomarticulo()
 \param parent
 **/
 BusquedaArticuloDelegate::BusquedaArticuloDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0 );
     m_cursorcombo = NULL;
@@ -468,7 +468,7 @@ void BusquedaArticuloDelegate::focusOutEvent ( QFocusEvent * event ) {
            + QString::number(count()),0);
     eligeUnico();
    _depura("crido pare",0);
-   QComboBox2::focusOutEvent(event);
+   BlComboBox::focusOutEvent(event);
    _depura("END BusquedaArticuloDelegate::focusOutEvent",0);
 }
 

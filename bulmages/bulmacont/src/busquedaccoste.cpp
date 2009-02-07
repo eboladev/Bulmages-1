@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include  "busquedaccoste.h"
 #include  "funcaux.h"
 #include  "empresa.h"
@@ -27,7 +28,7 @@
 \param parent
 **/
 BusquedaCCoste::BusquedaCCoste ( QWidget *parent, const char * )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaCCoste::BusquedaCCoste", 0 );
     m_cursorcombo = NULL;
@@ -141,7 +142,7 @@ void BusquedaCCoste::setValorCampo ( QString idc_coste )
 \param parent
 **/
 BusquedaCCosteDelegate::BusquedaCCosteDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0 );
     setEditable ( false );

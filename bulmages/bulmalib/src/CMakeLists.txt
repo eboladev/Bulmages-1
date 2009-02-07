@@ -60,7 +60,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          fichacfg.cpp
          paisview.cpp
          qradiobutton2.cpp
-         qcombobox2.cpp
+         blcombobox.cpp
          blprogressbar.cpp
 	 blmainwindow.cpp
 	 blbancoedit.cpp
@@ -92,7 +92,7 @@ set(bulmalib_MOCS
          fichacfg.h 
          paisview.h 
          qradiobutton2.h
-         qcombobox2.h
+         blcombobox.h
 	 blbancoedit.h
 	 blmonthcalendar.h
 	 busqueda.h)

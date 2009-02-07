@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 #include "busquedaseriefactura.h"
 #include "company.h"
@@ -33,7 +33,7 @@
 \param parent
 **/
 BusquedaSerieFactura::BusquedaSerieFactura ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaSerieFactura::BusquedaSerieFactura", 0 );
     m_cursorcombo = NULL;

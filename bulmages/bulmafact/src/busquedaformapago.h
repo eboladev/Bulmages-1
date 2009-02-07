@@ -23,7 +23,7 @@
 #define BUSQUEDAFORMA_PAGO_H
 
 #include "funcaux.h"
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
@@ -32,7 +32,7 @@
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaFormaPago : public QComboBox2
+class BusquedaFormaPago : public BlComboBox
 {
     Q_OBJECT
 

@@ -23,10 +23,10 @@
 
 #include "company.h"
 #include "postgresiface2.h"
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 
-class BusquedaTarifa : public QComboBox2
+class BusquedaTarifa : public BlComboBox
 {
     Q_OBJECT
 

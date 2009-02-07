@@ -22,13 +22,13 @@
 #ifndef BUSQUEDACANAL_H
 #define BUSQUEDACANAL_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "blwidget.h"
 #include "empresa.h"
 #include "postgresiface2.h"
 
 
-class BusquedaCanalDelegate : public QComboBox2
+class BusquedaCanalDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -45,7 +45,7 @@ public:
 
 
 
-class BusquedaCanal : public QComboBox2
+class BusquedaCanal : public BlComboBox
 {
     Q_OBJECT
 

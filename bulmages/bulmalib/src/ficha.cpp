@@ -20,7 +20,7 @@
 
 #include "ficha.h"
 #include "fichacfg.h"
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "plugins.h"
 #include "qradiobutton2.h"
 #include "busquedafecha.h"
@@ -540,9 +540,9 @@ void Ficha::pintar()
         if ( l1 ) {
             l1->setValorCampo ( campo->valorcampo() );
         } // end if
-        /// Buscamos QComboBox2 que coincidan con el campo supuestamente
+        /// Buscamos BlComboBox que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
+        BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
             l2->setValorCampo ( campo->valorcampo() );
         } // end if
@@ -600,8 +600,8 @@ void Ficha::recogeValores()
         if ( l1 )
             campo->set ( l1->valorCampo() );
 
-        /// Buscamos QComboBox2 que coincidan con el campo. Supuestamente sirve para los campos personales.
-        QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
+        /// Buscamos BlComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
+        BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
             campo->set ( l2->valorCampo() );
 	} // end for

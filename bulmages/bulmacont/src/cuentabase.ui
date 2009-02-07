@@ -1783,7 +1783,7 @@
         </widget>
        </item>
        <item row="4" column="5" colspan="2" >
-        <widget class="QComboBox2" name="mui_idprovincia" />
+        <widget class="BlComboBox" name="mui_idprovincia" />
        </item>
       </layout>
      </widget>
@@ -1868,9 +1868,9 @@
    <header>qradiobutton2.h</header>
   </customwidget>
   <customwidget>
-   <class>QComboBox2</class>
+   <class>BlComboBox</class>
    <extends>QComboBox</extends>
-   <header>qcombobox2.h</header>
+   <header>blcombobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

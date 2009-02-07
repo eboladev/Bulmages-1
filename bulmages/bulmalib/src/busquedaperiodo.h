@@ -22,11 +22,11 @@
 #ifndef BUSQUEDAPERIODO_H
 #define BUSQUEDAPERIODO_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "funcaux.h"
 
 
-class BusquedaPeriodo : public QComboBox2
+class BusquedaPeriodo : public BlComboBox
 {
     Q_OBJECT
 

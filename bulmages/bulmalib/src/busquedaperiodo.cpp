@@ -64,7 +64,7 @@ void BusquedaPeriodo::s_activated ( int index )
 /**
 \param parent
 **/
-BusquedaPeriodo::BusquedaPeriodo ( QWidget *parent ) : QComboBox2 ( parent )
+BusquedaPeriodo::BusquedaPeriodo ( QWidget *parent ) : BlComboBox ( parent )
 {
     _depura ( "BusquedaPeriodo::BusquedaPeriodo", 0 );
     m_textos[0] = _( "Semanal" );

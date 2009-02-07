@@ -28,7 +28,7 @@
 \param parent
 **/
 BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaTarifa::BusquedaTarifa", 0 );
     m_cursorcombo = NULL;

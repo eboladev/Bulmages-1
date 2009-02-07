@@ -19,14 +19,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QCOMBOBOX2_H
-#define QCOMBOBOX2_H
+#ifndef BLCOMBOBOX_H
+#define BLCOMBOBOX_H
 
 #include <QComboBox>
+
 #include "blwidget.h"
 #include "ficha.h"
 
-class QComboBox2 : public QComboBox, public PEmpresaBase
+
+class BlComboBox : public QComboBox, public PEmpresaBase
 {
     Q_OBJECT
 
@@ -44,14 +46,12 @@ private:
     /// Almacena el nombreprofesor del profesor seleccionado.
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
-
     /// Indica si adminte nulos o no
     bool m_null;
 
-
 public:
-    QComboBox2 ( QWidget *parent );
-    ~QComboBox2();
+    BlComboBox ( QWidget *parent );
+    ~BlComboBox();
     QString valorCampo();
     void setValorCampo(QString);
     QString id();
@@ -60,6 +60,7 @@ public:
     virtual void setTableName(QString tableName);
     virtual void setCampoId(QString cid);
     void allowNull(bool v);
+
 public slots:
     virtual void m_activated(int);
     virtual void onTablaCambiada(const QString &);

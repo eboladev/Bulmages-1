@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 #include "busquedaregimenfiscal.h"
 
@@ -31,7 +31,7 @@
 \param parent
 **/
 BusquedaRegimenFiscal::BusquedaRegimenFiscal ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaRegimenFiscal::BusquedaRegimenFiscal", 0 );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );

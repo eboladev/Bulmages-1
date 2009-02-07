@@ -22,14 +22,14 @@
 #ifndef BUSQUEDAREGIMENFISCAL_H
 #define BUSQUEDAREGIMENFISCAL_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "funcaux.h"
 
 
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaRegimenFiscal : public QComboBox2
+class BusquedaRegimenFiscal : public BlComboBox
 {
     Q_OBJECT
 

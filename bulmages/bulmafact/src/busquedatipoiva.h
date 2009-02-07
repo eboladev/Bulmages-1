@@ -24,8 +24,8 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include "qcombobox2.h"
 
+#include "blcombobox.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
 
@@ -39,7 +39,7 @@ class company;
     Antes de utilizarlo debe ser inicializado con setEmpresaBase().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaTipoIva : public QComboBox2
+class BusquedaTipoIva : public BlComboBox
 {
     Q_OBJECT
 
@@ -68,7 +68,7 @@ signals:
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un 'QComboBox' */
-class BusquedaTipoIVADelegate : public QComboBox2
+class BusquedaTipoIVADelegate : public BlComboBox
 {
     Q_OBJECT
 

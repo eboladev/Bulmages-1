@@ -445,7 +445,7 @@ void BusquedaCuenta::on_mui_codigocuenta_editingFinished()
 \param parent
 **/
 BusquedaCuentaDelegate::BusquedaCuentaDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaCuentaDelegate::BusquedaCuentaDelegate", 0 );
     m_cursorcombo = NULL;

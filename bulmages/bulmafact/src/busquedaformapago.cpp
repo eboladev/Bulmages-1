@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 #include "busquedaformapago.h"
 
@@ -32,7 +32,7 @@
 \param parent
 **/
 BusquedaFormaPago::BusquedaFormaPago ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaFormaPago::BusquedaFormaPago", 0 );
     m_cursorcombo = NULL;

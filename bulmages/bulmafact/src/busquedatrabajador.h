@@ -22,8 +22,7 @@
 #ifndef BUSQUEDATRABAJADOR_H
 #define BUSQUEDATRABAJADOR_H
 
-#include "qcombobox2.h"
-
+#include "blcombobox.h"
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
@@ -33,7 +32,7 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un ComboBox */
-class BusquedaTrabajadorDelegate : public QComboBox2
+class BusquedaTrabajadorDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -55,7 +54,7 @@ public:
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaTrabajador : public QComboBox2
+class BusquedaTrabajador : public BlComboBox
 {
     Q_OBJECT
 

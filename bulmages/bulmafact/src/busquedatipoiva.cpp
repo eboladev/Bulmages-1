@@ -32,7 +32,7 @@
 \param parent
 **/
 BusquedaTipoIva::BusquedaTipoIva ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaTipoIva::BusquedaTipoIva", 0 );
     m_cursorcombo = NULL;
@@ -156,7 +156,7 @@ void BusquedaTipoIva::m_activated ( int index )
 \param parent
 **/
 BusquedaTipoIVADelegate::BusquedaTipoIVADelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0 );
     m_cursorcombo = NULL;

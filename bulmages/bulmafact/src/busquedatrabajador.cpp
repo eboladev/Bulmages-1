@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 #include "busquedatrabajador.h"
 #include "company.h"
@@ -32,7 +32,7 @@
 \param parent
 **/
 BusquedaTrabajador::BusquedaTrabajador ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaTrabajador::BusquedaTrabajador", 0 );
     m_cursorcombo = NULL;
@@ -154,7 +154,7 @@ void BusquedaTrabajador::m_activated ( int index )
 \param parent
 **/
 BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0 );
     m_cursorcombo = NULL;

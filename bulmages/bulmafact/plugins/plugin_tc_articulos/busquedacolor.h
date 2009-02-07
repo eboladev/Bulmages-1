@@ -22,17 +22,17 @@
 #ifndef BUSQUEDACOLOR_H
 #define BUSQUEDACOLOR_H
 
-#include "qcombobox2.h"
-
+#include "blcombobox.h"
 #include "blwidget.h"
 #include "company.h"
 #include "postgresiface2.h"
+
 
 /** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un ComboBox */
-class BusquedaColorDelegate : public QComboBox2
+class BusquedaColorDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -51,7 +51,7 @@ public:
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaColor : public QComboBox2
+class BusquedaColor : public BlComboBox
 {
     Q_OBJECT
 

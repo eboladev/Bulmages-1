@@ -22,7 +22,7 @@
 #ifndef BUSQUEDABANCO_H
 #define BUSQUEDABANCO_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 #include "funcaux.h"
 
@@ -33,7 +33,7 @@
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaBanco : public QComboBox2
+class BusquedaBanco : public BlComboBox
 {
     Q_OBJECT
 

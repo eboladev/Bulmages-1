@@ -24,9 +24,9 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include "qcombobox2.h"
 #include <QCompleter>
 
+#include "blcombobox.h"
 #include "blwidget.h"
 #include "ui_busquedacuentabase.h"
 #include "postgresiface2.h"
@@ -35,7 +35,7 @@
 class Empresa;
 
 
-class BusquedaCuentaDelegate : public QComboBox2
+class BusquedaCuentaDelegate : public BlComboBox
 {
     Q_OBJECT
 

@@ -22,7 +22,7 @@
 #ifndef BUSQUEDASERIEFACTURA_H
 #define BUSQUEDASERIEFACTURA_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "company.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
@@ -33,7 +33,7 @@
     Antes de utilizarlo debe ser inicializa con setcompany.
     Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
 */
-class BusquedaSerieFactura : public QComboBox2
+class BusquedaSerieFactura : public BlComboBox
 {
     Q_OBJECT
 

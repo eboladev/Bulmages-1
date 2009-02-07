@@ -18,8 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "qcombobox2.h"
-
+#include "blcombobox.h"
 #include "busquedacolor.h"
 #include "company.h"
 #include "funcaux.h"
@@ -31,7 +30,7 @@
 \param parent
 **/
 BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaColor::BusquedaColor", 0 );
     m_cursorcombo = NULL;
@@ -167,7 +166,7 @@ void BusquedaColor::m_activated ( int index )
 \param parent
 **/
 BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaColorDelegate::BusquedaColorDelegate", 0 );
     m_cursorcombo = NULL;

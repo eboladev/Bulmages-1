@@ -22,7 +22,7 @@
 #ifndef BUSQUEDACCOSTE_H
 #define BUSQUEDACCOSTE_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
 
@@ -30,7 +30,7 @@ class Empresa;
 
 
 
-class BusquedaCCosteDelegate : public QComboBox2
+class BusquedaCCosteDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -47,7 +47,7 @@ public:
 
 
 
-class BusquedaCCoste : public QComboBox2
+class BusquedaCCoste : public BlComboBox
 {
     Q_OBJECT
 

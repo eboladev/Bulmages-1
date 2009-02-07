@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include  "busquedacanal.h"
 #include  "empresa.h"
 #include  "funcaux.h"
@@ -28,7 +27,7 @@
 /**
 **/
 BusquedaCanal::BusquedaCanal ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaCanal::BusquedaCanal", 0 );
     m_cursorcombo = NULL;
@@ -139,7 +138,7 @@ QString BusquedaCanal::valorCampo()
 \param parent
 **/
 BusquedaCanalDelegate::BusquedaCanalDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaCanalDelegate::BusquedaCanalDelegate", 10 );
     setEditable ( false );

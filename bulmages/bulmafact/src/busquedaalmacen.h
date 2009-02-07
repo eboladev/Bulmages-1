@@ -22,7 +22,7 @@
 #ifndef BUSQUEDAALMACEN_H
 #define BUSQUEDAALMACEN_H
 
-#include "qcombobox2.h"
+#include "blcombobox.h"
 
 #include "blwidget.h"
 #include "company.h"
@@ -32,7 +32,7 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un ComboBox */
-class BusquedaAlmacenDelegate : public QComboBox2
+class BusquedaAlmacenDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -50,7 +50,7 @@ public:
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaAlmacen : public QComboBox2
+class BusquedaAlmacen : public BlComboBox
 {
     Q_OBJECT
 

@@ -128,7 +128,7 @@ void BusquedaTipoTrabajo::m_activated ( int index )
 \param parent
 **/
 BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate ( QWidget *parent )
-        : QComboBox2 ( parent )
+        : BlComboBox ( parent )
 {
     _depura ( "BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0 );
     m_cursorcombo = NULL;

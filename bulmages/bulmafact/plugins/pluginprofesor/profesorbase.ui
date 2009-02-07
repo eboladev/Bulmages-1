@@ -387,7 +387,7 @@
         </widget>
        </item>
        <item row="4" column="4" colspan="2" >
-        <widget class="QComboBox2" name="mui_idprovincia" />
+        <widget class="BlComboBox" name="mui_idprovincia" />
        </item>
        <item row="5" column="0" >
         <widget class="QLabel" name="textLabel2_8" >
@@ -685,9 +685,9 @@
    <header>blbancoedit.h</header>
   </customwidget>
   <customwidget>
-   <class>QComboBox2</class>
+   <class>BlComboBox</class>
    <extends>QComboBox</extends>
-   <header>qcombobox2.h</header>
+   <header>blcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
