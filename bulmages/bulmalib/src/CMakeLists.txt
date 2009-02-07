@@ -48,7 +48,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          listventanas.cpp
          qworkspace2.cpp
          blapplication.cpp
-         ficha.cpp
+         blform.cpp
          empresabase.cpp
          qtexteditdelegate.cpp
          qdoublespinbox2.cpp
@@ -80,7 +80,7 @@ set(bulmalib_MOCS
          listventanas.h 
          qworkspace2.h 
          blapplication.h 
-         ficha.h 
+         blform.h 
          qtexteditdelegate.h 
          qdoublespinbox2.h 
          blwidget.h 
@@ -104,7 +104,7 @@ set (bulmalib_HDRS abreempresaview.h
 			dbrecord.h
 			dialogchanges.h
 			empresabase.h
-			ficha.h
+			blform.h
 			fixed.h
 			funcaux.h
 			listventanas.h
