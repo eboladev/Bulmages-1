@@ -533,6 +533,10 @@ int DBRecord::DBsave ( QString &id )
             m_conexionbase->ejecuta ( query );
         } // end if
         m_nuevoCampo = FALSE;
+
+	/// Emitimos la señal apropiada en el qapplication2
+	theApp->tablaCambiada1(m_tablename);
+
     } catch ( int error ) {
         _depura ( "END DBRecord::DBsave", 0, "Error de guardado" );
         throw error;

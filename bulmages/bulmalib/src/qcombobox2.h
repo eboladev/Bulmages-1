@@ -62,7 +62,7 @@ public:
     void allowNull(bool v);
 public slots:
     virtual void m_activated(int);
-    virtual void onFichaGuardada(Ficha *f);
+    virtual void onTablaCambiada(const QString &);
 
 signals:
     void valueChanged(QString);

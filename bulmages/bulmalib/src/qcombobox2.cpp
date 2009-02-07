@@ -19,13 +19,15 @@ QComboBox2::QComboBox2 ( QWidget *parent )
     _depura ( "QComboBox2::QComboBox2", 0 );
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    connect(theApp, SIGNAL(fichaGuardada(Ficha *)), this, SLOT(onFichaGuardada(Ficha*)));
+    connect(theApp, SIGNAL(tablaCambiada(const QString &)), this, SLOT(onTablaCambiada(const QString &)));
 
+/*
     m_query = "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia";
     m_tabla = "provincia";
     m_id = "idprovincia";
     m_valores["nomprovincia"] = "";
     m_valores["descpais"] = "";
+*/
     m_null = TRUE;
 
     _depura ( "END QComboBox2::QComboBox2", 0 );
@@ -43,9 +45,8 @@ QComboBox2::~QComboBox2()
     _depura ( "END QComboBox2::~QComboBox2", 0 );
 }
 
-void QComboBox2::onFichaGuardada(Ficha *f) {
-	mensajeInfo("Combo cambia ficha");
-	if (m_tabla == f->tableName()) {
+void QComboBox2::onTablaCambiada(const QString &t) {
+	if (m_tabla == t) {
 		setId(id());
 	} // end if
 }
@@ -81,11 +82,11 @@ void QComboBox2::setId ( QString id )
             i1 = i;
 
 	/// Inicializamos los valores de vuelta a ""
-	QMapIterator<QString, QString> i(m_valores);
+	QMapIterator<QString, QString> it(m_valores);
 	QString cad;
-	while (i.hasNext()) {
-		i.next();
-		cad = cad +" "+ m_valores.value(i.key());
+	while (it.hasNext()) {
+		it.next();
+		cad = cad +" "+ m_cursorcombo->valor(it.key());
 	} // end while
 
         addItem ( cad );
@@ -137,7 +138,11 @@ QString QComboBox2::id()
 {
     _depura ( "BusquedaProvincia::idProvincia", 0 );
     if ( currentIndex() > 0 ) {
+	if (m_null) {
         return m_cursorcombo->valor ( m_id, currentIndex() - 1 );
+	} else {
+        return m_cursorcombo->valor ( m_id, currentIndex() );
+	} // end if
     } else {
         return "";
     } // end if
