@@ -24,11 +24,11 @@
 # define MY_EXPORT
 #endif
 
-#include "ficha.h"
+#include "bldorm.h"
 #include "bulmafact.h"
 
-extern "C" MY_EXPORT int Ficha_guardar_Post ( Ficha * );
 
+extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 

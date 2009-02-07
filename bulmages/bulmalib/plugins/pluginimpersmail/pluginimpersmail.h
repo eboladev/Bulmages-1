@@ -24,9 +24,9 @@
 # define MY_EXPORT
 #endif
 
-#include "ficha.h"
+#include "blform.h"
 #include "empresabase.h"
 
-extern "C" MY_EXPORT int Ficha_Ficha ( Ficha * );
-extern "C" MY_EXPORT int entryPoint ( QApplication * );
 
+extern "C" MY_EXPORT int BlForm_BlForm ( BlForm * );
+extern "C" MY_EXPORT int entryPoint ( QApplication * );

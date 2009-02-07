@@ -35,9 +35,10 @@
 
 #include "pluginarchivos.h"
 #include "funcaux.h"
-#include "ficha.h"
+#include "blform.h"
 #include "empresabase.h"
 #include "archmenu.h"
+
 
 int entryPoint ( QMainWindow *bcont )
 {
@@ -51,15 +52,15 @@ int entryPoint ( QMainWindow *bcont )
     return ( 0 );
 }
 
-int Ficha_cargar ( Ficha *ficha )
+int BlForm_cargar ( BlForm *ficha )
 {
-    _depura ( "PBloqueos::Ficha_cargar", 0 );
+    _depura ( "Pluginarchivos::BlForm_cargar", 0 );
     return 0;
-    _depura ( "END PBloqueos::Ficha_cargar", 0 );
+    _depura ( "END Pluginarchivos::BlForm_cargar", 0 );
 }
 
 
-int Ficha_DesFicha ( Ficha *ficha )
+int BlForm_DesFicha ( BlForm *ficha )
 {
 /*
     QString query = "";
@@ -87,12 +88,12 @@ int Ficha_DesFicha ( Ficha *ficha )
 \param l
 \return
 **/
-int Ficha_Ficha ( Ficha *l )
+int BlForm_BlForm ( BlForm *l )
 {
-    _depura ( "Ficha_Ficha", 0 );
+    _depura ( "BlForm_BlForm", 0 );
 
     ArchMenu *mui_imp = new ArchMenu ( l );
 
-    _depura ( "END Ficha_Ficha", 0 );
+    _depura ( "END BlForm_BlForm", 0 );
     return 0;
 }

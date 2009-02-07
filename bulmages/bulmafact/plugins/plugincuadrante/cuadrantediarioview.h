@@ -31,8 +31,8 @@ class Company;
 
 
 /** Ventana de cuadrantes
-    Se encarga de la creación de cuadrantes en la empresa, para ubicar empleados, etc etc etc
-    Deriva de Ficha para metodos comunes a todas las fichas. */
+    Se encarga de la creacion de cuadrantes en la empresa, para ubicar empleados, etc etc etc
+    Deriva de FichaBf para metodos comunes a todas las fichas. */
 class CuadranteDiarioView : public FichaBf, public Ui_CuadranteDiarioBase
 {
     Q_OBJECT

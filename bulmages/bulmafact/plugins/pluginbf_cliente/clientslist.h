@@ -44,11 +44,8 @@ public:
 #include "ui_clientslistbase.h"
 
 
-/** Esta clase implementa la pantalla de listado de Clientes.
-    Deriva de Ficha para la estandarizacion de Pantallas.
-    Tiene dos modos de funcionamiento (Edicion y Seleccion)
+/** Esta clase implementa la pantalla de listado de clientes.
 */
-/// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
 class ClientsList : public Listado, public Ui_ClientsListBase, public pgimportfiles
 {
     Q_OBJECT

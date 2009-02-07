@@ -28,7 +28,6 @@
 /** Constructor de la clase del listado.
  *  Inicializa las variables y elementos del listado.
  */
-/// TODO: Esta derivando de Ficha y deberia derivar de FichaBc
 /**
 \param emp
 \param parent
@@ -126,7 +125,6 @@ void ListProyectosView::borrar()
     Si estamos en modo edicion abre una instancia de ArticuloView y lo carga con el
     valor seleccionado.
 */
-/// \TODO: este metodo deberia ser editar
 /**
 \param row
 **/

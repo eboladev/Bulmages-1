@@ -24,15 +24,14 @@
 # define MY_EXPORT
 #endif
 
-
 #include "postgresiface2.h"
 #include "empresabase.h"
 #include "bulmacont.h"
 #include "bulmafact.h"
-#include "ficha.h"
+#include "blform.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
-extern "C" MY_EXPORT int Ficha_cargar ( Ficha * );
-extern "C" MY_EXPORT int Ficha_DesFicha ( Ficha * );
-extern "C" MY_EXPORT int Ficha_Ficha ( Ficha * );
+extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" MY_EXPORT int BlForm_DesBlForm ( BlForm * );
+extern "C" MY_EXPORT int BlForm_BlForm ( BlForm * );

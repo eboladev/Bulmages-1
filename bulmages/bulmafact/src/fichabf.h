@@ -22,7 +22,7 @@
 #ifndef FICHA1_H
 #define FICHA1_H
 
-#include "ficha.h"
+#include "blform.h"
 #include "subform2bf.h"
 #include "company.h"
 
@@ -31,7 +31,7 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-class FichaBf : public Ficha
+class FichaBf : public BlForm
 {
     Q_OBJECT
 

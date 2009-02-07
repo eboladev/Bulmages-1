@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
 #include "plugintipostrabajo.h"
@@ -213,7 +214,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 \param fich
 \return
 **/
-int Ficha_cargar ( Ficha *fich )
+int BlForm_cargar ( BlForm *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "mui_tipostrabajo" );
     if ( form )
@@ -227,17 +228,18 @@ int Ficha_cargar ( Ficha *fich )
 \param fich
 \return
 **/
-int Ficha_guardar_Post ( Ficha *fich )
+int BlForm_guardar_Post ( BlForm *fich )
 {
-    _depura ( "Ficha_guardar_Post", 0 );
+    _depura ( "BlForm_guardar_Post", 0 );
     SubForm3 * form = fich->findChild<SubForm3 *> ( "mui_tipostrabajo" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->DBvalue ( "idalmacen" ) );
         form->guardar();
     }
-    _depura ( "END Ficha_guardar_Post", 0 );
+    _depura ( "END BlForm_guardar_Post", 0 );
     return 0;
 }
+
 
 /// ============================= SUBFORM3BFDELEGATE =============================================
 /// ===============================================================

@@ -22,7 +22,7 @@
 #ifndef FICHABC_H
 #define FICHABC_H
 
-#include "ficha.h"
+#include "blform.h"
 #include "subform2bc.h"
 #include "empresa.h"
 
@@ -30,7 +30,7 @@
 /** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
     comunes a todas las pantallas.
 */
-class FichaBc : public Ficha
+class FichaBc : public BlForm
 {
     Q_OBJECT
 

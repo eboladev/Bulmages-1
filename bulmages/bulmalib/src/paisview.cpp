@@ -30,7 +30,7 @@
 \param parent
 **/
 PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
-        : Ficha ( emp, parent )
+        : BlForm ( emp, parent )
 {
     _depura ( "PaisView::PaisView", 0 );
 

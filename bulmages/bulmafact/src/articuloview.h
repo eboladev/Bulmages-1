@@ -31,7 +31,7 @@ class Company;
 
 
 /** Esta clase controla la ventana de un articulo.
-    Deriva de la clase Ficha para el control de la ventana y de la clase Articulo
+    Deriva de la clase FichaBf para el control de la ventana y de la clase Articulo
     para el control con la base de datos.
 */
 class ArticuloView : public FichaBf, public Ui_ArticuloBase

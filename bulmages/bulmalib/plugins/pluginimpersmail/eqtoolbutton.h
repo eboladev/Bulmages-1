@@ -27,7 +27,8 @@
 
 #include "empresabase.h"
 #include "funcaux.h"
-#include "ficha.h"
+#include "blform.h"
+
 
 class EQToolButtonMail : public QWidget
 {
@@ -35,17 +36,16 @@ class EQToolButtonMail : public QWidget
 
 private:
     EmpresaBase *m_companyact;
-    Ficha *m_ficha;
+    BlForm *m_BlForm;
 
 public:
     EQToolButtonMail ( QWidget *parent = NULL );
     ~EQToolButtonMail();
 
 public slots:
-// virtual void click();
+    //virtual void click();
     virtual void pintaMenu ( QMenu * );
     virtual void trataMenu ( QAction *action );
-
 };
 
 #endif

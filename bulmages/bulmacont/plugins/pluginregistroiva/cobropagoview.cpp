@@ -33,7 +33,7 @@
 \param parent
 **/
 cobropagoview::cobropagoview ( Empresa *emp, QWidget *parent )
-        : Ficha ( parent )
+        : BlForm ( parent )
 {
     _depura ( "cobropagoview::cobropagoview", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

@@ -36,7 +36,8 @@
 #include "bulmacont.h"
 #include "myplugininformesods.h"
 #include "qworkspace2.h"
-#include "ficha.h"
+#include "blform.h"
+
 
 QMainWindow *g_bges = NULL;
 EmpresaBase *g_emp = NULL;
@@ -70,11 +71,13 @@ void MyPluginInformesODS::elslot1( )
 {
     _depura ( "MyPluginInformesODS::elslot", 0 );
 
-    Ficha *ficha = new Ficha ( g_emp, 0 );
+    BlForm *ficha = new BlForm ( g_emp, 0 );
+
     if (!ficha->generaRML ( sender()->objectName() )) return;
+
     QString archivod = sender()->objectName();
     QString archivo =  sender()->objectName().left ( sender()->objectName().size() - 4 );
-	invocaPYS(archivo);
+    invocaPYS(archivo);
 
 /*
     QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + archivo + ".ods";
@@ -86,9 +89,10 @@ void MyPluginInformesODS::elslot1( )
     system ( cadena.toAscii() );
 */
 
-	delete ficha;
+    delete ficha;
     _depura ( "END MyPluginInformesODS::elslot", 0 );
 }
+
 
 void entryPoint ( QMainWindow *bges )
 {
@@ -108,10 +112,10 @@ void entryPoint ( QMainWindow *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-    		QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
-			pPluginMenu = new QMenu ( _("Informes &ODS"), bges->menuBar() );
-			pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
-			bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
+	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
+	pPluginMenu = new QMenu ( _("Informes &ODS"), bges->menuBar() );
+	pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
+	bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
     } // end if
 
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -123,8 +127,8 @@ void entryPoint ( QMainWindow *bges )
     filters << "inf_*.pys";
     dir.setNameFilters ( filters );
 
-
     QFileInfoList list = dir.entryInfoList();
+
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
 
@@ -143,7 +147,6 @@ void entryPoint ( QMainWindow *bges )
             titulo = rx1.cap ( 1 );
         } // end while
 
-
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( titulo, 0 );
         accion->setObjectName ( fileInfo.fileName() );
@@ -153,15 +156,10 @@ void entryPoint ( QMainWindow *bges )
         pPluginMenu->addAction ( accion );
     } // end for
 
-
-
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
 //    bges->menuBar() ->insertMenu ( 0, pPluginMenu );
-
     _depura ( "Iniciado correctamente el plugin dock", 10 );
 }
-
-
 
 
 int Company_createMainWindows_Post ( Company *cmp )
@@ -169,6 +167,7 @@ int Company_createMainWindows_Post ( Company *cmp )
     g_emp = cmp;
     return 0;
 }
+
 
 int Empresa_createMainWindows_Post ( Empresa *cmp )
 {

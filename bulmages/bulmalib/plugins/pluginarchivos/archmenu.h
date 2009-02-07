@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef _ARCHMENU_
 #define _ARCHMENU_
 
@@ -26,7 +27,8 @@
 
 #include "empresabase.h"
 #include "funcaux.h"
-#include "ficha.h"
+#include "blform.h"
+
 
 class ArchMenu : public QWidget
 {
@@ -34,14 +36,14 @@ class ArchMenu : public QWidget
 
 private:
     EmpresaBase *m_companyact;
-    Ficha *m_ficha;
+    BlForm *m_BlForm;
 
 public:
     ArchMenu ( QWidget *parent = NULL );
     ~ArchMenu();
 
 public slots:
-// virtual void click();
+    //virtual void click();
     virtual void pintaMenu ( QMenu * );
     virtual void trataMenu ( QAction *action );
 

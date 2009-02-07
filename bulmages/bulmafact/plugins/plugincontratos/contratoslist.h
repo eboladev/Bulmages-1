@@ -27,6 +27,7 @@
 #include "listado.h"
 #include "bulmafact.h"
 
+
 class myplugincont : public QObject
 {
     Q_OBJECT
@@ -43,7 +44,6 @@ public:
 public slots:
     void elslot();
 };
-
 
 
 /** Subformulario de contratoes.
@@ -87,7 +87,6 @@ private:
     /// Almacena el cifcontratoe del registro seleccionado.
     QString mdb_refcontrato;
 
-
 public:
     ContratosList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~ContratosList();
@@ -113,6 +112,7 @@ public:
 public slots:
     void on_mui_list_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_facturar_clicked();
+
 signals:
     void selected ( QString );
 };

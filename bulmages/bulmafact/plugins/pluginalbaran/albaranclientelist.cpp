@@ -305,7 +305,8 @@ void AlbaranClienteList::borrar()
 
 /** La impresion de listados es estandarizada por la clase DBRecord
 */
-/// \TODO: Se podria hacer una clase derivada de Ficha que fuese Listado y que directamente implementase el metodo on_mui_imprimir.
+/// \TODO: Se podria hacer una clase derivada de BlForm que fuese Listado y que directamente
+/// implementase el metodo on_mui_imprimir.
 /**
 **/
 void AlbaranClienteList::imprimir()

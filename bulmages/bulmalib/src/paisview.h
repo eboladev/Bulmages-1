@@ -29,7 +29,7 @@
 #include "ui_paisbase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "blform.h"
 
 
 class EmpresaBase;
@@ -37,7 +37,7 @@ class EmpresaBase;
 
 /// Visualiza un centro de coste.
 /** */
-class PaisView : public Ficha, public Ui_paisbase
+class PaisView : public BlForm, public Ui_paisbase
 {
     Q_OBJECT
 

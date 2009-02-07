@@ -133,7 +133,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 \param fich
 \return
 **/
-int Ficha_cargar ( Ficha *fich )
+int BlForm_cargar ( BlForm *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "m_lmin" );
     if ( form )
@@ -143,7 +143,7 @@ int Ficha_cargar ( Ficha *fich )
 
 
 
-int Ficha_guardar_Post ( Ficha *fich )
+int BlForm_guardar_Post ( BlForm *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "m_lmin" );
     if ( form ) {
@@ -178,7 +178,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
 
         if ( !wid ) return 0;
 
-        Ficha *fich = ( Ficha * ) wid;
+        BlForm *fich = ( BlForm * ) wid;
         QString idalmacen = fich->DBvalue ( "idalmacen" );
         if ( idalmacen == "" ) return 0;
 

@@ -21,8 +21,9 @@
 #include "busquedareferencia.h"
 #include "company.h"
 #include "informereferencia.h"
-#include "ficha.h"
+#include "blform.h"
 #include "plugins.h"
+
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya
     confusion en determinar si un objeto ha sido creado o no.
@@ -60,7 +61,7 @@ void BusquedaReferencia::on_mui_informe_clicked()
 {
     _depura ( "BusquedaReferencia::on_mui_buscar_clicked\n", 0 );
 
-    Ficha newfich ( empresaBase(), NULL );
+    BlForm newfich ( empresaBase(), NULL );
     newfich.setTitleName ( _( "Informe" ) );
     newfich.addDBCampo ( "referencia", DBCampo::DBvarchar, DBCampo::DBPrimaryKey, _( "Referencia" ) );
     newfich.setDBvalue ( "referencia", mui_referencia->text() );
@@ -84,6 +85,7 @@ void BusquedaReferencia::on_mui_referencia_editingFinished()
     emit ( valueChanged ( mui_referencia->text() ) );
     _depura ( "END BusquedaReferencia::on_mui_referencia_editingFinished", 0 );
 }
+
 
 /** SLOT que responde a la pulsacion de RETURN sobre la casilla de referencia.
     Emite la se&ntilde;al returnPressed() para notificaciones.

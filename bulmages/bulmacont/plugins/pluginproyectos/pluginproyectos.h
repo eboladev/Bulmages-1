@@ -27,10 +27,11 @@
 #include <QObject>
 #include "bulmacont.h"
 #include "ccosteview.h"
-#include "ficha.h"
+#include "blform.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
 extern "C" MY_EXPORT int ccosteview_ccosteview ( ccosteview * );
-extern "C" MY_EXPORT int Ficha_cargar ( Ficha * );
+extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
 
 

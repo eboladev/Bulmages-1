@@ -19,13 +19,13 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
 #include "pluginproyectos.h"
 #include "tiptrab.h"
 #include "listado.h"
 #include "listproyectosview.h"
-
 
 
 ///
@@ -123,7 +123,7 @@ int ccosteview_ccosteview ( ccosteview *ccoste )
 \param ficha
 \return
 **/
-int Ficha_cargar ( Ficha *ficha )
+int BlForm_cargar ( BlForm *ficha )
 {
     ListProyectosView * l = ficha->findChild<ListProyectosView *> ( "mui_proyectos" );
     if ( l )

@@ -36,7 +36,7 @@ class Fixed;
 \param modo
 **/
 FichaBf::FichaBf ( Company *comp, QWidget *parent, Qt::WFlags f, edmode modo )
-        : Ficha ( comp, parent, f, modo )
+        : BlForm ( comp, parent, f, modo )
 {
     _depura ( "FichaBf::FichaBf", 0 );
     m_listalineas = NULL;
@@ -65,7 +65,7 @@ Company * FichaBf::empresaBase()
 {
     _depura ( "FichaBf::getcompany", 0 );
     _depura ( "END FichaBf::getcompany", 0 );
-    return ( Company * ) Ficha::empresaBase();
+    return ( Company * ) BlForm::empresaBase();
 }
 
 
@@ -244,7 +244,7 @@ int FichaBf::trataTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    int ret = Ficha::trataTags ( buff, tipoEscape );
+    int ret = BlForm::trataTags ( buff, tipoEscape );
 
     trataTagsBf(buff, tipoEscape); 
     _depura ( "END FichaBf::trataTags", 0 );
@@ -425,15 +425,18 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         //   buff.replace("[detallearticulos]", detalleArticulos());
 #endif
     
-// a ver. No se porque pongo esto aqui. 
-// Como que he sacado codigo de generaRML(arch) para ponerlo aqui (porque me parece quees trataTags quien deberia tratar todos los tags y porque asi aprovecho el proceso de escribir el fichero en el encoding correcto que ya esta hecho en Ficha) pues he 
-// copiado tambien esto, pero yo hubiera dicho que C++ ya haria el delete solito y si 
-// no es asi ¿porque en generaRML habia dos catchs y solo uno hacia delete ? 
+// a ver. No se porque pongo esto aqui.
+// Como que he sacado codigo de generaRML(arch) para ponerlo aqui (porque me parece quees trataTags
+// quien deberia tratar todos los tags y porque asi aprovecho el proceso de escribir el fichero en el
+// encoding correcto que ya esta hecho en Ficha) pues he copiado tambien esto, pero yo hubiera dicho
+// que C++ ya haria el delete solito y si 
+// no es asi, porque en generaRML había dos catchs y solo uno hacia delete?
   } catch ( ... ) {
      if ( cur ) delete cur;
      throw (-1);
   }
 }
+
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
 /**
@@ -773,11 +776,11 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
 }
 
 
-
 int FichaBf::generaRML ( void )
 {
-   Ficha::generaRML();
+   BlForm::generaRML();
 }
+
 
 QString FichaBf::nombrePlantilla(void) 
 {
@@ -804,7 +807,7 @@ int FichaBf::generaRML ( const QString &arch )
             return 1;
         } // end if
 
-         Ficha::generaRML(arch);
+         BlForm::generaRML(arch);
 
         _depura ( "END FichaBf::generaRML", 0 );
         return 1;
@@ -834,7 +837,7 @@ void FichaBf::imprimir()
             return;
         } // end if
 
-        Ficha::imprimir(); 
+        BlForm::imprimir(); 
 
         _depura ( "END FichaBf::imprimir", 0 );
 
@@ -895,5 +898,4 @@ SubForm2Bf* FichaBf::getlistadescuentos()
     _depura ( "END FichaBf::getlistadescuentos", 0 );
     return m_listadescuentos;
 }
-
 

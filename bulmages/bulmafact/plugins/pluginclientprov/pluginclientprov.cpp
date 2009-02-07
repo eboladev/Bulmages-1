@@ -19,12 +19,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
 #include "pluginclientprov.h"
 #include "fichabf.h"
 #include "funcaux.h"
-
 
 
 ///
@@ -48,9 +48,9 @@ int entryPoint ( Bulmafact * )
 \param l
 \return
 **/
-int Ficha_guardar_Post ( Ficha *l )
+int BlForm_guardar_Post ( BlForm *l )
 {
-    _depura ( "Ficha_guardar_Post", 0 );
+    _depura ( "BlForm_guardar_Post", 0 );
 	bool guardar = FALSE;
 	if (l->tableName() == "cliente") {
 
@@ -104,7 +104,7 @@ int Ficha_guardar_Post ( Ficha *l )
 		fich->guardar();
 	delete fich;
 	} // end if
-    _depura ( "END Ficha_guardar_Post", 0 );
+    _depura ( "END BlForm_guardar_Post", 0 );
     return 0;
 }
 

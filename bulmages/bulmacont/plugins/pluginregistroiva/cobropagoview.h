@@ -21,15 +21,14 @@
 #ifndef COBROPAGOVIEW_H
 #define COBROPAGOVIEW_H
 
-#include "ficha.h"
+#include "blform.h"
 #include "ui_cobropagobase.h"
 #include "empresa.h"
 
 
-
 /// Listado de gestion de cobros y pagos.
 /// TODO: Esta clase debe derivar de FichaBc
-class cobropagoview : public Ficha, public Ui_CobroPagoBase
+class cobropagoview : public BlForm, public Ui_CobroPagoBase
 {
     Q_OBJECT
 

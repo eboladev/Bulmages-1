@@ -36,7 +36,7 @@
 #include "bulmacont.h"
 #include "myplugininformes.h"
 #include "qworkspace2.h"
-#include "ficha.h"
+#include "blform.h"
 
 QMainWindow *g_bges = NULL;
 EmpresaBase *g_emp = NULL;
@@ -51,6 +51,7 @@ MyPluginInformes::MyPluginInformes()
     _depura ( "END MyPluginInformes::MyPluginInformes", 0 );
 }
 
+
 ///
 /**
 **/
@@ -61,8 +62,6 @@ MyPluginInformes::~MyPluginInformes()
 }
 
 
-
-
 ///
 /**
 **/
@@ -70,12 +69,13 @@ void MyPluginInformes::elslot1( )
 {
     _depura ( "MyPluginInformes::elslot", 0 );
 
-    Ficha *ficha = new Ficha ( g_emp, 0 );
+    BlForm *ficha = new BlForm ( g_emp, 0 );
     if (!ficha->generaRML ( sender()->objectName() )) return;
     invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
     _depura ( "END MyPluginInformes::elslot", 0 );
 }
+
 
 void entryPoint ( QMainWindow *bges )
 {
@@ -143,13 +143,12 @@ void entryPoint ( QMainWindow *bges )
 }
 
 
-
-
 int Company_createMainWindows_Post ( Company *cmp )
 {
     g_emp = cmp;
     return 0;
 }
+
 
 int Empresa_createMainWindows_Post ( Empresa *cmp )
 {

@@ -769,7 +769,7 @@ int DBRecord::cargar ( QString id )
 }
 
 void DBRecord::substrConf( QString &buff) {
-    ///\TODO: Este tratamiento esta repetido en Ficha::trataTags y en PedidoProveedorView::imprimir.
+    ///\TODO: Este tratamiento esta repetido en BlForm::trataTags y en PedidoProveedorView::imprimir.
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 500; i++ ) {

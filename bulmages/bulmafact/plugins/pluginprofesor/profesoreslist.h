@@ -46,7 +46,7 @@ public:
 
 
 /** Clase que presenta el listado de Cobros.
-    Deriva de la clase Ficha para estandarizacion de Formularios.
+    Deriva de la clase Listado para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
 class ProfesoresList : public Listado, public Ui_ProfesoresListBase
 {

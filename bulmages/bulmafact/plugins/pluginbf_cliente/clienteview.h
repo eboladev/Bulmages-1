@@ -27,7 +27,7 @@
 
 
 /** Clase que se encarga de la pantalla de cliente.
-    Deriva de la clase Ficha para la estandarizacion de pantallas y
+    Deriva de la clase FichaBf para la estandarizacion de pantallas y
     de la clase Cliente para el manejo con la base de datos.
     Se encarga de recibir y lanzar eventos.
 */
@@ -47,7 +47,7 @@ public:
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.
     virtual void on_mui_informe_clicked();
-	virtual void on_mui_cifcliente_lostFocus();
+    virtual void on_mui_cifcliente_lostFocus();
 };
 
 #endif

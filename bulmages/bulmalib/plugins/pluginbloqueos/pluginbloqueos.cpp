@@ -35,9 +35,10 @@
 
 #include "pluginbloqueos.h"
 #include "funcaux.h"
-#include "ficha.h"
+#include "blform.h"
 #include "empresabase.h"
 #include "bloqmenu.h"
+
 
 int entryPoint ( QMainWindow *bcont )
 {
@@ -51,16 +52,17 @@ int entryPoint ( QMainWindow *bcont )
     return ( 0 );
 }
 
-int Ficha_cargar ( Ficha *ficha )
-{
-    _depura ( "PBloqueos::Ficha_cargar", 0 );
-    QString query;
 
+int BlForm_cargar ( BlForm *ficha )
+{
+    _depura ( "Plugin bloqueos::BlForm_cargar", 0 );
+    QString query;
 
     query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo <> '" + ficha->empresaBase()->currentUser() + "'";
     cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
+
     if ( !cur1->eof() ) {
-        mensajeInfo ( "Ficha Bloqueada por otro usuario, no podra hacer modificaciones" );
+        mensajeInfo ( _("Ficha bloqueada por otro usuario, no podra hacer modificaciones") );
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
         QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );
@@ -75,21 +77,20 @@ int Ficha_cargar ( Ficha *ficha )
         QToolButton *peliminar = ficha->findChild<QToolButton *> ( "mui_eliminar" );
         if ( peliminar ) peliminar->setEnabled ( FALSE );
 
-
     } else {
-
-
 
         query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('" + ficha->campoId() + "','" + ficha->DBvalue ( ficha->campoId() ) + "','" + ficha->empresaBase()->currentUser() + "')";
         ficha->empresaBase()->ejecuta ( query );
+
     } // end if
+
     delete cur1;
     return 0;
-    _depura ( "END PBloqueos::Ficha_cargar", 0 );
+    _depura ( "END Plugin bloqueos::BlForm_cargar", 0 );
 }
 
 
-int Ficha_DesFicha ( Ficha *ficha )
+int BlForm_DesFicha ( BlForm *ficha )
 {
     QString query = "";
     if ( ficha->DBvalue ( ficha->campoId() ) != "" ) {
@@ -110,17 +111,18 @@ int Ficha_DesFicha ( Ficha *ficha )
     return 0;
 }
 
+
 ///
 /**
 \param l
 \return
 **/
-int Ficha_Ficha ( Ficha *l )
+int BlForm_BlForm ( BlForm *l )
 {
-    _depura ( "Ficha_Ficha", 0 );
+    _depura ( "BlForm_BlForm", 0 );
 
     BloqMenu *mui_imp = new BloqMenu ( l );
 
-    _depura ( "END Ficha_Ficha", 0 );
+    _depura ( "END BlForm_BlForm", 0 );
     return 0;
 }

@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
@@ -29,7 +28,6 @@
 #include <QTextStream>
 #include <QFile>
 
-
 #include "fixed.h"
 #include "empresabase.h"
 #include "dbrecord.h"
@@ -45,7 +43,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QWidget ( parent )
     _depura ( "EQToolButton::EQToolButton", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
-    m_ficha = ( Ficha * ) parent;
+    m_BlForm = ( BlForm * ) parent;
     _depura ( "END EQToolButton::EQToolButton", 0 );
 }
 
@@ -75,7 +73,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "*" + m_ficha->tableName() + "*.rml";
+    filters << "*" + m_BlForm->tableName() + "*.rml";
     dir.setNameFilters ( filters );
 
 
@@ -121,7 +119,7 @@ void EQToolButton::trataMenu ( QAction *action )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "*" + m_ficha->tableName() + "*.rml";
+    filters << "*" + m_BlForm->tableName() + "*.rml";
     dir.setNameFilters ( filters );
 
 
@@ -129,7 +127,7 @@ void EQToolButton::trataMenu ( QAction *action )
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
         if ( action->objectName() == fileInfo.fileName() ) {
-            if(m_ficha->generaRML ( fileInfo.fileName() )) {
+            if(m_BlForm->generaRML ( fileInfo.fileName() )) {
             	invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
 	    } // end if
         } // end if

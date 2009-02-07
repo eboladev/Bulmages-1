@@ -35,11 +35,6 @@
 class Company;
 
 
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
 class ProyectoView : public FichaBc, public Ui_ProyectoBase
 {
     Q_OBJECT

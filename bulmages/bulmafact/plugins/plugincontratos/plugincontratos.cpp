@@ -30,7 +30,7 @@
 #include "plugincontratos.h"
 #include "funcaux.h"
 #include "contratoslist.h"
-#include "ficha.h"
+#include "blform.h"
 
 ///
 /**
@@ -133,9 +133,9 @@ int ClienteView_ClienteView ( ClienteView *art )
 \param fich
 \return
 **/
-int Ficha_cargar ( Ficha *fich )
+int BlForm_cargar ( BlForm *fich )
 {
-    _depura ( "Ficha_cargar", 0 );
+    _depura ( "BlForm_cargar", 0 );
     ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );
     if ( l ) {
         l->mui_idcliente->setId ( fich->DBvalue ( "idcliente" ) );

@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FICHA_H
-#define FICHA_H
+#ifndef BLFORM_H
+#define BLFORM_H
 
 #include <QWidget>
 #include <QCloseEvent>
@@ -32,7 +32,7 @@
 #include "dbrecord.h"
 
 
-class Ficha : public BlWidget, public DBRecord, public dialogChanges
+class BlForm : public BlWidget, public DBRecord, public dialogChanges
 {
     Q_OBJECT
 
@@ -55,10 +55,10 @@ protected:
     bool modoConsulta();
 
 public:
-    Ficha ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
-    Ficha ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlForm ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlForm ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     void substrVars(QString &buff, int tipoEscape = 0);
-    virtual ~Ficha();
+    virtual ~BlForm();
     virtual int guardar();
     virtual int guardarPost();
     virtual int borrarPre();

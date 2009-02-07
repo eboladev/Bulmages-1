@@ -24,6 +24,7 @@
 #include "funcaux.h"
 #include "eqtoolbutton.h"
 
+
 ///
 /**
 \return
@@ -48,15 +49,12 @@ int entryPoint ( QApplication * )
 \param l
 \return
 **/
-int Ficha_Ficha ( Ficha *l )
+int BlForm_BlForm ( BlForm *l )
 {
-    _depura ( "Ficha_Ficha", 0 );
+    _depura ( "BlForm_BlForm", 0 );
 
     EQToolButton *mui_imp = new EQToolButton ( l );
 
-    _depura ( "END Ficha_Ficha", 0 );
+    _depura ( "END BlForm_BlForm", 0 );
     return 0;
 }
-
-
-

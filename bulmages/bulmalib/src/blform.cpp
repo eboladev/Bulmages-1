@@ -18,7 +18,7 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include "ficha.h"
+#include "blform.h"
 #include "fichacfg.h"
 #include "blcombobox.h"
 #include "plugins.h"
@@ -41,12 +41,12 @@
 \param f
 \param modo
 **/
-Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), DBRecord ( NULL ), dialogChanges ( this )
+BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), DBRecord ( NULL ), dialogChanges ( this )
 {
-    _depura ( "Ficha::Ficha", 0 );
+    _depura ( "BlForm::BlForm", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "Ficha_Ficha", this );
+    int res = g_plugins->lanza ( "BlForm_BlForm", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -56,7 +56,7 @@ Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent,
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
     dialogChanges_cargaInicial();
-    _depura ( "END Ficha::Ficha", 0 );
+    _depura ( "END BlForm::BlForm", 0 );
 }
 
 
@@ -67,12 +67,12 @@ Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent,
 \param f
 \param modo
 **/
-Ficha::Ficha ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), DBRecord ( emp ), dialogChanges ( this )
+BlForm::BlForm ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), DBRecord ( emp ), dialogChanges ( this )
 {
-    _depura ( "Ficha::Ficha", 0 );
+    _depura ( "BlForm::BlForm", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "Ficha_Ficha", this );
+    int res = g_plugins->lanza ( "BlForm_BlForm", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -81,19 +81,19 @@ Ficha::Ficha ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : 
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
     dialogChanges_cargaInicial();
-    _depura ( "END Ficha::Ficha", 0 );
+    _depura ( "END BlForm::BlForm", 0 );
 }
 
 
 ///
 /**
 **/
-Ficha::~Ficha()
+BlForm::~BlForm()
 {
-    _depura ( "Ficha::~Ficha", 0, this->windowTitle() );
-    g_plugins->lanza ( "Ficha_DesFicha", this );
+    _depura ( "BlForm::~BlForm", 0, this->windowTitle() );
+    g_plugins->lanza ( "BlForm_DesBlForm", this );
     sacaWindow();
-    _depura ( "END Ficha::~Ficha", 0 );
+    _depura ( "END BlForm::~BlForm", 0 );
 }
 
 
@@ -101,19 +101,19 @@ Ficha::~Ficha()
 ///
 /**
 **/
-void Ficha::cargaSpecs()
+void BlForm::cargaSpecs()
 {
-    _depura ( "Ficha::cargaSpecs", 0 );
+    _depura ( "BlForm::cargaSpecs", 0 );
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-        _depura ( "END Ficha::cargaSpecs", 0, "Fichero no se puede abrir" );
+        _depura ( "END BlForm::cargaSpecs", 0, "Fichero no se puede abrir" );
         return;
     } // end if
     if ( !doc.setContent ( &file ) ) {
         file.close();
-        _depura ( "END Ficha::cargaSpecs", 0, "XML Invalido" );
+        _depura ( "END BlForm::cargaSpecs", 0, "XML Invalido" );
         return;
     } // end if
     file.close();
@@ -177,11 +177,11 @@ void Ficha::cargaSpecs()
         } // end if
     } // end for
 
-    _depura ( "END Ficha::cargaSpecs", 0 );
+    _depura ( "END BlForm::cargaSpecs", 0 );
 }
 
 
-void Ficha::generaCampo ( const QString &objname, const QString &textname, const QString &type )
+void BlForm::generaCampo ( const QString &objname, const QString &textname, const QString &type )
 {
 
     /// Miramos si existe un menu Herramientas
@@ -225,22 +225,22 @@ void Ficha::generaCampo ( const QString &objname, const QString &textname, const
 ///
 /**
 **/
-void Ficha::setModoConsulta()
+void BlForm::setModoConsulta()
 {
-    _depura ( "Ficha::setModoConsulta", 0 );
+    _depura ( "BlForm::setModoConsulta", 0 );
     m_modo = SelectMode;
-    _depura ( "END Ficha::setModoConsulta", 0 );
+    _depura ( "END BlForm::setModoConsulta", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::setModoEdicion()
+void BlForm::setModoEdicion()
 {
-    _depura ( "Ficha::setModoEdicion", 0 );
+    _depura ( "BlForm::setModoEdicion", 0 );
     m_modo = EditMode;
-    _depura ( "END Ficha::setModoEdicion", 0 );
+    _depura ( "END BlForm::setModoEdicion", 0 );
 }
 
 
@@ -248,10 +248,10 @@ void Ficha::setModoEdicion()
 /**
 \return
 **/
-bool Ficha::modoEdicion()
+bool BlForm::modoEdicion()
 {
-    _depura ( "Ficha::modoEdicion", 0 );
-    _depura ( "END Ficha::modoEdicion", 0 );
+    _depura ( "BlForm::modoEdicion", 0 );
+    _depura ( "END BlForm::modoEdicion", 0 );
     return m_modo == EditMode;
 }
 
@@ -260,10 +260,10 @@ bool Ficha::modoEdicion()
 /**
 \return
 **/
-bool Ficha::modoConsulta()
+bool BlForm::modoConsulta()
 {
-    _depura ( "Ficha::modoConsulta", 0 );
-    _depura ( "END Ficha::modoConsulta", 0 );
+    _depura ( "BlForm::modoConsulta", 0 );
+    _depura ( "END BlForm::modoConsulta", 0 );
     return m_modo == SelectMode;
 }
 
@@ -271,31 +271,31 @@ bool Ficha::modoConsulta()
 ///
 /**
 **/
-void Ficha::on_mui_cancelar_clicked()
+void BlForm::on_mui_cancelar_clicked()
 {
-    _depura ( "Ficha::on_mui_cancelar_clicked", 0 );
+    _depura ( "BlForm::on_mui_cancelar_clicked", 0 );
     close();
-    _depura ( "END Ficha::on_mui_cancelar_clicked", 0 );
+    _depura ( "END BlForm::on_mui_cancelar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_guardar_clicked()
+void BlForm::on_mui_guardar_clicked()
 {
-    _depura ( "Ficha::on_mui_guardar_clicked", 0 );
+    _depura ( "BlForm::on_mui_guardar_clicked", 0 );
     guardar();
-    _depura ( "END Ficha::on_mui_guardar_clicked", 0 );
+    _depura ( "END BlForm::on_mui_guardar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_aceptar_clicked()
+void BlForm::on_mui_aceptar_clicked()
 {
-    _depura ( "Ficha::on_mui_aceptar_clicked", 0 );
+    _depura ( "BlForm::on_mui_aceptar_clicked", 0 );
     try {
         if ( guardar() ) {
             throw - 1;
@@ -304,25 +304,25 @@ void Ficha::on_mui_aceptar_clicked()
     } catch ( ... ) {
         _depura ( "Error al guardar la ficha", 2 );
     } // end try
-    _depura ( "END Ficha::on_mui_aceptar_clicked", 0 );
+    _depura ( "END BlForm::on_mui_aceptar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_imprimir_clicked()
+void BlForm::on_mui_imprimir_clicked()
 {
-    _depura ( "Ficha::on_mui_imprimir_clicked", 0 );
+    _depura ( "BlForm::on_mui_imprimir_clicked", 0 );
     imprimir();
-    _depura ( "END Ficha::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BlForm::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_eliminar_clicked()
+void BlForm::on_mui_eliminar_clicked()
 {
     on_mui_borrar_clicked();
 }
@@ -331,9 +331,9 @@ void Ficha::on_mui_eliminar_clicked()
 ///
 /**
 **/
-void Ficha::on_mui_borrar_clicked()
+void BlForm::on_mui_borrar_clicked()
 {
-    _depura ( "Ficha::on_mui_borrar_clicked", 0 );
+    _depura ( "BlForm::on_mui_borrar_clicked", 0 );
 
     int val = QMessageBox::question ( this,
                                       _( "Borrar" ) + " " + windowTitle(),
@@ -350,7 +350,7 @@ void Ficha::on_mui_borrar_clicked()
             mensajeInfo ( windowTitle() + _( "No se ha podido borrar" ) );
         }// end if
     } // end if
-    _depura ( "END Ficha::on_mui_borrar_clicked", 0 );
+    _depura ( "END BlForm::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -359,9 +359,9 @@ void Ficha::on_mui_borrar_clicked()
 \param e
 \return
 **/
-void Ficha::closeEvent ( QCloseEvent *e )
+void BlForm::closeEvent ( QCloseEvent *e )
 {
-    _depura ( "Ficha::closeEvent", 0, windowTitle() );
+    _depura ( "BlForm::closeEvent", 0, windowTitle() );
     try {
         if ( dialogChanges_hayCambios() ) {
             int val = QMessageBox::warning ( this,
@@ -383,7 +383,7 @@ void Ficha::closeEvent ( QCloseEvent *e )
         mensajeInfo ( _( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
     } // end try
-    _depura ( "END Ficha::closeEvent", 0 );
+    _depura ( "END BlForm::closeEvent", 0 );
 }
 
 
@@ -391,13 +391,13 @@ void Ficha::closeEvent ( QCloseEvent *e )
 /**
 \return
 **/
-int Ficha::sacaWindow()
+int BlForm::sacaWindow()
 {
-    _depura ( "Ficha::sacaWindow", 0 );
+    _depura ( "BlForm::sacaWindow", 0 );
     if ( empresaBase() != NULL ) {
         empresaBase() ->sacaWindow ( this );
     } // end if
-    _depura ( "END Ficha::sacaWindow", 0 );
+    _depura ( "END BlForm::sacaWindow", 0 );
     return 0;
 }
 
@@ -408,9 +408,9 @@ int Ficha::sacaWindow()
 \param obj
 \param compdup
 **/
-void Ficha::meteWindow ( QString nom, QObject *obj, bool compdup )
+void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup )
 {
-    _depura ( "Ficha::meteWindow", 0 );
+    _depura ( "BlForm::meteWindow", 0 );
     if ( empresaBase() != NULL ) {
         empresaBase() ->meteWindow ( nom, obj, compdup );
     } // end if
@@ -420,16 +420,16 @@ void Ficha::meteWindow ( QString nom, QObject *obj, bool compdup )
     /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
     /// De configuracion por lo que si no es este no es ninguno.
     cargaSpecs();
-    _depura ( "END Ficha::meteWindow", 0 );
+    _depura ( "END BlForm::meteWindow", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_customContextMenuRequested ( const QPoint & )
+void BlForm::on_customContextMenuRequested ( const QPoint & )
 {
-    _depura ( "Ficha::on_customContextMenuRequested", 0 );
+    _depura ( "BlForm::on_customContextMenuRequested", 0 );
     QMenu *popup = new QMenu ( this );
 
     /// Lanzamos el evento para que pueda ser capturado por terceros.
@@ -447,7 +447,7 @@ void Ficha::on_customContextMenuRequested ( const QPoint & )
         if ( opcion == avconfig ) {
             new FichaCfg ( empresaBase(), this, 0 );
         } else if ( opcion == avprint ) {
-            Ficha::imprimir();
+            BlForm::imprimir();
         } // end if
 
         emit trataMenu ( opcion );
@@ -457,14 +457,14 @@ void Ficha::on_customContextMenuRequested ( const QPoint & )
     } // end if
 
     delete popup;
-    _depura ( "END Ficha::on_customContextMenuRequested", 0 );
+    _depura ( "END BlForm::on_customContextMenuRequested", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::creaMenu ( QMenu * )
+void BlForm::creaMenu ( QMenu * )
 {
     _depura ( "SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita" );
 }
@@ -473,7 +473,7 @@ void Ficha::creaMenu ( QMenu * )
 ///
 /**
 **/
-void Ficha::procesaMenu ( QAction * )
+void BlForm::procesaMenu ( QAction * )
 {
     _depura ( "SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita" );
 }
@@ -483,9 +483,9 @@ void Ficha::procesaMenu ( QAction * )
 /**
 \param nom
 **/
-void Ficha::setDBTableName ( QString nom )
+void BlForm::setDBTableName ( QString nom )
 {
-    _depura ( "Ficha::setDBTableName", 0 );
+    _depura ( "BlForm::setDBTableName", 0 );
     DBRecord::setDBTableName ( nom );
 
     if (empresaBase() != NULL) {
@@ -498,7 +498,7 @@ void Ficha::setDBTableName ( QString nom )
 	} // end if
     } // end if
 
-    _depura ( "END Ficha::setDBTableName", 0 );
+    _depura ( "END BlForm::setDBTableName", 0 );
 }
 
 
@@ -506,20 +506,20 @@ void Ficha::setDBTableName ( QString nom )
 /**
 \param nom
 **/
-void Ficha::setTitleName ( QString nom )
+void BlForm::setTitleName ( QString nom )
 {
-    _depura ( "Ficha::setTitleName" );
+    _depura ( "BlForm::setTitleName" );
     m_title = nom;
-    _depura ( "END Ficha::setTitleName" );
+    _depura ( "END BlForm::setTitleName" );
 }
 
 
 ///
 /**
 **/
-void Ficha::pintar()
+void BlForm::pintar()
 {
-    _depura ( "Ficha::pintar", 0 );
+    _depura ( "BlForm::pintar", 0 );
     DBCampo *campo;
     /// Recorremos todos los campos definidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
@@ -567,7 +567,7 @@ void Ficha::pintar()
         } // end for
     } // end for
     pintarPost();
-    _depura ( "END Ficha::pintar", 0 );
+    _depura ( "END BlForm::pintar", 0 );
 }
 
 
@@ -578,9 +578,9 @@ void Ficha::pintar()
 */
 /**
 **/
-void Ficha::recogeValores()
+void BlForm::recogeValores()
 {
-    _depura ( "Ficha::recogeValores", 0 );
+    _depura ( "BlForm::recogeValores", 0 );
     DBCampo *campo;
     /// Recorremos todos los campos definidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
@@ -632,7 +632,7 @@ void Ficha::recogeValores()
         } // end if
 
     } // end for
-    _depura ( "END Ficha::recogeValores", 0 );
+    _depura ( "END BlForm::recogeValores", 0 );
 }
 
 
@@ -641,15 +641,15 @@ void Ficha::recogeValores()
 \param id
 \return
 **/
-int Ficha::cargar ( QString id )
+int BlForm::cargar ( QString id )
 {
-    _depura ( "Ficha::cargar", 0, id );
+    _depura ( "BlForm::cargar", 0, id );
     try {
         if ( DBRecord::cargar ( id ) ) {
             throw - 1;
         } // end if
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "Ficha_cargar", this ) ) return 0;
+        if ( g_plugins->lanza ( "BlForm_cargar", this ) ) return 0;
         cargarPost ( id );
         setWindowTitle ( m_title + " " + DBvalue ( m_campoid ) );
         /// Activamos documentos adicionales
@@ -659,10 +659,10 @@ int Ficha::cargar ( QString id )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this );
     } catch ( ... ) {
-        _depura ( "END Ficha::cargar", 0, "Error en la carga" );
+        _depura ( "END BlForm::cargar", 0, "Error en la carga" );
         return -1;
     } // end try
-    _depura ( "END Ficha::cargar", 0 );
+    _depura ( "END BlForm::cargar", 0 );
     return 0;
 }
 
@@ -674,9 +674,9 @@ int Ficha::cargar ( QString id )
   Tras guardar todos los elementos hace una carga.
 \return 0 Si no hay problemas. -1 Si ha habido problemas.
 **/
-int Ficha::guardar()
+int BlForm::guardar()
 {
-    _depura ( "Ficha::guardar", 0 );
+    _depura ( "BlForm::guardar", 0 );
 
     try {
         QString id;
@@ -687,7 +687,7 @@ int Ficha::guardar()
         empresaBase() ->commit();
 
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "Ficha_guardar_Post", this ) ) return 0;
+        if ( g_plugins->lanza ( "BlForm_guardar_Post", this ) ) return 0;
 
         guardarPost();
 
@@ -695,7 +695,7 @@ int Ficha::guardar()
         cargar ( id );
 
 
-        _depura ( "END Ficha::guardar", 0 );
+        _depura ( "END BlForm::guardar", 0 );
         return 0;
     } catch ( int valor ) {
         /// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
@@ -714,10 +714,10 @@ int Ficha::guardar()
 }
 
 
-int Ficha::borrarPre()
+int BlForm::borrarPre()
 {
-    _depura ( "Ficha::borrarPre", 0 );
-    _depura ( "END Ficha::borrarPre", 0 );
+    _depura ( "BlForm::borrarPre", 0 );
+    _depura ( "END BlForm::borrarPre", 0 );
     return 0;
 }
 
@@ -728,19 +728,19 @@ int Ficha::borrarPre()
 /**
 \return
 **/
-int Ficha::borrar()
+int BlForm::borrar()
 {
-    _depura ( "Ficha::borrar", 0 );
+    _depura ( "BlForm::borrar", 0 );
     try {
         /// Lanzamos los plugins.
-        if ( g_plugins->lanza ( "Ficha_borrar", this ) ) return 0;
+        if ( g_plugins->lanza ( "BlForm_borrar", this ) ) return 0;
         borrarPre();
         int err;
         err =  DBRecord::borrar();
-        _depura ( "END Ficha::borrar", 0 );
+        _depura ( "END BlForm::borrar", 0 );
         return err;
     } catch ( ... ) {
-        _depura ( "END Ficha::borrar", 0, "Error en el guardado" );
+        _depura ( "END BlForm::borrar", 0, "Error en el guardado" );
         return -1;
     } // end try
 }
@@ -750,10 +750,10 @@ int Ficha::borrar()
 /**
 \return
 **/
-int Ficha::guardarPost()
+int BlForm::guardarPost()
 {
-    _depura ( "Ficha::guardarPost", 0 );
-    _depura ( "END Ficha::guardarPost", 0 );
+    _depura ( "BlForm::guardarPost", 0 );
+    _depura ( "END BlForm::guardarPost", 0 );
     return 0;
 }
 
@@ -762,10 +762,10 @@ int Ficha::guardarPost()
 /**
 \return
 **/
-int Ficha::cargarPost ( QString )
+int BlForm::cargarPost ( QString )
 {
-    _depura ( "Ficha::cargarPost", 0 );
-    _depura ( "END Ficha::cargarPost", 0 );
+    _depura ( "BlForm::cargarPost", 0 );
+    _depura ( "END BlForm::cargarPost", 0 );
     return 0;
 }
 
@@ -773,10 +773,10 @@ int Ficha::cargarPost ( QString )
 /**
 \return
 **/
-void Ficha::pintarPost()
+void BlForm::pintarPost()
 {
-    _depura ( "Ficha::pintarPost", 0 );
-    _depura ( "END Ficha::pintarPost", 0 );
+    _depura ( "BlForm::pintarPost", 0 );
+    _depura ( "END BlForm::pintarPost", 0 );
 }
 
 
@@ -787,7 +787,7 @@ void Ficha::pintarPost()
 ///			 1 --> ParseoXML
 ///			 2 --> ParseoPython
 
-void Ficha::substrVars ( QString &buff, int tipoEscape ) {
+void BlForm::substrVars ( QString &buff, int tipoEscape ) {
 
 	int pos = 0;
 
@@ -836,9 +836,9 @@ void Ficha::substrVars ( QString &buff, int tipoEscape ) {
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int Ficha::trataTags ( QString &buff, int tipoEscape )
+int BlForm::trataTags ( QString &buff, int tipoEscape )
 {
-    _depura ( "Ficha::trataTags", 0 );
+    _depura ( "BlForm::trataTags", 0 );
 
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
@@ -974,7 +974,7 @@ int Ficha::trataTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    _depura ( "END Ficha::trataTags", 0 );
+    _depura ( "END BlForm::trataTags", 0 );
     return 1;
 }
 
@@ -984,9 +984,9 @@ int Ficha::trataTags ( QString &buff, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString Ficha::trataIfQuery ( const QString &query, const QString &datos )
+QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
 {
-    _depura ( "Ficha::trataIfQuery", 0 );
+    _depura ( "BlForm::trataIfQuery", 0 );
     QString result = "";
     QString query1 = query;
 
@@ -1000,7 +1000,7 @@ QString Ficha::trataIfQuery ( const QString &query, const QString &datos )
         result = datos;
     } // end while
     delete cur;
-    _depura ( "END Ficha::trataIfQuery", 0 );
+    _depura ( "END BlForm::trataIfQuery", 0 );
     return result;
 }
 
@@ -1010,9 +1010,9 @@ QString Ficha::trataIfQuery ( const QString &query, const QString &datos )
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString Ficha::trataIf ( const QString &query, const QString &datos, const QString &datos1 )
+QString BlForm::trataIf ( const QString &query, const QString &datos, const QString &datos1 )
 {
-    _depura ( "Ficha::trataIfQuery", 0 );
+    _depura ( "BlForm::trataIfQuery", 0 );
     QString result = "";
     QString query1 = query;
 
@@ -1031,7 +1031,7 @@ QString Ficha::trataIf ( const QString &query, const QString &datos, const QStri
         } // end if
     } // end while
     delete cur;
-    _depura ( "END Ficha::trataIf", 0 );
+    _depura ( "END BlForm::trataIf", 0 );
     return result;
 }
 
@@ -1041,9 +1041,9 @@ QString Ficha::trataIf ( const QString &query, const QString &datos, const QStri
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QString Ficha::trataQuery ( const QString &query, const QString &datos, int tipoEscape )
+QString BlForm::trataQuery ( const QString &query, const QString &datos, int tipoEscape )
 {
-    _depura ( "Ficha::trataQuery", 0 );
+    _depura ( "BlForm::trataQuery", 0 );
     QString result = "";
     QString query1 = query;
 
@@ -1052,19 +1052,19 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos, int tipo
 
     /// Cargamos el query y lo recorremos
     result = trataCursor( empresaBase() ->cargacursor ( query1 ), datos, tipoEscape);
-    _depura ( "END Ficha::trataQuery", 0 );
+    _depura ( "END BlForm::trataQuery", 0 );
     return result;
 
 }
 
-QString Ficha::trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape )
+QString BlForm::trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape )
 {
-    _depura ( "Ficha::trataCursor", 0 );
+    _depura ( "BlForm::trataCursor", 0 );
     QString result = "";
 
     if ( !cur )  
     {
-        _depura ( "END Ficha::trataCursor", 0 , "cur==NULL");
+        _depura ( "END BlForm::trataCursor", 0 , "cur==NULL");
         return "";
     };
     while ( !cur->eof() ) {
@@ -1098,7 +1098,7 @@ QString Ficha::trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape 
         cur->siguienteregistro();
     } // end while
     delete cur;
-    _depura ( "END Ficha::trataCursor", 0 );
+    _depura ( "END BlForm::trataCursor", 0 );
     return result;
 }
 
@@ -1108,9 +1108,9 @@ QString Ficha::trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape 
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString Ficha::trataExists ( const QString &query, const QString &datos )
+QString BlForm::trataExists ( const QString &query, const QString &datos )
 {
-    _depura ( "Ficha::trataExists", 0 );
+    _depura ( "BlForm::trataExists", 0 );
 
     QString result = "";
     QString query1 = query;
@@ -1121,22 +1121,22 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
     QFile file ( query1 );
     if ( file.exists() )
         result = datos;
-    _depura ( "END Ficha::trataExists", 0 );
+    _depura ( "END BlForm::trataExists", 0 );
 
     return result;
 }
 
 
-int Ficha::generaRML ( void )
+int BlForm::generaRML ( void )
 {
    DBRecord::generaRML();
 }
 ///
 /**
 **/
-int Ficha::generaRML ( const QString &arch )
+int BlForm::generaRML ( const QString &arch )
 {
-    _depura ( "Ficha::generaRML", 0 );
+    _depura ( "BlForm::generaRML", 0 );
 
 	/// Vaciamos las variables de RML
 	m_variables.clear();
@@ -1146,14 +1146,14 @@ int Ficha::generaRML ( const QString &arch )
 	m_variables["CONF_DBUSER"] = empresaBase()->currentUser();
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "Ficha_generaRML", this );
+    int res = g_plugins->lanza ( "BlForm_generaRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if
 
     res = DBRecord::generaRML( arch );
 
-    _depura ( "END Ficha::generaRML", 0 );
+    _depura ( "END BlForm::generaRML", 0 );
     return res;
 }
 
@@ -1161,19 +1161,19 @@ int Ficha::generaRML ( const QString &arch )
 ///
 /** Clase para ser derivada para activar documentos adicionales en las fichas.
 **/
-void Ficha::activaDocumentos ()
+void BlForm::activaDocumentos ()
 {
-    _depura ( "Ficha::activaDocumentos", 0 );
-    _depura ( "END Ficha::activaDocumentos", 0 );
+    _depura ( "BlForm::activaDocumentos", 0 );
+    _depura ( "END BlForm::activaDocumentos", 0 );
 }
 
 
 ///
 /** Clase para ser derivada para desactivar documentos adicionales en las fichas.
 **/
-void Ficha::desactivaDocumentos ()
+void BlForm::desactivaDocumentos ()
 {
-    _depura ( "Ficha::desactivaDocumentos", 0 );
-    _depura ( "END Ficha::desactivaDocumentos", 0 );
+    _depura ( "BlForm::desactivaDocumentos", 0 );
+    _depura ( "END BlForm::desactivaDocumentos", 0 );
 }
 

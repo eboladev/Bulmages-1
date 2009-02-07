@@ -27,7 +27,7 @@
 #include <QMainWindow>
 
 
-class Ficha;
+class BlForm;
 
 
 class BlApplication : public QApplication

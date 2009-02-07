@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
 #include "pluginasterisk.h"
@@ -238,7 +239,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 \param fich
 \return
 **/
-int Ficha_cargar ( Ficha *fich )
+int BlForm_cargar ( BlForm *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "m_validacionesalm" );
     if ( form )
@@ -247,7 +248,7 @@ int Ficha_cargar ( Ficha *fich )
 }
 
 
-int Ficha_guardar_Post ( Ficha *fich )
+int BlForm_guardar_Post ( BlForm *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "m_validacionesalm" );
     if ( form ) {
@@ -256,5 +257,4 @@ int Ficha_guardar_Post ( Ficha *fich )
     }
     return 0;
 }
-
 

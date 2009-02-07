@@ -46,7 +46,7 @@ ArchMenu::ArchMenu ( QWidget *parent ) : QWidget ( parent )
     _depura ( "ArchMenu::ArchMenu", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
-    m_ficha = ( Ficha * ) parent;
+    m_BlForm = ( BlForm * ) parent;
     _depura ( "END ArchMenu::ArchMenu", 0 );
 }
 
@@ -72,8 +72,8 @@ void ArchMenu::pintaMenu ( QMenu *menu )
     QAction *addaction = nmenu->addAction(tr("Agregar Archivo "));
     addaction->setObjectName("addarchivo");
     nmenu->addSeparator();
-    QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_ficha->campoId() + "' AND identificadorfichaarchivo= '" +m_ficha->DBvalue ( m_ficha->campoId() ) + "'";
-    cursor2 *cur = m_ficha->empresaBase()->cargacursor(query);
+    QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->campoId() + "' AND identificadorfichaarchivo= '" +m_BlForm->DBvalue ( m_BlForm->campoId() ) + "'";
+    cursor2 *cur = m_BlForm->empresaBase()->cargacursor(query);
     while(!cur->eof()) {
 	QAction *addaction = nmenu->addAction(cur->valor("rutaarchivo"));
 	addaction->setObjectName("archivo_" + cur->valor("idarchivo"));
@@ -93,7 +93,7 @@ void ArchMenu::trataMenu ( QAction *action )
     _depura ( "ArchMenu::trataMenu", 0 );
     if ( action->objectName() == "addarchivo" ) {
     QDialog *diag = new QDialog;
-    Archivo *camb = new Archivo ( m_ficha->empresaBase(), diag );
+    Archivo *camb = new Archivo ( m_BlForm->empresaBase(), diag );
     diag->setModal ( true );
 
 		QPushButton *button = camb->findChild<QPushButton *>("mui_aceptar");
@@ -111,8 +111,8 @@ void ArchMenu::trataMenu ( QAction *action )
     diag->setWindowTitle ( "Agregar Archivo Documental" );
 
     if (diag->exec()) {
-    QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_ficha->campoId() + "', '" +m_ficha->DBvalue ( m_ficha->campoId() ) + "' , '"+ camb->mui_archivo->text() +"') ";
-    m_ficha->empresaBase()->ejecuta(query);
+    QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_BlForm->campoId() + "', '" +m_BlForm->DBvalue ( m_BlForm->campoId() ) + "' , '"+ camb->mui_archivo->text() +"') ";
+    m_BlForm->empresaBase()->ejecuta(query);
     } // end if
 
     delete diag;
@@ -122,7 +122,7 @@ void ArchMenu::trataMenu ( QAction *action )
     if( action->objectName().left(8) == "archivo_") {
 	QString idarchivo = action->objectName().right(action->objectName().size() - 8);
 	QString query = "SELECT * FROM archivo WHERE idarchivo = "+ idarchivo;
-	cursor2 *cur = m_ficha->empresaBase()->cargacursor(query);
+	cursor2 *cur = m_BlForm->empresaBase()->cargacursor(query);
 	if (!cur->eof()) {
 		QString comando = "konqueror "+ cur->valor("rutaarchivo") + " &";
 		system(comando.toAscii());

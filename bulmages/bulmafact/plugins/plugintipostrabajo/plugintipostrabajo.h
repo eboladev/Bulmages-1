@@ -31,13 +31,14 @@
 #include "ficha.h"
 #include "subform2bf.h"
 
+
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int TrabajadorView_TrabajadorView_Post ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView * );
 extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
-extern "C" MY_EXPORT int Ficha_cargar ( Ficha * );
-extern "C" MY_EXPORT int Ficha_guardar_Post ( Ficha * );
+extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
 
 
 

@@ -45,7 +45,7 @@ BloqMenu::BloqMenu ( QWidget *parent ) : QWidget ( parent )
     _depura ( "BloqMenu::BloqMenu", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
-    m_ficha = ( Ficha * ) parent;
+    m_BlForm = ( BlForm * ) parent;
     _depura ( "END BloqMenu::BloqMenu", 0 );
 }
 
@@ -82,20 +82,20 @@ void BloqMenu::trataMenu ( QAction *action )
 {
     _depura ( "BloqMenu::trataMenu", 0 );
     if ( action->objectName() == "desbloquearficha" ) {
-        QString query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + m_ficha->campoId() + "' AND identificadorfichabloqueo= '" + m_ficha->DBvalue ( m_ficha->campoId() ) + "'";
-        m_ficha->empresaBase()->ejecuta ( query );
+        QString query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + m_BlForm->campoId() + "' AND identificadorfichabloqueo= '" + m_BlForm->DBvalue ( m_BlForm->campoId() ) + "'";
+        m_BlForm->empresaBase()->ejecuta ( query );
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
-        QToolButton *pguardar = m_ficha->findChild<QToolButton *> ( "mui_guardar" );
+        QToolButton *pguardar = m_BlForm->findChild<QToolButton *> ( "mui_guardar" );
         if ( pguardar ) pguardar->setEnabled ( TRUE );
 
-        QPushButton *paceptar = m_ficha->findChild<QPushButton *> ( "mui_aceptar" );
+        QPushButton *paceptar = m_BlForm->findChild<QPushButton *> ( "mui_aceptar" );
         if ( paceptar ) paceptar->setEnabled ( TRUE );
 
-        QToolButton *pborrar = m_ficha->findChild<QToolButton *> ( "mui_borrar" );
+        QToolButton *pborrar = m_BlForm->findChild<QToolButton *> ( "mui_borrar" );
         if ( pborrar ) pborrar->setEnabled ( TRUE );
 
-        QToolButton *peliminar = m_ficha->findChild<QToolButton *> ( "mui_eliminar" );
+        QToolButton *peliminar = m_BlForm->findChild<QToolButton *> ( "mui_eliminar" );
         if ( peliminar ) peliminar->setEnabled ( TRUE );
 
     } // end if

@@ -44,7 +44,7 @@ EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
     _depura ( "EQToolButtonMail::EQToolButtonMail", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
-    m_ficha = ( Ficha * ) parent;
+    m_BlForm = ( BlForm * ) parent;
     _depura ( "END EQToolButtonMail::EQToolButtonMail", 0 );
 }
 
@@ -74,7 +74,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "*" + m_ficha->tableName() + "*.rml";
+    filters << "*" + m_BlForm->tableName() + "*.rml";
     dir.setNameFilters ( filters );
 
 
@@ -120,7 +120,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "*" + m_ficha->tableName() + "*.rml";
+    filters << "*" + m_BlForm->tableName() + "*.rml";
     dir.setNameFilters ( filters );
 
 
@@ -130,16 +130,16 @@ void EQToolButtonMail::trataMenu ( QAction *action )
 
         if ( action->objectName() == "em_"+fileInfo.fileName() ) {
 
-            if(m_ficha->generaRML ( fileInfo.fileName() )) {
+            if(m_BlForm->generaRML ( fileInfo.fileName() )) {
 
 		QString email = "";
-		QString id = m_ficha->DBvalue ( "id"+m_ficha->tableName() );
-		QString num = m_ficha->DBvalue ( "num"+m_ficha->tableName() );
-		QString ref = m_ficha->DBvalue ( "ref"+m_ficha->tableName() );
-		QString idcliente = m_ficha->DBvalue ( "idcliente" );
+		QString id = m_BlForm->DBvalue ( "id"+m_BlForm->tableName() );
+		QString num = m_BlForm->DBvalue ( "num"+m_BlForm->tableName() );
+		QString ref = m_BlForm->DBvalue ( "ref"+m_BlForm->tableName() );
+		QString idcliente = m_BlForm->DBvalue ( "idcliente" );
 		if (!idcliente.isEmpty()) {
 			QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-			cursor2 *curs = ((Ficha *)parent())->empresaBase()->cargacursor ( query );
+			cursor2 *curs = ((BlForm *)parent())->empresaBase()->cargacursor ( query );
 			if (!curs->eof()) {
 				email = curs->valor ( "mailcliente" );
 			} // end if
