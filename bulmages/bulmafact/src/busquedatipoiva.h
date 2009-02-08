@@ -43,23 +43,16 @@ class BusquedaTipoIva : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    /// Cursor que almacena el listado de tipos de IVA y sobre el que se construye el 'QComboBox'.
-    cursor2 *m_cursorcombo;
-
 public:
     BusquedaTipoIva ( QWidget *parent = 0 );
     ~BusquedaTipoIva();
-    virtual void setidtipo_iva ( QString idtipo_iva );
-    virtual void setValorCampo ( QString idtipo_iva );
-    QString idtipo_iva();
-    virtual QString valorCampo();
+    virtual void setId( QString idtipo_iva );
+    QString id();
 
-public slots:
+
     void m_activated ( int index );
 
-signals:
-    void valueChanged ( QString );
+
 };
 
 
@@ -71,10 +64,6 @@ signals:
 class BusquedaTipoIVADelegate : public BlComboBox
 {
     Q_OBJECT
-
-private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
 
 public:
     BusquedaTipoIVADelegate ( QWidget *parent = 0 );

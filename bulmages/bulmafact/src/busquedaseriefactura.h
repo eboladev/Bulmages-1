@@ -38,8 +38,6 @@ class BusquedaSerieFactura : public BlComboBox
     Q_OBJECT
 
 private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
     /// Indica cual es el codigo de la serie de factura por defecto.
     QString m_codigoserie_factura;
 
@@ -47,16 +45,11 @@ public:
     BusquedaSerieFactura ( QWidget *parent = 0 );
     ~BusquedaSerieFactura();
     void setEmpresaBase ( Company *comp );
-    QString codigoserie_factura();
-    virtual QString valorCampo();
-    virtual void setcodigoserie_factura ( QString );
-    virtual void setValorCampo ( QString );
+    QString id();
+    virtual void setId ( QString );
 
-public slots:
     void m_activated ( int index );
 
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

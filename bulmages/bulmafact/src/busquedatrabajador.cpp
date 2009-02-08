@@ -49,8 +49,6 @@ BusquedaTrabajador::BusquedaTrabajador ( QWidget *parent )
 BusquedaTrabajador::~BusquedaTrabajador()
 {
     _depura ( "BusquedaTrabajador::~BusquedaTrabajador", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
     _depura ( "END BusquedaTrabajador::~BusquedaTrabajador", 0 );
 }
 

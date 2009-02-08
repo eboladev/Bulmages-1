@@ -100,7 +100,7 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
 
 	/// Establecemos valores por defecto en los combo boxes para que no se queden sin inicializar.
         mui_idalmacen->setId ( "" );
-        mui_codigoserie_factura->setcodigoserie_factura ( "" );
+        mui_codigoserie_factura->setId ( "" );
         mui_idforma_pago->setId ( "" );
 
         m_totalBases->setReadOnly ( TRUE );

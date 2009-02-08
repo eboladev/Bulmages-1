@@ -36,7 +36,7 @@ BusquedaTipoIva::BusquedaTipoIva ( QWidget *parent )
 {
     _depura ( "BusquedaTipoIva::BusquedaTipoIva", 0 );
     m_cursorcombo = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    m_tabla="tipo_iva";
     _depura ( "END BusquedaTipoIva::BusquedaTipoIva", 0 );
 }
 
@@ -48,9 +48,6 @@ BusquedaTipoIva::BusquedaTipoIva ( QWidget *parent )
 BusquedaTipoIva::~BusquedaTipoIva()
 {
     _depura ( "BusquedaTipoIva::~BusquedaTipoIva", 0 );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
-    } // end if
     _depura ( "END BusquedaTipoIva::~BusquedaTipoIva", 0 );
 }
 
@@ -63,7 +60,7 @@ BusquedaTipoIva::~BusquedaTipoIva()
 \param idtipo_iva
 \returns
 **/
-void BusquedaTipoIva::setidtipo_iva ( QString idtipo_iva )
+void BusquedaTipoIva::setId ( QString idtipo_iva )
 {
     _depura ( "BusquedaTipoIva::setidtipo_iva", 0 );
     if ( m_cursorcombo != NULL ) {
@@ -89,42 +86,19 @@ void BusquedaTipoIva::setidtipo_iva ( QString idtipo_iva )
 }
 
 
-///
-/**
-\param idtipo_iva
-**/
-void BusquedaTipoIva::setValorCampo ( QString idtipo_iva )
-{
-    _depura ( "BusquedaTipoIva::setValorCampo", 0 );
-    setidtipo_iva ( idtipo_iva );
-    _depura ( "END BusquedaTipoIva::setValorCampo", 0 );
-}
-
 
 /** Devuelve el identificador del tipo_iva seleccionado
 **/
 /**
 \return
 **/
-QString BusquedaTipoIva::idtipo_iva()
+QString BusquedaTipoIva::id()
 {
     _depura ( "BusquedaTipoIva::idtipo_iva", 0 );
     _depura ( "END BusquedaTipoIva::idtipo_iva", 0 );
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
     if ( !m_cursorcombo ) return "0";
     return m_cursorcombo->valor ( "idtipo_iva", currentIndex() - 1 );
-}
-
-/** Devuelve el identificador del tipo_iva seleccionado
-**/
-/**
-\return
-**/
-QString BusquedaTipoIva::valorCampo()
-{
-    _depura ( "BusquedaTipoIva::valorCampo", 0 );
-    return idtipo_iva();
-    _depura ( "END BusquedaTipoIva::valorCampo", 0 );
 }
 
 

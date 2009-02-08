@@ -38,7 +38,7 @@ BusquedaSerieFactura::BusquedaSerieFactura ( QWidget *parent )
     _depura ( "BusquedaSerieFactura::BusquedaSerieFactura", 0 );
     m_cursorcombo = NULL;
     m_codigoserie_factura = "";
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+	m_tabla = "serie_factura";
     _depura ( "END BusquedaSerieFactura::BusquedaSerieFactura", 0 );
 }
 
@@ -50,8 +50,6 @@ BusquedaSerieFactura::BusquedaSerieFactura ( QWidget *parent )
 BusquedaSerieFactura::~BusquedaSerieFactura()
 {
     _depura ( "BusquedaSerieFactura::~BusquedaSerieFactura", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
     _depura ( "END BusquedaSerieFactura::~BusquedaSerieFactura", 0 );
 }
 
@@ -64,7 +62,7 @@ BusquedaSerieFactura::~BusquedaSerieFactura()
 \param codigo
 \return
 **/
-void BusquedaSerieFactura::setcodigoserie_factura ( QString codigo )
+void BusquedaSerieFactura::setId ( QString codigo )
 {
     _depura ( "BusquedaSerieFactura::setcodigoserie_factura", 0 );
     /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
@@ -101,18 +99,6 @@ void BusquedaSerieFactura::setcodigoserie_factura ( QString codigo )
 
 ///
 /**
-\param codigo
-**/
-void BusquedaSerieFactura::setValorCampo ( QString codigo )
-{
-    _depura ( "BusquedaSerieFactura::setValorCampo", 0 );
-    setcodigoserie_factura ( codigo );
-    _depura ( "END BusquedaSerieFactura::setValorCampo", 0 );
-}
-
-
-///
-/**
 \param index
 **/
 void BusquedaSerieFactura::m_activated ( int index )
@@ -131,7 +117,7 @@ void BusquedaSerieFactura::m_activated ( int index )
 /**
 \return
 **/
-QString BusquedaSerieFactura::codigoserie_factura()
+QString BusquedaSerieFactura::id()
 {
     _depura ( "BusquedaSerieFactura::codigoserie_factura", 0 );
     int index = currentIndex();
@@ -144,16 +130,6 @@ QString BusquedaSerieFactura::codigoserie_factura()
 }
 
 
-///
-/**
-\return
-**/
-QString BusquedaSerieFactura::valorCampo()
-{
-    _depura ( "BusquedaSerieFactura::valorCampo", 0 );
-    return codigoserie_factura();
-    _depura ( "END BusquedaSerieFactura::valorCampo", 0 );
-}
 
 
 ///

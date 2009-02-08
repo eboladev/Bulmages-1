@@ -49,8 +49,6 @@ BusquedaFormaPago::BusquedaFormaPago ( QWidget *parent )
 BusquedaFormaPago::~BusquedaFormaPago()
 {
     _depura ( "BusquedaFormaPago::~BusquedaFormaPago", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
     _depura ( "END BusquedaFormaPago::~BusquedaFormaPago", 0 );
 }
 
