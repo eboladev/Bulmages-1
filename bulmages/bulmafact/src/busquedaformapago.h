@@ -36,25 +36,17 @@ class BusquedaFormaPago : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    /// Cursor de la base de datos que contiene las formas de pago disponibles.
-    cursor2 *m_cursorcombo;
-
 public:
     BusquedaFormaPago ( QWidget *parent = 0 );
     ~BusquedaFormaPago();
-    QString idforma_pago();
-    virtual QString  valorCampo();
-    virtual void setidforma_pago ( QString idforma_pago );
-    virtual void setValorCampo ( QString idforma_pago );
+    QString id();
+
+    virtual void setId ( QString idforma_pago );
     virtual void setIdCliente ( QString );
     virtual void setIdProveedor ( QString );
 
-public slots:
     virtual void m_activated ( int index );
 
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

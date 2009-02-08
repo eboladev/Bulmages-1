@@ -84,9 +84,9 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         mui_refpedidocliente->setEmpresaBase ( comp );
         setListaLineas ( subform3 );
         setListaDescuentos ( m_descuentos );
-        mui_idforma_pago->setidforma_pago ( "" );
-        mui_idalmacen->setidalmacen ( "" );
-        mui_idtrabajador->setidtrabajador ( "" );
+        mui_idforma_pago->setId ( "" );
+        mui_idalmacen->setId ( "" );
+        mui_idtrabajador->setId ( "" );
 		/// Establecemos los parametros de busqueda del Cliente
 		mui_idcliente->setLabel ( _( "Cliente:" ) );
 		mui_idcliente->setTableName( "cliente" );

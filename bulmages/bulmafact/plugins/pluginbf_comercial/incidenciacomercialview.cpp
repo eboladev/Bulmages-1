@@ -122,7 +122,7 @@ void IncidenciaComercialView::setEmpresaBase ( Company *comp )
     PEmpresaBase::setEmpresaBase ( comp );
     mui_idcliente->setEmpresaBase ( comp );
     mui_idtrabajador->setEmpresaBase ( comp );
-    mui_idtrabajador->setidtrabajador ( "" );
+    mui_idtrabajador->setId ( "" );
     _depura ( "END IncidenciaComercialView::setcompany", 0 );
 
 }
@@ -140,7 +140,7 @@ int IncidenciaComercialView::guardar()
     setDBvalue ( "fechaincidenciacomercial", mui_fechaincidenciacomercial->text() );
     setDBvalue ( "idcliente", mui_idcliente->id() );
     setDBvalue ( "comentincidenciacomercial", mui_comentincidenciacomercial->toPlainText() );
-    setDBvalue ( "idtrabajador", mui_idtrabajador->idtrabajador() );
+    setDBvalue ( "idtrabajador", mui_idtrabajador->id() );
     setDBvalue ( "estadoincidenciacomercial", mui_estadoincidenciacomercial->estado() );
     setDBvalue ( "horaincidenciacomercial", mui_horaincidenciacomercial->text() );
     setDBvalue ( "refincidenciacomercial", mui_refincidenciacomercial->text() );
@@ -163,7 +163,7 @@ int IncidenciaComercialView::cargar ( QString id )
     mui_fechaincidenciacomercial->setText ( DBvalue ( "fechaincidenciacomercial" ) );
     mui_idcliente->setId ( DBvalue ( "idcliente" ) );
     mui_comentincidenciacomercial->setPlainText ( DBvalue ( "comentincidenciacomercial" ) );
-    mui_idtrabajador->setidtrabajador ( DBvalue ( "idtrabajador" ) );
+    mui_idtrabajador->setId ( DBvalue ( "idtrabajador" ) );
     mui_estadoincidenciacomercial->setestado ( DBvalue ( "estadoincidenciacomercial" ) );
     mui_horaincidenciacomercial->setText ( DBvalue ( "horaincidenciacomercial" ) );
     mui_refincidenciacomercial->setText ( DBvalue ( "refincidenciacomercial" ) );

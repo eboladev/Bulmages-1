@@ -131,7 +131,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
         QString value = comboBox->currentText();
-	QString idvalue = comboBox->idalmacen();
+	QString idvalue = comboBox->id();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDBvalue ( "idalmacen", idvalue );
 
@@ -167,7 +167,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
-	comboBox->setidalmacen(m_subform->lineaat ( index.row() ) ->DBvalue("idalmacen"));
+	comboBox->setId(m_subform->lineaat ( index.row() ) ->DBvalue("idalmacen"));
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
                 || linea->nomcampo() == "porcentajevariacion") {

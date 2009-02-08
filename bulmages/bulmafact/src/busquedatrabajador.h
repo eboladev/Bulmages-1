@@ -36,10 +36,6 @@ class BusquedaTrabajadorDelegate : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
-
 public:
     BusquedaTrabajadorDelegate ( QWidget *parent = 0 );
     ~BusquedaTrabajadorDelegate();
@@ -58,23 +54,13 @@ class BusquedaTrabajador : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    /// Cursor que almacena el listado de trabajadores y sobre el que se construye el comboBox.
-    cursor2 *m_cursorcombo;
-
 public:
     BusquedaTrabajador ( QWidget *parent = 0 );
     ~BusquedaTrabajador();
-    virtual void setidtrabajador ( QString idtrabajador );
-    virtual void setValorCampo ( QString idtrabajador );
-    QString idtrabajador();
-    virtual QString valorCampo();
-
-public slots:
+    virtual void setId ( QString idtrabajador );
+    QString id();
     void m_activated ( int index );
 
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

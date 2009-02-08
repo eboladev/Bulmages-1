@@ -32,7 +32,6 @@
 #include "company.h"
 #include "listlinfacturapview.h"
 #include "providerslist.h"
-//#include "pagoview.h"
 #include "funcaux.h"
 #include "albaranproveedorview.h"
 
@@ -75,7 +74,7 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
         subform2->setEmpresaBase ( comp );
         m_descuentos->setEmpresaBase ( comp );
         mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idforma_pago->setidforma_pago ( "" );
+        mui_idforma_pago->setId ( "" );
         mui_idproveedor->setEmpresaBase ( comp );
         mui_idproveedor->setId ( "" );
         mui_reffacturap->setEmpresaBase ( comp );

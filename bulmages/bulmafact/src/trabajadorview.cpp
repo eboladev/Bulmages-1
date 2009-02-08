@@ -194,6 +194,10 @@ void TrabajadorView::on_mui_guardar_clicked()
             QString cadena = "cp " + m_archivoimagen + " " + confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
             system ( cadena.toAscii().constData() );
         } // end if
+
+		/// Emitimos la senyal apropiada en el qapplication2
+		theApp->tablaCambiada1("trabajador");
+
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {

@@ -87,15 +87,14 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         /// Datos por defecto.
         mui_idprovincia->setEmpresaBase ( empresaBase() );
 
-    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
+    mui_idprovincia->setQuery("SELECT idprovincia, provincia||' ('||descpais||')' AS desc FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
     mui_idprovincia->setCampoId ("idprovincia");
-    mui_idprovincia->m_valores["provincia"] = "";
-    mui_idprovincia->m_valores["descpais"] = "";
+    mui_idprovincia->m_valores["desc"] = "";
         mui_idprovincia->setId ( "" );
 
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
-        mui_idforma_pago->setidforma_pago ( 0 );
+        mui_idforma_pago->setId ( 0 );
 
         /// Metemos la ventana en el workSpace.
         meteWindow ( windowTitle(), this, FALSE );

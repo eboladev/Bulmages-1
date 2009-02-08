@@ -36,7 +36,8 @@ BusquedaTrabajador::BusquedaTrabajador ( QWidget *parent )
 {
     _depura ( "BusquedaTrabajador::BusquedaTrabajador", 0 );
     m_cursorcombo = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    m_tabla = "trabajador";
+	m_null = TRUE;
     _depura ( "END BusquedaTrabajador::BusquedaTrabajador", 0 );
 }
 
@@ -62,7 +63,7 @@ BusquedaTrabajador::~BusquedaTrabajador()
 \param idtrabajador
 \return
 **/
-void BusquedaTrabajador::setidtrabajador ( QString idtrabajador )
+void BusquedaTrabajador::setId ( QString idtrabajador )
 {
     _depura ( "BusquedaTrabajador::setidtrabajador", 0 );
 
@@ -90,24 +91,13 @@ void BusquedaTrabajador::setidtrabajador ( QString idtrabajador )
 }
 
 
-///
-/**
-\param idtrabajador
-**/
-void BusquedaTrabajador::setValorCampo ( QString idtrabajador )
-{
-    _depura ( "BusquedaTrabajador::setValorCampo", 0 );
-    setidtrabajador ( idtrabajador );
-    _depura ( "END BusquedaTrabajador::setValorCampo", 0 );
-}
-
 
 /** Devuelve el identificador del trabajador seleccionado
 **/
 /**
 \return
 **/
-QString BusquedaTrabajador::idtrabajador()
+QString BusquedaTrabajador::id()
 {
     _depura ( "BusquedaTrabajador::idtrabajador", 0 );
     _depura ( "END BusquedaTrabajador::idtrabajador", 0 );
@@ -116,16 +106,6 @@ QString BusquedaTrabajador::idtrabajador()
 }
 
 
-///
-/**
-\return
-**/
-QString BusquedaTrabajador::valorCampo()
-{
-    _depura ( "BusquedaTrabajador::valorCampo", 0 );
-    _depura ( "END BusquedaTrabajador::valorCampo", 0 );
-    return idtrabajador();
-}
 
 
 /** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged

@@ -95,8 +95,8 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
         m_totalalbaranp->setReadOnly ( TRUE );
         m_totalalbaranp->setAlignment ( Qt::AlignRight );
-        mui_idforma_pago->setidforma_pago ( "0" );
-        mui_idalmacen->setidalmacen ( "0" );
+        mui_idforma_pago->setId ( "0" );
+        mui_idalmacen->setId ( "0" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
         mensajeInfo ( _( "Error al crear el albaran proveedor" ), this );

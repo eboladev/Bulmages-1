@@ -36,7 +36,8 @@ BusquedaFormaPago::BusquedaFormaPago ( QWidget *parent )
 {
     _depura ( "BusquedaFormaPago::BusquedaFormaPago", 0 );
     m_cursorcombo = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    m_tabla= "forma_pago";
+    m_null = TRUE;
     _depura ( "END BusquedaFormaPago::BusquedaFormaPago", 0 );
 }
 
@@ -64,7 +65,7 @@ BusquedaFormaPago::~BusquedaFormaPago()
 \param idforma_pago
 \return
 **/
-void BusquedaFormaPago::setidforma_pago ( QString idforma_pago )
+void BusquedaFormaPago::setId ( QString idforma_pago )
 {
     _depura ( "BusquedaFormaPago::setidforma_pago", 0 );
 
@@ -94,18 +95,6 @@ void BusquedaFormaPago::setidforma_pago ( QString idforma_pago )
 
 ///
 /**
-\param idforma_pago
-**/
-void BusquedaFormaPago::setValorCampo ( QString idforma_pago )
-{
-    _depura ( "BusquedaFormaPago::setValorCampo", 0 );
-    setidforma_pago ( idforma_pago );
-    _depura ( "END BusquedaFormaPago::setValorCampo", 0 );
-}
-
-
-///
-/**
 \param idcliente
 \return
 **/
@@ -123,7 +112,7 @@ void BusquedaFormaPago::setIdCliente ( QString idcliente )
     cursor2 *cur = empresaBase() ->cargacursor ( "SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente );
 
     if ( !cur->eof() ) {
-        setidforma_pago ( cur->valor ( "idforma_pago" ) );
+        setId ( cur->valor ( "idforma_pago" ) );
     } // end if
     delete cur;
     _depura ( "END BusquedaFormaPago::setIdCliente", 0 );
@@ -146,7 +135,7 @@ void BusquedaFormaPago::setIdProveedor ( QString idproveedor )
     cursor2 * cur = empresaBase() ->cargacursor ( "SELECT idforma_pago FROM proveedor WHERE idproveedor=" + idproveedor );
 
     if ( !cur->eof() ) {
-        setidforma_pago ( cur->valor ( "idforma_pago" ) );
+        setId ( cur->valor ( "idforma_pago" ) );
     } // end if
     delete cur;
     _depura ( "END BusquedaFormaPago::setIdProveedor", 0 );
@@ -174,7 +163,7 @@ void BusquedaFormaPago::m_activated ( int index )
 /**
 \return
 **/
-QString BusquedaFormaPago::idforma_pago()
+QString BusquedaFormaPago::id()
 {
     _depura ( "BusquedaFormaPago::idforma_pago", 0 );
     _depura ( "END BusquedaFormaPago::idforma_pago", 0 );
@@ -185,15 +174,5 @@ QString BusquedaFormaPago::idforma_pago()
     return "";
 }
 
-
-/** Devuelve el identificador de forma de pago indicado
-**/
-/**
-\return
-**/
-QString BusquedaFormaPago::valorCampo()
-{
-    return idforma_pago();
-}
 
 

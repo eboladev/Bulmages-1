@@ -99,9 +99,9 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
 		mui_idcliente->m_valores["nomcliente"] = "";
 
 	/// Establecemos valores por defecto en los combo boxes para que no se queden sin inicializar.
-        mui_idalmacen->setidalmacen ( "" );
+        mui_idalmacen->setId ( "" );
         mui_codigoserie_factura->setcodigoserie_factura ( "" );
-        mui_idforma_pago->setidforma_pago ( "" );
+        mui_idforma_pago->setId ( "" );
 
         m_totalBases->setReadOnly ( TRUE );
         m_totalBases->setAlignment ( Qt::AlignRight );

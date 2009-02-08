@@ -76,13 +76,13 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
         mui_lineasDetalle->inicializar();
         mui_idproveedor->setEmpresaBase ( comp );
         mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idforma_pago->setidforma_pago ( "0" );
+        mui_idforma_pago->setId ( "0" );
         mui_descuentos->setEmpresaBase ( comp );
         mui_descuentos->inicializar();
         mui_idalmacen->setEmpresaBase ( comp );
-        mui_idalmacen->setidalmacen ( "0" );
+        mui_idalmacen->setId ( "0" );
         mui_idtrabajador->setEmpresaBase ( comp );
-        mui_idtrabajador->setidtrabajador ( "0" );
+        mui_idtrabajador->setId ( "0" );
         mui_refpedidoproveedor->setEmpresaBase ( comp );
 
 	/// Establecemos los parametros de busqueda del Cliente

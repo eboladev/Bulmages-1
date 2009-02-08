@@ -35,9 +35,8 @@ BusquedaAlmacen::BusquedaAlmacen ( QWidget *parent, const char * )
 {
     _depura ( "BusquedaAlmacen::BusquedaAlmacen", 0 );
     m_cursorcombo = NULL;
-//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    connect ( this, SIGNAL ( currentIndexChanged ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_codigoalmacen = "";
+    m_tabla = "almacen";
     _depura ( "END BusquedaAlmacen::BusquedaAlmacen", 0 );
 }
 
@@ -61,7 +60,7 @@ BusquedaAlmacen::~BusquedaAlmacen()
 \param idalmacen
 \return
 **/
-void BusquedaAlmacen::setidalmacen ( QString idalmacen )
+void BusquedaAlmacen::setId ( QString idalmacen )
 {
     _depura ( "BusquedaAlmacen::setidalmacen", 0, idalmacen );
 
@@ -107,23 +106,12 @@ void BusquedaAlmacen::setidalmacen ( QString idalmacen )
 }
 
 
-///
-/**
-\param idalmacen
-**/
-void BusquedaAlmacen::setValorCampo ( QString idalmacen )
-{
-    _depura ( "BusquedaAlmacen::setValorCampo", 0 );
-    setidalmacen ( idalmacen );
-    _depura ( "END BusquedaAlmacen::setValorCampo", 0 );
-}
-
 
 ///
 /**
 \return
 **/
-QString BusquedaAlmacen::idalmacen()
+QString BusquedaAlmacen::id()
 {
     _depura ( "BusquedaAlmacen::idalmacen", 0 );
     int index = currentIndex();
@@ -135,19 +123,6 @@ QString BusquedaAlmacen::idalmacen()
         return "";
     } // end if
 }
-
-
-///
-/**
-\return
-**/
-QString BusquedaAlmacen::valorCampo()
-{
-    _depura ( "BusquedaAlmacen::valorCampo", 0 );
-    _depura ( "END BusquedaAlmacen::valorCampo", 0 );
-    return idalmacen();
-}
-
 
 ///
 /**

@@ -55,25 +55,18 @@ class BusquedaAlmacen : public BlComboBox
     Q_OBJECT
 
 private:
-    /// El puntero a company para que se pueda trabajar con la base de datos.
-    cursor2 *m_cursorcombo;
     /// Indica cual es el codigo de almacen por defecto.
     QString m_codigoalmacen;
 
 public:
     BusquedaAlmacen ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaAlmacen();
-    virtual void setidalmacen ( QString idalmacen );
-    virtual void setValorCampo ( QString idalmacen );
-    QString idalmacen();
+    virtual void setId ( QString idalmacen );
+    QString id();
     void setEmpresaBase ( Company * );
-    virtual QString valorCampo();
 
-public slots:
     void m_activated ( int index );
 
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

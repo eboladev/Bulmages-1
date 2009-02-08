@@ -129,9 +129,6 @@
 /// Indica que imagen utilizar como splash de BulmaCont.
 #define CONF_SPLASH                  199
 
-/// Indica que imagen utilizar como Background.
-#define CONF_BACKGROUND              200
-
 /// Determina si hay refresco
 #define CONF_REFRESH_LIST            210
 #define CONF_SHOW_PROGRESS_BAR        211

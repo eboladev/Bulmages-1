@@ -40,14 +40,6 @@ BlComboBox::BlComboBox ( QWidget *parent )
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect(theApp, SIGNAL(tablaCambiada(const QString &)), this, SLOT(onTablaCambiada(const QString &)));
-
-/*
-    m_query = "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia";
-    m_tabla = "provincia";
-    m_id = "idprovincia";
-    m_valores["nomprovincia"] = "";
-    m_valores["descpais"] = "";
-*/
     m_null = TRUE;
 
     _depura ( "END BlComboBox::BlComboBox", 0 );
@@ -112,7 +104,7 @@ void BlComboBox::setId ( QString id )
 	QString cad;
 	while (it.hasNext()) {
 		it.next();
-		cad = cad +" "+ m_valores.value(it.key());
+		cad = cad +" "+ m_cursorcombo->valor(it.key());
 	} // end while
 
         addItem ( cad );

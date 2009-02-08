@@ -37,15 +37,18 @@ public:
 	QMap <QString, QString> m_valores;
 
 private:
-    /// Cursor que almacena en memoria la lista de provincias.
-    cursor2 *m_cursorcombo;
-    QString m_tabla;
     /// Indica cual es el identificador para la tabla.
     QString m_id;
     QString m_query;
     /// Almacena el nombreprofesor del profesor seleccionado.
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
+
+
+protected:
+    QString m_tabla;
+    /// Cursor que almacena en memoria la lista de provincias.
+    cursor2 *m_cursorcombo;
     /// Indica si adminte nulos o no
     bool m_null;
 
@@ -54,8 +57,8 @@ public:
     ~BlComboBox();
     QString valorCampo();
     void setValorCampo(QString);
-    QString id();
-    void setId(QString);
+    virtual QString id();
+    virtual void setId(QString);
     void setQuery(QString);
     virtual void setTableName(QString tableName);
     virtual void setCampoId(QString cid);

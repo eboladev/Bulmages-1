@@ -53,7 +53,7 @@ TarifaView::TarifaView ( Company *comp, QWidget *parent )
     ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setEmpresaBase ( comp );
     mui_almacen->setEmpresaBase ( comp );
-    mui_almacen->setidalmacen ( "" );
+    mui_almacen->setId ( "" );
     mui_list->setEmpresaBase ( comp );
 
     /// Desactivamos los campos que solo se utilizan si existe un 'idtarifa',
@@ -122,7 +122,7 @@ QString TarifaView::formaQuery ( QString idtarifa )
         warticulo = " AND ";
     } // end if
 
-    QString idalmacen = mui_almacen->idalmacen();
+    QString idalmacen = mui_almacen->id();
     if ( idalmacen != "" ) {
         wherealmacen += walmacen + " idalmacen = " + idalmacen;
         walmacen = " AND ";
