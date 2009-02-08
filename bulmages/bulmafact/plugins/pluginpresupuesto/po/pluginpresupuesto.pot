@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 16:44+0100\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,20 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginpresupuesto.cpp:99
+#: pluginpresupuesto.cpp:100
 msgid "&Presupuestos a clientes"
 msgstr ""
 
-#: pluginpresupuesto.cpp:101 pluginpresupuesto.cpp:102 presupuestolist.cpp:296
+#: pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103 presupuestolist.cpp:296
 #: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
 msgstr ""
 
-#: pluginpresupuesto.cpp:107
+#: pluginpresupuesto.cpp:108
 msgid "&Nuevo presupuesto a cliente"
 msgstr ""
 
-#: pluginpresupuesto.cpp:109 pluginpresupuesto.cpp:110
+#: pluginpresupuesto.cpp:110 pluginpresupuesto.cpp:111
 #: ui_presupuestoclientebase.h:724
 msgid "Nuevo presupuesto a cliente"
 msgstr ""

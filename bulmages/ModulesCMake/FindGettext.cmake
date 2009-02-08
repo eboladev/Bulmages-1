@@ -115,7 +115,6 @@ ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
 add_custom_target( translations )
-add_custom_target( update_pots )
 
 #To acomplish the messages extract it's needed some macros
 
@@ -189,15 +188,20 @@ endmacro( GETTEXT_CREATE_TEMPLATE)
 macro (GETTEXT_UPDATE_POT inputPot dirOUT)
    get_filename_component(_PotFile ${inputPot} NAME)
    get_filename_component(_PotFileName ${inputPot} NAME_WE)
-   #add_custom_command(
-   #OUTPUT ${dirOUT}/${_PotFile}
-   #COMMAND ${CMAKE_COMMAND} copy ${inputPot} ${dirOUT}/${_PotFile}
-   #DEPENDS ${inputPot}
-   #)
-   configure_file( ${inputPot} ${dirOUT}/${_PotFile} COPYONLY)
-   message(STATUS "Updating ${inputPot} in ${dirOUT}/${_PotFile}")
+
+   add_custom_target(update_pots 
+	${CMAKE_COMMAND} -E copy 
+	${inputPot} ${dirOUT}/${_PotFile})
 
    add_dependencies(update_pots ${_PotFileName}_pot)
+
+#   add_custom_command(
+#   OUTPUT ${dirOUT}/${_PotFile}
+#   COMMAND ${CMAKE_COMMAND} copy ${inputPot} ${dirOUT}/${_PotFile}
+#   DEPENDS ${inputPot})
+
+#   configure_file( ${inputPot} ${dirOUT}/${_PotFile} COPYONLY)
+
 endmacro (GETTEXT_UPDATE_POT inputPot dirOUT)
 
 
@@ -237,10 +241,12 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
 
       get_filename_component(_gmoBasename ${_gmoFile} NAME)
 
-      if(NOT EXISTS ${_absPoFile})
-         configure_file( ${_absPotFile} ${_absPoFile} COPYONLY)
-         file(WRITE ${_absPoFile} "")
-      endif(NOT EXISTS ${_absPoFile})
+
+# We don't want to overwrite existing translations.
+#      if(NOT EXISTS ${_absPoFile})
+#         configure_file( ${_absPotFile} ${_absPoFile} COPYONLY)
+#         file(WRITE ${_absPoFile} "")
+#      endif(NOT EXISTS ${_absPoFile})
 
       add_custom_command( 
          OUTPUT  "${_gmoFile}"

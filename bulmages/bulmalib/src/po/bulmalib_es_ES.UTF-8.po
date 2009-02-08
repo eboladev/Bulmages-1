@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 11:31+0100\n"
+"POT-Creation-Date: 2009-02-08 13:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr "¡Opción reservada a expertos!"
 msgid "&Borrar"
 msgstr "&Cerrar"
 
-#: ui_abreempresabase.h:205 ficha.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_abreempresabase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -55,7 +55,7 @@ msgstr "&Entra"
 msgid "&Guardar"
 msgstr "&Validar"
 
-#: ficha.cpp:370
+#: blform.cpp:370
 msgid "&No"
 msgstr "&No"
 
@@ -63,7 +63,7 @@ msgstr "&No"
 msgid "&Omitir"
 msgstr "&Omitir"
 
-#: ficha.cpp:370
+#: blform.cpp:370
 msgid "&Si"
 msgstr "&Sí"
 
@@ -77,8 +77,7 @@ msgstr " <HR><B>Tratando el cliente"
 
 #: pgimportfiles.cpp:1915
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
-msgstr ""
-"<LI> El cliente no existe, se debe hacer una inserción de este</LI>\n"
+msgstr "<LI> El cliente no existe, se debe hacer una inserción de este</LI>\n"
 
 #: pgimportfiles.cpp:1910
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
@@ -120,19 +119,19 @@ msgstr ""
 msgid "Actualizar Listado de Empresas"
 msgstr ""
 
-#: subform3.cpp:2332
+#: subform3.cpp:2333
 msgid "Ajustar altura"
 msgstr ""
 
-#: subform3.cpp:2335
+#: subform3.cpp:2336
 msgid "Ajustar alturas"
 msgstr ""
 
-#: subform3.cpp:2331
+#: subform3.cpp:2332
 msgid "Ajustar columa"
 msgstr ""
 
-#: subform3.cpp:2334
+#: subform3.cpp:2335
 msgid "Ajustar columnas"
 msgstr ""
 
@@ -174,7 +173,7 @@ msgstr ""
 msgid "Bienal"
 msgstr ""
 
-#: ficha.cpp:339 listado.cpp:377
+#: blform.cpp:339 listado.cpp:377
 #, fuzzy
 msgid "Borrar"
 msgstr "&Cerrar"
@@ -183,7 +182,7 @@ msgstr "&Cerrar"
 msgid "Borrar pais"
 msgstr ""
 
-#: subform3.cpp:2328
+#: subform3.cpp:2329
 msgid "Borrar registro"
 msgstr ""
 
@@ -200,7 +199,7 @@ msgstr ""
 msgid "Cancelar"
 msgstr "&Cancelar"
 
-#: subform3.cpp:1075
+#: subform3.cpp:1076
 #, fuzzy
 msgid "Cargando SubFormulario "
 msgstr "Configuración Subformularios"
@@ -298,11 +297,11 @@ msgstr "<LI>Datos insuficientes para tratar la forma de pago."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr ""
 
-#: ficha.cpp:340
+#: blform.cpp:340
 msgid "Desea eliminar '"
 msgstr "¿Desea eliminar '"
 
-#: ficha.cpp:369 paisview.cpp:118 paisview.cpp:189
+#: blform.cpp:369 paisview.cpp:118 paisview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "¿Desea guardar los cambios?"
 
@@ -421,7 +420,7 @@ msgstr "Busqueda Fecha"
 msgid "Forma de pago"
 msgstr "<LI> Forma de pago <B>"
 
-#: ficha.cpp:368
+#: blform.cpp:368
 msgid "Guardar"
 msgstr ""
 
@@ -437,11 +436,11 @@ msgstr ""
 msgid "Id. Provincia"
 msgstr ""
 
-#: subform3.cpp:2069
+#: subform3.cpp:2070
 msgid "Imprimiendo "
 msgstr ""
 
-#: ficha.cpp:443
+#: blform.cpp:443
 msgid "Imprimir ficha"
 msgstr ""
 
@@ -510,15 +509,15 @@ msgstr ""
 msgid "No se ha encontrado el padre de esta familia."
 msgstr ""
 
-#: ficha.cpp:350
+#: blform.cpp:350
 msgid "No se ha podido borrar"
 msgstr "No se ha podido borrar"
 
-#: ficha.cpp:383
+#: blform.cpp:383
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr ""
 
-#: abreempresaview.cpp:492 subform3.cpp:93
+#: abreempresaview.cpp:492 subform3.cpp:94
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -527,7 +526,7 @@ msgstr "Nombre"
 msgid "Nombre Pais"
 msgstr "Nombre de usuario:"
 
-#: subform3.cpp:93
+#: subform3.cpp:94
 #, fuzzy
 msgid "Nombre de campo"
 msgstr "Nombre de usuario:"
@@ -554,7 +553,7 @@ msgstr ""
 msgid "Omitir &clase"
 msgstr "Omitir &clase"
 
-#: ficha.cpp:442
+#: blform.cpp:442
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 
@@ -767,12 +766,12 @@ msgstr ""
 msgid "Usuario Actual"
 msgstr ""
 
-#: subform3.cpp:2338
+#: subform3.cpp:2339
 #, fuzzy
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Configuración Subformularios"
 
-#: subform3.cpp:93
+#: subform3.cpp:94
 msgid "Visible"
 msgstr ""
 

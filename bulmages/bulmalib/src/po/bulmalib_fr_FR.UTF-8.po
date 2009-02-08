@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 11:31+0100\n"
+"POT-Creation-Date: 2009-02-08 13:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr "¡Option résérvée aux experts!"
 msgid "&Borrar"
 msgstr "Éraser"
 
-#: ui_abreempresabase.h:205 ficha.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_abreempresabase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancéler"
 
@@ -55,7 +55,7 @@ msgstr "&Entrer"
 msgid "&Guardar"
 msgstr "Garder"
 
-#: ficha.cpp:370
+#: blform.cpp:370
 msgid "&No"
 msgstr "&Non"
 
@@ -63,7 +63,7 @@ msgstr "&Non"
 msgid "&Omitir"
 msgstr "&Omettre"
 
-#: ficha.cpp:370
+#: blform.cpp:370
 msgid "&Si"
 msgstr "&Oui"
 
@@ -119,19 +119,19 @@ msgstr "Actualiser liste"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualiser liste d'entreprises"
 
-#: subform3.cpp:2332
+#: subform3.cpp:2333
 msgid "Ajustar altura"
 msgstr "Ajuster hauteur"
 
-#: subform3.cpp:2335
+#: subform3.cpp:2336
 msgid "Ajustar alturas"
 msgstr "Ajuster hauteur"
 
-#: subform3.cpp:2331
+#: subform3.cpp:2332
 msgid "Ajustar columa"
 msgstr "Ajuster colonne"
 
-#: subform3.cpp:2334
+#: subform3.cpp:2335
 msgid "Ajustar columnas"
 msgstr "Ajuster colonne"
 
@@ -173,7 +173,7 @@ msgstr "Avis du programme"
 msgid "Bienal"
 msgstr "Biannuel"
 
-#: ficha.cpp:339 listado.cpp:377
+#: blform.cpp:339 listado.cpp:377
 msgid "Borrar"
 msgstr "Éraser"
 
@@ -182,7 +182,7 @@ msgstr "Éraser"
 msgid "Borrar pais"
 msgstr "Éraser"
 
-#: subform3.cpp:2328
+#: subform3.cpp:2329
 msgid "Borrar registro"
 msgstr "Éraser registre"
 
@@ -199,7 +199,7 @@ msgstr ""
 msgid "Cancelar"
 msgstr "&Cancéler"
 
-#: subform3.cpp:1075
+#: subform3.cpp:1076
 #, fuzzy
 msgid "Cargando SubFormulario "
 msgstr "Configuration Subformulaires"
@@ -301,11 +301,11 @@ msgstr "<LI>Données insuficientes pour traiter la forme de payement."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Vous devez sélectionner un élément"
 
-#: ficha.cpp:340
+#: blform.cpp:340
 msgid "Desea eliminar '"
 msgstr "Voulez vouséliminer '"
 
-#: ficha.cpp:369 paisview.cpp:118 paisview.cpp:189
+#: blform.cpp:369 paisview.cpp:118 paisview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "Désirés vous garder les changes?"
 
@@ -423,7 +423,7 @@ msgstr "Form 1"
 msgid "Forma de pago"
 msgstr "<LI>Forme de payement<B>"
 
-#: ficha.cpp:368
+#: blform.cpp:368
 msgid "Guardar"
 msgstr "Garder"
 
@@ -440,11 +440,11 @@ msgstr ""
 msgid "Id. Provincia"
 msgstr ""
 
-#: subform3.cpp:2069
+#: subform3.cpp:2070
 msgid "Imprimiendo "
 msgstr ""
 
-#: ficha.cpp:443
+#: blform.cpp:443
 msgid "Imprimir ficha"
 msgstr ""
 
@@ -514,15 +514,15 @@ msgstr ""
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "<P>On n'a pas trouvé le père de cette famille</P>"
 
-#: ficha.cpp:350
+#: blform.cpp:350
 msgid "No se ha podido borrar"
 msgstr "Il n'a pas pus être érasé"
 
-#: ficha.cpp:383
+#: blform.cpp:383
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"
 
-#: abreempresaview.cpp:492 subform3.cpp:93
+#: abreempresaview.cpp:492 subform3.cpp:94
 msgid "Nombre"
 msgstr "Nom"
 
@@ -531,7 +531,7 @@ msgstr "Nom"
 msgid "Nombre Pais"
 msgstr "Nom"
 
-#: subform3.cpp:93
+#: subform3.cpp:94
 msgid "Nombre de campo"
 msgstr "Nom de  champ"
 
@@ -557,7 +557,7 @@ msgstr ""
 msgid "Omitir &clase"
 msgstr "Omettre &classe"
 
-#: ficha.cpp:442
+#: blform.cpp:442
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 
@@ -770,11 +770,11 @@ msgstr ""
 msgid "Usuario Actual"
 msgstr ""
 
-#: subform3.cpp:2338
+#: subform3.cpp:2339
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Voir/Oculter configurateur de subformulaire"
 
-#: subform3.cpp:93
+#: subform3.cpp:94
 msgid "Visible"
 msgstr "Visible"
 

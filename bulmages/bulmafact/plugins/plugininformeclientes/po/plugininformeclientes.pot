@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 16:44+0100\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,70 +16,70 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: informeqtoolbutton.cpp:138
+#: informeqtoolbutton.cpp:132
 msgid "Generando Informe"
 msgstr ""
 
-#: informeqtoolbutton.cpp:202 informeqtoolbutton.cpp:235
-#: informeqtoolbutton.cpp:469
+#: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
+#: informeqtoolbutton.cpp:463
 msgid "Articulo"
 msgstr ""
 
-#: informeqtoolbutton.cpp:203 informeqtoolbutton.cpp:268
+#: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
 msgid "Pres."
 msgstr ""
 
-#: informeqtoolbutton.cpp:204 informeqtoolbutton.cpp:236
-#: informeqtoolbutton.cpp:269 informeqtoolbutton.cpp:316
+#: informeqtoolbutton.cpp:198 informeqtoolbutton.cpp:230
+#: informeqtoolbutton.cpp:263 informeqtoolbutton.cpp:310
 msgid "Pedido"
 msgstr ""
 
-#: informeqtoolbutton.cpp:205 informeqtoolbutton.cpp:237
-#: informeqtoolbutton.cpp:270 informeqtoolbutton.cpp:317
+#: informeqtoolbutton.cpp:199 informeqtoolbutton.cpp:231
+#: informeqtoolbutton.cpp:264 informeqtoolbutton.cpp:311
 msgid "Entregado"
 msgstr ""
 
-#: informeqtoolbutton.cpp:206 informeqtoolbutton.cpp:238
-#: informeqtoolbutton.cpp:271 informeqtoolbutton.cpp:318
+#: informeqtoolbutton.cpp:200 informeqtoolbutton.cpp:232
+#: informeqtoolbutton.cpp:265 informeqtoolbutton.cpp:312
 msgid "Facturado"
 msgstr ""
 
-#: informeqtoolbutton.cpp:272
+#: informeqtoolbutton.cpp:266
 msgid "Cobrado"
 msgstr ""
 
-#: informeqtoolbutton.cpp:319
+#: informeqtoolbutton.cpp:313
 msgid "Pagado"
 msgstr ""
 
-#: informeqtoolbutton.cpp:470
+#: informeqtoolbutton.cpp:464
 msgid "C. Ped."
 msgstr ""
 
-#: informeqtoolbutton.cpp:471
+#: informeqtoolbutton.cpp:465
 msgid "C. Entr."
 msgstr ""
 
-#: informeqtoolbutton.cpp:472
+#: informeqtoolbutton.cpp:466
 msgid "C. Fact."
 msgstr ""
 
-#: informeqtoolbutton.cpp:473
+#: informeqtoolbutton.cpp:467
 msgid "V. Pres."
 msgstr ""
 
-#: informeqtoolbutton.cpp:474
+#: informeqtoolbutton.cpp:468
 msgid "V. Ped."
 msgstr ""
 
-#: informeqtoolbutton.cpp:475
+#: informeqtoolbutton.cpp:469
 msgid "V. Entr."
 msgstr ""
 
-#: informeqtoolbutton.cpp:476
+#: informeqtoolbutton.cpp:470
 msgid "V. Fact."
 msgstr ""
 
-#: informeqtoolbutton.cpp:494
+#: informeqtoolbutton.cpp:488
 msgid "Generando informe"
 msgstr ""

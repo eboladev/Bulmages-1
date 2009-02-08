@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 11:31+0100\n"
+"POT-Creation-Date: 2009-02-08 13:24+0100\n"
 "PO-Revision-Date: 2009-01-26 09:35+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,15 +41,15 @@ msgstr "&Accepter"
 msgid "&Acerca de"
 msgstr "&A propos de"
 
-#: ui_bulmafactbase.h:263
+#: ui_bulmafactbase.h:259
 msgid "&Acerca de BulmaFact"
 msgstr "&A propos de BulmaFact"
 
-#: ui_bulmafactbase.h:266
+#: ui_bulmafactbase.h:262
 msgid "&Almacenes"
 msgstr "&Magasins"
 
-#: ui_bulmafactbase.h:258
+#: ui_bulmafactbase.h:254
 msgid "&Articulos"
 msgstr "&Articles"
 
@@ -68,11 +68,11 @@ msgstr "&Fermer"
 msgid "&Datos generales"
 msgstr "&Données generales"
 
-#: ui_bulmafactbase.h:267
+#: ui_bulmafactbase.h:263
 msgid "&Documentacion"
 msgstr "&Documentation"
 
-#: ui_bulmafactbase.h:265
+#: ui_bulmafactbase.h:261
 msgid "&Formas de pago"
 msgstr "&Formes de payement"
 
@@ -80,31 +80,31 @@ msgstr "&Formes de payement"
 msgid "&Incluir en el catalogo."
 msgstr ""
 
-#: ui_bulmafactbase.h:269
+#: ui_bulmafactbase.h:265
 msgid "&Indexador"
 msgstr "&Indexeur"
 
-#: bancoview.cpp:186 trabajadorview.cpp:219
+#: bancoview.cpp:186 trabajadorview.cpp:223
 msgid "&No"
 msgstr "&Non"
 
-#: ui_bulmafactbase.h:248
+#: ui_bulmafactbase.h:244
 msgid "&Propiedades de la empresa..."
 msgstr "&Propriétées de l'entreprise..."
 
-#: ui_bulmafactbase.h:246
+#: ui_bulmafactbase.h:242
 msgid "&Salir del programa"
 msgstr "&Sortir du programme"
 
-#: bancoview.cpp:186 trabajadorview.cpp:219
+#: bancoview.cpp:186 trabajadorview.cpp:223
 msgid "&Si"
 msgstr "&Oui"
 
-#: ui_bulmafactbase.h:255
+#: ui_bulmafactbase.h:251
 msgid "&Tipos de articulo"
 msgstr "&Types d'article"
 
-#: ui_bulmafactbase.h:260
+#: ui_bulmafactbase.h:256
 msgid "&Trabajadores"
 msgstr "&Ouvriers"
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "A&utores"
 msgstr "A&uteurs"
 
-#: ui_bulmafactbase.h:289
+#: ui_bulmafactbase.h:285
 msgid "A&yuda"
 msgstr "A&ide"
 
@@ -201,7 +201,7 @@ msgstr "Noms:"
 msgid "Articulo"
 msgstr "Article"
 
-#: ui_bulmafactbase.h:290
+#: ui_bulmafactbase.h:286
 msgid "Articulo&s"
 msgstr "Article&s"
 
@@ -217,7 +217,7 @@ msgstr "Articles"
 msgid "Banco"
 msgstr "Banque"
 
-#: ui_bancobase.h:401 ui_bulmafactbase.h:279
+#: ui_bancobase.h:401 ui_bulmafactbase.h:275
 msgid "Bancos"
 msgstr "Banques"
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Borrar trabajador"
 msgstr "Éraser ouvrier"
 
-#: ui_bulmafactbase.h:245
+#: ui_bulmafactbase.h:241
 msgid "BulmaFact - Facturacion GPL"
 msgstr "BulmaFact - Facturacion GPL"
 
@@ -292,11 +292,11 @@ msgstr "Cantitée"
 msgid "Cantidad de componente de articulo"
 msgstr "Cantité de composant d'article"
 
-#: main.cxx:215
+#: main.cxx:216
 msgid "Cargando plugins"
 msgstr ""
 
-#: main.cxx:181
+#: main.cxx:182
 msgid "Cargando traducciones"
 msgstr ""
 
@@ -377,7 +377,7 @@ msgstr "Contenu de la famille:"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_bulmafactbase.h:276
+#: ui_bulmafactbase.h:272
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -385,7 +385,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bulmafactbase.h:247
+#: ui_bulmafactbase.h:243
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
@@ -446,11 +446,11 @@ msgstr "Remise:"
 msgid "Desea eliminar"
 msgstr "Désirez vous éliminer"
 
-#: fpagoview.cpp:152
+#: fpagoview.cpp:156
 msgid "Desea guardar los cambios."
 msgstr "Voulez vous sauver les changes?"
 
-#: bancoview.cpp:185 familiasview.cpp:320 trabajadorview.cpp:218
+#: bancoview.cpp:185 familiasview.cpp:320 trabajadorview.cpp:222
 #: tiposarticuloview.cpp:291
 msgid "Desea guardar los cambios?"
 msgstr "Voulez vous sauver les changes?"
@@ -467,7 +467,7 @@ msgstr "Direction:"
 msgid "Disponible en stock"
 msgstr "Disponible en stock"
 
-#: ui_bulmafactbase.h:291
+#: ui_bulmafactbase.h:287
 msgid "E&mpresa"
 msgstr "E&ntreprise"
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Entregado"
 msgstr "Remis"
 
-#: trabajadorview.cpp:274
+#: trabajadorview.cpp:278
 msgid "Error al borrar el Trabajador"
 msgstr ""
 
@@ -518,7 +518,7 @@ msgstr "Erreur en créant l'article"
 msgid "Error al crear la familia"
 msgstr ""
 
-#: trabajadorview.cpp:249
+#: trabajadorview.cpp:253
 msgid "Error al crear un nuevo Trabajador"
 msgstr ""
 
@@ -526,7 +526,7 @@ msgstr ""
 msgid "Error al guardar"
 msgstr ""
 
-#: trabajadorview.cpp:200
+#: trabajadorview.cpp:204
 msgid "Error al guardar el trabajador"
 msgstr ""
 
@@ -546,7 +546,7 @@ msgstr ""
 msgid "Error al guardar los tipos de IVA"
 msgstr ""
 
-#: fpagoview.cpp:207
+#: fpagoview.cpp:211
 msgid "Error al intentar borrar la forma de pago"
 msgstr ""
 
@@ -566,11 +566,11 @@ msgstr ""
 msgid "Error inesperado el crear el Banco"
 msgstr ""
 
-#: main.cxx:244
+#: main.cxx:245
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Erreur inéspéré dans BulmaFact. Le programme fermera."
 
-#: fichabf.cpp:848
+#: fichabf.cpp:851
 msgid "Error inesperado en la impresion"
 msgstr ""
 
@@ -594,15 +594,15 @@ msgstr "Exporter"
 msgid "Exportar articulos"
 msgstr "Exporter articles"
 
-#: ui_bulmafactbase.h:268
+#: ui_bulmafactbase.h:264
 msgid "F1"
 msgstr "F1"
 
-#: ui_bulmafactbase.h:262
+#: ui_bulmafactbase.h:258
 msgid "F11"
 msgstr "F11"
 
-#: ui_bulmafactbase.h:257
+#: ui_bulmafactbase.h:253
 msgid "F2"
 msgstr "F2"
 
@@ -639,9 +639,9 @@ msgstr "Fax:"
 msgid "Fecha Entrada en Vigor"
 msgstr "Date d'entrée en vigueur"
 
-#: ui_bulmafactbase.h:264 ui_bulmafactbase.h:320 ui_bulmafactbase.h:323
-#: ui_bulmafactbase.h:328 ui_bulmafactbase.h:333 ui_bulmafactbase.h:338
-#: ui_bulmafactbase.h:343
+#: ui_bulmafactbase.h:260 ui_bulmafactbase.h:316 ui_bulmafactbase.h:319
+#: ui_bulmafactbase.h:324 ui_bulmafactbase.h:329 ui_bulmafactbase.h:334
+#: ui_bulmafactbase.h:339
 msgid "Fichas"
 msgstr "Fiches"
 
@@ -670,7 +670,7 @@ msgstr "Forme de payement"
 msgid "General"
 msgstr "Général"
 
-#: ui_bulmafactbase.h:254
+#: ui_bulmafactbase.h:250
 msgid "Gestion de &familias"
 msgstr "Gestion de &familles"
 
@@ -690,7 +690,7 @@ msgstr ""
 msgid "Guardar Tipo de articulo"
 msgstr "Garder Genres d'article"
 
-#: bancoview.cpp:184 trabajadorview.cpp:217
+#: bancoview.cpp:184 trabajadorview.cpp:221
 msgid "Guardar datos del trabajador"
 msgstr "Sauver données de l'ouvrier"
 
@@ -698,7 +698,7 @@ msgstr "Sauver données de l'ouvrier"
 msgid "Guardar familia"
 msgstr "Sauver famille"
 
-#: ui_fpagobase.h:332 ui_fpagobase.h:337 fpagoview.cpp:151
+#: ui_fpagobase.h:332 ui_fpagobase.h:337 fpagoview.cpp:155
 msgid "Guardar forma de pago"
 msgstr "Garder forme de payement"
 
@@ -764,7 +764,7 @@ msgstr "Identifieur"
 msgid "Imagen del articulo:"
 msgstr "Image de l'article:"
 
-#: articuloview.cpp:280 trabajadorview.cpp:290
+#: articuloview.cpp:280 trabajadorview.cpp:294
 msgid "Imagenes (*.jpg)"
 msgstr "Images (*.jpg)"
 
@@ -796,7 +796,7 @@ msgstr "Inclure en présentations"
 msgid "Incluir este articulo en el catalogo."
 msgstr ""
 
-#: ui_bulmafactbase.h:270 ui_bulmafactbase.h:273
+#: ui_bulmafactbase.h:266 ui_bulmafactbase.h:269
 msgid "Indexador"
 msgstr "Indexeur"
 
@@ -812,7 +812,7 @@ msgstr "Information de l'article:"
 msgid "Informacion del banco:"
 msgstr "Information de la banque:"
 
-#: busquedareferencia.cpp:64
+#: busquedareferencia.cpp:65
 msgid "Informe"
 msgstr ""
 
@@ -820,7 +820,7 @@ msgstr ""
 msgid "Informe por referencia"
 msgstr ""
 
-#: main.cxx:227
+#: main.cxx:228
 msgid "Inicializando componentes"
 msgstr ""
 
@@ -832,7 +832,7 @@ msgstr ""
 msgid "Iniciando clases"
 msgstr "Initiant classes"
 
-#: main.cxx:221
+#: main.cxx:222
 msgid "Lanzando plugins"
 msgstr ""
 
@@ -848,12 +848,12 @@ msgstr " Listes de banques:"
 msgid "Lista de trabajadores:"
 msgstr "Liste d'ouvriers:"
 
-#: ui_bulmafactbase.h:294 ui_bulmafactbase.h:297 ui_bulmafactbase.h:302
-#: ui_bulmafactbase.h:307 ui_bulmafactbase.h:312 ui_bulmafactbase.h:317
+#: ui_bulmafactbase.h:290 ui_bulmafactbase.h:293 ui_bulmafactbase.h:298
+#: ui_bulmafactbase.h:303 ui_bulmafactbase.h:308 ui_bulmafactbase.h:313
 msgid "Listados"
 msgstr "Relevées"
 
-#: ui_bulmafactbase.h:292
+#: ui_bulmafactbase.h:288
 msgid "Maest&ro"
 msgstr "Maît&re"
 
@@ -920,7 +920,7 @@ msgstr "Nouvelle famille"
 msgid "Nueva forma de pago"
 msgstr "Nouvelle forme de payement"
 
-#: ui_bulmafactbase.h:256
+#: ui_bulmafactbase.h:252
 msgid "Nuevo &articulo..."
 msgstr "Nouveau &article..."
 
@@ -970,11 +970,11 @@ msgstr "Observations sur l'article"
 msgid "Orden"
 msgstr "Ordre"
 
-#: ui_bulmafactbase.h:281
+#: ui_bulmafactbase.h:277
 msgid "Ordenar &ventanas"
 msgstr ""
 
-#: ui_bulmafactbase.h:280
+#: ui_bulmafactbase.h:276
 msgid "Organizacio&n en cascada"
 msgstr ""
 
@@ -998,11 +998,11 @@ msgstr "P.V.P. base"
 msgid "Pagado"
 msgstr "Payé"
 
-#: ui_bulmafactbase.h:282 ui_bulmafactbase.h:283
+#: ui_bulmafactbase.h:278 ui_bulmafactbase.h:279
 msgid "Paises / Provincias"
 msgstr "Pays / Provinces"
 
-#: ui_bulmafactbase.h:286
+#: ui_bulmafactbase.h:282
 msgid "Paises y provincias"
 msgstr ""
 
@@ -1059,7 +1059,7 @@ msgstr "Pres."
 msgid "Producto."
 msgstr ""
 
-#: ui_bulmafactbase.h:251 ui_listconfiguracionbase.h:117
+#: ui_bulmafactbase.h:247 ui_listconfiguracionbase.h:117
 msgid "Propiedades de la empresa"
 msgstr "Propriétées de l'entreprise"
 
@@ -1071,7 +1071,7 @@ msgstr "R.E."
 msgid "Razon Social:"
 msgstr ""
 
-#: busquedareferencia.cpp:65
+#: busquedareferencia.cpp:66
 msgid "Referencia"
 msgstr "Référence"
 
@@ -1079,11 +1079,11 @@ msgstr "Référence"
 msgid "S&olo presentables"
 msgstr "S&eulement présentables"
 
-#: ui_bulmafactbase.h:259
+#: ui_bulmafactbase.h:255
 msgid "Se&ries de factura"
 msgstr "Se&ries de facture"
 
-#: trabajadorview.cpp:288
+#: trabajadorview.cpp:292
 msgid "Seleccione archivo"
 msgstr "Sélectionner fichier"
 
@@ -1131,7 +1131,7 @@ msgstr ""
 msgid "Tasa IVA"
 msgstr "Taxe TVA"
 
-#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:278
+#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:274
 msgid "Tasas de IVA"
 msgstr "Taux de TVA"
 
@@ -1143,7 +1143,7 @@ msgstr "Téléphone portable:"
 msgid "Telefono:"
 msgstr "Téléphone:"
 
-#: main.cxx:233
+#: main.cxx:234
 msgid "Terminado"
 msgstr "Fini"
 
@@ -1151,7 +1151,7 @@ msgstr "Fini"
 msgid "Texto para etiqueta:"
 msgstr "Texte pour étiquette:"
 
-#: fichabf.cpp:844
+#: fichabf.cpp:847
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
@@ -1191,7 +1191,7 @@ msgstr "Taux terme entre reçus:"
 msgid "Tipo plazo primer pago:"
 msgstr "Taux terme premier reçu:"
 
-#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:277
+#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:273
 msgid "Tipos de IVA"
 msgstr "Types de TVA"
 
@@ -1223,11 +1223,11 @@ msgstr "URL:"
 msgid "Valor"
 msgstr "Valeur"
 
-#: ui_bulmafactbase.h:293
+#: ui_bulmafactbase.h:289
 msgid "Venta&na"
 msgstr "Fenêt&re"
 
-#: ui_bulmafactbase.h:261
+#: ui_bulmafactbase.h:257
 msgid "Ventana &completa"
 msgstr "Fenêtre &complète"
 

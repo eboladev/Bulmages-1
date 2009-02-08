@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 16:45+0100\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: cobroslist.cpp:181 plugincobros.cpp:98 plugincobros.cpp:99
+#: cobroslist.cpp:181 plugincobros.cpp:99 plugincobros.cpp:100
 msgid "Cobros a clientes"
 msgstr ""
 
@@ -149,15 +149,15 @@ msgstr ""
 msgid "Apellidos del trabajador"
 msgstr ""
 
-#: plugincobros.cpp:96
+#: plugincobros.cpp:97
 msgid "&Cobros a clientes"
 msgstr ""
 
-#: plugincobros.cpp:104
+#: plugincobros.cpp:105
 msgid "&Nuevo cobro a cliente"
 msgstr ""
 
-#: plugincobros.cpp:106 plugincobros.cpp:107
+#: plugincobros.cpp:107 plugincobros.cpp:108
 msgid "Nuevo cobro a cliente"
 msgstr ""
 

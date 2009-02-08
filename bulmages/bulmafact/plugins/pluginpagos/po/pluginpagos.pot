@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 16:45+0100\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Error al crear el pago"
 msgstr ""
 
-#: pagoslist.cpp:187 pluginpagos.cpp:97 pluginpagos.cpp:98
+#: pagoslist.cpp:187 pluginpagos.cpp:98 pluginpagos.cpp:99
 #: ui_pagoslistbase.h:371
 msgid "Pagos a proveedores"
 msgstr ""
@@ -109,15 +109,15 @@ msgstr ""
 msgid "Apellidos trabajador"
 msgstr ""
 
-#: pluginpagos.cpp:95
+#: pluginpagos.cpp:96
 msgid "&Pagos a proveedores"
 msgstr ""
 
-#: pluginpagos.cpp:103
+#: pluginpagos.cpp:104
 msgid "&Nuevo pago a proveedor"
 msgstr ""
 
-#: pluginpagos.cpp:105 pluginpagos.cpp:106 ui_pagobase.h:309
+#: pluginpagos.cpp:106 pluginpagos.cpp:107 ui_pagobase.h:309
 msgid "Nuevo pago a proveedor"
 msgstr ""
 

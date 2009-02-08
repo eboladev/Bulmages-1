@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 16:44+0100\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,19 +179,19 @@ msgstr ""
 msgid "Error inesperado"
 msgstr ""
 
-#: pluginalbaranprov.cpp:95
+#: pluginalbaranprov.cpp:96
 msgid "&Albaranes de proveedores"
 msgstr ""
 
-#: pluginalbaranprov.cpp:97 pluginalbaranprov.cpp:98
+#: pluginalbaranprov.cpp:98 pluginalbaranprov.cpp:99
 msgid "Albaranes de proveedores"
 msgstr ""
 
-#: pluginalbaranprov.cpp:103
+#: pluginalbaranprov.cpp:104
 msgid "&Nuevo albaran de proveedor"
 msgstr ""
 
-#: pluginalbaranprov.cpp:105 pluginalbaranprov.cpp:106
+#: pluginalbaranprov.cpp:106 pluginalbaranprov.cpp:107
 #: ui_albaranproveedorbase.h:570
 msgid "Nuevo albaran de proveedor"
 msgstr ""

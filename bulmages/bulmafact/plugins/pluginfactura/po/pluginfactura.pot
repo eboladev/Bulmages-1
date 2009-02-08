@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 16:45+0100\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,20 +74,20 @@ msgstr ""
 msgid "Num. albaran"
 msgstr ""
 
-#: pluginfactura.cpp:97
+#: pluginfactura.cpp:98
 msgid "&Facturas a clientes"
 msgstr ""
 
-#: pluginfactura.cpp:99 pluginfactura.cpp:100 facturaslist.cpp:240
+#: pluginfactura.cpp:100 pluginfactura.cpp:101 facturaslist.cpp:240
 #: ui_facturaslistbase.h:427
 msgid "Facturas a clientes"
 msgstr ""
 
-#: pluginfactura.cpp:105
+#: pluginfactura.cpp:106
 msgid "&Nueva factura a cliente"
 msgstr ""
 
-#: pluginfactura.cpp:107 pluginfactura.cpp:108 ui_facturabase.h:634
+#: pluginfactura.cpp:108 pluginfactura.cpp:109 ui_facturabase.h:634
 msgid "Nueva factura a cliente"
 msgstr ""
 

@@ -1,7 +1,7 @@
-#: plugininformesods.cpp:150 plugininformesods.cpp:151
+#: plugininformesods.cpp:153 plugininformesods.cpp:154
 msgid "Informe"
 msgstr "Informe"
 
-#: plugininformesods.cpp:112
+#: plugininformesods.cpp:116
 msgid "Informes &ODS"
 msgstr ""
