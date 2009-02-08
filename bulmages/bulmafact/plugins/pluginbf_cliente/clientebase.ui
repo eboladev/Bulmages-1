@@ -28,7 +28,7 @@
     <number>5</number>
    </property>
    <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="hbox2" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -196,7 +196,7 @@
          </widget>
         </item>
         <item>
-         <spacer>
+         <spacer name="sp6" >
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
@@ -217,7 +217,7 @@
     </layout>
    </item>
    <item row="2" column="0" >
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="hbox1" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -225,7 +225,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
+      <spacer name="sp3" >
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
@@ -262,14 +262,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>773</width>
-        <height>438</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -301,7 +293,7 @@
         </widget>
        </item>
        <item row="0" column="2" >
-        <spacer>
+        <spacer name="sp2" >
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
@@ -638,7 +630,7 @@
         <widget class="BusquedaRegimenFiscal" name="mui_regimenfiscalcliente" />
        </item>
        <item row="11" column="1" >
-        <spacer>
+        <spacer name="sp1" >
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
@@ -653,14 +645,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>773</width>
-        <height>444</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>

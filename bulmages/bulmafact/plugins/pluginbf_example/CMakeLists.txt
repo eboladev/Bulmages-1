@@ -1,9 +1,9 @@
 ###########################################
-# Plugin for bulmafact					  #
+# Plugin for bulmafact                    #
 ###########################################
 #plugin
 
-set (plugin plugin)
+set (plugin pluginbf_example)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

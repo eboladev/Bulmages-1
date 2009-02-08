@@ -21,7 +21,7 @@
      <height>460</height>
     </rect>
    </property>
-   <widget class="QWidget" name="tab" >
+   <widget class="QWidget" name="tab1" >
     <attribute name="title" >
      <string>Utilidades</string>
     </attribute>
@@ -214,7 +214,8 @@
       <string>Salir</string>
      </property>
      <property name="icon" >
-      <iconset>exit.png</iconset>
+      <iconset>
+       <normaloff>exit.png</normaloff>exit.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButtonA_10" >
@@ -256,7 +257,8 @@
       <string/>
      </property>
      <property name="icon" >
-      <iconset>edit.png</iconset>
+      <iconset>
+       <normaloff>edit.png</normaloff>edit.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButtonA_5" >
@@ -358,7 +360,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab" >
+   <widget class="QWidget" name="tab2" >
     <attribute name="title" >
      <string>Usuarios</string>
     </attribute>
@@ -537,7 +539,8 @@
       <string>Salir</string>
      </property>
      <property name="icon" >
-      <iconset>exit.png</iconset>
+      <iconset>
+       <normaloff>exit.png</normaloff>exit.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButtonB_4" >
@@ -657,15 +660,33 @@
       <property name="text" >
        <string>Privilegio</string>
       </property>
+      <property name="clickable" >
+       <bool>true</bool>
+      </property>
+      <property name="resizable" >
+       <bool>true</bool>
+      </property>
      </column>
      <column>
       <property name="text" >
        <string>Recurso</string>
       </property>
+      <property name="clickable" >
+       <bool>true</bool>
+      </property>
+      <property name="resizable" >
+       <bool>true</bool>
+      </property>
      </column>
      <column>
       <property name="text" >
        <string>idprv</string>
+      </property>
+      <property name="clickable" >
+       <bool>true</bool>
+      </property>
+      <property name="resizable" >
+       <bool>true</bool>
       </property>
      </column>
     </widget>
@@ -721,15 +742,27 @@
       <property name="text" >
        <string>Lista de Usuarios</string>
       </property>
+      <property name="clickable" >
+       <bool>true</bool>
+      </property>
+      <property name="resizable" >
+       <bool>true</bool>
+      </property>
      </column>
      <column>
       <property name="text" >
        <string>idusuario</string>
       </property>
+      <property name="clickable" >
+       <bool>true</bool>
+      </property>
+      <property name="resizable" >
+       <bool>true</bool>
+      </property>
      </column>
     </widget>
    </widget>
-   <widget class="QWidget" name="TabPage" >
+   <widget class="QWidget" name="tab3" >
     <attribute name="title" >
      <string>Contabilidad</string>
     </attribute>
@@ -746,11 +779,12 @@
       <string>Salir</string>
      </property>
      <property name="icon" >
-      <iconset>exit.png</iconset>
+      <iconset>
+       <normaloff>exit.png</normaloff>exit.png</iconset>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="TabPage" >
+   <widget class="QWidget" name="tab4" >
     <attribute name="title" >
      <string>Facturacion</string>
     </attribute>
@@ -767,11 +801,12 @@
       <string>Salir</string>
      </property>
      <property name="icon" >
-      <iconset>exit.png</iconset>
+      <iconset>
+       <normaloff>exit.png</normaloff>exit.png</iconset>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="TabPage" >
+   <widget class="QWidget" name="tab5" >
     <attribute name="title" >
      <string>Almacenes</string>
     </attribute>
@@ -788,11 +823,12 @@
       <string>Salir</string>
      </property>
      <property name="icon" >
-      <iconset>exit.png</iconset>
+      <iconset>
+       <normaloff>exit.png</normaloff>exit.png</iconset>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="TabPage" >
+   <widget class="QWidget" name="tab6" >
     <attribute name="title" >
      <string>Otros</string>
     </attribute>
@@ -809,7 +845,8 @@
       <string>Salir</string>
      </property>
      <property name="icon" >
-      <iconset>exit.png</iconset>
+      <iconset>
+       <normaloff>exit.png</normaloff>exit.png</iconset>
      </property>
     </widget>
    </widget>
@@ -825,14 +862,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
-   <extends>Q3Frame</extends>
-   <header>q3textedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>Q3ListView</class>
    <extends>Q3Frame</extends>
    <header>q3listview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends>Q3Frame</extends>
+   <header>q3textedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

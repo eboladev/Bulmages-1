@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>widget</class>
- <widget class="QWidget" name="widget" >
+ <class>widget1</class>
+ <widget class="QWidget" name="widget1" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -12,7 +12,7 @@
   <property name="" stdset="0" >
    <string>Listados de Cuentas</string>
   </property>
-  <widget class="QWidget" native="1" name="widget" >
+  <widget class="QWidget" native="1" name="widget2" >
    <property name="geometry" >
     <rect>
      <x>0</x>
@@ -29,7 +29,7 @@
      <height>469</height>
     </rect>
    </property>
-   <widget class="QWidget" native="1" name="widget" >
+   <widget class="QWidget" native="1" name="widget3" >
     <property name="geometry" >
      <rect>
       <x>0</x>
@@ -41,7 +41,7 @@
     <property name="" stdset="0" >
      <string>tab</string>
     </property>
-    <widget class="QWidget" native="1" name="widget" >
+    <widget class="QWidget" native="1" name="widget5" >
      <property name="geometry" >
       <rect>
        <x>0</x>
@@ -55,7 +55,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" native="1" name="widget" >
+   <widget class="QWidget" native="1" name="widget4" >
     <property name="geometry" >
      <rect>
       <x>0</x>
@@ -67,7 +67,7 @@
     <property name="" stdset="0" >
      <string>tab</string>
     </property>
-    <widget class="QWidget" native="1" name="widget" >
+    <widget class="QWidget" native="1" name="widget6" >
      <property name="geometry" >
       <rect>
        <x>0</x>

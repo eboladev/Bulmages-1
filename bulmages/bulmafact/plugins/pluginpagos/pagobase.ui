@@ -31,7 +31,7 @@
     <number>5</number>
    </property>
    <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="hbox1" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -155,7 +155,7 @@
          </widget>
         </item>
         <item>
-         <spacer>
+         <spacer name="sp2" >
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
@@ -182,7 +182,7 @@
            <string>Referencia:</string>
           </property>
           <property name="buddy" >
-           <cstring></cstring>
+           <cstring>mui_refpago</cstring>
           </property>
          </widget>
         </item>
@@ -229,6 +229,9 @@
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_fechapago</cstring>
         </property>
        </widget>
       </item>
@@ -357,7 +360,7 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
-         <cstring>mui_cantpago</cstring>
+         <cstring>mui_idbanco</cstring>
         </property>
        </widget>
       </item>
@@ -375,7 +378,7 @@
        </widget>
       </item>
       <item row="3" column="3" >
-       <spacer>
+       <spacer name="sp4" >
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
         </property>
@@ -388,7 +391,7 @@
        </spacer>
       </item>
       <item row="4" column="3" >
-       <spacer>
+       <spacer name="sp5" >
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
         </property>
@@ -404,7 +407,7 @@
     </widget>
    </item>
    <item row="2" column="0" >
-    <spacer>
+    <spacer name="sp1" >
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
@@ -417,7 +420,7 @@
     </spacer>
    </item>
    <item row="3" column="0" >
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="hbox2" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -425,7 +428,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
+      <spacer name="sp3" >
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>

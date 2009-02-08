@@ -216,14 +216,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>250</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -243,7 +235,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_codigoactividad</cstring>
          </property>
         </widget>
        </item>
@@ -276,7 +268,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_nombreactividad</cstring>
          </property>
         </widget>
        </item>
@@ -296,7 +288,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_corpcliente</cstring>
          </property>
         </widget>
        </item>
@@ -316,7 +308,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_nomaltcliente</cstring>
          </property>
         </widget>
        </item>
@@ -336,7 +328,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_dircliente</cstring>
          </property>
         </widget>
        </item>
@@ -386,14 +378,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>250</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -420,7 +404,7 @@
           <string>Comentarios:</string>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_comentcliente</cstring>
          </property>
         </widget>
        </item>
@@ -471,14 +455,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>250</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Calendario</string>
       </attribute>
@@ -489,14 +465,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>250</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>BLMonthCalendar</string>
       </attribute>

@@ -95,7 +95,7 @@
        </layout>
       </item>
       <item row="4" column="0" >
-       <widget class="QLabel" name="label_2" >
+       <widget class="QLabel" name="label_3" >
         <property name="text" >
          <string>Mostrar:</string>
         </property>
@@ -127,7 +127,7 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="label" >
+       <widget class="QLabel" name="label1" >
         <property name="text" >
          <string>Fecha inicial:</string>
         </property>
@@ -150,7 +150,7 @@
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="label" >
+       <widget class="QLabel" name="label2" >
         <property name="text" >
          <string>Fecha final:</string>
         </property>

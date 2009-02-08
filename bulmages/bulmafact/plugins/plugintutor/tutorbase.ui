@@ -256,14 +256,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>686</width>
-        <height>220</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -277,7 +269,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_cifcliente</cstring>
          </property>
         </widget>
        </item>
@@ -297,7 +289,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_nombretutor</cstring>
          </property>
         </widget>
        </item>
@@ -310,7 +302,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_dircliente</cstring>
          </property>
         </widget>
        </item>
@@ -330,7 +322,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_poblcliente</cstring>
          </property>
         </widget>
        </item>
@@ -350,7 +342,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_telcliente</cstring>
          </property>
         </widget>
        </item>
@@ -370,7 +362,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_movilcliente</cstring>
          </property>
         </widget>
        </item>
@@ -396,7 +388,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_cpcliente</cstring>
          </property>
         </widget>
        </item>
@@ -422,7 +414,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_mailcliente</cstring>
          </property>
         </widget>
        </item>
@@ -440,6 +432,9 @@
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_idprovincia</cstring>
          </property>
         </widget>
        </item>
@@ -459,14 +454,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>686</width>
-        <height>220</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -487,7 +474,7 @@
           <string>Comentarios:</string>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_comentcliente</cstring>
          </property>
         </widget>
        </item>
@@ -510,7 +497,7 @@
           <string>Datos bancarios:</string>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_bancocliente</cstring>
          </property>
         </widget>
        </item>
@@ -527,14 +514,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>686</width>
-        <height>220</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Hijos</string>
       </attribute>

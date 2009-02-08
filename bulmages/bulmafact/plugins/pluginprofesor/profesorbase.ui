@@ -25,7 +25,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="hbox2" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -187,7 +187,7 @@
          </widget>
         </item>
         <item>
-         <spacer>
+         <spacer name="sp2" >
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
@@ -216,14 +216,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>773</width>
-        <height>352</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -237,7 +229,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_cifcliente</cstring>
          </property>
         </widget>
        </item>
@@ -249,7 +241,7 @@
         </widget>
        </item>
        <item row="0" column="2" >
-        <spacer>
+        <spacer name="sp4" >
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
@@ -270,7 +262,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_nombreprofesor</cstring>
          </property>
         </widget>
        </item>
@@ -293,7 +285,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_corpcliente</cstring>
          </property>
         </widget>
        </item>
@@ -313,7 +305,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_dircliente</cstring>
          </property>
         </widget>
        </item>
@@ -339,7 +331,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_cpcliente</cstring>
          </property>
         </widget>
        </item>
@@ -365,7 +357,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_poblcliente</cstring>
          </property>
         </widget>
        </item>
@@ -384,6 +376,9 @@
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="buddy" >
+          <cstring>mui_idprovincia</cstring>
+         </property>
         </widget>
        </item>
        <item row="4" column="4" colspan="2" >
@@ -398,7 +393,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_telcliente</cstring>
          </property>
         </widget>
        </item>
@@ -418,7 +413,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_faxcliente</cstring>
          </property>
         </widget>
        </item>
@@ -438,7 +433,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_teltrabcliente</cstring>
          </property>
         </widget>
        </item>
@@ -458,7 +453,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_movilcliente</cstring>
          </property>
         </widget>
        </item>
@@ -478,7 +473,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_urlcliente</cstring>
          </property>
         </widget>
        </item>
@@ -498,7 +493,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_mailcliente</cstring>
          </property>
         </widget>
        </item>
@@ -510,7 +505,7 @@
         </widget>
        </item>
        <item row="8" column="1" >
-        <spacer>
+        <spacer name="sp3" >
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
@@ -525,14 +520,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>375</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -559,7 +546,7 @@
           <string>Comentarios:</string>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_comentcliente</cstring>
          </property>
         </widget>
        </item>
@@ -581,7 +568,7 @@
           <string>Datos de comercio electronico:</string>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_ecommercedatacliente</cstring>
          </property>
         </widget>
        </item>
@@ -617,7 +604,7 @@
           <string>Datos bancarios:</string>
          </property>
          <property name="buddy" >
-          <cstring></cstring>
+          <cstring>mui_bancocliente</cstring>
          </property>
         </widget>
        </item>
@@ -636,7 +623,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="hbox1" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -644,7 +631,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
+      <spacer name="sp1" >
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
