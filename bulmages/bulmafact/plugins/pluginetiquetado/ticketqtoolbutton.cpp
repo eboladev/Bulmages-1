@@ -27,7 +27,7 @@
 #include <QMap>
 #include <QList>
 #include <QTextStream>
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 

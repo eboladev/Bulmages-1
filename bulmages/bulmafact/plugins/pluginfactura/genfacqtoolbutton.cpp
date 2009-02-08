@@ -35,7 +35,7 @@
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "facturaslist.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 

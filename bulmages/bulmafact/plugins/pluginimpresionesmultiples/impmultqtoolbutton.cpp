@@ -30,7 +30,7 @@
 #include <QMap>
 #include <QList>
 #include <QTextStream>
-#include "fixed.h"
+#include "blfixed.h"
 
 #include "presupuestolist.h"
 #include "presupuestoview.h"

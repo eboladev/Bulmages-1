@@ -25,7 +25,7 @@
 #include "articulolist.h"
 #include "listlinpedidoclienteview.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 ///

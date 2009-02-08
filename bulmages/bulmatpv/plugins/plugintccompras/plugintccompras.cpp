@@ -25,7 +25,7 @@
 #include "compra.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "bdockwidget.h"
 
 

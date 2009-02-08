@@ -27,13 +27,13 @@
 #include "total.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "bdockwidget.h"
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 
 Total *g_tot = NULL;
@@ -100,13 +100,13 @@ int Ticket_pintar ( Ticket *tick )
     /// Impresion de los contenidos.
     QString l;
 
-    Fixed total("0.00");
-    Fixed descuentolinea ( "0.00" );
+    BlFixed total("0.00");
+    BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        Fixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        Fixed pvpund ( linea->DBvalue ( "pvpivainclalbaran" ) );
-        Fixed cantpvp = cant * pvpund;
+        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->DBvalue ( "pvpivainclalbaran" ) );
+        BlFixed cantpvp = cant * pvpund;
 	total = total + cantpvp;
     } // end for
 

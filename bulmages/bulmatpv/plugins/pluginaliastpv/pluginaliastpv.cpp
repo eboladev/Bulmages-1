@@ -45,7 +45,7 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
     QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
     cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+        tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
     delete cur;
 
@@ -64,7 +64,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
         QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
         cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+            tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
         } // end if
         delete cur;
         valor = 0;

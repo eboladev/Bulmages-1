@@ -27,12 +27,13 @@
 #include "cobrar.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "bdockwidget.h"
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 
 Cobrar *g_cobrar;

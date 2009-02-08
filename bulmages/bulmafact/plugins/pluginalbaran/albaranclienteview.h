@@ -26,8 +26,10 @@
 
 #include <QWidget>
 #include <QString>
+
 #include "fichabf.h"
 #include "ui_albaranclientebase.h"
+
 
 class Company;
 
@@ -50,7 +52,7 @@ public:
     ~AlbaranClienteView();
     void inicializar();
 
-    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
+    void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     void generarFactura();
     void agregarFactura();
 

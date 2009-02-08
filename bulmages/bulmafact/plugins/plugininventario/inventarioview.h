@@ -29,7 +29,7 @@
 #include "inventario.h"
 #include "busquedafecha.h"
 #include "postgresiface2.h"
-#include "ficha.h"
+#include "blform.h"
 
 
 /// Muestra y administra la ventana con los datos de un inventario.

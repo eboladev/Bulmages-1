@@ -304,9 +304,9 @@ int extractoview1::guardar()
 void extractoview1::presentar()
 {
     _depura ( "extractoview1::presentar", 0 );
-    Fixed debe ( "0.00" ), haber ( "0.00" ), saldo ( "0.00" );
-    Fixed debeinicial ( "0.00" ), haberinicial ( "0.00" ), saldoinicial ( "0.00" );
-    Fixed debefinal ( "0.00" ), haberfinal ( "0.00" ), saldofinal ( "0.00" );
+    BlFixed debe ( "0.00" ), haber ( "0.00" ), saldo ( "0.00" );
+    BlFixed debeinicial ( "0.00" ), haberinicial ( "0.00" ), saldoinicial ( "0.00" );
+    BlFixed debefinal ( "0.00" ), haberfinal ( "0.00" ), saldofinal ( "0.00" );
     QString idcuenta;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
@@ -392,8 +392,8 @@ void extractoview1::presentar()
             query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
             cursoraux = empresaBase() ->cargacursor ( query );
             if ( !cursoraux->eof() ) {
-                debeinicial = Fixed ( cursoraux->valor ( "tdebe" ) );
-                haberinicial = Fixed ( cursoraux->valor ( "thaber" ) );
+                debeinicial = BlFixed ( cursoraux->valor ( "tdebe" ) );
+                haberinicial = BlFixed ( cursoraux->valor ( "thaber" ) );
                 saldoinicial = debeinicial - haberinicial;
             } // end if
             delete cursoraux;
@@ -410,8 +410,8 @@ void extractoview1::presentar()
             /// Recorremos la lista agregando el campo de saldo.
             int i = 0;
             while ( !cursorapt->eof() ) {
-                debe = Fixed ( cursorapt->valor ( "debe" ) );
-                haber = Fixed ( cursorapt->valor ( "haber" ) );
+                debe = BlFixed ( cursorapt->valor ( "debe" ) );
+                haber = BlFixed ( cursorapt->valor ( "haber" ) );
                 saldo = saldo + debe - haber;
                 debefinal = debefinal + debe;
                 haberfinal = haberfinal + haber;
@@ -609,8 +609,8 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
     _depura ( "extractoview1::imprimeExtractoCuenta", 0, idcuenta );
     try {
         QString salida = "";
-        Fixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
-        Fixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
+        BlFixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
+        BlFixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
         QString finicial = m_fechainicial1->text();
         QString ffinal = m_fechafinal1->text();
         QString contra = mui_codigocontrapartida->text();
@@ -680,8 +680,8 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
             throw - 1;
         } // end if
         if ( !cursoraux->eof() ) {
-            debeinicial = Fixed ( cursoraux->valor ( "tdebe" ) );
-            haberinicial = Fixed ( cursoraux->valor ( "thaber" ) );
+            debeinicial = BlFixed ( cursoraux->valor ( "tdebe" ) );
+            haberinicial = BlFixed ( cursoraux->valor ( "thaber" ) );
             saldoinicial = debeinicial - haberinicial;
             debefinal = debeinicial;
             haberfinal = haberinicial;
@@ -725,9 +725,9 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
         salida += "</tr>\n";
 
         while ( ! cursorapt->eof() ) {
-            saldofinal = saldofinal + Fixed ( cursorapt->valor ( "debe" ) ) - Fixed ( cursorapt->valor ( "haber" ) );
-            debefinal = debefinal + Fixed ( cursorapt->valor ( "debe" ) );
-            haberfinal = haberfinal + Fixed ( cursorapt->valor ( "haber" ) );
+            saldofinal = saldofinal + BlFixed ( cursorapt->valor ( "debe" ) ) - BlFixed ( cursorapt->valor ( "haber" ) );
+            debefinal = debefinal + BlFixed ( cursorapt->valor ( "debe" ) );
+            haberfinal = haberfinal + BlFixed ( cursorapt->valor ( "haber" ) );
 
 	    QString contrapartida = "SELECT *, cuenta.descripcion AS desccuenta FROM (SELECT * FROM apunte WHERE idapunte = bcontrapartida("+cursorapt->valor("idapunte")+")) AS t1 LEFT JOIN cuenta ON t1.idcuenta = cuenta.idcuenta";
 	    cursor2 *cur = empresaBase()->cargacursor(contrapartida);

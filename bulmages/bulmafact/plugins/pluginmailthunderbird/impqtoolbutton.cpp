@@ -35,7 +35,7 @@
 #include <QList>
 
 #include "presupuestoview.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "facturaview.h"
 #include "company.h"
 #include "dbrecord.h"

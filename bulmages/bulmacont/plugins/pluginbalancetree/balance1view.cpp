@@ -361,7 +361,7 @@ void BalanceTreeView::presentar()
         QList <QTreeWidgetItem *> ptrList, ptrIt;
         for ( int i = 0; i <= empresaBase()->numdigitosempresa(); i++ )
             ptrIt << NULL; // Reservamos las posiciones de la lista que coincidiran con los niveles de cuentas
-        Fixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
+        BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
         QString cinicial = m_codigoinicial->codigocuenta().left ( 1 );
         if ( cinicial == "" ) cinicial = "10";
         QString cfinal = m_codigofinal->codigocuenta();
@@ -390,10 +390,10 @@ void BalanceTreeView::presentar()
             if ( cuenta >= cinicial and cuenta <= cfinal ) {
                 /// Acumulamos los totales para al final poder escribirlos.
                 if ( !jerarquico || ( jerarquico && cuenta.length() == 2 ) ) {
-                    tsaldoant = tsaldoant + Fixed ( saldoant );
-                    tsaldo = tsaldo + Fixed ( saldo );
-                    tdebe = tdebe + Fixed ( debe );
-                    thaber = thaber + Fixed ( haber );
+                    tsaldoant = tsaldoant + BlFixed ( saldoant );
+                    tsaldo = tsaldo + BlFixed ( saldo );
+                    tdebe = tdebe + BlFixed ( debe );
+                    thaber = thaber + BlFixed ( haber );
                 }
 
                 /// Las variables de las filas en formato espanyol.

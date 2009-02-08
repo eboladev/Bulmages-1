@@ -28,7 +28,7 @@
 #include <QTextStream>
 #include <QFile>
 
-#include "fixed.h"
+#include "blfixed.h"
 #include "empresabase.h"
 #include "dbrecord.h"
 #include "eqtoolbutton.h"

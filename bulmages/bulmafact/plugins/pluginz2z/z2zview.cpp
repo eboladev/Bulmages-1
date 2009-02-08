@@ -104,23 +104,23 @@ void Z2ZView::calculaTotalTickets() {
 	mui_totaltickets->setText(cur->valor("tot"));
 	delete cur;
 
-	Fixed total("0.00");
-	Fixed min("0.00");
+	BlFixed total("0.00");
+	BlFixed min("0.00");
 
 	for (int i=0; i < mui_listarefs->count(); i++) {
 
 		QString query1 = "SELECT COALESCE(sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2), 0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
 		cursor2 *cur1 = empresaBase()->cargacursor(query1);
-		total = total + Fixed(cur1->valor("tot"));
+		total = total + BlFixed(cur1->valor("tot"));
 		delete cur1;
 
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
 		cursor2 *cur2 = empresaBase()->cargacursor(query2);
-		min = min + Fixed(cur2->valor("tot"));
+		min = min + BlFixed(cur2->valor("tot"));
 		delete cur2;
 	} // end for
 
-	Fixed traspasable = total - min;
+	BlFixed traspasable = total - min;
 	mui_totaltraspasable->setText(traspasable.toQString());
 }
 
@@ -131,8 +131,8 @@ void Z2ZView::on_mui_traspasar_clicked() {
 
 try {
 
-    Fixed totaltraspasable (mui_totaltraspasado->text());
-    Fixed totaltraspasado("0.00");
+    BlFixed totaltraspasable (mui_totaltraspasado->text());
+    BlFixed totaltraspasado("0.00");
 
     if (confpr->valor(CONF_FACT_ALT) == "") {
 	mensajeInfo("Debe configurar el parametro CONF_FACT_ALT");
@@ -229,7 +229,7 @@ try {
 				QString query6 = "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, ivalalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+", 0,'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+")";
 				db->ejecuta(query6);
 	
-				totaltraspasado = totaltraspasado + Fixed(cur1->valor("cantlalbaran")) * Fixed(cur1->valor("pvpivainclalbaran"));
+				totaltraspasado = totaltraspasado + BlFixed(cur1->valor("cantlalbaran")) * BlFixed(cur1->valor("pvpivainclalbaran"));
 
 				/// Hacemos el reversible para que pueda volverse atras el paso.
 				stream1 << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+","+cur1->valor("idalbaran")+");" << endl;

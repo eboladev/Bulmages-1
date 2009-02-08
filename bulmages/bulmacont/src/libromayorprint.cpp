@@ -21,7 +21,7 @@
 #include <unistd.h>
 
 #include "libromayorprint.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 ///
@@ -83,9 +83,9 @@ void libromayorprint::inicializa2 ( char *fich )
 void libromayorprint::accept()
 {
     _depura ( "libromayorprint::accept", 0 );
-    Fixed debe ( "0" ), haber ( "0" ), saldo ( "0" );
-    Fixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
-    Fixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
+    BlFixed debe ( "0" ), haber ( "0" ), saldo ( "0" );
+    BlFixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
+    BlFixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
 
     int idcuenta;
     int idasiento;
@@ -112,8 +112,8 @@ void libromayorprint::accept()
                 } // end if
                 cursoraux2 = empresaBase() ->cargasaldoscuentafecha ( idcuenta, finicial );
                 if ( !cursoraux2->eof() ) {
-                    debeinicial = Fixed ( cursoraux2->valor ( 0 ).toAscii().constData() );
-                    haberinicial = Fixed ( cursoraux2->valor ( 1 ).toAscii().constData() );
+                    debeinicial = BlFixed ( cursoraux2->valor ( 0 ).toAscii().constData() );
+                    haberinicial = BlFixed ( cursoraux2->valor ( 1 ).toAscii().constData() );
                     if ( activo ) {
                         saldoinicial = debeinicial - haberinicial;
                     } else {
@@ -129,8 +129,8 @@ void libromayorprint::accept()
                 for ( ; !cursoraux1->eof(); cursoraux1->siguienteregistro() ) {
                     idasiento = atoi ( cursoraux1->valor ( 2 ).toAscii() );
                     textasiento = ( char * ) cursoraux1->valor ( 5 ).toAscii().constData();
-                    debe = Fixed ( cursoraux1->valor ( 8 ).toAscii().constData() );
-                    haber = Fixed ( cursoraux1->valor ( 9 ).toAscii().constData() );
+                    debe = BlFixed ( cursoraux1->valor ( 8 ).toAscii().constData() );
+                    haber = BlFixed ( cursoraux1->valor ( 9 ).toAscii().constData() );
                     if ( activo ) {
                         saldo = saldo + debe - haber;
                     } else {

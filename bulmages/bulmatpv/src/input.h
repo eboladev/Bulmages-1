@@ -7,7 +7,7 @@
 #include "funcaux.h"
 #include "blwidget.h"
 #include "dbrecord.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 class EmpresaTPV;

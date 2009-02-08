@@ -186,13 +186,13 @@ OK, aqui poden haver passat 3 coses.
 \param cuenta
 \return
 **/
-// Fixed pluginCAnualesODS::saldoCuenta ( int cuenta )
+// BlFixed pluginCAnualesODS::saldoCuenta ( int cuenta )
 // {
 //     _depura ( "pluginCAnualesODS::saldoCuenta", 0 );
 //
 //     /// Ejercicio actual.
 //     cursor2 *cur;
-//     Fixed resultado;
+//     BlFixed resultado;
 //
 // //     QString query = QString( "SELECT (SUM(apunte.debe) - SUM(apunte.haber)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" + QString::number ( cuenta ) + "%' AND fecha >= '01/01/" + ejercicioActual_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioActual_fechaBalance +"' and apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" );
 //
@@ -216,17 +216,17 @@ OK, aqui poden haver passat 3 coses.
 \param cuenta
 \return
 **/
-Fixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
+BlFixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 {
     _depura ( "pluginCAnualesODS::saldoCuentaAnt", 0 );
 
-    Fixed resultado;
+    BlFixed resultado;
     QString cta = QString::number ( cuenta );
 
     if ( arbolEjercicioAnterior->irHoja ( cta, cta.length() ) )
         resultado = arbolEjercicioAnterior->hojaActual ( "saldo" );
     else
-        resultado = Fixed ( "0.00" );
+        resultado = BlFixed ( "0.00" );
 
     _depura ( "pluginCAnualesODS::saldoCuentaAnt", 0 );
     return resultado;
@@ -237,13 +237,13 @@ Fixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 \param cuenta
 \return
 **/
-// Fixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
+// BlFixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 // {
 //     _depura ( "pluginCAnualesODS::saldoCuentaAnt", 0 );
 //
 //     /// Ejercicio anterior.
 //     cursor2 *cur;
-//     Fixed resultado;
+//     BlFixed resultado;
 //
 // //     QString query = QString( "SELECT (SUM(apunte.debe) - SUM(apunte.haber)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" + QString::number ( cuenta ) + "%' AND fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance +"' and apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" );
 //
@@ -267,17 +267,17 @@ Fixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 \param cuenta
 \return
 **/
-Fixed pluginCAnualesODS::saldoCuenta ( int cuenta )
+BlFixed pluginCAnualesODS::saldoCuenta ( int cuenta )
 {
     _depura ( "pluginCAnualesODS::saldoCuenta", 0 );
 
-    Fixed resultado;
+    BlFixed resultado;
     QString cta = QString::number ( cuenta );
 
     if ( arbolEjercicioActual->irHoja ( cta, cta.length() ) )
         resultado = arbolEjercicioActual->hojaActual ( "saldo" );
     else
-        resultado = Fixed ( "0.00" );
+        resultado = BlFixed ( "0.00" );
 
     _depura ( "pluginCAnualesODS::saldoCuenta", 0 );
     return resultado;
@@ -490,15 +490,15 @@ void entryPoint ( Bulmacont *bcont )
 \param cuentaPositiva
 \return
 **/
-Fixed pluginCAnualesODS::cuentaPositiva ( Fixed valor )
+BlFixed pluginCAnualesODS::cuentaPositiva ( BlFixed valor )
 {
     _depura ( "pluginCAnualesODS::cuentaPositiva", 0 );
     /// Comprueba que sea un numero positivo
-    Fixed resultado;
-    if ( valor > Fixed ( "0.00" ) )
+    BlFixed resultado;
+    if ( valor > BlFixed ( "0.00" ) )
         resultado = valor;
     else
-        resultado = Fixed ( "0.00" );
+        resultado = BlFixed ( "0.00" );
     return resultado;
 }
 
@@ -507,15 +507,15 @@ Fixed pluginCAnualesODS::cuentaPositiva ( Fixed valor )
 \param cuentaNegativa
 \return
 **/
-Fixed pluginCAnualesODS::cuentaNegativa ( Fixed valor )
+BlFixed pluginCAnualesODS::cuentaNegativa ( BlFixed valor )
 {
     _depura ( "pluginCAnualesODS::cuentaNegativa", 0 );
     /// Comprueba que sea un numero negativo
-    Fixed resultado;
-    if ( valor < Fixed ( "0.00" ) )
+    BlFixed resultado;
+    if ( valor < BlFixed ( "0.00" ) )
         resultado = valor;
     else
-        resultado = Fixed ( "0.00" );
+        resultado = BlFixed ( "0.00" );
     return resultado;
 }
 

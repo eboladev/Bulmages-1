@@ -46,7 +46,7 @@ public:
     virtual ~FacturaProveedorView();
     void inicializar();
 
-    virtual void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
+    virtual void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardarPost();
     virtual int cargarPost ( QString id );

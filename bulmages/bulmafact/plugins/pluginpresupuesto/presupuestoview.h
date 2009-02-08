@@ -34,7 +34,7 @@
 #include "busquedafecha.h"
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "fichabf.h"
 
 
@@ -56,7 +56,7 @@ public:
     virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();
-    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
+    void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     void inicializar();
     void manageArticle ( int );
 

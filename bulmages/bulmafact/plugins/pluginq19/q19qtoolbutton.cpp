@@ -30,7 +30,7 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
-#include "fixed.h"
+#include "blfixed.h"
 #include "cobroslist.h"
 #include "cobroview.h"
 #include "company.h"
@@ -98,7 +98,7 @@ void Q19QToolButton::click()
     m_companyact = ( Company * ) m_cobrosList->empresaBase();
     SubForm3 *sub = m_cobrosList->mui_list;
 
-    Fixed total ( "0.00" );
+    BlFixed total ( "0.00" );
     int j = 0;
     /// Reseteamos los valores
     for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -113,7 +113,7 @@ void Q19QToolButton::click()
             }
             cobroQ19 ( out, rec->DBvalue ( "idcobro" ) );
             j++;
-            total = total + Fixed ( rec->DBvalue ( "cantcobro" ) );
+            total = total + BlFixed ( rec->DBvalue ( "cantcobro" ) );
         } // end if
     } // end for
     totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );

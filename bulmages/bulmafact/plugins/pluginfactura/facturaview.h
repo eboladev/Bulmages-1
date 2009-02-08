@@ -47,7 +47,7 @@ public:
     FacturaView ( Company *, QWidget *parent = 0 );
     ~FacturaView();
     void inicializar();
-    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
+    void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();

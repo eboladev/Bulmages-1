@@ -31,7 +31,7 @@
 #include "splashscreen.h"
 #include "logpass.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "plugins.h"
 #include "config.h"
 

@@ -1,11 +1,11 @@
 #include "devolucion2.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include <QWidget>
 #include <vector>
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -23,31 +23,31 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
 
         /// Impresion de los contenidos.
         QString l;
-        Fixed irpf ( "0" );
+        BlFixed irpf ( "0" );
 
         cursor2 *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
-                irpf = Fixed ( cur->valor ( "valor" ) );
+                irpf = BlFixed ( cur->valor ( "valor" ) );
             } // end if
             delete cur;
         } // end if
 
 
-        Fixed descuentolinea ( "0.00" );
+        BlFixed descuentolinea ( "0.00" );
         for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
             linea = tick->listaLineas() ->at ( i );
-            Fixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-            Fixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-            Fixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
-            Fixed cantpvp = cant * pvpund;
-            Fixed base = cantpvp - cantpvp * desc1 / 100;
+            BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
+            BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
+            BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+            BlFixed cantpvp = cant * pvpund;
+            BlFixed base = cantpvp - cantpvp * desc1 / 100;
             descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
             basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
             basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
         } // end for
 
-        Fixed basei ( "0.00" );
+        BlFixed basei ( "0.00" );
         base::Iterator it;
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
             basei = basei + it.value();
@@ -55,13 +55,13 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
 
         /// Calculamos el total de los descuentos.
         /// De momento aqui no se usan descuentos generales en venta.
-        Fixed porcentt ( "0.00" );
+        BlFixed porcentt ( "0.00" );
 
         /// Calculamos el total de base imponible.
-        Fixed totbaseimp ( "0.00" );
-        Fixed parbaseimp ( "0.00" );
+        BlFixed totbaseimp ( "0.00" );
+        BlFixed parbaseimp ( "0.00" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            if ( porcentt > Fixed ( "0.00" ) ) {
+            if ( porcentt > BlFixed ( "0.00" ) ) {
                 parbaseimp = it.value() - it.value() * porcentt / 100;
             } else {
                 parbaseimp = it.value();
@@ -70,11 +70,11 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
         } // end for
 
         /// Calculamos el total de IVA.
-        Fixed totiva ( "0.00" );
-        Fixed pariva ( "0.00" );
+        BlFixed totiva ( "0.00" );
+        BlFixed pariva ( "0.00" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            Fixed piva ( it.key().toAscii().constData() );
-            if ( porcentt > Fixed ( "0.00" ) ) {
+            BlFixed piva ( it.key().toAscii().constData() );
+            if ( porcentt > BlFixed ( "0.00" ) ) {
                 pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
             } else {
                 pariva = it.value() * piva / 100;
@@ -83,11 +83,11 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
         } // end for
 
         /// Calculamos el total de recargo de equivalencia.
-        Fixed totreqeq ( "0.00" );
-        Fixed parreqeq ( "0.00" );
+        BlFixed totreqeq ( "0.00" );
+        BlFixed parreqeq ( "0.00" );
         for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-            Fixed preqeq ( it.key().toAscii().constData() );
-            if ( porcentt > Fixed ( "0.00" ) ) {
+            BlFixed preqeq ( it.key().toAscii().constData() );
+            if ( porcentt > BlFixed ( "0.00" ) ) {
                 parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
             } else {
                 parreqeq = it.value() * preqeq / 100;
@@ -95,9 +95,9 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
             totreqeq = totreqeq + parreqeq;
         } // end for
 
-        Fixed totirpf = totbaseimp * irpf / 100;
+        BlFixed totirpf = totbaseimp * irpf / 100;
 
-        Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+        BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
 
         mui_total->setText(total.toQString());
     */
@@ -251,7 +251,7 @@ void Devolucion::pintar()
             this->mui_ticketTable->insertRow ( tmp );
             item = m_ticket->listaLineas() ->at ( lineasPositivas[i].linea );
 
-            tableItem = new QTableWidgetItem ( Fixed ( QString::number ( lineasPositivas[i].cantidad ) ).toQString() );
+            tableItem = new QTableWidgetItem ( BlFixed ( QString::number ( lineasPositivas[i].cantidad ) ).toQString() );
             this->mui_ticketTable->setItem ( tmp, 0, tableItem );
 
             tableItem = new QTableWidgetItem ( item->DBvalue ( "nomarticulo" ) );
@@ -260,8 +260,8 @@ void Devolucion::pintar()
             tableItem = new QTableWidgetItem ( item->DBvalue ( "pvplalbaran" ) );
             this->mui_ticketTable->setItem ( tmp, 2, tableItem );
 
-            Fixed totalLinea ( "0.00" );
-            totalLinea = Fixed ( item->DBvalue ( "pvplalbaran" ) ) * lineasPositivas[i].cantidad;
+            BlFixed totalLinea ( "0.00" );
+            totalLinea = BlFixed ( item->DBvalue ( "pvplalbaran" ) ) * lineasPositivas[i].cantidad;
             tableItem = new QTableWidgetItem ( totalLinea.toQString() );
             this->mui_ticketTable->setItem ( tmp, 3, tableItem );
 
@@ -285,8 +285,8 @@ void Devolucion::pintar()
      tableItem = new QTableWidgetItem ( item->DBvalue ( "pvplalbaran" ) );
      this->mui_ticketTable->setItem ( i, 2, tableItem );
 
-     Fixed totalLinea ( "0.00" );
-     totalLinea = Fixed ( item->DBvalue ( "cantlalbaran" ) ) * Fixed ( item->DBvalue ( "pvplalbaran" ) );
+     BlFixed totalLinea ( "0.00" );
+     totalLinea = BlFixed ( item->DBvalue ( "cantlalbaran" ) ) * BlFixed ( item->DBvalue ( "pvplalbaran" ) );
      tableItem = new QTableWidgetItem ( totalLinea.toQString() );
      this->mui_ticketTable->setItem ( i, 3, tableItem );
 
@@ -299,7 +299,7 @@ void Devolucion::pintar()
 void  Devolucion::anadir ( int prow )
 {
     int row = prow;
-    Fixed unidades ( mui_ticketTable->item ( row, 0 )->text() );
+    BlFixed unidades ( mui_ticketTable->item ( row, 0 )->text() );
     QTableWidgetItem *tableItem;
     if ( unidades > 0 ) {
         int rowCount = 0;
@@ -308,7 +308,7 @@ void  Devolucion::anadir ( int prow )
 
         int devRow = rowCount;
         for ( int i = 0; i < rowCount; i++ ) {
-            if ( Fixed ( mui_ticketTable->item ( row, 4 )->text() ) == Fixed ( mui_devolverTable->item ( i, 4 )->text() ) ) {
+            if ( BlFixed ( mui_ticketTable->item ( row, 4 )->text() ) == BlFixed ( mui_devolverTable->item ( i, 4 )->text() ) ) {
                 devRow = i;
                 i = rowCount;
             }
@@ -317,7 +317,7 @@ void  Devolucion::anadir ( int prow )
         if ( devRow == rowCount ) {
             mui_devolverTable->insertRow ( devRow );
 
-            tableItem = new QTableWidgetItem ( Fixed ( QString ( "1" ) ).toQString() );
+            tableItem = new QTableWidgetItem ( BlFixed ( QString ( "1" ) ).toQString() );
             mui_devolverTable->setItem ( devRow, 0, tableItem );
 
             tableItem = new QTableWidgetItem ( mui_ticketTable->item ( row, 1 )->text() );
@@ -332,10 +332,10 @@ void  Devolucion::anadir ( int prow )
             tableItem = new QTableWidgetItem ( mui_ticketTable->item ( row, 4 )->text() );
             mui_devolverTable->setItem ( devRow, 4, tableItem );
         } else {
-            tableItem = new QTableWidgetItem ( ( Fixed ( mui_devolverTable->item ( devRow, 0 )->text() ) + 1 ).toQString() );
+            tableItem = new QTableWidgetItem ( ( BlFixed ( mui_devolverTable->item ( devRow, 0 )->text() ) + 1 ).toQString() );
             mui_devolverTable->setItem ( devRow, 0, tableItem );
 
-            tableItem = new QTableWidgetItem ( ( Fixed ( mui_devolverTable->item ( devRow, 0 )->text() ) *Fixed ( mui_devolverTable->item ( devRow, 2 )->text() ) ).toQString() );
+            tableItem = new QTableWidgetItem ( ( BlFixed ( mui_devolverTable->item ( devRow, 0 )->text() ) *BlFixed ( mui_devolverTable->item ( devRow, 2 )->text() ) ).toQString() );
             mui_devolverTable->setItem ( devRow, 3, tableItem );
 
         }
@@ -343,7 +343,7 @@ void  Devolucion::anadir ( int prow )
         if ( unidades > 1 ) {
             tableItem = new QTableWidgetItem ( ( unidades - 1 ).toQString() );
             mui_ticketTable->setItem ( row, 0, tableItem );
-            tableItem = new QTableWidgetItem ( ( ( unidades - 1 ) *Fixed ( mui_ticketTable->item ( row, 2 )->text() ) ).toQString() );
+            tableItem = new QTableWidgetItem ( ( ( unidades - 1 ) *BlFixed ( mui_ticketTable->item ( row, 2 )->text() ) ).toQString() );
             mui_ticketTable->setItem ( row, 3, tableItem );
         } else {
             mui_ticketTable->removeRow ( row );
@@ -356,7 +356,7 @@ void  Devolucion::anadir ( int prow )
 void  Devolucion::quitar ( int prow )
 {
     int row = prow;
-    Fixed unidades ( mui_devolverTable->item ( row, 0 )->text() );
+    BlFixed unidades ( mui_devolverTable->item ( row, 0 )->text() );
     QTableWidgetItem *tableItem;
     if ( unidades > 0 ) {
         int rowCount = 0;
@@ -365,7 +365,7 @@ void  Devolucion::quitar ( int prow )
 
         int tickRow = rowCount;
         for ( int i = 0; i < rowCount; i++ ) {
-            if ( Fixed ( mui_devolverTable->item ( row, 4 )->text() ) == Fixed ( mui_ticketTable->item ( i, 4 )->text() ) ) {
+            if ( BlFixed ( mui_devolverTable->item ( row, 4 )->text() ) == BlFixed ( mui_ticketTable->item ( i, 4 )->text() ) ) {
                 tickRow = i;
                 i = rowCount;
             }
@@ -374,7 +374,7 @@ void  Devolucion::quitar ( int prow )
         if ( tickRow == rowCount ) {
             mui_ticketTable->insertRow ( tickRow );
 
-            tableItem = new QTableWidgetItem ( Fixed ( QString ( "1" ) ).toQString() );
+            tableItem = new QTableWidgetItem ( BlFixed ( QString ( "1" ) ).toQString() );
             mui_ticketTable->setItem ( tickRow, 0, tableItem );
 
             tableItem = new QTableWidgetItem ( mui_devolverTable->item ( row, 1 )->text() );
@@ -389,10 +389,10 @@ void  Devolucion::quitar ( int prow )
             tableItem = new QTableWidgetItem ( mui_devolverTable->item ( row, 4 )->text() );
             mui_ticketTable->setItem ( tickRow, 4, tableItem );
         } else {
-            tableItem = new QTableWidgetItem ( ( Fixed ( mui_ticketTable->item ( tickRow, 0 )->text() ) + 1 ).toQString() );
+            tableItem = new QTableWidgetItem ( ( BlFixed ( mui_ticketTable->item ( tickRow, 0 )->text() ) + 1 ).toQString() );
             mui_ticketTable->setItem ( tickRow, 0, tableItem );
 
-            tableItem = new QTableWidgetItem ( ( Fixed ( mui_ticketTable->item ( tickRow, 0 )->text() ) *Fixed ( mui_ticketTable->item ( tickRow, 2 )->text() ) ).toQString() );
+            tableItem = new QTableWidgetItem ( ( BlFixed ( mui_ticketTable->item ( tickRow, 0 )->text() ) *BlFixed ( mui_ticketTable->item ( tickRow, 2 )->text() ) ).toQString() );
             mui_ticketTable->setItem ( tickRow, 3, tableItem );
 
         }
@@ -400,7 +400,7 @@ void  Devolucion::quitar ( int prow )
         if ( unidades > 1 ) {
             tableItem = new QTableWidgetItem ( ( unidades - 1 ).toQString() );
             mui_devolverTable->setItem ( row, 0, tableItem );
-            tableItem = new QTableWidgetItem ( ( ( unidades - 1 ) *Fixed ( mui_devolverTable->item ( row, 2 )->text() ) ).toQString() );
+            tableItem = new QTableWidgetItem ( ( ( unidades - 1 ) *BlFixed ( mui_devolverTable->item ( row, 2 )->text() ) ).toQString() );
             mui_devolverTable->setItem ( row, 3, tableItem );
         } else {
             mui_devolverTable->removeRow ( row );
@@ -490,22 +490,22 @@ void Devolucion::refreshDevolver()
     base basesimp;
     base basesimpreqeq;
     DBRecord *linea;
-    Fixed irpf ( "0" );
-    Fixed descuentolinea ( "0.00" );
+    BlFixed irpf ( "0" );
+    BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < mui_devolverTable->rowCount(); ++i ) {
         int numlinea = ( int ) ( QString ( mui_devolverTable->item ( i, 4 )->text() ).toInt() );
         linea = m_ticket->listaLineas() ->at ( numlinea );
-        Fixed cant ( mui_devolverTable->item ( i, 0 )->text() );
-        Fixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-        Fixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
+        BlFixed cant ( mui_devolverTable->item ( i, 0 )->text() );
+        BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed cantpvp = cant * pvpund;
+        BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
         basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
         basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
     } // end for
 
-    Fixed basei ( "0.00" );
+    BlFixed basei ( "0.00" );
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
@@ -513,23 +513,23 @@ void Devolucion::refreshDevolver()
 
     /// Calculamos el total de los descuentos.
     /// De momento aqui no se usan descuentos generales en venta.
-    Fixed porcentt ( "0.00" );
+    BlFixed porcentt ( "0.00" );
     /*
         SDBRecord *linea1;
         if (m_listadescuentos->rowCount()) {
             for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
                 linea1 = m_listadescuentos->lineaat(i);
-                Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+                BlFixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
                 porcentt = porcentt + propor;
             } // end for
         } // end if
     */
 
 /// Calculamos el total de base imponible.
-    Fixed totbaseimp ( "0.00" );
-    Fixed parbaseimp ( "0.00" );
+    BlFixed totbaseimp ( "0.00" );
+    BlFixed parbaseimp ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > Fixed ( "0.00" ) ) {
+        if ( porcentt > BlFixed ( "0.00" ) ) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
@@ -539,11 +539,11 @@ void Devolucion::refreshDevolver()
     } // end for
 
     /// Calculamos el total de IVA.
-    Fixed totiva ( "0.00" );
-    Fixed pariva ( "0.00" );
+    BlFixed totiva ( "0.00" );
+    BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        Fixed piva ( it.key().toAscii().constData() );
-        if ( porcentt > Fixed ( "0.00" ) ) {
+        BlFixed piva ( it.key().toAscii().constData() );
+        if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
             pariva = it.value() * piva / 100;
@@ -553,11 +553,11 @@ void Devolucion::refreshDevolver()
     } // end for
 
     /// Calculamos el total de recargo de equivalencia.
-    Fixed totreqeq ( "0.00" );
-    Fixed parreqeq ( "0.00" );
+    BlFixed totreqeq ( "0.00" );
+    BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        Fixed preqeq ( it.key().toAscii().constData() );
-        if ( porcentt > Fixed ( "0.00" ) ) {
+        BlFixed preqeq ( it.key().toAscii().constData() );
+        if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {
             parreqeq = it.value() * preqeq / 100;
@@ -568,13 +568,13 @@ void Devolucion::refreshDevolver()
 
 
 
-    Fixed totirpf = totbaseimp * irpf / 100;
+    BlFixed totirpf = totbaseimp * irpf / 100;
 
     //html1 += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>";
     //html1 += "<B>IVA. " + totiva.toQString() + "<BR>";
     //html1 += "<B>IRPF. " + totirpf.toQString() + "<BR>";
 
-    Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+    BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
     mui_totalLineEdit->setText ( total.toQString() + " €" );
     //html1 += "<B>Total: " + total.toQString() + "<BR>";
 }

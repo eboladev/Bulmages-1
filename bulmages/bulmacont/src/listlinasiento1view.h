@@ -23,7 +23,7 @@
 #define LISTLINASIENTO1VIEW_H
 
 #include "subform2bc.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 /** Implementa el subformulario de asientos contables.
@@ -37,8 +37,8 @@ public:
     ListLinAsiento1View ( QWidget *parent = 0, const char *name = 0 );
     ~ListLinAsiento1View();
     virtual void cargar ( QString );
-    Fixed totaldebe ( QString );
-    Fixed totalhaber ( QString );
+    BlFixed totaldebe ( QString );
+    BlFixed totalhaber ( QString );
 
 public slots:
     virtual void s_pintaMenu ( QMenu *menu );

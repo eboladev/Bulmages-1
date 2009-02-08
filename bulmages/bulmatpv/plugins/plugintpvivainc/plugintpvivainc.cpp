@@ -27,7 +27,7 @@
 #include "empresatpv.h"
 #include "escprinter.h"
 
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
 {
@@ -101,9 +101,9 @@ int Ticket_imprimir(Ticket *tick)
     }fecha;
 
     struct totalstr {
-        Fixed iva;
-        Fixed baseImponible;
-        Fixed totalIva;
+        BlFixed iva;
+        BlFixed baseImponible;
+        BlFixed totalIva;
     }total;
 
     cursor2 *cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
@@ -168,16 +168,16 @@ int Ticket_imprimir(Ticket *tick)
     /// Inicializamos los componentes.
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-	Fixed init("0.00");
+	BlFixed init("0.00");
         totales[linea->DBvalue ( "ivalalbaran" ) ] = init;
     } // end for
 
 
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        Fixed cantidad = Fixed ( linea->DBvalue ( "cantlalbaran" ) );
-	Fixed totlinea = cantidad * Fixed( linea->DBvalue("pvpivainclalbaran"));
-        total.totalIva = total.totalIva + cantidad * Fixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
+        BlFixed cantidad = BlFixed ( linea->DBvalue ( "cantlalbaran" ) );
+	BlFixed totlinea = cantidad * BlFixed( linea->DBvalue("pvpivainclalbaran"));
+        total.totalIva = total.totalIva + cantidad * BlFixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
         totales[linea->DBvalue ( "ivalalbaran" ) ] = totales[linea->DBvalue ( "ivalalbaran" ) ] + totlinea;
     } // end for
 
@@ -217,10 +217,10 @@ int Ticket_imprimir(Ticket *tick)
         if ( i == tick->listaLineas()->size() - 1 )
             pr.setUnderlineMode ( 1 );
         linea = tick->listaLineas() ->at ( i );
-        Fixed iva = Fixed ( linea->DBvalue ( "ivalalbaran" ) );
-        Fixed pvp = Fixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
-        pvp = pvp + pvp * iva / Fixed ( "100" );
-        Fixed pvptotal = Fixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
+        BlFixed iva = BlFixed ( linea->DBvalue ( "ivalalbaran" ) );
+        BlFixed pvp = BlFixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
+        pvp = pvp + pvp * iva / BlFixed ( "100" );
+        BlFixed pvptotal = BlFixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
         pr.printText ( linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
         pr.printText ( linea->DBvalue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
         QString pvpstr = pvp.toQString();
@@ -238,8 +238,8 @@ int Ticket_imprimir(Ticket *tick)
     for ( it = totales.begin(); it != totales.end(); ++it ) {
 		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS iva";
 		cursor2 *cur = tick->empresaBase()->cargacursor(sqlquery);
-//        	Fixed baseimp = Fixed(cur->valor("base"));;
-//		Fixed totiva = it.value() - baseimp;
+//        	BlFixed baseimp = Fixed(cur->valor("base"));;
+//		BlFixed totiva = it.value() - baseimp;
 	    pr.printText ( "Base Imponible: "+ it.key() + "%  " + cur-> valor("base") + "�\n" );
     	pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
 		delete cur;

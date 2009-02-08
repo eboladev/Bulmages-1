@@ -19,6 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <fstream>
+
 #include <QCloseEvent>
 #include <QComboBox>
 #include <QLayout>
@@ -26,8 +28,6 @@
 #include <QObject>
 #include <QToolButton>
 #include <QWidget>
-
-#include <fstream>
 
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
@@ -157,7 +157,7 @@ void FacturaView::inicializar()
 \param irpf
 \param reqeq
 **/
-void FacturaView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void FacturaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "FacturaView::pintatotales", 0 );
     m_totalBases->setText ( base.toQString() );

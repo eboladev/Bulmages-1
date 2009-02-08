@@ -25,7 +25,7 @@
 #include <QToolButton>
 #include "company.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "blwidget.h"
 
 
@@ -39,7 +39,7 @@ private:
 public:
     EFQToolButton ( FacturaView *fac, QWidget *parent = 0 );
     ~EFQToolButton();
-    void escribe_descuento_factura ( QString &string, cursor2 *descuentos_factura, Fixed bimpfactura );
+    void escribe_descuento_factura ( QString &string, cursor2 *descuentos_factura, BlFixed bimpfactura );
     void escribe_linea_factura ( QString &string, cursor2 *lfactura, int numerolinea );
     void exporta_factura_ubl();
 

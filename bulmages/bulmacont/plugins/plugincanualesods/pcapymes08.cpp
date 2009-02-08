@@ -37,7 +37,7 @@ QString pluginCAnualesODS::cuentaAnualCAPYMES08()
     unsigned int mesFin = ejercicioActual_fechaBalance.mid ( 3, 2 ).toInt() - 1;
 
     // Vamos a determinar si la cuenta 551 forma parte del activo o del pasivo
-    Fixed saldo551, activo551actual, pasivo551actual, activo551anterior, pasivo551anterior;
+    BlFixed saldo551, activo551actual, pasivo551actual, activo551anterior, pasivo551anterior;
     saldo551 = saldoCuenta ( 551 );
     if ( saldo551 > 0 ){
 	activo551actual = saldo551;

@@ -179,7 +179,7 @@ void CompraVentaView::inicializar()
 \param irpf
 \param reqeq
 **/
-void CompraVentaView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void CompraVentaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "CompraVentaView::pintatotales", 0 );
     m_totalBases->setText ( base.toQString() );

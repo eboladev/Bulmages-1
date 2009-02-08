@@ -212,7 +212,7 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 {
     _depura ( "myplugin::elslot", 0 );
     QString idarticulo =  mui_list->DBvalue ( "idarticulo" );
-    ( ( EmpresaTPV * ) empresaBase() )->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
+    ( ( EmpresaTPV * ) empresaBase() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }
 

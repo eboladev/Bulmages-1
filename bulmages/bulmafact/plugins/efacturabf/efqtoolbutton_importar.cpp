@@ -32,7 +32,7 @@
 #include <QMap>
 #include <QList>
 #include "facturapview.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 #include "listlinfacturapview.h"
 #include "company.h"
@@ -103,7 +103,7 @@ QString EFQToolButtonImportar::obten_descuento_factura ( QDomDocument *doc, QLis
 
     QDomNode nodo1, nodo2;
 
-    Fixed total_descuento = "0.00";
+    BlFixed total_descuento = "0.00";
 
     /// Nos movemos entre los nodos hijos cac:AllowanceCharge
     /// Ojo, no confundir con los elementos cac:AllowanceCharge que estan
@@ -124,7 +124,7 @@ QString EFQToolButtonImportar::obten_descuento_factura ( QDomDocument *doc, QLis
         nodo2 = nodo2.nextSiblingElement ( "cbc:Amount" );
 
         /// Acumulamos...
-        total_descuento = total_descuento + Fixed ( nodo2.toElement().text() );
+        total_descuento = total_descuento + BlFixed ( nodo2.toElement().text() );
 
         /// Guardamos la informacion de este descuento en la lista de descuentos
         lista_descuentos.append ( mapa_descuento );
@@ -441,8 +441,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
     delete proveedor;
 
-    Fixed bimp ( bimpFactura );
-    Fixed iva ( impFactura );
+    BlFixed bimp ( bimpFactura );
+    BlFixed iva ( impFactura );
 
     fp->calculaypintatotales();
     fp->m_totalDiscounts->setText ( descuentoFactura );

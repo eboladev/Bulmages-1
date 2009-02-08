@@ -28,7 +28,7 @@
 #include "bulmafact.h"
 #include "trabajadorview.h"
 #include "almacenview.h"
-#include "ficha.h"
+#include "blform.h"
 #include "subform2bf.h"
 
 

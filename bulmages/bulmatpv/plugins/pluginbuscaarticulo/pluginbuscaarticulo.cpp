@@ -27,14 +27,14 @@
 #include "empresatpv.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "busquedaarticulo.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "bdockwidget.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 
 BusquedaArticulo *g_busc;
@@ -78,7 +78,7 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 int BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post ( BusquedaArticulo *busc )
 {
     if ( busc->idarticulo() != "" )
-        g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), Fixed ( "1" ) );
+        g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), BlFixed ( "1" ) );
     return 0;
 }
 

@@ -56,7 +56,7 @@ void Arbol::nuevaRama ( cursor2 *ramas )
     hoja->idcuenta = atoi ( ramas->valor ( "idcuenta" ).toAscii().constData() );
     hoja->codigo = QString ( ramas->valor ( "codigo" ) );
     hoja->descripcion = QString ( ramas->valor ( "descripcion" ) );
-    hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = Fixed ( "0.00" );
+    hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
     hoja->numapuntes = 0;
     hoja->ramas = NULL;
     raiz << hoja;
@@ -89,7 +89,7 @@ void Arbol::inicializa ( cursor2 *ramas )
                 hoja->idcuenta = ramas->valor ( "idcuenta" ).toInt();
                 hoja->codigo = ramas->valor ( "codigo" );
                 hoja->descripcion = ramas->valor ( "descripcion" );
-                hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = Fixed ( "0.00" );
+                hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
                 hoja->numapuntes = 0;
                 hoja->ramas = NULL;
                 rama = new tiporama;
@@ -144,7 +144,7 @@ void Arbol::SintetizarRamas ( cursor2 **cuentas, tiporama **ramas )
         hoja->idcuenta = atoi ( ptrcuentas->valor ( "idcuenta" ).toAscii().constData() );
         hoja->codigo = ptrcuentas->valor ( "codigo" );
         hoja->descripcion = ptrcuentas->valor ( "descripcion" );
-        hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = Fixed ( "0.00" );
+        hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
         hoja->numapuntes = 0;
         hoja->ramas = NULL;
         guia->hoja = hoja;
@@ -183,13 +183,13 @@ void Arbol::actualizaHojas ( cursor2 *cuenta )
     if ( i < raiz.size() && hojaraiz->ramas ) {
         ActualizarHoja ( & ( hojaraiz->ramas ), cuenta, &actualizado );
         if ( actualizado ) {
-            hojaraiz->saldoant = hojaraiz->saldoant + Fixed ( cuenta->valor ( "saldoant" ) );
-            hojaraiz->debe = hojaraiz->debe + Fixed ( cuenta->valor ( "debe" ) );
-            hojaraiz->haber = hojaraiz->haber + Fixed ( cuenta->valor ( "haber" ) );
-            hojaraiz->saldo = hojaraiz->saldo + Fixed ( cuenta->valor ( "saldo" ) );
-            hojaraiz->debeej = hojaraiz->debeej + Fixed ( cuenta->valor ( "debeej" ) );
-            hojaraiz->haberej = hojaraiz->haberej + Fixed ( cuenta->valor ( "haberej" ) );
-            hojaraiz->saldoej = hojaraiz->saldoej + Fixed ( cuenta->valor ( "saldoej" ) );
+            hojaraiz->saldoant = hojaraiz->saldoant + BlFixed ( cuenta->valor ( "saldoant" ) );
+            hojaraiz->debe = hojaraiz->debe + BlFixed ( cuenta->valor ( "debe" ) );
+            hojaraiz->haber = hojaraiz->haber + BlFixed ( cuenta->valor ( "haber" ) );
+            hojaraiz->saldo = hojaraiz->saldo + BlFixed ( cuenta->valor ( "saldo" ) );
+            hojaraiz->debeej = hojaraiz->debeej + BlFixed ( cuenta->valor ( "debeej" ) );
+            hojaraiz->haberej = hojaraiz->haberej + BlFixed ( cuenta->valor ( "haberej" ) );
+            hojaraiz->saldoej = hojaraiz->saldoej + BlFixed ( cuenta->valor ( "saldoej" ) );
             hojaraiz->numapuntes += cuenta->valor ( "numapuntes" ).toInt();
         } // end if
     } // end if
@@ -215,13 +215,13 @@ void Arbol::ActualizarHoja ( tiporama** ramaraiz, cursor2* cuenta, bool* actuali
     while ( rama && ! ( *actualizado ) ) {
         if ( rama->hoja->idcuenta == idcuenta ) {
             /// Ponemos los valores obtenidos de la BD.
-            rama->hoja->saldoant = Fixed ( cuenta->valor ( "saldoant" ) );
-            rama->hoja->debe = Fixed ( cuenta->valor ( "debe" ) );
-            rama->hoja->haber = Fixed ( cuenta->valor ( "haber" ) );
-            rama->hoja->saldo = Fixed ( cuenta->valor ( "saldo" ) );
-            rama->hoja->debeej = Fixed ( cuenta->valor ( "debeej" ) );
-            rama->hoja->haberej = Fixed ( cuenta->valor ( "haberej" ) );
-            rama->hoja->saldoej = Fixed ( cuenta->valor ( "saldoej" ) );
+            rama->hoja->saldoant = BlFixed ( cuenta->valor ( "saldoant" ) );
+            rama->hoja->debe = BlFixed ( cuenta->valor ( "debe" ) );
+            rama->hoja->haber = BlFixed ( cuenta->valor ( "haber" ) );
+            rama->hoja->saldo = BlFixed ( cuenta->valor ( "saldo" ) );
+            rama->hoja->debeej = BlFixed ( cuenta->valor ( "debeej" ) );
+            rama->hoja->haberej = BlFixed ( cuenta->valor ( "haberej" ) );
+            rama->hoja->saldoej = BlFixed ( cuenta->valor ( "saldoej" ) );
             rama->hoja->numapuntes = cuenta->valor ( "numapuntes" ).toInt();
             _depura ( "Arbol::ActualizarHoja", 2, cuenta->valor ( "codigo" ) + " " + QString::number ( rama->hoja->numapuntes ) );
             *actualizado = true;
@@ -230,13 +230,13 @@ void Arbol::ActualizarHoja ( tiporama** ramaraiz, cursor2* cuenta, bool* actuali
                 ActualizarHoja ( & ( rama->hoja->ramas ), cuenta, & ( *actualizado ) );
                 /// A la vuelta, actualizamos los valores si alguna hoja fue actualizada.
                 if ( *actualizado ) {
-                    rama->hoja->saldoant = rama->hoja->saldoant + Fixed ( cuenta->valor ( "saldoant" ) );
-                    rama->hoja->debe = rama->hoja->debe + Fixed ( cuenta->valor ( "debe" ) );
-                    rama->hoja->haber = rama->hoja->haber + Fixed ( cuenta->valor ( "haber" ) );
-                    rama->hoja->saldo = rama->hoja->saldo + Fixed ( cuenta->valor ( "saldo" ) );
-                    rama->hoja->debeej = rama->hoja->debeej + Fixed ( cuenta->valor ( "debeej" ) );
-                    rama->hoja->haberej = rama->hoja->haberej + Fixed ( cuenta->valor ( "haberej" ) );
-                    rama->hoja->saldoej = rama->hoja->saldoej + Fixed ( cuenta->valor ( "saldoej" ) );
+                    rama->hoja->saldoant = rama->hoja->saldoant + BlFixed ( cuenta->valor ( "saldoant" ) );
+                    rama->hoja->debe = rama->hoja->debe + BlFixed ( cuenta->valor ( "debe" ) );
+                    rama->hoja->haber = rama->hoja->haber + BlFixed ( cuenta->valor ( "haber" ) );
+                    rama->hoja->saldo = rama->hoja->saldo + BlFixed ( cuenta->valor ( "saldo" ) );
+                    rama->hoja->debeej = rama->hoja->debeej + BlFixed ( cuenta->valor ( "debeej" ) );
+                    rama->hoja->haberej = rama->hoja->haberej + BlFixed ( cuenta->valor ( "haberej" ) );
+                    rama->hoja->saldoej = rama->hoja->saldoej + BlFixed ( cuenta->valor ( "saldoej" ) );
                     rama->hoja->numapuntes += cuenta->valor ( "numapuntes" ).toInt();
                 } // end if
             } // end if

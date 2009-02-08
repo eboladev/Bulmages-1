@@ -44,7 +44,7 @@ int Ticket_insertarArticuloCodigoNL_Post ( Ticket *tick )
     cur = tick->empresaBase() ->cargacursor ( query );
     if (cur) {
 	if ( !cur->eof() ) {
-		tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+		tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
 	} // end if
 	
 		
@@ -66,7 +66,7 @@ int Ticket_insertarArticuloCodigo_Post ( Ticket *tick )
         QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
         cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+            tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
         } // end if
         delete cur;
         valor = 0;

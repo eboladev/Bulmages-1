@@ -32,7 +32,7 @@
 #include <QList>
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 

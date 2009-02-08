@@ -186,10 +186,10 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
 
         QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
         cursor2 *cur1 = subform->empresaBase() ->cargacursor ( query1 );
-        Fixed stock ( "0" );
+        BlFixed stock ( "0" );
         if ( !cur1 ) return 0;
         if ( !cur1->eof() ) {
-            stock = Fixed ( cur1->valor ( "stock" ) );
+            stock = BlFixed ( cur1->valor ( "stock" ) );
         } // end if
         delete cur1;
 
@@ -199,8 +199,8 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
         cursor2 *cur = subform->empresaBase() ->cargacursor ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
-            Fixed val = Fixed ( cur->valor ( "valminimsalmacen" ) );
-            Fixed valb = Fixed ( camp->valorcampo() );
+            BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );
+            BlFixed valb = BlFixed ( camp->valorcampo() );
             if ( stock - valb <= val )
                 mensajeAviso ( _("Stock minimo superado") );
         } // end if

@@ -28,10 +28,7 @@
 #include "devolucion.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "qapplication2.h"
-
-
-
+#include "blapplication.h"
 
 
 MyDevButton * g_plug;

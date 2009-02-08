@@ -537,7 +537,7 @@ void Q19View::on_mui_aceptar_clicked()
 
         SubForm3 *sub = m_facturasList->mui_list;
 
-        Fixed total ( "0.00" );
+        BlFixed total ( "0.00" );
         int j = 0;
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -552,7 +552,7 @@ void Q19View::on_mui_aceptar_clicked()
                 } // end if
                 cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
                 j++;
-                total = total + Fixed ( rec->DBvalue ( "total" ) );
+                total = total + BlFixed ( rec->DBvalue ( "total" ) );
             } // end if
         } // end for
 

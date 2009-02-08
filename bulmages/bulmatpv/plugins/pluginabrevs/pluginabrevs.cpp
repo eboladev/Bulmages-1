@@ -26,7 +26,7 @@
 #include "empresatpv.h"
 #include "abrevs.h"
 #include "plugins.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 #include "trabajadores.h"
 #include "bdockwidget.h"
 #include <QX11EmbedContainer>

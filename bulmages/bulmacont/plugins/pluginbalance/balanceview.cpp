@@ -183,7 +183,7 @@ void BalanceView::presentar()
 void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico )
 {
     _depura ( "BalanceView::presentarSyS", 0 );
-    Fixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
+    BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
     cursor2 *ramas = NULL;
     cursor2 *hojas = NULL;
     try {
@@ -295,10 +295,10 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
             if ( lcuenta >= cinicial and lcuenta <= cfinal ) {
                 /// Acumulamos los totales para al final poder escribirlos.
-                tsaldoant = tsaldoant + Fixed ( lsaldoant );
-                tsaldo = tsaldo + Fixed ( lsaldo );
-                tdebe = tdebe + Fixed ( ldebe );
-                thaber = thaber + Fixed ( lhaber );
+                tsaldoant = tsaldoant + BlFixed ( lsaldoant );
+                tsaldo = tsaldo + BlFixed ( lsaldo );
+                tdebe = tdebe + BlFixed ( ldebe );
+                thaber = thaber + BlFixed ( lhaber );
 
                 /// Las variables de las filas en formato espa&ntilde;ol.
                 lsaldoant = QString::number ( lsaldoant.toDouble(), 'f', 2 );

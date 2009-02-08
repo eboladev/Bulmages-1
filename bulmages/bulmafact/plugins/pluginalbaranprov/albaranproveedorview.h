@@ -49,7 +49,7 @@ public:
     AlbaranProveedorView ( Company *, QWidget * );
     ~AlbaranProveedorView();
     void inicializar();
-    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
+    void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardarPost();
     virtual int cargarPost ( QString id );

@@ -189,7 +189,7 @@ void PresupuestoView::on_subform2_editFinish ( int, int )
 \param irpf
 \param reqeq
 **/
-void PresupuestoView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void PresupuestoView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "PresupuestoView::pintatotales", 0 );
     m_totalBases->setText ( QString ( base.toQString() ) );

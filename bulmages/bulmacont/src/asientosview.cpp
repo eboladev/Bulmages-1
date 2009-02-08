@@ -282,8 +282,8 @@ void AsientosView::presentar()
     mui_ejercicio->setCurrentIndex ( ejercicioIndice );
 
     /// Calculamos el total en el subformulario y lo presentamos.
-    Fixed td = mui_list->sumarCampo ( "totaldebe" );
-    Fixed th = mui_list->sumarCampo ( "totalhaber" );
+    BlFixed td = mui_list->sumarCampo ( "totaldebe" );
+    BlFixed th = mui_list->sumarCampo ( "totalhaber" );
     mui_totalDebe->setText ( td.toQString() );
     mui_totalHaber->setText ( th.toQString() );
 

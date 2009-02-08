@@ -20,14 +20,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include "plugincambio.h"
 #include "funcaux.h"
 #include "empresatpv.h"
 #include "cambio.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "qapplication2.h"
+#include "blapplication.h"
 
 
 ///

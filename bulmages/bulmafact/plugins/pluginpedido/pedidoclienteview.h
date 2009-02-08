@@ -34,10 +34,11 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "dialogchanges.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "fichabf.h"
 
 #include "ui_pedidoclientebase.h"
+
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
@@ -53,7 +54,7 @@ public:
     virtual int borrarPre();
     void generarAlbaran();
     void inicializar();
-    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed, Fixed );
+    void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed, BlFixed );
 
 
 public slots:

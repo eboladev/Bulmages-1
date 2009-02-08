@@ -20,7 +20,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include "pluginadmin.h"
 #include "funcaux.h"
 #include "empresatpv.h"
@@ -28,12 +27,13 @@
 #include "plugins.h"
 #include "ticket.h"
 #include "bdockwidget.h"
-#include "qapplication2.h"
-
+#include "blapplication.h"
 
 
 Admin *g_admin;
 BDockWidget *g_admin1;
+
+
 ///
 /**
 \return

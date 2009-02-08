@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FICHA1_H
-#define FICHA1_H
+#ifndef FICHABF_H
+#define FICHABF_H
 
 #include "blform.h"
 #include "subform2bf.h"
@@ -29,7 +29,7 @@
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 class FichaBf : public BlForm
 {
@@ -52,7 +52,7 @@ public:
     virtual int generaRML ( void );
     virtual int generaRML ( const QString &arch );
     virtual void calculaypintatotales();
-    virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed ) {};
+    virtual void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed ) {};
     virtual int trataTags ( QString &buff, int tipoEscape = 0 );
     virtual void trataTagsBf( QString &buff, int tipoEscape = 0 );
     virtual QString trataLineasDetalle ( const QString &det, int tipoEscape = 0 );

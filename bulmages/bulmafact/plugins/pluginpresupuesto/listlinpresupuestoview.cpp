@@ -26,7 +26,7 @@
 #include "articulolist.h"
 #include "listlinpresupuestoview.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 ///

@@ -29,7 +29,7 @@
 #include "movimientosview.h"
 #include "funcaux.h"
 #include "plugins.h"
-#include "ficha.h"
+#include "blform.h"
 #include "empresabase.h"
 
 /** Prepara todos los componentes i los inicializa a NULL para que no haya dudas sobre si

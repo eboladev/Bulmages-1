@@ -28,7 +28,7 @@
 #include <QList>
 #include "facturapview.h"
 #include "presupuestoview.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 #include "facturaview.h"

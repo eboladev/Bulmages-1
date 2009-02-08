@@ -25,7 +25,7 @@
 #include "listlinalbaranclienteview.h"
 #include "articulolist.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "plugins.h"
 
 

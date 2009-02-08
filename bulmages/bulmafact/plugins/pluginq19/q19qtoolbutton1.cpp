@@ -30,7 +30,7 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 #include "busquedabanco.h"
@@ -103,7 +103,7 @@ void Q19QToolButton1::click()
         m_companyact = ( Company * ) m_facturasList->empresaBase();
         SubForm3 *sub = m_facturasList->mui_list;
      
-        Fixed total ( "0.00" );
+        BlFixed total ( "0.00" );
         int j = 0;
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -118,7 +118,7 @@ void Q19QToolButton1::click()
                 }
                 cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
                 j++;
-                total = total + Fixed ( rec->DBvalue ( "totalfactura" ) );
+                total = total + BlFixed ( rec->DBvalue ( "totalfactura" ) );
             } // end if
         } // end for
      

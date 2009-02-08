@@ -28,8 +28,9 @@
 #include "empresa.h"
 #include "postgresiface2.h"
 #include "linprevcobro.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "funcaux.h"
+
 
 class ListLinPrevCobro
 {
@@ -50,8 +51,8 @@ protected:
     QList<linprevcobro*> m_lista;
 
 public:
-    Fixed totalCobro();
-    Fixed totalPago();
+    BlFixed totalCobro();
+    BlFixed totalPago();
     ListLinPrevCobro ( Empresa *comp );
     ListLinPrevCobro();
     void inicializaVariables();

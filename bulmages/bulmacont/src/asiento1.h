@@ -24,7 +24,7 @@
 
 #include <QString>
 
-#include "fixed.h"
+#include "blfixed.h"
 #include "fichabc.h"
 #include "listlinasiento1view.h"
 
@@ -49,8 +49,8 @@ public:
     virtual ~Asiento1();
     Empresa *companyact();
     int cargar ( QString );
-    Fixed totaldebe ( QString );
-    Fixed totalhaber ( QString );
+    BlFixed totaldebe ( QString );
+    BlFixed totalhaber ( QString );
     void vaciar();
     void abrir();
     void cerrar();

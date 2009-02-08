@@ -27,10 +27,11 @@
 #include <QObject>
 #include "bulmafact.h"
 #include "articuloview.h"
-#include "ficha.h"
+#include "blform.h"
 #include "subform2bf.h"
 #include "articulolist.h"
 #include "listlinalbaranclienteview.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );

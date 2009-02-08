@@ -33,7 +33,7 @@
 #include "facturapview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 #include "pagoview.h"

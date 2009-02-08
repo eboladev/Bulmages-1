@@ -34,7 +34,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          funcaux.cpp logpass.cpp
          abreempresaview.cpp
          dialogchanges.cpp
-         fixed.cpp
+         blfixed.cpp
          msgerror.cpp
          busquedafecha.cpp
          qtable2.cpp 
@@ -105,7 +105,7 @@ set (bulmalib_HDRS abreempresaview.h
 			dialogchanges.h
 			empresabase.h
 			blform.h
-			fixed.h
+			blfixed.h
 			funcaux.h
 			listventanas.h
 			logpass.h
@@ -128,7 +128,7 @@ set (bulmalib_HDRS abreempresaview.h
 #			numerocuenta.h 
 #			funcaux.h 
 #			dialogchanges.h 
-#			fixed.h 
+#			blfixed.h 
 #			pgimportfiles.h 
 #			plugins.h 
 #			dbrecord.h 

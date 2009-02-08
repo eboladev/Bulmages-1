@@ -1,11 +1,11 @@
 #include "ticketsdevueltos.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include <QWidget>
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 TicketsDevueltos::TicketsDevueltos ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {

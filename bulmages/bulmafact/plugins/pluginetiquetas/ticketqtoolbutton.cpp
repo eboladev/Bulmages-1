@@ -27,7 +27,7 @@
 #include <QMap>
 #include <QList>
 #include "facturapview.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "facturaview.h"
 #include "company.h"
 #include "dbrecord.h"

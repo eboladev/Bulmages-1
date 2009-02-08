@@ -25,7 +25,7 @@
 #include <QWidget>
 
 #include "ui_sobrebase.h"
-#include "ficha.h"
+#include "blform.h"
 
 
 /// Presenta la informaci&oacute;n sobre el programa.

@@ -32,7 +32,7 @@
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ), DBRecord ( emp )
 {
@@ -126,7 +126,7 @@ QList<DBRecord *> *Ticket::listaLineas()
 }
 
 
-DBRecord *Ticket::insertarArticulo ( QString idArticulo, Fixed cantidad, bool nuevaLinea )
+DBRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
     _depura ( "Ticket::insertarArticulo", 0 );
     /// Buscamos si ya hay una linea con el articulo que buscamos
@@ -141,8 +141,8 @@ DBRecord *Ticket::insertarArticulo ( QString idArticulo, Fixed cantidad, bool nu
 
     if ( m_lineaActual && nuevaLinea == FALSE ) {
         /// Ya hay una linea con este articulo (es un agregado)
-        Fixed cantidadib ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
-        Fixed cant1 = cantidadib + cantidad;
+        BlFixed cantidadib ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+        BlFixed cant1 = cantidadib + cantidad;
         m_lineaActual->setDBvalue ( "cantlalbaran", cant1.toQString() );
     } else {
         /// No hay ningun item con este articulo (es una insercion)
@@ -183,7 +183,7 @@ DBRecord *Ticket::insertarArticulo ( QString idArticulo, Fixed cantidad, bool nu
 }
 
 
-void  Ticket::borrarArticulo ( DBRecord *linea, Fixed cantidad )
+void  Ticket::borrarArticulo ( DBRecord *linea, BlFixed cantidad )
 {
     /// Comprueba que haya un articulo seleccionado.
     if ( m_lineaActual == NULL ) {
@@ -228,7 +228,7 @@ void Ticket::setLineaActual ( DBRecord *rec )
 }
 
 
-void  Ticket::setDescuentoGlobal ( Fixed descuento )
+void  Ticket::setDescuentoGlobal ( BlFixed descuento )
 {}
 
 void Ticket::abrircajon()
@@ -358,31 +358,31 @@ void  Ticket::imprimir()
 // ============================================
     /// Impresion de los contenidos.
     QString l;
-    Fixed irpf ( "0" );
+    BlFixed irpf ( "0" );
 
     cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
-            irpf = Fixed ( cur->valor ( "valor" ) );
+            irpf = BlFixed ( cur->valor ( "valor" ) );
         } // end if
         delete cur;
     } // end if
 
     DBRecord *linea;
-    Fixed descuentolinea ( "0.00" );
+    BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         linea = listaLineas() ->at ( i );
-        Fixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        Fixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-        Fixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        Fixed iva = ( linea->DBvalue ( "ivalalbaran" ) );
-        Fixed percentiva = ( iva / 100 );
+        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed cantpvp = cant * pvpund;
+        BlFixed base = cantpvp - cantpvp * desc1 / 100;
+        BlFixed iva = ( linea->DBvalue ( "ivalalbaran" ) );
+        BlFixed percentiva = ( iva / 100 );
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        Fixed subtotreq = ( base +  linea->DBvalue ( "reqeqlalbaran" ) );
-        Fixed subtotaliva = ( subtotreq * percentiva ) + subtotreq;
-        Fixed totalunidad = pvpund + ( ( pvpund - ( pvpund * desc1 / 100 ) ) * percentiva );
+        BlFixed subtotreq = ( base +  linea->DBvalue ( "reqeqlalbaran" ) );
+        BlFixed subtotaliva = ( subtotreq * percentiva ) + subtotreq;
+        BlFixed totalunidad = pvpund + ( ( pvpund - ( pvpund * desc1 / 100 ) ) * percentiva );
         basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
         basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
         /// Hacemos la impresion
@@ -395,7 +395,7 @@ void  Ticket::imprimir()
     file.write ( "\n", 1 );
     file.write ( "\n", 1 );
 
-    Fixed basei ( "0.00" );
+    BlFixed basei ( "0.00" );
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
@@ -403,14 +403,14 @@ void  Ticket::imprimir()
 
     /// Calculamos el total de los descuentos.
     /// De momento aqui no se usan descuentos generales en venta.
-    Fixed porcentt ( "0.00" );
+    BlFixed porcentt ( "0.00" );
 
 
     /// Calculamos el total de base imponible.
-    Fixed totbaseimp ( "0.00" );
-    Fixed parbaseimp ( "0.00" );
+    BlFixed totbaseimp ( "0.00" );
+    BlFixed parbaseimp ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > Fixed ( "0.00" ) ) {
+        if ( porcentt > BlFixed ( "0.00" ) ) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
@@ -422,11 +422,11 @@ void  Ticket::imprimir()
     } // end for
 
     /// Calculamos el total de IVA.
-    Fixed totiva ( "0.00" );
-    Fixed pariva ( "0.00" );
+    BlFixed totiva ( "0.00" );
+    BlFixed pariva ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        Fixed piva ( it.key().toAscii().constData() );
-        if ( porcentt > Fixed ( "0.00" ) ) {
+        BlFixed piva ( it.key().toAscii().constData() );
+        if ( porcentt > BlFixed ( "0.00" ) ) {
             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
             pariva = it.value() * piva / 100;
@@ -439,11 +439,11 @@ void  Ticket::imprimir()
     } // end for
 
     /// Calculamos el total de recargo de equivalencia.
-    Fixed totreqeq ( "0.00" );
-    Fixed parreqeq ( "0.00" );
+    BlFixed totreqeq ( "0.00" );
+    BlFixed parreqeq ( "0.00" );
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        Fixed preqeq ( it.key().toAscii().constData() );
-        if ( porcentt > Fixed ( "0.00" ) ) {
+        BlFixed preqeq ( it.key().toAscii().constData() );
+        if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {
             parreqeq = it.value() * preqeq / 100;
@@ -456,7 +456,7 @@ void  Ticket::imprimir()
 
 
 
-    Fixed totirpf = totbaseimp * irpf / 100;
+    BlFixed totirpf = totbaseimp * irpf / 100;
 
 //    file.write (QString("=======================\n").rightJustified(43,' ').toAscii());
 
@@ -483,7 +483,7 @@ void  Ticket::imprimir()
     /// Imprimimos el total
     file.write ( QString ( "____________________\n" ).rightJustified ( 43, ' ' ).toAscii() );
 
-    Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+    BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
     str = "TOTAL " + total.toQString().rightJustified ( 10, ' ' );
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
@@ -613,9 +613,9 @@ void Ticket::imprimir()
     }fecha;
 
     struct totalstr {
-        Fixed iva;
-        Fixed baseImponible;
-        Fixed totalIva;
+        BlFixed iva;
+        BlFixed baseImponible;
+        BlFixed totalIva;
     }total;
 
     cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
@@ -671,13 +671,13 @@ void Ticket::imprimir()
 
     DBRecord *linea;
     if ( listaLineas() ->size() )
-        total.iva = Fixed ( listaLineas()->at ( 0 )->DBvalue ( "ivalalbaran" ) );
+        total.iva = BlFixed ( listaLineas()->at ( 0 )->DBvalue ( "ivalalbaran" ) );
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         linea = listaLineas() ->at ( i );
-        Fixed cantidad = Fixed ( linea->DBvalue ( "cantlalbaran" ) );
-        total.baseImponible = total.baseImponible + cantidad * Fixed ( linea->DBvalue ( "pvplalbaran" ) );
+        BlFixed cantidad = BlFixed ( linea->DBvalue ( "cantlalbaran" ) );
+        total.baseImponible = total.baseImponible + cantidad * BlFixed ( linea->DBvalue ( "pvplalbaran" ) );
     } // end for
-    total.totalIva = total.baseImponible + total.baseImponible * total.iva / Fixed ( "100" );
+    total.totalIva = total.baseImponible + total.baseImponible * total.iva / BlFixed ( "100" );
 
     EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     pr.initializePrinter();
@@ -711,10 +711,10 @@ void Ticket::imprimir()
         if ( i == listaLineas()->size() - 1 )
             pr.setUnderlineMode ( 1 );
         linea = listaLineas() ->at ( i );
-        Fixed iva = Fixed ( linea->DBvalue ( "ivalalbaran" ) );
-        Fixed pvp = Fixed ( linea->DBvalue ( "pvplalbaran" ) );
-        pvp = pvp + pvp * iva / Fixed ( "100" );
-        Fixed pvptotal = Fixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
+        BlFixed iva = BlFixed ( linea->DBvalue ( "ivalalbaran" ) );
+        BlFixed pvp = BlFixed ( linea->DBvalue ( "pvplalbaran" ) );
+        pvp = pvp + pvp * iva / BlFixed ( "100" );
+        BlFixed pvptotal = BlFixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
         pr.printText ( linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
         pr.printText ( linea->DBvalue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
         QString pvpstr = pvp.toQString();
@@ -784,15 +784,15 @@ void Ticket::bajar()
 
 void Ticket::agregarCantidad ( QString cantidad )
 {
-    Fixed cant ( cantidad );
+    BlFixed cant ( cantidad );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         mensajeAviso ( "No existe linea" );
         return;
     } // end if
-    Fixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
-    Fixed suma = cant + cantorig;
-    if ( suma == Fixed ( "0.00" ) ) {
+    BlFixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+    BlFixed suma = cant + cantorig;
+    if ( suma == BlFixed ( "0.00" ) ) {
         borrarLinea ( m_lineaActual );
         //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
         //m_lineaActual = listaLineas() ->at ( 0 );
@@ -801,15 +801,15 @@ void Ticket::agregarCantidad ( QString cantidad )
     } // end if
     pintar();
     /*
-        Fixed cant ( cantidad );
+        BlFixed cant ( cantidad );
         /// Comprueba la existencia de la linea de ticket.
         if ( m_lineaActual == NULL ) {
             mensajeAviso ( "No existe linea" );
             return;
         } // end if
-        Fixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
-        Fixed suma = cant + cantorig;
-        if ( suma == Fixed ( "0.00" ) ) {
+        BlFixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+        BlFixed suma = cant + cantorig;
+        if ( suma == BlFixed ( "0.00" ) ) {
             listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
             m_lineaActual = listaLineas() ->at ( 0 );
         } else {
@@ -821,7 +821,7 @@ void Ticket::agregarCantidad ( QString cantidad )
 
 void Ticket::ponerCantidad ( QString cantidad )
 {
-    Fixed cant ( cantidad );
+    BlFixed cant ( cantidad );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         mensajeAviso ( "No existe linea" );
@@ -837,7 +837,7 @@ void Ticket::ponerCantidad ( QString cantidad )
     } // end if
     pintar();
     /*
-        Fixed cant ( cantidad );
+        BlFixed cant ( cantidad );
         /// Comprueba la existencia de la linea de ticket.
         if ( m_lineaActual == NULL ) {
             mensajeAviso ( "No existe linea" );
@@ -856,7 +856,7 @@ void Ticket::ponerCantidad ( QString cantidad )
 
 void Ticket::ponerPrecio ( QString precio )
 {
-    Fixed valor ( precio );
+    BlFixed valor ( precio );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         mensajeAviso ( "No existe linea" );
@@ -876,7 +876,7 @@ void Ticket::insertarArticuloCodigo ( QString codigo )
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
-        insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+        insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
     delete cur;
 
@@ -885,19 +885,20 @@ void Ticket::insertarArticuloCodigo ( QString codigo )
 
 }
 
+
 void Ticket::insertarArticuloCodigoNL ( QString codigo )
 {
-	_depura("Ticket::insertarArticuloCodigoNL",0);
+    _depura("Ticket::insertarArticuloCodigoNL",0);
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
-        insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
+        insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
     } // end if
     delete cur;
     g_plugins->lanza ( "Ticket_insertarArticuloCodigoNL_Post", this );
-	_depura("END Ticket::insertarArticuloCodigoNL",0);
-
+    _depura("END Ticket::insertarArticuloCodigoNL",0);
 }
+
 
 int Ticket::cargar ( QString id )
 {

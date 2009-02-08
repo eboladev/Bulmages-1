@@ -26,7 +26,7 @@
 
 #include "company.h"
 #include "subform2bf.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes a un cliente.

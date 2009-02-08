@@ -133,10 +133,10 @@ void ListIva::guardaListIva()
 /**
 \return
 **/
-Fixed ListIva::calculabase()
+BlFixed ListIva::calculabase()
 {
     _depura ( "ListIva::calculabase", 0 );
-    Fixed base ( "0.00" );
+    BlFixed base ( "0.00" );
     Iva *linea;
 
     QMutableListIterator<Iva*> m_ilista ( m_lista );
@@ -146,7 +146,7 @@ Fixed ListIva::calculabase()
     while ( m_ilista.hasNext() ) {
         /// Si existe el elemento nos desplazamos a el moviendo el cursor.
         linea = m_ilista.next();
-        base = base + Fixed ( linea->baseiva() );
+        base = base + BlFixed ( linea->baseiva() );
     } // end while
     _depura ( "END ListIva::calculabase", 0 );
     return base;
@@ -157,10 +157,10 @@ Fixed ListIva::calculabase()
 /**
 \return
 **/
-Fixed ListIva::calculaiva()
+BlFixed ListIva::calculaiva()
 {
     _depura ( "ListIva::calculaiva", 0 );
-    Fixed iva ( "0.00" );
+    BlFixed iva ( "0.00" );
     Iva *linea;
 
     QMutableListIterator<Iva*> m_ilista ( m_lista );
@@ -170,7 +170,7 @@ Fixed ListIva::calculaiva()
     while ( m_ilista.hasNext() ) {
         /// Si existe el elemento nos desplazamos a el moviendo el cursor.
         linea = m_ilista.next();
-        iva = iva + Fixed ( linea->ivaiva() );
+        iva = iva + BlFixed ( linea->ivaiva() );
     } // end while
     _depura ( "END ListIva::calculaiva", 0 );
     return iva;

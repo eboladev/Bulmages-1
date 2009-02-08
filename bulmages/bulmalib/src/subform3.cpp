@@ -1583,15 +1583,15 @@ void SubForm3::setColumnValue ( QString campo, QString valor )
 \param campo
 \return
 **/
-Fixed SubForm3::sumarCampo ( QString campo )
+BlFixed SubForm3::sumarCampo ( QString campo )
 {
     _depura ( "SubForm3::sumarCampo", 0 );
-    Fixed total;
+    BlFixed total;
     SDBRecord *rec;
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
         rec =  lineaat ( i );
         if ( rec ) {
-            Fixed subtotal = Fixed ( rec->DBvalue ( campo ) );
+            BlFixed subtotal = BlFixed ( rec->DBvalue ( campo ) );
             total = total + subtotal;
         } // end if
     } // end for

@@ -27,10 +27,8 @@
 #include <QToolButton>
 #include <QCheckBox>
 
-
-
 #include "dialogchanges.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
@@ -162,7 +160,7 @@ void AlbaranClienteView::inicializar()
 \param irpf
 \param reqeq
 **/
-void AlbaranClienteView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void AlbaranClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "AlbaranClienteView::pintatotales", 0 );
     m_totalBases->setText ( base.toQString() );

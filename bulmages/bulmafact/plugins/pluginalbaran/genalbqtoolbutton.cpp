@@ -19,9 +19,9 @@
  ***************************************************************************/
 
 #include <QWidget>
+
 #include "genalbqtoolbutton.h"
 #include "funcaux.h"
-
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
@@ -35,7 +35,7 @@
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "facturaslist.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 

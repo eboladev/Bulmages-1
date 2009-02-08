@@ -28,7 +28,7 @@
 #include "empresa.h"
 #include "iva.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 class ListIva
@@ -56,8 +56,8 @@ public:
     void append ( Iva *iva ) {
         m_lista.append ( iva );
     };
-    Fixed calculaiva();
-    Fixed calculabase();
+    BlFixed calculaiva();
+    BlFixed calculabase();
     void borraIva ( int );
     void setidregistroiva ( QString id ) {
         mdb_idregistroiva = id;

@@ -34,7 +34,7 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
-#include "fixed.h"
+#include "blfixed.h"
 
 
 #include "asiento1view.h"

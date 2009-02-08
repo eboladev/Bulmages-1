@@ -122,7 +122,7 @@ PedidoProveedorView::~PedidoProveedorView()
 \param irpf
 \param reqeq
 **/
-void PedidoProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "PedidoProveedorView::pintatotales", 0 );
     mui_totalBaseImponible->setText ( base.toQString() );
@@ -307,22 +307,22 @@ void PedidoProveedorView::imprimir()
         SDBRecord *linea;
         for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
             linea = m_listalineas->lineaat ( i );
-            Fixed base = Fixed ( linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) * Fixed ( linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() );
-            basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] = basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] + base - base * Fixed ( linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
+            BlFixed base = BlFixed ( linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) * BlFixed ( linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() );
+            basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] = basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] + base - base * BlFixed ( linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "   <td>" + linea->DBvalue ( "codigocompletoarticulo" ) + "</td>\n";
             fitxersortidatxt += "   <td><para>" + XMLProtect ( linea->DBvalue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
             fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
-            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", ( base - base * Fixed ( linea->DBvalue ( "descuentolpedidoproveedor" ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->DBvalue ( "descuentolpedidoproveedor" ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
 
 
         buff.replace ( "[story]", fitxersortidatxt );
 
-        Fixed basei ( "0.00" );
+        BlFixed basei ( "0.00" );
         base::Iterator it;
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
             basei = basei + it.value();
@@ -330,7 +330,7 @@ void PedidoProveedorView::imprimir()
 
         /// Impresion de los descuentos.
         fitxersortidatxt = "";
-        Fixed porcentt ( "0.00" );
+        BlFixed porcentt ( "0.00" );
         SDBRecord *linea1;
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
@@ -341,11 +341,11 @@ void PedidoProveedorView::imprimir()
             fitxersortidatxt += "</tr>\n";
             for ( int i = 0; i < m_listadescuentos->rowCount() - 1; ++i ) {
                 linea1 = m_listadescuentos->lineaat ( i );
-                porcentt = porcentt + Fixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() );
+                porcentt = porcentt + BlFixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() );
                 fitxersortidatxt += "<tr>\n";
                 fitxersortidatxt += "        <td>" + linea1->DBvalue ( "conceptdpedidoproveedor" ) + "</td>\n";
                 fitxersortidatxt += "        <td>" + l.sprintf ( "%s", linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
-                fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( Fixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+                fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
                 fitxersortidatxt += "</tr>";
             } // end for
             fitxersortidatxt += "</blockTable>\n";
@@ -358,8 +358,8 @@ void PedidoProveedorView::imprimir()
         QString tr2 = ""; /// Rellena el segundo tr de cantidades.
         fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
 
-        Fixed totbaseimp ( "0.00" );
-        Fixed parbaseimp ( "0.00" );
+        BlFixed totbaseimp ( "0.00" );
+        BlFixed parbaseimp ( "0.00" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
             if ( porcentt > 0 ) {
                 parbaseimp = it.value() - it.value() * porcentt / 100;
@@ -371,13 +371,13 @@ void PedidoProveedorView::imprimir()
             tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
         } // end for
 
-        Fixed totiva ( "0.0" );
-        Fixed pariva ( "0.0" );
+        BlFixed totiva ( "0.0" );
+        BlFixed pariva ( "0.0" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
             if ( porcentt > 0 ) {
-                pariva = ( it.value() - it.value() * porcentt / 100 ) * Fixed ( it.key() ) / 100;
+                pariva = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
             } else {
-                pariva = it.value() * Fixed ( it.key() ) / 100;
+                pariva = it.value() * BlFixed ( it.key() ) / 100;
             } // end if
             totiva = totiva + pariva;
             tr1 += "        <td>" + _( "Iva " ) + it.key() + " %</td>\n";

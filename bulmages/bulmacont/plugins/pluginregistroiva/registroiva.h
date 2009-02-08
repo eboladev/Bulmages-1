@@ -24,7 +24,7 @@
 
 #include <QString>
 
-#include "fixed.h"
+#include "blfixed.h"
 #include "listiva.h"
 #include "listlinprevcobro.h"
 #include "empresa.h"

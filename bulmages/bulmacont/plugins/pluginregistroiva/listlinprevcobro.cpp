@@ -235,11 +235,11 @@ void ListLinPrevCobro::borralinprevcobro ( int pos )
 /**
 \return
 **/
-Fixed ListLinPrevCobro::totalCobro()
+BlFixed ListLinPrevCobro::totalCobro()
 {
     _depura ( "ListLinPrevCobro::totalCobro", 0 );
     linprevcobro *linea;
-    Fixed tcobro ( "0" );
+    BlFixed tcobro ( "0" );
 
     QMutableListIterator<linprevcobro*> m_ilista ( m_lista );
     /// Vamos delante del primer elemento de la lista.
@@ -249,7 +249,7 @@ Fixed ListLinPrevCobro::totalCobro()
         /// Si existe el elemento nos desplazamos a el moviendo el cursor.
         linea = m_ilista.next();
         if ( linea->tipoprevcobro() == "t" ) {
-            tcobro = tcobro + Fixed ( linea->cantidadprevcobro() );
+            tcobro = tcobro + BlFixed ( linea->cantidadprevcobro() );
         } // end if
     } // end while
     _depura ( "END ListLinPrevCobro::totalCobro", 0 );
@@ -261,11 +261,11 @@ Fixed ListLinPrevCobro::totalCobro()
 /**
 \return
 **/
-Fixed ListLinPrevCobro::totalPago()
+BlFixed ListLinPrevCobro::totalPago()
 {
     _depura ( "ListLinPrevCobro::totalPago", 0 );
     linprevcobro *linea;
-    Fixed tpago ( "0" );
+    BlFixed tpago ( "0" );
 
     QMutableListIterator<linprevcobro*> m_ilista ( m_lista );
     /// Vamos delante del primer elemento de la lista.
@@ -275,7 +275,7 @@ Fixed ListLinPrevCobro::totalPago()
         /// Si existe el elemento nos desplazamos a el moviendo el cursor.
         linea = m_ilista.next();
         if ( linea->tipoprevcobro() == "f" ) {
-            tpago = tpago + Fixed ( linea->cantidadprevcobro() );
+            tpago = tpago + BlFixed ( linea->cantidadprevcobro() );
         } // end if
     } // end while
     _depura ( "END ListLinPrevCobro::totalPago", 0 );

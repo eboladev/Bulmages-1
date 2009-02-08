@@ -163,7 +163,7 @@ void AlbaranProveedorView::inicializar()
 \param irpf
 \param reqeq
 **/
-void AlbaranProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void AlbaranProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "AlbaranProveedorView::pintatotales", 0 );
     m_totalBases->setText ( QString ( base.toQString() ) );

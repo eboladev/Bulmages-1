@@ -28,8 +28,8 @@
 #include "ui_registroivabase.h"
 #include "registroiva.h"
 #include "postgresiface2.h"
-#include "ficha.h"
-#include "fixed.h"
+#include "blform.h"
+#include "blfixed.h"
 #include "dialogchanges.h"
 
 
@@ -74,14 +74,14 @@ public:
         m_contrapartida->setidcuenta ( val );
     };
     virtual void pintabaseimp ( const QString &val ) {
-        Fixed total ( val );
-        total = total + Fixed ( iva() );
+        BlFixed total ( val );
+        total = total + BlFixed ( iva() );
         m_baseImponible->setText ( val );
         m_totalFactura->setText ( total.toQString() );
     };
     virtual void pintaiva ( const QString &val ) {
-        Fixed total ( val );
-        total = total + Fixed ( baseimp() );
+        BlFixed total ( val );
+        total = total + BlFixed ( baseimp() );
         m_totalFactura->setText ( total.toQString() );
         m_importeiva->setText ( val );
     };
@@ -127,8 +127,8 @@ public:
     };
 
     virtual void recalculaIva() {
-        Fixed base = mui_listIva->sumarCampo ( "baseiva" );
-        Fixed iva = mui_listIva->sumarCampo ( "ivaiva" );
+        BlFixed base = mui_listIva->sumarCampo ( "baseiva" );
+        BlFixed iva = mui_listIva->sumarCampo ( "ivaiva" );
         setbaseimp ( base.toQString() );
         setiva ( iva.toQString() );
         pintabaseimp ( base.toQString() );

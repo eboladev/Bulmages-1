@@ -25,7 +25,7 @@
 #include <QComboBox>
 
 #include "blwidget.h"
-#include "ficha.h"
+#include "blform.h"
 
 
 class BlComboBox : public QComboBox, public PEmpresaBase

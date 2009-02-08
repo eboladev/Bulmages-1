@@ -30,7 +30,7 @@
 #include "plugintpv.h"
 #include "funcaux.h"
 #include "zlist.h"
-#include "ficha.h"
+#include "blform.h"
 
 ///
 /**

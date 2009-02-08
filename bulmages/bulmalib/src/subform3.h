@@ -32,7 +32,7 @@
 #include "postgresiface2.h"
 #include "qtable2.h"
 #include "subform.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "blwidget.h"
 #include "plugins.h"
 #include "porcentajecarga.h"
@@ -234,7 +234,7 @@ public:
     virtual void pintar();
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );
-    virtual Fixed sumarCampo ( QString );
+    virtual BlFixed sumarCampo ( QString );
     bool existsHeader ( const QString & );
     virtual int cerrarEditor();
     virtual void confquery();

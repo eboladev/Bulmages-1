@@ -23,7 +23,7 @@
 
 #include <QString>
 
-#include "fixed.h"
+#include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
 #include "fichabf.h"

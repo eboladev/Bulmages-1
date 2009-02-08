@@ -31,7 +31,7 @@
 #include <QMap>
 #include <QList>
 #include "facturapview.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 #include "presupuestolist.h"
 #include "presupuestoview.h"
@@ -143,8 +143,8 @@ void ImpQToolButton::click()
                 pres->show();
 
                 // El calculo de descuentos es complejo
-                Fixed descgen1 = pres->getlistadescuentos() ->sumarCampo ( "proporciondalbaran" );
-                Fixed descgen = Fixed ( "1.000" ) - descgen1 / Fixed ( "100" );
+                BlFixed descgen1 = pres->getlistadescuentos() ->sumarCampo ( "proporciondalbaran" );
+                BlFixed descgen = BlFixed ( "1.000" ) - descgen1 / BlFixed ( "100" );
 
                 /// Agregamos a comentarios que albaran se corresponde.
                 QString comm = fac->DBvalue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + pres->DBvalue ( "numalbaran" ) + _( "Ref:" ) + " " + pres->DBvalue ( "refalbaran" ) + _( "Fecha:" ) + " " + pres->DBvalue ( "fechaalbaran" ) + ")\n";
@@ -168,9 +168,9 @@ void ImpQToolButton::click()
                         linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
                         linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
                         linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
-                        Fixed descpar1 = Fixed ( linea->DBvalue ( "descuentolalbaran" ) );
-                        Fixed descpar = Fixed ( "1.000" ) - descpar1 / Fixed ( "100" );
-                        Fixed desc = ( Fixed ( "1.00" ) - descpar * descgen ) * Fixed ( "100.00" );
+                        BlFixed descpar1 = BlFixed ( linea->DBvalue ( "descuentolalbaran" ) );
+                        BlFixed descpar = BlFixed ( "1.000" ) - descpar1 / BlFixed ( "100" );
+                        BlFixed desc = ( BlFixed ( "1.00" ) - descpar * descgen ) * BlFixed ( "100.00" );
                         linea1->setDBvalue ( "descuentolfactura", desc.toQString ( '.' ) );
                         linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
                         linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );

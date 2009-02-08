@@ -163,7 +163,7 @@ void FacturaProveedorView::inicializar()
 \param irpf
 \param reqeq
 **/
-void FacturaProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void FacturaProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "PresupuestoView::pintatotales", 0 );
     m_totalBases->setText ( QString ( base.toQString() ) );
@@ -363,8 +363,8 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     SDBRecord *linea;
     for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
         linea = m_listalineas->lineaat ( i );
-        Fixed base = Fixed ( linea->DBvalue ( "cantlfacturap" ).toAscii().constData() ) * Fixed ( linea->DBvalue ( "pvplfacturap" ).toAscii().constData() );
-        basesimp[linea->DBvalue ( "ivalfacturap" ) ] = basesimp[linea->DBvalue ( "ivalfacturap" ) ] + base - base * Fixed ( linea->DBvalue ( "descuentolfacturap" ).toAscii().constData() ) / 100;
+        BlFixed base = BlFixed ( linea->DBvalue ( "cantlfacturap" ).toAscii().constData() ) * BlFixed ( linea->DBvalue ( "pvplfacturap" ).toAscii().constData() );
+        basesimp[linea->DBvalue ( "ivalfacturap" ) ] = basesimp[linea->DBvalue ( "ivalfacturap" ) ] + base - base * BlFixed ( linea->DBvalue ( "descuentolfacturap" ).toAscii().constData() ) / 100;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + linea->DBvalue ( "codigocompletoarticulo" ) + "</td>\n";
@@ -372,7 +372,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
         fitxersortidatxt += "        <td>" + linea->DBvalue ( "cantlfacturap" ) + "</td>\n";
         fitxersortidatxt += "        <td>" + linea->DBvalue ( "pvplfacturap" ) + "</td>\n";
         fitxersortidatxt += "        <td>" + linea->DBvalue ( "descuentolfacturap" ) + " %</td>\n";
-        fitxersortidatxt += "        <td>" + ( base - base * Fixed ( linea->DBvalue ( "descuentolfacturap" ) ) / 100 ).toQString() + "</td>\n";
+        fitxersortidatxt += "        <td>" + ( base - base * BlFixed ( linea->DBvalue ( "descuentolfacturap" ) ) / 100 ).toQString() + "</td>\n";
         fitxersortidatxt += "</tr>";
         i++;
     } // end for
@@ -383,7 +383,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     fitxersortidatxt += "</blockTable>\n";
     buff.replace ( "[story]", fitxersortidatxt );
 
-    Fixed basei ( "0.00" );
+    BlFixed basei ( "0.00" );
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
@@ -391,7 +391,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
 
     /// Impresion de los descuentos.
     fitxersortidatxt = "";
-    Fixed porcentt ( "0.00" );
+    BlFixed porcentt ( "0.00" );
     SDBRecord *linea1;
     if ( m_listadescuentos->rowCount() ) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
@@ -402,11 +402,11 @@ void FacturaProveedorView::imprimirFacturaProveedor()
         fitxersortidatxt += "</tr>\n";
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
-            porcentt = porcentt + Fixed ( linea1->DBvalue ( "proporciondfacturap" ).toAscii().constData() );
+            porcentt = porcentt + BlFixed ( linea1->DBvalue ( "proporciondfacturap" ).toAscii().constData() );
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue ( "conceptdfacturap" ) + "</td>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue ( "proporciondfacturap" ) + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( Fixed ( linea1->DBvalue ( "proporciondfacturap" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->DBvalue ( "proporciondfacturap" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -419,8 +419,8 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     QString tr2 = "";   /// Rellena el segundo tr de cantidades.
     fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
 
-    Fixed totbaseimp ( "0.00" );
-    Fixed parbaseimp ( "0.00" );
+    BlFixed totbaseimp ( "0.00" );
+    BlFixed parbaseimp ( "0.00" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         if ( porcentt > 0 ) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
@@ -432,13 +432,13 @@ void FacturaProveedorView::imprimirFacturaProveedor()
         tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
     } // end for
 
-    Fixed totiva ( "0.0" );
-    Fixed pariva ( "0.0" );
+    BlFixed totiva ( "0.0" );
+    BlFixed pariva ( "0.0" );
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         if ( porcentt > 0 ) {
-            pariva = ( it.value() - it.value() * porcentt / 100 ) * Fixed ( it.key() ) / 100;
+            pariva = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
         } else {
-            pariva = it.value() * Fixed ( it.key() ) / 100;
+            pariva = it.value() * BlFixed ( it.key() ) / 100;
         } // end if
         totiva = totiva + pariva;
         tr1 += "        <td>" + _( "IVA " ) + it.key() + " %</td>\n";

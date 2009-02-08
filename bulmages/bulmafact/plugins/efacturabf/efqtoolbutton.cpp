@@ -66,14 +66,14 @@ EFQToolButton::~EFQToolButton()
 \param descuentos_factura
 \param bimpfactura
 **/
-void EFQToolButton::escribe_descuento_factura ( QString &string, cursor2 *descuentos_factura, Fixed bimpfactura )
+void EFQToolButton::escribe_descuento_factura ( QString &string, cursor2 *descuentos_factura, BlFixed bimpfactura )
 {
     _depura ( "EFQToolButton::escribe_descuento_factura", 0 );
 
-    Fixed descuentoFactura = "0.00";
-    descuentoFactura = Fixed ( descuentos_factura->valor ( "proporciondfactura" ) );
+    BlFixed descuentoFactura = "0.00";
+    descuentoFactura = BlFixed ( descuentos_factura->valor ( "proporciondfactura" ) );
     descuentoFactura = descuentoFactura * bimpfactura;
-    descuentoFactura = descuentoFactura * Fixed ( "0.01" );
+    descuentoFactura = descuentoFactura * BlFixed ( "0.01" );
 
     string += "\t<cac:AllowanceCharge>\n";
     string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
@@ -106,12 +106,12 @@ void EFQToolButton::escribe_linea_factura ( QString &string, cursor2 *lfactura, 
     QString string_bimp = lfactura->valor ( "pvplfactura" );
     QString string_descuento = lfactura->valor ( "descuentolfactura" );
 
-    Fixed iva ( string_iva ); // es un porcentaje
-    Fixed bimp ( string_bimp );
-    Fixed descuento ( string_descuento );
+    BlFixed iva ( string_iva ); // es un porcentaje
+    BlFixed bimp ( string_bimp );
+    BlFixed descuento ( string_descuento );
 
-    Fixed iva_lfactura = ( iva / 100 ) * bimp;
-    Fixed descuento_lfactura = ( descuento / 100 ) * bimp;
+    BlFixed iva_lfactura = ( iva / 100 ) * bimp;
+    BlFixed descuento_lfactura = ( descuento / 100 ) * bimp;
 
     string += "<cac:InvoiceLine>\n";
 
@@ -361,14 +361,14 @@ void EFQToolButton::exporta_factura_ubl()
     QString LineasFactura = "\n";
     int numerolinea = 1;
 
-    Fixed totalFactura = "0.00";
+    BlFixed totalFactura = "0.00";
 
     /// Escribimos la informacion sobre cada linea y de paso ya obtenemos el total
     /// de la factura sumando todos los PVPs de las lineas
     while ( !lfacturas->eof() ) {
         escribe_linea_factura ( LineasFactura, lfacturas, numerolinea );
 
-        totalFactura = totalFactura + ( Fixed ( lfacturas->valor ( "cantlfactura" ) ) * Fixed ( lfacturas->valor ( "pvplfactura" ) ) );
+        totalFactura = totalFactura + ( BlFixed ( lfacturas->valor ( "cantlfactura" ) ) * BlFixed ( lfacturas->valor ( "pvplfactura" ) ) );
 
         lfacturas->siguienteregistro();
         numerolinea++;

@@ -139,17 +139,17 @@ void ListLinAsiento1View::cargar ( QString idasiento )
 \param idasiento
 \return
 **/
-Fixed ListLinAsiento1View::totaldebe ( QString idasiento )
+BlFixed ListLinAsiento1View::totaldebe ( QString idasiento )
 {
     _depura ( "ListLinAsiento1View::totaldebe", 0, idasiento );
-    if ( idasiento == "" ) return Fixed ( "0" );
+    if ( idasiento == "" ) return BlFixed ( "0" );
     QString SQLQuery = "SELECT sum(debe) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur ) return Fixed ( "0" );
+    if ( !cur ) return BlFixed ( "0" );
     QString resultado = cur->valor ( 0 );
     delete cur;
     _depura ( "END ListLinAsiento1View::totaldebe", 0 );
-    return Fixed ( resultado );
+    return BlFixed ( resultado );
 }
 
 
@@ -158,16 +158,16 @@ Fixed ListLinAsiento1View::totaldebe ( QString idasiento )
 \param idasiento
 \return
 **/
-Fixed ListLinAsiento1View::totalhaber ( QString idasiento )
+BlFixed ListLinAsiento1View::totalhaber ( QString idasiento )
 {
     _depura ( "ListLinAsiento1View::totalhaber", 0, idasiento );
-    if ( idasiento == "" ) return Fixed ( "0" );
+    if ( idasiento == "" ) return BlFixed ( "0" );
     QString SQLQuery = "SELECT sum(haber) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur ) return Fixed ( "0" );
+    if ( !cur ) return BlFixed ( "0" );
     QString resultado = cur->valor ( 0 );
     delete cur;
     _depura ( "END ListLinAsiento1View::totalhaber", 0 );
-    return Fixed ( resultado );
+    return BlFixed ( resultado );
 }
 

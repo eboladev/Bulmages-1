@@ -29,7 +29,7 @@
 #include "funcaux.h"
 #include "blwidget.h"
 #include "dbrecord.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 class Ticket :  public BlWidget, public DBRecord
@@ -50,8 +50,8 @@ public:
     QList<DBRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
     /// El parametro nuevalinea indica que se inserte en nueva linea.
-    DBRecord * insertarArticulo ( QString idArticulo, Fixed cantidad = Fixed ( "1" ), bool nuevaLinea = FALSE );
-    void borrarArticulo ( DBRecord *linea, Fixed cantidad = Fixed ( "1" ) );
+    DBRecord * insertarArticulo ( QString idArticulo, BlFixed cantidad = BlFixed ( "1" ), bool nuevaLinea = FALSE );
+    void borrarArticulo ( DBRecord *linea, BlFixed cantidad = BlFixed ( "1" ) );
     void vaciarTicket();
     void subirPosArticulo ( DBRecord *linea, int filas = 1 );
     void bajarPosArticulo ( DBRecord *linea, int filas = 1 );
@@ -60,7 +60,7 @@ public:
     DBRecord *lineaTicket ( int posicion );
     DBRecord *lineaActTicket();
     void setLineaActual ( DBRecord * );
-    void setDescuentoGlobal ( Fixed descuento );
+    void setDescuentoGlobal ( BlFixed descuento );
     virtual void imprimir();
     virtual void abrircajon();
     int guardar();

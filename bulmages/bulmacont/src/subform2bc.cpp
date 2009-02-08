@@ -118,9 +118,9 @@ void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp 
         rec->setDBvalue ( "haber", "0" );
 
         /// Hacemos las sumas y las restamos
-        Fixed debe = sumarCampo ( "debe" );
-        Fixed haber = sumarCampo ( "haber" );
-        Fixed result = debe - haber;
+        BlFixed debe = sumarCampo ( "debe" );
+        BlFixed haber = sumarCampo ( "haber" );
+        BlFixed result = debe - haber;
 
         /// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
         if ( result > 0 ) {
@@ -310,12 +310,12 @@ void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
         rec->setDBvalue ( "fecha", nfecha );
     } // end if
     if ( camp->nomcampo() == "debe" ) {
-        if ( Fixed ( camp->text() ) != Fixed ( "0.00" ) ) {
+        if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
             rec->setDBvalue ( "haber", "0.00" );
         } // end if
     } // end if
     if ( camp->nomcampo() == "haber" ) {
-        if ( Fixed ( camp->text() ) != Fixed ( "0.00" ) ) {
+        if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
             rec->setDBvalue ( "debe", "0.00" );
         } // end if
     } // end if

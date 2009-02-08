@@ -1,11 +1,11 @@
 #include "compra.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include <QWidget>
 #include <vector>
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
-typedef QMap<QString, Fixed> base;
+typedef QMap<QString, BlFixed> base;
 
 Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -25,31 +25,31 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 
         /// Impresion de los contenidos.
         QString l;
-        Fixed irpf ( "0" );
+        BlFixed irpf ( "0" );
 
         cursor2 *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
-                irpf = Fixed ( cur->valor ( "valor" ) );
+                irpf = BlFixed ( cur->valor ( "valor" ) );
             } // end if
             delete cur;
         } // end if
 
 
-        Fixed descuentolinea ( "0.00" );
+        BlFixed descuentolinea ( "0.00" );
         for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
             linea = tick->listaLineas() ->at ( i );
-            Fixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-            Fixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-            Fixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
-            Fixed cantpvp = cant * pvpund;
-            Fixed base = cantpvp - cantpvp * desc1 / 100;
+            BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
+            BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
+            BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+            BlFixed cantpvp = cant * pvpund;
+            BlFixed base = cantpvp - cantpvp * desc1 / 100;
             descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
             basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
             basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
         } // end for
 
-        Fixed basei ( "0.00" );
+        BlFixed basei ( "0.00" );
         base::Iterator it;
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
             basei = basei + it.value();
@@ -57,13 +57,13 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 
         /// Calculamos el total de los descuentos.
         /// De momento aqui no se usan descuentos generales en venta.
-        Fixed porcentt ( "0.00" );
+        BlFixed porcentt ( "0.00" );
 
         /// Calculamos el total de base imponible.
-        Fixed totbaseimp ( "0.00" );
-        Fixed parbaseimp ( "0.00" );
+        BlFixed totbaseimp ( "0.00" );
+        BlFixed parbaseimp ( "0.00" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            if ( porcentt > Fixed ( "0.00" ) ) {
+            if ( porcentt > BlFixed ( "0.00" ) ) {
                 parbaseimp = it.value() - it.value() * porcentt / 100;
             } else {
                 parbaseimp = it.value();
@@ -72,11 +72,11 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
         } // end for
 
         /// Calculamos el total de IVA.
-        Fixed totiva ( "0.00" );
-        Fixed pariva ( "0.00" );
+        BlFixed totiva ( "0.00" );
+        BlFixed pariva ( "0.00" );
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            Fixed piva ( it.key().toAscii().constData() );
-            if ( porcentt > Fixed ( "0.00" ) ) {
+            BlFixed piva ( it.key().toAscii().constData() );
+            if ( porcentt > BlFixed ( "0.00" ) ) {
                 pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
             } else {
                 pariva = it.value() * piva / 100;
@@ -85,11 +85,11 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
         } // end for
 
         /// Calculamos el total de recargo de equivalencia.
-        Fixed totreqeq ( "0.00" );
-        Fixed parreqeq ( "0.00" );
+        BlFixed totreqeq ( "0.00" );
+        BlFixed parreqeq ( "0.00" );
         for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-            Fixed preqeq ( it.key().toAscii().constData() );
-            if ( porcentt > Fixed ( "0.00" ) ) {
+            BlFixed preqeq ( it.key().toAscii().constData() );
+            if ( porcentt > BlFixed ( "0.00" ) ) {
                 parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
             } else {
                 parreqeq = it.value() * preqeq / 100;
@@ -97,9 +97,9 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
             totreqeq = totreqeq + parreqeq;
         } // end for
 
-        Fixed totirpf = totbaseimp * irpf / 100;
+        BlFixed totirpf = totbaseimp * irpf / 100;
 
-        Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+        BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
 
         mui_total->setText(total.toQString());
     */

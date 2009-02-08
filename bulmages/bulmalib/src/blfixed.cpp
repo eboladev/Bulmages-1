@@ -13,7 +13,7 @@
 
 #include "stdio.h"
 
-#include "fixed.h"
+#include "blfixed.h"
 #include "funcaux.h"
 
 
@@ -22,12 +22,12 @@
 \param x
 \param p
 **/
-Fixed::Fixed ( int x, int p )
+BlFixed::BlFixed ( int x, int p )
 {
-    _depura ( "Fixed::Fixed", 0 );
+    _depura ( "BlFixed::BlFixed", 0 );
     value = x;
     precision = p;
-    _depura ( "END Fixed::Fixed", 0 );
+    _depura ( "END BlFixed::BlFixed", 0 );
 }
 
 
@@ -35,11 +35,11 @@ Fixed::Fixed ( int x, int p )
 /**
 \param a
 **/
-Fixed::Fixed ( QString a )
+BlFixed::BlFixed ( QString a )
 {
-    _depura ( "Fixed::Fixed", 0 );
-    fromFixed ( a.toAscii() );
-    _depura ( "END Fixed::Fixed", 0 );
+    _depura ( "BlFixed::BlFixed", 0 );
+    fromBlFixed ( a.toAscii() );
+    _depura ( "END BlFixed::BlFixed", 0 );
 }
 
 
@@ -47,34 +47,34 @@ Fixed::Fixed ( QString a )
 /**
 \param a
 **/
-Fixed::Fixed ( const char *a )
+BlFixed::BlFixed ( const char *a )
 {
-    _depura ( "Fixed::Fixed", 0 );
-    fromFixed ( a );
-    _depura ( "END Fixed::Fixed", 0 );
+    _depura ( "BlFixed::BlFixed", 0 );
+    fromBlFixed ( a );
+    _depura ( "END BlFixed::BlFixed", 0 );
 }
 
 
 ///
 /**
 **/
-Fixed::Fixed()
+BlFixed::BlFixed()
 {
-    _depura ( "Fixed::Fixed", 0 );
+    _depura ( "BlFixed::BlFixed", 0 );
     value = 0;
     precision = 1;
-    _depura ( "END Fixed::Fixed", 0 );
+    _depura ( "END BlFixed::BlFixed", 0 );
 
 }
 
 
-Fixed::scale Fixed::SCALE;
+BlFixed::scale BlFixed::SCALE;
 
 
-Fixed::scale::scale(void)
+BlFixed::scale::scale(void)
 {
   int i;
-  Fixed_numerator n;
+  BlFixed_numerator n;
   n = 1;
   for (i = 0; i <= MAX_FIXED_PRECISION; i++)
   {
@@ -84,7 +84,7 @@ Fixed::scale::scale(void)
 }
 
 
-Fixed operator + ( Fixed x, Fixed y )
+BlFixed operator + ( BlFixed x, BlFixed y )
 {
     x.equalize_precision ( y );
     x.value = x.value + y.value;
@@ -93,14 +93,14 @@ Fixed operator + ( Fixed x, Fixed y )
 
 
 
-Fixed operator + ( Fixed x, int y )
+BlFixed operator + ( BlFixed x, int y )
 {
-    return x + Fixed ( y, 0 );
+    return x + BlFixed ( y, 0 );
 }
 
 
 
-Fixed Fixed::operator = ( Fixed x )
+BlFixed BlFixed::operator = ( BlFixed x )
 {
     value = x.value;
     precision = x.precision;
@@ -108,7 +108,7 @@ Fixed Fixed::operator = ( Fixed x )
 }
 
 
-Fixed Fixed::operator = ( int x )
+BlFixed BlFixed::operator = ( int x )
 {
     value = x;
     precision = 0;
@@ -116,24 +116,24 @@ Fixed Fixed::operator = ( int x )
 }
 
 
-Fixed operator / ( Fixed x, Fixed y )
+BlFixed operator / ( BlFixed x, BlFixed y )
 {
     x.setprecision(6);
     y.setprecision(6);
-    x.value = (x.value * Fixed::SCALE.x[y.precision]) / y.value;
+    x.value = (x.value * BlFixed::SCALE.x[y.precision]) / y.value;
     return x;
 }
 
 
-Fixed operator / ( Fixed x, int y )
+BlFixed operator / ( BlFixed x, int y )
 {
-    return x / Fixed ( y, 0 );
+    return x / BlFixed ( y, 0 );
 }
 
 
-Fixed operator / ( int x, Fixed y )
+BlFixed operator / ( int x, BlFixed y )
 {
-    return Fixed ( x, 0 ) / y;
+    return BlFixed ( x, 0 ) / y;
 }
 
 
@@ -142,9 +142,9 @@ Fixed operator / ( int x, Fixed y )
 \param separadorDecimal
 \return
 **/
-QString Fixed::toQString ( QChar separadorDecimal, int precision )
+QString BlFixed::toQString ( QChar separadorDecimal, int precision )
 {
-    _depura ( "Fixed::toQString", 0 );
+    _depura ( "BlFixed::toQString", 0 );
 	/// Si no se pasa separador decimal cogemos el de las locales
 	if  ( separadorDecimal == '0' ) {
 		QLocale locale;
@@ -154,7 +154,7 @@ QString Fixed::toQString ( QChar separadorDecimal, int precision )
 
     setprecision ( precision );
     int options = COMMAS;
-    Fixed_numerator x = value;
+    BlFixed_numerator x = value;
     bool negative;
     if ( x < 0 ) {
         x = -x;
@@ -164,8 +164,8 @@ QString Fixed::toQString ( QChar separadorDecimal, int precision )
         negative = true;
     } else
         negative = false;
-    Fixed_numerator n = 0;
-    Fixed_numerator units = 0;
+    BlFixed_numerator n = 0;
+    BlFixed_numerator units = 0;
     unsigned char buffer[MAX_FIXED_LENGTH + MAX_FIXED_PRECISION];
     for ( unsigned int i = 0; i <= sizeof ( buffer ); i++ )
         buffer[i] = 0;
@@ -175,8 +175,8 @@ QString Fixed::toQString ( QChar separadorDecimal, int precision )
                 buffer[sizeof ( buffer ) - ++n] = separadorDecimal.toAscii();
             units = n;
         }
-        Fixed_numerator y;
-        y = ( Fixed_numerator ) x / 10;
+        BlFixed_numerator y;
+        y = ( BlFixed_numerator ) x / 10;
         buffer[sizeof ( buffer ) - ++n] = integer ( x - y * 10 ) + '0';
         x = y;
     } while ( n <= precision || x != 0 );
@@ -187,28 +187,28 @@ QString Fixed::toQString ( QChar separadorDecimal, int precision )
             buffer[sizeof ( buffer ) - ++n] = ' ';
     }
     QString a ( ( const char * ) buffer + sizeof ( buffer ) - n );
-    _depura ( "END Fixed::toQString", 0 );
+    _depura ( "END BlFixed::toQString", 0 );
     return a;
 }
 
 
-bool operator == ( Fixed x, Fixed y )
+bool operator == ( BlFixed x, BlFixed y )
 {
     x.equalize_precision ( y );
     return x.value == y.value;
 }
 
 
-bool operator == ( Fixed x, int y )
+bool operator == ( BlFixed x, int y )
 {
-    return x == Fixed ( y, 0 );
+    return x == BlFixed ( y, 0 );
 }
 
 
 
-bool operator == ( int x, Fixed y )
+bool operator == ( int x, BlFixed y )
 {
-    return Fixed ( x, 0 ) == y;
+    return BlFixed ( x, 0 ) == y;
 }
 
 
@@ -216,9 +216,9 @@ bool operator == ( int x, Fixed y )
 /**
 \param x
 **/
-void Fixed::equalize_precision ( Fixed &x )
+void BlFixed::equalize_precision ( BlFixed &x )
 {
-    _depura ( "Fixed::equalize_precision", 0 );
+    _depura ( "BlFixed::equalize_precision", 0 );
     while ( precision < x.precision )   {
         value *= 10;
         precision ++;
@@ -227,7 +227,7 @@ void Fixed::equalize_precision ( Fixed &x )
         x.value *= 10 ;
         x.precision ++;
     } // end while
-    _depura ( "END Fixed::equalize_precision", 0 );
+    _depura ( "END BlFixed::equalize_precision", 0 );
 }
 
 
@@ -235,23 +235,23 @@ void Fixed::equalize_precision ( Fixed &x )
 /**
 \param prec
 **/
-void Fixed::setprecision ( int prec )
+void BlFixed::setprecision ( int prec )
 {
-    _depura ( "Fixed::setprecision", 0 );
+    _depura ( "BlFixed::setprecision", 0 );
     while ( precision < prec ) {
         value *= 10;
         precision ++;
     } // end while
     while ( prec < precision ) {
-        Fixed_numerator aux;
+        BlFixed_numerator aux;
         aux = value;
-        value = ( Fixed_numerator ) ( value / 10 );
+        value = ( BlFixed_numerator ) ( value / 10 );
         if ( ( aux % 10 ) >= 5 ) {
             value++;
         } // end if
         precision--;
     } // end while
-    _depura ( "END Fixed::setprecision", 0 );
+    _depura ( "END BlFixed::setprecision", 0 );
 }
 
 
@@ -259,9 +259,9 @@ void Fixed::setprecision ( int prec )
 /**
 \param s
 **/
-void Fixed::fromFixed ( const char *s )
+void BlFixed::fromBlFixed ( const char *s )
 {
-    _depura ( "Fixed::fromFixed", 0 );
+    _depura ( "BlFixed::fromBlFixed", 0 );
     value = 0;
     precision = 0;
     int c;
@@ -293,43 +293,43 @@ void Fixed::fromFixed ( const char *s )
     if ( value == 0 )
         precision = 1;
 
-    _depura ( "END Fixed::fromFixed", 0 );
+    _depura ( "END BlFixed::fromBlFixed", 0 );
 }
 
 
-bool operator < ( Fixed x, Fixed y )
+bool operator < ( BlFixed x, BlFixed y )
 {
     x.equalize_precision ( y );
     return x.value < y.value;
 }
 
 
-bool operator < ( Fixed x, int y )
+bool operator < ( BlFixed x, int y )
 {
-    return x < Fixed ( y, 0 );
+    return x < BlFixed ( y, 0 );
 }
 
 
-bool operator < ( int x, Fixed y )
+bool operator < ( int x, BlFixed y )
 {
-    return Fixed ( x, 0 ) < y;
+    return BlFixed ( x, 0 ) < y;
 }
 
 
-Fixed operator - ( Fixed x )
+BlFixed operator - ( BlFixed x )
 {
     x.value = -x.value;
     return x;
 }
 
 
-Fixed operator * ( Fixed x, int y )
+BlFixed operator * ( BlFixed x, int y )
 {
-    return x * Fixed ( y, 0 );
+    return x * BlFixed ( y, 0 );
 }
 
 
-Fixed operator * ( Fixed x, Fixed y )
+BlFixed operator * ( BlFixed x, BlFixed y )
 {
     x.value = x.value * y.value;
     x.precision = x.precision + y.precision;
@@ -337,16 +337,16 @@ Fixed operator * ( Fixed x, Fixed y )
 }
 
 
-Fixed Fixed::operator [] ( int p ) const
+BlFixed BlFixed::operator [] ( int p ) const
 {
-    _depura ( "Fixed::operator[]" );
-    Fixed x ( 0, p );
-    _depura ( "END Fixed::operator[]" );
+    _depura ( "BlFixed::operator[]" );
+    BlFixed x ( 0, p );
+    _depura ( "END BlFixed::operator[]" );
     return x;
 }
 
 
-Fixed operator - ( Fixed x, Fixed y )
+BlFixed operator - ( BlFixed x, BlFixed y )
 {
     x.equalize_precision ( y );
     x.value = x.value - y.value;
@@ -354,14 +354,14 @@ Fixed operator - ( Fixed x, Fixed y )
 }
 
 
-Fixed operator - ( Fixed x, int y )
+BlFixed operator - ( BlFixed x, int y )
 {
-    return x - Fixed ( y, 0 );
+    return x - BlFixed ( y, 0 );
 }
 
 
-Fixed operator - ( int x, Fixed y )
+BlFixed operator - ( int x, BlFixed y )
 {
-    return Fixed ( x, 0 ) - y;
+    return BlFixed ( x, 0 ) - y;
 }
 

@@ -93,11 +93,11 @@ Asiento1View::~Asiento1View()
 void Asiento1View::calculaypintatotales()
 {
     _depura ( "Asiento1View::calculaypintatotales", 0 );
-    Fixed tdebe = mui_list->sumarCampo ( "debe" );
-    Fixed thaber = mui_list->sumarCampo ( "haber" );
+    BlFixed tdebe = mui_list->sumarCampo ( "debe" );
+    BlFixed thaber = mui_list->sumarCampo ( "haber" );
     m_totaldebe->setText ( tdebe.toQString() );
     m_totalhaber->setText ( thaber.toQString() );
-    Fixed desc = tdebe - thaber;
+    BlFixed desc = tdebe - thaber;
     m_descuadre->setText ( desc.toQString() );
 
     /// Si hay descuadre no se permite cerrar el asiento. Y si el asiento esta abierto y cuadrado se permite el cierre del asiento.
@@ -841,7 +841,7 @@ void Asiento1View::on_mui_abrirasiento_clicked()
 void Asiento1View::on_mui_cerrarasiento_clicked()
 {
     _depura ( "Asiento1View::on_mui_cerrarasiento_clicked", 0 );
-    if ( Fixed ( m_descuadre->text() ) != 0 )  {
+    if ( BlFixed ( m_descuadre->text() ) != 0 )  {
         mensajeInfo ( "Asiento descuadrado, no se puede cerrar" );
         _depura ( "END Asiento1View::on_mui_cerrarasiento_clicked", 0, "Descuadrado" );
         return;
@@ -902,9 +902,9 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
 
         int idcuenta;
         int idcuenta1;
-        Fixed diferencia ( "0" );
-        Fixed totaldebe ( "0" ), totalhaber ( "0" );
-        Fixed totaldebe1 ( "0" ), totalhaber1 ( "0" );
+        BlFixed diferencia ( "0" );
+        BlFixed totaldebe ( "0" ), totalhaber ( "0" );
+        BlFixed totaldebe1 ( "0" ), totalhaber1 ( "0" );
         QString concepto = "Asiento de Regularizacion";
         QString fecha = ffinal;
 
@@ -937,7 +937,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
         while ( !cur->eof() ) {
             orden++;
             idcuenta = cur->valor ( "idcuenta" ).toInt();
-            diferencia = Fixed ( cur->valor ( "sumdebe" ) ) - Fixed ( cur->valor ( "sumhaber" ) );
+            diferencia = BlFixed ( cur->valor ( "sumdebe" ) ) - BlFixed ( cur->valor ( "sumhaber" ) );
             if ( diferencia > 0 ) {
                 totalhaber = diferencia;
                 totaldebe = 0;

@@ -35,7 +35,7 @@
 #include <QMap>
 #include <QList>
 
-#include "fixed.h"
+#include "blfixed.h"
 
 
 #include "company.h"

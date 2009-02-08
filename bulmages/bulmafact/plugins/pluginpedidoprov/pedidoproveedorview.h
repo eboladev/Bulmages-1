@@ -34,7 +34,7 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "dialogchanges.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "fichabf.h"
 
 
@@ -51,7 +51,7 @@ public:
     PedidoProveedorView ( Company *, QWidget *parent = 0 );
     ~PedidoProveedorView();
     void inicialize();
-    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
+    void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
     virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();

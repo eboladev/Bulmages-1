@@ -25,7 +25,7 @@
 #include "canualesprintview.h"
 #include "funcaux.h"
 #include "empresa.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "postgresiface2.h"
 #include "arbol.h"
 #include "asiento1view.h"
@@ -197,17 +197,17 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
         QDomNode cuenta = lcuentas.item ( i );
         QDomElement e1 = cuenta.toElement();
         QString valorP1, valorP2;
-        Fixed valor = Fixed ( "0.00" );
+        BlFixed valor = BlFixed ( "0.00" );
         if ( !e1.isNull() ) {
             if ( arbolP1->irHoja ( e1.text() ) )
-                valor = Fixed ( arbolP1->hojaActual ( "saldo" ) );
+                valor = BlFixed ( arbolP1->hojaActual ( "saldo" ) );
             else
-                valor = Fixed ( "0.00" );
+                valor = BlFixed ( "0.00" );
             valorP1 = valor.toQString();
             if ( arbolP2->irHoja ( e1.text() ) )
-                valor = Fixed ( arbolP2->hojaActual ( "saldo" ) );
+                valor = BlFixed ( arbolP2->hojaActual ( "saldo" ) );
             else
-                valor = Fixed ( "0.00" );
+                valor = BlFixed ( "0.00" );
             valorP2 = valor.toQString();
             QDomNode c = e1.parentNode();
             agregaValores ( c, valorP1, valorP2 );
@@ -258,8 +258,8 @@ bool CAnualesPrintView::procesaFormula ( const QDomNode &formula )
     if ( !valor.isNull() ) {
         return TRUE;
     } // end if
-    Fixed tvaloract = Fixed ( "0.0" );
-    Fixed tvalorant = Fixed ( "0.0" );
+    BlFixed tvaloract = BlFixed ( "0.0" );
+    BlFixed tvalorant = BlFixed ( "0.0" );
     QDomElement formula3 = formula.toElement();
     QDomNodeList litems = formula3.elementsByTagName ( "OPERADOR" );
     for ( int i = 0; i < litems.count(); i++ ) {
@@ -270,8 +270,8 @@ bool CAnualesPrintView::procesaFormula ( const QDomNode &formula )
                 return FALSE;
             QString valoract, valorant;
             if ( valorItem ( item, valoract, valorant ) ) {
-                tvaloract = tvaloract + Fixed ( valoract );
-                tvalorant = tvalorant + Fixed ( valorant );
+                tvaloract = tvaloract + BlFixed ( valoract );
+                tvalorant = tvalorant + BlFixed ( valorant );
             } else
                 return FALSE;
         } // end if
@@ -356,8 +356,8 @@ void CAnualesPrintView::agregaValores ( const QDomNode &nodo, const QString &val
 {
     _depura ( "CAnualesPrintView::agregaValores", 0, nodo.toElement().tagName() + " " + valoract );
     QDomElement enodo = nodo.toElement();
-    Fixed fvaloract ( valoract );
-    Fixed fvalorant ( valorant );
+    BlFixed fvaloract ( valoract );
+    BlFixed fvalorant ( valorant );
     /// Miramos las opciones pasadas
     if ( nodo.nodeName() == QString ( "OPERADOR" ) ) {
         QDomNodeList opcs = enodo.elementsByTagName ( "OPCIONES" );

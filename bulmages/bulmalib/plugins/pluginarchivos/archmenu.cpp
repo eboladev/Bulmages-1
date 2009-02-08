@@ -30,7 +30,7 @@
 #include <QToolButton>
 #include <QPushButton>
 
-#include "fixed.h"
+#include "blfixed.h"
 #include "empresabase.h"
 #include "dbrecord.h"
 #include "archmenu.h"

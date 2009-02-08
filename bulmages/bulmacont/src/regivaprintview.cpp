@@ -26,7 +26,7 @@
 #include <unistd.h>
 #endif
 
-#include "fixed.h"
+#include "blfixed.h"
 
 
 extern Mod300ps *modelo;
@@ -201,12 +201,12 @@ void regivaprintview::presentar ( const char *tipus )
             cursor2* cur = empresaBase() ->cargacursor ( SQLQuery, "elcursor" );
             empresaBase() ->commit();
             int j = 0;
-            Fixed tivar ( "0" );
-            Fixed tbaseimpr ( "0" );
+            BlFixed tivar ( "0" );
+            BlFixed tbaseimpr ( "0" );
             while ( !cur->eof() ) {
-                Fixed baseiva ( cur->valor ( "tbaseiva" ).replace ( ".", "" ).toAscii().constData() );
-                Fixed porcent ( cur->valor ( "porcentajetipoiva" ).replace ( ".", "" ).toAscii().constData() );
-                Fixed baseimp = baseiva * 1000000 / porcent;
+                BlFixed baseiva ( cur->valor ( "tbaseiva" ).replace ( ".", "" ).toAscii().constData() );
+                BlFixed porcent ( cur->valor ( "porcentajetipoiva" ).replace ( ".", "" ).toAscii().constData() );
+                BlFixed baseimp = baseiva * 1000000 / porcent;
                 QString numberstr = baseimp.toQString();
 
                 /// Pasamos al formato de representaci&oacute;n espa&ntilde;ol las
@@ -285,12 +285,12 @@ void regivaprintview::presentar ( const char *tipus )
             cur = empresaBase() ->cargacursor ( SQLQuery, "elcursor" );
             empresaBase() ->commit();
             j = 0;
-            Fixed tivas ( "0" );
-            Fixed tbaseimps ( "0" );
+            BlFixed tivas ( "0" );
+            BlFixed tbaseimps ( "0" );
             while ( !cur->eof() ) {
-                Fixed baseiva ( cur->valor ( "tbaseiva" ).toAscii().constData() );
-                Fixed porcent ( cur->valor ( "porcentajetipoiva" ).toAscii().constData() );
-                Fixed ivacalculado = baseiva * porcent / 100;
+                BlFixed baseiva ( cur->valor ( "tbaseiva" ).toAscii().constData() );
+                BlFixed porcent ( cur->valor ( "porcentajetipoiva" ).toAscii().constData() );
+                BlFixed ivacalculado = baseiva * porcent / 100;
                 QString numberstr = ivacalculado.toQString();
 
                 /// Pasamos al formato de representaci&oacute;n espa&ntilde;ol las

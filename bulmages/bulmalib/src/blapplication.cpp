@@ -21,7 +21,7 @@
 #include <QWidget>
 
 #include "blapplication.h"
-#include "ficha.h"
+#include "blform.h"
 
 
 ///

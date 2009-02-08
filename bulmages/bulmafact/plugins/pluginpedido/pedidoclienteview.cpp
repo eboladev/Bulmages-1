@@ -133,7 +133,7 @@ void PedidoClienteView::inicializar()
 \param irpf
 \param reqeq
 **/
-void PedidoClienteView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq )
+void PedidoClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
     _depura ( "PedidoClienteView::pintatotales", 0 );
     m_totalBases->setText ( QString ( base.toQString() ) );

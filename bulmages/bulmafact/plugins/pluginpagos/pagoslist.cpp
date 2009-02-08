@@ -104,7 +104,7 @@ void PagosList::presentar()
     if ( empresaBase() != NULL ) {
         mui_list->cargar ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
-        Fixed total = mui_list->sumarCampo ( "cantpago" );
+        BlFixed total = mui_list->sumarCampo ( "cantpago" );
         m_total->setText ( total.toQString() );
     } // end if
     _depura ( "END PagosList::presentar()", 0 );

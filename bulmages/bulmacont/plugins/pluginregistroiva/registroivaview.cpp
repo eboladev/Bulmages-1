@@ -239,11 +239,11 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
     QString snumpagos = m_cursorFPago->valor ( "nplazosfpago", m_fPago->currentIndex() );
     QString splazoprimerpago = m_cursorFPago->valor ( "plazoprimerpagofpago", m_fPago->currentIndex() );
     QString splazoentrerecibo = m_cursorFPago->valor ( "plazoentrerecibofpago", m_fPago->currentIndex() );
-    Fixed totalfactura = Fixed ( baseimp() ) + Fixed ( iva() );
+    BlFixed totalfactura = BlFixed ( baseimp() ) + BlFixed ( iva() );
     int plazoentrerecibo = splazoentrerecibo.toInt();
     int plazoprimerpago = splazoprimerpago.toInt();
     int numpagos = snumpagos.toInt();
-    Fixed totalplazo = totalfactura / numpagos;
+    BlFixed totalplazo = totalfactura / numpagos;
     QString tipocobro;
     /// Vaciamos la lista de previsi&oacute;n para que no haga cosas raras.
     QDate ffactura = normalizafecha ( m_ffactura->text() );

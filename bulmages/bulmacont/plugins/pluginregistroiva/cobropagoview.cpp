@@ -110,15 +110,15 @@ void cobropagoview::s_guardar()
 void cobropagoview::s_recalculaSaldo()
 {
     _depura ( "s_recalculaSaldo()", 0 );
-    Fixed totalcobro ( "0" );
-    Fixed totalpago ( "0" );
+    BlFixed totalcobro ( "0" );
+    BlFixed totalpago ( "0" );
     for ( int i = 0; i < mui_listado->rowCount(); i++ ) {
         SDBRecord *rec = mui_listado->lineaat ( i );
         if ( rec ) {
             if ( rec->DBvalue ( "tipoprevcobro" ) == "f" ) {
-                totalcobro = totalcobro + Fixed ( rec->DBvalue ( "cantidadprevcobro" ) );
+                totalcobro = totalcobro + BlFixed ( rec->DBvalue ( "cantidadprevcobro" ) );
             } else {
-                totalpago = totalpago + Fixed ( rec->DBvalue ( "cantidadprevcobro" ) );
+                totalpago = totalpago + BlFixed ( rec->DBvalue ( "cantidadprevcobro" ) );
             } // end if
         } // end if
     } // end for

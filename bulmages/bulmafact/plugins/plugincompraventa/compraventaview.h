@@ -29,13 +29,14 @@
 #include <QCheckBox>
 
 #include "dialogchanges.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "ui_compraventabase.h"
 #include "fichabf.h"
+
 
 class company;
 
@@ -57,7 +58,7 @@ public:
     ~CompraVentaView();
     void inicializar();
 
-    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
+    void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     void generarFactura();
     void generarFacturaProveedor();
 	virtual int guardarPost();

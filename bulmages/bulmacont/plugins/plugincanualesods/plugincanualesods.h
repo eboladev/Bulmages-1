@@ -39,7 +39,7 @@
 #include "bulmacont.h"
 #include "postgresiface2.h"
 #include "empresa.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "arbol.h"
 
 
@@ -61,12 +61,12 @@ class pluginCAnualesODS : public QObject
     Q_OBJECT
 
 private:
-    Fixed saldoCuenta ( int cuenta );
-    Fixed saldoCuentaAnt ( int cuenta );
+    BlFixed saldoCuenta ( int cuenta );
+    BlFixed saldoCuentaAnt ( int cuenta );
     QString ejercicioActual_fechaBalance;
     QString ejercicioAnterior_fechaBalance;
-    Fixed cuentaPositiva ( Fixed valor );
-    Fixed cuentaNegativa ( Fixed valor );
+    BlFixed cuentaPositiva ( BlFixed valor );
+    BlFixed cuentaNegativa ( BlFixed valor );
 
     void mensajeAdvertenciaPGC ( CAnuales tipus );
 

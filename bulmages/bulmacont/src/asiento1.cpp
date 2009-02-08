@@ -24,12 +24,11 @@
 
 #include "asiento1.h"
 #include "asiento1view.h"
-#include "fixed.h"
+#include "blfixed.h"
 #include "funcaux.h"
 #include "plugins.h"
 #include "empresa.h"
 #include "arbol.h"
-#include "fixed.h"
 
 
 ///
@@ -279,7 +278,7 @@ int Asiento1::cargar ( QString idasiento )
 /**
 \return
 **/
-Fixed Asiento1::totaldebe ( QString idasiento )
+BlFixed Asiento1::totaldebe ( QString idasiento )
 {
     return listalineas->totaldebe ( idasiento );
 }
@@ -289,7 +288,7 @@ Fixed Asiento1::totaldebe ( QString idasiento )
 /**
 \return
 **/
-Fixed Asiento1::totalhaber ( QString idbudget )
+BlFixed Asiento1::totalhaber ( QString idbudget )
 {
     return listalineas->totalhaber ( idbudget );
 }

@@ -26,7 +26,7 @@
 
 #include "postgresiface2.h"
 #include "funcaux.h"
-#include "fixed.h"
+#include "blfixed.h"
 
 
 /// Clase que crea una estructura en forma de arbol para almacenar el plan contable.
@@ -50,7 +50,7 @@ private:
         QString codigo; /// C&oacute;digo de la cuenta.
         QString descripcion; /// Su descripci&oacute;n contable.
         /// Los valores a calcular.
-        Fixed saldoant, debe, haber, saldo, debeej, haberej, saldoej;
+        BlFixed saldoant, debe, haber, saldo, debeej, haberej, saldoej;
         int numapuntes; /// N&uacute;mero de apuntes que modifican los valores a calcular.
         tiporama* ramas; /// Puntero a m&aacute;s ramas con hojas.
     };
