@@ -1,0 +1,27 @@
+#: pluginbf_example.cpp:84
+msgid "&Herramientas"
+msgstr "&Eines"
+
+#: pluginbf_example.cpp:89
+msgid "&Prueba de plugin"
+msgstr "prova de plugin"
+
+#: pluginbf_example.cpp:64
+msgid "Mensaje."
+msgstr "Missatge."
+
+#: pluginbf_example.cpp:91
+msgid "Muestra que es esto"
+msgstr "Mostra que és això"
+
+#: pluginbf_example.cpp:90
+msgid "Muestra statustip"
+msgstr "Mostra statustip"
+
+#: pluginbf_example.cpp:116
+msgid "Prueba de plugin para Bulmafact."
+msgstr "Prova de plugin per a Bulmafact."
+
+#: pluginbf_example.cpp:63
+msgid "Titulo de la ventana"
+msgstr "Títol de la finestra"

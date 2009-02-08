@@ -1,0 +1,67 @@
+#: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
+#: informeqtoolbutton.cpp:463
+msgid "Articulo"
+msgstr "Articulo"
+
+#: informeqtoolbutton.cpp:465
+msgid "C. Entr."
+msgstr "C. Entr."
+
+#: informeqtoolbutton.cpp:466
+msgid "C. Fact."
+msgstr "C. Fact."
+
+#: informeqtoolbutton.cpp:464
+msgid "C. Ped."
+msgstr "C. Ped."
+
+#: informeqtoolbutton.cpp:266
+msgid "Cobrado"
+msgstr "Cobrado"
+
+#: informeqtoolbutton.cpp:199 informeqtoolbutton.cpp:231
+#: informeqtoolbutton.cpp:264 informeqtoolbutton.cpp:311
+msgid "Entregado"
+msgstr "Entregado"
+
+#: informeqtoolbutton.cpp:200 informeqtoolbutton.cpp:232
+#: informeqtoolbutton.cpp:265 informeqtoolbutton.cpp:312
+msgid "Facturado"
+msgstr "Facturado"
+
+#: informeqtoolbutton.cpp:132
+msgid "Generando Informe"
+msgstr "Generando Informe"
+
+#: informeqtoolbutton.cpp:488
+msgid "Generando informe"
+msgstr "Generando informe"
+
+#: informeqtoolbutton.cpp:313
+msgid "Pagado"
+msgstr "Pagado"
+
+#: informeqtoolbutton.cpp:198 informeqtoolbutton.cpp:230
+#: informeqtoolbutton.cpp:263 informeqtoolbutton.cpp:310
+msgid "Pedido"
+msgstr "Pedido"
+
+#: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
+msgid "Pres."
+msgstr "Pres."
+
+#: informeqtoolbutton.cpp:469
+msgid "V. Entr."
+msgstr "V. Entr."
+
+#: informeqtoolbutton.cpp:470
+msgid "V. Fact."
+msgstr "V. Fact."
+
+#: informeqtoolbutton.cpp:468
+msgid "V. Ped."
+msgstr "V. Ped."
+
+#: informeqtoolbutton.cpp:467
+msgid "V. Pres."
+msgstr "V. Pres."

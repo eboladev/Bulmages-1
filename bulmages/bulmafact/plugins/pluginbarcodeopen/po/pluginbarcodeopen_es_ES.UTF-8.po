@@ -1,0 +1,7 @@
+#: pluginbarcodeopen.cpp:74
+msgid "Introduzca codigo"
+msgstr "Introduzca cdigo"
+
+#: pluginbarcodeopen.cpp:73
+msgid "QInputDialog::getText()"
+msgstr "QInputDialog::getText()"

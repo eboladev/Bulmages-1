@@ -13,10 +13,10 @@
    <string>Configuracion</string>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="spacing" >
+   <property name="margin" >
     <number>5</number>
    </property>
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
    <item>
@@ -28,26 +28,26 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex" >
-      <number>3</number>
+      <number>0</number>
      </property>
-     <widget class="QWidget" name="tab1" >
+     <widget class="QWidget" name="tab" >
       <attribute name="title" >
        <string>B&amp;ulmaCont</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="spacing" >
-        <number>6</number>
-       </property>
        <property name="margin" >
         <number>11</number>
        </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <property name="margin" >
           <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
          </property>
          <item>
           <widget class="QLineEdit" name="lineEditA_1" >
@@ -73,7 +73,7 @@
            <property name="sizeType" >
             <enum>QSizePolicy::Expanding</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" >
             <size>
              <width>211</width>
              <height>21</height>
@@ -85,11 +85,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <property name="margin" >
           <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
          </property>
          <item>
           <widget class="QPushButton" name="m_backup" >
@@ -117,11 +117,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <property name="margin" >
           <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonA_1" >
@@ -166,7 +166,7 @@
          <property name="sizeType" >
           <enum>QSizePolicy::Expanding</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" >
           <size>
            <width>21</width>
            <height>20</height>
@@ -176,24 +176,24 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab2" >
+     <widget class="QWidget" name="TabPage" >
       <attribute name="title" >
        <string>Bulma&amp;Fact</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="spacing" >
-        <number>6</number>
-       </property>
        <property name="margin" >
         <number>11</number>
        </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <property name="margin" >
           <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
          </property>
          <item>
           <widget class="QLineEdit" name="lineEditA_1_2" >
@@ -219,7 +219,7 @@
            <property name="sizeType" >
             <enum>QSizePolicy::Expanding</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" >
             <size>
              <width>211</width>
              <height>21</height>
@@ -231,11 +231,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <property name="margin" >
           <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
          </property>
          <item>
           <widget class="QPushButton" name="m_backup_2" >
@@ -263,11 +263,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <property name="margin" >
           <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonA_1_2" >
@@ -312,7 +312,7 @@
          <property name="sizeType" >
           <enum>QSizePolicy::Expanding</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" >
           <size>
            <width>81</width>
            <height>60</height>
@@ -322,7 +322,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab3" >
+     <widget class="QWidget" name="TabPage" >
       <property name="enabled" >
        <bool>false</bool>
       </property>
@@ -330,11 +330,11 @@
        <string>Parametros</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="spacing" >
-        <number>6</number>
-       </property>
        <property name="margin" >
         <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
        </property>
        <item>
         <widget class="QTableWidget" name="m_tconfiguracion" >
@@ -354,7 +354,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab4" >
+     <widget class="QWidget" name="tab_2" >
       <property name="enabled" >
        <bool>false</bool>
       </property>
@@ -377,11 +377,11 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
         <property name="margin" >
          <number>11</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
         </property>
         <item>
          <widget class="QToolButton" name="toolButton" >
@@ -389,8 +389,7 @@
            <string>Crea empresa</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
-            <normaloff>:/Images/warehouse.svg</normaloff>:/Images/warehouse.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/warehouse.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -409,8 +408,7 @@
            <string>Borra empresa</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_boton_menos.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_boton_menos.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_boton_menos.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -429,8 +427,7 @@
            <string>Crea ejercicio</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_cobros.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_cobros.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_cobros.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -449,8 +446,7 @@
            <string>Borra ejercicio</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -481,16 +477,18 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QVBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
         <property name="margin" >
          <number>11</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
         </property>
         <item>
          <widget class="QToolButton" name="toolButton_6" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -499,8 +497,7 @@
            <string>Genera copia de seguridad</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -516,7 +513,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_7" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -525,8 +524,7 @@
            <string>Restaura copia de seguridad</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -542,7 +540,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_8" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -551,8 +551,7 @@
            <string>Importa datos</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -568,7 +567,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_5" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -577,8 +578,7 @@
            <string>Genera copia de seguridad</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -594,7 +594,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_9" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -603,8 +605,7 @@
            <string>Exporta datos</string>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_compras_albaran.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -635,19 +636,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
         <property name="margin" >
          <number>11</number>
         </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
          <layout class="QVBoxLayout" >
-          <property name="spacing" >
-           <number>6</number>
-          </property>
           <property name="margin" >
            <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
           </property>
           <item>
            <widget class="QLabel" name="label" >
@@ -667,11 +668,11 @@
         </item>
         <item>
          <layout class="QVBoxLayout" >
-          <property name="spacing" >
-           <number>6</number>
-          </property>
           <property name="margin" >
            <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
           </property>
           <item>
            <widget class="QLabel" name="label_2" >
@@ -696,11 +697,11 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>6</number>
-     </property>
      <property name="margin" >
       <number>11</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
      </property>
      <item>
       <spacer>
@@ -710,7 +711,7 @@
        <property name="sizeType" >
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" >
         <size>
          <width>431</width>
          <height>31</height>

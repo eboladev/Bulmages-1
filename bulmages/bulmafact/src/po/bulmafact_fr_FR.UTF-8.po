@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 13:24+0100\n"
+"POT-Creation-Date: 2009-02-08 21:43+0100\n"
 "PO-Revision-Date: 2009-01-26 09:35+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -168,7 +168,7 @@ msgstr "Activer le &control de stock."
 msgid "Activar el control de stock para este articulo."
 msgstr ""
 
-#: ui_trabajadorbase.h:341
+#: ui_trabajadorbase.h:340
 msgid "Activo"
 msgstr "Actif"
 
@@ -192,7 +192,7 @@ msgstr "Magasins"
 msgid "Alt+O"
 msgstr "Alt+O"
 
-#: ui_trabajadorbase.h:345
+#: ui_trabajadorbase.h:344
 msgid "Apellidos:"
 msgstr "Noms:"
 
@@ -255,8 +255,8 @@ msgstr ""
 msgid "Borrar imagen del articulo"
 msgstr ""
 
-#: ui_bancobase.h:424 ui_bancobase.h:429 ui_trabajadorbase.h:353
-#: ui_trabajadorbase.h:358
+#: ui_bancobase.h:424 ui_bancobase.h:429 ui_trabajadorbase.h:352
+#: ui_trabajadorbase.h:357
 msgid "Borrar trabajador"
 msgstr "Éraser ouvrier"
 
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Cam&biar imagen"
 msgstr "Chan&ger Image"
 
-#: ui_trabajadorbase.h:346
+#: ui_trabajadorbase.h:345
 msgid "Cambiar imagen"
 msgstr "Changer image"
 
@@ -459,7 +459,7 @@ msgstr "Voulez vous sauver les changes?"
 msgid "Direccion"
 msgstr "Direction"
 
-#: ui_trabajadorbase.h:343
+#: ui_trabajadorbase.h:342
 msgid "Direccion:"
 msgstr "Direction:"
 
@@ -471,7 +471,7 @@ msgstr "Disponible en stock"
 msgid "E&mpresa"
 msgstr "E&ntreprise"
 
-#: ui_bancobase.h:414 ui_trabajadorbase.h:348
+#: ui_bancobase.h:414 ui_trabajadorbase.h:347
 msgid "E-mail:"
 msgstr "E-mail:"
 
@@ -666,7 +666,7 @@ msgstr "Forme de payement:"
 msgid "Formas de pago"
 msgstr "Forme de payement"
 
-#: ui_trabajadorbase.h:349
+#: ui_trabajadorbase.h:348
 msgid "General"
 msgstr "Général"
 
@@ -702,8 +702,8 @@ msgstr "Sauver famille"
 msgid "Guardar forma de pago"
 msgstr "Garder forme de payement"
 
-#: ui_bancobase.h:435 ui_bancobase.h:440 ui_trabajadorbase.h:364
-#: ui_trabajadorbase.h:369
+#: ui_bancobase.h:435 ui_bancobase.h:440 ui_trabajadorbase.h:363
+#: ui_trabajadorbase.h:368
 msgid "Guardar trabajador"
 msgstr "Sauver ouvrier"
 
@@ -844,7 +844,7 @@ msgstr "Lisant configuration"
 msgid "Lista de bancos:"
 msgstr " Listes de banques:"
 
-#: ui_trabajadorbase.h:350
+#: ui_trabajadorbase.h:349
 msgid "Lista de trabajadores:"
 msgstr "Liste d'ouvriers:"
 
@@ -908,7 +908,7 @@ msgstr "Nom de l'article"
 msgid "Nombre del articulo:"
 msgstr "Nom de l'article:"
 
-#: ui_familiasbase.h:380 ui_trabajadorbase.h:342
+#: ui_familiasbase.h:380 ui_trabajadorbase.h:341
 msgid "Nombre:"
 msgstr "Nom:"
 
@@ -933,8 +933,8 @@ msgstr "Nouveau Genres d'article"
 msgid "Nuevo articulo"
 msgstr "Nouveau article"
 
-#: ui_bancobase.h:446 ui_bancobase.h:451 ui_trabajadorbase.h:375
-#: ui_trabajadorbase.h:380
+#: ui_bancobase.h:446 ui_bancobase.h:451 ui_trabajadorbase.h:374
+#: ui_trabajadorbase.h:379
 msgid "Nuevo trabajador"
 msgstr "Nouveau ouvrier"
 
@@ -942,7 +942,7 @@ msgstr "Nouveau ouvrier"
 msgid "Numero de cuenta:"
 msgstr ""
 
-#: ui_trabajadorbase.h:344
+#: ui_trabajadorbase.h:343
 msgid "Numero de la Seguridad Social:"
 msgstr "Numéro de la Sécurité Sociale:"
 
@@ -1135,11 +1135,11 @@ msgstr "Taxe TVA"
 msgid "Tasas de IVA"
 msgstr "Taux de TVA"
 
-#: ui_trabajadorbase.h:347
+#: ui_trabajadorbase.h:346
 msgid "Telefono movil:"
 msgstr "Téléphone portable:"
 
-#: ui_bancobase.h:415 ui_trabajadorbase.h:340
+#: ui_bancobase.h:415 ui_trabajadorbase.h:339
 msgid "Telefono:"
 msgstr "Téléphone:"
 
@@ -1211,7 +1211,7 @@ msgstr "Total Rem."
 msgid "Trabajador"
 msgstr "Ouvrier"
 
-#: ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:338
 msgid "Trabajadores"
 msgstr "Ouvrier"
 

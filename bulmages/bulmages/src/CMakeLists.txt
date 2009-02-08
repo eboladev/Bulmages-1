@@ -25,27 +25,27 @@
 ###########################################
 
 
-set(bulmages_UIS comun/importContaplusBase.ui 
-            comun/selectorbase.ui 
-            comun/configuracion.ui
-            comun/nuevaempresadlg.ui 
-            comun/nuevafactbase.ui 
-            comun/importexportbulmafactbase.ui)
+set(bulmages_UIS importContaplusBase.ui 
+            selectorbase.ui 
+            configuracion.ui
+            nuevaempresadlg.ui 
+            nuevafactbase.ui 
+            importexportbulmafactbase.ui)
 
 set(bulmages_SRC main.cpp 
-            comun/bselector.cpp 
-            comun/bconfiguracion.cpp 
-            comun/bnuevaempresa.cpp 
-            comun/nuevafact.cpp 
-            comun/gongimportfiles.cpp 
-            comun/importContaplus.cpp 
-            comun/importexportbulmafactview.cpp)
+            bselector.cpp 
+            bconfiguracion.cpp 
+            bnuevaempresa.cpp 
+            nuevafact.cpp 
+            gongimportfiles.cpp 
+            importContaplus.cpp 
+            importexportbulmafactview.cpp)
 
-set(bulmages_MOCS comun/bselector.h 
-            comun/bconfiguracion.h 
-            comun/bnuevaempresa.h 
-            comun/importContaplus.h 
-            comun/importexportbulmafactview.h)
+set(bulmages_MOCS bselector.h 
+            bconfiguracion.h 
+            bnuevaempresa.h 
+            importContaplus.h 
+            importexportbulmafactview.h)
 
 
 set(QT_USE_QTASSISTANT true)
@@ -79,6 +79,17 @@ QT4_WRAP_CPP(bulmages_MOC_SRCS ${bulmages_MOCS})
 # i18n
 ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmages\", String)'" )
 ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmages\", String)'" )
+
+if(USE_GETTEXT)
+   set(bulmages_i18n ${bulmages_MOCS} ${bulmages_MOC_SRCS}
+		${bulmages_UIS_H} ${bulmages_SRC} ${bulmages_SRCS} )
+
+   GETTEXT_CREATE_TEMPLATE(bulmages ${CMAKE_CURRENT_BINARY_DIR}
+                                ${CMAKE_CURRENT_SOURCE_DIR} bulmages_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmages.pot
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+endif(USE_GETTEXT)
+
 
 # build sources, moc'd sources, and rcc'd sources
 # # generate rules for building source files from the resources

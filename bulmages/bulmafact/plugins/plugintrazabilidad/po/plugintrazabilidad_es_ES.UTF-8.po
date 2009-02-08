@@ -1,0 +1,115 @@
+#: ui_movimientosbase.h:304 ui_movimientosbase.h:309
+msgid "Actualizar listado"
+msgstr "Actualizar listado"
+
+#: movimientosview.cpp:179
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#: movimientosview.cpp:64
+msgid "Cliente:"
+msgstr "Cliente:"
+
+#: movimientosview.cpp:182
+msgid "Codigo almacen"
+msgstr "Codigo almacen"
+
+#: movimientosview.cpp:177
+msgid "Codigo articulo"
+msgstr "Codigo articulo"
+
+#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
+msgid "Configurar listado"
+msgstr "Configurar listado"
+
+#: ui_movimientosbase.h:301
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_movimientosbase.h:289
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_movimientosbase.h:277
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_movimientosbase.h:313
+msgid "F5"
+msgstr "F5"
+
+#: movimientosview.cpp:148
+msgid "Facturas a clientes"
+msgstr "Facturas a clientes"
+
+#: movimientosview.cpp:89
+msgid "Facturas no procesadas"
+msgstr "Facturas no procesadas"
+
+#: movimientosview.cpp:88
+msgid "Facturas procesadas"
+msgstr "Facturas procesadas"
+
+#: movimientosview.cpp:175
+msgid "Fecha"
+msgstr "Fecha"
+
+#: ui_movimientosbase.h:315
+msgid "Fecha final:"
+msgstr "Fecha final:"
+
+#: ui_movimientosbase.h:316
+msgid "Fecha inicial:"
+msgstr "Fecha inicial:"
+
+#: ui_movimientosbase.h:280 ui_movimientosbase.h:285
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#: movimientosview.cpp:184
+msgid "Id albaran cliente"
+msgstr "Id albaran cliente"
+
+#: movimientosview.cpp:185
+msgid "Id albaran proveedor"
+msgstr "Id albaran proveedor"
+
+#: movimientosview.cpp:181
+msgid "Id almacen"
+msgstr "Id almacen"
+
+#: movimientosview.cpp:176
+msgid "Id articulo"
+msgstr "Id articulo"
+
+#: ui_movimientosbase.h:268 ui_movimientosbase.h:273
+msgid "Imprimir listado"
+msgstr "Imprimir listado"
+
+#: movimientosview.cpp:180
+msgid "Lote"
+msgstr "Lote"
+
+#: ui_movimientosbase.h:314
+msgid "Mostrar:"
+msgstr "Mostrar:"
+
+#: ui_movimientosbase.h:264
+msgid "Movimientos"
+msgstr "Movimientos"
+
+#: movimientosview.cpp:183
+msgid "Nombre almacen"
+msgstr "Nombre almacen"
+
+#: movimientosview.cpp:178
+msgid "Nombre articulo"
+msgstr "Nombre articulo"
+
+#: movimientosview.cpp:87
+msgid "Todas las facturas"
+msgstr "Todas las facturas"
+
+#: movimientosview.cpp:174
+msgid "idarticulo"
+msgstr "idarticulo"

@@ -307,9 +307,9 @@ void BConfiguracion::borrarEmpresa()
     dbEmpresa = PunteroAlSelector->empresaDB();
     if ( dbEmpresa != "" ) {
         if ( dbEmpresa == "bgplangcont" ) {
-            QMessageBox::information ( this, _( "Atencion" ), _( "Esta base de datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas." ), QMessageBox::Ok );
+            QMessageBox::information ( this, _( "Atencion" ), _( "Esta base de datos no puede ser eliminada.\n Es la plantilla para generar nuevas empresas." ), QMessageBox::Ok );
         } else if ( dbEmpresa != PunteroAlSelector->empresaDB() ) {
-            QMessageBox::warning ( this, _( "Atencion" ), _( "No esta permitido eliminar la base \n\r de datos actualmente abierta." ), QMessageBox::Ok, 0 );
+            QMessageBox::warning ( this, _( "Atencion" ), _( "No esta permitido eliminar la base \n de datos actualmente abierta." ), QMessageBox::Ok, 0 );
         } else {
             int mensaje = QMessageBox::warning ( this, _( "Atencion" ), _( "Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n" ), QMessageBox::Yes, QMessageBox::No, 0 );
             if ( mensaje == QMessageBox::Yes ) {

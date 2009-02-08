@@ -1,0 +1,161 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-08 19:44+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ui_tarifabase.h:270
+msgid "&Aceptar"
+msgstr "&Accepta"
+
+#: ui_tarifabase.h:271
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: tarifaview.cpp:243
+msgid "&No"
+msgstr "&No"
+
+#: tarifaview.cpp:243
+msgid "&Si"
+msgstr "&Sí"
+
+#: plugintarifas.cpp:76
+msgid "&Tarifas"
+msgstr ""
+
+#: ui_tarifalistbase.h:179 ui_tarifalistbase.h:184 ui_tarifabase.h:258
+#: ui_tarifabase.h:263
+msgid "Actualizar listado"
+msgstr "Actual·litza llistat"
+
+#: plugintarifas.cpp:182
+msgid "Almacen"
+msgstr ""
+
+#: ui_tarifabase.h:269
+msgid "Almacen:"
+msgstr ""
+
+#: ui_tarifabase.h:247 ui_tarifabase.h:252
+msgid "Borrar"
+msgstr "Esborra"
+
+#: tarifaview.cpp:241 ui_tarifalistbase.h:169 ui_tarifalistbase.h:174
+msgid "Borrar tarifa"
+msgstr "Esborra tarifa"
+
+#: plugintarifas.cpp:183
+msgid "Cantidad mayor o igual que"
+msgstr ""
+
+#: listltarifaview.cpp:41 listltarifaview.cpp:58
+msgid "Codigo completo del articulo"
+msgstr ""
+
+#: ui_tarifalistbase.h:159 ui_tarifalistbase.h:164
+#, fuzzy
+msgid "Editar tarifa"
+msgstr "Editar tarifa"
+
+#: tarifaview.cpp:242
+msgid "Esta a punto de borrar una tarifa. Desea continuar?"
+msgstr ""
+
+#: ui_tarifabase.h:268
+#, fuzzy
+msgid "Filtrado de articulos:"
+msgstr "Llista d'amortitzacions"
+
+#: ui_tarifabase.h:237 ui_tarifabase.h:242
+msgid "Guardar"
+msgstr "Desa"
+
+#: plugintarifas.cpp:181 listltarifaview.cpp:38 listltarifaview.cpp:62
+msgid "ID almacen"
+msgstr ""
+
+#: plugintarifas.cpp:178 listltarifaview.cpp:37 listltarifaview.cpp:61
+msgid "ID articulo"
+msgstr ""
+
+#: tarifalistsubform.cpp:37 tarifaview.cpp:50 plugintarifas.cpp:179
+#: listltarifaview.cpp:39 listltarifaview.cpp:63
+msgid "ID tarifa"
+msgstr ""
+
+#: plugintarifas.cpp:177
+msgid "ID variacion tarifa"
+msgstr ""
+
+#: listltarifaview.cpp:35 listltarifaview.cpp:57
+msgid "Nombre almacen"
+msgstr "Nom del magatzem"
+
+#: listltarifaview.cpp:59
+#, fuzzy
+msgid "Nombre articulo"
+msgstr "Nom de l'amortització"
+
+#: tarifalistsubform.cpp:36 tarifaview.cpp:51 listltarifaview.cpp:65
+#, fuzzy
+msgid "Nombre de la tarifa"
+msgstr "Nom de l'entitat:"
+
+#: ui_tarifabase.h:267
+#, fuzzy
+msgid "Nombre de la tarifa:"
+msgstr "Nom de l'entitat:"
+
+#: listltarifaview.cpp:42
+#, fuzzy
+msgid "Nombre del articulo"
+msgstr "Nom de l'amortització"
+
+#: listltarifaview.cpp:34
+msgid "Nombre tarifa"
+msgstr "Nom de la tarifa"
+
+#: ui_tarifalistbase.h:149 ui_tarifalistbase.h:154
+#, fuzzy
+msgid "Nueva tarifa"
+msgstr "Nova amortització"
+
+#: listltarifaview.cpp:40 listltarifaview.cpp:64
+msgid "Num de linea"
+msgstr ""
+
+#: plugintarifas.cpp:184
+#, fuzzy
+msgid "Porcentaje variacion"
+msgstr "Id compte d'amortizació"
+
+#: listltarifaview.cpp:36 listltarifaview.cpp:60
+msgid "Precio de venta"
+msgstr "Preu de venta"
+
+#: tarifaview.cpp:47 tarifaview.cpp:100 tarifaview.cpp:159
+#: plugintarifas.cpp:180 ui_tarifabase.h:233
+msgid "Tarifa"
+msgstr ""
+
+#: tarifaview.cpp:67
+msgid "Tarifa edicion"
+msgstr ""
+
+#: plugintarifas.cpp:77 plugintarifas.cpp:78 plugintarifas.cpp:161
+#: tarifalistview.cpp:43 ui_tarifalistbase.h:146
+msgid "Tarifas"
+msgstr ""
+
+#: plugintarifas.cpp:114
+msgid "plugintarifas"
+msgstr ""

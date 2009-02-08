@@ -69,7 +69,7 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
 
@@ -90,7 +90,7 @@ target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LI
 
 # i18n
 #GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin} ${CMAKE_SOURCE_DIR}/bulmafact/plugins/${plugin} ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list)
-#GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+#GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 
 # i18n commands executed after build.
 #ADD_CUSTOM_COMMAND(TARGET ${plugin} POST_BUILD COMMAND make ${plugin}.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})

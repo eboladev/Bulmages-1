@@ -1,0 +1,132 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-08 19:44+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ui_movimientosbase.h:304 ui_movimientosbase.h:309
+msgid "Actualizar listado"
+msgstr "Actual·litza llistat"
+
+#: movimientosview.cpp:179
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: movimientosview.cpp:64
+msgid "Cliente:"
+msgstr "Client:"
+
+#: movimientosview.cpp:182
+msgid "Codigo almacen"
+msgstr "Codi magatzem"
+
+#: movimientosview.cpp:177
+msgid "Codigo articulo"
+msgstr "Codi article"
+
+#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
+msgid "Configurar listado"
+msgstr "Configura llistat"
+
+#: ui_movimientosbase.h:301
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_movimientosbase.h:289
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_movimientosbase.h:277
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_movimientosbase.h:313
+msgid "F5"
+msgstr "F5"
+
+#: movimientosview.cpp:148
+msgid "Facturas a clientes"
+msgstr "Factures a clients"
+
+#: movimientosview.cpp:89
+msgid "Facturas no procesadas"
+msgstr "Factures no processades"
+
+#: movimientosview.cpp:88
+msgid "Facturas procesadas"
+msgstr "factures processades"
+
+#: movimientosview.cpp:175
+msgid "Fecha"
+msgstr "Data"
+
+#: ui_movimientosbase.h:315
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_movimientosbase.h:316
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_movimientosbase.h:280 ui_movimientosbase.h:285
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#: movimientosview.cpp:184
+msgid "Id albaran cliente"
+msgstr ""
+
+#: movimientosview.cpp:185
+#, fuzzy
+msgid "Id albaran proveedor"
+msgstr "NIF del proveïdor"
+
+#: movimientosview.cpp:181
+msgid "Id almacen"
+msgstr "Id magatzem"
+
+#: movimientosview.cpp:176
+msgid "Id articulo"
+msgstr "Id article"
+
+#: ui_movimientosbase.h:268 ui_movimientosbase.h:273
+#, fuzzy
+msgid "Imprimir listado"
+msgstr "Imprimeix la comanda"
+
+#: movimientosview.cpp:180
+msgid "Lote"
+msgstr "Lot"
+
+#: ui_movimientosbase.h:314
+msgid "Mostrar:"
+msgstr "Mostrar:"
+
+#: ui_movimientosbase.h:264
+#, fuzzy
+msgid "Movimientos"
+msgstr "Assentaments"
+
+#: movimientosview.cpp:183
+msgid "Nombre almacen"
+msgstr "Nom del magatzem"
+
+#: movimientosview.cpp:178
+msgid "Nombre articulo"
+msgstr "Nom article"
+
+#: movimientosview.cpp:87
+msgid "Todas las facturas"
+msgstr "Totes les factures"
+
+#: movimientosview.cpp:174
+msgid "idarticulo"
+msgstr "idarticulo"
