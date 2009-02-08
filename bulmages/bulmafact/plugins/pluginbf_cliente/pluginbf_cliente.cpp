@@ -89,12 +89,13 @@ void MyPlugCli::inicializa ( Bulmafact *bges )
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
+	pPluginMenu->addSeparator();
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Clientes" ), 0 );
-//	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/client.gif" ) ));
+	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-list.svg" ) ));
 	planCuentas->setStatusTip ( _( "Clientes" ) );
 	planCuentas->setWhatsThis ( _( "Clientes" ) );
 	pPluginMenu->addAction ( planCuentas );
@@ -102,7 +103,7 @@ void MyPlugCli::inicializa ( Bulmafact *bges )
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
 	QAction *npago = new QAction ( _( "&Nuevo Cliente" ), 0 );
-//	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/client.gif" ) ));
+	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client.svg" ) ));
 	npago->setStatusTip ( _( "Nuevo cliente" ) );
 	npago->setWhatsThis ( _( "Nuevo cliente" ) );
 	pPluginMenu->addAction ( npago );

@@ -108,6 +108,10 @@ void Busqueda::setId ( QString val )
     _depura ( "Busqueda::setId", 0, val );
     mdb_id = val;
 
+    if (m_tabla == "") {
+		return;
+    } // end if
+
     if ( val == "" ) {
         m_inputBusqueda->setText ( "" );
         m_textBusqueda->setText ( "" );

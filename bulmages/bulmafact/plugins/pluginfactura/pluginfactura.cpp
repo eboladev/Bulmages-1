@@ -90,6 +90,7 @@ void mypluginfact::inicializa ( Bulmafact *bges )
     if ( bges->getcompany()->has_table_privilege ( "factura", "SELECT" ) ) {
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
+	pPluginMenu->addSeparator();
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;

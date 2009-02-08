@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>81</y>
+     <y>67</y>
      <width>991</width>
-     <height>461</height>
+     <height>477</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>34</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -107,9 +107,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>542</y>
+     <y>544</y>
      <width>991</width>
-     <height>27</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -117,9 +117,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>34</y>
-     <width>64</width>
-     <height>47</height>
+     <y>25</y>
+     <width>53</width>
+     <height>42</height>
     </rect>
    </property>
    <property name="focusPolicy" >
@@ -158,17 +158,15 @@
    <attribute name="toolBarBreak" >
     <bool>false</bool>
    </attribute>
-   <addaction name="separator" />
-   <addaction name="separator" />
    <addaction name="actionListado_de_Articulos" />
   </widget>
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>64</x>
-     <y>34</y>
-     <width>927</width>
-     <height>47</height>
+     <x>53</x>
+     <y>25</y>
+     <width>938</width>
+     <height>42</height>
     </rect>
    </property>
    <property name="sizePolicy" >
@@ -222,8 +220,6 @@
    <attribute name="toolBarBreak" >
     <bool>false</bool>
    </attribute>
-   <addaction name="separator" />
-   <addaction name="separator" />
    <addaction name="actionNuevo_Articulo" />
   </widget>
   <action name="actionSalir" >

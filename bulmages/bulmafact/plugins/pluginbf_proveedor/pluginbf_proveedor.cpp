@@ -89,12 +89,12 @@ void MyPlugPro::inicializa ( Bulmafact *bges )
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
-
+	pPluginMenu->addSeparator();
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Proveedores" ), 0 );
-//	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/client.gif" ) ));
+	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-list.svg" ) ));
 	planCuentas->setStatusTip ( _( "Proveedores" ) );
 	planCuentas->setWhatsThis ( _( "Proveedores" ) );
 	pPluginMenu->addAction ( planCuentas );
@@ -102,7 +102,7 @@ void MyPlugPro::inicializa ( Bulmafact *bges )
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
 	QAction *npago = new QAction ( _( "&Nuevo Proveedor" ), 0 );
-//	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/client.gif" ) ));
+	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier.svg" ) ));
 	npago->setStatusTip ( _( "Nuevo proveedor" ) );
 	npago->setWhatsThis ( _( "Nuevo proveedor" ) );
 	pPluginMenu->addAction ( npago );

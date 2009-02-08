@@ -88,6 +88,7 @@ void mypluginpag::inicializa ( Bulmafact *bges )
     if ( bges->getcompany()->has_table_privilege ( "pago", "SELECT" ) ) {
     /// Miramos si existe un menu Compras
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
+	pPluginMenu->addSeparator();
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;

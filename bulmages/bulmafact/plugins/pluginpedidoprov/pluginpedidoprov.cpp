@@ -89,6 +89,7 @@ void mypluginpedp::inicializa ( Bulmafact *bges )
 
     /// Miramos si existe un menu Compras
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
+	pPluginMenu->addSeparator();
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
