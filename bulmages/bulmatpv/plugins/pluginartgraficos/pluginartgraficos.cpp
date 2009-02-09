@@ -20,6 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QPushButton>
+#include <QVBoxLayout>
 
 #include "pluginartgraficos.h"
 #include "funcaux.h"
@@ -27,7 +29,9 @@
 #include "artgraficos.h"
 #include "plugins.h"
 #include "ticket.h"
+#include "bdockwidget.h"
 
+BDockWidget *g_pantallas;
 
 ArtGraficos *g_graf;
 ///
@@ -41,6 +45,15 @@ int entryPoint ( BulmaTPV *tpv )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginartgraficos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+
+
+	/// Ponemos el widget de pantallas.
+    g_pantallas = new BDockWidget ( "Pantallas", tpv, "pantallasdock" );
+    g_pantallas->setObjectName ( "pantallasdock" );
+    g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+    tpv->addDockWidget ( Qt::RightDockWidgetArea, g_pantallas );
+    g_pantallas->show();
+    g_pantallas->cargaconf();
 
     _depura ( "END entryPoint", 0 );
     return 0;

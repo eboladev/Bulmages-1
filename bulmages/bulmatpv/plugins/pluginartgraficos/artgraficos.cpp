@@ -6,9 +6,14 @@
 #include <QDomDocument>
 #include <QPicture>
 #include <QPainter>
+#include <QPushButton>
 
 #include "funcaux.h"
 #include "configuracion.h"
+#include "bdockwidget.h"
+
+
+extern BDockWidget *g_pantallas;
 
 ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -19,6 +24,7 @@ ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp,
     mui_list->horizontalHeader() ->hide();
     mui_list->verticalHeader() ->hide();
     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
+	ponPantallas();
     muestraPantalla ( 0 );
 }
 
@@ -163,4 +169,35 @@ void ArtGraficos::cargaXML ( QString filename )
 
 }
 
+void ArtGraficos::ponPantallas() {
+	/// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginartgraficos.cpp
+	QWidget *widget = new QWidget;
+    QVBoxLayout *hboxLayout1 = new QVBoxLayout;
+    hboxLayout1->setSpacing ( 5 );
+    hboxLayout1->setMargin ( 5 );
+    hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
 
+	/// Itero sobre las pantallas para obtener los nombres de pantalla y crear los botones pretinentes.
+	QDomElement docElem = m_doc.documentElement();
+	QDomNodeList nodos = docElem.elementsByTagName("PANTALLA");
+
+	int i=0;
+	for (int i=0; i < nodos.count(); i++) {
+		/// Cogemos el titulo de la pantalla
+		QString titulo = nodos.item(i).firstChildElement( "NOMBRE" ).text();
+		QPushButton *pb = new QPushButton( titulo, g_pantallas );
+		pb->setText(titulo);
+		pb->setObjectName(QString::number(i));
+		/// Hago la conexcion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
+		connect (pb, SIGNAL(pressed()), this, SLOT(pulsadoBoton()));
+		hboxLayout1->addWidget(pb);
+	}
+
+	/// Agrego el widget al BLDockWidget
+	widget->setLayout(hboxLayout1);
+	g_pantallas->setWidget(widget);
+}
+
+void ArtGraficos::pulsadoBoton() {
+	muestraPantalla(sender()->objectName().toInt());
+}

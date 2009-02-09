@@ -23,11 +23,13 @@ public:
     virtual ~ArtGraficos();
     void cargaXML ( QString );
     void muestraPantalla ( int );
+	void ponPantallas();
 
 public slots:
     virtual void on_mui_list_cellClicked ( int, int );
     virtual void on_mui_botonSiguiente_clicked();
     virtual void on_mui_botonAnterior_clicked();
+	virtual void pulsadoBoton();
 };
 
 #endif

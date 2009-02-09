@@ -43,7 +43,6 @@ int entryPoint ( BulmaTPV *tpv )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginartsubform", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -52,16 +51,8 @@ int entryPoint ( BulmaTPV *tpv )
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
 
-
     ArticuloList1 *lan = new ArticuloList1 ( ( Company * ) etpv, NULL, 0, ArticuloList1::SelectMode );
     g_main->setCentralWidget ( lan );
-
-    /*
-        BusquedaArticulo *busc = new BusquedaArticulo(0);
-        busc->setEmpresaBase(etpv);
-        g_main->setCentralWidget ( busc );
-    */
-//    lan->connect ( lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );
 
     return 0;
 }
