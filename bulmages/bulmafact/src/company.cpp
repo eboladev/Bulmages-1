@@ -27,8 +27,6 @@
 
 #include "stdio.h"
 #include "abreempresaview.h"
-#include "articulolist.h"
-#include "articuloview.h"
 #include "company.h"
 #include "familiasview.h"
 #include "fpagoview.h"
@@ -87,6 +85,7 @@ void Company::createMainWindows ( Splash *splash )
     _depura ( "Company::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
+/*
     _depura ( "Company::createMainWindows inicializamos m_articleslist", 1 );
     splash->mensaje ( _( "Inicializando listado de articulos" ) );
     splash->setBarraProgreso ( 7 );
@@ -96,7 +95,8 @@ void Company::createMainWindows ( Splash *splash )
     m_bulmafact->actionNuevo_Articulo->setEnabled ( FALSE );
     m_bulmafact->actionGestion_Familias->setEnabled ( FALSE );
     m_bulmafact->actionGestion_Tipos_Articulo->setEnabled ( FALSE );
-
+*/
+/*
     if ( has_table_privilege ( "articulo", "SELECT" ) ) {
         m_articleslist = new ArticuloList ( this );
         m_pWorkspace->addWindow ( m_articleslist );
@@ -106,7 +106,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionGestion_Familias->setEnabled ( TRUE );
         m_bulmafact->actionGestion_Tipos_Articulo->setEnabled ( TRUE );
     } // end if
-
+*/
     /// pb = 8%
 /*
     _depura ( "Company::createMainWindows inicializamos m_providerslist", 1 );
@@ -257,9 +257,11 @@ void Company::listClients()
 void Company::listarticles()
 {
     _depura ( "Company::listarticles", 0 );
+/*
     m_articleslist->show();
     m_articleslist->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_articleslist );
+*/
     _depura ( "END Company::listarticles", 0 );
 }
 
@@ -273,9 +275,11 @@ void Company::listarticles()
 void Company::refreshArticles()
 {
     _depura ( "Company::refreshArticles", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_articleslist != NULL )
             m_articleslist->presentar();
+*/
     _depura ( "END Company::refreshArticles", 0 );
 }
 
@@ -463,16 +467,18 @@ void Company::s_seriesFactura()
 /**
 \return
 **/
-ArticuloView *Company::newArticuloView()
+void *Company::newArticuloView()
 {
     _depura ( "Company::newArticuloView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     ArticuloView *bud;
     if ( g_plugins->lanza ( "Company_newArticuloView", this, ( void ** ) & bud ) )
         return bud;
     bud = new ArticuloView ( this, 0 );
+*/
     _depura ( "END Company::newArticuloView", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -484,10 +490,12 @@ ArticuloView *Company::newArticuloView()
 void Company::s_newArticulo()
 {
     _depura ( "Company::s_newArticulo", 0 );
+/*
     ArticuloView *art = newArticuloView();
     m_pWorkspace->addWindow ( art );
     art->show();
     art->setFocus();
+*/
     _depura ( "END Company::s_newArticulo", 0 );
 }
 

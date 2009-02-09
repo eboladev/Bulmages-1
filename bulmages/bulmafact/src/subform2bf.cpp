@@ -28,12 +28,11 @@
 
 #include "subform2bf.h"
 #include "funcaux.h"
-#include "articulolist.h"
-#include "busquedaarticulo.h"
 #include "busquedatipoiva.h"
 #include "qtexteditdelegate.h"
 #include "busquedatrabajador.h"
 #include "busquedaalmacen.h"
+#include "busquedaarticulo.h"
 #include "plugins.h"
 
 
@@ -93,35 +92,19 @@ void SubForm2Bf::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
 {
     _depura ( "SubForm2Bf::pressedAsterisk", 0 );
 
-    if ( camp->nomcampo() != "codigocompletoarticulo" ) {
-        _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
+	/// Establezco las variables de clase para que los plugins puedan operar.
+    m_registrolinea = rec;
+    m_campoactual = camp;
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "SubForm2Bf_pressedAsterisk", this );
+    if ( res != 0 ) {
+        _depura ( "END SubForm2Bf::pressedAsterisk", 0, "Salida por plugins" );
         return;
     } // end if
 
 
-    ArticuloList *artlist = new ArticuloList ( ( Company * ) empresaBase(), NULL, 0, ArticuloList::SelectMode );
-    /// Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled ( false );
-    artlist->show();
-    while ( !artlist->isHidden() )
-        theApp->processEvents();
-    this->setEnabled ( true );
-    QString idArticle = artlist->idarticulo();
-    delete artlist;
 
-    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
-    if ( idArticle == "" ) {
-        _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
-        return;
-    } // end if
-
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
-    if ( !cur->eof() ) {
-        rec->setDBvalue ( "idarticulo", idArticle );
-        rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
-    } // end if
-    delete cur;
 
     _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
 }
@@ -149,6 +132,8 @@ void SubForm2Bf::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp
 void SubForm2Bf::pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedMinus", 0 );
+
+	/// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
 
     if ( !rec->exists ( "idarticulo" ) ) {
         _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );

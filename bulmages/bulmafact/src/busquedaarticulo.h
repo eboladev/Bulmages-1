@@ -28,8 +28,7 @@
 #include "blcombobox.h"
 #include "postgresiface2.h"
 
-#include "ui_busquedaarticulobase.h"
-#include "blwidget.h"
+#include "busqueda.h"
 
 
 class company;
@@ -62,40 +61,19 @@ public slots:
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BusquedaArticulo : public BlWidget, public Ui_BusquedaArticuloBase
+class BusquedaArticulo : public Busqueda
 {
     Q_OBJECT
 
-private:
-    /// El Widget almacena el idarticulo seleccionado en esta variable.
-    QString mdb_idarticulo;
-    /// BusquedaArticulo almacena el nombre del articulo seleccionado en esta variable.
-    QString mdb_nomarticulo;
-    /// BusquedaArticulo almacena el codigo completo del articulo seleccionado en esta variable de clase.
-    QString mdb_codigocompletoarticulo;
-    /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
-    bool m_semaforo;
-    /// Texto entrado por teclado, para comunicacion con pluginalias.
-    QString m_entrada;
 public:
     BusquedaArticulo ( QWidget *parent = 0 );
     ~BusquedaArticulo();
-    void pinta();
     virtual QString codigocompletoarticulo();
     virtual QString idarticulo();
     virtual QString nomarticulo();
-    virtual QString valorCampo();
     virtual void setidarticulo ( QString val );
-    virtual void setValorCampo ( QString val );
     virtual void setcodigocompletoarticulo ( QString val );
 
-public slots:
-    virtual void on_mui_buscar_clicked();
-    virtual void on_m_codigocompletoarticulo_textChanged ( const QString & );
-    virtual void on_m_codigocompletoarticulo_editingFinished();
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

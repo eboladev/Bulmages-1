@@ -250,23 +250,26 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
 }
 
 
-int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo *busc )
+int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
 {
     bool encontrado = FALSE;
 
-    QString val = busc->m_codigocompletoarticulo->text();
-
-    QString SQLQuery = "SELECT * FROM tc_articulo_alias LEFT JOIN articulo ON tc_articulo_alias.idarticulo = articulo.idarticulo WHERE aliastc_articulo_tallacolor = '" + val + "'";
-    cursor2 *cur = busc->empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        busc->setidarticulo ( cur->valor ( "idarticulo" ) );
-        encontrado = TRUE;
-    }
-    delete cur;
-
-    if ( encontrado ) {
-        return -1;
-    } // end if
+	if (busc->tableName() == "articulo") {
+	
+		QString val = busc->m_inputBusqueda->text();
+	
+		QString SQLQuery = "SELECT * FROM tc_articulo_alias LEFT JOIN articulo ON tc_articulo_alias.idarticulo = articulo.idarticulo WHERE aliastc_articulo_tallacolor = '" + val + "'";
+		cursor2 *cur = busc->empresaBase() ->cargacursor ( SQLQuery );
+		if ( !cur->eof() ) {
+			busc->setId ( cur->valor ( "idarticulo" ) );
+			encontrado = TRUE;
+		}
+		delete cur;
+	
+		if ( encontrado ) {
+			return -1;
+		} // end if
+	} // end if
     return 0;
 }
 

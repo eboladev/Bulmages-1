@@ -34,7 +34,6 @@
 #include "presupuestoview.h"
 #include "company.h"
 #include "clientslist.h"
-#include "articulolist.h"
 #include "configuracion.h"
 #include "busquedaformapago.h"
 #include "informereferencia.h"

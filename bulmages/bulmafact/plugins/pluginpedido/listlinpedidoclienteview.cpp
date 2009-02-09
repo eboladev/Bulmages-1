@@ -22,7 +22,6 @@
 #include <QKeyEvent>
 #include <QEvent>
 
-#include "articulolist.h"
 #include "listlinpedidoclienteview.h"
 #include "funcaux.h"
 #include "blfixed.h"

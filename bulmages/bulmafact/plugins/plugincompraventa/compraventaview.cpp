@@ -28,7 +28,6 @@
 #include <QWidget>
 
 #include "compraventaview.h"
-#include "articulolist.h"
 #include "clientslist.h"
 #include "cobroview.h"
 #include "company.h"

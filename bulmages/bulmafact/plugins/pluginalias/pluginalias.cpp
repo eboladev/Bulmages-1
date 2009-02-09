@@ -160,10 +160,12 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 }
 
 
-int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo *busc )
+int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
 {
     bool encontrado = FALSE;
-	QString val = busc->m_codigocompletoarticulo->text();
+
+	if (busc->tableName() == "articulo") {
+	QString val = busc->m_inputBusqueda->text();
 	
 	if ( posibleAlias ( val, busc->empresaBase() ) )
 	{
@@ -178,7 +180,7 @@ int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArti
 		cursor2 *cur = busc->empresaBase() ->cargacursor ( SQLQuery, 1, valors, NULL, NULL );
 		if ( !cur->eof() )
 		{
-			busc->setidarticulo ( cur->valor ( "idarticulo" ) );
+			busc->setId( cur->valor ( "idarticulo" ) );
 			encontrado = TRUE;
 		}
 		delete cur;
@@ -187,6 +189,8 @@ int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArti
     if ( encontrado ) {
         return -1;
     } // end if
+
+	} // end if
     return 0;
 }
 

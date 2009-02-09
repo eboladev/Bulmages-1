@@ -18,6 +18,7 @@ extern BlDockWidget *g_pantallas;
 
 ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
+    _depura ( "ArtGraficos::~ArtGraficos", 0 );
     setupUi ( this );
     setObjectName ( "ArtGraficos" );
     m_numPantallas = 0;
@@ -27,11 +28,15 @@ ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp,
     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
 	ponPantallas();
     muestraPantalla ( 0 );
+    _depura ( "END ArtGraficos::~ArtGraficos", 0 );
 }
 
 
 ArtGraficos::~ArtGraficos()
-{}
+{
+    _depura ( "ArtGraficos::~ArtGraficos", 0 );
+    _depura ( "END ArtGraficos::~ArtGraficos", 0 );
+}
 
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )

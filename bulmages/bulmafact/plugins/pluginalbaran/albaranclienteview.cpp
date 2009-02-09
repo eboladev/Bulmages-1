@@ -34,7 +34,6 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "albaranclienteview.h"
-#include "articulolist.h"
 #include "clientslist.h"
 #include "company.h"
 #include "configuracion.h"

@@ -24,8 +24,6 @@
 #include <QEvent>
 
 #include "listdescpresupuestoview.h"
-#include "articulolist.h"
-#include "comparticulolistview.h"
 #include "funcaux.h"
 
 

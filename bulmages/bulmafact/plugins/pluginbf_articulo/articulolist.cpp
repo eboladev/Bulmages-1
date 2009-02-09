@@ -117,7 +117,7 @@ void ArticuloList::editar ( int row )
     mdb_nomarticulo = mui_list->DBvalue ( "nomarticulo", row );
     mdb_codigocompletoarticulo = mui_list->DBvalue ( "codigocompletoarticulo", row );
     if ( modoEdicion() ) {
-        ArticuloView * art = ( ( Company * ) empresaBase() ) ->newArticuloView();
+        ArticuloView * art = new ArticuloView( ( Company * ) empresaBase(), 0 );
         empresaBase() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {

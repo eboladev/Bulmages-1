@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include "busquedatipoiva.h"
-#include "articulolist.h"
 #include "company.h"
 #include "funcaux.h"
 

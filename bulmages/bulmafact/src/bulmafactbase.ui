@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>67</y>
+     <y>38</y>
      <width>991</width>
-     <height>477</height>
+     <height>507</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -58,8 +58,6 @@
     </property>
     <addaction name="actionGestion_Familias" />
     <addaction name="actionGestion_Tipos_Articulo" />
-    <addaction name="actionNuevo_Articulo" />
-    <addaction name="actionListado_de_Articulos" />
     <addaction name="separator" />
    </widget>
    <widget class="QMenu" name="menuEmpresa" >
@@ -107,9 +105,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>544</y>
+     <y>545</y>
      <width>991</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -117,9 +115,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>25</y>
-     <width>53</width>
-     <height>42</height>
+     <y>24</y>
+     <width>14</width>
+     <height>14</height>
     </rect>
    </property>
    <property name="focusPolicy" >
@@ -158,15 +156,14 @@
    <attribute name="toolBarBreak" >
     <bool>false</bool>
    </attribute>
-   <addaction name="actionListado_de_Articulos" />
   </widget>
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>53</x>
-     <y>25</y>
-     <width>938</width>
-     <height>42</height>
+     <x>14</x>
+     <y>24</y>
+     <width>977</width>
+     <height>14</height>
     </rect>
    </property>
    <property name="sizePolicy" >
@@ -220,7 +217,6 @@
    <attribute name="toolBarBreak" >
     <bool>false</bool>
    </attribute>
-   <addaction name="actionNuevo_Articulo" />
   </widget>
   <action name="actionSalir" >
    <property name="icon" >
@@ -263,27 +259,6 @@
    </property>
    <property name="text" >
     <string>&amp;Tipos de articulo</string>
-   </property>
-  </action>
-  <action name="actionNuevo_Articulo" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/product.svg</normaloff>:/Images/product.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nuevo &amp;articulo...</string>
-   </property>
-   <property name="shortcut" >
-    <string>F2</string>
-   </property>
-  </action>
-  <action name="actionListado_de_Articulos" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/product-list.svg</normaloff>:/Images/product-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Articulos</string>
    </property>
   </action>
   <action name="actionSeries_de_Factura" >

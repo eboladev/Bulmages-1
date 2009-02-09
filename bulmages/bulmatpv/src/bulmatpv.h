@@ -56,7 +56,6 @@ public:
     BlWorkspace *workspace();
     void createMainWindows ( Splash * );
     EmpresaTPV *empresaTPV();
-    virtual void keyPressEvent ( QKeyEvent *e );
     virtual void keyReleaseEvent ( QKeyEvent *e );
 
 public slots:

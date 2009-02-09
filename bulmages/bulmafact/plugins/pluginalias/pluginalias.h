@@ -33,6 +33,7 @@
 #include "company.h"
 #include "bulmafact.h"
 #include "articuloview.h"
+#include "busqueda.h"
 #include "busquedaarticulo.h"
 
 // cuando la usuaria escribe en la celda de código de artículo y este plugin
@@ -58,7 +59,7 @@ extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
-extern "C" MY_EXPORT int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo * );
+extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda * );
 extern "C" MY_EXPORT int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel );
 
 extern "C" MY_EXPORT int SubForm3_campoCompleto(SubForm3 *grid,void **resultat) ;

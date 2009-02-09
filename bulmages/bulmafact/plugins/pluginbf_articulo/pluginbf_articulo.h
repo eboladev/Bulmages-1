@@ -28,27 +28,16 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "busquedareferencia.h"
-#include "clienteview.h"
-#include "pedidoclienteview.h"
-#include "presupuestoview.h"
-#include "company.h"
-
-
-extern "C" MY_EXPORT int SNewPresupuestoView (Company *);
+#include "busqueda.h"
+#include "subform2bf.h"
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
-extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
+extern "C" MY_EXPORT int SNewArticuloView (Company *);
+extern "C" MY_EXPORT int SubForm2Bf_pressedAsterisk(SubForm2Bf *);
 
-extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
-extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-
-
-
-
-// 
-class mypluginpres : public QObject, PEmpresaBase
+class MyPlugArt : public QObject, PEmpresaBase
 {
     Q_OBJECT
 
@@ -56,8 +45,8 @@ public:
     Bulmafact *m_bges;
 
 public:
-    mypluginpres();
-    ~mypluginpres();
+    MyPlugArt();
+    ~MyPlugArt();
     void inicializa ( Bulmafact * );
 
 public slots:

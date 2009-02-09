@@ -249,6 +249,12 @@ void Busqueda::on_m_inputBusqueda_textChanged ( const QString &val )
         return;
     } // end if
 
+
+    if (g_plugins->lanza ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
+		return;
+	} // end if
+
+
 	QString cadwhere = "";
 			/// Inicializamos los valores de vuelta a ""
 			QMapIterator<QString, QString> i(m_valores);

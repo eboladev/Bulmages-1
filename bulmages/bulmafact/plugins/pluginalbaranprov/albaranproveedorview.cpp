@@ -28,7 +28,6 @@
 #include <QWidget>
 
 #include "albaranproveedorview.h"
-#include "articulolist.h"
 #include "company.h"
 #include "configuracion.h"
 #include "funcaux.h"

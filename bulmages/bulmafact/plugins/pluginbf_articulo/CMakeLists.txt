@@ -1,18 +1,13 @@
 ###########################################
-# Plugin for bulmafact                    #
+# Plugin for bulmafact					  #
 ###########################################
-#pluginresarticulos
+#pluginbf_articulo
 
-set (plugin pluginresarticulos)
+set (plugin pluginbf_articulo)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-
-# Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginresarticulos.h)
-list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
 file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
@@ -27,12 +22,12 @@ include_directories(
 	${QT_QTASSISTANT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -40,6 +35,7 @@ include_directories(
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT4_ADD_RESOURCES(pluginprofesor_RCC_SRCS ${pluginprofesor_RCCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
@@ -59,12 +55,11 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
+# build sources, moc'd sources, and rcc'd sources
+
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
-
-
-# build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

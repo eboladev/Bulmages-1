@@ -23,7 +23,6 @@
 #include <QEvent>
 #include <QWaitCondition>
 
-#include "articulolist.h"
 #include "listlinpresupuestoview.h"
 #include "funcaux.h"
 #include "blfixed.h"

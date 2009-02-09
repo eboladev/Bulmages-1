@@ -3,6 +3,7 @@ add_subdirectory(plugintarifas)
 add_subdirectory(pluginbf_comercial)
 add_subdirectory(pluginbf_cliente)
 add_subdirectory(pluginbf_proveedor)
+add_subdirectory(pluginbf_articulo)
 
 #efacturabf en desarrollo
 #add_subdirectory(efacturabf)

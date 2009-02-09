@@ -33,10 +33,8 @@
 #include "splashscreen.h"
 
 
-class ArticuloList;
 class orderslist;
 class FacturaView;
-class ArticuloView;
 class PagoView;
 class PedidoClienteView;
 class TipoArticuloList;
@@ -55,8 +53,6 @@ private:
     /// Puntero al mainWindow
     Bulmafact *m_bulmafact;
 
-    /// Puntero a la ventana de lista de articulos. Esta ventan ase abre una vez al inicio del programa.
-    ArticuloList *m_articleslist;
 
 public:
     Company ( Bulmafact *bges );
@@ -66,7 +62,7 @@ public:
     void listarticles();
     void *newClienteView();
     void *newProveedorView();
-    ArticuloView *newArticuloView();
+    void *newArticuloView();
     void createMainWindows ( Splash * );
     void refreshArticles();
     void refreshClientes();

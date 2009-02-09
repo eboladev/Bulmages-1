@@ -27,7 +27,6 @@
 #include "postgresiface2.h"
 #include "bulmafact.h"
 #include "blwidget.h"
-#include "articuloview.h"
 #include "provedit.h"
 #include "busquedareferencia.h"
 #include "albaranproveedorview.h"

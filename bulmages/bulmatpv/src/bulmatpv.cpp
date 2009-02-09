@@ -77,8 +77,6 @@ BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
     m_empresaTPV->setWorkspace ( pWorkspace );
 
 
-    //connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
-
     setCorner ( Qt::TopLeftCorner, Qt::TopDockWidgetArea );
     setCorner ( Qt::TopRightCorner, Qt::RightDockWidgetArea );
     setCorner ( Qt::BottomLeftCorner, Qt::LeftDockWidgetArea );
@@ -91,13 +89,8 @@ BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
     list->setVisible ( FALSE );
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     list->setWorkspace ( pWorkspace );
-//    addDockWidget ( Qt::LeftDockWidgetArea, m_list );
 
     m_empresaTPV->setListVentanas ( list );
-// ===============
-//    QDockWidget *widgetPrueba = new QDockWidget ( NULL );
-//    addDockWidget ( Qt::LeftDockWidgetArea, widgetPrueba );
-//    m_company->setListVentanas(m_list);
 
     m_pb->setVisible ( FALSE );
     statusBar() ->showMessage ( bd, 2000 );
@@ -127,7 +120,6 @@ BulmaTPV::~BulmaTPV()
 {
     _depura ( "BulmaTPV::~BulmaTPV", 0 );
     delete m_empresaTPV;
-    delete pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef WINDOWS
@@ -198,12 +190,6 @@ BlWorkspace * BulmaTPV::workspace()
     _depura ( "BulmaTPV::workspace", 0 );
     _depura ( "END BulmaTPV::workspace", 0 );
     return pWorkspace;
-}
-
-
-void BulmaTPV::keyPressEvent ( QKeyEvent * e )
-{
-//    m_empresaTPV->keyPressEvent ( e );
 }
 
 
