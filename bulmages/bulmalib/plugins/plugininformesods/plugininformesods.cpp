@@ -35,7 +35,7 @@
 #include "bulmafact.h"
 #include "bulmacont.h"
 #include "myplugininformesods.h"
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "blform.h"
 
 

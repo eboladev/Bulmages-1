@@ -32,7 +32,7 @@
 #include <QWorkspace>
 #include <QProgressBar>
 
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "bulmatpv.h"
 #include "listventanas.h"
 #include "funcaux.h"
@@ -53,7 +53,7 @@ BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
     _depura ( "BulmaTPV::BulmaTPV", 0 );
     setupUi ( this );
     setUpdatesEnabled ( TRUE );
-    pWorkspace = new QWorkspace2 ( this );
+    pWorkspace = new BlWorkspace ( this );
     pWorkspace->setScrollBarsEnabled ( TRUE );
     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
@@ -193,7 +193,7 @@ void BulmaTPV::closeEvent ( QCloseEvent * )
 /**
 \return
 **/
-QWorkspace2 * BulmaTPV::workspace()
+BlWorkspace * BulmaTPV::workspace()
 {
     _depura ( "BulmaTPV::workspace", 0 );
     _depura ( "END BulmaTPV::workspace", 0 );

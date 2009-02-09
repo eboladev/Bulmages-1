@@ -128,7 +128,7 @@ QString QListWidgetItem1::nombre()
 /**
 \param w
 **/
-void ListVentanas::setWorkspace ( QWorkspace2 *w )
+void ListVentanas::setWorkspace ( BlWorkspace *w )
 {
     _depura ( "ListVentanas::setWorkspace", 0 );
     m_pWorkspace = w;

@@ -19,20 +19,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QWORKSPACE2_H
-#define QWORKSPACE2_H
+#ifndef BLWORKSPACE_H
+#define BLWORKSPACE_H
 
 #include <QWidget>
 #include <QWorkspace>
 
 
-class QWorkspace2 : public QWorkspace
+class BlWorkspace : public QWorkspace
 {
     Q_OBJECT
 
 public:
-    QWorkspace2 ( QWidget * );
-    ~QWorkspace2();
+    BlWorkspace ( QWidget * );
+    ~BlWorkspace();
     void addWindow ( QWidget * );
 };
 

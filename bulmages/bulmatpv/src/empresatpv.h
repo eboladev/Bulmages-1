@@ -28,7 +28,7 @@
 
 #include "postgresiface2.h"
 #include "listventanas.h"
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "empresabase.h"
 #include "splashscreen.h"
 #include "ticket.h"

@@ -21,27 +21,27 @@
 #include <QWidget>
 #include <QAction>
 
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "funcaux.h"
 
 
 ///
 /**
 **/
-QWorkspace2::QWorkspace2 ( QWidget * )
+BlWorkspace::BlWorkspace ( QWidget * )
 {
-    _depura ( "QWorkspace2::QWorkspace2", 0 );
-    _depura ( "END QWorkspace2::QWorkspace2", 0 );
+    _depura ( "BlWorkspace::BlWorkspace", 0 );
+    _depura ( "END BlWorkspace::BlWorkspace", 0 );
 }
 
 
 ///
 /**
 **/
-QWorkspace2::~QWorkspace2()
+BlWorkspace::~BlWorkspace()
 {
-    _depura ( "QWorkspace2::~QWorkspace2", 0 );
-    _depura ( "END QWorkspace2::~QWorkspace2", 0 );
+    _depura ( "BlWorkspace::~BlWorkspace", 0 );
+    _depura ( "END BlWorkspace::~BlWorkspace", 0 );
 }
 
 
@@ -49,9 +49,9 @@ QWorkspace2::~QWorkspace2()
 /**
 \param w
 **/
-void QWorkspace2::addWindow ( QWidget * w )
+void BlWorkspace::addWindow ( QWidget * w )
 {
-    _depura ( "QWorkspace2::addWindow", 0 );
+    _depura ( "BlWorkspace::addWindow", 0 );
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -91,6 +91,6 @@ void QWorkspace2::addWindow ( QWidget * w )
     accionEsc->setShortcut ( _( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
-    _depura ( "END QWorkspace2::addWindow", 0 );
+    _depura ( "END BlWorkspace::addWindow", 0 );
 }
 

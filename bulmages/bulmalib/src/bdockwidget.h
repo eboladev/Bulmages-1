@@ -24,7 +24,7 @@
 
 #include <QDockWidget>
 
-#include "qworkspace2.h"
+#include "blworkspace.h"
 
 
 /// Provides the dock window to list all windows in BulmaFact
@@ -35,12 +35,12 @@ class BDockWidget : public QDockWidget
     Q_OBJECT
 
 private:
-    QWorkspace2 *m_pWorkspace;
+    BlWorkspace *m_pWorkspace;
     Qt::DockWidgetArea m_area;
     QString m_name;
 
 public:
-    void setWorkspace ( QWorkspace2 *w );
+    void setWorkspace ( BlWorkspace *w );
     BDockWidget ( const QString & title, QWidget * parent = 0, const QString &name = "",  Qt::WindowFlags flags = 0 );
     ~BDockWidget();
     void guardaconf();

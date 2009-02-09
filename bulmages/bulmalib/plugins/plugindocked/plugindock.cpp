@@ -36,7 +36,7 @@
 #include "bulmacont.h"
 #include "myplugindock.h"
 #include "bdockwidget.h"
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "bx11embedcontainer.h"
 
 QMainWindow *g_bges = NULL;
@@ -96,7 +96,7 @@ void myplugincont::elslot1()
     _depura ( "myplugincont::elslot", 0 );
     QString winId = "";
     while ( winId == "" ) winId = windowID ( "" );
-    QWorkspace2 *work =     g_bges ->findChild<QWorkspace2 *> (  );
+    BlWorkspace *work =     g_bges ->findChild<BlWorkspace *> (  );
     if ( work ) {
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );

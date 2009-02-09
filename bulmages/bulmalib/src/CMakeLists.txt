@@ -46,7 +46,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          subform.cpp
          subform3.cpp
          listventanas.cpp
-         qworkspace2.cpp
+         blworkspace.cpp
          blapplication.cpp
          blform.cpp
          empresabase.cpp
@@ -78,7 +78,7 @@ set(bulmalib_MOCS
          bdockwidget.h 
          subform3.h 
          listventanas.h 
-         qworkspace2.h 
+         blworkspace.h 
          blapplication.h 
          blform.h 
          qtexteditdelegate.h 
@@ -117,7 +117,7 @@ set (bulmalib_HDRS abreempresaview.h
 			blapplication.h
 			qtable2.h
 			qtexteditdelegate.h
-			qworkspace2.h
+			blworkspace.h
 			subform.h
 			subform3.h
 			blprogressbar.h

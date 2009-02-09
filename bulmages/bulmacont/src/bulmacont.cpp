@@ -43,7 +43,7 @@ Bulmacont::Bulmacont ( QWidget *parent, Qt::WFlags f, QString DB )
     _depura ( "Bulmacont::Bulmacont", 0 );
     setupUi ( this );
 
-    m_pWorkspace = new QWorkspace2 ( this );
+    m_pWorkspace = new BlWorkspace ( this );
     m_pWorkspace->setScrollBarsEnabled ( TRUE );
 
     QFrame *m_frame1 = new QFrame();
@@ -891,7 +891,7 @@ void Bulmacont::informaindexador ( QWidget *w )
 /**
 \return
 **/
-QWorkspace2 *Bulmacont::workspace()
+BlWorkspace *Bulmacont::workspace()
 {
     _depura ( "Bulmacont::workspace", 0 );
     _depura ( "END Bulmacont::workspace", 0 );

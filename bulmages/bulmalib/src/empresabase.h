@@ -27,7 +27,7 @@
 
 #include "postgresiface2.h"
 #include "listventanas.h"
-#include "qworkspace2.h"
+#include "blworkspace.h"
 
 
 class EmpresaBase : public postgresiface2
@@ -38,9 +38,9 @@ protected:
     ListVentanas *m_listventanas;
 
 public:
-    /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas,
+    /// Puntero al BlWorkspace de la aplicacion. Ya que esta clase crea todas las ventanas,
     /// es comodo tener este puntero inicializado en esta clase.
-    QWorkspace2 *m_pWorkspace;
+    BlWorkspace *m_pWorkspace;
     /// El indicador de progreso. Para que determinados procesos puedan indicar su evolucion
     /// de forma general en la ventana principal.
     QProgressBar *m_progressbar;
@@ -52,8 +52,8 @@ public:
     QString searchCompany ( QString );
     void setListVentanas ( ListVentanas *doc );
     ListVentanas *listVentanas();
-    QWorkspace2 *pWorkspace();
-    void setWorkspace ( QWorkspace2 *qw );
+    BlWorkspace *pWorkspace();
+    void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );
     int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE );
     int seleccionaWindow ( QString nom, QObject *obj );

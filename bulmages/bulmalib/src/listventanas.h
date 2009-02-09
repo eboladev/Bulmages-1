@@ -25,7 +25,7 @@
 #include <QDockWidget>
 #include <QListWidget>
 
-#include "qworkspace2.h"
+#include "blworkspace.h"
 
 
 class QListWidget1 : public QListWidget
@@ -64,10 +64,10 @@ class ListVentanas : public QDockWidget
 
 private:
     QListWidget1 *m_listBox;
-    QWorkspace2 *m_pWorkspace;
+    BlWorkspace *m_pWorkspace;
 
 public:
-    void setWorkspace ( QWorkspace2 *w );
+    void setWorkspace ( BlWorkspace *w );
     ListVentanas ( QWidget *a = 0 );
     ~ListVentanas();
 

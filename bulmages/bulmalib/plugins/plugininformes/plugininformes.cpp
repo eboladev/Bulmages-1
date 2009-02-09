@@ -35,8 +35,9 @@
 #include "bulmafact.h"
 #include "bulmacont.h"
 #include "myplugininformes.h"
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "blform.h"
+
 
 QMainWindow *g_bges = NULL;
 EmpresaBase *g_emp = NULL;

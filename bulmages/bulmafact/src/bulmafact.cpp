@@ -33,7 +33,7 @@
 #include <QMainWindow>
 #include <QProgressBar>
 
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "bulmafact.h"
 #include "listventanas.h"
 #include "aboutview.h"
@@ -54,7 +54,7 @@ Bulmafact::Bulmafact ( QString bd ) : BlMainWindow()
     _depura ( "Bulmafact::Bulmafact", 0 );
     setupUi ( this );
     setUpdatesEnabled ( TRUE );
-    pWorkspace = new QWorkspace2 ( this );
+    pWorkspace = new BlWorkspace ( this );
     pWorkspace->setScrollBarsEnabled ( TRUE );
 
     QFrame *m_frame1 = new QFrame();
@@ -308,7 +308,7 @@ void Bulmafact::on_actionTasaIVA_triggered()
 /**
 \return
 **/
-QWorkspace2 * Bulmafact::workspace()
+BlWorkspace * Bulmafact::workspace()
 {
     _depura ( "Bulmafact::workspace", 0 );
     _depura ( "END Bulmafact::workspace", 0 );

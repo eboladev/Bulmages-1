@@ -7,8 +7,8 @@
  *   Modified by: Fco. Javier M. C. (2008)                                 *
  ***************************************************************************/
 
-#ifndef FIXED_H
-#define FIXED_H
+#ifndef BLFIXED_H
+#define BLFIXED_H
 
 #include <QString>
 #include <QChar>

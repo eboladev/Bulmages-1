@@ -38,8 +38,9 @@
 #include "bbloqfecha.h"
 #include "configuracion.h"
 #include "listventanas.h"
-#include "qworkspace2.h"
+#include "blworkspace.h"
 #include "blmainwindow.h"
+
 
 /// This Class is the base class for your application. It sets up the main
 /// window and providing a menubar, toolbar
@@ -52,7 +53,7 @@ class Bulmacont : public BlMainWindow, public Ui_BulmaContBase
 private:
     Empresa *m_empresaactual;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
-    QWorkspace2 *m_pWorkspace;
+    BlWorkspace *m_pWorkspace;
     ListVentanas *m_list;
 
 public:
@@ -62,7 +63,8 @@ public:
     /// Exporta menues.
     QMenu *mui_MenuHerramientas();
     QMenu *mui_MenuVer();
-    QWorkspace2 *workspace();
+    BlWorkspace *workspace();
+
 protected:
     /// Event filter to catch close events for MDI child windows and is installed in
     /// createClient() on every child window.

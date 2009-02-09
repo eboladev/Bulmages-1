@@ -41,7 +41,7 @@ void EmpresaBase::setListVentanas ( ListVentanas *doc )
 /**
 \return
 **/
-QWorkspace2 *EmpresaBase::pWorkspace()
+BlWorkspace *EmpresaBase::pWorkspace()
 {
     _depura ( "EmpresaBase::pWorkspace", 0 );
     _depura ( "END EmpresaBase::pWorkspace", 0 );
@@ -67,7 +67,7 @@ ListVentanas *EmpresaBase::listVentanas()
 /**
 \param qw
 **/
-void EmpresaBase::setWorkspace ( QWorkspace2 *qw )
+void EmpresaBase::setWorkspace ( BlWorkspace *qw )
 {
     _depura ( "EmpresaBase::setWorkspace", 0 );
     m_pWorkspace = qw;

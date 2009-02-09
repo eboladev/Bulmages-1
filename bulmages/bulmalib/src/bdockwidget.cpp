@@ -38,7 +38,7 @@ extern BlApplication *theApp;
 /**
 \param w
 **/
-void BDockWidget::setWorkspace ( QWorkspace2 *w )
+void BDockWidget::setWorkspace ( BlWorkspace *w )
 {
     _depura ( "BDockWidget::setWorkspace", 0 );
     m_pWorkspace = w;
