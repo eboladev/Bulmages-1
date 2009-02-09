@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 13:24+0100\n"
+"POT-Creation-Date: 2009-02-09 23:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,7 +173,7 @@ msgstr "Avís del programa"
 msgid "Bienal"
 msgstr "Biennal"
 
-#: blform.cpp:339 listado.cpp:377
+#: blform.cpp:339 blformlist.cpp:378
 #, fuzzy
 msgid "Borrar"
 msgstr "Esborrar"
@@ -310,7 +310,7 @@ msgstr "Desitja eliminar '"
 msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
-#: listado.cpp:376
+#: blformlist.cpp:377
 msgid "Editar"
 msgstr "Editar"
 
@@ -384,7 +384,7 @@ msgstr ""
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuari i/o contrasenya incorrecta"
 
-#: qworkspace2.cpp:91
+#: blworkspace.cpp:91
 msgid "Esc"
 msgstr "Esc"
 
@@ -656,7 +656,7 @@ msgstr "Semestral"
 msgid "TextLabel"
 msgstr ""
 
-#: listado.cpp:325
+#: blformlist.cpp:326
 msgid "Tiene que seleccionar un elemento"
 msgstr "Ha de seleccionar un element"
 
@@ -767,11 +767,11 @@ msgstr "Trimestral"
 
 #: ui_fichacfgbase.h:289
 msgid "User Preferences"
-msgstr ""
+msgstr "Arranjament d'usuari"
 
 #: ui_fichacfgbase.h:287
 msgid "Usuario Actual"
-msgstr ""
+msgstr "Usuari actual "
 
 #: subform3.cpp:2339
 msgid "Ver/Ocultar configurador de subformulario"
@@ -803,7 +803,7 @@ msgstr "<P> Aquest article ja existeix.</P>"
 
 #: paisview.cpp:70
 msgid "idpais"
-msgstr ""
+msgstr "idpais"
 
 #: pgimportfiles.cpp:2106
 #, fuzzy

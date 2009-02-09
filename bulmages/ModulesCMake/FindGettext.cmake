@@ -250,7 +250,7 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
 
       add_custom_command( 
          OUTPUT  "${_gmoFile}"
-         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absPoFile} ${_absPotFile}
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_absPoFile} ${_absPotFile}
          COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absPoFile}
          DEPENDS ${_absPotFile} ${_absPoFile}
       )
