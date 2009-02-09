@@ -1,0 +1,3711 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-07 17:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-08 18:57+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-08 13:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: AmortizacionBase#1
+msgid "Amortizacion"
+msgstr "Amortització"
+
+#: AmortizacionBase#2
+msgid "Guardar amortizacion"
+msgstr "Desa amortització"
+
+#: AmortizacionBase#3 CuentaBase#9 TipoIvaBase#4 canaldlg#4 ccostedlg#4
+msgid "Nombre:"
+msgstr "Nom:"
+
+#: AmortizacionBase#4
+msgid "Agrupacion:"
+msgstr "Agrupació:"
+
+#: AmortizacionBase#5
+msgid "Amor&tizacion"
+msgstr "Amor&tització"
+
+#: AmortizacionBase#6
+msgid "Nº de cuotas:"
+msgstr "Num de quotes:"
+
+#: AmortizacionBase#7
+msgid "Fecha de compra:"
+msgstr "Data de compra:"
+
+#: AmortizacionBase#8 AmortizacionView#4 busquedaperiodo.cpp:75
+msgid "Anual"
+msgstr "Anual"
+
+#: AmortizacionBase#9 AmortizacionView#6 busquedaperiodo.cpp:74
+msgid "Semestral"
+msgstr "Semestral"
+
+#: AmortizacionBase#10 AmortizacionView#7 busquedaperiodo.cpp:73
+msgid "Trimestral"
+msgstr "Trimestral"
+
+#: AmortizacionBase#11 AmortizacionView#5 busquedaperiodo.cpp:72
+msgid "Mensual"
+msgstr "Mensual"
+
+#: AmortizacionBase#12
+msgid "Fecha 1ª cuota:"
+msgstr "Data de la 1a quota:"
+
+#: AmortizacionBase#13
+msgid "Cuenta de activo:"
+msgstr "Compte d'actiu:"
+
+#: AmortizacionBase#14
+msgid "Periodicidad:"
+msgstr "Periodicitat:"
+
+#: AmortizacionBase#15
+msgid "Valor de compra:"
+msgstr "Valor de compra:"
+
+#: AmortizacionBase#16
+msgid "Cuenta de amortizacion:"
+msgstr "Compte d'amortització:"
+
+#: AmortizacionBase#17
+msgid "Metodo:"
+msgstr "Mètode:"
+
+#: AmortizacionBase#18
+msgid "Li&neal"
+msgstr "Lí&neal"
+
+#: AmortizacionBase#19
+msgid "&Incremental"
+msgstr "&incremental"
+
+#: AmortizacionBase#20 CuentaBase#18 UIconfiguracion#13
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: AmortizacionBase#21
+msgid "&Decremental"
+msgstr "&Decremental"
+
+#: AmortizacionBase#22
+msgid "Porcent&ual"
+msgstr "Percent&ual"
+
+#: AmortizacionBase#23
+msgid "&Calcular"
+msgstr "&Calcular"
+
+#: AmortizacionBase#24 CuentaBase#23
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: AmortizacionBase#25
+msgid "Cuotas:"
+msgstr "Quotes:"
+
+#: AmortizacionBase#26
+msgid "Amortizado:"
+msgstr "Amortitzat:"
+
+#: AmortizacionBase#27
+msgid "Pendiente:"
+msgstr "Pendent:"
+
+#: AmortizacionBase#28 AplInteligentesBase#6 CuentaBase#34
+#: DuplicarAsientoBase#11 QObject#6 SobreBase#8 TipoIvaBase#7 BNuevaEmpresa#3
+#: nuevaempresadlg#6 nuevafactbase#6
+#, fuzzy
+msgid "&Aceptar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
+
+#: BNuevaEmpresa#4 nuevaempresadlg#7 nuevafactbase#7 ui_abreempresabase.h:205
+#: blform.cpp:370 paisview.cpp:119 paisview.cpp:225
+#, fuzzy
+msgid "&Cancelar"
+msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
+
+#: AmortizacionBase#30 AplInteligentesBase#2 AsientoBase#18 BalanceBase#13
+#: CuentaBase#37 PropiedadesEmpresaBase#5 ccostedlg#9
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: AmortizacionBase#31 AmortizacionesBase#6 AsientoBase#5 CuentaBase#5
+#: ListCuentasBase#3 ccostedlg#8
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: AmortizacionBase#32 AmortizacionesBase#4
+msgid "Borrar amortizacion"
+msgstr "Esborra amortització"
+
+#: AmortizacionSubForm#1
+msgid "Generar asiento"
+msgstr "Generar assentament"
+
+#: AmortizacionSubForm#2
+msgid "Ver asiento"
+msgstr "Veure assentament"
+
+#: AmortizacionSubForm#3
+msgid "Desvincular asiento"
+msgstr "Desvincula assentament"
+
+#: AmortizacionSubForm#4 Asiento1#7 AsientoBase#21
+msgid "Borrar asiento"
+msgstr "Esborra assentament"
+
+#: AmortizacionSubForm#5
+msgid "Borrar cuota"
+msgstr "Esborra quota"
+
+#: AmortizacionView#1
+msgid "Id lineas de amortizacion"
+msgstr "Id línies d'amortització"
+
+#: AmortizacionView#2
+msgid "Identificador"
+msgstr "Identificador"
+
+#: AmortizacionView#3
+msgid "Error en la carga de la amortizacion"
+msgstr "Error en la càrrega de l'amortizació"
+
+#: AmortizacionView#8
+msgid "Nombre de la amortizacion"
+msgstr "Nom de l'amortització"
+
+#: AmortizacionView#9
+msgid "Descripcion de la amortizacion"
+msgstr "Descripció de l'amortització"
+
+#: AmortizacionView#10
+msgid "Fecha de la compra"
+msgstr "Data de la compra"
+
+#: AmortizacionView#11
+msgid "Fecha 1a cuota"
+msgstr "Data de la 1a quota"
+
+#: AmortizacionView#12
+msgid "Valor de la compra"
+msgstr "Valor de la compra"
+
+#: AmortizacionView#13
+msgid "Periodicidad"
+msgstr "Periodicitat"
+
+#: AmortizacionView#14
+msgid "Numero de cuotas"
+msgstr "Nombre de quotes"
+
+#: AmortizacionView#15
+msgid "Metodo"
+msgstr "Mètode"
+
+#: AmortizacionView#16
+msgid "NIF del proveedor"
+msgstr "NIF del proveïdor"
+
+#: AmortizacionView#17
+msgid "Nombre del proveedor"
+msgstr "Nom del proveïdor"
+
+#: AmortizacionView#18
+msgid "Direccion del proveedor"
+msgstr "Direcció del proveïdor"
+
+#: AmortizacionView#19
+msgid "Telefono del proveedor"
+msgstr "Telèfon del proveïdor"
+
+#: AmortizacionView#20
+msgid "Agrupacion"
+msgstr "Agrupació"
+
+#: AmortizacionView#21 AmortizacionesView#1
+msgid "Id amortizacion"
+msgstr "Id amortizació"
+
+#: AmortizacionView#22
+msgid "Id cuenta amortizacion"
+msgstr "Id compte d'amortizació"
+
+#: AmortizacionView#23 BbloqFecha#3
+msgid "Ejercicio"
+msgstr "Exercici"
+
+#: AmortizacionView#24
+msgid "Fecha prevista"
+msgstr "Data prevista"
+
+#: AmortizacionView#25
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: AmortizacionView#26 Asiento1#1 AsientoListSubform#15 ListLinAsiento1View#19
+msgid "Id asiento"
+msgstr "Id assentament"
+
+#: AmortizacionesBase#1
+msgid "Listado de amortizaciones"
+msgstr "Llista d'amortitzacions"
+
+#: AmortizacionesBase#2
+msgid "Nueva amortización"
+msgstr "Nova amortització"
+
+#: AmortizacionesBase#3 AsientoBase#3 BBloqFechaBase#3 CuentaBase#2
+#: ListCuentasBase#1 ccostedlg#7 ui_abreempresabase.h:202 ui_paisbase.h:286
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: AmortizacionesBase#5
+msgid "Borrar amortización"
+msgstr "Esborra amortització"
+
+#: AmortizacionesBase#7 BalanceBase#12 DiarioBase#14 ListCuentasBase#14
+#: Listado347Base#5
+msgid "F5"
+msgstr "F5"
+
+#: AmortizacionesView#2 ListConfiguracionSubForm#1 MPatrimonialBase#5
+#: ccosteview#1 abreempresaview.cpp:492 subform3.cpp:94
+msgid "Nombre"
+msgstr "Nom"
+
+#: AplInteligentesBase#1
+msgid "Aplicar Asiento Inteligente"
+msgstr "Aplicar Assentament Intel·ligent"
+
+#: AplInteligentesBase#3
+msgid "&Fecha del asiento:"
+msgstr "&Data de l'assentament:"
+
+#: AplInteligentesBase#4
+msgid "&Plantilla:"
+msgstr "&Plantilla:"
+
+#: AplInteligentesBase#5
+msgid "Datos del asiento:"
+msgstr "Dades de l'assentament:"
+
+#: Asiento1#2
+msgid "Descripcion del asiento"
+msgstr "Descripció de l'assentament"
+
+#: Asiento1#3
+msgid "Fecha del asiento"
+msgstr "Data de l'assentament"
+
+#: Asiento1#4
+msgid "Comentarios del asiento"
+msgstr "Comentaris de l'assentament"
+
+#: Asiento1#5
+msgid "Orden de asiento"
+msgstr "Ordre de l'assentament"
+
+#: Asiento1#6
+msgid "Tipo de asiento"
+msgstr "Tipus d'assentament"
+
+#: Asiento1#8
+msgid "Se va a borrar el asiento. Esta seguro?"
+msgstr "S'esborrarà l'assentament. Està segur?"
+
+#: Asiento1#9
+msgid "El asiento se ha guardado correctamente."
+msgstr "L'assentament s'ha desat correctament."
+
+#: Asiento1View#1
+msgid "Asiento inexistente."
+msgstr "Assentament inexistent."
+
+#: Asiento1View#2
+msgid "Desea crear un nuevo asiento en esa posicion?"
+msgstr "Vol crear un nou assentament en aquella posició?"
+
+#: Asiento1View#3 CuentaView#3 canalview#9 ccosteview#9 blform.cpp:370
+msgid "&Si"
+msgstr "&Sí"
+
+#: Asiento1View#4 CuentaView#4 canalview#10 ccosteview#10 blform.cpp:370
+msgid "&No"
+msgstr "&No"
+
+#: AsientoBase#1 BulmaContBase#50
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#: AsientoBase#2
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: AsientoBase#4
+msgid "Nuevo asiento"
+msgstr "Nou assentament"
+
+#: AsientoBase#6
+msgid "Registro de IVA"
+msgstr "Registre d'IVA"
+
+#: AsientoBase#7 BulmaContBase#61
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: AsientoBase#8 BulmaContBase#3
+msgid "Asientos Inteligentes"
+msgstr "Assentaments Intel·ligents"
+
+#: AsientoBase#9
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: AsientoBase#10
+msgid "Apertura"
+msgstr "Obertura"
+
+#: AsientoBase#11
+msgid "Normal"
+msgstr "Normal"
+
+#: AsientoBase#12
+msgid "Regularización"
+msgstr "Regularització"
+
+#: AsientoBase#13
+msgid "Cierre"
+msgstr "Tancament"
+
+#: AsientoBase#14 DiarioSubForm#29 ExtractoSubForm#25
+msgid "Asiento"
+msgstr "Assentament"
+
+#: AsientoBase#15
+msgid "Abrir asiento"
+msgstr "Obrir assentament"
+
+#: AsientoBase#16
+msgid "Cerrar asiento"
+msgstr "Tancar assentament"
+
+#: AsientoBase#17
+msgid "Guardar asiento"
+msgstr "Desa assentament"
+
+#: AsientoBase#19
+msgid "Extender asiento"
+msgstr "Estendre l'assentament"
+
+#: AsientoBase#20 ListCuentasBase#7
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: AsientoBase#22
+msgid "Duplicar asiento"
+msgstr "Duplicar assentament"
+
+#: AsientoBase#23
+msgid "Exportar asiento"
+msgstr "Exportar assentament"
+
+#: AsientoBase#24
+msgid "Importar asiento"
+msgstr "Importar assentament"
+
+#: AsientoBase#25
+msgid "Fecha:"
+msgstr "Data:"
+
+#: AsientoBase#26
+msgid "Orden del asiento:"
+msgstr "Ordre de l'assentament:"
+
+#: AsientoBase#27
+msgid "Descuadre:"
+msgstr "Desquadrament:"
+
+#: AsientoBase#28
+msgid "Saldo:"
+msgstr "Saldo:"
+
+#: AsientoBase#29 AsientoListBase#14 BalanceTreeBase#11 DiarioBase#12
+msgid "Total Debe:"
+msgstr "Total Deure:"
+
+#: AsientoBase#30 AsientoListBase#15 BalanceTreeBase#12 DiarioBase#13
+msgid "Total Haber:"
+msgstr "Total Haver:"
+
+#: AsientoListBase#1
+msgid "Listado de asientos"
+msgstr "Llistat d'assentaments"
+
+#: AsientoListBase#2 DiarioBase#4 ExtractoBase#17 Listado347Base#2
+#: RegIvaPrintBase#10
+#, fuzzy
+msgid "Imprimir"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Imprimir\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Imprimeix\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Imprimeix\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Imprimeix\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Imprimeix"
+
+#: AsientoListBase#3
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#: AsientoListBase#4 BalanceBase#7 ExtractoBase#19
+msgid "Configurar"
+msgstr "Arranjament"
+
+#: AsientoListBase#5 DiarioBase#7 ExtractoBase#2
+#, fuzzy
+msgid "Actualizar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Actualitzar\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Actualitza\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Actualitza"
+
+#: AsientoListBase#6
+msgid "y   ( >="
+msgstr "y   ( >="
+
+#: AsientoListBase#7
+msgid "y <="
+msgstr "y <="
+
+#: AsientoListBase#8
+msgid ")"
+msgstr ")"
+
+#: AsientoListBase#9
+msgid "Fecha &inicial:"
+msgstr "Data &inicial:"
+
+#: AsientoListBase#10
+msgid "&Concepto contable:"
+msgstr "&Concepte comptable:"
+
+#: AsientoListBase#11
+msgid "&Partida igual a:"
+msgstr "&Partida igual a:"
+
+#: AsientoListBase#12
+msgid "&Ejercicio:"
+msgstr "&Exercici:"
+
+#: AsientoListBase#13
+msgid "Fecha &final:"
+msgstr "Data &final:"
+
+#: AsientoListSubform#1 DiarioSubForm#12 ExtractoSubForm#13
+#: ListLinAsiento1View#1
+msgid "Fecha"
+msgstr "Data"
+
+#: AsientoListSubform#2 ExtractoSubForm#28 ListLinAsiento1View#17
+msgid "Orden"
+msgstr "Ordre"
+
+#: AsientoListSubform#3
+msgid "Apuntes"
+msgstr "Apunts"
+
+#: AsientoListSubform#4
+msgid "Borrador"
+msgstr "Esborrany"
+
+#: AsientoListSubform#5 BalanceTreeView#4 BalanceView#4 DiarioSubForm#14
+#: ExtractoSubForm#16 ListLinAsiento1View#8 listcuentasview1#5
+msgid "Debe"
+msgstr "Deure"
+
+#: AsientoListSubform#6 BalanceTreeView#5 BalanceView#5 DiarioSubForm#15
+#: ExtractoSubForm#17 ListLinAsiento1View#9 listcuentasview1#6
+msgid "Haber"
+msgstr "Haver"
+
+#: AsientoListSubform#7 MPatrimonialBase#11
+#, fuzzy
+msgid "Comentarios"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
+
+#: AsientoListSubform#8
+msgid "Clase"
+msgstr "Classe"
+
+#: AsientoListSubform#9 BalanceSubForm#12 DiarioSubForm#3 ExtractoSubForm#3
+#: ListLinAsiento1View#20 subform3.cpp:2329
+#, fuzzy
+msgid "Borrar registro"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
+
+#: AsientoListSubform#10 BalanceSubForm#13 DiarioSubForm#4 ExtractoSubForm#4
+#: ListLinAsiento1View#21 subform3.cpp:2332
+#, fuzzy
+msgid "Ajustar columa"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columna\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columna"
+
+#: AsientoListSubform#11 subform3.cpp:2333
+#, fuzzy
+msgid "Ajustar altura"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçada\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altura"
+
+#: AsientoListSubform#12 BalanceSubForm#15 DiarioSubForm#6 ExtractoSubForm#6
+#: ListLinAsiento1View#23 subform3.cpp:2335
+#, fuzzy
+msgid "Ajustar columnas"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columnes\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columnes"
+
+#: AsientoListSubform#13 BalanceSubForm#16 DiarioSubForm#7 ExtractoSubForm#7
+#: ListLinAsiento1View#24 subform3.cpp:2336
+#, fuzzy
+msgid "Ajustar alturas"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçades\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altures"
+
+#: AsientoListSubform#14 BalanceSubForm#17 DiarioSubForm#8 ExtractoSubForm#8
+#: ListLinAsiento1View#25
+msgid "Ver configurador de subformulario"
+msgstr "Veure el configurador de subformulari"
+
+#: AsientosView#1
+msgid "(todos)"
+msgstr ""
+
+#: AsientosView#2
+msgid "La fecha inicial es posterior a la fecha final."
+msgstr "La data inicial és posterior a la data final."
+
+#: AsientosView#3
+msgid "Asientos"
+msgstr "Assentaments"
+
+#: BBloqFechaBase#1
+msgid "Bloquear fechas"
+msgstr ""
+
+#: BBloqFechaBase#2
+msgid "Agregar Ejercicio"
+msgstr "Afegeix exercici"
+
+#: BalanceBase#1
+msgid "Balance de cuentas"
+msgstr "Balanç de Comptes"
+
+#: BalanceBase#2
+msgid "Tipo de balance"
+msgstr "Tipus de balanç"
+
+#: BalanceBase#3
+msgid "Abreviado"
+msgstr "Abreviat"
+
+#: BalanceBase#4
+msgid "Sumas y Saldos"
+msgstr ""
+
+#: BalanceBase#5
+msgid "Pérdidas y Ganancias"
+msgstr ""
+
+#: BalanceBase#6
+msgid "Actualizar balance"
+msgstr "Actualitza balanç"
+
+#: BalanceBase#8
+msgid "Filtrar balance"
+msgstr "Filtrar balanç"
+
+#: BalanceBase#9
+msgid "Guardar balance"
+msgstr "Desa balanç"
+
+#: BalanceBase#10
+msgid "Imprimir balance"
+msgstr "Imprimeix balanç"
+
+#: BalanceBase#11 Listado347Base#7
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: BalanceBase#14 ListCuentasBase#10 Listado347Base#3
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: BalanceBase#15 ccostedlg#10
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: BalanceBase#16 BalanceTreeBase#9
+msgid "Centro de coste:"
+msgstr "Centre de cost:"
+
+#: BalanceBase#17 BalanceTreeBase#8
+msgid "Nivel:"
+msgstr ""
+
+#: BalanceBase#18 BalanceTreeBase#5 DiarioBase#10 ExtractoBase#11
+#: Listado347Base#9
+msgid "Fecha final:"
+msgstr ""
+
+#: BalanceBase#19
+msgid "Balance jerárquico"
+msgstr "Balanç jeràrquic"
+
+#: BalanceBase#20 BalanceTreeBase#6 DiarioBase#11 DuplicarAsientoBase#3
+#: ExtractoBase#10 Listado347Base#10
+msgid "Fecha inicial:"
+msgstr ""
+
+#: BalanceBase#21 BalanceTreeBase#7 ExtractoBase#12
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: BalanceBase#22 BalanceTreeBase#4 ExtractoBase#13
+msgid "Cuenta final:"
+msgstr ""
+
+#: BalanceBase#23
+msgid "GroupBox"
+msgstr "GroupBox"
+
+#: BalanceBase#25 CuentaBase#42 ExtractoBase#30
+msgid "Haber:"
+msgstr "Haver:"
+
+#: BalanceBase#26 BalanceTreeBase#10
+msgid "Saldo anterior:"
+msgstr "Saldo anterior:"
+
+#: BalanceBase#27 CuentaBase#41 ExtractoBase#29
+msgid "Debe:"
+msgstr "Deure:"
+
+#: BalancePrintBase#1
+msgid "Impresión del Balance de Sumas y Saldos"
+msgstr "Imprimeix el balanç de Sumes i saldos"
+
+#: BalancePrintBase#2
+msgid "Datos del listado:"
+msgstr "Dades del llistat:"
+
+#: BalancePrintBase#3
+msgid "Código Inicial\n"
+msgstr "Codi inicial\n"
+
+#: BalancePrintBase#4 CAnualesPrintBase#4 CambiaCuentaBase#5 RegIvaPrintBase#3
+#: ImportExportBulmafactBase#3 importContaplusBase#8
+msgid "Fecha Inicial"
+msgstr "Data inicial"
+
+#: BalancePrintBase#5
+msgid "Código Final"
+msgstr "Codi final"
+
+#: BalancePrintBase#6 CAnualesPrintBase#5 CambiaCuentaBase#4 RegIvaPrintBase#4
+#: ImportExportBulmafactBase#4 importContaplusBase#9
+msgid "Fecha Final"
+msgstr "Data final"
+
+#: BalancePrintBase#7
+msgid "Nivel de Cuentas"
+msgstr "Nivell de comptes"
+
+#: BalancePrintBase#8
+msgid "Incluir &niveles superiores."
+msgstr ""
+
+#: BalancePrintBase#9
+msgid "Incl&uir resultados parciales"
+msgstr "Incl&oure resultats parcials"
+
+#: BalancePrintBase#10 ExtractoPrintBase#7
+msgid "Formato:"
+msgstr "&Format:"
+
+#: BalancePrintBase#11 DiarioPrintBase#2 ExtractoPrintBase#2
+msgid "&Texto Plano"
+msgstr "&Text pla"
+
+#: BalancePrintBase#12 DiarioPrintBase#5 ExtractoPrintBase#4
+msgid "Propietario"
+msgstr "Propietari"
+
+#: BalancePrintBase#13 DiarioPrintBase#3 ExtractoPrintBase#3
+msgid "HT&ML"
+msgstr ""
+
+#: BalancePrintBase#14 DiarioPrintBase#4
+msgid "&Kugar"
+msgstr ""
+
+#: BalanceSubForm#1 DiarioSubForm#1 ExtractoSubForm#1
+msgid "idcuenta"
+msgstr ""
+
+#: BalanceSubForm#2 DiarioSubForm#2 ExtractoSubForm#2
+msgid "tipocuenta"
+msgstr ""
+
+#: BalanceSubForm#3 mpatrimonialview#2
+msgid "codigo"
+msgstr "codi"
+
+#: BalanceSubForm#4 mpatrimonialview#3
+msgid "descripcion"
+msgstr "descripció"
+
+#: BalanceSubForm#5
+msgid "asaldo"
+msgstr ""
+
+#: BalanceSubForm#6
+msgid "tdebe"
+msgstr ""
+
+#: BalanceSubForm#7
+msgid "thaber"
+msgstr ""
+
+#: BalanceSubForm#8
+msgid "tsaldo"
+msgstr ""
+
+#: BalanceSubForm#9
+msgid "ejdebe"
+msgstr ""
+
+#: BalanceSubForm#10
+msgid "ejhaber"
+msgstr ""
+
+#: BalanceSubForm#11
+msgid "ejsaldo"
+msgstr ""
+
+#: BalanceTreeBase#1
+msgid "Imprimir albaran"
+msgstr "Imprimeix albarà"
+
+#: BalanceTreeBase#2
+msgid "Borrar albaran"
+msgstr "Esborra albarà"
+
+#: BalanceTreeBase#3
+msgid "Balance jerarquico de Cuentas"
+msgstr "Balanç jeràrquic de comptes"
+
+#: BalanceTreeView#1 listcuentasview1#3
+msgid "Codigo cuenta"
+msgstr "Codi compte"
+
+#: BalanceTreeView#2
+msgid "Nombre de la cuenta"
+msgstr "Nom del compte"
+
+#: BalanceTreeView#3 BalanceView#3
+msgid "Saldo anterior"
+msgstr "Saldo anterior"
+
+#: BalanceTreeView#6
+msgid "Saldo periodo"
+msgstr "Saldo període"
+
+#: BalanceTreeView#7 BalanceView#7
+msgid "Debe ejercicio"
+msgstr "Deure exercici"
+
+#: BalanceTreeView#8 BalanceView#8
+msgid "Haber ejercicio"
+msgstr "Haver exercici"
+
+#: BalanceTreeView#9 BalanceView#9
+msgid "Saldo ejercicio"
+msgstr ""
+
+#: BalanceTreeView#10
+msgid "Nivel"
+msgstr "Nivell"
+
+#: BalanceTreeView#11
+msgid "ID cuenta"
+msgstr "ID compte"
+
+#: BalanceTreeView#12
+msgid "Padre"
+msgstr ""
+
+#: BalanceTreeView#13
+msgid "Ver Diario (este dia)"
+msgstr ""
+
+#: BalanceTreeView#14
+msgid "Ver Diario (este mes)"
+msgstr ""
+
+#: BalanceTreeView#15
+msgid "Ver Diario (este anyo)"
+msgstr ""
+
+#: BalanceTreeView#16
+msgid "Ver extracto (este dia)"
+msgstr "Veure extracte (aquest dia)"
+
+#: BalanceTreeView#17
+msgid "Ver extracto (este mes)"
+msgstr "Veure extracte (aquest mes)"
+
+#: BalanceTreeView#18
+msgid "Ver extracto (este anyo)"
+msgstr "Ver extracte (est any)"
+
+#: BalanceView#1 ListLinAsiento1View#4
+msgid "Codigo"
+msgstr "Codi"
+
+#: BalanceView#2
+msgid "Denominacion"
+msgstr "Denominació"
+
+#: BalanceView#6 ExtractoSubForm#26
+msgid "Saldo"
+msgstr "Saldo"
+
+#: BbloqFecha#1
+msgid "Octubre"
+msgstr "Octubre"
+
+#: BbloqFecha#2
+msgid "Septiembre"
+msgstr "Setembre"
+
+#: BbloqFecha#4
+msgid "Estado"
+msgstr "Estat"
+
+#: BbloqFecha#5
+msgid "Diciembre"
+msgstr "Desembre"
+
+#: BbloqFecha#6
+msgid "Noviembre"
+msgstr "Novembre"
+
+#: BbloqFecha#7
+msgid "Agosto"
+msgstr "Agost"
+
+#: BbloqFecha#8
+msgid "Julio"
+msgstr "Juliol"
+
+#: BbloqFecha#9
+msgid "Junio"
+msgstr "Juny"
+
+#: BbloqFecha#10
+msgid "Mayo"
+msgstr "Maig"
+
+#: BbloqFecha#11
+msgid "Abril"
+msgstr "Abril"
+
+#: BbloqFecha#12
+msgid "Marzo"
+msgstr "Març"
+
+#: BbloqFecha#13
+msgid "Febrero"
+msgstr "Febrer"
+
+#: BbloqFecha#14
+msgid "Enero"
+msgstr "Gener"
+
+#: BbloqFecha#15
+msgid "Bloqueado"
+msgstr "Bloquejat"
+
+#: BbloqFecha#16
+msgid "Abierto"
+msgstr "Obert"
+
+#: BulmaContBase#1
+msgid "Anterior"
+msgstr "Anterior"
+
+#: BulmaContBase#2
+msgid "Siguiente"
+msgstr "Següent"
+
+#: BulmaContBase#4
+msgid "Inicio"
+msgstr ""
+
+#: BulmaContBase#5
+msgid "Fin"
+msgstr "Fi"
+
+#: BulmaContBase#6
+msgid "A&yuda"
+msgstr "A&juda"
+
+#: BulmaContBase#7
+msgid "&Herramientas"
+msgstr "&Eines"
+
+#: BulmaContBase#8
+msgid "&Maestro"
+msgstr ""
+
+#: BulmaContBase#9
+msgid "&Listados"
+msgstr "&Llistats"
+
+#: BulmaContBase#10
+msgid "&Empresa"
+msgstr "&Empresa"
+
+#: BulmaContBase#11
+msgid "&Ordenar asientos"
+msgstr ""
+
+#: BulmaContBase#12
+msgid "Asiento de a&pertura"
+msgstr "Assentament d'o&bertura"
+
+#: BulmaContBase#13
+msgid "Asiento de &regularizacion"
+msgstr "Assentament de &regularització"
+
+#: BulmaContBase#14
+msgid "Asiento de &cierre"
+msgstr "Assentament de tan&cament"
+
+#: BulmaContBase#15
+msgid "Cuentas a&nuales"
+msgstr ""
+
+#: BulmaContBase#16
+msgid "Masas &patrimoniales"
+msgstr ""
+
+#: BulmaContBase#17
+msgid "Registro de &IVA"
+msgstr ""
+
+#: BulmaContBase#18
+msgid "&Cobros y pagos"
+msgstr "&Cobraments i pagaments"
+
+#: BulmaContBase#19
+msgid "&Amortizaciones"
+msgstr "&Amortitzacions"
+
+#: BulmaContBase#20
+msgid "&Plan Contable"
+msgstr "&Pla comptable"
+
+#: BulmaContBase#21
+msgid "&Asientos"
+msgstr "&Assentaments"
+
+#: BulmaContBase#22
+msgid "Apuntes &contables"
+msgstr "Apunts &comptables"
+
+#: BulmaContBase#23
+msgid "Libro &Mayor"
+msgstr ""
+
+#: BulmaContBase#24
+msgid "Libro &Diario"
+msgstr ""
+
+#: BulmaContBase#25
+msgid "Formas de &pago"
+msgstr "Formes de &pagament"
+
+#: BulmaContBase#26
+msgid "Tipos de &IVA"
+msgstr ""
+
+#: BulmaContBase#27
+msgid "Centros de cos&te"
+msgstr "Centres de cos&t"
+
+#: BulmaContBase#28
+msgid "&Canales"
+msgstr "&Canals"
+
+#: BulmaContBase#29 DiarioPrintBase#7 ExtractoPrintBase#6
+msgid "&Imprimir"
+msgstr "&Imprimeix"
+
+#: BulmaContBase#30 canalview#3 ccosteview#4 propiedadesempresa#3
+msgid "&Guardar"
+msgstr "&Desa"
+
+#: BulmaContBase#31
+msgid "&Actualizar"
+msgstr "&Actualitzar"
+
+#: BulmaContBase#32
+msgid "&Filtrar"
+msgstr "&Filtra"
+
+#: BulmaContBase#33
+msgid "&Recalcular saldos iniciales"
+msgstr ""
+
+#: BulmaContBase#34
+msgid "&Sustituir cuentas"
+msgstr ""
+
+#: BulmaContBase#35
+msgid "&Bloquear fechas"
+msgstr ""
+
+#: BulmaContBase#36
+msgid "&Canal por defecto"
+msgstr "&Canal por defecte"
+
+#: BulmaContBase#37
+msgid "Centro de cos&te por defecto"
+msgstr "Centre de cos&t por defecte"
+
+#: BulmaContBase#38
+msgid "&Pantalla completa"
+msgstr "&Tota la pantalla"
+
+#: BulmaContBase#39
+msgid "Ordenar &ventanas"
+msgstr ""
+
+#: BulmaContBase#40
+msgid "Organización en &cascada"
+msgstr ""
+
+#: BulmaContBase#41
+msgid "&Acerca de BulmaCont"
+msgstr "Quant a Bulm&aCont"
+
+#: BulmaContBase#42
+msgid "BulmaCont - Contabilidad GPL"
+msgstr "BulmaCont - Comptabilitat GPL"
+
+#: BulmaContBase#43
+msgid "Ventana"
+msgstr "Finestre"
+
+#: BulmaContBase#44
+msgid "&Ver"
+msgstr "&Veure"
+
+#: BulmaContBase#45
+msgid "Configuracion"
+msgstr "Arranjament"
+
+#: BulmaContBase#46
+msgid "&Salir del programa"
+msgstr "De&sa el programa"
+
+#: BulmaContBase#47
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: BulmaContBase#48
+msgid "&Espaciar asientos"
+msgstr ""
+
+#: BulmaContBase#49
+msgid "Ctrl+L"
+msgstr "Ctrl+L"
+
+#: BulmaContBase#51
+msgid "&Balance de Cuentas"
+msgstr "&Balanç de comptes"
+
+#: BulmaContBase#52
+msgid "Balance &jerarquico de Sumas y Saldos"
+msgstr "Balanç jeràrquic de sumes i saldos"
+
+#: BulmaContBase#53
+msgid "Balance jerarquico de Sumas y Saldos"
+msgstr "Balanç jeràrquic de sumes i saldos"
+
+#: BulmaContBase#54
+msgid "F11"
+msgstr "F11"
+
+#: BulmaContBase#55
+msgid "F1"
+msgstr "F1"
+
+#: BulmaContBase#56
+msgid "Ctrl+PgDown"
+msgstr "Ctrl+PgDown"
+
+#: BulmaContBase#57
+msgid "Ctrl+PgUp"
+msgstr "Ctrl+PgUp"
+
+#: BulmaContBase#58
+msgid "Ctrl+Home"
+msgstr "Ctrl+Home"
+
+#: BulmaContBase#59
+msgid "Ctrl+End"
+msgstr "Ctrl+End"
+
+#: BulmaContBase#60 listventanas.cpp:150 listventanas.cpp:151
+msgid "Indexador"
+msgstr "Indexador"
+
+#: BulmaContBase#62
+msgid "&Propiedades de la empresa..."
+msgstr ""
+
+#: BulmaContBase#63
+msgid "Listado &347"
+msgstr ""
+
+#: BulmaContBase#64
+msgid "\""
+msgstr ""
+
+#: BulmaContBase#65
+msgid "''"
+msgstr ""
+
+#: Bulmacont#1
+msgid "Listo."
+msgstr "Preparat."
+
+#: Bulmacont#2
+msgid "Deshaciendo la ultima accion..."
+msgstr ""
+
+#: Bulmacont#3
+msgid "Cortando seleccion..."
+msgstr "Tallant la sel·lecció..."
+
+#: Bulmacont#4
+msgid "Copiando la seleccion al portapapeles..."
+msgstr ""
+
+#: Bulmacont#5
+msgid "Insertando el contenido del portapapeles..."
+msgstr "Inserint el contingut en el portapapers..."
+
+#: Bulmacont#6
+msgid "Cambinado barra de estado..."
+msgstr ""
+
+#: Bulmacont#7
+msgid "Cambiando a modo de pantalla completa..."
+msgstr "Canviant a mode de pantalla completa ..."
+
+#: Bulmacont#8
+msgid "Listado de cuentas"
+msgstr ""
+
+#: Bulmacont#9
+msgid "Listo"
+msgstr "Preparat"
+
+#: BusquedaCuentaBase#1 CuentaBase#1 CuentaView#6 DiarioSubForm#30
+#: ExtractoSubForm#15 MPatrimonialBase#6
+#, fuzzy
+msgid "Cuenta"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte"
+
+#: BusquedaCuentaBase#2 ui_busquedafechabase.h:86 ui_busquedabase.h:98
+msgid "Form1"
+msgstr "Form1"
+
+#: CAnualesBase#1
+msgid "Cuentas Anuales"
+msgstr "Comptes anuals"
+
+#: CAnualesPrintBase#1
+msgid "Impresión de Balances"
+msgstr "Impressió de Balanços"
+
+#: CAnualesPrintBase#2 MPatrimonialesBase#6
+msgid "Balance"
+msgstr "Balanç"
+
+#: CAnualesPrintBase#3
+msgid "Primer Periodo"
+msgstr "Primer període"
+
+#: CAnualesPrintBase#6
+msgid "Segundo Periodo"
+msgstr ""
+
+#: CAnualesPrintBase#7
+msgid "Acep&tar"
+msgstr ""
+
+#: CAnualesView#1 abreempresaview.cpp:492
+#, fuzzy
+msgid "Archivo"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Fitxer\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Arxiu"
+
+#: CambiaCuentaBase#1
+msgid "Cambiar Cuenta"
+msgstr "Canviar compte"
+
+#: CambiaCuentaBase#2
+msgid "Asiento Final"
+msgstr "Assentament final"
+
+#: CambiaCuentaBase#3
+msgid "Asiento Inicial"
+msgstr "Assentament inicial"
+
+#: CambiaCuentaBase#6
+msgid "Cuenta Destino"
+msgstr "Compte destí"
+
+#: CambiaCuentaBase#7
+msgid "Cuenta Origen"
+msgstr "Compte Origen"
+
+#: CambiaCuentaBase#8 MPatrimonialBase#2
+msgid "Aceptar"
+msgstr "Accepta"
+
+#: CambiaCuentaBase#9 SelectCCosteBase#5 SelectCanalBase#5 ccostedlg#6
+#: ui_fichacfgbase.h:292
+#, fuzzy
+msgid "Cerrar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tanca\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tancar\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tancar\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tanca\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tan&car"
+
+#: CuentaBase#3
+msgid "Duplicar Asiento"
+msgstr "Duplica assentament"
+
+#: CuentaBase#4
+msgid "Cargar Asiento"
+msgstr "Carrega assentament"
+
+#: CuentaBase#6
+msgid "&Datos contables"
+msgstr "&Dades comptables"
+
+#: CuentaBase#7
+msgid "Datos de la cuenta:"
+msgstr ""
+
+#: CuentaBase#8
+msgid "Cuenta padre:"
+msgstr ""
+
+#: CuentaBase#10
+msgid "Grupo:"
+msgstr ""
+
+#: CuentaBase#11
+msgid "Opciones de cuenta:"
+msgstr "Opcions del compte:"
+
+#: CuentaBase#12
+msgid "node&be"
+msgstr ""
+
+#: CuentaBase#13
+msgid "Alt+B"
+msgstr "Alt+B"
+
+#: CuentaBase#14
+msgid "&bloqueada"
+msgstr ""
+
+#: CuentaBase#15
+msgid "Reg&ularización"
+msgstr ""
+
+#: CuentaBase#16
+msgid "nohaber"
+msgstr "nohaber"
+
+#: CuentaBase#17
+msgid "&Imputacion"
+msgstr ""
+
+#: CuentaBase#19
+msgid "Tipo de cuenta:"
+msgstr "Tipus de compte:"
+
+#: CuentaBase#20
+msgid "&Neto"
+msgstr "&Net"
+
+#: CuentaBase#21
+msgid "Sin &Tipo"
+msgstr ""
+
+#: CuentaBase#22
+msgid "A&ctivo"
+msgstr ""
+
+#: CuentaBase#24
+msgid "&Ingreso"
+msgstr ""
+
+#: CuentaBase#25
+msgid "&Gasto"
+msgstr ""
+
+#: CuentaBase#26
+msgid "Alt+G"
+msgstr "Alt+G"
+
+#: CuentaBase#27
+msgid "&Pasivo"
+msgstr ""
+
+#: CuentaBase#28
+msgid "Alt+P"
+msgstr "Alt+P"
+
+#: CuentaBase#29
+msgid "Saldos:"
+msgstr ""
+
+#: CuentaBase#30
+msgid "C.P.:"
+msgstr "C.P.:"
+
+#: CuentaBase#31
+msgid "C.I.F.:"
+msgstr "C.I.F.:"
+
+#: CuentaBase#32
+msgid "Nombre de la entidad:"
+msgstr "Nom de l'entitat:"
+
+#: CuentaBase#33
+msgid "Comentarios:"
+msgstr "Comentaris:"
+
+#: CuentaBase#36 CuentaView#1
+msgid "Guardar cuenta"
+msgstr ""
+
+#: CuentaBase#38 ListCuentasBase#6
+msgid "Nueva cuenta"
+msgstr ""
+
+#: CuentaBase#39 CuentaView#7 ListCuentasBase#8 listcuentasview1#16
+msgid "Borrar cuenta"
+msgstr ""
+
+#: CuentaBase#40
+msgid "Codigo:"
+msgstr "Codi:"
+
+#: CuentaBase#43
+msgid "&Otros datos"
+msgstr ""
+
+#: CuentaBase#44
+msgid "URL de la pagina web:"
+msgstr "URL de la pàgina web:"
+
+#: CuentaBase#45
+msgid "Correo electronico:"
+msgstr "Correo electrònic:"
+
+#: CuentaBase#46
+msgid "Codigo cuenta corriente.:"
+msgstr "Codi de compte corrent.:"
+
+#: CuentaBase#47
+msgid "Direccion:"
+msgstr "Adreça:"
+
+#: CuentaBase#48
+msgid "Telefono:"
+msgstr ""
+
+#: CuentaView#2 canalview#8 ccosteview#3 fpagoview#2 propiedadesempresa#2
+#: tipoivaview#2 blform.cpp:369 paisview.cpp:118 paisview.cpp:189
+msgid "Desea guardar los cambios?"
+msgstr "Desitja desar els canvis?"
+
+#: CuentaView#8
+msgid ""
+"Se va a borrar la cuenta,\n"
+"Esto puede ocasionar perdida de datos\n"
+"Tal vez deberia pensarselo mejor antes\n"
+"porque igual su trabajo se pierde."
+msgstr ""
+"Es va a esborrar el compte.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+"Caldria pensar-s'ho millor abans perquè potser \n"
+"la seva feina es perd."
+
+#: DiarioBase#1
+msgid "Diario"
+msgstr "Diari"
+
+#: DiarioBase#2 ExtractoBase#3
+msgid "&Incluir asientos abiertos"
+msgstr ""
+
+#: DiarioBase#3 ExtractoBase#5
+msgid "Apuntes con contrapartida:"
+msgstr "Apunts amb contrapartida:"
+
+#: DiarioBase#5
+msgid "Mostrar/ocultar filtro"
+msgstr ""
+
+#: DiarioBase#6
+msgid "Configurar listado"
+msgstr "Configura llistat"
+
+#: DiarioBase#8 ExtractoBase#9
+msgid "Apuntes con saldo inferior a:"
+msgstr "Apunts amb saldo inferior a:"
+
+#: DiarioBase#9 ExtractoBase#8
+msgid "Apuntes con saldo superior a:"
+msgstr "Apunts amb saldo superior a:"
+
+#: DiarioPrintBase#1
+msgid "Impresión del Diario"
+msgstr "Imprimeix el Diari"
+
+#: DiarioPrintBase#8
+msgid "Documento:"
+msgstr "Document:"
+
+#: DiarioPrintBase#9
+msgid "Formato del listado:"
+msgstr "Format de llistat:"
+
+#: DiarioPrintBase#10
+msgid "Formato &normal"
+msgstr "Format &normal"
+
+#: DiarioPrintBase#11
+msgid "&Formato de aprendizaje"
+msgstr "&Format d'aprenentatge"
+
+#: DiarioSubForm#9
+msgid "idborrador"
+msgstr ""
+
+#: DiarioSubForm#10 ExtractoSubForm#10
+msgid "codigoborrador"
+msgstr ""
+
+#: DiarioSubForm#11
+msgid "orden"
+msgstr "ordre"
+
+#: DiarioSubForm#13 ExtractoSubForm#14
+msgid "Concepto"
+msgstr "Concepte"
+
+#: DiarioSubForm#16 ListLinAsiento1View#10
+msgid "Contrapartida"
+msgstr "Contrapartida"
+
+#: DiarioSubForm#17 ExtractoSubForm#27 ListLinAsiento1View#11
+msgid "Comentario"
+msgstr "Comentari"
+
+#: DiarioSubForm#18 ExtractoSubForm#20
+msgid "Canal"
+msgstr "Canal"
+
+#: DiarioSubForm#19
+msgid "MarcaConciliacion"
+msgstr ""
+
+#: DiarioSubForm#20
+msgid "Centro Coste"
+msgstr "Centre de Cost"
+
+#: DiarioSubForm#21
+msgid "Factura"
+msgstr "Factura"
+
+#: DiarioSubForm#22 ExtractoSubForm#9
+msgid "idapunte"
+msgstr ""
+
+#: DiarioSubForm#23 ExtractoSubForm#23
+msgid "idtipoiva"
+msgstr ""
+
+#: DiarioSubForm#24
+msgid "idregistroiva"
+msgstr ""
+
+#: DiarioSubForm#25 ExtractoSubForm#11
+msgid "idasiento"
+msgstr ""
+
+#: DiarioSubForm#26 ExtractoSubForm#19 selectcanalview#4
+msgid "idcanal"
+msgstr ""
+
+#: DiarioSubForm#27 ExtractoSubForm#22 selectccosteview#4
+msgid "idc_coste"
+msgstr ""
+
+#: DiarioSubForm#28 ExtractoSubForm#12
+msgid "iddiario"
+msgstr "iddiario"
+
+#: DiarioSubForm#31 ExtractoSubForm#29 ListLinAsiento1View#7 ccosteview#11
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: DiarioSubForm#32
+msgid "Descripcion de Cuenta"
+msgstr "Descripció del compte"
+
+#: DiarioView#1
+msgid "Guardar Libro Diario"
+msgstr "Desar el Llibre diari"
+
+#: DiarioView#2 extractoview1#1
+msgid "Diarios (*.txt)"
+msgstr "Diaris (*.txt)"
+
+#: DuplicarAsientoBase#1
+msgid "Duplicar Asientos"
+msgstr "Duplicar Assentaments"
+
+#: DuplicarAsientoBase#2
+msgid "Origen:"
+msgstr "Origen:"
+
+#: DuplicarAsientoBase#4
+msgid "Asiento inicial:"
+msgstr "Assentament inicial:"
+
+#: DuplicarAsientoBase#5
+msgid "Asiento final:"
+msgstr "Assentament final:"
+
+#: DuplicarAsientoBase#6
+msgid "Destino:"
+msgstr "Destinació:"
+
+#: DuplicarAsientoBase#7
+msgid "Fecha con la que quedará el asiento:"
+msgstr "Data amb la que quedarà l'assentament:"
+
+#: DuplicarAsientoBase#8
+msgid "Tratamiento de la fecha:"
+msgstr ""
+
+#: DuplicarAsientoBase#9
+msgid "Todos con la misma fecha"
+msgstr ""
+
+#: DuplicarAsientoBase#10
+msgid "Mantener distacia entre fechas"
+msgstr "Mantenir distància entre datas"
+
+#: DuplicarAsientoBase#12 canaldlg#6 ui_msgerrorbase.h:112
+#: ui_subform3base.h:625
+#, fuzzy
+msgid "&Cerrar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tan&ca\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tan&car"
+
+#: ExtractoBase#1
+msgid "Extracto de Cuentas"
+msgstr "Extracte de comptes"
+
+#: ExtractoBase#4
+msgid "&Todos"
+msgstr ""
+
+#: ExtractoBase#6
+msgid "Totales:"
+msgstr "Totals:"
+
+#: ExtractoBase#7
+msgid "Punteo:"
+msgstr ""
+
+#: ExtractoBase#14
+msgid "Apuntes &no punteados"
+msgstr "Apunts &no puntejats"
+
+#: ExtractoBase#15
+msgid "Ap&untes punteados"
+msgstr ""
+
+#: ExtractoBase#16 PropiedadesEmpresaBase#4
+msgid "Guardar"
+msgstr "Desa"
+
+#: ExtractoBase#18
+msgid "Mostrar/Oculatar filtro"
+msgstr ""
+
+#: ExtractoBase#20
+msgid "Casacion"
+msgstr ""
+
+#: ExtractoBase#21 extractoview1#4
+msgid "Guardar punteo"
+msgstr ""
+
+#: ExtractoBase#22 extractoview1#6
+msgid "Cargar punteo"
+msgstr ""
+
+#: ExtractoBase#23 extractoview1#5
+msgid "Borrar punteo"
+msgstr ""
+
+#: ExtractoBase#24
+msgid "Saldo inicial:"
+msgstr ""
+
+#: ExtractoBase#25
+msgid "Cuenta:"
+msgstr "Compte:"
+
+#: ExtractoBase#26
+msgid "Haber inicial:"
+msgstr "Haver inical:"
+
+#: ExtractoBase#27
+msgid "Debe inicial:"
+msgstr "Deure inicial:"
+
+#: ExtractoBase#28
+msgid "Nombre de la cuenta:"
+msgstr "Nom del compte:"
+
+#: ExtractoPrintBase#1
+msgid "Impresión del Extracto"
+msgstr "Imprimeix l'Extracte"
+
+#: ExtractoSubForm#18
+msgid "contrapartida"
+msgstr "contrapartida"
+
+#: ExtractoSubForm#21
+msgid "marcaconciliacion"
+msgstr ""
+
+#: ExtractoSubForm#24
+msgid "Punteo"
+msgstr ""
+
+#: FPagoBase#1
+msgid "Plazo del primer recibo (dias):"
+msgstr "Plaç del primer rebut (dies):"
+
+#: FPagoBase#2
+msgid "Formas de pago"
+msgstr "Formes de pagament"
+
+#: FPagoBase#3
+msgid "Nueva forma de pago"
+msgstr "Nova forma de pagament"
+
+#: FPagoBase#4
+msgid "Borrar forma de pago"
+msgstr "Esborra forma de pagament"
+
+#: FPagoBase#5
+msgid "Guardar forma de pago"
+msgstr "Desa forma de pagament"
+
+#: FPagoBase#6
+msgid "Forma de pago:"
+msgstr "Forma de pagament:"
+
+#: FPagoBase#7
+msgid "Datos:"
+msgstr ""
+
+#: FPagoBase#8
+msgid "Nombre de la forma de pago:"
+msgstr "Nom de la forma de pagament:"
+
+#: FPagoBase#9
+msgid "Numero de plazos:"
+msgstr ""
+
+#: FPagoBase#10
+msgid "Tipo plazo primer pago:"
+msgstr ""
+
+#: FPagoBase#11
+msgid "Plazo entre recibos (dias):"
+msgstr ""
+
+#: FPagoBase#12
+msgid "Tipo plazo entre recibos:"
+msgstr ""
+
+#: ListConfiguracionSubForm#2
+msgid "Valor"
+msgstr "Valor"
+
+#: ListCuentasBase#2
+msgid "Editar cuenta"
+msgstr "Editar compte"
+
+#: ListCuentasBase#4
+msgid "S&ubcuentas"
+msgstr ""
+
+#: ListCuentasBase#5
+msgid "Plan de cuentas"
+msgstr "Pla de comptes"
+
+#: ListCuentasBase#9
+msgid "Imprimir cuentas"
+msgstr "Imprimeix comptes"
+
+#: ListCuentasBase#11
+msgid "Exportar cuentas"
+msgstr "Exporta comptes"
+
+#: ListCuentasBase#12
+msgid "Importar cuentas"
+msgstr "Importa comptes"
+
+#: ListCuentasBase#13
+msgid "Actualizar listado"
+msgstr "Actual·litza llistat"
+
+#: ListCuentasBase#15
+msgid "Búsqueda:"
+msgstr ""
+
+#: ListCuentasBase#16
+msgid "Plan &contable"
+msgstr "Pla &comptable"
+
+#: ListLinAsiento1View#2
+msgid "Concepto contable"
+msgstr "Concepte comptable"
+
+#: ListLinAsiento1View#3
+msgid "Id cuenta"
+msgstr "Id compte"
+
+#: ListLinAsiento1View#5
+msgid "Tipo de cuenta"
+msgstr "Tipus de compte"
+
+#: ListLinAsiento1View#6
+msgid "Descripcion de la cuenta"
+msgstr "Descripció del compte"
+
+#: ListLinAsiento1View#12
+msgid "ID Canal"
+msgstr "ID Canal"
+
+#: ListLinAsiento1View#13
+msgid "Conciliacion"
+msgstr ""
+
+#: ListLinAsiento1View#14 ccosteview#12
+msgid "Id centro de coste"
+msgstr "Id centre de cost"
+
+#: ListLinAsiento1View#15
+msgid "Id apunte"
+msgstr "Id apunt"
+
+#: ListLinAsiento1View#16
+msgid "Id tipo de IVA"
+msgstr "Id tipus d'IVA"
+
+#: ListLinAsiento1View#18
+msgid "Id borrador"
+msgstr "Id esborrany"
+
+#: ListLinAsiento1View#26
+msgid "Mostrar asiento"
+msgstr "Mostrar assentament"
+
+#: ListLinAsiento1View#27
+msgid "Mostrar extracto (dia)"
+msgstr "Mostra l'extracte (dia)"
+
+#: ListLinAsiento1View#28
+msgid "Mostrar extracto (mes)"
+msgstr "Mostra l'extracte (mes)"
+
+#: ListLinAsiento1View#29
+msgid "Mostrar extracto (ano)"
+msgstr "Mostra l'extracte (any)"
+
+#: ListLinAsiento1View#30
+msgid "Mostrar balance (dia)"
+msgstr "Mostra balanç (dia)"
+
+#: ListLinAsiento1View#31
+msgid "Mostrar balance (mes)"
+msgstr "Mostra el balanç (mes)"
+
+#: ListLinAsiento1View#32
+msgid "Mostrar balance (ano)"
+msgstr "Mostra el balanç (any)"
+
+#: ListLinAsiento1View#33
+msgid "Mostrar balance jerarquico (dia)"
+msgstr "Mostr el balanç jeràrquic (dia)"
+
+#: ListLinAsiento1View#34
+msgid "Mostrar balance jerarquico (mes)"
+msgstr "Mostra el balanç jeràrquic (mes)"
+
+#: ListLinAsiento1View#35
+msgid "Mostrar balance jerarquico (ano)"
+msgstr "Mostra el balanç jeràrquic (any)"
+
+#: Listado347Base#1
+msgid "Listado para el modelo 347"
+msgstr "Llistat pel model 347"
+
+#: Listado347Base#4
+msgid "Recalcular"
+msgstr "Recalcular"
+
+#: Listado347Base#6
+msgid "Ver filtro"
+msgstr "Veure filtre"
+
+#: Listado347Base#8
+msgid "Importe:"
+msgstr "Import:"
+
+#: Listado347Base#11
+msgid "Ventas"
+msgstr "Vendes"
+
+#: Listado347Base#12
+msgid "Compras"
+msgstr "Compres"
+
+#: MPatrimonialBase#1
+msgid "Masa Patrimonial"
+msgstr "Massa Patrimonial"
+
+#: MPatrimonialBase#3 Modelo300Base#16
+msgid "Cancelar"
+msgstr "Cancel·la"
+
+#: MPatrimonialBase#4
+msgid "General"
+msgstr "General"
+
+#: MPatrimonialBase#7
+msgid "Agregar"
+msgstr "Afegir"
+
+#: MPatrimonialBase#8
+msgid "Quitar"
+msgstr "Llevar"
+
+#: MPatrimonialBase#9
+msgid "Suman"
+msgstr "Sumen"
+
+#: MPatrimonialBase#10
+msgid "Restan"
+msgstr "Resten"
+
+#: MPatrimonialesBase#1
+msgid "Masas Patrimoniales"
+msgstr "Masses Patrimonials"
+
+#: MPatrimonialesBase#3
+msgid "Nuevo"
+msgstr "Nou"
+
+#: MPatrimonialesBase#4
+msgid "Borrar"
+msgstr "Esborra"
+
+#: MPatrimonialesBase#5 listado.cpp:376
+#, fuzzy
+msgid "Editar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Edita\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Editar"
+
+#: Mod300ps#1
+msgid "Creando formulario"
+msgstr "Creant formulari"
+
+#: Modelo300Base#1
+msgid "Modelo 300"
+msgstr ""
+
+#: Modelo300Base#2
+msgid "Periodo a declarar"
+msgstr "Període a declarar"
+
+#: Modelo300Base#3
+msgid "Seleccione periodo de declaración"
+msgstr ""
+
+#: Modelo300Base#4
+msgid "1º trimestre"
+msgstr "1r trimestre"
+
+#: Modelo300Base#5
+msgid "2º trimestre"
+msgstr "2n trimestre"
+
+#: Modelo300Base#6
+msgid "3º trimestre"
+msgstr "3r trimestre"
+
+#: Modelo300Base#7
+msgid "4º trimestre"
+msgstr "4t trimestre"
+
+#: Modelo300Base#8
+msgid "Cuenta a devolver:"
+msgstr "Compte a retornar:"
+
+#: Modelo300Base#9
+msgid "0123456789"
+msgstr "0123456789"
+
+#: Modelo300Base#10
+msgid "1234"
+msgstr "1234"
+
+#: Modelo300Base#11
+msgid "12"
+msgstr "12"
+
+#: Modelo300Base#12
+msgid "Personalizada"
+msgstr "Personalitzada"
+
+#: Modelo300Base#13
+msgid "En el banco"
+msgstr "En el banc"
+
+#: Modelo300Base#14
+msgid "Generar borrador"
+msgstr ""
+
+#: Modelo300Base#15
+msgid "Vista Previa"
+msgstr "Vista Prèvia"
+
+#: PropiedadesEmpresaBase#1
+msgid "Propiedades de la empresa"
+msgstr "Propietats de l'empresa"
+
+#: PropiedadesEmpresaBase#2
+msgid ""
+"xxxx --> Dígitos de plan contable.\n"
+"yyyy --> Dígitos de cuenta."
+msgstr ""
+"xxxx --> Dígits del pla comptable.\n"
+"yyyy --> Dígits del compte."
+
+#: PropiedadesEmpresaBase#3
+msgid "Modi&ficar plan contable"
+msgstr "Modi&ficar el pla comptable"
+
+#: PropiedadesEmpresaBase#6
+msgid "Dí&gitos de cuentas"
+msgstr ""
+
+#: PropiedadesEmpresaBase#7
+msgid "Modelo del código de cuenta:"
+msgstr "Model del codi del compte:"
+
+#: PropiedadesEmpresaBase#8
+msgid "Dígitos estanda&r"
+msgstr "Dígits estànda&rd "
+
+#: PropiedadesEmpresaBase#9
+msgid "Propiedades generales"
+msgstr "Propietats generals"
+
+#: QObject#1
+msgid "Formulario 300"
+msgstr ""
+
+#: QObject#2
+msgid "Generar de todas formas"
+msgstr "Generar de totes formes"
+
+#: QObject#3
+msgid "Volver"
+msgstr ""
+
+#: QObject#4
+msgid ""
+"Aviso: El numero de cuenta bancario introducido\n"
+"no se corresponde con un CCC correcto."
+msgstr ""
+
+#: QObject#5
+msgid ""
+"Lo siento, no encuentro el formulario original en pdf.\n"
+"Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
+"/usr/share/bulmages/formularios/ o en\n"
+"~/.bulmages/formularios/."
+msgstr ""
+"Em sap greu, no trobo el formulari original en pdf.\n"
+"Provi a descarregar-lo des de www.aeat.es i guardi'l en\n"
+"/usr/share/bulmages/formularios o a\n"
+"~/.bulmages/formularios/.\n"
+
+#: QObject#7
+msgid "Se han espaciado los asientos"
+msgstr ""
+
+#: QObject#8
+msgid "Se han ordenado los asientos"
+msgstr ""
+
+#: RegIvaPrintBase#1
+msgid "Impresión del Registro de IVA"
+msgstr "Imprimeix el Registre d'IVA"
+
+#: RegIvaPrintBase#5
+msgid "Incluir resultados parciales"
+msgstr "Incloure resultats parcials"
+
+#: RegIvaPrintBase#7
+msgid "Texto Plano"
+msgstr "Text Pla"
+
+#: RegIvaPrintBase#8
+msgid "HTML"
+msgstr "HTML"
+
+#: RegIvaPrintBase#9
+msgid "Postscript"
+msgstr ""
+
+#: SelectCCosteBase#1
+msgid "Selector de Centros de Coste"
+msgstr ""
+
+#: SelectCCosteBase#2 SelectCanalBase#3
+msgid "Invertir"
+msgstr ""
+
+#: SelectCCosteBase#3 SelectCanalBase#2
+msgid "S. Nada"
+msgstr ""
+
+#: SelectCCosteBase#4 SelectCanalBase#4
+msgid "S. Todo"
+msgstr ""
+
+#: SelectCanalBase#1
+msgid "Selector de Canales"
+msgstr ""
+
+#: SobreBase#1
+msgid "Acerca de BulmaCont"
+msgstr "Quant a BulmaCont"
+
+#: SobreBase#2
+msgid "Contabilidad GPL - Version 0.9.3 -"
+msgstr ""
+
+#: SobreBase#3
+msgid "&Acerca de"
+msgstr ""
+
+#: SobreBase#4
+msgid "A&utores"
+msgstr ""
+
+#: SobreBase#5
+msgid ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#: SobreBase#6
+msgid "Sopor&te"
+msgstr ""
+
+#: SobreBase#7
+msgid "Acuerdo de &licencia"
+msgstr ""
+
+#: Splash#1
+msgid "Comprobando nivel de combustible"
+msgstr "Carregant el Solitari en segon pla"
+
+#: Splash#2
+msgid "Calibrando los lasers del lector de CD"
+msgstr "Calibrant els lasers del lector de CD"
+
+#: Splash#3
+msgid "Haciendo PING contra el servidor de la MetaBase"
+msgstr "Entrant al Jabber, per veure als amics"
+
+#: Splash#4
+msgid "Dejando tiempo libre al sistema"
+msgstr "Eliminant altres programes de Contabilitat"
+
+#: Splash#5
+msgid "Sincronizando fases Alfa Beta"
+msgstr "Sincronizant fases Alfa Beta"
+
+#: Splash#6
+msgid "Golpecitos de reajuste del HD"
+msgstr ""
+
+#: Splash#7
+msgid "Comprobando la disquetera y la memoria fisica"
+msgstr ""
+
+#: Splash#8
+msgid "Induciendo energia quantica, entre su RAM y su ROM"
+msgstr ""
+
+#: Splash#9
+msgid "Probando la velocidad del ventilador de la CPU y su frecuencia"
+msgstr ""
+
+#: Splash#10
+msgid "Flusheando datos con vidas inteligentes superiores"
+msgstr ""
+
+#: Splash#11
+msgid "Permutando las tablas de particion del Sistema Operativo"
+msgstr ""
+
+#: Splash#12
+msgid "Crackeando BulmaCont"
+msgstr "Crackejant BulmaCont"
+
+#: Splash#13
+msgid ""
+"<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color="
+"\"#ff5e00\">0.9.3</font></center>"
+msgstr ""
+"<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color="
+"\"#ff5e00\">0.9.3</font></center>"
+
+#: SubForm2Bc#1
+msgid "Submenu de contabilidad"
+msgstr ""
+
+#: TipoIvaBase#1
+msgid "Tipos de IVA"
+msgstr "Tipus d'IVA"
+
+#: TipoIvaBase#2
+msgid "Tipo de IVA:"
+msgstr ""
+
+#: TipoIvaBase#3
+msgid "Información del tipo de IVA:"
+msgstr ""
+
+#: TipoIvaBase#5
+msgid "Porcentaje:"
+msgstr ""
+
+#: aplinteligentesview#1
+msgid "Error al crear el asiento"
+msgstr ""
+
+#: canaldlg#1
+msgid "Canales"
+msgstr "Canals"
+
+#: canaldlg#2
+msgid "Canal:"
+msgstr ""
+
+#: canaldlg#3
+msgid "Información del canal:"
+msgstr ""
+
+#: canaldlg#5 ccostedlg#5
+msgid "Descripción:"
+msgstr ""
+
+#: canalview#1
+msgid "Desea guardar los cambios."
+msgstr ""
+
+#: canalview#2
+msgid "Guardar canal"
+msgstr ""
+
+#: canalview#5
+msgid "Borrar canal"
+msgstr ""
+
+#: canalview#6
+msgid ""
+"Se va a borrar la forma de pago,\n"
+"                                     Esto puede ocasionar perdida de datos\n"
+msgstr ""
+"Es va a esborrar la forma de pagamanet,\n"
+"                                    Això pot ocasionar pèrdre de dades\n"
+
+#: canalview#7 ccosteview#8 paisview.cpp:225
+#, fuzzy
+msgid "&Borrar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tan&car"
+
+#: ccostedlg#1
+msgid "Centros de Coste"
+msgstr "Centres de Cost"
+
+#: ccostedlg#2
+msgid "Imprimir pedido"
+msgstr "Imprimeix la comanda"
+
+#: ccostedlg#3
+msgid "Contenido del centro de coste:"
+msgstr ""
+
+#: ccosteview#2
+msgid "Guardar centro de coste"
+msgstr ""
+
+#: ccosteview#6
+msgid "Borrar centro de coste"
+msgstr ""
+
+#: ccosteview#7
+msgid ""
+"Se va a borrar el centro de coste.\n"
+"Esta operacion puede ocasionar perdida de datos."
+msgstr ""
+"Es va a esborrar el centre de cost.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+
+#: extractoview1#2
+msgid "Punteos (*.pto)"
+msgstr "Puntejos (*.pto)"
+
+#: extractoview1#3
+msgid "Guardar libro diario"
+msgstr ""
+
+#: extractoview1#7
+msgid "Punteo (*.pto)"
+msgstr ""
+
+#: extractoview1#8
+msgid ""
+"Se dispone a borrar el punteo. Este "
+"cambio                                             es irrecuperable si no ha "
+"guardado su el punte.                                             Desea "
+"continuar?"
+msgstr ""
+
+#: fpagoview#5
+msgid "Tiene que seleccionar una forma de pago antes de borrarla"
+msgstr ""
+
+#: fpagoview#6
+msgid ""
+"Se va a borrar la forma de pago.\n"
+"Esto puede ocasionar perdida de datos.\n"
+"Tal vez deberia pensarselo mejor antes\n"
+"porque igual su trabajo se pierde."
+msgstr ""
+"Es va a esborrar la forma de pagamanet.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+"Caldria pensar-s'ho millor abans perquè potser \n"
+"la seva feina es perd."
+
+#: listcuentasview1#1 mpatrimonialesview#1
+msgid "CODIGO"
+msgstr "CODI"
+
+#: listcuentasview1#2
+msgid "NOMBRE"
+msgstr "NOM"
+
+#: listcuentasview1#4
+msgid "Nombre cuenta"
+msgstr "Nom del compte"
+
+#: listcuentasview1#8
+msgid "Bloqueada"
+msgstr ""
+
+#: listcuentasview1#9
+msgid "Nodebe"
+msgstr ""
+
+#: listcuentasview1#10
+msgid "Nohaber"
+msgstr ""
+
+#: listcuentasview1#11
+msgid "Regularizacion"
+msgstr "Regularització"
+
+#: listcuentasview1#12
+msgid "Imputacion"
+msgstr "Imputació"
+
+#: listcuentasview1#13
+msgid "Grupo"
+msgstr "Grup"
+
+#: listcuentasview1#14
+msgid "Tipo cuenta"
+msgstr ""
+
+#: listcuentasview1#15
+msgid "Debe seleccionar una cuenta"
+msgstr "Cal triar un compte"
+
+#: listcuentasview1#17
+msgid "Se procedera a borrar la cuenta."
+msgstr ""
+
+#: listcuentasview1#18
+msgid "Elija el archivo"
+msgstr ""
+
+#: listcuentasview1#19
+msgid "Plan contable (*.xml)"
+msgstr ""
+
+#: mpatrimonialesview#2
+msgid "Masa patrimonial"
+msgstr "Massa Patrimonial"
+
+#: mpatrimonialview#1
+msgid "identificador"
+msgstr "identificador"
+
+#: mpatrimonialview#4
+msgid "tipo"
+msgstr "tipus"
+
+#: propiedadesempresa#1
+msgid "Guardar cambios"
+msgstr ""
+
+#: propiedadesempresa#4
+msgid "&No guardar"
+msgstr ""
+
+#: propiedadesempresa#5
+msgid "Salir del programa"
+msgstr "Abandona del programa"
+
+#: propiedadesempresa#6
+msgid ""
+"Para que los cambios tengan efecto\n"
+"debe salir del programa y volver a entrar.\n"
+"\n"
+"Salir ahora?"
+msgstr ""
+"Per a que els canvis tinguin efecte \n"
+"cal sortir del programa i tornar a entrar.\n"
+"\n"
+"Abandona ara?"
+
+#: propiedadesempresa#7
+msgid "&Salir"
+msgstr "Abandona"
+
+#: propiedadesempresa#8
+msgid "&No salir"
+msgstr ""
+
+#: selectcanalview#1
+msgid "nom_canal"
+msgstr ""
+
+#: selectcanalview#2
+msgid "desc_canal"
+msgstr ""
+
+#: selectcanalview#3 selectccosteview#3
+msgid "Status"
+msgstr ""
+
+#: selectcanalview#5 selectccosteview#5
+msgid "Seleccion"
+msgstr ""
+
+#: selectccosteview#1
+msgid "nom_coste"
+msgstr ""
+
+#: selectccosteview#2
+msgid "desc_coste"
+msgstr ""
+
+#: sobreview#1
+msgid "Compilado usando la version de QT:"
+msgstr "Compilat fent servir la versió de QT:"
+
+#: tipoivaview#1
+msgid "Guardar tipo de IVA"
+msgstr ""
+
+#: tipoivaview#3
+msgid "Borrar tipo de IVA"
+msgstr ""
+
+#: tipoivaview#4
+msgid ""
+"Se va a borrar el tipo de IVA. \n"
+"Esto puede ocasionar perdida de datos."
+msgstr ""
+"Es va a esborrar el tipus d'IVA.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+
+#: BConfiguracion#1
+msgid "Atencion"
+msgstr "Atenció "
+
+#: BConfiguracion#2
+msgid ""
+"Borrar una empresa puede suponer perdida de datos\n"
+" Desea continuar?\n"
+msgstr ""
+"Esborrar una empresa pot suposar la pèrdua de dades \n"
+"Desitja continuar? "
+
+#: BConfiguracion#3
+msgid ""
+"Esta base de datos no puede ser eliminada.\n"
+" Es la plantilla para generar nuevas empresas."
+msgstr ""
+"Aquesta base de dades no pot ser eliminada. \n"
+"És la plantilla per a generar noves empreses."
+
+#: BConfiguracion#4
+msgid ""
+"No esta permitido eliminar la base \n"
+" de datos actualmente abierta."
+msgstr "No es permés eliminar la base de dades actualment oberta."
+
+#: BConfiguracion#5
+msgid "Guardar empresa"
+msgstr "Desa empresa"
+
+#: BConfiguracion#6
+msgid "Empresas (*.pgdump)"
+msgstr "Empreses (*.pgdump)"
+
+# Potser carregar és mllor
+#: BConfiguracion#7
+msgid "Cargar empresa"
+msgstr "Llegir empresa"
+
+#: BNuevaEmpresa#1
+msgid "No puede dejar campos en blanco para crear una nueva empresa.\n"
+msgstr "No es pot deixar camps buits per a crear una nova empresa"
+
+#: BNuevaEmpresa#2
+msgid "Datos incompletos"
+msgstr "Dades incompletes"
+
+#: ImportExportBulmafactBase#1 importContaplusBase#1
+msgid "Importar y Exportar Datos"
+msgstr "Importa i exporta dades"
+
+#: ImportExportBulmafactBase#2 importContaplusBase#4
+msgid "..."
+msgstr "..."
+
+#: ImportExportBulmafactBase#5 importContaplusBase#12
+msgid "Ca&ncelar"
+msgstr "Ca&ncel·la"
+
+#: ImportExportBulmafactBase#6 importContaplusBase#13
+msgid "Expor&tar"
+msgstr "Expor&ta"
+
+#: ImportExportBulmafactBase#7 importContaplusBase#14
+msgid "&Importar"
+msgstr "&Importa"
+
+#: ImportExportBulmafactBase#8
+msgid "Archivo XML:"
+msgstr "Arxiu XML:"
+
+#: ImportExportBulmafactBase#9
+msgid "Realizar sólo &una comprobación."
+msgstr "Realitza només &una comprovació."
+
+#: ImportExportBulmafactBase#10
+msgid "Resultado:"
+msgstr "Resultat:"
+
+#: ImportExportBulmafactView#1 importContaplus#1
+msgid "Guardar archivo"
+msgstr "Desa arxiu"
+
+#: ImportExportBulmafactView#2 importContaplus#2
+msgid "Contaplus (*.xml)"
+msgstr "Contaplus (*.xml)"
+
+#: UIconfiguracion#1 selectorbase#11
+#, fuzzy
+msgid "Configuración"
+msgstr ""
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"Configuració\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"Arranjament"
+
+#: UIconfiguracion#2
+msgid "Nom Empresa"
+msgstr "Nom empresa"
+
+#: UIconfiguracion#3
+msgid "Nombre de la empresa"
+msgstr "Nom de l'empresa"
+
+#: UIconfiguracion#4
+msgid ""
+"Hacer copia &de Seguridad\n"
+" (BACKUP)"
+msgstr "Fes còpia &de seguretat (BACKUP)"
+
+#: UIconfiguracion#5
+msgid "Guarda una copia de seguridad de una empresa"
+msgstr "Desa una còpia de seguretat d'una empresa"
+
+#: UIconfiguracion#6
+msgid ""
+"Res&taurar copia\n"
+" (RESTORE)"
+msgstr "Res&tarua còpia (RESTORE)"
+
+#: UIconfiguracion#7
+msgid "Restaura la copia de seguridad de una empresa"
+msgstr "Restaura la còpia de seguretat d'una empresa"
+
+#: UIconfiguracion#8
+msgid "&Crear Nueva Empresa"
+msgstr "&Crea nova empresa"
+
+#: UIconfiguracion#9
+msgid "Crea una empresa nueva sin datos"
+msgstr "Crea una nova empresa sense dades"
+
+#: UIconfiguracion#10
+msgid "&Borrar Empresa"
+msgstr "Es&borra empresa"
+
+#: UIconfiguracion#11
+msgid "Borra por completo una empresa"
+msgstr "Esborra completament empresa"
+
+#: UIconfiguracion#12
+msgid "&Importar / Exportar Datos"
+msgstr "&Importa/Exporta dades"
+
+#: UIconfiguracion#14
+msgid "Bulma&Fact"
+msgstr "Bulma&Fact"
+
+#: UIconfiguracion#15
+msgid ""
+"Copia &de Seguridad\n"
+" (BACKUP)"
+msgstr ""
+"Còpia &de Seguretat\n"
+" (BACKUP)"
+
+#: UIconfiguracion#16
+msgid "Crear &Nueva Empresa"
+msgstr "Crea &Nova empresa"
+
+#: UIconfiguracion#17
+msgid "Parametros"
+msgstr "Paràmetres"
+
+#: UIconfiguracion#18
+msgid "Sal&ir"
+msgstr "Sort&ir"
+
+#: UIconfiguracion#19
+msgid "B&ulmaCont"
+msgstr "B&ulmaCont"
+
+#: UIconfiguracion#20
+msgid "Page"
+msgstr "Pàgina"
+
+#: UIconfiguracion#21
+msgid "Crea empresa"
+msgstr "Crea empresa"
+
+#: UIconfiguracion#22
+msgid "Borra empresa"
+msgstr "Esborra empresa"
+
+#: UIconfiguracion#23
+msgid "Crea ejercicio"
+msgstr "Crea exercici"
+
+#: UIconfiguracion#24
+msgid "Borra ejercicio"
+msgstr "Esborra exercici"
+
+#: UIconfiguracion#25
+msgid "Genera copia de seguridad"
+msgstr "Genera una còpia de seguretat"
+
+#: UIconfiguracion#26
+msgid "Restaura copia de seguridad"
+msgstr "Restaura una còpia de seguretat"
+
+#: UIconfiguracion#27
+msgid "Importa datos"
+msgstr "Importa dades"
+
+#: UIconfiguracion#28
+msgid "Exporta datos"
+msgstr "Exporta dades"
+
+#: UIconfiguracion#29
+msgid "Lista de empresas:"
+msgstr "Llista d'empreses:"
+
+#: UIconfiguracion#30
+msgid "Ejercicios de la empresa:"
+msgstr "Exercicis de l'empresa:"
+
+#: importContaplus#3
+msgid "Contaplus (*.txt)"
+msgstr "Contaplus (*.txt)"
+
+#: importContaplusBase#2
+msgid "&Contalus"
+msgstr "&Contaplus"
+
+#: importContaplusBase#3
+msgid "Archivo de SubCta"
+msgstr "Arxiu de subcompta "
+
+#: importContaplusBase#5
+msgid "Archivo de Diario"
+msgstr "Arxiu de diari"
+
+#: importContaplusBase#6
+msgid "&XML"
+msgstr "&XML"
+
+#: importContaplusBase#7
+msgid "Archivo XML"
+msgstr "Arxiu XML"
+
+#: importContaplusBase#10
+msgid "Realizar sólo &un Testeo"
+msgstr "Realitza sols &un test"
+
+#: importContaplusBase#11
+msgid "Resultado"
+msgstr "Resultat"
+
+#: main#1
+msgid "Selector de BulmaGes"
+msgstr "Sel·lector de BulmaGés"
+
+#: nuevaempresadlg#1
+msgid "Nueva empresa"
+msgstr "Nova empresa"
+
+#: nuevaempresadlg#2
+msgid "Datos de la contabilidad:"
+msgstr "Dades de la comptabilitat:"
+
+#: nuevaempresadlg#3 nuevafactbase#3
+msgid "Nombre de la empresa:"
+msgstr "Nom de l'empresa:"
+
+#: nuevaempresadlg#4 nuevafactbase#4
+msgid "Base de datos:"
+msgstr "Base de dades:"
+
+#: nuevaempresadlg#5 nuevafactbase#5
+msgid "Ejercicio:"
+msgstr "Exercici:"
+
+#: nuevafactbase#1
+msgid "Nueva facturación"
+msgstr "Nova facturació"
+
+#: nuevafactbase#2
+msgid "Datos de facturación:"
+msgstr "Dades de la facturació:"
+
+#: selectorbase#1
+msgid "BulmaGes"
+msgstr "BulmaGés"
+
+#: selectorbase#2
+msgid "BulmaFact"
+msgstr "BulmaFact"
+
+#: selectorbase#3
+msgid "Alt+F"
+msgstr "Alt+F"
+
+#: selectorbase#4
+msgid "BulmaTPV"
+msgstr "BulmaTPV"
+
+#: selectorbase#5
+msgid "BulmaCont"
+msgstr "BulmaCont"
+
+#: selectorbase#6
+msgid "Galopin"
+msgstr "Galopin"
+
+#: selectorbase#7
+msgid "Iglues"
+msgstr "Iglues"
+
+#: selectorbase#8
+msgid "Acerca de .."
+msgstr "Quant a .."
+
+#: selectorbase#9
+msgid "Empresa:"
+msgstr "Empresa:"
+
+#: selectorbase#10
+msgid "Seleccionar Empresa"
+msgstr "Sel·lecciona Empresa"
+
+#: selectorbase#12
+msgid "Salir"
+msgstr "Abandona"
+
+#: ui_subform3base.h:621
+#, fuzzy
+msgid "!Opcion reservada a expertos!"
+msgstr "¡Opció reservada per a experts!"
+
+#: ui_logpassbase.h:156
+msgid "&Cerrar el programa"
+msgstr "Tan&car el programa"
+
+#: abreempresaview.cpp:214
+msgid "&Cierra el programa"
+msgstr "Tan&ca el programa"
+
+#: funcaux.cpp:525 funcaux.cpp:554 funcaux.cpp:564 funcaux.cpp:574
+msgid "&Continuar"
+msgstr "&Continuar"
+
+#: ui_msgerrorbase.h:111
+msgid "&Detalles"
+msgstr "&Detalls"
+
+#: ui_abreempresabase.h:204
+msgid "&Entra"
+msgstr "&Entra"
+
+#: funcaux.cpp:526
+msgid "&Omitir"
+msgstr "&Ometre"
+
+#: ui_logpassbase.h:155
+msgid "&Validar"
+msgstr "&Validar"
+
+#: pgimportfiles.cpp:1902
+msgid "<HR><B>Tratando el cliente "
+msgstr "<HR><B>Tractant el client"
+
+#: pgimportfiles.cpp:1915
+msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
+msgstr "<LI> El client no existeix, s'ha inserir aquest</LI>\n"
+
+#: pgimportfiles.cpp:1910
+msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI> El client ja existeix, es poden fer modificacions</LI>\n"
+
+#: pgimportfiles.cpp:624
+msgid "<LI>Apunte fuera de fecha</LI>\n"
+msgstr "<LI>Apunte fora de la data</LI>\n"
+
+#: pgimportfiles.cpp:699
+msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
+msgstr "<LI>Exportant Nova Forma de Pagament</LI>\n"
+
+#: pgimportfiles.cpp:622
+msgid "<LI>Insercion de apunte"
+msgstr "<LI>Inserció d'apunt"
+
+#: pgimportfiles.cpp:594
+msgid "<LI>Insercion de asiento"
+msgstr "<LI>Inserció d'assentament"
+
+#: pgimportfiles.cpp:482
+msgid "<LI>Se ha insertado la cuenta "
+msgstr "<LI>S'ha inserit el compte"
+
+#: pgimportfiles.cpp:635
+msgid "<LI>Terminado</LI>\n"
+msgstr "<LI>Terminat</LI>\n"
+
+#: pgimportfiles.cpp:485
+msgid "<LI>Ya hay una cuenta con el codigo "
+msgstr "<LI>Ja hi ha un compte amb el codi"
+
+#: ui_abreempresabase.h:193
+msgid "Actualizar Listado"
+msgstr "Actualitzar Llistat"
+
+#: ui_abreempresabase.h:198
+msgid "Actualizar Listado de Empresas"
+msgstr "Actualitzar Llistat d'Empreses"
+
+#: pgimportfiles.cpp:2045
+#, fuzzy
+msgid "Almacen"
+msgstr "<LI> Magatzem <B>"
+
+#: abreempresaview.cpp:492
+msgid "Anyo"
+msgstr "Any"
+
+#: ui_subform3base.h:624
+msgid "Aplicar"
+msgstr "Aplicar"
+
+#: pgimportfiles.cpp:1471
+msgid "Application name"
+msgstr "Nom de la aplicació"
+
+#: pgimportfiles.cpp:2208
+#, fuzzy
+msgid "Articulo"
+msgstr "<P> Article <B>"
+
+#: funcaux.cpp:563
+msgid "Aviso del programa"
+msgstr "Avís del programa"
+
+#: busquedaperiodo.cpp:76
+msgid "Bienal"
+msgstr "Biennal"
+
+#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
+#, fuzzy
+msgid "Borrar pais"
+msgstr "Esborrar"
+
+#: ui_busquedabase.h:99
+msgid "Busqueda"
+msgstr ""
+
+#: ui_fichacfgbase.h:285
+msgid "Campo Indice"
+msgstr ""
+
+#: subform3.cpp:1076
+#, fuzzy
+msgid "Cargando SubFormulario "
+msgstr "Configuració Subformularis"
+
+#: paisview.cpp:50
+msgid "Codigo 2 Digitos"
+msgstr ""
+
+#: paisview.cpp:72
+msgid "Codigo 2 digitos"
+msgstr ""
+
+#: ui_paisbase.h:262
+msgid "Codigo 2 letras:"
+msgstr ""
+
+#: paisview.cpp:51
+msgid "Codigo 3 Digitos"
+msgstr ""
+
+#: paisview.cpp:73
+msgid "Codigo 3 digitos"
+msgstr ""
+
+#: ui_paisbase.h:261
+msgid "Codigo 3 letras:"
+msgstr ""
+
+#: ui_subform3base.h:607
+msgid "Columnas visibles"
+msgstr "Columnes visibles"
+
+#: ui_subform3base.h:601
+msgid "Configuracion Subformularios"
+msgstr "Configuració Subformularis"
+
+#: ui_logpassbase.h:154
+msgid "Contrasenya:"
+msgstr "Contrasenya:"
+
+#: ui_fichacfgbase.h:283
+msgid "Database Table"
+msgstr ""
+
+#: ui_fichacfgbase.h:290
+msgid "Databse Scripting"
+msgstr ""
+
+#: ui_paisbase.h:259
+msgid "Datos del pais:"
+msgstr ""
+
+#: pgimportfiles.cpp:2028
+#, fuzzy
+msgid "Datos insuficientes para tratar el almacen."
+msgstr "<LI>Dades insuficients per tractar el magatzem."
+
+#: pgimportfiles.cpp:2177
+#, fuzzy
+msgid "Datos insuficientes para tratar el articulo."
+msgstr "<P>Dades insuficients per a tractar l'article.</P>"
+
+#: pgimportfiles.cpp:2089
+#, fuzzy
+msgid "Datos insuficientes para tratar la familia."
+msgstr "<P>Dades insuficients per a tractar la família.</P>"
+
+#: pgimportfiles.cpp:1979
+#, fuzzy
+msgid "Datos insuficientes para tratar la forma de pago."
+msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
+
+#: paisview.cpp:219
+#, fuzzy
+msgid "Debe seleccionar un elemento de la lista"
+msgstr "Ha de seleccionar un element"
+
+#: blform.cpp:340
+msgid "Desea eliminar '"
+msgstr "Desitja eliminar '"
+
+#: ui_subform3base.h:622
+msgid "Ejecutar consulta"
+msgstr "Executar consulta"
+
+#: pgimportfiles.cpp:2322 pgimportfiles.cpp:2551 pgimportfiles.cpp:2776
+#: pgimportfiles.cpp:3014
+#, fuzzy
+msgid "El almacen del presupuesto no existe"
+msgstr "El magatzem del pressupost no existeix<BR>"
+
+#: pgimportfiles.cpp:2403 pgimportfiles.cpp:2629 pgimportfiles.cpp:2867
+#: pgimportfiles.cpp:3096
+#, fuzzy
+msgid "El articulo de la linea de presupuesto no existe"
+msgstr "El article de la línia de pressupost no existeix<BR>"
+
+#: pgimportfiles.cpp:2332 pgimportfiles.cpp:2561 pgimportfiles.cpp:2785
+#: pgimportfiles.cpp:3024
+#, fuzzy
+msgid "El cliente del presupuesto no existe"
+msgstr "El client del pressupost no existeix<BR>"
+
+#: pgimportfiles.cpp:2352 pgimportfiles.cpp:2579 pgimportfiles.cpp:2804
+#: pgimportfiles.cpp:3044
+#, fuzzy
+msgid "El empleado del presupuesto no existe"
+msgstr "L'empleat del pressupost no existeix<BR>"
+
+#: pgimportfiles.cpp:1950
+#, fuzzy
+msgid "El proveedor no existe, se debe hacer una insercion de este"
+msgstr "<LI> El proveïdor no existeix, s'ha inserir aquest</LI>"
+
+#: pgimportfiles.cpp:1945
+#, fuzzy
+msgid "El proveedor ya existe, se pueden hacer modificaciones"
+msgstr "<LI> El proveïdor ja existeix, es poden fer modificacions</LI>"
+
+#: ui_abreempresabase.h:203
+msgid "Empresas disponibles:"
+msgstr "Empreses disponibles:"
+
+#: paisview.cpp:206
+msgid "Error al crear el banco"
+msgstr ""
+
+#: postgresiface2.cpp:139
+msgid "Error al hacer la consulta con la base de datos."
+msgstr "Error al fer una consulta a la base de dades."
+
+#: paisview.cpp:237
+msgid "Error al intentar borrar el pais"
+msgstr ""
+
+#: funcaux.cpp:573
+msgid "Error del programa"
+msgstr "Error del programa"
+
+#: pgimportfiles.cpp:1471
+msgid ""
+"Error en el XML.\n"
+"Documento mal formado."
+msgstr ""
+"Error en el XML.\n"
+"Document malament formatat."
+
+#: logpass.cpp:111
+msgid "Error: usuario y/o contrasenya incorrectos"
+msgstr "Error: usuari i/o contrasenya incorrecta"
+
+#: qworkspace2.cpp:91
+msgid "Esc"
+msgstr "Esc"
+
+#: ui_subform3base.h:617
+msgid "Escriba aqui la consulta SQL"
+msgstr "Esquigui aquí una consulta SQL"
+
+#: pgimportfiles.cpp:401 pgimportfiles.cpp:1414
+msgid "Exportando :"
+msgstr "Exportant :"
+
+#: pgimportfiles.cpp:2106
+#, fuzzy
+msgid "Familia"
+msgstr "<P> Família <B>"
+
+#: ui_subform3base.h:609
+msgid "Filas por pagina:"
+msgstr "Files per pàgina:"
+
+#: ui_fichacfgbase.h:281 ui_blbancoeditbase.h:89
+#, fuzzy
+msgid "Form"
+msgstr "Form1"
+
+#: ui_fichacfgbase.h:286
+msgid "Form Elements"
+msgstr ""
+
+#: pgimportfiles.cpp:1998
+#, fuzzy
+msgid "Forma de pago"
+msgstr "<LI> Forma de pagament <B>"
+
+#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
+#, fuzzy
+msgid "Guardar pais"
+msgstr "Desar"
+
+#: paisview.cpp:48 paisview.cpp:60
+msgid "Id. Pais"
+msgstr ""
+
+#: paisview.cpp:59
+msgid "Id. Provincia"
+msgstr ""
+
+#: subform3.cpp:2070
+msgid "Imprimiendo "
+msgstr ""
+
+#: blform.cpp:443
+msgid "Imprimir ficha"
+msgstr ""
+
+#: funcaux.cpp:523
+msgid "Informacion de depuracion"
+msgstr "Informació de depuració"
+
+#: funcaux.cpp:553
+msgid "Informacion del programa"
+msgstr "Informació del programa"
+
+#: pgimportfiles.cpp:1998
+#, fuzzy
+msgid "Insertada"
+msgstr "</B> Inserida"
+
+#: pgimportfiles.cpp:2814
+msgid "La factura ya existe y no se va a insertar."
+msgstr "La factura ja existeix i no es pot inserir."
+
+#: pgimportfiles.cpp:2152
+#, fuzzy
+msgid "La familia del articulo no existe"
+msgstr "La família de l'article no existeix<BR>"
+
+#: pgimportfiles.cpp:2342 pgimportfiles.cpp:2570 pgimportfiles.cpp:2794
+#: pgimportfiles.cpp:3034
+#, fuzzy
+msgid "La forma de pago del presupuesto no existe"
+msgstr "La forma de pagament del pressupost no existeix<BR>"
+
+#: ui_logpassbase.h:149
+msgid "Lanzador Bulmages"
+msgstr "Llançador BulmaGés"
+
+#: ui_busquedabase.h:109
+msgid "Limpiar campo"
+msgstr ""
+
+#: ui_msgerrorbase.h:109
+msgid "Mensaje"
+msgstr "Missatge"
+
+#: ui_logpassbase.h:150
+msgid "Mensaje de error:"
+msgstr "Missatge d'error:"
+
+#: ui_busquedabase.h:102
+#, fuzzy
+msgid "Mostrar listado de profesors"
+msgstr "Actualitzar Llistat d'Empreses"
+
+#: ui_paisbase.h:265 ui_paisbase.h:270
+msgid "Mostrar/ocultar detalle"
+msgstr ""
+
+#: pgimportfiles.cpp:2084
+#, fuzzy
+msgid "No se ha encontrado el padre de esta familia."
+msgstr "<P> No s'ha trobat el pare d'aquesta família.</P>"
+
+#: blform.cpp:350
+msgid "No se ha podido borrar"
+msgstr "No s'ha pogut esborrar"
+
+#: blform.cpp:383
+msgid "No se pudo cerrar la ventana debido a un error"
+msgstr "No es pot tancar la finestra a causa d'un error"
+
+#: paisview.cpp:49
+#, fuzzy
+msgid "Nombre Pais"
+msgstr "Nom d'usuari:"
+
+#: subform3.cpp:94
+#, fuzzy
+msgid "Nombre de campo"
+msgstr "Nom d'usuari:"
+
+#: ui_fichacfgbase.h:282 ui_fichacfgbase.h:284
+#, fuzzy
+msgid "Nombre de la Tabla"
+msgstr "Nom de camp"
+
+#: ui_logpassbase.h:153
+msgid "Nombre de usuario:"
+msgstr "Nom d'usuari:"
+
+#: ui_paisbase.h:260
+#, fuzzy
+msgid "Nombre del pais:"
+msgstr "Nom d'usuari:"
+
+#: ui_paisbase.h:277 ui_paisbase.h:282
+msgid "Nuevo pais"
+msgstr ""
+
+#: funcaux.cpp:527
+msgid "Omitir &clase"
+msgstr "Ometre &classe"
+
+#: blform.cpp:442
+msgid "Opciones avanzadas de ficha"
+msgstr ""
+
+#: ui_subform3base.h:610
+msgid "Pagina actual:"
+msgstr "Pàgina actual:"
+
+#: ui_subform3base.h:612
+msgid "Pagina anterior"
+msgstr "Pàgina anterior"
+
+#: ui_subform3base.h:613
+msgid "Pagina siguiente"
+msgstr "Pàgina següent"
+
+#: ui_subform3base.h:614
+msgid "Paginacion"
+msgstr "Paginació"
+
+#: paisview.cpp:67 paisview.cpp:71
+msgid "Pais"
+msgstr ""
+
+#: ui_paisbase.h:258
+msgid "Paises"
+msgstr ""
+
+#: abreempresaview.cpp:283
+msgid "Para entrar, antes tiene que seleccionar una empresa."
+msgstr "Per a entrar, abans ha de seleccionar una empresa."
+
+#: ui_porcentajecargabase.h:53
+msgid "Porcentaje de carga..."
+msgstr "Percentatge de càrrega..."
+
+#: ui_fichacfgbase.h:288
+msgid "Propietario de la tablas"
+msgstr ""
+
+#: paisview.cpp:61
+msgid "Provincia"
+msgstr ""
+
+#: ui_fichacfgbase.h:291
+msgid "Qt Scripting"
+msgstr ""
+
+# Consulta SQL
+#: ui_subform3base.h:620
+msgid "Query"
+msgstr "Consulta SQL"
+
+#: busquedaperiodo.cpp:71
+msgid "Quincenal"
+msgstr "Quinzenal"
+
+#: ui_logpassbase.h:152
+msgid "Registro de entrada:"
+msgstr "Registre d'entrada:"
+
+#: ui_subform3base.h:623
+msgid "SQL"
+msgstr "SQL"
+
+#: paisview.cpp:224
+msgid ""
+"Se va a borrar el pais seleccionado.\n"
+"Esta operacion puede ocasionar perdida de datos."
+msgstr ""
+
+#: busquedafecha.cpp:183
+#, fuzzy
+msgid "Seleccione fecha"
+msgstr "Seleccioni una empresa"
+
+#: paisview.cpp:160
+#, fuzzy
+msgid "Seleccione un pais para guardar"
+msgstr "Seleccioni una empresa"
+
+#: ui_abreempresabase.h:184 ui_abreempresabase.h:187
+msgid "Seleccione una empresa"
+msgstr "Seleccioni una empresa"
+
+#: busquedaperiodo.cpp:70
+msgid "Semanal"
+msgstr "Setmanal"
+
+#: ui_blprogressbarbase.h:67
+msgid "TextLabel"
+msgstr ""
+
+#: listado.cpp:325
+msgid "Tiene que seleccionar un elemento"
+msgstr "Ha de seleccionar un element"
+
+#: abreempresaview.cpp:492
+msgid "Tipo"
+msgstr "Tipus"
+
+#: ui_subform3base.h:608
+msgid "Total filas:"
+msgstr "Total files:"
+
+#: ui_subform3base.h:611
+msgid "Total paginas:"
+msgstr "Total pàgines:"
+
+#: ui_blprogressbarbase.h:66
+msgid "Trabajando"
+msgstr ""
+
+#: pgimportfiles.cpp:2478
+#, fuzzy
+msgid "Tratando DAlbaran"
+msgstr "<HR><B>Tractant l'albarà"
+
+#: pgimportfiles.cpp:2704
+#, fuzzy
+msgid "Tratando DFactura"
+msgstr "<HR><B>Tractant la factura"
+
+#: pgimportfiles.cpp:2251
+#, fuzzy
+msgid "Tratando DPedidoCliente"
+msgstr "<HR><B>Tractant comana del client"
+
+#: pgimportfiles.cpp:2942
+#, fuzzy
+msgid "Tratando DPresupuesto"
+msgstr "<HR><B>Tractant el pressupost"
+
+#: pgimportfiles.cpp:2450
+#, fuzzy
+msgid "Tratando LAlbaran"
+msgstr "<HR><B>Tractant l'albarà"
+
+#: pgimportfiles.cpp:2676
+#, fuzzy
+msgid "Tratando LFactura"
+msgstr "<HR><B>Tractant la factura"
+
+#: pgimportfiles.cpp:2223
+#, fuzzy
+msgid "Tratando LPedidoCliente"
+msgstr "<HR><B>Tractant la comana del client"
+
+#: pgimportfiles.cpp:2914
+#, fuzzy
+msgid "Tratando LPresupuesto"
+msgstr "<HR><B>Tractant el pressupost"
+
+#: pgimportfiles.cpp:2499
+#, fuzzy
+msgid "Tratando albaran"
+msgstr "<HR><B>Tractant l'albarà"
+
+#: pgimportfiles.cpp:2014
+#, fuzzy
+msgid "Tratando almacen"
+msgstr "<HR><B>Tractant magatzem"
+
+#: pgimportfiles.cpp:2125
+#, fuzzy
+msgid "Tratando articulo"
+msgstr "<HR><B>Tractant Article"
+
+#: pgimportfiles.cpp:1937
+#, fuzzy
+msgid "Tratando el proveedor"
+msgstr "<HR><B>Trotant el proveïdor"
+
+#: pgimportfiles.cpp:2725
+#, fuzzy
+msgid "Tratando factura"
+msgstr "<HR><B>Tractant la factura"
+
+#: pgimportfiles.cpp:2064
+#, fuzzy
+msgid "Tratando familia"
+msgstr "<HR><B>Tractant família"
+
+#: pgimportfiles.cpp:1971
+#, fuzzy
+msgid "Tratando la forma de pago"
+msgstr "<HR><B>Tractant la forma de pagament"
+
+#: pgimportfiles.cpp:2272
+#, fuzzy
+msgid "Tratando pedido cliente"
+msgstr "<HR><B>Tractant  Comana Client"
+
+#: pgimportfiles.cpp:2963
+#, fuzzy
+msgid "Tratando presupuesto"
+msgstr "<HR><B>Tractant el pressupost"
+
+#: ui_fichacfgbase.h:289
+msgid "User Preferences"
+msgstr ""
+
+#: ui_fichacfgbase.h:287
+msgid "Usuario Actual"
+msgstr ""
+
+#: subform3.cpp:2339
+msgid "Ver/Ocultar configurador de subformulario"
+msgstr "Ver/Ocultar configurador de subformulari"
+
+#: subform3.cpp:94
+msgid "Visible"
+msgstr "Visible"
+
+#: pgimportfiles.cpp:2097
+#, fuzzy
+msgid "Ya existe esta familia."
+msgstr "<P> Ja existeix aquesta família.</P>"
+
+#: pgimportfiles.cpp:1988
+#, fuzzy
+msgid "Ya existe esta forma de pago."
+msgstr "<LI> Ja existeix la forma de pagament."
+
+#: pgimportfiles.cpp:2036
+#, fuzzy
+msgid "Ya existe este almacen."
+msgstr "<LI> Ja existeix el magatzem."
+
+#: pgimportfiles.cpp:2186
+#, fuzzy
+msgid "Ya existe este articulo."
+msgstr "<P> Aquest article ja existeix.</P>"
+
+#: paisview.cpp:70
+msgid "idpais"
+msgstr ""
+
+#: pgimportfiles.cpp:2106
+#, fuzzy
+msgid "insertada"
+msgstr "</B> Inserida"
+
+#: pgimportfiles.cpp:2045 pgimportfiles.cpp:2208
+#, fuzzy
+msgid "insertado"
+msgstr "</B> Inserit"
+
+#~ msgid "</B> Insertado</P>"
+#~ msgstr "</B> Inserit</P>"
+
+#~ msgid "April"
+#~ msgstr "Abril"
+
+#~ msgid "August"
+#~ msgstr "Agost"
+
+#~ msgid "December"
+#~ msgstr "Desembre"
+
+#~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
+#~ msgstr "El magatzem del pressupost no existeix<BR>"
+
+#, fuzzy
+#~ msgid "El clienten del presupuesto no existe<BR>\n"
+#~ msgstr "El client del pressupost no existeix<BR>"
+
+#~ msgid "El clienteÅ del presupuesto no existe<BR>\n"
+#~ msgstr "El client del pressupost no existeix<BR>"
+
+#~ msgid "February"
+#~ msgstr "Febrer"
+
+#~ msgid "Friday"
+#~ msgstr "Divendres"
+
+#~ msgid "Go to Today"
+#~ msgstr "Anar a avui"
+
+#~ msgid "January"
+#~ msgstr "Gener"
+
+#~ msgid "July"
+#~ msgstr "juliol"
+
+#~ msgid "June"
+#~ msgstr "Juny"
+
+#, fuzzy
+#~ msgid "La forma de pagon del presupuesto no existe<BR>\n"
+#~ msgstr "La forma de pagament del pressupost no existeix<BR>"
+
+#~ msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
+#~ msgstr "La forma de pagament del pressupost no existeix<BR>"
+
+#~ msgid "March"
+#~ msgstr "Març"
+
+#~ msgid "May"
+#~ msgstr "Maig"
+
+#~ msgid "Monday"
+#~ msgstr "Dilluns"
+
+#~ msgid "November"
+#~ msgstr "Novembre"
+
+#~ msgid "October"
+#~ msgstr "Octubre"
+
+#~ msgid "SEPTEMBER"
+#~ msgstr "SETEMBRE"
+
+#~ msgid "Saturday"
+#~ msgstr "Dissabte"
+
+#~ msgid "September"
+#~ msgstr "Setembre"
+
+#~ msgid "Sunday"
+#~ msgstr "Diumenge"
+
+#~ msgid "Thursday"
+#~ msgstr "Dijous"
+
+#~ msgid "Tuesday"
+#~ msgstr "Dimarts"
+
+#~ msgid "Wednesday"
+#~ msgstr "Dimecres"
+
+#~ msgid "listventanas::meteWindow ventana duplicada"
+#~ msgstr "listventanas::meteWindow finestra duplicada"
