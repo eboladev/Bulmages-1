@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QDOUBLESPINBOX2_H
-#define QDOUBLESPINBOX2_H
+#ifndef BLDOUBLESPINBOX_H
+#define BLDOUBLESPINBOX_H
 
 #include <QDoubleSpinBox>
 #include <QEvent>
@@ -31,13 +31,13 @@
 #include "funcaux.h"
 
 
-class QDoubleSpinBox2 : public QDoubleSpinBox
+class BlDoubleSpinBox : public QDoubleSpinBox
 {
     Q_OBJECT
 
 public:
-    QDoubleSpinBox2 ( QWidget *parent = 0 );
-    ~QDoubleSpinBox2();
+    BlDoubleSpinBox ( QWidget *parent = 0 );
+    ~BlDoubleSpinBox();
     void setValue ( double valor );
     QString const text();
     virtual bool eventFilter ( QObject *obj, QEvent *event );

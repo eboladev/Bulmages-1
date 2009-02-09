@@ -20,7 +20,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -32,12 +31,6 @@
 #include "funcaux.h"
 #include "busquedaalmacen.h"
 #include "busquedatarifa.h"
-
-
-
-
-
-
 
 
 /// ============================= SUBFORM3BFDELEGATE =============================================
@@ -92,7 +85,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
                 || linea->nomcampo() == "porcentajevariacion") {
 
-        QDoubleSpinBox2 * editor = new QDoubleSpinBox2 ( parent );
+        BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
         _depura ( "END QSubFormVarTarifaBfDelegate::createEditor", 0, "QSPinBox" );
@@ -138,7 +131,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
                 || linea->nomcampo() == "porcentajevariacion") {
 
-        QDoubleSpinBox2 * spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
         model->setData ( index, value );
@@ -173,7 +166,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
                 || linea->nomcampo() == "porcentajevariacion") {
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
 

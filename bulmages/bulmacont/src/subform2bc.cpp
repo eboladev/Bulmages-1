@@ -30,11 +30,12 @@
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "qtexteditdelegate.h"
-#include "qdoublespinbox2.h"
+#include "bldoublespinbox.h"
 #include "busquedacanal.h"
 #include "busquedaccoste.h"
 #include "cuentalistview.h"
 #include "diarioview.h"
+
 
 /// Constructor de la clase
 /**
@@ -527,10 +528,10 @@ QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOption
         _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QTextEditDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
-        QDoubleSpinBox2 * editor = new QDoubleSpinBox2 ( parent );
+        BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QDoubleSpinBox2" );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
         BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
@@ -599,7 +600,7 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         //
         //    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
-        QDoubleSpinBox2 * spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
         model->setData ( index, value );
@@ -659,7 +660,7 @@ void QSubForm2BcDelegate::setEditorData ( QWidget *editor, const QModelIndex &in
         textedit->selectAll();
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
     } else if ( linea->nomcampo() == "codigo" ) {

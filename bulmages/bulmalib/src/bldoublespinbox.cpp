@@ -18,42 +18,43 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "qdoublespinbox2.h"
+#include "bldoublespinbox.h"
 
 
 ///
 /**
 \param parent
 **/
-QDoubleSpinBox2::QDoubleSpinBox2 ( QWidget *parent ) : QDoubleSpinBox ( parent )
+BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
 {
-    _depura ( "QDoubleSpinBox2::QDoubleSpinBox2", 0 );
+    _depura ( "BlDoubleSpinBox::BlDoubleSpinBox", 0 );
     installEventFilter ( this );
     setAlignment ( Qt::AlignRight );
     setButtonSymbols ( QAbstractSpinBox::PlusMinus );
-    _depura ( "END QDoubleSpinBox2::QDoubleSpinBox2", 0 );
+    _depura ( "END BlDoubleSpinBox::BlDoubleSpinBox", 0 );
 }
 
 
 ///
 /**
 **/
-QDoubleSpinBox2::~QDoubleSpinBox2()
+BlDoubleSpinBox::~BlDoubleSpinBox()
 {
-    _depura ( "QDoubleSpinBox2::~QDoubleSpinBox2", 0 );
-    _depura ( "END QDoubleSpinBox2::~QDoubleSpinBox2", 0 );
+    _depura ( "BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
+    _depura ( "END BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
 }
+
 
 ///
 /**
 \return
 **/
-QString const QDoubleSpinBox2::text()
+QString const BlDoubleSpinBox::text()
 {
-    _depura ( "QDoubleSpinBox2::text", 0 );
+    _depura ( "BlDoubleSpinBox::text", 0 );
     QString a = QDoubleSpinBox::text();
     //a = a.replace(",", ".");
-    _depura ( "END QDoubleSpinBox2::text", 0 );
+    _depura ( "END BlDoubleSpinBox::text", 0 );
     return a;
 }
 
@@ -62,12 +63,13 @@ QString const QDoubleSpinBox2::text()
 /**
 \param valor
 **/
-void QDoubleSpinBox2::setValue ( double valor )
+void BlDoubleSpinBox::setValue ( double valor )
 {
-    _depura ( "QDoubleSpinBox2::setValue", 0 );
+    _depura ( "BlDoubleSpinBox::setValue", 0 );
     QDoubleSpinBox::setValue ( valor );
-    _depura ( "END QDoubleSpinBox2::setValue", 0 );
+    _depura ( "END BlDoubleSpinBox::setValue", 0 );
 }
+
 
 ///
 /**
@@ -75,9 +77,9 @@ void QDoubleSpinBox2::setValue ( double valor )
 \param event
 \return
 **/
-bool QDoubleSpinBox2::eventFilter ( QObject *obj, QEvent *event )
+bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
 {
-    _depura ( "QDoubleSpinBox2::eventFilter", 0 );
+    _depura ( "BlDoubleSpinBox::eventFilter", 0 );
     /// Si es una pulsacion o release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
@@ -96,7 +98,7 @@ bool QDoubleSpinBox2::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end switch
     } // end if
-    _depura ( "END QDoubleSpinBox2::eventFilter", 0 );
+    _depura ( "END BlDoubleSpinBox::eventFilter", 0 );
     return QDoubleSpinBox::eventFilter ( obj, event );
 }
 

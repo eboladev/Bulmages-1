@@ -51,7 +51,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          blform.cpp
          empresabase.cpp
          qtexteditdelegate.cpp
-         qdoublespinbox2.cpp
+         bldoublespinbox.cpp
          blwidget.cpp
          blformlist.cpp
          porcentajecarga.cpp
@@ -82,7 +82,7 @@ set(bulmalib_MOCS
          blapplication.h 
          blform.h 
          qtexteditdelegate.h 
-         qdoublespinbox2.h 
+         bldoublespinbox.h 
          blwidget.h 
 	 blmainwindow.h
          blformlist.h 

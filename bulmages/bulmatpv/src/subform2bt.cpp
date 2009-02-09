@@ -314,7 +314,7 @@ QWidget *QSubForm2BtDelegate::createEditor ( QWidget *parent, const QStyleOption
                 || linea->nomcampo() == "iva" + m_subform->tableName()
                 || linea->nomcampo() == "reqeq" + m_subform->tableName() ) {
 
-        QDoubleSpinBox2 * editor = new QDoubleSpinBox2 ( parent );
+        BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
         return editor;
@@ -380,7 +380,7 @@ void QSubForm2BtDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
                 || linea->nomcampo() == "reqeq" + m_subform->tableName()
                 || linea->nomcampo() == "iva" + m_subform->tableName() ) {
 
-        QDoubleSpinBox2 * spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
         model->setData ( index, value );
@@ -434,7 +434,7 @@ void QSubForm2BtDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
                 || linea->nomcampo() == "iva" + m_subform->tableName() ) {
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
 

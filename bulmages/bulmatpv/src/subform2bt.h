@@ -28,8 +28,7 @@
 #include "qtable2.h"
 #include "subform.h"
 #include "subform3.h"
-
-#include "qdoublespinbox2.h"
+#include "bldoublespinbox.h"
 
 
 class SubForm2Bt;
