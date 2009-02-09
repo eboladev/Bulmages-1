@@ -20,6 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QX11EmbedContainer>
+#include <QProcess>
 
 #include "pluginabrevs.h"
 #include "funcaux.h"
@@ -28,12 +30,12 @@
 #include "plugins.h"
 #include "blapplication.h"
 #include "trabajadores.h"
-#include "bdockwidget.h"
-#include <QX11EmbedContainer>
-#include <QProcess>
+#include "bldockwidget.h"
+
 
 Abrevs *g_tot;
-BDockWidget *g_doc1;
+BlDockWidget *g_doc1;
+
 
 ///
 /**
@@ -48,7 +50,7 @@ int entryPoint ( BulmaTPV *tpv )
     bindtextdomain ("pluginabrevs", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( "Abreviaturas", tpv, "abrevsdock" );
+    g_doc1 = new BlDockWidget ( "Abreviaturas", tpv, "abrevsdock" );
     g_doc1->setObjectName ( "abrevsdock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_doc1 );

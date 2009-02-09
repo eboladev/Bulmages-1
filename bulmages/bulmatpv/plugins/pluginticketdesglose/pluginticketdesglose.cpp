@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 #include <QLineEdit>
 #include <QTableWidget>
@@ -28,12 +29,11 @@
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
-BDockWidget *g_doc1;
 
+BlDockWidget *g_doc1;
 MTicket *g_bud;
-
 
 
 ///
@@ -49,7 +49,7 @@ int entryPoint ( BulmaTPV *tpv )
     bindtextdomain ("pluginticketdesglose", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( _("Total"), tpv, "plugindesglosedocked" );
+    g_doc1 = new BlDockWidget ( _("Total"), tpv, "plugindesglosedocked" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
@@ -61,6 +61,7 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
+
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_bud =  new MTicket ( etpv, g_doc1 );
@@ -70,6 +71,7 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 
     return 0;
 }
+
 
 int Ticket_pintar ( Ticket * )
 {

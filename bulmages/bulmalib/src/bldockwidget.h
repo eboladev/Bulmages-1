@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __BDOCKWIDGET__
-#define __BDOCKWIDGET__
+#ifndef BLDOCKWIDGET_H
+#define BLDOCKWIDGET_H
 
 #include <QDockWidget>
 
@@ -30,7 +30,7 @@
 /// Provides the dock window to list all windows in BulmaFact
 /// \param m_listBox this variable is the listBox that contains all
 /// titles of the diferent windows.
-class BDockWidget : public QDockWidget
+class BlDockWidget : public QDockWidget
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ private:
 
 public:
     void setWorkspace ( BlWorkspace *w );
-    BDockWidget ( const QString & title, QWidget * parent = 0, const QString &name = "",  Qt::WindowFlags flags = 0 );
-    ~BDockWidget();
+    BlDockWidget ( const QString & title, QWidget * parent = 0, const QString &name = "",  Qt::WindowFlags flags = 0 );
+    ~BlDockWidget();
     void guardaconf();
     void cargaconf();
 

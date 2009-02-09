@@ -26,12 +26,12 @@
 #include "admin.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 #include "blapplication.h"
 
 
 Admin *g_admin;
-BDockWidget *g_admin1;
+BlDockWidget *g_admin1;
 
 
 ///
@@ -48,7 +48,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Vamos a probar con un docwindow.
     /*
-        g_admin1 = new BDockWidget ( "Administracion", tpv, "pluginadministracion" );
+        g_admin1 = new BlDockWidget ( "Administracion", tpv, "pluginadministracion" );
         g_admin1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
         g_admin1->setGeometry ( 100, 100, 100, 500 );
         g_admin1->resize ( 330, 400 );

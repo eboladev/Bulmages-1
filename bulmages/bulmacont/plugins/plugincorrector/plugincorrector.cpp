@@ -31,10 +31,12 @@
 #include "plugincorrector.h"
 #include "correctorwidget.h"
 #include "empresa.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
-BDockWidget *doc1;
+
+BlDockWidget *doc1;
 QAction *viewCorrector;
+
 
 ///
 /**
@@ -50,7 +52,7 @@ void entryPoint ( Bulmacont *bcont )
 
     Empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    doc1 = new BDockWidget ( _("Corrector"), bcont );
+    doc1 = new BlDockWidget ( _("Corrector"), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );

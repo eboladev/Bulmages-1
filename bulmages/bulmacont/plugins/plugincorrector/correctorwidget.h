@@ -21,11 +21,10 @@
 #ifndef CORRECTORWIDGET_H
 #define CORRECTORWIDGET_H
 
-
 #include <QString>
 #include <QObject>
 
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 #include "ui_correctorbase.h"
 #include "postgresiface2.h"
 #include "empresa.h"
@@ -56,7 +55,7 @@ public:
     /// El corrector es una ventana del tipo dock, que se puede anexar a las esquinas
     /// del worspace de la aplicacion. Este puntero apunta a la ventana contenedora del
     /// corrector.
-    BDockWidget *dock;
+    BlDockWidget *dock;
     QAction *m_viewCorrector;
 
 public:

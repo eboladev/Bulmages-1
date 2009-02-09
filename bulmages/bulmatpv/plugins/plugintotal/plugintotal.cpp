@@ -28,16 +28,16 @@
 #include "plugins.h"
 #include "ticket.h"
 #include "blapplication.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
-
-
 Total *g_tot = NULL;
-BDockWidget *g_doc1 = NULL;
+BlDockWidget *g_doc1 = NULL;
+
+
 ///
 /**
 \return
@@ -51,7 +51,7 @@ int entryPoint ( BulmaTPV *tpv )
     bindtextdomain ("plugintotal", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( _("Total"), tpv, "plugintotaldock" );
+    g_doc1 = new BlDockWidget ( _("Total"), tpv, "plugintotaldock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
@@ -187,5 +187,4 @@ int Ticket_pintar ( Ticket *tick )
     return 0;
 
 }
-
 

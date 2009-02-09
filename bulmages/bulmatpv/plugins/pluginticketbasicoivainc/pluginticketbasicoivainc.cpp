@@ -31,12 +31,11 @@
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
-BDockWidget *g_doc1;
 
+BlDockWidget *g_doc1;
 MTicket *g_bud;
-
 
 
 ///
@@ -52,7 +51,7 @@ int entryPoint ( BulmaTPV *tpv )
     bindtextdomain ("pluginticketbasicoivainc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( "Ticket", tpv, "ticketbasico" );
+    g_doc1 = new BlDockWidget ( "Ticket", tpv, "ticketbasico" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 //    g_doc1->setFeatures ( QDockWidget::DockWidgetMovable |  QDockWidget::DockWidgetFloatable);
 

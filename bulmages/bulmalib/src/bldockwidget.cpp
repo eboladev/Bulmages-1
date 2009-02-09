@@ -28,7 +28,7 @@
 #include <map>
 
 #include "funcaux.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 #include "configuracion.h"
 
 
@@ -38,11 +38,11 @@ extern BlApplication *theApp;
 /**
 \param w
 **/
-void BDockWidget::setWorkspace ( BlWorkspace *w )
+void BlDockWidget::setWorkspace ( BlWorkspace *w )
 {
-    _depura ( "BDockWidget::setWorkspace", 0 );
+    _depura ( "BlDockWidget::setWorkspace", 0 );
     m_pWorkspace = w;
-    _depura ( "END BDockWidget::setWorkspace", 0 );
+    _depura ( "END BlDockWidget::setWorkspace", 0 );
 }
 
 
@@ -50,25 +50,25 @@ void BDockWidget::setWorkspace ( BlWorkspace *w )
 /**
 \param a
 **/
-BDockWidget::BDockWidget ( const QString & title, QWidget * parent, const QString &name , Qt::WindowFlags flags ) : QDockWidget ( title, parent, flags )
+BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QString &name , Qt::WindowFlags flags ) : QDockWidget ( title, parent, flags )
 {
-    _depura ( "BDockWidget::BDockWidget", 0 );
+    _depura ( "BlDockWidget::BlDockWidget", 0 );
     setFocusPolicy ( Qt::StrongFocus );
     m_name = name;
     setObjectName ( name );
     connect ( this, SIGNAL ( dockLocationChanged ( Qt::DockWidgetArea ) ), this, SLOT ( mi_dockLocationChanged ( Qt::DockWidgetArea ) ) );
-    _depura ( "END BDockWidget::BDockWidget", 0 );
+    _depura ( "END BlDockWidget::BlDockWidget", 0 );
 }
 
 
 ///
 /**
 **/
-BDockWidget::~BDockWidget()
+BlDockWidget::~BlDockWidget()
 {
-    _depura ( "BDockWidget::~BDockWidget", 0 );
+    _depura ( "BlDockWidget::~BlDockWidget", 0 );
     guardaconf();
-    _depura ( "END BDockWidget::~BDockWidget", 0 );
+    _depura ( "END BlDockWidget::~BlDockWidget", 0 );
 }
 
 
@@ -77,34 +77,34 @@ BDockWidget::~BDockWidget()
 /**
 \param visible
 **/
-void BDockWidget::cambiaVisible ( bool visible )
+void BlDockWidget::cambiaVisible ( bool visible )
 {
-    _depura ( "BDockWidget::cambiaVisible", 0 );
+    _depura ( "BlDockWidget::cambiaVisible", 0 );
     if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    _depura ( "END BDockWidget::cambiaVisible", 0 );
+    _depura ( "END BlDockWidget::cambiaVisible", 0 );
 }
 
 
 ///
 /**
 **/
-void BDockWidget::closeEvent ( QCloseEvent * )
+void BlDockWidget::closeEvent ( QCloseEvent * )
 {
-    _depura ( "BDockWidget::closeEvent", 0 );
+    _depura ( "BlDockWidget::closeEvent", 0 );
     emit ( cambiaEstadoVisible ( FALSE ) );
-    _depura ( "END BDockWidget::closeEvent", 0 );
+    _depura ( "END BlDockWidget::closeEvent", 0 );
 }
 
-void BDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
+void BlDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
 {
     m_area = area;
 }
 
-void BDockWidget::cargaconf()
+void BlDockWidget::cargaconf()
 {
     /// Si existe el archivo de configuracion lo cargamos y configuramos el aspecto del widget.
 // ============================
@@ -135,9 +135,9 @@ void BDockWidget::cargaconf()
 }
 
 
-void BDockWidget::guardaconf()
+void BlDockWidget::guardaconf()
 {
-    _depura ( "BDockWidget::guardaconf", 0 );
+    _depura ( "BlDockWidget::guardaconf", 0 );
     /// Vamos a probar con un docwindow.
     int lwidth = width();
     int lheight = height();
@@ -152,7 +152,7 @@ void BDockWidget::guardaconf()
         stream << lheight << "\n";
         file.close();
     } // end if
-    _depura ( "END BDockWidget::guardaconf", 0 );
+    _depura ( "END BlDockWidget::guardaconf", 0 );
 }
 
 

@@ -30,16 +30,17 @@
 #include "blapplication.h"
 #include "busquedaarticulo.h"
 #include "blfixed.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
-
-
 BusquedaArticulo *g_busc;
-BDockWidget *g_doc1;
+BlDockWidget *g_doc1;
 EmpresaTPV * g_emp;
+
+
 ///
 /**
 \return
@@ -55,7 +56,7 @@ int entryPoint ( BulmaTPV *tpv )
     g_emp = tpv->empresaTPV();
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( _("Articulo"), tpv, "articulodock" );
+    g_doc1 = new BlDockWidget ( _("Articulo"), tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );

@@ -34,10 +34,12 @@
 #include "correctorwidget.h"
 #include "empresa.h"
 #include "bulmacont.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
+
 
 ResumCtaWidget *g_res;
 QAction *viewCorrector;
+
 
 ///
 /**
@@ -53,7 +55,7 @@ void entryPoint ( Bulmacont *bcont )
 
     Empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    BDockWidget *doc1 = new BDockWidget ( _("Resumen cuenta"), bcont );
+    BlDockWidget *doc1 = new BlDockWidget ( _("Resumen cuenta"), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );

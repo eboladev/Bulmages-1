@@ -29,11 +29,13 @@
 #include "artgraficos.h"
 #include "plugins.h"
 #include "ticket.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
-BDockWidget *g_pantallas;
 
+BlDockWidget *g_pantallas;
 ArtGraficos *g_graf;
+
+
 ///
 /**
 \return
@@ -48,7 +50,7 @@ int entryPoint ( BulmaTPV *tpv )
 
 
 	/// Ponemos el widget de pantallas.
-    g_pantallas = new BDockWidget ( "Pantallas", tpv, "pantallasdock" );
+    g_pantallas = new BlDockWidget ( "Pantallas", tpv, "pantallasdock" );
     g_pantallas->setObjectName ( "pantallasdock" );
     g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_pantallas );
@@ -59,6 +61,7 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
+
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_graf = new ArtGraficos ( etpv, NULL );
@@ -67,5 +70,3 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
     g_main->setCentralWidget ( g_graf );
     return 0;
 }
-
-

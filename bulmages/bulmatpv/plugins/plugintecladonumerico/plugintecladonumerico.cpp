@@ -26,12 +26,13 @@
 #include "funcaux.h"
 #include "empresatpv.h"
 #include "tecladonumerico.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
 
-BDockWidget *g_doc1;
-
+BlDockWidget *g_doc1;
 TecladoNumerico *g_tecl;
+
+
 ///
 /**
 \return
@@ -45,7 +46,7 @@ int entryPoint ( BulmaTPV *tpv )
     bindtextdomain ("plugintecladonumerico", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BDockWidget ( _("Teclado"), tpv, "tecladonumericodock" );
+    g_doc1 = new BlDockWidget ( _("Teclado"), tpv, "tecladonumericodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
@@ -56,6 +57,7 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
+
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_tecl = new TecladoNumerico ( etpv, g_doc1 );
@@ -63,6 +65,7 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
     g_doc1->setWidget ( g_tecl );
     return 0;
 }
+
 
 int Input_keyPressEvent_Post ( Input *in )
 {

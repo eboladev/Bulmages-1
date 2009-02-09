@@ -35,12 +35,15 @@
 #include "bulmafact.h"
 #include "bulmacont.h"
 #include "myplugindock.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 #include "blworkspace.h"
 #include "bx11embedcontainer.h"
 
+
 QMainWindow *g_bges = NULL;
 EmpresaBase *g_emp = NULL;
+
+
 ///
 /**
 **/
@@ -68,7 +71,7 @@ void myplugincont::elslot()
     _depura ( "myplugincont::elslot", 0 );
 
     /// Vamos a probar con un docwindow.
-    BDockWidget *doc1 = new BDockWidget ( "Aplicacion Externa", g_main );
+    BlDockWidget *doc1 = new BlDockWidget ( "Aplicacion Externa", g_main );
     doc1->setWindowIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ) ) );
 
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
@@ -96,7 +99,7 @@ void myplugincont::elslot1()
     _depura ( "myplugincont::elslot", 0 );
     QString winId = "";
     while ( winId == "" ) winId = windowID ( "" );
-    BlWorkspace *work =     g_bges ->findChild<BlWorkspace *> (  );
+    BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
     if ( work ) {
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );

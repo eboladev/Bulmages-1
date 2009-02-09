@@ -26,12 +26,13 @@
 #include "plugins.h"
 #include "ticket.h"
 #include "blapplication.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
 
-
-BDockWidget *g_doc1;
+BlDockWidget *g_doc1;
 MyDevButton * g_plug;
+
+
 ///
 /**
 **/
@@ -79,7 +80,7 @@ int entryPoint ( BulmaTPV *tpv )
     setlocale(LC_ALL, "");
     bindtextdomain ("plugindevolucion2", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
-    g_doc1 = new BDockWidget ( _("Articulo"), tpv, "articulodock" );
+    g_doc1 = new BlDockWidget ( _("Articulo"), tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );

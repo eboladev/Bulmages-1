@@ -10,10 +10,11 @@
 
 #include "funcaux.h"
 #include "configuracion.h"
-#include "bdockwidget.h"
+#include "bldockwidget.h"
 
 
-extern BDockWidget *g_pantallas;
+extern BlDockWidget *g_pantallas;
+
 
 ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -31,6 +32,7 @@ ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp,
 
 ArtGraficos::~ArtGraficos()
 {}
+
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
@@ -197,6 +199,7 @@ void ArtGraficos::ponPantallas() {
 	widget->setLayout(hboxLayout1);
 	g_pantallas->setWidget(widget);
 }
+
 
 void ArtGraficos::pulsadoBoton() {
 	muestraPantalla(sender()->objectName().toInt());
