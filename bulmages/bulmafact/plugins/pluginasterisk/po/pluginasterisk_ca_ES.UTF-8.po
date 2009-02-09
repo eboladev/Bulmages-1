@@ -1,0 +1,63 @@
+#: pluginasterisk.cpp:101
+msgid "Almacen"
+msgstr ""
+
+#: pluginasterisk.cpp:165
+msgid "Apellidos"
+msgstr ""
+
+#: pluginasterisk.cpp:102
+msgid "Apertura manyanas"
+msgstr ""
+
+#: pluginasterisk.cpp:104
+msgid "Apertura tardes"
+msgstr ""
+
+#: pluginasterisk.cpp:106 pluginasterisk.cpp:166
+msgid "Audicion"
+msgstr ""
+
+#: pluginasterisk.cpp:103
+msgid "Cierre manyanas"
+msgstr ""
+
+#: pluginasterisk.cpp:105
+msgid "Cierre tardes"
+msgstr ""
+
+#: pluginasterisk.cpp:128
+msgid "Extension."
+msgstr ""
+
+#: pluginasterisk.cpp:99 pluginasterisk.cpp:162
+msgid "Fecha"
+msgstr ""
+
+#: pluginasterisk.cpp:100 pluginasterisk.cpp:163
+msgid "Hora"
+msgstr ""
+
+#: pluginasterisk.cpp:107 pluginasterisk.cpp:167
+msgid "Id almacen"
+msgstr ""
+
+#: pluginasterisk.cpp:109 pluginasterisk.cpp:169
+msgid "Id trabajador"
+msgstr ""
+
+#: pluginasterisk.cpp:108 pluginasterisk.cpp:168
+msgid "Id validacion"
+msgstr ""
+
+#: pluginasterisk.cpp:53
+msgid "Password."
+msgstr ""
+
+#: pluginasterisk.cpp:164
+msgid "Trabajador"
+msgstr ""
+
+#: pluginasterisk.cpp:54
+msgid "Valida siempre."
+msgstr ""

@@ -1,0 +1,43 @@
+#: ui_promediobase.h:296 ui_promediobase.h:311
+msgid "Cantidad Media"
+msgstr ""
+
+#: ui_promediobase.h:298 ui_promediobase.h:308
+msgid "Cantidad Menor"
+msgstr ""
+
+#: ui_promediobase.h:297 ui_promediobase.h:305
+msgid "Cantidad mayor"
+msgstr ""
+
+#: ui_promediobase.h:294
+msgid "Compras"
+msgstr ""
+
+#: ui_promediobase.h:301 ui_promediobase.h:309
+msgid "Precio Mayor"
+msgstr ""
+
+#: ui_promediobase.h:300 ui_promediobase.h:306
+msgid "Precio Medio"
+msgstr ""
+
+#: ui_promediobase.h:302 ui_promediobase.h:307
+msgid "Precio Menor"
+msgstr ""
+
+#: ui_promediobase.h:299 ui_promediobase.h:310
+msgid "Total"
+msgstr ""
+
+#: ui_promediobase.h:295
+msgid "Und. Compradas"
+msgstr ""
+
+#: ui_promediobase.h:304
+msgid "Und. Vendidas"
+msgstr ""
+
+#: ui_promediobase.h:303
+msgid "Ventas"
+msgstr ""

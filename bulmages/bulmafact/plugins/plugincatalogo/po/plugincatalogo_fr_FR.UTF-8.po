@@ -1,0 +1,3 @@
+#: catalogoqtoolbutton.cpp:151
+msgid "Generando catalogo"
+msgstr ""

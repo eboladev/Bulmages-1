@@ -1,0 +1,235 @@
+#: ui_actividadbase.h:441
+msgid "&Aceptar"
+msgstr ""
+
+#: pluginactividad.cpp:96
+msgid "&Actividades"
+msgstr ""
+
+#: ui_actividadbase.h:442
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_actividadbase.h:432
+msgid "&Datos generales"
+msgstr ""
+
+#: pluginactividad.cpp:104
+msgid "&Nueva actividad"
+msgstr ""
+
+#: actividadview.cpp:49
+msgid "Actividad"
+msgstr ""
+
+#: pluginactividad.cpp:98 pluginactividad.cpp:99 actividadeslist.cpp:144
+#: ui_actividadeslistbase.h:308
+msgid "Actividades"
+msgstr ""
+
+#: ui_actividadeslistbase.h:389 ui_actividadeslistbase.h:394
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_actividadbase.h:435
+msgid "Alumno"
+msgstr ""
+
+#: ui_actividadbase.h:437
+msgid "Alumnos"
+msgstr ""
+
+#: ui_actividadbase.h:438
+msgid "Asistencias"
+msgstr ""
+
+#: ui_actividadbase.h:440
+msgid "BLMonthCalendar"
+msgstr ""
+
+#: ui_actividadeslistbase.h:309
+msgid "Banco:"
+msgstr ""
+
+#: actividadeslist.cpp:218 ui_actividadeslistbase.h:341
+#: ui_actividadeslistbase.h:346
+msgid "Borrar Actividad"
+msgstr ""
+
+#: ui_actividadbase.h:404 ui_actividadbase.h:409 ui_actividadbase.h:416
+#: ui_actividadbase.h:421
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_actividadeslistbase.h:399
+msgid "Buscar:"
+msgstr ""
+
+#: ui_actividadbase.h:439
+msgid "Calendario"
+msgstr ""
+
+#: ui_actividadeslistbase.h:313
+msgid "Cobros efectivos"
+msgstr ""
+
+#: ui_actividadeslistbase.h:312
+msgid "Cobros previstos"
+msgstr ""
+
+#: ui_actividadbase.h:426
+msgid "Codigo Actividad"
+msgstr ""
+
+#: ui_actividadbase.h:433
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_actividadeslistbase.h:377 ui_actividadeslistbase.h:382
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_actividadeslistbase.h:386
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_actividadbase.h:413 ui_actividadeslistbase.h:350
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_actividadeslistbase.h:338
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_actividadeslistbase.h:374
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_actividadbase.h:425
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_actividadeslistbase.h:326
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_actividadeslistbase.h:362
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_actividadbase.h:401
+msgid "Ctrl+S"
+msgstr ""
+
+#: actividadeslist.cpp:201
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: actividadeslist.cpp:160
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: ui_actividadbase.h:430
+msgid "Direccion:"
+msgstr ""
+
+#: actividadeslist.cpp:217 ui_actividadeslistbase.h:329
+#: ui_actividadeslistbase.h:334
+msgid "Editar Actividad"
+msgstr ""
+
+#: actividadeslist.cpp:174
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: actividadview.cpp:68
+msgid "Error al crear el actividad"
+msgstr ""
+
+#: ui_actividadeslistbase.h:398
+msgid "F5"
+msgstr ""
+
+#: ui_actividadeslistbase.h:310
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_actividadeslistbase.h:311
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_actividadbase.h:436
+msgid "Fecha inscripcion"
+msgstr ""
+
+#: ui_actividadeslistbase.h:365 ui_actividadeslistbase.h:370
+msgid "Filtrar Actividades"
+msgstr ""
+
+#: ui_actividadbase.h:392 ui_actividadbase.h:397
+msgid "Guardar cobro"
+msgstr ""
+
+#: actividadeslist.cpp:262
+msgid "ID Actividad"
+msgstr ""
+
+#: actividadview.cpp:52
+msgid "ID actividad"
+msgstr ""
+
+#: actividadview.cpp:54
+msgid "Id profesor"
+msgstr ""
+
+#: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_actividadbase.h:428
+msgid "Lugar"
+msgstr ""
+
+#: actividadeslist.cpp:263
+msgid "Nombre"
+msgstr ""
+
+#: ui_actividadbase.h:427
+msgid "Nombre completo:"
+msgstr ""
+
+#: actividadview.cpp:53
+msgid "Nombre del actividad"
+msgstr ""
+
+#: ui_actividadbase.h:388
+msgid "Nueva Actividad"
+msgstr ""
+
+#: pluginactividad.cpp:106 pluginactividad.cpp:107
+msgid "Nueva actividad"
+msgstr ""
+
+#: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:322
+msgid "Nuevo Actividad"
+msgstr ""
+
+#: ui_actividadbase.h:434
+msgid "Otros datos"
+msgstr ""
+
+#: ui_actividadbase.h:429
+msgid "Profesor Encargado"
+msgstr ""
+
+#: actividadview.cpp:60
+msgid "Profesor:"
+msgstr ""
+
+#: actividadview.cpp:96
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: ui_actividadbase.h:431
+msgid "Vigente"
+msgstr ""

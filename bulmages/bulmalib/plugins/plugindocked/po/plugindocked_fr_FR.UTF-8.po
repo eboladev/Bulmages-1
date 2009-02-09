@@ -1,0 +1,15 @@
+#: plugindock.cpp:129
+msgid "&Dock Aplicacion"
+msgstr ""
+
+#: plugindock.cpp:134
+msgid "&Embeber Aplicacion"
+msgstr ""
+
+#: plugindock.cpp:130 plugindock.cpp:131
+msgid "Dockear Aplicacion"
+msgstr ""
+
+#: plugindock.cpp:135 plugindock.cpp:136
+msgid "Embeber Aplicacion"
+msgstr ""

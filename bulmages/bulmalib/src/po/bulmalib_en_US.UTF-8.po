@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 13:24+0100\n"
+"POT-Creation-Date: 2009-02-10 00:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,7 +174,7 @@ msgstr "Warning of the program"
 msgid "Bienal"
 msgstr "Biennial"
 
-#: blform.cpp:339 listado.cpp:377
+#: blform.cpp:339 blformlist.cpp:378
 msgid "Borrar"
 msgstr "Erase"
 
@@ -310,7 +310,7 @@ msgstr "Wishes to eliminate '"
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
 
-#: listado.cpp:376
+#: blformlist.cpp:377
 msgid "Editar"
 msgstr "Publish"
 
@@ -385,7 +385,7 @@ msgstr ""
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: incorrect user and/or password"
 
-#: qworkspace2.cpp:91
+#: blworkspace.cpp:91
 msgid "Esc"
 msgstr "Esc"
 
@@ -600,7 +600,7 @@ msgstr ""
 
 #: paisview.cpp:61
 msgid "Provincia"
-msgstr ""
+msgstr "Province"
 
 #: ui_fichacfgbase.h:291
 msgid "Qt Scripting"
@@ -656,7 +656,7 @@ msgstr "Semester"
 msgid "TextLabel"
 msgstr ""
 
-#: listado.cpp:325
+#: blformlist.cpp:326
 msgid "Tiene que seleccionar un elemento"
 msgstr "Must select an element"
 

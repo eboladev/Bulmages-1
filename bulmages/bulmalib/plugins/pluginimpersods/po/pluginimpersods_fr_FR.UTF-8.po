@@ -1,0 +1,3 @@
+#: eqtoolbutton.cpp:69
+msgid "Informes personales ODS"
+msgstr ""

@@ -1,0 +1,3 @@
+#: pluginopenref.cpp:36
+msgid "Estoy dentro del plugin de Abertura de Referencia"
+msgstr ""

@@ -1,0 +1,1113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.cxx:141
+msgid "Iniciando clases"
+msgstr ""
+
+#: main.cxx:171
+msgid "Leyendo configuracion"
+msgstr ""
+
+#: main.cxx:196
+msgid "Cargando traducciones"
+msgstr ""
+
+#: main.cxx:230
+msgid "Lanzando plugins"
+msgstr ""
+
+#: main.cxx:236
+msgid "Inicializando componentes"
+msgstr ""
+
+#: subform2bc.cpp:469
+msgid "Submenu de contabilidad"
+msgstr ""
+
+#: diariosubform.cpp:35 extractosubform.cpp:60
+msgid "idasiento"
+msgstr ""
+
+#: diariosubform.cpp:37 aplinteligentesview.cpp:58 extractosubform.cpp:49
+msgid "Asiento"
+msgstr ""
+
+#: diariosubform.cpp:38 listlinasiento1view.cpp:40 empresa.cpp:815
+#: extractosubform.cpp:47 asientolistsubform.cpp:38
+msgid "Fecha"
+msgstr ""
+
+#: diariosubform.cpp:39 cuentaview.cpp:38 tipoivaview.cpp:46
+#: listcuentasview1.cpp:55 extractosubform.cpp:48
+msgid "Cuenta"
+msgstr ""
+
+#: diariosubform.cpp:40 cuentaview.cpp:45 ccosteview.cpp:50 ccosteview.cpp:76
+#: extractosubform.cpp:50
+msgid "Descripcion"
+msgstr ""
+
+#: diariosubform.cpp:41 listlinasiento1view.cpp:44
+msgid "Concepto contable"
+msgstr ""
+
+#: diariosubform.cpp:42 cuentaview.cpp:53 listlinasiento1view.cpp:45
+#: listcuentasview1.cpp:62 extractosubform.cpp:54 asientolistsubform.cpp:42
+msgid "Debe"
+msgstr ""
+
+#: diariosubform.cpp:43 cuentaview.cpp:54 listlinasiento1view.cpp:46
+#: listcuentasview1.cpp:62 extractosubform.cpp:55 asientolistsubform.cpp:43
+msgid "Haber"
+msgstr ""
+
+#: diariosubform.cpp:44 listlinasiento1view.cpp:48 extractosubform.cpp:66
+msgid "Comentario"
+msgstr ""
+
+#: diariosubform.cpp:45
+msgid "idborrador"
+msgstr ""
+
+#: diariosubform.cpp:46 extractosubform.cpp:59
+msgid "codigoborrador"
+msgstr ""
+
+#: diariosubform.cpp:47 extractosubform.cpp:63
+msgid "tipocuenta"
+msgstr ""
+
+#: diariosubform.cpp:48
+msgid "Descripcion de Cuenta"
+msgstr ""
+
+#: diariosubform.cpp:49 diariosubform.cpp:50 listlinasiento1view.cpp:47
+msgid "Contrapartida"
+msgstr ""
+
+#: diariosubform.cpp:51 listlinasiento1view.cpp:50 canalview.cpp:36
+#: extractosubform.cpp:68
+msgid "Canal"
+msgstr ""
+
+#: diariosubform.cpp:52
+msgid "MarcaConciliacion"
+msgstr ""
+
+#: diariosubform.cpp:53 extractosubform.cpp:71
+msgid "Centro Coste"
+msgstr ""
+
+#: diariosubform.cpp:54
+msgid "Factura"
+msgstr ""
+
+#: diariosubform.cpp:55 extractosubform.cpp:58
+msgid "idapunte"
+msgstr ""
+
+#: diariosubform.cpp:56 extractosubform.cpp:72
+msgid "idtipoiva"
+msgstr ""
+
+#: diariosubform.cpp:57
+msgid "idregistroiva"
+msgstr ""
+
+#: diariosubform.cpp:58 selectcanalview.cpp:45 extractosubform.cpp:67
+msgid "idcanal"
+msgstr ""
+
+#: diariosubform.cpp:59 selectccosteview.cpp:43 extractosubform.cpp:70
+msgid "idc_coste"
+msgstr ""
+
+#: diariosubform.cpp:60 extractosubform.cpp:61
+msgid "iddiario"
+msgstr ""
+
+#: diariosubform.cpp:61 extractosubform.cpp:62
+msgid "idcuenta"
+msgstr ""
+
+#: diariosubform.cpp:96 diariosubform.cpp:113 listlinasiento1view.cpp:89
+#: listlinasiento1view.cpp:106 extractosubform.cpp:94 extractosubform.cpp:111
+#: asientolistsubform.cpp:77 asientolistsubform.cpp:94
+msgid "Mostrar asiento"
+msgstr ""
+
+#: diariosubform.cpp:98 diariosubform.cpp:115 listlinasiento1view.cpp:91
+#: listlinasiento1view.cpp:108 asientolistsubform.cpp:79
+#: asientolistsubform.cpp:96
+msgid "Mostrar extracto (dia)"
+msgstr ""
+
+#: diariosubform.cpp:99 diariosubform.cpp:117 listlinasiento1view.cpp:92
+#: listlinasiento1view.cpp:110 asientolistsubform.cpp:80
+#: asientolistsubform.cpp:98
+msgid "Mostrar extracto (mes)"
+msgstr ""
+
+#: diariosubform.cpp:100 diariosubform.cpp:119 listlinasiento1view.cpp:93
+#: listlinasiento1view.cpp:112 asientolistsubform.cpp:81
+#: asientolistsubform.cpp:100
+msgid "Mostrar extracto (ano)"
+msgstr ""
+
+#: extractoview1.cpp:55
+msgid "Extracto de Cuentas"
+msgstr ""
+
+#: extractoview1.cpp:244
+msgid "Guardar libro diario"
+msgstr ""
+
+#: extractoview1.cpp:246 diarioview.cpp:164
+msgid "Diarios (*.txt)"
+msgstr ""
+
+#: extractoview1.cpp:472
+msgid "Cargando Extracto de Cuentas"
+msgstr ""
+
+#: extractoview1.cpp:504
+msgid "Guardar punteo"
+msgstr ""
+
+#: extractoview1.cpp:506
+msgid "Punteos (*.pto)"
+msgstr ""
+
+#: extractoview1.cpp:542
+msgid "Borrar punteo"
+msgstr ""
+
+#: extractoview1.cpp:543
+msgid ""
+"Se dispone a borrar el punteo. Este "
+"cambio                                                 es irrecuperable si "
+"no ha guardado su punteo.                                                 "
+"Desea continuar?"
+msgstr ""
+
+#: extractoview1.cpp:554
+msgid "Se ha producido un error"
+msgstr ""
+
+#: extractoview1.cpp:570
+msgid "Cargar punteo"
+msgstr ""
+
+#: extractoview1.cpp:572
+msgid "Punteo (*.pto);;Todos los archivos (*)"
+msgstr ""
+
+#: cuentaview.cpp:43 listcuentasview1.cpp:62 cuentalistview.cpp:386
+msgid "ID cuenta"
+msgstr ""
+
+#: cuentaview.cpp:44 listcuentasview1.cpp:62
+msgid "Codigo cuenta"
+msgstr ""
+
+#: cuentaview.cpp:46
+msgid "Padre"
+msgstr ""
+
+#: cuentaview.cpp:47 listcuentasview1.cpp:62
+msgid "Imputacion"
+msgstr ""
+
+#: cuentaview.cpp:48 listcuentasview1.cpp:62
+msgid "Bloqueada"
+msgstr ""
+
+#: cuentaview.cpp:49
+msgid "NoDebe"
+msgstr ""
+
+#: cuentaview.cpp:50
+msgid "NoHaber"
+msgstr ""
+
+#: cuentaview.cpp:51 listcuentasview1.cpp:62
+msgid "Regularizacion"
+msgstr ""
+
+#: cuentaview.cpp:52
+msgid "Tipo de Cuenta"
+msgstr ""
+
+#: cuentaview.cpp:55
+msgid "Centro de coste por defecto"
+msgstr ""
+
+#: cuentaview.cpp:56
+msgid "Entidad de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:57
+msgid "CIF de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:58
+msgid "CP de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:59
+msgid "Telefono de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:60
+msgid "Comentarios de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:61
+msgid "Banco de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:62
+msgid "Web de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:63
+msgid "E-Mail de la cuenta"
+msgstr ""
+
+#: cuentaview.cpp:64
+msgid "Direccion de la cuenta"
+msgstr ""
+
+#: tipoivaview.cpp:39
+msgid "Tipo IVA"
+msgstr ""
+
+#: tipoivaview.cpp:43
+msgid "ID tipo iva"
+msgstr ""
+
+#: tipoivaview.cpp:44
+msgid "Nombre Tipo"
+msgstr ""
+
+#: tipoivaview.cpp:45 ccosteview.cpp:58
+msgid "Porcentaje"
+msgstr ""
+
+#: tipoivaview.cpp:109 tipoivaview.cpp:152
+msgid "Guardar tipo de IVA"
+msgstr ""
+
+#: tipoivaview.cpp:110 tipoivaview.cpp:153 ccosteview.cpp:167
+#: ccosteview.cpp:227 canalview.cpp:237 propiedadesempresa.cpp:117
+#: fpagoview.cpp:147 fpagoview.cpp:209
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: mpatrimonialesview.cpp:133 listcuentasview1.cpp:88
+msgid "CODIGO"
+msgstr ""
+
+#: mpatrimonialesview.cpp:133
+msgid "Masa patrimonial"
+msgstr ""
+
+#: bulmacont.cpp:595 bulmacont.cpp:621 bulmacont.cpp:633 bulmacont.cpp:645
+#: bulmacont.cpp:657 bulmacont.cpp:675 bulmacont.cpp:693
+msgid "Listo."
+msgstr ""
+
+#: bulmacont.cpp:620
+msgid "Deshaciendo la ultima accion..."
+msgstr ""
+
+#: bulmacont.cpp:632
+msgid "Cortando seleccion..."
+msgstr ""
+
+#: bulmacont.cpp:644
+msgid "Copiando la seleccion al portapapeles..."
+msgstr ""
+
+#: bulmacont.cpp:656
+msgid "Insertando el contenido del portapapeles..."
+msgstr ""
+
+#: bulmacont.cpp:669
+msgid "Cambinado barra de estado..."
+msgstr ""
+
+#: bulmacont.cpp:687
+msgid "Cambiando a modo de pantalla completa..."
+msgstr ""
+
+#: bulmacont.cpp:717
+msgid "Listado de cuentas"
+msgstr ""
+
+#: listlinasiento1view.cpp:39
+msgid "Id apunte"
+msgstr ""
+
+#: listlinasiento1view.cpp:41
+msgid "Codigo"
+msgstr ""
+
+#: listlinasiento1view.cpp:42 cuentalistview.cpp:388
+msgid "Nombre de la cuenta"
+msgstr ""
+
+#: listlinasiento1view.cpp:43
+msgid "Descripcion del apunte"
+msgstr ""
+
+#: listlinasiento1view.cpp:49
+msgid "ID Canal"
+msgstr ""
+
+#: listlinasiento1view.cpp:51
+msgid "Conciliacion"
+msgstr ""
+
+#: listlinasiento1view.cpp:52 ccosteview.cpp:76
+msgid "Id centro de coste"
+msgstr ""
+
+#: listlinasiento1view.cpp:53
+msgid "Centro de coste"
+msgstr ""
+
+#: listlinasiento1view.cpp:54
+msgid "Id tipo de IVA"
+msgstr ""
+
+#: listlinasiento1view.cpp:55 extractosubform.cpp:73 asientolistsubform.cpp:37
+msgid "Orden"
+msgstr ""
+
+#: listlinasiento1view.cpp:56
+msgid "Id borrador"
+msgstr ""
+
+#: listlinasiento1view.cpp:57 amortizacionview.cpp:81 asiento1.cpp:45
+#: asientolistsubform.cpp:44
+msgid "Id asiento"
+msgstr ""
+
+#: listlinasiento1view.cpp:58
+msgid "Id cuenta"
+msgstr ""
+
+#: listlinasiento1view.cpp:59
+msgid "Tipo de cuenta"
+msgstr ""
+
+#: listlinasiento1view.cpp:60
+msgid "Id. Registro IVA"
+msgstr ""
+
+#: listlinasiento1view.cpp:61
+msgid "Fecha Factura"
+msgstr ""
+
+#: listlinasiento1view.cpp:62
+msgid "Num. Factura"
+msgstr ""
+
+#: amortizacionesview.cpp:47 amortizacionview.cpp:71 amortizacionview.cpp:83
+msgid "Id amortizacion"
+msgstr ""
+
+#: amortizacionesview.cpp:48 ccosteview.cpp:49 ccosteview.cpp:76
+#: propiedadesempresa.cpp:191
+msgid "Nombre"
+msgstr ""
+
+#: amortizacionesview.cpp:49
+msgid "Fecha compra"
+msgstr ""
+
+#: amortizacionesview.cpp:50
+msgid "Fecha 1 cuota"
+msgstr ""
+
+#: amortizacionesview.cpp:51
+msgid "Num cuotas"
+msgstr ""
+
+#: amortizacionesview.cpp:107
+msgid "Error al borrar la amortizacion"
+msgstr ""
+
+#: ccosteview.cpp:44
+msgid "Centro de Coste"
+msgstr ""
+
+#: ccosteview.cpp:48
+msgid "Id. Centro Coste"
+msgstr ""
+
+#: ccosteview.cpp:57
+msgid "Nombre Destinatario"
+msgstr ""
+
+#: ccosteview.cpp:59
+msgid "Id"
+msgstr ""
+
+#: ccosteview.cpp:60
+msgid "Destinatario"
+msgstr ""
+
+#: ccosteview.cpp:61
+msgid "Origen"
+msgstr ""
+
+#: ccosteview.cpp:142
+msgid "Error en la carga de centros de coste"
+msgstr ""
+
+#: ccosteview.cpp:166 ccosteview.cpp:226
+msgid "Guardar centro de coste"
+msgstr ""
+
+#: ccosteview.cpp:168 canalview.cpp:108 canalview.cpp:186
+#: propiedadesempresa.cpp:118
+msgid "&Guardar"
+msgstr ""
+
+#: ccosteview.cpp:168 ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108
+#: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238
+msgid "&Cancelar"
+msgstr ""
+
+#: ccosteview.cpp:265
+msgid "Borrar centro de coste"
+msgstr ""
+
+#: ccosteview.cpp:266
+msgid ""
+"Se va a borrar el centro de coste.\n"
+"Esta operacion puede ocasionar perdida de datos."
+msgstr ""
+
+#: ccosteview.cpp:267 canalview.cpp:213
+msgid "&Borrar"
+msgstr ""
+
+#: ccosteview.cpp:278
+msgid "No se pudo borrar el Centro de Coste"
+msgstr ""
+
+#: selectccosteview.cpp:43
+msgid "nom_coste"
+msgstr ""
+
+#: selectccosteview.cpp:43
+msgid "desc_coste"
+msgstr ""
+
+#: selectccosteview.cpp:43 selectcanalview.cpp:45
+msgid "Status"
+msgstr ""
+
+#: selectccosteview.cpp:43 selectcanalview.cpp:45
+msgid "Seleccion"
+msgstr ""
+
+#: empresa.cpp:212
+msgid "Inicializando extracto"
+msgstr ""
+
+#: empresa.cpp:219
+msgid "Inicializando diario"
+msgstr ""
+
+#: empresa.cpp:242 empresa.cpp:249
+msgid "Inicializando asientos"
+msgstr ""
+
+#: empresa.cpp:257
+msgid "Inicializando cuentas"
+msgstr ""
+
+#: empresa.cpp:265
+msgid "Terminado"
+msgstr ""
+
+#: empresa.cpp:781 empresa.cpp:840
+msgid "Fecha inicial"
+msgstr ""
+
+#: empresa.cpp:781
+msgid "Fecha inicial ejercicio:"
+msgstr ""
+
+#: empresa.cpp:790 empresa.cpp:849
+msgid "Fecha final"
+msgstr ""
+
+#: empresa.cpp:790
+msgid "Fecha final ejercicio:"
+msgstr ""
+
+#: empresa.cpp:815
+msgid "Fecha:"
+msgstr ""
+
+#: empresa.cpp:840
+msgid "Fecha inicial regularizacion:"
+msgstr ""
+
+#: empresa.cpp:849
+msgid "Fecha final regularizacion:"
+msgstr ""
+
+#: asientosview.cpp:44
+msgid "Todos los asientos"
+msgstr ""
+
+#: asientosview.cpp:45
+msgid "Asientos cerrados"
+msgstr ""
+
+#: asientosview.cpp:46
+msgid "Asientos abiertos"
+msgstr ""
+
+#: asientosview.cpp:66
+msgid "(todos)"
+msgstr ""
+
+#: asientosview.cpp:233
+msgid "La fecha inicial es posterior a la fecha final."
+msgstr ""
+
+#: asientosview.cpp:300
+msgid "Asientos"
+msgstr ""
+
+#: mpatrimonialview.cpp:45
+msgid "identificador"
+msgstr ""
+
+#: mpatrimonialview.cpp:45
+msgid "codigo"
+msgstr ""
+
+#: mpatrimonialview.cpp:45
+msgid "descripcion"
+msgstr ""
+
+#: mpatrimonialview.cpp:45
+msgid "tipo"
+msgstr ""
+
+#: amortizacionview.cpp:55
+msgid "Amortizacion"
+msgstr ""
+
+#: amortizacionview.cpp:58
+msgid "Nombre de la amortizacion"
+msgstr ""
+
+#: amortizacionview.cpp:59
+msgid "Descripcion de la amortizacion"
+msgstr ""
+
+#: amortizacionview.cpp:60
+msgid "Fecha de la compra"
+msgstr ""
+
+#: amortizacionview.cpp:61
+msgid "Fecha 1a cuota"
+msgstr ""
+
+#: amortizacionview.cpp:62
+msgid "Valor de la compra"
+msgstr ""
+
+#: amortizacionview.cpp:63
+msgid "Periodicidad"
+msgstr ""
+
+#: amortizacionview.cpp:64
+msgid "Numero de cuotas"
+msgstr ""
+
+#: amortizacionview.cpp:65
+msgid "Metodo"
+msgstr ""
+
+#: amortizacionview.cpp:66
+msgid "NIF del proveedor"
+msgstr ""
+
+#: amortizacionview.cpp:67
+msgid "Nombre del proveedor"
+msgstr ""
+
+#: amortizacionview.cpp:68
+msgid "Direccion del proveedor"
+msgstr ""
+
+#: amortizacionview.cpp:69
+msgid "Telefono del proveedor"
+msgstr ""
+
+#: amortizacionview.cpp:70
+msgid "Agrupacion"
+msgstr ""
+
+#: amortizacionview.cpp:72
+msgid "Identificador"
+msgstr ""
+
+#: amortizacionview.cpp:73
+msgid "Id cuenta amortizacion"
+msgstr ""
+
+#: amortizacionview.cpp:78 bbloqfecha.cpp:115
+msgid "Ejercicio"
+msgstr ""
+
+#: amortizacionview.cpp:79
+msgid "Fecha prevista"
+msgstr ""
+
+#: amortizacionview.cpp:80
+msgid "Cantidad"
+msgstr ""
+
+#: amortizacionview.cpp:82
+msgid "Id lineas de amortizacion"
+msgstr ""
+
+#: amortizacionview.cpp:211
+msgid "Error en la carga de la amortizacion"
+msgstr ""
+
+#: amortizacionview.cpp:246 amortizacionview.cpp:273 amortizacionview.cpp:301
+#: amortizacionview.cpp:332
+msgid "Anual"
+msgstr ""
+
+#: amortizacionview.cpp:248 amortizacionview.cpp:275 amortizacionview.cpp:303
+#: amortizacionview.cpp:334
+msgid "Mensual"
+msgstr ""
+
+#: amortizacionview.cpp:250 amortizacionview.cpp:277 amortizacionview.cpp:305
+#: amortizacionview.cpp:336
+msgid "Semestral"
+msgstr ""
+
+#: amortizacionview.cpp:252 amortizacionview.cpp:279 amortizacionview.cpp:307
+#: amortizacionview.cpp:338
+msgid "Trimestral"
+msgstr ""
+
+#: amortizacionview.cpp:381 amortizacionview.cpp:447
+msgid "Generar asiento"
+msgstr ""
+
+#: amortizacionview.cpp:383 amortizacionview.cpp:427
+msgid "Ver asiento"
+msgstr ""
+
+#: amortizacionview.cpp:385 amortizacionview.cpp:436
+msgid "Desvincular asiento"
+msgstr ""
+
+#: amortizacionview.cpp:386 amortizacionview.cpp:427 amortizacionview.cpp:436
+#: amortizacionview.cpp:443 asiento1.cpp:159
+msgid "Borrar asiento"
+msgstr ""
+
+#: amortizacionview.cpp:417
+msgid "Borrar cuota"
+msgstr ""
+
+#: aplinteligentesview.cpp:615
+msgid "Error al crear el asiento"
+msgstr ""
+
+#: sobreview.cpp:42
+msgid "Compilado usando la version de QT:"
+msgstr ""
+
+#: bbloqfecha.cpp:77
+msgid "Bloquear Fechas"
+msgstr ""
+
+#: bbloqfecha.cpp:81
+msgid "Bloqueado"
+msgstr ""
+
+#: bbloqfecha.cpp:82
+msgid "Abierto"
+msgstr ""
+
+#: bbloqfecha.cpp:115
+msgid "Estado"
+msgstr ""
+
+#: bbloqfecha.cpp:147
+msgid "Diciembre"
+msgstr ""
+
+#: bbloqfecha.cpp:151
+msgid "Noviembre"
+msgstr ""
+
+#: bbloqfecha.cpp:155
+msgid "Octubre"
+msgstr ""
+
+#: bbloqfecha.cpp:159
+msgid "Septiembre"
+msgstr ""
+
+#: bbloqfecha.cpp:163
+msgid "Agosto"
+msgstr ""
+
+#: bbloqfecha.cpp:167
+msgid "Julio"
+msgstr ""
+
+#: bbloqfecha.cpp:171
+msgid "Junio"
+msgstr ""
+
+#: bbloqfecha.cpp:175
+msgid "Mayo"
+msgstr ""
+
+#: bbloqfecha.cpp:179
+msgid "Abril"
+msgstr ""
+
+#: bbloqfecha.cpp:183
+msgid "Marzo"
+msgstr ""
+
+#: bbloqfecha.cpp:187
+msgid "Febrero"
+msgstr ""
+
+#: bbloqfecha.cpp:191
+msgid "Enero"
+msgstr ""
+
+#: bbloqfecha.cpp:253
+msgid "Introduzca Ejercicio a Crear"
+msgstr ""
+
+#: bbloqfecha.cpp:254
+msgid "Ponga el anyo:"
+msgstr ""
+
+#: bbloqfecha.cpp:267
+msgid "Ejercicios ya contemplado"
+msgstr ""
+
+#: modelo300.cpp:170
+msgid "Creando formulario"
+msgstr ""
+
+#: diarioview.cpp:54
+msgid "Diario"
+msgstr ""
+
+#: diarioview.cpp:162
+msgid "Guardar Libro Diario"
+msgstr ""
+
+#: canalview.cpp:106 canalview.cpp:184 canalview.cpp:236
+msgid "Guardar canal"
+msgstr ""
+
+#: canalview.cpp:107 canalview.cpp:185
+msgid "Desea guardar los cambios."
+msgstr ""
+
+#: canalview.cpp:190
+msgid "Nuevo canal"
+msgstr ""
+
+#: canalview.cpp:190
+msgid "Escriba su descripcion"
+msgstr ""
+
+#: canalview.cpp:211
+msgid "Borrar canal"
+msgstr ""
+
+#: canalview.cpp:212
+msgid ""
+"Se va a borrar este canal.\n"
+"Esto puede ocasionar perdida de datos."
+msgstr ""
+
+#: canalview.cpp:238 asiento1view.cpp:333
+msgid "&Si"
+msgstr ""
+
+#: canalview.cpp:238 asiento1view.cpp:333
+msgid "&No"
+msgstr ""
+
+#: selectcanalview.cpp:45
+msgid "nom_canal"
+msgstr ""
+
+#: selectcanalview.cpp:45
+msgid "desc_canal"
+msgstr ""
+
+#: listcuentasview1.cpp:62
+msgid "Nombre cuenta"
+msgstr ""
+
+#: listcuentasview1.cpp:62
+msgid "Nodebe"
+msgstr ""
+
+#: listcuentasview1.cpp:62
+msgid "Nohaber"
+msgstr ""
+
+#: listcuentasview1.cpp:62
+msgid "Grupo"
+msgstr ""
+
+#: listcuentasview1.cpp:62
+msgid "Tipo cuenta"
+msgstr ""
+
+#: listcuentasview1.cpp:88
+msgid "NOMBRE"
+msgstr ""
+
+#: listcuentasview1.cpp:378 listcuentasview1.cpp:404
+msgid "Debe seleccionar una cuenta"
+msgstr ""
+
+#: listcuentasview1.cpp:408
+msgid "Borrar cuenta"
+msgstr ""
+
+#: listcuentasview1.cpp:409
+msgid "Se procedera a borrar la cuenta."
+msgstr ""
+
+#: listcuentasview1.cpp:545 listcuentasview1.cpp:564
+msgid "Elija el archivo"
+msgstr ""
+
+#: listcuentasview1.cpp:547 listcuentasview1.cpp:566
+msgid "Plan contable (*.xml)"
+msgstr ""
+
+#: asiento1view.cpp:331
+msgid "Asiento inexistente."
+msgstr ""
+
+#: asiento1view.cpp:332
+msgid "Desea crear un nuevo asiento en esa posicion?"
+msgstr ""
+
+#: canualesview.cpp:41
+msgid "Cuentas Anuales"
+msgstr ""
+
+#: canualesview.cpp:122
+msgid "Archivo"
+msgstr ""
+
+#: cuentalistview.cpp:68
+msgid "Selector de articulos"
+msgstr ""
+
+#: cuentalistview.cpp:309
+msgid "Editar articulo"
+msgstr ""
+
+#: cuentalistview.cpp:310
+msgid "Borrar articulo"
+msgstr ""
+
+#: cuentalistview.cpp:387
+msgid "Codigo Cuenta"
+msgstr ""
+
+#: extractosubform.cpp:46
+msgid "Punteo"
+msgstr ""
+
+#: extractosubform.cpp:51
+msgid "Descripcion Apunte"
+msgstr ""
+
+#: extractosubform.cpp:52
+msgid "Descripcion Asiento"
+msgstr ""
+
+#: extractosubform.cpp:53
+msgid "Concepto"
+msgstr ""
+
+#: extractosubform.cpp:56
+msgid "Saldo"
+msgstr ""
+
+#: extractosubform.cpp:64
+msgid "Id contrapartida"
+msgstr ""
+
+#: extractosubform.cpp:65
+msgid "contrapartida"
+msgstr ""
+
+#: extractosubform.cpp:69
+msgid "marcaconciliacion"
+msgstr ""
+
+#: extractosubform.cpp:96 extractosubform.cpp:113
+msgid "Mostrar diario (dia)"
+msgstr ""
+
+#: extractosubform.cpp:97 extractosubform.cpp:115
+msgid "Mostrar diario (mes)"
+msgstr ""
+
+#: extractosubform.cpp:98 extractosubform.cpp:117
+msgid "Mostrar diario (ano)"
+msgstr ""
+
+#: propiedadesempresa.cpp:38
+msgid "Configuracion"
+msgstr ""
+
+#: propiedadesempresa.cpp:116
+msgid "Guardar cambios"
+msgstr ""
+
+#: propiedadesempresa.cpp:118
+msgid "&No guardar"
+msgstr ""
+
+#: propiedadesempresa.cpp:158
+msgid "Salir del programa"
+msgstr ""
+
+#: propiedadesempresa.cpp:159
+msgid ""
+"Para que los cambios tengan efecto\n"
+"debe salir del programa y volver a entrar.\n"
+"\n"
+"Salir ahora?"
+msgstr ""
+
+#: propiedadesempresa.cpp:160
+msgid "&Salir"
+msgstr ""
+
+#: propiedadesempresa.cpp:160
+msgid "&No salir"
+msgstr ""
+
+#: propiedadesempresa.cpp:192
+msgid "Valor"
+msgstr ""
+
+#: asiento1.cpp:42
+msgid "Asiento Contable"
+msgstr ""
+
+#: asiento1.cpp:46
+msgid "Descripcion del asiento"
+msgstr ""
+
+#: asiento1.cpp:47
+msgid "Fecha del asiento"
+msgstr ""
+
+#: asiento1.cpp:48
+msgid "Comentarios del asiento"
+msgstr ""
+
+#: asiento1.cpp:49
+msgid "Orden de asiento"
+msgstr ""
+
+#: asiento1.cpp:50
+msgid "Tipo de asiento"
+msgstr ""
+
+#: asiento1.cpp:160
+msgid "Se va a borrar el asiento. Esta seguro?"
+msgstr ""
+
+#: asiento1.cpp:408
+msgid "El asiento se ha guardado correctamente."
+msgstr ""
+
+#: fpagoview.cpp:36
+msgid "Forma de Pago"
+msgstr ""
+
+#: fpagoview.cpp:146 fpagoview.cpp:208
+msgid "Guardar forma de pago"
+msgstr ""
+
+#: fpagoview.cpp:214
+msgid "Nueva forma de pago"
+msgstr ""
+
+#: fpagoview.cpp:238
+msgid "Tiene que seleccionar una forma de pago antes de borrarla"
+msgstr ""
+
+#: fpagoview.cpp:242
+msgid "Borrar forma de pago"
+msgstr ""
+
+#: fpagoview.cpp:243
+msgid ""
+"Se va a borrar la forma de pago.\n"
+"Esto puede ocasionar perdida de datos.\n"
+msgstr ""
+
+#: asientolistsubform.cpp:39
+msgid "Apuntes"
+msgstr ""
+
+#: asientolistsubform.cpp:40
+msgid "Borrador"
+msgstr ""
+
+#: asientolistsubform.cpp:41
+msgid "Comentarios"
+msgstr ""
+
+#: asientolistsubform.cpp:45
+msgid "Clase"
+msgstr ""

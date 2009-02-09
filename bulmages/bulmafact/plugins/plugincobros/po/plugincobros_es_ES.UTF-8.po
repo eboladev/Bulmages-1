@@ -1,0 +1,272 @@
+#: ui_cobrobase.h:410
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_cobrobase.h:411
+msgid "&Cancelar"
+msgstr ""
+
+#: plugincobros.cpp:97
+msgid "&Cobros a clientes"
+msgstr ""
+
+#: plugincobros.cpp:105
+msgid "&Nuevo cobro a cliente"
+msgstr ""
+
+#: ui_cobroslistbase.h:455 ui_cobroslistbase.h:460
+msgid "Actualizar listado"
+msgstr ""
+
+#: cobroslist.cpp:324
+msgid "Apellidos del trabajador"
+msgstr ""
+
+#: cobroview.cpp:69 cobroslist.cpp:318
+msgid "Banco"
+msgstr ""
+
+#: ui_cobroslistbase.h:374 ui_cobrobase.h:409
+msgid "Banco:"
+msgstr ""
+
+#: cobroslist.cpp:255 ui_cobroslistbase.h:407 ui_cobroslistbase.h:412
+#: ui_cobrobase.h:381 ui_cobrobase.h:386 ui_cobrobase.h:393 ui_cobrobase.h:398
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_cobroslistbase.h:465
+msgid "Buscar:"
+msgstr ""
+
+#: cobroslist.cpp:312
+msgid "C.I.F."
+msgstr ""
+
+#: cobroslist.cpp:317
+msgid "Cantidad"
+msgstr ""
+
+#: cobroview.cpp:62
+msgid "Cliente"
+msgstr ""
+
+#: cobroview.cpp:53 cobroslist.cpp:51 cobroslist.cpp:79
+msgid "Cliente:"
+msgstr ""
+
+#: cobroview.cpp:58
+msgid "Cobro"
+msgstr ""
+
+#: cobroslist.cpp:181 plugincobros.cpp:99 plugincobros.cpp:100
+msgid "Cobros a clientes"
+msgstr ""
+
+#: ui_cobroslistbase.h:373
+msgid "Cobros de clientes"
+msgstr ""
+
+#: ui_cobroslistbase.h:378
+msgid "Cobros efectivos"
+msgstr ""
+
+#: ui_cobroslistbase.h:377
+msgid "Cobros previstos"
+msgstr ""
+
+#: cobroslist.cpp:321
+msgid "Comentarios"
+msgstr ""
+
+#: ui_cobroslistbase.h:443 ui_cobroslistbase.h:448
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_cobroslistbase.h:452
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_cobroslistbase.h:416 ui_cobrobase.h:390
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_cobroslistbase.h:404
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_cobroslistbase.h:440
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_cobrobase.h:402
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_cobroslistbase.h:392
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_cobroslistbase.h:428
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_cobrobase.h:378
+msgid "Ctrl+S"
+msgstr ""
+
+#: cobroslist.cpp:238
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: cobroslist.cpp:197
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: cobroview.cpp:68
+msgid "Descripcion del cobro"
+msgstr ""
+
+#: ui_cobrobase.h:407
+msgid "Descripcion del cobro:"
+msgstr ""
+
+#: cobroslist.cpp:314
+msgid "Direccion de correo electronico"
+msgstr ""
+
+#: cobroslist.cpp:254 ui_cobroslistbase.h:395 ui_cobroslistbase.h:400
+msgid "Editar cobro"
+msgstr ""
+
+#: cobroslist.cpp:211
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: cobroview.cpp:75
+msgid "Error al crear el cobro"
+msgstr ""
+
+#: ui_cobroslistbase.h:464
+msgid "F5"
+msgstr ""
+
+#: cobroslist.cpp:315
+msgid "Fecha de cobro"
+msgstr ""
+
+#: cobroview.cpp:65 cobroslist.cpp:316
+msgid "Fecha de vencimiento"
+msgstr ""
+
+#: ui_cobrobase.h:406
+msgid "Fecha de vencimiento:"
+msgstr ""
+
+#: cobroview.cpp:64
+msgid "Fecha del cobro"
+msgstr ""
+
+#: ui_cobrobase.h:404
+msgid "Fecha del cobro:"
+msgstr ""
+
+#: ui_cobroslistbase.h:375
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_cobroslistbase.h:376
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_cobroslistbase.h:431 ui_cobroslistbase.h:436
+msgid "Filtrar cobros"
+msgstr ""
+
+#: ui_cobrobase.h:369 ui_cobrobase.h:374
+msgid "Guardar cobro"
+msgstr ""
+
+#: cobroslist.cpp:310
+msgid "ID cliente"
+msgstr ""
+
+#: cobroslist.cpp:309
+msgid "ID cobro"
+msgstr ""
+
+#: cobroslist.cpp:322
+msgid "ID trabajador"
+msgstr ""
+
+#: cobroview.cpp:61
+msgid "Id cobro"
+msgstr ""
+
+#: ui_cobroslistbase.h:419 ui_cobroslistbase.h:424
+msgid "Imprimir listado"
+msgstr ""
+
+#: cobroslist.cpp:311
+msgid "Nombre"
+msgstr ""
+
+#: cobroslist.cpp:323
+msgid "Nombre del trabajador"
+msgstr ""
+
+#: ui_cobroslistbase.h:383 ui_cobroslistbase.h:388
+msgid "Nuevo cobro"
+msgstr ""
+
+#: plugincobros.cpp:107 plugincobros.cpp:108
+msgid "Nuevo cobro a cliente"
+msgstr ""
+
+#: ui_cobrobase.h:365
+msgid "Nuevo cobro de cliente"
+msgstr ""
+
+#: cobroslist.cpp:313
+msgid "Numero de telefono"
+msgstr ""
+
+#: cobroview.cpp:63
+msgid "Prevision"
+msgstr ""
+
+#: cobroslist.cpp:320
+msgid "Prevision de cobro"
+msgstr ""
+
+#: ui_cobrobase.h:405
+msgid "Provision de fondos"
+msgstr ""
+
+#: cobroview.cpp:66
+msgid "Referencia"
+msgstr ""
+
+#: cobroslist.cpp:319
+msgid "Referencia del cobro"
+msgstr ""
+
+#: ui_cobrobase.h:403
+msgid "Referencia:"
+msgstr ""
+
+#: cobroview.cpp:121
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: cobroview.cpp:67
+msgid "Total cobro"
+msgstr ""
+
+#: ui_cobrobase.h:408
+msgid "Total cobro:"
+msgstr ""
+
+#: ui_cobroslistbase.h:379
+msgid "Total:"
+msgstr ""

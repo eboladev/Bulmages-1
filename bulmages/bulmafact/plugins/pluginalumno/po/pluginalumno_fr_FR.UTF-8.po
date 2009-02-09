@@ -1,0 +1,241 @@
+#: ui_alumnobase.h:521
+msgid "&Aceptar"
+msgstr ""
+
+#: pluginalumno.cpp:96
+msgid "&Alumnos"
+msgstr ""
+
+#: ui_alumnobase.h:522
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_alumnobase.h:511
+msgid "&Datos generales"
+msgstr ""
+
+#: pluginalumno.cpp:104
+msgid "&Nuevo alumno"
+msgstr ""
+
+#: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394
+msgid "Actualizar listado"
+msgstr ""
+
+#: alumnoview.cpp:49
+msgid "Alumno"
+msgstr ""
+
+#: alumnoslist.cpp:144 pluginalumno.cpp:98 pluginalumno.cpp:99
+#: ui_alumnoslistbase.h:308
+msgid "Alumnos"
+msgstr ""
+
+#: ui_alumnoslistbase.h:309
+msgid "Banco:"
+msgstr ""
+
+#: alumnoslist.cpp:218 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
+msgid "Borrar Alumno"
+msgstr ""
+
+#: ui_alumnobase.h:472 ui_alumnobase.h:477 ui_alumnobase.h:484
+#: ui_alumnobase.h:489
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_alumnobase.h:499
+msgid "Borrar imagen"
+msgstr ""
+
+#: ui_alumnoslistbase.h:399
+msgid "Buscar:"
+msgstr ""
+
+#: ui_alumnobase.h:494
+msgid "C.I.F./N.I.F./N.I.E.:"
+msgstr ""
+
+#: ui_alumnobase.h:496
+msgid "Cam&biar imagen"
+msgstr ""
+
+#: ui_alumnoslistbase.h:313
+msgid "Cobros efectivos"
+msgstr ""
+
+#: ui_alumnoslistbase.h:312
+msgid "Cobros previstos"
+msgstr ""
+
+#: ui_alumnobase.h:508
+msgid "Codigo postal:"
+msgstr ""
+
+#: ui_alumnobase.h:512
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_alumnoslistbase.h:377 ui_alumnoslistbase.h:382
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_alumnobase.h:509
+msgid "Correo electronico:"
+msgstr ""
+
+#: ui_alumnoslistbase.h:386
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_alumnoslistbase.h:350 ui_alumnobase.h:481
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_alumnoslistbase.h:338
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_alumnoslistbase.h:374
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_alumnobase.h:493
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_alumnoslistbase.h:326
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_alumnoslistbase.h:362
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_alumnobase.h:469
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_alumnobase.h:515
+msgid "DNI / NIf"
+msgstr ""
+
+#: ui_alumnobase.h:513
+msgid "Datos bancarios:"
+msgstr ""
+
+#: alumnoslist.cpp:201
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: alumnoslist.cpp:160
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: ui_alumnobase.h:504
+msgid "Direccion:"
+msgstr ""
+
+#: alumnoslist.cpp:217 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
+msgid "Editar Alumno"
+msgstr ""
+
+#: alumnoslist.cpp:174
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: alumnoview.cpp:69
+msgid "Error al crear el alumno"
+msgstr ""
+
+#: ui_alumnoslistbase.h:398
+msgid "F5"
+msgstr ""
+
+#: ui_alumnoslistbase.h:310
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_alumnoslistbase.h:311
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:370
+msgid "Filtrar Alumnos"
+msgstr ""
+
+#: ui_alumnobase.h:495
+msgid "Fotografia"
+msgstr ""
+
+#: ui_alumnobase.h:460 ui_alumnobase.h:465
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_alumnobase.h:520
+msgid "Hermanos"
+msgstr ""
+
+#: alumnoview.cpp:52 alumnoslist.cpp:262
+msgid "Id alumno"
+msgstr ""
+
+#: ui_alumnoslistbase.h:353 ui_alumnoslistbase.h:358
+msgid "Imprimir listado"
+msgstr ""
+
+#: alumnoslist.cpp:263 ui_alumnobase.h:516
+msgid "Nombre"
+msgstr ""
+
+#: ui_alumnobase.h:503
+msgid "Nombre completo:"
+msgstr ""
+
+#: alumnoview.cpp:53
+msgid "Nombre del alumno"
+msgstr ""
+
+#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:322 ui_alumnobase.h:456
+msgid "Nuevo Alumno"
+msgstr ""
+
+#: pluginalumno.cpp:106 pluginalumno.cpp:107
+msgid "Nuevo alumno"
+msgstr ""
+
+#: ui_alumnobase.h:514
+msgid "Otros datos"
+msgstr ""
+
+#: ui_alumnobase.h:519
+msgid "Padres/Tutores"
+msgstr ""
+
+#: ui_alumnobase.h:505
+msgid "Poblacion:"
+msgstr ""
+
+#: ui_alumnobase.h:518
+msgid "Porcentaje de facturacion"
+msgstr ""
+
+#: ui_alumnobase.h:510
+msgid "Provincia:"
+msgstr ""
+
+#: ui_alumnobase.h:517
+msgid "Relacion"
+msgstr ""
+
+#: ui_alumnobase.h:506
+msgid "Telefono fijo:"
+msgstr ""
+
+#: ui_alumnobase.h:507
+msgid "Telefono movil:"
+msgstr ""
+
+#: alumnoview.cpp:97
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""

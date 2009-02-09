@@ -1,0 +1,3 @@
+#: impqtoolbutton.cpp:84 impqtoolbutton.cpp:85
+msgid "Enviar por e-mail con Thunderbird al cliente"
+msgstr ""

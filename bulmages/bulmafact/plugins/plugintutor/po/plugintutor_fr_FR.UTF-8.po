@@ -1,0 +1,224 @@
+#: ui_tutorbase.h:434
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_tutorbase.h:435
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_tutorbase.h:445
+msgid "&Datos generales"
+msgstr ""
+
+#: plugintutor.cpp:104
+msgid "&Nuevo tutor"
+msgstr ""
+
+#: plugintutor.cpp:96
+msgid "&Tutores"
+msgstr ""
+
+#: ui_tutoreslistbase.h:389 ui_tutoreslistbase.h:394
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_tutoreslistbase.h:309
+msgid "Banco:"
+msgstr ""
+
+#: tutoreslist.cpp:218 ui_tutoreslistbase.h:341 ui_tutoreslistbase.h:346
+msgid "Borrar Tutor"
+msgstr ""
+
+#: ui_tutorbase.h:412 ui_tutorbase.h:417 ui_tutorbase.h:424 ui_tutorbase.h:429
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_tutoreslistbase.h:399
+msgid "Buscar:"
+msgstr ""
+
+#: ui_tutorbase.h:436
+msgid "C.I.F./N.I.F./N.I.E.:"
+msgstr ""
+
+#: ui_tutoreslistbase.h:313
+msgid "Cobros efectivos"
+msgstr ""
+
+#: ui_tutoreslistbase.h:312
+msgid "Cobros previstos"
+msgstr ""
+
+#: ui_tutorbase.h:442
+msgid "Codigo postal:"
+msgstr ""
+
+#: ui_tutorbase.h:446
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_tutoreslistbase.h:377 ui_tutoreslistbase.h:382
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_tutorbase.h:443
+msgid "Correo electronico:"
+msgstr ""
+
+#: ui_tutoreslistbase.h:386
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_tutorbase.h:421 ui_tutoreslistbase.h:350
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_tutoreslistbase.h:338
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_tutoreslistbase.h:374
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_tutorbase.h:433
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_tutoreslistbase.h:326
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_tutoreslistbase.h:362
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_tutorbase.h:409
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_tutorbase.h:449
+msgid "DNI / NIf"
+msgstr ""
+
+#: ui_tutorbase.h:447
+msgid "Datos bancarios:"
+msgstr ""
+
+#: tutoreslist.cpp:201
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: tutoreslist.cpp:160
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: ui_tutorbase.h:438
+msgid "Direccion:"
+msgstr ""
+
+#: tutoreslist.cpp:217 ui_tutoreslistbase.h:329 ui_tutoreslistbase.h:334
+msgid "Editar Tutor"
+msgstr ""
+
+#: tutoreslist.cpp:174
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: tutorview.cpp:69
+msgid "Error al crear el tutor"
+msgstr ""
+
+#: ui_tutoreslistbase.h:398
+msgid "F5"
+msgstr ""
+
+#: ui_tutoreslistbase.h:310
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_tutoreslistbase.h:311
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_tutoreslistbase.h:365 ui_tutoreslistbase.h:370
+msgid "Filtrar Tutores"
+msgstr ""
+
+#: ui_tutorbase.h:400 ui_tutorbase.h:405
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_tutorbase.h:453
+msgid "Hijos"
+msgstr ""
+
+#: tutoreslist.cpp:262 tutorview.cpp:52
+msgid "ID tutor"
+msgstr ""
+
+#: ui_tutoreslistbase.h:353 ui_tutoreslistbase.h:358
+msgid "Imprimir listado"
+msgstr ""
+
+#: tutoreslist.cpp:263 ui_tutorbase.h:450
+msgid "Nombre"
+msgstr ""
+
+#: ui_tutorbase.h:437
+msgid "Nombre completo:"
+msgstr ""
+
+#: tutorview.cpp:53
+msgid "Nombre del tutor"
+msgstr ""
+
+#: ui_tutorbase.h:396 ui_tutoreslistbase.h:317 ui_tutoreslistbase.h:322
+msgid "Nuevo Tutor"
+msgstr ""
+
+#: plugintutor.cpp:106 plugintutor.cpp:107
+msgid "Nuevo tutor"
+msgstr ""
+
+#: ui_tutorbase.h:448
+msgid "Otros datos"
+msgstr ""
+
+#: ui_tutorbase.h:439
+msgid "Poblacion:"
+msgstr ""
+
+#: ui_tutorbase.h:452
+msgid "Porcentaje de facturacion"
+msgstr ""
+
+#: ui_tutorbase.h:444
+msgid "Provincia:"
+msgstr ""
+
+#: ui_tutorbase.h:451
+msgid "Relacion"
+msgstr ""
+
+#: ui_tutorbase.h:440
+msgid "Telefono fijo:"
+msgstr ""
+
+#: ui_tutorbase.h:441
+msgid "Telefono movil:"
+msgstr ""
+
+#: tutorview.cpp:97
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: tutorview.cpp:49
+msgid "Tutor"
+msgstr ""
+
+#: tutoreslist.cpp:144 plugintutor.cpp:98 plugintutor.cpp:99
+#: ui_tutoreslistbase.h:308
+msgid "Tutores"
+msgstr ""

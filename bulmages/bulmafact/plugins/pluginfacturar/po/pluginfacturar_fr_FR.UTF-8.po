@@ -1,0 +1,11 @@
+#: impqtoolbutton.cpp:150
+msgid "ALBARAN: Num "
+msgstr ""
+
+#: impqtoolbutton.cpp:150
+msgid "Fecha:"
+msgstr ""
+
+#: impqtoolbutton.cpp:150
+msgid "Ref:"
+msgstr ""

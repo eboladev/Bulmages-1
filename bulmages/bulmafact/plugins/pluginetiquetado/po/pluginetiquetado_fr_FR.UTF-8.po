@@ -1,0 +1,3 @@
+#: ticketqtoolbutton.cpp:64 ticketqtoolbutton.cpp:65
+msgid "Imprimir Etiquetas"
+msgstr ""

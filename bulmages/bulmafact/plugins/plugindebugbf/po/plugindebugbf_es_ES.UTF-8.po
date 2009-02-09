@@ -1,0 +1,10 @@
+#: plugindebugbf.cpp:92
+msgid "Activa/Desactiva el Modo Debug"
+msgstr ""
+
+#: plugindebugbf.cpp:93
+msgid ""
+"Debug.\n"
+"\n"
+"Activa/Desactiva el Modo Debug"
+msgstr ""

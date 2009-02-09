@@ -1,0 +1,11 @@
+#: pluginalias.cpp:109
+msgid "Alias"
+msgstr ""
+
+#: pluginalias.cpp:110
+msgid "Id articulo"
+msgstr ""
+
+#: pluginalias.cpp:111
+msgid "Id validacion"
+msgstr ""

@@ -1,0 +1,292 @@
+#: ui_compraventabase.h:913
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_compraventabase.h:914
+msgid "&Cancelar"
+msgstr ""
+
+#: plugincompraventa.cpp:78
+msgid "&CompraVenta"
+msgstr ""
+
+#: ui_compraventabase.h:939
+msgid "&Detalle Compras"
+msgstr ""
+
+#: ui_compraventabase.h:922
+msgid "&Detalle Ventas"
+msgstr ""
+
+#: compraventaview.cpp:468 compraventaview.cpp:589
+msgid "&No"
+msgstr ""
+
+#: compraventaview.cpp:468 compraventaview.cpp:589
+msgid "&Si"
+msgstr ""
+
+#: ui_compraventabase.h:933 ui_compraventabase.h:934 ui_compraventabase.h:935
+#: ui_compraventabase.h:936 ui_compraventabase.h:937 ui_compraventabase.h:938
+msgid "0.00"
+msgstr ""
+
+#: ui_compraventabase.h:879 ui_compraventabase.h:884
+msgid "Agregar a factura"
+msgstr ""
+
+#: compraventaview.cpp:85
+msgid "Almacen"
+msgstr ""
+
+#: ui_compraventabase.h:921
+msgid "Almacen:"
+msgstr ""
+
+#: ui_compraventabase.h:928
+msgid "Base imponible:"
+msgstr ""
+
+#: ui_compraventabase.h:835 ui_compraventabase.h:840
+msgid "Borrar albaran"
+msgstr ""
+
+#: compraventaview.cpp:84
+msgid "Cliente"
+msgstr ""
+
+#: compraventaview.cpp:112
+msgid "Cliente:"
+msgstr ""
+
+#: compraventaview.cpp:90
+msgid "Comentario"
+msgstr ""
+
+#: compraventaview.cpp:70
+msgid "Comentario albaran proveedor"
+msgstr ""
+
+#: compraventaview.cpp:91
+msgid "Comentario privado"
+msgstr ""
+
+#: ui_compraventabase.h:926 ui_compraventabase.h:943
+msgid "Comentario&s"
+msgstr ""
+
+#: ui_compraventabase.h:925 ui_compraventabase.h:942
+msgid "Comentarios privados:"
+msgstr ""
+
+#: ui_compraventabase.h:924 ui_compraventabase.h:941
+msgid "Comentarios publicos:"
+msgstr ""
+
+#: compraventaview.cpp:80
+msgid "Compra Venta"
+msgstr ""
+
+#: plugincompraventa.cpp:79 plugincompraventa.cpp:80
+msgid "CompraVenta"
+msgstr ""
+
+#: compraventaview.cpp:95
+msgid "Descripcion"
+msgstr ""
+
+#: compraventaview.cpp:75
+msgid "Descripcion albaran proveedor"
+msgstr ""
+
+#: ui_compraventabase.h:911
+msgid "Descripcion:"
+msgstr ""
+
+#: ui_compraventabase.h:923 ui_compraventabase.h:940
+msgid "Descuen&tos"
+msgstr ""
+
+#: ui_compraventabase.h:927
+msgid "Descuentos:"
+msgstr ""
+
+#: compraventaview.cpp:138
+msgid "Error al crear el albaran a cliente"
+msgstr ""
+
+#: compraventaview.cpp:534 compraventaview.cpp:685
+msgid "Error inesperado"
+msgstr ""
+
+#: compraventaview.cpp:715
+msgid "Error inesperado en la impresion"
+msgstr ""
+
+#: compraventaview.cpp:588
+msgid ""
+"Existe una factura a este cliente con la misma referencia que este albaran. "
+"Desea abrirla para verificar?"
+msgstr ""
+
+#: compraventaview.cpp:467
+msgid ""
+"Existe una factura de este proveedor con la misma referencia que este "
+"albaran. Desea rehacerla ?"
+msgstr ""
+
+#: compraventaview.cpp:466
+msgid "Factura de proveedor existente"
+msgstr ""
+
+#: compraventaview.cpp:587
+msgid "Factura existente"
+msgstr ""
+
+#: compraventaview.cpp:69
+msgid "Fecha albaran proveedor"
+msgstr ""
+
+#: compraventaview.cpp:87
+msgid "Fecha de creacion"
+msgstr ""
+
+#: ui_compraventabase.h:917
+msgid "Fecha de creacion:"
+msgstr ""
+
+#: compraventaview.cpp:92
+msgid "Forma de pago"
+msgstr ""
+
+#: ui_compraventabase.h:919
+msgid "Forma de pago:"
+msgstr ""
+
+#: ui_compraventabase.h:868 ui_compraventabase.h:873
+msgid "Generar factura a partir de este albaran"
+msgstr ""
+
+#: ui_compraventabase.h:824 ui_compraventabase.h:829
+msgid "Guardar albaran"
+msgstr ""
+
+#: ui_compraventabase.h:821
+msgid "Hoja de Compra Venta"
+msgstr ""
+
+#: ui_compraventabase.h:929
+msgid "I.R.P.F.:"
+msgstr ""
+
+#: compraventaview.cpp:83
+msgid "Id albaran"
+msgstr ""
+
+#: compraventaview.cpp:67
+msgid "Id albaran proveedor"
+msgstr ""
+
+#: compraventaview.cpp:73
+msgid "Id almacen"
+msgstr ""
+
+#: compraventaview.cpp:72
+msgid "Id forma de pago"
+msgstr ""
+
+#: compraventaview.cpp:71
+msgid "Id proveedor"
+msgstr ""
+
+#: ui_compraventabase.h:846 ui_compraventabase.h:851
+msgid "Imprimir albaran"
+msgstr ""
+
+#: ui_compraventabase.h:930
+msgid "Impuestos:"
+msgstr ""
+
+#: ui_compraventabase.h:902 ui_compraventabase.h:907
+msgid "Mostrar/ocultar cabecera"
+msgstr ""
+
+#: compraventaview.cpp:68
+msgid "Numero albaran proveedor"
+msgstr ""
+
+#: compraventaview.cpp:86
+msgid "Numero de albaran"
+msgstr ""
+
+#: ui_compraventabase.h:912
+msgid "Numero de albaran:"
+msgstr ""
+
+#: compraventaview.cpp:88
+msgid "Persona de contacto"
+msgstr ""
+
+#: ui_compraventabase.h:918
+msgid "Persona de contacto:"
+msgstr ""
+
+#: compraventaview.cpp:94 ui_compraventabase.h:915
+msgid "Procesado"
+msgstr ""
+
+#: ui_compraventabase.h:931
+msgid "R.E.:"
+msgstr ""
+
+#: compraventaview.cpp:96
+msgid "Referencia"
+msgstr ""
+
+#: compraventaview.cpp:74
+msgid "Referencia albaran proveedor"
+msgstr ""
+
+#: ui_compraventabase.h:899
+msgid "Referencia:"
+msgstr ""
+
+#: ui_compraventabase.h:890 ui_compraventabase.h:895
+msgid "Registrar cobro a cliente"
+msgstr ""
+
+#: compraventaview.cpp:89
+msgid "Telefono de contacto"
+msgstr ""
+
+#: ui_compraventabase.h:920
+msgid "Telefono de contacto:"
+msgstr ""
+
+#: compraventaview.cpp:711
+msgid "Tiene que guardar el documento antes de poder procesarlo."
+msgstr ""
+
+#: compraventaview.cpp:572
+msgid "Tiene que seleccionar un cliente"
+msgstr ""
+
+#: compraventaview.cpp:451
+msgid "Tiene que seleccionar un proveedor"
+msgstr ""
+
+#: ui_compraventabase.h:932
+msgid "Total:"
+msgstr ""
+
+#: compraventaview.cpp:93
+msgid "Trabajador"
+msgstr ""
+
+#: ui_compraventabase.h:916
+msgid "Trabajador:"
+msgstr ""
+
+#: ui_compraventabase.h:857 ui_compraventabase.h:862
+msgid "Ver pedidos con la misma referencia"
+msgstr ""

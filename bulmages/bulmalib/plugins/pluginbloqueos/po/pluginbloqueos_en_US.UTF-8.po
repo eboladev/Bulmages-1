@@ -1,0 +1,3 @@
+#: bloqmenu.cpp:70
+msgid "Desbloquear ficha"
+msgstr ""

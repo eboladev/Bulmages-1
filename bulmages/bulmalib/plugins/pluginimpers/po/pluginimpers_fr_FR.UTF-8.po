@@ -1,0 +1,3 @@
+#: eqtoolbutton.cpp:70
+msgid "Informes personales"
+msgstr ""

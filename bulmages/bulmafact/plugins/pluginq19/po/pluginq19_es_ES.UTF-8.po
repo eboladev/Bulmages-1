@@ -1,0 +1,43 @@
+#: q19qtoolbutton.cpp:91
+msgid "*.q19"
+msgstr ""
+
+#: ui_q19base.h:222
+msgid "..."
+msgstr ""
+
+#: ui_q19base.h:225
+msgid "Aceptar"
+msgstr ""
+
+#: ui_q19base.h:221
+msgid "Archivo"
+msgstr ""
+
+#: ui_q19base.h:220
+msgid "Banco"
+msgstr ""
+
+#: ui_q19base.h:226
+msgid "Cancelar"
+msgstr ""
+
+#: q19view.cpp:79
+msgid "Error al crear el archivo"
+msgstr ""
+
+#: ui_q19base.h:219
+msgid "Generacion Q19"
+msgstr ""
+
+#: ui_q19base.h:224
+msgid "Num. Operaciones"
+msgstr ""
+
+#: q19qtoolbutton.cpp:89
+msgid "Save file"
+msgstr ""
+
+#: ui_q19base.h:223
+msgid "Total"
+msgstr ""

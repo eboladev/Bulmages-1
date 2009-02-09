@@ -1,0 +1,48 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 00:17+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_archivobase.h:101
+msgid "..."
+msgstr "..."
+
+#: ui_archivobase.h:102
+msgid "Aceptar"
+msgstr "Aceptar"
+
+#: archivo.cpp:68
+msgid "All files (*)"
+msgstr "Tots els fitxers (*)"
+
+#: ui_archivobase.h:100
+msgid "Archivo"
+msgstr "Arxiu"
+
+#: ui_archivobase.h:103
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: archivo.cpp:50
+msgid "Error al crear la ventana de importacion"
+msgstr "Error al crear la finestra d'importació"
+
+#: ui_archivobase.h:99
+msgid "Importar CSV"
+msgstr "Importar CSV"
+
+#: archivo.cpp:68
+msgid "Open file"
+msgstr "Obre fitxer"

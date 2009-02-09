@@ -1,0 +1,31 @@
+#: ui_archivobase.h:101
+msgid "..."
+msgstr ""
+
+#: ui_archivobase.h:102
+msgid "Aceptar"
+msgstr ""
+
+#: archivo.cpp:68
+msgid "All files (*)"
+msgstr ""
+
+#: ui_archivobase.h:100
+msgid "Archivo"
+msgstr ""
+
+#: ui_archivobase.h:103
+msgid "Cancelar"
+msgstr ""
+
+#: archivo.cpp:50
+msgid "Error al crear la ventana de importacion"
+msgstr ""
+
+#: ui_archivobase.h:99
+msgid "Importar CSV"
+msgstr ""
+
+#: archivo.cpp:68
+msgid "Open file"
+msgstr ""

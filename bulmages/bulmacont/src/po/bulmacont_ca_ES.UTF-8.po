@@ -1,0 +1,2123 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 00:28+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ccosteview.cpp:267 canalview.cpp:213
+#, fuzzy
+msgid "&Borrar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tan&car"
+
+#: ccosteview.cpp:168 ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108
+#: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238
+#, fuzzy
+msgid "&Cancelar"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancelar\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la"
+
+#: ccosteview.cpp:168 canalview.cpp:108 canalview.cpp:186
+#: propiedadesempresa.cpp:118
+msgid "&Guardar"
+msgstr "&Desa"
+
+#: canalview.cpp:238 asiento1view.cpp:333
+msgid "&No"
+msgstr "&No"
+
+#: propiedadesempresa.cpp:118
+msgid "&No guardar"
+msgstr ""
+
+#: propiedadesempresa.cpp:160
+msgid "&No salir"
+msgstr ""
+
+#: propiedadesempresa.cpp:160
+msgid "&Salir"
+msgstr "Abandona"
+
+#: canalview.cpp:238 asiento1view.cpp:333
+msgid "&Si"
+msgstr "&Sí"
+
+#: asientosview.cpp:66
+msgid "(todos)"
+msgstr ""
+
+#: bbloqfecha.cpp:82
+msgid "Abierto"
+msgstr "Obert"
+
+#: bbloqfecha.cpp:179
+msgid "Abril"
+msgstr "Abril"
+
+#: bbloqfecha.cpp:163
+msgid "Agosto"
+msgstr "Agost"
+
+#: amortizacionview.cpp:70
+msgid "Agrupacion"
+msgstr "Agrupació"
+
+#: amortizacionview.cpp:55
+msgid "Amortizacion"
+msgstr "Amortització"
+
+#: amortizacionview.cpp:246 amortizacionview.cpp:273 amortizacionview.cpp:301
+#: amortizacionview.cpp:332
+msgid "Anual"
+msgstr "Anual"
+
+#: asientolistsubform.cpp:39
+msgid "Apuntes"
+msgstr "Apunts"
+
+#: canualesview.cpp:122
+msgid "Archivo"
+msgstr "Fitxer"
+
+#: diariosubform.cpp:37 aplinteligentesview.cpp:58 extractosubform.cpp:49
+msgid "Asiento"
+msgstr "Assentament"
+
+#: asiento1.cpp:42
+#, fuzzy
+msgid "Asiento Contable"
+msgstr "Assentament final"
+
+#: asiento1view.cpp:331
+msgid "Asiento inexistente."
+msgstr "Assentament inexistent."
+
+#: asientosview.cpp:300
+msgid "Asientos"
+msgstr "Assentaments"
+
+#: asientosview.cpp:46
+#, fuzzy
+msgid "Asientos abiertos"
+msgstr "Assentaments Intel·ligents"
+
+#: asientosview.cpp:45
+#, fuzzy
+msgid "Asientos cerrados"
+msgstr "Assentament de tan&cament"
+
+#: cuentaview.cpp:61
+#, fuzzy
+msgid "Banco de la cuenta"
+msgstr "Balanç de Comptes"
+
+#: cuentaview.cpp:48 listcuentasview1.cpp:62
+msgid "Bloqueada"
+msgstr ""
+
+#: bbloqfecha.cpp:81
+msgid "Bloqueado"
+msgstr "Bloquejat"
+
+#: bbloqfecha.cpp:77
+msgid "Bloquear Fechas"
+msgstr ""
+
+#: asientolistsubform.cpp:40
+msgid "Borrador"
+msgstr "Esborrany"
+
+#: cuentalistview.cpp:310
+#, fuzzy
+msgid "Borrar articulo"
+msgstr "Esborra amortització"
+
+#: amortizacionview.cpp:386 amortizacionview.cpp:427 amortizacionview.cpp:436
+#: amortizacionview.cpp:443 asiento1.cpp:159
+msgid "Borrar asiento"
+msgstr "Esborra assentament"
+
+#: canalview.cpp:211
+msgid "Borrar canal"
+msgstr ""
+
+#: ccosteview.cpp:265
+msgid "Borrar centro de coste"
+msgstr ""
+
+#: listcuentasview1.cpp:408
+msgid "Borrar cuenta"
+msgstr ""
+
+#: amortizacionview.cpp:417
+msgid "Borrar cuota"
+msgstr "Esborra quota"
+
+#: fpagoview.cpp:242
+msgid "Borrar forma de pago"
+msgstr "Esborra forma de pagament"
+
+#: extractoview1.cpp:542
+msgid "Borrar punteo"
+msgstr ""
+
+#: cuentaview.cpp:57
+#, fuzzy
+msgid "CIF de la cuenta"
+msgstr "Nom del compte"
+
+#: mpatrimonialesview.cpp:133 listcuentasview1.cpp:88
+msgid "CODIGO"
+msgstr "CODI"
+
+#: cuentaview.cpp:58
+#, fuzzy
+msgid "CP de la cuenta"
+msgstr "Nom del compte"
+
+#: bulmacont.cpp:687
+msgid "Cambiando a modo de pantalla completa..."
+msgstr "Canviant a mode de pantalla completa ..."
+
+#: bulmacont.cpp:669
+msgid "Cambinado barra de estado..."
+msgstr ""
+
+#: diariosubform.cpp:51 listlinasiento1view.cpp:50 canalview.cpp:36
+#: extractosubform.cpp:68
+msgid "Canal"
+msgstr "Canal"
+
+#: amortizacionview.cpp:80
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: extractoview1.cpp:472
+#, fuzzy
+msgid "Cargando Extracto de Cuentas"
+msgstr "Extracte de comptes"
+
+#: main.cxx:196
+msgid "Cargando traducciones"
+msgstr ""
+
+#: extractoview1.cpp:570
+msgid "Cargar punteo"
+msgstr ""
+
+#: diariosubform.cpp:53 extractosubform.cpp:71
+msgid "Centro Coste"
+msgstr "Centre de Cost"
+
+#: ccosteview.cpp:44
+#, fuzzy
+msgid "Centro de Coste"
+msgstr "Centres de Cost"
+
+#: listlinasiento1view.cpp:53
+#, fuzzy
+msgid "Centro de coste"
+msgstr "Centre de cost:"
+
+#: cuentaview.cpp:55
+#, fuzzy
+msgid "Centro de coste por defecto"
+msgstr "Centre de cos&t por defecte"
+
+#: asientolistsubform.cpp:45
+msgid "Clase"
+msgstr "Classe"
+
+#: listlinasiento1view.cpp:41
+msgid "Codigo"
+msgstr "Codi"
+
+#: cuentalistview.cpp:387
+#, fuzzy
+msgid "Codigo Cuenta"
+msgstr "Codi compte"
+
+#: cuentaview.cpp:44 listcuentasview1.cpp:62
+msgid "Codigo cuenta"
+msgstr "Codi compte"
+
+#: diariosubform.cpp:44 listlinasiento1view.cpp:48 extractosubform.cpp:66
+msgid "Comentario"
+msgstr "Comentari"
+
+#: asientolistsubform.cpp:41
+#, fuzzy
+msgid "Comentarios"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
+
+#: cuentaview.cpp:60
+#, fuzzy
+msgid "Comentarios de la cuenta"
+msgstr "Comentaris de l'assentament"
+
+#: asiento1.cpp:48
+msgid "Comentarios del asiento"
+msgstr "Comentaris de l'assentament"
+
+#: sobreview.cpp:42
+msgid "Compilado usando la version de QT:"
+msgstr "Compilat fent servir la versió de QT:"
+
+#: extractosubform.cpp:53
+msgid "Concepto"
+msgstr "Concepte"
+
+#: diariosubform.cpp:41 listlinasiento1view.cpp:44
+msgid "Concepto contable"
+msgstr "Concepte comptable"
+
+#: listlinasiento1view.cpp:51
+msgid "Conciliacion"
+msgstr ""
+
+#: propiedadesempresa.cpp:38
+msgid "Configuracion"
+msgstr "Arranjament"
+
+#: diariosubform.cpp:49 diariosubform.cpp:50 listlinasiento1view.cpp:47
+msgid "Contrapartida"
+msgstr "Contrapartida"
+
+#: bulmacont.cpp:644
+msgid "Copiando la seleccion al portapapeles..."
+msgstr ""
+
+#: bulmacont.cpp:632
+msgid "Cortando seleccion..."
+msgstr "Tallant la sel·lecció..."
+
+#: modelo300.cpp:170
+msgid "Creando formulario"
+msgstr "Creant formulari"
+
+#: diariosubform.cpp:39 cuentaview.cpp:38 tipoivaview.cpp:46
+#: listcuentasview1.cpp:55 extractosubform.cpp:48
+#, fuzzy
+msgid "Cuenta"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Compte"
+
+#: canualesview.cpp:41
+msgid "Cuentas Anuales"
+msgstr "Comptes anuals"
+
+#: diariosubform.cpp:42 cuentaview.cpp:53 listlinasiento1view.cpp:45
+#: listcuentasview1.cpp:62 extractosubform.cpp:54 asientolistsubform.cpp:42
+msgid "Debe"
+msgstr "Deure"
+
+#: listcuentasview1.cpp:378 listcuentasview1.cpp:404
+msgid "Debe seleccionar una cuenta"
+msgstr "Cal triar un compte"
+
+#: diariosubform.cpp:40 cuentaview.cpp:45 ccosteview.cpp:50 ccosteview.cpp:76
+#: extractosubform.cpp:50
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: extractosubform.cpp:51
+#, fuzzy
+msgid "Descripcion Apunte"
+msgstr "Descripció del compte"
+
+#: extractosubform.cpp:52
+#, fuzzy
+msgid "Descripcion Asiento"
+msgstr "Descripció de l'assentament"
+
+#: diariosubform.cpp:48
+msgid "Descripcion de Cuenta"
+msgstr "Descripció del compte"
+
+#: amortizacionview.cpp:59
+msgid "Descripcion de la amortizacion"
+msgstr "Descripció de l'amortització"
+
+#: listlinasiento1view.cpp:43
+#, fuzzy
+msgid "Descripcion del apunte"
+msgstr "Descripció de l'assentament"
+
+#: asiento1.cpp:46
+msgid "Descripcion del asiento"
+msgstr "Descripció de l'assentament"
+
+#: asiento1view.cpp:332
+msgid "Desea crear un nuevo asiento en esa posicion?"
+msgstr "Vol crear un nou assentament en aquella posició?"
+
+#: canalview.cpp:107 canalview.cpp:185
+msgid "Desea guardar los cambios."
+msgstr ""
+
+#: tipoivaview.cpp:110 tipoivaview.cpp:153 ccosteview.cpp:167
+#: ccosteview.cpp:227 canalview.cpp:237 propiedadesempresa.cpp:117
+#: fpagoview.cpp:147 fpagoview.cpp:209
+msgid "Desea guardar los cambios?"
+msgstr "Desitja desar els canvis?"
+
+#: bulmacont.cpp:620
+msgid "Deshaciendo la ultima accion..."
+msgstr ""
+
+#: ccosteview.cpp:60
+#, fuzzy
+msgid "Destinatario"
+msgstr "Destinació:"
+
+#: amortizacionview.cpp:385 amortizacionview.cpp:436
+msgid "Desvincular asiento"
+msgstr "Desvincula assentament"
+
+#: diarioview.cpp:54
+msgid "Diario"
+msgstr "Diari"
+
+#: extractoview1.cpp:246 diarioview.cpp:164
+msgid "Diarios (*.txt)"
+msgstr "Diaris (*.txt)"
+
+#: bbloqfecha.cpp:147
+msgid "Diciembre"
+msgstr "Desembre"
+
+#: cuentaview.cpp:64
+#, fuzzy
+msgid "Direccion de la cuenta"
+msgstr "Descripció del compte"
+
+#: amortizacionview.cpp:68
+msgid "Direccion del proveedor"
+msgstr "Direcció del proveïdor"
+
+#: cuentaview.cpp:63
+#, fuzzy
+msgid "E-Mail de la cuenta"
+msgstr "Nom del compte"
+
+#: cuentalistview.cpp:309
+#, fuzzy
+msgid "Editar articulo"
+msgstr "Editar compte"
+
+#: amortizacionview.cpp:78 bbloqfecha.cpp:115
+msgid "Ejercicio"
+msgstr "Exercici"
+
+#: bbloqfecha.cpp:267
+msgid "Ejercicios ya contemplado"
+msgstr ""
+
+#: asiento1.cpp:408
+msgid "El asiento se ha guardado correctamente."
+msgstr "L'assentament s'ha desat correctament."
+
+#: listcuentasview1.cpp:545 listcuentasview1.cpp:564
+msgid "Elija el archivo"
+msgstr ""
+
+#: bbloqfecha.cpp:191
+msgid "Enero"
+msgstr "Gener"
+
+#: cuentaview.cpp:56
+#, fuzzy
+msgid "Entidad de la cuenta"
+msgstr "Nom del compte"
+
+#: amortizacionesview.cpp:107
+#, fuzzy
+msgid "Error al borrar la amortizacion"
+msgstr "Error en la càrrega de l'amortizació"
+
+#: aplinteligentesview.cpp:615
+msgid "Error al crear el asiento"
+msgstr ""
+
+#: ccosteview.cpp:142
+#, fuzzy
+msgid "Error en la carga de centros de coste"
+msgstr "Error en la càrrega de l'amortizació"
+
+#: amortizacionview.cpp:211
+msgid "Error en la carga de la amortizacion"
+msgstr "Error en la càrrega de l'amortizació"
+
+#: canalview.cpp:190
+#, fuzzy
+msgid "Escriba su descripcion"
+msgstr "descripció"
+
+#: bbloqfecha.cpp:115
+msgid "Estado"
+msgstr "Estat"
+
+#: extractoview1.cpp:55
+msgid "Extracto de Cuentas"
+msgstr "Extracte de comptes"
+
+#: diariosubform.cpp:54
+msgid "Factura"
+msgstr "Factura"
+
+#: bbloqfecha.cpp:187
+msgid "Febrero"
+msgstr "Febrer"
+
+#: diariosubform.cpp:38 listlinasiento1view.cpp:40 empresa.cpp:815
+#: extractosubform.cpp:47 asientolistsubform.cpp:38
+msgid "Fecha"
+msgstr "Data"
+
+#: amortizacionesview.cpp:50
+#, fuzzy
+msgid "Fecha 1 cuota"
+msgstr "Data de la 1a quota"
+
+#: amortizacionview.cpp:61
+msgid "Fecha 1a cuota"
+msgstr "Data de la 1a quota"
+
+#: listlinasiento1view.cpp:61
+#, fuzzy
+msgid "Fecha Factura"
+msgstr "Data de la 1a quota"
+
+#: amortizacionesview.cpp:49
+#, fuzzy
+msgid "Fecha compra"
+msgstr "Data de compra:"
+
+#: amortizacionview.cpp:60
+msgid "Fecha de la compra"
+msgstr "Data de la compra"
+
+#: asiento1.cpp:47
+msgid "Fecha del asiento"
+msgstr "Data de l'assentament"
+
+#: empresa.cpp:790 empresa.cpp:849
+#, fuzzy
+msgid "Fecha final"
+msgstr "Data &final:"
+
+#: empresa.cpp:790
+#, fuzzy
+msgid "Fecha final ejercicio:"
+msgstr "Data &final:"
+
+#: empresa.cpp:849
+#, fuzzy
+msgid "Fecha final regularizacion:"
+msgstr "Assentament de &regularització"
+
+#: empresa.cpp:781 empresa.cpp:840
+#, fuzzy
+msgid "Fecha inicial"
+msgstr "Data &inicial:"
+
+#: empresa.cpp:781
+#, fuzzy
+msgid "Fecha inicial ejercicio:"
+msgstr "Data &inicial:"
+
+#: empresa.cpp:840
+#, fuzzy
+msgid "Fecha inicial regularizacion:"
+msgstr "Data &inicial:"
+
+#: amortizacionview.cpp:79
+msgid "Fecha prevista"
+msgstr "Data prevista"
+
+#: empresa.cpp:815
+msgid "Fecha:"
+msgstr "Data:"
+
+#: fpagoview.cpp:36
+#, fuzzy
+msgid "Forma de Pago"
+msgstr "Formes de pagament"
+
+#: amortizacionview.cpp:381 amortizacionview.cpp:447
+msgid "Generar asiento"
+msgstr "Generar assentament"
+
+#: listcuentasview1.cpp:62
+msgid "Grupo"
+msgstr "Grup"
+
+#: diarioview.cpp:162
+msgid "Guardar Libro Diario"
+msgstr "Desar el Llibre diari"
+
+#: propiedadesempresa.cpp:116
+msgid "Guardar cambios"
+msgstr ""
+
+#: canalview.cpp:106 canalview.cpp:184 canalview.cpp:236
+msgid "Guardar canal"
+msgstr ""
+
+#: ccosteview.cpp:166 ccosteview.cpp:226
+msgid "Guardar centro de coste"
+msgstr ""
+
+#: fpagoview.cpp:146 fpagoview.cpp:208
+msgid "Guardar forma de pago"
+msgstr "Desa forma de pagament"
+
+#: extractoview1.cpp:244
+msgid "Guardar libro diario"
+msgstr ""
+
+#: extractoview1.cpp:504
+msgid "Guardar punteo"
+msgstr ""
+
+#: tipoivaview.cpp:109 tipoivaview.cpp:152
+msgid "Guardar tipo de IVA"
+msgstr ""
+
+#: diariosubform.cpp:43 cuentaview.cpp:54 listlinasiento1view.cpp:46
+#: listcuentasview1.cpp:62 extractosubform.cpp:55 asientolistsubform.cpp:43
+msgid "Haber"
+msgstr "Haver"
+
+#: listlinasiento1view.cpp:49
+msgid "ID Canal"
+msgstr "ID Canal"
+
+#: cuentaview.cpp:43 listcuentasview1.cpp:62 cuentalistview.cpp:386
+msgid "ID cuenta"
+msgstr "ID compte"
+
+#: tipoivaview.cpp:43
+msgid "ID tipo iva"
+msgstr ""
+
+#: ccosteview.cpp:59
+msgid "Id"
+msgstr ""
+
+#: amortizacionesview.cpp:47 amortizacionview.cpp:71 amortizacionview.cpp:83
+msgid "Id amortizacion"
+msgstr "Id amortizació"
+
+#: listlinasiento1view.cpp:39
+msgid "Id apunte"
+msgstr "Id apunt"
+
+#: listlinasiento1view.cpp:57 amortizacionview.cpp:81 asiento1.cpp:45
+#: asientolistsubform.cpp:44
+msgid "Id asiento"
+msgstr "Id assentament"
+
+#: listlinasiento1view.cpp:56
+msgid "Id borrador"
+msgstr "Id esborrany"
+
+#: listlinasiento1view.cpp:52 ccosteview.cpp:76
+msgid "Id centro de coste"
+msgstr "Id centre de cost"
+
+#: extractosubform.cpp:64
+#, fuzzy
+msgid "Id contrapartida"
+msgstr "contrapartida"
+
+#: listlinasiento1view.cpp:58
+msgid "Id cuenta"
+msgstr "Id compte"
+
+#: amortizacionview.cpp:73
+msgid "Id cuenta amortizacion"
+msgstr "Id compte d'amortizació"
+
+#: amortizacionview.cpp:82
+msgid "Id lineas de amortizacion"
+msgstr "Id línies d'amortització"
+
+#: listlinasiento1view.cpp:54
+msgid "Id tipo de IVA"
+msgstr "Id tipus d'IVA"
+
+#: ccosteview.cpp:48
+#, fuzzy
+msgid "Id. Centro Coste"
+msgstr "Centre de Cost"
+
+#: listlinasiento1view.cpp:60
+#, fuzzy
+msgid "Id. Registro IVA"
+msgstr "Registre d'IVA"
+
+#: amortizacionview.cpp:72
+msgid "Identificador"
+msgstr "Identificador"
+
+#: cuentaview.cpp:47 listcuentasview1.cpp:62
+msgid "Imputacion"
+msgstr "Imputació"
+
+#: empresa.cpp:242 empresa.cpp:249
+#, fuzzy
+msgid "Inicializando asientos"
+msgstr "Llistat d'assentaments"
+
+#: main.cxx:236
+msgid "Inicializando componentes"
+msgstr ""
+
+#: empresa.cpp:257
+#, fuzzy
+msgid "Inicializando cuentas"
+msgstr "Balanç de Comptes"
+
+#: empresa.cpp:219
+msgid "Inicializando diario"
+msgstr ""
+
+#: empresa.cpp:212
+msgid "Inicializando extracto"
+msgstr ""
+
+#: main.cxx:141
+msgid "Iniciando clases"
+msgstr ""
+
+#: bulmacont.cpp:656
+msgid "Insertando el contenido del portapapeles..."
+msgstr "Inserint el contingut en el portapapers..."
+
+#: bbloqfecha.cpp:253
+msgid "Introduzca Ejercicio a Crear"
+msgstr ""
+
+#: bbloqfecha.cpp:167
+msgid "Julio"
+msgstr "Juliol"
+
+#: bbloqfecha.cpp:171
+msgid "Junio"
+msgstr "Juny"
+
+#: asientosview.cpp:233
+msgid "La fecha inicial es posterior a la fecha final."
+msgstr "La data inicial és posterior a la data final."
+
+#: main.cxx:230
+msgid "Lanzando plugins"
+msgstr ""
+
+#: main.cxx:171
+#, fuzzy
+msgid "Leyendo configuracion"
+msgstr "Arranjament"
+
+#: bulmacont.cpp:717
+msgid "Listado de cuentas"
+msgstr ""
+
+#: bulmacont.cpp:595 bulmacont.cpp:621 bulmacont.cpp:633 bulmacont.cpp:645
+#: bulmacont.cpp:657 bulmacont.cpp:675 bulmacont.cpp:693
+msgid "Listo."
+msgstr "Preparat."
+
+#: diariosubform.cpp:52
+msgid "MarcaConciliacion"
+msgstr ""
+
+#: bbloqfecha.cpp:183
+msgid "Marzo"
+msgstr "Març"
+
+#: mpatrimonialesview.cpp:133
+msgid "Masa patrimonial"
+msgstr "Massa Patrimonial"
+
+#: bbloqfecha.cpp:175
+msgid "Mayo"
+msgstr "Maig"
+
+#: amortizacionview.cpp:248 amortizacionview.cpp:275 amortizacionview.cpp:303
+#: amortizacionview.cpp:334
+msgid "Mensual"
+msgstr "Mensual"
+
+#: amortizacionview.cpp:65
+msgid "Metodo"
+msgstr "Mètode"
+
+#: diariosubform.cpp:96 diariosubform.cpp:113 listlinasiento1view.cpp:89
+#: listlinasiento1view.cpp:106 extractosubform.cpp:94 extractosubform.cpp:111
+#: asientolistsubform.cpp:77 asientolistsubform.cpp:94
+msgid "Mostrar asiento"
+msgstr "Mostrar assentament"
+
+#: extractosubform.cpp:98 extractosubform.cpp:117
+#, fuzzy
+msgid "Mostrar diario (ano)"
+msgstr "Mostra l'extracte (any)"
+
+#: extractosubform.cpp:96 extractosubform.cpp:113
+#, fuzzy
+msgid "Mostrar diario (dia)"
+msgstr "Mostra l'extracte (dia)"
+
+#: extractosubform.cpp:97 extractosubform.cpp:115
+#, fuzzy
+msgid "Mostrar diario (mes)"
+msgstr "Mostra l'extracte (mes)"
+
+#: diariosubform.cpp:100 diariosubform.cpp:119 listlinasiento1view.cpp:93
+#: listlinasiento1view.cpp:112 asientolistsubform.cpp:81
+#: asientolistsubform.cpp:100
+msgid "Mostrar extracto (ano)"
+msgstr "Mostra l'extracte (any)"
+
+#: diariosubform.cpp:98 diariosubform.cpp:115 listlinasiento1view.cpp:91
+#: listlinasiento1view.cpp:108 asientolistsubform.cpp:79
+#: asientolistsubform.cpp:96
+msgid "Mostrar extracto (dia)"
+msgstr "Mostra l'extracte (dia)"
+
+#: diariosubform.cpp:99 diariosubform.cpp:117 listlinasiento1view.cpp:92
+#: listlinasiento1view.cpp:110 asientolistsubform.cpp:80
+#: asientolistsubform.cpp:98
+msgid "Mostrar extracto (mes)"
+msgstr "Mostra l'extracte (mes)"
+
+#: amortizacionview.cpp:66
+msgid "NIF del proveedor"
+msgstr "NIF del proveïdor"
+
+#: listcuentasview1.cpp:88
+msgid "NOMBRE"
+msgstr "NOM"
+
+#: ccosteview.cpp:278
+msgid "No se pudo borrar el Centro de Coste"
+msgstr ""
+
+#: cuentaview.cpp:49
+#, fuzzy
+msgid "NoDebe"
+msgstr "Deure"
+
+#: cuentaview.cpp:50
+#, fuzzy
+msgid "NoHaber"
+msgstr "Haver"
+
+#: listcuentasview1.cpp:62
+msgid "Nodebe"
+msgstr ""
+
+#: listcuentasview1.cpp:62
+msgid "Nohaber"
+msgstr ""
+
+#: amortizacionesview.cpp:48 ccosteview.cpp:49 ccosteview.cpp:76
+#: propiedadesempresa.cpp:191
+msgid "Nombre"
+msgstr "Nom"
+
+#: ccosteview.cpp:57
+#, fuzzy
+msgid "Nombre Destinatario"
+msgstr "Nom del compte"
+
+#: tipoivaview.cpp:44
+#, fuzzy
+msgid "Nombre Tipo"
+msgstr "Nom"
+
+#: listcuentasview1.cpp:62
+msgid "Nombre cuenta"
+msgstr "Nom del compte"
+
+#: amortizacionview.cpp:58
+msgid "Nombre de la amortizacion"
+msgstr "Nom de l'amortització"
+
+#: listlinasiento1view.cpp:42 cuentalistview.cpp:388
+msgid "Nombre de la cuenta"
+msgstr "Nom del compte"
+
+#: amortizacionview.cpp:67
+msgid "Nombre del proveedor"
+msgstr "Nom del proveïdor"
+
+#: bbloqfecha.cpp:151
+msgid "Noviembre"
+msgstr "Novembre"
+
+#: fpagoview.cpp:214
+msgid "Nueva forma de pago"
+msgstr "Nova forma de pagament"
+
+#: canalview.cpp:190
+#, fuzzy
+msgid "Nuevo canal"
+msgstr "Nou assentament"
+
+#: amortizacionesview.cpp:51
+#, fuzzy
+msgid "Num cuotas"
+msgstr "Nombre de quotes"
+
+#: listlinasiento1view.cpp:62
+#, fuzzy
+msgid "Num. Factura"
+msgstr "Factura"
+
+#: amortizacionview.cpp:64
+msgid "Numero de cuotas"
+msgstr "Nombre de quotes"
+
+#: bbloqfecha.cpp:155
+msgid "Octubre"
+msgstr "Octubre"
+
+#: listlinasiento1view.cpp:55 extractosubform.cpp:73 asientolistsubform.cpp:37
+msgid "Orden"
+msgstr "Ordre"
+
+#: asiento1.cpp:49
+msgid "Orden de asiento"
+msgstr "Ordre de l'assentament"
+
+#: ccosteview.cpp:61
+#, fuzzy
+msgid "Origen"
+msgstr "Origen:"
+
+#: cuentaview.cpp:46
+msgid "Padre"
+msgstr ""
+
+#: propiedadesempresa.cpp:159
+msgid ""
+"Para que los cambios tengan efecto\n"
+"debe salir del programa y volver a entrar.\n"
+"\n"
+"Salir ahora?"
+msgstr ""
+"Per a que els canvis tinguin efecte \n"
+"cal sortir del programa i tornar a entrar.\n"
+"\n"
+"Abandona ara?"
+
+#: amortizacionview.cpp:63
+msgid "Periodicidad"
+msgstr "Periodicitat"
+
+#: listcuentasview1.cpp:547 listcuentasview1.cpp:566
+msgid "Plan contable (*.xml)"
+msgstr ""
+
+#: bbloqfecha.cpp:254
+#, fuzzy
+msgid "Ponga el anyo:"
+msgstr "En el banc"
+
+#: tipoivaview.cpp:45 ccosteview.cpp:58
+#, fuzzy
+msgid "Porcentaje"
+msgstr "Percent&ual"
+
+#: extractosubform.cpp:46
+msgid "Punteo"
+msgstr ""
+
+#: extractoview1.cpp:572
+msgid "Punteo (*.pto);;Todos los archivos (*)"
+msgstr ""
+
+#: extractoview1.cpp:506
+msgid "Punteos (*.pto)"
+msgstr "Puntejos (*.pto)"
+
+#: cuentaview.cpp:51 listcuentasview1.cpp:62
+msgid "Regularizacion"
+msgstr "Regularització"
+
+#: extractosubform.cpp:56
+msgid "Saldo"
+msgstr "Saldo"
+
+#: propiedadesempresa.cpp:158
+msgid "Salir del programa"
+msgstr "Abandona del programa"
+
+#: extractoview1.cpp:543
+msgid ""
+"Se dispone a borrar el punteo. Este "
+"cambio                                                 es irrecuperable si "
+"no ha guardado su punteo.                                                 "
+"Desea continuar?"
+msgstr ""
+
+#: extractoview1.cpp:554
+msgid "Se ha producido un error"
+msgstr ""
+
+#: listcuentasview1.cpp:409
+msgid "Se procedera a borrar la cuenta."
+msgstr ""
+
+#: asiento1.cpp:160
+msgid "Se va a borrar el asiento. Esta seguro?"
+msgstr "S'esborrarà l'assentament. Està segur?"
+
+#: ccosteview.cpp:266
+#, fuzzy
+msgid ""
+"Se va a borrar el centro de coste.\n"
+"Esta operacion puede ocasionar perdida de datos."
+msgstr ""
+"Es va a esborrar el centre de cost.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+
+#: canalview.cpp:212
+#, fuzzy
+msgid ""
+"Se va a borrar este canal.\n"
+"Esto puede ocasionar perdida de datos."
+msgstr ""
+"Es va a esborrar el tipus d'IVA.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+
+#: fpagoview.cpp:243
+#, fuzzy
+msgid ""
+"Se va a borrar la forma de pago.\n"
+"Esto puede ocasionar perdida de datos.\n"
+msgstr ""
+"Es va a esborrar el tipus d'IVA.\n"
+"Això pot ocasionar pèrdua de dades.\n"
+
+#: selectccosteview.cpp:43 selectcanalview.cpp:45
+msgid "Seleccion"
+msgstr ""
+
+#: cuentalistview.cpp:68
+msgid "Selector de articulos"
+msgstr ""
+
+#: amortizacionview.cpp:250 amortizacionview.cpp:277 amortizacionview.cpp:305
+#: amortizacionview.cpp:336
+msgid "Semestral"
+msgstr "Semestral"
+
+#: bbloqfecha.cpp:159
+msgid "Septiembre"
+msgstr "Setembre"
+
+#: selectccosteview.cpp:43 selectcanalview.cpp:45
+msgid "Status"
+msgstr ""
+
+#: subform2bc.cpp:470
+msgid "Submenu de contabilidad"
+msgstr ""
+
+#: cuentaview.cpp:59
+#, fuzzy
+msgid "Telefono de la cuenta"
+msgstr "Descripció del compte"
+
+#: amortizacionview.cpp:69
+msgid "Telefono del proveedor"
+msgstr "Telèfon del proveïdor"
+
+#: empresa.cpp:265
+msgid "Terminado"
+msgstr ""
+
+#: fpagoview.cpp:238
+msgid "Tiene que seleccionar una forma de pago antes de borrarla"
+msgstr ""
+
+#: tipoivaview.cpp:39
+#, fuzzy
+msgid "Tipo IVA"
+msgstr "Tipus d'IVA"
+
+#: listcuentasview1.cpp:62
+msgid "Tipo cuenta"
+msgstr ""
+
+#: cuentaview.cpp:52
+#, fuzzy
+msgid "Tipo de Cuenta"
+msgstr "Tipus de compte"
+
+#: asiento1.cpp:50
+msgid "Tipo de asiento"
+msgstr "Tipus d'assentament"
+
+#: listlinasiento1view.cpp:59
+msgid "Tipo de cuenta"
+msgstr "Tipus de compte"
+
+#: asientosview.cpp:44
+#, fuzzy
+msgid "Todos los asientos"
+msgstr "Dades de l'assentament:"
+
+#: amortizacionview.cpp:252 amortizacionview.cpp:279 amortizacionview.cpp:307
+#: amortizacionview.cpp:338
+msgid "Trimestral"
+msgstr "Trimestral"
+
+#: propiedadesempresa.cpp:192
+msgid "Valor"
+msgstr "Valor"
+
+#: amortizacionview.cpp:62
+msgid "Valor de la compra"
+msgstr "Valor de la compra"
+
+#: amortizacionview.cpp:383 amortizacionview.cpp:427
+msgid "Ver asiento"
+msgstr "Veure assentament"
+
+#: cuentaview.cpp:62
+#, fuzzy
+msgid "Web de la cuenta"
+msgstr "Nom del compte"
+
+#: mpatrimonialview.cpp:45
+msgid "codigo"
+msgstr "codi"
+
+#: diariosubform.cpp:46 extractosubform.cpp:59
+msgid "codigoborrador"
+msgstr ""
+
+#: extractosubform.cpp:65
+msgid "contrapartida"
+msgstr "contrapartida"
+
+#: selectcanalview.cpp:45
+msgid "desc_canal"
+msgstr ""
+
+#: selectccosteview.cpp:43
+msgid "desc_coste"
+msgstr ""
+
+#: mpatrimonialview.cpp:45
+msgid "descripcion"
+msgstr "descripció"
+
+#: diariosubform.cpp:55 extractosubform.cpp:58
+msgid "idapunte"
+msgstr ""
+
+#: diariosubform.cpp:35 extractosubform.cpp:60
+msgid "idasiento"
+msgstr ""
+
+#: diariosubform.cpp:45
+msgid "idborrador"
+msgstr ""
+
+#: diariosubform.cpp:59 selectccosteview.cpp:43 extractosubform.cpp:70
+msgid "idc_coste"
+msgstr ""
+
+#: diariosubform.cpp:58 selectcanalview.cpp:45 extractosubform.cpp:67
+msgid "idcanal"
+msgstr ""
+
+#: diariosubform.cpp:61 extractosubform.cpp:62
+msgid "idcuenta"
+msgstr ""
+
+#: diariosubform.cpp:60 extractosubform.cpp:61
+msgid "iddiario"
+msgstr "iddiario"
+
+#: mpatrimonialview.cpp:45
+msgid "identificador"
+msgstr "identificador"
+
+#: diariosubform.cpp:57
+msgid "idregistroiva"
+msgstr ""
+
+#: diariosubform.cpp:56 extractosubform.cpp:72
+msgid "idtipoiva"
+msgstr ""
+
+#: extractosubform.cpp:69
+msgid "marcaconciliacion"
+msgstr ""
+
+#: selectcanalview.cpp:45
+msgid "nom_canal"
+msgstr ""
+
+#: selectccosteview.cpp:43
+msgid "nom_coste"
+msgstr ""
+
+#: mpatrimonialview.cpp:45
+msgid "tipo"
+msgstr "tipus"
+
+#: diariosubform.cpp:47 extractosubform.cpp:63
+msgid "tipocuenta"
+msgstr ""
+
+#, fuzzy
+#~ msgid "&Aceptar"
+#~ msgstr ""
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "&Accepta\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "D'&acord\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "&Accepta\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "&Accepta\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "&Accepta\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "&Accepta\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "&Accepta"
+
+#~ msgid "&Acerca de BulmaCont"
+#~ msgstr "Quant a Bulm&aCont"
+
+#~ msgid "&Actualizar"
+#~ msgstr "&Actualitzar"
+
+#~ msgid "&Amortizaciones"
+#~ msgstr "&Amortitzacions"
+
+#~ msgid "&Asientos"
+#~ msgstr "&Assentaments"
+
+#~ msgid "&Balance de Cuentas"
+#~ msgstr "&Balanç de comptes"
+
+#~ msgid "&Calcular"
+#~ msgstr "&Calcular"
+
+#~ msgid "&Canal por defecto"
+#~ msgstr "&Canal por defecte"
+
+#~ msgid "&Canales"
+#~ msgstr "&Canals"
+
+#~ msgid "&Cerrar"
+#~ msgstr "Tan&ca"
+
+#~ msgid "&Cobros y pagos"
+#~ msgstr "&Cobraments i pagaments"
+
+#~ msgid "&Concepto contable:"
+#~ msgstr "&Concepte comptable:"
+
+#~ msgid "&Datos contables"
+#~ msgstr "&Dades comptables"
+
+#~ msgid "&Decremental"
+#~ msgstr "&Decremental"
+
+#~ msgid "&Ejercicio:"
+#~ msgstr "&Exercici:"
+
+#~ msgid "&Empresa"
+#~ msgstr "&Empresa"
+
+#~ msgid "&Fecha del asiento:"
+#~ msgstr "&Data de l'assentament:"
+
+#~ msgid "&Filtrar"
+#~ msgstr "&Filtra"
+
+#~ msgid "&Formato de aprendizaje"
+#~ msgstr "&Format d'aprenentatge"
+
+#~ msgid "&Herramientas"
+#~ msgstr "&Eines"
+
+#~ msgid "&Imprimir"
+#~ msgstr "&Imprimeix"
+
+#~ msgid "&Incremental"
+#~ msgstr "&incremental"
+
+#~ msgid "&Listados"
+#~ msgstr "&Llistats"
+
+#~ msgid "&Neto"
+#~ msgstr "&Net"
+
+#~ msgid "&Pantalla completa"
+#~ msgstr "&Tota la pantalla"
+
+#~ msgid "&Partida igual a:"
+#~ msgstr "&Partida igual a:"
+
+#~ msgid "&Plan Contable"
+#~ msgstr "&Pla comptable"
+
+#~ msgid "&Plantilla:"
+#~ msgstr "&Plantilla:"
+
+#~ msgid "&Salir del programa"
+#~ msgstr "De&sa el programa"
+
+#~ msgid "&Texto Plano"
+#~ msgstr "&Text pla"
+
+#~ msgid "&Ver"
+#~ msgstr "&Veure"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "0123456789"
+#~ msgstr "0123456789"
+
+#~ msgid "12"
+#~ msgstr "12"
+
+#~ msgid "1234"
+#~ msgstr "1234"
+
+#~ msgid "1º trimestre"
+#~ msgstr "1r trimestre"
+
+#~ msgid "2º trimestre"
+#~ msgstr "2n trimestre"
+
+#~ msgid "3º trimestre"
+#~ msgstr "3r trimestre"
+
+#~ msgid "4º trimestre"
+#~ msgstr "4t trimestre"
+
+#~ msgid ""
+#~ "<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color="
+#~ "\"#ff5e00\">0.9.3</font></center>"
+#~ msgstr ""
+#~ "<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color="
+#~ "\"#ff5e00\">0.9.3</font></center>"
+
+#~ msgid ""
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal; text-decoration:none;\">\n"
+#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+#~ "\"></p></body></html>"
+#~ msgstr ""
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal; text-decoration:none;\">\n"
+#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+#~ "\"></p></body></html>"
+
+#~ msgid "A&yuda"
+#~ msgstr "A&juda"
+
+#~ msgid "Abreviado"
+#~ msgstr "Abreviat"
+
+#~ msgid "Abrir asiento"
+#~ msgstr "Obrir assentament"
+
+#~ msgid "Aceptar"
+#~ msgstr "Accepta"
+
+#~ msgid "Acerca de BulmaCont"
+#~ msgstr "Quant a BulmaCont"
+
+#, fuzzy
+#~ msgid "Actualizar"
+#~ msgstr ""
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Actualitzar\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Actualitza\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Actualitza"
+
+#~ msgid "Actualizar balance"
+#~ msgstr "Actualitza balanç"
+
+#~ msgid "Actualizar listado"
+#~ msgstr "Actual·litza llistat"
+
+#~ msgid "Agregar"
+#~ msgstr "Afegir"
+
+#~ msgid "Agregar Ejercicio"
+#~ msgstr "Afegeix exercici"
+
+#~ msgid "Agrupacion:"
+#~ msgstr "Agrupació:"
+
+#~ msgid "Ajustar altura"
+#~ msgstr "Ajusta alçada"
+
+#~ msgid "Ajustar alturas"
+#~ msgstr "Ajusta alçades"
+
+#~ msgid "Ajustar columa"
+#~ msgstr "Ajusta columna"
+
+#~ msgid "Ajustar columnas"
+#~ msgstr "Ajusta columnes"
+
+#~ msgid "Alt+B"
+#~ msgstr "Alt+B"
+
+#~ msgid "Alt+C"
+#~ msgstr "Alt+C"
+
+#~ msgid "Alt+G"
+#~ msgstr "Alt+G"
+
+#~ msgid "Alt+I"
+#~ msgstr "Alt+I"
+
+#~ msgid "Alt+P"
+#~ msgstr "Alt+P"
+
+#~ msgid "Amor&tizacion"
+#~ msgstr "Amor&tització"
+
+#~ msgid "Amortizado:"
+#~ msgstr "Amortitzat:"
+
+#~ msgid "Anterior"
+#~ msgstr "Anterior"
+
+#~ msgid "Apertura"
+#~ msgstr "Obertura"
+
+#~ msgid "Aplicar Asiento Inteligente"
+#~ msgstr "Aplicar Assentament Intel·ligent"
+
+#~ msgid "Apuntes &contables"
+#~ msgstr "Apunts &comptables"
+
+#~ msgid "Apuntes &no punteados"
+#~ msgstr "Apunts &no puntejats"
+
+#~ msgid "Apuntes con contrapartida:"
+#~ msgstr "Apunts amb contrapartida:"
+
+#~ msgid "Apuntes con saldo inferior a:"
+#~ msgstr "Apunts amb saldo inferior a:"
+
+#~ msgid "Apuntes con saldo superior a:"
+#~ msgstr "Apunts amb saldo superior a:"
+
+#~ msgid "Asiento Inicial"
+#~ msgstr "Assentament inicial"
+
+#~ msgid "Asiento de a&pertura"
+#~ msgstr "Assentament d'o&bertura"
+
+#~ msgid "Asiento final:"
+#~ msgstr "Assentament final:"
+
+#~ msgid "Asiento inicial:"
+#~ msgstr "Assentament inicial:"
+
+#~ msgid "Balance"
+#~ msgstr "Balanç"
+
+#~ msgid "Balance &jerarquico de Sumas y Saldos"
+#~ msgstr "Balanç jeràrquic de sumes i saldos"
+
+#~ msgid "Balance jerarquico de Cuentas"
+#~ msgstr "Balanç jeràrquic de comptes"
+
+#~ msgid "Balance jerarquico de Sumas y Saldos"
+#~ msgstr "Balanç jeràrquic de sumes i saldos"
+
+#~ msgid "Balance jerárquico"
+#~ msgstr "Balanç jeràrquic"
+
+#~ msgid "Borrar"
+#~ msgstr "Esborra"
+
+#~ msgid "Borrar albaran"
+#~ msgstr "Esborra albarà"
+
+#~ msgid "Borrar amortización"
+#~ msgstr "Esborra amortització"
+
+#~ msgid "Borrar registro"
+#~ msgstr "Esborra registre"
+
+#~ msgid "BulmaCont - Contabilidad GPL"
+#~ msgstr "BulmaCont - Comptabilitat GPL"
+
+#~ msgid "C.I.F.:"
+#~ msgstr "C.I.F.:"
+
+#~ msgid "C.P.:"
+#~ msgstr "C.P.:"
+
+#~ msgid "Calibrando los lasers del lector de CD"
+#~ msgstr "Calibrant els lasers del lector de CD"
+
+#~ msgid "Cambiar Cuenta"
+#~ msgstr "Canviar compte"
+
+#~ msgid "Canales"
+#~ msgstr "Canals"
+
+#~ msgid "Cancelar"
+#~ msgstr "Cancel·la"
+
+#~ msgid "Cargar Asiento"
+#~ msgstr "Carrega assentament"
+
+#~ msgid "Centros de cos&te"
+#~ msgstr "Centres de cos&t"
+
+#, fuzzy
+#~ msgid "Cerrar"
+#~ msgstr ""
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Tanca\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Tancar\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Tancar\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Tanca"
+
+#~ msgid "Cerrar asiento"
+#~ msgstr "Tancar assentament"
+
+#~ msgid "Cierre"
+#~ msgstr "Tancament"
+
+#~ msgid "Codigo cuenta corriente.:"
+#~ msgstr "Codi de compte corrent.:"
+
+#~ msgid "Codigo:"
+#~ msgstr "Codi:"
+
+#~ msgid "Comentarios:"
+#~ msgstr "Comentaris:"
+
+#~ msgid "Compras"
+#~ msgstr "Compres"
+
+#~ msgid "Comprobando nivel de combustible"
+#~ msgstr "Carregant el Solitari en segon pla"
+
+#~ msgid "Configurar"
+#~ msgstr "Arranjament"
+
+#~ msgid "Configurar listado"
+#~ msgstr "Configura llistat"
+
+#~ msgid "Correo electronico:"
+#~ msgstr "Correo electrònic:"
+
+#~ msgid "Crackeando BulmaCont"
+#~ msgstr "Crackejant BulmaCont"
+
+#~ msgid "Ctrl+A"
+#~ msgstr "Ctrl+A"
+
+#~ msgid "Ctrl+B"
+#~ msgstr "Ctrl+B"
+
+#~ msgid "Ctrl+C"
+#~ msgstr "Ctrl+C"
+
+#~ msgid "Ctrl+D"
+#~ msgstr "Ctrl+D"
+
+#~ msgid "Ctrl+E"
+#~ msgstr "Ctrl+E"
+
+#~ msgid "Ctrl+End"
+#~ msgstr "Ctrl+End"
+
+#~ msgid "Ctrl+F"
+#~ msgstr "Ctrl+F"
+
+#~ msgid "Ctrl+Home"
+#~ msgstr "Ctrl+Home"
+
+#~ msgid "Ctrl+I"
+#~ msgstr "Ctrl+I"
+
+#~ msgid "Ctrl+L"
+#~ msgstr "Ctrl+L"
+
+#~ msgid "Ctrl+M"
+#~ msgstr "Ctrl+M"
+
+#~ msgid "Ctrl+N"
+#~ msgstr "Ctrl+N"
+
+#~ msgid "Ctrl+P"
+#~ msgstr "Ctrl+P"
+
+#~ msgid "Ctrl+PgDown"
+#~ msgstr "Ctrl+PgDown"
+
+#~ msgid "Ctrl+PgUp"
+#~ msgstr "Ctrl+PgUp"
+
+#~ msgid "Ctrl+Q"
+#~ msgstr "Ctrl+Q"
+
+#~ msgid "Ctrl+S"
+#~ msgstr "Ctrl+S"
+
+#~ msgid "Cuenta Destino"
+#~ msgstr "Compte destí"
+
+#~ msgid "Cuenta Origen"
+#~ msgstr "Compte Origen"
+
+#~ msgid "Cuenta a devolver:"
+#~ msgstr "Compte a retornar:"
+
+#~ msgid "Cuenta de activo:"
+#~ msgstr "Compte d'actiu:"
+
+#~ msgid "Cuenta de amortizacion:"
+#~ msgstr "Compte d'amortització:"
+
+#~ msgid "Cuenta:"
+#~ msgstr "Compte:"
+
+#~ msgid "Cuotas:"
+#~ msgstr "Quotes:"
+
+#~ msgid "Código Final"
+#~ msgstr "Codi final"
+
+#~ msgid "Código Inicial\n"
+#~ msgstr "Codi inicial\n"
+
+#~ msgid "Datos del listado:"
+#~ msgstr "Dades del llistat:"
+
+#~ msgid "Debe ejercicio"
+#~ msgstr "Deure exercici"
+
+#~ msgid "Debe inicial:"
+#~ msgstr "Deure inicial:"
+
+#~ msgid "Debe:"
+#~ msgstr "Deure:"
+
+#~ msgid "Dejando tiempo libre al sistema"
+#~ msgstr "Eliminant altres programes de Contabilitat"
+
+#~ msgid "Denominacion"
+#~ msgstr "Denominació"
+
+#~ msgid "Descuadre:"
+#~ msgstr "Desquadrament:"
+
+#~ msgid "Direccion:"
+#~ msgstr "Adreça:"
+
+#~ msgid "Documento:"
+#~ msgstr "Document:"
+
+#~ msgid "Duplicar Asiento"
+#~ msgstr "Duplica assentament"
+
+#~ msgid "Duplicar Asientos"
+#~ msgstr "Duplicar Assentaments"
+
+#~ msgid "Duplicar asiento"
+#~ msgstr "Duplicar assentament"
+
+#~ msgid "Dígitos estanda&r"
+#~ msgstr "Dígits estànda&rd "
+
+#~ msgid "Editar"
+#~ msgstr "Edita"
+
+#~ msgid "Exportar asiento"
+#~ msgstr "Exportar assentament"
+
+#~ msgid "Exportar cuentas"
+#~ msgstr "Exporta comptes"
+
+#~ msgid "Extender asiento"
+#~ msgstr "Estendre l'assentament"
+
+#~ msgid "F1"
+#~ msgstr "F1"
+
+#~ msgid "F11"
+#~ msgstr "F11"
+
+#~ msgid "F5"
+#~ msgstr "F5"
+
+#~ msgid "Fecha 1ª cuota:"
+#~ msgstr "Data de la 1a quota:"
+
+#~ msgid "Fecha Final"
+#~ msgstr "Data final"
+
+#~ msgid "Fecha Inicial"
+#~ msgstr "Data inicial"
+
+#~ msgid "Fecha con la que quedará el asiento:"
+#~ msgstr "Data amb la que quedarà l'assentament:"
+
+#~ msgid "Filtrar"
+#~ msgstr "Filtrar"
+
+#~ msgid "Filtrar balance"
+#~ msgstr "Filtrar balanç"
+
+#~ msgid "Fin"
+#~ msgstr "Fi"
+
+#~ msgid "Form1"
+#~ msgstr "Form1"
+
+#~ msgid "Forma de pago:"
+#~ msgstr "Forma de pagament:"
+
+#~ msgid "Formas de &pago"
+#~ msgstr "Formes de &pagament"
+
+#~ msgid "Formato &normal"
+#~ msgstr "Format &normal"
+
+#~ msgid "Formato del listado:"
+#~ msgstr "Format de llistat:"
+
+#~ msgid "Formato:"
+#~ msgstr "&Format:"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Generar de todas formas"
+#~ msgstr "Generar de totes formes"
+
+#~ msgid "GroupBox"
+#~ msgstr "GroupBox"
+
+#~ msgid "Guardar"
+#~ msgstr "Desa"
+
+#~ msgid "Guardar amortizacion"
+#~ msgstr "Desa amortització"
+
+#~ msgid "Guardar asiento"
+#~ msgstr "Desa assentament"
+
+#~ msgid "Guardar balance"
+#~ msgstr "Desa balanç"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Haber ejercicio"
+#~ msgstr "Haver exercici"
+
+#~ msgid "Haber inicial:"
+#~ msgstr "Haver inical:"
+
+#~ msgid "Haber:"
+#~ msgstr "Haver:"
+
+#~ msgid "Haciendo PING contra el servidor de la MetaBase"
+#~ msgstr "Entrant al Jabber, per veure als amics"
+
+#~ msgid "Importar asiento"
+#~ msgstr "Importar assentament"
+
+#~ msgid "Importar cuentas"
+#~ msgstr "Importa comptes"
+
+#~ msgid "Importe:"
+#~ msgstr "Import:"
+
+#~ msgid "Impresión de Balances"
+#~ msgstr "Impressió de Balanços"
+
+#~ msgid "Impresión del Balance de Sumas y Saldos"
+#~ msgstr "Imprimeix el balanç de Sumes i saldos"
+
+#~ msgid "Impresión del Diario"
+#~ msgstr "Imprimeix el Diari"
+
+#~ msgid "Impresión del Extracto"
+#~ msgstr "Imprimeix l'Extracte"
+
+#~ msgid "Impresión del Registro de IVA"
+#~ msgstr "Imprimeix el Registre d'IVA"
+
+#, fuzzy
+#~ msgid "Imprimir"
+#~ msgstr ""
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Imprimir\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Imprimeix\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Imprimeix\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Imprimeix\n"
+#~ "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Imprimeix"
+
+#~ msgid "Imprimir albaran"
+#~ msgstr "Imprimeix albarà"
+
+#~ msgid "Imprimir balance"
+#~ msgstr "Imprimeix balanç"
+
+#~ msgid "Imprimir cuentas"
+#~ msgstr "Imprimeix comptes"
+
+#~ msgid "Imprimir pedido"
+#~ msgstr "Imprimeix la comanda"
+
+#~ msgid "Incl&uir resultados parciales"
+#~ msgstr "Incl&oure resultats parcials"
+
+#~ msgid "Incluir resultados parciales"
+#~ msgstr "Incloure resultats parcials"
+
+#~ msgid "Indexador"
+#~ msgstr "Indexador"
+
+#~ msgid "Li&neal"
+#~ msgstr "Lí&neal"
+
+#~ msgid "Listado de amortizaciones"
+#~ msgstr "Llista d'amortitzacions"
+
+#~ msgid "Listado para el modelo 347"
+#~ msgstr "Llistat pel model 347"
+
+#~ msgid "Listo"
+#~ msgstr "Preparat"
+
+#~ msgid ""
+#~ "Lo siento, no encuentro el formulario original en pdf.\n"
+#~ "Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
+#~ "/usr/share/bulmages/formularios/ o en\n"
+#~ "~/.bulmages/formularios/."
+#~ msgstr ""
+#~ "Em sap greu, no trobo el formulari original en pdf.\n"
+#~ "Provi a descarregar-lo des de www.aeat.es i guardi'l en\n"
+#~ "/usr/share/bulmages/formularios o a\n"
+#~ "~/.bulmages/formularios/.\n"
+
+#~ msgid "Mantener distacia entre fechas"
+#~ msgstr "Mantenir distància entre datas"
+
+#~ msgid "Masa Patrimonial"
+#~ msgstr "Massa Patrimonial"
+
+#~ msgid "Masas Patrimoniales"
+#~ msgstr "Masses Patrimonials"
+
+#~ msgid "Metodo:"
+#~ msgstr "Mètode:"
+
+#~ msgid "Modelo del código de cuenta:"
+#~ msgstr "Model del codi del compte:"
+
+#~ msgid "Modi&ficar plan contable"
+#~ msgstr "Modi&ficar el pla comptable"
+
+#~ msgid "Mostrar balance (ano)"
+#~ msgstr "Mostra el balanç (any)"
+
+#~ msgid "Mostrar balance (dia)"
+#~ msgstr "Mostra balanç (dia)"
+
+#~ msgid "Mostrar balance (mes)"
+#~ msgstr "Mostra el balanç (mes)"
+
+#~ msgid "Mostrar balance jerarquico (ano)"
+#~ msgstr "Mostra el balanç jeràrquic (any)"
+
+#~ msgid "Mostrar balance jerarquico (dia)"
+#~ msgstr "Mostr el balanç jeràrquic (dia)"
+
+#~ msgid "Mostrar balance jerarquico (mes)"
+#~ msgstr "Mostra el balanç jeràrquic (mes)"
+
+#~ msgid "Nivel"
+#~ msgstr "Nivell"
+
+#~ msgid "Nivel de Cuentas"
+#~ msgstr "Nivell de comptes"
+
+#~ msgid "Nombre de la cuenta:"
+#~ msgstr "Nom del compte:"
+
+#~ msgid "Nombre de la entidad:"
+#~ msgstr "Nom de l'entitat:"
+
+#~ msgid "Nombre de la forma de pago:"
+#~ msgstr "Nom de la forma de pagament:"
+
+#~ msgid "Nombre:"
+#~ msgstr "Nom:"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgid "Nueva amortización"
+#~ msgstr "Nova amortització"
+
+#~ msgid "Nuevo"
+#~ msgstr "Nou"
+
+#~ msgid "Nº de cuotas:"
+#~ msgstr "Num de quotes:"
+
+#~ msgid "Opciones de cuenta:"
+#~ msgstr "Opcions del compte:"
+
+#~ msgid "Orden del asiento:"
+#~ msgstr "Ordre de l'assentament:"
+
+#~ msgid "Pendiente:"
+#~ msgstr "Pendent:"
+
+#~ msgid "Periodicidad:"
+#~ msgstr "Periodicitat:"
+
+#~ msgid "Periodo a declarar"
+#~ msgstr "Període a declarar"
+
+#~ msgid "Personalizada"
+#~ msgstr "Personalitzada"
+
+#~ msgid "Plan &contable"
+#~ msgstr "Pla &comptable"
+
+#~ msgid "Plan de cuentas"
+#~ msgstr "Pla de comptes"
+
+#~ msgid "Plazo del primer recibo (dias):"
+#~ msgstr "Plaç del primer rebut (dies):"
+
+#~ msgid "Primer Periodo"
+#~ msgstr "Primer període"
+
+#~ msgid "Propiedades de la empresa"
+#~ msgstr "Propietats de l'empresa"
+
+#~ msgid "Propiedades generales"
+#~ msgstr "Propietats generals"
+
+#~ msgid "Propietario"
+#~ msgstr "Propietari"
+
+#~ msgid "Quitar"
+#~ msgstr "Llevar"
+
+#~ msgid "Recalcular"
+#~ msgstr "Recalcular"
+
+#~ msgid "Regularización"
+#~ msgstr "Regularització"
+
+#~ msgid "Restan"
+#~ msgstr "Resten"
+
+#~ msgid "Saldo anterior"
+#~ msgstr "Saldo anterior"
+
+#~ msgid "Saldo anterior:"
+#~ msgstr "Saldo anterior:"
+
+#~ msgid "Saldo periodo"
+#~ msgstr "Saldo període"
+
+#~ msgid "Saldo:"
+#~ msgstr "Saldo:"
+
+#~ msgid ""
+#~ "Se va a borrar la cuenta,\n"
+#~ "Esto puede ocasionar perdida de datos\n"
+#~ "Tal vez deberia pensarselo mejor antes\n"
+#~ "porque igual su trabajo se pierde."
+#~ msgstr ""
+#~ "Es va a esborrar el compte.\n"
+#~ "Això pot ocasionar pèrdua de dades.\n"
+#~ "Caldria pensar-s'ho millor abans perquè potser \n"
+#~ "la seva feina es perd."
+
+#~ msgid ""
+#~ "Se va a borrar la forma de pago,\n"
+#~ "                                     Esto puede ocasionar perdida de "
+#~ "datos\n"
+#~ msgstr ""
+#~ "Es va a esborrar la forma de pagamanet,\n"
+#~ "                                    Això pot ocasionar pèrdre de dades\n"
+
+#~ msgid ""
+#~ "Se va a borrar la forma de pago.\n"
+#~ "Esto puede ocasionar perdida de datos.\n"
+#~ "Tal vez deberia pensarselo mejor antes\n"
+#~ "porque igual su trabajo se pierde."
+#~ msgstr ""
+#~ "Es va a esborrar la forma de pagamanet.\n"
+#~ "Això pot ocasionar pèrdua de dades.\n"
+#~ "Caldria pensar-s'ho millor abans perquè potser \n"
+#~ "la seva feina es perd."
+
+#~ msgid "Siguiente"
+#~ msgstr "Següent"
+
+#~ msgid "Sincronizando fases Alfa Beta"
+#~ msgstr "Sincronizant fases Alfa Beta"
+
+#~ msgid "Suman"
+#~ msgstr "Sumen"
+
+#~ msgid "Texto Plano"
+#~ msgstr "Text Pla"
+
+#~ msgid "Tipo de balance"
+#~ msgstr "Tipus de balanç"
+
+#~ msgid "Tipo de cuenta:"
+#~ msgstr "Tipus de compte:"
+
+#~ msgid "Total Debe:"
+#~ msgstr "Total Deure:"
+
+#~ msgid "Total Haber:"
+#~ msgstr "Total Haver:"
+
+#~ msgid "Totales:"
+#~ msgstr "Totals:"
+
+#~ msgid "URL de la pagina web:"
+#~ msgstr "URL de la pàgina web:"
+
+#~ msgid "Valor de compra:"
+#~ msgstr "Valor de compra:"
+
+#~ msgid "Ventana"
+#~ msgstr "Finestre"
+
+#~ msgid "Ventas"
+#~ msgstr "Vendes"
+
+#~ msgid "Ver configurador de subformulario"
+#~ msgstr "Veure el configurador de subformulari"
+
+#~ msgid "Ver extracto (este anyo)"
+#~ msgstr "Ver extracte (est any)"
+
+#~ msgid "Ver extracto (este dia)"
+#~ msgstr "Veure extracte (aquest dia)"
+
+#~ msgid "Ver extracto (este mes)"
+#~ msgstr "Veure extracte (aquest mes)"
+
+#~ msgid "Ver filtro"
+#~ msgstr "Veure filtre"
+
+#~ msgid "Vista Previa"
+#~ msgstr "Vista Prèvia"
+
+#~ msgid "nohaber"
+#~ msgstr "nohaber"
+
+#~ msgid "orden"
+#~ msgstr "ordre"
+
+#~ msgid ""
+#~ "xxxx --> Dígitos de plan contable.\n"
+#~ "yyyy --> Dígitos de cuenta."
+#~ msgstr ""
+#~ "xxxx --> Dígits del pla comptable.\n"
+#~ "yyyy --> Dígits del compte."
+
+#~ msgid "y   ( >="
+#~ msgstr "y   ( >="
+
+#~ msgid "y <="
+#~ msgstr "y <="

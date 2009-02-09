@@ -1,0 +1,7 @@
+#: ticketqtoolbutton.cpp:153
+msgid "Fecha: "
+msgstr ""
+
+#: ticketqtoolbutton.cpp:84 ticketqtoolbutton.cpp:85
+msgid "Imprimir Ticket"
+msgstr ""

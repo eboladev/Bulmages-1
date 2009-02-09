@@ -1,0 +1,28 @@
+#: impmultqtoolbutton.cpp:597 impmultqtoolbutton.cpp:598
+msgid "Enviar elementos seleccionados por e-mail"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:91 impmultqtoolbutton.cpp:92
+msgid "Imprimir elementos seleccionados"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:449 impmultqtoolbutton.cpp:450
+msgid "Invertir seleccion de elementos"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:238
+msgid "no se pudo crear instancia de albaran"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:166 impmultqtoolbutton.cpp:777
+msgid "no se pudo crear instancia de factura"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:202 impmultqtoolbutton.cpp:683
+#: impmultqtoolbutton.cpp:728
+msgid "no se pudo crear instancia de pedido cliente"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:639
+msgid "no se pudo crear instancia de presupuesto"
+msgstr ""

@@ -1,0 +1,75 @@
+#: ui_z2zbase.h:395
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_z2zbase.h:396
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_z2zbase.h:402
+msgid "&Detalle"
+msgstr ""
+
+#: ui_z2zbase.h:404
+msgid "1"
+msgstr ""
+
+#: ui_z2zbase.h:375 ui_z2zbase.h:380
+msgid "Borrar factura"
+msgstr ""
+
+#: z2zview.cpp:56
+msgid "Error al crear la factura"
+msgstr ""
+
+#: ui_z2zbase.h:405
+msgid "Excluir Articulo"
+msgstr ""
+
+#: ui_z2zbase.h:403
+msgid "Excluir Familias"
+msgstr ""
+
+#: ui_z2zbase.h:364 ui_z2zbase.h:369
+msgid "Guardar factura"
+msgstr ""
+
+#: ui_z2zbase.h:386 ui_z2zbase.h:391
+msgid "Imprimir factura"
+msgstr ""
+
+#: ui_z2zbase.h:407
+msgid "No cambiar precios de articulos"
+msgstr ""
+
+#: ui_z2zbase.h:406
+msgid "Num Minimo lineas ticket"
+msgstr ""
+
+#: ui_z2zbase.h:408
+msgid "Opciones"
+msgstr ""
+
+#: ui_z2zbase.h:397
+msgid "Referencias"
+msgstr ""
+
+#: ui_z2zbase.h:398
+msgid "Total Tickets"
+msgstr ""
+
+#: ui_z2zbase.h:399
+msgid "Total Traspasable"
+msgstr ""
+
+#: ui_z2zbase.h:400
+msgid "Total aprox a Traspasar"
+msgstr ""
+
+#: ui_z2zbase.h:401
+msgid "Traspasar"
+msgstr ""
+
+#: ui_z2zbase.h:361
+msgid "Traspaso de Z"
+msgstr ""

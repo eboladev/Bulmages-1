@@ -1,0 +1,47 @@
+#: ui_listtipostrabajobase.h:113
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_listtipostrabajobase.h:114
+msgid "&Cancelar"
+msgstr ""
+
+#: listtipostrabajoview.cpp:58
+msgid "Color tipo trabajo"
+msgstr ""
+
+#: plugintipostrabajo.cpp:199
+msgid "ID almacen"
+msgstr ""
+
+#: plugintipostrabajo.cpp:197
+msgid "ID nombre del tipo de trabajo"
+msgstr ""
+
+#: plugintipostrabajo.cpp:200
+msgid "ID tipo de trabajo"
+msgstr ""
+
+#: plugintipostrabajo.cpp:201
+msgid "Id tipo de trabajo"
+msgstr ""
+
+#: listtipostrabajoview.cpp:56
+msgid "Id tipo trabajo"
+msgstr ""
+
+#: listtipostrabajoview.cpp:57
+msgid "Nombre tipo trabajo"
+msgstr ""
+
+#: plugintipostrabajo.cpp:198
+msgid "Numero de cargos necesarios"
+msgstr ""
+
+#: ui_listtipostrabajobase.h:112
+msgid "Tipos de Trabajo"
+msgstr ""
+
+#: listtipostrabajoview.cpp:49
+msgid "almacen"
+msgstr ""

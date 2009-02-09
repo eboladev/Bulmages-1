@@ -1,0 +1,11 @@
+#: pluginpreciocoste.cpp:54
+msgid "Actualizar PVP"
+msgstr ""
+
+#: pluginpreciocoste.cpp:53
+msgid "Margen"
+msgstr ""
+
+#: pluginpreciocoste.cpp:52
+msgid "Precio Coste"
+msgstr ""

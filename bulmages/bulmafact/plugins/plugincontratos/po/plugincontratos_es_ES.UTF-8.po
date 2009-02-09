@@ -1,0 +1,281 @@
+#: ui_contratobase.h:511
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_contratobase.h:512
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_contratobase.h:510
+msgid "&Comentarios"
+msgstr ""
+
+#: ui_contratobase.h:509
+msgid "&Facturas"
+msgstr ""
+
+#: ui_contratoslistbase.h:319 ui_contratoslistbase.h:324
+msgid "Actualizar listado"
+msgstr ""
+
+#: contratoview.cpp:406
+msgid "Base imponible"
+msgstr ""
+
+#: ui_contratobase.h:471 ui_contratobase.h:476
+msgid "Borrar Contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:275 ui_contratoslistbase.h:280
+msgid "Borrar contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:339
+msgid "Buscar:"
+msgstr ""
+
+#: contratoslist.cpp:424
+msgid "C.I.F."
+msgstr ""
+
+#: contratoview.cpp:413
+msgid "CIF cliente"
+msgstr ""
+
+#: ui_contratoslistbase.h:340
+msgid "Caducados"
+msgstr ""
+
+#: listlincontratoview.cpp:46
+msgid "Cantidadl contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:341
+msgid "Cliente"
+msgstr ""
+
+#: contratoview.cpp:65 contratoslist.cpp:64
+msgid "Cliente:"
+msgstr ""
+
+#: contratoslist.cpp:423
+msgid "Codigo"
+msgstr ""
+
+#: contratoview.cpp:414
+msgid "Codigo almacen"
+msgstr ""
+
+#: listlincontratoview.cpp:42
+msgid "Codigo completo articulo"
+msgstr ""
+
+#: contratoview.cpp:416
+msgid "Comentario factura"
+msgstr ""
+
+#: ui_contratoslistbase.h:308 ui_contratoslistbase.h:313
+msgid "Configurar listado"
+msgstr ""
+
+#: contratoview.cpp:415
+msgid "Contact factura"
+msgstr ""
+
+#: contratoview.cpp:118 contrato.cpp:39
+msgid "Contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:249
+msgid "Contratos"
+msgstr ""
+
+#: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
+#: contrato.cpp:49 contrato.cpp:50
+msgid "Descripcion contrato"
+msgstr ""
+
+#: ui_contratobase.h:503
+msgid "Descripcion:"
+msgstr ""
+
+#: listlincontratoview.cpp:45
+msgid "Descripcionl contrato"
+msgstr ""
+
+#: ui_contratobase.h:508
+msgid "Detalle"
+msgstr ""
+
+#: ui_contratoslistbase.h:264 ui_contratoslistbase.h:269
+msgid "Editar contrato"
+msgstr ""
+
+#: contratoslist.cpp:203
+msgid "Error al borrar un contrato"
+msgstr ""
+
+#: contratoview.cpp:73
+msgid "Error al crear la contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:330 ui_contratoslistbase.h:335 ui_contratobase.h:482
+#: ui_contratobase.h:487
+msgid "Facturar Periodos Pendientes"
+msgstr ""
+
+#: contratoview.cpp:403
+msgid "Fecha"
+msgstr ""
+
+#: contratoslist.cpp:428
+msgid "Fecha de alta del contrato"
+msgstr ""
+
+#: contratoslist.cpp:429 contratoslist.cpp:430
+msgid "Fecha de baja del contrato"
+msgstr ""
+
+#: ui_contratobase.h:507
+msgid "Fecha de creacion:"
+msgstr ""
+
+#: ui_contratobase.h:506
+msgid "Fecha de finalizacion:"
+msgstr ""
+
+#: ui_contratoslistbase.h:297 ui_contratoslistbase.h:302
+msgid "Filtrar contratos"
+msgstr ""
+
+#: ui_contratobase.h:460 ui_contratobase.h:465
+msgid "Guardar Contrato"
+msgstr ""
+
+#: contratoslist.cpp:422
+msgid "ID contrato"
+msgstr ""
+
+#: contratoview.cpp:419
+msgid "Id almacen"
+msgstr ""
+
+#: listlincontratoview.cpp:41
+msgid "Id articulo"
+msgstr ""
+
+#: contratoview.cpp:418 contrato.cpp:43
+msgid "Id cliente"
+msgstr ""
+
+#: listlincontratoview.cpp:48 contrato.cpp:42
+msgid "Id contrato"
+msgstr ""
+
+#: contratoview.cpp:410
+msgid "Id factura"
+msgstr ""
+
+#: contratoview.cpp:417
+msgid "Id trabajador"
+msgstr ""
+
+#: listlincontratoview.cpp:44
+msgid "Idl contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:286 ui_contratoslistbase.h:291
+msgid "Imprimir listado"
+msgstr ""
+
+#: contratoview.cpp:407
+msgid "Impuestos"
+msgstr ""
+
+#: contratoslist.cpp:174
+msgid "Listado de Contratos"
+msgstr ""
+
+#: ui_contratobase.h:494 ui_contratobase.h:499
+msgid "Mostrar/ocultar cabecera"
+msgstr ""
+
+#: contratoslist.cpp:427
+msgid "Nombre alternativo del contrato"
+msgstr ""
+
+#: listlincontratoview.cpp:43
+msgid "Nombre articulo"
+msgstr ""
+
+#: contratoview.cpp:404
+msgid "Nombre cliente"
+msgstr ""
+
+#: contratoslist.cpp:426
+msgid "Nombre de contrato"
+msgstr ""
+
+#: ui_contratobase.h:457
+msgid "Nuevo Contrato"
+msgstr ""
+
+#: ui_contratoslistbase.h:253 ui_contratoslistbase.h:258
+msgid "Nuevo contrato"
+msgstr ""
+
+#: contratoview.cpp:402
+msgid "Numero"
+msgstr ""
+
+#: listlincontratoview.cpp:49
+msgid "Orden"
+msgstr ""
+
+#: listlincontratoview.cpp:47
+msgid "PVPl contrato"
+msgstr ""
+
+#: ui_contratobase.h:504
+msgid "Periodicidad Facturas:"
+msgstr ""
+
+#: contratoview.cpp:409
+msgid "Procesada"
+msgstr ""
+
+#: contratoview.cpp:411
+msgid "Ref factura"
+msgstr ""
+
+#: contratoslist.cpp:425
+msgid "Referencia"
+msgstr ""
+
+#: contrato.cpp:44
+msgid "Referencia contrato"
+msgstr ""
+
+#: ui_contratobase.h:491
+msgid "Referencia:"
+msgstr ""
+
+#: contratoslist.cpp:73
+msgid "Selector de contratos"
+msgstr ""
+
+#: contratoview.cpp:412
+msgid "Serie"
+msgstr ""
+
+#: contratoview.cpp:405
+msgid "Telefono factura"
+msgstr ""
+
+#: contratoview.cpp:408
+msgid "Total"
+msgstr ""
+
+#: ui_contratobase.h:505
+msgid "Ubicacion:"
+msgstr ""

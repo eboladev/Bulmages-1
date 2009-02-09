@@ -1,0 +1,3 @@
+#: pluginsubformprint.cpp:91 pluginsubformprint.cpp:103
+msgid "Imprimir"
+msgstr ""
