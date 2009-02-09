@@ -200,7 +200,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLabel" name="label4" >
        <property name="text" >
         <string>Total: </string>
        </property>
@@ -1050,7 +1050,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label5" >
           <property name="text" >
            <string>Buscar:</string>
           </property>
