@@ -22,7 +22,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include "comun/bselector.h"
+#include "bselector.h"
 #include "blapplication.h"
 #include "configuracion.h"
 #include "logpass.h"
