@@ -19,28 +19,61 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QRADIOBUTTON2_H
-#define QRADIOBUTTON2_H
+#include "blradiobutton.h"
+#include "funcaux.h"
 
-#include <QRadioButton>
-#include <QString>
 
-class QRadioButton2 : public QRadioButton
+/** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
+    sobre si un elemento ha sido creado o no.
+    Conecta el activar un tipo con m_activated.
+*/
+/**
+\param parent
+**/
+BlRadioButton::BlRadioButton ( QWidget *parent )
+        : QRadioButton ( parent )
 {
-    Q_OBJECT
-private:
-    QString m_valorcampo;
-public:
-    QRadioButton2 ( QWidget *parent );
-    QRadioButton2 ( const QString & text, QWidget * parent = 0 );
-    ~QRadioButton2();
-    void setValorCampo ( QString val ) {
-        m_valorcampo = val;
-    };
-    QString valorCampo() {
-        return m_valorcampo;
-    };
-};
+    _depura ( "BlRadioButton::BlRadioButton", 0 );
+    _depura ( "END BlRadioButton::BlRadioButton", 0 );
+}
 
-#endif
+
+/** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
+    sobre si un elemento ha sido creado o no.
+    Conecta el activar un tipo con m_activated.
+*/
+/**
+\param text
+\param parent
+**/
+BlRadioButton::BlRadioButton ( const QString & text, QWidget * parent )
+        : QRadioButton ( text, parent )
+{
+    _depura ( "BlRadioButton::BlRadioButton", 0 );
+    _depura ( "END BlRadioButton::BlRadioButton", 0 );
+}
+
+
+/// Se libera memoria destruyendo el cursor que almacena los tipos de IVA si es que esta creado.
+/**
+**/
+BlRadioButton::~BlRadioButton()
+{
+    _depura ( "BlRadioButton::~BlRadioButton", 0 );
+    _depura ( "END BlRadioButton::~BlRadioButton", 0 );
+}
+
+
+/**
+**/
+void BlRadioButton::setValorCampo ( QString val ) {
+	m_valorcampo = val;
+}
+
+
+/**
+**/
+QString BlRadioButton::valorCampo() {
+	return m_valorcampo;
+}
 

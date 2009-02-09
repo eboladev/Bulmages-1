@@ -18,13 +18,6 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include "blform.h"
-#include "fichacfg.h"
-#include "blcombobox.h"
-#include "plugins.h"
-#include "qradiobutton2.h"
-#include "busquedafecha.h"
-
 #include <QMenu>
 #include <QToolButton>
 #include <QTextEdit>
@@ -35,6 +28,15 @@
 #include <QDomNode>
 #include <QInputDialog>
 #include <QUiLoader>
+
+#include "blform.h"
+#include "fichacfg.h"
+#include "blcombobox.h"
+#include "plugins.h"
+#include "blradiobutton.h"
+#include "busquedafecha.h"
+
+
 ///
 /**
 \param parent
@@ -557,7 +559,7 @@ void BlForm::pintar()
         } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
-        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        QList<BlRadioButton *> l6 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
         for ( int i = 0; i < l6.size(); ++i ) {
             if ( l6.at ( i ) ->valorCampo() == campo->valorcampo() ) {
                 l6.at ( i ) ->setChecked ( TRUE );
@@ -617,7 +619,7 @@ void BlForm::recogeValores()
         } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
-        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        QList<BlRadioButton *> l6 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
         if ( l6.size() > 0 ) {
             int aux = 0;
             for ( int i = 0; i < l6.size(); ++i ) {

@@ -189,14 +189,14 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QRadioButton2" name="mui_tipoalmacen_t" >
+           <widget class="BlRadioButton" name="mui_tipoalmacen_t" >
             <property name="text" >
              <string>Tienda</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton2" name="mui_tipoalmacen_a" >
+           <widget class="BlRadioButton" name="mui_tipoalmacen_a" >
             <property name="text" >
              <string>Almacen</string>
             </property>
@@ -515,9 +515,9 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>QRadioButton2</class>
+   <class>BlRadioButton</class>
    <extends>QRadioButton</extends>
-   <header>qradiobutton2.h</header>
+   <header>blradiobutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
