@@ -32,7 +32,7 @@
 \param parent
 **/
 AmortizacionesView::AmortizacionesView ( Empresa *emp, QWidget *parent )
-        : Listado ( emp, parent )
+        : BlFormList ( emp, parent )
 {
     _depura ( "AmortizacionesView::AmortizacionesView", 0 );
 

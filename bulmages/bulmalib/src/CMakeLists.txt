@@ -53,7 +53,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          qtexteditdelegate.cpp
          qdoublespinbox2.cpp
          blwidget.cpp
-         listado.cpp
+         blformlist.cpp
          porcentajecarga.cpp
          busquedafecha2.cpp
          splashscreen.cpp
@@ -85,7 +85,7 @@ set(bulmalib_MOCS
          qdoublespinbox2.h 
          blwidget.h 
 	 blmainwindow.h
-         listado.h 
+         blformlist.h 
          porcentajecarga.h 
          busquedafecha2.h 
          splashscreen.h 

@@ -22,13 +22,13 @@
 #ifndef PAGOSLIST_H
 #define PAGOSLIST_H
 
-
 #include <QLineEdit>
 
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
+
 
 /// Administra el detalle del listado de pagos.
 /** */
@@ -47,7 +47,7 @@ public:
 
 /// Muestra y administra el listado de pagos.
 /** */
-class PagosList : public Listado, private Ui_PagosListBase
+class PagosList : public BlFormList, private Ui_PagosListBase
 {
     Q_OBJECT
 

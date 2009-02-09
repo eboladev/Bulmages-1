@@ -33,7 +33,7 @@
 \param parent
 **/
 ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
-        : Listado ( emp, parent, flag, editmodo )
+        : BlFormList ( emp, parent, flag, editmodo )
 {
     _depura ( "ListProyectosView::ListProyectosView", 0 );
 

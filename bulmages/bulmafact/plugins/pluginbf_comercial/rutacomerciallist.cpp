@@ -36,7 +36,7 @@
 \param parent
 **/
 RutaComercialList::RutaComercialList ( QWidget *parent )
-        : Listado ( NULL, parent )
+        : BlFormList ( NULL, parent )
 {
     _depura ( "RutaComercialList::RutaComercialList", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -59,7 +59,7 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
 \param parent
 **/
 RutaComercialList::RutaComercialList ( Company *comp, QWidget *parent )
-        : Listado ( comp, parent )
+        : BlFormList ( comp, parent )
 {
     _depura ( "RutaComercialList::RutaComercialList", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

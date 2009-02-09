@@ -25,7 +25,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /** Subformulario de clientes.
@@ -46,7 +46,7 @@ public:
 
 /** Esta clase implementa la pantalla de listado de clientes.
 */
-class ClientsList : public Listado, public Ui_ClientsListBase, public pgimportfiles
+class ClientsList : public BlFormList, public Ui_ClientsListBase, public pgimportfiles
 {
     Q_OBJECT
 

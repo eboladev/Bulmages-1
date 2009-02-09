@@ -52,7 +52,7 @@
 \return
 **/
 ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "ArticuloList1::ArticuloList1", 0 );
     setupUi ( this );

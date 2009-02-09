@@ -25,15 +25,13 @@
 #include <QLineEdit>
 
 #include "company.h"
-#include "listado.h"
-
-
+#include "blformlist.h"
 #include "ui_almaceneslistbase.h"
 
 
-/// Muestra y administra la ventana con el listado de presupuestos.
+/// Muestra y administra la ventana con el listado de almacenes.
 /** */
-class AlmacenesListView : public Listado, public Ui_AlmacenesListBase
+class AlmacenesListView : public BlFormList, public Ui_AlmacenesListBase
 {
     Q_OBJECT
 
@@ -53,7 +51,6 @@ public:
     void imprimir();
     QString generaFiltro();
     void iniciaForm();
-
 
 signals:
     void selected ( QString );

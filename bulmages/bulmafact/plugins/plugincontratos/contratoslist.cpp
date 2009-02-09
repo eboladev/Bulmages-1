@@ -45,7 +45,7 @@
 \return
 **/
 ContratosList::ContratosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : Listado ( comp, parent, flag ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag ), pgimportfiles ( comp )
 {
     _depura ( "ContratosList::ContratosList", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

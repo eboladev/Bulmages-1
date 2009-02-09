@@ -39,7 +39,7 @@
 \param flag
 **/
 PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "PagosList::PagosList", 0 );
     setupUi ( this );
@@ -62,7 +62,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
 \param flag
 **/
 PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PagosList::PagosList", 0 );
     setupUi ( this );

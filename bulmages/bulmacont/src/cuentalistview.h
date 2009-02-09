@@ -21,16 +21,14 @@
 
 #ifndef CUENTALISTVIEW_H
 #define CUENTALISTVIEW_H
+
 #include "empresa.h"
 #include "subform2bc.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
-/** Clase que maneja el subformulario de la lista de art&iacute;culos.
-    Deriva de SubForm2Bc y agrega la configuracion para tratar especificamente
-    con la tabla articulo.
+/**
 */
-
 class CuentaListSubForm : public SubForm2Bc
 {
     Q_OBJECT
@@ -40,24 +38,19 @@ public:
     ~CuentaListSubForm();
 };
 
+
 #include "ui_cuentalistbase.h"
 
 
-/** Clase que maneja la ventana de listado de articulos
-    Se encarga del control y manejo de la venta que presenta el listado de articulos.
+/**
 */
-/// \TODO: Deberia crearse la clase Listado y hacer que esta clase derive de Listado en lugar
-/// derivar de Ficha.
-class CuentaListView : public Listado, public Ui_CuentaListBase
+class CuentaListView : public BlFormList, public Ui_CuentaListBase
 {
     Q_OBJECT
 
 private:
-    /// El identificador de articulo para el modo seleccion. Indica el articulo seleccionado.
     QString mdb_idcuenta;
-    /// El nombre del articulo seleccionado si estamos en modo seleccion.
     QString mdb_nombrecuenta;
-    /// El codigo completo del articulo seleccionado si estamos en modo seleccion.
     QString mdb_codigocuenta;
 
 public:

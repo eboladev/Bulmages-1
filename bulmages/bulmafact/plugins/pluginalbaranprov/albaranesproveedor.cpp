@@ -43,7 +43,7 @@
 \param flag
 **/
 AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
     setupUi ( this );
@@ -146,7 +146,7 @@ QString AlbaranesProveedor::idalbaranp()
 \param flag
 **/
 AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
     setupUi ( this );

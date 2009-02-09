@@ -25,7 +25,7 @@
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Subformulario de albaranes de clientes.
@@ -58,9 +58,7 @@ public slots:
 /** Albaranes a Clientes.
     Esta clase representa la pantalla de albaranes a clientes.
 */
-/// \TODO: Deberia crearse una clase derivada de Ficha que fuese Listado y que
-/// incorporase algunas funcionalidades comunes a todos los listados.
-class AlbaranClienteList : public Listado, public Ui_AlbaranClienteListBase
+class AlbaranClienteList : public BlFormList, public Ui_AlbaranClienteListBase
 {
     Q_OBJECT
 

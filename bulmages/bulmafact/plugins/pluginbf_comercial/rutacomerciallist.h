@@ -26,7 +26,8 @@
 #include "company.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
+
 
 class RutaComercialListSubForm : public SubForm2Bf
 {
@@ -53,7 +54,7 @@ public slots:
 #include "ui_rutacomerciallistbase.h"
 
 
-class RutaComercialList : public Listado, public Ui_RutaComercialListBase
+class RutaComercialList : public BlFormList, public Ui_RutaComercialListBase
 {
     Q_OBJECT
 

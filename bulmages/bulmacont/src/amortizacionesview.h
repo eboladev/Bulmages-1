@@ -23,7 +23,7 @@
 #define AMORTIZACIONESVIEW_H
 
 #include "ui_amortizacionesbase.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 class Empresa;
@@ -31,11 +31,11 @@ class Empresa;
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class AmortizacionesView : public Listado, public Ui_AmortizacionesBase
+class AmortizacionesView : public BlFormList, public Ui_AmortizacionesBase
 {
     Q_OBJECT
-private:
 
+private:
     /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
     QString mdb_idamortizacion;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.

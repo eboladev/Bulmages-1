@@ -145,7 +145,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "cobro", "SELECT" ) ) {
-		CobrosList *pagosList = new CobrosList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+		CobrosList *pagosList = new CobrosList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 		pagosList->setModoEdicion();
 		pagosList->setObjectName("listcobrosproveedor");
 		pagosList->hideBusqueda();

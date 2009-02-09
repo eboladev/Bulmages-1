@@ -32,7 +32,7 @@
 \param editomodo
 **/
 TarifaListView::TarifaListView ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
 {
     _depura ( "TarifaListView::INIT_TarifaListView()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

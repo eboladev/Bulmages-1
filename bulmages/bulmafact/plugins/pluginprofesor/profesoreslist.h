@@ -27,7 +27,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /** Subformulario especializado en el trabajo con Cobros.
@@ -46,9 +46,9 @@ public:
 
 
 /** Clase que presenta el listado de Cobros.
-    Deriva de la clase Listado para estandarizacion de Formularios.
+    Deriva de la clase BlFormList para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class ProfesoresList : public Listado, public Ui_ProfesoresListBase
+class ProfesoresList : public BlFormList, public Ui_ProfesoresListBase
 {
     Q_OBJECT
 

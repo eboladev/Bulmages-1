@@ -24,7 +24,7 @@
 
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Administra el listado de proveedores.
@@ -48,10 +48,9 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de proveedores.
 /** */
-class ProveedorList : public Listado, public Ui_ProveedorListBase, public pgimportfiles
+class ProveedorList : public BlFormList, public Ui_ProveedorListBase, public pgimportfiles
 {
     Q_OBJECT
-
 
 private:
     QString m_idprovider;

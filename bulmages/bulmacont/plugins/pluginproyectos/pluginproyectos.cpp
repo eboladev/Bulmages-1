@@ -24,7 +24,7 @@
 
 #include "pluginproyectos.h"
 #include "tiptrab.h"
-#include "listado.h"
+#include "blformlist.h"
 #include "listproyectosview.h"
 
 
@@ -55,7 +55,7 @@ void mytiptrab::elslot()
 {
     _depura ( "mytiptrab::elslot", 0 );
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, Listado::EditMode );
+    ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BlFormList::EditMode );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
 //    m_bulmacont->empresaactual()->meteWindow(l);
     m_bulmacont->workspace() ->addWindow ( l );
@@ -109,7 +109,7 @@ int ccosteview_ccosteview ( ccosteview *ccoste )
     _depura ( "ccosteview_ccosteview", 0 );
 
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView ( ccoste->empresaBase(), ccoste, 0, Listado::SelectMode );
+    ListProyectosView *l = new ListProyectosView ( ccoste->empresaBase(), ccoste, 0, BlFormList::SelectMode );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
     l->mui_actualizar->setDisabled ( TRUE );
 //    l->setModoEdicion();

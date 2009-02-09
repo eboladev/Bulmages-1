@@ -23,7 +23,7 @@
 #define ASIENTOSVIEW_H
 
 #include "ui_asientolistbase.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 class Empresa;
@@ -32,7 +32,7 @@ class Empresa;
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class AsientosView : public Listado, public Ui_AsientoListBase
+class AsientosView : public BlFormList, public Ui_AsientoListBase
 {
     Q_OBJECT
 

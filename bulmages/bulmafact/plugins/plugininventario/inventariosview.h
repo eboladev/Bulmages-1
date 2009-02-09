@@ -23,7 +23,7 @@
 
 #include "company.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de inventarios.
@@ -46,7 +46,7 @@ public slots:
 
 /// Muestra y administra el listado de inventarios.
 /** */
-class InventariosView : public Listado, public Ui_InventariosBase
+class InventariosView : public BlFormList, public Ui_InventariosBase
 {
     Q_OBJECT
 

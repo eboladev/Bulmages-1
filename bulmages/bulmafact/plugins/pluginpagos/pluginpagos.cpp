@@ -146,7 +146,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pago", "SELECT" ) ) {
-	PagosList *pagosList = new PagosList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	PagosList *pagosList = new PagosList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	pagosList->setModoEdicion();
 	pagosList->setObjectName("listpagosproveedor");
 	pagosList->hideBusqueda();

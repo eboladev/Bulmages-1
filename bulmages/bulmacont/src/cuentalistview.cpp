@@ -49,7 +49,7 @@
 \return
 **/
 CuentaListView::CuentaListView ( Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "CuentaListView::CuentaListView", 0 );
     setupUi ( this );

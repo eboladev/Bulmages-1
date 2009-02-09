@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Administra el detalle del listado de facturas de proveedor.
@@ -50,7 +50,7 @@ public slots:
 
 /// Administra el listado de facturas de proveedor.
 /** */
-class FacturasProveedorList : public Listado, public Ui_FacturasProveedorListBase
+class FacturasProveedorList : public BlFormList, public Ui_FacturasProveedorListBase
 {
     Q_OBJECT
 

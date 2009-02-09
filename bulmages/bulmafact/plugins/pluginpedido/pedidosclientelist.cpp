@@ -37,7 +37,7 @@
 \return
 **/
 PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "PedidosClienteList::PedidosClienteList", 0 );
     setupUi ( this );
@@ -65,7 +65,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \param flags
 \return
 **/
-PedidosClienteList::PedidosClienteList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : Listado ( comp, parent, flag, editmodo)
+PedidosClienteList::PedidosClienteList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo)
 {
     _depura ( "PedidosClienteList::PedidosClienteList", 0 );
     setupUi ( this );

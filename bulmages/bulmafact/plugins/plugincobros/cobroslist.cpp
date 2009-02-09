@@ -37,7 +37,7 @@
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
 CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "CobrosList::CobrosList", 0 );
     setupUi ( this );
@@ -62,7 +62,7 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Mete la ventana en el workSpace.
 */
 CobrosList::CobrosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "CobrosList::CobrosList", 0 );
     setupUi ( this );
@@ -100,8 +100,8 @@ CobrosList::~CobrosList()
 }
 
 
-/** Hace la carag del listado.
-    PAra ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
+/** Hace la carga del listado.
+    Para ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
     Tambien hace un select de calculo de totales y lo presenta en el textEdit correspondiente.
 */
 void CobrosList::presentar()

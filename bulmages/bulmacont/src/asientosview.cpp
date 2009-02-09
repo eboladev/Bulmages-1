@@ -36,7 +36,7 @@
 \param edmode
 **/
 AsientosView::AsientosView ( Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
-        : Listado ( comp, parent, flag )
+        : BlFormList ( comp, parent, flag )
 {
     _depura ( "AsientosView::AsientosView", 0 );
     setupUi ( this );

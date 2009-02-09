@@ -41,7 +41,7 @@
 \return
 **/
 ProveedorList::ProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : Listado ( comp, parent, flag, editmode ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmode ), pgimportfiles ( comp )
 {
     _depura ( "ProveedorList::ProveedorList", 0 );
     setupUi ( this );

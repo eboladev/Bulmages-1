@@ -23,9 +23,10 @@
 
 #include "company.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 #include "bulmafact.h"
 #include "ui_zlistbase.h"
+
 
 class myplugincont : public QObject
 {
@@ -50,10 +51,7 @@ public slots:
     Deriva de Ficha para la estandarizacion de Pantallas.
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
-/// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-/// Muestra y administra la ventana con el listado de presupuestos.
-/** */
-class ZList : public Listado, public Ui_ZListBase
+class ZList : public BlFormList, public Ui_ZListBase
 {
     Q_OBJECT
 

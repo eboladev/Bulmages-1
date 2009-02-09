@@ -25,7 +25,7 @@
 #include "company.h"
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /** Clase que maneja el subformulario de la lista de art&iacute;culos.
@@ -48,9 +48,7 @@ public:
 /** Clase que maneja la ventana de listado de articulos
     Se encarga del control y manejo de la venta que presenta el listado de articulos.
 */
-/// \TODO: Deberia crearse la clase Listado y hacer que esta clase derive de Listado en lugar
-/// derivar de Ficha.
-class ArticuloList1 : public Listado, public Ui_ArticuloListBase1
+class ArticuloList1 : public BlFormList, public Ui_ArticuloListBase1
 {
     Q_OBJECT
 

@@ -23,7 +23,7 @@
 #define PROYECTOSVIEW_H
 
 #include "ui_listproyectosbase.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 class Empresa;
@@ -31,7 +31,7 @@ class Empresa;
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class ListProyectosView : public Listado, public Ui_ListProyectosBase
+class ListProyectosView : public BlFormList, public Ui_ListProyectosBase
 {
     Q_OBJECT
 private:

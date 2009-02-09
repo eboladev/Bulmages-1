@@ -42,7 +42,7 @@
 \param editmodo
 **/
 FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "FacturasList::FacturasList", 0 );
     setupUi ( this );
@@ -72,7 +72,7 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 \param editmodo
 **/
 FacturasList::FacturasList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "FacturasList::FacturasList", 0 );
     setupUi ( this );

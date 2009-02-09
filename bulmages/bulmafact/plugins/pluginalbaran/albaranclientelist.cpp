@@ -108,7 +108,7 @@ void AlbaranClienteList::crear()
 \return
 **/
 AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
     setupUi ( this );
@@ -138,7 +138,7 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \return
 **/
 AlbaranClienteList::AlbaranClienteList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
     setupUi ( this );
@@ -305,10 +305,6 @@ void AlbaranClienteList::borrar()
 
 /** La impresion de listados es estandarizada por la clase DBRecord
 */
-/// \TODO: Se podria hacer una clase derivada de BlForm que fuese Listado y que directamente
-/// implementase el metodo on_mui_imprimir.
-/**
-**/
 void AlbaranClienteList::imprimir()
 {
     _depura ( "AlbaranClienteList::imprimir", 0 );

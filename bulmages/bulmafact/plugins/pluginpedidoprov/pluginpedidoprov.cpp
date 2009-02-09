@@ -147,7 +147,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
-	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	pedidosProveedorList->setModoEdicion();
 	pedidosProveedorList->setObjectName("listPedidosProveedorList");
 	pedidosProveedorList->hideBusqueda();

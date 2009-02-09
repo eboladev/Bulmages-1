@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
@@ -50,7 +50,7 @@ public slots:
 
 /// Muestra y administra el listado de pedidos de cliente.
 /** */
-class PedidosClienteList : public Listado, public Ui_PedidosClienteListBase
+class PedidosClienteList : public BlFormList, public Ui_PedidosClienteListBase
 {
     Q_OBJECT
 

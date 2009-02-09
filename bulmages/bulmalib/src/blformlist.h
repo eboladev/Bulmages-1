@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LISTADO_H
-#define LISTADO_H
+#ifndef BLFORMLIST_H
+#define BLFORMLIST_H
 
 #include <QWidget>
 #include <QCloseEvent>
@@ -32,7 +32,7 @@
 #include "blwidget.h"
 
 
-class Listado : public BlWidget
+class BlFormList : public BlWidget
 {
     Q_OBJECT
 
@@ -52,12 +52,12 @@ protected:
     void setSubForm ( SubForm3 * );
 
 public:
-    Listado ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
-    Listado ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlFormList ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlFormList ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual void editar ( int );
     virtual void imprimir();
     virtual void presentar();
-    virtual ~Listado();
+    virtual ~BlFormList();
     virtual int sacaWindow();
     virtual int meteWindow ( QString title );
     virtual void submenu ( const QPoint & );

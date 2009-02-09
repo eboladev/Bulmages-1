@@ -24,10 +24,10 @@
 #include "ui_tarifalistbase.h"
 #include "company.h"
 #include "pgimportfiles.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
-class TarifaListView : public Listado, private Ui_TarifaListBase, public pgimportfiles
+class TarifaListView : public BlFormList, private Ui_TarifaListBase, public pgimportfiles
 {
     Q_OBJECT
 

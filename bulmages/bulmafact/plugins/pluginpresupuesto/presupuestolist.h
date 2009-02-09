@@ -27,7 +27,7 @@
 #include "company.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Administra el listado de presupuestos.
@@ -51,7 +51,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public Listado, public Ui_PresupuestosListBase
+class PresupuestoList : public BlFormList, public Ui_PresupuestosListBase
 {
     Q_OBJECT
 

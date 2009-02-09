@@ -148,7 +148,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "factura", "SELECT" ) ) {
-	FacturasList *facturasList = new FacturasList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	FacturasList *facturasList = new FacturasList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	facturasList->setModoEdicion();
 	facturasList->setObjectName("listfacturas");
 	facturasList->hideBusqueda();

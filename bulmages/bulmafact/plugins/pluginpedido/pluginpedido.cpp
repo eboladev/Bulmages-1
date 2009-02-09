@@ -148,7 +148,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
-	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	pedidosClienteList->setModoEdicion();
 	pedidosClienteList->setObjectName("listpedidoclientees");
 	pedidosClienteList->hideBusqueda();

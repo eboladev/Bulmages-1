@@ -24,7 +24,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 #include "bulmafact.h"
 
 
@@ -66,8 +66,7 @@ public:
     Deriva de Ficha para la estandarizacion de Pantallas.
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
-/// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ContratosList : public Listado, public Ui_ContratosListBase, public pgimportfiles
+class ContratosList : public BlFormList, public Ui_ContratosListBase, public pgimportfiles
 {
     Q_OBJECT
 

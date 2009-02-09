@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Administra las l&iacute;neas de detalle de pedidos a proveedor.
@@ -48,7 +48,7 @@ public:
 
 /// Muestra y administra la ventana con la informaci&oacute;n de los pedidos a proveedor.
 /** */
-class PedidosProveedorList : public Listado, public Ui_PedidosProveedorListBase
+class PedidosProveedorList : public BlFormList, public Ui_PedidosProveedorListBase
 {
     Q_OBJECT
 

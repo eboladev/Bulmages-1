@@ -31,8 +31,6 @@
 #include "plugins.h"
 
 
-
-
 ///
 /**
 \param comp
@@ -41,7 +39,7 @@
 \return
 **/
 ZList::ZList ( Company *comp, QWidget *parent, Qt::WFlags flag )
-        : Listado ( comp, parent, flag )
+        : BlFormList ( comp, parent, flag )
 {
     _depura ( "ZList::ZList(2)", 0 );
     setupUi ( this );

@@ -83,7 +83,7 @@ void InventariosView::presentar()
 \param parent
 **/
 InventariosView::InventariosView ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : Listado ( comp, parent, flag, editmode )
+        : BlFormList ( comp, parent, flag, editmode )
 {
     _depura ( "InventariosView::InventariosView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

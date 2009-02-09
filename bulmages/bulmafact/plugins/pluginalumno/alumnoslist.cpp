@@ -37,7 +37,7 @@
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
 AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "AlumnosList::AlumnosList", 0 );
     setupUi ( this );
@@ -58,7 +58,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Mete la ventana en el workSpace.
 */
 AlumnosList::AlumnosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "AlumnosList::AlumnosList", 0 );
     setupUi ( this );

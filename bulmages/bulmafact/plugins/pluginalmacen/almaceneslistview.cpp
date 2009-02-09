@@ -39,7 +39,7 @@
 \return
 **/
 AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
-        : Listado ( NULL, parent, flag )
+        : BlFormList ( NULL, parent, flag )
 {
     _depura ( "AlmacenesListView::AlmacenesListView(1)", 0 );
     setupUi ( this );
@@ -73,7 +73,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
 \return
 **/
 AlmacenesListView::AlmacenesListView ( Company *comp, QWidget *parent, Qt::WFlags flag )
-        : Listado ( comp, parent, flag )
+        : BlFormList ( comp, parent, flag )
 {
     _depura ( "AlmacenesListView::AlmacenesListView(2)", 0 );
     setupUi ( this );

@@ -39,7 +39,7 @@
 \return
 **/
 PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "PresupuestoList::PresupuestoList(1)", 0 );
     setupUi ( this );
@@ -69,7 +69,7 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
 \return
 **/
 PresupuestoList::PresupuestoList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PresupuestoList::PresupuestoList(2)", 0 );
     setupUi ( this );

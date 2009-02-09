@@ -150,7 +150,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "presupuesto", "SELECT" ) ) {
-	PresupuestoList *presupuestosList = new PresupuestoList( (Company *)prov->empresaBase(), NULL, 0, Listado::SelectMode );
+	PresupuestoList *presupuestosList = new PresupuestoList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	presupuestosList->setModoEdicion();
 	presupuestosList->setObjectName("listpresupuestos");
 	presupuestosList->hideBusqueda();

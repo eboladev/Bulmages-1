@@ -39,7 +39,7 @@
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
 ClientsList::ClientsList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : Listado ( comp, parent, flag, editmode ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmode ), pgimportfiles ( comp )
 {
     _depura ( "ClientsList::ClientsList", 0 );
     setupUi ( this );

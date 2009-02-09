@@ -52,7 +52,7 @@
 \return
 **/
 ArticuloList::ArticuloList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
 {
     _depura ( "ArticuloList::ArticuloList", 0 );
     setupUi ( this );

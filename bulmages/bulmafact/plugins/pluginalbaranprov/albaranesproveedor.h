@@ -28,7 +28,7 @@
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "listado.h"
+#include "blformlist.h"
 
 
 /// Clase que maneja el subformulario de los albaranes de proveedor.
@@ -53,8 +53,7 @@ public slots:
 
 
 /// Clase que controla la pantalla de listado de albaranes a proveedor.
-/// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
-class AlbaranesProveedor : public Listado, public Ui_AlbaranesProveedorListBase
+class AlbaranesProveedor : public BlFormList, public Ui_AlbaranesProveedorListBase
 {
     Q_OBJECT
 

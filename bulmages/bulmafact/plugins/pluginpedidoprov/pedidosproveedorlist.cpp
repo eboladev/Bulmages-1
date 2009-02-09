@@ -37,7 +37,7 @@
 \param flag
 **/
 PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( NULL, parent, flag, editmodo )
+        : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
@@ -61,7 +61,7 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
 \param flag
 **/
 PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : Listado ( comp, parent, flag, editmodo )
+        : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
