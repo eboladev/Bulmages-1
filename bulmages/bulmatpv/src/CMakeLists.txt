@@ -65,11 +65,11 @@ ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmatpv\", String)'" )
 ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmatpv\", String)'" )
 
 if(USE_GETTEXT)
-   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
-                        ${plugin_SRCS} ${plugin_MOCS})
-   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
-                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
+   set(bulmatpv_i18n ${bulmatpvEx} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
+	        ${bulmatpv_SRC} ${bulmatpv_MOCS})
+   GETTEXT_CREATE_TEMPLATE(bulmatpv ${CMAKE_CURRENT_BINARY_DIR}
+                                ${CMAKE_CURRENT_SOURCE_DIR} bulmatpv_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmatpv.pot
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
