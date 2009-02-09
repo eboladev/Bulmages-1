@@ -1,17 +1,18 @@
-#, fuzzy
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
 msgid ""
 msgstr ""
 "#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: bulmages_suite_ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-07 17:09+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-02-09 22:48+0100\n"
+"Last-Translator: Leopold Palomo Avellaneda <leo@alaxarxa.net>\n"
+"Language-Team:  <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Generator: KBabel 1.11.4\n"
 "#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
@@ -20,7 +21,6 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -31,7 +31,6 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
@@ -2196,7 +2195,7 @@ msgstr ""
 "Em sap greu, no trobo el formulari original en pdf.\n"
 "Provi a descarregar-lo des de www.aeat.es i guardi'l en\n"
 "/usr/share/bulmages/formularios o a\n"
-"~/.bulmages/formularios/.\n"
+"~/.bulmages/formularios/."
 
 #: QObject#7
 msgid "Se han espaciado los asientos"
@@ -2440,7 +2439,7 @@ msgid ""
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
 "Es va a esborrar el centre de cost.\n"
-"Això pot ocasionar pèrdua de dades.\n"
+"Això pot ocasionar pèrdua de dades."
 
 #: extractoview1#2
 msgid "Punteos (*.pto)"
@@ -2620,7 +2619,7 @@ msgid ""
 "Esto puede ocasionar perdida de datos."
 msgstr ""
 "Es va a esborrar el tipus d'IVA.\n"
-"Això pot ocasionar pèrdua de dades.\n"
+"Això pot ocasionar pèrdua de dades."
 
 #: BConfiguracion#1
 msgid "Atencion"
@@ -2632,7 +2631,7 @@ msgid ""
 " Desea continuar?\n"
 msgstr ""
 "Esborrar una empresa pot suposar la pèrdua de dades \n"
-"Desitja continuar? "
+"Desitja continuar? \n"
 
 #: BConfiguracion#3
 msgid ""
@@ -2663,7 +2662,7 @@ msgstr "Llegir empresa"
 
 #: BNuevaEmpresa#1
 msgid "No puede dejar campos en blanco para crear una nueva empresa.\n"
-msgstr "No es pot deixar camps buits per a crear una nova empresa"
+msgstr "No es pot deixar camps buits per a crear una nova empresa.\n"
 
 #: BNuevaEmpresa#2
 msgid "Datos incompletos"
@@ -3560,27 +3559,24 @@ msgid "Tratando familia"
 msgstr "<HR><B>Tractant família"
 
 #: pgimportfiles.cpp:1971
-#, fuzzy
 msgid "Tratando la forma de pago"
-msgstr "<HR><B>Tractant la forma de pagament"
+msgstr "Tractant la forma de pagament"
 
 #: pgimportfiles.cpp:2272
-#, fuzzy
 msgid "Tratando pedido cliente"
-msgstr "<HR><B>Tractant  Comana Client"
+msgstr "Tractant la comana del client"
 
 #: pgimportfiles.cpp:2963
-#, fuzzy
 msgid "Tratando presupuesto"
-msgstr "<HR><B>Tractant el pressupost"
+msgstr "Tractant el pressupost"
 
 #: ui_fichacfgbase.h:289
 msgid "User Preferences"
-msgstr ""
+msgstr "Arranjament d'usuari"
 
 #: ui_fichacfgbase.h:287
 msgid "Usuario Actual"
-msgstr ""
+msgstr "Usuari actual "
 
 #: subform3.cpp:2339
 msgid "Ver/Ocultar configurador de subformulario"
@@ -3591,121 +3587,30 @@ msgid "Visible"
 msgstr "Visible"
 
 #: pgimportfiles.cpp:2097
-#, fuzzy
 msgid "Ya existe esta familia."
-msgstr "<P> Ja existeix aquesta família.</P>"
+msgstr "Ja existeix aquesta família."
 
 #: pgimportfiles.cpp:1988
-#, fuzzy
 msgid "Ya existe esta forma de pago."
-msgstr "<LI> Ja existeix la forma de pagament."
+msgstr "Ja existeix la forma de pagament. "
 
 #: pgimportfiles.cpp:2036
-#, fuzzy
 msgid "Ya existe este almacen."
-msgstr "<LI> Ja existeix el magatzem."
+msgstr "Ja existeix el magatzem."
 
 #: pgimportfiles.cpp:2186
-#, fuzzy
 msgid "Ya existe este articulo."
-msgstr "<P> Aquest article ja existeix.</P>"
+msgstr "Aquest article ja existeix."
 
 #: paisview.cpp:70
 msgid "idpais"
-msgstr ""
+msgstr "idpais"
 
 #: pgimportfiles.cpp:2106
-#, fuzzy
 msgid "insertada"
-msgstr "</B> Inserida"
+msgstr "inserida"
 
 #: pgimportfiles.cpp:2045 pgimportfiles.cpp:2208
-#, fuzzy
 msgid "insertado"
-msgstr "</B> Inserit"
+msgstr "inserit"
 
-#~ msgid "</B> Insertado</P>"
-#~ msgstr "</B> Inserit</P>"
-
-#~ msgid "April"
-#~ msgstr "Abril"
-
-#~ msgid "August"
-#~ msgstr "Agost"
-
-#~ msgid "December"
-#~ msgstr "Desembre"
-
-#~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
-#~ msgstr "El magatzem del pressupost no existeix<BR>"
-
-#, fuzzy
-#~ msgid "El clienten del presupuesto no existe<BR>\n"
-#~ msgstr "El client del pressupost no existeix<BR>"
-
-#~ msgid "El clienteÅ del presupuesto no existe<BR>\n"
-#~ msgstr "El client del pressupost no existeix<BR>"
-
-#~ msgid "February"
-#~ msgstr "Febrer"
-
-#~ msgid "Friday"
-#~ msgstr "Divendres"
-
-#~ msgid "Go to Today"
-#~ msgstr "Anar a avui"
-
-#~ msgid "January"
-#~ msgstr "Gener"
-
-#~ msgid "July"
-#~ msgstr "juliol"
-
-#~ msgid "June"
-#~ msgstr "Juny"
-
-#, fuzzy
-#~ msgid "La forma de pagon del presupuesto no existe<BR>\n"
-#~ msgstr "La forma de pagament del pressupost no existeix<BR>"
-
-#~ msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
-#~ msgstr "La forma de pagament del pressupost no existeix<BR>"
-
-#~ msgid "March"
-#~ msgstr "Març"
-
-#~ msgid "May"
-#~ msgstr "Maig"
-
-#~ msgid "Monday"
-#~ msgstr "Dilluns"
-
-#~ msgid "November"
-#~ msgstr "Novembre"
-
-#~ msgid "October"
-#~ msgstr "Octubre"
-
-#~ msgid "SEPTEMBER"
-#~ msgstr "SETEMBRE"
-
-#~ msgid "Saturday"
-#~ msgstr "Dissabte"
-
-#~ msgid "September"
-#~ msgstr "Setembre"
-
-#~ msgid "Sunday"
-#~ msgstr "Diumenge"
-
-#~ msgid "Thursday"
-#~ msgstr "Dijous"
-
-#~ msgid "Tuesday"
-#~ msgstr "Dimarts"
-
-#~ msgid "Wednesday"
-#~ msgstr "Dimecres"
-
-#~ msgid "listventanas::meteWindow ventana duplicada"
-#~ msgstr "listventanas::meteWindow finestra duplicada"
