@@ -183,7 +183,7 @@ QString Empresa::nombreempresa()
 \param splash
 \return
 **/
-int Empresa::createMainWindows ( Splash *splash )
+int Empresa::createMainWindows ( BlSplashScreen *splash )
 {
     _depura ( "Empresa::createMainWindows", 0 );
     try {

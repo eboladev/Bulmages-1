@@ -30,7 +30,7 @@
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "empresabase.h"
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 
 
 class orderslist;
@@ -63,7 +63,7 @@ public:
     void *newClienteView();
     void *newProveedorView();
     void *newArticuloView();
-    void createMainWindows ( Splash * );
+    void createMainWindows ( BlSplashScreen * );
     void refreshArticles();
     void refreshClientes();
     void refreshProveedores();

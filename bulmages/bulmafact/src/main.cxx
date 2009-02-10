@@ -29,7 +29,7 @@
 #include "configuracion.h"
 #include "plugins.h"
 #include "bulmafact.h"
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 #include "logpass.h"
 #include "funcaux.h"
 #include "blfixed.h"
@@ -113,8 +113,8 @@ int main ( int argc, char **argv )
         } // end if
         theApp->installTranslator ( traductor );
 
-        /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMAFACT ), "BulmaFact", CONFIG_VERSION );
+        /// Cargamos el BlSplashScreen.
+        BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMAFACT ), "BulmaFact", CONFIG_VERSION );
         splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 

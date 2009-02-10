@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _SPLASH_H
-#define _SPLASH_H
+#ifndef BLSPLASHSCREEN_H
+#define BLSPLASHSCREEN_H
 
 #include <QDialog>
 #include <QPixmap>
@@ -40,7 +40,7 @@
 
 /// Muestra y administra la ventana de bienvenida al programa.
 /** */
-class Splash : public QDialog
+class BlSplashScreen : public QDialog
 {
     Q_OBJECT
 
@@ -50,8 +50,8 @@ private:
     QPixmap *image0;
 
 public:
-    Splash ( QString appSplash, QString appName, QString appVersion );
-    ~Splash();
+    BlSplashScreen ( QString appSplash, QString appName, QString appVersion );
+    ~BlSplashScreen();
     void mensaje ( QString );
     void setBarraProgreso ( int );
 

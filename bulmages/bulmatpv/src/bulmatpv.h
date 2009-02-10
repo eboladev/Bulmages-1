@@ -29,7 +29,7 @@
 #include "empresatpv.h"
 #include "listventanas.h"
 #include "funcaux.h"
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 #include "blmainwindow.h"
 
 
@@ -54,7 +54,7 @@ public:
     BulmaTPV ( QString bd );
     ~BulmaTPV();
     BlWorkspace *workspace();
-    void createMainWindows ( Splash * );
+    void createMainWindows ( BlSplashScreen * );
     EmpresaTPV *empresaTPV();
     virtual void keyReleaseEvent ( QKeyEvent *e );
 

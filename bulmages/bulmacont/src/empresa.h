@@ -35,7 +35,7 @@
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "empresabase.h"
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 
 
 class SelectCCosteView;
@@ -101,7 +101,7 @@ public:
     int libromayor();
     int librodiario();
     int listado347();
-    int createMainWindows ( Splash * );
+    int createMainWindows ( BlSplashScreen * );
     int boton_siguiente();
     int boton_anterior();
     int boton_primero();

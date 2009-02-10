@@ -32,7 +32,6 @@
 #include "listventanas.h"
 
 
-
 /** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
     Su funcionalidad es servir de base como aplicacion Qt y inicializar los componentes clave.
     Tambien sirve de soporte al dise&ntilde;o especificado en bulmafactbase.ui con sus menus
@@ -57,7 +56,7 @@ public:
     ~Bulmafact();
     BlWorkspace *workspace();
     Company *getcompany();
-    void createMainWindows ( Splash * );
+    void createMainWindows ( BlSplashScreen * );
     QProgressBar *m_pb;
 
 public slots:

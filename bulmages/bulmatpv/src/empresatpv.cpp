@@ -69,7 +69,7 @@ EmpresaTPV::~EmpresaTPV()
 \param splash
 \return
 **/
-void EmpresaTPV::createMainWindows ( Splash *splash )
+void EmpresaTPV::createMainWindows ( BlSplashScreen *splash )
 {
     _depura ( "EmpresaTPV::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.

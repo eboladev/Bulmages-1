@@ -30,7 +30,7 @@
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "empresabase.h"
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 #include "ticket.h"
 #include "input.h"
 
@@ -52,7 +52,7 @@ private:
 public:
     EmpresaTPV ( BulmaTPV *bges );
     virtual ~EmpresaTPV();
-    void createMainWindows ( Splash * );
+    void createMainWindows ( BlSplashScreen * );
     void guardaConf();
     void cargaConf();
     Ticket *newTicket();

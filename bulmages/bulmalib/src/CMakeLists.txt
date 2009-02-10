@@ -56,7 +56,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          blformlist.cpp
          porcentajecarga.cpp
          busquedafecha2.cpp
-         splashscreen.cpp
+         blsplashscreen.cpp
          fichacfg.cpp
          paisview.cpp
          blradiobutton.cpp
@@ -88,7 +88,7 @@ set(bulmalib_MOCS
          blformlist.h 
          porcentajecarga.h 
          busquedafecha2.h 
-         splashscreen.h 
+         blsplashscreen.h 
          fichacfg.h 
          paisview.h 
          blradiobutton.h

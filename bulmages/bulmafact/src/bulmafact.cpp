@@ -103,7 +103,7 @@ Bulmafact::Bulmafact ( QString bd ) : BlMainWindow()
 /**
 \param splashScr
 **/
-void Bulmafact::createMainWindows ( Splash *splashScr )
+void Bulmafact::createMainWindows ( BlSplashScreen *splashScr )
 {
     _depura ( "Bulmafact::createMainWindows", 0 );
     m_company->createMainWindows ( splashScr );

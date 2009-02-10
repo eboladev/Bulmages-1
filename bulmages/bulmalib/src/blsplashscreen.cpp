@@ -20,7 +20,7 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 #include "configuracion.h"
 #include "funcaux.h"
 
@@ -31,13 +31,13 @@
 \param appName
 \param appVersion
 **/
-Splash::Splash ( QString appSplash, QString appName, QString appVersion ) : QDialog ( 0, Qt::FramelessWindowHint )
+BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString appVersion ) : QDialog ( 0, Qt::FramelessWindowHint )
 {
-    _depura ( "Splash::Splash", 0 );
+    _depura ( "BlSplashScreen::BlSplashScreen", 0 );
 
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {
-        QString mensaje = "Splash: No existe el archivo " + appSplash + "\n";
+        QString mensaje = "BlSplashScreen: No existe el archivo " + appSplash + "\n";
         fprintf ( stderr, mensaje.toAscii() );
         image0 = new QPixmap ( 350, 263 );
         image0->fill ( QColor ( QColor ( 150, 150, 200 ) ) );
@@ -85,21 +85,21 @@ Splash::Splash ( QString appSplash, QString appName, QString appVersion ) : QDia
     colorfondobarra.setAlpha ( 100 );
     pbarra.setBrush ( QPalette::Base, colorfondobarra );
     barra->setPalette ( pbarra );
-    _depura ( "END Splash::Splash", 0 );
+    _depura ( "END BlSplashScreen::BlSplashScreen", 0 );
 }
 
 
 ///
 /**
 **/
-Splash::~Splash()
+BlSplashScreen::~BlSplashScreen()
 {
-    _depura ( "Splash::~Splash", 0 );
+    _depura ( "BlSplashScreen::~BlSplashScreen", 0 );
     delete l0;
     delete m_label;
     delete m_label1;
     delete image0;
-    _depura ( "END Splash::~Splash", 0 );
+    _depura ( "END BlSplashScreen::~BlSplashScreen", 0 );
 }
 
 
@@ -107,9 +107,9 @@ Splash::~Splash()
 /**
 \param mens
 **/
-void Splash::mensaje ( QString mens )
+void BlSplashScreen::mensaje ( QString mens )
 {
-    _depura ( "Splash::mensaje", 0, mens );
+    _depura ( "BlSplashScreen::mensaje", 0, mens );
     static int a = 0;
     static QString cadant = "";
     QString cad = "";
@@ -124,7 +124,7 @@ void Splash::mensaje ( QString mens )
     m_label->repaint();
     repaint();
     cadant = cad;
-    _depura ( "END Splash::mensaje", 0 );
+    _depura ( "END BlSplashScreen::mensaje", 0 );
 }
 
 
@@ -132,25 +132,25 @@ void Splash::mensaje ( QString mens )
 /**
 \param progreso
 **/
-void Splash::setBarraProgreso ( int progreso )
+void BlSplashScreen::setBarraProgreso ( int progreso )
 {
-    _depura ( "Splash::setBarraProgreso", 0 );
+    _depura ( "BlSplashScreen::setBarraProgreso", 0 );
     barra->setValue ( progreso );
-    _depura ( "END Splash::setBarraProgreso", 0 );
+    _depura ( "END BlSplashScreen::setBarraProgreso", 0 );
 }
 
 
 ///
 /**
 **/
-void Splash::barraprogreso()
+void BlSplashScreen::barraprogreso()
 {
-    _depura ( "Splash::barraprogreso", 0 );
+    _depura ( "BlSplashScreen::barraprogreso", 0 );
     if ( barra->value() < 10 ) {
         barra->setValue ( barra->value() + 1 );
     } else {
         barra->setValue ( 0 );
     } // end if
-    _depura ( "END Splash::barraprogreso", 0 );
+    _depura ( "END BlSplashScreen::barraprogreso", 0 );
 }
 

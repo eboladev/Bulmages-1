@@ -36,7 +36,7 @@
 
 
 #include "bulmacont.h"
-#include "splashscreen.h"
+#include "blsplashscreen.h"
 #include "configuracion.h"
 #include "qtextcodec.h"
 #include "logpass.h"
@@ -64,7 +64,7 @@ QTranslator *traductor;
 
 /// Los datos de ejecuci&oacute;n del programa son sencillos.
 /** La ejecuci&oacute;n primero crea e inicializa los objetos configuraci&oacute;n,
-    idioma, splash, etc.
+    idioma, blsplashscreen, etc.
     Luego intenta entrar en el sistema de base de datos.
     Y por &uacute;ltimo crea el objeto del tipo \ref Bulmacont que es la aplicaci&oacute;n
     de ventanas. */
@@ -136,8 +136,8 @@ int main ( int argc, char **argv )
 	} // end if
         theApp->installTranslator ( traductor );
 
-        /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", CONFIG_VERSION );
+        /// Cargamos el BlSplashScreen.
+        BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", CONFIG_VERSION );
         splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 

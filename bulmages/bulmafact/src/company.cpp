@@ -80,7 +80,7 @@ Company::~Company()
 \param splash
 \return
 **/
-void Company::createMainWindows ( Splash *splash )
+void Company::createMainWindows ( BlSplashScreen *splash )
 {
     _depura ( "Company::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.

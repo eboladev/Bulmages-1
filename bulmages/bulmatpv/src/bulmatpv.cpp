@@ -104,7 +104,7 @@ BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
 /**
 \param splashScr
 **/
-void BulmaTPV::createMainWindows ( Splash *splashScr )
+void BulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
 {
     _depura ( "BulmaTPV::createMainWindows", 0 );
     m_empresaTPV->createMainWindows ( splashScr );
