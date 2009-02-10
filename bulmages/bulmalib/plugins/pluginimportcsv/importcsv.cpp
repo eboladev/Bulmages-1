@@ -28,7 +28,7 @@
 #include <fstream>
 #include "empresabase.h"
 #include "importcsv.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 #include "funcaux.h"
 

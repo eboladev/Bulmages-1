@@ -52,7 +52,7 @@
 #include <QEvent>
 #include <QMenu>
 
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "asiento1view.h"
 #include "listlinprevcobroview.h"
 

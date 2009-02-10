@@ -26,7 +26,7 @@
 
 #include "proyectoview.h"
 #include "empresa.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "plugins.h"
 #include "funcaux.h"
 

@@ -36,7 +36,7 @@
 #include "ui_bulmacontbase.h"
 #include "empresa.h"
 #include "bbloqfecha.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "blmainwindow.h"

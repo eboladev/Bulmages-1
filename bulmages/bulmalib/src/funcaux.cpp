@@ -32,7 +32,7 @@
 #include <QTime>
 
 #include "funcaux.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.

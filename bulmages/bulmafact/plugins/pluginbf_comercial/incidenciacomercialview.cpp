@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <fstream>
+
 #include <QMessageBox>
 #include <QWidget>
 #include <QObject>
@@ -30,12 +32,10 @@
 
 #include "incidenciacomercialview.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "busquedafecha.h"
-
-#include <fstream>
-
 #include "funcaux.h"
+
 #define coma "'"
 
 

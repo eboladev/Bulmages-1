@@ -25,7 +25,7 @@
 #include <QTextStream>
 #include <QMenu>
 
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "tutoreslist.h"
 #include "company.h"
 #include "tutorview.h"

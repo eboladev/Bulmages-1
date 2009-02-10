@@ -28,7 +28,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "plugins.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "almacenview.h"
 
 

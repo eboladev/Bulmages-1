@@ -35,7 +35,7 @@
 #endif
 
 #include "config.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "funcaux.h"
 
 
@@ -44,7 +44,7 @@
 
 /// El objeto global confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
-configuracion *confpr;
+BlConfiguration *confpr;
 
 /// Constructor de la clase que hace directamente la lectura de los posibles
 /// archivos que pueden tener informacion de configuracion. Como parametro
@@ -70,9 +70,9 @@ configuracion *confpr;
 /**
 \param nombreprograma
 **/
-configuracion::configuracion ( QString nombreprograma )
+BlConfiguration::BlConfiguration ( QString nombreprograma )
 {
-//    _depura("configuracion::configuracion", 0);
+//    _depura("BlConfiguration::BlConfiguration", 0);
 
     /// Definimos los directorios donde buscar primero.
 #ifdef WIN32
@@ -161,17 +161,17 @@ configuracion::configuracion ( QString nombreprograma )
     setValor ( CONF_LOGIN_USER, "" );
     setValor ( CONF_PASSWORD_USER, "" );
 
-//    _depura("END configuracion::configuracion", 0);
+//    _depura("END BlConfiguration::BlConfiguration", 0);
 }
 
 
 /// El destructor de la clase no hace nada porque no hay que liberar memoria.
 /**
 **/
-configuracion::~configuracion()
+BlConfiguration::~BlConfiguration()
 {
-//    _depura("configuracion::~configuracion", 0);
-//    _depura("END configuracion::~configuracion", 0);
+//    _depura("BlConfiguration::~BlConfiguration", 0);
+//    _depura("END BlConfiguration::~BlConfiguration", 0);
 }
 
 
@@ -183,9 +183,9 @@ configuracion::~configuracion()
 \param i
 \return
 **/
-QString configuracion::nombre ( int i )
+QString BlConfiguration::nombre ( int i )
 {
-//    _depura("configuracion::nombre", 0);
+//    _depura("BlConfiguration::nombre", 0);
     if ( i == CONF_BG_APUNTES )
         return "CONF_BG_APUNTES";
     if ( i == CONF_FG_APUNTES )
@@ -385,7 +385,7 @@ QString configuracion::nombre ( int i )
     if ( i == CONF_BACKGROUND_IMAGE )
         return "CONF_BACKGROUND_IMAGE";
     return "";
-//    _depura("END configuracion::nombre", 0);
+//    _depura("END BlConfiguration::nombre", 0);
 }
 
 
@@ -394,9 +394,9 @@ QString configuracion::nombre ( int i )
 /// 'home' del usuario.
 /**
 **/
-void configuracion::saveconfig()
+void BlConfiguration::saveconfig()
 {
-//    _depura("configuracion::saveconfig", 0);
+//    _depura("BlConfiguration::saveconfig", 0);
     QString dir1 = getenv ( "HOME" );
     dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
 
@@ -414,7 +414,7 @@ void configuracion::saveconfig()
         } // end if
     } // end for
     file.close();
-//    _depura("END configuracion::saveconfig", 0);
+//    _depura("END BlConfiguration::saveconfig", 0);
 }
 
 
@@ -425,9 +425,9 @@ void configuracion::saveconfig()
 \param fich
 \return
 **/
-bool configuracion::leeconfig ( QString fich )
+bool BlConfiguration::leeconfig ( QString fich )
 {
-//    _depura("configuracion::leeconfig", 0);
+//    _depura("BlConfiguration::leeconfig", 0);
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
 	QString cadaux1 = "Leyendo configuracion" + fich + "\n";
@@ -457,7 +457,7 @@ bool configuracion::leeconfig ( QString fich )
         fprintf ( stderr, "FIN Leyendo configuracion\n" );
         return TRUE;
     } // end if
-//    _depura("END configuracion::leeconfig", 0);
+//    _depura("END BlConfiguration::leeconfig", 0);
     return FALSE;
 }
 
@@ -467,14 +467,14 @@ bool configuracion::leeconfig ( QString fich )
 \param i Par&aacute;metro del que se quiere el valor.
 \return El valor que tiene dicho par&aacute;metro.
 **/
-QString configuracion::valor ( int i )
+QString BlConfiguration::valor ( int i )
 {
-//    _depura("configuracion::valor", 0);
+//    _depura("BlConfiguration::valor", 0);
     if ( m_valores.contains ( i ) ) {
         return ( m_valores[i] );
     } // end if
     return "";
-//    _depura("END configuracion::valor", 0);
+//    _depura("END BlConfiguration::valor", 0);
 }
 
 
@@ -483,10 +483,10 @@ QString configuracion::valor ( int i )
 \param i El &iacute;ndice del par&aacute;metro a cambiar.
 \param valor El valor que tomar&iacute;a dicho par&aacute;metro.
 **/
-void configuracion::setValor ( int i, QString valor )
+void BlConfiguration::setValor ( int i, QString valor )
 {
-//    _depura("configuracion::setValor", 0);
+//    _depura("BlConfiguration::setValor", 0);
     m_valores[i] = valor;
-//    _depura("END configuracion::setValor", 0);
+//    _depura("END BlConfiguration::setValor", 0);
 }
 

@@ -23,7 +23,7 @@
 #include <QTextStream>
 
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "funcaux.h"
 #include "plugins.h"
 #include "pedidoclienteview.h"

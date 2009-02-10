@@ -29,7 +29,8 @@
 #include <QObject>
 
 #include "plugindebugbc.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
+
 
 ///
 /**

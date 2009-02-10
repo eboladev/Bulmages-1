@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <stdio.h>
+
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
 
-#include <stdio.h>
-
 #include "pedidosproveedorlist.h"
 #include "funcaux.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "pedidoproveedorview.h"
 
 

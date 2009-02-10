@@ -21,7 +21,7 @@
 ***************************************************************************/
 
 #include "blsplashscreen.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "funcaux.h"
 
 

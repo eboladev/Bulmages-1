@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <fstream>
+
 #include <QMessageBox>
 #include <QCloseEvent>
 #include <QFile>
@@ -25,16 +27,14 @@
 #include <QDrag>
 #include <QMenu>
 
-#include <fstream>
-
 #include "cuadranteview.h"
 #include "cuadrante1view.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "plugins.h"
-
 #include "funcaux.h"
 #include "blprogressbar.h"
+
 
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.

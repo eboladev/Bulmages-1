@@ -34,10 +34,9 @@
 #include <unistd.h>
 #endif
 
-
 #include "bulmacont.h"
 #include "blsplashscreen.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "qtextcodec.h"
 #include "logpass.h"
 #include "plugins.h"
@@ -72,7 +71,7 @@ QTranslator *traductor;
 int main ( int argc, char **argv )
 {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
-    confpr = new configuracion ( "bulmacont" );
+    confpr = new BlConfiguration ( "bulmacont" );
     int valorsalida = 0;
     bool success = false;
     QString db = "";

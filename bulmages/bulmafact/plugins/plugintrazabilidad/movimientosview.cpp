@@ -25,12 +25,13 @@
 #include "busquedaarticulo.h"
 #include "busquedafecha.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "movimientosview.h"
 #include "funcaux.h"
 #include "plugins.h"
 #include "blform.h"
 #include "empresabase.h"
+
 
 /** Prepara todos los componentes i los inicializa a NULL para que no haya dudas sobre si
     ya han sido inicializados o no.

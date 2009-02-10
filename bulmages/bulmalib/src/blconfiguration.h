@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _CONFIGURACION1_H_
-#define _CONFIGURACION1_H_
+#ifndef BLCONFIGURATION_H
+#define BLCONFIGURATION_H
 
 #include <fstream>
 #include <iostream>
@@ -131,7 +131,7 @@
 
 /// Determina si hay refresco
 #define CONF_REFRESH_LIST            210
-#define CONF_SHOW_PROGRESS_BAR        211
+#define CONF_SHOW_PROGRESS_BAR       211
 
 /// Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp,
 /// creaemp, borraemp).
@@ -160,7 +160,7 @@
 #define CONF_PLUGINS_BULMATPV        315
 
 /// Indica cuales son los directorios de plugins
-#define CONF_DIR_PLUGINS      316
+#define CONF_DIR_PLUGINS             316
 
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages.
 #define CONF_PROGDATA                321
@@ -223,8 +223,8 @@
 #define CONF_SERIE_FACTURA_DEFECTO   526
 #define CONF_IDFORMA_PAGO_DEFECTO    527
 
-#define CONF_BACKGROUND_COLOR     528
-#define CONF_BACKGROUND_IMAGE     529
+#define CONF_BACKGROUND_COLOR        528
+#define CONF_BACKGROUND_IMAGE        529
 
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550
@@ -242,7 +242,7 @@ typedef QMap<int, QString> mapa;
 /// NOTA: tambien ha adoptado la capacidad de ser un paso de parametros configurables de
 /// la aplicacion. Esto se traduce en que algunos parametros se pueden modificar en tiempo
 /// de ejecucion.
-class configuracion
+class BlConfiguration
 {
 private:
     /// La forma de almacenar los campos va a ser mediante un mapa de valores.
@@ -257,8 +257,8 @@ private:
     QString m_programLocalConfFile;
 
 public:
-    configuracion ( QString nombreprograma );
-    ~configuracion();
+    BlConfiguration ( QString nombreprograma );
+    ~BlConfiguration();
     QString valor ( int );
     void setValor ( int, QString );
     bool leeconfig ( QString );
@@ -270,11 +270,9 @@ public:
 /// ATENCION.- Este es un objeto global, y va a existir durante toda la aplicacion asi que
 /// Se va a llamar muy a menudo a este objeto en los demas archivos.
 /// Existe una instancia del objeto global confpr.
-extern configuracion *confpr;
+extern BlConfiguration *confpr;
 /// Existe una instancia del objeto global theApp.
 extern BlApplication *theApp;
-/// Existe una instancia del objeto global traductor.
-//extern QTranslator *traductor;
 
 #endif
 

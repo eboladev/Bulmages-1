@@ -9,7 +9,7 @@
 #include <QPushButton>
 
 #include "funcaux.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "bldockwidget.h"
 
 

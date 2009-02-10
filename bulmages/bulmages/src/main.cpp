@@ -24,7 +24,7 @@
 
 #include "bselector.h"
 #include "blapplication.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "logpass.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
@@ -47,7 +47,7 @@ QTranslator *traductor;
 **/
 int main ( int argc, char **argv )
 {
-    confpr = new configuracion ( "bulmages" );
+    confpr = new BlConfiguration ( "bulmages" );
     BlApplication a ( argc, argv );
     Q_INIT_RESOURCE ( bulmages );
     theApp = &a;

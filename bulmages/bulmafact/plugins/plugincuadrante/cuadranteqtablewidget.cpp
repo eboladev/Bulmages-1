@@ -25,11 +25,12 @@
 #include <QMenu>
 
 #include "cuadranteqtablewidget.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "funcaux.h"
 #include "company.h"
 #include "cuadrante1view.h"
 #include "cuadranteview.h"
+
 
 /** Constructor de CuadranteQTableWidget clase derivada de QTableWidget con
 un eventHandler especifico

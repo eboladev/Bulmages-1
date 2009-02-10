@@ -28,7 +28,7 @@
 #include "rutacomercialincview.h"
 #include "company.h"
 #include "funcaux.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 
 ///

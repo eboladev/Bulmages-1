@@ -27,7 +27,7 @@
 #include <QProgressBar>
 
 #include "bulmacont.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "sobreview.h"
 
 

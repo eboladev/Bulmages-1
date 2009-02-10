@@ -25,7 +25,7 @@
 #include <QDir>
 
 #include "blapplication.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "plugins.h"
 #include "bulmatpv.h"
 #include "blsplashscreen.h"
@@ -55,7 +55,7 @@ int main ( int argc, char **argv )
         Q_INIT_RESOURCE ( bulmages );
 
         /// Leemos la configuracion que luego podremos usar siempre.
-        confpr = new configuracion ( "bulmatpv" );
+        confpr = new BlConfiguration ( "bulmatpv" );
         /// Preparamos el sistema de plugins.
         g_plugins = new Plugins();
         /// Iniciamos la clase QApplication para el uso de las Qt.

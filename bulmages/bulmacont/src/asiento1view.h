@@ -26,7 +26,7 @@
 #include <QString>
 #include <QFrame>
 
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "asiento1.h"
 #include "ui_asientobase.h"

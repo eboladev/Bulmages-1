@@ -25,7 +25,7 @@
 #include <QTextStream>
 #include <QMenu>
 
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "actividadeslist.h"
 #include "company.h"
 #include "actividadview.h"

@@ -30,77 +30,79 @@ set(QT_USE_QTUITOOLS true)
 
 INCLUDE(${QT_USE_FILE})
 
-set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp 
-         funcaux.cpp logpass.cpp
-         abreempresaview.cpp
-         dialogchanges.cpp
-         blfixed.cpp
-         msgerror.cpp
-         busquedafecha.cpp
-         qtable2.cpp 
-	 bldockwidget.cpp
-         pgimportfiles.cpp
-         plugins.cpp
-         busquedaperiodo.cpp
-         dbrecord.cpp
-         subform.cpp
-         subform3.cpp
-         listventanas.cpp
-         blworkspace.cpp
-         blapplication.cpp
-         blform.cpp
-         empresabase.cpp
-         qtexteditdelegate.cpp
-         bldoublespinbox.cpp
-         blwidget.cpp
-         blformlist.cpp
-         porcentajecarga.cpp
-         busquedafecha2.cpp
-         blsplashscreen.cpp
-         fichacfg.cpp
-         paisview.cpp
-         blradiobutton.cpp
-         blcombobox.cpp
-         blprogressbar.cpp
-	 blmainwindow.cpp
-	 blbancoedit.cpp
-	 blmonthcalendar.cpp
-	 busqueda.cpp
-	 bli18n.cpp)
+set(bulmalib_SRCS	postgresiface2.cpp
+			blconfiguration.cpp
+			numerocuenta.cpp 
+			funcaux.cpp
+			logpass.cpp
+			abreempresaview.cpp
+			dialogchanges.cpp
+			blfixed.cpp
+			msgerror.cpp
+			busquedafecha.cpp
+			qtable2.cpp 
+			bldockwidget.cpp
+			pgimportfiles.cpp
+			plugins.cpp
+			busquedaperiodo.cpp
+			dbrecord.cpp
+			subform.cpp
+			subform3.cpp
+			listventanas.cpp
+			blworkspace.cpp
+			blapplication.cpp
+			blform.cpp
+			empresabase.cpp
+			qtexteditdelegate.cpp
+			bldoublespinbox.cpp
+			blwidget.cpp
+			blformlist.cpp
+			porcentajecarga.cpp
+			busquedafecha2.cpp
+			blsplashscreen.cpp
+			fichacfg.cpp
+			paisview.cpp
+			blradiobutton.cpp
+			blcombobox.cpp
+			blprogressbar.cpp
+			blmainwindow.cpp
+			blbancoedit.cpp
+			blmonthcalendar.cpp
+			busqueda.cpp
+			bli18n.cpp)
 
-set(bulmalib_MOCS 
-         logpass.h 
-         abreempresaview.h 
-         msgerror.h 
-         busquedafecha.h 
-         qtable2.h 
-         busquedaperiodo.h 
-         bldockwidget.h 
-         subform3.h 
-         listventanas.h 
-         blworkspace.h 
-         blapplication.h 
-         blform.h 
-         qtexteditdelegate.h 
-         bldoublespinbox.h 
-         blwidget.h 
-	 blmainwindow.h
-         blformlist.h 
-         porcentajecarga.h 
-         busquedafecha2.h 
-         blsplashscreen.h 
-         fichacfg.h 
-         paisview.h 
-         blradiobutton.h
-         blcombobox.h
-	 blbancoedit.h
-	 blmonthcalendar.h
-	 busqueda.h)
+set(bulmalib_MOCS	logpass.h 
+			abreempresaview.h 
+			msgerror.h 
+			busquedafecha.h 
+			qtable2.h 
+			busquedaperiodo.h 
+			bldockwidget.h 
+			subform3.h 
+			listventanas.h 
+			blworkspace.h 
+			blapplication.h 
+			blform.h 
+			qtexteditdelegate.h 
+			bldoublespinbox.h 
+			blwidget.h 
+			blmainwindow.h
+			blformlist.h 
+			porcentajecarga.h 
+			busquedafecha2.h 
+			blsplashscreen.h 
+			fichacfg.h 
+			paisview.h 
+			blradiobutton.h
+			blcombobox.h
+			blbancoedit.h
+			blmonthcalendar.h
+			busqueda.h)
 
-set (bulmalib_HDRS abreempresaview.h
+set (bulmalib_HDRS	abreempresaview.h
 			busquedafecha.h
 			busquedaperiodo.h
-			configuracion.h
+			blconfiguration.h
 			dbrecord.h
 			dialogchanges.h
 			empresabase.h
@@ -124,7 +126,7 @@ set (bulmalib_HDRS abreempresaview.h
 			blbancoedit.h)
 #headers that are not moc'ed
 #			postgresiface2.h 
-#			configuracion.h 
+#			blconfiguration.h 
 #			numerocuenta.h 
 #			funcaux.h 
 #			dialogchanges.h 
@@ -138,17 +140,17 @@ set (bulmalib_HDRS abreempresaview.h
 
 
 set(bulmalib_RCCS ../../bulmages.qrc)
-set(bulmalib_UIS logpassbase.ui 
-      abreempresabase.ui 
-      msgerrorbase.ui 
-      busquedafechabase.ui 
-      subform3base.ui 
-      porcentajecargabase.ui 
-      fichacfgbase.ui 
-      paisbase.ui
-      blprogressbarbase.ui
-      busquedabase.ui
-      blbancoeditbase.ui)
+set(bulmalib_UIS	logpassbase.ui 
+			abreempresabase.ui 
+			msgerrorbase.ui 
+			busquedafechabase.ui 
+			subform3base.ui 
+			porcentajecargabase.ui 
+			fichacfgbase.ui 
+			paisbase.ui
+			blprogressbarbase.ui
+			busquedabase.ui
+			blbancoeditbase.ui)
 
 include_directories(
       ${QT_INCLUDE_DIR}

@@ -28,7 +28,7 @@
 #include "diarioview.h"
 #include "extractoview1.h"
 #include "postgresiface2.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "listcuentasview1.h"
 #include "fichabc.h"
 

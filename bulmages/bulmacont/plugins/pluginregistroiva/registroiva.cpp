@@ -23,10 +23,11 @@
 
 #include "registroiva.h"
 #include "empresa.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "blfixed.h"
 #include "funcaux.h"
 #include "plugins.h"
+
 
 typedef QMap<QString, BlFixed> base;
 

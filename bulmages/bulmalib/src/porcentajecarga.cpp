@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 #include "porcentajecarga.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
+
 
 ///
 /**

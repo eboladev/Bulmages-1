@@ -27,7 +27,7 @@
 
 #include "zview.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "plugins.h"
 #include "albaranclienteview.h"
 #include "funcaux.h"

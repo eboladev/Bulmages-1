@@ -30,7 +30,7 @@
 #include "pagoview.h"
 #include "qtable2.h"
 #include "funcaux.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 
 ///

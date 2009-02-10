@@ -27,7 +27,7 @@
 #include "albaranesproveedor.h"
 #include "albaranproveedorview.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "funcaux.h"
 
 

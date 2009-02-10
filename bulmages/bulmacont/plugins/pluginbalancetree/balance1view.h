@@ -28,12 +28,11 @@
 #include <QTreeWidgetItem>
 
 #include "qlayout.h"
-
 #include "listcuentasview1.h"
 #include "diarioview.h"
 #include "extractoview1.h"
 #include "postgresiface2.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "ui_balancetreebase.h"
 #include "fichabc.h"
 #include "arbol.h"

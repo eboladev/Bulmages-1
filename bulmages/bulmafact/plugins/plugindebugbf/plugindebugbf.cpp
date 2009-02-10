@@ -29,8 +29,10 @@
 #include <QObject>
 
 #include "plugindebugbf.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "bulmafact.h"
+
+
 ///
 /**
 **/

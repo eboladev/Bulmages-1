@@ -26,7 +26,7 @@
 #include <QtDBus/QDBusConnection>
 
 #include "blapplication.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "plugins.h"
 #include "bulmafact.h"
 #include "blsplashscreen.h"
@@ -60,7 +60,7 @@ int main ( int argc, char **argv )
         Q_INIT_RESOURCE ( bulmages );
 
         /// Leemos la configuracion que luego podremos usar siempre.
-        confpr = new configuracion ( "bulmafact" );
+        confpr = new BlConfiguration ( "bulmafact" );
 
 	/// Inicializa el sistema de traducciones 'gettext'.
 	setlocale(LC_ALL, "");

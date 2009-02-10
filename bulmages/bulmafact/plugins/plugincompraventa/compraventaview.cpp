@@ -31,7 +31,7 @@
 #include "clientslist.h"
 #include "cobroview.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "facturaslist.h"
 #include "facturaview.h"
 #include "facturapview.h"

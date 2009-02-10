@@ -24,7 +24,8 @@
 
 #include "funcaux.h"
 #include "plugins.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
+
 
 typedef int ( *MyPrototype ) ( void * );
 MyPrototype myFunction;
@@ -34,6 +35,7 @@ MyPrototype1 myFunction1;
 
 Plugins *g_plugins;
 void *g_plugParams;
+
 
 ///
 /**

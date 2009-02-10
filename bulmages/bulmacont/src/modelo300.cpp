@@ -32,7 +32,7 @@
 #include <QObject>
 
 #include "modelo300.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
 

@@ -32,7 +32,7 @@
 #include <QObject>
 
 #include "modelosps.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "postgresiface2.h"
 
 

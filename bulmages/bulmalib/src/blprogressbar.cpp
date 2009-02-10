@@ -22,7 +22,7 @@
 
 #include "blprogressbar.h"
 #include "funcaux.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 
 ///

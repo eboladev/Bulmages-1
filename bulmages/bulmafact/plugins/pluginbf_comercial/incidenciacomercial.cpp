@@ -23,7 +23,7 @@
 
 #include "incidenciacomercial.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "plugins.h"
 
 

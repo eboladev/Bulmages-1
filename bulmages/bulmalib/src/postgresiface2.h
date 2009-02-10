@@ -42,7 +42,7 @@
 #include <libpq-fe.h>
 #endif
 
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 
 /// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.

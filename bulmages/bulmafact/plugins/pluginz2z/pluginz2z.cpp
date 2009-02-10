@@ -29,12 +29,14 @@
 #include <QObject>
 
 #include "pluginz2z.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "bulmafact.h"
 #include "company.h"
 #include "z2zview.h"
 
+
 Company *g_bges;
+
 
 ///
 /**

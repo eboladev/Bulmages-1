@@ -32,7 +32,7 @@
 #include "funcaux.h"
 #include "diarioprintview.h"
 #include "diarioprint.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "selectccosteview.h"

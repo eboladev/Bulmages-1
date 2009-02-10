@@ -25,7 +25,7 @@
 #include "busquedaarticulo.h"
 #include "busquedafecha.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "facturaslist.h"
 #include "facturaview.h"
 #include "funcaux.h"

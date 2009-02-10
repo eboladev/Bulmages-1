@@ -24,7 +24,7 @@
 #include <QTextEdit>
 
 #include "cuadranteqtreewidget.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "funcaux.h"
 
 

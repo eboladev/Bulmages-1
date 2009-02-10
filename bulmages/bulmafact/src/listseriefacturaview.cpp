@@ -31,9 +31,8 @@
 
 #include "listseriefacturaview.h"
 #include "company.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 #include "busquedafecha.h"
-
 #include "funcaux.h"
 
 

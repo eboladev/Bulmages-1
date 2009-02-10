@@ -29,7 +29,7 @@
 
 #include "funcaux.h"
 #include "bldockwidget.h"
-#include "configuracion.h"
+#include "blconfiguration.h"
 
 
 extern BlApplication *theApp;
