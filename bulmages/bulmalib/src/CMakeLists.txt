@@ -57,7 +57,6 @@ set(bulmalib_SRCS	postgresiface2.cpp
 			bldoublespinbox.cpp
 			blwidget.cpp
 			blformlist.cpp
-			porcentajecarga.cpp
 			busquedafecha2.cpp
 			blsplashscreen.cpp
 			fichacfg.cpp
@@ -88,7 +87,6 @@ set(bulmalib_MOCS	logpass.h
 			blwidget.h 
 			blmainwindow.h
 			blformlist.h 
-			porcentajecarga.h 
 			busquedafecha2.h 
 			blsplashscreen.h 
 			fichacfg.h 
@@ -145,7 +143,6 @@ set(bulmalib_UIS	logpassbase.ui
 			msgerrorbase.ui 
 			busquedafechabase.ui 
 			subform3base.ui 
-			porcentajecargabase.ui 
 			fichacfgbase.ui 
 			paisbase.ui
 			blprogressbarbase.ui
