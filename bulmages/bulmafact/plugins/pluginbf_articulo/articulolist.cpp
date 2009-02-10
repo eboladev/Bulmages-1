@@ -304,7 +304,11 @@ void ArticuloList::submenu ( const QPoint & )
 void ArticuloList::crear()
 {
     _depura ( "ArticuloList::crear", 0 );
-    ( ( Company * ) empresaBase() ) ->s_newArticulo();
+	ArticuloView * art = new ArticuloView( (Company *) empresaBase());
+    empresaBase()->m_pWorkspace->addWindow ( art );
+    art->pintar();
+    art->show();
+    art->setWindowTitle ( _( "Nuevo Articulo" ) );
     _depura ( "END ArticuloList::crear", 0 );
 }
 

@@ -115,7 +115,6 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
 ClienteView::~ClienteView()
 {
     _depura ( "ClienteView::~ClienteView", 0 );
-    empresaBase() ->refreshClientes();
     /// Disparamos los plugins.
     g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
     empresaBase() ->sacaWindow ( this );

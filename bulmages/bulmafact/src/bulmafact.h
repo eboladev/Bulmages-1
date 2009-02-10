@@ -65,14 +65,6 @@ public slots:
     virtual void s_ventanaCompleta();
     virtual void s_About();
     virtual void on_actionDocumentacion_triggered();
-    virtual void on_actionGestion_Familias_triggered();
-    virtual void on_actionGestion_Tipos_Articulo_triggered();
-    virtual void on_actionNuevo_Articulo_triggered();
-    virtual void on_actionListado_de_Articulos_triggered();
-    virtual void on_actionNuevo_Proveedor_triggered();
-    virtual void on_actionListado_Proveedores_triggered();
-    virtual void on_actionNuevo_Cliente_triggered();
-    virtual void on_actionListado_Clientes_triggered();
     virtual void on_actionPaises_triggered();
     virtual void on_actionSeries_de_Factura_triggered();
     virtual void on_actionTrabajadores_triggered();

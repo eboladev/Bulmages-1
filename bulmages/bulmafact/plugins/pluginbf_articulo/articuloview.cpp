@@ -116,7 +116,6 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
 ArticuloView::~ArticuloView()
 {
     _depura ( "ArticuloView::~ArticuloView", 0 );
-    empresaBase() ->refreshArticles();
     _depura ( "END ArticuloView::~ArticuloView", 0 );
 }
 

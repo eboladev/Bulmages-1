@@ -34,9 +34,6 @@
 
 
 class orderslist;
-class FacturaView;
-class PagoView;
-class PedidoClienteView;
 class ListTipoIVAView;
 
 class Bulmafact;
@@ -55,27 +52,14 @@ private:
 public:
     Company ( Bulmafact *bges );
     virtual ~Company();
-    void listproviders();
-    void listClients();
-    void listarticles();
-    void *newClienteView();
-    void *newProveedorView();
-    void *newArticuloView();
+
     void createMainWindows ( BlSplashScreen * );
-    void refreshArticles();
-    void refreshClientes();
-    void refreshProveedores();
     void s_FPago();
     void s_Familias();
     void s_trabajadores();
     void s_bancos();
     void s_seriesFactura();
-    void s_newArticulo();
-    void s_newClienteView();
-    void s_newProveedorView();
     void s_newListConfiguracionView();
-    void s_newTipoArticuloList();
-    void s_newfamiliasview();
     void s_almacenes();
     void viewPagosList();
     void s_TipoIVAView();
@@ -83,8 +67,6 @@ public:
     void guardaConf();
     void cargaConf();
     void *newPagoView();
-    void *newTipoArticuloList ( QWidget *parent = 0, bool modoConsulta = FALSE );
-    void *newfamiliasview ( QWidget *parent = 0, bool modoConsulta = FALSE );
 };
 
 #endif
