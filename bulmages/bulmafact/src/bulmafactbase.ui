@@ -52,12 +52,6 @@
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
    </widget>
-   <widget class="QMenu" name="menuArticulos" >
-    <property name="title" >
-     <string>Articulo&amp;s</string>
-    </property>
-    <addaction name="separator" />
-   </widget>
    <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
      <string>E&amp;mpresa</string>
@@ -94,7 +88,6 @@
     <addaction name="actionIndexador" />
    </widget>
    <addaction name="menuEmpresa" />
-   <addaction name="menuArticulos" />
    <addaction name="menuMaestro" />
    <addaction name="menuVentana" />
    <addaction name="menuAcerca_de" />

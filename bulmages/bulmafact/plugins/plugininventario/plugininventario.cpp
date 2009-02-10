@@ -69,11 +69,17 @@ void myplugininv::inicializa ( Bulmafact *bges )
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase ( bges->getcompany() );
+
+    /// Miramos si existe un menu Articulos
+	QMenu *pPluginMenu = bges->newMenu("&Articulos", "menuArticulos", "menuMaestro");
+	pPluginMenu->addSeparator();
+
+
     QAction *planCuentas = new QAction ( _( "&Inventarios" ), 0 );
     planCuentas->setStatusTip ( _( "Inventarios" ) );
     planCuentas->setWhatsThis ( _( "Inventarios" ) );
-    bges->menuArticulos->addSeparator();
-    bges->menuArticulos->addAction ( planCuentas );
+
+    pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     _depura ( "END myplugininv::inicializa", 0 );
 }
