@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,71 +16,71 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: movimientosview.cpp:64
+#: movimientosview.cpp:65
 msgid "Cliente:"
 msgstr ""
 
-#: movimientosview.cpp:87
+#: movimientosview.cpp:88
 msgid "Todas las facturas"
 msgstr ""
 
-#: movimientosview.cpp:88
+#: movimientosview.cpp:89
 msgid "Facturas procesadas"
 msgstr ""
 
-#: movimientosview.cpp:89
+#: movimientosview.cpp:90
 msgid "Facturas no procesadas"
 msgstr ""
 
-#: movimientosview.cpp:148
+#: movimientosview.cpp:149
 msgid "Facturas a clientes"
 msgstr ""
 
-#: movimientosview.cpp:174
+#: movimientosview.cpp:175
 msgid "idarticulo"
 msgstr ""
 
-#: movimientosview.cpp:175
+#: movimientosview.cpp:176
 msgid "Fecha"
 msgstr ""
 
-#: movimientosview.cpp:176
+#: movimientosview.cpp:177
 msgid "Id articulo"
 msgstr ""
 
-#: movimientosview.cpp:177
+#: movimientosview.cpp:178
 msgid "Codigo articulo"
 msgstr ""
 
-#: movimientosview.cpp:178
+#: movimientosview.cpp:179
 msgid "Nombre articulo"
 msgstr ""
 
-#: movimientosview.cpp:179
+#: movimientosview.cpp:180
 msgid "Cantidad"
 msgstr ""
 
-#: movimientosview.cpp:180
+#: movimientosview.cpp:181
 msgid "Lote"
 msgstr ""
 
-#: movimientosview.cpp:181
+#: movimientosview.cpp:182
 msgid "Id almacen"
 msgstr ""
 
-#: movimientosview.cpp:182
+#: movimientosview.cpp:183
 msgid "Codigo almacen"
 msgstr ""
 
-#: movimientosview.cpp:183
+#: movimientosview.cpp:184
 msgid "Nombre almacen"
 msgstr ""
 
-#: movimientosview.cpp:184
+#: movimientosview.cpp:185
 msgid "Id albaran cliente"
 msgstr ""
 
-#: movimientosview.cpp:185
+#: movimientosview.cpp:186
 msgid "Id albaran proveedor"
 msgstr ""
 

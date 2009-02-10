@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:28+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,7 +200,7 @@ msgstr ""
 "Extracto de Cuentas\n"
 "#-#-#-#-#  bulmacont_es2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: main.cxx:196
+#: main.cxx:195
 msgid "Cargando traducciones"
 msgstr "Cargando traducciones"
 
@@ -665,7 +665,7 @@ msgstr ""
 msgid "Inicializando asientos"
 msgstr "&Incluir asientos abiertos"
 
-#: main.cxx:236
+#: main.cxx:235
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
@@ -682,7 +682,7 @@ msgstr "Inicializando diario"
 msgid "Inicializando extracto"
 msgstr "Inicializando extracto"
 
-#: main.cxx:141
+#: main.cxx:140
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
@@ -706,11 +706,11 @@ msgstr "Junio"
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr "La fecha inicial es posterior a la fecha final."
 
-#: main.cxx:230
+#: main.cxx:229
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:171
+#: main.cxx:170
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuracion"
 

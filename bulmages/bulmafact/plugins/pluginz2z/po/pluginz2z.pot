@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,74 +20,74 @@ msgstr ""
 msgid "Error al crear la factura"
 msgstr ""
 
-#: ui_z2zbase.h:363
+#: ui_z2zbase.h:361
 msgid "Traspaso de Z"
 msgstr ""
 
-#: ui_z2zbase.h:366 ui_z2zbase.h:371
+#: ui_z2zbase.h:364 ui_z2zbase.h:369
 msgid "Guardar factura"
 msgstr ""
 
-#: ui_z2zbase.h:377 ui_z2zbase.h:382
+#: ui_z2zbase.h:375 ui_z2zbase.h:380
 msgid "Borrar factura"
 msgstr ""
 
-#: ui_z2zbase.h:388 ui_z2zbase.h:393
+#: ui_z2zbase.h:386 ui_z2zbase.h:391
 msgid "Imprimir factura"
 msgstr ""
 
-#: ui_z2zbase.h:397
+#: ui_z2zbase.h:395
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_z2zbase.h:398
+#: ui_z2zbase.h:396
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_z2zbase.h:399
+#: ui_z2zbase.h:397
 msgid "Referencias"
 msgstr ""
 
-#: ui_z2zbase.h:400
+#: ui_z2zbase.h:398
 msgid "Total Tickets"
 msgstr ""
 
-#: ui_z2zbase.h:401
+#: ui_z2zbase.h:399
 msgid "Total Traspasable"
 msgstr ""
 
-#: ui_z2zbase.h:402
+#: ui_z2zbase.h:400
 msgid "Total aprox a Traspasar"
 msgstr ""
 
-#: ui_z2zbase.h:403
+#: ui_z2zbase.h:401
 msgid "Traspasar"
 msgstr ""
 
-#: ui_z2zbase.h:404
+#: ui_z2zbase.h:402
 msgid "&Detalle"
 msgstr ""
 
-#: ui_z2zbase.h:405
+#: ui_z2zbase.h:403
 msgid "Excluir Familias"
 msgstr ""
 
-#: ui_z2zbase.h:406
+#: ui_z2zbase.h:404
 msgid "1"
 msgstr ""
 
-#: ui_z2zbase.h:407
+#: ui_z2zbase.h:405
 msgid "Excluir Articulo"
 msgstr ""
 
-#: ui_z2zbase.h:408
+#: ui_z2zbase.h:406
 msgid "Num Minimo lineas ticket"
 msgstr ""
 
-#: ui_z2zbase.h:409
+#: ui_z2zbase.h:407
 msgid "No cambiar precios de articulos"
 msgstr ""
 
-#: ui_z2zbase.h:410
+#: ui_z2zbase.h:408
 msgid "Opciones"
 msgstr ""

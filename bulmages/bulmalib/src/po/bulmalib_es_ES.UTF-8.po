@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 23:09+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr "¡Opción reservada a expertos!"
 msgid "&Borrar"
 msgstr "&Cerrar"
 
-#: ui_abreempresabase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_abreempresabase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -55,7 +55,7 @@ msgstr "&Entra"
 msgid "&Guardar"
 msgstr "&Validar"
 
-#: blform.cpp:370
+#: blform.cpp:372
 msgid "&No"
 msgstr "&No"
 
@@ -63,7 +63,7 @@ msgstr "&No"
 msgid "&Omitir"
 msgstr "&Omitir"
 
-#: blform.cpp:370
+#: blform.cpp:372
 msgid "&Si"
 msgstr "&Sí"
 
@@ -173,7 +173,7 @@ msgstr "Aviso del programa"
 msgid "Bienal"
 msgstr "Bienal"
 
-#: blform.cpp:339 blformlist.cpp:378
+#: blform.cpp:341 blformlist.cpp:378
 #, fuzzy
 msgid "Borrar"
 msgstr "&Cerrar"
@@ -297,11 +297,11 @@ msgstr "<LI>Datos insuficientes para tratar la forma de pago."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Debe seleccionar un elemento de la lista"
 
-#: blform.cpp:340
+#: blform.cpp:342
 msgid "Desea eliminar '"
 msgstr "¿Desea eliminar '"
 
-#: blform.cpp:369 paisview.cpp:118 paisview.cpp:189
+#: blform.cpp:371 paisview.cpp:118 paisview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "¿Desea guardar los cambios?"
 
@@ -420,7 +420,7 @@ msgstr "Busqueda Fecha"
 msgid "Forma de pago"
 msgstr "<LI> Forma de pago <B>"
 
-#: blform.cpp:368
+#: blform.cpp:370
 msgid "Guardar"
 msgstr "Guardar"
 
@@ -440,7 +440,7 @@ msgstr "Id. Provincia"
 msgid "Imprimiendo "
 msgstr "Imprimiendo "
 
-#: blform.cpp:443
+#: blform.cpp:445
 msgid "Imprimir ficha"
 msgstr "Imprimir ficha"
 
@@ -509,11 +509,11 @@ msgstr "Mostrar/ocultar detalle"
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "No se ha encontrado el padre de esta familia."
 
-#: blform.cpp:350
+#: blform.cpp:352
 msgid "No se ha podido borrar"
 msgstr "No se ha podido borrar"
 
-#: blform.cpp:383
+#: blform.cpp:385
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No se pudo cerrar la ventana debido a un error"
 
@@ -553,7 +553,7 @@ msgstr "Nuevo pais"
 msgid "Omitir &clase"
 msgstr "Omitir &clase"
 
-#: blform.cpp:442
+#: blform.cpp:444
 msgid "Opciones avanzadas de ficha"
 msgstr "Opciones avanzadas de ficha"
 

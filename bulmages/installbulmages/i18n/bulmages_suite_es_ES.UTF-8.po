@@ -6,986 +6,113 @@
 #, fuzzy
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 22:22+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 19:43+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
 #: ui_logpassbase.h:149
 msgid "Lanzador Bulmages"
@@ -1028,14 +155,14 @@ msgstr "Actualizar Listado"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualizar Listado de Empresas"
 
-#: ui_abreempresabase.h:202 ui_paisbase.h:286 ui_tiposarticulobase.h:292
-#: ui_almaceneslistbase.h:344 ui_cobroslistbase.h:392
-#: ui_presupuestoslistbase.h:376 ui_albaranclientelistbase.h:451
-#: ui_pedidosclientelistbase.h:392 ui_facturaslistbase.h:446
-#: ui_facturasplistbase.h:389 ui_albaranesproveedorlistbase.h:437
-#: ui_pedidosproveedorlistbase.h:373 ui_profesoreslistbase.h:326
-#: ui_alumnoslistbase.h:326 ui_tutoreslistbase.h:326
-#: ui_actividadeslistbase.h:326
+#: ui_abreempresabase.h:202 ui_paisbase.h:286 ui_almaceneslistbase.h:344
+#: ui_cobroslistbase.h:392 ui_presupuestoslistbase.h:376
+#: ui_albaranclientelistbase.h:451 ui_pedidosclientelistbase.h:392
+#: ui_facturaslistbase.h:446 ui_facturasplistbase.h:389
+#: ui_albaranesproveedorlistbase.h:437 ui_pedidosproveedorlistbase.h:373
+#: ui_profesoreslistbase.h:326 ui_alumnoslistbase.h:326
+#: ui_tutoreslistbase.h:326 ui_actividadeslistbase.h:326
+#: ui_tiposarticulobase.h:292
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
@@ -1047,12 +174,11 @@ msgstr "Empresas disponibles:"
 msgid "&Entra"
 msgstr "&Entra"
 
-#: ui_abreempresabase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_abreempresabase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
 #: ccosteview.cpp:168 ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108
 #: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238
 #: ui_listseriefacturabase.h:83 ui_listtasaivabase.h:119 ui_fpagobase.h:342
-#: ui_tiposarticulobase.h:241 ui_listalmacenbase.h:118
-#: ui_articleeditbase.h:639 ui_listtipoivabase.h:118 ui_familiasbase.h:387
+#: ui_listalmacenbase.h:118 ui_listtipoivabase.h:118 ui_familiasbase.h:387
 #: ui_listconfiguracionbase.h:119 ui_tarifabase.h:271
 #: incidenciacomercialview.cpp:106 ui_listzonacomercialbase.h:85
 #: ui_rutacomercialincbase.h:252 ui_rutacomerciallistbase.h:372
@@ -1065,7 +191,8 @@ msgstr "&Entra"
 #: ui_facturapbase.h:642 ui_albaranproveedorbase.h:651
 #: ui_pedidoproveedorbase.h:733 ui_z2zbase.h:396 ui_profesorbase.h:525
 #: ui_alumnobase.h:529 ui_tutorbase.h:443 ui_actividadbase.h:442
-#: bnuevaempresa.cpp:66
+#: ui_articleeditbase.h:639 ui_tiposarticulobase.h:241 bnuevaempresa.cpp:66
+#: blform.cpp:370
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -1242,8 +369,8 @@ msgstr "Nuevo pais"
 msgid "Borrar pais"
 msgstr "Borrar pais"
 
-#: ui_paisbase.h:298 ui_tiposarticulobase.h:280 ui_clientebase.h:580
-#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368 ui_cuadrante1base.h:338
+#: ui_paisbase.h:298 ui_clientebase.h:580 ui_almacenbase.h:343
+#: ui_almaceneslistbase.h:368 ui_cuadrante1base.h:338
 #: ui_cuadrantediariobase.h:296 ui_cuadrantediariobase.h:308
 #: ui_cuadrantediariobase.h:320 ui_cuadrantediariobase.h:332
 #: ui_cuadrantediariobase.h:344 ui_cuadrantediariobase.h:356
@@ -1258,6 +385,7 @@ msgstr "Borrar pais"
 #: ui_profesorbase.h:493 ui_profesoreslistbase.h:350 ui_alumnoslistbase.h:350
 #: ui_alumnobase.h:488 ui_tutorbase.h:429 ui_tutoreslistbase.h:350
 #: ui_actividadbase.h:413 ui_actividadeslistbase.h:350
+#: ui_tiposarticulobase.h:280
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -1265,12 +393,12 @@ msgstr "Ctrl+D"
 msgid "Guardar pais"
 msgstr "Guardar pais"
 
-#: ui_paisbase.h:310 ui_tiposarticulobase.h:268 ui_clientebase.h:568
-#: ui_proveditbase.h:839 ui_almacenbase.h:331 ui_cuadrante1base.h:326
-#: ui_zbase.h:297 ui_cobrobase.h:378 ui_presupuestoclientebase.h:736
-#: ui_facturapbase.h:584 ui_albaranproveedorbase.h:583
-#: ui_pedidoproveedorbase.h:670 ui_profesorbase.h:481 ui_alumnobase.h:476
-#: ui_tutorbase.h:417 ui_actividadbase.h:401
+#: ui_paisbase.h:310 ui_clientebase.h:568 ui_proveditbase.h:839
+#: ui_almacenbase.h:331 ui_cuadrante1base.h:326 ui_zbase.h:297
+#: ui_cobrobase.h:378 ui_presupuestoclientebase.h:736 ui_facturapbase.h:584
+#: ui_albaranproveedorbase.h:583 ui_pedidoproveedorbase.h:670
+#: ui_profesorbase.h:481 ui_alumnobase.h:476 ui_tutorbase.h:417
+#: ui_actividadbase.h:401 ui_tiposarticulobase.h:268
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -1340,11 +468,12 @@ msgstr "Para entrar, antes tiene que seleccionar una empresa."
 
 #: abreempresaview.cpp:492 subform3.cpp:94 amortizacionesview.cpp:48
 #: ccosteview.cpp:49 ccosteview.cpp:76 propiedadesempresa.cpp:191
-#: listproyectosview.cpp:49 listconfiguracionview.cpp:90 familiasview.cpp:51
+#: listproyectosview.cpp:49 listconfiguracionview.cpp:89 familiasview.cpp:51
 #: familiasview.cpp:569 providerslist.cpp:286 cobroslist.cpp:311
-#: listlinfacturapview.cpp:51 profesoreslist.cpp:263 alumnoslist.cpp:263
+#: listlinfacturapview.cpp:50 profesoreslist.cpp:263 alumnoslist.cpp:263
 #: ui_alumnobase.h:523 tutoreslist.cpp:263 ui_tutorbase.h:458
-#: actividadeslist.cpp:263 ticket.cpp:44
+#: actividadeslist.cpp:263 ticket.cpp:44 listconfiguracionview.cpp:90
+#: listlinfacturapview.cpp:51
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -1445,9 +574,10 @@ msgstr "Datos insuficientes para tratar la forma de pago."
 msgid "Ya existe esta forma de pago."
 msgstr "Ya existe esta forma de pago."
 
-#: pgimportfiles.cpp:1998 registroiva.cpp:53 clienteview.cpp:78 zview.cpp:79
-#: compraventaview.cpp:92 presupuestoview.cpp:73 albaranclienteview.cpp:82
-#: facturaview.cpp:72
+#: pgimportfiles.cpp:1998 registroiva.cpp:54 clienteview.cpp:78 zview.cpp:79
+#: compraventaview.cpp:91 presupuestoview.cpp:72 albaranclienteview.cpp:81
+#: facturaview.cpp:72 registroiva.cpp:53 compraventaview.cpp:92
+#: presupuestoview.cpp:73 albaranclienteview.cpp:82
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
@@ -1467,15 +597,17 @@ msgstr "Datos insuficientes para tratar el almacen."
 msgid "Ya existe este almacen."
 msgstr "Ya existe este almacen."
 
-#: pgimportfiles.cpp:2045 listalmacenview.cpp:50 plugintarifas.cpp:182
-#: plugininventario.cpp:116 almacenview.cpp:55 ui_almacenbase.h:346
-#: cuadranteview.cpp:58 cuadrante1view.cpp:59 cuadrantediarioview.cpp:61
-#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75
-#: cuadrantediarioview.cpp:76 ui_cuadrante1base.h:311 pluginasterisk.cpp:101
-#: zview.cpp:64 zlist.cpp:59 ui_zbase.h:321 compraventaview.cpp:85
-#: presupuestoview.cpp:63 presupuestolist.cpp:361 pedidoclienteview.cpp:61
-#: pedidosclientelist.cpp:340 albaranclienteview.cpp:75 facturaview.cpp:63
-#: ticket.cpp:50
+#: pgimportfiles.cpp:2045 listalmacenview.cpp:49 plugintarifas.cpp:182
+#: plugininventario.cpp:116 almacenview.cpp:54 ui_almacenbase.h:346
+#: cuadranteview.cpp:58 cuadrante1view.cpp:58 cuadrantediarioview.cpp:60
+#: cuadrantediarioview.cpp:73 cuadrantediarioview.cpp:74
+#: cuadrantediarioview.cpp:75 ui_cuadrante1base.h:311 pluginasterisk.cpp:101
+#: zview.cpp:64 zlist.cpp:59 ui_zbase.h:321 compraventaview.cpp:84
+#: presupuestoview.cpp:62 presupuestolist.cpp:361 pedidoclienteview.cpp:61
+#: pedidosclientelist.cpp:340 albaranclienteview.cpp:74 facturaview.cpp:63
+#: ticket.cpp:50 listalmacenview.cpp:50 almacenview.cpp:55
+#: cuadrante1view.cpp:59 cuadrantediarioview.cpp:61 cuadrantediarioview.cpp:76
+#: compraventaview.cpp:85 presupuestoview.cpp:63 albaranclienteview.cpp:75
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -1499,8 +631,8 @@ msgstr "Datos insuficientes para tratar la familia."
 msgid "Ya existe esta familia."
 msgstr "Ya existe esta familia."
 
-#: pgimportfiles.cpp:2106 ui_busquedafamiliabase.h:93 articuloview.cpp:71
-#: rutacomercial.cpp:44 incidenciacomercial.cpp:43 ui_inventariobase.h:360
+#: pgimportfiles.cpp:2106 ui_busquedafamiliabase.h:93 rutacomercial.cpp:44
+#: incidenciacomercial.cpp:43 ui_inventariobase.h:360 articuloview.cpp:71
 msgid "Familia"
 msgstr "Familia"
 
@@ -1524,11 +656,13 @@ msgstr "Datos insuficientes para tratar el articulo."
 msgid "Ya existe este articulo."
 msgstr "Ya existe este articulo."
 
-#: pgimportfiles.cpp:2208 ui_busquedaarticulobase.h:95 articuloview.cpp:58
+#: pgimportfiles.cpp:2208 ui_busquedaarticulobase.h:95
 #: informereferencia.cpp:141 informereferencia.cpp:174
 #: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
-#: informeqtoolbutton.cpp:463 listlinfacturapview.cpp:49
-#: pluginbuscaarticulo.cpp:58 plugindevolucion2.cpp:82
+#: informeqtoolbutton.cpp:463 listlinfacturapview.cpp:48 articuloview.cpp:58
+#: pluginbuscaarticulo.cpp:59 plugindevolucion2.cpp:83
+#: listlinfacturapview.cpp:49 pluginbuscaarticulo.cpp:58
+#: plugindevolucion2.cpp:82
 msgid "Articulo"
 msgstr "Articulo"
 
@@ -1681,8 +815,8 @@ msgstr "Ajustar alturas"
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Ver/Ocultar configurador de subformulario"
 
-#: listventanas.cpp:150 listventanas.cpp:151 ui_bulmafactbase.h:266
-#: ui_bulmafactbase.h:269
+#: listventanas.cpp:150 listventanas.cpp:151 ui_bulmafactbase.h:241
+#: ui_bulmafactbase.h:244 ui_bulmafactbase.h:266 ui_bulmafactbase.h:269
 msgid "Indexador"
 msgstr "Indexador"
 
@@ -1690,68 +824,70 @@ msgstr "Indexador"
 msgid "Esc"
 msgstr "Esc"
 
-#: blform.cpp:339 blformlist.cpp:378 ui_articleeditbase.h:595
-#: ui_articleeditbase.h:600 familiasview.cpp:478 tiposarticuloview.cpp:384
-#: ui_tarifabase.h:247 ui_tarifabase.h:252 ui_clientslistbase.h:287
-#: ui_clientslistbase.h:292 ui_providerslistbase.h:292
-#: ui_providerslistbase.h:297
+#: blform.cpp:341 blformlist.cpp:378 familiasview.cpp:478 ui_tarifabase.h:247
+#: ui_tarifabase.h:252 ui_clientslistbase.h:287 ui_clientslistbase.h:292
+#: ui_providerslistbase.h:292 ui_providerslistbase.h:297
+#: tiposarticuloview.cpp:384 ui_articleeditbase.h:595 ui_articleeditbase.h:600
+#: blform.cpp:339
 msgid "Borrar"
 msgstr "Borrar"
 
-#: blform.cpp:340
+#: blform.cpp:342 blform.cpp:340
 msgid "Desea eliminar '"
 msgstr "Desea eliminar '"
 
-#: blform.cpp:350
+#: blform.cpp:352 blform.cpp:350
 msgid "No se ha podido borrar"
 msgstr "No se ha podido borrar"
 
-#: blform.cpp:368 ui_articleeditbase.h:584 ui_articleeditbase.h:589
-#: ui_tarifabase.h:237 ui_tarifabase.h:242
+#: blform.cpp:370 ui_tarifabase.h:237 ui_tarifabase.h:242
+#: ui_articleeditbase.h:584 ui_articleeditbase.h:589 blform.cpp:368
 msgid "Guardar"
 msgstr "Guardar"
 
-#: blform.cpp:369 paisview.cpp:118 paisview.cpp:189 tipoivaview.cpp:110
+#: blform.cpp:371 paisview.cpp:118 paisview.cpp:189 tipoivaview.cpp:110
 #: tipoivaview.cpp:153 ccosteview.cpp:167 ccosteview.cpp:227 canalview.cpp:237
 #: propiedadesempresa.cpp:117 fpagoview.cpp:147 fpagoview.cpp:209
 #: bancoview.cpp:185 familiasview.cpp:320 trabajadorview.cpp:222
-#: tiposarticuloview.cpp:291 incidenciacomercialview.cpp:106
+#: incidenciacomercialview.cpp:106 tiposarticuloview.cpp:291 blform.cpp:369
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
-#: blform.cpp:370 canalview.cpp:238 asiento1view.cpp:333 bancoview.cpp:186
+#: blform.cpp:372 canalview.cpp:238 asiento1view.cpp:333 bancoview.cpp:186
 #: trabajadorview.cpp:223 tarifaview.cpp:243 incidenciacomercialview.cpp:106
-#: rutacomercialincview.cpp:80 compraventaview.cpp:468 compraventaview.cpp:589
+#: rutacomercialincview.cpp:80 compraventaview.cpp:467 compraventaview.cpp:588
 #: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
 #: genpreqtoolbutton.cpp:423 genpedqtoolbutton.cpp:151
 #: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
 #: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
 #: genfacqtoolbutton.cpp:423 genfactqtoolbutton.cpp:153
-#: genfactqtoolbutton.cpp:259 genalbpqtoolbutton.cpp:149
+#: genfactqtoolbutton.cpp:259 genalbpqtoolbutton.cpp:149 blform.cpp:370
+#: compraventaview.cpp:468 compraventaview.cpp:589
 msgid "&Si"
 msgstr "&Si"
 
-#: blform.cpp:370 canalview.cpp:238 asiento1view.cpp:333 bancoview.cpp:186
+#: blform.cpp:372 canalview.cpp:238 asiento1view.cpp:333 bancoview.cpp:186
 #: trabajadorview.cpp:223 tarifaview.cpp:243 incidenciacomercialview.cpp:106
-#: rutacomercialincview.cpp:80 compraventaview.cpp:468 compraventaview.cpp:589
+#: rutacomercialincview.cpp:80 compraventaview.cpp:467 compraventaview.cpp:588
 #: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
 #: genpreqtoolbutton.cpp:423 genpedqtoolbutton.cpp:151
 #: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
 #: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
 #: genfacqtoolbutton.cpp:423 genfactqtoolbutton.cpp:153
-#: genfactqtoolbutton.cpp:259 genalbpqtoolbutton.cpp:149
+#: genfactqtoolbutton.cpp:259 genalbpqtoolbutton.cpp:149 blform.cpp:370
+#: compraventaview.cpp:468 compraventaview.cpp:589
 msgid "&No"
 msgstr "&No"
 
-#: blform.cpp:383
+#: blform.cpp:385 blform.cpp:383
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No se pudo cerrar la ventana debido a un error"
 
-#: blform.cpp:442
+#: blform.cpp:444 blform.cpp:442
 msgid "Opciones avanzadas de ficha"
 msgstr "Opciones avanzadas de ficha"
 
-#: blform.cpp:443
+#: blform.cpp:445 blform.cpp:443
 msgid "Imprimir ficha"
 msgstr "Imprimir ficha"
 
@@ -1954,43 +1090,43 @@ msgstr "Ficha bloqueada por otro usuario, no podra hacer modificaciones"
 msgid "Imprimir"
 msgstr "Imprimir"
 
-#: plugindock.cpp:129
+#: plugindock.cpp:132 plugindock.cpp:129
 msgid "&Dock Aplicacion"
 msgstr "&Dock Aplicacion"
 
-#: plugindock.cpp:130 plugindock.cpp:131
+#: plugindock.cpp:133 plugindock.cpp:134 plugindock.cpp:130 plugindock.cpp:131
 msgid "Dockear Aplicacion"
 msgstr "Dockear Aplicacion"
 
-#: plugindock.cpp:134
+#: plugindock.cpp:137 plugindock.cpp:134
 msgid "&Embeber Aplicacion"
 msgstr "&Embeber Aplicacion"
 
-#: plugindock.cpp:135 plugindock.cpp:136
+#: plugindock.cpp:138 plugindock.cpp:139 plugindock.cpp:135 plugindock.cpp:136
 msgid "Embeber Aplicacion"
 msgstr "Embeber Aplicacion"
 
-#: main.cxx:141 main.cxx:118 main.cxx:103
+#: main.cxx:140 main.cxx:118 main.cxx:103 main.cxx:141
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
-#: main.cxx:171 main.cxx:158 main.cxx:142
+#: main.cxx:170 main.cxx:158 main.cxx:142 main.cxx:171
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuracion"
 
-#: main.cxx:196 main.cxx:182 main.cxx:165
+#: main.cxx:195 main.cxx:182 main.cxx:165 main.cxx:196
 msgid "Cargando traducciones"
 msgstr "Cargando traducciones"
 
-#: main.cxx:230 main.cxx:222 main.cxx:202
+#: main.cxx:229 main.cxx:222 main.cxx:202 main.cxx:230
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:236 main.cxx:228 main.cxx:208
+#: main.cxx:235 main.cxx:228 main.cxx:208 main.cxx:236
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
-#: subform2bc.cpp:469
+#: subform2bc.cpp:470 subform2bc.cpp:469
 msgid "Submenu de contabilidad"
 msgstr "Submenu de contabilidad"
 
@@ -2006,14 +1142,15 @@ msgstr "Asiento"
 
 #: diariosubform.cpp:38 listlinasiento1view.cpp:40 empresa.cpp:815
 #: extractosubform.cpp:47 asientolistsubform.cpp:38 listproyectosview.cpp:48
-#: rutacomercial.cpp:43 incidenciacomercial.cpp:42 movimientosview.cpp:175
-#: contratoview.cpp:403 cuadrante1view.cpp:60 cuadrantediarioview.cpp:72
+#: rutacomercial.cpp:43 incidenciacomercial.cpp:42 movimientosview.cpp:176
+#: contratoview.cpp:403 cuadrante1view.cpp:59 cuadrantediarioview.cpp:71
 #: ui_cuadrante1base.h:343 pluginasterisk.cpp:99 pluginasterisk.cpp:162
 #: zview.cpp:59 zview.cpp:76 zlist.cpp:57 ui_zbase.h:322
 #: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
 #: listlresarticulo.cpp:169 presupuestolist.cpp:351 pedidoclienteview.cpp:64
 #: pedidosclientelist.cpp:330 facturaslist.cpp:363 facturapview.cpp:60
-#: albaranesproveedor.cpp:384
+#: albaranesproveedor.cpp:384 movimientosview.cpp:175 cuadrante1view.cpp:60
+#: cuadrantediarioview.cpp:72
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -2025,15 +1162,20 @@ msgstr "Cuenta"
 
 #: diariosubform.cpp:40 cuentaview.cpp:45 ccosteview.cpp:50 ccosteview.cpp:76
 #: extractosubform.cpp:50 proyectoview.cpp:78 proyectoview.cpp:97
-#: familiasview.cpp:51 listlinalbaranproveedorview.cpp:52
-#: listlinalbaranclienteview.cpp:50 tiposarticuloview.cpp:46 zview.cpp:74
-#: listlresarticulo.cpp:40 listlresarticulo.cpp:83 listlresarticulo.cpp:126
-#: listlresarticulo.cpp:170 compraventaview.cpp:95
-#: listlinpresupuestoview.cpp:51 presupuestolist.cpp:357
-#: listlinpedidoclienteview.cpp:51 pedidosclientelist.cpp:336
-#: albaranclienteview.cpp:85 albaranclientelist.cpp:385 facturaslist.cpp:370
-#: listlinfacturaview.cpp:52 facturaview.cpp:70 listlinfacturapview.cpp:53
-#: albaranesproveedor.cpp:382 listlinpedidoproveedorview.cpp:45 ticket.cpp:43
+#: familiasview.cpp:51 listlinalbaranproveedorview.cpp:51
+#: listlinalbaranclienteview.cpp:49 zview.cpp:74 listlresarticulo.cpp:40
+#: listlresarticulo.cpp:83 listlresarticulo.cpp:126 listlresarticulo.cpp:170
+#: compraventaview.cpp:94 listlinpresupuestoview.cpp:50
+#: presupuestolist.cpp:357 listlinpedidoclienteview.cpp:50
+#: pedidosclientelist.cpp:336 albaranclienteview.cpp:84
+#: albaranclientelist.cpp:385 facturaslist.cpp:370 listlinfacturaview.cpp:51
+#: facturaview.cpp:70 listlinfacturapview.cpp:52 albaranesproveedor.cpp:382
+#: listlinpedidoproveedorview.cpp:44 tiposarticuloview.cpp:46 ticket.cpp:43
+#: listlinalbaranproveedorview.cpp:52 listlinalbaranclienteview.cpp:50
+#: compraventaview.cpp:95 listlinpresupuestoview.cpp:51
+#: listlinpedidoclienteview.cpp:51 albaranclienteview.cpp:85
+#: listlinfacturaview.cpp:52 listlinfacturapview.cpp:53
+#: listlinpedidoproveedorview.cpp:45
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -2055,8 +1197,9 @@ msgstr "Haber"
 
 #: diariosubform.cpp:44 listlinasiento1view.cpp:48 extractosubform.cpp:66
 #: listregistroivaview.cpp:60 listregistroivaview.cpp:84
-#: compraventaview.cpp:90 presupuestolist.cpp:360 pedidosclientelist.cpp:339
-#: albaranclienteview.cpp:80 facturaview.cpp:68 albaranesproveedor.cpp:385
+#: compraventaview.cpp:89 presupuestolist.cpp:360 pedidosclientelist.cpp:339
+#: albaranclienteview.cpp:79 facturaview.cpp:68 albaranesproveedor.cpp:385
+#: compraventaview.cpp:90 albaranclienteview.cpp:80
 msgid "Comentario"
 msgstr "Comentario"
 
@@ -2079,7 +1222,8 @@ msgid "Descripcion de Cuenta"
 msgstr "Descripcion de Cuenta"
 
 #: diariosubform.cpp:49 diariosubform.cpp:50 listlinasiento1view.cpp:47
-#: registroiva.cpp:46 listregistroivaview.cpp:59 listregistroivaview.cpp:83
+#: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
+#: registroiva.cpp:46
 msgid "Contrapartida"
 msgstr "Contrapartida"
 
@@ -2096,8 +1240,8 @@ msgstr "MarcaConciliacion"
 msgid "Centro Coste"
 msgstr "Centro Coste"
 
-#: diariosubform.cpp:54 registroiva.cpp:59 facturaview.cpp:58
-#: listlinfacturapview.cpp:59
+#: diariosubform.cpp:54 registroiva.cpp:60 facturaview.cpp:58
+#: listlinfacturapview.cpp:58 registroiva.cpp:59 listlinfacturapview.cpp:59
 msgid "Factura"
 msgstr "Factura"
 
@@ -2240,7 +1384,8 @@ msgstr "NoDebe"
 msgid "NoHaber"
 msgstr "NoHaber"
 
-#: cuentaview.cpp:51 listcuentasview1.cpp:62 registroiva.cpp:55
+#: cuentaview.cpp:51 listcuentasview1.cpp:62 registroiva.cpp:56
+#: registroiva.cpp:55
 msgid "Regularizacion"
 msgstr "Regularizacion"
 
@@ -2288,7 +1433,8 @@ msgstr "E-Mail de la cuenta"
 msgid "Direccion de la cuenta"
 msgstr "Direccion de la cuenta"
 
-#: tipoivaview.cpp:39 listtipoivaview.cpp:50 listtipoivaview.cpp:107
+#: tipoivaview.cpp:39 listtipoivaview.cpp:49 listtipoivaview.cpp:106
+#: listtasaivaview.cpp:94 listtipoivaview.cpp:50 listtipoivaview.cpp:107
 #: listtasaivaview.cpp:95
 msgid "Tipo IVA"
 msgstr "Tipo IVA"
@@ -2356,11 +1502,11 @@ msgid "Id apunte"
 msgstr "Id apunte"
 
 #: listlinasiento1view.cpp:41 balanceview.cpp:259 proyectoview.cpp:72
-#: proyectoview.cpp:91 articuloview.cpp:62 familiasview.cpp:51
-#: familiasview.cpp:568 tiposarticuloview.cpp:46 clienteview.cpp:76
-#: clientslist.cpp:276 providerslist.cpp:284 providerslist.cpp:288
-#: provedit.cpp:60 contratoslist.cpp:423 pluginclientprov.cpp:75
-#: facturapview.cpp:351
+#: proyectoview.cpp:91 familiasview.cpp:51 familiasview.cpp:568
+#: clienteview.cpp:76 clientslist.cpp:276 providerslist.cpp:284
+#: providerslist.cpp:288 provedit.cpp:60 contratoslist.cpp:423
+#: pluginclientprov.cpp:75 facturapview.cpp:351 articuloview.cpp:62
+#: tiposarticuloview.cpp:46
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -2395,11 +1541,16 @@ msgid "Id tipo de IVA"
 msgstr "Id tipo de IVA"
 
 #: listlinasiento1view.cpp:55 extractosubform.cpp:73 asientolistsubform.cpp:37
-#: registroiva.cpp:51 proyectoview.cpp:81 proyectoview.cpp:100
-#: listlinalbaranproveedorview.cpp:59 listlinalbaranclienteview.cpp:57
-#: listlincontratoview.cpp:49 listlinpresupuestoview.cpp:58
-#: listlinpedidoclienteview.cpp:58 listlinfacturaview.cpp:59
-#: listlinfacturapview.cpp:60 listlinpedidoproveedorview.cpp:52 ticket.cpp:91
+#: registroiva.cpp:52 proyectoview.cpp:81 proyectoview.cpp:100
+#: listlinalbaranproveedorview.cpp:58 listlinalbaranclienteview.cpp:56
+#: listlincontratoview.cpp:48 listlinpresupuestoview.cpp:57
+#: listlinpedidoclienteview.cpp:57 listlinfacturaview.cpp:58
+#: listlinfacturapview.cpp:59 listlinpedidoproveedorview.cpp:51 ticket.cpp:91
+#: registroiva.cpp:51 listlinalbaranproveedorview.cpp:59
+#: listlinalbaranclienteview.cpp:57 listlincontratoview.cpp:49
+#: listlinpresupuestoview.cpp:58 listlinpedidoclienteview.cpp:58
+#: listlinfacturaview.cpp:59 listlinfacturapview.cpp:60
+#: listlinpedidoproveedorview.cpp:52
 msgid "Orden"
 msgstr "Orden"
 
@@ -2465,7 +1616,7 @@ msgid "Nombre Destinatario"
 msgstr "Nombre Destinatario"
 
 #: ccosteview.cpp:59 listregistroivaview.cpp:50 listregistroivaview.cpp:74
-#: tiposarticuloview.cpp:46 zview.cpp:58
+#: zview.cpp:58 tiposarticuloview.cpp:46
 msgid "Id"
 msgstr "Id"
 
@@ -2665,9 +1816,9 @@ msgstr "Telefono del proveedor"
 msgid "Agrupacion"
 msgstr "Agrupacion"
 
-#: amortizacionview.cpp:72 registroiva.cpp:45 listproyectosview.cpp:46
-#: articuloview.cpp:61 rutacomercial.cpp:42 incidenciacomercial.cpp:41
-#: pedidoclienteview.cpp:59
+#: amortizacionview.cpp:72 registroiva.cpp:46 listproyectosview.cpp:46
+#: rutacomercial.cpp:42 incidenciacomercial.cpp:41 pedidoclienteview.cpp:59
+#: articuloview.cpp:61 registroiva.cpp:45
 msgid "Identificador"
 msgstr "Identificador"
 
@@ -2685,12 +1836,16 @@ msgid "Fecha prevista"
 msgstr "Fecha prevista"
 
 #: amortizacionview.cpp:80 proyectoview.cpp:74 proyectoview.cpp:93
+#: listlinalbaranproveedorview.cpp:52 listlinalbaranclienteview.cpp:50
+#: movimientosview.cpp:180 listlresarticulo.cpp:41 listlresarticulo.cpp:84
+#: listlresarticulo.cpp:127 listlresarticulo.cpp:171 pagoview.cpp:66
+#: pagoslist.cpp:253 cobroslist.cpp:317 listlinpresupuestoview.cpp:51
+#: listlinpedidoclienteview.cpp:51 listlinfacturaview.cpp:52
+#: listlinfacturapview.cpp:53 listlinpedidoproveedorview.cpp:45 ticket.cpp:87
 #: listlinalbaranproveedorview.cpp:53 listlinalbaranclienteview.cpp:51
-#: movimientosview.cpp:179 listlresarticulo.cpp:41 listlresarticulo.cpp:84
-#: listlresarticulo.cpp:127 listlresarticulo.cpp:171 pagoview.cpp:67
-#: pagoslist.cpp:253 cobroslist.cpp:317 listlinpresupuestoview.cpp:52
+#: movimientosview.cpp:179 pagoview.cpp:67 listlinpresupuestoview.cpp:52
 #: listlinpedidoclienteview.cpp:52 listlinfacturaview.cpp:53
-#: listlinfacturapview.cpp:54 listlinpedidoproveedorview.cpp:46 ticket.cpp:87
+#: listlinfacturapview.cpp:54 listlinpedidoproveedorview.cpp:46
 msgid "Cantidad"
 msgstr "Cantidad"
 
@@ -2893,9 +2048,9 @@ msgstr "Borrar cuenta"
 msgid "Se procedera a borrar la cuenta."
 msgstr "Se procedera a borrar la cuenta."
 
-#: listcuentasview1.cpp:545 listcuentasview1.cpp:564 articulolist.cpp:237
-#: articulolist.cpp:262 clientslist.cpp:169 clientslist.cpp:192
-#: providerslist.cpp:233
+#: listcuentasview1.cpp:545 listcuentasview1.cpp:564 clientslist.cpp:169
+#: clientslist.cpp:192 providerslist.cpp:233 articulolist.cpp:237
+#: articulolist.cpp:262
 msgid "Elija el archivo"
 msgstr "Elija el archivo"
 
@@ -2919,13 +2074,13 @@ msgstr "Cuentas Anuales"
 msgid "Selector de articulos"
 msgstr "Selector de articulos"
 
-#: cuentalistview.cpp:309 ui_articleslistbase.h:303 ui_articleslistbase.h:308
-#: articulolist.cpp:290 articulolisttpv.cpp:160
+#: cuentalistview.cpp:309 articulolist.cpp:290 ui_articleslistbase.h:303
+#: ui_articleslistbase.h:308 articulolisttpv.cpp:160
 msgid "Editar articulo"
 msgstr "Editar articulo"
 
-#: cuentalistview.cpp:310 ui_articleslistbase.h:314 ui_articleslistbase.h:319
-#: articulolist.cpp:167 articulolist.cpp:291 articulolisttpv.cpp:161
+#: cuentalistview.cpp:310 articulolist.cpp:167 articulolist.cpp:291
+#: ui_articleslistbase.h:314 ui_articleslistbase.h:319 articulolisttpv.cpp:161
 msgid "Borrar articulo"
 msgstr "Borrar articulo"
 
@@ -2933,7 +2088,8 @@ msgstr "Borrar articulo"
 msgid "Codigo Cuenta"
 msgstr "Codigo Cuenta"
 
-#: extractosubform.cpp:46 listlinpedidoclienteview.cpp:46
+#: extractosubform.cpp:46 listlinpedidoclienteview.cpp:45
+#: listlinpedidoproveedorview.cpp:39 listlinpedidoclienteview.cpp:46
 #: listlinpedidoproveedorview.cpp:40
 msgid "Punteo"
 msgstr "Punteo"
@@ -2978,7 +2134,8 @@ msgstr "Mostrar diario (mes)"
 msgid "Mostrar diario (ano)"
 msgstr "Mostrar diario (ano)"
 
-#: propiedadesempresa.cpp:38 listconfiguracionview.cpp:52
+#: propiedadesempresa.cpp:38 listconfiguracionview.cpp:51
+#: listconfiguracionview.cpp:52
 msgid "Configuracion"
 msgstr "Configuracion"
 
@@ -3014,7 +2171,8 @@ msgstr "&Salir"
 msgid "&No salir"
 msgstr "&No salir"
 
-#: propiedadesempresa.cpp:192 listconfiguracionview.cpp:91
+#: propiedadesempresa.cpp:192 listconfiguracionview.cpp:90
+#: listconfiguracionview.cpp:91
 msgid "Valor"
 msgstr "Valor"
 
@@ -3083,16 +2241,17 @@ msgstr ""
 msgid "Apuntes"
 msgstr "Apuntes"
 
-#: asientolistsubform.cpp:40 registroiva.cpp:50
+#: asientolistsubform.cpp:40 registroiva.cpp:51 registroiva.cpp:50
 msgid "Borrador"
 msgstr "Borrador"
 
 #: asientolistsubform.cpp:41 listproyectosview.cpp:50 proyectoview.cpp:60
 #: proyectoview.cpp:77 proyectoview.cpp:96 rutacomercial.cpp:45
 #: incidenciacomercial.cpp:45 clienteview.cpp:72 clientslist.cpp:291
-#: providerslist.cpp:290 provedit.cpp:59 cuadrante1view.cpp:61
+#: providerslist.cpp:290 provedit.cpp:59 cuadrante1view.cpp:60
 #: ui_cuadrante1base.h:310 pluginclientprov.cpp:74 cobroslist.cpp:321
-#: presupuestoview.cpp:69 pedidoclienteview.cpp:69
+#: presupuestoview.cpp:68 pedidoclienteview.cpp:69 cuadrante1view.cpp:61
+#: presupuestoview.cpp:69
 msgid "Comentarios"
 msgstr "Comentarios"
 
@@ -3100,52 +2259,52 @@ msgstr "Comentarios"
 msgid "Clase"
 msgstr "Clase"
 
-#: registroiva.cpp:42
+#: registroiva.cpp:43 registroiva.cpp:42
 msgid "Registro IVA"
 msgstr "Registro IVA"
 
-#: registroiva.cpp:47 fichabf.cpp:369 zview.cpp:83 presupuestolist.cpp:354
-#: pedidosclientelist.cpp:333 pedidosproveedorlist.cpp:317
+#: registroiva.cpp:48 fichabf.cpp:369 zview.cpp:83 presupuestolist.cpp:354
+#: pedidosclientelist.cpp:333 pedidosproveedorlist.cpp:317 registroiva.cpp:47
 msgid "Base Imponible"
 msgstr "Base Imponible"
 
-#: registroiva.cpp:48 listregistroivaview.cpp:53 listlresarticulo.cpp:43
+#: registroiva.cpp:49 listregistroivaview.cpp:53 listlresarticulo.cpp:43
 #: listlresarticulo.cpp:86 listlresarticulo.cpp:129 listlresarticulo.cpp:173
-#: ticket.cpp:89
+#: ticket.cpp:89 registroiva.cpp:48
 msgid "IVA"
 msgstr "IVA"
 
-#: registroiva.cpp:49 facturasplist.cpp:355
+#: registroiva.cpp:50 facturasplist.cpp:355 registroiva.cpp:49
 msgid "Fecha factura"
 msgstr "Fecha factura"
 
-#: registroiva.cpp:52 listlresarticulo.cpp:35 listlresarticulo.cpp:79
-#: listlresarticulo.cpp:122 listlresarticulo.cpp:166
+#: registroiva.cpp:53 listlresarticulo.cpp:35 listlresarticulo.cpp:79
+#: listlresarticulo.cpp:122 listlresarticulo.cpp:166 registroiva.cpp:52
 msgid "CIF"
 msgstr "CIF"
 
-#: registroiva.cpp:54
+#: registroiva.cpp:55 registroiva.cpp:54
 msgid "Inc registro"
 msgstr "Inc registro"
 
-#: registroiva.cpp:56
+#: registroiva.cpp:57 registroiva.cpp:56
 msgid "plan 349"
 msgstr "plan 349"
 
-#: registroiva.cpp:57
+#: registroiva.cpp:58 registroiva.cpp:57
 msgid "Factura emitida"
 msgstr "Factura emitida"
 
-#: registroiva.cpp:58
+#: registroiva.cpp:59 registroiva.cpp:58
 msgid "Rectifica a"
 msgstr "Rectifica a"
 
-#: registroiva.cpp:60
+#: registroiva.cpp:61 registroiva.cpp:60
 msgid "Fecha emision"
 msgstr "Fecha emision"
 
-#: registroiva.cpp:61 contratoview.cpp:412 facturaslist.cpp:373
-#: facturaview.cpp:67
+#: registroiva.cpp:62 contratoview.cpp:412 facturaslist.cpp:373
+#: facturaview.cpp:67 registroiva.cpp:61
 msgid "Serie"
 msgstr "Serie"
 
@@ -3306,7 +2465,7 @@ msgid "Cobro"
 msgstr "Cobro"
 
 #: listlinprevcobroview.cpp:191 listlinprevcobroview.cpp:275
-#: listlinprevcobroview.cpp:468 pagoview.cpp:59
+#: listlinprevcobroview.cpp:468 pagoview.cpp:58 pagoview.cpp:59
 msgid "Pago"
 msgstr "Pago"
 
@@ -3318,19 +2477,20 @@ msgstr "Generar asiento de cobro/pago"
 msgid "Ver factura"
 msgstr "Ver factura"
 
-#: plugincorrector.cpp:53 ui_correctorbase.h:92
+#: plugincorrector.cpp:55 ui_correctorbase.h:92 plugincorrector.cpp:53
 msgid "Corrector"
 msgstr "Corrector"
 
-#: plugincorrector.cpp:69
+#: plugincorrector.cpp:71 plugincorrector.cpp:69
 msgid "&Corrector"
 msgstr "&Corrector"
 
-#: plugincorrector.cpp:72
+#: plugincorrector.cpp:74 plugincorrector.cpp:72
 msgid "Muestra/oculta el corrector"
 msgstr "Muestra/oculta el corrector"
 
-#: plugincorrector.cpp:73 pluginresumcta.cpp:78
+#: plugincorrector.cpp:75 pluginresumcta.cpp:80 plugincorrector.cpp:73
+#: pluginresumcta.cpp:78
 msgid ""
 "Corrector.\n"
 "\n"
@@ -3372,15 +2532,15 @@ msgstr "Muestra que es esto"
 msgid "Prueba de plugin Bulmacont."
 msgstr "Prueba de plugin Bulmacont."
 
-#: plugindebugbc.cpp:83
+#: plugindebugbc.cpp:84 plugindebugbc.cpp:83
 msgid "&Modo debug"
 msgstr "&Modo debug"
 
-#: plugindebugbc.cpp:92
+#: plugindebugbc.cpp:93 plugindebugbc.cpp:92
 msgid "Activa/Desactiva el modo debug"
 msgstr "Activa/Desactiva el modo debug"
 
-#: plugindebugbc.cpp:93
+#: plugindebugbc.cpp:94 plugindebugbc.cpp:93
 msgid ""
 "Debug.\n"
 "\n"
@@ -4415,15 +3575,15 @@ msgstr "ejsaldo"
 msgid "Ver configurador de subformulario"
 msgstr "Ver configurador de subformulario"
 
-#: pluginresumcta.cpp:56
+#: pluginresumcta.cpp:58 pluginresumcta.cpp:56
 msgid "Resumen cuenta"
 msgstr "Resumen cuenta"
 
-#: pluginresumcta.cpp:74
+#: pluginresumcta.cpp:76 pluginresumcta.cpp:74
 msgid "&Resumen Cta"
 msgstr "&Resumen Cta"
 
-#: pluginresumcta.cpp:77
+#: pluginresumcta.cpp:79 pluginresumcta.cpp:77
 msgid "Muestra/oculta el resumen de cuenta"
 msgstr "Muestra/oculta el resumen de cuenta"
 
@@ -4445,9 +3605,9 @@ msgstr "Proyecto"
 
 #: proyectoview.cpp:56 plugintarifas.cpp:181 listltarifaview.cpp:38
 #: listltarifaview.cpp:62 almaceneslistview.cpp:56 almaceneslistview.cpp:90
-#: almacenview.cpp:58 plugintipostrabajo.cpp:199 presupuestolist.cpp:364
+#: almacenview.cpp:57 plugintipostrabajo.cpp:199 presupuestolist.cpp:364
 #: pedidosclientelist.cpp:343 albaranclientelist.cpp:394
-#: albaranesproveedor.cpp:389
+#: albaranesproveedor.cpp:389 almacenview.cpp:58
 msgid "ID almacen"
 msgstr "ID almacen"
 
@@ -4479,8 +3639,8 @@ msgstr "Id linea de Ingreso Presupuesto"
 msgid "Id. Proyecto"
 msgstr "Id. Proyecto"
 
-#: proyectoview.cpp:109 almacenview.cpp:77 cuadranteview.cpp:70
-#: cuadrante1view.cpp:86 zview.cpp:93
+#: proyectoview.cpp:109 almacenview.cpp:76 cuadranteview.cpp:70
+#: cuadrante1view.cpp:85 zview.cpp:93 almacenview.cpp:77 cuadrante1view.cpp:86
 msgid "Error al crear el almacen"
 msgstr "Error al crear el almacen"
 
@@ -4513,8 +3673,7 @@ msgid "Series de factura"
 msgstr "Series de factura"
 
 #: ui_listseriefacturabase.h:84 ui_listtasaivabase.h:118 ui_fpagobase.h:341
-#: ui_tiposarticulobase.h:240 ui_listalmacenbase.h:117
-#: ui_articleeditbase.h:638 ui_listtipoivabase.h:117 ui_familiasbase.h:386
+#: ui_listalmacenbase.h:117 ui_listtipoivabase.h:117 ui_familiasbase.h:386
 #: ui_listconfiguracionbase.h:118 ui_tarifabase.h:270
 #: ui_listzonacomercialbase.h:84 ui_rutacomercialincbase.h:251
 #: ui_rutacomerciallistbase.h:371 ui_clientebase.h:592 ui_proveditbase.h:778
@@ -4526,11 +3685,11 @@ msgstr "Series de factura"
 #: ui_facturapbase.h:641 ui_albaranproveedorbase.h:645
 #: ui_pedidoproveedorbase.h:732 ui_z2zbase.h:395 ui_profesorbase.h:524
 #: ui_alumnobase.h:528 ui_tutorbase.h:442 ui_actividadbase.h:441
-#: bnuevaempresa.cpp:66
+#: ui_articleeditbase.h:638 ui_tiposarticulobase.h:240 bnuevaempresa.cpp:66
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:274
+#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:249 ui_bulmafactbase.h:274
 msgid "Tasas de IVA"
 msgstr "Tasas de IVA"
 
@@ -4585,51 +3744,14 @@ msgstr "Tipo plazo primer pago:"
 msgid "Forma de pago:"
 msgstr "Forma de pago:"
 
-#: ui_tiposarticulobase.h:238
-msgid "Tipos de articulo"
-msgstr "Tipos de articulo"
-
-#: ui_tiposarticulobase.h:239 ui_familiasbase.h:366
-#: ui_cuadrantediariobase.h:283 ui_cuadrantebase.h:322 ui_z2zbase.h:404
-msgid "1"
-msgstr "1"
-
-#: ui_tiposarticulobase.h:242 ui_busquedatipoarticulobase.h:91
-msgid "Tipo de articulo:"
-msgstr "Tipo de articulo:"
-
-#: ui_tiposarticulobase.h:243
-msgid "Codigo:"
-msgstr "Codigo:"
-
-#: ui_tiposarticulobase.h:244 ui_familiasbase.h:379 ui_inventariobase.h:361
-#: ui_contratobase.h:503 ui_compraventabase.h:911
-#: ui_presupuestoclientebase.h:774 ui_albaranclientebase.h:762
-#: ui_pedidoclientebase.h:690 ui_facturabase.h:700 ui_facturapbase.h:621
-#: ui_albaranproveedorbase.h:620 ui_pedidoproveedorbase.h:708
-msgid "Descripcion:"
-msgstr "Descripcion:"
-
-#: ui_tiposarticulobase.h:247 ui_tiposarticulobase.h:252
-msgid "Mostrar / Ocultar detalle"
-msgstr "Mostrar / Ocultar detalle"
-
-#: ui_tiposarticulobase.h:259 ui_tiposarticulobase.h:264
-msgid "Guardar Tipo de articulo"
-msgstr "Guardar Tipo de articulo"
-
-#: ui_tiposarticulobase.h:271 ui_tiposarticulobase.h:276
-msgid "Borrar Tipo de articulo"
-msgstr "Borrar Tipo de articulo"
-
-#: ui_tiposarticulobase.h:283 ui_tiposarticulobase.h:288
-msgid "Nuevo Tipo de articulo"
-msgstr "Nuevo Tipo de articulo"
-
 #: ui_listalmacenbase.h:116 almaceneslistview.cpp:218
 #: ui_almaceneslistbase.h:331 zlist.cpp:190
 msgid "Almacenes"
 msgstr "Almacenes"
+
+#: ui_busquedatipoarticulobase.h:91 ui_tiposarticulobase.h:242
+msgid "Tipo de articulo:"
+msgstr "Tipo de articulo:"
 
 #: ui_busquedatipoarticulobase.h:93 articuloview.cpp:68
 msgid "Tipo de articulo"
@@ -4683,11 +3805,11 @@ msgstr "Sopor&te"
 msgid "Acuerdo de &licencia"
 msgstr "Acuerdo de &licencia"
 
-#: ui_busquedaarticulobase.h:93
+#: ui_busquedaarticulobase.h:93 busquedaarticulo.cpp:37
 msgid "Articulo:"
 msgstr "Articulo:"
 
-#: ui_bancobase.h:401 ui_bulmafactbase.h:275
+#: ui_bancobase.h:401 ui_bulmafactbase.h:250 ui_bulmafactbase.h:275
 msgid "Bancos"
 msgstr "Bancos"
 
@@ -4798,232 +3920,132 @@ msgstr "Nuevo trabajador"
 msgid "Lista de bancos:"
 msgstr "Lista de bancos:"
 
-#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:297
-msgid "Nuevo articulo"
-msgstr "Nuevo articulo"
-
-#: ui_articleeditbase.h:604 ui_familiasbase.h:382
-msgid "Codigo completo:"
-msgstr "Codigo completo:"
-
-#: ui_articleeditbase.h:605
-msgid "Codigo del articulo:"
-msgstr "Codigo del articulo:"
-
-#: ui_articleeditbase.h:606
-msgid "Subcodigo:"
-msgstr "Subcodigo:"
-
-#: ui_articleeditbase.h:607
-msgid "Imagen del articulo:"
-msgstr "Imagen del articulo:"
-
-#: ui_articleeditbase.h:608 ui_alumnobase.h:503
-msgid "Cam&biar imagen"
-msgstr "Cam&biar imagen"
-
-#: ui_articleeditbase.h:611 ui_alumnobase.h:506
-msgid "Borrar imagen"
-msgstr "Borrar imagen"
-
-#: ui_articleeditbase.h:615
-msgid "Informacion del articulo:"
-msgstr "Informacion del articulo:"
-
-#: ui_articleeditbase.h:616
-msgid "Nombre del articulo:"
-msgstr "Nombre del articulo:"
-
-#: ui_articleeditbase.h:617
-msgid "Texto para etiqueta:"
-msgstr "Texto para etiqueta:"
-
-#: ui_articleeditbase.h:618
-msgid "Precio venta. s/IVA:"
-msgstr "Precio venta. s/IVA:"
-
-#: ui_articleeditbase.h:619
-msgid "Tipo de I.V.A.:"
-msgstr "Tipo de I.V.A.:"
-
-#: ui_articleeditbase.h:620
-msgid "Peso (kg):"
-msgstr "Peso (kg):"
-
-#: ui_articleeditbase.h:621
-msgid "Volumen (cm3):"
-msgstr "Volumen (cm3):"
-
-#: ui_articleeditbase.h:622
-msgid "Otros datos:"
-msgstr "Otros datos:"
-
-#: ui_articleeditbase.h:625
-msgid "Incluir este articulo en el catalogo."
-msgstr "Incluir este articulo en el catalogo."
-
-#: ui_articleeditbase.h:628
-msgid "&Incluir en el catalogo."
-msgstr "&Incluir en el catalogo."
-
-#: ui_articleeditbase.h:631
-msgid "Activar el control de stock para este articulo."
-msgstr "Activar el control de stock para este articulo."
-
-#: ui_articleeditbase.h:634
-msgid "Activar el &control de stock."
-msgstr "Activar el &control de stock."
-
-#: ui_articleeditbase.h:635 ui_clientebase.h:612 ui_proveditbase.h:801
-#: ui_profesorbase.h:519 ui_alumnobase.h:518 ui_tutorbase.h:453
-#: ui_actividadbase.h:432
-msgid "&Datos generales"
-msgstr "&Datos generales"
-
-#: ui_articleeditbase.h:636
-msgid "C&omponentes"
-msgstr "C&omponentes"
-
-#: ui_articleeditbase.h:637
-msgid "Descripcio&n"
-msgstr "Descripcio&n"
-
 #: ui_busquedafamiliabase.h:91
 msgid "Familia:"
 msgstr "Familia:"
 
-#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:273
+#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:248 ui_bulmafactbase.h:273
 msgid "Tipos de IVA"
 msgstr "Tipos de IVA"
 
-#: ui_bulmafactbase.h:241
+#: ui_bulmafactbase.h:220 ui_bulmafactbase.h:241
 msgid "BulmaFact - Facturacion GPL"
 msgstr "BulmaFact - Facturacion GPL"
 
-#: ui_bulmafactbase.h:242
+#: ui_bulmafactbase.h:221 ui_bulmafactbase.h:242
 msgid "&Salir del programa"
 msgstr "&Salir del programa"
 
-#: ui_bulmafactbase.h:243
+#: ui_bulmafactbase.h:222 ui_bulmafactbase.h:243
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: ui_bulmafactbase.h:244
+#: ui_bulmafactbase.h:223 ui_bulmafactbase.h:244
 msgid "&Propiedades de la empresa..."
 msgstr "&Propiedades de la empresa..."
 
-#: ui_bulmafactbase.h:247 ui_listconfiguracionbase.h:117
+#: ui_bulmafactbase.h:226 ui_listconfiguracionbase.h:117
+#: ui_bulmafactbase.h:247
 msgid "Propiedades de la empresa"
 msgstr "Propiedades de la empresa"
 
-#: ui_bulmafactbase.h:250
+#: ui_bulmafactbase.h:229 ui_bulmafactbase.h:250
 msgid "Gestion de &familias"
 msgstr "Gestion de &familias"
 
-#: ui_bulmafactbase.h:251
-msgid "&Tipos de articulo"
-msgstr "&Tipos de articulo"
-
-#: ui_bulmafactbase.h:252
-msgid "Nuevo &articulo..."
-msgstr "Nuevo &articulo..."
-
-#: ui_bulmafactbase.h:253
-msgid "F2"
-msgstr "F2"
-
-#: ui_bulmafactbase.h:254
-msgid "&Articulos"
-msgstr "&Articulos"
-
-#: ui_bulmafactbase.h:255
+#: ui_bulmafactbase.h:230 ui_bulmafactbase.h:255
 msgid "Se&ries de factura"
 msgstr "Se&ries de factura"
 
-#: ui_bulmafactbase.h:256
+#: ui_bulmafactbase.h:231 ui_bulmafactbase.h:256
 msgid "&Trabajadores"
 msgstr "&Trabajadores"
 
-#: ui_bulmafactbase.h:257
+#: ui_bulmafactbase.h:232 ui_bulmafactbase.h:257
 msgid "Ventana &completa"
 msgstr "Ventana &completa"
 
-#: ui_bulmafactbase.h:258
+#: ui_bulmafactbase.h:233 ui_bulmafactbase.h:258
 msgid "F11"
 msgstr "F11"
 
-#: ui_bulmafactbase.h:259
+#: ui_bulmafactbase.h:234 ui_bulmafactbase.h:259
 msgid "&Acerca de BulmaFact"
 msgstr "&Acerca de BulmaFact"
 
-#: ui_bulmafactbase.h:260 ui_bulmafactbase.h:316 ui_bulmafactbase.h:319
-#: ui_bulmafactbase.h:324 ui_bulmafactbase.h:329 ui_bulmafactbase.h:334
-#: ui_bulmafactbase.h:339
+#: ui_bulmafactbase.h:235 ui_bulmafactbase.h:291 ui_bulmafactbase.h:294
+#: ui_bulmafactbase.h:299 ui_bulmafactbase.h:304 ui_bulmafactbase.h:309
+#: ui_bulmafactbase.h:314 ui_bulmafactbase.h:260 ui_bulmafactbase.h:316
+#: ui_bulmafactbase.h:319 ui_bulmafactbase.h:324 ui_bulmafactbase.h:329
+#: ui_bulmafactbase.h:334 ui_bulmafactbase.h:339
 msgid "Fichas"
 msgstr "Fichas"
 
-#: ui_bulmafactbase.h:261
+#: ui_bulmafactbase.h:236 ui_bulmafactbase.h:261
 msgid "&Formas de pago"
 msgstr "&Formas de pago"
 
-#: ui_bulmafactbase.h:262
+#: ui_bulmafactbase.h:237 ui_bulmafactbase.h:262
 msgid "&Almacenes"
 msgstr "&Almacenes"
 
-#: ui_bulmafactbase.h:263
+#: ui_bulmafactbase.h:238 ui_bulmafactbase.h:263
 msgid "&Documentacion"
 msgstr "&Documentacion"
 
-#: ui_bulmafactbase.h:264
+#: ui_bulmafactbase.h:239 ui_bulmafactbase.h:264
 msgid "F1"
 msgstr "F1"
 
-#: ui_bulmafactbase.h:265
+#: ui_bulmafactbase.h:240 ui_bulmafactbase.h:265
 msgid "&Indexador"
 msgstr "&Indexador"
 
-#: ui_bulmafactbase.h:272 ui_cobrobase.h:402 ui_profesorbase.h:505
+#: ui_bulmafactbase.h:247 ui_cobrobase.h:402 ui_profesorbase.h:505
 #: ui_alumnobase.h:500 ui_tutorbase.h:441 ui_actividadbase.h:425
+#: ui_bulmafactbase.h:272
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_bulmafactbase.h:276
+#: ui_bulmafactbase.h:251 ui_bulmafactbase.h:276
 msgid "Organizacio&n en cascada"
 msgstr "Organizacio&n en cascada"
 
-#: ui_bulmafactbase.h:277
+#: ui_bulmafactbase.h:252 ui_bulmafactbase.h:277
 msgid "Ordenar &ventanas"
 msgstr "Ordenar &ventanas"
 
-#: ui_bulmafactbase.h:278 ui_bulmafactbase.h:279
+#: ui_bulmafactbase.h:253 ui_bulmafactbase.h:254 ui_bulmafactbase.h:278
+#: ui_bulmafactbase.h:279
 msgid "Paises / Provincias"
 msgstr "Paises / Provincias"
 
-#: ui_bulmafactbase.h:282
+#: ui_bulmafactbase.h:257 ui_bulmafactbase.h:282
 msgid "Paises y provincias"
 msgstr "Paises y provincias"
 
-#: ui_bulmafactbase.h:285
+#: ui_bulmafactbase.h:260 ui_bulmafactbase.h:285
 msgid "A&yuda"
 msgstr "A&yuda"
 
-#: ui_bulmafactbase.h:286
+#: ui_bulmafactbase.h:261 ui_bulmafactbase.h:286
 msgid "Articulo&s"
 msgstr "Articulo&s"
 
-#: ui_bulmafactbase.h:287
+#: ui_bulmafactbase.h:262 ui_bulmafactbase.h:287
 msgid "E&mpresa"
 msgstr "E&mpresa"
 
-#: ui_bulmafactbase.h:288
+#: ui_bulmafactbase.h:263 ui_bulmafactbase.h:288
 msgid "Maest&ro"
 msgstr "Maest&ro"
 
-#: ui_bulmafactbase.h:289
+#: ui_bulmafactbase.h:264 ui_bulmafactbase.h:289
 msgid "Venta&na"
 msgstr "Venta&na"
 
+#: ui_bulmafactbase.h:265 ui_bulmafactbase.h:268 ui_bulmafactbase.h:273
+#: ui_bulmafactbase.h:278 ui_bulmafactbase.h:283 ui_bulmafactbase.h:288
 #: ui_bulmafactbase.h:290 ui_bulmafactbase.h:293 ui_bulmafactbase.h:298
 #: ui_bulmafactbase.h:303 ui_bulmafactbase.h:308 ui_bulmafactbase.h:313
 msgid "Listados"
@@ -5049,6 +4071,11 @@ msgstr "Guardar Familia"
 msgid "Imprimir Familias"
 msgstr "Imprimir Familias"
 
+#: ui_familiasbase.h:366 ui_cuadrantediariobase.h:283 ui_cuadrantebase.h:322
+#: ui_z2zbase.h:404 ui_tiposarticulobase.h:239
+msgid "1"
+msgstr "1"
+
 #: ui_familiasbase.h:369 ui_familiasbase.h:374
 msgid "Mostrar / Ocultar Detalle"
 msgstr "Mostrar / Ocultar Detalle"
@@ -5057,6 +4084,14 @@ msgstr "Mostrar / Ocultar Detalle"
 msgid "Contenido de la familia:"
 msgstr "Contenido de la familia:"
 
+#: ui_familiasbase.h:379 ui_inventariobase.h:361 ui_contratobase.h:503
+#: ui_compraventabase.h:911 ui_presupuestoclientebase.h:774
+#: ui_albaranclientebase.h:762 ui_pedidoclientebase.h:690 ui_facturabase.h:700
+#: ui_facturapbase.h:621 ui_albaranproveedorbase.h:620
+#: ui_pedidoproveedorbase.h:708 ui_tiposarticulobase.h:244
+msgid "Descripcion:"
+msgstr "Descripcion:"
+
 #: ui_familiasbase.h:380 ui_trabajadorbase.h:341
 msgid "Nombre:"
 msgstr "Nombre:"
@@ -5064,6 +4099,10 @@ msgstr "Nombre:"
 #: ui_familiasbase.h:381
 msgid "Codigo reducido:"
 msgstr "Codigo reducido:"
+
+#: ui_familiasbase.h:382 ui_articleeditbase.h:604
+msgid "Codigo completo:"
+msgstr "Codigo completo:"
 
 #: ui_familiasbase.h:383
 msgid "Tipo Articulos"
@@ -5076,123 +4115,6 @@ msgstr "Servicio."
 #: ui_familiasbase.h:385
 msgid "Producto."
 msgstr "Producto."
-
-#: ui_articleslistbase.h:284
-msgid "Articulos"
-msgstr "Articulos"
-
-#: ui_articleslistbase.h:285
-msgid "Solo usados"
-msgstr "Solo usados"
-
-#: ui_articleslistbase.h:287
-msgid "S&olo presentables"
-msgstr "S&olo presentables"
-
-#: ui_articleslistbase.h:288
-msgid "Alt+O"
-msgstr "Alt+O"
-
-#: ui_articleslistbase.h:325 ui_articleslistbase.h:330
-#: ui_clientslistbase.h:298 ui_clientslistbase.h:303
-#: ui_providerslistbase.h:303 ui_providerslistbase.h:308
-#: ui_movimientosbase.h:268 ui_movimientosbase.h:273 ui_inventariobase.h:330
-#: ui_inventariobase.h:335 ui_contratoslistbase.h:286
-#: ui_contratoslistbase.h:291 ui_almaceneslistbase.h:371
-#: ui_almaceneslistbase.h:376 ui_zlistbase.h:256 ui_zlistbase.h:261
-#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:418 ui_cobroslistbase.h:419
-#: ui_cobroslistbase.h:424 ui_presupuestoslistbase.h:403
-#: ui_presupuestoslistbase.h:408 ui_albaranclientelistbase.h:478
-#: ui_albaranclientelistbase.h:483 ui_pedidosclientelistbase.h:419
-#: ui_pedidosclientelistbase.h:424 ui_facturaslistbase.h:473
-#: ui_facturaslistbase.h:478 ui_facturasplistbase.h:416
-#: ui_facturasplistbase.h:421 ui_albaranesproveedorlistbase.h:464
-#: ui_albaranesproveedorlistbase.h:469 ui_pedidosproveedorlistbase.h:400
-#: ui_pedidosproveedorlistbase.h:405 ui_profesoreslistbase.h:353
-#: ui_profesoreslistbase.h:358 ui_alumnoslistbase.h:353
-#: ui_alumnoslistbase.h:358 ui_tutoreslistbase.h:353 ui_tutoreslistbase.h:358
-#: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358
-msgid "Imprimir listado"
-msgstr "Imprimir listado"
-
-#: ui_articleslistbase.h:336 ui_articleslistbase.h:341
-#: ui_clientslistbase.h:309 ui_clientslistbase.h:314
-#: ui_providerslistbase.h:314 ui_providerslistbase.h:319
-#: ui_inventariobase.h:319 ui_inventariobase.h:324
-msgid "Filtrar listado"
-msgstr "Filtrar listado"
-
-#: ui_articleslistbase.h:347 ui_articleslistbase.h:352
-#: ui_clientslistbase.h:320 ui_clientslistbase.h:325
-#: ui_providerslistbase.h:325 ui_providerslistbase.h:330
-#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
-#: ui_contratoslistbase.h:308 ui_contratoslistbase.h:313
-#: ui_almaceneslistbase.h:394 ui_almaceneslistbase.h:399 ui_zlistbase.h:278
-#: ui_zlistbase.h:283 ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
-#: ui_cobroslistbase.h:443 ui_cobroslistbase.h:448
-#: ui_presupuestoslistbase.h:426 ui_presupuestoslistbase.h:431
-#: ui_albaranclientelistbase.h:502 ui_albaranclientelistbase.h:507
-#: ui_pedidosclientelistbase.h:443 ui_pedidosclientelistbase.h:448
-#: ui_facturaslistbase.h:497 ui_facturaslistbase.h:502
-#: ui_facturasplistbase.h:440 ui_facturasplistbase.h:445
-#: ui_albaranesproveedorlistbase.h:488 ui_albaranesproveedorlistbase.h:493
-#: ui_pedidosproveedorlistbase.h:424 ui_pedidosproveedorlistbase.h:429
-#: ui_profesoreslistbase.h:377 ui_profesoreslistbase.h:382
-#: ui_alumnoslistbase.h:377 ui_alumnoslistbase.h:382 ui_tutoreslistbase.h:377
-#: ui_tutoreslistbase.h:382 ui_actividadeslistbase.h:377
-#: ui_actividadeslistbase.h:382
-msgid "Configurar listado"
-msgstr "Configurar listado"
-
-#: ui_articleslistbase.h:358 ui_articleslistbase.h:363 ui_tarifalistbase.h:179
-#: ui_tarifalistbase.h:184 ui_tarifabase.h:258 ui_tarifabase.h:263
-#: ui_clientslistbase.h:331 ui_clientslistbase.h:336
-#: ui_providerslistbase.h:336 ui_providerslistbase.h:341
-#: ui_movimientosbase.h:304 ui_movimientosbase.h:309 ui_inventariobase.h:341
-#: ui_inventariobase.h:346 ui_contratoslistbase.h:319
-#: ui_contratoslistbase.h:324 ui_almaceneslistbase.h:405
-#: ui_almaceneslistbase.h:410 ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289
-#: ui_zlistbase.h:294 ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
-#: ui_cobroslistbase.h:455 ui_cobroslistbase.h:460
-#: ui_presupuestoslistbase.h:437 ui_presupuestoslistbase.h:442
-#: ui_albaranclientelistbase.h:514 ui_albaranclientelistbase.h:519
-#: ui_pedidosclientelistbase.h:455 ui_pedidosclientelistbase.h:460
-#: ui_facturaslistbase.h:509 ui_facturaslistbase.h:514
-#: ui_facturasplistbase.h:452 ui_facturasplistbase.h:457
-#: ui_albaranesproveedorlistbase.h:500 ui_albaranesproveedorlistbase.h:505
-#: ui_pedidosproveedorlistbase.h:436 ui_pedidosproveedorlistbase.h:441
-#: ui_profesoreslistbase.h:389 ui_profesoreslistbase.h:394
-#: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394 ui_tutoreslistbase.h:389
-#: ui_tutoreslistbase.h:394 ui_actividadeslistbase.h:389
-#: ui_actividadeslistbase.h:394
-msgid "Actualizar listado"
-msgstr "Actualizar listado"
-
-#: ui_articleslistbase.h:369 ui_articleslistbase.h:374
-msgid "Exportar articulos"
-msgstr "Exportar articulos"
-
-#: ui_articleslistbase.h:380 ui_articleslistbase.h:385
-msgid "Importar articulos"
-msgstr "Importar articulos"
-
-#: ui_articleslistbase.h:388 ui_clientslistbase.h:342 ui_clientslistbase.h:347
-#: ui_clientslistbase.h:361 ui_providerslistbase.h:347
-#: ui_providerslistbase.h:352 ui_providerslistbase.h:366
-msgid "Exportar"
-msgstr "Exportar"
-
-#: ui_articleslistbase.h:389 ui_clientslistbase.h:362
-#: ui_providerslistbase.h:367 ui_contratoslistbase.h:339
-#: ui_almaceneslistbase.h:415 ui_zlistbase.h:298 ui_pagoslistbase.h:455
-#: ui_cobroslistbase.h:465 ui_presupuestoslistbase.h:447
-#: ui_albaranclientelistbase.h:524 ui_pedidosclientelistbase.h:465
-#: ui_facturaslistbase.h:519 ui_facturasplistbase.h:462
-#: ui_albaranesproveedorlistbase.h:510 ui_pedidosproveedorlistbase.h:446
-#: ui_profesoreslistbase.h:399 ui_alumnoslistbase.h:399
-#: ui_tutoreslistbase.h:399 ui_actividadeslistbase.h:399
-msgid "Buscar:"
-msgstr "Buscar:"
 
 #: ui_trabajadorbase.h:338
 msgid "Trabajadores"
@@ -5232,124 +4154,20 @@ msgstr "General"
 msgid "Lista de trabajadores:"
 msgstr "Lista de trabajadores:"
 
-#: listtipoivaview.cpp:71
+#: listtipoivaview.cpp:70 listtipoivaview.cpp:71
 msgid "Error al guardar los tipos de IVA"
 msgstr "Error al guardar los tipos de IVA"
 
-#: listtipoivaview.cpp:106 listtasaivaview.cpp:96
+#: listtipoivaview.cpp:105 listtasaivaview.cpp:95 listtipoivaview.cpp:106
+#: listtasaivaview.cpp:96
 msgid "Id Tipo IVA"
 msgstr "Id Tipo IVA"
 
-#: company.cpp:91 empresatpv.cpp:77
-msgid "Inicializando listado de articulos"
-msgstr "Inicializando listado de articulos"
-
-#: company.cpp:213
+#: company.cpp:212 company.cpp:213
 msgid "Facturacion GPL"
 msgstr "Facturacion GPL"
 
-#: articuloview.cpp:63 articulolist.cpp:367 comparticulolistview.cpp:43
-#: listltarifaview.cpp:42 listlinpresupuestoview.cpp:49
-#: articulolisttpv.cpp:243
-msgid "Nombre del articulo"
-msgstr "Nombre del articulo"
-
-#: articuloview.cpp:64
-msgid "Abreviacion"
-msgstr "Abreviacion"
-
-#: articuloview.cpp:65
-msgid "Observaciones"
-msgstr "Observaciones"
-
-#: articuloview.cpp:66
-msgid "Incluir en presentaciones"
-msgstr "Incluir en presentaciones"
-
-#: articuloview.cpp:67
-msgid "Incluir en control de stock"
-msgstr "Incluir en control de stock"
-
-#: articuloview.cpp:69
-msgid "Tipo de I.V.A."
-msgstr "Tipo de I.V.A."
-
-#: articuloview.cpp:70 familiasview.cpp:51 listlinpresupuestoview.cpp:48
-#: listlinfacturapview.cpp:50
-msgid "Codigo completo"
-msgstr "Codigo completo"
-
-#: articuloview.cpp:72
-msgid "Stock"
-msgstr "Stock"
-
-#: articuloview.cpp:73
-msgid "Inactivo"
-msgstr "Inactivo"
-
-#: articuloview.cpp:74
-msgid "P.V.P. base"
-msgstr "P.V.P. base"
-
-#: articuloview.cpp:75
-msgid "Peso Unidad"
-msgstr "Peso Unidad"
-
-#: articuloview.cpp:76
-msgid "Volumen Unidad"
-msgstr "Volumen Unidad"
-
-#: articuloview.cpp:107
-msgid "Error al crear el articulo"
-msgstr "Error al crear el articulo"
-
-#: articuloview.cpp:224
-msgid ""
-"No se ha podido guardar la imagen.\n"
-"Revise los permisos de escritura y que disponga\n"
-"de espacio libre suficiente en el disco duro."
-msgstr ""
-"No se ha podido guardar la imagen.\n"
-"Revise los permisos de escritura y que disponga\n"
-"de espacio libre suficiente en el disco duro."
-
-#: articuloview.cpp:278
-msgid "Seleccione un archivo de imagen"
-msgstr "Seleccione un archivo de imagen"
-
-#: articuloview.cpp:280 trabajadorview.cpp:294
-msgid "Imagenes (*.jpg)"
-msgstr "Imagenes (*.jpg)"
-
-#: articuloview.cpp:286
-msgid ""
-"No se ha podido cargar la imagen.\n"
-"Compruebe que la imagen sea valida."
-msgstr ""
-"No se ha podido cargar la imagen.\n"
-"Compruebe que la imagen sea valida."
-
-#: articuloview.cpp:310
-msgid "Borrar imagen del articulo"
-msgstr "Borrar imagen del articulo"
-
-#: articuloview.cpp:311
-msgid ""
-"Esta seguro que quiere borrar\n"
-"la imagen asociada a este articulo?"
-msgstr ""
-"Esta seguro que quiere borrar\n"
-"la imagen asociada a este articulo?"
-
-#: articuloview.cpp:319
-msgid ""
-"No se ha podido borrar el archivo.\n"
-"Compruebe que el archivo tenga los permisos correctos."
-msgstr ""
-"No se ha podido borrar el archivo.\n"
-"Compruebe que el archivo tenga los permisos correctos."
-
-#: subform2bf.cpp:242
+#: subform2bf.cpp:227 subform2bf.cpp:242
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
@@ -5357,8 +4175,8 @@ msgstr ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 
-#: bancoview.cpp:42 ui_q19base.h:220 pagoview.cpp:69 pagoslist.cpp:254
-#: cobroview.cpp:69 cobroslist.cpp:318
+#: bancoview.cpp:42 ui_q19base.h:220 pagoview.cpp:68 pagoslist.cpp:254
+#: cobroview.cpp:69 cobroslist.cpp:318 pagoview.cpp:69
 msgid "Banco"
 msgstr "Banco"
 
@@ -5378,33 +4196,39 @@ msgstr "Error inesperado el crear el Banco"
 msgid "Error inesperado al borrar el banco"
 msgstr "Error inesperado al borrar el banco"
 
-#: listtasaivaview.cpp:50
+#: listtasaivaview.cpp:49 listtasaivaview.cpp:50
 msgid "Tasa IVA"
 msgstr "Tasa IVA"
 
-#: listtasaivaview.cpp:71
+#: listtasaivaview.cpp:70 listtasaivaview.cpp:71
 msgid "Error al guardar las tasas de IVA"
 msgstr "Error al guardar las tasas de IVA"
 
-#: listtasaivaview.cpp:94
+#: listtasaivaview.cpp:93 listtasaivaview.cpp:94
 msgid "Id Tasa IVA"
 msgstr "Id Tasa IVA"
 
-#: listtasaivaview.cpp:97
+#: listtasaivaview.cpp:96 listtasaivaview.cpp:97
 msgid "Porcentaje IVA"
 msgstr "Porcentaje IVA"
 
-#: listtasaivaview.cpp:98
+#: listtasaivaview.cpp:97 listtasaivaview.cpp:98
 msgid "Porcentaje Recargo Equivalencia"
 msgstr "Porcentaje Recargo Equivalencia"
 
-#: listtasaivaview.cpp:99
+#: listtasaivaview.cpp:98 listtasaivaview.cpp:99
 msgid "Fecha Entrada en Vigor"
 msgstr "Fecha Entrada en Vigor"
 
 #: familiasview.cpp:51
 msgid "Id familia"
 msgstr "Id familia"
+
+#: familiasview.cpp:51 listlinpresupuestoview.cpp:47
+#: listlinfacturapview.cpp:49 articuloview.cpp:70
+#: listlinpresupuestoview.cpp:48 listlinfacturapview.cpp:50
+msgid "Codigo completo"
+msgstr "Codigo completo"
 
 #: familiasview.cpp:319
 msgid "Guardar familia"
@@ -5434,49 +4258,71 @@ msgstr "no se ha podido borrar"
 msgid "Error al borrar la familia"
 msgstr "Error al borrar la familia"
 
+#: listlinalbaranproveedorview.cpp:47 listlinalbaranclienteview.cpp:45
+#: movimientosview.cpp:177 listcontrolstockview.cpp:41
+#: listlincontratoview.cpp:40 pluginalias.cpp:110
+#: listlinpresupuestoview.cpp:46 listlinpedidoclienteview.cpp:46
+#: listlinfacturaview.cpp:47 listlinpedidoproveedorview.cpp:40 ticket.cpp:94
 #: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
-#: movimientosview.cpp:176 listcontrolstockview.cpp:41
-#: listlincontratoview.cpp:41 pluginalias.cpp:110
+#: movimientosview.cpp:176 listlincontratoview.cpp:41
 #: listlinpresupuestoview.cpp:47 listlinpedidoclienteview.cpp:47
-#: listlinfacturaview.cpp:48 listlinpedidoproveedorview.cpp:41 ticket.cpp:94
+#: listlinfacturaview.cpp:48 listlinpedidoproveedorview.cpp:41
 msgid "Id articulo"
 msgstr "Id articulo"
 
-#: listlinalbaranproveedorview.cpp:49 listlinalbaranclienteview.cpp:47
-#: listcontrolstockview.cpp:37 listlincontratoview.cpp:42
+#: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
+#: listcontrolstockview.cpp:37 listlincontratoview.cpp:41
+#: listlinpedidoclienteview.cpp:47 listlinfacturaview.cpp:48
+#: listlinpedidoproveedorview.cpp:41 listlinalbaranproveedorview.cpp:49
+#: listlinalbaranclienteview.cpp:47 listlincontratoview.cpp:42
 #: listlinpedidoclienteview.cpp:48 listlinfacturaview.cpp:49
 #: listlinpedidoproveedorview.cpp:42
 msgid "Codigo completo articulo"
 msgstr "Codigo completo articulo"
 
-#: listlinalbaranproveedorview.cpp:50 listlinalbaranclienteview.cpp:48
-#: listltarifaview.cpp:59 movimientosview.cpp:178 listcontrolstockview.cpp:38
+#: listlinalbaranproveedorview.cpp:49 listlinalbaranclienteview.cpp:47
+#: listltarifaview.cpp:59 movimientosview.cpp:179 listcontrolstockview.cpp:38
+#: listlincontratoview.cpp:42 listlinpedidoclienteview.cpp:48
+#: listlinfacturaview.cpp:49 listlinpedidoproveedorview.cpp:42 ticket.cpp:96
+#: ticket.cpp:97 listlinalbaranproveedorview.cpp:50
+#: listlinalbaranclienteview.cpp:48 movimientosview.cpp:178
 #: listlincontratoview.cpp:43 listlinpedidoclienteview.cpp:49
-#: listlinfacturaview.cpp:50 listlinpedidoproveedorview.cpp:43 ticket.cpp:96
-#: ticket.cpp:97
+#: listlinfacturaview.cpp:50 listlinpedidoproveedorview.cpp:43
 msgid "Nombre articulo"
 msgstr "Nombre articulo"
 
+#: listlinalbaranproveedorview.cpp:50 listlinpedidoproveedorview.cpp:43
 #: listlinalbaranproveedorview.cpp:51 listlinpedidoproveedorview.cpp:44
 msgid "Numero de linea"
 msgstr "Numero de linea"
 
-#: listlinalbaranproveedorview.cpp:54 listlresarticulo.cpp:85
+#: listlinalbaranproveedorview.cpp:53 listlresarticulo.cpp:85
 #: listlresarticulo.cpp:128 listlresarticulo.cpp:172 facturapview.cpp:354
-#: listlinpedidoproveedorview.cpp:47 ticket.cpp:88
+#: listlinpedidoproveedorview.cpp:46 ticket.cpp:88
+#: listlinalbaranproveedorview.cpp:54 listlinpedidoproveedorview.cpp:47
 msgid "Precio"
 msgstr "Precio"
 
-#: listlinalbaranproveedorview.cpp:55 listlinpresupuestoview.cpp:54
-#: listlinpedidoclienteview.cpp:54 listlinfacturapview.cpp:56
-#: listlinpedidoproveedorview.cpp:48
+#: listlinalbaranproveedorview.cpp:54 listlinpresupuestoview.cpp:53
+#: listlinpedidoclienteview.cpp:53 listlinfacturapview.cpp:55
+#: listlinpedidoproveedorview.cpp:47 listlinalbaranproveedorview.cpp:55
+#: listlinpresupuestoview.cpp:54 listlinpedidoclienteview.cpp:54
+#: listlinfacturapview.cpp:56 listlinpedidoproveedorview.cpp:48
 msgid "% I.V.A."
 msgstr "% I.V.A."
 
+#: listlinalbaranproveedorview.cpp:55 listlinpedidoproveedorview.cpp:48
 #: listlinalbaranproveedorview.cpp:56 listlinpedidoproveedorview.cpp:49
 msgid "% R.E."
 msgstr "% R.E."
 
+#: listlinalbaranproveedorview.cpp:56 listdescalbaranclienteview.cpp:43
+#: listlinalbaranclienteview.cpp:54 listdescpresupuestoview.cpp:42
+#: listlinpresupuestoview.cpp:55 presupuestoview.cpp:70
+#: listdescpedidoclienteview.cpp:42 listlinpedidoclienteview.cpp:55
+#: listdescfacturaview.cpp:42 listlinfacturaview.cpp:56
+#: listdescfacturaprovview.cpp:42 listdescalbaranprovview.cpp:42
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 #: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:45
 #: listlinalbaranclienteview.cpp:55 listdescpresupuestoview.cpp:44
 #: listlinpresupuestoview.cpp:56 presupuestoview.cpp:71
@@ -5487,16 +4333,19 @@ msgstr "% R.E."
 msgid "% Descuento"
 msgstr "% Descuento"
 
+#: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:44
+#: listlinalbaranclienteview.cpp:55 zview.cpp:72 compraventaview.cpp:82
+#: albaranclienteview.cpp:72 listdescalbaranprovview.cpp:43 ticket.cpp:45
 #: listlinalbaranproveedorview.cpp:58 listdescalbaranclienteview.cpp:46
-#: listlinalbaranclienteview.cpp:56 zview.cpp:72 compraventaview.cpp:83
-#: albaranclienteview.cpp:73 listdescalbaranprovview.cpp:45 ticket.cpp:45
+#: listlinalbaranclienteview.cpp:56 compraventaview.cpp:83
+#: albaranclienteview.cpp:73 listdescalbaranprovview.cpp:45
 msgid "Id albaran"
 msgstr "Id albaran"
 
 #: fichabf.cpp:336 listlresarticulo.cpp:44 listlresarticulo.cpp:87
 #: listlresarticulo.cpp:130 listlresarticulo.cpp:174
-#: listlinfacturapview.cpp:58 facturapview.cpp:399 pedidoproveedorview.cpp:338
-#: ticket.cpp:90
+#: listlinfacturapview.cpp:57 facturapview.cpp:399 pedidoproveedorview.cpp:338
+#: ticket.cpp:90 listlinfacturapview.cpp:58
 msgid "Descuento"
 msgstr "Descuento"
 
@@ -5504,7 +4353,8 @@ msgstr "Descuento"
 msgid "Total Desc."
 msgstr "Total Desc."
 
-#: fichabf.cpp:383 listlinalbaranclienteview.cpp:53 listlinfacturaview.cpp:55
+#: fichabf.cpp:383 listlinalbaranclienteview.cpp:52 listlinfacturaview.cpp:54
+#: listlinalbaranclienteview.cpp:53 listlinfacturaview.cpp:55
 msgid "I.V.A."
 msgstr "I.V.A."
 
@@ -5526,25 +4376,31 @@ msgstr "I.R.P.F (-"
 msgid "Total"
 msgstr "Total"
 
-#: fichabf.cpp:847 compraventaview.cpp:711
+#: fichabf.cpp:847 compraventaview.cpp:710 compraventaview.cpp:711
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr "Tiene que guardar el documento antes de poder procesarlo."
 
-#: fichabf.cpp:851 compraventaview.cpp:715
+#: fichabf.cpp:851 compraventaview.cpp:714 compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
 msgstr "Error inesperado en la impresion"
 
-#: listdescalbaranclienteview.cpp:43 listdescpresupuestoview.cpp:42
-#: listdescpedidoclienteview.cpp:42 listdescfacturaview.cpp:42
-#: listdescfacturaprovview.cpp:42 listdescalbaranprovview.cpp:42
-#: listdescpedidoproveedorview.cpp:41
+#: listdescalbaranclienteview.cpp:41 listdescpresupuestoview.cpp:40
+#: listdescpedidoclienteview.cpp:40 listdescfacturaview.cpp:40
+#: listdescfacturaprovview.cpp:40 listdescalbaranprovview.cpp:40
+#: listdescpedidoproveedorview.cpp:39 listdescalbaranclienteview.cpp:43
+#: listdescpresupuestoview.cpp:42 listdescpedidoclienteview.cpp:42
+#: listdescfacturaview.cpp:42 listdescfacturaprovview.cpp:42
+#: listdescalbaranprovview.cpp:42 listdescpedidoproveedorview.cpp:41
 msgid "Id descuento"
 msgstr "Id descuento"
 
-#: listdescalbaranclienteview.cpp:44 listdescpresupuestoview.cpp:43
-#: listdescpedidoclienteview.cpp:43 listdescfacturaview.cpp:43
-#: listdescfacturaprovview.cpp:43 listdescalbaranprovview.cpp:43
-#: listdescpedidoproveedorview.cpp:42
+#: listdescalbaranclienteview.cpp:42 listdescpresupuestoview.cpp:41
+#: listdescpedidoclienteview.cpp:41 listdescfacturaview.cpp:41
+#: listdescfacturaprovview.cpp:41 listdescalbaranprovview.cpp:41
+#: listdescpedidoproveedorview.cpp:40 listdescalbaranclienteview.cpp:44
+#: listdescpresupuestoview.cpp:43 listdescpedidoclienteview.cpp:43
+#: listdescfacturaview.cpp:43 listdescfacturaprovview.cpp:43
+#: listdescalbaranprovview.cpp:43 listdescpedidoproveedorview.cpp:42
 msgid "Concepto descuento"
 msgstr "Concepto descuento"
 
@@ -5583,74 +4439,27 @@ msgstr "Cobrado"
 msgid "Pagado"
 msgstr "Pagado"
 
-#: listlinalbaranclienteview.cpp:49
+#: listlinalbaranclienteview.cpp:48 listlinalbaranclienteview.cpp:49
 msgid "Nº linea"
 msgstr "Nº linea"
 
-#: listlinalbaranclienteview.cpp:52 listlinfacturaview.cpp:54
-#: listlinfacturapview.cpp:55
+#: listlinalbaranclienteview.cpp:51 listlinfacturaview.cpp:53
+#: listlinfacturapview.cpp:54 listlinalbaranclienteview.cpp:52
+#: listlinfacturaview.cpp:54 listlinfacturapview.cpp:55
 msgid "P.V.P."
 msgstr "P.V.P."
 
+#: listlinalbaranclienteview.cpp:53 listlinpresupuestoview.cpp:54
+#: listlinpedidoclienteview.cpp:54 listlinfacturaview.cpp:55
 #: listlinalbaranclienteview.cpp:54 listlinpresupuestoview.cpp:55
 #: listlinpedidoclienteview.cpp:55 listlinfacturaview.cpp:56
 msgid "% Recargo E.Q."
 msgstr "% Recargo E.Q."
 
-#: articulolist.cpp:161
-msgid "Tiene que seleccionar un articulo"
-msgstr "Tiene que seleccionar un articulo"
-
-#: articulolist.cpp:168
-msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-msgstr "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-
-#: articulolist.cpp:178
-msgid "Error al borrar el articulo"
-msgstr "Error al borrar el articulo"
-
-#: articulolist.cpp:239 articulolist.cpp:264 clientslist.cpp:171
-#: clientslist.cpp:194
-msgid "Clientes (*.xml)"
-msgstr "Clientes (*.xml)"
-
-#: articulolist.cpp:365 comparticulolistview.cpp:46 plugintarifas.cpp:178
-#: listltarifaview.cpp:37 listltarifaview.cpp:61 articulolisttpv.cpp:241
-msgid "ID articulo"
-msgstr "ID articulo"
-
-#: articulolist.cpp:366 comparticulolistview.cpp:42 listltarifaview.cpp:41
-#: listltarifaview.cpp:58 articulolisttpv.cpp:242
-msgid "Codigo completo del articulo"
-msgstr "Codigo completo del articulo"
-
-#: articulolist.cpp:368 articulolisttpv.cpp:244
-msgid "Descripcion abreviada del articulo"
-msgstr "Descripcion abreviada del articulo"
-
-#: articulolist.cpp:369 articulolisttpv.cpp:245
-msgid "Observaciones sobre el articulo"
-msgstr "Observaciones sobre el articulo"
-
-#: articulolist.cpp:370 articulolisttpv.cpp:246
-msgid "Descripcion del tipo de articulo"
-msgstr "Descripcion del tipo de articulo"
-
-#: articulolist.cpp:371 articulolisttpv.cpp:247
-msgid "Descripcion tipo de I.V.A."
-msgstr "Descripcion tipo de I.V.A."
-
-#: articulolist.cpp:372 articulolisttpv.cpp:248
-msgid "P.V.P. articulo"
-msgstr "P.V.P. articulo"
-
-#: articulolist.cpp:373 articulolisttpv.cpp:249
-msgid "Disponible en stock"
-msgstr "Disponible en stock"
-
 #: trabajadorview.cpp:44 incidenciacomercial.cpp:44 pluginasterisk.cpp:164
-#: compraventaview.cpp:93 presupuestoview.cpp:74 pedidoclienteview.cpp:66
-#: albaranclienteview.cpp:83 facturaview.cpp:71 ticket.cpp:48
+#: compraventaview.cpp:92 presupuestoview.cpp:73 pedidoclienteview.cpp:66
+#: albaranclienteview.cpp:82 facturaview.cpp:71 ticket.cpp:48
+#: compraventaview.cpp:93 presupuestoview.cpp:74 albaranclienteview.cpp:83
 msgid "Trabajador"
 msgstr "Trabajador"
 
@@ -5670,31 +4479,19 @@ msgstr "Error al borrar el Trabajador"
 msgid "Seleccione archivo"
 msgstr "Seleccione archivo"
 
-#: tiposarticuloview.cpp:139
-msgid "Error en la carga"
-msgstr "Error en la carga"
+#: trabajadorview.cpp:294 articuloview.cpp:280
+msgid "Imagenes (*.jpg)"
+msgstr "Imagenes (*.jpg)"
 
-#: tiposarticuloview.cpp:290
-msgid "Guardar Tipo de Articulo"
-msgstr "Guardar Tipo de Articulo"
-
-#: tiposarticuloview.cpp:366
-msgid "Error en la creacion"
-msgstr "Error en la creacion"
-
-#: tiposarticuloview.cpp:411
-msgid "Debe seleccionar un tipo"
-msgstr "Debe seleccionar un tipo"
-
-#: listseriefacturaview.cpp:49
+#: listseriefacturaview.cpp:48 listseriefacturaview.cpp:49
 msgid "Serie de Factura"
 msgstr "Serie de Factura"
 
-#: listseriefacturaview.cpp:81
+#: listseriefacturaview.cpp:80 listseriefacturaview.cpp:81
 msgid "Codigo serie factura"
 msgstr "Codigo serie factura"
 
-#: listseriefacturaview.cpp:82
+#: listseriefacturaview.cpp:81 listseriefacturaview.cpp:82
 msgid "Descripcion serie factura"
 msgstr "Descripcion serie factura"
 
@@ -5702,43 +4499,43 @@ msgstr "Descripcion serie factura"
 msgid "Error al intentar borrar la forma de pago"
 msgstr "Error al intentar borrar la forma de pago"
 
-#: listalmacenview.cpp:71
+#: listalmacenview.cpp:70 listalmacenview.cpp:71
 msgid "Error al guardar los almacenes"
 msgstr "Error al guardar los almacenes"
 
-#: listalmacenview.cpp:97 movimientosview.cpp:181 contratoview.cpp:419
-#: pluginasterisk.cpp:107 pluginasterisk.cpp:167 compraventaview.cpp:73
-#: facturaslist.cpp:380 albaranproveedorview.cpp:64 pedidoproveedorview.cpp:56
-#: pedidosproveedorlist.cpp:328
+#: listalmacenview.cpp:96 movimientosview.cpp:182 contratoview.cpp:419
+#: pluginasterisk.cpp:107 pluginasterisk.cpp:167 compraventaview.cpp:72
+#: facturaslist.cpp:380 albaranproveedorview.cpp:63 pedidoproveedorview.cpp:56
+#: pedidosproveedorlist.cpp:328 listalmacenview.cpp:97 movimientosview.cpp:181
+#: compraventaview.cpp:73 albaranproveedorview.cpp:64
 msgid "Id almacen"
 msgstr "Id almacen"
 
-#: listalmacenview.cpp:98 movimientosview.cpp:182 listcontrolstockview.cpp:35
+#: listalmacenview.cpp:97 movimientosview.cpp:183 listcontrolstockview.cpp:35
 #: contratoview.cpp:414 almaceneslistview.cpp:57 almaceneslistview.cpp:91
-#: almacenview.cpp:59 facturaslist.cpp:375
+#: almacenview.cpp:58 facturaslist.cpp:375 listalmacenview.cpp:98
+#: movimientosview.cpp:182 almacenview.cpp:59
 msgid "Codigo almacen"
 msgstr "Codigo almacen"
 
-#: listalmacenview.cpp:99 listltarifaview.cpp:35 listltarifaview.cpp:57
-#: movimientosview.cpp:183 listcontrolstockview.cpp:36
-#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:60
+#: listalmacenview.cpp:98 listltarifaview.cpp:35 listltarifaview.cpp:57
+#: movimientosview.cpp:184 listcontrolstockview.cpp:36
+#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
+#: listalmacenview.cpp:99 movimientosview.cpp:183 almacenview.cpp:60
 msgid "Nombre almacen"
 msgstr "Nombre almacen"
 
-#: comparticulolistview.cpp:44
-msgid "Cantidad de componente de articulo"
-msgstr "Cantidad de componente de articulo"
-
-#: comparticulolistview.cpp:45
-msgid "ID componente"
-msgstr "ID componente"
+#: busquedatipoarticulo.cpp:37
+msgid "Tipo Articulo:"
+msgstr "Tipo Articulo:"
 
 #: busquedareferencia.cpp:66 rutacomercial.cpp:47 incidenciacomercial.cpp:48
 #: ui_incidenciacomercialbase.h:274 contratoslist.cpp:425 zview.cpp:75
-#: compraventaview.cpp:96 cobroview.cpp:66 presupuestoview.cpp:72
+#: compraventaview.cpp:95 cobroview.cpp:66 presupuestoview.cpp:71
 #: presupuestolist.cpp:353 pedidoclienteview.cpp:71 pedidosclientelist.cpp:332
-#: albaranclienteview.cpp:86 facturaview.cpp:69 albaranesproveedor.cpp:383
-#: ticket.cpp:52
+#: albaranclienteview.cpp:85 facturaview.cpp:69 albaranesproveedor.cpp:383
+#: ticket.cpp:52 compraventaview.cpp:96 presupuestoview.cpp:72
+#: albaranclienteview.cpp:86
 msgid "Referencia"
 msgstr "Referencia"
 
@@ -5801,6 +4598,11 @@ msgstr "plugintarifas"
 msgid "ID variacion tarifa"
 msgstr "ID variacion tarifa"
 
+#: plugintarifas.cpp:178 listltarifaview.cpp:37 listltarifaview.cpp:61
+#: articulolist.cpp:365 comparticulolistview.cpp:46 articulolisttpv.cpp:241
+msgid "ID articulo"
+msgstr "ID articulo"
+
 #: plugintarifas.cpp:183
 msgid "Cantidad mayor o igual que"
 msgstr "Cantidad mayor o igual que"
@@ -5821,6 +4623,17 @@ msgstr "Precio de venta"
 msgid "Num de linea"
 msgstr "Num de linea"
 
+#: listltarifaview.cpp:41 listltarifaview.cpp:58 articulolist.cpp:366
+#: comparticulolistview.cpp:42 articulolisttpv.cpp:242
+msgid "Codigo completo del articulo"
+msgstr "Codigo completo del articulo"
+
+#: listltarifaview.cpp:42 listlinpresupuestoview.cpp:48 articulolist.cpp:367
+#: comparticulolistview.cpp:43 articuloview.cpp:63 articulolisttpv.cpp:243
+#: listlinpresupuestoview.cpp:49
+msgid "Nombre del articulo"
+msgstr "Nombre del articulo"
+
 #: ui_tarifalistbase.h:149 ui_tarifalistbase.h:154
 msgid "Nueva tarifa"
 msgstr "Nueva tarifa"
@@ -5828,6 +4641,30 @@ msgstr "Nueva tarifa"
 #: ui_tarifalistbase.h:159 ui_tarifalistbase.h:164
 msgid "Editar tarifa"
 msgstr "Editar tarifa"
+
+#: ui_tarifalistbase.h:179 ui_tarifalistbase.h:184 ui_tarifabase.h:258
+#: ui_tarifabase.h:263 ui_clientslistbase.h:331 ui_clientslistbase.h:336
+#: ui_providerslistbase.h:336 ui_providerslistbase.h:341
+#: ui_movimientosbase.h:304 ui_movimientosbase.h:309 ui_inventariobase.h:341
+#: ui_inventariobase.h:346 ui_contratoslistbase.h:319
+#: ui_contratoslistbase.h:324 ui_almaceneslistbase.h:405
+#: ui_almaceneslistbase.h:410 ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289
+#: ui_zlistbase.h:294 ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
+#: ui_cobroslistbase.h:455 ui_cobroslistbase.h:460
+#: ui_presupuestoslistbase.h:437 ui_presupuestoslistbase.h:442
+#: ui_albaranclientelistbase.h:514 ui_albaranclientelistbase.h:519
+#: ui_pedidosclientelistbase.h:455 ui_pedidosclientelistbase.h:460
+#: ui_facturaslistbase.h:509 ui_facturaslistbase.h:514
+#: ui_facturasplistbase.h:452 ui_facturasplistbase.h:457
+#: ui_albaranesproveedorlistbase.h:500 ui_albaranesproveedorlistbase.h:505
+#: ui_pedidosproveedorlistbase.h:436 ui_pedidosproveedorlistbase.h:441
+#: ui_profesoreslistbase.h:389 ui_profesoreslistbase.h:394
+#: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394 ui_tutoreslistbase.h:389
+#: ui_tutoreslistbase.h:394 ui_actividadeslistbase.h:389
+#: ui_actividadeslistbase.h:394 ui_articleslistbase.h:358
+#: ui_articleslistbase.h:363
+msgid "Actualizar listado"
+msgstr "Actualizar listado"
 
 #: ui_tarifabase.h:267
 msgid "Nombre de la tarifa:"
@@ -5845,16 +4682,18 @@ msgid "Almacen:"
 msgstr "Almacen:"
 
 #: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
-#: rutacomercialview.cpp:57 rutacomercialview.cpp:80 rutacomerciallist.cpp:47
+#: rutacomercialview.cpp:56 rutacomercialview.cpp:79 rutacomerciallist.cpp:47
 #: rutacomerciallist.cpp:78 ui_rutacomercialbase.h:234
 #: ui_rutacomerciallistbase.h:368 ui_incidenciacomercialbase.h:287
-#: movimientosview.cpp:64 contratoview.cpp:65 contratoslist.cpp:64
-#: compraventaview.cpp:112 cobroview.cpp:53 cobroslist.cpp:51
-#: cobroslist.cpp:79 presupuestoview.cpp:99 presupuestolist.cpp:53
+#: movimientosview.cpp:65 contratoview.cpp:65 contratoslist.cpp:64
+#: compraventaview.cpp:111 cobroview.cpp:53 cobroslist.cpp:51
+#: cobroslist.cpp:79 presupuestoview.cpp:98 presupuestolist.cpp:53
 #: presupuestolist.cpp:85 pedidoclienteview.cpp:91 pedidosclientelist.cpp:52
-#: pedidosclientelist.cpp:84 albaranclienteview.cpp:106
+#: pedidosclientelist.cpp:84 albaranclienteview.cpp:105
 #: albaranclientelist.cpp:156 facturaslist.cpp:56 facturaslist.cpp:89
-#: facturaview.cpp:96 pluginbuscacliente.cpp:73
+#: facturaview.cpp:96 pluginbuscacliente.cpp:73 rutacomercialview.cpp:57
+#: rutacomercialview.cpp:80 movimientosview.cpp:64 compraventaview.cpp:112
+#: presupuestoview.cpp:99 albaranclienteview.cpp:106
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -5882,11 +4721,12 @@ msgstr "&Rutas comerciales"
 msgid "Rutas comerciales"
 msgstr "Rutas comerciales"
 
-#: listzonacomercialview.cpp:78 rutacomerciallist.cpp:286
+#: listzonacomercialview.cpp:77 rutacomerciallist.cpp:286
+#: listzonacomercialview.cpp:78
 msgid "ID zona comercial"
 msgstr "ID zona comercial"
 
-#: listzonacomercialview.cpp:79
+#: listzonacomercialview.cpp:78 listzonacomercialview.cpp:79
 msgid "Nombre de la zona comercial"
 msgstr "Nombre de la zona comercial"
 
@@ -5926,15 +4766,15 @@ msgstr "Cambio datos"
 msgid "Revisar"
 msgstr "Revisar"
 
-#: rutacomercial.cpp:39 incidenciacomercial.cpp:94 rutacomercialview.cpp:141
+#: rutacomercial.cpp:39 incidenciacomercial.cpp:94 rutacomercialview.cpp:140
 #: ui_rutacomercialbase.h:219 ui_rutacomercialincbase.h:204
-#: ui_incidenciacomercialbase.h:272
+#: ui_incidenciacomercialbase.h:272 rutacomercialview.cpp:141
 msgid "Ruta comercial"
 msgstr "Ruta comercial"
 
-#: rutacomercial.cpp:46 incidenciacomercial.cpp:47 cuadrantediarioview.cpp:73
+#: rutacomercial.cpp:46 incidenciacomercial.cpp:47 cuadrantediarioview.cpp:72
 #: pluginasterisk.cpp:100 pluginasterisk.cpp:163 zview.cpp:60 zview.cpp:81
-#: zlist.cpp:58 ui_zbase.h:323 ticket.cpp:47
+#: zlist.cpp:58 ui_zbase.h:323 ticket.cpp:47 cuadrantediarioview.cpp:73
 msgid "Hora"
 msgstr "Hora"
 
@@ -5992,9 +4832,9 @@ msgstr "Apellidos del trabajador"
 msgid "ID cliente"
 msgstr "ID cliente"
 
-#: rutacomerciallist.cpp:292 cuadrante1view.cpp:77 plugincuadrante.cpp:261
+#: rutacomerciallist.cpp:292 cuadrante1view.cpp:76 plugincuadrante.cpp:261
 #: cobroslist.cpp:322 presupuestolist.cpp:362 pedidosclientelist.cpp:341
-#: albaranclientelist.cpp:390
+#: albaranclientelist.cpp:390 cuadrante1view.cpp:77
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
@@ -6176,11 +5016,12 @@ msgid "Estado de la incidencia:"
 msgstr "Estado de la incidencia:"
 
 #: clienteview.cpp:52 ui_clientebase.h:555 ui_contratoslistbase.h:341
-#: listlresarticulo.cpp:36 listlresarticulo.cpp:80 compraventaview.cpp:84
-#: cobroview.cpp:62 presupuestoview.cpp:62 presupuestolist.cpp:352
+#: listlresarticulo.cpp:36 listlresarticulo.cpp:80 compraventaview.cpp:83
+#: cobroview.cpp:62 presupuestoview.cpp:61 presupuestolist.cpp:352
 #: pedidoclienteview.cpp:60 pedidosclientelist.cpp:331
-#: albaranclienteview.cpp:74 facturaview.cpp:62 ticket.cpp:49
-#: pluginbuscacliente.cpp:57
+#: albaranclienteview.cpp:73 facturaview.cpp:62 ticket.cpp:49
+#: pluginbuscacliente.cpp:57 compraventaview.cpp:84 presupuestoview.cpp:62
+#: albaranclienteview.cpp:74
 msgid "Cliente"
 msgstr "Cliente"
 
@@ -6202,13 +5043,14 @@ msgid "Poblacion"
 msgstr "Poblacion"
 
 #: clienteview.cpp:63 clientslist.cpp:283 providerslist.cpp:293
-#: provedit.cpp:54 almacenview.cpp:63 pluginclientprov.cpp:69
+#: provedit.cpp:54 almacenview.cpp:62 pluginclientprov.cpp:69
+#: almacenview.cpp:63
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
 #: clienteview.cpp:64 clientslist.cpp:284 providerslist.cpp:294
 #: provedit.cpp:55 pluginclientprov.cpp:70 cobroslist.cpp:313
-#: presupuestoview.cpp:68
+#: presupuestoview.cpp:67 presupuestoview.cpp:68
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
@@ -6266,6 +5108,7 @@ msgid "Error al crear el cliente"
 msgstr "Error al crear el cliente"
 
 #: clienteview.cpp:164 cobroview.cpp:121 pedidoproveedorview.cpp:239
+#: profesorview.cpp:97 alumnoview.cpp:96 tutorview.cpp:96 actividadview.cpp:95
 #: profesorview.cpp:98 alumnoview.cpp:97 tutorview.cpp:97 actividadview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
@@ -6282,7 +5125,13 @@ msgstr "Listado de Clientes"
 msgid "Error al borrar un cliente"
 msgstr "Error al borrar un cliente"
 
+#: clientslist.cpp:171 clientslist.cpp:194 articulolist.cpp:239
+#: articulolist.cpp:264
+msgid "Clientes (*.xml)"
+msgstr "Clientes (*.xml)"
+
 #: clientslist.cpp:237 pluginbf_cliente.cpp:107 pluginbf_cliente.cpp:108
+#: pluginbf_articulo.cpp:120 pluginbf_articulo.cpp:121
 msgid "Nuevo cliente"
 msgstr "Nuevo cliente"
 
@@ -6328,10 +5177,79 @@ msgstr "&Nuevo Cliente"
 msgid "Nuevo"
 msgstr "Nuevo"
 
+#: ui_clientslistbase.h:298 ui_clientslistbase.h:303
+#: ui_providerslistbase.h:303 ui_providerslistbase.h:308
+#: ui_movimientosbase.h:268 ui_movimientosbase.h:273 ui_inventariobase.h:330
+#: ui_inventariobase.h:335 ui_contratoslistbase.h:286
+#: ui_contratoslistbase.h:291 ui_almaceneslistbase.h:371
+#: ui_almaceneslistbase.h:376 ui_zlistbase.h:256 ui_zlistbase.h:261
+#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:418 ui_cobroslistbase.h:419
+#: ui_cobroslistbase.h:424 ui_presupuestoslistbase.h:403
+#: ui_presupuestoslistbase.h:408 ui_albaranclientelistbase.h:478
+#: ui_albaranclientelistbase.h:483 ui_pedidosclientelistbase.h:419
+#: ui_pedidosclientelistbase.h:424 ui_facturaslistbase.h:473
+#: ui_facturaslistbase.h:478 ui_facturasplistbase.h:416
+#: ui_facturasplistbase.h:421 ui_albaranesproveedorlistbase.h:464
+#: ui_albaranesproveedorlistbase.h:469 ui_pedidosproveedorlistbase.h:400
+#: ui_pedidosproveedorlistbase.h:405 ui_profesoreslistbase.h:353
+#: ui_profesoreslistbase.h:358 ui_alumnoslistbase.h:353
+#: ui_alumnoslistbase.h:358 ui_tutoreslistbase.h:353 ui_tutoreslistbase.h:358
+#: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358
+#: ui_articleslistbase.h:325 ui_articleslistbase.h:330
+msgid "Imprimir listado"
+msgstr "Imprimir listado"
+
+#: ui_clientslistbase.h:309 ui_clientslistbase.h:314
+#: ui_providerslistbase.h:314 ui_providerslistbase.h:319
+#: ui_inventariobase.h:319 ui_inventariobase.h:324 ui_articleslistbase.h:336
+#: ui_articleslistbase.h:341
+msgid "Filtrar listado"
+msgstr "Filtrar listado"
+
+#: ui_clientslistbase.h:320 ui_clientslistbase.h:325
+#: ui_providerslistbase.h:325 ui_providerslistbase.h:330
+#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
+#: ui_contratoslistbase.h:308 ui_contratoslistbase.h:313
+#: ui_almaceneslistbase.h:394 ui_almaceneslistbase.h:399 ui_zlistbase.h:278
+#: ui_zlistbase.h:283 ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
+#: ui_cobroslistbase.h:443 ui_cobroslistbase.h:448
+#: ui_presupuestoslistbase.h:426 ui_presupuestoslistbase.h:431
+#: ui_albaranclientelistbase.h:502 ui_albaranclientelistbase.h:507
+#: ui_pedidosclientelistbase.h:443 ui_pedidosclientelistbase.h:448
+#: ui_facturaslistbase.h:497 ui_facturaslistbase.h:502
+#: ui_facturasplistbase.h:440 ui_facturasplistbase.h:445
+#: ui_albaranesproveedorlistbase.h:488 ui_albaranesproveedorlistbase.h:493
+#: ui_pedidosproveedorlistbase.h:424 ui_pedidosproveedorlistbase.h:429
+#: ui_profesoreslistbase.h:377 ui_profesoreslistbase.h:382
+#: ui_alumnoslistbase.h:377 ui_alumnoslistbase.h:382 ui_tutoreslistbase.h:377
+#: ui_tutoreslistbase.h:382 ui_actividadeslistbase.h:377
+#: ui_actividadeslistbase.h:382 ui_articleslistbase.h:347
+#: ui_articleslistbase.h:352
+msgid "Configurar listado"
+msgstr "Configurar listado"
+
+#: ui_clientslistbase.h:342 ui_clientslistbase.h:347 ui_clientslistbase.h:361
+#: ui_providerslistbase.h:347 ui_providerslistbase.h:352
+#: ui_providerslistbase.h:366 ui_articleslistbase.h:388
+msgid "Exportar"
+msgstr "Exportar"
+
 #: ui_clientslistbase.h:353 ui_clientslistbase.h:358
 #: ui_providerslistbase.h:358 ui_providerslistbase.h:363
 msgid "Importar"
 msgstr "Importar"
+
+#: ui_clientslistbase.h:362 ui_providerslistbase.h:367
+#: ui_contratoslistbase.h:339 ui_almaceneslistbase.h:415 ui_zlistbase.h:298
+#: ui_pagoslistbase.h:455 ui_cobroslistbase.h:465
+#: ui_presupuestoslistbase.h:447 ui_albaranclientelistbase.h:524
+#: ui_pedidosclientelistbase.h:465 ui_facturaslistbase.h:519
+#: ui_facturasplistbase.h:462 ui_albaranesproveedorlistbase.h:510
+#: ui_pedidosproveedorlistbase.h:446 ui_profesoreslistbase.h:399
+#: ui_alumnoslistbase.h:399 ui_tutoreslistbase.h:399
+#: ui_actividadeslistbase.h:399 ui_articleslistbase.h:389
+msgid "Buscar:"
+msgstr "Buscar:"
 
 #: ui_clientslistbase.h:363
 msgid "Pro&cesados"
@@ -6406,6 +5324,12 @@ msgstr "Aplicar Recargo de Equivalencia"
 #: ui_clientebase.h:611
 msgid "Regimen fiscal:"
 msgstr "Regimen fiscal:"
+
+#: ui_clientebase.h:612 ui_proveditbase.h:801 ui_profesorbase.h:519
+#: ui_alumnobase.h:518 ui_tutorbase.h:453 ui_actividadbase.h:432
+#: ui_articleeditbase.h:635
+msgid "&Datos generales"
+msgstr "&Datos generales"
 
 #: ui_clientebase.h:614 ui_profesorbase.h:521
 msgid "Datos de comercio electronico:"
@@ -6644,39 +5568,43 @@ msgstr "Guardar proveedor"
 msgid "Borrar proveedor"
 msgstr "Borrar proveedor"
 
-#: movimientosview.cpp:87 facturaslist.cpp:116 facturasplist.cpp:121
+#: movimientosview.cpp:88 facturaslist.cpp:116 facturasplist.cpp:121
+#: movimientosview.cpp:87
 msgid "Todas las facturas"
 msgstr "Todas las facturas"
 
-#: movimientosview.cpp:88 facturaslist.cpp:117 facturasplist.cpp:122
+#: movimientosview.cpp:89 facturaslist.cpp:117 facturasplist.cpp:122
+#: movimientosview.cpp:88
 msgid "Facturas procesadas"
 msgstr "Facturas procesadas"
 
-#: movimientosview.cpp:89 facturaslist.cpp:118 facturasplist.cpp:123
+#: movimientosview.cpp:90 facturaslist.cpp:118 facturasplist.cpp:123
+#: movimientosview.cpp:89
 msgid "Facturas no procesadas"
 msgstr "Facturas no procesadas"
 
-#: movimientosview.cpp:148 ui_facturaslistbase.h:427 pluginfactura.cpp:100
-#: pluginfactura.cpp:101 facturaslist.cpp:240
+#: movimientosview.cpp:149 ui_facturaslistbase.h:427 pluginfactura.cpp:100
+#: pluginfactura.cpp:101 facturaslist.cpp:240 movimientosview.cpp:148
 msgid "Facturas a clientes"
 msgstr "Facturas a clientes"
 
-#: movimientosview.cpp:174
+#: movimientosview.cpp:175 movimientosview.cpp:174
 msgid "idarticulo"
 msgstr "idarticulo"
 
-#: movimientosview.cpp:177 ticket.cpp:95
+#: movimientosview.cpp:178 ticket.cpp:95 movimientosview.cpp:177
 msgid "Codigo articulo"
 msgstr "Codigo articulo"
 
-#: movimientosview.cpp:180
+#: movimientosview.cpp:181 movimientosview.cpp:180
 msgid "Lote"
 msgstr "Lote"
 
-#: movimientosview.cpp:184
+#: movimientosview.cpp:185 movimientosview.cpp:184
 msgid "Id albaran cliente"
 msgstr "Id albaran cliente"
 
+#: movimientosview.cpp:186 compraventaview.cpp:66 albaranproveedorview.cpp:57
 #: movimientosview.cpp:185 compraventaview.cpp:67 albaranproveedorview.cpp:58
 msgid "Id albaran proveedor"
 msgstr "Id albaran proveedor"
@@ -6890,10 +5818,11 @@ msgstr "Pregenerar inventario"
 msgid "Fecha creacion:"
 msgstr "Fecha creacion:"
 
-#: ui_inventariobase.h:363 zview.cpp:77 compraventaview.cpp:94
-#: ui_compraventabase.h:915 presupuestoview.cpp:70 ui_albaranclientebase.h:764
+#: ui_inventariobase.h:363 zview.cpp:77 compraventaview.cpp:93
+#: ui_compraventabase.h:915 presupuestoview.cpp:69 ui_albaranclientebase.h:764
 #: ui_pedidoclientebase.h:692 pedidoclienteview.cpp:70
-#: albaranclienteview.cpp:84 albaranesproveedor.cpp:386
+#: albaranclienteview.cpp:83 albaranesproveedor.cpp:386 compraventaview.cpp:94
+#: presupuestoview.cpp:70 albaranclienteview.cpp:84
 msgid "Procesado"
 msgstr "Procesado"
 
@@ -6921,23 +5850,23 @@ msgstr "Editar inventario"
 msgid "Imprimir Stocks Actuales"
 msgstr "Imprimir Stocks Actuales"
 
-#: listlincontratoview.cpp:44
+#: listlincontratoview.cpp:43 listlincontratoview.cpp:44
 msgid "Idl contrato"
 msgstr "Idl contrato"
 
-#: listlincontratoview.cpp:45
+#: listlincontratoview.cpp:44 listlincontratoview.cpp:45
 msgid "Descripcionl contrato"
 msgstr "Descripcionl contrato"
 
-#: listlincontratoview.cpp:46
+#: listlincontratoview.cpp:45 listlincontratoview.cpp:46
 msgid "Cantidadl contrato"
 msgstr "Cantidadl contrato"
 
-#: listlincontratoview.cpp:47
+#: listlincontratoview.cpp:46 listlincontratoview.cpp:47
 msgid "PVPl contrato"
 msgstr "PVPl contrato"
 
-#: listlincontratoview.cpp:48 contrato.cpp:42
+#: listlincontratoview.cpp:47 contrato.cpp:42 listlincontratoview.cpp:48
 msgid "Id contrato"
 msgstr "Id contrato"
 
@@ -6978,9 +5907,10 @@ msgstr "Impuestos"
 msgid "Procesada"
 msgstr "Procesada"
 
-#: contratoview.cpp:410 facturaslist.cpp:371 listdescfacturaview.cpp:45
-#: listlinfacturaview.cpp:58 facturaview.cpp:61 listdescfacturaprovview.cpp:45
-#: facturasplist.cpp:352
+#: contratoview.cpp:410 facturaslist.cpp:371 listdescfacturaview.cpp:43
+#: listlinfacturaview.cpp:57 facturaview.cpp:61 listdescfacturaprovview.cpp:43
+#: facturasplist.cpp:352 listdescfacturaview.cpp:45 listlinfacturaview.cpp:58
+#: listdescfacturaprovview.cpp:45
 msgid "Id factura"
 msgstr "Id factura"
 
@@ -7162,6 +6092,8 @@ msgid "Id color"
 msgstr "Id color"
 
 #: listtallasview.cpp:100 plugin_tc_articulos.cpp:84
+#: plugin_tc_articulos.cpp:290 plugin_tc_articulos.cpp:312
+#: plugin_tc_articulos.cpp:335 plugin_tc_articulos.cpp:364
 #: plugin_tc_articulos.cpp:287 plugin_tc_articulos.cpp:309
 #: plugin_tc_articulos.cpp:332 plugin_tc_articulos.cpp:361
 msgid "Nombre talla"
@@ -7175,20 +6107,26 @@ msgstr "Alias"
 msgid "Id Articulo"
 msgstr "Id Articulo"
 
-#: plugin_tc_articulos.cpp:78 plugin_tc_articulos.cpp:284
+#: plugin_tc_articulos.cpp:78 plugin_tc_articulos.cpp:287
+#: plugin_tc_articulos.cpp:309 plugin_tc_articulos.cpp:332
+#: plugin_tc_articulos.cpp:361 plugin_tc_articulos.cpp:284
 #: plugin_tc_articulos.cpp:306 plugin_tc_articulos.cpp:329
 #: plugin_tc_articulos.cpp:358
 msgid "color"
 msgstr "color"
 
-#: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:285
+#: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:288
+#: plugin_tc_articulos.cpp:310 plugin_tc_articulos.cpp:333
+#: plugin_tc_articulos.cpp:362 pluginaliastpv.cpp:35 plugintcaliastpv.cpp:35
+#: plugintcaliastpv.cpp:37 plugin_tc_articulos.cpp:285
 #: plugin_tc_articulos.cpp:307 plugin_tc_articulos.cpp:330
-#: plugin_tc_articulos.cpp:359 pluginaliastpv.cpp:35 plugintcaliastpv.cpp:35
-#: plugintcaliastpv.cpp:37
+#: plugin_tc_articulos.cpp:359
 msgid "Talla"
 msgstr "Talla"
 
-#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:286
+#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:289
+#: plugin_tc_articulos.cpp:311 plugin_tc_articulos.cpp:334
+#: plugin_tc_articulos.cpp:363 plugin_tc_articulos.cpp:286
 #: plugin_tc_articulos.cpp:308 plugin_tc_articulos.cpp:331
 #: plugin_tc_articulos.cpp:360
 msgid "Nombre color"
@@ -7300,7 +6238,7 @@ msgstr "Save file"
 msgid "*.q19"
 msgstr "*.q19"
 
-#: q19view.cpp:79
+#: q19view.cpp:78 q19view.cpp:79
 msgid "Error al crear el archivo"
 msgstr "Error al crear el archivo"
 
@@ -7337,31 +6275,31 @@ msgstr "Debe seleccionar una linea"
 msgid "Error al borrar el almacen"
 msgstr "Error al borrar el almacen"
 
-#: almacenview.cpp:61
+#: almacenview.cpp:60 almacenview.cpp:61
 msgid "Direccion almacen"
 msgstr "Direccion almacen"
 
-#: almacenview.cpp:62
+#: almacenview.cpp:61 almacenview.cpp:62
 msgid "Poblacion almacen"
 msgstr "Poblacion almacen"
 
-#: almacenview.cpp:64
+#: almacenview.cpp:63 almacenview.cpp:64
 msgid "Telefono almacen"
 msgstr "Telefono almacen"
 
-#: almacenview.cpp:65
+#: almacenview.cpp:64 almacenview.cpp:65
 msgid "Fax almacen"
 msgstr "Fax almacen"
 
-#: almacenview.cpp:66
+#: almacenview.cpp:65 almacenview.cpp:66
 msgid "email almacen"
 msgstr "email almacen"
 
-#: almacenview.cpp:67
+#: almacenview.cpp:66 almacenview.cpp:67
 msgid "Fecha almacen"
 msgstr "Fecha almacen"
 
-#: almacenview.cpp:70
+#: almacenview.cpp:69 almacenview.cpp:70
 msgid "Tipo almacen"
 msgstr "Tipo almacen"
 
@@ -7449,19 +6387,19 @@ msgstr "ID tipo de trabajo"
 msgid "Id tipo de trabajo"
 msgstr "Id tipo de trabajo"
 
-#: listtipostrabajoview.cpp:49
+#: listtipostrabajoview.cpp:48 listtipostrabajoview.cpp:49
 msgid "almacen"
 msgstr "almacen"
 
-#: listtipostrabajoview.cpp:56
+#: listtipostrabajoview.cpp:55 listtipostrabajoview.cpp:56
 msgid "Id tipo trabajo"
 msgstr "Id tipo trabajo"
 
-#: listtipostrabajoview.cpp:57
+#: listtipostrabajoview.cpp:56 listtipostrabajoview.cpp:57
 msgid "Nombre tipo trabajo"
 msgstr "Nombre tipo trabajo"
 
-#: listtipostrabajoview.cpp:58
+#: listtipostrabajoview.cpp:57 listtipostrabajoview.cpp:58
 msgid "Color tipo trabajo"
 msgstr "Color tipo trabajo"
 
@@ -7469,88 +6407,97 @@ msgstr "Color tipo trabajo"
 msgid "Tipos de Trabajo"
 msgstr "Tipos de Trabajo"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:166
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:165
+#: cuadrantediarioview.cpp:166
 msgid "Lunes"
 msgstr "Lunes"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:167
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:166
+#: cuadrantediarioview.cpp:167
 msgid "Martes"
 msgstr "Martes"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:168
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:167
+#: cuadrantediarioview.cpp:168
 msgid "Miercoles"
 msgstr "Miercoles"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:169
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:168
+#: cuadrantediarioview.cpp:169
 msgid "Jueves"
 msgstr "Jueves"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:170
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:169
+#: cuadrantediarioview.cpp:170
 msgid "Viernes"
 msgstr "Viernes"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:171
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:170
+#: cuadrantediarioview.cpp:171
 msgid "Sabado"
 msgstr "Sabado"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:172
+#: cuadranteview.cpp:151 cuadrantediarioview.cpp:171
+#: cuadrantediarioview.cpp:172
 msgid "Domingo"
 msgstr "Domingo"
 
-#: cuadranteview.cpp:250 cuadrantediarioview.cpp:290
+#: cuadranteview.cpp:250 cuadrantediarioview.cpp:289
+#: cuadrantediarioview.cpp:290
 msgid "Normal"
 msgstr "Normal"
 
-#: cuadranteview.cpp:251 cuadrantediarioview.cpp:291
+#: cuadranteview.cpp:251 cuadrantediarioview.cpp:290
+#: cuadrantediarioview.cpp:291
 msgid "Fiesta general"
 msgstr "Fiesta general"
 
-#: cuadrante1view.cpp:55 ui_cuadrantediariobase.h:280
-#: ui_cuadrantediariobase.h:281 ui_cuadrantebase.h:248
+#: cuadrante1view.cpp:54 ui_cuadrantediariobase.h:280
+#: ui_cuadrantediariobase.h:281 ui_cuadrantebase.h:248 cuadrante1view.cpp:55
 msgid "Cuadrante"
 msgstr "Cuadrante"
 
-#: cuadrante1view.cpp:58
+#: cuadrante1view.cpp:57 cuadrante1view.cpp:58
 msgid "ID cuadrante"
 msgstr "ID cuadrante"
 
-#: cuadrante1view.cpp:62
+#: cuadrante1view.cpp:61 cuadrante1view.cpp:62
 msgid "Apertura manyana"
 msgstr "Apertura manyana"
 
-#: cuadrante1view.cpp:63
+#: cuadrante1view.cpp:62 cuadrante1view.cpp:63
 msgid "Cierre manyana"
 msgstr "Cierre manyana"
 
-#: cuadrante1view.cpp:64
+#: cuadrante1view.cpp:63 cuadrante1view.cpp:64
 msgid "Apartura tarde"
 msgstr "Apartura tarde"
 
-#: cuadrante1view.cpp:65
+#: cuadrante1view.cpp:64 cuadrante1view.cpp:65
 msgid "Cierre tarde"
 msgstr "Cierre tarde"
 
-#: cuadrante1view.cpp:66 ui_cuadrante1base.h:344
+#: cuadrante1view.cpp:65 ui_cuadrante1base.h:344 cuadrante1view.cpp:66
 msgid "Festivo"
 msgstr "Festivo"
 
-#: cuadrante1view.cpp:73
+#: cuadrante1view.cpp:72 cuadrante1view.cpp:73
 msgid "Nombre Trabajador"
 msgstr "Nombre Trabajador"
 
-#: cuadrante1view.cpp:74
+#: cuadrante1view.cpp:73 cuadrante1view.cpp:74
 msgid "Hora Inicio"
 msgstr "Hora Inicio"
 
-#: cuadrante1view.cpp:75
+#: cuadrante1view.cpp:74 cuadrante1view.cpp:75
 msgid "Hora Fin"
 msgstr "Hora Fin"
 
-#: cuadrante1view.cpp:76
+#: cuadrante1view.cpp:75 cuadrante1view.cpp:76
 msgid "ID Cuadrante"
 msgstr "ID Cuadrante"
 
-#: cuadrante1view.cpp:78
+#: cuadrante1view.cpp:77 cuadrante1view.cpp:78
 msgid "ID horario"
 msgstr "ID horario"
 
@@ -7570,7 +6517,7 @@ msgstr "Motivo"
 msgid "ID ausencia"
 msgstr "ID ausencia"
 
-#: cuadrantediarioview.cpp:99
+#: cuadrantediarioview.cpp:98 cuadrantediarioview.cpp:99
 msgid "Error al iniciar el cuadrante"
 msgstr "Error al iniciar el cuadrante"
 
@@ -7674,9 +6621,9 @@ msgstr "Num. tickets"
 msgid "Id. almacen"
 msgstr "Id. almacen"
 
-#: zview.cpp:78 compraventaview.cpp:72 pluginclientprov.cpp:77
-#: facturapview.cpp:66 albaranproveedorview.cpp:63 pedidoproveedorview.cpp:63
-#: ticket.cpp:54
+#: zview.cpp:78 compraventaview.cpp:71 pluginclientprov.cpp:77
+#: facturapview.cpp:66 albaranproveedorview.cpp:62 pedidoproveedorview.cpp:63
+#: ticket.cpp:54 compraventaview.cpp:72 albaranproveedorview.cpp:63
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
@@ -7704,11 +6651,11 @@ msgstr "Num. Tickets"
 msgid "Cuadres de Caja"
 msgstr "Cuadres de Caja"
 
-#: plugindebugbf.cpp:92
+#: plugindebugbf.cpp:94 plugindebugbf.cpp:92
 msgid "Activa/Desactiva el Modo Debug"
 msgstr "Activa/Desactiva el Modo Debug"
 
-#: plugindebugbf.cpp:93
+#: plugindebugbf.cpp:95 plugindebugbf.cpp:93
 msgid ""
 "Debug.\n"
 "\n"
@@ -7772,73 +6719,85 @@ msgstr "&CompraVenta"
 msgid "CompraVenta"
 msgstr "CompraVenta"
 
-#: compraventaview.cpp:68 albaranproveedorview.cpp:59
+#: compraventaview.cpp:67 albaranproveedorview.cpp:58 compraventaview.cpp:68
+#: albaranproveedorview.cpp:59
 msgid "Numero albaran proveedor"
 msgstr "Numero albaran proveedor"
 
-#: compraventaview.cpp:69 albaranproveedorview.cpp:60
+#: compraventaview.cpp:68 albaranproveedorview.cpp:59 compraventaview.cpp:69
+#: albaranproveedorview.cpp:60
 msgid "Fecha albaran proveedor"
 msgstr "Fecha albaran proveedor"
 
-#: compraventaview.cpp:70 albaranproveedorview.cpp:61
+#: compraventaview.cpp:69 albaranproveedorview.cpp:60 compraventaview.cpp:70
+#: albaranproveedorview.cpp:61
 msgid "Comentario albaran proveedor"
 msgstr "Comentario albaran proveedor"
 
-#: compraventaview.cpp:71 pagoview.cpp:63 pagoslist.cpp:247
-#: facturapview.cpp:58 facturasplist.cpp:360 albaranproveedorview.cpp:62
+#: compraventaview.cpp:70 pagoview.cpp:62 pagoslist.cpp:247
+#: facturapview.cpp:58 facturasplist.cpp:360 albaranproveedorview.cpp:61
 #: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:327
+#: compraventaview.cpp:71 pagoview.cpp:63 albaranproveedorview.cpp:62
 msgid "Id proveedor"
 msgstr "Id proveedor"
 
-#: compraventaview.cpp:74 albaranproveedorview.cpp:65
+#: compraventaview.cpp:73 albaranproveedorview.cpp:64 compraventaview.cpp:74
+#: albaranproveedorview.cpp:65
 msgid "Referencia albaran proveedor"
 msgstr "Referencia albaran proveedor"
 
-#: compraventaview.cpp:75 albaranproveedorview.cpp:66
+#: compraventaview.cpp:74 albaranproveedorview.cpp:65 compraventaview.cpp:75
+#: albaranproveedorview.cpp:66
 msgid "Descripcion albaran proveedor"
 msgstr "Descripcion albaran proveedor"
 
-#: compraventaview.cpp:80
+#: compraventaview.cpp:79 compraventaview.cpp:80
 msgid "Compra Venta"
 msgstr "Compra Venta"
 
-#: compraventaview.cpp:86 albaranclienteview.cpp:76 albaranclientelist.cpp:384
-#: albaranesproveedor.cpp:381
+#: compraventaview.cpp:85 albaranclienteview.cpp:75 albaranclientelist.cpp:384
+#: albaranesproveedor.cpp:381 compraventaview.cpp:86 albaranclienteview.cpp:76
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 
+#: compraventaview.cpp:86 presupuestoview.cpp:64 albaranclienteview.cpp:76
 #: compraventaview.cpp:87 presupuestoview.cpp:65 albaranclienteview.cpp:77
 msgid "Fecha de creacion"
 msgstr "Fecha de creacion"
 
-#: compraventaview.cpp:88 presupuestoview.cpp:67 presupuestolist.cpp:358
-#: pedidosclientelist.cpp:337 albaranclienteview.cpp:78 facturasplist.cpp:356
+#: compraventaview.cpp:87 presupuestoview.cpp:66 presupuestolist.cpp:358
+#: pedidosclientelist.cpp:337 albaranclienteview.cpp:77 facturasplist.cpp:356
+#: compraventaview.cpp:88 presupuestoview.cpp:67 albaranclienteview.cpp:78
 msgid "Persona de contacto"
 msgstr "Persona de contacto"
 
-#: compraventaview.cpp:89 albaranclienteview.cpp:79
+#: compraventaview.cpp:88 albaranclienteview.cpp:78 compraventaview.cpp:89
+#: albaranclienteview.cpp:79
 msgid "Telefono de contacto"
 msgstr "Telefono de contacto"
 
-#: compraventaview.cpp:91 albaranclienteview.cpp:81
+#: compraventaview.cpp:90 albaranclienteview.cpp:80 compraventaview.cpp:91
+#: albaranclienteview.cpp:81
 msgid "Comentario privado"
 msgstr "Comentario privado"
 
-#: compraventaview.cpp:138 albaranclienteview.cpp:120
+#: compraventaview.cpp:137 albaranclienteview.cpp:119 compraventaview.cpp:138
+#: albaranclienteview.cpp:120
 msgid "Error al crear el albaran a cliente"
 msgstr "Error al crear el albaran a cliente"
 
-#: compraventaview.cpp:451 genfactqtoolbutton.cpp:136
+#: compraventaview.cpp:450 genfactqtoolbutton.cpp:136
 #: genfactqtoolbutton.cpp:242 genalbpqtoolbutton.cpp:132
+#: compraventaview.cpp:451
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Tiene que seleccionar un proveedor"
 
-#: compraventaview.cpp:466 genfactqtoolbutton.cpp:151
-#: genfactqtoolbutton.cpp:257
+#: compraventaview.cpp:465 genfactqtoolbutton.cpp:151
+#: genfactqtoolbutton.cpp:257 compraventaview.cpp:466
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveedor existente"
 
-#: compraventaview.cpp:467
+#: compraventaview.cpp:466 compraventaview.cpp:467
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
@@ -7846,30 +6805,34 @@ msgstr ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
 
-#: compraventaview.cpp:534 compraventaview.cpp:685 genpreqtoolbutton.cpp:234
+#: compraventaview.cpp:533 compraventaview.cpp:684 genpreqtoolbutton.cpp:234
 #: genpreqtoolbutton.cpp:360 genpreqtoolbutton.cpp:489
-#: genpedqtoolbutton.cpp:217 albaranclienteview.cpp:239
+#: genpedqtoolbutton.cpp:217 albaranclienteview.cpp:238
 #: genalbqtoolbutton.cpp:225 genalbqtoolbutton.cpp:354
 #: genfacqtoolbutton.cpp:234 genfacqtoolbutton.cpp:360
 #: genfacqtoolbutton.cpp:489 facturaview.cpp:268 genfactqtoolbutton.cpp:201
 #: genfactqtoolbutton.cpp:307 genalbpqtoolbutton.cpp:197
+#: compraventaview.cpp:534 compraventaview.cpp:685 albaranclienteview.cpp:239
 msgid "Error inesperado"
 msgstr "Error inesperado"
 
-#: compraventaview.cpp:572 genpreqtoolbutton.cpp:149 genpreqtoolbutton.cpp:277
+#: compraventaview.cpp:571 genpreqtoolbutton.cpp:149 genpreqtoolbutton.cpp:277
 #: genpreqtoolbutton.cpp:406 genpreqtoolbutton.cpp:594
-#: genpedqtoolbutton.cpp:134 albaranclienteview.cpp:205
+#: genpedqtoolbutton.cpp:134 albaranclienteview.cpp:204
 #: genalbqtoolbutton.cpp:142 genalbqtoolbutton.cpp:271
 #: genfacqtoolbutton.cpp:149 genfacqtoolbutton.cpp:277
-#: genfacqtoolbutton.cpp:406
+#: genfacqtoolbutton.cpp:406 compraventaview.cpp:572
+#: albaranclienteview.cpp:205
 msgid "Tiene que seleccionar un cliente"
 msgstr "Tiene que seleccionar un cliente"
 
-#: compraventaview.cpp:587 genpreqtoolbutton.cpp:164 genfacqtoolbutton.cpp:164
+#: compraventaview.cpp:586 genpreqtoolbutton.cpp:164 genfacqtoolbutton.cpp:164
+#: compraventaview.cpp:587
 msgid "Factura existente"
 msgstr "Factura existente"
 
-#: compraventaview.cpp:588 genpreqtoolbutton.cpp:165 genfacqtoolbutton.cpp:165
+#: compraventaview.cpp:587 genpreqtoolbutton.cpp:165 genfacqtoolbutton.cpp:165
+#: compraventaview.cpp:588
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
@@ -8104,35 +7067,35 @@ msgstr "ALBARAN: Num "
 msgid "Ref:"
 msgstr "Ref:"
 
-#: pagoview.cpp:62 pagoslist.cpp:246
+#: pagoview.cpp:61 pagoslist.cpp:246 pagoview.cpp:62
 msgid "Id pago"
 msgstr "Id pago"
 
-#: pagoview.cpp:64
+#: pagoview.cpp:63 pagoview.cpp:64
 msgid "Previcion de pago"
 msgstr "Previcion de pago"
 
-#: pagoview.cpp:65 pagoslist.cpp:252
+#: pagoview.cpp:64 pagoslist.cpp:252 pagoview.cpp:65
 msgid "Fecha de pago"
 msgstr "Fecha de pago"
 
-#: pagoview.cpp:66 pagoslist.cpp:255
+#: pagoview.cpp:65 pagoslist.cpp:255 pagoview.cpp:66
 msgid "Referencia de pago"
 msgstr "Referencia de pago"
 
-#: pagoview.cpp:68
+#: pagoview.cpp:67 pagoview.cpp:68
 msgid "Comentario del pago"
 msgstr "Comentario del pago"
 
-#: pagoview.cpp:72 pagoslist.cpp:49 pagoslist.cpp:74 facturapview.cpp:83
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74 facturapview.cpp:83
 #: facturasplist.cpp:56 facturasplist.cpp:91 albaranesproveedor.cpp:53
-#: albaranesproveedor.cpp:75 albaranproveedorview.cpp:85
+#: albaranesproveedor.cpp:75 albaranproveedorview.cpp:84
 #: pedidoproveedorview.cpp:89 pedidosproveedorlist.cpp:46
-#: pedidosproveedorlist.cpp:72
+#: pedidosproveedorlist.cpp:72 pagoview.cpp:72 albaranproveedorview.cpp:85
 msgid "Proveedor:"
 msgstr "Proveedor:"
 
-#: pagoview.cpp:81
+#: pagoview.cpp:80 pagoview.cpp:81
 msgid "Error al crear el pago"
 msgstr "Error al crear el pago"
 
@@ -8252,7 +7215,8 @@ msgstr "Prevision"
 msgid "Fecha del cobro"
 msgstr "Fecha del cobro"
 
-#: cobroview.cpp:65 cobroslist.cpp:316 presupuestoview.cpp:66
+#: cobroview.cpp:65 cobroslist.cpp:316 presupuestoview.cpp:65
+#: presupuestoview.cpp:66
 msgid "Fecha de vencimiento"
 msgstr "Fecha de vencimiento"
 
@@ -8390,31 +7354,34 @@ msgstr "&Nuevo presupuesto a cliente"
 msgid "Nuevo presupuesto a cliente"
 msgstr "Nuevo presupuesto a cliente"
 
+#: listdescpresupuestoview.cpp:43 listlinpresupuestoview.cpp:56
 #: listdescpresupuestoview.cpp:45 listlinpresupuestoview.cpp:57
 msgid "Id presupuesto"
 msgstr "Id presupuesto"
 
+#: listlinpresupuestoview.cpp:49 listlinpedidoclienteview.cpp:49
 #: listlinpresupuestoview.cpp:50 listlinpedidoclienteview.cpp:50
 msgid "No de linea"
 msgstr "No de linea"
 
+#: listlinpresupuestoview.cpp:52 listlinpedidoclienteview.cpp:52
 #: listlinpresupuestoview.cpp:53 listlinpedidoclienteview.cpp:53
 msgid "Precio de venta s/IVA"
 msgstr "Precio de venta s/IVA"
 
-#: presupuestoview.cpp:58 presupuestolist.cpp:350
+#: presupuestoview.cpp:57 presupuestolist.cpp:350 presupuestoview.cpp:58
 msgid "Presupuesto"
 msgstr "Presupuesto"
 
-#: presupuestoview.cpp:61 presupuestolist.cpp:349
+#: presupuestoview.cpp:60 presupuestolist.cpp:349 presupuestoview.cpp:61
 msgid "ID presupuesto"
 msgstr "ID presupuesto"
 
-#: presupuestoview.cpp:64
+#: presupuestoview.cpp:63 presupuestoview.cpp:64
 msgid "Numero de presupuesto"
 msgstr "Numero de presupuesto"
 
-#: presupuestoview.cpp:108
+#: presupuestoview.cpp:107 presupuestoview.cpp:108
 msgid "Error al crear el presupuesto"
 msgstr "Error al crear el presupuesto"
 
@@ -8641,12 +7608,14 @@ msgstr "Editar factura"
 msgid "Filtrar facturas"
 msgstr "Filtrar facturas"
 
+#: listdescpedidoclienteview.cpp:43 listdescpedidoproveedorview.cpp:42
+#: listlinpedidoproveedorview.cpp:50 pedidosproveedorlist.cpp:325
 #: listdescpedidoclienteview.cpp:45 listdescpedidoproveedorview.cpp:44
-#: listlinpedidoproveedorview.cpp:51 pedidosproveedorlist.cpp:325
+#: listlinpedidoproveedorview.cpp:51
 msgid "Id pedido"
 msgstr "Id pedido"
 
-#: listlinpedidoclienteview.cpp:57
+#: listlinpedidoclienteview.cpp:56 listlinpedidoclienteview.cpp:57
 msgid "Id pedido cliente"
 msgstr "Id pedido cliente"
 
@@ -8722,11 +7691,11 @@ msgstr "Error al borrar el pedido de cliente"
 msgid "ID pedido"
 msgstr "ID pedido"
 
-#: albaranclienteview.cpp:70
+#: albaranclienteview.cpp:69 albaranclienteview.cpp:70
 msgid "Albaran"
 msgstr "Albaran"
 
-#: albaranclienteview.cpp:232
+#: albaranclienteview.cpp:231 albaranclienteview.cpp:232
 msgid "No hay pedidos con la misma referencia."
 msgstr "No hay pedidos con la misma referencia."
 
@@ -8806,7 +7775,7 @@ msgstr "&Nueva factura a cliente"
 msgid "Error al borrar la factura a cliente"
 msgstr "Error al borrar la factura a cliente"
 
-#: listlinfacturaview.cpp:51
+#: listlinfacturaview.cpp:50 listlinfacturaview.cpp:51
 msgid "Idl factura"
 msgstr "Idl factura"
 
@@ -8834,11 +7803,11 @@ msgstr "Error al crear la factura"
 msgid "No hay albaranes con esta referencia"
 msgstr "No hay albaranes con esta referencia"
 
-#: listlinfacturapview.cpp:52
+#: listlinfacturapview.cpp:51 listlinfacturapview.cpp:52
 msgid "Linea"
 msgstr "Linea"
 
-#: listlinfacturapview.cpp:57
+#: listlinfacturapview.cpp:56 listlinfacturapview.cpp:57
 msgid "% Recargo"
 msgstr "% Recargo"
 
@@ -8955,11 +7924,11 @@ msgstr "Descripcion de la forma de pago"
 msgid "Total albaran"
 msgstr "Total albaran"
 
-#: albaranproveedorview.cpp:55
+#: albaranproveedorview.cpp:54 albaranproveedorview.cpp:55
 msgid "Albaran de proveedor"
 msgstr "Albaran de proveedor"
 
-#: albaranproveedorview.cpp:102
+#: albaranproveedorview.cpp:101 albaranproveedorview.cpp:102
 msgid "Error al crear el albaran proveedor"
 msgstr "Error al crear el albaran proveedor"
 
@@ -9192,23 +8161,23 @@ msgstr "Editar profesor"
 msgid "Borrar profesor"
 msgstr "Borrar profesor"
 
-#: profesoreslist.cpp:262 actividadview.cpp:54
+#: profesoreslist.cpp:262 actividadview.cpp:53 actividadview.cpp:54
 msgid "Id profesor"
 msgstr "Id profesor"
 
-#: profesorview.cpp:49
+#: profesorview.cpp:48 profesorview.cpp:49
 msgid "Profesor"
 msgstr "Profesor"
 
-#: profesorview.cpp:52
+#: profesorview.cpp:51 profesorview.cpp:52
 msgid "ID profesor"
 msgstr "ID profesor"
 
-#: profesorview.cpp:53
+#: profesorview.cpp:52 profesorview.cpp:53
 msgid "Nombre del profesor"
 msgstr "Nombre del profesor"
 
-#: profesorview.cpp:70
+#: profesorview.cpp:69 profesorview.cpp:70
 msgid "Error al crear el profesor"
 msgstr "Error al crear el profesor"
 
@@ -9229,19 +8198,19 @@ msgstr "Borrar Profesor"
 msgid "Filtrar Profesores"
 msgstr "Filtrar Profesores"
 
-#: alumnoview.cpp:49 ui_actividadbase.h:435
+#: alumnoview.cpp:48 ui_actividadbase.h:435 alumnoview.cpp:49
 msgid "Alumno"
 msgstr "Alumno"
 
-#: alumnoview.cpp:52 alumnoslist.cpp:262
+#: alumnoview.cpp:51 alumnoslist.cpp:262 alumnoview.cpp:52
 msgid "Id alumno"
 msgstr "Id alumno"
 
-#: alumnoview.cpp:53
+#: alumnoview.cpp:52 alumnoview.cpp:53
 msgid "Nombre del alumno"
 msgstr "Nombre del alumno"
 
-#: alumnoview.cpp:69
+#: alumnoview.cpp:68 alumnoview.cpp:69
 msgid "Error al crear el alumno"
 msgstr "Error al crear el alumno"
 
@@ -9282,6 +8251,14 @@ msgstr "Filtrar Alumnos"
 msgid "Fotografia"
 msgstr "Fotografia"
 
+#: ui_alumnobase.h:503 ui_articleeditbase.h:608
+msgid "Cam&biar imagen"
+msgstr "Cam&biar imagen"
+
+#: ui_alumnobase.h:506 ui_articleeditbase.h:611
+msgid "Borrar imagen"
+msgstr "Borrar imagen"
+
 #: ui_alumnobase.h:522 ui_tutorbase.h:457
 msgid "DNI / NIf"
 msgstr "DNI / NIf"
@@ -9315,19 +8292,19 @@ msgstr "Editar Tutor"
 msgid "Borrar Tutor"
 msgstr "Borrar Tutor"
 
-#: tutoreslist.cpp:262 tutorview.cpp:52
+#: tutoreslist.cpp:262 tutorview.cpp:51 tutorview.cpp:52
 msgid "ID tutor"
 msgstr "ID tutor"
 
-#: tutorview.cpp:49
+#: tutorview.cpp:48 tutorview.cpp:49
 msgid "Tutor"
 msgstr "Tutor"
 
-#: tutorview.cpp:53
+#: tutorview.cpp:52 tutorview.cpp:53
 msgid "Nombre del tutor"
 msgstr "Nombre del tutor"
 
-#: tutorview.cpp:69
+#: tutorview.cpp:68 tutorview.cpp:69
 msgid "Error al crear el tutor"
 msgstr "Error al crear el tutor"
 
@@ -9355,23 +8332,23 @@ msgstr "Hijos"
 msgid "Filtrar Tutores"
 msgstr "Filtrar Tutores"
 
-#: actividadview.cpp:49
+#: actividadview.cpp:48 actividadview.cpp:49
 msgid "Actividad"
 msgstr "Actividad"
 
-#: actividadview.cpp:52
+#: actividadview.cpp:51 actividadview.cpp:52
 msgid "ID actividad"
 msgstr "ID actividad"
 
-#: actividadview.cpp:53
+#: actividadview.cpp:52 actividadview.cpp:53
 msgid "Nombre del actividad"
 msgstr "Nombre del actividad"
 
-#: actividadview.cpp:60
+#: actividadview.cpp:59 actividadview.cpp:60
 msgid "Profesor:"
 msgstr "Profesor:"
 
-#: actividadview.cpp:68
+#: actividadview.cpp:67 actividadview.cpp:68
 msgid "Error al crear el actividad"
 msgstr "Error al crear el actividad"
 
@@ -9450,6 +8427,290 @@ msgstr "Nuevo Actividad"
 msgid "Filtrar Actividades"
 msgstr "Filtrar Actividades"
 
+#: articulolist.cpp:161
+msgid "Tiene que seleccionar un articulo"
+msgstr "Tiene que seleccionar un articulo"
+
+#: articulolist.cpp:168
+msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+msgstr "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+
+#: articulolist.cpp:178
+msgid "Error al borrar el articulo"
+msgstr "Error al borrar el articulo"
+
+#: articulolist.cpp:368 articulolisttpv.cpp:244
+msgid "Descripcion abreviada del articulo"
+msgstr "Descripcion abreviada del articulo"
+
+#: articulolist.cpp:369 articulolisttpv.cpp:245
+msgid "Observaciones sobre el articulo"
+msgstr "Observaciones sobre el articulo"
+
+#: articulolist.cpp:370 articulolisttpv.cpp:246
+msgid "Descripcion del tipo de articulo"
+msgstr "Descripcion del tipo de articulo"
+
+#: articulolist.cpp:371 articulolisttpv.cpp:247
+msgid "Descripcion tipo de I.V.A."
+msgstr "Descripcion tipo de I.V.A."
+
+#: articulolist.cpp:372 articulolisttpv.cpp:248
+msgid "P.V.P. articulo"
+msgstr "P.V.P. articulo"
+
+#: articulolist.cpp:373 articulolisttpv.cpp:249
+msgid "Disponible en stock"
+msgstr "Disponible en stock"
+
+#: comparticulolistview.cpp:44
+msgid "Cantidad de componente de articulo"
+msgstr "Cantidad de componente de articulo"
+
+#: comparticulolistview.cpp:45
+msgid "ID componente"
+msgstr "ID componente"
+
+#: pluginbf_articulo.cpp:110 ui_bulmafactbase.h:254
+msgid "&Articulos"
+msgstr "&Articulos"
+
+#: pluginbf_articulo.cpp:112 pluginbf_articulo.cpp:113
+#: ui_articleslistbase.h:284
+msgid "Articulos"
+msgstr "Articulos"
+
+#: pluginbf_articulo.cpp:118
+msgid "&Nuevo Articulo"
+msgstr "&Nuevo artículo"
+
+#: pluginbf_articulo.cpp:127
+msgid "&Tipos de Articulo"
+msgstr "&Tipos de artículo"
+
+#: pluginbf_articulo.cpp:129 pluginbf_articulo.cpp:130
+msgid "Tipos de Articulo"
+msgstr "Tipos de artículo"
+
+#: articuloview.cpp:64
+msgid "Abreviacion"
+msgstr "Abreviacion"
+
+#: articuloview.cpp:65
+msgid "Observaciones"
+msgstr "Observaciones"
+
+#: articuloview.cpp:66
+msgid "Incluir en presentaciones"
+msgstr "Incluir en presentaciones"
+
+#: articuloview.cpp:67
+msgid "Incluir en control de stock"
+msgstr "Incluir en control de stock"
+
+#: articuloview.cpp:69
+msgid "Tipo de I.V.A."
+msgstr "Tipo de I.V.A."
+
+#: articuloview.cpp:72
+msgid "Stock"
+msgstr "Stock"
+
+#: articuloview.cpp:73
+msgid "Inactivo"
+msgstr "Inactivo"
+
+#: articuloview.cpp:74
+msgid "P.V.P. base"
+msgstr "P.V.P. base"
+
+#: articuloview.cpp:75
+msgid "Peso Unidad"
+msgstr "Peso Unidad"
+
+#: articuloview.cpp:76
+msgid "Volumen Unidad"
+msgstr "Volumen Unidad"
+
+#: articuloview.cpp:107
+msgid "Error al crear el articulo"
+msgstr "Error al crear el articulo"
+
+#: articuloview.cpp:224
+msgid ""
+"No se ha podido guardar la imagen.\n"
+"Revise los permisos de escritura y que disponga\n"
+"de espacio libre suficiente en el disco duro."
+msgstr ""
+"No se ha podido guardar la imagen.\n"
+"Revise los permisos de escritura y que disponga\n"
+"de espacio libre suficiente en el disco duro."
+
+#: articuloview.cpp:278
+msgid "Seleccione un archivo de imagen"
+msgstr "Seleccione un archivo de imagen"
+
+#: articuloview.cpp:286
+msgid ""
+"No se ha podido cargar la imagen.\n"
+"Compruebe que la imagen sea valida."
+msgstr ""
+"No se ha podido cargar la imagen.\n"
+"Compruebe que la imagen sea valida."
+
+#: articuloview.cpp:310
+msgid "Borrar imagen del articulo"
+msgstr "Borrar imagen del articulo"
+
+#: articuloview.cpp:311
+msgid ""
+"Esta seguro que quiere borrar\n"
+"la imagen asociada a este articulo?"
+msgstr ""
+"Esta seguro que quiere borrar\n"
+"la imagen asociada a este articulo?"
+
+#: articuloview.cpp:319
+msgid ""
+"No se ha podido borrar el archivo.\n"
+"Compruebe que el archivo tenga los permisos correctos."
+msgstr ""
+"No se ha podido borrar el archivo.\n"
+"Compruebe que el archivo tenga los permisos correctos."
+
+#: tiposarticuloview.cpp:139
+msgid "Error en la carga"
+msgstr "Error en la carga"
+
+#: tiposarticuloview.cpp:290
+msgid "Guardar Tipo de Articulo"
+msgstr "Guardar Tipo de Articulo"
+
+#: tiposarticuloview.cpp:366
+msgid "Error en la creacion"
+msgstr "Error en la creacion"
+
+#: tiposarticuloview.cpp:411
+msgid "Debe seleccionar un tipo"
+msgstr "Debe seleccionar un tipo"
+
+#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
+#: ui_articleslistbase.h:297
+msgid "Nuevo articulo"
+msgstr "Nuevo articulo"
+
+#: ui_articleeditbase.h:605
+msgid "Codigo del articulo:"
+msgstr "Codigo del articulo:"
+
+#: ui_articleeditbase.h:606
+msgid "Subcodigo:"
+msgstr "Subcodigo:"
+
+#: ui_articleeditbase.h:607
+msgid "Imagen del articulo:"
+msgstr "Imagen del articulo:"
+
+#: ui_articleeditbase.h:615
+msgid "Informacion del articulo:"
+msgstr "Informacion del articulo:"
+
+#: ui_articleeditbase.h:616
+msgid "Nombre del articulo:"
+msgstr "Nombre del articulo:"
+
+#: ui_articleeditbase.h:617
+msgid "Texto para etiqueta:"
+msgstr "Texto para etiqueta:"
+
+#: ui_articleeditbase.h:618
+msgid "Precio venta. s/IVA:"
+msgstr "Precio venta. s/IVA:"
+
+#: ui_articleeditbase.h:619
+msgid "Tipo de I.V.A.:"
+msgstr "Tipo de I.V.A.:"
+
+#: ui_articleeditbase.h:620
+msgid "Peso (kg):"
+msgstr "Peso (kg):"
+
+#: ui_articleeditbase.h:621
+msgid "Volumen (cm3):"
+msgstr "Volumen (cm3):"
+
+#: ui_articleeditbase.h:622
+msgid "Otros datos:"
+msgstr "Otros datos:"
+
+#: ui_articleeditbase.h:625
+msgid "Incluir este articulo en el catalogo."
+msgstr "Incluir este articulo en el catalogo."
+
+#: ui_articleeditbase.h:628
+msgid "&Incluir en el catalogo."
+msgstr "&Incluir en el catalogo."
+
+#: ui_articleeditbase.h:631
+msgid "Activar el control de stock para este articulo."
+msgstr "Activar el control de stock para este articulo."
+
+#: ui_articleeditbase.h:634
+msgid "Activar el &control de stock."
+msgstr "Activar el &control de stock."
+
+#: ui_articleeditbase.h:636
+msgid "C&omponentes"
+msgstr "C&omponentes"
+
+#: ui_articleeditbase.h:637
+msgid "Descripcio&n"
+msgstr "Descripcio&n"
+
+#: ui_articleslistbase.h:285
+msgid "Solo usados"
+msgstr "Solo usados"
+
+#: ui_articleslistbase.h:287
+msgid "S&olo presentables"
+msgstr "S&olo presentables"
+
+#: ui_articleslistbase.h:288
+msgid "Alt+O"
+msgstr "Alt+O"
+
+#: ui_articleslistbase.h:369 ui_articleslistbase.h:374
+msgid "Exportar articulos"
+msgstr "Exportar articulos"
+
+#: ui_articleslistbase.h:380 ui_articleslistbase.h:385
+msgid "Importar articulos"
+msgstr "Importar articulos"
+
+#: ui_tiposarticulobase.h:238
+msgid "Tipos de articulo"
+msgstr "Tipos de articulo"
+
+#: ui_tiposarticulobase.h:243
+msgid "Codigo:"
+msgstr "Codigo:"
+
+#: ui_tiposarticulobase.h:247 ui_tiposarticulobase.h:252
+msgid "Mostrar / Ocultar detalle"
+msgstr "Mostrar / Ocultar detalle"
+
+#: ui_tiposarticulobase.h:259 ui_tiposarticulobase.h:264
+msgid "Guardar Tipo de articulo"
+msgstr "Guardar Tipo de articulo"
+
+#: ui_tiposarticulobase.h:271 ui_tiposarticulobase.h:276
+msgid "Borrar Tipo de articulo"
+msgstr "Borrar Tipo de articulo"
+
+#: ui_tiposarticulobase.h:283 ui_tiposarticulobase.h:288
+msgid "Nuevo Tipo de articulo"
+msgstr "Nuevo Tipo de articulo"
+
 #: main.cpp:93
 msgid "Selector de BulmaGes"
 msgstr "Selector de BulmaGes"
@@ -9527,7 +8788,7 @@ msgstr "Id fechaalbaran"
 msgid "Num"
 msgstr "Num"
 
-#: ticket.cpp:53 pluginticketbasico.cpp:55
+#: ticket.cpp:53 pluginticketbasico.cpp:54 pluginticketbasico.cpp:55
 msgid "Ticket"
 msgstr "Ticket"
 
@@ -9547,11 +8808,15 @@ msgstr "Req. eq."
 msgid "El ticket esta vacio."
 msgstr "El ticket esta vacio."
 
+#: empresatpv.cpp:77 company.cpp:91
+msgid "Inicializando listado de articulos"
+msgstr "Inicializando listado de articulos"
+
 #: empresatpv.cpp:100
 msgid "Terminal Punto de Venta GPL"
 msgstr "Terminal Punto de Venta GPL"
 
-#: plugintecladonumerico.cpp:48
+#: plugintecladonumerico.cpp:49 plugintecladonumerico.cpp:48
 msgid "Teclado"
 msgstr "Teclado"
 
@@ -9602,3 +8867,15 @@ msgstr "El ticket esta vacio. No se puede aparcar."
 #: abrevs.cpp:117
 msgid "Ya existe un ticket aparcado con el mismo nombre."
 msgstr "Ya existe un ticket aparcado con el mismo nombre."
+
+#: ui_bulmafactbase.h:251
+msgid "&Tipos de articulo"
+msgstr "&Tipos de articulo"
+
+#: ui_bulmafactbase.h:252
+msgid "Nuevo &articulo..."
+msgstr "Nuevo &articulo..."
+
+#: ui_bulmafactbase.h:253
+msgid "F2"
+msgstr "F2"

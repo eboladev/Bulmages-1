@@ -1,10 +1,58 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_tutorbase.h:442
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: ui_tutorbase.h:443
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: ui_tutorbase.h:453
 msgid "&Datos generales"
@@ -20,7 +68,7 @@ msgstr ""
 
 #: ui_tutoreslistbase.h:389 ui_tutoreslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
 #: ui_tutoreslistbase.h:309
 msgid "Banco:"
@@ -56,47 +104,47 @@ msgstr ""
 
 #: ui_tutorbase.h:454
 msgid "Comentarios:"
-msgstr ""
+msgstr "Comentaris:"
 
 #: ui_tutoreslistbase.h:377 ui_tutoreslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_tutorbase.h:451
 msgid "Correo electronico:"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_tutoreslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_tutorbase.h:429 ui_tutoreslistbase.h:350
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_tutoreslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_tutoreslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_tutorbase.h:441
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_tutoreslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_tutoreslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_tutorbase.h:417
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_tutorbase.h:457
 msgid "DNI / NIf"
@@ -116,7 +164,7 @@ msgstr ""
 
 #: ui_tutorbase.h:446
 msgid "Direccion:"
-msgstr ""
+msgstr "Adreça:"
 
 #: tutoreslist.cpp:217 ui_tutoreslistbase.h:329 ui_tutoreslistbase.h:334
 msgid "Editar Tutor"
@@ -126,13 +174,13 @@ msgstr ""
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: tutorview.cpp:69
+#: tutorview.cpp:68
 msgid "Error al crear el tutor"
 msgstr ""
 
 #: ui_tutoreslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_tutoreslistbase.h:310
 msgid "Fecha final:"
@@ -154,7 +202,7 @@ msgstr ""
 msgid "Hijos"
 msgstr ""
 
-#: tutoreslist.cpp:262 tutorview.cpp:52
+#: tutoreslist.cpp:262 tutorview.cpp:51
 msgid "ID tutor"
 msgstr ""
 
@@ -164,13 +212,13 @@ msgstr ""
 
 #: tutoreslist.cpp:263 ui_tutorbase.h:458
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: ui_tutorbase.h:445
 msgid "Nombre completo:"
 msgstr ""
 
-#: tutorview.cpp:53
+#: tutorview.cpp:52
 msgid "Nombre del tutor"
 msgstr ""
 
@@ -210,11 +258,11 @@ msgstr ""
 msgid "Telefono movil:"
 msgstr ""
 
-#: tutorview.cpp:97
+#: tutorview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: tutorview.cpp:49
+#: tutorview.cpp:48
 msgid "Tutor"
 msgstr ""
 

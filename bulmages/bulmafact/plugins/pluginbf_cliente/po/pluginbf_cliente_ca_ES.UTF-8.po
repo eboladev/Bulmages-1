@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 21:43+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_clientebase.h:573
+#: ui_clientebase.h:592
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -31,7 +31,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_clientebase.h:574
+#: ui_clientebase.h:593
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -39,7 +39,7 @@ msgstr "&Cancel·la"
 msgid "&Clientes"
 msgstr ""
 
-#: ui_clientebase.h:593
+#: ui_clientebase.h:612
 #, fuzzy
 msgid "&Datos generales"
 msgstr "&Dades comptables"
@@ -53,7 +53,7 @@ msgstr "Nou assentament"
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: ui_clientebase.h:591
+#: ui_clientebase.h:610
 msgid "Aplicar Recargo de Equivalencia"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Borrar"
 msgstr "Esborra"
 
-#: clientslist.cpp:255 ui_clientebase.h:552 ui_clientebase.h:557
+#: clientslist.cpp:255 ui_clientebase.h:571 ui_clientebase.h:576
 #, fuzzy
 msgid "Borrar cliente"
 msgstr "Esborra assentament"
@@ -79,11 +79,11 @@ msgstr "C.I.F.:"
 msgid "C.I.F. del cliente"
 msgstr ""
 
-#: ui_clientebase.h:575
+#: ui_clientebase.h:594
 msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr ""
 
-#: clienteview.cpp:52 ui_clientebase.h:536
+#: clienteview.cpp:52 ui_clientebase.h:555
 msgid "Cliente"
 msgstr "Client"
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Codigo"
 msgstr "Codi"
 
-#: ui_clientebase.h:576
+#: ui_clientebase.h:595
 #, fuzzy
 msgid "Codigo de cliente:"
 msgstr "Codi de compte corrent.:"
@@ -114,7 +114,7 @@ msgstr "Codi de compte corrent.:"
 msgid "Codigo postal"
 msgstr "Codi compte"
 
-#: ui_clientebase.h:581
+#: ui_clientebase.h:600
 #, fuzzy
 msgid "Codigo postal:"
 msgstr "Codi compte"
@@ -128,7 +128,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_clientebase.h:594
+#: ui_clientebase.h:613
 msgid "Comentarios:"
 msgstr "Comentaris:"
 
@@ -136,19 +136,19 @@ msgstr "Comentaris:"
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_clientebase.h:589
+#: ui_clientebase.h:608
 msgid "Correo electronico:"
 msgstr "Correo electrònic:"
 
-#: ui_clientebase.h:561
+#: ui_clientebase.h:580
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_clientebase.h:549
+#: ui_clientebase.h:568
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_clientebase.h:596
+#: ui_clientebase.h:615
 msgid "Datos bancarios:"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Datos de comercio electronico"
 msgstr "Correo electrònic:"
 
-#: ui_clientebase.h:595
+#: ui_clientebase.h:614
 #, fuzzy
 msgid "Datos de comercio electronico:"
 msgstr "Correo electrònic:"
@@ -182,7 +182,7 @@ msgstr "Direcció del proveïdor"
 msgid "Direccion electronica"
 msgstr "Correo electrònic:"
 
-#: ui_clientebase.h:580
+#: ui_clientebase.h:599
 msgid "Direccion:"
 msgstr "Adreça:"
 
@@ -204,7 +204,7 @@ msgstr ""
 msgid "Empresa"
 msgstr "&Empresa"
 
-#: ui_clientebase.h:578
+#: ui_clientebase.h:597
 msgid "Empresa:"
 msgstr "Empresa"
 
@@ -240,11 +240,11 @@ msgstr "Configura llistat"
 msgid "Forma de pago"
 msgstr "Forma de pagament:"
 
-#: ui_clientebase.h:590
+#: ui_clientebase.h:609
 msgid "Forma de pago:"
 msgstr "Forma de pagament:"
 
-#: ui_clientebase.h:540 ui_clientebase.h:545
+#: ui_clientebase.h:559 ui_clientebase.h:564
 #, fuzzy
 msgid "Guardar cliente"
 msgstr "Desa assentament"
@@ -263,7 +263,7 @@ msgstr "Identificador"
 msgid "Importar"
 msgstr "Importar"
 
-#: ui_clientebase.h:564 ui_clientebase.h:569
+#: ui_clientebase.h:583 ui_clientebase.h:588
 #, fuzzy
 msgid "Imprimir informe"
 msgstr "Imprimeix la comanda"
@@ -283,12 +283,12 @@ msgstr "Llistat d'assentaments"
 msgid "Nombre alternativo del cliente"
 msgstr "Nom del compte"
 
-#: ui_clientebase.h:579
+#: ui_clientebase.h:598
 #, fuzzy
 msgid "Nombre comercial:"
 msgstr "Nom del compte"
 
-#: ui_clientebase.h:577
+#: ui_clientebase.h:596
 msgid "Nombre completo:"
 msgstr "Nom cpomplert"
 
@@ -320,7 +320,7 @@ msgstr "Codi de compte corrent.:"
 msgid "Numero de fax"
 msgstr "Nombre de quotes"
 
-#: ui_clientebase.h:585
+#: ui_clientebase.h:604
 #, fuzzy
 msgid "Numero de fax:"
 msgstr "Nombre de quotes"
@@ -338,11 +338,11 @@ msgstr ""
 msgid "Numero de telefono movil"
 msgstr ""
 
-#: ui_clientebase.h:597
+#: ui_clientebase.h:616
 msgid "Otros datos"
 msgstr ""
 
-#: ui_clientebase.h:588
+#: ui_clientebase.h:607
 #, fuzzy
 msgid "Pagina web:"
 msgstr "URL de la pàgina web:"
@@ -351,7 +351,7 @@ msgstr "URL de la pàgina web:"
 msgid "Poblacion"
 msgstr ""
 
-#: ui_clientebase.h:582
+#: ui_clientebase.h:601
 msgid "Poblacion:"
 msgstr ""
 
@@ -364,7 +364,7 @@ msgstr "&Llistats"
 msgid "Provincia"
 msgstr ""
 
-#: ui_clientebase.h:583
+#: ui_clientebase.h:602
 msgid "Provincia:"
 msgstr ""
 
@@ -376,7 +376,7 @@ msgstr ""
 msgid "Regimen fiscal"
 msgstr ""
 
-#: ui_clientebase.h:592
+#: ui_clientebase.h:611
 msgid "Regimen fiscal:"
 msgstr ""
 
@@ -384,16 +384,16 @@ msgstr ""
 msgid "Selector de clientes"
 msgstr ""
 
-#: ui_clientebase.h:586
+#: ui_clientebase.h:605
 #, fuzzy
 msgid "Telefono del trabajo:"
 msgstr "Telèfon del proveïdor"
 
-#: ui_clientebase.h:584
+#: ui_clientebase.h:603
 msgid "Telefono fijo:"
 msgstr ""
 
-#: ui_clientebase.h:587
+#: ui_clientebase.h:606
 msgid "Telefono movil:"
 msgstr ""
 

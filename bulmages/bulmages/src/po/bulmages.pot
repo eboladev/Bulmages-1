@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.cpp:93
+msgid "Selector de BulmaGes"
+msgstr ""
+
+#: bconfiguracion.cpp:310 bconfiguracion.cpp:312 bconfiguracion.cpp:314
+msgid "Atencion"
+msgstr ""
+
+#: bconfiguracion.cpp:310
+msgid ""
+"Esta base de datos no puede ser eliminada.\n"
+" Es la plantilla para generar nuevas empresas."
+msgstr ""
+
+#: bconfiguracion.cpp:312
+msgid ""
+"No esta permitido eliminar la base \n"
+" de datos actualmente abierta."
+msgstr ""
+
+#: bconfiguracion.cpp:314
+msgid ""
+"Borrar una empresa puede suponer perdida de datos\n"
+" Desea continuar?\n"
+msgstr ""
+
+#: bconfiguracion.cpp:347
+msgid "Guardar empresa"
+msgstr ""
+
+#: bconfiguracion.cpp:349 bconfiguracion.cpp:381
+msgid "Empresas (*.pgdump)"
+msgstr ""
+
+#: bconfiguracion.cpp:379
+msgid "Cargar empresa"
+msgstr ""
+
+#: bnuevaempresa.cpp:65
+msgid "Datos incompletos"
+msgstr ""
+
+#: bnuevaempresa.cpp:66
+msgid "No puede dejar campos en blanco para crear una nueva empresa.\n"
+msgstr ""
+
+#: bnuevaempresa.cpp:66
+msgid "&Aceptar"
+msgstr ""
+
+#: bnuevaempresa.cpp:66
+msgid "&Cancelar"
+msgstr ""
+
+#: importContaplus.cpp:111 importContaplus.cpp:123 importContaplus.cpp:135
+#: importexportbulmafactview.cpp:92
+msgid "Guardar archivo"
+msgstr ""
+
+#: importContaplus.cpp:111 importexportbulmafactview.cpp:92
+msgid "Contaplus (*.xml)"
+msgstr ""
+
+#: importContaplus.cpp:123 importContaplus.cpp:135
+msgid "Contaplus (*.txt)"
+msgstr ""

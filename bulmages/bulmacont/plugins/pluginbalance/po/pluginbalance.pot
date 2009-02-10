@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: balanceview.cpp:62
+msgid "Balance"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Codigo"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Denominacion"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Saldo anterior"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Debe"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Haber"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Saldo"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Debe "
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Haber "
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Saldo "
+msgstr ""
+
+#: balancesubform.cpp:36
+msgid "idcuenta"
+msgstr ""
+
+#: balancesubform.cpp:37
+msgid "tipocuenta"
+msgstr ""
+
+#: balancesubform.cpp:38
+msgid "codigo"
+msgstr ""
+
+#: balancesubform.cpp:39
+msgid "descripcion"
+msgstr ""
+
+#: balancesubform.cpp:40
+msgid "asaldo"
+msgstr ""
+
+#: balancesubform.cpp:41
+msgid "tdebe"
+msgstr ""
+
+#: balancesubform.cpp:42
+msgid "thaber"
+msgstr ""
+
+#: balancesubform.cpp:43
+msgid "tsaldo"
+msgstr ""
+
+#: balancesubform.cpp:44
+msgid "ejdebe"
+msgstr ""
+
+#: balancesubform.cpp:45
+msgid "ejhaber"
+msgstr ""
+
+#: balancesubform.cpp:46
+msgid "ejsaldo"
+msgstr ""
+
+#: balancesubform.cpp:77
+msgid "Borrar registro"
+msgstr ""
+
+#: balancesubform.cpp:79
+msgid "Ajustar columa"
+msgstr ""
+
+#: balancesubform.cpp:80
+msgid "Ajustar altura"
+msgstr ""
+
+#: balancesubform.cpp:81
+msgid "Ajustar columnas"
+msgstr ""
+
+#: balancesubform.cpp:82
+msgid "Ajustar alturas"
+msgstr ""
+
+#: balancesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr ""
+
+#: pluginbalance.cpp:84
+msgid "menuVentana"
+msgstr ""
+
+#: pluginbalance.cpp:88
+msgid "&Ver"
+msgstr ""
+
+#: pluginbalance.cpp:92
+msgid "&Balance jerarquico"
+msgstr ""
+
+#: pluginbalance.cpp:93
+msgid "Permite realizar balances"
+msgstr ""
+
+#: pluginbalance.cpp:94
+msgid "Podra disponer de la informacion del balance"
+msgstr ""

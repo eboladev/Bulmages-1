@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,31 +16,31 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: actividadview.cpp:49
+#: actividadview.cpp:48
 msgid "Actividad"
 msgstr ""
 
-#: actividadview.cpp:52
+#: actividadview.cpp:51
 msgid "ID actividad"
 msgstr ""
 
-#: actividadview.cpp:53
+#: actividadview.cpp:52
 msgid "Nombre del actividad"
 msgstr ""
 
-#: actividadview.cpp:54
+#: actividadview.cpp:53
 msgid "Id profesor"
 msgstr ""
 
-#: actividadview.cpp:60
+#: actividadview.cpp:59
 msgid "Profesor:"
 msgstr ""
 
-#: actividadview.cpp:68
+#: actividadview.cpp:67
 msgid "Error al crear el actividad"
 msgstr ""
 
-#: actividadview.cpp:96
+#: actividadview.cpp:95
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
@@ -91,96 +91,96 @@ msgstr ""
 msgid "Nombre"
 msgstr ""
 
-#: ui_actividadbase.h:386
+#: ui_actividadbase.h:388
 msgid "Nueva Actividad"
 msgstr ""
 
-#: ui_actividadbase.h:390 ui_actividadbase.h:395
+#: ui_actividadbase.h:392 ui_actividadbase.h:397
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_actividadbase.h:399
+#: ui_actividadbase.h:401
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_actividadbase.h:402 ui_actividadbase.h:407 ui_actividadbase.h:414
-#: ui_actividadbase.h:419
+#: ui_actividadbase.h:404 ui_actividadbase.h:409 ui_actividadbase.h:416
+#: ui_actividadbase.h:421
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_actividadbase.h:411 ui_actividadeslistbase.h:350
+#: ui_actividadbase.h:413 ui_actividadeslistbase.h:350
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_actividadbase.h:423
+#: ui_actividadbase.h:425
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_actividadbase.h:424
+#: ui_actividadbase.h:426
 msgid "Codigo Actividad"
 msgstr ""
 
-#: ui_actividadbase.h:425
+#: ui_actividadbase.h:427
 msgid "Nombre completo:"
 msgstr ""
 
-#: ui_actividadbase.h:426
+#: ui_actividadbase.h:428
 msgid "Lugar"
 msgstr ""
 
-#: ui_actividadbase.h:427
+#: ui_actividadbase.h:429
 msgid "Profesor Encargado"
 msgstr ""
 
-#: ui_actividadbase.h:428
+#: ui_actividadbase.h:430
 msgid "Direccion:"
 msgstr ""
 
-#: ui_actividadbase.h:429
+#: ui_actividadbase.h:431
 msgid "Vigente"
 msgstr ""
 
-#: ui_actividadbase.h:430
+#: ui_actividadbase.h:432
 msgid "&Datos generales"
 msgstr ""
 
-#: ui_actividadbase.h:431
+#: ui_actividadbase.h:433
 msgid "Comentarios:"
 msgstr ""
 
-#: ui_actividadbase.h:432
+#: ui_actividadbase.h:434
 msgid "Otros datos"
 msgstr ""
 
-#: ui_actividadbase.h:433
+#: ui_actividadbase.h:435
 msgid "Alumno"
 msgstr ""
 
-#: ui_actividadbase.h:434
+#: ui_actividadbase.h:436
 msgid "Fecha inscripcion"
 msgstr ""
 
-#: ui_actividadbase.h:435
+#: ui_actividadbase.h:437
 msgid "Alumnos"
 msgstr ""
 
-#: ui_actividadbase.h:436
+#: ui_actividadbase.h:438
 msgid "Asistencias"
 msgstr ""
 
-#: ui_actividadbase.h:437
+#: ui_actividadbase.h:439
 msgid "Calendario"
 msgstr ""
 
-#: ui_actividadbase.h:438
+#: ui_actividadbase.h:440
 msgid "BLMonthCalendar"
 msgstr ""
 
-#: ui_actividadbase.h:439
+#: ui_actividadbase.h:441
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_actividadbase.h:440
+#: ui_actividadbase.h:442
 msgid "&Cancelar"
 msgstr ""
 

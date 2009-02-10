@@ -1,20 +1,69 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_zbase.h:327
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: ui_zbase.h:328
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289 ui_zlistbase.h:294
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
-#: zview.cpp:64 zlist.cpp:61 ui_zbase.h:321
+#: zview.cpp:64 zlist.cpp:59 ui_zbase.h:321
+#, fuzzy
 msgid "Almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
-#: zlist.cpp:192
+#: zlist.cpp:190
 msgid "Almacenes"
 msgstr ""
 
@@ -44,15 +93,15 @@ msgstr ""
 
 #: ui_zlistbase.h:278 ui_zlistbase.h:283
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_zbase.h:309
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_zbase.h:297
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_zbase.h:284
 msgid "Cuadre de Caja"
@@ -68,7 +117,7 @@ msgstr ""
 
 #: zview.cpp:74
 msgid "Descripcion"
-msgstr ""
+msgstr "Descripció"
 
 #: ui_zlistbase.h:234 ui_zlistbase.h:239
 msgid "Editar contrato"
@@ -78,35 +127,36 @@ msgstr ""
 msgid "Error al crear el almacen"
 msgstr ""
 
-#: zlist.cpp:180
+#: zlist.cpp:178
 msgid "Error al editar el almacen"
 msgstr ""
 
-#: zview.cpp:59 zview.cpp:76 zlist.cpp:59 ui_zbase.h:322
+#: zview.cpp:59 zview.cpp:76 zlist.cpp:57 ui_zbase.h:322
 msgid "Fecha"
-msgstr ""
+msgstr "Data"
 
 #: ui_zlistbase.h:267 ui_zlistbase.h:272
 msgid "Filtrar contratos"
 msgstr ""
 
 #: zview.cpp:79
+#, fuzzy
 msgid "Forma de pago"
-msgstr ""
+msgstr "<LI> Forma de pagament <B>"
 
 #: ui_zbase.h:326
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: ui_zbase.h:288 ui_zbase.h:293
 msgid "Guardar almacen"
 msgstr ""
 
-#: zview.cpp:60 zview.cpp:81 zlist.cpp:60 ui_zbase.h:323
+#: zview.cpp:60 zview.cpp:81 zlist.cpp:58 ui_zbase.h:323
 msgid "Hora"
 msgstr ""
 
-#: zlist.cpp:58
+#: zlist.cpp:56
 msgid "ID Z"
 msgstr ""
 
@@ -122,7 +172,7 @@ msgstr ""
 msgid "Id forma de pago"
 msgstr ""
 
-#: zview.cpp:63 zlist.cpp:64
+#: zview.cpp:63 zlist.cpp:62
 msgid "Id. almacen"
 msgstr ""
 
@@ -158,10 +208,10 @@ msgstr ""
 msgid "Referencia"
 msgstr ""
 
-#: zlist.cpp:63
+#: zlist.cpp:61
 msgid "Tickets"
 msgstr ""
 
-#: zview.cpp:61 zview.cpp:82 zlist.cpp:62 ui_zbase.h:325
+#: zview.cpp:61 zview.cpp:82 zlist.cpp:60 ui_zbase.h:325
 msgid "Total"
 msgstr ""

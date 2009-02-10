@@ -1,10 +1,58 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_cobrobase.h:410
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: ui_cobrobase.h:411
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: plugincobros.cpp:97
 msgid "&Cobros a clientes"
@@ -16,7 +64,7 @@ msgstr ""
 
 #: ui_cobroslistbase.h:455 ui_cobroslistbase.h:460
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
 #: cobroslist.cpp:324
 msgid "Apellidos del trabajador"
@@ -45,7 +93,7 @@ msgstr ""
 
 #: cobroslist.cpp:317
 msgid "Cantidad"
-msgstr ""
+msgstr "Quantitat"
 
 #: cobroview.cpp:62
 msgid "Cliente"
@@ -76,44 +124,49 @@ msgid "Cobros previstos"
 msgstr ""
 
 #: cobroslist.cpp:321
+#, fuzzy
 msgid "Comentarios"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
 
 #: ui_cobroslistbase.h:443 ui_cobroslistbase.h:448
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_cobroslistbase.h:452
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_cobroslistbase.h:416 ui_cobrobase.h:390
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_cobroslistbase.h:404
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_cobroslistbase.h:440
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_cobrobase.h:402
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_cobroslistbase.h:392
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_cobroslistbase.h:428
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_cobrobase.h:378
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: cobroslist.cpp:238
 msgid "Debe seleccionar una fila primero"
@@ -149,7 +202,7 @@ msgstr ""
 
 #: ui_cobroslistbase.h:464
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: cobroslist.cpp:315
 msgid "Fecha de cobro"
@@ -209,7 +262,7 @@ msgstr ""
 
 #: cobroslist.cpp:311
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: cobroslist.cpp:323
 msgid "Nombre del trabajador"

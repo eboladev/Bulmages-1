@@ -1,0 +1,334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: registroiva.cpp:43
+msgid "Registro IVA"
+msgstr ""
+
+#: registroiva.cpp:46
+msgid "Identificador"
+msgstr ""
+
+#: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
+msgid "Contrapartida"
+msgstr ""
+
+#: registroiva.cpp:48
+msgid "Base Imponible"
+msgstr ""
+
+#: registroiva.cpp:49 listregistroivaview.cpp:53
+msgid "IVA"
+msgstr ""
+
+#: registroiva.cpp:50
+msgid "Fecha factura"
+msgstr ""
+
+#: registroiva.cpp:51
+msgid "Borrador"
+msgstr ""
+
+#: registroiva.cpp:52
+msgid "Orden"
+msgstr ""
+
+#: registroiva.cpp:53
+msgid "CIF"
+msgstr ""
+
+#: registroiva.cpp:54
+msgid "Forma de pago"
+msgstr ""
+
+#: registroiva.cpp:55
+msgid "Inc registro"
+msgstr ""
+
+#: registroiva.cpp:56
+msgid "Regularizacion"
+msgstr ""
+
+#: registroiva.cpp:57
+msgid "plan 349"
+msgstr ""
+
+#: registroiva.cpp:58
+msgid "Factura emitida"
+msgstr ""
+
+#: registroiva.cpp:59
+msgid "Rectifica a"
+msgstr ""
+
+#: registroiva.cpp:60
+msgid "Factura"
+msgstr ""
+
+#: registroiva.cpp:61
+msgid "Fecha emision"
+msgstr ""
+
+#: registroiva.cpp:62
+msgid "Serie"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_IDIVA"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_IDTIPOIVA"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_IDCUENTA"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_CODIGO"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_NOMBRETIPOIVA"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_IDREGISTROIVA"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_BASEIVA"
+msgstr ""
+
+#: listivaview.cpp:91
+msgid "COL_IVAIVA"
+msgstr ""
+
+#: listivaview.cpp:171 listlinprevcobroview.cpp:269
+msgid "Borrar linea"
+msgstr ""
+
+#: cobropagoview.cpp:46 registroivaview.cpp:82
+msgid "idprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:47 registroivaview.cpp:83
+msgid "fprevistaprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:48 registroivaview.cpp:84
+msgid "fcobroprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:49 registroivaview.cpp:96
+msgid "idctacliente"
+msgstr ""
+
+#: cobropagoview.cpp:50 registroivaview.cpp:85
+msgid "idfpago"
+msgstr ""
+
+#: cobropagoview.cpp:51 listregistroivaview.cpp:52 listregistroivaview.cpp:76
+#: registroivaview.cpp:71 registroivaview.cpp:86
+msgid "idcuenta"
+msgstr ""
+
+#: cobropagoview.cpp:52 listregistroivaview.cpp:67 listregistroivaview.cpp:91
+#: registroivaview.cpp:87
+msgid "idasiento"
+msgstr ""
+
+#: cobropagoview.cpp:53 registroivaview.cpp:88
+msgid "cantidadprevistaprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:54 registroivaview.cpp:89
+msgid "cantidadprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:55 registroivaview.cpp:75 registroivaview.cpp:90
+msgid "idregistroiva"
+msgstr ""
+
+#: cobropagoview.cpp:56 registroivaview.cpp:91
+msgid "tipoprevcobro"
+msgstr ""
+
+#: cobropagoview.cpp:57 registroivaview.cpp:92
+msgid "docprevcobro"
+msgstr ""
+
+#: pluginregistroiva.cpp:99
+msgid "&Registro de IVA"
+msgstr ""
+
+#: pluginregistroiva.cpp:100 pluginregistroiva.cpp:101
+#: regivaqtoolbutton.cpp:78 regivaqtoolbutton.cpp:79
+msgid "Registro de IVA"
+msgstr ""
+
+#: pluginregistroiva.cpp:103
+msgid "&Cobros y pagos"
+msgstr ""
+
+#: pluginregistroiva.cpp:104 pluginregistroiva.cpp:105
+msgid "Cobros y pagos"
+msgstr ""
+
+#: pluginregistroiva.cpp:216
+msgid "Debe seleccionar un apunte"
+msgstr ""
+
+#: listregistroivaview.cpp:50 listregistroivaview.cpp:74
+msgid "Id"
+msgstr ""
+
+#: listregistroivaview.cpp:51
+msgid "Concepto contable"
+msgstr ""
+
+#: listregistroivaview.cpp:54
+msgid "Fecha de factura"
+msgstr ""
+
+#: listregistroivaview.cpp:55 listregistroivaview.cpp:79
+msgid "descripcioncuenta"
+msgstr ""
+
+#: listregistroivaview.cpp:56 listregistroivaview.cpp:80
+#: registroivaview.cpp:95
+msgid "descripcion"
+msgstr ""
+
+#: listregistroivaview.cpp:57 listregistroivaview.cpp:81
+msgid "Debe"
+msgstr ""
+
+#: listregistroivaview.cpp:58 listregistroivaview.cpp:82
+msgid "Haber"
+msgstr ""
+
+#: listregistroivaview.cpp:60 listregistroivaview.cpp:84
+msgid "Comentario"
+msgstr ""
+
+#: listregistroivaview.cpp:61 listregistroivaview.cpp:85
+msgid "ID Canal"
+msgstr ""
+
+#: listregistroivaview.cpp:62 listregistroivaview.cpp:86
+msgid "Conciliacion"
+msgstr ""
+
+#: listregistroivaview.cpp:63 listregistroivaview.cpp:87
+msgid "idc_coste"
+msgstr ""
+
+#: listregistroivaview.cpp:64 listregistroivaview.cpp:88
+msgid "idapunte"
+msgstr ""
+
+#: listregistroivaview.cpp:65 listregistroivaview.cpp:89
+#: registroivaview.cpp:70
+msgid "idtipoiva"
+msgstr ""
+
+#: listregistroivaview.cpp:66 listregistroivaview.cpp:90
+msgid "orden"
+msgstr ""
+
+#: listregistroivaview.cpp:75
+msgid "Concepto Contable"
+msgstr ""
+
+#: listregistroivaview.cpp:77 registroivaview.cpp:72 registroivaview.cpp:93
+msgid "codigo"
+msgstr ""
+
+#: listregistroivaview.cpp:78 registroivaview.cpp:73 registroivaview.cpp:94
+#: registroivaview.cpp:100
+msgid "tipocuenta"
+msgstr ""
+
+#: listregistroivaview.cpp:98 listregistroivaview.cpp:107
+#: registroivaview.cpp:74
+msgid "nombretipoiva"
+msgstr ""
+
+#: listregistroivaview.cpp:99 listregistroivaview.cpp:108
+msgid "tivaiva"
+msgstr ""
+
+#: listregistroivaview.cpp:100 listregistroivaview.cpp:109
+msgid "tbaseiva"
+msgstr ""
+
+#: registroivaview.cpp:69
+msgid "idiva"
+msgstr ""
+
+#: registroivaview.cpp:76
+msgid "baseiva"
+msgstr ""
+
+#: registroivaview.cpp:77
+msgid "ivaiva"
+msgstr ""
+
+#: registroivaview.cpp:97
+msgid "codigoctacliente"
+msgstr ""
+
+#: registroivaview.cpp:98
+msgid "nomctacliente"
+msgstr ""
+
+#: registroivaview.cpp:99
+msgid "tipoctacliente"
+msgstr ""
+
+#: registroivaview.cpp:186
+msgid "Registro factura"
+msgstr ""
+
+#: listlinprevcobroview.cpp:189 listlinprevcobroview.cpp:274
+#: listlinprevcobroview.cpp:465
+msgid "Cobro"
+msgstr ""
+
+#: listlinprevcobroview.cpp:191 listlinprevcobroview.cpp:275
+#: listlinprevcobroview.cpp:468
+msgid "Pago"
+msgstr ""
+
+#: listlinprevcobroview.cpp:270
+msgid "Generar asiento de cobro/pago"
+msgstr ""
+
+#: listlinprevcobroview.cpp:271
+msgid "Desvincular asiento"
+msgstr ""
+
+#: listlinprevcobroview.cpp:272
+msgid "Ver asiento"
+msgstr ""
+
+#: listlinprevcobroview.cpp:273
+msgid "Ver factura"
+msgstr ""

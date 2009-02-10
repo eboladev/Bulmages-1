@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-09 23:09+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr "¡Opció reservada per a experts!"
 msgid "&Borrar"
 msgstr "Tan&car"
 
-#: ui_abreempresabase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_abreempresabase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancel·lar"
 
@@ -55,7 +55,7 @@ msgstr "&Entra"
 msgid "&Guardar"
 msgstr "Desar"
 
-#: blform.cpp:370
+#: blform.cpp:372
 msgid "&No"
 msgstr "&No"
 
@@ -63,7 +63,7 @@ msgstr "&No"
 msgid "&Omitir"
 msgstr "&Ometre"
 
-#: blform.cpp:370
+#: blform.cpp:372
 msgid "&Si"
 msgstr "&Sí"
 
@@ -173,7 +173,7 @@ msgstr "Avís del programa"
 msgid "Bienal"
 msgstr "Biennal"
 
-#: blform.cpp:339 blformlist.cpp:378
+#: blform.cpp:341 blformlist.cpp:378
 #, fuzzy
 msgid "Borrar"
 msgstr "Esborrar"
@@ -302,11 +302,11 @@ msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Ha de seleccionar un element"
 
-#: blform.cpp:340
+#: blform.cpp:342
 msgid "Desea eliminar '"
 msgstr "Desitja eliminar '"
 
-#: blform.cpp:369 paisview.cpp:118 paisview.cpp:189
+#: blform.cpp:371 paisview.cpp:118 paisview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
@@ -423,7 +423,7 @@ msgstr "Form1"
 msgid "Forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: blform.cpp:368
+#: blform.cpp:370
 #, fuzzy
 msgid "Guardar"
 msgstr "Desar"
@@ -445,7 +445,7 @@ msgstr ""
 msgid "Imprimiendo "
 msgstr ""
 
-#: blform.cpp:443
+#: blform.cpp:445
 msgid "Imprimir ficha"
 msgstr ""
 
@@ -515,11 +515,11 @@ msgstr ""
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "<P> No s'ha trobat el pare d'aquesta família.</P>"
 
-#: blform.cpp:350
+#: blform.cpp:352
 msgid "No se ha podido borrar"
 msgstr "No s'ha pogut esborrar"
 
-#: blform.cpp:383
+#: blform.cpp:385
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
@@ -559,7 +559,7 @@ msgstr ""
 msgid "Omitir &clase"
 msgstr "Ometre &classe"
 
-#: blform.cpp:442
+#: blform.cpp:444
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 

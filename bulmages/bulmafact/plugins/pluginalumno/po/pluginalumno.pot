@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,23 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: alumnoview.cpp:49
+#: alumnoview.cpp:48
 msgid "Alumno"
 msgstr ""
 
-#: alumnoview.cpp:52 alumnoslist.cpp:262
+#: alumnoview.cpp:51 alumnoslist.cpp:262
 msgid "Id alumno"
 msgstr ""
 
-#: alumnoview.cpp:53
+#: alumnoview.cpp:52
 msgid "Nombre del alumno"
 msgstr ""
 
-#: alumnoview.cpp:69
+#: alumnoview.cpp:68
 msgid "Error al crear el alumno"
 msgstr ""
 
-#: alumnoview.cpp:97
+#: alumnoview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Borrar Alumno"
 msgstr ""
 
-#: alumnoslist.cpp:263 ui_alumnobase.h:516
+#: alumnoslist.cpp:263 ui_alumnobase.h:523
 msgid "Nombre"
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Cobros efectivos"
 msgstr ""
 
-#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:322 ui_alumnobase.h:456
+#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:322 ui_alumnobase.h:463
 msgid "Nuevo Alumno"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Ctrl+E"
 msgstr ""
 
-#: ui_alumnoslistbase.h:350 ui_alumnobase.h:481
+#: ui_alumnoslistbase.h:350 ui_alumnobase.h:488
 msgid "Ctrl+D"
 msgstr ""
 
@@ -149,111 +149,111 @@ msgstr ""
 msgid "Buscar:"
 msgstr ""
 
-#: ui_alumnobase.h:460 ui_alumnobase.h:465
+#: ui_alumnobase.h:467 ui_alumnobase.h:472
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_alumnobase.h:469
+#: ui_alumnobase.h:476
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_alumnobase.h:472 ui_alumnobase.h:477 ui_alumnobase.h:484
-#: ui_alumnobase.h:489
+#: ui_alumnobase.h:479 ui_alumnobase.h:484 ui_alumnobase.h:491
+#: ui_alumnobase.h:496
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_alumnobase.h:493
+#: ui_alumnobase.h:500
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_alumnobase.h:494
+#: ui_alumnobase.h:501
 msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr ""
 
-#: ui_alumnobase.h:495
+#: ui_alumnobase.h:502
 msgid "Fotografia"
 msgstr ""
 
-#: ui_alumnobase.h:496
+#: ui_alumnobase.h:503
 msgid "Cam&biar imagen"
 msgstr ""
 
-#: ui_alumnobase.h:499
+#: ui_alumnobase.h:506
 msgid "Borrar imagen"
 msgstr ""
 
-#: ui_alumnobase.h:503
+#: ui_alumnobase.h:510
 msgid "Nombre completo:"
 msgstr ""
 
-#: ui_alumnobase.h:504
+#: ui_alumnobase.h:511
 msgid "Direccion:"
 msgstr ""
 
-#: ui_alumnobase.h:505
+#: ui_alumnobase.h:512
 msgid "Poblacion:"
 msgstr ""
 
-#: ui_alumnobase.h:506
+#: ui_alumnobase.h:513
 msgid "Telefono fijo:"
 msgstr ""
 
-#: ui_alumnobase.h:507
+#: ui_alumnobase.h:514
 msgid "Telefono movil:"
 msgstr ""
 
-#: ui_alumnobase.h:508
+#: ui_alumnobase.h:515
 msgid "Codigo postal:"
 msgstr ""
 
-#: ui_alumnobase.h:509
+#: ui_alumnobase.h:516
 msgid "Correo electronico:"
 msgstr ""
 
-#: ui_alumnobase.h:510
+#: ui_alumnobase.h:517
 msgid "Provincia:"
 msgstr ""
 
-#: ui_alumnobase.h:511
+#: ui_alumnobase.h:518
 msgid "&Datos generales"
 msgstr ""
 
-#: ui_alumnobase.h:512
+#: ui_alumnobase.h:519
 msgid "Comentarios:"
 msgstr ""
 
-#: ui_alumnobase.h:513
+#: ui_alumnobase.h:520
 msgid "Datos bancarios:"
 msgstr ""
 
-#: ui_alumnobase.h:514
+#: ui_alumnobase.h:521
 msgid "Otros datos"
 msgstr ""
 
-#: ui_alumnobase.h:515
+#: ui_alumnobase.h:522
 msgid "DNI / NIf"
 msgstr ""
 
-#: ui_alumnobase.h:517
+#: ui_alumnobase.h:524
 msgid "Relacion"
 msgstr ""
 
-#: ui_alumnobase.h:518
+#: ui_alumnobase.h:525
 msgid "Porcentaje de facturacion"
 msgstr ""
 
-#: ui_alumnobase.h:519
+#: ui_alumnobase.h:526
 msgid "Padres/Tutores"
 msgstr ""
 
-#: ui_alumnobase.h:520
+#: ui_alumnobase.h:527
 msgid "Hermanos"
 msgstr ""
 
-#: ui_alumnobase.h:521
+#: ui_alumnobase.h:528
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_alumnobase.h:522
+#: ui_alumnobase.h:529
 msgid "&Cancelar"
 msgstr ""

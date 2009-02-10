@@ -1,281 +1,397 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
 #: ui_contratobase.h:511
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Aceptar"
 
 #: ui_contratobase.h:512
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: ui_contratobase.h:510
 msgid "&Comentarios"
-msgstr ""
+msgstr "&Comentarios"
 
 #: ui_contratobase.h:509
 msgid "&Facturas"
-msgstr ""
+msgstr "&Facturas"
 
 #: ui_contratoslistbase.h:319 ui_contratoslistbase.h:324
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualizar listado"
 
 #: contratoview.cpp:406
 msgid "Base imponible"
-msgstr ""
+msgstr "Base imponible"
 
 #: ui_contratobase.h:471 ui_contratobase.h:476
 msgid "Borrar Contrato"
-msgstr ""
+msgstr "Borrar Contrato"
 
 #: ui_contratoslistbase.h:275 ui_contratoslistbase.h:280
 msgid "Borrar contrato"
-msgstr ""
+msgstr "Borrar contrato"
 
 #: ui_contratoslistbase.h:339
 msgid "Buscar:"
-msgstr ""
+msgstr "Buscar:"
 
 #: contratoslist.cpp:424
 msgid "C.I.F."
-msgstr ""
+msgstr "C.I.F."
 
 #: contratoview.cpp:413
 msgid "CIF cliente"
-msgstr ""
+msgstr "CIF cliente"
 
 #: ui_contratoslistbase.h:340
 msgid "Caducados"
-msgstr ""
+msgstr "Caducados"
 
-#: listlincontratoview.cpp:46
+#: listlincontratoview.cpp:45
 msgid "Cantidadl contrato"
-msgstr ""
+msgstr "Cantidadl contrato"
 
 #: ui_contratoslistbase.h:341
 msgid "Cliente"
-msgstr ""
+msgstr "Cliente"
 
 #: contratoview.cpp:65 contratoslist.cpp:64
 msgid "Cliente:"
-msgstr ""
+msgstr "Cliente:"
 
 #: contratoslist.cpp:423
 msgid "Codigo"
-msgstr ""
+msgstr "Codigo"
 
 #: contratoview.cpp:414
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Codigo almacen"
 
-#: listlincontratoview.cpp:42
+#: listlincontratoview.cpp:41
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Codigo completo articulo"
 
 #: contratoview.cpp:416
 msgid "Comentario factura"
-msgstr ""
+msgstr "Comentario factura"
 
 #: ui_contratoslistbase.h:308 ui_contratoslistbase.h:313
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurar listado"
 
 #: contratoview.cpp:415
 msgid "Contact factura"
-msgstr ""
+msgstr "Contact factura"
 
 #: contratoview.cpp:118 contrato.cpp:39
 msgid "Contrato"
-msgstr ""
+msgstr "Contrato"
 
 #: ui_contratoslistbase.h:249
 msgid "Contratos"
-msgstr ""
+msgstr "Contratos"
 
 #: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
 #: contrato.cpp:49 contrato.cpp:50
 msgid "Descripcion contrato"
-msgstr ""
+msgstr "Descripcion contrato"
 
 #: ui_contratobase.h:503
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripcion:"
 
-#: listlincontratoview.cpp:45
+#: listlincontratoview.cpp:44
 msgid "Descripcionl contrato"
-msgstr ""
+msgstr "Descripcionl contrato"
 
 #: ui_contratobase.h:508
 msgid "Detalle"
-msgstr ""
+msgstr "Detalle"
 
 #: ui_contratoslistbase.h:264 ui_contratoslistbase.h:269
 msgid "Editar contrato"
-msgstr ""
+msgstr "Editar contrato"
 
 #: contratoslist.cpp:203
 msgid "Error al borrar un contrato"
-msgstr ""
+msgstr "Error al borrar un contrato"
 
 #: contratoview.cpp:73
 msgid "Error al crear la contrato"
-msgstr ""
+msgstr "Error al crear la contrato"
 
 #: ui_contratoslistbase.h:330 ui_contratoslistbase.h:335 ui_contratobase.h:482
 #: ui_contratobase.h:487
 msgid "Facturar Periodos Pendientes"
-msgstr ""
+msgstr "Facturar Periodos Pendientes"
 
 #: contratoview.cpp:403
 msgid "Fecha"
-msgstr ""
+msgstr "Fecha"
 
 #: contratoslist.cpp:428
 msgid "Fecha de alta del contrato"
-msgstr ""
+msgstr "Fecha de alta del contrato"
 
 #: contratoslist.cpp:429 contratoslist.cpp:430
 msgid "Fecha de baja del contrato"
-msgstr ""
+msgstr "Fecha de baja del contrato"
 
 #: ui_contratobase.h:507
 msgid "Fecha de creacion:"
-msgstr ""
+msgstr "Fecha de creacion:"
 
 #: ui_contratobase.h:506
 msgid "Fecha de finalizacion:"
-msgstr ""
+msgstr "Fecha de finalizacion:"
 
 #: ui_contratoslistbase.h:297 ui_contratoslistbase.h:302
 msgid "Filtrar contratos"
-msgstr ""
+msgstr "Filtrar contratos"
 
 #: ui_contratobase.h:460 ui_contratobase.h:465
 msgid "Guardar Contrato"
-msgstr ""
+msgstr "Guardar Contrato"
 
 #: contratoslist.cpp:422
 msgid "ID contrato"
-msgstr ""
+msgstr "ID contrato"
 
 #: contratoview.cpp:419
 msgid "Id almacen"
-msgstr ""
+msgstr "Id almacen"
 
-#: listlincontratoview.cpp:41
+#: listlincontratoview.cpp:40
 msgid "Id articulo"
-msgstr ""
+msgstr "Id articulo"
 
 #: contratoview.cpp:418 contrato.cpp:43
 msgid "Id cliente"
-msgstr ""
+msgstr "Id cliente"
 
-#: listlincontratoview.cpp:48 contrato.cpp:42
+#: listlincontratoview.cpp:47 contrato.cpp:42
 msgid "Id contrato"
-msgstr ""
+msgstr "Id contrato"
 
 #: contratoview.cpp:410
 msgid "Id factura"
-msgstr ""
+msgstr "Id factura"
 
 #: contratoview.cpp:417
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id trabajador"
 
-#: listlincontratoview.cpp:44
+#: listlincontratoview.cpp:43
 msgid "Idl contrato"
-msgstr ""
+msgstr "Idl contrato"
 
 #: ui_contratoslistbase.h:286 ui_contratoslistbase.h:291
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimir listado"
 
 #: contratoview.cpp:407
 msgid "Impuestos"
-msgstr ""
+msgstr "Impuestos"
 
 #: contratoslist.cpp:174
 msgid "Listado de Contratos"
-msgstr ""
+msgstr "Listado de Contratos"
 
 #: ui_contratobase.h:494 ui_contratobase.h:499
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar cabecera"
 
 #: contratoslist.cpp:427
 msgid "Nombre alternativo del contrato"
-msgstr ""
+msgstr "Nombre alternativo del contrato"
 
-#: listlincontratoview.cpp:43
+#: listlincontratoview.cpp:42
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Nombre articulo"
 
 #: contratoview.cpp:404
 msgid "Nombre cliente"
-msgstr ""
+msgstr "Nombre cliente"
 
 #: contratoslist.cpp:426
 msgid "Nombre de contrato"
-msgstr ""
+msgstr "Nombre de contrato"
 
 #: ui_contratobase.h:457
 msgid "Nuevo Contrato"
-msgstr ""
+msgstr "Nuevo Contrato"
 
 #: ui_contratoslistbase.h:253 ui_contratoslistbase.h:258
 msgid "Nuevo contrato"
-msgstr ""
+msgstr "Nuevo contrato"
 
 #: contratoview.cpp:402
 msgid "Numero"
-msgstr ""
+msgstr "Numero"
 
-#: listlincontratoview.cpp:49
+#: listlincontratoview.cpp:48
 msgid "Orden"
-msgstr ""
+msgstr "Orden"
 
-#: listlincontratoview.cpp:47
+#: listlincontratoview.cpp:46
 msgid "PVPl contrato"
-msgstr ""
+msgstr "PVPl contrato"
 
 #: ui_contratobase.h:504
 msgid "Periodicidad Facturas:"
-msgstr ""
+msgstr "Periodicidad Facturas:"
 
 #: contratoview.cpp:409
 msgid "Procesada"
-msgstr ""
+msgstr "Procesada"
 
 #: contratoview.cpp:411
 msgid "Ref factura"
-msgstr ""
+msgstr "Ref factura"
 
 #: contratoslist.cpp:425
 msgid "Referencia"
-msgstr ""
+msgstr "Referencia"
 
 #: contrato.cpp:44
 msgid "Referencia contrato"
-msgstr ""
+msgstr "Referencia contrato"
 
 #: ui_contratobase.h:491
 msgid "Referencia:"
-msgstr ""
+msgstr "Referencia:"
 
 #: contratoslist.cpp:73
 msgid "Selector de contratos"
-msgstr ""
+msgstr "Selector de contratos"
 
 #: contratoview.cpp:412
 msgid "Serie"
-msgstr ""
+msgstr "Serie"
 
 #: contratoview.cpp:405
 msgid "Telefono factura"
-msgstr ""
+msgstr "Telefono factura"
 
 #: contratoview.cpp:408
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: ui_contratobase.h:505
 msgid "Ubicacion:"
-msgstr ""
+msgstr "Ubicacion:"

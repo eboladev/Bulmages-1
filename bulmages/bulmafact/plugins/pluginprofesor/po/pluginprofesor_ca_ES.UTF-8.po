@@ -1,10 +1,58 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_profesorbase.h:524
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: ui_profesorbase.h:525
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: ui_profesorbase.h:519
 msgid "&Datos generales"
@@ -24,7 +72,7 @@ msgstr ""
 
 #: ui_profesoreslistbase.h:389 ui_profesoreslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
 #: ui_profesoreslistbase.h:309
 msgid "Banco:"
@@ -65,47 +113,47 @@ msgstr ""
 
 #: ui_profesorbase.h:520
 msgid "Comentarios:"
-msgstr ""
+msgstr "Comentaris:"
 
 #: ui_profesoreslistbase.h:377 ui_profesoreslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_profesorbase.h:518
 msgid "Correo electronico:"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_profesoreslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_profesorbase.h:493 ui_profesoreslistbase.h:350
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_profesoreslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_profesoreslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_profesorbase.h:505
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_profesoreslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_profesoreslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_profesorbase.h:481
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_profesorbase.h:522
 msgid "Datos bancarios:"
@@ -125,7 +173,7 @@ msgstr ""
 
 #: ui_profesorbase.h:509
 msgid "Direccion:"
-msgstr ""
+msgstr "Adreça:"
 
 #: ui_profesoreslistbase.h:329 ui_profesoreslistbase.h:334
 msgid "Editar Profesor"
@@ -137,19 +185,19 @@ msgstr ""
 
 #: ui_profesorbase.h:508
 msgid "Empresa:"
-msgstr ""
+msgstr "Empresa:"
 
 #: profesoreslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: profesorview.cpp:70
+#: profesorview.cpp:69
 msgid "Error al crear el profesor"
 msgstr ""
 
 #: ui_profesoreslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_profesoreslistbase.h:310
 msgid "Fecha final:"
@@ -167,7 +215,7 @@ msgstr ""
 msgid "Guardar cobro"
 msgstr ""
 
-#: profesorview.cpp:52
+#: profesorview.cpp:51
 msgid "ID profesor"
 msgstr ""
 
@@ -181,13 +229,13 @@ msgstr ""
 
 #: profesoreslist.cpp:263
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: ui_profesorbase.h:507
 msgid "Nombre completo:"
 msgstr ""
 
-#: profesorview.cpp:53
+#: profesorview.cpp:52
 msgid "Nombre del profesor"
 msgstr ""
 
@@ -216,7 +264,7 @@ msgstr ""
 msgid "Poblacion:"
 msgstr ""
 
-#: profesorview.cpp:49
+#: profesorview.cpp:48
 msgid "Profesor"
 msgstr ""
 
@@ -241,6 +289,6 @@ msgstr ""
 msgid "Telefono movil:"
 msgstr ""
 
-#: profesorview.cpp:98
+#: profesorview.cpp:97
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""

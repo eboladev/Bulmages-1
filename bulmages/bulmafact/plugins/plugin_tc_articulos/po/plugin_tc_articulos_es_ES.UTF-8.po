@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-07 11:31+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 
 #: ui_listtallasbase.h:117 ui_listcoloresbase.h:117
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Aceptar"
 
 #: ui_listtallasbase.h:118 ui_listcoloresbase.h:118
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: plugarticulos.cpp:83
 msgid "&Colores"
-msgstr ""
+msgstr "&Colores"
 
 #: plugarticulos.cpp:77
 msgid "&Tallas"
-msgstr ""
+msgstr "&Tallas"
 
 #: plugarticulos.cpp:72
 msgid "&Tallas y colores"
-msgstr ""
+msgstr "&Tallas y colores"
 
 #: plugin_tc_articulos.cpp:76
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: plugarticulos.cpp:84 plugarticulos.cpp:85 listcoloresview.cpp:49
 #: ui_listcoloresbase.h:116
@@ -47,53 +47,53 @@ msgstr "Colores"
 
 #: listtallasview.cpp:71 listcoloresview.cpp:71
 msgid "Error al guardar los colores"
-msgstr ""
+msgstr "Error al guardar los colores"
 
 #: plugin_tc_articulos.cpp:77
 msgid "Id Articulo"
-msgstr ""
+msgstr "Id Articulo"
 
 #: listcoloresview.cpp:99
 msgid "Id Color"
-msgstr ""
+msgstr "Id Color"
 
 #: listtallasview.cpp:99
 msgid "Id color"
-msgstr ""
+msgstr "Id color"
 
 #: listcoloresview.cpp:101
 msgid "Nombre Color"
-msgstr ""
+msgstr "Nombre Color"
 
-#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:286
-#: plugin_tc_articulos.cpp:308 plugin_tc_articulos.cpp:331
-#: plugin_tc_articulos.cpp:360
+#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:289
+#: plugin_tc_articulos.cpp:311 plugin_tc_articulos.cpp:334
+#: plugin_tc_articulos.cpp:363
 msgid "Nombre color"
-msgstr ""
+msgstr "Nombre color"
 
 #: listtallasview.cpp:100 plugin_tc_articulos.cpp:84
-#: plugin_tc_articulos.cpp:287 plugin_tc_articulos.cpp:309
-#: plugin_tc_articulos.cpp:332 plugin_tc_articulos.cpp:361
+#: plugin_tc_articulos.cpp:290 plugin_tc_articulos.cpp:312
+#: plugin_tc_articulos.cpp:335 plugin_tc_articulos.cpp:364
 msgid "Nombre talla"
-msgstr ""
+msgstr "Nombre talla"
 
 #: listcoloresview.cpp:100
 msgid "RGB Color"
-msgstr ""
+msgstr "RGB Color"
 
-#: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:285
-#: plugin_tc_articulos.cpp:307 plugin_tc_articulos.cpp:330
-#: plugin_tc_articulos.cpp:359
+#: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:288
+#: plugin_tc_articulos.cpp:310 plugin_tc_articulos.cpp:333
+#: plugin_tc_articulos.cpp:362
 msgid "Talla"
-msgstr ""
+msgstr "Talla"
 
 #: listtallasview.cpp:49 plugarticulos.cpp:78 plugarticulos.cpp:79
 #: ui_listtallasbase.h:116
 msgid "Tallas"
-msgstr ""
+msgstr "Tallas"
 
-#: plugin_tc_articulos.cpp:78 plugin_tc_articulos.cpp:284
-#: plugin_tc_articulos.cpp:306 plugin_tc_articulos.cpp:329
-#: plugin_tc_articulos.cpp:358
+#: plugin_tc_articulos.cpp:78 plugin_tc_articulos.cpp:287
+#: plugin_tc_articulos.cpp:309 plugin_tc_articulos.cpp:332
+#: plugin_tc_articulos.cpp:361
 msgid "color"
-msgstr ""
+msgstr "color"

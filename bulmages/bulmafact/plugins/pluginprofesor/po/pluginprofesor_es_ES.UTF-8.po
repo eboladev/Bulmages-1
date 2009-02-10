@@ -1,246 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
 #: ui_profesorbase.h:524
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Aceptar"
 
 #: ui_profesorbase.h:525
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: ui_profesorbase.h:519
 msgid "&Datos generales"
-msgstr ""
+msgstr "&Datos generales"
 
 #: pluginprofesor.cpp:104
 msgid "&Nuevo Profesor"
-msgstr ""
+msgstr "&Nuevo Profesor"
 
 #: pluginprofesor.cpp:96
 msgid "&Profesores"
-msgstr ""
+msgstr "&Profesores"
 
 #: pluginprofesor.cpp:112
 msgid "About FAPAC"
-msgstr ""
+msgstr "About FAPAC"
 
 #: ui_profesoreslistbase.h:389 ui_profesoreslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualizar listado"
 
 #: ui_profesoreslistbase.h:309
 msgid "Banco:"
-msgstr ""
+msgstr "Banco:"
 
 #: ui_profesoreslistbase.h:341 ui_profesoreslistbase.h:346
 msgid "Borrar Profesor"
-msgstr ""
+msgstr "Borrar Profesor"
 
 #: ui_profesorbase.h:484 ui_profesorbase.h:489 ui_profesorbase.h:496
 #: ui_profesorbase.h:501
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Borrar cobro"
 
 #: profesoreslist.cpp:218
 msgid "Borrar profesor"
-msgstr ""
+msgstr "Borrar profesor"
 
 #: ui_profesoreslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Buscar:"
 
 #: ui_profesorbase.h:506
 msgid "C.I.F./N.I.F./N.I.E.:"
-msgstr ""
+msgstr "C.I.F./N.I.F./N.I.E.:"
 
 #: ui_profesoreslistbase.h:313
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Cobros efectivos"
 
 #: ui_profesoreslistbase.h:312
 msgid "Cobros previstos"
-msgstr ""
+msgstr "Cobros previstos"
 
 #: ui_profesorbase.h:510
 msgid "Codigo postal:"
-msgstr ""
+msgstr "Codigo postal:"
 
 #: ui_profesorbase.h:520
 msgid "Comentarios:"
-msgstr ""
+msgstr "Comentarios:"
 
 #: ui_profesoreslistbase.h:377 ui_profesoreslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurar listado"
 
 #: ui_profesorbase.h:518
 msgid "Correo electronico:"
-msgstr ""
+msgstr "Correo electronico:"
 
 #: ui_profesoreslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_profesorbase.h:493 ui_profesoreslistbase.h:350
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_profesoreslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_profesoreslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_profesorbase.h:505
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_profesoreslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_profesoreslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_profesorbase.h:481
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_profesorbase.h:522
 msgid "Datos bancarios:"
-msgstr ""
+msgstr "Datos bancarios:"
 
 #: ui_profesorbase.h:521
 msgid "Datos de comercio electronico:"
-msgstr ""
+msgstr "Datos de comercio electronico:"
 
 #: profesoreslist.cpp:201
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Debe seleccionar una fila primero"
 
 #: profesoreslist.cpp:160
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Debe seleccionar una linea"
 
 #: ui_profesorbase.h:509
 msgid "Direccion:"
-msgstr ""
+msgstr "Direccion:"
 
 #: ui_profesoreslistbase.h:329 ui_profesoreslistbase.h:334
 msgid "Editar Profesor"
-msgstr ""
+msgstr "Editar Profesor"
 
 #: profesoreslist.cpp:217
 msgid "Editar profesor"
-msgstr ""
+msgstr "Editar profesor"
 
 #: ui_profesorbase.h:508
 msgid "Empresa:"
-msgstr ""
+msgstr "Empresa:"
 
 #: profesoreslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Error al borrar el cobro a cliente"
 
-#: profesorview.cpp:70
+#: profesorview.cpp:69
 msgid "Error al crear el profesor"
-msgstr ""
+msgstr "Error al crear el profesor"
 
 #: ui_profesoreslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_profesoreslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Fecha final:"
 
 #: ui_profesoreslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Fecha inicial:"
 
 #: ui_profesoreslistbase.h:365 ui_profesoreslistbase.h:370
 msgid "Filtrar Profesores"
-msgstr ""
+msgstr "Filtrar Profesores"
 
 #: ui_profesorbase.h:472 ui_profesorbase.h:477
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Guardar cobro"
 
-#: profesorview.cpp:52
+#: profesorview.cpp:51
 msgid "ID profesor"
-msgstr ""
+msgstr "ID profesor"
 
 #: profesoreslist.cpp:262
 msgid "Id profesor"
-msgstr ""
+msgstr "Id profesor"
 
 #: ui_profesoreslistbase.h:353 ui_profesoreslistbase.h:358
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimir listado"
 
 #: profesoreslist.cpp:263
 msgid "Nombre"
-msgstr ""
+msgstr "Nombre"
 
 #: ui_profesorbase.h:507
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Nombre completo:"
 
-#: profesorview.cpp:53
+#: profesorview.cpp:52
 msgid "Nombre del profesor"
-msgstr ""
+msgstr "Nombre del profesor"
 
 #: ui_profesorbase.h:468 ui_profesoreslistbase.h:317
 #: ui_profesoreslistbase.h:322
 msgid "Nuevo Profesor"
-msgstr ""
+msgstr "Nuevo Profesor"
 
 #: pluginprofesor.cpp:106 pluginprofesor.cpp:107
 msgid "Nuevo profesor"
-msgstr ""
+msgstr "Nuevo profesor"
 
 #: ui_profesorbase.h:514
 msgid "Numero de fax:"
-msgstr ""
+msgstr "Numero de fax:"
 
 #: ui_profesorbase.h:523
 msgid "Otros datos"
-msgstr ""
+msgstr "Otros datos"
 
 #: ui_profesorbase.h:517
 msgid "Pagina web:"
-msgstr ""
+msgstr "Pagina web:"
 
 #: ui_profesorbase.h:511
 msgid "Poblacion:"
-msgstr ""
+msgstr "Poblacion:"
 
-#: profesorview.cpp:49
+#: profesorview.cpp:48
 msgid "Profesor"
-msgstr ""
+msgstr "Profesor"
 
 #: pluginprofesor.cpp:98 pluginprofesor.cpp:99 profesoreslist.cpp:144
 #: ui_profesoreslistbase.h:308
 msgid "Profesores"
-msgstr ""
+msgstr "Profesores"
 
 #: ui_profesorbase.h:512
 msgid "Provincia:"
-msgstr ""
+msgstr "Provincia:"
 
 #: ui_profesorbase.h:515
 msgid "Telefono del trabajo:"
-msgstr ""
+msgstr "Telefono del trabajo:"
 
 #: ui_profesorbase.h:513
 msgid "Telefono fijo:"
-msgstr ""
+msgstr "Telefono fijo:"
 
 #: ui_profesorbase.h:516
 msgid "Telefono movil:"
-msgstr ""
+msgstr "Telefono movil:"
 
-#: profesorview.cpp:98
+#: profesorview.cpp:97
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
+msgstr "Tiene que guardar el documento antes de poder imprimirlo."

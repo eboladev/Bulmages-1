@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.cxx:103
+msgid "Iniciando clases"
+msgstr ""
+
+#: main.cxx:142
+msgid "Leyendo configuracion"
+msgstr ""
+
+#: main.cxx:165
+msgid "Cargando traducciones"
+msgstr ""
+
+#: main.cxx:196
+msgid "Cargando plugins"
+msgstr ""
+
+#: main.cxx:202
+msgid "Lanzando plugins"
+msgstr ""
+
+#: main.cxx:208
+msgid "Inicializando componentes"
+msgstr ""
+
+#: main.cxx:214
+msgid "Terminado"
+msgstr ""
+
+#: main.cxx:229
+msgid "Error inesperado en BulmaTPV. El programa se cerrara."
+msgstr ""
+
+#: aboutview.cpp:41
+msgid "Compilado usando la version de QT:"
+msgstr ""
+
+#: ticket.cpp:43
+msgid "Descripcion"
+msgstr ""
+
+#: ticket.cpp:44
+msgid "Nombre"
+msgstr ""
+
+#: ticket.cpp:45
+msgid "Id albaran"
+msgstr ""
+
+#: ticket.cpp:46
+msgid "Id fechaalbaran"
+msgstr ""
+
+#: ticket.cpp:47
+msgid "Hora"
+msgstr ""
+
+#: ticket.cpp:48
+msgid "Trabajador"
+msgstr ""
+
+#: ticket.cpp:49
+msgid "Cliente"
+msgstr ""
+
+#: ticket.cpp:50
+msgid "Almacen"
+msgstr ""
+
+#: ticket.cpp:51
+msgid "Num"
+msgstr ""
+
+#: ticket.cpp:52
+msgid "Referencia"
+msgstr ""
+
+#: ticket.cpp:53
+msgid "Ticket"
+msgstr ""
+
+#: ticket.cpp:54
+msgid "Id forma de pago"
+msgstr ""
+
+#: ticket.cpp:85
+msgid "Id Albaran"
+msgstr ""
+
+#: ticket.cpp:86
+msgid "Id lalbaran"
+msgstr ""
+
+#: ticket.cpp:87
+msgid "Cantidad"
+msgstr ""
+
+#: ticket.cpp:88
+msgid "Precio"
+msgstr ""
+
+#: ticket.cpp:89
+msgid "IVA"
+msgstr ""
+
+#: ticket.cpp:90
+msgid "Descuento"
+msgstr ""
+
+#: ticket.cpp:91
+msgid "Orden"
+msgstr ""
+
+#: ticket.cpp:92
+msgid "Req. eq."
+msgstr ""
+
+#: ticket.cpp:94
+msgid "Id articulo"
+msgstr ""
+
+#: ticket.cpp:95
+msgid "Codigo articulo"
+msgstr ""
+
+#: ticket.cpp:96 ticket.cpp:97
+msgid "Nombre articulo"
+msgstr ""
+
+#: ticket.cpp:942
+msgid "El ticket esta vacio."
+msgstr ""
+
+#: empresatpv.cpp:77
+msgid "Inicializando listado de articulos"
+msgstr ""
+
+#: empresatpv.cpp:100
+msgid "Terminal Punto de Venta GPL"
+msgstr ""

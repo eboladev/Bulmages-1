@@ -1,0 +1,178 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbalance.cpp:92
+#, fuzzy
+msgid "&Balance jerarquico"
+msgstr "Balanç jeràrquic"
+
+#: pluginbalance.cpp:88
+msgid "&Ver"
+msgstr "&Veure"
+
+#: balancesubform.cpp:80
+#, fuzzy
+msgid "Ajustar altura"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçada\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altura"
+
+#: balancesubform.cpp:82
+#, fuzzy
+msgid "Ajustar alturas"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçades\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altures"
+
+#: balancesubform.cpp:79
+#, fuzzy
+msgid "Ajustar columa"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columna\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columna"
+
+#: balancesubform.cpp:81
+#, fuzzy
+msgid "Ajustar columnas"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta columnes\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar columnes"
+
+#: balanceview.cpp:62
+msgid "Balance"
+msgstr "Balanç"
+
+#: balancesubform.cpp:77
+#, fuzzy
+msgid "Borrar registro"
+msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
+
+#: balanceview.cpp:259
+msgid "Codigo"
+msgstr "Codi"
+
+#: balanceview.cpp:259
+msgid "Debe"
+msgstr "Deure"
+
+#: balanceview.cpp:259
+#, fuzzy
+msgid "Debe "
+msgstr "Deure"
+
+#: balanceview.cpp:259
+msgid "Denominacion"
+msgstr "Denominació"
+
+#: balanceview.cpp:259
+msgid "Haber"
+msgstr "Haver"
+
+#: balanceview.cpp:259
+#, fuzzy
+msgid "Haber "
+msgstr "Haver"
+
+#: pluginbalance.cpp:93
+#, fuzzy
+msgid "Permite realizar balances"
+msgstr "Actualitza balanç"
+
+#: pluginbalance.cpp:94
+msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: balanceview.cpp:259
+msgid "Saldo"
+msgstr "Saldo"
+
+#: balanceview.cpp:259
+#, fuzzy
+msgid "Saldo "
+msgstr "Saldo"
+
+#: balanceview.cpp:259
+msgid "Saldo anterior"
+msgstr "Saldo anterior"
+
+#: balancesubform.cpp:84
+msgid "Ver configurador de subformulario"
+msgstr "Veure el configurador de subformulari"
+
+#: balancesubform.cpp:40
+msgid "asaldo"
+msgstr ""
+
+#: balancesubform.cpp:38
+msgid "codigo"
+msgstr "codi"
+
+#: balancesubform.cpp:39
+msgid "descripcion"
+msgstr "descripció"
+
+#: balancesubform.cpp:44
+msgid "ejdebe"
+msgstr ""
+
+#: balancesubform.cpp:45
+msgid "ejhaber"
+msgstr ""
+
+#: balancesubform.cpp:46
+msgid "ejsaldo"
+msgstr ""
+
+#: balancesubform.cpp:36
+msgid "idcuenta"
+msgstr ""
+
+#: pluginbalance.cpp:84
+#, fuzzy
+msgid "menuVentana"
+msgstr "Finestre"
+
+#: balancesubform.cpp:41
+msgid "tdebe"
+msgstr ""
+
+#: balancesubform.cpp:42
+msgid "thaber"
+msgstr ""
+
+#: balancesubform.cpp:37
+msgid "tipocuenta"
+msgstr ""
+
+#: balancesubform.cpp:43
+msgid "tsaldo"
+msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,8 +30,8 @@ msgid "Id color"
 msgstr ""
 
 #: listtallasview.cpp:100 plugin_tc_articulos.cpp:84
-#: plugin_tc_articulos.cpp:287 plugin_tc_articulos.cpp:309
-#: plugin_tc_articulos.cpp:332 plugin_tc_articulos.cpp:361
+#: plugin_tc_articulos.cpp:290 plugin_tc_articulos.cpp:312
+#: plugin_tc_articulos.cpp:335 plugin_tc_articulos.cpp:364
 msgid "Nombre talla"
 msgstr ""
 
@@ -43,21 +43,21 @@ msgstr ""
 msgid "Id Articulo"
 msgstr ""
 
-#: plugin_tc_articulos.cpp:78 plugin_tc_articulos.cpp:284
-#: plugin_tc_articulos.cpp:306 plugin_tc_articulos.cpp:329
-#: plugin_tc_articulos.cpp:358
+#: plugin_tc_articulos.cpp:78 plugin_tc_articulos.cpp:287
+#: plugin_tc_articulos.cpp:309 plugin_tc_articulos.cpp:332
+#: plugin_tc_articulos.cpp:361
 msgid "color"
 msgstr ""
 
-#: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:285
-#: plugin_tc_articulos.cpp:307 plugin_tc_articulos.cpp:330
-#: plugin_tc_articulos.cpp:359
+#: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:288
+#: plugin_tc_articulos.cpp:310 plugin_tc_articulos.cpp:333
+#: plugin_tc_articulos.cpp:362
 msgid "Talla"
 msgstr ""
 
-#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:286
-#: plugin_tc_articulos.cpp:308 plugin_tc_articulos.cpp:331
-#: plugin_tc_articulos.cpp:360
+#: plugin_tc_articulos.cpp:82 plugin_tc_articulos.cpp:289
+#: plugin_tc_articulos.cpp:311 plugin_tc_articulos.cpp:334
+#: plugin_tc_articulos.cpp:363
 msgid "Nombre color"
 msgstr ""
 

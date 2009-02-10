@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,64 +16,64 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listdescpedidoproveedorview.cpp:41
+#: listdescpedidoproveedorview.cpp:39
 msgid "Id descuento"
 msgstr ""
 
-#: listdescpedidoproveedorview.cpp:42
+#: listdescpedidoproveedorview.cpp:40
 msgid "Concepto descuento"
 msgstr ""
 
-#: listdescpedidoproveedorview.cpp:43 listlinpedidoproveedorview.cpp:50
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 msgid "% Descuento"
 msgstr ""
 
-#: listdescpedidoproveedorview.cpp:44 listlinpedidoproveedorview.cpp:51
+#: listdescpedidoproveedorview.cpp:42 listlinpedidoproveedorview.cpp:50
 #: pedidosproveedorlist.cpp:325
 msgid "Id pedido"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:40
+#: listlinpedidoproveedorview.cpp:39
 msgid "Punteo"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:41
+#: listlinpedidoproveedorview.cpp:40
 msgid "Id articulo"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:42
+#: listlinpedidoproveedorview.cpp:41
 msgid "Codigo completo articulo"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:43
+#: listlinpedidoproveedorview.cpp:42
 msgid "Nombre articulo"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:44
+#: listlinpedidoproveedorview.cpp:43
 msgid "Numero de linea"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:45
+#: listlinpedidoproveedorview.cpp:44
 msgid "Descripcion"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:46
+#: listlinpedidoproveedorview.cpp:45
 msgid "Cantidad"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:47
+#: listlinpedidoproveedorview.cpp:46
 msgid "Precio"
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:48
+#: listlinpedidoproveedorview.cpp:47
 msgid "% I.V.A."
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:49
+#: listlinpedidoproveedorview.cpp:48
 msgid "% R.E."
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:52
+#: listlinpedidoproveedorview.cpp:51
 msgid "Orden"
 msgstr ""
 

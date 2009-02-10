@@ -1,14 +1,62 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_alumnobase.h:528
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: pluginalumno.cpp:96
 msgid "&Alumnos"
 msgstr ""
 
 #: ui_alumnobase.h:529
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: ui_alumnobase.h:518
 msgid "&Datos generales"
@@ -20,9 +68,9 @@ msgstr ""
 
 #: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
-#: alumnoview.cpp:49
+#: alumnoview.cpp:48
 msgid "Alumno"
 msgstr ""
 
@@ -74,47 +122,47 @@ msgstr ""
 
 #: ui_alumnobase.h:519
 msgid "Comentarios:"
-msgstr ""
+msgstr "Comentaris:"
 
 #: ui_alumnoslistbase.h:377 ui_alumnoslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_alumnobase.h:516
 msgid "Correo electronico:"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_alumnoslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_alumnoslistbase.h:350 ui_alumnobase.h:488
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_alumnoslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_alumnoslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_alumnobase.h:500
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_alumnoslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_alumnoslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_alumnobase.h:476
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_alumnobase.h:522
 msgid "DNI / NIf"
@@ -134,7 +182,7 @@ msgstr ""
 
 #: ui_alumnobase.h:511
 msgid "Direccion:"
-msgstr ""
+msgstr "Adreça:"
 
 #: alumnoslist.cpp:217 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
 msgid "Editar Alumno"
@@ -144,13 +192,13 @@ msgstr ""
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: alumnoview.cpp:69
+#: alumnoview.cpp:68
 msgid "Error al crear el alumno"
 msgstr ""
 
 #: ui_alumnoslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_alumnoslistbase.h:310
 msgid "Fecha final:"
@@ -176,7 +224,7 @@ msgstr ""
 msgid "Hermanos"
 msgstr ""
 
-#: alumnoview.cpp:52 alumnoslist.cpp:262
+#: alumnoview.cpp:51 alumnoslist.cpp:262
 msgid "Id alumno"
 msgstr ""
 
@@ -186,13 +234,13 @@ msgstr ""
 
 #: alumnoslist.cpp:263 ui_alumnobase.h:523
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: ui_alumnobase.h:510
 msgid "Nombre completo:"
 msgstr ""
 
-#: alumnoview.cpp:53
+#: alumnoview.cpp:52
 msgid "Nombre del alumno"
 msgstr ""
 
@@ -236,6 +284,6 @@ msgstr ""
 msgid "Telefono movil:"
 msgstr ""
 
-#: alumnoview.cpp:97
+#: alumnoview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: albaranesproveedor.cpp:53 albaranesproveedor.cpp:75
-#: albaranproveedorview.cpp:85
+#: albaranproveedorview.cpp:84
 msgid "Proveedor:"
 msgstr ""
 
@@ -109,47 +109,47 @@ msgstr ""
 msgid "Total albaran"
 msgstr ""
 
-#: albaranproveedorview.cpp:55
+#: albaranproveedorview.cpp:54
 msgid "Albaran de proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:58
+#: albaranproveedorview.cpp:57
 msgid "Id albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:59
+#: albaranproveedorview.cpp:58
 msgid "Numero albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:60
+#: albaranproveedorview.cpp:59
 msgid "Fecha albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:61
+#: albaranproveedorview.cpp:60
 msgid "Comentario albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:62
+#: albaranproveedorview.cpp:61
 msgid "Id proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:63
+#: albaranproveedorview.cpp:62
 msgid "Id forma de pago"
 msgstr ""
 
-#: albaranproveedorview.cpp:64
+#: albaranproveedorview.cpp:63
 msgid "Id almacen"
 msgstr ""
 
-#: albaranproveedorview.cpp:65
+#: albaranproveedorview.cpp:64
 msgid "Referencia albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:66
+#: albaranproveedorview.cpp:65
 msgid "Descripcion albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:102
+#: albaranproveedorview.cpp:101
 msgid "Error al crear el albaran proveedor"
 msgstr ""
 
@@ -196,19 +196,19 @@ msgstr ""
 msgid "Nuevo albaran de proveedor"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:42
+#: listdescalbaranprovview.cpp:40
 msgid "Id descuento"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:43
+#: listdescalbaranprovview.cpp:41
 msgid "Concepto descuento"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:44
+#: listdescalbaranprovview.cpp:42
 msgid "% Descuento"
 msgstr ""
 
-#: listdescalbaranprovview.cpp:45
+#: listdescalbaranprovview.cpp:43
 msgid "Id albaran"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:58
+#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:57
 msgid "ID almacen"
 msgstr ""
 
-#: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:59
+#: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:58
 msgid "Codigo almacen"
 msgstr ""
 
-#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:60
+#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
 msgid "Nombre almacen"
 msgstr ""
 
@@ -44,43 +44,43 @@ msgstr ""
 msgid "Error al borrar el almacen"
 msgstr ""
 
-#: almacenview.cpp:55 ui_almacenbase.h:346
+#: almacenview.cpp:54 ui_almacenbase.h:346
 msgid "Almacen"
 msgstr ""
 
-#: almacenview.cpp:61
+#: almacenview.cpp:60
 msgid "Direccion almacen"
 msgstr ""
 
-#: almacenview.cpp:62
+#: almacenview.cpp:61
 msgid "Poblacion almacen"
 msgstr ""
 
-#: almacenview.cpp:63
+#: almacenview.cpp:62
 msgid "Codigo postal"
 msgstr ""
 
-#: almacenview.cpp:64
+#: almacenview.cpp:63
 msgid "Telefono almacen"
 msgstr ""
 
-#: almacenview.cpp:65
+#: almacenview.cpp:64
 msgid "Fax almacen"
 msgstr ""
 
-#: almacenview.cpp:66
+#: almacenview.cpp:65
 msgid "email almacen"
 msgstr ""
 
-#: almacenview.cpp:67
+#: almacenview.cpp:66
 msgid "Fecha almacen"
 msgstr ""
 
-#: almacenview.cpp:70
+#: almacenview.cpp:69
 msgid "Tipo almacen"
 msgstr ""
 
-#: almacenview.cpp:77
+#: almacenview.cpp:76
 msgid "Error al crear el almacen"
 msgstr ""
 

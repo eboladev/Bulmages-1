@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,27 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cxx:141
+#: main.cxx:140
 msgid "Iniciando clases"
 msgstr ""
 
-#: main.cxx:171
+#: main.cxx:170
 msgid "Leyendo configuracion"
 msgstr ""
 
-#: main.cxx:196
+#: main.cxx:195
 msgid "Cargando traducciones"
 msgstr ""
 
-#: main.cxx:230
+#: main.cxx:229
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:236
+#: main.cxx:235
 msgid "Inicializando componentes"
 msgstr ""
 
-#: subform2bc.cpp:469
+#: subform2bc.cpp:470
 msgid "Submenu de contabilidad"
 msgstr ""
 

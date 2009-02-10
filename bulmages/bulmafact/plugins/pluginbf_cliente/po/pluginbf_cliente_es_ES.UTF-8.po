@@ -1,8 +1,124 @@
-#: ui_clientebase.h:573
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: ui_clientebase.h:592
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_clientebase.h:574
+#: ui_clientebase.h:593
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -10,7 +126,7 @@ msgstr "&Cancelar"
 msgid "&Clientes"
 msgstr "&Clientes"
 
-#: ui_clientebase.h:593
+#: ui_clientebase.h:612
 msgid "&Datos generales"
 msgstr "&Datos generales"
 
@@ -22,7 +138,7 @@ msgstr "&Nuevo Cliente"
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: ui_clientebase.h:591
+#: ui_clientebase.h:610
 msgid "Aplicar Recargo de Equivalencia"
 msgstr "Aplicar Recargo de Equivalencia"
 
@@ -30,7 +146,7 @@ msgstr "Aplicar Recargo de Equivalencia"
 msgid "Borrar"
 msgstr "Borrar"
 
-#: clientslist.cpp:255 ui_clientebase.h:552 ui_clientebase.h:557
+#: clientslist.cpp:255 ui_clientebase.h:571 ui_clientebase.h:576
 msgid "Borrar cliente"
 msgstr "Borrar cliente"
 
@@ -46,11 +162,11 @@ msgstr "C.I.F."
 msgid "C.I.F. del cliente"
 msgstr "C.I.F. del cliente"
 
-#: ui_clientebase.h:575
+#: ui_clientebase.h:594
 msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr "C.I.F./N.I.F./N.I.E.:"
 
-#: clienteview.cpp:52 ui_clientebase.h:536
+#: clienteview.cpp:52 ui_clientebase.h:555
 msgid "Cliente"
 msgstr "Cliente"
 
@@ -70,7 +186,7 @@ msgstr "Clientes (*.xml)"
 msgid "Codigo"
 msgstr "Codigo"
 
-#: ui_clientebase.h:576
+#: ui_clientebase.h:595
 msgid "Codigo de cliente:"
 msgstr "Codigo de cliente:"
 
@@ -78,7 +194,7 @@ msgstr "Codigo de cliente:"
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
-#: ui_clientebase.h:581
+#: ui_clientebase.h:600
 msgid "Codigo postal:"
 msgstr "Codigo postal:"
 
@@ -86,7 +202,7 @@ msgstr "Codigo postal:"
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: ui_clientebase.h:594
+#: ui_clientebase.h:613
 msgid "Comentarios:"
 msgstr "Comentarios:"
 
@@ -94,19 +210,19 @@ msgstr "Comentarios:"
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: ui_clientebase.h:589
+#: ui_clientebase.h:608
 msgid "Correo electronico:"
 msgstr "Correo electronico:"
 
-#: ui_clientebase.h:561
+#: ui_clientebase.h:580
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_clientebase.h:549
+#: ui_clientebase.h:568
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_clientebase.h:596
+#: ui_clientebase.h:615
 msgid "Datos bancarios:"
 msgstr "Datos bancarios:"
 
@@ -114,7 +230,7 @@ msgstr "Datos bancarios:"
 msgid "Datos de comercio electronico"
 msgstr "Datos de comercio electronico"
 
-#: ui_clientebase.h:595
+#: ui_clientebase.h:614
 msgid "Datos de comercio electronico:"
 msgstr "Datos de comercio electronico:"
 
@@ -134,7 +250,7 @@ msgstr "Direccion de correo electronica"
 msgid "Direccion electronica"
 msgstr "Direccion electronica"
 
-#: ui_clientebase.h:580
+#: ui_clientebase.h:599
 msgid "Direccion:"
 msgstr "Direccion:"
 
@@ -154,7 +270,7 @@ msgstr "Elija el archivo"
 msgid "Empresa"
 msgstr "Empresa"
 
-#: ui_clientebase.h:578
+#: ui_clientebase.h:597
 msgid "Empresa:"
 msgstr "Empresa:"
 
@@ -186,11 +302,11 @@ msgstr "Filtrar listado"
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
-#: ui_clientebase.h:590
+#: ui_clientebase.h:609
 msgid "Forma de pago:"
 msgstr "Forma de pago:"
 
-#: ui_clientebase.h:540 ui_clientebase.h:545
+#: ui_clientebase.h:559 ui_clientebase.h:564
 msgid "Guardar cliente"
 msgstr "Guardar cliente"
 
@@ -206,7 +322,7 @@ msgstr "Identificador de presupuesto"
 msgid "Importar"
 msgstr "Importar"
 
-#: ui_clientebase.h:564 ui_clientebase.h:569
+#: ui_clientebase.h:583 ui_clientebase.h:588
 msgid "Imprimir informe"
 msgstr "Imprimir informe"
 
@@ -222,11 +338,11 @@ msgstr "Listado de Clientes"
 msgid "Nombre alternativo del cliente"
 msgstr "Nombre alternativo del cliente"
 
-#: ui_clientebase.h:579
+#: ui_clientebase.h:598
 msgid "Nombre comercial:"
 msgstr "Nombre comercial:"
 
-#: ui_clientebase.h:577
+#: ui_clientebase.h:596
 msgid "Nombre completo:"
 msgstr "Nombre completo:"
 
@@ -254,7 +370,7 @@ msgstr "Numero cuenta corriente"
 msgid "Numero de fax"
 msgstr "Numero de fax"
 
-#: ui_clientebase.h:585
+#: ui_clientebase.h:604
 msgid "Numero de fax:"
 msgstr "Numero de fax:"
 
@@ -270,11 +386,11 @@ msgstr "Numero de telefono en el trabajo"
 msgid "Numero de telefono movil"
 msgstr "Numero de telefono movil"
 
-#: ui_clientebase.h:597
+#: ui_clientebase.h:616
 msgid "Otros datos"
 msgstr "Otros datos"
 
-#: ui_clientebase.h:588
+#: ui_clientebase.h:607
 msgid "Pagina web:"
 msgstr "Pagina web:"
 
@@ -282,7 +398,7 @@ msgstr "Pagina web:"
 msgid "Poblacion"
 msgstr "Poblacion"
 
-#: ui_clientebase.h:582
+#: ui_clientebase.h:601
 msgid "Poblacion:"
 msgstr "Poblacion:"
 
@@ -294,7 +410,7 @@ msgstr "Pro&cesados"
 msgid "Provincia"
 msgstr "Provincia"
 
-#: ui_clientebase.h:583
+#: ui_clientebase.h:602
 msgid "Provincia:"
 msgstr "Provincia:"
 
@@ -306,7 +422,7 @@ msgstr "Recargo de Equivalencia"
 msgid "Regimen fiscal"
 msgstr "Regimen fiscal"
 
-#: ui_clientebase.h:592
+#: ui_clientebase.h:611
 msgid "Regimen fiscal:"
 msgstr "Regimen fiscal:"
 
@@ -314,15 +430,15 @@ msgstr "Regimen fiscal:"
 msgid "Selector de clientes"
 msgstr "Selector de clientes"
 
-#: ui_clientebase.h:586
+#: ui_clientebase.h:605
 msgid "Telefono del trabajo:"
 msgstr "Telefono del trabajo:"
 
-#: ui_clientebase.h:584
+#: ui_clientebase.h:603
 msgid "Telefono fijo:"
 msgstr "Telefono fijo:"
 
-#: ui_clientebase.h:587
+#: ui_clientebase.h:606
 msgid "Telefono movil:"
 msgstr "Telefono movil:"
 

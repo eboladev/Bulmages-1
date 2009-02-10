@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,67 +16,67 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listdescpedidoclienteview.cpp:42
+#: listdescpedidoclienteview.cpp:40
 msgid "Id descuento"
 msgstr ""
 
-#: listdescpedidoclienteview.cpp:43
+#: listdescpedidoclienteview.cpp:41
 msgid "Concepto descuento"
 msgstr ""
 
-#: listdescpedidoclienteview.cpp:44 listlinpedidoclienteview.cpp:56
+#: listdescpedidoclienteview.cpp:42 listlinpedidoclienteview.cpp:55
 msgid "% Descuento"
 msgstr ""
 
-#: listdescpedidoclienteview.cpp:45
+#: listdescpedidoclienteview.cpp:43
 msgid "Id pedido"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:46
+#: listlinpedidoclienteview.cpp:45
 msgid "Punteo"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:47
+#: listlinpedidoclienteview.cpp:46
 msgid "Id articulo"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:48
+#: listlinpedidoclienteview.cpp:47
 msgid "Codigo completo articulo"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:49
+#: listlinpedidoclienteview.cpp:48
 msgid "Nombre articulo"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:50
+#: listlinpedidoclienteview.cpp:49
 msgid "No de linea"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:51 pedidosclientelist.cpp:336
+#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:336
 msgid "Descripcion"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:52
+#: listlinpedidoclienteview.cpp:51
 msgid "Cantidad"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:53
+#: listlinpedidoclienteview.cpp:52
 msgid "Precio de venta s/IVA"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:54
+#: listlinpedidoclienteview.cpp:53
 msgid "% I.V.A."
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:55
+#: listlinpedidoclienteview.cpp:54
 msgid "% Recargo E.Q."
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:57
+#: listlinpedidoclienteview.cpp:56
 msgid "Id pedido cliente"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:58
+#: listlinpedidoclienteview.cpp:57
 msgid "Orden"
 msgstr ""
 

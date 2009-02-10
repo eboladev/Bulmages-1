@@ -1,424 +1,542 @@
-#: listdescfacturaprovview.cpp:44
-msgid "% Descuento"
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: listdescfacturaprovview.cpp:42
+msgid "% Descuento"
+msgstr "% Descuento"
+
+#: listlinfacturapview.cpp:55
+msgid "% I.V.A."
+msgstr "% I.V.A."
 
 #: listlinfacturapview.cpp:56
-msgid "% I.V.A."
-msgstr ""
-
-#: listlinfacturapview.cpp:57
 msgid "% Recargo"
-msgstr ""
+msgstr "% Recargo"
 
 #: ui_facturapbase.h:641
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Aceptar"
 
 #: ui_facturapbase.h:642
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: ui_facturapbase.h:626
 msgid "&Detalle"
-msgstr ""
+msgstr "&Detalle"
 
 #: pluginfacturaprov.cpp:96
 msgid "&Facturas proveedores"
-msgstr ""
+msgstr "&Facturas proveedores"
 
 #: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid "&No"
-msgstr ""
+msgstr "&No"
 
 #: pluginfacturaprov.cpp:104
 msgid "&Nueva factura de proveedor"
-msgstr ""
+msgstr "&Nueva factura de proveedor"
 
 #: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid "&Si"
-msgstr ""
+msgstr "&Si"
 
 #: ui_facturapbase.h:635 ui_facturapbase.h:636 ui_facturapbase.h:637
 #: ui_facturapbase.h:638 ui_facturapbase.h:639 ui_facturapbase.h:640
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_facturasplistbase.h:452 ui_facturasplistbase.h:457
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualizar listado"
 
-#: listlinfacturapview.cpp:49
+#: listlinfacturapview.cpp:48
 msgid "Articulo"
-msgstr ""
+msgstr "Articulo"
 
 #: facturapview.cpp:431
 msgid "Base "
-msgstr ""
+msgstr "Base "
 
 #: facturasplist.cpp:362
 msgid "Base imponible"
-msgstr ""
+msgstr "Base imponible"
 
 #: ui_facturapbase.h:630
 msgid "Base imponible:"
-msgstr ""
+msgstr "Base imponible:"
 
 #: ui_facturasplistbase.h:404 ui_facturasplistbase.h:409 ui_facturapbase.h:587
 #: ui_facturapbase.h:592
 msgid "Borrar factura"
-msgstr ""
+msgstr "Borrar factura"
 
 #: ui_facturasplistbase.h:462
 msgid "Buscar:"
-msgstr ""
+msgstr "Buscar:"
 
 #: facturapview.cpp:353
 msgid "Cant."
-msgstr ""
+msgstr "Cant."
 
-#: listlinfacturapview.cpp:54
+#: listlinfacturapview.cpp:53
 msgid "Cantidad"
-msgstr ""
+msgstr "Cantidad"
 
 #: facturapview.cpp:351
 msgid "Codigo"
-msgstr ""
+msgstr "Codigo"
 
-#: listlinfacturapview.cpp:50
+#: listlinfacturapview.cpp:49
 msgid "Codigo completo"
-msgstr ""
+msgstr "Codigo completo"
 
 #: facturasplist.cpp:358
 msgid "Comentario factura"
-msgstr ""
+msgstr "Comentario factura"
 
 #: facturapview.cpp:62
 msgid "Comentario facturap"
-msgstr ""
+msgstr "Comentario facturap"
 
 #: ui_facturapbase.h:628
 msgid "Comentario&s"
-msgstr ""
+msgstr "Comentario&s"
 
 #: facturapview.cpp:352
 msgid "Concepto"
-msgstr ""
+msgstr "Concepto"
 
-#: listdescfacturaprovview.cpp:43
+#: listdescfacturaprovview.cpp:41
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Concepto descuento"
 
 #: ui_facturasplistbase.h:440 ui_facturasplistbase.h:445
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurar listado"
 
 #: ui_facturasplistbase.h:449
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_facturasplistbase.h:413 ui_facturapbase.h:596
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_facturasplistbase.h:401
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_facturasplistbase.h:437
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_facturapbase.h:620
 msgid "Ctrl+G"
-msgstr ""
+msgstr "Ctrl+G"
 
 #: ui_facturasplistbase.h:389
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_facturasplistbase.h:425
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_facturapbase.h:584
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: facturasplist.cpp:243
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Debe seleccionar una linea"
 
 #: facturapview.cpp:355
 msgid "Desc."
-msgstr ""
+msgstr "Desc."
 
-#: listlinfacturapview.cpp:53
+#: listlinfacturapview.cpp:52
 msgid "Descripcion"
-msgstr ""
+msgstr "Descripcion"
 
 #: facturapview.cpp:64
 msgid "Descripcion facturap"
-msgstr ""
+msgstr "Descripcion facturap"
 
 #: ui_facturapbase.h:621
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripcion:"
 
 #: ui_facturapbase.h:627
 msgid "Descuen&tos"
-msgstr ""
+msgstr "Descuen&tos"
 
-#: listlinfacturapview.cpp:58 facturapview.cpp:399
+#: listlinfacturapview.cpp:57 facturapview.cpp:399
 msgid "Descuento"
-msgstr ""
+msgstr "Descuento"
 
 #: ui_facturapbase.h:629
 msgid "Descuentos:"
-msgstr ""
+msgstr "Descuentos:"
 
 #: ui_facturasplistbase.h:392 ui_facturasplistbase.h:397
 msgid "Editar factura"
-msgstr ""
+msgstr "Editar factura"
 
 #: facturasplist.cpp:254
 msgid "Error al borrar la factura de proveedor"
-msgstr ""
+msgstr "Error al borrar la factura de proveedor"
 
 #: facturasplist.cpp:224
 msgid "Error al cargar la factura proveedor"
-msgstr ""
+msgstr "Error al cargar la factura proveedor"
 
 #: facturapview.cpp:101
 msgid "Error al crear la factura proveedor"
-msgstr ""
+msgstr "Error al crear la factura proveedor"
 
 #: genfactqtoolbutton.cpp:201 genfactqtoolbutton.cpp:307
 msgid "Error inesperado"
-msgstr ""
+msgstr "Error inesperado"
 
 #: genfactqtoolbutton.cpp:152 genfactqtoolbutton.cpp:258
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea abrirla para verificar?"
 msgstr ""
+"Existe una factura de este proveedor con la misma referencia que este "
+"albaran. Desea abrirla para verificar?"
 
 #: ui_facturasplistbase.h:461
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
-#: listlinfacturapview.cpp:59
+#: listlinfacturapview.cpp:58
 msgid "Factura"
-msgstr ""
+msgstr "Factura"
 
 #: facturapview.cpp:54
 msgid "Factura Proveedor"
-msgstr ""
+msgstr "Factura Proveedor"
 
 #: genfactqtoolbutton.cpp:151 genfactqtoolbutton.cpp:257
 msgid "Factura de proveedor existente"
-msgstr ""
+msgstr "Factura de proveedor existente"
 
 #: pluginfacturaprov.cpp:98 pluginfacturaprov.cpp:99 facturasplist.cpp:267
 #: ui_facturasplistbase.h:372
 msgid "Facturas de proveedores"
-msgstr ""
+msgstr "Facturas de proveedores"
 
 #: facturasplist.cpp:123
 msgid "Facturas no procesadas"
-msgstr ""
+msgstr "Facturas no procesadas"
 
 #: facturasplist.cpp:122
 msgid "Facturas procesadas"
-msgstr ""
+msgstr "Facturas procesadas"
 
 #: facturapview.cpp:60
 msgid "Fecha"
-msgstr ""
+msgstr "Fecha"
 
 #: ui_facturapbase.h:624
 msgid "Fecha de factura:"
-msgstr ""
+msgstr "Fecha de factura:"
 
 #: facturasplist.cpp:355
 msgid "Fecha factura"
-msgstr ""
+msgstr "Fecha factura"
 
 #: ui_facturasplistbase.h:374
 msgid "Fecha final:"
-msgstr ""
+msgstr "Fecha final:"
 
 #: ui_facturasplistbase.h:375
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Fecha inicial:"
 
 #: ui_facturasplistbase.h:428 ui_facturasplistbase.h:433
 msgid "Filtrar facturas"
-msgstr ""
+msgstr "Filtrar facturas"
 
 #: ui_facturapbase.h:625
 msgid "Forma de pago:"
-msgstr ""
+msgstr "Forma de pago:"
 
 #: ui_facturapbase.h:575 ui_facturapbase.h:580
 msgid "Guardar factura"
-msgstr ""
+msgstr "Guardar factura"
 
 #: ui_facturapbase.h:631
 msgid "I.R.P.F.:"
-msgstr ""
+msgstr "I.R.P.F.:"
 
 #: facturapview.cpp:444
 msgid "IVA "
-msgstr ""
+msgstr "IVA "
 
-#: listdescfacturaprovview.cpp:42
+#: listdescfacturaprovview.cpp:40
 msgid "Id descuento"
-msgstr ""
+msgstr "Id descuento"
 
-#: listdescfacturaprovview.cpp:45 facturasplist.cpp:352
+#: listdescfacturaprovview.cpp:43 facturasplist.cpp:352
 msgid "Id factura"
-msgstr ""
+msgstr "Id factura"
 
 #: facturapview.cpp:57
 msgid "Id facturap"
-msgstr ""
+msgstr "Id facturap"
 
 #: facturapview.cpp:66
 msgid "Id forma de pago"
-msgstr ""
+msgstr "Id forma de pago"
 
 #: facturapview.cpp:58 facturasplist.cpp:360
 msgid "Id proveedor"
-msgstr ""
+msgstr "Id proveedor"
 
 #: facturapview.cpp:65 facturasplist.cpp:359
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id trabajador"
 
 #: ui_facturasplistbase.h:416 ui_facturasplistbase.h:421
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimir listado"
 
 #: facturasplist.cpp:363
 msgid "Impuestos"
-msgstr ""
+msgstr "Impuestos"
 
 #: ui_facturapbase.h:632
 msgid "Impuestos:"
-msgstr ""
+msgstr "Impuestos:"
 
-#: listlinfacturapview.cpp:52
+#: listlinfacturapview.cpp:51
 msgid "Linea"
-msgstr ""
+msgstr "Linea"
 
 #: ui_facturapbase.h:611 ui_facturapbase.h:616
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar cabecera"
 
 #: ui_facturasplistbase.h:373
 msgid "Mostrar:"
-msgstr ""
+msgstr "Mostrar:"
 
-#: listlinfacturapview.cpp:51
+#: listlinfacturapview.cpp:50
 msgid "Nombre"
-msgstr ""
+msgstr "Nombre"
 
 #: facturasplist.cpp:354
 msgid "Nombre proveedor"
-msgstr ""
+msgstr "Nombre proveedor"
 
 #: ui_facturasplistbase.h:380 ui_facturasplistbase.h:385
 msgid "Nueva factura"
-msgstr ""
+msgstr "Nueva factura"
 
 #: pluginfacturaprov.cpp:106 pluginfacturaprov.cpp:107 ui_facturapbase.h:572
 msgid "Nueva factura de proveedor"
-msgstr ""
+msgstr "Nueva factura de proveedor"
 
 #: facturapview.cpp:59
 msgid "Numero"
-msgstr ""
+msgstr "Numero"
 
 #: ui_facturapbase.h:622
 msgid "Numero de factura:"
-msgstr ""
+msgstr "Numero de factura:"
 
 #: facturasplist.cpp:353
 msgid "Numero factura"
-msgstr ""
+msgstr "Numero factura"
 
-#: listlinfacturapview.cpp:60
+#: listlinfacturapview.cpp:59
 msgid "Orden"
-msgstr ""
+msgstr "Orden"
 
-#: listlinfacturapview.cpp:55
+#: listlinfacturapview.cpp:54
 msgid "P.V.P."
-msgstr ""
+msgstr "P.V.P."
 
 #: facturasplist.cpp:356
 msgid "Persona de contacto"
-msgstr ""
+msgstr "Persona de contacto"
 
 #: facturapview.cpp:400
 msgid "Porcentaje"
-msgstr ""
+msgstr "Porcentaje"
 
 #: facturapview.cpp:354
 msgid "Precio"
-msgstr ""
+msgstr "Precio"
 
 #: ui_facturapbase.h:623
 msgid "Procesada"
-msgstr ""
+msgstr "Procesada"
 
 #: facturapview.cpp:61
 msgid "Procesada facturap"
-msgstr ""
+msgstr "Procesada facturap"
 
 #: facturapview.cpp:83 facturasplist.cpp:56 facturasplist.cpp:91
 msgid "Proveedor:"
-msgstr ""
+msgstr "Proveedor:"
 
 #: ui_facturapbase.h:633
 msgid "R.E.:"
-msgstr ""
+msgstr "R.E.:"
 
 #: facturasplist.cpp:351
 msgid "Referencia factura"
-msgstr ""
+msgstr "Referencia factura"
 
 #: facturapview.cpp:63
 msgid "Referencia facturap"
-msgstr ""
+msgstr "Referencia facturap"
 
 #: ui_facturapbase.h:608
 msgid "Referencia:"
-msgstr ""
+msgstr "Referencia:"
 
 #: facturasplist.cpp:357
 msgid "Telefono factura"
-msgstr ""
+msgstr "Telefono factura"
 
 #: genfactqtoolbutton.cpp:136 genfactqtoolbutton.cpp:242
 msgid "Tiene que seleccionar un proveedor"
-msgstr ""
+msgstr "Tiene que seleccionar un proveedor"
 
 #: facturasplist.cpp:121
 msgid "Todas las facturas"
-msgstr ""
+msgstr "Todas las facturas"
 
 #: facturapview.cpp:356 facturapview.cpp:401 facturasplist.cpp:361
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: facturapview.cpp:447
 msgid "Total "
-msgstr ""
+msgstr "Total "
 
 #: ui_facturasplistbase.h:376 ui_facturapbase.h:634
 msgid "Total:"
-msgstr ""
+msgstr "Total:"
 
 #: ui_facturapbase.h:599 ui_facturapbase.h:604
 msgid "Ver albaranes con la misma referencia"
-msgstr ""
+msgstr "Ver albaranes con la misma referencia"

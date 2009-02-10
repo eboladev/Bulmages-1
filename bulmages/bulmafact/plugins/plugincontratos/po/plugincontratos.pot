@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,39 +16,39 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listlincontratoview.cpp:41
+#: listlincontratoview.cpp:40
 msgid "Id articulo"
 msgstr ""
 
-#: listlincontratoview.cpp:42
+#: listlincontratoview.cpp:41
 msgid "Codigo completo articulo"
 msgstr ""
 
-#: listlincontratoview.cpp:43
+#: listlincontratoview.cpp:42
 msgid "Nombre articulo"
 msgstr ""
 
-#: listlincontratoview.cpp:44
+#: listlincontratoview.cpp:43
 msgid "Idl contrato"
 msgstr ""
 
-#: listlincontratoview.cpp:45
+#: listlincontratoview.cpp:44
 msgid "Descripcionl contrato"
 msgstr ""
 
-#: listlincontratoview.cpp:46
+#: listlincontratoview.cpp:45
 msgid "Cantidadl contrato"
 msgstr ""
 
-#: listlincontratoview.cpp:47
+#: listlincontratoview.cpp:46
 msgid "PVPl contrato"
 msgstr ""
 
-#: listlincontratoview.cpp:48 contrato.cpp:42
+#: listlincontratoview.cpp:47 contrato.cpp:42
 msgid "Id contrato"
 msgstr ""
 
-#: listlincontratoview.cpp:49
+#: listlincontratoview.cpp:48
 msgid "Orden"
 msgstr ""
 

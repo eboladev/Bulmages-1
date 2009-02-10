@@ -1,0 +1,172 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ticket.cpp:50
+#, fuzzy
+msgid "Almacen"
+msgstr "<LI> Magatzem <B>"
+
+#: ticket.cpp:87
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: main.cxx:196
+msgid "Cargando plugins"
+msgstr ""
+
+#: main.cxx:165
+msgid "Cargando traducciones"
+msgstr ""
+
+#: ticket.cpp:49
+#, fuzzy
+msgid "Cliente"
+msgstr "Següent"
+
+#: ticket.cpp:95
+#, fuzzy
+msgid "Codigo articulo"
+msgstr "<HR><B>Tractant Article"
+
+#: aboutview.cpp:41
+msgid "Compilado usando la version de QT:"
+msgstr "Compilat fent servir la versió de QT:"
+
+#: ticket.cpp:43
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: ticket.cpp:90
+#, fuzzy
+msgid "Descuento"
+msgstr "ID compte"
+
+#: ticket.cpp:942
+msgid "El ticket esta vacio."
+msgstr ""
+
+#: main.cxx:229
+msgid "Error inesperado en BulmaTPV. El programa se cerrara."
+msgstr ""
+
+#: ticket.cpp:47
+msgid "Hora"
+msgstr ""
+
+#: ticket.cpp:89
+msgid "IVA"
+msgstr ""
+
+#: ticket.cpp:85
+#, fuzzy
+msgid "Id Albaran"
+msgstr "<HR><B>Tractant l'albarà"
+
+#: ticket.cpp:45
+#, fuzzy
+msgid "Id albaran"
+msgstr "Imprimeix albarà"
+
+#: ticket.cpp:94
+#, fuzzy
+msgid "Id articulo"
+msgstr "<P> Article <B>"
+
+#: ticket.cpp:46
+msgid "Id fechaalbaran"
+msgstr ""
+
+#: ticket.cpp:54
+#, fuzzy
+msgid "Id forma de pago"
+msgstr "<LI> Forma de pagament <B>"
+
+#: ticket.cpp:86
+#, fuzzy
+msgid "Id lalbaran"
+msgstr "Imprimeix albarà"
+
+#: main.cxx:208
+msgid "Inicializando componentes"
+msgstr ""
+
+#: empresatpv.cpp:77
+msgid "Inicializando listado de articulos"
+msgstr ""
+
+#: main.cxx:103
+msgid "Iniciando clases"
+msgstr ""
+
+#: main.cxx:202
+#, fuzzy
+msgid "Lanzando plugins"
+msgstr "Llançador BulmaGés"
+
+#: main.cxx:142
+#, fuzzy
+msgid "Leyendo configuracion"
+msgstr "Arranjament"
+
+#: ticket.cpp:44
+msgid "Nombre"
+msgstr "Nom"
+
+#: ticket.cpp:96 ticket.cpp:97
+#, fuzzy
+msgid "Nombre articulo"
+msgstr "Nom d'usuari:"
+
+#: ticket.cpp:51
+msgid "Num"
+msgstr ""
+
+#: ticket.cpp:91
+msgid "Orden"
+msgstr "Ordre"
+
+#: ticket.cpp:88
+msgid "Precio"
+msgstr ""
+
+#: ticket.cpp:52
+msgid "Referencia"
+msgstr ""
+
+#: ticket.cpp:92
+msgid "Req. eq."
+msgstr ""
+
+#: main.cxx:214
+#, fuzzy
+msgid "Terminado"
+msgstr "<LI>Terminat</LI>\n"
+
+#: empresatpv.cpp:100
+msgid "Terminal Punto de Venta GPL"
+msgstr ""
+
+#: ticket.cpp:53
+msgid "Ticket"
+msgstr ""
+
+#: ticket.cpp:48
+msgid "Trabajador"
+msgstr ""

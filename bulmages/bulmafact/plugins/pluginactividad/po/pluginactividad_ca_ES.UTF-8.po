@@ -1,14 +1,62 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_actividadbase.h:441
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: pluginactividad.cpp:96
 msgid "&Actividades"
 msgstr ""
 
 #: ui_actividadbase.h:442
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: ui_actividadbase.h:432
 msgid "&Datos generales"
@@ -18,7 +66,7 @@ msgstr ""
 msgid "&Nueva actividad"
 msgstr ""
 
-#: actividadview.cpp:49
+#: actividadview.cpp:48
 msgid "Actividad"
 msgstr ""
 
@@ -29,7 +77,7 @@ msgstr ""
 
 #: ui_actividadeslistbase.h:389 ui_actividadeslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
 #: ui_actividadbase.h:435
 msgid "Alumno"
@@ -83,43 +131,43 @@ msgstr ""
 
 #: ui_actividadbase.h:433
 msgid "Comentarios:"
-msgstr ""
+msgstr "Comentaris:"
 
 #: ui_actividadeslistbase.h:377 ui_actividadeslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_actividadeslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_actividadbase.h:413 ui_actividadeslistbase.h:350
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_actividadeslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_actividadeslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_actividadbase.h:425
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_actividadeslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_actividadeslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_actividadbase.h:401
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: actividadeslist.cpp:201
 msgid "Debe seleccionar una fila primero"
@@ -131,7 +179,7 @@ msgstr ""
 
 #: ui_actividadbase.h:430
 msgid "Direccion:"
-msgstr ""
+msgstr "Adreça:"
 
 #: actividadeslist.cpp:217 ui_actividadeslistbase.h:329
 #: ui_actividadeslistbase.h:334
@@ -142,13 +190,13 @@ msgstr ""
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: actividadview.cpp:68
+#: actividadview.cpp:67
 msgid "Error al crear el actividad"
 msgstr ""
 
 #: ui_actividadeslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_actividadeslistbase.h:310
 msgid "Fecha final:"
@@ -174,11 +222,11 @@ msgstr ""
 msgid "ID Actividad"
 msgstr ""
 
-#: actividadview.cpp:52
+#: actividadview.cpp:51
 msgid "ID actividad"
 msgstr ""
 
-#: actividadview.cpp:54
+#: actividadview.cpp:53
 msgid "Id profesor"
 msgstr ""
 
@@ -192,13 +240,13 @@ msgstr ""
 
 #: actividadeslist.cpp:263
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: ui_actividadbase.h:427
 msgid "Nombre completo:"
 msgstr ""
 
-#: actividadview.cpp:53
+#: actividadview.cpp:52
 msgid "Nombre del actividad"
 msgstr ""
 
@@ -222,11 +270,11 @@ msgstr ""
 msgid "Profesor Encargado"
 msgstr ""
 
-#: actividadview.cpp:60
+#: actividadview.cpp:59
 msgid "Profesor:"
 msgstr ""
 
-#: actividadview.cpp:96
+#: actividadview.cpp:95
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 

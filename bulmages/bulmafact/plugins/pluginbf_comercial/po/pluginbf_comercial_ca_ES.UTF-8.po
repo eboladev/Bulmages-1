@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 19:44+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgid "Cambio datos"
 msgstr ""
 
 #: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
-#: rutacomercialview.cpp:57 rutacomercialview.cpp:80 rutacomerciallist.cpp:47
+#: rutacomercialview.cpp:56 rutacomercialview.cpp:79 rutacomerciallist.cpp:47
 #: rutacomerciallist.cpp:78 ui_rutacomercialbase.h:234
 #: ui_rutacomerciallistbase.h:368 ui_incidenciacomercialbase.h:287
 msgid "Cliente:"
@@ -165,8 +165,9 @@ msgid "Estado de la incidencia:"
 msgstr "Llistat d'assentaments"
 
 #: rutacomercial.cpp:44 incidenciacomercial.cpp:43
+#, fuzzy
 msgid "Familia"
-msgstr ""
+msgstr "<P> Família <B>"
 
 #: rutacomercial.cpp:43 incidenciacomercial.cpp:42
 msgid "Fecha"
@@ -277,7 +278,7 @@ msgstr ""
 msgid "ID trabajador"
 msgstr ""
 
-#: listzonacomercialview.cpp:78 rutacomerciallist.cpp:286
+#: listzonacomercialview.cpp:77 rutacomerciallist.cpp:286
 msgid "ID zona comercial"
 msgstr ""
 
@@ -311,7 +312,7 @@ msgstr ""
 msgid "No quiere nada"
 msgstr ""
 
-#: listzonacomercialview.cpp:79
+#: listzonacomercialview.cpp:78
 #, fuzzy
 msgid "Nombre de la zona comercial"
 msgstr "Nom del compte"
@@ -383,7 +384,7 @@ msgstr ""
 msgid "Revisar"
 msgstr ""
 
-#: rutacomercial.cpp:39 incidenciacomercial.cpp:94 rutacomercialview.cpp:141
+#: rutacomercial.cpp:39 incidenciacomercial.cpp:94 rutacomercialview.cpp:140
 #: ui_rutacomercialbase.h:219 ui_rutacomercialincbase.h:204
 #: ui_incidenciacomercialbase.h:272
 msgid "Ruta comercial"

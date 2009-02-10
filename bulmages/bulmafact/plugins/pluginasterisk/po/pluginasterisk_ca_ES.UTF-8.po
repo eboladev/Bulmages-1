@@ -1,6 +1,27 @@
-#: pluginasterisk.cpp:101
-msgid "Almacen"
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginasterisk.cpp:101
+#, fuzzy
+msgid "Almacen"
+msgstr "<LI> Magatzem <B>"
 
 #: pluginasterisk.cpp:165
 msgid "Apellidos"
@@ -32,7 +53,7 @@ msgstr ""
 
 #: pluginasterisk.cpp:99 pluginasterisk.cpp:162
 msgid "Fecha"
-msgstr ""
+msgstr "Data"
 
 #: pluginasterisk.cpp:100 pluginasterisk.cpp:163
 msgid "Hora"

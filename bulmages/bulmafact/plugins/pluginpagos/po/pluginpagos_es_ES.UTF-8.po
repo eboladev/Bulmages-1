@@ -1,193 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
 #: ui_pagobase.h:342
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Aceptar"
 
 #: ui_pagobase.h:343
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: pluginpagos.cpp:104
 msgid "&Nuevo pago a proveedor"
-msgstr ""
+msgstr "&Nuevo pago a proveedor"
 
 #: pluginpagos.cpp:96
 msgid "&Pagos a proveedores"
-msgstr ""
+msgstr "&Pagos a proveedores"
 
 #: ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualizar listado"
 
 #: pagoslist.cpp:260
 msgid "Apellidos trabajador"
-msgstr ""
+msgstr "Apellidos trabajador"
 
-#: pagoview.cpp:69 pagoslist.cpp:254
+#: pagoview.cpp:68 pagoslist.cpp:254
 msgid "Banco"
-msgstr ""
+msgstr "Banco"
 
 #: ui_pagoslistbase.h:372 ui_pagobase.h:341
 msgid "Banco:"
-msgstr ""
+msgstr "Banco:"
 
 #: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:326
 #: ui_pagobase.h:331
 msgid "Borrar pago"
-msgstr ""
+msgstr "Borrar pago"
 
 #: ui_pagoslistbase.h:455
 msgid "Buscar:"
-msgstr ""
+msgstr "Buscar:"
 
 #: pagoslist.cpp:249
 msgid "C.I.F. proveedor"
-msgstr ""
+msgstr "C.I.F. proveedor"
 
-#: pagoview.cpp:67 pagoslist.cpp:253
+#: pagoview.cpp:66 pagoslist.cpp:253
 msgid "Cantidad"
-msgstr ""
+msgstr "Cantidad"
 
-#: pagoview.cpp:68
+#: pagoview.cpp:67
 msgid "Comentario del pago"
-msgstr ""
+msgstr "Comentario del pago"
 
 #: pagoslist.cpp:257
 msgid "Comentario pago"
-msgstr ""
+msgstr "Comentario pago"
 
 #: ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurar listado"
 
 #: pagoslist.cpp:197
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Debe seleccionar una linea"
 
 #: ui_pagobase.h:338
 msgid "Descripcion del pago:"
-msgstr ""
+msgstr "Descripcion del pago:"
 
 #: ui_pagoslistbase.h:391 ui_pagoslistbase.h:396
 msgid "Editar pago"
-msgstr ""
+msgstr "Editar pago"
 
 #: pagoslist.cpp:251
 msgid "Email proveedor"
-msgstr ""
+msgstr "Email proveedor"
 
 #: pagoslist.cpp:209
 msgid "Error al borrar el pago"
-msgstr ""
+msgstr "Error al borrar el pago"
 
-#: pagoview.cpp:81
+#: pagoview.cpp:80
 msgid "Error al crear el pago"
-msgstr ""
+msgstr "Error al crear el pago"
 
-#: pagoview.cpp:65 pagoslist.cpp:252
+#: pagoview.cpp:64 pagoslist.cpp:252
 msgid "Fecha de pago"
-msgstr ""
+msgstr "Fecha de pago"
 
 #: ui_pagobase.h:336
 msgid "Fecha de pago:"
-msgstr ""
+msgstr "Fecha de pago:"
 
 #: ui_pagoslistbase.h:375
 msgid "Fecha final:"
-msgstr ""
+msgstr "Fecha final:"
 
 #: ui_pagoslistbase.h:376
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Fecha inicial:"
 
 #: ui_pagoslistbase.h:424 ui_pagoslistbase.h:429
 msgid "Filtrar pagos"
-msgstr ""
+msgstr "Filtrar pagos"
 
 #: ui_pagobase.h:315 ui_pagobase.h:320
 msgid "Guardar pago"
-msgstr ""
+msgstr "Guardar pago"
 
-#: pagoview.cpp:62 pagoslist.cpp:246
+#: pagoview.cpp:61 pagoslist.cpp:246
 msgid "Id pago"
-msgstr ""
+msgstr "Id pago"
 
-#: pagoview.cpp:63 pagoslist.cpp:247
+#: pagoview.cpp:62 pagoslist.cpp:247
 msgid "Id proveedor"
-msgstr ""
+msgstr "Id proveedor"
 
 #: pagoslist.cpp:258
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id trabajador"
 
 #: ui_pagoslistbase.h:413 ui_pagoslistbase.h:418
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimir listado"
 
 #: pagoslist.cpp:259
 msgid "Nombre de trabajador"
-msgstr ""
+msgstr "Nombre de trabajador"
 
 #: pagoslist.cpp:248
 msgid "Nombre proveedor"
-msgstr ""
+msgstr "Nombre proveedor"
 
 #: ui_pagoslistbase.h:380 ui_pagoslistbase.h:385
 msgid "Nuevo pago"
-msgstr ""
+msgstr "Nuevo pago"
 
 #: pluginpagos.cpp:106 pluginpagos.cpp:107 ui_pagobase.h:311
 msgid "Nuevo pago a proveedor"
-msgstr ""
+msgstr "Nuevo pago a proveedor"
 
-#: pagoview.cpp:59
+#: pagoview.cpp:58
 msgid "Pago"
-msgstr ""
+msgstr "Pago"
 
 #: pagoslist.cpp:187 pluginpagos.cpp:98 pluginpagos.cpp:99
 #: ui_pagoslistbase.h:371
 msgid "Pagos a proveedores"
-msgstr ""
+msgstr "Pagos a proveedores"
 
 #: ui_pagoslistbase.h:374
 msgid "Pagos efectivos"
-msgstr ""
+msgstr "Pagos efectivos"
 
-#: pagoview.cpp:64
+#: pagoview.cpp:63
 msgid "Previcion de pago"
-msgstr ""
+msgstr "Previcion de pago"
 
 #: pagoslist.cpp:256
 msgid "Prevision pago"
-msgstr ""
+msgstr "Prevision pago"
 
 #: ui_pagoslistbase.h:373
 msgid "Previsiones de Pago"
-msgstr ""
+msgstr "Previsiones de Pago"
 
-#: pagoview.cpp:72 pagoslist.cpp:49 pagoslist.cpp:74
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
 msgid "Proveedor:"
-msgstr ""
+msgstr "Proveedor:"
 
 #: ui_pagobase.h:337
 msgid "Provision de fondos"
-msgstr ""
+msgstr "Provision de fondos"
 
-#: pagoview.cpp:66 pagoslist.cpp:255
+#: pagoview.cpp:65 pagoslist.cpp:255
 msgid "Referencia de pago"
-msgstr ""
+msgstr "Referencia de pago"
 
 #: ui_pagobase.h:335
 msgid "Referencia:"
-msgstr ""
+msgstr "Referencia:"
 
 #: pagoslist.cpp:250
 msgid "Telefono proveedor"
-msgstr ""
+msgstr "Telefono proveedor"
 
 #: ui_pagobase.h:339
 msgid "Total pago:"
-msgstr ""
+msgstr "Total pago:"
 
 #: ui_pagoslistbase.h:456
 msgid "Total:"
-msgstr ""
+msgstr "Total:"

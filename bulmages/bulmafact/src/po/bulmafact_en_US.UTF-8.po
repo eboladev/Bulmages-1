@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 21:43+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,26 +13,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:45
-#: listlinalbaranclienteview.cpp:55
+#: listlinalbaranproveedorview.cpp:56 listdescalbaranclienteview.cpp:43
+#: listlinalbaranclienteview.cpp:54
 msgid "% Descuento"
 msgstr "% Discount"
 
-#: listlinalbaranproveedorview.cpp:55
+#: listlinalbaranproveedorview.cpp:54
 msgid "% I.V.A."
 msgstr "% I.V.A."
 
-#: listlinalbaranproveedorview.cpp:56
+#: listlinalbaranproveedorview.cpp:55
 msgid "% R.E."
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:54
+#: listlinalbaranclienteview.cpp:53
 msgid "% Recargo E.Q."
 msgstr "% Surcharge E.Q."
 
 #: ui_listseriefacturabase.h:84 ui_listtasaivabase.h:118 ui_fpagobase.h:341
-#: ui_tiposarticulobase.h:240 ui_listalmacenbase.h:117
-#: ui_articleeditbase.h:638 ui_listtipoivabase.h:117 ui_familiasbase.h:386
+#: ui_listalmacenbase.h:117 ui_listtipoivabase.h:117 ui_familiasbase.h:386
 #: ui_listconfiguracionbase.h:118
 msgid "&Aceptar"
 msgstr "&Accept"
@@ -41,21 +40,16 @@ msgstr "&Accept"
 msgid "&Acerca de"
 msgstr "&About"
 
-#: ui_bulmafactbase.h:259
+#: ui_bulmafactbase.h:234
 msgid "&Acerca de BulmaFact"
 msgstr "&About BulmaFact"
 
-#: ui_bulmafactbase.h:262
+#: ui_bulmafactbase.h:237
 msgid "&Almacenes"
 msgstr "&Warehouses"
 
-#: ui_bulmafactbase.h:254
-msgid "&Articulos"
-msgstr "&Article"
-
 #: ui_listseriefacturabase.h:83 ui_listtasaivabase.h:119 ui_fpagobase.h:342
-#: ui_tiposarticulobase.h:241 ui_listalmacenbase.h:118
-#: ui_articleeditbase.h:639 ui_listtipoivabase.h:118 ui_familiasbase.h:387
+#: ui_listalmacenbase.h:118 ui_listtipoivabase.h:118 ui_familiasbase.h:387
 #: ui_listconfiguracionbase.h:119
 msgid "&Cancelar"
 msgstr "&Cancel"
@@ -64,23 +58,15 @@ msgstr "&Cancel"
 msgid "&Cerrar"
 msgstr "&Close"
 
-#: ui_articleeditbase.h:635
-msgid "&Datos generales"
-msgstr "&General performances"
-
-#: ui_bulmafactbase.h:263
+#: ui_bulmafactbase.h:238
 msgid "&Documentacion"
 msgstr "&Documntation"
 
-#: ui_bulmafactbase.h:261
+#: ui_bulmafactbase.h:236
 msgid "&Formas de pago"
 msgstr "&Modes of payment"
 
-#: ui_articleeditbase.h:628
-msgid "&Incluir en el catalogo."
-msgstr ""
-
-#: ui_bulmafactbase.h:265
+#: ui_bulmafactbase.h:240
 msgid "&Indexador"
 msgstr "&Indexador"
 
@@ -88,11 +74,11 @@ msgstr "&Indexador"
 msgid "&No"
 msgstr "&No"
 
-#: ui_bulmafactbase.h:244
+#: ui_bulmafactbase.h:223
 msgid "&Propiedades de la empresa..."
 msgstr "&Properties of the company..."
 
-#: ui_bulmafactbase.h:242
+#: ui_bulmafactbase.h:221
 msgid "&Salir del programa"
 msgstr "&To leave the program"
 
@@ -100,15 +86,11 @@ msgstr "&To leave the program"
 msgid "&Si"
 msgstr "&Yes"
 
-#: ui_bulmafactbase.h:251
-msgid "&Tipos de articulo"
-msgstr "&Types of article"
-
-#: ui_bulmafactbase.h:256
+#: ui_bulmafactbase.h:231
 msgid "&Trabajadores"
 msgstr "&Workers"
 
-#: ui_tiposarticulobase.h:239 ui_familiasbase.h:366
+#: ui_familiasbase.h:366
 msgid "1"
 msgstr ""
 
@@ -144,7 +126,7 @@ msgstr ""
 msgid "A&utores"
 msgstr "A&uthors"
 
-#: ui_bulmafactbase.h:285
+#: ui_bulmafactbase.h:260
 msgid "A&yuda"
 msgstr "A&id"
 
@@ -152,35 +134,19 @@ msgstr "A&id"
 msgid "Abre todos los documentos con esta referencia"
 msgstr ""
 
-#: articuloview.cpp:64
-msgid "Abreviacion"
-msgstr "Abbreviation"
-
 #: ui_aboutbase.h:285
 msgid "Acerca de BulmaFact"
 msgstr "About BulmaFact"
-
-#: ui_articleeditbase.h:634
-msgid "Activar el &control de stock."
-msgstr "Activate the stock &control."
-
-#: ui_articleeditbase.h:631
-msgid "Activar el control de stock para este articulo."
-msgstr ""
 
 #: ui_trabajadorbase.h:340
 msgid "Activo"
 msgstr "Assets"
 
-#: ui_articleslistbase.h:358 ui_articleslistbase.h:363
-msgid "Actualizar listado"
-msgstr "Update listing"
-
 #: ui_aboutbase.h:296
 msgid "Acuerdo de &licencia"
 msgstr "Licensing &agreement"
 
-#: listalmacenview.cpp:50
+#: listalmacenview.cpp:49
 msgid "Almacen"
 msgstr "Warehouse"
 
@@ -188,36 +154,28 @@ msgstr "Warehouse"
 msgid "Almacenes"
 msgstr "Warehouses"
 
-#: ui_articleslistbase.h:288
-msgid "Alt+O"
-msgstr "Alt+O"
-
 #: ui_trabajadorbase.h:344
 msgid "Apellidos:"
 msgstr "Last names:"
 
-#: ui_busquedaarticulobase.h:95 articuloview.cpp:58 informereferencia.cpp:141
+#: ui_busquedaarticulobase.h:95 informereferencia.cpp:141
 #: informereferencia.cpp:174
 msgid "Articulo"
 msgstr "Article"
 
-#: ui_bulmafactbase.h:286
+#: ui_bulmafactbase.h:261
 msgid "Articulo&s"
 msgstr "Article&s"
 
-#: ui_busquedaarticulobase.h:93
+#: ui_busquedaarticulobase.h:93 busquedaarticulo.cpp:37
 msgid "Articulo:"
 msgstr "Article:"
-
-#: ui_articleslistbase.h:284
-msgid "Articulos"
-msgstr "Article"
 
 #: bancoview.cpp:42
 msgid "Banco"
 msgstr "Bank"
 
-#: ui_bancobase.h:401 ui_bulmafactbase.h:275
+#: ui_bancobase.h:401 ui_bulmafactbase.h:250
 msgid "Bancos"
 msgstr "Banks"
 
@@ -225,8 +183,7 @@ msgstr "Banks"
 msgid "Base Imponible"
 msgstr "Tax basis"
 
-#: ui_articleeditbase.h:595 ui_articleeditbase.h:600 familiasview.cpp:478
-#: tiposarticuloview.cpp:384
+#: familiasview.cpp:478
 msgid "Borrar"
 msgstr "Erase"
 
@@ -234,63 +191,30 @@ msgstr "Erase"
 msgid "Borrar Familia"
 msgstr "Erase family"
 
-#: ui_tiposarticulobase.h:271 ui_tiposarticulobase.h:276
-msgid "Borrar Tipo de articulo"
-msgstr "Erase Type of article"
-
-#: ui_articleslistbase.h:314 ui_articleslistbase.h:319 articulolist.cpp:167
-#: articulolist.cpp:291
-msgid "Borrar articulo"
-msgstr "Erase article"
-
 #: ui_fpagobase.h:321 ui_fpagobase.h:326
 msgid "Borrar forma de pago"
 msgstr "Erase mode of payment"
-
-#: ui_articleeditbase.h:611
-msgid "Borrar imagen"
-msgstr ""
-
-#: articuloview.cpp:310
-msgid "Borrar imagen del articulo"
-msgstr ""
 
 #: ui_bancobase.h:424 ui_bancobase.h:429 ui_trabajadorbase.h:352
 #: ui_trabajadorbase.h:357
 msgid "Borrar trabajador"
 msgstr "Erase worker"
 
-#: ui_bulmafactbase.h:241
+#: ui_bulmafactbase.h:220
 msgid "BulmaFact - Facturacion GPL"
 msgstr "BulmaFact - Invoicing GPL"
 
-#: ui_articleslistbase.h:389
-msgid "Buscar:"
-msgstr "Look for:"
-
-#: ui_articleeditbase.h:636
-msgid "C&omponentes"
-msgstr "C&omponents"
-
 #: ui_bancobase.h:421
 msgid "C.P.:"
-msgstr ""
-
-#: ui_articleeditbase.h:608
-msgid "Cam&biar imagen"
-msgstr "Cha&nge image"
+msgstr "C.P.:"
 
 #: ui_trabajadorbase.h:345
 msgid "Cambiar imagen"
 msgstr "Change image"
 
-#: listlinalbaranproveedorview.cpp:53 listlinalbaranclienteview.cpp:51
+#: listlinalbaranproveedorview.cpp:52 listlinalbaranclienteview.cpp:50
 msgid "Cantidad"
 msgstr "Amount"
-
-#: comparticulolistview.cpp:44
-msgid "Cantidad de componente de articulo"
-msgstr "Amount of component of article"
 
 #: main.cxx:216
 msgid "Cargando plugins"
@@ -300,70 +224,49 @@ msgstr ""
 msgid "Cargando traducciones"
 msgstr ""
 
-#: articulolist.cpp:239 articulolist.cpp:264
-msgid "Clientes (*.xml)"
-msgstr "Clientes (*.xml"
-
 #: informereferencia.cpp:216
 msgid "Cobrado"
 msgstr "Received"
 
-#: articuloview.cpp:62 familiasview.cpp:51 familiasview.cpp:568
-#: tiposarticuloview.cpp:46
+#: familiasview.cpp:51 familiasview.cpp:568
 msgid "Codigo"
 msgstr "Code"
 
-#: listalmacenview.cpp:98
+#: listalmacenview.cpp:97
 msgid "Codigo almacen"
 msgstr "Code warehouse"
 
-#: articuloview.cpp:70 familiasview.cpp:51
+#: familiasview.cpp:51
 msgid "Codigo completo"
 msgstr "Complete code"
 
-#: listlinalbaranproveedorview.cpp:49 listlinalbaranclienteview.cpp:47
+#: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
 msgid "Codigo completo articulo"
 msgstr "Complete code article"
 
-#: articulolist.cpp:366 comparticulolistview.cpp:42
-msgid "Codigo completo del articulo"
-msgstr "Complete code of article"
-
-#: ui_articleeditbase.h:604 ui_familiasbase.h:382
+#: ui_familiasbase.h:382
 msgid "Codigo completo:"
 msgstr "Complete code:"
-
-#: ui_articleeditbase.h:605
-msgid "Codigo del articulo:"
-msgstr "Code of article:"
 
 #: ui_familiasbase.h:381
 msgid "Codigo reducido:"
 msgstr ""
 
-#: listseriefacturaview.cpp:81
+#: listseriefacturaview.cpp:80
 msgid "Codigo serie factura"
 msgstr "Code series invoices"
-
-#: ui_tiposarticulobase.h:243
-msgid "Codigo:"
-msgstr "Code:"
 
 #: ui_bancobase.h:418
 msgid "Comentarios:"
 msgstr "Commentaries:"
 
-#: listdescalbaranclienteview.cpp:44
+#: listdescalbaranclienteview.cpp:42
 msgid "Concepto descuento"
 msgstr ""
 
-#: listconfiguracionview.cpp:52
+#: listconfiguracionview.cpp:51
 msgid "Configuracion"
-msgstr ""
-
-#: ui_articleslistbase.h:347 ui_articleslistbase.h:352
-msgid "Configurar listado"
-msgstr "Form listing"
+msgstr "Configuration"
 
 #: ui_bancobase.h:412
 msgid "Contacto:"
@@ -373,64 +276,32 @@ msgstr "Contact:"
 msgid "Contenido de la familia:"
 msgstr "Content of the family:"
 
-#: ui_tiposarticulobase.h:280
-msgid "Ctrl+D"
-msgstr "Ctrl+D"
-
-#: ui_bulmafactbase.h:272
+#: ui_bulmafactbase.h:247
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_tiposarticulobase.h:292
-msgid "Ctrl+N"
-msgstr "Ctrl+N"
-
-#: ui_bulmafactbase.h:243
+#: ui_bulmafactbase.h:222
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: ui_tiposarticulobase.h:268
-msgid "Ctrl+S"
-msgstr "Ctrl+S"
-
 #: ui_bancobase.h:403
 msgid "D.C.:"
-msgstr ""
-
-#: tiposarticuloview.cpp:411
-msgid "Debe seleccionar un tipo"
 msgstr ""
 
 #: familiasview.cpp:342 familiasview.cpp:504
 msgid "Debe seleccionar una familia"
 msgstr "It must select a family"
 
-#: ui_articleeditbase.h:637
-msgid "Descripcio&n"
-msgstr "Descriptio&n"
-
-#: familiasview.cpp:51 listlinalbaranproveedorview.cpp:52
-#: listlinalbaranclienteview.cpp:50 tiposarticuloview.cpp:46
+#: familiasview.cpp:51 listlinalbaranproveedorview.cpp:51
+#: listlinalbaranclienteview.cpp:49
 msgid "Descripcion"
 msgstr "Description"
 
-#: articulolist.cpp:368
-msgid "Descripcion abreviada del articulo"
-msgstr "Been brief description of the article"
-
-#: articulolist.cpp:370
-msgid "Descripcion del tipo de articulo"
-msgstr "Description of the type of article"
-
-#: listseriefacturaview.cpp:82
+#: listseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
 msgstr "Description series invoices"
 
-#: articulolist.cpp:371
-msgid "Descripcion tipo de I.V.A."
-msgstr "Description type of I.V.A."
-
-#: ui_tiposarticulobase.h:244 ui_familiasbase.h:379
+#: ui_familiasbase.h:379
 msgid "Descripcion:"
 msgstr "Description:"
 
@@ -442,7 +313,7 @@ msgstr "Discount"
 msgid "Descuento:"
 msgstr "Discount:"
 
-#: familiasview.cpp:479 tiposarticuloview.cpp:385
+#: familiasview.cpp:479
 msgid "Desea eliminar"
 msgstr "It wishes to eliminate"
 
@@ -451,7 +322,6 @@ msgid "Desea guardar los cambios."
 msgstr "It wishes to keep the changes?"
 
 #: bancoview.cpp:185 familiasview.cpp:320 trabajadorview.cpp:222
-#: tiposarticuloview.cpp:291
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
 
@@ -463,11 +333,7 @@ msgstr "Address"
 msgid "Direccion:"
 msgstr "Address:"
 
-#: articulolist.cpp:373
-msgid "Disponible en stock"
-msgstr "Available in stock"
-
-#: ui_bulmafactbase.h:287
+#: ui_bulmafactbase.h:262
 msgid "E&mpresa"
 msgstr "C&ompany"
 
@@ -475,19 +341,11 @@ msgstr "C&ompany"
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: ui_articleslistbase.h:303 ui_articleslistbase.h:308 articulolist.cpp:290
-msgid "Editar articulo"
-msgstr "Publish article"
-
-#: subform2bf.cpp:242
+#: subform2bf.cpp:227
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
-
-#: articulolist.cpp:237 articulolist.cpp:262
-msgid "Elija el archivo"
-msgstr "Choose the file"
 
 #: ui_bancobase.h:419
 msgid "Entidad:"
@@ -502,17 +360,9 @@ msgstr "Given"
 msgid "Error al borrar el Trabajador"
 msgstr ""
 
-#: articulolist.cpp:178
-msgid "Error al borrar el articulo"
-msgstr "Error when erasing article"
-
-#: familiasview.cpp:518 tiposarticuloview.cpp:425
+#: familiasview.cpp:518
 msgid "Error al borrar la familia"
 msgstr ""
-
-#: articuloview.cpp:107
-msgid "Error al crear el articulo"
-msgstr "Error when creating article"
 
 #: familiasview.cpp:431
 msgid "Error al crear la familia"
@@ -534,28 +384,20 @@ msgstr ""
 msgid "Error al guardar la familia"
 msgstr ""
 
-#: listtasaivaview.cpp:71
+#: listtasaivaview.cpp:70
 msgid "Error al guardar las tasas de IVA"
 msgstr ""
 
-#: listalmacenview.cpp:71
+#: listalmacenview.cpp:70
 msgid "Error al guardar los almacenes"
 msgstr ""
 
-#: listtipoivaview.cpp:71
+#: listtipoivaview.cpp:70
 msgid "Error al guardar los tipos de IVA"
 msgstr ""
 
 #: fpagoview.cpp:211
 msgid "Error al intentar borrar la forma de pago"
-msgstr ""
-
-#: tiposarticuloview.cpp:139
-msgid "Error en la carga"
-msgstr ""
-
-#: tiposarticuloview.cpp:366
-msgid "Error en la creacion"
 msgstr ""
 
 #: bancoview.cpp:244
@@ -574,37 +416,15 @@ msgstr "Unexpected error in BulmaFact. The program was closed."
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: articulolist.cpp:168
-msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-msgstr "This on the verge of erasing article. These data can give problems."
-
-#: articuloview.cpp:311
-msgid ""
-"Esta seguro que quiere borrar\n"
-"la imagen asociada a este articulo?"
-msgstr ""
-
-#: ui_articleslistbase.h:388
-msgid "Exportar"
-msgstr "Export"
-
-#: ui_articleslistbase.h:369 ui_articleslistbase.h:374
-msgid "Exportar articulos"
-msgstr "Export articules"
-
-#: ui_bulmafactbase.h:264
+#: ui_bulmafactbase.h:239
 msgid "F1"
 msgstr "F1"
 
-#: ui_bulmafactbase.h:258
+#: ui_bulmafactbase.h:233
 msgid "F11"
 msgstr "F11"
 
-#: ui_bulmafactbase.h:253
-msgid "F2"
-msgstr "F2"
-
-#: company.cpp:213
+#: company.cpp:212
 msgid "Facturacion GPL"
 msgstr ""
 
@@ -617,7 +437,7 @@ msgstr ""
 msgid "Facturado"
 msgstr "Invoiced"
 
-#: ui_busquedafamiliabase.h:93 articuloview.cpp:71
+#: ui_busquedafamiliabase.h:93
 msgid "Familia"
 msgstr "Family"
 
@@ -633,19 +453,15 @@ msgstr "Family"
 msgid "Fax:"
 msgstr "Fax:"
 
-#: listtasaivaview.cpp:99
+#: listtasaivaview.cpp:98
 msgid "Fecha Entrada en Vigor"
 msgstr "Date Taken Effect"
 
-#: ui_bulmafactbase.h:260 ui_bulmafactbase.h:316 ui_bulmafactbase.h:319
-#: ui_bulmafactbase.h:324 ui_bulmafactbase.h:329 ui_bulmafactbase.h:334
-#: ui_bulmafactbase.h:339
+#: ui_bulmafactbase.h:235 ui_bulmafactbase.h:291 ui_bulmafactbase.h:294
+#: ui_bulmafactbase.h:299 ui_bulmafactbase.h:304 ui_bulmafactbase.h:309
+#: ui_bulmafactbase.h:314
 msgid "Fichas"
 msgstr "Cards"
-
-#: ui_articleslistbase.h:336 ui_articleslistbase.h:341
-msgid "Filtrar listado"
-msgstr "Filter listing"
 
 #: ui_busquedareferenciabase.h:89 ui_busquedatipoarticulobase.h:90
 #: ui_busquedaarticulobase.h:92 ui_busquedafamiliabase.h:90
@@ -653,8 +469,12 @@ msgid "Form1"
 msgstr "Form1"
 
 #: fpagoview.cpp:41
+#, fuzzy
 msgid "Forma de Pago"
 msgstr ""
+"#-#-#-#-#  bulmacont_en_US.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Modes of payment\n"
+"#-#-#-#-#  bulmafact_en_US.UTF-8.po  #-#-#-#-#\n"
 
 #: ui_fpagobase.h:306
 msgid "Forma de pago:"
@@ -668,25 +488,13 @@ msgstr "Modes of payment"
 msgid "General"
 msgstr "General"
 
-#: ui_bulmafactbase.h:250
+#: ui_bulmafactbase.h:229
 msgid "Gestion de &familias"
 msgstr "Management of &families"
-
-#: ui_articleeditbase.h:584 ui_articleeditbase.h:589
-msgid "Guardar"
-msgstr "Keep"
 
 #: ui_familiasbase.h:346 ui_familiasbase.h:351
 msgid "Guardar Familia"
 msgstr "Keep Family"
-
-#: tiposarticuloview.cpp:290
-msgid "Guardar Tipo de Articulo"
-msgstr ""
-
-#: ui_tiposarticulobase.h:259 ui_tiposarticulobase.h:264
-msgid "Guardar Tipo de articulo"
-msgstr "Keep Type from article"
 
 #: bancoview.cpp:184 trabajadorview.cpp:221
 msgid "Guardar datos del trabajador"
@@ -709,44 +517,32 @@ msgstr "Keep worker"
 msgid "I.R.P.F (-"
 msgstr "I.R.P.F (-"
 
-#: fichabf.cpp:383 listlinalbaranclienteview.cpp:53
+#: fichabf.cpp:383 listlinalbaranclienteview.cpp:52
 msgid "I.V.A."
 msgstr "I.V.A."
 
-#: articulolist.cpp:365 comparticulolistview.cpp:46
-msgid "ID articulo"
-msgstr "ID article"
-
-#: comparticulolistview.cpp:45
-msgid "ID componente"
-msgstr "ID component"
-
-#: tiposarticuloview.cpp:46
-msgid "Id"
-msgstr "Id"
-
-#: listtasaivaview.cpp:94
+#: listtasaivaview.cpp:93
 msgid "Id Tasa IVA"
 msgstr "Rate IVA"
 
-#: listtipoivaview.cpp:106 listtasaivaview.cpp:96
+#: listtipoivaview.cpp:105 listtasaivaview.cpp:95
 msgid "Id Tipo IVA"
 msgstr "Id Type IVA"
 
-#: listlinalbaranproveedorview.cpp:58 listdescalbaranclienteview.cpp:46
-#: listlinalbaranclienteview.cpp:56
+#: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:44
+#: listlinalbaranclienteview.cpp:55
 msgid "Id albaran"
 msgstr "Id letters patent"
 
-#: listalmacenview.cpp:97
+#: listalmacenview.cpp:96
 msgid "Id almacen"
 msgstr "id warehouse"
 
-#: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
+#: listlinalbaranproveedorview.cpp:47 listlinalbaranclienteview.cpp:45
 msgid "Id articulo"
 msgstr "Id article"
 
-#: listdescalbaranclienteview.cpp:43
+#: listdescalbaranclienteview.cpp:41
 msgid "Id descuento"
 msgstr ""
 
@@ -754,57 +550,21 @@ msgstr ""
 msgid "Id familia"
 msgstr "Id family"
 
-#: articuloview.cpp:61
-msgid "Identificador"
-msgstr "Identifier"
-
-#: ui_articleeditbase.h:607
-msgid "Imagen del articulo:"
-msgstr "Image of article:"
-
-#: articuloview.cpp:280 trabajadorview.cpp:294
+#: trabajadorview.cpp:294
 msgid "Imagenes (*.jpg)"
 msgstr "Images (*.jpg)"
-
-#: ui_articleslistbase.h:380 ui_articleslistbase.h:385
-msgid "Importar articulos"
-msgstr "Concern articles"
 
 #: ui_familiasbase.h:357 ui_familiasbase.h:362
 msgid "Imprimir Familias"
 msgstr "Print Family"
 
-#: ui_articleslistbase.h:325 ui_articleslistbase.h:330
-msgid "Imprimir listado"
-msgstr "Print listing"
-
-#: articuloview.cpp:73
-msgid "Inactivo"
-msgstr "Inactive"
-
-#: articuloview.cpp:67
-msgid "Incluir en control de stock"
-msgstr "Include in stock control"
-
-#: articuloview.cpp:66
-msgid "Incluir en presentaciones"
-msgstr "Include in presentations"
-
-#: ui_articleeditbase.h:625
-msgid "Incluir este articulo en el catalogo."
-msgstr ""
-
-#: ui_bulmafactbase.h:266 ui_bulmafactbase.h:269
+#: ui_bulmafactbase.h:241 ui_bulmafactbase.h:244
 msgid "Indexador"
 msgstr "Indexador"
 
 #: ui_fpagobase.h:298
 msgid "Informacion de la forma de pago:"
 msgstr "Information of the mode of payment:"
-
-#: ui_articleeditbase.h:615
-msgid "Informacion del articulo:"
-msgstr "Information of article:"
 
 #: ui_bancobase.h:402
 msgid "Informacion del banco:"
@@ -820,10 +580,6 @@ msgstr ""
 
 #: main.cxx:228
 msgid "Inicializando componentes"
-msgstr ""
-
-#: company.cpp:91
-msgid "Inicializando listado de articulos"
 msgstr ""
 
 #: main.cxx:118
@@ -846,12 +602,12 @@ msgstr "List of banks:"
 msgid "Lista de trabajadores:"
 msgstr "List of workers:"
 
-#: ui_bulmafactbase.h:290 ui_bulmafactbase.h:293 ui_bulmafactbase.h:298
-#: ui_bulmafactbase.h:303 ui_bulmafactbase.h:308 ui_bulmafactbase.h:313
+#: ui_bulmafactbase.h:265 ui_bulmafactbase.h:268 ui_bulmafactbase.h:273
+#: ui_bulmafactbase.h:278 ui_bulmafactbase.h:283 ui_bulmafactbase.h:288
 msgid "Listados"
 msgstr "Listings"
 
-#: ui_bulmafactbase.h:288
+#: ui_bulmafactbase.h:263
 msgid "Maest&ro"
 msgstr "Teach&er"
 
@@ -859,52 +615,21 @@ msgstr "Teach&er"
 msgid "Mostrar / Ocultar Detalle"
 msgstr "Show/hide Detail"
 
-#: ui_tiposarticulobase.h:247 ui_tiposarticulobase.h:252
-msgid "Mostrar / Ocultar detalle"
-msgstr ""
-
-#: articuloview.cpp:319
-msgid ""
-"No se ha podido borrar el archivo.\n"
-"Compruebe que el archivo tenga los permisos correctos."
-msgstr ""
-
-#: articuloview.cpp:286
-msgid ""
-"No se ha podido cargar la imagen.\n"
-"Compruebe que la imagen sea valida."
-msgstr ""
-
-#: articuloview.cpp:224
-msgid ""
-"No se ha podido guardar la imagen.\n"
-"Revise los permisos de escritura y que disponga\n"
-"de espacio libre suficiente en el disco duro."
-msgstr ""
-
-#: listconfiguracionview.cpp:90 familiasview.cpp:51 familiasview.cpp:569
+#: listconfiguracionview.cpp:89 familiasview.cpp:51 familiasview.cpp:569
 msgid "Nombre"
 msgstr "Name"
 
-#: listalmacenview.cpp:99
+#: listalmacenview.cpp:98
 msgid "Nombre almacen"
 msgstr "Name warehouse"
 
-#: listlinalbaranproveedorview.cpp:50 listlinalbaranclienteview.cpp:48
+#: listlinalbaranproveedorview.cpp:49 listlinalbaranclienteview.cpp:47
 msgid "Nombre articulo"
 msgstr "Name article"
 
 #: ui_fpagobase.h:303
 msgid "Nombre de la forma de pago:"
 msgstr "Name of the mode of payment:"
-
-#: articuloview.cpp:63 articulolist.cpp:367 comparticulolistview.cpp:43
-msgid "Nombre del articulo"
-msgstr "Article name"
-
-#: ui_articleeditbase.h:616
-msgid "Nombre del articulo:"
-msgstr "Name of article:"
 
 #: ui_familiasbase.h:380 ui_trabajadorbase.h:341
 msgid "Nombre:"
@@ -917,19 +642,6 @@ msgstr "New femily"
 #: ui_fpagobase.h:310 ui_fpagobase.h:315
 msgid "Nueva forma de pago"
 msgstr "New mode of payment"
-
-#: ui_bulmafactbase.h:252
-msgid "Nuevo &articulo..."
-msgstr "New &article..."
-
-#: ui_tiposarticulobase.h:283 ui_tiposarticulobase.h:288
-msgid "Nuevo Tipo de articulo"
-msgstr "New Type of article"
-
-#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:297
-msgid "Nuevo articulo"
-msgstr "New article"
 
 #: ui_bancobase.h:446 ui_bancobase.h:451 ui_trabajadorbase.h:374
 #: ui_trabajadorbase.h:379
@@ -944,7 +656,7 @@ msgstr ""
 msgid "Numero de la Seguridad Social:"
 msgstr "Number of the Social Security:"
 
-#: listlinalbaranproveedorview.cpp:51
+#: listlinalbaranproveedorview.cpp:50
 msgid "Numero de linea"
 msgstr ""
 
@@ -952,55 +664,35 @@ msgstr ""
 msgid "Numero de plazos:"
 msgstr "Number of terms:"
 
-#: listlinalbaranclienteview.cpp:49
+#: listlinalbaranclienteview.cpp:48
 msgid "Nº linea"
 msgstr ""
 
-#: articuloview.cpp:65
-msgid "Observaciones"
-msgstr "Observations"
-
-#: articulolist.cpp:369
-msgid "Observaciones sobre el articulo"
-msgstr "Observations on the article"
-
-#: listlinalbaranproveedorview.cpp:59 listlinalbaranclienteview.cpp:57
+#: listlinalbaranproveedorview.cpp:58 listlinalbaranclienteview.cpp:56
 msgid "Orden"
 msgstr "Order"
 
-#: ui_bulmafactbase.h:277
+#: ui_bulmafactbase.h:252
 msgid "Ordenar &ventanas"
-msgstr ""
+msgstr "Order &windows"
 
-#: ui_bulmafactbase.h:276
+#: ui_bulmafactbase.h:251
 msgid "Organizacio&n en cascada"
 msgstr ""
 
-#: ui_articleeditbase.h:622
-msgid "Otros datos:"
-msgstr "Other data:"
-
-#: listlinalbaranclienteview.cpp:52
+#: listlinalbaranclienteview.cpp:51
 msgid "P.V.P."
 msgstr "P.V.P."
-
-#: articulolist.cpp:372
-msgid "P.V.P. articulo"
-msgstr "P.V.P. article"
-
-#: articuloview.cpp:74
-msgid "P.V.P. base"
-msgstr "P.V.P. bases"
 
 #: informereferencia.cpp:263
 msgid "Pagado"
 msgstr "Paid"
 
-#: ui_bulmafactbase.h:278 ui_bulmafactbase.h:279
+#: ui_bulmafactbase.h:253 ui_bulmafactbase.h:254
 msgid "Paises / Provincias"
 msgstr "Countries/Provinces"
 
-#: ui_bulmafactbase.h:282
+#: ui_bulmafactbase.h:257
 msgid "Paises y provincias"
 msgstr ""
 
@@ -1008,14 +700,6 @@ msgstr ""
 #: informereferencia.cpp:213 informereferencia.cpp:260
 msgid "Pedido"
 msgstr "Order"
-
-#: ui_articleeditbase.h:620
-msgid "Peso (kg):"
-msgstr ""
-
-#: articuloview.cpp:75
-msgid "Peso Unidad"
-msgstr "Weight Unit"
 
 #: ui_fpagobase.h:302
 msgid "Plazo entre recibos (dias):"
@@ -1033,21 +717,17 @@ msgstr "Population:"
 msgid "Porcentaje"
 msgstr "Percentage"
 
-#: listtasaivaview.cpp:97
+#: listtasaivaview.cpp:96
 msgid "Porcentaje IVA"
 msgstr "Percentage IVA"
 
-#: listtasaivaview.cpp:98
+#: listtasaivaview.cpp:97
 msgid "Porcentaje Recargo Equivalencia"
 msgstr "Percentage Surcharge Equivalence"
 
-#: listlinalbaranproveedorview.cpp:54
+#: listlinalbaranproveedorview.cpp:53
 msgid "Precio"
 msgstr "Price"
-
-#: ui_articleeditbase.h:618
-msgid "Precio venta. s/IVA:"
-msgstr ""
 
 #: informereferencia.cpp:142 informereferencia.cpp:212
 msgid "Pres."
@@ -1057,7 +737,7 @@ msgstr "Pres."
 msgid "Producto."
 msgstr ""
 
-#: ui_bulmafactbase.h:247 ui_listconfiguracionbase.h:117
+#: ui_bulmafactbase.h:226 ui_listconfiguracionbase.h:117
 msgid "Propiedades de la empresa"
 msgstr "Properties of the company"
 
@@ -1073,11 +753,7 @@ msgstr ""
 msgid "Referencia"
 msgstr "Reference"
 
-#: ui_articleslistbase.h:287
-msgid "S&olo presentables"
-msgstr "S&ingle presentables"
-
-#: ui_bulmafactbase.h:255
+#: ui_bulmafactbase.h:230
 msgid "Se&ries de factura"
 msgstr "Se&ries of invoice"
 
@@ -1085,15 +761,7 @@ msgstr "Se&ries of invoice"
 msgid "Seleccione archivo"
 msgstr "Select file"
 
-#: articuloview.cpp:278
-msgid "Seleccione un archivo de imagen"
-msgstr ""
-
-#: articulolist.cpp:74
-msgid "Selector de articulos"
-msgstr "Selector of article"
-
-#: listseriefacturaview.cpp:49
+#: listseriefacturaview.cpp:48
 msgid "Serie de Factura"
 msgstr ""
 
@@ -1105,31 +773,19 @@ msgstr "Series of invoice"
 msgid "Servicio."
 msgstr ""
 
-#: ui_articleslistbase.h:285
-msgid "Solo usados"
-msgstr "Single used"
-
 #: ui_aboutbase.h:295
 msgid "Sopor&te"
 msgstr "Soppor&te"
-
-#: articuloview.cpp:72
-msgid "Stock"
-msgstr "Stock"
-
-#: ui_articleeditbase.h:606
-msgid "Subcodigo:"
-msgstr "Subcode:"
 
 #: ui_bancobase.h:420
 msgid "Sucursal:"
 msgstr ""
 
-#: listtasaivaview.cpp:50
+#: listtasaivaview.cpp:49
 msgid "Tasa IVA"
 msgstr ""
 
-#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:274
+#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:249
 msgid "Tasas de IVA"
 msgstr "Rates of IVA"
 
@@ -1145,39 +801,28 @@ msgstr "Telephone:"
 msgid "Terminado"
 msgstr "Finished"
 
-#: ui_articleeditbase.h:617
-msgid "Texto para etiqueta:"
-msgstr "Text for label:"
-
 #: fichabf.cpp:847
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
-#: articulolist.cpp:161
-msgid "Tiene que seleccionar un articulo"
-msgstr "It must select article"
+#: busquedatipoarticulo.cpp:37
+#, fuzzy
+msgid "Tipo Articulo:"
+msgstr "Article Type "
 
 #: ui_familiasbase.h:383
 msgid "Tipo Articulos"
 msgstr "Article Type "
 
-#: listtipoivaview.cpp:50 listtipoivaview.cpp:107 listtasaivaview.cpp:95
+#: listtipoivaview.cpp:49 listtipoivaview.cpp:106 listtasaivaview.cpp:94
 msgid "Tipo IVA"
 msgstr "Type IVA"
 
-#: articuloview.cpp:69
-msgid "Tipo de I.V.A."
-msgstr "Type of I.V.A."
-
-#: ui_articleeditbase.h:619
-msgid "Tipo de I.V.A.:"
-msgstr "Type of I.V.A.:"
-
-#: ui_busquedatipoarticulobase.h:93 articuloview.cpp:68
+#: ui_busquedatipoarticulobase.h:93
 msgid "Tipo de articulo"
 msgstr "Type of the article"
 
-#: ui_tiposarticulobase.h:242 ui_busquedatipoarticulobase.h:91
+#: ui_busquedatipoarticulobase.h:91
 msgid "Tipo de articulo:"
 msgstr "Type of article:"
 
@@ -1189,13 +834,9 @@ msgstr "Type term between receipts:"
 msgid "Tipo plazo primer pago:"
 msgstr "Type term first payment:"
 
-#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:273
+#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:248
 msgid "Tipos de IVA"
 msgstr "Types of IVA"
-
-#: ui_tiposarticulobase.h:238
-msgid "Tipos de articulo"
-msgstr "Types of article"
 
 #: fichabf.cpp:409
 msgid "Total"
@@ -1217,32 +858,27 @@ msgstr "Workers"
 msgid "URL:"
 msgstr "URL:"
 
-#: listconfiguracionview.cpp:91
+#: listconfiguracionview.cpp:90
 msgid "Valor"
 msgstr "Value"
 
-#: ui_bulmafactbase.h:289
+#: ui_bulmafactbase.h:264
 msgid "Venta&na"
 msgstr "Wind&ow"
 
-#: ui_bulmafactbase.h:257
+#: ui_bulmafactbase.h:232
 msgid "Ventana &completa"
 msgstr "Complete &window"
 
-#: ui_articleeditbase.h:621
-msgid "Volumen (cm3):"
-msgstr ""
-
-#: articuloview.cpp:76
-msgid "Volumen Unidad"
-msgstr "Volume Unit"
-
-#: familiasview.cpp:488 tiposarticuloview.cpp:394
+#: familiasview.cpp:488
 msgid "no se ha podido borrar"
 msgstr ""
 
 #~ msgid "&Aplicar Recargo de Equivalencia."
 #~ msgstr "&To apply Surcharge of Equivalence."
+
+#~ msgid "&Articulos"
+#~ msgstr "&Article"
 
 #~ msgid "&Clientes"
 #~ msgstr "&Clients"
@@ -1257,6 +893,9 @@ msgstr ""
 #~ msgid "&Código:"
 #~ msgstr "Code:"
 
+#~ msgid "&Datos generales"
+#~ msgstr "&General performances"
+
 #~ msgid "&IRPF que aplica:"
 #~ msgstr "&IRPF that applies:"
 
@@ -1270,17 +909,47 @@ msgstr ""
 #~ msgid "&Teléfono:"
 #~ msgstr "Telephone:"
 
+#~ msgid "&Tipos de articulo"
+#~ msgstr "&Types of article"
+
+#~ msgid "Abreviacion"
+#~ msgstr "Abbreviation"
+
+#~ msgid "Activar el &control de stock."
+#~ msgstr "Activate the stock &control."
+
+#~ msgid "Actualizar listado"
+#~ msgstr "Update listing"
+
+#~ msgid "Alt+O"
+#~ msgstr "Alt+O"
+
 #~ msgid "Aplicar Recargo de Equivalencia"
 #~ msgstr "Apply Surcharge of Equivalence"
 
+#~ msgid "Articulos"
+#~ msgstr "Article"
+
 #~ msgid "Banco proveedor"
 #~ msgstr "Bank supplier"
+
+#~ msgid "Borrar Tipo de articulo"
+#~ msgstr "Erase Type of article"
+
+#~ msgid "Borrar articulo"
+#~ msgstr "Erase article"
 
 #~ msgid "Borrar cliente"
 #~ msgstr "Erase client"
 
 #~ msgid "Borrar proveedor"
 #~ msgstr "Erase supplier"
+
+#~ msgid "Buscar:"
+#~ msgstr "Look for:"
+
+#~ msgid "C&omponentes"
+#~ msgstr "C&omponents"
 
 #~ msgid "C.I.&F. / N.I.F."
 #~ msgstr "C.I.&F. / N.I.F."
@@ -1297,6 +966,12 @@ msgstr ""
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "C.I.F./N.I.F./N.I.E.:"
 
+#~ msgid "Cam&biar imagen"
+#~ msgstr "Cha&nge image"
+
+#~ msgid "Cantidad de componente de articulo"
+#~ msgstr "Amount of component of article"
+
 #~ msgid "Clave de acceso a la web del proveedor"
 #~ msgstr "Key of access to the Web of the supplier"
 
@@ -1312,11 +987,20 @@ msgstr ""
 #~ msgid "Clientes"
 #~ msgstr "Clients"
 
+#~ msgid "Clientes (*.xml)"
+#~ msgstr "Clientes (*.xml"
+
 #~ msgid "Codigo cliente"
 #~ msgstr "Code client"
 
+#~ msgid "Codigo completo del articulo"
+#~ msgstr "Complete code of article"
+
 #~ msgid "Codigo de cliente:"
 #~ msgstr "Code of client:"
+
+#~ msgid "Codigo del articulo:"
+#~ msgstr "Code of article:"
 
 #~ msgid "Codigo postal"
 #~ msgstr "Postal Code"
@@ -1324,14 +1008,29 @@ msgstr ""
 #~ msgid "Codigo postal:"
 #~ msgstr "Postal code:"
 
+#~ msgid "Codigo:"
+#~ msgstr "Code:"
+
 #~ msgid "Comentarios"
 #~ msgstr "Commentaries"
+
+#~ msgid "Configurar listado"
+#~ msgstr "Form listing"
 
 #~ msgid "Correo electronico:"
 #~ msgstr "Electronic mail:"
 
+#~ msgid "Ctrl+D"
+#~ msgstr "Ctrl+D"
+
 #~ msgid "Ctrl+F"
 #~ msgstr "Ctrl+F"
+
+#~ msgid "Ctrl+N"
+#~ msgstr "Ctrl+N"
+
+#~ msgid "Ctrl+S"
+#~ msgstr "Ctrl+S"
 
 #, fuzzy
 #~ msgid "Código &postal:"
@@ -1349,6 +1048,18 @@ msgstr ""
 
 #~ msgid "Datos de comercio electronico:"
 #~ msgstr "Data of electronic commerce:"
+
+#~ msgid "Descripcio&n"
+#~ msgstr "Descriptio&n"
+
+#~ msgid "Descripcion abreviada del articulo"
+#~ msgstr "Been brief description of the article"
+
+#~ msgid "Descripcion del tipo de articulo"
+#~ msgstr "Description of the type of article"
+
+#~ msgid "Descripcion tipo de I.V.A."
+#~ msgstr "Description type of I.V.A."
 
 #~ msgid "Di&visiones"
 #~ msgstr "Di&visions"
@@ -1376,11 +1087,20 @@ msgstr ""
 #~ msgid "Direcció&n:"
 #~ msgstr "Address:"
 
+#~ msgid "Disponible en stock"
+#~ msgstr "Available in stock"
+
 #~ msgid "E-&mail:"
 #~ msgstr "E-&mail:"
 
+#~ msgid "Editar articulo"
+#~ msgstr "Publish article"
+
 #~ msgid "Editar cliente"
 #~ msgstr "Publish client"
+
+#~ msgid "Elija el archivo"
+#~ msgstr "Choose the file"
 
 #~ msgid "Empresa"
 #~ msgstr "Company"
@@ -1388,17 +1108,36 @@ msgstr ""
 #~ msgid "Empresa:"
 #~ msgstr "Company:"
 
+#~ msgid "Error al borrar el articulo"
+#~ msgstr "Error when erasing article"
+
 #~ msgid "Error al borrar el proveedor"
 #~ msgstr "Error when erasing the supplier"
 
 #~ msgid "Error al borrar un cliente"
 #~ msgstr "Error when erasing a client"
 
+#~ msgid "Error al crear el articulo"
+#~ msgstr "Error when creating article"
+
 #~ msgid "Error al crear el cliente"
 #~ msgstr "Error when creating the client"
 
 #~ msgid "Error al crear el proveedor"
 #~ msgstr "Error when creating the supplier"
+
+#~ msgid ""
+#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+#~ msgstr "This on the verge of erasing article. These data can give problems."
+
+#~ msgid "Exportar"
+#~ msgstr "Export"
+
+#~ msgid "Exportar articulos"
+#~ msgstr "Export articules"
+
+#~ msgid "F2"
+#~ msgstr "F2"
 
 #~ msgid "F3"
 #~ msgstr "F3"
@@ -1409,11 +1148,20 @@ msgstr ""
 #~ msgid "Fecha de baja del cliente"
 #~ msgstr "Date of loss of the client"
 
+#~ msgid "Filtrar listado"
+#~ msgstr "Filter listing"
+
 #~ msgid "Forma de pago"
 #~ msgstr "Mode of payment"
 
 #~ msgid "Forma_Pago"
 #~ msgstr "Forms_Payment"
+
+#~ msgid "Guardar"
+#~ msgstr "Keep"
+
+#~ msgid "Guardar Tipo de articulo"
+#~ msgstr "Keep Type from article"
 
 #~ msgid "Guardar cliente"
 #~ msgstr "Keep client"
@@ -1421,8 +1169,14 @@ msgstr ""
 #~ msgid "Guardar proveedor"
 #~ msgstr "Keep supplier"
 
+#~ msgid "ID articulo"
+#~ msgstr "ID article"
+
 #~ msgid "ID cliente"
 #~ msgstr "ID client"
+
+#~ msgid "ID componente"
+#~ msgstr "ID component"
 
 #~ msgid "ID proveedor"
 #~ msgstr "ID supplier"
@@ -1430,14 +1184,41 @@ msgstr ""
 #~ msgid "IRPF"
 #~ msgstr "IRPF"
 
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Identificador"
+#~ msgstr "Identifier"
+
 #~ msgid "Identificador de presupuesto"
 #~ msgstr "Identifier of budget"
+
+#~ msgid "Imagen del articulo:"
+#~ msgstr "Image of article:"
 
 #~ msgid "Importar"
 #~ msgstr "Matter"
 
+#~ msgid "Importar articulos"
+#~ msgstr "Concern articles"
+
 #~ msgid "Imprimir informe"
 #~ msgstr "Print report"
+
+#~ msgid "Imprimir listado"
+#~ msgstr "Print listing"
+
+#~ msgid "Inactivo"
+#~ msgstr "Inactive"
+
+#~ msgid "Incluir en control de stock"
+#~ msgstr "Include in stock control"
+
+#~ msgid "Incluir en presentaciones"
+#~ msgstr "Include in presentations"
+
+#~ msgid "Informacion del articulo:"
+#~ msgstr "Information of article:"
 
 #~ msgid "Listado de Clientes"
 #~ msgstr "Listing of Clients"
@@ -1466,6 +1247,12 @@ msgstr ""
 #~ msgid "Nombre de cliente"
 #~ msgstr "Name of client"
 
+#~ msgid "Nombre del articulo"
+#~ msgstr "Article name"
+
+#~ msgid "Nombre del articulo:"
+#~ msgstr "Name of article:"
+
 #~ msgid "Nombre del cliente"
 #~ msgstr "Name of the client"
 
@@ -1476,11 +1263,20 @@ msgstr ""
 #~ msgid "Nuestro código de c&liente:"
 #~ msgstr "Code of client:"
 
+#~ msgid "Nuevo &articulo..."
+#~ msgstr "New &article..."
+
 #~ msgid "Nuevo &cliente..."
 #~ msgstr "New &client..."
 
 #~ msgid "Nuevo &proveedor..."
 #~ msgstr "New &supplier..."
+
+#~ msgid "Nuevo Tipo de articulo"
+#~ msgstr "New Type of article"
+
+#~ msgid "Nuevo articulo"
+#~ msgstr "New article"
 
 #~ msgid "Nuevo cliente"
 #~ msgstr "New client"
@@ -1510,8 +1306,26 @@ msgstr ""
 #~ msgid "Número de &fax:"
 #~ msgstr "Number of fax:"
 
+#~ msgid "Observaciones"
+#~ msgstr "Observations"
+
+#~ msgid "Observaciones sobre el articulo"
+#~ msgstr "Observations on the article"
+
+#~ msgid "Otros datos:"
+#~ msgstr "Other data:"
+
+#~ msgid "P.V.P. articulo"
+#~ msgstr "P.V.P. article"
+
+#~ msgid "P.V.P. base"
+#~ msgstr "P.V.P. bases"
+
 #~ msgid "Pagina web:"
 #~ msgstr "Web page:"
+
+#~ msgid "Peso Unidad"
+#~ msgstr "Weight Unit"
 
 #~ msgid "Poblacion"
 #~ msgstr "Population"
@@ -1569,8 +1383,14 @@ msgstr ""
 #~ msgid "Resumen por articulos"
 #~ msgstr "Summary by articles"
 
+#~ msgid "S&olo presentables"
+#~ msgstr "S&ingle presentables"
+
 #~ msgid "Seleccione el archivo"
 #~ msgstr "Select the file"
+
+#~ msgid "Selector de articulos"
+#~ msgstr "Selector of article"
 
 #~ msgid "Selector de clientes"
 #~ msgstr "Selector of clients"
@@ -1578,11 +1398,35 @@ msgstr ""
 #~ msgid "Selector de proveedores"
 #~ msgstr "Selector of suppliers"
 
+#~ msgid "Solo usados"
+#~ msgstr "Single used"
+
+#~ msgid "Stock"
+#~ msgstr "Stock"
+
+#~ msgid "Subcodigo:"
+#~ msgstr "Subcode:"
+
 #~ msgid "Telefono del trabajo:"
 #~ msgstr "Telephone of the work:"
 
 #~ msgid "Telefono fijo:"
 #~ msgstr "Telephone fixed:"
+
+#~ msgid "Texto para etiqueta:"
+#~ msgstr "Text for label:"
+
+#~ msgid "Tiene que seleccionar un articulo"
+#~ msgstr "It must select article"
+
+#~ msgid "Tipo de I.V.A."
+#~ msgstr "Type of I.V.A."
+
+#~ msgid "Tipo de I.V.A.:"
+#~ msgstr "Type of I.V.A.:"
+
+#~ msgid "Tipos de articulo"
+#~ msgstr "Types of article"
 
 #~ msgid "Todos"
 #~ msgstr "All"
@@ -1598,3 +1442,6 @@ msgstr ""
 
 #~ msgid "Vigentes"
 #~ msgstr "Effective"
+
+#~ msgid "Volumen Unidad"
+#~ msgstr "Volume Unit"

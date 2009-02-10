@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,47 +16,47 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pagoview.cpp:59
+#: pagoview.cpp:58
 msgid "Pago"
 msgstr ""
 
-#: pagoview.cpp:62 pagoslist.cpp:246
+#: pagoview.cpp:61 pagoslist.cpp:246
 msgid "Id pago"
 msgstr ""
 
-#: pagoview.cpp:63 pagoslist.cpp:247
+#: pagoview.cpp:62 pagoslist.cpp:247
 msgid "Id proveedor"
 msgstr ""
 
-#: pagoview.cpp:64
+#: pagoview.cpp:63
 msgid "Previcion de pago"
 msgstr ""
 
-#: pagoview.cpp:65 pagoslist.cpp:252
+#: pagoview.cpp:64 pagoslist.cpp:252
 msgid "Fecha de pago"
 msgstr ""
 
-#: pagoview.cpp:66 pagoslist.cpp:255
+#: pagoview.cpp:65 pagoslist.cpp:255
 msgid "Referencia de pago"
 msgstr ""
 
-#: pagoview.cpp:67 pagoslist.cpp:253
+#: pagoview.cpp:66 pagoslist.cpp:253
 msgid "Cantidad"
 msgstr ""
 
-#: pagoview.cpp:68
+#: pagoview.cpp:67
 msgid "Comentario del pago"
 msgstr ""
 
-#: pagoview.cpp:69 pagoslist.cpp:254
+#: pagoview.cpp:68 pagoslist.cpp:254
 msgid "Banco"
 msgstr ""
 
-#: pagoview.cpp:72 pagoslist.cpp:49 pagoslist.cpp:74
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
 msgid "Proveedor:"
 msgstr ""
 
-#: pagoview.cpp:81
+#: pagoview.cpp:80
 msgid "Error al crear el pago"
 msgstr ""
 
@@ -117,11 +117,11 @@ msgstr ""
 msgid "&Nuevo pago a proveedor"
 msgstr ""
 
-#: pluginpagos.cpp:106 pluginpagos.cpp:107 ui_pagobase.h:309
+#: pluginpagos.cpp:106 pluginpagos.cpp:107 ui_pagobase.h:311
 msgid "Nuevo pago a proveedor"
 msgstr ""
 
-#: ui_pagoslistbase.h:372 ui_pagobase.h:339
+#: ui_pagoslistbase.h:372 ui_pagobase.h:341
 msgid "Banco:"
 msgstr ""
 
@@ -149,8 +149,8 @@ msgstr ""
 msgid "Editar pago"
 msgstr ""
 
-#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:324
-#: ui_pagobase.h:329
+#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:326
+#: ui_pagobase.h:331
 msgid "Borrar pago"
 msgstr ""
 
@@ -178,34 +178,34 @@ msgstr ""
 msgid "Total:"
 msgstr ""
 
-#: ui_pagobase.h:313 ui_pagobase.h:318
+#: ui_pagobase.h:315 ui_pagobase.h:320
 msgid "Guardar pago"
 msgstr ""
 
-#: ui_pagobase.h:333
+#: ui_pagobase.h:335
 msgid "Referencia:"
 msgstr ""
 
-#: ui_pagobase.h:334
+#: ui_pagobase.h:336
 msgid "Fecha de pago:"
 msgstr ""
 
-#: ui_pagobase.h:335
+#: ui_pagobase.h:337
 msgid "Provision de fondos"
 msgstr ""
 
-#: ui_pagobase.h:336
+#: ui_pagobase.h:338
 msgid "Descripcion del pago:"
 msgstr ""
 
-#: ui_pagobase.h:337
+#: ui_pagobase.h:339
 msgid "Total pago:"
 msgstr ""
 
-#: ui_pagobase.h:340
+#: ui_pagobase.h:342
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_pagobase.h:341
+#: ui_pagobase.h:343
 msgid "&Cancelar"
 msgstr ""

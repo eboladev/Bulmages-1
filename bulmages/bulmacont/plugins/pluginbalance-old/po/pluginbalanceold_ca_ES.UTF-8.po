@@ -1,0 +1,115 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: pluginbalance.cpp:97
+#, fuzzy
+msgid "&Balance"
+msgstr "Balanç"
+
+#: pluginbalance.cpp:93
+msgid "&Ver"
+msgstr "&Veure"
+
+#: balanceview.cpp:69
+#, fuzzy
+msgid "Asiento Contable"
+msgstr "Assentament final"
+
+#: pluginbalance.cpp:98
+#, fuzzy
+msgid "Permite realizar balances"
+msgstr "Actualitza balanç"
+
+#: pluginbalance.cpp:99
+msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: balanceview.cpp:401
+msgid "Ver Diario (este anyo)"
+msgstr ""
+
+#: balanceview.cpp:399
+msgid "Ver Diario (este dia)"
+msgstr ""
+
+#: balanceview.cpp:400
+msgid "Ver Diario (este mes)"
+msgstr ""
+
+#: balanceview.cpp:405
+msgid "Ver extracto (este anyo)"
+msgstr "Ver extracte (est any)"
+
+#: balanceview.cpp:403
+msgid "Ver extracto (este dia)"
+msgstr "Veure extracte (aquest dia)"
+
+#: balanceview.cpp:404
+msgid "Ver extracto (este mes)"
+msgstr "Veure extracte (aquest mes)"
+
+#: balancesubform.cpp:36
+msgid "asaldo"
+msgstr ""
+
+#: balancesubform.cpp:34
+msgid "codigo"
+msgstr "codi"
+
+#: balancesubform.cpp:35
+msgid "descripcion"
+msgstr "descripció"
+
+#: balancesubform.cpp:40
+msgid "ejdebe"
+msgstr ""
+
+#: balancesubform.cpp:41
+msgid "ejhaber"
+msgstr ""
+
+#: balancesubform.cpp:42
+msgid "ejsaldo"
+msgstr ""
+
+#: balancesubform.cpp:32
+msgid "idcuenta"
+msgstr ""
+
+#: pluginbalance.cpp:89
+#, fuzzy
+msgid "menuVentana"
+msgstr "Finestre"
+
+#: balancesubform.cpp:37
+msgid "tdebe"
+msgstr ""
+
+#: balancesubform.cpp:38
+msgid "thaber"
+msgstr ""
+
+#: balancesubform.cpp:33
+msgid "tipocuenta"
+msgstr ""
+
+#: balancesubform.cpp:39
+msgid "tsaldo"
+msgstr ""

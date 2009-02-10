@@ -1,46 +1,162 @@
-#: listdescpedidoclienteview.cpp:44 listlinpedidoclienteview.cpp:56
-msgid "% Descuento"
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: listdescpedidoclienteview.cpp:42 listlinpedidoclienteview.cpp:55
+msgid "% Descuento"
+msgstr "% Descuento"
+
+#: listlinpedidoclienteview.cpp:53
+msgid "% I.V.A."
+msgstr "% I.V.A."
 
 #: listlinpedidoclienteview.cpp:54
-msgid "% I.V.A."
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:55
 msgid "% Recargo E.Q."
-msgstr ""
+msgstr "% Recargo E.Q."
 
 #: ui_pedidoclientebase.h:714 ui_presupuestoclientebase.h:799
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Aceptar"
 
 #: ui_pedidoclientebase.h:715 ui_presupuestoclientebase.h:800
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: ui_pedidoclientebase.h:701
 msgid "&Comentarios"
-msgstr ""
+msgstr "&Comentarios"
 
 #: ui_pedidoclientebase.h:699 ui_presupuestoclientebase.h:784
 msgid "&Detalle"
-msgstr ""
+msgstr "&Detalle"
 
 #: genpedqtoolbutton.cpp:151
 msgid "&No"
-msgstr ""
+msgstr "&No"
 
 #: pluginpedido.cpp:106
 msgid "&Nueva pedido de cliente"
-msgstr ""
+msgstr "&Nueva pedido de cliente"
 
 #: pluginpedido.cpp:98
 msgid "&Pedidos de clientes"
-msgstr ""
+msgstr "&Pedidos de clientes"
 
 #: genpedqtoolbutton.cpp:151
 msgid "&Si"
-msgstr ""
+msgstr "&Si"
 
 #: ui_pedidoclientebase.h:708 ui_pedidoclientebase.h:709
 #: ui_pedidoclientebase.h:710 ui_pedidoclientebase.h:711
@@ -49,429 +165,431 @@ msgstr ""
 #: ui_presupuestoclientebase.h:795 ui_presupuestoclientebase.h:796
 #: ui_presupuestoclientebase.h:797 ui_presupuestoclientebase.h:798
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_pedidosclientelistbase.h:455 ui_pedidosclientelistbase.h:460
 #: ui_presupuestoslistbase.h:437 ui_presupuestoslistbase.h:442
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualizar listado"
 
 #: pedidoclienteview.cpp:61 pedidosclientelist.cpp:340
 msgid "Almacen"
-msgstr ""
+msgstr "Almacen"
 
 #: ui_pedidoclientebase.h:698 ui_presupuestoclientebase.h:783
 msgid "Almacen:"
-msgstr ""
+msgstr "Almacen:"
 
 #: pedidosclientelist.cpp:333
 msgid "Base Imponible"
-msgstr ""
+msgstr "Base Imponible"
 
 #: ui_pedidoclientebase.h:703 ui_presupuestoclientebase.h:788
 msgid "Base imponible:"
-msgstr ""
+msgstr "Base imponible:"
 
 #: ui_pedidoclientebase.h:658 ui_pedidoclientebase.h:663
 #: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:412
 msgid "Borrar pedido"
-msgstr ""
+msgstr "Borrar pedido"
 
 #: ui_presupuestoslistbase.h:391 ui_presupuestoslistbase.h:396
 #: ui_presupuestoclientebase.h:739 ui_presupuestoclientebase.h:744
 msgid "Borrar presupuesto"
-msgstr ""
+msgstr "Borrar presupuesto"
 
 #: ui_pedidosclientelistbase.h:465 ui_presupuestoslistbase.h:447
 msgid "Buscar:"
-msgstr ""
+msgstr "Buscar:"
 
-#: listlinpedidoclienteview.cpp:52
+#: listlinpedidoclienteview.cpp:51
 msgid "Cantidad"
-msgstr ""
+msgstr "Cantidad"
 
 #: pedidoclienteview.cpp:60 pedidosclientelist.cpp:331
 msgid "Cliente"
-msgstr ""
+msgstr "Cliente"
 
 #: pedidoclienteview.cpp:91 pedidosclientelist.cpp:52
 #: pedidosclientelist.cpp:84
 msgid "Cliente:"
-msgstr ""
+msgstr "Cliente:"
 
-#: listlinpedidoclienteview.cpp:48
+#: listlinpedidoclienteview.cpp:47
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Codigo completo articulo"
 
 #: pedidosclientelist.cpp:339
 msgid "Comentario"
-msgstr ""
+msgstr "Comentario"
 
 #: pedidoclienteview.cpp:69
 msgid "Comentarios"
-msgstr ""
+msgstr "Comentarios"
 
-#: listdescpedidoclienteview.cpp:43
+#: listdescpedidoclienteview.cpp:41
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Concepto descuento"
 
 #: ui_pedidosclientelistbase.h:443 ui_pedidosclientelistbase.h:448
 #: ui_presupuestoslistbase.h:426 ui_presupuestoslistbase.h:431
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurar listado"
 
 #: pedidoclienteview.cpp:67
 msgid "Contacto"
-msgstr ""
+msgstr "Contacto"
 
 #: ui_pedidosclientelistbase.h:452
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_pedidosclientelistbase.h:416 ui_presupuestoslistbase.h:400
 #: ui_presupuestoclientebase.h:748
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_pedidosclientelistbase.h:404 ui_presupuestoslistbase.h:388
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_pedidosclientelistbase.h:440
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_presupuestoclientebase.h:773
 msgid "Ctrl+G"
-msgstr ""
+msgstr "Ctrl+G"
 
 #: ui_pedidosclientelistbase.h:392 ui_presupuestoslistbase.h:376
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_pedidosclientelistbase.h:428 ui_presupuestoslistbase.h:412
 #: ui_presupuestoclientebase.h:760
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_presupuestoclientebase.h:736
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_presupuestoclientebase.h:786
 msgid "Datos &generales"
-msgstr ""
+msgstr "Datos &generales"
 
 #: pedidosclientelist.cpp:255
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Debe seleccionar una linea"
 
 #: ui_pedidoclientebase.h:700 ui_presupuestoclientebase.h:785
 msgid "Desc&uentos"
-msgstr ""
+msgstr "Desc&uentos"
 
-#: listlinpedidoclienteview.cpp:51 pedidosclientelist.cpp:336
+#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:336
 msgid "Descripcion"
-msgstr ""
+msgstr "Descripcion"
 
 #: ui_pedidoclientebase.h:690 ui_presupuestoclientebase.h:774
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripcion:"
 
 #: ui_pedidoclientebase.h:702 ui_presupuestoclientebase.h:787
 msgid "Descuentos:"
-msgstr ""
+msgstr "Descuentos:"
 
 #: ui_pedidosclientelistbase.h:395 ui_pedidosclientelistbase.h:400
 msgid "Editar pedido"
-msgstr ""
+msgstr "Editar pedido"
 
 #: ui_presupuestoslistbase.h:379 ui_presupuestoslistbase.h:384
 msgid "Editar presupuesto"
-msgstr ""
+msgstr "Editar presupuesto"
 
 #: pedidosclientelist.cpp:270
 msgid "Error al borrar el pedido de cliente"
-msgstr ""
+msgstr "Error al borrar el pedido de cliente"
 
 #: pedidosclientelist.cpp:229
 msgid "Error al cargar el pedido cliente"
-msgstr ""
+msgstr "Error al cargar el pedido cliente"
 
 #: pedidoclienteview.cpp:97
 msgid "Error al crear el pedido cliente"
-msgstr ""
+msgstr "Error al crear el pedido cliente"
 
 #: genpedqtoolbutton.cpp:217
 msgid "Error inesperado"
-msgstr ""
+msgstr "Error inesperado"
 
 #: genpedqtoolbutton.cpp:150
 msgid ""
 "Existe un pedidocliente a este cliente con la misma referencia que este "
 "pedido. Desea abrirlo para verificar?"
 msgstr ""
+"Existe un pedidocliente a este cliente con la misma referencia que este "
+"pedido. Desea abrirlo para verificar?"
 
 #: ui_pedidosclientelistbase.h:464 ui_presupuestoslistbase.h:446
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: pedidoclienteview.cpp:64 pedidosclientelist.cpp:330
 msgid "Fecha"
-msgstr ""
+msgstr "Fecha"
 
 #: ui_pedidoclientebase.h:694 ui_presupuestoclientebase.h:778
 msgid "Fecha de creacion:"
-msgstr ""
+msgstr "Fecha de creacion:"
 
 #: ui_presupuestoclientebase.h:779
 msgid "Fecha de vencimiento:"
-msgstr ""
+msgstr "Fecha de vencimiento:"
 
 #: ui_pedidosclientelistbase.h:378 ui_presupuestoslistbase.h:449
 msgid "Fecha final:"
-msgstr ""
+msgstr "Fecha final:"
 
 #: ui_pedidosclientelistbase.h:377 ui_presupuestoslistbase.h:448
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Fecha inicial:"
 
 #: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:436
 #: ui_presupuestoslistbase.h:415 ui_presupuestoslistbase.h:420
 msgid "Filtrar pedidos"
-msgstr ""
+msgstr "Filtrar pedidos"
 
 #: ui_pedidoclientebase.h:696 ui_presupuestoclientebase.h:781
 msgid "Forma de pago:"
-msgstr ""
+msgstr "Forma de pago:"
 
 #: pedidoclienteview.cpp:65
 msgid "Forma pago"
-msgstr ""
+msgstr "Forma pago"
 
 #: ui_pedidoclientebase.h:647 ui_pedidoclientebase.h:652
 msgid "Guardar pedido"
-msgstr ""
+msgstr "Guardar pedido"
 
 #: ui_presupuestoclientebase.h:727 ui_presupuestoclientebase.h:732
 msgid "Guardar presupuesto"
-msgstr ""
+msgstr "Guardar presupuesto"
 
 #: ui_pedidoclientebase.h:704 ui_presupuestoclientebase.h:789
 msgid "I.R.P.F.:"
-msgstr ""
+msgstr "I.R.P.F.:"
 
 #: pedidosclientelist.cpp:343
 msgid "ID almacen"
-msgstr ""
+msgstr "ID almacen"
 
 #: pedidosclientelist.cpp:342
 msgid "ID cliente"
-msgstr ""
+msgstr "ID cliente"
 
 #: pedidosclientelist.cpp:328
 msgid "ID pedido"
-msgstr ""
+msgstr "ID pedido"
 
 #: pedidosclientelist.cpp:341
 msgid "ID trabajador"
-msgstr ""
+msgstr "ID trabajador"
 
-#: listlinpedidoclienteview.cpp:47
+#: listlinpedidoclienteview.cpp:46
 msgid "Id articulo"
-msgstr ""
+msgstr "Id articulo"
 
-#: listdescpedidoclienteview.cpp:42
+#: listdescpedidoclienteview.cpp:40
 msgid "Id descuento"
-msgstr ""
+msgstr "Id descuento"
 
-#: listdescpedidoclienteview.cpp:45
+#: listdescpedidoclienteview.cpp:43
 msgid "Id pedido"
-msgstr ""
+msgstr "Id pedido"
 
-#: listlinpedidoclienteview.cpp:57
+#: listlinpedidoclienteview.cpp:56
 msgid "Id pedido cliente"
-msgstr ""
+msgstr "Id pedido cliente"
 
 #: pedidoclienteview.cpp:59
 msgid "Identificador"
-msgstr ""
+msgstr "Identificador"
 
 #: pedidoclienteview.cpp:63
 msgid "Identificador presupuesto"
-msgstr ""
+msgstr "Identificador presupuesto"
 
 #: ui_pedidosclientelistbase.h:419 ui_pedidosclientelistbase.h:424
 #: ui_presupuestoslistbase.h:403 ui_presupuestoslistbase.h:408
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimir listado"
 
 #: ui_pedidoclientebase.h:669 ui_pedidoclientebase.h:674
 msgid "Imprimir pedido"
-msgstr ""
+msgstr "Imprimir pedido"
 
 #: ui_presupuestoclientebase.h:751 ui_presupuestoclientebase.h:756
 msgid "Imprimir presupuesto"
-msgstr ""
+msgstr "Imprimir presupuesto"
 
 #: pedidosclientelist.cpp:334
 msgid "Impuestos"
-msgstr ""
+msgstr "Impuestos"
 
 #: ui_pedidoclientebase.h:705 ui_presupuestoclientebase.h:790
 msgid "Impuestos:"
-msgstr ""
+msgstr "Impuestos:"
 
 #: ui_presupuestoclientebase.h:764 ui_presupuestoclientebase.h:769
 msgid "Mostrar/Ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/Ocultar cabecera"
 
 #: ui_pedidoclientebase.h:681 ui_pedidoclientebase.h:686
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar cabecera"
 
 #: ui_pedidosclientelistbase.h:379 ui_presupuestoslistbase.h:450
 msgid "Mostrar:"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:50
-msgid "No de linea"
-msgstr ""
+msgstr "Mostrar:"
 
 #: listlinpedidoclienteview.cpp:49
+msgid "No de linea"
+msgstr "No de linea"
+
+#: listlinpedidoclienteview.cpp:48
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Nombre articulo"
 
 #: pluginpedido.cpp:108 pluginpedido.cpp:109
 msgid "Nueva pedido de cliente"
-msgstr ""
+msgstr "Nueva pedido de cliente"
 
 #: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:388
 msgid "Nuevo pedido"
-msgstr ""
+msgstr "Nuevo pedido"
 
 #: ui_pedidoclientebase.h:644
 msgid "Nuevo pedido de cliente"
-msgstr ""
+msgstr "Nuevo pedido de cliente"
 
 #: ui_presupuestoslistbase.h:367 ui_presupuestoslistbase.h:372
 msgid "Nuevo presupuesto"
-msgstr ""
+msgstr "Nuevo presupuesto"
 
 #: ui_presupuestoclientebase.h:724
 msgid "Nuevo presupuesto a cliente"
-msgstr ""
+msgstr "Nuevo presupuesto a cliente"
 
 #: ui_pedidoclientebase.h:691
 msgid "Numero de pedido:"
-msgstr ""
+msgstr "Numero de pedido:"
 
 #: ui_presupuestoclientebase.h:775
 msgid "Numero de presupuesto:"
-msgstr ""
+msgstr "Numero de presupuesto:"
 
 #: pedidoclienteview.cpp:62
 msgid "Numero pedido cliente"
-msgstr ""
+msgstr "Numero pedido cliente"
 
-#: listlinpedidoclienteview.cpp:58
+#: listlinpedidoclienteview.cpp:57
 msgid "Orden"
-msgstr ""
+msgstr "Orden"
 
 #: pedidosclientelist.cpp:329
 msgid "Pedido"
-msgstr ""
+msgstr "Pedido"
 
 #: pedidoclienteview.cpp:56
 msgid "Pedido Cliente"
-msgstr ""
+msgstr "Pedido Cliente"
 
 #: genpedqtoolbutton.cpp:149
 msgid "Pedido ya existe"
-msgstr ""
+msgstr "Pedido ya existe"
 
 #: pluginpedido.cpp:100 pluginpedido.cpp:101 pedidosclientelist.cpp:241
 #: ui_pedidosclientelistbase.h:376
 msgid "Pedidos de clientes"
-msgstr ""
+msgstr "Pedidos de clientes"
 
 #: pedidosclientelist.cpp:112
 msgid "Pedidos no procesados"
-msgstr ""
+msgstr "Pedidos no procesados"
 
 #: pedidosclientelist.cpp:111
 msgid "Pedidos procesados"
-msgstr ""
+msgstr "Pedidos procesados"
 
 #: pedidosclientelist.cpp:337
 msgid "Persona de contacto"
-msgstr ""
+msgstr "Persona de contacto"
 
 #: ui_pedidoclientebase.h:695 ui_presupuestoclientebase.h:780
 msgid "Persona de contacto:"
-msgstr ""
+msgstr "Persona de contacto:"
 
-#: listlinpedidoclienteview.cpp:53
+#: listlinpedidoclienteview.cpp:52
 msgid "Precio de venta s/IVA"
-msgstr ""
+msgstr "Precio de venta s/IVA"
 
 #: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
-msgstr ""
+msgstr "Presupuestos a clientes"
 
 #: ui_presupuestoclientebase.h:776
 msgid "Pro&cesado"
-msgstr ""
+msgstr "Pro&cesado"
 
 #: pedidoclienteview.cpp:70 ui_pedidoclientebase.h:692
 msgid "Procesado"
-msgstr ""
+msgstr "Procesado"
 
-#: listlinpedidoclienteview.cpp:46
+#: listlinpedidoclienteview.cpp:45
 msgid "Punteo"
-msgstr ""
+msgstr "Punteo"
 
 #: ui_pedidoclientebase.h:706 ui_presupuestoclientebase.h:791
 msgid "R.E.:"
-msgstr ""
+msgstr "R.E.:"
 
 #: pedidoclienteview.cpp:71 pedidosclientelist.cpp:332
 msgid "Referencia"
-msgstr ""
+msgstr "Referencia"
 
 #: ui_pedidoclientebase.h:678 ui_presupuestoclientebase.h:761
 msgid "Referencia:"
-msgstr ""
+msgstr "Referencia:"
 
 #: pedidoclienteview.cpp:68 pedidosclientelist.cpp:338
 msgid "Telefono"
-msgstr ""
+msgstr "Telefono"
 
 #: ui_pedidoclientebase.h:697 ui_presupuestoclientebase.h:782
 msgid "Telefono de contacto:"
-msgstr ""
+msgstr "Telefono de contacto:"
 
 #: genpedqtoolbutton.cpp:134
 msgid "Tiene que seleccionar un cliente"
-msgstr ""
+msgstr "Tiene que seleccionar un cliente"
 
 #: pedidosclientelist.cpp:110
 msgid "Todos los pedidos"
-msgstr ""
+msgstr "Todos los pedidos"
 
 #: pedidosclientelist.cpp:335
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: ui_pedidoclientebase.h:707 ui_pedidosclientelistbase.h:466
 #: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:792
 msgid "Total:"
-msgstr ""
+msgstr "Total:"
 
 #: pedidoclienteview.cpp:66
 msgid "Trabajador"
-msgstr ""
+msgstr "Trabajador"
 
 #: ui_pedidoclientebase.h:693 ui_presupuestoclientebase.h:777
 msgid "Trabajador:"
-msgstr ""
+msgstr "Trabajador:"

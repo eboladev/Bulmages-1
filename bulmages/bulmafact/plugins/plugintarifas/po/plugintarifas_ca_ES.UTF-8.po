@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 19:44+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,8 +38,9 @@ msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: plugintarifas.cpp:182
+#, fuzzy
 msgid "Almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: ui_tarifabase.h:269
 msgid "Almacen:"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:28+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,7 +207,7 @@ msgstr "Amount"
 msgid "Cargando Extracto de Cuentas"
 msgstr "Extract of Accounts"
 
-#: main.cxx:196
+#: main.cxx:195
 msgid "Cargando traducciones"
 msgstr ""
 
@@ -706,7 +706,7 @@ msgstr "Imputation"
 msgid "Inicializando asientos"
 msgstr "Listing of seats"
 
-#: main.cxx:236
+#: main.cxx:235
 msgid "Inicializando componentes"
 msgstr ""
 
@@ -723,7 +723,7 @@ msgstr ""
 msgid "Inicializando extracto"
 msgstr ""
 
-#: main.cxx:141
+#: main.cxx:140
 msgid "Iniciando clases"
 msgstr "Initiating classes"
 
@@ -747,11 +747,11 @@ msgstr "June"
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr "The initial date is later to the final date."
 
-#: main.cxx:230
+#: main.cxx:229
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:171
+#: main.cxx:170
 #, fuzzy
 msgid "Leyendo configuracion"
 msgstr "Configuration"

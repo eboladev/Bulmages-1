@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:28+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,11 +122,11 @@ msgstr "&Cobros y pagos"
 msgid "&Registro de IVA"
 msgstr "&Registro de IVA"
 
-#: registroiva.cpp:47
+#: registroiva.cpp:48
 msgid "Base Imponible"
 msgstr "Base Imponible"
 
-#: registroiva.cpp:50
+#: registroiva.cpp:51
 msgid "Borrador"
 msgstr "Borrador"
 
@@ -134,7 +134,7 @@ msgstr "Borrador"
 msgid "Borrar linea"
 msgstr "Borrar linea"
 
-#: registroiva.cpp:52
+#: registroiva.cpp:53
 msgid "CIF"
 msgstr "CIF"
 
@@ -195,7 +195,7 @@ msgstr "Concepto contable"
 msgid "Conciliacion"
 msgstr "Conciliacion"
 
-#: registroiva.cpp:46 listregistroivaview.cpp:59 listregistroivaview.cpp:83
+#: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
 msgid "Contrapartida"
 msgstr "Contrapartida"
 
@@ -211,11 +211,11 @@ msgstr "Debe seleccionar un apunte"
 msgid "Desvincular asiento"
 msgstr "Desvincular asiento"
 
-#: registroiva.cpp:59
+#: registroiva.cpp:60
 msgid "Factura"
 msgstr "Factura"
 
-#: registroiva.cpp:57
+#: registroiva.cpp:58
 msgid "Factura emitida"
 msgstr "Factura emitida"
 
@@ -223,15 +223,15 @@ msgstr "Factura emitida"
 msgid "Fecha de factura"
 msgstr "Fecha de factura"
 
-#: registroiva.cpp:60
+#: registroiva.cpp:61
 msgid "Fecha emision"
 msgstr "Fecha emision"
 
-#: registroiva.cpp:49
+#: registroiva.cpp:50
 msgid "Fecha factura"
 msgstr "Fecha factura"
 
-#: registroiva.cpp:53
+#: registroiva.cpp:54
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
@@ -247,7 +247,7 @@ msgstr "Haber"
 msgid "ID Canal"
 msgstr "ID Canal"
 
-#: registroiva.cpp:48 listregistroivaview.cpp:53
+#: registroiva.cpp:49 listregistroivaview.cpp:53
 msgid "IVA"
 msgstr "IVA"
 
@@ -255,15 +255,15 @@ msgstr "IVA"
 msgid "Id"
 msgstr "Id"
 
-#: registroiva.cpp:45
+#: registroiva.cpp:46
 msgid "Identificador"
 msgstr "Identificador"
 
-#: registroiva.cpp:54
+#: registroiva.cpp:55
 msgid "Inc registro"
 msgstr "Inc registro"
 
-#: registroiva.cpp:51
+#: registroiva.cpp:52
 msgid "Orden"
 msgstr "Orden"
 
@@ -272,11 +272,11 @@ msgstr "Orden"
 msgid "Pago"
 msgstr "Pago"
 
-#: registroiva.cpp:58
+#: registroiva.cpp:59
 msgid "Rectifica a"
 msgstr "Rectifica a"
 
-#: registroiva.cpp:42
+#: registroiva.cpp:43
 msgid "Registro IVA"
 msgstr "Registro IVA"
 
@@ -289,11 +289,11 @@ msgstr "Registro de IVA"
 msgid "Registro factura"
 msgstr "Registro factura"
 
-#: registroiva.cpp:55
+#: registroiva.cpp:56
 msgid "Regularizacion"
 msgstr "Regularizacion"
 
-#: registroiva.cpp:61
+#: registroiva.cpp:62
 msgid "Serie"
 msgstr "Serie"
 
@@ -406,7 +406,7 @@ msgstr "nomctacliente"
 msgid "orden"
 msgstr "orden"
 
-#: registroiva.cpp:56
+#: registroiva.cpp:57
 msgid "plan 349"
 msgstr "plan 349"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgid "Tiene que escribir una descripcion de inventario antes de guardar"
 msgstr ""
 
 #: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
-#: ui_inventariosbase.h:181 ui_inventariosbase.h:186
+#: ui_inventariosbase.h:187 ui_inventariosbase.h:192
 msgid "Borrar inventario"
 msgstr ""
 
@@ -189,19 +189,19 @@ msgstr ""
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_inventariosbase.h:156
+#: ui_inventariosbase.h:162
 msgid "Listado de inventarios"
 msgstr ""
 
-#: ui_inventariosbase.h:159 ui_inventariosbase.h:164
+#: ui_inventariosbase.h:165 ui_inventariosbase.h:170
 msgid "Nuevo inventario"
 msgstr ""
 
-#: ui_inventariosbase.h:170 ui_inventariosbase.h:175
+#: ui_inventariosbase.h:176 ui_inventariosbase.h:181
 msgid "Editar inventario"
 msgstr ""
 
-#: ui_inventariosbase.h:192 ui_inventariosbase.h:197 ui_inventariosbase.h:203
-#: ui_inventariosbase.h:208
+#: ui_inventariosbase.h:198 ui_inventariosbase.h:203 ui_inventariosbase.h:209
+#: ui_inventariosbase.h:214
 msgid "Imprimir Stocks Actuales"
 msgstr ""

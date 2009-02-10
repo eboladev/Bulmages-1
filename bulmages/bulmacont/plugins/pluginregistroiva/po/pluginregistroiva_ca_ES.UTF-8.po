@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:28+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,11 @@ msgstr "&Cobraments i pagaments"
 msgid "&Registro de IVA"
 msgstr "Registre d'IVA"
 
-#: registroiva.cpp:47
+#: registroiva.cpp:48
 msgid "Base Imponible"
 msgstr ""
 
-#: registroiva.cpp:50
+#: registroiva.cpp:51
 msgid "Borrador"
 msgstr "Esborrany"
 
@@ -40,7 +40,7 @@ msgstr "Esborrany"
 msgid "Borrar linea"
 msgstr "Esborrar"
 
-#: registroiva.cpp:52
+#: registroiva.cpp:53
 #, fuzzy
 msgid "CIF"
 msgstr "C.I.F.:"
@@ -105,7 +105,7 @@ msgstr "Concepte comptable"
 msgid "Conciliacion"
 msgstr ""
 
-#: registroiva.cpp:46 listregistroivaview.cpp:59 listregistroivaview.cpp:83
+#: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
 msgid "Contrapartida"
 msgstr "Contrapartida"
 
@@ -122,11 +122,11 @@ msgstr "Cal triar un compte"
 msgid "Desvincular asiento"
 msgstr "Desvincula assentament"
 
-#: registroiva.cpp:59
+#: registroiva.cpp:60
 msgid "Factura"
 msgstr "Factura"
 
-#: registroiva.cpp:57
+#: registroiva.cpp:58
 #, fuzzy
 msgid "Factura emitida"
 msgstr "Factura"
@@ -136,17 +136,17 @@ msgstr "Factura"
 msgid "Fecha de factura"
 msgstr "Data de la compra"
 
-#: registroiva.cpp:60
+#: registroiva.cpp:61
 #, fuzzy
 msgid "Fecha emision"
 msgstr "Data prevista"
 
-#: registroiva.cpp:49
+#: registroiva.cpp:50
 #, fuzzy
 msgid "Fecha factura"
 msgstr "Data de la 1a quota"
 
-#: registroiva.cpp:53
+#: registroiva.cpp:54
 #, fuzzy
 msgid "Forma de pago"
 msgstr "<LI> Forma de pagament <B>"
@@ -164,7 +164,7 @@ msgstr "Haver"
 msgid "ID Canal"
 msgstr "ID Canal"
 
-#: registroiva.cpp:48 listregistroivaview.cpp:53
+#: registroiva.cpp:49 listregistroivaview.cpp:53
 msgid "IVA"
 msgstr ""
 
@@ -172,11 +172,11 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: registroiva.cpp:45
+#: registroiva.cpp:46
 msgid "Identificador"
 msgstr "Identificador"
 
-#: registroiva.cpp:54
+#: registroiva.cpp:55
 #, fuzzy
 msgid "Inc registro"
 msgstr ""
@@ -185,7 +185,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Esborrar registre"
 
-#: registroiva.cpp:51
+#: registroiva.cpp:52
 msgid "Orden"
 msgstr "Ordre"
 
@@ -194,11 +194,11 @@ msgstr "Ordre"
 msgid "Pago"
 msgstr ""
 
-#: registroiva.cpp:58
+#: registroiva.cpp:59
 msgid "Rectifica a"
 msgstr ""
 
-#: registroiva.cpp:42
+#: registroiva.cpp:43
 #, fuzzy
 msgid "Registro IVA"
 msgstr "Registre d'IVA"
@@ -213,11 +213,11 @@ msgstr "Registre d'IVA"
 msgid "Registro factura"
 msgstr "Registre d'entrada:"
 
-#: registroiva.cpp:55
+#: registroiva.cpp:56
 msgid "Regularizacion"
 msgstr "Regularització"
 
-#: registroiva.cpp:61
+#: registroiva.cpp:62
 msgid "Serie"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgstr ""
 msgid "orden"
 msgstr "ordre"
 
-#: registroiva.cpp:56
+#: registroiva.cpp:57
 msgid "plan 349"
 msgstr ""
 

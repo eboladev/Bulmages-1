@@ -1,10 +1,58 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
 #: ui_pagobase.h:342
+#, fuzzy
 msgid "&Aceptar"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"D'&acord\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Accepta"
 
 #: ui_pagobase.h:343
+#, fuzzy
 msgid "&Cancelar"
 msgstr ""
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·la\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancel·lar"
 
 #: pluginpagos.cpp:104
 msgid "&Nuevo pago a proveedor"
@@ -16,13 +64,13 @@ msgstr ""
 
 #: ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actual·litza llistat"
 
 #: pagoslist.cpp:260
 msgid "Apellidos trabajador"
 msgstr ""
 
-#: pagoview.cpp:69 pagoslist.cpp:254
+#: pagoview.cpp:68 pagoslist.cpp:254
 msgid "Banco"
 msgstr ""
 
@@ -43,11 +91,11 @@ msgstr ""
 msgid "C.I.F. proveedor"
 msgstr ""
 
-#: pagoview.cpp:67 pagoslist.cpp:253
+#: pagoview.cpp:66 pagoslist.cpp:253
 msgid "Cantidad"
-msgstr ""
+msgstr "Quantitat"
 
-#: pagoview.cpp:68
+#: pagoview.cpp:67
 msgid "Comentario del pago"
 msgstr ""
 
@@ -57,7 +105,7 @@ msgstr ""
 
 #: ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: pagoslist.cpp:197
 msgid "Debe seleccionar una linea"
@@ -79,11 +127,11 @@ msgstr ""
 msgid "Error al borrar el pago"
 msgstr ""
 
-#: pagoview.cpp:81
+#: pagoview.cpp:80
 msgid "Error al crear el pago"
 msgstr ""
 
-#: pagoview.cpp:65 pagoslist.cpp:252
+#: pagoview.cpp:64 pagoslist.cpp:252
 msgid "Fecha de pago"
 msgstr ""
 
@@ -107,11 +155,11 @@ msgstr ""
 msgid "Guardar pago"
 msgstr ""
 
-#: pagoview.cpp:62 pagoslist.cpp:246
+#: pagoview.cpp:61 pagoslist.cpp:246
 msgid "Id pago"
 msgstr ""
 
-#: pagoview.cpp:63 pagoslist.cpp:247
+#: pagoview.cpp:62 pagoslist.cpp:247
 msgid "Id proveedor"
 msgstr ""
 
@@ -139,7 +187,7 @@ msgstr ""
 msgid "Nuevo pago a proveedor"
 msgstr ""
 
-#: pagoview.cpp:59
+#: pagoview.cpp:58
 msgid "Pago"
 msgstr ""
 
@@ -152,7 +200,7 @@ msgstr ""
 msgid "Pagos efectivos"
 msgstr ""
 
-#: pagoview.cpp:64
+#: pagoview.cpp:63
 msgid "Previcion de pago"
 msgstr ""
 
@@ -164,7 +212,7 @@ msgstr ""
 msgid "Previsiones de Pago"
 msgstr ""
 
-#: pagoview.cpp:72 pagoslist.cpp:49 pagoslist.cpp:74
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
 msgid "Proveedor:"
 msgstr ""
 
@@ -172,7 +220,7 @@ msgstr ""
 msgid "Provision de fondos"
 msgstr ""
 
-#: pagoview.cpp:66 pagoslist.cpp:255
+#: pagoview.cpp:65 pagoslist.cpp:255
 msgid "Referencia de pago"
 msgstr ""
 

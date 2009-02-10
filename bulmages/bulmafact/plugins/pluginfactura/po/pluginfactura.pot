@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,11 +147,11 @@ msgstr ""
 msgid "Procesada"
 msgstr ""
 
-#: facturaslist.cpp:370 listlinfacturaview.cpp:52 facturaview.cpp:70
+#: facturaslist.cpp:370 listlinfacturaview.cpp:51 facturaview.cpp:70
 msgid "Descripcion"
 msgstr ""
 
-#: facturaslist.cpp:371 listdescfacturaview.cpp:45 listlinfacturaview.cpp:58
+#: facturaslist.cpp:371 listdescfacturaview.cpp:43 listlinfacturaview.cpp:57
 #: facturaview.cpp:61
 msgid "Id factura"
 msgstr ""
@@ -192,51 +192,51 @@ msgstr ""
 msgid "Id almacen"
 msgstr ""
 
-#: listdescfacturaview.cpp:42
+#: listdescfacturaview.cpp:40
 msgid "Id descuento"
 msgstr ""
 
-#: listdescfacturaview.cpp:43
+#: listdescfacturaview.cpp:41
 msgid "Concepto descuento"
 msgstr ""
 
-#: listdescfacturaview.cpp:44 listlinfacturaview.cpp:57
+#: listdescfacturaview.cpp:42 listlinfacturaview.cpp:56
 msgid "% Descuento"
 msgstr ""
 
-#: listlinfacturaview.cpp:48
+#: listlinfacturaview.cpp:47
 msgid "Id articulo"
 msgstr ""
 
-#: listlinfacturaview.cpp:49
+#: listlinfacturaview.cpp:48
 msgid "Codigo completo articulo"
 msgstr ""
 
-#: listlinfacturaview.cpp:50
+#: listlinfacturaview.cpp:49
 msgid "Nombre articulo"
 msgstr ""
 
-#: listlinfacturaview.cpp:51
+#: listlinfacturaview.cpp:50
 msgid "Idl factura"
 msgstr ""
 
-#: listlinfacturaview.cpp:53
+#: listlinfacturaview.cpp:52
 msgid "Cantidad"
 msgstr ""
 
-#: listlinfacturaview.cpp:54
+#: listlinfacturaview.cpp:53
 msgid "P.V.P."
 msgstr ""
 
-#: listlinfacturaview.cpp:55
+#: listlinfacturaview.cpp:54
 msgid "I.V.A."
 msgstr ""
 
-#: listlinfacturaview.cpp:56
+#: listlinfacturaview.cpp:55
 msgid "% Recargo E.Q."
 msgstr ""
 
-#: listlinfacturaview.cpp:59
+#: listlinfacturaview.cpp:58
 msgid "Orden"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,155 +24,155 @@ msgstr ""
 msgid "CompraVenta"
 msgstr ""
 
-#: compraventaview.cpp:67
+#: compraventaview.cpp:66
 msgid "Id albaran proveedor"
 msgstr ""
 
-#: compraventaview.cpp:68
+#: compraventaview.cpp:67
 msgid "Numero albaran proveedor"
 msgstr ""
 
-#: compraventaview.cpp:69
+#: compraventaview.cpp:68
 msgid "Fecha albaran proveedor"
 msgstr ""
 
-#: compraventaview.cpp:70
+#: compraventaview.cpp:69
 msgid "Comentario albaran proveedor"
 msgstr ""
 
-#: compraventaview.cpp:71
+#: compraventaview.cpp:70
 msgid "Id proveedor"
 msgstr ""
 
-#: compraventaview.cpp:72
+#: compraventaview.cpp:71
 msgid "Id forma de pago"
 msgstr ""
 
-#: compraventaview.cpp:73
+#: compraventaview.cpp:72
 msgid "Id almacen"
 msgstr ""
 
-#: compraventaview.cpp:74
+#: compraventaview.cpp:73
 msgid "Referencia albaran proveedor"
 msgstr ""
 
-#: compraventaview.cpp:75
+#: compraventaview.cpp:74
 msgid "Descripcion albaran proveedor"
 msgstr ""
 
-#: compraventaview.cpp:80
+#: compraventaview.cpp:79
 msgid "Compra Venta"
 msgstr ""
 
-#: compraventaview.cpp:83
+#: compraventaview.cpp:82
 msgid "Id albaran"
 msgstr ""
 
-#: compraventaview.cpp:84
+#: compraventaview.cpp:83
 msgid "Cliente"
 msgstr ""
 
-#: compraventaview.cpp:85
+#: compraventaview.cpp:84
 msgid "Almacen"
 msgstr ""
 
-#: compraventaview.cpp:86
+#: compraventaview.cpp:85
 msgid "Numero de albaran"
 msgstr ""
 
-#: compraventaview.cpp:87
+#: compraventaview.cpp:86
 msgid "Fecha de creacion"
 msgstr ""
 
-#: compraventaview.cpp:88
+#: compraventaview.cpp:87
 msgid "Persona de contacto"
 msgstr ""
 
-#: compraventaview.cpp:89
+#: compraventaview.cpp:88
 msgid "Telefono de contacto"
 msgstr ""
 
-#: compraventaview.cpp:90
+#: compraventaview.cpp:89
 msgid "Comentario"
 msgstr ""
 
-#: compraventaview.cpp:91
+#: compraventaview.cpp:90
 msgid "Comentario privado"
 msgstr ""
 
-#: compraventaview.cpp:92
+#: compraventaview.cpp:91
 msgid "Forma de pago"
 msgstr ""
 
-#: compraventaview.cpp:93
+#: compraventaview.cpp:92
 msgid "Trabajador"
 msgstr ""
 
-#: compraventaview.cpp:94 ui_compraventabase.h:915
+#: compraventaview.cpp:93 ui_compraventabase.h:915
 msgid "Procesado"
 msgstr ""
 
-#: compraventaview.cpp:95
+#: compraventaview.cpp:94
 msgid "Descripcion"
 msgstr ""
 
-#: compraventaview.cpp:96
+#: compraventaview.cpp:95
 msgid "Referencia"
 msgstr ""
 
-#: compraventaview.cpp:112
+#: compraventaview.cpp:111
 msgid "Cliente:"
 msgstr ""
 
-#: compraventaview.cpp:138
+#: compraventaview.cpp:137
 msgid "Error al crear el albaran a cliente"
 msgstr ""
 
-#: compraventaview.cpp:451
+#: compraventaview.cpp:450
 msgid "Tiene que seleccionar un proveedor"
 msgstr ""
 
-#: compraventaview.cpp:466
+#: compraventaview.cpp:465
 msgid "Factura de proveedor existente"
 msgstr ""
 
-#: compraventaview.cpp:467
+#: compraventaview.cpp:466
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
 msgstr ""
 
-#: compraventaview.cpp:468 compraventaview.cpp:589
+#: compraventaview.cpp:467 compraventaview.cpp:588
 msgid "&Si"
 msgstr ""
 
-#: compraventaview.cpp:468 compraventaview.cpp:589
+#: compraventaview.cpp:467 compraventaview.cpp:588
 msgid "&No"
 msgstr ""
 
-#: compraventaview.cpp:534 compraventaview.cpp:685
+#: compraventaview.cpp:533 compraventaview.cpp:684
 msgid "Error inesperado"
 msgstr ""
 
-#: compraventaview.cpp:572
+#: compraventaview.cpp:571
 msgid "Tiene que seleccionar un cliente"
 msgstr ""
 
-#: compraventaview.cpp:587
+#: compraventaview.cpp:586
 msgid "Factura existente"
 msgstr ""
 
-#: compraventaview.cpp:588
+#: compraventaview.cpp:587
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: compraventaview.cpp:711
+#: compraventaview.cpp:710
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
-#: compraventaview.cpp:715
+#: compraventaview.cpp:714
 msgid "Error inesperado en la impresion"
 msgstr ""
 

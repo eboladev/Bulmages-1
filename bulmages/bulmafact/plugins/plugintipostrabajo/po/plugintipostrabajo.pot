@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:25+0100\n"
+"POT-Creation-Date: 2009-02-10 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,19 +36,19 @@ msgstr ""
 msgid "Id tipo de trabajo"
 msgstr ""
 
-#: listtipostrabajoview.cpp:49
+#: listtipostrabajoview.cpp:48
 msgid "almacen"
 msgstr ""
 
-#: listtipostrabajoview.cpp:56
+#: listtipostrabajoview.cpp:55
 msgid "Id tipo trabajo"
 msgstr ""
 
-#: listtipostrabajoview.cpp:57
+#: listtipostrabajoview.cpp:56
 msgid "Nombre tipo trabajo"
 msgstr ""
 
-#: listtipostrabajoview.cpp:58
+#: listtipostrabajoview.cpp:57
 msgid "Color tipo trabajo"
 msgstr ""
 
