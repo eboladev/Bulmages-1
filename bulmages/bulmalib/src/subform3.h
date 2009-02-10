@@ -35,7 +35,6 @@
 #include "blfixed.h"
 #include "blwidget.h"
 #include "plugins.h"
-#include "porcentajecarga.h"
 
 
 /// SubForm3, constructor de la clase base para subformularios.
