@@ -26,7 +26,7 @@
 #include "articulolist.h"
 #include "articuloview.h"
 #include "tiposarticuloview.h"
-
+#include "familiasview.h"
 
 
 ArticuloList *g_articulosList=NULL;
@@ -90,6 +90,21 @@ void MyPlugArt::elslot2()
     _depura ( "END MyPlugArt::elslot2", 0 );
 }
 
+
+///
+/**
+**/
+void MyPlugArt::elslot3()
+{
+    _depura ( "MyPlugArt::elslot3", 0 );
+    FamiliasView *pag = new FamiliasView ( (Company *)empresaBase(), 0, FALSE );
+    empresaBase() ->m_pWorkspace->addWindow ( pag );
+    pag->show();
+    _depura ( "END MyPlugArt::elslot3", 0 );
+}
+
+
+
 ///
 /**
 \param bges
@@ -108,7 +123,7 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 	m_bges = bges;
 	setEmpresaBase ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Articulos" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-list.svg" ) ));
+	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product-list.svg" ) ));
 	planCuentas->setStatusTip ( _( "Articulos" ) );
 	planCuentas->setWhatsThis ( _( "Articulos" ) );
 	pPluginMenu->addAction ( planCuentas );
@@ -116,7 +131,7 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
 	QAction *npago = new QAction ( _( "&Nuevo Articulo" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client.svg" ) ));
+	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product.svg" ) ));
 	npago->setStatusTip ( _( "Nuevo cliente" ) );
 	npago->setWhatsThis ( _( "Nuevo cliente" ) );
 	pPluginMenu->addAction ( npago );
@@ -125,12 +140,21 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 
 	pPluginMenu->addSeparator();
 	QAction *tart = new QAction ( _( "&Tipos de Articulo" ), 0 );
-	tart->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client.svg" ) ));
+	tart->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product-family.svg" ) ));
 	tart->setStatusTip ( _( "Tipos de Articulo" ) );
 	tart->setWhatsThis ( _( "Tipos de Articulo" ) );
 	pPluginMenu->addAction ( tart );
 	bges->Fichas->addAction (tart);
 	connect ( tart, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+
+	pPluginMenu->addSeparator();
+	QAction *tfam = new QAction ( _( "&Familias" ), 0 );
+	tfam->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product-family.svg" ) ));
+	tfam->setStatusTip ( _( "Familias" ) );
+	tfam->setWhatsThis ( _( "Familias" ) );
+	pPluginMenu->addAction ( tfam );
+	bges->Fichas->addAction (tfam);
+	connect ( tfam, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
 
     }// end if
     _depura ( "END MyPlugArt::inicializa", 0 );
@@ -230,12 +254,42 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     } // end if
     delete diag;
 
+		return 1;
+	} // end if
 
 
 
+	if (busq->tableName() == "familia") {
+
+
+
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
+    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+    centrarEnPantalla ( diag );
+
+    FamiliasView *arts = new FamiliasView ( (Company *) busq->empresaBase(), 0, TRUE );
+
+    busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget ( arts );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( arts->windowTitle() );
+
+    diag->exec();
+    if ( arts->idFamilia() != "" ) {
+        busq->setId ( arts->idFamilia() );
+    } // end if
+    delete diag;
 
 		return 1;
 	} // end if
+
 
 	return 0;
 }

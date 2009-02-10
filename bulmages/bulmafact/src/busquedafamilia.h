@@ -26,7 +26,7 @@
 #include <QLabel>
 
 #include "blwidget.h"
-#include "ui_busquedafamiliabase.h"
+#include "busqueda.h"
 
 
 class Company;
@@ -35,35 +35,21 @@ class Company;
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
 /** Este Widget permite buscar y seleccionar una familia de art&iacute;culos.
     Para usar en forma de selector de articulos. */
-class BusquedaFamilia : public BlWidget, public Ui_BusquedaFamiliaBase
+class BusquedaFamilia : public Busqueda
 {
     Q_OBJECT
 
-private:
-    /// Almacena el idfamilia que se haya seleccionado.
-    QString mdb_idfamilia;
-    /// Almacena el nombrefamilia que se haya seleccionado.
-    QString mdb_nombrefamilia;
-    /// Almacena el codigocompletofamilia que se haya seleccionado.
-    QString mdb_codigocompletofamilia;
 
 public:
     BusquedaFamilia ( QWidget *parent = 0 );
     ~BusquedaFamilia();
     virtual QString codigocompletofamilia();
     virtual QString idfamilia();
-    virtual QString valorCampo();
     virtual QString nombrefamilia();
     virtual void setidfamilia ( QString val );
-    virtual void setValorCampo ( QString val );
     virtual void setcodigocompletofamilia ( QString val );
 
-public slots:
-    virtual void on_mui_buscar_clicked();
-    virtual void on_m_codigocompletofamilia_textChanged ( const QString & );
 
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

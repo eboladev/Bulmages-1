@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>39</y>
+     <y>38</y>
      <width>991</width>
-     <height>505</height>
+     <height>507</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -56,7 +56,6 @@
     <property name="title" >
      <string>Articulo&amp;s</string>
     </property>
-    <addaction name="actionGestion_Familias" />
     <addaction name="separator" />
    </widget>
    <widget class="QMenu" name="menuEmpresa" >
@@ -104,9 +103,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>544</y>
+     <y>545</y>
      <width>991</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -114,7 +113,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>25</y>
+     <y>24</y>
      <width>14</width>
      <height>14</height>
     </rect>
@@ -160,7 +159,7 @@
    <property name="geometry" >
     <rect>
      <x>14</x>
-     <y>25</y>
+     <y>24</y>
      <width>977</width>
      <height>14</height>
     </rect>
@@ -240,15 +239,6 @@
    </property>
    <property name="toolTip" >
     <string>Propiedades de la empresa</string>
-   </property>
-  </action>
-  <action name="actionGestion_Familias" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/product-family.svg</normaloff>:/Images/product-family.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Gestion de &amp;familias</string>
    </property>
   </action>
   <action name="actionSeries_de_Factura" >

@@ -28,7 +28,6 @@
 #include "stdio.h"
 #include "abreempresaview.h"
 #include "company.h"
-#include "familiasview.h"
 #include "fpagoview.h"
 #include "funcaux.h"
 #include "listalmacenview.h"
@@ -585,16 +584,18 @@ void Company::s_newTipoArticuloList()
 \param modoConsulta
 \return
 **/
-FamiliasView *Company::newfamiliasview ( QWidget *parent, bool modoConsulta )
+void *Company::newfamiliasview ( QWidget *parent, bool modoConsulta )
 {
     _depura ( "Company::newfamiliasview", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     FamiliasView *bud;
     if ( g_plugins->lanza ( "Company_newfamiliasview", this, ( void ** ) & bud ) )
         return bud;
     bud = new FamiliasView ( this, parent, modoConsulta );
     _depura ( "END Company::newfamiliasview", 0 );
-    return bud;
+*/
+    return NULL;
 }
 
 
@@ -606,9 +607,11 @@ FamiliasView *Company::newfamiliasview ( QWidget *parent, bool modoConsulta )
 void Company::s_newfamiliasview()
 {
     _depura ( "Company::s_newfamiliasview", 0 );
+/*
     FamiliasView *pag = newfamiliasview();
     m_pWorkspace->addWindow ( pag );
     pag->show();
+*/
     _depura ( "END Company::s_newfamiliasview", 0 );
 }
 

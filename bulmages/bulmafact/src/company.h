@@ -37,7 +37,6 @@ class orderslist;
 class FacturaView;
 class PagoView;
 class PedidoClienteView;
-class FamiliasView;
 class ListTipoIVAView;
 
 class Bulmafact;
@@ -85,7 +84,7 @@ public:
     void cargaConf();
     void *newPagoView();
     void *newTipoArticuloList ( QWidget *parent = 0, bool modoConsulta = FALSE );
-    FamiliasView *newfamiliasview ( QWidget *parent = 0, bool modoConsulta = FALSE );
+    void *newfamiliasview ( QWidget *parent = 0, bool modoConsulta = FALSE );
 };
 
 #endif

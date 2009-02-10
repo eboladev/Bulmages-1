@@ -53,4 +53,5 @@ public slots:
     void elslot();
     void elslot1();
     void elslot2();
+    void elslot3();
 };
