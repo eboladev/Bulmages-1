@@ -25,6 +25,7 @@
 #include "funcaux.h"
 #include "articulolist.h"
 #include "articuloview.h"
+#include "tiposarticuloview.h"
 
 
 
@@ -79,6 +80,18 @@ void MyPlugArt::elslot1()
 
 ///
 /**
+**/
+void MyPlugArt::elslot2()
+{
+    _depura ( "MyPlugArt::elslot2", 0 );
+    TipoArticuloList *pag = new TipoArticuloList ( (Company *)empresaBase(), 0, FALSE );
+    empresaBase() ->m_pWorkspace->addWindow ( pag );
+    pag->show();
+    _depura ( "END MyPlugArt::elslot2", 0 );
+}
+
+///
+/**
 \param bges
 **/
 void MyPlugArt::inicializa ( Bulmafact *bges )
@@ -109,6 +122,15 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+	pPluginMenu->addSeparator();
+	QAction *tart = new QAction ( _( "&Tipos de Articulo" ), 0 );
+	tart->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client.svg" ) ));
+	tart->setStatusTip ( _( "Tipos de Articulo" ) );
+	tart->setWhatsThis ( _( "Tipos de Articulo" ) );
+	pPluginMenu->addAction ( tart );
+	bges->Fichas->addAction (tart);
+	connect ( tart, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
     }// end if
     _depura ( "END MyPlugArt::inicializa", 0 );
@@ -177,6 +199,44 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
 
 		return 1;
 	} // end if
+
+
+
+	if (busq->tableName() == "tipo_articulo") {
+
+
+
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
+    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+    centrarEnPantalla ( diag );
+
+    TipoArticuloList *arts = new TipoArticuloList ( (Company *) busq->empresaBase(), 0, TRUE );
+
+    busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget ( arts );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( arts->windowTitle() );
+
+    diag->exec();
+    if ( arts->codtipo_articulo() != "" ) {
+        busq->setId ( arts->idtipo_articulo() );
+    } // end if
+    delete diag;
+
+
+
+
+
+		return 1;
+	} // end if
+
 	return 0;
 }
 

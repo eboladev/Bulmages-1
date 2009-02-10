@@ -35,7 +35,6 @@
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
 #include "plugins.h"
-#include "tiposarticuloview.h"
 #include "trabajadorview.h"
 #include "bancoview.h"
 #include "listtipoivaview.h"
@@ -545,16 +544,18 @@ void Company::s_newListConfiguracionView()
 \param modoConsulta
 \return
 **/
-TipoArticuloList *Company::newTipoArticuloList ( QWidget *parent, bool modoConsulta )
+void *Company::newTipoArticuloList ( QWidget *parent, bool modoConsulta )
 {
     _depura ( "Company::newTipoArticuloList", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     TipoArticuloList *bud;
     if ( g_plugins->lanza ( "Company_newTipoArticuloList", this, ( void ** ) & bud ) )
         return bud;
     bud = new TipoArticuloList ( this, parent, modoConsulta );
+*/
     _depura ( "END Company::newTipoArticuloList", 0 );
-    return bud;
+    return NULL;
 }
 
 
@@ -566,9 +567,11 @@ TipoArticuloList *Company::newTipoArticuloList ( QWidget *parent, bool modoConsu
 void Company::s_newTipoArticuloList()
 {
     _depura ( "Company::s_newTipoArticuloList", 0 );
+/*
     TipoArticuloList *pag = newTipoArticuloList();
     m_pWorkspace->addWindow ( pag );
     pag->show();
+*/
     _depura ( "END Company::s_newTipoArticuloList", 0 );
 }
 

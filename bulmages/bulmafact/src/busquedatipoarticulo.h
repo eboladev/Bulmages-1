@@ -26,7 +26,7 @@
 #include <QLabel>
 
 #include "blwidget.h"
-#include "ui_busquedatipoarticulobase.h"
+#include "busqueda.h"
 
 
 class company;
@@ -34,35 +34,19 @@ class company;
 /// Permite buscar y seleccionar un tipo de art&iacute;culo.
 /** Este Widget permite buscar y seleccionar un
     tipo de art&iacute;culo. */
-class BusquedaTipoArticulo : public BlWidget, public Ui_BusquedaTipoArticuloBase
+class BusquedaTipoArticulo : public Busqueda
 {
     Q_OBJECT
-
-private:
-    /// Almacena el idtipo_articulo del elemento seleccionado.
-    QString mdb_idtipo_articulo;
-    /// Almacena la descripcion del tipo de articulo seleccionado.
-    QString mdb_desctipo_articulo;
-    /// Almacena el codigo del tipo de articulo seleccionado.
-    QString mdb_codtipo_articulo;
 
 public:
     BusquedaTipoArticulo ( QWidget *parent = 0 );
     ~BusquedaTipoArticulo();
     virtual QString codtipo_articulo();
     virtual QString idtipo_articulo();
-    virtual QString valorCampo();
     virtual QString desctipo_articulo();
     virtual void setidtipo_articulo ( QString val );
-    virtual void setValorCampo ( QString val );
     virtual void setcodtipo_articulo ( QString val );
 
-public slots:
-    virtual void on_mui_buscar_clicked();
-    virtual void on_m_codtipo_articulo_textChanged ( const QString & );
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif
