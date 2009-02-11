@@ -27,7 +27,7 @@
 #include "empresatpv.h"
 #include "qtable2.h"
 #include "subform.h"
-#include "subform3.h"
+#include "blsubform.h"
 #include "bldoublespinbox.h"
 
 
@@ -56,7 +56,7 @@ public:
 /** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
     comunes de la facturaci&oacute;n.
 */
-class SubForm2Bt : public SubForm3
+class SubForm2Bt : public BlSubForm
 {
     Q_OBJECT
 

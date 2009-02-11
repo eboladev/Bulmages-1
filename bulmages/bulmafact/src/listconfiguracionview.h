@@ -46,7 +46,7 @@ public:
 public slots:
     virtual void cargar() {
         _depura ( "ListConfiguracionSubForm::cargar\n", 0 );
-        SubForm3::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
+        BlSubForm::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
     };
 };
 

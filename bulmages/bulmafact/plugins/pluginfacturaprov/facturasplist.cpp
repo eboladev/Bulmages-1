@@ -258,7 +258,7 @@ void FacturasProveedorList::borrar()
 
 
 /** SLOT que responde a la pulsacion del boton mui_imprimir.
-    La impresion de listados esta completamente delegada en SubForm3. */
+    La impresion de listados esta completamente delegada en BlSubForm. */
 /**
 **/
 void FacturasProveedorList::imprimir()
@@ -385,7 +385,7 @@ void FacturasProveedorListSubform::cargar()
 {
     _depura ( "FacturasProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM facturap";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END FacturasProveedorListSubform::cargar", 0 );
 }
 
@@ -397,7 +397,7 @@ void FacturasProveedorListSubform::cargar()
 void FacturasProveedorListSubform::cargar ( QString query )
 {
     _depura ( "FacturasProveedorListSubform::cargar", 0 );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END FacturasProveedorListSubform::cargar", 0 );
 }
 

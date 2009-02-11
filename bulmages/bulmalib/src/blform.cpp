@@ -468,7 +468,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
 **/
 void BlForm::creaMenu ( QMenu * )
 {
-    _depura ( "SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita" );
+    _depura ( "BlForm:: creaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -477,7 +477,7 @@ void BlForm::creaMenu ( QMenu * )
 **/
 void BlForm::procesaMenu ( QAction * )
 {
-    _depura ( "SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita" );
+    _depura ( "BlForm:: procesaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 

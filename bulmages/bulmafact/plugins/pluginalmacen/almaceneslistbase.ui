@@ -577,7 +577,7 @@
     </widget>
    </item>
    <item>
-    <widget class="SubForm3" name="mui_list" >
+    <widget class="BlSubForm" name="mui_list" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
        <horstretch>0</horstretch>
@@ -596,9 +596,9 @@
    <header>busquedaarticulo.h</header>
   </customwidget>
   <customwidget>
-   <class>SubForm3</class>
+   <class>BlSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform3.h</header>
+   <header>blsubform.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>

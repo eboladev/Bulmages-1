@@ -230,7 +230,7 @@ QString CuentaListView::formaQuery()
 }
 
 
-/// La impresion del listado esta completamente delegada en SubForm3.
+/// La impresion del listado esta completamente delegada en BlSubForm.
 /**
 **/
 void CuentaListView::imprimir()

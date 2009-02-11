@@ -202,6 +202,6 @@ ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : SubForm
 void ListConfiguracionSubForm::cargar()
 {
     _depura ( "ListConfiguracionSubForm::cargar", 0 );
-    SubForm3::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
+    BlSubForm::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
 }
 

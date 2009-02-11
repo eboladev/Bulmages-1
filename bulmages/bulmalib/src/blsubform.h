@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SUBFORM3_H
-#define SUBFORM3_H
+#ifndef BLSUBFORM_H
+#define BLSUBFORM_H
 
 #include <Qt>
 #include <QWidget>
@@ -28,7 +28,7 @@
 #include <QPalette>
 
 #include "funcaux.h"
-#include "ui_subform3base.h"
+#include "ui_blsubformbase.h"
 #include "postgresiface2.h"
 #include "qtable2.h"
 #include "subform.h"
@@ -37,12 +37,12 @@
 #include "plugins.h"
 
 
-/// SubForm3, constructor de la clase base para subformularios.
+/// BlSubForm, constructor de la clase base para subformularios.
 /** Proporciona un widget que combina la clase QTable con los
 registros de la base de datos proporcionando un potente manejador
 tabular de datos que puede generar desde listados hasta subformularios
 */
-class SubForm3: public BlWidget, public Ui_SubForm3Base
+class BlSubForm: public BlWidget, public Ui_BlSubFormBase
 {
     Q_OBJECT
 
@@ -127,8 +127,8 @@ public:
     QList<SHeader *> *cabecera();
 
 public:
-    SubForm3 ( QWidget *parent );
-    virtual ~SubForm3();
+    BlSubForm ( QWidget *parent );
+    virtual ~BlSubForm();
     virtual void setEmpresaBase ( EmpresaBase * );
     void setProcesarCambios ( bool );
     bool procesaCambios();

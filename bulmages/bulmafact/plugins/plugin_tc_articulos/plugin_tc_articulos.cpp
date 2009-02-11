@@ -345,7 +345,7 @@ int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteV
 int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView *subform )
 {
     QString query = "SELECT * FROM lalbaran LEFT JOIN articulo AS t1 ON lalbaran.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lalbaran.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lalbaran.idtc_talla WHERE idalbaran=" + subform->mdb_idalbaran + "   ORDER BY ordenlalbaran";
-    subform->SubForm3::cargar ( query );
+    subform->BlSubForm::cargar ( query );
     return -1;
 }
 
@@ -375,6 +375,6 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 int ListLinFacturaView_cargar ( ListLinFacturaView *subform )
 {
     QString query = "SELECT * FROM lfactura LEFT JOIN articulo AS t1 ON lfactura.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lfactura.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lfactura.idtc_talla WHERE idfactura=" + subform->mdb_idfactura + "   ORDER BY ordenlfactura";
-    subform->SubForm3::cargar ( query );
+    subform->BlSubForm::cargar ( query );
     return -1;
 }

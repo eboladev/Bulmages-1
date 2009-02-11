@@ -303,7 +303,7 @@ void AlbaranesProveedor::editar ( int row )
 
 
 
-/** La impresion de listados esta completamente delegada a la clase SubForm3
+/** La impresion de listados esta completamente delegada a la clase BlSubForm
 */
 /**
 **/
@@ -407,7 +407,7 @@ void AlbaranesProveedorListSubform::cargar()
 {
     _depura ( "AlbaranesProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaranp";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END AlbaranesProveedorListSubform::cargar", 0 );
 }
 
@@ -419,7 +419,7 @@ void AlbaranesProveedorListSubform::cargar()
 void AlbaranesProveedorListSubform::cargar ( QString query )
 {
     _depura ( "AlbaranesProveedorListSubform::cargar", 0 );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END AlbaranesProveedorListSubform::cargar", 0 );
 }
 

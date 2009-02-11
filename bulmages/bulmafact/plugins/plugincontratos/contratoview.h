@@ -48,7 +48,7 @@ public:
 
 public slots:
     virtual void cargar ( QString query ) {
-        SubForm3::cargar ( query );
+        BlSubForm::cargar ( query );
     }
 };
 

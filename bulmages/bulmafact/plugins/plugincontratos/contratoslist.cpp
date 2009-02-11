@@ -164,7 +164,7 @@ void ContratosList::on_mui_editar_clicked()
 
 
 /** SLOT que responde a la pulsacion del boton imprimir.
-    La impresion de listados esta completamente delegada a SubForm3
+    La impresion de listados esta completamente delegada a BlSubForm
 */
 /**
 **/

@@ -19,8 +19,6 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include "q19qtoolbutton1.h"
-#include "funcaux.h"
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
@@ -30,6 +28,9 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+
+#include "q19qtoolbutton1.h"
+#include "funcaux.h"
 #include "blfixed.h"
 #include "company.h"
 #include "dbrecord.h"
@@ -101,7 +102,7 @@ void Q19QToolButton1::click()
         QTextStream out ( &file );
      
         m_companyact = ( Company * ) m_facturasList->empresaBase();
-        SubForm3 *sub = m_facturasList->mui_list;
+        BlSubForm *sub = m_facturasList->mui_list;
      
         BlFixed total ( "0.00" );
         int j = 0;

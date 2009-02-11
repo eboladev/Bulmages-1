@@ -355,7 +355,7 @@ void PedidosClienteListSubform::cargar()
 {
     _depura ( "PedidosClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM pedidocliente";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END PedidosClienteListSubform::cargar", 0 );
 }
 
@@ -367,7 +367,7 @@ void PedidosClienteListSubform::cargar()
 void PedidosClienteListSubform::cargar ( QString query )
 {
     _depura ( "PedidosClienteListSubform::cargar", 0 );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END PedidosClienteListSubform::cargar", 0 );
 }
 

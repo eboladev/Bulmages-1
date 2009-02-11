@@ -55,5 +55,5 @@ void ListDescuentoAlbaranClienteView::cargar ( QString idalbaran )
 {
     _depura ( "ListDescuentoAlbaranClienteView::cargar", 0 );
     mdb_idalbaran = idalbaran;
-    SubForm3::cargar ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
+    BlSubForm::cargar ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
 }

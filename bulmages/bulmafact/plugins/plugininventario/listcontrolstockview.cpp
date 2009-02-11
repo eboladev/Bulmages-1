@@ -89,7 +89,7 @@ void ListControlStockView::pregenerar()
     _depura ( "ListControlStockView::pregenerar", 0 );
     QString query;
     query = "SELECT * FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN (SELECT stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = 1) AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ORDER BY codigoalmacen, codigocompletoarticulo;";
-//    SubForm3::cargar ( query );
+//    BlSubForm::cargar ( query );
     _depura ( "END ListControlStockView::pregenerar", 0 );
 }
 

@@ -20,7 +20,7 @@
 
 #include "paisview.h"
 #include "empresabase.h"
-#include "subform3.h"
+#include "blsubform.h"
 
 
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y

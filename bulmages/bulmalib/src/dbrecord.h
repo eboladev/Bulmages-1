@@ -33,8 +33,9 @@
 /**
 Describe el comportamiento programado de un campo de registro de base de datos.
 Se usa en conjunción con DBRecord y suele ser invocada mediante el metodo \ref addDBCampo de esta.
-Almacena toda la información relativa a un campo de un registro de base de datos, nombre, valor y comportamiento
-También prepara el campo para ser almacenado en la base de datos aunque el guardado real lo hace la
+Almacena toda la informacion relativa a un campo de un registro de base de datos, nombre, valor y
+comportamiento.
+Tambien prepara el campo para ser almacenado en la base de datos aunque el guardado real lo hace la
 clase \ref DBRecord
 \todo Esta clase deberia derivar de \ref PEmpresaBase
 */

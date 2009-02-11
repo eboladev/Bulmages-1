@@ -74,6 +74,6 @@ void ListLinFacturaProveedorView::cargar ( QString idfacturap )
 {
     _depura ( "ListLinFacturaProveedorView::cargar", 0 );
     mdb_idfacturap = idfacturap;
-    SubForm3::cargar ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
+    BlSubForm::cargar ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
     _depura ( "END ListLinFacturaProveedorView::cargar", 0 );
 }

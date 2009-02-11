@@ -24,24 +24,27 @@
 # define MY_EXPORT
 #endif
 
-#include "postgresiface2.h"
-//#include "bulmafact.h"
-#include "blwidget.h"
-#include "subform3.h"
-
 #include <QMenu>
 #include <QApplication>
 
+#include "postgresiface2.h"
+//#include "bulmafact.h"
+#include "blwidget.h"
+#include "blsubform.h"
+
+
 extern "C" MY_EXPORT int entryPoint ( QApplication * );
-extern "C" MY_EXPORT int SubForm3_SubForm3_Post ( SubForm3 * );
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 class myplugsubformsxc : public QObject
 {
     Q_OBJECT
+
 public:
-    myplugsubformsxc ( SubForm3 * );
+    myplugsubformsxc ( BlSubForm * );
     ~myplugsubformsxc();
     void sacaSXC();
+
 public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );

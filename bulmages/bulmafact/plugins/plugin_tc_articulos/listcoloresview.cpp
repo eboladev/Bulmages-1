@@ -111,7 +111,7 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : SubForm2Bf ( parent
 void ListColoresSubForm::cargar()
 {
     _depura ( "ListColoresSubForm::cargar", 0 );
-    SubForm3::cargar ( "SELECT * FROM tc_color" );
+    BlSubForm::cargar ( "SELECT * FROM tc_color" );
     _depura ( "END ListColoresSubForm::cargar", 0 );
 }
 

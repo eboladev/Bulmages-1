@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef TIPTRAB_H
 #define TIPTRAB_H
 
@@ -42,12 +43,6 @@ public slots:
 };
 
 
-
-
-
-
-
-
 /// Clase SubForm2BfDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
 class QSubForm3BfDelegate : public QSubForm2BfDelegate
@@ -60,12 +55,5 @@ public:
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 };
 
-
-
-
 #endif
-
-
-
-
 

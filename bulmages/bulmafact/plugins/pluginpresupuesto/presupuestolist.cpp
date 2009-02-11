@@ -379,7 +379,7 @@ void PresupuestoListSubForm::cargar()
 {
     _depura ( "PresupuestoListSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM presupuesto";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END PresupuestoListSubForm::cargar", 0 );
 }
 
@@ -391,6 +391,6 @@ void PresupuestoListSubForm::cargar()
 void PresupuestoListSubForm::cargar ( QString query )
 {
     _depura ( "PresupuestoListSubForm::cargar", 0, query );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END PresupuestoListSubForm::cargar", 0 );
 }

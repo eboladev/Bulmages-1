@@ -41,7 +41,7 @@
 /**
 \param parent Widget padre del SubFormulario
 **/
-SubForm2Bc::SubForm2Bc ( QWidget *parent ) : SubForm3 ( parent )
+SubForm2Bc::SubForm2Bc ( QWidget *parent ) : BlSubForm ( parent )
 {
     _depura ( "SubForm2Bc::SubForm2Bc", 0 );
     m_delegate = new QSubForm2BcDelegate ( this );
@@ -323,7 +323,7 @@ void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
 
     g_plugins->lanza ( "SubForm2Bc_on_mui_list_cellChanged_post", this );
 
-    SubForm3::on_mui_list_cellChanged ( row, col );
+    BlSubForm::on_mui_list_cellChanged ( row, col );
     _depura ( "END SubForm2Bc::on_mui_list_cellChanged", 0 );
 }
 

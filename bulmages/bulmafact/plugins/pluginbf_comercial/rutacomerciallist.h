@@ -42,11 +42,11 @@ public slots:
     virtual void cargar() {
         _depura ( "RutaComercialListSubForm::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM presupuesto";
-        SubForm3::cargar ( SQLQuery );
+        BlSubForm::cargar ( SQLQuery );
     };
     virtual void cargar ( QString query ) {
         _depura ( "RutaComercialListSubForm::cargar\n", 0 );
-        SubForm3::cargar ( query );
+        BlSubForm::cargar ( query );
     };
 };
 

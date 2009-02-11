@@ -40,7 +40,7 @@
 /**
 \param parent El widget propietario del subformulario.
 **/
-SubForm2Bf::SubForm2Bf ( QWidget *parent ) : SubForm3 ( parent )
+SubForm2Bf::SubForm2Bf ( QWidget *parent ) : BlSubForm ( parent )
 {
     _depura ( "SubForm2Bf::SubForm2Bf", 0 );
     setDelete ( TRUE );
@@ -77,7 +77,7 @@ SubForm2Bf::~SubForm2Bf()
 void SubForm2Bf::cargar ( QString query )
 {
     _depura ( "SubForm2Bf::cargar", 0, query );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END SubForm2Bf::cargar", 0 );
 }
 
@@ -307,7 +307,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     } // end if
 
     /*
-        SubForm3::on_mui_list_cellChanged ( row, col );
+        BlSubForm::on_mui_list_cellChanged ( row, col );
     */
     /// Refrescamos el registro.
     rec->refresh();
@@ -458,7 +458,7 @@ void SubForm2Bf::setIdAlmacen ( QString id )
 void SubForm2Bf::setEmpresaBase ( EmpresaBase *c )
 {
     _depura ( "SubForm2Bf::setcompany", 0 );
-    SubForm3::setEmpresaBase ( c );
+    BlSubForm::setEmpresaBase ( c );
     m_delegate->setEmpresaBase ( c );
     _depura ( "END SubForm2Bf::setcompany", 0 );
 }

@@ -28,7 +28,7 @@
 #include "dialogchanges.h"
 #include "funcaux.h"
 #include "empresabase.h"
-#include "subform3.h"
+#include "blsubform.h"
 #include "blwidget.h"
 
 
@@ -41,7 +41,7 @@ public:
         EditMode = 0, SelectMode = 1
     };
 
-    SubForm3 *m_listado;
+    BlSubForm *m_listado;
 
 private:
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
@@ -49,7 +49,7 @@ private:
     edmode m_modo;
 
 protected:
-    void setSubForm ( SubForm3 * );
+    void setSubForm ( BlSubForm * );
 
 public:
     BlFormList ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );

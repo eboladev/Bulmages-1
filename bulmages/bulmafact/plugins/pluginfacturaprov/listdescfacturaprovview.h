@@ -42,7 +42,7 @@ public slots:
     virtual void cargar ( QString idfacturap ) {
         _depura ( "ListCompArticulo::cargaListCompArticulo", 0 );
         mdb_idfacturap = idfacturap;
-        SubForm3::cargar ( "SELECT * FROM dfacturap WHERE idfacturap = " + mdb_idfacturap );
+        BlSubForm::cargar ( "SELECT * FROM dfacturap WHERE idfacturap = " + mdb_idfacturap );
     };
 
 };

@@ -40,9 +40,9 @@ public:
 
 public slots:
     virtual void cargar ( QString idpedidoproveedor ) {
-        _depura ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
-        mdb_idpedidoproveedor = idpedidoproveedor;
-        SubForm3::cargar ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
+	_depura ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
+	mdb_idpedidoproveedor = idpedidoproveedor;
+        BlSubForm::cargar ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
     };
 
 };

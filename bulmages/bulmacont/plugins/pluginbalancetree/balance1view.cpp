@@ -638,7 +638,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 // // =================================================================
 //
 //     QString archivod = confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
-//     SubForm3 * subf = ( SubForm3 * ) parent();
+//     BlSubForm * subf = ( BlSubForm * ) parent();
 //
 //     QString fitxersortidatxt = "";
 //

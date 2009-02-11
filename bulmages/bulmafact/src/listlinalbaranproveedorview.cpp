@@ -73,7 +73,7 @@ void ListLinAlbaranProveedorView::cargar ( QString idalbaranp )
 {
     _depura ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idalbaranp = idalbaranp;
-    SubForm3::cargar ( "SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
+    BlSubForm::cargar ( "SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
     _depura ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 

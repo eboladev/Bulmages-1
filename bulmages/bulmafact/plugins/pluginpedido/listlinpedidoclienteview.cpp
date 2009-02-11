@@ -75,7 +75,7 @@ void ListLinPedidoClienteView::cargar ( QString idpedidocliente )
 {
     _depura ( "ListLinPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    SubForm3::cargar ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
+    BlSubForm::cargar ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
     _depura ( "END ListLinPedidoClienteView::cargar", 0 );
 }
 

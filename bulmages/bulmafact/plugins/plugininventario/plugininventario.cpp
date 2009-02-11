@@ -141,7 +141,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int BlForm_cargar ( BlForm *fich )
 {
-    SubForm3 * form = fich->findChild<SubForm3 *> ( "m_lmin" );
+    BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form )
         form->cargar ( "SELECT * FROM minimsalmacen NATURAL LEFT JOIN almacen WHERE idarticulo = " + fich->DBvalue ( "idarticulo" ) );
     return 0;
@@ -151,7 +151,7 @@ int BlForm_cargar ( BlForm *fich )
 
 int BlForm_guardar_Post ( BlForm *fich )
 {
-    SubForm3 * form = fich->findChild<SubForm3 *> ( "m_lmin" );
+    BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form ) {
         form->setColumnValue ( "idarticulo", fich->DBvalue ( "idarticulo" ) );
         form->guardar();

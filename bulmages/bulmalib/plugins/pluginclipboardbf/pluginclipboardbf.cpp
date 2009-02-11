@@ -20,6 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <stdio.h>
+
 #include <QMenu>
 #include <QAction>
 #include <QObject>
@@ -32,13 +34,9 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include <stdio.h>
-
 #include "empresabase.h"
 #include "funcaux.h"
 #include "pluginclipboardbf.h"
-
-
 
 
 ///
@@ -73,13 +71,13 @@ int entryPoint ( QApplication * )
 \param sub
 \return
 **/
-int SubForm3_SubForm3_Post ( SubForm3 *sub )
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "SubForm3_SubForm3_Post", 0 );
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
     myplugclipboard *subformclip = new myplugclipboard ( sub );
     sub->connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformclip, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformclip, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END SubForm3_SubForm3_Post", 0 );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
@@ -88,7 +86,7 @@ int SubForm3_SubForm3_Post ( SubForm3 *sub )
 /**
 \param parent
 **/
-myplugclipboard::myplugclipboard ( SubForm3 *parent ) : QObject ( parent )
+myplugclipboard::myplugclipboard ( BlSubForm *parent ) : QObject ( parent )
 {
     _depura ( "myplugclipboard::myplugclipboard", 0 );
     _depura ( "END myplugclipboard::myplugclipboard", 0 );
@@ -142,7 +140,7 @@ void myplugclipboard::s_trataMenu ( QAction *action )
 void myplugclipboard::pegaSXC()
 {
     _depura ( "myplugclipboard::pegaSXC", 0 );
-    SubForm3 *subform = ( SubForm3 * ) parent();
+    BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = theApp->clipboard() ->text();
 
     QStringList lineas = clipboard.split ( "\n" );
@@ -182,7 +180,7 @@ void myplugclipboard::pegaSXC()
 void myplugclipboard::pegaODS()
 {
     _depura ( "myplugclipboard::pegaODS", 0 );
-    SubForm3 *subform = ( SubForm3 * ) parent();
+    BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = theApp->clipboard() ->text();
 
     QStringList lineas = clipboard.split ( "\n" );

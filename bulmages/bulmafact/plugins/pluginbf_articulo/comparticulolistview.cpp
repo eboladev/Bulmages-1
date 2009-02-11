@@ -130,7 +130,7 @@ void ListCompArticuloView::cargar ( QString idarticulo )
 {
     _depura ( "ListCompActiculo::cargar", 0 );
     mdb_idarticulo = idarticulo;
-    SubForm3::cargar ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
+    BlSubForm::cargar ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
     _depura ( "END ListCompActiculo::cargar", 0 );
 }
 

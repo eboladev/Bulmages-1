@@ -241,7 +241,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 **/
 int BlForm_cargar ( BlForm *fich )
 {
-    SubForm3 * form = fich->findChild<SubForm3 *> ( "m_validacionesalm" );
+    BlSubForm * form = fich->findChild<BlSubForm *> ( "m_validacionesalm" );
     if ( form )
         form->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) + " ORDER BY fechavalasterisk, horavalasterisk" );
     return 0;
@@ -250,7 +250,7 @@ int BlForm_cargar ( BlForm *fich )
 
 int BlForm_guardar_Post ( BlForm *fich )
 {
-    SubForm3 * form = fich->findChild<SubForm3 *> ( "m_validacionesalm" );
+    BlSubForm * form = fich->findChild<BlSubForm *> ( "m_validacionesalm" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->DBvalue ( "idalmacen" ) );
         form->guardar();

@@ -49,7 +49,7 @@ void ListDescuentoPedidoClienteView::cargar ( QString idpedidocliente )
 {
     _depura ( "ListDescuentoPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    SubForm3::cargar ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente );
+    BlSubForm::cargar ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente );
     _depura ( "END ListDescuentoPedidoClienteView::cargar", 0 );
 }
 

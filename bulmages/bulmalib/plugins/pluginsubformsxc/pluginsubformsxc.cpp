@@ -54,7 +54,7 @@ int entryPoint ( QApplication * )
 /**
 \param parent
 **/
-myplugsubformsxc::myplugsubformsxc ( SubForm3 *parent ) : QObject ( parent )
+myplugsubformsxc::myplugsubformsxc ( BlSubForm *parent ) : QObject ( parent )
 {
     _depura ( "myplugsubformsxc::myplugsubformsxc", 0 );
     _depura ( "END myplugsubformsxc::myplugsubformsxc", 0 );
@@ -106,7 +106,7 @@ void myplugsubformsxc::sacaSXC()
     _depura ( "myplugsubformsxc::sacaSXC", 0 );
 
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
-    SubForm3 * subf = ( SubForm3 * ) parent();
+    BlSubForm * subf = ( BlSubForm * ) parent();
 
 
     QString fitxersortidatxt = "";
@@ -220,13 +220,13 @@ void myplugsubformsxc::sacaSXC()
 \param sub
 \return
 **/
-int SubForm3_SubForm3_Post ( SubForm3 *sub )
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "SubForm3_SubForm3_Post", 0 );
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
     myplugsubformsxc *subformsxc = new myplugsubformsxc ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformsxc, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformsxc, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END SubForm3_SubForm3_Post", 0 );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 

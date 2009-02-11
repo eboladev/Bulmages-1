@@ -25,7 +25,7 @@
 #include "empresa.h"
 #include "qtable2.h"
 #include "subform.h"
-#include "subform3.h"
+#include "blsubform.h"
 
 #include "busquedafecha2.h"
 
@@ -50,7 +50,7 @@ public:
 };
 
 
-class SubForm2Bc : public SubForm3
+class SubForm2Bc : public BlSubForm
 {
     Q_OBJECT
 

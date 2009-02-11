@@ -229,8 +229,8 @@ int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel 
 
 }
 
-int SubForm3_campoCompleto(SubForm3 *grid,void **resultat) {
-   _depura("SubForm3_campoCompleto de pluginalias",0);
+int BlSubForm_campoCompleto(BlSubForm *grid,void **resultat) {
+   _depura("BlSubForm_campoCompleto de pluginalias",0);
    BusquedaArticuloDelegate *baDel = dynamic_cast<BusquedaArticuloDelegate *>( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ));
     if (baDel) {
          _depura("camp de codi article/alias. count="+QString::number(baDel->count()),0);
@@ -240,7 +240,7 @@ int SubForm3_campoCompleto(SubForm3 *grid,void **resultat) {
          }
     }
   
-   _depura("END SubForm3_campoCompleto de pluginalias",0);
+   _depura("END BlSubForm_campoCompleto de pluginalias",0);
     
   return 0; // continua el processament normal
  }

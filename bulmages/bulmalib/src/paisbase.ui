@@ -24,7 +24,7 @@
     <number>5</number>
    </property>
    <item row="2" column="0" >
-    <widget class="SubForm3" name="mui_list" >
+    <widget class="BlSubForm" name="mui_list" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
        <horstretch>0</horstretch>
@@ -100,7 +100,7 @@
        </widget>
       </item>
       <item row="2" column="0" colspan="5" >
-       <widget class="SubForm3" name="mui_listprovincias" >
+       <widget class="BlSubForm" name="mui_listprovincias" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -417,9 +417,9 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
-   <class>SubForm3</class>
+   <class>BlSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform3.h</header>
+   <header>blsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

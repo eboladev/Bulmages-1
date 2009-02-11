@@ -96,7 +96,7 @@ void Q19QToolButton::click()
     QDataStream out ( &file );
 //    out.setCodec("CP1252");
     m_companyact = ( Company * ) m_cobrosList->empresaBase();
-    SubForm3 *sub = m_cobrosList->mui_list;
+    BlSubForm *sub = m_cobrosList->mui_list;
 
     BlFixed total ( "0.00" );
     int j = 0;

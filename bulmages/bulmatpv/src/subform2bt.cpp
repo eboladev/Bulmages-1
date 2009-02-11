@@ -36,7 +36,7 @@
 /**
 \param parent
 **/
-SubForm2Bt::SubForm2Bt ( QWidget *parent ) : SubForm3 ( parent )
+SubForm2Bt::SubForm2Bt ( QWidget *parent ) : BlSubForm ( parent )
 {
     _depura ( "SubForm2Bt::SubForm2Bt", 0 );
     setDelete ( TRUE );
@@ -65,7 +65,7 @@ SubForm2Bt::~SubForm2Bt()
 void SubForm2Bt::cargar ( QString query )
 {
     _depura ( "SubForm2Bt::cargar", 0 );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END SubForm2Bt::cargar", 0 );
 }
 
@@ -243,7 +243,7 @@ void SubForm2Bt::setIdProveedor ( QString id )
 void SubForm2Bt::setEmpresaBase ( EmpresaBase *c )
 {
     _depura ( "SubForm2Bt::setcompany", 0 );
-    SubForm3::setEmpresaBase ( c );
+    BlSubForm::setEmpresaBase ( c );
     m_delegate->setEmpresaBase ( c );
     _depura ( "END SubForm2Bt::setcompany", 0 );
 }

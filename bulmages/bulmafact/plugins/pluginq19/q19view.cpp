@@ -534,7 +534,7 @@ void Q19View::on_mui_aceptar_clicked()
         QTextStream out ( &file );
         out.setCodec ( "LATIN1" );
 
-        SubForm3 *sub = m_facturasList->mui_list;
+        BlSubForm *sub = m_facturasList->mui_list;
 
         BlFixed total ( "0.00" );
         int j = 0;

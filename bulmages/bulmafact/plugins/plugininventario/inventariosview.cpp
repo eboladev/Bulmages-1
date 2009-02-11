@@ -262,7 +262,7 @@ void InventariosSubForm::cargar()
 {
     _depura ( "InventariosSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM inventario";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END InventariosSubForm::cargar", 0 );
 }
 

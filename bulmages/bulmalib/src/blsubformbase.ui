@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>SubForm3Base</class>
- <widget class="QWidget" name="SubForm3Base" >
+ <class>BlSubFormBase</class>
+ <widget class="QWidget" name="BlSubFormBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -53,7 +53,7 @@
        <number>0</number>
       </property>
       <item row="1" column="0" >
-       <widget class="QTabWidget" name="mui_selectorsubform3" >
+       <widget class="QTabWidget" name="mui_selectorblsubform" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
           <horstretch>0</horstretch>

@@ -47,7 +47,7 @@ set(bulmalib_SRCS	postgresiface2.cpp
 			busquedaperiodo.cpp
 			dbrecord.cpp
 			subform.cpp
-			subform3.cpp
+			blsubform.cpp
 			listventanas.cpp
 			blworkspace.cpp
 			blapplication.cpp
@@ -77,7 +77,7 @@ set(bulmalib_MOCS	logpass.h
 			qtable2.h 
 			busquedaperiodo.h 
 			bldockwidget.h 
-			subform3.h 
+			blsubform.h 
 			listventanas.h 
 			blworkspace.h 
 			blapplication.h 
@@ -119,7 +119,7 @@ set (bulmalib_HDRS	abreempresaview.h
 			qtexteditdelegate.h
 			blworkspace.h
 			subform.h
-			subform3.h
+			blsubform.h
 			blprogressbar.h
 			blbancoedit.h)
 #headers that are not moc'ed
@@ -142,7 +142,7 @@ set(bulmalib_UIS	logpassbase.ui
 			abreempresabase.ui 
 			msgerrorbase.ui 
 			busquedafechabase.ui 
-			subform3base.ui 
+			blsubformbase.ui 
 			fichacfgbase.ui 
 			paisbase.ui
 			blprogressbarbase.ui

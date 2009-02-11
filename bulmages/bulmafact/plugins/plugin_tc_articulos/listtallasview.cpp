@@ -110,7 +110,7 @@ ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
 void ListTallasSubForm::cargar()
 {
     _depura ( "ListTallasSubForm::cargar", 0 );
-    SubForm3::cargar ( "SELECT * FROM tc_talla" );
+    BlSubForm::cargar ( "SELECT * FROM tc_talla" );
     _depura ( "END ListTallasSubForm::cargar", 0 );
 }
 

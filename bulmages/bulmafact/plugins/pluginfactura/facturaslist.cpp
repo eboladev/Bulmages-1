@@ -402,7 +402,7 @@ void FacturasListSubform::cargar()
 {
     _depura ( "FacturasListSubform::cargar\n", 0 );
     QString SQLQuery = "SELECT * FROM factura";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
 }
 
 
@@ -413,7 +413,7 @@ void FacturasListSubform::cargar()
 void FacturasListSubform::cargar ( QString query )
 {
     _depura ( "FacturasListSubform::cargar", 0 );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END FacturasListSubform::cargar", 0 );
 }
 

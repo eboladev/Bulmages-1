@@ -254,7 +254,7 @@ void ProveedorListSubform::cargar()
 {
     _depura ( "ProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM proveedor";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END ProveedorListSubform::cargar", 0 );
 }
 
@@ -266,7 +266,7 @@ void ProveedorListSubform::cargar()
 void ProveedorListSubform::cargar ( QString a )
 {
     _depura ( "ProveedorListSubform::cargar", 0 );
-    SubForm3::cargar ( a );
+    BlSubForm::cargar ( a );
     _depura ( "END ProveedorListSubform::cargar", 0 );
 }
 

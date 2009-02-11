@@ -103,7 +103,7 @@ void ImpQToolButton::click()
 
     if ( m_albaranClienteList != NULL ) {
         m_companyact = ( Company * ) m_albaranClienteList->empresaBase();
-        SubForm3 *sub = m_albaranClienteList->mui_list;
+        BlSubForm *sub = m_albaranClienteList->mui_list;
 
         /// Creamos la factura
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.

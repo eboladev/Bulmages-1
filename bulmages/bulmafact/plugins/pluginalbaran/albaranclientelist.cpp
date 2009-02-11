@@ -37,7 +37,7 @@ void AlbaranClienteListSubform::cargar()
 {
     _depura ( "AlbaranClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaran";
-    SubForm3::cargar ( SQLQuery );
+    BlSubForm::cargar ( SQLQuery );
     _depura ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
@@ -49,7 +49,7 @@ void AlbaranClienteListSubform::cargar()
 void AlbaranClienteListSubform::cargar ( QString query )
 {
     _depura ( "AlbaranClienteListSubform::cargar", 0 );
-    SubForm3::cargar ( query );
+    BlSubForm::cargar ( query );
     _depura ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 

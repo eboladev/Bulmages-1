@@ -173,7 +173,7 @@ void CobrosList::crear()
 }
 
 
-/** La impresion de listados esta completamente delegada a la clase SubForm3
+/** La impresion de listados esta completamente delegada a la clase BlSubForm
 */
 void CobrosList::imprimir()
 {

@@ -107,7 +107,7 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : SubForm2Bf ( parent
 void ListAlmacenSubForm::cargar()
 {
     _depura ( "ListAlmacenSubForm::cargar", 0 );
-    SubForm3::cargar ( "SELECT * FROM almacen" );
+    BlSubForm::cargar ( "SELECT * FROM almacen" );
     _depura ( "END ListAlmacenSubForm::cargar", 0 );
 }
 

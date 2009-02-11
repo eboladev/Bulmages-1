@@ -60,7 +60,7 @@ void ListLinContratoView::cargar ( QString idcontrato )
 {
     _depura ( "ListLinContratoView::cargar", 0 );
     mdb_idcontrato = idcontrato;
-    SubForm3::cargar ( "SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato" );
+    BlSubForm::cargar ( "SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato" );
     _depura ( "END ListLinContratoView::cargar", 0 );
 }
 

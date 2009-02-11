@@ -29,9 +29,9 @@
 #include "qtable2.h"
 #include "dbrecord.h"
 
-/// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref SubForm3
+/// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref BlSubForm
 /**
-Al crear un subformulario \ref subform3, todos los registros tienen exactamente las mismas cabeceras.
+Al crear un subformulario \ref BlSubForm, todos los registros tienen exactamente las mismas cabeceras.
 Esta clase sirve para describir una cabecera. Es analoga a la clase \ref DBCampo pero en lugar de
 describir un unico registro describe a varios.
 */
@@ -65,7 +65,7 @@ public:
     QString nomcampo();
 };
 
-/// Registro de \ref subform3 subformulario
+/// Registro de \ref BlSubForm subformulario
 /**
    Maneja un registro de un subformulario de tal forma que permite el trabajo mediante tablas de los registros.
    Es muy similar a la clase \ref DBRecord pero reimplementa el guardado
@@ -81,7 +81,7 @@ public:
 };
 
 
-/// Descripcion de campos en \ref subform3 subformularios.
+/// Descripcion de campos en \ref BlSubForm subformularios.
 /**
 Junta la información de campo (Base de Datos) con  un QTableWidgetItem.
 De esta forma los elementos adscritos a una talba y a un recordset son los mismos.

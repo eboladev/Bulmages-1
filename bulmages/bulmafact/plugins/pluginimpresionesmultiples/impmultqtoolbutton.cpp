@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include "funcaux.h"
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
@@ -30,8 +29,9 @@
 #include <QMap>
 #include <QList>
 #include <QTextStream>
-#include "blfixed.h"
 
+#include "funcaux.h"
+#include "blfixed.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
 #include "pedidosclientelist.h"
@@ -42,7 +42,6 @@
 #include "cobroview.h"
 #include "company.h"
 #include "dbrecord.h"
-
 #include "impmultqtoolbutton.h"
 
 
@@ -114,7 +113,7 @@ void ImpQToolButton::click()
 
         if ( m_presupuestoList != NULL ) {
             m_companyact = ( Company * ) m_presupuestoList->empresaBase();
-            SubForm3 *sub = m_presupuestoList->mui_list;
+            BlSubForm *sub = m_presupuestoList->mui_list;
 
             /// Reseteamos los valores
             for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -148,7 +147,7 @@ void ImpQToolButton::click()
 
         if ( m_facturasList != NULL ) {
             m_companyact = ( Company * ) m_facturasList->empresaBase();
-            SubForm3 *sub = m_facturasList->mui_list;
+            BlSubForm *sub = m_facturasList->mui_list;
 
             /// Reseteamos los valores
             for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -186,7 +185,7 @@ void ImpQToolButton::click()
 
         if ( m_pedidosClienteList != NULL ) {
             m_companyact = ( Company * ) m_pedidosClienteList->empresaBase();
-            SubForm3 *sub = m_pedidosClienteList->mui_list;
+            BlSubForm *sub = m_pedidosClienteList->mui_list;
 
             /// Reseteamos los valores
             for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -222,7 +221,7 @@ void ImpQToolButton::click()
 
         if ( m_albaranClienteList != NULL ) {
             m_companyact = ( Company * ) m_albaranClienteList->empresaBase();
-            SubForm3 *sub = m_albaranClienteList->mui_list;
+            BlSubForm *sub = m_albaranClienteList->mui_list;
 
             /// Reseteamos los valores
             for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -259,7 +258,7 @@ void ImpQToolButton::click()
         if ( m_cobrosList != NULL ) {
 
             m_companyact = ( Company * ) m_cobrosList->empresaBase();
-            SubForm3 *sub = m_cobrosList->mui_list;
+            BlSubForm *sub = m_cobrosList->mui_list;
             QString txt = "";
 
 
@@ -470,7 +469,7 @@ void SelQToolButton::click()
 
     if ( m_presupuestoList != NULL ) {
         m_companyact = ( Company * ) m_presupuestoList->empresaBase();
-        SubForm3 *sub = m_presupuestoList->mui_list;
+        BlSubForm *sub = m_presupuestoList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -486,7 +485,7 @@ void SelQToolButton::click()
 
     if ( m_pedidosClienteList != NULL ) {
         m_companyact = ( Company * ) m_pedidosClienteList->empresaBase();
-        SubForm3 *sub = m_pedidosClienteList->mui_list;
+        BlSubForm *sub = m_pedidosClienteList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -503,7 +502,7 @@ void SelQToolButton::click()
 
     if ( m_albaranClienteList != NULL ) {
         m_companyact = ( Company * ) m_albaranClienteList->empresaBase();
-        SubForm3 *sub = m_albaranClienteList->mui_list;
+        BlSubForm *sub = m_albaranClienteList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -520,7 +519,7 @@ void SelQToolButton::click()
 
     if ( m_facturasList != NULL ) {
         m_companyact = ( Company * ) m_facturasList->empresaBase();
-        SubForm3 *sub = m_facturasList->mui_list;
+        BlSubForm *sub = m_facturasList->mui_list;
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             SDBRecord *rec = sub->lineaat ( i );
@@ -535,7 +534,7 @@ void SelQToolButton::click()
 
     if ( m_cobrosList != NULL ) {
         m_companyact = ( Company * ) m_cobrosList->empresaBase();
-        SubForm3 *sub = m_cobrosList->mui_list;
+        BlSubForm *sub = m_cobrosList->mui_list;
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             SDBRecord *rec = sub->lineaat ( i );
@@ -619,7 +618,7 @@ void EmailQToolButton::click()
 
     if ( m_presupuestoList != NULL ) {
         m_companyact = ( Company * ) m_presupuestoList->empresaBase();
-        SubForm3 *sub = m_presupuestoList->mui_list;
+        BlSubForm *sub = m_presupuestoList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -663,7 +662,7 @@ void EmailQToolButton::click()
 
     if ( m_pedidosClienteList != NULL ) {
         m_companyact = ( Company * ) m_pedidosClienteList->empresaBase();
-        SubForm3 *sub = m_pedidosClienteList->mui_list;
+        BlSubForm *sub = m_pedidosClienteList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -708,7 +707,7 @@ void EmailQToolButton::click()
 
     if ( m_albaranClienteList != NULL ) {
         m_companyact = ( Company * ) m_albaranClienteList->empresaBase();
-        SubForm3 *sub = m_albaranClienteList->mui_list;
+        BlSubForm *sub = m_albaranClienteList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -752,7 +751,7 @@ void EmailQToolButton::click()
 
     if ( m_facturasList != NULL ) {
         m_companyact = ( Company * ) m_facturasList->empresaBase();
-        SubForm3 *sub = m_facturasList->mui_list;
+        BlSubForm *sub = m_facturasList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
@@ -806,7 +805,7 @@ void EmailQToolButton::click()
 
     if ( m_cobrosList != NULL ) {
         m_companyact = ( Company * ) m_cobrosList->empresaBase();
-        SubForm3 *sub = m_cobrosList->mui_list;
+        BlSubForm *sub = m_cobrosList->mui_list;
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {

@@ -27,7 +27,7 @@
 #include "company.h"
 #include "qtable2.h"
 #include "subform.h"
-#include "subform3.h"
+#include "blsubform.h"
 #include "bldoublespinbox.h"
 
 
@@ -61,7 +61,7 @@ signals:
 /** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
     comunes de la facturaci&oacute;n.
 */
-class SubForm2Bf : public SubForm3
+class SubForm2Bf : public BlSubForm
 {
     Q_OBJECT
 

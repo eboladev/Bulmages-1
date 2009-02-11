@@ -206,7 +206,7 @@ void BlFormList::presentar()
 /**
 \param list
 **/
-void BlFormList::setSubForm ( SubForm3 *list )
+void BlFormList::setSubForm ( BlSubForm *list )
 {
     _depura ( "BlFormList::setSubForm", 0 );
     m_listado = list;

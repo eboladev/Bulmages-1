@@ -76,7 +76,7 @@ void ListLinAlbaranClienteView::cargar ( QString idalbaran )
     if ( res != 0 )
         return;
 
-    SubForm3::cargar ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
+    BlSubForm::cargar ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
     _depura ( "END ListLinAlbaranClienteView::cargar", 0 );
 }
 

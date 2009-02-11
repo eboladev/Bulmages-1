@@ -32,18 +32,18 @@
 
 #include "postgresiface2.h"
 #include "blwidget.h"
-#include "subform3.h"
+#include "blsubform.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( QApplication * );
-extern "C" MY_EXPORT int SubForm3_SubForm3_Post ( SubForm3 * );
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 class myplugsubformods : public QObject
 {
     Q_OBJECT
 
 public:
-    myplugsubformods ( SubForm3 * );
+    myplugsubformods ( BlSubForm * );
     ~myplugsubformods();
     void imprimir();
 
