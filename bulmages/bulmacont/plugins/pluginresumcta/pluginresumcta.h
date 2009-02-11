@@ -25,10 +25,11 @@
 #endif
 
 #include "bulmacont.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "busquedacuenta.h"
 #include "subform2bc.h"
+
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 extern "C" MY_EXPORT int BusquedaCuenta_setidcuenta_post ( BusquedaCuenta * );

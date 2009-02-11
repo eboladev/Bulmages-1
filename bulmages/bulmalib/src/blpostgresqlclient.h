@@ -19,11 +19,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/// Fichero de definiciones de las clases 'cursor2' y 'postgresiface2'.
+/// Fichero de definiciones de las clases 'cursor2' y 'BlPostgreSqlClient'.
 /// Definen la interficie de comunicacion con el sistema motor de bases de datos.
 /// Estas clases se basan en la clase libpq.
-#ifndef POSTGRESIFACE2_H
-#define POSTGRESIFACE2_H
+#ifndef BLPOSTGRESQLCLIENT_H
+#define BLPOSTGRESQLCLIENT_H
 
 #include <QString>
 #include <QHash>
@@ -46,7 +46,7 @@
 
 
 /// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.
-/** Se carga normalmente a partir de la clase 'postgresiface2' con el m&eacute;todo 'cargacursor'.
+/** Se carga normalmente a partir de la clase 'BlPostgreSqlClient' con el m&eacute;todo 'cargacursor'.
     Crea las estructuras necesarias para recorrer un recordset de postgres. */
 class cursor2
 {
@@ -168,7 +168,7 @@ public:
 };
 
 
-class postgresiface2
+class BlPostgreSqlClient
 {
 private:
     QString pghost; /// Indica cual es el host de las bases de datos.
@@ -188,9 +188,9 @@ private:
 
 public:
     /// Constructor de la clase que inicializa variables.
-    postgresiface2();
+    BlPostgreSqlClient();
     /// Destructor de la clase que libera memoria.
-    ~postgresiface2();
+    ~BlPostgreSqlClient();
     const QString currentUser();
     /// La clase debe ser inicializada con algunos par&aacute;metros para poder funcionar.
     int inicializa ( QString nomdb );

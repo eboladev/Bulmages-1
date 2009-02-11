@@ -24,9 +24,10 @@
 #include <QComboBox>
 
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "blwidget.h"
+
 
 class BusquedaZonaComercial : public QComboBox, public PEmpresaBase
 {
@@ -58,4 +59,3 @@ signals:
 };
 
 #endif
-

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Actual·litza llistat"
 msgid "Alumno"
 msgstr "<LI> Magatzem <B>"
 
-#: alumnoslist.cpp:144 pluginalumno.cpp:98 pluginalumno.cpp:99
+#: pluginalumno.cpp:98 pluginalumno.cpp:99 alumnoslist.cpp:144
 #: ui_alumnoslistbase.h:308
 msgid "Alumnos"
 msgstr ""

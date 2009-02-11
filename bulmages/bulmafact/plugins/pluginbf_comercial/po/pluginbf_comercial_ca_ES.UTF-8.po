@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:48+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,8 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_listzonacomercialbase.h:84 ui_rutacomercialincbase.h:251
-#: ui_rutacomerciallistbase.h:371
+#: ui_rutacomercialincbase.h:251 ui_rutacomerciallistbase.h:371
+#: ui_listzonacomercialbase.h:84
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -32,8 +32,8 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: incidenciacomercialview.cpp:106 ui_listzonacomercialbase.h:85
-#: ui_rutacomercialincbase.h:252 ui_rutacomerciallistbase.h:372
+#: incidenciacomercialview.cpp:106 ui_rutacomercialincbase.h:252
+#: ui_rutacomerciallistbase.h:372 ui_listzonacomercialbase.h:85
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -96,9 +96,9 @@ msgid "Cambio datos"
 msgstr "Importa dades"
 
 #: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
-#: rutacomercialview.cpp:56 rutacomercialview.cpp:79 rutacomerciallist.cpp:47
-#: rutacomerciallist.cpp:78 ui_rutacomercialbase.h:234
-#: ui_rutacomerciallistbase.h:368 ui_incidenciacomercialbase.h:287
+#: rutacomerciallist.cpp:47 rutacomerciallist.cpp:78 rutacomercialview.cpp:56
+#: rutacomercialview.cpp:79 ui_rutacomerciallistbase.h:368
+#: ui_incidenciacomercialbase.h:287 ui_rutacomercialbase.h:234
 msgid "Cliente:"
 msgstr "Client:"
 
@@ -130,7 +130,7 @@ msgstr "Comentaris de l'assentament"
 msgid "Comentarios ruta comercial"
 msgstr ""
 
-#: ui_rutacomercialbase.h:235 ui_incidenciacomercialbase.h:290
+#: ui_incidenciacomercialbase.h:290 ui_rutacomercialbase.h:235
 msgid "Comentarios:"
 msgstr "Comentaris:"
 
@@ -252,7 +252,7 @@ msgstr "Nom del compte"
 msgid "Hora ruta"
 msgstr "Esborra quota"
 
-#: ui_rutacomercialbase.h:233 ui_incidenciacomercialbase.h:286
+#: ui_incidenciacomercialbase.h:286 ui_rutacomercialbase.h:233
 #, fuzzy
 msgid "Hora:"
 msgstr "&Format:"
@@ -304,8 +304,8 @@ msgstr ""
 msgid "Incidencia comercial:"
 msgstr ""
 
-#: ui_rutacomercialbase.h:224 ui_rutacomercialbase.h:229
 #: ui_incidenciacomercialbase.h:277 ui_incidenciacomercialbase.h:282
+#: ui_rutacomercialbase.h:224 ui_rutacomercialbase.h:229
 msgid "Informe por Referencia"
 msgstr ""
 
@@ -390,9 +390,9 @@ msgstr ""
 msgid "Revisar"
 msgstr "Resten"
 
-#: rutacomercial.cpp:39 incidenciacomercial.cpp:94 rutacomercialview.cpp:140
-#: ui_rutacomercialbase.h:219 ui_rutacomercialincbase.h:204
-#: ui_incidenciacomercialbase.h:272
+#: rutacomercial.cpp:39 rutacomercialview.cpp:140 incidenciacomercial.cpp:94
+#: ui_rutacomercialincbase.h:204 ui_incidenciacomercialbase.h:272
+#: ui_rutacomercialbase.h:219
 msgid "Ruta comercial"
 msgstr ""
 

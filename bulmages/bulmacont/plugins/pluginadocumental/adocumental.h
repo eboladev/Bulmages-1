@@ -29,7 +29,7 @@
 #include <QTableWidgetItem>
 
 #include "ui_adocumentalbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class Empresa;
@@ -41,7 +41,7 @@ class myplugin1 : public QObject
 
 public:
     Empresa *empresaactual;
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     myplugin1 ( Empresa * );
@@ -60,9 +60,8 @@ class adocumental : public QDialog, public Ui_adocumentalbase
 
 private:
     Empresa *empresaactual;
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     QString RutaADocumental;
-
     /// En el modo edicion la ventana responde como si fuese un listado sobre el que se
     /// pueden editar los elementos la hacer doble click sobre ellos.
     /// En el modo consulta la ventana responde como si fuese un desplegable y se puede
@@ -70,7 +69,6 @@ private:
     /// Si modo vale 0 entonces es modo edicion.
     /// Si modo vale 1 entonces es modo consulta.
     int modo;
-
     /// Almacena por un breve lapso de tiemo el idadocumental que se ha seleccionado.
     QString idadocumental;
 

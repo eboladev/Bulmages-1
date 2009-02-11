@@ -138,8 +138,8 @@ try {
 	mensajeInfo("Debe configurar el parametro CONF_FACT_ALT");
 	return;
     } // end if
-    postgresiface2 *db;
-    db = new postgresiface2();
+    BlPostgreSqlClient *db;
+    db = new BlPostgreSqlClient();
     db->inicializa ( confpr->valor(CONF_FACT_ALT) );
     db->begin();
 
@@ -218,10 +218,6 @@ try {
 			cur4 = db->cargacursor(query5);
 
 			while (!cur1->eof() && totaltraspasado < totaltraspasable) {
-
-
-
-
 
 				/// Generamos el archivo de cambios.
 				stream << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+");" << endl;

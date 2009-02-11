@@ -26,10 +26,11 @@
 #include <QObject>
 
 #include "ui_correctorbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "funcaux.h"
 #include "blwidget.h"
+
 
 /** Busca errores y incoherencias en la contabilidad y las reporta al usuario en forma de
     listado.
@@ -60,7 +61,6 @@ public:
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
     /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
-
     void agregarError ( QString, QString, QString );
     void setMensaje ( QString mensaje );
 
@@ -70,4 +70,3 @@ public slots:
 };
 
 #endif
-

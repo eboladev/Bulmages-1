@@ -31,12 +31,11 @@
 #include <QObject>
 
 #include "bulmacont.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
-
 extern BlApplication *theApp;
 
 
@@ -45,7 +44,7 @@ class myplugin : public QObject
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     myplugin();

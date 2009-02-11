@@ -39,7 +39,7 @@
 #include "informereferencia.h"
 #include "listdescalbaranclienteview.h"
 #include "listlinalbaranclienteview.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "plugins.h"
 
 

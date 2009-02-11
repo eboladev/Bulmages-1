@@ -35,12 +35,11 @@
 #include <QToolButton>
 #include <QDateTime>
 #include <QPixmap>
-
 #include <QDomDocument>
 
 #include "listcuentasview1.h"
 #include "funcaux.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 #include "ui_aplinteligentesbase.h"

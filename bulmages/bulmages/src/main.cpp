@@ -26,9 +26,10 @@
 #include "blapplication.h"
 #include "blconfiguration.h"
 #include "logpass.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "plugins.h"
+
 
 /// Instancia de la aplicacion. Usada en algunos casos para acceder a determinadas
 /// funcionalidades como la traduccion.

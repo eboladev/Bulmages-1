@@ -25,7 +25,7 @@
 #include "blcombobox.h"
 #include "blwidget.h"
 #include "empresa.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class BusquedaCanalDelegate : public BlComboBox

@@ -23,10 +23,10 @@
 #define BUSQUEDAALMACEN_H
 
 #include "blcombobox.h"
-
 #include "blwidget.h"
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
+
 
 /** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
     de esta forma la introduccion de tipos de IVA es sencilla.
@@ -64,9 +64,7 @@ public:
     virtual void setId ( QString idalmacen );
     QString id();
     void setEmpresaBase ( Company * );
-
     void m_activated ( int index );
-
 };
 
 #endif

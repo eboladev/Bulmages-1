@@ -28,7 +28,7 @@
 #include <QTextStream>
 
 #include "ui_q19base.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
@@ -49,10 +49,8 @@ class Q19View : public FichaBf, public Ui_Q19Base
 
 public:
     FacturasList *m_facturasList;
-
     Q19View ( FacturasList *,  Company *, QWidget * );
     ~Q19View();
-
     QByteArray cobroQ19 ( QTextStream &, QString );
     QByteArray cabeceraPresentador ( QTextStream &, QString );
     QByteArray cabeceraOrdenante ( QTextStream &, QString );
@@ -60,8 +58,6 @@ public:
     QByteArray totalGeneral ( QTextStream &, QString , QString , QString  );
     /// Como ya es un signaling slot en la clase ficha no se delcara como slot.
     virtual void on_mui_aceptar_clicked();
-
 };
 
 #endif
-

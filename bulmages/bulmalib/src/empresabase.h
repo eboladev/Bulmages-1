@@ -25,12 +25,12 @@
 #include <QWorkspace>
 #include <QProgressBar>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"
 
 
-class EmpresaBase : public postgresiface2
+class EmpresaBase : public BlPostgreSqlClient
 {
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de

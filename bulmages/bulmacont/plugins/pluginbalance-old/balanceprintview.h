@@ -27,9 +27,10 @@
 #include <errno.h>
 
 #include "ui_balanceprintbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "blwidget.h"
+
 
 /// Formulario introducción de datos para la impresión del balance de sumas y saldos.
 /** \todo Hay que cambiar el array de ccostes por un cursor.
@@ -40,7 +41,6 @@
 class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public PEmpresaBase
 {
     Q_OBJECT
-
 
 public:
     BalancePrintView ( Empresa *emp );
@@ -57,4 +57,3 @@ private slots:
 };
 
 #endif
-

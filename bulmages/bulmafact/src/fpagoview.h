@@ -25,7 +25,7 @@
 #include "funcaux.h"
 #include "ui_fpagobase.h"
 #include "fichabf.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class Company;

@@ -26,7 +26,7 @@
 #include <QMutableListIterator>
 
 #include "empresa.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "linprevcobro.h"
 #include "blfixed.h"
 #include "funcaux.h"

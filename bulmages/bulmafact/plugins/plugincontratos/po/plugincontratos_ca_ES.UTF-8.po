@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr "Quantitat"
 msgid "Cliente"
 msgstr "Següent"
 
-#: contratoview.cpp:65 contratoslist.cpp:64
+#: contratoslist.cpp:64 contratoview.cpp:65
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"

@@ -30,7 +30,7 @@
 #include <QApplication>
 #include <QObject>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "bulmafact.h"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,7 +179,7 @@ msgstr ""
 msgid "Clientes (*.xml)"
 msgstr "Contaplus (*.xml)"
 
-#: articuloview.cpp:62 tiposarticuloview.cpp:46 familiasview.cpp:51
+#: tiposarticuloview.cpp:46 articuloview.cpp:62 familiasview.cpp:51
 #: familiasview.cpp:568
 msgid "Codigo"
 msgstr "Codi"
@@ -486,7 +486,7 @@ msgstr ""
 msgid "Nombre"
 msgstr "Nom"
 
-#: articulolist.cpp:371 comparticulolistview.cpp:43 articuloview.cpp:63
+#: articulolist.cpp:371 articuloview.cpp:63 comparticulolistview.cpp:43
 #, fuzzy
 msgid "Nombre del articulo"
 msgstr "Nom de l'amortització"
@@ -514,8 +514,8 @@ msgstr "<P> Article <B>"
 msgid "Nuevo Tipo de articulo"
 msgstr ""
 
-#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:297
+#: ui_articleslistbase.h:292 ui_articleslistbase.h:297
+#: ui_articleeditbase.h:580
 #, fuzzy
 msgid "Nuevo articulo"
 msgstr "Nou assentament"

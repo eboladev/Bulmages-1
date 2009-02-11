@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -277,7 +277,7 @@ msgstr ""
 msgid "Fecha inicial:"
 msgstr ""
 
-#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:315
+#: pedidosproveedorlist.cpp:315 pedidoproveedorview.cpp:58
 #, fuzzy
 msgid "Fecha pedido proveedor"
 msgstr "NIF del proveïdor"
@@ -302,7 +302,7 @@ msgstr "Desar"
 msgid "I.R.P.F.:"
 msgstr "C.I.F.:"
 
-#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:328
+#: pedidosproveedorlist.cpp:328 pedidoproveedorview.cpp:56
 #, fuzzy
 msgid "Id almacen"
 msgstr "<LI> Magatzem <B>"
@@ -322,8 +322,8 @@ msgstr "Id compte"
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: listdescpedidoproveedorview.cpp:42 listlinpedidoproveedorview.cpp:50
-#: pedidosproveedorlist.cpp:325
+#: pedidosproveedorlist.cpp:325 listdescpedidoproveedorview.cpp:42
+#: listlinpedidoproveedorview.cpp:50
 #, fuzzy
 msgid "Id pedido"
 msgstr "Imprimeix la comanda"
@@ -333,12 +333,12 @@ msgstr "Imprimeix la comanda"
 msgid "Id pedido proveedor"
 msgstr "NIF del proveïdor"
 
-#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:327
+#: pedidosproveedorlist.cpp:327 pedidoproveedorview.cpp:55
 #, fuzzy
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
 
-#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:326
+#: pedidosproveedorlist.cpp:326 pedidoproveedorview.cpp:64
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Id esborrany"
@@ -443,7 +443,7 @@ msgstr ""
 msgid "Pedidos procesados"
 msgstr ""
 
-#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:322
+#: pedidosproveedorlist.cpp:322 pedidoproveedorview.cpp:65
 #, fuzzy
 msgid "Persona de contacto proveedor"
 msgstr "Telèfon del proveïdor"
@@ -463,8 +463,8 @@ msgstr "Percent&ual"
 msgid "Precio"
 msgstr "Adreça:"
 
-#: pedidoproveedorview.cpp:89 pedidosproveedorlist.cpp:46
-#: pedidosproveedorlist.cpp:72
+#: pedidosproveedorlist.cpp:46 pedidosproveedorlist.cpp:72
+#: pedidoproveedorview.cpp:89
 msgid "Proveedor:"
 msgstr ""
 
@@ -477,7 +477,7 @@ msgstr ""
 msgid "R.E.:"
 msgstr "C.P.:"
 
-#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:316
+#: pedidosproveedorlist.cpp:316 pedidoproveedorview.cpp:62
 msgid "Referencia pedido"
 msgstr ""
 
@@ -490,7 +490,7 @@ msgstr ""
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:323
+#: pedidosproveedorlist.cpp:323 pedidoproveedorview.cpp:66
 #, fuzzy
 msgid "Telefono proveedor"
 msgstr "Telèfon del proveïdor"

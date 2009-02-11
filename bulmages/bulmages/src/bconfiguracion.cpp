@@ -39,6 +39,7 @@
 #include <set>
 #endif
 
+
 ///
 /**
 \param ref
@@ -189,7 +190,7 @@ void BConfiguracion::BotonA_10aceptar()
 void BConfiguracion::BotonContaplus()
 {
     _depura ( "BConfiguracion::BotonContaplus", 0 );
-    postgresiface2 *DBconn = new postgresiface2();
+    BlPostgreSqlClient *DBconn = new BlPostgreSqlClient();
     DBconn->inicializa ( PunteroAlSelector->empresaDB() );
     importContaplus *import = new importContaplus ( DBconn, 0, 0 );
     import->exec();
@@ -208,7 +209,7 @@ void BConfiguracion::BotonContaplus()
 void BConfiguracion::s_importexportbulmafact()
 {
     _depura ( "BConfiguracion::s_importexportbulmafact", 0 );
-    postgresiface2 *DBconn = new postgresiface2();
+    BlPostgreSqlClient *DBconn = new BlPostgreSqlClient();
     DBconn->inicializa ( PunteroAlSelector->empresaDB() );
     ImportExportBulmafactView *import = new ImportExportBulmafactView ( DBconn, 0, 0 );
     import->exec();

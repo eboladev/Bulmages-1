@@ -26,7 +26,7 @@
 #include <QDialog>
 
 #include "ui_nuevaempresadlg.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class BSelector;

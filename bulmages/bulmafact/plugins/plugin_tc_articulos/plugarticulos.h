@@ -6,12 +6,13 @@
 #include "bulmafact.h"
 #include "subform2bf.h"
 
+
 class plugin_tc_articulos : public QObject
 {
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     Bulmafact *m_bulmafact;
 
 public:
@@ -37,6 +38,4 @@ public:
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 };
 
-
 #endif
-

@@ -28,7 +28,7 @@
 #include "ui_inventariobase.h"
 #include "inventario.h"
 #include "busquedafecha.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blform.h"
 
 
@@ -56,4 +56,3 @@ public slots:
 };
 
 #endif
-

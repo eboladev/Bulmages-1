@@ -32,7 +32,7 @@
 #include <QCloseEvent>
 
 #include "ui_cuentabase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
@@ -54,4 +54,3 @@ public:
 };
 
 #endif
-

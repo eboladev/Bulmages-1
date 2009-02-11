@@ -27,7 +27,7 @@
 #include "ui_balancebase.h"
 #include "diarioview.h"
 #include "extractoview1.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "listcuentasview1.h"
 #include "fichabc.h"
@@ -66,11 +66,8 @@ private:
     /// Presenta el Balance de Sumas y Saldos.
     void presentarSyS ( QString, QString, QString, QString, int, int, bool );
 
-
 public slots:
     void on_mui_actualizar_clicked();
-
 };
 
 #endif
-

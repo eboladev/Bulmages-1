@@ -27,12 +27,10 @@
 #include <QCheckBox>
 
 #include "ui_incidenciacomercialbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "incidenciacomercial.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
-
-
 
 
 class IncidenciaComercialView : public IncidenciaComercial, private Ui_IncidenciaComercialBase
@@ -52,4 +50,3 @@ public:
 };
 
 #endif
-

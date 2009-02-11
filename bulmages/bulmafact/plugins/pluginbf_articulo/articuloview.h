@@ -23,7 +23,7 @@
 #define ARTICULOVIEW_H
 
 #include "ui_articleeditbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "fichabf.h"
 
 
@@ -54,7 +54,6 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
 
-
 public slots:
     virtual void on_mui_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_clicked();
@@ -62,4 +61,3 @@ public slots:
 };
 
 #endif
-

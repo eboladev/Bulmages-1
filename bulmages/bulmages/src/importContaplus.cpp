@@ -70,7 +70,7 @@ void importContaplus::mensajeria ( QString mensaje )
 \param parent
 \param f
 **/
-importContaplus::importContaplus ( postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0 )
+importContaplus::importContaplus ( BlPostgreSqlClient *con, QWidget *parent, Qt::WFlags f = 0 )
         : QDialog ( parent, f ), pgimportfiles ( con )
 {
     _depura ( "importContaplus::importContaplus", 0 );

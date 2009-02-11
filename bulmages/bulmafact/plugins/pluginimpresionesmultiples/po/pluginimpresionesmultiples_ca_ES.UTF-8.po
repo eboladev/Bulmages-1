@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,36 +18,36 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: impmultqtoolbutton.cpp:597 impmultqtoolbutton.cpp:598
+#: impmultqtoolbutton.cpp:596 impmultqtoolbutton.cpp:597
 msgid "Enviar elementos seleccionados por e-mail"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:91 impmultqtoolbutton.cpp:92
+#: impmultqtoolbutton.cpp:90 impmultqtoolbutton.cpp:91
 msgid "Imprimir elementos seleccionados"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:449 impmultqtoolbutton.cpp:450
+#: impmultqtoolbutton.cpp:448 impmultqtoolbutton.cpp:449
 #, fuzzy
 msgid "Invertir seleccion de elementos"
 msgstr "Ha de seleccionar un element"
 
-#: impmultqtoolbutton.cpp:238
+#: impmultqtoolbutton.cpp:237
 #, fuzzy
 msgid "no se pudo crear instancia de albaran"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
-#: impmultqtoolbutton.cpp:166 impmultqtoolbutton.cpp:777
+#: impmultqtoolbutton.cpp:165 impmultqtoolbutton.cpp:776
 #, fuzzy
 msgid "no se pudo crear instancia de factura"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
-#: impmultqtoolbutton.cpp:202 impmultqtoolbutton.cpp:683
-#: impmultqtoolbutton.cpp:728
+#: impmultqtoolbutton.cpp:201 impmultqtoolbutton.cpp:682
+#: impmultqtoolbutton.cpp:727
 #, fuzzy
 msgid "no se pudo crear instancia de pedido cliente"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
-#: impmultqtoolbutton.cpp:639
+#: impmultqtoolbutton.cpp:638
 #, fuzzy
 msgid "no se pudo crear instancia de presupuesto"
 msgstr "No es pot tancar la finestra a causa d'un error"

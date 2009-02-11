@@ -33,7 +33,7 @@
 
 #include "modelo300.h"
 #include "blconfiguration.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 
 
@@ -49,7 +49,7 @@ Mod300ps::Mod300ps ( QWidget *parent ) : QDialog ( parent )
     setupUi ( this );
     QString query = "SELECT descripcion, bancoent_cuenta, codigo FROM cuenta WHERE codigo LIKE '572%%' AND codigo > 572";
 
-    postgresiface2 *metabase = new postgresiface2();
+    BlPostgreSqlClient *metabase = new BlPostgreSqlClient();
 
     metabase->inicializa ( "bulmages" ); ///[TODO] CAMBIAR!!!!
 
@@ -350,7 +350,7 @@ void Mod300ps::rellena_identificacion()
     _depura ( "Mod300ps::rellena_identificacion", 0 );
     QString cad1;
 
-    postgresiface2 *m = new postgresiface2();
+    BlPostgreSqlClient *m = new BlPostgreSqlClient();
 
     m->inicializa ( "bulmages" ); ///[TODO] CAMBIAR!!!!
     escrder ( m->propiedadempresa ( "CIF" ), 78, 601 );

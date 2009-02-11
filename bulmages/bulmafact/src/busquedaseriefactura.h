@@ -24,8 +24,9 @@
 
 #include "blcombobox.h"
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
+
 
 /// Permite  seleccionar una serie de factura.
 /** Este Widget permite buscar y seleccionar un
@@ -47,10 +48,7 @@ public:
     void setEmpresaBase ( Company *comp );
     QString id();
     virtual void setId ( QString );
-
     void m_activated ( int index );
-
 };
 
 #endif
-

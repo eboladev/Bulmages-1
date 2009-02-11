@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,8 +145,8 @@ msgstr "Empreses disponibles:"
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
 #: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
+#: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
@@ -176,7 +176,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranesproveedorlistbase.h:461 ui_albaranproveedorbase.h:595
+#: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 

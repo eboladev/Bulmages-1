@@ -21,7 +21,7 @@
 #include <QComboBox>
 
 #include "cobropagoview.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "aplinteligentesview.h"
 #include "busquedacuenta.h"

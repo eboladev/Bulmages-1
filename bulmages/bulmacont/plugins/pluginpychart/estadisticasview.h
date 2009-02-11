@@ -2,7 +2,7 @@
                           estadisticasview.h  -  description
                              -------------------
     begin                : mar jul 15 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -17,14 +17,11 @@
 #ifndef ESTADISTICASVIEW_H
 #define ESTADISTICASVIEW_H
 
-#include <qwidget.h>
+#include <QWidget>
 
-#include "postgresiface2.h"
 #include "estadisticasdlg1.h"
+#include "blpostgresqlclient.h"
 
-
-#include "postgresiface2.h"
-/** *@author Tomeu Borrás Riera  */
 
 class empresa;
 
@@ -32,11 +29,10 @@ class empresa;
 class estadisticasview : public estadisticasdlg
 {
     Q_OBJECT
+
 public:
-
-    postgresiface2 *conexionbase;
-
-    int inicializa ( postgresiface2 *, int );
+    BlPostgreSqlClient *conexionbase;
+    int inicializa ( BlPostgreSqlClient *, int );
     estadisticasview ( QWidget *parent = 0, const char *name = 0 );
     ~estadisticasview();
     void presentar();
@@ -47,12 +43,15 @@ public:
 class myplugin : public QObject
 {
     Q_OBJECT
+
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     empresa *empresaactual;
+
 public:
     myplugin();
     ~myplugin();
+
 public slots:
     virtual void BalanceGrafico();
     virtual void BalanceBarras();

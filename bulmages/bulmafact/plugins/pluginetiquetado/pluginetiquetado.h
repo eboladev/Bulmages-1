@@ -24,12 +24,11 @@
 # define MY_EXPORT
 #endif
 
-
 #include "albaranproveedorview.h"
 #include "bulmafact.h"
 
-extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 
+extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 /*
 extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
 extern "C" MY_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
@@ -46,7 +45,7 @@ class myplugin : public QObject {
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     myplugin();

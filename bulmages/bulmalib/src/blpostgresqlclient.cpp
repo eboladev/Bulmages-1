@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/// Contiene la implementacion de las clases 'cursor2' y 'postgresiface2' que proveen
+/// Contiene la implementacion de las clases 'cursor2' y 'BlPostgreSqlClient' que proveen
 /// acceso a las bases de datos de postgres de forma sencilla y eficiente.
 #include <QMessageBox>
 #include <QApplication>
@@ -27,7 +27,7 @@
 #include <climits>
 #include <math.h>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "msgerror.h"
 #include "funcaux.h"
 
@@ -80,7 +80,7 @@ int cursor2::regactual()
 /// consultas (nregistros y ncampos).
 /// Si todo falla (y en funcion de la configuracion) Da un mensaje de alerta o no.
 /// \param nombre Nombre que obtendra el query (OBSOLETO)
-/// \param conn1 Conexion con la base de datos (Inicializada en \ref postgresiface2
+/// \param conn1 Conexion con la base de datos (Inicializada en \ref BlPostgreSqlClient
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
 cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery)
 {
@@ -468,10 +468,10 @@ bool cursor2::esprimerregistro()
 /**
 \return
 **/
-QString postgresiface2::nameDB()
+QString BlPostgreSqlClient::nameDB()
 {
-    _depura ( "postgresiface2::nameDB", 0 );
-    _depura ( "END postgresiface2::nameDB", 0 );
+    _depura ( "BlPostgreSqlClient::nameDB", 0 );
+    _depura ( "END BlPostgreSqlClient::nameDB", 0 );
     return dbName;
 }
 
@@ -479,22 +479,22 @@ QString postgresiface2::nameDB()
 /// Constructor de la clase, no hace nada de nada de nada.
 /**
 **/
-postgresiface2::postgresiface2()
+BlPostgreSqlClient::BlPostgreSqlClient()
 {
-    _depura ( "postgresiface2::postgresiface2", 0 );
+    _depura ( "BlPostgreSqlClient::BlPostgreSqlClient", 0 );
     m_transaccion = FALSE;
-    _depura ( "END postgresiface2::postgresiface2", 0 );
+    _depura ( "END BlPostgreSqlClient::BlPostgreSqlClient", 0 );
 }
 
 
 /// Finaliza la conexi&oacute;n con la base de datos.
 /**
 **/
-void postgresiface2::terminar()
+void BlPostgreSqlClient::terminar()
 {
-    _depura ( "postgresiface2::terminar", 0 );
+    _depura ( "BlPostgreSqlClient::terminar", 0 );
     PQfinish ( conn );
-    _depura ( "END postgresiface2::terminar", 0 );
+    _depura ( "END BlPostgreSqlClient::terminar", 0 );
 }
 
 
@@ -502,12 +502,12 @@ void postgresiface2::terminar()
 /// con la base de datos.
 /**
 **/
-postgresiface2::~postgresiface2()
+BlPostgreSqlClient::~BlPostgreSqlClient()
 {
-    _depura ( "postgresiface2::~postgresiface2", 0 );
+    _depura ( "BlPostgreSqlClient::~BlPostgreSqlClient", 0 );
     /// close the connection to the database and cleanup.
     PQfinish ( conn );
-    _depura ( "END postgresiface2::~postgresiface2", 0 );
+    _depura ( "END BlPostgreSqlClient::~BlPostgreSqlClient", 0 );
 }
 
 
@@ -518,9 +518,9 @@ postgresiface2::~postgresiface2()
 /// \param user Indica el usuario que hace la operacion a ojos de la base de datos.
 /// \param passwd Indica la contrasenya que utiliza el usuario para autentificarse.
 /// \return Si todo va bien devuelve 0, en caso contrario devuelve 1.
-int postgresiface2::inicializa ( QString nomdb )
+int BlPostgreSqlClient::inicializa ( QString nomdb )
 {
-    _depura ( "postgresiface2::inicializa", 0, nomdb );
+    _depura ( "BlPostgreSqlClient::inicializa", 0, nomdb );
     dbName = nomdb;
     pghost = confpr->valor ( CONF_SERVIDOR ); /// host name of the backend server.
     pgport = confpr->valor ( CONF_PUERTO ); /// port of the backend server.
@@ -569,7 +569,7 @@ int postgresiface2::inicializa ( QString nomdb )
 		_depura("Error en la conexion postgresifcace2::inicializa", 2);
 	} // end try
 
-    _depura ( "END postgresiface2::inicializa", 0, nomdb );
+    _depura ( "END BlPostgreSqlClient::inicializa", 0, nomdb );
     return 0;
 }
 
@@ -579,9 +579,9 @@ int postgresiface2::inicializa ( QString nomdb )
 /// \return Devuelve 0 si no ha habido problemas, en caso contrario devuelve 1.
 /**
 **/
-int postgresiface2::formatofecha()
+int BlPostgreSqlClient::formatofecha()
 {
-    _depura ( "postgresiface2::formatofecha", 0 );
+    _depura ( "BlPostgreSqlClient::formatofecha", 0 );
     QString query = "";
     PGresult *res;
     query = "SET DATESTYLE TO SQL, European";
@@ -607,7 +607,7 @@ int postgresiface2::formatofecha()
     } // end if
     PQclear ( res );
 
-    _depura ( "END postgresiface2::formatofecha", 0 );
+    _depura ( "END BlPostgreSqlClient::formatofecha", 0 );
     return 0;
 }
 
@@ -616,9 +616,9 @@ int postgresiface2::formatofecha()
 /// Las transacciones lo que indican es que el usuario se ha apoderado de la base de datos
 /// durante un tiempo y que la operacion que va a transcurrir debe hacerse sin concurrencia.
 /// \return Si todo ha funcionado bien devuelve un 0, en caso contrario devuelve un 1.
-int postgresiface2::begin()
+int BlPostgreSqlClient::begin()
 {
-    _depura ( "postgresiface2::begin", 0 );
+    _depura ( "BlPostgreSqlClient::begin", 0 );
     if ( m_transaccion ) {
         _depura ( "Ya estamos dentro de una transaccion", 0 );
         return -1;
@@ -632,7 +632,7 @@ int postgresiface2::begin()
     } // end if
     PQclear ( res );
     m_transaccion = TRUE;
-    _depura ( "END postgresiface2::begin", 0 );
+    _depura ( "END BlPostgreSqlClient::begin", 0 );
     return ( 0 );
 }
 
@@ -643,18 +643,18 @@ int postgresiface2::begin()
 /**
 \return
 **/
-void postgresiface2::commit()
+void BlPostgreSqlClient::commit()
 {
-    _depura ( "postgresiface2::commit", 0 );
+    _depura ( "BlPostgreSqlClient::commit", 0 );
     if ( !m_transaccion ) {
-        _depura ( "END postgresiface2::commit", 0, "No estamos en ninguna transaccion" );
+        _depura ( "END BlPostgreSqlClient::commit", 0, "No estamos en ninguna transaccion" );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "COMMIT" );
     PQclear ( res );
     m_transaccion = FALSE;
-    _depura ( "END postgresiface2::commit", 0 );
+    _depura ( "END BlPostgreSqlClient::commit", 0 );
 }
 
 
@@ -664,18 +664,18 @@ void postgresiface2::commit()
 /**
 \return
 **/
-void postgresiface2::rollback()
+void BlPostgreSqlClient::rollback()
 {
-    _depura ( "postgresiface2::rollback", 0 );
+    _depura ( "BlPostgreSqlClient::rollback", 0 );
     if ( !m_transaccion ) {
-        _depura ( "END postgresiface2::rollback", 0, "No estamos en ninguna transaccion" );
+        _depura ( "END BlPostgreSqlClient::rollback", 0, "No estamos en ninguna transaccion" );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "ROLLBACK" );
     PQclear ( res );
     m_transaccion = FALSE;
-    _depura ( "END postgresiface2::rollback", 0 );
+    _depura ( "END BlPostgreSqlClient::rollback", 0 );
 }
 
 
@@ -687,18 +687,18 @@ void postgresiface2::rollback()
 \param Query La sentencia SELECT en formato SQL.
 \param nomcursor Nombre que desea asignar a la consulta. Puede estar vacia.
 **/
-cursor2 *postgresiface2::cargacursor ( QString query, QString nomcursor, int limit, int offset )
+cursor2 *BlPostgreSqlClient::cargacursor ( QString query, QString nomcursor, int limit, int offset )
 {
  return cargacursor(query,0,NULL,nomcursor,limit,offset);
 }
 
  const size_t digitsInt = 1+int(ceil(log10(1+INT_MAX)));
 
-cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
+cursor2 *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
                        QString *paramValues, QString nomcursor, 
                        int limit, int offset )
 { 
-        _depura ( "postgresiface2::cargacursor", 0, query );
+        _depura ( "BlPostgreSqlClient::cargacursor", 0, query );
 
     cursor2 *cur = NULL;
     /// Iniciamos la depuracion.
@@ -723,12 +723,12 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
 
         cur = new cursor2 ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
         
-        _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
+        _depura ( "END BlPostgreSqlClient::cargacursor", 0, nomcursor );
 
     } catch ( ... ) {
         if ( cur ) delete cur;
 	_depura("La consulta: \"" + query + "\" Ha generado un error",2);
-        _depura ( "END postgresiface2::cargacursor", 0, "Error en la base de datos" );
+        _depura ( "END BlPostgreSqlClient::cargacursor", 0, "Error en la base de datos" );
         cur = NULL;
     } // end try
     return cur;
@@ -747,9 +747,9 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
 /**
 \param Query
 **/
-int postgresiface2::ejecuta ( QString Query )
+int BlPostgreSqlClient::ejecuta ( QString Query )
 {
-    _depura ( "postgresiface2::ejecuta", 0, Query );
+    _depura ( "BlPostgreSqlClient::ejecuta", 0, Query );
     PGresult *result = NULL;
     try {
         /// Prova de control de permisos.
@@ -762,24 +762,24 @@ int postgresiface2::ejecuta ( QString Query )
 		if (PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus( result ) != 2 )
 			throw -1;
         PQclear ( result );
-        _depura ( "END postgresiface2::ejecuta", 0 );
+        _depura ( "END BlPostgreSqlClient::ejecuta", 0 );
         return 0;
     } catch ( int e ) {
         if ( e == 42501 ) {
-            _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
+            _depura ( "END BlPostgreSqlClient::ejecuta", 0, "SQL command failed: " + Query );
             QString mensaje = "No tiene permisos suficientes para ejecutar el comando SQL:\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } else {
-            _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
+            _depura ( "END BlPostgreSqlClient::ejecuta", 0, "SQL command failed: " + Query );
             QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " +QString::number(PQresultStatus ( result )) + "\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } // end if
     } catch ( ... ) {
-        _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
+        _depura ( "END BlPostgreSqlClient::ejecuta", 0, "SQL command failed: " + Query );
         throw - 1;
     } // end try
 }
@@ -792,9 +792,9 @@ int postgresiface2::ejecuta ( QString Query )
 \param cod
 \return
 **/
-QString postgresiface2::searchParent ( QString cod )
+QString BlPostgreSqlClient::searchParent ( QString cod )
 {
-    _depura ( "postgresiface2::searchParent", 0 );
+    _depura ( "BlPostgreSqlClient::searchParent", 0 );
     QString padre = "NULL"; /// Almacena el padre de la cuenta.
     QString query;
     int i = 2;
@@ -812,7 +812,7 @@ QString postgresiface2::searchParent ( QString cod )
         delete cur;
         i++;
     } // end while
-    _depura ( "END postgresiface2::searchParent", 0 );
+    _depura ( "END BlPostgreSqlClient::searchParent", 0 );
     return padre;
 }
 
@@ -832,9 +832,9 @@ QString postgresiface2::searchParent ( QString cod )
 \param idcanal
 \return
 **/
-int postgresiface2::nuevoborrador ( int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal )
+int BlPostgreSqlClient::nuevoborrador ( int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal )
 {
-    _depura ( "postgresiface2::nuevoborrador", 0 );
+    _depura ( "BlPostgreSqlClient::nuevoborrador", 0 );
     QString query = "";
     QString textcuenta;
     QString textcontrapartida;
@@ -872,7 +872,7 @@ int postgresiface2::nuevoborrador ( int idcuenta, int idasiento, QString concept
                     idtipoiva,
                     sanearCadena ( textidccoste ).toAscii().data(),
                     sanearCadena ( textidcanal ).toAscii().data() );
-    _depura ( "END postgresiface2::nuevoborrador", 0 );
+    _depura ( "END BlPostgreSqlClient::nuevoborrador", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -892,9 +892,9 @@ int postgresiface2::nuevoborrador ( int idcuenta, int idasiento, QString concept
 \param idcanal
 \return
 **/
-int postgresiface2::modificaborrador ( int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal )
+int BlPostgreSqlClient::modificaborrador ( int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal )
 {
-    _depura ( "postgresiface2::modificaborrador", 0 );
+    _depura ( "BlPostgreSqlClient::modificaborrador", 0 );
     QString query = "";
     QString textidccoste;
     QString textcontrapartida;
@@ -917,7 +917,7 @@ int postgresiface2::modificaborrador ( int idborrador, int idcuenta, float idebe
 
     query.sprintf ( "UPDATE borrador SET idcuenta = %d, debe = %2.2f, haber = %2.2f, conceptocontable = '%s', fecha = '%s', contrapartida = %s, idtipoiva = %d, idc_coste = %s, idcanal = %s WHERE idborrador = %d", idcuenta, idebe, ihaber, concepto.toAscii().data(), fecha.toAscii().data(), textcontrapartida.toAscii().data(), idtipoiva, textidccoste.toAscii().data(), textocanal.toAscii().data(), idborrador );
     _depura ( query );
-    _depura ( "END postgresiface2::modificaborrador", 0 );
+    _depura ( "END BlPostgreSqlClient::modificaborrador", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -930,9 +930,9 @@ int postgresiface2::modificaborrador ( int idborrador, int idcuenta, float idebe
 \param ccuenta
 \return
 **/
-cursor2 *postgresiface2::cargacuenta ( int idcuenta, QString ccuenta )
+cursor2 *BlPostgreSqlClient::cargacuenta ( int idcuenta, QString ccuenta )
 {
-    _depura ( "postgresiface2::cargacuenta", 0 );
+    _depura ( "BlPostgreSqlClient::cargacuenta", 0 );
     QString query = "";
     if ( idcuenta != 0 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta );
@@ -940,7 +940,7 @@ cursor2 *postgresiface2::cargacuenta ( int idcuenta, QString ccuenta )
         query.sprintf ( "SELECT * FROM cuenta WHERE codigo LIKE '%s' ORDER BY codigo", ccuenta.toAscii().data() );
     } // end if
     cursor2 *cur = cargacursor ( query, "cargacuenta" );
-    _depura ( "END postgresiface2::cargacuenta", 0 );
+    _depura ( "END BlPostgreSqlClient::cargacuenta", 0 );
     return cur;
 }
 
@@ -950,13 +950,13 @@ cursor2 *postgresiface2::cargacuenta ( int idcuenta, QString ccuenta )
 \param idasiento
 \return
 **/
-cursor2 *postgresiface2::cargaasiento ( int idasiento )
+cursor2 *BlPostgreSqlClient::cargaasiento ( int idasiento )
 {
-    _depura ( "postgresiface2::cargaasiento", 0 );
+    _depura ( "BlPostgreSqlClient::cargaasiento", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM asiento WHERE idasiento = %d", idasiento );
     cursor2 *cur = cargacursor ( query, "cargaasiento" );
-    _depura ( "END postgresiface2::cargaasiento", 0 );
+    _depura ( "END BlPostgreSqlClient::cargaasiento", 0 );
     return cur;
 }
 
@@ -967,13 +967,13 @@ cursor2 *postgresiface2::cargaasiento ( int idasiento )
 \param tidasiento
 \return
 **/
-cursor2 *postgresiface2::cargaapuntes ( int tidasiento )
+cursor2 *BlPostgreSqlClient::cargaapuntes ( int tidasiento )
 {
-    _depura ( "postgresiface2::cargaapuntes", 0 );
+    _depura ( "BlPostgreSqlClient::cargaapuntes", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM apunte where idasiento = %d ORDER BY idapunte", tidasiento );
     cursor2 *cur = cargacursor ( query, "cargaapuntes" );
-    _depura ( "END postgresiface2::cargaapuntes", 0 );
+    _depura ( "END BlPostgreSqlClient::cargaapuntes", 0 );
     return cur;
 }
 
@@ -984,13 +984,13 @@ cursor2 *postgresiface2::cargaapuntes ( int tidasiento )
 \param tidasiento
 \return
 **/
-cursor2 *postgresiface2::cargaborradores ( int tidasiento )
+cursor2 *BlPostgreSqlClient::cargaborradores ( int tidasiento )
 {
-    _depura ( "postgresiface2::cargaborradores", 0 );
+    _depura ( "BlPostgreSqlClient::cargaborradores", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM borrador where idasiento = %d ORDER BY idborrador", tidasiento );
     cursor2 *cur = cargacursor ( query, "cargaborradores" );
-    _depura ( "END postgresiface2::cargaborradores", 0 );
+    _depura ( "END BlPostgreSqlClient::cargaborradores", 0 );
     return cur;
 }
 
@@ -1003,9 +1003,9 @@ cursor2 *postgresiface2::cargaborradores ( int tidasiento )
 \param padre
 \return
 **/
-cursor2 *postgresiface2::cargacuentas ( int padre )
+cursor2 *BlPostgreSqlClient::cargacuentas ( int padre )
 {
-    _depura ( "postgresiface2::cargacuentas", 0 );
+    _depura ( "BlPostgreSqlClient::cargacuentas", 0 );
     QString query = "";
     if ( padre != 0 && padre != -1 && padre != -2 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE padre=%d ORDER BY padre", padre );
@@ -1017,7 +1017,7 @@ cursor2 *postgresiface2::cargacuentas ( int padre )
         query.sprintf ( "SELECT * FROM cuenta WHERE NOT padre isnull ORDER BY padre " );
     }// end if
     cursor2 *cur = cargacursor ( query, "cargaborradores" );
-    _depura ( "END postgresiface2::cargacuentas", 0 );
+    _depura ( "END BlPostgreSqlClient::cargacuentas", 0 );
     return cur;
 }
 
@@ -1026,12 +1026,12 @@ cursor2 *postgresiface2::cargacuentas ( int padre )
 /**
 \return
 **/
-cursor2 *postgresiface2::cargagrupos()
+cursor2 *BlPostgreSqlClient::cargagrupos()
 {
-    _depura ( "postgresiface2::cargagrupos", 0 );
+    _depura ( "BlPostgreSqlClient::cargagrupos", 0 );
     QString query = "SELECT * FROM grupo";
     cursor2 *cur = cargacursor ( query, "cargagrupos" );
-    _depura ( "END postgresiface2::cargagrupos", 0 );
+    _depura ( "END BlPostgreSqlClient::cargagrupos", 0 );
     return cur;
 }
 
@@ -1044,7 +1044,7 @@ cursor2 *postgresiface2::cargagrupos()
 \param fechafinal
 \return
 **/
-cursor2 *postgresiface2::cargaapuntesctafecha ( int tidcuenta, QString fechainicial, QString fechafinal )
+cursor2 *BlPostgreSqlClient::cargaapuntesctafecha ( int tidcuenta, QString fechainicial, QString fechafinal )
 {
     _depura ( "ostgresiface2::cargaapuntesctafecha", 0 );
     QString query = "";
@@ -1062,13 +1062,13 @@ cursor2 *postgresiface2::cargaapuntesctafecha ( int tidcuenta, QString fechainic
 \param fecha
 \return
 **/
-cursor2 *postgresiface2::cargasaldoscuentafecha ( int idcuenta, QString fecha )
+cursor2 *BlPostgreSqlClient::cargasaldoscuentafecha ( int idcuenta, QString fecha )
 {
-    _depura ( "postgresiface2::cargasaldoscuentafecha", 0 );
+    _depura ( "BlPostgreSqlClient::cargasaldoscuentafecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = %d AND fecha <'%s'", idcuenta, fecha.toAscii().data() );
     cursor2 *cur = cargacursor ( query, "cargasaldoscuentafecha" );
-    _depura ( "END postgresiface2::cargasaldoscuentafecha", 0 );
+    _depura ( "END BlPostgreSqlClient::cargasaldoscuentafecha", 0 );
     return ( cur );
 }
 
@@ -1079,13 +1079,13 @@ cursor2 *postgresiface2::cargasaldoscuentafecha ( int idcuenta, QString fecha )
 \param fechfin
 \return
 **/
-cursor2 *postgresiface2::cargaasientosfecha ( QString fechini, QString fechfin )
+cursor2 *BlPostgreSqlClient::cargaasientosfecha ( QString fechini, QString fechfin )
 {
-    _depura ( "postgresiface2::cargaasientosfecha", 0 );
+    _depura ( "BlPostgreSqlClient::cargaasientosfecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM asiento WHERE fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", fechini.toAscii().data(), fechfin.toAscii().data() );
     cursor2 *cur = cargacursor ( query, "cargaasientosfecha" );
-    _depura ( "END postgresiface2::cargaasientosfecha", 0 );
+    _depura ( "END BlPostgreSqlClient::cargaasientosfecha", 0 );
     return cur;
 }
 
@@ -1102,9 +1102,9 @@ cursor2 *postgresiface2::cargaasientosfecha ( QString fechini, QString fechfin )
 \param codigofinal
 \return
 **/
-cursor2 *postgresiface2::cargacuentascodigo ( int padre, QString codigoinicial, QString codigofinal )
+cursor2 *BlPostgreSqlClient::cargacuentascodigo ( int padre, QString codigoinicial, QString codigofinal )
 {
-    _depura ( "postgresiface2::cargacuentascodigo", 0 );
+    _depura ( "BlPostgreSqlClient::cargacuentascodigo", 0 );
     QString query = "";
     if ( padre != 0 && padre != -1 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE padre = %d AND codigo >= '%s' AND codigo <= '%s' ORDER BY codigo", padre, codigoinicial.toAscii().data(), codigofinal.toAscii().data() );
@@ -1114,7 +1114,7 @@ cursor2 *postgresiface2::cargacuentascodigo ( int padre, QString codigoinicial, 
         query.sprintf ( "SELECT * FROM cuenta WHERE codigo >= '%s' AND codigo <= '%s' ORDER BY codigo", codigoinicial.toAscii().data(), codigofinal.toAscii().data() );
     } // end if
     cursor2 *cur = cargacursor ( query, "cargasaldoscuentafecha" );
-    _depura ( "END postgresiface2::cargacuentascodigo", 0 );
+    _depura ( "END BlPostgreSqlClient::cargacuentascodigo", 0 );
     return cur;
 }
 
@@ -1124,14 +1124,14 @@ cursor2 *postgresiface2::cargacuentascodigo ( int padre, QString codigoinicial, 
 \param idasiento
 \return
 **/
-int postgresiface2::cierraasiento ( int idasiento )
+int BlPostgreSqlClient::cierraasiento ( int idasiento )
 {
-    _depura ( "postgresiface2::cierraasiento", 0 );
+    _depura ( "BlPostgreSqlClient::cierraasiento", 0 );
     QString query;
     query.sprintf ( "SELECT cierraasiento(%d)", idasiento );
     cursor2 *cur = cargacursor ( query, "abreasientos" );
     delete cur;
-    _depura ( "END postgresiface2::cierraasiento", 0 );
+    _depura ( "END BlPostgreSqlClient::cierraasiento", 0 );
     return 1;
 }
 
@@ -1143,12 +1143,12 @@ int postgresiface2::cierraasiento ( int idasiento )
 \param idasiento
 \return
 **/
-int postgresiface2::borrarasiento ( int idasiento )
+int BlPostgreSqlClient::borrarasiento ( int idasiento )
 {
-    _depura ( "postgresiface2::borrarasiento", 0 );
+    _depura ( "BlPostgreSqlClient::borrarasiento", 0 );
     QString query = "";
     query.sprintf ( "DELETE FROM asiento WHERE idasiento = %d", idasiento );
-    _depura ( "END postgresiface2::borrarasiento", 0 );
+    _depura ( "END BlPostgreSqlClient::borrarasiento", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -1159,12 +1159,12 @@ int postgresiface2::borrarasiento ( int idasiento )
 \param idborrador
 \return
 **/
-int postgresiface2::borrarborrador ( int idborrador )
+int BlPostgreSqlClient::borrarborrador ( int idborrador )
 {
-    _depura ( "postgresiface2::borrarborrador", 0 );
+    _depura ( "BlPostgreSqlClient::borrarborrador", 0 );
     QString query = "";
     query.sprintf ( "DELETE FROM borrador WHERE idborrador = %d", idborrador );
-    _depura ( "END postgresiface2::borrarborrador", 0 );
+    _depura ( "END BlPostgreSqlClient::borrarborrador", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -1175,12 +1175,12 @@ int postgresiface2::borrarborrador ( int idborrador )
 \param idcuenta
 \return
 **/
-int postgresiface2::borrarcuenta ( int idcuenta )
+int BlPostgreSqlClient::borrarcuenta ( int idcuenta )
 {
-    _depura ( "postgresiface2::borrarcuenta", 0 );
+    _depura ( "BlPostgreSqlClient::borrarcuenta", 0 );
     QString query = "";
     query.sprintf ( "DELETE FROM cuenta WHERE idcuenta = %d", idcuenta );
-    _depura ( "END postgresiface2::borrarcuenta", 0 );
+    _depura ( "END BlPostgreSqlClient::borrarcuenta", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -1191,14 +1191,14 @@ int postgresiface2::borrarcuenta ( int idcuenta )
 \param idasiento
 \return
 **/
-int postgresiface2::abreasiento ( int idasiento )
+int BlPostgreSqlClient::abreasiento ( int idasiento )
 {
-    _depura ( "postgresiface2::abreasiento", 0 );
+    _depura ( "BlPostgreSqlClient::abreasiento", 0 );
     QString query = "";
     query.sprintf ( "SELECT abreasiento(%d)", idasiento );
     cursor2 *cur = cargacursor ( query, "abreasientos" );
     delete cur;
-    _depura ( "END postgresiface2::abreasiento", 0 );
+    _depura ( "END BlPostgreSqlClient::abreasiento", 0 );
     return 1;
 }
 
@@ -1225,9 +1225,9 @@ int postgresiface2::abreasiento ( int idasiento )
 \param cnohaber
 \return
 **/
-int postgresiface2::modificacuenta ( int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber )
+int BlPostgreSqlClient::modificacuenta ( int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber )
 {
-    _depura ( "postgresiface2::modificacuenta", 0 );
+    _depura ( "BlPostgreSqlClient::modificacuenta", 0 );
     QString cadena;
     cadena.sprintf ( "%d", idcuenta );
     QString query = "";
@@ -1238,7 +1238,7 @@ int postgresiface2::modificacuenta ( int idcuenta, QString desccuenta, QString c
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
     query.sprintf ( "UPDATE cuenta SET descripcion = '%s', codigo = '%s', imputacion = %s, bloqueada = %s, idgrupo = %d, activo = %s, nombreent_cuenta = '%s', cifent_cuenta = '%s', dirent_cuenta = '%s', cpent_cuenta = '%s', telent_cuenta = '%s', coment_cuenta = '%s', bancoent_cuenta = '%s', emailent_cuenta = '%s', webent_cuenta = '%s', tipocuenta = %d, nodebe = %s, nohaber = %s WHERE idcuenta = %d\n", desccuenta.toAscii().data(), codigo.toAscii().data(), imputacion.toAscii().data(), bloqueada.toAscii().data(), idgrupo, activo.toAscii().data(), nombreent.toAscii().data(), cifent.toAscii().data(), dir.toAscii().data(), cp.toAscii().data(), tel.toAscii().data(), comm.toAscii().data(), banco.toAscii().data(), email.toAscii().data(), web.toAscii().data(), tipocuenta, nodebe.toAscii().data(), nohaber.toAscii().data(), idcuenta );
     _depura ( query );
-    _depura ( "END postgresiface2::modificacuenta", 0 );
+    _depura ( "END BlPostgreSqlClient::modificacuenta", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -1263,9 +1263,9 @@ int postgresiface2::modificacuenta ( int idcuenta, QString desccuenta, QString c
 \param cnohaber
 \return
 **/
-int postgresiface2::nuevacuenta ( QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber )
+int BlPostgreSqlClient::nuevacuenta ( QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber )
 {
-    _depura ( "postgresiface2::nuevacuenta", 0 );
+    _depura ( "BlPostgreSqlClient::nuevacuenta", 0 );
     QString query = "";
     QString tpadre;
     if ( padre == 0 ) {
@@ -1293,7 +1293,7 @@ int postgresiface2::nuevacuenta ( QString desccuenta, QString codigo, int padre,
                     tipocuenta,
                     sanearCadena ( nodebe ).toAscii().data(),
                     sanearCadena ( nohaber ).toAscii().data() );
-    _depura ( "END postgresiface2::nuevacuenta", 0 );
+    _depura ( "END BlPostgreSqlClient::nuevacuenta", 0 );
     return ( ejecuta ( query ) );
 }
 
@@ -1302,13 +1302,13 @@ int postgresiface2::nuevacuenta ( QString desccuenta, QString codigo, int padre,
 /**
 \return
 **/
-cursor2 *postgresiface2::cargaempresas()
+cursor2 *BlPostgreSqlClient::cargaempresas()
 {
-    _depura ( "postgresiface2::cargaempresas", 0 );
+    _depura ( "BlPostgreSqlClient::cargaempresas", 0 );
     QString query;
     query = "SELECT * FROM empresa";
     cursor2 *cur = cargacursor ( query, "cargaempresas" );
-    _depura ( "END postgresiface2::cargaempresas", 0 );
+    _depura ( "END BlPostgreSqlClient::cargaempresas", 0 );
     return cur;
 }
 
@@ -1320,9 +1320,9 @@ cursor2 *postgresiface2::cargaempresas()
 \param cadena
 \return
 **/
-QString postgresiface2::sanearCadena ( QString cadena )
+QString BlPostgreSqlClient::sanearCadena ( QString cadena )
 {
-    _depura ( "postgresiface2::sanearCadena", 0 );
+    _depura ( "BlPostgreSqlClient::sanearCadena", 0 );
     int longitud = 0;
     char *buffer = NULL;
     QString cadenaLimpia = "";
@@ -1333,7 +1333,7 @@ QString postgresiface2::sanearCadena ( QString cadena )
     PQescapeString ( buffer, cadena.toAscii().constData(), cadena.toAscii().size() );
     cadenaLimpia = QString::fromAscii ( buffer );
     free ( buffer );
-    _depura ( "END postgresiface2::sanearCadena", 0 );
+    _depura ( "END BlPostgreSqlClient::sanearCadena", 0 );
     return cadenaLimpia;
 }
 
@@ -1343,9 +1343,9 @@ QString postgresiface2::sanearCadena ( QString cadena )
 /// De esta forma se guardan datos como el nombre fiscal de la empresa, CIF, domicilio, etc.
 /// \param nombre Nombre de la propiedad.
 /// \return Valor de la propiedad.
-QString postgresiface2::propiedadempresa ( QString nombre )
+QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
 {
-    _depura ( "postgresiface2::propiedadempresa", 0 );
+    _depura ( "BlPostgreSqlClient::propiedadempresa", 0 );
     PGresult *result;
     QString value;
     int num;
@@ -1368,7 +1368,7 @@ QString postgresiface2::propiedadempresa ( QString nombre )
         value = PQgetvalue ( result, 0, 2 );
     } // end if
     PQclear ( result );
-    _depura ( "END postgresiface2::propiedadempresa", 0 );
+    _depura ( "END BlPostgreSqlClient::propiedadempresa", 0 );
     return value;
 }
 
@@ -1378,9 +1378,9 @@ QString postgresiface2::propiedadempresa ( QString nombre )
 /// \param tabla La tabla que se quiere consultar.
 /// \param permiso El tipo de permiso "SELECT", "INSERT" o "UPDATE".
 /// \return TRUE si se tiene permiso, FALSE si no se lo tiene.
-bool postgresiface2::has_table_privilege ( QString tabla, QString permiso )
+bool BlPostgreSqlClient::has_table_privilege ( QString tabla, QString permiso )
 {
-    _depura ( "postgresiface2::has_table_privilege", 0 );
+    _depura ( "BlPostgreSqlClient::has_table_privilege", 0 );
     /// Comprobamos que tengamos permisos para trabajar con articulos.
     cursor2 *cur = cargacursor ( "SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins" );
     bool privileges = FALSE;
@@ -1390,12 +1390,12 @@ bool postgresiface2::has_table_privilege ( QString tabla, QString permiso )
         } // end if
         delete cur;
     } // end if
-    _depura ( "END postgresiface2::has_table_privilege", 0 );
+    _depura ( "END BlPostgreSqlClient::has_table_privilege", 0 );
     return privileges;
 }
 
 /// Evaluacion de formulas usando la base de dato como motor de calculo
-QString postgresiface2::PGEval(QString evalexp, int precision) {
+QString BlPostgreSqlClient::PGEval(QString evalexp, int precision) {
 	QString res="";
 	/// Ninguna expresion numerica acepta comas.
 	evalexp.replace(",", ".");
@@ -1408,7 +1408,7 @@ QString postgresiface2::PGEval(QString evalexp, int precision) {
 	return res;
 }
 
-const QString postgresiface2::currentUser() {
+const QString BlPostgreSqlClient::currentUser() {
 	return m_currentUser;
 }
 

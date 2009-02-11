@@ -27,7 +27,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
 #include "fichabf.h"

@@ -23,11 +23,11 @@
 #define BUSQUEDACCOSTE_H
 
 #include "blcombobox.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 
-class Empresa;
 
+class Empresa;
 
 
 class BusquedaCCosteDelegate : public BlComboBox
@@ -44,7 +44,6 @@ public:
     ~BusquedaCCosteDelegate();
     virtual void set ( const QString & );
 };
-
 
 
 class BusquedaCCoste : public BlComboBox
@@ -70,4 +69,3 @@ signals:
 };
 
 #endif
-

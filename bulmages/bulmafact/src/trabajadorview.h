@@ -26,7 +26,7 @@
 #include <ui_trabajadorbase.h>
 
 #include "fichabf.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.

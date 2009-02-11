@@ -26,8 +26,7 @@
 #include <QLabel>
 
 #include "blcombobox.h"
-#include "postgresiface2.h"
-
+#include "blpostgresqlclient.h"
 #include "busqueda.h"
 
 
@@ -77,4 +76,3 @@ public:
 };
 
 #endif
-

@@ -28,7 +28,6 @@
 #include "bulmafact.h"
 
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia * );
-
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
@@ -39,7 +38,7 @@ class myplugin : public QObject {
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     myplugin();

@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 #include "ui_cuadrante1base.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
 
@@ -49,9 +49,9 @@ public:
     ~Cuadrante1View();
     int cargarPost ( QString );
     int guardarPost();
+
 signals:
     void save();
 };
 
 #endif
-

@@ -25,7 +25,7 @@
 #endif
 
 #include "bulmacont.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
@@ -44,4 +44,3 @@ public:
 public slots:
     void cambia ( bool );
 };
-

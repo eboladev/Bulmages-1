@@ -24,13 +24,14 @@
 
 #include <QEvent>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "ui_listcuentasbase.h"
 #include "pgimportfiles.h"
 #include "fichabc.h"
 
 
 class Empresa;
+
 
 /// Presenta un listado del plan contable.
 /** Esta pantalla tiene dos modos de funcionamiento, en uno act&uacute;a como selector de
@@ -100,4 +101,3 @@ signals:
 };
 
 #endif
-

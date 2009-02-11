@@ -17,18 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef BNuevaEmpresa_H
 #define BNuevaEmpresa_H
 
+#include <QLineEdit>
+
 #include "nuevaempresadlg.h"
-#include "postgresiface2.h"
-#include <qlineedit.h>
+#include "blpostgresqlclient.h"
 
 
-/**
-@author Josep Burcion
-*/
 class BSelector;
+
 
 class BNuevaEmpresa : public nuevaempresadlg
 {
@@ -39,8 +39,6 @@ public:
 
 private slots:
     virtual void accept();
-
-
 };
 
 #endif

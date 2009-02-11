@@ -25,7 +25,7 @@
 #include "blcombobox.h"
 #include "blwidget.h"
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 /** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
@@ -78,4 +78,3 @@ signals:
 };
 
 #endif
-

@@ -2,7 +2,7 @@
                           estadisticasview.cpp  -  description
                              -------------------
     begin                : mar jul 15 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -23,7 +23,7 @@
 //Added by qt3to4:
 #include <QPixmap>
 
-int estadisticasview::inicializa ( postgresiface2 *conexion, int tipo )
+int estadisticasview::inicializa ( BlPostgreSqlClient *conexion, int tipo )
 {
     conexionbase = conexion;
     if ( tipo == 0 )

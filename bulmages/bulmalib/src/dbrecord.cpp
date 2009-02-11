@@ -66,7 +66,7 @@ DBCampo::~DBCampo()
 /**
 \return
 **/
-postgresiface2 *DBCampo::conexionbase()
+BlPostgreSqlClient *DBCampo::conexionbase()
 {
     _depura ( "DBCampo::conexionbase", 0 );
     _depura ( "END DBCampo::conexionbase", 0 );
@@ -78,7 +78,7 @@ postgresiface2 *DBCampo::conexionbase()
 /**
 \param comp
 **/
-void DBCampo::setconexionbase ( postgresiface2 *comp )
+void DBCampo::setconexionbase ( BlPostgreSqlClient *comp )
 {
     _depura ( "DBCampo::setconexionbase", 0 );
     m_conexionbase = comp;
@@ -178,7 +178,7 @@ QString DBCampo::valorcampo()
 \param res
 \param nomp
 **/
-DBCampo::DBCampo ( postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp )
+DBCampo::DBCampo ( BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
 {
     _depura ( "DBCampo::DBCampo", 0 );
     m_conexionbase = com;

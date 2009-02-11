@@ -14,14 +14,14 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
+#include <stdio.h>
+
 #include <QDateTime>
 #include <QTextStream>
 #include <QObject>
 #include <QString>
 #include <QMessageBox>
 #include <QXmlDefaultHandler>
-
-#include <stdio.h>
 
 #include "blapplication.h"
 #include "pgimportfiles.h"
@@ -86,7 +86,7 @@ extern BlApplication *theApp;
 class StructureParser : public QXmlDefaultHandler
 {
 private:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     QString cadintermedia; /// Esta variable va almacenando los valores que van saliendo en la clase.
     /// Variables usadas para almacenar los datos de un asiento.
     QString idasiento;
@@ -128,7 +128,7 @@ private:
     QString tagpadre;
 
 public:
-    StructureParser ( postgresiface2 *, unsigned int tip = IMPORT_TODO );
+    StructureParser ( BlPostgreSqlClient *, unsigned int tip = IMPORT_TODO );
     ~StructureParser();
     bool startDocument();
     bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );
@@ -149,7 +149,7 @@ typedef QMap<QString, QString> tvalores;
 class ImportBulmaFact : public QXmlDefaultHandler
 {
 private:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     QString cadintermedia; /// Esta variable va almacenando los valores que van saliendo en la clase.
     /// Variables usadas para almacenar los datos de un asiento.
     tvalores valores;
@@ -167,7 +167,7 @@ private:
     QList<tvalores> listadpedidocliente;
 
 public:
-    ImportBulmaFact ( pgimportfiles *, postgresiface2 *, unsigned long long int tip = IMPORT_TODO );
+    ImportBulmaFact ( pgimportfiles *, BlPostgreSqlClient *, unsigned long long int tip = IMPORT_TODO );
     ~ImportBulmaFact();
     bool startDocument();
     bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );
@@ -291,7 +291,7 @@ pgimportfiles::~pgimportfiles()
 /**
 \param con
 **/
-pgimportfiles::pgimportfiles ( postgresiface2 *con )
+pgimportfiles::pgimportfiles ( BlPostgreSqlClient *con )
 {
     _depura ( "pgimportfiles::pgimportfiles", 0 );
     conexionbase = con;
@@ -1481,7 +1481,7 @@ int pgimportfiles::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
 \param con
 \param tip
 **/
-StructureParser::StructureParser ( postgresiface2 *con, unsigned int tip )
+StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
 {
     _depura ( "StructureParser::StructureParser", 0 );
     conexionbase = con;
@@ -1758,7 +1758,7 @@ bool StructureParser::characters ( const QString& n1 )
 \param con
 \param tip
 **/
-ImportBulmaFact::ImportBulmaFact ( pgimportfiles *imp, postgresiface2 *con, unsigned long long int tip )
+ImportBulmaFact::ImportBulmaFact ( pgimportfiles *imp, BlPostgreSqlClient *con, unsigned long long int tip )
 {
     _depura ( "ImportBulmaFact::ImportBulmaFact", 0 );
     conexionbase = con;

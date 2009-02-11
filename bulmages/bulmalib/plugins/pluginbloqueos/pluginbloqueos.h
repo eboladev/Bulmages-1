@@ -24,7 +24,7 @@
 # define MY_EXPORT
 #endif
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresabase.h"
 #include "bulmacont.h"
 #include "bulmafact.h"

@@ -24,8 +24,7 @@
 
 #include "logpass.h"
 #include "funcaux.h"
-
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 ///
@@ -74,27 +73,27 @@ logpass::~logpass()
 void logpass::validar()
 {
     _depura ( "logpass::validar" );
-    m_login->setText ( postgresiface2::sanearCadena ( m_login->text() ) );
+    m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
     confpr->setValor ( CONF_LOGIN_USER, m_login->text() );
     confpr->setValor ( CONF_PASSWORD_USER, m_password->text() );
 
     /// Comprobamos si es un usuario v&aacute;lido.
-    metabase = new postgresiface2();
+    metabase = new BlPostgreSqlClient();
     if ( !metabase->inicializa ( "bulmafact" ) ) {
         m_authOK = true;
     } // end if
     delete metabase;
     if ( !m_authOK ) {
-        metabase = new postgresiface2();
+        metabase = new BlPostgreSqlClient();
         if ( !metabase->inicializa ( "bulmacont" ) ) {
             m_authOK = true;
         } // end if
         delete metabase;
     } // end if
     if ( !m_authOK ) {
-        metabase = new postgresiface2();
+        metabase = new BlPostgreSqlClient();
         if ( !metabase->inicializa ( "template1" ) ) {
             m_authOK = true;
         } // end if

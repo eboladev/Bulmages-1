@@ -33,7 +33,7 @@ class myplugincont : public QObject
     Q_OBJECT
 
 public:
-    postgresiface2 *m_conexionbase;
+    BlPostgreSqlClient *m_conexionbase;
     Bulmafact *m_bulmafact;
 
 public:
@@ -71,10 +71,8 @@ public:
     QString generaFiltro();
     void iniciaForm();
 
-
 signals:
     void selected ( QString );
 };
 
 #endif
-

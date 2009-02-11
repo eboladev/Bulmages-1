@@ -29,7 +29,7 @@
 #include "blcombobox.h"
 #include "blwidget.h"
 #include "ui_busquedacuentabase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class Empresa;
@@ -98,4 +98,3 @@ signals:
 };
 
 #endif
-

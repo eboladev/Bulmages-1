@@ -26,7 +26,7 @@
 
 #include "ui_importexportbulmafactbase.h"
 #include "pgimportfiles.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class ImportExportBulmafactView : public QDialog, public Ui_ImportExportBulmafactBase, public pgimportfiles
@@ -34,7 +34,7 @@ class ImportExportBulmafactView : public QDialog, public Ui_ImportExportBulmafac
     Q_OBJECT
 
 private:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     QString mensajein;
 
 private:
@@ -43,7 +43,7 @@ private:
     };
 
 public:
-    ImportExportBulmafactView ( postgresiface2 *, QWidget *, Qt::WFlags );
+    ImportExportBulmafactView ( BlPostgreSqlClient *, QWidget *, Qt::WFlags );
     ~ImportExportBulmafactView() {}
     ;
     virtual void alerta ( int, int );
@@ -56,4 +56,3 @@ public slots:
 };
 
 #endif
-

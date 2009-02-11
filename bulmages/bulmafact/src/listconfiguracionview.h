@@ -29,7 +29,7 @@
 #include <QCheckBox>
 
 #include "fichabf.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "subform2bf.h"
 
 
@@ -59,6 +59,7 @@ public slots:
 class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase
 {
     Q_OBJECT
+
 public:
     ListConfiguracionView ( Company *comp, QWidget *parent = 0 );
     ~ListConfiguracionView();
@@ -71,4 +72,3 @@ public slots:
 };
 
 #endif
-

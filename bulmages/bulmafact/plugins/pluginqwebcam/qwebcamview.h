@@ -22,7 +22,7 @@
 #define QWEBCAMVIEW_H
 
 #include "ui_qwebcambase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "dbrecord.h"
 

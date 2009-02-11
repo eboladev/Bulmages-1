@@ -5,13 +5,12 @@
 
 #include "estadisticas.xpm"
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 #include <qobject.h>
 //Added by qt3to4:
 #include <QPixmap>
 #include <Q3PopupMenu>
-
 
 
 void entryPoint ( Bulmages01 *bges )
@@ -41,5 +40,4 @@ void entryPoint ( Bulmages01 *bges )
     QObject::connect ( planCuentas2, SIGNAL ( activated() ), plug, SLOT ( BalanceBarras() ) );
 
 }
-
 

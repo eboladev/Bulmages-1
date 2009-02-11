@@ -4,11 +4,9 @@
 # define MY_EXPORT
 #endif
 
-
 #include "bulmages01.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
-
 
 //#include <qwidgetplugin.h>
 #include <QPluginLoader>
@@ -18,8 +16,8 @@
 #include <qapplication.h>
 #include <qobject.h>
 
-extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );
 
+extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );
 extern QApplication *theApp;
 
 
@@ -27,12 +25,15 @@ extern QApplication *theApp;
 class myplugin : public QObject
 {
     Q_OBJECT
+
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
+
 public:
     myplugin();
     ~myplugin();
     void inicializa ( Bulmages01 * );
+
 public slots:
     void elslot();
     void soporte();

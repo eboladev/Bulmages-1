@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,7 +182,7 @@ msgstr "Clientes"
 msgid "Clientes (*.xml)"
 msgstr "Clientes (*.xml)"
 
-#: clienteview.cpp:76 clientslist.cpp:276
+#: clientslist.cpp:276 clienteview.cpp:76
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -190,7 +190,7 @@ msgstr "Codigo"
 msgid "Codigo de cliente:"
 msgstr "Codigo de cliente:"
 
-#: clienteview.cpp:63 clientslist.cpp:283
+#: clientslist.cpp:283 clienteview.cpp:63
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
@@ -198,7 +198,7 @@ msgstr "Codigo postal"
 msgid "Codigo postal:"
 msgstr "Codigo postal:"
 
-#: clienteview.cpp:72 clientslist.cpp:291
+#: clientslist.cpp:291 clienteview.cpp:72
 msgid "Comentarios"
 msgstr "Comentarios"
 
@@ -234,7 +234,7 @@ msgstr "Datos de comercio electronico"
 msgid "Datos de comercio electronico:"
 msgstr "Datos de comercio electronico:"
 
-#: clienteview.cpp:60 clientslist.cpp:281
+#: clientslist.cpp:281 clienteview.cpp:60
 msgid "Direccion"
 msgstr "Direccion"
 
@@ -266,7 +266,7 @@ msgstr "Editar cliente"
 msgid "Elija el archivo"
 msgstr "Elija el archivo"
 
-#: clienteview.cpp:77 clientslist.cpp:288
+#: clientslist.cpp:288 clienteview.cpp:77
 msgid "Empresa"
 msgstr "Empresa"
 
@@ -286,11 +286,11 @@ msgstr "Error al crear el cliente"
 msgid "Exportar"
 msgstr "Exportar"
 
-#: clienteview.cpp:70 clientslist.cpp:289
+#: clientslist.cpp:289 clienteview.cpp:70
 msgid "Fecha de alta del cliente"
 msgstr "Fecha de alta del cliente"
 
-#: clienteview.cpp:71 clientslist.cpp:290
+#: clientslist.cpp:290 clienteview.cpp:71
 msgid "Fecha de baja del cliente"
 msgstr "Fecha de baja del cliente"
 
@@ -310,7 +310,7 @@ msgstr "Forma de pago:"
 msgid "Guardar cliente"
 msgstr "Guardar cliente"
 
-#: clienteview.cpp:55 clientslist.cpp:275
+#: clientslist.cpp:275 clienteview.cpp:55
 msgid "ID cliente"
 msgstr "ID cliente"
 
@@ -334,7 +334,7 @@ msgstr "Imprimir listado"
 msgid "Listado de Clientes"
 msgstr "Listado de Clientes"
 
-#: clienteview.cpp:57 clientslist.cpp:279
+#: clientslist.cpp:279 clienteview.cpp:57
 msgid "Nombre alternativo del cliente"
 msgstr "Nombre alternativo del cliente"
 
@@ -362,11 +362,11 @@ msgstr "Nuevo"
 msgid "Nuevo cliente"
 msgstr "Nuevo cliente"
 
-#: clienteview.cpp:59 clientslist.cpp:280
+#: clientslist.cpp:280 clienteview.cpp:59
 msgid "Numero cuenta corriente"
 msgstr "Numero cuenta corriente"
 
-#: clienteview.cpp:67 clientslist.cpp:285
+#: clientslist.cpp:285 clienteview.cpp:67
 msgid "Numero de fax"
 msgstr "Numero de fax"
 
@@ -374,7 +374,7 @@ msgstr "Numero de fax"
 msgid "Numero de fax:"
 msgstr "Numero de fax:"
 
-#: clienteview.cpp:64 clientslist.cpp:284
+#: clientslist.cpp:284 clienteview.cpp:64
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
@@ -394,7 +394,7 @@ msgstr "Otros datos"
 msgid "Pagina web:"
 msgstr "Pagina web:"
 
-#: clienteview.cpp:61 clientslist.cpp:282
+#: clientslist.cpp:282 clienteview.cpp:61
 msgid "Poblacion"
 msgstr "Poblacion"
 

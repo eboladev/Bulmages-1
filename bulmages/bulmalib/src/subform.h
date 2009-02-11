@@ -24,10 +24,11 @@
 
 #include <Qt>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "qtable2.h"
 #include "dbrecord.h"
+
 
 /// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref BlSubForm
 /**
@@ -92,7 +93,7 @@ private:
     SDBRecord *m_pare; ///< Puntero al \ref SDBRecord al que pertenece. Acelera procesos.
 
 public:
-    SDBCampo ( SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    SDBCampo ( SDBRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
     virtual ~SDBCampo();
     SDBRecord *pare();
     virtual int set ( QString val );

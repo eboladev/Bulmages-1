@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 #include "ui_presupuestoclientebase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
 #include "busquedaformapago.h"

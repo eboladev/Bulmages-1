@@ -29,7 +29,7 @@
 
 #include "funcaux.h"
 #include "ui_blsubformbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "qtable2.h"
 #include "subform.h"
 #include "blfixed.h"

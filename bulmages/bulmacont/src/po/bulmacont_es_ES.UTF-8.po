@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "&Cancelar"
 msgid "&Guardar"
 msgstr "&Guardar"
 
-#: canalview.cpp:238 asiento1view.cpp:333
+#: asiento1view.cpp:333 canalview.cpp:238
 msgid "&No"
 msgstr "&No"
 
@@ -42,7 +42,7 @@ msgstr "&No salir"
 msgid "&Salir"
 msgstr "&Salir"
 
-#: canalview.cpp:238 asiento1view.cpp:333
+#: asiento1view.cpp:333 canalview.cpp:238
 msgid "&Si"
 msgstr "&Sí"
 
@@ -83,7 +83,7 @@ msgstr "Apuntes"
 msgid "Archivo"
 msgstr "Archivo"
 
-#: diariosubform.cpp:37 aplinteligentesview.cpp:58 extractosubform.cpp:49
+#: extractosubform.cpp:49 aplinteligentesview.cpp:58 diariosubform.cpp:37
 msgid "Asiento"
 msgstr "Asiento"
 
@@ -183,8 +183,8 @@ msgstr "Cambiando a modo de pantalla completa..."
 msgid "Cambinado barra de estado..."
 msgstr "Cambinado barra de estado..."
 
-#: diariosubform.cpp:51 listlinasiento1view.cpp:50 canalview.cpp:36
-#: extractosubform.cpp:68
+#: extractosubform.cpp:68 listlinasiento1view.cpp:50 canalview.cpp:36
+#: diariosubform.cpp:51
 msgid "Canal"
 msgstr "Canal"
 
@@ -208,7 +208,7 @@ msgstr "Cargando traducciones"
 msgid "Cargar punteo"
 msgstr "Cargar punteo"
 
-#: diariosubform.cpp:53 extractosubform.cpp:71
+#: extractosubform.cpp:71 diariosubform.cpp:53
 msgid "Centro Coste"
 msgstr "Centro Coste"
 
@@ -242,7 +242,7 @@ msgstr "Cambiar Cuenta"
 msgid "Codigo cuenta"
 msgstr "Codigo cuenta"
 
-#: diariosubform.cpp:44 listlinasiento1view.cpp:48 extractosubform.cpp:66
+#: extractosubform.cpp:66 listlinasiento1view.cpp:48 diariosubform.cpp:44
 msgid "Comentario"
 msgstr "Comentario"
 
@@ -266,7 +266,7 @@ msgstr "Compilado usando la versión de QT:"
 msgid "Concepto"
 msgstr "Concepto"
 
-#: diariosubform.cpp:41 listlinasiento1view.cpp:44
+#: listlinasiento1view.cpp:44 diariosubform.cpp:41
 msgid "Concepto contable"
 msgstr "Concepto contable"
 
@@ -278,7 +278,7 @@ msgstr "Conciliación"
 msgid "Configuracion"
 msgstr "Configuración"
 
-#: diariosubform.cpp:49 diariosubform.cpp:50 listlinasiento1view.cpp:47
+#: listlinasiento1view.cpp:47 diariosubform.cpp:49 diariosubform.cpp:50
 msgid "Contrapartida"
 msgstr "Contrapartida"
 
@@ -294,8 +294,8 @@ msgstr "Cortando seleccion..."
 msgid "Creando formulario"
 msgstr "Creando formulario"
 
-#: diariosubform.cpp:39 cuentaview.cpp:38 tipoivaview.cpp:46
-#: listcuentasview1.cpp:55 extractosubform.cpp:48
+#: tipoivaview.cpp:46 extractosubform.cpp:48 cuentaview.cpp:38
+#: listcuentasview1.cpp:55 diariosubform.cpp:39
 msgid "Cuenta"
 msgstr "Cuenta"
 
@@ -303,8 +303,8 @@ msgstr "Cuenta"
 msgid "Cuentas Anuales"
 msgstr "Cuentas Anuales"
 
-#: diariosubform.cpp:42 cuentaview.cpp:53 listlinasiento1view.cpp:45
-#: listcuentasview1.cpp:62 extractosubform.cpp:54 asientolistsubform.cpp:42
+#: extractosubform.cpp:54 cuentaview.cpp:53 listlinasiento1view.cpp:45
+#: asientolistsubform.cpp:42 listcuentasview1.cpp:62 diariosubform.cpp:42
 msgid "Debe"
 msgstr "Debe"
 
@@ -312,8 +312,8 @@ msgstr "Debe"
 msgid "Debe seleccionar una cuenta"
 msgstr "Debe seleccionar una cuenta"
 
-#: diariosubform.cpp:40 cuentaview.cpp:45 ccosteview.cpp:50 ccosteview.cpp:76
-#: extractosubform.cpp:50
+#: ccosteview.cpp:50 ccosteview.cpp:76 extractosubform.cpp:50
+#: cuentaview.cpp:45 diariosubform.cpp:40
 msgid "Descripcion"
 msgstr "Descripción"
 
@@ -351,8 +351,8 @@ msgstr "Desea crear un nuevo asiento en esa posicion?"
 msgid "Desea guardar los cambios."
 msgstr "Desea guardar los cambios."
 
-#: tipoivaview.cpp:110 tipoivaview.cpp:153 ccosteview.cpp:167
-#: ccosteview.cpp:227 canalview.cpp:237 propiedadesempresa.cpp:117
+#: ccosteview.cpp:167 ccosteview.cpp:227 tipoivaview.cpp:110
+#: tipoivaview.cpp:153 canalview.cpp:237 propiedadesempresa.cpp:117
 #: fpagoview.cpp:147 fpagoview.cpp:209
 msgid "Desea guardar los cambios?"
 msgstr "¿Desea guardar los cambios?"
@@ -377,7 +377,7 @@ msgstr ""
 "Diario\n"
 "#-#-#-#-#  bulmacont_es2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: extractoview1.cpp:246 diarioview.cpp:164
+#: diarioview.cpp:164 extractoview1.cpp:246
 msgid "Diarios (*.txt)"
 msgstr "Diarios (*.txt)"
 
@@ -465,8 +465,8 @@ msgstr "Factura"
 msgid "Febrero"
 msgstr "Febrero"
 
-#: diariosubform.cpp:38 listlinasiento1view.cpp:40 empresa.cpp:815
-#: extractosubform.cpp:47 asientolistsubform.cpp:38
+#: empresa.cpp:815 extractosubform.cpp:47 listlinasiento1view.cpp:40
+#: asientolistsubform.cpp:38 diariosubform.cpp:38
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -578,8 +578,8 @@ msgstr "Guardar punteo"
 msgid "Guardar tipo de IVA"
 msgstr "Guardar tipo de IVA"
 
-#: diariosubform.cpp:43 cuentaview.cpp:54 listlinasiento1view.cpp:46
-#: listcuentasview1.cpp:62 extractosubform.cpp:55 asientolistsubform.cpp:43
+#: extractosubform.cpp:55 cuentaview.cpp:54 listlinasiento1view.cpp:46
+#: asientolistsubform.cpp:43 listcuentasview1.cpp:62 diariosubform.cpp:43
 msgid "Haber"
 msgstr "Haber"
 
@@ -587,7 +587,7 @@ msgstr "Haber"
 msgid "ID Canal"
 msgstr "ID Canal"
 
-#: cuentaview.cpp:43 listcuentasview1.cpp:62 cuentalistview.cpp:386
+#: cuentalistview.cpp:386 cuentaview.cpp:43 listcuentasview1.cpp:62
 msgid "ID cuenta"
 msgstr "ID cuenta"
 
@@ -599,7 +599,7 @@ msgstr "ID tipo iva"
 msgid "Id"
 msgstr "Id"
 
-#: amortizacionesview.cpp:47 amortizacionview.cpp:71 amortizacionview.cpp:83
+#: amortizacionview.cpp:71 amortizacionview.cpp:83 amortizacionesview.cpp:47
 msgid "Id amortizacion"
 msgstr "Id amortización"
 
@@ -607,7 +607,7 @@ msgstr "Id amortización"
 msgid "Id apunte"
 msgstr "Id apunte"
 
-#: listlinasiento1view.cpp:57 amortizacionview.cpp:81 asiento1.cpp:45
+#: amortizacionview.cpp:81 asiento1.cpp:45 listlinasiento1view.cpp:57
 #: asientolistsubform.cpp:44
 msgid "Id asiento"
 msgstr "Id asiento"
@@ -616,7 +616,7 @@ msgstr "Id asiento"
 msgid "Id borrador"
 msgstr "Id borrador"
 
-#: listlinasiento1view.cpp:52 ccosteview.cpp:76
+#: ccosteview.cpp:76 listlinasiento1view.cpp:52
 msgid "Id centro de coste"
 msgstr "Id centro de coste"
 
@@ -749,9 +749,9 @@ msgstr "Mensual"
 msgid "Metodo"
 msgstr "Método"
 
-#: diariosubform.cpp:96 diariosubform.cpp:113 listlinasiento1view.cpp:89
-#: listlinasiento1view.cpp:106 extractosubform.cpp:94 extractosubform.cpp:111
-#: asientolistsubform.cpp:77 asientolistsubform.cpp:94
+#: extractosubform.cpp:94 extractosubform.cpp:111 listlinasiento1view.cpp:89
+#: listlinasiento1view.cpp:106 asientolistsubform.cpp:77
+#: asientolistsubform.cpp:94 diariosubform.cpp:96 diariosubform.cpp:113
 msgid "Mostrar asiento"
 msgstr "Mostrar asiento"
 
@@ -767,21 +767,21 @@ msgstr "Mostrar diario (dia)"
 msgid "Mostrar diario (mes)"
 msgstr "Mostrar diario (mes)"
 
-#: diariosubform.cpp:100 diariosubform.cpp:119 listlinasiento1view.cpp:93
-#: listlinasiento1view.cpp:112 asientolistsubform.cpp:81
-#: asientolistsubform.cpp:100
+#: listlinasiento1view.cpp:93 listlinasiento1view.cpp:112
+#: asientolistsubform.cpp:81 asientolistsubform.cpp:100 diariosubform.cpp:100
+#: diariosubform.cpp:119
 msgid "Mostrar extracto (ano)"
 msgstr "Mostrar extracto (año)"
 
-#: diariosubform.cpp:98 diariosubform.cpp:115 listlinasiento1view.cpp:91
-#: listlinasiento1view.cpp:108 asientolistsubform.cpp:79
-#: asientolistsubform.cpp:96
+#: listlinasiento1view.cpp:91 listlinasiento1view.cpp:108
+#: asientolistsubform.cpp:79 asientolistsubform.cpp:96 diariosubform.cpp:98
+#: diariosubform.cpp:115
 msgid "Mostrar extracto (dia)"
 msgstr "Mostrar extracto (día)"
 
-#: diariosubform.cpp:99 diariosubform.cpp:117 listlinasiento1view.cpp:92
-#: listlinasiento1view.cpp:110 asientolistsubform.cpp:80
-#: asientolistsubform.cpp:98
+#: listlinasiento1view.cpp:92 listlinasiento1view.cpp:110
+#: asientolistsubform.cpp:80 asientolistsubform.cpp:98 diariosubform.cpp:99
+#: diariosubform.cpp:117
 msgid "Mostrar extracto (mes)"
 msgstr "Mostrar extracto (mes)"
 
@@ -813,7 +813,7 @@ msgstr "Nodebe"
 msgid "Nohaber"
 msgstr "Nohaber"
 
-#: amortizacionesview.cpp:48 ccosteview.cpp:49 ccosteview.cpp:76
+#: ccosteview.cpp:49 ccosteview.cpp:76 amortizacionesview.cpp:48
 #: propiedadesempresa.cpp:191
 msgid "Nombre"
 msgstr "Nombre"
@@ -835,7 +835,7 @@ msgstr "Nombre cuenta"
 msgid "Nombre de la amortizacion"
 msgstr "Nombre de la amortización"
 
-#: listlinasiento1view.cpp:42 cuentalistview.cpp:388
+#: cuentalistview.cpp:388 listlinasiento1view.cpp:42
 msgid "Nombre de la cuenta"
 msgstr "Nombre de la cuenta"
 
@@ -871,7 +871,7 @@ msgstr "Número de cuotas"
 msgid "Octubre"
 msgstr "Octubre"
 
-#: listlinasiento1view.cpp:55 extractosubform.cpp:73 asientolistsubform.cpp:37
+#: extractosubform.cpp:73 listlinasiento1view.cpp:55 asientolistsubform.cpp:37
 msgid "Orden"
 msgstr "Orden"
 
@@ -912,7 +912,7 @@ msgstr "Plan contable (*.xml)"
 msgid "Ponga el anyo:"
 msgstr "En el banco"
 
-#: tipoivaview.cpp:45 ccosteview.cpp:58
+#: ccosteview.cpp:58 tipoivaview.cpp:45
 msgid "Porcentaje"
 msgstr "Porcentaje"
 
@@ -988,7 +988,7 @@ msgstr ""
 "Se va a borrar la forma de pago.\n"
 "Esto puede ocasionar perdida de datos.\n"
 
-#: selectccosteview.cpp:43 selectcanalview.cpp:45
+#: selectcanalview.cpp:45 selectccosteview.cpp:43
 msgid "Seleccion"
 msgstr "Seleccion"
 
@@ -1006,7 +1006,7 @@ msgstr "Semestral"
 msgid "Septiembre"
 msgstr "Septiembre"
 
-#: selectccosteview.cpp:43 selectcanalview.cpp:45
+#: selectcanalview.cpp:45 selectccosteview.cpp:43
 msgid "Status"
 msgstr "Status"
 
@@ -1079,7 +1079,7 @@ msgstr "Web de la cuenta"
 msgid "codigo"
 msgstr "Código"
 
-#: diariosubform.cpp:46 extractosubform.cpp:59
+#: extractosubform.cpp:59 diariosubform.cpp:46
 msgid "codigoborrador"
 msgstr "codigoborrador"
 
@@ -1099,11 +1099,11 @@ msgstr "desc_coste"
 msgid "descripcion"
 msgstr "Descripción"
 
-#: diariosubform.cpp:55 extractosubform.cpp:58
+#: extractosubform.cpp:58 diariosubform.cpp:55
 msgid "idapunte"
 msgstr "idapunte"
 
-#: diariosubform.cpp:35 extractosubform.cpp:60
+#: extractosubform.cpp:60 diariosubform.cpp:35
 msgid "idasiento"
 msgstr "idasiento"
 
@@ -1111,19 +1111,19 @@ msgstr "idasiento"
 msgid "idborrador"
 msgstr "idborrador"
 
-#: diariosubform.cpp:59 selectccosteview.cpp:43 extractosubform.cpp:70
+#: extractosubform.cpp:70 diariosubform.cpp:59 selectccosteview.cpp:43
 msgid "idc_coste"
 msgstr "idc_coste"
 
-#: diariosubform.cpp:58 selectcanalview.cpp:45 extractosubform.cpp:67
+#: extractosubform.cpp:67 diariosubform.cpp:58 selectcanalview.cpp:45
 msgid "idcanal"
 msgstr "idcanal"
 
-#: diariosubform.cpp:61 extractosubform.cpp:62
+#: extractosubform.cpp:62 diariosubform.cpp:61
 msgid "idcuenta"
 msgstr "idcuenta"
 
-#: diariosubform.cpp:60 extractosubform.cpp:61
+#: extractosubform.cpp:61 diariosubform.cpp:60
 msgid "iddiario"
 msgstr "iddiario"
 
@@ -1135,7 +1135,7 @@ msgstr "Id."
 msgid "idregistroiva"
 msgstr "idregistroiva"
 
-#: diariosubform.cpp:56 extractosubform.cpp:72
+#: extractosubform.cpp:72 diariosubform.cpp:56
 msgid "idtipoiva"
 msgstr "idtipoiva"
 
@@ -1155,7 +1155,7 @@ msgstr "nom_coste"
 msgid "tipo"
 msgstr "Tipo"
 
-#: diariosubform.cpp:47 extractosubform.cpp:63
+#: extractosubform.cpp:63 diariosubform.cpp:47
 msgid "tipocuenta"
 msgstr "tipocuenta"
 

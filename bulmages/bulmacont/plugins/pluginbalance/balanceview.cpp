@@ -27,7 +27,7 @@
 #include "balanceview.h"
 #include "empresa.h"
 #include "arbol.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "balanceprintview.h"
 #include "busquedafecha.h"
 #include "busquedacuenta.h"

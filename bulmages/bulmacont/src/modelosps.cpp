@@ -33,7 +33,7 @@
 
 #include "modelosps.h"
 #include "blconfiguration.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 ///

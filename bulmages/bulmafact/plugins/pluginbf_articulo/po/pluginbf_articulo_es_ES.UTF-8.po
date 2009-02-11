@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,7 +228,7 @@ msgstr "Cantidad de componente de articulo"
 msgid "Clientes (*.xml)"
 msgstr "Clientes (*.xml)"
 
-#: articuloview.cpp:62 tiposarticuloview.cpp:46 familiasview.cpp:51
+#: tiposarticuloview.cpp:46 articuloview.cpp:62 familiasview.cpp:51
 #: familiasview.cpp:568
 msgid "Codigo"
 msgstr "Codigo"
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Nombre"
 msgstr "Nombre"
 
-#: articulolist.cpp:371 comparticulolistview.cpp:43 articuloview.cpp:63
+#: articulolist.cpp:371 articuloview.cpp:63 comparticulolistview.cpp:43
 msgid "Nombre del articulo"
 msgstr "Nombre del articulo"
 
@@ -532,8 +532,8 @@ msgstr "Nuevo articulo"
 msgid "Nuevo Tipo de articulo"
 msgstr "Nuevo Tipo de articulo"
 
-#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:297
+#: ui_articleslistbase.h:292 ui_articleslistbase.h:297
+#: ui_articleeditbase.h:580
 msgid "Nuevo articulo"
 msgstr "Nuevo articulo"
 

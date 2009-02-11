@@ -24,7 +24,6 @@
 # define MY_EXPORT
 #endif
 
-
 #include "albaranproveedorview.h"
 #include "bulmafact.h"
 
@@ -46,7 +45,7 @@ class myplugin : public QObject {
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     myplugin();

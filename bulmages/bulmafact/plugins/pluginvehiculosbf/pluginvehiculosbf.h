@@ -30,7 +30,7 @@
 #include <QApplication>
 #include <QObject>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "bulmafact.h"
 
 
@@ -45,7 +45,7 @@ class myplugin : public QObject
     Q_OBJECT
 
 public:
-    postgresiface2 *m_conexionbase;
+    BlPostgreSqlClient *m_conexionbase;
     Bulmafact *m_bulmafact;
 
 public:

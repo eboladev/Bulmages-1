@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:48+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,9 +30,9 @@ msgstr ""
 msgid "% Recargo E.Q."
 msgstr "% Surcharge E.Q."
 
-#: ui_listseriefacturabase.h:84 ui_listtasaivabase.h:118 ui_fpagobase.h:341
 #: ui_listalmacenbase.h:117 ui_listtipoivabase.h:117
-#: ui_listconfiguracionbase.h:118
+#: ui_listseriefacturabase.h:84 ui_listconfiguracionbase.h:118
+#: ui_listtasaivabase.h:118 ui_fpagobase.h:341
 msgid "&Aceptar"
 msgstr "&Accept"
 
@@ -48,9 +48,9 @@ msgstr "&About BulmaFact"
 msgid "&Almacenes"
 msgstr "&Warehouses"
 
-#: ui_listseriefacturabase.h:83 ui_listtasaivabase.h:119 ui_fpagobase.h:342
 #: ui_listalmacenbase.h:118 ui_listtipoivabase.h:118
-#: ui_listconfiguracionbase.h:119
+#: ui_listseriefacturabase.h:83 ui_listconfiguracionbase.h:119
+#: ui_listtasaivabase.h:119 ui_fpagobase.h:342
 msgid "&Cancelar"
 msgstr "&Cancel"
 
@@ -70,7 +70,7 @@ msgstr "&Modes of payment"
 msgid "&Indexador"
 msgstr "&Indexador"
 
-#: bancoview.cpp:186 trabajadorview.cpp:223
+#: trabajadorview.cpp:223 bancoview.cpp:186
 msgid "&No"
 msgstr "&No"
 
@@ -82,7 +82,7 @@ msgstr "&Properties of the company..."
 msgid "&Salir del programa"
 msgstr "&To leave the program"
 
-#: bancoview.cpp:186 trabajadorview.cpp:223
+#: trabajadorview.cpp:223 bancoview.cpp:186
 msgid "&Si"
 msgstr "&Yes"
 
@@ -167,7 +167,7 @@ msgstr "Article:"
 msgid "Banco"
 msgstr "Bank"
 
-#: ui_bancobase.h:401 ui_bulmafactbase.h:237
+#: ui_bulmafactbase.h:237 ui_bancobase.h:401
 msgid "Bancos"
 msgstr "Banks"
 
@@ -179,8 +179,8 @@ msgstr "Tax basis"
 msgid "Borrar forma de pago"
 msgstr "Erase mode of payment"
 
-#: ui_bancobase.h:424 ui_bancobase.h:429 ui_trabajadorbase.h:352
-#: ui_trabajadorbase.h:357
+#: ui_trabajadorbase.h:352 ui_trabajadorbase.h:357 ui_bancobase.h:424
+#: ui_bancobase.h:429
 msgid "Borrar trabajador"
 msgstr "Erase worker"
 
@@ -272,7 +272,7 @@ msgstr "Discount:"
 msgid "Desea guardar los cambios."
 msgstr "It wishes to keep the changes?"
 
-#: bancoview.cpp:185 trabajadorview.cpp:222
+#: trabajadorview.cpp:222 bancoview.cpp:185
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
 
@@ -288,7 +288,7 @@ msgstr "Address:"
 msgid "E&mpresa"
 msgstr "C&ompany"
 
-#: ui_bancobase.h:414 ui_trabajadorbase.h:347
+#: ui_trabajadorbase.h:347 ui_bancobase.h:414
 msgid "E-mail:"
 msgstr "E-mail:"
 
@@ -394,7 +394,7 @@ msgstr "Date Taken Effect"
 msgid "Fichas"
 msgstr "Cards"
 
-#: ui_busquedareferenciabase.h:89 ui_busquedaarticulobase.h:92
+#: ui_busquedaarticulobase.h:92 ui_busquedareferenciabase.h:89
 msgid "Form1"
 msgstr "Form1"
 
@@ -418,7 +418,7 @@ msgstr "Modes of payment"
 msgid "General"
 msgstr "General"
 
-#: bancoview.cpp:184 trabajadorview.cpp:221
+#: trabajadorview.cpp:221 bancoview.cpp:184
 msgid "Guardar datos del trabajador"
 msgstr "Keep data from the worker"
 
@@ -426,8 +426,8 @@ msgstr "Keep data from the worker"
 msgid "Guardar forma de pago"
 msgstr "Keep mode of payment"
 
-#: ui_bancobase.h:435 ui_bancobase.h:440 ui_trabajadorbase.h:363
-#: ui_trabajadorbase.h:368
+#: ui_trabajadorbase.h:363 ui_trabajadorbase.h:368 ui_bancobase.h:435
+#: ui_bancobase.h:440
 msgid "Guardar trabajador"
 msgstr "Keep worker"
 
@@ -545,8 +545,8 @@ msgstr "Name:"
 msgid "Nueva forma de pago"
 msgstr "New mode of payment"
 
-#: ui_bancobase.h:446 ui_bancobase.h:451 ui_trabajadorbase.h:374
-#: ui_trabajadorbase.h:379
+#: ui_trabajadorbase.h:374 ui_trabajadorbase.h:379 ui_bancobase.h:446
+#: ui_bancobase.h:451
 msgid "Nuevo trabajador"
 msgstr "New worker"
 
@@ -635,7 +635,7 @@ msgstr "Price"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bulmafactbase.h:214 ui_listconfiguracionbase.h:117
+#: ui_listconfiguracionbase.h:117 ui_bulmafactbase.h:214
 msgid "Propiedades de la empresa"
 msgstr "Properties of the company"
 
@@ -687,7 +687,7 @@ msgstr "Rates of IVA"
 msgid "Telefono movil:"
 msgstr "Telephone mobil:"
 
-#: ui_bancobase.h:415 ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:339 ui_bancobase.h:415
 msgid "Telefono:"
 msgstr "Telephone:"
 

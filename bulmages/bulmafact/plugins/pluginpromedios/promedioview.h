@@ -23,12 +23,13 @@
 
 #include <funcaux.h>
 #include "ui_promediobase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "dbrecord.h"
 
 
 class Company;
+
 
 class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public DBRecord
 {
@@ -45,10 +46,7 @@ public:
     };
 
 public:
-
     int cargar ( QString );
-
 };
 
 #endif
-

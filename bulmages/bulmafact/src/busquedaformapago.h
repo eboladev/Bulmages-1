@@ -25,9 +25,10 @@
 #include "funcaux.h"
 #include "blcombobox.h"
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "blwidget.h"
+
 
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
@@ -40,13 +41,10 @@ public:
     BusquedaFormaPago ( QWidget *parent = 0 );
     ~BusquedaFormaPago();
     QString id();
-
     virtual void setId ( QString idforma_pago );
     virtual void setIdCliente ( QString );
     virtual void setIdProveedor ( QString );
-
     virtual void m_activated ( int index );
-
 };
 
 #endif

@@ -31,16 +31,18 @@
 
 #include "blapplication.h"
 #include "bulmafact.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "almacenview.h"
 #include "trabajadorview.h"
+
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
 extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
+
 extern BlApplication *theApp;
 
 
@@ -60,4 +62,3 @@ public slots:
     void elslot();
     void elslot1();
 };
-

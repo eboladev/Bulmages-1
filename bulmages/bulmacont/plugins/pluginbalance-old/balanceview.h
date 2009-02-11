@@ -31,7 +31,7 @@
 #include "listcuentasview1.h"
 #include "diarioview.h"
 #include "extractoview1.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "ui_balancebase.h"
 #include "fichabc.h"

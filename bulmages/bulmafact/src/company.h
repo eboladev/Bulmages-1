@@ -26,7 +26,7 @@
 #include <QAssistantClient>
 #include <QLibraryInfo>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "empresabase.h"
@@ -35,8 +35,8 @@
 
 class orderslist;
 class ListTipoIVAView;
-
 class Bulmafact;
+
 
 /// Clase company (empresa).
 /** Clase principal del programa donde se almacenan y gestionan
@@ -48,11 +48,9 @@ private:
     /// Puntero al mainWindow
     Bulmafact *m_bulmafact;
 
-
 public:
     Company ( Bulmafact *bges );
     virtual ~Company();
-
     void createMainWindows ( BlSplashScreen * );
     void s_FPago();
     void s_Familias();
@@ -70,4 +68,3 @@ public:
 };
 
 #endif
-

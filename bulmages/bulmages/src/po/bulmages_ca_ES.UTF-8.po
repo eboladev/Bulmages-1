@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 19:11+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,11 @@ msgstr ""
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: bconfiguracion.cpp:310 bconfiguracion.cpp:312 bconfiguracion.cpp:314
+#: bconfiguracion.cpp:311 bconfiguracion.cpp:313 bconfiguracion.cpp:315
 msgid "Atencion"
 msgstr "Atenció "
 
-#: bconfiguracion.cpp:314
+#: bconfiguracion.cpp:315
 msgid ""
 "Borrar una empresa puede suponer perdida de datos\n"
 " Desea continuar?\n"
@@ -40,7 +40,7 @@ msgstr ""
 "Desitja continuar?\n"
 
 # Potser carregar és mllor
-#: bconfiguracion.cpp:379
+#: bconfiguracion.cpp:380
 msgid "Cargar empresa"
 msgstr "Llegir empresa"
 
@@ -56,11 +56,11 @@ msgstr "Contaplus (*.xml)"
 msgid "Datos incompletos"
 msgstr "Dades incompletes"
 
-#: bconfiguracion.cpp:349 bconfiguracion.cpp:381
+#: bconfiguracion.cpp:350 bconfiguracion.cpp:382
 msgid "Empresas (*.pgdump)"
 msgstr "Empreses (*.pgdump)"
 
-#: bconfiguracion.cpp:310
+#: bconfiguracion.cpp:311
 #, fuzzy
 msgid ""
 "Esta base de datos no puede ser eliminada.\n"
@@ -74,11 +74,11 @@ msgstr ""
 msgid "Guardar archivo"
 msgstr "Desa arxiu"
 
-#: bconfiguracion.cpp:347
+#: bconfiguracion.cpp:348
 msgid "Guardar empresa"
 msgstr "Desa empresa"
 
-#: bconfiguracion.cpp:312
+#: bconfiguracion.cpp:313
 #, fuzzy
 msgid ""
 "No esta permitido eliminar la base \n"
@@ -89,7 +89,7 @@ msgstr "No es permés eliminar la base de dades actualment oberta."
 msgid "No puede dejar campos en blanco para crear una nueva empresa.\n"
 msgstr "No es pot deixar camps buits per a crear una nova empresa.\n"
 
-#: main.cpp:93
+#: main.cpp:94
 msgid "Selector de BulmaGes"
 msgstr "Sel·lector de BulmaGés"
 

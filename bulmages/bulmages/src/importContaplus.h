@@ -26,7 +26,7 @@
 
 #include "ui_importContaplusBase.h"
 #include "pgimportfiles.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class importContaplus: public QDialog, public Ui_importContaplusBase, public pgimportfiles
@@ -34,10 +34,10 @@ class importContaplus: public QDialog, public Ui_importContaplusBase, public pgi
     Q_OBJECT
 
 private:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
-    importContaplus ( postgresiface2 *, QWidget *, Qt::WFlags );
+    importContaplus ( BlPostgreSqlClient *, QWidget *, Qt::WFlags );
     ~importContaplus();
     void alerta ( int, int );
     void mensajeria ( QString );

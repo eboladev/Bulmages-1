@@ -30,9 +30,9 @@ set(QT_USE_QTUITOOLS true)
 
 INCLUDE(${QT_USE_FILE})
 
-set(bulmalib_SRCS	postgresiface2.cpp
+set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
-			numerocuenta.cpp 
+			numerocuenta.cpp
 			funcaux.cpp
 			logpass.cpp
 			abreempresaview.cpp
@@ -40,7 +40,7 @@ set(bulmalib_SRCS	postgresiface2.cpp
 			blfixed.cpp
 			msgerror.cpp
 			busquedafecha.cpp
-			qtable2.cpp 
+			qtable2.cpp
 			bldockwidget.cpp
 			pgimportfiles.cpp
 			plugins.cpp
@@ -70,27 +70,27 @@ set(bulmalib_SRCS	postgresiface2.cpp
 			busqueda.cpp
 			bli18n.cpp)
 
-set(bulmalib_MOCS	logpass.h 
-			abreempresaview.h 
-			msgerror.h 
-			busquedafecha.h 
-			qtable2.h 
-			busquedaperiodo.h 
-			bldockwidget.h 
-			blsubform.h 
-			listventanas.h 
-			blworkspace.h 
-			blapplication.h 
-			blform.h 
-			qtexteditdelegate.h 
-			bldoublespinbox.h 
-			blwidget.h 
+set(bulmalib_MOCS	logpass.h
+			abreempresaview.h
+			msgerror.h
+			busquedafecha.h
+			qtable2.h
+			busquedaperiodo.h
+			bldockwidget.h
+			blsubform.h
+			listventanas.h
+			blworkspace.h
+			blapplication.h
+			blform.h
+			qtexteditdelegate.h
+			bldoublespinbox.h
+			blwidget.h
 			blmainwindow.h
-			blformlist.h 
-			busquedafecha2.h 
-			blsplashscreen.h 
-			fichacfg.h 
-			paisview.h 
+			blformlist.h
+			busquedafecha2.h
+			blsplashscreen.h
+			fichacfg.h
+			paisview.h
 			blradiobutton.h
 			blcombobox.h
 			blbancoedit.h
@@ -113,7 +113,7 @@ set (bulmalib_HDRS	abreempresaview.h
 			numerocuenta.h
 			pgimportfiles.h
 			plugins.h
-			postgresiface2.h
+			blpostgresqlclient.h
 			blapplication.h
 			qtable2.h
 			qtexteditdelegate.h
@@ -123,7 +123,7 @@ set (bulmalib_HDRS	abreempresaview.h
 			blprogressbar.h
 			blbancoedit.h)
 #headers that are not moc'ed
-#			postgresiface2.h 
+#			blpostgresqlclient.h 
 #			blconfiguration.h 
 #			numerocuenta.h 
 #			funcaux.h 

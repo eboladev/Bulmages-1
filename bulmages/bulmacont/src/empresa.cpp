@@ -101,7 +101,7 @@ Empresa::~Empresa()
 /**
 \return
 **/
-postgresiface2 *Empresa::bdempresa()
+BlPostgreSqlClient *Empresa::bdempresa()
 {
     return ( this );
 }

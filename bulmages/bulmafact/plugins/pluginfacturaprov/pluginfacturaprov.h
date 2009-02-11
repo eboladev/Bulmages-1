@@ -24,7 +24,7 @@
 # define MY_EXPORT
 #endif
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "provedit.h"
@@ -32,6 +32,7 @@
 #include "facturapview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
+
 
 extern "C" MY_EXPORT int SNewFacturaProveedorView (Company *);
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
@@ -41,6 +42,8 @@ extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
 extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 extern "C" MY_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
+
+
 // 
 class mypluginfactp : public QObject, PEmpresaBase
 {

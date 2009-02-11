@@ -23,7 +23,7 @@
 #define EXTRACTOVIEW1_H
 
 #include "ui_extractobase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "fichabc.h"
 
 

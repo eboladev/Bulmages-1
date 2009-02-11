@@ -28,7 +28,7 @@
 
 #include <funcaux.h>
 #include "ui_tutorbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 #include "fichabf.h"

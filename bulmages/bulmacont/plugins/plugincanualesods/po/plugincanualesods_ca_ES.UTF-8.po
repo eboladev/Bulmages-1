@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:48+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -404,7 +404,7 @@ msgstr ""
 msgid "ABRIL"
 msgstr ""
 
-#: pcapgc08.cpp:43 pcapgc08.cpp:49 pcapymes08.cpp:69
+#: pcapymes08.cpp:69 pcapgc08.cpp:43 pcapgc08.cpp:49
 msgid "ACTIVO"
 msgstr ""
 
@@ -618,7 +618,7 @@ msgid ""
 "I. Pasivos vinculados con activos no corrientes mantenidos para la venta."
 msgstr ""
 
-#: pcapgc08.cpp:979 pcaapgc08.cpp:581
+#: pcaapgc08.cpp:581 pcapgc08.cpp:979
 msgid "I. Por valoracion de instrumentos financieros."
 msgstr ""
 
@@ -781,7 +781,7 @@ msgstr "Octubre"
 msgid "PATRIMONIO NETO Y PASIVO"
 msgstr ""
 
-#: pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970 pcaapgc08.cpp:571
+#: pcaapgc08.cpp:571 pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970
 msgid "PERDIDAS_Y_GANANCIAS"
 msgstr ""
 

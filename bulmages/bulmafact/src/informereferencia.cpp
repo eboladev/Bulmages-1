@@ -24,7 +24,7 @@
 
 #include "informereferencia.h"
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 
 

@@ -24,11 +24,11 @@
 # define MY_EXPORT
 #endif
 
-
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "company.h"
 #include "blmainwindow.h"
+
 
 extern "C" MY_EXPORT void entryPoint ( BlMainWindow * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post ( Company * );

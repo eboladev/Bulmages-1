@@ -30,7 +30,7 @@
 #include <QMenu>
 #include <QApplication>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "blsubform.h"
 
@@ -52,4 +52,3 @@ public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
-

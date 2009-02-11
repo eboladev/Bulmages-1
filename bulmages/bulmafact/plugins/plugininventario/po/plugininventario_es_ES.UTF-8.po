@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,8 +138,8 @@ msgstr "Actualizar listado"
 msgid "Almacen"
 msgstr "Almacen"
 
-#: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
-#: ui_inventariosbase.h:187 ui_inventariosbase.h:192
+#: inventarioview.cpp:105 ui_inventariosbase.h:187 ui_inventariosbase.h:192
+#: ui_inventariobase.h:308 ui_inventariobase.h:313
 msgid "Borrar inventario"
 msgstr "Borrar inventario"
 

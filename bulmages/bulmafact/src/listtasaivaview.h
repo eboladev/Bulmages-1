@@ -28,11 +28,10 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
 #include "fichabf.h"
-
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de tasas de IVA.
@@ -58,12 +57,13 @@ public slots:
 class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase
 {
     Q_OBJECT
+
 public:
     ListTasaIVAView ( Company *comp, QWidget *parent );
     ~ListTasaIVAView();
+
 public slots:
     virtual void on_mui_aceptar_clicked();
 };
 
 #endif
-

@@ -24,7 +24,7 @@
 
 #include <QString>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "blfixed.h"
 
@@ -58,7 +58,7 @@ private:
     QList <tipohoja*> raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
     tipohoja* hoja; /// Hoja que contiene los datos de una cuenta.
     tiporama* rama; /// Rama que contiene una hoja y m&aacute;s ramas o no.
-    postgresiface2* conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
+    BlPostgreSqlClient* conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
     /*QString hojaactiva;*/ /// Código de la última hoja visitada (nos servirá de índice para recorred el árbol).
     tipohoja* hojaactiva;
 
@@ -93,11 +93,11 @@ public:
     /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el minimo exigido en un balance abreviado
     bool irHoja ( QString, unsigned int nivel = 4 );
 
-    /// Devuelvo el c�digo de la cuenta mayor que hay en el Arbol. A no ser que se indique otro nivel,
+    /// Devuelvo el codigo de la cuenta mayor que hay en el Arbol. A no ser que se indique otro nivel,
     /// se obtiene el máximo de nivel 4.
     QString codigoCuentaMayor ( unsigned int nivel = 4 );
 
-    /// Devuelvo el c�digo cuenta del hijo que hay en el Arbol para esa cuenta. El primer parametro indica el codigo de
+    /// Devuelvo el codigo cuenta del hijo que hay en el Arbol para esa cuenta. El primer parametro indica el codigo de
     /// cuenta que representa la hoja padre. El segundo parametro indica que se busque hasta ese nivel del Arbol.
     QString hijoMayor ( QString, unsigned int nivel = 4 );
 };

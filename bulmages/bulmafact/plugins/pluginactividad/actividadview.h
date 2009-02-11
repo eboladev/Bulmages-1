@@ -27,13 +27,14 @@
 #include <QCheckBox>
 
 #include "ui_actividadbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
 
 
 class Company;
+
 
 extern "C++" class BusquedaProfesor;
 
@@ -56,4 +57,3 @@ public:
 };
 
 #endif
-

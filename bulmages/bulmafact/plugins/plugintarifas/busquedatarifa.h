@@ -22,7 +22,7 @@
 #define BUSQUEDATARIFA_H
 
 #include "company.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blcombobox.h"
 
 

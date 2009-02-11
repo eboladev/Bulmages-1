@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2002 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   http://www.iglues.org Asociacion Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -31,7 +31,7 @@
 #include <QAssistantClient>
 #include <QLibraryInfo>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "empresabase.h"
@@ -48,6 +48,7 @@ class PaisView;
 class extractoview1;
 class listcuentasview1;
 class Bulmacont;
+
 
 /// Soporte principal para cada empresa contable.
 /** Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa
@@ -85,7 +86,7 @@ public:
     Empresa ( Bulmacont *bcont );
     virtual ~Empresa();
     /// Devuelve un puntero a la clase de la base de datos.
-    postgresiface2 *bdempresa();
+    BlPostgreSqlClient *bdempresa();
     extractoview1 *extractoempresa();
     DiarioView *diarioempresa();
     Asiento1View *intapuntsempresa();

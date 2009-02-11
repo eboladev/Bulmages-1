@@ -31,7 +31,7 @@
 
 #include "blapplication.h"
 #include "bulmafact.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
@@ -44,7 +44,7 @@ class myplugin : public QObject
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     myplugin();

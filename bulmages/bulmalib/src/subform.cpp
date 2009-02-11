@@ -114,7 +114,7 @@ int SDBRecord::addDBCampo ( QString nom, DBCampo::dbtype typ, int res, QString n
 \param res Las restricciones del campo
 \param nomp el nombre a presentar en caso de error.
 **/
-SDBCampo::SDBCampo ( SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp )
+SDBCampo::SDBCampo ( SDBRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
         : QTableWidgetItem2(), DBCampo ( com, nom, typ, res, nomp )
 {
     _depura ( "SDBCampo::SDBCampo", 0 );

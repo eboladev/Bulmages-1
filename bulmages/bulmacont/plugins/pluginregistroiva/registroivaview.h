@@ -27,7 +27,7 @@
 
 #include "ui_registroivabase.h"
 #include "registroiva.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blform.h"
 #include "blfixed.h"
 #include "dialogchanges.h"
@@ -155,4 +155,3 @@ public slots:
 };
 
 #endif
-

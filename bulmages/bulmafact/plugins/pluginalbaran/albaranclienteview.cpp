@@ -43,7 +43,7 @@
 #include "listlinalbaranclienteview.h"
 #include "pedidoclienteview.h"
 #include "pedidosclientelist.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
 #include "plugins.h"

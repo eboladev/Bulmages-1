@@ -26,7 +26,7 @@
 #include <QAssistantClient>
 #include <QLibraryInfo>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"
 #include "empresabase.h"

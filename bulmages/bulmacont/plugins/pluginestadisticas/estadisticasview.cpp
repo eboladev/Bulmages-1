@@ -2,7 +2,7 @@
                           estadisticasview.cpp  -  description
                              -------------------
     begin                : mar jul 15 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 #include "estadisticasview.h"
-#include <qlabel.h>
+#include <QLabel>
 
 #ifdef GDCHART
 #include "gdc.h"
@@ -23,7 +23,8 @@
 #include <gdchart.h>
 #endif
 
-int estadisticasview::inicializa ( postgresiface2 *conexion )
+
+int estadisticasview::inicializa ( BlPostgreSqlClient *conexion )
 {
     conexionbase = conexion;
     presentar();

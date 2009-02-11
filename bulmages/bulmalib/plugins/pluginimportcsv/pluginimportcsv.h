@@ -27,10 +27,10 @@
 # define MY_EXPORT
 #endif
 
-
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "company.h"
+
 
 extern "C" MY_EXPORT void entryPoint ( QMainWindow * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post ( Company * );

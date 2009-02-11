@@ -24,9 +24,10 @@
 # define MY_EXPORT
 #endif
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 

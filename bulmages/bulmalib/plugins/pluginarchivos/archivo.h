@@ -32,7 +32,7 @@
 #include <funcaux.h>
 
 #include "ui_archivobase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 
 

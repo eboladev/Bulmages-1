@@ -22,7 +22,7 @@
 #define LINPREVCOBRO_H
 
 #include "empresa.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class linprevcobro
@@ -49,7 +49,7 @@ private:
     QString mdb_nomcuenta;
     QString mdb_nomctacliente;
     Empresa *empresaactual;
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     linprevcobro ( Empresa * );
@@ -154,4 +154,3 @@ public:
 };
 
 #endif
-

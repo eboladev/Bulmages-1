@@ -26,7 +26,7 @@
 #include <QDialog>
 
 #include "ui_nuevafactbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 class BSelector;
@@ -43,4 +43,3 @@ private slots:
 };
 
 #endif
-

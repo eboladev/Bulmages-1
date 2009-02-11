@@ -24,8 +24,7 @@
 # define MY_EXPORT
 #endif
 
-
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresabase.h"
 #include "bulmacont.h"
 #include "bulmafact.h"
@@ -36,3 +35,4 @@ extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
 extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" MY_EXPORT int BlForm_DesBlForm ( BlForm * );
 extern "C" MY_EXPORT int BlForm_BlForm ( BlForm * );
+

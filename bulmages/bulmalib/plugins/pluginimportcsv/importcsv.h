@@ -31,7 +31,7 @@
 
 #include "funcaux.h"
 #include "ui_importcsvbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 
 
@@ -43,8 +43,6 @@ class EmpresaBase;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-
-
 class ImportCSV : public BlWidget, public Ui_ImportCSVBase
 {
     Q_OBJECT
@@ -65,6 +63,4 @@ public slots:
     void on_mui_cabeceras_stateChanged ( int state );
 };
 
-
 #endif
-

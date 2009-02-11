@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:48+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_subform3base.h:621
+#: ui_blsubformbase.h:621
 #, fuzzy
 msgid "!Opcion reservada a expertos!"
 msgstr "¡Option résérvée aux experts!"
@@ -26,7 +26,7 @@ msgstr "Éraser"
 msgid "&Cancelar"
 msgstr "&Cancéler"
 
-#: ui_msgerrorbase.h:112 ui_subform3base.h:625
+#: ui_msgerrorbase.h:112 ui_blsubformbase.h:625
 msgid "&Cerrar"
 msgstr "&Fermer"
 
@@ -34,7 +34,7 @@ msgstr "&Fermer"
 msgid "&Cerrar el programa"
 msgstr "&Fermer le programme"
 
-#: abreempresaview.cpp:214
+#: abreempresaview.cpp:213
 msgid "&Cierra el programa"
 msgstr "&Fermer le programme"
 
@@ -119,19 +119,19 @@ msgstr "Actualiser liste"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualiser liste d'entreprises"
 
-#: subform3.cpp:2333
+#: blsubform.cpp:2333
 msgid "Ajustar altura"
 msgstr "Ajuster hauteur"
 
-#: subform3.cpp:2336
+#: blsubform.cpp:2336
 msgid "Ajustar alturas"
 msgstr "Ajuster hauteur"
 
-#: subform3.cpp:2332
+#: blsubform.cpp:2332
 msgid "Ajustar columa"
 msgstr "Ajuster colonne"
 
-#: subform3.cpp:2335
+#: blsubform.cpp:2335
 msgid "Ajustar columnas"
 msgstr "Ajuster colonne"
 
@@ -144,11 +144,11 @@ msgstr "<LI>Magasin<B>"
 msgid "Anual"
 msgstr "Annuel"
 
-#: abreempresaview.cpp:492
+#: abreempresaview.cpp:491
 msgid "Anyo"
 msgstr "Année"
 
-#: ui_subform3base.h:624
+#: ui_blsubformbase.h:624
 msgid "Aplicar"
 msgstr "Apliquer"
 
@@ -156,7 +156,7 @@ msgstr "Apliquer"
 msgid "Application name"
 msgstr "Nom d'application"
 
-#: abreempresaview.cpp:492
+#: abreempresaview.cpp:491
 msgid "Archivo"
 msgstr "Archive"
 
@@ -182,7 +182,7 @@ msgstr "Éraser"
 msgid "Borrar pais"
 msgstr "Éraser"
 
-#: subform3.cpp:2329
+#: blsubform.cpp:2329
 msgid "Borrar registro"
 msgstr "Éraser registre"
 
@@ -199,7 +199,7 @@ msgstr ""
 msgid "Cancelar"
 msgstr "&Cancéler"
 
-#: subform3.cpp:1076
+#: blsubform.cpp:1076
 #, fuzzy
 msgid "Cargando SubFormulario "
 msgstr "Configuration Subformulaires"
@@ -233,11 +233,11 @@ msgstr ""
 msgid "Codigo 3 letras:"
 msgstr ""
 
-#: ui_subform3base.h:607
+#: ui_blsubformbase.h:607
 msgid "Columnas visibles"
 msgstr "Colonnes visibles"
 
-#: ui_subform3base.h:601
+#: ui_blsubformbase.h:601
 msgid "Configuracion Subformularios"
 msgstr "Configuration Subformulaires"
 
@@ -313,7 +313,7 @@ msgstr "Désirés vous garder les changes?"
 msgid "Editar"
 msgstr "Éditer"
 
-#: ui_subform3base.h:622
+#: ui_blsubformbase.h:622
 msgid "Ejecutar consulta"
 msgstr "Éxécuter consulte"
 
@@ -360,7 +360,7 @@ msgstr "Entreprise disponibles:"
 msgid "Error al crear el banco"
 msgstr ""
 
-#: postgresiface2.cpp:139
+#: blpostgresqlclient.cpp:139
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Erreur faisant la référence avec la base de données."
 
@@ -380,7 +380,7 @@ msgstr ""
 "Érreur dans la XML\n"
 "Document mal formé."
 
-#: logpass.cpp:111
+#: logpass.cpp:110
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Erreur: usuaire et/ou mot de passe incorrects"
 
@@ -388,7 +388,7 @@ msgstr "Erreur: usuaire et/ou mot de passe incorrects"
 msgid "Esc"
 msgstr "Esc"
 
-#: ui_subform3base.h:617
+#: ui_blsubformbase.h:617
 msgid "Escriba aqui la consulta SQL"
 msgstr "Écriver ici la consulte SQL"
 
@@ -401,7 +401,7 @@ msgstr "Éxportant:"
 msgid "Familia"
 msgstr "<P>Famille<B>"
 
-#: ui_subform3base.h:609
+#: ui_blsubformbase.h:609
 msgid "Filas por pagina:"
 msgstr "Files par pages:"
 
@@ -440,7 +440,7 @@ msgstr ""
 msgid "Id. Provincia"
 msgstr ""
 
-#: subform3.cpp:2070
+#: blsubform.cpp:2070
 msgid "Imprimiendo "
 msgstr ""
 
@@ -522,7 +522,7 @@ msgstr "Il n'a pas pus être érasé"
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"
 
-#: abreempresaview.cpp:492 subform3.cpp:94
+#: abreempresaview.cpp:491 blsubform.cpp:94
 msgid "Nombre"
 msgstr "Nom"
 
@@ -531,7 +531,7 @@ msgstr "Nom"
 msgid "Nombre Pais"
 msgstr "Nom"
 
-#: subform3.cpp:94
+#: blsubform.cpp:94
 msgid "Nombre de campo"
 msgstr "Nom de  champ"
 
@@ -561,19 +561,19 @@ msgstr "Omettre &classe"
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 
-#: ui_subform3base.h:610
+#: ui_blsubformbase.h:610
 msgid "Pagina actual:"
 msgstr "Page actuelle:"
 
-#: ui_subform3base.h:612
+#: ui_blsubformbase.h:612
 msgid "Pagina anterior"
 msgstr "Page antérieure"
 
-#: ui_subform3base.h:613
+#: ui_blsubformbase.h:613
 msgid "Pagina siguiente"
 msgstr "Page suivante"
 
-#: ui_subform3base.h:614
+#: ui_blsubformbase.h:614
 msgid "Paginacion"
 msgstr "Paginaison"
 
@@ -585,7 +585,7 @@ msgstr ""
 msgid "Paises"
 msgstr ""
 
-#: abreempresaview.cpp:283
+#: abreempresaview.cpp:282
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Pour entrer, avant vous devez sélectionner une entreprise."
 
@@ -602,7 +602,7 @@ msgid "Qt Scripting"
 msgstr ""
 
 # Consulta SQL
-#: ui_subform3base.h:620
+#: ui_blsubformbase.h:620
 msgid "Query"
 msgstr "Query"
 
@@ -614,7 +614,7 @@ msgstr "Bimensuel"
 msgid "Registro de entrada:"
 msgstr "Régistre d'entrée:"
 
-#: ui_subform3base.h:623
+#: ui_blsubformbase.h:623
 msgid "SQL"
 msgstr "SQL"
 
@@ -653,15 +653,15 @@ msgstr ""
 msgid "Tiene que seleccionar un elemento"
 msgstr "Vous devez sélectionner un élément"
 
-#: abreempresaview.cpp:492
+#: abreempresaview.cpp:491
 msgid "Tipo"
 msgstr "Tipe"
 
-#: ui_subform3base.h:608
+#: ui_blsubformbase.h:608
 msgid "Total filas:"
 msgstr "Total files:"
 
-#: ui_subform3base.h:611
+#: ui_blsubformbase.h:611
 msgid "Total paginas:"
 msgstr "Total pages:"
 
@@ -766,11 +766,11 @@ msgstr ""
 msgid "Usuario Actual"
 msgstr ""
 
-#: subform3.cpp:2339
+#: blsubform.cpp:2339
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Voir/Oculter configurateur de subformulaire"
 
-#: subform3.cpp:94
+#: blsubform.cpp:94
 msgid "Visible"
 msgstr "Visible"
 

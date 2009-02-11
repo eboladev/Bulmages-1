@@ -21,6 +21,7 @@
  ***************************************************************************/
 
 #include <fstream>
+#include <stdio.h>
 
 #include <QLineEdit>
 #include <QMessageBox>
@@ -35,10 +36,8 @@
 #include <QTextStream>
 #include <QTextCodec>
 
-#include <stdio.h>
-
 #include "abreempresaview.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "funcaux.h"
 
@@ -370,8 +369,8 @@ void abreempresaview::guardaArchivo()
     confpr->setValor ( CONF_ALERTAS_DB, "No" );
     /// Nos conectamos a la base de datos 'template1' para obtener un listado de todas
     /// las bases de datos existentes.
-    postgresiface2 *db;
-    db = new postgresiface2();
+    BlPostgreSqlClient *db;
+    db = new BlPostgreSqlClient();
     if ( db->inicializa ( QString ( "template1" ) ) )
         if ( db->inicializa ( QString ( "bulmafact" ) ) )
             if ( db->inicializa ( QString ( "bulmacont" ) ) )
@@ -404,13 +403,13 @@ void abreempresaview::trataEmpresa ( QString empresa, QFile *file )
 {
     _depura ( "abreempresaview::trataEmpresa", 0, empresa );
     QTextStream filestr ( file );
-    postgresiface2 *db1;
+    BlPostgreSqlClient *db1;
     QString nombre;
     QString nomdb = "";
     QString ano;
     QString tipo;
     if ( !empresa.startsWith ( "template" ) ) {
-        db1 = new postgresiface2();
+        db1 = new BlPostgreSqlClient();
         db1->inicializa ( empresa );
         try {
             cursor2 *cursa = db1->cargacursor ( "SELECT * FROM pg_tables WHERE tablename = 'configuracion'" );

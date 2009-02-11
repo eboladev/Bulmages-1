@@ -26,7 +26,7 @@
 #include <QCheckBox>
 
 #include "ui_rutacomercialbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "rutacomercial.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"

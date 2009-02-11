@@ -26,7 +26,7 @@
 
 #include "funcaux.h"
 #include "ui_logpassbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 /// Presenta un di&aacute;logo que pregunta el usuario y la contrase&ntilde;a
@@ -39,7 +39,7 @@ private:
     bool m_authOK;
 
 private:
-    postgresiface2 *metabase;
+    BlPostgreSqlClient *metabase;
 
 public:
     logpass ( QWidget *parent = 0, const char *name = 0 );

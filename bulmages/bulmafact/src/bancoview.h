@@ -26,7 +26,7 @@
 #include <ui_bancobase.h>
 
 #include "fichabf.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un banco.
@@ -61,4 +61,3 @@ private slots:
 };
 
 #endif
-

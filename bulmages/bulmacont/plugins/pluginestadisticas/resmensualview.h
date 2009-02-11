@@ -2,7 +2,7 @@
                           resmensualview.h  -  description
                              -------------------
     begin                : dom jul 20 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -18,7 +18,8 @@
 #define RESMENSUALVIEW_H
 
 #include <qwidget.h>
-#include "postgresiface2.h"
+
+#include "blpostgresqlclient.h"
 
 #ifdef ESTADISTICAS
 #include "resmensualdlg.h"
@@ -34,23 +35,24 @@
 
 class empresa;
 
-/** *@author Tomeu Borrás Riera   */
 
 class resmensualview : public resmensualdlg
 {
     Q_OBJECT
+
 private:
     empresa *empresaactual;
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
+
 public:
     QString idmpatrimonial1, idmpatrimonial2, idmpatrimonial3;
-
     int inicializa();
     resmensualview ( empresa *, QWidget *parent = 0, const char *name = 0 );
     ~resmensualview();
     void presentar();
     void presentarpie();
     void generargrafico ( float *, char ** );
+
 public slots:
     virtual void accept();
     virtual void buscacodigocta();

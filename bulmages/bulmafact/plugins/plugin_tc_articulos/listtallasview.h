@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "subform2bf.h"
 #include "fichabf.h"
 
@@ -50,7 +50,6 @@ public slots:
 };
 
 
-
 #include "ui_listtallasbase.h"
 
 
@@ -69,4 +68,3 @@ public slots:
 };
 
 #endif
-

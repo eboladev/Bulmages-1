@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 #include "ui_proyectobase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
 

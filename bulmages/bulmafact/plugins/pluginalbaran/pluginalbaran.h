@@ -24,7 +24,7 @@
 # define MY_EXPORT
 #endif
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "busquedareferencia.h"
@@ -37,17 +37,13 @@
 
 
 extern "C" MY_EXPORT int SNewAlbaranClienteView (Company *);
-
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
 extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
-
 extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
 extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
-
-
 
 
 // 

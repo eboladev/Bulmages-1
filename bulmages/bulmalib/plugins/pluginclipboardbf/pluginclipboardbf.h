@@ -31,7 +31,7 @@
 
 #include "blapplication.h"
 #include "blsubform.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 
 

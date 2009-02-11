@@ -21,7 +21,7 @@
 #ifndef VEHICULOVIEW_H
 #define VEHICULOVIEW_H
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "ui_vehiculobase.h"
 #include "dbrecord.h"
@@ -40,8 +40,6 @@ public:
     ~VehiculoView();
     virtual int cargar ( QString idvehiculo );
     virtual int guardar();
-
 };
 
 #endif
-

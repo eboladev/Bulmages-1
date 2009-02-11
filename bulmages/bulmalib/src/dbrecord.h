@@ -25,9 +25,10 @@
 #include <QString>
 #include <QList>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "blwidget.h"
+
 
 /// Manejo de campos de un registro de la base de datos
 /**
@@ -71,17 +72,17 @@ private:
     QString m_nompresentacion;         ///< El nombre que se mostrara en los mensajes de error y presentacion
     int m_restrict;          ///< Las restricciones del campo
     dbtype m_tipo;          ///< El tipo de dato almacenado
-    postgresiface2 *m_conexionbase; ///< Puntero a la base de datos a utilizar
+    BlPostgreSqlClient *m_conexionbase; ///< Puntero a la base de datos a utilizar
     QString m_valorcampoorig;         ///< indica el valor del campo en un estado anterior para determinar si ha habido cambios.
 
 
 public:
-    DBCampo ( postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    DBCampo ( BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
     virtual ~DBCampo();
     bool cambiado();
     void resetCambio();
-    postgresiface2 *conexionbase();
-    void setconexionbase ( postgresiface2 *comp );
+    BlPostgreSqlClient *conexionbase();
+    void setconexionbase ( BlPostgreSqlClient *comp );
     dbtype tipo();
     virtual int set ( QString val );
     int restrictcampo();

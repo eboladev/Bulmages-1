@@ -30,13 +30,14 @@
 #include <QMenu>
 #include <QApplication>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "blsubform.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( QApplication * );
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+
 
 class myplugsubformods : public QObject
 {
@@ -51,4 +52,3 @@ public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
-

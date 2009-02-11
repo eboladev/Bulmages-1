@@ -32,7 +32,7 @@
 #include <QMap>
 
 #include "blapplication.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 
 /// Indica el color de fondo de la ventana de apuntes cuando esta cerrada.

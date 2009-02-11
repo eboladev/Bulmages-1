@@ -24,7 +24,7 @@
 # define MY_EXPORT
 #endif
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "busquedareferencia.h"
@@ -35,6 +35,7 @@ extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
 extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
 extern "C" MY_EXPORT int SNewProveedorView (Company *);
+
 
 class MyPlugPro : public QObject, PEmpresaBase
 {

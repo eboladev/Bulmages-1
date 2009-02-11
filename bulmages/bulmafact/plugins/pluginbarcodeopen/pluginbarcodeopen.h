@@ -31,8 +31,9 @@
 
 #include "blapplication.h"
 #include "bulmafact.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
+
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 

@@ -22,13 +22,14 @@
 #ifndef TIPOIVAVIEW_H
 #define TIPOIVAVIEW_H
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "ui_tipoivabase.h"
 #include "fichabc.h"
 
 
 class empresa;
+
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
 /** Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales. */
@@ -59,4 +60,3 @@ private slots:
 };
 
 #endif
-

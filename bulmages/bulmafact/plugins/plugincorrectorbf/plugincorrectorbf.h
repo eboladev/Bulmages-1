@@ -25,9 +25,10 @@
 #endif
 
 #include "bulmafact.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "company.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Bulmafact_closeEvent ( Bulmafact * );
+

@@ -33,7 +33,7 @@
 
 #include "ui_configuracion.h"
 #include "bselector.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 
 #ifndef WIN32
 #include <sys/wait.h>
@@ -84,4 +84,3 @@ private slots:
 };
 
 #endif
-

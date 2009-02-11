@@ -26,7 +26,7 @@
 #include <QLabel>
 
 #include "blcombobox.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "blwidget.h"
 
 
@@ -48,13 +48,8 @@ public:
     ~BusquedaTipoIva();
     virtual void setId( QString idtipo_iva );
     QString id();
-
-
     void m_activated ( int index );
-
-
 };
-
 
 
 /** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo 'QComboBox'
@@ -72,4 +67,3 @@ public:
 };
 
 #endif
-

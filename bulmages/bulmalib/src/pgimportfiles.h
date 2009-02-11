@@ -26,8 +26,9 @@
 #include <QFile>
 #include <QString>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "funcaux.h"
+
 
 #define IMPORT_TODO 0xFFFFFFFF
 
@@ -61,7 +62,7 @@ class pgimportfiles
 private:
     /// Base de datos con la que trabaja la clase y de la que se hace
     /// importaci&oacute;n/exportaci&oacute;n.
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     /// La clase puede hacer una simulaci&oacute;n o no dependiendo del valor de esta
     /// variable.
     bool m_modoTest;
@@ -84,7 +85,7 @@ public:
     void setModoTest();
     void setModoNormal();
     bool modoTest();
-    pgimportfiles ( postgresiface2 * );
+    pgimportfiles ( BlPostgreSqlClient * );
     virtual ~pgimportfiles();
     int contaplus2Bulmages ( QFile &, QFile & );
     int bulmages2Contaplus ( QFile &, QFile & );

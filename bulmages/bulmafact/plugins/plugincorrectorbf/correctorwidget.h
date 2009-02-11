@@ -27,7 +27,7 @@
 
 #include <funcaux.h>
 #include "ui_correctorbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "company.h"
 #include "blwidget.h"
 
@@ -68,4 +68,3 @@ public slots:
 };
 
 #endif
-

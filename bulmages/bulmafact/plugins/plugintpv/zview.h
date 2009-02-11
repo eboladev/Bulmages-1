@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 #include "ui_zbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
@@ -49,6 +49,7 @@ public:
     ZView ( Company *, QWidget * );
     ~ZView();
     int cargarPost ( QString idz );
+
 public slots:
      virtual void on_mui_list_cellDoubleClicked(int row, int);
      virtual void on_mui_actualizar_released();

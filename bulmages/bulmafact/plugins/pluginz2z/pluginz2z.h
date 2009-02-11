@@ -25,7 +25,7 @@
 #endif
 
 #include "bulmafact.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "company.h"
 
 
@@ -37,6 +37,7 @@ extern BlApplication *theApp;
 class mypluginzz : public QObject
 {
     Q_OBJECT
+
 public:
     mypluginzz();
     ~mypluginzz();
@@ -44,4 +45,3 @@ public:
 public slots:
     void elslot ( );
 };
-

@@ -26,7 +26,7 @@
 
 #include "bldockwidget.h"
 #include "ui_correctorbase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "funcaux.h"
 
@@ -47,7 +47,7 @@ class correctorwidget : public QWidget, public Ui_correctorbase
 
 public:
     /// Base de datos con la que se esta operando.
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
     /// Empresa que ha hecho la instancia del corrector.
     Empresa *empresaactual;
     /// El informe generado se forma en HTML y se presenta mediante este QString.
@@ -65,7 +65,6 @@ public:
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
     /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
-
     void setEmpresa ( Empresa *empres ) {
         empresaactual = empres;
         conexionbase = empres->bdempresa();
@@ -90,4 +89,3 @@ public slots:
 };
 
 #endif
-

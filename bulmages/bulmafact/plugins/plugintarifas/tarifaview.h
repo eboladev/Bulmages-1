@@ -24,7 +24,7 @@
 #define TARIFAVIEW_H
 
 #include "ui_tarifabase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
 

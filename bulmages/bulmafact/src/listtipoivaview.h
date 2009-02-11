@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
 #include "fichabf.h"
@@ -57,12 +57,13 @@ public slots:
 class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase
 {
     Q_OBJECT
+
 public:
     ListTipoIVAView ( Company *comp, QWidget *parent );
     ~ListTipoIVAView();
+
 public slots:
     virtual void on_mui_aceptar_clicked();
 };
 
 #endif
-

@@ -16,17 +16,15 @@
 #ifndef BVisorEmpresas_H
 #define BVisorEmpresas_H
 
+#include <QListView>
+
 #include "bselector.h"
 #include "uivisorempresas.h"
-#include "postgresiface2.h"
-#include <qlistview.h>
+#include "blpostgresqlclient.h"
 
-
-/**
-@author Josep Burcion
-*/
 
 class BSelector;
+
 
 class BVisorEmpresas : public UIvisorEmpresas
 {
@@ -35,12 +33,9 @@ public:
     BVisorEmpresas ( QString * ptrRetorno = 0, QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel );
     ~BVisorEmpresas();
 
-
 public slots:
     virtual void botonAceptar();
     virtual void botonCancelar();
-
-
 };
 
 #endif

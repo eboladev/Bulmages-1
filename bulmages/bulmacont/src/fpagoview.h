@@ -23,7 +23,7 @@
 #define FPAGOVIEW_H
 
 #include "ui_fpagobase.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
 
@@ -52,7 +52,6 @@ private:
 public:
     fpagoview ( Empresa *, QWidget *parent = 0 );
     ~fpagoview();
-
     virtual int guardar();
     virtual void on_mui_borrar_clicked();
 

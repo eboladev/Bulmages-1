@@ -37,22 +37,21 @@
 #include <QTextStream>
 
 #include "bulmacont.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "blfixed.h"
 #include "arbol.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
-
 extern BlApplication *theApp;
+
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
 //Cuentas Anuales PYMES 2008 CAPYMES08
 //Cuentas Anuales Plan General Contable 2008 CAPGC08
 //Cuentas Anuales Abreviadas Plan General Contable 2008 CAAPGC08
-
 enum CAnuales {CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08};
 
 
@@ -67,21 +66,18 @@ private:
     QString ejercicioAnterior_fechaBalance;
     BlFixed cuentaPositiva ( BlFixed valor );
     BlFixed cuentaNegativa ( BlFixed valor );
-
     void mensajeAdvertenciaPGC ( CAnuales tipus );
-
     QString cuentaAnualAsociancionSinLucro ();
     QString cuentaAnualCAPGC07();
     QString cuentaAnualCAPYMES08();
     QString cuentaAnualCAAPGC08();
     QString cuentaAnualCAPGC08();
-
     Arbol *arbolEjercicioActual, *arbolEjercicioAnterior; /// un arbol por cada periodo
     bool Arboles();
 
 public:
     Empresa *empresaact;
-    postgresiface2 *conexionbase;
+    BlPostgreSqlClient *conexionbase;
 
 public:
     pluginCAnualesODS();
@@ -99,5 +95,4 @@ public slots:
 
 };
 
-
-#endif //PLUGINCANUALESODS_H
+#endif

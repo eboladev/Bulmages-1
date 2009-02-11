@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 19:11+0100\n"
+"POT-Creation-Date: 2009-02-12 00:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,11 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Canceler"
 
-#: bconfiguracion.cpp:310 bconfiguracion.cpp:312 bconfiguracion.cpp:314
+#: bconfiguracion.cpp:311 bconfiguracion.cpp:313 bconfiguracion.cpp:315
 msgid "Atencion"
 msgstr "Atention"
 
-#: bconfiguracion.cpp:314
+#: bconfiguracion.cpp:315
 msgid ""
 "Borrar una empresa puede suponer perdida de datos\n"
 " Desea continuar?\n"
@@ -39,7 +39,7 @@ msgstr ""
 "Éraser une entreprise peut supposer pèrte de dates\n"
 " Voulez vous continuer?\n"
 
-#: bconfiguracion.cpp:379
+#: bconfiguracion.cpp:380
 msgid "Cargar empresa"
 msgstr "Charger l'entreprise"
 
@@ -60,11 +60,11 @@ msgstr ""
 msgid "Datos incompletos"
 msgstr "Données incomplets"
 
-#: bconfiguracion.cpp:349 bconfiguracion.cpp:381
+#: bconfiguracion.cpp:350 bconfiguracion.cpp:382
 msgid "Empresas (*.pgdump)"
 msgstr "Entreprises (+.pgdump"
 
-#: bconfiguracion.cpp:310
+#: bconfiguracion.cpp:311
 msgid ""
 "Esta base de datos no puede ser eliminada.\n"
 " Es la plantilla para generar nuevas empresas."
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Guardar archivo"
 msgstr "Garder archive"
 
-#: bconfiguracion.cpp:347
+#: bconfiguracion.cpp:348
 msgid "Guardar empresa"
 msgstr "Garder entreprise"
 
-#: bconfiguracion.cpp:312
+#: bconfiguracion.cpp:313
 msgid ""
 "No esta permitido eliminar la base \n"
 " de datos actualmente abierta."
@@ -95,7 +95,7 @@ msgstr ""
 "Vous ne pouvez pas laisser champs en blanc pour créer une nouvelle "
 "entreprise.\n"
 
-#: main.cpp:93
+#: main.cpp:94
 msgid "Selector de BulmaGes"
 msgstr "Sélecteur de BulmaGes"
 

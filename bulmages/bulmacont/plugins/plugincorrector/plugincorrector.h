@@ -25,7 +25,7 @@
 #endif
 
 #include "bulmacont.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "empresa.h"
 
 

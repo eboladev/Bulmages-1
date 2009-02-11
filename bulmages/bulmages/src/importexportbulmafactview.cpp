@@ -65,7 +65,7 @@ void ImportExportBulmafactView::mensajeria ( QString mensaje )
 \param parent
 \param f
 **/
-ImportExportBulmafactView::ImportExportBulmafactView ( postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0 )
+ImportExportBulmafactView::ImportExportBulmafactView ( BlPostgreSqlClient *con, QWidget *parent, Qt::WFlags f = 0 )
         : QDialog ( parent, f ), pgimportfiles ( con )
 {
     _depura ( "ImportExportBulmafactView::ImportExportBulmafactView", 0 );

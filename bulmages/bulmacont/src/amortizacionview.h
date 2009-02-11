@@ -22,7 +22,7 @@
 #ifndef AMORTIZACIONDLGAMORTIZACIONVIEW_H
 #define AMORTIZACIONDLGAMORTIZACIONVIEW_H
 
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "subform2bc.h"
 #include "dbrecord.h"
@@ -54,7 +54,6 @@ class AmortizacionView : public FichaBc, public Ui_AmortizacionBase
     Q_OBJECT
 
 private:
-
     /// Esta variable indica cual es el &iacute;ndice de la cuenta de activo de la
     /// amortizaci&oacute;n que estamos viendo. Si no se est&aacute; mostrando una
     /// cuenta este valor vale "".
@@ -78,4 +77,3 @@ public slots:
 };
 
 #endif
-

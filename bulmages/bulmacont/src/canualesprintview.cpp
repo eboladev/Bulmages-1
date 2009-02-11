@@ -26,7 +26,7 @@
 #include "funcaux.h"
 #include "empresa.h"
 #include "blfixed.h"
-#include "postgresiface2.h"
+#include "blpostgresqlclient.h"
 #include "arbol.h"
 #include "asiento1view.h"
 
