@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,24 +64,28 @@ msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
 #: zlist.cpp:190
+#, fuzzy
 msgid "Almacenes"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: zview.cpp:80
+#, fuzzy
 msgid "Anulado"
-msgstr ""
+msgstr "Anual"
 
 #: zview.cpp:83
 msgid "Base Imponible"
 msgstr ""
 
 #: ui_zbase.h:300 ui_zbase.h:305
+#, fuzzy
 msgid "Borrar almacen"
-msgstr ""
+msgstr "Esborra albarà"
 
 #: ui_zlistbase.h:245 ui_zlistbase.h:250
+#, fuzzy
 msgid "Borrar contrato"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_zlistbase.h:298
 msgid "Buscar:"
@@ -120,24 +124,28 @@ msgid "Descripcion"
 msgstr "Descripció"
 
 #: ui_zlistbase.h:234 ui_zlistbase.h:239
+#, fuzzy
 msgid "Editar contrato"
-msgstr ""
+msgstr "Editar compte"
 
 #: zview.cpp:93
+#, fuzzy
 msgid "Error al crear el almacen"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: zlist.cpp:178
+#, fuzzy
 msgid "Error al editar el almacen"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: zview.cpp:59 zview.cpp:76 zlist.cpp:57 ui_zbase.h:322
 msgid "Fecha"
 msgstr "Data"
 
 #: ui_zlistbase.h:267 ui_zlistbase.h:272
+#, fuzzy
 msgid "Filtrar contratos"
-msgstr ""
+msgstr "Editar compte"
 
 #: zview.cpp:79
 #, fuzzy
@@ -149,12 +157,14 @@ msgid "General"
 msgstr "General"
 
 #: ui_zbase.h:288 ui_zbase.h:293
+#, fuzzy
 msgid "Guardar almacen"
-msgstr ""
+msgstr "Desa balanç"
 
 #: zview.cpp:60 zview.cpp:81 zlist.cpp:58 ui_zbase.h:323
+#, fuzzy
 msgid "Hora"
-msgstr ""
+msgstr "Normal"
 
 #: zlist.cpp:56
 msgid "ID Z"
@@ -165,28 +175,34 @@ msgid "Id"
 msgstr ""
 
 #: zview.cpp:72
+#, fuzzy
 msgid "Id albaran"
-msgstr ""
+msgstr "Imprimeix albarà"
 
 #: zview.cpp:78
+#, fuzzy
 msgid "Id forma de pago"
-msgstr ""
+msgstr "<LI> Forma de pagament <B>"
 
 #: zview.cpp:63 zlist.cpp:62
+#, fuzzy
 msgid "Id. almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: ui_zlistbase.h:256 ui_zlistbase.h:261
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: zview.cpp:84
+#, fuzzy
 msgid "Impuestos"
-msgstr ""
+msgstr "Imputació"
 
 #: ui_zlistbase.h:223 ui_zlistbase.h:228
+#, fuzzy
 msgid "Nuevo contrato"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_zbase.h:324
 msgid "Num. Tickets"
@@ -197,12 +213,14 @@ msgid "Num. tickets"
 msgstr ""
 
 #: zview.cpp:73
+#, fuzzy
 msgid "Numero"
-msgstr ""
+msgstr "Nou"
 
 #: zview.cpp:77
+#, fuzzy
 msgid "Procesado"
-msgstr ""
+msgstr "Propietari"
 
 #: zview.cpp:75
 msgid "Referencia"
@@ -213,5 +231,6 @@ msgid "Tickets"
 msgstr ""
 
 #: zview.cpp:61 zview.cpp:82 zlist.cpp:60 ui_zbase.h:325
+#, fuzzy
 msgid "Total"
-msgstr ""
+msgstr "Totals:"

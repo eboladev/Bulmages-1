@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,16 +19,19 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_confreglasbase.h:283
+#, fuzzy
 msgid "Apunte con Cuenta"
-msgstr ""
+msgstr "Apunts &comptables"
 
 #: ui_confreglasbase.h:291
+#, fuzzy
 msgid "Apunte con Descripcion"
-msgstr ""
+msgstr "Descripció"
 
 #: ui_confreglasbase.h:284
+#, fuzzy
 msgid "Apunte con Saldo"
-msgstr ""
+msgstr "Apunts &comptables"
 
 #: ui_confreglasbase.h:294
 #, fuzzy
@@ -47,12 +50,14 @@ msgstr ""
 "Tan&car"
 
 #: ui_confreglasbase.h:280
+#, fuzzy
 msgid "Comprobacion por asientos"
-msgstr ""
+msgstr "Importar assentament"
 
 #: ui_confreglasbase.h:281
+#, fuzzy
 msgid "Condicion:"
-msgstr ""
+msgstr "Codi:"
 
 #: ui_correctorbase.h:106 ui_correctorbase.h:111
 msgid "Configurar"
@@ -63,8 +68,13 @@ msgid "Corrector"
 msgstr ""
 
 #: ui_correctorbase.h:95 ui_correctorbase.h:100
+#, fuzzy
 msgid "Corregir"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
 
 #: ui_confreglasbase.h:282
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
@@ -75,8 +85,9 @@ msgid "Periodicidad"
 msgstr "Periodicitat"
 
 #: ui_confreglasbase.h:279
+#, fuzzy
 msgid "Regla:"
-msgstr ""
+msgstr "Resultat:"
 
 #: ui_confreglasbase.h:275
 msgid "Reglas de Corrector"
@@ -87,12 +98,14 @@ msgid "Reglas sobre Apuntes"
 msgstr ""
 
 #: ui_confreglasbase.h:287
+#, fuzzy
 msgid "igual"
-msgstr ""
+msgstr "Anual"
 
 #: ui_confreglasbase.h:289
+#, fuzzy
 msgid "mayor"
-msgstr ""
+msgstr "Maig"
 
 #: ui_confreglasbase.h:288
 msgid "menor"

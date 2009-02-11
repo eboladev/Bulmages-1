@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,16 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: pluginalias.cpp:109
+#, fuzzy
 msgid "Alias"
-msgstr ""
+msgstr "Aplicar"
 
 #: pluginalias.cpp:110
+#, fuzzy
 msgid "Id articulo"
-msgstr ""
+msgstr "<P> Article <B>"
 
 #: pluginalias.cpp:111
+#, fuzzy
 msgid "Id validacion"
-msgstr ""
+msgstr "Id amortizació"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,18 +20,22 @@ msgstr ""
 
 #: informeqtoolbutton.cpp:96 informeqtoolbutton.cpp:350
 #: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
+#, fuzzy
 msgid "Anyo:"
-msgstr ""
+msgstr "Any"
 
 #: informeqtoolbutton.cpp:95 informeqtoolbutton.cpp:349
 #: informeqtoolbutton1.cpp:96 informeqtoolbutton1.cpp:349
+#, fuzzy
 msgid "Ejercicio del Informe"
-msgstr ""
+msgstr "Exercicis de l'empresa:"
 
 #: informeqtoolbutton.cpp:179 informeqtoolbutton1.cpp:179
+#, fuzzy
 msgid "Generando Informe"
-msgstr ""
+msgstr "Generar de totes formes"
 
 #: informeqtoolbutton.cpp:432 informeqtoolbutton1.cpp:434
+#, fuzzy
 msgid "Generando informe"
-msgstr ""
+msgstr "Generar de totes formes"

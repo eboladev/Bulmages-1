@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,8 +36,9 @@ msgid "&Cancelar"
 msgstr "&Cancel·la"
 
 #: pluginbf_cliente.cpp:97
+#, fuzzy
 msgid "&Clientes"
-msgstr ""
+msgstr "&Assentaments"
 
 #: ui_clientebase.h:612
 #, fuzzy
@@ -93,12 +94,14 @@ msgid "Cliente inactivo"
 msgstr "Compte d'actiu:"
 
 #: pluginbf_cliente.cpp:99 pluginbf_cliente.cpp:100 ui_clientslistbase.h:261
+#, fuzzy
 msgid "Clientes"
-msgstr ""
+msgstr "Assentaments"
 
 #: clientslist.cpp:171 clientslist.cpp:194
+#, fuzzy
 msgid "Clientes (*.xml)"
-msgstr ""
+msgstr "Contaplus (*.xml)"
 
 #: clienteview.cpp:76 clientslist.cpp:276
 msgid "Codigo"
@@ -149,8 +152,9 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: ui_clientebase.h:615
+#, fuzzy
 msgid "Datos bancarios:"
-msgstr ""
+msgstr "Dades incompletes"
 
 #: clienteview.cpp:73
 #, fuzzy
@@ -348,12 +352,14 @@ msgid "Pagina web:"
 msgstr "URL de la pàgina web:"
 
 #: clienteview.cpp:61 clientslist.cpp:282
+#, fuzzy
 msgid "Poblacion"
-msgstr ""
+msgstr "Paginació"
 
 #: ui_clientebase.h:601
+#, fuzzy
 msgid "Poblacion:"
-msgstr ""
+msgstr "Paginació"
 
 #: ui_clientslistbase.h:363
 #, fuzzy
@@ -365,8 +371,9 @@ msgid "Provincia"
 msgstr ""
 
 #: ui_clientebase.h:602
+#, fuzzy
 msgid "Provincia:"
-msgstr ""
+msgstr "Periodicitat:"
 
 #: clienteview.cpp:79
 msgid "Recargo de Equivalencia"
@@ -377,12 +384,14 @@ msgid "Regimen fiscal"
 msgstr ""
 
 #: ui_clientebase.h:611
+#, fuzzy
 msgid "Regimen fiscal:"
-msgstr ""
+msgstr "Assentament final:"
 
 #: clientslist.cpp:62
+#, fuzzy
 msgid "Selector de clientes"
-msgstr ""
+msgstr "Sel·lector de BulmaGés"
 
 #: ui_clientebase.h:605
 #, fuzzy
@@ -397,6 +406,6 @@ msgstr ""
 msgid "Telefono movil:"
 msgstr ""
 
-#: clienteview.cpp:164
+#: clienteview.cpp:163
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""

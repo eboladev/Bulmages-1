@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,20 +59,23 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_alumnobase.h:518
+#, fuzzy
 msgid "&Datos generales"
-msgstr ""
+msgstr "&Dades comptables"
 
 #: pluginalumno.cpp:104
+#, fuzzy
 msgid "&Nuevo alumno"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: alumnoview.cpp:48
+#, fuzzy
 msgid "Alumno"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: alumnoslist.cpp:144 pluginalumno.cpp:98 pluginalumno.cpp:99
 #: ui_alumnoslistbase.h:308
@@ -80,21 +83,25 @@ msgid "Alumnos"
 msgstr ""
 
 #: ui_alumnoslistbase.h:309
+#, fuzzy
 msgid "Banco:"
-msgstr ""
+msgstr "Balanç"
 
 #: alumnoslist.cpp:218 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
+#, fuzzy
 msgid "Borrar Alumno"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_alumnobase.h:479 ui_alumnobase.h:484 ui_alumnobase.h:491
 #: ui_alumnobase.h:496
+#, fuzzy
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_alumnobase.h:506
+#, fuzzy
 msgid "Borrar imagen"
-msgstr ""
+msgstr "Esborra assentament"
 
 #: ui_alumnoslistbase.h:399
 msgid "Buscar:"
@@ -105,20 +112,24 @@ msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr ""
 
 #: ui_alumnobase.h:503
+#, fuzzy
 msgid "Cam&biar imagen"
-msgstr ""
+msgstr "Canviar compte"
 
 #: ui_alumnoslistbase.h:313
+#, fuzzy
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_alumnoslistbase.h:312
+#, fuzzy
 msgid "Cobros previstos"
-msgstr ""
+msgstr "&Cobraments i pagaments"
 
 #: ui_alumnobase.h:515
+#, fuzzy
 msgid "Codigo postal:"
-msgstr ""
+msgstr "Codi compte"
 
 #: ui_alumnobase.h:519
 msgid "Comentarios:"
@@ -169,32 +180,37 @@ msgid "DNI / NIf"
 msgstr ""
 
 #: ui_alumnobase.h:520
+#, fuzzy
 msgid "Datos bancarios:"
-msgstr ""
+msgstr "Dades incompletes"
 
 #: alumnoslist.cpp:201
+#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: alumnoslist.cpp:160
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: ui_alumnobase.h:511
 msgid "Direccion:"
 msgstr "Adreça:"
 
 #: alumnoslist.cpp:217 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
+#, fuzzy
 msgid "Editar Alumno"
-msgstr ""
+msgstr "Editar compte"
 
 #: alumnoslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
 #: alumnoview.cpp:68
+#, fuzzy
 msgid "Error al crear el alumno"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: ui_alumnoslistbase.h:398
 msgid "F5"
@@ -209,48 +225,56 @@ msgid "Fecha inicial:"
 msgstr ""
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:370
+#, fuzzy
 msgid "Filtrar Alumnos"
-msgstr ""
+msgstr "Filtrar balanç"
 
 #: ui_alumnobase.h:502
 msgid "Fotografia"
 msgstr ""
 
 #: ui_alumnobase.h:467 ui_alumnobase.h:472
+#, fuzzy
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Desa arxiu"
 
 #: ui_alumnobase.h:527
 msgid "Hermanos"
 msgstr ""
 
 #: alumnoview.cpp:51 alumnoslist.cpp:262
+#, fuzzy
 msgid "Id alumno"
-msgstr ""
+msgstr "Id apunt"
 
 #: ui_alumnoslistbase.h:353 ui_alumnoslistbase.h:358
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: alumnoslist.cpp:263 ui_alumnobase.h:523
 msgid "Nombre"
 msgstr "Nom"
 
 #: ui_alumnobase.h:510
+#, fuzzy
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: alumnoview.cpp:52
+#, fuzzy
 msgid "Nombre del alumno"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:322 ui_alumnobase.h:463
+#, fuzzy
 msgid "Nuevo Alumno"
-msgstr ""
+msgstr "Nou assentament"
 
 #: pluginalumno.cpp:106 pluginalumno.cpp:107
+#, fuzzy
 msgid "Nuevo alumno"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_alumnobase.h:521
 msgid "Otros datos"
@@ -261,20 +285,24 @@ msgid "Padres/Tutores"
 msgstr ""
 
 #: ui_alumnobase.h:512
+#, fuzzy
 msgid "Poblacion:"
-msgstr ""
+msgstr "Paginació"
 
 #: ui_alumnobase.h:525
+#, fuzzy
 msgid "Porcentaje de facturacion"
-msgstr ""
+msgstr "Percentatge de càrrega..."
 
 #: ui_alumnobase.h:517
+#, fuzzy
 msgid "Provincia:"
-msgstr ""
+msgstr "Periodicitat:"
 
 #: ui_alumnobase.h:524
+#, fuzzy
 msgid "Relacion"
-msgstr ""
+msgstr "Regularització"
 
 #: ui_alumnobase.h:513
 msgid "Telefono fijo:"

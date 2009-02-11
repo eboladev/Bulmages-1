@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,22 +27,27 @@ msgid "Imprimir elementos seleccionados"
 msgstr ""
 
 #: impmultqtoolbutton.cpp:449 impmultqtoolbutton.cpp:450
+#, fuzzy
 msgid "Invertir seleccion de elementos"
-msgstr ""
+msgstr "Ha de seleccionar un element"
 
 #: impmultqtoolbutton.cpp:238
+#, fuzzy
 msgid "no se pudo crear instancia de albaran"
-msgstr ""
+msgstr "No es pot tancar la finestra a causa d'un error"
 
 #: impmultqtoolbutton.cpp:166 impmultqtoolbutton.cpp:777
+#, fuzzy
 msgid "no se pudo crear instancia de factura"
-msgstr ""
+msgstr "No es pot tancar la finestra a causa d'un error"
 
 #: impmultqtoolbutton.cpp:202 impmultqtoolbutton.cpp:683
 #: impmultqtoolbutton.cpp:728
+#, fuzzy
 msgid "no se pudo crear instancia de pedido cliente"
-msgstr ""
+msgstr "No es pot tancar la finestra a causa d'un error"
 
 #: impmultqtoolbutton.cpp:639
+#, fuzzy
 msgid "no se pudo crear instancia de presupuesto"
-msgstr ""
+msgstr "No es pot tancar la finestra a causa d'un error"

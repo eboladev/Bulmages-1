@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,8 +91,9 @@ msgid "CIF del cliente"
 msgstr "Data de l'assentament"
 
 #: busquedaestadoincidencia.cpp:39
+#, fuzzy
 msgid "Cambio datos"
-msgstr ""
+msgstr "Importa dades"
 
 #: incidenciacomercialview.cpp:57 incidenciacomercialview.cpp:79
 #: rutacomercialview.cpp:56 rutacomercialview.cpp:79 rutacomerciallist.cpp:47
@@ -237,8 +238,9 @@ msgid "Guardar la incidencia"
 msgstr "Desa balanç"
 
 #: rutacomercial.cpp:46 incidenciacomercial.cpp:47
+#, fuzzy
 msgid "Hora"
-msgstr ""
+msgstr "Normal"
 
 #: rutacomerciallist.cpp:304
 #, fuzzy
@@ -246,12 +248,14 @@ msgid "Hora de la incidencia"
 msgstr "Nom del compte"
 
 #: rutacomerciallist.cpp:302
+#, fuzzy
 msgid "Hora ruta"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_rutacomercialbase.h:233 ui_incidenciacomercialbase.h:286
+#, fuzzy
 msgid "Hora:"
-msgstr ""
+msgstr "&Format:"
 
 #: rutacomerciallist.cpp:291
 #, fuzzy
@@ -267,8 +271,9 @@ msgid "ID incidencia comercial"
 msgstr ""
 
 #: rutacomerciallist.cpp:298
+#, fuzzy
 msgid "ID pedido cliente"
-msgstr ""
+msgstr "Tractant la comana del client"
 
 #: rutacomerciallist.cpp:293
 msgid "ID ruta comercial"
@@ -381,8 +386,9 @@ msgid "Referencia:"
 msgstr ""
 
 #: busquedaestadoincidencia.cpp:40
+#, fuzzy
 msgid "Revisar"
-msgstr ""
+msgstr "Resten"
 
 #: rutacomercial.cpp:39 incidenciacomercial.cpp:94 rutacomercialview.cpp:140
 #: ui_rutacomercialbase.h:219 ui_rutacomercialincbase.h:204

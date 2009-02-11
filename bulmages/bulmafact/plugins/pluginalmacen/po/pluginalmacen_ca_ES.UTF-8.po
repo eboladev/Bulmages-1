@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,29 +64,34 @@ msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
 #: almaceneslistview.cpp:218 ui_almaceneslistbase.h:331
+#, fuzzy
 msgid "Almacenes"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: ui_almacenbase.h:334 ui_almacenbase.h:339 ui_almaceneslistbase.h:359
 #: ui_almaceneslistbase.h:364
+#, fuzzy
 msgid "Borrar almacen"
-msgstr ""
+msgstr "Esborra albarà"
 
 #: ui_almaceneslistbase.h:415
 msgid "Buscar:"
 msgstr ""
 
 #: ui_almacenbase.h:352
+#, fuzzy
 msgid "Codigo Almacen"
-msgstr ""
+msgstr "Codi compte"
 
 #: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:58
+#, fuzzy
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Codi compte"
 
 #: almacenview.cpp:62
+#, fuzzy
 msgid "Codigo postal"
-msgstr ""
+msgstr "Codi compte"
 
 #: ui_almaceneslistbase.h:394 ui_almaceneslistbase.h:399
 msgid "Configurar listado"
@@ -113,52 +118,63 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: almaceneslistview.cpp:232
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: ui_almacenbase.h:350
+#, fuzzy
 msgid "Direccion Almacen"
-msgstr ""
+msgstr "Adreça:"
 
 #: almacenview.cpp:60
+#, fuzzy
 msgid "Direccion almacen"
-msgstr ""
+msgstr "Adreça:"
 
 #: ui_almaceneslistbase.h:347 ui_almaceneslistbase.h:352
+#, fuzzy
 msgid "Editar almacen"
-msgstr ""
+msgstr "Editar compte"
 
 #: ui_almacenbase.h:347
+#, fuzzy
 msgid "Email Almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: almaceneslistview.cpp:254
+#, fuzzy
 msgid "Error al borrar el almacen"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: almacenview.cpp:76
+#, fuzzy
 msgid "Error al crear el almacen"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: almaceneslistview.cpp:207
+#, fuzzy
 msgid "Error al editar el almacen"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: ui_almaceneslistbase.h:414
 msgid "F5"
 msgstr "F5"
 
 #: ui_almacenbase.h:348
+#, fuzzy
 msgid "Fax Almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: almacenview.cpp:64
+#, fuzzy
 msgid "Fax almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: almacenview.cpp:66
+#, fuzzy
 msgid "Fecha almacen"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: ui_almaceneslistbase.h:418
 msgid "Fecha final:"
@@ -169,65 +185,80 @@ msgid "Fecha inicial:"
 msgstr ""
 
 #: ui_almaceneslistbase.h:383 ui_almaceneslistbase.h:388
+#, fuzzy
 msgid "Filtrar pedidos"
-msgstr ""
+msgstr "Filtrar"
 
 #: ui_almacenbase.h:353
 msgid "General"
 msgstr "General"
 
 #: ui_almacenbase.h:322 ui_almacenbase.h:327
+#, fuzzy
 msgid "Guardar almacen"
-msgstr ""
+msgstr "Desa balanç"
 
 #: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:57
+#, fuzzy
 msgid "ID almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: ui_almaceneslistbase.h:371 ui_almaceneslistbase.h:376
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: ui_almaceneslistbase.h:416
+#, fuzzy
 msgid "Mostrar:"
-msgstr ""
+msgstr "Mostrar assentament"
 
 #: ui_almacenbase.h:351
+#, fuzzy
 msgid "Nombre Almacen"
-msgstr ""
+msgstr "Nom del compte"
 
 #: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
+#, fuzzy
 msgid "Nombre almacen"
-msgstr ""
+msgstr "Nom del compte"
 
 #: ui_almacenbase.h:318 ui_almaceneslistbase.h:335 ui_almaceneslistbase.h:340
+#, fuzzy
 msgid "Nuevo almacen"
-msgstr ""
+msgstr "Nou assentament"
 
 #: almacenview.cpp:61
+#, fuzzy
 msgid "Poblacion almacen"
-msgstr ""
+msgstr "<HR><B>Tractant magatzem"
 
 #: ui_almacenbase.h:349
+#, fuzzy
 msgid "Telefono Almacen"
-msgstr ""
+msgstr "<HR><B>Tractant magatzem"
 
 #: almacenview.cpp:63
+#, fuzzy
 msgid "Telefono almacen"
-msgstr ""
+msgstr "<HR><B>Tractant magatzem"
 
 #: ui_almacenbase.h:345
+#, fuzzy
 msgid "Tienda"
-msgstr ""
+msgstr "Biennal"
 
 #: almacenview.cpp:69
+#, fuzzy
 msgid "Tipo almacen"
-msgstr ""
+msgstr "Tipus de balanç"
 
 #: ui_almacenbase.h:344
+#, fuzzy
 msgid "Tipo de Almacen"
-msgstr ""
+msgstr "Tipus de balanç"
 
 #: almacenview.cpp:65
+#, fuzzy
 msgid "email almacen"
-msgstr ""
+msgstr "<HR><B>Tractant magatzem"

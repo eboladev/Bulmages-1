@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -585,10 +585,6 @@ msgstr "Paises"
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Para entrar, antes tiene que seleccionar una empresa."
 
-#: ui_porcentajecargabase.h:53
-msgid "Porcentaje de carga..."
-msgstr "Porcentaje de carga..."
-
 #: ui_fichacfgbase.h:288
 msgid "Propietario de la tablas"
 msgstr "Propietario de la tablas"
@@ -816,3 +812,6 @@ msgstr "</B> Insertado"
 
 #~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
 #~ msgstr "El almacén del presupuesto no existe<BR>\n"
+
+#~ msgid "Porcentaje de carga..."
+#~ msgstr "Porcentaje de carga..."

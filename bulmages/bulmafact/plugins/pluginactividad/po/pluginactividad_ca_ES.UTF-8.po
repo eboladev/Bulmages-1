@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,8 +59,9 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_actividadbase.h:432
+#, fuzzy
 msgid "&Datos generales"
-msgstr ""
+msgstr "&Dades comptables"
 
 #: pluginactividad.cpp:104
 msgid "&Nueva actividad"
@@ -80,54 +81,63 @@ msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: ui_actividadbase.h:435
+#, fuzzy
 msgid "Alumno"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: ui_actividadbase.h:437
 msgid "Alumnos"
 msgstr ""
 
 #: ui_actividadbase.h:438
+#, fuzzy
 msgid "Asistencias"
-msgstr ""
+msgstr "Assentaments"
 
 #: ui_actividadbase.h:440
 msgid "BLMonthCalendar"
 msgstr ""
 
 #: ui_actividadeslistbase.h:309
+#, fuzzy
 msgid "Banco:"
-msgstr ""
+msgstr "Balanç"
 
 #: actividadeslist.cpp:218 ui_actividadeslistbase.h:341
 #: ui_actividadeslistbase.h:346
+#, fuzzy
 msgid "Borrar Actividad"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_actividadbase.h:404 ui_actividadbase.h:409 ui_actividadbase.h:416
 #: ui_actividadbase.h:421
+#, fuzzy
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_actividadeslistbase.h:399
 msgid "Buscar:"
 msgstr ""
 
 #: ui_actividadbase.h:439
+#, fuzzy
 msgid "Calendario"
-msgstr ""
+msgstr "Comentari"
 
 #: ui_actividadeslistbase.h:313
+#, fuzzy
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_actividadeslistbase.h:312
+#, fuzzy
 msgid "Cobros previstos"
-msgstr ""
+msgstr "&Cobraments i pagaments"
 
 #: ui_actividadbase.h:426
+#, fuzzy
 msgid "Codigo Actividad"
-msgstr ""
+msgstr "Codi compte"
 
 #: ui_actividadbase.h:433
 msgid "Comentarios:"
@@ -170,12 +180,14 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: actividadeslist.cpp:201
+#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: actividadeslist.cpp:160
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: ui_actividadbase.h:430
 msgid "Direccion:"
@@ -183,16 +195,18 @@ msgstr "Adreça:"
 
 #: actividadeslist.cpp:217 ui_actividadeslistbase.h:329
 #: ui_actividadeslistbase.h:334
+#, fuzzy
 msgid "Editar Actividad"
-msgstr ""
+msgstr "Editar compte"
 
 #: actividadeslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
 #: actividadview.cpp:67
+#, fuzzy
 msgid "Error al crear el actividad"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: ui_actividadeslistbase.h:398
 msgid "F5"
@@ -207,32 +221,37 @@ msgid "Fecha inicial:"
 msgstr ""
 
 #: ui_actividadbase.h:436
+#, fuzzy
 msgid "Fecha inscripcion"
-msgstr ""
+msgstr "descripció"
 
 #: ui_actividadeslistbase.h:365 ui_actividadeslistbase.h:370
 msgid "Filtrar Actividades"
 msgstr ""
 
 #: ui_actividadbase.h:392 ui_actividadbase.h:397
+#, fuzzy
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Desa arxiu"
 
 #: actividadeslist.cpp:262
 msgid "ID Actividad"
 msgstr ""
 
 #: actividadview.cpp:51
+#, fuzzy
 msgid "ID actividad"
-msgstr ""
+msgstr "Quantitat"
 
 #: actividadview.cpp:53
+#, fuzzy
 msgid "Id profesor"
-msgstr ""
+msgstr "NIF del proveïdor"
 
 #: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: ui_actividadbase.h:428
 msgid "Lugar"
@@ -243,20 +262,23 @@ msgid "Nombre"
 msgstr "Nom"
 
 #: ui_actividadbase.h:427
+#, fuzzy
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: actividadview.cpp:52
+#, fuzzy
 msgid "Nombre del actividad"
-msgstr ""
+msgstr "Nom de l'entitat:"
 
 #: ui_actividadbase.h:388
 msgid "Nueva Actividad"
 msgstr ""
 
 #: pluginactividad.cpp:106 pluginactividad.cpp:107
+#, fuzzy
 msgid "Nueva actividad"
-msgstr ""
+msgstr "Nova facturació"
 
 #: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:322
 msgid "Nuevo Actividad"
@@ -279,5 +301,6 @@ msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
 #: ui_actividadbase.h:431
+#, fuzzy
 msgid "Vigente"
-msgstr ""
+msgstr "Següent"

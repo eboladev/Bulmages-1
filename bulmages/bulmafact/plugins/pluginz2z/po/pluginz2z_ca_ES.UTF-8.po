@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,36 +55,43 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_z2zbase.h:402
+#, fuzzy
 msgid "&Detalle"
-msgstr ""
+msgstr "&Detalls"
 
 #: ui_z2zbase.h:404
+#, fuzzy
 msgid "1"
-msgstr ""
+msgstr "F1"
 
 #: ui_z2zbase.h:375 ui_z2zbase.h:380
+#, fuzzy
 msgid "Borrar factura"
-msgstr ""
+msgstr "Esborra quota"
 
 #: z2zview.cpp:56
 msgid "Error al crear la factura"
 msgstr ""
 
 #: ui_z2zbase.h:405
+#, fuzzy
 msgid "Excluir Articulo"
-msgstr ""
+msgstr "<P> Article <B>"
 
 #: ui_z2zbase.h:403
+#, fuzzy
 msgid "Excluir Familias"
-msgstr ""
+msgstr "<P> Família <B>"
 
 #: ui_z2zbase.h:364 ui_z2zbase.h:369
+#, fuzzy
 msgid "Guardar factura"
-msgstr ""
+msgstr "Desa assentament"
 
 #: ui_z2zbase.h:386 ui_z2zbase.h:391
+#, fuzzy
 msgid "Imprimir factura"
-msgstr ""
+msgstr "Imprimeix albarà"
 
 #: ui_z2zbase.h:407
 msgid "No cambiar precios de articulos"
@@ -103,12 +110,14 @@ msgid "Referencias"
 msgstr ""
 
 #: ui_z2zbase.h:398
+#, fuzzy
 msgid "Total Tickets"
-msgstr ""
+msgstr "Totals:"
 
 #: ui_z2zbase.h:399
+#, fuzzy
 msgid "Total Traspasable"
-msgstr ""
+msgstr "Total Haver:"
 
 #: ui_z2zbase.h:400
 msgid "Total aprox a Traspasar"

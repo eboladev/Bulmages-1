@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,12 +55,14 @@ msgstr ""
 "&Cancel·lar"
 
 #: plugincobros.cpp:97
+#, fuzzy
 msgid "&Cobros a clientes"
-msgstr ""
+msgstr "&Cobraments i pagaments"
 
 #: plugincobros.cpp:105
+#, fuzzy
 msgid "&Nuevo cobro a cliente"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_cobroslistbase.h:455 ui_cobroslistbase.h:460
 msgid "Actualizar listado"
@@ -71,37 +73,43 @@ msgid "Apellidos del trabajador"
 msgstr ""
 
 #: cobroview.cpp:69 cobroslist.cpp:318
+#, fuzzy
 msgid "Banco"
-msgstr ""
+msgstr "Balanç"
 
 #: ui_cobroslistbase.h:374 ui_cobrobase.h:409
+#, fuzzy
 msgid "Banco:"
-msgstr ""
+msgstr "Balanç"
 
 #: cobroslist.cpp:255 ui_cobroslistbase.h:407 ui_cobroslistbase.h:412
 #: ui_cobrobase.h:381 ui_cobrobase.h:386 ui_cobrobase.h:393 ui_cobrobase.h:398
+#, fuzzy
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_cobroslistbase.h:465
 msgid "Buscar:"
 msgstr ""
 
 #: cobroslist.cpp:312
+#, fuzzy
 msgid "C.I.F."
-msgstr ""
+msgstr "C.I.F.:"
 
 #: cobroslist.cpp:317
 msgid "Cantidad"
 msgstr "Quantitat"
 
 #: cobroview.cpp:62
+#, fuzzy
 msgid "Cliente"
-msgstr ""
+msgstr "Següent"
 
 #: cobroview.cpp:53 cobroslist.cpp:51 cobroslist.cpp:79
+#, fuzzy
 msgid "Cliente:"
-msgstr ""
+msgstr "Pendent:"
 
 #: cobroview.cpp:58
 msgid "Cobro"
@@ -112,16 +120,19 @@ msgid "Cobros a clientes"
 msgstr ""
 
 #: ui_cobroslistbase.h:373
+#, fuzzy
 msgid "Cobros de clientes"
-msgstr ""
+msgstr "Comentaris de l'assentament"
 
 #: ui_cobroslistbase.h:378
+#, fuzzy
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_cobroslistbase.h:377
+#, fuzzy
 msgid "Cobros previstos"
-msgstr ""
+msgstr "&Cobraments i pagaments"
 
 #: cobroslist.cpp:321
 #, fuzzy
@@ -169,60 +180,76 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: cobroslist.cpp:238
+#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: cobroslist.cpp:197
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: cobroview.cpp:68
+#, fuzzy
 msgid "Descripcion del cobro"
-msgstr ""
+msgstr "Descripció de l'assentament"
 
 #: ui_cobrobase.h:407
+#, fuzzy
 msgid "Descripcion del cobro:"
-msgstr ""
+msgstr "Descripció de l'assentament"
 
 #: cobroslist.cpp:314
+#, fuzzy
 msgid "Direccion de correo electronico"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: cobroslist.cpp:254 ui_cobroslistbase.h:395 ui_cobroslistbase.h:400
+#, fuzzy
 msgid "Editar cobro"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Edita\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Editar"
 
 #: cobroslist.cpp:211
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
 #: cobroview.cpp:75
+#, fuzzy
 msgid "Error al crear el cobro"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: ui_cobroslistbase.h:464
 msgid "F5"
 msgstr "F5"
 
 #: cobroslist.cpp:315
+#, fuzzy
 msgid "Fecha de cobro"
-msgstr ""
+msgstr "Data de compra:"
 
 #: cobroview.cpp:65 cobroslist.cpp:316
+#, fuzzy
 msgid "Fecha de vencimiento"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: ui_cobrobase.h:406
+#, fuzzy
 msgid "Fecha de vencimiento:"
-msgstr ""
+msgstr "&Data de l'assentament:"
 
 #: cobroview.cpp:64
+#, fuzzy
 msgid "Fecha del cobro"
-msgstr ""
+msgstr "Data de la compra"
 
 #: ui_cobrobase.h:404
+#, fuzzy
 msgid "Fecha del cobro:"
-msgstr ""
+msgstr "Data de compra:"
 
 #: ui_cobroslistbase.h:375
 msgid "Fecha final:"
@@ -233,16 +260,19 @@ msgid "Fecha inicial:"
 msgstr ""
 
 #: ui_cobroslistbase.h:431 ui_cobroslistbase.h:436
+#, fuzzy
 msgid "Filtrar cobros"
-msgstr ""
+msgstr "Filtrar"
 
 #: ui_cobrobase.h:369 ui_cobrobase.h:374
+#, fuzzy
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Desa arxiu"
 
 #: cobroslist.cpp:310
+#, fuzzy
 msgid "ID cliente"
-msgstr ""
+msgstr "ID compte"
 
 #: cobroslist.cpp:309
 msgid "ID cobro"
@@ -253,36 +283,42 @@ msgid "ID trabajador"
 msgstr ""
 
 #: cobroview.cpp:61
+#, fuzzy
 msgid "Id cobro"
-msgstr ""
+msgstr "Id esborrany"
 
 #: ui_cobroslistbase.h:419 ui_cobroslistbase.h:424
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: cobroslist.cpp:311
 msgid "Nombre"
 msgstr "Nom"
 
 #: cobroslist.cpp:323
+#, fuzzy
 msgid "Nombre del trabajador"
-msgstr ""
+msgstr "Nom del proveïdor"
 
 #: ui_cobroslistbase.h:383 ui_cobroslistbase.h:388
+#, fuzzy
 msgid "Nuevo cobro"
-msgstr ""
+msgstr "Nou"
 
 #: plugincobros.cpp:107 plugincobros.cpp:108
+#, fuzzy
 msgid "Nuevo cobro a cliente"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_cobrobase.h:365
 msgid "Nuevo cobro de cliente"
 msgstr ""
 
 #: cobroslist.cpp:313
+#, fuzzy
 msgid "Numero de telefono"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: cobroview.cpp:63
 msgid "Prevision"
@@ -313,13 +349,16 @@ msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
 #: cobroview.cpp:67
+#, fuzzy
 msgid "Total cobro"
-msgstr ""
+msgstr "Total Haver:"
 
 #: ui_cobrobase.h:408
+#, fuzzy
 msgid "Total cobro:"
-msgstr ""
+msgstr "Total Haver:"
 
 #: ui_cobroslistbase.h:379
+#, fuzzy
 msgid "Total:"
-msgstr ""
+msgstr "Totals:"

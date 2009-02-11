@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,48 +28,57 @@ msgid "Apellidos"
 msgstr ""
 
 #: pluginasterisk.cpp:102
+#, fuzzy
 msgid "Apertura manyanas"
-msgstr ""
+msgstr "Obertura"
 
 #: pluginasterisk.cpp:104
+#, fuzzy
 msgid "Apertura tardes"
-msgstr ""
+msgstr "Obertura"
 
 #: pluginasterisk.cpp:106 pluginasterisk.cpp:166
+#, fuzzy
 msgid "Audicion"
-msgstr ""
+msgstr "Agrupació"
 
 #: pluginasterisk.cpp:103
 msgid "Cierre manyanas"
 msgstr ""
 
 #: pluginasterisk.cpp:105
+#, fuzzy
 msgid "Cierre tardes"
-msgstr ""
+msgstr "Tancament"
 
 #: pluginasterisk.cpp:128
+#, fuzzy
 msgid "Extension."
-msgstr ""
+msgstr "Atenció "
 
 #: pluginasterisk.cpp:99 pluginasterisk.cpp:162
 msgid "Fecha"
 msgstr "Data"
 
 #: pluginasterisk.cpp:100 pluginasterisk.cpp:163
+#, fuzzy
 msgid "Hora"
-msgstr ""
+msgstr "Normal"
 
 #: pluginasterisk.cpp:107 pluginasterisk.cpp:167
+#, fuzzy
 msgid "Id almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: pluginasterisk.cpp:109 pluginasterisk.cpp:169
+#, fuzzy
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id esborrany"
 
 #: pluginasterisk.cpp:108 pluginasterisk.cpp:168
+#, fuzzy
 msgid "Id validacion"
-msgstr ""
+msgstr "Id amortizació"
 
 #: pluginasterisk.cpp:53
 msgid "Password."
@@ -80,5 +89,6 @@ msgid "Trabajador"
 msgstr ""
 
 #: pluginasterisk.cpp:54
+#, fuzzy
 msgid "Valida siempre."
-msgstr ""
+msgstr "&Validar"

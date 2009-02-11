@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -458,8 +458,9 @@ msgid "Ejercicio"
 msgstr "Exercici"
 
 #: bbloqfecha.cpp:267
+#, fuzzy
 msgid "Ejercicios ya contemplado"
-msgstr ""
+msgstr "Exercicis de l'empresa:"
 
 #: asiento1.cpp:408
 msgid "El asiento se ha guardado correctamente."
@@ -760,8 +761,9 @@ msgid "La fecha inicial es posterior a la fecha final."
 msgstr "La data inicial és posterior a la data final."
 
 #: main.cxx:229
+#, fuzzy
 msgid "Lanzando plugins"
-msgstr ""
+msgstr "Llançador BulmaGés"
 
 #: main.cxx:170
 #, fuzzy
@@ -850,8 +852,9 @@ msgid "NOMBRE"
 msgstr "NOM"
 
 #: ccosteview.cpp:278
+#, fuzzy
 msgid "No se pudo borrar el Centro de Coste"
-msgstr ""
+msgstr "No es pot tancar la finestra a causa d'un error"
 
 #: cuentaview.cpp:49
 #, fuzzy
@@ -1013,8 +1016,9 @@ msgid ""
 msgstr ""
 
 #: extractoview1.cpp:554
+#, fuzzy
 msgid "Se ha producido un error"
-msgstr ""
+msgstr "No s'ha pogut esborrar"
 
 #: listcuentasview1.cpp:409
 msgid "Se procedera a borrar la cuenta."
@@ -1056,8 +1060,9 @@ msgid "Seleccion"
 msgstr ""
 
 #: cuentalistview.cpp:68
+#, fuzzy
 msgid "Selector de articulos"
-msgstr ""
+msgstr "Sel·lector de BulmaGés"
 
 #: amortizacionview.cpp:250 amortizacionview.cpp:277 amortizacionview.cpp:305
 #: amortizacionview.cpp:336
@@ -1086,8 +1091,9 @@ msgid "Telefono del proveedor"
 msgstr "Telèfon del proveïdor"
 
 #: empresa.cpp:265
+#, fuzzy
 msgid "Terminado"
-msgstr ""
+msgstr "<LI>Terminat</LI>\n"
 
 #: fpagoview.cpp:238
 msgid "Tiene que seleccionar una forma de pago antes de borrarla"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,7 +126,7 @@ msgstr "&Cancelar"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: plugininventario.cpp:72
+#: plugininventario.cpp:78
 msgid "&Inventarios"
 msgstr "&Inventarios"
 
@@ -134,7 +134,7 @@ msgstr "&Inventarios"
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: plugininventario.cpp:116
+#: plugininventario.cpp:122
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -187,15 +187,15 @@ msgstr "Filtrar listado"
 msgid "Guardar inventario"
 msgstr "Guardar inventario"
 
-#: plugininventario.cpp:120
+#: plugininventario.cpp:126
 msgid "ID Trabajador"
 msgstr "ID Trabajador"
 
-#: plugininventario.cpp:119
+#: plugininventario.cpp:125
 msgid "ID Validacion"
 msgstr "ID Validacion"
 
-#: plugininventario.cpp:117
+#: plugininventario.cpp:123
 msgid "Id Almacen"
 msgstr "Id Almacen"
 
@@ -224,7 +224,7 @@ msgstr "Imprimir listado"
 msgid "Inventario"
 msgstr "Inventario"
 
-#: plugininventario.cpp:73 plugininventario.cpp:74
+#: plugininventario.cpp:79 plugininventario.cpp:80
 msgid "Inventarios"
 msgstr "Inventarios"
 
@@ -232,11 +232,11 @@ msgstr "Inventarios"
 msgid "Listado de inventarios"
 msgstr "Listado de inventarios"
 
-#: plugininventario.cpp:118
+#: plugininventario.cpp:124
 msgid "Minimo"
 msgstr "Minimo"
 
-#: plugininventario.cpp:112
+#: plugininventario.cpp:118
 msgid "Minimos almacen"
 msgstr "Minimos almacen"
 
@@ -288,7 +288,7 @@ msgstr "Si"
 msgid "Stock anterior"
 msgstr "Stock anterior"
 
-#: plugininventario.cpp:205
+#: plugininventario.cpp:211
 msgid "Stock minimo superado"
 msgstr "Stock minimo superado"
 

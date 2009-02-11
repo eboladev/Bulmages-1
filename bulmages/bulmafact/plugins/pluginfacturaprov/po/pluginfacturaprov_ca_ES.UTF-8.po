@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,9 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: listdescfacturaprovview.cpp:42
+#, fuzzy
 msgid "% Descuento"
-msgstr ""
+msgstr "Document:"
 
 #: listlinfacturapview.cpp:55
 msgid "% I.V.A."
@@ -67,20 +68,23 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_facturapbase.h:626
+#, fuzzy
 msgid "&Detalle"
-msgstr ""
+msgstr "&Detalls"
 
 #: pluginfacturaprov.cpp:96
+#, fuzzy
 msgid "&Facturas proveedores"
-msgstr ""
+msgstr "<HR><B>Trotant el proveïdor"
 
 #: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid "&No"
 msgstr "&No"
 
 #: pluginfacturaprov.cpp:104
+#, fuzzy
 msgid "&Nueva factura de proveedor"
-msgstr ""
+msgstr "Nova forma de pagament"
 
 #: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid "&Si"
@@ -101,29 +105,34 @@ msgid "Articulo"
 msgstr "<P> Article <B>"
 
 #: facturapview.cpp:431
+#, fuzzy
 msgid "Base "
-msgstr ""
+msgstr "Classe"
 
 #: facturasplist.cpp:362
+#, fuzzy
 msgid "Base imponible"
-msgstr ""
+msgstr "Empreses disponibles:"
 
 #: ui_facturapbase.h:630
+#, fuzzy
 msgid "Base imponible:"
-msgstr ""
+msgstr "Empreses disponibles:"
 
 #: ui_facturasplistbase.h:404 ui_facturasplistbase.h:409 ui_facturapbase.h:587
 #: ui_facturapbase.h:592
+#, fuzzy
 msgid "Borrar factura"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_facturasplistbase.h:462
 msgid "Buscar:"
 msgstr ""
 
 #: facturapview.cpp:353
+#, fuzzy
 msgid "Cant."
-msgstr ""
+msgstr "Quantitat"
 
 #: listlinfacturapview.cpp:53
 msgid "Cantidad"
@@ -134,28 +143,37 @@ msgid "Codigo"
 msgstr "Codi"
 
 #: listlinfacturapview.cpp:49
+#, fuzzy
 msgid "Codigo completo"
-msgstr ""
+msgstr "Codi compte"
 
 #: facturasplist.cpp:358
+#, fuzzy
 msgid "Comentario factura"
-msgstr ""
+msgstr "Comentari"
 
 #: facturapview.cpp:62
+#, fuzzy
 msgid "Comentario facturap"
-msgstr ""
+msgstr "Comentari"
 
 #: ui_facturapbase.h:628
+#, fuzzy
 msgid "Comentario&s"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
 
 #: facturapview.cpp:352
 msgid "Concepto"
 msgstr "Concepte"
 
 #: listdescfacturaprovview.cpp:41
+#, fuzzy
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Concepte comptable"
 
 #: ui_facturasplistbase.h:440 ui_facturasplistbase.h:445
 msgid "Configurar listado"
@@ -178,8 +196,9 @@ msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
 #: ui_facturapbase.h:620
+#, fuzzy
 msgid "Ctrl+G"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_facturasplistbase.h:389
 msgid "Ctrl+N"
@@ -194,8 +213,9 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: facturasplist.cpp:243
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: facturapview.cpp:355
 msgid "Desc."
@@ -206,28 +226,34 @@ msgid "Descripcion"
 msgstr "Descripció"
 
 #: facturapview.cpp:64
+#, fuzzy
 msgid "Descripcion facturap"
-msgstr ""
+msgstr "Descripció del compte"
 
 #: ui_facturapbase.h:621
+#, fuzzy
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripció"
 
 #: ui_facturapbase.h:627
+#, fuzzy
 msgid "Descuen&tos"
-msgstr ""
+msgstr "Document:"
 
 #: listlinfacturapview.cpp:57 facturapview.cpp:399
+#, fuzzy
 msgid "Descuento"
-msgstr ""
+msgstr "Document:"
 
 #: ui_facturapbase.h:629
+#, fuzzy
 msgid "Descuentos:"
-msgstr ""
+msgstr "Document:"
 
 #: ui_facturasplistbase.h:392 ui_facturasplistbase.h:397
+#, fuzzy
 msgid "Editar factura"
-msgstr ""
+msgstr "Editar compte"
 
 #: facturasplist.cpp:254
 msgid "Error al borrar la factura de proveedor"
@@ -238,12 +264,14 @@ msgid "Error al cargar la factura proveedor"
 msgstr ""
 
 #: facturapview.cpp:101
+#, fuzzy
 msgid "Error al crear la factura proveedor"
-msgstr ""
+msgstr "Error al fer una consulta a la base de dades."
 
 #: genfactqtoolbutton.cpp:201 genfactqtoolbutton.cpp:307
+#, fuzzy
 msgid "Error inesperado"
-msgstr ""
+msgstr "inserit"
 
 #: genfactqtoolbutton.cpp:152 genfactqtoolbutton.cpp:258
 msgid ""
@@ -260,8 +288,9 @@ msgid "Factura"
 msgstr "Factura"
 
 #: facturapview.cpp:54
+#, fuzzy
 msgid "Factura Proveedor"
-msgstr ""
+msgstr "<HR><B>Trotant el proveïdor"
 
 #: genfactqtoolbutton.cpp:151 genfactqtoolbutton.cpp:257
 msgid "Factura de proveedor existente"
@@ -269,8 +298,9 @@ msgstr ""
 
 #: pluginfacturaprov.cpp:98 pluginfacturaprov.cpp:99 facturasplist.cpp:267
 #: ui_facturasplistbase.h:372
+#, fuzzy
 msgid "Facturas de proveedores"
-msgstr ""
+msgstr "NIF del proveïdor"
 
 #: facturasplist.cpp:123
 msgid "Facturas no procesadas"
@@ -285,12 +315,14 @@ msgid "Fecha"
 msgstr "Data"
 
 #: ui_facturapbase.h:624
+#, fuzzy
 msgid "Fecha de factura:"
-msgstr ""
+msgstr "Data de compra:"
 
 #: facturasplist.cpp:355
+#, fuzzy
 msgid "Fecha factura"
-msgstr ""
+msgstr "Data de la 1a quota"
 
 #: ui_facturasplistbase.h:374
 msgid "Fecha final:"
@@ -301,136 +333,166 @@ msgid "Fecha inicial:"
 msgstr ""
 
 #: ui_facturasplistbase.h:428 ui_facturasplistbase.h:433
+#, fuzzy
 msgid "Filtrar facturas"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajusta alçades\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ajustar altures"
 
 #: ui_facturapbase.h:625
 msgid "Forma de pago:"
 msgstr "Forma de pagament:"
 
 #: ui_facturapbase.h:575 ui_facturapbase.h:580
+#, fuzzy
 msgid "Guardar factura"
-msgstr ""
+msgstr "Desa assentament"
 
 #: ui_facturapbase.h:631
+#, fuzzy
 msgid "I.R.P.F.:"
-msgstr ""
+msgstr "C.I.F.:"
 
 #: facturapview.cpp:444
 msgid "IVA "
 msgstr ""
 
 #: listdescfacturaprovview.cpp:40
+#, fuzzy
 msgid "Id descuento"
-msgstr ""
+msgstr "Id compte"
 
 #: listdescfacturaprovview.cpp:43 facturasplist.cpp:352
+#, fuzzy
 msgid "Id factura"
-msgstr ""
+msgstr "Factura"
 
 #: facturapview.cpp:57
+#, fuzzy
 msgid "Id facturap"
-msgstr ""
+msgstr "Factura"
 
 #: facturapview.cpp:66
+#, fuzzy
 msgid "Id forma de pago"
-msgstr ""
+msgstr "<LI> Forma de pagament <B>"
 
 #: facturapview.cpp:58 facturasplist.cpp:360
+#, fuzzy
 msgid "Id proveedor"
-msgstr ""
+msgstr "NIF del proveïdor"
 
 #: facturapview.cpp:65 facturasplist.cpp:359
+#, fuzzy
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id esborrany"
 
 #: ui_facturasplistbase.h:416 ui_facturasplistbase.h:421
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: facturasplist.cpp:363
+#, fuzzy
 msgid "Impuestos"
-msgstr ""
+msgstr "Imputació"
 
 #: ui_facturapbase.h:632
+#, fuzzy
 msgid "Impuestos:"
-msgstr ""
+msgstr "Imputació"
 
 #: listlinfacturapview.cpp:51
+#, fuzzy
 msgid "Linea"
-msgstr ""
+msgstr "Lí&neal"
 
 #: ui_facturapbase.h:611 ui_facturapbase.h:616
 msgid "Mostrar/ocultar cabecera"
 msgstr ""
 
 #: ui_facturasplistbase.h:373
+#, fuzzy
 msgid "Mostrar:"
-msgstr ""
+msgstr "Mostrar assentament"
 
 #: listlinfacturapview.cpp:50
 msgid "Nombre"
 msgstr "Nom"
 
 #: facturasplist.cpp:354
+#, fuzzy
 msgid "Nombre proveedor"
-msgstr ""
+msgstr "Nom del proveïdor"
 
 #: ui_facturasplistbase.h:380 ui_facturasplistbase.h:385
+#, fuzzy
 msgid "Nueva factura"
-msgstr ""
+msgstr "Nova facturació"
 
 #: pluginfacturaprov.cpp:106 pluginfacturaprov.cpp:107 ui_facturapbase.h:572
+#, fuzzy
 msgid "Nueva factura de proveedor"
-msgstr ""
+msgstr "Nova forma de pagament"
 
 #: facturapview.cpp:59
+#, fuzzy
 msgid "Numero"
-msgstr ""
+msgstr "Nou"
 
 #: ui_facturapbase.h:622
+#, fuzzy
 msgid "Numero de factura:"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: facturasplist.cpp:353
+#, fuzzy
 msgid "Numero factura"
-msgstr ""
+msgstr "Nova facturació"
 
 #: listlinfacturapview.cpp:59
 msgid "Orden"
 msgstr "Ordre"
 
 #: listlinfacturapview.cpp:54
+#, fuzzy
 msgid "P.V.P."
-msgstr ""
+msgstr "..."
 
 #: facturasplist.cpp:356
+#, fuzzy
 msgid "Persona de contacto"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: facturapview.cpp:400
+#, fuzzy
 msgid "Porcentaje"
-msgstr ""
+msgstr "Percent&ual"
 
 #: facturapview.cpp:354
+#, fuzzy
 msgid "Precio"
-msgstr ""
+msgstr "Adreça:"
 
 #: ui_facturapbase.h:623
 msgid "Procesada"
 msgstr ""
 
 #: facturapview.cpp:61
+#, fuzzy
 msgid "Procesada facturap"
-msgstr ""
+msgstr "<HR><B>Tractant la factura"
 
 #: facturapview.cpp:83 facturasplist.cpp:56 facturasplist.cpp:91
 msgid "Proveedor:"
 msgstr ""
 
 #: ui_facturapbase.h:633
+#, fuzzy
 msgid "R.E.:"
-msgstr ""
+msgstr "C.P.:"
 
 #: facturasplist.cpp:351
 msgid "Referencia factura"
@@ -445,28 +507,34 @@ msgid "Referencia:"
 msgstr ""
 
 #: facturasplist.cpp:357
+#, fuzzy
 msgid "Telefono factura"
-msgstr ""
+msgstr "<HR><B>Tractant la factura"
 
 #: genfactqtoolbutton.cpp:136 genfactqtoolbutton.cpp:242
+#, fuzzy
 msgid "Tiene que seleccionar un proveedor"
-msgstr ""
+msgstr "Ha de seleccionar un element"
 
 #: facturasplist.cpp:121
+#, fuzzy
 msgid "Todas las facturas"
-msgstr ""
+msgstr "<HR><B>Tractant la factura"
 
 #: facturapview.cpp:356 facturapview.cpp:401 facturasplist.cpp:361
+#, fuzzy
 msgid "Total"
-msgstr ""
+msgstr "Totals:"
 
 #: facturapview.cpp:447
+#, fuzzy
 msgid "Total "
-msgstr ""
+msgstr "Totals:"
 
 #: ui_facturasplistbase.h:376 ui_facturapbase.h:634
+#, fuzzy
 msgid "Total:"
-msgstr ""
+msgstr "Totals:"
 
 #: ui_facturapbase.h:599 ui_facturapbase.h:604
 msgid "Ver albaranes con la misma referencia"

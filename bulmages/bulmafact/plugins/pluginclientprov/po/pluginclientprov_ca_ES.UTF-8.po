@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,24 +19,28 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: pluginclientprov.cpp:65
+#, fuzzy
 msgid "Banco proveedor"
-msgstr ""
+msgstr "<HR><B>Trotant el proveïdor"
 
 #: pluginclientprov.cpp:63
+#, fuzzy
 msgid "C.I.F. del proveedor"
-msgstr ""
+msgstr "NIF del proveïdor"
 
 #: pluginclientprov.cpp:75
 msgid "Codigo"
 msgstr "Codi"
 
 #: pluginclientprov.cpp:64
+#, fuzzy
 msgid "Codigo cliente"
-msgstr ""
+msgstr "Codi compte"
 
 #: pluginclientprov.cpp:69
+#, fuzzy
 msgid "Codigo postal"
-msgstr ""
+msgstr "Codi compte"
 
 #: pluginclientprov.cpp:74
 #, fuzzy
@@ -48,44 +52,52 @@ msgstr ""
 "Comentaris"
 
 #: pluginclientprov.cpp:66
+#, fuzzy
 msgid "Direccion"
-msgstr ""
+msgstr "Adreça:"
 
 #: pluginclientprov.cpp:72
+#, fuzzy
 msgid "Direccion electronica"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: pluginclientprov.cpp:60
+#, fuzzy
 msgid "ID proveedor"
-msgstr ""
+msgstr "NIF del proveïdor"
 
 #: pluginclientprov.cpp:79
 msgid "IRPF"
 msgstr ""
 
 #: pluginclientprov.cpp:77
+#, fuzzy
 msgid "Id forma de pago"
-msgstr ""
+msgstr "<LI> Forma de pagament <B>"
 
 #: pluginclientprov.cpp:62
+#, fuzzy
 msgid "Nombre alternativo del proveedor"
-msgstr ""
+msgstr "Nom del proveïdor"
 
 #: pluginclientprov.cpp:61
 msgid "Nombre del proveedor"
 msgstr "Nom del proveïdor"
 
 #: pluginclientprov.cpp:71
+#, fuzzy
 msgid "Numero de fax"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: pluginclientprov.cpp:70
+#, fuzzy
 msgid "Numero de telefono"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: pluginclientprov.cpp:67
+#, fuzzy
 msgid "Poblacion"
-msgstr ""
+msgstr "Paginació"
 
 #: pluginclientprov.cpp:68
 msgid "Provincia"

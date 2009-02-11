@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,8 +191,9 @@ msgstr "Ordre"
 
 #: listlinprevcobroview.cpp:191 listlinprevcobroview.cpp:275
 #: listlinprevcobroview.cpp:468
+#, fuzzy
 msgid "Pago"
-msgstr ""
+msgstr "Pàgina"
 
 #: registroiva.cpp:59
 msgid "Rectifica a"
@@ -296,12 +297,14 @@ msgid "idcuenta"
 msgstr ""
 
 #: cobropagoview.cpp:50 registroivaview.cpp:85
+#, fuzzy
 msgid "idfpago"
-msgstr ""
+msgstr "idpais"
 
 #: registroivaview.cpp:69
+#, fuzzy
 msgid "idiva"
-msgstr ""
+msgstr "iddiario"
 
 #: cobropagoview.cpp:46 registroivaview.cpp:82
 msgid "idprevcobro"

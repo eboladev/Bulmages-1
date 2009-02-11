@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,9 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: pluginproyectos.cpp:75
+#, fuzzy
 msgid "&Proyectos"
-msgstr ""
+msgstr "Paràmetres"
 
 #: listproyectosview.cpp:51
 #, fuzzy
@@ -145,16 +146,19 @@ msgid "Orden"
 msgstr "Ordre"
 
 #: proyectoview.cpp:75 proyectoview.cpp:94
+#, fuzzy
 msgid "Precio Und"
-msgstr ""
+msgstr "Adreça:"
 
 #: proyectoview.cpp:53
+#, fuzzy
 msgid "Proyecto"
-msgstr ""
+msgstr "Propietari"
 
 #: pluginproyectos.cpp:76 pluginproyectos.cpp:77
+#, fuzzy
 msgid "Proyectos"
-msgstr ""
+msgstr "Paràmetres"
 
 #: pluginproyectos.cpp:116
 msgid "Proyectos asociados"

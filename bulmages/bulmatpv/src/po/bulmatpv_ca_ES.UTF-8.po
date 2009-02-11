@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,8 +67,9 @@ msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr ""
 
 #: ticket.cpp:47
+#, fuzzy
 msgid "Hora"
-msgstr ""
+msgstr "Normal"
 
 #: ticket.cpp:89
 msgid "IVA"
@@ -143,8 +144,9 @@ msgid "Orden"
 msgstr "Ordre"
 
 #: ticket.cpp:88
+#, fuzzy
 msgid "Precio"
-msgstr ""
+msgstr "Adreça:"
 
 #: ticket.cpp:52
 msgid "Referencia"

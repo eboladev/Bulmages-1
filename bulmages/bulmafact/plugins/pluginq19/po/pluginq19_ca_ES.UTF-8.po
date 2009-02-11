@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,16 +40,18 @@ msgstr ""
 "Arxiu"
 
 #: ui_q19base.h:220
+#, fuzzy
 msgid "Banco"
-msgstr ""
+msgstr "Balanç"
 
 #: ui_q19base.h:226
 msgid "Cancelar"
 msgstr "Cancel·la"
 
 #: q19view.cpp:78
+#, fuzzy
 msgid "Error al crear el archivo"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: ui_q19base.h:219
 msgid "Generacion Q19"
@@ -64,5 +66,6 @@ msgid "Save file"
 msgstr ""
 
 #: ui_q19base.h:223
+#, fuzzy
 msgid "Total"
-msgstr ""
+msgstr "Totals:"

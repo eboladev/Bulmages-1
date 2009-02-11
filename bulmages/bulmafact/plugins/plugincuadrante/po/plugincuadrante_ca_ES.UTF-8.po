@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,8 +55,9 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_cuadrantediariobase.h:283 ui_cuadrantebase.h:322
+#, fuzzy
 msgid "1"
-msgstr ""
+msgstr "F1"
 
 #: ui_cuadrantediariobase.h:311 ui_cuadrantediariobase.h:316
 #: ui_cuadrantebase.h:276 ui_cuadrantebase.h:281
@@ -78,40 +79,49 @@ msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
 #: cuadrante1view.cpp:63
+#, fuzzy
 msgid "Apartura tarde"
-msgstr ""
+msgstr "Obertura"
 
 #: ui_cuadrante1base.h:339
+#, fuzzy
 msgid "Apertura Manyana"
-msgstr ""
+msgstr "Obertura"
 
 #: ui_cuadrante1base.h:341
+#, fuzzy
 msgid "Apertura Tarde"
-msgstr ""
+msgstr "Obertura"
 
 #: cuadrante1view.cpp:61
+#, fuzzy
 msgid "Apertura manyana"
-msgstr ""
+msgstr "Obertura"
 
 #: ui_cuadrante1base.h:329 ui_cuadrante1base.h:334
+#, fuzzy
 msgid "Borrar almacen"
-msgstr ""
+msgstr "Esborra albarà"
 
 #: ui_cuadrante1base.h:340
+#, fuzzy
 msgid "Cierre Manyana"
-msgstr ""
+msgstr "Tancament"
 
 #: ui_cuadrante1base.h:342
+#, fuzzy
 msgid "Cierre Tarde"
-msgstr ""
+msgstr "Tancament"
 
 #: cuadrante1view.cpp:62
+#, fuzzy
 msgid "Cierre manyana"
-msgstr ""
+msgstr "Tancament"
 
 #: cuadrante1view.cpp:64
+#, fuzzy
 msgid "Cierre tarde"
-msgstr ""
+msgstr "Tancament"
 
 #: cuadrante1view.cpp:60 ui_cuadrante1base.h:310
 #, fuzzy
@@ -145,8 +155,9 @@ msgid "Cuadrante y Uso Horario"
 msgstr ""
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:171
+#, fuzzy
 msgid "Domingo"
-msgstr ""
+msgstr "Denominació"
 
 #: ui_cuadrantediariobase.h:287 ui_cuadrantediariobase.h:292
 #: ui_cuadrantebase.h:252 ui_cuadrantebase.h:257
@@ -159,8 +170,9 @@ msgstr ""
 "Editar"
 
 #: cuadranteview.cpp:70 cuadrante1view.cpp:85
+#, fuzzy
 msgid "Error al crear el almacen"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: cuadrantediarioview.cpp:98
 msgid "Error al iniciar el cuadrante"
@@ -171,60 +183,73 @@ msgid "Fecha"
 msgstr "Data"
 
 #: plugincuadrante.cpp:258
+#, fuzzy
 msgid "Fecha final ausencia"
-msgstr ""
+msgstr "Data &final:"
 
 #: plugincuadrante.cpp:257
+#, fuzzy
 msgid "Fecha inicial ausencia"
-msgstr ""
+msgstr "Data &inicial:"
 
 #: cuadrante1view.cpp:65 ui_cuadrante1base.h:344
+#, fuzzy
 msgid "Festivo"
-msgstr ""
+msgstr "Destinació:"
 
 #: cuadranteview.cpp:251 cuadrantediarioview.cpp:290
+#, fuzzy
 msgid "Fiesta general"
-msgstr ""
+msgstr "Propietats generals"
 
 #: cuadranteview.cpp:159
+#, fuzzy
 msgid "Generando Informe"
-msgstr ""
+msgstr "Generar de totes formes"
 
 #: ui_cuadrante1base.h:317 ui_cuadrante1base.h:322
+#, fuzzy
 msgid "Guardar almacen"
-msgstr ""
+msgstr "Desa balanç"
 
 #: cuadrantediarioview.cpp:72
+#, fuzzy
 msgid "Hora"
-msgstr ""
+msgstr "Normal"
 
 #: cuadrante1view.cpp:74
 msgid "Hora Fin"
 msgstr ""
 
 #: cuadrante1view.cpp:73
+#, fuzzy
 msgid "Hora Inicio"
-msgstr ""
+msgstr "Esborra exercici"
 
 #: ui_cuadrante1base.h:306 ui_cuadrante1base.h:309
+#, fuzzy
 msgid "Horario"
-msgstr ""
+msgstr "Diari"
 
 #: cuadrante1view.cpp:75
+#, fuzzy
 msgid "ID Cuadrante"
-msgstr ""
+msgstr "ID Canal"
 
 #: plugincuadrante.cpp:260
+#, fuzzy
 msgid "ID ausencia"
-msgstr ""
+msgstr "ID compte"
 
 #: cuadrante1view.cpp:57
+#, fuzzy
 msgid "ID cuadrante"
-msgstr ""
+msgstr "ID compte"
 
 #: cuadrante1view.cpp:77
+#, fuzzy
 msgid "ID horario"
-msgstr ""
+msgstr "Diari"
 
 #: cuadrante1view.cpp:76 plugincuadrante.cpp:261
 msgid "ID trabajador"
@@ -261,8 +286,9 @@ msgid "Limpiar Cuadrante"
 msgstr ""
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:165
+#, fuzzy
 msgid "Lunes"
-msgstr ""
+msgstr "Apunts"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:166
 msgid "Martes"
@@ -273,12 +299,14 @@ msgid "Miercoles"
 msgstr ""
 
 #: plugincuadrante.cpp:259
+#, fuzzy
 msgid "Motivo"
-msgstr ""
+msgstr "tipus"
 
 #: cuadrante1view.cpp:72
+#, fuzzy
 msgid "Nombre Trabajador"
-msgstr ""
+msgstr "Nom de camp"
 
 #: cuadranteview.cpp:250 cuadrantediarioview.cpp:289
 msgid "Normal"
@@ -290,13 +318,16 @@ msgid "Ocultar Panel"
 msgstr ""
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:170
+#, fuzzy
 msgid "Sabado"
-msgstr ""
+msgstr "Saldo"
 
 #: ui_cuadrantediariobase.h:282
+#, fuzzy
 msgid "Validaciones"
-msgstr ""
+msgstr "Paginació"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:169
+#, fuzzy
 msgid "Viernes"
-msgstr ""
+msgstr "Tancament"

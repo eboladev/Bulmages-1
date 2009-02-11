@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,117 +55,146 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_contratobase.h:510
+#, fuzzy
 msgid "&Comentarios"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
 
 #: ui_contratobase.h:509
+#, fuzzy
 msgid "&Facturas"
-msgstr ""
+msgstr "Factura"
 
 #: ui_contratoslistbase.h:319 ui_contratoslistbase.h:324
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: contratoview.cpp:406
+#, fuzzy
 msgid "Base imponible"
-msgstr ""
+msgstr "Empreses disponibles:"
 
 #: ui_contratobase.h:471 ui_contratobase.h:476
+#, fuzzy
 msgid "Borrar Contrato"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_contratoslistbase.h:275 ui_contratoslistbase.h:280
+#, fuzzy
 msgid "Borrar contrato"
-msgstr ""
+msgstr "Esborra quota"
 
 #: ui_contratoslistbase.h:339
 msgid "Buscar:"
 msgstr ""
 
 #: contratoslist.cpp:424
+#, fuzzy
 msgid "C.I.F."
-msgstr ""
+msgstr "C.I.F.:"
 
 #: contratoview.cpp:413
+#, fuzzy
 msgid "CIF cliente"
-msgstr ""
+msgstr "ID compte"
 
 #: ui_contratoslistbase.h:340
 msgid "Caducados"
 msgstr ""
 
 #: listlincontratoview.cpp:45
+#, fuzzy
 msgid "Cantidadl contrato"
-msgstr ""
+msgstr "Quantitat"
 
 #: ui_contratoslistbase.h:341
+#, fuzzy
 msgid "Cliente"
-msgstr ""
+msgstr "Següent"
 
 #: contratoview.cpp:65 contratoslist.cpp:64
+#, fuzzy
 msgid "Cliente:"
-msgstr ""
+msgstr "Pendent:"
 
 #: contratoslist.cpp:423
 msgid "Codigo"
 msgstr "Codi"
 
 #: contratoview.cpp:414
+#, fuzzy
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Codi compte"
 
 #: listlincontratoview.cpp:41
 msgid "Codigo completo articulo"
 msgstr ""
 
 #: contratoview.cpp:416
+#, fuzzy
 msgid "Comentario factura"
-msgstr ""
+msgstr "Comentari"
 
 #: ui_contratoslistbase.h:308 ui_contratoslistbase.h:313
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
 #: contratoview.cpp:415
+#, fuzzy
 msgid "Contact factura"
-msgstr ""
+msgstr "<HR><B>Tractant la factura"
 
 #: contratoview.cpp:118 contrato.cpp:39
+#, fuzzy
 msgid "Contrato"
-msgstr ""
+msgstr "Contrapartida"
 
 #: ui_contratoslistbase.h:249
+#, fuzzy
 msgid "Contratos"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
 
 #: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
 #: contrato.cpp:49 contrato.cpp:50
+#, fuzzy
 msgid "Descripcion contrato"
-msgstr ""
+msgstr "Descripció del compte"
 
 #: ui_contratobase.h:503
+#, fuzzy
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripció"
 
 #: listlincontratoview.cpp:44
+#, fuzzy
 msgid "Descripcionl contrato"
-msgstr ""
+msgstr "Descripció del compte"
 
 #: ui_contratobase.h:508
+#, fuzzy
 msgid "Detalle"
-msgstr ""
+msgstr "&Detalls"
 
 #: ui_contratoslistbase.h:264 ui_contratoslistbase.h:269
+#, fuzzy
 msgid "Editar contrato"
-msgstr ""
+msgstr "Editar compte"
 
 #: contratoslist.cpp:203
 msgid "Error al borrar un contrato"
 msgstr ""
 
 #: contratoview.cpp:73
+#, fuzzy
 msgid "Error al crear la contrato"
-msgstr ""
+msgstr "Error al fer una consulta a la base de dades."
 
 #: ui_contratoslistbase.h:330 ui_contratoslistbase.h:335 ui_contratobase.h:482
 #: ui_contratobase.h:487
@@ -177,104 +206,128 @@ msgid "Fecha"
 msgstr "Data"
 
 #: contratoslist.cpp:428
+#, fuzzy
 msgid "Fecha de alta del contrato"
-msgstr ""
+msgstr "Data de la compra"
 
 #: contratoslist.cpp:429 contratoslist.cpp:430
+#, fuzzy
 msgid "Fecha de baja del contrato"
-msgstr ""
+msgstr "Data de la compra"
 
 #: ui_contratobase.h:507
+#, fuzzy
 msgid "Fecha de creacion:"
-msgstr ""
+msgstr "Data de compra:"
 
 #: ui_contratobase.h:506
+#, fuzzy
 msgid "Fecha de finalizacion:"
-msgstr ""
+msgstr "Data &final:"
 
 #: ui_contratoslistbase.h:297 ui_contratoslistbase.h:302
+#, fuzzy
 msgid "Filtrar contratos"
-msgstr ""
+msgstr "Editar compte"
 
 #: ui_contratobase.h:460 ui_contratobase.h:465
+#, fuzzy
 msgid "Guardar Contrato"
-msgstr ""
+msgstr "Desa assentament"
 
 #: contratoslist.cpp:422
+#, fuzzy
 msgid "ID contrato"
-msgstr ""
+msgstr "ID compte"
 
 #: contratoview.cpp:419
+#, fuzzy
 msgid "Id almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: listlincontratoview.cpp:40
+#, fuzzy
 msgid "Id articulo"
-msgstr ""
+msgstr "<P> Article <B>"
 
 #: contratoview.cpp:418 contrato.cpp:43
+#, fuzzy
 msgid "Id cliente"
-msgstr ""
+msgstr "Id compte"
 
 #: listlincontratoview.cpp:47 contrato.cpp:42
+#, fuzzy
 msgid "Id contrato"
-msgstr ""
+msgstr "Id compte"
 
 #: contratoview.cpp:410
+#, fuzzy
 msgid "Id factura"
-msgstr ""
+msgstr "Factura"
 
 #: contratoview.cpp:417
+#, fuzzy
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id esborrany"
 
 #: listlincontratoview.cpp:43
+#, fuzzy
 msgid "Idl contrato"
-msgstr ""
+msgstr "Id compte"
 
 #: ui_contratoslistbase.h:286 ui_contratoslistbase.h:291
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: contratoview.cpp:407
+#, fuzzy
 msgid "Impuestos"
-msgstr ""
+msgstr "Imputació"
 
 #: contratoslist.cpp:174
+#, fuzzy
 msgid "Listado de Contratos"
-msgstr ""
+msgstr "Llistat d'assentaments"
 
 #: ui_contratobase.h:494 ui_contratobase.h:499
 msgid "Mostrar/ocultar cabecera"
 msgstr ""
 
 #: contratoslist.cpp:427
+#, fuzzy
 msgid "Nombre alternativo del contrato"
-msgstr ""
+msgstr "Nom del compte"
 
 #: listlincontratoview.cpp:42
+#, fuzzy
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: contratoview.cpp:404
+#, fuzzy
 msgid "Nombre cliente"
-msgstr ""
+msgstr "Nom del compte"
 
 #: contratoslist.cpp:426
+#, fuzzy
 msgid "Nombre de contrato"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: ui_contratobase.h:457
+#, fuzzy
 msgid "Nuevo Contrato"
-msgstr ""
+msgstr "Nou assentament"
 
 #: ui_contratoslistbase.h:253 ui_contratoslistbase.h:258
+#, fuzzy
 msgid "Nuevo contrato"
-msgstr ""
+msgstr "Nou assentament"
 
 #: contratoview.cpp:402
+#, fuzzy
 msgid "Numero"
-msgstr ""
+msgstr "Nou"
 
 #: listlincontratoview.cpp:48
 msgid "Orden"
@@ -285,16 +338,18 @@ msgid "PVPl contrato"
 msgstr ""
 
 #: ui_contratobase.h:504
+#, fuzzy
 msgid "Periodicidad Facturas:"
-msgstr ""
+msgstr "Periodicitat:"
 
 #: contratoview.cpp:409
 msgid "Procesada"
 msgstr ""
 
 #: contratoview.cpp:411
+#, fuzzy
 msgid "Ref factura"
-msgstr ""
+msgstr "Factura"
 
 #: contratoslist.cpp:425
 msgid "Referencia"
@@ -309,21 +364,25 @@ msgid "Referencia:"
 msgstr ""
 
 #: contratoslist.cpp:73
+#, fuzzy
 msgid "Selector de contratos"
-msgstr ""
+msgstr "Sel·lector de BulmaGés"
 
 #: contratoview.cpp:412
 msgid "Serie"
 msgstr ""
 
 #: contratoview.cpp:405
+#, fuzzy
 msgid "Telefono factura"
-msgstr ""
+msgstr "<HR><B>Tractant la factura"
 
 #: contratoview.cpp:408
+#, fuzzy
 msgid "Total"
-msgstr ""
+msgstr "Totals:"
 
 #: ui_contratobase.h:505
+#, fuzzy
 msgid "Ubicacion:"
-msgstr ""
+msgstr "Adreça:"

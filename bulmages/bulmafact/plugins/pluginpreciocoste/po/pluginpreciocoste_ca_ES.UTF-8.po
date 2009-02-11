@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,22 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: pluginpreciocoste.cpp:54
+#, fuzzy
 msgid "Actualizar PVP"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Actualitzar\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Actualitza\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Actualitza"
 
 #: pluginpreciocoste.cpp:53
+#, fuzzy
 msgid "Margen"
-msgstr ""
+msgstr "Origen:"
 
 #: pluginpreciocoste.cpp:52
+#, fuzzy
 msgid "Precio Coste"
-msgstr ""
+msgstr "Centre de Cost"

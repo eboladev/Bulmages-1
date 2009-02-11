@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-08 15:46+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,8 +321,9 @@ msgid "Poblacio&n:"
 msgstr ""
 
 #: providerslist.cpp:292 provedit.cpp:52
+#, fuzzy
 msgid "Poblacion"
-msgstr ""
+msgstr "Paginació"
 
 #: ui_providerslistbase.h:368
 msgid "Procesa&dos"
@@ -351,16 +352,18 @@ msgid "Provincia"
 msgstr ""
 
 #: ui_proveditbase.h:789
+#, fuzzy
 msgid "Provincia:"
-msgstr ""
+msgstr "Periodicitat:"
 
 #: provedit.cpp:63
 msgid "Recargo de Equivalencia"
 msgstr ""
 
 #: ui_proveditbase.h:797
+#, fuzzy
 msgid "Regimen &fiscal:"
-msgstr ""
+msgstr "Assentament final:"
 
 #: provedit.cpp:61
 msgid "Regimen Fiscal"
@@ -371,8 +374,9 @@ msgid "Resumen por articulos"
 msgstr ""
 
 #: providerslist.cpp:215
+#, fuzzy
 msgid "Seleccione el archivo"
-msgstr ""
+msgstr "Seleccioni una empresa"
 
 #: providerslist.cpp:63
 #, fuzzy
@@ -388,8 +392,9 @@ msgid "URL"
 msgstr ""
 
 #: ui_proveditbase.h:822
+#, fuzzy
 msgid "Vencidos"
-msgstr ""
+msgstr "Atenció "
 
 #: ui_proveditbase.h:818
 #, fuzzy

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,42 +55,52 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_inventariobase.h:364
+#, fuzzy
 msgid "&Detalle"
-msgstr ""
+msgstr "&Detalls"
 
-#: plugininventario.cpp:72
+#: plugininventario.cpp:78
+#, fuzzy
 msgid "&Inventarios"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
 
 #: ui_inventariobase.h:341 ui_inventariobase.h:346
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: plugininventario.cpp:116
+#: plugininventario.cpp:122
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
 #: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
 #: ui_inventariosbase.h:187 ui_inventariosbase.h:192
+#, fuzzy
 msgid "Borrar inventario"
-msgstr ""
+msgstr "Esborra assentament"
 
 #: listcontrolstockview.cpp:35
+#, fuzzy
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Codi compte"
 
 #: listcontrolstockview.cpp:37
 msgid "Codigo completo articulo"
 msgstr ""
 
 #: ui_inventariobase.h:361
+#, fuzzy
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripció"
 
 #: ui_inventariosbase.h:176 ui_inventariosbase.h:181
+#, fuzzy
 msgid "Editar inventario"
-msgstr ""
+msgstr "Editar compte"
 
 #: inventarioview.cpp:106
 msgid "Esta a punto de borrar un inventario. Desea continuar?"
@@ -102,77 +112,97 @@ msgid "Familia"
 msgstr "<P> Família <B>"
 
 #: ui_inventariobase.h:362
+#, fuzzy
 msgid "Fecha creacion:"
-msgstr ""
+msgstr "&Data de l'assentament:"
 
 #: inventariosview.cpp:281
+#, fuzzy
 msgid "Fecha del inventario"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: inventario.cpp:42
+#, fuzzy
 msgid "Fecha inventario"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: ui_inventariobase.h:319 ui_inventariobase.h:324
+#, fuzzy
 msgid "Filtrar listado"
-msgstr ""
+msgstr "Configura llistat"
 
 #: ui_inventariobase.h:297 ui_inventariobase.h:302
+#, fuzzy
 msgid "Guardar inventario"
-msgstr ""
+msgstr "Desa assentament"
 
-#: plugininventario.cpp:120
+#: plugininventario.cpp:126
 msgid "ID Trabajador"
 msgstr ""
 
-#: plugininventario.cpp:119
+#: plugininventario.cpp:125
+#, fuzzy
 msgid "ID Validacion"
-msgstr ""
+msgstr "Id amortizació"
 
-#: plugininventario.cpp:117
+#: plugininventario.cpp:123
+#, fuzzy
 msgid "Id Almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: listcontrolstockview.cpp:41
+#, fuzzy
 msgid "Id articulo"
-msgstr ""
+msgstr "<P> Article <B>"
 
 #: inventariosview.cpp:279
+#, fuzzy
 msgid "Id inventario"
-msgstr ""
+msgstr "Id assentament"
 
 #: inventario.cpp:41
+#, fuzzy
 msgid "Identificador inventario"
-msgstr ""
+msgstr "Identificador"
 
 #: ui_inventariosbase.h:198 ui_inventariosbase.h:203 ui_inventariosbase.h:209
 #: ui_inventariosbase.h:214
+#, fuzzy
 msgid "Imprimir Stocks Actuales"
-msgstr ""
+msgstr "Imprimeix comptes"
 
 #: ui_inventariobase.h:330 ui_inventariobase.h:335
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: inventario.cpp:38 ui_inventariobase.h:294
+#, fuzzy
 msgid "Inventario"
-msgstr ""
+msgstr "Comentari"
 
-#: plugininventario.cpp:73 plugininventario.cpp:74
+#: plugininventario.cpp:79 plugininventario.cpp:80
+#, fuzzy
 msgid "Inventarios"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentari\n"
+"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Comentaris"
 
 #: ui_inventariosbase.h:162
+#, fuzzy
 msgid "Listado de inventarios"
-msgstr ""
+msgstr "Llistat d'assentaments"
 
-#: plugininventario.cpp:118
+#: plugininventario.cpp:124
 msgid "Minimo"
 msgstr ""
 
-#: plugininventario.cpp:112
+#: plugininventario.cpp:118
+#, fuzzy
 msgid "Minimos almacen"
-msgstr ""
+msgstr "<HR><B>Tractant magatzem"
 
 #: inventarioview.cpp:107
 msgid "No"
@@ -222,7 +252,7 @@ msgstr "S"
 msgid "Stock anterior"
 msgstr "Stock anterior"
 
-#: plugininventario.cpp:205
+#: plugininventario.cpp:211
 msgid "Stock minimo superado"
 msgstr "Stock mnim revisat"
 

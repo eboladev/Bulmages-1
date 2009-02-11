@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,20 +59,24 @@ msgid "Color tipo trabajo"
 msgstr ""
 
 #: plugintipostrabajo.cpp:199
+#, fuzzy
 msgid "ID almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"
 
 #: plugintipostrabajo.cpp:197
+#, fuzzy
 msgid "ID nombre del tipo de trabajo"
-msgstr ""
+msgstr "Nom de la forma de pagament:"
 
 #: plugintipostrabajo.cpp:200
+#, fuzzy
 msgid "ID tipo de trabajo"
-msgstr ""
+msgstr "Id tipus d'IVA"
 
 #: plugintipostrabajo.cpp:201
+#, fuzzy
 msgid "Id tipo de trabajo"
-msgstr ""
+msgstr "Id tipus d'IVA"
 
 #: listtipostrabajoview.cpp:55
 msgid "Id tipo trabajo"
@@ -83,13 +87,16 @@ msgid "Nombre tipo trabajo"
 msgstr ""
 
 #: plugintipostrabajo.cpp:198
+#, fuzzy
 msgid "Numero de cargos necesarios"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: ui_listtipostrabajobase.h:112
+#, fuzzy
 msgid "Tipos de Trabajo"
-msgstr ""
+msgstr "Tipus d'assentament"
 
 #: listtipostrabajoview.cpp:48
+#, fuzzy
 msgid "almacen"
-msgstr ""
+msgstr "<LI> Magatzem <B>"

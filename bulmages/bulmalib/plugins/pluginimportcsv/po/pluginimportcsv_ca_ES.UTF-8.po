@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:25+0100\n"
+"POT-Creation-Date: 2009-02-11 10:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,9 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: pluginimportcsv.cpp:59
+#, fuzzy
 msgid "&Importacion CSV"
-msgstr ""
+msgstr "Imputació"
 
 #: ui_importcsvbase.h:198
 msgid "..."
@@ -47,25 +48,30 @@ msgstr ""
 msgid "Cancelar"
 msgstr "Cancel·la"
 
+# Potser carregar és mllor
 #: ui_importcsvbase.h:201
+#, fuzzy
 msgid "Caracter separador"
-msgstr ""
+msgstr "Llegir empresa"
 
 #: ui_importcsvbase.h:204
 msgid "Composicion de Campos"
 msgstr ""
 
 #: importcsv.cpp:52
+#, fuzzy
 msgid "Error al crear la ventana de importacion"
-msgstr ""
+msgstr "Error en la càrrega de l'amortizació"
 
 #: pluginimportcsv.cpp:60 pluginimportcsv.cpp:61
+#, fuzzy
 msgid "Importacion CSV"
-msgstr ""
+msgstr "Imputació"
 
 #: ui_importcsvbase.h:196
+#, fuzzy
 msgid "Importar CSV"
-msgstr ""
+msgstr "&Importa"
 
 #: importcsv.cpp:70
 msgid "Open file"
@@ -80,9 +86,11 @@ msgid "Separado por tabulador"
 msgstr ""
 
 #: ui_importcsvbase.h:199
+#, fuzzy
 msgid "Separador de campos"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: ui_importcsvbase.h:203
+#, fuzzy
 msgid "Tabla Destino"
-msgstr ""
+msgstr "Compte destí"

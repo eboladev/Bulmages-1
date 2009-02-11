@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-11 10:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,8 +55,9 @@ msgstr ""
 "&Cancel·lar"
 
 #: ui_profesorbase.h:519
+#, fuzzy
 msgid "&Datos generales"
-msgstr ""
+msgstr "&Dades comptables"
 
 #: pluginprofesor.cpp:104
 msgid "&Nuevo Profesor"
@@ -75,21 +76,33 @@ msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: ui_profesoreslistbase.h:309
+#, fuzzy
 msgid "Banco:"
-msgstr ""
+msgstr "Balanç"
 
 #: ui_profesoreslistbase.h:341 ui_profesoreslistbase.h:346
+#, fuzzy
 msgid "Borrar Profesor"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
 
 #: ui_profesorbase.h:484 ui_profesorbase.h:489 ui_profesorbase.h:496
 #: ui_profesorbase.h:501
+#, fuzzy
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Esborra quota"
 
 #: profesoreslist.cpp:218
+#, fuzzy
 msgid "Borrar profesor"
 msgstr ""
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborra registre\n"
+"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Esborrar registre"
 
 #: ui_profesoreslistbase.h:399
 msgid "Buscar:"
@@ -100,16 +113,19 @@ msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr ""
 
 #: ui_profesoreslistbase.h:313
+#, fuzzy
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: ui_profesoreslistbase.h:312
+#, fuzzy
 msgid "Cobros previstos"
-msgstr ""
+msgstr "&Cobraments i pagaments"
 
 #: ui_profesorbase.h:510
+#, fuzzy
 msgid "Codigo postal:"
-msgstr ""
+msgstr "Codi compte"
 
 #: ui_profesorbase.h:520
 msgid "Comentarios:"
@@ -156,20 +172,24 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: ui_profesorbase.h:522
+#, fuzzy
 msgid "Datos bancarios:"
-msgstr ""
+msgstr "Dades incompletes"
 
 #: ui_profesorbase.h:521
+#, fuzzy
 msgid "Datos de comercio electronico:"
-msgstr ""
+msgstr "Correo electrònic:"
 
 #: profesoreslist.cpp:201
+#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: profesoreslist.cpp:160
+#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Cal triar un compte"
 
 #: ui_profesorbase.h:509
 msgid "Direccion:"
@@ -212,32 +232,37 @@ msgid "Filtrar Profesores"
 msgstr ""
 
 #: ui_profesorbase.h:472 ui_profesorbase.h:477
+#, fuzzy
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Desa arxiu"
 
 #: profesorview.cpp:51
 msgid "ID profesor"
 msgstr ""
 
 #: profesoreslist.cpp:262
+#, fuzzy
 msgid "Id profesor"
-msgstr ""
+msgstr "NIF del proveïdor"
 
 #: ui_profesoreslistbase.h:353 ui_profesoreslistbase.h:358
+#, fuzzy
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimeix la comanda"
 
 #: profesoreslist.cpp:263
 msgid "Nombre"
 msgstr "Nom"
 
 #: ui_profesorbase.h:507
+#, fuzzy
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #: profesorview.cpp:52
+#, fuzzy
 msgid "Nombre del profesor"
-msgstr ""
+msgstr "Nom del proveïdor"
 
 #: ui_profesorbase.h:468 ui_profesoreslistbase.h:317
 #: ui_profesoreslistbase.h:322
@@ -245,24 +270,28 @@ msgid "Nuevo Profesor"
 msgstr ""
 
 #: pluginprofesor.cpp:106 pluginprofesor.cpp:107
+#, fuzzy
 msgid "Nuevo profesor"
-msgstr ""
+msgstr "Nova empresa"
 
 #: ui_profesorbase.h:514
+#, fuzzy
 msgid "Numero de fax:"
-msgstr ""
+msgstr "Nombre de quotes"
 
 #: ui_profesorbase.h:523
 msgid "Otros datos"
 msgstr ""
 
 #: ui_profesorbase.h:517
+#, fuzzy
 msgid "Pagina web:"
-msgstr ""
+msgstr "Pàgina actual:"
 
 #: ui_profesorbase.h:511
+#, fuzzy
 msgid "Poblacion:"
-msgstr ""
+msgstr "Paginació"
 
 #: profesorview.cpp:48
 msgid "Profesor"
@@ -274,12 +303,14 @@ msgid "Profesores"
 msgstr ""
 
 #: ui_profesorbase.h:512
+#, fuzzy
 msgid "Provincia:"
-msgstr ""
+msgstr "Periodicitat:"
 
 #: ui_profesorbase.h:515
+#, fuzzy
 msgid "Telefono del trabajo:"
-msgstr ""
+msgstr "Telèfon del proveïdor"
 
 #: ui_profesorbase.h:513
 msgid "Telefono fijo:"
