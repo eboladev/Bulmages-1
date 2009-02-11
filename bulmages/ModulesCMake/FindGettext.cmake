@@ -195,16 +195,7 @@ macro (GETTEXT_UPDATE_POT inputPot dirOUT)
 
    add_dependencies(update_pots ${_PotFileName}_pot)
 
-#   add_custom_command(
-#   OUTPUT ${dirOUT}/${_PotFile}
-#   COMMAND ${CMAKE_COMMAND} copy ${inputPot} ${dirOUT}/${_PotFile}
-#   DEPENDS ${inputPot})
-
-#   configure_file( ${inputPot} ${dirOUT}/${_PotFile} COPYONLY)
-
 endmacro (GETTEXT_UPDATE_POT inputPot dirOUT)
-
-
 
 
 # GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
@@ -228,29 +219,23 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
    get_filename_component(_absPotFile ${potFile} ABSOLUTE)
    get_filename_component(_PotFile ${potFile} NAME)
 
-
 #   MESSAGE(STATUS "Programmed translations")
 
    foreach(_lang ${ARGN})
 
       # Copy _lang.po file to binary directory
-#      CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
+      CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
 
       set(_absPoFile ${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po)
       set(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.gmo)
+      set(_tmpPoFile ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po)
+
 
       get_filename_component(_gmoBasename ${_gmoFile} NAME)
 
-
-# We don't want to overwrite existing translations.
-#      if(NOT EXISTS ${_absPoFile})
-#         configure_file( ${_absPotFile} ${_absPoFile} COPYONLY)
-#         file(WRITE ${_absPoFile} "")
-#      endif(NOT EXISTS ${_absPoFile})
-
       add_custom_command( 
          OUTPUT  "${_gmoFile}"
-         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_absPoFile} ${_absPotFile}
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_tmpPoFile} ${_absPotFile}
          COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absPoFile}
          DEPENDS ${_absPotFile} ${_absPoFile}
       )
@@ -261,10 +246,30 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
       endif(INSTALLDIR)
 
       list (APPEND _gmoFiles ${_gmoFile})
+      list (APPEND _poFiles ${_tmpPoFile})
+      
+      # preparing the macro in case we want to update the translations
+      #GETTEXT_UPDATE_LANG_PO(${_tmpPoFile} ${CMAKE_CURRENT_SOURCE_DIR}/po/)
 
    endforeach (_lang ${${langs}})
 
+   GETTEXT_UPDATE_LANG_PO(${_poFiles} ${CMAKE_CURRENT_SOURCE_DIR}/po/)
+
    add_custom_target( ${_potBasename}_pos DEPENDS ${_absPotFile} ${_gmoFiles} )
    add_dependencies(translations ${_potBasename}_pos ${_absPotFile})
+   add_dependencies(update_lang_po ${_potBasename}_pos)
 
 endmacro(GETTEXT_CREATE_TRANSLATIONS )
+
+
+macro (GETTEXT_UPDATE_LANG_PO inputPo dirOUTpo)
+
+   get_filename_component(_PoFile ${inputPo} NAME)
+   
+   add_custom_target(update_lang_po 
+   ${CMAKE_COMMAND} -E copy 
+   ${inputPo} ${dirOUTpo}/)
+
+   #add_dependencies(update_lang_po ${_PotFileName}_pot)
+
+endmacro (GETTEXT_UPDATE_LANG_PO inputPo dirOUTpo)

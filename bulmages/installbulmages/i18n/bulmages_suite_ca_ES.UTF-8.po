@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: bulmages_suite_ca_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-02-10 19:59+0100\n"
-"PO-Revision-Date: 2009-02-11 13:20+0100\n"
+"PO-Revision-Date: 2009-02-11 21:03+0100\n"
 "Last-Translator: Leopold Palomo Avellaneda <leo@alaxarxa.net>\n"
 "Language-Team:  <ca@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1021,7 +1021,7 @@ msgstr "Llegint arranjament"
 
 #: main.cxx:195 main.cxx:182 main.cxx:165 main.cxx:196
 msgid "Cargando traducciones"
-msgstr ""
+msgstr "Carregant traduccions"
 
 #: main.cxx:229 main.cxx:222 main.cxx:202 main.cxx:230
 msgid "Lanzando plugins"
@@ -3606,7 +3606,7 @@ msgstr "Balanç"
 
 #: main.cxx:216 main.cxx:196
 msgid "Cargando plugins"
-msgstr ""
+msgstr "Carregant plugins"
 
 #: main.cxx:245
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
@@ -3716,7 +3716,7 @@ msgstr "Quant a BulmaCont"
 
 #: ui_aboutbase.h:287
 msgid "Facturacion GPL - Version 0.11.1 -"
-msgstr ""
+msgstr "Facturació GPL - Versió 0.11.1 -"
 
 #: ui_aboutbase.h:288
 msgid "&Acerca de"
@@ -3814,7 +3814,7 @@ msgstr ""
 
 #: ui_bancobase.h:411
 msgid "Razon Social:"
-msgstr ""
+msgstr "Raó social:"
 
 #: ui_bancobase.h:412
 #, fuzzy
@@ -3858,7 +3858,7 @@ msgstr "Quantitat"
 
 #: ui_bancobase.h:420
 msgid "Sucursal:"
-msgstr ""
+msgstr "Sucursal:"
 
 #: ui_bancobase.h:421
 msgid "C.P.:"
@@ -4328,7 +4328,7 @@ msgstr "% I.V.A."
 #: listlinalbaranproveedorview.cpp:55 listlinpedidoproveedorview.cpp:48
 #: listlinalbaranproveedorview.cpp:56 listlinpedidoproveedorview.cpp:49
 msgid "% R.E."
-msgstr ""
+msgstr "% R.E."
 
 #: listlinalbaranproveedorview.cpp:56 listdescalbaranclienteview.cpp:43
 #: listlinalbaranclienteview.cpp:54 listdescpresupuestoview.cpp:42
@@ -4527,9 +4527,8 @@ msgid "Descripcion serie factura"
 msgstr "Descripció del compte"
 
 #: fpagoview.cpp:211
-#, fuzzy
 msgid "Error al intentar borrar la forma de pago"
-msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
+msgstr "Error al intentar esborrar la forma de pagament"
 
 #: listalmacenview.cpp:70 listalmacenview.cpp:71
 #, fuzzy
@@ -4541,17 +4540,15 @@ msgstr "Desitja desar els canvis?"
 #: facturaslist.cpp:380 albaranproveedorview.cpp:63 pedidoproveedorview.cpp:56
 #: pedidosproveedorlist.cpp:328 listalmacenview.cpp:97 movimientosview.cpp:181
 #: compraventaview.cpp:73 albaranproveedorview.cpp:64
-#, fuzzy
 msgid "Id almacen"
-msgstr "<LI> Magatzem <B>"
+msgstr "Id Magatzem "
 
 #: listalmacenview.cpp:97 movimientosview.cpp:183 listcontrolstockview.cpp:35
 #: contratoview.cpp:414 almaceneslistview.cpp:57 almaceneslistview.cpp:91
 #: almacenview.cpp:58 facturaslist.cpp:375 listalmacenview.cpp:98
 #: movimientosview.cpp:182 almacenview.cpp:59
-#, fuzzy
 msgid "Codigo almacen"
-msgstr "Codi compte"
+msgstr "Codi magatzem"
 
 #: listalmacenview.cpp:98 listltarifaview.cpp:35 listltarifaview.cpp:57
 #: movimientosview.cpp:184 listcontrolstockview.cpp:36
@@ -4982,23 +4979,20 @@ msgid "Hora:"
 msgstr "&Format:"
 
 #: ui_rutacomercialincbase.h:207 ui_rutacomercialincbase.h:212
-#, fuzzy
 msgid "Guardar Factura"
-msgstr "Desa assentament"
+msgstr "Desa factura"
 
 #: ui_rutacomercialincbase.h:218 ui_rutacomercialincbase.h:223
-#, fuzzy
 msgid "Borrar Factura"
-msgstr "Esborra quota"
+msgstr "Esborra factura"
 
 #: ui_rutacomercialincbase.h:229 ui_rutacomercialincbase.h:234
-#, fuzzy
 msgid "Ver Albaran"
-msgstr "<HR><B>Tractant l'albarà"
+msgstr "Mostra Albarà"
 
 #: ui_rutacomercialincbase.h:240 ui_rutacomercialincbase.h:245
 msgid "Realizar Cobro"
-msgstr ""
+msgstr "Realitza cobrament"
 
 #: ui_rutacomercialincbase.h:249
 msgid "Ruta comercial:"
@@ -6587,9 +6581,8 @@ msgstr "Nou assentament"
 
 #: ui_almacenbase.h:322 ui_almacenbase.h:327 ui_cuadrante1base.h:317
 #: ui_cuadrante1base.h:322 ui_zbase.h:288 ui_zbase.h:293
-#, fuzzy
 msgid "Guardar almacen"
-msgstr "Desa balanç"
+msgstr "Desa magatzem"
 
 #: ui_almacenbase.h:334 ui_almacenbase.h:339 ui_almaceneslistbase.h:359
 #: ui_almaceneslistbase.h:364 ui_cuadrante1base.h:329 ui_cuadrante1base.h:334
@@ -7200,9 +7193,8 @@ msgstr ""
 #: ui_compraventabase.h:824 ui_compraventabase.h:829
 #: ui_albaranclientebase.h:708 ui_albaranclientebase.h:713
 #: ui_albaranproveedorbase.h:574 ui_albaranproveedorbase.h:579
-#, fuzzy
 msgid "Guardar albaran"
-msgstr "Desa balanç"
+msgstr "Desa albarà"
 
 #: ui_compraventabase.h:835 ui_compraventabase.h:840
 #: ui_albaranclientelistbase.h:466 ui_albaranclientelistbase.h:471
@@ -7973,9 +7965,8 @@ msgstr "Tractant la comana del client"
 
 #: ui_pedidoclientebase.h:647 ui_pedidoclientebase.h:652
 #: ui_pedidoproveedorbase.h:661 ui_pedidoproveedorbase.h:666
-#, fuzzy
 msgid "Guardar pedido"
-msgstr "Desar"
+msgstr "Desa comanda"
 
 #: ui_pedidoclientebase.h:658 ui_pedidoclientebase.h:663
 #: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:412
@@ -9215,7 +9206,7 @@ msgstr "Text per a l'etiqueta:"
 
 #: ui_articleeditbase.h:618
 msgid "Precio venta. s/IVA:"
-msgstr ""
+msgstr "Preu venta. s/IVA:"
 
 #: ui_articleeditbase.h:619
 #, fuzzy
@@ -9411,7 +9402,7 @@ msgstr ""
 
 #: empresatpv.cpp:77 company.cpp:91
 msgid "Inicializando listado de articulos"
-msgstr ""
+msgstr "Inicialitzant el llistat d'articles"
 
 #: empresatpv.cpp:100
 msgid "Terminal Punto de Venta GPL"
