@@ -1,56 +1,66 @@
 ========================================
-Software de Gestion Empresarial BulmaGes
+Software de Gestión Empresarial BulmaGés
 
-(C) 2007, Asociacion Iglues
+(C) 2003 - 2008 Asociacion IGLUES
 http://www.iglues.org
 ========================================
+#README.Bulmafact
+20080501
 
 BulmaFact
----------
+=========
 
-Este directorio contiene todo el codigo fuente del programa de facturacion 
-Bulmafact. Tanto el programa principal como algunos plugins especificos que
-se distribuyen junto a este.
-
+Este directorio contiene todo el código fuente del programa 
+BulmaFact. Tanto el programa principal como su plugins.
 
 Estructura
-----------
+==========
 
-Dentro del directorio src esta el codigo fuente de la aplicacion.
-Cada subdirectorio de src corresponde con a un plugin.
+Dentro del directorio src/ está el código fuente de la aplicación. El el
+directorio plugins estan los plugins del programa.
+  
 
-Compilacion
------------
-Este programa se desarrolla normalmente con Debian, Ubuntu y Suse por lo que 
-no deberia tener problemas para compilar con estas distribuciones.
+Módulos adicionales y personalizaciones
+=======================================
+Usted puede crear extensiones al programa creando dichas extensiones en forma de
+plugin.
 
-Ejecute desde este directorio:
-   $ qmake-qt4 (O qmake si usa Suse)
-   $ make
-   
-Si solo desea compilar una parte del programa puede entrar dentro
-del directorio correspondiente y compilar.
+Nota: Cree plugins específicos para sus clientes y ofrezca un servicio de
+mantenimiento compilando bulmafact en sus nuevas versiones junto a sus plugins.
 
-El programa compilado y los plugins se ubicaran en el directorio installbulmages.
+Plugins
+=======
 
-Mire los archivos .pro de cada directorio para comprender mejor el
-sistema de compilacion.
+Actualmente se compilan estos plugins por defecto en la mayoria de plataformas:
+
+- comercialbf (Plugin de Comerciales)
+- plugintpv (Plugin de TPV)
+- plugin (Plugin ejemplo)
+- barcodeopen (Plugin de apertura rápida a partir de códigos de barras)
+- plugincatalogo (Plugin de catálogos)
+- plugincontratos (Plugin de Informes de Clientes)
+- impresionesmultiples (Plugin de Impresiones Múltiples)
+- plugininformeclientes (Plugin de Informes de Clientes)
+- plugininventarios (Plugin de Inventarios)
+- pluginmail (Plugin de  envio de documentos por e-mail)
+- pluginpromedios (Plugin promedios)
+- pluginq19 (Plugin q19)
+- pluginsyncbulmacont (Sincronización con Bulmacont)
+- plugintarifas (Plugin de tarifas)
+- pluginticket (Plugin de  impresion de tickets)
+- plugintrazabilidad (Plugin de Trazabilidad)
+- plugintipostrabajo (Plugin de trabajadores)
+- pluginresarticulos (Plugin de Resumenes por Articulo)
+- plugincuadrante (Plugin de cuadrante)
+- plugininformeclientessxc (Plugin de Informes de Clientes)
 
 
-Codigo especifico, no liberado etc
-----------------------------------
-Puede crear sus propios plugins de proyecto sin necesidad de generar complicadas
-estructuras para sortear los commits de bulmages y los de sus parches. 
+#sense info
+add_subdirectory(pluginalmacen)
+add_subdirectory(pluginasterisk)
+add_subdirectory(plugindebugbf)
+add_subdirectory(pluginpreciocoste)
 
-Agrege los directorios que considere necesarios dentro de src y enlacelos con la compilacion
-general a traves del archivo privatecode.pro (consulte el archivo bulmafact.pro para entender como
-funciona)
+#mateix info que plugintickets
+add_subdirectory(pluginetiquetado)
 
-De esta forma sus plugins se compilaran junto con todo el programa, incluso podra actualizar
-el repositorio del programa y mantener sus desarrollos particulares actualizados en todo momento
-sin tener que realizar complicadas gestiones.
-
-Recomendacion: Cree un plugin de personalizaciones para cada uno de sus clientes y ofrezca un
-servicio de mantenimiento compilando las ultimas versiones de bulmafact con los plugins especificos.
-
- 
