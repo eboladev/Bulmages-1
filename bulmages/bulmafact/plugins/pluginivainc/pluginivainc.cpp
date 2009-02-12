@@ -49,7 +49,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDBCampo ( "pvpivaincarticulo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Precio de coste" ) );
+    trab->addDBCampo ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio de coste" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -83,12 +83,12 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSHeader ( "pvpivaincarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "PVP IVA Inc" ) );
+    artl->addSHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "PVP IVA Inc" ) );
     return 0;
 }
 
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *l) {
-	l->addSHeader ( "pvpivainclalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, "PVP IVA Inc" );
+	l->addSHeader ( "pvpivainclalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, "PVP IVA Inc" );
     return 0;
 }
 

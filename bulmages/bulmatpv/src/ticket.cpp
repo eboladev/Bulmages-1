@@ -40,18 +40,18 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ),
     /// Inicializamos los parametros del ticket para la base de datos.
     setDBTableName ( "albaran" );
     setDBCampoId ( "idalbaran" );
-    addDBCampo ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion" ) );
-    addDBCampo ( "nomticket", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Nombre" ) );
-    addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id albaran" ) );
-    addDBCampo ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, _( "Id fechaalbaran" ) );
-    addDBCampo ( "horaalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Hora" ) );
-    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, _( "Trabajador" ) );
-    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
-    addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Almacen" ) );
-    addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, _( "Num" ) );
-    addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
-    addDBCampo ( "ticketalbaran", DBCampo::DBboolean, DBCampo::DBNothing, _( "Ticket" ) );
-    addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Id forma de pago" ) );
+    addDBCampo ( "descalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
+    addDBCampo ( "nomticket", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre" ) );
+    addDBCampo ( "idalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran" ) );
+    addDBCampo ( "fechaalbaran", BlDbField::DBdate, BlDbField::DBNothing, _( "Id fechaalbaran" ) );
+    addDBCampo ( "horaalbaran", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Hora" ) );
+    addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
+    addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+    addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
+    addDBCampo ( "numalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "Num" ) );
+    addDBCampo ( "refalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+    addDBCampo ( "ticketalbaran", BlDbField::DBboolean, BlDbField::DBNothing, _( "Ticket" ) );
+    addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
 
     setDBvalue ( "ticketalbaran", "TRUE" );
     setDBvalue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
@@ -82,19 +82,19 @@ DBRecord * Ticket::agregarLinea()
     DBRecord * item = new DBRecord ( empresaBase() );
     item->setDBTableName ( "lalbaran" );
     item->setDBCampoId ( "numlalbaran" );
-    item->addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBNotNull, _( "Id Albaran" ) );
-    item->addDBCampo ( "numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id lalbaran" ) );
-    item->addDBCampo ( "cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Cantidad" ) );
-    item->addDBCampo ( "pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Precio" ) );
-    item->addDBCampo ( "ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "IVA" ) );
-    item->addDBCampo ( "descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Descuento" ) );
-    item->addDBCampo ( "ordenlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Orden" ) );
-    item->addDBCampo ( "reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Req. eq." ) );
-//    item->addDBCampo ( "lotelalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Lote" ) );
-    item->addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, _( "Id articulo" ) );
-    item->addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Codigo articulo" ) );
-    item->addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Nombre articulo" ) );
-    item->addDBCampo ( "desclalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre articulo" ) );
+    item->addDBCampo ( "idalbaran", BlDbField::DBint, BlDbField::DBNotNull, _( "Id Albaran" ) );
+    item->addDBCampo ( "numlalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id lalbaran" ) );
+    item->addDBCampo ( "cantlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
+    item->addDBCampo ( "pvplalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Precio" ) );
+    item->addDBCampo ( "ivalalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "IVA" ) );
+    item->addDBCampo ( "descuentolalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Descuento" ) );
+    item->addDBCampo ( "ordenlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Orden" ) );
+    item->addDBCampo ( "reqeqlalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Req. eq." ) );
+//    item->addDBCampo ( "lotelalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Lote" ) );
+    item->addDBCampo ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, _( "Id articulo" ) );
+    item->addDBCampo ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo articulo" ) );
+    item->addDBCampo ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre articulo" ) );
+    item->addDBCampo ( "desclalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre articulo" ) );
 
 
     item->setDBvalue ( "descuentolalbaran", "0" );

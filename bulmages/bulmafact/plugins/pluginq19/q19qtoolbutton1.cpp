@@ -33,7 +33,7 @@
 #include "funcaux.h"
 #include "blfixed.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "busquedabanco.h"
 #include "q19view.h"
 

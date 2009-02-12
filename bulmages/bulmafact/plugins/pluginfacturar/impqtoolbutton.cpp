@@ -30,9 +30,9 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+
 #include "facturapview.h"
 #include "blfixed.h"
-
 #include "presupuestolist.h"
 #include "presupuestoview.h"
 #include "pedidosclientelist.h"
@@ -41,7 +41,7 @@
 #include "albaranclientelist.h"
 #include "facturaview.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 ///

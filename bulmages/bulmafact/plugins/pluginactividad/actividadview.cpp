@@ -48,9 +48,9 @@ ActividadView::ActividadView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Actividad" ) );
         setDBTableName ( "actividad" );
         setDBCampoId ( "idactividad" );
-        addDBCampo ( "idactividad", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID actividad" ) );
-        addDBCampo ( "nombreactividad", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del actividad" ) );
-	addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBNotNull, _("Id profesor"));
+        addDBCampo ( "idactividad", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID actividad" ) );
+        addDBCampo ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del actividad" ) );
+	addDBCampo ( "idprofesor", BlDbField::DBint, BlDbField::DBNotNull, _("Id profesor"));
 
         meteWindow ( windowTitle(), this, FALSE );
 

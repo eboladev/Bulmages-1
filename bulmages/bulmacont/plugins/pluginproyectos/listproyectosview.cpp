@@ -43,12 +43,12 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
     mui_listado->setEmpresaBase ( emp );
     mui_listado->setDBTableName ( "presupuestoc" );
     mui_listado->setDBCampoId ( "idpresupuestoc" );
-    mui_listado->addSHeader ( "idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );
-    mui_listado->addSHeader ( "idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , BlSubFormHeader::DBNoWrite, _( "C. Coste" ) );
-    mui_listado->addSHeader ( "fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Fecha" ) );
-    mui_listado->addSHeader ( "nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Nombre" ) );
-    mui_listado->addSHeader ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Comentarios" ) );
-    mui_listado->addSHeader ( "archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Archivo" ) );
+    mui_listado->addSHeader ( "idpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );
+    mui_listado->addSHeader ( "idc_coste", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "C. Coste" ) );
+    mui_listado->addSHeader ( "fechapresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Fecha" ) );
+    mui_listado->addSHeader ( "nombrepresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Nombre" ) );
+    mui_listado->addSHeader ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Comentarios" ) );
+    mui_listado->addSHeader ( "archpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Archivo" ) );
     mui_listado->setinsercion ( FALSE );
 
     presentar();

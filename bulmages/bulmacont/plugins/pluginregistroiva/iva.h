@@ -21,7 +21,7 @@
 #ifndef IVA_H
 #define IVA_H
 
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 class Empresa;

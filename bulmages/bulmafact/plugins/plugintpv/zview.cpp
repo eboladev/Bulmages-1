@@ -55,13 +55,13 @@ ZView::ZView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Cuadre de caja" ) );
         setDBTableName ( "z" );
         setDBCampoId ( "idz" );
-        addDBCampo ( "idz", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id" ) );
-        addDBCampo ( "fechaz", DBCampo::DBdate, DBCampo::DBNotNull, _( "Fecha" ) );
-        addDBCampo ( "horaz", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Hora" ) );
-        addDBCampo ( "totalz", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Total" ) );
-        addDBCampo ( "numtickets", DBCampo::DBint, DBCampo::DBNotNull, _( "Num. tickets" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, _( "Id. almacen" ) );
-        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Almacen" ) );
+        addDBCampo ( "idz", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id" ) );
+        addDBCampo ( "fechaz", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
+        addDBCampo ( "horaz", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Hora" ) );
+        addDBCampo ( "totalz", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total" ) );
+        addDBCampo ( "numtickets", BlDbField::DBint, BlDbField::DBNotNull, _( "Num. tickets" ) );
+        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, _( "Id. almacen" ) );
+        addDBCampo ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Almacen" ) );
 
         mui_idalmacen->setEmpresaBase ( comp );
 
@@ -69,19 +69,19 @@ ZView::ZView ( Company *comp, QWidget *parent )
         mui_list->setEmpresaBase ( comp );
         mui_list->setDBTableName ( "albaran" );
         mui_list->setDBCampoId ( "idalbaran" );
-        mui_list->addSHeader ( "idalbaran",  DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Id albaran" ) );
-        mui_list->addSHeader ( "numalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Numero" ) );
-        mui_list->addSHeader ( "descalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Descripcion" ) );
-        mui_list->addSHeader ( "refalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Referencia" ) );
-        mui_list->addSHeader ( "fechaalbaran",  DBCampo::DBdate, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Fecha" ) );
-        mui_list->addSHeader ( "procesadoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Procesado" ) );
-        mui_list->addSHeader ( "idforma_pago",  DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Id forma de pago" ) );
-        mui_list->addSHeader ( "descforma_pago",  DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite,  _( "Forma de pago" ) );
-        mui_list->addSHeader ( "anuladoalbaran",  DBCampo::DBboolean, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Anulado" ) );
-        mui_list->addSHeader ( "horaalbaran",  DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Hora" ) );
-        mui_list->addSHeader ( "totalalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Total" ) );
-        mui_list->addSHeader ( "bimpalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Base Imponible" ) );
-        mui_list->addSHeader ( "impalbaran",  DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Impuestos" ) );
+        mui_list->addSHeader ( "idalbaran",  BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Id albaran" ) );
+        mui_list->addSHeader ( "numalbaran",  BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Numero" ) );
+        mui_list->addSHeader ( "descalbaran",  BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Descripcion" ) );
+        mui_list->addSHeader ( "refalbaran",  BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Referencia" ) );
+        mui_list->addSHeader ( "fechaalbaran",  BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Fecha" ) );
+        mui_list->addSHeader ( "procesadoalbaran",  BlDbField::DBboolean, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Procesado" ) );
+        mui_list->addSHeader ( "idforma_pago",  BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Id forma de pago" ) );
+        mui_list->addSHeader ( "descforma_pago",  BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite,  _( "Forma de pago" ) );
+        mui_list->addSHeader ( "anuladoalbaran",  BlDbField::DBboolean, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Anulado" ) );
+        mui_list->addSHeader ( "horaalbaran",  BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Hora" ) );
+        mui_list->addSHeader ( "totalalbaran",  BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Total" ) );
+        mui_list->addSHeader ( "bimpalbaran",  BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Base Imponible" ) );
+        mui_list->addSHeader ( "impalbaran",  BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Impuestos" ) );
 
         mui_list->setinsercion ( FALSE );
         mui_list->setDelete ( FALSE );

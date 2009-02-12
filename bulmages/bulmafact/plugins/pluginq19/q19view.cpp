@@ -58,15 +58,15 @@ Q19View::Q19View ( FacturasList *fac, Company *comp, QWidget *parent )
         /*
                 setTitleName ( _( "Cobro" ) );
          
-                addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID cobro" ) );
-                addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "ID cliente" ) );
-                addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, _( "Prevision de cobro" ) );
-                addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de cobro" ) );
-                addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de vencimiento" ) );
-                addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia del cobro" ) );
-                addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Cantidad" ) );
-                addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
-                addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, _( "Comentarios" ) );
+                addDBCampo ( "idcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID cobro" ) );
+                addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "ID cliente" ) );
+                addDBCampo ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNothing, _( "Prevision de cobro" ) );
+                addDBCampo ( "fechacobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de cobro" ) );
+                addDBCampo ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
+                addDBCampo ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia del cobro" ) );
+                addDBCampo ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
+                addDBCampo ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
+                addDBCampo ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Comentarios" ) );
          
                 pintar();
                 dialogChanges_cargaInicial();

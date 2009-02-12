@@ -32,10 +32,10 @@ typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &rec )
 {
-    rec->addDBCampo ( "idtc_talla", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Talla" ) );
-    rec->addDBCampo ( "idtc_color", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Color" ) );
-    rec->addDBCampo ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Talla" ) );
-    rec->addDBCampo ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Color" ) );
+    rec->addDBCampo ( "idtc_talla", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Talla" ) );
+    rec->addDBCampo ( "idtc_color", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Color" ) );
+    rec->addDBCampo ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Talla" ) );
+    rec->addDBCampo ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Color" ) );
 
 }
 

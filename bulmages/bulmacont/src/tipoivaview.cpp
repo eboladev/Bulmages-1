@@ -40,10 +40,10 @@ tipoivaview::tipoivaview ( Empresa *emp, QWidget *parent )
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "tipoiva" );
     setDBCampoId ( "idtipoiva" );
-    addDBCampo ( "idtipoiva", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID tipo iva" ) );
-    addDBCampo ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre Tipo" ) );
-    addDBCampo ( "porcentajetipoiva", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Porcentaje" ) );
-    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull, _( "Cuenta" ) );
+    addDBCampo ( "idtipoiva", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tipo iva" ) );
+    addDBCampo ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre Tipo" ) );
+    addDBCampo ( "porcentajetipoiva", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Porcentaje" ) );
+    addDBCampo ( "idcuenta", BlDbField::DBint, BlDbField::DBNotNull, _( "Cuenta" ) );
 
     mui_idcuenta->setEmpresaBase ( emp );
     m_curtipoiva = NULL;

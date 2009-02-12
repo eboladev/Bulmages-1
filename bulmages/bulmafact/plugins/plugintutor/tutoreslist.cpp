@@ -259,8 +259,8 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : SubForm2Bf ( parent
         return;
     setDBTableName ( "tutor" );
     setDBCampoId ( "idtutor" );
-    addSHeader ( "idtutor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tutor" ) );
-    addSHeader ( "nombretutor", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "idtutor", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tutor" ) );
+    addSHeader ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

@@ -61,14 +61,14 @@ FichaCfg::FichaCfg ( EmpresaBase *emp, BlForm *parent, Qt::WFlags f ) : BlWidget
     mui_formtablename->setText ( m_BlForm->tableName() );
     mui_formcampoindice->setText ( m_BlForm->campoId() );
 
-    QList<DBCampo *> *lista = m_BlForm->lista();
+    QList<BlDbField *> *lista = m_BlForm->lista();
 
     mui_formelements->setRowCount ( lista->size() );
     mui_formelements->setColumnCount ( 3 );
 
     /// Impresion de la tabla de contenidos.
     for ( int j = 0; j < lista->size(); ++j ) {
-        DBCampo *campo = lista->at ( j );
+        BlDbField *campo = lista->at ( j );
         QTableWidgetItem *newItem = new QTableWidgetItem ( campo->nomcampo() );
         mui_formelements->setItem ( j, 0, newItem );
 

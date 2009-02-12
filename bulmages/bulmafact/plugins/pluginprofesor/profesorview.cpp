@@ -48,8 +48,8 @@ ProfesorView::ProfesorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Profesor" ) );
         setDBTableName ( "profesor" );
         setDBCampoId ( "idprofesor" );
-        addDBCampo ( "idprofesor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID profesor" ) );
-        addDBCampo ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del profesor" ) );
+        addDBCampo ( "idprofesor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID profesor" ) );
+        addDBCampo ( "nombreprofesor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del profesor" ) );
 
 
         /// Datos por defecto.

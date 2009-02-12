@@ -39,12 +39,12 @@ RutaComercial::RutaComercial ( Company *comp, QWidget *parent ) : FichaBf ( comp
     setTitleName ( _( "Ruta comercial" ) );
     setDBTableName ( "rutacomercial" );
     setDBCampoId ( "idrutacomercial" );
-    addDBCampo ( "idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador" ) );
-    addDBCampo ( "fecharutacomercial", DBCampo::DBdate, DBCampo::DBNotNull, _( "Fecha" ) );
-    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Familia" ) );
-    addDBCampo ( "comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
-    addDBCampo ( "horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Hora" ) );
-    addDBCampo ( "refrutacomercial",  DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
+    addDBCampo ( "idrutacomercial", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
+    addDBCampo ( "fecharutacomercial", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
+    addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
+    addDBCampo ( "comentariosrutacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
+    addDBCampo ( "horarutacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Hora" ) );
+    addDBCampo ( "refrutacomercial",  BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
     _depura ( "END RutaComercial::RutaComercial", 0 );
 }
 

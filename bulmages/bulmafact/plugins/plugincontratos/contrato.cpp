@@ -39,15 +39,15 @@ Contrato::Contrato ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
     setTitleName ( _( "Contrato" ) );
     setDBTableName ( "contrato" );
     setDBCampoId ( "idcontrato" );
-    addDBCampo ( "idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id contrato" ) );
-    addDBCampo ( "idcliente",   DBCampo::DBint, DBCampo::DBNotNull, _( "Id cliente" ) );
-    addDBCampo ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia contrato" ) );
-    addDBCampo ( "descontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "loccontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "fincontrato",  DBCampo::DBdate, DBCampo::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "idcontrato",  BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id contrato" ) );
+    addDBCampo ( "idcliente",   BlDbField::DBint, BlDbField::DBNotNull, _( "Id cliente" ) );
+    addDBCampo ( "refcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia contrato" ) );
+    addDBCampo ( "descontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "nomcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "loccontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "periodicidadcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "fincontrato",  BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDBCampo ( "ffincontrato", BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
     _depura ( "END Contrato::Contrato", 0 );
 }
 

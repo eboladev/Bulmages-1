@@ -27,7 +27,7 @@
 #include "blpostgresqlclient.h"
 #include "funcaux.h"
 #include "qtable2.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 /// Registro de \ref BlSubForm subformulario
@@ -40,7 +40,7 @@ class SDBRecord: public DBRecord
 public:
     SDBRecord ( EmpresaBase *con );
     ~SDBRecord();
-    int addDBCampo ( QString nom, DBCampo::dbtype typ, int res, QString nomp = "" );
+    int addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" );
     void refresh();
     virtual int DBsave ( QString & );
 };
@@ -51,7 +51,7 @@ public:
 Junta la información de campo (Base de Datos) con  un QTableWidgetItem.
 De esta forma los elementos adscritos a una talba y a un recordset son los mismos.
 */
-class SDBCampo: public QTableWidgetItem2, public DBCampo
+class SDBCampo: public QTableWidgetItem2, public BlDbField
 {
 private:
     SDBRecord *m_pare; ///< Puntero al \ref SDBRecord al que pertenece. Acelera procesos.

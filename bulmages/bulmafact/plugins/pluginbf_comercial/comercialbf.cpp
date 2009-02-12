@@ -75,10 +75,10 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
 {
     _depura ( "ClienteView_ClienteView_Post", 0 );
     /// Agregamos los campos de registro que hacen falta.
-    cli->addDBCampo ( "idzonacomercial", DBCampo::DBint, DBCampo::DBNothing, _( "Zona comercial" ) );
-    cli->addDBCampo ( "fechabasecomercialcliente", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha base" ) );
-    cli->addDBCampo ( "periodocomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Periodo" ) );
-    cli->addDBCampo ( "comentcomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios para el comercial" ) );
+    cli->addDBCampo ( "idzonacomercial", BlDbField::DBint, BlDbField::DBNothing, _( "Zona comercial" ) );
+    cli->addDBCampo ( "fechabasecomercialcliente", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha base" ) );
+    cli->addDBCampo ( "periodocomercialcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Periodo" ) );
+    cli->addDBCampo ( "comentcomercialcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios para el comercial" ) );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *l = new ComercialClienteView ( cli );
     l->setEmpresaBase ( cli->empresaBase() );

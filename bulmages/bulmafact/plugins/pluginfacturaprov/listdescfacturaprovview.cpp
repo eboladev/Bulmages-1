@@ -37,10 +37,10 @@ ListDescuentoFacturaProvView::ListDescuentoFacturaProvView ( QWidget *parent )
     _depura ( "ListDescuentoFacturaProvView::ListDescuentoFacturaProvView", 0 );
     setDBTableName ( "dfacturap" );
     setDBCampoId ( "iddfacturap" );
-    addSHeader ( "iddfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id descuento" ) );
-    addSHeader ( "conceptdfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Concepto descuento" ) );
-    addSHeader ( "proporciondfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );
-    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id factura" ) );
+    addSHeader ( "iddfacturap", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id descuento" ) );
+    addSHeader ( "conceptdfacturap", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Concepto descuento" ) );
+    addSHeader ( "proporciondfacturap", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );
+    addSHeader ( "idfacturap", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id factura" ) );
     setinsercion ( TRUE );
     _depura ( "END ListDescuentoFacturaProvView::ListDescuentoFacturaProvView", 0 );
 }

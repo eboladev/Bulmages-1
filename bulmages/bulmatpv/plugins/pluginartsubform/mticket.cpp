@@ -1,11 +1,11 @@
 
 #include <QLabel>
-#include "mticket.h"
-#include "dbrecord.h"
-#include "bulmatpv.h"
-#include "subform2bt.h"
 #include <QTextBrowser>
 
+#include "mticket.h"
+#include "bldb.h"
+#include "bulmatpv.h"
+#include "subform2bt.h"
 
 
 //extern QTextBrowser *g_browser;

@@ -31,7 +31,7 @@
 
 #include "blfixed.h"
 #include "empresabase.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "eqtoolbutton.h"
 #include "funcaux.h"
 

@@ -54,16 +54,16 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Factura Proveedor" ) );
         setDBTableName ( "facturap" );
         setDBCampoId ( "idfacturap" );
-        addDBCampo ( "idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id facturap" ) );
-        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, _( "Id proveedor" ) );
-        addDBCampo ( "numfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero" ) );
-        addDBCampo ( "ffacturap", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha" ) );
-        addDBCampo ( "procesadafacturap", DBCampo::DBboolean, DBCampo::DBNothing, _( "Procesada facturap" ) );
-        addDBCampo ( "comentfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario facturap" ) );
-        addDBCampo ( "reffacturap", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia facturap" ) );
-        addDBCampo ( "descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion facturap" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, _( "Id trabajador" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Id forma de pago" ) );
+        addDBCampo ( "idfacturap", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id facturap" ) );
+        addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
+        addDBCampo ( "numfacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero" ) );
+        addDBCampo ( "ffacturap", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha" ) );
+        addDBCampo ( "procesadafacturap", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesada facturap" ) );
+        addDBCampo ( "comentfacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario facturap" ) );
+        addDBCampo ( "reffacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia facturap" ) );
+        addDBCampo ( "descfacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion facturap" ) );
+        addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Id trabajador" ) );
+        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "FacturaProveedorView_FacturaProveedorView", this );

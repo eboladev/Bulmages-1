@@ -6,7 +6,7 @@
 
 #include "funcaux.h"
 #include "blwidget.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "blfixed.h"
 
 

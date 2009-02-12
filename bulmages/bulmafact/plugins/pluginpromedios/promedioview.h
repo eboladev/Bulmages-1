@@ -21,11 +21,11 @@
 #ifndef PROMEDIOVIEW_H
 #define PROMEDIOVIEW_H
 
-#include <funcaux.h>
+#include "funcaux.h"
 #include "ui_promediobase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 class Company;

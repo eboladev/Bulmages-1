@@ -40,7 +40,7 @@
 /// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref BlSubForm
 /**
 Al crear un subformulario \ref BlSubForm, todos los registros tienen exactamente las mismas cabeceras.
-Esta clase sirve para describir una cabecera. Es analoga a la clase \ref DBCampo pero en lugar de
+Esta clase sirve para describir una cabecera. Es analoga a la clase \ref BlDbField pero en lugar de
 describir un unico registro describe a varios.
 */
 class BlSubFormHeader
@@ -59,15 +59,15 @@ protected:
     QString m_nomcampo;   ///< El nombre de la cabecera en el recordset
     QString m_nompresentacion;  ///< El nombre para mostrar en los errores
     unsigned int m_restricciones; ///< Las restricciones de la columna en el recordset
-    DBCampo::dbtype m_tipo;  ///< El tipo de los datos
+    BlDbField::dbtype m_tipo;  ///< El tipo de los datos
     unsigned int m_options;  ///< Las opciones para la columna en el SubFormulario
 
 public:
-    BlSubFormHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "" );
+    BlSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp = "" );
     ~BlSubFormHeader();
     unsigned int options();
     unsigned int restricciones();
-    DBCampo::dbtype tipo();
+    BlDbField::dbtype tipo();
     QString nompresentacion();
     int restrictcampo();
     QString nomcampo();
@@ -253,7 +253,7 @@ public:
     void setColumnCount ( int i );
     void situarse ( unsigned int, unsigned int );
     void situarse1 ( unsigned int, unsigned int );
-    int addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp );
+    int addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp );
     SDBRecord *newSDBRecord();
     virtual void setColumnValue ( QString, QString );
     QString DBvalue ( const QString &campo, int row = -1 );

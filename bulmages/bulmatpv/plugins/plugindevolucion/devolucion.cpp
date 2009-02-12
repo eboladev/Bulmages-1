@@ -219,7 +219,7 @@ void Devolucion::pintar()
 	html += "<TR bgcolor = \"#CCCCCC\">";
 	html += "<TD>SEL</TD>";
 	for ( int z = 0; z < m_ticket->listaLineas()->at ( 0 )->lista()->size(); ++z ) {
-		DBCampo *head = m_ticket->listaLineas()->at ( 0 )->lista()->at ( z );
+		BlDbField *head = m_ticket->listaLineas()->at ( 0 )->lista()->at ( z );
 		if ( head->nomcampo().left ( 2 ) != "id" && head->nomcampo().left ( 3 ) != "num" )
 			html += "<TD>" + head->nomcampo().left ( 4 ) + "</TD>";
 	} // end for
@@ -232,7 +232,7 @@ void Devolucion::pintar()
 		html += "<TR>";
 		html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">-</A></td>";
 		for ( int j = 0; j < item->lista()->size(); ++j ) {
-		DBCampo *camp = item->lista()->at ( j );
+		BlDbField *camp = item->lista()->at ( j );
 		if ( camp->nomcampo().left ( 2 ) != "id" && camp->nomcampo().left ( 3 ) != "num" )
 			html += "<TD>" + camp->valorcampo() + "</TD>";
 		} // end for
@@ -364,9 +364,9 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
             DBRecord *item = m_ticket->listaLineas() ->at ( i );
             if ( item->DBvalue ( "numlalbaran" ) == anchor.queryItemValue ( "numlalbaran" ) ) {
                 DBRecord *nitem = m_ticket->agregarLinea();
-                QList<DBCampo *> *lista = item->lista();
+                QList<BlDbField *> *lista = item->lista();
                 for ( int j = 0; j < lista->size(); ++j ) {
-                    DBCampo * camp = lista->at ( j );
+                    BlDbField * camp = lista->at ( j );
                     if ( camp->nomcampo() != "numlalbaran" ) {
                         nitem->setDBvalue ( camp->nomcampo(), camp->valorcampo() );
                     } // end if

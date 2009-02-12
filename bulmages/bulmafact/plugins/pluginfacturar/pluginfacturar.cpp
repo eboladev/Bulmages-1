@@ -51,7 +51,7 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
 {
     _depura ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     if ( !l->existsHeader ( "selector" ) ) {
-        l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
+        l->addSHeader ( "selector", BlDbField::DBboolean, BlDbField::DBNoSave | BlDbField::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
     } // end if
     _depura ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     return 0;

@@ -58,18 +58,18 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Factura" ) );
         setDBTableName ( "factura" );
         setDBCampoId ( "idfactura" );
-        addDBCampo ( "idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id factura" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Almacen" ) );
-        addDBCampo ( "numfactura", DBCampo::DBint, DBCampo::DBNothing, _( "Numero factura" ) );
-        addDBCampo ( "ffactura", DBCampo::DBdate, DBCampo::DBNothing, _( "Ffactura" ) );
-        addDBCampo ( "procesadafactura", DBCampo::DBboolean, DBCampo::DBNothing, _( "Procesada factura" ) );
-        addDBCampo ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Serie" ) );
-        addDBCampo ( "comentfactura", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario" ) );
-        addDBCampo ( "reffactura", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
-        addDBCampo ( "descfactura", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, _( "Trabajador" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Forma de pago" ) );
+        addDBCampo ( "idfactura", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id factura" ) );
+        addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
+        addDBCampo ( "numfactura", BlDbField::DBint, BlDbField::DBNothing, _( "Numero factura" ) );
+        addDBCampo ( "ffactura", BlDbField::DBdate, BlDbField::DBNothing, _( "Ffactura" ) );
+        addDBCampo ( "procesadafactura", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesada factura" ) );
+        addDBCampo ( "codigoserie_factura", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Serie" ) );
+        addDBCampo ( "comentfactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario" ) );
+        addDBCampo ( "reffactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+        addDBCampo ( "descfactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
+        addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Trabajador" ) );
+        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Forma de pago" ) );
 
         /// Establecemos algunos Buddies.
         mui_labelAlmacen->setText ( _( "Al&macen" ) );

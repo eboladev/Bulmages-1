@@ -25,7 +25,7 @@
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "subform2bc.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "fichabc.h"
 
 

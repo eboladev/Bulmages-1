@@ -42,7 +42,7 @@
 \param opt Opciones de presentacion
 \param nomp Nombre a presentar en caso necesario para referirse a la columna
 **/
-BlSubFormHeader::BlSubFormHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
+BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp )
 {
     _depura ( "BlSubFormHeader::BlSubFormHeader", 0 );
     m_nomcampo = nom;
@@ -92,7 +92,7 @@ unsigned int BlSubFormHeader::restricciones()
 /**
 \return
 **/
-DBCampo::dbtype BlSubFormHeader::tipo()
+BlDbField::dbtype BlSubFormHeader::tipo()
 {
     _depura ( "BlSubFormHeader::tipo", 0 );
     _depura ( "END BlSubFormHeader::tipo", 0 );
@@ -286,44 +286,44 @@ void BlSubForm::cargaSpecs()
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
-            DBCampo::dbtype type = DBCampo::DBvarchar;
+            BlDbField::dbtype type = BlDbField::DBvarchar;
             QString nomheader = e1.firstChildElement ( "NOMHEADER" ).toElement().text();
             QString nompheader = e1.firstChildElement ( "NOMPHEADER" ).toElement().text();
             QString typeheader = e1.firstChildElement ( "DBTYPEHEADER" ).toElement().text();
             if ( typeheader == "DBVARCHAR" ) {
-                type = DBCampo::DBvarchar;
+                type = BlDbField::DBvarchar;
             } else if ( typeheader == "DBINT" ) {
-                type = DBCampo::DBint;
+                type = BlDbField::DBint;
             } else if ( typeheader == "DBNUMERIC" ) {
-                type = DBCampo::DBnumeric;
+                type = BlDbField::DBnumeric;
             } else if ( typeheader == "DBBOOLEAN" ) {
-                type = DBCampo::DBboolean;
+                type = BlDbField::DBboolean;
             } else if ( typeheader == "DBDATE" ) {
-                type = DBCampo::DBdate;
+                type = BlDbField::DBdate;
             } // end if
 
-            int restricciones = ( int ) DBCampo::DBNothing;
+            int restricciones = ( int ) BlDbField::DBNothing;
             QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSHEADER" );
             while ( !restrict.isNull() ) {
                 QString trestrict = restrict.text();
                 if ( trestrict == "DBNOTHING" ) {
-                    restricciones |= DBCampo::DBvarchar;
+                    restricciones |= BlDbField::DBvarchar;
                 } else if ( trestrict == "DBNOTNULL" ) {
-                    restricciones |= DBCampo::DBNotNull;
+                    restricciones |= BlDbField::DBNotNull;
                 } else if ( trestrict == "DBPRIMARYKEY" ) {
-                    restricciones |= DBCampo::DBPrimaryKey;
+                    restricciones |= BlDbField::DBPrimaryKey;
                 } else if ( trestrict == "DBNOSAVE" ) {
-                    restricciones |= DBCampo::DBNoSave;
+                    restricciones |= BlDbField::DBNoSave;
                 } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= DBCampo::DBAuto;
+                    restricciones |= BlDbField::DBAuto;
                 } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= DBCampo::DBAuto;
+                    restricciones |= BlDbField::DBAuto;
                 } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
-                    restricciones |= DBCampo::DBDupPrimaryKey;
+                    restricciones |= BlDbField::DBDupPrimaryKey;
                 } else if ( trestrict == "DBREQUIRED" ) {
-                    restricciones |= DBCampo::DBRequired;
+                    restricciones |= BlDbField::DBRequired;
                 } else if ( trestrict == "DBNOLOAD" ) {
-                    restricciones |= DBCampo::DBNoLoad;
+                    restricciones |= BlDbField::DBNoLoad;
                 } // end if
                 restrict = restrict.nextSiblingElement ( "RESTRICTIONSHEADER" );
             } // end while
@@ -346,7 +346,7 @@ void BlSubForm::cargaSpecs()
                 opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
             } // end while
 
-            addSHeader ( nomheader, type, ( DBCampo::dbrestrict ) restricciones, ( BlSubFormHeader::dboptions ) opciones, nompheader );
+            addSHeader ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, ( BlSubFormHeader::dboptions ) opciones, nompheader );
         } // end if
     } // end for
 
@@ -872,14 +872,14 @@ SDBRecord *BlSubForm::newSDBRecord()
 
         if ( ! ( head->options() & BlSubFormHeader::DBNoWrite ) )
             flags |= Qt::ItemIsEditable;
-        if ( head->tipo() == DBCampo::DBboolean ) {
+        if ( head->tipo() == BlDbField::DBboolean ) {
             flags |= Qt::ItemIsUserCheckable;
         } // end if
 
         camp->setFlags ( flags );
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
-        if ( head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate ) {
+        if ( head->tipo() == BlDbField::DBint || head->tipo() == BlDbField::DBnumeric || head->tipo() == BlDbField::DBdate ) {
             camp->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         } else {
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
@@ -1503,14 +1503,14 @@ bool BlSubForm::campoCompleto ( int row )
         if ( !camp ) return FALSE;
 
         header = m_lcabecera.at ( i );
-        if ( camp->restrictcampo() & DBCampo::DBNotNull
+        if ( camp->restrictcampo() & BlDbField::DBNotNull
                 && camp->text() == ""
                 && ! ( header->options() & BlSubFormHeader::DBNoView )
-                && camp->tipo() != DBCampo::DBboolean ) {
+                && camp->tipo() != BlDbField::DBboolean ) {
             _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
             return FALSE;
         } // end if
-        if ( camp->restrictcampo() & DBCampo::DBRequired
+        if ( camp->restrictcampo() & BlDbField::DBRequired
                 && camp->text() == "" ) {
             _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
             return FALSE;
@@ -1625,7 +1625,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 \param nomp
 \return
 **/
-int BlSubForm::addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
+int BlSubForm::addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp )
 {
     _depura ( "BlSubForm::addSHeader", 0,  nom );
     BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
@@ -2189,7 +2189,7 @@ QString BlSubForm::imprimir()
             if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 QString restante;
                 SDBCampo *valor = ( SDBCampo * ) mui_list->item ( i, j );
-                if ( valor->tipo() & DBCampo::DBnumeric )
+                if ( valor->tipo() & BlDbField::DBnumeric )
                     fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString ( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
                 else
                     fitxersortidarml += "    <td>" + XMLProtect ( valor->text() ) + "</td>\n";

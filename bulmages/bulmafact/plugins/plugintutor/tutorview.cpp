@@ -48,8 +48,8 @@ TutorView::TutorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Tutor" ) );
         setDBTableName ( "tutor" );
         setDBCampoId ( "idtutor" );
-        addDBCampo ( "idtutor", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID tutor" ) );
-        addDBCampo ( "nombretutor", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre del tutor" ) );
+        addDBCampo ( "idtutor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tutor" ) );
+        addDBCampo ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del tutor" ) );
 
 
 	mui_idprovincia->setEmpresaBase ( empresaBase() );

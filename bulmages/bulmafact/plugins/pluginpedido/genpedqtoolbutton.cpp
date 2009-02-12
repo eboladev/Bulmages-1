@@ -19,9 +19,6 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include "genpedqtoolbutton.h"
-#include "funcaux.h"
-
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
@@ -30,11 +27,15 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+
+#include "genpedqtoolbutton.h"
+#include "funcaux.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
 #include "blfixed.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
+
 
 ///
 /**

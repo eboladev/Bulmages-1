@@ -45,10 +45,10 @@ PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
     /// Preparamos la lista de paises.
     mui_list->setDBTableName ( "pais" );
     mui_list->setDBCampoId ( "idpais" );
-    mui_list->addSHeader ( "idpais", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
-    mui_list->addSHeader ( "descpais", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre Pais" ) );
-    mui_list->addSHeader ( "cod2pais", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 2 Digitos" ) );
-    mui_list->addSHeader ( "cod3pais", DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 3 Digitos" ) );
+    mui_list->addSHeader ( "idpais", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
+    mui_list->addSHeader ( "descpais", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre Pais" ) );
+    mui_list->addSHeader ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 2 Digitos" ) );
+    mui_list->addSHeader ( "cod3pais", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 3 Digitos" ) );
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
@@ -56,9 +56,9 @@ PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
     /// Preparamos la lista de provincias.
     mui_listprovincias->setDBTableName ( "provincia" );
     mui_listprovincias->setDBCampoId ( "idprovincia" );
-    mui_listprovincias->addSHeader ( "idprovincia", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Provincia" ) );
-    mui_listprovincias->addSHeader ( "idpais", DBCampo::DBint, DBCampo::DBNotNull , BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
-    mui_listprovincias->addSHeader ( "provincia", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Provincia" ) );
+    mui_listprovincias->addSHeader ( "idprovincia", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Provincia" ) );
+    mui_listprovincias->addSHeader ( "idpais", BlDbField::DBint, BlDbField::DBNotNull , BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
+    mui_listprovincias->addSHeader ( "provincia", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Provincia" ) );
     mui_listprovincias->setinsercion ( TRUE );
     mui_listprovincias->setDelete ( TRUE );
     mui_listprovincias->setSortingEnabled ( FALSE );
@@ -67,10 +67,10 @@ PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
     setTitleName ( _( "Pais" ) );
     setDBTableName ( "pais" );
     setDBCampoId ( "idpais" );
-    addDBCampo ( "idpais", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "idpais" ) );
-    addDBCampo ( "descpais", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Pais" ) );
-    addDBCampo ( "cod2pais", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo 2 digitos" ) );
-    addDBCampo ( "cod3pais", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo 3 digitos" ) );
+    addDBCampo ( "idpais", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "idpais" ) );
+    addDBCampo ( "descpais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Pais" ) );
+    addDBCampo ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 2 digitos" ) );
+    addDBCampo ( "cod3pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 3 digitos" ) );
 
 
     m_idpais = "0";

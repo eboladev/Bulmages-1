@@ -19,9 +19,6 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include "efqtoolbutton_importar.h"
-#include "facturasplist.h"
-#include "funcaux.h"
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
@@ -31,13 +28,16 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+
+#include "efqtoolbutton_importar.h"
+#include "facturasplist.h"
+#include "funcaux.h"
 #include "facturapview.h"
 #include "blfixed.h"
-
 #include "listlinfacturapview.h"
 #include "company.h"
 #include "listdescfacturaprovview.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 ///

@@ -102,8 +102,8 @@ ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
     setDBTableName ( "tipo_iva" );
     setDBCampoId ( "idtipo_iva" );
-    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id Tipo IVA" ) );
-    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Tipo IVA" ) );
+    addSHeader ( "idtipo_iva", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id Tipo IVA" ) );
+    addSHeader ( "desctipo_iva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Tipo IVA" ) );
     setinsercion ( TRUE );
     _depura ( "END ListTipoIVASubForm::ListTipoIVASubForm", 0 );
 }

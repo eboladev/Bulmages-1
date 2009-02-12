@@ -29,7 +29,7 @@
 #include <QTextStream>
 #include "blfixed.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 ///

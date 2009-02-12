@@ -24,10 +24,11 @@
 #include "ui_qwebcambase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 class Company;
+
 
 class QWebCamView : public QWidget, public Ui_QWebCamBase, public dialogChanges, public DBRecord
 {

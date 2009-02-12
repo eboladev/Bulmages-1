@@ -19,9 +19,9 @@
  ***************************************************************************/
 
 #include <QWidget>
+
 #include "impqtoolbutton.h"
 #include "funcaux.h"
-
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
@@ -30,12 +30,12 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+
 #include "presupuestoview.h"
 #include "blfixed.h"
-
 #include "facturaview.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 ///
 /**

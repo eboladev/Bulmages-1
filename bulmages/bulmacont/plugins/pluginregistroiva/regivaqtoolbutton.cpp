@@ -18,28 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include "regivaqtoolbutton.h"
-#include "funcaux.h"
-
 
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <QFile>
 #include <QTextStream>
-
-
 #include <QString>
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+#include <QWidget>
+
+#include "regivaqtoolbutton.h"
+#include "funcaux.h"
 #include "blfixed.h"
-
-
 #include "asiento1view.h"
 #include "empresa.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "registroivaview.h"
 
 

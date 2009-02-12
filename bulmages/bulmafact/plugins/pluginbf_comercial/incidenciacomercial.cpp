@@ -38,14 +38,14 @@ IncidenciaComercial::IncidenciaComercial ( Company *comp, QWidget *parent ) : Fi
     setTitleName ( _( "Incidencia comercial" ) );
     setDBTableName ( "incidenciacomercial" );
     setDBCampoId ( "idincidenciacomercial" );
-    addDBCampo ( "idincidenciacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador" ) );
-    addDBCampo ( "fechaincidenciacomercial", DBCampo::DBdate, DBCampo::DBNotNull, _( "Fecha" ) );
-    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Familia" ) );
-    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, _( "Trabajador" ) );
-    addDBCampo ( "comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
-    addDBCampo ( "estadoincidenciacomercial", DBCampo::DBint, DBCampo::DBNotNull, _( "Estado" ) );
-    addDBCampo ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Hora" ) );
-    addDBCampo ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
+    addDBCampo ( "idincidenciacomercial", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
+    addDBCampo ( "fechaincidenciacomercial", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
+    addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
+    addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
+    addDBCampo ( "comentincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
+    addDBCampo ( "estadoincidenciacomercial", BlDbField::DBint, BlDbField::DBNotNull, _( "Estado" ) );
+    addDBCampo ( "horaincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Hora" ) );
+    addDBCampo ( "refincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
     _depura ( "END IncidenciaComercial::IncidenciaComercial", 0 );
 
 

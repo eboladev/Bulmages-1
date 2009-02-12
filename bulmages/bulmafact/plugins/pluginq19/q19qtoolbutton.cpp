@@ -18,10 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include "q19qtoolbutton.h"
-#include "funcaux.h"
-
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
@@ -30,11 +26,15 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QList>
+#include <QWidget>
+
+#include "q19qtoolbutton.h"
+#include "funcaux.h"
 #include "blfixed.h"
 #include "cobroslist.h"
 #include "cobroview.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 ///

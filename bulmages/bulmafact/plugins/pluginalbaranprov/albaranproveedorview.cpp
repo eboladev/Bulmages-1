@@ -54,15 +54,15 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Albaran de proveedor" ) );
         setDBTableName ( "albaranp" );
         setDBCampoId ( "idalbaranp" );
-        addDBCampo ( "idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id albaran proveedor" ) );
-        addDBCampo ( "numalbaranp", DBCampo::DBint, DBCampo::DBNothing, _( "Numero albaran proveedor" ) );
-        addDBCampo ( "fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha albaran proveedor" ) );
-        addDBCampo ( "comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario albaran proveedor" ) );
-        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, _( "Id proveedor" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Id forma de pago" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Id almacen" ) );
-        addDBCampo ( "refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia albaran proveedor" ) );
-        addDBCampo ( "descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion albaran proveedor" ) );
+        addDBCampo ( "idalbaranp", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran proveedor" ) );
+        addDBCampo ( "numalbaranp", BlDbField::DBint, BlDbField::DBNothing, _( "Numero albaran proveedor" ) );
+        addDBCampo ( "fechaalbaranp", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha albaran proveedor" ) );
+        addDBCampo ( "comentalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario albaran proveedor" ) );
+        addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
+        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
+        addDBCampo ( "refalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia albaran proveedor" ) );
+        addDBCampo ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion albaran proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranProveedorView_AlbaranProveedorView", this );

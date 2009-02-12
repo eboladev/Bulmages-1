@@ -50,8 +50,8 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
     _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
 
-    trab->addDBCampo ( "passasterisktrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Password." ) );
-    trab->addDBCampo ( "validasiempreasterisktrabajador", DBCampo::DBboolean, DBCampo::DBNothing, _( "Valida siempre." ) );
+    trab->addDBCampo ( "passasterisktrabajador", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Password." ) );
+    trab->addDBCampo ( "validasiempreasterisktrabajador", BlDbField::DBboolean, BlDbField::DBNothing, _( "Valida siempre." ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -96,17 +96,17 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     l->setEmpresaBase ( trab->empresaBase() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
-    l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
-    l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
-    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
-    l->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura manyanas" ) );
-    l->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre manyanas" ) );
-    l->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura tardes" ) );
-    l->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre tardes" ) );
-    l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Audicion" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id almacen" ) );
-    l->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id validacion" ) );
-    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id trabajador" ) );
+    l->addSHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
+    l->addSHeader ( "horavalasterisk", BlDbField::DBvarchar, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
+    l->addSHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
+    l->addSHeader ( "aperturaalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura manyanas" ) );
+    l->addSHeader ( "cierrealmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre manyanas" ) );
+    l->addSHeader ( "apertura1almacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura tardes" ) );
+    l->addSHeader ( "cierre1almacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre tardes" ) );
+    l->addSHeader ( "archvalasterisk", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Audicion" ) );
+    l->addSHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id almacen" ) );
+    l->addSHeader ( "idvalasterisk", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id validacion" ) );
+    l->addSHeader ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -125,7 +125,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "AlmacenView_AlmacenView", 0 );
 
-    alm->addDBCampo ( "extasteriskalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Extension." ) );
+    alm->addDBCampo ( "extasteriskalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Extension." ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -159,14 +159,14 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     l->setEmpresaBase ( alm->empresaBase() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
-    l->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
-    l->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
-    l->addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Trabajador" ) );
-    l->addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Apellidos" ) );
-    l->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite, _( "Audicion" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id almacen" ) );
-    l->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id validacion" ) );
-    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id trabajador" ) );
+    l->addSHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
+    l->addSHeader ( "horavalasterisk", BlDbField::DBvarchar, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
+    l->addSHeader ( "nomtrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Trabajador" ) );
+    l->addSHeader ( "apellidostrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Apellidos" ) );
+    l->addSHeader ( "archvalasterisk", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Audicion" ) );
+    l->addSHeader ( "idalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id almacen" ) );
+    l->addSHeader ( "idvalasterisk", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id validacion" ) );
+    l->addSHeader ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

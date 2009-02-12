@@ -68,21 +68,21 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
 
         mui_listvalidaciones->setDBTableName ( "valasterisk" );
         mui_listvalidaciones->setDBCampoId ( "idvalasterisk" );
-        mui_listvalidaciones->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
-        mui_listvalidaciones->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
-        mui_listvalidaciones->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
-        mui_listvalidaciones->addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
-        mui_listvalidaciones->addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
+        mui_listvalidaciones->addSHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
+        mui_listvalidaciones->addSHeader ( "horavalasterisk", BlDbField::DBvarchar, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
+        mui_listvalidaciones->addSHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
+        mui_listvalidaciones->addSHeader ( "nomtrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
+        mui_listvalidaciones->addSHeader ( "apellidostrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
 
         /*
-            mui_listvalidaciones->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura Manyanas" ) );
-            mui_listvalidaciones->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre Manyanas" ) );
-            mui_listvalidaciones->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura Tardes" ) );
-            mui_listvalidaciones->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre Tardes" ) );
-            mui_listvalidaciones->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Audicion" ) );
-            mui_listvalidaciones->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id Almacen" ) );
-            mui_listvalidaciones->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Validacion" ) );
-            mui_listvalidaciones->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Trabajador" ) );
+            mui_listvalidaciones->addSHeader ( "aperturaalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura Manyanas" ) );
+            mui_listvalidaciones->addSHeader ( "cierrealmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre Manyanas" ) );
+            mui_listvalidaciones->addSHeader ( "apertura1almacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Apertura Tardes" ) );
+            mui_listvalidaciones->addSHeader ( "cierre1almacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "Cierre Tardes" ) );
+            mui_listvalidaciones->addSHeader ( "archvalasterisk", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Audicion" ) );
+            mui_listvalidaciones->addSHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id Almacen" ) );
+            mui_listvalidaciones->addSHeader ( "idvalasterisk", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Validacion" ) );
+            mui_listvalidaciones->addSHeader ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Trabajador" ) );
         */
         mui_listvalidaciones->setinsercion ( FALSE );
         mui_listvalidaciones->setDelete ( FALSE );

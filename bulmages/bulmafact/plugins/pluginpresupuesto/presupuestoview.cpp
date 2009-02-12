@@ -57,20 +57,20 @@ PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Presupuesto" ) );
         setDBTableName ( "presupuesto" );
         setDBCampoId ( "idpresupuesto" );
-        addDBCampo ( "idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID presupuesto" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Almacen" ) );
-        addDBCampo ( "numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, _( "Numero de presupuesto" ) );
-        addDBCampo ( "fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de creacion" ) );
-        addDBCampo ( "vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de vencimiento" ) );
-        addDBCampo ( "contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Persona de contacto" ) );
-        addDBCampo ( "telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Numero de telefono" ) );
-        addDBCampo ( "comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios" ) );
-        addDBCampo ( "procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, _( "Procesado" ) );
-        addDBCampo ( "descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, _( "% Descuento" ) );
-        addDBCampo ( "refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNotNull, _( "Forma de pago" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, _( "Trabajador" ) );
+        addDBCampo ( "idpresupuesto", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID presupuesto" ) );
+        addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
+        addDBCampo ( "numpresupuesto", BlDbField::DBint, BlDbField::DBNothing, _( "Numero de presupuesto" ) );
+        addDBCampo ( "fpresupuesto", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de creacion" ) );
+        addDBCampo ( "vencpresupuesto", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
+        addDBCampo ( "contactpresupuesto", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Persona de contacto" ) );
+        addDBCampo ( "telpresupuesto", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero de telefono" ) );
+        addDBCampo ( "comentpresupuesto", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
+        addDBCampo ( "procesadopresupuesto", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesado" ) );
+        addDBCampo ( "descpresupuesto", BlDbField::DBvarchar, BlDbField::DBNothing, _( "% Descuento" ) );
+        addDBCampo ( "refpresupuesto", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNotNull, _( "Forma de pago" ) );
+        addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Trabajador" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PresupuestoView_PresupuestoView", this );

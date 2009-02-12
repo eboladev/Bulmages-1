@@ -41,22 +41,22 @@ VehiculoView::VehiculoView ( Company *emp, QWidget *parent )
     setTitleName ( _( "Vehiculo" ) );
     setDBTableName ( "vehiculo" );
     setDBCampoId ( "idvehiculo" );
-    addDBCampo ( "idvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "idvehiculo" ) );
-    addDBCampo ( "matriculavehiculo", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "matriculavehiculo" ) );
-    addDBCampo ( "marcavehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "marcavehiculo" ) );
-    addDBCampo ( "modelovehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "modelovehiculo" ) );
-    addDBCampo ( "bastidorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "bastidorvehiculo" ) );
-    addDBCampo ( "colorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, _( "colorvehiculo" ) );
-    addDBCampo ( "fechacompravehiculo", DBCampo::DBdate, DBCampo::DBNothing, _( "fechavehiculo" ) );
-    addDBCampo ( "preciovehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "preciovehiculo" ) );
+    addDBCampo ( "idvehiculo", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "idvehiculo" ) );
+    addDBCampo ( "matriculavehiculo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "matriculavehiculo" ) );
+    addDBCampo ( "marcavehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "marcavehiculo" ) );
+    addDBCampo ( "modelovehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "modelovehiculo" ) );
+    addDBCampo ( "bastidorvehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "bastidorvehiculo" ) );
+    addDBCampo ( "colorvehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "colorvehiculo" ) );
+    addDBCampo ( "fechacompravehiculo", BlDbField::DBdate, BlDbField::DBNothing, _( "fechavehiculo" ) );
+    addDBCampo ( "preciovehiculo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "preciovehiculo" ) );
 
     /// Inicializamos el listado.
     mui_listadomantvehiculo->setDBTableName ( "mantvehiculo" );
     mui_listadomantvehiculo->setDBCampoId ( "idmantvehiculo" );
-    mui_listadomantvehiculo->addSHeader ( "idmantvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idmantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "fechamantvehiculo", DBCampo::DBdate, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "fechamantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "preciomantvehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone, _( "preciomantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "idvehiculo", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "idmantvehiculo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idmantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "fechamantvehiculo", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "fechamantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "preciomantvehiculo", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "preciomantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "idvehiculo", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idvehiculo" ) );
     mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones

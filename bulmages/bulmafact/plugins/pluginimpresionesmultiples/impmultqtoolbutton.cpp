@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QWidget>
-
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>
@@ -41,7 +40,7 @@
 #include "facturaview.h"
 #include "cobroview.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "impmultqtoolbutton.h"
 
 

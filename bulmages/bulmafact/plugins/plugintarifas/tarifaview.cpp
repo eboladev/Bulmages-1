@@ -47,8 +47,8 @@ TarifaView::TarifaView ( Company *comp, QWidget *parent )
     setTitleName ( _( "Tarifa" ) );
     setDBTableName ( "tarifa" );
     setDBCampoId ( "idtarifa" );
-    addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID tarifa" ) );
-    addDBCampo ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Nombre de la tarifa" ) );
+    addDBCampo ( "idtarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tarifa" ) );
+    addDBCampo ( "nomtarifa", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre de la tarifa" ) );
     ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de 
     ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setEmpresaBase ( comp );

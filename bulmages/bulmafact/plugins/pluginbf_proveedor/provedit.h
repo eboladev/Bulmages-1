@@ -23,7 +23,7 @@
 #define PROVEDIT_H
 
 #include "ui_proveditbase.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "fichabf.h"
 
 

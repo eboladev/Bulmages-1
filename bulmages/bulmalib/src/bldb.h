@@ -40,7 +40,7 @@ Tambien prepara el campo para ser almacenado en la base de datos aunque el guard
 clase \ref DBRecord
 \todo Esta clase deberia derivar de \ref PEmpresaBase
 */
-class DBCampo
+class BlDbField
 {
 public:
     /**
@@ -77,8 +77,8 @@ private:
 
 
 public:
-    DBCampo ( BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
-    virtual ~DBCampo();
+    BlDbField ( BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    virtual ~BlDbField();
     bool cambiado();
     void resetCambio();
     BlPostgreSqlClient *conexionbase();
@@ -106,7 +106,7 @@ y almacenado del mismo.
 class DBRecord
 {
 protected:
-    QList<DBCampo *> m_lista; ///< Lista de campos que conforman la tabla de la BD
+    QList<BlDbField *> m_lista; ///< Lista de campos que conforman la tabla de la BD
     EmpresaBase *m_conexionbase; ///< Puntero a la base de datos con la que se opera
     QString m_tablename; ///< Nombre de la tabla por defecto que se utiliza
     QString m_campoid; ///< Nombre del campo identificador en la tabla
@@ -128,9 +128,9 @@ public:
     QString tableName();
     QString campoId();
     void setDBCampoId ( QString nom );
-    int addDBCampo ( QString, DBCampo::dbtype, int, QString );
+    int addDBCampo ( QString, BlDbField::dbtype, int, QString );
     void DBclear();
-    QList<DBCampo *> *lista();
+    QList<BlDbField *> *lista();
     virtual int borrar();
     virtual int guardar();
     virtual void vaciar();

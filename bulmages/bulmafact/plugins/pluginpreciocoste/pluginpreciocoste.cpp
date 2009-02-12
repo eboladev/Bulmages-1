@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
 #include "pluginpreciocoste.h"
@@ -49,9 +50,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDBCampo ( "preciocostearticulo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Precio Coste" ) );
-    trab->addDBCampo ( "margenarticulo", DBCampo::DBnumeric, DBCampo::DBNothing, _( "Margen" ) );
-    trab->addDBCampo ( "actualizarmargenarticulo", DBCampo::DBboolean, DBCampo::DBNothing, _( "Actualizar PVP" ) );
+    trab->addDBCampo ( "preciocostearticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio Coste" ) );
+    trab->addDBCampo ( "margenarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Margen" ) );
+    trab->addDBCampo ( "actualizarmargenarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Actualizar PVP" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -205,9 +206,9 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
 
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSHeader ( "preciocostearticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "P Coste" ) );
-    artl->addSHeader ( "margenarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "Margen" ) );
-    artl->addSHeader ( "actualizarmargenarticulo", DBCampo::DBboolean, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "Actualizar Margen" ) );
+    artl->addSHeader ( "preciocostearticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "P Coste" ) );
+    artl->addSHeader ( "margenarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "Margen" ) );
+    artl->addSHeader ( "actualizarmargenarticulo", BlDbField::DBboolean, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "Actualizar Margen" ) );
 }
 
 

@@ -38,9 +38,9 @@ Inventario::Inventario ( Company *comp, QWidget *parent ) : FichaBf ( comp, pare
     setTitleName ( _( "Inventario" ) );
     setDBTableName ( "inventario" );
     setDBCampoId ( "idinventario" );
-    addDBCampo ( "idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Identificador inventario" ) );
-    addDBCampo ( "fechainventario", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha inventario" ) );
-    addDBCampo ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Nombre inventario" ) );
+    addDBCampo ( "idinventario", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador inventario" ) );
+    addDBCampo ( "fechainventario", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha inventario" ) );
+    addDBCampo ( "nominventario", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre inventario" ) );
     _depura ( "END Inventario::Inventario", 0 );
 }
 

@@ -69,20 +69,20 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Albaran" ) );
         setDBTableName ( "albaran" );
         setDBCampoId ( "idalbaran" );
-        addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id albaran" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, _( "Almacen" ) );
-        addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, _( "Numero de albaran" ) );
-        addDBCampo ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de creacion" ) );
-        addDBCampo ( "contactalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Persona de contacto" ) );
-        addDBCampo ( "telalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Telefono de contacto" ) );
-        addDBCampo ( "comentalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario" ) );
-        addDBCampo ( "comentprivalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentario privado" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, _( "Forma de pago" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, _( "Trabajador" ) );
-        addDBCampo ( "procesadoalbaran", DBCampo::DBboolean, DBCampo::DBNothing, _( "Procesado" ) );
-        addDBCampo ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion" ) );
-        addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
+        addDBCampo ( "idalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran" ) );
+        addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
+        addDBCampo ( "numalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "Numero de albaran" ) );
+        addDBCampo ( "fechaalbaran", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de creacion" ) );
+        addDBCampo ( "contactalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Persona de contacto" ) );
+        addDBCampo ( "telalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono de contacto" ) );
+        addDBCampo ( "comentalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario" ) );
+        addDBCampo ( "comentprivalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario privado" ) );
+        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Forma de pago" ) );
+        addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Trabajador" ) );
+        addDBCampo ( "procesadoalbaran", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesado" ) );
+        addDBCampo ( "descalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
+        addDBCampo ( "refalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView", this );

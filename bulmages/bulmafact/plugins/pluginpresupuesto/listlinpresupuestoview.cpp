@@ -43,18 +43,18 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : SubForm2Bf 
     if ( res != 0 ) {
         return;
     } // end if
-    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "Id articulo" ) );
-    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo" ) );
-    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre del articulo" ) );
-    addSHeader ( "idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "No de linea" ) );
-    addSHeader ( "desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion" ) );
-    addSHeader ( "cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
-    addSHeader ( "pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Precio de venta s/IVA" ) );
-    addSHeader ( "ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "% I.V.A." ) );
-    addSHeader ( "reqeqlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone, _( "% Recargo E.Q." ) );
-    addSHeader ( "descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );
-    addSHeader ( "idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id presupuesto" ) );
-    addSHeader ( "ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "Orden" ) );
+    addSHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo" ) );
+    addSHeader ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre del articulo" ) );
+    addSHeader ( "idlpresupuesto", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "No de linea" ) );
+    addSHeader ( "desclpresupuesto", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion" ) );
+    addSHeader ( "cantlpresupuesto", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
+    addSHeader ( "pvplpresupuesto", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Precio de venta s/IVA" ) );
+    addSHeader ( "ivalpresupuesto", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% I.V.A." ) );
+    addSHeader ( "reqeqlpresupuesto", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "% Recargo E.Q." ) );
+    addSHeader ( "descuentolpresupuesto", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );
+    addSHeader ( "idpresupuesto", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id presupuesto" ) );
+    addSHeader ( "ordenlpresupuesto", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Orden" ) );
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );

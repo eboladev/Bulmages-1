@@ -58,15 +58,15 @@ CobroView::CobroView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Cobro" ) );
         setDBTableName ( "cobro" );
         setDBCampoId ( "idcobro" );
-        addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id cobro" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, _( "Cliente" ) );
-        addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, _( "Prevision" ) );
-        addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha del cobro" ) );
-        addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha de vencimiento" ) );
-        addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Referencia" ) );
-        addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, _( "Total cobro" ) );
-        addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Descripcion del cobro" ) );
-        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, _( "Banco" ) );
+        addDBCampo ( "idcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id cobro" ) );
+        addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+        addDBCampo ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNothing, _( "Prevision" ) );
+        addDBCampo ( "fechacobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha del cobro" ) );
+        addDBCampo ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
+        addDBCampo ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+        addDBCampo ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total cobro" ) );
+        addDBCampo ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion del cobro" ) );
+        addDBCampo ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Banco" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

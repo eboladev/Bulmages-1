@@ -1,11 +1,14 @@
+#include <QWidget>
+
+#include <vector>
 #include "devolucion2.h"
 #include "blfixed.h"
-#include <QWidget>
-#include <vector>
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
+
 
 Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -457,9 +460,9 @@ void Devolucion::on_mui_efectivoButton_clicked()
             int numlinea = QString ( mui_devolverTable->item ( i, 4 )->text() ).toInt();
             DBRecord *item = m_ticket->listaLineas() ->at ( numlinea );
             DBRecord *nitem = m_ticket->agregarLinea();
-            QList<DBCampo *> *lista = item->lista();
+            QList<BlDbField *> *lista = item->lista();
             for ( int j = 0; j < lista->size(); ++j ) {
-                DBCampo * camp = lista->at ( j );
+                BlDbField * camp = lista->at ( j );
                 if ( camp->nomcampo() != "numlalbaran" ) {
                     nitem->setDBvalue ( camp->nomcampo(), camp->valorcampo() );
                 }

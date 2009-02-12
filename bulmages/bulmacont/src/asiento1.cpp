@@ -42,12 +42,12 @@ Asiento1::Asiento1 ( Empresa *comp, QWidget *parent ) : FichaBc ( comp, parent )
     setTitleName ( _( "Asiento Contable" ) );
     setDBTableName ( "asiento" );
     setDBCampoId ( "idasiento" );
-    addDBCampo ( "idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "Id asiento" ) );
-    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, _( "Descripcion del asiento" ) );
-    addDBCampo ( "fecha", DBCampo::DBdate, DBCampo::DBNothing, _( "Fecha del asiento" ) );
-    addDBCampo ( "comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Comentarios del asiento" ) );
-    addDBCampo ( "ordenasiento", DBCampo::DBint, DBCampo::DBNothing, _( "Orden de asiento" ) );
-    addDBCampo ( "clase", DBCampo::DBint, DBCampo::DBNothing, _( "Tipo de asiento" ) );
+    addDBCampo ( "idasiento", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id asiento" ) );
+    addDBCampo ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Descripcion del asiento" ) );
+    addDBCampo ( "fecha", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha del asiento" ) );
+    addDBCampo ( "comentariosasiento", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios del asiento" ) );
+    addDBCampo ( "ordenasiento", BlDbField::DBint, BlDbField::DBNothing, _( "Orden de asiento" ) );
+    addDBCampo ( "clase", BlDbField::DBint, BlDbField::DBNothing, _( "Tipo de asiento" ) );
     listalineas = NULL;
     _depura ( "END Asiento1::Asiento1", 0 );
 }

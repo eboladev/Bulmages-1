@@ -95,7 +95,7 @@ void SDBRecord::refresh()
 \param nomp Nombre a mostrar en caso de error
 \return
 **/
-int SDBRecord::addDBCampo ( QString nom, DBCampo::dbtype typ, int res, QString nomp )
+int SDBRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp )
 {
     _depura ( "SDBRecord::addDBCampo", 0 );
     SDBCampo *camp = new SDBCampo ( this, m_conexionbase, nom, typ, res, nomp );
@@ -116,7 +116,7 @@ int SDBRecord::addDBCampo ( QString nom, DBCampo::dbtype typ, int res, QString n
 \param nomp el nombre a presentar en caso de error.
 **/
 SDBCampo::SDBCampo ( SDBRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
-        : QTableWidgetItem2(), DBCampo ( com, nom, typ, res, nomp )
+        : QTableWidgetItem2(), BlDbField ( com, nom, typ, res, nomp )
 {
     _depura ( "SDBCampo::SDBCampo", 0 );
     m_pare = par;
@@ -141,10 +141,10 @@ Tiene especial intereses con los campos checkables ya que su tratamiento no es d
 void SDBCampo::refresh()
 {
     _depura ( "SDBCampo::refresh", 0 );
-    if ( this->tipo() == DBCampo::DBboolean )
-        DBCampo::set ( checkState() == Qt::Checked ? "TRUE" : "FALSE" );
+    if ( this->tipo() == BlDbField::DBboolean )
+        BlDbField::set ( checkState() == Qt::Checked ? "TRUE" : "FALSE" );
     else
-        DBCampo::set ( text() );
+        BlDbField::set ( text() );
     // end if
     _depura ( "END SDBCampo::refresh", 0 );
 }
@@ -160,9 +160,9 @@ para la presentacion de valores corregidos a un estandar.
 int SDBCampo::set ( QString val )
 {
     _depura ( "SDBCampo::set", 0, nomcampo() + " = " + val );
-    DBCampo::set ( val );
+    BlDbField::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
-    if ( tipo() == DBCampo::DBboolean ) {
+    if ( tipo() == BlDbField::DBboolean ) {
         if ( restrictcampo() == BlSubFormHeader::DBNoWrite ) {
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
@@ -171,9 +171,9 @@ int SDBCampo::set ( QString val )
         } else {
             setCheckState ( Qt::Unchecked );
         } // end if
-    } else if ( tipo() == DBCampo::DBnumeric && importe.exactMatch ( val ) ) {
+    } else if ( tipo() == BlDbField::DBnumeric && importe.exactMatch ( val ) ) {
         setText ( valorcampo() );
-    } else if ( tipo() == DBCampo::DBdate ) {
+    } else if ( tipo() == BlDbField::DBdate ) {
         setText ( val.left ( 10 ) );
     } else {
         setText ( valorcampo() );
@@ -197,14 +197,14 @@ bool SDBCampo::operator< ( const QTableWidgetItem &other )
     if ( tip == this->tipo() ) {
         QString val = ot->valorcampo();
 
-        if ( this->tipo() == DBCampo::DBnumeric || this->tipo() == DBCampo::DBint ) {
+        if ( this->tipo() == BlDbField::DBnumeric || this->tipo() == BlDbField::DBint ) {
             _depura ( "SDBCampo::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
             double db1 = this->valorcampo().toDouble();
             double db2 = val.toDouble();
             return ( db1 < db2 );
         } // end if
 
-        if ( this->tipo() == DBCampo::DBdate ) {
+        if ( this->tipo() == BlDbField::DBdate ) {
             _depura ( "SDBCampo::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
             QDate fech = normalizafecha ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
@@ -213,7 +213,7 @@ bool SDBCampo::operator< ( const QTableWidgetItem &other )
             return ( db1 < db2 );
         } // end if
 
-        if ( this->tipo() == DBCampo::DBvarchar ) {
+        if ( this->tipo() == BlDbField::DBvarchar ) {
             _depura ( "SDBCampo::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
             return ( this->valorcampo() < val );
         } // end if

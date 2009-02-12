@@ -24,7 +24,7 @@
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "ui_vehiculobase.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "fichabf.h"
 
 

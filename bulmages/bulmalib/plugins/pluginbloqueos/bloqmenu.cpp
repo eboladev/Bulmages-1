@@ -32,7 +32,7 @@
 
 #include "blfixed.h"
 #include "empresabase.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "bloqmenu.h"
 #include "funcaux.h"
 

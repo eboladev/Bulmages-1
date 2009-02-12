@@ -25,8 +25,9 @@
 
 #include "blfixed.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "bldb.h"
 #include "fichabf.h"
+
 
 /// Administra los datos de una contrato a cliente.
 /** Intermedia entre la base de datos y la pantalla de presentacion.

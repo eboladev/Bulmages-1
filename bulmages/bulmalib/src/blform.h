@@ -29,7 +29,7 @@
 #include "funcaux.h"
 #include "empresabase.h"
 #include "blwidget.h"
-#include "dbrecord.h"
+#include "bldb.h"
 
 
 class BlForm : public BlWidget, public DBRecord, public dialogChanges

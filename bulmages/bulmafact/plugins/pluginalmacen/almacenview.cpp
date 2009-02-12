@@ -54,19 +54,19 @@ AlmacenView::AlmacenView ( Company *comp, QWidget *parent )
         setTitleName ( _( "Almacen" ) );
         setDBTableName ( "almacen" );
         setDBCampoId ( "idalmacen" );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, _( "ID almacen" ) );
-        addDBCampo ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, _( "Codigo almacen" ) );
-        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull  , _( "Nombre almacen" ) );
-        addDBCampo ( "diralmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Direccion almacen" ) );
-        addDBCampo ( "poblalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Poblacion almacen" ) );
-        addDBCampo ( "cpalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Codigo postal" ) );
-        addDBCampo ( "telalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Telefono almacen" ) );
-        addDBCampo ( "faxalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Fax almacen" ) );
-        addDBCampo ( "emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "email almacen" ) );
-        addDBCampo ( "fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, _( "Fecha almacen" ) );
+        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID almacen" ) );
+        addDBCampo ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Codigo almacen" ) );
+        addDBCampo ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull  , _( "Nombre almacen" ) );
+        addDBCampo ( "diralmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion almacen" ) );
+        addDBCampo ( "poblalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Poblacion almacen" ) );
+        addDBCampo ( "cpalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo postal" ) );
+        addDBCampo ( "telalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono almacen" ) );
+        addDBCampo ( "faxalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Fax almacen" ) );
+        addDBCampo ( "emailalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "email almacen" ) );
+        addDBCampo ( "fechaalmacen", BlDbField::DBdate, BlDbField::DBNoSave, _( "Fecha almacen" ) );
 
 
-        addDBCampo ( "tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, _( "Tipo almacen" ) );
+        addDBCampo ( "tipoalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Tipo almacen" ) );
         mui_tipoalmacen_t->setValorCampo ( "Tienda" );
         mui_tipoalmacen_a->setValorCampo ( "Almacen" );
 

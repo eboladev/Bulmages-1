@@ -30,14 +30,14 @@ void Iva::definetabla()
     _depura ( "Iva::definetabla", 0 );
     setDBTableName ( "iva" );
     setDBCampoId ( "idiva" );
-    addDBCampo ( "idiva", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador" );
-    addDBCampo ( "idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, "Id tipo IVA" );
-    addDBCampo ( "idregistroiva", DBCampo::DBint, DBCampo::DBNotNull, "Id registro IVA" );
-    addDBCampo ( "baseiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Cantidad" );
-    addDBCampo ( "ivaiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Precio linea presupuesto" );
-    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, "Id. cuenta" );
-    addDBCampo ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo" );
-    addDBCampo ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre tipo IVA" );
+    addDBCampo ( "idiva", BlDbField::DBint, BlDbField::DBPrimaryKey, "Identificador" );
+    addDBCampo ( "idtipoiva", BlDbField::DBint, BlDbField::DBNotNull, "Id tipo IVA" );
+    addDBCampo ( "idregistroiva", BlDbField::DBint, BlDbField::DBNotNull, "Id registro IVA" );
+    addDBCampo ( "baseiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Cantidad" );
+    addDBCampo ( "ivaiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Precio linea presupuesto" );
+    addDBCampo ( "idcuenta", BlDbField::DBint, BlDbField::DBNoSave, "Id. cuenta" );
+    addDBCampo ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, "Codigo" );
+    addDBCampo ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNoSave, "Nombre tipo IVA" );
     _depura ( "END Iva::definetabla", 0 );
 }
 

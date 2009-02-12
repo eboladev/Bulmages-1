@@ -31,7 +31,7 @@ typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
 {
-    item->addDBCampo ( "pvpivainclalbaran", DBCampo::DBint, DBCampo::DBNothing, _( "IVA inc." ) );
+    item->addDBCampo ( "pvpivainclalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "IVA inc." ) );
     return 0;
 }
 
@@ -649,7 +649,7 @@ int EmpresaTPV_x(EmpresaTPV *emp)
 }
 
 int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
-	list->addSHeader ( "pvpivaincarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "PVP Iva Inc." );
+	list->addSHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "PVP Iva Inc." );
 	return 0;
 }
 

@@ -44,11 +44,11 @@ AmortizacionesView::AmortizacionesView ( Empresa *emp, QWidget *parent )
     mui_listado->setDBTableName ( "amortizacion" );
     mui_listado->setFileConfig ( "AmortizacionListSubform" );
     mui_listado->setDBCampoId ( "idamortizacion" );
-    mui_listado->addSHeader ( "idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id amortizacion" ) );
-    mui_listado->addSHeader ( "nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
-    mui_listado->addSHeader ( "fechacompra", DBCampo::DBdate, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha compra" ) );
-    mui_listado->addSHeader ( "fecha1cuota", DBCampo::DBdate, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha 1 cuota" ) );
-    mui_listado->addSHeader ( "numcuotas", DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Num cuotas" ) );
+    mui_listado->addSHeader ( "idamortizacion", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id amortizacion" ) );
+    mui_listado->addSHeader ( "nomamortizacion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    mui_listado->addSHeader ( "fechacompra", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha compra" ) );
+    mui_listado->addSHeader ( "fecha1cuota", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha 1 cuota" ) );
+    mui_listado->addSHeader ( "numcuotas", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Num cuotas" ) );
     mui_listado->setinsercion ( FALSE );
     presentar();
 

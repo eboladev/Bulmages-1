@@ -131,50 +131,50 @@ void BlForm::cargaSpecs()
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
-            DBCampo::dbtype type = DBCampo::DBvarchar;
+            BlDbField::dbtype type = BlDbField::DBvarchar;
             QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
             if ( exists ( nomheader ) ) return;
             QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
             QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
             if ( typeheader == "DBVARCHAR" ) {
-                type = DBCampo::DBvarchar;
+                type = BlDbField::DBvarchar;
             } else if ( typeheader == "DBINT" ) {
-                type = DBCampo::DBint;
+                type = BlDbField::DBint;
             } else if ( typeheader == "DBNUMERIC" ) {
-                type = DBCampo::DBnumeric;
+                type = BlDbField::DBnumeric;
             } else if ( typeheader == "DBBOOLEAN" ) {
-                type = DBCampo::DBboolean;
+                type = BlDbField::DBboolean;
             } else if ( typeheader == "DBDATE" ) {
-                type = DBCampo::DBdate;
+                type = BlDbField::DBdate;
             } // end if
 
-            int restricciones = ( int ) DBCampo::DBNothing;
+            int restricciones = ( int ) BlDbField::DBNothing;
             QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
             while ( !restrict.isNull() ) {
                 QString trestrict = restrict.text();
                 if ( trestrict == "DBNOTHING" ) {
-                    restricciones |= DBCampo::DBvarchar;
+                    restricciones |= BlDbField::DBvarchar;
                 } else if ( trestrict == "DBNOTNULL" ) {
-                    restricciones |= DBCampo::DBNotNull;
+                    restricciones |= BlDbField::DBNotNull;
                 } else if ( trestrict == "DBPRIMARYKEY" ) {
-                    restricciones |= DBCampo::DBPrimaryKey;
+                    restricciones |= BlDbField::DBPrimaryKey;
                 } else if ( trestrict == "DBNOSAVE" ) {
-                    restricciones |= DBCampo::DBNoSave;
+                    restricciones |= BlDbField::DBNoSave;
                 } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= DBCampo::DBAuto;
+                    restricciones |= BlDbField::DBAuto;
                 } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= DBCampo::DBAuto;
+                    restricciones |= BlDbField::DBAuto;
                 } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
-                    restricciones |= DBCampo::DBDupPrimaryKey;
+                    restricciones |= BlDbField::DBDupPrimaryKey;
                 } else if ( trestrict == "DBREQUIRED" ) {
-                    restricciones |= DBCampo::DBRequired;
+                    restricciones |= BlDbField::DBRequired;
                 } else if ( trestrict == "DBNOLOAD" ) {
-                    restricciones |= DBCampo::DBNoLoad;
+                    restricciones |= BlDbField::DBNoLoad;
                 } // end if
                 restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
             } // end while
 
-            addDBCampo ( nomheader, type, ( DBCampo::dbrestrict ) restricciones, nompheader );
+            addDBCampo ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, nompheader );
             generaCampo ( nomheader, nompheader, typeheader );
         } // end if
     } // end for
@@ -522,7 +522,7 @@ void BlForm::setTitleName ( QString nom )
 void BlForm::pintar()
 {
     _depura ( "BlForm::pintar", 0 );
-    DBCampo *campo;
+    BlDbField *campo;
     /// Recorremos todos los campos definidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
@@ -583,7 +583,7 @@ void BlForm::pintar()
 void BlForm::recogeValores()
 {
     _depura ( "BlForm::recogeValores", 0 );
-    DBCampo *campo;
+    BlDbField *campo;
     /// Recorremos todos los campos definidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
@@ -882,7 +882,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
 				QLineEdit * item = it2.next();
 				QString nombre = item->objectName().right(item->objectName().size()-4);
 				QString valor = item->text();
-				addDBCampo ( nombre, DBCampo::DBvarchar, DBCampo::DBNoSave, nombre  );
+				addDBCampo ( nombre, BlDbField::DBvarchar, BlDbField::DBNoSave, nombre  );
 				setDBvalue ( nombre, valor );
 			} // end while
 		} // end if
