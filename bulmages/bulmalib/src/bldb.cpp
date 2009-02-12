@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "dbrecord.h"
-#include "funcaux.h"
-#include "plugins.h"
-
 #include <QFile>
 #include <QTextStream>
 #include <QLocale>
 #include <QDebug>
-
 #include <QTextCodec>
 #include <QXmlStreamReader>
+
+#include "bldb.h"
+#include "funcaux.h"
+#include "plugins.h"
+
 
 ///
 /**

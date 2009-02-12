@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef DBRECORD_H
-#define DBRECORD_H
+#ifndef BLDB_H
+#define BLDB_H
 
 #include <QString>
 #include <QList>

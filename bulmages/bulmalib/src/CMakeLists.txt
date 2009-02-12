@@ -45,7 +45,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			pgimportfiles.cpp
 			plugins.cpp
 			busquedaperiodo.cpp
-			dbrecord.cpp
+			bldb.cpp
 			subform.cpp
 			blsubform.cpp
 			listventanas.cpp
@@ -101,7 +101,7 @@ set (bulmalib_HDRS	abreempresaview.h
 			busquedafecha.h
 			busquedaperiodo.h
 			blconfiguration.h
-			dbrecord.h
+			bldb.h
 			dialogchanges.h
 			empresabase.h
 			blform.h
@@ -131,7 +131,7 @@ set (bulmalib_HDRS	abreempresaview.h
 #			blfixed.h 
 #			pgimportfiles.h 
 #			plugins.h 
-#			dbrecord.h 
+#			bldb.h 
 #			subform.h 
 #			empresabase.h 
 #			blmainwindow.h
