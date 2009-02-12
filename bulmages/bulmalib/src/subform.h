@@ -30,42 +30,6 @@
 #include "dbrecord.h"
 
 
-/// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref BlSubForm
-/**
-Al crear un subformulario \ref BlSubForm, todos los registros tienen exactamente las mismas cabeceras.
-Esta clase sirve para describir una cabecera. Es analoga a la clase \ref DBCampo pero en lugar de
-describir un unico registro describe a varios.
-*/
-class SHeader
-{
-public:
-    /** Opciones para la columna del SubFormulario
-    - DBNone . Opciones por defecto.
-    - DBReadOnly . La columna es de solo lectura.
-    - DBNoView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
-    - DBNoWrite . El usuario no puede escribir en esta columna.
-    - DBBlockView . El usuario no podrá ver esta columna ni aun configurandola
-    */
-    enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4, DBBlockView = 8};
-
-protected:
-    QString m_nomcampo;   ///< El nombre de la cabecera en el recordset
-    QString m_nompresentacion;  ///< El nombre para mostrar en los errores
-    unsigned int m_restricciones; ///< Las restricciones de la columna en el recordset
-    DBCampo::dbtype m_tipo;  ///< El tipo de los datos
-    unsigned int m_options;  ///< Las opciones para la columna en el SubFormulario
-
-public:
-    SHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "" );
-    ~SHeader();
-    unsigned int options();
-    unsigned int restricciones();
-    DBCampo::dbtype tipo();
-    QString nompresentacion();
-    int restrictcampo();
-    QString nomcampo();
-};
-
 /// Registro de \ref BlSubForm subformulario
 /**
    Maneja un registro de un subformulario de tal forma que permite el trabajo mediante tablas de los registros.

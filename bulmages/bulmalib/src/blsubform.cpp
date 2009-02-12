@@ -34,6 +34,109 @@
 #include "blprogressbar.h"
 
 
+/// Construye una columna de la descripcion del recordset
+/**
+\param nom Nombre de la columna
+\param typ Tipo de los datos que alberga
+\param res Restricciones de la columna
+\param opt Opciones de presentacion
+\param nomp Nombre a presentar en caso necesario para referirse a la columna
+**/
+SHeader::SHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
+{
+    _depura ( "SHeader::SHeader", 0 );
+    m_nomcampo = nom;
+    m_tipo = typ;
+    m_restricciones = res;
+    m_options = opt;
+    m_nompresentacion = nomp;
+    _depura ( "END SHeader::SHeader", 0 );
+}
+
+
+///
+/**
+**/
+SHeader::~SHeader()
+{
+    _depura ( "SHeader::~SHeader", 0 );
+    _depura ( "END SHeader::~SHeader", 0 );
+}
+
+
+///
+/**
+\return
+**/
+unsigned int SHeader::options()
+{
+    _depura ( "SHeader::options", 0 );
+    _depura ( "END SHeader::options", 0 );
+    return m_options;
+}
+
+
+///
+/**
+\return
+**/
+unsigned int SHeader::restricciones()
+{
+    _depura ( "SHeader::restricciones", 0 );
+    _depura ( "END SHeader::restricciones", 0 );
+    return m_restricciones;
+}
+
+
+///
+/**
+\return
+**/
+DBCampo::dbtype SHeader::tipo()
+{
+    _depura ( "SHeader::tipo", 0 );
+    _depura ( "END SHeader::tipo", 0 );
+    return m_tipo;
+
+}
+
+
+///
+/**
+\return
+**/
+QString SHeader::nompresentacion()
+{
+    _depura ( "SHeader::nompresentacion", 0 );
+    _depura ( "END SHeader::nompresentacion", 0 );
+    return m_nompresentacion;
+}
+
+
+///
+/**
+\return
+**/
+int SHeader::restrictcampo()
+{
+    _depura ( "SHeader::restrictcampo", 0 );
+    _depura ( "END SHeader::restrictcampo", 0 );
+    return m_restricciones;
+}
+
+
+///
+/**
+\return
+**/
+QString SHeader::nomcampo()
+{
+    _depura ( "SHeader::nomcampo", 0 );
+    _depura ( "END SHeader::nomcampo", 0 );
+    return m_nomcampo;
+}
+
+
 /// BlSubForm, constructor de la clase base para subformularios.
 /**
 \param parent
