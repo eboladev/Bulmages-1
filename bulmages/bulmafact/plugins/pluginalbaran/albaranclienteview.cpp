@@ -520,7 +520,7 @@ void AlbaranClienteView::on_subform2_editFinish ( int, int )
     Tambi&eacute;n borra todas las lineas y las lineas de descuento que se refieren
     a el albaran que se pretende borrar.
 */
-/// \todo: Este metodo deberia poderse delegar en DBRecord, o por lo menos la parte del borrado del registro.
+/// \todo: Este metodo deberia poderse delegar en BlDbRecord, o por lo menos la parte del borrado del registro.
 /// \todo: Hace falta meter el metodo dentro del sistema de excepciones try catch.
 /**
 \return

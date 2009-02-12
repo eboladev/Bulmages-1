@@ -215,7 +215,7 @@ void FacturaProveedorView::on_mui_idproveedor_valueChanged ( QString id )
 /** Hace el borrado de la factura.
     Primero borra las lineas de factura.
     Luego borra los descuentos de factura.
-    Y por ultimo delega en DBRecord el borrado del registro.
+    Y por ultimo delega en BlDbRecord el borrado del registro.
     Si algo falla devuelve -1.
     Si todo va bien devuelve 0.
 */
@@ -234,7 +234,7 @@ int FacturaProveedorView::borrarPre()
 
 
 /** Carga un FacturaProveedor.
-    Carga el DBRecord con DBload y luego llama a la carga de las lineas y los descuentos.
+    Carga el BlDbRecord con DBload y luego llama a la carga de las lineas y los descuentos.
     Al finalizar hace un pintado para que la informacion se vea actualizada.
     Si algo falla genera una excepcion -1.
     Si todo va bien devuelve 0.
@@ -258,7 +258,7 @@ int FacturaProveedorView::cargarPost ( QString idfacturap )
 }
 
 /** Hace el guardado de una Factura de Proveedor.
-    guarda el registro a traves de DBRecord y luego actualiza el identificador de facturap en
+    guarda el registro a traves de BlDbRecord y luego actualiza el identificador de facturap en
     las lineas y en los descuentos para guardarlos.
     Si algo falla genera una excepcion -1.
     Si todo va bien devuelve 0.

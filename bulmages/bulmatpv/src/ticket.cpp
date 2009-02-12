@@ -34,7 +34,7 @@
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ), DBRecord ( emp )
+Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
 {
     _depura ( "Ticket::Ticket", 0 );
     /// Inicializamos los parametros del ticket para la base de datos.
@@ -61,7 +61,7 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ),
     setDBvalue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
 
     m_lineaActual = NULL;
-    m_listaLineas = new QList<DBRecord *>;
+    m_listaLineas = new QList<BlDbRecord *>;
 
     g_plugins->lanza ( "Ticket_Ticket_Post", this );
 
@@ -74,12 +74,12 @@ Ticket::~Ticket()
     _depura ( "END Ticket::~Ticket", 0 );
 }
 
-DBRecord * Ticket::agregarLinea()
+BlDbRecord * Ticket::agregarLinea()
 {
     _depura ( "Ticket::agregarLinea", 0 );
 
-    /// Creamos un nuevo DBRecord y lo inicializamos.
-    DBRecord * item = new DBRecord ( empresaBase() );
+    /// Creamos un nuevo BlDbRecord y lo inicializamos.
+    BlDbRecord * item = new BlDbRecord ( empresaBase() );
     item->setDBTableName ( "lalbaran" );
     item->setDBCampoId ( "numlalbaran" );
     item->addDBCampo ( "idalbaran", BlDbField::DBint, BlDbField::DBNotNull, _( "Id Albaran" ) );
@@ -98,7 +98,7 @@ DBRecord * Ticket::agregarLinea()
 
 
     item->setDBvalue ( "descuentolalbaran", "0" );
-    /// Agregamos el DBRecord a la lista de lineas de ticket.
+    /// Agregamos el BlDbRecord a la lista de lineas de ticket.
     m_listaLineas->append ( item );
 
 
@@ -120,18 +120,18 @@ void Ticket::pintar()
     _depura ( "END Ticket::pintar", 0 );
 }
 
-QList<DBRecord *> *Ticket::listaLineas()
+QList<BlDbRecord *> *Ticket::listaLineas()
 {
     return m_listaLineas;
 }
 
 
-DBRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
+BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
     _depura ( "Ticket::insertarArticulo", 0 );
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;
-    DBRecord *item;
+    BlDbRecord *item;
 
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         item = listaLineas() ->at ( i );
@@ -183,7 +183,7 @@ DBRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool 
 }
 
 
-void  Ticket::borrarArticulo ( DBRecord *linea, BlFixed cantidad )
+void  Ticket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
 {
     /// Comprueba que haya un articulo seleccionado.
     if ( m_lineaActual == NULL ) {
@@ -198,31 +198,31 @@ void  Ticket::borrarArticulo ( DBRecord *linea, BlFixed cantidad )
 void  Ticket::vaciarTicket()
 {}
 
-void  Ticket::subirPosArticulo ( DBRecord *linea, int filas )
+void  Ticket::subirPosArticulo ( BlDbRecord *linea, int filas )
 {}
 
-void  Ticket::bajarPosArticulo ( DBRecord *linea, int filas )
+void  Ticket::bajarPosArticulo ( BlDbRecord *linea, int filas )
 {}
 
-void  Ticket::inicioPosTicket ( DBRecord * )
+void  Ticket::inicioPosTicket ( BlDbRecord * )
 {}
 
-void  Ticket::finPosTicket ( DBRecord * )
+void  Ticket::finPosTicket ( BlDbRecord * )
 {}
 
 
-DBRecord * Ticket::lineaTicket ( int posicion )
+BlDbRecord * Ticket::lineaTicket ( int posicion )
 {
     return NULL;
 }
 
 
-DBRecord *Ticket::lineaActTicket()
+BlDbRecord *Ticket::lineaActTicket()
 {
     return m_lineaActual;
 }
 
-void Ticket::setLineaActual ( DBRecord *rec )
+void Ticket::setLineaActual ( BlDbRecord *rec )
 {
     m_lineaActual = rec;
 }
@@ -368,7 +368,7 @@ void  Ticket::imprimir()
         delete cur;
     } // end if
 
-    DBRecord *linea;
+    BlDbRecord *linea;
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         linea = listaLineas() ->at ( i );
@@ -669,7 +669,7 @@ void Ticket::imprimir()
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
 
-    DBRecord *linea;
+    BlDbRecord *linea;
     if ( listaLineas() ->size() )
         total.iva = BlFixed ( listaLineas()->at ( 0 )->DBvalue ( "ivalalbaran" ) );
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
@@ -913,7 +913,7 @@ int Ticket::cargar ( QString id )
         } // end if
         cur = empresaBase() ->cargacursor ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
         while ( !cur->eof() ) {
-            DBRecord *l = agregarLinea();
+            BlDbRecord *l = agregarLinea();
             l->DBload ( cur );
             cur->siguienteregistro();
         } // end while
@@ -946,7 +946,7 @@ int Ticket::guardar()
         QString id;
         empresaBase() ->begin();
         DBsave ( id );
-        DBRecord *item;
+        BlDbRecord *item;
         for ( int i = 0; i < listaLineas() ->size(); ++i ) {
             QString id1;
             item = listaLineas() ->at ( i );
@@ -973,7 +973,7 @@ int Ticket::guardar()
 }
 
 
-void Ticket::borrarLinea ( DBRecord* linea )
+void Ticket::borrarLinea ( BlDbRecord *linea )
 {
     if ( linea == NULL )
         return;

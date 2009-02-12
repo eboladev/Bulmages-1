@@ -57,7 +57,7 @@ FichaCfg::FichaCfg ( EmpresaBase *emp, BlForm *parent, Qt::WFlags f ) : BlWidget
     } // end while
     delete cur;
 
-    /// Miramos los temas de DBRecord.
+    /// Miramos los temas de BlDbRecord.
     mui_formtablename->setText ( m_BlForm->tableName() );
     mui_formcampoindice->setText ( m_BlForm->campoId() );
 

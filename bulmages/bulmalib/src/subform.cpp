@@ -34,7 +34,7 @@ Mantiene un contador de elementos creados para depurar la liberacion de memoria.
 \param con Empresa con la que va a trabajar
 \todo Se debe eliminar el contador una vez testeado el consumo de memoria
 **/
-SDBRecord::SDBRecord ( EmpresaBase *con ) : DBRecord ( con )
+SDBRecord::SDBRecord ( EmpresaBase *con ) : BlDbRecord ( con )
 {
     _depura ( "SDBRecord::SDBRecord", 0 );
     static int creaciones = 0;
@@ -67,7 +67,7 @@ int SDBRecord::DBsave ( QString &id )
     _depura ( "SDBRecord::DBsave", 0 );
     refresh();
     _depura ( "END SDBRecord::DBsave", 0 );
-    return DBRecord::DBsave ( id );
+    return BlDbRecord::DBsave ( id );
 }
 
 

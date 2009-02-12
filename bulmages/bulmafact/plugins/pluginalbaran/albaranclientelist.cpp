@@ -303,7 +303,7 @@ void AlbaranClienteList::borrar()
 }
 
 
-/** La impresion de listados es estandarizada por la clase DBRecord
+/** La impresion de listados es estandarizada por la clase BlDbRecord
 */
 void AlbaranClienteList::imprimir()
 {

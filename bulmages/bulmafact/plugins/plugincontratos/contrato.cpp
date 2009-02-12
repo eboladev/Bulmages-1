@@ -27,7 +27,7 @@
 #include "plugins.h"
 
 
-/** PReparamos la clase DBRecord para funcionar con la tabla contrato.
+/** PReparamos la clase BlDbRecord para funcionar con la tabla contrato.
 */
 /**
 \param comp
@@ -82,7 +82,7 @@ int Contrato::borrar()
             empresaBase() ->rollback();
             return -1;
         } // end if
-        error = DBRecord::borrar();
+        error = BlDbRecord::borrar();
         if ( error ) {
             empresaBase() ->rollback();
             return -1;
@@ -94,7 +94,7 @@ int Contrato::borrar()
 }
 
 
-/** Vacia la memoria que pudiera tener DBRecord
+/** Vacia la memoria que pudiera tener BlDbRecord
 */
 /**
 **/
@@ -131,8 +131,8 @@ void Contrato::pintar()
 
 /// Esta funcion carga un contrato.
 /** Carga una contrato.
-    Crea el query de carga y delega el llenodo de registros a DBRecord.
-    Una vez cargado DBRecord hace una llamada a la carga de lineas y descuentos.
+    Crea el query de carga y delega el llenodo de registros a BlDbRecord.
+    Una vez cargado BlDbRecord hace una llamada a la carga de lineas y descuentos.
     Tras el cargado se hace un pintado para que se vea bien todo.
     Si todo va bien devuelve 0.
 */

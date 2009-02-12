@@ -33,9 +33,9 @@
 /// Registro de \ref BlSubForm subformulario
 /**
    Maneja un registro de un subformulario de tal forma que permite el trabajo mediante tablas de los registros.
-   Es muy similar a la clase \ref DBRecord pero reimplementa el guardado
+   Es muy similar a la clase \ref BlDbRecord pero reimplementa el guardado
 */
-class SDBRecord: public DBRecord
+class SDBRecord: public BlDbRecord
 {
 public:
     SDBRecord ( EmpresaBase *con );
@@ -48,7 +48,7 @@ public:
 
 /// Descripcion de campos en \ref BlSubForm subformularios.
 /**
-Junta la información de campo (Base de Datos) con  un QTableWidgetItem.
+Junta la informacion de campo (Base de Datos) con  un QTableWidgetItem.
 De esta forma los elementos adscritos a una talba y a un recordset son los mismos.
 */
 class SDBCampo: public QTableWidgetItem2, public BlDbField

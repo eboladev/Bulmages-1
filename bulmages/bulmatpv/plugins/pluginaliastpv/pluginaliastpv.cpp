@@ -27,8 +27,7 @@
 #include "empresatpv.h"
 
 
-
-int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
+int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 {
 
     mensajeInfo ( "hola" );

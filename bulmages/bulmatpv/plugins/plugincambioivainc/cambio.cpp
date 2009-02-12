@@ -1,10 +1,13 @@
+#include <QWidget>
+
 #include "cambio.h"
 #include "blfixed.h"
-#include <QWidget>
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
+
 
 Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -13,7 +16,7 @@ Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
     m_value = 0;
     base basesimp;
     base basesimpreqeq;
-    DBRecord *linea;
+    BlDbRecord *linea;
 
     Ticket *tick = emp->ticketActual();
 

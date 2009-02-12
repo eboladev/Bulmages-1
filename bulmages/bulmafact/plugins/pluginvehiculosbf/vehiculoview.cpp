@@ -92,7 +92,7 @@ int VehiculoView::guardar()
         setDBvalue ( "preciovehiculo", mui_preciovehiculo->text() );
 
         QString id = "";
-        DBRecord::DBsave ( id );
+        BlDbRecord::DBsave ( id );
         mui_listadomantvehiculo->setColumnValue ( "idvehiculo", id );
         mui_listadomantvehiculo->guardar();
         dialogChanges_cargaInicial();
@@ -114,7 +114,7 @@ int VehiculoView::cargar ( QString idvehiculo )
 {
     _depura ( "VehiculoView::cargar", 0 );
     try {
-        DBRecord::cargar ( idvehiculo );
+        BlDbRecord::cargar ( idvehiculo );
 
         // Se pinta.
         mui_matriculavehiculo->setText ( DBvalue ( "matriculavehiculo" ) );

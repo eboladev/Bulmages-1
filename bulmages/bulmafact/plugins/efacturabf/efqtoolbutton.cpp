@@ -204,12 +204,12 @@ void EFQToolButton::exporta_factura_ubl()
     bool error_idtrabajador = false;
 
     if ( m_factura->DBvalue ( "idfactura" ).isEmpty() ) {
-        _depura ( "ERROR: El campo idfactura del DBRecord esta vacio.", 2 );
+        _depura ( "ERROR: El campo idfactura del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
     if ( m_factura->DBvalue ( "idcliente" ).isEmpty() ) {
-        _depura ( "ERROR: El campo idcliente del DBRecord esta vacio.", 2 );
+        _depura ( "ERROR: El campo idcliente del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
@@ -221,7 +221,7 @@ void EFQToolButton::exporta_factura_ubl()
     }
 
     if ( m_factura->DBvalue ( "idforma_pago" ).isEmpty() ) {
-        _depura ( "ERROR: El campo idforma_pago del DBRecord esta vacio.", 2 );
+        _depura ( "ERROR: El campo idforma_pago del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
@@ -239,7 +239,7 @@ void EFQToolButton::exporta_factura_ubl()
         exit ( -1 );
     }
 
-    // Datos de la factura que no estan en el DBRecord
+    // Datos de la factura que no estan en el BlDbRecord
     query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
     cursor2 *factura_totales = empresaBase() ->cargacursor ( query );
 

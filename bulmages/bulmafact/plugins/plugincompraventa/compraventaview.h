@@ -51,7 +51,7 @@ class CompraVentaView : public FichaBf, public Ui_CompraVentaBase
     Q_OBJECT
 
 public:
-    DBRecord *m_albaranp;
+    BlDbRecord *m_albaranp;
     virtual int borrarPre();
     virtual int cargarPost ( QString );
     CompraVentaView ( Company *, QWidget * );

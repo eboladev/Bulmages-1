@@ -29,7 +29,7 @@
 
 typedef QMap<QString, BlFixed> base;
 
-int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
+int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 {
     item->addDBCampo ( "pvpivainclalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "IVA inc." ) );
     return 0;
@@ -162,7 +162,7 @@ int Ticket_imprimir(Ticket *tick)
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
 
-    DBRecord *linea;
+    BlDbRecord *linea;
     base totales;
 
     /// Inicializamos los componentes.

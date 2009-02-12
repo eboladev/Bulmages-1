@@ -29,9 +29,9 @@
 #include "ticket.h"
 #include "mticket.h"
 
+
 //extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int Ticket_insertarArticuloNL_Post ( Ticket * );
 extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( Ticket * );
-
-extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( Ticket *, DBRecord * & );
+extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( Ticket *, BlDbRecord * & );
 extern "C" MY_EXPORT int MTicket_pintar ( MTicket * );

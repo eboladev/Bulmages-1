@@ -232,7 +232,7 @@ int AlbaranProveedorView::borrarPre()
 
 
 /// Esta funcion carga un AlbaranProveedor.
-/// Hace el query adecuado, carga el registro a traves de DBRecord.
+/// Hace el query adecuado, carga el registro a traves de BlDbRecord.
 /// Hace la carga de las lineas y de los descuentos.
 /// Invoca al pintado.
 /**
@@ -256,7 +256,7 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
 
 
 /** Guarda el albaran de proveedor en la base de datos.
-    Para ello hace el guardado de DBRecord y luego guarda las lineas y los descuentos.
+    Para ello hace el guardado de BlDbRecord y luego guarda las lineas y los descuentos.
     Una vez hecho el guardado se hace una carga para recuperar posibles datos que haya
     introducido la base de datos como la referencia.
 

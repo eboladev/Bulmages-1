@@ -30,7 +30,7 @@
 class Company;
 
 
-class QWebCamView : public QWidget, public Ui_QWebCamBase, public dialogChanges, public DBRecord
+class QWebCamView : public QWidget, public Ui_QWebCamBase, public dialogChanges, public BlDbRecord
 {
     Q_OBJECT
 

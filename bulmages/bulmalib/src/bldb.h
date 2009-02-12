@@ -33,11 +33,11 @@
 /// Manejo de campos de un registro de la base de datos
 /**
 Describe el comportamiento programado de un campo de registro de base de datos.
-Se usa en conjunción con DBRecord y suele ser invocada mediante el metodo \ref addDBCampo de esta.
+Se usa en conjunción con BlDbRecord y suele ser invocada mediante el metodo \ref addDBCampo de esta.
 Almacena toda la informacion relativa a un campo de un registro de base de datos, nombre, valor y
 comportamiento.
 Tambien prepara el campo para ser almacenado en la base de datos aunque el guardado real lo hace la
-clase \ref DBRecord
+clase \ref BlDbRecord
 \todo Esta clase deberia derivar de \ref PEmpresaBase
 */
 class BlDbField
@@ -103,7 +103,7 @@ El uso normal de esta clase es la carga de un registro, modificacion de sus camp
 y almacenado del mismo.
 \todo Esta clase deberia derivar de \ref PEmpresaBase
 */
-class DBRecord
+class BlDbRecord
 {
 protected:
     QList<BlDbField *> m_lista; ///< Lista de campos que conforman la tabla de la BD
@@ -113,8 +113,8 @@ protected:
     bool m_nuevoCampo; ///< Indicador sobre si es un nuevo registro o un registro modificado
 
 public:
-    DBRecord ( EmpresaBase * );
-    virtual ~DBRecord();
+    BlDbRecord ( EmpresaBase * );
+    virtual ~BlDbRecord();
     void setconexionbase ( EmpresaBase *comp );
     EmpresaBase *conexionbase();
     int DBload ( cursor2 * );

@@ -46,7 +46,7 @@ void Iva::definetabla()
 /**
 \param comp
 **/
-Iva::Iva ( Empresa *comp ) : DBRecord ( comp )
+Iva::Iva ( Empresa *comp ) : BlDbRecord ( comp )
 {
     _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
@@ -60,7 +60,7 @@ Iva::Iva ( Empresa *comp ) : DBRecord ( comp )
 \param comp
 \param idiva
 **/
-Iva::Iva ( Empresa *comp, QString idiva ) : DBRecord ( comp )
+Iva::Iva ( Empresa *comp, QString idiva ) : BlDbRecord ( comp )
 {
     _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
@@ -81,7 +81,7 @@ Iva::Iva ( Empresa *comp, QString idiva ) : DBRecord ( comp )
 \param comp
 \param cur
 **/
-Iva::Iva ( Empresa *comp, cursor2 *cur ) : DBRecord ( comp )
+Iva::Iva ( Empresa *comp, cursor2 *cur ) : BlDbRecord ( comp )
 {
     _depura ( "Iva::Iva", 0 );
     m_companyact = comp;

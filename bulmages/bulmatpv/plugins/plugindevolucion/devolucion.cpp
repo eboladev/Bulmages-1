@@ -1,11 +1,14 @@
+#include <QWidget>
+
 #include "devolucion.h"
 #include "blfixed.h"
-#include <QWidget>
 #include "escprinter.h"
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
+
 
 Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -225,7 +228,7 @@ void Devolucion::pintar()
 	} // end for
 	html += "</TR>";
 	
-	DBRecord *item;
+	BlDbRecord *item;
 	for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
 		item = m_ticket->listaLineas() ->at ( i );
 	
@@ -246,7 +249,7 @@ void Devolucion::pintar()
     html += "<BR><HR><BR>";
     base basesimp;
     base basesimpreqeq;
-    DBRecord *linea;
+    BlDbRecord *linea;
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );
@@ -361,9 +364,9 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
         if ( m_ticket->DBvalue ( "idalbaran" ).isEmpty() ) return;
         int sizein = m_ticket->listaLineas()->size();
         for ( int i = 0; i < sizein; ++i ) {
-            DBRecord *item = m_ticket->listaLineas() ->at ( i );
+            BlDbRecord *item = m_ticket->listaLineas() ->at ( i );
             if ( item->DBvalue ( "numlalbaran" ) == anchor.queryItemValue ( "numlalbaran" ) ) {
-                DBRecord *nitem = m_ticket->agregarLinea();
+                BlDbRecord *nitem = m_ticket->agregarLinea();
                 QList<BlDbField *> *lista = item->lista();
                 for ( int j = 0; j < lista->size(); ++j ) {
                     BlDbField * camp = lista->at ( j );

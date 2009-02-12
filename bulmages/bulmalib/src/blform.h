@@ -32,7 +32,7 @@
 #include "bldb.h"
 
 
-class BlForm : public BlWidget, public DBRecord, public dialogChanges
+class BlForm : public BlWidget, public BlDbRecord, public dialogChanges
 {
     Q_OBJECT
 

@@ -32,7 +32,7 @@
 \param parent
 **/
 PromedioView::PromedioView ( Company *comp, QWidget *parent )
-        : QWidget ( parent ) , dialogChanges ( this ), DBRecord ( comp )
+        : QWidget ( parent ) , dialogChanges ( this ), BlDbRecord ( comp )
 {
     _depura ( "PromedioView::PromedioView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

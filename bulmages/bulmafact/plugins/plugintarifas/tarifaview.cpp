@@ -153,7 +153,7 @@ int TarifaView::cargar ( QString idtarifa )
     mui_borrar->setEnabled(TRUE);
 
     setDBvalue ( "idtarifa", m_idtarifa );
-    DBRecord::cargar ( m_idtarifa );
+    BlDbRecord::cargar ( m_idtarifa );
     mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
     setWindowTitle ( _( "Tarifa" ) + " " + DBvalue ( "nomtarifa" ) );
@@ -191,7 +191,7 @@ int TarifaView::guardar()
     } // end if
 
     setDBvalue ( "nomtarifa", mui_nomtarifa->text() );
-    DBRecord::guardar();
+    BlDbRecord::guardar();
     /// Guardamos la lista de componentes.
     mui_list->setColumnValue ( "idtarifa", DBvalue ( "idtarifa" ) );
     mui_list->guardar();

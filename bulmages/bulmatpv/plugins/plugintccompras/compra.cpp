@@ -1,11 +1,15 @@
+#include <QWidget>
+
+#include <vector>
+
 #include "compra.h"
 #include "blfixed.h"
-#include <QWidget>
-#include <vector>
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
+
 
 Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -19,7 +23,7 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
         m_value = 0;
         base basesimp;
         base basesimpreqeq;
-        DBRecord *linea;
+        BlDbRecord *linea;
 
         Ticket *tick = emp->ticketActual();
 

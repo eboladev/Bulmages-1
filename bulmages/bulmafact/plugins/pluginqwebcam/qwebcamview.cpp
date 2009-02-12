@@ -32,7 +32,7 @@
 \param parent
 **/
 QWebCamView::QWebCamView ( Company *comp, QWidget *parent )
-        : QWidget ( parent ) , dialogChanges ( this ), DBRecord ( comp )
+        : QWidget ( parent ) , dialogChanges ( this ), BlDbRecord ( comp )
 {
     _depura ( "QWebCamView::QWebCamView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

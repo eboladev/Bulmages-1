@@ -30,7 +30,7 @@
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &rec )
+int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &rec )
 {
     rec->addDBCampo ( "idtc_talla", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Talla" ) );
     rec->addDBCampo ( "idtc_color", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Color" ) );
@@ -45,7 +45,7 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
     QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
     cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
-        DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
+        BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
         rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
         rec->setDBvalue ( "idtc_color", cur->valor ( "idtc_color" ) );
         rec->setDBvalue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
@@ -69,7 +69,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
         cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
+            BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
             rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
             rec->setDBvalue ( "idtc_color", cur->valor ( "idtc_color" ) );
             rec->setDBvalue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
@@ -106,7 +106,7 @@ int MTicket_pintar ( MTicket *mtick )
     delete cur1;
 
     html += "<TABLE border=\"0\">";
-    DBRecord *item;
+    BlDbRecord *item;
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
@@ -129,7 +129,7 @@ int MTicket_pintar ( MTicket *mtick )
     html += "<BR><HR><BR>";
     base basesimp;
     base basesimpreqeq;
-    DBRecord *linea;
+    BlDbRecord *linea;
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );

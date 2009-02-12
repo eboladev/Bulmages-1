@@ -20,7 +20,7 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
         m_value = 0;
         base basesimp;
         base basesimpreqeq;
-        DBRecord *linea;
+        BlDbRecord *linea;
 
         Ticket *tick = emp->ticketActual();
 
@@ -144,7 +144,7 @@ struct lineastr {
 
 void Devolucion::pintar()
 {
-    DBRecord *item;
+    BlDbRecord *item;
 
     std::vector<lineastr> lineasPositivas;
     std::vector<lineastr> lineasNegativas;
@@ -458,8 +458,8 @@ void Devolucion::on_mui_efectivoButton_clicked()
     if ( ret == QMessageBox::Ok ) {
         for ( int i = 0; i < mui_devolverTable->rowCount();i++ ) {
             int numlinea = QString ( mui_devolverTable->item ( i, 4 )->text() ).toInt();
-            DBRecord *item = m_ticket->listaLineas() ->at ( numlinea );
-            DBRecord *nitem = m_ticket->agregarLinea();
+            BlDbRecord *item = m_ticket->listaLineas() ->at ( numlinea );
+            BlDbRecord *nitem = m_ticket->agregarLinea();
             QList<BlDbField *> *lista = item->lista();
             for ( int j = 0; j < lista->size(); ++j ) {
                 BlDbField * camp = lista->at ( j );
@@ -492,7 +492,7 @@ void Devolucion::refreshDevolver()
 {
     base basesimp;
     base basesimpreqeq;
-    DBRecord *linea;
+    BlDbRecord *linea;
     BlFixed irpf ( "0" );
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < mui_devolverTable->rowCount(); ++i ) {

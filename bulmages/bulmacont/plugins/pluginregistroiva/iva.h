@@ -27,7 +27,7 @@
 class Empresa;
 
 
-class Iva : public DBRecord
+class Iva : public BlDbRecord
 {
 private:
     Empresa *m_companyact;

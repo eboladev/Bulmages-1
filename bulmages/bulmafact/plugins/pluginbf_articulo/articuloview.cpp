@@ -120,7 +120,7 @@ ArticuloView::~ArticuloView()
 }
 
 
-/** Se encarga de presentar la ventana con los datos cargados en la clase DBRecord.
+/** Se encarga de presentar la ventana con los datos cargados en la clase BlDbRecord.
     Tambien cambia el titulo de la ventana para que contenga la informacion correcta.
 */
 /**

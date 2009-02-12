@@ -138,7 +138,7 @@ int AmortizacionView::guardar()
         setDBvalue ( "agrupacion", agrupacion->text() );
 
         QString id = "";
-        DBRecord::DBsave ( id );
+        BlDbRecord::DBsave ( id );
 
         /// Guardamos las lineas de amortizacion.
         mui_listcuotas->setColumnValue ( "idamortizacion", id );
@@ -164,7 +164,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
     _depura ( "AmortizacionView::cargar", 0, idamortizacion );
     try {
         m_idamortizacion = idamortizacion;
-        DBRecord::cargar ( m_idamortizacion );
+        BlDbRecord::cargar ( m_idamortizacion );
 
         mui_listcuotas->setinsercion ( TRUE );
 

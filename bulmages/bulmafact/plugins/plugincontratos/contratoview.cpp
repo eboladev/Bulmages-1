@@ -130,7 +130,7 @@ int ContratoView::cargar ( QString id )
 
 
 /** Guardado de la ficha en la base de datos.
-    Utiliza los metodos setXXX para establecer los valores de la Ficha en el DBRecord
+    Utiliza los metodos setXXX para establecer los valores de la Ficha en el BlDbRecord
     y luego llama a \ref Contrato::guardar() para el guardado en la base de datos.
 */
 /// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el

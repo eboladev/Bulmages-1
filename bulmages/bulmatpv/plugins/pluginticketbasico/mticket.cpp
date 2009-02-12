@@ -7,6 +7,7 @@
 #include "bulmatpv.h"
 #include "subform2bt.h"
 
+
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
@@ -56,7 +57,7 @@ void MTicket::pintar()
     delete cur1;
 
     html += "<TABLE border=\"0\">";
-    DBRecord *item;
+    BlDbRecord *item;
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
@@ -75,7 +76,7 @@ void MTicket::pintar()
     html += "<BR><HR><BR>";
     base basesimp;
     base basesimpreqeq;
-    DBRecord *linea;
+    BlDbRecord *linea;
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );

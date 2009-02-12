@@ -93,7 +93,7 @@ int Ticket_pintar ( Ticket *tick )
 
     base basesimp;
     base basesimpreqeq;
-    DBRecord *linea;
+    BlDbRecord *linea;
 
     EmpresaTPV *emp = ( EmpresaTPV * ) tick->empresaBase();
 

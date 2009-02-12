@@ -31,7 +31,7 @@
 class Company;
 
 
-class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public DBRecord
+class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public BlDbRecord
 {
     Q_OBJECT
 

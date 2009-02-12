@@ -43,7 +43,7 @@
 \param f
 \param modo
 **/
-BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), DBRecord ( NULL ), dialogChanges ( this )
+BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), BlDbRecord ( NULL ), dialogChanges ( this )
 {
     _depura ( "BlForm::BlForm", 0 );
 
@@ -69,7 +69,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
 \param f
 \param modo
 **/
-BlForm::BlForm ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), DBRecord ( emp ), dialogChanges ( this )
+BlForm::BlForm ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), dialogChanges ( this )
 {
     _depura ( "BlForm::BlForm", 0 );
 
@@ -488,7 +488,7 @@ void BlForm::procesaMenu ( QAction * )
 void BlForm::setDBTableName ( QString nom )
 {
     _depura ( "BlForm::setDBTableName", 0 );
-    DBRecord::setDBTableName ( nom );
+    BlDbRecord::setDBTableName ( nom );
 
     if (empresaBase() != NULL) {
 	if ( !empresaBase() ->has_table_privilege ( nom, "INSERT" ) ) {
@@ -574,7 +574,7 @@ void BlForm::pintar()
 
 
 /** Recoge de forma automatica los valores que tienen los QLineEdit y los pone en la
-    estructura de DBRecord.
+    estructura de BlDbRecord.
     Para que funcionen bien los QLineEdit deben tener como nombre el mismo campo que
     el correspondiente en la base de datos precedidos de mui_
 */
@@ -647,7 +647,7 @@ int BlForm::cargar ( QString id )
 {
     _depura ( "BlForm::cargar", 0, id );
     try {
-        if ( DBRecord::cargar ( id ) ) {
+        if ( BlDbRecord::cargar ( id ) ) {
             throw - 1;
         } // end if
         /// Lanzamos los plugins.
@@ -738,7 +738,7 @@ int BlForm::borrar()
         if ( g_plugins->lanza ( "BlForm_borrar", this ) ) return 0;
         borrarPre();
         int err;
-        err =  DBRecord::borrar();
+        err =  BlDbRecord::borrar();
         _depura ( "END BlForm::borrar", 0 );
         return err;
     } catch ( ... ) {
@@ -1131,7 +1131,7 @@ QString BlForm::trataExists ( const QString &query, const QString &datos )
 
 int BlForm::generaRML ( void )
 {
-   DBRecord::generaRML();
+   BlDbRecord::generaRML();
 }
 ///
 /**
@@ -1153,7 +1153,7 @@ int BlForm::generaRML ( const QString &arch )
         return 1;
     } // end if
 
-    res = DBRecord::generaRML( arch );
+    res = BlDbRecord::generaRML( arch );
 
     _depura ( "END BlForm::generaRML", 0 );
     return res;

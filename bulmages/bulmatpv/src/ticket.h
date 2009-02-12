@@ -32,13 +32,13 @@
 #include "blfixed.h"
 
 
-class Ticket :  public BlWidget, public DBRecord
+class Ticket :  public BlWidget, public BlDbRecord
 {
     Q_OBJECT
 
 private:
-    QList<DBRecord *> *m_listaLineas;
-    DBRecord *m_lineaActual;
+    QList<BlDbRecord *> *m_listaLineas;
+    BlDbRecord *m_lineaActual;
 
 public:
     virtual void pintar();
@@ -46,26 +46,26 @@ public:
 public:
     Ticket ( EmpresaBase *emp = NULL, QWidget *parent = 0 );
     virtual ~Ticket();
-    DBRecord *agregarLinea();
-    QList<DBRecord *> *listaLineas();
+    BlDbRecord *agregarLinea();
+    QList<BlDbRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
     /// El parametro nuevalinea indica que se inserte en nueva linea.
-    DBRecord * insertarArticulo ( QString idArticulo, BlFixed cantidad = BlFixed ( "1" ), bool nuevaLinea = FALSE );
-    void borrarArticulo ( DBRecord *linea, BlFixed cantidad = BlFixed ( "1" ) );
+    BlDbRecord * insertarArticulo ( QString idArticulo, BlFixed cantidad = BlFixed ( "1" ), bool nuevaLinea = FALSE );
+    void borrarArticulo ( BlDbRecord *linea, BlFixed cantidad = BlFixed ( "1" ) );
     void vaciarTicket();
-    void subirPosArticulo ( DBRecord *linea, int filas = 1 );
-    void bajarPosArticulo ( DBRecord *linea, int filas = 1 );
-    void inicioPosTicket ( DBRecord * );
-    void finPosTicket ( DBRecord * );
-    DBRecord *lineaTicket ( int posicion );
-    DBRecord *lineaActTicket();
-    void setLineaActual ( DBRecord * );
+    void subirPosArticulo ( BlDbRecord *linea, int filas = 1 );
+    void bajarPosArticulo ( BlDbRecord *linea, int filas = 1 );
+    void inicioPosTicket ( BlDbRecord * );
+    void finPosTicket ( BlDbRecord * );
+    BlDbRecord *lineaTicket ( int posicion );
+    BlDbRecord *lineaActTicket();
+    void setLineaActual ( BlDbRecord * );
     void setDescuentoGlobal ( BlFixed descuento );
     virtual void imprimir();
     virtual void abrircajon();
     int guardar();
     int cargar ( QString );
-    void borrarLinea ( DBRecord* linea );
+    void borrarLinea ( BlDbRecord *linea );
 
 public slots:
     virtual void subir();

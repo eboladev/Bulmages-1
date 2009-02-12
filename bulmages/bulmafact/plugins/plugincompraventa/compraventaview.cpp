@@ -60,7 +60,7 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-	m_albaranp = new DBRecord(comp);
+	m_albaranp = new BlDbRecord(comp);
 	m_albaranp->setDBTableName("albaranp");
         m_albaranp->setDBCampoId ( "idalbaranp" );
         m_albaranp->addDBCampo ( "idalbaranp", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran proveedor" ) );
@@ -303,7 +303,7 @@ void CompraVentaView::on_subform2_editFinish ( int, int )
     Tambi&eacute;n borra todas las lineas y las lineas de descuento que se refieren
     a el albaran que se pretende borrar.
 */
-/// \todo: Este metodo deberia poderse delegar en DBRecord, o por lo menos la parte del borrado del registro.
+/// \todo: Este metodo deberia poderse delegar en BlDbRecord, o por lo menos la parte del borrado del registro.
 /// \todo: Hace falta meter el metodo dentro del sistema de excepciones try catch.
 /**
 \return
@@ -381,7 +381,7 @@ int CompraVentaView::guardarPost()
     _depura ( "CompraVentaView::guardarPost", 0 );
 try {
 //	setDBvalue("idalmacen" , mdb_idalmacen->text());
-//	DBRecord::guardar();
+//	BlDbRecord::guardar();
 //	guardar();
 //	cargar(id);
     m_listalineas->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
@@ -397,12 +397,12 @@ try {
 	if (subform3->rowCount() > 1) {
 		m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
 		m_albaranp->setDBvalue("idalmacen", DBvalue("idalmacen"));
-		m_albaranp->DBRecord::guardar();
+		m_albaranp->BlDbRecord::guardar();
 		subform3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
 		m_descuentos3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
 		subform3->guardar();
 		m_descuentos3->guardar();
-		m_albaranp->DBRecord::cargar(m_albaranp->DBvalue("idalbaranp"));
+		m_albaranp->BlDbRecord::cargar(m_albaranp->DBvalue("idalbaranp"));
 	
 		generarFacturaProveedor();
 	} // end if
