@@ -43,7 +43,7 @@ Al crear un subformulario \ref BlSubForm, todos los registros tienen exactamente
 Esta clase sirve para describir una cabecera. Es analoga a la clase \ref DBCampo pero en lugar de
 describir un unico registro describe a varios.
 */
-class SHeader
+class BlSubFormHeader
 {
 public:
     /** Opciones para la columna del SubFormulario
@@ -63,8 +63,8 @@ protected:
     unsigned int m_options;  ///< Las opciones para la columna en el SubFormulario
 
 public:
-    SHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "" );
-    ~SHeader();
+    BlSubFormHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "" );
+    ~BlSubFormHeader();
     unsigned int options();
     unsigned int restricciones();
     DBCampo::dbtype tipo();
@@ -101,7 +101,7 @@ protected:
     /// Nombre de la tabla en la BD.
     QString m_tablename;
     /// Lista de encabezados del listado. Coordenadas X de la tabla.
-    QList<SHeader *> m_lcabecera;
+    QList<BlSubFormHeader *> m_lcabecera;
     /// Filas y contenido. Coordenadas Y de la tabla.
     QList<SDBRecord *> m_lista;
     /// Lista de subformularios marcados para ser borrados.
@@ -161,7 +161,7 @@ public:
     /// se presentan en el subformulario.
     QList<SDBRecord *> *lista();
     /// Devuelve la lista de cabeceras que forman el subformulario.
-    QList<SHeader *> *cabecera();
+    QList<BlSubFormHeader *> *cabecera();
 
 public:
     BlSubForm ( QWidget *parent );

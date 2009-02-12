@@ -52,7 +52,7 @@ int entryPoint ( Bulmafact * )
 int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform *l )
 {
     _depura ( "PedidosClienteListSubform_PedidosClienteListSubform", 0 );
-    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
     _depura ( "END PedidosClienteListSubform_PedidosClienteListSubform", 0 );
     return 0;
 }
@@ -67,7 +67,7 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
 {
     _depura ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     if ( !l->existsHeader ( "selector" ) ) {
-        l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+        l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
     } // end if
     _depura ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     return 0;
@@ -82,7 +82,7 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
 int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 {
     _depura ( "FacturasListSubform_FacturasListSubform", 0 );
-    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
     _depura ( "END FacturasListSubform_FacturasListSubform", 0 );
     return 0;
 }
@@ -96,7 +96,7 @@ int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 {
     _depura ( "PresupuestoListSubForm_PresupuestoListSubForm", 0 );
-    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
     _depura ( "END PresupuestoListSubForm_PresupuestoListSubForm", 0 );
     return 0;
 }
@@ -110,7 +110,7 @@ int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
 {
     _depura ( "CobrosListSubForm_CobrosListSubForm", 0 );
-    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "selector" );
     _depura ( "CobrosListSubForm_CobrosListSubForm", 0 );
     return 0;
 }

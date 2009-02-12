@@ -70,7 +70,7 @@ QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
     _depura ( "QSubFormVarTarifaBfDelegate::createEditor", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
 
     if ( linea->nomcampo() == "nomtarifa" ) {
@@ -113,7 +113,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     if ( index.column() < 0 || index.row() < 0 )
         return;
 
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtarifa" ) {
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
@@ -151,7 +151,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
 void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
     _depura ( "QSubFormVarTarifaBfDelegate::setEditorData", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtarifa" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();

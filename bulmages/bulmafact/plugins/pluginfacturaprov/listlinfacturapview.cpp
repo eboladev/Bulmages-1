@@ -45,18 +45,18 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
     if ( res != 0 )
         return;
 
-    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Articulo" ) );
-    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Codigo completo" ) );
-    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Nombre" ) );
-    addSHeader ( "idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Linea" ) );
-    addSHeader ( "desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Descripcion" ) );
-    addSHeader ( "cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad" ) );
-    addSHeader ( "pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "P.V.P." ) );
-    addSHeader ( "ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "% I.V.A." ) );
-    addSHeader ( "reqeqlfacturap", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "% Recargo" ) );
-    addSHeader ( "descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Descuento" ) );
-    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Factura" ) );
-    addSHeader ( "ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Orden" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "Articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Linea" ) );
+    addSHeader ( "desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion" ) );
+    addSHeader ( "cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
+    addSHeader ( "pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "P.V.P." ) );
+    addSHeader ( "ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "% I.V.A." ) );
+    addSHeader ( "reqeqlfacturap", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone, _( "% Recargo" ) );
+    addSHeader ( "descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Descuento" ) );
+    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Factura" ) );
+    addSHeader ( "ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "Orden" ) );
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
 

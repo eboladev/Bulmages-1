@@ -39,11 +39,11 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
     _depura ( "ListCompArticuloView::ListCompArticuloView", 0 );
     setDBTableName ( "comparticulo" );
     setDBCampoId ( "idcomponente" );
-    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave | DBCampo::DBNotNull, SHeader::DBNone, _( "Codigo completo del articulo" ) );
-    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Nombre del articulo" ) );
-    addSHeader ( "cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad de componente de articulo" ) );
-    addSHeader ( "idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoWrite, _( "ID componente" ) );
-    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave | DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Codigo completo del articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre del articulo" ) );
+    addSHeader ( "cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad de componente de articulo" ) );
+    addSHeader ( "idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite, _( "ID componente" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID articulo" ) );
     setinsercion ( TRUE );
     setOrdenEnabled ( FALSE );
     _depura ( "END ListCompArticuloView::ListCompArticuloView", 0 );

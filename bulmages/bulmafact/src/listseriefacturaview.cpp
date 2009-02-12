@@ -76,9 +76,9 @@ ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : SubForm2B
     _depura ( "ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
     setDBTableName ( "serie_factura" );
     setDBCampoId ( "codigoserie_factura" );
-    addSHeader ( "codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "codigoserie_factura" );
-    addSHeader ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Codigo serie factura" ) );
-    addSHeader ( "descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Descripcion serie factura" ) );
+    addSHeader ( "codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, BlSubFormHeader::DBNoView | BlSubFormHeader::DBBlockView, "codigoserie_factura" );
+    addSHeader ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Codigo serie factura" ) );
+    addSHeader ( "descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion serie factura" ) );
     setinsercion ( TRUE );
     _depura ( "END ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
 }

@@ -115,7 +115,7 @@ int entryPoint ( Bulmafact *bges )
 int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView *subform )
 {
     _depura ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0 );
-    subform->addSHeader ( "lotelalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote" );
+    subform->addSHeader ( "lotelalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNone, "Lote" );
     _depura ( "END ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0 );
     return 0;
 }
@@ -128,7 +128,7 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProv
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView *subform )
 {
     _depura ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
-    subform->addSHeader ( "lotelalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote" );
+    subform->addSHeader ( "lotelalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNone, "Lote" );
     _depura ( "END ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
     return 0;
 }
@@ -142,7 +142,7 @@ int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteV
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
     _depura ( "ListLinFacturaView_ListLinFacturaView", 0 );
-    subform->addSHeader ( "lotelfactura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote" );
+    subform->addSHeader ( "lotelfactura", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNone, "Lote" );
     _depura ( "END ListLinFacturaView_ListLinFacturaView", 0 );
     return 0;
 }
@@ -156,7 +156,7 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView *subform )
 {
     _depura ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
-    subform->addSHeader ( "lotelfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote" );
+    subform->addSHeader ( "lotelfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNone, "Lote" );
     _depura ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
     return 0;
 }

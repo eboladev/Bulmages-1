@@ -298,7 +298,7 @@ QSubForm2BtDelegate::~QSubForm2BtDelegate()
 QWidget *QSubForm2BtDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
     _depura ( "QSubForm2BtDelegate::createEditor", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     _depura ( "QSubForm2BtDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
     _depura ( "QSubForm2BtDelegate::createEditor", 0, "CurrentRow" + QString::number ( index.row() ) );
@@ -367,7 +367,7 @@ void QSubForm2BtDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     if ( index.column() < 0 || index.row() < 0 )
         return;
 
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QTextEditDelegate * textedit = qobject_cast<QTextEditDelegate *> ( editor );
@@ -420,7 +420,7 @@ void QSubForm2BtDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     _depura ( "QSubForm2BtDelegate::setEditorData", 0 );
     _depura ( "QSubForm2BtDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
     _depura ( "QSubForm2BtDelegate::setEditorData", 0, "CurrentRow: " + QString::number ( index.row() ) );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();

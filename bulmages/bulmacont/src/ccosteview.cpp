@@ -54,11 +54,11 @@ ccosteview::ccosteview ( Empresa  *emp, QWidget *parent )
     mui_cdistribuidos->setDBTableName ( "c_costedist" );
     mui_cdistribuidos->setFileConfig ( "ccostedist" );
     mui_cdistribuidos->setDBCampoId ( "idc_costedist" );
-    mui_cdistribuidos->addSHeader ( "nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Nombre Destinatario" ) );
-    mui_cdistribuidos->addSHeader ( "porcentc_costedist", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Porcentaje" ) );
-    mui_cdistribuidos->addSHeader ( "idc_costedist", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, _( "Id" ) );
-    mui_cdistribuidos->addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, _( "Destinatario" ) );
-    mui_cdistribuidos->addSHeader ( "iddestc_coste", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, _( "Origen" ) );
+    mui_cdistribuidos->addSHeader ( "nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre Destinatario" ) );
+    mui_cdistribuidos->addSHeader ( "porcentc_costedist", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje" ) );
+    mui_cdistribuidos->addSHeader ( "idc_costedist", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Id" ) );
+    mui_cdistribuidos->addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Destinatario" ) );
+    mui_cdistribuidos->addSHeader ( "iddestc_coste", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Origen" ) );
     mui_cdistribuidos->setinsercion ( TRUE );
     mui_cdistribuidos->setOrdenEnabled ( FALSE );
     idc_coste = 0;

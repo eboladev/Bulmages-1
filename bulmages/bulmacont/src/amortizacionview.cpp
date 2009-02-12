@@ -75,12 +75,12 @@ AmortizacionView::AmortizacionView ( Empresa *emp, QWidget *parent )
     /// Inicializamos el listado.
     mui_listcuotas->setDBTableName ( "linamortizacion" );
     mui_listcuotas->setDBCampoId ( "idlinamortizacion" );
-    mui_listcuotas->addSHeader ( "ejercicio", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, _( "Ejercicio" ) );
-    mui_listcuotas->addSHeader ( "fechaprevista", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone , _( "Fecha prevista" ) );
-    mui_listcuotas->addSHeader ( "cantidad", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad" ) );
-    mui_listcuotas->addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite , _( "Id asiento" ) );
-    mui_listcuotas->addSHeader ( "idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , _( "Id lineas de amortizacion" ) );
-    mui_listcuotas->addSHeader ( "idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , _( "Id amortizacion" ) );
+    mui_listcuotas->addSHeader ( "ejercicio", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNone, _( "Ejercicio" ) );
+    mui_listcuotas->addSHeader ( "fechaprevista", DBCampo::DBdate, DBCampo::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha prevista" ) );
+    mui_listcuotas->addSHeader ( "cantidad", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
+    mui_listcuotas->addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNoWrite , _( "Id asiento" ) );
+    mui_listcuotas->addSHeader ( "idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "Id lineas de amortizacion" ) );
+    mui_listcuotas->addSHeader ( "idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id amortizacion" ) );
     mui_listcuotas->setinsercion ( FALSE );
     mui_listcuotas->setOrdenEnabled ( FALSE );
 

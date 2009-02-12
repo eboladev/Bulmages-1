@@ -517,7 +517,7 @@ QSubForm2BcDelegate::~QSubForm2BcDelegate()
 QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &index ) const
 {
     _depura ( "QSubForm2BcDelegate::createEditor", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     _depura ( "QSubForm2BcDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
     _depura ( "QSubForm2BcDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
@@ -584,7 +584,7 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         return;
     } // end if
 
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
 
@@ -650,7 +650,7 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 void QSubForm2BcDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
     _depura ( "QSubForm2BcDelegate::setEditorData", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     //if (linea->nomcampo() == "desc" + m_subform->tableName()) {
     if ( linea->nomcampo().startsWith ( "desc" ) ) {

@@ -163,7 +163,7 @@ int SDBCampo::set ( QString val )
     DBCampo::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
     if ( tipo() == DBCampo::DBboolean ) {
-        if ( restrictcampo() == SHeader::DBNoWrite ) {
+        if ( restrictcampo() == BlSubFormHeader::DBNoWrite ) {
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
         if ( val == "TRUE" || val == "t" ) {

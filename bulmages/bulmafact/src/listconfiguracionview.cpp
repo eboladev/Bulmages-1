@@ -85,9 +85,9 @@ ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : SubForm
     _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
     setDBTableName ( "configuracion" );
     setDBCampoId ( "nombre" );
-    addSHeader ( "nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "nombre" );
-    addSHeader ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, _( "Nombre" ) );
-    addSHeader ( "valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Valor" ) );
+    addSHeader ( "nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, BlSubFormHeader::DBNoView | BlSubFormHeader::DBBlockView, "nombre" );
+    addSHeader ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "valor", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Valor" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );

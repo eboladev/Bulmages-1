@@ -276,9 +276,9 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "InventariosSubForm::InventariosSubForm", 0 );
     setDBTableName ( "inventario" );
     setDBCampoId ( "idinventario" );
-    addSHeader ( "idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView, _( "Id inventario" ) );
-    addSHeader ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre del inventario" ) );
-    addSHeader ( "fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Fecha del inventario" ) );
+    addSHeader ( "idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoView, _( "Id inventario" ) );
+    addSHeader ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del inventario" ) );
+    addSHeader ( "fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha del inventario" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

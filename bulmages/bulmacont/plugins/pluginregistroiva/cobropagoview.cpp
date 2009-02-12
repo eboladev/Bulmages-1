@@ -43,18 +43,18 @@ cobropagoview::cobropagoview ( Empresa *emp, QWidget *parent )
     /// Inicializamos el listado.
     mui_listado->setDBTableName ( "prevcobro" );
     mui_listado->setDBCampoId ( "idprevcobro" );
-    mui_listado->addSHeader ( "idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , _( "idprevcobro" ) );
-    mui_listado->addSHeader ( "fprevistaprevcobro", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , _( "fprevistaprevcobro" ) );
-    mui_listado->addSHeader ( "fcobroprevcobro", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "fcobroprevcobro" ) );
-    mui_listado->addSHeader ( "idctacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, _( "idctacliente" ) );
-    mui_listado->addSHeader ( "idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , _( "idfpago" ) );
-    mui_listado->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone , _( "idcuenta" ) );
-    mui_listado->addSHeader ( "idasiento", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , _( "idasiento" ) );
-    mui_listado->addSHeader ( "cantidadprevistaprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , _( "cantidadprevistaprevcobro" ) );
-    mui_listado->addSHeader ( "cantidadprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , _( "cantidadprevcobro" ) );
-    mui_listado->addSHeader ( "idregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , _( "idregistroiva" ) );
-    mui_listado->addSHeader ( "tipoprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , _( "tipoprevcobro" ) );
-    mui_listado->addSHeader ( "docprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , _( "docprevcobro" ) );
+    mui_listado->addSHeader ( "idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "idprevcobro" ) );
+    mui_listado->addSHeader ( "fprevistaprevcobro", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite , _( "fprevistaprevcobro" ) );
+    mui_listado->addSHeader ( "fcobroprevcobro", DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "fcobroprevcobro" ) );
+    mui_listado->addSHeader ( "idctacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idctacliente" ) );
+    mui_listado->addSHeader ( "idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite , _( "idfpago" ) );
+    mui_listado->addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "idcuenta" ) );
+    mui_listado->addSHeader ( "idasiento", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "idasiento" ) );
+    mui_listado->addSHeader ( "cantidadprevistaprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "cantidadprevistaprevcobro" ) );
+    mui_listado->addSHeader ( "cantidadprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "cantidadprevcobro" ) );
+    mui_listado->addSHeader ( "idregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "idregistroiva" ) );
+    mui_listado->addSHeader ( "tipoprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "tipoprevcobro" ) );
+    mui_listado->addSHeader ( "docprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone , _( "docprevcobro" ) );
     mui_listado->setinsercion ( FALSE );
     /// Dejamos de inicializar el listado.
     m_cuenta->setEmpresaBase ( emp );

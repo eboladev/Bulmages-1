@@ -194,11 +194,11 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->setEmpresaBase ( alm->empresaBase() );
     form->setDBTableName ( "almacentipotrabajo" );
     form->setDBCampoId ( "idalmacen" );
-    form->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
-    form->addSHeader ( "numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, _( "Numero de cargos necesarios" ) );
-    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID almacen" ) );
-    form->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID tipo de trabajo" ) );
-    form->addSHeader ( "origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, _("Id tipo de trabajo") );
+    form->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
+    form->addSHeader ( "numpers", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Numero de cargos necesarios" ) );
+    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
+    form->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tipo de trabajo" ) );
+    form->addSHeader ( "origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, BlSubFormHeader::DBNoView, _("Id tipo de trabajo") );
 
     form->setinsercion ( TRUE );
     form->setDelete ( TRUE );
@@ -278,7 +278,7 @@ QSubForm3BfDelegate::~QSubForm3BfDelegate()
 QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
     _depura ( "QSubForm3BfDelegate::createEditor", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
 
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
@@ -307,7 +307,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     if ( index.column() < 0 || index.row() < 0 )
         return;
 
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
         BusquedaTipoTrabajoDelegate * comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
@@ -329,7 +329,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
     _depura ( "QSubForm3BfDelegate::setEditorData", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();

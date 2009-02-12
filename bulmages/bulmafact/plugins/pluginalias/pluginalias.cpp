@@ -106,9 +106,9 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setEmpresaBase ( art->empresaBase() );
     l->setDBTableName ( "alias" );
     l->setDBCampoId ( "idalias" );
-    l->addSHeader ( "cadalias", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , _( "Alias" ) );
-    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite , _( "Id articulo" ) );
-    l->addSHeader ( "idalias", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id validacion" ) );
+    l->addSHeader ( "cadalias", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "Id articulo" ) );
+    l->addSHeader ( "idalias", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id validacion" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

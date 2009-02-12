@@ -42,25 +42,25 @@
 \param opt Opciones de presentacion
 \param nomp Nombre a presentar en caso necesario para referirse a la columna
 **/
-SHeader::SHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
+BlSubFormHeader::BlSubFormHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
 {
-    _depura ( "SHeader::SHeader", 0 );
+    _depura ( "BlSubFormHeader::BlSubFormHeader", 0 );
     m_nomcampo = nom;
     m_tipo = typ;
     m_restricciones = res;
     m_options = opt;
     m_nompresentacion = nomp;
-    _depura ( "END SHeader::SHeader", 0 );
+    _depura ( "END BlSubFormHeader::BlSubFormHeader", 0 );
 }
 
 
 ///
 /**
 **/
-SHeader::~SHeader()
+BlSubFormHeader::~BlSubFormHeader()
 {
-    _depura ( "SHeader::~SHeader", 0 );
-    _depura ( "END SHeader::~SHeader", 0 );
+    _depura ( "BlSubFormHeader::~BlSubFormHeader", 0 );
+    _depura ( "END BlSubFormHeader::~BlSubFormHeader", 0 );
 }
 
 
@@ -68,10 +68,10 @@ SHeader::~SHeader()
 /**
 \return
 **/
-unsigned int SHeader::options()
+unsigned int BlSubFormHeader::options()
 {
-    _depura ( "SHeader::options", 0 );
-    _depura ( "END SHeader::options", 0 );
+    _depura ( "BlSubFormHeader::options", 0 );
+    _depura ( "END BlSubFormHeader::options", 0 );
     return m_options;
 }
 
@@ -80,10 +80,10 @@ unsigned int SHeader::options()
 /**
 \return
 **/
-unsigned int SHeader::restricciones()
+unsigned int BlSubFormHeader::restricciones()
 {
-    _depura ( "SHeader::restricciones", 0 );
-    _depura ( "END SHeader::restricciones", 0 );
+    _depura ( "BlSubFormHeader::restricciones", 0 );
+    _depura ( "END BlSubFormHeader::restricciones", 0 );
     return m_restricciones;
 }
 
@@ -92,10 +92,10 @@ unsigned int SHeader::restricciones()
 /**
 \return
 **/
-DBCampo::dbtype SHeader::tipo()
+DBCampo::dbtype BlSubFormHeader::tipo()
 {
-    _depura ( "SHeader::tipo", 0 );
-    _depura ( "END SHeader::tipo", 0 );
+    _depura ( "BlSubFormHeader::tipo", 0 );
+    _depura ( "END BlSubFormHeader::tipo", 0 );
     return m_tipo;
 
 }
@@ -105,10 +105,10 @@ DBCampo::dbtype SHeader::tipo()
 /**
 \return
 **/
-QString SHeader::nompresentacion()
+QString BlSubFormHeader::nompresentacion()
 {
-    _depura ( "SHeader::nompresentacion", 0 );
-    _depura ( "END SHeader::nompresentacion", 0 );
+    _depura ( "BlSubFormHeader::nompresentacion", 0 );
+    _depura ( "END BlSubFormHeader::nompresentacion", 0 );
     return m_nompresentacion;
 }
 
@@ -117,10 +117,10 @@ QString SHeader::nompresentacion()
 /**
 \return
 **/
-int SHeader::restrictcampo()
+int BlSubFormHeader::restrictcampo()
 {
-    _depura ( "SHeader::restrictcampo", 0 );
-    _depura ( "END SHeader::restrictcampo", 0 );
+    _depura ( "BlSubFormHeader::restrictcampo", 0 );
+    _depura ( "END BlSubFormHeader::restrictcampo", 0 );
     return m_restricciones;
 }
 
@@ -129,10 +129,10 @@ int SHeader::restrictcampo()
 /**
 \return
 **/
-QString SHeader::nomcampo()
+QString BlSubFormHeader::nomcampo()
 {
-    _depura ( "SHeader::nomcampo", 0 );
-    _depura ( "END SHeader::nomcampo", 0 );
+    _depura ( "BlSubFormHeader::nomcampo", 0 );
+    _depura ( "END BlSubFormHeader::nomcampo", 0 );
     return m_nomcampo;
 }
 
@@ -328,25 +328,25 @@ void BlSubForm::cargaSpecs()
                 restrict = restrict.nextSiblingElement ( "RESTRICTIONSHEADER" );
             } // end while
 
-            int opciones = ( int ) SHeader::DBNone;
+            int opciones = ( int ) BlSubFormHeader::DBNone;
             QDomElement opci = e1.firstChildElement ( "OPTIONSHEADER" );
             while ( !opci.isNull() ) {
                 QString topci = opci.text();
                 if ( topci == "DBNONE" ) {
-                    opciones |= SHeader::DBNone;
+                    opciones |= BlSubFormHeader::DBNone;
                 } else if ( topci == "DBREADONLY" ) {
-                    opciones |= SHeader::DBReadOnly;
+                    opciones |= BlSubFormHeader::DBReadOnly;
                 } else if ( topci == "DBNOVIEW" ) {
-                    opciones |= SHeader::DBNoView;
+                    opciones |= BlSubFormHeader::DBNoView;
                 } else if ( topci == "DBNOWRITE" ) {
-                    opciones |= SHeader::DBNoWrite;
+                    opciones |= BlSubFormHeader::DBNoWrite;
                 } else if ( topci == "DBBLOCKVIEW" ) {
-                    opciones |= SHeader::DBBlockView;
+                    opciones |= BlSubFormHeader::DBBlockView;
                 } // end if
                 opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
             } // end while
 
-            addSHeader ( nomheader, type, ( DBCampo::dbrestrict ) restricciones, ( SHeader::dboptions ) opciones, nompheader );
+            addSHeader ( nomheader, type, ( DBCampo::dbrestrict ) restricciones, ( BlSubFormHeader::dboptions ) opciones, nompheader );
         } // end if
     } // end for
 
@@ -370,7 +370,7 @@ QList<SDBRecord *> *BlSubForm::lista()
 /**
 \return
 **/
-QList<SHeader *> *BlSubForm::cabecera()
+QList<BlSubFormHeader *> *BlSubForm::cabecera()
 {
     _depura ( "BlSubForm::cabecera", 0 );
     _depura ( "END BlSubForm::cabecera", 0 );
@@ -831,7 +831,7 @@ void BlSubForm::on_mui_list_cellDoubleClicked ( int row, int col )
 bool BlSubForm::existsHeader ( const QString &head )
 {
     _depura ( "BlSubForm::existsHeader", 0 );
-    SHeader *linea;
+    BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
         if ( linea->nomcampo() == head ) {
@@ -857,7 +857,7 @@ SDBRecord *BlSubForm::newSDBRecord()
     rec->setDBTableName ( m_tablename );
     rec->setDBCampoId ( m_campoid );
 
-    SHeader *linea;
+    BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
         rec->addDBCampo ( linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
@@ -866,11 +866,11 @@ SDBRecord *BlSubForm::newSDBRecord()
     SDBCampo *camp;
     for ( int i = 0; i < rec->lista() ->size(); ++i ) {
         camp = ( SDBCampo * ) rec->lista() ->at ( i );
-        SHeader *head = m_lcabecera.at ( i );
+        BlSubFormHeader *head = m_lcabecera.at ( i );
         Qt::ItemFlags flags = 0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 
-        if ( ! ( head->options() & SHeader::DBNoWrite ) )
+        if ( ! ( head->options() & BlSubFormHeader::DBNoWrite ) )
             flags |= Qt::ItemIsEditable;
         if ( head->tipo() == DBCampo::DBboolean ) {
             flags |= Qt::ItemIsUserCheckable;
@@ -933,11 +933,11 @@ void BlSubForm::pintaCabeceras()
 {
     _depura ( "BlSubForm::", 0 );
     QStringList headers;
-    SHeader *linea;
+    BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
         headers << linea->nompresentacion();
-        if ( linea->options() & SHeader::DBNoView ) {
+        if ( linea->options() & BlSubFormHeader::DBNoView ) {
             mui_list->hideColumn ( i );
         } else {
             mui_list->showColumn ( i );
@@ -959,7 +959,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col )
     _depura ( "BlSubForm::situarse", 0, QString::number ( row ) + " " + QString::number ( col ) );
     unsigned int nrow = row;
     unsigned int ncol = col;
-    SHeader *linea = m_lcabecera.at ( ncol );
+    BlSubFormHeader *linea = m_lcabecera.at ( ncol );
     if ( !linea )
         return;
     bool invalido = TRUE;
@@ -973,9 +973,9 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col )
         } // end if
         linea = m_lcabecera.at ( ncol );
         invalido = FALSE;
-        if ( linea->options() & SHeader::DBNoView )
+        if ( linea->options() & BlSubFormHeader::DBNoView )
             invalido = TRUE;
-        if ( linea->options() & SHeader::DBNoWrite )
+        if ( linea->options() & BlSubFormHeader::DBNoWrite )
             invalido = TRUE;
     } // end while
     mui_list->setCurrentCell ( nrow, ncol );
@@ -995,7 +995,7 @@ void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
     _depura ( "BlSubForm::situarse1", 0, QString::number ( row ) + " " + QString::number ( col ) );
     unsigned int nrow = row;
     unsigned int ncol = col;
-    SHeader *linea = m_lcabecera.at ( ncol );
+    BlSubFormHeader *linea = m_lcabecera.at ( ncol );
     if ( !linea ) {
         return;
     } // end if
@@ -1007,9 +1007,9 @@ void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
         } // end if
         linea = m_lcabecera.at ( ncol );
         invalido = FALSE;
-        if ( linea->options() & SHeader::DBNoView )
+        if ( linea->options() & BlSubFormHeader::DBNoView )
             invalido = TRUE;
-        if ( linea->options() & SHeader::DBNoWrite )
+        if ( linea->options() & BlSubFormHeader::DBNoWrite )
             invalido = TRUE;
         if ( invalido )
             ncol++;
@@ -1186,7 +1186,7 @@ void BlSubForm::cargar ( cursor2 *cur )
     for ( int i = 0; i < m_lista.size(); ++i ) {
         reg = m_lista.at ( i );
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-            SHeader *head = m_lcabecera.at ( j );
+            BlSubFormHeader *head = m_lcabecera.at ( j );
             if ( head->nomcampo() == m_columnaParaRowSpan ) {
                 mui_list->setSpan ( i, j, 1, 1 );
             } // end if
@@ -1285,7 +1285,7 @@ void BlSubForm::cargar ( cursor2 *cur )
     for ( int i = 0; i < m_lista.size(); ++i ) {
         reg = m_lista.at ( i );
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-            SHeader *head = m_lcabecera.at ( j );
+            BlSubFormHeader *head = m_lcabecera.at ( j );
             if ( head->nomcampo() == m_columnaParaRowSpan ) {
                 camp = ( SDBCampo * ) reg->lista() ->at ( j );
                 textoCeldaActual = camp->valorcampo();
@@ -1494,7 +1494,7 @@ bool BlSubForm::campoCompleto ( int row )
        return resultat;
     } else {
     SDBCampo *camp;
-    SHeader *header;
+    BlSubFormHeader *header;
     /// Sacamos celda a celda toda la fila
     for ( int i = 0; i < mui_list->columnCount(); i++ ) {
         camp = ( SDBCampo * ) mui_list->item ( row, i );
@@ -1505,7 +1505,7 @@ bool BlSubForm::campoCompleto ( int row )
         header = m_lcabecera.at ( i );
         if ( camp->restrictcampo() & DBCampo::DBNotNull
                 && camp->text() == ""
-                && ! ( header->options() & SHeader::DBNoView )
+                && ! ( header->options() & BlSubFormHeader::DBNoView )
                 && camp->tipo() != DBCampo::DBboolean ) {
             _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
             return FALSE;
@@ -1615,7 +1615,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 
 
 /// M&eacute;todo para agregar cabeceras al listado
-/** Cada columna de un subformulario tiene una instancia de la clase SHeader. Este m&eacute;todo
+/** Cada columna de un subformulario tiene una instancia de la clase BlSubFormHeader. Este m&eacute;todo
     se encarga de crear e inicializar cada una de dichas clases. */
 /**
 \param nom
@@ -1628,7 +1628,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 int BlSubForm::addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
 {
     _depura ( "BlSubForm::addSHeader", 0,  nom );
-    SHeader *camp = new SHeader ( nom, typ, res, opt, nomp );
+    BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
     mui_listcolumnas->insertRow ( mui_listcolumnas->rowCount() );
     /// 19/07/2007
@@ -1636,14 +1636,14 @@ int BlSubForm::addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, 
     QTableWidgetItem2 *it = new QTableWidgetItem2 ( "" );
     it->setFlags ( Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
 
-    if ( opt & SHeader::DBNoView ) {
+    if ( opt & BlSubFormHeader::DBNoView ) {
         mui_list->hideColumn ( mui_listcolumnas->rowCount() - 1 );
         it->setCheckState ( Qt::Unchecked );
     } else {
         it->setCheckState ( Qt::Checked );
     } // end if
 
-    if ( opt & SHeader::DBBlockView ) {
+    if ( opt & BlSubFormHeader::DBBlockView ) {
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
@@ -2542,7 +2542,7 @@ bool BlSubForm::procesaCambios()
 **/
 QString BlSubForm::columnDBfieldName ( int columna )
 {
-    SHeader * linea;
+    BlSubFormHeader * linea;
     linea = m_lcabecera.at ( columna );
     return linea->nomcampo();
 }

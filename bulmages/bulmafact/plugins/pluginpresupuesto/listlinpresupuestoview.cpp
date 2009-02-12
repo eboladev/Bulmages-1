@@ -43,18 +43,18 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : SubForm2Bf 
     if ( res != 0 ) {
         return;
     } // end if
-    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Id articulo" ) );
-    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Codigo completo" ) );
-    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, _( "Nombre del articulo" ) );
-    addSHeader ( "idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "No de linea" ) );
-    addSHeader ( "desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Descripcion" ) );
-    addSHeader ( "cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad" ) );
-    addSHeader ( "pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, _( "Precio de venta s/IVA" ) );
-    addSHeader ( "ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, _( "% I.V.A." ) );
-    addSHeader ( "reqeqlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, _( "% Recargo E.Q." ) );
-    addSHeader ( "descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, _( "% Descuento" ) );
-    addSHeader ( "idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id presupuesto" ) );
-    addSHeader ( "ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "Orden" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre del articulo" ) );
+    addSHeader ( "idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "No de linea" ) );
+    addSHeader ( "desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion" ) );
+    addSHeader ( "cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
+    addSHeader ( "pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Precio de venta s/IVA" ) );
+    addSHeader ( "ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "% I.V.A." ) );
+    addSHeader ( "reqeqlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, BlSubFormHeader::DBNone, _( "% Recargo E.Q." ) );
+    addSHeader ( "descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );
+    addSHeader ( "idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id presupuesto" ) );
+    addSHeader ( "ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "Orden" ) );
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );

@@ -119,11 +119,11 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     l->setDBTableName ( "minimsalmacen" );
     l->setDBCampoId ( "idminimsalmacen" );
-    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, _( "Almacen" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite, _( "Id Almacen" ) );
-    l->addSHeader ( "valminimsalmacen", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Minimo" ) );
-    l->addSHeader ( "idminimsalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID Validacion" ) );
-    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, _( "ID Trabajador" ) );
+    l->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
+    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id Almacen" ) );
+    l->addSHeader ( "valminimsalmacen", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Minimo" ) );
+    l->addSHeader ( "idminimsalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Validacion" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

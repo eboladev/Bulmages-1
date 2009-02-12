@@ -259,8 +259,8 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : SubForm2Bf ( 
         return;
     setDBTableName ( "profesor" );
     setDBCampoId ( "idprofesor" );
-    addSHeader ( "idprofesor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, _( "Id profesor" ) );
-    addSHeader ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, _( "Nombre" ) );
+    addSHeader ( "idprofesor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id profesor" ) );
+    addSHeader ( "nombreprofesor", DBCampo::DBvarchar, DBCampo::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

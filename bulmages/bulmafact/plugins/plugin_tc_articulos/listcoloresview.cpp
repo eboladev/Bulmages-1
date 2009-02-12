@@ -96,9 +96,9 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : SubForm2Bf ( parent
     _depura ( "ListColoresSubForm::ListColoresSubForm", 0 );
     setDBTableName ( "tc_color" );
     setDBCampoId ( "idtc_color" );
-    addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, _( "Id Color" ) );
-    addSHeader ( "rgbtc_color", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, _( "RGB Color" ) );
-    addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, _( "Nombre Color" ) );
+    addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id Color" ) );
+    addSHeader ( "rgbtc_color", DBCampo::DBvarchar, DBCampo::DBNothing, BlSubFormHeader::DBNone, _( "RGB Color" ) );
+    addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre Color" ) );
     setinsercion ( TRUE );
     _depura ( "END ListColoresSubForm::ListColoresSubForm", 0 );
 }

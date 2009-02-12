@@ -179,14 +179,14 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setEmpresaBase ( art->empresaBase() );
     l->setDBTableName ( "variaciontarifa" );
     l->setDBCampoId ( "idarticulo" );
-    l->addSHeader ( "idvariaciontarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , _( "ID variacion tarifa" ) );
-    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, _( "ID articulo" ) );
-    l->addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "ID tarifa" ) );
-    l->addSHeader ( "nomtarifa", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, _( "Tarifa" ) );
-    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, _( "ID almacen" ) );
-    l->addSHeader ( "nomalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, _( "Almacen" ) );
-    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Cantidad mayor o igual que" ) );
-    l->addSHeader ( "porcentajevariacion", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, _( "Porcentaje variacion" ) );
+    l->addSHeader ( "idvariaciontarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, BlSubFormHeader::DBNoView, _( "ID articulo" ) );
+    l->addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNoView, _( "ID tarifa" ) );
+    l->addSHeader ( "nomtarifa", DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Tarifa" ) );
+    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, BlSubFormHeader::DBNoView, _( "ID almacen" ) );
+    l->addSHeader ( "nomalmacen", DBCampo::DBint, DBCampo::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
+    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad mayor o igual que" ) );
+    l->addSHeader ( "porcentajevariacion", DBCampo::DBnumeric, DBCampo::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje variacion" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
