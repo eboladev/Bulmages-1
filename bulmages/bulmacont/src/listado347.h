@@ -22,6 +22,7 @@
 #ifndef LISTADO347_H
 #define LISTADO347_H
 
+#include "funcaux.h"
 #include "ui_listado347base.h"
 #include "empresa.h"
 #include "blwidget.h"
@@ -30,7 +31,6 @@
 class Listado347 : public QDialog, public Ui_Listado347Base, PEmpresaBase
 {
     Q_OBJECT
-
 
 public:
     Listado347 ( Empresa *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window );
@@ -44,4 +44,3 @@ private slots:
 };
 
 #endif
-

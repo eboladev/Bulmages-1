@@ -24,11 +24,13 @@
 
 #include <QWidget>
 
+#include "funcaux.h"
 #include "ui_mpatrimonialbase.h"
 #include "blwidget.h"
-#include "funcaux.h"
+
 
 class Empresa;
+
 
 class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public PEmpresaBase
 {
@@ -57,4 +59,3 @@ public slots:
 };
 
 #endif
-

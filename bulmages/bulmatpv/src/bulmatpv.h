@@ -24,11 +24,11 @@
 
 #include <QWorkspace>
 
+#include "funcaux.h"
 #include "blworkspace.h"
 #include "ui_bulmatpvbase.h"
 #include "empresatpv.h"
 #include "listventanas.h"
-#include "funcaux.h"
 #include "blsplashscreen.h"
 #include "blmainwindow.h"
 

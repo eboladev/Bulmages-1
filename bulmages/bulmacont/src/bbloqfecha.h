@@ -24,9 +24,10 @@
 
 #include <QWidget>
 
-#include "ui_bbloqfechabase.h"
 #include "funcaux.h"
+#include "ui_bbloqfechabase.h"
 #include "fichabc.h"
+
 
 class Empresa;
 

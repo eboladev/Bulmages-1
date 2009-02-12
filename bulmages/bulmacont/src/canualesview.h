@@ -24,6 +24,7 @@
 
 #include <QWidget>
 
+#include "funcaux.h"
 #include "ui_canualesbase.h"
 #include "fichabc.h"
 

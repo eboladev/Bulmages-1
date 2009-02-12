@@ -25,10 +25,13 @@
 #include <QWidget>
 #include <QStringList>
 
+#include "funcaux.h"
 #include "ui_mpatrimonialesbase.h"
 #include "blwidget.h"
 
+
 class Empresa;
+
 
 ///
 /** */
@@ -66,4 +69,3 @@ public slots:
 };
 
 #endif
-

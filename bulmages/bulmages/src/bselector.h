@@ -25,6 +25,7 @@
 #include <QEvent>
 #include <QMainWindow>
 
+#include "funcaux.h"
 #include "ui_selectorbase.h"
 #include "abreempresaview.h"
 #include "bconfiguracion.h"

@@ -24,6 +24,7 @@
 
 #include <QCheckBox>
 
+#include "funcaux.h"
 #include "ui_modelo300base.h"
 #include "modelosps.h"
 #include "numerocuenta.h"

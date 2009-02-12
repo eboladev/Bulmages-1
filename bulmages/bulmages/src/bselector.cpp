@@ -21,9 +21,9 @@
 #include <QPushButton>
 #include <QFile>
 
+#include "funcaux.h"
 #include "ui_selectorbase.h"
 #include "bselector.h"
-#include "funcaux.h"
 #include "plugins.h"
 
 #ifndef WIN32

@@ -23,6 +23,8 @@
 #define ABOUTVIEW_H
 
 #include <QDialog>
+
+#include "funcaux.h"
 #include <ui_aboutbase.h>
 
 

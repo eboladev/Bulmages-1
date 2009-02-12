@@ -24,6 +24,7 @@
 
 #include <QEvent>
 
+#include "funcaux.h"
 #include "blpostgresqlclient.h"
 #include "ui_listcuentasbase.h"
 #include "pgimportfiles.h"

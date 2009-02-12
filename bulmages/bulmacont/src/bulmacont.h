@@ -33,6 +33,7 @@
 #include <QToolButton>
 #include <QMessageBox>
 
+#include "funcaux.h"
 #include "ui_bulmacontbase.h"
 #include "empresa.h"
 #include "bbloqfecha.h"

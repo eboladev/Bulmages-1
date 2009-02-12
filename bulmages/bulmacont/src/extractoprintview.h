@@ -31,6 +31,7 @@
 #include <QToolButton>
 #include <QRadioButton>
 
+#include "funcaux.h"
 #include "ui_extractoprintbase.h"
 #include "blwidget.h"
 

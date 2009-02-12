@@ -24,6 +24,7 @@
 
 #include <QWidget>
 
+#include "funcaux.h"
 #include "ui_sobrebase.h"
 #include "blform.h"
 

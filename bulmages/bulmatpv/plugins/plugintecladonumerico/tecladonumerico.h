@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTableWidget>
 
+#include "funcaux.h"
 #include "ui_tecladonumericobase.h"
 #include "blwidget.h"
 #include "empresatpv.h"

@@ -24,9 +24,10 @@
 
 #include <QTreeWidgetItemIterator>
 
+#include "funcaux.h"
 #include <ui_selectccostebase.h>
-
 #include "blwidget.h"
+
 
 class Empresa;
 

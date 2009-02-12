@@ -31,6 +31,7 @@
 #include <QFileDialog>
 #include <QListWidgetItem>
 
+#include "funcaux.h"
 #include "ui_configuracion.h"
 #include "bselector.h"
 #include "blpostgresqlclient.h"
