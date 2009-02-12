@@ -24,7 +24,7 @@
 #include <QLocale>
 #include <QRegExp>
 
-#include "bldb.h"
+#include "subform.h"
 #include "blsubform.h"
 
 
