@@ -222,11 +222,11 @@ void Devolucion::pintar()
         mui_ticketTable->setHorizontalHeaderItem ( i, __colItem );
     }
 
-    mui_ticketTable->horizontalHeaderItem ( 0 )->setText ( QObject::trUtf8 ( "Unds.", 0 ) );
-    mui_ticketTable->horizontalHeaderItem ( 1 )->setText ( QObject::trUtf8 ( "Producto", 0 ) );
-    mui_ticketTable->horizontalHeaderItem ( 2 )->setText ( QObject::trUtf8 ( "P.U.", 0 ) );
-    mui_ticketTable->horizontalHeaderItem ( 3 )->setText ( QObject::trUtf8 ( "Total", 0 ) );
-    mui_ticketTable->horizontalHeaderItem ( 4 )->setText ( QObject::trUtf8 ( "Linea", 0 ) );
+    mui_ticketTable->horizontalHeaderItem ( 0 )->setText ( _( "Unds." ) );
+    mui_ticketTable->horizontalHeaderItem ( 1 )->setText ( _( "Producto" ) );
+    mui_ticketTable->horizontalHeaderItem ( 2 )->setText ( _( "P.U." ) );
+    mui_ticketTable->horizontalHeaderItem ( 3 )->setText ( _( "Total" ) );
+    mui_ticketTable->horizontalHeaderItem ( 4 )->setText ( _( "Linea" ) );
     mui_ticketTable->setColumnHidden ( 4, TRUE );
 
     if ( mui_devolverTable->columnCount() < numCols )
@@ -237,11 +237,11 @@ void Devolucion::pintar()
         mui_devolverTable->setHorizontalHeaderItem ( i, __colItem );
     }
 
-    mui_devolverTable->horizontalHeaderItem ( 0 )->setText ( QObject::trUtf8 ( "Unds.", 0 ) );
-    mui_devolverTable->horizontalHeaderItem ( 1 )->setText ( QObject::trUtf8 ( "Producto", 0 ) );
-    mui_devolverTable->horizontalHeaderItem ( 2 )->setText ( QObject::trUtf8 ( "P.U.", 0 ) );
-    mui_devolverTable->horizontalHeaderItem ( 3 )->setText ( QObject::trUtf8 ( "Total", 0 ) );
-    mui_devolverTable->horizontalHeaderItem ( 4 )->setText ( QObject::trUtf8 ( "Linea", 0 ) );
+    mui_devolverTable->horizontalHeaderItem ( 0 )->setText ( _( "Unds." ) );
+    mui_devolverTable->horizontalHeaderItem ( 1 )->setText ( _( "Producto" ) );
+    mui_devolverTable->horizontalHeaderItem ( 2 )->setText ( _( "P.U." ) );
+    mui_devolverTable->horizontalHeaderItem ( 3 )->setText ( _( "Total" ) );
+    mui_devolverTable->horizontalHeaderItem ( 4 )->setText ( _( "Linea" ) );
     mui_devolverTable->setColumnHidden ( 4, TRUE );
 
 

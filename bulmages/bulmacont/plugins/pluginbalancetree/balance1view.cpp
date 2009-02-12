@@ -70,7 +70,7 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
 
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
-    setTitleName ( trUtf8 ( "Balance Jerarquico" ) );
+    setTitleName ( _( "Balance Jerarquico" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
@@ -89,18 +89,18 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
 
     listado->setColumnCount ( 9 );
     QStringList nombrecolumnas;
-    nombrecolumnas << trUtf8 ( "Cuenta" )
-    << trUtf8 ( "Nombre de la cuenta" )
-    << trUtf8 ( "Saldo anterior" )
-    << trUtf8 ( "Debe" )
-    << trUtf8 ( "Haber" )
-    << trUtf8 ( "Saldo" )
-    << trUtf8 ( "Debe ejercicio" )
-    << trUtf8 ( "Haber ejercicio" )
-    << trUtf8 ( "Saldo ejercicio" );
-//     << trUtf8 ( "Nivel" )
-//     << trUtf8 ( "ID Cuenta" )
-//     << trUtf8 ( "ID Cuenta Padre" );
+    nombrecolumnas << _( "Cuenta" )
+    << _( "Nombre de la cuenta" )
+    << _( "Saldo anterior" )
+    << _( "Debe" )
+    << _( "Haber" )
+    << _( "Saldo" )
+    << _( "Debe ejercicio" )
+    << _( "Haber ejercicio" )
+    << _( "Saldo ejercicio" );
+//     << _( "Nivel" )
+//     << _( "ID Cuenta" )
+//     << _( "ID Cuenta Padre" );
 
     listado->setHeaderLabels ( nombrecolumnas );
 
@@ -280,7 +280,7 @@ bool BalanceTreeView::generaBalance()
     ramas = empresaBase() ->cargacursor ( query, "Ramas" );
     empresaBase() ->commit();
     if ( ramas == NULL ) {
-        mensajeInfo ( trUtf8 ( "Error con la base de datos" ) );
+        mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -317,12 +317,12 @@ bool BalanceTreeView::generaBalance()
 
     QString finicial = m_fechainicial1->text();
     if ( finicial == "" ) {
-        mensajeInfo ( trUtf8 ( "Introduzca la Fecha Inicial" ) );
+        mensajeInfo ( _( "Introduzca la Fecha Inicial" ) );
         return 0;
     }
     QString ffinal = m_fechafinal1->text();
     if ( ffinal == "" ) {
-        mensajeInfo ( trUtf8 ( "Introduzca la Fecha Final" ) );
+        mensajeInfo ( _( "Introduzca la Fecha Final" ) );
         return 0;
     }
     QString ejercicio = ffinal.right ( 4 );
@@ -333,7 +333,7 @@ bool BalanceTreeView::generaBalance()
     cursor2 *hojas;
     hojas = empresaBase() ->cargacursor ( query);
     if ( hojas == NULL ) {
-        mensajeInfo ( trUtf8 ( "Error con la base de datos" ) );
+        mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
     }
 

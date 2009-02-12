@@ -35,7 +35,7 @@ include_directories(
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr QObject::trUtf8)
+QT4_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
 
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})

@@ -18,14 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "bli18n.h"
 #include <QLocale>
+
+#include "bli18n.h"
+
 
 QString BlI18n(const char *cadena, int) {
 //    QString salida = QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
 //    fprintf(stderr, salida.toAscii());
     return QString(gettext(cadena));
 }
+
 
 QString BlI18n(const char *domain, const char *cadena) {
 //    QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");

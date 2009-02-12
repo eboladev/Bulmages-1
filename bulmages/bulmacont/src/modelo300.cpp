@@ -113,10 +113,10 @@ void Mod300ps::accept()
 
     if ( !ccc->cuentaesvalida() ) {
         switch ( QMessageBox::warning ( this,
-                                        QObject::tr ( "Formulario 300" ),
-                                        QObject::tr ( "Aviso: El numero de cuenta bancario introducido\n"
+                                        _( "Formulario 300" ),
+                                        _( "Aviso: El numero de cuenta bancario introducido\n"
                                                       "no se corresponde con un CCC correcto." ),
-                                        QObject::tr ( "Generar de todas formas" ), QObject::tr ( "Volver" ), 0,
+                                        _( "Generar de todas formas" ), _( "Volver" ), 0,
                                         0, 1 ) ) {
         case 0:
             generaps();
@@ -152,12 +152,12 @@ void Mod300ps::generaps()
     bool doit = true;
     if ( !QFile::exists ( pdfname ) ) {
         QMessageBox::warning ( this,
-                               QObject::tr ( "Formulario 300" ),
-                               QObject::tr ( "Lo siento, no encuentro el formulario original en pdf.\n"
+                               _( "Formulario 300" ),
+                               _( "Lo siento, no encuentro el formulario original en pdf.\n"
                                              "Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
                                              "/usr/share/bulmages/formularios/ o en\n"
                                              "~/.bulmages/formularios/." ),
-                               QObject::tr ( "&Aceptar" ), 0, 0, 0, 1 );
+                               _( "&Aceptar" ), 0, 0, 0, 1 );
         doit = false;
     } // end if
 

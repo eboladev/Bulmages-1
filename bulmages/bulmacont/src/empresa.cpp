@@ -701,7 +701,7 @@ void Empresa::abrirAsientos()
     cursor2 *cur = NULL;
     try {
         cur = cargacursor ( "SELECT abreasientos()" );
-        g_main->statusBar() ->showMessage ( QObject::tr ( "Se han espaciado los asientos" ), 2000 );
+        g_main->statusBar() ->showMessage ( _( "Se han espaciado los asientos" ), 2000 );
         delete cur;
         _depura ( "END Empresa::Abrirasientos", 0 );
     } catch ( ... ) {
@@ -721,7 +721,7 @@ void Empresa::cerrarAsientos()
     cursor2 *cur = NULL;
     try {
         cur = cargacursor ( "SELECT cierraasiento(idasiento) FROM asiento" );
-        g_main->statusBar() ->showMessage ( QObject::tr ( "Se han cerrado los asientos" ), 2000 );
+        g_main->statusBar() ->showMessage ( _( "Se han cerrado los asientos" ), 2000 );
         delete cur;
         _depura ( "END Empresa::cerrarAsientos", 0 );
     } catch ( ... ) {
@@ -741,7 +741,7 @@ void Empresa::Ordenarasientos()
     cursor2 *cur = NULL;
     try {
         cur = cargacursor ( query );
-        g_main->statusBar() ->showMessage ( QObject::tr ( "Se han ordenado los asientos" ), 2000 );
+        g_main->statusBar() ->showMessage ( _( "Se han ordenado los asientos" ), 2000 );
         delete cur;
         _depura ( "END Empresa::Ordenarasientos", 10 );
     } catch ( ... ) {

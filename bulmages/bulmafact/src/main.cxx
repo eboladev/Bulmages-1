@@ -66,15 +66,12 @@ int main ( int argc, char **argv )
 	setlocale(LC_ALL, "");
 	bindtextdomain ("bulmafact", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 	textdomain ("bulmafact");
-	
 
         /// Iniciamos la clase QApplication para el uso de las Qt.
         theApp = new BlApplication ( argc, argv );
 
         /// Preparamos el sistema de plugins.
         g_plugins = new Plugins();
-
-	//theApp->setStyleSheet("QPushButton:focus { background-color: green }");
 
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );

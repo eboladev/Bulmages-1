@@ -204,7 +204,7 @@ OK, aqui poden haver passat 3 coses.
 //     if (cur != NULL)
 //  resultado = cur->valor ( "saldototal" );
 //     else
-//  mensajeInfo(trUtf8("Error con la base de datos"));
+//  mensajeInfo(_("Error con la base de datos"));
 //
 //     _depura ( "END pluginCAnualesODS::saldoCuenta", 0 );
 //     return resultado;
@@ -255,7 +255,7 @@ BlFixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 //     if (cur != NULL)
 //  resultado = cur->valor ( "saldototal" );
 //     else
-//  mensajeInfo(trUtf8("Error con la base de datos"));
+//  mensajeInfo(_("Error con la base de datos"));
 //
 //     _depura ( "END pluginCAnualesODS::saldoCuentaAnt", 0 );
 //     return resultado;
