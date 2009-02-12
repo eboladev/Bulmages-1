@@ -24,13 +24,13 @@
 
 #include "empresa.h"
 #include "qtable2.h"
-#include "subform.h"
+#include "bldb.h"
 #include "blsubform.h"
-
 #include "busquedafecha2.h"
 
 
 class SubForm2Bc;
+
 
 /// Clase SubForm2BcDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
