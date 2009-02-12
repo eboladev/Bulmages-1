@@ -828,6 +828,14 @@ void extractoview1::on_mui_imprimir_clicked()
 
     QString query;
 
+
+    /// Preparamos la barra de progreso
+    BlProgressBar *barra = new BlProgressBar;
+    barra->setValue ( 0 );
+    barra->show();
+    barra->setText ( _( "Generando Extracto " )  );
+
+
     /// Tabla temporal de contrapartidas.
     QString query1 = "CREATE TEMPORARY TABLE contrapart AS select idapunte, ccontrapartida(idapunte) AS contra FROM apunte";
     empresaBase()->ejecuta(query1);
@@ -852,15 +860,20 @@ void extractoview1::on_mui_imprimir_clicked()
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
     cursor2 *curcta = empresaBase() ->cargacursor ( query );
     if ( !curcta ) return;
+   	barra->setRange ( 0, curcta->numregistros() );
+	int i = 0;
     while ( ! curcta->eof() ) {
         fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
         curcta->siguienteregistro();
+		barra->setValue ( i++ );
     }// end while
     delete curcta;
 
     /// Tabla temporal de contrapartidas.
     query1 = "DROP TABLE contrapart";
     empresaBase()->ejecuta(query1);
+
+	delete barra;
 
     buff.replace ( "[story]", fitxersortidatxt );
     if ( file.open ( QIODevice::WriteOnly ) ) {
