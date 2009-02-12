@@ -666,6 +666,11 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
         query = "SELECT * FROM ((SELECT " + cont + ",idc_coste AS centrocoste FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
         query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.centrocoste ";
         query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
+
+if (!mui_asAbiertos->isChecked() ) {
+	query += " LEFT JOIN (SELECT idapunte AS id, idcuenta AS idcuentacontra, codigo AS codcontrapartida, descripcion AS desccontrapartida FROM contrapart LEFT JOIN cuenta ON contrapart.contra = cuenta.idcuenta) AS t7 ON t7.id = t1.idapunte ";
+}
+
         query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
 
         cursorapt = empresaBase() ->cargacursor ( query );
@@ -673,7 +678,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
 
         /// Cargamos los saldos iniciales.
         cursor2 *cursoraux;
-        query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
+        query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM " +tabla+ " WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
         cursoraux = empresaBase() ->cargacursor ( query );
         if ( !cursoraux ) {
             delete cursorapt;
@@ -685,35 +690,28 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
             saldoinicial = debeinicial - haberinicial;
             debefinal = debeinicial;
             haberfinal = haberinicial;
+	    saldofinal = saldoinicial;
         } // end if
         delete cursoraux;
 
-        /// Presentamos la informacion inicial y de la cuenta.
+        /// Presentamos la informaciÃ³n inicial y de la cuenta.
         cursor2 *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
         if ( !cursorcta ) throw - 1;
 
-        salida += "<blockTable>\n";
+
+        salida += "<blockTable style=\"tabla\">\n";
         salida += "<tr>";
-        salida += "<td> Codigo: " + cursorcta->valor ( "codigo" ) + " </td>";
-        salida += "<td> Fecha Inicial: " + finicial + " </td>";
-        salida += "<td> Fecha Final: " + ffinal + " </td>";
+        salida += "<td> " + cursorcta->valor ( "codigo" ) + " -" +cursorcta->valor ( "descripcion" )+ " </td>";
         salida += "<td> Debe Inicial: " + debeinicial.toQString() + " </td>";
-        salida += "<td> Debe Final: " + haberinicial.toQString() + " </td>";
-        salida += "</tr>";
-        salida += "<tr>";
-        salida += "<td> Cuenta: " + cursorcta->valor ( "descripcion" ) + " </td>";
-        salida += "<td> </td>";
-        salida += "<td> </td>";
-        salida += "<td> </td>";
-        salida += "<td> </td>";
+        salida += "<td> Haber Inicial: " + haberinicial.toQString() + " </td>";
+        salida += "<td> Saldo Inicial: "+ saldoinicial.toQString() +"</td>";
         salida += "</tr>";
         salida += "</blockTable>\n";
-        salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
 
         delete cursorcta;
         /// Aqui va la impresion pero con cabeceras.
-//        salida += "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
-        salida += "<blockTable repeatRows=\"1\">\n";
+
+        salida += "<blockTable style=\"tablaextracto\" repeatRows=\"1\">\n";
         salida += "<tr>\n";
         salida += "<td> Fecha </td>";
         salida += "<td> Asiento </td>";
@@ -721,44 +719,59 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
         salida += "<td> Debe </td>";
         salida += "<td> Haber </td>";
         salida += "<td> Saldo </td>";
+if (!mui_asAbiertos->isChecked() ) {
 	salida += "<td> Contrapartida </td>";
+} // end if
         salida += "</tr>\n";
 
+
+		salida +=  "<tr>\n";
+		salida +=  "<td></td>";
+		salida +=  "<td></td>";
+		salida +=  "<td> Inicial:</td>";
+	        salida += "<td>" + debeinicial.toQString() + " </td>\n";
+	        salida += "<td>" + haberinicial.toQString() + " </td>\n";
+	        salida += "<td>" + saldoinicial.toQString() + "</td>\n";
+		salida +=  "<td></td>";
+		salida +=  "</tr>\n";
+
         while ( ! cursorapt->eof() ) {
-            saldofinal = saldofinal + BlFixed ( cursorapt->valor ( "debe" ) ) - BlFixed ( cursorapt->valor ( "haber" ) );
+
             debefinal = debefinal + BlFixed ( cursorapt->valor ( "debe" ) );
             haberfinal = haberfinal + BlFixed ( cursorapt->valor ( "haber" ) );
+	    saldofinal = debefinal - haberfinal;
 
-	    QString contrapartida = "SELECT *, cuenta.descripcion AS desccuenta FROM (SELECT * FROM apunte WHERE idapunte = bcontrapartida("+cursorapt->valor("idapunte")+")) AS t1 LEFT JOIN cuenta ON t1.idcuenta = cuenta.idcuenta";
-	    cursor2 *cur = empresaBase()->cargacursor(contrapartida);
-		
-
-            salida +=  "<tr>\n";
-            salida +=  "<td>" + cursorapt->valor ( "fecha" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "ordenasiento" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "conceptocontable" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "debe" ) + "</td>";
-            salida +=  "<td>" + cursorapt->valor ( "haber" ) + "</td>";
-            salida +=  "<td>" + saldofinal.toQString() + "</td>";
-            salida +=  "<td>" + cur->valor("codigo") + " - " +cur->valor("desccuenta") + " - "+ cur->valor("descripcion") + "</td>";
-            salida +=  "</tr>\n";
-
-	    delete cur;
+		salida +=  "<tr>\n";
+		salida +=  "<td>" + cursorapt->valor ( "fecha" ) + "</td>";
+		salida +=  "<td>" + cursorapt->valor ( "ordenasiento" ) + "</td>";
+		salida +=  "<td>" + cursorapt->valor ( "conceptocontable" ) + "-" + cursorapt->valor("descripcion") +"</td>";
+		salida +=  "<td>" + cursorapt->valor ( "debe" ) + "</td>";
+		salida +=  "<td>" + cursorapt->valor ( "haber" ) + "</td>";
+		salida +=  "<td>" + saldofinal.toQString() + "</td>";
+if (!mui_asAbiertos->isChecked() ) {
+		salida +=  "<td>" + cursorapt->valor("codcontrapartida") + " - "+ cursorapt->valor("desccontrapartida") + "</td>";
+} // end if
+		salida +=  "</tr>\n";
+//	    } // end if
+//	    delete cur;
             cursorapt->siguienteregistro();
         } // end while
+
+
+
+		salida +=  "<tr>\n";
+		salida +=  "<td></td>";
+		salida +=  "<td></td>";
+		salida +=  "<td> Final:</td>";
+	        salida += "<td>" + debefinal.toQString() + " </td>\n";
+	        salida += "<td>" + haberfinal.toQString() + " </td>\n";
+	        salida += "<td>" + saldofinal.toQString() + "</td>\n";
+		salida +=  "<td></td>";
+		salida +=  "</tr>\n";
 
         salida += "</blockTable>\n";
 
         salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
-
-
-        salida += "<blockTable>\n";
-        salida += "<tr>\n";
-        salida += "<td> Debe Final: " + debefinal.toQString() + " </td>\n";
-        salida += "<td> Haber Final: " + haberfinal.toQString() + " </td>\n";
-        salida += "<td> Saldo Final: " + saldofinal.toQString() + "</td>\n";
-        salida += "</tr>\n";
-        salida += "</blockTable>\n";
 
         delete cursorapt;
         _depura ( "END extractoview1::imprimeExtractoCuenta", 0 );
@@ -777,7 +790,8 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
 void extractoview1::on_mui_imprimir_clicked()
 {
     _depura ( "extractoview1::on_mui_imprimir_clicked", 0 );
-
+    QString finicial = m_fechainicial1->text();
+    QString ffinal = m_fechafinal1->text();
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "extracto.rml";
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -813,6 +827,12 @@ void extractoview1::on_mui_imprimir_clicked()
     QString codfinal = m_codigofinal->codigocuenta();
 
     QString query;
+
+    /// Tabla temporal de contrapartidas.
+    QString query1 = "CREATE TEMPORARY TABLE contrapart AS select idapunte, ccontrapartida(idapunte) AS contra FROM apunte";
+    empresaBase()->ejecuta(query1);
+
+
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
     /// nosotros.
     if ( codinicial == "" ) {
@@ -821,17 +841,26 @@ void extractoview1::on_mui_imprimir_clicked()
     if ( codfinal == "" ) {
         codfinal = "9999999";
     } // end if
+
+        fitxersortidatxt += "<blockTable>\n";
+        fitxersortidatxt += "<tr>\n";
+	fitxersortidatxt += "<td> Fecha Inicial: " + finicial + " </td>";
+ 	fitxersortidatxt += "<td> Fecha Final: " + ffinal + " </td>";
+        fitxersortidatxt += "</tr>\n";
+        fitxersortidatxt += "</blockTable>\n";
+
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
     cursor2 *curcta = empresaBase() ->cargacursor ( query );
     if ( !curcta ) return;
     while ( ! curcta->eof() ) {
         fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
         curcta->siguienteregistro();
-//        if ( ! curcta->eof() )
-//            fitxersortidatxt += "<nextFrame/><nextPage/>";
     }// end while
     delete curcta;
 
+    /// Tabla temporal de contrapartidas.
+    query1 = "DROP TABLE contrapart";
+    empresaBase()->ejecuta(query1);
 
     buff.replace ( "[story]", fitxersortidatxt );
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -843,4 +872,3 @@ void extractoview1::on_mui_imprimir_clicked()
     invocaPDF ( "extracto" );
     _depura ( "END extractoview1::on_mui_imprimir_clicked", 0 );
 }
-
