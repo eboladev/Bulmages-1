@@ -26,7 +26,7 @@
 
 #include "empresatpv.h"
 #include "qtable2.h"
-#include "subform.h"
+#include "bldbsubform.h"
 #include "blsubform.h"
 #include "bldoublespinbox.h"
 

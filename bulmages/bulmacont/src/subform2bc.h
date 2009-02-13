@@ -24,7 +24,7 @@
 
 #include "empresa.h"
 #include "qtable2.h"
-#include "subform.h"
+#include "bldbsubform.h"
 #include "blsubform.h"
 
 #include "busquedafecha2.h"

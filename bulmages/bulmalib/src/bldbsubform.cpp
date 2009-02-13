@@ -24,7 +24,7 @@
 #include <QLocale>
 #include <QRegExp>
 
-#include "subform.h"
+#include "bldbsubform.h"
 #include "blsubform.h"
 
 
@@ -236,5 +236,4 @@ SDBRecord *SDBCampo::pare()
     _depura ( "END SDBCampo::pare", 0 );
     return m_pare;
 }
-
 
