@@ -27,7 +27,6 @@
 #include <QIcon>
 #include <QApplication>
 #include <QObject>
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
 
@@ -116,16 +115,10 @@ void myplugin4::inicializa ( Bulmacont *bges )
 void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "entryPoint::entryPoint", 0 );
-    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-    QTranslator *traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "pluginbalancetree_" ) + QLocale::system().name(),
-                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "pluginbalancetree_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    theApp->installTranslator ( traductor );
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("pluginbalancetree", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );

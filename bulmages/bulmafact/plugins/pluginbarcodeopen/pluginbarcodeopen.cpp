@@ -20,17 +20,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <stdio.h>
+
 #include <QMenu>
 #include <QAction>
 #include <QObject>
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QStringList>
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
-
-#include <stdio.h>
 
 #include "pluginbarcodeopen.h"
 #include "company.h"
@@ -180,17 +179,6 @@ void entryPoint ( Bulmafact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginbarcodeopen", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-
-    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-    QTranslator *traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "pluginbarcodeopen_" ) + QLocale::system().name(),
-                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "pluginbarcodeopen_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    theApp->installTranslator ( traductor );
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );

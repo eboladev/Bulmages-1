@@ -27,7 +27,6 @@
 #include <iomanip>
 #include <stdlib.h>
 
-#include <QTranslator>
 #include <QString>
 #include <QMap>
 

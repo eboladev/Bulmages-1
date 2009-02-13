@@ -24,10 +24,8 @@
 #include "funcaux.h"
 #include "blprogressbar.h"
 
-
 #include <QFile>
 #include <QTextStream>
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
 
@@ -44,7 +42,6 @@ int entryPoint ( QApplication * )
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginsubformsxc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
-    cargaTraducciones ( "pluginsubformsxc" );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
     return 0;
 }

@@ -27,18 +27,12 @@
 #include <QIcon>
 #include <QApplication>
 #include <QObject>
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
 
 #include "pluginbalance.h"
 #include "balanceview.h"
 #include "empresa.h"
-
-
-
-
-
 
 
 ///
@@ -108,10 +102,7 @@ void pluginbalancemyplugin4::inicializa ( Bulmacont *bges )
 }
 
 
-
 ///
-
-
 /**
 \param bcont
 **/
@@ -122,17 +113,6 @@ void entryPoint ( Bulmacont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginbalance-old", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-
-    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-    QTranslator *traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "pluginbalance_" ) + QLocale::system().name(),
-                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "pluginbalance_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    theApp->installTranslator ( traductor );
 
     pluginbalancemyplugin4 *plug = new pluginbalancemyplugin4();
     plug->inicializa ( bcont );

@@ -25,7 +25,6 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QTabWidget>
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
 
@@ -48,17 +47,6 @@ int entryPoint ( Bulmafact *bges )
     setlocale(LC_ALL, "");
     bindtextdomain ("plugincomercialbf", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     
-    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-    QTranslator *traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "comercialbf_" ) + QLocale::system().name(),
-                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "comercialbf_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    theApp->installTranslator ( traductor );
-
     mypluginbf *plug = new mypluginbf();
     plug->inicializa ( bges );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );

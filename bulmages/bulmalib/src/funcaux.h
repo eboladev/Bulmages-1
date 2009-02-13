@@ -111,7 +111,6 @@ void generaPYS ( const QString arch );
 
 QString num2texto ( QString numero, QString moneda = "euros", QString singular = "euro" );
 void centrarEnPantalla ( QWidget *ventana );
-void cargaTraducciones ( const QString &traduccion );
 QString windowID ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
 QString parsearCode ( const QString &cad );

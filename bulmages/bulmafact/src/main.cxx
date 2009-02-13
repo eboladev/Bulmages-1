@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
 #include <QDir>
@@ -48,7 +47,6 @@
 
 BlApplication *theApp;
 Bulmafact *bges;
-QTranslator *traductor;
 
 
 /// Inicio de ejecucion del programa.
@@ -78,37 +76,6 @@ int main ( int argc, char **argv )
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
         theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
-
-        /// Cargamos el sistema de traducciones.
-        traductor = new QTranslator ( 0 );
-
-        /// La funcion QLocale::system().name() devuelve el codigo en formato
-        /// 'es_ES' de idioma y pais.
-        /// El orden de busqueda del archivo de traduccion es:
-        /// 1) bulmalib_es_ES.qm
-        /// 2) bulmalib_es_ES
-        /// 3) bulmalib_es.qm
-        /// 4) bulmalib_es
-        /// 5) bulmalib_.qm
-        /// 6) bulmalib_
-        /// Cogemos traducciones de bulmalib
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } else {
-            QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } // end if
-        theApp->installTranslator ( traductor );
-
-        /// Cogemos traducciones de bulmafact
-        traductor = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmafact_" ) + QLocale::system().name(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } else {
-            QString archivo = "bulmafact_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo.toAscii().constData(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } // end if
-        theApp->installTranslator ( traductor );
 
         /// Cargamos el BlSplashScreen.
         BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMAFACT ), "BulmaFact", CONFIG_VERSION );
@@ -176,39 +143,12 @@ int main ( int argc, char **argv )
 			bges->workspace()->setBackground(QBrush( QImage(confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
 		} // end if
 
-        splashScr->mensaje ( _( "Cargando traducciones" ) );
-        splashScr->setBarraProgreso ( 3 );
-
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        traductor = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
-                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } else {
-            QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } // end if
-        theApp->installTranslator ( traductor );
-
-        traductor = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmafact_" ) + QLocale::system().name(),
-                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } else {
-            QString archivo = "bulmafact_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo.toAscii().constData(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } // end if
-        theApp->installTranslator ( traductor );
-
-
 	/// Hacemos la carga de las hojas de estilo.
 	QFile arch(confpr->valor(CONF_STYLESHEET));
 	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
 	  QString style = arch.readAll();
 	  theApp->setStyleSheet(style);
 	} // end if
-
-
 
         splashScr->mensaje ( _( "Cargando plugins" ) );
         splashScr->setBarraProgreso ( 4 );
@@ -246,7 +186,6 @@ int main ( int argc, char **argv )
     /// Liberamos memoria.
     delete bges;
     delete theApp;
-    delete traductor;
     delete confpr;
 
     return 0;

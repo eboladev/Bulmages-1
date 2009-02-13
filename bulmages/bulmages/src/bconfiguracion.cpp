@@ -102,8 +102,7 @@ void BConfiguracion::cerrar()
     } // end for
 
     confpr->saveconfig();
-    //traductor->load(archivo.c_str(), confpr->valor(CONF_DIR_TRADUCCION).c_str());
-    //Cargo la nueva fuente
+
     close();
     _depura ( "END BConfiguracion::cerrar", 0 );
 }

@@ -18,17 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <stdio.h>
+
 #include <QMenu>
 #include <QAction>
 #include <QObject>
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QStringList>
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
-
-#include <stdio.h>
 
 #include "plugincuadrante.h"
 #include "company.h"
@@ -132,17 +131,6 @@ void entryPoint ( Bulmafact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("plugincuadrante", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-
-    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-    QTranslator *traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "plugincuadrante_" ) + QLocale::system().name(),
-                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "plugincuadrante_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    theApp->installTranslator ( traductor );
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bges );
@@ -297,6 +285,4 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     l->guardar();
     return 0;
 }
-
-
 

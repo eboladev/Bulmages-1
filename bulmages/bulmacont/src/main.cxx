@@ -26,7 +26,6 @@
 #include <QFont>
 #include <QString>
 #include <QTextCodec>
-#include <QTranslator>
 #include <QLibrary>
 #include <QLocale>
 
@@ -55,9 +54,6 @@
 /// Estas son las variables globales de la aplicaci&oacute;n.
 /// El puntero de la aplicaci&oacute;n.
 BlApplication *theApp;
-/// El traductor.
-QTranslator *traductorLib;
-QTranslator *traductor;
 
 /// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
 
@@ -95,45 +91,6 @@ int main ( int argc, char **argv )
         /// Definimos la codificaci&oacute;n a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
-        /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
-        traductorLib = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            success = traductorLib->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
-                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
-			if(!success)
- 			{
-	 			std::cout << "Error al cargar el qm: " << "  " << std::endl;
-
- 			}	
-        } else {
-            QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
-            success = traductorLib->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
-			if(!success)
- 			{
- 				std::cout << "Error al cargar el qm: " <<  "  " << archivo.toStdString ()  << std::endl;
- 			}	
-        } // end if
-        theApp->installTranslator ( traductor );
-
-        traductor = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            success = traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
-                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
-			if(!success)
- 			{
- 				std::cout << "Error al cargar el qm: " << std::endl;
-			}	
-        
-		} else {
-            QString archivo = "bulmacont_" + confpr->valor ( CONF_TRADUCCION );
-            bool success = traductor->load ( archivo.toAscii(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
- 			if(!success)
- 			{
- 				std::cout << "Error al cargar el qm: " << "  " << archivo.toStdString () << std::endl;
- 			}	
-         
-	} // end if
-        theApp->installTranslator ( traductor );
 
         /// Cargamos el BlSplashScreen.
         BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", CONFIG_VERSION );
@@ -191,31 +148,6 @@ int main ( int argc, char **argv )
 	    bges->workspace()->setBackground(QBrush( QImage(confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
 	} // end if
 
-
-        splashScr->mensaje ( _( "Cargando traducciones" ) );
-        splashScr->setBarraProgreso ( 3 );
-
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        traductor = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
-                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } else {
-            QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } // end if
-        theApp->installTranslator ( traductor );
-
-        traductor = new QTranslator ( 0 );
-        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
-                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } else {
-            QString archivo = "bulmacont_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo.toAscii().constData(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-        } // end if
-        theApp->installTranslator ( traductor );
-
 	/// Hacemos la carga de las hojas de estilo.
 	QFile arch(confpr->valor(CONF_STYLESHEET));
 	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -238,7 +170,6 @@ int main ( int argc, char **argv )
         bges->empresaactual() ->createMainWindows ( splashScr );
 
         bges->show();
-
         delete splashScr;
 
         valorsalida = theApp->exec();
@@ -253,7 +184,6 @@ int main ( int argc, char **argv )
     /// Liberamos memoria.
     delete bges;
     delete theApp;
-    delete traductor;
     delete confpr;
 
     fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );

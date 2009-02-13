@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
 
@@ -34,9 +33,6 @@
 /// Instancia de la aplicacion. Usada en algunos casos para acceder a determinadas
 /// funcionalidades como la traduccion.
 BlApplication *theApp;
-/// Instancia de la traduccion que se carga en tiempo de ejecucion y que se usa
-/// de forma global.
-QTranslator *traductor;
 
 
 /// Crea el objeto base y lo lanza, tambien comprueba si se ha lanzado la
@@ -53,6 +49,11 @@ int main ( int argc, char **argv )
     Q_INIT_RESOURCE ( bulmages );
     theApp = &a;
 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    bindtextdomain ("bulmages", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    textdomain ("bulmages");
+
     /// Preparamos el sistema de plugins.
     g_plugins = new Plugins();
 
@@ -62,33 +63,11 @@ int main ( int argc, char **argv )
 
     theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
-    /// Set the location where your .qm files are in load() below as the last parameter
-    /// instead of "." for development, use "/" to use the english original as
-    /// .qm files are stored in the base project directory.
-    traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    a.installTranslator ( traductor );
-
-    traductor = new QTranslator ( 0 );
-    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "bulmages_" ) + QLocale::system().name(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } else {
-        QString archivo = "bulmages_" + confpr->valor ( CONF_TRADUCCION );
-        traductor->load ( archivo.toAscii().constData(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    } // end if
-    a.installTranslator ( traductor );
-
     /// Hacemos la carga de las librerias que contienen los plugins.
     g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMAGES ) );
 
     /// Disparamos los plugins con entryPoint.
     g_plugins->lanza ( "entryPoint", theApp );
-
 
     BSelector *bw = new BSelector();
     bw->setWindowTitle ( _( "Selector de BulmaGes" ) );
