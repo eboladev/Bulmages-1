@@ -1157,7 +1157,7 @@ void BlSubForm::ponItemColorFondo ( QTableWidget *twidget, int filainicial, int 
 /**
 \param cur
 **/
-void BlSubForm::cargar ( cursor2 *cur )
+void BlSubForm::cargar ( BlDbRecordSet *cur )
 {
     _depura ( "BlSubForm::cargar", 0, objectName() );
     m_procesacambios = FALSE;
@@ -1425,7 +1425,7 @@ void BlSubForm::cargar ( QString query )
         } // end if
         int offset = limit * ( pagact - 1 );
 
-        cursor2 *cur = empresaBase() ->cargacursor ( query, "", limit, offset );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "", limit, offset );
         cargar ( cur );
         delete cur;
     } catch ( ... ) {

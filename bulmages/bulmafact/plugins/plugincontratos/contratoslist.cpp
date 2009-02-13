@@ -374,7 +374,7 @@ void ContratosList::on_mui_configurar_toggled ( bool checked )
 void ContratosList::on_mui_facturar_clicked()
 {
     _depura ( "ContratosList::on_mui_facturar", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     try {
         QString where;
 

@@ -55,7 +55,7 @@ Mod300ps::Mod300ps ( QWidget *parent ) : QDialog ( parent )
 
     metabase->begin();
     fprintf ( stderr, "%s\n", query.toAscii().constData() );
-    cursor2 *cur = metabase->cargacursor ( query, "bancos" );
+    BlDbRecordSet *cur = metabase->cargacursor ( query, "bancos" );
 
     int nTuples = cur->numregistros();
     nombresccc = new QString[nTuples];

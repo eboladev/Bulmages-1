@@ -51,7 +51,7 @@ linprevcobro::linprevcobro ( Empresa *comp, QString idprevcobro )
                        "LEFT JOIN  cuenta ON prevcobro.idcuenta = cuenta.idcuenta "
                        "LEFT JOIN (SELECT codigo AS codigoctacliente, descripcion AS nomctacliente, idcuenta AS idctacliente FROM cuenta) AS T1 ON T1.idctacliente = prevcobro.idctacliente "
                        "WHERE idprevcobro = " + idprevcobro;
-    cursor2 *cur = conexionbase->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = conexionbase->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_idprevcobro = cur->valor ( "idprevcobro" );
         mdb_fprevistaprevcobro = cur->valor ( "fprevistaprevcobro" );
@@ -204,7 +204,7 @@ void linprevcobro::guardalinprevcobro()
                            conexionbase->sanearCadena ( mdb_idctacliente ) + ")";
         conexionbase->begin();
         conexionbase->ejecuta ( SQLQuery );
-        cursor2 *cur = conexionbase->cargacursor ( "SELECT MAX(idprevcobro) AS m FROM prevcobro " );
+        BlDbRecordSet *cur = conexionbase->cargacursor ( "SELECT MAX(idprevcobro) AS m FROM prevcobro " );
         if ( !cur->eof() ) {
             mdb_idprevcobro = cur->valor ( "m" );
         } // end if
@@ -242,7 +242,7 @@ void linprevcobro::setcodigocuenta ( QString val )
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
     mdb_codigocuenta = extiendecodigo ( val, empresaactual->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
-    cursor2 *cur = conexionbase->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = conexionbase->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_nomcuenta = cur->valor ( "descripcion" );
         mdb_idcuenta = cur->valor ( "idcuenta" );
@@ -262,7 +262,7 @@ void linprevcobro::setidcuenta ( QString val )
     fprintf ( stderr, "setidcuenta(%s)\n", val.toAscii().constData() );
     mdb_idcuenta = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idcuenta + "";
-    cursor2 *cur = conexionbase->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = conexionbase->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_nomcuenta = cur->valor ( "descripcion" );
         mdb_codigocuenta = cur->valor ( "codigo" );
@@ -303,7 +303,7 @@ int linprevcobro::creaPago()
     if ( tipo == "t" ) {
         /// Buscamos cual es el asiento inteligente que realiza los cobros.
         QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion = valor AND configuracion.nombre = 'Cobro'";
-        cursor2 *cur = conexionbase->cargacursor ( query );
+        BlDbRecordSet *cur = conexionbase->cargacursor ( query );
         if ( !cur->eof() ) {
             idainteligente = cur->valor ( "idainteligente" );
         } else {
@@ -313,7 +313,7 @@ int linprevcobro::creaPago()
     } else {
         /// Buscamos cual es el asiento inteligente que realiza los pagos.
         QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion = valor AND configuracion.nombre = 'Pago'";
-        cursor2 *cur = conexionbase->cargacursor ( query );
+        BlDbRecordSet *cur = conexionbase->cargacursor ( query );
         if ( !cur->eof() ) {
             idainteligente = cur->valor ( "idainteligente" );
         } else {
@@ -365,7 +365,7 @@ void linprevcobro::setcodigoctacliente ( QString val )
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
     mdb_codigoctacliente = extiendecodigo ( val, empresaactual->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
-    cursor2 *cur = conexionbase->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = conexionbase->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_nomctacliente = cur->valor ( "descripcion" );
         mdb_idctacliente = cur->valor ( "idcuenta" );
@@ -385,7 +385,7 @@ void linprevcobro::setidctacliente ( QString val )
     fprintf ( stderr, "setidcuenta(%s)\n", val.toAscii().constData() );
     mdb_idctacliente = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idctacliente + "";
-    cursor2 *cur = conexionbase->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = conexionbase->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_nomctacliente = cur->valor ( "descripcion" );
         mdb_codigoctacliente = cur->valor ( "codigo" );

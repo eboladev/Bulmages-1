@@ -141,7 +141,7 @@ void BusquedaSerieFactura::setEmpresaBase ( Company *comp )
 {
     _depura ( "BusquedaSerieFactura::setEmpresaBase", 0 );
     PEmpresaBase::setEmpresaBase ( comp );
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
     if ( !cur ) return;
     if ( !cur->eof() ) {
         m_codigoserie_factura = cur->valor ( "valor" );

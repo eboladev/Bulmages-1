@@ -132,7 +132,7 @@ void GenPreQToolButton::generarFactura()
         return;
 
     FacturaView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -260,7 +260,7 @@ void GenPreQToolButton::generarFactura1()
 
 
     FacturaView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -389,7 +389,7 @@ void GenPreQToolButton::generarFactura2()
 
 
     FacturaView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -578,7 +578,7 @@ void VerPreQToolButton::verPresupuesto()
 	PedidoClienteView *fpv = (PedidoClienteView *) m_object;
 
     PresupuestoView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta

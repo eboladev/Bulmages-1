@@ -102,7 +102,7 @@ void EmailQToolButton::click()
         QString ref = m_presupuestoView->DBvalue ( "refpresupuesto" );
         QString idcliente = m_presupuestoView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor ( query );
+        BlDbRecordSet *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
 	delete curs;
 
@@ -128,7 +128,7 @@ void EmailQToolButton::click()
 
         QString idcliente = m_pedidoClienteView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor ( query );
+        BlDbRecordSet *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
 	delete curs;
 
@@ -155,7 +155,7 @@ void EmailQToolButton::click()
 
         QString idcliente = m_albaranClienteView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor ( query );
+        BlDbRecordSet *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
 	delete curs;
 
@@ -184,7 +184,7 @@ void EmailQToolButton::click()
 
         QString idcliente = m_facturaView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor ( query );
+        BlDbRecordSet *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
 	delete curs;
 

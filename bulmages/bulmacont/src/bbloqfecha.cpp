@@ -121,7 +121,7 @@ void BbloqFecha::inicializa()
 
     /// Consultamos a la base de datos.
     consultabd.sprintf ( "SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC" );
-    cursor2 *curPeri, *curEjer = empresaBase() ->cargacursor ( consultabd );
+    BlDbRecordSet *curPeri, *curEjer = empresaBase() ->cargacursor ( consultabd );
 
     while ( !curEjer->eof() ) {
 
@@ -238,7 +238,7 @@ void BbloqFecha::on_mui_crear_clicked()
 
     /// Miramos si ya hay ejercicios introducidos y si es asi cogemos el siguiente como referencia.
     QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    cursor2 *cur = empresaBase()->cargacursor ( consultabd );
+    BlDbRecordSet *cur = empresaBase()->cargacursor ( consultabd );
     if ( cur ) {
         if ( !cur->eof() ) {
             if ( cur->valor ( "ej" ).toInt() != 0 )

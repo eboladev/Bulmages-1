@@ -106,7 +106,7 @@ void ccosteview::repintar()
     QMap <int, QTreeWidgetItem *> Lista;
     int padre;
     int idc_coste1 = 0;
-    cursor2 *cursoraux1, *cursoraux2;
+    BlDbRecordSet *cursoraux1, *cursoraux2;
 
     /// Vaciamos el &aacute;rbol.
     mui_list->clear();
@@ -245,7 +245,7 @@ void ccosteview::on_mui_crear_clicked()
         empresaBase() ->ejecuta ( query );
     } // end if
     query.sprintf ( "SELECT MAX(idc_coste) AS id_coste FROM c_coste" );
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     idc_coste = atoi ( cur->valor ( "id_coste" ).toAscii() );
     delete cur;
     empresaBase() ->commit();

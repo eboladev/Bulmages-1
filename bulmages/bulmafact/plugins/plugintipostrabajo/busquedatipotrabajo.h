@@ -40,7 +40,7 @@ class BusquedaTipoTrabajoDelegate : public BlComboBox
 
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaTipoTrabajoDelegate ( QWidget *parent = 0 );
@@ -59,7 +59,7 @@ class BusquedaTipoTrabajo : public QComboBox, public PEmpresaBase
 
 private:
     /// El puntero a company para que se pueda trabajar con la base de datos.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     /// Indica cual es el codigo de almacen por defecto.
     QString m_idtipotrabajo;
 

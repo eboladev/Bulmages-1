@@ -39,8 +39,8 @@ private:
 public:
     EFQToolButton ( FacturaView *fac, QWidget *parent = 0 );
     ~EFQToolButton();
-    void escribe_descuento_factura ( QString &string, cursor2 *descuentos_factura, BlFixed bimpfactura );
-    void escribe_linea_factura ( QString &string, cursor2 *lfactura, int numerolinea );
+    void escribe_descuento_factura ( QString &string, BlDbRecordSet *descuentos_factura, BlFixed bimpfactura );
+    void escribe_linea_factura ( QString &string, BlDbRecordSet *lfactura, int numerolinea );
     void exporta_factura_ubl();
 
 public slots:

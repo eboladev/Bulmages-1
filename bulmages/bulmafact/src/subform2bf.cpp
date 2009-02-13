@@ -140,7 +140,7 @@ void SubForm2Bf::pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp
         return;
     } // end if
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
     if ( !cur ) {
         _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
         return;
@@ -168,9 +168,9 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     m_registrolinea = rec;
     m_campoactual = camp;
 
-    cursor2 *cur2 = NULL;
-    cursor2 *cur = NULL;
-    cursor2 *cur1 = NULL;
+    BlDbRecordSet *cur2 = NULL;
+    BlDbRecordSet *cur = NULL;
+    BlDbRecordSet *cur1 = NULL;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bf_on_mui_list_editFinished", this );
@@ -352,14 +352,14 @@ void SubForm2Bf::setIdCliente ( QString id )
         return;
     } // end if
 
-    cursor2 *curcliente = empresaBase() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente );
+    BlDbRecordSet *curcliente = empresaBase() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente );
 
     if ( !curcliente->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             SDBRecord *rec = lineaat ( i );
-            cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
-            cursor2 *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+            BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
 
                 if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
@@ -413,14 +413,14 @@ void SubForm2Bf::setIdProveedor ( QString id )
         return;
     } // end if
 
-    cursor2 *curproveedor = empresaBase() ->cargacursor ( "SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor=" + mdb_idproveedor );
+    BlDbRecordSet *curproveedor = empresaBase() ->cargacursor ( "SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor=" + mdb_idproveedor );
 
     if ( !curproveedor->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             SDBRecord *rec = lineaat ( i );
-            cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
-            cursor2 *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+            BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
                 if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
                     rec->setDBvalue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
@@ -800,8 +800,8 @@ void SubForm2Bf::calculaPVP(SDBRecord *rec) {
 
 	_depura("SubForm2Bf::calculaPVP" , 0);
 
-	cursor2 *cur = NULL;
-	cursor2 *cur3 = NULL;
+	BlDbRecordSet *cur = NULL;
+	BlDbRecordSet *cur3 = NULL;
 
 	/// Saca 'codigocompletoarticulo' del SDBRecord pasado como parametro.
 	QString codigocompleto = rec->DBvalue("codigocompletoarticulo");

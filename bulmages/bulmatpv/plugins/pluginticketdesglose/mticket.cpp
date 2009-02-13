@@ -42,11 +42,11 @@ void MTicket::pintar()
     html1 += "Ticket: " + tick->DBvalue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->DBvalue ( "idtrabajador" );
-    cursor2 *curtrab = empresaBase() ->cargacursor ( querytrab );
+    BlDbRecordSet *curtrab = empresaBase() ->cargacursor ( querytrab );
     html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue ( "idcliente" );
-    cursor2 *cur1 = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query );
     html1 += "Cliente: " + tick->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
@@ -75,7 +75,7 @@ void MTicket::pintar()
     QString l;
     BlFixed irpf ( "0" );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );

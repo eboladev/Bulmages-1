@@ -82,7 +82,7 @@ void BusquedaTipoArticulo::setcodtipo_articulo ( QString val )
     _depura ( "BusquedaTipoArticulo::setcodtipo_articulo", 0 );
 
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + val + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
 
     if ( !cur->eof() ) {
         setId( cur->valor ( "idtipo_articulo" ) );

@@ -48,7 +48,7 @@ class BalanceView : public FichaBc, public Ui_BalanceBase
 
 private:
     /// Cursor para recorrer las cuentas.
-    cursor2 *m_cursorcta;
+    BlDbRecordSet *m_cursorcta;
     /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.
     int numdigitos;
     /// Array que almacena los identificadores de los centros de coste.

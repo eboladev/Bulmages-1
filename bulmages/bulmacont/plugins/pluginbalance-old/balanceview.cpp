@@ -261,7 +261,7 @@ void BalanceView::generarBalance()
     //QListViewItem1 * it;
     int num1;
     QString query;
-    cursor2 *cursorapt;
+    BlDbRecordSet *cursorapt;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString cinicial = m_codigoinicial->codigocuenta();
@@ -332,7 +332,7 @@ void BalanceView::generarBalance()
     cursorapt = empresaBase() ->cargacursor ( query );
     while ( !cursorapt->eof() ) {
         query.sprintf ( "SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor ( "idcuenta" ).toAscii().constData() );
-        cursor2 *mycur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *mycur = empresaBase() ->cargacursor ( query );
         if ( !mycur->eof() ) {
             query = "UPDATE balancetemp SET tsaldo = tsaldo + " + mycur->valor ( "tsaldo" ) + ", tdebe = tdebe + " + mycur->valor ( "tdebe" ) + ", thaber = thaber +" + mycur->valor ( "thaber" ) + ", asaldo = asaldo+" + mycur->valor ( "asaldo" ) + ", ejdebe = ejdebe + " + mycur->valor ( "ejdebe" ) + ", ejhaber = ejhaber + " + mycur->valor ( "ejhaber" ) + ", ejsaldo = ejsaldo + " + mycur->valor ( "ejsaldo" ) + " WHERE idcuenta = " + mycur->valor ( "padre" );
             empresaBase() ->ejecuta ( query );
@@ -511,7 +511,7 @@ void BalanceView::on_mui_hojacalculo_clicked()
 
 /// Generamos el query
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
-    cursor2 *cursorapt1 = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cursorapt1 = empresaBase() ->cargacursor ( query );
 
     int y = 1;
     int x = 1;

@@ -155,7 +155,7 @@ int RegistroIva::cargar ( QString id )
     _depura ( "RegistroIva::cargaRegistroIva", 0 );
     int error = 0;
     QString query = "SELECT * FROM registroiva WHERE idregistroiva = " + id;
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
 
     if ( cur->error() ) error = 1;
 
@@ -232,7 +232,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         /// Montamos los querys en base a la cadena cuentas.
         QString cuentas = "";
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasIngresos'";
-        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             cuentas += cur->valor ( "valor" );
@@ -330,7 +330,7 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         /// de la factura.
         QString cuentas = "";
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasDerechos'";
-        cursor2 *cur1 = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( SQLQuery );
         if ( !cur1->eof() ) {
             cuentas += cur1->valor ( "valor" );
         } // end if
@@ -346,7 +346,7 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
 
         /// Atentos que aqu&iacute; es donde se incorpora el par&aacute;metro.
         SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO " + cuentas;
-        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
         while ( !cur->eof() ) {
             /// Ponemos la cuenta de cliente y los valores adyacentes.
             setcontrapartida ( cur->valor ( "idcuenta" ) );
@@ -399,7 +399,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
         idborrador = idapunte1;
     ///Busca entradas de IVA en la tabla registroiva.
     query.sprintf ( "SELECT * FROM registroiva WHERE idborrador = %d", idborrador );
-    cursor2 *cursoriva = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cursoriva = empresaBase() ->cargacursor ( query );
     if ( !cursoriva->eof() ) {
         /// El registro ya existe.
         cargar ( cursoriva->valor ( "idregistroiva" ) );
@@ -460,7 +460,7 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         SQLQuery =  "SELECT *, GREATEST(debe * 100 / porcentajetipoiva, haber * 100 / porcentajetipoiva)::NUMERIC(12, 1) AS baseiva, GREATEST (ivadebe, ivahaber) AS ivaiva FROM tipoiva ";
         SQLQuery += " LEFT JOIN (SELECT *, ivadebe AS debe, ivahaber AS haber FROM lacosa) AS lacosa ON tipoiva.idcuenta = lacosa.idcuenta ";
         //22/09/07 Ahora se pasa el query
-        //cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+        //BlDbRecordSet *cur = empresaBase()->cargacursor(SQLQuery);
         m_lineas->cargar ( SQLQuery );
         recalculaIva();
         _depura ( "limpiamos la base de datos" );
@@ -484,7 +484,7 @@ void RegistroIva::buscafecha ( int idborrador )
 {
     _depura ( "RegistroIva::buscafecha", 0 );
     QString SQLQuery;
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT fecha from borrador WHERE idborrador = " + QString::number ( idborrador ) );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT fecha from borrador WHERE idborrador = " + QString::number ( idborrador ) );
     if ( !cur->eof() ) {
         setffactura ( cur->valor ( "fecha" ).left ( 10 ) );
         setfemisionregistroiva ( cur->valor ( "fecha" ).left ( 10 ) );
@@ -506,7 +506,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
 {
     _depura ( "RegistroIva::buscaNumFactura", 0 );
     QString query;
-    cursor2 *recordset;
+    BlDbRecordSet *recordset;
     QString cadena;
     int numord;
     query.sprintf ( "SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador = '%i'))", idborrador );

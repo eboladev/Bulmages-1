@@ -202,7 +202,7 @@ void Asiento1View::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         unsigned int idasiento;
         QString ordenasiento, query;
         QString fecha = mui_fecha->text();
-        cursor2 *cur;
+        BlDbRecordSet *cur;
         empresaBase() ->begin();
         if ( nuevoordenasiento == "" ) {
             QString query = "SELECT COALESCE(MAX(ordenasiento) + 1, 1) AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left ( 10 ).right ( 4 ) + "'";
@@ -321,7 +321,7 @@ void Asiento1View::boton_cargarasiento()
     _depura ( "Asiento1View::boton_cargarasiento", 0 );
     QString idas = "";
     QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = " + mui_ordenasiento->text() + " ORDER BY ordenasiento DESC";
-    cursor2 *curs = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *curs = empresaBase() ->cargacursor ( query );
     if ( !curs->eof() ) {
         idas = curs->valor ( "idasiento" );
         cargar ( idas );
@@ -916,7 +916,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "')";
         empresaBase() ->ejecuta ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
-        cursor2 *cur = empresaBase() ->cargacursor ( supquery );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( supquery );
         int idasiento = cur->valor ( "id" ).toInt();
         delete cur;
 
@@ -1021,7 +1021,7 @@ void Asiento1View::asiento_cierre ( QString finicial, QString ffinal )
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "')";
         empresaBase() ->ejecuta ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
-        cursor2 *cur = empresaBase() ->cargacursor ( supquery );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( supquery );
         int idasiento = cur->valor ( "id" ).toInt();
         delete cur;
 
@@ -1033,7 +1033,7 @@ void Asiento1View::asiento_cierre ( QString finicial, QString ffinal )
         QString query = "SELECT t1.codigo, t1.idcuenta, sum(t1.debe) AS sumdebe, sum(t1.haber) AS sumhaber, sum(t1.debe)-sum(t1.haber) AS saldito FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcuenta, t1.codigo ORDER BY saldito";
 
 //        QString query = "SELECT codigo, idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%')  AND fecha <= '" + ffinal + "' AND fecha >= '" + finicial + "' GROUP BY idcuenta ORDER BY saldito";
-        cursor2 *cursor = empresaBase() ->cargacursor ( query, "cursor" );
+        BlDbRecordSet *cursor = empresaBase() ->cargacursor ( query, "cursor" );
 
         int orden = 0;
         QString concepto = "Asiento de Cierre";
@@ -1089,7 +1089,7 @@ void Asiento1View::asiento_apertura ( QString ffinal )
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Apertura " + ffinal + "', 'Asiento de Apertura " + ffinal + "')";
         empresaBase() ->ejecuta ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
-        cursor2 *cur = empresaBase() ->cargacursor ( supquery );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( supquery );
         int idasiento = cur->valor ( "id" ).toInt();
         delete cur;
 

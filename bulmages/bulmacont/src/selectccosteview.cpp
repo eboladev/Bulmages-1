@@ -71,7 +71,7 @@ void SelectCCosteView::cargacostes()
     QTreeWidgetItem *item;
     int padre;
     int idc_coste = 0;
-    cursor2 *cursoraux1, *cursoraux2;
+    BlDbRecordSet *cursoraux1, *cursoraux2;
 
     /// Cogemos los centros de coste principales y los ponemos donde toca.
     mui_listCostes->clear();

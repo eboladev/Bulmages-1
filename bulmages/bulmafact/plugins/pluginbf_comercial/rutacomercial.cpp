@@ -84,7 +84,7 @@ int RutaComercial::cargar ( QString id )
 {
     _depura ( "RutaComercial::cargar", 0 );
     QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() )  {
         DBload ( cur );
     }

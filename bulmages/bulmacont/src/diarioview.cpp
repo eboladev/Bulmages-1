@@ -195,7 +195,7 @@ void DiarioView::accept()
 void DiarioView::presentar()
 {
     _depura ( "DiarioView::presentar", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     try {
         QString tabla = "apunte";
         QString tabla2 = "";

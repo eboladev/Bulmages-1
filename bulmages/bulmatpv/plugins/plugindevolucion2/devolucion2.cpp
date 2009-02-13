@@ -28,7 +28,7 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, pa
         QString l;
         BlFixed irpf ( "0" );
 
-        cursor2 *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+        BlDbRecordSet *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -122,7 +122,7 @@ void Devolucion::on_mui_refLineEdit_returnPressed()
 
     QString query1 = "SELECT * FROM albaran WHERE refalbaran = '" + mui_refLineEdit->text() + "'";
 
-    cursor2 *curs = empresaBase()->cargacursor ( query1 );
+    BlDbRecordSet *curs = empresaBase()->cargacursor ( query1 );
     if ( !curs->eof() ) {
         m_ticket = new Ticket ( empresaBase(), NULL );
         m_ticket->cargar ( curs->valor ( "idalbaran" ) );
@@ -203,7 +203,7 @@ void Devolucion::pintar()
     QObject::connect ( this->mui_devolverTable, SIGNAL ( cellDoubleClicked ( int, int ) ),
                        this, SLOT ( devolverTableDoubleclick ( int , int ) ) );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
     if ( !cur->eof() ) {
         mui_clienteLabel->setText ( cur->valor ( "cifcliente" ).toAscii() + " " + cur->valor ( "nomcliente" ).toAscii() );
     }

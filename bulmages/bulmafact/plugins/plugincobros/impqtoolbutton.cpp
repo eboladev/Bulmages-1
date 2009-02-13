@@ -96,7 +96,7 @@ void GenCobroQToolButton::click()
 		int nuevo = 1;
 		/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
 		QString query = "SELECT * FROM cobro WHERE refcobro ='"+ fpv->DBvalue("reffactura")+"'";
-		cursor2 *cur = fpv->empresaBase()->cargacursor(query);
+		BlDbRecordSet *cur = fpv->empresaBase()->cargacursor(query);
 		if (cur->numregistros() > 0) {
 		QMessageBox msgBox;
 		msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));
@@ -145,7 +145,7 @@ void GenCobroQToolButton::click()
 			int nuevo = 1;
 			/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
 			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->DBvalue("refalbaran")+"'";
-			cursor2 *cur = fpv->empresaBase()->cargacursor(query);
+			BlDbRecordSet *cur = fpv->empresaBase()->cargacursor(query);
 			if (cur->numregistros() > 0) {
 			QMessageBox msgBox;
 			msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));
@@ -194,7 +194,7 @@ void GenCobroQToolButton::click()
 			int nuevo = 1;
 			/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
 			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->DBvalue("refpedidocliente")+"'";
-			cursor2 *cur = fpv->empresaBase()->cargacursor(query);
+			BlDbRecordSet *cur = fpv->empresaBase()->cargacursor(query);
 			if (cur->numregistros() > 0) {
 			QMessageBox msgBox;
 			msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));

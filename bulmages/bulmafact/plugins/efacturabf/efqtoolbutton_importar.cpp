@@ -277,7 +277,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QString idProveedor = obten_id_proveedor ( &doc );
 
     QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + idProveedor + "'";
-    cursor2 *proveedor = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *proveedor = empresaBase() ->cargacursor ( query );
 
     if ( proveedor->numregistros() == 0 ) {
         _depura ( "El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2 );
@@ -375,7 +375,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
     ListLinFacturaProveedorView *lineas = ( ListLinFacturaProveedorView * ) fp->getlistalineas();
     rec = lineas->lista() ->last();
-    cursor2 *articulo = NULL;
+    BlDbRecordSet *articulo = NULL;
     QString idarticulo, nomarticulo;
 
     for ( int i = 0; i < numlineas; i++ ) {

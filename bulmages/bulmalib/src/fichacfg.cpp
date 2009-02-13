@@ -42,7 +42,7 @@ FichaCfg::FichaCfg ( EmpresaBase *emp, BlForm *parent, Qt::WFlags f ) : BlWidget
 
     /// Listamos los atributos de la tabla.
     QString fields = "SELECT a.attnum AS ordinal_position, a.attname AS column_name, t.typname AS data_type, a.attlen AS character_maximum_length, a.atttypmod AS modifier, a.attnotnull AS notnull, a.atthasdef AS hasdefault FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = '" + m_BlForm->tableName() + "' AND a.attnum > 0 AND a.attrelid = c.oid AND a.atttypid = t.oid ORDER BY a.attnum;";
-    cursor2 *cur = empresaBase() ->cargacursor ( fields );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( fields );
 
     mui_databasetable->setRowCount ( cur->numregistros() );
     mui_databasetable->setColumnCount ( cur->numcampos() );

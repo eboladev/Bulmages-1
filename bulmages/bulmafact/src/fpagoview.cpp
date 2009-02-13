@@ -181,7 +181,7 @@ void FPagoView::on_mui_crear_clicked()
         empresaBase() ->rollback();
         return;
     } // end if
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
     empresaBase() ->commit();
     mdb_idforma_pago = cur->valor ( "idFPagoView" );
     delete cur;

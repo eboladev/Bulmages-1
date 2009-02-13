@@ -83,7 +83,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     idmpatrimonial = idmpatrimonial1;
     QString query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial = " + idmpatrimonial;
     empresaBase() ->begin();
-    cursor2 *cursor = empresaBase() ->cargacursor ( query, "micursor" );
+    BlDbRecordSet *cursor = empresaBase() ->cargacursor ( query, "micursor" );
     empresaBase() ->commit();
     if ( !cursor->eof() ) {
         descmpatrimonial->setText ( cursor->valor ( "descmpatrimonial" ) );
@@ -93,7 +93,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     /// Leemos las cuentas y las metemos en la lista que corresponda.
     empresaBase() ->begin();
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM compmasap WHERE masaperteneciente = " + idmpatrimonial + " AND signo = true)";
-    cursor2 *cursoraux = empresaBase() ->cargacursor ( query, "cursorusuario" );
+    BlDbRecordSet *cursoraux = empresaBase() ->cargacursor ( query, "cursorusuario" );
     empresaBase() ->commit();
 
     while ( !cursoraux->eof() ) {
@@ -136,7 +136,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     /// Leemos las cuentas y las metemos en la lista que corresponda.
     empresaBase() ->begin();
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM compmasap WHERE masaperteneciente = " + idmpatrimonial + " AND signo = false)";
-    cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
+    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
     empresaBase() ->commit();
     i = 0;
     while ( !cursoraux1->eof() ) {
@@ -195,7 +195,7 @@ void mpatrimonialview::on_mui_nuevasuma_clicked()
     /// Leemos las cuentas y las metemos en la lista que corresponda.
     empresaBase() ->begin();
     QString query = "SELECT * FROM cuenta WHERE codigo = '" + codcuenta + "'";
-    cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
+    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
     empresaBase() ->commit();
     i = componentessuma->rowCount();
     while ( !cursoraux1->eof() ) {
@@ -264,7 +264,7 @@ void mpatrimonialview::on_mui_nuevaresta_clicked()
     /// Leemos las cuentas y las metemos en la lista que corresponda.
     empresaBase() ->begin();
     QString query = "SELECT * FROM cuenta WHERE codigo = '" + codcuenta + "'";
-    cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
+    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
     empresaBase() ->commit();
     i = componentesresta->rowCount();
     while ( !cursoraux1->eof() ) {
@@ -358,7 +358,7 @@ void mpatrimonialview::on_mui_aceptar_clicked()
         query.sprintf ( "INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')" );
         empresaBase() ->ejecuta ( query.toAscii() );
         query.sprintf ( "SELECT MAX(idmpatrimonial) as id FROM mpatrimonial" );
-        cursor2 *curs = empresaBase() ->cargacursor ( query, "cargaid" );
+        BlDbRecordSet *curs = empresaBase() ->cargacursor ( query, "cargaid" );
         empresaBase() ->commit();
         idmpatrimonial = curs->valor ( "id" ).toAscii();
     } // end if

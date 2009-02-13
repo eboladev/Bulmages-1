@@ -85,7 +85,7 @@ void FichaBf::calculaypintatotales()
     QString l;
     BlFixed irpf ( "0" );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -255,7 +255,7 @@ int FichaBf::trataTags ( QString &buff, int tipoEscape )
 
 void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
    QString fitxersortidatxt="";   
-   cursor2 *cur = NULL;
+   BlDbRecordSet *cur = NULL;
    try {
         base basesimp;
         base basesimpreqeq;
@@ -581,7 +581,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     QString l;
     BlFixed irpf ( "0" );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );

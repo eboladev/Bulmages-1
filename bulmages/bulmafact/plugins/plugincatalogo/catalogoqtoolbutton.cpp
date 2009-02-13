@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -36,6 +35,7 @@
 #include "company.h"
 #include "bldb.h"
 #include "blprogressbar.h"
+
 
 ///
 /**
@@ -146,7 +146,7 @@ QString CatalogoQToolButton::detalleArticulos()
     barra.setText ( _( "Generando catalogo" ) );
 
 
-    cursor2 *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );
     barra.setRange ( 0, cur->numregistros() );
     barra.setValue ( 0 );
     while ( !cur->eof() ) {

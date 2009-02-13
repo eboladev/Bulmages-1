@@ -52,7 +52,7 @@ void estadisticasview::presentar()
 {
     int j, num1;
     QString query;
-    cursor2 *cursorapt;
+    BlDbRecordSet *cursorapt;
     QString finicial = "01/01/2003";
     QString ffinal = "31/12/2003";
     QString cinicial = "10";
@@ -61,7 +61,7 @@ void estadisticasview::presentar()
     // Hacemos la consulta de los apuntes a listar en la base de datos.
 //     int idc_coste = ccostes[combocoste->currentItem()];
 
-    // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
+    // La consulta es compleja, requiere la creacion de una tabla temporal y de cierta mandanga por lo que puede
     // Causar problemas con el motor de base de datos.
     fprintf ( stderr, "BALANCE: Empezamos a hacer la presentacion\n" );
     conexionbase->begin();
@@ -88,10 +88,10 @@ void estadisticasview::presentar()
 
     while ( !cursorapt->eof() )  {
         query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
-        cursor2 *mycur = conexionbase->cargacursor ( query, "cursorrefresco" );
+        BlDbRecordSet *mycur = conexionbase->cargacursor ( query, "cursorrefresco" );
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
-//   fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
+//   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
         conexionbase->ejecuta ( query );
         delete mycur;
         cursorapt->siguienteregistro();

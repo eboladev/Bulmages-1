@@ -194,7 +194,7 @@ void ListLinPrevCobroView::pintalistlinprevcobro ( linprevcobro *linea, int pos 
     item ( pos, COL_DOCPREVCOBRO ) ->setText ( linea->docprevcobro() );
 
     /// Ponemos los iconos para que la cosa parezca mas guay.
-    cursor2 *cursoraux1 = m_companyact->cargacursor ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idcuenta() );
+    BlDbRecordSet *cursoraux1 = m_companyact->cargacursor ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idcuenta() );
     if ( !cursoraux1->eof() ) {
         if ( cursoraux1->valor ( "tipocuenta" ) == "1" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cactivo ) ) );
@@ -281,7 +281,7 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     menucobro->setVisible ( FALSE );
     menupago->setVisible ( FALSE );
 
-    cursor2 *cur;
+    BlDbRecordSet *cur;
     QString query;
     linprevcobro *linea = lineaact();
     if ( linea == NULL ) {

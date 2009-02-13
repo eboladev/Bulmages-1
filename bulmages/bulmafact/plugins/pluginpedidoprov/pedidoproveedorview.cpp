@@ -228,7 +228,7 @@ int PedidoProveedorView::guardarPost()
 void PedidoProveedorView::imprimir()
 {
     _depura ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
 

@@ -123,7 +123,7 @@ void aplinteligentesview::inicializa ( int idasiento )
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
         empresaBase() ->begin();
         QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-        cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query1, "codcuenta" );
+        BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query1, "codcuenta" );
         numdigitos = cursoraux1->valor ( 2 ).length();
         empresaBase() ->commit();
         delete cursoraux1;
@@ -151,7 +151,7 @@ void aplinteligentesview::inicializavariables()
     variablespredefinidas[VAR_PRED_FECHAACTUAL][1] = subcadena;
     buffer.sprintf ( "SELECT * FROM asiento WHERE idasiento = %d", numasiento );
     empresaBase() ->begin();
-    cursor2 *cur = empresaBase() ->cargacursor ( buffer, "cargaasiento" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( buffer, "cargaasiento" );
     empresaBase() ->commit();
     if ( !cur->eof() ) {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][0] = "$fechaasiento$";
@@ -179,7 +179,7 @@ void aplinteligentesview::cifcuenta ( int idcuenta )
     QString query;
     query.sprintf ( "SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta );
     empresaBase() ->begin();
-    cursor2 *cur = empresaBase() ->cargacursor ( query, "cursor" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "cursor" );
     empresaBase() ->commit();
     if ( !cur->eof() ) {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->valor ( "cifent_cuenta" );
@@ -568,7 +568,7 @@ void aplinteligentesview::creaasiento()
     int idcuenta = 0;
     QString idcontrapartida;
     QString query;
-    cursor2 *cur1 = NULL;
+    BlDbRecordSet *cur1 = NULL;
     try {
         empresaBase() ->begin();
         /// Calculamos a partir de que orden debemos empezar.

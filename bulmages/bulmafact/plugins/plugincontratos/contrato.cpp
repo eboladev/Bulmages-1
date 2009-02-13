@@ -146,7 +146,7 @@ int Contrato::cargar ( QString idbudget )
     _depura ( "Contrato::cargar", 0 );
     inicialize();
     QString query = "SELECT * FROM contrato WHERE idcontrato = " + idbudget;
-    cursor2 * cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet * cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         DBload ( cur );
     } // end if

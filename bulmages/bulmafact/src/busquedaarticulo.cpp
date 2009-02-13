@@ -81,7 +81,7 @@ void BusquedaArticulo::setcodigocompletoarticulo ( QString val )
 {
     _depura ( "BusquedaArticulo::setcodigocompletoarticulo", 0 );
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + val + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         setId( cur->valor ( "idarticulo" ) );
     } else {

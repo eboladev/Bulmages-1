@@ -46,7 +46,7 @@ Arbol::~Arbol()
 /**
 \param ramas
 **/
-void Arbol::nuevaRama ( cursor2 *ramas )
+void Arbol::nuevaRama ( BlDbRecordSet *ramas )
 {
     _depura ( "Arbol::nuevaRama", 0 );
 
@@ -69,7 +69,7 @@ void Arbol::nuevaRama ( cursor2 *ramas )
 /**
 \param ramas
 **/
-void Arbol::inicializa ( cursor2 *ramas )
+void Arbol::inicializa ( BlDbRecordSet *ramas )
 {
     _depura ( "Arbol::inicializa", 0 );
 
@@ -120,14 +120,14 @@ void Arbol::inicializa ( cursor2 *ramas )
 \param cuentas
 \param ramas
 **/
-void Arbol::SintetizarRamas ( cursor2 **cuentas, tiporama **ramas )
+void Arbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **ramas )
 {
     _depura ( "Arbol::SintetizarRamas", 0 );
 
     tiporama *guia, *rama;
     tipohoja *hoja;
     int nivel;
-    cursor2 *ptrcuentas = *cuentas;
+    BlDbRecordSet *ptrcuentas = *cuentas;
     nivel = atoi ( ptrcuentas->valor ( "nivel" ).toAscii().constData() );
     ptrcuentas->siguienteregistro();
     guia = NULL;
@@ -162,7 +162,7 @@ void Arbol::SintetizarRamas ( cursor2 **cuentas, tiporama **ramas )
 /**
 \param cuenta
 **/
-void Arbol::actualizaHojas ( cursor2 *cuenta )
+void Arbol::actualizaHojas ( BlDbRecordSet *cuenta )
 {
     _depura ( "Arbol::actualizaHojas", 0 );
 
@@ -204,7 +204,7 @@ void Arbol::actualizaHojas ( cursor2 *cuenta )
 \param cuenta
 \param actualizado
 **/
-void Arbol::ActualizarHoja ( tiporama** ramaraiz, cursor2* cuenta, bool* actualizado )
+void Arbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* cuenta, bool* actualizado )
 {
     _depura ( "Arbol::ActualizarHoja", 0 );
 

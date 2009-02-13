@@ -117,7 +117,7 @@ public:
     virtual ~BlDbRecord();
     void setconexionbase ( EmpresaBase *comp );
     EmpresaBase *conexionbase();
-    int DBload ( cursor2 * );
+    int DBload ( BlDbRecordSet * );
     virtual int DBsave ( QString &id );
     virtual int setDBvalue ( QString, QString );
     QString DBvalue ( QString );

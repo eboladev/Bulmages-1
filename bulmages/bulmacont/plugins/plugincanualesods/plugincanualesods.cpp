@@ -67,7 +67,7 @@ bool pluginCAnualesODS::Arboles()
     /// numero de cuentas de nivel 2) y las vamos creando.
     conexionbase->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
-    cursor2 *ramas;
+    BlDbRecordSet *ramas;
     ramas = conexionbase->cargacursor ( query, "Ramas" );
     conexionbase->commit();
     if ( ramas == NULL ) {
@@ -96,7 +96,7 @@ bool pluginCAnualesODS::Arboles()
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicioActual_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioActual_fechaBalance.right ( 4 ) + "' AND fecha <= '" + ejercicioActual_fechaBalance + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '01/01/" + ejercicioActual_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
 
-    cursor2 *hojas;
+    BlDbRecordSet *hojas;
     hojas = conexionbase->cargacursor ( query, "Ejercicio N" );
     conexionbase->commit();
     if ( hojas == NULL ) {
@@ -191,7 +191,7 @@ OK, aqui poden haver passat 3 coses.
 //     _depura ( "pluginCAnualesODS::saldoCuenta", 0 );
 //
 //     /// Ejercicio actual.
-//     cursor2 *cur;
+//     BlDbRecordSet *cur;
 //     BlFixed resultado;
 //
 // //     QString query = QString( "SELECT (SUM(apunte.debe) - SUM(apunte.haber)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" + QString::number ( cuenta ) + "%' AND fecha >= '01/01/" + ejercicioActual_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioActual_fechaBalance +"' and apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" );
@@ -242,7 +242,7 @@ BlFixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 //     _depura ( "pluginCAnualesODS::saldoCuentaAnt", 0 );
 //
 //     /// Ejercicio anterior.
-//     cursor2 *cur;
+//     BlDbRecordSet *cur;
 //     BlFixed resultado;
 //
 // //     QString query = QString( "SELECT (SUM(apunte.debe) - SUM(apunte.haber)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" + QString::number ( cuenta ) + "%' AND fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance +"' and apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" );

@@ -39,7 +39,7 @@ class BusquedaBanco : public BlComboBox
 
 private:
     /// Cursor que almacena el listado de trabajadores y sobre el que se construye el comboBox.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaBanco ( QWidget *parent = 0 );

@@ -167,7 +167,7 @@ int ProveedorView_cargarPost_Post (ProveedorView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + ref->mui_referencia->text() + "'";
-    cursor2 *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
         AlbaranProveedorView * bud = new AlbaranProveedorView((Company *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );

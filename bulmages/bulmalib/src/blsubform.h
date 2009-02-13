@@ -89,7 +89,7 @@ public:
     };
 
 private:
-    virtual void cargar ( cursor2 *cur );
+    virtual void cargar ( BlDbRecordSet *cur );
 
 private:
     QString m_query;

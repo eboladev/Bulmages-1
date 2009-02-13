@@ -214,7 +214,7 @@ void fpagoview::on_mui_crear_clicked()
         QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _( "Nueva forma de pago" ) + "', 0, 0, 0)";
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( query );
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idfpago) AS idfpago FROM fpago" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idfpago) AS idfpago FROM fpago" );
         empresaBase() ->commit();
         pintar ( cur->valor ( "idfpago" ) );
         delete cur;

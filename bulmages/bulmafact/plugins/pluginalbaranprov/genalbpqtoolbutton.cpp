@@ -115,7 +115,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
 
 
     AlbaranProveedorView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta

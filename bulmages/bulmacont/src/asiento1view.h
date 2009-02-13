@@ -46,7 +46,7 @@ class ListAsientos : public Asiento1
 
 private:
     /// Este es el cursor que se usar&aacute; para recorrer la lista de asientos.
-    cursor2 *cursorasientos;
+    BlDbRecordSet *cursorasientos;
 
 public:
     ListAsientos ( Empresa *, QWidget *parent );

@@ -111,7 +111,7 @@ void FamiliasView::pintar()
     QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
     int idfamilia = 0;
-    cursor2 *cursoraux1, *cursoraux2;
+    BlDbRecordSet *cursoraux1, *cursoraux2;
 
     /// Vaciamos el arbol.
     while ( m_listFamilias->topLevelItemCount() > 0 ) {
@@ -276,7 +276,7 @@ void FamiliasView::mostrarplantilla()
         mui_codFamilia->setEnabled ( TRUE );
 
         query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
-        cursor2 *cursorfamilia = empresaBase()->cargacursor ( query );
+        BlDbRecordSet *cursorfamilia = empresaBase()->cargacursor ( query );
         if ( !cursorfamilia->eof() ) {
             mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
             mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
@@ -382,7 +382,7 @@ void FamiliasView::pintar ( QTreeWidgetItem *it )
 {
     QString idfamilia = it->text ( COL_IDFAMILIA );
     if ( it ) {
-        cursor2 * cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM familia WHERE idfamilia = " + idfamilia );
+        BlDbRecordSet * cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM familia WHERE idfamilia = " + idfamilia );
         if ( !cursoraux1->eof() ) {
             it->setText ( COL_NOMFAMILIA, cursoraux1->valor ( "nombrefamilia" ) );
             it->setText ( COL_CODFAMILIA, cursoraux1->valor ( "codigofamilia" ) );
@@ -420,7 +420,7 @@ void FamiliasView::on_mui_crear_clicked()
         if ( error ) {
             throw - 1;
         } // end if
-        cursor2 *cur = empresaBase()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
+        BlDbRecordSet *cur = empresaBase()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
         empresaBase()->commit();
         m_idfamilia = cur->valor ( "idfamilia" );
         delete cur;
@@ -452,7 +452,7 @@ void FamiliasView::on_mui_crearRaiz_clicked()
         if ( error ) {
             throw - 1;
         } // end if
-        cursor2 *cur = empresaBase()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
+        BlDbRecordSet *cur = empresaBase()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
         empresaBase()->commit();
         m_idfamilia = cur->valor ( "idfamilia" );
         delete cur;
@@ -569,7 +569,7 @@ void FamiliasView::on_mui_imprimir_clicked()
     fitxersortidatxt += "        <td>" + _( "Nombre" ) + "</td>";
     fitxersortidatxt += "</tr>";
 
-    cursor2 *cur = empresaBase()->cargacursor ( "SELECT * FROM familia ORDER BY codigocompletofamilia" );
+    BlDbRecordSet *cur = empresaBase()->cargacursor ( "SELECT * FROM familia ORDER BY codigocompletofamilia" );
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>";
         fitxersortidatxt += "        <td>" + cur->valor ( "codigocompletofamilia" ) + "</td>";

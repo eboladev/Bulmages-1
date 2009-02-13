@@ -186,7 +186,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
     _depura ( "AlbaranClienteView::on_mui_verpedidocliente_clicked", 0 );
 
     PedidoClienteView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -263,7 +263,7 @@ void AlbaranClienteView::generarFactura()
         return;
 
     FacturaView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta

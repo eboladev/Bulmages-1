@@ -230,7 +230,7 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 
 	if (! id.isEmpty()) {
 		QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= "+id+")";
-		cursor2 *cur = empresaBase()->cargacursor(query);
+		BlDbRecordSet *cur = empresaBase()->cargacursor(query);
 		if (!cur->eof()) {
 			m_albaranp->setDBvalue("idproveedor", cur->valor("idproveedor"));
 			subform3->setIdProveedor ( cur->valor("idproveedor") );
@@ -343,7 +343,7 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 
 	/// Buscamos si hay algun albaran de proveedor y lo cargamos.
 	QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refalbaran")+"'";
-	cursor2 *cur = empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = empresaBase()->cargacursor(query);
 	if (!cur->eof()) {
 		m_albaranp->cargar(cur->valor("idalbaranp"));
 		subform3->cargar(cur->valor("idalbaranp"));
@@ -432,7 +432,7 @@ void CompraVentaView::generarFacturaProveedor()
 
 
     FacturaProveedorView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -553,7 +553,7 @@ void CompraVentaView::generarFactura()
     _depura ( "AlbaranClienteView::generarFactura", 0 );
 
     FacturaView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta

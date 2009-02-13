@@ -180,19 +180,19 @@ void ProyectoView::on_mui_geninforme_clicked()
 
     /// Buscamos los ejercicios involucrados en el presupuesto
     QString queryej = "SELECT distinct ej from (select ejerciciolgaspresupuestoc AS ej FROM lgaspresupuestoc WHERE idpresupuestoc = " + DBvalue ( "idpresupuestoc" ) + ")AS t1  UNION  (select ejerciciolingpresupuestoc as ej FROM lingpresupuestoc WHERE idpresupuestoc = " + DBvalue ( "idpresupuestoc" ) + ")";
-    cursor2 *curej = empresaBase()->cargacursor ( queryej );
+    BlDbRecordSet *curej = empresaBase()->cargacursor ( queryej );
     while ( !curej->eof() ) {
         fitxersortidatxt += "doc.set_cell_value( 1 ," + QString::number ( row++ ) + ", 'float' , '" + curej->valor ( "ej" ) + "')\n\n";
 
         QString querycta = "SELECT distinct idcuenta from ( SELECT idcuenta FROM lgaspresupuestoc WHERE idpresupuestoc = " + DBvalue ( "idpresupuestoc" ) + " AND ejerciciolgaspresupuestoc = " + curej->valor ( "ej" ) + " ) AS t1 UNION (SELECT idcuenta FROM lingpresupuestoc WHERE idpresupuestoc = " + DBvalue ( "idpresupuestoc" ) + " AND ejerciciolingpresupuestoc = " + curej->valor ( "ej" ) + " ) UNION (SELECT idcuenta FROM apunte WHERE fecha >= '01/01/" + curej->valor ( "ej" ) + "' AND fecha <= '31/12/" + curej->valor ( "ej" ) + "' AND idc_coste = " + DBvalue ( "idc_coste" ) + " )";
-        cursor2 *curcta = empresaBase()->cargacursor ( querycta );
+        BlDbRecordSet *curcta = empresaBase()->cargacursor ( querycta );
         while ( !curcta->eof() ) {
 
             fitxersortidatxt += "doc.set_cell_value( 1 ," + QString::number ( row ) + ", 'float' , '" + curcta->valor ( "idcuenta" ) + "')\n\n";
 
             /// Ponemos el detalle de las cuentas para los datos contables.
             QString queryinc = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta = " + curcta->valor ( "idcuenta" ) + " AND fecha >= '01/01/" + curej->valor ( "ej" ) + "' AND fecha <= '31/12/" + curej->valor ( "ej" ) + "' AND idc_coste = " + DBvalue ( "idc_coste" );
-            cursor2 * curing = empresaBase()->cargacursor ( queryinc );
+            BlDbRecordSet * curing = empresaBase()->cargacursor ( queryinc );
             while ( !curing->eof() ) {
                 fitxersortidatxt += "doc.set_cell_value( 2 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "tdebe" ) + "')\n\n";
                 fitxersortidatxt += "doc.set_cell_value( 3 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "thaber" ) + "')\n\n";
@@ -202,7 +202,7 @@ void ProyectoView::on_mui_geninforme_clicked()
             delete curing;
 
             QString queryling = "SELECT * FROM lingpresupuestoc WHERE idcuenta = " + curcta->valor ( "idcuenta" ) + " AND idpresupuestoc=" + DBvalue ( "idpresupuestoc" ) + " AND ejerciciolingpresupuestoc = " + curej->valor ( "ej" );
-            cursor2 *curling = empresaBase()->cargacursor ( queryling );
+            BlDbRecordSet *curling = empresaBase()->cargacursor ( queryling );
             while ( !curling->eof() ) {
                 fitxersortidatxt += "doc.set_cell_value( 5 ," + QString::number ( row ) + ", 'float' , '" + curling->valor ( "cantlingpresupuestoc" ) + "*" + curling->valor ( "precioundlingpresupuestoc" ) + "')\n\n";
                 curling->siguienteregistro();
@@ -210,7 +210,7 @@ void ProyectoView::on_mui_geninforme_clicked()
             delete curling;
 
             QString querylgas = "SELECT * FROM lgaspresupuestoc WHERE idcuenta = " + curcta->valor ( "idcuenta" ) + " AND idpresupuestoc=" + DBvalue ( "idpresupuestoc" ) + " AND ejerciciolgaspresupuestoc = " + curej->valor ( "ej" );
-            cursor2 *curlgas = empresaBase()->cargacursor ( querylgas );
+            BlDbRecordSet *curlgas = empresaBase()->cargacursor ( querylgas );
             while ( !curlgas->eof() ) {
                 fitxersortidatxt += "doc.set_cell_value( 6 ," + QString::number ( row ) + ", 'float' , '" + curlgas->valor ( "cantlgaspresupuestoc" ) + "*" + curlgas->valor ( "precioundlgaspresupuestoc" ) + "')\n\n";
                 curlgas->siguienteregistro();

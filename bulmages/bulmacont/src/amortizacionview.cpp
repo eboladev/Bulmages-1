@@ -185,7 +185,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
-        cursor2 *curs = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *curs = empresaBase() ->cargacursor ( query );
         if ( !curs->eof() ) {
             amortizado->setText ( curs->valor ( "amortizado" ) );
         } // end if
@@ -453,10 +453,10 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
 
         QString cuenta, cuentaamort;
         QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + DBvalue ( "idamortizacion" );
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( ! cur->eof() ) {
             query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaactivo" );
-            cursor2 *cur1 = empresaBase() ->cargacursor ( query );
+            BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query );
             if ( ! cur1->eof() ) {
                 cuenta = cur1->valor ( "codigo" );
             } // end if

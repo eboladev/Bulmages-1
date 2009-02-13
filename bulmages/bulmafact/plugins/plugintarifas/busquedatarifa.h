@@ -31,7 +31,7 @@ class BusquedaTarifa : public BlComboBox
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     QString m_codigotarifa;
 
 public:

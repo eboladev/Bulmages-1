@@ -133,7 +133,7 @@ void Q19QToolButton::click()
 QByteArray Q19QToolButton::cabeceraPresentador ( QDataStream &out, QString idcobro )
 {
     _depura ( "Q19QToolButton::cabeceraPresentador", 0 );
-    cursor2 *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
+    BlDbRecordSet *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
 
     /// CABECERA PRESENTADOR
     /// Generamos la cabecera presentador
@@ -144,7 +144,7 @@ QByteArray Q19QToolButton::cabeceraPresentador ( QDataStream &out, QString idcob
     cab_present.append ( "80" );
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -205,7 +205,7 @@ QByteArray Q19QToolButton::cabeceraPresentador ( QDataStream &out, QString idcob
 QByteArray Q19QToolButton::cabeceraOrdenante ( QDataStream &out, QString idcobro )
 {
     _depura ( "Q19QToolButton::cabeceraOrdenante", 0 );
-    cursor2 *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
+    BlDbRecordSet *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
 
     /// GENERAMOS LA CABECERA ORDENANTE
     /// REGISTRO DEL ORDENANTE
@@ -216,7 +216,7 @@ QByteArray Q19QToolButton::cabeceraOrdenante ( QDataStream &out, QString idcobro
     cab_orden.append ( "80" );
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -291,7 +291,7 @@ QByteArray Q19QToolButton::cabeceraOrdenante ( QDataStream &out, QString idcobro
 QByteArray Q19QToolButton::cobroQ19 ( QDataStream &out, QString idcobro )
 {
     _depura ( "Q19QToolButton::cobroQ19", 0 );
-    cursor2 *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
+    BlDbRecordSet *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
 
     /// CABECERA INDIVIDUAL OBLIGATORIO
     QString cab_indob = "";
@@ -301,7 +301,7 @@ QByteArray Q19QToolButton::cobroQ19 ( QDataStream &out, QString idcobro )
     cab_indob.append ( "80" );
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -401,7 +401,7 @@ QByteArray Q19QToolButton::totalOrdenante ( QDataStream &out, QString importes, 
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -475,7 +475,7 @@ QByteArray Q19QToolButton::totalGeneral ( QDataStream &out, QString importes, QS
     cab_indob.append ( "80" );
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";

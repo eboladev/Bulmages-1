@@ -60,9 +60,9 @@ class RegistroIvaView : public RegistroIva, public Ui_RegistroIvaBase
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     /// Cursor para las formas de pago.
-    cursor2 *m_cursorFPago;
+    BlDbRecordSet *m_cursorFPago;
 
 public:
     RegistroIvaView ( Empresa *, QWidget * );

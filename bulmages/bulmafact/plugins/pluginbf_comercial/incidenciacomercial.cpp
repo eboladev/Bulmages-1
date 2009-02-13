@@ -86,7 +86,7 @@ int IncidenciaComercial::cargar ( QString id )
 {
     _depura ( "IncidenciaComercial::cargar", 0 );
     QString query = "SELECT * FROM incidenciacomercial WHERE idincidenciacomercial = " + id;
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() )  {
         DBload ( cur );
     }

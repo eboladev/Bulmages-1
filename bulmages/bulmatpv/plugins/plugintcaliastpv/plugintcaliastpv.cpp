@@ -43,7 +43,7 @@ int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &rec )
 int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
     QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = tick->empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
         rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
@@ -67,7 +67,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
     if ( semaforo == 0 ) {
         semaforo = 1;
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-        cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = tick->empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
             rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
@@ -97,11 +97,11 @@ int MTicket_pintar ( MTicket *mtick )
     html1 += "Ticket: " + tick->DBvalue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->DBvalue ( "idtrabajador" );
-    cursor2 *curtrab = mtick->empresaBase() ->cargacursor ( querytrab );
+    BlDbRecordSet *curtrab = mtick->empresaBase() ->cargacursor ( querytrab );
     html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue ( "idcliente" );
-    cursor2 *cur1 = mtick->empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur1 = mtick->empresaBase() ->cargacursor ( query );
     html1 += "Cliente: " + tick->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
@@ -134,7 +134,7 @@ int MTicket_pintar ( MTicket *mtick )
     QString l;
     BlFixed irpf ( "0" );
 
-    cursor2 *cur = mtick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mtick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );

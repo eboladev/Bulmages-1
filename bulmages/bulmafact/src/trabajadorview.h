@@ -36,7 +36,7 @@ class TrabajadorView : public FichaBf, public Ui_TrabajadorBase
     Q_OBJECT
 
 private:
-    cursor2 *m_cursortrabajadores;
+    BlDbRecordSet *m_cursortrabajadores;
     /// Indica cual es el objeto que se esta mostrando.
     QString mdb_idtrabajador;
     /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen

@@ -63,8 +63,8 @@ private:
     tipohoja* hojaactiva;
 
 private:
-    void SintetizarRamas ( cursor2**, tiporama** );
-    void ActualizarHoja ( tiporama**, cursor2*, bool* );
+    void SintetizarRamas ( BlDbRecordSet**, tiporama** );
+    void ActualizarHoja ( tiporama**, BlDbRecordSet*, bool* );
     void Deshojar ( tiporama*, unsigned int, bool, bool* );
 
 public:
@@ -72,13 +72,13 @@ public:
     ~Arbol();
 
     /// A&ntilde;ade una nueva rama al arbol con su hoja.
-    void nuevaRama ( cursor2* );
+    void nuevaRama ( BlDbRecordSet* );
 
     /// Constituye el arbol inicializando los valores que corresponden a cada cuenta (hoja).
-    void inicializa ( cursor2* );
+    void inicializa ( BlDbRecordSet* );
 
     /// Actualiza los valores de las hojas en el arbol.
-    void actualizaHojas ( cursor2* );
+    void actualizaHojas ( BlDbRecordSet* );
 
     /// Inicializa el acceso al arbol. Para ello, cambia el valor de la variable índice "hojaactiva" a la raíz.
     void inicia();

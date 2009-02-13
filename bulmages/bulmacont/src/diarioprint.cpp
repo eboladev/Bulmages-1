@@ -88,7 +88,7 @@ void DiarioPrint::accept()
     QString concepto;
     QString codigocuenta;
     QString cad;
-    cursor2 *cursoraux, *cursoraux1, *cursoraux2;
+    BlDbRecordSet *cursoraux, *cursoraux1, *cursoraux2;
 
     FILE *mifile;
     mifile = fopen ( "diario.txt", "wt" );

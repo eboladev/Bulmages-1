@@ -276,7 +276,7 @@ bool BalanceTreeView::generaBalance()
     /// numero de cuentas de nivel 2) y las vamos creando.
     empresaBase() ->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
-    cursor2 *ramas;
+    BlDbRecordSet *ramas;
     ramas = empresaBase() ->cargacursor ( query, "Ramas" );
     empresaBase() ->commit();
     if ( ramas == NULL ) {
@@ -330,7 +330,7 @@ bool BalanceTreeView::generaBalance()
     /// Cargamos las cuentas afectadas con sus saldos y demas cosas.
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' " + clauswhere + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "'" + clauswhere + " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
-    cursor2 *hojas;
+    BlDbRecordSet *hojas;
     hojas = empresaBase() ->cargacursor ( query);
     if ( hojas == NULL ) {
         mensajeInfo ( _( "Error con la base de datos" ) );
@@ -669,7 +669,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //
 // /// Generamos el query
 //     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
-//     cursor2 *cursorapt1 = empresaBase() ->cargacursor ( query );
+//     BlDbRecordSet *cursorapt1 = empresaBase() ->cargacursor ( query );
 //
 //     int y = 1;
 //     int x = 1;

@@ -103,8 +103,8 @@ void ImpQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
 
-    cursor2 *cur1 = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur1 = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
 
@@ -628,7 +628,7 @@ void EmailQToolButton::click()
                 QString id = rec->DBvalue ( "idpresupuesto" );
                 QString idcliente = rec->DBvalue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                cursor2 *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -672,7 +672,7 @@ void EmailQToolButton::click()
                 QString id = rec->DBvalue ( "idpedidocliente" );
                 QString idcliente = rec->DBvalue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                cursor2 *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -717,7 +717,7 @@ void EmailQToolButton::click()
                 QString id = rec->DBvalue ( "idalbaran" );
                 QString idcliente = rec->DBvalue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                cursor2 *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -766,7 +766,7 @@ void EmailQToolButton::click()
                 QString fecha = rec->DBvalue ( "ffactura" );
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                cursor2 *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -818,7 +818,7 @@ void EmailQToolButton::click()
                 QString fecha = rec->DBvalue ( "fcobro" );
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                cursor2 *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
                 QString email = curs->valor ( "mailcliente" );
 
                 CobroView *pres = new CobroView ( m_companyact, 0 );

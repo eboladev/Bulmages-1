@@ -1,8 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
- *   Contribution by Tomeu Borras tborras@conetxia.com      *
- *            *
+ *   Contribution by Tomeu Borras tborras@conetxia.com                     *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -66,16 +66,16 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
     /// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
 
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_dirEmail'";
-    cursor2 *dirEmail = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *dirEmail = empresaBase() ->cargacursor ( query );
 
     query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_serverRec'";
-    cursor2 *serverRec = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *serverRec = empresaBase() ->cargacursor ( query );
 
     query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Email'";
-    cursor2 *Email = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *Email = empresaBase() ->cargacursor ( query );
 
     query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Password'";
-    cursor2 *Password = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *Password = empresaBase() ->cargacursor ( query );
 
     /// Comprobamos que el directorio especificado existeAboutView
 

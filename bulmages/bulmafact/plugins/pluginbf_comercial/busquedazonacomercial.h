@@ -34,7 +34,7 @@ class BusquedaZonaComercial : public QComboBox, public PEmpresaBase
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaZonaComercial ( QWidget *parent = 0 );

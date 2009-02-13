@@ -100,7 +100,7 @@ void Z2ZView::calculaTotalTickets() {
 	QString query = "SELECT sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) IN ("+listarefs+")";
 	
 
-	cursor2 *cur = empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = empresaBase()->cargacursor(query);
 	mui_totaltickets->setText(cur->valor("tot"));
 	delete cur;
 
@@ -110,12 +110,12 @@ void Z2ZView::calculaTotalTickets() {
 	for (int i=0; i < mui_listarefs->count(); i++) {
 
 		QString query1 = "SELECT COALESCE(sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2), 0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		cursor2 *cur1 = empresaBase()->cargacursor(query1);
+		BlDbRecordSet *cur1 = empresaBase()->cargacursor(query1);
 		total = total + BlFixed(cur1->valor("tot"));
 		delete cur1;
 
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		cursor2 *cur2 = empresaBase()->cargacursor(query2);
+		BlDbRecordSet *cur2 = empresaBase()->cargacursor(query2);
 		min = min + BlFixed(cur2->valor("tot"));
 		delete cur2;
 	} // end for
@@ -127,7 +127,7 @@ void Z2ZView::calculaTotalTickets() {
 
 void Z2ZView::on_mui_traspasar_clicked() {
 
-	cursor2 *cur4 = NULL;
+	BlDbRecordSet *cur4 = NULL;
 
 try {
 
@@ -182,7 +182,7 @@ try {
 		db->ejecuta(query7);
 
 		QString query8 = "SELECT max(idz) as idz from z";
-		cursor2 *curz = db->cargacursor(query8);
+		BlDbRecordSet *curz = db->cargacursor(query8);
 
 
 	for (int i=0; i < mui_listarefs->count(); i++) {
@@ -193,12 +193,12 @@ try {
 
 		/// Buscamos el minimo del albaran pasado.
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		cursor2 *cur2 = empresaBase()->cargacursor(query2);
+		BlDbRecordSet *cur2 = empresaBase()->cargacursor(query2);
 		QString min = cur2->valor("tot");
 		delete cur2;
 
 		QString query3 = "SELECT * FROM  albaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		cursor2 *cur3 = empresaBase()->cargacursor(query3);
+		BlDbRecordSet *cur3 = empresaBase()->cargacursor(query3);
 
 		/// Los albaranes con visa no los ponemos
 		if (cur3->valor("idforma_pago") != "2") {
@@ -206,7 +206,7 @@ try {
 
 			/// Iteramos sobre las lineas de albaran.
 			QString query1 = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-			cursor2 *cur1 = empresaBase()->cargacursor(query1);
+			BlDbRecordSet *cur1 = empresaBase()->cargacursor(query1);
 
 			if (!cur1->eof() && totaltraspasado < totaltraspasable) {
 				QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz, idforma_pago) VALUES ('"+ cur3->valor("refalbaran")+"', "+cur3->valor("idcliente")+", "+cur3->valor("idalmacen")+", "+curz->valor("idz")+", "+cur3->valor("idforma_pago")+")";

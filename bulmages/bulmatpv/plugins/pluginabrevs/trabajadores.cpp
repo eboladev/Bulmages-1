@@ -10,7 +10,7 @@ Trabajadores::Trabajadores ( EmpresaBase *emp, QWidget *parent ) : QDialog ( par
 {
     setupUi ( this );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
     while ( !cur->eof() ) {
         QPushButton * toolbutton = new QPushButton ( mui_frame );
         toolbutton->setText ( cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) );
@@ -43,7 +43,7 @@ void Trabajadores::trabajadorClicked()
     bool encontrado = FALSE;
 
     /// Buscamos cual ha sido el trabajador pulsado.
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
     while ( !encontrado ) {
         if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) ) {
             encontrado = TRUE;

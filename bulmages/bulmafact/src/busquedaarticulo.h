@@ -39,7 +39,7 @@ class BusquedaArticuloDelegate : public BlComboBox
 
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     /// Texto entrado por el usuario (para uso de los plugins)
     QString m_entrada; 
 

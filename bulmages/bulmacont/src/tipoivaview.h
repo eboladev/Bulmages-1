@@ -38,7 +38,7 @@ class tipoivaview : public FichaBc, public Ui_TipoIvaBase
     Q_OBJECT
 
 private:
-    cursor2 *m_curtipoiva;
+    BlDbRecordSet *m_curtipoiva;
     /// Indica la posici&oacute;n en el combobox que est&aacute; seleccionada.
     /// Se usa para guardar en caso de modificaciones.
     int m_posactual;

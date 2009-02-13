@@ -190,7 +190,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
         return;
     } // end if
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mui_codigocompletoarticulo->text() + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQlQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQlQuery );
     if ( !cur ) return;
     if ( !cur->eof() ) {
         cargar ( cur->valor ( "idarticulo" ) );
@@ -214,7 +214,7 @@ int ArticuloView::guardarPost()
     _depura ( "ArticuloView::guardarPost", 0 );
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
-        cursor2 * cur1 = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
+        BlDbRecordSet * cur1 = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
         if ( !cur1 ) throw - 1;
         m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
 

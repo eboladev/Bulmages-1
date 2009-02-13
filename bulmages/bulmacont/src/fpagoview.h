@@ -40,7 +40,7 @@ class fpagoview : public FichaBc, public Ui_FPagoBase
     Q_OBJECT
 
 private:
-    cursor2 *m_curfpago;
+    BlDbRecordSet *m_curfpago;
     /// Indica la posici&oacute;n en el combobox que est&aacute; seleccionada.
     /// Se usa para guardar en caso de modificaciones.
     int m_posactual;

@@ -158,7 +158,7 @@ void ExtractoPrintView::presentar ( const QString &tipus )
     QString codcontrapartida;
     int activo;
     QString cad;
-    cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
+    BlDbRecordSet *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
     extractoview1 *extracto = ( ( Empresa * ) empresaBase() ) ->extractoempresa();
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();

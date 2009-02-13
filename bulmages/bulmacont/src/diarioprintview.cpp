@@ -146,7 +146,7 @@ void DiarioPrintView::presentar ( const char *tipus )
     QString concepto;
     QString codigocuenta;
     QString cad;
-    cursor2 *cursoraux;
+    BlDbRecordSet *cursoraux;
 
     /// Tipo de presentaci&oacute;n.
     txt = ! strcmp ( tipus, "txt" );
@@ -306,7 +306,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                 char codicompte[20];
                 sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento=%d AND apunte.haber=0 AND cuenta.idcuenta=apunte.idcuenta", idasiento );
                 empresaBase() ->begin();
-                cursor2 *cursasiento = empresaBase() ->cargacursor ( consulta, "asiento" );
+                BlDbRecordSet *cursasiento = empresaBase() ->cargacursor ( consulta, "asiento" );
                 empresaBase() ->commit();
 
                 while ( !cursasiento->eof() ) {

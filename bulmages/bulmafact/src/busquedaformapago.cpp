@@ -107,7 +107,7 @@ void BusquedaFormaPago::setIdCliente ( QString idcliente )
         return;
     } // end if
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente );
 
     if ( !cur->eof() ) {
         setId ( cur->valor ( "idforma_pago" ) );
@@ -130,7 +130,7 @@ void BusquedaFormaPago::setIdProveedor ( QString idproveedor )
     if ( idproveedor == "" )
         return;
 
-    cursor2 * cur = empresaBase() ->cargacursor ( "SELECT idforma_pago FROM proveedor WHERE idproveedor=" + idproveedor );
+    BlDbRecordSet * cur = empresaBase() ->cargacursor ( "SELECT idforma_pago FROM proveedor WHERE idproveedor=" + idproveedor );
 
     if ( !cur->eof() ) {
         setId ( cur->valor ( "idforma_pago" ) );

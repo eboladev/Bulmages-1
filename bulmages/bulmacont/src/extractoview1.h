@@ -41,7 +41,7 @@ class extractoview1 : public FichaBc, public Ui_ExtractoBase
 
 public:
     /// El extracto se realiza sobre un cursor que siempre est&aacute; en memoria.
-    cursor2 *m_cursorcta;
+    BlDbRecordSet *m_cursorcta;
 
 public:
     extractoview1 ( Empresa *, QWidget *parent = 0, int flags = 0 );

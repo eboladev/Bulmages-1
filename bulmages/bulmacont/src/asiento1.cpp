@@ -259,7 +259,7 @@ int Asiento1::cargar ( QString idasiento )
     } // end if
 
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         DBload ( cur );
     } // end if
@@ -335,7 +335,7 @@ void Asiento1::cerrar()
         return;
     } // end if
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT cierraasiento(" + id + ")" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT cierraasiento(" + id + ")" );
     delete cur;
     vaciar();
     dialogChanges_cargaInicial();
@@ -357,12 +357,12 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1()
     } // end if
 
     QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" );
-    cursor2 *cur1 = empresaBase() ->cargacursor ( SQLQuery1 );
+    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( SQLQuery1 );
     QString numap = cur1->valor ( "cuenta1" );
     delete cur1;
 
     QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue ( "idasiento" );
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     QString numborr = cur->valor ( "cuenta" );
     delete cur;
 

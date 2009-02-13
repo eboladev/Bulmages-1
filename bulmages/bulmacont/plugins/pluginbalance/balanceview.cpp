@@ -184,8 +184,8 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 {
     _depura ( "BalanceView::presentarSyS", 0 );
     BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
-    cursor2 *ramas = NULL;
-    cursor2 *hojas = NULL;
+    BlDbRecordSet *ramas = NULL;
+    BlDbRecordSet *hojas = NULL;
     try {
         /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
         /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.

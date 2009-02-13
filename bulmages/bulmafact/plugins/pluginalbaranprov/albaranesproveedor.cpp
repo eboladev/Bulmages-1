@@ -220,7 +220,7 @@ void AlbaranesProveedor::presentar()
                            "forma_pago.idforma_pago WHERE 1 = 1 " + generaFiltro() );
 
         /// Hacemos el calculo del total.
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalalbaranp) " \
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalalbaranp) " \
                        "AS total FROM albaranp LEFT JOIN proveedor ON " \
                        "albaranp.idproveedor = proveedor.idproveedor LEFT " \
                        "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \

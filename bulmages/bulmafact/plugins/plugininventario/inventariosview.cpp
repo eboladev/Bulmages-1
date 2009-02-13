@@ -207,7 +207,7 @@ void InventariosView::on_mui_imprimir_clicked()
     txt += "<tr>\n\t<td></td>\n";
 
     QString query = "SELECT * FROM articulo ";
-    cursor2 *almacenes = empresaBase() ->cargacursor ( "SELECT * FROM almacen" );
+    BlDbRecordSet *almacenes = empresaBase() ->cargacursor ( "SELECT * FROM almacen" );
     while ( !almacenes->eof() ) {
         QString idalmacen = almacenes->valor ( "idalmacen" );
         query += " LEFT JOIN ( SELECT stock AS stock" + idalmacen + ", idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
@@ -219,7 +219,7 @@ void InventariosView::on_mui_imprimir_clicked()
     query += " WHERE articulo.stockarticulo <> 0";
 
 
-    cursor2 *cstock = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cstock = empresaBase() ->cargacursor ( query );
     while ( !cstock->eof() ) {
         txt += "<tr>\n";
         txt += "\t<td>" + cstock->valor ( "nomarticulo" ) + "</td>\n";

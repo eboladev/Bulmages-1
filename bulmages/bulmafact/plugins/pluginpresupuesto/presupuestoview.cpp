@@ -210,7 +210,7 @@ void PresupuestoView::generarPedidoCliente()
     _depura ( "PresupuestoView::generarPedidoCliente", 0 );
 /*
     PedidoClienteView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -416,7 +416,7 @@ QString PresupuestoView::detalleArticulos()
 {
     _depura ( "PresupuestoView::detalleArticulos", 0 );
     QString texto = "";
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue ( "idpresupuesto" ) );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue ( "idpresupuesto" ) );
     int i = 0;
     while ( !cur->eof() ) {
         i = !i;

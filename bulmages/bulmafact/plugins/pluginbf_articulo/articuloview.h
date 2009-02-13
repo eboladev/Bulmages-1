@@ -42,7 +42,7 @@ private:
     /// La imagen de un articulo es una excepcion ya que no se guarda en la base de datos
     /// por ese motivo la almacenamos en esta variable que hace que corresponda con un archivo.
     QString m_archivoimagen;
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     ArticuloView ( Company *emp, QWidget *parent = 0 );

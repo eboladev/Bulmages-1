@@ -72,7 +72,7 @@ void correctorwidget::on_mui_corregir_clicked()
 {
     _depura ( "correctorwidget::on_mui_corregir_clicked", 0 );
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
-    cursor2 *cur;
+    BlDbRecordSet *cur;
 
     /// Calculo de asientos abiertos.
     QString query;

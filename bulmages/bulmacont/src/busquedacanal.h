@@ -34,7 +34,7 @@ class BusquedaCanalDelegate : public BlComboBox
 
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     QCompleter *completar;
 
 public:
@@ -50,7 +50,7 @@ class BusquedaCanal : public BlComboBox
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaCanal ( QWidget *parent = 0 );

@@ -125,7 +125,7 @@ void GenAlbQToolButton::generarFactura1()
 
 
     AlbaranClienteView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -254,7 +254,7 @@ void GenAlbQToolButton::generarFactura2()
 
 
     AlbaranClienteView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta

@@ -103,7 +103,7 @@ bool ImportBalance::startElement1 ( const QString&, const QString&, const QStrin
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idbalance) AS idbalance FROM balance";
-        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
         empresaBase() ->commit();
         if ( !cur->eof() ) {
             m_tvalores["idbalance"] = cur->valor ( "idbalance" );
@@ -115,7 +115,7 @@ bool ImportBalance::startElement1 ( const QString&, const QString&, const QStrin
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idmpatrimonial) AS idmpatrimonial FROM mpatrimonial";
-        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
         empresaBase() ->commit();
         if ( !cur->eof() ) {
             m_tvalores["idmpatrimonial_nueva"] = cur->valor ( "idmpatrimonial" );
@@ -229,7 +229,7 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idcompmasap) AS idcompmasap FROM compmasap";
-        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
         empresaBase() ->commit();
         if ( !cur->eof() ) {
             m_tvalores["idcompmasap"] = cur->valor ( "idcompmasap" );
@@ -241,7 +241,7 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idcompbalance) AS idcompbalance FROM compbalance";
-        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
         empresaBase() ->commit();
         if ( !cur->eof() ) {
             m_tvalores["idcompbalance"] = cur->valor ( "idcompbalance" );

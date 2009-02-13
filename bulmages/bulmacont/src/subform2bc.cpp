@@ -177,7 +177,7 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
 
     if ( codigo != "" ) {
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             if ( camp->nomcampo() == "codigo" ) {
                 rec->setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
@@ -187,7 +187,7 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
                 if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
                     rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
                     QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
-                    cursor2 *curss = empresaBase() ->cargacursor ( query1 );
+                    BlDbRecordSet *curss = empresaBase() ->cargacursor ( query1 );
                     rec->setDBvalue ( "nomc_coste", curss->valor ( "nombre" ) );
                     delete curss;
                 } // end if
@@ -267,7 +267,7 @@ void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     if ( camp->nomcampo() == "codigo" && camp->text() != "*" ) {
         QString codigoext = extiendecodigo ( camp->text(), ( ( Empresa * ) empresaBase() ) ->numdigitosempresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
             rec->setDBvalue ( "codigo", cur->valor ( "codigo" ) );
@@ -276,7 +276,7 @@ void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
             if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
                 rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
                 QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
-                cursor2 *curss = empresaBase() ->cargacursor ( query1 );
+                BlDbRecordSet *curss = empresaBase() ->cargacursor ( query1 );
                 rec->setDBvalue ( "nomc_coste", curss->valor ( "nombre" ) );
                 delete curss;
             } // end if
@@ -288,7 +288,7 @@ void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     } // end if
     if ( camp->nomcampo() == "nomcanal" ) {
         QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idcanal", cur->valor ( "idcanal" ) );
         } else {
@@ -298,7 +298,7 @@ void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     } // end if
     if ( camp->nomcampo() == "nomc_coste" ) {
         QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
         } else {

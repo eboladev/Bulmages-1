@@ -19,7 +19,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/// Fichero de definiciones de las clases 'cursor2' y 'BlPostgreSqlClient'.
+/// Fichero de definiciones de las clases 'BlDbRecordSet' y 'BlPostgreSqlClient'.
 /// Definen la interficie de comunicacion con el sistema motor de bases de datos.
 /// Estas clases se basan en la clase libpq.
 #ifndef BLPOSTGRESQLCLIENT_H
@@ -48,7 +48,7 @@
 /// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.
 /** Se carga normalmente a partir de la clase 'BlPostgreSqlClient' con el m&eacute;todo 'cargacursor'.
     Crea las estructuras necesarias para recorrer un recordset de postgres. */
-class cursor2
+class BlDbRecordSet
 {
 private:
     /// El nombre del cursor, (OBSOLETE).
@@ -77,7 +77,7 @@ private:
                        );
 public:
     /// Constructor, inicializa la estructura y realiza la consulta.
-    cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery=NULL );
+    BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery=NULL );
 
     /**
      * Constructor para consultas parametrizadas (menos escapes y formateos, 
@@ -93,7 +93,7 @@ public:
      * @param paramValues Valores para los parámetros. Sólo aceptamos formato texto
      *                    no el formato binario
      */
-     cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+     BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const QString *paramValues, QString pristineQuery=NULL
                        ) ;
   
@@ -112,12 +112,12 @@ public:
      * @param paramValues Valores para los parámetros. Sólo aceptamos formato texto
      *                    no el formato binario. Sólo los leemos, no los destruimos.
      */
-    cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+    BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char *const * const paramValues, QString pristineQuery=NULL);
 
 
     /// Destructor, elimina la memoria ocupada.
-    ~cursor2();
+    ~BlDbRecordSet();
     /// Devuelve el n&uacute;mero de registros del cursor.
     int numregistros();
     /// Devuelve el valor de una determinada posici&oacute;n del query.
@@ -201,8 +201,8 @@ public:
     /// Termina una transacci&oacute;n de forma abrupta.
     void rollback();
     /// Carga el cursor con una consulta.
-    cursor2 *cargacursor ( QString query, QString nomcursor = "", int limit = 0, int offset = 0 );
-    cursor2 *cargacursor ( QString query, int numParams,
+    BlDbRecordSet *cargacursor ( QString query, QString nomcursor = "", int limit = 0, int offset = 0 );
+    BlDbRecordSet *cargacursor ( QString query, int numParams,
                        QString  * paramValues, QString nomcursor = "", 
                        int limit =0, int offset = 0 );
 
@@ -210,16 +210,16 @@ public:
     int ejecuta ( QString );
     int nuevoborrador ( int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal );
     int modificaborrador ( int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal );
-    cursor2 *cargacuenta ( int idcuenta, QString ccuenta = "" );
-    cursor2 *cargaasiento ( int idasiento );
-    cursor2 *cargaapuntes ( int tidasiento );
-    cursor2 *cargaborradores ( int tidasiento );
-    cursor2 *cargacuentas ( int padre );
-    cursor2 *cargagrupos();
-    cursor2 *cargasaldoscuentafecha ( int, QString );
-    cursor2 *cargaapuntesctafecha ( int, QString, QString );
-    cursor2 *cargacuentascodigo ( int, QString, QString );
-    cursor2 *cargaasientosfecha ( QString, QString );
+    BlDbRecordSet *cargacuenta ( int idcuenta, QString ccuenta = "" );
+    BlDbRecordSet *cargaasiento ( int idasiento );
+    BlDbRecordSet *cargaapuntes ( int tidasiento );
+    BlDbRecordSet *cargaborradores ( int tidasiento );
+    BlDbRecordSet *cargacuentas ( int padre );
+    BlDbRecordSet *cargagrupos();
+    BlDbRecordSet *cargasaldoscuentafecha ( int, QString );
+    BlDbRecordSet *cargaapuntesctafecha ( int, QString, QString );
+    BlDbRecordSet *cargacuentascodigo ( int, QString, QString );
+    BlDbRecordSet *cargaasientosfecha ( QString, QString );
     int cierraasiento ( int idasiento );
     int borrarasiento ( int idasiento );
     int borrarborrador ( int idborrador );
@@ -228,7 +228,7 @@ public:
     int modificacuenta ( int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool );
     int nuevacuenta ( QString desccuenta, QString codigo, int padre, int idgrupo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool );
     /// Carga en un query las empresas especificadas.
-    cursor2 *cargaempresas();
+    BlDbRecordSet *cargaempresas();
     /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
     static QString sanearCadena ( QString cadena );
     void terminar();

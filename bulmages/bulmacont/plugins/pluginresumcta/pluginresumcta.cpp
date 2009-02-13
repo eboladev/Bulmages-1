@@ -119,7 +119,7 @@ int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta *bcta )
     QString nom = bcta->nomcuenta();
     QString id  = bcta->idcuenta();
     if ( id == "" ) return 0;
-    cursor2 *cur = bcta->empresaBase() ->cargacursor ( "SELECT *, debe-haber AS saldo FROM cuenta WHERE idcuenta = " + id );
+    BlDbRecordSet *cur = bcta->empresaBase() ->cargacursor ( "SELECT *, debe-haber AS saldo FROM cuenta WHERE idcuenta = " + id );
     if ( !cur ) return 0;
     if ( ! cur->eof() ) {
         QString mensaje = "<HTML><BODY>";
@@ -154,7 +154,7 @@ int SubForm2Bc_on_mui_list_cellChanged_post ( SubForm2Bc *subform )
         QString id = subform->DBvalue ( "idcuenta", subform->currentRow() );
 
         if ( id == "" ) return 0;
-        cursor2 *cur = subform->empresaBase() ->cargacursor ( "SELECT *, debe-haber AS saldo FROM cuenta WHERE idcuenta = " + id );
+        BlDbRecordSet *cur = subform->empresaBase() ->cargacursor ( "SELECT *, debe-haber AS saldo FROM cuenta WHERE idcuenta = " + id );
         if ( !cur ) return 0;
         if ( ! cur->eof() ) {
             QString mensaje = "<HTML><BODY>";

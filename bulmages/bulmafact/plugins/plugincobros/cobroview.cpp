@@ -135,10 +135,10 @@ void CobroView::imprimir()
 int CobroView::guardarPost() {
 	_depura(" CobroView::guardarPost", 0);
 	QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + DBvalue("refcobro") + "'";
-	cursor2 *cur1 = empresaBase()->cargacursor(query1);
+	BlDbRecordSet *cur1 = empresaBase()->cargacursor(query1);
 
 	QString query = "SELECT COALESCE(sum(totalfactura), 0) AS total FROM factura WHERE reffactura='" + DBvalue("refcobro") + "'";
-	cursor2 *cur = empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = empresaBase()->cargacursor(query);
 	if (cur->valor("total") == cur1->valor("totalc") ) {
 		mensajeInfo("Procesar todos los documentos con esta referencia ?");
 		QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + DBvalue("refcobro") + "'";

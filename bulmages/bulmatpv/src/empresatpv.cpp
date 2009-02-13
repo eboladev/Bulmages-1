@@ -110,7 +110,7 @@ void EmpresaTPV::z()
     begin();
 
     QString query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE ";
-    cursor2 *cur = cargacursor ( query );
+    BlDbRecordSet *cur = cargacursor ( query );
     QString numtickets = cur->valor ( "numtickets" );
     QString total = cur->valor ( "total" );
     if ( total == "" ) total = "0";
@@ -130,7 +130,7 @@ void EmpresaTPV::z()
     delete cur;
 
     QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
-    cursor2 *cur1 = cargacursor ( querycont );
+    BlDbRecordSet *cur1 = cargacursor ( querycont );
     QString numticketscont = cur1->valor ( "numtickets" );
     QString totalcont = cur1->valor ( "total" );
     if ( totalcont == "" ) totalcont = "0";
@@ -138,7 +138,7 @@ void EmpresaTPV::z()
 
     QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
-    cursor2 *cur2 = cargacursor ( queryvisa );
+    BlDbRecordSet *cur2 = cargacursor ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
     QString totalvisa = cur2->valor ( "total" );
     if ( totalvisa == "" ) totalvisa = "0";
@@ -153,7 +153,7 @@ void EmpresaTPV::z()
     } // end if
     file.write ( QString ( "Informe Z\n" ).toAscii() );
     file.write ( QString ( "=========\n" ).toAscii() );
-    cursor2 *curemp = cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *curemp = cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !curemp->eof() ) {
         file.write ( curemp->valor ( "valor" ).toAscii() );
         file.write ( "\n", 1 );
@@ -259,7 +259,7 @@ void EmpresaTPV::z()
     while ( !cur->eof() ) {
 
 	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
-	cursor2 *cur1 = cargacursor ( querycont );
+	BlDbRecordSet *cur1 = cargacursor ( querycont );
 	QString numticketscont = cur1->valor ( "unidades" );
 	QString totalcont = cur1->valor ( "total" );
 	if ( totalcont == "" ) totalcont = "0";
@@ -328,14 +328,14 @@ void EmpresaTPV::x()
 		return;
 
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
-    cursor2 *cur = cargacursor ( query );
+    BlDbRecordSet *cur = cargacursor ( query );
     QString numtickets = cur->valor ( "numtickets" );
     QString total = cur->valor ( "total" );
     if ( total == "" ) total = "0";
     delete cur;
 
     QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
-    cursor2 *cur1 = cargacursor ( querycont );
+    BlDbRecordSet *cur1 = cargacursor ( querycont );
     QString numticketscont = cur1->valor ( "numtickets" );
     QString totalcont = cur1->valor ( "total" );
     if ( totalcont == "" ) totalcont = "0";
@@ -344,7 +344,7 @@ void EmpresaTPV::x()
 
     QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
-    cursor2 *cur2 = cargacursor ( queryvisa );
+    BlDbRecordSet *cur2 = cargacursor ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
     QString totalvisa = cur2->valor ( "total" );
     if ( totalvisa == "" ) totalvisa = "0";
@@ -360,7 +360,7 @@ void EmpresaTPV::x()
     } // end if
     file.write ( QString ( "Informe X\n" ).toAscii() );
     file.write ( QString ( "=========\n" ).toAscii() );
-    cursor2 *curemp = cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *curemp = cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !curemp->eof() ) {
         file.write ( curemp->valor ( "valor" ).toAscii() );
         file.write ( "\n", 1 );

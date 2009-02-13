@@ -110,7 +110,7 @@ void resmensualview::presentar()
             if ( query != "" ) {
                 fprintf ( stderr, "%s\n", query.ascii() );
                 conexionbase->begin();
-                cursor2 *curs = conexionbase->cargacursor ( query, "midursor" );
+                BlDbRecordSet *curs = conexionbase->cargacursor ( query, "midursor" );
                 conexionbase->commit();
                 if ( !curs->eof() ) {
                     milistad[i].push_back ( movant + atof ( curs->valor ( "tdebe" ).ascii() ) + atof ( curs->valor ( "thaber" ).ascii() ) );
@@ -225,7 +225,7 @@ void resmensualview::presentarpie()
     int j = 0;
 #endif
     char query[2900];
-    cursor2 *cursorapt;
+    BlDbRecordSet *cursorapt;
 
     QString finicial = "01/01/2003";
     QString ffinal = "31/12/2003";
@@ -257,7 +257,7 @@ void resmensualview::presentarpie()
             // Acumulamos los totales para al final poder escribirlos
             sprintf ( query, "SELECT * FROM cuenta WHERE idcuenta = %s", cursorapt->valor ( "contrapartida" ).ascii() );
             conexionbase->begin();
-            cursor2 *micurs = conexionbase->cargacursor ( query, "mioldcursor" );
+            BlDbRecordSet *micurs = conexionbase->cargacursor ( query, "mioldcursor" );
             if ( !micurs->eof() ) {
                 nomcuenta = micurs->valor ( "codigo" ) + " " + micurs->valor ( "descripcion" );
             }// end if

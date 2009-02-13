@@ -79,7 +79,7 @@ public:
     virtual int generaRML ( void );
     virtual int trataTags ( QString &buff, int tipoEscape = 0 );
     virtual QString trataQuery ( const QString &query, const QString &datos, int tipoEscape = 0 );
-    QString trataCursor ( cursor2 *cur, const QString &datos, int tipoEscape = 0 );
+    QString trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
     virtual QString trataIfQuery ( const QString &query, const QString &datos );
     virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );
     virtual QString trataExists ( const QString &query, const QString &datos );

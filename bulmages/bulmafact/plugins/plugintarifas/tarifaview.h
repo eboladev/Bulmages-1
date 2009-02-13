@@ -36,7 +36,7 @@ class TarifaView : public FichaBf, public Ui_TarifaBase
 private:
     QString m_idtarifa;
     QString m_nomtarifa;
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     TarifaView ( Company *emp, QWidget *parent = 0 );

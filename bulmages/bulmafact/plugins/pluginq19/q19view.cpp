@@ -102,9 +102,9 @@ Q19View::~Q19View()
 QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idfactura )
 {
     _depura ( "Q19View::cabeceraPresentador", 0 );
-    cursor2 *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
+    BlDbRecordSet *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
 
-    cursor2 *curbanco = empresaBase() -> cargacursor ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
+    BlDbRecordSet *curbanco = empresaBase() -> cargacursor ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
     /// CABECERA PRESENTADOR
     /// Generamos la cabecera presentador
@@ -115,7 +115,7 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idfactura )
     cab_present.append ( "80" );
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -177,9 +177,9 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idfactura )
 QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idfactura )
 {
     _depura ( "Q19View::cabeceraOrdenante", 0 );
-    cursor2 *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
+    BlDbRecordSet *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
 
-    cursor2 *curbanco = empresaBase() -> cargacursor ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
+    BlDbRecordSet *curbanco = empresaBase() -> cargacursor ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
 
     /// GENERAMOS LA CABECERA ORDENANTE
@@ -191,7 +191,7 @@ QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idfactura )
     cab_orden.append ( "80" );
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -267,9 +267,9 @@ QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idfactura )
 QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idfactura )
 {
     _depura ( "Q19View::cobroQ19", 0 );
-    cursor2 *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
+    BlDbRecordSet *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
 
-//    cursor2 *curbanco = empresaBase()-> cargacursor( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
+//    BlDbRecordSet *curbanco = empresaBase()-> cargacursor( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
 
     /// CABECERA INDIVIDUAL OBLIGATORIO
@@ -280,7 +280,7 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idfactura )
     cab_indob.append ( "80" );
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -380,7 +380,7 @@ QByteArray Q19View::totalOrdenante ( QTextStream &out, QString importes, QString
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -454,7 +454,7 @@ QByteArray Q19View::totalGeneral ( QTextStream &out, QString importes, QString d
     cab_indob.append ( "80" );
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";

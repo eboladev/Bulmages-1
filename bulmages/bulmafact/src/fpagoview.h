@@ -38,7 +38,7 @@ class FPagoView : public FichaBf, private Ui_FPagoBase
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorFPagoView;
+    BlDbRecordSet *m_cursorFPagoView;
     /// Indica cu&aacute;l es el objeto que se est&aacute; mostrando.
     QString mdb_idforma_pago;
     /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento

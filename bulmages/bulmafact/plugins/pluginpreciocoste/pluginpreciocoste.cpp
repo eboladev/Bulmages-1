@@ -105,9 +105,9 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
 {
     _depura ( "SubForm2Bf_on_mui_list_editFinished", 0 );
     int err;
-    cursor2 *cur = NULL;
-    cursor2 *cur1 = NULL;
-    cursor2 *cur2 = NULL;
+    BlDbRecordSet *cur = NULL;
+    BlDbRecordSet *cur1 = NULL;
+    BlDbRecordSet *cur2 = NULL;
 
     if (  subform->tableName() != "lpedidoproveedor"
             && subform->tableName() != "lalbaranp"

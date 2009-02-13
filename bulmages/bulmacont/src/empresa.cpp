@@ -190,7 +190,7 @@ int Empresa::createMainWindows ( BlSplashScreen *splash )
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
         /// de la Empresa.
         QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
-        cursor2 *cursoraux1 = cargacursor ( query );
+        BlDbRecordSet *cursoraux1 = cargacursor ( query );
         numdigitos = cursoraux1->valor ( "numdigitos" ).toInt();
         delete cursoraux1;
         if ( extracto != NULL ) {
@@ -698,7 +698,7 @@ int Empresa::librobalance()
 void Empresa::abrirAsientos()
 {
     _depura ( "Empresa::Abrirasientos", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     try {
         cur = cargacursor ( "SELECT abreasientos()" );
         g_main->statusBar() ->showMessage ( _( "Se han espaciado los asientos" ), 2000 );
@@ -718,7 +718,7 @@ void Empresa::abrirAsientos()
 void Empresa::cerrarAsientos()
 {
     _depura ( "Empresa::cerrarAsientos", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     try {
         cur = cargacursor ( "SELECT cierraasiento(idasiento) FROM asiento" );
         g_main->statusBar() ->showMessage ( _( "Se han cerrado los asientos" ), 2000 );
@@ -738,7 +738,7 @@ void Empresa::Ordenarasientos()
 {
     _depura ( "Empresa::Ordenarasientos", 10 );
     QString query = "SELECT reordenaasientosall()";
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     try {
         cur = cargacursor ( query );
         g_main->statusBar() ->showMessage ( _( "Se han ordenado los asientos" ), 2000 );
@@ -906,7 +906,7 @@ void Empresa::recalculasaldos()
 {
     _depura ( "Empresa::recalculasaldos", 0 );
 	mensajeInfo("recalcular Saldos");
-    cursor2 *cur = cargacursor("SELECT recalculasaldos()");
+    BlDbRecordSet *cur = cargacursor("SELECT recalculasaldos()");
     delete cur;
     _depura ( "END Empresa::recalculasaldos", 0 );
 }

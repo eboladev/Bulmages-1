@@ -59,7 +59,7 @@ int BlForm_cargar ( BlForm *ficha )
     QString query;
 
     query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo <> '" + ficha->empresaBase()->currentUser() + "'";
-    cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
+    BlDbRecordSet *cur1 = ficha->empresaBase()->cargacursor ( query );
 
     if ( !cur1->eof() ) {
         mensajeInfo ( _("Ficha bloqueada por otro usuario, no podra hacer modificaciones") );
@@ -95,13 +95,13 @@ int BlForm_DesFicha ( BlForm *ficha )
     QString query = "";
     if ( ficha->DBvalue ( ficha->campoId() ) != "" ) {
         QString usuario = "";
-        cursor2 *cur = ficha->empresaBase()->cargacursor ( "SELECT current_user" );
+        BlDbRecordSet *cur = ficha->empresaBase()->cargacursor ( "SELECT current_user" );
         if ( !cur->eof() ) {
             usuario = cur->valor ( "current_user" );
         } // end if
         delete cur;
         query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo = '" + usuario + "'";
-        cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
+        BlDbRecordSet *cur1 = ficha->empresaBase()->cargacursor ( query );
         if ( !cur1->eof() ) {
             query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "'";
             ficha->empresaBase()->ejecuta ( query );

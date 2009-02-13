@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/// Contiene la implementacion de las clases 'cursor2' y 'BlPostgreSqlClient' que proveen
+/// Contiene la implementacion de las clases 'BlDbRecordSet' y 'BlPostgreSqlClient' que proveen
 /// acceso a las bases de datos de postgres de forma sencilla y eficiente.
 #include <QMessageBox>
 #include <QApplication>
@@ -36,10 +36,10 @@
 /**
 \return
 **/
-bool cursor2::error()
+bool BlDbRecordSet::error()
 {
-    _depura ( "cursor2::error", 0 );
-    _depura ( "END cursor2::error", 0 );
+    _depura ( "BlDbRecordSet::error", 0 );
+    _depura ( "END BlDbRecordSet::error", 0 );
     return m_error;
 }
 
@@ -48,17 +48,17 @@ bool cursor2::error()
 /**
 \return
 **/
-QString cursor2::query()
+QString BlDbRecordSet::query()
 {
-    _depura ( "cursor2::query", 0 );
-    _depura ( "END cursor2::query", 0 );
+    _depura ( "BlDbRecordSet::query", 0 );
+    _depura ( "END BlDbRecordSet::query", 0 );
     return m_query;
 }
 
-QString cursor2::pristineQuery()
+QString BlDbRecordSet::pristineQuery()
 {
-    _depura ( "cursor2::query", 0 );
-    _depura ( "END cursor2::query", 0 );
+    _depura ( "BlDbRecordSet::query", 0 );
+    _depura ( "END BlDbRecordSet::query", 0 );
     return m_pristineQuery;
 }
 
@@ -66,10 +66,10 @@ QString cursor2::pristineQuery()
 /**
 \return
 **/
-int cursor2::regactual()
+int BlDbRecordSet::regactual()
 {
-    _depura ( "cursor2::regactual", 0 );
-    _depura ( "END cursor2::regactual", 0 );
+    _depura ( "BlDbRecordSet::regactual", 0 );
+    _depura ( "END BlDbRecordSet::regactual", 0 );
     return registroactual;
 }
 
@@ -82,12 +82,12 @@ int cursor2::regactual()
 /// \param nombre Nombre que obtendra el query (OBSOLETO)
 /// \param conn1 Conexion con la base de datos (Inicializada en \ref BlPostgreSqlClient
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
-cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery)
+BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery)
 {
    inicializa(nombre, conn1, SQLQuery, 0, (char **)NULL,pristineQuery);
 }
 
-cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const QString *paramValues, QString pristineQuery
                        ) {
          char *charValues[numParams]; 
@@ -99,17 +99,17 @@ cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParam
       inicializa(nombre, conn1, SQLQuery, numParams, charValues, pristineQuery);
 }
 
-cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char * const *paramValues, QString pristineQuery
                        ) {
    inicializa(nombre, conn1, SQLQuery, numParams, paramValues, pristineQuery);
 }
 
-void cursor2::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char * const *paramValues, QString pristineQuery
                        )
 {
-    _depura ( "cursor2::cursor2", 0, SQLQuery );
+    _depura ( "BlDbRecordSet::BlDbRecordSet", 0, SQLQuery );
     for( int i=0; i<numParams; i++) {
        _depura("param=",0, QString::fromUtf8(paramValues[i]));
     } ;
@@ -162,32 +162,32 @@ void cursor2::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int 
         _depura ( err );
         _depura ( "--------- FIN RESULTADO DE LA CONSULTA ----------------" );
     } catch ( ... ) {
-        _depura ( "cursor2::cursor2: Error en la consulta: " + SQLQuery, 2 );
+        _depura ( "BlDbRecordSet::BlDbRecordSet: Error en la consulta: " + SQLQuery, 2 );
         throw - 1;
     } // end try
-    _depura ( "END cursor2::cursor2", 0, " Numero de registros: " + QString::number ( nregistros ) + ", Numero de campos: " + QString::number ( ncampos ) );
+    _depura ( "END BlDbRecordSet::BlDbRecordSet", 0, " Numero de registros: " + QString::number ( nregistros ) + ", Numero de campos: " + QString::number ( ncampos ) );
 }
 
 
 /// Destructor de clase, antes de destruirse limpia los posibles buffers intermedios.
 /**
 **/
-cursor2::~cursor2()
+BlDbRecordSet::~BlDbRecordSet()
 {
-    _depura ( "cursor2::~cursor2", 0 );
+    _depura ( "BlDbRecordSet::~BlDbRecordSet", 0 );
     cerrar();
-    _depura ( "END cursor2::~cursor2", 0 );
+    _depura ( "END BlDbRecordSet::~BlDbRecordSet", 0 );
 }
 
 
 /// Limpia los buffers intermedios que puedan estar chupando memoria.
 /**
 **/
-void cursor2::cerrar()
+void BlDbRecordSet::cerrar()
 {
-    _depura ( "cursor2::cerrar", 0 );
+    _depura ( "BlDbRecordSet::cerrar", 0 );
     PQclear ( result );
-    _depura ( "END cursor2::cerrar", 0 );
+    _depura ( "END BlDbRecordSet::cerrar", 0 );
 }
 
 
@@ -195,10 +195,10 @@ void cursor2::cerrar()
 /**
 \return
 **/
-int cursor2::numregistros()
+int BlDbRecordSet::numregistros()
 {
-    _depura ( "cursor2::numregistros", 0 );
-    _depura ( "END cursor2::numregistros", 0 );
+    _depura ( "BlDbRecordSet::numregistros", 0 );
+    _depura ( "END BlDbRecordSet::numregistros", 0 );
     return nregistros;
 }
 
@@ -208,10 +208,10 @@ int cursor2::numregistros()
 /**
 \return
 **/
-int cursor2::numcampos()
+int BlDbRecordSet::numcampos()
 {
-    _depura ( "cursor2::numcampos", 0 );
-    _depura ( "END cursor2::numcampos", 0 );
+    _depura ( "BlDbRecordSet::numcampos", 0 );
+    _depura ( "END BlDbRecordSet::numcampos", 0 );
     return ncampos;
 }
 
@@ -221,10 +221,10 @@ int cursor2::numcampos()
 /**
 \return
 **/
-QString cursor2::nomcampo ( int campo )
+QString BlDbRecordSet::nomcampo ( int campo )
 {
-    _depura ( "cursor2::nomcampo", 0 );
-    _depura ( "END cursor2::nomcampo", 0 );
+    _depura ( "BlDbRecordSet::nomcampo", 0 );
+    _depura ( "END BlDbRecordSet::nomcampo", 0 );
     if ( campo >= 0 ) {
         return ( ( QString ) PQfname ( result, campo ) );
     } else {
@@ -240,22 +240,22 @@ QString cursor2::nomcampo ( int campo )
 /// \todo Tal vez deberia crearse una estructura intermedia que indexe los nombres con
 /// las posiciones para hacer la busqueda mas rapida, pero al ser el numero de registros
 /// siempre muy reducido seguramente no arreglariamos nada de nada.
-int cursor2::numcampo ( const QString &campo )
+int BlDbRecordSet::numcampo ( const QString &campo )
 {
-    _depura ( "cursor2::numcampo", 0 );
+    _depura ( "BlDbRecordSet::numcampo", 0 );
     int val = -1;
     if ( m_campos.contains ( campo ) )
         val =  m_campos.value ( campo );
-    _depura ( "END cursor2::numcampo", 0 , QString::number ( val ) );
+    _depura ( "END BlDbRecordSet::numcampo", 0 , QString::number ( val ) );
     return val;
 }
 
 
 /// Esta funcion devuelve el tipo del campo posicion
 /// \return un OID con el indice a la tabla pg_type (que puede considerarse una constante).
-int cursor2::tipo(int posicion) {
-    _depura ( "cursor2::tipo", 0, QString::number ( posicion ) );
-    _depura ( "END cursor2::tipo", 0);
+int BlDbRecordSet::tipo(int posicion) {
+    _depura ( "BlDbRecordSet::tipo", 0, QString::number ( posicion ) );
+    _depura ( "END BlDbRecordSet::tipo", 0);
     return ( PQftype(result, posicion) );
 }
 
@@ -266,9 +266,9 @@ int cursor2::tipo(int posicion) {
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posicion.
-QString cursor2::valor ( int posicion, int registro, bool localeformat )
+QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
 {
-    _depura ( "cursor2::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
+    _depura ( "BlDbRecordSet::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
 
 	QLocale locale;
 
@@ -283,7 +283,7 @@ QString cursor2::valor ( int posicion, int registro, bool localeformat )
 			val.replace(".", locale.decimalPoint ());
 		} // end if
 	} // end if
-    _depura ( "END cursor2::valor", 0 );
+    _depura ( "END BlDbRecordSet::valor", 0 );
     return ( val );
 }
 
@@ -294,19 +294,19 @@ QString cursor2::valor ( int posicion, int registro, bool localeformat )
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
-QString cursor2::valor ( const QString &campo, int registro, bool localeformat )
+QString BlDbRecordSet::valor ( const QString &campo, int registro, bool localeformat )
 {
-    _depura ( "cursor2::valor", 0, campo + " " + QString::number ( registro ) );
+    _depura ( "BlDbRecordSet::valor", 0, campo + " " + QString::number ( registro ) );
     int i = 0;
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
     i = numcampo ( campo );
     if ( i == -1 ) {
-        _depura ( "END cursor2::valor ", 0, "No hay valor" );
+        _depura ( "END BlDbRecordSet::valor ", 0, "No hay valor" );
         return "";
     } // end if
-    _depura ( "END cursor2::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
+    _depura ( "END BlDbRecordSet::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
     return valor(i, registro, localeformat );
 }
 
@@ -319,18 +319,18 @@ QString cursor2::valor ( const QString &campo, int registro, bool localeformat )
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \param siNull Valor a devolver cuando el campo este a nulo
 /// \return El valor de la posicion.
-int cursor2::valorInt ( int posicion, int registro , int siNull)
+int BlDbRecordSet::valorInt ( int posicion, int registro , int siNull)
 {
-    _depura ( "cursor2::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
+    _depura ( "BlDbRecordSet::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
-    _depura ( "END cursor2::valor", 0 );
+    _depura ( "END BlDbRecordSet::valor", 0 );
     if (PQgetisnull(result, registro, posicion )) {
-       _depura ( "END cursor2::valor ", 0," ----- Valor: null");
+       _depura ( "END BlDbRecordSet::valor ", 0," ----- Valor: null");
         return siNull;
     }
-    _depura ( "END cursor2::valor ", 0,  (QString)" ----- Valor:" + PQgetvalue ( result, registro, posicion ) );
+    _depura ( "END BlDbRecordSet::valor ", 0,  (QString)" ----- Valor:" + PQgetvalue ( result, registro, posicion ) );
 
     return (atoi (PQgetvalue ( result, registro, posicion  ) ));
 }
@@ -344,13 +344,13 @@ int cursor2::valorInt ( int posicion, int registro , int siNull)
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \param siNull Valor a devolver cuando el campo este a nulo
 /// \return El valor de la posici&oacute;n.
-int cursor2::valorInt ( const QString &campo, int registro , int siNull)
+int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull)
 {
-    _depura ( "cursor2::valor", 0, campo + " " + QString::number ( registro ) );
+    _depura ( "BlDbRecordSet::valor", 0, campo + " " + QString::number ( registro ) );
     int i = 0;
     i = numcampo ( campo );
     if ( i == -1 ) {
-        _depura ( "END cursor2::valor ", 0, "No hay valor" );
+        _depura ( "END BlDbRecordSet::valor ", 0, "No hay valor" );
         return siNull;
     } // end if
     return valorInt(i,registro,siNull);
@@ -360,10 +360,10 @@ int cursor2::valorInt ( const QString &campo, int registro , int siNull)
 /**
 \return
 **/
-int cursor2::siguienteregistro()
+int BlDbRecordSet::siguienteregistro()
 {
-    _depura ( "cursor2::siguienteregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
-    _depura ( "END cursor2::siguienteregistro", 0 );
+    _depura ( "BlDbRecordSet::siguienteregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "END BlDbRecordSet::siguienteregistro", 0 );
     return ++registroactual;
 }
 
@@ -372,9 +372,9 @@ int cursor2::siguienteregistro()
 /**
 \return
 **/
-int cursor2::registroanterior()
+int BlDbRecordSet::registroanterior()
 {
-    _depura ( "cursor2::registroanterior", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "BlDbRecordSet::registroanterior", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     return --registroactual;
 }
 
@@ -383,11 +383,11 @@ int cursor2::registroanterior()
 /**
 \return
 **/
-int cursor2::primerregistro()
+int BlDbRecordSet::primerregistro()
 {
-    _depura ( "cursor2::primerregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "BlDbRecordSet::primerregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = 0;
-    _depura ( "END cursor2::primerregistro", 0 );
+    _depura ( "END BlDbRecordSet::primerregistro", 0 );
     return 0;
 }
 
@@ -396,11 +396,11 @@ int cursor2::primerregistro()
 /**
 \return
 **/
-int cursor2::ultimoregistro()
+int BlDbRecordSet::ultimoregistro()
 {
-    _depura ( "cursor2::ultimoregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "BlDbRecordSet::ultimoregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = nregistros - 1;
-    _depura ( "END cursor2::ultimoregistro", 0 );
+    _depura ( "END BlDbRecordSet::ultimoregistro", 0 );
     return registroactual;
 }
 
@@ -409,15 +409,15 @@ int cursor2::ultimoregistro()
 /**
 \return
 **/
-bool cursor2::eof()
+bool BlDbRecordSet::eof()
 {
-    _depura ( "cursor2::eof", 0 );
+    _depura ( "BlDbRecordSet::eof", 0 );
     bool result = FALSE;
     if ( nregistros == 0 ) {
         result = TRUE;
     } // end if
     result = registroactual >= nregistros;
-    _depura ( "END cursor2::eof", 0 );
+    _depura ( "END BlDbRecordSet::eof", 0 );
     return result;
 }
 
@@ -426,13 +426,13 @@ bool cursor2::eof()
 /**
 \return
 **/
-bool cursor2::bof()
+bool BlDbRecordSet::bof()
 {
-    _depura ( "cursor2::bof", 0 );
+    _depura ( "BlDbRecordSet::bof", 0 );
     if ( nregistros == 0 ) {
         return ( true );
     } // end if
-    _depura ( "END cursor2::bof", 0 );
+    _depura ( "END BlDbRecordSet::bof", 0 );
     return ( registroactual < 0 );
 }
 
@@ -441,10 +441,10 @@ bool cursor2::bof()
 /**
 \return
 **/
-bool cursor2::esultimoregistro()
+bool BlDbRecordSet::esultimoregistro()
 {
-    _depura ( "cursor2::esultimoregistro", 0 );
-    _depura ( "END cursor2::esultimoregistro", 0 );
+    _depura ( "BlDbRecordSet::esultimoregistro", 0 );
+    _depura ( "END BlDbRecordSet::esultimoregistro", 0 );
     return ( registroactual == nregistros - 1 );
 }
 
@@ -453,10 +453,10 @@ bool cursor2::esultimoregistro()
 /**
 \return
 **/
-bool cursor2::esprimerregistro()
+bool BlDbRecordSet::esprimerregistro()
 {
-    _depura ( "cursor2::esprimerregistro", 0 );
-    _depura ( "END cursor2::esprimerregistro", 0 );
+    _depura ( "BlDbRecordSet::esprimerregistro", 0 );
+    _depura ( "END BlDbRecordSet::esprimerregistro", 0 );
     return ( registroactual == 0 );
 }
 
@@ -558,7 +558,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
     formatofecha();
 
     /// Buscamos cual es el usuario ejecutando y lo almacenamos.
-        cursor2 *cur = cargacursor ( "SELECT current_user" );
+        BlDbRecordSet *cur = cargacursor ( "SELECT current_user" );
         if ( !cur->eof() ) {
             m_currentUser = cur->valor ( "current_user" );
 	} else {
@@ -679,28 +679,28 @@ void BlPostgreSqlClient::rollback()
 }
 
 
-/// Se encarga de generar un objeto del tipo cursor2 y de iniciarlo con un query concreto
+/// Se encarga de generar un objeto del tipo BlDbRecordSet y de iniciarlo con un query concreto
 /// NOTA: Este metodo crea memoria, con lo que esta debe ser liberada posteriormente.
-/// \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la
+/// \return Devuelve un apuntador al objeto \ref BlDbRecordSet generado e inicializado con la
 /// respuesta al query.
 /**
 \param Query La sentencia SELECT en formato SQL.
 \param nomcursor Nombre que desea asignar a la consulta. Puede estar vacia.
 **/
-cursor2 *BlPostgreSqlClient::cargacursor ( QString query, QString nomcursor, int limit, int offset )
+BlDbRecordSet *BlPostgreSqlClient::cargacursor ( QString query, QString nomcursor, int limit, int offset )
 {
  return cargacursor(query,0,NULL,nomcursor,limit,offset);
 }
 
  const size_t digitsInt = 1+int(ceil(log10(1+INT_MAX)));
 
-cursor2 *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
+BlDbRecordSet *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
                        QString *paramValues, QString nomcursor, 
                        int limit, int offset )
 { 
         _depura ( "BlPostgreSqlClient::cargacursor", 0, query );
 
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     /// Iniciamos la depuracion.
     try {
          QString pristineQuery = query;
@@ -721,7 +721,7 @@ cursor2 *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
              query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
          };
 
-        cur = new cursor2 ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
+        cur = new BlDbRecordSet ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
         
         _depura ( "END BlPostgreSqlClient::cargacursor", 0, nomcursor );
 
@@ -802,7 +802,7 @@ QString BlPostgreSqlClient::searchParent ( QString cod )
     while ( !fin ) {
         query = "SELECT * FROM cuenta WHERE codigo = '" + cod.left ( i ) + "'";
         begin();
-        cursor2 *cur = cargacursor ( query, "unquery" );
+        BlDbRecordSet *cur = cargacursor ( query, "unquery" );
         commit();
         if ( !cur->eof() ) {
             padre = cur->valor ( "codigo" );
@@ -930,7 +930,7 @@ int BlPostgreSqlClient::modificaborrador ( int idborrador, int idcuenta, float i
 \param ccuenta
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargacuenta ( int idcuenta, QString ccuenta )
+BlDbRecordSet *BlPostgreSqlClient::cargacuenta ( int idcuenta, QString ccuenta )
 {
     _depura ( "BlPostgreSqlClient::cargacuenta", 0 );
     QString query = "";
@@ -939,7 +939,7 @@ cursor2 *BlPostgreSqlClient::cargacuenta ( int idcuenta, QString ccuenta )
     }  else  {
         query.sprintf ( "SELECT * FROM cuenta WHERE codigo LIKE '%s' ORDER BY codigo", ccuenta.toAscii().data() );
     } // end if
-    cursor2 *cur = cargacursor ( query, "cargacuenta" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargacuenta" );
     _depura ( "END BlPostgreSqlClient::cargacuenta", 0 );
     return cur;
 }
@@ -950,12 +950,12 @@ cursor2 *BlPostgreSqlClient::cargacuenta ( int idcuenta, QString ccuenta )
 \param idasiento
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargaasiento ( int idasiento )
+BlDbRecordSet *BlPostgreSqlClient::cargaasiento ( int idasiento )
 {
     _depura ( "BlPostgreSqlClient::cargaasiento", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM asiento WHERE idasiento = %d", idasiento );
-    cursor2 *cur = cargacursor ( query, "cargaasiento" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargaasiento" );
     _depura ( "END BlPostgreSqlClient::cargaasiento", 0 );
     return cur;
 }
@@ -967,12 +967,12 @@ cursor2 *BlPostgreSqlClient::cargaasiento ( int idasiento )
 \param tidasiento
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargaapuntes ( int tidasiento )
+BlDbRecordSet *BlPostgreSqlClient::cargaapuntes ( int tidasiento )
 {
     _depura ( "BlPostgreSqlClient::cargaapuntes", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM apunte where idasiento = %d ORDER BY idapunte", tidasiento );
-    cursor2 *cur = cargacursor ( query, "cargaapuntes" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargaapuntes" );
     _depura ( "END BlPostgreSqlClient::cargaapuntes", 0 );
     return cur;
 }
@@ -984,12 +984,12 @@ cursor2 *BlPostgreSqlClient::cargaapuntes ( int tidasiento )
 \param tidasiento
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargaborradores ( int tidasiento )
+BlDbRecordSet *BlPostgreSqlClient::cargaborradores ( int tidasiento )
 {
     _depura ( "BlPostgreSqlClient::cargaborradores", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM borrador where idasiento = %d ORDER BY idborrador", tidasiento );
-    cursor2 *cur = cargacursor ( query, "cargaborradores" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargaborradores" );
     _depura ( "END BlPostgreSqlClient::cargaborradores", 0 );
     return cur;
 }
@@ -1003,7 +1003,7 @@ cursor2 *BlPostgreSqlClient::cargaborradores ( int tidasiento )
 \param padre
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargacuentas ( int padre )
+BlDbRecordSet *BlPostgreSqlClient::cargacuentas ( int padre )
 {
     _depura ( "BlPostgreSqlClient::cargacuentas", 0 );
     QString query = "";
@@ -1016,7 +1016,7 @@ cursor2 *BlPostgreSqlClient::cargacuentas ( int padre )
     } else if ( padre == -2 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE NOT padre isnull ORDER BY padre " );
     }// end if
-    cursor2 *cur = cargacursor ( query, "cargaborradores" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargaborradores" );
     _depura ( "END BlPostgreSqlClient::cargacuentas", 0 );
     return cur;
 }
@@ -1026,11 +1026,11 @@ cursor2 *BlPostgreSqlClient::cargacuentas ( int padre )
 /**
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargagrupos()
+BlDbRecordSet *BlPostgreSqlClient::cargagrupos()
 {
     _depura ( "BlPostgreSqlClient::cargagrupos", 0 );
     QString query = "SELECT * FROM grupo";
-    cursor2 *cur = cargacursor ( query, "cargagrupos" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargagrupos" );
     _depura ( "END BlPostgreSqlClient::cargagrupos", 0 );
     return cur;
 }
@@ -1044,12 +1044,12 @@ cursor2 *BlPostgreSqlClient::cargagrupos()
 \param fechafinal
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargaapuntesctafecha ( int tidcuenta, QString fechainicial, QString fechafinal )
+BlDbRecordSet *BlPostgreSqlClient::cargaapuntesctafecha ( int tidcuenta, QString fechainicial, QString fechafinal )
 {
     _depura ( "ostgresiface2::cargaapuntesctafecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM apunte where idcuenta = %d AND fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", tidcuenta, fechainicial.toAscii().data(), fechafinal.toAscii().data() );
-    cursor2 *cur = cargacursor ( query, "cargasaldoscuentafecha" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargasaldoscuentafecha" );
     _depura ( "END ostgresiface2::cargaapuntesctafecha", 0 );
     return cur;
 }
@@ -1062,12 +1062,12 @@ cursor2 *BlPostgreSqlClient::cargaapuntesctafecha ( int tidcuenta, QString fecha
 \param fecha
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargasaldoscuentafecha ( int idcuenta, QString fecha )
+BlDbRecordSet *BlPostgreSqlClient::cargasaldoscuentafecha ( int idcuenta, QString fecha )
 {
     _depura ( "BlPostgreSqlClient::cargasaldoscuentafecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = %d AND fecha <'%s'", idcuenta, fecha.toAscii().data() );
-    cursor2 *cur = cargacursor ( query, "cargasaldoscuentafecha" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargasaldoscuentafecha" );
     _depura ( "END BlPostgreSqlClient::cargasaldoscuentafecha", 0 );
     return ( cur );
 }
@@ -1079,12 +1079,12 @@ cursor2 *BlPostgreSqlClient::cargasaldoscuentafecha ( int idcuenta, QString fech
 \param fechfin
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargaasientosfecha ( QString fechini, QString fechfin )
+BlDbRecordSet *BlPostgreSqlClient::cargaasientosfecha ( QString fechini, QString fechfin )
 {
     _depura ( "BlPostgreSqlClient::cargaasientosfecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM asiento WHERE fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", fechini.toAscii().data(), fechfin.toAscii().data() );
-    cursor2 *cur = cargacursor ( query, "cargaasientosfecha" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargaasientosfecha" );
     _depura ( "END BlPostgreSqlClient::cargaasientosfecha", 0 );
     return cur;
 }
@@ -1102,7 +1102,7 @@ cursor2 *BlPostgreSqlClient::cargaasientosfecha ( QString fechini, QString fechf
 \param codigofinal
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargacuentascodigo ( int padre, QString codigoinicial, QString codigofinal )
+BlDbRecordSet *BlPostgreSqlClient::cargacuentascodigo ( int padre, QString codigoinicial, QString codigofinal )
 {
     _depura ( "BlPostgreSqlClient::cargacuentascodigo", 0 );
     QString query = "";
@@ -1113,7 +1113,7 @@ cursor2 *BlPostgreSqlClient::cargacuentascodigo ( int padre, QString codigoinici
     } else if ( padre == -1 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE codigo >= '%s' AND codigo <= '%s' ORDER BY codigo", codigoinicial.toAscii().data(), codigofinal.toAscii().data() );
     } // end if
-    cursor2 *cur = cargacursor ( query, "cargasaldoscuentafecha" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargasaldoscuentafecha" );
     _depura ( "END BlPostgreSqlClient::cargacuentascodigo", 0 );
     return cur;
 }
@@ -1129,7 +1129,7 @@ int BlPostgreSqlClient::cierraasiento ( int idasiento )
     _depura ( "BlPostgreSqlClient::cierraasiento", 0 );
     QString query;
     query.sprintf ( "SELECT cierraasiento(%d)", idasiento );
-    cursor2 *cur = cargacursor ( query, "abreasientos" );
+    BlDbRecordSet *cur = cargacursor ( query, "abreasientos" );
     delete cur;
     _depura ( "END BlPostgreSqlClient::cierraasiento", 0 );
     return 1;
@@ -1196,7 +1196,7 @@ int BlPostgreSqlClient::abreasiento ( int idasiento )
     _depura ( "BlPostgreSqlClient::abreasiento", 0 );
     QString query = "";
     query.sprintf ( "SELECT abreasiento(%d)", idasiento );
-    cursor2 *cur = cargacursor ( query, "abreasientos" );
+    BlDbRecordSet *cur = cargacursor ( query, "abreasientos" );
     delete cur;
     _depura ( "END BlPostgreSqlClient::abreasiento", 0 );
     return 1;
@@ -1302,12 +1302,12 @@ int BlPostgreSqlClient::nuevacuenta ( QString desccuenta, QString codigo, int pa
 /**
 \return
 **/
-cursor2 *BlPostgreSqlClient::cargaempresas()
+BlDbRecordSet *BlPostgreSqlClient::cargaempresas()
 {
     _depura ( "BlPostgreSqlClient::cargaempresas", 0 );
     QString query;
     query = "SELECT * FROM empresa";
-    cursor2 *cur = cargacursor ( query, "cargaempresas" );
+    BlDbRecordSet *cur = cargacursor ( query, "cargaempresas" );
     _depura ( "END BlPostgreSqlClient::cargaempresas", 0 );
     return cur;
 }
@@ -1382,7 +1382,7 @@ bool BlPostgreSqlClient::has_table_privilege ( QString tabla, QString permiso )
 {
     _depura ( "BlPostgreSqlClient::has_table_privilege", 0 );
     /// Comprobamos que tengamos permisos para trabajar con articulos.
-    cursor2 *cur = cargacursor ( "SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins" );
+    BlDbRecordSet *cur = cargacursor ( "SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins" );
     bool privileges = FALSE;
     if ( cur ) {
         if ( cur->valor ( "pins" ) == "t" ) {
@@ -1400,7 +1400,7 @@ QString BlPostgreSqlClient::PGEval(QString evalexp, int precision) {
 	/// Ninguna expresion numerica acepta comas.
 	evalexp.replace(",", ".");
 	QString query = "SELECT (" + evalexp + ")::NUMERIC(12,"+QString::number(precision)+") AS res";
-	cursor2 *cur = cargacursor(query);
+	BlDbRecordSet *cur = cargacursor(query);
 	if (cur) {
 		res = cur->valor("res");
 		delete cur;

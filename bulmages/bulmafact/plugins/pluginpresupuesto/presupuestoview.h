@@ -48,7 +48,7 @@ class PresupuestoView : public FichaBf, public Ui_PresupuestoClienteBase
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     PresupuestoView ( Company *, QWidget * );

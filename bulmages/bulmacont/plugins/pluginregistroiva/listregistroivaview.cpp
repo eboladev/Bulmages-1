@@ -191,7 +191,7 @@ void ListRegistroIvaView::inicializa()
     QString query;
     QString sbaseimp, siva;
     QString cbaseimp, civa, ctotal;
-    cursor2 *cur;
+    BlDbRecordSet *cur;
 
     QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, sum(ivaiva) AS tivaiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='" + finicial->text() + "' AND ffactura <='" + ffinal->text() + "' AND factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
 

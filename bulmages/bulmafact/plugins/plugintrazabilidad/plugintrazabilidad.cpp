@@ -185,7 +185,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * )
      
         if (camp->nomcampo() == "lote"+subform->tableName()) {
      QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
-     cursor2 *cur = subform->empresaBase()->cargacursor(query);
+     BlDbRecordSet *cur = subform->empresaBase()->cargacursor(query);
      if (!cur->eof()) {
       if (campact->nomcampo() == "codigocompletoarticulo") {
        subform->situarse1(subform->m_prevRow, subform->m_prevCol);

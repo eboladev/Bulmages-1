@@ -123,7 +123,7 @@ void InformeQToolButton::click()
 
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM cliente ";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
 
     /// Mostramos la barra de progreso
     BlProgressBar barra;
@@ -175,7 +175,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
     SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " + idcliente;
     SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " + idcliente;
     SQLQuery += " UNION SELECT refcobro FROM cobro AS referencia WHERE idcliente = " + idcliente;
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( cur->eof() ) {
         delete cur;
         return "";
@@ -479,7 +479,7 @@ QString InformeArtQToolButton::generarArticulos()
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt  FROM lalbaranp GROUP BY idarticulo) AS t5 ON t5.idarticulo = articulo.idarticulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap GROUP BY idarticulo) AS t6 ON t6.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0 OR cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
 
     /// Generamos la barra de progreso.
     BlProgressBar barra;

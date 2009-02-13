@@ -36,7 +36,7 @@ class BancoView : public FichaBf, private Ui_BancoBase
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorbancos;
+    BlDbRecordSet *m_cursorbancos;
     /// Indica cual es el objeto que se esta mostrando.
     QString mdb_idbanco;
     /// Indica en la lista de trabajadores cual es el item seleccionado.

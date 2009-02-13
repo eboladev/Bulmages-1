@@ -28,7 +28,6 @@
 #include <QTextStream>
 #include <QFile>
 
-
 #include "blfixed.h"
 #include "empresabase.h"
 #include "bldb.h"
@@ -139,7 +138,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
 		QString idcliente = m_BlForm->DBvalue ( "idcliente" );
 		if (!idcliente.isEmpty()) {
 			QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-			cursor2 *curs = ((BlForm *)parent())->empresaBase()->cargacursor ( query );
+			BlDbRecordSet *curs = ((BlForm *)parent())->empresaBase()->cargacursor ( query );
 			if (!curs->eof()) {
 				email = curs->valor ( "mailcliente" );
 			} // end if

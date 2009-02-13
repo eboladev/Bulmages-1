@@ -109,7 +109,7 @@ void TipoArticuloList::pintar()
 {
     _depura ( "TipoArticuloList::pintar", 0 );
     m_semaforoPintar = TRUE;
-    cursor2 *cursoraux1 = NULL;
+    BlDbRecordSet *cursoraux1 = NULL;
     try {
         QTreeWidgetItem * it;
 
@@ -257,7 +257,7 @@ void TipoArticuloList::mostrarplantilla()
 
         QString query;
         query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
-        cursor2 *cursortipo = empresaBase()->cargacursor ( query );
+        BlDbRecordSet *cursortipo = empresaBase()->cargacursor ( query );
         if ( !cursortipo->eof() ) {
             mui_codigotipo_articulo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
             mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
@@ -328,7 +328,7 @@ int TipoArticuloList::guardar()
     QList<QTreeWidgetItem *> listit =  m_listTipos->findItems ( m_idtipo, Qt::MatchExactly, COL_IDTIPOARTICULO );
     QTreeWidgetItem *it = listit.first();
     if ( it ) {
-        cursor2 *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
+        BlDbRecordSet *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
         if ( !cursoraux1->eof() ) {
             it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
             it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
@@ -348,7 +348,7 @@ int TipoArticuloList::guardar()
 void TipoArticuloList::on_mui_crear_clicked()
 {
     _depura ( "TipoArticuloList::on_mui_crear_clicked", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     try {
@@ -437,7 +437,7 @@ void TipoArticuloList::pintar ( QTreeWidgetItem *it )
 {
     QString idtipo = it->text ( COL_IDTIPOARTICULO );
     if ( it ) {
-        cursor2 * cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + idtipo );
+        BlDbRecordSet * cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + idtipo );
         if ( !cursoraux1->eof() ) {
             it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
             it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );

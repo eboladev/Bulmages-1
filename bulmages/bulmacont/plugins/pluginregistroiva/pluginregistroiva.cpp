@@ -167,7 +167,7 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
     Empresa *companyact = as->companyact();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
-    cursor2 *curvalor = companyact->cargacursor ( query );
+    BlDbRecordSet *curvalor = companyact->cargacursor ( query );
     while ( !curvalor->eof() ) {
         /// Preparamos una expresi&oacute;n regular para usar en la consulta.
         cuentas += curvalor->valor ( "valor" ) + "%|";
@@ -181,7 +181,7 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
     /// preguntamos antes de cerrar nada.
     QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + as->DBvalue ( "idasiento" ) + " AND codigo SIMILAR TO '" + companyact->sanearCadena ( cuentas.toAscii().constData() ) + "' GROUP BY contra";
 
-    cursor2 *cursborr = companyact->cargacursor ( SQLQuery );
+    BlDbRecordSet *cursborr = companyact->cargacursor ( SQLQuery );
     while ( !cursborr->eof() ) {
         int idborrador = cursborr->valor ( "contra" ).toInt();
         RegistroIvaView *reg = new RegistroIvaView ( companyact, 0 );

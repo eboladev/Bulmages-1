@@ -48,7 +48,7 @@ private:
 protected:
     QString m_tabla;
     /// Cursor que almacena en memoria la lista de provincias.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     /// Indica si adminte nulos o no
     bool m_null;
 

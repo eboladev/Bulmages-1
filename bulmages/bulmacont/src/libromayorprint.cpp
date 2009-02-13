@@ -92,7 +92,7 @@ void libromayorprint::accept()
     char *textasiento;
     int activo;
     QString cad;
-    cursor2 *cursoraux, *cursoraux1, *cursoraux2;
+    BlDbRecordSet *cursoraux, *cursoraux1, *cursoraux2;
 
     FILE *mifile;
     mifile = fopen ( "mayor.txt", "wt" );

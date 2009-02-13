@@ -143,7 +143,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     QAction *fest = m_menu->addAction ( "Festivo" );
     QAction *nofest = m_menu->addAction ( "No Festivo" );
     QMenu *menu1 = m_menu->addMenu ( "Eliminar Personal" );
-    cursor2 *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario" );
+    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario" );
     if ( !cur1 ) throw - 1;
     while ( !cur1->eof() ) {
         QAction * ac = menu1->addAction ( cur1->valor ( "nomtrabajador" ) + "(" + cur1->valor ( "horainhorario" ) + ":" + cur1->valor ( "horafinhorario" ) + ")" );
@@ -241,7 +241,7 @@ CuadranteQTextDocument::~CuadranteQTextDocument()
 void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
 {
     _depura ( "CuadranteQTextDocument::addTrabajador", 0 );
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
     try {
         QString horain = "08:00";
         QString horafin = "13:00";
@@ -249,7 +249,7 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
         QString horafin1 = "20:00";
 
         QString querycuad = "SELECT * FROM cuadrante WHERE idcuadrante=" + mdb_idcuadrante;
-        cursor2 *cur = empresaBase() ->cargacursor ( querycuad );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( querycuad );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             if ( cur->valor ( "aperturacuadrante" ) != "" )
@@ -288,7 +288,7 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
 void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date )
 {
     _depura ( "CuadranteQTextDocument::setAlmFecha", 0 );
-    cursor2 *cur1 = NULL;
+    BlDbRecordSet *cur1 = NULL;
     try {
         /// Comprobamos que exista el cuadrante y si no existe lo creamos.
         cur1 = empresaBase() ->cargacursor ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen=" + idalmacen );
@@ -414,7 +414,7 @@ const QString CuadranteQTextDocument::impresion()
         QString html = "";
         html += "<td>\n";
         QString style = "";
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             if ( cur->valor ( "fiestacuadrante" ) == "t" ) {
@@ -426,7 +426,7 @@ const QString CuadranteQTextDocument::impresion()
 
         QString oldnomtipotrabajo = "";
 
-        cursor2 *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, horainhorario, nomtrabajador" );
+        BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, horainhorario, nomtrabajador" );
         if ( !cur1 ) throw - 1;
         while ( !cur1->eof() ) {
             if ( oldnomtipotrabajo != cur1->valor ( "nomtipotrabajo" ) ) {
@@ -486,8 +486,8 @@ ImpCuadrante::~ImpCuadrante()
 void ImpCuadrante::generar()
 {
     _depura ( "ImpCuadrante::generar", 0, mdb_idalmacen );
-    cursor2 *cur = NULL;
-    cursor2 *cur1 = NULL;
+    BlDbRecordSet *cur = NULL;
+    BlDbRecordSet *cur1 = NULL;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ImpCuadrante_generar", this );
@@ -569,7 +569,7 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
     query += " OR (horainhorario < '" + horafin + "' AND horafinhorario > '" + horafin + "')";
     query += ")";
     query += " AND fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( cur ) {
         if ( cur->numregistros() > 1 ) {
 

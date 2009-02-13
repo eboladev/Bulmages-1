@@ -65,7 +65,7 @@ void AsientosView::rellenaListaEjercicio()
     mui_ejercicio->clear();
     mui_ejercicio->insertItem ( 0, _( "(todos)" ) );
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
         mui_ejercicio->addItem ( cur->valor ( "ano" ) );
         cur->siguienteregistro();

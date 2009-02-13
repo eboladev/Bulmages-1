@@ -74,7 +74,7 @@ void Devolucion::on_mui_vale_clicked()
         BlFixed totalIva;
     }total;
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
@@ -186,7 +186,7 @@ void Devolucion::on_mui_ref_returnPressed()
 
     QString query1 = "SELECT * FROM albaran WHERE refalbaran = '" + mui_ref->text() + "'";
 
-    cursor2 *curs = empresaBase()->cargacursor ( query1 );
+    BlDbRecordSet *curs = empresaBase()->cargacursor ( query1 );
     if ( !curs->eof() ) {
         m_ticket = new Ticket ( empresaBase(), NULL );
         m_ticket->cargar ( curs->valor ( "idalbaran" ) );
@@ -207,11 +207,11 @@ void Devolucion::pintar()
     html1 += "Ticket: " + m_ticket->DBvalue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + m_ticket->DBvalue ( "idtrabajador" );
-    cursor2 *curtrab = empresaBase() ->cargacursor ( querytrab );
+    BlDbRecordSet *curtrab = empresaBase() ->cargacursor ( querytrab );
     html1 += "Trabajador: " + m_ticket->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + m_ticket->DBvalue ( "idcliente" );
-    cursor2 *cur1 = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query );
     html1 += "Cliente: " + m_ticket->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
@@ -254,7 +254,7 @@ void Devolucion::pintar()
     QString l;
     BlFixed irpf ( "0" );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );

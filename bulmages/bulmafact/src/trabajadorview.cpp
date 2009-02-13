@@ -243,7 +243,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( query );
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
         empresaBase() ->commit();
         mdb_idtrabajador = cur->valor ( "idtrabajador" );
         delete cur;

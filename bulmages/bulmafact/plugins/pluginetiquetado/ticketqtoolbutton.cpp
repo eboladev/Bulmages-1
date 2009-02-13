@@ -115,7 +115,7 @@ void TicketQToolButton::click()
     m_companyact = m_albaranProveedorView->empresaBase();
 
     QString query = "SELECT * , ceil(cantlalbaranp) AS cantidad FROM lalbaranp NATURAL LEFT JOIN articulo WHERE idalbaranp = " + m_albaranProveedorView->DBvalue ( "idalbaranp" );
-    cursor2 *cur = m_companyact->cargacursor ( query );
+    BlDbRecordSet *cur = m_companyact->cargacursor ( query );
     while ( !cur->eof() ) {
         int i = 0;
         while ( i < cur->valor ( "cantidad" ).toInt() ) {

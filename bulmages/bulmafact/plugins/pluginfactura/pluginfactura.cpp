@@ -169,7 +169,7 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + ref->mui_referencia->text() + "'";
-    cursor2 *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
         FacturaView * bud = new FacturaView((Company *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );

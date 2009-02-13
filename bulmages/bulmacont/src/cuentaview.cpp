@@ -113,7 +113,7 @@ int CuentaView::nuevacuenta ( QString codpadre )
     QString cpadreaux;
     QString query;
     query = "SELECT * FROM cuenta WHERE padre = id_cuenta('" + codpadre + "') ORDER BY codigo DESC";
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         long int valor = cur->valor ( "codigo" ).toLong();
         valor ++;

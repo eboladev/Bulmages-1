@@ -119,7 +119,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
 
 
     FacturaProveedorView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
@@ -225,7 +225,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
 
 
     FacturaProveedorView *bud = NULL;
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     try {
         /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta

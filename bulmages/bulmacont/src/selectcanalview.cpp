@@ -71,7 +71,7 @@ void selectcanalview::cargacanales()
     QTreeWidgetItem *it;
 
     int idcanal = 0;
-    cursor2 *cursoraux1;
+    BlDbRecordSet *cursoraux1;
     /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
     empresaBase() ->begin();

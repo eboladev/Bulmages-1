@@ -38,7 +38,7 @@ class BusquedaColorDelegate : public BlComboBox
 
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaColorDelegate ( QWidget *parent = 0 );
@@ -57,7 +57,7 @@ class BusquedaColor : public BlComboBox
 
 private:
     /// El puntero a company para que se pueda trabajar con la base de datos.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaColor ( QWidget *parent = 0, const char *name = 0 );

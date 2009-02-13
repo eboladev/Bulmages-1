@@ -31,7 +31,7 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
         QString l;
         BlFixed irpf ( "0" );
 
-        cursor2 *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+        BlDbRecordSet *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -128,12 +128,12 @@ void Compra::on_mui_codigoarticulo_returnPressed() {
 	texto += "<TD width=\"100\">Stock</TD>";
 	texto += "</TR>";
 	QString query = "SELECT * FROM articulo LEFT JOIN tc_articulo_alias AS t3 ON articulo.idarticulo = t3.idarticulo  LEFT JOIN tc_talla AS t1 ON t3.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON t3.idtc_color = t2.idtc_color WHERE t3.aliastc_articulo_tallacolor = '" + mui_codigoarticulo->text() + "' OR articulo.codigocompletoarticulo = '"+mui_codigoarticulo->text()+"' ORDER BY nomtc_color, nomtc_talla";
-	cursor2 *cur = empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = empresaBase()->cargacursor(query);
 	while (! cur->eof()) {
 		QString query1= "SELECT SUM(cantlalbaranp) AS suma FROM lalbaranp WHERE idarticulo="+cur->valor("idarticulo")+"  AND idtc_talla="+cur->valor("idtc_talla")+" AND idtc_color="+ cur->valor("idtc_color");
 		QString query2= "SELECT SUM(cantlalbaran) AS suma FROM lalbaran WHERE idarticulo="+cur->valor("idarticulo")+"  AND idtc_talla="+cur->valor("idtc_talla")+" AND idtc_color="+ cur->valor("idtc_color");
-		cursor2 *cur1 = empresaBase()->cargacursor(query1);
-		cursor2 *cur2 = empresaBase()->cargacursor(query2);
+		BlDbRecordSet *cur1 = empresaBase()->cargacursor(query1);
+		BlDbRecordSet *cur2 = empresaBase()->cargacursor(query2);
 		if (!cur2->eof()) {
 			tventas = cur2->valor("suma");
 		} // end if

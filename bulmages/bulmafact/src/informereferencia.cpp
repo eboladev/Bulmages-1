@@ -102,7 +102,7 @@ void InformeCliente::generarInforme()
 
     /// Sacamos los datos del cliente
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + m_idcliente;
-    cursor2 *cur = companyact->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = companyact->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
         buff.replace ( "[nomcliente]", cur->valor ( "nomcliente" ) );
         buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );

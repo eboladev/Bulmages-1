@@ -313,8 +313,8 @@ void extractoview1::presentar()
     QString contra = mui_codigocontrapartida->text();
     QString cad;
     QString cadaux;
-    cursor2 *cursorapt = NULL;
-    cursor2 *cursoraux = NULL;
+    BlDbRecordSet *cursorapt = NULL;
+    BlDbRecordSet *cursoraux = NULL;
     QString saldosup = "";
     QString saldoinf = "";
     try {
@@ -465,14 +465,14 @@ void extractoview1::on_mui_casacion_clicked()
     _depura ( "extractoview1::on_mui_casacion_clicked", 0 );
     try {
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
-        cursor2 *curshaber = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *curshaber = empresaBase() ->cargacursor ( query );
         BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
         barra.setText ( _( "Cargando Extracto de Cuentas" ) );
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->valor ( "haber" ) + " AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
-            cursor2 *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );
+            BlDbRecordSet *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );
             if ( !cursdebe->eof() ) {
                 query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->valor ( "idapunte" );
                 empresaBase() ->begin();
@@ -515,7 +515,7 @@ void extractoview1::on_mui_guardarpunteo_clicked()
         if ( mifile != NULL ) {
             QString query;
             query = "SELECT * FROM apunte WHERE punteo = TRUE";
-            cursor2 *cursp = empresaBase() ->cargacursor ( query );
+            BlDbRecordSet *cursp = empresaBase() ->cargacursor ( query );
             while ( !cursp->eof() ) {
                 fprintf ( mifile, "%s\n", cursp->valor ( "idapunte" ).toAscii().constData() );
                 cursp->siguienteregistro();
@@ -632,7 +632,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
 
         QString cad;
         QString cadaux;
-        cursor2 *cursorapt;
+        BlDbRecordSet *cursorapt;
 
         if ( idcuenta == "" ) {
             _depura ( "END extractoview1::imprimeExtractoCuenta", 0, "No hay cuenta" );
@@ -677,7 +677,7 @@ if (!mui_asAbiertos->isChecked() ) {
         if ( !cursorapt ) throw - 1;
 
         /// Cargamos los saldos iniciales.
-        cursor2 *cursoraux;
+        BlDbRecordSet *cursoraux;
         query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM " +tabla+ " WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
         cursoraux = empresaBase() ->cargacursor ( query );
         if ( !cursoraux ) {
@@ -694,8 +694,8 @@ if (!mui_asAbiertos->isChecked() ) {
         } // end if
         delete cursoraux;
 
-        /// Presentamos la informaciÃ³n inicial y de la cuenta.
-        cursor2 *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
+        /// Presentamos la informacion inicial y de la cuenta.
+        BlDbRecordSet *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
         if ( !cursorcta ) throw - 1;
 
 
@@ -858,7 +858,7 @@ void extractoview1::on_mui_imprimir_clicked()
         fitxersortidatxt += "</blockTable>\n";
 
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
-    cursor2 *curcta = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *curcta = empresaBase() ->cargacursor ( query );
     if ( !curcta ) return;
    	barra->setRange ( 0, curcta->numregistros() );
 	int i = 0;

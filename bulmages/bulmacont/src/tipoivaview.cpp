@@ -169,7 +169,7 @@ void tipoivaview::on_mui_crear_clicked()
         QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('" + nombreTipoIVA + "', 0, id_cuenta('" + mui_idcuenta->text() + "'))";
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( query );
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
         empresaBase() ->commit();
         pintar ( cur->valor ( "idtipoiva" ) );
         delete cur;

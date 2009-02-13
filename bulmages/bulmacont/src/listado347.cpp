@@ -82,7 +82,7 @@ void Listado347::on_m_boton_recalcular_clicked()
     query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
 
     empresaBase() ->begin();
-    cursor2 *recordSet = empresaBase() ->cargacursor ( query, "recordSet" );
+    BlDbRecordSet *recordSet = empresaBase() ->cargacursor ( query, "recordSet" );
     empresaBase() ->commit();
 
     tablaventas->setColumnCount ( 5 );

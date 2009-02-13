@@ -132,7 +132,7 @@ void BusquedaAlmacen::setEmpresaBase ( Company *comp )
 {
     _depura ( "BusquedaAlmacen::setEmpresaBase", 0 );
     PEmpresaBase::setEmpresaBase ( comp );
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             m_codigoalmacen = cur->valor ( "valor" );

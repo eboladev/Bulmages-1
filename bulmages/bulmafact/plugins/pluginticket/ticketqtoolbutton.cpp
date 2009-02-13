@@ -106,7 +106,7 @@ void TicketQToolButton::click()
         } // end if
 
 
-        cursor2 *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+        BlDbRecordSet *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
         if ( !cur->eof() ) {
             file.write ( cur->valor ( "valor" ).toAscii() );
             file.write ( "\n", 1 );
@@ -259,7 +259,7 @@ void TicketQToolButton::click()
         } // end if
 
 
-        cursor2 *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+        BlDbRecordSet *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
         if ( !cur->eof() ) {
             file.write ( cur->valor ( "valor" ).toAscii() );
             file.write ( "\n", 1 );

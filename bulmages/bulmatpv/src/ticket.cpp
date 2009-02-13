@@ -152,7 +152,7 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             m_lineaActual->setDBvalue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
             m_lineaActual->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -161,7 +161,7 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
 
             if ( cur->valor ( "idtipo_iva" ) != "" ) {
                 QString query2 = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1";
-                cursor2 *cur1 = empresaBase() ->cargacursor ( query2 );
+                BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query2 );
                 if ( !cur1->eof() )
                     m_lineaActual->setDBvalue ( "ivalalbaran", cur1->valor ( "porcentasa_iva" ) );
                 delete cur1;
@@ -265,7 +265,7 @@ void  Ticket::imprimir()
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( "\n", 1 );
@@ -618,7 +618,7 @@ void Ticket::imprimir()
         BlFixed totalIva;
     }total;
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
@@ -874,7 +874,7 @@ void Ticket::insertarArticuloCodigo ( QString codigo )
     _depura ( "Ticket::insertarArticuloCodigo", 0 );
 
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
@@ -890,7 +890,7 @@ void Ticket::insertarArticuloCodigoNL ( QString codigo )
 {
     _depura("Ticket::insertarArticuloCodigoNL",0);
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
     } // end if
@@ -904,7 +904,7 @@ int Ticket::cargar ( QString id )
 {
     try {
         QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
-        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( cur ) {
             if ( !cur->eof() ) {
                 DBload ( cur );
@@ -956,7 +956,7 @@ int Ticket::guardar()
         }// end for
         empresaBase() ->commit();
 	setDBvalue("idalbaran", id);
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM albaran WHERE idalbaran = " + id );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM albaran WHERE idalbaran = " + id );
 	setDBvalue("refalbaran", cur->valor("refalbaran"));
 	setDBvalue("numalbaran", cur->valor("numalbaran"));
 

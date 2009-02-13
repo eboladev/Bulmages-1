@@ -239,7 +239,7 @@ void BusquedaCuenta::setidcuenta ( QString val )
     if ( val == "" ) return;
 
     QString SQLQuery = "SELECT * FROM cuenta WHERE idcuenta = '" + mdb_idcuenta + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_codigocuenta = cur->valor ( "codigo" );
         mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -267,7 +267,7 @@ void BusquedaCuenta::setcodigocuenta ( QString val )
     mdb_codigocuenta = val;
     if ( val == "" ) return;
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_idcuenta = cur->valor ( "idcuenta" );
         mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -361,7 +361,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 
 
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + extiendecodigo ( val, m_numdigitos ) + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_idcuenta = cur->valor ( "idcuenta" );
         mdb_nomcuenta = cur->valor ( "descripcion" );

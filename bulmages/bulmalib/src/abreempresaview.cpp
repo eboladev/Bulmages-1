@@ -375,7 +375,7 @@ void abreempresaview::guardaArchivo()
         if ( db->inicializa ( QString ( "bulmafact" ) ) )
             if ( db->inicializa ( QString ( "bulmacont" ) ) )
                 return;
-    cursor2 *curs = db->cargacursor ( "SELECT datname FROM pg_database" );
+    BlDbRecordSet *curs = db->cargacursor ( "SELECT datname FROM pg_database" );
 
     /// Preparamos el listado
     preparamui_empresas();
@@ -412,7 +412,7 @@ void abreempresaview::trataEmpresa ( QString empresa, QFile *file )
         db1 = new BlPostgreSqlClient();
         db1->inicializa ( empresa );
         try {
-            cursor2 *cursa = db1->cargacursor ( "SELECT * FROM pg_tables WHERE tablename = 'configuracion'" );
+            BlDbRecordSet *cursa = db1->cargacursor ( "SELECT * FROM pg_tables WHERE tablename = 'configuracion'" );
             if ( !cursa ) return;
             if ( cursa->eof() ) {
                 delete cursa;

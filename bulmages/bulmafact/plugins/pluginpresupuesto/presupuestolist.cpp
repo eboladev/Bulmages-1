@@ -205,7 +205,7 @@ void PresupuestoList::presentar()
     mui_list->cargar ( "SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
+    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
     /// Si por un problema de permisos este query devuelve NULL debe contemplarse el caso.
     if ( cur ) {
         m_total->setText ( cur->valor ( "total" ) );

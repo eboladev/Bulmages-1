@@ -36,7 +36,7 @@ private:
 public:
     Iva ( Empresa * );
     Iva ( Empresa *, QString );
-    Iva ( Empresa *, cursor2 * );
+    Iva ( Empresa *, BlDbRecordSet * );
     virtual ~Iva();
     virtual void pintaIva() {}
     ;

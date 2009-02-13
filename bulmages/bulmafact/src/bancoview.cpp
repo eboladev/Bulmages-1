@@ -206,7 +206,7 @@ void BancoView::on_mui_nuevo_clicked()
         QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
         empresaBase() ->begin();
         empresaBase() ->ejecuta ( query );
-        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idbanco) AS idbanco FROM banco" );
+        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idbanco) AS idbanco FROM banco" );
         empresaBase() ->commit();
         mdb_idbanco = cur->valor ( "idbanco" );
         delete cur;

@@ -44,7 +44,7 @@ class Empresa;
 
 
 /// Pantalla de presentación del balnace de sumas y saldos (jerarquica)
-/** \todo Hay que eliminar el array de ccostes y sustituirlo por un cursor2.
+/** \todo Hay que eliminar el array de ccostes y sustituirlo por un BlDbRecordSet.
     \todo Hay que eliminar los punteros de extracto - diario - introaputnes y hacerlo pasar
     todo por la clase empresa.
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite

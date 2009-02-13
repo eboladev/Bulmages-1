@@ -302,7 +302,7 @@ int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
 {
     _depura ( "PluginTarifas SubForm2Bf_calculaPVP", 0 );
 
-    cursor2 *cur = NULL;
+    BlDbRecordSet *cur = NULL;
 
     QString cantactual = sub->m_registrolinea->DBvalue ( "cant" + sub->tableName() ).replace(",",".");
     QString pvpactual = sub->m_registrolinea->DBvalue ( "pvp" + sub->tableName() ).replace(",",".");

@@ -135,7 +135,7 @@ void regivaprintview::presentar ( const char *tipus )
 
         if ( txt | html ) { /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
             int num1;
-            cursor2 *cursorapt;
+            BlDbRecordSet *cursorapt;
             empresaBase() ->begin();
             query.sprintf ( "SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData() );
             fprintf ( stderr, "%s\n", query.toAscii().constData() );
@@ -198,7 +198,7 @@ void regivaprintview::presentar ( const char *tipus )
             /// AHORA PONEMOS EL RESUMEN DEL IVA REPERCUTIDO.
             QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='" + fechainicial1->text() + "' AND ffactura <='" + fechafinal1->text() + "' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
             empresaBase() ->begin();
-            cursor2* cur = empresaBase() ->cargacursor ( SQLQuery, "elcursor" );
+            BlDbRecordSet* cur = empresaBase() ->cargacursor ( SQLQuery, "elcursor" );
             empresaBase() ->commit();
             int j = 0;
             BlFixed tivar ( "0" );

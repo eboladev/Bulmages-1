@@ -191,7 +191,7 @@ int InventarioView::cargar ( QString idbudget )
 {
     if ( idbudget == "" ) idbudget = "0";
     QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
-    cursor2 * cur = companyact->cargacursor ( query );
+    BlDbRecordSet * cur = companyact->cargacursor ( query );
     if ( !cur->eof() ) {
         DBload ( cur );
     } // end if

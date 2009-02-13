@@ -59,7 +59,7 @@ BalancePrintView::BalancePrintView ( Empresa *emp )
     /// de cuentas.
     empresaBase() ->begin();
     QString query = "SELECT nivel(codigo) FROM cuenta GROUP BY nivel ORDER BY nivel";
-    cursor2 *niveles = empresaBase() ->cargacursor ( query, "Niveles" );
+    BlDbRecordSet *niveles = empresaBase() ->cargacursor ( query, "Niveles" );
     int i = 0;
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
@@ -189,7 +189,7 @@ void BalancePrintView::presentar ( const char* tipus )
             /// n&uacute;mero de cuentas de nivel 2) y las vamos creando.
             empresaBase() ->begin();
             query.sprintf ( "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo" );
-            cursor2 *ramas;
+            BlDbRecordSet *ramas;
             ramas = empresaBase() ->cargacursor ( query, "Ramas" );
             Arbol *arbol;
             arbol = new Arbol;
@@ -259,7 +259,7 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Vamos a recopilar todos los apuntes agrupados por cuenta para poder
             /// establecer as&iacute; los valores de cada cuenta.
             query.sprintf ( "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.toAscii().constData(), finicial.toAscii().constData(), ffinal.toAscii().constData(), finicial.toAscii().constData() );
-            cursor2 *cuentas;
+            BlDbRecordSet *cuentas;
             cuentas = empresaBase() ->cargacursor ( query, "Periodo" );
             /// Para cada cuenta con sus apuntes hechos hay que actualizar hojas
             /// del &aacute;rbol.

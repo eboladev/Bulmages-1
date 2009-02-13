@@ -103,7 +103,7 @@ QString mpatrimonialesview::getidmasa()
 int mpatrimonialesview::inicializa()
 {
     _depura ( "mpatrimonialesview::inicializa", 0 );
-    cursor2 *cursoraux1;
+    BlDbRecordSet *cursoraux1;
 
     /// Vamos a cargar el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer
     /// una introducci&oacute;n de numeros de cuenta m&aacute;s pr&aacute;ctica.
@@ -138,7 +138,7 @@ void mpatrimonialesview::inicializatabla()
 
     QString query = "SELECT * FROM mpatrimonial WHERE idbalance ISNULL";
     empresaBase() ->begin();
-    cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query, "elquery" );
+    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "elquery" );
     empresaBase() ->commit();
 
     mui_tabla->setRowCount ( cursoraux1->numregistros() );

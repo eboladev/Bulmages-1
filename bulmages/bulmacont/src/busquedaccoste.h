@@ -36,7 +36,7 @@ class BusquedaCCosteDelegate : public BlComboBox
 
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
     QCompleter *completar;
 
 public:
@@ -51,7 +51,7 @@ class BusquedaCCoste : public BlComboBox
     Q_OBJECT
 
 private:
-    cursor2 *m_cursorcombo;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaCCoste ( QWidget *parent = 0, const char *name = 0 );

@@ -82,7 +82,7 @@ int ListIva::cargaListIva ( QString idregistroiva )
     vaciar();
     mdb_idregistroiva = idregistroiva;
 
-    cursor2 * cur = companyact->cargacursor ( "SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva = " + idregistroiva + " ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo" );
+    BlDbRecordSet * cur = companyact->cargacursor ( "SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva = " + idregistroiva + " ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo" );
     if ( cur->error() ) {
         error = 1;
     } // end if
