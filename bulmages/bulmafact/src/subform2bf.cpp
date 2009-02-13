@@ -88,7 +88,7 @@ void SubForm2Bf::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bf::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bf::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bf::pressedAsterisk", 0 );
 
@@ -115,7 +115,7 @@ void SubForm2Bf::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDB
 \param row
 \param col
 **/
-void SubForm2Bf::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bf::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bf::pressedSlash", 0 );
     QString text = editaTexto ( camp->text() );
@@ -129,7 +129,7 @@ void SubForm2Bf::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCam
 \param row
 \param col
 **/
-void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bf::pressedMinus", 0 );
 
@@ -161,7 +161,7 @@ void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, SDBCam
 \param col
 \return
 **/
-void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bf::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
 

@@ -168,7 +168,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
         return 0;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) subform->item ( subform->currentRow(), subform->currentColumn() - 1 );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->currentRow(), subform->currentColumn() - 1 );
     camp->refresh();
 
     if ( camp->nomcampo() == "cant" + subform->tableName() ) {

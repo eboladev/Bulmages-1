@@ -120,7 +120,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
         return -1;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) subform->item ( subform->m_prevRow, subform->m_prevCol );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->m_prevRow, subform->m_prevCol );
     camp->refresh();
 
     if ( camp->nomcampo() == "pvplalbaranp"  || camp->nomcampo() == "pvplfacturap" ) {

@@ -76,7 +76,7 @@ void SubForm2Bt::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bt::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bt::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bt::pressedAsterisk", 0 );
     _depura ( "END SubForm2Bt::pressedAsterisk", 0 );
@@ -91,7 +91,7 @@ void SubForm2Bt::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDB
 void SubForm2Bt::on_mui_list_pressedSlash ( int row, int col )
 {
     _depura ( "SubForm2Bt::pressedSlash", 0 );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
     _depura ( "END SubForm2Bt::pressedSlash", 0 );

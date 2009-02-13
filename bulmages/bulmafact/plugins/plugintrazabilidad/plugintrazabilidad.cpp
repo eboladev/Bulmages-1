@@ -177,8 +177,8 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * )
         } // end if
      
         BlDbSubFormRecord *rec = subform->lineaat(subform->m_prevRow);
-        SDBCampo *camp = (SDBCampo *) subform->item(subform->m_prevRow, subform->m_prevCol);
-        SDBCampo *campact = (SDBCampo *) subform->item(subform->currentRow(), subform->currentColumn());
+        BlDbSubFormField *camp = (BlDbSubFormField *) subform->item(subform->m_prevRow, subform->m_prevCol);
+        BlDbSubFormField *campact = (BlDbSubFormField *) subform->item(subform->currentRow(), subform->currentColumn());
         camp->refresh();
      
      

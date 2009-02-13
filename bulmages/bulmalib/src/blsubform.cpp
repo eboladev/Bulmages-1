@@ -408,11 +408,11 @@ void BlSubForm::setDelete ( bool f )
 \param col
 \return
 **/
-SDBCampo *BlSubForm::item ( int row, int col )
+BlDbSubFormField *BlSubForm::item ( int row, int col )
 {
     _depura ( "BlSubForm::item", 0 );
     _depura ( "END BlSubForm::item", 0 );
-    return ( SDBCampo * ) mui_list->item ( row, col );
+    return ( BlDbSubFormField * ) mui_list->item ( row, col );
 }
 
 
@@ -863,9 +863,9 @@ BlDbSubFormRecord *BlSubForm::newSDBRecord()
         rec->addDBCampo ( linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     } // end for
 
-    SDBCampo *camp;
+    BlDbSubFormField *camp;
     for ( int i = 0; i < rec->lista() ->size(); ++i ) {
-        camp = ( SDBCampo * ) rec->lista() ->at ( i );
+        camp = ( BlDbSubFormField * ) rec->lista() ->at ( i );
         BlSubFormHeader *head = m_lcabecera.at ( i );
         Qt::ItemFlags flags = 0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
@@ -911,9 +911,9 @@ void BlSubForm::nuevoRegistro()
     m_lista.append ( rec );
 
     mui_list->insertRow ( m_lista.size() - 1 );
-    SDBCampo *camp;
+    BlDbSubFormField *camp;
     for ( int i = 0; i < rec->lista() ->size(); ++i ) {
-        camp = ( SDBCampo * ) rec->lista() ->at ( i );
+        camp = ( BlDbSubFormField * ) rec->lista() ->at ( i );
         mui_list->setItem ( m_lista.size() - 1, i, camp );
     } // end for
 
@@ -1165,8 +1165,8 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
 
     BlDbSubFormRecord *reg;
     BlDbSubFormRecord *reg2;
-    SDBCampo *camp;
-    SDBCampo *camp2;
+    BlDbSubFormField *camp;
+    BlDbSubFormField *camp2;
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
 
@@ -1262,7 +1262,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
         reg = m_lista.at ( i );
         QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-            camp = ( SDBCampo * ) reg->lista() ->at ( j );
+            camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
             /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
             if ( patronFecha.exactMatch ( camp->valorcampo() ) ) {
                 camp->set
@@ -1287,12 +1287,12 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
             BlSubFormHeader *head = m_lcabecera.at ( j );
             if ( head->nomcampo() == m_columnaParaRowSpan ) {
-                camp = ( SDBCampo * ) reg->lista() ->at ( j );
+                camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
                 textoCeldaActual = camp->valorcampo();
                 /// Mira lo que hay en la fila anterior si existe.
                 if ( i > 0 ) {
                     reg2 = m_lista.at ( i - 1 );
-                    camp2 = ( SDBCampo * ) reg2->lista() ->at ( j );
+                    camp2 = ( BlDbSubFormField * ) reg2->lista() ->at ( j );
                     textoCeldaAnterior = camp2->valorcampo();
                     if ( textoCeldaActual == textoCeldaAnterior ) {
                         /// activamos el indice de celdas iguales
@@ -1463,7 +1463,7 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
         } // end if
 
         /// Seleccionamos el campo especificado y lo devolvemos.
-        SDBCampo *camp = ( SDBCampo* ) mui_list->item ( row, 0 );
+        BlDbSubFormField *camp = ( BlDbSubFormField* ) mui_list->item ( row, 0 );
         if ( !camp ) {
             throw - 1;
         } // end if
@@ -1493,11 +1493,11 @@ bool BlSubForm::campoCompleto ( int row )
        _depura ( "END BlSubForm::campoCompleto", 0 ,"plugin retorna "+*pResultat);
        return resultat;
     } else {
-    SDBCampo *camp;
+    BlDbSubFormField *camp;
     BlSubFormHeader *header;
     /// Sacamos celda a celda toda la fila
     for ( int i = 0; i < mui_list->columnCount(); i++ ) {
-        camp = ( SDBCampo * ) mui_list->item ( row, i );
+        camp = ( BlDbSubFormField * ) mui_list->item ( row, i );
 
         /// Si el dato no es valido se sale
         if ( !camp ) return FALSE;
@@ -1593,7 +1593,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
         return;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
 
     /// Si el campo no ha sido cambiado se sale.
@@ -1872,7 +1872,7 @@ int BlSubForm::borrar ( int row )
     _depura ( "BlSubForm::borrar", 0 );
     try {
         BlDbSubFormRecord *rec, *rac;
-        SDBCampo *camp;
+        BlDbSubFormField *camp;
 
         rac = new BlDbSubFormRecord ( empresaBase() );
 
@@ -1891,8 +1891,8 @@ int BlSubForm::borrar ( int row )
 
         /// Sacamos celda a celda toda la fila
         for ( int i = 0; i < mui_list->columnCount(); i++ ) {
-            camp = ( SDBCampo * ) mui_list->item ( row, i );
-            SDBCampo *it = new SDBCampo ( rac, empresaBase(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion() );
+            camp = ( BlDbSubFormField * ) mui_list->item ( row, i );
+            BlDbSubFormField *it = new BlDbSubFormField ( rac, empresaBase(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion() );
             rac->lista() ->append ( it );
             it->set ( camp->valorcampo() );
         } // end for
@@ -2056,7 +2056,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
         return;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
 
     if ( m_procesacambios ) {
@@ -2085,7 +2085,7 @@ void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
         return;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
 
     if ( m_procesacambios ) {
@@ -2114,7 +2114,7 @@ void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
         return;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
 
     if ( m_procesacambios ) {
@@ -2143,7 +2143,7 @@ void BlSubForm::on_mui_list_pressedMinus ( int row, int col )
         return;
     } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
 
     if ( m_procesacambios ) {
@@ -2188,7 +2188,7 @@ QString BlSubForm::imprimir()
         for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
             if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 QString restante;
-                SDBCampo *valor = ( SDBCampo * ) mui_list->item ( i, j );
+                BlDbSubFormField *valor = ( BlDbSubFormField * ) mui_list->item ( i, j );
                 if ( valor->tipo() & BlDbField::DBnumeric )
                     fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString ( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
                 else
@@ -2549,14 +2549,14 @@ QString BlSubForm::columnDBfieldName ( int columna )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::editFinished ( int, int, BlDbSubFormRecord *, SDBCampo * )
+void BlSubForm::editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
     _depura ( "BlSubForm::editFinished", 0 );
     _depura ( "END BlSubForm::editFinished", 0 );
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *, SDBCampo * )
+void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
     _depura ( "BlSubForm::pressedAsterisk", 0 );
     _depura ( "END BlSubForm::pressedAsterisk", 0 );
@@ -2564,7 +2564,7 @@ void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *, SDBCampo * )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, SDBCampo * )
+void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
     _depura ( "BlSubForm::pressedPlus", 0 );
     _depura ( "END BlSubForm::pressedPlus", 0 );
@@ -2572,14 +2572,14 @@ void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, SDBCampo * )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedMinus ( int, int, BlDbSubFormRecord *, SDBCampo * )
+void BlSubForm::pressedMinus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
     _depura ( "BlSubForm::pressedMinus", 0 );
     _depura ( "END BlSubForm::pressedMinus", 0 );
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedSlash ( int, int, BlDbSubFormRecord *, SDBCampo * )
+void BlSubForm::pressedSlash ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
 {
     _depura ( "BlSubForm::pressedSlash", 0 );
     _depura ( "END BlSubForm::pressedSlash", 0 );

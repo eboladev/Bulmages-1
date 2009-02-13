@@ -51,14 +51,14 @@ public:
 Junta la informacion de campo (Base de Datos) con  un QTableWidgetItem.
 De esta forma los elementos adscritos a una talba y a un recordset son los mismos.
 */
-class SDBCampo: public QTableWidgetItem2, public BlDbField
+class BlDbSubFormField: public QTableWidgetItem2, public BlDbField
 {
 private:
     BlDbSubFormRecord *m_pare; ///< Puntero al \ref BlDbSubFormRecord al que pertenece. Acelera procesos.
 
 public:
-    SDBCampo ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
-    virtual ~SDBCampo();
+    BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    virtual ~BlDbSubFormField();
     BlDbSubFormRecord *pare();
     virtual int set ( QString val );
     void refresh();
@@ -66,4 +66,3 @@ public:
 };
 
 #endif
-

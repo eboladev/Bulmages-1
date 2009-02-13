@@ -76,7 +76,7 @@ public:
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
-    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
+    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
 
 public slots:
     virtual void on_mui_list_pressedSlash ( int row, int col );

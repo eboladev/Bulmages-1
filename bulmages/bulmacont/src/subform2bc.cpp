@@ -92,7 +92,7 @@ Empresa *SubForm2Bc::empresaBase()
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bc::pressedPlus", 0 );
 
@@ -151,7 +151,7 @@ void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, SDBCamp
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bc::pressedAsterisk", 0 );
 
@@ -215,27 +215,27 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDB
 \param col1 Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bc::pressedSlash", 0 );
 
     if ( camp->nomcampo() == "fecha" ) {
         if ( row > 0 ) {
-            SDBCampo * campoant = ( SDBCampo * ) item ( row - 1, col );
+            BlDbSubFormField * campoant = ( BlDbSubFormField * ) item ( row - 1, col );
             camp->set ( campoant->text() );
         } // end if
         return;
     } // end if
     if ( camp->nomcampo() == "descripcion" ) {
         if ( row > 0 ) {
-            SDBCampo * campoant = ( SDBCampo * ) item ( row - 1, col );
+            BlDbSubFormField * campoant = ( BlDbSubFormField * ) item ( row - 1, col );
             camp->set ( campoant->text() );
         } // end if
         return;
     } // end if
     if ( camp->nomcampo() == "conceptocontable" ) {
         if ( row > 0 ) {
-            SDBCampo * campoant = ( SDBCampo * ) item ( row - 1, col );
+            BlDbSubFormField * campoant = ( BlDbSubFormField * ) item ( row - 1, col );
             camp->set ( campoant->text() );
         } // end if
         return;
@@ -252,7 +252,7 @@ void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCam
 \param col
 \return
 **/
-void SubForm2Bc::editFinished ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
+void SubForm2Bc::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "SubForm2Bc::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
 

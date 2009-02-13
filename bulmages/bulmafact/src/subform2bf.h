@@ -68,7 +68,7 @@ class SubForm2Bf : public BlSubForm
 public:
     QSubForm2BfDelegate *m_delegate;
     BlDbSubFormRecord *m_registrolinea;
-    SDBCampo  *m_campoactual;			/// Usada para pasar parametros a los plugins.
+    BlDbSubFormField  *m_campoactual;			/// Usada para pasar parametros a los plugins.
 
 protected:
     QString mdb_idcliente;
@@ -82,10 +82,10 @@ public:
     virtual ~SubForm2Bf();
     virtual void cargar ( QString query );
     virtual void setEmpresaBase ( EmpresaBase * );
-    virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
-    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
-    virtual void pressedMinus ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
-    virtual void pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
+    virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
+    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
+    virtual void pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
+    virtual void pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );

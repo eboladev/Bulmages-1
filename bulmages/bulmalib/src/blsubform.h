@@ -202,7 +202,7 @@ public:
     void setDelete ( bool f );
     /// Devuelve el elemento del subformulario ubicado en la posici&oacute;n
     /// indicada
-    SDBCampo *item ( int row, int col );
+    BlDbSubFormField *item ( int row, int col );
     /// Pone el foco en una celda determinada.
     void setCurrentItem ( int row, int col );
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
@@ -301,11 +301,11 @@ public slots:
     virtual void toogleConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
-    virtual void editFinished ( int, int, BlDbSubFormRecord *, SDBCampo * );
-    virtual void pressedAsterisk ( int, int, BlDbSubFormRecord *, SDBCampo * );
-    virtual void pressedPlus ( int, int, BlDbSubFormRecord *, SDBCampo * );
-    virtual void pressedMinus ( int, int, BlDbSubFormRecord *, SDBCampo * );
-    virtual void pressedSlash ( int, int, BlDbSubFormRecord *, SDBCampo * );
+    virtual void editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
+    virtual void pressedAsterisk ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
+    virtual void pressedPlus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
+    virtual void pressedMinus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
+    virtual void pressedSlash ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
 
 signals:
     void toogledConfig ( bool );

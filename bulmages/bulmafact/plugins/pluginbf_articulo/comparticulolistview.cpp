@@ -62,7 +62,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
 {
     _depura ( "ListCompArticuloView::pressedAsterisk", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     if ( camp->nomcampo() != "codigocompletoarticulo" )
         return;
     _depura ( "ListCompArticuloView::searchArticle", 0 );
@@ -96,7 +96,7 @@ void ListCompArticuloView::editFinished ( int row, int col )
 {
     _depura ( "ListCompArticuloView::editFinished", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         BlDbRecordSet * cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );

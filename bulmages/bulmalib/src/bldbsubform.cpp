@@ -78,9 +78,9 @@ Actualiza los valores del registro acorde a los valores que tiene la tabla que l
 void BlDbSubFormRecord::refresh()
 {
     _depura ( "BlDbSubFormRecord::refresh", 0 );
-    SDBCampo *camp;
+    BlDbSubFormField *camp;
     for ( int i = 0; i < m_lista.size(); ++i ) {
-        camp = ( SDBCampo * ) m_lista.at ( i );
+        camp = ( BlDbSubFormField * ) m_lista.at ( i );
         camp->refresh();
     } // end for
     _depura ( "END BlDbSubFormRecord::refresh", 0 );
@@ -98,7 +98,7 @@ void BlDbSubFormRecord::refresh()
 int BlDbSubFormRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp )
 {
     _depura ( "BlDbSubFormRecord::addDBCampo", 0 );
-    SDBCampo *camp = new SDBCampo ( this, m_conexionbase, nom, typ, res, nomp );
+    BlDbSubFormField *camp = new BlDbSubFormField ( this, m_conexionbase, nom, typ, res, nomp );
     camp->set ( "" );
     m_lista.append ( camp );
     _depura ( "END BlDbSubFormRecord::addDBCampo", 0 );
@@ -106,7 +106,7 @@ int BlDbSubFormRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res,
 }
 
 
-/// Constructor de SDBCampo. Representa, maneja y alberga un campo de un registro de un recordset.
+/// Constructor de BlDbSubFormField. Representa, maneja y alberga un campo de un registro de un recordset.
 /**
 \param par El registro padre del campo
 \param com La base de datos con la que esta trabajando
@@ -115,22 +115,22 @@ int BlDbSubFormRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res,
 \param res Las restricciones del campo
 \param nomp el nombre a presentar en caso de error.
 **/
-SDBCampo::SDBCampo ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
+BlDbSubFormField::BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
         : QTableWidgetItem2(), BlDbField ( com, nom, typ, res, nomp )
 {
-    _depura ( "SDBCampo::SDBCampo", 0 );
+    _depura ( "BlDbSubFormField::BlDbSubFormField", 0 );
     m_pare = par;
-    _depura ( "END SDBCampo::SDBCampo", 0 );
+    _depura ( "END BlDbSubFormField::BlDbSubFormField", 0 );
 }
 
 
 ///
 /**
 **/
-SDBCampo::~SDBCampo()
+BlDbSubFormField::~BlDbSubFormField()
 {
-    _depura ( "SDBCampo::~SDBCampo()", 0 );
-    _depura ( "END SDBCampo::~SDBCampo()", 0 );
+    _depura ( "BlDbSubFormField::~BlDbSubFormField()", 0 );
+    _depura ( "END BlDbSubFormField::~BlDbSubFormField()", 0 );
 }
 
 
@@ -138,15 +138,15 @@ SDBCampo::~SDBCampo()
 /**
 Tiene especial intereses con los campos checkables ya que su tratamiento no es directo
 **/
-void SDBCampo::refresh()
+void BlDbSubFormField::refresh()
 {
-    _depura ( "SDBCampo::refresh", 0 );
+    _depura ( "BlDbSubFormField::refresh", 0 );
     if ( this->tipo() == BlDbField::DBboolean )
         BlDbField::set ( checkState() == Qt::Checked ? "TRUE" : "FALSE" );
     else
         BlDbField::set ( text() );
     // end if
-    _depura ( "END SDBCampo::refresh", 0 );
+    _depura ( "END BlDbSubFormField::refresh", 0 );
 }
 
 
@@ -157,9 +157,9 @@ para la presentacion de valores corregidos a un estandar.
 \param val Valor que toma el campo
 \return Si no hay errores devuelve 0
 **/
-int SDBCampo::set ( QString val )
+int BlDbSubFormField::set ( QString val )
 {
-    _depura ( "SDBCampo::set", 0, nomcampo() + " = " + val );
+    _depura ( "BlDbSubFormField::set", 0, nomcampo() + " = " + val );
     BlDbField::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
     if ( tipo() == BlDbField::DBboolean ) {
@@ -179,7 +179,7 @@ int SDBCampo::set ( QString val )
         setText ( valorcampo() );
     } // end if
 
-    _depura ( "END SDBCampo::set", 0, val );
+    _depura ( "END BlDbSubFormField::set", 0, val );
     return 0;
 }
 
@@ -189,23 +189,23 @@ int SDBCampo::set ( QString val )
 \param other El campo con el que hay que comprarar
 \return TRUE si se considere este el campo mas grande, FALSE en caso contrario.
 **/
-bool SDBCampo::operator< ( const QTableWidgetItem &other )
+bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
 {
-    _depura ( "SDBCampo::operator <", 0, text() );
-    SDBCampo *ot = ( SDBCampo * ) & other;
+    _depura ( "BlDbSubFormField::operator <", 0, text() );
+    BlDbSubFormField *ot = ( BlDbSubFormField * ) & other;
     dbtype tip = ot->tipo();
     if ( tip == this->tipo() ) {
         QString val = ot->valorcampo();
 
         if ( this->tipo() == BlDbField::DBnumeric || this->tipo() == BlDbField::DBint ) {
-            _depura ( "SDBCampo::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
+            _depura ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
             double db1 = this->valorcampo().toDouble();
             double db2 = val.toDouble();
             return ( db1 < db2 );
         } // end if
 
         if ( this->tipo() == BlDbField::DBdate ) {
-            _depura ( "SDBCampo::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
+            _depura ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
             QDate fech = normalizafecha ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
             QDate fech1 = normalizafecha ( val );
@@ -214,12 +214,12 @@ bool SDBCampo::operator< ( const QTableWidgetItem &other )
         } // end if
 
         if ( this->tipo() == BlDbField::DBvarchar ) {
-            _depura ( "SDBCampo::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
+            _depura ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
             return ( this->valorcampo() < val );
         } // end if
         _depura ( "tipo desconocido", 0 );
     }
-    _depura ( "END SDBCampo::operator <", 0, text() );
+    _depura ( "END BlDbSubFormField::operator <", 0, text() );
     return FALSE;
 }
 
@@ -230,10 +230,10 @@ Es util porque se activan signals sobre campos determinados en los que no sabrem
 pertencecen
 \return Puntero al registro
 **/
-BlDbSubFormRecord *SDBCampo::pare()
+BlDbSubFormRecord *BlDbSubFormField::pare()
 {
-    _depura ( "SDBCampo::pare", 0 );
-    _depura ( "END SDBCampo::pare", 0 );
+    _depura ( "BlDbSubFormField::pare", 0 );
+    _depura ( "END BlDbSubFormField::pare", 0 );
     return m_pare;
 }
 
