@@ -178,7 +178,7 @@ void GenPedQToolButton::generarFactura1()
         bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al pedidocliente.
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {

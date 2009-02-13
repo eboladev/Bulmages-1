@@ -540,7 +540,7 @@ void Q19View::on_mui_aceptar_clicked()
         int j = 0;
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
-            SDBRecord *rec = sub->lineaat ( i );
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->DBvalue ( "selector" );
             if ( val == "TRUE" ) {

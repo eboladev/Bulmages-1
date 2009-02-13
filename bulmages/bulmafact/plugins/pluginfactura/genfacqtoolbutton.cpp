@@ -190,7 +190,7 @@ void GenFacQToolButton::generarFactura()
         bud->setDBvalue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
 
         QString l;
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -320,7 +320,7 @@ void GenFacQToolButton::generarFactura1()
         bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al albaran.
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -449,7 +449,7 @@ void GenFacQToolButton::generarFactura2()
         bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al albaran.
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -608,7 +608,7 @@ void AgFacQToolButton::generarFactura()
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
     /// PERO POR AHORA PASAMOS DE HACERLO.
     QString l;
-    SDBRecord *linea, *linea1;
+    BlDbSubFormRecord *linea, *linea1;
     for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
         linea = fpv->m_listalineas->lineaat ( i );
         if ( linea->DBvalue ( "idarticulo" ) != "" ) {

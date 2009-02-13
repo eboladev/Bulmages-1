@@ -172,7 +172,7 @@ void TicketQToolButton::click()
         file.write ( "\n \n", 3 );
 
         QString l;
-        SDBRecord *linea;
+        BlDbSubFormRecord *linea;
         for ( int i = 0; i < m_albaranClienteView->getlistalineas() ->rowCount(); ++i ) {
             linea = m_albaranClienteView->getlistalineas() ->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -321,7 +321,7 @@ void TicketQToolButton::click()
         file.write ( "\n \n", 3 );
 
         QString l;
-        SDBRecord *linea;
+        BlDbSubFormRecord *linea;
         for ( int i = 0; i < m_facturaView->getlistalineas() ->rowCount(); ++i ) {
             linea = m_facturaView->getlistalineas() ->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {

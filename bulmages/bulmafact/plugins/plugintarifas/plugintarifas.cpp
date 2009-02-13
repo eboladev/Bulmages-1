@@ -289,7 +289,7 @@ int SubForm2Bf_SubForm2Bf ( SubForm2Bf *sub )
     _depura ( "PluginTarifas SubForm2Bf_SubForm2Bf", 0 );
     /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
     /// calculo del PVP en funcion del cliente y otros parametros.
-    QObject::connect(sub->m_delegate, SIGNAL(cant_changed(SDBRecord *)), sub, SLOT(calculaPVP(SDBRecord *)));
+    QObject::connect(sub->m_delegate, SIGNAL(cant_changed(BlDbSubFormRecord *)), sub, SLOT(calculaPVP(BlDbSubFormRecord *)));
     _depura ( "END PluginTarifas SubForm2Bf_SubForm2Bf", 0 );
     return 0;
 }

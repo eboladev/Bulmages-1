@@ -518,7 +518,7 @@ void Devolucion::refreshDevolver()
     /// De momento aqui no se usan descuentos generales en venta.
     BlFixed porcentt ( "0.00" );
     /*
-        SDBRecord *linea1;
+        BlDbSubFormRecord *linea1;
         if (m_listadescuentos->rowCount()) {
             for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
                 linea1 = m_listadescuentos->lineaat(i);

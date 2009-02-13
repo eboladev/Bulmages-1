@@ -113,7 +113,7 @@ void cobropagoview::s_recalculaSaldo()
     BlFixed totalcobro ( "0" );
     BlFixed totalpago ( "0" );
     for ( int i = 0; i < mui_listado->rowCount(); i++ ) {
-        SDBRecord *rec = mui_listado->lineaat ( i );
+        BlDbSubFormRecord *rec = mui_listado->lineaat ( i );
         if ( rec ) {
             if ( rec->DBvalue ( "tipoprevcobro" ) == "f" ) {
                 totalcobro = totalcobro + BlFixed ( rec->DBvalue ( "cantidadprevcobro" ) );

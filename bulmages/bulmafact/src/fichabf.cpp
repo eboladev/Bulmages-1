@@ -80,7 +80,7 @@ void FichaBf::calculaypintatotales()
     _depura ( "FichaBf::calculaypintatotales", 0 );
     base basesimp;
     base basesimpreqeq;
-    SDBRecord *linea;
+    BlDbSubFormRecord *linea;
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );
@@ -124,7 +124,7 @@ void FichaBf::calculaypintatotales()
 
     /// Calculamos el total de los descuentos.
     BlFixed porcentt ( "0.00" );
-    SDBRecord *linea1;
+    BlDbSubFormRecord *linea1;
     if ( m_listadescuentos->rowCount() ) {
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
@@ -298,7 +298,7 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         QString l;
 
         /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
-        SDBRecord *linea;
+        BlDbSubFormRecord *linea;
         /// Impresion de las lineas
 		if (m_listalineas)
         for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
@@ -328,7 +328,7 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         /// Impresion de los descuentos.
         fitxersortidatxt = "";
         BlFixed porcentt ( "0.00" );
-        SDBRecord *linea1;
+        BlDbSubFormRecord *linea1;
 		if (m_listadescuentos)
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\">\n";
@@ -449,7 +449,7 @@ QString FichaBf::trataLineasDetalle ( const QString &det, int tipoEscape )
     QString result = "";
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
-    SDBRecord *linea;
+    BlDbSubFormRecord *linea;
     /// Impresion de las lineas
     for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
         QString salidatemp = det;
@@ -517,7 +517,7 @@ QString FichaBf::trataLineasDescuento ( const QString &det, int tipoEscape )
     base basesimpreqeq;
 
     /// Calculamos la base imponible
-    SDBRecord *linea;
+    BlDbSubFormRecord *linea;
     /// Impresion de las lineas
     for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
         linea = m_listalineas->lineaat ( i );
@@ -534,7 +534,7 @@ QString FichaBf::trataLineasDescuento ( const QString &det, int tipoEscape )
     } // end for
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
-    SDBRecord *linea1;
+    BlDbSubFormRecord *linea1;
     /// Impresion de las lineas
     for ( int i = 0; i < ( m_listadescuentos->rowCount() - 1 ); ++i ) {
         QString salidatemp = det;
@@ -576,7 +576,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     QString salidatemp = "";
     base basesimp;
     base basesimpreqeq;
-    SDBRecord *linea;
+    BlDbSubFormRecord *linea;
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );
@@ -621,7 +621,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
 
     /// Calculamos el total de los descuentos.
     BlFixed porcentt ( "0.00" );
-    SDBRecord *linea1;
+    BlDbSubFormRecord *linea1;
     if ( m_listadescuentos->rowCount() ) {
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );

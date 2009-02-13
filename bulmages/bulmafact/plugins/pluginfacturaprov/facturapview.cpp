@@ -360,7 +360,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     int i = 0;
 
-    SDBRecord *linea;
+    BlDbSubFormRecord *linea;
     for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
         linea = m_listalineas->lineaat ( i );
         BlFixed base = BlFixed ( linea->DBvalue ( "cantlfacturap" ).toAscii().constData() ) * BlFixed ( linea->DBvalue ( "pvplfacturap" ).toAscii().constData() );
@@ -392,7 +392,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     /// Impresion de los descuentos.
     fitxersortidatxt = "";
     BlFixed porcentt ( "0.00" );
-    SDBRecord *linea1;
+    BlDbSubFormRecord *linea1;
     if ( m_listadescuentos->rowCount() ) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";

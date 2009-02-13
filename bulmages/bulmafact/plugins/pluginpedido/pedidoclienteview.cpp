@@ -230,7 +230,7 @@ void PedidoClienteView::generarAlbaran()
         bud->setDBvalue ( "idtrabajador", DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al albaran.
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
             linea = m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {

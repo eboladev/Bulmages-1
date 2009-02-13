@@ -157,7 +157,7 @@ void myplugclipboard::pegaSXC()
         QString cadena_valores = lineas.at ( i );
 
         /// Creamos un elemento en la factura
-        SDBRecord  *linea1;
+        BlDbSubFormRecord  *linea1;
         linea1 = subform->lineaat ( subform->rowCount() - 1 );
         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
         subform->nuevoRegistro();
@@ -197,7 +197,7 @@ void myplugclipboard::pegaODS()
         QStringList campos_valores = lineas.at ( i ).split ( "\t" );
 
         /// Creamos un elemento en la factura
-        SDBRecord  *linea1;
+        BlDbSubFormRecord  *linea1;
         linea1 = subform->lineaat ( subform->rowCount() - 1 );
         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
         subform->nuevoRegistro();

@@ -88,7 +88,7 @@ void SubForm2Bf::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bf::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bf::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedAsterisk", 0 );
 
@@ -115,7 +115,7 @@ void SubForm2Bf::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
 \param row
 \param col
 **/
-void SubForm2Bf::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bf::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedSlash", 0 );
     QString text = editaTexto ( camp->text() );
@@ -129,7 +129,7 @@ void SubForm2Bf::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp
 \param row
 \param col
 **/
-void SubForm2Bf::pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedMinus", 0 );
 
@@ -161,7 +161,7 @@ void SubForm2Bf::pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp
 \param col
 \return
 **/
-void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
@@ -339,7 +339,7 @@ void SubForm2Bf::setIdCliente ( QString id )
 
     /// Reseteamos los valores.
     for ( int i = 0; i < rowCount() - 1; i++ ) {
-        SDBRecord *rec = lineaat ( i );
+        BlDbSubFormRecord *rec = lineaat ( i );
         rec->setDBvalue ( "iva" + m_tablename, "0" );
         rec->setDBvalue ( "reqeq" + m_tablename, "0" );
     } // end for
@@ -357,7 +357,7 @@ void SubForm2Bf::setIdCliente ( QString id )
     if ( !curcliente->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
-            SDBRecord *rec = lineaat ( i );
+            BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
@@ -402,7 +402,7 @@ void SubForm2Bf::setIdProveedor ( QString id )
 
     /// Reseteamos los valores
     for ( int i = 0; i < rowCount() - 1; i++ ) {
-        SDBRecord *rec = lineaat ( i );
+        BlDbSubFormRecord *rec = lineaat ( i );
         rec->setDBvalue ( "iva" + m_tablename, "0" );
         rec->setDBvalue ( "reqeq" + m_tablename, "0" );
     } // end for
@@ -418,7 +418,7 @@ void SubForm2Bf::setIdProveedor ( QString id )
     if ( !curproveedor->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
-            SDBRecord *rec = lineaat ( i );
+            BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
@@ -796,14 +796,14 @@ QString SubForm2Bf::idTarifa()
 ///
 /**
 **/
-void SubForm2Bf::calculaPVP(SDBRecord *rec) {
+void SubForm2Bf::calculaPVP(BlDbSubFormRecord *rec) {
 
 	_depura("SubForm2Bf::calculaPVP" , 0);
 
 	BlDbRecordSet *cur = NULL;
 	BlDbRecordSet *cur3 = NULL;
 
-	/// Saca 'codigocompletoarticulo' del SDBRecord pasado como parametro.
+	/// Saca 'codigocompletoarticulo' del BlDbSubFormRecord pasado como parametro.
 	QString codigocompleto = rec->DBvalue("codigocompletoarticulo");
 
         cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompleto + "'" );

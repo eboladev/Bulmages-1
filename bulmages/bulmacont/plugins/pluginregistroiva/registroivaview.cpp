@@ -256,7 +256,7 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
             tipocobro = "f";
         } // end if
         _depura ( "Cogemos el registro", 3 );
-        SDBRecord *rec = mui_listPrevCobro->lineaat ( mui_listPrevCobro->rowCount() - 1 );
+        BlDbSubFormRecord *rec = mui_listPrevCobro->lineaat ( mui_listPrevCobro->rowCount() - 1 );
         rec->setDBvalue ( "fprevistaprevcobro", fpcobro.toString ( "dd/MM/yyyy" ) );
         rec->setDBvalue ( "cantidadprevistaprevcobro", totalplazo.toQString() );
         rec->setDBvalue ( "tipoprevcobro", tipocobro );

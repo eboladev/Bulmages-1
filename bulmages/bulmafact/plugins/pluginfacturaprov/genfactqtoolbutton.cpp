@@ -178,7 +178,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
 
 	/// Traspasamos las lineas de factura
         QString l;
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -284,7 +284,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
 
 	/// Traspasamos las lineas de factura
         QString l;
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {

@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SUBFORM_H
-#define SUBFORM_H
+#ifndef BLDBSUBFORM_H
+#define BLDBSUBFORM_H
 
 #include <Qt>
 
@@ -35,11 +35,11 @@
    Maneja un registro de un subformulario de tal forma que permite el trabajo mediante tablas de los registros.
    Es muy similar a la clase \ref BlDbRecord pero reimplementa el guardado
 */
-class SDBRecord: public BlDbRecord
+class BlDbSubFormRecord: public BlDbRecord
 {
 public:
-    SDBRecord ( EmpresaBase *con );
-    ~SDBRecord();
+    BlDbSubFormRecord ( EmpresaBase *con );
+    ~BlDbSubFormRecord();
     int addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" );
     void refresh();
     virtual int DBsave ( QString & );
@@ -54,12 +54,12 @@ De esta forma los elementos adscritos a una talba y a un recordset son los mismo
 class SDBCampo: public QTableWidgetItem2, public BlDbField
 {
 private:
-    SDBRecord *m_pare; ///< Puntero al \ref SDBRecord al que pertenece. Acelera procesos.
+    BlDbSubFormRecord *m_pare; ///< Puntero al \ref BlDbSubFormRecord al que pertenece. Acelera procesos.
 
 public:
-    SDBCampo ( SDBRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    SDBCampo ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
     virtual ~SDBCampo();
-    SDBRecord *pare();
+    BlDbSubFormRecord *pare();
     virtual int set ( QString val );
     void refresh();
     virtual bool operator< ( const QTableWidgetItem &other );

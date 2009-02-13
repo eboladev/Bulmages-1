@@ -115,7 +115,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
         return 0;
     } // end if
 
-    SDBRecord *rec = subform->lineaat ( subform->m_prevRow );
+    BlDbSubFormRecord *rec = subform->lineaat ( subform->m_prevRow );
     if ( rec == NULL ) {
         return -1;
     } // end if
@@ -124,7 +124,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
     camp->refresh();
 
     if ( camp->nomcampo() == "pvplalbaranp"  || camp->nomcampo() == "pvplfacturap" ) {
-        SDBRecord * rec = subform->lineaat ( subform->currentRow() );
+        BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
 
         if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
 

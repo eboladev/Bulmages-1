@@ -330,7 +330,7 @@ void ContratoView::on_mui_facturar_clicked()
             } // end if
 
             QString l;
-            SDBRecord *linea, *linea1;
+            BlDbSubFormRecord *linea, *linea1;
             for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
                 linea = m_listalineas->lineaat ( i );
                 if ( linea->DBvalue ( "idarticulo" ) != "" ) {

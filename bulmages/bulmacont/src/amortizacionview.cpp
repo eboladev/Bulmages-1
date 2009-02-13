@@ -238,7 +238,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
-            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDBvalue ( "cantidad", valcuotastr );
 
@@ -266,7 +266,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
-            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDBvalue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
@@ -293,7 +293,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
-            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDBvalue ( "cantidad", valcuotastr );
 
@@ -325,7 +325,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
-            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDBvalue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.

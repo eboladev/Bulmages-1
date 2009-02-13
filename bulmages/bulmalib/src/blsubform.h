@@ -103,9 +103,9 @@ protected:
     /// Lista de encabezados del listado. Coordenadas X de la tabla.
     QList<BlSubFormHeader *> m_lcabecera;
     /// Filas y contenido. Coordenadas Y de la tabla.
-    QList<SDBRecord *> m_lista;
+    QList<BlDbSubFormRecord *> m_lista;
     /// Lista de subformularios marcados para ser borrados.
-    QList<SDBRecord *> m_listaborrar;
+    QList<BlDbSubFormRecord *> m_listaborrar;
     /// Fichero de configuracion del subformulario.
     QString m_fileconfig;
     /// Campo Identificador de la tabla en la BD.
@@ -159,7 +159,7 @@ protected:
 public:
     /// Devuelve la lista de registros de la base de datos que
     /// se presentan en el subformulario.
-    QList<SDBRecord *> *lista();
+    QList<BlDbSubFormRecord *> *lista();
     /// Devuelve la lista de cabeceras que forman el subformulario.
     QList<BlSubFormHeader *> *cabecera();
 
@@ -254,12 +254,12 @@ public:
     void situarse ( unsigned int, unsigned int );
     void situarse1 ( unsigned int, unsigned int );
     int addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp );
-    SDBRecord *newSDBRecord();
+    BlDbSubFormRecord *newSDBRecord();
     virtual void setColumnValue ( QString, QString );
     QString DBvalue ( const QString &campo, int row = -1 );
     void setDBvalue ( const QString &campo, int row, const QString &valor );
-    SDBRecord *lineaact();
-    SDBRecord *lineaat ( int row );
+    BlDbSubFormRecord *lineaact();
+    BlDbSubFormRecord *lineaat ( int row );
     virtual void imprimirPDF ( const QString & );
     virtual void nuevoRegistro();
     virtual int borrar();
@@ -301,11 +301,11 @@ public slots:
     virtual void toogleConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
-    virtual void editFinished ( int, int, SDBRecord *, SDBCampo * );
-    virtual void pressedAsterisk ( int, int, SDBRecord *, SDBCampo * );
-    virtual void pressedPlus ( int, int, SDBRecord *, SDBCampo * );
-    virtual void pressedMinus ( int, int, SDBRecord *, SDBCampo * );
-    virtual void pressedSlash ( int, int, SDBRecord *, SDBCampo * );
+    virtual void editFinished ( int, int, BlDbSubFormRecord *, SDBCampo * );
+    virtual void pressedAsterisk ( int, int, BlDbSubFormRecord *, SDBCampo * );
+    virtual void pressedPlus ( int, int, BlDbSubFormRecord *, SDBCampo * );
+    virtual void pressedMinus ( int, int, BlDbSubFormRecord *, SDBCampo * );
+    virtual void pressedSlash ( int, int, BlDbSubFormRecord *, SDBCampo * );
 
 signals:
     void toogledConfig ( bool );

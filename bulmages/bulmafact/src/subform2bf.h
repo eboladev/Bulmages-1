@@ -53,7 +53,7 @@ public:
     virtual int cerrarEditor ( QWidget *editor );
 
 signals:
-     void cant_changed(SDBRecord *) const;
+     void cant_changed(BlDbSubFormRecord *) const;
 };
 
 
@@ -67,7 +67,7 @@ class SubForm2Bf : public BlSubForm
 
 public:
     QSubForm2BfDelegate *m_delegate;
-    SDBRecord *m_registrolinea;
+    BlDbSubFormRecord *m_registrolinea;
     SDBCampo  *m_campoactual;			/// Usada para pasar parametros a los plugins.
 
 protected:
@@ -82,10 +82,10 @@ public:
     virtual ~SubForm2Bf();
     virtual void cargar ( QString query );
     virtual void setEmpresaBase ( EmpresaBase * );
-    virtual void editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp );
-    virtual void pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp );
-    virtual void pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp );
-    virtual void pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp );
+    virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
+    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
+    virtual void pressedMinus ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
+    virtual void pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
@@ -97,7 +97,7 @@ public:
     QString idAlmacen();
 
 public slots:
-    virtual void calculaPVP(SDBRecord *rec);
+    virtual void calculaPVP(BlDbSubFormRecord *rec);
 };
 
 #endif

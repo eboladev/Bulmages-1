@@ -275,8 +275,8 @@ void PresupuestoView::generarPedidoCliente()
         bud->setDBvalue ( "telpedidocliente", DBvalue ( "telpresupuesto" ) );
 
         /// Traspasamos las lineas del presupuesto a lineas del pedido.
-        SDBRecord *linea;
-        SDBRecord *linea2;
+        BlDbSubFormRecord *linea;
+        BlDbSubFormRecord *linea2;
 
         for ( int i = 0; i < m_listalineas->rowCount(); i++ ) {
             linea = m_listalineas->lineaat ( i );
@@ -297,8 +297,8 @@ void PresupuestoView::generarPedidoCliente()
         } // end for
 
         /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
-        SDBRecord *linea1;
-        SDBRecord *linea3;
+        BlDbSubFormRecord *linea1;
+        BlDbSubFormRecord *linea3;
         for ( int i = 0; i < m_listadescuentos->rowCount(); i++ ) {
             linea1 = m_listadescuentos->lineaat ( i );
             if ( linea1->DBvalue ( "proporciondpresupuesto" ) != "" ) {

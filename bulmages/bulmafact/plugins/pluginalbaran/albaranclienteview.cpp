@@ -322,7 +322,7 @@ void AlbaranClienteView::generarFactura()
         bud->setDBvalue ( "idalmacen", DBvalue ( "idalmacen" ) );
 
         QString l;
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
             linea = m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -414,7 +414,7 @@ void AlbaranClienteView::agregarFactura()
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
     /// PERO POR AHORA PASAMOS DE HACERLO.
     QString l;
-    SDBRecord *linea, *linea1;
+    BlDbSubFormRecord *linea, *linea1;
     for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
         linea = m_listalineas->lineaat ( i );
         if ( linea->DBvalue ( "idarticulo" ) != "" ) {

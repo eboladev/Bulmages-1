@@ -92,7 +92,7 @@ Empresa *SubForm2Bc::empresaBase()
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bc::pressedPlus", 0 );
 
@@ -105,7 +105,7 @@ void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp 
     */
 
     if ( camp->nomcampo() == "fecha" ) {
-        SDBRecord *recant = lineaat ( row - 1 );
+        BlDbSubFormRecord *recant = lineaat ( row - 1 );
         if ( recant ) {
             rec->setDBvalue ( "fecha", recant->DBvalue ( "fecha" ) );
         } // end if
@@ -135,7 +135,7 @@ void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp 
         return;
     } // end if
 
-    SDBRecord *recant = lineaat ( row - 1 );
+    BlDbSubFormRecord *recant = lineaat ( row - 1 );
     if ( recant ) {
         rec->setDBvalue ( camp->nomcampo(), recant->DBvalue ( camp->nomcampo() ) );
         return;
@@ -151,7 +151,7 @@ void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp 
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bc::pressedAsterisk", 0 );
 
@@ -215,7 +215,7 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
 \param col1 Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bc::pressedSlash", 0 );
 
@@ -252,11 +252,9 @@ void SubForm2Bc::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp
 \param col
 \return
 **/
-void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bc::editFinished ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bc::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
-
-
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bc_on_mui_list_cellChanged", this );

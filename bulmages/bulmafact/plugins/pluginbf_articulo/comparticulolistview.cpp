@@ -61,7 +61,7 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
 void ListCompArticuloView::pressedAsterisk ( int row, int col )
 {
     _depura ( "ListCompArticuloView::pressedAsterisk", 0 );
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     SDBCampo *camp = ( SDBCampo * ) item ( row, col );
     if ( camp->nomcampo() != "codigocompletoarticulo" )
         return;
@@ -95,7 +95,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
 void ListCompArticuloView::editFinished ( int row, int col )
 {
     _depura ( "ListCompArticuloView::editFinished", 0 );
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     SDBCampo *camp = ( SDBCampo * ) item ( row, col );
     camp->refresh();
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {

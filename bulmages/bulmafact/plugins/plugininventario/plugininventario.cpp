@@ -172,7 +172,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
     camp->refresh();
 
     if ( camp->nomcampo() == "cant" + subform->tableName() ) {
-        SDBRecord * rec = subform->lineaat ( subform->currentRow() );
+        BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
         QObject *wid = subform->parent();
         while ( wid
                 && ( wid->objectName() != "PresupuestoClienteBase" )

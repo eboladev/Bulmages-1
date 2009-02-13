@@ -120,7 +120,7 @@ void ImpQToolButton::click()
 
         /// Reseteamos los valores
         for ( int i = 0; i < sub->rowCount(); i++ ) {
-            SDBRecord *rec = sub->lineaat ( i );
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             QString val = rec->DBvalue ( "selector" );
             if ( val == "TRUE" ) {
@@ -155,7 +155,7 @@ void ImpQToolButton::click()
                 fac->setDBvalue ( "idalmacen", pres->DBvalue ( "idalmacen" ) );
 
                 QString l;
-                SDBRecord *linea, *linea1;
+                BlDbSubFormRecord *linea, *linea1;
                 for ( int i = 0; i < pres->getlistalineas() ->rowCount(); ++i ) {
                     linea = pres->getlistalineas() ->lineaat ( i );
                     if ( linea->DBvalue ( "idarticulo" ) != "" ) {

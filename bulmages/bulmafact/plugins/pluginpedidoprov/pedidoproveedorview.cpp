@@ -304,7 +304,7 @@ void PedidoProveedorView::imprimir()
         /// Impresion de la tabla de contenidos.
         QString l;
 
-        SDBRecord *linea;
+        BlDbSubFormRecord *linea;
         for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
             linea = m_listalineas->lineaat ( i );
             BlFixed base = BlFixed ( linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) * BlFixed ( linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() );
@@ -331,7 +331,7 @@ void PedidoProveedorView::imprimir()
         /// Impresion de los descuentos.
         fitxersortidatxt = "";
         BlFixed porcentt ( "0.00" );
-        SDBRecord *linea1;
+        BlDbSubFormRecord *linea1;
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
             fitxersortidatxt += "<tr>\n";

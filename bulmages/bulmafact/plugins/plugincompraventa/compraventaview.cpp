@@ -502,7 +502,7 @@ void CompraVentaView::generarFacturaProveedor()
 
 	/// Traspasamos las lineas
         QString l;
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < subform3->rowCount(); ++i ) {
             linea = subform3->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {
@@ -632,7 +632,7 @@ void CompraVentaView::generarFactura()
 
 	/// Traspasamos las lineas
         QString l;
-        SDBRecord *linea, *linea1;
+        BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
             linea = m_listalineas->lineaat ( i );
             if ( linea->DBvalue ( "idarticulo" ) != "" ) {

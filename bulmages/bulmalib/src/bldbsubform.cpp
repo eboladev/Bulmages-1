@@ -34,12 +34,12 @@ Mantiene un contador de elementos creados para depurar la liberacion de memoria.
 \param con Empresa con la que va a trabajar
 \todo Se debe eliminar el contador una vez testeado el consumo de memoria
 **/
-SDBRecord::SDBRecord ( EmpresaBase *con ) : BlDbRecord ( con )
+BlDbSubFormRecord::BlDbSubFormRecord ( EmpresaBase *con ) : BlDbRecord ( con )
 {
-    _depura ( "SDBRecord::SDBRecord", 0 );
+    _depura ( "BlDbSubFormRecord::BlDbSubFormRecord", 0 );
     static int creaciones = 0;
     creaciones++;
-    _depura ( "END SDBRecord::SDBRecord", 0, "Creaciones" + QString::number ( creaciones ) );
+    _depura ( "END BlDbSubFormRecord::BlDbSubFormRecord", 0, "Creaciones" + QString::number ( creaciones ) );
 }
 
 
@@ -48,12 +48,12 @@ SDBRecord::SDBRecord ( EmpresaBase *con ) : BlDbRecord ( con )
 Mantiene un contador de elementos destruidos para depurar la liberacion de memoria
 \todo Se debe eliminar el contador una vez testeado la correcta liberacion de memoria
 **/
-SDBRecord::~SDBRecord()
+BlDbSubFormRecord::~BlDbSubFormRecord()
 {
     static int destrucciones = 0;
-    _depura ( "SDBRecord::~SDBRecord", 0 );
+    _depura ( "BlDbSubFormRecord::~BlDbSubFormRecord", 0 );
     destrucciones++;
-    _depura ( "END SDBRecord::~SDBRecord", 0, "Destrucciones " + QString::number ( destrucciones ) );
+    _depura ( "END BlDbSubFormRecord::~BlDbSubFormRecord", 0, "Destrucciones " + QString::number ( destrucciones ) );
 }
 
 
@@ -62,11 +62,11 @@ SDBRecord::~SDBRecord()
 \param id Devuelve el identificador del registro guardado
 \return Si todo ha ido bien devuelve 0
 **/
-int SDBRecord::DBsave ( QString &id )
+int BlDbSubFormRecord::DBsave ( QString &id )
 {
-    _depura ( "SDBRecord::DBsave", 0 );
+    _depura ( "BlDbSubFormRecord::DBsave", 0 );
     refresh();
-    _depura ( "END SDBRecord::DBsave", 0 );
+    _depura ( "END BlDbSubFormRecord::DBsave", 0 );
     return BlDbRecord::DBsave ( id );
 }
 
@@ -75,15 +75,15 @@ int SDBRecord::DBsave ( QString &id )
 /**
 Actualiza los valores del registro acorde a los valores que tiene la tabla que lo contiene
 **/
-void SDBRecord::refresh()
+void BlDbSubFormRecord::refresh()
 {
-    _depura ( "SDBRecord::refresh", 0 );
+    _depura ( "BlDbSubFormRecord::refresh", 0 );
     SDBCampo *camp;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         camp = ( SDBCampo * ) m_lista.at ( i );
         camp->refresh();
     } // end for
-    _depura ( "END SDBRecord::refresh", 0 );
+    _depura ( "END BlDbSubFormRecord::refresh", 0 );
 }
 
 
@@ -95,13 +95,13 @@ void SDBRecord::refresh()
 \param nomp Nombre a mostrar en caso de error
 \return
 **/
-int SDBRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp )
+int BlDbSubFormRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp )
 {
-    _depura ( "SDBRecord::addDBCampo", 0 );
+    _depura ( "BlDbSubFormRecord::addDBCampo", 0 );
     SDBCampo *camp = new SDBCampo ( this, m_conexionbase, nom, typ, res, nomp );
     camp->set ( "" );
     m_lista.append ( camp );
-    _depura ( "END SDBRecord::addDBCampo", 0 );
+    _depura ( "END BlDbSubFormRecord::addDBCampo", 0 );
     return 0;
 }
 
@@ -115,7 +115,7 @@ int SDBRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString
 \param res Las restricciones del campo
 \param nomp el nombre a presentar en caso de error.
 **/
-SDBCampo::SDBCampo ( SDBRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
+SDBCampo::SDBCampo ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
         : QTableWidgetItem2(), BlDbField ( com, nom, typ, res, nomp )
 {
     _depura ( "SDBCampo::SDBCampo", 0 );
@@ -230,7 +230,7 @@ Es util porque se activan signals sobre campos determinados en los que no sabrem
 pertencecen
 \return Puntero al registro
 **/
-SDBRecord *SDBCampo::pare()
+BlDbSubFormRecord *SDBCampo::pare()
 {
     _depura ( "SDBCampo::pare", 0 );
     _depura ( "END SDBCampo::pare", 0 );

@@ -210,7 +210,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
     pintar();
 
     /// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
-    SDBRecord *linea, *linea1;
+    BlDbSubFormRecord *linea, *linea1;
     for ( int i = 0; i < bud->getlistalineas() ->rowCount(); ++i ) {
         linea = bud->getlistalineas() ->lineaat ( i );
         /// Los registros vacios no se tienen en cuenta.

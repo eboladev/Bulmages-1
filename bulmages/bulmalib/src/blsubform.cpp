@@ -358,7 +358,7 @@ void BlSubForm::cargaSpecs()
 /**
 \return
 **/
-QList<SDBRecord *> *BlSubForm::lista()
+QList<BlDbSubFormRecord *> *BlSubForm::lista()
 {
     _depura ( "BlSubForm::lista", 0 );
     _depura ( "END BlSubForm::lista", 0 );
@@ -850,10 +850,10 @@ bool BlSubForm::existsHeader ( const QString &head )
 /**
 \return
 **/
-SDBRecord *BlSubForm::newSDBRecord()
+BlDbSubFormRecord *BlSubForm::newSDBRecord()
 {
     _depura ( "BlSubForm::newSDBRecord", 0 );
-    SDBRecord *rec = new SDBRecord ( empresaBase() );
+    BlDbSubFormRecord *rec = new BlDbSubFormRecord ( empresaBase() );
     rec->setDBTableName ( m_tablename );
     rec->setDBCampoId ( m_campoid );
 
@@ -906,7 +906,7 @@ void BlSubForm::nuevoRegistro()
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled ( FALSE );
 
-    SDBRecord *rec = newSDBRecord();
+    BlDbSubFormRecord *rec = newSDBRecord();
 
     m_lista.append ( rec );
 
@@ -1048,7 +1048,7 @@ int BlSubForm::inicializar()
     _depura ( "BlSubForm::inicializar", 0 );
     m_procesacambios = FALSE;
     mui_query->setPlainText ( "" );
-    SDBRecord *rec;
+    BlDbSubFormRecord *rec;
 
     int filpag = mui_filaspagina->text().toInt();
     if ( filpag <= 0 )
@@ -1136,7 +1136,7 @@ void BlSubForm::setColorFondo2 ( QString color )
 **/
 void BlSubForm::ponItemColorFondo ( QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo )
 {
-    SDBRecord * reg3;
+    BlDbSubFormRecord * reg3;
     /// Si hay que poner color al fondo de las filas se pone el que toque.
     if ( listadoPijama() == FALSE ) {
         /// Recorre todos los items de las filas afectadas.
@@ -1163,8 +1163,8 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     m_procesacambios = FALSE;
 
 
-    SDBRecord *reg;
-    SDBRecord *reg2;
+    BlDbSubFormRecord *reg;
+    BlDbSubFormRecord *reg2;
     SDBCampo *camp;
     SDBCampo *camp2;
     QColor colorfondo = m_colorfondo1;
@@ -1198,7 +1198,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     mui_list->setRowCount ( 0 );
 
     /// Vaciamos el recordset para que no contenga registros.
-    SDBRecord *rec;
+    BlDbSubFormRecord *rec;
     while ( m_lista.count() ) {
         rec = m_lista.takeFirst();
         if ( rec )
@@ -1248,7 +1248,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     int porcentajecarga = 0;
     while ( !cur->eof() && m_lista.count() < filpag ) {
-        SDBRecord * rec = newSDBRecord();
+        BlDbSubFormRecord * rec = newSDBRecord();
         rec->DBload ( cur );
         m_lista.append ( rec );
         cur->siguienteregistro();
@@ -1439,7 +1439,7 @@ void BlSubForm::cargar ( QString query )
 /**
 \return
 **/
-SDBRecord *BlSubForm::lineaact()
+BlDbSubFormRecord *BlSubForm::lineaact()
 {
     _depura ( "BlSubForm::lineaact", 0 );
     _depura ( "END BlSubForm::lineaact", 0 );
@@ -1452,10 +1452,10 @@ SDBRecord *BlSubForm::lineaact()
 \param row
 \return
 **/
-SDBRecord *BlSubForm::lineaat ( int row )
+BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 {
     _depura ( "BlSubForm::lineaat()", 0, QString::number ( row ) );
-    SDBRecord *rec = NULL;
+    BlDbSubFormRecord *rec = NULL;
     try {
         /// Si la lista no tiene suficientes elementos devolvemos NULL
         if ( mui_list->rowCount() < row || row < 0 ) {
@@ -1467,7 +1467,7 @@ SDBRecord *BlSubForm::lineaat ( int row )
         if ( !camp ) {
             throw - 1;
         } // end if
-        rec = ( SDBRecord * ) camp->pare();
+        rec = ( BlDbSubFormRecord * ) camp->pare();
 
     } catch ( ... ) {
         _depura ( "BlSubForm::lineaat linea inexistente", 2, QString::number ( row ) );
@@ -1587,7 +1587,7 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 {
     _depura ( "BlSubForm::on_mui_list_cellChanged", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
 
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
         _depura ( "END BlSubForm::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
         return;
@@ -1669,7 +1669,7 @@ int BlSubForm::addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt
 void BlSubForm::setColumnValue ( QString campo, QString valor )
 {
     _depura ( "BlSubForm::setColumnValue", 0, campo + " -- " + valor );
-    SDBRecord *rec;
+    BlDbSubFormRecord *rec;
 
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
         rec = lineaat ( i );
@@ -1690,7 +1690,7 @@ BlFixed BlSubForm::sumarCampo ( QString campo )
 {
     _depura ( "BlSubForm::sumarCampo", 0 );
     BlFixed total;
-    SDBRecord *rec;
+    BlDbSubFormRecord *rec;
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
         rec =  lineaat ( i );
         if ( rec ) {
@@ -1712,7 +1712,7 @@ QString BlSubForm::DBvalue ( const QString &campo, int row )
 {
     _depura ( "BlSubForm::DBvalue", 0 );
     try {
-        SDBRecord *rec;
+        BlDbSubFormRecord *rec;
         if ( row == -1 )
             rec = lineaact();
         else
@@ -1738,7 +1738,7 @@ void BlSubForm::setDBvalue ( const QString &campo, int row, const QString &valor
 {
     _depura ( "BlSubForm::setDBvalue", 0 );
     try {
-        SDBRecord *rec;
+        BlDbSubFormRecord *rec;
         if ( row == -1 )
             rec = lineaact();
         else
@@ -1762,7 +1762,7 @@ int BlSubForm::guardar()
 {
     _depura ( "BlSubForm::guardar", 0 );
     try {
-        SDBRecord *rec;
+        BlDbSubFormRecord *rec;
         /// Borramos los elementos marcados para ser borrados.
         while ( !m_listaborrar.isEmpty() ) {
             rec = m_listaborrar.takeFirst();
@@ -1833,7 +1833,7 @@ int BlSubForm::guardar()
 int BlSubForm::borrar()
 {
     _depura ( "BlSubForm::borrar", 0 );
-    SDBRecord *rec;
+    BlDbSubFormRecord *rec;
     int i = 0;
     int error = 0;
 
@@ -1871,10 +1871,10 @@ int BlSubForm::borrar ( int row )
 {
     _depura ( "BlSubForm::borrar", 0 );
     try {
-        SDBRecord *rec, *rac;
+        BlDbSubFormRecord *rec, *rac;
         SDBCampo *camp;
 
-        rac = new SDBRecord ( empresaBase() );
+        rac = new BlDbSubFormRecord ( empresaBase() );
 
         /// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
         rec = lineaat ( row );
@@ -2050,7 +2050,7 @@ void BlSubForm::on_mui_confcol_clicked()
 void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 {
     _depura ( "BlSubForm::on_mui_list_pressedSlash", 0 );
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
         _depura ( "END BlSubForm::on_mui_list_pressedSlash", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
         return;
@@ -2079,7 +2079,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
 {
     _depura ( "BlSubForm::on_mui_list_pressedAsterisk", 0 );
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
         _depura ( "END BlSubForm::on_mui_list_pressedAsterisk", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
         return;
@@ -2108,7 +2108,7 @@ void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
 void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
 {
     _depura ( "BlSubForm::on_mui_list_pressedPlus", 0 );
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
         _depura ( "END BlSubForm::on_mui_list_pressedPlus", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
         return;
@@ -2137,7 +2137,7 @@ void BlSubForm::on_mui_list_pressedPlus ( int row, int col )
 void BlSubForm::on_mui_list_pressedMinus ( int row, int col )
 {
     _depura ( "BlSubForm::on_mui_list_pressedMinus", 0 );
-    SDBRecord *rec = lineaat ( row );
+    BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
         _depura ( "END BlSubForm::on_mui_list_pressedMinus", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
         return;
@@ -2549,14 +2549,14 @@ QString BlSubForm::columnDBfieldName ( int columna )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::editFinished ( int, int, SDBRecord *, SDBCampo * )
+void BlSubForm::editFinished ( int, int, BlDbSubFormRecord *, SDBCampo * )
 {
     _depura ( "BlSubForm::editFinished", 0 );
     _depura ( "END BlSubForm::editFinished", 0 );
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedAsterisk ( int, int, SDBRecord *, SDBCampo * )
+void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *, SDBCampo * )
 {
     _depura ( "BlSubForm::pressedAsterisk", 0 );
     _depura ( "END BlSubForm::pressedAsterisk", 0 );
@@ -2564,7 +2564,7 @@ void BlSubForm::pressedAsterisk ( int, int, SDBRecord *, SDBCampo * )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedPlus ( int, int, SDBRecord *, SDBCampo * )
+void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, SDBCampo * )
 {
     _depura ( "BlSubForm::pressedPlus", 0 );
     _depura ( "END BlSubForm::pressedPlus", 0 );
@@ -2572,14 +2572,14 @@ void BlSubForm::pressedPlus ( int, int, SDBRecord *, SDBCampo * )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedMinus ( int, int, SDBRecord *, SDBCampo * )
+void BlSubForm::pressedMinus ( int, int, BlDbSubFormRecord *, SDBCampo * )
 {
     _depura ( "BlSubForm::pressedMinus", 0 );
     _depura ( "END BlSubForm::pressedMinus", 0 );
 }
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::pressedSlash ( int, int, SDBRecord *, SDBCampo * )
+void BlSubForm::pressedSlash ( int, int, BlDbSubFormRecord *, SDBCampo * )
 {
     _depura ( "BlSubForm::pressedSlash", 0 );
     _depura ( "END BlSubForm::pressedSlash", 0 );

@@ -76,7 +76,7 @@ void SubForm2Bt::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bt::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp )
+void SubForm2Bt::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bt::pressedAsterisk", 0 );
     _depura ( "END SubForm2Bt::pressedAsterisk", 0 );
@@ -143,7 +143,7 @@ void SubForm2Bt::setIdCliente ( QString id )
 
     /// Reseteamos los valores.
     for ( int i = 0; i < rowCount() - 1; i++ ) {
-        SDBRecord *rec = lineaat ( i );
+        BlDbSubFormRecord *rec = lineaat ( i );
         rec->setDBvalue ( "iva" + m_tablename, "0" );
         rec->setDBvalue ( "reqeq" + m_tablename, "0" );
     } // end for
@@ -161,7 +161,7 @@ void SubForm2Bt::setIdCliente ( QString id )
     if ( !curcliente->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
-            SDBRecord *rec = lineaat ( i );
+            BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
@@ -206,7 +206,7 @@ void SubForm2Bt::setIdProveedor ( QString id )
 
     /// Reseteamos los valores
     for ( int i = 0; i < rowCount() - 1; i++ ) {
-        SDBRecord *rec = lineaat ( i );
+        BlDbSubFormRecord *rec = lineaat ( i );
         rec->setDBvalue ( "iva" + m_tablename, "0" );
         rec->setDBvalue ( "reqeq" + m_tablename, "0" );
     } // end for
@@ -215,7 +215,7 @@ void SubForm2Bt::setIdProveedor ( QString id )
     if ( !curproveedor->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
-            SDBRecord *rec = lineaat ( i );
+            BlDbSubFormRecord *rec = lineaat ( i );
             BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {

@@ -314,7 +314,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
 /// Pintamos los descuentos --------------------------------------------
 
     ListDescuentoFacturaProvView *descuentos = ( ListDescuentoFacturaProvView * ) fp->getlistadescuentos();
-    SDBRecord *rec = descuentos->lista() ->last();
+    BlDbSubFormRecord *rec = descuentos->lista() ->last();
     QMap <QString, QString> mapa_dfactura;
 
     for ( int i = 0; i < numdescuentos; i++ ) {
