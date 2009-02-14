@@ -75,7 +75,7 @@ void mytiptrab::inicializa ( Bulmafact *bges )
     accion->setWhatsThis ( "Tipos de Trabajo" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuMaestro->insertAction ( bges->actionTrabajadores, accion );
+    bges->menuMaestro->addAction ( accion );
 }
 
 

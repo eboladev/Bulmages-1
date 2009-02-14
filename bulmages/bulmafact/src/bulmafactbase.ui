@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>38</y>
+     <y>46</y>
      <width>991</width>
-     <height>507</height>
+     <height>491</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>24</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -66,8 +66,6 @@
     <addaction name="actionPaises" />
     <addaction name="separator" />
     <addaction name="actionSeries_de_Factura" />
-    <addaction name="separator" />
-    <addaction name="actionTrabajadores" />
     <addaction name="separator" />
     <addaction name="actionBancos" />
     <addaction name="separator" />
@@ -96,9 +94,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>545</y>
+     <y>537</y>
      <width>991</width>
-     <height>24</height>
+     <height>32</height>
     </rect>
    </property>
   </widget>
@@ -106,7 +104,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>24</y>
+     <y>32</y>
      <width>14</width>
      <height>14</height>
     </rect>
@@ -152,7 +150,7 @@
    <property name="geometry" >
     <rect>
      <x>14</x>
-     <y>24</y>
+     <y>32</y>
      <width>977</width>
      <height>14</height>
     </rect>
@@ -237,15 +235,6 @@
   <action name="actionSeries_de_Factura" >
    <property name="text" >
     <string>Se&amp;ries de factura</string>
-   </property>
-  </action>
-  <action name="actionTrabajadores" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Trabajadores</string>
    </property>
   </action>
   <action name="actionVentana_Completa" >

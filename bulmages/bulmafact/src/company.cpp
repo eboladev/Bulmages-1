@@ -98,13 +98,6 @@ void Company::createMainWindows ( BlSplashScreen *splash )
         m_bulmafact->actionPaises->setEnabled ( TRUE );
     } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con 'Trabajadores'.
-    m_bulmafact->actionTrabajadores->setEnabled ( FALSE );
-
-    if ( has_table_privilege ( "trabajador", "SELECT" ) ) {
-        m_bulmafact->actionTrabajadores->setEnabled ( TRUE );
-    } // end if
-
     /// Comprobamos que tengamos permisos para trabajar con 'Formas de pago'.
     m_bulmafact->actionFormas_de_Pago->setEnabled ( FALSE );
 
