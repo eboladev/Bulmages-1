@@ -32,7 +32,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalmacen/
-        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalmacen/)
+        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalmacen/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_trabajador/
+        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_trabajador/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})

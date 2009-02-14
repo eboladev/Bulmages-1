@@ -34,7 +34,6 @@
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
 #include "plugins.h"
-#include "trabajadorview.h"
 #include "bancoview.h"
 #include "listtipoivaview.h"
 #include "listtasaivaview.h"
@@ -177,9 +176,9 @@ void Company::s_FPago()
 void Company::s_trabajadores()
 {
     _depura ( "Company::s_trabajadores", 0 );
-    TrabajadorView *t = new TrabajadorView ( this, NULL );
-    m_pWorkspace->addWindow ( t );
-    t->show();
+//    TrabajadorView *t = new TrabajadorView ( this, NULL );
+//    m_pWorkspace->addWindow ( t );
+//    t->show();
     _depura ( "END Company::s_trabajadores", 0 );
 }
 
