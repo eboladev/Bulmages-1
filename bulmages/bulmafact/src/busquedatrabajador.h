@@ -25,7 +25,7 @@
 #include "blcombobox.h"
 #include "company.h"
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 

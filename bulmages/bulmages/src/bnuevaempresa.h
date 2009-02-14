@@ -25,7 +25,7 @@
 #include <QLineEdit>
 #include <QDialog>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_nuevaempresadlg.h"
 #include "blpostgresqlclient.h"
 

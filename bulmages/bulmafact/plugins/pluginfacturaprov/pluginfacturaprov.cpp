@@ -22,7 +22,7 @@
 
 #include "pluginfacturaprov.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "facturapview.h"
 #include "facturasplist.h"
 #include "genfactqtoolbutton.h"

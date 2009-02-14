@@ -27,7 +27,7 @@
 #include <QTextStream>
 
 #include "pluginticketbasicoivainc.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"

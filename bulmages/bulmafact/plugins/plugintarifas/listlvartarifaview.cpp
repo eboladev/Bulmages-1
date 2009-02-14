@@ -28,7 +28,7 @@
 
 #include "listlvartarifaview.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "busquedaalmacen.h"
 #include "busquedatarifa.h"
 

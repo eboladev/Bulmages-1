@@ -30,7 +30,7 @@
 #include "albaranproveedorview.h"
 #include "company.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "listlinalbaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "plugins.h"

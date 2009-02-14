@@ -24,7 +24,7 @@
 #include <QEvent>
 
 #include "listdescfacturaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

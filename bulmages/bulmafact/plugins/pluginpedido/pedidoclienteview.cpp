@@ -34,7 +34,7 @@
 #include "listlinpedidoclienteview.h"
 #include "clientslist.h"
 #include "informereferencia.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

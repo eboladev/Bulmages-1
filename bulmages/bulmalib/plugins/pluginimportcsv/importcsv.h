@@ -29,7 +29,7 @@
 #include <QWidget>
 #include <QMap>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_importcsvbase.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"

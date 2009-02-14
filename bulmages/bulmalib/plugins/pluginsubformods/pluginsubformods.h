@@ -30,6 +30,7 @@
 #include <QMenu>
 #include <QApplication>
 
+#include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "blsubform.h"

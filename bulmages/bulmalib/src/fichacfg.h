@@ -22,6 +22,7 @@
 #ifndef FICHACFG_H
 #define FICHACFG_H
 
+#include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_fichacfgbase.h"
 #include "blform.h"

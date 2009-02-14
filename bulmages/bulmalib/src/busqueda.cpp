@@ -20,8 +20,8 @@
 
 #include "busqueda.h"
 #include "empresabase.h"
-#include "funcaux.h"
 #include "plugins.h"
+
 
 /** Inicializa la clase poniendo a NULL todos los valores para que no haya confusion
     en el hecho de que la clase aun no ha sido completamente inicializada.

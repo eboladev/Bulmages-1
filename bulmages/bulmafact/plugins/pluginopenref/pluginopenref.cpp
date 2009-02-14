@@ -22,7 +22,7 @@
 #include <QToolButton>
 
 #include "pluginopenref.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "fichabf.h"
 #include "busquedareferencia.h"
 

@@ -25,7 +25,7 @@
 #include <QLineEdit>
 
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "subform2bf.h"
 #include "blformlist.h"
 

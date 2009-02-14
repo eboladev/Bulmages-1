@@ -27,7 +27,7 @@
 #include "albaranclienteview.h"
 #include "plugins.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

@@ -35,10 +35,10 @@
 #include "blworkspace.h"
 #include "bulmatpv.h"
 #include "listventanas.h"
-#include "funcaux.h"
 #include "aboutview.h"
 #include "busquedaperiodo.h"
 #include "blmainwindow.h"
+
 
 /** Prepara la pantalla principal para que tenga todos los componentes.
     Crea el workspace y lo inicializa.

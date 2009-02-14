@@ -28,7 +28,7 @@
 #include "ui_correctorbase.h"
 #include "blpostgresqlclient.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 

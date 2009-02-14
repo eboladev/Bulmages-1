@@ -22,7 +22,7 @@
 
 #include "plugincobros.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "cobroview.h"
 #include "cobroslist.h"
 #include "impqtoolbutton.h"

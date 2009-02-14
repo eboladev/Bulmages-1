@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "blradiobutton.h"
-#include "funcaux.h"
 
 
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones

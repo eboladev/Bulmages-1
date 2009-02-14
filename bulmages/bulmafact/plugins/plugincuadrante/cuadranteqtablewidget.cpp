@@ -26,7 +26,7 @@
 
 #include "cuadranteqtablewidget.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "company.h"
 #include "cuadrante1view.h"
 #include "cuadranteview.h"

@@ -24,9 +24,11 @@
 # define MY_EXPORT
 #endif
 
+#include "blfunctions.h"
 #include "bulmatpv.h"
 #include "empresatpv.h"
 #include "busquedaarticulo.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );

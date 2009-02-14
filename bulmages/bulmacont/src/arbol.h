@@ -25,7 +25,7 @@
 #include <QString>
 
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 
 

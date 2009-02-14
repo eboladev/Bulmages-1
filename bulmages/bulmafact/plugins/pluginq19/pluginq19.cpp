@@ -23,7 +23,7 @@
 #include <QToolButton>
 
 #include "pluginq19.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "q19qtoolbutton.h"
 #include "q19qtoolbutton1.h"
 #include "bulmafact.h"

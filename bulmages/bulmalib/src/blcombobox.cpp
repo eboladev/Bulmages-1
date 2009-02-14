@@ -21,6 +21,7 @@
 
 #include "blcombobox.h"
 
+
 /// Existe una instancia del objeto global theApp.
 extern BlApplication *theApp;
 

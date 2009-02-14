@@ -32,7 +32,7 @@
 #include "company.h"
 #include "contrato.h"
 #include "contratoview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 /** Inicializa la pantalla.

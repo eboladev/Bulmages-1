@@ -29,7 +29,7 @@
 #include "company.h"
 #include "pagoview.h"
 #include "qtable2.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blconfiguration.h"
 
 

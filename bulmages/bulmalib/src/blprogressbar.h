@@ -25,8 +25,9 @@
 #include <QProgressBar>
 #include <QDialog>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_blprogressbarbase.h"
+
 
 class BlProgressBar : public QDialog, public Ui_BlProgressBarBase
 {

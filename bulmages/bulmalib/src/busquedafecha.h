@@ -24,6 +24,7 @@
 
 #include <QLineEdit>
 
+#include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_busquedafechabase.h"
 

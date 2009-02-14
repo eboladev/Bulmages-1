@@ -28,7 +28,7 @@
 
 #include "company.h"
 #include "plugincontratos.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "contratoslist.h"
 #include "blform.h"
 

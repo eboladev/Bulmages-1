@@ -27,7 +27,7 @@
 #include <QAbstractItemView>
 
 #include "subform2bf.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "busquedatipoiva.h"
 #include "qtexteditdelegate.h"
 #include "busquedatrabajador.h"

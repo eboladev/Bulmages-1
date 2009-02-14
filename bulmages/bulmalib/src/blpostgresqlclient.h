@@ -43,6 +43,7 @@
 #endif
 
 #include "blconfiguration.h"
+#include "blfunctions.h"
 
 
 /// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.

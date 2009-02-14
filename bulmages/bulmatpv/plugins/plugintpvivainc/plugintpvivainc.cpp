@@ -23,19 +23,19 @@
 #include <QDockWidget>
 
 #include "plugintpvivainc.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "escprinter.h"
 
+
 typedef QMap<QString, BlFixed> base;
+
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 {
     item->addDBCampo ( "pvpivainclalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "IVA inc." ) );
     return 0;
 }
-
-
 
 
 int Ticket_insertarArticulo_Post ( Ticket *tick )

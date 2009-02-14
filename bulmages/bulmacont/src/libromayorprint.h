@@ -34,7 +34,7 @@
 #include <string>
 
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 ///

@@ -33,7 +33,7 @@
 #include "company.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

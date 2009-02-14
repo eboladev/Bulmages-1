@@ -25,8 +25,8 @@
 #include <QString>
 #include <QMap>
 
+#include "blfunctions.h"
 #include "empresabase.h"
-#include "funcaux.h"
 #include "blform.h"
 
 

@@ -1,10 +1,10 @@
 #include <QWidget>
 #include <QPushButton>
+
 #include "tickets.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "ticket.h"
-
 
 
 Tickets::Tickets ( EmpresaBase *emp, QWidget *parent ) : QDialog ( parent ), PEmpresaBase ( emp )

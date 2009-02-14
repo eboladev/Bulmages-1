@@ -29,7 +29,6 @@
 #include <QLocale>
 
 #include "pluginsubformprint.h"
-#include "funcaux.h"
 
 
 ///

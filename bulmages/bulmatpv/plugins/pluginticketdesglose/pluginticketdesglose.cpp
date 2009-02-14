@@ -25,7 +25,6 @@
 #include <QTableWidget>
 
 #include "pluginticketdesglose.h"
-#include "funcaux.h"
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"

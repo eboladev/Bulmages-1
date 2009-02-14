@@ -24,7 +24,7 @@
 #include <QEvent>
 
 #include "listdescpedidoclienteview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

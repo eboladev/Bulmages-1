@@ -23,7 +23,7 @@
 #include <QToolButton>
 
 #include "pluginmailthunderbird.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "impqtoolbutton.h"

@@ -27,7 +27,7 @@
 
 #include "empresa.h"
 #include "iva.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 
 

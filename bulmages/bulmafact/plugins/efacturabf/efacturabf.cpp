@@ -31,7 +31,7 @@
 // #include "efacturaenvio.h"
 #include "efacturarecepcion.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 // Exportacion
 #include "facturaview.h"
 #include "efqtoolbutton.h"

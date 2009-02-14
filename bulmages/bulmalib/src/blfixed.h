@@ -13,6 +13,8 @@
 #include <QString>
 #include <QChar>
 
+#include "blfunctions.h"
+
 
 const int MAX_FIXED_PRECISION = 15;
 const int MAX_FIXED_LENGTH = 28;

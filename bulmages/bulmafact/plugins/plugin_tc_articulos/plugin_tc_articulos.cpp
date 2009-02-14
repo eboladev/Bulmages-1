@@ -29,7 +29,7 @@
 
 #include "plugin_tc_articulos.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugarticulos.h"
 #include "busquedacolor.h"
 #include "busquedatalla.h"

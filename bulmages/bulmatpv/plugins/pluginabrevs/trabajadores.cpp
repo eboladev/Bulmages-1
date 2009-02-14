@@ -1,7 +1,8 @@
 #include <QWidget>
 #include <QPushButton>
+
 #include "trabajadores.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ticket.h"
 #include "empresatpv.h"
 

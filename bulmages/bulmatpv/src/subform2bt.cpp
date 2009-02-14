@@ -27,7 +27,6 @@
 #include <QAbstractItemView>
 
 #include "subform2bt.h"
-#include "funcaux.h"
 #include "qtexteditdelegate.h"
 #include "plugins.h"
 

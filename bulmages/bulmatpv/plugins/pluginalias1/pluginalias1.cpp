@@ -23,9 +23,7 @@
 #include <QDockWidget>
 
 #include "pluginalias1.h"
-#include "funcaux.h"
 #include "empresatpv.h"
-
 
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )

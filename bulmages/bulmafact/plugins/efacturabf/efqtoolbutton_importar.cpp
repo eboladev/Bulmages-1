@@ -31,7 +31,7 @@
 
 #include "efqtoolbutton_importar.h"
 #include "facturasplist.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "facturapview.h"
 #include "blfixed.h"
 #include "listlinfacturapview.h"

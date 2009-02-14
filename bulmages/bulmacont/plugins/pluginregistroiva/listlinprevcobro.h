@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 #include "linprevcobro.h"
 #include "blfixed.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 class ListLinPrevCobro

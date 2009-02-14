@@ -30,7 +30,7 @@
 
 #include "plugincanualesods.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "datosview.h"
 #include "blprogressbar.h"
 

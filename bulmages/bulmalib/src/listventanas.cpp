@@ -27,7 +27,6 @@
 #include <map>
 
 #include "listventanas.h"
-#include "funcaux.h"
 
 
 ///

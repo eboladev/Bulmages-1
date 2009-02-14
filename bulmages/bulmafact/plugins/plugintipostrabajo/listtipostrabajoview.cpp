@@ -33,7 +33,7 @@
 #include "company.h"
 #include "blconfiguration.h"
 #include "listtipostrabajoview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

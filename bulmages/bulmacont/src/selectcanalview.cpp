@@ -20,7 +20,7 @@
 
 #include "selectcanalview.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /// Inicializa las variables de empresa y de base de datos.

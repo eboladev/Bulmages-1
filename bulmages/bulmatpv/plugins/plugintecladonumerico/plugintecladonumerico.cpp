@@ -23,7 +23,7 @@
 #include <QDockWidget>
 
 #include "plugintecladonumerico.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "tecladonumerico.h"
 #include "bldockwidget.h"

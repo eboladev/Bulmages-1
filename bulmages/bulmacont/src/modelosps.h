@@ -28,7 +28,7 @@
 #include <QEvent>
 #include <QTextStream>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 enum {

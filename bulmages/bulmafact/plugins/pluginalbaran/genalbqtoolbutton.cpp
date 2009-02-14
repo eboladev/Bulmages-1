@@ -21,7 +21,7 @@
 #include <QWidget>
 
 #include "genalbqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomNodeList>

@@ -25,7 +25,7 @@
 #include <QWidget>
 #include <QStringList>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_mpatrimonialesbase.h"
 #include "blwidget.h"
 

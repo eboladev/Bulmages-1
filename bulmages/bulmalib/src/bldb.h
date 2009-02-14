@@ -26,7 +26,7 @@
 #include <QList>
 
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 

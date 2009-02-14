@@ -20,7 +20,7 @@
 
 #include "busquedaarticulo.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 /** Inicializa todos los componentes a null para que no haya posibles

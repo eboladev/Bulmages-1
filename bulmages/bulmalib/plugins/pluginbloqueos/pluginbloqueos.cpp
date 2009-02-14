@@ -34,7 +34,6 @@
 #include <QPushButton>
 
 #include "pluginbloqueos.h"
-#include "funcaux.h"
 #include "blform.h"
 #include "empresabase.h"
 #include "bloqmenu.h"

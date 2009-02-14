@@ -23,7 +23,7 @@
 #define BUSQUEDAREGIMENFISCAL_H
 
 #include "blcombobox.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /// Permite buscar y seleccionar una forma de pago.

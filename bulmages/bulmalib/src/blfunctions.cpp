@@ -20,7 +20,7 @@
 
 /// Fichero de definicion de funciones auxiliares que no es preciso encapsular
 /// En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
-/// utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
+/// utilizadas de forma regular en el programa. Implementadas en blfunctions.cpp
 /// Dichas funciones normalmente son de uso general, por lo que es normal ver este
 /// archivo incluido en la practica totalidad de los demas ficheros.
 #include <QString>
@@ -31,8 +31,8 @@
 #include <QProcess>
 #include <QTime>
 
-#include "funcaux.h"
 #include "blconfiguration.h"
+#include "blfunctions.h"
 
 
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
@@ -190,7 +190,7 @@ QString XMLDesProtect ( const QString &string )
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
 QString extiendecodigo ( QString cad, unsigned int num1 )
 {
-    _depura ( "funcaux::extiendecodigo", 0, cad + "--" + QString::number ( num1 ) );
+    _depura ( "BlFunctions::extiendecodigo", 0, cad + "--" + QString::number ( num1 ) );
     QString cod = cad;
     int num = num1;
     if ( cod.length() < num ) {
@@ -200,7 +200,7 @@ QString extiendecodigo ( QString cad, unsigned int num1 )
             cod.replace ( pos, 1, str7 );
         } // end if
     } // end if
-    _depura ( "END funcaux::extiendecodigo", 0 );
+    _depura ( "END BlFunctions::extiendecodigo", 0 );
     return ( cod );
 }
 

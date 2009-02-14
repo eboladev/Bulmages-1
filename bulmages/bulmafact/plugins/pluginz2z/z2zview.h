@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include <funcaux.h>
+#include "blfunctions.h"
 #include "ui_z2zbase.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"

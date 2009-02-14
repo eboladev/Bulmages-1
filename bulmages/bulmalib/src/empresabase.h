@@ -25,6 +25,7 @@
 #include <QWorkspace>
 #include <QProgressBar>
 
+#include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"

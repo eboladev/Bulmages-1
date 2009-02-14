@@ -21,7 +21,7 @@
 #include <QComboBox>
 
 #include "busquedaestadoincidencia.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

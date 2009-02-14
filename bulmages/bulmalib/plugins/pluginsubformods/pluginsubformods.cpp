@@ -29,7 +29,6 @@
 #include <QLocale>
 
 #include "pluginsubformods.h"
-#include "funcaux.h"
 
 
 ///

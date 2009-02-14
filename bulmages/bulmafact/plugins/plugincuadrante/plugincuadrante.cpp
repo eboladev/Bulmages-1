@@ -31,7 +31,7 @@
 
 #include "plugincuadrante.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "cuadranteview.h"
 #include "cuadrantediarioview.h"
 

@@ -24,6 +24,7 @@
 # define MY_EXPORT
 #endif
 
+#include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "empresabase.h"
 #include "bulmacont.h"

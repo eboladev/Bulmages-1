@@ -25,6 +25,8 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 
+#include "blfunctions.h"
+
 
 class BusquedaFecha2 : public QLineEdit
 {

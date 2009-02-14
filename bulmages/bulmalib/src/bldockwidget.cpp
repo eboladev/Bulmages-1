@@ -27,7 +27,6 @@
 #include <QTextStream>
 #include <map>
 
-#include "funcaux.h"
 #include "bldockwidget.h"
 #include "blconfiguration.h"
 

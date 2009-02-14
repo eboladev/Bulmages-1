@@ -24,7 +24,7 @@
 
 #include <QWorkspace>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blmainwindow.h"
 #include "blworkspace.h"
 #include "ui_bulmafactbase.h"

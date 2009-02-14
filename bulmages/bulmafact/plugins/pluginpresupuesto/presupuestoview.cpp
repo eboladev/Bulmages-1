@@ -29,7 +29,7 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "listlinpresupuestoview.h"
 #include "presupuestoview.h"
 #include "company.h"

@@ -28,7 +28,7 @@
 
 #include "company.h"
 #include "plugintrazabilidad.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "movimientosview.h"
 
 

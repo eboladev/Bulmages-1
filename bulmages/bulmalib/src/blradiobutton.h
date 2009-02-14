@@ -25,6 +25,8 @@
 #include <QRadioButton>
 #include <QString>
 
+#include "blfunctions.h"
+
 
 class BlRadioButton : public QRadioButton
 {

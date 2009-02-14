@@ -21,7 +21,7 @@
 #include <QWidget>
 
 #include "comercialclienteview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

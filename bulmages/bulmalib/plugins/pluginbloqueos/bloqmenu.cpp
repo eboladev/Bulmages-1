@@ -34,7 +34,7 @@
 #include "empresabase.h"
 #include "bldb.h"
 #include "bloqmenu.h"
-#include "funcaux.h"
+
 
 ///
 /**

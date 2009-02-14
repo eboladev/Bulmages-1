@@ -26,7 +26,7 @@
 
 #include "contratoslist.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"
 #include "plugins.h"

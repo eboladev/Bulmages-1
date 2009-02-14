@@ -22,7 +22,7 @@
 
 #include "plugintutor.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "tutorview.h"
 #include "tutoreslist.h"
 

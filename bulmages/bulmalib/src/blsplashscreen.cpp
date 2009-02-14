@@ -22,7 +22,6 @@
 
 #include "blsplashscreen.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
 
 
 ///

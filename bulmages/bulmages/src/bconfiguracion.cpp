@@ -28,7 +28,7 @@
 #include "bconfiguracion.h"
 #include "bnuevaempresa.h"
 #include "nuevafact.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 #ifdef WIN32
 #include <process.h>

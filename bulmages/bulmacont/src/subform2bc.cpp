@@ -25,7 +25,7 @@
 #include <QLocale>
 
 #include "subform2bc.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresa.h"
 #include "asiento1view.h"
 #include "extractoview1.h"

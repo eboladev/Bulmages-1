@@ -29,7 +29,7 @@
 #include "abreempresaview.h"
 #include "company.h"
 #include "fpagoview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"

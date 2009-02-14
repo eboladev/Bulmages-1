@@ -24,7 +24,7 @@
 #include <QEvent>
 
 #include "listdescpresupuestoview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

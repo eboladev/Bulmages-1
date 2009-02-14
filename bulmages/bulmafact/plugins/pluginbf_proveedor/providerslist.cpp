@@ -26,7 +26,7 @@
 #include <QTextStream>
 
 #include "providerslist.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "company.h"
 #include "provedit.h"
 #include "pgimportfiles.h"

@@ -22,7 +22,7 @@
 
 #include "pluginbf_cliente.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "clienteview.h"
 #include "clientslist.h"
 

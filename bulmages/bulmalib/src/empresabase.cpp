@@ -19,8 +19,6 @@
  ***************************************************************************/
 
 #include "empresabase.h"
-#include "funcaux.h"
-
 #include "abreempresaview.h"
 #include "paisview.h"
 

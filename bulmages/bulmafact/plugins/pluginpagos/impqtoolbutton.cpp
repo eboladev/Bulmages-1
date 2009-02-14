@@ -29,7 +29,7 @@
 #include <QList>
 
 #include "impqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "facturapview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"

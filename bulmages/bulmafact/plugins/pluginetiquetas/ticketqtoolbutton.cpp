@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include "ticketqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 #include <QString>
 #include <QFileDialog>

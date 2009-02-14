@@ -33,7 +33,7 @@
 #include "listcoloresview.h"
 #include "company.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

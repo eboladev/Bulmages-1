@@ -20,14 +20,13 @@
 
 #include <stdio.h>
 
-#include "pluginsubformsxc.h"
-#include "funcaux.h"
-#include "blprogressbar.h"
-
 #include <QFile>
 #include <QTextStream>
 #include <QTextCodec>
 #include <QLocale>
+
+#include "pluginsubformsxc.h"
+#include "blprogressbar.h"
 
 
 ///

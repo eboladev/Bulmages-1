@@ -23,14 +23,12 @@
 #include <QPushButton>
 
 #include "pluginticketsdevueltos.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "plugins.h"
 #include "ticket.h"
 #include "blapplication.h"
 #include "ticketsdevueltos.h"
-
-
 
 
 MyDevButtonTD * g_plug;

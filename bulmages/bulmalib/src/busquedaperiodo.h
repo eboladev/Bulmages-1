@@ -23,7 +23,7 @@
 #define BUSQUEDAPERIODO_H
 
 #include "blcombobox.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 class BusquedaPeriodo : public BlComboBox

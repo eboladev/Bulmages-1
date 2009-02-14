@@ -26,7 +26,7 @@
 #include <QCloseEvent>
 #include <QLabel>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 #include "bldb.h"
 #include "blfixed.h"

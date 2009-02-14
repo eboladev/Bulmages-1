@@ -23,7 +23,7 @@
 #include <QEvent>
 
 #include "listlincontratoview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "plugins.h"
 

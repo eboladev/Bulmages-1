@@ -34,7 +34,7 @@
 
 #include "empresa.h"
 #include "listivaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

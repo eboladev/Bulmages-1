@@ -30,7 +30,7 @@
 #include <QToolButton>
 #include <QRadioButton>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_diarioprintbase.h"
 #include "blwidget.h"
 

@@ -20,7 +20,7 @@
 
 #include "listiva.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

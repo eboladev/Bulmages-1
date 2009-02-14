@@ -31,7 +31,6 @@
 #include <QTextStream>
 
 #include "plugininformesods.h"
-#include "funcaux.h"
 #include "bulmafact.h"
 #include "bulmacont.h"
 #include "myplugininformesods.h"

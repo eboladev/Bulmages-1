@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "blfunctions.h"
+
 
 class mypluginimportcsv : public QObject
 {
@@ -16,8 +18,4 @@ public slots:
     virtual void elslot();
 };
 
-
-
-
 #endif
-

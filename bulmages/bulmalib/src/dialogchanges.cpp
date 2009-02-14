@@ -24,7 +24,6 @@
 #include <QComboBox>
 
 #include "dialogchanges.h"
-#include "funcaux.h"
 
 
 ///

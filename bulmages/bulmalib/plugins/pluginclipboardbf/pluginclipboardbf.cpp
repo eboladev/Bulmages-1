@@ -34,7 +34,6 @@
 #include <QLocale>
 
 #include "empresabase.h"
-#include "funcaux.h"
 #include "pluginclipboardbf.h"
 
 

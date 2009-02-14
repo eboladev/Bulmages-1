@@ -24,7 +24,7 @@
 
 #include "amortizacionview.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "aplinteligentesview.h"
 #include "busquedacuenta.h"
 #include "asiento1view.h"

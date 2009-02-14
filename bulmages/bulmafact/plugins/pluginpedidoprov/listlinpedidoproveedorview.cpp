@@ -23,7 +23,7 @@
 #include <QEvent>
 
 #include "listlinpedidoproveedorview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 
 

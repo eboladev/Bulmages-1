@@ -30,8 +30,6 @@
 #include "empresabase.h"
 #include "archivo.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
-
 
 
 /** inicializa todos los componentes de la clase.

@@ -30,7 +30,7 @@
 #include "cuentalistview.h"
 #include "empresa.h"
 #include "cuentaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

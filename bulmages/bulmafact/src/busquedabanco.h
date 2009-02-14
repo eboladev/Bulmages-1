@@ -24,7 +24,7 @@
 
 #include "blcombobox.h"
 
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /// Permite buscar y seleccionar un trabajador.

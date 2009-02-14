@@ -23,7 +23,7 @@
 #include <QDockWidget>
 
 #include "pluginbuscacliente.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "plugins.h"
 #include "ticket.h"

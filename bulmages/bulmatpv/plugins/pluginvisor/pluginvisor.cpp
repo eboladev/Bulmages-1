@@ -24,7 +24,7 @@
 #include <QTextStream>
 
 #include "pluginvisor.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -34,8 +34,8 @@
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
-
 QFile *g_file;
+
 
 ///
 /**

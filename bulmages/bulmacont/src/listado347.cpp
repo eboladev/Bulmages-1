@@ -24,7 +24,7 @@
 #include <QTextStream>
 
 #include "listado347.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

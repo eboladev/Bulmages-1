@@ -23,7 +23,7 @@
 
 #include "busquedaarticulo.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "subform2bf.h"
 #include "fichabf.h"
 

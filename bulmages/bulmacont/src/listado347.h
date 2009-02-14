@@ -22,7 +22,7 @@
 #ifndef LISTADO347_H
 #define LISTADO347_H
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_listado347base.h"
 #include "empresa.h"
 #include "blwidget.h"

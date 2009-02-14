@@ -31,7 +31,7 @@
 #include <QInputDialog>
 
 #include "informeqtoolbutton1.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "company.h"
 #include "bldb.h"

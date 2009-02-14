@@ -22,7 +22,7 @@
 #ifndef TIPOSARTICULOVIEW_H
 #define TIPOSARTICULOVIEW_H
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_tiposarticulobase.h"
 #include "fichabf.h"
 

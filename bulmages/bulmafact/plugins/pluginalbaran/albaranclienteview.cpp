@@ -37,7 +37,7 @@
 #include "clientslist.h"
 #include "company.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "informereferencia.h"
 #include "listdescalbaranclienteview.h"
 #include "listlinalbaranclienteview.h"

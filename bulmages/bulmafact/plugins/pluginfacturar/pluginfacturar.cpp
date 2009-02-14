@@ -23,7 +23,7 @@
 #include <QToolButton>
 
 #include "pluginfacturar.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "impqtoolbutton.h"
 
 

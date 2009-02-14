@@ -34,7 +34,7 @@
 #include "company.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** La ventana se construye como derivada de Ficha, inicializa el subformulario  y mete la ventana en el visor de ventanas

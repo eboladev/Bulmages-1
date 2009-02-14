@@ -24,7 +24,6 @@
 #include <QProcess>
 
 #include "pluginabrevs.h"
-#include "funcaux.h"
 #include "empresatpv.h"
 #include "abrevs.h"
 #include "plugins.h"

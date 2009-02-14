@@ -24,6 +24,8 @@
 
 #include <QTextEdit>
 
+#include "blfunctions.h"
+
 
 class QTextEditDelegate : public QTextEdit
 {

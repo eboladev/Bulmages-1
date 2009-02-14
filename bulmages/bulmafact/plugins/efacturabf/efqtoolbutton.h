@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "blwidget.h"
 

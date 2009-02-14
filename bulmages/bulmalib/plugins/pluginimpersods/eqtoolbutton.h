@@ -26,7 +26,7 @@
 #include <QMap>
 
 #include "empresabase.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blform.h"
 
 

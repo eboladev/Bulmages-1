@@ -29,7 +29,7 @@
 
 #include "empresa.h"
 #include "diarioview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "diarioprintview.h"
 #include "diarioprint.h"
 #include "blconfiguration.h"

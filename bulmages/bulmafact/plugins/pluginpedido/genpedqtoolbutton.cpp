@@ -29,7 +29,7 @@
 #include <QList>
 
 #include "genpedqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
 #include "blfixed.h"

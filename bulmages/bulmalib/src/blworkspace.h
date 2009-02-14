@@ -25,6 +25,8 @@
 #include <QWidget>
 #include <QWorkspace>
 
+#include "blfunctions.h"
+
 
 class BlWorkspace : public QWorkspace
 {

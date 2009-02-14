@@ -29,7 +29,7 @@
 #include "profesoreslist.h"
 #include "company.h"
 #include "profesorview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Inicializa todos los componentes.

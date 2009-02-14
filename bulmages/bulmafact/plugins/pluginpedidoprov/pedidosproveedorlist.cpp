@@ -25,7 +25,7 @@
 #include <QTextStream>
 
 #include "pedidosproveedorlist.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "company.h"
 #include "blconfiguration.h"
 #include "pedidoproveedorview.h"

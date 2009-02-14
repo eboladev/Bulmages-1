@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 class RutaComercialIncView : public FichaBf, public Ui_RutaComercialIncBase

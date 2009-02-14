@@ -31,16 +31,12 @@
 #include "pluginimportcsv.h"
 #include "mypluginimportcsv.h"
 
-#include "funcaux.h"
 #include "bulmafact.h"
 #include "bulmacont.h"
 
 
-
 QMainWindow *g_bges_importcsv = NULL;
 EmpresaBase *g_emp_importcsv = NULL;
-
-
 
 
 void entryPoint ( QMainWindow *bges )

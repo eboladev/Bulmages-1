@@ -14,7 +14,6 @@
 #include "stdio.h"
 
 #include "blfixed.h"
-#include "funcaux.h"
 
 
 ///

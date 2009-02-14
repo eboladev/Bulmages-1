@@ -31,7 +31,7 @@
 #include "company.h"
 #include "listcontrolstockview.h"
 #include "inventario.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

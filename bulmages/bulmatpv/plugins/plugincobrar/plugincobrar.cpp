@@ -22,7 +22,7 @@
 
 
 #include "plugincobrar.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "cobrar.h"
 #include "plugins.h"

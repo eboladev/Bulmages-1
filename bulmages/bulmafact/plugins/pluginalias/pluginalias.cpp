@@ -24,7 +24,7 @@
 
 #include "pluginalias.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 QString g_minAlias=(QString)NULL;

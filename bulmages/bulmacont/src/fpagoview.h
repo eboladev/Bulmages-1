@@ -22,7 +22,7 @@
 #ifndef FPAGOVIEW_H
 #define FPAGOVIEW_H
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_fpagobase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"

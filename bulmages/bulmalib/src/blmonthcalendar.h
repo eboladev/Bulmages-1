@@ -30,25 +30,28 @@
 #include <QMultiHash>
 #include <QString>
 
-class BLMonthCalendar : public QWidget    {
-Q_OBJECT
+#include "blfunctions.h"
+
+
+class BLMonthCalendar : public QWidget
+{
+    Q_OBJECT
 
 public:
-        BLMonthCalendar(QWidget * parent = 0, Qt::WindowFlags f = 0);
-		virtual ~BLMonthCalendar();
+    BLMonthCalendar(QWidget * parent = 0, Qt::WindowFlags f = 0);
+    virtual ~BLMonthCalendar();
 
 public slots:
-        void setFontSize(int size);
-        void setMonth(int month);
-        void setYear(QDate date);
+    void setFontSize(int size);
+    void setMonth(int month);
+    void setYear(QDate date);
 
 private:
-        void insertCalendar();
-        int fontSize;
-        QDate selectedDate;
-        QTextBrowser *editor;
-		QMultiHash <QString, QString> m_textos;
+    void insertCalendar();
+    int fontSize;
+    QDate selectedDate;
+    QTextBrowser *editor;
+    QMultiHash <QString, QString> m_textos;
 };
 
 #endif
-

@@ -23,7 +23,7 @@
 #include <QEvent>
 
 #include "listlinalbaranclienteview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "plugins.h"
 

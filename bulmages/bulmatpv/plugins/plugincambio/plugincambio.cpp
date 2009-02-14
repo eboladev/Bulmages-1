@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include "plugincambio.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "cambio.h"
 #include "plugins.h"

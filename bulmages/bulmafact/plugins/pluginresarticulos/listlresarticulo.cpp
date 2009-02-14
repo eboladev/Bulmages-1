@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "listlresarticulo.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 #include "pluginadmin.h"
-#include "funcaux.h"
 #include "empresatpv.h"
 #include "admin.h"
 #include "plugins.h"

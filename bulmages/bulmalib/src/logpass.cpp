@@ -23,7 +23,6 @@
 #include <QLabel>
 
 #include "logpass.h"
-#include "funcaux.h"
 #include "blpostgresqlclient.h"
 
 

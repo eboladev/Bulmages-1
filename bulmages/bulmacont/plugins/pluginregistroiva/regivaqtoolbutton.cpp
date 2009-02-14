@@ -31,7 +31,7 @@
 #include <QWidget>
 
 #include "regivaqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "asiento1view.h"
 #include "empresa.h"

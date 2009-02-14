@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "listltarifaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

@@ -29,7 +29,6 @@
 
 #include "blpostgresqlclient.h"
 #include "msgerror.h"
-#include "funcaux.h"
 
 
 ///

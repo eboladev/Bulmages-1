@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include  "busquedaccoste.h"
-#include  "funcaux.h"
+#include  "blfunctions.h"
 #include  "empresa.h"
 
 

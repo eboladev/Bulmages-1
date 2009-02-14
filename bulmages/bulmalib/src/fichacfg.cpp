@@ -21,7 +21,6 @@
 #include <QWidget>
 
 #include "fichacfg.h"
-#include "funcaux.h"
 
 
 ///  Inicializa el objeto y hace todas las conexiones necesarias.

@@ -23,7 +23,6 @@
 #include <QDockWidget>
 
 #include "pluginbuscaarticulo.h"
-#include "funcaux.h"
 #include "empresatpv.h"
 #include "plugins.h"
 #include "ticket.h"

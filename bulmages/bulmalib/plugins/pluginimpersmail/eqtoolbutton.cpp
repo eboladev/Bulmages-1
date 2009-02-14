@@ -32,7 +32,7 @@
 #include "empresabase.h"
 #include "bldb.h"
 #include "eqtoolbutton.h"
-#include "funcaux.h"
+
 
 ///
 /**

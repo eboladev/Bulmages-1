@@ -28,7 +28,7 @@
 #include <QMap>
 #include <QString>
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 

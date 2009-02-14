@@ -24,7 +24,7 @@
 #include <QtGui>
 
 #include "blmonthcalendar.h"
-#include "funcaux.h"
+
 
 BLMonthCalendar::BLMonthCalendar(QWidget * parent, Qt::WindowFlags f) : QWidget(parent, f) {
         selectedDate = QDate::currentDate();

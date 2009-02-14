@@ -36,9 +36,6 @@
 
 #include "config.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
-
-
 #include "abreempresaview.h"
 
 

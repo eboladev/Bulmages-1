@@ -33,9 +33,10 @@
 #include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 #include "empresatpv.h"
+
 
 /** Constructor de la ventana de listado de articulos
     Inicializa todos los componentes, propaga el puntero a m_company

@@ -24,6 +24,7 @@
 # define MY_EXPORT
 #endif
 
+#include "blfunctions.h"
 #include "blform.h"
 #include "empresabase.h"
 

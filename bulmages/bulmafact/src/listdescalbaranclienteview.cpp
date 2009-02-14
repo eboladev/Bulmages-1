@@ -24,7 +24,7 @@
 #include <QEvent>
 
 #include "listdescalbaranclienteview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

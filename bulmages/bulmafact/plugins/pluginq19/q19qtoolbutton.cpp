@@ -29,7 +29,7 @@
 #include <QWidget>
 
 #include "q19qtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "cobroslist.h"
 #include "cobroview.h"

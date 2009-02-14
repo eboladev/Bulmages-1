@@ -28,7 +28,7 @@
 #include "blconfiguration.h"
 #include "facturaslist.h"
 #include "facturaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

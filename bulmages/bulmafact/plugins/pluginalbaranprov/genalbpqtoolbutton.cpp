@@ -29,7 +29,7 @@
 #include <QList>
 
 #include "genalbpqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "blfixed.h"

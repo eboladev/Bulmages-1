@@ -25,6 +25,7 @@
 #include <QDockWidget>
 #include <QListWidget>
 
+#include "blfunctions.h"
 #include "blworkspace.h"
 
 

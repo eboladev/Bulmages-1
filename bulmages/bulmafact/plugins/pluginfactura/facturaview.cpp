@@ -34,7 +34,7 @@
 #include "clientslist.h"
 #include "company.h"
 #include "facturaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "informereferencia.h"
 #include "listdescfacturaview.h"
 #include "listlinfacturaview.h"

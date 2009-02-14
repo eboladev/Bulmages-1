@@ -23,12 +23,14 @@
 #include <QDockWidget>
 
 #include "plugintcaliastpv.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
+
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &rec )
 {

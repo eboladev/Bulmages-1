@@ -27,6 +27,7 @@
 #include <QMenu>
 #include <QApplication>
 
+#include "blfunctions.h"
 #include "blpostgresqlclient.h"
 //#include "bulmafact.h"
 #include "blwidget.h"

@@ -22,7 +22,7 @@
 
 #include "plugintarifas.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "busquedatarifa.h"
 #include "listltarifaview.h"
 #include "listlvartarifaview.h"

@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include <funcaux.h>
+#include "blfunctions.h"
 #include "ui_alumnobase.h"
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"

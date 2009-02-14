@@ -28,7 +28,7 @@
 #include <QAbstractSpinBox>
 #include <QLineEdit>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 class BlDoubleSpinBox : public QDoubleSpinBox

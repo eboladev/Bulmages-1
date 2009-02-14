@@ -29,7 +29,7 @@
 #include "bulmatpv.h"
 #include "blsplashscreen.h"
 #include "logpass.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "plugins.h"
 #include "config.h"

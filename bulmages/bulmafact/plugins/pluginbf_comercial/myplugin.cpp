@@ -21,7 +21,7 @@
 #include "myplugin.h"
 #include "rutacomerciallist.h"
 #include "listzonacomercialview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

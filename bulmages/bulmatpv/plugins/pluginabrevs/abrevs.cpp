@@ -3,12 +3,12 @@
 #include <QDockWidget>
 #include <QX11EmbedContainer>
 #include <QMainWindow>
+
 #include "abrevs.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "trabajadores.h"
 #include "empresatpv.h"
 #include "tickets.h"
-
 
 
 Abrevs::Abrevs ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )

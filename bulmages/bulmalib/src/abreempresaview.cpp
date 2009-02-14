@@ -39,7 +39,6 @@
 #include "abreempresaview.h"
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
 
 
 /// Este es el archivo en el que se almacenan las mui_empresas que existen.

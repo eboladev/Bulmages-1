@@ -25,7 +25,8 @@
 #include <QEvent>
 #include <QTableWidget>
 #include <QItemDelegate>
-#include "funcaux.h"
+
+#include "blfunctions.h"
 
 
 /** Implementa los elementos de edicion por defecto de un QTableWidgetItem2.

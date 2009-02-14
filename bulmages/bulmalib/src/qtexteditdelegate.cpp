@@ -22,7 +22,6 @@
 #include <QEvent>
 
 #include "qtexteditdelegate.h"
-#include "funcaux.h"
 
 
 ///

@@ -26,7 +26,7 @@
 
 #include "company.h"
 #include "busquedaarticulo.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "subform2bf.h"
 #include "blformlist.h"
 

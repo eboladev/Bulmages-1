@@ -31,7 +31,6 @@
 #include <QTextStream>
 
 #include "plugininformes.h"
-#include "funcaux.h"
 #include "bulmafact.h"
 #include "bulmacont.h"
 #include "myplugininformes.h"

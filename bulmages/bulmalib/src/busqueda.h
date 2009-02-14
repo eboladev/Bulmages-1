@@ -25,6 +25,7 @@
 #include <QLineEdit>
 #include <QLabel>
 
+#include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_busquedabase.h"
 
@@ -43,7 +44,6 @@ public:
 private:
     /// Almacena la tabla sobre la que vamos a buscar.
     QString m_tabla;
-
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
     /// Almacena el nombreprofesor del profesor seleccionado.

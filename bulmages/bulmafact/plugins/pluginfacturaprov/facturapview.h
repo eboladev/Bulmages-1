@@ -31,7 +31,7 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Implementa la pantalla de Facturas de Proveedores.

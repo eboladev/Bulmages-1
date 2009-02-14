@@ -23,7 +23,7 @@
 #include <QToolButton>
 
 #include "pluginimpresionesmultiples.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "presupuestolist.h"
 #include "impmultqtoolbutton.h"
 

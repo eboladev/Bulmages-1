@@ -26,7 +26,7 @@
 #include <QLabel>
 
 #include "blwidget.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_busquedareferenciabase.h"
 
 

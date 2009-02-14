@@ -33,7 +33,7 @@
 
 #include "pluginbarcodeopen.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"

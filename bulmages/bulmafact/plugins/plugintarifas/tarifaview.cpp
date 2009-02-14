@@ -29,7 +29,7 @@
 #include "busquedafamilia.h"
 #include "busquedaalmacen.h"
 #include "comparticulolistview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

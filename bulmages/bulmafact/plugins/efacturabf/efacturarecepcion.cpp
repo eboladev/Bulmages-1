@@ -22,7 +22,7 @@
 #include "QString"
 
 #include "efacturarecepcion.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <QFileDialog>
 #include <QLineEdit>
 

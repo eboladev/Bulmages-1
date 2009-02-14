@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "funcaux.h"
 #include "mypluginimportcsv.h"
 #include "importcsv.h"
 #include "empresabase.h"
@@ -26,7 +25,6 @@
 
 extern QMainWindow *g_bges_importcsv;
 extern EmpresaBase *g_emp_importcsv;
-
 
 
 ///

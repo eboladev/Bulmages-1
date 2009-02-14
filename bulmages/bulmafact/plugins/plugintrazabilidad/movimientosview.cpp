@@ -27,7 +27,7 @@
 #include "company.h"
 #include "blconfiguration.h"
 #include "movimientosview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 #include "blform.h"
 #include "empresabase.h"

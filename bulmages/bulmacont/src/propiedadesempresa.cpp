@@ -20,7 +20,7 @@
 
 #include <QMessageBox>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "propiedadesempresa.h"
 #include "empresa.h"
 

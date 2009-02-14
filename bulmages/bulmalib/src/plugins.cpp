@@ -22,7 +22,6 @@
 #include <QLibrary>
 #include <QStringList>
 
-#include "funcaux.h"
 #include "plugins.h"
 #include "blconfiguration.h"
 

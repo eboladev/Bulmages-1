@@ -30,7 +30,7 @@
 #include <QList>
 
 #include "q19qtoolbutton1.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "company.h"
 #include "bldb.h"

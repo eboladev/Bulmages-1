@@ -29,7 +29,7 @@
 #include "tutoreslist.h"
 #include "company.h"
 #include "tutorview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Inicializa todos los componentes.

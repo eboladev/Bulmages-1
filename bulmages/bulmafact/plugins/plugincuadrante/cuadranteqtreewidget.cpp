@@ -25,7 +25,7 @@
 
 #include "cuadranteqtreewidget.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 

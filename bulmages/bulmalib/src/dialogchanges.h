@@ -24,7 +24,7 @@
 
 #include <QObject>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /// Esta clase se encarga de proporcionar algo de infraestructura al control de cambios.

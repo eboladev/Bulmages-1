@@ -28,7 +28,7 @@
 
 #include "company.h"
 #include "plugintpv.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "zlist.h"
 #include "blform.h"
 

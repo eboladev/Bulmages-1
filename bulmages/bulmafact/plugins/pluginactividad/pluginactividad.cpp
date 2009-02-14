@@ -22,7 +22,7 @@
 
 #include "pluginactividad.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "actividadview.h"
 #include "actividadeslist.h"
 

@@ -26,7 +26,7 @@
 #include "blconfiguration.h"
 #include "logpass.h"
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

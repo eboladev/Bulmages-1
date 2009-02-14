@@ -22,7 +22,7 @@
 #include "tarifaview.h"
 #include "pgimportfiles.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

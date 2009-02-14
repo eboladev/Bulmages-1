@@ -1,4 +1,3 @@
-#include "artgraficos.h"
 #include <QTableWidget>
 #include <QLabel>
 #include <QHeaderView>
@@ -8,7 +7,7 @@
 #include <QPainter>
 #include <QPushButton>
 
-#include "funcaux.h"
+#include "artgraficos.h"
 #include "blconfiguration.h"
 #include "bldockwidget.h"
 

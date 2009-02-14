@@ -29,6 +29,7 @@
 #include <QIcon>
 #include <QObject>
 
+#include "blfunctions.h"
 #include "blapplication.h"
 #include "blsubform.h"
 #include "blpostgresqlclient.h"

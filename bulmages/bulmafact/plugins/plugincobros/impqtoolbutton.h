@@ -22,7 +22,7 @@
 #include <QToolButton>
 #include <QString>
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>

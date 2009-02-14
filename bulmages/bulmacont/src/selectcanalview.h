@@ -22,7 +22,7 @@
 #ifndef SELECTCANALVIEW_H
 #define SELECTCANALVIEW_H
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_selectcanalbase.h"
 #include "blwidget.h"
 

@@ -25,7 +25,6 @@
 
 #include "qtable2.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
 
 
 /** Constructor de la clase estandar de delegacion para la edicion de elementos

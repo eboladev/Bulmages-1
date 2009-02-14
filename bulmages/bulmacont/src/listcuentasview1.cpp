@@ -27,7 +27,7 @@
 #include <QTextStream>
 
 #include "listcuentasview1.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "cuentaview.h"
 #include "empresa.h"
 

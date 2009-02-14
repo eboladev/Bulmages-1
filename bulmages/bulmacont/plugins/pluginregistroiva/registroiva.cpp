@@ -25,7 +25,7 @@
 #include "empresa.h"
 #include "blconfiguration.h"
 #include "blfixed.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

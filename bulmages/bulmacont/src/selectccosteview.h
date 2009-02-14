@@ -24,7 +24,7 @@
 
 #include <QTreeWidgetItemIterator>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <ui_selectccostebase.h>
 #include "blwidget.h"
 

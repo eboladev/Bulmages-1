@@ -24,6 +24,7 @@
 
 #include <QEvent>
 
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "qtable2.h"
 #include "bldbsubform.h"

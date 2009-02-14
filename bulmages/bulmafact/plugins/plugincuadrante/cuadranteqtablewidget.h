@@ -28,7 +28,7 @@
 #include <QItemDelegate>
 #include <QLabel>
 #include <QMenu>
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 

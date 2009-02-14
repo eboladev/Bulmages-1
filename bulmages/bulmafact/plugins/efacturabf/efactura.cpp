@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "efactura.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <QFileDialog>
 #include <QLineEdit>
 #include <QString>

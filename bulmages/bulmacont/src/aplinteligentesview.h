@@ -38,7 +38,7 @@
 #include <QDomDocument>
 
 #include "listcuentasview1.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "busquedacuenta.h"

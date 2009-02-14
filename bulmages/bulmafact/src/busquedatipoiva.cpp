@@ -20,7 +20,7 @@
 
 #include "busquedatipoiva.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Inicializa todos los componentes a NULL para que no haya confusiones sobre

@@ -29,7 +29,7 @@
 #include <QList>
 #include <QTextStream>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blfixed.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"

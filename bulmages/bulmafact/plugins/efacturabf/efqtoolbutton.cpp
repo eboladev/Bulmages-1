@@ -21,7 +21,7 @@
 #include <QWidget>
 #include "efqtoolbutton.h"
 #include "facturaview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "company.h"
 #include "blwidget.h"
 

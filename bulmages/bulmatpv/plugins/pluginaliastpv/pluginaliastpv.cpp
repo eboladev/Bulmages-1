@@ -23,7 +23,7 @@
 #include <QDockWidget>
 
 #include "pluginaliastpv.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 
 

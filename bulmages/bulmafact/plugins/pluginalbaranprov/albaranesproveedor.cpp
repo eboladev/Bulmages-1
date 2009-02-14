@@ -28,7 +28,7 @@
 #include "albaranproveedorview.h"
 #include "company.h"
 #include "blconfiguration.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Constructor de AlbaranesProveedor sin inicializar con la clase company.

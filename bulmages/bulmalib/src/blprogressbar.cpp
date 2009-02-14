@@ -21,7 +21,6 @@
 #include <QDesktopWidget>
 
 #include "blprogressbar.h"
-#include "funcaux.h"
 #include "blconfiguration.h"
 
 

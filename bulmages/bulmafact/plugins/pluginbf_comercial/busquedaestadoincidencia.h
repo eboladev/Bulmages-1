@@ -23,7 +23,7 @@
 
 #include <QComboBox>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 class BusquedaEstadoIncidencia : public QComboBox

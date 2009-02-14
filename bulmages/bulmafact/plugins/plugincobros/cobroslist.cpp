@@ -29,7 +29,7 @@
 #include "cobroslist.h"
 #include "company.h"
 #include "cobroview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Inicializa todos los componentes.

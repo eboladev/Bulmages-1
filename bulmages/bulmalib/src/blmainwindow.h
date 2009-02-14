@@ -22,13 +22,13 @@
 #ifndef BLMAINWINDOW_H
 #define BLMAINWINDOW_H
 
-
 #include <QMainWindow>
 
 
 class BlMainWindow : public QMainWindow
 {
     Q_OBJECT
+
 public:
     BlMainWindow ( QWidget * parent = 0, Qt::WindowFlags flags = 0 );
     ~BlMainWindow();

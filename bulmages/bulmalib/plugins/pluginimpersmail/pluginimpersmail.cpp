@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 #include "pluginimpersmail.h"
-#include "funcaux.h"
 #include "eqtoolbutton.h"
 
 

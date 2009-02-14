@@ -21,7 +21,7 @@
 #include "blcombobox.h"
 #include "busquedatalla.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.

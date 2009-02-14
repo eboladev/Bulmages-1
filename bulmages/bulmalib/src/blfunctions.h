@@ -21,11 +21,11 @@
 
 /// Fichero de definicion de funciones auxiliares que no es preciso encapsular
 /// En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
-/// utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
+/// utilizadas de forma regular en el programa. Implementadas en blfunctions.cpp
 /// Dichas funciones normalmente son de uso general, por lo que es normal ver este
 /// archivo incluido en la practica totalidad de los demas ficheros.
-#ifndef FUNCAUX_H
-#define FUNCAUX_H
+#ifndef BLFUNCTIONS_H
+#define BLFUNCTIONS_H
 
 #include <QDateTime>
 #include <QMessageBox>

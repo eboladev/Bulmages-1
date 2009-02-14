@@ -21,7 +21,7 @@
 #include <QPushButton>
 #include <QFile>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_selectorbase.h"
 #include "bselector.h"
 #include "plugins.h"

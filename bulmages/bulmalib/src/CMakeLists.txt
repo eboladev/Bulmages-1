@@ -33,7 +33,7 @@ INCLUDE(${QT_USE_FILE})
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
 			numerocuenta.cpp
-			funcaux.cpp
+			blfunctions.cpp
 			logpass.cpp
 			abreempresaview.cpp
 			dialogchanges.cpp
@@ -106,7 +106,7 @@ set (bulmalib_HDRS	abreempresaview.h
 			empresabase.h
 			blform.h
 			blfixed.h
-			funcaux.h
+			blfunctions.h
 			listventanas.h
 			logpass.h
 			msgerror.h
@@ -126,7 +126,7 @@ set (bulmalib_HDRS	abreempresaview.h
 #			blpostgresqlclient.h 
 #			blconfiguration.h 
 #			numerocuenta.h 
-#			funcaux.h 
+#			blfunctions.h 
 #			dialogchanges.h 
 #			blfixed.h 
 #			pgimportfiles.h 

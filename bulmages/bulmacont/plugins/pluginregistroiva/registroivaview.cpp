@@ -35,7 +35,7 @@
 #include "listivaview.h"
 #include "registroivaview.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

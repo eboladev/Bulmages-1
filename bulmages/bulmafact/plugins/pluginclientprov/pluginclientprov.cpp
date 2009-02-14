@@ -24,7 +24,7 @@
 
 #include "pluginclientprov.h"
 #include "fichabf.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

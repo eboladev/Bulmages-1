@@ -20,7 +20,7 @@
 
 #include "company.h"
 #include "tarifalistsubform.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

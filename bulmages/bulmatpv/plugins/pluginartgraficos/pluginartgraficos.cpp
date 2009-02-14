@@ -24,7 +24,6 @@
 #include <QVBoxLayout>
 
 #include "pluginartgraficos.h"
-#include "funcaux.h"
 #include "empresatpv.h"
 #include "artgraficos.h"
 #include "plugins.h"

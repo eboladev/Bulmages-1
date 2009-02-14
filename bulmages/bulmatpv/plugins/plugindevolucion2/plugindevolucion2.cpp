@@ -20,7 +20,7 @@
 #include <QPushButton>
 
 #include "plugindevolucion2.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "devolucion2.h"
 #include "plugins.h"

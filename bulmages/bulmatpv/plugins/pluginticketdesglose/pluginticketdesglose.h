@@ -24,9 +24,11 @@
 # define MY_EXPORT
 #endif
 
+#include "blfunctions.h"
 #include "bulmatpv.h"
 #include "ticket.h"
 #include "empresatpv.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int Ticket_pintar ( Ticket * );

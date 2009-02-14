@@ -32,7 +32,7 @@
 #include "company.h"
 #include "listlinpedidoproveedorview.h"
 #include "providerslist.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

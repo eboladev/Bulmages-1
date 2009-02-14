@@ -22,7 +22,7 @@
 #include <QToolButton>
 
 #include "pluginetiquetado.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ticketqtoolbutton.h"
 
 

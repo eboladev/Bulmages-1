@@ -28,7 +28,7 @@
 
 #include "company.h"
 #include "pluginvehiculosbf.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "vehiculoview.h"
 
 

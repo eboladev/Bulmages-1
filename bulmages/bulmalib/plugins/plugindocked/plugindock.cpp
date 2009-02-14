@@ -31,7 +31,6 @@
 #include <QX11EmbedContainer>
 
 #include "plugindock.h"
-#include "funcaux.h"
 #include "bulmafact.h"
 #include "bulmacont.h"
 #include "myplugindock.h"

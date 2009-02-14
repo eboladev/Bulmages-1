@@ -37,6 +37,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "blfunctions.h"
+
 
 /// Muestra y administra la ventana de bienvenida al programa.
 /** */

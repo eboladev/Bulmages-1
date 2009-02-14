@@ -20,7 +20,7 @@
 #include <QPushButton>
 
 #include "plugintccompras.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresatpv.h"
 #include "compra.h"
 #include "plugins.h"

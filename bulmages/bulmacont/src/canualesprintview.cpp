@@ -23,7 +23,7 @@
 #include <QLocale>
 
 #include "canualesprintview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "empresa.h"
 #include "blfixed.h"
 #include "blpostgresqlclient.h"

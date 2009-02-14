@@ -22,7 +22,7 @@
 #include <QToolButton>
 
 #include "pluginbulmacont.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "listcuentasview1.h"
 #include "company.h"
 

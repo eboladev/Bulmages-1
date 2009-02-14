@@ -25,6 +25,7 @@
 #include <QDockWidget>
 
 #include "blworkspace.h"
+#include "blfunctions.h"
 
 
 /// Provides the dock window to list all windows in BulmaFact

@@ -23,7 +23,7 @@
 #include "pluginpresupuesto.h"
 #include "plugins.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "presupuestoview.h"
 #include "presupuestolist.h"
 

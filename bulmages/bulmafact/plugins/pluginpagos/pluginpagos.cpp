@@ -22,7 +22,7 @@
 
 #include "pluginpagos.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "pagoview.h"
 #include "pagoslist.h"
 #include "impqtoolbutton.h"

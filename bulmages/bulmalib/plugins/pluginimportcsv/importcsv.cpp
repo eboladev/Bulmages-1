@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <fstream>
+
 #include <QMessageBox>
 #include <QCloseEvent>
 #include <QFile>
@@ -25,13 +27,9 @@
 #include <QWidget>
 #include <QFileDialog>
 
-#include <fstream>
 #include "empresabase.h"
 #include "importcsv.h"
 #include "blconfiguration.h"
-
-#include "funcaux.h"
-
 
 
 /** inicializa todos los componentes de la clase.

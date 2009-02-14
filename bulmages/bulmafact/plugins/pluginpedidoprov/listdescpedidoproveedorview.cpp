@@ -24,7 +24,7 @@
 #include <QEvent>
 
 #include "listdescpedidoproveedorview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 ///
 /**

@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 #include "pluginimpersods.h"
-#include "funcaux.h"
 #include "eqtoolbutton.h"
 
 

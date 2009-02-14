@@ -22,8 +22,10 @@
 #ifndef PLUGINS_H
 #define PLUGINS_H
 
-#include "QList"
-#include "QLibrary"
+#include <QList>
+#include <QLibrary>
+
+#include "blfunctions.h"
 
 
 /** Controla el sistema de carga y disparo segun metodo de los plugins

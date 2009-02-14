@@ -30,7 +30,7 @@
 #include <QLineEdit>
 #include <QRadioButton>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_regivaprintbase.h"
 #include "blwidget.h"
 

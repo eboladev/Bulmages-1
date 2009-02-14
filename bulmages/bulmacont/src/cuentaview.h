@@ -33,7 +33,7 @@
 
 #include "ui_cuentabase.h"
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
 

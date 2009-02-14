@@ -22,7 +22,7 @@
 
 #include "pluginpedidoprov.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "pedidoproveedorview.h"
 #include "pedidosproveedorlist.h"
 

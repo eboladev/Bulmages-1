@@ -30,6 +30,7 @@
 #include <QString>
 #include <QMap>
 
+#include "blfunctions.h"
 #include "blapplication.h"
 #include "blpostgresqlclient.h"
 

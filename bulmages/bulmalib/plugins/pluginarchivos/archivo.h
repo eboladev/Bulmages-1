@@ -29,8 +29,7 @@
 #include <QWidget>
 #include <QMap>
 
-#include <funcaux.h>
-
+#include "blfunctions.h"
 #include "ui_archivobase.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
@@ -43,9 +42,8 @@ class EmpresaBase;
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
-
-
+    Deriva de Cobro para el manejo de la Base de datos.
+**/
 class Archivo : public BlWidget, public Ui_ArchivoBase
 {
     Q_OBJECT

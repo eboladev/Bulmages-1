@@ -28,7 +28,7 @@
 #include "empresa.h"
 #include "blconfiguration.h"
 #include "plugins.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** inicializa todos los componentes de la clase.

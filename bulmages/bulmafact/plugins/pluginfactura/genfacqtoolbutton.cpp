@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include "genfacqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 /// Necesarios para importacion de efactura
 #include <QtXml/QDomDocument>

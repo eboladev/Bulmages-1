@@ -25,7 +25,7 @@
 #include <Qt>
 
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "qtable2.h"
 #include "bldb.h"
 

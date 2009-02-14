@@ -21,7 +21,7 @@
 #include "QString"
 
 #include "efacturaenvio.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <QFileDialog>
 #include <QLineEdit>
 

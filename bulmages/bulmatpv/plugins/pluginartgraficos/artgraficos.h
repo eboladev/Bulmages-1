@@ -4,9 +4,11 @@
 #include <QDomDocument>
 #include <QTableWidget>
 
+#include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_artgraficosbase.h"
 #include "empresatpv.h"
+
 
 class ArtGraficos : public BlWidget, public Ui_ArtGraficosBase
 {
@@ -23,13 +25,13 @@ public:
     virtual ~ArtGraficos();
     void cargaXML ( QString );
     void muestraPantalla ( int );
-	void ponPantallas();
+    void ponPantallas();
 
 public slots:
     virtual void on_mui_list_cellClicked ( int, int );
     virtual void on_mui_botonSiguiente_clicked();
     virtual void on_mui_botonAnterior_clicked();
-	virtual void pulsadoBoton();
+    virtual void pulsadoBoton();
 };
 
 #endif

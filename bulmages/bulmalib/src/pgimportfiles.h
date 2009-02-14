@@ -27,8 +27,7 @@
 #include <QString>
 
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
-
+#include "blfunctions.h"
 
 #define IMPORT_TODO 0xFFFFFFFF
 

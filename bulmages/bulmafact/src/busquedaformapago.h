@@ -22,11 +22,11 @@
 #ifndef BUSQUEDAFORMA_PAGO_H
 #define BUSQUEDAFORMA_PAGO_H
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blcombobox.h"
 #include "company.h"
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "blwidget.h"
 
 

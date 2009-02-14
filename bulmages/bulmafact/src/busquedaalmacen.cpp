@@ -22,7 +22,7 @@
 
 #include "busquedaalmacen.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.

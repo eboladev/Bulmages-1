@@ -22,7 +22,7 @@
 
 #include "pluginbf_articulo.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "articulolist.h"
 #include "articuloview.h"
 #include "tiposarticuloview.h"

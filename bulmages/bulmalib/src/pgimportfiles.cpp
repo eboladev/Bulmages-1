@@ -25,7 +25,6 @@
 
 #include "blapplication.h"
 #include "pgimportfiles.h"
-#include "funcaux.h"
 
 #define EURO                166.386
 #define S_EURO             "166.386"

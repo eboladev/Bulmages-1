@@ -30,7 +30,7 @@
 #include <QList>
 #include <QWidget>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ticketqtoolbutton.h"
 #include "presupuestoview.h"
 #include "blfixed.h"

@@ -29,7 +29,7 @@
 #include <QWidget>
 
 #include "genfactqtoolbutton.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "facturapview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"

@@ -24,7 +24,7 @@
 
 #include <QWidget>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_bbloqfechabase.h"
 #include "fichabc.h"
 

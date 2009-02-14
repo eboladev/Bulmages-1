@@ -21,7 +21,6 @@
 #include <QCalendarWidget>
 
 #include "busquedafecha.h"
-#include "funcaux.h"
 
 
 ///  Inicializa el objeto y hace todas las conexiones necesarias.

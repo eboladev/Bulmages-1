@@ -34,7 +34,7 @@
 #include "modelo300.h"
 #include "blconfiguration.h"
 #include "blpostgresqlclient.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /// El constructor llama al cuadro de di&aacute;logo para seleccionar par&aacute;metros

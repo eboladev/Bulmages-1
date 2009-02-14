@@ -35,7 +35,7 @@
 #include "facturaslist.h"
 #include "facturaview.h"
 #include "facturapview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "informereferencia.h"
 #include "listdescalbaranclienteview.h"
 #include "listlinalbaranclienteview.h"

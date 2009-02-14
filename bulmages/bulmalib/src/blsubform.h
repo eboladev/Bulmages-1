@@ -27,7 +27,7 @@
 #include <QHeaderView>
 #include <QPalette>
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "ui_blsubformbase.h"
 #include "blpostgresqlclient.h"
 #include "qtable2.h"

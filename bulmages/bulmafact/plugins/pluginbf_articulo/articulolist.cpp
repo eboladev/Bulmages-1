@@ -33,7 +33,7 @@
 #include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "plugins.h"
 
 

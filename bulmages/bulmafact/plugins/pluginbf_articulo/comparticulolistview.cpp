@@ -25,7 +25,7 @@
 
 #include "articulolist.h"
 #include "comparticulolistview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 /** Prepara el subformulario para trabajar con la tabla comparticulo de la base de datos.

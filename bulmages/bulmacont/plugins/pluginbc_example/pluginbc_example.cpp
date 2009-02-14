@@ -29,7 +29,7 @@
 
 #include "pluginbc_example.h"
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///

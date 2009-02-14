@@ -25,7 +25,7 @@
 #include <QToolButton>
 #include <QString>
 #include "empresa.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>

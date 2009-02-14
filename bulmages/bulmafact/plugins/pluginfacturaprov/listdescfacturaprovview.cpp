@@ -24,7 +24,7 @@
 #include <QEvent>
 
 #include "listdescfacturaprovview.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 
 
 ///
