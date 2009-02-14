@@ -22,7 +22,7 @@
 #ifndef TRABAJADORVIEW_H
 #define TRABAJADORVIEW_H
 
-#include "funcaux.h"
+#include "blfunctions.h"
 #include <ui_trabajadorbase.h>
 
 #include "fichabf.h"

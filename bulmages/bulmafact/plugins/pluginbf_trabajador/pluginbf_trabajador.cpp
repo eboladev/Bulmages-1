@@ -22,7 +22,7 @@
 
 #include "pluginbf_trabajador.h"
 #include "company.h"
-#include "funcaux.h"
+#include "blfunctions.h"
 #include "trabajadorview.h"
 
 
