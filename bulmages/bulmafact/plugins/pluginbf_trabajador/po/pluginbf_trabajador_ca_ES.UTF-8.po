@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-15 00:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: trabajadorview.cpp:223
+msgid "&No"
+msgstr "&No"
+
+#: trabajadorview.cpp:223
+msgid "&Si"
+msgstr "&Sí"
+
+#: pluginbf_trabajador.cpp:82
+msgid "&Trabajadores"
+msgstr "&Treballadors"
+
+#: ui_trabajadorbase.h:340
+msgid "Activo"
+msgstr "Actiu"
+
+#: ui_trabajadorbase.h:344
+msgid "Apellidos:"
+msgstr "Cognoms:"
+
+#: ui_trabajadorbase.h:352 ui_trabajadorbase.h:357
+#, fuzzy
+msgid "Borrar trabajador"
+msgstr "Esborra albarà"
+
+#: ui_trabajadorbase.h:345
+#, fuzzy
+msgid "Cambiar imagen"
+msgstr "Canviar compte"
+
+#: trabajadorview.cpp:222
+msgid "Desea guardar los cambios?"
+msgstr "Desitja desar els canvis?"
+
+#: ui_trabajadorbase.h:342
+msgid "Direccion:"
+msgstr "Adreça:"
+
+#: ui_trabajadorbase.h:347
+msgid "E-mail:"
+msgstr "E-mail:"
+
+#: trabajadorview.cpp:278
+msgid "Error al borrar el Trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:253
+msgid "Error al crear un nuevo Trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:204
+msgid "Error al guardar el trabajador"
+msgstr ""
+
+#: ui_trabajadorbase.h:348
+msgid "General"
+msgstr "General"
+
+#: trabajadorview.cpp:221
+#, fuzzy
+msgid "Guardar datos del trabajador"
+msgstr "Desa forma de pagament"
+
+#: ui_trabajadorbase.h:363 ui_trabajadorbase.h:368
+#, fuzzy
+msgid "Guardar trabajador"
+msgstr "Desa balanç"
+
+#: trabajadorview.cpp:294
+msgid "Imagenes (*.jpg)"
+msgstr "Imatges (*.jpg)"
+
+#: ui_trabajadorbase.h:349
+#, fuzzy
+msgid "Lista de trabajadores:"
+msgstr "Llista d'empreses:"
+
+#: ui_trabajadorbase.h:341
+msgid "Nombre:"
+msgstr "Nom:"
+
+#: ui_trabajadorbase.h:374 ui_trabajadorbase.h:379
+msgid "Nuevo trabajador"
+msgstr "Nou treballador"
+
+#: ui_trabajadorbase.h:343
+#, fuzzy
+msgid "Numero de la Seguridad Social:"
+msgstr "Nom de l'entitat:"
+
+#: trabajadorview.cpp:292
+#, fuzzy
+msgid "Seleccione archivo"
+msgstr "Seleccioni una empresa"
+
+#: ui_trabajadorbase.h:346
+msgid "Telefono movil:"
+msgstr "Telèfon mòbil:"
+
+#: ui_trabajadorbase.h:339
+msgid "Telefono:"
+msgstr "Telèfon:"
+
+#: trabajadorview.cpp:44
+msgid "Trabajador"
+msgstr "Treballador"
+
+#: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
+#: ui_trabajadorbase.h:338
+msgid "Trabajadores"
+msgstr "Treballadors"

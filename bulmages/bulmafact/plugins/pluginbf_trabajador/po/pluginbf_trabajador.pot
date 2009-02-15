@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-15 00:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_trabajador.cpp:82
+msgid "&Trabajadores"
+msgstr ""
+
+#: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
+#: ui_trabajadorbase.h:338
+msgid "Trabajadores"
+msgstr ""
+
+#: trabajadorview.cpp:44
+msgid "Trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:204
+msgid "Error al guardar el trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:221
+msgid "Guardar datos del trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:222
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: trabajadorview.cpp:223
+msgid "&Si"
+msgstr ""
+
+#: trabajadorview.cpp:223
+msgid "&No"
+msgstr ""
+
+#: trabajadorview.cpp:253
+msgid "Error al crear un nuevo Trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:278
+msgid "Error al borrar el Trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:292
+msgid "Seleccione archivo"
+msgstr ""
+
+#: trabajadorview.cpp:294
+msgid "Imagenes (*.jpg)"
+msgstr ""
+
+#: ui_trabajadorbase.h:339
+msgid "Telefono:"
+msgstr ""
+
+#: ui_trabajadorbase.h:340
+msgid "Activo"
+msgstr ""
+
+#: ui_trabajadorbase.h:341
+msgid "Nombre:"
+msgstr ""
+
+#: ui_trabajadorbase.h:342
+msgid "Direccion:"
+msgstr ""
+
+#: ui_trabajadorbase.h:343
+msgid "Numero de la Seguridad Social:"
+msgstr ""
+
+#: ui_trabajadorbase.h:344
+msgid "Apellidos:"
+msgstr ""
+
+#: ui_trabajadorbase.h:345
+msgid "Cambiar imagen"
+msgstr ""
+
+#: ui_trabajadorbase.h:346
+msgid "Telefono movil:"
+msgstr ""
+
+#: ui_trabajadorbase.h:347
+msgid "E-mail:"
+msgstr ""
+
+#: ui_trabajadorbase.h:348
+msgid "General"
+msgstr ""
+
+#: ui_trabajadorbase.h:349
+msgid "Lista de trabajadores:"
+msgstr ""
+
+#: ui_trabajadorbase.h:352 ui_trabajadorbase.h:357
+msgid "Borrar trabajador"
+msgstr ""
+
+#: ui_trabajadorbase.h:363 ui_trabajadorbase.h:368
+msgid "Guardar trabajador"
+msgstr ""
+
+#: ui_trabajadorbase.h:374 ui_trabajadorbase.h:379
+msgid "Nuevo trabajador"
+msgstr ""
