@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,7 +138,7 @@ msgstr "Actualizar listado"
 msgid "Apellidos trabajador"
 msgstr "Apellidos trabajador"
 
-#: pagoslist.cpp:254 pagoview.cpp:68
+#: pagoview.cpp:68 pagoslist.cpp:254
 msgid "Banco"
 msgstr "Banco"
 
@@ -159,7 +159,7 @@ msgstr "Buscar:"
 msgid "C.I.F. proveedor"
 msgstr "C.I.F. proveedor"
 
-#: pagoslist.cpp:253 pagoview.cpp:66
+#: pagoview.cpp:66 pagoslist.cpp:253
 msgid "Cantidad"
 msgstr "Cantidad"
 
@@ -199,7 +199,7 @@ msgstr "Error al borrar el pago"
 msgid "Error al crear el pago"
 msgstr "Error al crear el pago"
 
-#: pagoslist.cpp:252 pagoview.cpp:64
+#: pagoview.cpp:64 pagoslist.cpp:252
 msgid "Fecha de pago"
 msgstr "Fecha de pago"
 
@@ -223,11 +223,11 @@ msgstr "Filtrar pagos"
 msgid "Guardar pago"
 msgstr "Guardar pago"
 
-#: pagoslist.cpp:246 pagoview.cpp:61
+#: pagoview.cpp:61 pagoslist.cpp:246
 msgid "Id pago"
 msgstr "Id pago"
 
-#: pagoslist.cpp:247 pagoview.cpp:62
+#: pagoview.cpp:62 pagoslist.cpp:247
 msgid "Id proveedor"
 msgstr "Id proveedor"
 
@@ -280,7 +280,7 @@ msgstr "Prevision pago"
 msgid "Previsiones de Pago"
 msgstr "Previsiones de Pago"
 
-#: pagoslist.cpp:49 pagoslist.cpp:74 pagoview.cpp:71
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
 msgid "Proveedor:"
 msgstr "Proveedor:"
 
@@ -288,7 +288,7 @@ msgstr "Proveedor:"
 msgid "Provision de fondos"
 msgstr "Provision de fondos"
 
-#: pagoslist.cpp:255 pagoview.cpp:65
+#: pagoview.cpp:65 pagoslist.cpp:255
 msgid "Referencia de pago"
 msgstr "Referencia de pago"
 

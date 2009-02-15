@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:25+0100\n"
+"POT-Creation-Date: 2009-02-15 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginimportcsv.cpp:59
+#: pluginimportcsv.cpp:55
 msgid "&Importacion CSV"
 msgstr "&Importacion CSV"
 
@@ -126,7 +126,7 @@ msgstr "..."
 msgid "Aceptar"
 msgstr "Aceptar"
 
-#: importcsv.cpp:70
+#: importcsv.cpp:68
 msgid "All files (*)"
 msgstr "All files (*)"
 
@@ -146,11 +146,11 @@ msgstr "Caracter separador"
 msgid "Composicion de Campos"
 msgstr "Composicion de Campos"
 
-#: importcsv.cpp:52
+#: importcsv.cpp:50
 msgid "Error al crear la ventana de importacion"
 msgstr "Error al crear la ventana de importacion"
 
-#: pluginimportcsv.cpp:60 pluginimportcsv.cpp:61
+#: pluginimportcsv.cpp:56 pluginimportcsv.cpp:57
 msgid "Importacion CSV"
 msgstr "Importacion CSV"
 
@@ -158,7 +158,7 @@ msgstr "Importacion CSV"
 msgid "Importar CSV"
 msgstr "Importar CSV"
 
-#: importcsv.cpp:70
+#: importcsv.cpp:68
 msgid "Open file"
 msgstr "Open file"
 

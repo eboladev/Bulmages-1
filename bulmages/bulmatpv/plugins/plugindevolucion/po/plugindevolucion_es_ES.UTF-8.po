@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,46 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: ui_devolucionbase.h:273
+msgid "A Devolver"
+msgstr ""
+
+#: ui_devolucionbase.h:276
+msgid "CANCELAR"
+msgstr ""
+
+#: ui_devolucionbase.h:270
+msgid "Comentarios"
+msgstr "Comentarios"
+
+#: ui_devolucionbase.h:269
+msgid "Detalle"
+msgstr "Detalle"
+
 #: plugindevolucion.cpp:75
 msgid "Devolucion"
 msgstr "Devolucion"
+
+#: ui_devolucionbase.h:267
+msgid "Dialog"
+msgstr ""
+
+#: ui_devolucionbase.h:274
+msgid "EFECTIVO"
+msgstr ""
+
+#: ui_devolucionbase.h:272
+msgid "Nuevo Total"
+msgstr ""
+
+#: ui_devolucionbase.h:268
+msgid "Ticket"
+msgstr "Ticket"
+
+#: ui_devolucionbase.h:271
+msgid "Total Original"
+msgstr ""
+
+#: ui_devolucionbase.h:275
+msgid "VALE COMPRA"
+msgstr ""

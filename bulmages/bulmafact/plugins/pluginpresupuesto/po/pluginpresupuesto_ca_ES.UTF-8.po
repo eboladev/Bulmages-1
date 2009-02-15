@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: presupuestoview.cpp:70 listdescpresupuestoview.cpp:42
-#: listlinpresupuestoview.cpp:55
+#: listdescpresupuestoview.cpp:42 listlinpresupuestoview.cpp:55
+#: presupuestoview.cpp:70
 #, fuzzy
 msgid "% Descuento"
 msgstr "Document:"
 
 #: listlinpresupuestoview.cpp:53
 msgid "% I.V.A."
-msgstr ""
+msgstr "% I.V.A."
 
 #: listlinpresupuestoview.cpp:54
 msgid "% Recargo E.Q."
-msgstr ""
+msgstr "% Recàrrec E.Q."
 
 #: ui_presupuestoclientebase.h:799 ui_albaranclientebase.h:788
 #: ui_pedidoclientebase.h:714 ui_facturabase.h:722
@@ -85,8 +85,8 @@ msgstr ""
 msgid "&Detalle"
 msgstr "&Detalls"
 
-#: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
-#: genpreqtoolbutton.cpp:423
+#: genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
+#: genpreqtoolbutton.cpp:424
 msgid "&No"
 msgstr "&No"
 
@@ -96,10 +96,10 @@ msgstr ""
 
 #: pluginpresupuesto.cpp:100
 msgid "&Presupuestos a clientes"
-msgstr ""
+msgstr "&Pressuposts a clients"
 
-#: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
-#: genpreqtoolbutton.cpp:423
+#: genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
+#: genpreqtoolbutton.cpp:424
 msgid "&Si"
 msgstr "&Sí"
 
@@ -115,7 +115,7 @@ msgstr "&Sí"
 #: ui_facturabase.h:717 ui_facturabase.h:718 ui_facturabase.h:719
 #: ui_facturabase.h:720 ui_facturabase.h:721
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_presupuestoslistbase.h:437 ui_presupuestoslistbase.h:442
 #: ui_albaranclientelistbase.h:514 ui_albaranclientelistbase.h:519
@@ -126,15 +126,15 @@ msgstr "Actual·litza llistat"
 
 #: ui_facturabase.h:680 ui_facturabase.h:685
 msgid "Agregar albaran a la factura"
-msgstr ""
+msgstr "Afegir albarà a la factura"
 
-#: genpreqtoolbutton.cpp:292
+#: genpreqtoolbutton.cpp:293
 msgid "Albaran ya existe"
-msgstr ""
+msgstr "Albarà ja existent"
 
 #: ui_albaranclientelistbase.h:434
 msgid "Albaranes a clientes"
-msgstr ""
+msgstr "Albarans a clients"
 
 #: presupuestoview.cpp:62 presupuestolist.cpp:361
 #, fuzzy
@@ -149,10 +149,10 @@ msgstr "<LI> Magatzem <B>"
 
 #: presupuestolist.cpp:354
 msgid "Base Imponible"
-msgstr ""
+msgstr "Base Imposable"
 
 #: ui_presupuestoclientebase.h:788 ui_albaranclientebase.h:777
-#: ui_pedidoclientebase.h:703 ui_facturaslistbase.h:431 ui_facturabase.h:711
+#: ui_pedidoclientebase.h:703 ui_facturabase.h:711 ui_facturaslistbase.h:431
 #, fuzzy
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
@@ -162,8 +162,8 @@ msgstr "Empreses disponibles:"
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
-#: ui_facturaslistbase.h:461 ui_facturaslistbase.h:466 ui_facturabase.h:648
-#: ui_facturabase.h:653
+#: ui_facturabase.h:648 ui_facturabase.h:653 ui_facturaslistbase.h:461
+#: ui_facturaslistbase.h:466
 #, fuzzy
 msgid "Borrar factura"
 msgstr "Esborra quota"
@@ -183,7 +183,7 @@ msgstr "Tractant el pressupost"
 #: ui_presupuestoslistbase.h:447 ui_albaranclientelistbase.h:524
 #: ui_pedidosclientelistbase.h:465 ui_facturaslistbase.h:519
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: listlinpresupuestoview.cpp:51
 msgid "Cantidad"
@@ -305,7 +305,7 @@ msgstr "Cal triar un compte"
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: presupuestolist.cpp:357 listlinpresupuestoview.cpp:50
+#: listlinpresupuestoview.cpp:50 presupuestolist.cpp:357
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -361,30 +361,34 @@ msgstr "El magatzem del pressupost no existeix<BR>"
 msgid "Error al editar el presupuesto"
 msgstr "Tractant el pressupost"
 
-#: genpreqtoolbutton.cpp:234 genpreqtoolbutton.cpp:360
-#: genpreqtoolbutton.cpp:489
+#: genpreqtoolbutton.cpp:235 genpreqtoolbutton.cpp:361
+#: genpreqtoolbutton.cpp:490
 #, fuzzy
 msgid "Error inesperado"
 msgstr "inserit"
 
-#: genpreqtoolbutton.cpp:624
+#: genpreqtoolbutton.cpp:625
 #, fuzzy
 msgid "Error inesperado."
 msgstr "inserit"
 
-#: genpreqtoolbutton.cpp:293
+#: genpreqtoolbutton.cpp:294
 msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
+"Existeix un albarà a aquest client amb la mateixa referència que aquesta "
+"comanda.Desitja obrir-lo per a verificar?"
 
-#: genpreqtoolbutton.cpp:165
+#: genpreqtoolbutton.cpp:166
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
+"Existeix una factura a aquest client amb la mateixa referència que aquest "
+"albarà. Desitja obrir-la per a verificar?"
 
-#: genpreqtoolbutton.cpp:422
+#: genpreqtoolbutton.cpp:423
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
@@ -395,17 +399,17 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: genpreqtoolbutton.cpp:164
+#: genpreqtoolbutton.cpp:165
 msgid "Factura existente"
-msgstr ""
+msgstr "Factura existent"
 
-#: genpreqtoolbutton.cpp:421
+#: genpreqtoolbutton.cpp:422
 msgid "Factura ya existe"
 msgstr ""
 
 #: ui_facturaslistbase.h:427
 msgid "Facturas a clientes"
-msgstr ""
+msgstr "Factures a clients"
 
 #: presupuestolist.cpp:351
 msgid "Fecha"
@@ -435,12 +439,12 @@ msgstr "&Data de l'assentament:"
 #: ui_presupuestoslistbase.h:449 ui_albaranclientelistbase.h:437
 #: ui_pedidosclientelistbase.h:378 ui_facturaslistbase.h:430
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_presupuestoslistbase.h:448 ui_albaranclientelistbase.h:436
 #: ui_pedidosclientelistbase.h:377 ui_facturaslistbase.h:429
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_albaranclientelistbase.h:490 ui_albaranclientelistbase.h:495
 #, fuzzy
@@ -515,7 +519,7 @@ msgstr "Tractant el pressupost"
 
 #: presupuestolist.cpp:362
 msgid "ID trabajador"
-msgstr ""
+msgstr "ID treballador"
 
 #: listlinpresupuestoview.cpp:46
 #, fuzzy
@@ -564,20 +568,20 @@ msgid "Impuestos"
 msgstr "Imputació"
 
 #: ui_presupuestoclientebase.h:790 ui_albaranclientebase.h:779
-#: ui_pedidoclientebase.h:705 ui_facturaslistbase.h:432 ui_facturabase.h:713
+#: ui_pedidoclientebase.h:705 ui_facturabase.h:713 ui_facturaslistbase.h:432
 #, fuzzy
 msgid "Impuestos:"
 msgstr "Imputació"
 
 #: ui_presupuestoclientebase.h:764 ui_presupuestoclientebase.h:769
 msgid "Mostrar/Ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/Ocultar capçalera"
 
 #: ui_albaranclientebase.h:753 ui_albaranclientebase.h:758
 #: ui_pedidoclientebase.h:681 ui_pedidoclientebase.h:686 ui_facturabase.h:691
 #: ui_facturabase.h:696
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar capçalera"
 
 #: ui_presupuestoslistbase.h:450 ui_albaranclientelistbase.h:435
 #: ui_pedidosclientelistbase.h:379 ui_facturaslistbase.h:428
@@ -595,7 +599,7 @@ msgstr "Nombre de quotes"
 msgid "No de linea"
 msgstr "Tipus de balanç"
 
-#: genpreqtoolbutton.cpp:617
+#: genpreqtoolbutton.cpp:618
 msgid "No hay presupuestos con la misma referencia."
 msgstr ""
 
@@ -642,7 +646,7 @@ msgstr "Tractant el pressupost"
 #: pluginpresupuesto.cpp:110 pluginpresupuesto.cpp:111
 #: ui_presupuestoclientebase.h:724
 msgid "Nuevo presupuesto a cliente"
-msgstr ""
+msgstr "Nou pressupost a client"
 
 #: ui_albaranclientebase.h:763
 #, fuzzy
@@ -699,26 +703,26 @@ msgstr "Extracte de comptes"
 msgid "Presupuesto"
 msgstr "<HR><B>Tractant el pressupost"
 
-#: presupuestolist.cpp:296 pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103
+#: pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103 presupuestolist.cpp:296
 #: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
-msgstr ""
+msgstr "Pressuposts a clients"
 
 #: presupuestolist.cpp:115
 msgid "Presupuestos no procesados"
-msgstr ""
+msgstr "Pressuposts no processats"
 
 #: presupuestolist.cpp:114
 msgid "Presupuestos procesados"
-msgstr ""
+msgstr "Pressuposts processats"
 
 #: ui_presupuestoclientebase.h:776
 msgid "Pro&cesado"
-msgstr ""
+msgstr "Pro&cessat"
 
 #: ui_facturabase.h:702
 msgid "Procesada"
-msgstr ""
+msgstr "Processada"
 
 #: presupuestoview.cpp:69 ui_albaranclientebase.h:764
 #: ui_pedidoclientebase.h:692
@@ -734,12 +738,12 @@ msgstr "C.P.:"
 
 #: presupuestoview.cpp:71 presupuestolist.cpp:353
 msgid "Referencia"
-msgstr ""
+msgstr "Referència"
 
 #: ui_presupuestoclientebase.h:761 ui_albaranclientebase.h:750
 #: ui_pedidoclientebase.h:678 ui_facturabase.h:688
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
 #: ui_facturabase.h:703
 #, fuzzy
@@ -748,7 +752,7 @@ msgstr "Origen:"
 
 #: presupuestolist.cpp:359
 msgid "Telefono"
-msgstr ""
+msgstr "Telèfon"
 
 #: ui_presupuestoclientebase.h:782 ui_albaranclientebase.h:769
 #: ui_pedidoclientebase.h:697
@@ -756,8 +760,8 @@ msgstr ""
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: genpreqtoolbutton.cpp:149 genpreqtoolbutton.cpp:277
-#: genpreqtoolbutton.cpp:406 genpreqtoolbutton.cpp:594
+#: genpreqtoolbutton.cpp:150 genpreqtoolbutton.cpp:278
+#: genpreqtoolbutton.cpp:407 genpreqtoolbutton.cpp:595
 #, fuzzy
 msgid "Tiene que seleccionar un cliente"
 msgstr "Ha de seleccionar un element"
@@ -774,8 +778,8 @@ msgstr "Totals:"
 
 #: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:792
 #: ui_albaranclientebase.h:781 ui_pedidoclientebase.h:707
-#: ui_pedidosclientelistbase.h:466 ui_facturaslistbase.h:433
-#: ui_facturabase.h:715
+#: ui_pedidosclientelistbase.h:466 ui_facturabase.h:715
+#: ui_facturaslistbase.h:433
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"
@@ -787,17 +791,17 @@ msgstr "Totals:"
 
 #: presupuestoview.cpp:73
 msgid "Trabajador"
-msgstr ""
+msgstr "Treballador"
 
 #: ui_presupuestoclientebase.h:777 ui_albaranclientebase.h:765
 #: ui_pedidoclientebase.h:693
 msgid "Trabajador:"
-msgstr ""
+msgstr "Treballador:"
 
 #: ui_facturabase.h:670 ui_facturabase.h:675
 msgid "Ver albaranes con la misma referencia"
-msgstr ""
+msgstr "Veure albarans amb la mateixa referència"
 
 #: ui_albaranclientebase.h:741 ui_albaranclientebase.h:746
 msgid "Ver pedidos con la misma referencia"
-msgstr ""
+msgstr "Veure comandes amb la mateixa referència"

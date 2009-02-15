@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,46 +16,78 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: articulolisttpv.cpp:160
+#: articulolisttpv.cpp:161
 msgid "Editar articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:161
+#: articulolisttpv.cpp:162
 msgid "Borrar articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:241
+#: articulolisttpv.cpp:242
 msgid "ID articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:242
+#: articulolisttpv.cpp:243
 msgid "Codigo completo del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:243
+#: articulolisttpv.cpp:244
 msgid "Nombre del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:244
+#: articulolisttpv.cpp:245
 msgid "Descripcion abreviada del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:245
+#: articulolisttpv.cpp:246
 msgid "Observaciones sobre el articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:246
+#: articulolisttpv.cpp:247
 msgid "Descripcion del tipo de articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:247
+#: articulolisttpv.cpp:248
 msgid "Descripcion tipo de I.V.A."
 msgstr ""
 
-#: articulolisttpv.cpp:248
+#: articulolisttpv.cpp:249
 msgid "P.V.P. articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:249
+#: articulolisttpv.cpp:250
 msgid "Disponible en stock"
+msgstr ""
+
+#: ui_articleslistbase1.h:217
+msgid "Articulos"
+msgstr ""
+
+#: ui_articleslistbase1.h:218
+msgid "Solo usados"
+msgstr ""
+
+#: ui_articleslistbase1.h:220
+msgid "S&olo presentables"
+msgstr ""
+
+#: ui_articleslistbase1.h:221
+msgid "Alt+O"
+msgstr ""
+
+#: ui_articleslistbase1.h:225 ui_articleslistbase1.h:230
+msgid "Filtrar listado"
+msgstr ""
+
+#: ui_articleslistbase1.h:236 ui_articleslistbase1.h:241
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_articleslistbase1.h:247 ui_articleslistbase1.h:252
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_articleslistbase1.h:256
+msgid "Buscar:"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,10 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: ui_adminbase.h:72
+msgid "Form"
+msgstr "Form"
+
 #: admin.cpp:17
 msgid "Realmente desea Realizar la Z?"
 msgstr "Realmente desea Realizar la Z?"
@@ -122,6 +126,18 @@ msgstr "Realmente desea Realizar la Z?"
 msgid "Realmente desea abandonar el programa?"
 msgstr "Realmente desea abandonar el programa?"
 
+#: ui_adminbase.h:75
+msgid "SALIR"
+msgstr ""
+
 #: admin.cpp:16 admin.cpp:33
 msgid "Salir"
 msgstr "Salir"
+
+#: ui_adminbase.h:73
+msgid "X"
+msgstr ""
+
+#: ui_adminbase.h:74
+msgid "Z"
+msgstr ""

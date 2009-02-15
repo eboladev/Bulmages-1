@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,6 +113,14 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: ui_datosbase.h:141
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_datosbase.h:142
+msgid "&Cancelar"
+msgstr "&Cancelar"
 
 #: plugincanualesods.cpp:414
 msgid "&Cuentas Anuales"
@@ -499,7 +507,7 @@ msgstr "A.5) RESULTADO DEL EJERCICIO (A.4+18)"
 msgid "ABRIL"
 msgstr "ABRIL"
 
-#: pcapymes08.cpp:69 pcapgc08.cpp:43 pcapgc08.cpp:49
+#: pcapgc08.cpp:43 pcapgc08.cpp:49 pcapymes08.cpp:69
 msgid "ACTIVO"
 msgstr "ACTIVO"
 
@@ -625,6 +633,10 @@ msgstr "Cuentas Anuales para PYMES 2008. "
 msgid "DICIEMBRE"
 msgstr "DICIEMBRE"
 
+#: ui_datosbase.h:136
+msgid "Datos para generar el balance"
+msgstr ""
+
 #: pcapgc07.cpp:42
 msgid "Diciembre"
 msgstr "Diciembre"
@@ -665,6 +677,14 @@ msgstr "Ejercicio N"
 msgid "Ejercicio N-1"
 msgstr "Ejercicio N-1"
 
+#: ui_datosbase.h:137
+msgid "Ejercicio actual:"
+msgstr ""
+
+#: ui_datosbase.h:139
+msgid "Ejercicio anterior:"
+msgstr ""
+
 #: plugincanualesods.cpp:600
 msgid ""
 "El resultado solo sera correcto si coincide con el plan contable de su "
@@ -690,6 +710,10 @@ msgstr "FEBRERO"
 msgid "Febrero"
 msgstr "Febrero"
 
+#: ui_datosbase.h:138 ui_datosbase.h:140
+msgid "Fecha balance:"
+msgstr ""
+
 #: pcapgc08.cpp:456
 msgid "I. Activos financieros disponibles para la venta."
 msgstr "I. Activos financieros disponibles para la venta."
@@ -712,7 +736,7 @@ msgid ""
 msgstr ""
 "I. Pasivos vinculados con activos no corrientes mantenidos para la venta."
 
-#: pcaapgc08.cpp:581 pcapgc08.cpp:979
+#: pcapgc08.cpp:979 pcaapgc08.cpp:581
 msgid "I. Por valoracion de instrumentos financieros."
 msgstr "I. Por valoracion de instrumentos financieros."
 
@@ -872,7 +896,7 @@ msgstr "Octubre"
 msgid "PATRIMONIO NETO Y PASIVO"
 msgstr "PATRIMONIO NETO Y PASIVO"
 
-#: pcaapgc08.cpp:571 pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970
+#: pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970 pcaapgc08.cpp:571
 msgid "PERDIDAS_Y_GANANCIAS"
 msgstr "PERDIDAS_Y_GANANCIAS"
 

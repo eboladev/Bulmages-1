@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plugincatalogo_ca_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: 2009-02-11 11:38+0100\n"
 "Last-Translator: Leopold Palomo Avellaneda <leo@alaxarxa.net>\n"
 "Language-Team: Catalan <ca@dodds.net >\n"
@@ -15,6 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: catalogoqtoolbutton.cpp:151
+#: catalogoqtoolbutton.cpp:146
 msgid "Generando catalogo"
 msgstr "Generant catàleg"

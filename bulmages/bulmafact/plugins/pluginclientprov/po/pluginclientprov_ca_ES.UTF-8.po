@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr "NIF del proveïdor"
 
 #: pluginclientprov.cpp:79
 msgid "IRPF"
-msgstr ""
+msgstr "IRPF"
 
 #: pluginclientprov.cpp:77
 #, fuzzy
@@ -101,7 +101,7 @@ msgstr "Paginació"
 
 #: pluginclientprov.cpp:68
 msgid "Provincia"
-msgstr ""
+msgstr "Provincia"
 
 #: pluginclientprov.cpp:78
 msgid "Recargo de equivalencia"
@@ -109,8 +109,8 @@ msgstr ""
 
 #: pluginclientprov.cpp:76
 msgid "Regimen fiscal"
-msgstr ""
+msgstr "Règim fiscal"
 
 #: pluginclientprov.cpp:73
 msgid "URL"
-msgstr ""
+msgstr "URL"

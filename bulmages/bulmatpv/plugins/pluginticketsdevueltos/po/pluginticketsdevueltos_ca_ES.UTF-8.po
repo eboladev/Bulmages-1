@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,18 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginticketsdevueltos.cpp:77
+#: ui_ticketsdevueltosbase.h:107
+msgid "CERRAR"
+msgstr ""
+
+#: ui_ticketsdevueltosbase.h:105
+msgid "Dialog"
+msgstr ""
+
+#: ui_ticketsdevueltosbase.h:106
+msgid "Referencia Ticket"
+msgstr ""
+
+#: pluginticketsdevueltos.cpp:75
 msgid "Tickets olvidados"
 msgstr ""

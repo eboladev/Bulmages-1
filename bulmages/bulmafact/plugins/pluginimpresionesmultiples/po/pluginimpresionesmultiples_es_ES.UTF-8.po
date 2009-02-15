@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,31 +114,31 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: impmultqtoolbutton.cpp:596 impmultqtoolbutton.cpp:597
+#: impmultqtoolbutton.cpp:595 impmultqtoolbutton.cpp:596
 msgid "Enviar elementos seleccionados por e-mail"
 msgstr "Enviar elementos seleccionados por e-mail"
 
-#: impmultqtoolbutton.cpp:90 impmultqtoolbutton.cpp:91
+#: impmultqtoolbutton.cpp:89 impmultqtoolbutton.cpp:90
 msgid "Imprimir elementos seleccionados"
 msgstr "Imprimir elementos seleccionados"
 
-#: impmultqtoolbutton.cpp:448 impmultqtoolbutton.cpp:449
+#: impmultqtoolbutton.cpp:447 impmultqtoolbutton.cpp:448
 msgid "Invertir seleccion de elementos"
 msgstr "Invertir seleccion de elementos"
 
-#: impmultqtoolbutton.cpp:237
+#: impmultqtoolbutton.cpp:236
 msgid "no se pudo crear instancia de albaran"
 msgstr "no se pudo crear instancia de albaran"
 
-#: impmultqtoolbutton.cpp:165 impmultqtoolbutton.cpp:776
+#: impmultqtoolbutton.cpp:164 impmultqtoolbutton.cpp:775
 msgid "no se pudo crear instancia de factura"
 msgstr "no se pudo crear instancia de factura"
 
-#: impmultqtoolbutton.cpp:201 impmultqtoolbutton.cpp:682
-#: impmultqtoolbutton.cpp:727
+#: impmultqtoolbutton.cpp:200 impmultqtoolbutton.cpp:681
+#: impmultqtoolbutton.cpp:726
 msgid "no se pudo crear instancia de pedido cliente"
 msgstr "no se pudo crear instancia de pedido cliente"
 
-#: impmultqtoolbutton.cpp:638
+#: impmultqtoolbutton.cpp:637
 msgid "no se pudo crear instancia de presupuesto"
 msgstr "no se pudo crear instancia de presupuesto"

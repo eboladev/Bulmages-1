@@ -8,143 +8,321 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cxx:103
+#: main.cxx:70
 msgid "Iniciando clases"
 msgstr ""
 
-#: main.cxx:142
+#: main.cxx:109
 msgid "Leyendo configuracion"
 msgstr ""
 
-#: main.cxx:165
-msgid "Cargando traducciones"
-msgstr ""
-
-#: main.cxx:196
+#: main.cxx:140
 msgid "Cargando plugins"
 msgstr ""
 
-#: main.cxx:202
+#: main.cxx:146
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:208
+#: main.cxx:152
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:214
+#: main.cxx:158
 msgid "Terminado"
 msgstr ""
 
-#: main.cxx:229
+#: main.cxx:173
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr ""
 
-#: aboutview.cpp:41
+#: ui_tpvdlg.h:355 ui_bulmatpvbase.h:87
+msgid "BulmaTPV"
+msgstr ""
+
+#: ui_tpvdlg.h:356
+msgid "1"
+msgstr ""
+
+#: ui_tpvdlg.h:357
+msgid "6"
+msgstr ""
+
+#: ui_tpvdlg.h:358
+msgid "7"
+msgstr ""
+
+#: ui_tpvdlg.h:359
+msgid "3"
+msgstr ""
+
+#: ui_tpvdlg.h:360
+msgid "4"
+msgstr ""
+
+#: ui_tpvdlg.h:361
+msgid "BORRAR"
+msgstr ""
+
+#: ui_tpvdlg.h:362
+msgid "5"
+msgstr ""
+
+#: ui_tpvdlg.h:363
+msgid "NO"
+msgstr ""
+
+#: ui_tpvdlg.h:364
+msgid "ATRÁS"
+msgstr ""
+
+#: ui_tpvdlg.h:365
+msgid "9"
+msgstr ""
+
+#: ui_tpvdlg.h:366
+msgid "."
+msgstr ""
+
+#: ui_tpvdlg.h:367
+msgid "0"
+msgstr ""
+
+#: ui_tpvdlg.h:368
+msgid "2"
+msgstr ""
+
+#: ui_tpvdlg.h:369
+msgid "SI"
+msgstr ""
+
+#: ui_tpvdlg.h:370
+msgid "8"
+msgstr ""
+
+#: ui_tpvdlg.h:371
+msgid "00"
+msgstr ""
+
+#: ui_tpvdlg.h:372
+msgid "Cambio Operador"
+msgstr ""
+
+#: ui_tpvdlg.h:373
+msgid "Seleccion Cliente"
+msgstr ""
+
+#: ui_tpvdlg.h:374 ui_tpvdlg.h:375
+msgid "pushButton18"
+msgstr ""
+
+#: ui_tpvdlg.h:376
+msgid "<p align=\"right\">Codigo</p>"
+msgstr ""
+
+#: ui_tpvdlg.h:377
+msgid "<p align=\"right\">Total:</p>"
+msgstr ""
+
+#: ui_tpvdlg.h:378
+msgid "Codigo"
+msgstr ""
+
+#: ui_tpvdlg.h:379 ticket.cpp:42
+msgid "Descripcion"
+msgstr ""
+
+#: ui_tpvdlg.h:380 ticket.cpp:86
+msgid "Cantidad"
+msgstr ""
+
+#: ui_tpvdlg.h:381 ticket.cpp:89
+msgid "Descuento"
+msgstr ""
+
+#: ui_aboutbase.h:275
+msgid "Acerca de BulmaFact"
+msgstr ""
+
+#: ui_aboutbase.h:277
+msgid "Facturacion GPL - Version 0.10.1 -"
+msgstr ""
+
+#: ui_aboutbase.h:278
+msgid "&Acerca de"
+msgstr ""
+
+#: ui_aboutbase.h:279
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: ui_aboutbase.h:284
+msgid "A&utores"
+msgstr ""
+
+#: ui_aboutbase.h:285
+msgid "Sopor&te"
+msgstr ""
+
+#: ui_aboutbase.h:286
+msgid "Acuerdo de &licencia"
+msgstr ""
+
+#: ui_aboutbase.h:287
+msgid "&Cerrar"
+msgstr ""
+
+#: ui_bulmatpvbase.h:88
+msgid "Sobre BulmaTPV"
+msgstr ""
+
+#: ui_bulmatpvbase.h:89
+msgid "Sobre Bulmages"
+msgstr ""
+
+#: ui_bulmatpvbase.h:90
+msgid "Sobre Qt"
+msgstr ""
+
+#: ui_bulmatpvbase.h:91
+msgid "Cerrar"
+msgstr ""
+
+#: ui_bulmatpvbase.h:92
+msgid "Preferencias"
+msgstr ""
+
+#: ui_bulmatpvbase.h:93
+msgid "Anyadir"
+msgstr ""
+
+#: ui_bulmatpvbase.h:94
+msgid "Modificar"
+msgstr ""
+
+#: ui_bulmatpvbase.h:95
+msgid "Borrar"
+msgstr ""
+
+#: ui_bulmatpvbase.h:96
+msgid "Identificacion"
+msgstr ""
+
+#: ui_bulmatpvbase.h:97
+msgid "Estadisticas"
+msgstr ""
+
+#: ui_bulmatpvbase.h:98
+msgid "Pendiente"
+msgstr ""
+
+#: ui_bulmatpvbase.h:99
+msgid "Administrador"
+msgstr ""
+
+#: aboutview.cpp:38
 msgid "Compilado usando la version de QT:"
 msgstr ""
 
 #: ticket.cpp:43
-msgid "Descripcion"
-msgstr ""
-
-#: ticket.cpp:44
 msgid "Nombre"
 msgstr ""
 
-#: ticket.cpp:45
+#: ticket.cpp:44
 msgid "Id albaran"
 msgstr ""
 
-#: ticket.cpp:46
+#: ticket.cpp:45
 msgid "Id fechaalbaran"
 msgstr ""
 
-#: ticket.cpp:47
+#: ticket.cpp:46
 msgid "Hora"
 msgstr ""
 
-#: ticket.cpp:48
+#: ticket.cpp:47
 msgid "Trabajador"
 msgstr ""
 
-#: ticket.cpp:49
+#: ticket.cpp:48
 msgid "Cliente"
 msgstr ""
 
-#: ticket.cpp:50
+#: ticket.cpp:49
 msgid "Almacen"
 msgstr ""
 
-#: ticket.cpp:51
+#: ticket.cpp:50
 msgid "Num"
 msgstr ""
 
-#: ticket.cpp:52
+#: ticket.cpp:51
 msgid "Referencia"
 msgstr ""
 
-#: ticket.cpp:53
+#: ticket.cpp:52
 msgid "Ticket"
 msgstr ""
 
-#: ticket.cpp:54
+#: ticket.cpp:53
 msgid "Id forma de pago"
 msgstr ""
 
-#: ticket.cpp:85
+#: ticket.cpp:84
 msgid "Id Albaran"
 msgstr ""
 
-#: ticket.cpp:86
+#: ticket.cpp:85
 msgid "Id lalbaran"
 msgstr ""
 
 #: ticket.cpp:87
-msgid "Cantidad"
-msgstr ""
-
-#: ticket.cpp:88
 msgid "Precio"
 msgstr ""
 
-#: ticket.cpp:89
+#: ticket.cpp:88
 msgid "IVA"
 msgstr ""
 
 #: ticket.cpp:90
-msgid "Descuento"
-msgstr ""
-
-#: ticket.cpp:91
 msgid "Orden"
 msgstr ""
 
-#: ticket.cpp:92
+#: ticket.cpp:91
 msgid "Req. eq."
 msgstr ""
 
-#: ticket.cpp:94
+#: ticket.cpp:93
 msgid "Id articulo"
 msgstr ""
 
-#: ticket.cpp:95
+#: ticket.cpp:94
 msgid "Codigo articulo"
 msgstr ""
 
-#: ticket.cpp:96 ticket.cpp:97
+#: ticket.cpp:95 ticket.cpp:96
 msgid "Nombre articulo"
 msgstr ""
 
-#: ticket.cpp:942
+#: ticket.cpp:941
 msgid "El ticket esta vacio."
 msgstr ""
 

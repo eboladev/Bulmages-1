@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,4 +123,66 @@ msgstr ""
 
 #: pluginproyectos.cpp:116
 msgid "Proyectos asociados"
+msgstr ""
+
+#: ui_listproyectosbase.h:135
+msgid "Listado de Proyectos"
+msgstr ""
+
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:143
+msgid "Nueva amortizacion"
+msgstr ""
+
+#: ui_listproyectosbase.h:147
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_listproyectosbase.h:150 ui_listproyectosbase.h:155
+#: ui_listproyectosbase.h:162 ui_listproyectosbase.h:167
+msgid "Borrar amortizacion"
+msgstr ""
+
+#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_listproyectosbase.h:171
+msgid "F5"
+msgstr ""
+
+#: ui_proyectobase.h:240
+msgid "Nuevo proyecto"
+msgstr ""
+
+#: ui_proyectobase.h:244 ui_proyectobase.h:249
+msgid "Guardar Proyecto"
+msgstr ""
+
+#: ui_proyectobase.h:253
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_proyectobase.h:256 ui_proyectobase.h:261 ui_proyectobase.h:268
+#: ui_proyectobase.h:273
+msgid "Borrar proyecto"
+msgstr ""
+
+#: ui_proyectobase.h:278
+msgid "General"
+msgstr ""
+
+#: ui_proyectobase.h:279
+msgid "Gastos"
+msgstr ""
+
+#: ui_proyectobase.h:280
+msgid "Ingresos"
+msgstr ""
+
+#: ui_proyectobase.h:281
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_proyectobase.h:282
+msgid "&Cancelar"
 msgstr ""

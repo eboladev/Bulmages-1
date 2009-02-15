@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Borrador"
 msgstr ""
 
-#: registroiva.cpp:52
+#: registroiva.cpp:52 ui_registroivabase.h:618
 msgid "Orden"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Fecha emision"
 msgstr ""
 
-#: registroiva.cpp:62
+#: registroiva.cpp:62 ui_registroivabase.h:617
 msgid "Serie"
 msgstr ""
 
@@ -179,7 +179,7 @@ msgid "&Registro de IVA"
 msgstr ""
 
 #: pluginregistroiva.cpp:100 pluginregistroiva.cpp:101
-#: regivaqtoolbutton.cpp:78 regivaqtoolbutton.cpp:79
+#: regivaqtoolbutton.cpp:74 regivaqtoolbutton.cpp:75
 msgid "Registro de IVA"
 msgstr ""
 
@@ -331,4 +331,206 @@ msgstr ""
 
 #: listlinprevcobroview.cpp:273
 msgid "Ver factura"
+msgstr ""
+
+#: ui_cobropagobase.h:358
+msgid "Gestion de Cobros y Pagos"
+msgstr ""
+
+#: ui_cobropagobase.h:362 ui_cobropagobase.h:367
+msgid "Generar Asiento"
+msgstr ""
+
+#: ui_cobropagobase.h:373 ui_cobropagobase.h:379 ui_cobropagobase.h:385
+#: ui_cobropagobase.h:391
+msgid "Actualizar"
+msgstr ""
+
+#: ui_cobropagobase.h:395
+msgid "Cuenta"
+msgstr ""
+
+#: ui_cobropagobase.h:396
+msgid "Procesado"
+msgstr ""
+
+#: ui_cobropagobase.h:399 ui_cobropagobase.h:406
+msgid "TODO"
+msgstr ""
+
+#: ui_cobropagobase.h:400
+msgid "PROCESADO"
+msgstr ""
+
+#: ui_cobropagobase.h:401
+msgid "NO PROCESADO"
+msgstr ""
+
+#: ui_cobropagobase.h:403
+msgid "Tipo (Cobro / Pago)"
+msgstr ""
+
+#: ui_cobropagobase.h:407
+msgid "COBROS"
+msgstr ""
+
+#: ui_cobropagobase.h:408
+msgid "PAGOS"
+msgstr ""
+
+#: ui_cobropagobase.h:410
+msgid "Fecha Inicial"
+msgstr ""
+
+#: ui_cobropagobase.h:411
+msgid "Fecha Final"
+msgstr ""
+
+#: ui_cobropagobase.h:412
+msgid "Total Cobros"
+msgstr ""
+
+#: ui_cobropagobase.h:413
+msgid "Total Pagos"
+msgstr ""
+
+#: ui_listregistroivabase.h:346
+msgid "Listados de IVA"
+msgstr ""
+
+#: ui_listregistroivabase.h:351
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_listregistroivabase.h:352
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_listregistroivabase.h:353
+msgid "&Sopotado"
+msgstr ""
+
+#: ui_listregistroivabase.h:354
+msgid "&Repercutido"
+msgstr ""
+
+#: ui_listregistroivabase.h:355
+msgid "IVA soportado:"
+msgstr ""
+
+#: ui_listregistroivabase.h:356 ui_listregistroivabase.h:359
+#: ui_registroivabase.h:625
+msgid "IVA:"
+msgstr ""
+
+#: ui_listregistroivabase.h:357 ui_listregistroivabase.h:360
+msgid "Total:"
+msgstr ""
+
+#: ui_listregistroivabase.h:358
+msgid "IVA repercutido:"
+msgstr ""
+
+#: ui_listregistroivabase.h:361
+msgid "Res&umen"
+msgstr ""
+
+#: ui_registroivabase.h:602
+msgid "Registro de Facturas"
+msgstr ""
+
+#: ui_registroivabase.h:606
+msgid "Datos de la empresa:"
+msgstr ""
+
+#: ui_registroivabase.h:607
+msgid "Cuenta cliente / Proveedor:"
+msgstr ""
+
+#: ui_registroivabase.h:608
+msgid "CIF / NIF:"
+msgstr ""
+
+#: ui_registroivabase.h:609
+msgid "Datos de la factura:"
+msgstr ""
+
+#: ui_registroivabase.h:610
+msgid "&Tener en cuenta para el registro de IVA"
+msgstr ""
+
+#: ui_registroivabase.h:611
+msgid "Alt+T"
+msgstr ""
+
+#: ui_registroivabase.h:612
+msgid "Asiento:"
+msgstr ""
+
+#: ui_registroivabase.h:614
+msgid "Num. Factura"
+msgstr ""
+
+#: ui_registroivabase.h:615
+msgid "Fecha Factura"
+msgstr ""
+
+#: ui_registroivabase.h:616
+msgid "Fecha recepcion:"
+msgstr ""
+
+#: ui_registroivabase.h:619
+msgid "Tipo de factura:"
+msgstr ""
+
+#: ui_registroivabase.h:620
+msgid "Em&itida"
+msgstr ""
+
+#: ui_registroivabase.h:621
+msgid "Alt+I"
+msgstr ""
+
+#: ui_registroivabase.h:622
+msgid "Reci&bida"
+msgstr ""
+
+#: ui_registroivabase.h:623
+msgid "Alt+B"
+msgstr ""
+
+#: ui_registroivabase.h:624
+msgid "&Datos Factura"
+msgstr ""
+
+#: ui_registroivabase.h:626
+msgid "Total Base Imponible:"
+msgstr ""
+
+#: ui_registroivabase.h:627
+msgid "Total IVA:"
+msgstr ""
+
+#: ui_registroivabase.h:628
+msgid "DesgloseIVA"
+msgstr ""
+
+#: ui_registroivabase.h:630
+msgid "&Cobros / Pagos"
+msgstr ""
+
+#: ui_registroivabase.h:631
+msgid "Total factura:"
+msgstr ""
+
+#: ui_registroivabase.h:632
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_registroivabase.h:634
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_registroivabase.h:635
+msgid "Alt+N"
 msgstr ""

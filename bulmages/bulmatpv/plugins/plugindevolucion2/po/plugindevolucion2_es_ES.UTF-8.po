@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,10 +114,94 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: ui_devolucion.h:381 ui_devolucion.h:383 ui_untitled.h:294 ui_untitled.h:296
+msgid "-"
+msgstr ""
+
+#: ui_devolucion.h:385 ui_untitled.h:301
+msgid "->"
+msgstr ""
+
+#: ui_devolucion.h:386 ui_untitled.h:302
+msgid "<-"
+msgstr ""
+
+#: ui_devolucion.h:389
+msgid "A DEVOLVER"
+msgstr ""
+
 #: plugindevolucion2.cpp:83
 msgid "Articulo"
 msgstr "Articulo"
 
-#: devolucion2.cpp:438
+#: ui_devolucion.h:393 ui_untitled.h:310
+msgid "CANCELAR"
+msgstr ""
+
+#: ui_devolucion.h:380 ui_untitled.h:293
+msgid "Cliente:"
+msgstr "Cliente:"
+
+#: ui_devolucion.h:378
+msgid "Devoluciones"
+msgstr ""
+
+#: ui_untitled.h:291
+msgid "Dialog"
+msgstr ""
+
+#: ui_devolucion.h:391 ui_untitled.h:308
+msgid "EFECTIVO"
+msgstr ""
+
+#: ui_devolucion.h:382 ui_untitled.h:295
+msgid "Fecha: del ticket"
+msgstr ""
+
+#: devolucion2.cpp:232 devolucion2.cpp:247
+msgid "Linea"
+msgstr "Linea"
+
+#: ui_devolucion.h:384 ui_untitled.h:297
+msgid "Lineas Ticket"
+msgstr ""
+
+#: ui_devolucion.h:388 ui_untitled.h:304
+msgid "Lineas a devolver"
+msgstr ""
+
+#: devolucion2.cpp:441
 msgid "NO IMPLEMENTADO"
 msgstr "NO IMPLEMENTADO"
+
+#: devolucion2.cpp:230 devolucion2.cpp:245
+msgid "P.U."
+msgstr ""
+
+#: ui_untitled.h:300 ui_untitled.h:307
+msgid "Precio"
+msgstr "Precio"
+
+#: devolucion2.cpp:229 devolucion2.cpp:244 ui_untitled.h:299 ui_untitled.h:306
+msgid "Producto"
+msgstr ""
+
+#: ui_devolucion.h:387 ui_untitled.h:303
+msgid "Todo"
+msgstr ""
+
+#: devolucion2.cpp:231 devolucion2.cpp:246
+msgid "Total"
+msgstr "Total"
+
+#: ui_untitled.h:298 ui_untitled.h:305
+msgid "Und."
+msgstr ""
+
+#: devolucion2.cpp:228 devolucion2.cpp:243
+msgid "Unds."
+msgstr ""
+
+#: ui_devolucion.h:392 ui_untitled.h:309
+msgid "VALE"
+msgstr ""

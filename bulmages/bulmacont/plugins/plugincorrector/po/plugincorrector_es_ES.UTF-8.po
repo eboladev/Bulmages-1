@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:29+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,35 @@ msgstr ""
 msgid "&Corrector"
 msgstr "&Corrector"
 
-#: plugincorrector.cpp:55
+#: ui_confreglasbase.h:283
+msgid "Apunte con Cuenta"
+msgstr "Apunte con Cuenta"
+
+#: ui_confreglasbase.h:291
+msgid "Apunte con Descripcion"
+msgstr "Apunte con Descripcion"
+
+#: ui_confreglasbase.h:284
+msgid "Apunte con Saldo"
+msgstr "Apunte con Saldo"
+
+#: ui_confreglasbase.h:294
+msgid "Cerrar"
+msgstr "Cerrar"
+
+#: ui_confreglasbase.h:280
+msgid "Comprobacion por asientos"
+msgstr "Comprobacion por asientos"
+
+#: ui_confreglasbase.h:281
+msgid "Condicion:"
+msgstr "Condicion:"
+
+#: ui_correctorbase.h:106 ui_correctorbase.h:111
+msgid "Configurar"
+msgstr "Configurar"
+
+#: plugincorrector.cpp:55 ui_correctorbase.h:92
 msgid "Corrector"
 msgstr "Corrector"
 
@@ -132,6 +160,14 @@ msgstr ""
 "\n"
 "Muestra/oculta el corrector"
 
+#: ui_correctorbase.h:95 ui_correctorbase.h:100
+msgid "Corregir"
+msgstr "Corregir"
+
+#: ui_confreglasbase.h:282
+msgid "Deben existir registros que cumplan esta condicion en el periodo"
+msgstr "Deben existir registros que cumplan esta condicion en el periodo"
+
 #: plugincorrector.cpp:74
 msgid "Muestra/oculta el corrector"
 msgstr "Muestra/oculta el corrector"
@@ -143,3 +179,31 @@ msgstr "No se puede acceder al error"
 #: correctorwidget.cpp:210
 msgid "Opcion no implementada"
 msgstr "Opcion no implementada"
+
+#: ui_confreglasbase.h:293
+msgid "Periodicidad"
+msgstr "Periodicidad"
+
+#: ui_confreglasbase.h:279
+msgid "Regla:"
+msgstr "Regla:"
+
+#: ui_confreglasbase.h:275
+msgid "Reglas de Corrector"
+msgstr "Reglas de Corrector"
+
+#: ui_confreglasbase.h:292
+msgid "Reglas sobre Apuntes"
+msgstr "Reglas sobre Apuntes"
+
+#: ui_confreglasbase.h:287
+msgid "igual"
+msgstr "igual"
+
+#: ui_confreglasbase.h:289
+msgid "mayor"
+msgstr "mayor"
+
+#: ui_confreglasbase.h:288
+msgid "menor"
+msgstr "menor"

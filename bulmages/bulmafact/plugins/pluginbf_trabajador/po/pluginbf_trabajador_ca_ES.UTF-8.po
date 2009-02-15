@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 00:42+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,20 +28,20 @@ msgstr "&Sí"
 msgid "&Trabajadores"
 msgstr "&Treballadors"
 
-#: ui_trabajadorbase.h:340
+#: ui_trabajadorbase.h:341
 msgid "Activo"
 msgstr "Actiu"
 
-#: ui_trabajadorbase.h:344
+#: ui_trabajadorbase.h:345
 msgid "Apellidos:"
 msgstr "Cognoms:"
 
-#: ui_trabajadorbase.h:352 ui_trabajadorbase.h:357
+#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:358
 #, fuzzy
 msgid "Borrar trabajador"
 msgstr "Esborra albarà"
 
-#: ui_trabajadorbase.h:345
+#: ui_trabajadorbase.h:346
 #, fuzzy
 msgid "Cambiar imagen"
 msgstr "Canviar compte"
@@ -50,11 +50,11 @@ msgstr "Canviar compte"
 msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
-#: ui_trabajadorbase.h:342
+#: ui_trabajadorbase.h:343
 msgid "Direccion:"
 msgstr "Adreça:"
 
-#: ui_trabajadorbase.h:347
+#: ui_trabajadorbase.h:348
 msgid "E-mail:"
 msgstr "E-mail:"
 
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Error al guardar el trabajador"
 msgstr ""
 
-#: ui_trabajadorbase.h:348
+#: ui_trabajadorbase.h:349
 msgid "General"
 msgstr "General"
 
@@ -79,7 +79,7 @@ msgstr "General"
 msgid "Guardar datos del trabajador"
 msgstr "Desa forma de pagament"
 
-#: ui_trabajadorbase.h:363 ui_trabajadorbase.h:368
+#: ui_trabajadorbase.h:364 ui_trabajadorbase.h:369
 #, fuzzy
 msgid "Guardar trabajador"
 msgstr "Desa balanç"
@@ -88,20 +88,20 @@ msgstr "Desa balanç"
 msgid "Imagenes (*.jpg)"
 msgstr "Imatges (*.jpg)"
 
-#: ui_trabajadorbase.h:349
+#: ui_trabajadorbase.h:350
 #, fuzzy
 msgid "Lista de trabajadores:"
 msgstr "Llista d'empreses:"
 
-#: ui_trabajadorbase.h:341
+#: ui_trabajadorbase.h:342
 msgid "Nombre:"
 msgstr "Nom:"
 
-#: ui_trabajadorbase.h:374 ui_trabajadorbase.h:379
+#: ui_trabajadorbase.h:375 ui_trabajadorbase.h:380
 msgid "Nuevo trabajador"
 msgstr "Nou treballador"
 
-#: ui_trabajadorbase.h:343
+#: ui_trabajadorbase.h:344
 #, fuzzy
 msgid "Numero de la Seguridad Social:"
 msgstr "Nom de l'entitat:"
@@ -111,11 +111,11 @@ msgstr "Nom de l'entitat:"
 msgid "Seleccione archivo"
 msgstr "Seleccioni una empresa"
 
-#: ui_trabajadorbase.h:346
+#: ui_trabajadorbase.h:347
 msgid "Telefono movil:"
 msgstr "Telèfon mòbil:"
 
-#: ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:340
 msgid "Telefono:"
 msgstr "Telèfon:"
 
@@ -124,6 +124,6 @@ msgid "Trabajador"
 msgstr "Treballador"
 
 #: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
-#: ui_trabajadorbase.h:338
+#: ui_trabajadorbase.h:339
 msgid "Trabajadores"
 msgstr "Treballadors"

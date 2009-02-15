@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,8 +77,8 @@ msgstr "Actual·litza llistat"
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: inventarioview.cpp:105 ui_inventariosbase.h:187 ui_inventariosbase.h:192
-#: ui_inventariobase.h:308 ui_inventariobase.h:313
+#: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
+#: ui_inventariosbase.h:187 ui_inventariosbase.h:192
 #, fuzzy
 msgid "Borrar inventario"
 msgstr "Esborra assentament"
@@ -90,7 +90,7 @@ msgstr "Codi compte"
 
 #: listcontrolstockview.cpp:37
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Codi complet article"
 
 #: ui_inventariobase.h:361
 #, fuzzy

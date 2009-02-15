@@ -115,6 +115,7 @@ ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
 add_custom_target( translations )
+add_custom_target(update_lang_po)
 
 #To acomplish the messages extract it's needed some macros
 
@@ -224,7 +225,7 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
    foreach(_lang ${ARGN})
 
       # Copy _lang.po file to binary directory
-      CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
+      #CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.po COPYONLY)
 
       set(_absPoFile ${CMAKE_CURRENT_SOURCE_DIR}/po/${_potBasename}_${_lang}.po)
       set(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_potBasename}_${_lang}.gmo)
@@ -235,9 +236,9 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
 
       add_custom_command( 
          OUTPUT  "${_gmoFile}"
-         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_tmpPoFile} ${_absPotFile}
-         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absPoFile}
-         DEPENDS ${_absPotFile} ${_absPoFile}
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --no-fuzzy-matching -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_absPoFile} ${_absPotFile} -o ${_tmpPoFile}
+         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_tmpPoFile}
+         DEPENDS ${potFile} ${_tmpPoFile}
       )
       if(INSTALLDIR)
          install (FILES ${_gmoFile} DESTINATION ${INSTALLDIR}/${_lang}/ RENAME ${_potBasename}.mo) 
@@ -248,28 +249,42 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
       list (APPEND _gmoFiles ${_gmoFile})
       list (APPEND _poFiles ${_tmpPoFile})
       
-      # preparing the macro in case we want to update the translations
-      #GETTEXT_UPDATE_LANG_PO(${_tmpPoFile} ${CMAKE_CURRENT_SOURCE_DIR}/po/)
-
    endforeach (_lang ${${langs}})
 
-   GETTEXT_UPDATE_LANG_PO(${_poFiles} ${CMAKE_CURRENT_SOURCE_DIR}/po/)
+   GETTEXT_UPDATE_LANG_PO(${CMAKE_CURRENT_SOURCE_DIR}/po _poFiles)
 
-   add_custom_target( ${_potBasename}_pos DEPENDS ${_absPotFile} ${_gmoFiles} )
+   add_custom_target( ${_potBasename}_pos DEPENDS ${_absPotFile} ${_gmoFiles} ${_poFiles} )
    add_dependencies(translations ${_potBasename}_pos ${_absPotFile})
    add_dependencies(update_lang_po ${_potBasename}_pos)
 
 endmacro(GETTEXT_CREATE_TRANSLATIONS )
 
 
-macro (GETTEXT_UPDATE_LANG_PO inputPo dirOUTpo)
 
-   get_filename_component(_PoFile ${inputPo} NAME)
-   
-   add_custom_target(update_lang_po 
-   ${CMAKE_COMMAND} -E copy 
-   ${inputPo} ${dirOUTpo}/)
+macro (GETTEXT_UPDATE_LANG_PO dirOUTpo inputPo)
 
-   #add_dependencies(update_lang_po ${_PotFileName}_pot)
+   #message (STATUS "Calling the macro to copy files to ${dirOUTpo}\n")
+   foreach ( _file ${${inputPo}} )
+    get_filename_component(_fdest ${_file} NAME)
+    get_filename_component(target ${_file} NAME_WE)
+    set(dest ${dirOUTpo}/${_fdest})
+    #message (STATUS "Copying ${_file} to ${dest} \n")
 
-endmacro (GETTEXT_UPDATE_LANG_PO inputPo dirOUTpo)
+    add_custom_target(${target}
+      ${CMAKE_COMMAND} -E copy_if_different
+      ${_file} ${dest})
+      
+      add_dependencies(update_lang_po ${target})
+     endforeach(_file ${${inputPo}}) 
+
+
+#     add_custom_command (
+#       TARGET     ${target}_upos
+#       POST_BUILD
+#       COMMAND    ${CMAKE_COMMAND}
+#       ARGS       -E copy_if_different
+#       ${_file} ${dest})
+#       #copy_if_different
+#    endforeach(_file ${${inputPo}}) 
+
+endmacro (GETTEXT_UPDATE_LANG_PO dirOUTpo inputPo)

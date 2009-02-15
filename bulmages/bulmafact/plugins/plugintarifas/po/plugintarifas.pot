@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,13 @@ msgstr ""
 msgid "Nombre de la tarifa"
 msgstr ""
 
-#: tarifalistsubform.cpp:37 tarifaview.cpp:50 plugintarifas.cpp:179
+#: tarifalistsubform.cpp:37 tarifaview.cpp:50 plugintarifas.cpp:184
 #: listltarifaview.cpp:39 listltarifaview.cpp:63
 msgid "ID tarifa"
 msgstr ""
 
 #: tarifaview.cpp:47 tarifaview.cpp:100 tarifaview.cpp:159
-#: plugintarifas.cpp:180 ui_tarifabase.h:233
+#: plugintarifas.cpp:185 ui_tarifabase.h:233
 msgid "Tarifa"
 msgstr ""
 
@@ -50,40 +50,40 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: plugintarifas.cpp:76
+#: plugintarifas.cpp:81
 msgid "&Tarifas"
 msgstr ""
 
-#: plugintarifas.cpp:77 plugintarifas.cpp:78 plugintarifas.cpp:161
+#: plugintarifas.cpp:82 plugintarifas.cpp:83 plugintarifas.cpp:166
 #: tarifalistview.cpp:43 ui_tarifalistbase.h:146
 msgid "Tarifas"
 msgstr ""
 
-#: plugintarifas.cpp:114
+#: plugintarifas.cpp:119
 msgid "plugintarifas"
 msgstr ""
 
-#: plugintarifas.cpp:177
+#: plugintarifas.cpp:182
 msgid "ID variacion tarifa"
 msgstr ""
 
-#: plugintarifas.cpp:178 listltarifaview.cpp:37 listltarifaview.cpp:61
+#: plugintarifas.cpp:183 listltarifaview.cpp:37 listltarifaview.cpp:61
 msgid "ID articulo"
 msgstr ""
 
-#: plugintarifas.cpp:181 listltarifaview.cpp:38 listltarifaview.cpp:62
+#: plugintarifas.cpp:186 listltarifaview.cpp:38 listltarifaview.cpp:62
 msgid "ID almacen"
 msgstr ""
 
-#: plugintarifas.cpp:182
+#: plugintarifas.cpp:187
 msgid "Almacen"
 msgstr ""
 
-#: plugintarifas.cpp:183
+#: plugintarifas.cpp:188
 msgid "Cantidad mayor o igual que"
 msgstr ""
 
-#: plugintarifas.cpp:184
+#: plugintarifas.cpp:189
 msgid "Porcentaje variacion"
 msgstr ""
 

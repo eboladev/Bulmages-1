@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,29 +145,29 @@ msgstr ""
 msgid "Error al crear el pedido cliente"
 msgstr ""
 
-#: genpedqtoolbutton.cpp:134
+#: genpedqtoolbutton.cpp:135
 msgid "Tiene que seleccionar un cliente"
 msgstr ""
 
-#: genpedqtoolbutton.cpp:149
+#: genpedqtoolbutton.cpp:150
 msgid "Pedido ya existe"
 msgstr ""
 
-#: genpedqtoolbutton.cpp:150
+#: genpedqtoolbutton.cpp:151
 msgid ""
 "Existe un pedidocliente a este cliente con la misma referencia que este "
 "pedido. Desea abrirlo para verificar?"
 msgstr ""
 
-#: genpedqtoolbutton.cpp:151
+#: genpedqtoolbutton.cpp:152
 msgid "&Si"
 msgstr ""
 
-#: genpedqtoolbutton.cpp:151
+#: genpedqtoolbutton.cpp:152
 msgid "&No"
 msgstr ""
 
-#: genpedqtoolbutton.cpp:217
+#: genpedqtoolbutton.cpp:218
 msgid "Error inesperado"
 msgstr ""
 

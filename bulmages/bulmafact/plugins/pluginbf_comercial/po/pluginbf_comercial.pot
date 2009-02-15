@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,23 +147,23 @@ msgstr ""
 msgid "Estado"
 msgstr ""
 
-#: comercialbf.cpp:78
+#: comercialbf.cpp:66
 msgid "Zona comercial"
 msgstr ""
 
-#: comercialbf.cpp:79
+#: comercialbf.cpp:67
 msgid "Fecha base"
 msgstr ""
 
-#: comercialbf.cpp:80
+#: comercialbf.cpp:68
 msgid "Periodo"
 msgstr ""
 
-#: comercialbf.cpp:81
+#: comercialbf.cpp:69
 msgid "Comentarios para el comercial"
 msgstr ""
 
-#: comercialbf.cpp:86
+#: comercialbf.cpp:74
 msgid "&Comercial"
 msgstr ""
 

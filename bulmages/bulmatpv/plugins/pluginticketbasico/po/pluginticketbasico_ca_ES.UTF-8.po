@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,26 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginticketbasico.cpp:54
+#: ui_mticketbase.h:148 ui_mticketbase.h:153
+msgid "Bajar"
+msgstr ""
+
+#: ui_mticketbase.h:159 ui_mticketbase.h:164
+msgid "Borrar articulo"
+msgstr "Esborra article"
+
+#: ui_mticketbase.h:123
+msgid "Form"
+msgstr "Form"
+
+#: ui_mticketbase.h:126 ui_mticketbase.h:131
+msgid "Imprimir ticket"
+msgstr ""
+
+#: ui_mticketbase.h:137 ui_mticketbase.h:142
+msgid "Subir"
+msgstr ""
+
+#: pluginticketbasico.cpp:53
 msgid "Ticket"
 msgstr ""

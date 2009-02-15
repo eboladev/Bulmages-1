@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,21 +114,137 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbalancetree.cpp:97
+#: pluginbalancetree.cpp:96
 msgid "&Balance jerarquico"
 msgstr "&Balance jerarquico"
 
-#: pluginbalancetree.cpp:93
+#: pluginbalancetree.cpp:92
 msgid "&Ver"
 msgstr "&Ver"
 
-#: pluginbalancetree.cpp:98
+#: ui_balancetreebase.h:437
+msgid "1"
+msgstr "1"
+
+#: ui_balancetreebase.h:411 ui_balancetreebase.h:416
+msgid "Actualizar"
+msgstr "Actualizar"
+
+#: balance1view.cpp:73
+msgid "Balance Jerarquico"
+msgstr ""
+
+#: ui_balancetreebase.h:386
+msgid "Balance jerarquico de Cuentas"
+msgstr ""
+
+#: balance1view.cpp:92
+msgid "Cuenta"
+msgstr "Cuenta"
+
+#: ui_balancetreebase.h:431
+msgid "Cuenta final:"
+msgstr ""
+
+#: ui_balancetreebase.h:434
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: balance1view.cpp:95
+msgid "Debe"
+msgstr "Debe"
+
+#: balance1view.cpp:98
+msgid "Debe ejercicio"
+msgstr ""
+
+#: balance1view.cpp:283 balance1view.cpp:336
+msgid "Error con la base de datos"
+msgstr "Error con la base de datos"
+
+#: ui_balancetreebase.h:422 ui_balancetreebase.h:427
+msgid "Exportar a Hoja de Calculo"
+msgstr ""
+
+#: ui_balancetreebase.h:432
+msgid "Fecha final:"
+msgstr "Fecha final:"
+
+#: ui_balancetreebase.h:433
+msgid "Fecha inicial:"
+msgstr "Fecha inicial:"
+
+#: ui_balancetreebase.h:400 ui_balancetreebase.h:405
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#: balance1view.cpp:96
+msgid "Haber"
+msgstr "Haber"
+
+#: balance1view.cpp:99
+msgid "Haber ejercicio"
+msgstr ""
+
+#: ui_balancetreebase.h:389 ui_balancetreebase.h:394
+msgid "Imprimir"
+msgstr "Imprimir"
+
+#: balance1view.cpp:325
+msgid "Introduzca la Fecha Final"
+msgstr ""
+
+#: balance1view.cpp:320
+msgid "Introduzca la Fecha Inicial"
+msgstr ""
+
+#: ui_balancetreebase.h:436
+msgid "Jerarquico"
+msgstr ""
+
+#: ui_balancetreebase.h:435
+msgid "Nivel:"
+msgstr ""
+
+#: balance1view.cpp:93
+msgid "Nombre de la cuenta"
+msgstr "Nombre de la cuenta"
+
+#: pluginbalancetree.cpp:97
 msgid "Permite realizar balances"
 msgstr "Permite realizar balances"
 
-#: pluginbalancetree.cpp:99
+#: pluginbalancetree.cpp:98
 msgid "Podra disponer de la informacion del balance"
 msgstr "Podra disponer de la informacion del balance"
+
+#: balance1view.cpp:97
+msgid "Saldo"
+msgstr "Saldo"
+
+#: balance1view.cpp:94
+msgid "Saldo anterior"
+msgstr "Saldo anterior"
+
+#: ui_balancetreebase.h:438
+msgid "Saldo anterior:"
+msgstr ""
+
+#: balance1view.cpp:100
+msgid "Saldo ejercicio"
+msgstr ""
+
+#: ui_balancetreebase.h:441
+msgid "Saldo:"
+msgstr ""
+
+#: ui_balancetreebase.h:439
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_balancetreebase.h:440
+msgid "Total Haber:"
+msgstr ""
 
 #: balance1view.cpp:566
 msgid "Ver Diario (este anyo)"
@@ -154,6 +270,6 @@ msgstr "Ver extracto (este dia)"
 msgid "Ver extracto (este mes)"
 msgstr "Ver extracto (este mes)"
 
-#: pluginbalancetree.cpp:89
+#: pluginbalancetree.cpp:88
 msgid "menuVentana"
 msgstr "menuVentana"

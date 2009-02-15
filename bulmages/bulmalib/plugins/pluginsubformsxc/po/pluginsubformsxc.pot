@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginsubformsxc.cpp:82 pluginsubformsxc.cpp:94
+#: pluginsubformsxc.cpp:78 pluginsubformsxc.cpp:90
 msgid "Exportar a hoja de calculo (SXC)"
 msgstr ""
 
-#: pluginsubformsxc.cpp:163 pluginsubformsxc.cpp:165
+#: pluginsubformsxc.cpp:159 pluginsubformsxc.cpp:161
 msgid "Exportando datos a SXC"
 msgstr ""

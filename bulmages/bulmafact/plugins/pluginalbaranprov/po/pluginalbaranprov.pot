@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,29 +153,29 @@ msgstr ""
 msgid "Error al crear el albaran proveedor"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:132
+#: genalbpqtoolbutton.cpp:133
 msgid "Tiene que seleccionar un proveedor"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:147
+#: genalbpqtoolbutton.cpp:148
 msgid "Albaran de proveedor existente"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:148
+#: genalbpqtoolbutton.cpp:149
 msgid ""
 "Existe un albaran de este proveedor con la misma referencia que este pedido. "
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:149
+#: genalbpqtoolbutton.cpp:150
 msgid "&Si"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:149
+#: genalbpqtoolbutton.cpp:150
 msgid "&No"
 msgstr ""
 
-#: genalbpqtoolbutton.cpp:197
+#: genalbpqtoolbutton.cpp:198
 msgid "Error inesperado"
 msgstr ""
 

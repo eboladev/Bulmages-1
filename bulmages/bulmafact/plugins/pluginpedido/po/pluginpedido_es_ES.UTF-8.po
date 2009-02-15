@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,7 +142,7 @@ msgstr "&Comentarios"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: genpedqtoolbutton.cpp:151
+#: genpedqtoolbutton.cpp:152
 msgid "&No"
 msgstr "&No"
 
@@ -154,7 +154,7 @@ msgstr "&Nueva pedido de cliente"
 msgid "&Pedidos de clientes"
 msgstr "&Pedidos de clientes"
 
-#: genpedqtoolbutton.cpp:151
+#: genpedqtoolbutton.cpp:152
 msgid "&Si"
 msgstr "&Si"
 
@@ -286,7 +286,7 @@ msgstr "Debe seleccionar una linea"
 msgid "Desc&uentos"
 msgstr "Desc&uentos"
 
-#: pedidosclientelist.cpp:336 listlinpedidoclienteview.cpp:50
+#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:336
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -318,11 +318,11 @@ msgstr "Error al cargar el pedido cliente"
 msgid "Error al crear el pedido cliente"
 msgstr "Error al crear el pedido cliente"
 
-#: genpedqtoolbutton.cpp:217
+#: genpedqtoolbutton.cpp:218
 msgid "Error inesperado"
 msgstr "Error inesperado"
 
-#: genpedqtoolbutton.cpp:150
+#: genpedqtoolbutton.cpp:151
 msgid ""
 "Existe un pedidocliente a este cliente con la misma referencia que este "
 "pedido. Desea abrirlo para verificar?"
@@ -504,7 +504,7 @@ msgstr "Pedido"
 msgid "Pedido Cliente"
 msgstr "Pedido Cliente"
 
-#: genpedqtoolbutton.cpp:149
+#: genpedqtoolbutton.cpp:150
 msgid "Pedido ya existe"
 msgstr "Pedido ya existe"
 
@@ -569,7 +569,7 @@ msgstr "Telefono"
 msgid "Telefono de contacto:"
 msgstr "Telefono de contacto:"
 
-#: genpedqtoolbutton.cpp:134
+#: genpedqtoolbutton.cpp:135
 msgid "Tiene que seleccionar un cliente"
 msgstr "Tiene que seleccionar un cliente"
 

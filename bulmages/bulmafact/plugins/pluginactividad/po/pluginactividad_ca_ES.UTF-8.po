@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,7 @@ msgstr "Esborra quota"
 
 #: ui_actividadeslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: ui_actividadbase.h:439
 #, fuzzy
@@ -151,7 +151,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_actividadeslistbase.h:350 ui_actividadbase.h:413
+#: ui_actividadbase.h:413 ui_actividadeslistbase.h:350
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -201,7 +201,7 @@ msgstr "Editar compte"
 
 #: actividadeslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Error al esborrar el cobrament a client"
 
 #: actividadview.cpp:67
 #, fuzzy
@@ -214,11 +214,11 @@ msgstr "F5"
 
 #: ui_actividadeslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_actividadeslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_actividadbase.h:436
 #, fuzzy

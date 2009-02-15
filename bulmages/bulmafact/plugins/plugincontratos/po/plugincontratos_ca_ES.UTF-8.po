@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr "Esborra quota"
 
 #: ui_contratoslistbase.h:339
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: contratoslist.cpp:424
 #, fuzzy
@@ -131,7 +131,7 @@ msgstr "Codi compte"
 
 #: listlincontratoview.cpp:41
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Codi complet article"
 
 #: contratoview.cpp:416
 #, fuzzy
@@ -292,7 +292,7 @@ msgstr "Llistat d'assentaments"
 
 #: ui_contratobase.h:494 ui_contratobase.h:499
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar capçalera"
 
 #: contratoslist.cpp:427
 #, fuzzy
@@ -344,7 +344,7 @@ msgstr "Periodicitat:"
 
 #: contratoview.cpp:409
 msgid "Procesada"
-msgstr ""
+msgstr "Processada"
 
 #: contratoview.cpp:411
 #, fuzzy
@@ -353,7 +353,7 @@ msgstr "Factura"
 
 #: contratoslist.cpp:425
 msgid "Referencia"
-msgstr ""
+msgstr "Referència"
 
 #: contrato.cpp:44
 msgid "Referencia contrato"
@@ -361,7 +361,7 @@ msgstr ""
 
 #: ui_contratobase.h:491
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
 #: contratoslist.cpp:73
 #, fuzzy
@@ -370,7 +370,7 @@ msgstr "Sel·lector de BulmaGés"
 
 #: contratoview.cpp:412
 msgid "Serie"
-msgstr ""
+msgstr "Sèrie"
 
 #: contratoview.cpp:405
 #, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:17+0100\n"
+"POT-Creation-Date: 2009-02-15 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr "..."
 msgid "Aceptar"
 msgstr "Aceptar"
 
-#: archivo.cpp:68
+#: archivo.cpp:66
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
@@ -35,7 +35,7 @@ msgstr "Arxiu"
 msgid "Cancelar"
 msgstr "Cancelar"
 
-#: archivo.cpp:50
+#: archivo.cpp:48
 msgid "Error al crear la ventana de importacion"
 msgstr "Error al crear la finestra d'importació"
 
@@ -43,6 +43,6 @@ msgstr "Error al crear la finestra d'importació"
 msgid "Importar CSV"
 msgstr "Importar CSV"
 
-#: archivo.cpp:68
+#: archivo.cpp:66
 msgid "Open file"
 msgstr "Obre fitxer"

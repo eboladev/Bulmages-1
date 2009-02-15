@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,9 +30,8 @@ msgstr ""
 msgid "% Recargo E.Q."
 msgstr "% Surcharge E.Q."
 
-#: ui_listalmacenbase.h:117 ui_listtipoivabase.h:117
-#: ui_listseriefacturabase.h:84 ui_listconfiguracionbase.h:118
-#: ui_listtasaivabase.h:118 ui_fpagobase.h:341
+#: ui_listalmacenbase.h:117 ui_listseriefacturabase.h:84 ui_fpagobase.h:341
+#: ui_listconfiguracionbase.h:118
 msgid "&Aceptar"
 msgstr "&Accept"
 
@@ -40,17 +39,16 @@ msgstr "&Accept"
 msgid "&Acerca de"
 msgstr "&About"
 
-#: ui_bulmafactbase.h:221
+#: ui_bulmafactbase.h:199
 msgid "&Acerca de BulmaFact"
 msgstr "&About BulmaFact"
 
-#: ui_bulmafactbase.h:224
+#: ui_bulmafactbase.h:202
 msgid "&Almacenes"
 msgstr "&Warehouses"
 
-#: ui_listalmacenbase.h:118 ui_listtipoivabase.h:118
-#: ui_listseriefacturabase.h:83 ui_listconfiguracionbase.h:119
-#: ui_listtasaivabase.h:119 ui_fpagobase.h:342
+#: ui_listalmacenbase.h:118 ui_listseriefacturabase.h:83 ui_fpagobase.h:342
+#: ui_listconfiguracionbase.h:119
 msgid "&Cancelar"
 msgstr "&Cancel"
 
@@ -58,37 +56,33 @@ msgstr "&Cancel"
 msgid "&Cerrar"
 msgstr "&Close"
 
-#: ui_bulmafactbase.h:225
+#: ui_bulmafactbase.h:203
 msgid "&Documentacion"
 msgstr "&Documntation"
 
-#: ui_bulmafactbase.h:223
+#: ui_bulmafactbase.h:201
 msgid "&Formas de pago"
 msgstr "&Modes of payment"
 
-#: ui_bulmafactbase.h:227
+#: ui_bulmafactbase.h:205
 msgid "&Indexador"
 msgstr "&Indexador"
 
-#: trabajadorview.cpp:223 bancoview.cpp:186
+#: bancoview.cpp:186
 msgid "&No"
 msgstr "&No"
 
-#: ui_bulmafactbase.h:211
+#: ui_bulmafactbase.h:190
 msgid "&Propiedades de la empresa..."
 msgstr "&Properties of the company..."
 
-#: ui_bulmafactbase.h:209
+#: ui_bulmafactbase.h:188
 msgid "&Salir del programa"
 msgstr "&To leave the program"
 
-#: trabajadorview.cpp:223 bancoview.cpp:186
+#: bancoview.cpp:186
 msgid "&Si"
 msgstr "&Yes"
-
-#: ui_bulmafactbase.h:218
-msgid "&Trabajadores"
-msgstr "&Workers"
 
 #: ui_bancobase.h:406
 msgid ""
@@ -122,7 +116,7 @@ msgstr ""
 msgid "A&utores"
 msgstr "A&uthors"
 
-#: ui_bulmafactbase.h:247
+#: ui_bulmafactbase.h:223
 msgid "A&yuda"
 msgstr "A&id"
 
@@ -133,10 +127,6 @@ msgstr ""
 #: ui_aboutbase.h:285
 msgid "Acerca de BulmaFact"
 msgstr "About BulmaFact"
-
-#: ui_trabajadorbase.h:340
-msgid "Activo"
-msgstr "Assets"
 
 #: ui_aboutbase.h:296
 msgid "Acuerdo de &licencia"
@@ -149,10 +139,6 @@ msgstr "Warehouse"
 #: ui_listalmacenbase.h:116
 msgid "Almacenes"
 msgstr "Warehouses"
-
-#: ui_trabajadorbase.h:344
-msgid "Apellidos:"
-msgstr "Last names:"
 
 #: ui_busquedaarticulobase.h:95 informereferencia.cpp:141
 #: informereferencia.cpp:174
@@ -167,7 +153,7 @@ msgstr "Article:"
 msgid "Banco"
 msgstr "Bank"
 
-#: ui_bulmafactbase.h:237 ui_bancobase.h:401
+#: ui_bancobase.h:401 ui_bulmafactbase.h:213
 msgid "Bancos"
 msgstr "Banks"
 
@@ -179,12 +165,11 @@ msgstr "Tax basis"
 msgid "Borrar forma de pago"
 msgstr "Erase mode of payment"
 
-#: ui_trabajadorbase.h:352 ui_trabajadorbase.h:357 ui_bancobase.h:424
-#: ui_bancobase.h:429
+#: ui_bancobase.h:424 ui_bancobase.h:429
 msgid "Borrar trabajador"
 msgstr "Erase worker"
 
-#: ui_bulmafactbase.h:208
+#: ui_bulmafactbase.h:187
 msgid "BulmaFact - Facturacion GPL"
 msgstr "BulmaFact - Invoicing GPL"
 
@@ -192,20 +177,12 @@ msgstr "BulmaFact - Invoicing GPL"
 msgid "C.P.:"
 msgstr "C.P.:"
 
-#: ui_trabajadorbase.h:345
-msgid "Cambiar imagen"
-msgstr "Change image"
-
 #: listlinalbaranproveedorview.cpp:52 listlinalbaranclienteview.cpp:50
 msgid "Cantidad"
 msgstr "Amount"
 
-#: main.cxx:216
+#: main.cxx:153
 msgid "Cargando plugins"
-msgstr ""
-
-#: main.cxx:182
-msgid "Cargando traducciones"
 msgstr ""
 
 #: informereferencia.cpp:216
@@ -228,6 +205,10 @@ msgstr "Code series invoices"
 msgid "Comentarios:"
 msgstr "Commentaries:"
 
+#: aboutview.cpp:41
+msgid "Compilado usando la version de QT:"
+msgstr "Compiled using the QT version:"
+
 #: listdescalbaranclienteview.cpp:42
 msgid "Concepto descuento"
 msgstr ""
@@ -240,11 +221,11 @@ msgstr "Configuration"
 msgid "Contacto:"
 msgstr "Contact:"
 
-#: ui_bulmafactbase.h:234
+#: ui_bulmafactbase.h:212
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_bulmafactbase.h:210
+#: ui_bulmafactbase.h:189
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
@@ -272,7 +253,7 @@ msgstr "Discount:"
 msgid "Desea guardar los cambios."
 msgstr "It wishes to keep the changes?"
 
-#: trabajadorview.cpp:222 bancoview.cpp:185
+#: bancoview.cpp:185
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
 
@@ -280,19 +261,15 @@ msgstr "It wishes to keep the changes?"
 msgid "Direccion"
 msgstr "Address"
 
-#: ui_trabajadorbase.h:342
-msgid "Direccion:"
-msgstr "Address:"
-
-#: ui_bulmafactbase.h:248
+#: ui_bulmafactbase.h:224
 msgid "E&mpresa"
 msgstr "C&ompany"
 
-#: ui_trabajadorbase.h:347 ui_bancobase.h:414
+#: ui_bancobase.h:414
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: subform2bf.cpp:227
+#: bfsubform.cpp:227
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
@@ -307,32 +284,12 @@ msgstr ""
 msgid "Entregado"
 msgstr "Given"
 
-#: trabajadorview.cpp:278
-msgid "Error al borrar el Trabajador"
-msgstr ""
-
-#: trabajadorview.cpp:253
-msgid "Error al crear un nuevo Trabajador"
-msgstr ""
-
 #: bancoview.cpp:168
 msgid "Error al guardar"
 msgstr ""
 
-#: trabajadorview.cpp:204
-msgid "Error al guardar el trabajador"
-msgstr ""
-
-#: listtasaivaview.cpp:70
-msgid "Error al guardar las tasas de IVA"
-msgstr ""
-
 #: listalmacenview.cpp:70
 msgid "Error al guardar los almacenes"
-msgstr ""
-
-#: listtipoivaview.cpp:70
-msgid "Error al guardar los tipos de IVA"
 msgstr ""
 
 #: fpagoview.cpp:211
@@ -347,7 +304,7 @@ msgstr ""
 msgid "Error inesperado el crear el Banco"
 msgstr ""
 
-#: main.cxx:245
+#: main.cxx:182
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Unexpected error in BulmaFact. The program was closed."
 
@@ -355,15 +312,15 @@ msgstr "Unexpected error in BulmaFact. The program was closed."
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: ui_bulmafactbase.h:226
+#: ui_bulmafactbase.h:204
 msgid "F1"
 msgstr "F1"
 
-#: ui_bulmafactbase.h:220
+#: ui_bulmafactbase.h:198
 msgid "F11"
 msgstr "F11"
 
-#: company.cpp:150
+#: company.cpp:130
 msgid "Facturacion GPL"
 msgstr ""
 
@@ -384,17 +341,13 @@ msgstr "Family:"
 msgid "Fax:"
 msgstr "Fax:"
 
-#: listtasaivaview.cpp:98
-msgid "Fecha Entrada en Vigor"
-msgstr "Date Taken Effect"
-
-#: ui_bulmafactbase.h:222 ui_bulmafactbase.h:277 ui_bulmafactbase.h:280
-#: ui_bulmafactbase.h:285 ui_bulmafactbase.h:290 ui_bulmafactbase.h:295
-#: ui_bulmafactbase.h:300
+#: ui_bulmafactbase.h:200 ui_bulmafactbase.h:253 ui_bulmafactbase.h:256
+#: ui_bulmafactbase.h:261 ui_bulmafactbase.h:266 ui_bulmafactbase.h:271
+#: ui_bulmafactbase.h:276
 msgid "Fichas"
 msgstr "Cards"
 
-#: ui_busquedaarticulobase.h:92 ui_busquedareferenciabase.h:89
+#: ui_busquedareferenciabase.h:89 ui_busquedaarticulobase.h:92
 msgid "Form1"
 msgstr "Form1"
 
@@ -414,11 +367,7 @@ msgstr "Mode of payment:"
 msgid "Formas de pago"
 msgstr "Modes of payment"
 
-#: ui_trabajadorbase.h:348
-msgid "General"
-msgstr "General"
-
-#: trabajadorview.cpp:221 bancoview.cpp:184
+#: bancoview.cpp:184
 msgid "Guardar datos del trabajador"
 msgstr "Keep data from the worker"
 
@@ -426,8 +375,7 @@ msgstr "Keep data from the worker"
 msgid "Guardar forma de pago"
 msgstr "Keep mode of payment"
 
-#: ui_trabajadorbase.h:363 ui_trabajadorbase.h:368 ui_bancobase.h:435
-#: ui_bancobase.h:440
+#: ui_bancobase.h:435 ui_bancobase.h:440
 msgid "Guardar trabajador"
 msgstr "Keep worker"
 
@@ -435,17 +383,9 @@ msgstr "Keep worker"
 msgid "I.R.P.F (-"
 msgstr "I.R.P.F (-"
 
-#: fichabf.cpp:383 listlinalbaranclienteview.cpp:52
+#: listlinalbaranclienteview.cpp:52 fichabf.cpp:383
 msgid "I.V.A."
 msgstr "I.V.A."
-
-#: listtasaivaview.cpp:93
-msgid "Id Tasa IVA"
-msgstr "Rate IVA"
-
-#: listtipoivaview.cpp:105 listtasaivaview.cpp:95
-msgid "Id Tipo IVA"
-msgstr "Id Type IVA"
 
 #: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:44
 #: listlinalbaranclienteview.cpp:55
@@ -464,11 +404,7 @@ msgstr "Id article"
 msgid "Id descuento"
 msgstr ""
 
-#: trabajadorview.cpp:294
-msgid "Imagenes (*.jpg)"
-msgstr "Images (*.jpg)"
-
-#: ui_bulmafactbase.h:228 ui_bulmafactbase.h:231
+#: ui_bulmafactbase.h:206 ui_bulmafactbase.h:209
 msgid "Indexador"
 msgstr "Indexador"
 
@@ -488,19 +424,19 @@ msgstr ""
 msgid "Informe por referencia"
 msgstr ""
 
-#: main.cxx:228
+#: main.cxx:165
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:118
+#: main.cxx:82
 msgid "Iniciando clases"
 msgstr "Initiating classes"
 
-#: main.cxx:222
+#: main.cxx:159
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:158
+#: main.cxx:122
 msgid "Leyendo configuracion"
 msgstr "Reading configuration"
 
@@ -508,16 +444,12 @@ msgstr "Reading configuration"
 msgid "Lista de bancos:"
 msgstr "List of banks:"
 
-#: ui_trabajadorbase.h:349
-msgid "Lista de trabajadores:"
-msgstr "List of workers:"
-
-#: ui_bulmafactbase.h:251 ui_bulmafactbase.h:254 ui_bulmafactbase.h:259
-#: ui_bulmafactbase.h:264 ui_bulmafactbase.h:269 ui_bulmafactbase.h:274
+#: ui_bulmafactbase.h:227 ui_bulmafactbase.h:230 ui_bulmafactbase.h:235
+#: ui_bulmafactbase.h:240 ui_bulmafactbase.h:245 ui_bulmafactbase.h:250
 msgid "Listados"
 msgstr "Listings"
 
-#: ui_bulmafactbase.h:249
+#: ui_bulmafactbase.h:225
 msgid "Maest&ro"
 msgstr "Teach&er"
 
@@ -537,26 +469,17 @@ msgstr "Name article"
 msgid "Nombre de la forma de pago:"
 msgstr "Name of the mode of payment:"
 
-#: ui_trabajadorbase.h:341
-msgid "Nombre:"
-msgstr "Name:"
-
 #: ui_fpagobase.h:310 ui_fpagobase.h:315
 msgid "Nueva forma de pago"
 msgstr "New mode of payment"
 
-#: ui_trabajadorbase.h:374 ui_trabajadorbase.h:379 ui_bancobase.h:446
-#: ui_bancobase.h:451
+#: ui_bancobase.h:446 ui_bancobase.h:451
 msgid "Nuevo trabajador"
 msgstr "New worker"
 
 #: ui_bancobase.h:404
 msgid "Numero de cuenta:"
 msgstr ""
-
-#: ui_trabajadorbase.h:343
-msgid "Numero de la Seguridad Social:"
-msgstr "Number of the Social Security:"
 
 #: listlinalbaranproveedorview.cpp:50
 msgid "Numero de linea"
@@ -574,11 +497,11 @@ msgstr ""
 msgid "Orden"
 msgstr "Order"
 
-#: ui_bulmafactbase.h:239
+#: ui_bulmafactbase.h:215
 msgid "Ordenar &ventanas"
 msgstr "Order &windows"
 
-#: ui_bulmafactbase.h:238
+#: ui_bulmafactbase.h:214
 msgid "Organizacio&n en cascada"
 msgstr ""
 
@@ -590,11 +513,11 @@ msgstr "P.V.P."
 msgid "Pagado"
 msgstr "Paid"
 
-#: ui_bulmafactbase.h:240 ui_bulmafactbase.h:241
+#: ui_bulmafactbase.h:216 ui_bulmafactbase.h:217
 msgid "Paises / Provincias"
 msgstr "Countries/Provinces"
 
-#: ui_bulmafactbase.h:244
+#: ui_bulmafactbase.h:220
 msgid "Paises y provincias"
 msgstr ""
 
@@ -619,14 +542,6 @@ msgstr "Population:"
 msgid "Porcentaje"
 msgstr "Percentage"
 
-#: listtasaivaview.cpp:96
-msgid "Porcentaje IVA"
-msgstr "Percentage IVA"
-
-#: listtasaivaview.cpp:97
-msgid "Porcentaje Recargo Equivalencia"
-msgstr "Percentage Surcharge Equivalence"
-
 #: listlinalbaranproveedorview.cpp:53
 msgid "Precio"
 msgstr "Price"
@@ -635,7 +550,7 @@ msgstr "Price"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_listconfiguracionbase.h:117 ui_bulmafactbase.h:214
+#: ui_listconfiguracionbase.h:117 ui_bulmafactbase.h:193
 msgid "Propiedades de la empresa"
 msgstr "Properties of the company"
 
@@ -651,13 +566,9 @@ msgstr ""
 msgid "Referencia"
 msgstr "Reference"
 
-#: ui_bulmafactbase.h:217
+#: ui_bulmafactbase.h:196
 msgid "Se&ries de factura"
 msgstr "Se&ries of invoice"
-
-#: trabajadorview.cpp:292
-msgid "Seleccione archivo"
-msgstr "Select file"
 
 #: listseriefacturaview.cpp:48
 msgid "Serie de Factura"
@@ -675,23 +586,11 @@ msgstr "Soppor&te"
 msgid "Sucursal:"
 msgstr ""
 
-#: listtasaivaview.cpp:49
-msgid "Tasa IVA"
-msgstr ""
-
-#: ui_listtasaivabase.h:117 ui_bulmafactbase.h:236
-msgid "Tasas de IVA"
-msgstr "Rates of IVA"
-
-#: ui_trabajadorbase.h:346
-msgid "Telefono movil:"
-msgstr "Telephone mobil:"
-
-#: ui_trabajadorbase.h:339 ui_bancobase.h:415
+#: ui_bancobase.h:415
 msgid "Telefono:"
 msgstr "Telephone:"
 
-#: main.cxx:234
+#: main.cxx:171
 msgid "Terminado"
 msgstr "Finished"
 
@@ -704,10 +603,6 @@ msgstr ""
 msgid "Tipo Articulo:"
 msgstr "Article Type "
 
-#: listtipoivaview.cpp:49 listtipoivaview.cpp:106 listtasaivaview.cpp:94
-msgid "Tipo IVA"
-msgstr "Type IVA"
-
 #: ui_fpagobase.h:304
 msgid "Tipo plazo entre recibos:"
 msgstr "Type term between receipts:"
@@ -715,10 +610,6 @@ msgstr "Type term between receipts:"
 #: ui_fpagobase.h:305
 msgid "Tipo plazo primer pago:"
 msgstr "Type term first payment:"
-
-#: ui_listtipoivabase.h:116 ui_bulmafactbase.h:235
-msgid "Tipos de IVA"
-msgstr "Types of IVA"
 
 #: fichabf.cpp:409
 msgid "Total"
@@ -728,14 +619,6 @@ msgstr "Total"
 msgid "Total Desc."
 msgstr "Desc Total."
 
-#: trabajadorview.cpp:44
-msgid "Trabajador"
-msgstr "Worker"
-
-#: ui_trabajadorbase.h:338
-msgid "Trabajadores"
-msgstr "Workers"
-
 #: ui_bancobase.h:413
 msgid "URL:"
 msgstr "URL:"
@@ -744,11 +627,11 @@ msgstr "URL:"
 msgid "Valor"
 msgstr "Value"
 
-#: ui_bulmafactbase.h:250
+#: ui_bulmafactbase.h:226
 msgid "Venta&na"
 msgstr "Wind&ow"
 
-#: ui_bulmafactbase.h:219
+#: ui_bulmafactbase.h:197
 msgid "Ventana &completa"
 msgstr "Complete &window"
 
@@ -790,17 +673,26 @@ msgstr "Complete &window"
 #~ msgid "&Tipos de articulo"
 #~ msgstr "&Types of article"
 
+#~ msgid "&Trabajadores"
+#~ msgstr "&Workers"
+
 #~ msgid "Abreviacion"
 #~ msgstr "Abbreviation"
 
 #~ msgid "Activar el &control de stock."
 #~ msgstr "Activate the stock &control."
 
+#~ msgid "Activo"
+#~ msgstr "Assets"
+
 #~ msgid "Actualizar listado"
 #~ msgstr "Update listing"
 
 #~ msgid "Alt+O"
 #~ msgstr "Alt+O"
+
+#~ msgid "Apellidos:"
+#~ msgstr "Last names:"
 
 #~ msgid "Aplicar Recargo de Equivalencia"
 #~ msgstr "Apply Surcharge of Equivalence"
@@ -855,6 +747,9 @@ msgstr "Complete &window"
 
 #~ msgid "Cam&biar imagen"
 #~ msgstr "Cha&nge image"
+
+#~ msgid "Cambiar imagen"
+#~ msgstr "Change image"
 
 #~ msgid "Cantidad de componente de articulo"
 #~ msgstr "Amount of component of article"
@@ -991,6 +886,9 @@ msgstr "Complete &window"
 #~ msgid "Direccion electronica"
 #~ msgstr "Electronic direction"
 
+#~ msgid "Direccion:"
+#~ msgstr "Address:"
+
 #, fuzzy
 #~ msgid "Direcció&n:"
 #~ msgstr "Address:"
@@ -1056,6 +954,9 @@ msgstr "Complete &window"
 #~ msgid "Familias"
 #~ msgstr "Family"
 
+#~ msgid "Fecha Entrada en Vigor"
+#~ msgstr "Date Taken Effect"
+
 #~ msgid "Fecha de alta del cliente"
 #~ msgstr "Date of discharge of the client"
 
@@ -1070,6 +971,9 @@ msgstr "Complete &window"
 
 #~ msgid "Forma_Pago"
 #~ msgstr "Forms_Payment"
+
+#~ msgid "General"
+#~ msgstr "General"
 
 #~ msgid "Gestion de &familias"
 #~ msgstr "Management of &families"
@@ -1110,6 +1014,12 @@ msgstr "Complete &window"
 #~ msgid "Id"
 #~ msgstr "Id"
 
+#~ msgid "Id Tasa IVA"
+#~ msgstr "Rate IVA"
+
+#~ msgid "Id Tipo IVA"
+#~ msgstr "Id Type IVA"
+
 #~ msgid "Id familia"
 #~ msgstr "Id family"
 
@@ -1121,6 +1031,9 @@ msgstr "Complete &window"
 
 #~ msgid "Imagen del articulo:"
 #~ msgstr "Image of article:"
+
+#~ msgid "Imagenes (*.jpg)"
+#~ msgstr "Images (*.jpg)"
 
 #~ msgid "Importar"
 #~ msgstr "Matter"
@@ -1148,6 +1061,9 @@ msgstr "Complete &window"
 
 #~ msgid "Informacion del articulo:"
 #~ msgstr "Information of article:"
+
+#~ msgid "Lista de trabajadores:"
+#~ msgstr "List of workers:"
 
 #~ msgid "Listado de Clientes"
 #~ msgstr "Listing of Clients"
@@ -1191,6 +1107,9 @@ msgstr "Complete &window"
 #~ msgid "Nombre del proveedor"
 #~ msgstr "Name of the supplier"
 
+#~ msgid "Nombre:"
+#~ msgstr "Name:"
+
 #, fuzzy
 #~ msgid "Nuestro código de c&liente:"
 #~ msgstr "Code of client:"
@@ -1227,6 +1146,9 @@ msgstr "Complete &window"
 
 #~ msgid "Numero de fax:"
 #~ msgstr "Number of fax:"
+
+#~ msgid "Numero de la Seguridad Social:"
+#~ msgstr "Number of the Social Security:"
 
 #~ msgid "Numero de telefono"
 #~ msgstr "Number of telephone"
@@ -1268,6 +1190,12 @@ msgstr "Complete &window"
 #, fuzzy
 #~ msgid "Població&n:"
 #~ msgstr "Population:"
+
+#~ msgid "Porcentaje IVA"
+#~ msgstr "Percentage IVA"
+
+#~ msgid "Porcentaje Recargo Equivalencia"
+#~ msgstr "Percentage Surcharge Equivalence"
 
 #~ msgid "Pro&cesados"
 #~ msgstr "Pro&cessings"
@@ -1321,6 +1249,9 @@ msgstr "Complete &window"
 #~ msgid "S&olo presentables"
 #~ msgstr "S&ingle presentables"
 
+#~ msgid "Seleccione archivo"
+#~ msgstr "Select file"
+
 #~ msgid "Seleccione el archivo"
 #~ msgstr "Select the file"
 
@@ -1342,11 +1273,17 @@ msgstr "Complete &window"
 #~ msgid "Subcodigo:"
 #~ msgstr "Subcode:"
 
+#~ msgid "Tasas de IVA"
+#~ msgstr "Rates of IVA"
+
 #~ msgid "Telefono del trabajo:"
 #~ msgstr "Telephone of the work:"
 
 #~ msgid "Telefono fijo:"
 #~ msgstr "Telephone fixed:"
+
+#~ msgid "Telefono movil:"
+#~ msgstr "Telephone mobil:"
 
 #~ msgid "Texto para etiqueta:"
 #~ msgstr "Text for label:"
@@ -1356,6 +1293,9 @@ msgstr "Complete &window"
 
 #~ msgid "Tipo Articulos"
 #~ msgstr "Article Type "
+
+#~ msgid "Tipo IVA"
+#~ msgstr "Type IVA"
 
 #~ msgid "Tipo de I.V.A."
 #~ msgstr "Type of I.V.A."
@@ -1369,11 +1309,20 @@ msgstr "Complete &window"
 #~ msgid "Tipo de articulo:"
 #~ msgstr "Type of article:"
 
+#~ msgid "Tipos de IVA"
+#~ msgstr "Types of IVA"
+
 #~ msgid "Tipos de articulo"
 #~ msgstr "Types of article"
 
 #~ msgid "Todos"
 #~ msgstr "All"
+
+#~ msgid "Trabajador"
+#~ msgstr "Worker"
+
+#~ msgid "Trabajadores"
+#~ msgstr "Workers"
 
 #~ msgid "URL"
 #~ msgstr "URL"

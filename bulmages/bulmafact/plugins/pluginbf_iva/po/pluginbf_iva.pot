@@ -8,13 +8,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 11:42+0100\n"
+"POT-Creation-Date: 2009-02-15 23:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: listtasaivaview.cpp:49
+msgid "Tasa IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:70
+msgid "Error al guardar las tasas de IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:93
+msgid "Id Tasa IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:94 listtipoivaview.cpp:49 listtipoivaview.cpp:106
+msgid "Tipo IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:95 listtipoivaview.cpp:105
+msgid "Id Tipo IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:96
+msgid "Porcentaje IVA"
+msgstr ""
+
+#: listtasaivaview.cpp:97
+msgid "Porcentaje Recargo Equivalencia"
+msgstr ""
+
+#: listtasaivaview.cpp:98
+msgid "Fecha Entrada en Vigor"
+msgstr ""
+
+#: listtipoivaview.cpp:70
+msgid "Error al guardar los tipos de IVA"
+msgstr ""
 
 #: pluginbf_iva.cpp:104
 msgid "&Tipos de IVA"
@@ -30,42 +66,6 @@ msgstr ""
 
 #: pluginbf_iva.cpp:118 pluginbf_iva.cpp:119 ui_listtasaivabase.h:117
 msgid "Tasas de IVA"
-msgstr ""
-
-#: listtipoivaview.cpp:49 listtipoivaview.cpp:106 listtasaivaview.cpp:94
-msgid "Tipo IVA"
-msgstr ""
-
-#: listtipoivaview.cpp:70
-msgid "Error al guardar los tipos de IVA"
-msgstr ""
-
-#: listtipoivaview.cpp:105 listtasaivaview.cpp:95
-msgid "Id Tipo IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:49
-msgid "Tasa IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:70
-msgid "Error al guardar las tasas de IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:93
-msgid "Id Tasa IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:96
-msgid "Porcentaje IVA"
-msgstr ""
-
-#: listtasaivaview.cpp:97
-msgid "Porcentaje Recargo Equivalencia"
-msgstr ""
-
-#: listtasaivaview.cpp:98
-msgid "Fecha Entrada en Vigor"
 msgstr ""
 
 #: ui_listtasaivabase.h:118 ui_listtipoivabase.h:117

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,23 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginimportcsv.cpp:59
+#: pluginimportcsv.cpp:55
 msgid "&Importacion CSV"
 msgstr ""
 
-#: pluginimportcsv.cpp:60 pluginimportcsv.cpp:61
+#: pluginimportcsv.cpp:56 pluginimportcsv.cpp:57
 msgid "Importacion CSV"
 msgstr ""
 
-#: importcsv.cpp:52
+#: importcsv.cpp:50
 msgid "Error al crear la ventana de importacion"
 msgstr ""
 
-#: importcsv.cpp:70
+#: importcsv.cpp:68
 msgid "Open file"
 msgstr ""
 
-#: importcsv.cpp:70
+#: importcsv.cpp:68
 msgid "All files (*)"
 msgstr ""
 

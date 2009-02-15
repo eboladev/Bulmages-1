@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr "Document:"
 
 #: listlinpedidoproveedorview.cpp:47
 msgid "% I.V.A."
-msgstr ""
+msgstr "% I.V.A."
 
 #: listlinpedidoproveedorview.cpp:48
 msgid "% R.E."
-msgstr ""
+msgstr "% R.E."
 
 #: ui_pedidoproveedorbase.h:732
 #, fuzzy
@@ -86,7 +86,7 @@ msgstr "Direcció del proveïdor"
 #: ui_pedidoproveedorbase.h:729 ui_pedidoproveedorbase.h:730
 #: ui_pedidoproveedorbase.h:731
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_pedidosproveedorlistbase.h:436 ui_pedidosproveedorlistbase.h:441
 msgid "Actualizar listado"
@@ -104,7 +104,7 @@ msgstr "Classe"
 
 #: pedidosproveedorlist.cpp:317
 msgid "Base Imponible"
-msgstr ""
+msgstr "Base Imposable"
 
 #: ui_pedidoproveedorbase.h:721
 #, fuzzy
@@ -123,7 +123,7 @@ msgstr "<HR><B>Trotant el proveïdor"
 
 #: ui_pedidosproveedorlistbase.h:446
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: listlinpedidoproveedorview.cpp:45
 msgid "Cantidad"
@@ -131,7 +131,7 @@ msgstr "Quantitat"
 
 #: listlinpedidoproveedorview.cpp:41
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Codi complet article"
 
 #: pedidosproveedorlist.cpp:321
 #, fuzzy
@@ -250,15 +250,15 @@ msgstr "Empreses disponibles:"
 
 #: pedidosproveedorlist.cpp:217
 msgid "Error al borrar el pedido a proveedor"
-msgstr ""
+msgstr "Error al esborrar la comanda a proveïdor"
 
 #: pedidosproveedorlist.cpp:244
 msgid "Error al cargar el pedido proveedor"
-msgstr ""
+msgstr "Error al carregar la comanda proveïdor"
 
 #: pedidoproveedorview.cpp:100
 msgid "Error al crear el pedido a proveedor"
-msgstr ""
+msgstr "Error al crear la comanda a proveïdor"
 
 #: ui_pedidosproveedorlistbase.h:445
 msgid "F5"
@@ -271,13 +271,13 @@ msgstr "&Data de l'assentament:"
 
 #: ui_pedidosproveedorlistbase.h:356
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_pedidosproveedorlistbase.h:357
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
-#: pedidosproveedorlist.cpp:315 pedidoproveedorview.cpp:58
+#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:315
 #, fuzzy
 msgid "Fecha pedido proveedor"
 msgstr "NIF del proveïdor"
@@ -302,7 +302,7 @@ msgstr "Desar"
 msgid "I.R.P.F.:"
 msgstr "C.I.F.:"
 
-#: pedidosproveedorlist.cpp:328 pedidoproveedorview.cpp:56
+#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:328
 #, fuzzy
 msgid "Id almacen"
 msgstr "<LI> Magatzem <B>"
@@ -322,8 +322,8 @@ msgstr "Id compte"
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: pedidosproveedorlist.cpp:325 listdescpedidoproveedorview.cpp:42
-#: listlinpedidoproveedorview.cpp:50
+#: listdescpedidoproveedorview.cpp:42 listlinpedidoproveedorview.cpp:50
+#: pedidosproveedorlist.cpp:325
 #, fuzzy
 msgid "Id pedido"
 msgstr "Imprimeix la comanda"
@@ -333,12 +333,12 @@ msgstr "Imprimeix la comanda"
 msgid "Id pedido proveedor"
 msgstr "NIF del proveïdor"
 
-#: pedidosproveedorlist.cpp:327 pedidoproveedorview.cpp:55
+#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:327
 #, fuzzy
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
 
-#: pedidosproveedorlist.cpp:326 pedidoproveedorview.cpp:64
+#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:326
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Id esborrany"
@@ -364,11 +364,11 @@ msgstr "Imputació"
 
 #: pedidoproveedorview.cpp:383
 msgid "Iva "
-msgstr ""
+msgstr "Iva(sp)"
 
 #: ui_pedidoproveedorbase.h:698 ui_pedidoproveedorbase.h:703
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar capçalera"
 
 #: ui_pedidosproveedorlistbase.h:358
 #, fuzzy
@@ -418,7 +418,7 @@ msgstr "Ordre"
 
 #: ui_pedidoproveedorbase.h:710
 msgid "Pedido &tramitado"
-msgstr ""
+msgstr "Comanda &tramitada"
 
 #: pedidoproveedorview.cpp:51
 #, fuzzy
@@ -427,7 +427,7 @@ msgstr "Direcció del proveïdor"
 
 #: pedidoproveedorview.cpp:60
 msgid "Pedido procesado"
-msgstr ""
+msgstr "Comanda processada"
 
 #: pedidosproveedorlist.cpp:188 pluginpedidoprov.cpp:99
 #: pluginpedidoprov.cpp:100 ui_pedidosproveedorlistbase.h:355
@@ -437,13 +437,13 @@ msgstr "Direcció del proveïdor"
 
 #: pedidosproveedorlist.cpp:114
 msgid "Pedidos no procesados"
-msgstr ""
+msgstr "Comandes no processades"
 
 #: pedidosproveedorlist.cpp:113
 msgid "Pedidos procesados"
-msgstr ""
+msgstr "Comandes processades"
 
-#: pedidosproveedorlist.cpp:322 pedidoproveedorview.cpp:65
+#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:322
 #, fuzzy
 msgid "Persona de contacto proveedor"
 msgstr "Telèfon del proveïdor"
@@ -463,10 +463,10 @@ msgstr "Percent&ual"
 msgid "Precio"
 msgstr "Adreça:"
 
-#: pedidosproveedorlist.cpp:46 pedidosproveedorlist.cpp:72
-#: pedidoproveedorview.cpp:89
+#: pedidoproveedorview.cpp:89 pedidosproveedorlist.cpp:46
+#: pedidosproveedorlist.cpp:72
 msgid "Proveedor:"
-msgstr ""
+msgstr "Proveïdor:"
 
 #: listlinpedidoproveedorview.cpp:39
 msgid "Punteo"
@@ -477,20 +477,20 @@ msgstr ""
 msgid "R.E.:"
 msgstr "C.P.:"
 
-#: pedidosproveedorlist.cpp:316 pedidoproveedorview.cpp:62
+#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:316
 msgid "Referencia pedido"
-msgstr ""
+msgstr "Referència comanda"
 
 #: ui_pedidoproveedorbase.h:695
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
 #: ui_pedidoproveedorbase.h:715
 #, fuzzy
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: pedidosproveedorlist.cpp:323 pedidoproveedorview.cpp:66
+#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:323
 #, fuzzy
 msgid "Telefono proveedor"
 msgstr "Telèfon del proveïdor"
@@ -501,7 +501,7 @@ msgstr ""
 
 #: pedidosproveedorlist.cpp:112
 msgid "Todos los pedidos"
-msgstr ""
+msgstr "Totes les comandes"
 
 #: pedidoproveedorview.cpp:340
 #, fuzzy

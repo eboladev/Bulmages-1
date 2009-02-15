@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,11 +89,11 @@ msgstr "Esborra quota"
 
 #: ui_tutoreslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: ui_tutorbase.h:444
 msgid "C.I.F./N.I.F./N.I.E.:"
-msgstr ""
+msgstr "C.I.F./N.I.F./N.I.E.:"
 
 #: ui_tutoreslistbase.h:313
 #, fuzzy
@@ -184,7 +184,7 @@ msgstr "Editar compte"
 
 #: tutoreslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Error al esborrar el cobrament a client"
 
 #: tutorview.cpp:68
 msgid "Error al crear el tutor"
@@ -196,11 +196,11 @@ msgstr "F5"
 
 #: ui_tutoreslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_tutoreslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_tutoreslistbase.h:365 ui_tutoreslistbase.h:370
 #, fuzzy
@@ -216,7 +216,7 @@ msgstr "Desa arxiu"
 msgid "Hijos"
 msgstr ""
 
-#: tutorview.cpp:51 tutoreslist.cpp:262
+#: tutoreslist.cpp:262 tutorview.cpp:51
 msgid "ID tutor"
 msgstr ""
 
@@ -275,11 +275,11 @@ msgstr "Regularització"
 
 #: ui_tutorbase.h:448
 msgid "Telefono fijo:"
-msgstr ""
+msgstr "Telèfon fix:"
 
 #: ui_tutorbase.h:449
 msgid "Telefono movil:"
-msgstr ""
+msgstr "Telèfon mòbil:"
 
 #: tutorview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Actual·litza llistat"
 msgid "Alumno"
 msgstr "<LI> Magatzem <B>"
 
-#: pluginalumno.cpp:98 pluginalumno.cpp:99 alumnoslist.cpp:144
+#: alumnoslist.cpp:144 pluginalumno.cpp:98 pluginalumno.cpp:99
 #: ui_alumnoslistbase.h:308
 msgid "Alumnos"
 msgstr ""
@@ -105,11 +105,11 @@ msgstr "Esborra assentament"
 
 #: ui_alumnoslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: ui_alumnobase.h:501
 msgid "C.I.F./N.I.F./N.I.E.:"
-msgstr ""
+msgstr "C.I.F./N.I.F./N.I.E.:"
 
 #: ui_alumnobase.h:503
 #, fuzzy
@@ -205,7 +205,7 @@ msgstr "Editar compte"
 
 #: alumnoslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Error al esborrar el cobrament a client"
 
 #: alumnoview.cpp:68
 #, fuzzy
@@ -218,11 +218,11 @@ msgstr "F5"
 
 #: ui_alumnoslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_alumnoslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:370
 #, fuzzy
@@ -231,7 +231,7 @@ msgstr "Filtrar balanç"
 
 #: ui_alumnobase.h:502
 msgid "Fotografia"
-msgstr ""
+msgstr "Fotografia"
 
 #: ui_alumnobase.h:467 ui_alumnobase.h:472
 #, fuzzy
@@ -306,11 +306,11 @@ msgstr "Regularització"
 
 #: ui_alumnobase.h:513
 msgid "Telefono fijo:"
-msgstr ""
+msgstr "Telèfon fix:"
 
 #: ui_alumnobase.h:514
 msgid "Telefono movil:"
-msgstr ""
+msgstr "Telèfon mòbil:"
 
 #: alumnoview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."

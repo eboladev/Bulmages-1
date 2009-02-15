@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,14 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: listlinfacturaview.cpp:56 listdescfacturaview.cpp:42
+#: listdescfacturaview.cpp:42 listlinfacturaview.cpp:56
 #, fuzzy
 msgid "% Descuento"
 msgstr "Document:"
 
 #: listlinfacturaview.cpp:55
 msgid "% Recargo E.Q."
-msgstr ""
+msgstr "% Recàrrec E.Q."
 
 #: ui_facturabase.h:722 ui_albaranclientebase.h:788 ui_pedidoclientebase.h:714
 #, fuzzy
@@ -79,7 +79,7 @@ msgstr "&Detalls"
 
 #: pluginfactura.cpp:98
 msgid "&Facturas a clientes"
-msgstr ""
+msgstr "&Factures a clients"
 
 #: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
 #: genfacqtoolbutton.cpp:423
@@ -105,11 +105,11 @@ msgstr "&Sí"
 #: ui_pedidoclientebase.h:710 ui_pedidoclientebase.h:711
 #: ui_pedidoclientebase.h:712 ui_pedidoclientebase.h:713
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: facturaview.cpp:207
 msgid "ALBARAN: Num "
-msgstr ""
+msgstr "ALBARÀ: Num(sp)"
 
 #: ui_facturaslistbase.h:509 ui_facturaslistbase.h:514
 #: ui_albaranclientelistbase.h:514 ui_albaranclientelistbase.h:519
@@ -119,7 +119,7 @@ msgstr "Actual·litza llistat"
 
 #: ui_facturabase.h:680 ui_facturabase.h:685
 msgid "Agregar albaran a la factura"
-msgstr ""
+msgstr "Afegir albarà a la factura"
 
 #: facturaview.cpp:75
 #, fuzzy
@@ -128,11 +128,11 @@ msgstr "<LI> Magatzem <B>"
 
 #: genfacqtoolbutton.cpp:292
 msgid "Albaran ya existe"
-msgstr ""
+msgstr "Albarà ja existent"
 
 #: ui_albaranclientelistbase.h:434
 msgid "Albaranes a clientes"
-msgstr ""
+msgstr "Albarans a clients"
 
 #: facturaview.cpp:63
 #, fuzzy
@@ -149,7 +149,7 @@ msgstr "<LI> Magatzem <B>"
 msgid "Base imponible"
 msgstr "Empreses disponibles:"
 
-#: ui_facturaslistbase.h:431 ui_facturabase.h:711 ui_albaranclientebase.h:777
+#: ui_facturabase.h:711 ui_facturaslistbase.h:431 ui_albaranclientebase.h:777
 #: ui_pedidoclientebase.h:703
 #, fuzzy
 msgid "Base imponible:"
@@ -160,8 +160,8 @@ msgstr "Empreses disponibles:"
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
-#: ui_facturaslistbase.h:461 ui_facturaslistbase.h:466 ui_facturabase.h:648
-#: ui_facturabase.h:653
+#: ui_facturabase.h:648 ui_facturabase.h:653 ui_facturaslistbase.h:461
+#: ui_facturaslistbase.h:466
 #, fuzzy
 msgid "Borrar factura"
 msgstr "Esborra quota"
@@ -175,7 +175,7 @@ msgstr "Esborrar"
 #: ui_facturaslistbase.h:519 ui_albaranclientelistbase.h:524
 #: ui_pedidosclientelistbase.h:465
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: facturaslist.cpp:374
 #, fuzzy
@@ -203,7 +203,7 @@ msgstr "Codi compte"
 
 #: listlinfacturaview.cpp:48
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Codi complet article"
 
 #: facturaview.cpp:68
 msgid "Comentario"
@@ -289,7 +289,7 @@ msgstr "Cal triar un compte"
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: facturaslist.cpp:370 facturaview.cpp:70 listlinfacturaview.cpp:51
+#: facturaslist.cpp:370 listlinfacturaview.cpp:51 facturaview.cpp:70
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -325,11 +325,11 @@ msgstr "Imprimeix la comanda"
 
 #: facturaslist.cpp:273
 msgid "Error al borrar la factura a cliente"
-msgstr ""
+msgstr "Error al esborrar la factura a client"
 
 #: facturaview.cpp:116
 msgid "Error al crear la factura"
-msgstr ""
+msgstr "Error al crear la factura"
 
 #: genfacqtoolbutton.cpp:234 genfacqtoolbutton.cpp:360
 #: genfacqtoolbutton.cpp:489 facturaview.cpp:268
@@ -342,12 +342,16 @@ msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
+"Existeix un albarà a aquest client amb la mateixa referència que aquesta "
+"comanda.Desitja obrir-lo per a verificar?"
 
 #: genfacqtoolbutton.cpp:165
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
+"Existeix una factura a aquest client amb la mateixa referència que aquest "
+"albarà. Desitja obrir-la per a verificar?"
 
 #: genfacqtoolbutton.cpp:422
 msgid ""
@@ -366,24 +370,24 @@ msgstr "Factura"
 
 #: genfacqtoolbutton.cpp:164
 msgid "Factura existente"
-msgstr ""
+msgstr "Factura existent"
 
 #: genfacqtoolbutton.cpp:421
 msgid "Factura ya existe"
 msgstr ""
 
-#: facturaslist.cpp:240 pluginfactura.cpp:100 pluginfactura.cpp:101
+#: pluginfactura.cpp:100 pluginfactura.cpp:101 facturaslist.cpp:240
 #: ui_facturaslistbase.h:427
 msgid "Facturas a clientes"
-msgstr ""
+msgstr "Factures a clients"
 
 #: facturaslist.cpp:118
 msgid "Facturas no procesadas"
-msgstr ""
+msgstr "Factures no processades"
 
 #: facturaslist.cpp:117
 msgid "Facturas procesadas"
-msgstr ""
+msgstr "Factures processades"
 
 #: facturaslist.cpp:363
 msgid "Fecha"
@@ -397,12 +401,12 @@ msgstr "Data de compra:"
 #: ui_facturaslistbase.h:430 ui_albaranclientelistbase.h:437
 #: ui_pedidosclientelistbase.h:378
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_facturaslistbase.h:429 ui_albaranclientelistbase.h:436
 #: ui_pedidosclientelistbase.h:377
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: facturaview.cpp:207
 msgid "Fecha:"
@@ -486,8 +490,8 @@ msgstr "Id compte"
 msgid "Id descuento"
 msgstr "Id compte"
 
-#: facturaslist.cpp:371 facturaview.cpp:61 listlinfacturaview.cpp:57
-#: listdescfacturaview.cpp:43
+#: facturaslist.cpp:371 listdescfacturaview.cpp:43 listlinfacturaview.cpp:57
+#: facturaview.cpp:61
 #, fuzzy
 msgid "Id factura"
 msgstr "Factura"
@@ -527,7 +531,7 @@ msgstr "Imprimeix la comanda"
 msgid "Impuestos"
 msgstr "Imputació"
 
-#: ui_facturaslistbase.h:432 ui_facturabase.h:713 ui_albaranclientebase.h:779
+#: ui_facturabase.h:713 ui_facturaslistbase.h:432 ui_albaranclientebase.h:779
 #: ui_pedidoclientebase.h:705
 #, fuzzy
 msgid "Impuestos:"
@@ -537,7 +541,7 @@ msgstr "Imputació"
 #: ui_albaranclientebase.h:758 ui_pedidoclientebase.h:681
 #: ui_pedidoclientebase.h:686
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar capçalera"
 
 #: ui_facturaslistbase.h:428 ui_albaranclientelistbase.h:435
 #: ui_pedidosclientelistbase.h:379
@@ -640,7 +644,7 @@ msgstr "Compte d'actiu:"
 
 #: facturaslist.cpp:369 ui_facturabase.h:702
 msgid "Procesada"
-msgstr ""
+msgstr "Processada"
 
 #: facturaview.cpp:66
 #, fuzzy
@@ -664,15 +668,15 @@ msgstr "Factura"
 
 #: facturaview.cpp:207
 msgid "Ref:"
-msgstr ""
+msgstr "Ref:"
 
 #: facturaview.cpp:69
 msgid "Referencia"
-msgstr ""
+msgstr "Referència"
 
 #: ui_facturabase.h:688 ui_albaranclientebase.h:750 ui_pedidoclientebase.h:678
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
 #: genfacqtoolbutton.cpp:580
 msgid "Seleccione la factura a la que agregar el albaran."
@@ -680,7 +684,7 @@ msgstr ""
 
 #: facturaslist.cpp:373 facturaview.cpp:67
 msgid "Serie"
-msgstr ""
+msgstr "Sèrie"
 
 #: ui_facturabase.h:703
 #, fuzzy
@@ -713,7 +717,7 @@ msgstr "<HR><B>Tractant la factura"
 msgid "Total"
 msgstr "Totals:"
 
-#: ui_facturaslistbase.h:433 ui_facturabase.h:715 ui_albaranclientebase.h:781
+#: ui_facturabase.h:715 ui_facturaslistbase.h:433 ui_albaranclientebase.h:781
 #: ui_pedidoclientebase.h:707 ui_pedidosclientelistbase.h:466
 #, fuzzy
 msgid "Total:"
@@ -726,16 +730,16 @@ msgstr "Totals:"
 
 #: facturaview.cpp:71
 msgid "Trabajador"
-msgstr ""
+msgstr "Treballador"
 
 #: ui_albaranclientebase.h:765 ui_pedidoclientebase.h:693
 msgid "Trabajador:"
-msgstr ""
+msgstr "Treballador:"
 
 #: ui_facturabase.h:670 ui_facturabase.h:675
 msgid "Ver albaranes con la misma referencia"
-msgstr ""
+msgstr "Veure albarans amb la mateixa referència"
 
 #: ui_albaranclientebase.h:741 ui_albaranclientebase.h:746
 msgid "Ver pedidos con la misma referencia"
-msgstr ""
+msgstr "Veure comandes amb la mateixa referència"

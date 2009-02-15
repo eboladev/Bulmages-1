@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,8 +84,8 @@ msgstr ""
 msgid "Error al crear el albaran a cliente"
 msgstr ""
 
-#: albaranclienteview.cpp:204 genalbqtoolbutton.cpp:142
-#: genalbqtoolbutton.cpp:271
+#: albaranclienteview.cpp:204 genalbqtoolbutton.cpp:143
+#: genalbqtoolbutton.cpp:272
 msgid "Tiene que seleccionar un cliente"
 msgstr ""
 
@@ -93,8 +93,8 @@ msgstr ""
 msgid "No hay pedidos con la misma referencia."
 msgstr ""
 
-#: albaranclienteview.cpp:238 genalbqtoolbutton.cpp:225
-#: genalbqtoolbutton.cpp:354
+#: albaranclienteview.cpp:238 genalbqtoolbutton.cpp:226
+#: genalbqtoolbutton.cpp:355
 msgid "Error inesperado"
 msgstr ""
 
@@ -191,29 +191,29 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: genalbqtoolbutton.cpp:157
+#: genalbqtoolbutton.cpp:158
 msgid "Albaran ya existe"
 msgstr ""
 
-#: genalbqtoolbutton.cpp:158
+#: genalbqtoolbutton.cpp:159
 msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+#: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 msgid "&Si"
 msgstr ""
 
-#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+#: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 msgid "&No"
 msgstr ""
 
-#: genalbqtoolbutton.cpp:286
+#: genalbqtoolbutton.cpp:287
 msgid "Factura ya existe"
 msgstr ""
 
-#: genalbqtoolbutton.cpp:287
+#: genalbqtoolbutton.cpp:288
 msgid ""
 "Existe una albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"

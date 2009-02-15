@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,7 +80,7 @@ msgstr "&Sí"
 #: ui_compraventabase.h:933 ui_compraventabase.h:934 ui_compraventabase.h:935
 #: ui_compraventabase.h:936 ui_compraventabase.h:937 ui_compraventabase.h:938
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_compraventabase.h:879 ui_compraventabase.h:884
 #, fuzzy
@@ -185,7 +185,7 @@ msgstr "Document:"
 
 #: compraventaview.cpp:137
 msgid "Error al crear el albaran a cliente"
-msgstr ""
+msgstr "Error al crear l'albarà a client"
 
 #: compraventaview.cpp:533 compraventaview.cpp:684
 #, fuzzy
@@ -201,6 +201,8 @@ msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
+"Existeix una factura a aquest client amb la mateixa referència que aquest "
+"albarà. Desitja obrir-la per a verificar?"
 
 #: compraventaview.cpp:466
 msgid ""
@@ -210,11 +212,11 @@ msgstr ""
 
 #: compraventaview.cpp:465
 msgid "Factura de proveedor existente"
-msgstr ""
+msgstr "Factura de proveïdor existent"
 
 #: compraventaview.cpp:586
 msgid "Factura existente"
-msgstr ""
+msgstr "Factura existent"
 
 #: compraventaview.cpp:68
 #, fuzzy
@@ -242,7 +244,7 @@ msgstr "Forma de pagament:"
 
 #: ui_compraventabase.h:868 ui_compraventabase.h:873
 msgid "Generar factura a partir de este albaran"
-msgstr ""
+msgstr "Genera factura a partir d'aquest albarà"
 
 #: ui_compraventabase.h:824 ui_compraventabase.h:829
 #, fuzzy
@@ -294,7 +296,7 @@ msgstr "Imputació"
 
 #: ui_compraventabase.h:902 ui_compraventabase.h:907
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar capçalera"
 
 #: compraventaview.cpp:67
 #, fuzzy
@@ -333,7 +335,7 @@ msgstr "C.P.:"
 
 #: compraventaview.cpp:95
 msgid "Referencia"
-msgstr ""
+msgstr "Referència"
 
 #: compraventaview.cpp:73
 #, fuzzy
@@ -342,11 +344,11 @@ msgstr "Direcció del proveïdor"
 
 #: ui_compraventabase.h:899
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
 #: ui_compraventabase.h:890 ui_compraventabase.h:895
 msgid "Registrar cobro a cliente"
-msgstr ""
+msgstr "Registrar cobrament a client"
 
 #: compraventaview.cpp:88
 #, fuzzy
@@ -379,12 +381,12 @@ msgstr "Totals:"
 
 #: compraventaview.cpp:92
 msgid "Trabajador"
-msgstr ""
+msgstr "Treballador"
 
 #: ui_compraventabase.h:916
 msgid "Trabajador:"
-msgstr ""
+msgstr "Treballador:"
 
 #: ui_compraventabase.h:857 ui_compraventabase.h:862
 msgid "Ver pedidos con la misma referencia"
-msgstr ""
+msgstr "Veure comandes amb la mateixa referència"

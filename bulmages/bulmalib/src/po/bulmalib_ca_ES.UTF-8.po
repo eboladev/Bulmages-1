@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,11 +34,11 @@ msgstr "Tan&car"
 msgid "&Cerrar el programa"
 msgstr "Tan&car el programa"
 
-#: blcompanydialog.cpp:213
 msgid "&Cierra el programa"
 msgstr "Tan&ca el programa"
 
-#: funcaux.cpp:525 funcaux.cpp:554 funcaux.cpp:564 funcaux.cpp:574
+#: blfunctions.cpp:525 blfunctions.cpp:554 blfunctions.cpp:564
+#: blfunctions.cpp:574
 msgid "&Continuar"
 msgstr "&Continuar"
 
@@ -59,7 +59,7 @@ msgstr "Desar"
 msgid "&No"
 msgstr "&No"
 
-#: funcaux.cpp:526
+#: blfunctions.cpp:526
 msgid "&Omitir"
 msgstr "&Ometre"
 
@@ -71,43 +71,43 @@ msgstr "&Sí"
 msgid "&Validar"
 msgstr "&Validar"
 
-#: pgimportfiles.cpp:1902
+#: pgimportfiles.cpp:1901
 msgid "<HR><B>Tratando el cliente "
 msgstr "<HR><B>Tractant el client"
 
-#: pgimportfiles.cpp:1915
+#: pgimportfiles.cpp:1914
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 msgstr "<LI> El client no existeix, s'ha inserir aquest</LI>\n"
 
-#: pgimportfiles.cpp:1910
+#: pgimportfiles.cpp:1909
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
 msgstr "<LI> El client ja existeix, es poden fer modificacions</LI>\n"
 
-#: pgimportfiles.cpp:624
+#: pgimportfiles.cpp:623
 msgid "<LI>Apunte fuera de fecha</LI>\n"
 msgstr "<LI>Apunte fora de la data</LI>\n"
 
-#: pgimportfiles.cpp:699
+#: pgimportfiles.cpp:698
 msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
 msgstr "<LI>Exportant Nova Forma de Pagament</LI>\n"
 
-#: pgimportfiles.cpp:622
+#: pgimportfiles.cpp:621
 msgid "<LI>Insercion de apunte"
 msgstr "<LI>Inserció d'apunt"
 
-#: pgimportfiles.cpp:594
+#: pgimportfiles.cpp:593
 msgid "<LI>Insercion de asiento"
 msgstr "<LI>Inserció d'assentament"
 
-#: pgimportfiles.cpp:482
+#: pgimportfiles.cpp:481
 msgid "<LI>Se ha insertado la cuenta "
 msgstr "<LI>S'ha inserit el compte"
 
-#: pgimportfiles.cpp:635
+#: pgimportfiles.cpp:634
 msgid "<LI>Terminado</LI>\n"
 msgstr "<LI>Terminat</LI>\n"
 
-#: pgimportfiles.cpp:485
+#: pgimportfiles.cpp:484
 msgid "<LI>Ya hay una cuenta con el codigo "
 msgstr "<LI>Ja hi ha un compte amb el codi"
 
@@ -119,23 +119,23 @@ msgstr "Actualitzar Llistat"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualitzar Llistat d'Empreses"
 
-#: blsubform.cpp:2333
+#: blsubform.cpp:2436
 msgid "Ajustar altura"
 msgstr "Ajustar altura"
 
-#: blsubform.cpp:2336
+#: blsubform.cpp:2439
 msgid "Ajustar alturas"
 msgstr "Ajustar altures"
 
-#: blsubform.cpp:2332
+#: blsubform.cpp:2435
 msgid "Ajustar columa"
 msgstr "Ajustar columna"
 
-#: blsubform.cpp:2335
+#: blsubform.cpp:2438
 msgid "Ajustar columnas"
 msgstr "Ajustar columnes"
 
-#: pgimportfiles.cpp:2045
+#: pgimportfiles.cpp:2044
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -144,7 +144,6 @@ msgstr "<LI> Magatzem <B>"
 msgid "Anual"
 msgstr "Anual"
 
-#: blcompanydialog.cpp:491
 msgid "Anyo"
 msgstr "Any"
 
@@ -152,20 +151,19 @@ msgstr "Any"
 msgid "Aplicar"
 msgstr "Aplicar"
 
-#: pgimportfiles.cpp:1471
+#: pgimportfiles.cpp:1470
 msgid "Application name"
 msgstr "Nom de la aplicació"
 
-#: blcompanydialog.cpp:491
 msgid "Archivo"
 msgstr "Arxiu"
 
-#: pgimportfiles.cpp:2208
+#: pgimportfiles.cpp:2207
 #, fuzzy
 msgid "Articulo"
 msgstr "<P> Article <B>"
 
-#: funcaux.cpp:563
+#: blfunctions.cpp:563
 msgid "Aviso del programa"
 msgstr "Avís del programa"
 
@@ -183,7 +181,7 @@ msgstr "Esborrar"
 msgid "Borrar pais"
 msgstr "Esborrar"
 
-#: blsubform.cpp:2329
+#: blsubform.cpp:2432
 msgid "Borrar registro"
 msgstr "Esborrar registre"
 
@@ -200,7 +198,7 @@ msgstr ""
 msgid "Cancelar"
 msgstr "&Cancel·lar"
 
-#: blsubform.cpp:1076
+#: blsubform.cpp:1179
 #, fuzzy
 msgid "Cargando SubFormulario "
 msgstr "Configuració Subformularis"
@@ -277,22 +275,22 @@ msgstr ""
 msgid "Datos del pais:"
 msgstr ""
 
-#: pgimportfiles.cpp:2028
+#: pgimportfiles.cpp:2027
 #, fuzzy
 msgid "Datos insuficientes para tratar el almacen."
 msgstr "<LI>Dades insuficients per tractar el magatzem."
 
-#: pgimportfiles.cpp:2177
+#: pgimportfiles.cpp:2176
 #, fuzzy
 msgid "Datos insuficientes para tratar el articulo."
 msgstr "<P>Dades insuficients per a tractar l'article.</P>"
 
-#: pgimportfiles.cpp:2089
+#: pgimportfiles.cpp:2088
 #, fuzzy
 msgid "Datos insuficientes para tratar la familia."
 msgstr "<P>Dades insuficients per a tractar la família.</P>"
 
-#: pgimportfiles.cpp:1979
+#: pgimportfiles.cpp:1978
 #, fuzzy
 msgid "Datos insuficientes para tratar la forma de pago."
 msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
@@ -318,36 +316,36 @@ msgstr "Editar"
 msgid "Ejecutar consulta"
 msgstr "Executar consulta"
 
-#: pgimportfiles.cpp:2322 pgimportfiles.cpp:2551 pgimportfiles.cpp:2776
-#: pgimportfiles.cpp:3014
+#: pgimportfiles.cpp:2321 pgimportfiles.cpp:2550 pgimportfiles.cpp:2775
+#: pgimportfiles.cpp:3013
 #, fuzzy
 msgid "El almacen del presupuesto no existe"
 msgstr "El magatzem del pressupost no existeix<BR>"
 
-#: pgimportfiles.cpp:2403 pgimportfiles.cpp:2629 pgimportfiles.cpp:2867
-#: pgimportfiles.cpp:3096
+#: pgimportfiles.cpp:2402 pgimportfiles.cpp:2628 pgimportfiles.cpp:2866
+#: pgimportfiles.cpp:3095
 #, fuzzy
 msgid "El articulo de la linea de presupuesto no existe"
 msgstr "El article de la línia de pressupost no existeix<BR>"
 
-#: pgimportfiles.cpp:2332 pgimportfiles.cpp:2561 pgimportfiles.cpp:2785
-#: pgimportfiles.cpp:3024
+#: pgimportfiles.cpp:2331 pgimportfiles.cpp:2560 pgimportfiles.cpp:2784
+#: pgimportfiles.cpp:3023
 #, fuzzy
 msgid "El cliente del presupuesto no existe"
 msgstr "El client del pressupost no existeix<BR>"
 
-#: pgimportfiles.cpp:2352 pgimportfiles.cpp:2579 pgimportfiles.cpp:2804
-#: pgimportfiles.cpp:3044
+#: pgimportfiles.cpp:2351 pgimportfiles.cpp:2578 pgimportfiles.cpp:2803
+#: pgimportfiles.cpp:3043
 #, fuzzy
 msgid "El empleado del presupuesto no existe"
 msgstr "L'empleat del pressupost no existeix<BR>"
 
-#: pgimportfiles.cpp:1950
+#: pgimportfiles.cpp:1949
 #, fuzzy
 msgid "El proveedor no existe, se debe hacer una insercion de este"
 msgstr "<LI> El proveïdor no existeix, s'ha inserir aquest</LI>"
 
-#: pgimportfiles.cpp:1945
+#: pgimportfiles.cpp:1944
 #, fuzzy
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "<LI> El proveïdor ja existeix, es poden fer modificacions</LI>"
@@ -360,7 +358,7 @@ msgstr "Empreses disponibles:"
 msgid "Error al crear el banco"
 msgstr ""
 
-#: blpostgresqlclient.cpp:139
+#: blpostgresqlclient.cpp:138
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Error al fer una consulta a la base de dades."
 
@@ -368,11 +366,11 @@ msgstr "Error al fer una consulta a la base de dades."
 msgid "Error al intentar borrar el pais"
 msgstr ""
 
-#: funcaux.cpp:573
+#: blfunctions.cpp:573
 msgid "Error del programa"
 msgstr "Error del programa"
 
-#: pgimportfiles.cpp:1471
+#: pgimportfiles.cpp:1470
 msgid ""
 "Error en el XML.\n"
 "Documento mal formado."
@@ -380,11 +378,11 @@ msgstr ""
 "Error en el XML.\n"
 "Document malament formatat."
 
-#: logpass.cpp:110
+#: logpass.cpp:109
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuari i/o contrasenya incorrecta"
 
-#: blworkspace.cpp:91
+#: blworkspace.cpp:90
 msgid "Esc"
 msgstr "Esc"
 
@@ -392,11 +390,11 @@ msgstr "Esc"
 msgid "Escriba aqui la consulta SQL"
 msgstr "Esquigui aquí una consulta SQL"
 
-#: pgimportfiles.cpp:401 pgimportfiles.cpp:1414
+#: pgimportfiles.cpp:400 pgimportfiles.cpp:1413
 msgid "Exportando :"
 msgstr "Exportant :"
 
-#: pgimportfiles.cpp:2106
+#: pgimportfiles.cpp:2105
 #, fuzzy
 msgid "Familia"
 msgstr "<P> Família <B>"
@@ -412,13 +410,13 @@ msgstr "Form1"
 
 #: ui_fichacfgbase.h:286
 msgid "Form Elements"
-msgstr ""
+msgstr "Form Elements"
 
 #: ui_busquedafechabase.h:86 ui_busquedabase.h:98
 msgid "Form1"
 msgstr "Form1"
 
-#: pgimportfiles.cpp:1998
+#: pgimportfiles.cpp:1997
 #, fuzzy
 msgid "Forma de pago"
 msgstr "<LI> Forma de pagament <B>"
@@ -441,7 +439,7 @@ msgstr ""
 msgid "Id. Provincia"
 msgstr ""
 
-#: blsubform.cpp:2070
+#: blsubform.cpp:2173
 msgid "Imprimiendo "
 msgstr ""
 
@@ -449,34 +447,34 @@ msgstr ""
 msgid "Imprimir ficha"
 msgstr ""
 
-#: listventanas.cpp:150 listventanas.cpp:151
+#: listventanas.cpp:149 listventanas.cpp:150
 msgid "Indexador"
 msgstr "Indexador"
 
-#: funcaux.cpp:523
+#: blfunctions.cpp:523
 msgid "Informacion de depuracion"
 msgstr "Informació de depuració"
 
-#: funcaux.cpp:553
+#: blfunctions.cpp:553
 msgid "Informacion del programa"
 msgstr "Informació del programa"
 
-#: pgimportfiles.cpp:1998
+#: pgimportfiles.cpp:1997
 #, fuzzy
 msgid "Insertada"
 msgstr "</B> Inserida"
 
-#: pgimportfiles.cpp:2814
+#: pgimportfiles.cpp:2813
 msgid "La factura ya existe y no se va a insertar."
 msgstr "La factura ja existeix i no es pot inserir."
 
-#: pgimportfiles.cpp:2152
+#: pgimportfiles.cpp:2151
 #, fuzzy
 msgid "La familia del articulo no existe"
 msgstr "La família de l'article no existeix<BR>"
 
-#: pgimportfiles.cpp:2342 pgimportfiles.cpp:2570 pgimportfiles.cpp:2794
-#: pgimportfiles.cpp:3034
+#: pgimportfiles.cpp:2341 pgimportfiles.cpp:2569 pgimportfiles.cpp:2793
+#: pgimportfiles.cpp:3033
 #, fuzzy
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forma de pagament del pressupost no existeix<BR>"
@@ -487,7 +485,7 @@ msgstr "Llançador BulmaGés"
 
 #: ui_busquedabase.h:109
 msgid "Limpiar campo"
-msgstr ""
+msgstr "Neteja camp"
 
 #: ui_msgerrorbase.h:109
 msgid "Mensaje"
@@ -510,7 +508,7 @@ msgstr "Actualitzar Llistat d'Empreses"
 msgid "Mostrar/ocultar detalle"
 msgstr ""
 
-#: pgimportfiles.cpp:2084
+#: pgimportfiles.cpp:2083
 #, fuzzy
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "<P> No s'ha trobat el pare d'aquesta família.</P>"
@@ -523,7 +521,6 @@ msgstr "No s'ha pogut esborrar"
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
-#: blcompanydialog.cpp:491 blsubform.cpp:94
 msgid "Nombre"
 msgstr "Nom"
 
@@ -532,7 +529,7 @@ msgstr "Nom"
 msgid "Nombre Pais"
 msgstr "Nom d'usuari:"
 
-#: blsubform.cpp:94
+#: blsubform.cpp:197
 #, fuzzy
 msgid "Nombre de campo"
 msgstr "Nom d'usuari:"
@@ -555,7 +552,7 @@ msgstr "Nom d'usuari:"
 msgid "Nuevo pais"
 msgstr ""
 
-#: funcaux.cpp:527
+#: blfunctions.cpp:527
 msgid "Omitir &clase"
 msgstr "Ometre &classe"
 
@@ -587,7 +584,6 @@ msgstr ""
 msgid "Paises"
 msgstr ""
 
-#: blcompanydialog.cpp:282
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Per a entrar, abans ha de seleccionar una empresa."
 
@@ -597,7 +593,7 @@ msgstr ""
 
 #: paisview.cpp:61
 msgid "Provincia"
-msgstr ""
+msgstr "Provincia"
 
 #: ui_fichacfgbase.h:291
 msgid "Qt Scripting"
@@ -626,7 +622,7 @@ msgid ""
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
 
-#: busquedafecha.cpp:183
+#: busquedafecha.cpp:182
 #, fuzzy
 msgid "Seleccione fecha"
 msgstr "Seleccioni una empresa"
@@ -656,7 +652,6 @@ msgstr ""
 msgid "Tiene que seleccionar un elemento"
 msgstr "Ha de seleccionar un element"
 
-#: blcompanydialog.cpp:491
 msgid "Tipo"
 msgstr "Tipus"
 
@@ -672,87 +667,87 @@ msgstr "Total pàgines:"
 msgid "Trabajando"
 msgstr ""
 
-#: pgimportfiles.cpp:2478
+#: pgimportfiles.cpp:2477
 #, fuzzy
 msgid "Tratando DAlbaran"
 msgstr "<HR><B>Tractant l'albarà"
 
-#: pgimportfiles.cpp:2704
+#: pgimportfiles.cpp:2703
 #, fuzzy
 msgid "Tratando DFactura"
 msgstr "<HR><B>Tractant la factura"
 
-#: pgimportfiles.cpp:2251
+#: pgimportfiles.cpp:2250
 #, fuzzy
 msgid "Tratando DPedidoCliente"
 msgstr "<HR><B>Tractant comana del client"
 
-#: pgimportfiles.cpp:2942
+#: pgimportfiles.cpp:2941
 #, fuzzy
 msgid "Tratando DPresupuesto"
 msgstr "<HR><B>Tractant el pressupost"
 
-#: pgimportfiles.cpp:2450
+#: pgimportfiles.cpp:2449
 #, fuzzy
 msgid "Tratando LAlbaran"
 msgstr "<HR><B>Tractant l'albarà"
 
-#: pgimportfiles.cpp:2676
+#: pgimportfiles.cpp:2675
 #, fuzzy
 msgid "Tratando LFactura"
 msgstr "<HR><B>Tractant la factura"
 
-#: pgimportfiles.cpp:2223
+#: pgimportfiles.cpp:2222
 #, fuzzy
 msgid "Tratando LPedidoCliente"
 msgstr "<HR><B>Tractant la comana del client"
 
-#: pgimportfiles.cpp:2914
+#: pgimportfiles.cpp:2913
 #, fuzzy
 msgid "Tratando LPresupuesto"
 msgstr "<HR><B>Tractant el pressupost"
 
-#: pgimportfiles.cpp:2499
+#: pgimportfiles.cpp:2498
 #, fuzzy
 msgid "Tratando albaran"
 msgstr "<HR><B>Tractant l'albarà"
 
-#: pgimportfiles.cpp:2014
+#: pgimportfiles.cpp:2013
 #, fuzzy
 msgid "Tratando almacen"
 msgstr "<HR><B>Tractant magatzem"
 
-#: pgimportfiles.cpp:2125
+#: pgimportfiles.cpp:2124
 #, fuzzy
 msgid "Tratando articulo"
 msgstr "<HR><B>Tractant Article"
 
-#: pgimportfiles.cpp:1937
+#: pgimportfiles.cpp:1936
 #, fuzzy
 msgid "Tratando el proveedor"
 msgstr "<HR><B>Trotant el proveïdor"
 
-#: pgimportfiles.cpp:2725
+#: pgimportfiles.cpp:2724
 #, fuzzy
 msgid "Tratando factura"
 msgstr "<HR><B>Tractant la factura"
 
-#: pgimportfiles.cpp:2064
+#: pgimportfiles.cpp:2063
 #, fuzzy
 msgid "Tratando familia"
 msgstr "<HR><B>Tractant família"
 
-#: pgimportfiles.cpp:1971
+#: pgimportfiles.cpp:1970
 #, fuzzy
 msgid "Tratando la forma de pago"
 msgstr "<HR><B>Tractant la forma de pagament"
 
-#: pgimportfiles.cpp:2272
+#: pgimportfiles.cpp:2271
 #, fuzzy
 msgid "Tratando pedido cliente"
 msgstr "<HR><B>Tractant  Comana Client"
 
-#: pgimportfiles.cpp:2963
+#: pgimportfiles.cpp:2962
 #, fuzzy
 msgid "Tratando presupuesto"
 msgstr "<HR><B>Tractant el pressupost"
@@ -769,30 +764,30 @@ msgstr "Arranjament d'usuari"
 msgid "Usuario Actual"
 msgstr "Usuari actual "
 
-#: blsubform.cpp:2339
+#: blsubform.cpp:2442
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Ver/Ocultar configurador de subformulari"
 
-#: blsubform.cpp:94
+#: blsubform.cpp:197
 msgid "Visible"
 msgstr "Visible"
 
-#: pgimportfiles.cpp:2097
+#: pgimportfiles.cpp:2096
 #, fuzzy
 msgid "Ya existe esta familia."
 msgstr "<P> Ja existeix aquesta família.</P>"
 
-#: pgimportfiles.cpp:1988
+#: pgimportfiles.cpp:1987
 #, fuzzy
 msgid "Ya existe esta forma de pago."
 msgstr "<LI> Ja existeix la forma de pagament."
 
-#: pgimportfiles.cpp:2036
+#: pgimportfiles.cpp:2035
 #, fuzzy
 msgid "Ya existe este almacen."
 msgstr "<LI> Ja existeix el magatzem."
 
-#: pgimportfiles.cpp:2186
+#: pgimportfiles.cpp:2185
 #, fuzzy
 msgid "Ya existe este articulo."
 msgstr "<P> Aquest article ja existeix.</P>"
@@ -801,12 +796,12 @@ msgstr "<P> Aquest article ja existeix.</P>"
 msgid "idpais"
 msgstr "idpais"
 
-#: pgimportfiles.cpp:2106
+#: pgimportfiles.cpp:2105
 #, fuzzy
 msgid "insertada"
 msgstr "</B> Inserida"
 
-#: pgimportfiles.cpp:2045 pgimportfiles.cpp:2208
+#: pgimportfiles.cpp:2044 pgimportfiles.cpp:2207
 #, fuzzy
 msgid "insertado"
 msgstr "</B> Inserit"

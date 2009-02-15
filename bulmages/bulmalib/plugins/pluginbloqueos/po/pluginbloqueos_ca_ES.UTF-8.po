@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:25+0100\n"
+"POT-Creation-Date: 2009-02-15 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,6 @@ msgstr ""
 msgid "Desbloquear ficha"
 msgstr "Desbloqueja fitxa"
 
-#: pluginbloqueos.cpp:65
+#: pluginbloqueos.cpp:64
 msgid "Ficha bloqueada por otro usuario, no podra hacer modificaciones"
 msgstr ""

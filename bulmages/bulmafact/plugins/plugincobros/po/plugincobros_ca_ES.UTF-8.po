@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgstr "Actual·litza llistat"
 
 #: cobroslist.cpp:324
 msgid "Apellidos del trabajador"
-msgstr ""
+msgstr "Cognoms del treballador"
 
 #: cobroview.cpp:69 cobroslist.cpp:318
 #, fuzzy
@@ -90,7 +90,7 @@ msgstr "Esborra quota"
 
 #: ui_cobroslistbase.h:465
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: cobroslist.cpp:312
 #, fuzzy
@@ -117,7 +117,7 @@ msgstr ""
 
 #: cobroslist.cpp:181 plugincobros.cpp:99 plugincobros.cpp:100
 msgid "Cobros a clientes"
-msgstr ""
+msgstr "Cobraments a clients"
 
 #: ui_cobroslistbase.h:373
 #, fuzzy
@@ -215,7 +215,7 @@ msgstr ""
 
 #: cobroslist.cpp:211
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Error al esborrar el cobrament a client"
 
 #: cobroview.cpp:75
 #, fuzzy
@@ -253,11 +253,11 @@ msgstr "Data de compra:"
 
 #: ui_cobroslistbase.h:375
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_cobroslistbase.h:376
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_cobroslistbase.h:431 ui_cobroslistbase.h:436
 #, fuzzy
@@ -276,11 +276,11 @@ msgstr "ID compte"
 
 #: cobroslist.cpp:309
 msgid "ID cobro"
-msgstr ""
+msgstr "ID cobrament"
 
 #: cobroslist.cpp:322
 msgid "ID trabajador"
-msgstr ""
+msgstr "ID treballador"
 
 #: cobroview.cpp:61
 #, fuzzy
@@ -322,27 +322,27 @@ msgstr "Nombre de quotes"
 
 #: cobroview.cpp:63
 msgid "Prevision"
-msgstr ""
+msgstr "Previsió"
 
 #: cobroslist.cpp:320
 msgid "Prevision de cobro"
-msgstr ""
+msgstr "Previsió de cobrament"
 
 #: ui_cobrobase.h:405
 msgid "Provision de fondos"
-msgstr ""
+msgstr "Provisió de fons"
 
 #: cobroview.cpp:66
 msgid "Referencia"
-msgstr ""
+msgstr "Referència"
 
 #: cobroslist.cpp:319
 msgid "Referencia del cobro"
-msgstr ""
+msgstr "Referència de cobrament"
 
 #: ui_cobrobase.h:403
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
 #: cobroview.cpp:121
 msgid "Tiene que guardar el documento antes de poder imprimirlo."

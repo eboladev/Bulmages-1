@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:48+0100\n"
+"POT-Creation-Date: 2009-02-15 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginimportcsv.cpp:59
+#: pluginimportcsv.cpp:55
 #, fuzzy
 msgid "&Importacion CSV"
 msgstr "Imputació"
@@ -31,7 +31,7 @@ msgstr "..."
 msgid "Aceptar"
 msgstr "Aceptar"
 
-#: importcsv.cpp:70
+#: importcsv.cpp:68
 msgid "All files (*)"
 msgstr ""
 
@@ -58,12 +58,12 @@ msgstr "Llegir empresa"
 msgid "Composicion de Campos"
 msgstr ""
 
-#: importcsv.cpp:52
+#: importcsv.cpp:50
 #, fuzzy
 msgid "Error al crear la ventana de importacion"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: pluginimportcsv.cpp:60 pluginimportcsv.cpp:61
+#: pluginimportcsv.cpp:56 pluginimportcsv.cpp:57
 #, fuzzy
 msgid "Importacion CSV"
 msgstr "Imputació"
@@ -73,7 +73,7 @@ msgstr "Imputació"
 msgid "Importar CSV"
 msgstr "&Importa"
 
-#: importcsv.cpp:70
+#: importcsv.cpp:68
 msgid "Open file"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 
 #: ui_importcsvbase.h:200
 msgid "Separado por tabulador"
-msgstr ""
+msgstr "Separat per tabulador"
 
 #: ui_importcsvbase.h:199
 #, fuzzy

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgstr "&Cancelar"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+#: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 msgid "&No"
 msgstr "&No"
 
@@ -138,7 +138,7 @@ msgstr "&No"
 msgid "&Nuevo albaran a cliente"
 msgstr "&Nuevo albaran a cliente"
 
-#: genalbqtoolbutton.cpp:159 genalbqtoolbutton.cpp:288
+#: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 msgid "&Si"
 msgstr "&Si"
 
@@ -156,11 +156,11 @@ msgstr "Actualizar listado"
 msgid "Albaran"
 msgstr "Albaran"
 
-#: genalbqtoolbutton.cpp:157
+#: genalbqtoolbutton.cpp:158
 msgid "Albaran ya existe"
 msgstr "Albaran ya existe"
 
-#: albaranclientelist.cpp:311 pluginalbaran.cpp:101 pluginalbaran.cpp:102
+#: pluginalbaran.cpp:101 pluginalbaran.cpp:102 albaranclientelist.cpp:311
 #: ui_albaranclientelistbase.h:434
 msgid "Albaranes a clientes"
 msgstr "Albaranes a clientes"
@@ -202,7 +202,7 @@ msgstr "Buscar:"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: albaranclientelist.cpp:156 albaranclienteview.cpp:105
+#: albaranclienteview.cpp:105 albaranclientelist.cpp:156
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -266,7 +266,7 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: albaranclientelist.cpp:385 albaranclienteview.cpp:84
+#: albaranclienteview.cpp:84 albaranclientelist.cpp:385
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -298,12 +298,12 @@ msgstr "Error al borrar el albaran a cliente"
 msgid "Error al crear el albaran a cliente"
 msgstr "Error al crear el albaran a cliente"
 
-#: albaranclienteview.cpp:238 genalbqtoolbutton.cpp:225
-#: genalbqtoolbutton.cpp:354
+#: albaranclienteview.cpp:238 genalbqtoolbutton.cpp:226
+#: genalbqtoolbutton.cpp:355
 msgid "Error inesperado"
 msgstr "Error inesperado"
 
-#: genalbqtoolbutton.cpp:158
+#: genalbqtoolbutton.cpp:159
 msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
@@ -311,7 +311,7 @@ msgstr ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 
-#: genalbqtoolbutton.cpp:287
+#: genalbqtoolbutton.cpp:288
 msgid ""
 "Existe una albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
@@ -323,7 +323,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: genalbqtoolbutton.cpp:286
+#: genalbqtoolbutton.cpp:287
 msgid "Factura ya existe"
 msgstr "Factura ya existe"
 
@@ -431,7 +431,7 @@ msgstr "Nuevo albaran"
 msgid "Nuevo albaran a cliente"
 msgstr "Nuevo albaran a cliente"
 
-#: albaranclientelist.cpp:384 albaranclienteview.cpp:75
+#: albaranclienteview.cpp:75 albaranclientelist.cpp:384
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 
@@ -475,8 +475,8 @@ msgstr "Telefono de contacto"
 msgid "Telefono de contacto:"
 msgstr "Telefono de contacto:"
 
-#: albaranclienteview.cpp:204 genalbqtoolbutton.cpp:142
-#: genalbqtoolbutton.cpp:271
+#: albaranclienteview.cpp:204 genalbqtoolbutton.cpp:143
+#: genalbqtoolbutton.cpp:272
 msgid "Tiene que seleccionar un cliente"
 msgstr "Tiene que seleccionar un cliente"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,6 +113,90 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: ui_tecladonumericobase.h:694
+msgid "+"
+msgstr ""
+
+#: ui_tecladonumericobase.h:695
+msgid "-"
+msgstr ""
+
+#: ui_tecladonumericobase.h:704
+msgid "."
+msgstr ""
+
+#: ui_tecladonumericobase.h:701
+msgid "0"
+msgstr ""
+
+#: ui_tecladonumericobase.h:702
+msgid "00"
+msgstr ""
+
+#: ui_tecladonumericobase.h:689
+msgid "1"
+msgstr "1"
+
+#: ui_tecladonumericobase.h:687
+msgid "2"
+msgstr ""
+
+#: ui_tecladonumericobase.h:685
+msgid "3"
+msgstr ""
+
+#: ui_tecladonumericobase.h:691
+msgid "4"
+msgstr ""
+
+#: ui_tecladonumericobase.h:692
+msgid "5"
+msgstr ""
+
+#: ui_tecladonumericobase.h:693
+msgid "6"
+msgstr ""
+
+#: ui_tecladonumericobase.h:690
+msgid "7"
+msgstr ""
+
+#: ui_tecladonumericobase.h:688
+msgid "8"
+msgstr ""
+
+#: ui_tecladonumericobase.h:686
+msgid "9"
+msgstr ""
+
+#: ui_tecladonumericobase.h:698
+msgid "ARTIC"
+msgstr ""
+
+#: ui_tecladonumericobase.h:697
+msgid "C"
+msgstr ""
+
+#: ui_tecladonumericobase.h:699
+msgid "CANT"
+msgstr ""
+
+#: ui_tecladonumericobase.h:696
+msgid "DEL"
+msgstr ""
+
+#: ui_tecladonumericobase.h:684
+msgid "Form"
+msgstr "Form"
+
+#: ui_tecladonumericobase.h:703
+msgid "MESA"
+msgstr ""
+
+#: ui_tecladonumericobase.h:700
+msgid "PRECIO"
+msgstr ""
 
 #: plugintecladonumerico.cpp:49
 msgid "Teclado"

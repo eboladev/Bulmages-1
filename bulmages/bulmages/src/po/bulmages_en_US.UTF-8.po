@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,19 +12,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: bnuevaempresa.cpp:66
+#: ui_nuevaempresadlg.h:144 ui_nuevafactbase.h:144 bnuevaempresa.cpp:66
 msgid "&Aceptar"
 msgstr "&Accept"
 
-#: bnuevaempresa.cpp:66
+#: ui_configuracion.h:489 ui_configuracion.h:524
+msgid "&Borrar Empresa"
+msgstr "&Erase Company"
+
+#: ui_nuevaempresadlg.h:145 ui_nuevafactbase.h:145 bnuevaempresa.cpp:66
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: bconfiguracion.cpp:311 bconfiguracion.cpp:313 bconfiguracion.cpp:315
+#: ui_importContaplusBase.h:309
+msgid "&Contalus"
+msgstr "&Contalus"
+
+#: ui_configuracion.h:483
+msgid "&Crear Nueva Empresa"
+msgstr "&Create New Company"
+
+#: ui_importContaplusBase.h:319 ui_importexportbulmafactbase.h:206
+msgid "&Importar"
+msgstr "&Import"
+
+#: ui_configuracion.h:490 ui_configuracion.h:525
+msgid "&Importar / Exportar Datos"
+msgstr "&Import / Export Data"
+
+#: ui_importContaplusBase.h:312
+msgid "&XML"
+msgstr "&XML"
+
+#: ui_importContaplusBase.h:306 ui_importContaplusBase.h:308
+#: ui_importContaplusBase.h:311 ui_importexportbulmafactbase.h:199
+msgid "..."
+msgstr "..."
+
+#: ui_selectorbase.h:354
+msgid "Acerca de .."
+msgstr "Approaches of .."
+
+#: ui_selectorbase.h:327
+msgid "Alt+F"
+msgstr "Alt+F"
+
+#: ui_configuracion.h:491 ui_configuracion.h:526
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: ui_importContaplusBase.h:310
+msgid "Archivo XML"
+msgstr "File XML"
+
+#: ui_importexportbulmafactbase.h:198
+msgid "Archivo XML:"
+msgstr "File XML:"
+
+#: ui_importContaplusBase.h:307
+msgid "Archivo de Diario"
+msgstr "Newspaper file"
+
+#: ui_importContaplusBase.h:305
+msgid "Archivo de SubCta"
+msgstr "File of SubCta"
+
+#: bconfiguracion.cpp:310 bconfiguracion.cpp:312 bconfiguracion.cpp:314
 msgid "Atencion"
 msgstr "Attention"
 
-#: bconfiguracion.cpp:315
+#: ui_configuracion.h:492
+msgid "B&ulmaCont"
+msgstr "B&ulmaCont"
+
+#: ui_nuevaempresadlg.h:142 ui_nuevafactbase.h:142
+msgid "Base de datos:"
+msgstr "Data base:"
+
+#: ui_configuracion.h:532
+msgid "Borra ejercicio"
+msgstr "Flock exercise"
+
+#: ui_configuracion.h:530
+msgid "Borra empresa"
+msgstr "Flock company"
+
+#: ui_configuracion.h:486 ui_configuracion.h:521
+msgid "Borra por completo una empresa"
+msgstr "Flock completely a company"
+
+#: bconfiguracion.cpp:314
 msgid ""
 "Borrar una empresa puede suponer perdida de datos\n"
 " Desea continuar?\n"
@@ -32,9 +109,37 @@ msgstr ""
 "To erase a company can suppose lost of data\n"
 " It wishes to continue?\n"
 
-#: bconfiguracion.cpp:380
+#: ui_configuracion.h:527
+msgid "Bulma&Fact"
+msgstr "Bulma&Fact"
+
+#: ui_selectorbase.h:336
+msgid "BulmaCont"
+msgstr "BulmaCont"
+
+#: ui_selectorbase.h:323
+msgid "BulmaFact"
+msgstr "BulmaFact"
+
+#: ui_selectorbase.h:320
+msgid "BulmaGes"
+msgstr "BulmaGes"
+
+#: ui_selectorbase.h:330
+msgid "BulmaTPV"
+msgstr "BulmaTPV"
+
+#: ui_importContaplusBase.h:317 ui_importexportbulmafactbase.h:204
+msgid "Ca&ncelar"
+msgstr "Ca&ncel"
+
+#: bconfiguracion.cpp:379
 msgid "Cargar empresa"
 msgstr "Load company"
+
+#: ui_configuracion.h:457
+msgid "Configuracion"
+msgstr "Configuration"
 
 #: importContaplus.cpp:123 importContaplus.cpp:135
 msgid "Contaplus (*.txt)"
@@ -49,15 +154,59 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "Contaplus (*.xml)"
 
+#: ui_configuracion.h:504
+msgid ""
+"Copia &de Seguridad\n"
+" (BACKUP)"
+msgstr ""
+"Backup&\n"
+" (BACKUP)"
+
+#: ui_configuracion.h:531
+msgid "Crea ejercicio"
+msgstr "Creates exercise"
+
+#: ui_configuracion.h:529
+msgid "Crea empresa"
+msgstr "Creates company"
+
+#: ui_configuracion.h:480 ui_configuracion.h:515
+msgid "Crea una empresa nueva sin datos"
+msgstr "Creates a new company without data"
+
+#: ui_configuracion.h:518
+msgid "Crear &Nueva Empresa"
+msgstr "Create &New Company"
+
+#: ui_nuevafactbase.h:140
+msgid "Datos de facturacion:"
+msgstr ""
+
+#: ui_nuevaempresadlg.h:140
+msgid "Datos de la contabilidad:"
+msgstr "Data of the accounting:"
+
 #: bnuevaempresa.cpp:65
 msgid "Datos incompletos"
 msgstr "Incompletos data"
 
-#: bconfiguracion.cpp:350 bconfiguracion.cpp:382
+#: ui_nuevaempresadlg.h:143 ui_nuevafactbase.h:143
+msgid "Ejercicio:"
+msgstr "Exercise:"
+
+#: ui_configuracion.h:539
+msgid "Ejercicios de la empresa:"
+msgstr "Exercises of the company:"
+
+#: ui_selectorbase.h:358
+msgid "Empresa:"
+msgstr "Company:"
+
+#: bconfiguracion.cpp:349 bconfiguracion.cpp:381
 msgid "Empresas (*.pgdump)"
 msgstr "Companies(*.pgdump)"
 
-#: bconfiguracion.cpp:311
+#: bconfiguracion.cpp:310
 msgid ""
 "Esta base de datos no puede ser eliminada.\n"
 " Es la plantilla para generar nuevas empresas."
@@ -65,16 +214,73 @@ msgstr ""
 "This data base cannot be eliminated.\n"
 " It is the group to generate new companies."
 
+#: ui_importContaplusBase.h:318 ui_importexportbulmafactbase.h:205
+#, fuzzy
+msgid "Expor&tar"
+msgstr ""
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"Exp&ort\n"
+"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
+"Expo&rt"
+
+#: ui_configuracion.h:537
+msgid "Exporta datos"
+msgstr "Exports data"
+
+#: ui_importContaplusBase.h:314 ui_importexportbulmafactbase.h:201
+msgid "Fecha Final"
+msgstr "Final Date"
+
+#: ui_importContaplusBase.h:313 ui_importexportbulmafactbase.h:200
+msgid "Fecha Inicial"
+msgstr "Initial Date"
+
+#: ui_selectorbase.h:342
+msgid "Galopin"
+msgstr "Galopin"
+
+#: ui_configuracion.h:533 ui_configuracion.h:536
+msgid "Genera copia de seguridad"
+msgstr "It generates backup"
+
+#: ui_configuracion.h:466 ui_configuracion.h:501
+msgid "Guarda una copia de seguridad de una empresa"
+msgstr "Keeps a backup of a company"
+
 #: importContaplus.cpp:111 importContaplus.cpp:123 importContaplus.cpp:135
 #: importexportbulmafactview.cpp:92
 msgid "Guardar archivo"
 msgstr "Keep file"
 
-#: bconfiguracion.cpp:348
+#: bconfiguracion.cpp:347
 msgid "Guardar empresa"
 msgstr "Keep company"
 
-#: bconfiguracion.cpp:313
+#: ui_configuracion.h:469
+msgid ""
+"Hacer copia &de Seguridad\n"
+" (BACKUP)"
+msgstr ""
+"To make &backup\n"
+" (BACKUP)"
+
+#: ui_selectorbase.h:348
+msgid "Iglues"
+msgstr "Iglues"
+
+#: ui_configuracion.h:535
+msgid "Importa datos"
+msgstr "Imports data"
+
+#: ui_importContaplusBase.h:304 ui_importexportbulmafactbase.h:197
+msgid "Importar y Exportar Datos"
+msgstr "Import and Export Data"
+
+#: ui_configuracion.h:538
+msgid "Lista de empresas:"
+msgstr "List of companies:"
+
+#: bconfiguracion.cpp:312
 msgid ""
 "No esta permitido eliminar la base \n"
 " de datos actualmente abierta."
@@ -86,218 +292,93 @@ msgstr ""
 msgid "No puede dejar campos en blanco para crear una nueva empresa.\n"
 msgstr "It cannot let fields in target to create a new company.\n"
 
-#: main.cpp:94
+#: ui_configuracion.h:463 ui_configuracion.h:498
+msgid "Nom Empresa"
+msgstr "Nom Company"
+
+#: ui_configuracion.h:460 ui_configuracion.h:495
+msgid "Nombre de la empresa"
+msgstr "Name of the company"
+
+#: ui_nuevaempresadlg.h:141 ui_nuevafactbase.h:141
+msgid "Nombre de la empresa:"
+msgstr "Name of the company:"
+
+#: ui_nuevaempresadlg.h:139
+msgid "Nueva empresa"
+msgstr "New company"
+
+#: ui_nuevafactbase.h:139
+msgid "Nueva facturacion"
+msgstr ""
+
+#: ui_configuracion.h:540
+msgid "Page"
+msgstr "Page"
+
+#: ui_configuracion.h:528
+msgid "Parametros"
+msgstr "Parametros"
+
+#: ui_importContaplusBase.h:315
+msgid "Realizar solo &un Testeo"
+msgstr ""
+
+#: ui_importexportbulmafactbase.h:202
+msgid "Realizar solo &una comprobacion."
+msgstr ""
+
+#: ui_configuracion.h:476 ui_configuracion.h:511
+msgid ""
+"Res&taurar copia\n"
+" (RESTORE)"
+msgstr ""
+"Rec&over copy\n"
+" (RESTORE)"
+
+#: ui_configuracion.h:534
+msgid "Restaura copia de seguridad"
+msgstr "It recovers backup"
+
+#: ui_configuracion.h:473 ui_configuracion.h:508
+msgid "Restaura la copia de seguridad de una empresa"
+msgstr "It recovers the backup of a company"
+
+#: ui_importContaplusBase.h:316
+msgid "Resultado"
+msgstr "Result"
+
+#: ui_importexportbulmafactbase.h:203
+msgid "Resultado:"
+msgstr "Result:"
+
+#: ui_configuracion.h:541
+msgid "Sal&ir"
+msgstr "Lea&ve"
+
+#: ui_selectorbase.h:367 ui_selectorbase.h:370
+msgid "Salir"
+msgstr "Leave"
+
+#: ui_selectorbase.h:361
+msgid "Seleccionar Empresa"
+msgstr "Select Company"
+
+#: main.cpp:73
 msgid "Selector de BulmaGes"
 msgstr "Selector of BulmaGes"
-
-#~ msgid "&Borrar Empresa"
-#~ msgstr "&Erase Company"
-
-#~ msgid "&Contalus"
-#~ msgstr "&Contalus"
-
-#~ msgid "&Crear Nueva Empresa"
-#~ msgstr "&Create New Company"
-
-#~ msgid "&Importar"
-#~ msgstr "&Import"
-
-#~ msgid "&Importar / Exportar Datos"
-#~ msgstr "&Import / Export Data"
-
-#~ msgid "&XML"
-#~ msgstr "&XML"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Acerca de .."
-#~ msgstr "Approaches of .."
-
-#~ msgid "Alt+F"
-#~ msgstr "Alt+F"
-
-#~ msgid "Alt+I"
-#~ msgstr "Alt+I"
-
-#~ msgid "Archivo XML"
-#~ msgstr "File XML"
-
-#~ msgid "Archivo XML:"
-#~ msgstr "File XML:"
-
-#~ msgid "Archivo de Diario"
-#~ msgstr "Newspaper file"
-
-#~ msgid "Archivo de SubCta"
-#~ msgstr "File of SubCta"
-
-#~ msgid "B&ulmaCont"
-#~ msgstr "B&ulmaCont"
-
-#~ msgid "Base de datos:"
-#~ msgstr "Data base:"
-
-#~ msgid "Borra ejercicio"
-#~ msgstr "Flock exercise"
-
-#~ msgid "Borra empresa"
-#~ msgstr "Flock company"
-
-#~ msgid "Borra por completo una empresa"
-#~ msgstr "Flock completely a company"
-
-#~ msgid "Bulma&Fact"
-#~ msgstr "Bulma&Fact"
-
-#~ msgid "BulmaCont"
-#~ msgstr "BulmaCont"
-
-#~ msgid "BulmaFact"
-#~ msgstr "BulmaFact"
-
-#~ msgid "BulmaGes"
-#~ msgstr "BulmaGes"
-
-#~ msgid "BulmaTPV"
-#~ msgstr "BulmaTPV"
-
-#~ msgid "Ca&ncelar"
-#~ msgstr "Ca&ncel"
 
 #~ msgid "Configuración"
 #~ msgstr "Configuration"
 
-#~ msgid ""
-#~ "Copia &de Seguridad\n"
-#~ " (BACKUP)"
-#~ msgstr ""
-#~ "Backup&\n"
-#~ " (BACKUP)"
-
-#~ msgid "Crea ejercicio"
-#~ msgstr "Creates exercise"
-
-#~ msgid "Crea empresa"
-#~ msgstr "Creates company"
-
-#~ msgid "Crea una empresa nueva sin datos"
-#~ msgstr "Creates a new company without data"
-
-#~ msgid "Crear &Nueva Empresa"
-#~ msgstr "Create &New Company"
-
 #~ msgid "Datos de facturación:"
 #~ msgstr "Data of invoicing:"
 
-#~ msgid "Datos de la contabilidad:"
-#~ msgstr "Data of the accounting:"
-
-#~ msgid "Ejercicio:"
-#~ msgstr "Exercise:"
-
-#~ msgid "Ejercicios de la empresa:"
-#~ msgstr "Exercises of the company:"
-
-#~ msgid "Empresa:"
-#~ msgstr "Company:"
-
-#, fuzzy
-#~ msgid "Expor&tar"
-#~ msgstr ""
-#~ "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Exp&ort\n"
-#~ "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Expo&rt"
-
-#~ msgid "Exporta datos"
-#~ msgstr "Exports data"
-
-#~ msgid "Fecha Final"
-#~ msgstr "Final Date"
-
-#~ msgid "Fecha Inicial"
-#~ msgstr "Initial Date"
-
-#~ msgid "Galopin"
-#~ msgstr "Galopin"
-
-#~ msgid "Genera copia de seguridad"
-#~ msgstr "It generates backup"
-
-#~ msgid "Guarda una copia de seguridad de una empresa"
-#~ msgstr "Keeps a backup of a company"
-
-#~ msgid ""
-#~ "Hacer copia &de Seguridad\n"
-#~ " (BACKUP)"
-#~ msgstr ""
-#~ "To make &backup\n"
-#~ " (BACKUP)"
-
-#~ msgid "Iglues"
-#~ msgstr "Iglues"
-
-#~ msgid "Importa datos"
-#~ msgstr "Imports data"
-
-#~ msgid "Importar y Exportar Datos"
-#~ msgstr "Import and Export Data"
-
-#~ msgid "Lista de empresas:"
-#~ msgstr "List of companies:"
-
-#~ msgid "Nom Empresa"
-#~ msgstr "Nom Company"
-
-#~ msgid "Nombre de la empresa"
-#~ msgstr "Name of the company"
-
-#~ msgid "Nombre de la empresa:"
-#~ msgstr "Name of the company:"
-
-#~ msgid "Nueva empresa"
-#~ msgstr "New company"
-
 #~ msgid "Nueva facturación"
 #~ msgstr "New invoicing"
-
-#~ msgid "Page"
-#~ msgstr "Page"
-
-#~ msgid "Parametros"
-#~ msgstr "Parametros"
 
 #~ msgid "Realizar sólo &un Testeo"
 #~ msgstr "Make only &a Testeo"
 
 #~ msgid "Realizar sólo &una comprobación."
 #~ msgstr "To make only &one verification."
-
-#~ msgid ""
-#~ "Res&taurar copia\n"
-#~ " (RESTORE)"
-#~ msgstr ""
-#~ "Rec&over copy\n"
-#~ " (RESTORE)"
-
-#~ msgid "Restaura copia de seguridad"
-#~ msgstr "It recovers backup"
-
-#~ msgid "Restaura la copia de seguridad de una empresa"
-#~ msgstr "It recovers the backup of a company"
-
-#~ msgid "Resultado"
-#~ msgstr "Result"
-
-#~ msgid "Resultado:"
-#~ msgstr "Result:"
-
-#~ msgid "Sal&ir"
-#~ msgstr "Lea&ve"
-
-#~ msgid "Salir"
-#~ msgstr "Leave"
-
-#~ msgid "Seleccionar Empresa"
-#~ msgstr "Select Company"

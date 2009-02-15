@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-11 10:49+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ticketqtoolbutton.cpp:153
+#: ticketqtoolbutton.cpp:149
 #, fuzzy
 msgid "Fecha: "
 msgstr "Data:"
 
-#: ticketqtoolbutton.cpp:84 ticketqtoolbutton.cpp:85
+#: ticketqtoolbutton.cpp:80 ticketqtoolbutton.cpp:81
 #, fuzzy
 msgid "Imprimir Ticket"
 msgstr "Imprimeix comptes"

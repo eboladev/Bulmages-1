@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,14 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: ui_proyectobase.h:281
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_proyectobase.h:282
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
 #: pluginproyectos.cpp:75
 msgid "&Proyectos"
 msgstr "&Proyectos"
@@ -121,6 +129,16 @@ msgstr "&Proyectos"
 #: listproyectosview.cpp:51
 msgid "Archivo"
 msgstr "Archivo"
+
+#: ui_listproyectosbase.h:150 ui_listproyectosbase.h:155
+#: ui_listproyectosbase.h:162 ui_listproyectosbase.h:167
+msgid "Borrar amortizacion"
+msgstr ""
+
+#: ui_proyectobase.h:256 ui_proyectobase.h:261 ui_proyectobase.h:268
+#: ui_proyectobase.h:273
+msgid "Borrar proyecto"
+msgstr ""
 
 #: listproyectosview.cpp:47
 msgid "C. Coste"
@@ -138,6 +156,18 @@ msgstr "Codigo"
 #: proyectoview.cpp:96
 msgid "Comentarios"
 msgstr "Comentarios"
+
+#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_listproyectosbase.h:147
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_proyectobase.h:253
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
 
 #: proyectoview.cpp:73 proyectoview.cpp:92
 msgid "Cuenta"
@@ -159,9 +189,25 @@ msgstr "Error al borrar la amortizacion"
 msgid "Error al crear el almacen"
 msgstr "Error al crear el almacen"
 
+#: ui_listproyectosbase.h:171
+msgid "F5"
+msgstr "F5"
+
 #: listproyectosview.cpp:48
 msgid "Fecha"
 msgstr "Fecha"
+
+#: ui_proyectobase.h:279
+msgid "Gastos"
+msgstr ""
+
+#: ui_proyectobase.h:278
+msgid "General"
+msgstr "General"
+
+#: ui_proyectobase.h:244 ui_proyectobase.h:249
+msgid "Guardar Proyecto"
+msgstr ""
 
 #: proyectoview.cpp:56
 msgid "ID almacen"
@@ -187,6 +233,14 @@ msgstr "Id. Proyecto"
 msgid "Identificador"
 msgstr "Identificador"
 
+#: ui_proyectobase.h:280
+msgid "Ingresos"
+msgstr ""
+
+#: ui_listproyectosbase.h:135
+msgid "Listado de Proyectos"
+msgstr ""
+
 #: proyectoview.cpp:58
 msgid "Nom Presupuesto"
 msgstr "Nom Presupuesto"
@@ -194,6 +248,14 @@ msgstr "Nom Presupuesto"
 #: listproyectosview.cpp:49
 msgid "Nombre"
 msgstr "Nombre"
+
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:143
+msgid "Nueva amortizacion"
+msgstr ""
+
+#: ui_proyectobase.h:240
+msgid "Nuevo proyecto"
+msgstr ""
 
 #: proyectoview.cpp:81 proyectoview.cpp:100
 msgid "Orden"

@@ -8,13 +8,65 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: balance1view.cpp:73
+msgid "Balance Jerarquico"
+msgstr ""
+
+#: balance1view.cpp:92
+msgid "Cuenta"
+msgstr ""
+
+#: balance1view.cpp:93
+msgid "Nombre de la cuenta"
+msgstr ""
+
+#: balance1view.cpp:94
+msgid "Saldo anterior"
+msgstr ""
+
+#: balance1view.cpp:95
+msgid "Debe"
+msgstr ""
+
+#: balance1view.cpp:96
+msgid "Haber"
+msgstr ""
+
+#: balance1view.cpp:97
+msgid "Saldo"
+msgstr ""
+
+#: balance1view.cpp:98
+msgid "Debe ejercicio"
+msgstr ""
+
+#: balance1view.cpp:99
+msgid "Haber ejercicio"
+msgstr ""
+
+#: balance1view.cpp:100
+msgid "Saldo ejercicio"
+msgstr ""
+
+#: balance1view.cpp:283 balance1view.cpp:336
+msgid "Error con la base de datos"
+msgstr ""
+
+#: balance1view.cpp:320
+msgid "Introduzca la Fecha Inicial"
+msgstr ""
+
+#: balance1view.cpp:325
+msgid "Introduzca la Fecha Final"
+msgstr ""
 
 #: balance1view.cpp:564
 msgid "Ver Diario (este dia)"
@@ -40,22 +92,86 @@ msgstr ""
 msgid "Ver extracto (este anyo)"
 msgstr ""
 
-#: pluginbalancetree.cpp:89
+#: pluginbalancetree.cpp:88
 msgid "menuVentana"
 msgstr ""
 
-#: pluginbalancetree.cpp:93
+#: pluginbalancetree.cpp:92
 msgid "&Ver"
 msgstr ""
 
-#: pluginbalancetree.cpp:97
+#: pluginbalancetree.cpp:96
 msgid "&Balance jerarquico"
 msgstr ""
 
-#: pluginbalancetree.cpp:98
+#: pluginbalancetree.cpp:97
 msgid "Permite realizar balances"
 msgstr ""
 
-#: pluginbalancetree.cpp:99
+#: pluginbalancetree.cpp:98
 msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: ui_balancetreebase.h:386
+msgid "Balance jerarquico de Cuentas"
+msgstr ""
+
+#: ui_balancetreebase.h:389 ui_balancetreebase.h:394
+msgid "Imprimir"
+msgstr ""
+
+#: ui_balancetreebase.h:400 ui_balancetreebase.h:405
+msgid "Filtrar"
+msgstr ""
+
+#: ui_balancetreebase.h:411 ui_balancetreebase.h:416
+msgid "Actualizar"
+msgstr ""
+
+#: ui_balancetreebase.h:422 ui_balancetreebase.h:427
+msgid "Exportar a Hoja de Calculo"
+msgstr ""
+
+#: ui_balancetreebase.h:431
+msgid "Cuenta final:"
+msgstr ""
+
+#: ui_balancetreebase.h:432
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_balancetreebase.h:433
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_balancetreebase.h:434
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: ui_balancetreebase.h:435
+msgid "Nivel:"
+msgstr ""
+
+#: ui_balancetreebase.h:436
+msgid "Jerarquico"
+msgstr ""
+
+#: ui_balancetreebase.h:437
+msgid "1"
+msgstr ""
+
+#: ui_balancetreebase.h:438
+msgid "Saldo anterior:"
+msgstr ""
+
+#: ui_balancetreebase.h:439
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_balancetreebase.h:440
+msgid "Total Haber:"
+msgstr ""
+
+#: ui_balancetreebase.h:441
+msgid "Saldo:"
 msgstr ""

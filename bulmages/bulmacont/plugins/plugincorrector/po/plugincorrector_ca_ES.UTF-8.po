@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 00:29+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,40 @@ msgstr ""
 msgid "&Corrector"
 msgstr ""
 
-#: plugincorrector.cpp:55
+#: ui_confreglasbase.h:283
+#, fuzzy
+msgid "Apunte con Cuenta"
+msgstr "Apunts &comptables"
+
+#: ui_confreglasbase.h:291
+#, fuzzy
+msgid "Apunte con Descripcion"
+msgstr "Descripció"
+
+#: ui_confreglasbase.h:284
+#, fuzzy
+msgid "Apunte con Saldo"
+msgstr "Apunts &comptables"
+
+#: ui_confreglasbase.h:294
+msgid "Cerrar"
+msgstr "Tanca"
+
+#: ui_confreglasbase.h:280
+#, fuzzy
+msgid "Comprobacion por asientos"
+msgstr "Importar assentament"
+
+#: ui_confreglasbase.h:281
+#, fuzzy
+msgid "Condicion:"
+msgstr "Codi:"
+
+#: ui_correctorbase.h:106 ui_correctorbase.h:111
+msgid "Configurar"
+msgstr "Arranjament"
+
+#: plugincorrector.cpp:55 ui_correctorbase.h:92
 msgid "Corrector"
 msgstr ""
 
@@ -31,6 +64,14 @@ msgid ""
 "Corrector.\n"
 "\n"
 "Muestra/oculta el corrector"
+msgstr ""
+
+#: ui_correctorbase.h:95 ui_correctorbase.h:100
+msgid "Corregir"
+msgstr "Corregeix"
+
+#: ui_confreglasbase.h:282
+msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
 
 #: plugincorrector.cpp:74
@@ -44,4 +85,34 @@ msgstr "No es pot tancar la finestra a causa d'un error"
 
 #: correctorwidget.cpp:210
 msgid "Opcion no implementada"
+msgstr ""
+
+#: ui_confreglasbase.h:293
+msgid "Periodicidad"
+msgstr "Periodicitat"
+
+#: ui_confreglasbase.h:279
+msgid "Regla:"
+msgstr "Regla:"
+
+#: ui_confreglasbase.h:275
+msgid "Reglas de Corrector"
+msgstr "Regles del corrector"
+
+#: ui_confreglasbase.h:292
+msgid "Reglas sobre Apuntes"
+msgstr ""
+
+#: ui_confreglasbase.h:287
+#, fuzzy
+msgid "igual"
+msgstr "Anual"
+
+#: ui_confreglasbase.h:289
+#, fuzzy
+msgid "mayor"
+msgstr "Maig"
+
+#: ui_confreglasbase.h:288
+msgid "menor"
 msgstr ""

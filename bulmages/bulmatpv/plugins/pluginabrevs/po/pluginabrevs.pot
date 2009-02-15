@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,4 +26,28 @@ msgstr ""
 
 #: abrevs.cpp:117
 msgid "Ya existe un ticket aparcado con el mismo nombre."
+msgstr ""
+
+#: ui_trabajadoresbase.h:70 ui_abrevsbase.h:93 ui_ticketsbase.h:57
+msgid "Form"
+msgstr ""
+
+#: ui_abrevsbase.h:94
+msgid "TECLADO"
+msgstr ""
+
+#: ui_abrevsbase.h:95
+msgid "USUARIO"
+msgstr ""
+
+#: ui_abrevsbase.h:96
+msgid "CLIENTE"
+msgstr ""
+
+#: ui_abrevsbase.h:97
+msgid "APARCAR"
+msgstr ""
+
+#: ui_abrevsbase.h:98
+msgid "RECUPERAR"
 msgstr ""

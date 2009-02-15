@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -216,61 +216,61 @@ msgstr ""
 msgid "ID almacen"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:149 genpreqtoolbutton.cpp:277
-#: genpreqtoolbutton.cpp:406 genpreqtoolbutton.cpp:594
+#: genpreqtoolbutton.cpp:150 genpreqtoolbutton.cpp:278
+#: genpreqtoolbutton.cpp:407 genpreqtoolbutton.cpp:595
 msgid "Tiene que seleccionar un cliente"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:164
+#: genpreqtoolbutton.cpp:165
 msgid "Factura existente"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:165
+#: genpreqtoolbutton.cpp:166
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
-#: genpreqtoolbutton.cpp:423
+#: genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
+#: genpreqtoolbutton.cpp:424
 msgid "&Si"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:166 genpreqtoolbutton.cpp:294
-#: genpreqtoolbutton.cpp:423
+#: genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
+#: genpreqtoolbutton.cpp:424
 msgid "&No"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:234 genpreqtoolbutton.cpp:360
-#: genpreqtoolbutton.cpp:489
+#: genpreqtoolbutton.cpp:235 genpreqtoolbutton.cpp:361
+#: genpreqtoolbutton.cpp:490
 msgid "Error inesperado"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:292
+#: genpreqtoolbutton.cpp:293
 msgid "Albaran ya existe"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:293
+#: genpreqtoolbutton.cpp:294
 msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:421
+#: genpreqtoolbutton.cpp:422
 msgid "Factura ya existe"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:422
+#: genpreqtoolbutton.cpp:423
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: genpreqtoolbutton.cpp:617
+#: genpreqtoolbutton.cpp:618
 msgid "No hay presupuestos con la misma referencia."
 msgstr ""
 
-#: genpreqtoolbutton.cpp:624
+#: genpreqtoolbutton.cpp:625
 msgid "Error inesperado."
 msgstr ""
 

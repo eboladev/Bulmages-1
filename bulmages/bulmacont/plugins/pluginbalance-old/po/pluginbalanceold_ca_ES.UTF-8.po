@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,159 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginbalance.cpp:97
+#: pluginbalance.cpp:91
 #, fuzzy
 msgid "&Balance"
 msgstr "Balanç"
 
-#: pluginbalance.cpp:93
+#: ui_balanceprintbase.h:316
+msgid "&Kugar"
+msgstr ""
+
+#: ui_balanceprintbase.h:313
+msgid "&Texto Plano"
+msgstr ""
+
+#: pluginbalance.cpp:87
 msgid "&Ver"
 msgstr "&Veure"
+
+#: ui_balancebase.h:424 ui_balancebase.h:429
+msgid "Actualizar balance"
+msgstr ""
 
 #: balanceview.cpp:69
 #, fuzzy
 msgid "Asiento Contable"
 msgstr "Assentament final"
 
-#: pluginbalance.cpp:98
+#: ui_balancebase.h:409
+msgid "Balance de cuentas"
+msgstr ""
+
+#: ui_balanceprintbase.h:307
+msgid "Codigo Final"
+msgstr ""
+
+#: ui_balanceprintbase.h:304
+msgid "Codigo Inicial\n"
+msgstr ""
+
+#: ui_balancebase.h:448 ui_balancebase.h:453
+msgid "Configurar"
+msgstr "Arranjament"
+
+#: ui_balancebase.h:457
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_balancebase.h:421
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_balancebase.h:445
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_balancebase.h:462
+msgid "Cuenta final:"
+msgstr ""
+
+#: ui_balancebase.h:461
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: ui_balanceprintbase.h:303
+msgid "Datos del listado:"
+msgstr ""
+
+#: ui_balancebase.h:467
+msgid "Debe:"
+msgstr ""
+
+#: ui_balancebase.h:433
+msgid "F5"
+msgstr "F5"
+
+#: ui_balanceprintbase.h:308
+msgid "Fecha Final"
+msgstr ""
+
+#: ui_balanceprintbase.h:306
+msgid "Fecha Inicial"
+msgstr ""
+
+#: ui_balancebase.h:459
+msgid "Fecha final:"
+msgstr "Data final:"
+
+#: ui_balancebase.h:460
+msgid "Fecha inicial:"
+msgstr "Data inicial:"
+
+#: ui_balancebase.h:412 ui_balancebase.h:417
+msgid "Filtrar balance"
+msgstr ""
+
+#: ui_balanceprintbase.h:312
+msgid "Formato:"
+msgstr ""
+
+#: ui_balancebase.h:463
+msgid "GroupBox"
+msgstr ""
+
+#: ui_balanceprintbase.h:315
+msgid "HT&ML"
+msgstr ""
+
+#: ui_balancebase.h:465
+msgid "Haber:"
+msgstr ""
+
+#: ui_balanceprintbase.h:299
+msgid "Impresion del Balance de Sumas y Saldos"
+msgstr ""
+
+#: ui_balancebase.h:436 ui_balancebase.h:441
+msgid "Imprimir balance"
+msgstr ""
+
+#: ui_balanceprintbase.h:311
+msgid "Incl&uir resultados parciales"
+msgstr ""
+
+#: ui_balanceprintbase.h:310
+msgid "Incluir &niveles superiores."
+msgstr ""
+
+#: ui_balanceprintbase.h:309
+msgid "Nivel de Cuentas"
+msgstr ""
+
+#: ui_balancebase.h:458
+msgid "Nivel:"
+msgstr ""
+
+#: pluginbalance.cpp:92
 #, fuzzy
 msgid "Permite realizar balances"
 msgstr "Actualitza balanç"
 
-#: pluginbalance.cpp:99
+#: pluginbalance.cpp:93
 msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: ui_balanceprintbase.h:314
+msgid "Propietario"
+msgstr ""
+
+#: ui_balancebase.h:466
+msgid "Saldo anterior:"
+msgstr ""
+
+#: ui_balancebase.h:464
+msgid "Saldo:"
 msgstr ""
 
 #: balanceview.cpp:401
@@ -93,7 +225,7 @@ msgstr ""
 msgid "idcuenta"
 msgstr ""
 
-#: pluginbalance.cpp:89
+#: pluginbalance.cpp:83
 #, fuzzy
 msgid "menuVentana"
 msgstr "Finestre"

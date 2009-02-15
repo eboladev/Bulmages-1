@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "&Detalle"
 msgstr "&Detalls"
 
-#: genalbpqtoolbutton.cpp:149
+#: genalbpqtoolbutton.cpp:150
 msgid "&No"
 msgstr "&No"
 
@@ -87,7 +87,7 @@ msgstr "&No"
 msgid "&Nuevo albaran de proveedor"
 msgstr "Nom del proveïdor"
 
-#: genalbpqtoolbutton.cpp:149
+#: genalbpqtoolbutton.cpp:150
 msgid "&Si"
 msgstr "&Sí"
 
@@ -95,7 +95,7 @@ msgstr "&Sí"
 #: ui_albaranproveedorbase.h:636 ui_albaranproveedorbase.h:637
 #: ui_albaranproveedorbase.h:638 ui_albaranproveedorbase.h:639
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_albaranesproveedorlistbase.h:500 ui_albaranesproveedorlistbase.h:505
 msgid "Actualizar listado"
@@ -106,7 +106,7 @@ msgstr "Actual·litza llistat"
 msgid "Albaran de proveedor"
 msgstr "Nom del proveïdor"
 
-#: genalbpqtoolbutton.cpp:147
+#: genalbpqtoolbutton.cpp:148
 #, fuzzy
 msgid "Albaran de proveedor existente"
 msgstr "El magatzem del pressupost no existeix<BR>"
@@ -128,7 +128,7 @@ msgstr "Apunts &no puntejats"
 
 #: albaranesproveedor.cpp:184
 msgid "Albaranes procesados"
-msgstr ""
+msgstr "Albarans processats"
 
 #: ui_albaranproveedorbase.h:624
 #, fuzzy
@@ -145,14 +145,14 @@ msgstr "Empreses disponibles:"
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 #: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
+#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
 #: ui_albaranesproveedorlistbase.h:510
 msgid "Buscar:"
-msgstr ""
+msgstr "Cerca:"
 
 #: albaranesproveedor.cpp:385
 msgid "Comentario"
@@ -176,7 +176,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
+#: ui_albaranesproveedorlistbase.h:461 ui_albaranproveedorbase.h:595
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -246,18 +246,18 @@ msgstr "Esborra albarà"
 
 #: albaranesproveedor.cpp:347
 msgid "Error al borrar albaran de proveedor"
-msgstr ""
+msgstr "Error al esborrar l'albarà de proveïdor"
 
 #: albaranproveedorview.cpp:101
 msgid "Error al crear el albaran proveedor"
-msgstr ""
+msgstr "Error al crear l'albarà del proveïdor"
 
-#: genalbpqtoolbutton.cpp:197
+#: genalbpqtoolbutton.cpp:198
 #, fuzzy
 msgid "Error inesperado"
 msgstr "inserit"
 
-#: genalbpqtoolbutton.cpp:148
+#: genalbpqtoolbutton.cpp:149
 msgid ""
 "Existe un albaran de este proveedor con la misma referencia que este pedido. "
 "Desea abrirla para verificar?"
@@ -283,11 +283,11 @@ msgstr "Data de compra:"
 
 #: ui_albaranesproveedorlistbase.h:423
 msgid "Fecha final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_albaranesproveedorlistbase.h:422
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_albaranesproveedorlistbase.h:476 ui_albaranesproveedorlistbase.h:481
 #, fuzzy
@@ -305,7 +305,7 @@ msgstr "Desa balanç"
 
 #: ui_albaranproveedorbase.h:630
 msgid "I.R.P.F."
-msgstr ""
+msgstr "I.R.P.F."
 
 #: albaranesproveedor.cpp:380
 #, fuzzy
@@ -374,7 +374,7 @@ msgstr "Imputació"
 
 #: ui_albaranproveedorbase.h:610 ui_albaranproveedorbase.h:615
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Mostrar/ocultar capçalera"
 
 #: ui_albaranesproveedorlistbase.h:421
 #, fuzzy
@@ -424,7 +424,7 @@ msgstr "Propietari"
 #: albaranesproveedor.cpp:53 albaranesproveedor.cpp:75
 #: albaranproveedorview.cpp:84
 msgid "Proveedor:"
-msgstr ""
+msgstr "Proveïdor:"
 
 #: ui_albaranproveedorbase.h:632
 #, fuzzy
@@ -433,7 +433,7 @@ msgstr "C.P.:"
 
 #: albaranesproveedor.cpp:383
 msgid "Referencia"
-msgstr ""
+msgstr "Referència"
 
 #: albaranproveedorview.cpp:64
 #, fuzzy
@@ -442,9 +442,9 @@ msgstr "Direcció del proveïdor"
 
 #: ui_albaranproveedorbase.h:607
 msgid "Referencia:"
-msgstr ""
+msgstr "Referència:"
 
-#: genalbpqtoolbutton.cpp:132
+#: genalbpqtoolbutton.cpp:133
 #, fuzzy
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Ha de seleccionar un element"

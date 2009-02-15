@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,7 +138,7 @@ msgstr "&Comentarios"
 msgid "&Detalle"
 msgstr "&Detalle"
 
-#: genalbpqtoolbutton.cpp:149
+#: genalbpqtoolbutton.cpp:150
 msgid "&No"
 msgstr "&No"
 
@@ -146,7 +146,7 @@ msgstr "&No"
 msgid "&Nuevo albaran de proveedor"
 msgstr "&Nuevo albaran de proveedor"
 
-#: genalbpqtoolbutton.cpp:149
+#: genalbpqtoolbutton.cpp:150
 msgid "&Si"
 msgstr "&Si"
 
@@ -164,7 +164,7 @@ msgstr "Actualizar listado"
 msgid "Albaran de proveedor"
 msgstr "Albaran de proveedor"
 
-#: genalbpqtoolbutton.cpp:147
+#: genalbpqtoolbutton.cpp:148
 msgid "Albaran de proveedor existente"
 msgstr "Albaran de proveedor existente"
 
@@ -196,8 +196,8 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 #: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
+#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
@@ -225,7 +225,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
+#: ui_albaranesproveedorlistbase.h:461 ui_albaranproveedorbase.h:595
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -293,11 +293,11 @@ msgstr "Error al borrar albaran de proveedor"
 msgid "Error al crear el albaran proveedor"
 msgstr "Error al crear el albaran proveedor"
 
-#: genalbpqtoolbutton.cpp:197
+#: genalbpqtoolbutton.cpp:198
 msgid "Error inesperado"
 msgstr "Error inesperado"
 
-#: genalbpqtoolbutton.cpp:148
+#: genalbpqtoolbutton.cpp:149
 msgid ""
 "Existe un albaran de este proveedor con la misma referencia que este pedido. "
 "Desea abrirla para verificar?"
@@ -459,7 +459,7 @@ msgstr "Referencia albaran proveedor"
 msgid "Referencia:"
 msgstr "Referencia:"
 
-#: genalbpqtoolbutton.cpp:132
+#: genalbpqtoolbutton.cpp:133
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Tiene que seleccionar un proveedor"
 

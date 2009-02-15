@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,8 +124,24 @@ msgstr ""
 msgid "Error al crear el cliente"
 msgstr ""
 
-#: clienteview.cpp:164
+#: clienteview.cpp:163
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: pluginbf_cliente.cpp:97
+msgid "&Clientes"
+msgstr ""
+
+#: pluginbf_cliente.cpp:99 pluginbf_cliente.cpp:100 ui_clientslistbase.h:261
+msgid "Clientes"
+msgstr ""
+
+#: pluginbf_cliente.cpp:105
+msgid "&Nuevo Cliente"
+msgstr ""
+
+#: pluginbf_cliente.cpp:107 pluginbf_cliente.cpp:108 clientslist.cpp:237
+msgid "Nuevo cliente"
 msgstr ""
 
 #: clientslist.cpp:62
@@ -146,10 +162,6 @@ msgstr ""
 
 #: clientslist.cpp:171 clientslist.cpp:194
 msgid "Clientes (*.xml)"
-msgstr ""
-
-#: clientslist.cpp:237 pluginbf_cliente.cpp:107 pluginbf_cliente.cpp:108
-msgid "Nuevo cliente"
 msgstr ""
 
 #: clientslist.cpp:254
@@ -174,18 +186,6 @@ msgstr ""
 
 #: clientslist.cpp:287
 msgid "Direccion URL"
-msgstr ""
-
-#: pluginbf_cliente.cpp:97
-msgid "&Clientes"
-msgstr ""
-
-#: pluginbf_cliente.cpp:99 pluginbf_cliente.cpp:100 ui_clientslistbase.h:261
-msgid "Clientes"
-msgstr ""
-
-#: pluginbf_cliente.cpp:105
-msgid "&Nuevo Cliente"
 msgstr ""
 
 #: ui_clientslistbase.h:265 ui_clientslistbase.h:270

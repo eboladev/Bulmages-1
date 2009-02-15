@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,21 +12,159 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ccosteview.cpp:267 canalview.cpp:213
+#: ui_bulmacontbase.h:394
+msgid "\""
+msgstr "\""
+
+#: ui_tipoivabase.h:269 ui_cuentabase.h:870 ui_amortizacionbase.h:687
+#: ui_duplicarasientobase.h:238 ui_aplinteligentesbase.h:216
+#: ui_sobrebase.h:306 modelo300.cpp:160
+msgid "&Aceptar"
+msgstr "&Accept"
+
+#: ui_sobrebase.h:297
+msgid "&Acerca de"
+msgstr "&About"
+
+#: ui_bulmacontbase.h:382
+msgid "&Acerca de BulmaCont"
+msgstr "&About BulmaCont"
+
+#: ui_bulmacontbase.h:369
+msgid "&Actualizar"
+msgstr "&Update"
+
+#: ui_bulmacontbase.h:354
+msgid "&Amortizaciones"
+msgstr "&Amortizations"
+
+#: ui_bulmacontbase.h:356 ui_bulmacontbase.h:399
+msgid "&Asientos"
+msgstr "&Seats"
+
+#: ui_bulmacontbase.h:373
+msgid "&Bloquear fechas/Crear ejercicio"
+msgstr ""
+
+#: canalview.cpp:213 ccosteview.cpp:267
 msgid "&Borrar"
 msgstr "&Erase"
 
-#: ccosteview.cpp:168 ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108
-#: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238
+#: ui_amortizacionbase.h:681
+msgid "&Calcular"
+msgstr "&Calculate"
+
+#: ui_bulmacontbase.h:374
+msgid "&Canal por defecto"
+msgstr "&Channel by defect"
+
+#: ui_bulmacontbase.h:365
+msgid "&Canales"
+msgstr "&Cancel"
+
+#: ui_tipoivabase.h:270 ui_cuentabase.h:871 ui_diarioprintbase.h:158
+#: ui_mpatrimonialesbase.h:123 ui_amortizacionbase.h:688
+#: ui_extractoprintbase.h:140 ui_canualesprintbase.h:202
+#: ui_aplinteligentesbase.h:218 canalview.cpp:108 canalview.cpp:186
+#: canalview.cpp:213 canalview.cpp:238 ccosteview.cpp:168 ccosteview.cpp:267
+#: modelo300.cpp:170
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: ccosteview.cpp:168 canalview.cpp:108 canalview.cpp:186
-#: propiedadesempresa.cpp:118
+#: ui_duplicarasientobase.h:239 ui_fpagobase.h:309 ui_canalbase.h:245
+msgid "&Cerrar"
+msgstr "&Close"
+
+#: ui_asientolistbase.h:422
+msgid "&Concepto:"
+msgstr ""
+
+#: ui_cuentabase.h:857
+msgid "&Datos contables"
+msgstr "&Countable data"
+
+#: ui_amortizacionbase.h:677
+msgid "&Decremental"
+msgstr "&Decremental"
+
+#: ui_asientolistbase.h:421
+msgid "&Ejercicio:"
+msgstr "&Exercise:"
+
+#: ui_bulmacontbase.h:403
+msgid "&Empresa"
+msgstr "&Company"
+
+#: ui_bulmacontbase.h:347
+msgid "&Espaciar asientos"
+msgstr "&Space seats"
+
+#: ui_aplinteligentesbase.h:213
+msgid "&Fecha del asiento:"
+msgstr "&Date of the seat:"
+
+#: ui_bulmacontbase.h:370
+msgid "&Filtrar"
+msgstr "&Leak"
+
+#: ui_diarioprintbase.h:156
+msgid "&Formato de aprendizaje"
+msgstr "&Format of learning"
+
+#: ui_cuentabase.h:850
+msgid "&Gasto"
+msgstr "&Cost"
+
+#: ui_bulmacontbase.h:368 canalview.cpp:108 canalview.cpp:186
+#: ccosteview.cpp:168 propiedadesempresa.cpp:118
 msgid "&Guardar"
 msgstr "&Keep"
 
-#: asiento1view.cpp:333 canalview.cpp:238
+#: ui_bulmacontbase.h:405
+msgid "&Herramientas"
+msgstr "&Tools"
+
+#: ui_diarioprintbase.h:157 ui_bulmacontbase.h:367 ui_extractoprintbase.h:139
+msgid "&Imprimir"
+msgstr "&Print"
+
+#: ui_cuentabase.h:842
+msgid "&Imputacion"
+msgstr "&Imputation"
+
+#: ui_diariobase.h:385 ui_extractobase.h:630
+msgid "&Incluir asientos abiertos"
+msgstr ""
+
+#: ui_amortizacionbase.h:678
+msgid "&Incremental"
+msgstr "&Incremental"
+
+#: ui_cuentabase.h:847
+msgid "&Ingreso"
+msgstr "&Entrance"
+
+#: ui_diarioprintbase.h:152
+msgid "&Kugar"
+msgstr "&Kugar"
+
+#: ui_bulmacontbase.h:404
+msgid "&Listados"
+msgstr "&Listings"
+
+#: ui_bulmacontbase.h:402
+msgid "&Maestro"
+msgstr "&Teacher"
+
+#: ui_asientolistbase.h:420
+msgid "&Mostrar:"
+msgstr ""
+
+#: ui_cuentabase.h:852
+msgid "&Neto"
+msgstr "&Net"
+
+#: canalview.cpp:238 asiento1view.cpp:333
 msgid "&No"
 msgstr "&No"
 
@@ -38,17 +176,180 @@ msgstr "&Not to keep"
 msgid "&No salir"
 msgstr "&Not to leave"
 
+#: ui_bulmacontbase.h:348
+msgid "&Ordenar asientos"
+msgstr "&Order seats"
+
+#: ui_cuentabase.h:869
+msgid "&Otros datos"
+msgstr "&Other data"
+
+#: ui_bulmacontbase.h:376
+msgid "&Pantalla completa"
+msgstr "&Complete screen"
+
+#: ui_asientolistbase.h:425
+msgid "&Partida igual a:"
+msgstr "&Equal game a:"
+
+#: ui_cuentabase.h:848
+msgid "&Pasivo"
+msgstr "&Liabilities"
+
+#: ui_bulmacontbase.h:355
+msgid "&Plan Contable"
+msgstr "&Char of Accounts"
+
+#: ui_aplinteligentesbase.h:214
+msgid "&Plantilla:"
+msgstr "&Group:"
+
+#: ui_bulmacontbase.h:338
+msgid "&Propiedades de la empresa..."
+msgstr "&Properties of the company..."
+
+#: ui_bulmacontbase.h:371
+msgid "&Recalcular saldos iniciales"
+msgstr "&Recalcular initial balances"
+
 #: propiedadesempresa.cpp:160
 msgid "&Salir"
 msgstr "&Leave"
 
-#: asiento1view.cpp:333 canalview.cpp:238
+#: ui_bulmacontbase.h:345
+msgid "&Salir del programa"
+msgstr "&Leave the program"
+
+#: canalview.cpp:238 asiento1view.cpp:333
 msgid "&Si"
 msgstr "&Yes"
+
+#: ui_bulmacontbase.h:372
+msgid "&Sustituir cuentas"
+msgstr "&Replace accounts"
+
+#: ui_diarioprintbase.h:150 ui_extractoprintbase.h:136
+msgid "&Texto Plano"
+msgstr "&Flat Text"
+
+#: ui_extractobase.h:639
+msgid "&Todos"
+msgstr "&All"
+
+#: ui_bulmacontbase.h:398
+msgid "&Ver"
+msgstr "&See"
+
+#: ui_bulmacontbase.h:395
+msgid "''"
+msgstr "''"
 
 #: asientosview.cpp:66
 msgid "(todos)"
 msgstr "(all)"
+
+#: ui_asientolistbase.h:428
+msgid ")"
+msgstr ")"
+
+#: ui_modelo300base.h:200
+msgid "0123456789"
+msgstr "0123456789"
+
+#: ui_bbloqfechabase.h:146 ui_ccostebase.h:273 ui_listcuentasbase.h:360
+#: ui_cuentalistbase.h:261
+msgid "1"
+msgstr ""
+
+#: ui_modelo300base.h:203
+msgid "12"
+msgstr "12"
+
+#: ui_modelo300base.h:201 ui_modelo300base.h:202
+msgid "1234"
+msgstr "1234"
+
+#: ui_modelo300base.h:189
+msgid "1º trimestre"
+msgstr "1º quarterly"
+
+#: ui_cuentalistbase.h:262
+msgid "2"
+msgstr ""
+
+#: ui_modelo300base.h:190
+msgid "2º trimestre"
+msgstr "2º quarterly"
+
+#: ui_cuentalistbase.h:263
+msgid "3"
+msgstr ""
+
+#: ui_modelo300base.h:191
+msgid "3º trimestre"
+msgstr "3º quarterly"
+
+#: ui_cuentalistbase.h:264
+msgid "4"
+msgstr ""
+
+#: ui_modelo300base.h:192
+msgid "4º trimestre"
+msgstr "4º quarterly"
+
+#: ui_cuentalistbase.h:265
+msgid "5"
+msgstr ""
+
+#: ui_cuentalistbase.h:266
+msgid "6"
+msgstr ""
+
+#: ui_cuentalistbase.h:260
+msgid "7"
+msgstr ""
+
+#: ui_cuentalistbase.h:259
+msgid "8"
+msgstr ""
+
+#: ui_sobrebase.h:298
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: ui_sobrebase.h:293
+msgid ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Contabilidad GPL - Version "
+"0.11.1 -</p></body></html>"
+msgstr ""
+
+#: ui_cuentabase.h:845
+msgid "A&ctivo"
+msgstr "A&ssets"
+
+#: ui_sobrebase.h:303
+msgid "A&utores"
+msgstr "A&uthors"
+
+#: ui_bulmacontbase.h:380 ui_bulmacontbase.h:401
+msgid "A&yuda"
+msgstr "A&id"
 
 #: bbloqfecha.cpp:82
 msgid "Abierto"
@@ -58,32 +359,163 @@ msgstr "Opened"
 msgid "Abril"
 msgstr "April"
 
+#: ui_asientobase.h:492 ui_asientobase.h:497
+msgid "Abrir asiento"
+msgstr "Open seat"
+
+#: ui_canualesprintbase.h:201
+msgid "Acep&tar"
+msgstr "Acce&pt"
+
+#: ui_cambiactabase.h:241 ui_uivisorempresas.h:68 ui_mpatrimonialbase.h:348
+msgid "Aceptar"
+msgstr "Accept"
+
+#: ui_sobrebase.h:291
+msgid "Acerca de BulmaCont"
+msgstr "About BulmaCont"
+
+#: ui_asientolistbase.h:466 ui_asientolistbase.h:471 ui_diariobase.h:372
+#: ui_diariobase.h:377 ui_extractobase.h:675 ui_extractobase.h:680
+msgid "Actualizar"
+msgstr "Update"
+
+#: ui_listcuentasbase.h:349 ui_listcuentasbase.h:354 ui_cuentalistbase.h:246
+#: ui_cuentalistbase.h:251
+msgid "Actualizar listado"
+msgstr "Update listing"
+
+#: ui_sobrebase.h:305
+msgid "Acuerdo de &licencia"
+msgstr "Licensing &agreement"
+
 #: bbloqfecha.cpp:163
 msgid "Agosto"
 msgstr "August"
+
+#: ui_mpatrimonialbase.h:355 ui_mpatrimonialbase.h:358
+msgid "Agregar"
+msgstr "Add"
+
+#: ui_bbloqfechabase.h:136
+msgid "Agregar Ejercicio"
+msgstr "Add Exercise"
+
+#: ui_bbloqfechabase.h:141
+msgid "Agregar ejercicio"
+msgstr ""
 
 #: amortizacionview.cpp:70
 msgid "Agrupacion"
 msgstr "Grouping"
 
-#: amortizacionview.cpp:55
+#: ui_amortizacionbase.h:660
+msgid "Agrupacion:"
+msgstr "Grouping:"
+
+#: ui_uiconfiguracion.h:472
+msgid "Almacenes"
+msgstr "Warehouses"
+
+#: ui_cuentabase.h:838
+msgid "Alt+B"
+msgstr "Alt+B"
+
+#: ui_cuentabase.h:846 ui_amortizacionbase.h:682
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: ui_cuentabase.h:851
+msgid "Alt+G"
+msgstr "Alt+G"
+
+#: ui_cuentabase.h:843 ui_amortizacionbase.h:679
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: ui_cuentabase.h:849
+msgid "Alt+P"
+msgstr "Alt+P"
+
+#: ui_amortizacionbase.h:686
+msgid "Amor&tizacion"
+msgstr "Amor&tization"
+
+#: ui_amortizacionbase.h:634 amortizacionview.cpp:55
 msgid "Amortizacion"
 msgstr "Amortization"
 
-#: amortizacionview.cpp:246 amortizacionview.cpp:273 amortizacionview.cpp:301
-#: amortizacionview.cpp:332
+#: ui_amortizacionbase.h:684
+msgid "Amortizado:"
+msgstr "Amortized:"
+
+#: ui_bulmacontbase.h:385
+msgid "Anterior"
+msgstr "Previous"
+
+#: ui_amortizacionbase.h:665 amortizacionview.cpp:246 amortizacionview.cpp:273
+#: amortizacionview.cpp:301 amortizacionview.cpp:332
 msgid "Anual"
 msgstr "Annual"
+
+#: ui_extractobase.h:638
+msgid "Ap&untes punteados"
+msgstr "Pu&nteados notes"
+
+#: ui_uiconfiguracion.h:451
+msgid "Apellido 1º:"
+msgstr ""
+
+#: ui_uiconfiguracion.h:452
+msgid "Apellido 2º:"
+msgstr ""
+
+#: ui_asientobase.h:634
+msgid "Apertura"
+msgstr "Opening"
+
+#: ui_uiconfiguracion.h:407 ui_uiconfiguracion.h:459
+msgid "Aplicar"
+msgstr "Apply"
+
+#: ui_aplinteligentesbase.h:211
+msgid "Aplicar Asiento Inteligente"
+msgstr "Apply Intelligent Seat"
 
 #: asientolistsubform.cpp:39
 msgid "Apuntes"
 msgstr "Notes"
 
+#: ui_bulmacontbase.h:358
+msgid "Apuntes &contables"
+msgstr "Countable &notes"
+
+#: ui_extractobase.h:637
+msgid "Apuntes &no punteados"
+msgstr "Notes &nonpunteados"
+
+#: ui_diariobase.h:382 ui_extractobase.h:631
+msgid "Apuntes con contrapartida:"
+msgstr "Notes with counterpart:"
+
+#: ui_diariobase.h:383 ui_extractobase.h:629
+msgid "Apuntes con saldo inferior a:"
+msgstr "Notes with inferior balance a:"
+
+#: ui_diariobase.h:384 ui_extractobase.h:628
+msgid "Apuntes con saldo superior a:"
+msgstr "Notes with superior balance a:"
+
 #: canualesview.cpp:122
 msgid "Archivo"
 msgstr "File"
 
-#: extractosubform.cpp:49 aplinteligentesview.cpp:58 diariosubform.cpp:37
+#: ui_cuentalistbase.h:209
+msgid "Articulos"
+msgstr "Article"
+
+#: ui_asientobase.h:489 aplinteligentesview.cpp:58 diariosubform.cpp:37
+#: extractosubform.cpp:49
 msgid "Asiento"
 msgstr "Seat"
 
@@ -92,13 +524,50 @@ msgstr "Seat"
 msgid "Asiento Contable"
 msgstr "Final Seat"
 
+#: ui_cambiactabase.h:235
+msgid "Asiento Final"
+msgstr ""
+
+#: ui_cambiactabase.h:236
+msgid "Asiento Inicial"
+msgstr "Initial Seat"
+
+#: ui_bulmacontbase.h:351
+msgid "Asiento de &cierre"
+msgstr ""
+
+#: ui_bulmacontbase.h:350
+msgid "Asiento de &regularizacion"
+msgstr ""
+
+#: ui_bulmacontbase.h:349
+msgid "Asiento de a&pertura"
+msgstr "Seat of &opening"
+
+#: ui_duplicarasientobase.h:232
+msgid "Asiento final:"
+msgstr "Final seat:"
+
 #: asiento1view.cpp:331
 msgid "Asiento inexistente."
 msgstr "Nonexistent seat."
 
+#: ui_duplicarasientobase.h:231
+msgid "Asiento inicial:"
+msgstr "Initial seat:"
+
 #: asientosview.cpp:300
 msgid "Asientos"
 msgstr "Seats"
+
+#: ui_bulmacontbase.h:366 ui_asientobase.h:619 ui_asientobase.h:624
+#, fuzzy
+msgid "Asientos Inteligentes"
+msgstr ""
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Intelligent Seats\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Inteligent accounting entry"
 
 #: asientosview.cpp:46
 #, fuzzy
@@ -110,12 +579,24 @@ msgstr "&Include open seats"
 msgid "Asientos cerrados"
 msgstr "Seat of &closing"
 
+#: modelo300.cpp:117
+msgid ""
+"Aviso: El numero de cuenta bancario introducido\n"
+"no se corresponde con un CCC correcto."
+msgstr ""
+"Warning: Number of introduced banking account\n"
+"one does not correspond with CCC a correct one."
+
+#: ui_mpatrimonialesbase.h:127 ui_canualesprintbase.h:194
+msgid "Balance"
+msgstr "Balance"
+
 #: cuentaview.cpp:61
 #, fuzzy
 msgid "Banco de la cuenta"
 msgstr "Data of the account:"
 
-#: cuentaview.cpp:48 listcuentasview1.cpp:62
+#: ui_cuentabase.h:839 listcuentasview1.cpp:62 cuentaview.cpp:48
 msgid "Bloqueada"
 msgstr "Blocked"
 
@@ -128,17 +609,40 @@ msgstr "Blocked"
 msgid "Bloquear Fechas"
 msgstr "Block dates"
 
+#: ui_bbloqfechabase.h:133
+msgid "Bloquear fechas"
+msgstr ""
+
+#: ui_uiconfiguracion.h:430
+msgid "Borra por completo una empresa"
+msgstr ""
+
 #: asientolistsubform.cpp:40
 msgid "Borrador"
 msgstr "Rough draft"
+
+#: ui_mpatrimonialesbase.h:125 ui_uiconfiguracion.h:456
+msgid "Borrar"
+msgstr "Delete"
+
+#: ui_uiconfiguracion.h:433
+msgid "Borrar Empresa"
+msgstr ""
+
+#: ui_amortizacionesbase.h:147 ui_amortizacionesbase.h:152
+#: ui_amortizacionesbase.h:159 ui_amortizacionesbase.h:164
+#: ui_amortizacionbase.h:649 ui_amortizacionbase.h:654
+msgid "Borrar amortizacion"
+msgstr ""
 
 #: cuentalistview.cpp:310
 #, fuzzy
 msgid "Borrar articulo"
 msgstr "Erase amortization"
 
-#: amortizacionview.cpp:386 amortizacionview.cpp:427 amortizacionview.cpp:436
-#: amortizacionview.cpp:443 asiento1.cpp:159
+#: ui_asientobase.h:573 ui_asientobase.h:578 amortizacionview.cpp:386
+#: amortizacionview.cpp:427 amortizacionview.cpp:436 amortizacionview.cpp:443
+#: asiento1.cpp:159
 msgid "Borrar asiento"
 msgstr "Erase seat"
 
@@ -150,6 +654,7 @@ msgstr "Erase channel"
 msgid "Borrar centro de coste"
 msgstr "To erase cost center"
 
+#: ui_cuentabase.h:826 ui_listcuentasbase.h:303 ui_listcuentasbase.h:308
 #: listcuentasview1.cpp:408
 msgid "Borrar cuenta"
 msgstr "Erase account"
@@ -158,11 +663,11 @@ msgstr "Erase account"
 msgid "Borrar cuota"
 msgstr "Erase quota"
 
-#: fpagoview.cpp:242
+#: ui_fpagobase.h:291 fpagoview.cpp:242
 msgid "Borrar forma de pago"
 msgstr "Erase mode of payment"
 
-#: extractoview1.cpp:542
+#: ui_extractobase.h:719 ui_extractobase.h:724 extractoview1.cpp:542
 #, fuzzy
 msgid "Borrar punteo"
 msgstr ""
@@ -171,12 +676,36 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Erase punteo"
 
+#: ui_bulmacontbase.h:337
+msgid "BulmaCont - Contabilidad GPL"
+msgstr "BulmaCont - Accounting GPL"
+
+#: ui_cuentalistbase.h:255
+msgid "Buscar:"
+msgstr "Look for:"
+
+#: ui_listcuentasbase.h:359
+msgid "Busqueda:"
+msgstr ""
+
+#: ui_cuentabase.h:832
+msgid "C. Coste por Defecto"
+msgstr ""
+
+#: ui_cuentabase.h:859
+msgid "C.I.F.:"
+msgstr "C.I.F.:"
+
+#: ui_cuentabase.h:862
+msgid "C.P.:"
+msgstr "C.P.:"
+
 #: cuentaview.cpp:57
 #, fuzzy
 msgid "CIF de la cuenta"
 msgstr "Name of the account"
 
-#: mpatrimonialesview.cpp:133 listcuentasview1.cpp:88
+#: listcuentasview1.cpp:88 mpatrimonialesview.cpp:133
 msgid "CODIGO"
 msgstr "CODE"
 
@@ -189,14 +718,31 @@ msgstr "Name of the account"
 msgid "Cambiando a modo de pantalla completa..."
 msgstr "Changing as a complete screen..."
 
+#: ui_cambiactabase.h:234
+msgid "Cambiar Cuenta"
+msgstr "Change Account"
+
 #: bulmacont.cpp:669
 msgid "Cambinado barra de estado..."
 msgstr "Changing  sweeps of state..."
 
-#: extractosubform.cpp:68 listlinasiento1view.cpp:50 canalview.cpp:36
-#: diariosubform.cpp:51
+#: listlinasiento1view.cpp:50 canalview.cpp:36 diariosubform.cpp:51
+#: extractosubform.cpp:68
 msgid "Canal"
 msgstr "Channel"
+
+#: ui_canalbase.h:241
+msgid "Canal:"
+msgstr "Channel:"
+
+#: ui_canalbase.h:236
+msgid "Canales"
+msgstr "Channels"
+
+#: ui_uivisorempresas.h:69 ui_regivaprintbase.h:225 ui_mpatrimonialbase.h:349
+#: ui_modelo300base.h:208
+msgid "Cancelar"
+msgstr "Cancel"
 
 #: amortizacionview.cpp:80
 msgid "Cantidad"
@@ -207,11 +753,11 @@ msgstr "Amount"
 msgid "Cargando Extracto de Cuentas"
 msgstr "Extract of Accounts"
 
-#: main.cxx:195
-msgid "Cargando traducciones"
-msgstr ""
+#: ui_cuentabase.h:820
+msgid "Cargar Asiento"
+msgstr "Load Seat"
 
-#: extractoview1.cpp:570
+#: ui_extractobase.h:708 ui_extractobase.h:713 extractoview1.cpp:570
 #, fuzzy
 msgid "Cargar punteo"
 msgstr ""
@@ -220,7 +766,19 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Load punteo"
 
-#: extractosubform.cpp:71 diariosubform.cpp:53
+#: ui_extractobase.h:686 ui_extractobase.h:691
+msgid "Casacion"
+msgstr "Abrogation"
+
+#: ui_uiconfiguracion.h:391
+msgid "Castellano"
+msgstr ""
+
+#: ui_uiconfiguracion.h:390
+msgid "Català"
+msgstr ""
+
+#: diariosubform.cpp:53 extractosubform.cpp:71
 msgid "Centro Coste"
 msgstr "Center Cost"
 
@@ -228,6 +786,10 @@ msgstr "Center Cost"
 #, fuzzy
 msgid "Centro de Coste"
 msgstr "Centers of Cost"
+
+#: ui_bulmacontbase.h:375
+msgid "Centro de cos&te por defecto"
+msgstr ""
 
 #: listlinasiento1view.cpp:53
 #, fuzzy
@@ -239,9 +801,42 @@ msgstr "Center of cost:"
 msgid "Centro de coste por defecto"
 msgstr "Center of cos&t by defect"
 
+#: ui_ccostebase.h:288
+msgid "Centros Distribuidos"
+msgstr ""
+
+#: ui_ccostebase.h:266
+msgid "Centros de Coste"
+msgstr ""
+
+#: ui_bulmacontbase.h:364
+msgid "Centros de cos&te"
+msgstr "Centers of cos&t"
+
+#: ui_cambiactabase.h:242 ui_bbloqfechabase.h:152 ui_selectcanalbase.h:97
+#: ui_ccostebase.h:289 ui_selectccostebase.h:98
+msgid "Cerrar"
+msgstr "Close"
+
+#: ui_bulmacontbase.h:397
+msgid "Cerrar Asientos"
+msgstr ""
+
+#: ui_asientobase.h:504 ui_asientobase.h:509
+msgid "Cerrar asiento"
+msgstr "Close seat "
+
+#: ui_asientobase.h:637
+msgid "Cierre"
+msgstr "Closing"
+
 #: asientolistsubform.cpp:45
 msgid "Clase"
 msgstr "Class"
+
+#: ui_uiconfiguracion.h:421
+msgid "Clonar Empresa"
+msgstr ""
 
 #: listlinasiento1view.cpp:41
 msgid "Codigo"
@@ -256,7 +851,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Code Account"
 
-#: cuentaview.cpp:44 listcuentasview1.cpp:62
+#: listcuentasview1.cpp:62 cuentaview.cpp:44
 #, fuzzy
 msgid "Codigo cuenta"
 msgstr ""
@@ -265,11 +860,19 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Code Account"
 
-#: extractosubform.cpp:66 listlinasiento1view.cpp:48 diariosubform.cpp:44
+#: ui_cuentabase.h:863
+msgid "Codigo cuenta corriente.:"
+msgstr "Code accounts current:"
+
+#: ui_cuentabase.h:834
+msgid "Codigo:"
+msgstr "Code:"
+
+#: listlinasiento1view.cpp:48 diariosubform.cpp:44 extractosubform.cpp:66
 msgid "Comentario"
 msgstr "Commentary"
 
-#: asientolistsubform.cpp:41
+#: ui_mpatrimonialbase.h:362 asientolistsubform.cpp:41
 msgid "Comentarios"
 msgstr "Comments"
 
@@ -282,9 +885,17 @@ msgstr "Commentaries of the seat"
 msgid "Comentarios del asiento"
 msgstr "Commentaries of the seat"
 
+#: ui_cuentabase.h:868
+msgid "Comentarios:"
+msgstr "Commentaries:"
+
 #: sobreview.cpp:42
 msgid "Compilado usando la version de QT:"
 msgstr "Compiled using the QT version:"
+
+#: ui_listado347base.h:272 ui_modelo347base.h:255
+msgid "Compras"
+msgstr "Purchases"
 
 #: extractosubform.cpp:53
 msgid "Concepto"
@@ -298,46 +909,237 @@ msgstr "Countable concept"
 msgid "Conciliacion"
 msgstr "Conciliation"
 
+#: ui_bulmacontbase.h:339 ui_bulmacontbase.h:342 ui_uiconfiguracion.h:386
 #: propiedadesempresa.cpp:38
 msgid "Configuracion"
 msgstr "Configuration"
+
+#: ui_asientolistbase.h:455 ui_asientolistbase.h:460 ui_asientobase.h:562
+#: ui_asientobase.h:567 ui_extractobase.h:664 ui_extractobase.h:669
+msgid "Configurar"
+msgstr "Form"
+
+#: ui_diariobase.h:361 ui_diariobase.h:366 ui_cuentalistbase.h:235
+#: ui_cuentalistbase.h:240
+msgid "Configurar listado"
+msgstr "Form listing"
+
+#: ui_uiconfiguracion.h:468
+msgid "Contabilidad"
+msgstr ""
 
 #: listlinasiento1view.cpp:47 diariosubform.cpp:49 diariosubform.cpp:50
 msgid "Contrapartida"
 msgstr "Counterpart"
 
+#: ui_uiconfiguracion.h:439
+msgid ""
+"Copia de Seguridad\n"
+" (BACKUP)"
+msgstr ""
+
 #: bulmacont.cpp:644
 msgid "Copiando la seleccion al portapapeles..."
 msgstr "Copying the selection to the paper holder..."
+
+#: ui_cuentabase.h:864
+msgid "Correo electronico:"
+msgstr "Electronic mail:"
 
 #: bulmacont.cpp:632
 msgid "Cortando seleccion..."
 msgstr "Cutting selection..."
 
+#: ui_uiconfiguracion.h:412
+msgid "Crea un nuevo ejercicio contable"
+msgstr ""
+
+#: ui_uiconfiguracion.h:424
+msgid "Crea una empresa nueva sin datos"
+msgstr ""
+
+#: ui_uiconfiguracion.h:418
+msgid "Crea una nueva empresa identica a otra existente"
+msgstr ""
+
 #: modelo300.cpp:170
 msgid "Creando formulario"
 msgstr "Creating form"
 
-#: tipoivaview.cpp:46 extractosubform.cpp:48 cuentaview.cpp:38
-#: listcuentasview1.cpp:55 diariosubform.cpp:39
+#: ui_uiconfiguracion.h:427
+msgid "Crear Nueva Empresa"
+msgstr ""
+
+#: ui_bulmacontbase.h:359 ui_asientobase.h:501
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#: ui_asientobase.h:513
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: ui_cuentabase.h:830 ui_amortizacionesbase.h:156 ui_amortizacionbase.h:658
+#: ui_asientobase.h:582 ui_asientobase.h:594 ui_ccostebase.h:270
+#: ui_listcuentasbase.h:312
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_asientobase.h:559 ui_listcuentasbase.h:300
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_bulmacontbase.h:390
+msgid "Ctrl+End"
+msgstr "Ctrl+End"
+
+#: ui_listado347base.h:267 ui_modelo347base.h:250
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_bulmacontbase.h:388
+msgid "Ctrl+Home"
+msgstr "Ctrl+Home"
+
+#: ui_bulmacontbase.h:392
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: ui_bulmacontbase.h:357
+msgid "Ctrl+L"
+msgstr "Ctrl+L"
+
+#: ui_asientobase.h:628
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: ui_amortizacionesbase.h:144 ui_bbloqfechabase.h:145 ui_asientobase.h:547
+#: ui_ccostebase.h:268 ui_listcuentasbase.h:288
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_listado347base.h:254 ui_modelo347base.h:237 ui_listcuentasbase.h:324
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_bulmacontbase.h:384
+msgid "Ctrl+PgDown"
+msgstr "Ctrl+PgDown"
+
+#: ui_bulmacontbase.h:386
+msgid "Ctrl+PgUp"
+msgstr "Ctrl+PgUp"
+
+#: ui_bulmacontbase.h:346
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: ui_cuentabase.h:811 ui_amortizacionbase.h:646
+#: ui_propiedadesempresabase.h:238 ui_aplinteligentesbase.h:212
+#: ui_asientobase.h:525 ui_ccostebase.h:272
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: ui_cuentabase.h:804 ui_busquedacuentabase.h:88 ui_mpatrimonialbase.h:351
+#: tipoivaview.cpp:46 listcuentasview1.cpp:55 diariosubform.cpp:39
+#: cuentaview.cpp:38 extractosubform.cpp:48
 msgid "Cuenta"
 msgstr "Account"
 
-#: canualesview.cpp:41
+#: ui_cambiactabase.h:239
+msgid "Cuenta Destino"
+msgstr "Account Destiny"
+
+#: ui_cambiactabase.h:240
+msgid "Cuenta Origen"
+msgstr "Account Origin"
+
+#: ui_modelo300base.h:199
+msgid "Cuenta a devolver:"
+msgstr "Account to give back:"
+
+#: ui_amortizacionbase.h:671
+msgid "Cuenta de activo:"
+msgstr "Account of assets:"
+
+#: ui_amortizacionbase.h:674
+msgid "Cuenta de amortizacion:"
+msgstr "Account of amortization:"
+
+#: ui_extractobase.h:635
+msgid "Cuenta final:"
+msgstr "Final account:"
+
+#: ui_extractobase.h:634
+msgid "Cuenta inicial:"
+msgstr "Initial account:"
+
+#: ui_cuentabase.h:835
+msgid "Cuenta padre:"
+msgstr "Account father:"
+
+#: ui_tipoivabase.h:268 ui_extractobase.h:624
+msgid "Cuenta:"
+msgstr "Account:"
+
+#: ui_canualesbase.h:56 canualesview.cpp:41
 msgid "Cuentas Anuales"
 msgstr "Annual Accounts"
 
-#: extractosubform.cpp:54 cuentaview.cpp:53 listlinasiento1view.cpp:45
-#: asientolistsubform.cpp:42 listcuentasview1.cpp:62 diariosubform.cpp:42
+#: ui_bulmacontbase.h:352
+msgid "Cuentas a&nuales"
+msgstr "Annual &accounts"
+
+#: ui_amortizacionbase.h:683
+msgid "Cuotas:"
+msgstr "Quotas:"
+
+#: ui_uivisorempresas.h:48 ui_uivisorempresas.h:72
+msgid "DBname"
+msgstr ""
+
+#: ui_uiconfiguracion.h:449
+msgid "Datos Usuario"
+msgstr ""
+
+#: ui_cuentabase.h:831
+msgid "Datos de la cuenta:"
+msgstr ""
+
+#: ui_aplinteligentesbase.h:215
+msgid "Datos del asiento:"
+msgstr "Data of the seat:"
+
+#: ui_regivaprintbase.h:214
+msgid "Datos del listado:"
+msgstr "Data of the listing:"
+
+#: ui_fpagobase.h:302
+msgid "Datos:"
+msgstr "Data:"
+
+#: listlinasiento1view.cpp:45 listcuentasview1.cpp:62 diariosubform.cpp:42
+#: cuentaview.cpp:53 extractosubform.cpp:54 asientolistsubform.cpp:42
 msgid "Debe"
 msgstr "Debtor"
+
+#: ui_extractobase.h:626
+msgid "Debe inicial:"
+msgstr "Debtor initial:"
 
 #: listcuentasview1.cpp:378 listcuentasview1.cpp:404
 msgid "Debe seleccionar una cuenta"
 msgstr "Debtor to select an account"
 
-#: ccosteview.cpp:50 ccosteview.cpp:76 extractosubform.cpp:50
-#: cuentaview.cpp:45 diariosubform.cpp:40
+#: ui_cuentabase.h:855 ui_extractobase.h:729
+msgid "Debe:"
+msgstr "Debtor:"
+
+#: ui_uiconfiguracion.h:408 ui_uiconfiguracion.h:460
+msgid "Desacer"
+msgstr ""
+
+#: diariosubform.cpp:40 cuentaview.cpp:45 ccosteview.cpp:50 ccosteview.cpp:76
+#: extractosubform.cpp:50
 msgid "Descripcion"
 msgstr "Description"
 
@@ -368,6 +1170,14 @@ msgstr "Description of the seat"
 msgid "Descripcion del asiento"
 msgstr "Description of the seat"
 
+#: ui_canalbase.h:244 ui_ccostebase.h:286
+msgid "Descripcion:"
+msgstr "Description:"
+
+#: ui_asientobase.h:631
+msgid "Descuadre:"
+msgstr "Unsquare:"
+
 #: asiento1view.cpp:332
 msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr "It wishes to create a new seat in that position?"
@@ -376,8 +1186,8 @@ msgstr "It wishes to create a new seat in that position?"
 msgid "Desea guardar los cambios."
 msgstr "It wishes to keep the changes."
 
-#: ccosteview.cpp:167 ccosteview.cpp:227 tipoivaview.cpp:110
-#: tipoivaview.cpp:153 canalview.cpp:237 propiedadesempresa.cpp:117
+#: tipoivaview.cpp:110 tipoivaview.cpp:153 canalview.cpp:237
+#: ccosteview.cpp:167 ccosteview.cpp:227 propiedadesempresa.cpp:117
 #: fpagoview.cpp:147 fpagoview.cpp:209
 msgid "Desea guardar los cambios?"
 msgstr "It wishes to keep the changes?"
@@ -391,21 +1201,33 @@ msgstr "Download completes action..."
 msgid "Destinatario"
 msgstr "Destiny:"
 
+#: ui_duplicarasientobase.h:233
+msgid "Destino:"
+msgstr ""
+
 #: amortizacionview.cpp:385 amortizacionview.cpp:436
 msgid "Desvincular asiento"
 msgstr "Break ties seat"
 
-#: diarioview.cpp:54
+#: ui_propiedadesempresabase.h:244
+msgid "Di&gitos de cuentas"
+msgstr ""
+
+#: ui_diariobase.h:336 diarioview.cpp:54
 msgid "Diario"
 msgstr "Newspaper"
 
-#: diarioview.cpp:164 extractoview1.cpp:246
+#: extractoview1.cpp:246 diarioview.cpp:164
 msgid "Diarios (*.txt)"
 msgstr "Newspapers (* txt)"
 
 #: bbloqfecha.cpp:147
 msgid "Diciembre"
 msgstr "December"
+
+#: ui_propiedadesempresabase.h:240
+msgid "Digitos estanda&r"
+msgstr ""
 
 #: cuentaview.cpp:64
 #, fuzzy
@@ -416,17 +1238,50 @@ msgstr "Description of the account"
 msgid "Direccion del proveedor"
 msgstr "Direction of the supplier"
 
+#: ui_cuentabase.h:860
+msgid "Direccion:"
+msgstr "Address:"
+
+#: ui_diarioprintbase.h:149
+msgid "Documento:"
+msgstr "Document:"
+
+#: ui_uiconfiguracion.h:457
+msgid "Duplicar"
+msgstr ""
+
+#: ui_cuentabase.h:814
+msgid "Duplicar Asiento"
+msgstr "Duplicate Seat"
+
+#: ui_duplicarasientobase.h:228
+msgid "Duplicar Asientos"
+msgstr "Duplicate Seats"
+
+#: ui_asientobase.h:585 ui_asientobase.h:590
+msgid "Duplicar asiento"
+msgstr "Duplicate seat"
+
 #: cuentaview.cpp:63
 #, fuzzy
 msgid "E-Mail de la cuenta"
 msgstr "Data of the account:"
+
+#: ui_mpatrimonialesbase.h:126
+msgid "Editar"
+msgstr "Publish"
 
 #: cuentalistview.cpp:309
 #, fuzzy
 msgid "Editar articulo"
 msgstr "Publish account"
 
-#: amortizacionview.cpp:78 bbloqfecha.cpp:115
+#: ui_listcuentasbase.h:291 ui_listcuentasbase.h:296
+msgid "Editar cuenta"
+msgstr ""
+
+#: ui_uivisorempresas.h:47 ui_uivisorempresas.h:71 bbloqfecha.cpp:115
+#: amortizacionview.cpp:78
 msgid "Ejercicio"
 msgstr "Exercise"
 
@@ -442,9 +1297,17 @@ msgstr "El asiento se ha guardado correctamente."
 msgid "Elija el archivo"
 msgstr "Choose the file"
 
+#: ui_modelo300base.h:205
+msgid "En el banco"
+msgstr ""
+
 #: bbloqfecha.cpp:191
 msgid "Enero"
 msgstr "January"
+
+#: ui_uiconfiguracion.h:393
+msgid "English"
+msgstr ""
 
 #: cuentaview.cpp:56
 #, fuzzy
@@ -478,22 +1341,59 @@ msgstr "description"
 msgid "Estado"
 msgstr "State"
 
-#: extractoview1.cpp:55
+#: ui_asientobase.h:597 ui_asientobase.h:602
+msgid "Exportar asiento"
+msgstr "Export seat"
+
+#: ui_listcuentasbase.h:327 ui_listcuentasbase.h:332
+msgid "Exportar cuentas"
+msgstr "Export accounts"
+
+#: ui_asientobase.h:550 ui_asientobase.h:555
+msgid "Extender asiento"
+msgstr "Extend seat"
+
+#: ui_extractobase.h:622 extractoview1.cpp:55
 msgid "Extracto de Cuentas"
 msgstr "Extract of Accounts"
+
+#: ui_bulmacontbase.h:381
+msgid "F1"
+msgstr "F1"
+
+#: ui_bulmacontbase.h:377
+msgid "F11"
+msgstr "F11"
+
+#: ui_amortizacionesbase.h:168 ui_listado347base.h:260 ui_diariobase.h:381
+#: ui_modelo347base.h:243 ui_listcuentasbase.h:358
+msgid "F5"
+msgstr "F5"
 
 #: diariosubform.cpp:54
 msgid "Factura"
 msgstr "Invoice"
 
+#: ui_uiconfiguracion.h:470
+msgid "Facturacion"
+msgstr ""
+
 #: bbloqfecha.cpp:187
 msgid "Febrero"
 msgstr "February"
 
-#: empresa.cpp:815 extractosubform.cpp:47 listlinasiento1view.cpp:40
-#: asientolistsubform.cpp:38 diariosubform.cpp:38
+#: listlinasiento1view.cpp:40 empresa.cpp:815 diariosubform.cpp:38
+#: extractosubform.cpp:47 asientolistsubform.cpp:38
 msgid "Fecha"
 msgstr "Date"
+
+#: ui_asientolistbase.h:424
+msgid "Fecha &final:"
+msgstr "Final &date:"
+
+#: ui_asientolistbase.h:423
+msgid "Fecha &inicial:"
+msgstr "Initial &date:"
 
 #: amortizacionesview.cpp:50
 #, fuzzy
@@ -504,15 +1404,46 @@ msgstr "Date of quota"
 msgid "Fecha 1a cuota"
 msgstr "Date of quota"
 
+#: ui_amortizacionbase.h:670
+msgid "Fecha 1ª cuota:"
+msgstr "Date 1ª quota:"
+
 #: listlinasiento1view.cpp:61
 #, fuzzy
 msgid "Fecha Factura"
 msgstr "Date of quota"
 
+#: ui_cambiactabase.h:237 ui_regivaprintbase.h:217 ui_canualesprintbase.h:197
+#: ui_canualesprintbase.h:200
+#, fuzzy
+msgid "Fecha Final"
+msgstr ""
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Final Date\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Fina Date\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Final Date\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Final Date"
+
+#: ui_cambiactabase.h:238 ui_regivaprintbase.h:215 ui_canualesprintbase.h:196
+#: ui_canualesprintbase.h:199
+msgid "Fecha Inicial"
+msgstr "Initial Date"
+
 #: amortizacionesview.cpp:49
 #, fuzzy
 msgid "Fecha compra"
 msgstr "Date of purchase:"
+
+#: ui_duplicarasientobase.h:234
+msgid "Fecha con la que quedara el asiento:"
+msgstr ""
+
+#: ui_amortizacionbase.h:662
+msgid "Fecha de compra:"
+msgstr ""
 
 #: amortizacionview.cpp:60
 msgid "Fecha de la compra"
@@ -537,6 +1468,11 @@ msgstr "Final date:"
 msgid "Fecha final regularizacion:"
 msgstr "Seat of &regularizacion"
 
+#: ui_listado347base.h:269 ui_diariobase.h:387 ui_modelo347base.h:253
+#: ui_extractobase.h:633
+msgid "Fecha final:"
+msgstr ""
+
 #: empresa.cpp:781 empresa.cpp:840
 #, fuzzy
 msgid "Fecha inicial"
@@ -552,30 +1488,128 @@ msgstr "Initial date:"
 msgid "Fecha inicial regularizacion:"
 msgstr "Initial date:"
 
+#: ui_duplicarasientobase.h:230 ui_listado347base.h:270 ui_diariobase.h:386
+#: ui_modelo347base.h:251 ui_extractobase.h:632
+msgid "Fecha inicial:"
+msgstr ""
+
 #: amortizacionview.cpp:79
 msgid "Fecha prevista"
 msgstr "Predicted date"
 
-#: empresa.cpp:815
+#: ui_asientobase.h:629 empresa.cpp:815
 msgid "Fecha:"
 msgstr "Date:"
+
+#: ui_asientolistbase.h:444 ui_asientolistbase.h:449
+msgid "Filtrar"
+msgstr "leak "
+
+#: ui_cuentalistbase.h:224 ui_cuentalistbase.h:229
+msgid "Filtrar listado"
+msgstr "Filter listing"
+
+#: ui_bulmacontbase.h:389
+msgid "Fin"
+msgstr "Aim"
+
+#: ui_busquedacuentabase.h:86
+msgid "Form1"
+msgstr "Form1"
 
 #: fpagoview.cpp:36
 #, fuzzy
 msgid "Forma de Pago"
 msgstr "Modes of payment"
 
+#: ui_fpagobase.h:301
+msgid "Forma de pago:"
+msgstr "Mode of payment:"
+
+#: ui_bulmacontbase.h:362
+msgid "Formas de &pago"
+msgstr "Modes of &payment"
+
+#: ui_fpagobase.h:281
+msgid "Formas de pago"
+msgstr "Modes of payment"
+
+#: ui_diarioprintbase.h:155
+msgid "Formato &normal"
+msgstr "Normal &format"
+
+#: ui_diarioprintbase.h:154
+msgid "Formato del listado:"
+msgstr "Format of the listing:"
+
+#: ui_regivaprintbase.h:220 ui_extractoprintbase.h:135
+msgid "Formato:"
+msgstr "Format:"
+
+#: modelo300.cpp:116 modelo300.cpp:155
+msgid "Formulario 300"
+msgstr "Form 300"
+
+#: ui_uiconfiguracion.h:392
+msgid "Français"
+msgstr ""
+
+#: ui_uiconfiguracion.h:397
+msgid "Fuente:"
+msgstr ""
+
+#: ui_mpatrimonialbase.h:361 ui_ccostebase.h:287
+msgid "General"
+msgstr "General"
+
+#: ui_uiconfiguracion.h:387
+msgid "Generalidades"
+msgstr ""
+
+#: extractoview1.cpp:836
+msgid "Generando Extracto "
+msgstr ""
+
 #: amortizacionview.cpp:381 amortizacionview.cpp:447
 msgid "Generar asiento"
 msgstr "Generate seat"
+
+#: ui_modelo300base.h:206
+msgid "Generar borrador"
+msgstr "To generate rough draft"
+
+#: modelo300.cpp:119
+msgid "Generar de todas formas"
+msgstr "Generate in any case"
 
 #: listcuentasview1.cpp:62
 msgid "Grupo"
 msgstr "Group"
 
+#: ui_uiconfiguracion.h:436
+msgid "Guarda una copia de seguridad de una empresa"
+msgstr ""
+
+#: ui_propiedadesempresabase.h:229 ui_propiedadesempresabase.h:234
+#, fuzzy
+msgid "Guardar"
+msgstr ""
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Keep\n"
+"#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Keep "
+
 #: diarioview.cpp:162
 msgid "Guardar Libro Diario"
 msgstr "Keep Daily Book"
+
+#: ui_amortizacionbase.h:637 ui_amortizacionbase.h:642
+msgid "Guardar amortizacion"
+msgstr "Keep amortization"
+
+#: ui_asientobase.h:516 ui_asientobase.h:521
+msgid "Guardar asiento"
+msgstr "Keep seat"
 
 #: propiedadesempresa.cpp:116
 msgid "Guardar cambios"
@@ -589,7 +1623,11 @@ msgstr "Keep channel"
 msgid "Guardar centro de coste"
 msgstr " Keep center from cost"
 
-#: fpagoview.cpp:146 fpagoview.cpp:208
+#: ui_cuentabase.h:807
+msgid "Guardar cuenta"
+msgstr "Keep account"
+
+#: ui_fpagobase.h:297 fpagoview.cpp:146 fpagoview.cpp:208
 msgid "Guardar forma de pago"
 msgstr "Keep mode of payment"
 
@@ -597,7 +1635,7 @@ msgstr "Keep mode of payment"
 msgid "Guardar libro diario"
 msgstr "Keep daily book"
 
-#: extractoview1.cpp:504
+#: ui_extractobase.h:697 ui_extractobase.h:702 extractoview1.cpp:504
 msgid "Guardar punteo"
 msgstr "Keep punteo"
 
@@ -605,16 +1643,36 @@ msgstr "Keep punteo"
 msgid "Guardar tipo de IVA"
 msgstr "Keep type from IVA"
 
-#: extractosubform.cpp:55 cuentaview.cpp:54 listlinasiento1view.cpp:46
-#: asientolistsubform.cpp:43 listcuentasview1.cpp:62 diariosubform.cpp:43
+#: ui_diarioprintbase.h:151 ui_extractoprintbase.h:137
+msgid "HT&ML"
+msgstr "HT&ML"
+
+#: ui_regivaprintbase.h:222
+msgid "HTML"
+msgstr "HTML"
+
+#: listlinasiento1view.cpp:46 listcuentasview1.cpp:62 diariosubform.cpp:43
+#: cuentaview.cpp:54 extractosubform.cpp:55 asientolistsubform.cpp:43
 msgid "Haber"
 msgstr "Creditor"
+
+#: ui_extractobase.h:625
+msgid "Haber inicial:"
+msgstr "Creditor initial:"
+
+#: ui_cuentabase.h:856 ui_extractobase.h:730
+msgid "Haber:"
+msgstr "Creditor:"
+
+#: ui_bbloqfechabase.h:149
+msgid "Hacer doble click para bloquear/desbloquear fechas"
+msgstr ""
 
 #: listlinasiento1view.cpp:49
 msgid "ID Canal"
 msgstr "ID Channel"
 
-#: cuentalistview.cpp:386 cuentaview.cpp:43 listcuentasview1.cpp:62
+#: listcuentasview1.cpp:62 cuentaview.cpp:43 cuentalistview.cpp:386
 #, fuzzy
 msgid "ID cuenta"
 msgstr ""
@@ -636,7 +1694,7 @@ msgstr ""
 msgid "Id"
 msgstr "Id"
 
-#: amortizacionview.cpp:71 amortizacionview.cpp:83 amortizacionesview.cpp:47
+#: amortizacionesview.cpp:47 amortizacionview.cpp:71 amortizacionview.cpp:83
 msgid "Id amortizacion"
 msgstr "Id amortization"
 
@@ -644,7 +1702,7 @@ msgstr "Id amortization"
 msgid "Id apunte"
 msgstr "Id note"
 
-#: amortizacionview.cpp:81 asiento1.cpp:45 listlinasiento1view.cpp:57
+#: listlinasiento1view.cpp:57 amortizacionview.cpp:81 asiento1.cpp:45
 #: asientolistsubform.cpp:44
 msgid "Id asiento"
 msgstr "Id seat"
@@ -653,7 +1711,7 @@ msgstr "Id seat"
 msgid "Id borrador"
 msgstr "Id rough draft"
 
-#: ccosteview.cpp:76 listlinasiento1view.cpp:52
+#: listlinasiento1view.cpp:52 ccosteview.cpp:76
 #, fuzzy
 msgid "Id centro de coste"
 msgstr ""
@@ -697,16 +1755,79 @@ msgstr "Registry of IVA"
 msgid "Identificador"
 msgstr "Identifier"
 
-#: cuentaview.cpp:47 listcuentasview1.cpp:62
+#: ui_uiconfiguracion.h:396
+msgid "Idioma:"
+msgstr ""
+
+#: ui_asientobase.h:608 ui_asientobase.h:613
+msgid "Importar asiento"
+msgstr "Import seat"
+
+#: ui_listcuentasbase.h:338 ui_listcuentasbase.h:343
+msgid "Importar cuentas"
+msgstr "Import accounts "
+
+#: ui_listado347base.h:268 ui_modelo347base.h:252
+msgid "Importe:"
+msgstr "Amount:"
+
+#: ui_canualesprintbase.h:193
+msgid "Impresion de Balances"
+msgstr ""
+
+#: ui_diarioprintbase.h:148
+msgid "Impresion del Diario"
+msgstr ""
+
+#: ui_extractoprintbase.h:134
+msgid "Impresion del Extracto"
+msgstr ""
+
+#: ui_regivaprintbase.h:213
+msgid "Impresion del Registro de IVA"
+msgstr ""
+
+#: ui_regivaprintbase.h:224 ui_listado347base.h:250 ui_asientolistbase.h:433
+#: ui_asientolistbase.h:438 ui_diariobase.h:339 ui_diariobase.h:344
+#: ui_modelo347base.h:233 ui_modelo347base.h:246 ui_extractobase.h:642
+#: ui_extractobase.h:647
+msgid "Imprimir"
+msgstr "Print"
+
+#: ui_listcuentasbase.h:315 ui_listcuentasbase.h:320
+msgid "Imprimir cuentas"
+msgstr "Print accounts"
+
+#: ui_cuentalistbase.h:213 ui_cuentalistbase.h:218
+msgid "Imprimir listado"
+msgstr "Print listing"
+
+#: listcuentasview1.cpp:62 cuentaview.cpp:47
 msgid "Imputacion"
 msgstr "Imputation"
+
+#: ui_regivaprintbase.h:219
+msgid "Incluir resultados parciales"
+msgstr "Include partial results"
+
+#: ui_bulmacontbase.h:391
+msgid "Indexador"
+msgstr "Indexador"
+
+#: ui_canalbase.h:242
+msgid "Informacion del canal:"
+msgstr ""
+
+#: ui_tipoivabase.h:265
+msgid "Informacion del tipo de IVA:"
+msgstr ""
 
 #: empresa.cpp:242 empresa.cpp:249
 #, fuzzy
 msgid "Inicializando asientos"
 msgstr "Listing of seats"
 
-#: main.cxx:235
+#: main.cxx:167
 msgid "Inicializando componentes"
 msgstr ""
 
@@ -723,9 +1844,13 @@ msgstr ""
 msgid "Inicializando extracto"
 msgstr ""
 
-#: main.cxx:140
+#: main.cxx:97
 msgid "Iniciando clases"
 msgstr "Initiating classes"
+
+#: ui_bulmacontbase.h:387
+msgid "Inicio"
+msgstr "Beginning"
 
 #: bulmacont.cpp:656
 msgid "Insertando el contenido del portapapeles..."
@@ -734,6 +1859,10 @@ msgstr "Inserting the content of the paper holder..."
 #: bbloqfecha.cpp:253
 msgid "Introduzca Ejercicio a Crear"
 msgstr ""
+
+#: ui_selectcanalbase.h:95 ui_selectccostebase.h:95
+msgid "Invertir"
+msgstr "Invest"
 
 #: bbloqfecha.cpp:167
 msgid "Julio"
@@ -747,23 +1876,79 @@ msgstr "June"
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr "The initial date is later to the final date."
 
-#: main.cxx:229
+#: main.cxx:161
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:170
+#: main.cxx:127
 #, fuzzy
 msgid "Leyendo configuracion"
 msgstr "Configuration"
+
+#: ui_amortizacionbase.h:680
+msgid "Li&neal"
+msgstr "Li&near"
+
+#: ui_bulmacontbase.h:361
+msgid "Libro &Diario"
+msgstr "Daily &Book"
+
+#: ui_bulmacontbase.h:360
+msgid "Libro &Mayor"
+msgstr "Greater &Book"
+
+#: ui_uiconfiguracion.h:266 ui_uiconfiguracion.h:464
+msgid "Lista de Usuarios"
+msgstr ""
+
+#: ui_bulmacontbase.h:393
+msgid "Listado &347"
+msgstr "Listing &347"
+
+#: ui_amortizacionesbase.h:132
+msgid "Listado de amortizaciones"
+msgstr "Listing of amortizations"
+
+#: ui_asientolistbase.h:419
+msgid "Listado de asientos"
+msgstr ""
 
 #: bulmacont.cpp:717
 msgid "Listado de cuentas"
 msgstr "Listing of accounts"
 
+#: ui_listado347base.h:247 ui_modelo347base.h:230
+msgid "Listado para el modelo 347"
+msgstr "Listing for model 347"
+
+#: ui_listadocuentas1.h:61
+msgid "Listados de Cuentas"
+msgstr ""
+
 #: bulmacont.cpp:595 bulmacont.cpp:621 bulmacont.cpp:633 bulmacont.cpp:645
 #: bulmacont.cpp:657 bulmacont.cpp:675 bulmacont.cpp:693
 msgid "Listo."
 msgstr "Ready."
+
+#: modelo300.cpp:156
+msgid ""
+"Lo siento, no encuentro el formulario original en pdf.\n"
+"Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
+"/usr/share/bulmages/formularios/ o en\n"
+"~/.bulmages/formularios/."
+msgstr ""
+"I feel it, nonencounter the original form in pdf.\n"
+"Prove to download it from www.aeat.es and guaedeló in\n"
+"/usr/share/bulmages/formularios/ or in\n"
+"~/.bulmages/formularios/."
+
+#: ui_uiconfiguracion.h:453
+msgid "Login:"
+msgstr ""
+
+#: ui_duplicarasientobase.h:237
+msgid "Mantener distacia entre fechas"
+msgstr "To maintain distacia between dates"
 
 #: diariosubform.cpp:52
 msgid "MarcaConciliacion"
@@ -773,16 +1958,28 @@ msgstr "Marks Conciliation"
 msgid "Marzo"
 msgstr "March"
 
+#: ui_mpatrimonialbase.h:347 ui_mpatrimonialbase.h:353
+msgid "Masa Patrimonial"
+msgstr "Patrimonial Mass"
+
 #: mpatrimonialesview.cpp:133
 msgid "Masa patrimonial"
 msgstr "Patrimonial mass"
+
+#: ui_bulmacontbase.h:353
+msgid "Masas &patrimoniales"
+msgstr "Patrimonial &masses"
+
+#: ui_mpatrimonialesbase.h:122
+msgid "Masas Patrimoniales"
+msgstr "Patrimonial Masses"
 
 #: bbloqfecha.cpp:175
 msgid "Mayo"
 msgstr "May"
 
-#: amortizacionview.cpp:248 amortizacionview.cpp:275 amortizacionview.cpp:303
-#: amortizacionview.cpp:334
+#: ui_amortizacionbase.h:668 amortizacionview.cpp:248 amortizacionview.cpp:275
+#: amortizacionview.cpp:303 amortizacionview.cpp:334
 msgid "Mensual"
 msgstr "Monthly"
 
@@ -790,9 +1987,29 @@ msgstr "Monthly"
 msgid "Metodo"
 msgstr "Method"
 
-#: extractosubform.cpp:94 extractosubform.cpp:111 listlinasiento1view.cpp:89
-#: listlinasiento1view.cpp:106 asientolistsubform.cpp:77
-#: asientolistsubform.cpp:94 diariosubform.cpp:96 diariosubform.cpp:113
+#: ui_amortizacionbase.h:675
+msgid "Metodo:"
+msgstr "Method:"
+
+#: ui_modelo300base.h:184
+msgid "Modelo 300"
+msgstr "Model 300"
+
+#: ui_propiedadesempresabase.h:239
+msgid "Modelo del codigo de cuenta:"
+msgstr ""
+
+#: ui_propiedadesempresabase.h:243
+msgid "Modi&ficar plan contable"
+msgstr "Modi&fy countable plan"
+
+#: ui_ccostebase.h:276 ui_ccostebase.h:281
+msgid "Mostrar / Ocultar Detalle"
+msgstr "Show/hide Detail"
+
+#: listlinasiento1view.cpp:89 listlinasiento1view.cpp:106 diariosubform.cpp:96
+#: diariosubform.cpp:113 extractosubform.cpp:94 extractosubform.cpp:111
+#: asientolistsubform.cpp:77 asientolistsubform.cpp:94
 msgid "Mostrar asiento"
 msgstr "Show seat"
 
@@ -812,22 +2029,32 @@ msgid "Mostrar diario (mes)"
 msgstr "Show extract (month)"
 
 #: listlinasiento1view.cpp:93 listlinasiento1view.cpp:112
-#: asientolistsubform.cpp:81 asientolistsubform.cpp:100 diariosubform.cpp:100
-#: diariosubform.cpp:119
+#: diariosubform.cpp:100 diariosubform.cpp:119 asientolistsubform.cpp:81
+#: asientolistsubform.cpp:100
 msgid "Mostrar extracto (ano)"
 msgstr " show extract (year)"
 
-#: listlinasiento1view.cpp:91 listlinasiento1view.cpp:108
-#: asientolistsubform.cpp:79 asientolistsubform.cpp:96 diariosubform.cpp:98
-#: diariosubform.cpp:115
+#: listlinasiento1view.cpp:91 listlinasiento1view.cpp:108 diariosubform.cpp:98
+#: diariosubform.cpp:115 asientolistsubform.cpp:79 asientolistsubform.cpp:96
 msgid "Mostrar extracto (dia)"
 msgstr "Show extract (day)"
 
-#: listlinasiento1view.cpp:92 listlinasiento1view.cpp:110
-#: asientolistsubform.cpp:80 asientolistsubform.cpp:98 diariosubform.cpp:99
-#: diariosubform.cpp:117
+#: listlinasiento1view.cpp:92 listlinasiento1view.cpp:110 diariosubform.cpp:99
+#: diariosubform.cpp:117 asientolistsubform.cpp:80 asientolistsubform.cpp:98
 msgid "Mostrar extracto (mes)"
 msgstr "Show extract (month)"
+
+#: ui_extractobase.h:653 ui_extractobase.h:658
+msgid "Mostrar/Oculatar filtro"
+msgstr "Show/Oculatar filter"
+
+#: ui_diariobase.h:350 ui_diariobase.h:355
+msgid "Mostrar/ocultar filtro"
+msgstr "Show/hide filter"
+
+#: ui_uiconfiguracion.h:399
+msgid "Muestra 0123..."
+msgstr ""
 
 #: amortizacionview.cpp:66
 msgid "NIF del proveedor"
@@ -836,6 +2063,18 @@ msgstr "NIF of the supplier"
 #: listcuentasview1.cpp:88
 msgid "NOMBRE"
 msgstr "NAME"
+
+#: ui_cuentalistbase.h:256
+msgid "Nivel minimo"
+msgstr ""
+
+#: ui_cuentabase.h:837
+msgid "No Debe"
+msgstr ""
+
+#: ui_cuentabase.h:841
+msgid "No Haber"
+msgstr ""
 
 #: ccosteview.cpp:278
 #, fuzzy
@@ -860,7 +2099,12 @@ msgstr "Nondebtor"
 msgid "Nohaber"
 msgstr "Noncreditor"
 
-#: ccosteview.cpp:49 ccosteview.cpp:76 amortizacionesview.cpp:48
+#: ui_uiconfiguracion.h:405
+msgid "Nom Empresa"
+msgstr ""
+
+#: ui_uivisorempresas.h:46 ui_uivisorempresas.h:70 ui_mpatrimonialbase.h:350
+#: amortizacionesview.cpp:48 ccosteview.cpp:49 ccosteview.cpp:76
 #: propiedadesempresa.cpp:191
 msgid "Nombre"
 msgstr "Name"
@@ -883,21 +2127,67 @@ msgstr "Name account"
 msgid "Nombre de la amortizacion"
 msgstr "Name of the amortization"
 
-#: cuentalistview.cpp:388 listlinasiento1view.cpp:42
+#: listlinasiento1view.cpp:42 cuentalistview.cpp:388
 msgid "Nombre de la cuenta"
 msgstr "Name of the account"
+
+#: ui_extractobase.h:627
+msgid "Nombre de la cuenta:"
+msgstr "Name of the account:"
+
+#: ui_uiconfiguracion.h:402
+msgid "Nombre de la empresa"
+msgstr ""
+
+#: ui_cuentabase.h:858
+msgid "Nombre de la entidad:"
+msgstr "Name of the organization:"
+
+#: ui_fpagobase.h:303
+msgid "Nombre de la forma de pago:"
+msgstr "Name of the mode of payment:"
 
 #: amortizacionview.cpp:67
 msgid "Nombre del proveedor"
 msgstr "Name of the supplier"
 
+#: ui_tipoivabase.h:266 ui_cuentabase.h:833 ui_amortizacionbase.h:659
+#: ui_canalbase.h:243 ui_ccostebase.h:285 ui_uiconfiguracion.h:450
+msgid "Nombre:"
+msgstr "Name:"
+
+#: ui_asientobase.h:635
+msgid "Normal"
+msgstr "Normal"
+
 #: bbloqfecha.cpp:151
 msgid "Noviembre"
 msgstr "November"
 
-#: fpagoview.cpp:214
+#: ui_amortizacionesbase.h:135 ui_amortizacionesbase.h:140
+msgid "Nueva amortizacion"
+msgstr ""
+
+#: ui_listcuentasbase.h:279 ui_listcuentasbase.h:284
+msgid "Nueva cuenta"
+msgstr ""
+
+#: ui_fpagobase.h:285 fpagoview.cpp:214
 msgid "Nueva forma de pago"
 msgstr "New mode of payment"
+
+#: ui_mpatrimonialesbase.h:124 ui_uiconfiguracion.h:458
+msgid "Nuevo"
+msgstr "New"
+
+#: ui_uiconfiguracion.h:415
+msgid "Nuevo Ejercicio"
+msgstr ""
+
+#: ui_asientobase.h:528 ui_asientobase.h:533 ui_asientobase.h:538
+#: ui_asientobase.h:543
+msgid "Nuevo asiento"
+msgstr "New seat"
 
 #: canalview.cpp:190
 #, fuzzy
@@ -918,11 +2208,23 @@ msgstr "Invoice"
 msgid "Numero de cuotas"
 msgstr "Number of quotas"
 
+#: ui_fpagobase.h:305
+msgid "Numero de plazos:"
+msgstr "Number of terms:"
+
+#: ui_amortizacionbase.h:661
+msgid "Nº de cuotas:"
+msgstr "Nº of quotas:"
+
 #: bbloqfecha.cpp:155
 msgid "Octubre"
 msgstr "October"
 
-#: extractosubform.cpp:73 listlinasiento1view.cpp:55 asientolistsubform.cpp:37
+#: ui_cuentabase.h:836
+msgid "Opciones de cuenta:"
+msgstr "Options of account:"
+
+#: listlinasiento1view.cpp:55 extractosubform.cpp:73 asientolistsubform.cpp:37
 msgid "Orden"
 msgstr "Order"
 
@@ -930,14 +2232,38 @@ msgstr "Order"
 msgid "Orden de asiento"
 msgstr "Order of seat"
 
+#: ui_asientobase.h:630
+msgid "Orden del asiento:"
+msgstr "Order of the seat:"
+
+#: ui_bulmacontbase.h:378
+msgid "Ordenar &ventanas"
+msgstr "Order &windows"
+
+#: ui_bulmacontbase.h:379
+msgid "Organizacion en &cascada"
+msgstr ""
+
 #: ccosteview.cpp:61
 #, fuzzy
 msgid "Origen"
 msgstr "Origin:"
 
+#: ui_duplicarasientobase.h:229
+msgid "Origen:"
+msgstr ""
+
+#: ui_uiconfiguracion.h:474
+msgid "Otros"
+msgstr ""
+
 #: cuentaview.cpp:46
 msgid "Padre"
 msgstr "Father"
+
+#: ui_bulmacontbase.h:396
+msgid "Paises"
+msgstr ""
 
 #: propiedadesempresa.cpp:159
 msgid ""
@@ -952,23 +2278,99 @@ msgstr ""
 "\n"
 "To leave now?"
 
+#: ui_uiconfiguracion.h:454
+msgid "Password:"
+msgstr ""
+
+#: ui_amortizacionbase.h:685
+msgid "Pendiente:"
+msgstr "Slope:"
+
 #: amortizacionview.cpp:63
 msgid "Periodicidad"
 msgstr "Regularity"
 
+#: ui_amortizacionbase.h:672
+msgid "Periodicidad:"
+msgstr "Regularity:"
+
+#: ui_modelo300base.h:186
+msgid "Periodo a declarar"
+msgstr "Period to declare"
+
+#: ui_modelo300base.h:204
+msgid "Personalizada"
+msgstr "Customized"
+
+#: ui_listcuentasbase.h:361
+msgid "Plan &contable"
+msgstr "Countable &plan"
+
 #: listcuentasview1.cpp:547 listcuentasview1.cpp:566
 msgid "Plan contable (*.xml)"
 msgstr "Countable plan (* xml)"
+
+#: ui_listcuentasbase.h:271
+msgid "Plan de cuentas"
+msgstr "Plan of accounts"
+
+#: ui_fpagobase.h:304
+msgid "Plazo del primer recibo (dias):"
+msgstr "Term of the first receipt (day):"
+
+#: ui_fpagobase.h:307
+msgid "Plazo entre recibos (dias):"
+msgstr "Term between receipts (day):"
+
+#: ui_cuentabase.h:867
+msgid "Poblacion:"
+msgstr "Population:"
 
 #: bbloqfecha.cpp:254
 #, fuzzy
 msgid "Ponga el anyo:"
 msgstr "In the bank"
 
-#: ccosteview.cpp:58 tipoivaview.cpp:45
+#: ui_amortizacionbase.h:676
+msgid "Porcent&ual"
+msgstr "Percent&age"
+
+#: tipoivaview.cpp:45 ccosteview.cpp:58
 #, fuzzy
 msgid "Porcentaje"
 msgstr "Percentage:"
+
+#: ui_tipoivabase.h:267
+msgid "Porcentaje:"
+msgstr ""
+
+#: ui_regivaprintbase.h:223
+msgid "Postscript"
+msgstr "PostScript"
+
+#: ui_canualesprintbase.h:195
+msgid "Primer Periodo"
+msgstr "First Period"
+
+#: ui_uiconfiguracion.h:241 ui_uiconfiguracion.h:461
+msgid "Privilegio"
+msgstr ""
+
+#: ui_propiedadesempresabase.h:225
+msgid "Propiedades de la empresa"
+msgstr "Company Settings"
+
+#: ui_propiedadesempresabase.h:245
+msgid "Propiedades generales"
+msgstr "General properties"
+
+#: ui_diarioprintbase.h:153 ui_extractoprintbase.h:138
+msgid "Propietario"
+msgstr "Owner"
+
+#: ui_cuentabase.h:865
+msgid "Provincia:"
+msgstr "Province:"
 
 #: extractosubform.cpp:46
 msgid "Punteo"
@@ -978,17 +2380,84 @@ msgstr "Punteo"
 msgid "Punteo (*.pto);;Todos los archivos (*)"
 msgstr ""
 
+#: ui_extractobase.h:636
+msgid "Punteo:"
+msgstr "Punteo:"
+
 #: extractoview1.cpp:506
 msgid "Punteos (*.pto)"
 msgstr "Punteos (*.pto)"
 
-#: cuentaview.cpp:51 listcuentasview1.cpp:62
+#: ui_mpatrimonialbase.h:356 ui_mpatrimonialbase.h:359
+msgid "Quitar"
+msgstr "Clear"
+
+#: ui_listado347base.h:257 ui_modelo347base.h:240
+msgid "Recalcular"
+msgstr "Recalcular"
+
+#: ui_uiconfiguracion.h:244 ui_uiconfiguracion.h:462
+msgid "Recurso"
+msgstr ""
+
+#: ui_cuentabase.h:840
+msgid "Reg&ularizacion"
+msgstr ""
+
+#: ui_asientobase.h:636 listcuentasview1.cpp:62 cuentaview.cpp:51
 msgid "Regularizacion"
 msgstr "Regularizacion"
+
+#: ui_mpatrimonialbase.h:360
+msgid "Restan"
+msgstr "Subtraction"
+
+#: ui_uiconfiguracion.h:443
+msgid "Restaura la copia de seguridad de una empresa"
+msgstr ""
+
+#: ui_uiconfiguracion.h:446
+msgid ""
+"Restaurar copia\n"
+" (RESTORE)"
+msgstr ""
+
+#: ui_aplinteligentesbase.h:217
+msgid "Return"
+msgstr ""
+
+#: ui_listcuentasbase.h:362
+msgid "S&ubcuentas"
+msgstr "S&ubaccounts"
+
+#: ui_selectcanalbase.h:94 ui_selectccostebase.h:96
+msgid "S. Nada"
+msgstr "S. Nothing"
+
+#: ui_selectcanalbase.h:96 ui_selectccostebase.h:97
+msgid "S. Todo"
+msgstr "S. Everything"
 
 #: extractosubform.cpp:56
 msgid "Saldo"
 msgstr "Balance"
+
+#: ui_extractobase.h:623
+msgid "Saldo inicial:"
+msgstr "Initial balance:"
+
+#: ui_asientobase.h:639 ui_extractobase.h:731
+msgid "Saldo:"
+msgstr "Balance:"
+
+#: ui_cuentabase.h:854
+msgid "Saldos:"
+msgstr "Balances:"
+
+#: ui_uiconfiguracion.h:406 ui_uiconfiguracion.h:455 ui_uiconfiguracion.h:467
+#: ui_uiconfiguracion.h:469 ui_uiconfiguracion.h:471 ui_uiconfiguracion.h:473
+msgid "Salir"
+msgstr ""
 
 #: propiedadesempresa.cpp:158
 msgid "Salir del programa"
@@ -1010,6 +2479,18 @@ msgstr ""
 
 #: extractoview1.cpp:554
 msgid "Se ha producido un error"
+msgstr ""
+
+#: empresa.cpp:724
+msgid "Se han cerrado los asientos"
+msgstr ""
+
+#: empresa.cpp:704
+msgid "Se han espaciado los asientos"
+msgstr "The seats have been amused"
+
+#: empresa.cpp:744
+msgid "Se han ordenado los asientos"
 msgstr ""
 
 #: listcuentasview1.cpp:409
@@ -1046,17 +2527,37 @@ msgstr ""
 "One is going away to erase the type of IVA. \n"
 "This can cause lost of data."
 
+#: ui_canualesprintbase.h:198
+msgid "Segundo Periodo"
+msgstr "Second Period"
+
 #: selectcanalview.cpp:45 selectccosteview.cpp:43
 msgid "Seleccion"
 msgstr "Selection"
+
+#: ui_modelo300base.h:196
+msgid "Seleccione periodo de declaracion"
+msgstr ""
+
+#: ui_uivisorempresas.h:67
+msgid "Seleciona Empresa"
+msgstr ""
+
+#: ui_selectcanalbase.h:93
+msgid "Selector de Canales"
+msgstr ""
+
+#: ui_selectccostebase.h:94
+msgid "Selector de Centros de Coste"
+msgstr ""
 
 #: cuentalistview.cpp:68
 #, fuzzy
 msgid "Selector de articulos"
 msgstr "Selector of Channels"
 
-#: amortizacionview.cpp:250 amortizacionview.cpp:277 amortizacionview.cpp:305
-#: amortizacionview.cpp:336
+#: ui_amortizacionbase.h:666 amortizacionview.cpp:250 amortizacionview.cpp:277
+#: amortizacionview.cpp:305 amortizacionview.cpp:336
 msgid "Semestral"
 msgstr "Semester"
 
@@ -1064,13 +2565,33 @@ msgstr "Semester"
 msgid "Septiembre"
 msgstr "September"
 
+#: ui_bulmacontbase.h:383
+msgid "Siguiente"
+msgstr "Following"
+
+#: ui_cuentabase.h:853
+msgid "Sin &Tipo"
+msgstr "Without &Type"
+
+#: ui_sobrebase.h:304
+msgid "Sopor&te"
+msgstr "Soppo&rt"
+
 #: selectcanalview.cpp:45 selectccosteview.cpp:43
 msgid "Status"
 msgstr "Status"
 
-#: subform2bc.cpp:470
+#: bcsubform.cpp:468
 msgid "Submenu de contabilidad"
 msgstr "Submenu of accounting"
+
+#: ui_mpatrimonialbase.h:357
+msgid "Suman"
+msgstr "Sum"
+
+#: ui_uiconfiguracion.h:398
+msgid "Tamanyo:"
+msgstr ""
 
 #: cuentaview.cpp:59
 #, fuzzy
@@ -1081,9 +2602,17 @@ msgstr "Description of the account"
 msgid "Telefono del proveedor"
 msgstr "Telephone of the supplier"
 
+#: ui_cuentabase.h:861
+msgid "Telefono:"
+msgstr "Telephone:"
+
 #: empresa.cpp:265
 msgid "Terminado"
 msgstr "Finished"
+
+#: ui_regivaprintbase.h:221
+msgid "Texto Plano"
+msgstr "Plain Text"
 
 #: fpagoview.cpp:238
 msgid "Tiene que seleccionar una forma de pago antes de borrarla"
@@ -1103,6 +2632,10 @@ msgstr "Type account"
 msgid "Tipo de Cuenta"
 msgstr "Type of account"
 
+#: ui_tipoivabase.h:264
+msgid "Tipo de IVA:"
+msgstr "Type of IVA:"
+
 #: asiento1.cpp:50
 msgid "Tipo de asiento"
 msgstr "Type of seat"
@@ -1111,27 +2644,103 @@ msgstr "Type of seat"
 msgid "Tipo de cuenta"
 msgstr "Type of account"
 
+#: ui_cuentabase.h:844
+msgid "Tipo de cuenta:"
+msgstr "Type of account:"
+
+#: ui_fpagobase.h:308
+msgid "Tipo plazo entre recibos:"
+msgstr "Type term between receipts:"
+
+#: ui_fpagobase.h:306
+msgid "Tipo plazo primer pago:"
+msgstr "Type term first payment:"
+
+#: ui_bulmacontbase.h:363
+msgid "Tipos de &IVA"
+msgstr "Types of &IVA"
+
+#: ui_tipoivabase.h:259
+msgid "Tipos de IVA"
+msgstr "Types of IVA"
+
+#: ui_duplicarasientobase.h:236
+msgid "Todos con la misma fecha"
+msgstr "All with the same date"
+
 #: asientosview.cpp:44
 #, fuzzy
 msgid "Todos los asientos"
 msgstr "The seats have been ordered"
 
-#: amortizacionview.cpp:252 amortizacionview.cpp:279 amortizacionview.cpp:307
-#: amortizacionview.cpp:338
+#: ui_asientolistbase.h:429 ui_diariobase.h:388 ui_asientobase.h:640
+msgid "Total Debe:"
+msgstr "Total Must:"
+
+#: ui_asientolistbase.h:430 ui_diariobase.h:389 ui_asientobase.h:641
+msgid "Total Haber:"
+msgstr "Total To have:"
+
+#: ui_extractobase.h:728
+msgid "Totales:"
+msgstr "Total:"
+
+#: ui_duplicarasientobase.h:235
+msgid "Tratamiento de la fecha:"
+msgstr "Treatment of the date:"
+
+#: ui_amortizacionbase.h:667 amortizacionview.cpp:252 amortizacionview.cpp:279
+#: amortizacionview.cpp:307 amortizacionview.cpp:338
 msgid "Trimestral"
 msgstr "Quarterly"
+
+#: ui_cuentabase.h:866
+msgid "URL de la pagina web:"
+msgstr "URL of the web page:"
+
+#: ui_uiconfiguracion.h:466
+msgid "Usuarios"
+msgstr ""
+
+#: ui_uiconfiguracion.h:448
+msgid "Utilidades"
+msgstr ""
 
 #: propiedadesempresa.cpp:192
 msgid "Valor"
 msgstr "Value"
 
+#: ui_amortizacionbase.h:673
+msgid "Valor de compra:"
+msgstr "Value of purchase:"
+
 #: amortizacionview.cpp:62
 msgid "Valor de la compra"
 msgstr "Value of the purchase"
 
+#: ui_bulmacontbase.h:400
+msgid "Ventana"
+msgstr "Window"
+
+#: ui_listado347base.h:271 ui_modelo347base.h:254
+msgid "Ventas"
+msgstr "Sales"
+
 #: amortizacionview.cpp:383 amortizacionview.cpp:427
 msgid "Ver asiento"
 msgstr "See seat"
+
+#: ui_listado347base.h:263
+msgid "Ver filtro"
+msgstr "See filter"
+
+#: ui_modelo300base.h:207
+msgid "Vista Previa"
+msgstr "Previous Vista"
+
+#: modelo300.cpp:119
+msgid "Volver"
+msgstr "Return"
 
 #: cuentaview.cpp:62
 #, fuzzy
@@ -1142,7 +2751,7 @@ msgstr "Name of the account"
 msgid "codigo"
 msgstr "code"
 
-#: extractosubform.cpp:59 diariosubform.cpp:46
+#: diariosubform.cpp:46 extractosubform.cpp:59
 msgid "codigoborrador"
 msgstr "code rough draft"
 
@@ -1162,11 +2771,11 @@ msgstr "desc_cost"
 msgid "descripcion"
 msgstr "description"
 
-#: extractosubform.cpp:58 diariosubform.cpp:55
+#: diariosubform.cpp:55 extractosubform.cpp:58
 msgid "idapunte"
 msgstr "Id note"
 
-#: extractosubform.cpp:60 diariosubform.cpp:35
+#: diariosubform.cpp:35 extractosubform.cpp:60
 msgid "idasiento"
 msgstr "Id seat"
 
@@ -1174,7 +2783,7 @@ msgstr "Id seat"
 msgid "idborrador"
 msgstr "Id rough draft"
 
-#: extractosubform.cpp:70 diariosubform.cpp:59 selectccosteview.cpp:43
+#: diariosubform.cpp:59 selectccosteview.cpp:43 extractosubform.cpp:70
 #, fuzzy
 msgid "idc_coste"
 msgstr ""
@@ -1185,7 +2794,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "idc_cost"
 
-#: extractosubform.cpp:67 diariosubform.cpp:58 selectcanalview.cpp:45
+#: selectcanalview.cpp:45 diariosubform.cpp:58 extractosubform.cpp:67
 #, fuzzy
 msgid "idcanal"
 msgstr ""
@@ -1196,7 +2805,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "idchannel"
 
-#: extractosubform.cpp:62 diariosubform.cpp:61
+#: diariosubform.cpp:61 extractosubform.cpp:62
 #, fuzzy
 msgid "idcuenta"
 msgstr ""
@@ -1207,7 +2816,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Id account"
 
-#: extractosubform.cpp:61 diariosubform.cpp:60
+#: diariosubform.cpp:60 extractosubform.cpp:61
 #, fuzzy
 msgid "iddiario"
 msgstr ""
@@ -1220,11 +2829,15 @@ msgstr ""
 msgid "identificador"
 msgstr "identificador"
 
+#: ui_uiconfiguracion.h:247 ui_uiconfiguracion.h:463
+msgid "idprv"
+msgstr ""
+
 #: diariosubform.cpp:57
 msgid "idregistroiva"
 msgstr "Id registry IVA"
 
-#: extractosubform.cpp:72 diariosubform.cpp:56
+#: diariosubform.cpp:56 extractosubform.cpp:72
 #, fuzzy
 msgid "idtipoiva"
 msgstr ""
@@ -1232,6 +2845,10 @@ msgstr ""
 "Id type iva\n"
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Id type IVA "
+
+#: ui_uiconfiguracion.h:269 ui_uiconfiguracion.h:465
+msgid "idusuario"
+msgstr ""
 
 #: extractosubform.cpp:69
 msgid "marcaconciliacion"
@@ -1245,11 +2862,15 @@ msgstr "nom_channel"
 msgid "nom_coste"
 msgstr "nom_cost"
 
+#: ui_listadocuentas1.h:62 ui_listadocuentas1.h:63
+msgid "tab"
+msgstr ""
+
 #: mpatrimonialview.cpp:45
 msgid "tipo"
 msgstr "type"
 
-#: extractosubform.cpp:63 diariosubform.cpp:47
+#: diariosubform.cpp:47 extractosubform.cpp:63
 #, fuzzy
 msgid "tipocuenta"
 msgstr ""
@@ -1260,26 +2881,19 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Type counts "
 
-#~ msgid "\""
-#~ msgstr "\""
+#: ui_propiedadesempresabase.h:241
+msgid ""
+"xxxx --> Digitos de plan contable.\n"
+"yyyy --> Digitos de cuenta."
+msgstr ""
 
-#~ msgid "&Aceptar"
-#~ msgstr "&Accept"
+#: ui_asientolistbase.h:426
+msgid "y   ( >="
+msgstr "y   ( >="
 
-#~ msgid "&Acerca de"
-#~ msgstr "&About"
-
-#~ msgid "&Acerca de BulmaCont"
-#~ msgstr "&About BulmaCont"
-
-#~ msgid "&Actualizar"
-#~ msgstr "&Update"
-
-#~ msgid "&Amortizaciones"
-#~ msgstr "&Amortizations"
-
-#~ msgid "&Asientos"
-#~ msgstr "&Seats"
+#: ui_asientolistbase.h:427
+msgid "y <="
+msgstr "y <="
 
 #~ msgid "&Balance de Cuentas"
 #~ msgstr "&Balance of Accounts"
@@ -1287,149 +2901,14 @@ msgstr ""
 #~ msgid "&Bloquear fechas"
 #~ msgstr "&Block dates"
 
-#~ msgid "&Calcular"
-#~ msgstr "&Calculate"
-
-#~ msgid "&Canal por defecto"
-#~ msgstr "&Channel by defect"
-
-#~ msgid "&Canales"
-#~ msgstr "&Cancel"
-
-#~ msgid "&Cerrar"
-#~ msgstr "&Close"
-
 #~ msgid "&Cobros y pagos"
 #~ msgstr "&Collections and payments"
 
 #~ msgid "&Concepto contable:"
 #~ msgstr "&Concepto accountant:"
 
-#~ msgid "&Datos contables"
-#~ msgstr "&Countable data"
-
-#~ msgid "&Decremental"
-#~ msgstr "&Decremental"
-
-#~ msgid "&Ejercicio:"
-#~ msgstr "&Exercise:"
-
-#~ msgid "&Empresa"
-#~ msgstr "&Company"
-
-#~ msgid "&Espaciar asientos"
-#~ msgstr "&Space seats"
-
-#~ msgid "&Fecha del asiento:"
-#~ msgstr "&Date of the seat:"
-
-#~ msgid "&Filtrar"
-#~ msgstr "&Leak"
-
-#~ msgid "&Formato de aprendizaje"
-#~ msgstr "&Format of learning"
-
-#~ msgid "&Gasto"
-#~ msgstr "&Cost"
-
-#~ msgid "&Herramientas"
-#~ msgstr "&Tools"
-
-#~ msgid "&Imprimir"
-#~ msgstr "&Print"
-
-#~ msgid "&Imputacion"
-#~ msgstr "&Imputation"
-
-#~ msgid "&Incremental"
-#~ msgstr "&Incremental"
-
-#~ msgid "&Ingreso"
-#~ msgstr "&Entrance"
-
-#~ msgid "&Kugar"
-#~ msgstr "&Kugar"
-
-#~ msgid "&Listados"
-#~ msgstr "&Listings"
-
-#~ msgid "&Maestro"
-#~ msgstr "&Teacher"
-
-#~ msgid "&Neto"
-#~ msgstr "&Net"
-
-#~ msgid "&Ordenar asientos"
-#~ msgstr "&Order seats"
-
-#~ msgid "&Otros datos"
-#~ msgstr "&Other data"
-
-#~ msgid "&Pantalla completa"
-#~ msgstr "&Complete screen"
-
-#~ msgid "&Partida igual a:"
-#~ msgstr "&Equal game a:"
-
-#~ msgid "&Pasivo"
-#~ msgstr "&Liabilities"
-
-#~ msgid "&Plan Contable"
-#~ msgstr "&Char of Accounts"
-
-#~ msgid "&Plantilla:"
-#~ msgstr "&Group:"
-
-#~ msgid "&Propiedades de la empresa..."
-#~ msgstr "&Properties of the company..."
-
-#~ msgid "&Recalcular saldos iniciales"
-#~ msgstr "&Recalcular initial balances"
-
-#~ msgid "&Salir del programa"
-#~ msgstr "&Leave the program"
-
-#~ msgid "&Sustituir cuentas"
-#~ msgstr "&Replace accounts"
-
-#~ msgid "&Texto Plano"
-#~ msgstr "&Flat Text"
-
-#~ msgid "&Todos"
-#~ msgstr "&All"
-
-#~ msgid "&Ver"
-#~ msgstr "&See"
-
 #~ msgid "&bloqueada"
 #~ msgstr "&blocked"
-
-#~ msgid "''"
-#~ msgstr "''"
-
-#~ msgid ")"
-#~ msgstr ")"
-
-#~ msgid "0123456789"
-#~ msgstr "0123456789"
-
-#~ msgid "12"
-#~ msgstr "12"
-
-#~ msgid "1234"
-#~ msgstr "1234"
-
-#~ msgid "1º trimestre"
-#~ msgstr "1º quarterly"
-
-#~ msgid "2º trimestre"
-#~ msgstr "2º quarterly"
-
-#~ msgid "3º trimestre"
-#~ msgstr "3º quarterly"
-
-#~ msgid "4º trimestre"
-#~ msgstr "4º quarterly"
 
 #~ msgid ""
 #~ "<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color="
@@ -1457,50 +2936,11 @@ msgstr ""
 #~ "margin-left:0px; margin-right:0px; -qt-block-indent:0;text-indent:0px;"
 #~ "\"></p></body></html>"
 
-#~ msgid "A&ctivo"
-#~ msgstr "A&ssets"
-
-#~ msgid "A&utores"
-#~ msgstr "A&uthors"
-
-#~ msgid "A&yuda"
-#~ msgstr "A&id"
-
 #~ msgid "Abreviado"
 #~ msgstr "Been brief"
 
-#~ msgid "Abrir asiento"
-#~ msgstr "Open seat"
-
-#~ msgid "Acep&tar"
-#~ msgstr "Acce&pt"
-
-#~ msgid "Aceptar"
-#~ msgstr "Accept"
-
-#~ msgid "Acerca de BulmaCont"
-#~ msgstr "About BulmaCont"
-
-#~ msgid "Actualizar"
-#~ msgstr "Update"
-
 #~ msgid "Actualizar balance"
 #~ msgstr "Update balance"
-
-#~ msgid "Actualizar listado"
-#~ msgstr "Update listing"
-
-#~ msgid "Acuerdo de &licencia"
-#~ msgstr "Licensing &agreement"
-
-#~ msgid "Agregar"
-#~ msgstr "Add"
-
-#~ msgid "Agregar Ejercicio"
-#~ msgstr "Add Exercise"
-
-#~ msgid "Agrupacion:"
-#~ msgstr "Grouping:"
 
 #~ msgid "Ajustar altura"
 #~ msgstr "Fit height"
@@ -1525,84 +2965,6 @@ msgstr ""
 #~ msgid "Ajustar columnas"
 #~ msgstr "Fit columns"
 
-#~ msgid "Alt+B"
-#~ msgstr "Alt+B"
-
-#~ msgid "Alt+C"
-#~ msgstr "Alt+C"
-
-#~ msgid "Alt+G"
-#~ msgstr "Alt+G"
-
-#~ msgid "Alt+I"
-#~ msgstr "Alt+I"
-
-#~ msgid "Alt+P"
-#~ msgstr "Alt+P"
-
-#~ msgid "Amor&tizacion"
-#~ msgstr "Amor&tization"
-
-#~ msgid "Amortizado:"
-#~ msgstr "Amortized:"
-
-#~ msgid "Anterior"
-#~ msgstr "Previous"
-
-#~ msgid "Ap&untes punteados"
-#~ msgstr "Pu&nteados notes"
-
-#~ msgid "Apertura"
-#~ msgstr "Opening"
-
-#~ msgid "Aplicar Asiento Inteligente"
-#~ msgstr "Apply Intelligent Seat"
-
-#~ msgid "Apuntes &contables"
-#~ msgstr "Countable &notes"
-
-#~ msgid "Apuntes &no punteados"
-#~ msgstr "Notes &nonpunteados"
-
-#~ msgid "Apuntes con contrapartida:"
-#~ msgstr "Notes with counterpart:"
-
-#~ msgid "Apuntes con saldo inferior a:"
-#~ msgstr "Notes with inferior balance a:"
-
-#~ msgid "Apuntes con saldo superior a:"
-#~ msgstr "Notes with superior balance a:"
-
-#~ msgid "Asiento Inicial"
-#~ msgstr "Initial Seat"
-
-#~ msgid "Asiento de a&pertura"
-#~ msgstr "Seat of &opening"
-
-#~ msgid "Asiento final:"
-#~ msgstr "Final seat:"
-
-#~ msgid "Asiento inicial:"
-#~ msgstr "Initial seat:"
-
-#, fuzzy
-#~ msgid "Asientos Inteligentes"
-#~ msgstr ""
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Intelligent Seats\n"
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Inteligent accounting entry"
-
-#~ msgid ""
-#~ "Aviso: El numero de cuenta bancario introducido\n"
-#~ "no se corresponde con un CCC correcto."
-#~ msgstr ""
-#~ "Warning: Number of introduced banking account\n"
-#~ "one does not correspond with CCC a correct one."
-
-#~ msgid "Balance"
-#~ msgstr "Balance"
-
 #~ msgid "Balance &jerarquico de Sumas y Saldos"
 #~ msgstr "Hierarchic &balance of Sum and Balances"
 
@@ -1614,9 +2976,6 @@ msgstr ""
 
 #~ msgid "Balance jerárquico"
 #~ msgstr "Hierarchic balance"
-
-#~ msgid "Borrar"
-#~ msgstr "Delete"
 
 #~ msgid "Borrar albaran"
 #~ msgstr "Erase letters patent"
@@ -1630,62 +2989,11 @@ msgstr ""
 #~ msgid "Borrar tipo de IVA"
 #~ msgstr "Erase type of IVA"
 
-#~ msgid "BulmaCont - Contabilidad GPL"
-#~ msgstr "BulmaCont - Accounting GPL"
-
 #~ msgid "Búsqueda:"
 #~ msgstr "Search:"
 
-#~ msgid "C.I.F.:"
-#~ msgstr "C.I.F.:"
-
-#~ msgid "C.P.:"
-#~ msgstr "C.P.:"
-
 #~ msgid "Calibrando los lasers del lector de CD"
 #~ msgstr "Calibrating lasers of the cd player"
-
-#~ msgid "Cambiar Cuenta"
-#~ msgstr "Change Account"
-
-#~ msgid "Canal:"
-#~ msgstr "Channel:"
-
-#~ msgid "Canales"
-#~ msgstr "Channels"
-
-#~ msgid "Cancelar"
-#~ msgstr "Cancel"
-
-#~ msgid "Cargar Asiento"
-#~ msgstr "Load Seat"
-
-#~ msgid "Casacion"
-#~ msgstr "Abrogation"
-
-#~ msgid "Centros de cos&te"
-#~ msgstr "Centers of cos&t"
-
-#~ msgid "Cerrar"
-#~ msgstr "Close"
-
-#~ msgid "Cerrar asiento"
-#~ msgstr "Close seat "
-
-#~ msgid "Cierre"
-#~ msgstr "Closing"
-
-#~ msgid "Codigo cuenta corriente.:"
-#~ msgstr "Code accounts current:"
-
-#~ msgid "Codigo:"
-#~ msgstr "Code:"
-
-#~ msgid "Comentarios:"
-#~ msgstr "Commentaries:"
-
-#~ msgid "Compras"
-#~ msgstr "Purchases"
 
 #~ msgid "Comprobando la disquetera y la memoria fisica"
 #~ msgstr "Verifying the disquetera and the physics memory"
@@ -1693,107 +3001,17 @@ msgstr ""
 #~ msgid "Comprobando nivel de combustible"
 #~ msgstr "Verifying fuel level"
 
-#~ msgid "Configurar"
-#~ msgstr "Form"
-
-#~ msgid "Configurar listado"
-#~ msgstr "Form listing"
-
 #~ msgid "Contabilidad GPL - Version 0.9.3 -"
 #~ msgstr "Accounting GPL - Version 0.9.3 -"
 
 #~ msgid "Contenido del centro de coste:"
 #~ msgstr "Content of the cost center:"
 
-#~ msgid "Correo electronico:"
-#~ msgstr "Electronic mail:"
-
 #~ msgid "Crackeando BulmaCont"
 #~ msgstr "Crackeando BulmaCont"
 
-#~ msgid "Ctrl+A"
-#~ msgstr "Ctrl+A"
-
 #~ msgid "Ctrl+B"
 #~ msgstr "Ctrl+B"
-
-#~ msgid "Ctrl+C"
-#~ msgstr "Ctrl+C"
-
-#~ msgid "Ctrl+D"
-#~ msgstr "Ctrl+D"
-
-#~ msgid "Ctrl+E"
-#~ msgstr "Ctrl+E"
-
-#~ msgid "Ctrl+End"
-#~ msgstr "Ctrl+End"
-
-#~ msgid "Ctrl+F"
-#~ msgstr "Ctrl+F"
-
-#~ msgid "Ctrl+Home"
-#~ msgstr "Ctrl+Home"
-
-#~ msgid "Ctrl+I"
-#~ msgstr "Ctrl+I"
-
-#~ msgid "Ctrl+L"
-#~ msgstr "Ctrl+L"
-
-#~ msgid "Ctrl+M"
-#~ msgstr "Ctrl+M"
-
-#~ msgid "Ctrl+N"
-#~ msgstr "Ctrl+N"
-
-#~ msgid "Ctrl+P"
-#~ msgstr "Ctrl+P"
-
-#~ msgid "Ctrl+PgDown"
-#~ msgstr "Ctrl+PgDown"
-
-#~ msgid "Ctrl+PgUp"
-#~ msgstr "Ctrl+PgUp"
-
-#~ msgid "Ctrl+Q"
-#~ msgstr "Ctrl+Q"
-
-#~ msgid "Ctrl+S"
-#~ msgstr "Ctrl+S"
-
-#~ msgid "Cuenta Destino"
-#~ msgstr "Account Destiny"
-
-#~ msgid "Cuenta Origen"
-#~ msgstr "Account Origin"
-
-#~ msgid "Cuenta a devolver:"
-#~ msgstr "Account to give back:"
-
-#~ msgid "Cuenta de activo:"
-#~ msgstr "Account of assets:"
-
-#~ msgid "Cuenta de amortizacion:"
-#~ msgstr "Account of amortization:"
-
-#~ msgid "Cuenta final:"
-#~ msgstr "Final account:"
-
-#~ msgid "Cuenta inicial:"
-#~ msgstr "Initial account:"
-
-#~ msgid "Cuenta padre:"
-#~ msgstr "Account father:"
-
-#~ msgid "Cuenta:"
-#~ msgstr "Account:"
-
-#~ msgid "Cuentas a&nuales"
-#~ msgstr "Annual &accounts"
-
-#~ msgid "Cuotas:"
-#~ msgstr "Quotas:"
 
 #~ msgid "Código Final"
 #~ msgstr "Final Code"
@@ -1801,23 +3019,8 @@ msgstr ""
 #~ msgid "Código Inicial\n"
 #~ msgstr "Initial Code\n"
 
-#~ msgid "Datos del asiento:"
-#~ msgstr "Data of the seat:"
-
-#~ msgid "Datos del listado:"
-#~ msgstr "Data of the listing:"
-
-#~ msgid "Datos:"
-#~ msgstr "Data:"
-
 #~ msgid "Debe ejercicio"
 #~ msgstr "Debtor exercise"
-
-#~ msgid "Debe inicial:"
-#~ msgstr "Debtor initial:"
-
-#~ msgid "Debe:"
-#~ msgstr "Debtor:"
 
 #~ msgid "Dejando tiempo libre al sistema"
 #~ msgstr "Leaving free time to the system"
@@ -1828,119 +3031,20 @@ msgstr ""
 #~ msgid "Descripción:"
 #~ msgstr "Description:"
 
-#~ msgid "Descuadre:"
-#~ msgstr "Unsquare:"
-
-#~ msgid "Direccion:"
-#~ msgstr "Address:"
-
-#~ msgid "Documento:"
-#~ msgstr "Document:"
-
-#~ msgid "Duplicar Asiento"
-#~ msgstr "Duplicate Seat"
-
-#~ msgid "Duplicar Asientos"
-#~ msgstr "Duplicate Seats"
-
-#~ msgid "Duplicar asiento"
-#~ msgstr "Duplicate seat"
-
 #~ msgid "Dí&gitos de cuentas"
 #~ msgstr "Di&gits of accounts"
 
 #~ msgid "Dígitos estanda&r"
 #~ msgstr "Digits standar&d"
 
-#~ msgid "Editar"
-#~ msgstr "Publish"
-
-#~ msgid "Exportar asiento"
-#~ msgstr "Export seat"
-
-#~ msgid "Exportar cuentas"
-#~ msgstr "Export accounts"
-
-#~ msgid "Extender asiento"
-#~ msgstr "Extend seat"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid "F11"
-#~ msgstr "F11"
-
-#~ msgid "F5"
-#~ msgstr "F5"
-
-#~ msgid "Fecha &final:"
-#~ msgstr "Final &date:"
-
-#~ msgid "Fecha &inicial:"
-#~ msgstr "Initial &date:"
-
-#~ msgid "Fecha 1ª cuota:"
-#~ msgstr "Date 1ª quota:"
-
-#, fuzzy
-#~ msgid "Fecha Final"
-#~ msgstr ""
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Final Date\n"
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Fina Date\n"
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Final Date\n"
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Final Date"
-
-#~ msgid "Fecha Inicial"
-#~ msgstr "Initial Date"
-
 #~ msgid "Fecha con la que quedará el asiento:"
 #~ msgstr "Date with which it will be left the seat:"
-
-#~ msgid "Filtrar"
-#~ msgstr "leak "
 
 #~ msgid "Filtrar balance"
 #~ msgstr "Filter balance"
 
-#~ msgid "Fin"
-#~ msgstr "Aim"
-
 #~ msgid "Flusheando datos con vidas inteligentes superiores"
 #~ msgstr "Flusheando data with superior intelligent lives"
-
-#~ msgid "Form1"
-#~ msgstr "Form1"
-
-#~ msgid "Forma de pago:"
-#~ msgstr "Mode of payment:"
-
-#~ msgid "Formas de &pago"
-#~ msgstr "Modes of &payment"
-
-#~ msgid "Formato &normal"
-#~ msgstr "Normal &format"
-
-#~ msgid "Formato del listado:"
-#~ msgstr "Format of the listing:"
-
-#~ msgid "Formato:"
-#~ msgstr "Format:"
-
-#~ msgid "Formulario 300"
-#~ msgstr "Form 300"
-
-#~ msgid "General"
-#~ msgstr "General"
-
-#~ msgid "Generar borrador"
-#~ msgstr "To generate rough draft"
-
-#~ msgid "Generar de todas formas"
-#~ msgstr "Generate in any case"
 
 #~ msgid "Golpecitos de reajuste del HD"
 #~ msgstr "Taps of readjustment of the HD"
@@ -1951,52 +3055,14 @@ msgstr ""
 #~ msgid "Grupo:"
 #~ msgstr "Group:"
 
-#, fuzzy
-#~ msgid "Guardar"
-#~ msgstr ""
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Keep\n"
-#~ "#-#-#-#-#  bulmacont2_en.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Keep "
-
-#~ msgid "Guardar amortizacion"
-#~ msgstr "Keep amortization"
-
-#~ msgid "Guardar asiento"
-#~ msgstr "Keep seat"
-
 #~ msgid "Guardar balance"
 #~ msgstr "Keep balance"
-
-#~ msgid "Guardar cuenta"
-#~ msgstr "Keep account"
-
-#~ msgid "HT&ML"
-#~ msgstr "HT&ML"
-
-#~ msgid "HTML"
-#~ msgstr "HTML"
 
 #~ msgid "Haber ejercicio"
 #~ msgstr "Creditor exercise"
 
-#~ msgid "Haber inicial:"
-#~ msgstr "Creditor initial:"
-
-#~ msgid "Haber:"
-#~ msgstr "Creditor:"
-
 #~ msgid "Haciendo PING contra el servidor de la MetaBase"
 #~ msgstr "Making PING against the servant of the MetaBase"
-
-#~ msgid "Importar asiento"
-#~ msgstr "Import seat"
-
-#~ msgid "Importar cuentas"
-#~ msgstr "Import accounts "
-
-#~ msgid "Importe:"
-#~ msgstr "Amount:"
 
 #~ msgid "Impresión de Balances"
 #~ msgstr "Impression of Balance"
@@ -2013,17 +3079,11 @@ msgstr ""
 #~ msgid "Impresión del Registro de IVA"
 #~ msgstr "Impression of the Registry of IVA"
 
-#~ msgid "Imprimir"
-#~ msgstr "Print"
-
 #~ msgid "Imprimir albaran"
 #~ msgstr "Print letters patent"
 
 #~ msgid "Imprimir balance"
 #~ msgstr "Print balance"
-
-#~ msgid "Imprimir cuentas"
-#~ msgstr "Print accounts"
 
 #~ msgid "Imprimir pedido"
 #~ msgstr "Print order"
@@ -2034,12 +3094,6 @@ msgstr ""
 #~ msgid "Incluir &niveles superiores."
 #~ msgstr "To include &superior levels."
 
-#~ msgid "Incluir resultados parciales"
-#~ msgstr "Include partial results"
-
-#~ msgid "Indexador"
-#~ msgstr "Indexador"
-
 #~ msgid "Induciendo energia quantica, entre su RAM y su ROM"
 #~ msgstr "Inducing energy quantica, between its RAM and its ROM"
 
@@ -2049,67 +3103,11 @@ msgstr ""
 #~ msgid "Información del tipo de IVA:"
 #~ msgstr "Information of the type of IVA:"
 
-#~ msgid "Inicio"
-#~ msgstr "Beginning"
-
-#~ msgid "Invertir"
-#~ msgstr "Invest"
-
-#~ msgid "Li&neal"
-#~ msgstr "Li&near"
-
-#~ msgid "Libro &Diario"
-#~ msgstr "Daily &Book"
-
-#~ msgid "Libro &Mayor"
-#~ msgstr "Greater &Book"
-
-#~ msgid "Listado &347"
-#~ msgstr "Listing &347"
-
-#~ msgid "Listado de amortizaciones"
-#~ msgstr "Listing of amortizations"
-
-#~ msgid "Listado para el modelo 347"
-#~ msgstr "Listing for model 347"
-
 #~ msgid "Listo"
 #~ msgstr "Ready"
 
-#~ msgid ""
-#~ "Lo siento, no encuentro el formulario original en pdf.\n"
-#~ "Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
-#~ "/usr/share/bulmages/formularios/ o en\n"
-#~ "~/.bulmages/formularios/."
-#~ msgstr ""
-#~ "I feel it, nonencounter the original form in pdf.\n"
-#~ "Prove to download it from www.aeat.es and guaedeló in\n"
-#~ "/usr/share/bulmages/formularios/ or in\n"
-#~ "~/.bulmages/formularios/."
-
-#~ msgid "Mantener distacia entre fechas"
-#~ msgstr "To maintain distacia between dates"
-
-#~ msgid "Masa Patrimonial"
-#~ msgstr "Patrimonial Mass"
-
-#~ msgid "Masas &patrimoniales"
-#~ msgstr "Patrimonial &masses"
-
-#~ msgid "Masas Patrimoniales"
-#~ msgstr "Patrimonial Masses"
-
-#~ msgid "Metodo:"
-#~ msgstr "Method:"
-
-#~ msgid "Modelo 300"
-#~ msgstr "Model 300"
-
 #~ msgid "Modelo del código de cuenta:"
 #~ msgstr "Model of the account code:"
-
-#~ msgid "Modi&ficar plan contable"
-#~ msgstr "Modi&fy countable plan"
 
 #~ msgid "Mostrar balance (ano)"
 #~ msgstr "Show balance (year)"
@@ -2129,12 +3127,6 @@ msgstr ""
 #~ msgid "Mostrar balance jerarquico (mes)"
 #~ msgstr "Show hierarchic balance (month)"
 
-#~ msgid "Mostrar/Oculatar filtro"
-#~ msgstr "Show/Oculatar filter"
-
-#~ msgid "Mostrar/ocultar filtro"
-#~ msgstr "Show/hide filter"
-
 #~ msgid "Nivel"
 #~ msgstr "Level"
 
@@ -2144,110 +3136,23 @@ msgstr ""
 #~ msgid "Nivel:"
 #~ msgstr "Level:"
 
-#~ msgid "Nombre de la cuenta:"
-#~ msgstr "Name of the account:"
-
-#~ msgid "Nombre de la entidad:"
-#~ msgstr "Name of the organization:"
-
-#~ msgid "Nombre de la forma de pago:"
-#~ msgstr "Name of the mode of payment:"
-
-#~ msgid "Nombre:"
-#~ msgstr "Name:"
-
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
 #~ msgid "Nueva amortización"
 #~ msgstr "New amortization"
-
-#~ msgid "Nuevo"
-#~ msgstr "New"
-
-#~ msgid "Nuevo asiento"
-#~ msgstr "New seat"
-
-#~ msgid "Numero de plazos:"
-#~ msgstr "Number of terms:"
-
-#~ msgid "Nº de cuotas:"
-#~ msgstr "Nº of quotas:"
-
-#~ msgid "Opciones de cuenta:"
-#~ msgstr "Options of account:"
-
-#~ msgid "Orden del asiento:"
-#~ msgstr "Order of the seat:"
-
-#~ msgid "Ordenar &ventanas"
-#~ msgstr "Order &windows"
 
 #~ msgid "Organización en &cascada"
 #~ msgstr "Cascade &organization"
 
-#~ msgid "Pendiente:"
-#~ msgstr "Slope:"
-
-#~ msgid "Periodicidad:"
-#~ msgstr "Regularity:"
-
-#~ msgid "Periodo a declarar"
-#~ msgstr "Period to declare"
-
 #~ msgid "Permutando las tablas de particion del Sistema Operativo"
 #~ msgstr "Permuting the tables of partition of the Operating system"
-
-#~ msgid "Personalizada"
-#~ msgstr "Customized"
-
-#~ msgid "Plan &contable"
-#~ msgstr "Countable &plan"
-
-#~ msgid "Plan de cuentas"
-#~ msgstr "Plan of accounts"
-
-#~ msgid "Plazo del primer recibo (dias):"
-#~ msgstr "Term of the first receipt (day):"
-
-#~ msgid "Plazo entre recibos (dias):"
-#~ msgstr "Term between receipts (day):"
-
-#~ msgid "Porcent&ual"
-#~ msgstr "Percent&age"
-
-#~ msgid "Postscript"
-#~ msgstr "PostScript"
-
-#~ msgid "Primer Periodo"
-#~ msgstr "First Period"
 
 #~ msgid "Probando la velocidad del ventilador de la CPU y su frecuencia"
 #~ msgstr "Proving the speed of the ventilator of the CPU and its frequency"
 
-#~ msgid "Propiedades de la empresa"
-#~ msgstr "Company Settings"
-
-#~ msgid "Propiedades generales"
-#~ msgstr "General properties"
-
-#~ msgid "Propietario"
-#~ msgstr "Owner"
-
 #~ msgid "Punteo (*.pto)"
 #~ msgstr "Punteo (*.pto)"
 
-#~ msgid "Punteo:"
-#~ msgstr "Punteo:"
-
 #~ msgid "Pérdidas y Ganancias"
 #~ msgstr "Losses and Gains"
-
-#~ msgid "Quitar"
-#~ msgstr "Clear"
-
-#~ msgid "Recalcular"
-#~ msgstr "Recalcular"
 
 #~ msgid "Reg&ularización"
 #~ msgstr "Reg&ularization"
@@ -2258,18 +3163,6 @@ msgstr ""
 #~ msgid "Regularización"
 #~ msgstr "Regularization"
 
-#~ msgid "Restan"
-#~ msgstr "Subtraction"
-
-#~ msgid "S&ubcuentas"
-#~ msgstr "S&ubaccounts"
-
-#~ msgid "S. Nada"
-#~ msgstr "S. Nothing"
-
-#~ msgid "S. Todo"
-#~ msgstr "S. Everything"
-
 #~ msgid "Saldo anterior"
 #~ msgstr "Previous balance"
 
@@ -2279,20 +3172,8 @@ msgstr ""
 #~ msgid "Saldo ejercicio"
 #~ msgstr "Balance exercise"
 
-#~ msgid "Saldo inicial:"
-#~ msgstr "Initial balance:"
-
 #~ msgid "Saldo periodo"
 #~ msgstr "Balance period"
-
-#~ msgid "Saldo:"
-#~ msgstr "Balance:"
-
-#~ msgid "Saldos:"
-#~ msgstr "Balances:"
-
-#~ msgid "Se han espaciado los asientos"
-#~ msgstr "The seats have been amused"
 
 #~ msgid ""
 #~ "Se va a borrar la cuenta,\n"
@@ -2325,80 +3206,17 @@ msgstr ""
 #~ "Perhaps deberia to think it better to it before\n"
 #~ "because equal its work is lost."
 
-#~ msgid "Segundo Periodo"
-#~ msgstr "Second Period"
-
 #~ msgid "Seleccione periodo de declaración"
 #~ msgstr "Select period of declaration"
-
-#~ msgid "Siguiente"
-#~ msgstr "Following"
-
-#~ msgid "Sin &Tipo"
-#~ msgstr "Without &Type"
 
 #~ msgid "Sincronizando fases Alfa Beta"
 #~ msgstr "Synchronizing phases Alpha Beta"
 
-#~ msgid "Sopor&te"
-#~ msgstr "Soppo&rt"
-
-#~ msgid "Suman"
-#~ msgstr "Sum"
-
 #~ msgid "Sumas y Saldos"
 #~ msgstr "Sum and Balances"
 
-#~ msgid "Telefono:"
-#~ msgstr "Telephone:"
-
-#~ msgid "Texto Plano"
-#~ msgstr "Plain Text"
-
-#~ msgid "Tipo de IVA:"
-#~ msgstr "Type of IVA:"
-
 #~ msgid "Tipo de balance"
 #~ msgstr "Type of balance"
-
-#~ msgid "Tipo de cuenta:"
-#~ msgstr "Type of account:"
-
-#~ msgid "Tipo plazo entre recibos:"
-#~ msgstr "Type term between receipts:"
-
-#~ msgid "Tipo plazo primer pago:"
-#~ msgstr "Type term first payment:"
-
-#~ msgid "Tipos de &IVA"
-#~ msgstr "Types of &IVA"
-
-#~ msgid "Todos con la misma fecha"
-#~ msgstr "All with the same date"
-
-#~ msgid "Total Debe:"
-#~ msgstr "Total Must:"
-
-#~ msgid "Total Haber:"
-#~ msgstr "Total To have:"
-
-#~ msgid "Totales:"
-#~ msgstr "Total:"
-
-#~ msgid "Tratamiento de la fecha:"
-#~ msgstr "Treatment of the date:"
-
-#~ msgid "URL de la pagina web:"
-#~ msgstr "URL of the web page:"
-
-#~ msgid "Valor de compra:"
-#~ msgstr "Value of purchase:"
-
-#~ msgid "Ventana"
-#~ msgstr "Window"
-
-#~ msgid "Ventas"
-#~ msgstr "Sales"
 
 #~ msgid "Ver Diario (este anyo)"
 #~ msgstr "See Newspaper (this anyo)"
@@ -2420,15 +3238,6 @@ msgstr ""
 
 #~ msgid "Ver extracto (este mes)"
 #~ msgstr "See extract (this month)"
-
-#~ msgid "Ver filtro"
-#~ msgstr "See filter"
-
-#~ msgid "Vista Previa"
-#~ msgstr "Previous Vista"
-
-#~ msgid "Volver"
-#~ msgstr "Return"
 
 #~ msgid "asaldo"
 #~ msgstr "abalance"
@@ -2466,9 +3275,3 @@ msgstr ""
 #~ msgstr ""
 #~ "xxxx -->Chart accounting digits.\n"
 #~ "yyyy -->Accounts digits."
-
-#~ msgid "y   ( >="
-#~ msgstr "y   ( >="
-
-#~ msgid "y <="
-#~ msgstr "y <="

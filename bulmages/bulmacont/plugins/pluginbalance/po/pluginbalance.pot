@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: balanceview.cpp:62
+#: balanceview.cpp:62 ui_balancesprintdlg.h:197
 msgid "Balance"
 msgstr ""
 
@@ -124,22 +124,215 @@ msgstr ""
 msgid "Ver configurador de subformulario"
 msgstr ""
 
-#: pluginbalance.cpp:84
+#: pluginbalance.cpp:83
 msgid "menuVentana"
 msgstr ""
 
-#: pluginbalance.cpp:88
+#: pluginbalance.cpp:87
 msgid "&Ver"
 msgstr ""
 
-#: pluginbalance.cpp:92
+#: pluginbalance.cpp:91
 msgid "&Balance jerarquico"
 msgstr ""
 
-#: pluginbalance.cpp:93
+#: pluginbalance.cpp:92
 msgid "Permite realizar balances"
 msgstr ""
 
-#: pluginbalance.cpp:94
+#: pluginbalance.cpp:93
 msgid "Podra disponer de la informacion del balance"
+msgstr ""
+
+#: ui_balancesprintdlg.h:196
+msgid "Impresion de Balances"
+msgstr ""
+
+#: ui_balancesprintdlg.h:198 ui_balanceprintbase.h:306
+msgid "Fecha Inicial"
+msgstr ""
+
+#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:308
+msgid "Fecha Final"
+msgstr ""
+
+#: ui_balancesprintdlg.h:200
+msgid "Formato"
+msgstr ""
+
+#: ui_balancesprintdlg.h:201
+msgid "&texto plano"
+msgstr ""
+
+#: ui_balancesprintdlg.h:202
+msgid "Alt+T"
+msgstr ""
+
+#: ui_balancesprintdlg.h:203
+msgid "HTML"
+msgstr ""
+
+#: ui_balancesprintdlg.h:204
+msgid "Acep&tar"
+msgstr ""
+
+#: ui_balancesprintdlg.h:205
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_balanceprintbase.h:299
+msgid "Impresion del Balance de Sumas y Saldos"
+msgstr ""
+
+#: ui_balanceprintbase.h:303
+msgid "Datos del listado:"
+msgstr ""
+
+#: ui_balanceprintbase.h:304
+msgid "Codigo Inicial\n"
+msgstr ""
+
+#: ui_balanceprintbase.h:307
+msgid "Codigo Final"
+msgstr ""
+
+#: ui_balanceprintbase.h:309
+msgid "Nivel de Cuentas"
+msgstr ""
+
+#: ui_balanceprintbase.h:310
+msgid "Incluir &niveles superiores."
+msgstr ""
+
+#: ui_balanceprintbase.h:311
+msgid "Incl&uir resultados parciales"
+msgstr ""
+
+#: ui_balanceprintbase.h:312
+msgid "Formato:"
+msgstr ""
+
+#: ui_balanceprintbase.h:313
+msgid "&Texto Plano"
+msgstr ""
+
+#: ui_balanceprintbase.h:314
+msgid "Propietario"
+msgstr ""
+
+#: ui_balanceprintbase.h:315
+msgid "HT&ML"
+msgstr ""
+
+#: ui_balanceprintbase.h:316
+msgid "&Kugar"
+msgstr ""
+
+#: ui_balancebase.h:399
+msgid "Balance de cuentas"
+msgstr ""
+
+#: ui_balancebase.h:402 ui_balancebase.h:407
+msgid "Filtrar balance"
+msgstr ""
+
+#: ui_balancebase.h:411
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_balancebase.h:414 ui_balancebase.h:419
+msgid "Actualizar balance"
+msgstr ""
+
+#: ui_balancebase.h:423
+msgid "F5"
+msgstr ""
+
+#: ui_balancebase.h:426 ui_balancebase.h:431
+msgid "Imprimir balance"
+msgstr ""
+
+#: ui_balancebase.h:435
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_balancebase.h:438 ui_balancebase.h:443
+msgid "Configurar"
+msgstr ""
+
+#: ui_balancebase.h:447
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_balancebase.h:448 ui_balancetreebase.h:411
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_balancebase.h:449 ui_balancetreebase.h:412
+msgid "Cuenta inicial:"
+msgstr ""
+
+#: ui_balancebase.h:450 ui_balancetreebase.h:410
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_balancebase.h:451 ui_balancetreebase.h:409
+msgid "Cuenta final:"
+msgstr ""
+
+#: ui_balancebase.h:452 ui_balancetreebase.h:413
+msgid "Nivel:"
+msgstr ""
+
+#: ui_balancebase.h:453
+msgid "Balance jerarquico"
+msgstr ""
+
+#: ui_balancebase.h:454
+msgid "1"
+msgstr ""
+
+#: ui_balancebase.h:455
+msgid "GroupBox"
+msgstr ""
+
+#: ui_balancebase.h:456 ui_balancetreebase.h:418
+msgid "Saldo:"
+msgstr ""
+
+#: ui_balancebase.h:457
+msgid "Haber:"
+msgstr ""
+
+#: ui_balancebase.h:458 ui_balancetreebase.h:415
+msgid "Saldo anterior:"
+msgstr ""
+
+#: ui_balancebase.h:459
+msgid "Debe:"
+msgstr ""
+
+#: ui_balancetreebase.h:375
+msgid "Balance jerarquico de Cuentas"
+msgstr ""
+
+#: ui_balancetreebase.h:378 ui_balancetreebase.h:383
+msgid "Borrar albaran"
+msgstr ""
+
+#: ui_balancetreebase.h:389 ui_balancetreebase.h:394 ui_balancetreebase.h:400
+#: ui_balancetreebase.h:405
+msgid "Imprimir albaran"
+msgstr ""
+
+#: ui_balancetreebase.h:414
+msgid "Centro de coste:"
+msgstr ""
+
+#: ui_balancetreebase.h:416
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_balancetreebase.h:417
+msgid "Total Haber:"
 msgstr ""

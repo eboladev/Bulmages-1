@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,29 +189,29 @@ msgstr ""
 msgid "Id factura"
 msgstr ""
 
-#: genfactqtoolbutton.cpp:136 genfactqtoolbutton.cpp:242
+#: genfactqtoolbutton.cpp:137 genfactqtoolbutton.cpp:243
 msgid "Tiene que seleccionar un proveedor"
 msgstr ""
 
-#: genfactqtoolbutton.cpp:151 genfactqtoolbutton.cpp:257
+#: genfactqtoolbutton.cpp:152 genfactqtoolbutton.cpp:258
 msgid "Factura de proveedor existente"
 msgstr ""
 
-#: genfactqtoolbutton.cpp:152 genfactqtoolbutton.cpp:258
+#: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea abrirla para verificar?"
 msgstr ""
 
-#: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
+#: genfactqtoolbutton.cpp:154 genfactqtoolbutton.cpp:260
 msgid "&Si"
 msgstr ""
 
-#: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
+#: genfactqtoolbutton.cpp:154 genfactqtoolbutton.cpp:260
 msgid "&No"
 msgstr ""
 
-#: genfactqtoolbutton.cpp:201 genfactqtoolbutton.cpp:307
+#: genfactqtoolbutton.cpp:202 genfactqtoolbutton.cpp:308
 msgid "Error inesperado"
 msgstr ""
 

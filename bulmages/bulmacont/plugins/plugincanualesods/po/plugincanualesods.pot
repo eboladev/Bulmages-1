@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 23:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -967,4 +967,28 @@ msgstr ""
 
 #: pcapymes08.cpp:410
 msgid "CUENTA DE PÉRDIDAS Y GANANCIAS DE PYMES A "
+msgstr ""
+
+#: ui_datosbase.h:136
+msgid "Datos para generar el balance"
+msgstr ""
+
+#: ui_datosbase.h:137
+msgid "Ejercicio actual:"
+msgstr ""
+
+#: ui_datosbase.h:138 ui_datosbase.h:140
+msgid "Fecha balance:"
+msgstr ""
+
+#: ui_datosbase.h:139
+msgid "Ejercicio anterior:"
+msgstr ""
+
+#: ui_datosbase.h:141
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_datosbase.h:142
+msgid "&Cancelar"
 msgstr ""

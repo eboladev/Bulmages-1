@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-12 00:24+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,7 +142,7 @@ msgstr "&Detalle"
 msgid "&Facturas proveedores"
 msgstr "&Facturas proveedores"
 
-#: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
+#: genfactqtoolbutton.cpp:154 genfactqtoolbutton.cpp:260
 msgid "&No"
 msgstr "&No"
 
@@ -150,7 +150,7 @@ msgstr "&No"
 msgid "&Nueva factura de proveedor"
 msgstr "&Nueva factura de proveedor"
 
-#: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
+#: genfactqtoolbutton.cpp:154 genfactqtoolbutton.cpp:260
 msgid "&Si"
 msgstr "&Si"
 
@@ -284,7 +284,7 @@ msgstr "Descripcion:"
 msgid "Descuen&tos"
 msgstr "Descuen&tos"
 
-#: facturapview.cpp:399 listlinfacturapview.cpp:57
+#: listlinfacturapview.cpp:57 facturapview.cpp:399
 msgid "Descuento"
 msgstr "Descuento"
 
@@ -308,11 +308,11 @@ msgstr "Error al cargar la factura proveedor"
 msgid "Error al crear la factura proveedor"
 msgstr "Error al crear la factura proveedor"
 
-#: genfactqtoolbutton.cpp:201 genfactqtoolbutton.cpp:307
+#: genfactqtoolbutton.cpp:202 genfactqtoolbutton.cpp:308
 msgid "Error inesperado"
 msgstr "Error inesperado"
 
-#: genfactqtoolbutton.cpp:152 genfactqtoolbutton.cpp:258
+#: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea abrirla para verificar?"
@@ -332,7 +332,7 @@ msgstr "Factura"
 msgid "Factura Proveedor"
 msgstr "Factura Proveedor"
 
-#: genfactqtoolbutton.cpp:151 genfactqtoolbutton.cpp:257
+#: genfactqtoolbutton.cpp:152 genfactqtoolbutton.cpp:258
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveedor existente"
 
@@ -393,7 +393,7 @@ msgstr "IVA "
 msgid "Id descuento"
 msgstr "Id descuento"
 
-#: facturasplist.cpp:352 listdescfacturaprovview.cpp:43
+#: listdescfacturaprovview.cpp:43 facturasplist.cpp:352
 msgid "Id factura"
 msgstr "Id factura"
 
@@ -517,7 +517,7 @@ msgstr "Referencia:"
 msgid "Telefono factura"
 msgstr "Telefono factura"
 
-#: genfactqtoolbutton.cpp:136 genfactqtoolbutton.cpp:242
+#: genfactqtoolbutton.cpp:137 genfactqtoolbutton.cpp:243
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Tiene que seleccionar un proveedor"
 

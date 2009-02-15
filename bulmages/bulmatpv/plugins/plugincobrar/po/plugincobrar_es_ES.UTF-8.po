@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-10 19:59+0100\n"
+"POT-Creation-Date: 2009-02-15 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,70 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: ui_cobrarbase.h:461
+msgid "0"
+msgstr ""
+
+#: ui_cobrarbase.h:462
+msgid "00"
+msgstr ""
+
+#: ui_cobrarbase.h:458
+msgid "1"
+msgstr "1"
+
+#: ui_cobrarbase.h:459
+msgid "2"
+msgstr ""
+
+#: ui_cobrarbase.h:460
+msgid "3"
+msgstr ""
+
+#: ui_cobrarbase.h:455
+msgid "4"
+msgstr ""
+
+#: ui_cobrarbase.h:456
+msgid "5"
+msgstr ""
+
+#: ui_cobrarbase.h:457
+msgid "6"
+msgstr ""
+
+#: ui_cobrarbase.h:452
+msgid "7"
+msgstr ""
+
+#: ui_cobrarbase.h:453
+msgid "8"
+msgstr ""
+
+#: ui_cobrarbase.h:454
+msgid "9"
+msgstr ""
+
+#: ui_cobrarbase.h:450
+msgid "A devolver:"
+msgstr ""
+
+#: ui_cobrarbase.h:463
+msgid "C"
+msgstr ""
+
 #: plugincobrar.cpp:54
 msgid "Cobrar"
 msgstr "Cobrar"
+
+#: ui_cobrarbase.h:445
+msgid "Dialog"
+msgstr ""
+
+#: ui_cobrarbase.h:448
+msgid "Entregado:"
+msgstr ""
+
+#: ui_cobrarbase.h:446
+msgid "Total a cobrar:"
+msgstr ""
