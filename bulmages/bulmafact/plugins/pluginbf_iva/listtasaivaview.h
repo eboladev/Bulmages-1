@@ -30,13 +30,13 @@
 
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de tasas de IVA.
 /** */
-class ListTasaIVASubForm : public SubForm2Bf
+class ListTasaIVASubForm : public BfSubForm
 {
     Q_OBJECT
 

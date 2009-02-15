@@ -97,7 +97,7 @@ int ListTipoIVAView::sacaWindow() {
 /**
 \param parent
 **/
-ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
     setDBTableName ( "tipo_iva" );
