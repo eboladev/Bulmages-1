@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,51 +18,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COMPANY_H
-#define COMPANY_H
-
-#include <QObject>
-#include <QAssistantClient>
-#include <QLibraryInfo>
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
 #include "blpostgresqlclient.h"
-#include "listventanas.h"
-#include "blworkspace.h"
-#include "empresabase.h"
-#include "blsplashscreen.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "busquedareferencia.h"
+#include "busqueda.h"
 
 
-class orderslist;
-class Bulmafact;
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
-/// Clase company (empresa).
-/** Clase principal del programa donde se almacenan y gestionan
-    todos los datos de la empresa con la que se est&aacute; trabajando.
-    Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class Company : public EmpresaBase
+class MyPlugIVA : public QObject, PEmpresaBase
 {
-private:
-    /// Puntero al mainWindow
-    Bulmafact *m_bulmafact;
+    Q_OBJECT
 
 public:
-    Company ( Bulmafact *bges );
-    virtual ~Company();
-    void createMainWindows ( BlSplashScreen * );
-    void s_FPago();
-    void s_Familias();
-    void s_trabajadores();
-    void s_bancos();
-    void s_seriesFactura();
-    void s_newListConfiguracionView();
-    void s_almacenes();
-    void viewPagosList();
-    void s_TipoIVAView();
-    void s_TasaIVAView();
-    void guardaConf();
-    void cargaConf();
-    void *newPagoView();
-};
+    Bulmafact *m_bges;
 
-#endif
+public:
+    MyPlugIVA();
+    ~MyPlugIVA();
+    void inicializa ( Bulmafact * );
+
+public slots:
+    void elslot1();
+    void elslot();
+};

@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <class>ListTipoIVABase</class>
- <widget class="QWidget" name="ListTipoIVABase" >
+ <class>ListTasaIVABase</class>
+ <widget class="QWidget" name="ListTasaIVABase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Tipos de IVA</string>
+   <string>Tasas de IVA</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_iva.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_iva.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >
+    <normaloff>:/Images/vat.svg</normaloff>:/Images/vat.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -71,6 +71,12 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="maximumSize" >
         <size>
          <width>48</width>
@@ -78,7 +84,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/vat.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/vat.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -104,7 +110,7 @@
     </layout>
    </item>
    <item row="1" column="0" >
-    <widget class="ListTipoIVASubForm" name="mui_listado" >
+    <widget class="ListTasaIVASubForm" name="mui_listado" >
      <property name="horizontalScrollMode" >
       <enum>QAbstractItemView::ScrollPerPixel</enum>
      </property>
@@ -115,19 +121,19 @@
  <layoutdefault spacing="2" margin="6" />
  <customwidgets>
   <customwidget>
-   <class>ListTipoIVASubForm</class>
+   <class>ListTasaIVASubForm</class>
    <extends>QTableWidget</extends>
-   <header>listtipoivaview.h</header>
+   <header>listtasaivaview.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>
    <sender>mui_cancelar</sender>
    <signal>clicked()</signal>
-   <receiver>ListTipoIVABase</receiver>
+   <receiver>ListTasaIVABase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >

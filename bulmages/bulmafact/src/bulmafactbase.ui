@@ -72,9 +72,6 @@
     <addaction name="actionFormas_de_Pago" />
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
-    <addaction name="separator" />
-    <addaction name="actionTipoIVA" />
-    <addaction name="actionTasaIVA" />
    </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
@@ -308,24 +305,6 @@
    </property>
    <property name="shortcut" >
     <string>Ctrl+I</string>
-   </property>
-  </action>
-  <action name="actionTipoIVA" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/vat.svg</normaloff>:/Images/vat.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Tipos de IVA</string>
-   </property>
-  </action>
-  <action name="actionTasaIVA" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/vat.svg</normaloff>:/Images/vat.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Tasas de IVA</string>
    </property>
   </action>
   <action name="actionBancos" >

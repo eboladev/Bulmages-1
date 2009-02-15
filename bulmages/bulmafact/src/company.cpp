@@ -35,8 +35,6 @@
 #include "listseriefacturaview.h"
 #include "plugins.h"
 #include "bancoview.h"
-#include "listtipoivaview.h"
-#include "listtasaivaview.h"
 #include "bulmafact.h"
 
 
@@ -80,16 +78,6 @@ Company::~Company()
 void Company::createMainWindows ( BlSplashScreen *splash )
 {
     _depura ( "Company::createMainWindows", 0 );
-
-
-    /// Comprobamos que tengamos permisos para trabajar con 'Tipos de IVA'.
-    m_bulmafact->actionTasaIVA->setEnabled ( FALSE );
-    m_bulmafact->actionTipoIVA->setEnabled ( FALSE );
-
-    if ( has_table_privilege ( "tipo_iva", "SELECT" ) ) {
-        m_bulmafact->actionTasaIVA->setEnabled ( TRUE );
-        m_bulmafact->actionTipoIVA->setEnabled ( TRUE );
-    } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con 'Paises'.
     m_bulmafact->actionPaises->setEnabled ( FALSE );
@@ -250,9 +238,11 @@ void Company::s_newListConfiguracionView()
 void Company::s_TipoIVAView()
 {
     _depura ( "Company::s_TipoIVAView", 0 );
+/*
     ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
     m_pWorkspace->addWindow ( pag );
     pag->show();
+*/
     _depura ( "END Company::s_TipoIVAView", 0 );
 }
 
@@ -264,9 +254,11 @@ void Company::s_TipoIVAView()
 void Company::s_TasaIVAView()
 {
     _depura ( "Company::s_TasaIVAView", 0 );
+/*
     ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
     m_pWorkspace->addWindow ( pag );
     pag->show();
+*/
     _depura ( "END Company::s_TasaIVAView", 0 );
 }
 
