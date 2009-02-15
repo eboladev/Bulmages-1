@@ -6991,7 +6991,7 @@ D&apos;ésiré vous le crée?</translation>
     </message>
 </context>
 <context>
-    <name>SubForm2Bf</name>
+    <name>BfSubForm</name>
     <message>
         <location filename="../../../../../../../../../../../media/disk/subform2bf.cpp" line="204"/>
         <source>Articulo inexistente</source>

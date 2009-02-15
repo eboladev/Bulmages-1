@@ -28,7 +28,7 @@
 \param parent
 **/
 AsientoListSubform::AsientoListSubform ( QWidget *parent, const char * )
-        : SubForm2Bc ( parent )
+        : BcSubForm ( parent )
 {
     _depura ( "AsientoListSubform::AsientoListSubform", 0 );
     setDBTableName ( "asiento" );

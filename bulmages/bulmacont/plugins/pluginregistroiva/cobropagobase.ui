@@ -432,7 +432,7 @@
     </widget>
    </item>
    <item>
-    <widget class="SubForm2Bc" name="mui_listado" />
+    <widget class="BcSubForm" name="mui_listado" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -532,9 +532,9 @@
    <header>../../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
-   <class>SubForm2Bc</class>
+   <class>BcSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
+   <header>bcsubform.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaCuenta</class>

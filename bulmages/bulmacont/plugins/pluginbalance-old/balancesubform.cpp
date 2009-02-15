@@ -23,7 +23,7 @@
 #include "balancesubform.h"
 
 
-BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( parent )
+BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "BalanceSubForm::BalanceSubForm", 0 );
     setDBTableName ( "borrador" );

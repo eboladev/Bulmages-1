@@ -295,10 +295,10 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
 }
 
 
-int SubForm2Bf_pressedAsterisk(SubForm2Bf *sub) {
+int BfSubForm_pressedAsterisk(BfSubForm *sub) {
 
     if ( sub->m_campoactual->nomcampo() != "codigocompletoarticulo" ) {
-        _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -314,7 +314,7 @@ int SubForm2Bf_pressedAsterisk(SubForm2Bf *sub) {
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 

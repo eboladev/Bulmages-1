@@ -27,7 +27,7 @@
 /**
 \param parent
 **/
-BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( parent )
+BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "BalanceSubForm::BalanceSubForm", 0 );
     setDBTableName ( "borrador" );
@@ -55,7 +55,7 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( 
 **/
 void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
-    _depura ( "SubForm2Bc::contextMenuEvent", 0 );
+    _depura ( "BcSubForm::contextMenuEvent", 0 );
     QAction *del = NULL;
     int row = currentRow();
     if ( row < 0 ) {
@@ -115,6 +115,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
         boton_extracto1 ( 2 );
     } // end if
     delete popup;
-    _depura ( "END SubForm2Bc::contextMenuEvent", 0 );
+    _depura ( "END BcSubForm::contextMenuEvent", 0 );
 }
 

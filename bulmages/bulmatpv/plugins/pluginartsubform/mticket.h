@@ -26,7 +26,7 @@
 #include <QTableWidget>
 #include "ticket.h"
 #include "empresatpv.h"
-#include "subform2bt.h"
+#include "btsubform.h"
 #include "articulolisttpv.h"
 
 class myplugin : public QObject

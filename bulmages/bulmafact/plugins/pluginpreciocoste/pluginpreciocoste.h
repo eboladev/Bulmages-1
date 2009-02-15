@@ -28,11 +28,11 @@
 #include "bulmafact.h"
 #include "articuloview.h"
 #include "blform.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "articulolist.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
-extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * );
+extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );

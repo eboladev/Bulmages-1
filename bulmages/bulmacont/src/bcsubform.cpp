@@ -24,7 +24,7 @@
 #include <QEvent>
 #include <QLocale>
 
-#include "subform2bc.h"
+#include "bcsubform.h"
 #include "blfunctions.h"
 #include "empresa.h"
 #include "asiento1view.h"
@@ -41,12 +41,12 @@
 /**
 \param parent Widget padre del SubFormulario
 **/
-SubForm2Bc::SubForm2Bc ( QWidget *parent ) : BlSubForm ( parent )
+BcSubForm::BcSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
-    _depura ( "SubForm2Bc::SubForm2Bc", 0 );
-    m_delegate = new QSubForm2BcDelegate ( this );
+    _depura ( "BcSubForm::BcSubForm", 0 );
+    m_delegate = new BcSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
-    _depura ( "END SubForm2Bc::SubForm2Bc", 0 );
+    _depura ( "END BcSubForm::BcSubForm", 0 );
 }
 
 
@@ -54,11 +54,11 @@ SubForm2Bc::SubForm2Bc ( QWidget *parent ) : BlSubForm ( parent )
 /**
 Libera la memoria que se haya reservado durante el funcionamiento de la clase.
 **/
-SubForm2Bc::~SubForm2Bc()
+BcSubForm::~BcSubForm()
 {
-    _depura ( "SubForm2Bc::~SubForm2Bc", 0 );
+    _depura ( "BcSubForm::~BcSubForm", 0 );
     delete m_delegate;
-    _depura ( "END SubForm2Bc::~SubForm2Bc", 0 );
+    _depura ( "END BcSubForm::~BcSubForm", 0 );
 }
 
 
@@ -66,12 +66,12 @@ SubForm2Bc::~SubForm2Bc()
 /**
 \param c
 **/
-void SubForm2Bc::setEmpresaBase ( EmpresaBase *c )
+void BcSubForm::setEmpresaBase ( EmpresaBase *c )
 {
-    _depura ( "SubForm2Bc::setEmpresaBase", 0 );
+    _depura ( "BcSubForm::setEmpresaBase", 0 );
     PEmpresaBase::setEmpresaBase ( c );
     m_delegate->setEmpresaBase ( c );
-    _depura ( "END SubForm2Bc::setEmpresaBase", 0 );
+    _depura ( "END BcSubForm::setEmpresaBase", 0 );
 }
 
 
@@ -79,10 +79,10 @@ void SubForm2Bc::setEmpresaBase ( EmpresaBase *c )
 /**
 \return
 **/
-Empresa *SubForm2Bc::empresaBase()
+Empresa *BcSubForm::empresaBase()
 {
-    _depura ( "SubForm2Bc::empresaBase", 0 );
-    _depura ( "END SubForm2Bc::empresaBase", 0 );
+    _depura ( "BcSubForm::empresaBase", 0 );
+    _depura ( "END BcSubForm::empresaBase", 0 );
     return ( ( Empresa * ) PEmpresaBase::empresaBase() );
 }
 
@@ -92,14 +92,14 @@ Empresa *SubForm2Bc::empresaBase()
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bc::pressedPlus", 0 );
+    _depura ( "BcSubForm::pressedPlus", 0 );
 
     /// Si no es un campo de tipo debe o haber salimos.
     /*
         if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" && camp->nomcampo() != "fecha" ) {
-            _depura ( "END SubForm2Bc::pressedPlus", 0, "Campo incorrecto" );
+            _depura ( "END BcSubForm::pressedPlus", 0, "Campo incorrecto" );
             return;
         } // end if
     */
@@ -142,7 +142,7 @@ void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
 
-    _depura ( "END SubForm2Bc::pressedPlus", 0 );
+    _depura ( "END BcSubForm::pressedPlus", 0 );
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + *
@@ -151,9 +151,9 @@ void SubForm2Bc::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bc::pressedAsterisk", 0 );
+    _depura ( "BcSubForm::pressedAsterisk", 0 );
 
     /// Si no es un campo de tipo codigo salimos.
     if ( camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente" )
@@ -205,7 +205,7 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlD
     } // end if
 
 
-    _depura ( "END SubForm2Bc::pressedAsterisk", 0 );
+    _depura ( "END BcSubForm::pressedAsterisk", 0 );
 }
 
 
@@ -215,9 +215,9 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlD
 \param col1 Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BcSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bc::pressedSlash", 0 );
+    _depura ( "BcSubForm::pressedSlash", 0 );
 
     if ( camp->nomcampo() == "fecha" ) {
         if ( row > 0 ) {
@@ -242,7 +242,7 @@ void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
     } // end if
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
-    _depura ( "END SubForm2Bc::pressedSlash", 0 );
+    _depura ( "END BcSubForm::pressedSlash", 0 );
 }
 
 
@@ -252,12 +252,12 @@ void SubForm2Bc::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
 \param col
 \return
 **/
-void SubForm2Bc::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bc::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
+    _depura ( "BcSubForm::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SubForm2Bc_on_mui_list_cellChanged", this );
+    int res = g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -319,26 +319,26 @@ void SubForm2Bc::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
         } // end if
     } // end if
 
-    g_plugins->lanza ( "SubForm2Bc_on_mui_list_cellChanged_post", this );
+    g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged_post", this );
 
     BlSubForm::on_mui_list_cellChanged ( row, col );
-    _depura ( "END SubForm2Bc::on_mui_list_cellChanged", 0 );
+    _depura ( "END BcSubForm::on_mui_list_cellChanged", 0 );
 }
 
 
 /// Muestra la ventana de asiento.
 /**
 **/
-void SubForm2Bc::boton_asiento()
+void BcSubForm::boton_asiento()
 {
-    _depura ( "SubForm2Bc::boton_asiento", 0 );
+    _depura ( "BcSubForm::boton_asiento", 0 );
     Empresa *companyact = ( Empresa * ) empresaBase();
     QString numasiento = DBvalue ( "idasiento" );
     if ( numasiento != "" ) {
         companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
         companyact->muestraapuntes1();
     } // end if
-    _depura ( "END SubForm2Bc::boton_asiento", 0 );
+    _depura ( "END BcSubForm::boton_asiento", 0 );
 }
 
 
@@ -349,9 +349,9 @@ void SubForm2Bc::boton_asiento()
 /**
 \param tipo
 **/
-void SubForm2Bc::boton_extracto1 ( int tipo )
+void BcSubForm::boton_extracto1 ( int tipo )
 {
-    _depura ( "SubForm2Bc::boton_extracto1", 0 );
+    _depura ( "BcSubForm::boton_extracto1", 0 );
     Empresa *companyact = ( Empresa * ) empresaBase();
     QDate fecha1, fecha2, fechaact;
     QString fecha = DBvalue ( "fecha" ).left ( 10 );
@@ -376,7 +376,7 @@ void SubForm2Bc::boton_extracto1 ( int tipo )
         companyact->extractoempresa() ->accept();
         companyact->libromayor();
     } // end if
-    _depura ( "END SubForm2Bc::boton_extracto1", 0 );
+    _depura ( "END BcSubForm::boton_extracto1", 0 );
 }
 
 
@@ -387,9 +387,9 @@ void SubForm2Bc::boton_extracto1 ( int tipo )
 /**
 \param tipo
 **/
-void SubForm2Bc::boton_diario1 ( int tipo )
+void BcSubForm::boton_diario1 ( int tipo )
 {
-    _depura ( "SubForm2Bc::boton_diario1", 0 );
+    _depura ( "BcSubForm::boton_diario1", 0 );
     Empresa *companyact = ( Empresa * ) empresaBase();
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
@@ -413,7 +413,7 @@ void SubForm2Bc::boton_diario1 ( int tipo )
     } // end if
     companyact->diarioempresa() ->accept();
     companyact->librodiario();
-    _depura ( "SubForm2Bc::boton_diario1", 0 );
+    _depura ( "BcSubForm::boton_diario1", 0 );
 }
 
 
@@ -425,9 +425,9 @@ void SubForm2Bc::boton_diario1 ( int tipo )
 \param tipo
 **/
 /*
-void SubForm2Bc::boton_balance1 ( int tipo )
+void BcSubForm::boton_balance1 ( int tipo )
 {
-    _depura ( "SubForm2Bc::boton_balance1", 0 );
+    _depura ( "BcSubForm::boton_balance1", 0 );
     Empresa *companyact = ( Empresa * ) empresaBase();
     QString fecha = DBvalue ( "fecha" ).left ( 10 );
     QString codigo = DBvalue ( "codigo" );
@@ -452,7 +452,7 @@ void SubForm2Bc::boton_balance1 ( int tipo )
         companyact->balanceempresa() ->accept();
         companyact->librobalance();
     } // end if
-    _depura ( "END SubForm2Bc::boton_balance1", 0 );
+    _depura ( "END BcSubForm::boton_balance1", 0 );
 }
 */
 
@@ -462,22 +462,22 @@ void SubForm2Bc::boton_balance1 ( int tipo )
 /**
 \param menu
 **/
-void SubForm2Bc::creaMenu ( QMenu *menu )
+void BcSubForm::creaMenu ( QMenu *menu )
 {
-    _depura ( "SubForm2Bc::pintaMenu", 0 );
+    _depura ( "BcSubForm::pintaMenu", 0 );
     menu->addAction ( _( "Submenu de contabilidad" ) );
     menu->addSeparator();
-    _depura ( "END SubForm2Bc::pintaMenu", 0 );
+    _depura ( "END BcSubForm::pintaMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void SubForm2Bc::procesaMenu ( QAction * )
+void BcSubForm::procesaMenu ( QAction * )
 {
-    _depura ( "SubForm2Bc::procesaMenu", 0 );
-    _depura ( "END SubForm2Bc::procesaMenu", 0 );
+    _depura ( "BcSubForm::procesaMenu", 0 );
+    _depura ( "END BcSubForm::procesaMenu", 0 );
 }
 
 
@@ -488,22 +488,22 @@ void SubForm2Bc::procesaMenu ( QAction * )
 /**
 \param parent
 **/
-QSubForm2BcDelegate::QSubForm2BcDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
+BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
 {
-    _depura ( "QSubForm2BcDelegate::QSubForm2BcDelegate", 0 );
-    m_subform = ( SubForm2Bc * ) parent;
+    _depura ( "BcSubFormDelegate::BcSubFormDelegate", 0 );
+    m_subform = ( BcSubForm * ) parent;
     installEventFilter ( this );
-    _depura ( "END QSubForm2BcDelegate::QSubForm2BcDelegate", 0 );
+    _depura ( "END BcSubFormDelegate::BcSubFormDelegate", 0 );
 }
 
 
 ///
 /**
 **/
-QSubForm2BcDelegate::~QSubForm2BcDelegate()
+BcSubFormDelegate::~BcSubFormDelegate()
 {
-    _depura ( "QSubForm2BcDelegate::~QSubForm2BcDelegate", 0 );
-    _depura ( "END QSubForm2BcDelegate::~QSubForm2BcDelegate", 0 );
+    _depura ( "BcSubFormDelegate::~BcSubFormDelegate", 0 );
+    _depura ( "END BcSubFormDelegate::~BcSubFormDelegate", 0 );
 }
 
 
@@ -512,43 +512,43 @@ QSubForm2BcDelegate::~QSubForm2BcDelegate()
 \param parent
 \param index
 **/
-QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &index ) const
+QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BcDelegate::createEditor", 0 );
+    _depura ( "BcSubFormDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
-    _depura ( "QSubForm2BcDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "QSubForm2BcDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
+    _depura ( "BcSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
+    _depura ( "BcSubFormDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
 
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
         QTextEditDelegate * editor = new QTextEditDelegate ( parent );
         editor->setObjectName ( "QTextEditDelegate" );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QTextEditDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "QTextEditDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BlDoubleSpinBox" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
         BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
         editor->setEmpresaBase ( ( Empresa * ) m_subform->empresaBase() );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * editor = new BusquedaCanalDelegate ( parent );
         editor->setEmpresaBase ( m_subform->empresaBase() );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaCanalDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCanalDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         BusquedaCCosteDelegate * editor = new BusquedaCCosteDelegate ( parent );
         editor->setEmpresaBase ( m_subform->empresaBase() );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         BusquedaFecha2 * editor = new BusquedaFecha2 ( parent );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaFecha2" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaFecha2" );
         return editor;
     } else {
         /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
@@ -556,7 +556,7 @@ QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOption
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
         QLineEdit *editor = new QLineEdit ( parent );
-        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QLineEdit" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "QLineEdit" );
         return editor;
         //} else {
         //    return QItemDelegate::createEditor(parent, option, index);
@@ -572,13 +572,13 @@ QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOption
 \param index
 \return
 **/
-void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
+void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BcDelegate::setModelData", 0 );
+    _depura ( "BcSubFormDelegate::setModelData", 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-        _depura ( "END QSubForm2BcDelegate::setModelData", 0, "Fila o columna invalidas" );
+        _depura ( "END BcSubFormDelegate::setModelData", 0, "Fila o columna invalidas" );
         return;
     } // end if
 
@@ -636,7 +636,7 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } // end if
 
 
-    _depura ( "END QSubForm2BcDelegate::setModelData", 0 );
+    _depura ( "END BcSubFormDelegate::setModelData", 0 );
 }
 
 
@@ -645,9 +645,9 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 \param editor
 \param index
 **/
-void QSubForm2BcDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
+void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BcDelegate::setEditorData", 0 );
+    _depura ( "BcSubFormDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     //if (linea->nomcampo() == "desc" + m_subform->tableName()) {
@@ -693,7 +693,7 @@ void QSubForm2BcDelegate::setEditorData ( QWidget *editor, const QModelIndex &in
         QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
         lineedit->setText ( value );
     } // end if
-    _depura ( "END QSubForm2BcDelegate::setEditorData", 0 );
+    _depura ( "END BcSubFormDelegate::setEditorData", 0 );
 }
 
 
@@ -703,14 +703,14 @@ void QSubForm2BcDelegate::setEditorData ( QWidget *editor, const QModelIndex &in
 \param event
 \return
 **/
-bool QSubForm2BcDelegate::eventFilter ( QObject *obj, QEvent *event )
+bool BcSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
-        _depura ( "QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        _depura ( "BcSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        _depura ( "QSubForm2BcDelegate::key = : ", 0, QString::number ( key ) );
+        _depura ( "BcSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// Anulamos el caso de una pulsacion de tabulador o de enter
         switch ( key ) {
@@ -727,10 +727,10 @@ bool QSubForm2BcDelegate::eventFilter ( QObject *obj, QEvent *event )
     } // end if
 
     if ( event->type() == QEvent::KeyRelease ) {
-        _depura ( "QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        _depura ( "BcSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        _depura ( "QSubForm2BcDelegate::key = : ", 0, QString::number ( key ) );
+        _depura ( "BcSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         switch ( key ) {

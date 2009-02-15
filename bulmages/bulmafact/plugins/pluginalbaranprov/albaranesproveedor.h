@@ -27,15 +27,15 @@
 #include "company.h"
 #include "busquedaarticulo.h"
 #include "blfunctions.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Clase que maneja el subformulario de los albaranes de proveedor.
-/** Deriva de la clase SubForm2Bf.
+/** Deriva de la clase BfSubForm.
     Reimplementa los metodos de carga para que trabajan con la tabla albaranp.
 */
-class AlbaranesProveedorListSubform : public SubForm2Bf
+class AlbaranesProveedorListSubform : public BfSubForm
 {
     Q_OBJECT
 

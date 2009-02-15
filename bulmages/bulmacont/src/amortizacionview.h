@@ -24,7 +24,7 @@
 
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 #include "bldb.h"
 #include "fichabc.h"
 
@@ -32,7 +32,7 @@
 class empresa;
 
 
-class AmortizacionSubForm : public SubForm2Bc
+class AmortizacionSubForm : public BcSubForm
 {
     Q_OBJECT
 

@@ -30,7 +30,7 @@
 
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 
@@ -39,7 +39,7 @@ class Company;
 
 /// Administra el detalle del listado de series de factura.
 /** */
-class ListSerieFacturaSubForm : public SubForm2Bf
+class ListSerieFacturaSubForm : public BfSubForm
 {
     Q_OBJECT
 

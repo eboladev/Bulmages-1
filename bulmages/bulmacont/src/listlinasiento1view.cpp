@@ -30,7 +30,7 @@
 \param parent
 **/
 ListLinAsiento1View::ListLinAsiento1View ( QWidget *parent, const char * )
-        : SubForm2Bc ( parent )
+        : BcSubForm ( parent )
 {
     _depura ( "ListLinAsiento1View::ListLinAsiento1View", 0 );
     setDBTableName ( "borrador" );
@@ -128,7 +128,7 @@ void ListLinAsiento1View::cargar ( QString idasiento )
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nomc_coste, descripcion AS descc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador AS idborriva FROM registroiva) AS t4 ON borrador.idborrador = t4.idborriva ";
     SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
-    SubForm2Bc::cargar ( SQLQuery );
+    BcSubForm::cargar ( SQLQuery );
     _depura ( "END AsientoSubForm::cargar", 0 );
 }
 

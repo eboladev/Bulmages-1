@@ -33,7 +33,7 @@
 \param parent
 \returns
 **/
-ListLinFacturaView::ListLinFacturaView ( QWidget *parent ) : SubForm2Bf ( parent )
+ListLinFacturaView::ListLinFacturaView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinFacturaView::ListLinFacturaView", 0 );
     setDBTableName ( "lfactura" );

@@ -227,7 +227,7 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 \param parent
 **/
 ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
 

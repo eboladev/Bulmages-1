@@ -316,7 +316,7 @@ void PedidosClienteList::setidcliente ( QString val )
 /**
 \param parent
 **/
-PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "PedidosClienteListSubform::PedidosClienteListSubform", 0 );
     /// Disparamos los plugins.

@@ -21,12 +21,12 @@
 #ifndef _BALANCE_SUBFORM
 #define _BALANCE_SUBFORM
 
-#include "subform2bc.h"
+#include "bcsubform.h"
 
 
 ///
 /** */
-class BalanceSubForm : public SubForm2Bc
+class BalanceSubForm : public BcSubForm
 {
     Q_OBJECT
 

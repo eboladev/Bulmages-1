@@ -102,7 +102,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="SubForm2Bf" name="mui_listvalidaciones" />
+        <widget class="BfSubForm" name="mui_listvalidaciones" />
        </item>
       </layout>
      </widget>
@@ -560,9 +560,9 @@
    <header>cuadranteqtablewidget.h</header>
   </customwidget>
   <customwidget>
-   <class>SubForm2Bf</class>
+   <class>BfSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bf.h</header>
+   <header>bfsubform.h</header>
   </customwidget>
   <customwidget>
    <class>CuadranteQTreeWidget</class>

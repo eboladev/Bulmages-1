@@ -21,7 +21,7 @@
 #include "vehiculoview.h"
 #include "company.h"
 #include "blfunctions.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
 /// Constructor de Clase

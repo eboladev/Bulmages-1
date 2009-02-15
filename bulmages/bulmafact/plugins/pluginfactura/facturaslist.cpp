@@ -230,7 +230,7 @@ void FacturasList::editar ( int row )
 
 
 /** SLOT que responde a la pulsacion del boton de imprimir.
-    La impresion de listados esta completamente delegada en SubForm2Bf
+    La impresion de listados esta completamente delegada en BfSubForm
 */
 /**
 **/
@@ -350,7 +350,7 @@ void FacturasList::crear()
 \param parent
 \return
 **/
-FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "FacturasListSubform::FacturasListSubform", 0 );
     /// Disparamos los plugins.

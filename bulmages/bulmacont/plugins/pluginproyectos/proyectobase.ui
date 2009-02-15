@@ -297,7 +297,7 @@
         <number>9</number>
        </property>
        <item>
-        <widget class="SubForm2Bc" name="mui_gastos" />
+        <widget class="BcSubForm" name="mui_gastos" />
        </item>
       </layout>
      </widget>
@@ -322,7 +322,7 @@
         <number>9</number>
        </property>
        <item>
-        <widget class="SubForm2Bc" name="mui_ingresos" />
+        <widget class="BcSubForm" name="mui_ingresos" />
        </item>
       </layout>
      </widget>
@@ -392,9 +392,9 @@
    <header>busquedaccoste.h</header>
   </customwidget>
   <customwidget>
-   <class>SubForm2Bc</class>
+   <class>BcSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
+   <header>bcsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

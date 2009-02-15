@@ -22,13 +22,13 @@
 #ifndef LISTDESCPRESUPUESTOVIEW_H
 #define LISTDESCPRESUPUESTOVIEW_H
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "company.h"
 
 
 /// Muestra y administra la ventana con la lista de descuentos por presupuesto.
 /** */
-class ListDescuentoPresupuestoView : public SubForm2Bf
+class ListDescuentoPresupuestoView : public BfSubForm
 {
     Q_OBJECT
 

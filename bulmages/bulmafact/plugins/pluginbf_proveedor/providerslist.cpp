@@ -275,7 +275,7 @@ void ProveedorListSubform::cargar ( QString a )
 /**
 \param parent
 **/
-ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ProveedorListSubform::ProveedorListSubform", 0 );
     setDBTableName ( "proveedor" );

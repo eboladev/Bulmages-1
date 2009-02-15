@@ -414,7 +414,7 @@ void ContratosList::on_mui_facturar_clicked()
 /**
 \param parent
 **/
-ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "ContratosListSubform::ContratosListSubform", 0 );
     setDBTableName ( "contrato" );

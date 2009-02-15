@@ -85,7 +85,7 @@ ListTasaIVAView::~ListTasaIVAView()
 /**
 \param parent
 **/
-ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListTasaIVASubForm::ListTasaIVASubForm", 0 );
     setDBTableName ( "tasa_iva" );

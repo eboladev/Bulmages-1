@@ -372,7 +372,7 @@ AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 /**
 \param parent
 **/
-AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
     setDBTableName ( "albaranp" );

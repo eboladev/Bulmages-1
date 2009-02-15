@@ -88,7 +88,7 @@ ListAlmacenView::~ListAlmacenView()
 /**
 \param parent
 **/
-ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListAlmacenSubForm::ListAlmacenSubForm", 0 );
     setDBTableName ( "almacen" );

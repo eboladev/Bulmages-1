@@ -30,7 +30,7 @@
 #include "trabajadorview.h"
 #include "almacenview.h"
 #include "blform.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );

@@ -138,7 +138,7 @@ QString MovimientosView::generaFiltro()
 
 
 /** SLOT que responde a la pulsacion del boton de imprimir.
-    La impresion de listados esta completamente delegada en SubForm2Bf
+    La impresion de listados esta completamente delegada en BfSubForm
 */
 ///
 /**
@@ -163,7 +163,7 @@ void MovimientosView::on_mui_imprimir_clicked()
 \param parent
 \return
 **/
-MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "MovimientosSubform::MovimientosSubform", 0 );
     /// Disparamos los plugins.

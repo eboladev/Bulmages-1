@@ -404,7 +404,7 @@
         <number>6</number>
        </property>
        <item row="0" column="0" >
-        <widget class="SubForm2Bc" name="mui_cdistribuidos" />
+        <widget class="BcSubForm" name="mui_cdistribuidos" />
        </item>
       </layout>
      </widget>
@@ -457,9 +457,9 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bc</class>
+   <class>BcSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
+   <header>bcsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -376,7 +376,7 @@ QString CuentaListView::codigocuenta()
 \param parent
 **/
 CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
-        : SubForm2Bc ( parent )
+        : BcSubForm ( parent )
 {
     _depura ( "CuentaListSubForm::CuentaListSubForm", 0 );
     setDBTableName ( "cuenta" );

@@ -28,11 +28,11 @@
 #include "blpostgresqlclient.h"
 #include "empresa.h"
 #include "busquedacuenta.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 extern "C" MY_EXPORT int BusquedaCuenta_setidcuenta_post ( BusquedaCuenta * );
 extern "C" MY_EXPORT int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta * );
-extern "C" MY_EXPORT int SubForm2Bc_on_mui_list_cellChanged_post ( SubForm2Bc * );
+extern "C" MY_EXPORT int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm * );
 extern "C" MY_EXPORT int Bulmacont_closeEvent ( Bulmacont * );

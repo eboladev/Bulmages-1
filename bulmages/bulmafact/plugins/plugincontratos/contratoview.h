@@ -39,7 +39,7 @@ class company;
 
 /// Administra el detalle del listado de facturas a clientes.
 /** */
-class FacturasContratoListSubForm : public SubForm2Bf
+class FacturasContratoListSubForm : public BfSubForm
 {
     Q_OBJECT
 public:

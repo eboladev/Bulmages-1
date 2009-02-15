@@ -24,12 +24,12 @@
 #include <QEvent>
 
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
 /// Muestra y administra el listado de control de stocks.
 /** */
-class ListControlStockView : public SubForm2Bf
+class ListControlStockView : public BfSubForm
 {
     Q_OBJECT
 

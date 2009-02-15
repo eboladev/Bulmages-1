@@ -22,11 +22,11 @@
 #define LISTLTARIFAVIEW_H
 
 #include "qtable2.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blwidget.h"
 
 
-class ListLTarifaView : public SubForm2Bf
+class ListLTarifaView : public BfSubForm
 {
     Q_OBJECT
 
@@ -42,13 +42,13 @@ public slots:
         mdb_idarticulo = idarticulo;
         QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa) AS t2 LEFT JOIN (SELECT * FROM articulo WHERE idarticulo = " + mdb_idarticulo + ") AS t3 ON 1 = 1 ";
         SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo = " + mdb_idarticulo + ") as t1 ON t1.idtarifa = t2.idtarifa AND t1.idalmacen = t2.idalmacen ";
-        SubForm2Bf::cargar ( SQLQuery );
+        BfSubForm::cargar ( SQLQuery );
         _depura ( "END ListLTarifaView::cargaListCompArticulo\n", 0 );
     };
 };
 
 
-class ListLTarifaView1 : public SubForm2Bf
+class ListLTarifaView1 : public BfSubForm
 {
     Q_OBJECT
 
@@ -60,7 +60,7 @@ public:
 public slots:
     virtual void cargar ( QString SQLQuery ) {
         _depura ( "ListCompArticulo::cargar\n", 0 );
-        SubForm2Bf::cargar ( SQLQuery );
+        BfSubForm::cargar ( SQLQuery );
     };
 };
 

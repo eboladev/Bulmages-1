@@ -23,7 +23,7 @@
 
 #include "pgimportfiles.h"
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 #include "bulmafact.h"
 
@@ -47,9 +47,9 @@ public slots:
 
 
 /** Subformulario de contratoes.
-    Esta clase derivada de SubForm2Bf presenta todo el listado de contratoes.
+    Esta clase derivada de BfSubForm presenta todo el listado de contratoes.
 */
-class ContratosListSubform : public SubForm2Bf
+class ContratosListSubform : public BfSubForm
 {
     Q_OBJECT
 

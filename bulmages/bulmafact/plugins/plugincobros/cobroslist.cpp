@@ -297,7 +297,7 @@ void CobrosList::setidcliente ( QString val )
 /** Prepara el subformulario para trabajar con la tabla cobro.
     Establece que no se puedan insertar elementos ya que es un listado.
 */
-CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "CobrosListSubForm::CobrosListSubForm", 0 );
     /// Disparamos los plugins.

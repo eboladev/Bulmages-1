@@ -22,13 +22,13 @@
 #ifndef LISTDESCALBARANCLIENTEVIEW_H
 #define LISTDESCALBARANCLIENTEVIEW_H
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "company.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
 /** */
-class ListDescuentoAlbaranClienteView : public SubForm2Bf
+class ListDescuentoAlbaranClienteView : public BfSubForm
 {
     Q_OBJECT
 

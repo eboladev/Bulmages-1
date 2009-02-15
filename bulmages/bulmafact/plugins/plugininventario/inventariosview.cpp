@@ -271,7 +271,7 @@ void InventariosSubForm::cargar()
 /**
 \param parent
 **/
-InventariosSubForm::InventariosSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "InventariosSubForm::InventariosSubForm", 0 );
     setDBTableName ( "inventario" );

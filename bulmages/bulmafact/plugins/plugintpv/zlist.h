@@ -22,7 +22,7 @@
 #define ZLIST_H
 
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 #include "bulmafact.h"
 #include "ui_zlistbase.h"

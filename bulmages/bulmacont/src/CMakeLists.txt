@@ -60,7 +60,7 @@ set(bulmacont_MOCS bulmacont.h
 		   asiento1.h 
 		   asiento1view.h 
 	   	   listlinasiento1view.h 
-  	   	   subform2bc.h 
+  	   	   bcsubform.h 
 	   	   diariosubform.h 
 	   	   extractosubform.h 
 	   	   asientolistsubform.h 

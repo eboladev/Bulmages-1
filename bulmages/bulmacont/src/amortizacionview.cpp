@@ -354,7 +354,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
 /**
 \param parent
 **/
-AmortizacionSubForm::AmortizacionSubForm ( QWidget *parent ) : SubForm2Bc ( parent )
+AmortizacionSubForm::AmortizacionSubForm ( QWidget *parent ) : BcSubForm ( parent )
 {
     _depura ( "AmortizacionSubForm::AmortizacionSubForm", 0 );
     _depura ( "END AmortizacionSubForm::AmortizacionSubForm", 0 );

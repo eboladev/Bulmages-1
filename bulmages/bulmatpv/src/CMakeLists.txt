@@ -11,7 +11,7 @@ set(bulmatpvEx main.cxx)
 set(bulmatpv_MOCS bulmatpv.h 
 	   aboutview.h 
 	   ticket.h 
-	   subform2bt.h 
+	   btsubform.h 
 	   input.h)
 
 set(QT_USE_QTASSISTANT true)

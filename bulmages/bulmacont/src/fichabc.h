@@ -23,7 +23,7 @@
 #define FICHABC_H
 
 #include "blform.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 #include "empresa.h"
 
 
@@ -36,7 +36,7 @@ class FichaBc : public BlForm
 
 public:
     /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
-    SubForm2Bc *m_listalineas;
+    BcSubForm *m_listalineas;
 
 public:
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer
@@ -44,8 +44,8 @@ public:
     Empresa *empresaBase();
     FichaBc ( Empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~FichaBc();
-    void setListaLineas ( SubForm2Bc * form );
-    SubForm2Bc* listalineas();
+    void setListaLineas ( BcSubForm * form );
+    BcSubForm* listalineas();
 
 };
 

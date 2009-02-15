@@ -29,7 +29,7 @@
 #include <QCheckBox>
 
 #include "blpostgresqlclient.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 
@@ -37,7 +37,7 @@ class company;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListColoresSubForm : public SubForm2Bf
+class ListColoresSubForm : public BfSubForm
 {
     Q_OBJECT
 

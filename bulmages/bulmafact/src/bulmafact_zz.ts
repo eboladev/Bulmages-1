@@ -6949,7 +6949,7 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>SubForm2Bf</name>
+    <name>BfSubForm</name>
     <message>
         <location filename="subform2bf.cpp" line="234"/>
         <source>Articulo inexistente</source>

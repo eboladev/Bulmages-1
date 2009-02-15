@@ -31,7 +31,7 @@
 
 /** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
     de esta forma la introduccion de tipos de IVA es sencilla.
-    Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
+    Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un ComboBox */
 class BusquedaTrabajadorDelegate : public BlComboBox
 {

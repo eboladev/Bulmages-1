@@ -34,7 +34,7 @@
 \return
 **/
 ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
     setDBTableName ( "lfacturap" );

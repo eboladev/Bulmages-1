@@ -24,14 +24,14 @@
 
 #include "pgimportfiles.h"
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /** Subformulario de clientes.
-    Esta clase derivada de SubForm2Bf presenta todo el listado de clientes.
+    Esta clase derivada de BfSubForm presenta todo el listado de clientes.
 */
-class ClienteListSubform : public SubForm2Bf
+class ClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 

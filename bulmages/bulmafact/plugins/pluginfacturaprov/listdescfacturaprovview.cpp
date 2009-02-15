@@ -32,7 +32,7 @@
 \param parent
 **/
 ListDescuentoFacturaProvView::ListDescuentoFacturaProvView ( QWidget *parent )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ListDescuentoFacturaProvView::ListDescuentoFacturaProvView", 0 );
     setDBTableName ( "dfacturap" );

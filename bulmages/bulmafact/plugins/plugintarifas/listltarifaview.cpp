@@ -26,7 +26,7 @@
 /**
 \param parent
 **/
-ListLTarifaView::ListLTarifaView ( QWidget *parent ) : SubForm2Bf ( parent )
+ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLTarifaView::ListLTarifaView", 0 );
     setDBTableName ( "ltarifa" );
@@ -49,7 +49,7 @@ ListLTarifaView::ListLTarifaView ( QWidget *parent ) : SubForm2Bf ( parent )
 /**
 \param parent
 **/
-ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : SubForm2Bf ( parent )
+ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLTarifaView1::ListLTarifaView1", 0 );
     setDBTableName ( "ltarifa" );

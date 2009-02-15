@@ -26,7 +26,7 @@
 \param parent
 **/
 ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ListControlStockView::ListControlStockView", 0 );
     setDBTableName ( "controlstock" );
@@ -63,7 +63,7 @@ void ListControlStockView::cargar ( int idinventario )
     SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + mdb_idinventario + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
 
     SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
-    SubForm2Bf::cargar ( SQLQuery );
+    BfSubForm::cargar ( SQLQuery );
     _depura ( "END ListControlStockView::cargar", 0 );
 }
 */
@@ -111,7 +111,7 @@ ListControlStockView::~ListControlStockView()
 int ListControlStockView::guardar()
 {
     _depura ( "ListControlStockView::guardar", 0 );
-    SubForm2Bf::guardar();
+    BfSubForm::guardar();
     _depura ( "END ListControlStockView::guardar", 0 );
     return 0;
 }

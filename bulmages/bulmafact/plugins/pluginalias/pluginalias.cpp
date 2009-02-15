@@ -101,7 +101,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     _depura ( "ArticuloView_ArticuloView", 0 );
 
     /// Agregamos el subformulario de validaciones.
-    SubForm2Bf *l = new SubForm2Bf ( art );
+    BfSubForm *l = new BfSubForm ( art );
     l->setObjectName ( QString::fromUtf8 ( "lalias" ) );
     l->setEmpresaBase ( art->empresaBase() );
     l->setDBTableName ( "alias" );
@@ -129,7 +129,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
-    SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lalias" );
+    BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
     if ( l ) {
         l->cargar ( "SELECT * FROM alias WHERE idarticulo = " + art->DBvalue ( "idarticulo" ) );
     } // end if
@@ -148,7 +148,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 {
     _depura ( "ArticuloView_guardar_post", 0 );
     try {
-        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lalias" );
+        BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
         l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
         l->guardar();
         invalidaEstadAlias();

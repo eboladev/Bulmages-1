@@ -112,7 +112,7 @@ int entryPoint ( Bulmafact *bges )
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
     _depura ( "ArticuloView_ArticuloView", 0 );
-    SubForm2Bf *l = new SubForm2Bf ( art );
+    BfSubForm *l = new BfSubForm ( art );
     l->setEmpresaBase ( art->empresaBase() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
     art->mui_tab->addTab ( l, _("Minimos almacen") );
@@ -160,9 +160,9 @@ int BlForm_guardar_Post ( BlForm *fich )
 }
 
 
-int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
+int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
-    _depura ( "SubForm2Bf_on_mui_list_editFinished", 0 );
+    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
 
     if ( subform->currentColumn() < 1 ) {
         return 0;

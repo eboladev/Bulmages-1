@@ -25,13 +25,13 @@
 #include <QEvent>
 
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blfixed.h"
 
 
 /// Muestra y administra el detalle de las l&iacute;neas de un presupuesto.
 /** */
-class ListLinPresupuestoView : public SubForm2Bf
+class ListLinPresupuestoView : public BfSubForm
 {
     Q_OBJECT
 

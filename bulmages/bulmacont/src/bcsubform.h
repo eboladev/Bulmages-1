@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __SUBFORM2BC1_H
-#define __SUBFORM2BC1_H
+#ifndef BCSUBFORM_H
+#define BCSUBFORM_H
 
 #include "empresa.h"
 #include "qtable2.h"
@@ -30,19 +30,19 @@
 #include "busquedafecha2.h"
 
 
-class SubForm2Bc;
+class BcSubForm;
 
-/// Clase SubForm2BcDelegate
+/// Clase BcSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class QSubForm2BcDelegate : public QItemDelegate, public PEmpresaBase
+class BcSubFormDelegate : public QItemDelegate, public PEmpresaBase
 {
 private:
     /// Clase padre y acceso a base de datos.
-    SubForm2Bc *m_subform;
+    BcSubForm *m_subform;
 
 public:
-    QSubForm2BcDelegate ( QObject * );
-    ~QSubForm2BcDelegate();
+    BcSubFormDelegate ( QObject * );
+    ~BcSubFormDelegate();
     void setEditorData ( QWidget *, const QModelIndex &index ) const;
     void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
     QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
@@ -50,17 +50,17 @@ public:
 };
 
 
-class SubForm2Bc : public BlSubForm
+class BcSubForm : public BlSubForm
 {
     Q_OBJECT
 
 public:
-    QSubForm2BcDelegate *m_delegate;
+    BcSubFormDelegate *m_delegate;
 
 public:
     Empresa *empresaBase();
-    SubForm2Bc ( QWidget *parent = 0 );
-    virtual ~SubForm2Bc();
+    BcSubForm ( QWidget *parent = 0 );
+    virtual ~BcSubForm();
     virtual void boton_asiento();
     virtual void boton_extracto1 ( int );
 //    virtual void boton_balance1 ( int );

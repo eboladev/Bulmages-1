@@ -32,7 +32,7 @@
 \param parent
 **/
 ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView ( QWidget *parent )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView", 0 );
 

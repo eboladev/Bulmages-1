@@ -23,7 +23,7 @@
 #define FICHABF_H
 
 #include "blform.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "company.h"
 
 
@@ -36,17 +36,17 @@ class FichaBf : public BlForm
     Q_OBJECT
 
 public:
-    SubForm2Bf *m_listalineas;
-    SubForm2Bf *m_listadescuentos;
+    BfSubForm *m_listalineas;
+    BfSubForm *m_listadescuentos;
 
 public:
     Company *empresaBase();
     FichaBf ( Company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual ~FichaBf();
-    void setListaLineas ( SubForm2Bf *form );
-    void setListaDescuentos ( SubForm2Bf *form );
-    SubForm2Bf* getlistalineas();
-    SubForm2Bf* getlistadescuentos();
+    void setListaLineas ( BfSubForm *form );
+    void setListaDescuentos ( BfSubForm *form );
+    BfSubForm* getlistalineas();
+    BfSubForm* getlistadescuentos();
     virtual void imprimir();
     virtual QString nombrePlantilla(void) ;
     virtual int generaRML ( void );

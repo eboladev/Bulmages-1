@@ -31,7 +31,7 @@
 \param parent
 **/
 ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView ( QWidget *parent )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView", 0 );
     setDBTableName ( "dpedidoproveedor" );

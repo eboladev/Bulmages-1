@@ -361,7 +361,7 @@
     </widget>
    </item>
    <item>
-    <widget class="SubForm2Bf" name="mui_list" >
+    <widget class="BfSubForm" name="mui_list" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Expanding" hsizetype="Ignored" >
        <horstretch>0</horstretch>
@@ -415,9 +415,9 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bf</class>
+   <class>BfSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bf.h</header>
+   <header>bfsubform.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaAlmacen</class>

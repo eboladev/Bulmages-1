@@ -392,7 +392,7 @@
     </widget>
    </item>
    <item>
-    <widget class="SubForm2Bf" name="mui_listadomantvehiculo" />
+    <widget class="BfSubForm" name="mui_listadomantvehiculo" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -459,9 +459,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bf</class>
+   <class>BfSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bf.h</header>
+   <header>bfsubform.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

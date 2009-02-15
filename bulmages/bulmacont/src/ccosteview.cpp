@@ -21,7 +21,7 @@
 #include "ccosteview.h"
 #include "empresa.h"
 #include "selectccosteview.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 
 #define COL_NOM_COSTE  0
 #define COL_DESC_COSTE 1

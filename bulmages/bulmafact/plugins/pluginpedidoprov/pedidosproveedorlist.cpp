@@ -305,7 +305,7 @@ void PedidosProveedorList::setidproveedor ( QString val )
 /**
 \param parent
 **/
-PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "PedidosProveedorListSubform::PedidosProveedorListSubform", 0 );
     setDBTableName ( "pedidoproveedor" );

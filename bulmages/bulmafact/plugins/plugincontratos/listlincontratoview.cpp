@@ -32,7 +32,7 @@
 /**
 \param parent
 **/
-ListLinContratoView::ListLinContratoView ( QWidget *parent ) : SubForm2Bf ( parent )
+ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinContratoView::ListLinContratoView", 0 );
     setDBTableName ( "lcontrato" );

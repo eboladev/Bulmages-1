@@ -22,13 +22,13 @@
 #ifndef LISTDESCALBARANPROVVIEW_H
 #define LISTDESCALBARANPROVVIEW_H
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "company.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n de proveedor.
 /** */
-class ListDescuentoAlbaranProvView : public SubForm2Bf
+class ListDescuentoAlbaranProvView : public BfSubForm
 {
     Q_OBJECT
 

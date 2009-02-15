@@ -22,13 +22,13 @@
 #ifndef LISTDESCPEDIDOCLIENTEVIEW_H
 #define LISTDESCPEDIDOCLIENTEVIEW_H
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "company.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por pedido de cliente.
 /** */
-class ListDescuentoPedidoClienteView : public SubForm2Bf
+class ListDescuentoPedidoClienteView : public BfSubForm
 {
     Q_OBJECT
 

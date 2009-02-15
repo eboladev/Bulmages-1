@@ -22,12 +22,12 @@
 #define LISTLRESARTICULO_H
 
 #include "qtable2.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blwidget.h"
 #include "bulmafact.h"
 
 
-class ListLResArticulo : public SubForm2Bf
+class ListLResArticulo : public BfSubForm
 {
     Q_OBJECT
 
@@ -41,7 +41,7 @@ public slots:
 };
 
 
-class ListEntregas : public SubForm2Bf
+class ListEntregas : public BfSubForm
 {
     Q_OBJECT
 
@@ -54,7 +54,7 @@ public slots:
     virtual void cargar ( QString idarticulo );
 };
 
-class ListCompras : public SubForm2Bf
+class ListCompras : public BfSubForm
 {
     Q_OBJECT
 
@@ -67,7 +67,7 @@ public slots:
     virtual void cargar ( QString idarticulo );
 };
 
-class ListRecogidas : public SubForm2Bf
+class ListRecogidas : public BfSubForm
 {
     Q_OBJECT
 

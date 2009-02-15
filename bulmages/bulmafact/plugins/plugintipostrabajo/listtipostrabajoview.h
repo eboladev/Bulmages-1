@@ -29,7 +29,7 @@
 #include <QCheckBox>
 
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 

@@ -80,7 +80,7 @@ ListConfiguracionView::~ListConfiguracionView()
 /**
 \param parent
 **/
-ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
     setDBTableName ( "configuracion" );

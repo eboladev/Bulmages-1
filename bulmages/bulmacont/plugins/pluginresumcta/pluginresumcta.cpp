@@ -143,9 +143,9 @@ int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta *bcta )
 \param subform
 \return
 **/
-int SubForm2Bc_on_mui_list_cellChanged_post ( SubForm2Bc *subform )
+int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 {
-    _depura ( "SubForm2Bc_on_mui_list_cellChanged_post", 0 );
+    _depura ( "BcSubForm_on_mui_list_cellChanged_post", 0 );
     if ( subform->currentRow() < 0 )
         return 0;
     if ( subform->existsHeader ( "codigo" ) ) {

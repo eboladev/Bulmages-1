@@ -43,7 +43,7 @@
 /**
 \param parent
 **/
-QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 ) : QSubForm2BfDelegate ( parent )
+QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
     _depura ( "QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
     _depura ( "END QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
@@ -92,7 +92,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         return editor;
 
     } else  {
-        return QSubForm2BfDelegate::createEditor ( parent, option, index );
+        return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
     _depura ( "END QSubFormVarTarifaBfDelegate::createEditor", 0 );
 }
@@ -137,7 +137,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
         model->setData ( index, value );
 
     } else {
-        QSubForm2BfDelegate::setModelData ( editor, model, index );
+        BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
     _depura ( "END QSubFormVarTarifaBfDelegate::setModelData", 0 );
 }
@@ -171,7 +171,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
         spinBox->selectAll();
 
     } else {
-        QSubForm2BfDelegate::setEditorData ( editor, index );
+        BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
     _depura ( "END QSubFormVarTarifaBfDelegate::setEditorData", 0 );
 }

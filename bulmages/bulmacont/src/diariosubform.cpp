@@ -26,7 +26,7 @@
 /**
 \param parent
 **/
-DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( parent )
+DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "DiarioSubForm::DiarioSubForm", 0 );
     setDBTableName ( "borrador" );

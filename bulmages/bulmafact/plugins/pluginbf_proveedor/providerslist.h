@@ -23,13 +23,13 @@
 #define PROVIDERSLIST_H
 
 #include "pgimportfiles.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Administra el listado de proveedores.
 /** */
-class ProveedorListSubform : public SubForm2Bf
+class ProveedorListSubform : public BfSubForm
 {
     Q_OBJECT
 

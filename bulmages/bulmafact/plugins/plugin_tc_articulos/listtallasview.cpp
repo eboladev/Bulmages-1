@@ -91,7 +91,7 @@ ListTallasView::~ListTallasView()
 \param parent
 **/
 
-ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListTallasSubForm::ListTallasSubForm", 0 );
     setDBTableName ( "tc_talla" );

@@ -26,13 +26,13 @@
 
 #include "company.h"
 #include "blfunctions.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Administra el detalle del listado de pagos.
 /** */
-class PagosListSubForm : public SubForm2Bf
+class PagosListSubForm : public BfSubForm
 {
     Q_OBJECT
 

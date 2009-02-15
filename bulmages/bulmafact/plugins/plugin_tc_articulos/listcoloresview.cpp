@@ -91,7 +91,7 @@ ListColoresView::~ListColoresView()
 \param parent
 **/
 
-ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListColoresSubForm::ListColoresSubForm", 0 );
     setDBTableName ( "tc_color" );

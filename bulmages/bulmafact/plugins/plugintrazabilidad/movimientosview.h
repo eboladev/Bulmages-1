@@ -24,13 +24,13 @@
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "blfunctions.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 
 /// Administra el detalle del listado de facturas a clientes.
 /** */
-class MovimientosSubform : public SubForm2Bf
+class MovimientosSubform : public BfSubForm
 {
     Q_OBJECT
 

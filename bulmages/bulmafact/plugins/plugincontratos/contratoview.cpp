@@ -393,7 +393,7 @@ void ContratoView::on_mui_facturar_clicked()
 /**
 \param parent
 **/
-FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
     setDBTableName ( "factura" );

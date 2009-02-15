@@ -186,7 +186,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "esxtoy en la clase almacen", 0 );
 
-    SubForm2Bf *form = new SubForm2Bf ( alm );
+    BfSubForm *form = new BfSubForm ( alm );
     delete form->m_delegate;
     form->m_delegate = new QSubForm3BfDelegate ( form );
     form->mui_list->setItemDelegate ( form->m_delegate );
@@ -251,7 +251,7 @@ int BlForm_guardar_Post ( BlForm *fich )
 /**
 \param parent
 **/
-QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : QSubForm2BfDelegate ( parent )
+QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
     _depura ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
     _depura ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
@@ -286,7 +286,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else  {
-        return QSubForm2BfDelegate::createEditor ( parent, option, index );
+        return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
     _depura ( "END QSubForm3BfDelegate::createEditor", 0 );
 }
@@ -315,7 +315,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtipotrabajo", comboBox->id() );
     } else {
-        QSubForm2BfDelegate::setModelData ( editor, model, index );
+        BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
     _depura ( "END QSubForm3BfDelegate::setModelData", 0 );
 }
@@ -336,7 +336,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
         BusquedaTipoTrabajoDelegate *comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
         comboBox->set ( value );
     } else {
-        QSubForm2BfDelegate::setEditorData ( editor, index );
+        BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
     _depura ( "END QSubForm3BfDelegate::setEditorData", 0 );
 }

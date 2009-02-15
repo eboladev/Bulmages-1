@@ -24,13 +24,13 @@
 #include <QEvent>
 
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blfixed.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
 /** */
-class ListLinContratoView : public SubForm2Bf
+class ListLinContratoView : public BfSubForm
 {
     Q_OBJECT
 

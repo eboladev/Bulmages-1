@@ -197,7 +197,7 @@
     </layout>
    </item>
    <item>
-    <widget class="SubForm2Bc" name="mui_listado" >
+    <widget class="BcSubForm" name="mui_listado" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>7</hsizetype>
@@ -219,9 +219,9 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bc</class>
+   <class>BcSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
+   <header>bcsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

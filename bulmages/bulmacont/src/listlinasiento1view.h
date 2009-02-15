@@ -22,14 +22,14 @@
 #ifndef LISTLINASIENTO1VIEW_H
 #define LISTLINASIENTO1VIEW_H
 
-#include "subform2bc.h"
+#include "bcsubform.h"
 #include "blfixed.h"
 
 
 /** Implementa el subformulario de asientos contables.
-    Deriva de SubForm2Bc.
+    Deriva de BcSubForm.
 */
-class ListLinAsiento1View : public SubForm2Bc
+class ListLinAsiento1View : public BcSubForm
 {
     Q_OBJECT
 

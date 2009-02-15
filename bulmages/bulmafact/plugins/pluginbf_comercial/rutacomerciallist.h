@@ -25,11 +25,11 @@
 
 #include "company.h"
 #include "busquedaarticulo.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
-class RutaComercialListSubForm : public SubForm2Bf
+class RutaComercialListSubForm : public BfSubForm
 {
     Q_OBJECT
 

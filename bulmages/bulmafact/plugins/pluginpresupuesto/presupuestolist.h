@@ -26,13 +26,13 @@
 
 #include "company.h"
 #include "busquedaarticulo.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Administra el listado de presupuestos.
 /** */
-class PresupuestoListSubForm : public SubForm2Bf
+class PresupuestoListSubForm : public BfSubForm
 {
     Q_OBJECT
 

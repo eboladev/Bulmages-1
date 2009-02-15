@@ -326,16 +326,16 @@
     </widget>
    </item>
    <item>
-    <widget class="SubForm2Bf" name="mui_list" />
+    <widget class="BfSubForm" name="mui_list" />
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bf</class>
+   <class>BfSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bf.h</header>
+   <header>bfsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

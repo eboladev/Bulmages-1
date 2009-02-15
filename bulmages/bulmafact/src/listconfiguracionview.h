@@ -30,12 +30,12 @@
 
 #include "fichabf.h"
 #include "blpostgresqlclient.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionSubForm : public SubForm2Bf
+class ListConfiguracionSubForm : public BfSubForm
 {
     Q_OBJECT
 

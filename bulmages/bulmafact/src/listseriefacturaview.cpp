@@ -71,7 +71,7 @@ ListSerieFacturaView::~ListSerieFacturaView()
 /**
 \param parent
 **/
-ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
     setDBTableName ( "serie_factura" );

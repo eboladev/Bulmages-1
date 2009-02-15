@@ -58,7 +58,7 @@ FichaBc::~FichaBc()
 /**
 \param form
 **/
-void FichaBc::setListaLineas ( SubForm2Bc * form )
+void FichaBc::setListaLineas ( BcSubForm * form )
 {
     _depura ( "FichaBc::setListaLineas", 0 );
     m_listalineas = form;
@@ -70,7 +70,7 @@ void FichaBc::setListaLineas ( SubForm2Bc * form )
 /**
 \return
 **/
-SubForm2Bc* FichaBc::listalineas()
+BcSubForm* FichaBc::listalineas()
 {
     _depura ( "FichaBc::listalineas", 0 );
     _depura ( "END FichaBc::listalineas", 0 );

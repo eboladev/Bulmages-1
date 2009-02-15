@@ -335,7 +335,7 @@ void PresupuestoList::borrar()
 \param parent
 \return
 **/
-PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "PresupuestoListSubForm::PresupuestoListSubForm", 0 );
     /// Disparamos los plugins.

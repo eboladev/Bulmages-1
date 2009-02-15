@@ -19,85 +19,69 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SUBFORM2BF_H
-#define SUBFORM2BF_H
+#ifndef BTSUBFORM_H
+#define BTSUBFORM_H
 
 #include <QEvent>
 
-#include "company.h"
+#include "blfunctions.h"
+#include "empresatpv.h"
 #include "qtable2.h"
 #include "bldbsubform.h"
 #include "blsubform.h"
 #include "bldoublespinbox.h"
 
 
-class SubForm2Bf;
+class BtSubForm;
 
 
-/// Clase SubForm2BfDelegate
+/// Clase BtSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase
+class BtSubFormDelegate : public QItemDelegate, public PEmpresaBase
 {
-    Q_OBJECT
-
 protected:
-    SubForm2Bf *m_subform;
+    BtSubForm *m_subform;
 
 public:
-    QSubForm2BfDelegate ( QObject * );
-    virtual ~QSubForm2BfDelegate();
+    BtSubFormDelegate ( QObject * );
+    virtual ~BtSubFormDelegate();
     virtual void setEditorData ( QWidget *, const QModelIndex &index ) const;
     virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
     virtual bool eventFilter ( QObject *obj, QEvent *event );
     virtual int cerrarEditor ( QWidget *editor );
-
-signals:
-     void cant_changed(BlDbSubFormRecord *) const;
 };
 
 
-/// Clase SubForm2Bf
+/// Clase BtSubForm
 /** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
     comunes de la facturaci&oacute;n.
 */
-class SubForm2Bf : public BlSubForm
+class BtSubForm : public BlSubForm
 {
     Q_OBJECT
 
 public:
-    QSubForm2BfDelegate *m_delegate;
-    BlDbSubFormRecord *m_registrolinea;
-    BlDbSubFormField  *m_campoactual;			/// Usada para pasar parametros a los plugins.
+    BtSubFormDelegate *m_delegate;
 
 protected:
     QString mdb_idcliente;
     QString mdb_idproveedor;
-    QString m_idArticulo;
-    QString m_idTarifa;
-    QString m_idAlmacen;
 
 public:
-    SubForm2Bf ( QWidget *parent = 0 );
-    virtual ~SubForm2Bf();
+    BtSubForm ( QWidget *parent = 0 );
+    virtual ~BtSubForm();
     virtual void cargar ( QString query );
     virtual void setEmpresaBase ( EmpresaBase * );
-    virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
-    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
-    virtual void pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
-    virtual void pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
+    virtual void on_mui_list_cellChanged ( int row, int col );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
-    void setIdAlmacen ( QString id );
-    QString idcliente();
-    QString idproveedor();
-    QString idArticulo();
-    QString idTarifa();
-    QString idAlmacen();
+    virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
 
 public slots:
-    virtual void calculaPVP(BlDbSubFormRecord *rec);
+    virtual void on_mui_list_pressedSlash ( int row, int col );
+    virtual void on_mui_list_pressedMinus ( int row, int col );
 };
 
 #endif

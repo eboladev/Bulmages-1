@@ -22,13 +22,13 @@
 #define INVENTARIOSVIEW_H
 
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de inventarios.
 /** */
-class InventariosSubForm : public SubForm2Bf
+class InventariosSubForm : public BfSubForm
 {
     Q_OBJECT
 

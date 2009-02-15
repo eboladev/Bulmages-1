@@ -62,7 +62,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     _depura ( "ArticuloView_ArticuloView", 0 );
 
     /// Agregamos el subformulario de validaciones.
-    SubForm2Bf *l = new SubForm2Bf ( art );
+    BfSubForm *l = new BfSubForm ( art );
 
     /// Ponemos un delegate al subformulario para que coja los combos asignados.
     delete l->m_delegate;
@@ -103,7 +103,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
-    SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "laliastc" );
+    BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
     if ( l ) {
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->DBvalue ( "idarticulo" );
         l->cargar ( query );
@@ -123,7 +123,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 {
     _depura ( "ArticuloView_guardar_post", 0 );
     try {
-        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "laliastc" );
+        BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
         l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
         l->guardar();
         return 0;
@@ -146,7 +146,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 /**
 \param parent
 **/
-QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : QSubForm2BfDelegate ( parent )
+QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
     _depura ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
     _depura ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
@@ -185,7 +185,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else  {
-        return QSubForm2BfDelegate::createEditor ( parent, option, index );
+        return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
     _depura ( "END QSubForm3BfDelegate::createEditor", 0 );
 }
@@ -219,7 +219,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtc_talla", comboBox->id() );
     } else {
-        QSubForm2BfDelegate::setModelData ( editor, model, index );
+        BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
     _depura ( "END QSubForm3BfDelegate::setModelData", 0 );
 }
@@ -244,7 +244,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
         BusquedaTallaDelegate *comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
         comboBox->set ( value );
     } else {
-        QSubForm2BfDelegate::setEditorData ( editor, index );
+        BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
     _depura ( "END QSubForm3BfDelegate::setEditorData", 0 );
 }

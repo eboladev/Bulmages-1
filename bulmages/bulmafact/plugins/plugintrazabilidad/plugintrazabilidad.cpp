@@ -166,9 +166,9 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 /**
 \return
 **/
-int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * )
+int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
 {
-    _depura ( "SubForm2Bf_on_mui_list_editFinished", 0 );
+    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
 
     /*
      
@@ -203,5 +203,5 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * )
     */
     return 0;
 
-    _depura ( "END SubForm2Bf_on_mui_list_editFinished", 0 );
+    _depura ( "END BfSubForm_on_mui_list_editFinished", 0 );
 }

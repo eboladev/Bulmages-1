@@ -29,11 +29,11 @@
 
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 
-class ListZonaComercialSubForm : public SubForm2Bf
+class ListZonaComercialSubForm : public BfSubForm
 {
     Q_OBJECT
 

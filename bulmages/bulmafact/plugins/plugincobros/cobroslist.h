@@ -26,13 +26,13 @@
 
 #include "company.h"
 #include "blfunctions.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class CobrosListSubForm : public SubForm2Bf
+class CobrosListSubForm : public BfSubForm
 {
     Q_OBJECT
 

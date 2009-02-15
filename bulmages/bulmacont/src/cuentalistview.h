@@ -23,13 +23,13 @@
 #define CUENTALISTVIEW_H
 
 #include "empresa.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 #include "blformlist.h"
 
 
 /**
 */
-class CuentaListSubForm : public SubForm2Bc
+class CuentaListSubForm : public BcSubForm
 {
     Q_OBJECT
 

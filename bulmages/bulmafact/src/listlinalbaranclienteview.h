@@ -25,13 +25,13 @@
 #include <QEvent>
 
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blfixed.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes a un cliente.
 /** */
-class ListLinAlbaranClienteView : public SubForm2Bf
+class ListLinAlbaranClienteView : public BfSubForm
 {
     Q_OBJECT
 

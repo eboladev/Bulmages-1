@@ -28,7 +28,7 @@
 
 #include "ticket.h"
 #include "empresatpv.h"
-#include "subform2bt.h"
+#include "btsubform.h"
 
 class MTicket : public QTextBrowser, public PEmpresaBase
 {

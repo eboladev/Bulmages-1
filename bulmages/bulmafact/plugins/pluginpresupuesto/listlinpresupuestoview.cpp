@@ -33,7 +33,7 @@
 \param parent
 \return
 **/
-ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : SubForm2Bf ( parent )
+ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinPresupuestoView::ListLinPresupuestoView", 0 );
     setDBTableName ( "lpresupuesto" );

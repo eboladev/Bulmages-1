@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 
 
 class Empresa;
@@ -37,7 +37,7 @@ class Empresa;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionSubForm : public SubForm2Bc
+class ListConfiguracionSubForm : public BcSubForm
 {
     Q_OBJECT
 

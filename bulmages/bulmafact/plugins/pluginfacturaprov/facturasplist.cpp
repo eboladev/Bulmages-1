@@ -343,7 +343,7 @@ void FacturasProveedorList::crear()
 /**
 \param parent
 **/
-FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
     setDBTableName ( "facturap" );

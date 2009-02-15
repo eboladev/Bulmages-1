@@ -36,5 +36,5 @@ extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_borrar ( ArticuloView * );
-extern "C" MY_EXPORT int SubForm2Bf_SubForm2Bf ( SubForm2Bf * );
-extern "C" MY_EXPORT int SubForm2Bf_calculaPVP ( SubForm2Bf * );
+extern "C" MY_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );
+extern "C" MY_EXPORT int BfSubForm_calculaPVP ( BfSubForm * );

@@ -3112,7 +3112,7 @@ p, li { white-space: pre-wrap; }
     </message>
   </context>
   <context>
-    <name>SubForm2Bc</name>
+    <name>BcSubForm</name>
     <message>
       <source>Submenu de contabilidad</source>
       <translation type="unfinished" />

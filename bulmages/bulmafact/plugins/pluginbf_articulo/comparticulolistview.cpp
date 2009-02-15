@@ -34,7 +34,7 @@
 \param parent
 **/
 ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ListCompArticuloView::ListCompArticuloView", 0 );
     setDBTableName ( "comparticulo" );

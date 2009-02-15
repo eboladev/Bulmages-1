@@ -22,13 +22,13 @@
 #ifndef ASIENTOLISTSUBFORM
 #define ASIENTOLISTSUBFORM
 
-#include "subform2bc.h"
+#include "bcsubform.h"
 
 
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class AsientoListSubform : public SubForm2Bc
+class AsientoListSubform : public BcSubForm
 {
     Q_OBJECT
 

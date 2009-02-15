@@ -5,7 +5,7 @@
 #include "mticket.h"
 #include "bldb.h"
 #include "bulmatpv.h"
-#include "subform2bt.h"
+#include "btsubform.h"
 
 
 //extern QTextBrowser *g_browser;

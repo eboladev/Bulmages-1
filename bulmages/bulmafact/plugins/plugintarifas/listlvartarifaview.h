@@ -4,10 +4,10 @@
 
 #include <QObject>
 #include "bulmafact.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
-class QSubFormVarTarifaBfDelegate : public QSubForm2BfDelegate
+class QSubFormVarTarifaBfDelegate : public BfSubFormDelegate
 {
 public:
     QSubFormVarTarifaBfDelegate ( QObject * );

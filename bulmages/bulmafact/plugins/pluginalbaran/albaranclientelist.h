@@ -24,13 +24,13 @@
 
 #include "busquedaarticulo.h"
 #include "company.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Subformulario de albaranes de clientes.
 /** Esta clase se encarga de implementar el subformulario de albaranes a clientes.
-    Es una clase derivada de SubForm2Bf, donde estan las funciones especificas de la facturacion.
+    Es una clase derivada de BfSubForm, donde estan las funciones especificas de la facturacion.
     que a su vez deriva de BlSubForm que tiene las funciones de subformularios.
 
     La funcionalidad de esta clase es configurar el subformulario para que funcione
@@ -38,7 +38,7 @@
 
     Reimplementa los metodos de cargar para producir el query adecuado.
 */
-class AlbaranClienteListSubform : public SubForm2Bf
+class AlbaranClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 

@@ -43,7 +43,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="SubForm2Bf" name="mui_list" />
+        <widget class="BfSubForm" name="mui_list" />
        </item>
       </layout>
      </widget>
@@ -459,9 +459,9 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bf</class>
+   <class>BfSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bf.h</header>
+   <header>bfsubform.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaAlmacen</class>

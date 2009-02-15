@@ -25,13 +25,13 @@
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "blfunctions.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
 /** */
-class PedidosClienteListSubform : public SubForm2Bf
+class PedidosClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 

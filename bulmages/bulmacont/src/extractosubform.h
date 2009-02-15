@@ -23,12 +23,12 @@
 #ifndef _EXTRACTO_SUBFORM
 #define _EXTRACTO_SUBFORM
 
-#include "subform2bc.h"
+#include "bcsubform.h"
 
 
 ///
 /** */
-class ExtractoSubForm : public SubForm2Bc
+class ExtractoSubForm : public BcSubForm
 {
     Q_OBJECT
 

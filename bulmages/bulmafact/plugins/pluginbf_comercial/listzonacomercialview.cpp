@@ -69,7 +69,7 @@ ListZonaComercialView::~ListZonaComercialView()
 /**
 \param parent
 **/
-ListZonaComercialSubForm::ListZonaComercialSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ListZonaComercialSubForm::ListZonaComercialSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListZonaComercialSubForm::ListZonaComercialSubForm", 0 );
     setDBTableName ( "zonacomercial" );

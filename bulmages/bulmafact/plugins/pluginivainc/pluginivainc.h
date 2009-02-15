@@ -28,7 +28,7 @@
 #include "bulmafact.h"
 #include "articuloview.h"
 #include "blform.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "articulolist.h"
 #include "listlinalbaranclienteview.h"
 

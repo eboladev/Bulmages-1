@@ -24,15 +24,15 @@
 
 #include "company.h"
 #include "pgimportfiles.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blformlist.h"
 
 
 /** Clase que maneja el subformulario de la lista de art&iacute;culos.
-    Deriva de SubForm2Bf y agrega la configuracion para tratar especificamente
+    Deriva de BfSubForm y agrega la configuracion para tratar especificamente
     con la tabla articulo.
 */
-class ArticuloListSubForm : public SubForm2Bf
+class ArticuloListSubForm : public BfSubForm
 {
     Q_OBJECT
 

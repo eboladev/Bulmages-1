@@ -23,14 +23,14 @@
 #define _DIARIO_SUBFORM_
 
 #include "empresa.h"
-#include "subform2bc.h"
+#include "bcsubform.h"
 #include "blwidget.h"
 
 ///
 /** SubFormulario de la pantalla de Diario.*/
 
 
-class DiarioSubForm : public SubForm2Bc
+class DiarioSubForm : public BcSubForm
 {
     Q_OBJECT
 

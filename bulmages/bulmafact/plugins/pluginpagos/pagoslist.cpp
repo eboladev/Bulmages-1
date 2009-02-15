@@ -239,7 +239,7 @@ void PagosList::setidproveedor ( QString val )
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-PagosListSubForm::PagosListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+PagosListSubForm::PagosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     setDBTableName ( "pago" );
     setDBCampoId ( "idpago" );

@@ -168,7 +168,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     /// VARIACION DE TARIFAS
 
     /// Agregamos el subformulario de validaciones.
-    SubForm2Bf *l = new SubForm2Bf ( art );
+    BfSubForm *l = new BfSubForm ( art );
 
     /// Ponemos un delegate al subformulario para que coja los combos asignados.
     delete l->m_delegate;
@@ -218,7 +218,7 @@ int ArticuloView_cargar ( ArticuloView *art )
     l1->cargar ( art->DBvalue ( "idarticulo" ) );
 
     /// Variacion de tarifas.
-    SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lvariaciontarifas" );
+    BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
     if ( l ) {
 	QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->DBvalue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
         l->cargar ( SQLQuery );
@@ -242,7 +242,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
         l1->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
 
     	/// Variacion de tarifas.
-        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lvariaciontarifas" );
+        BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
 
         l1->guardar();
@@ -268,7 +268,7 @@ int ArticuloView_borrar ( ArticuloView *art )
         ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
 
     	/// Variacion de tarifas.
-        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lvariaciontarifas" );
+        BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
 
         l1->borrar();
@@ -284,13 +284,13 @@ int ArticuloView_borrar ( ArticuloView *art )
 ///
 /**
 **/
-int SubForm2Bf_SubForm2Bf ( SubForm2Bf *sub )
+int BfSubForm_BfSubForm ( BfSubForm *sub )
 {
-    _depura ( "PluginTarifas SubForm2Bf_SubForm2Bf", 0 );
+    _depura ( "PluginTarifas BfSubForm_BfSubForm", 0 );
     /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
     /// calculo del PVP en funcion del cliente y otros parametros.
     QObject::connect(sub->m_delegate, SIGNAL(cant_changed(BlDbSubFormRecord *)), sub, SLOT(calculaPVP(BlDbSubFormRecord *)));
-    _depura ( "END PluginTarifas SubForm2Bf_SubForm2Bf", 0 );
+    _depura ( "END PluginTarifas BfSubForm_BfSubForm", 0 );
     return 0;
 }
 
@@ -298,9 +298,9 @@ int SubForm2Bf_SubForm2Bf ( SubForm2Bf *sub )
 /// Busca el porcentaje de variacion de tarifa en funcion de la cantidad.
 /**
 **/
-int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
+int BfSubForm_calculaPVP ( BfSubForm *sub )
 {
-    _depura ( "PluginTarifas SubForm2Bf_calculaPVP", 0 );
+    _depura ( "PluginTarifas BfSubForm_calculaPVP", 0 );
 
     BlDbRecordSet *cur = NULL;
 
@@ -310,7 +310,7 @@ int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
 
     /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.
     if (sub->idArticulo().isEmpty() || sub->idTarifa().isEmpty() || sub->idAlmacen().isEmpty()) {
-        _depura ( "END PluginTarifas SubForm2Bf_calculaPVP -sin suficientes datos-", 0 );
+        _depura ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
 	return 0;
     } else {
     	cur = sub->empresaBase()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
@@ -325,6 +325,6 @@ int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
 	sub->m_registrolinea->setDBvalue ( "pvp" + sub->tableName(), res);
     } // end if
 
-    _depura ( "END PluginTarifas SubForm2Bf_calculaPVP", 0 );
+    _depura ( "END PluginTarifas BfSubForm_calculaPVP", 0 );
     return 0;
 }

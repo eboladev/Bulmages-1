@@ -22,10 +22,10 @@
 #define TARIFALISTSUBFORM_H
 
 #include "qtable2.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
-class TarifaListSubform : public SubForm2Bf
+class TarifaListSubform : public BfSubForm
 {
     Q_OBJECT
 

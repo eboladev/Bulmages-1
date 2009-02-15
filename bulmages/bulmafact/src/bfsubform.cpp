@@ -26,7 +26,7 @@
 #include <QComboBox>
 #include <QAbstractItemView>
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "blfunctions.h"
 #include "busquedatipoiva.h"
 #include "qtexteditdelegate.h"
@@ -40,33 +40,33 @@
 /**
 \param parent El widget propietario del subformulario.
 **/
-SubForm2Bf::SubForm2Bf ( QWidget *parent ) : BlSubForm ( parent )
+BfSubForm::BfSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
-    _depura ( "SubForm2Bf::SubForm2Bf", 0 );
+    _depura ( "BfSubForm::BfSubForm", 0 );
     setDelete ( TRUE );
-    m_delegate = new QSubForm2BfDelegate ( this );
+    m_delegate = new BfSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SubForm2Bf_SubForm2Bf", this );
+    int res = g_plugins->lanza ( "BfSubForm_BfSubForm", this );
     if ( res != 0 ) {
-        _depura ( "END SubForm2Bf::SubForm2Bf", 0, "Salida por plugins" );
+        _depura ( "END BfSubForm::BfSubForm", 0, "Salida por plugins" );
         return;
     } // end if
 
-    _depura ( "END SubForm2Bf::SubForm2Bf", 0 );
+    _depura ( "END BfSubForm::BfSubForm", 0 );
 }
 
 
 /// Destructor de la clase.
 /**
 **/
-SubForm2Bf::~SubForm2Bf()
+BfSubForm::~BfSubForm()
 {
-    _depura ( "SubForm2Bf::~SubForm2Bf", 0 );
+    _depura ( "BfSubForm::~BfSubForm", 0 );
     delete m_delegate;
-    _depura ( "END SubForm2Bf::~SubForm2Bf", 0 );
+    _depura ( "END BfSubForm::~BfSubForm", 0 );
 }
 
 
@@ -74,11 +74,11 @@ SubForm2Bf::~SubForm2Bf()
 /**
 \param query Una consulta SQL valida.
 **/
-void SubForm2Bf::cargar ( QString query )
+void BfSubForm::cargar ( QString query )
 {
-    _depura ( "SubForm2Bf::cargar", 0, query );
+    _depura ( "BfSubForm::cargar", 0, query );
     BlSubForm::cargar ( query );
-    _depura ( "END SubForm2Bf::cargar", 0 );
+    _depura ( "END BfSubForm::cargar", 0 );
 }
 
 
@@ -88,25 +88,25 @@ void SubForm2Bf::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bf::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bf::pressedAsterisk", 0 );
+    _depura ( "BfSubForm::pressedAsterisk", 0 );
 
 	/// Establezco las variables de clase para que los plugins puedan operar.
     m_registrolinea = rec;
     m_campoactual = camp;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SubForm2Bf_pressedAsterisk", this );
+    int res = g_plugins->lanza ( "BfSubForm_pressedAsterisk", this );
     if ( res != 0 ) {
-        _depura ( "END SubForm2Bf::pressedAsterisk", 0, "Salida por plugins" );
+        _depura ( "END BfSubForm::pressedAsterisk", 0, "Salida por plugins" );
         return;
     } // end if
 
 
 
 
-    _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
+    _depura ( "END BfSubForm::pressedAsterisk", 0 );
 }
 
 
@@ -115,12 +115,12 @@ void SubForm2Bf::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlD
 \param row
 \param col
 **/
-void SubForm2Bf::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BfSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bf::pressedSlash", 0 );
+    _depura ( "BfSubForm::pressedSlash", 0 );
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
-    _depura ( "END SubForm2Bf::pressedSlash", 0 );
+    _depura ( "END BfSubForm::pressedSlash", 0 );
 }
 
 
@@ -129,20 +129,20 @@ void SubForm2Bf::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
 \param row
 \param col
 **/
-void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bf::pressedMinus", 0 );
+    _depura ( "BfSubForm::pressedMinus", 0 );
 
 	/// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
 
     if ( !rec->exists ( "idarticulo" ) ) {
-        _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
+        _depura ( "END BfSubForm::pressedMinus", 0, "No hay un idarticulo" );
         return;
     } // end if
 
     BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
     if ( !cur ) {
-        _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
+        _depura ( "END BfSubForm::pressedMinus", 0, "No hay un idarticulo" );
         return;
     } // end if
 
@@ -151,7 +151,7 @@ void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
     } // end if
     delete cur;
 
-    _depura ( "END SubForm2Bf::pressedMinus", 0 );
+    _depura ( "END BfSubForm::pressedMinus", 0 );
 }
 
 
@@ -161,9 +161,9 @@ void SubForm2Bf::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
 \param col
 \return
 **/
-void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "SubForm2Bf::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    _depura ( "BfSubForm::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
     m_registrolinea = rec;
     m_campoactual = camp;
@@ -173,9 +173,9 @@ void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
     BlDbRecordSet *cur1 = NULL;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "SubForm2Bf_on_mui_list_editFinished", this );
+    int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
     if ( res != 0 ) {
-        _depura ( "END SubForm2Bf::editFinished", 0, "Salida por plugins" );
+        _depura ( "END BfSubForm::editFinished", 0, "Salida por plugins" );
         return;
     } // end if
 
@@ -261,7 +261,7 @@ void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
             */
 
             delete cur;
-            _depura ( "END SubForm2Bf::editFinished", 0, "Articulo inexistente" );
+            _depura ( "END BfSubForm::editFinished", 0, "Articulo inexistente" );
             return;
         } // end if
 
@@ -311,7 +311,7 @@ void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
     */
     /// Refrescamos el registro.
     rec->refresh();
-    _depura ( "END SubForm2Bf::editFinished", 0 );
+    _depura ( "END BfSubForm::editFinished", 0 );
 }
 
 
@@ -320,20 +320,20 @@ void SubForm2Bf::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSu
 \param id
 \return
 **/
-void SubForm2Bf::setIdCliente ( QString id )
+void BfSubForm::setIdCliente ( QString id )
 {
-    _depura ( "SubForm2Bf::setIdCliente", 0, id );
+    _depura ( "BfSubForm::setIdCliente", 0, id );
 
     /// En la primera carga no hay reajustes, pero si actualizacion del cliente.
     if ( mdb_idcliente  == "" ) {
         mdb_idcliente = id;
-        _depura ( "END SubForm2Bf::setIdCliente", 0, "Primera carga" );
+        _depura ( "END BfSubForm::setIdCliente", 0, "Primera carga" );
         return;
     } // end if
 
     /// En las cargas sucesivas si el idcliente no ha cambiado no se hace nada
     if ( mdb_idcliente == id ) {
-        _depura ( "END SubForm2Bf::setIdCliente", 0, "cliente sin cambios" );
+        _depura ( "END BfSubForm::setIdCliente", 0, "cliente sin cambios" );
         return;
     } // end if
 
@@ -348,7 +348,7 @@ void SubForm2Bf::setIdCliente ( QString id )
 
     /// Si el idcliente no existe salimos.
     if ( id == "" ) {
-        _depura ( "END SubForm2Bf::setIdCliente", 0, "idcliente invalido" );
+        _depura ( "END BfSubForm::setIdCliente", 0, "idcliente invalido" );
         return;
     } // end if
 
@@ -376,7 +376,7 @@ void SubForm2Bf::setIdCliente ( QString id )
         } // end for
     } // end if
     delete curcliente;
-    _depura ( "END SubForm2Bf::setIdCliente", 0 );
+    _depura ( "END BfSubForm::setIdCliente", 0 );
 }
 
 
@@ -385,9 +385,9 @@ void SubForm2Bf::setIdCliente ( QString id )
 \param id
 \return
 **/
-void SubForm2Bf::setIdProveedor ( QString id )
+void BfSubForm::setIdProveedor ( QString id )
 {
-    _depura ( "SubForm2Bf::setIdProveedor", 0, id );
+    _depura ( "BfSubForm::setIdProveedor", 0, id );
 
     /// En la primera carga no hay reajustes, pero si actualizacion del proveedor.
     if ( mdb_idproveedor  == "" ) {
@@ -409,7 +409,7 @@ void SubForm2Bf::setIdProveedor ( QString id )
 
     /// Si el idproveedor no existe salimos.
     if ( id == "" ) {
-        _depura ( "END SubForm2Bf::setIdProveedor", 0, "idproveedor invalido" );
+        _depura ( "END BfSubForm::setIdProveedor", 0, "idproveedor invalido" );
         return;
     } // end if
 
@@ -435,7 +435,7 @@ void SubForm2Bf::setIdProveedor ( QString id )
         } // end for
     } // end if
     delete curproveedor;
-    _depura ( "END SubForm2Bf::setIdProveedor", 0 );
+    _depura ( "END BfSubForm::setIdProveedor", 0 );
 }
 
 
@@ -443,11 +443,11 @@ void SubForm2Bf::setIdProveedor ( QString id )
 /**
 \param id
 **/
-void SubForm2Bf::setIdAlmacen ( QString id )
+void BfSubForm::setIdAlmacen ( QString id )
 {
-	_depura("SubForm2Bf::setIdAlmacen", 0);
+	_depura("BfSubForm::setIdAlmacen", 0);
 	m_idAlmacen = id;
-	_depura("END SubForm2Bf::setIdAlmacen", 0);
+	_depura("END BfSubForm::setIdAlmacen", 0);
 }
 
 
@@ -455,12 +455,12 @@ void SubForm2Bf::setIdAlmacen ( QString id )
 /**
 \param c
 **/
-void SubForm2Bf::setEmpresaBase ( EmpresaBase *c )
+void BfSubForm::setEmpresaBase ( EmpresaBase *c )
 {
-    _depura ( "SubForm2Bf::setcompany", 0 );
+    _depura ( "BfSubForm::setcompany", 0 );
     BlSubForm::setEmpresaBase ( c );
     m_delegate->setEmpresaBase ( c );
-    _depura ( "END SubForm2Bf::setcompany", 0 );
+    _depura ( "END BfSubForm::setcompany", 0 );
 }
 
 
@@ -468,12 +468,12 @@ void SubForm2Bf::setEmpresaBase ( EmpresaBase *c )
 /**
 \return
 **/
-int SubForm2Bf::cerrarEditor()
+int BfSubForm::cerrarEditor()
 {
-    _depura ( "SubForm2Bf::cerrarEditor", 0 );
+    _depura ( "BfSubForm::cerrarEditor", 0 );
     QWidget *editor = mui_list->QAbstractItemView::indexWidget ( mui_list->currentIndex() );
     m_delegate->cerrarEditor ( editor );
-    _depura ( "END SubForm2Bf::cerrarEditor", 0 );
+    _depura ( "END BfSubForm::cerrarEditor", 0 );
     return 0;
 }
 
@@ -482,7 +482,7 @@ int SubForm2Bf::cerrarEditor()
 /**
 \return El identificador de cliente
 **/
-QString SubForm2Bf::idcliente()
+QString BfSubForm::idcliente()
 {
     return mdb_idcliente;
 }
@@ -492,7 +492,7 @@ QString SubForm2Bf::idcliente()
 /**
 \return El identificador de proveedor
 **/
-QString SubForm2Bf::idproveedor()
+QString BfSubForm::idproveedor()
 {
     return mdb_idproveedor;
 }
@@ -501,10 +501,10 @@ QString SubForm2Bf::idproveedor()
 ///
 /**
 **/
-QString SubForm2Bf::idAlmacen ()
+QString BfSubForm::idAlmacen ()
 {
-	_depura("SubForm2Bf::idAlmacen", 0);
-	_depura("END SubForm2Bf::idAlmacen", 0);
+	_depura("BfSubForm::idAlmacen", 0);
+	_depura("END BfSubForm::idAlmacen", 0);
 	return m_idAlmacen;
 }
 
@@ -516,22 +516,22 @@ QString SubForm2Bf::idAlmacen ()
 /**
 \param parent
 **/
-QSubForm2BfDelegate::QSubForm2BfDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
+BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
 {
-    _depura ( "QSubForm2BfDelegate::QSubForm2BfDelegate", 0 );
-    m_subform = ( SubForm2Bf * ) parent;
+    _depura ( "BfSubFormDelegate::BfSubFormDelegate", 0 );
+    m_subform = ( BfSubForm * ) parent;
     installEventFilter ( this );
-    _depura ( "END QSubForm2BfDelegate::QSubForm2BfDelegate", 0 );
+    _depura ( "END BfSubFormDelegate::BfSubFormDelegate", 0 );
 }
 
 
 ///
 /**
 **/
-QSubForm2BfDelegate::~QSubForm2BfDelegate()
+BfSubFormDelegate::~BfSubFormDelegate()
 {
-    _depura ( "QSubForm2BfDelegate::~QSubForm2BfDelegate", 0 );
-    _depura ( "END QSubForm2BfDelegate::~QSubForm2BfDelegate", 0 );
+    _depura ( "BfSubFormDelegate::~BfSubFormDelegate", 0 );
+    _depura ( "END BfSubFormDelegate::~BfSubFormDelegate", 0 );
 }
 
 
@@ -541,16 +541,16 @@ QSubForm2BfDelegate::~QSubForm2BfDelegate()
 \param option
 \param index
 **/
-QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
+QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BfDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
+    _depura ( "BfSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
 
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QTextEditDelegate * editor = new QTextEditDelegate ( parent );
         editor->setObjectName ( "QTextEditDelegate" );
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "QTextEdit" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "QTextEdit" );
         return editor;
 
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
@@ -562,31 +562,31 @@ QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOption
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "QSPinBox" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
         return editor;
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         BusquedaArticuloDelegate * editor = new BusquedaArticuloDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaArticulo" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaArticulo" );
         return editor;
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         BusquedaTipoIVADelegate * editor = new BusquedaTipoIVADelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaTipoIVA" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTipoIVA" );
         return editor;
     } else if ( linea->nomcampo() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
         BusquedaTrabajadorDelegate * editor = new BusquedaTrabajadorDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
         BusquedaAlmacenDelegate * editor = new BusquedaAlmacenDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );
         return editor;
     } else  {
-        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "Default Editor" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "Default Editor" );
         return QItemDelegate::createEditor ( parent, option, index );
     } // end if
 }
@@ -599,13 +599,13 @@ QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 \param index
 \return
 **/
-void QSubForm2BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
+void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
+    _depura ( "BfSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
 
     /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-        _depura ( "END QSubForm2BfDelegate::setModelData", 0, "Fila o columna invalida" );
+        _depura ( "END BfSubFormDelegate::setModelData", 0, "Fila o columna invalida" );
         return;
     } // end if
 
@@ -655,7 +655,7 @@ void QSubForm2BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } else {
         QItemDelegate::setModelData ( editor, model, index );
     } // end if
-    _depura ( "END QSubForm2BfDelegate::setModelData", 0 );
+    _depura ( "END BfSubFormDelegate::setModelData", 0 );
 }
 
 
@@ -664,9 +664,9 @@ void QSubForm2BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 \param editor
 \param index
 **/
-void QSubForm2BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
+void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    _depura ( "QSubForm2BfDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
+    _depura ( "BfSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
@@ -703,7 +703,7 @@ void QSubForm2BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     } else {
         QItemDelegate::setEditorData ( editor, index );
     } // end if
-    _depura ( "END QSubForm2BfDelegate::setEditorData", 0 );
+    _depura ( "END BfSubFormDelegate::setEditorData", 0 );
 }
 
 
@@ -713,14 +713,14 @@ void QSubForm2BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
 \param event
 \return
 **/
-bool QSubForm2BfDelegate::eventFilter ( QObject *obj, QEvent *event )
+bool BfSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
 {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
-        _depura ( "QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        _depura ( "BfSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        _depura ( "QSubForm2BfDelegate::key = : ", 0, QString::number ( key ) );
+        _depura ( "BfSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// Anulamos el caso de una pulsacion de tabulador o de enter
         switch ( key ) {
@@ -737,10 +737,10 @@ bool QSubForm2BfDelegate::eventFilter ( QObject *obj, QEvent *event )
     } // end if
 
     if ( event->type() == QEvent::KeyRelease ) {
-        _depura ( "QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        _depura ( "BfSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        _depura ( "QSubForm2BfDelegate::key = : ", 0, QString::number ( key ) );
+        _depura ( "BfSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         switch ( key ) {
@@ -766,11 +766,11 @@ bool QSubForm2BfDelegate::eventFilter ( QObject *obj, QEvent *event )
 \param editor
 \return
 **/
-int QSubForm2BfDelegate::cerrarEditor ( QWidget *editor )
+int BfSubFormDelegate::cerrarEditor ( QWidget *editor )
 {
-    _depura ( "QSubForm2BfDelegate::cerrarEditor", 0 );
+    _depura ( "BfSubFormDelegate::cerrarEditor", 0 );
     emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
-    _depura ( "END QSubForm2BfDelegate::cerrarEditor", 0 );
+    _depura ( "END BfSubFormDelegate::cerrarEditor", 0 );
     return 0;
 }
 
@@ -778,7 +778,7 @@ int QSubForm2BfDelegate::cerrarEditor ( QWidget *editor )
 ///
 /**
 **/
-QString SubForm2Bf::idArticulo()
+QString BfSubForm::idArticulo()
 {
 	return m_idArticulo;
 }
@@ -787,7 +787,7 @@ QString SubForm2Bf::idArticulo()
 ///
 /**
 **/
-QString SubForm2Bf::idTarifa()
+QString BfSubForm::idTarifa()
 {
 	return m_idTarifa;
 }
@@ -796,9 +796,9 @@ QString SubForm2Bf::idTarifa()
 ///
 /**
 **/
-void SubForm2Bf::calculaPVP(BlDbSubFormRecord *rec) {
+void BfSubForm::calculaPVP(BlDbSubFormRecord *rec) {
 
-	_depura("SubForm2Bf::calculaPVP" , 0);
+	_depura("BfSubForm::calculaPVP" , 0);
 
 	BlDbRecordSet *cur = NULL;
 	BlDbRecordSet *cur3 = NULL;
@@ -820,9 +820,9 @@ void SubForm2Bf::calculaPVP(BlDbSubFormRecord *rec) {
 				rec->setDBvalue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
 
 				/// Disparamos los plugins.
-				int res = g_plugins->lanza ( "SubForm2Bf_calculaPVP", this );
+				int res = g_plugins->lanza ( "BfSubForm_calculaPVP", this );
 				if ( res != 0 ) {
-					_depura ( "END SubForm2Bf::calculapvp", 0, "Salida por plugins" );
+					_depura ( "END BfSubForm::calculapvp", 0, "Salida por plugins" );
 					return;
 				} // end if
 
@@ -839,7 +839,7 @@ void SubForm2Bf::calculaPVP(BlDbSubFormRecord *rec) {
 
 	delete cur;
 	delete cur3;
-	_depura("END SubForm2Bf::calculaPVP",0);
+	_depura("END BfSubForm::calculaPVP",0);
 }
 
 

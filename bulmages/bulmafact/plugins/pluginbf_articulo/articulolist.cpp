@@ -359,7 +359,7 @@ QString ArticuloList::codigocompletoarticulo()
 \param parent
 **/
 ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "ArticuloListSubForm::ArticuloListSubForm", 0 );
     setDBTableName ( "articulo" );

@@ -276,7 +276,7 @@ void RutaComercialList::setidcliente ( QString val )
 /**
 \param parent
 **/
-RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "RutaComercialListSubForm::RutaComercialListSubForm", 0 );
     setDBTableName ( "rutacomercial" );

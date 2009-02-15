@@ -22,13 +22,13 @@
 #ifndef LISTDESCFACTURAPROVVIEW_H
 #define LISTDESCFACTURAPROVVIEW_H
 
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "company.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por factura de proveedor.
 /** */
-class ListDescuentoFacturaProvView : public SubForm2Bf
+class ListDescuentoFacturaProvView : public BfSubForm
 {
     Q_OBJECT
 

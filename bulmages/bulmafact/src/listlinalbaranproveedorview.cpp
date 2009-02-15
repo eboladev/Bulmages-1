@@ -33,7 +33,7 @@
 \param parent
 \return
 **/
-ListLinAlbaranProveedorView::ListLinAlbaranProveedorView ( QWidget *parent ) : SubForm2Bf ( parent )
+ListLinAlbaranProveedorView::ListLinAlbaranProveedorView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0 );
     setDBTableName ( "lalbaranp" );

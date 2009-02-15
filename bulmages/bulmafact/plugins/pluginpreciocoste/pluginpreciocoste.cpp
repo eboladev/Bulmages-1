@@ -101,9 +101,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 }
 
 
-int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
+int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
-    _depura ( "SubForm2Bf_on_mui_list_editFinished", 0 );
+    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
     int err;
     BlDbRecordSet *cur = NULL;
     BlDbRecordSet *cur1 = NULL;

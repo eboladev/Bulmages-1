@@ -233,7 +233,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="SubForm2Bc" name="mui_tablasoportado" />
+        <widget class="BcSubForm" name="mui_tablasoportado" />
        </item>
       </layout>
      </widget>
@@ -249,7 +249,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="SubForm2Bc" name="mui_tablarepercutido" />
+        <widget class="BcSubForm" name="mui_tablarepercutido" />
        </item>
       </layout>
      </widget>
@@ -277,7 +277,7 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="SubForm2Bc" name="mui_totalSoportado" />
+           <widget class="BcSubForm" name="mui_totalSoportado" />
           </item>
           <item>
            <layout class="QHBoxLayout" >
@@ -363,7 +363,7 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="SubForm2Bc" name="mui_totalRepercutido" />
+           <widget class="BcSubForm" name="mui_totalRepercutido" />
           </item>
           <item>
            <layout class="QHBoxLayout" >
@@ -462,9 +462,9 @@
    <header>../../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
-   <class>SubForm2Bc</class>
+   <class>BcSubForm</class>
    <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
+   <header>bcsubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

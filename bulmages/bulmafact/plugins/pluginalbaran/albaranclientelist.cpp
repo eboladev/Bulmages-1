@@ -369,7 +369,7 @@ QString AlbaranClienteList::generarFiltro()
 \param parent
 \return
 **/
-AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
 

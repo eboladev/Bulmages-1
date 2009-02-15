@@ -4,7 +4,7 @@
 
 #include <QObject>
 #include "bulmafact.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 
 
 class plugin_tc_articulos : public QObject
@@ -26,9 +26,9 @@ public slots:
 };
 
 
-/// Clase SubForm2BfDelegate
+/// Clase BfSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class QSubForm3BfDelegate : public QSubForm2BfDelegate
+class QSubForm3BfDelegate : public BfSubFormDelegate
 {
 public:
     QSubForm3BfDelegate ( QObject * );

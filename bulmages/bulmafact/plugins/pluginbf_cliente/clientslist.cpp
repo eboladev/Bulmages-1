@@ -267,7 +267,7 @@ void ClientsList::submenu ( const QPoint & )
 /** PRepara el subformulario para trabajar con la tabla cliente.
     Establece que no se puedan insertar ni borrar lineas.
 */
-ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "ClienteListSubform::ClienteListSubform", 0 );
     setDBTableName ( "cliente" );

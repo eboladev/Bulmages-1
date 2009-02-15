@@ -250,7 +250,7 @@ QString ProfesoresList::idprofesor()
 /** Prepara el subformulario para trabajar con la tabla cobro.
     Establece que no se puedan insertar elementos ya que es un listado.
 */
-ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ProfesoresListSubForm::ProfesoresListSubForm", 0 );
     /// Disparamos los plugins.

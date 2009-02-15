@@ -36,10 +36,10 @@
 class RegistroIva : public FichaBc
 {
 protected:
-    SubForm2Bc *m_lineas;
+    BcSubForm *m_lineas;
 
 public:
-    void setLineas ( SubForm2Bc *l ) {
+    void setLineas ( BcSubForm *l ) {
         m_lineas = l;
     };
     RegistroIva ( Empresa *, QWidget * );

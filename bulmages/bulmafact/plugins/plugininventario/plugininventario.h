@@ -34,7 +34,7 @@ extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
-extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * );
+extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
 
 class myplugininv : public QObject, PEmpresaBase

@@ -37,7 +37,7 @@ ExtractoSubForm::~ExtractoSubForm()
 /**
 \param parent
 **/
-ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( parent )
+ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "ExtractoSubForm::ExtractoSubForm", 0 );
     setDBTableName ( "apunte" );

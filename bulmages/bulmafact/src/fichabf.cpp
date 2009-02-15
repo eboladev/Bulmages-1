@@ -857,7 +857,7 @@ void FichaBf::imprimir()
 /**
 \param form
 **/
-void FichaBf::setListaLineas ( SubForm2Bf *form )
+void FichaBf::setListaLineas ( BfSubForm *form )
 {
     _depura ( "FichaBf::setListaLineas", 0 );
     m_listalineas = form;
@@ -868,7 +868,7 @@ void FichaBf::setListaLineas ( SubForm2Bf *form )
 /**
 \param form
 **/
-void FichaBf::setListaDescuentos ( SubForm2Bf *form )
+void FichaBf::setListaDescuentos ( BfSubForm *form )
 {
     _depura ( "FichaBf::setListaDescuentos", 0 );
     m_listadescuentos = form;
@@ -880,7 +880,7 @@ void FichaBf::setListaDescuentos ( SubForm2Bf *form )
 /**
 \return
 **/
-SubForm2Bf* FichaBf::getlistalineas()
+BfSubForm* FichaBf::getlistalineas()
 {
     _depura ( "FichaBf::getlistalineas", 0 );
     _depura ( "END FichaBf::getlistalineas", 0 );
@@ -892,7 +892,7 @@ SubForm2Bf* FichaBf::getlistalineas()
 /**
 \return
 **/
-SubForm2Bf* FichaBf::getlistadescuentos()
+BfSubForm* FichaBf::getlistadescuentos()
 {
     _depura ( "FichaBf::getlistadescuentos", 0 );
     _depura ( "END FichaBf::getlistadescuentos", 0 );

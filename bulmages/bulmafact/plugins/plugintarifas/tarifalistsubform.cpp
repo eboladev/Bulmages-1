@@ -28,7 +28,7 @@
 \param parent
 **/
 TarifaListSubform::TarifaListSubform ( QWidget *parent )
-        : SubForm2Bf ( parent )
+        : BfSubForm ( parent )
 {
     _depura ( "TarifaListSubform::TarifaListSubform", 0 );
     setDBTableName ( "tarifa" );

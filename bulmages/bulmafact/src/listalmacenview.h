@@ -30,7 +30,7 @@
 
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
-#include "subform2bf.h"
+#include "bfsubform.h"
 #include "fichabf.h"
 
 
@@ -39,7 +39,7 @@ class company;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListAlmacenSubForm : public SubForm2Bf
+class ListAlmacenSubForm : public BfSubForm
 {
     Q_OBJECT
 

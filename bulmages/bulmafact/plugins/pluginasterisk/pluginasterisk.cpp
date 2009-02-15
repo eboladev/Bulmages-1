@@ -91,7 +91,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 
 
     /// Agregamos el subformulario de validaciones.
-    SubForm2Bf *l = new SubForm2Bf ( trab );
+    BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionestrab" ) );
     l->setEmpresaBase ( trab->empresaBase() );
     l->setDBTableName ( "valasterisk" );
@@ -154,7 +154,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 
 
     /// Anyadimos el subformulario de validaciones
-    SubForm2Bf *l = new SubForm2Bf ( alm );
+    BfSubForm *l = new BfSubForm ( alm );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionesalm" ) );
     l->setEmpresaBase ( alm->empresaBase() );
     l->setDBTableName ( "valasterisk" );
@@ -201,7 +201,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     trab->empresaBase() ->begin();
     trab->empresaBase() ->ejecuta ( query );
 
-    SubForm2Bf *l1 = trab->findChild<SubForm2Bf *> ( "m_validacionestrab" );
+    BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
     l1->setColumnValue ( "idtrabajador", trab->idtrabajador() );
     l1->guardar();
     trab->empresaBase() ->commit();
@@ -227,7 +227,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
     delete cur;
 
     /// Cargamos las validaciones de asterisk.
-    SubForm2Bf *l1 = trab->findChild<SubForm2Bf *> ( "m_validacionestrab" );
+    BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
     l1->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->idtrabajador() + " ORDER BY fechavalasterisk, horavalasterisk" );
 
     return 0;
