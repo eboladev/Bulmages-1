@@ -35,7 +35,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			numerocuenta.cpp
 			blfunctions.cpp
 			logpass.cpp
-			abreempresaview.cpp
+			blcompanydialog.cpp
 			dialogchanges.cpp
 			blfixed.cpp
 			msgerror.cpp
@@ -71,7 +71,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bli18n.cpp)
 
 set(bulmalib_MOCS	logpass.h
-			abreempresaview.h
+			blcompanydialog.h
 			msgerror.h
 			busquedafecha.h
 			qtable2.h
@@ -97,7 +97,7 @@ set(bulmalib_MOCS	logpass.h
 			blmonthcalendar.h
 			busqueda.h)
 
-set (bulmalib_HDRS	abreempresaview.h
+set (bulmalib_HDRS	blcompanydialog.h
 			busquedafecha.h
 			busquedaperiodo.h
 			blconfiguration.h
@@ -139,7 +139,7 @@ set (bulmalib_HDRS	abreempresaview.h
 
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS	logpassbase.ui 
-			abreempresabase.ui 
+			blcompanydialogbase.ui 
 			msgerrorbase.ui 
 			busquedafechabase.ui 
 			blsubformbase.ui 

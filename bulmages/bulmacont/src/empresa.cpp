@@ -23,7 +23,7 @@
 #include <QInputDialog>
 
 #include "empresa.h"
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 #include "listcuentasview1.h"
 #include "asiento1view.h"
 #include "asientosview.h"

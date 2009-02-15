@@ -36,7 +36,7 @@
 #include <QTextStream>
 #include <QTextCodec>
 
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 
@@ -60,11 +60,11 @@
 /**
 \param pNomDB
 **/
-void abreempresaview::setNomDB ( QString pNomDB )
+void BlCompanyDialog::setNomDB ( QString pNomDB )
 {
-    _depura ( "abreempresaview::setNomDB", 0 );
+    _depura ( "BlCompanyDialog::setNomDB", 0 );
     m_empresabd = pNomDB;
-    _depura ( "END abreempresaview::setNomDB", 0 );
+    _depura ( "END BlCompanyDialog::setNomDB", 0 );
 }
 
 
@@ -72,11 +72,11 @@ void abreempresaview::setNomDB ( QString pNomDB )
 /**
 \param pNomEmpresa
 **/
-void abreempresaview::setNomEmpresa ( QString pNomEmpresa )
+void BlCompanyDialog::setNomEmpresa ( QString pNomEmpresa )
 {
-    _depura ( "abreempresaview::setNomEmpresa", 0 );
+    _depura ( "BlCompanyDialog::setNomEmpresa", 0 );
     m_nombreempresa = pNomEmpresa;
-    _depura ( "END abreempresaview::setNomEmpresa", 0 );
+    _depura ( "END BlCompanyDialog::setNomEmpresa", 0 );
 }
 
 
@@ -84,11 +84,11 @@ void abreempresaview::setNomEmpresa ( QString pNomEmpresa )
 /**
 \param pTipoEmpresa
 **/
-void abreempresaview::setTipoEmpresa ( QString pTipoEmpresa )
+void BlCompanyDialog::setTipoEmpresa ( QString pTipoEmpresa )
 {
-    _depura ( "abreempresaview::setTipoEmpresa", 0 );
+    _depura ( "BlCompanyDialog::setTipoEmpresa", 0 );
     m_tipoempresa = pTipoEmpresa;
-    _depura ( "END abreempresaview::setTipoEmpresa", 0 );
+    _depura ( "END BlCompanyDialog::setTipoEmpresa", 0 );
 
 }
 
@@ -97,10 +97,10 @@ void abreempresaview::setTipoEmpresa ( QString pTipoEmpresa )
 /**
 \return
 **/
-bool abreempresaview::modoDestructivo()
+bool BlCompanyDialog::modoDestructivo()
 {
-    _depura ( "abreempresaview::modoDestructivo", 0 );
-    _depura ( "END abreempresaview::modoDestructivo", 0 );
+    _depura ( "BlCompanyDialog::modoDestructivo", 0 );
+    _depura ( "END BlCompanyDialog::modoDestructivo", 0 );
     return m_modo;
 }
 
@@ -109,11 +109,11 @@ bool abreempresaview::modoDestructivo()
 /**
 \param pModo
 **/
-void abreempresaview::setModoDestructivo ( bool pModo )
+void BlCompanyDialog::setModoDestructivo ( bool pModo )
 {
-    _depura ( "abreempresaview::setModoDestructivo", 0 );
+    _depura ( "BlCompanyDialog::setModoDestructivo", 0 );
     m_modo = pModo;
-    _depura ( "END abreempresaview::setModoDestructivo", 0 );
+    _depura ( "END BlCompanyDialog::setModoDestructivo", 0 );
 }
 
 
@@ -121,10 +121,10 @@ void abreempresaview::setModoDestructivo ( bool pModo )
 /**
 \return
 **/
-QString abreempresaview::nomDB()
+QString BlCompanyDialog::nomDB()
 {
-    _depura ( "abreempresaview::nomDB", 0 );
-    _depura ( "END abreempresaview::nomDB", 0 );
+    _depura ( "BlCompanyDialog::nomDB", 0 );
+    _depura ( "END BlCompanyDialog::nomDB", 0 );
     return m_empresabd;
 }
 
@@ -133,10 +133,10 @@ QString abreempresaview::nomDB()
 /**
 \return
 **/
-QString abreempresaview::nomEmpresa()
+QString BlCompanyDialog::nomEmpresa()
 {
-    _depura ( "abreempresaview::nomEmpresa", 0 );
-    _depura ( "END abreempresaview::nomEmpresa", 0 );
+    _depura ( "BlCompanyDialog::nomEmpresa", 0 );
+    _depura ( "END BlCompanyDialog::nomEmpresa", 0 );
     return m_nombreempresa;
 }
 
@@ -145,10 +145,10 @@ QString abreempresaview::nomEmpresa()
 /**
 \return
 **/
-QString abreempresaview::tipoEmpresa()
+QString BlCompanyDialog::tipoEmpresa()
 {
-    _depura ( "abreempresaview::tipoEmpresa", 0 );
-    _depura ( "END abreempresaview::tipoEmpresa", 0 );
+    _depura ( "BlCompanyDialog::tipoEmpresa", 0 );
+    _depura ( "END BlCompanyDialog::tipoEmpresa", 0 );
     return m_tipoempresa;
 }
 
@@ -156,15 +156,15 @@ QString abreempresaview::tipoEmpresa()
 ///
 /**
 **/
-void abreempresaview::s_botonCancelar()
+void BlCompanyDialog::s_botonCancelar()
 {
-    _depura ( "abreempresaview::s_botonCancelar", 0 );
+    _depura ( "BlCompanyDialog::s_botonCancelar", 0 );
     if ( !modoDestructivo() )
         exit ( 1 );
     else
         done ( 1 );
     // end if
-    _depura ( "END abreempresaview::s_botonCancelar", 0 );
+    _depura ( "END BlCompanyDialog::s_botonCancelar", 0 );
 }
 
 
@@ -172,11 +172,11 @@ void abreempresaview::s_botonCancelar()
 /**
 \return
 **/
-bool abreempresaview::close ( bool )
+bool BlCompanyDialog::close ( bool )
 {
-    _depura ( "abreempresaview::close", 0 );
+    _depura ( "BlCompanyDialog::close", 0 );
     s_botonCancelar();
-    _depura ( "END abreempresaview::close", 0 );
+    _depura ( "END BlCompanyDialog::close", 0 );
     return TRUE;
 }
 
@@ -188,10 +188,10 @@ bool abreempresaview::close ( bool )
 /// @param tipo Cadena de texto que indica si es contabilidad o facturaci&oacute;n.
 /// @param name Nombre de la ventana.
 /// @param modal Indica si la ventana debe comportar de forma 'modal' o no. (por defecto s&iacute;).
-abreempresaview::abreempresaview ( QWidget *parent, QString tipo, const char *name, bool modal )
+BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *name, bool modal )
         : QDialog ( parent )
 {
-    _depura ( "abreempresaview::abreempresaview", 0 );
+    _depura ( "BlCompanyDialog::BlCompanyDialog", 0 );
     setModal ( modal );
     this->setWindowTitle ( name );
     setupUi ( this );
@@ -212,17 +212,17 @@ abreempresaview::abreempresaview ( QWidget *parent, QString tipo, const char *na
         botonCancelar->setText ( _( "&Cierra el programa" ) );
     // end if
     cargaArchivo();
-    _depura ( "END abreempresaview::abreempresaview", 0 );
+    _depura ( "END BlCompanyDialog::BlCompanyDialog", 0 );
 }
 
 
 ///
 /**
 **/
-abreempresaview::~abreempresaview()
+BlCompanyDialog::~BlCompanyDialog()
 {
-    _depura ( "abreempresaview::~abreempresaview", 0 );
-    _depura ( "END abreempresaview::~abreempresaview", 0 );
+    _depura ( "BlCompanyDialog::~BlCompanyDialog", 0 );
+    _depura ( "END BlCompanyDialog::~BlCompanyDialog", 0 );
 
 }
 
@@ -234,10 +234,10 @@ abreempresaview::~abreempresaview()
 /// @param ano Ejercicio de la empresa (aunque pueden ser varios).
 /// @param archivo Nombre de la base de datos.
 /// @param tipo Tipo de base de datos (BulmaCont o BulmaFact).
-void abreempresaview::insertCompany ( QString nombre, QString ano, QString archivo,
+void BlCompanyDialog::insertCompany ( QString nombre, QString ano, QString archivo,
                                       QString tipo )
 {
-    _depura ( "abreempresaview::insertCompany", 0, nombre );
+    _depura ( "BlCompanyDialog::insertCompany", 0, nombre );
     mui_empresas->insertRow ( mui_empresas->rowCount() );
     QTableWidgetItem *nuevoItemNombre = new QTableWidgetItem ( nombre );
     mui_empresas->setItem ( mui_empresas->rowCount() - 1, 0, nuevoItemNombre );
@@ -247,7 +247,7 @@ void abreempresaview::insertCompany ( QString nombre, QString ano, QString archi
     mui_empresas->setItem ( mui_empresas->rowCount() - 1, 2, nuevoItemArchivo );
     QTableWidgetItem *nuevoItemTipo = new QTableWidgetItem ( tipo );
     mui_empresas->setItem ( mui_empresas->rowCount() - 1, 3, nuevoItemTipo );
-    _depura ( "END abreempresaview::insertCompany", 0 );
+    _depura ( "END BlCompanyDialog::insertCompany", 0 );
 }
 
 
@@ -255,9 +255,9 @@ void abreempresaview::insertCompany ( QString nombre, QString ano, QString archi
 /// cerramos esta ventana ya que ha cumplido con su cometido.
 /**
 **/
-void abreempresaview::accept()
+void BlCompanyDialog::accept()
 {
-    _depura ( "abreempresaview::accept", 0 );
+    _depura ( "BlCompanyDialog::accept", 0 );
     /// Columna 0: Nombre
     /// Columna 1: anyo.
     /// Columna 2: Archivo.
@@ -279,18 +279,18 @@ void abreempresaview::accept()
         done ( 0 );
     } else
         mensajeInfo ( _( "Para entrar, antes tiene que seleccionar una empresa." ) );
-    _depura ( "END abreempresaview::accept", 0 );
+    _depura ( "END BlCompanyDialog::accept", 0 );
 }
 
 
 /// Evento que se dispara al hacer doble click sobre el listado de mui_empresas.
 /**
 **/
-void abreempresaview::mui_empresasdobleclick()
+void BlCompanyDialog::mui_empresasdobleclick()
 {
-    _depura ( "abreempresaview::mui_empresasdobleclick", 0 );
+    _depura ( "BlCompanyDialog::mui_empresasdobleclick", 0 );
     accept();
-    _depura ( "END abreempresaview::mui_empresasdobleclick", 0 );
+    _depura ( "END BlCompanyDialog::mui_empresasdobleclick", 0 );
 }
 
 
@@ -298,9 +298,9 @@ void abreempresaview::mui_empresasdobleclick()
 /**
 \return
 **/
-void abreempresaview::cargaArchivo()
+void BlCompanyDialog::cargaArchivo()
 {
-    _depura ( "abreempresaview::cargaArchivo", 0 );
+    _depura ( "BlCompanyDialog::cargaArchivo", 0 );
     QString dir1 = confpr->valor ( CONF_DIR_USER ) + LISTEMPRESAS;
 
     /// Si el archivo no existe hacemos una recarga.
@@ -338,7 +338,7 @@ void abreempresaview::cargaArchivo()
         } // end if
     } // end while
     file.close();
-    _depura ( "END abreempresaview::cargaArchivo", 0 );
+    _depura ( "END BlCompanyDialog::cargaArchivo", 0 );
 }
 
 
@@ -347,9 +347,9 @@ void abreempresaview::cargaArchivo()
 /**
 \return
 **/
-void abreempresaview::guardaArchivo()
+void BlCompanyDialog::guardaArchivo()
 {
-    _depura ( "abreempresaview::guardaArchivo", 0 );
+    _depura ( "BlCompanyDialog::guardaArchivo", 0 );
 #ifndef WINDOWS
     QString dir1 = getenv ( "HOME" );
     dir1 = dir1 + "/.bulmages/" + LISTEMPRESAS;
@@ -388,7 +388,7 @@ void abreempresaview::guardaArchivo()
     delete db;
     confpr->setValor ( CONF_ALERTAS_DB, alertas );
     file.close();
-    _depura ( "END abreempresaview::guardaArchivo", 0 );
+    _depura ( "END BlCompanyDialog::guardaArchivo", 0 );
 }
 
 
@@ -398,9 +398,9 @@ void abreempresaview::guardaArchivo()
 \param file
 \return
 **/
-void abreempresaview::trataEmpresa ( QString empresa, QFile *file )
+void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
 {
-    _depura ( "abreempresaview::trataEmpresa", 0, empresa );
+    _depura ( "BlCompanyDialog::trataEmpresa", 0, empresa );
     QTextStream filestr ( file );
     BlPostgreSqlClient *db1;
     QString nombre;
@@ -460,7 +460,7 @@ void abreempresaview::trataEmpresa ( QString empresa, QFile *file )
 
         delete db1;
     } // end if
-    _depura ( "END abreempresaview::trataEmpresa", 0, empresa );
+    _depura ( "END BlCompanyDialog::trataEmpresa", 0, empresa );
 }
 
 
@@ -469,20 +469,20 @@ void abreempresaview::trataEmpresa ( QString empresa, QFile *file )
 /// archivo 'LISTEMPRESAS'.
 /**
 **/
-void abreempresaview::on_mui_actualizar_clicked()
+void BlCompanyDialog::on_mui_actualizar_clicked()
 {
-    _depura ( "abreempresaview::on_mui_actualizar_clicked", 0 );
+    _depura ( "BlCompanyDialog::on_mui_actualizar_clicked", 0 );
     guardaArchivo();
-    _depura ( "END abreempresaview::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BlCompanyDialog::on_mui_actualizar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void abreempresaview::preparamui_empresas()
+void BlCompanyDialog::preparamui_empresas()
 {
-    _depura ( "abreempresaview::preparamui_empresas", 0 );
+    _depura ( "BlCompanyDialog::preparamui_empresas", 0 );
     mui_empresas->clear();
     mui_empresas->setRowCount ( 0 );
     mui_empresas->setColumnCount ( 4 );
@@ -497,7 +497,7 @@ void abreempresaview::preparamui_empresas()
     if ( m_tipo == "BulmaFact" )
         mui_empresas->hideColumn ( ABRE_ANO );
     // end if
-    _depura ( "END abreempresaview::preparamui_empresas", 0 );
+    _depura ( "END BlCompanyDialog::preparamui_empresas", 0 );
 }
 
 
@@ -507,9 +507,9 @@ void abreempresaview::preparamui_empresas()
 \param ev
 \return
 **/
-bool abreempresaview::eventFilter ( QObject *obj, QEvent *ev )
+bool BlCompanyDialog::eventFilter ( QObject *obj, QEvent *ev )
 {
-    _depura ( "abreempresaview::eventFilter", 0 );
+    _depura ( "BlCompanyDialog::eventFilter", 0 );
     if ( obj == mui_empresas ) {
         if ( ev->type() == QEvent::KeyPress ) {
             QKeyEvent * keyEvent = static_cast<QKeyEvent*> ( ev );
@@ -522,14 +522,14 @@ bool abreempresaview::eventFilter ( QObject *obj, QEvent *ev )
                 // end if
                 break;
             } // end switch
-            _depura ( "END abreempresaview::eventFilter", 0, "Pulsacion de Tecla" );
+            _depura ( "END BlCompanyDialog::eventFilter", 0, "Pulsacion de Tecla" );
             return false;
         } else {
-            _depura ( "END abreempresaview::eventFilter", 0, "Evento sin interes" );
+            _depura ( "END BlCompanyDialog::eventFilter", 0, "Evento sin interes" );
             return false;
         } // end if
     } // end if
-    _depura ( "END abreempresaview::eventFilter", 0, "Objeto no deseado" );
+    _depura ( "END BlCompanyDialog::eventFilter", 0, "Objeto no deseado" );
     return QDialog::eventFilter ( obj, ev );
     // end if
 }

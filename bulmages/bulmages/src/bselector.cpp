@@ -119,7 +119,7 @@ void BSelector::m_bulmatpv_clicked()
 {
     _depura ( "BSelector::m_bulmatpv_clicked", 0 );
     if ( m_tipoempresa != "BulmaFact" ) {
-        abreempresaview * empcont = new abreempresaview ( 0, "BulmaFact", "abreempresa", true );
+        BlCompanyDialog * empcont = new BlCompanyDialog ( 0, "BulmaFact", "abreempresa", true );
         empcont->setModoDestructivo ( FALSE );
         empcont->exec();
         m_empresabd = empcont->nomDB();
@@ -139,7 +139,7 @@ void BSelector::m_bulmatpv_clicked()
 void BSelector::seleccionaempresa_clicked()
 {
     _depura ( "BSelector::seleccionaempresa_clicked", 0 );
-    abreempresaview *empcont = new abreempresaview ( 0, "", "abreempresa", true );
+    BlCompanyDialog *empcont = new BlCompanyDialog ( 0, "", "abreempresa", true );
     empcont->setModoDestructivo ( FALSE );
     empcont->exec();
     m_empresabd = empcont->nomDB();
@@ -158,7 +158,7 @@ void BSelector::contabilidad_clicked()
 {
     _depura ( "BSelector::contabilidad_clicked", 0 );
     if ( m_tipoempresa != "BulmaCont" ) {
-        abreempresaview * empcont = new abreempresaview ( 0, "BulmaCont", "abreempresa", true );
+        BlCompanyDialog * empcont = new BlCompanyDialog ( 0, "BulmaCont", "abreempresa", true );
         empcont->setModoDestructivo ( FALSE );
         empcont->exec();
         m_empresabd = empcont->nomDB();
@@ -213,7 +213,7 @@ void BSelector::m_bulmafact_clicked()
 {
     _depura ( "BSelector::m_bulmafact_clicked", 0 );
     if ( m_tipoempresa != "BulmaFact" ) {
-        abreempresaview * empcont = new abreempresaview ( 0, "BulmaFact", "abreempresa", true );
+        BlCompanyDialog * empcont = new BlCompanyDialog ( 0, "BulmaFact", "abreempresa", true );
         empcont->setModoDestructivo ( FALSE );
         empcont->exec();
         m_empresabd = empcont->nomDB();

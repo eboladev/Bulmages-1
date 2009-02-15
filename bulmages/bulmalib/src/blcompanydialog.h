@@ -19,15 +19,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ABREEMPRESAVIEW_H
-#define ABREEMPRESAVIEW_H
+#ifndef BLCOMPANYDIALOG_H
+#define BLCOMPANYDIALOG_H
 
 #include <QString>
 #include <QDialog>
 #include <QFile>
 
 #include "blfunctions.h"
-#include "ui_abreempresabase.h"
+#include "ui_blcompanydialogbase.h"
+
 
 /// Abre el di&aacute;logo de seleccionar una empresa.
 /** Esta clase muestra el di&aacute;logo de seleccionar una empresa y espera a que se haga doble
@@ -36,7 +37,7 @@
     La ventana siempre se abre en modo 'modal' y detiene la ejecuci&oacute;n del programa.
     Se puede especificar, si es preciso, un tipo de mui_empresas a mostrar
     (bulmacont o bulmafact) para facilitar la selecci&oacute;n de elementos. */
-class abreempresaview : public QDialog, public Ui_abreempresabase
+class BlCompanyDialog : public QDialog, public Ui_BlCompanyDialogBase
 {
     Q_OBJECT
 
@@ -45,8 +46,8 @@ public:
     void setModoDestructivo ( bool );
     /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la
     /// presentaci&oacute;n.
-    abreempresaview ( QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true );
-    ~abreempresaview();
+    BlCompanyDialog ( QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true );
+    ~BlCompanyDialog();
     /// Devuelve el nombre de la base de datos seleccionada.
     QString nomDB();
     /// Devuelve el nombre de la empresa seleccionada.

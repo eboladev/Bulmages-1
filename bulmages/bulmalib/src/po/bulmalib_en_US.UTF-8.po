@@ -22,7 +22,7 @@ msgstr "Reserved option to experts!"
 msgid "&Borrar"
 msgstr "Erase"
 
-#: ui_abreempresabase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
+#: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancel"
 
@@ -34,7 +34,7 @@ msgstr "&Close"
 msgid "&Cerrar el programa"
 msgstr "&Close the program"
 
-#: abreempresaview.cpp:213
+#: blcompanydialog.cpp:213
 msgid "&Cierra el programa"
 msgstr "&Closes the program"
 
@@ -46,7 +46,7 @@ msgstr "&Continue"
 msgid "&Detalles"
 msgstr "&Details"
 
-#: ui_abreempresabase.h:204
+#: ui_blcompanydialogbase.h:204
 msgid "&Entra"
 msgstr "&Enters"
 
@@ -112,11 +112,11 @@ msgstr "<LI>Finished</LI>\n"
 msgid "<LI>Ya hay una cuenta con el codigo "
 msgstr "<LI>Already there is an account with the code "
 
-#: ui_abreempresabase.h:193
+#: ui_blcompanydialogbase.h:193
 msgid "Actualizar Listado"
 msgstr "Update Listing"
 
-#: ui_abreempresabase.h:198
+#: ui_blcompanydialogbase.h:198
 msgid "Actualizar Listado de Empresas"
 msgstr "Update Listing of Companies"
 
@@ -145,7 +145,7 @@ msgstr "<LI> Warehouse <B>"
 msgid "Anual"
 msgstr "Annual"
 
-#: abreempresaview.cpp:491
+#: blcompanydialog.cpp:491
 msgid "Anyo"
 msgstr "Anyo"
 
@@ -157,7 +157,7 @@ msgstr "Apply"
 msgid "Application name"
 msgstr "Application name"
 
-#: abreempresaview.cpp:491
+#: blcompanydialog.cpp:491
 msgid "Archivo"
 msgstr "File"
 
@@ -256,7 +256,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+F"
 msgstr "Ctrl+N"
 
-#: ui_abreempresabase.h:202 ui_paisbase.h:286
+#: ui_blcompanydialogbase.h:202 ui_paisbase.h:286
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
@@ -353,7 +353,7 @@ msgstr ""
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "<LI> The supplier already exists can be made modifications</LI>\n"
 
-#: ui_abreempresabase.h:203
+#: ui_blcompanydialogbase.h:203
 msgid "Empresas disponibles:"
 msgstr "Companies available:"
 
@@ -523,7 +523,7 @@ msgstr "It has not been possible to erase"
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "The window due to an error could not be closed"
 
-#: abreempresaview.cpp:491 blsubform.cpp:94
+#: blcompanydialog.cpp:491 blsubform.cpp:94
 msgid "Nombre"
 msgstr "Name"
 
@@ -586,7 +586,7 @@ msgstr ""
 msgid "Paises"
 msgstr ""
 
-#: abreempresaview.cpp:282
+#: blcompanydialog.cpp:282
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "In order to enter, before it must select a company."
 
@@ -636,7 +636,7 @@ msgstr "Select date"
 msgid "Seleccione un pais para guardar"
 msgstr "Select a company"
 
-#: ui_abreempresabase.h:184 ui_abreempresabase.h:187
+#: ui_blcompanydialogbase.h:184 ui_blcompanydialogbase.h:187
 msgid "Seleccione una empresa"
 msgstr "Select a company"
 
@@ -656,7 +656,7 @@ msgstr ""
 msgid "Tiene que seleccionar un elemento"
 msgstr "Must select an element"
 
-#: abreempresaview.cpp:491
+#: blcompanydialog.cpp:491
 msgid "Tipo"
 msgstr "Type"
 

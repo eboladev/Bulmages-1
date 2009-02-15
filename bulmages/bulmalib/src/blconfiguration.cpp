@@ -36,7 +36,7 @@
 
 #include "config.h"
 #include "blconfiguration.h"
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 
 
 /// El objeto global confpr es la instancia de la clase configuracion. Este objeto

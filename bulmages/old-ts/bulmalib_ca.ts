@@ -626,7 +626,7 @@
     </message>
 </context>
 <context>
-    <name>abreempresabase</name>
+    <name>BlCompanyDialogBase</name>
     <message>
         <location filename="" line="0"/>
         <source>Seleccione una empresa</source>
@@ -664,7 +664,7 @@
     </message>
 </context>
 <context>
-    <name>abreempresaview</name>
+    <name>BlCompanyDialog</name>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cierra el programa</source>

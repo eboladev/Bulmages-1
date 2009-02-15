@@ -539,72 +539,72 @@ Consulta SQL</translation>
     </message>
 </context>
 <context>
-    <name>abreempresabase</name>
+    <name>BlCompanyDialogBase</name>
     <message>
-        <location filename="abreempresabase.ui" line="39"/>
+        <location filename="blcompanydialogbase.ui" line="39"/>
         <source>Seleccione una empresa</source>
         <translation>Select a company</translation>
     </message>
     <message>
-        <location filename="abreempresabase.ui" line="197"/>
+        <location filename="blcompanydialogbase.ui" line="197"/>
         <source>Empresas disponibles:</source>
         <translation>Companies available:</translation>
     </message>
     <message>
-        <location filename="abreempresabase.ui" line="266"/>
+        <location filename="blcompanydialogbase.ui" line="266"/>
         <source>&amp;Entra</source>
         <translation>&amp;Enters</translation>
     </message>
     <message>
-        <location filename="abreempresabase.ui" line="285"/>
+        <location filename="blcompanydialogbase.ui" line="285"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location filename="abreempresabase.ui" line="114"/>
+        <location filename="blcompanydialogbase.ui" line="114"/>
         <source>Actualizar Listado</source>
         <translation>Update Listing</translation>
     </message>
     <message>
-        <location filename="abreempresabase.ui" line="117"/>
+        <location filename="blcompanydialogbase.ui" line="117"/>
         <source>Actualizar Listado de Empresas</source>
         <translation>Update Listing of Companies</translation>
     </message>
     <message>
-        <location filename="abreempresabase.ui" line="132"/>
+        <location filename="blcompanydialogbase.ui" line="132"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
 </context>
 <context>
-    <name>abreempresaview</name>
+    <name>BlCompanyDialog</name>
     <message>
-        <location filename="abreempresaview.cpp" line="135"/>
+        <location filename="blcompanydialog.cpp" line="135"/>
         <source>&amp;Cierra el programa</source>
         <translation>&amp;Closes the program</translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="199"/>
+        <location filename="blcompanydialog.cpp" line="199"/>
         <source>Para entrar, antes tiene que seleccionar una empresa.</source>
         <translation>In order to enter, before it must select a company.</translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="390"/>
+        <location filename="blcompanydialog.cpp" line="390"/>
         <source>Nombre</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="390"/>
+        <location filename="blcompanydialog.cpp" line="390"/>
         <source>Anyo</source>
         <translation>Anyo</translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="390"/>
+        <location filename="blcompanydialog.cpp" line="390"/>
         <source>Archivo</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="390"/>
+        <location filename="blcompanydialog.cpp" line="390"/>
         <source>Tipo</source>
         <translation>Type</translation>
     </message>

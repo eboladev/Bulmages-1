@@ -317,7 +317,7 @@ void BConfiguracion::borrarEmpresa()
                 system ( sentencia.toAscii().constData() );
                 /// Hacemos una recarga de empresas porque sabemos a ciencia cierta que
                 /// ha cambiado el listado.
-                abreempresaview *abre = new abreempresaview ( NULL, "hola", "hola" );
+                BlCompanyDialog *abre = new BlCompanyDialog ( NULL, "hola", "hola" );
                 abre->on_mui_actualizar_clicked();
                 delete abre;
                 done ( 1 );

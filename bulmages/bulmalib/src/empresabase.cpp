@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "empresabase.h"
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 #include "paisview.h"
 
 
@@ -182,7 +182,7 @@ void EmpresaBase::init ( QString bd, QString tipo )
 }
 
 
-/// Se utiliza para mostrar un selector de empresas abreempresaview
+/// Se utiliza para mostrar un selector de empresas BlCompanyDialog
 /// Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
 /// clases a partir de dicha inicializacion.
 /**
@@ -193,7 +193,7 @@ QString EmpresaBase::searchCompany ( QString tipo )
 {
     /// El cambio de empresa se realiza desde el selector.
     _depura ( "EmpresaBase::searchCompany", 0 );
-    abreempresaview *nuevae = new abreempresaview ( 0, tipo );
+    BlCompanyDialog *nuevae = new BlCompanyDialog ( 0, tipo );
     nuevae->exec();
     _depura ( "Vamos a cambiar la empresa", 0 );
     QString bd = nuevae->nomDB();

@@ -1996,20 +1996,20 @@ msgstr ""
 msgid "&Cerrar el programa"
 msgstr ""
 
-#: ui_abreempresabase.h:184 ui_abreempresabase.h:187
+#: ui_blcompanydialogbase.h:184 ui_blcompanydialogbase.h:187
 msgid "Seleccione una empresa"
 msgstr ""
 
-#: ui_abreempresabase.h:193 ui_rutacomerciallistbase.h:358
+#: ui_blcompanydialogbase.h:193 ui_rutacomerciallistbase.h:358
 #: ui_rutacomerciallistbase.h:363
 msgid "Actualizar Listado"
 msgstr ""
 
-#: ui_abreempresabase.h:198
+#: ui_blcompanydialogbase.h:198
 msgid "Actualizar Listado de Empresas"
 msgstr ""
 
-#: ui_abreempresabase.h:202 ui_paisbase.h:286 ui_almaceneslistbase.h:344
+#: ui_blcompanydialogbase.h:202 ui_paisbase.h:286 ui_almaceneslistbase.h:344
 #: ui_cobroslistbase.h:392 ui_presupuestoslistbase.h:376
 #: ui_albaranclientelistbase.h:451 ui_pedidosclientelistbase.h:392
 #: ui_facturaslistbase.h:446 ui_facturasplistbase.h:389
@@ -2020,15 +2020,15 @@ msgstr ""
 msgid "Ctrl+N"
 msgstr ""
 
-#: ui_abreempresabase.h:203
+#: ui_blcompanydialogbase.h:203
 msgid "Empresas disponibles:"
 msgstr ""
 
-#: ui_abreempresabase.h:204
+#: ui_blcompanydialogbase.h:204
 msgid "&Entra"
 msgstr ""
 
-#: ui_abreempresabase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
+#: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
 #: ccosteview.cpp:168 ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108
 #: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238
 #: ui_listseriefacturabase.h:83 ui_listtasaivabase.h:119 ui_fpagobase.h:342
@@ -2312,15 +2312,15 @@ msgstr ""
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr ""
 
-#: abreempresaview.cpp:214
+#: blcompanydialog.cpp:214
 msgid "&Cierra el programa"
 msgstr ""
 
-#: abreempresaview.cpp:283
+#: blcompanydialog.cpp:283
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr ""
 
-#: abreempresaview.cpp:492 subform3.cpp:94 amortizacionesview.cpp:48
+#: blcompanydialog.cpp:492 subform3.cpp:94 amortizacionesview.cpp:48
 #: ccosteview.cpp:49 ccosteview.cpp:76 propiedadesempresa.cpp:191
 #: listproyectosview.cpp:49 listconfiguracionview.cpp:89 familiasview.cpp:51
 #: familiasview.cpp:569 providerslist.cpp:286 cobroslist.cpp:311
@@ -2331,16 +2331,16 @@ msgstr ""
 msgid "Nombre"
 msgstr ""
 
-#: abreempresaview.cpp:492
+#: blcompanydialog.cpp:492
 msgid "Anyo"
 msgstr ""
 
-#: abreempresaview.cpp:492 ui_importcsvbase.h:197 ui_archivobase.h:100
+#: blcompanydialog.cpp:492 ui_importcsvbase.h:197 ui_archivobase.h:100
 #: canualesview.cpp:122 listproyectosview.cpp:51 ui_q19base.h:221
 msgid "Archivo"
 msgstr ""
 
-#: abreempresaview.cpp:492
+#: blcompanydialog.cpp:492
 msgid "Tipo"
 msgstr ""
 

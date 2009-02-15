@@ -27,7 +27,7 @@
 
 #include "blfunctions.h"
 #include "ui_selectorbase.h"
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 #include "bconfiguracion.h"
 
 

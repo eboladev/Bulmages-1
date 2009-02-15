@@ -26,7 +26,7 @@
 #include <QDomDocument>
 
 #include "stdio.h"
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 #include "company.h"
 #include "fpagoview.h"
 #include "blfunctions.h"

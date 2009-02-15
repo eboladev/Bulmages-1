@@ -526,72 +526,72 @@
     </message>
 </context>
 <context>
-    <name>abreempresabase</name>
+    <name>BlCompanyDialogBase</name>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="39"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="39"/>
         <source>Seleccione una empresa</source>
         <translation>Séléctionner une entreprise</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="197"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="197"/>
         <source>Empresas disponibles:</source>
         <translation>Entreprise disponibles:</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="266"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="266"/>
         <source>&amp;Entra</source>
         <translation>&amp;Entrer</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="285"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="285"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Canceler</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="114"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="114"/>
         <source>Actualizar Listado</source>
         <translation>Actualiser liste</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="117"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="117"/>
         <source>Actualizar Listado de Empresas</source>
         <translation>Actualiser liste d&apos;entreprises</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresabase.ui" line="132"/>
+        <location filename="../../../../../BULMAGES/blcompanydialogbase.ui" line="132"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
 </context>
 <context>
-    <name>abreempresaview</name>
+    <name>BlCompanyDialog</name>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresaview.cpp" line="135"/>
+        <location filename="../../../../../BULMAGES/blcompanydialog.cpp" line="135"/>
         <source>&amp;Cierra el programa</source>
         <translation>&amp;Fermer le programme</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresaview.cpp" line="199"/>
+        <location filename="../../../../../BULMAGES/blcompanydialog.cpp" line="199"/>
         <source>Para entrar, antes tiene que seleccionar una empresa.</source>
         <translation>Pour entrer, avant vous devez sélectionner une entreprise.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresaview.cpp" line="390"/>
+        <location filename="../../../../../BULMAGES/blcompanydialog.cpp" line="390"/>
         <source>Nombre</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresaview.cpp" line="390"/>
+        <location filename="../../../../../BULMAGES/blcompanydialog.cpp" line="390"/>
         <source>Anyo</source>
         <translation>Année</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresaview.cpp" line="390"/>
+        <location filename="../../../../../BULMAGES/blcompanydialog.cpp" line="390"/>
         <source>Archivo</source>
         <translation>Archive</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/abreempresaview.cpp" line="390"/>
+        <location filename="../../../../../BULMAGES/blcompanydialog.cpp" line="390"/>
         <source>Tipo</source>
         <translation>Tipe</translation>
     </message>

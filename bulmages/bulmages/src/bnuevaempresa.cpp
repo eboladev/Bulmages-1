@@ -21,7 +21,7 @@
 #include <QMessageBox>
 
 #include "bnuevaempresa.h"
-#include "abreempresaview.h"
+#include "blcompanydialog.h"
 
 
 ///
@@ -71,7 +71,7 @@ void BNuevaEmpresa::accept()
     cadena += "dbmodels/creabulmacont --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " " + "";
     system ( cadena.toAscii().constData() );
     /// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
-    abreempresaview *abre = new abreempresaview ( NULL, "hola", "hola" );
+    BlCompanyDialog *abre = new BlCompanyDialog ( NULL, "hola", "hola" );
     abre->on_mui_actualizar_clicked();
     delete abre;
     close();

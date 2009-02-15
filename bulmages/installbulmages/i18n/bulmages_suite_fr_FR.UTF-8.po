@@ -47,7 +47,7 @@ msgstr "¡Option résérvée aux experts!"
 msgid "&Borrar"
 msgstr "&Éraser"
 
-#: ui_abreempresabase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
+#: ui_blcompanydialogbase.h:205 blform.cpp:370 paisview.cpp:119 paisview.cpp:225
 #: ccosteview.cpp:168 ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108
 #: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238
 #: ui_listseriefacturabase.h:83 ui_listtasaivabase.h:119 ui_fpagobase.h:342
@@ -72,7 +72,7 @@ msgstr "&Fermer"
 msgid "&Cerrar el programa"
 msgstr "&Fermer le programme"
 
-#: abreempresaview.cpp:214
+#: blcompanydialog.cpp:214
 msgid "&Cierra el programa"
 msgstr "&Fermer le programme"
 
@@ -84,7 +84,7 @@ msgstr "&Continuer"
 msgid "&Detalles"
 msgstr "&Détails"
 
-#: ui_abreempresabase.h:204
+#: ui_blcompanydialogbase.h:204
 msgid "&Entra"
 msgstr "&Entrer"
 
@@ -151,11 +151,11 @@ msgstr "<LI>Términé</LI>\n"
 msgid "<LI>Ya hay una cuenta con el codigo "
 msgstr "<LI>Il y a déjà une compte contre le code"
 
-#: ui_abreempresabase.h:193
+#: ui_blcompanydialogbase.h:193
 msgid "Actualizar Listado"
 msgstr "Actualiser liste"
 
-#: ui_abreempresabase.h:198
+#: ui_blcompanydialogbase.h:198
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualiser liste d'entreprises"
 
@@ -199,7 +199,7 @@ msgstr "Magasin"
 msgid "Anual"
 msgstr "Annuel"
 
-#: abreempresaview.cpp:492
+#: blcompanydialog.cpp:492
 msgid "Anyo"
 msgstr "Année"
 
@@ -211,7 +211,7 @@ msgstr "Apliquer"
 msgid "Application name"
 msgstr "Nom d'application"
 
-#: abreempresaview.cpp:492 canualesview.cpp:122
+#: blcompanydialog.cpp:492 canualesview.cpp:122
 msgid "Archivo"
 msgstr "Archive"
 
@@ -295,7 +295,7 @@ msgstr "Mot de passe:"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_abreempresabase.h:202 ui_paisbase.h:286 ui_tiposarticulobase.h:292
+#: ui_blcompanydialogbase.h:202 ui_paisbase.h:286 ui_tiposarticulobase.h:292
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
@@ -402,7 +402,7 @@ msgstr ""
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "<LI>Le fournisseur éxiste déjà, on peut faire des modifications</LI>"
 
-#: ui_abreempresabase.h:203
+#: ui_blcompanydialogbase.h:203
 msgid "Empresas disponibles:"
 msgstr "Entreprise disponibles:"
 
@@ -584,7 +584,7 @@ msgstr "Il n'a pas pus être érasé"
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"
 
-#: abreempresaview.cpp:492 subform3.cpp:94 amortizacionesview.cpp:48
+#: blcompanydialog.cpp:492 subform3.cpp:94 amortizacionesview.cpp:48
 #: ccosteview.cpp:49 ccosteview.cpp:76 propiedadesempresa.cpp:191
 #: listconfiguracionview.cpp:90 familiasview.cpp:51 familiasview.cpp:569
 msgid "Nombre"
@@ -649,7 +649,7 @@ msgstr ""
 msgid "Paises"
 msgstr ""
 
-#: abreempresaview.cpp:283
+#: blcompanydialog.cpp:283
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Pour entrer, avant vous devez sélectionner une entreprise."
 
@@ -697,7 +697,7 @@ msgstr "Sélectionner date"
 msgid "Seleccione un pais para guardar"
 msgstr "Séléctionner une entreprise"
 
-#: ui_abreempresabase.h:184 ui_abreempresabase.h:187
+#: ui_blcompanydialogbase.h:184 ui_blcompanydialogbase.h:187
 msgid "Seleccione una empresa"
 msgstr "Séléctionner une entreprise"
 
@@ -718,7 +718,7 @@ msgstr ""
 msgid "Tiene que seleccionar un elemento"
 msgstr "Vous devez sélectionner un élément"
 
-#: abreempresaview.cpp:492
+#: blcompanydialog.cpp:492
 msgid "Tipo"
 msgstr "Tipe"
 
