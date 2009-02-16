@@ -146,9 +146,9 @@ AlbaranClienteList::AlbaranClienteList ( Company *comp, QWidget *parent, Qt::WFl
     int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
     if ( res != 0 )
         return;
-    m_cliente->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     iniciaForm();
 
@@ -192,14 +192,14 @@ void AlbaranClienteList::iniciaForm()
 /**
 \param comp
 **/
-void AlbaranClienteList::setEmpresaBase ( Company *comp )
+void AlbaranClienteList::setMainCompany ( Company *comp )
 {
-    _depura ( "AlbaranClienteList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_cliente->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END AlbaranClienteList::setEmpresaBase", 0 );
+    _depura ( "AlbaranClienteList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END AlbaranClienteList::setMainCompany", 0 );
 }
 
 

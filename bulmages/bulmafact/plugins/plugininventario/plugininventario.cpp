@@ -68,7 +68,7 @@ void myplugininv::inicializa ( Bulmafact *bges )
     _depura ( "myplugininv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    setEmpresaBase ( bges->getcompany() );
+    setMainCompany ( bges->getcompany() );
 
     /// Miramos si existe un menu Articulos
 	QMenu *pPluginMenu = bges->newMenu("&Articulos", "menuArticulos", "menuMaestro");
@@ -113,7 +113,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 {
     _depura ( "ArticuloView_ArticuloView", 0 );
     BfSubForm *l = new BfSubForm ( art );
-    l->setEmpresaBase ( art->empresaBase() );
+    l->setMainCompany ( art->empresaBase() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
     art->mui_tab->addTab ( l, _("Minimos almacen") );
 

@@ -39,7 +39,7 @@
 
 
 QMainWindow *g_bges = NULL;
-EmpresaBase *g_emp = NULL;
+BlMainCompany *g_emp = NULL;
 
 
 ///

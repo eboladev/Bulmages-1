@@ -81,9 +81,9 @@ FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent, Q
     if ( res != 0 ) {
         return;
     } // end if
-    m_proveedor->setEmpresaBase ( empresaBase() );
-    m_articulo->setEmpresaBase ( empresaBase() );
-    mui_list->setEmpresaBase ( comp );
+    m_proveedor->setMainCompany ( empresaBase() );
+    m_articulo->setMainCompany ( empresaBase() );
+    mui_list->setMainCompany ( comp );
     presentar();
     setSubForm ( mui_list );
     mdb_idfacturap = "";
@@ -273,14 +273,14 @@ void FacturasProveedorList::imprimir()
 /**
 \param comp
 **/
-void FacturasProveedorList::setEmpresaBase ( Company *comp )
+void FacturasProveedorList::setMainCompany ( Company *comp )
 {
-    _depura ( "FacturasProveedorList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_proveedor->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END FacturasProveedorList::setEmpresaBase", 0 );
+    _depura ( "FacturasProveedorList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_proveedor->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END FacturasProveedorList::setMainCompany", 0 );
 }
 
 

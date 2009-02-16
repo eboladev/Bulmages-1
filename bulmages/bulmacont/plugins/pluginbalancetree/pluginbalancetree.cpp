@@ -81,7 +81,7 @@ void myplugin4::inicializa ( Bulmacont *bges )
     bindtextdomain ("pluginbalancetree", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Creamos el men&uacute;.
-    setEmpresaBase ( bges->empresaactual() );
+    setMainCompany ( bges->empresaactual() );
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas

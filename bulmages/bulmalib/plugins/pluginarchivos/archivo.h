@@ -35,7 +35,7 @@
 #include "blwidget.h"
 
 
-class EmpresaBase;
+class BlMainCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -52,7 +52,7 @@ private:
     QList<QString> m_claves;
 
 public:
-    Archivo ( EmpresaBase *, QWidget * );
+    Archivo ( BlMainCompany *, QWidget * );
     ~Archivo();
 
 public slots:

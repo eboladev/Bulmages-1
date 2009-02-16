@@ -74,11 +74,11 @@ public:
     MovimientosView ( Company *, QWidget *parent = 0, edmode editmodo = EditMode );
     virtual ~MovimientosView();
     void iniciaForm();
-    void setEmpresaBase ( Company *comp ) {
-        PEmpresaBase::setEmpresaBase ( comp );
-        m_cliente->setEmpresaBase ( comp );
-        m_articulo->setEmpresaBase ( comp );
-        mui_list->setEmpresaBase ( comp );
+    void setMainCompany ( Company *comp ) {
+        BlMainCompanyPointer::setMainCompany ( comp );
+        m_cliente->setMainCompany ( comp );
+        m_articulo->setMainCompany ( comp );
+        mui_list->setMainCompany ( comp );
     };
 
     int modo() {

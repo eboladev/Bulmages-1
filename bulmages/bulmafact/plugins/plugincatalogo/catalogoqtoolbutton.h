@@ -34,7 +34,7 @@
 #include "articulolist.h"
 #include "blwidget.h"
 
-class CatalogoQToolButton : public QToolButton, PEmpresaBase
+class CatalogoQToolButton : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 

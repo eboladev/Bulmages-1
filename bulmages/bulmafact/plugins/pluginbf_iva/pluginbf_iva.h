@@ -34,7 +34,7 @@
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
-class MyPlugIVA : public QObject, PEmpresaBase
+class MyPlugIVA : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

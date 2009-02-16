@@ -137,16 +137,16 @@ QString BusquedaSerieFactura::id()
 \param comp
 \return
 **/
-void BusquedaSerieFactura::setEmpresaBase ( Company *comp )
+void BusquedaSerieFactura::setMainCompany ( Company *comp )
 {
-    _depura ( "BusquedaSerieFactura::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
+    _depura ( "BusquedaSerieFactura::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
     BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
     if ( !cur ) return;
     if ( !cur->eof() ) {
         m_codigoserie_factura = cur->valor ( "valor" );
     } // end if
     delete cur;
-    _depura ( "END BusquedaSerieFactura::setEmpresaBase", 0 );
+    _depura ( "END BusquedaSerieFactura::setMainCompany", 0 );
 }
 

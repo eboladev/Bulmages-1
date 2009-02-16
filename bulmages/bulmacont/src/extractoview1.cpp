@@ -55,12 +55,12 @@ extractoview1::extractoview1 ( Empresa *emp, QWidget *parent, int ) : FichaBc ( 
     setTitleName ( _( "Extracto de Cuentas" ) );
     setDBTableName ( "apunte" );
 
-    mui_list->setEmpresaBase ( emp );
+    mui_list->setMainCompany ( emp );
 
     /// Iniciamos los componentes
-    m_codigoinicial->setEmpresaBase ( emp );
-    m_codigofinal->setEmpresaBase ( emp );
-    mui_codigocontrapartida->setEmpresaBase ( emp );
+    m_codigoinicial->setMainCompany ( emp );
+    m_codigofinal->setMainCompany ( emp );
+    mui_codigocontrapartida->setMainCompany ( emp );
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
 

@@ -34,7 +34,7 @@ extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
 
 
-class MyPlugProf : public QObject, PEmpresaBase
+class MyPlugProf : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

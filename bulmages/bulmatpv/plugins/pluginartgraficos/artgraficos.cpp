@@ -15,7 +15,7 @@
 extern BlDockWidget *g_pantallas;
 
 
-ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
+ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     _depura ( "ArtGraficos::~ArtGraficos", 0 );
     setupUi ( this );

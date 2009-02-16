@@ -32,7 +32,7 @@
 #include "blwidget.h"
 
 
-class EFQToolButtonImportar : public QToolButton, PEmpresaBase
+class EFQToolButtonImportar : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 

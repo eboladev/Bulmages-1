@@ -79,13 +79,13 @@ PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
         } // end if
 
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        subform2->setEmpresaBase ( comp );
-        m_descuentos->setEmpresaBase ( comp );
-        mui_idcliente->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idalmacen->setEmpresaBase ( comp );
-        mui_idtrabajador->setEmpresaBase ( comp );
-        mui_refpresupuesto->setEmpresaBase ( comp );
+        subform2->setMainCompany ( comp );
+        m_descuentos->setMainCompany ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
+        mui_idalmacen->setMainCompany ( comp );
+        mui_idtrabajador->setMainCompany ( comp );
+        mui_refpresupuesto->setMainCompany ( comp );
 
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );

@@ -38,7 +38,7 @@ Almacena toda la informacion relativa a un campo de un registro de base de datos
 comportamiento.
 Tambien prepara el campo para ser almacenado en la base de datos aunque el guardado real lo hace la
 clase \ref BlDbRecord
-\todo Esta clase deberia derivar de \ref PEmpresaBase
+\todo Esta clase deberia derivar de \ref BlMainCompanyPointer
 */
 class BlDbField
 {
@@ -102,22 +102,22 @@ debe utilizar y la tabla con la que va a operar. Ademas debe describirse como
 es la tabla con que se va a operar mediante \ref addDBCampo
 El uso normal de esta clase es la carga de un registro, modificacion de sus campos
 y almacenado del mismo.
-\todo Esta clase deberia derivar de \ref PEmpresaBase
+\todo Esta clase deberia derivar de \ref BlMainCompanyPointer
 */
 class BlDbRecord
 {
 protected:
     QList<BlDbField *> m_lista; ///< Lista de campos que conforman la tabla de la BD
-    EmpresaBase *m_conexionbase; ///< Puntero a la base de datos con la que se opera
+    BlMainCompany *m_conexionbase; ///< Puntero a la base de datos con la que se opera
     QString m_tablename; ///< Nombre de la tabla por defecto que se utiliza
     QString m_campoid; ///< Nombre del campo identificador en la tabla
     bool m_nuevoCampo; ///< Indicador sobre si es un nuevo registro o un registro modificado
 
 public:
-    BlDbRecord ( EmpresaBase * );
+    BlDbRecord ( BlMainCompany * );
     virtual ~BlDbRecord();
-    void setconexionbase ( EmpresaBase *comp );
-    EmpresaBase *conexionbase();
+    void setconexionbase ( BlMainCompany *comp );
+    BlMainCompany *conexionbase();
     int DBload ( BlDbRecordSet * );
     virtual int DBsave ( QString &id );
     virtual int setDBvalue ( QString, QString );

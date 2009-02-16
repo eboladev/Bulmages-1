@@ -29,7 +29,7 @@
 #include <QFile>
 
 #include "blfixed.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "bldb.h"
 #include "eqtoolbutton.h"
 

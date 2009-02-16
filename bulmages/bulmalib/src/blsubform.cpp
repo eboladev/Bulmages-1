@@ -246,12 +246,12 @@ BlSubForm::~BlSubForm()
 /**
 \param emp
 **/
-void BlSubForm::setEmpresaBase ( EmpresaBase *emp )
+void BlSubForm::setMainCompany ( BlMainCompany *emp )
 {
-    _depura ( "PEmpresaBase::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( emp );
+    _depura ( "BlMainCompanyPointer::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( emp );
     cargaSpecs();
-    _depura ( "END PEmpresaBase::setEmpresaBase", 0 );
+    _depura ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
 
 

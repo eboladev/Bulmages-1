@@ -82,7 +82,7 @@ AlmacenesListView::AlmacenesListView ( Company *comp, QWidget *parent, Qt::WFlag
     int res = g_plugins->lanza ( "AlmacenesListView_AlmacenesListView", this );
     if ( res != 0 )
         return;
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
     mui_list->setDBTableName ( "almacen" );
@@ -130,12 +130,12 @@ QString AlmacenesListView::idalmacen()
 /**
 \param comp
 **/
-void AlmacenesListView::setEmpresaBase ( Company *comp )
+void AlmacenesListView::setMainCompany ( Company *comp )
 {
-    _depura ( "AlmacenesListView::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END AlmacenesListView::setEmpresaBase", 0 );
+    _depura ( "AlmacenesListView::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END AlmacenesListView::setMainCompany", 0 );
 }
 
 

@@ -36,7 +36,7 @@
 
 
 QMainWindow *g_bges_importcsv = NULL;
-EmpresaBase *g_emp_importcsv = NULL;
+BlMainCompany *g_emp_importcsv = NULL;
 
 
 void entryPoint ( QMainWindow *bges )

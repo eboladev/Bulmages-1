@@ -93,7 +93,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionestrab" ) );
-    l->setEmpresaBase ( trab->empresaBase() );
+    l->setMainCompany ( trab->empresaBase() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
     l->addSHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
@@ -156,7 +156,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     /// Anyadimos el subformulario de validaciones
     BfSubForm *l = new BfSubForm ( alm );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionesalm" ) );
-    l->setEmpresaBase ( alm->empresaBase() );
+    l->setMainCompany ( alm->empresaBase() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
     l->addSHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );

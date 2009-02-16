@@ -32,7 +32,7 @@
 \param flag
 **/
 DuplicarAsientoView::DuplicarAsientoView ( Empresa *emp, QWidget *parent, Qt::WFlags flag )
-        : QDialog ( parent, flag ), PEmpresaBase ( emp )
+        : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
     _depura ( "DuplicarAsientoView::DuplicarAsientoView", 0 );
     setupUi ( this );

@@ -26,7 +26,7 @@
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "bulmacont.h"
 #include "bulmafact.h"
 #include "blform.h"

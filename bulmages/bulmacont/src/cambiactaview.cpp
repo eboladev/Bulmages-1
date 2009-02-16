@@ -32,12 +32,12 @@
 \param flag
 **/
 CambiaCtaView::CambiaCtaView ( Empresa *emp, QWidget *parent, Qt::WFlags flag )
-        : QDialog ( parent, flag ), PEmpresaBase ( emp )
+        : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
     _depura ( "CambiaCtaView::CambiaCtaView", 0 );
     setupUi ( this );
-    mui_codigoorigen->setEmpresaBase ( emp );
-    mui_codigodestino->setEmpresaBase ( emp );
+    mui_codigoorigen->setMainCompany ( emp );
+    mui_codigodestino->setMainCompany ( emp );
     _depura ( "END CambiaCtaView::CambiaCtaView", 0 );
 }
 

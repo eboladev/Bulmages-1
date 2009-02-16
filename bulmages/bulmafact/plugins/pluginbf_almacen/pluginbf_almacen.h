@@ -35,7 +35,7 @@ extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int SNewAlmacenView (Company *);
 
 
-class MyPlugAlm : public QObject, PEmpresaBase
+class MyPlugAlm : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

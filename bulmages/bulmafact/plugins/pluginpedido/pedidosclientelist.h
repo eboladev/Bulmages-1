@@ -66,7 +66,7 @@ public:
     void editar ( int );
     void borrar();
     void crear();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     void setidcliente ( QString val );
     QString idpedidocliente();
     QString generarFiltro();

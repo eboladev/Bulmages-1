@@ -30,7 +30,7 @@
 #include "blfunctions.h"
 #include "plugins.h"
 #include "blform.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 
 
 /** Prepara todos los componentes i los inicializa a NULL para que no haya dudas sobre si
@@ -55,9 +55,9 @@ MovimientosView::MovimientosView ( Company *comp, QWidget *parent, edmode editmo
     setupUi ( this );
     iniciaForm();
     setDBTableName ( "movimiento" );
-    m_cliente->setEmpresaBase ( empresaBase() );
-    m_articulo->setEmpresaBase ( empresaBase() );
-    mui_list->setEmpresaBase ( empresaBase() );
+    m_cliente->setMainCompany ( empresaBase() );
+    m_articulo->setMainCompany ( empresaBase() );
+    mui_list->setMainCompany ( empresaBase() );
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";

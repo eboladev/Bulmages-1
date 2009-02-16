@@ -63,8 +63,8 @@ CuentaView::CuentaView ( Empresa  *emp, QWidget *parent, Qt::WFlags fl )
     addDBCampo ( "emailent_cuenta", BlDbField::DBvarchar, BlDbField::DBNothing, _( "E-Mail de la cuenta" ) );
     addDBCampo ( "dirent_cuenta", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion de la cuenta" ) );
 
-    mui_padre->setEmpresaBase ( empresaBase() );
-    mui_idc_coste->setEmpresaBase ( empresaBase() );
+    mui_padre->setMainCompany ( empresaBase() );
+    mui_idc_coste->setMainCompany ( empresaBase() );
 
     /// Establecemos los valores para el menu radio tipo_cuenta
     mui_tipocuenta_1->setValorCampo ( "1" );
@@ -74,7 +74,7 @@ CuentaView::CuentaView ( Empresa  *emp, QWidget *parent, Qt::WFlags fl )
     mui_tipocuenta_5->setValorCampo ( "5" );
     mui_tipocuenta_0->setValorCampo ( "0" );
 
-    mui_idprovincia->setEmpresaBase ( empresaBase() );
+    mui_idprovincia->setMainCompany ( empresaBase() );
     mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
     mui_idprovincia->setCampoId ("idprovincia");

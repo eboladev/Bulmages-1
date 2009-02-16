@@ -45,9 +45,9 @@ CobroView::CobroView ( Company *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_idcliente->setEmpresaBase ( comp );
-        mui_refcobro->setEmpresaBase ( comp );
-        mui_idbanco->setEmpresaBase ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        mui_refcobro->setMainCompany ( comp );
+        mui_idbanco->setMainCompany ( comp );
 
 			/// Establecemos los parametros de busqueda del Cliente
 		mui_idcliente->setLabel ( _( "Cliente:" ) );

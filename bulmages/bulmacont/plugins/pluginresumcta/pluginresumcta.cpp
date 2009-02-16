@@ -65,7 +65,7 @@ void entryPoint ( Bulmacont *bcont )
     doc1->show();
 
     g_res = new ResumCtaWidget ( emp, doc1 );
-    g_res->setEmpresaBase ( emp );
+    g_res->setMainCompany ( emp );
     g_res->dock = doc1;
 
     doc1->setWidget ( g_res );

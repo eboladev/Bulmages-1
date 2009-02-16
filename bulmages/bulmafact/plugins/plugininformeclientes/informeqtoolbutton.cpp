@@ -43,7 +43,7 @@
 \param art
 \param parent
 **/
-InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "InformeQToolButton::InformeQToolButton", 0 );
     m_clientsList = art;
@@ -86,7 +86,7 @@ void InformeQToolButton::click()
 {
     _depura ( "InformeQToolButton::click", 0 );
     // Puede que no se haya actualizado bien el company
-    setEmpresaBase ( m_clientsList->empresaBase() );
+    setMainCompany ( m_clientsList->empresaBase() );
 
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "informeclientes.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "informeclientes.rml";
@@ -355,7 +355,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
 \param art
 \param parent
 **/
-InformeArtQToolButton::InformeArtQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+InformeArtQToolButton::InformeArtQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "InformeArtQToolButton::InformeQToolButton", 0 );
     m_articuloList = art;
@@ -398,7 +398,7 @@ void InformeArtQToolButton::click()
 {
     _depura ( "InformeArtQToolButton::click", 0 );
     // Puede que no se haya actualizado bien el company
-    setEmpresaBase ( m_articuloList->empresaBase() );
+    setMainCompany ( m_articuloList->empresaBase() );
 
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "informearticulos.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "informearticulos.rml";

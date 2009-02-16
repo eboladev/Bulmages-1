@@ -55,7 +55,7 @@ ActividadView::ActividadView ( Company *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
 
 		/// Establecemos los parametros de busqueda de Profesor
-	mui_idprofesor->setEmpresaBase(comp);
+	mui_idprofesor->setMainCompany(comp);
     mui_idprofesor->setLabel ( _( "Profesor:" ) );
 	mui_idprofesor->setTableName( "profesor" );
 	mui_idprofesor->m_valores["nombreprofesor"] = "";

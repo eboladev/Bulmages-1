@@ -67,7 +67,7 @@ TutoresList::TutoresList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmo
     if ( res != 0 )
         return;
 
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
 
 
     setSubForm ( mui_list );
@@ -227,10 +227,10 @@ void TutoresList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void TutoresList::setEmpresaBase ( Company *comp )
+void TutoresList::setMainCompany ( Company *comp )
 {
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
 }
 
 /** Devuelve el identificador del cobro seleccionado

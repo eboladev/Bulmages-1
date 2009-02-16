@@ -219,12 +219,12 @@ void BusquedaCuenta::setFocus()
 /**
 \param emp
 **/
-void BusquedaCuenta::setEmpresaBase ( Empresa *emp )
+void BusquedaCuenta::setMainCompany ( Empresa *emp )
 {
-    _depura ( "BusquedaCuenta::setEmpresaBase", 0 );
-    BlWidget::setEmpresaBase ( emp );
+    _depura ( "BusquedaCuenta::setMainCompany", 0 );
+    BlWidget::setMainCompany ( emp );
     m_numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
-    _depura ( "END BusquedaCuenta::setEmpresaBase", 0 );
+    _depura ( "END BusquedaCuenta::setMainCompany", 0 );
 }
 
 

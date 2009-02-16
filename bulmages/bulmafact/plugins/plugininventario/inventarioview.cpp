@@ -45,8 +45,8 @@ InventarioView::InventarioView ( Company *comp, QWidget *parent )
     _depura ( "InventarioView::InventarioView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    subform2->setEmpresaBase ( comp );
-    mui_idfamilia->setEmpresaBase ( comp );
+    subform2->setMainCompany ( comp );
+    mui_idfamilia->setMainCompany ( comp );
     setListControlStock ( subform2 );
     meteWindow ( windowTitle(), this, FALSE );
     _depura ( "END InventarioView::InventarioView", 0 );

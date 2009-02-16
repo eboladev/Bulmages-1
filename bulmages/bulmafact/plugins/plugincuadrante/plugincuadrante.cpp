@@ -90,7 +90,7 @@ void myplugin4::inicializa ( Bulmafact *bges )
 {
     _depura ( "myplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setEmpresaBase ( bges->getcompany() );
+    setMainCompany ( bges->getcompany() );
     m_bulmafact = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
@@ -239,7 +239,7 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     _depura ( "TrabajadorView_TrabajadorView", 0 );
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_ausencias" ) );
-    l->setEmpresaBase ( trab->empresaBase() );
+    l->setMainCompany ( trab->empresaBase() );
     l->setDBTableName ( "ausencia" );
     l->setDBCampoId ( "idausencia" );
     l->addSHeader ( "fechainausencia", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNone, _( "Fecha inicial ausencia" ) );

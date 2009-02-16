@@ -151,7 +151,7 @@ void Inventario::setListControlStock ( ListControlStockView *a )
 {
     _depura ( "Inventario::setListControlStock", 0 );
     listalineas = a;
-    listalineas->setEmpresaBase ( companyact );
+    listalineas->setMainCompany ( companyact );
     _depura ( "END Inventario::setListControlStock", 0 );
 }
 

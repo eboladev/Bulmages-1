@@ -133,11 +133,11 @@ QString BusquedaColor::valorCampo()
 /**
 \param comp
 **/
-void BusquedaColor::setEmpresaBase ( Company *comp )
+void BusquedaColor::setMainCompany ( Company *comp )
 {
-    _depura ( "BusquedaColor::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    _depura ( "END BusquedaColor::setEmpresaBase", 0 );
+    _depura ( "BusquedaColor::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    _depura ( "END BusquedaColor::setMainCompany", 0 );
 }
 
 

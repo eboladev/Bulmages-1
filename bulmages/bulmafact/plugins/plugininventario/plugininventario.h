@@ -37,7 +37,7 @@ extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
 extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
 
-class myplugininv : public QObject, PEmpresaBase
+class myplugininv : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -35,7 +35,7 @@
 class Company;
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public PEmpresaBase
+class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public BlMainCompanyPointer
 {
     Q_OBJECT
 public:
@@ -89,7 +89,7 @@ public slots:
 
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class ImpCuadrante :  public PEmpresaBase
+class ImpCuadrante :  public BlMainCompanyPointer
 {
 public:
     QString mdb_idalmacen;

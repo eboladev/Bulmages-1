@@ -15,7 +15,7 @@ class TecladoNumerico : public BlWidget, public Ui_TecladoNumericoBase
     Q_OBJECT
 
 public:
-    TecladoNumerico ( EmpresaBase *emp, QWidget *parent );
+    TecladoNumerico ( BlMainCompany *emp, QWidget *parent );
     virtual ~TecladoNumerico();
 
 public slots:

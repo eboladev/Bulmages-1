@@ -89,13 +89,13 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
         if ( res != 0 )
             return;
 
-        subform2->setEmpresaBase ( comp );
-        m_descuentos->setEmpresaBase ( comp );
-        mui_idalmacen->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idcliente->setEmpresaBase ( comp );
-        mui_idtrabajador->setEmpresaBase ( comp );
-        mui_refalbaran->setEmpresaBase ( comp );
+        subform2->setMainCompany ( comp );
+        m_descuentos->setMainCompany ( comp );
+        mui_idalmacen->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        mui_idtrabajador->setMainCompany ( comp );
+        mui_refalbaran->setMainCompany ( comp );
 
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );

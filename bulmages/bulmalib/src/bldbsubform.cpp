@@ -34,7 +34,7 @@ Mantiene un contador de elementos creados para depurar la liberacion de memoria.
 \param con Empresa con la que va a trabajar
 \todo Se debe eliminar el contador una vez testeado el consumo de memoria
 **/
-BlDbSubFormRecord::BlDbSubFormRecord ( EmpresaBase *con ) : BlDbRecord ( con )
+BlDbSubFormRecord::BlDbSubFormRecord ( BlMainCompany *con ) : BlDbRecord ( con )
 {
     _depura ( "BlDbSubFormRecord::BlDbSubFormRecord", 0 );
     static int creaciones = 0;

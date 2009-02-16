@@ -46,7 +46,7 @@ extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView 
 extern BlApplication *theApp;
 
 
-class myplugin4 : public QObject, PEmpresaBase
+class myplugin4 : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

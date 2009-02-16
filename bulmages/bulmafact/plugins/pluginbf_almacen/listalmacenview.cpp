@@ -50,7 +50,7 @@ ListAlmacenView::ListAlmacenView ( Company *comp, QWidget *parent )
     setDBTableName ( "almacen" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listado->setEmpresaBase ( comp );
+    mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
     _depura ( "END ListAlmacenView::ListAlmacenView", 1 );

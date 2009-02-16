@@ -38,7 +38,7 @@ extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
 
 
-class mypluginpedp : public QObject, PEmpresaBase
+class mypluginpedp : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

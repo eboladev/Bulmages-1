@@ -55,8 +55,8 @@ ContratosList::ContratosList ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     if ( res != 0 )
         return;
 
-    mui_list->setEmpresaBase ( comp );
-    mui_idcliente->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
+    mui_idcliente->setMainCompany ( comp );
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
     m_modo = editmode;

@@ -47,9 +47,9 @@ AmortizacionView::AmortizacionView ( Empresa *emp, QWidget *parent )
     m_idctaamortizacion = "";
 
     /// Nueva inicializacion de amortizaciones
-    mui_listcuotas->setEmpresaBase ( emp );
-    ctaactivo->setEmpresaBase ( emp );
-    ctaamortizacion->setEmpresaBase ( emp );
+    mui_listcuotas->setMainCompany ( emp );
+    ctaactivo->setMainCompany ( emp );
+    ctaamortizacion->setMainCompany ( emp );
 
     /// Inicializamos la clase para la base de datos.
     setTitleName ( _( "Amortizacion" ) );

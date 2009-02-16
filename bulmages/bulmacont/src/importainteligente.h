@@ -34,7 +34,7 @@
 /** Esta clase es un analizador (parser) XML cuya funci&oacute;n es importar a la base
     de datos abierta una plantilla de asiento inteligente. Para ello utiliza las clases
     SAX de Qt. */
-class importainteligente: public QXmlDefaultHandler, public PEmpresaBase
+class importainteligente: public QXmlDefaultHandler, public BlMainCompanyPointer
 {
 private:
     /// Indica el tag que el parser está procesando en este preciso momento.

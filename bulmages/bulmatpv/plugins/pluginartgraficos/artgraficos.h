@@ -21,7 +21,7 @@ public:
     int m_pantallaActual;
 
 public:
-    ArtGraficos ( EmpresaBase *emp, QWidget *parent );
+    ArtGraficos ( BlMainCompany *emp, QWidget *parent );
     virtual ~ArtGraficos();
     void cargaXML ( QString );
     void muestraPantalla ( int );

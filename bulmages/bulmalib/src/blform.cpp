@@ -69,7 +69,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
 \param f
 \param modo
 **/
-BlForm::BlForm ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), dialogChanges ( this )
+BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), dialogChanges ( this )
 {
     _depura ( "BlForm::BlForm", 0 );
 

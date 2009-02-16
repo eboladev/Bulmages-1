@@ -40,10 +40,10 @@
 \param fac
 \param parent
 **/
-EFQToolButton::EFQToolButton ( FacturaView *fac, QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+EFQToolButton::EFQToolButton ( FacturaView *fac, QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "EFQToolButton::EFQToolButton", 0 );
-    setEmpresaBase ( fac->empresaBase() );
+    setMainCompany ( fac->empresaBase() );
     m_factura = fac;
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     _depura ( "END EFQToolButton::EFQToolButton", 0 );

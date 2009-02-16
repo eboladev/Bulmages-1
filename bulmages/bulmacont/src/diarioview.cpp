@@ -55,8 +55,8 @@ DiarioView::DiarioView ( Empresa  *emp, QWidget *parent, int )
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "apunte" );
 
-    mui_list->setEmpresaBase ( emp );
-    mui_contrapartida->setEmpresaBase ( emp );
+    mui_list->setMainCompany ( emp );
+    mui_contrapartida->setMainCompany ( emp );
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     char cadena[10];
@@ -169,7 +169,7 @@ void DiarioView::boton_guardar()
         DiarioPrint diariop ( empresaBase() );
         QString finicial = mui_fechainicial->text();
         QString ffinal = mui_fechafinal->text();
-        diariop.setEmpresaBase ( empresaBase() );
+        diariop.setMainCompany ( empresaBase() );
         diariop.inicializa1 ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
         diariop.inicializa2 ( ( char * ) fn.toAscii().constData() );
         diariop.accept();

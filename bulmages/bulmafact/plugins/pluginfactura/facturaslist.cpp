@@ -81,9 +81,9 @@ FacturasList::FacturasList ( Company *comp, QWidget *parent, Qt::WFlags flag, ed
     if ( res != 0 )
         return;
     iniciaForm();
-    m_cliente->setEmpresaBase ( empresaBase() );
-    m_articulo->setEmpresaBase ( empresaBase() );
-    mui_list->setEmpresaBase ( empresaBase() );
+    m_cliente->setMainCompany ( empresaBase() );
+    m_articulo->setMainCompany ( empresaBase() );
+    mui_list->setMainCompany ( empresaBase() );
     setSubForm ( mui_list );
 		/// Establecemos los parametros de busqueda del Cliente
     m_cliente->setLabel ( _( "Cliente:" ) );
@@ -280,14 +280,14 @@ void FacturasList::borrar()
 /**
 \param comp
 **/
-void FacturasList::setEmpresaBase ( Company *comp )
+void FacturasList::setMainCompany ( Company *comp )
 {
-    _depura ( "FacturasList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_cliente->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END FacturasList::setEmpresaBase", 0 );
+    _depura ( "FacturasList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END FacturasList::setMainCompany", 0 );
 }
 
 

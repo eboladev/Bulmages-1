@@ -29,7 +29,7 @@
 \param parent
 **/
 SelectCCosteView::SelectCCosteView ( Empresa *emp, QWidget *parent )
-        : QDialog ( parent ), PEmpresaBase ( emp )
+        : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "SelectCCosteView::SelectCCosteView", 0 );
     setupUi ( this );

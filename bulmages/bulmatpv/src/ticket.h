@@ -44,7 +44,7 @@ public:
     virtual void pintar();
 
 public:
-    Ticket ( EmpresaBase *emp = NULL, QWidget *parent = 0 );
+    Ticket ( BlMainCompany *emp = NULL, QWidget *parent = 0 );
     virtual ~Ticket();
     BlDbRecord *agregarLinea();
     QList<BlDbRecord *> *listaLineas();

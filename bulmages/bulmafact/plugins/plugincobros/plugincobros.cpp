@@ -93,7 +93,7 @@ void myplugincob::inicializa ( Bulmafact *bges )
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
-	setEmpresaBase ( bges->getcompany() );
+	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Cobros a clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ));
 	planCuentas->setStatusTip ( _( "Cobros a clientes" ) );

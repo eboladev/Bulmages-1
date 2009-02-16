@@ -25,7 +25,7 @@
 /**
 \param parent
 **/
-BX11EmbedContainer::BX11EmbedContainer ( EmpresaBase *emp, QWidget *parent ) : QX11EmbedContainer ( parent ), PEmpresaBase ( emp )
+BX11EmbedContainer::BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent ) : QX11EmbedContainer ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "END BX11EmbedContainer::BX11EmbedContainer", 0 );
 }

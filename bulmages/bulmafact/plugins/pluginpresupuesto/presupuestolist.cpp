@@ -77,9 +77,9 @@ PresupuestoList::PresupuestoList ( Company *comp, QWidget *parent, Qt::WFlags fl
     int res = g_plugins->lanza ( "PresupuestoList_PresupuestoList", this );
     if ( res != 0 )
         return;
-    m_cliente->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 		/// Establecemos los parametros de busqueda del Cliente
     m_cliente->setLabel ( _( "Cliente:" ) );
@@ -144,14 +144,14 @@ QString PresupuestoList::idpresupuesto()
 /**
 \param comp
 **/
-void PresupuestoList::setEmpresaBase ( Company *comp )
+void PresupuestoList::setMainCompany ( Company *comp )
 {
-    _depura ( "PresupuestoList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_cliente->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END PresupuestoList::setEmpresaBase", 0 );
+    _depura ( "PresupuestoList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END PresupuestoList::setMainCompany", 0 );
 }
 
 

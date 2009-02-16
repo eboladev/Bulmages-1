@@ -50,8 +50,8 @@ RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
     _depura ( "RutaComercialIncView::RutaComercialIncView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_rutacomercial->setEmpresaBase ( comp );
-    mui_incidenciacomercial->setEmpresaBase ( comp );
+    mui_rutacomercial->setMainCompany ( comp );
+    mui_incidenciacomercial->setMainCompany ( comp );
     meteWindow ( windowTitle(), this );
     _depura ( "END RutaComercialIncView::RutaComercialIncView", 0 );
 }

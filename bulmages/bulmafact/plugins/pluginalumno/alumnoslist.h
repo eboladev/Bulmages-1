@@ -61,7 +61,7 @@ public:
     AlumnosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~AlumnosList();
     void presentar();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString idalumno();
     void imprimir();
     QString generaFiltro();

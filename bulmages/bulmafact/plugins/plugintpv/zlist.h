@@ -66,7 +66,7 @@ public:
     void borrar();
     void crear();
     QString idalmacen();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     void imprimir();
     QString generaFiltro();
     void iniciaForm();

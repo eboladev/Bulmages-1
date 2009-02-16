@@ -73,9 +73,9 @@ PedidosClienteList::PedidosClienteList ( Company *comp, QWidget *parent, Qt::WFl
     int res = g_plugins->lanza ( "PedidosClienteList_PedidosClienteList", this );
     if ( res != 0 )
         return;
-    m_cliente->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    m_cliente->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     iniciaForm();
     presentar();
@@ -277,13 +277,13 @@ void PedidosClienteList::borrar()
 /**
 \param comp
 **/
-void PedidosClienteList::setEmpresaBase ( Company *comp )
+void PedidosClienteList::setMainCompany ( Company *comp )
 {
-    _depura ( "PedidosClienteList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_cliente->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END PedidosClienteList::setEmpresaBase", 0 );
+    _depura ( "PedidosClienteList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END PedidosClienteList::setMainCompany", 0 );
 }
 
 

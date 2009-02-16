@@ -32,7 +32,7 @@
 ///
 /**
 **/
-myplugin1::myplugin1() : PEmpresaBase()
+myplugin1::myplugin1() : BlMainCompanyPointer()
 {
     _depura ( "myplugin1::myplugin1", 0 );
     _depura ( "END myplugin1::myplugin1", 0 );
@@ -71,7 +71,7 @@ void myplugin1::inicializa ( Bulmafact *bges )
     _depura ( "myplugin1::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    setEmpresaBase ( bges->getcompany() );
+    setMainCompany ( bges->getcompany() );
 
     /// Miramos si existe un menu Articulos
 	QMenu *pPluginMenu = bges->newMenu("&Articulos", "menuArticulos", "menuMaestro");
@@ -130,7 +130,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 
     BusquedaTarifa *bus = new BusquedaTarifa ( cli->m_frameplugin );
     bus->setObjectName ( QString::fromUtf8 ( "mui_idtarifa" ) );
-    bus->setEmpresaBase ( cli->empresaBase() );
+    bus->setMainCompany ( cli->empresaBase() );
     bus->setIdTarifa ( "" );
     hboxLayout160->addWidget ( bus );
 
@@ -161,7 +161,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     _depura ( "ArticuloView_ArticuloView", 0 );
     ListLTarifaView *l1 = new ListLTarifaView ( art );
     l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
-    l1->setEmpresaBase ( art->empresaBase() );
+    l1->setMainCompany ( art->empresaBase() );
     l1->cargar ( "0" );
     art->mui_tab->addTab ( l1, _( "Tarifas") );
 
@@ -176,7 +176,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->mui_list->setItemDelegate ( l->m_delegate );
 
     l->setObjectName ( QString::fromUtf8 ( "lvariaciontarifas" ) );
-    l->setEmpresaBase ( art->empresaBase() );
+    l->setMainCompany ( art->empresaBase() );
     l->setDBTableName ( "variaciontarifa" );
     l->setDBCampoId ( "idarticulo" );
     l->addSHeader ( "idvariaciontarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );

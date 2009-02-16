@@ -23,7 +23,7 @@
 #include <QCloseEvent>
 #include <QFile>
 
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "ticket.h"
 #include "plugins.h"
 #include "escprinter.h"
@@ -33,7 +33,7 @@
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
+Ticket::Ticket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
 {
     _depura ( "Ticket::Ticket", 0 );
     /// Inicializamos los parametros del ticket para la base de datos.

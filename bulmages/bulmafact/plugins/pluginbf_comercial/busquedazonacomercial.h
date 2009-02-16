@@ -29,7 +29,7 @@
 #include "blwidget.h"
 
 
-class BusquedaZonaComercial : public QComboBox, public PEmpresaBase
+class BusquedaZonaComercial : public QComboBox, public BlMainCompanyPointer
 {
     Q_OBJECT
 

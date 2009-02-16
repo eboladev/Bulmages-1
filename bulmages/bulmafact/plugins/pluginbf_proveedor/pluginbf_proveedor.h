@@ -37,7 +37,7 @@ extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
 extern "C" MY_EXPORT int SNewProveedorView (Company *);
 
 
-class MyPlugPro : public QObject, PEmpresaBase
+class MyPlugPro : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

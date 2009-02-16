@@ -65,9 +65,9 @@ PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt:
 {
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
-    m_proveedor->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    m_proveedor->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
 	/// Establecemos los parametros de busqueda del Cliente
 	m_proveedor->setLabel ( _( "Proveedor:" ) );
 	m_proveedor->setTableName( "proveedor" );
@@ -264,13 +264,13 @@ void PedidosProveedorList::crear()
 /**
 \param comp
 **/
-void PedidosProveedorList::setEmpresaBase ( Company *comp )
+void PedidosProveedorList::setMainCompany ( Company *comp )
 {
-    _depura ( "PedidosProveedorList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_proveedor->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END PedidosProveedorList::setEmpresaBase", 0 );
+    _depura ( "PedidosProveedorList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_proveedor->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END PedidosProveedorList::setMainCompany", 0 );
 }
 
 

@@ -9,12 +9,12 @@
 
 class EmpresaTPV;
 
-class Trabajadores : public QDialog, PEmpresaBase, public Ui_TrabajadoresBase
+class Trabajadores : public QDialog, BlMainCompanyPointer, public Ui_TrabajadoresBase
 {
     Q_OBJECT
 
 public:
-    Trabajadores ( EmpresaBase *emp, QWidget *parent );
+    Trabajadores ( BlMainCompany *emp, QWidget *parent );
     virtual ~Trabajadores();
 public slots:
     virtual void trabajadorClicked();

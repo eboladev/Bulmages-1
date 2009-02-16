@@ -38,7 +38,7 @@
 \param parent
 **/
 DiarioPrintView::DiarioPrintView ( Empresa  *emp, QWidget *parent )
-        : QDialog ( parent ), PEmpresaBase ( emp )
+        : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "DiarioPrintView::DiarioPrintView", 0 );
     setupUi ( this );

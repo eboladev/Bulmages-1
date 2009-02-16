@@ -78,7 +78,7 @@ public:
     virtual QString tipocuenta();
     virtual void setidcuenta ( QString val );
     virtual void setcodigocuenta ( QString val );
-    virtual void setEmpresaBase ( Empresa *emp );
+    virtual void setMainCompany ( Empresa *emp );
     void hideNombre();
     void showNombre();
     void pinta();

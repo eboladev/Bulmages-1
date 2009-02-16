@@ -51,7 +51,7 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        mui_listvalidaciones->setEmpresaBase ( empresaBase() );
+        mui_listvalidaciones->setMainCompany ( empresaBase() );
 
 
         /// Lanzamos los plugins.

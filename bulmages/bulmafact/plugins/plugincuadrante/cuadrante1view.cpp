@@ -64,9 +64,9 @@ Cuadrante1View::Cuadrante1View ( Company *comp, QWidget *parent )
         addDBCampo ( "cierre1cuadrante", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Cierre tarde" ) );
         addDBCampo ( "fiestacuadrante", BlDbField::DBboolean, BlDbField::DBNothing, _( "Festivo" ) );
 
-        mui_idalmacen->setEmpresaBase ( comp );
+        mui_idalmacen->setMainCompany ( comp );
 
-        mui_list->setEmpresaBase ( comp );
+        mui_list->setMainCompany ( comp );
         mui_list->setDBTableName ( "horario" );
         mui_list->setDBCampoId ( "idhorario" );
         mui_list->addSHeader ( "nomtrabajador",  BlDbField::DBvarchar, BlDbField::DBNoSave,     BlSubFormHeader::DBNone,                         _( "Nombre Trabajador" ) );

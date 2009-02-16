@@ -64,8 +64,8 @@ BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
     setDBTableName ( "asiento" );
 
     numdigitos = empresaBase() ->numdigitosempresa();
-    m_codigoinicial->setEmpresaBase ( emp );
-    m_codigofinal->setEmpresaBase ( emp );
+    m_codigoinicial->setMainCompany ( emp );
+    m_codigofinal->setMainCompany ( emp );
     /// Inicializamos la tabla de nivel.
     combonivel->insertItem ( 0, "2" );
     combonivel->insertItem ( 1, "3" );

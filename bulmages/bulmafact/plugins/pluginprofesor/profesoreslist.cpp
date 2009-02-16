@@ -67,7 +67,7 @@ ProfesoresList::ProfesoresList ( Company *comp, QWidget *parent, Qt::WFlags flag
     if ( res != 0 )
         return;
 
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
 
 
     setSubForm ( mui_list );
@@ -227,10 +227,10 @@ void ProfesoresList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void ProfesoresList::setEmpresaBase ( Company *comp )
+void ProfesoresList::setMainCompany ( Company *comp )
 {
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
 }
 
 /** Devuelve el identificador del cobro seleccionado

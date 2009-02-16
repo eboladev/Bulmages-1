@@ -75,11 +75,11 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 
     if ( linea->nomcampo() == "nomtarifa" ) {
         BusquedaTarifa *editor = new BusquedaTarifa ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         BusquedaAlmacen *editor = new BusquedaAlmacen ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         return editor;
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"

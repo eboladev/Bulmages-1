@@ -29,7 +29,7 @@
 /**
 \param emp
 **/
-DiarioPrint::DiarioPrint ( Empresa  *emp ) : PEmpresaBase ( emp )
+DiarioPrint::DiarioPrint ( Empresa  *emp ) : BlMainCompanyPointer ( emp )
 {
     _depura ( "DiarioPrint::DiarioPrint", 0 );
     fichero = NULL;

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "paisview.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "blsubform.h"
 
 
@@ -29,7 +29,7 @@
 \param emp
 \param parent
 **/
-PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
+PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
         : BlForm ( emp, parent )
 {
     _depura ( "PaisView::PaisView", 0 );
@@ -39,8 +39,8 @@ PaisView::PaisView ( EmpresaBase *emp, QWidget *parent )
 
     mui_datospais->setDisabled ( TRUE );
 
-    mui_list->setEmpresaBase ( emp );
-    mui_listprovincias->setEmpresaBase ( emp );
+    mui_list->setMainCompany ( emp );
+    mui_listprovincias->setMainCompany ( emp );
 
     /// Preparamos la lista de paises.
     mui_list->setDBTableName ( "pais" );

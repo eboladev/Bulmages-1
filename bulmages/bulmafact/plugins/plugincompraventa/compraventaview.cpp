@@ -73,8 +73,8 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         m_albaranp->addDBCampo ( "refalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia albaran proveedor" ) );
         m_albaranp->addDBCampo ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion albaran proveedor" ) );
 
-        subform3->setEmpresaBase ( comp );
-        m_descuentos3->setEmpresaBase ( comp );
+        subform3->setMainCompany ( comp );
+        m_descuentos3->setMainCompany ( comp );
 
         setTitleName ( _( "Compra Venta" ) );
         setDBTableName ( "albaran" );
@@ -99,13 +99,13 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         if ( res != 0 )
             return;
 
-        subform2->setEmpresaBase ( comp );
-        m_descuentos->setEmpresaBase ( comp );
-        mui_idalmacen->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idcliente->setEmpresaBase ( comp );
-        mui_idtrabajador->setEmpresaBase ( comp );
-        mui_refalbaran->setEmpresaBase ( comp );
+        subform2->setMainCompany ( comp );
+        m_descuentos->setMainCompany ( comp );
+        mui_idalmacen->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        mui_idtrabajador->setMainCompany ( comp );
+        mui_refalbaran->setMainCompany ( comp );
 
 			/// Establecemos los parametros de busqueda del Cliente
 		mui_idcliente->setLabel ( _( "Cliente:" ) );

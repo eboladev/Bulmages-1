@@ -62,7 +62,7 @@ Asiento1View::Asiento1View ( Empresa *emp, QWidget *parent, int )
     /// Conectamos el siganl returnPressed de mui_fecha
     connect(mui_fecha, SIGNAL(returnPressed()), this, SLOT(on_mui_fecha_enterPressed()));
 
-    mui_list->setEmpresaBase ( emp );
+    mui_list->setMainCompany ( emp );
     setListLinAsiento1 ( mui_list );
 
     /// Ocultamos los detalles del asiento.

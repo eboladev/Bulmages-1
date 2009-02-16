@@ -45,11 +45,11 @@
 \param faclistado
 \param parent
 **/
-EFQToolButtonImportar::EFQToolButtonImportar ( FacturasProveedorList *faclistado, QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+EFQToolButtonImportar::EFQToolButtonImportar ( FacturasProveedorList *faclistado, QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "EFQToolButtonImportar::EFQToolButtonImportar", 0 );
     m_faclistado = faclistado;
-    setEmpresaBase ( faclistado->empresaBase() );
+    setMainCompany ( faclistado->empresaBase() );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     _depura ( "END EFQToolButtonImportar::EFQToolButtonImportar", 0 );
 }
@@ -449,8 +449,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
 /// Damos valores a los campos DBvalue -----------------------------------------------------------------
 
-    lineas->setEmpresaBase ( empresaBase() );
-    descuentos->setEmpresaBase ( empresaBase() );
+    lineas->setMainCompany ( empresaBase() );
+    descuentos->setMainCompany ( empresaBase() );
 
     fp->setDBvalue ( "idproveedor", idProveedor );
     fp->setDBvalue ( "reffacturap", "" ); /// El valor lo pone el usuario que importa la factura

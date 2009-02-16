@@ -50,7 +50,7 @@ ListTallasView::ListTallasView ( Company *comp, QWidget *parent )
     setDBTableName ( "tc_talla" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listado->setEmpresaBase ( comp );
+    mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
     _depura ( "END ListTallasView::ListTallasView", 1 );

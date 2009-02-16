@@ -1,6 +1,6 @@
 #include "tecladonumerico.h"
 
-TecladoNumerico::TecladoNumerico ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
+TecladoNumerico::TecladoNumerico ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 }

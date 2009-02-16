@@ -28,12 +28,12 @@
 
 #include "blwidget.h"
 
-class BX11EmbedContainer : public QX11EmbedContainer, public PEmpresaBase
+class BX11EmbedContainer : public QX11EmbedContainer, public BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
-    BX11EmbedContainer ( EmpresaBase *emp, QWidget *parent = 0 );
+    BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent = 0 );
     virtual ~BX11EmbedContainer();
     int sacaWindow();
 };

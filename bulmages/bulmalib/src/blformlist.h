@@ -27,7 +27,7 @@
 
 #include "dialogchanges.h"
 #include "blfunctions.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "blsubform.h"
 #include "blwidget.h"
 
@@ -53,7 +53,7 @@ protected:
 
 public:
     BlFormList ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
-    BlFormList ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlFormList ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual void editar ( int );
     virtual void imprimir();
     virtual void presentar();

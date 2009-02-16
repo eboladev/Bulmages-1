@@ -49,7 +49,7 @@ ClientsList::ClientsList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmo
     if ( res != 0 )
         return;
 
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     mdb_idcliente = "";
     mdb_cifcliente = "";

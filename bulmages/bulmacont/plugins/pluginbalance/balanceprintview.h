@@ -38,7 +38,7 @@
     (Fechas y rangos) y que se encarga de generar el balance en los formatos de
     impresi&oacute;n indicados.
 */
-class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public PEmpresaBase
+class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

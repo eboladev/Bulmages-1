@@ -68,7 +68,7 @@ int entryPoint ( BulmaTPV *tpv )
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_busc = new Busqueda ( 0 );
-    g_busc->setEmpresaBase ( etpv );
+    g_busc->setMainCompany ( etpv );
 		/// Establecemos los parametros de busqueda del Cliente
     g_busc->setLabel ( _( "Cliente:" ) );
 	g_busc->setTableName( "cliente" );

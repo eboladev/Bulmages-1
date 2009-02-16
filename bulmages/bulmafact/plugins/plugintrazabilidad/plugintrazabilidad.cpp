@@ -73,7 +73,7 @@ void myplugin::inicializa ( Bulmafact *bges )
 {
     _depura ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setEmpresaBase ( bges->getcompany() );
+    setMainCompany ( bges->getcompany() );
     m_bulmafact = bges;
     QAction *accion = new QAction ( "&Movimientos", 0 );
     accion->setStatusTip ( "Ventana de Movimientos" );

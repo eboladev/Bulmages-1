@@ -38,7 +38,7 @@ extern Mod300ps *modelo;
 \param parent
 **/
 regivaprintview::regivaprintview ( Empresa *emp, QWidget *parent )
-        : QDialog ( parent ), PEmpresaBase ( emp )
+        : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "regivaprintview::regivaprintview", 0 );
     setupUi ( this );

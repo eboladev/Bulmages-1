@@ -52,7 +52,7 @@ RutaComercialView::RutaComercialView ( Company *comp, QWidget *parent )
     setupUi ( this );
 
 	/// Establecemos los parametros de busqueda del Cliente
-	mui_idcliente->setEmpresaBase(comp);
+	mui_idcliente->setMainCompany(comp);
     mui_idcliente->setLabel ( _( "Cliente:" ) );
 	mui_idcliente->setTableName( "cliente" );
 	mui_idcliente->m_valores["cifcliente"] = "";
@@ -99,12 +99,12 @@ RutaComercialView::~RutaComercialView()
 /**
 \param comp
 **/
-void RutaComercialView::setEmpresaBase ( Company *comp )
+void RutaComercialView::setMainCompany ( Company *comp )
 {
-    _depura ( "RutaComercialView::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_idcliente->setEmpresaBase ( comp );
-    _depura ( "END RutaComercialView::setEmpresaBase", 0 );
+    _depura ( "RutaComercialView::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_idcliente->setMainCompany ( comp );
+    _depura ( "END RutaComercialView::setMainCompany", 0 );
 }
 
 

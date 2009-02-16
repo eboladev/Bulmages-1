@@ -44,7 +44,7 @@ ListRegistroIvaView::ListRegistroIvaView ( Empresa * emp, QString, QWidget *pare
     emp->meteWindow ( windowTitle(), this );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Soportado.
-    mui_tablasoportado->setEmpresaBase ( emp );
+    mui_tablasoportado->setMainCompany ( emp );
     mui_tablasoportado->setDBTableName ( "registroiva" );
     mui_tablasoportado->setDBCampoId ( "idregistroiva" );
     mui_tablasoportado->addSHeader ( "idregistroiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id" ) );
@@ -68,7 +68,7 @@ ListRegistroIvaView::ListRegistroIvaView ( Empresa * emp, QString, QWidget *pare
     mui_tablasoportado->setinsercion ( FALSE );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Repercutido.
-    mui_tablarepercutido->setEmpresaBase ( emp );
+    mui_tablarepercutido->setMainCompany ( emp );
     mui_tablarepercutido->setDBTableName ( "registroiva" );
     mui_tablarepercutido->setDBCampoId ( "idregistroiva" );
     mui_tablarepercutido->addSHeader ( "idregistroiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id" ) );
@@ -92,7 +92,7 @@ ListRegistroIvaView::ListRegistroIvaView ( Empresa * emp, QString, QWidget *pare
     mui_tablarepercutido->setinsercion ( FALSE );
 
     /// Definiciones para la tabla de repercutido
-    mui_totalRepercutido->setEmpresaBase ( emp );
+    mui_totalRepercutido->setMainCompany ( emp );
     mui_totalRepercutido->setDBTableName ( "" );
     mui_totalRepercutido->setDBCampoId ( "" );
     mui_totalRepercutido->addSHeader ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "nombretipoiva" ) );
@@ -101,7 +101,7 @@ ListRegistroIvaView::ListRegistroIvaView ( Empresa * emp, QString, QWidget *pare
     mui_totalRepercutido->setinsercion ( FALSE );
 
     /// Definiciones para la tabla de soportado
-    mui_totalSoportado->setEmpresaBase ( emp );
+    mui_totalSoportado->setMainCompany ( emp );
     mui_totalSoportado->setDBTableName ( "" );
     mui_totalSoportado->setDBCampoId ( "" );
     mui_totalSoportado->addSHeader ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "nombretipoiva" ) );

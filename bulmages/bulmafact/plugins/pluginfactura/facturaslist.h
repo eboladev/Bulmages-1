@@ -62,7 +62,7 @@ public:
     FacturasList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~FacturasList();
     void iniciaForm();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString idfactura();
     void setidcliente ( QString val );
     void setidarticulo ( QString val );

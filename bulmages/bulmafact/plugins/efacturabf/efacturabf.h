@@ -42,7 +42,7 @@ extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( Fact
 extern BlApplication *theApp;
 
 
-class efacturabf : public QObject, PEmpresaBase
+class efacturabf : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

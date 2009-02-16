@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMPRESABASE_H
-#define EMPRESABASE_H
+#ifndef BLMAINCOMPANY_H
+#define BLMAINCOMPANY_H
 
 #include <QWorkspace>
 #include <QProgressBar>
@@ -31,7 +31,7 @@
 #include "blworkspace.h"
 
 
-class EmpresaBase : public BlPostgreSqlClient
+class BlMainCompany : public BlPostgreSqlClient
 {
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
@@ -47,8 +47,8 @@ public:
     QProgressBar *m_progressbar;
 
 public:
-    EmpresaBase();
-    virtual ~EmpresaBase();
+    BlMainCompany();
+    virtual ~BlMainCompany();
     virtual void init ( QString bd, QString tipo );
     QString searchCompany ( QString );
     void setListVentanas ( ListVentanas *doc );

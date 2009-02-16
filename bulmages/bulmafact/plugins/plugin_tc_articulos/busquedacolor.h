@@ -65,7 +65,7 @@ public:
     virtual void setidtc_color ( QString idtc_color );
     virtual void setValorCampo ( QString idtc_color );
     QString idtc_color();
-    void setEmpresaBase ( Company * );
+    void setMainCompany ( Company * );
     virtual QString valorCampo();
 
 public slots:

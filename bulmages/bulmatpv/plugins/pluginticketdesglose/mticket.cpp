@@ -15,7 +15,7 @@ extern QTextBrowser *g_browser;
 typedef QMap<QString, BlFixed> base;
 
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : QTextBrowser ( parent ) , PEmpresaBase ( emp )
+MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
 {
     _depura ( "MTicket::MTicket", 0 );
 //    emp->pWorkspace() ->addWindow ( this );

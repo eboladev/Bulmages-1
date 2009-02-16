@@ -33,7 +33,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "pluginclipboardbf.h"
 
 

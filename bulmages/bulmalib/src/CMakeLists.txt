@@ -52,7 +52,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blworkspace.cpp
 			blapplication.cpp
 			blform.cpp
-			empresabase.cpp
+			blmaincompany.cpp
 			qtexteditdelegate.cpp
 			bldoublespinbox.cpp
 			blwidget.cpp
@@ -103,7 +103,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			blconfiguration.h
 			bldb.h
 			dialogchanges.h
-			empresabase.h
+			blmaincompany.h
 			blform.h
 			blfixed.h
 			blfunctions.h
@@ -133,7 +133,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 #			plugins.h 
 #			bldb.h 
 #			bldbsubform.h 
-#			empresabase.h 
+#			blmaincompany.h 
 #			blmainwindow.h
 
 

@@ -39,7 +39,7 @@ extern "C" MY_EXPORT int SNewArticuloView (Company *);
 extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 
 
-class MyPlugArt : public QObject, PEmpresaBase
+class MyPlugArt : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

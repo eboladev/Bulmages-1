@@ -47,9 +47,9 @@ Q19View::Q19View ( FacturasList *fac, Company *comp, QWidget *parent )
         m_facturasList = fac;
 
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-//        mui_idcliente->setEmpresaBase ( comp );
-//        mui_refcobro->setEmpresaBase ( comp );
-        mui_idbanco->setEmpresaBase ( comp );
+//        mui_idcliente->setMainCompany ( comp );
+//        mui_refcobro->setMainCompany ( comp );
+        mui_idbanco->setMainCompany ( comp );
         mui_idbanco->setidbanco ( "0" );
 
         setDBTableName ( "factura" );

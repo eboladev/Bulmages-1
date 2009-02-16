@@ -67,7 +67,7 @@ public:
     ~RutaComercialList();
     void presenta();
     QString idpresupuesto();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     void imprimir();
     void setidcliente ( QString val );
     QString generaFiltro();

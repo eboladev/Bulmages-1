@@ -36,7 +36,7 @@ private:
     BlForm *m_BlForm;
 
 public:
-    FichaCfg ( EmpresaBase *, BlForm *parent = 0, Qt::WFlags f = 0 );
+    FichaCfg ( BlMainCompany *, BlForm *parent = 0, Qt::WFlags f = 0 );
     ~FichaCfg();
 };
 

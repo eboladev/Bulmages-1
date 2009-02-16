@@ -48,7 +48,7 @@ ZList::ZList ( Company *comp, QWidget *parent, Qt::WFlags flag )
     int res = g_plugins->lanza ( "ZList_ZList", this );
     if ( res != 0 )
         return;
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
     mui_list->setDBTableName ( "z" );
@@ -101,12 +101,12 @@ QString ZList::idalmacen()
 /**
 \param comp
 **/
-void ZList::setEmpresaBase ( Company *comp )
+void ZList::setMainCompany ( Company *comp )
 {
-    _depura ( "ZList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    _depura ( "END ZList::setEmpresaBase", 0 );
+    _depura ( "ZList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    _depura ( "END ZList::setMainCompany", 0 );
 }
 
 

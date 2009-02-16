@@ -56,10 +56,10 @@ ContratoView::ContratoView ( Company *comp, QWidget *parent )
         if ( res != 0 )
             return;
 
-        subform2->setEmpresaBase ( comp );
-        mui_lineas->setEmpresaBase ( comp );
-        mui_idcliente->setEmpresaBase ( comp );
-        mui_refcontrato->setEmpresaBase ( comp );
+        subform2->setMainCompany ( comp );
+        mui_lineas->setMainCompany ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        mui_refcontrato->setMainCompany ( comp );
 
 		/// Establecemos los parametros de busqueda del Cliente
 		mui_idcliente->setLabel ( _( "Cliente:" ) );

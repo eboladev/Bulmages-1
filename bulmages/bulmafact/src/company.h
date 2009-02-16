@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "blsplashscreen.h"
 
 
@@ -41,7 +41,7 @@ class Bulmafact;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class Company : public EmpresaBase
+class Company : public BlMainCompany
 {
 private:
     /// Puntero al mainWindow

@@ -11,7 +11,7 @@
 #include "tickets.h"
 
 
-Abrevs::Abrevs ( EmpresaBase *emp, QWidget *parent ) : BlWidget ( emp, parent )
+Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 

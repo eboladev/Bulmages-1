@@ -32,7 +32,7 @@ class Empresa;
 
 ///
 /** */
-class selectcanalview : public QDialog, public Ui_SelectCanalBase, public PEmpresaBase
+class selectcanalview : public QDialog, public Ui_SelectCanalBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

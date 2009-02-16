@@ -30,7 +30,7 @@
     base de datos.
     Contiene la implementacion de la clase importainteligente que sirve para importar
     ficheros de XML a la base de datos de BulmaCont. */
-importainteligente::importainteligente ( Empresa *emp ) : QXmlDefaultHandler(), PEmpresaBase ( emp )
+importainteligente::importainteligente ( Empresa *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
     _depura ( "importainteligente::importainteligente", 0 );
     tag = "";

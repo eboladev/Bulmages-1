@@ -70,7 +70,7 @@ public slots:
 
 /// OJO. Esta clase est&aacute; definida aqu&iacute; pero es el lanzador del plugin para las
 /// entradas del men&uacute; del plugin.
-class myplugin1 : public QObject, public PEmpresaBase
+class myplugin1 : public QObject, public BlMainCompanyPointer
 {
     Q_OBJECT
 

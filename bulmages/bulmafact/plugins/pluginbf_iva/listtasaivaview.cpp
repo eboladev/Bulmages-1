@@ -50,7 +50,7 @@ ListTasaIVAView::ListTasaIVAView ( Company *comp, QWidget *parent )
     setDBTableName ( "tasa_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listado->setEmpresaBase ( comp );
+    mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
     _depura ( "END ListTasaIVAView::ListTasaIVAView", 1 );

@@ -69,7 +69,7 @@ private:
 public:
     AlbaranClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     AlbaranClienteList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    void setEmpresaBase ( Company * );
+    void setMainCompany ( Company * );
     ~AlbaranClienteList();
     void presentar();
     void imprimir();

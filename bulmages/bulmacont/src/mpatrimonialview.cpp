@@ -32,7 +32,7 @@
 \param fl
 **/
 mpatrimonialview::mpatrimonialview ( Empresa *emp, QWidget *parent, Qt::WFlags fl )
-        : QDialog ( parent, fl ), PEmpresaBase ( emp )
+        : QDialog ( parent, fl ), BlMainCompanyPointer ( emp )
 {
     _depura ( "mpatrimonialview::mpatrimonialview", 0 );
     setupUi ( this );

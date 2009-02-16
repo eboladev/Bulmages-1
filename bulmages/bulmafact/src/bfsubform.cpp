@@ -455,11 +455,11 @@ void BfSubForm::setIdAlmacen ( QString id )
 /**
 \param c
 **/
-void BfSubForm::setEmpresaBase ( EmpresaBase *c )
+void BfSubForm::setMainCompany ( BlMainCompany *c )
 {
     _depura ( "BfSubForm::setcompany", 0 );
-    BlSubForm::setEmpresaBase ( c );
-    m_delegate->setEmpresaBase ( c );
+    BlSubForm::setMainCompany ( c );
+    m_delegate->setMainCompany ( c );
     _depura ( "END BfSubForm::setcompany", 0 );
 }
 
@@ -516,7 +516,7 @@ QString BfSubForm::idAlmacen ()
 /**
 \param parent
 **/
-BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
+BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BfSubFormDelegate::BfSubFormDelegate", 0 );
     m_subform = ( BfSubForm * ) parent;
@@ -567,22 +567,22 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         BusquedaArticuloDelegate * editor = new BusquedaArticuloDelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaArticulo" );
         return editor;
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         BusquedaTipoIVADelegate * editor = new BusquedaTipoIVADelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTipoIVA" );
         return editor;
     } else if ( linea->nomcampo() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
         BusquedaTrabajadorDelegate * editor = new BusquedaTrabajadorDelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
         BusquedaAlmacenDelegate * editor = new BusquedaAlmacenDelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );
         return editor;
     } else  {

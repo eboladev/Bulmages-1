@@ -26,7 +26,7 @@
 
 #include "blfunctions.h"
 #include "blform.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 
 
 extern "C" MY_EXPORT int BlForm_BlForm ( BlForm * );

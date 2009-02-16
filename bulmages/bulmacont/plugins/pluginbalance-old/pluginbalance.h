@@ -30,7 +30,7 @@
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 
 
-class pluginbalancemyplugin4 : public QObject, PEmpresaBase
+class pluginbalancemyplugin4 : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -53,7 +53,7 @@ IncidenciaComercialView::IncidenciaComercialView ( Company *comp, QWidget *paren
     dialogChanges_cargaInicial();
 
 		/// Establecemos los parametros de busqueda del Cliente
-	mui_idcliente->setEmpresaBase(comp);
+	mui_idcliente->setMainCompany(comp);
     mui_idcliente->setLabel ( _( "Cliente:" ) );
 	mui_idcliente->setTableName( "cliente" );
 	mui_idcliente->m_valores["cifcliente"] = "";
@@ -116,12 +116,12 @@ void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
 /**
 \param comp
 **/
-void IncidenciaComercialView::setEmpresaBase ( Company *comp )
+void IncidenciaComercialView::setMainCompany ( Company *comp )
 {
     _depura ( "IncidenciaComercialView::setcompany", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_idcliente->setEmpresaBase ( comp );
-    mui_idtrabajador->setEmpresaBase ( comp );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_idcliente->setMainCompany ( comp );
+    mui_idtrabajador->setMainCompany ( comp );
     mui_idtrabajador->setId ( "" );
     _depura ( "END IncidenciaComercialView::setcompany", 0 );
 

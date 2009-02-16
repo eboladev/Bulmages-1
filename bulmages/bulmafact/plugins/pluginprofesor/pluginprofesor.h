@@ -36,7 +36,7 @@ extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
 extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
 
 
-class MyPlugProf : public QObject, PEmpresaBase
+class MyPlugProf : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

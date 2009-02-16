@@ -42,7 +42,7 @@
 \param art
 \param parent
 **/
-CatalogoQToolButton::CatalogoQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+CatalogoQToolButton::CatalogoQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "CatalogoQToolButton::CatalogoQToolButton", 0 );
     m_articuloList = art;
@@ -85,7 +85,7 @@ void CatalogoQToolButton::click()
 {
     _depura ( "CatalogoQToolButton::click", 0 );
 
-    setEmpresaBase ( m_articuloList->empresaBase() );
+    setMainCompany ( m_articuloList->empresaBase() );
 
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "articulos.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "articulos.rml";

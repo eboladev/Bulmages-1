@@ -35,7 +35,7 @@
 #include "blwidget.h"
 
 
-class EmpresaBase;
+class BlMainCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -51,7 +51,7 @@ private:
     QList<QString> m_claves;
 
 public:
-    ImportCSV ( EmpresaBase *, QWidget * );
+    ImportCSV ( BlMainCompany *, QWidget * );
     ~ImportCSV();
     void rellenarTablas();
     void procesarLinea ( const QString &linea );

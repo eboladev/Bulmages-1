@@ -47,7 +47,7 @@ extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
 
 // 
-class mypluginalb : public QObject, PEmpresaBase
+class mypluginalb : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -263,7 +263,7 @@ QString BlDbField::valorcampoprep ( int &error )
 /**
 \param con Puntero a la base de datos con la que vamos a trabajar.
 **/
-BlDbRecord::BlDbRecord ( EmpresaBase *con )
+BlDbRecord::BlDbRecord ( BlMainCompany *con )
 {
     _depura ( "BlDbRecord::BlDbRecord", 0 );
     m_conexionbase = con;
@@ -290,7 +290,7 @@ Esta clase funciona siempre ligada a una base de datos. Esta se especifica
 en el constructor de la clase.
 \param comp Puntero a la base de datos que debe utilizar la clase.
 **/
-void BlDbRecord::setconexionbase ( EmpresaBase *comp )
+void BlDbRecord::setconexionbase ( BlMainCompany *comp )
 {
     _depura ( "BlDbRecord::setconexionbase", 0 );
     m_conexionbase = comp;
@@ -302,7 +302,7 @@ void BlDbRecord::setconexionbase ( EmpresaBase *comp )
 /**
 \return Puntero a la base de datos con la que se ha inicializado la clase.
 **/
-EmpresaBase *BlDbRecord::conexionbase()
+BlMainCompany *BlDbRecord::conexionbase()
 {
     _depura ( "BlDbRecord::conexionbase", 0 );
     _depura ( "END BlDbRecord::conexionbase", 0 );

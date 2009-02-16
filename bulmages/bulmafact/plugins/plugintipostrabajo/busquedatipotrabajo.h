@@ -53,7 +53,7 @@ public:
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaTipoTrabajo : public QComboBox, public PEmpresaBase
+class BusquedaTipoTrabajo : public QComboBox, public BlMainCompanyPointer
 {
     Q_OBJECT
 

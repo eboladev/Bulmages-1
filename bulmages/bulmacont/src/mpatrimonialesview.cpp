@@ -29,7 +29,7 @@
 \param parent
 **/
 mpatrimonialesview::mpatrimonialesview ( Empresa *emp, QWidget *parent )
-        : QDialog ( parent ), PEmpresaBase ( emp )
+        : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "mpatrimonialesview::mpatrimonialesview", 0 );
     setupUi ( this );

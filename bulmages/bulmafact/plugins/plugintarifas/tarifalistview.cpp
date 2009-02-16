@@ -37,7 +37,7 @@ TarifaListView::TarifaListView ( Company *comp, QWidget *parent, Qt::WFlags flag
     _depura ( "TarifaListView::INIT_TarifaListView()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_list->setEmpresaBase ( empresaBase() );
+    mui_list->setMainCompany ( empresaBase() );
     mui_list->cargar();
     mui_list->setColumnWidth(0, 250);
     empresaBase() ->meteWindow ( _( "Tarifas" ), this );

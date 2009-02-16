@@ -46,7 +46,7 @@ ListZonaComercialView::ListZonaComercialView ( Company *comp, QWidget *parent )
     _depura ( "INIT_ListZonaComercialView::ListZonaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listado->setEmpresaBase ( comp );
+    mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
     _depura ( "END_ListZonaComercialView::ListZonaComercialView", 0 );

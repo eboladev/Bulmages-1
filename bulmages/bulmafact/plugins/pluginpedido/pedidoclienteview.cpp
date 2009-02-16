@@ -75,13 +75,13 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         int res = g_plugins->lanza ( "PedidoClienteView_PedidoClienteView", this );
         if ( res != 0 )
             return;
-        subform3->setEmpresaBase ( comp );
-        mui_idcliente->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
-        m_descuentos->setEmpresaBase ( comp );
-        mui_idalmacen->setEmpresaBase ( comp );
-        mui_idtrabajador->setEmpresaBase ( comp );
-        mui_refpedidocliente->setEmpresaBase ( comp );
+        subform3->setMainCompany ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
+        m_descuentos->setMainCompany ( comp );
+        mui_idalmacen->setMainCompany ( comp );
+        mui_idtrabajador->setMainCompany ( comp );
+        mui_refpedidocliente->setMainCompany ( comp );
         setListaLineas ( subform3 );
         setListaDescuentos ( m_descuentos );
         mui_idforma_pago->setId ( "" );

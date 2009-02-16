@@ -30,7 +30,7 @@ class ComercialClienteView : public FichaBf, public Ui_ComercialClienteBase
     Q_OBJECT
 
 public:
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     ComercialClienteView ( QWidget *parent = 0 );
     ~ComercialClienteView();
 };

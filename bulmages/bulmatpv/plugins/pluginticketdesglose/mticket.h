@@ -30,7 +30,7 @@
 #include "empresatpv.h"
 #include "btsubform.h"
 
-class MTicket : public QTextBrowser, public PEmpresaBase
+class MTicket : public QTextBrowser, public BlMainCompanyPointer
 {
     Q_OBJECT
 public:

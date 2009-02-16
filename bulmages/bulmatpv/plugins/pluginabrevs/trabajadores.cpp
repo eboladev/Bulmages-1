@@ -7,7 +7,7 @@
 #include "empresatpv.h"
 
 
-Trabajadores::Trabajadores ( EmpresaBase *emp, QWidget *parent ) : QDialog ( parent ), PEmpresaBase ( emp )
+Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     setupUi ( this );
 

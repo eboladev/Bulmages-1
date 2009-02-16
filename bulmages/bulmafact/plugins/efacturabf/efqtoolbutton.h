@@ -29,7 +29,7 @@
 #include "blwidget.h"
 
 
-class EFQToolButton : public QToolButton, PEmpresaBase
+class EFQToolButton : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -61,7 +61,7 @@ public:
     ActividadesList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~ActividadesList();
     void presentar();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString idactividad();
     void imprimir();
     QString generaFiltro();

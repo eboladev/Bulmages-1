@@ -153,7 +153,7 @@ void myplugin::inicializa ( Bulmafact *bges )
 {
     _depura ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setEmpresaBase ( bges->getcompany() );
+    setMainCompany ( bges->getcompany() );
     m_bulmafact = bges;
 
     /// Miramos si existe un menu Herramientas

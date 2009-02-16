@@ -95,7 +95,7 @@ void mypluginalb::inicializa ( Bulmafact *bges )
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
-	setEmpresaBase ( bges->getcompany() );
+	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Albaranes a clientes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.svg" ) ));
 	planCuentas->setStatusTip ( _( "Albaranes a clientes" ) );

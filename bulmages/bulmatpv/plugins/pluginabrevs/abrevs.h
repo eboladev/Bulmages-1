@@ -18,7 +18,7 @@ class Abrevs : public BlWidget, public Ui_AbrevsBase
 public:
     QProcess *m_proc;
     QDockWidget *m_doc2;
-    Abrevs ( EmpresaBase *emp, QWidget *parent );
+    Abrevs ( BlMainCompany *emp, QWidget *parent );
     virtual ~Abrevs();
 
 public slots:

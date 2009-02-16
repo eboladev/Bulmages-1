@@ -50,11 +50,11 @@ ComercialClienteView::~ComercialClienteView()
 /**
 \param comp
 **/
-void ComercialClienteView::setEmpresaBase ( Company *comp )
+void ComercialClienteView::setMainCompany ( Company *comp )
 {
     _depura ( "ComercialClienteView::setcompany", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    mui_idzonacomercial->setEmpresaBase ( comp );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    mui_idzonacomercial->setMainCompany ( comp );
     mui_idzonacomercial->setidzonacomercial ( "0" );
     _depura ( "END ComercialClienteView::setcompany", 0 );
 }

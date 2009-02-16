@@ -61,7 +61,7 @@ public:
     TutoresList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~TutoresList();
     void presentar();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString idtutor();
     void imprimir();
     QString generaFiltro();

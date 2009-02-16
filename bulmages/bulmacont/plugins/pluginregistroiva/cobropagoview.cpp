@@ -39,7 +39,7 @@ cobropagoview::cobropagoview ( Empresa *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_companyact = emp;
-    mui_listado->setEmpresaBase ( m_companyact );
+    mui_listado->setMainCompany ( m_companyact );
     /// Inicializamos el listado.
     mui_listado->setDBTableName ( "prevcobro" );
     mui_listado->setDBCampoId ( "idprevcobro" );
@@ -57,7 +57,7 @@ cobropagoview::cobropagoview ( Empresa *emp, QWidget *parent )
     mui_listado->addSHeader ( "docprevcobro", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "docprevcobro" ) );
     mui_listado->setinsercion ( FALSE );
     /// Dejamos de inicializar el listado.
-    m_cuenta->setEmpresaBase ( emp );
+    m_cuenta->setMainCompany ( emp );
     on_mui_actualizar_clicked();
     m_companyact->meteWindow ( windowTitle(), this );
     _depura ( "END cobropagoview::cobropagoview", 0 );

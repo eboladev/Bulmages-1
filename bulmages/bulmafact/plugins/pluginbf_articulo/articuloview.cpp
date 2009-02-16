@@ -81,10 +81,10 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
             return;
         } // end if
 
-        mui_idfamilia->setEmpresaBase ( comp );
-        mui_idtipo_articulo->setEmpresaBase ( comp );
-        mui_idtipo_iva->setEmpresaBase ( comp );
-        m_componentes->setEmpresaBase ( comp );
+        mui_idfamilia->setMainCompany ( comp );
+        mui_idtipo_articulo->setMainCompany ( comp );
+        mui_idtipo_iva->setMainCompany ( comp );
+        m_componentes->setMainCompany ( comp );
 
         /// Inicializamos para que no se queden sin ser pintada.
         mui_idtipo_iva->setValorCampo ( "0" );

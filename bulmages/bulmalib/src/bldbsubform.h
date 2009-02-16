@@ -38,7 +38,7 @@
 class BlDbSubFormRecord: public BlDbRecord
 {
 public:
-    BlDbSubFormRecord ( EmpresaBase *con );
+    BlDbSubFormRecord ( BlMainCompany *con );
     ~BlDbSubFormRecord();
     int addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" );
     void refresh();

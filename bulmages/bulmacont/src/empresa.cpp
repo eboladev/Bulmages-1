@@ -69,7 +69,7 @@ void Empresa::s_asiento1()
 /**
 \param bcont
 **/
-Empresa::Empresa ( Bulmacont *bcont ) : EmpresaBase()
+Empresa::Empresa ( Bulmacont *bcont ) : BlMainCompany()
 {
     _depura ( "Empresa::Empresa", 0 );
     m_bulmacont = bcont;

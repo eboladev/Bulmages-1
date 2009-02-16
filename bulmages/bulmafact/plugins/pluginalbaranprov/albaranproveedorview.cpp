@@ -69,12 +69,12 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
         if ( res != 0 ) {
             return;
         } // end if
-        subform2->setEmpresaBase ( comp );
-        mui_idalmacen->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idproveedor->setEmpresaBase ( comp );
-        m_descuentos->setEmpresaBase ( comp );
-        mui_refalbaranp->setEmpresaBase ( comp );
+        subform2->setMainCompany ( comp );
+        mui_idalmacen->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
+        mui_idproveedor->setMainCompany ( comp );
+        m_descuentos->setMainCompany ( comp );
+        mui_refalbaranp->setMainCompany ( comp );
 
         /// Inicializamos FichaBf.
         setListaLineas ( subform2 );

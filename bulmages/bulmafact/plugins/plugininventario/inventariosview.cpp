@@ -88,7 +88,7 @@ InventariosView::InventariosView ( Company *comp, QWidget *parent, Qt::WFlags fl
     _depura ( "InventariosView::InventariosView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listado->setEmpresaBase ( comp );
+    mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {

@@ -48,7 +48,7 @@ extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 extern BlApplication *theApp;
 
 
-class myplugin : public QObject, PEmpresaBase
+class myplugin : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

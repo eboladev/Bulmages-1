@@ -25,32 +25,32 @@
 /**
 \param emp
 **/
-PEmpresaBase::PEmpresaBase ( EmpresaBase *emp )
+BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 {
-    _depura ( "PEmpresaBase::PEmpresaBase", 0 );
+    _depura ( "BlMainCompanyPointer::BlMainCompanyPointer", 0 );
     m_empresaBase = emp;
-    _depura ( "END PEmpresaBase::PEmpresaBase", 0 );
+    _depura ( "END BlMainCompanyPointer::BlMainCompanyPointer", 0 );
 }
 
 
 ///
 /**
 **/
-PEmpresaBase::PEmpresaBase()
+BlMainCompanyPointer::BlMainCompanyPointer()
 {
-    _depura ( "PEmpresaBase::PEmpresaBases", 0 );
+    _depura ( "BlMainCompanyPointer::BlMainCompanyPointers", 0 );
     m_empresaBase = NULL;
-    _depura ( "END PEmpresaBase::PEmpresaBases", 0 );
+    _depura ( "END BlMainCompanyPointer::BlMainCompanyPointers", 0 );
 }
 
 
 ///
 /**
 **/
-PEmpresaBase::~PEmpresaBase()
+BlMainCompanyPointer::~BlMainCompanyPointer()
 {
-    _depura ( "PEmpresaBase::~PEmpresaBase", 0 );
-    _depura ( "END PEmpresaBase::~PEmpresaBase", 0 );
+    _depura ( "BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
+    _depura ( "END BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
 }
 
 
@@ -58,11 +58,11 @@ PEmpresaBase::~PEmpresaBase()
 /**
 \param emp
 **/
-void PEmpresaBase::setEmpresaBase ( EmpresaBase *emp )
+void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 {
-    _depura ( "PEmpresaBase::setEmpresaBase", 0 );
+    _depura ( "BlMainCompanyPointer::setMainCompany", 0 );
     m_empresaBase = emp;
-    _depura ( "END PEmpresaBase::setEmpresaBase", 0 );
+    _depura ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
 
 
@@ -70,10 +70,10 @@ void PEmpresaBase::setEmpresaBase ( EmpresaBase *emp )
 /**
 \return
 **/
-EmpresaBase *PEmpresaBase::empresaBase()
+BlMainCompany *BlMainCompanyPointer::empresaBase()
 {
-    _depura ( "PEmpresaBase::empresaBase", 0 );
-    _depura ( "END PEmpresaBase::empresaBase", 0 );
+    _depura ( "BlMainCompanyPointer::empresaBase", 0 );
+    _depura ( "END BlMainCompanyPointer::empresaBase", 0 );
     return m_empresaBase;
 }
 
@@ -82,9 +82,9 @@ EmpresaBase *PEmpresaBase::empresaBase()
 /**
 \return
 **/
-QString PEmpresaBase::valorCampo()
+QString BlMainCompanyPointer::valorCampo()
 {
-    _depura ( "PEmpresaBase::valorCampo", 2, "debe ser derivado" );
+    _depura ( "BlMainCompanyPointer::valorCampo", 2, "debe ser derivado" );
     return "";
 }
 
@@ -92,9 +92,9 @@ QString PEmpresaBase::valorCampo()
 ///
 /**
 **/
-void PEmpresaBase::setValorCampo ( QString )
+void BlMainCompanyPointer::setValorCampo ( QString )
 {
-    _depura ( "PEmpresaBase::setValorCampo", 2, "debe ser derivado" );
+    _depura ( "BlMainCompanyPointer::setValorCampo", 2, "debe ser derivado" );
 }
 
 
@@ -109,7 +109,7 @@ void PEmpresaBase::setValorCampo ( QString )
 \param f
 **/
 BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f ), PEmpresaBase()
+        : QWidget ( parent, f ), BlMainCompanyPointer()
 {
     _depura ( "BlWidget::BlWidget", 0 );
     _depura ( "END BlWidget::BlWidget", 0 );
@@ -122,8 +122,8 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
 \param parent
 \param f
 **/
-BlWidget::BlWidget ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f )
-        : QWidget ( parent, f ), PEmpresaBase ( emp )
+BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
+        : QWidget ( parent, f ), BlMainCompanyPointer ( emp )
 {
     _depura ( "BlWidget::BlWidget", 0 );
     _depura ( "END BlWidget::BlWidget", 0 );

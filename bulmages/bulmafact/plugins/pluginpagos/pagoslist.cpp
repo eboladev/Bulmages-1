@@ -66,9 +66,9 @@ PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode e
 {
     _depura ( "PagosList::PagosList", 0 );
     setupUi ( this );
-    m_proveedor->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    mui_idbanco->setEmpresaBase ( comp );
+    m_proveedor->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
 	/// Establecemos los parametros de busqueda del Cliente
 	m_proveedor->setLabel ( _( "Proveedor:" ) );
@@ -211,15 +211,15 @@ void PagosList::borrar()
     _depura ( "END PagosList::borrar", 0 );
 }
 
-void PagosList::setEmpresaBase ( Company *comp )
+void PagosList::setMainCompany ( Company *comp )
 {
-    _depura ( "PagosList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_proveedor->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    mui_idbanco->setEmpresaBase ( comp );
+    _depura ( "PagosList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_proveedor->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
-    _depura ( "END PagosList::setEmpresaBase", 0 );
+    _depura ( "END PagosList::setMainCompany", 0 );
 }
 
 

@@ -63,10 +63,10 @@ ZView::ZView ( Company *comp, QWidget *parent )
         addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, _( "Id. almacen" ) );
         addDBCampo ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Almacen" ) );
 
-        mui_idalmacen->setEmpresaBase ( comp );
+        mui_idalmacen->setMainCompany ( comp );
 
 
-        mui_list->setEmpresaBase ( comp );
+        mui_list->setMainCompany ( comp );
         mui_list->setDBTableName ( "albaran" );
         mui_list->setDBCampoId ( "idalbaran" );
         mui_list->addSHeader ( "idalbaran",  BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Id albaran" ) );

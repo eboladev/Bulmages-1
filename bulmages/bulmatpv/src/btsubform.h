@@ -37,7 +37,7 @@ class BtSubForm;
 
 /// Clase BtSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BtSubFormDelegate : public QItemDelegate, public PEmpresaBase
+class BtSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
 {
 protected:
     BtSubForm *m_subform;
@@ -72,7 +72,7 @@ public:
     BtSubForm ( QWidget *parent = 0 );
     virtual ~BtSubForm();
     virtual void cargar ( QString query );
-    virtual void setEmpresaBase ( EmpresaBase * );
+    virtual void setMainCompany ( BlMainCompany * );
     virtual void on_mui_list_cellChanged ( int row, int col );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );

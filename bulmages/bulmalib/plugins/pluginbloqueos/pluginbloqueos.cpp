@@ -35,7 +35,7 @@
 
 #include "pluginbloqueos.h"
 #include "blform.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "bloqmenu.h"
 
 

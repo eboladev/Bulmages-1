@@ -41,7 +41,7 @@ class Empresa;
 /// Trata el formulario de impresi&oacute;n del registro de IVA y genera los
 /// listados pertinentes.
 /** */
-class regivaprintview : public QDialog, public Ui_RegIvaPrintBase, public PEmpresaBase
+class regivaprintview : public QDialog, public Ui_RegIvaPrintBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

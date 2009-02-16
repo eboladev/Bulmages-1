@@ -39,7 +39,7 @@ canalview::canalview ( Empresa  *emp, QWidget *parent )
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_idcanal->setEmpresaBase ( emp );
+    mui_idcanal->setMainCompany ( emp );
     mui_idcanal->setidcanal ( "0" );
 
     m_nomcanal = new QLineEdit();

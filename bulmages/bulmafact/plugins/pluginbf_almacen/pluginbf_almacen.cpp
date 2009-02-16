@@ -78,7 +78,7 @@ void MyPlugAlm::inicializa ( Bulmafact *bges )
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
-	setEmpresaBase ( bges->getcompany() );
+	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Almacenes" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.svg" ) ));
 	planCuentas->setStatusTip ( _( "Almacenes" ) );

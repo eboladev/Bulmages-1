@@ -133,11 +133,11 @@ QString BusquedaTalla::valorCampo()
 /**
 \param comp
 **/
-void BusquedaTalla::setEmpresaBase ( Company *comp )
+void BusquedaTalla::setMainCompany ( Company *comp )
 {
-    _depura ( "BusquedaTalla::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    _depura ( "END BusquedaTalla::setEmpresaBase", 0 );
+    _depura ( "BusquedaTalla::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    _depura ( "END BusquedaTalla::setMainCompany", 0 );
 }
 
 

@@ -40,7 +40,7 @@ extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 extern BlApplication *theApp;
 
 
-class myplugin : public QObject, PEmpresaBase
+class myplugin : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -29,7 +29,7 @@
 \param parent
 \param f
 **/
-FichaCfg::FichaCfg ( EmpresaBase *emp, BlForm *parent, Qt::WFlags f ) : BlWidget ( emp, parent, f )
+FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidget ( emp, parent, f )
 {
     _depura ( "FichaCfg::FichaCfg", 0 );
     setupUi ( this );

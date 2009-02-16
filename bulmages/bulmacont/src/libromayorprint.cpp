@@ -28,7 +28,7 @@
 /**
 \param emp
 **/
-libromayorprint::libromayorprint ( Empresa *emp ) : PEmpresaBase ( emp )
+libromayorprint::libromayorprint ( Empresa *emp ) : BlMainCompanyPointer ( emp )
 {
     _depura ( "libromayorprint::libromayorprint", 0 );
     fichero = NULL;

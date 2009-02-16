@@ -128,10 +128,10 @@ QString BusquedaAlmacen::id()
 /**
 \param comp
 **/
-void BusquedaAlmacen::setEmpresaBase ( Company *comp )
+void BusquedaAlmacen::setMainCompany ( Company *comp )
 {
-    _depura ( "BusquedaAlmacen::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
+    _depura ( "BusquedaAlmacen::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
     BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
     if ( cur ) {
         if ( !cur->eof() ) {
@@ -139,7 +139,7 @@ void BusquedaAlmacen::setEmpresaBase ( Company *comp )
         } // end if
         delete cur;
     } // end if
-    _depura ( "END BusquedaAlmacen::setEmpresaBase", 0 );
+    _depura ( "END BusquedaAlmacen::setMainCompany", 0 );
 }
 
 

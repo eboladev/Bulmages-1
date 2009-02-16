@@ -36,7 +36,7 @@ class company;
 /// Permite buscar y seleccionar un trabajador.
 /** Este 'QComboBox' permite buscar y seleccionar un
     tipo de IVA. Aparece en forma de desplegable.
-    Antes de utilizarlo debe ser inicializado con setEmpresaBase().
+    Antes de utilizarlo debe ser inicializado con setMainCompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
 class BusquedaTipoIva : public BlComboBox

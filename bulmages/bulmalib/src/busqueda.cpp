@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "busqueda.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "plugins.h"
 
 

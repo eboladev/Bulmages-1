@@ -67,7 +67,7 @@ public:
     virtual void setidtc_talla ( QString idalmacen );
     virtual void setValorCampo ( QString idalmacen );
     QString idtc_talla();
-    void setEmpresaBase ( Company * );
+    void setMainCompany ( Company * );
     virtual QString valorCampo();
 
 public slots:

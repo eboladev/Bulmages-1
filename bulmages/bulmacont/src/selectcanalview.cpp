@@ -32,7 +32,7 @@
 \param parent
 **/
 selectcanalview::selectcanalview ( Empresa *emp, QWidget *parent )
-        : QDialog ( parent ), PEmpresaBase ( emp )
+        : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "selectcanalview::selectcanalview", 0 );
     setupUi ( this );

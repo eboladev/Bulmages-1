@@ -59,7 +59,7 @@ void invalidaEstadAlias(void) {
         g_maxLenAlias = 0;
 }
 
-bool posibleAlias(QString alias, EmpresaBase *eb) {
+bool posibleAlias(QString alias, BlMainCompany *eb) {
    if ( MILISEG_REFRESCO_ESTAD_ALIAS &&       
        (g_ultimRefrescAlias.elapsed()>MILISEG_REFRESCO_ESTAD_ALIAS)) {
        invalidaEstadAlias();
@@ -103,7 +103,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
     l->setObjectName ( QString::fromUtf8 ( "lalias" ) );
-    l->setEmpresaBase ( art->empresaBase() );
+    l->setMainCompany ( art->empresaBase() );
     l->setDBTableName ( "alias" );
     l->setDBCampoId ( "idalias" );
     l->addSHeader ( "cadalias", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );

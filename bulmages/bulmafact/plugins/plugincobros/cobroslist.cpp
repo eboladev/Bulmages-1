@@ -70,9 +70,9 @@ CobrosList::CobrosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode
     int res = g_plugins->lanza ( "CobrosList_CobrosList", this );
     if ( res != 0 )
         return;
-    m_cliente->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    mui_idbanco->setEmpresaBase ( comp );
+    m_cliente->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
     setSubForm ( mui_list );
 		/// Establecemos los parametros de busqueda del Cliente
@@ -264,12 +264,12 @@ void CobrosList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void CobrosList::setEmpresaBase ( Company *comp )
+void CobrosList::setMainCompany ( Company *comp )
 {
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_cliente->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
-    mui_idbanco->setEmpresaBase ( comp );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_cliente->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
+    mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
 }
 

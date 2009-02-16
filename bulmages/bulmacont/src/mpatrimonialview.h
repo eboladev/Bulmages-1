@@ -32,7 +32,7 @@
 class Empresa;
 
 
-class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public PEmpresaBase
+class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

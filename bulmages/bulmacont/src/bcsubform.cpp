@@ -66,12 +66,12 @@ BcSubForm::~BcSubForm()
 /**
 \param c
 **/
-void BcSubForm::setEmpresaBase ( EmpresaBase *c )
+void BcSubForm::setMainCompany ( BlMainCompany *c )
 {
-    _depura ( "BcSubForm::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( c );
-    m_delegate->setEmpresaBase ( c );
-    _depura ( "END BcSubForm::setEmpresaBase", 0 );
+    _depura ( "BcSubForm::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( c );
+    m_delegate->setMainCompany ( c );
+    _depura ( "END BcSubForm::setMainCompany", 0 );
 }
 
 
@@ -83,7 +83,7 @@ Empresa *BcSubForm::empresaBase()
 {
     _depura ( "BcSubForm::empresaBase", 0 );
     _depura ( "END BcSubForm::empresaBase", 0 );
-    return ( ( Empresa * ) PEmpresaBase::empresaBase() );
+    return ( ( Empresa * ) BlMainCompanyPointer::empresaBase() );
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + +
@@ -488,7 +488,7 @@ void BcSubForm::procesaMenu ( QAction * )
 /**
 \param parent
 **/
-BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
+BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BcSubFormDelegate::BcSubFormDelegate", 0 );
     m_subform = ( BcSubForm * ) parent;
@@ -533,17 +533,17 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
         BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
-        editor->setEmpresaBase ( ( Empresa * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Empresa * ) m_subform->empresaBase() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * editor = new BusquedaCanalDelegate ( parent );
-        editor->setEmpresaBase ( m_subform->empresaBase() );
+        editor->setMainCompany ( m_subform->empresaBase() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCanalDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         BusquedaCCosteDelegate * editor = new BusquedaCCosteDelegate ( parent );
-        editor->setEmpresaBase ( m_subform->empresaBase() );
+        editor->setMainCompany ( m_subform->empresaBase() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {

@@ -118,7 +118,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     textLabel2_9_26->setText ( "Tipo Trabajo" );
 
     BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo ( trab->m_frameplugin );
-    tipotraba->setEmpresaBase ( trab->empresaBase() );
+    tipotraba->setMainCompany ( trab->empresaBase() );
     tipotraba->setidtipotrabajo ( "" );
     tipotraba->setObjectName ( QString::fromUtf8 ( "tipotraba" ) );
     hboxLayout160->addWidget ( tipotraba );
@@ -191,7 +191,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->m_delegate = new QSubForm3BfDelegate ( form );
     form->mui_list->setItemDelegate ( form->m_delegate );
     form->setObjectName ( "mui_tipostrabajo" );
-    form->setEmpresaBase ( alm->empresaBase() );
+    form->setMainCompany ( alm->empresaBase() );
     form->setDBTableName ( "almacentipotrabajo" );
     form->setDBCampoId ( "idalmacen" );
     form->addSHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
@@ -283,7 +283,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
         BusquedaTipoTrabajoDelegate * editor = new BusquedaTipoTrabajoDelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );

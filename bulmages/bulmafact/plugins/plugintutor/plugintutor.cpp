@@ -92,7 +92,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
-	setEmpresaBase ( bges->getcompany() );
+	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Tutores" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
 	planCuentas->setStatusTip ( _( "Tutores" ) );

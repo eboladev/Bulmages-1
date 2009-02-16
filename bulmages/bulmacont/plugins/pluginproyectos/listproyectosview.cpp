@@ -40,7 +40,7 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setSubForm ( mui_listado );
-    mui_listado->setEmpresaBase ( emp );
+    mui_listado->setMainCompany ( emp );
     mui_listado->setDBTableName ( "presupuestoc" );
     mui_listado->setDBCampoId ( "idpresupuestoc" );
     mui_listado->addSHeader ( "idpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );

@@ -53,25 +53,25 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     _depura ( "ArticuloView_ArticuloView", 0 );
     ListCompras *lc = new ListCompras ( art );
     lc->setObjectName ( QString::fromUtf8 ( "lcompras" ) );
-    lc->setEmpresaBase ( art->empresaBase() );
+    lc->setMainCompany ( art->empresaBase() );
     lc->cargar ( "0" );
     art->mui_tab->addTab ( lc, "Compras" );
 
     ListLResArticulo *l = new ListLResArticulo ( art );
     l->setObjectName ( QString::fromUtf8 ( "lresfacturacion" ) );
-    l->setEmpresaBase ( art->empresaBase() );
+    l->setMainCompany ( art->empresaBase() );
     l->cargar ( "0" );
     art->mui_tab->addTab ( l, "Ventas" );
 
     ListEntregas *l1 = new ListEntregas ( art );
     l1->setObjectName ( QString::fromUtf8 ( "lentregas" ) );
-    l1->setEmpresaBase ( art->empresaBase() );
+    l1->setMainCompany ( art->empresaBase() );
     l1->cargar ( "0" );
     art->mui_tab->addTab ( l1, "Entregas" );
 
     ListRecogidas *lr = new ListRecogidas ( art );
     lr->setObjectName ( QString::fromUtf8 ( "lrecogidas" ) );
-    lr->setEmpresaBase ( art->empresaBase() );
+    lr->setMainCompany ( art->empresaBase() );
     lr->cargar ( "0" );
     art->mui_tab->addTab ( lr, "Recogidas" );
 

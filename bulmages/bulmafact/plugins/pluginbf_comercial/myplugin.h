@@ -26,7 +26,7 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 
-class mypluginbf : public QObject, PEmpresaBase
+class mypluginbf : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

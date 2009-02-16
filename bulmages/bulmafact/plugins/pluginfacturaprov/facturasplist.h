@@ -64,7 +64,7 @@ public:
     QString idfacturap();
     QString generaFiltro();
     void presentar();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     void setidproveedor ( QString val );
     void setidarticulo ( QString val );
     void editar ( int );

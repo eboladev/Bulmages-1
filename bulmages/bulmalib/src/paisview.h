@@ -32,7 +32,7 @@
 #include "blform.h"
 
 
-class EmpresaBase;
+class BlMainCompany;
 
 
 /// Visualiza un centro de coste.
@@ -47,7 +47,7 @@ public:
 
 
 public:
-    PaisView ( EmpresaBase *, QWidget *parent = 0 );
+    PaisView ( BlMainCompany *, QWidget *parent = 0 );
     ~PaisView();
     void pintar();
     void mostrarplantilla();

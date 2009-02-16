@@ -44,7 +44,7 @@ public:
     void closeEvent ( QCloseEvent * );
     virtual void pintar() {}
     ;
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     virtual int guardar();
     virtual int cargar ( QString id );
 };

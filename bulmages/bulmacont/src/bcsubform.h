@@ -34,7 +34,7 @@ class BcSubForm;
 
 /// Clase BcSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class BcSubFormDelegate : public QItemDelegate, public PEmpresaBase
+class BcSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
 {
 private:
     /// Clase padre y acceso a base de datos.
@@ -67,7 +67,7 @@ public:
     virtual void boton_diario1 ( int );
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );
-    virtual void setEmpresaBase ( EmpresaBase *c );
+    virtual void setMainCompany ( BlMainCompany *c );
     virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );

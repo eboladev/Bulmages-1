@@ -21,7 +21,7 @@
 #include <QMenu>
 
 #include "blformlist.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 
 
 ///
@@ -92,7 +92,7 @@ BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget
 \param f
 \param modo
 **/
-BlFormList::BlFormList ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f )
+BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f )
 {
     _depura ( "BlFormList::BlFormList", 0 );
     m_modo = modo;

@@ -40,7 +40,7 @@
 
 /// Imprime el libro diario.
 /** */
-class DiarioPrint : public PEmpresaBase
+class DiarioPrint : public BlMainCompanyPointer
 {
 public:
     char *finicial;

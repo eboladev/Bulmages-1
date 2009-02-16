@@ -435,7 +435,7 @@ void aplinteligentesview::mostrarplantilla()
             labelcta[i]->show();
             varcta[i] = new BusquedaCuenta ( mui_datosAsiento );
             varcta[i]->setGeometry ( QRect ( 150, inc , 300, 50 ) );
-            varcta[i]->setEmpresaBase ( empresaBase() );
+            varcta[i]->setMainCompany ( empresaBase() );
             connect ( varcta[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_cta() ) );
             connect ( varcta[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( codigo_textChanged ( const QString & ) ) );
             varcta[i]->show();

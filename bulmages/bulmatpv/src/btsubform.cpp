@@ -239,11 +239,11 @@ void BtSubForm::setIdProveedor ( QString id )
 /**
 \param c
 **/
-void BtSubForm::setEmpresaBase ( EmpresaBase *c )
+void BtSubForm::setMainCompany ( BlMainCompany *c )
 {
     _depura ( "BtSubForm::setcompany", 0 );
-    BlSubForm::setEmpresaBase ( c );
-    m_delegate->setEmpresaBase ( c );
+    BlSubForm::setMainCompany ( c );
+    m_delegate->setMainCompany ( c );
     _depura ( "END BtSubForm::setcompany", 0 );
 }
 
@@ -269,7 +269,7 @@ int BtSubForm::cerrarEditor()
 /**
 \param parent
 **/
-BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), PEmpresaBase()
+BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BtSubFormDelegate::BtSubFormDelegate", 0 );
     m_subform = ( BtSubForm * ) parent;
@@ -321,19 +321,19 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         /*
             } else if (linea->nomcampo() == "codigocompletoarticulo") {
                 BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
-                editor->setEmpresaBase((Company *)m_subform->empresaBase());
+                editor->setMainCompany((Company *)m_subform->empresaBase());
                 return editor;
             } else if (linea->nomcampo() == "desctipo_iva") {
                 BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
-                editor->setEmpresaBase((Company *)m_subform->empresaBase());
+                editor->setMainCompany((Company *)m_subform->empresaBase());
                 return editor;
             } else if (linea->nomcampo() == "nomtrabajador") {
                 BusquedaTrabajadorDelegate *editor = new BusquedaTrabajadorDelegate(parent);
-                editor->setEmpresaBase((Company *)m_subform->empresaBase());
+                editor->setMainCompany((Company *)m_subform->empresaBase());
                 return editor;
             } else if (linea->nomcampo() == "nomalmacen") {
                 BusquedaAlmacenDelegate *editor = new BusquedaAlmacenDelegate(parent);
-                editor->setEmpresaBase((Company *)m_subform->empresaBase());
+                editor->setMainCompany((Company *)m_subform->empresaBase());
                 return editor;
             } else  {
         //        QWidget *it = QItemDelegate::createEditor(parent, option, index);

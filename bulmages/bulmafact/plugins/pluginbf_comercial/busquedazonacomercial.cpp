@@ -29,7 +29,7 @@
 \param parent
 **/
 BusquedaZonaComercial::BusquedaZonaComercial ( QWidget *parent )
-        : QComboBox ( parent ), PEmpresaBase()
+        : QComboBox ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BusquedaZonaComercial::BusquedaZonaComercial", 0 );
     m_cursorcombo = NULL;

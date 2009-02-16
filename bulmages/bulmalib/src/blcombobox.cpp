@@ -35,7 +35,7 @@ extern BlApplication *theApp;
 \param parent
 **/
 BlComboBox::BlComboBox ( QWidget *parent )
-        : QComboBox ( parent ), PEmpresaBase()
+        : QComboBox ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BlComboBox::BlComboBox", 0 );
     m_cursorcombo = NULL;

@@ -63,7 +63,7 @@ public:
     ~BusquedaAlmacen();
     virtual void setId ( QString idalmacen );
     QString id();
-    void setEmpresaBase ( Company * );
+    void setMainCompany ( Company * );
     void m_activated ( int index );
 };
 

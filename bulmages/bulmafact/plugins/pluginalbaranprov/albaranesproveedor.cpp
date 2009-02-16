@@ -64,20 +64,20 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
 /**
 \param comp
 **/
-void AlbaranesProveedor::setEmpresaBase ( Company *comp )
+void AlbaranesProveedor::setMainCompany ( Company *comp )
 {
-    _depura ( "AlbaranesProveedor::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_proveedor->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    _depura ( "AlbaranesProveedor::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_proveedor->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
 	/// Establecemos los parametros de busqueda del Cliente
 	m_proveedor->setLabel ( _( "Proveedor:" ) );
 	m_proveedor->setTableName( "proveedor" );
 	m_proveedor->m_valores["cifproveedor"] = "";
 	m_proveedor->m_valores["nomproveedor"] = "";
 
-    _depura ( "END AlbaranesProveedor::setEmpresaBase", 0 );
+    _depura ( "END AlbaranesProveedor::setMainCompany", 0 );
 }
 
 
@@ -150,9 +150,9 @@ AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFl
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
     setupUi ( this );
-    m_proveedor->setEmpresaBase ( comp );
-    m_articulo->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    m_proveedor->setMainCompany ( comp );
+    m_articulo->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     presentar();
     mdb_idalbaranp = "";

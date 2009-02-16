@@ -59,7 +59,7 @@ CuentaListView::CuentaListView ( Empresa *comp, QWidget *parent, Qt::WFlags flag
         _depura ( "END CuentaListView::CuentaListView", 0, "Salida por plugin" );
         return;
     } // end if
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
     if ( modoEdicion() ) {
@@ -115,8 +115,8 @@ void CuentaListView::editar ( int row )
     mdb_codigocuenta = mui_list->DBvalue ( "codigo", row );
     if ( modoEdicion() ) {
 /*
-        ArticuloView * art = ( ( Empresa * ) EmpresaBase() ) ->newArticuloView();
-        EmpresaBase() ->m_pWorkspace->addWindow ( art );
+        ArticuloView * art = ( ( Empresa * ) BlMainCompany() ) ->newArticuloView();
+        BlMainCompany() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
             delete art;
@@ -168,7 +168,7 @@ void CuentaListView::borrar()
                 _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
                 QMessageBox::Yes, QMessageBox::No ) ) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = EmpresaBase() ->ejecuta ( SQLQuery );
+            int error = BlMainCompany() ->ejecuta ( SQLQuery );
             if ( error )
                 throw - 1;
             presentar();
@@ -324,7 +324,7 @@ void CuentaListView::crear()
 {
 /*
     _depura ( "CuentaListView::crear", 0 );
-    ( ( Empresa * ) EmpresaBase() ) ->s_newArticulo();
+    ( ( Empresa * ) BlMainCompany() ) ->s_newArticulo();
     _depura ( "END CuentaListView::crear", 0 );
 */
 }

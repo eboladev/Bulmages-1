@@ -43,7 +43,7 @@
 \param art
 \param parent
 **/
-InformeQToolButton1::InformeQToolButton1 ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+InformeQToolButton1::InformeQToolButton1 ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "InformeQToolButton1::InformeQToolButton1", 0 );
     m_clientsList = art;
@@ -88,7 +88,7 @@ void InformeQToolButton1::click()
     int y = 0;
 
     // Puede que no se haya actualizado bien el company
-    setEmpresaBase ( m_clientsList->empresaBase() );
+    setMainCompany ( m_clientsList->empresaBase() );
 
 
     // Solicitamos el ejercicio
@@ -296,7 +296,7 @@ QString InformeQToolButton1::generarCliente ( QString idcliente, int row, int an
 \param art
 \param parent
 **/
-InformeProveedorQToolButton1::InformeProveedorQToolButton1 ( ProveedorList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+InformeProveedorQToolButton1::InformeProveedorQToolButton1 ( ProveedorList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
     _depura ( "InformeProveedorQToolButton1::InformeProveedorQToolButton1", 0 );
     m_proveedorList = art;
@@ -341,7 +341,7 @@ void InformeProveedorQToolButton1::click()
     int y = 0;
 
     // Puede que no se haya actualizado bien el company
-    setEmpresaBase ( m_proveedorList->empresaBase() );
+    setMainCompany ( m_proveedorList->empresaBase() );
 
 
     // Solicitamos el ejercicio

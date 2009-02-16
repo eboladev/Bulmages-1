@@ -49,12 +49,12 @@ using namespace std;
 \param emp
 **/
 BalancePrintView::BalancePrintView ( Empresa *emp )
-        : QDialog ( 0 ), PEmpresaBase ( emp )
+        : QDialog ( 0 ), BlMainCompanyPointer ( emp )
 {
     _depura ( "BalancePrintView::BalancePrintView", 0 );
     setupUi ( this );
-    m_codigoinicial->setEmpresaBase ( emp );
-    m_codigofinal->setEmpresaBase ( emp );
+    m_codigoinicial->setMainCompany ( emp );
+    m_codigofinal->setMainCompany ( emp );
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
     empresaBase()->begin();

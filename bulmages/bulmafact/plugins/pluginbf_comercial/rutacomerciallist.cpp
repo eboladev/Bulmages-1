@@ -65,8 +65,8 @@ RutaComercialList::RutaComercialList ( Company *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setSubForm ( mui_list );
-    m_idcliente->setEmpresaBase ( empresaBase() );
-    mui_list->setEmpresaBase ( comp );
+    m_idcliente->setMainCompany ( empresaBase() );
+    mui_list->setMainCompany ( comp );
     presenta();
     m_idpresupuesto = "";
     hideBusqueda();
@@ -74,7 +74,7 @@ RutaComercialList::RutaComercialList ( Company *comp, QWidget *parent )
     _depura ( "END RutaComercialList::RutaComercialList", 0 );
 
 		/// Establecemos los parametros de busqueda del Cliente
-	m_idcliente->setEmpresaBase(comp);
+	m_idcliente->setMainCompany(comp);
     m_idcliente->setLabel ( _( "Cliente:" ) );
 	m_idcliente->setTableName( "cliente" );
 	m_idcliente->m_valores["cifcliente"] = "";
@@ -96,12 +96,12 @@ RutaComercialList::~RutaComercialList()
 /**
 \param comp
 **/
-void RutaComercialList::setEmpresaBase ( Company *comp )
+void RutaComercialList::setMainCompany ( Company *comp )
 {
-    _depura ( "RutaComercialList::setEmpresaBase", 0 );
-    PEmpresaBase::setEmpresaBase ( comp );
-    m_idcliente->setEmpresaBase ( comp );
-    _depura ( "RutaComercialList::setEmpresaBase", 0 );
+    _depura ( "RutaComercialList::setMainCompany", 0 );
+    BlMainCompanyPointer::setMainCompany ( comp );
+    m_idcliente->setMainCompany ( comp );
+    _depura ( "RutaComercialList::setMainCompany", 0 );
 }
 
 

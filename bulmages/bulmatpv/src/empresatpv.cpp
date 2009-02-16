@@ -36,7 +36,7 @@
 /**
 \param bges
 **/
-EmpresaTPV::EmpresaTPV ( BulmaTPV *bges ) : EmpresaBase(), Input ( this )
+EmpresaTPV::EmpresaTPV ( BulmaTPV *bges ) : BlMainCompany(), Input ( this )
 {
     _depura ( "EmpresaTPV::EmpresaTPV", 0 );
     m_bulmaTPV = bges;

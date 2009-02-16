@@ -20,11 +20,11 @@
 
 #include "mypluginimportcsv.h"
 #include "importcsv.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 
 
 extern QMainWindow *g_bges_importcsv;
-extern EmpresaBase *g_emp_importcsv;
+extern BlMainCompany *g_emp_importcsv;
 
 
 ///

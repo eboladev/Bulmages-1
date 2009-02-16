@@ -43,7 +43,7 @@ extern "C" MY_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveed
 
 
 // 
-class mypluginalbp : public QObject, PEmpresaBase
+class mypluginalbp : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

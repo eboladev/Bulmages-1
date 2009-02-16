@@ -35,7 +35,7 @@ class Empresa;
 
 ///
 /** */
-class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public PEmpresaBase
+class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

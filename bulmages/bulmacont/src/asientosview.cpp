@@ -48,7 +48,7 @@ AsientosView::AsientosView ( Empresa *comp, QWidget *parent, Qt::WFlags flag, ed
     rellenaListaEjercicio();
 
     mui_filtrar->toggle();
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     empresaBase() ->meteWindow ( windowTitle(), this );
     _depura ( "END AsientosView::AsientosView", 0 );

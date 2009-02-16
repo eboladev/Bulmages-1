@@ -36,7 +36,7 @@ class BfSubForm;
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BfSubFormDelegate : public QItemDelegate, public PEmpresaBase
+class BfSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -81,7 +81,7 @@ public:
     BfSubForm ( QWidget *parent = 0 );
     virtual ~BfSubForm();
     virtual void cargar ( QString query );
-    virtual void setEmpresaBase ( EmpresaBase * );
+    virtual void setMainCompany ( BlMainCompany * );
     virtual void editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );
     virtual void pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp );

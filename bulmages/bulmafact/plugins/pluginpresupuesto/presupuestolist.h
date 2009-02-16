@@ -67,7 +67,7 @@ public:
     void borrar();
     void crear();
     QString idpresupuesto();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     void imprimir();
     void setidcliente ( QString val );
     void setidarticulo ( QString val );

@@ -42,7 +42,7 @@
 /**
 \param bges
 **/
-Company::Company ( Bulmafact *bges ) : EmpresaBase()
+Company::Company ( Bulmafact *bges ) : BlMainCompany()
 {
     _depura ( "Company::Company", 0 );
     m_bulmafact = bges;

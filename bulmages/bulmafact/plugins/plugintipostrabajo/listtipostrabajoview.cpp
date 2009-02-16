@@ -48,7 +48,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( Company *comp, QWidget *parent )
     setDBTableName ( _( "almacen" ) );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listado->setEmpresaBase ( comp );
+    mui_listado->setMainCompany ( comp );
 
     mui_listado->setDBTableName ( "tipotrabajo" );
     mui_listado->setDBCampoId ( "idtipotrabajo" );

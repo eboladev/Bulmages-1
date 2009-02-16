@@ -50,7 +50,7 @@ ccosteview::ccosteview ( Empresa  *emp, QWidget *parent )
     addDBCampo ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Descripcion" ) );
 
     /// Inicializamos el subformulario de centros distribuidos
-    mui_cdistribuidos->setEmpresaBase ( emp );
+    mui_cdistribuidos->setMainCompany ( emp );
     mui_cdistribuidos->setDBTableName ( "c_costedist" );
     mui_cdistribuidos->setFileConfig ( "ccostedist" );
     mui_cdistribuidos->setDBCampoId ( "idc_costedist" );

@@ -70,7 +70,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->mui_list->setItemDelegate ( l->m_delegate );
 
     l->setObjectName ( QString::fromUtf8 ( "laliastc" ) );
-    l->setEmpresaBase ( art->empresaBase() );
+    l->setMainCompany ( art->empresaBase() );
     l->setDBTableName ( "tc_articulo_alias" );
     l->setDBCampoId ( "idarticulo" );
     l->addSHeader ( "aliastc_articulo_tallacolor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
@@ -178,11 +178,11 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 
     if ( linea->nomcampo() == "nomtc_color" ) {
         BusquedaColorDelegate * editor = new BusquedaColorDelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else if ( linea->nomcampo() == "nomtc_talla" ) {
         BusquedaTallaDelegate * editor = new BusquedaTallaDelegate ( parent );
-        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );

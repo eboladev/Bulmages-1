@@ -30,7 +30,7 @@
 \param parent
 **/
 BusquedaTipoTrabajo::BusquedaTipoTrabajo ( QWidget *parent, const char * )
-        : QComboBox ( parent ), PEmpresaBase()
+        : QComboBox ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0 );
     m_cursorcombo = NULL;

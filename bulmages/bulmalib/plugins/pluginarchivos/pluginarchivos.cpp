@@ -35,7 +35,7 @@
 
 #include "pluginarchivos.h"
 #include "blform.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "archmenu.h"
 
 

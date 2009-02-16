@@ -35,7 +35,7 @@ VehiculoView::VehiculoView ( Company *emp, QWidget *parent )
     _depura ( "VehiculoView::VehiculoView", 0 );
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    mui_listadomantvehiculo->setEmpresaBase ( emp );
+    mui_listadomantvehiculo->setMainCompany ( emp );
 
     /// Inicializamos la clase para la base de datos.
     setTitleName ( _( "Vehiculo" ) );

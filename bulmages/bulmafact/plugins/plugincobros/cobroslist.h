@@ -61,7 +61,7 @@ public:
     CobrosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~CobrosList();
     void presentar();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString idcobro();
     void imprimir();
     void setidcliente ( QString val );

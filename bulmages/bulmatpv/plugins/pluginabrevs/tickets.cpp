@@ -7,7 +7,7 @@
 #include "ticket.h"
 
 
-Tickets::Tickets ( EmpresaBase *emp, QWidget *parent ) : QDialog ( parent ), PEmpresaBase ( emp )
+Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     setupUi ( this );
     EmpresaTPV *emp1 = ( EmpresaTPV * ) emp;

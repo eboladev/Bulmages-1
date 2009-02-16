@@ -35,7 +35,7 @@
 #include "providerslist.h"
 #include "blwidget.h"
 
-class InformeQToolButton1 : public QToolButton, PEmpresaBase
+class InformeQToolButton1 : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -53,7 +53,7 @@ public slots:
 };
 
 
-class InformeProveedorQToolButton1 : public QToolButton, PEmpresaBase
+class InformeProveedorQToolButton1 : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 

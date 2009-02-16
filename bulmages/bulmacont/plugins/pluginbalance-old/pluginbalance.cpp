@@ -76,7 +76,7 @@ void pluginbalancemyplugin4::inicializa ( Bulmacont *bges )
 {
     _depura ( "pluginbalancemyplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setEmpresaBase ( bges->empresaactual() );
+    setMainCompany ( bges->empresaactual() );
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas

@@ -45,7 +45,7 @@ tipoivaview::tipoivaview ( Empresa *emp, QWidget *parent )
     addDBCampo ( "porcentajetipoiva", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Porcentaje" ) );
     addDBCampo ( "idcuenta", BlDbField::DBint, BlDbField::DBNotNull, _( "Cuenta" ) );
 
-    mui_idcuenta->setEmpresaBase ( emp );
+    mui_idcuenta->setMainCompany ( emp );
     m_curtipoiva = NULL;
 
     dialogChanges_setQObjectExcluido ( mui_comboTipoIVA );

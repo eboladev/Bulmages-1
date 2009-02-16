@@ -51,9 +51,9 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_idproveedor->setEmpresaBase ( comp );
-        mui_refpago->setEmpresaBase ( comp );
-        mui_idbanco->setEmpresaBase ( comp );
+        mui_idproveedor->setMainCompany ( comp );
+        mui_refpago->setMainCompany ( comp );
+        mui_idbanco->setMainCompany ( comp );
 
         setTitleName ( _( "Pago" ) );
         setDBTableName ( "pago" );

@@ -72,18 +72,18 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
         } // end if
 
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_lineasDetalle->setEmpresaBase ( comp );
+        mui_lineasDetalle->setMainCompany ( comp );
         mui_lineasDetalle->inicializar();
-        mui_idproveedor->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
+        mui_idproveedor->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
         mui_idforma_pago->setId ( "0" );
-        mui_descuentos->setEmpresaBase ( comp );
+        mui_descuentos->setMainCompany ( comp );
         mui_descuentos->inicializar();
-        mui_idalmacen->setEmpresaBase ( comp );
+        mui_idalmacen->setMainCompany ( comp );
         mui_idalmacen->setId ( "0" );
-        mui_idtrabajador->setEmpresaBase ( comp );
+        mui_idtrabajador->setMainCompany ( comp );
         mui_idtrabajador->setId ( "0" );
-        mui_refpedidoproveedor->setEmpresaBase ( comp );
+        mui_refpedidoproveedor->setMainCompany ( comp );
 
 	/// Establecemos los parametros de busqueda del Cliente
 	mui_idproveedor->setLabel ( _( "Proveedor:" ) );

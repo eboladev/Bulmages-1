@@ -28,7 +28,7 @@
 #include "blform.h"
 
 
-class BlComboBox : public QComboBox, public PEmpresaBase
+class BlComboBox : public QComboBox, public BlMainCompanyPointer
 {
     Q_OBJECT
 

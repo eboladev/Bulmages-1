@@ -124,7 +124,7 @@ void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &
 \param emp
 \param parent
 **/
-CuadranteQTextDocument::CuadranteQTextDocument ( Company *emp, QWidget *parent ) : QLabel ( parent ),/* QTableWidgetItem(QTableWidgetItem::UserType),*/  PEmpresaBase ( emp )
+CuadranteQTextDocument::CuadranteQTextDocument ( Company *emp, QWidget *parent ) : QLabel ( parent ),/* QTableWidgetItem(QTableWidgetItem::UserType),*/  BlMainCompanyPointer ( emp )
 {
     _depura ( "CuadranteQTextDocument::CuadranteQTextDocument", 0 );
     setContextMenuPolicy ( Qt::CustomContextMenu );
@@ -462,7 +462,7 @@ const QString CuadranteQTextDocument::impresion()
 \param emp
 \param parent
 **/
-ImpCuadrante::ImpCuadrante ( Company *emp ) :  PEmpresaBase ( emp )
+ImpCuadrante::ImpCuadrante ( Company *emp ) :  BlMainCompanyPointer ( emp )
 {
     _depura ( "ImpCuadrante::ImpCuadrante", 0 );
     _depura ( "END ImpCuadrante::ImpCuadrante", 0 );

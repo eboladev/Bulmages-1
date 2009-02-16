@@ -31,7 +31,7 @@
 /**
 \param emp
 **/
-ImportBalance::ImportBalance ( Empresa *emp ) : QXmlDefaultHandler(), PEmpresaBase ( emp )
+ImportBalance::ImportBalance ( Empresa *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
     _depura ( "ImportBalance::ImportBalance", 0 );
     m_tag = "";

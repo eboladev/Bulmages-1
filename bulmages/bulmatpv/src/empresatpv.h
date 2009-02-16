@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 #include "listventanas.h"
 #include "blworkspace.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "blsplashscreen.h"
 #include "ticket.h"
 #include "input.h"
@@ -41,7 +41,7 @@ class BulmaTPV;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class EmpresaTPV : public EmpresaBase, public Input
+class EmpresaTPV : public BlMainCompany, public Input
 {
 private:
     /// Puntero al mainWindow

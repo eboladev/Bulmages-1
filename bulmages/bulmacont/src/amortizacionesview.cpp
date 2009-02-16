@@ -40,7 +40,7 @@ AmortizacionesView::AmortizacionesView ( Empresa *emp, QWidget *parent )
     setupUi ( this );
     setSubForm ( mui_listado );
     /// Hacemos la inicializacion de un listado embebido.
-    mui_listado->setEmpresaBase ( empresaBase() );
+    mui_listado->setMainCompany ( empresaBase() );
     mui_listado->setDBTableName ( "amortizacion" );
     mui_listado->setFileConfig ( "AmortizacionListSubform" );
     mui_listado->setDBCampoId ( "idamortizacion" );

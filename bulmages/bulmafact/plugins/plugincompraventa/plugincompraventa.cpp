@@ -70,7 +70,7 @@ void myplugincv::inicializa ( Bulmafact *bges )
     _depura ( "myplugincv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    setEmpresaBase ( bges->getcompany() );
+    setMainCompany ( bges->getcompany() );
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");

@@ -45,7 +45,7 @@ private:
 public:
     BusquedaSerieFactura ( QWidget *parent = 0 );
     ~BusquedaSerieFactura();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString id();
     virtual void setId ( QString );
     void m_activated ( int index );

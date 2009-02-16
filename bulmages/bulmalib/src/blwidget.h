@@ -27,32 +27,32 @@
 
 #include "dialogchanges.h"
 #include "blfunctions.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 
 
-class PEmpresaBase
+class BlMainCompanyPointer
 {
 private:
-    EmpresaBase *m_empresaBase;
+    BlMainCompany *m_empresaBase;
 
 public:
-    PEmpresaBase ( EmpresaBase * );
-    PEmpresaBase();
-    virtual ~PEmpresaBase();
-    virtual void setEmpresaBase ( EmpresaBase * );
-    virtual EmpresaBase *empresaBase();
+    BlMainCompanyPointer ( BlMainCompany * );
+    BlMainCompanyPointer();
+    virtual ~BlMainCompanyPointer();
+    virtual void setMainCompany ( BlMainCompany * );
+    virtual BlMainCompany *empresaBase();
     virtual QString valorCampo();
     virtual void setValorCampo ( QString );
 };
 
 
-class BlWidget : public QWidget, public PEmpresaBase
+class BlWidget : public QWidget, public BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
     BlWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
-    BlWidget ( EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0 );
+    BlWidget ( BlMainCompany *, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~BlWidget();
 };
 

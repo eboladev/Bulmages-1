@@ -30,7 +30,7 @@ class Empresa;
 
 ///
 /** */
-class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, PEmpresaBase
+class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, BlMainCompanyPointer
 {
     Q_OBJECT
 

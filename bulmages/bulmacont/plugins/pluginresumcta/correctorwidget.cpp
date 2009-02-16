@@ -30,7 +30,7 @@
 \param fl
 **/
 ResumCtaWidget::ResumCtaWidget ( Empresa *emp, QWidget* parent, Qt::WFlags fl )
-        : QWidget ( parent, fl ), PEmpresaBase ( emp )
+        : QWidget ( parent, fl ), BlMainCompanyPointer ( emp )
 {
     _depura ( "ResumCtaWidget::ResumCtaWidget", 0 );
     setupUi ( this );

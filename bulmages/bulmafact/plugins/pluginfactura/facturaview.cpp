@@ -80,13 +80,13 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         if ( res != 0 ) {
             return;
         } // end if
-        subform2->setEmpresaBase ( comp );
-        mui_idalmacen->setEmpresaBase ( comp );
-        mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idcliente->setEmpresaBase ( comp );
-        m_descuentos->setEmpresaBase ( comp );
-        mui_codigoserie_factura->setEmpresaBase ( comp );
-        mui_reffactura->setEmpresaBase ( comp );
+        subform2->setMainCompany ( comp );
+        mui_idalmacen->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
+        mui_idcliente->setMainCompany ( comp );
+        m_descuentos->setMainCompany ( comp );
+        mui_codigoserie_factura->setMainCompany ( comp );
+        mui_reffactura->setMainCompany ( comp );
 
         /// Inicializamos FichaBf.
         setListaLineas ( subform2 );

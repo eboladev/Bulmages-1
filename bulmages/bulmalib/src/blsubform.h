@@ -166,7 +166,7 @@ public:
 public:
     BlSubForm ( QWidget *parent );
     virtual ~BlSubForm();
-    virtual void setEmpresaBase ( EmpresaBase * );
+    virtual void setMainCompany ( BlMainCompany * );
     void setProcesarCambios ( bool );
     bool procesaCambios();
     /// Define si el listado presentar&aacute; las filas con colores alternativos.

@@ -67,9 +67,9 @@ ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, 
         _depura ( "END ArticuloList1::ArticuloList1", 0, "Salida por plugin" );
         return;
     } // end if
-    m_tipoarticulo->setEmpresaBase ( comp );
-    m_familia->setEmpresaBase ( comp );
-    mui_list->setEmpresaBase ( comp );
+    m_tipoarticulo->setMainCompany ( comp );
+    m_familia->setMainCompany ( comp );
+    mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     mui_list->setFocusPolicy ( Qt::NoFocus );
     m_usadoarticulo->setCheckState ( Qt::Unchecked );

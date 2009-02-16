@@ -60,10 +60,10 @@ ProyectoView::ProyectoView ( Empresa *comp, QWidget *parent )
         addDBCampo ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
 
         /// Inicializamos componentes.
-        mui_idc_coste->setEmpresaBase ( comp );
+        mui_idc_coste->setMainCompany ( comp );
         mui_idc_coste->setidc_coste ( "" );
-        mui_ingresos->setEmpresaBase ( comp );
-        mui_gastos->setEmpresaBase ( comp );
+        mui_ingresos->setMainCompany ( comp );
+        mui_gastos->setMainCompany ( comp );
 
         /// Inicializamos el listado.
         mui_ingresos->setDBTableName ( "lingpresupuestoc" );

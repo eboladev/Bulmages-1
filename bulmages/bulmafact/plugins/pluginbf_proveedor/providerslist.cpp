@@ -45,7 +45,7 @@ ProveedorList::ProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, 
 {
     _depura ( "ProveedorList::ProveedorList", 0 );
     setupUi ( this );
-    mui_list->setEmpresaBase ( comp );
+    mui_list->setMainCompany ( comp );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ProveedorList_ProveedorList", this );

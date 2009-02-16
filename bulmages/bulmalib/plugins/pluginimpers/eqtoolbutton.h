@@ -26,7 +26,7 @@
 #include <QMap>
 
 #include "blfunctions.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "blform.h"
 
 
@@ -35,7 +35,7 @@ class EQToolButton : public QWidget
     Q_OBJECT
 
 private:
-    EmpresaBase *m_companyact;
+    BlMainCompany *m_companyact;
     BlForm *m_BlForm;
 
 public:

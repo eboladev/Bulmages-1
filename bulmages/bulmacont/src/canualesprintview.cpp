@@ -43,7 +43,7 @@
 \param parent
 **/
 CAnualesPrintView::CAnualesPrintView ( Empresa  *emp, QWidget *parent )
-        : QDialog ( parent ), PEmpresaBase ( emp )
+        : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "CAnualesPrintView::CAnualesPrintView", 0 );
     setupUi ( this );

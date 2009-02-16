@@ -61,7 +61,7 @@ public:
     ~PedidosProveedorList();
     void presentar();
     void imprimir();
-    void setEmpresaBase ( Company *comp );
+    void setMainCompany ( Company *comp );
     QString idpedidoproveedor();
     void setidproveedor ( QString val );
     QString generarFiltro();

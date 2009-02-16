@@ -100,7 +100,7 @@ void MyPlugIVA::inicializa ( Bulmafact *bges )
 
 	/// El men&uacute; de Tipos de IVA en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
-	setEmpresaBase ( bges->getcompany() );
+	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Tipos de IVA" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ));
 	planCuentas->setStatusTip ( _( "Tipos de IVA" ) );
@@ -112,7 +112,7 @@ void MyPlugIVA::inicializa ( Bulmafact *bges )
 
 	/// El men&uacute; de Tasa de IVA en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
-	setEmpresaBase ( bges->getcompany() );
+	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas1 = new QAction ( _( "&Tasas de IVA" ), 0 );
 	planCuentas1->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ));
 	planCuentas1->setStatusTip ( _( "Tasas de IVA" ) );

@@ -72,16 +72,16 @@ BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
 
     numdigitos = empresaBase() ->numdigitosempresa();
 
-    m_codigoinicial->setEmpresaBase ( emp );
-    m_codigofinal->setEmpresaBase ( emp );
+    m_codigoinicial->setMainCompany ( emp );
+    m_codigofinal->setMainCompany ( emp );
 
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
     /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-//    mui_combocoste->setEmpresaBase ( emp );
+//    mui_combocoste->setMainCompany ( emp );
 //    mui_combocoste->setidc_coste ( "0" );
 
-    mui_listado->setEmpresaBase ( empresaBase() );
+    mui_listado->setMainCompany ( empresaBase() );
     /*
         listado->clear();
 

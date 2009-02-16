@@ -44,7 +44,7 @@ extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteV
 extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 
 // 
-class myplugincob : public QObject, PEmpresaBase
+class myplugincob : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 

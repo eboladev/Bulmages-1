@@ -31,7 +31,7 @@
 #include <QPushButton>
 
 #include "blfixed.h"
-#include "empresabase.h"
+#include "blmaincompany.h"
 #include "bldb.h"
 #include "archmenu.h"
 #include "archivo.h"

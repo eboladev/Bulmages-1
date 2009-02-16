@@ -42,7 +42,7 @@
 class Empresa;
 
 
-class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase, public PEmpresaBase
+class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 
