@@ -70,7 +70,7 @@ set(bulmacont_MOCS bulmacont.h
 	       cuentalistview.h)
 
 # ficheros no MOc's
-#           empresa.h 
+#           bccompany.h 
 #           qlineedit1.h 
 #           qlistviewitem1.h 
 #           libromayorprint.h 
