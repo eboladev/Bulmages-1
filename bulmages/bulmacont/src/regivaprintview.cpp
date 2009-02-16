@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "regivaprintview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 #include "modelo300.h"
 #ifndef WIN32
@@ -37,7 +37,7 @@ extern Mod300ps *modelo;
 \param emp
 \param parent
 **/
-regivaprintview::regivaprintview ( Empresa *emp, QWidget *parent )
+regivaprintview::regivaprintview ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "regivaprintview::regivaprintview", 0 );

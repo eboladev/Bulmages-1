@@ -28,7 +28,7 @@
 
 #include "ui_balanceprintbase.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blwidget.h"
 
 
@@ -43,7 +43,7 @@ class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public BlMa
     Q_OBJECT
 
 public:
-    BalancePrintView ( Empresa *emp );
+    BalancePrintView ( BcCompany *emp );
     ~BalancePrintView();
     void inicializa1 ( QString, QString, QString, QString, bool );
 

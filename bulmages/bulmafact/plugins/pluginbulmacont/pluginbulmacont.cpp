@@ -19,6 +19,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
 #include "pluginbulmacont.h"
@@ -27,7 +28,7 @@
 #include "company.h"
 
 
-Empresa *g_empresaactual;
+BcCompany *g_empresaactual;
 
 Bulmafact *g_bf;
 
@@ -49,7 +50,7 @@ int entryPoint ( Bulmafact *bf )
 
 
 int Company_createMainWindows_Post(Company *comp) {
-    g_empresaactual = new Empresa ( NULL );
+    g_empresaactual = new BcCompany ( NULL );
     g_empresaactual->setProgressBar ( g_bf->m_pb );
     g_empresaactual->init ( "csoncatiu", "BulmaCont" );
     g_empresaactual->setWorkspace ( comp->pWorkspace() );

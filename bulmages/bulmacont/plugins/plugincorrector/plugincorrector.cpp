@@ -30,7 +30,7 @@
 
 #include "plugincorrector.h"
 #include "correctorwidget.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "bldockwidget.h"
 
 
@@ -50,7 +50,7 @@ void entryPoint ( Bulmacont *bcont )
     setlocale(LC_ALL, "");
     bindtextdomain ("plugincorrector", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
-    Empresa *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
     doc1 = new BlDockWidget ( _("Corrector"), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
@@ -61,7 +61,7 @@ void entryPoint ( Bulmacont *bcont )
     doc1->show();
 
     correctorwidget *corr = new correctorwidget ( doc1 );
-    corr->setEmpresa ( emp );
+    corr->setCompany  ( emp );
     corr->dock = doc1;
 
     doc1->setWidget ( corr );
@@ -98,7 +98,7 @@ void entryPoint ( Bulmacont *bcont )
 **/
 int Bulmacont_closeEvent ( Bulmacont *bcont )
 {
-    Empresa * emp = bcont->empresaactual();
+    BcCompany * emp = bcont->empresaactual();
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->nameDB() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "ccosteview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "selectccosteview.h"
 #include "bcsubform.h"
 
@@ -34,7 +34,7 @@
 \param emp
 \param parent
 **/
-ccosteview::ccosteview ( Empresa  *emp, QWidget *parent )
+ccosteview::ccosteview ( BcCompany  *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "ccosteview::ccosteview", 0 );

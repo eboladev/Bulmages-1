@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "pluginonline.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 #include <q3popupmenu.h>
 #include <qaction.h>

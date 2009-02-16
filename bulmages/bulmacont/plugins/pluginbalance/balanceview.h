@@ -33,7 +33,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 /// Balance de Sumas y Saldos plano.
@@ -54,7 +54,7 @@ private:
     /// Array que almacena los identificadores de los centros de coste.
 
 public:
-    BalanceView ( Empresa *, QWidget *parent = 0, int flags = 0 );
+    BalanceView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
     void inicializa1 ( QString, QString, QString, QString, QString );
     ~BalanceView();
     void imprimir();

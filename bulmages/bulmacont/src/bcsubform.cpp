@@ -26,7 +26,7 @@
 
 #include "bcsubform.h"
 #include "blfunctions.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "qtexteditdelegate.h"
@@ -79,11 +79,11 @@ void BcSubForm::setMainCompany ( BlMainCompany *c )
 /**
 \return
 **/
-Empresa *BcSubForm::empresaBase()
+BcCompany *BcSubForm::empresaBase()
 {
     _depura ( "BcSubForm::empresaBase", 0 );
     _depura ( "END BcSubForm::empresaBase", 0 );
-    return ( ( Empresa * ) BlMainCompanyPointer::empresaBase() );
+    return ( ( BcCompany * ) BlMainCompanyPointer::empresaBase() );
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + +
@@ -167,7 +167,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-    CuentaListView *listcuentas = new CuentaListView ( ( Empresa * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
+    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
 //    listcuentas->inicializa();
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -263,7 +263,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( camp->nomcampo() == "codigo" && camp->text() != "*" ) {
-        QString codigoext = extiendecodigo ( camp->text(), ( ( Empresa * ) empresaBase() ) ->numdigitosempresa() );
+        QString codigoext = extiendecodigo ( camp->text(), ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
@@ -332,7 +332,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 void BcSubForm::boton_asiento()
 {
     _depura ( "BcSubForm::boton_asiento", 0 );
-    Empresa *companyact = ( Empresa * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) empresaBase();
     QString numasiento = DBvalue ( "idasiento" );
     if ( numasiento != "" ) {
         companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
@@ -352,7 +352,7 @@ void BcSubForm::boton_asiento()
 void BcSubForm::boton_extracto1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_extracto1", 0 );
-    Empresa *companyact = ( Empresa * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) empresaBase();
     QDate fecha1, fecha2, fechaact;
     QString fecha = DBvalue ( "fecha" ).left ( 10 );
     QString codigo = DBvalue ( "codigo" );
@@ -390,7 +390,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
 void BcSubForm::boton_diario1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_diario1", 0 );
-    Empresa *companyact = ( Empresa * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) empresaBase();
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
     fechaact1 = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
@@ -428,7 +428,7 @@ void BcSubForm::boton_diario1 ( int tipo )
 void BcSubForm::boton_balance1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_balance1", 0 );
-    Empresa *companyact = ( Empresa * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) empresaBase();
     QString fecha = DBvalue ( "fecha" ).left ( 10 );
     QString codigo = DBvalue ( "codigo" );
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -533,7 +533,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
         BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
-        editor->setMainCompany ( ( Empresa * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BcCompany * ) m_subform->empresaBase() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {

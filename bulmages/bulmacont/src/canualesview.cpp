@@ -23,7 +23,7 @@
 #include "canualesview.h"
 #include "canualesprintview.h"
 #include "importbalance.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 #define COL_ARCHIVO 0
 #define COL_NOMBRE 1
@@ -34,7 +34,7 @@
 \param emp
 \param parent
 **/
-CAnualesView::CAnualesView ( Empresa  *emp, QWidget *parent )
+CAnualesView::CAnualesView ( BcCompany  *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "CAnualesView::CAnualesView", 0 );

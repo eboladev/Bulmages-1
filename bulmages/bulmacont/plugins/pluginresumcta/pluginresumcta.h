@@ -26,7 +26,7 @@
 
 #include "bulmacont.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "busquedacuenta.h"
 #include "bcsubform.h"
 

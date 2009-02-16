@@ -33,7 +33,7 @@
 #include <sys/types.h>
 #include <string>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 #include "blwidget.h"
 
@@ -49,7 +49,7 @@ public:
     char *fichero;
 
 public:
-    libromayorprint ( Empresa *emp );
+    libromayorprint ( BcCompany *emp );
     ~libromayorprint();
     void inicializa1 ( QString, QString, QString, QString );
     void inicializa2 ( char * );

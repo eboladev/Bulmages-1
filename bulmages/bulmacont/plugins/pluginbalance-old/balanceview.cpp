@@ -25,7 +25,7 @@
 
 #include "balanceview.h"
 #include "listcuentasview1.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "busquedacuenta.h"
 #include "asiento1view.h"
 
@@ -60,7 +60,7 @@
 \param emp
 \param parent
 **/
-BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
+BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
         : FichaBc ( emp, parent )
 {
     setupUi ( this );

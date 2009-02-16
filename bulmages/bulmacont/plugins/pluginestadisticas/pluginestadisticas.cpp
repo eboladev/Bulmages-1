@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "pluginestadisticas.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "resmensualview.h"
 #include "estadisticasview.h"
 

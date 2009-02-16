@@ -14,7 +14,7 @@
 
 #include "bulmages01.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );

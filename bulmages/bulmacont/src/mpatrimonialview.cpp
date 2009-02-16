@@ -22,7 +22,7 @@
 
 #include "mpatrimonialview.h"
 #include "mpatrimonialesview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -31,7 +31,7 @@
 \param parent
 \param fl
 **/
-mpatrimonialview::mpatrimonialview ( Empresa *emp, QWidget *parent, Qt::WFlags fl )
+mpatrimonialview::mpatrimonialview ( BcCompany *emp, QWidget *parent, Qt::WFlags fl )
         : QDialog ( parent, fl ), BlMainCompanyPointer ( emp )
 {
     _depura ( "mpatrimonialview::mpatrimonialview", 0 );
@@ -322,7 +322,7 @@ void mpatrimonialview::on_mui_borraresta_clicked()
 void mpatrimonialview::on_mui_buscampatrimonial_clicked()
 {
     _depura ( "mpatrimonialview::on_mui_buscampatrimonial_clicked", 0 );
-    mpatrimonialesview *nuevae = new mpatrimonialesview ( ( Empresa * ) empresaBase(), 0 );
+    mpatrimonialesview *nuevae = new mpatrimonialesview ( ( BcCompany * ) empresaBase(), 0 );
     nuevae->inicializa();
     nuevae->setmodoselector();
     nuevae->exec();

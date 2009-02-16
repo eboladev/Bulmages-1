@@ -30,7 +30,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 ///
@@ -51,7 +51,7 @@ public:
     QString idmasa;
 
 public:
-    mpatrimonialesview ( Empresa *emp, QWidget *parent = 0 );
+    mpatrimonialesview ( BcCompany *emp, QWidget *parent = 0 );
     ~mpatrimonialesview();
     int inicializa();
     void inicializatabla();

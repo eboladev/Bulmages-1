@@ -29,7 +29,7 @@
 \param parent
 \param fl
 **/
-ResumCtaWidget::ResumCtaWidget ( Empresa *emp, QWidget* parent, Qt::WFlags fl )
+ResumCtaWidget::ResumCtaWidget ( BcCompany *emp, QWidget* parent, Qt::WFlags fl )
         : QWidget ( parent, fl ), BlMainCompanyPointer ( emp )
 {
     _depura ( "ResumCtaWidget::ResumCtaWidget", 0 );
@@ -65,14 +65,14 @@ void ResumCtaWidget::alink ( const QUrl &url )
 
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( linker == "ver" ) {
-        ( ( Empresa * ) empresaBase() ) ->muestracuentas();
+        ( ( BcCompany * ) empresaBase() ) ->muestracuentas();
     } else if ( linker == "asiento" ) {
         //QString ordenasiento = l.right(l.length() - 2);
-        Asiento1View * view = ( ( Empresa * ) empresaBase() ) ->intapuntsempresa();
+        Asiento1View * view = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa();
         bool ok;
         //view->muestraasiento(ordenasiento.toInt(&ok));
     } else {
-        Asiento1View *view = ( ( Empresa * ) empresaBase() ) ->intapuntsempresa();
+        Asiento1View *view = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa();
         bool ok;
         view->muestraasiento ( linker.toInt ( &ok ) );
         //QMessageBox::warning(0, tr("Opcion no implementada"), tr("No se puede acceder al error"), 0, 1, 2);

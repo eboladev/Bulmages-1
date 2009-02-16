@@ -31,7 +31,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Presenta un listado del plan contable.
@@ -74,7 +74,7 @@ public:
     void imprimir();
 
 public:
-    listcuentasview1 ( Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    listcuentasview1 ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~listcuentasview1();
     int inicializa();
     virtual void on_mui_borrar_clicked();

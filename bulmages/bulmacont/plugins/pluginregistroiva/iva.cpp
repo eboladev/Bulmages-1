@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "iva.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -46,7 +46,7 @@ void Iva::definetabla()
 /**
 \param comp
 **/
-Iva::Iva ( Empresa *comp ) : BlDbRecord ( comp )
+Iva::Iva ( BcCompany *comp ) : BlDbRecord ( comp )
 {
     _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
@@ -60,7 +60,7 @@ Iva::Iva ( Empresa *comp ) : BlDbRecord ( comp )
 \param comp
 \param idiva
 **/
-Iva::Iva ( Empresa *comp, QString idiva ) : BlDbRecord ( comp )
+Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
 {
     _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
@@ -81,7 +81,7 @@ Iva::Iva ( Empresa *comp, QString idiva ) : BlDbRecord ( comp )
 \param comp
 \param cur
 **/
-Iva::Iva ( Empresa *comp, BlDbRecordSet *cur ) : BlDbRecord ( comp )
+Iva::Iva ( BcCompany *comp, BlDbRecordSet *cur ) : BlDbRecord ( comp )
 {
     _depura ( "Iva::Iva", 0 );
     m_companyact = comp;

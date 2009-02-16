@@ -24,7 +24,7 @@
 
 #include "canualesprintview.h"
 #include "blfunctions.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfixed.h"
 #include "blpostgresqlclient.h"
 #include "arbol.h"
@@ -42,7 +42,7 @@
 \param emp
 \param parent
 **/
-CAnualesPrintView::CAnualesPrintView ( Empresa  *emp, QWidget *parent )
+CAnualesPrintView::CAnualesPrintView ( BcCompany  *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "CAnualesPrintView::CAnualesPrintView", 0 );
@@ -157,8 +157,8 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     /// OJO!! Antes de nada, hay que calcular el asiento de REGULARIZACION que nos guarda el resultado en la 129
     Asiento1View *asientoReg;
-    ( ( Empresa * ) empresaBase() ) ->regularizaempresa ( finicial, ffinal );
-    asientoReg = ( ( Empresa * ) empresaBase() ) ->intapuntsempresa2();
+    ( ( BcCompany * ) empresaBase() ) ->regularizaempresa ( finicial, ffinal );
+    asientoReg = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa2();
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 1.
@@ -175,8 +175,8 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     asientoReg->on_mui_borrar_clicked ( FALSE ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
 
     /// Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
-    ( ( Empresa * ) empresaBase() ) ->regularizaempresa ( finicial1, ffinal1 );
-    asientoReg = ( ( Empresa * ) empresaBase() ) ->intapuntsempresa2();
+    ( ( BcCompany * ) empresaBase() ) ->regularizaempresa ( finicial1, ffinal1 );
+    asientoReg = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa2();
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 2.

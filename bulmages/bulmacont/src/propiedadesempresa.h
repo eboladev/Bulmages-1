@@ -32,7 +32,7 @@
 #include "bcsubform.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
@@ -62,7 +62,7 @@ class propiedadesempresa : public FichaBc, public Ui_PropiedadesEmpresaBase
     Q_OBJECT
 
 public:
-    propiedadesempresa ( Empresa *emp, QWidget *parent = 0 );
+    propiedadesempresa ( BcCompany *emp, QWidget *parent = 0 );
     ~propiedadesempresa();
     int inicializa();
     virtual void on_mui_guardar_clicked();

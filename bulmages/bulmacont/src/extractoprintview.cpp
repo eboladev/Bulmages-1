@@ -32,7 +32,7 @@
 #include "listcuentasview1.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 
@@ -42,7 +42,7 @@
     @param parent Ventana que llama a esta ventana.
     @param name Nombre de la ventana.
     Aqu&iacute; tambi&eacute;n se inicializa la variable global conexionbase. */
-ExtractoPrintView::ExtractoPrintView ( Empresa *emp, QWidget *parent = 0 )
+ExtractoPrintView::ExtractoPrintView ( BcCompany *emp, QWidget *parent = 0 )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "ExtractoPrintView::ExtractoPrintView", 0 );
@@ -87,7 +87,7 @@ void ExtractoPrintView::accept()
 QString ExtractoPrintView::montaQuery()
 {
     _depura ( "ExtractoPrintView::montaQuery", 0 );
-    extractoview1 *extracto = ( ( Empresa * ) empresaBase() ) ->extractoempresa();
+    extractoview1 *extracto = ( ( BcCompany * ) empresaBase() ) ->extractoempresa();
     /// Cogemos los valores del formulario para poder hacer un filtraje adecuado.
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
@@ -109,8 +109,8 @@ QString ExtractoPrintView::montaQuery()
         tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
     } // end if
 
-    selectcanalview *scanal = ( ( Empresa * ) empresaBase() ) ->getselcanales();
-    SelectCCosteView *scoste = ( ( Empresa * ) empresaBase() ) ->getselccostes();
+    selectcanalview *scanal = ( ( BcCompany * ) empresaBase() ) ->getselcanales();
+    SelectCCosteView *scoste = ( ( BcCompany * ) empresaBase() ) ->getselccostes();
     QString ccostes = scoste->cadcoste();
     if ( ccostes != "" ) {
         ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
@@ -159,7 +159,7 @@ void ExtractoPrintView::presentar ( const QString &tipus )
     int activo;
     QString cad;
     BlDbRecordSet *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
-    extractoview1 *extracto = ( ( Empresa * ) empresaBase() ) ->extractoempresa();
+    extractoview1 *extracto = ( ( BcCompany * ) empresaBase() ) ->extractoempresa();
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
     QString cinicial = extracto->m_codigoinicial->text();

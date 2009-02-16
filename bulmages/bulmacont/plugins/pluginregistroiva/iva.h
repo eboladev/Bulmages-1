@@ -24,19 +24,19 @@
 #include "bldb.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 class Iva : public BlDbRecord
 {
 private:
-    Empresa *m_companyact;
+    BcCompany *m_companyact;
     void definetabla();
 
 public:
-    Iva ( Empresa * );
-    Iva ( Empresa *, QString );
-    Iva ( Empresa *, BlDbRecordSet * );
+    Iva ( BcCompany * );
+    Iva ( BcCompany *, QString );
+    Iva ( BcCompany *, BlDbRecordSet * );
     virtual ~Iva();
     virtual void pintaIva() {}
     ;

@@ -20,7 +20,7 @@
 
 #include  "busquedacuenta.h"
 #include  "listcuentasview1.h"
-#include  "empresa.h"
+#include  "bccompany.h"
 #include  "plugins.h"
 #include  "cuentalistview.h"
 
@@ -219,11 +219,11 @@ void BusquedaCuenta::setFocus()
 /**
 \param emp
 **/
-void BusquedaCuenta::setMainCompany ( Empresa *emp )
+void BusquedaCuenta::setMainCompany ( BcCompany *emp )
 {
     _depura ( "BusquedaCuenta::setMainCompany", 0 );
     BlWidget::setMainCompany ( emp );
-    m_numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
+    m_numdigitos = ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa();
     _depura ( "END BusquedaCuenta::setMainCompany", 0 );
 }
 
@@ -295,7 +295,7 @@ void BusquedaCuenta::s_searchCuenta()
     diag->setModal ( true );
 
     /// Creamos una instancia del selector de cuentas.
-    CuentaListView *listcuentas = new CuentaListView ( ( Empresa * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
+    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
 
     /// Hacemos la conexi&oacute;n del cerrar de las cuentas con el cerrar di&aacute;logo.
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );

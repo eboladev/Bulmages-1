@@ -29,7 +29,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// La clase fpagoview se encarga de la gesti&oacute;n de formas de pago.
@@ -51,7 +51,7 @@ private:
     void cambiacombo ( int );
 
 public:
-    fpagoview ( Empresa *, QWidget *parent = 0 );
+    fpagoview ( BcCompany *, QWidget *parent = 0 );
     ~fpagoview();
     virtual int guardar();
     virtual void on_mui_borrar_clicked();

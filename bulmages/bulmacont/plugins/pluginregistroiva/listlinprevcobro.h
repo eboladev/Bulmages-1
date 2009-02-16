@@ -25,7 +25,7 @@
 #include <QList>
 #include <QMutableListIterator>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "blpostgresqlclient.h"
 #include "linprevcobro.h"
 #include "blfixed.h"
@@ -35,7 +35,7 @@
 class ListLinPrevCobro
 {
 public:
-    Empresa *m_companyact;
+    BcCompany *m_companyact;
     /// Opciones para filtrado y otros.
 
 protected:
@@ -53,10 +53,10 @@ protected:
 public:
     BlFixed totalCobro();
     BlFixed totalPago();
-    ListLinPrevCobro ( Empresa *comp );
+    ListLinPrevCobro ( BcCompany *comp );
     ListLinPrevCobro();
     void inicializaVariables();
-    void setcompany ( Empresa *c ) {
+    void setcompany ( BcCompany *c ) {
         m_companyact = c;
     };
     virtual ~ListLinPrevCobro();

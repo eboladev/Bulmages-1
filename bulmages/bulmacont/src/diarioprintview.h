@@ -35,7 +35,7 @@
 #include "blwidget.h"
 
 /// Declaramos la clase empresa como amiga para que la compilaci&oacute; no sea complicada.
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /// Ventana de impresi&oacute; de diarios.
@@ -53,7 +53,7 @@ public:
     /// Establece cual es la ventana de filtro de diario. Es imprescindible
     /// inicializar el filtro antes de mostrar la ventana o el bot&oacute;n de filtro
     /// no funcionar&aacute;.
-    DiarioPrintView ( Empresa *emp, QWidget *parent );
+    DiarioPrintView ( BcCompany *emp, QWidget *parent );
     ~DiarioPrintView();
     void presentar ( const char *tipus = "html" );
 

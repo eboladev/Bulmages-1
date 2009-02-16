@@ -24,7 +24,7 @@
 
 #include "blform.h"
 #include "bcsubform.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
@@ -41,8 +41,8 @@ public:
 public:
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer
     /// traspaso de mensajes.
-    Empresa *empresaBase();
-    FichaBc ( Empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0 );
+    BcCompany *empresaBase();
+    FichaBc ( BcCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~FichaBc();
     void setListaLineas ( BcSubForm * form );
     BcSubForm* listalineas();

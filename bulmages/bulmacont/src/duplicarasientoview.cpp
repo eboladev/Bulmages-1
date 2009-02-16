@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "duplicarasientoview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 #define NUMDIGITOS   empresaBase()->numdigitosempresa()
@@ -31,7 +31,7 @@
 \param parent
 \param flag
 **/
-DuplicarAsientoView::DuplicarAsientoView ( Empresa *emp, QWidget *parent, Qt::WFlags flag )
+DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
     _depura ( "DuplicarAsientoView::DuplicarAsientoView", 0 );

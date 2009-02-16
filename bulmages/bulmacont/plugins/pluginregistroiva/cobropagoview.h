@@ -23,7 +23,7 @@
 
 #include "blform.h"
 #include "ui_cobropagobase.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /// Listado de gestion de cobros y pagos.
@@ -33,10 +33,10 @@ class cobropagoview : public BlForm, public Ui_CobroPagoBase
     Q_OBJECT
 
 private:
-    Empresa *m_companyact;
+    BcCompany *m_companyact;
 
 public:
-    cobropagoview ( Empresa *, QWidget *parent = 0 );
+    cobropagoview ( BcCompany *, QWidget *parent = 0 );
     ~cobropagoview();
 
 public slots:

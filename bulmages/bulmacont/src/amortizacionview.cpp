@@ -23,7 +23,7 @@
 #include <QMenu>
 
 #include "amortizacionview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 #include "aplinteligentesview.h"
 #include "busquedacuenta.h"
@@ -35,7 +35,7 @@
 \param emp
 \param parent
 **/
-AmortizacionView::AmortizacionView ( Empresa *emp, QWidget *parent )
+AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "AmortizacionView::AmortizacionView", 0 );
@@ -427,9 +427,9 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
     if ( opcion->text() == _( "Ver asiento" ) || opcion->text() == _( "Borrar asiento" ) ) {
         /// Si se va a mostrar el asiento, o se va a borrar.
         /*
-                ((Empresa *)empresaBase())->intapuntsempresa()->show();
+                ((BcCompany *)empresaBase())->intapuntsempresa()->show();
                 QString idasiento = DBvalue("idasiento");
-                ((Empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento.toInt());
+                ((BcCompany *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento.toInt());
         */
         boton_asiento();
     } // end if
@@ -442,7 +442,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
     } // end if
     if ( opcion->text() == _( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
-        ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
+        ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
     } // end if
     if ( opcion->text() == _( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
@@ -472,7 +472,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         } // end if
         delete cur;
 
-        aplinteligentesview *nueva = new aplinteligentesview ( ( ( Empresa * ) empresaBase() ), 0 );
+        aplinteligentesview *nueva = new aplinteligentesview ( ( ( BcCompany * ) empresaBase() ), 0 );
         nueva->inicializa ( 0 );
 
         nueva->muestraplantilla ( "amortizacion" );
@@ -490,7 +490,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int numasiento1 = ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->idasiento().toInt();
+        int numasiento1 = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->idasiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number ( numasiento1 );
         empresaBase() ->begin();

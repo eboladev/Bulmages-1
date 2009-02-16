@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 #include "registroiva.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blconfiguration.h"
 #include "blfixed.h"
 #include "blfunctions.h"
@@ -37,7 +37,7 @@ typedef QMap<QString, BlFixed> base;
 \param comp
 \param parent
 **/
-RegistroIva::RegistroIva ( Empresa *comp, QWidget *parent ) : FichaBc ( comp, parent )
+RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, parent )
 {
     _depura ( "RegistroIva::RegistroIva", 0 );
     setTitleName ( _( "Registro IVA" ) );

@@ -23,7 +23,7 @@
 #include <QDate>
 
 #include "bbloqfecha.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -69,7 +69,7 @@ miQTreeWidgetItem::~miQTreeWidgetItem()
 \param emp
 \param parent
 **/
-BbloqFecha::BbloqFecha ( Empresa *emp, QWidget *parent )
+BbloqFecha::BbloqFecha ( BcCompany *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "BbloqFecha::BbloqFecha", 0 );

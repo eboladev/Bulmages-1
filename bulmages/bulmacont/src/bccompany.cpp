@@ -22,7 +22,7 @@
 #include <QDomDocument>
 #include <QInputDialog>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "blcompanydialog.h"
 #include "listcuentasview1.h"
 #include "asiento1view.h"
@@ -57,11 +57,11 @@
 /// SLOT que muestra la ventana de asientos.
 /**
 **/
-void Empresa::s_asiento1()
+void BcCompany ::s_asiento1()
 {
-    _depura ( "Empresa::s_asiento1", 0 );
+    _depura ( "BcCompany ::s_asiento1", 0 );
     introapunts2->setWindowState ( introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "Empresa::s_asiento1", 0 );
+    _depura ( "BcCompany ::s_asiento1", 0 );
 }
 
 
@@ -69,9 +69,9 @@ void Empresa::s_asiento1()
 /**
 \param bcont
 **/
-Empresa::Empresa ( Bulmacont *bcont ) : BlMainCompany()
+BcCompany ::BcCompany ( Bulmacont *bcont ) : BlMainCompany()
 {
-    _depura ( "Empresa::Empresa", 0 );
+    _depura ( "BcCompany ::BcCompany ", 0 );
     m_bulmacont = bcont;
     diario = NULL;
     extracto = NULL;
@@ -80,20 +80,20 @@ Empresa::Empresa ( Bulmacont *bcont ) : BlMainCompany()
     introapunts2 = NULL;
     m_listasientos = NULL;
     nombre = "";
-    _depura ( "END Empresa::Empresa", 0 );
+    _depura ( "END BcCompany ::BcCompany", 0 );
 }
 
 
 ///
 /**
 **/
-Empresa::~Empresa()
+BcCompany::~BcCompany()
 {
-    _depura ( "Empresa::~Empresa", 0 );
+    _depura ( "BcCompany::~BcCompany", 0 );
     guardaConf();
     /// Borramos todas las ventanas.
     m_listventanas->vaciarCompleto();
-    _depura ( "END Empresa::~Empresa", 0 );
+    _depura ( "END BcCompany::~BcCompany", 0 );
 }
 
 
@@ -101,7 +101,7 @@ Empresa::~Empresa()
 /**
 \return
 **/
-BlPostgreSqlClient *Empresa::bdempresa()
+BlPostgreSqlClient *BcCompany::bdempresa()
 {
     return ( this );
 }
@@ -112,7 +112,7 @@ BlPostgreSqlClient *Empresa::bdempresa()
 /**
 \return
 **/
-extractoview1 *Empresa::extractoempresa()
+extractoview1 *BcCompany::extractoempresa()
 {
     return extracto;
 }
@@ -122,7 +122,7 @@ extractoview1 *Empresa::extractoempresa()
 /**
 \return
 **/
-DiarioView *Empresa::diarioempresa()
+DiarioView *BcCompany::diarioempresa()
 {
     return diario;
 }
@@ -132,7 +132,7 @@ DiarioView *Empresa::diarioempresa()
 /**
 \return
 **/
-Asiento1View *Empresa::intapuntsempresa()
+Asiento1View *BcCompany::intapuntsempresa()
 {
     return introapunts2;
 }
@@ -142,7 +142,7 @@ Asiento1View *Empresa::intapuntsempresa()
 /**
 \return
 **/
-Asiento1View *Empresa::intapuntsempresa2()
+Asiento1View *BcCompany::intapuntsempresa2()
 {
     return introapunts2;
 }
@@ -152,7 +152,7 @@ Asiento1View *Empresa::intapuntsempresa2()
 /**
 \return
 **/
-int Empresa::numdigitosempresa()
+int BcCompany::numdigitosempresa()
 {
     return numdigitos;
 }
@@ -162,7 +162,7 @@ int Empresa::numdigitosempresa()
 /**
 \return
 **/
-QString Empresa::nomuserempresa()
+QString BcCompany::nomuserempresa()
 {
     return nombre;
 }
@@ -172,7 +172,7 @@ QString Empresa::nomuserempresa()
 /**
 \return
 **/
-QString Empresa::nombreempresa()
+QString BcCompany::nombreempresa()
 {
     return nombre;
 }
@@ -183,9 +183,9 @@ QString Empresa::nombreempresa()
 \param splash
 \return
 **/
-int Empresa::createMainWindows ( BlSplashScreen *splash )
+int BcCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    _depura ( "Empresa::createMainWindows", 0 );
+    _depura ( "BcCompany::createMainWindows", 0 );
     try {
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
         /// de la Empresa.
@@ -267,7 +267,7 @@ int Empresa::createMainWindows ( BlSplashScreen *splash )
         m_progressbar->setValue ( 100 );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "Empresa_createMainWindows_Post", this );
+        int res = g_plugins->lanza ( "BcCompany_createMainWindows_Post", this );
         if ( res != 0 ) {
             return 0;
         } // end if
@@ -278,7 +278,7 @@ int Empresa::createMainWindows ( BlSplashScreen *splash )
         _depura ( "Error al iniciar la clase company", 2 );
     } // end try
 
-    _depura ( "END Empresa::createMainWindows", 0 );
+    _depura ( "END BcCompany::createMainWindows", 0 );
     return ( 0 );
 }
 
@@ -287,12 +287,12 @@ int Empresa::createMainWindows ( BlSplashScreen *splash )
 /** Env&iacute;a un mensaje showMaximized a todos los objetos que deben ser maximizados. */
 /**
 **/
-void Empresa::maximiza()
+void BcCompany::maximiza()
 {
-    _depura ( "Empresa::maximiza", 0 );
+    _depura ( "BcCompany::maximiza", 0 );
     diario->showMaximized();
     extracto->showMaximized();
-    _depura ( "END Empresa::maximiza", 0 );
+    _depura ( "END BcCompany::maximiza", 0 );
 }
 
 
@@ -300,11 +300,11 @@ void Empresa::maximiza()
 /**
 \return
 **/
-int Empresa::muestracuentas()
+int BcCompany::muestracuentas()
 {
-    _depura ( "Empresa::muestracuentas", 0 );
+    _depura ( "BcCompany::muestracuentas", 0 );
     m_listcuentas->setWindowState ( introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END Empresa::muestracuentas", 0 );
+    _depura ( "END BcCompany::muestracuentas", 0 );
     return 0;
 }
 
@@ -314,13 +314,13 @@ int Empresa::muestracuentas()
 /**
 \return
 **/
-int Empresa::ccostes()
+int BcCompany::ccostes()
 {
-    _depura ( "Empresa::ccostes", 0 );
+    _depura ( "BcCompany::ccostes", 0 );
     ccosteview *ccoste = new ccosteview ( this, 0 );
     m_pWorkspace->addWindow ( ccoste );
     ccoste->show();
-    _depura ( "END Empresa::ccostes", 0 );
+    _depura ( "END BcCompany::ccostes", 0 );
     return 0;
 }
 
@@ -330,13 +330,13 @@ int Empresa::ccostes()
 /**
 \return
 **/
-int Empresa::canales()
+int BcCompany::canales()
 {
-    _depura ( "Empresa::canales", 0 );
+    _depura ( "BcCompany::canales", 0 );
     canalview *canal = new canalview ( this, 0 );
     m_pWorkspace->addWindow ( canal );
     canal->show();
-    _depura ( "END Empresa::canales", 0 );
+    _depura ( "END BcCompany::canales", 0 );
     return 0;
 }
 
@@ -345,13 +345,13 @@ int Empresa::canales()
 /** Es invocada desde la clase principal. */
 /**
 **/
-void Empresa::bloqueoFechas()
+void BcCompany::bloqueoFechas()
 {
-    _depura ( "Empresa::bloqueoFechas", 0 );
+    _depura ( "BcCompany::bloqueoFechas", 0 );
     BbloqFecha *tip = new BbloqFecha ( this, 0 );
     m_pWorkspace->addWindow ( tip );
     tip->show();
-    _depura ( "END Empresa::bloqueoFechas", 0 );
+    _depura ( "END BcCompany::bloqueoFechas", 0 );
 }
 
 
@@ -360,13 +360,13 @@ void Empresa::bloqueoFechas()
 /**
 \return
 **/
-int Empresa::tiposIVA()
+int BcCompany::tiposIVA()
 {
-    _depura ( "Empresa::tiposIVA", 0 );
+    _depura ( "BcCompany::tiposIVA", 0 );
     tipoivaview *tip = new tipoivaview ( this, 0 );
     m_pWorkspace->addWindow ( tip );
     tip->show();
-    _depura ( "END Empresa::tiposIVA", 0 );
+    _depura ( "END BcCompany::tiposIVA", 0 );
     return 0;
 }
 
@@ -376,13 +376,13 @@ int Empresa::tiposIVA()
 /**
 \return
 **/
-int Empresa::fPago()
+int BcCompany::fPago()
 {
-    _depura ( "Empresa::fPago", 0 );
+    _depura ( "BcCompany::fPago", 0 );
     fpagoview *fp = new fpagoview ( this, 0 );
     m_pWorkspace->addWindow ( fp );
     fp->show();
-    _depura ( "END Empresa::fPago", 0 );
+    _depura ( "END BcCompany::fPago", 0 );
     return 0;
 }
 
@@ -391,13 +391,13 @@ int Empresa::fPago()
 /**
 \return
 **/
-int Empresa::cambioejercicio()
+int BcCompany::cambioejercicio()
 {
-    _depura ( "Empresa::cambioejercicio", 0 );
+    _depura ( "BcCompany::cambioejercicio", 0 );
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
-    _depura ( "END Empresa::cambioejercicio", 0 );
+    _depura ( "END BcCompany::cambioejercicio", 0 );
     return 0;
 }
 
@@ -406,11 +406,11 @@ int Empresa::cambioejercicio()
 /**
 \return
 **/
-CuentaView* Empresa::newcuentaview()
+CuentaView* BcCompany::newcuentaview()
 {
-    _depura ( "Empresa::newcuentaview", 0 );
+    _depura ( "BcCompany::newcuentaview", 0 );
     CuentaView *nuevae = new CuentaView ( this, 0 );
-    _depura ( "END Empresa::newcuentaview", 0 );
+    _depura ( "END BcCompany::newcuentaview", 0 );
     return nuevae;
 }
 
@@ -419,13 +419,13 @@ CuentaView* Empresa::newcuentaview()
 /**
 \return
 **/
-int Empresa::nuevacuenta()
+int BcCompany::nuevacuenta()
 {
-    _depura ( "Empresa::nuevacuenta", 0 );
+    _depura ( "BcCompany::nuevacuenta", 0 );
     CuentaView *nuevae = newcuentaview();
     m_pWorkspace->addWindow ( nuevae );
     nuevae->show();
-    _depura ( "END Empresa::nuevacuenta", 0 );
+    _depura ( "END BcCompany::nuevacuenta", 0 );
     return 0;
 }
 
@@ -434,11 +434,11 @@ int Empresa::nuevacuenta()
 /**
 \return
 **/
-int Empresa::muestraapuntes1()
+int BcCompany::muestraapuntes1()
 {
-    _depura ( "Empresa::muestraapuntes1", 0 );
+    _depura ( "BcCompany::muestraapuntes1", 0 );
     introapunts2->setWindowState ( introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END Empresa::muestraapuntes1", 0 );
+    _depura ( "END BcCompany::muestraapuntes1", 0 );
     return 0;
 }
 
@@ -447,11 +447,11 @@ int Empresa::muestraapuntes1()
 /**
 \return
 **/
-int Empresa::muestraasientos()
+int BcCompany::muestraasientos()
 {
-    _depura ( "Empresa::muestraasientos", 0 );
+    _depura ( "BcCompany::muestraasientos", 0 );
     m_listasientos->setWindowState ( m_listasientos->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END Empresa::muestraasientos", 0 );
+    _depura ( "END BcCompany::muestraasientos", 0 );
     return 0;
 }
 
@@ -460,13 +460,13 @@ int Empresa::muestraasientos()
 /**
 \return
 **/
-int Empresa::propiedadempresa()
+int BcCompany::propiedadempresa()
 {
-    _depura ( "Empresa::propiedadempresa", 0 );
+    _depura ( "BcCompany::propiedadempresa", 0 );
     propiedadesempresa *nuevae = new propiedadesempresa ( this, 0 );
     m_pWorkspace->addWindow ( nuevae );
     nuevae->show();
-    _depura ( "END Empresa::propiedadempresa", 0 );
+    _depura ( "END BcCompany::propiedadempresa", 0 );
     return 0;
 }
 
@@ -475,13 +475,13 @@ int Empresa::propiedadempresa()
 /**
 \return
 **/
-int Empresa::amortizaciones()
+int BcCompany::amortizaciones()
 {
-    _depura ( "Empresa::amortizaciones", 0 );
+    _depura ( "BcCompany::amortizaciones", 0 );
     AmortizacionesView *amors = new AmortizacionesView ( this, 0 );
     m_pWorkspace->addWindow ( amors );
     amors->show();
-    _depura ( "END Empresa::amortizaciones", 0 );
+    _depura ( "END BcCompany::amortizaciones", 0 );
     return 0;
 }
 
@@ -491,14 +491,14 @@ int Empresa::amortizaciones()
 /**
 \return
 **/
-int Empresa::mpatrimoniales()
+int BcCompany::mpatrimoniales()
 {
-    _depura ( "Empresa::mpatrimoniales", 0 );
+    _depura ( "BcCompany::mpatrimoniales", 0 );
     mpatrimonialesview *nuevae = new mpatrimonialesview ( this, 0 );
     nuevae->inicializa();
     nuevae->exec();
     delete nuevae;
-    _depura ( "END Empresa::mpatrimoniales", 0 );
+    _depura ( "END BcCompany::mpatrimoniales", 0 );
     return 0;
 }
 
@@ -508,13 +508,13 @@ int Empresa::mpatrimoniales()
 /**
 \return
 **/
-int Empresa::compbalance()
+int BcCompany::compbalance()
 {
-    _depura ( "Empresa::compbalance", 0 );
+    _depura ( "BcCompany::compbalance", 0 );
     CAnualesView *nueva = new CAnualesView ( this, 0 );
     m_pWorkspace->addWindow ( nueva );
     nueva->show();
-    _depura ( "END Empresa::compbalance", 0 );
+    _depura ( "END BcCompany::compbalance", 0 );
     return 0;
 }
 
@@ -523,11 +523,11 @@ int Empresa::compbalance()
 /**
 \return
 **/
-int Empresa::libromayor()
+int BcCompany::libromayor()
 {
-    _depura ( "Empresa::libromayor", 0 );
+    _depura ( "BcCompany::libromayor", 0 );
     extracto->setWindowState ( extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END Empresa::libromayor", 0 );
+    _depura ( "END BcCompany::libromayor", 0 );
     return 0;
 }
 
@@ -536,9 +536,9 @@ int Empresa::libromayor()
 /**
 \return
 **/
-int Empresa::boton_siguiente()
+int BcCompany::boton_siguiente()
 {
-    _depura ( "Empresa::boton_siguiente", 0 );
+    _depura ( "BcCompany::boton_siguiente", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == extracto ) {
@@ -546,7 +546,7 @@ int Empresa::boton_siguiente()
     } else if ( widget == introapunts2 ) {
         introapunts2->boton_siguiente();
     } // end if
-    _depura ( "END Empresa::boton_siguiente", 0 );
+    _depura ( "END BcCompany::boton_siguiente", 0 );
     return 0;
 }
 
@@ -555,9 +555,9 @@ int Empresa::boton_siguiente()
 /**
 \return
 **/
-int Empresa::boton_anterior()
+int BcCompany::boton_anterior()
 {
-    _depura ( "Empresa::boton_anterior", 0 );
+    _depura ( "BcCompany::boton_anterior", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == extracto ) {
@@ -565,7 +565,7 @@ int Empresa::boton_anterior()
     } else if ( widget == introapunts2 ) {
         introapunts2->boton_anterior();
     } // end if
-    _depura ( "END Empresa::boton_anterior", 0 );
+    _depura ( "END BcCompany::boton_anterior", 0 );
     return 0;
 }
 
@@ -574,9 +574,9 @@ int Empresa::boton_anterior()
 /**
 \return
 **/
-int Empresa::boton_guardar()
+int BcCompany::boton_guardar()
 {
-    _depura ( "Empresa::boton_guardar", 0 );
+    _depura ( "BcCompany::boton_guardar", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == diario ) {
@@ -584,7 +584,7 @@ int Empresa::boton_guardar()
     } else {
         extracto->boton_guardar();
     } // end if
-    _depura ( "END Empresa::boton_guardar", 0 );
+    _depura ( "END BcCompany::boton_guardar", 0 );
     return 0;
 }
 
@@ -593,16 +593,16 @@ int Empresa::boton_guardar()
 /**
 \return
 **/
-int Empresa::boton_imprimir()
+int BcCompany::boton_imprimir()
 {
-    _depura ( "Empresa::boton_imprimir", 0 );
+    _depura ( "BcCompany::boton_imprimir", 0 );
     QWidget *widget = m_pWorkspace->activeWindow();
     if ( widget == diario ) {
         diario->boton_imprimir();
     } else if ( widget == extracto ) {
         extracto->boton_imprimir();
     } // end if
-    _depura ( "END Empresa::boton_imprimir", 0 );
+    _depura ( "END BcCompany::boton_imprimir", 0 );
     return 0;
 }
 
@@ -611,9 +611,9 @@ int Empresa::boton_imprimir()
 /**
 \return
 **/
-int Empresa::boton_reload()
+int BcCompany::boton_reload()
 {
-    _depura ( "Empresa::boton_reload", 0 );
+    _depura ( "BcCompany::boton_reload", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == diario ) {
@@ -621,7 +621,7 @@ int Empresa::boton_reload()
     } else if ( widget == extracto ) {
         extracto->accept();
     } // end if
-    _depura ( "END Empresa::boton_reload", 0 );
+    _depura ( "END BcCompany::boton_reload", 0 );
     return 0;
 }
 
@@ -630,9 +630,9 @@ int Empresa::boton_reload()
 /**
 \return
 **/
-int Empresa::boton_primero()
+int BcCompany::boton_primero()
 {
-    _depura ( "Empresa::boton_primero", 0 );
+    _depura ( "BcCompany::boton_primero", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
@@ -640,7 +640,7 @@ int Empresa::boton_primero()
     } else if ( widget == diario ) {} else if ( widget == extracto ) {
         extracto->boton_inicio();
     } // end if
-    _depura ( "END Empresa::boton_primero", 0 );
+    _depura ( "END BcCompany::boton_primero", 0 );
     return 0;
 }
 
@@ -649,9 +649,9 @@ int Empresa::boton_primero()
 /**
 \param
 **/
-int Empresa::boton_ultimo()
+int BcCompany::boton_ultimo()
 {
-    _depura ( "Empresa::boton_ultimo", 0 );
+    _depura ( "BcCompany::boton_ultimo", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
@@ -659,7 +659,7 @@ int Empresa::boton_ultimo()
     } else if ( widget == diario ) {} else if ( widget == extracto ) {
         extracto->boton_fin();
     } // end if
-    _depura ( "END Empresa::boton_ultimo", 0 );
+    _depura ( "END BcCompany::boton_ultimo", 0 );
     return 0;
 }
 
@@ -668,11 +668,11 @@ int Empresa::boton_ultimo()
 /**
 \return
 **/
-int Empresa::librodiario()
+int BcCompany::librodiario()
 {
-    _depura ( "Empresa::librodiario", 0 );
+    _depura ( "BcCompany::librodiario", 0 );
     diario->setWindowState ( diario->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END Empresa::librodiario", 0 );
+    _depura ( "END BcCompany::librodiario", 0 );
     return 0;
 }
 
@@ -682,11 +682,11 @@ int Empresa::librodiario()
 \return
 **/
 /*
-int Empresa::librobalance()
+int BcCompany::librobalance()
 {
-    _depura ( "Empresa::librobalance", 0 );
+    _depura ( "BcCompany::librobalance", 0 );
     balance->setWindowState ( balance->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END Empresa::librobalance", 0 );
+    _depura ( "END BcCompany::librobalance", 0 );
     return 0;
 }
 */
@@ -695,15 +695,15 @@ int Empresa::librobalance()
 ///
 /**
 **/
-void Empresa::abrirAsientos()
+void BcCompany::abrirAsientos()
 {
-    _depura ( "Empresa::Abrirasientos", 0 );
+    _depura ( "BcCompany::Abrirasientos", 0 );
     BlDbRecordSet *cur = NULL;
     try {
         cur = cargacursor ( "SELECT abreasientos()" );
         g_main->statusBar() ->showMessage ( _( "Se han espaciado los asientos" ), 2000 );
         delete cur;
-        _depura ( "END Empresa::Abrirasientos", 0 );
+        _depura ( "END BcCompany::Abrirasientos", 0 );
     } catch ( ... ) {
         mensajeError ( "Ha habido un error al espaciar los asientos" );
         if ( cur ) delete cur;
@@ -715,15 +715,15 @@ void Empresa::abrirAsientos()
 ///
 /**
 **/
-void Empresa::cerrarAsientos()
+void BcCompany::cerrarAsientos()
 {
-    _depura ( "Empresa::cerrarAsientos", 0 );
+    _depura ( "BcCompany::cerrarAsientos", 0 );
     BlDbRecordSet *cur = NULL;
     try {
         cur = cargacursor ( "SELECT cierraasiento(idasiento) FROM asiento" );
         g_main->statusBar() ->showMessage ( _( "Se han cerrado los asientos" ), 2000 );
         delete cur;
-        _depura ( "END Empresa::cerrarAsientos", 0 );
+        _depura ( "END BcCompany::cerrarAsientos", 0 );
     } catch ( ... ) {
         mensajeError ( "Ha habido un error al cerrar los asientos" );
         if ( cur ) delete cur;
@@ -734,16 +734,16 @@ void Empresa::cerrarAsientos()
 
 /**
 **/
-void Empresa::Ordenarasientos()
+void BcCompany::Ordenarasientos()
 {
-    _depura ( "Empresa::Ordenarasientos", 10 );
+    _depura ( "BcCompany::Ordenarasientos", 10 );
     QString query = "SELECT reordenaasientosall()";
     BlDbRecordSet *cur = NULL;
     try {
         cur = cargacursor ( query );
         g_main->statusBar() ->showMessage ( _( "Se han ordenado los asientos" ), 2000 );
         delete cur;
-        _depura ( "END Empresa::Ordenarasientos", 10 );
+        _depura ( "END BcCompany::Ordenarasientos", 10 );
     } catch ( ... ) {
         mensajeError ( "Ha habido un error al ordenar los asientos" );
         if ( cur ) delete cur;
@@ -756,13 +756,13 @@ void Empresa::Ordenarasientos()
 /**
 \return
 **/
-int Empresa::listado347()
+int BcCompany::listado347()
 {
-    _depura ( "Empresa::modelo347", 0 );
+    _depura ( "BcCompany::modelo347", 0 );
     Listado347 *dlg347 = new Listado347 ( this, "0" );
     dlg347->exec();
     delete dlg347;
-    _depura ( "END Empresa::modelo347", 0 );
+    _depura ( "END BcCompany::modelo347", 0 );
     return 0;
 }
 
@@ -770,9 +770,9 @@ int Empresa::listado347()
 ///
 /**
 **/
-void Empresa::cierraempresa()
+void BcCompany::cierraempresa()
 {
-    _depura ( "Empresa::cierraempresa", 0 );
+    _depura ( "BcCompany::cierraempresa", 0 );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -797,16 +797,16 @@ void Empresa::cierraempresa()
 
     introapunts2->show();
     introapunts2->asiento_cierre ( finicial, hoy );
-    _depura ( "END Empresa::cierraempresa", 0 );
+    _depura ( "END BcCompany::cierraempresa", 0 );
 }
 
 
 ///
 /**
 **/
-void Empresa::abreempresa()
+void BcCompany::abreempresa()
 {
-    _depura ( "Empresa::abreempresa", 0 );
+    _depura ( "BcCompany::abreempresa", 0 );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -822,16 +822,16 @@ void Empresa::abreempresa()
 
     introapunts2->show();
     introapunts2->asiento_apertura ( hoy );
-    _depura ( "END Empresa::abreempresa", 0 );
+    _depura ( "END BcCompany::abreempresa", 0 );
 }
 
 
 ///
 /**
 **/
-void Empresa::regularizaempresa()
+void BcCompany::regularizaempresa()
 {
-    _depura ( "Empresa::regularizaempresa", 0, "Sin parametros" );
+    _depura ( "BcCompany::regularizaempresa", 0, "Sin parametros" );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -855,7 +855,7 @@ void Empresa::regularizaempresa()
     } // end if
 
     regularizaempresa ( finicial, hoy );
-    _depura ( "END Empresa::regularizaempresa", 0 );
+    _depura ( "END BcCompany::regularizaempresa", 0 );
 }
 
 
@@ -864,51 +864,51 @@ void Empresa::regularizaempresa()
 \param finicial
 \param ffinal
 **/
-void Empresa::regularizaempresa ( QString finicial, QString ffinal )
+void BcCompany::regularizaempresa ( QString finicial, QString ffinal )
 {
-    _depura ( "Empresa::regularizaempresa", 0, finicial + "--" + ffinal );
+    _depura ( "BcCompany::regularizaempresa", 0, finicial + "--" + ffinal );
     introapunts2->show();
     introapunts2->asiento_regularizacion ( finicial, ffinal );
-    _depura ( "END Empresa::regularizaempresa", 0 );
+    _depura ( "END BcCompany::regularizaempresa", 0 );
 }
 
 ///
 /**
 **/
-void Empresa::Filtro()
+void BcCompany::Filtro()
 {
-    _depura ( "Empresa::Filtro", 0 );
+    _depura ( "BcCompany::Filtro", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_filtrar();
     } // end if
-    _depura ( "END Empresa::Filtro", 0 );
+    _depura ( "END BcCompany::Filtro", 0 );
 }
 
 /// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
 /// determinada cuenta por otra cuenta.
 /**
 **/
-void Empresa::reemplazacuentaenasientos()
+void BcCompany::reemplazacuentaenasientos()
 {
-    _depura ( "Empresa::reemplazacuentaenasientos", 0 );
+    _depura ( "BcCompany::reemplazacuentaenasientos", 0 );
     CambiaCtaView *ctac = new CambiaCtaView ( this, 0, false );
     ctac->exec();
-    _depura ( "END Empresa::reemplazacuentaenasientos", 0 );
+    _depura ( "END BcCompany::reemplazacuentaenasientos", 0 );
 }
 
 
 /// Esta funci&oacute;n recalcula los saldos parciales del plan contable.
 /**
 **/
-void Empresa::recalculasaldos()
+void BcCompany::recalculasaldos()
 {
-    _depura ( "Empresa::recalculasaldos", 0 );
+    _depura ( "BcCompany::recalculasaldos", 0 );
 	mensajeInfo("recalcular Saldos");
     BlDbRecordSet *cur = cargacursor("SELECT recalculasaldos()");
     delete cur;
-    _depura ( "END Empresa::recalculasaldos", 0 );
+    _depura ( "END BcCompany::recalculasaldos", 0 );
 }
 
 
@@ -916,10 +916,10 @@ void Empresa::recalculasaldos()
 /**
 \return
 **/
-SelectCCosteView *Empresa::getselccostes()
+SelectCCosteView *BcCompany::getselccostes()
 {
-    _depura ( "Empresa::getselccostes", 0 );
-    _depura ( "END Empresa::getselccostes", 0 );
+    _depura ( "BcCompany::getselccostes", 0 );
+    _depura ( "END BcCompany::getselccostes", 0 );
     return selccostes;
 }
 
@@ -928,10 +928,10 @@ SelectCCosteView *Empresa::getselccostes()
 /**
 \return
 **/
-selectcanalview *Empresa::getselcanales()
+selectcanalview *BcCompany::getselcanales()
 {
-    _depura ( "Empresa::getselcanales", 0 );
-    _depura ( "END Empresa::getselcanales", 0 );
+    _depura ( "BcCompany::getselcanales", 0 );
+    _depura ( "END BcCompany::getselcanales", 0 );
     return selcanales;
 }
 
@@ -939,31 +939,31 @@ selectcanalview *Empresa::getselcanales()
 ///
 /**
 **/
-void Empresa::centrocostedefecto()
+void BcCompany::centrocostedefecto()
 {
-    _depura ( "Empresa::centrocostedefecto", 0 );
+    _depura ( "BcCompany::centrocostedefecto", 0 );
     selccostes->exec();
-    _depura ( "END Empresa::centrocostedefecto", 0 );
+    _depura ( "END BcCompany::centrocostedefecto", 0 );
 }
 
 
 ///
 /**
 **/
-void Empresa::canaldefecto()
+void BcCompany::canaldefecto()
 {
-    _depura ( "Empresa::canaldefecto", 0 );
+    _depura ( "BcCompany::canaldefecto", 0 );
     selcanales->exec();
-    _depura ( "END Empresa::canaldefecto", 0 );
+    _depura ( "END BcCompany::canaldefecto", 0 );
 }
 
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 /**
 **/
-void Empresa::guardaConf()
+void BcCompany::guardaConf()
 {
-    _depura ( "Empresa::guardaConf", 0 );
+    _depura ( "BcCompany::guardaConf", 0 );
 
 	/// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
 	/// guardamos la configuracion.
@@ -1002,16 +1002,16 @@ void Empresa::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    _depura ( "END Empresa::guardaConf", 0 );
+    _depura ( "END BcCompany::guardaConf", 0 );
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 /**
 \return
 **/
-void Empresa::cargaConf()
+void BcCompany::cargaConf()
 {
-    _depura ( "Empresa::cargaConf", 0 );
+    _depura ( "BcCompany::cargaConf", 0 );
 
 
 	/// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
@@ -1101,7 +1101,7 @@ void Empresa::cargaConf()
     /// Si hay una ventana activa se pone como activa.
     if ( activewindow )
         m_bulmacont->workspace() ->setActiveWindow ( activewindow );
-    _depura ( "END Empresa::cargaConf", 0 );
+    _depura ( "END BcCompany::cargaConf", 0 );
 }
 
 

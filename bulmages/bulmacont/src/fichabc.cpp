@@ -34,7 +34,7 @@ class Fixed;
 \param parent
 \param f
 **/
-FichaBc::FichaBc ( Empresa *comp, QWidget *parent, Qt::WFlags f )
+FichaBc::FichaBc ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
         : BlForm ( comp, parent, f )
 {
     _depura ( "FichaBc::FichaBc", 0 );
@@ -82,11 +82,11 @@ BcSubForm* FichaBc::listalineas()
 /**
 \return
 **/
-Empresa * FichaBc::empresaBase()
+BcCompany * FichaBc::empresaBase()
 {
     _depura ( "FichaBc::empresaBase", 0 );
     _depura ( "END FichaBc::empresaBase", 0 );
-    return ( Empresa * ) BlForm::empresaBase();
+    return ( BcCompany * ) BlForm::empresaBase();
 }
 
 

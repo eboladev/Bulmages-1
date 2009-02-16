@@ -20,9 +20,9 @@
 
 #include  "cambiactaview.h"
 #include  "listcuentasview1.h"
-#include  "empresa.h"
+#include  "bccompany.h"
 
-#define NUMDIGITOS   (Empresa *)empresaBase())->numdigitosempresa()
+#define NUMDIGITOS   (BcCompany *)empresaBase())->numdigitosempresa()
 
 
 ///
@@ -31,7 +31,7 @@
 \param parent
 \param flag
 **/
-CambiaCtaView::CambiaCtaView ( Empresa *emp, QWidget *parent, Qt::WFlags flag )
+CambiaCtaView::CambiaCtaView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
     _depura ( "CambiaCtaView::CambiaCtaView", 0 );

@@ -22,7 +22,7 @@
 #ifndef CUENTALISTVIEW_H
 #define CUENTALISTVIEW_H
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "bcsubform.h"
 #include "blformlist.h"
 
@@ -54,7 +54,7 @@ private:
     QString mdb_codigocuenta;
 
 public:
-    CuentaListView ( Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    CuentaListView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     virtual ~CuentaListView();
     QString formaQuery();
     QString idcuenta();

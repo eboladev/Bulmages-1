@@ -27,7 +27,7 @@
 /**
 \param comp
 **/
-linprevcobro::linprevcobro ( Empresa *comp )
+linprevcobro::linprevcobro ( BcCompany *comp )
 {
     _depura ( "linprevcobro::linprevcobro", 0 );
     empresaactual = comp;
@@ -42,7 +42,7 @@ linprevcobro::linprevcobro ( Empresa *comp )
 \param comp
 \param idprevcobro
 **/
-linprevcobro::linprevcobro ( Empresa *comp, QString idprevcobro )
+linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 {
     _depura ( "linprevcobro::linprevcobro", 0 );
     empresaactual = comp;
@@ -96,7 +96,7 @@ linprevcobro::linprevcobro ( Empresa *comp, QString idprevcobro )
 \param codigoctacliente
 \param nomctacliente
 **/
-linprevcobro::linprevcobro ( Empresa *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente )
+linprevcobro::linprevcobro ( BcCompany *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente )
 {
     _depura ( "linprevcobro::linprevcobro", 0 );
     empresaactual = comp;

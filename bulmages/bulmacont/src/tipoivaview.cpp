@@ -21,7 +21,7 @@
 #include <QWidget>
 
 #include "tipoivaview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "busquedacuenta.h"
 
 
@@ -30,7 +30,7 @@
 \param emp
 \param parent
 **/
-tipoivaview::tipoivaview ( Empresa *emp, QWidget *parent )
+tipoivaview::tipoivaview ( BcCompany *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "tipoivaview::tipoivaview", 0 );

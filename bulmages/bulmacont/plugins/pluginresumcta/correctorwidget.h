@@ -27,7 +27,7 @@
 
 #include "ui_correctorbase.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 #include "blwidget.h"
 
@@ -55,11 +55,11 @@ public:
     QDockWidget *dock;
 
 public:
-    ResumCtaWidget ( Empresa *emp, QWidget* parent = 0, Qt::WFlags fl = 0 );
+    ResumCtaWidget ( BcCompany *emp, QWidget* parent = 0, Qt::WFlags fl = 0 );
     ~ResumCtaWidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
-    /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
+    /// funcion setCompany  para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
     void agregarError ( QString, QString, QString );
     void setMensaje ( QString mensaje );

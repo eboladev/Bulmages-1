@@ -29,7 +29,7 @@
 #include "listcuentasview1.h"
 #include "blfunctions.h"
 #include "cuentaview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 /// Incluimos las im&aacute;genes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -46,7 +46,7 @@
 \param flag
 \param editmode
 **/
-listcuentasview1::listcuentasview1 ( Empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : FichaBc ( emp, parent, flag ), pgimportfiles ( emp )
 {
     _depura ( "listcuentasview1::listcuentasview1", 0 );

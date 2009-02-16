@@ -20,7 +20,7 @@
 
 #include  "busquedaccoste.h"
 #include  "blfunctions.h"
-#include  "empresa.h"
+#include  "bccompany.h"
 
 
 ///

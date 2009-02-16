@@ -25,14 +25,14 @@
 #include "ui_cambiactabase.h"
 #include "blwidget.h"
 
-class Empresa;
+class BcCompany;
 
 
 class CambiaCtaView : public QDialog, public Ui_CambiaCuentaBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 public:
-    CambiaCtaView ( Empresa *, QWidget *, Qt::WFlags flag = 0 );
+    CambiaCtaView ( BcCompany *, QWidget *, Qt::WFlags flag = 0 );
     ~CambiaCtaView();
 
 public slots:

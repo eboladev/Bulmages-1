@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "listiva.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 
@@ -27,7 +27,7 @@
 /**
 \param comp
 **/
-ListIva::ListIva ( Empresa *comp )
+ListIva::ListIva ( BcCompany *comp )
 {
     _depura ( "ListIva::ListIva", 0 );
     companyact = comp;

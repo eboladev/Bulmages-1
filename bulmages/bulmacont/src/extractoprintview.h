@@ -36,7 +36,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Clase que corresponde con la ventana de impresi&oacute;n de extractos.
@@ -48,7 +48,7 @@ class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, BlMainCom
 
 public:
     char *fichero;
-    ExtractoPrintView ( Empresa *, QWidget * );
+    ExtractoPrintView ( BcCompany *, QWidget * );
     void presentar ( const QString &tipus );
     ~ExtractoPrintView();
 

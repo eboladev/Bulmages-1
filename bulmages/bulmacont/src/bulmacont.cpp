@@ -63,7 +63,7 @@ Bulmacont::Bulmacont ( QWidget *parent, Qt::WFlags f, QString DB )
     vboxlayout->addWidget ( m_pb );
 
 
-    m_empresaactual = new Empresa ( this );
+    m_empresaactual = new BcCompany ( this );
     m_empresaactual->setProgressBar ( m_pb );
     m_empresaactual->init ( DB, "BulmaCont" );
     m_empresaactual->setWorkspace ( m_pWorkspace );
@@ -113,7 +113,7 @@ Bulmacont::~Bulmacont()
 /**
 \return
 **/
-Empresa *Bulmacont::empresaactual()
+BcCompany *Bulmacont::empresaactual()
 {
     _depura ( "Bulmacont::empresaactual", 0 );
     _depura ( "END Bulmacont::empresaactual", 0 );

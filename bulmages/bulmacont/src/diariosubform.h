@@ -22,7 +22,7 @@
 #ifndef _DIARIO_SUBFORM_
 #define _DIARIO_SUBFORM_
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "bcsubform.h"
 #include "blwidget.h"
 

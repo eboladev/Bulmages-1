@@ -168,7 +168,7 @@ int Company_createMainWindows_Post ( Company *cmp )
 }
 
 
-int Empresa_createMainWindows_Post ( Empresa *cmp )
+int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
     g_emp = cmp;
     return 0;

@@ -34,7 +34,7 @@
 
 #include "listivaview.h"
 #include "registroivaview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 
@@ -44,7 +44,7 @@
 \param parent
 \return
 **/
-RegistroIvaView::RegistroIvaView ( Empresa *comp, QWidget *parent )
+RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
         :  RegistroIva ( comp, parent )
 {
     setAttribute ( Qt::WA_DeleteOnClose );

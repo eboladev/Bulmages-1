@@ -27,7 +27,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 class BusquedaCCosteDelegate : public BlComboBox

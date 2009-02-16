@@ -28,7 +28,7 @@
 #include <QFileDialog>
 
 #include "cuentalistview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "cuentaview.h"
 #include "blfunctions.h"
 #include "plugins.h"
@@ -48,7 +48,7 @@
 \param editmodo
 \return
 **/
-CuentaListView::CuentaListView ( Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+CuentaListView::CuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "CuentaListView::CuentaListView", 0 );
@@ -115,7 +115,7 @@ void CuentaListView::editar ( int row )
     mdb_codigocuenta = mui_list->DBvalue ( "codigo", row );
     if ( modoEdicion() ) {
 /*
-        ArticuloView * art = ( ( Empresa * ) BlMainCompany() ) ->newArticuloView();
+        ArticuloView * art = ( ( BcCompany * ) BlMainCompany() ) ->newArticuloView();
         BlMainCompany() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
@@ -324,7 +324,7 @@ void CuentaListView::crear()
 {
 /*
     _depura ( "CuentaListView::crear", 0 );
-    ( ( Empresa * ) BlMainCompany() ) ->s_newArticulo();
+    ( ( BcCompany * ) BlMainCompany() ) ->s_newArticulo();
     _depura ( "END CuentaListView::crear", 0 );
 */
 }

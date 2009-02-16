@@ -29,7 +29,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 class miQTreeWidgetItem : public QTreeWidgetItem
@@ -53,7 +53,7 @@ private:
     QString qsabierto;
 
 public:
-    BbloqFecha ( Empresa *emp, QWidget * parent = 0 );
+    BbloqFecha ( BcCompany *emp, QWidget * parent = 0 );
     ~BbloqFecha();
 
 public slots:

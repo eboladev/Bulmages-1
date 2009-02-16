@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
@@ -40,7 +40,7 @@ class RegIVAQToolButton : public QToolButton
     Q_OBJECT
 
 private:
-    Empresa *m_companyact;
+    BcCompany *m_companyact;
     Asiento1View *m_asiento1View;
 
 public:

@@ -30,7 +30,7 @@
 #include <QFrame>
 
 #include "pluginadocumental.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "asiento1view.h"
 #include "adocumental.h"
 
@@ -54,7 +54,7 @@ void entryPoint ( Bulmacont *bcont )
     QPixmap *img = new QPixmap ( napuntedoc );
     QPixmap *img1 = new QPixmap ( ndoc );
 
-    Empresa *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->empresaactual();
     Asiento1View *intapunts = emp->intapuntsempresa();
 
     myplugin1 *pub = new myplugin1 ( emp );

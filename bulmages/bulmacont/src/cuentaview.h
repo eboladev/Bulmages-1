@@ -38,7 +38,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Visualiza una cuenta.
@@ -48,7 +48,7 @@ class CuentaView : public FichaBc, public Ui_CuentaBase
     Q_OBJECT
 
 public:
-    CuentaView ( Empresa *emp, QWidget *, Qt::WFlags fl = 0 );
+    CuentaView ( BcCompany *emp, QWidget *, Qt::WFlags fl = 0 );
     ~CuentaView();
     int nuevacuenta ( QString );
 };

@@ -66,7 +66,7 @@ private:
     QString m_idamortizacion;
 
 public:
-    AmortizacionView ( Empresa *, QWidget * );
+    AmortizacionView ( BcCompany *, QWidget * );
     ~AmortizacionView();
     virtual int cargar ( QString idamortizacion );
     virtual int guardar();

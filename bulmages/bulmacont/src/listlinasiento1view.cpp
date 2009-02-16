@@ -22,7 +22,7 @@
 
 #include "listlinasiento1view.h"
 #include "plugins.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /// Construye la cabecera del asiento (nombra cada columna de la tabla)

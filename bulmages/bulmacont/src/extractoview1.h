@@ -27,7 +27,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Esta clase mantiene la generaci&oacute;n de extractos contables.
@@ -44,7 +44,7 @@ public:
     BlDbRecordSet *m_cursorcta;
 
 public:
-    extractoview1 ( Empresa *, QWidget *parent = 0, int flags = 0 );
+    extractoview1 ( BcCompany *, QWidget *parent = 0, int flags = 0 );
     ~extractoview1();
     void inicializa1 ( QString, QString, QString, QString, int );
     void vaciar();

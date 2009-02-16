@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include  "busquedacanal.h"
-#include  "empresa.h"
+#include  "bccompany.h"
 #include  "blfunctions.h"
 
 

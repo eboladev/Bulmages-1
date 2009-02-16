@@ -25,7 +25,7 @@
 #include <QTextStream>
 
 #include "diarioprintview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 #include "diarioview.h"
@@ -37,12 +37,12 @@
 \param emp
 \param parent
 **/
-DiarioPrintView::DiarioPrintView ( Empresa  *emp, QWidget *parent )
+DiarioPrintView::DiarioPrintView ( BcCompany  *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "DiarioPrintView::DiarioPrintView", 0 );
     setupUi ( this );
-    numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
+    numdigitos = ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa();
     _depura ( "END DiarioPrintView::DiarioPrintView", 0 );
 }
 
@@ -66,7 +66,7 @@ DiarioPrintView::~DiarioPrintView()
 QString DiarioPrintView::montaQuery()
 {
     _depura ( "DiarioPrintView::montaQuery", 0 );
-    DiarioView *diario = ( ( Empresa * ) empresaBase() ) ->diarioempresa();
+    DiarioView *diario = ( ( BcCompany * ) empresaBase() ) ->diarioempresa();
     QString query;
     QString fecha;
     QString fechaasiento;
@@ -80,8 +80,8 @@ QString DiarioPrintView::montaQuery()
     QString cad;
 
     /// Consideraciones para centros de coste y canales.
-    selectcanalview *scanal = ( ( Empresa * ) empresaBase() ) ->getselcanales();
-    SelectCCosteView *scoste = ( ( Empresa * ) empresaBase() ) ->getselccostes();
+    selectcanalview *scanal = ( ( BcCompany * ) empresaBase() ) ->getselcanales();
+    SelectCCosteView *scoste = ( ( BcCompany * ) empresaBase() ) ->getselccostes();
     QString ccostes = scoste->cadcoste();
     if ( ccostes != "" ) {
         ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
@@ -134,7 +134,7 @@ void DiarioPrintView::accept()
 void DiarioPrintView::presentar ( const char *tipus )
 {
     _depura ( "DiarioPrintView::presentar", 0 );
-    DiarioView *diario = ( ( Empresa * ) empresaBase() ) ->diarioempresa();
+    DiarioView *diario = ( ( BcCompany * ) empresaBase() ) ->diarioempresa();
     int txt, html, txtapren, htmlapren;
     float debe, haber;
     int idcuenta;

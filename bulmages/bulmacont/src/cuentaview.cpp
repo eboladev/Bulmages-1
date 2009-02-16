@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "cuentaview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -28,7 +28,7 @@
 \param parent
 \param fl
 **/
-CuentaView::CuentaView ( Empresa  *emp, QWidget *parent, Qt::WFlags fl )
+CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
         : FichaBc ( emp, parent, fl )
 {
     _depura ( "CuentaView::CuentaView", 0 );
@@ -143,7 +143,7 @@ int CuentaView::nuevacuenta ( QString codpadre )
         } // end switch
     } else {
         QString codint = codpadre;
-        while ( codint.length() < ( ( Empresa * ) empresaBase() ) ->numdigitosempresa() - 1 ) {
+        while ( codint.length() < ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa() - 1 ) {
             codint = codint + "0";
         } // end while
         codint = codint + "0";

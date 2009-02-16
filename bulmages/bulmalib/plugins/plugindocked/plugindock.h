@@ -26,12 +26,12 @@
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "company.h"
 #include "blmainwindow.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( BlMainWindow * );
 extern "C" MY_EXPORT int Company_createMainWindows_Post ( Company * );
-extern "C" MY_EXPORT int Empresa_createMainWindows_Post ( Empresa * );
+extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 

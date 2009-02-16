@@ -27,7 +27,7 @@
 #include <QTextStream>
 #include <QFileDialog>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "diarioview.h"
 #include "blfunctions.h"
 #include "diarioprintview.h"
@@ -45,7 +45,7 @@
 \param emp
 \param parent
 **/
-DiarioView::DiarioView ( Empresa  *emp, QWidget *parent, int )
+DiarioView::DiarioView ( BcCompany  *emp, QWidget *parent, int )
         : FichaBc ( emp, parent )
 {
     _depura ( "DiarioView::DiarioView", 0 );

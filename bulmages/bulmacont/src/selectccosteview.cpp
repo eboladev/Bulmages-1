@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "selectccosteview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 
@@ -28,13 +28,13 @@
 \param emp
 \param parent
 **/
-SelectCCosteView::SelectCCosteView ( Empresa *emp, QWidget *parent )
+SelectCCosteView::SelectCCosteView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "SelectCCosteView::SelectCCosteView", 0 );
     setupUi ( this );
 
-    numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
+    numdigitos = ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa();
 
     m_iterador = new QTreeWidgetItemIterator ( mui_listCostes );
     mui_listCostes->setColumnCount ( 5 );

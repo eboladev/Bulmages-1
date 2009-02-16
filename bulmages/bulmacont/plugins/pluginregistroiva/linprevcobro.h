@@ -21,7 +21,7 @@
 #ifndef LINPREVCOBRO_H
 #define LINPREVCOBRO_H
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "blpostgresqlclient.h"
 
 
@@ -48,15 +48,15 @@ private:
     /// pinta en muchas partes.
     QString mdb_nomcuenta;
     QString mdb_nomctacliente;
-    Empresa *empresaactual;
+    BcCompany *empresaactual;
     BlPostgreSqlClient *conexionbase;
 
 public:
-    linprevcobro ( Empresa * );
-    linprevcobro ( Empresa *, QString );
+    linprevcobro ( BcCompany * );
+    linprevcobro ( BcCompany *, QString );
     /// La carga r&aacute;pida tiene un comportamiento poco restrictivo para aumentar la
     /// eficiencia.
-    linprevcobro ( Empresa *, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
+    linprevcobro ( BcCompany *, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
     virtual ~linprevcobro();
     virtual void pintalinprevcobro() {};
     void guardalinprevcobro();

@@ -28,7 +28,7 @@
 #include "bldockwidget.h"
 #include "ui_correctorbase.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /** Busca errores y incoherencias en la contabilidad y las reporta al usuario en forma de
@@ -49,7 +49,7 @@ public:
     /// Base de datos con la que se esta operando.
     BlPostgreSqlClient *conexionbase;
     /// Empresa que ha hecho la instancia del corrector.
-    Empresa *empresaactual;
+    BcCompany *empresaactual;
     /// El informe generado se forma en HTML y se presenta mediante este QString.
     QString textBrowser;
     /// El corrector es una ventana del tipo dock, que se puede anexar a las esquinas
@@ -63,9 +63,9 @@ public:
     ~correctorwidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
-    /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
+    /// funcion setCompany  para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
-    void setEmpresa ( Empresa *empres ) {
+    void setCompany  ( BcCompany *empres ) {
         empresaactual = empres;
         conexionbase = empres->bdempresa();
     }

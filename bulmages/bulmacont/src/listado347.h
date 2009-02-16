@@ -24,7 +24,7 @@
 
 #include "blfunctions.h"
 #include "ui_listado347base.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blwidget.h"
 
 
@@ -33,7 +33,7 @@ class Listado347 : public QDialog, public Ui_Listado347Base, BlMainCompanyPointe
     Q_OBJECT
 
 public:
-    Listado347 ( Empresa *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window );
+    Listado347 ( BcCompany *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window );
     ~Listado347();
 
 private slots:

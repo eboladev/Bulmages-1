@@ -39,7 +39,7 @@
 #include "qobject.h"
 #include "listcuentasview1.h"
 #include "mpatrimonialesview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 resmensualview::resmensualview ( empresa *emp, QWidget *parent, const char *name ) : resmensualdlg ( parent, name )

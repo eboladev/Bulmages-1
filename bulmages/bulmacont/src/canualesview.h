@@ -29,7 +29,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Listado de balances disponibles.
@@ -51,7 +51,7 @@ private:
     QString m_idBalance;
 
 public:
-    CAnualesView ( Empresa *, QWidget *parent = 0 );
+    CAnualesView ( BcCompany *, QWidget *parent = 0 );
     ~CAnualesView();
     void inicializatabla();
     /// Establece el funcionamiento de la ventana como selector (afecta sobre

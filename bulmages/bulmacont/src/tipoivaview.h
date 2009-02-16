@@ -44,7 +44,7 @@ private:
     int m_posactual;
 
 public:
-    tipoivaview ( Empresa *, QWidget *parent = 0 );
+    tipoivaview ( BcCompany *, QWidget *parent = 0 );
     ~tipoivaview();
 
 private:

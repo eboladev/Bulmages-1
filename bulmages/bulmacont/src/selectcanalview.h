@@ -27,7 +27,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 ///
@@ -37,7 +37,7 @@ class selectcanalview : public QDialog, public Ui_SelectCanalBase, public BlMain
     Q_OBJECT
 
 public:
-    selectcanalview ( Empresa *emp, QWidget *parent = 0 );
+    selectcanalview ( BcCompany *emp, QWidget *parent = 0 );
     ~selectcanalview();
 
 private:

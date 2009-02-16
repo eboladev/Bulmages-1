@@ -26,7 +26,7 @@
 
 #include "bulmacont.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "asiento1.h"
 #include "listlinasiento1view.h"
 #include "asiento1view.h"
@@ -34,8 +34,8 @@
 
 extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
 extern "C" MY_EXPORT int Asiento1_guardaAsiento1_post ( Asiento1 * );
-extern "C" MY_EXPORT int empresa_cobPag ( Empresa * );
-extern "C" MY_EXPORT int empresa_registroiva ( Empresa * );
+extern "C" MY_EXPORT int empresa_cobPag ( BcCompany * );
+extern "C" MY_EXPORT int empresa_registroiva ( BcCompany * );
 extern "C" MY_EXPORT int ListLinAsiento1View_boton_iva ( ListLinAsiento1View * );
 extern "C" MY_EXPORT int Asiento1View_Asiento1View ( Asiento1View * );
 

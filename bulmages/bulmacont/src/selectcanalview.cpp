@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "selectcanalview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 
@@ -31,12 +31,12 @@
 \param emp
 \param parent
 **/
-selectcanalview::selectcanalview ( Empresa *emp, QWidget *parent )
+selectcanalview::selectcanalview ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "selectcanalview::selectcanalview", 0 );
     setupUi ( this );
-    numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
+    numdigitos = ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa();
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
 
     m_listCanales->setColumnCount ( 5 );

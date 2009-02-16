@@ -22,14 +22,14 @@
 
 #include "diarioprint.h"
 #include "listcuentasview1.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
 /**
 \param emp
 **/
-DiarioPrint::DiarioPrint ( Empresa  *emp ) : BlMainCompanyPointer ( emp )
+DiarioPrint::DiarioPrint ( BcCompany  *emp ) : BlMainCompanyPointer ( emp )
 {
     _depura ( "DiarioPrint::DiarioPrint", 0 );
     fichero = NULL;

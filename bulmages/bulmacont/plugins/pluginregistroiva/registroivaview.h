@@ -65,7 +65,7 @@ private:
     BlDbRecordSet *m_cursorFPago;
 
 public:
-    RegistroIvaView ( Empresa *, QWidget * );
+    RegistroIvaView ( BcCompany *, QWidget * );
     virtual ~RegistroIvaView();
     void manageArticle ( int );
     virtual void pintaidregistroiva ( const QString & ) {}

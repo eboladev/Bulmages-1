@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "fpagoview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /// El constructor de la clase prepara las variables globales y llama a la funci&oacute;n
@@ -28,7 +28,7 @@
 \param emp
 \param parent
 **/
-fpagoview::fpagoview ( Empresa *emp, QWidget *parent )
+fpagoview::fpagoview ( BcCompany *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "fpagoview::fpagoview", 0 );

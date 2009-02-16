@@ -33,7 +33,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 class canalview : public FichaBc, public Ui_canaldlg
@@ -52,7 +52,7 @@ public:
 
 
 public:
-    canalview ( Empresa *, QWidget *parent = 0 );
+    canalview ( BcCompany *, QWidget *parent = 0 );
     ~canalview();
     void mostrarplantilla();
     void pintar();

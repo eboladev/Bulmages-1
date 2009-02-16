@@ -21,7 +21,7 @@
 #include "listregistroivaview.h"
 #include "regivaprintview.h"
 #include "registroivaview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "asiento1view.h"
 
 #include <QMenu>
@@ -32,7 +32,7 @@
 \param emp
 \param parent
 **/
-ListRegistroIvaView::ListRegistroIvaView ( Empresa * emp, QString, QWidget *parent )
+ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *parent )
         : QWidget ( parent )
 {
     _depura ( "ListRegistroIvaView::ListRegistroIvaView", 0 );

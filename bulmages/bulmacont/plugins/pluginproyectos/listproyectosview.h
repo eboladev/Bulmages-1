@@ -26,7 +26,7 @@
 #include "blformlist.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 /** Trata la ventana de Listado de Amortizaciones.
@@ -42,7 +42,7 @@ private:
     QString mdb_nompresupuestoc;
 
 public:
-    ListProyectosView ( Empresa *emp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    ListProyectosView ( BcCompany *emp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~ListProyectosView();
     void inicializatabla();
     void editar ( int );

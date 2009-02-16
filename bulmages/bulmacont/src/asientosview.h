@@ -26,7 +26,7 @@
 #include "blformlist.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
@@ -40,7 +40,7 @@ private:
     void rellenaListaEjercicio();
 
 public:
-    AsientosView ( Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    AsientosView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~AsientosView();
     void presentar();
     void imprimir();

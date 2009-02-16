@@ -32,7 +32,7 @@
 
 #include "pluginresumcta.h"
 #include "correctorwidget.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "bulmacont.h"
 #include "bldockwidget.h"
 
@@ -53,7 +53,7 @@ void entryPoint ( Bulmacont *bcont )
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginresumcta", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
-    Empresa *emp = bcont->empresaactual();
+    BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( _("Resumen cuenta"), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
@@ -178,7 +178,7 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 **/
 int Bulmacont_closeEvent ( Bulmacont *bcont )
 {
-    Empresa * emp = bcont->empresaactual();
+    BcCompany * emp = bcont->empresaactual();
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();

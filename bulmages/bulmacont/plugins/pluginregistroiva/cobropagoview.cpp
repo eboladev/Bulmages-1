@@ -22,7 +22,7 @@
 
 #include "cobropagoview.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "aplinteligentesview.h"
 #include "busquedacuenta.h"
 
@@ -32,7 +32,7 @@
 \param emp
 \param parent
 **/
-cobropagoview::cobropagoview ( Empresa *emp, QWidget *parent )
+cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
         : BlForm ( parent )
 {
     _depura ( "cobropagoview::cobropagoview", 0 );

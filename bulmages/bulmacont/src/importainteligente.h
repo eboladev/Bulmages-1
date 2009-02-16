@@ -27,7 +27,7 @@
 #include <qxml.h>
 
 #include "blwidget.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /// Sirve para importar asientos inteligentes (plantillas) dentro de la empresa en uso.
@@ -49,7 +49,7 @@ private:
 
 public:
     /// Constructor de la clase que inicializa las variables empresaactual y conexionbase.
-    importainteligente ( Empresa * );
+    importainteligente ( BcCompany * );
     /// Elemento del analizador (parser) de SAX que se dispara al encontrar un tag de inicio.
     bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );
     /// Elemento del analizador (parser) de SAX que se dispara al encontrar un tag de fin

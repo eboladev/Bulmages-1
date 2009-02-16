@@ -25,7 +25,7 @@
 #include <QTableWidget>
 
 #include "listlinprevcobro.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "linprevcobro.h"
 
 

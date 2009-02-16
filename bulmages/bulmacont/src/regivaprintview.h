@@ -35,7 +35,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Trata el formulario de impresi&oacute;n del registro de IVA y genera los
@@ -49,7 +49,7 @@ public:
     char *fichero;
 
 public:
-    regivaprintview ( Empresa *, QWidget *parent = 0 );
+    regivaprintview ( BcCompany *, QWidget *parent = 0 );
     ~regivaprintview();
     void inicializa1 ( QString, QString );
     void presentar ( const char *tipus );

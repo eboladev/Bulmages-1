@@ -29,7 +29,7 @@
 #include <cstdio>
 
 #include "plugincanualesods.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 #include "datosview.h"
 #include "blprogressbar.h"

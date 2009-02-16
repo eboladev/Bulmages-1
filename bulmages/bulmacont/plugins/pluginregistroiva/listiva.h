@@ -25,7 +25,7 @@
 #include <QList>
 #include <QMutableListIterator>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "iva.h"
 #include "blfunctions.h"
 #include "blfixed.h"
@@ -34,14 +34,14 @@
 class ListIva
 {
 public:
-    Empresa *companyact;
+    BcCompany *companyact;
     QString mdb_idregistroiva;
     QList<Iva*> m_lista;
 
 public:
-    ListIva ( Empresa *comp );
+    ListIva ( BcCompany *comp );
     ListIva();
-    void setcompany ( Empresa *c ) {
+    void setcompany ( BcCompany *c ) {
         companyact = c;
     };
     virtual ~ListIva();

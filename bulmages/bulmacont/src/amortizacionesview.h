@@ -26,7 +26,7 @@
 #include "blformlist.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 /** Trata la ventana de Listado de Amortizaciones.
@@ -42,7 +42,7 @@ private:
     QString mdb_nomamortizacion;
 
 public:
-    AmortizacionesView ( Empresa *, QWidget * );
+    AmortizacionesView ( BcCompany *, QWidget * );
     ~AmortizacionesView();
     void inicializatabla();
     void editar ( int );

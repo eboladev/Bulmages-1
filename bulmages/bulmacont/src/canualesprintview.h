@@ -39,7 +39,7 @@
 
 #include "blwidget.h"
 
-class Empresa;
+class BcCompany;
 
 
 class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase, public BlMainCompanyPointer
@@ -52,7 +52,7 @@ private:
     QDomDocument m_doc;
 
 public:
-    CAnualesPrintView ( Empresa *emp, QWidget *parent = 0 );
+    CAnualesPrintView ( BcCompany *emp, QWidget *parent = 0 );
     ~CAnualesPrintView();
     void setidbalance ( QString ); /// Establece cual ser&aacute; el balance a imprimir.
     bool procesaFormula ( const QDomNode & );

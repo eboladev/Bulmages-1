@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include  "canalview.h"
-#include  "empresa.h"
+#include  "bccompany.h"
 #include  "selectcanalview.h"
 
 
@@ -28,7 +28,7 @@
 \param emp
 \param parent
 **/
-canalview::canalview ( Empresa  *emp, QWidget *parent )
+canalview::canalview ( BcCompany  *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "canalview::canalview", 0 );

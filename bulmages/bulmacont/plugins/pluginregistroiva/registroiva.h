@@ -27,7 +27,7 @@
 #include "blfixed.h"
 #include "listiva.h"
 #include "listlinprevcobro.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "fichabc.h"
 
 
@@ -42,7 +42,7 @@ public:
     void setLineas ( BcSubForm *l ) {
         m_lineas = l;
     };
-    RegistroIva ( Empresa *, QWidget * );
+    RegistroIva ( BcCompany *, QWidget * );
     QString idregistroiva() {
         return DBvalue ( "idregistroiva" );
     };

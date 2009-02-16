@@ -38,7 +38,7 @@
 
 #include "bulmacont.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfixed.h"
 #include "arbol.h"
 
@@ -76,7 +76,7 @@ private:
     bool Arboles();
 
 public:
-    Empresa *empresaact;
+    BcCompany *empresaact;
     BlPostgreSqlClient *conexionbase;
 
 public:

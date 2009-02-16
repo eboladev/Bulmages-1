@@ -29,7 +29,7 @@
 #include <QObject>
 
 #include "pluginregistroiva.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "registroivaview.h"
 #include "cobropagoview.h"
 #include "asiento1.h"
@@ -164,7 +164,7 @@ int Asiento1View_Asiento1View ( Asiento1View *l )
 int Asiento1_guardaAsiento1_post ( Asiento1 *as )
 {
     _depura ( "Asiento1_guardaAsiento1_post", 0 );
-    Empresa *companyact = as->companyact();
+    BcCompany *companyact = as->companyact();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
     BlDbRecordSet *curvalor = companyact->cargacursor ( query );
@@ -208,9 +208,9 @@ int ListLinAsiento1View_boton_iva ( ListLinAsiento1View *as )
     as->guardar();
     try {
         int idborrador = as->DBvalue ( "idborrador" ).toInt();
-        RegistroIvaView *nuevae = new RegistroIvaView ( ( Empresa * ) as->empresaBase(), 0 );
+        RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->empresaBase(), 0 );
         nuevae->inicializa1 ( idborrador );
-        ( ( Empresa * ) as->empresaBase() ) ->pWorkspace() ->addWindow ( nuevae );
+        ( ( BcCompany * ) as->empresaBase() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
         mensajeInfo ( _("Debe seleccionar un apunte") );

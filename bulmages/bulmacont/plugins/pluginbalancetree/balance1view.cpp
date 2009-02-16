@@ -29,7 +29,7 @@
 
 #include "balance1view.h"
 #include "listcuentasview1.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "busquedacuenta.h"
 #include "asiento1view.h"
 #include "selectcanalview.h"
@@ -63,7 +63,7 @@
 \param emp
 \param parent
 **/
-BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
+BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
         : FichaBc ( emp, parent )
 {
     _depura ( "BalanceTreeView::BalanceTreeView", 0 );

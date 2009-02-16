@@ -20,7 +20,7 @@
 
 #include "mpatrimonialesview.h"
 #include "mpatrimonialview.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -28,7 +28,7 @@
 \param emp
 \param parent
 **/
-mpatrimonialesview::mpatrimonialesview ( Empresa *emp, QWidget *parent )
+mpatrimonialesview::mpatrimonialesview ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     _depura ( "mpatrimonialesview::mpatrimonialesview", 0 );
@@ -171,7 +171,7 @@ void mpatrimonialesview::dbtabla ( int row, int colummn, int button, const QPoin
     if ( modo == 0 ) {
         QString idmpatrimonial = mui_tabla->item ( row, 0 ) ->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        mpatrimonialview *masa = new mpatrimonialview ( ( Empresa* ) empresaBase(), this );
+        mpatrimonialview *masa = new mpatrimonialview ( ( BcCompany* ) empresaBase(), this );
         masa->inicializa1 ( idmpatrimonial );
         masa->exec();
         delete masa;
@@ -232,7 +232,7 @@ void mpatrimonialesview::on_mui_borrar_clicked()
 void mpatrimonialesview::on_mui_nuevo_clicked()
 {
     _depura ( "mpatrimonialesview::on_mui_nuevo_clicked", 0 );
-    mpatrimonialview *masa = new mpatrimonialview ( ( Empresa * ) empresaBase(), this );
+    mpatrimonialview *masa = new mpatrimonialview ( ( BcCompany * ) empresaBase(), this );
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.

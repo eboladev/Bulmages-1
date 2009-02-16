@@ -34,7 +34,7 @@
 #include "blfunctions.h"
 #include "blfixed.h"
 #include "asiento1view.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "bldb.h"
 #include "registroivaview.h"
 
@@ -90,9 +90,9 @@ void RegIVAQToolButton::click()
     las->guardar();
     try {
         int idborrador = las->DBvalue ( "idborrador" ).toInt();
-        RegistroIvaView *nuevae = new RegistroIvaView ( ( Empresa * ) las->empresaBase(), 0 );
+        RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) las->empresaBase(), 0 );
         nuevae->inicializa1 ( idborrador );
-        ( ( Empresa * ) las->empresaBase() ) ->pWorkspace() ->addWindow ( nuevae );
+        ( ( BcCompany * ) las->empresaBase() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
         mensajeInfo ( "Debe seleccionar un apunte" );

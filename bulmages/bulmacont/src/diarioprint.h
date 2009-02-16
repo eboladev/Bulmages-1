@@ -35,7 +35,7 @@
 */
 
 #include "blwidget.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 /// Imprime el libro diario.
@@ -48,7 +48,7 @@ public:
     char *fichero;
 
 public:
-    DiarioPrint ( Empresa * );
+    DiarioPrint ( BcCompany * );
     ~DiarioPrint();
     void inicializa1 ( char *, char * );
     void inicializa2 ( char * );

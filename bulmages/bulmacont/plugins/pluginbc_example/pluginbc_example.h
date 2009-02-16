@@ -32,7 +32,7 @@
 
 #include "bulmacont.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmacont * );

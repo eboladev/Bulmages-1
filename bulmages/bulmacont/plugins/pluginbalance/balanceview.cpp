@@ -25,7 +25,7 @@
 #include <QFont>
 
 #include "balanceview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "arbol.h"
 #include "blpostgresqlclient.h"
 #include "balanceprintview.h"
@@ -53,7 +53,7 @@
 \param emp
 \param parent
 **/
-BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
+BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
         : FichaBc ( emp, parent )
 {
     _depura ( "BalanceView::BalanceView", 0 );

@@ -21,7 +21,7 @@
 #include "listproyectosview.h"
 #include "listproyectosview.h"
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "proyectoview.h"
 
 
@@ -32,7 +32,7 @@
 \param emp
 \param parent
 **/
-ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
+ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
         : BlFormList ( emp, parent, flag, editmodo )
 {
     _depura ( "ListProyectosView::ListProyectosView", 0 );
@@ -85,7 +85,7 @@ ListProyectosView::~ListProyectosView()
 void ListProyectosView::crear()
 {
     _depura ( "ListProyectosView::on_mui_crear_clicked", 0 );
-    ProyectoView *proj = new ProyectoView ( ( Empresa * ) empresaBase(), 0 );
+    ProyectoView *proj = new ProyectoView ( ( BcCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( proj );
     proj->show();
     _depura ( "END ListProyectosView::on_mui_crear_clicked", 0 );
@@ -135,7 +135,7 @@ void ListProyectosView::editar ( int row )
     mdb_nompresupuestoc = mui_listado->DBvalue ( "nompresupuestoc" );
     if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        ProyectoView * amor = new ProyectoView ( ( Empresa * ) empresaBase(), 0 );
+        ProyectoView * amor = new ProyectoView ( ( BcCompany * ) empresaBase(), 0 );
         amor->cargar ( mdb_idpresupuestoc );
         empresaBase() ->pWorkspace() ->addWindow ( amor );
         amor->show();

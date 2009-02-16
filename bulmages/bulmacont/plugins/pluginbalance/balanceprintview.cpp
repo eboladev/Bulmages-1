@@ -33,7 +33,7 @@
 
 #include "balanceprintview.h"
 #include "listcuentasview1.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "arbol.h"
 #include "busquedacuenta.h"
 #include "selectcanalview.h"
@@ -48,7 +48,7 @@
 /**
 \param emp
 **/
-BalancePrintView::BalancePrintView ( Empresa *emp )
+BalancePrintView::BalancePrintView ( BcCompany *emp )
         : QDialog ( 0 ), BlMainCompanyPointer ( emp )
 {
     _depura ( "BalancePrintView::BalancePrintView", 0 );
@@ -424,7 +424,7 @@ void BalancePrintView::presentar ( const char* tipus )
 void BalancePrintView::on_mui_canales_clicked()
 {
     _depura ( "BalancePrintView::on_mui_canales_clicked", 0 );
-    selectcanalview *selcanales = ( ( Empresa * ) empresaBase() ) ->getselcanales();
+    selectcanalview *selcanales = ( ( BcCompany * ) empresaBase() ) ->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
     _depura ( "END BalancePrintView::on_mui_canales_clicked", 0 );
@@ -439,7 +439,7 @@ void BalancePrintView::on_mui_canales_clicked()
 void BalancePrintView::on_mui_ccostes_clicked()
 {
     _depura ( "BalancePrintView::on_mui_ccostes_clicked", 0 );
-    SelectCCosteView *selccostes = ( ( Empresa * ) empresaBase() ) ->getselccostes();
+    SelectCCosteView *selccostes = ( ( BcCompany * ) empresaBase() ) ->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
     _depura ( "END BalancePrintView::on_mui_ccostes_clicked", 0 );

@@ -32,7 +32,7 @@
 #include <QEvent>
 #include <QTextStream>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "listivaview.h"
 #include "blfunctions.h"
 

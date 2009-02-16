@@ -41,7 +41,7 @@
 class intapunts3view;
 class diarioview1;
 class extractoview1;
-class Empresa;
+class BcCompany ;
 
 
 /// Pantalla de presentación del balnace de sumas y saldos (jerarquica)
@@ -71,7 +71,7 @@ private:
     Arbol *arbol; /// el arbol de cuentas
 
 public:
-    BalanceTreeView ( Empresa *, QWidget *parent = 0, int flags = 0 );
+    BalanceTreeView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
     void inicializa1 ( QString, QString, QString, QString, int );
     ~BalanceTreeView();
     virtual void imprimir();

@@ -32,7 +32,7 @@
 #include "blpostgresqlclient.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 class myplugin1 : public QObject
@@ -40,11 +40,11 @@ class myplugin1 : public QObject
     Q_OBJECT
 
 public:
-    Empresa *empresaactual;
+    BcCompany *empresaactual;
     BlPostgreSqlClient *conexionbase;
 
 public:
-    myplugin1 ( Empresa * );
+    myplugin1 ( BcCompany * );
     ~myplugin1();
 
 public slots:
@@ -59,7 +59,7 @@ class adocumental : public QDialog, public Ui_adocumentalbase
     Q_OBJECT
 
 private:
-    Empresa *empresaactual;
+    BcCompany *empresaactual;
     BlPostgreSqlClient *conexionbase;
     QString RutaADocumental;
     /// En el modo edicion la ventana responde como si fuese un listado sobre el que se
@@ -73,7 +73,7 @@ private:
     QString idadocumental;
 
 public:
-    adocumental ( Empresa *, QWidget *parent = 0 );
+    adocumental ( BcCompany *, QWidget *parent = 0 );
     ~adocumental();
     void setmodoedicion() {
         modo = 0;

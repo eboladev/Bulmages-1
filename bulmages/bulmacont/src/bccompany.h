@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMPRESA_H
-#define EMPRESA_H
+#ifndef BCCOMPANY_H
+#define BCCOMPANY_H
 
 #include <QMessageBox>
 #include <QString>
@@ -61,7 +61,7 @@ class Bulmacont;
     objetos de modo que estos s&oacute;lo tengan referencias a esta clase y haciendo el
     flujo del c&oacute;digo m&aacute;s f&aacute;cil de entender.
     \todo Proporcionar la funcionalidad de comunicaci&oacute;n entre las otras clases. */
-class Empresa : public BlMainCompany
+class BcCompany : public BlMainCompany
 {
 private:
     Bulmacont *m_bulmacont;
@@ -83,8 +83,8 @@ public:
     QString nombreDB;
 
 public:
-    Empresa ( Bulmacont *bcont );
-    virtual ~Empresa();
+    BcCompany ( Bulmacont *bcont );
+    virtual ~BcCompany();
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
     extractoview1 *extractoempresa();

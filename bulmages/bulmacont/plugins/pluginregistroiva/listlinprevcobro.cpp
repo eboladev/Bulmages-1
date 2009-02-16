@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "listlinprevcobro.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "linprevcobro.h"
 
 
@@ -44,7 +44,7 @@ void ListLinPrevCobro::inicializaVariables()
 /**
 \param comp
 **/
-ListLinPrevCobro::ListLinPrevCobro ( Empresa *comp )
+ListLinPrevCobro::ListLinPrevCobro ( BcCompany *comp )
 {
     _depura ( "ListLinPrevCobro::ListLinPrevCobro", 0 );
     inicializaVariables();

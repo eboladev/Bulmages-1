@@ -35,7 +35,7 @@
 #include <QLineEdit>
 
 #include "ui_listregistroivabase.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase
@@ -48,10 +48,10 @@ private:
     QAction *m_verasiento;
 
 public:
-    Empresa *m_companyact;
+    BcCompany *m_companyact;
 
 public:
-    ListRegistroIvaView ( Empresa *, QString ejerActual = "", QWidget *parent = 0 );
+    ListRegistroIvaView ( BcCompany *, QString ejerActual = "", QWidget *parent = 0 );
     ~ListRegistroIvaView();
     void inicializa();
 

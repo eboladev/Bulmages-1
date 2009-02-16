@@ -23,7 +23,7 @@
 #include <QDomDocument>
 
 #include "aplinteligentesview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "asiento1view.h"
 
 #define TIPO_CTA         0
@@ -48,7 +48,7 @@
 \param emp
 \param parent
 **/
-aplinteligentesview::aplinteligentesview ( Empresa *emp, QWidget *parent )
+aplinteligentesview::aplinteligentesview ( BcCompany *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "aplinteligentesview::aplinteligentesview", 0 );

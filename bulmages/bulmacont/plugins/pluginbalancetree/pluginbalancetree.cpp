@@ -32,7 +32,7 @@
 
 #include "pluginbalancetree.h"
 #include "balance1view.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -61,7 +61,7 @@ myplugin4::~myplugin4()
 void myplugin4::elslot()
 {
     _depura ( "myplugin4::elslot", 0 );
-    BalanceTreeView *cuad = new BalanceTreeView ( ( Empresa * ) empresaBase(), 0 );
+    BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     _depura ( "END myplugin4::elslot", 0 );

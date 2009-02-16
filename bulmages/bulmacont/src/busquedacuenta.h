@@ -32,7 +32,7 @@
 #include "blpostgresqlclient.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 class BusquedaCuentaDelegate : public BlComboBox
@@ -78,7 +78,7 @@ public:
     virtual QString tipocuenta();
     virtual void setidcuenta ( QString val );
     virtual void setcodigocuenta ( QString val );
-    virtual void setMainCompany ( Empresa *emp );
+    virtual void setMainCompany ( BcCompany *emp );
     void hideNombre();
     void showNombre();
     void pinta();

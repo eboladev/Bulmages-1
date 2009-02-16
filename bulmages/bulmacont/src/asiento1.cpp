@@ -27,7 +27,7 @@
 #include "blfixed.h"
 #include "blfunctions.h"
 #include "plugins.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "arbol.h"
 
 
@@ -36,7 +36,7 @@
 \param comp
 \param parent
 **/
-Asiento1::Asiento1 ( Empresa *comp, QWidget *parent ) : FichaBc ( comp, parent )
+Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, parent )
 {
     _depura ( "Asiento1::Asiento1", 0 );
     setTitleName ( _( "Asiento Contable" ) );
@@ -420,7 +420,7 @@ int Asiento1::guardar()
 /**
 \return
 **/
-Empresa *Asiento1::companyact()
+BcCompany *Asiento1::companyact()
 {
     _depura ( "Asiento1::companyact", 0 );
     _depura ( "END Asiento1::companyact", 0 );

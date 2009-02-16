@@ -29,7 +29,7 @@
 #include "extractoview1.h"
 #include "extractoprintview.h"
 #include "libromayorprint.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "asiento1view.h"
 #include "diarioview.h"
 #include "listcuentasview1.h"
@@ -47,7 +47,7 @@
 \param emp
 \param parent
 **/
-extractoview1::extractoview1 ( Empresa *emp, QWidget *parent, int ) : FichaBc ( emp, parent )
+extractoview1::extractoview1 ( BcCompany *emp, QWidget *parent, int ) : FichaBc ( emp, parent )
 {
     _depura ( "extractoview1::extractoview1", 0 );
     setupUi ( this );

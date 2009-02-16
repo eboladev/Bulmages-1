@@ -20,7 +20,7 @@
 
 #include "asiento1view.h"
 #include "adocumental.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 #define COL_IDADOCUMENTAL           0
 #define COL_IDASIENTO               1
@@ -35,7 +35,7 @@
 /**
 \param emp
 **/
-myplugin1::myplugin1 ( Empresa *emp )
+myplugin1::myplugin1 ( BcCompany *emp )
 {
     _depura ( "myplugin1::myplugin1", 0 );
     empresaactual = emp;
@@ -112,7 +112,7 @@ void myplugin1::archDoc()
 \param emp
 \param parent
 **/
-adocumental::adocumental ( Empresa *emp, QWidget *parent )
+adocumental::adocumental ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent )
 {
     _depura ( "adocumental::adocumental", 10 );

@@ -21,7 +21,7 @@
 #include <QString>
 
 #include "importbalance.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 /// Constructor de la clase que inicializa la empresa actual.
@@ -31,7 +31,7 @@
 /**
 \param emp
 **/
-ImportBalance::ImportBalance ( Empresa *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
+ImportBalance::ImportBalance ( BcCompany *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
     _depura ( "ImportBalance::ImportBalance", 0 );
     m_tag = "";

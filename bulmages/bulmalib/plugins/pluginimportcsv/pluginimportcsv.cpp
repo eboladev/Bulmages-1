@@ -91,7 +91,7 @@ int Company_createMainWindows_Post ( Company *cmp )
     return 0;
 }
 
-int Empresa_createMainWindows_Post ( Empresa *cmp )
+int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
     g_emp_importcsv = cmp;
     return 0;

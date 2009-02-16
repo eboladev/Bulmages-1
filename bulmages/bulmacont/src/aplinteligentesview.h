@@ -107,7 +107,7 @@ private:
     unsigned int numdigitos;
 
 public:
-    aplinteligentesview ( Empresa *, QWidget *parent = 0 );
+    aplinteligentesview ( BcCompany *, QWidget *parent = 0 );
     ~aplinteligentesview();
     void inicializa ( int );
     void mostrarplantilla();

@@ -35,7 +35,7 @@
 
 #include "blfunctions.h"
 #include "ui_bulmacontbase.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "bbloqfecha.h"
 #include "blconfiguration.h"
 #include "listventanas.h"
@@ -52,7 +52,7 @@ class Bulmacont : public BlMainWindow, public Ui_BulmaContBase
     Q_OBJECT
 
 private:
-    Empresa *m_empresaactual;
+    BcCompany *m_empresaactual;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
     BlWorkspace *m_pWorkspace;
     ListVentanas *m_list;
@@ -60,7 +60,7 @@ private:
 public:
     Bulmacont ( QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "" );
     ~Bulmacont();
-    Empresa *empresaactual();
+    BcCompany *empresaactual();
     /// Exporta menues.
     QMenu *mui_MenuHerramientas();
     QMenu *mui_MenuVer();

@@ -34,7 +34,7 @@
 \param parent
 \param f
 **/
-Listado347::Listado347 ( Empresa *emp, QString ejerActual, QWidget *parent, Qt::WFlags f )
+Listado347::Listado347 ( BcCompany *emp, QString ejerActual, QWidget *parent, Qt::WFlags f )
         : QDialog ( parent, f ), BlMainCompanyPointer ( emp )
 {
     _depura ( "Listado347::Listado347", 0 );

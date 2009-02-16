@@ -22,7 +22,7 @@
 #ifndef BCSUBFORM_H
 #define BCSUBFORM_H
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "qtable2.h"
 #include "bldbsubform.h"
 #include "blsubform.h"
@@ -58,7 +58,7 @@ public:
     BcSubFormDelegate *m_delegate;
 
 public:
-    Empresa *empresaBase();
+    BcCompany *empresaBase();
     BcSubForm ( QWidget *parent = 0 );
     virtual ~BcSubForm();
     virtual void boton_asiento();

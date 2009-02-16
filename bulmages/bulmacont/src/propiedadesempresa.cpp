@@ -22,7 +22,7 @@
 
 #include "blfunctions.h"
 #include "propiedadesempresa.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 
 ///
@@ -30,7 +30,7 @@
 \param emp
 \param parent
 **/
-propiedadesempresa::propiedadesempresa ( Empresa *emp, QWidget *parent )
+propiedadesempresa::propiedadesempresa ( BcCompany *emp, QWidget *parent )
         : FichaBc ( emp, parent )
 {
     _depura ( "propiedadesempresa::propiedadesempresa", 0 );

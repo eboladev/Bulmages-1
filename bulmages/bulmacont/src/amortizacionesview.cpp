@@ -21,7 +21,7 @@
 #include "amortizacionesview.h"
 #include "amortizacionview.h"
 
-#include <empresa.h>
+#include "bccompany.h"
 
 
 /** Constructor de la clase del listado.
@@ -31,7 +31,7 @@
 \param emp
 \param parent
 **/
-AmortizacionesView::AmortizacionesView ( Empresa *emp, QWidget *parent )
+AmortizacionesView::AmortizacionesView ( BcCompany *emp, QWidget *parent )
         : BlFormList ( emp, parent )
 {
     _depura ( "AmortizacionesView::AmortizacionesView", 0 );
@@ -78,7 +78,7 @@ AmortizacionesView::~AmortizacionesView()
 void AmortizacionesView::crear()
 {
     _depura ( "AmortizacionesView::on_mui_crear_clicked", 0 );
-    AmortizacionView *amor = new AmortizacionView ( ( Empresa * ) empresaBase(), 0 );
+    AmortizacionView *amor = new AmortizacionView ( ( BcCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( amor );
     amor->show();
     _depura ( "END AmortizacionesView::on_mui_crear_clicked", 0 );
@@ -128,7 +128,7 @@ void AmortizacionesView::editar ( int row )
     mdb_nomamortizacion = mui_listado->DBvalue ( "nomamortizacion" );
     if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        AmortizacionView * amor = new AmortizacionView ( ( Empresa * ) empresaBase(), 0 );
+        AmortizacionView * amor = new AmortizacionView ( ( BcCompany * ) empresaBase(), 0 );
         amor->cargar ( mdb_idamortizacion );
         empresaBase() ->pWorkspace() ->addWindow ( amor );
         amor->show();

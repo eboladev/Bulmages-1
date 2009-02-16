@@ -6,7 +6,7 @@
 
 #include "bulmages01.h"
 #include "blpostgresqlclient.h"
-#include "empresa.h"
+#include "bccompany.h"
 
 //#include <qwidgetplugin.h>
 #include <QPluginLoader>

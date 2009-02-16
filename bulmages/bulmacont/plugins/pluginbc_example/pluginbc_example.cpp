@@ -28,7 +28,7 @@
 #include <stdio.h>
 
 #include "pluginbc_example.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 

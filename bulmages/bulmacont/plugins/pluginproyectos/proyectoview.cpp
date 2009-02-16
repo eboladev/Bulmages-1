@@ -25,7 +25,7 @@
 #include <fstream>
 
 #include "proyectoview.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 #include "blfunctions.h"
@@ -39,7 +39,7 @@
 \param comp
 \param parent
 **/
-ProyectoView::ProyectoView ( Empresa *comp, QWidget *parent )
+ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         : FichaBc ( comp, parent )
 {
     _depura ( "ProyectoView::ProyectoView", 0 );

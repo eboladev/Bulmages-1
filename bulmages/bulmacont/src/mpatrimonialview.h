@@ -29,7 +29,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public BlMainCompanyPointer
@@ -42,7 +42,7 @@ public:
     QString idmpatrimonial;
 
 public:
-    mpatrimonialview ( Empresa *, QWidget *parent = 0, Qt::WFlags fl = 0 );
+    mpatrimonialview ( BcCompany *, QWidget *parent = 0, Qt::WFlags fl = 0 );
     ~mpatrimonialview();
     void inicializa1 ( QString );
     QString getidmasa();

@@ -29,7 +29,7 @@
 #include "listlinasiento1view.h"
 
 
-class Empresa;
+class BcCompany ;
 
 
 /// Clase Asiento1.
@@ -45,9 +45,9 @@ protected:
     ListLinAsiento1View *listalineas;
 
 public:
-    Asiento1 ( Empresa *, QWidget *parent );
+    Asiento1 ( BcCompany *, QWidget *parent );
     virtual ~Asiento1();
-    Empresa *companyact();
+    BcCompany *companyact();
     int cargar ( QString );
     BlFixed totaldebe ( QString );
     BlFixed totalhaber ( QString );

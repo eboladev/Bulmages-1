@@ -29,7 +29,7 @@
 #include "blwidget.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Maneja la ventana de selector de centros de coste.
@@ -64,7 +64,7 @@ private:
 public:
     /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
     /// base de datos a utilizar.
-    SelectCCosteView ( Empresa *emp, QWidget *parent = 0 );
+    SelectCCosteView ( BcCompany *emp, QWidget *parent = 0 );
     /// Destructor de la clase.
     ~SelectCCosteView();
     void cargacostes();

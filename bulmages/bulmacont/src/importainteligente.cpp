@@ -21,7 +21,7 @@
 #include <QString>
 
 #include "importainteligente.h"
-#include "empresa.h"
+#include "bccompany.h"
 #include "blfunctions.h"
 
 /// Constructor de la clase que inicializa las variables y coge los datos de base de
@@ -30,7 +30,7 @@
     base de datos.
     Contiene la implementacion de la clase importainteligente que sirve para importar
     ficheros de XML a la base de datos de BulmaCont. */
-importainteligente::importainteligente ( Empresa *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
+importainteligente::importainteligente ( BcCompany *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
     _depura ( "importainteligente::importainteligente", 0 );
     tag = "";

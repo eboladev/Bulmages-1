@@ -33,7 +33,7 @@
 #include "fichabc.h"
 
 
-class Empresa;
+class BcCompany;
 
 
 /// Visualiza un centro de coste.
@@ -47,7 +47,7 @@ public:
     /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
 
 public:
-    ccosteview ( Empresa *, QWidget *parent = 0 );
+    ccosteview ( BcCompany *, QWidget *parent = 0 );
     ~ccosteview();
     void repintar();
     void mostrarplantilla();

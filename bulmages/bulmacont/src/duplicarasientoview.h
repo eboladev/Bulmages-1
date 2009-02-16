@@ -25,7 +25,7 @@
 #include "ui_duplicarasientobase.h"
 #include "blwidget.h"
 
-class Empresa;
+class BcCompany;
 
 
 ///
@@ -38,7 +38,7 @@ public:
     int idasiento;
 
 public:
-    DuplicarAsientoView ( Empresa *, QWidget *, Qt::WFlags flag = 0 );
+    DuplicarAsientoView ( BcCompany *, QWidget *, Qt::WFlags flag = 0 );
     ~DuplicarAsientoView();
     void inicializa ( QString, QString );
 

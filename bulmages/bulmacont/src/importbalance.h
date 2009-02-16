@@ -25,7 +25,7 @@
 #include <QMap>
 #include <qxml.h>
 
-#include "empresa.h"
+#include "bccompany.h"
 #include "blwidget.h"
 
 class QString;
@@ -60,7 +60,7 @@ private:
 
 public:
     /// Constructor de la clase que inicializa determinadas variables de clase.
-    ImportBalance ( Empresa * );
+    ImportBalance ( BcCompany * );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de inicio.
     bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de cierre

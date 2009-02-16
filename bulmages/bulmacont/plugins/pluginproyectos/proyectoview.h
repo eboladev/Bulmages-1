@@ -40,7 +40,7 @@ class ProyectoView : public FichaBc, public Ui_ProyectoBase
     Q_OBJECT
 
 public:
-    ProyectoView ( Empresa *, QWidget * );
+    ProyectoView ( BcCompany *, QWidget * );
     ~ProyectoView();
     int cargarPost ( QString );
     int guardarPost();
