@@ -58,7 +58,8 @@ public:
     - DBPrimaryKey . Es clave primaria,
     - DBNoSave . No se debe almacenenar en la base de datos.
     - DBAuto . Es autonumerico,
-    - DBDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
+    - DBDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal
+      puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
     - DBRequired . Requerido,
     - DBNoLoad . No debe cargarse desde la base de datos.
     **/

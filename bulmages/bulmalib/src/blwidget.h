@@ -33,8 +33,6 @@
 class PEmpresaBase
 {
 private:
-    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
-    /// doble click sobre la lista)
     EmpresaBase *m_empresaBase;
 
 public:
