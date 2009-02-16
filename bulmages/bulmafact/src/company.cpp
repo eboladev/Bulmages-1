@@ -33,7 +33,6 @@
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
 #include "plugins.h"
-#include "bancoview.h"
 #include "bulmafact.h"
 
 
@@ -99,13 +98,6 @@ void Company::createMainWindows ( BlSplashScreen *splash )
         m_bulmafact->actionSeries_de_Factura->setEnabled ( TRUE );
     } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con 'Bancos'.
-    m_bulmafact->actionBancos->setEnabled ( FALSE );
-
-    if ( has_table_privilege ( "banco", "SELECT" ) ) {
-        m_bulmafact->actionBancos->setEnabled ( TRUE );
-    } // end if
-
     /// pb = 100%
     m_progressbar->setValue ( 100 );
 
@@ -164,9 +156,11 @@ void Company::s_trabajadores()
 void Company::s_bancos()
 {
     _depura ( "Company::s_bancos", 0 );
+/*
     BancoView *t = new BancoView ( this, NULL );
     m_pWorkspace->addWindow ( t );
     t->show();
+*/
     _depura ( "END Company::s_bancos", 0 );
 }
 
