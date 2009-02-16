@@ -1990,7 +1990,7 @@ msgstr ""
 "Em sap greu, no trobo el formulari original en pdf.\n"
 "Provi a descarregar-lo des de www.aeat.es i guardi'l en\n"
 "/usr/share/bulmages/formularios o a\n"
-"~/.bulmages/formularios/.\n"
+"~/.bulmages/formularios/."
 
 #: ui_uiconfiguracion.h:453
 msgid "Login:"

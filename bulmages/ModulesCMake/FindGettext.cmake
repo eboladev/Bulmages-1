@@ -236,9 +236,10 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
 
       add_custom_command( 
          OUTPUT  "${_gmoFile}"
+         OUTPUT  "${_tmpPoFile}"
          COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --no-fuzzy-matching -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_absPoFile} ${_absPotFile} -o ${_tmpPoFile}
          COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_tmpPoFile}
-         DEPENDS ${potFile} ${_tmpPoFile}
+         DEPENDS ${potFile} 
       )
       if(INSTALLDIR)
          install (FILES ${_gmoFile} DESTINATION ${INSTALLDIR}/${_lang}/ RENAME ${_potBasename}.mo) 
@@ -254,7 +255,7 @@ macro(GETTEXT_CREATE_TRANSLATIONS potFile INSTALLDIR langs)
    GETTEXT_UPDATE_LANG_PO(${CMAKE_CURRENT_SOURCE_DIR}/po _poFiles)
 
    add_custom_target( ${_potBasename}_pos DEPENDS ${_absPotFile} ${_gmoFiles} ${_poFiles} )
-   add_dependencies(translations ${_potBasename}_pos ${_absPotFile})
+   add_dependencies(translations ${_potBasename}_pos)
    add_dependencies(update_lang_po ${_potBasename}_pos)
 
 endmacro(GETTEXT_CREATE_TRANSLATIONS )
