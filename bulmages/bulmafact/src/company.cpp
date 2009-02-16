@@ -30,7 +30,6 @@
 #include "company.h"
 #include "fpagoview.h"
 #include "blfunctions.h"
-#include "listalmacenview.h"
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
 #include "plugins.h"
@@ -105,13 +104,6 @@ void Company::createMainWindows ( BlSplashScreen *splash )
 
     if ( has_table_privilege ( "banco", "SELECT" ) ) {
         m_bulmafact->actionBancos->setEnabled ( TRUE );
-    } // end if
-
-    /// Comprobamos que tengamos permisos para trabajar con 'Almacenes'.
-    m_bulmafact->actionAlmacenes->setEnabled ( FALSE );
-
-    if ( has_table_privilege ( "almacen", "SELECT" ) ) {
-        m_bulmafact->actionAlmacenes->setEnabled ( TRUE );
     } // end if
 
     /// pb = 100%
@@ -205,6 +197,7 @@ void Company::s_seriesFactura()
 void Company::s_almacenes()
 {
     _depura ( "Company::s_almacenes", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     if ( g_plugins->lanza ( "Company_s_almacenes", this ) ) {
         _depura ( "END Company::s_almacenes", 0, "Salida por plugin" );
@@ -213,6 +206,7 @@ void Company::s_almacenes()
     ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
+*/
     _depura ( "END Company::s_almacenes", 0 );
 }
 

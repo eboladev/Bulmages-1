@@ -6,6 +6,7 @@ add_subdirectory(pluginbf_proveedor)
 add_subdirectory(pluginbf_articulo)
 add_subdirectory(pluginbf_trabajador)
 add_subdirectory(pluginbf_iva)
+add_subdirectory(pluginbf_almacen)
 
 #efacturabf en desarrollo
 #add_subdirectory(efacturabf)

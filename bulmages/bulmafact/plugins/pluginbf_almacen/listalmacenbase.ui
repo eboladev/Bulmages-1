@@ -14,7 +14,7 @@
    <string>Almacenes</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset resource="../../../bulmages.qrc" >
     <normaloff>:/Images/warehouse-list.svg</normaloff>:/Images/warehouse-list.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -85,7 +85,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/warehouse-list.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/warehouse-list.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -121,7 +121,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>
