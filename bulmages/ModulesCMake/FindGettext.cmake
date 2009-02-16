@@ -101,6 +101,14 @@ FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
 FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
 #Finder of xgettext)
 FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
+#Finder of msgcat)
+FIND_PROGRAM(GETTEXT_MSGCAT_EXECUTABLE msgcat)
+#Finder of msguniq)
+FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
+#Finder of msguniq)
+FIND_PROGRAM(GETTEXT_MSGINIT_EXECUTABLE msginit)
+
+
 
 IF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
    SET(GETTEXT_FOUND TRUE)
@@ -115,7 +123,8 @@ ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
 add_custom_target( translations )
-add_custom_target(update_lang_po)
+add_custom_target( update_pots )
+add_custom_target( update_lang_po )
 
 #To acomplish the messages extract it's needed some macros
 
@@ -190,11 +199,11 @@ macro (GETTEXT_UPDATE_POT inputPot dirOUT)
    get_filename_component(_PotFile ${inputPot} NAME)
    get_filename_component(_PotFileName ${inputPot} NAME_WE)
 
-   add_custom_target(update_pots 
+   add_custom_target(update_${_PotFileName}_pot
 	${CMAKE_COMMAND} -E copy 
 	${inputPot} ${dirOUT}/${_PotFile})
 
-   add_dependencies(update_pots ${_PotFileName}_pot)
+   add_dependencies(update_pots ${_PotFileName}_pot update_${_PotFileName}_pot)
 
 endmacro (GETTEXT_UPDATE_POT inputPot dirOUT)
 
@@ -277,15 +286,5 @@ macro (GETTEXT_UPDATE_LANG_PO dirOUTpo inputPo)
       
       add_dependencies(update_lang_po ${target})
      endforeach(_file ${${inputPo}}) 
-
-
-#     add_custom_command (
-#       TARGET     ${target}_upos
-#       POST_BUILD
-#       COMMAND    ${CMAKE_COMMAND}
-#       ARGS       -E copy_if_different
-#       ${_file} ${dest})
-#       #copy_if_different
-#    endforeach(_file ${${inputPo}}) 
 
 endmacro (GETTEXT_UPDATE_LANG_PO dirOUTpo inputPo)

@@ -30,6 +30,12 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmaco
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafact.in creabulmafact @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in bgtrml2pdf @ONLY)
 
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_gettext_files.in create_gettext_files @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in create_message_catalog @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_lang.in update_message_catalog_lang @ONLY)
+
+
+
 install(DIRECTORY ainteligentes canuales planescontables rev-conf
 				openreports icons images dbmodels ayuda
 				DESTINATION share/bulmages

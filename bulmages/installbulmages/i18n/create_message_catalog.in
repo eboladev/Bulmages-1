@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#GETTEXT_MSGMERGE_EXECUTABLE
+#GETTEXT_MSGFMT_EXECUTABLE
+#GETTEXT_XGETTEXT_EXECUTABLE
+#GETTEXT_MSGCAT_EXECUTABLE
+#GETTEXT_MSGUNIQ_EXECUTABLE
+#GETTEXT_MSGINIT_EXECUTABLE
+
+# This script must be run "after" make messages_extract
+# This script could fail if some executable is not found
+
+find . -name "*.pot" > pot_list.txt;
+@GETTEXT_MSGCAT_EXECUTABLE@ -f pot_list.txt -o bulmages_suite2.pot;
+@GETTEXT_MSGUNIQ_EXECUTABLE@ bulmages_suite2.pot > @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite.pot;
+rm -f bulmages_suite2.pot;
+
+pocount @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite.pot

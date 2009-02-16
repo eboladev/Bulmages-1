@@ -1,0 +1,36 @@
+#!/bin/bash
+#GETTEXT_MSGMERGE_EXECUTABLE
+#GETTEXT_MSGFMT_EXECUTABLE
+#GETTEXT_XGETTEXT_EXECUTABLE
+#GETTEXT_MSGCAT_EXECUTABLE
+#GETTEXT_MSGUNIQ_EXECUTABLE
+#GETTEXT_MSGINIT_EXECUTABLE
+
+
+NO_ARGS=0 
+E_OPTERROR=65
+
+if [ $# -eq "$NO_ARGS" ]  # Script invoked with no command-line args?
+then
+  echo "Usage: `basename $0` Languages (ex:ca_ES.UTF-8, es_ES.UTF-8, ..."
+  exit $E_OPTERROR        # Exit and explain usage, if no argument(s) given.
+fi  
+# Usage: scriptname -options
+# Note: dash (-) necessary
+
+language=$OPTARG
+for lang in $*;
+do
+   echo "Updating the message language $lang"
+   find . -name "*${lang}.po" > po_list_${lang}.txt
+   @GETTEXT_MSGCAT_EXECUTABLE@ -f po_list_${lang}.txt -o tmp_comp_${lang}.po
+   @GETTEXT_MSGUNIQ_EXECUTABLE@ tmp_comp_${lang}.po > bulmages_suite_comp_${lang}.po
+   rm -f tmp_comp_${lang}.po
+   #msgmerge -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_absPoFile} ${_absPotFile} -o ${_tmpPoFile}
+   @GETTEXT_MSGMERGE_EXECUTABLE@ -C bulmages_suite_comp_${lang}.po -s --update --backup=none @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite_${_lang}.po @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite.pot
+   
+   pocount @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite_${_lang}.po
+done
+
+exit 0
+

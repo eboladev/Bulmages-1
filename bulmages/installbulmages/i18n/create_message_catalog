@@ -1,6 +1,0 @@
-#!/bin/bash
-find . -name "*.pot" > llista_pots.txt;
-msgcat -f llista_pots.txt -o bulmages_suite2.pot;
-msguniq bulmages_suite2.pot > bulmages_suite.pot;
-rm -f bulmages_suite2.pot;
-pocount bulmages_suite.pot;
