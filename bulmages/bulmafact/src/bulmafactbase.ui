@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>991</width>
-    <height>569</height>
+    <width>750</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="minimumSize" >
@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>46</y>
-     <width>991</width>
-     <height>491</height>
+     <y>38</y>
+     <width>750</width>
+     <height>489</height>
     </rect>
    </property>
   </widget>
@@ -40,8 +40,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>991</width>
-     <height>32</height>
+     <width>750</width>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -70,8 +70,6 @@
     <addaction name="actionBancos" />
     <addaction name="separator" />
     <addaction name="actionFormas_de_Pago" />
-    <addaction name="separator" />
-    <addaction name="actionAlmacenes" />
    </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
@@ -91,9 +89,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>537</y>
-     <width>991</width>
-     <height>32</height>
+     <y>527</y>
+     <width>750</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -101,7 +99,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>32</y>
+     <y>24</y>
      <width>14</width>
      <height>14</height>
     </rect>
@@ -147,8 +145,8 @@
    <property name="geometry" >
     <rect>
      <x>14</x>
-     <y>32</y>
-     <width>977</width>
+     <y>24</y>
+     <width>736</width>
      <height>14</height>
     </rect>
    </property>
