@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pluginbf_almacen.cpp:82
+msgid "&Almacenes"
+msgstr ""
+
+#: pluginbf_almacen.cpp:84 pluginbf_almacen.cpp:85 ui_listalmacenbase.h:116
+msgid "Almacenes"
+msgstr ""
+
+#: listalmacenview.cpp:49
+msgid "Almacen"
+msgstr ""
+
+#: listalmacenview.cpp:70
+msgid "Error al guardar los almacenes"
+msgstr ""
+
+#: listalmacenview.cpp:96
+msgid "Id almacen"
+msgstr ""
+
+#: listalmacenview.cpp:97
+msgid "Codigo almacen"
+msgstr ""
+
+#: listalmacenview.cpp:98
+msgid "Nombre almacen"
+msgstr ""
+
+#: ui_listalmacenbase.h:117
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_listalmacenbase.h:118
+msgid "&Cancelar"
+msgstr ""
