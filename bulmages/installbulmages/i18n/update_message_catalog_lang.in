@@ -27,9 +27,9 @@ do
    @GETTEXT_MSGUNIQ_EXECUTABLE@ tmp_comp_${lang}.po > bulmages_suite_comp_${lang}.po
    rm -f tmp_comp_${lang}.po
    #msgmerge -C ${CMAKE_SOURCE_DIR}/installbulmages/i18n/bulmages_suite_${_lang}.po -s ${_absPoFile} ${_absPotFile} -o ${_tmpPoFile}
-   @GETTEXT_MSGMERGE_EXECUTABLE@ -C bulmages_suite_comp_${lang}.po -s --update --backup=none @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite_${_lang}.po @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite.pot
+   @GETTEXT_MSGMERGE_EXECUTABLE@ -C bulmages_suite_comp_${lang}.po -s --update --backup=none @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite_${lang}.po @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite.pot
    
-   pocount @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite_${_lang}.po
+   pocount @CMAKE_SOURCE_DIR@/installbulmages/i18n/bulmages_suite_${lang}.po
 done
 
 exit 0

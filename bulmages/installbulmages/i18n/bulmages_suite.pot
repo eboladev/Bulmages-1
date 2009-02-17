@@ -19,7 +19,7 @@ msgstr ""
 "#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 "#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 "#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgstr ""
 "#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr ""
 "#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr ""
 "#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr ""
 "#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr ""
 "#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,7 +109,7 @@ msgstr ""
 "#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,7 +119,7 @@ msgstr ""
 "#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 "#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,7 +139,7 @@ msgstr ""
 "#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,7 +159,7 @@ msgstr ""
 "#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -169,7 +169,7 @@ msgstr ""
 "#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,7 +179,7 @@ msgstr ""
 "#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,7 +189,7 @@ msgstr ""
 "#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,7 +199,7 @@ msgstr ""
 "#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,7 +209,7 @@ msgstr ""
 "#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,7 +219,7 @@ msgstr ""
 "#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -229,7 +229,7 @@ msgstr ""
 "#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,7 +239,7 @@ msgstr ""
 "#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -249,7 +249,7 @@ msgstr ""
 "#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,7 +259,7 @@ msgstr ""
 "#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,7 +269,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -279,7 +279,7 @@ msgstr ""
 "#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -289,7 +289,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,7 +299,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -309,7 +309,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -319,7 +319,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_articulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -329,7 +329,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_trabajador.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,7 +339,7 @@ msgstr ""
 "#-#-#-#-#  pluginbf_iva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,7 +349,7 @@ msgstr ""
 "#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -359,7 +359,7 @@ msgstr ""
 "#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -369,7 +369,7 @@ msgstr ""
 "#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -379,7 +379,7 @@ msgstr ""
 "#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -389,7 +389,7 @@ msgstr ""
 "#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -399,7 +399,7 @@ msgstr ""
 "#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -409,7 +409,7 @@ msgstr ""
 "#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -419,7 +419,7 @@ msgstr ""
 "#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -429,7 +429,7 @@ msgstr ""
 "#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -439,7 +439,7 @@ msgstr ""
 "#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -449,7 +449,7 @@ msgstr ""
 "#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -459,7 +459,7 @@ msgstr ""
 "#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -469,7 +469,7 @@ msgstr ""
 "#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -479,7 +479,7 @@ msgstr ""
 "#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,7 +489,7 @@ msgstr ""
 "#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -499,7 +499,7 @@ msgstr ""
 "#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -509,7 +509,7 @@ msgstr ""
 "#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -519,7 +519,7 @@ msgstr ""
 "#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -529,7 +529,7 @@ msgstr ""
 "#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -539,7 +539,7 @@ msgstr ""
 "#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -549,7 +549,7 @@ msgstr ""
 "#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -559,7 +559,7 @@ msgstr ""
 "#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -569,7 +569,7 @@ msgstr ""
 "#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -579,7 +579,7 @@ msgstr ""
 "#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -589,7 +589,7 @@ msgstr ""
 "#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -599,7 +599,7 @@ msgstr ""
 "#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -609,7 +609,7 @@ msgstr ""
 "#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -619,7 +619,7 @@ msgstr ""
 "#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -629,7 +629,7 @@ msgstr ""
 "#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -639,7 +639,7 @@ msgstr ""
 "#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -649,7 +649,7 @@ msgstr ""
 "#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -659,7 +659,7 @@ msgstr ""
 "#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -669,7 +669,7 @@ msgstr ""
 "#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -679,7 +679,7 @@ msgstr ""
 "#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -689,7 +689,7 @@ msgstr ""
 "#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -699,7 +699,7 @@ msgstr ""
 "#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -709,7 +709,7 @@ msgstr ""
 "#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -719,7 +719,7 @@ msgstr ""
 "#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -729,7 +729,7 @@ msgstr ""
 "#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -739,7 +739,7 @@ msgstr ""
 "#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -749,7 +749,7 @@ msgstr ""
 "#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -759,7 +759,7 @@ msgstr ""
 "#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -769,7 +769,7 @@ msgstr ""
 "#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -779,7 +779,7 @@ msgstr ""
 "#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -789,7 +789,27 @@ msgstr ""
 "#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  pluginbf_almacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  pluginbf_banco.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -799,7 +819,7 @@ msgstr ""
 "#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -809,7 +829,7 @@ msgstr ""
 "#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -819,7 +839,7 @@ msgstr ""
 "#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -829,7 +849,7 @@ msgstr ""
 "#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -839,7 +859,7 @@ msgstr ""
 "#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -849,7 +869,7 @@ msgstr ""
 "#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -859,7 +879,7 @@ msgstr ""
 "#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -869,7 +889,7 @@ msgstr ""
 "#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -879,7 +899,7 @@ msgstr ""
 "#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -889,7 +909,7 @@ msgstr ""
 "#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -899,7 +919,7 @@ msgstr ""
 "#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -909,7 +929,7 @@ msgstr ""
 "#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -919,7 +939,7 @@ msgstr ""
 "#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -929,7 +949,7 @@ msgstr ""
 "#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -939,7 +959,7 @@ msgstr ""
 "#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -949,7 +969,7 @@ msgstr ""
 "#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -959,7 +979,7 @@ msgstr ""
 "#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -969,7 +989,7 @@ msgstr ""
 "#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -979,7 +999,7 @@ msgstr ""
 "#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -989,7 +1009,7 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:38+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -999,7 +1019,7 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-16 14:37+0100\n"
+"POT-Creation-Date: 2009-02-17 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2078,7 +2098,7 @@ msgstr ""
 #: canalview.cpp:186 canalview.cpp:213 canalview.cpp:238 ccosteview.cpp:168
 #: ccosteview.cpp:267 modelo300.cpp:170 ui_registroivabase.h:634
 #: ui_datosbase.h:142 ui_balancesprintdlg.h:205 ui_proyectobase.h:282
-#: ui_listalmacenbase.h:118 ui_listseriefacturabase.h:83 ui_fpagobase.h:342
+#: ui_listseriefacturabase.h:83 ui_fpagobase.h:342
 #: ui_listconfiguracionbase.h:119 ui_tarifabase.h:271
 #: incidenciacomercialview.cpp:106 ui_listzonacomercialbase.h:85
 #: ui_rutacomercialincbase.h:252 ui_rutacomerciallistbase.h:372
@@ -2093,7 +2113,8 @@ msgstr ""
 #: ui_facturapbase.h:642 ui_albaranproveedorbase.h:651
 #: ui_pedidoproveedorbase.h:733 ui_z2zbase.h:396 ui_profesorbase.h:525
 #: ui_alumnobase.h:529 ui_tutorbase.h:443 ui_actividadbase.h:442
-#: ui_nuevaempresadlg.h:145 ui_nuevafactbase.h:145 bnuevaempresa.cpp:66
+#: ui_listalmacenbase.h:118 ui_nuevaempresadlg.h:145 ui_nuevafactbase.h:145
+#: bnuevaempresa.cpp:66
 msgid "&Cancelar"
 msgstr ""
 
@@ -2505,14 +2526,14 @@ msgstr ""
 msgid "Ya existe este almacen."
 msgstr ""
 
-#: pgimportfiles.cpp:2044 listalmacenview.cpp:49 plugintarifas.cpp:187
-#: plugininventario.cpp:122 almacenview.cpp:54 ui_almacenbase.h:346
-#: cuadranteview.cpp:58 cuadrante1view.cpp:58 cuadrantediarioview.cpp:60
-#: cuadrantediarioview.cpp:73 cuadrantediarioview.cpp:74
-#: cuadrantediarioview.cpp:75 ui_cuadrante1base.h:311 pluginasterisk.cpp:101
-#: zlist.cpp:59 zview.cpp:64 ui_zbase.h:321 compraventaview.cpp:84
-#: presupuestoview.cpp:62 presupuestolist.cpp:361 pedidoclienteview.cpp:61
-#: pedidosclientelist.cpp:340 albaranclienteview.cpp:74 facturaview.cpp:63
+#: pgimportfiles.cpp:2044 plugintarifas.cpp:187 plugininventario.cpp:122
+#: almacenview.cpp:54 ui_almacenbase.h:346 cuadranteview.cpp:58
+#: cuadrante1view.cpp:58 cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75
+#: ui_cuadrante1base.h:311 pluginasterisk.cpp:101 zlist.cpp:59 zview.cpp:64
+#: ui_zbase.h:321 compraventaview.cpp:84 presupuestoview.cpp:62
+#: presupuestolist.cpp:361 pedidoclienteview.cpp:61 pedidosclientelist.cpp:340
+#: albaranclienteview.cpp:74 facturaview.cpp:63 listalmacenview.cpp:49
 #: ticket.cpp:49
 msgid "Almacen"
 msgstr ""
@@ -2754,32 +2775,32 @@ msgstr ""
 #: blform.cpp:371 paisview.cpp:118 paisview.cpp:189 tipoivaview.cpp:110
 #: tipoivaview.cpp:153 canalview.cpp:237 ccosteview.cpp:167 ccosteview.cpp:227
 #: propiedadesempresa.cpp:117 fpagoview.cpp:147 fpagoview.cpp:209
-#: bancoview.cpp:185 incidenciacomercialview.cpp:106 familiasview.cpp:320
-#: tiposarticuloview.cpp:291 trabajadorview.cpp:222
+#: incidenciacomercialview.cpp:106 familiasview.cpp:320
+#: tiposarticuloview.cpp:291 trabajadorview.cpp:222 bancoview.cpp:185
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: blform.cpp:372 canalview.cpp:238 asiento1view.cpp:333 bancoview.cpp:186
-#: tarifaview.cpp:243 incidenciacomercialview.cpp:106
-#: rutacomercialincview.cpp:80 trabajadorview.cpp:223 compraventaview.cpp:467
-#: compraventaview.cpp:588 genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
+#: blform.cpp:372 canalview.cpp:238 asiento1view.cpp:333 tarifaview.cpp:243
+#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:80
+#: trabajadorview.cpp:223 compraventaview.cpp:467 compraventaview.cpp:588
+#: genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
 #: genpreqtoolbutton.cpp:424 genpedqtoolbutton.cpp:152
 #: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 #: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
 #: genfacqtoolbutton.cpp:423 genfactqtoolbutton.cpp:154
-#: genfactqtoolbutton.cpp:260 genalbpqtoolbutton.cpp:150
+#: genfactqtoolbutton.cpp:260 genalbpqtoolbutton.cpp:150 bancoview.cpp:186
 msgid "&Si"
 msgstr ""
 
-#: blform.cpp:372 canalview.cpp:238 asiento1view.cpp:333 bancoview.cpp:186
-#: tarifaview.cpp:243 incidenciacomercialview.cpp:106
-#: rutacomercialincview.cpp:80 trabajadorview.cpp:223 compraventaview.cpp:467
-#: compraventaview.cpp:588 genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
+#: blform.cpp:372 canalview.cpp:238 asiento1view.cpp:333 tarifaview.cpp:243
+#: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:80
+#: trabajadorview.cpp:223 compraventaview.cpp:467 compraventaview.cpp:588
+#: genpreqtoolbutton.cpp:167 genpreqtoolbutton.cpp:295
 #: genpreqtoolbutton.cpp:424 genpedqtoolbutton.cpp:152
 #: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 #: genfacqtoolbutton.cpp:166 genfacqtoolbutton.cpp:294
 #: genfacqtoolbutton.cpp:423 genfactqtoolbutton.cpp:154
-#: genfactqtoolbutton.cpp:260 genalbpqtoolbutton.cpp:150
+#: genfactqtoolbutton.cpp:260 genalbpqtoolbutton.cpp:150 bancoview.cpp:186
 msgid "&No"
 msgstr ""
 
@@ -3061,9 +3082,8 @@ msgstr ""
 #: ui_tipoivabase.h:269 ui_cuentabase.h:870 ui_amortizacionbase.h:687
 #: ui_duplicarasientobase.h:238 ui_aplinteligentesbase.h:216
 #: ui_sobrebase.h:306 modelo300.cpp:160 ui_registroivabase.h:632
-#: ui_datosbase.h:141 ui_proyectobase.h:281 ui_listalmacenbase.h:117
-#: ui_listseriefacturabase.h:84 ui_fpagobase.h:341
-#: ui_listconfiguracionbase.h:118 ui_tarifabase.h:270
+#: ui_datosbase.h:141 ui_proyectobase.h:281 ui_listseriefacturabase.h:84
+#: ui_fpagobase.h:341 ui_listconfiguracionbase.h:118 ui_tarifabase.h:270
 #: ui_listzonacomercialbase.h:84 ui_rutacomercialincbase.h:251
 #: ui_rutacomerciallistbase.h:371 ui_clientebase.h:592 ui_proveditbase.h:778
 #: ui_familiasbase.h:386 ui_articleeditbase.h:638 ui_tiposarticulobase.h:240
@@ -3076,7 +3096,8 @@ msgstr ""
 #: ui_facturapbase.h:641 ui_albaranproveedorbase.h:645
 #: ui_pedidoproveedorbase.h:732 ui_z2zbase.h:395 ui_profesorbase.h:524
 #: ui_alumnobase.h:528 ui_tutorbase.h:442 ui_actividadbase.h:441
-#: ui_nuevaempresadlg.h:144 ui_nuevafactbase.h:144 bnuevaempresa.cpp:66
+#: ui_listalmacenbase.h:117 ui_nuevaempresadlg.h:144 ui_nuevafactbase.h:144
+#: bnuevaempresa.cpp:66
 msgid "&Aceptar"
 msgstr ""
 
@@ -3225,7 +3246,7 @@ msgstr ""
 msgid "Direccion:"
 msgstr ""
 
-#: ui_cuentabase.h:861 ui_bancobase.h:415 ui_trabajadorbase.h:340
+#: ui_cuentabase.h:861 ui_trabajadorbase.h:340 ui_bancobase.h:415
 msgid "Telefono:"
 msgstr ""
 
@@ -3251,14 +3272,15 @@ msgstr ""
 msgid "URL de la pagina web:"
 msgstr ""
 
-#: ui_cuentabase.h:867 ui_bancobase.h:416 ui_clientebase.h:601
-#: ui_profesorbase.h:511 ui_alumnobase.h:512 ui_tutorbase.h:447
+#: ui_cuentabase.h:867 ui_clientebase.h:601 ui_profesorbase.h:511
+#: ui_alumnobase.h:512 ui_tutorbase.h:447 ui_bancobase.h:416
 msgid "Poblacion:"
 msgstr ""
 
-#: ui_cuentabase.h:868 ui_bancobase.h:418 ui_rutacomercialbase.h:235
+#: ui_cuentabase.h:868 ui_rutacomercialbase.h:235
 #: ui_incidenciacomercialbase.h:290 ui_clientebase.h:613 ui_profesorbase.h:520
 #: ui_alumnobase.h:519 ui_tutorbase.h:454 ui_actividadbase.h:433
+#: ui_bancobase.h:418
 msgid "Comentarios:"
 msgstr ""
 
@@ -4283,8 +4305,8 @@ msgstr ""
 msgid "Ctrl+M"
 msgstr ""
 
-#: ui_asientobase.h:629 empresa.cpp:815 impqtoolbutton.cpp:150
-#: facturaview.cpp:207
+#: ui_asientobase.h:629 bccompany.cpp:815 impqtoolbutton.cpp:150
+#: facturaview.cpp:207 empresa.cpp:815
 msgid "Fecha:"
 msgstr ""
 
@@ -4654,8 +4676,9 @@ msgstr ""
 msgid "Facturacion"
 msgstr ""
 
-#: ui_uiconfiguracion.h:472 ui_listalmacenbase.h:116 almaceneslistview.cpp:218
-#: ui_almaceneslistbase.h:331 zlist.cpp:190
+#: ui_uiconfiguracion.h:472 almaceneslistview.cpp:218
+#: ui_almaceneslistbase.h:331 zlist.cpp:190 pluginbf_almacen.cpp:84
+#: pluginbf_almacen.cpp:85 ui_listalmacenbase.h:116
 msgid "Almacenes"
 msgstr ""
 
@@ -4874,7 +4897,7 @@ msgstr ""
 msgid "Id apunte"
 msgstr ""
 
-#: listlinasiento1view.cpp:40 empresa.cpp:815 diariosubform.cpp:38
+#: listlinasiento1view.cpp:40 bccompany.cpp:815 diariosubform.cpp:38
 #: extractosubform.cpp:47 asientolistsubform.cpp:38 listproyectosview.cpp:48
 #: rutacomercial.cpp:43 incidenciacomercial.cpp:42 movimientosview.cpp:176
 #: contratoview.cpp:403 cuadrante1view.cpp:59 cuadrantediarioview.cpp:71
@@ -4883,7 +4906,7 @@ msgstr ""
 #: listlresarticulo.cpp:39 listlresarticulo.cpp:82 listlresarticulo.cpp:125
 #: listlresarticulo.cpp:169 presupuestolist.cpp:351 pedidoclienteview.cpp:64
 #: pedidosclientelist.cpp:330 facturaslist.cpp:363 facturapview.cpp:60
-#: albaranesproveedor.cpp:384
+#: albaranesproveedor.cpp:384 empresa.cpp:815
 msgid "Fecha"
 msgstr ""
 
@@ -5042,68 +5065,68 @@ msgstr ""
 msgid "Error al borrar la amortizacion"
 msgstr ""
 
-#: empresa.cpp:212
-msgid "Inicializando extracto"
-msgstr ""
-
-#: empresa.cpp:219
-msgid "Inicializando diario"
-msgstr ""
-
-#: empresa.cpp:242 empresa.cpp:249
-msgid "Inicializando asientos"
-msgstr ""
-
-#: empresa.cpp:257
-msgid "Inicializando cuentas"
-msgstr ""
-
-#: empresa.cpp:265 main.cxx:171 main.cxx:158
-msgid "Terminado"
-msgstr ""
-
-#: empresa.cpp:704
-msgid "Se han espaciado los asientos"
-msgstr ""
-
-#: empresa.cpp:724
-msgid "Se han cerrado los asientos"
-msgstr ""
-
-#: empresa.cpp:744
-msgid "Se han ordenado los asientos"
-msgstr ""
-
-#: empresa.cpp:781 empresa.cpp:840
-msgid "Fecha inicial"
-msgstr ""
-
-#: empresa.cpp:781
-msgid "Fecha inicial ejercicio:"
-msgstr ""
-
-#: empresa.cpp:790 empresa.cpp:849
-msgid "Fecha final"
-msgstr ""
-
-#: empresa.cpp:790
-msgid "Fecha final ejercicio:"
-msgstr ""
-
-#: empresa.cpp:840
-msgid "Fecha inicial regularizacion:"
-msgstr ""
-
-#: empresa.cpp:849
-msgid "Fecha final regularizacion:"
-msgstr ""
-
 #: bcsubform.cpp:468
 msgid "Submenu de contabilidad"
 msgstr ""
 
 #: aplinteligentesview.cpp:615
 msgid "Error al crear el asiento"
+msgstr ""
+
+#: bccompany.cpp:212 empresa.cpp:212
+msgid "Inicializando extracto"
+msgstr ""
+
+#: bccompany.cpp:219 empresa.cpp:219
+msgid "Inicializando diario"
+msgstr ""
+
+#: bccompany.cpp:242 bccompany.cpp:249 empresa.cpp:242 empresa.cpp:249
+msgid "Inicializando asientos"
+msgstr ""
+
+#: bccompany.cpp:257 empresa.cpp:257
+msgid "Inicializando cuentas"
+msgstr ""
+
+#: bccompany.cpp:265 main.cxx:171 main.cxx:158 empresa.cpp:265
+msgid "Terminado"
+msgstr ""
+
+#: bccompany.cpp:704 empresa.cpp:704
+msgid "Se han espaciado los asientos"
+msgstr ""
+
+#: bccompany.cpp:724 empresa.cpp:724
+msgid "Se han cerrado los asientos"
+msgstr ""
+
+#: bccompany.cpp:744 empresa.cpp:744
+msgid "Se han ordenado los asientos"
+msgstr ""
+
+#: bccompany.cpp:781 bccompany.cpp:840 empresa.cpp:781 empresa.cpp:840
+msgid "Fecha inicial"
+msgstr ""
+
+#: bccompany.cpp:781 empresa.cpp:781
+msgid "Fecha inicial ejercicio:"
+msgstr ""
+
+#: bccompany.cpp:790 bccompany.cpp:849 empresa.cpp:790 empresa.cpp:849
+msgid "Fecha final"
+msgstr ""
+
+#: bccompany.cpp:790 empresa.cpp:790
+msgid "Fecha final ejercicio:"
+msgstr ""
+
+#: bccompany.cpp:840 empresa.cpp:840
+msgid "Fecha inicial regularizacion:"
+msgstr ""
+
+#: bccompany.cpp:849 empresa.cpp:849
+msgid "Fecha final regularizacion:"
 msgstr ""
 
 #: bbloqfecha.cpp:77
@@ -7641,88 +7664,6 @@ msgstr ""
 msgid "Articulo:"
 msgstr ""
 
-#: ui_bancobase.h:401 ui_bulmafactbase.h:213
-msgid "Bancos"
-msgstr ""
-
-#: ui_bancobase.h:402
-msgid "Informacion del banco:"
-msgstr ""
-
-#: ui_bancobase.h:403
-msgid "D.C.:"
-msgstr ""
-
-#: ui_bancobase.h:404
-msgid "Numero de cuenta:"
-msgstr ""
-
-#: ui_bancobase.h:405
-msgid "Fax:"
-msgstr ""
-
-#: ui_bancobase.h:406
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
-msgstr ""
-
-#: ui_bancobase.h:411
-msgid "Razon Social:"
-msgstr ""
-
-#: ui_bancobase.h:412
-msgid "Contacto:"
-msgstr ""
-
-#: ui_bancobase.h:413
-msgid "URL:"
-msgstr ""
-
-#: ui_bancobase.h:414 ui_trabajadorbase.h:348
-msgid "E-mail:"
-msgstr ""
-
-#: ui_bancobase.h:417 clienteview.cpp:60 clientslist.cpp:281
-#: providerslist.cpp:291 provedit.cpp:51 pluginclientprov.cpp:66
-msgid "Direccion"
-msgstr ""
-
-#: ui_bancobase.h:419
-msgid "Entidad:"
-msgstr ""
-
-#: ui_bancobase.h:420
-msgid "Sucursal:"
-msgstr ""
-
-#: ui_bancobase.h:424 ui_bancobase.h:429 ui_trabajadorbase.h:353
-#: ui_trabajadorbase.h:358
-msgid "Borrar trabajador"
-msgstr ""
-
-#: ui_bancobase.h:435 ui_bancobase.h:440 ui_trabajadorbase.h:364
-#: ui_trabajadorbase.h:369
-msgid "Guardar trabajador"
-msgstr ""
-
-#: ui_bancobase.h:446 ui_bancobase.h:451 ui_trabajadorbase.h:375
-#: ui_trabajadorbase.h:380
-msgid "Nuevo trabajador"
-msgstr ""
-
-#: ui_bancobase.h:455
-msgid "Lista de bancos:"
-msgstr ""
-
 #: ui_listseriefacturabase.h:82
 msgid "Series de factura"
 msgstr ""
@@ -7773,7 +7714,7 @@ msgstr ""
 msgid "&Formas de pago"
 msgstr ""
 
-#: ui_bulmafactbase.h:202
+#: ui_bulmafactbase.h:202 pluginbf_almacen.cpp:82
 msgid "&Almacenes"
 msgstr ""
 
@@ -7783,6 +7724,10 @@ msgstr ""
 
 #: ui_bulmafactbase.h:205
 msgid "&Indexador"
+msgstr ""
+
+#: ui_bulmafactbase.h:213 ui_bancobase.h:401
+msgid "Bancos"
 msgstr ""
 
 #: ui_bulmafactbase.h:214
@@ -7814,29 +7759,8 @@ msgstr ""
 msgid "Listados"
 msgstr ""
 
-#: company.cpp:130
+#: company.cpp:114 company.cpp:130
 msgid "Facturacion GPL"
-msgstr ""
-
-#: bancoview.cpp:42 ui_q19base.h:220 pagoview.cpp:68 pagoslist.cpp:254
-#: cobroview.cpp:69 cobroslist.cpp:318
-msgid "Banco"
-msgstr ""
-
-#: bancoview.cpp:168
-msgid "Error al guardar"
-msgstr ""
-
-#: bancoview.cpp:184 trabajadorview.cpp:221
-msgid "Guardar datos del trabajador"
-msgstr ""
-
-#: bancoview.cpp:216
-msgid "Error inesperado el crear el Banco"
-msgstr ""
-
-#: bancoview.cpp:244
-msgid "Error inesperado al borrar el banco"
 msgstr ""
 
 #: listlinalbaranproveedorview.cpp:47 listlinalbaranclienteview.cpp:45
@@ -7915,29 +7839,6 @@ msgstr ""
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
-msgstr ""
-
-#: listalmacenview.cpp:70
-msgid "Error al guardar los almacenes"
-msgstr ""
-
-#: listalmacenview.cpp:96 movimientosview.cpp:182 contratoview.cpp:419
-#: pluginasterisk.cpp:107 pluginasterisk.cpp:167 compraventaview.cpp:72
-#: facturaslist.cpp:380 albaranproveedorview.cpp:63 pedidoproveedorview.cpp:56
-#: pedidosproveedorlist.cpp:328
-msgid "Id almacen"
-msgstr ""
-
-#: listalmacenview.cpp:97 movimientosview.cpp:183 listcontrolstockview.cpp:35
-#: contratoview.cpp:414 almaceneslistview.cpp:57 almaceneslistview.cpp:91
-#: almacenview.cpp:58 facturaslist.cpp:375
-msgid "Codigo almacen"
-msgstr ""
-
-#: listalmacenview.cpp:98 listltarifaview.cpp:35 listltarifaview.cpp:57
-#: movimientosview.cpp:184 listcontrolstockview.cpp:36
-#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
-msgid "Nombre almacen"
 msgstr ""
 
 #: busquedafamilia.cpp:36
@@ -8135,6 +8036,12 @@ msgstr ""
 
 #: listltarifaview.cpp:34
 msgid "Nombre tarifa"
+msgstr ""
+
+#: listltarifaview.cpp:35 listltarifaview.cpp:57 movimientosview.cpp:184
+#: listcontrolstockview.cpp:36 almaceneslistview.cpp:58
+#: almaceneslistview.cpp:92 almacenview.cpp:59 listalmacenview.cpp:98
+msgid "Nombre almacen"
 msgstr ""
 
 #: listltarifaview.cpp:36 listltarifaview.cpp:60
@@ -8514,6 +8421,11 @@ msgstr ""
 
 #: clienteview.cpp:59 clientslist.cpp:280
 msgid "Numero cuenta corriente"
+msgstr ""
+
+#: clienteview.cpp:60 clientslist.cpp:281 providerslist.cpp:291
+#: provedit.cpp:51 pluginclientprov.cpp:66 ui_bancobase.h:417
+msgid "Direccion"
 msgstr ""
 
 #: clienteview.cpp:61 clientslist.cpp:282 providerslist.cpp:292
@@ -9347,17 +9259,21 @@ msgstr ""
 msgid "Importar articulos"
 msgstr ""
 
-#: pluginbf_trabajador.cpp:82
+#: pluginbf_trabajador.cpp:82 pluginbf_banco.cpp:82
 msgid "&Trabajadores"
 msgstr ""
 
 #: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
-#: ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:339 pluginbf_banco.cpp:84 pluginbf_banco.cpp:85
 msgid "Trabajadores"
 msgstr ""
 
 #: trabajadorview.cpp:204
 msgid "Error al guardar el trabajador"
+msgstr ""
+
+#: trabajadorview.cpp:221 bancoview.cpp:184
+msgid "Guardar datos del trabajador"
 msgstr ""
 
 #: trabajadorview.cpp:253
@@ -9388,8 +9304,27 @@ msgstr ""
 msgid "Cambiar imagen"
 msgstr ""
 
+#: ui_trabajadorbase.h:348 ui_bancobase.h:414
+msgid "E-mail:"
+msgstr ""
+
 #: ui_trabajadorbase.h:350
 msgid "Lista de trabajadores:"
+msgstr ""
+
+#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:358 ui_bancobase.h:424
+#: ui_bancobase.h:429
+msgid "Borrar trabajador"
+msgstr ""
+
+#: ui_trabajadorbase.h:364 ui_trabajadorbase.h:369 ui_bancobase.h:435
+#: ui_bancobase.h:440
+msgid "Guardar trabajador"
+msgstr ""
+
+#: ui_trabajadorbase.h:375 ui_trabajadorbase.h:380 ui_bancobase.h:446
+#: ui_bancobase.h:451
+msgid "Nuevo trabajador"
 msgstr ""
 
 #: listtasaivaview.cpp:49
@@ -9463,6 +9398,19 @@ msgstr ""
 
 #: movimientosview.cpp:181
 msgid "Lote"
+msgstr ""
+
+#: movimientosview.cpp:182 contratoview.cpp:419 pluginasterisk.cpp:107
+#: pluginasterisk.cpp:167 compraventaview.cpp:72 facturaslist.cpp:380
+#: albaranproveedorview.cpp:63 pedidoproveedorview.cpp:56
+#: pedidosproveedorlist.cpp:328 listalmacenview.cpp:96
+msgid "Id almacen"
+msgstr ""
+
+#: movimientosview.cpp:183 listcontrolstockview.cpp:35 contratoview.cpp:414
+#: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:58
+#: facturaslist.cpp:375 listalmacenview.cpp:97
+msgid "Codigo almacen"
 msgstr ""
 
 #: movimientosview.cpp:185
@@ -10049,6 +9997,11 @@ msgstr ""
 
 #: ui_q19base.h:219
 msgid "Generacion Q19"
+msgstr ""
+
+#: ui_q19base.h:220 pagoview.cpp:68 pagoslist.cpp:254 cobroview.cpp:69
+#: cobroslist.cpp:318 bancoview.cpp:42
+msgid "Banco"
 msgstr ""
 
 #: ui_q19base.h:224
@@ -12075,6 +12028,76 @@ msgstr ""
 
 #: ui_actividadeslistbase.h:365 ui_actividadeslistbase.h:370
 msgid "Filtrar Actividades"
+msgstr ""
+
+#: listalmacenview.cpp:70
+msgid "Error al guardar los almacenes"
+msgstr ""
+
+#: bancoview.cpp:168
+msgid "Error al guardar"
+msgstr ""
+
+#: bancoview.cpp:216
+msgid "Error inesperado el crear el Banco"
+msgstr ""
+
+#: bancoview.cpp:244
+msgid "Error inesperado al borrar el banco"
+msgstr ""
+
+#: ui_bancobase.h:402
+msgid "Informacion del banco:"
+msgstr ""
+
+#: ui_bancobase.h:403
+msgid "D.C.:"
+msgstr ""
+
+#: ui_bancobase.h:404
+msgid "Numero de cuenta:"
+msgstr ""
+
+#: ui_bancobase.h:405
+msgid "Fax:"
+msgstr ""
+
+#: ui_bancobase.h:406
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: ui_bancobase.h:411
+msgid "Razon Social:"
+msgstr ""
+
+#: ui_bancobase.h:412
+msgid "Contacto:"
+msgstr ""
+
+#: ui_bancobase.h:413
+msgid "URL:"
+msgstr ""
+
+#: ui_bancobase.h:419
+msgid "Entidad:"
+msgstr ""
+
+#: ui_bancobase.h:420
+msgid "Sucursal:"
+msgstr ""
+
+#: ui_bancobase.h:455
+msgid "Lista de bancos:"
 msgstr ""
 
 #: ui_importContaplusBase.h:304 ui_importexportbulmafactbase.h:197
