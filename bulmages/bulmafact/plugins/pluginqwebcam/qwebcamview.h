@@ -27,7 +27,7 @@
 #include "bldb.h"
 
 
-class Company;
+class BfCompany;
 
 
 class QWebCamView : public QWidget, public Ui_QWebCamBase, public dialogChanges, public BlDbRecord
@@ -35,12 +35,12 @@ class QWebCamView : public QWidget, public Ui_QWebCamBase, public dialogChanges,
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
 
 public:
-    QWebCamView ( Company *emp, QWidget *parent = 0 );
+    QWebCamView ( BfCompany *emp, QWidget *parent = 0 );
     ~QWebCamView();
-    Company *companyact() {
+    BfCompany *companyact() {
         return m_companyact;
     };
 

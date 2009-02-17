@@ -32,7 +32,7 @@
 #include "q19qtoolbutton1.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 #include "busquedabanco.h"
 #include "q19view.h"
@@ -86,7 +86,7 @@ void Q19QToolButton1::click()
 {
     _depura ( "Q19QToolButton1::click", 0 );
 
-    Q19View *q19 = new Q19View ( m_facturasList, ( Company * ) m_facturasList->empresaBase(), 0 );
+    Q19View *q19 = new Q19View ( m_facturasList, ( BfCompany * ) m_facturasList->empresaBase(), 0 );
 // m_facturasList->empresaBase()->meteWindow("Domiciliaciones Bancarias", q19);
     m_facturasList->empresaBase() ->pWorkspace() ->addWindow ( q19 );
     q19->show();
@@ -101,7 +101,7 @@ void Q19QToolButton1::click()
      
         QTextStream out ( &file );
      
-        m_companyact = ( Company * ) m_facturasList->empresaBase();
+        m_companyact = ( BfCompany * ) m_facturasList->empresaBase();
         BlSubForm *sub = m_facturasList->mui_list;
      
         BlFixed total ( "0.00" );

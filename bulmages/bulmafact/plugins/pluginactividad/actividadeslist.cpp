@@ -27,7 +27,7 @@
 
 #include "blconfiguration.h"
 #include "actividadeslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "actividadview.h"
 #include "blfunctions.h"
 
@@ -57,7 +57,7 @@ ActividadesList::ActividadesList ( QWidget *parent, Qt::WFlags flag, edmode edit
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-ActividadesList::ActividadesList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "ActividadesList::ActividadesList", 0 );
@@ -128,7 +128,7 @@ QString ActividadesList::generaFiltro()
 void ActividadesList::crear()
 {
     _depura ( "ActividadesList::crear", 0 );
-    ActividadView *bud = new ActividadView( (Company *) empresaBase(), 0);
+    ActividadView *bud = new ActividadView( (BfCompany *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -163,7 +163,7 @@ void ActividadesList::borrar()
     try {
         mdb_idactividad = mui_list->DBvalue ( "idactividad" );
         if ( modoEdicion() ) {
-            ActividadView * cv = new ActividadView( (Company *) empresaBase(), 0);
+            ActividadView * cv = new ActividadView( (BfCompany *) empresaBase(), 0);
             if ( cv->cargar ( mdb_idactividad ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,7 +187,7 @@ void ActividadesList::editar ( int )
     try {
         mdb_idactividad = mui_list->DBvalue ( "idactividad" );
         if ( modoEdicion() ) {
-            ActividadView * bud = new ActividadView( (Company *) empresaBase(), 0);
+            ActividadView * bud = new ActividadView( (BfCompany *) empresaBase(), 0);
             if ( bud->cargar ( mdb_idactividad ) ) {
                 delete bud;
                 return;
@@ -227,7 +227,7 @@ void ActividadesList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void ActividadesList::setMainCompany ( Company *comp )
+void ActividadesList::setMainCompany ( BfCompany *comp )
 {
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );

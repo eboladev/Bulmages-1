@@ -34,7 +34,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -47,7 +47,7 @@ class ProfesorView : public FichaBf, public Ui_ProfesorBase
     Q_OBJECT
 
 public:
-    ProfesorView ( Company *, QWidget * );
+    ProfesorView ( BfCompany *, QWidget * );
     ~ProfesorView();
     virtual void imprimir();
     virtual QString nombrePlantilla(void) ;

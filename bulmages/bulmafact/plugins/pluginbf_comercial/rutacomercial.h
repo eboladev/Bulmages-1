@@ -23,7 +23,7 @@
 
 #include <QString>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "fichabf.h"
 
 
@@ -31,7 +31,7 @@ class RutaComercial : public FichaBf
 {
 
 public:
-    RutaComercial ( Company *, QWidget * );
+    RutaComercial ( BfCompany *, QWidget * );
     virtual ~RutaComercial();
     virtual void pintar();
     virtual int cargar ( QString id );

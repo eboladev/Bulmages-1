@@ -24,7 +24,7 @@
 
 #include "blcombobox.h"
 #include "blwidget.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 
 
@@ -67,7 +67,7 @@ public:
     virtual void setidtc_talla ( QString idalmacen );
     virtual void setValorCampo ( QString idalmacen );
     QString idtc_talla();
-    void setMainCompany ( Company * );
+    void setMainCompany ( BfCompany * );
     virtual QString valorCampo();
 
 public slots:

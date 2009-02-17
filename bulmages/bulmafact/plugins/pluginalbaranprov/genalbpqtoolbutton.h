@@ -21,7 +21,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
@@ -33,7 +33,7 @@ class GenAlbProQToolButton : public QToolButton
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
     QWidget *m_object;
 
 public:

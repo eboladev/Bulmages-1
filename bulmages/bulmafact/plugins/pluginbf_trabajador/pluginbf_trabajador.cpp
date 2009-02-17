@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_trabajador.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "trabajadorview.h"
 
@@ -54,7 +54,7 @@ MyPlugTrab::~MyPlugTrab()
 void MyPlugTrab::elslot1()
 {
     _depura ( "MyPlugTrab::elslot1", 0 );
-        TrabajadorView * bud = new TrabajadorView((Company *)empresaBase(), NULL);
+        TrabajadorView * bud = new TrabajadorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugTrab::elslot1", 0 );
@@ -117,7 +117,7 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewTrabajadorView (Company *v)
+int SNewTrabajadorView (BfCompany *v)
 {
 	TrabajadorView *h = new TrabajadorView(v, 0);
 	g_plugParams = h;

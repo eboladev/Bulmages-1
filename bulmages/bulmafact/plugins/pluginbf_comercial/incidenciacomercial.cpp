@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 #include "incidenciacomercial.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 
@@ -32,7 +32,7 @@
 \param comp
 \param parent
 **/
-IncidenciaComercial::IncidenciaComercial ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
     _depura ( "IncidenciaComercial::IncidenciaComercial", 0 );
     setTitleName ( _( "Incidencia comercial" ) );

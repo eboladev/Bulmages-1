@@ -26,7 +26,7 @@
 #include <fstream>
 
 #include "zview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 #include "albaranclienteview.h"
@@ -41,7 +41,7 @@
 \param comp
 \param parent
 **/
-ZView::ZView ( Company *comp, QWidget *parent )
+ZView::ZView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ZView::ZView", 0 );

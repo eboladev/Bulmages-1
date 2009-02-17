@@ -28,7 +28,7 @@
 #include <QWidget>
 
 #include "albaranproveedorview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
 #include "listlinalbaranproveedorview.h"
@@ -44,7 +44,7 @@
 \param parent
 \return
 **/
-AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
+AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "AlbaranProveedorView::AlbaranProveedorView", 0 );
@@ -189,7 +189,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue ( "refalbaranp" ) + "'";
     BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     while ( !cur->eof() ) {
-        PedidoProveedorView * pedpro = new PedidoProveedorView( (Company *) empresaBase(), 0);
+        PedidoProveedorView * pedpro = new PedidoProveedorView( (BfCompany *) empresaBase(), 0);
         pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
         empresaBase() ->m_pWorkspace->addWindow ( pedpro );
         pedpro->show();

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "vehiculoview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 
@@ -29,7 +29,7 @@
 \param emp
 \param parent
 **/
-VehiculoView::VehiculoView ( Company *emp, QWidget *parent )
+VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
         : FichaBf ( emp, parent )
 {
     _depura ( "VehiculoView::VehiculoView", 0 );

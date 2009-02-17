@@ -29,7 +29,7 @@
 #include "busqueda.h"
 
 
-class Company;
+class BfCompany;
 
 
 /// Permite buscar y seleccionar una familia de art&iacute;culos.

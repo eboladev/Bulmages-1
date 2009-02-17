@@ -36,7 +36,7 @@
 #include "presupuestoview.h"
 #include "facturaslist.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -167,7 +167,7 @@ void GenPreQToolButton::generarFactura()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
-            bud = new FacturaView( (Company *) fpv->empresaBase(), 0);
+            bud = new FacturaView( (BfCompany *) fpv->empresaBase(), 0);
             fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
@@ -176,7 +176,7 @@ void GenPreQToolButton::generarFactura()
         delete cur;
 
         /// Creamos la factura.
-        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
@@ -304,7 +304,7 @@ void GenPreQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -433,7 +433,7 @@ void GenPreQToolButton::generarFactura2()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -605,7 +605,7 @@ void VerPreQToolButton::verPresupuesto()
 
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
-                bud = new PresupuestoView( (Company *)fpv->empresaBase(), 0);
+                bud = new PresupuestoView( (BfCompany *)fpv->empresaBase(), 0);
                 fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
                 if ( bud->cargar ( cur->valor ( "idpresupuesto" ) ) ) {
                     delete bud;

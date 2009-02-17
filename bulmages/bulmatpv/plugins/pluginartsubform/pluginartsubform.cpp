@@ -51,7 +51,7 @@ int entryPoint ( BulmaTPV *tpv )
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
 
-    ArticuloList1 *lan = new ArticuloList1 ( ( Company * ) etpv, NULL, 0, ArticuloList1::SelectMode );
+    ArticuloList1 *lan = new ArticuloList1 ( ( BfCompany * ) etpv, NULL, 0, ArticuloList1::SelectMode );
     g_main->setCentralWidget ( lan );
 
     return 0;

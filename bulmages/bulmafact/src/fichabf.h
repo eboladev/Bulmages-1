@@ -24,7 +24,7 @@
 
 #include "blform.h"
 #include "bfsubform.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
@@ -40,8 +40,8 @@ public:
     BfSubForm *m_listadescuentos;
 
 public:
-    Company *empresaBase();
-    FichaBf ( Company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BfCompany *empresaBase();
+    FichaBf ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual ~FichaBf();
     void setListaLineas ( BfSubForm *form );
     void setListaDescuentos ( BfSubForm *form );

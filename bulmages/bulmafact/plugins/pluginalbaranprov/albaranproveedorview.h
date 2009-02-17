@@ -34,7 +34,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Se encarga de la ventana de albar&aacute;n de proveedor.
@@ -46,7 +46,7 @@ class AlbaranProveedorView : public FichaBf, public Ui_AlbaranProveedorBase
     Q_OBJECT
 
 public:
-    AlbaranProveedorView ( Company *, QWidget * );
+    AlbaranProveedorView ( BfCompany *, QWidget * );
     ~AlbaranProveedorView();
     void inicializar();
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );

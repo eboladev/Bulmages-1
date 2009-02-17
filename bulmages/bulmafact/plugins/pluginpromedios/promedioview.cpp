@@ -21,7 +21,7 @@
 #include <QCloseEvent>
 
 #include "promedioview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 
@@ -31,7 +31,7 @@
 \param comp
 \param parent
 **/
-PromedioView::PromedioView ( Company *comp, QWidget *parent )
+PromedioView::PromedioView ( BfCompany *comp, QWidget *parent )
         : QWidget ( parent ) , dialogChanges ( this ), BlDbRecord ( comp )
 {
     _depura ( "PromedioView::PromedioView", 0 );

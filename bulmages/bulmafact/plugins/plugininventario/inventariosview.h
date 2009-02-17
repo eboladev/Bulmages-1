@@ -21,7 +21,7 @@
 #ifndef INVENTARIOSVIEW_H
 #define INVENTARIOSVIEW_H
 
-#include "company.h"
+#include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 
@@ -51,7 +51,7 @@ class InventariosView : public BlFormList, public Ui_InventariosBase
     Q_OBJECT
 
 public:
-    InventariosView ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    InventariosView ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~InventariosView();
     void inicializa();
     void presentar();

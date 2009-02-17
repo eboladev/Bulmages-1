@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginpagos.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "pagoview.h"
 #include "pagoslist.h"
@@ -69,7 +69,7 @@ void mypluginpag::elslot()
 void mypluginpag::elslot1()
 {
     _depura ( "mypluginpag::elslot1", 0 );
-        PagoView * bud = new PagoView((Company *)empresaBase(), NULL);
+        PagoView * bud = new PagoView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginpag::elslot1", 0 );
@@ -134,7 +134,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "pago", "SELECT" ) ) {
 	g_pagosList = new PagosList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_pagosList );
@@ -146,7 +146,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pago", "SELECT" ) ) {
-	PagosList *pagosList = new PagosList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	PagosList *pagosList = new PagosList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	pagosList->setModoEdicion();
 	pagosList->setObjectName("listpagosproveedor");
 	pagosList->hideBusqueda();
@@ -169,7 +169,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM pago WHERE refpago = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PagoView * bud = new PagoView((Company *)ref->empresaBase(), NULL);
+        PagoView * bud = new PagoView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpago" ) );
         bud->show();

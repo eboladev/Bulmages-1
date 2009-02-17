@@ -21,7 +21,7 @@
 #include "blcombobox.h"
 
 #include "busquedaseriefactura.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -137,7 +137,7 @@ QString BusquedaSerieFactura::id()
 \param comp
 \return
 **/
-void BusquedaSerieFactura::setMainCompany ( Company *comp )
+void BusquedaSerieFactura::setMainCompany ( BfCompany *comp )
 {
     _depura ( "BusquedaSerieFactura::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

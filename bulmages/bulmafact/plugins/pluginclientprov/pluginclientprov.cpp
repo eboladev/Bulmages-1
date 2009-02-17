@@ -54,7 +54,7 @@ int BlForm_guardar_Post ( BlForm *l )
 	bool guardar = FALSE;
 	if (l->tableName() == "cliente") {
 
-	FichaBf *fich = new FichaBf((Company *)l->empresaBase(), l);
+	FichaBf *fich = new FichaBf((BfCompany *)l->empresaBase(), l);
         fich->setDBTableName ( "proveedor" );
         fich->setDBCampoId ( "idproveedor" );
         fich->addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _("ID proveedor") );

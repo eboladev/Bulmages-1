@@ -27,7 +27,7 @@
 
 #include "blconfiguration.h"
 #include "alumnoslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "alumnoview.h"
 #include "blfunctions.h"
 
@@ -57,7 +57,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-AlumnosList::AlumnosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "AlumnosList::AlumnosList", 0 );
@@ -128,7 +128,7 @@ QString AlumnosList::generaFiltro()
 void AlumnosList::crear()
 {
     _depura ( "AlumnosList::crear", 0 );
-    AlumnoView *bud = new AlumnoView( (Company *) empresaBase(), 0);
+    AlumnoView *bud = new AlumnoView( (BfCompany *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -163,7 +163,7 @@ void AlumnosList::borrar()
     try {
         mdb_idalumno = mui_list->DBvalue ( "idalumno" );
         if ( modoEdicion() ) {
-            AlumnoView * cv = new AlumnoView( (Company *) empresaBase(), 0);
+            AlumnoView * cv = new AlumnoView( (BfCompany *) empresaBase(), 0);
             if ( cv->cargar ( mdb_idalumno ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,7 +187,7 @@ void AlumnosList::editar ( int )
     try {
         mdb_idalumno = mui_list->DBvalue ( "idalumno" );
         if ( modoEdicion() ) {
-            AlumnoView * bud = new AlumnoView( (Company *) empresaBase(), 0);
+            AlumnoView * bud = new AlumnoView( (BfCompany *) empresaBase(), 0);
             if ( bud->cargar ( mdb_idalumno ) ) {
                 delete bud;
                 return;
@@ -227,7 +227,7 @@ void AlumnosList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void AlumnosList::setMainCompany ( Company *comp )
+void AlumnosList::setMainCompany ( BfCompany *comp )
 {
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );

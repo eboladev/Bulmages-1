@@ -26,7 +26,7 @@
 
 #include "rutacomerciallist.h"
 #include "rutacomercialincview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "blconfiguration.h"
 
@@ -58,7 +58,7 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
 \param comp
 \param parent
 **/
-RutaComercialList::RutaComercialList ( Company *comp, QWidget *parent )
+RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
         : BlFormList ( comp, parent )
 {
     _depura ( "RutaComercialList::RutaComercialList", 0 );
@@ -96,7 +96,7 @@ RutaComercialList::~RutaComercialList()
 /**
 \param comp
 **/
-void RutaComercialList::setMainCompany ( Company *comp )
+void RutaComercialList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "RutaComercialList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -148,7 +148,7 @@ void RutaComercialList::editar ( int row )
     _depura ( "RutaComercialList::editar", 0 );
     QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial", row );
     QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial", row );
-    RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) empresaBase(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     empresaBase() ->m_pWorkspace->addWindow ( rut );
@@ -164,7 +164,7 @@ void RutaComercialList::editar ( int row )
 void RutaComercialList::crear()
 {
     _depura ( "RutaComercialList::crear", 0 );
-    RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( rut );
     empresaBase() ->meteWindow ( _("Nueva incidencia comercial"), rut );
     rut->show();
@@ -235,7 +235,7 @@ void RutaComercialList::borrar()
     _depura ( "RutaComercialList::borrar", 0 );
     QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial" );
     QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial" );
-    RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) empresaBase(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     rut->on_mui_borrar_clicked();

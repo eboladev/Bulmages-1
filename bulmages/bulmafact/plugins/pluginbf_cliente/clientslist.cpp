@@ -27,7 +27,7 @@
 
 #include "clientslist.h"
 #include "clienteview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"
@@ -38,7 +38,7 @@
     Hace una presentacion inicial.
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
-ClientsList::ClientsList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), pgimportfiles ( comp )
 {
     _depura ( "ClientsList::ClientsList", 0 );
@@ -107,7 +107,7 @@ void ClientsList::editar ( int row )
     mdb_cifcliente = mui_list->DBvalue ( "cifcliente", row );
     mdb_nomcliente = mui_list->DBvalue ( "nomcliente", row );
     if ( modoEdicion() ) {
-        ClienteView * prov = new ClienteView ( ( Company * ) empresaBase(), 0 ) ;
+        ClienteView * prov = new ClienteView ( ( BfCompany * ) empresaBase(), 0 ) ;
         if ( prov->cargar ( mdb_idcliente ) ) {
             delete prov;
             return;
@@ -142,7 +142,7 @@ void ClientsList::borrar()
     _depura ( "ClientsList::on_mui_borrar_clicked", 0 );
     try {
         QString idcliente = mui_list->DBvalue ( "idcliente" );
-        ClienteView *cli = new ClienteView ( ( Company * ) empresaBase(), 0 ) ;
+        ClienteView *cli = new ClienteView ( ( BfCompany * ) empresaBase(), 0 ) ;
         if ( cli->cargar ( idcliente ) ) {
             delete cli;
             throw - 1;
@@ -230,7 +230,7 @@ QString ClientsList::cifclient()
 **/
 void ClientsList::crear()
 {
-    ClienteView *bud = new ClienteView( ( Company * ) empresaBase() , 0);
+    ClienteView *bud = new ClienteView( ( BfCompany * ) empresaBase() , 0);
     empresaBase()->m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();

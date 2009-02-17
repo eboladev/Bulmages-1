@@ -25,7 +25,7 @@
 #include <QString>
 
 #include <ui_efacturabase.h>
-#include "company.h"
+#include "bfcompany.h"
 #include "fichabf.h"
 
 class EFactura : public FichaBf, public Ui_EFacturaBase
@@ -33,7 +33,7 @@ class EFactura : public FichaBf, public Ui_EFacturaBase
     Q_OBJECT
 
 public:
-    EFactura ( Company *emp, QWidget *parent = 0 );
+    EFactura ( BfCompany *emp, QWidget *parent = 0 );
     ~EFactura();
 
 public slots:

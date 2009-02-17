@@ -21,7 +21,7 @@
 #include <QComboBox>
 
 #include "busquedatipotrabajo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 

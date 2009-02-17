@@ -44,7 +44,7 @@ class ListTiposTrabajoView : public FichaBf, public Ui_ListTiposTrabajoBase
     Q_OBJECT
 
 public:
-    ListTiposTrabajoView ( Company *comp, QWidget *parent );
+    ListTiposTrabajoView ( BfCompany *comp, QWidget *parent );
     virtual ~ListTiposTrabajoView();
 
 public slots:

@@ -22,7 +22,7 @@
 #define TARIFALISTVIEW_H
 
 #include "ui_tarifalistbase.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "pgimportfiles.h"
 #include "blformlist.h"
 
@@ -32,7 +32,7 @@ class TarifaListView : public BlFormList, private Ui_TarifaListBase, public pgim
     Q_OBJECT
 
 public:
-    TarifaListView ( Company *comp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    TarifaListView ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~TarifaListView();
     void editar(int);
     void borrar();

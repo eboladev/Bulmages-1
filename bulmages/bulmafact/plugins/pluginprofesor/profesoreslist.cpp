@@ -27,7 +27,7 @@
 
 #include "blconfiguration.h"
 #include "profesoreslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "profesorview.h"
 #include "blfunctions.h"
 
@@ -57,7 +57,7 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-ProfesoresList::ProfesoresList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "ProfesoresList::ProfesoresList", 0 );
@@ -128,7 +128,7 @@ QString ProfesoresList::generaFiltro()
 void ProfesoresList::crear()
 {
     _depura ( "ProfesoresList::crear", 0 );
-    ProfesorView *bud = new ProfesorView( (Company *) empresaBase(), 0);
+    ProfesorView *bud = new ProfesorView( (BfCompany *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -163,7 +163,7 @@ void ProfesoresList::borrar()
     try {
         mdb_idprofesor = mui_list->DBvalue ( "idprofesor" );
         if ( modoEdicion() ) {
-            ProfesorView * cv = new ProfesorView( (Company *) empresaBase(), 0);
+            ProfesorView * cv = new ProfesorView( (BfCompany *) empresaBase(), 0);
             if ( cv->cargar ( mdb_idprofesor ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,7 +187,7 @@ void ProfesoresList::editar ( int )
     try {
         mdb_idprofesor = mui_list->DBvalue ( "idprofesor" );
         if ( modoEdicion() ) {
-            ProfesorView * bud = new ProfesorView( (Company *) empresaBase(), 0);
+            ProfesorView * bud = new ProfesorView( (BfCompany *) empresaBase(), 0);
             if ( bud->cargar ( mdb_idprofesor ) ) {
                 delete bud;
                 return;
@@ -227,7 +227,7 @@ void ProfesoresList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void ProfesoresList::setMainCompany ( Company *comp )
+void ProfesoresList::setMainCompany ( BfCompany *comp )
 {
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );

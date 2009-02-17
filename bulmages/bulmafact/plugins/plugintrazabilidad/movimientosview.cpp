@@ -24,7 +24,7 @@
 
 #include "busquedaarticulo.h"
 #include "busquedafecha.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "movimientosview.h"
 #include "blfunctions.h"
@@ -47,7 +47,7 @@
 \param parent
 \param editmodo
 **/
-MovimientosView::MovimientosView ( Company *comp, QWidget *parent, edmode editmodo )
+MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode editmodo )
         : FichaBf ( comp, parent, 0 )
 {
     _depura ( "MovimientosView::MovimientosView", 0 );

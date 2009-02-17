@@ -24,7 +24,7 @@
 
 #include "blcombobox.h"
 #include "blwidget.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 
 
@@ -63,7 +63,7 @@ public:
     ~BusquedaAlmacen();
     virtual void setId ( QString idalmacen );
     QString id();
-    void setMainCompany ( Company * );
+    void setMainCompany ( BfCompany * );
     void m_activated ( int index );
 };
 

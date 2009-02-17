@@ -28,7 +28,7 @@
 #include "bldb.h"
 
 
-class Company;
+class BfCompany;
 
 
 class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public BlDbRecord
@@ -36,12 +36,12 @@ class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChange
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
 
 public:
-    PromedioView ( Company *emp, QWidget *parent = 0 );
+    PromedioView ( BfCompany *emp, QWidget *parent = 0 );
     ~PromedioView();
-    Company *companyact() {
+    BfCompany *companyact() {
         return m_companyact;
     };
 

@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginresarticulos.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "listlresarticulo.h"
 

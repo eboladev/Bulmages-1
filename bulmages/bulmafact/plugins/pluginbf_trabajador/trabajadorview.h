@@ -52,7 +52,7 @@ private:
     virtual void imprimir();
 
 public:
-    TrabajadorView ( Company * emp, QWidget *parent = 0 );
+    TrabajadorView ( BfCompany * emp, QWidget *parent = 0 );
     ~TrabajadorView();
     bool trataModificado();
     QString idtrabajador();

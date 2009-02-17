@@ -54,7 +54,7 @@ public:
     BlDbRecord *m_albaranp;
     virtual int borrarPre();
     virtual int cargarPost ( QString );
-    CompraVentaView ( Company *, QWidget * );
+    CompraVentaView ( BfCompany *, QWidget * );
     ~CompraVentaView();
     void inicializar();
 

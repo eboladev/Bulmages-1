@@ -35,7 +35,7 @@ class BlFixed;
 \param f
 \param modo
 **/
-FichaBf::FichaBf ( Company *comp, QWidget *parent, Qt::WFlags f, edmode modo )
+FichaBf::FichaBf ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
         : BlForm ( comp, parent, f, modo )
 {
     _depura ( "FichaBf::FichaBf", 0 );
@@ -61,11 +61,11 @@ FichaBf::~FichaBf()
 /**
 \return
 **/
-Company * FichaBf::empresaBase()
+BfCompany * FichaBf::empresaBase()
 {
     _depura ( "FichaBf::getcompany", 0 );
     _depura ( "END FichaBf::getcompany", 0 );
-    return ( Company * ) BlForm::empresaBase();
+    return ( BfCompany * ) BlForm::empresaBase();
 }
 
 

@@ -23,7 +23,7 @@
 #define FACTURASLIST_H
 
 #include "busquedaarticulo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -59,10 +59,10 @@ private:
 
 public:
     FacturasList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    FacturasList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    FacturasList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~FacturasList();
     void iniciaForm();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     QString idfactura();
     void setidcliente ( QString val );
     void setidarticulo ( QString val );

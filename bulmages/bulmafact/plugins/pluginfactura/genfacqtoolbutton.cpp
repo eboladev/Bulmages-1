@@ -36,7 +36,7 @@
 #include "presupuestoview.h"
 #include "facturaslist.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 ///
@@ -166,7 +166,7 @@ void GenFacQToolButton::generarFactura()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
-            bud = new FacturaView( (Company *) fpv->empresaBase(), 0);
+            bud = new FacturaView( (BfCompany *) fpv->empresaBase(), 0);
             fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
@@ -175,7 +175,7 @@ void GenFacQToolButton::generarFactura()
         delete cur;
 
         /// Creamos la factura.
-        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
@@ -303,7 +303,7 @@ void GenFacQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -432,7 +432,7 @@ void GenFacQToolButton::generarFactura2()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new FacturaView((Company *) fpv->empresaBase(), 0);
+        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -598,7 +598,7 @@ void AgFacQToolButton::generarFactura()
         return;
 
     /// Creamos la factura.
-    FacturaView *bud = new FacturaView( (Company*) fpv->empresaBase());
+    FacturaView *bud = new FacturaView( (BfCompany*) fpv->empresaBase());
     bud->cargar ( idfactura );
 
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.

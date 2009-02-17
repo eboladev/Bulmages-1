@@ -30,7 +30,7 @@
 #include "compraventaview.h"
 #include "clientslist.h"
 #include "cobroview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "facturaslist.h"
 #include "facturaview.h"
@@ -52,7 +52,7 @@
 \param parent
 \return
 **/
-CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
+CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "CompraVentaView::CompraVentaView", 0 );
@@ -480,7 +480,7 @@ void CompraVentaView::generarFacturaProveedor()
 		return;
 
         /// Creamos la factura de proveedor.
-        FacturaProveedorView *bud = new FacturaProveedorView((Company *) empresaBase(), 0);
+        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) empresaBase(), 0);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
@@ -590,7 +590,7 @@ void CompraVentaView::generarFactura()
             }
 
 
-			int resur = g_plugins->lanza ("SNewFacturaView", (Company *) empresaBase() );
+			int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) empresaBase() );
 			if (!resur) {
 				mensajeInfo("No se pudo crear instancia de factura");
 				return;
@@ -608,7 +608,7 @@ void CompraVentaView::generarFactura()
 		return;
 
         /// Creamos la factura.
-		int resur = g_plugins->lanza ("SNewFacturaView", (Company *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) empresaBase() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de factura");
 			return;

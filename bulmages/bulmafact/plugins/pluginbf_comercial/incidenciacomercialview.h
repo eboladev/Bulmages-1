@@ -40,11 +40,11 @@ class IncidenciaComercialView : public IncidenciaComercial, private Ui_Incidenci
 public:
     IncidenciaComercialView ( QWidget *parent = NULL );
     ~IncidenciaComercialView();
-    IncidenciaComercialView ( Company *, QWidget *parent = NULL );
+    IncidenciaComercialView ( BfCompany *, QWidget *parent = NULL );
     void closeEvent ( QCloseEvent * );
     virtual void pintar() {}
     ;
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     virtual int guardar();
     virtual int cargar ( QString id );
 };

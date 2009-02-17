@@ -26,7 +26,7 @@
 #include <QLineEdit>
 #include <QTabWidget>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "plugintpv.h"
 #include "blfunctions.h"
 #include "zlist.h"
@@ -57,7 +57,7 @@ myplugincont::~myplugincont()
 void myplugincont::elslot()
 {
     _depura ( "myplugincont::elslot", 0 );
-    ZList *vehiculoview = new ZList ( ( Company * ) m_conexionbase );
+    ZList *vehiculoview = new ZList ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
     _depura ( "END myplugincont::elslot", 0 );

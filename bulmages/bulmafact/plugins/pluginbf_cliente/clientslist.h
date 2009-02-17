@@ -23,7 +23,7 @@
 #define clientslist_H
 
 #include "pgimportfiles.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 
@@ -59,7 +59,7 @@ private:
     QString mdb_cifcliente;
 
 public:
-    ClientsList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    ClientsList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     virtual ~ClientsList();
     void presentar();
     void editar ( int );

@@ -33,7 +33,7 @@
 #include "informeqtoolbutton1.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 #include "blprogressbar.h"
 

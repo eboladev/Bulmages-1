@@ -30,7 +30,7 @@
 
 
 #include "pedidoclienteview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "listlinpedidoclienteview.h"
 #include "clientslist.h"
 #include "informereferencia.h"
@@ -44,7 +44,7 @@
 \param parent
 \return
 **/
-PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
+PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "PedidoClienteView::PedidoClienteView", 0 );

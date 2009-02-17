@@ -23,7 +23,7 @@
 #include <QMessageBox>
 
 #include "tiposarticuloview.h"
-#include "company.h"
+#include "bfcompany.h"
 
 #define COL_IDTIPOARTICULO    0
 #define COL_CODTIPOARTICULO   1
@@ -36,7 +36,7 @@
 \param parent
 \param modoConsultas
 **/
-TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoConsulta )
+TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modoConsulta )
         : FichaBf ( comp, parent )
 {
     _depura ( "TipoArticuloList::TipoArticuloList", 0 );

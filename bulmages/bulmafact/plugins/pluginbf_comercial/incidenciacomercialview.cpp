@@ -31,7 +31,7 @@
 #include <QCloseEvent>
 
 #include "incidenciacomercialview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -44,7 +44,7 @@
 \param comp
 \param parent
 **/
-IncidenciaComercialView::IncidenciaComercialView ( Company *comp, QWidget *parent )
+IncidenciaComercialView::IncidenciaComercialView ( BfCompany *comp, QWidget *parent )
         : IncidenciaComercial ( comp, parent )
 {
     _depura ( "IncidenciaComercialView::IncidenciaComercialView", 0 );
@@ -116,7 +116,7 @@ void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
 /**
 \param comp
 **/
-void IncidenciaComercialView::setMainCompany ( Company *comp )
+void IncidenciaComercialView::setMainCompany ( BfCompany *comp )
 {
     _depura ( "IncidenciaComercialView::setcompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

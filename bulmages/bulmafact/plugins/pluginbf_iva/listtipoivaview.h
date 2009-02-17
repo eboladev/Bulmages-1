@@ -59,7 +59,7 @@ class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase
     Q_OBJECT
 
 public:
-    ListTipoIVAView ( Company *comp, QWidget *parent );
+    ListTipoIVAView ( BfCompany *comp, QWidget *parent );
     ~ListTipoIVAView();
 
 public slots:

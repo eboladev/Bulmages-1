@@ -32,7 +32,7 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int SNewBancoView (Company *);
+extern "C" MY_EXPORT int SNewBancoView (BfCompany *);
 
 
 class MyPlugBanc : public QObject, BlMainCompanyPointer

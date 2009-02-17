@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_iva.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "listtipoivaview.h"
 #include "listtasaivaview.h"
@@ -55,10 +55,10 @@ MyPlugIVA::~MyPlugIVA()
 void MyPlugIVA::elslot()
 {
     _depura ( "MyPlugIVA::elslot", 0 );
-    ListTasaIVAView *pag = new ListTasaIVAView ( (Company *)empresaBase(), NULL );
+    ListTasaIVAView *pag = new ListTasaIVAView ( (BfCompany *)empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-/*        TrabajadorView * bud = new TrabajadorView((Company *)empresaBase(), NULL);
+/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
 */
@@ -72,10 +72,10 @@ void MyPlugIVA::elslot()
 void MyPlugIVA::elslot1()
 {
     _depura ( "MyPlugIVA::elslot1", 0 );
-    ListTipoIVAView *pag = new ListTipoIVAView ( (Company *)empresaBase(), NULL );
+    ListTipoIVAView *pag = new ListTipoIVAView ( (BfCompany *)empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-/*        TrabajadorView * bud = new TrabajadorView((Company *)empresaBase(), NULL);
+/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
 */

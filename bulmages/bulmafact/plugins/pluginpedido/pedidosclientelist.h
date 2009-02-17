@@ -23,7 +23,7 @@
 #define PEDIDOSCLIENTELIST_H
 
 #include "busquedaarticulo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -59,14 +59,14 @@ private:
 
 public:
     PedidosClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    PedidosClienteList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    PedidosClienteList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~PedidosClienteList();
     void presentar();
     void imprimir();
     void editar ( int );
     void borrar();
     void crear();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     void setidcliente ( QString val );
     QString idpedidocliente();
     QString generarFiltro();

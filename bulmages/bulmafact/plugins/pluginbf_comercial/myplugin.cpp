@@ -50,7 +50,7 @@ mypluginbf::~mypluginbf()
 void mypluginbf::elslot()
 {
     _depura ( "mypluginbf::elslot", 0 );
-    RutaComercialList *list  = new RutaComercialList ( ( Company * ) empresaBase(), NULL );
+    RutaComercialList *list  = new RutaComercialList ( ( BfCompany * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( list );
     list->show();
     _depura ( "END mypluginbf::elslot", 0 );
@@ -63,7 +63,7 @@ void mypluginbf::elslot()
 void mypluginbf::elslot1()
 {
     _depura ( "mypluginbf::elslot1", 0 );
-    ListZonaComercialView *list = new ListZonaComercialView ( ( Company * ) empresaBase(), NULL );
+    ListZonaComercialView *list = new ListZonaComercialView ( ( BfCompany * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( list );
     list->show();
     _depura ( "END mypluginbf::elslot1", 0 );

@@ -22,7 +22,7 @@
 
 #include <QObject>
 #include "pluginqwebcamp.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "qwebcamview.h"
 //#include "busquedatarifa.h"

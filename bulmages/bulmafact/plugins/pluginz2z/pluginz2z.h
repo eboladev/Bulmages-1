@@ -26,7 +26,7 @@
 
 #include "bulmafact.h"
 #include "blpostgresqlclient.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );

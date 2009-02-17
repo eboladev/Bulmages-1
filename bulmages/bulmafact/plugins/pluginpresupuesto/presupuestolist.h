@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "busquedaarticulo.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -60,14 +60,14 @@ private:
 
 public:
     PresupuestoList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    PresupuestoList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    PresupuestoList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~PresupuestoList();
     void presentar();
     void editar ( int );
     void borrar();
     void crear();
     QString idpresupuesto();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     void imprimir();
     void setidcliente ( QString val );
     void setidarticulo ( QString val );

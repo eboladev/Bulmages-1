@@ -38,7 +38,7 @@
 #include "presupuestoview.h"
 #include "blfixed.h"
 #include "facturaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 ///

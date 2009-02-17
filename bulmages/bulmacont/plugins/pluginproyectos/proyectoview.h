@@ -32,9 +32,6 @@
 #include "fichabc.h"
 
 
-class Company;
-
-
 class ProyectoView : public FichaBc, public Ui_ProyectoBase
 {
     Q_OBJECT

@@ -33,7 +33,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -46,7 +46,7 @@ class CobroView : public FichaBf, public Ui_CobroBase
     Q_OBJECT
 
 public:
-    CobroView ( Company *, QWidget * );
+    CobroView ( BfCompany *, QWidget * );
     ~CobroView();
     virtual void imprimir();
     virtual int trataTags ( QString &buff );

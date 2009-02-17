@@ -27,7 +27,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
@@ -47,7 +47,7 @@ private:
     bool m_semaforoPintar;
 
 public:
-    FamiliasView ( Company *, QWidget *parent = 0, bool modoConsulta = FALSE );
+    FamiliasView ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
     ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();

@@ -30,7 +30,7 @@
 #include <fstream>
 
 #include "listseriefacturaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -41,7 +41,7 @@
 \param comp
 \param parent
 **/
-ListSerieFacturaView::ListSerieFacturaView ( Company *comp, QWidget *parent )
+ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "INIT_ListSerieFacturaView::ListSerieFacturaView", 1 );

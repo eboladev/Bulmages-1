@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blformlist.h"
 #include "ui_almaceneslistbase.h"
 
@@ -40,14 +40,14 @@ private:
 
 public:
     AlmacenesListView ( QWidget *parent = 0, Qt::WFlags flag = 0 );
-    AlmacenesListView ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    AlmacenesListView ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~AlmacenesListView();
     void presentar();
     void editar ( int );
     void borrar();
     void crear();
     QString idalmacen();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     void imprimir();
     QString generaFiltro();
     void iniciaForm();

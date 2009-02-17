@@ -27,7 +27,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de cuadrantes
@@ -41,7 +41,7 @@ public:
     CuadranteQTextDocument *m_actualcell;
 
 public:
-    CuadranteView ( Company *, QWidget * );
+    CuadranteView ( BfCompany *, QWidget * );
     ~CuadranteView();
     void inicializaTrabajadores();
     void inicializaCuadrante ( const QDate &dateorig );

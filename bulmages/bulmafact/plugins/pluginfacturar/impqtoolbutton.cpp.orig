@@ -40,7 +40,7 @@
 #include "albaranclienteview.h"
 #include "albaranclientelist.h"
 #include "facturaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -102,7 +102,7 @@ void ImpQToolButton::click()
     QString res = "";
 
     if ( m_albaranClienteList != NULL ) {
-        m_companyact = ( Company * ) m_albaranClienteList->empresaBase();
+        m_companyact = ( BfCompany * ) m_albaranClienteList->empresaBase();
         BlSubForm *sub = m_albaranClienteList->mui_list;
 
         /// Creamos la factura

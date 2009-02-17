@@ -28,7 +28,7 @@
 #include <QMap>
 #include <QString>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
@@ -40,7 +40,7 @@ class EmailThunderbirdQToolButton : public QToolButton
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
     PresupuestoView *m_presupuestoView;
     PedidoClienteView *m_pedidoClienteView;
     AlbaranClienteView *m_albaranClienteView;

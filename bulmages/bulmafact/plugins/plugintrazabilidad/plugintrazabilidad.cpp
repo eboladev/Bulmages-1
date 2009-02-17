@@ -26,7 +26,7 @@
 #include <QLineEdit>
 #include <QTabWidget>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "plugintrazabilidad.h"
 #include "blfunctions.h"
 #include "movimientosview.h"
@@ -58,7 +58,7 @@ myplugin::~myplugin()
 void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
-    MovimientosView *mov = new MovimientosView ( ( Company * ) empresaBase() );
+    MovimientosView *mov = new MovimientosView ( ( BfCompany * ) empresaBase() );
     empresaBase() ->pWorkspace() ->addWindow ( mov );
     mov->show();
     _depura ( "END myplugin::elslot", 0 );

@@ -67,7 +67,7 @@ void myplugin::inicializa ( EmpresaTPV *etpv )
 
     m_etpv = etpv;
     /*
-        m_lan = new ArticuloList1((Company *) etpv, NULL, 0, BlFormList::SelectMode);
+        m_lan = new ArticuloList1((BfCompany *) etpv, NULL, 0, BlFormList::SelectMode);
 
         g_main->setCentralWidget ( m_lan );
         connect ( m_lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );

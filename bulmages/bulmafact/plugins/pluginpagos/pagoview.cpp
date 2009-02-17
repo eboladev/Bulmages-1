@@ -31,7 +31,7 @@
 #include <QCloseEvent>
 
 #include "pagoview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -42,7 +42,7 @@
 \param comp
 \param parent
 **/
-PagoView::PagoView ( Company *comp, QWidget *parent )
+PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         :  FichaBf ( comp, parent )
 {
     _depura ( "PagoView::PagoView", 0 );

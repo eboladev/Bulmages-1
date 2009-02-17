@@ -56,7 +56,7 @@ Archivo::~Archivo()
 {
     _depura ( "Archivo::~Archivo", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
-    // ((Company *)empresaBase())->refreshCobrosCliente();
+    // ((BfCompany *)empresaBase())->refreshCobrosCliente();
     _depura ( "END Archivo::~Archivo", 0 );
 }
 

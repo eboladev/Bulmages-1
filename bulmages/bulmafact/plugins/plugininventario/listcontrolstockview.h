@@ -23,7 +23,7 @@
 
 #include <QEvent>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "bfsubform.h"
 
 

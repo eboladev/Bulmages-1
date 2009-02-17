@@ -27,7 +27,7 @@
 #include "cuadranteqtablewidget.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "cuadrante1view.h"
 #include "cuadranteview.h"
 
@@ -124,7 +124,7 @@ void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &
 \param emp
 \param parent
 **/
-CuadranteQTextDocument::CuadranteQTextDocument ( Company *emp, QWidget *parent ) : QLabel ( parent ),/* QTableWidgetItem(QTableWidgetItem::UserType),*/  BlMainCompanyPointer ( emp )
+CuadranteQTextDocument::CuadranteQTextDocument ( BfCompany *emp, QWidget *parent ) : QLabel ( parent ),/* QTableWidgetItem(QTableWidgetItem::UserType),*/  BlMainCompanyPointer ( emp )
 {
     _depura ( "CuadranteQTextDocument::CuadranteQTextDocument", 0 );
     setContextMenuPolicy ( Qt::CustomContextMenu );
@@ -215,7 +215,7 @@ void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent *  )
 **/
 void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent *  )
 {
-    Cuadrante1View * cuad = new Cuadrante1View ( ( Company * ) empresaBase(), 0 );
+    Cuadrante1View * cuad = new Cuadrante1View ( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
 //    CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(mui_cuadrante->currentRow(), mui_cuadrante->currentColumn());
@@ -322,7 +322,7 @@ void CuadranteQTextDocument::pintaCuadrante ( QString idalmacen, const QDate &da
     mdb_idalmacen = idalmacen;
     mdb_fechacuadrante = date;
 
-    ImpCuadrante *imp = new ImpCuadrante ( ( Company * ) empresaBase() );
+    ImpCuadrante *imp = new ImpCuadrante ( ( BfCompany * ) empresaBase() );
     imp->mdb_idalmacen = idalmacen;
     imp->mdb_fechacuadrante = date;
     imp->generar();
@@ -462,7 +462,7 @@ const QString CuadranteQTextDocument::impresion()
 \param emp
 \param parent
 **/
-ImpCuadrante::ImpCuadrante ( Company *emp ) :  BlMainCompanyPointer ( emp )
+ImpCuadrante::ImpCuadrante ( BfCompany *emp ) :  BlMainCompanyPointer ( emp )
 {
     _depura ( "ImpCuadrante::ImpCuadrante", 0 );
     _depura ( "END ImpCuadrante::ImpCuadrante", 0 );

@@ -21,7 +21,7 @@
 #include <QComboBox>
 
 #include "busquedazonacomercial.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 ///

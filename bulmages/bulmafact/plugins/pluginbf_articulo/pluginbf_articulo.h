@@ -33,9 +33,9 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
-extern "C" MY_EXPORT int SNewArticuloView (Company *);
+extern "C" MY_EXPORT int SNewArticuloView (BfCompany *);
 extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 
 

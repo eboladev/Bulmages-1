@@ -22,7 +22,7 @@
 #include "efqtoolbutton.h"
 #include "facturaview.h"
 #include "blfunctions.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blwidget.h"
 
 /// Para Exportacion de efacturas

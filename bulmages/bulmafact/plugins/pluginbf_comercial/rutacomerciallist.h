@@ -23,7 +23,7 @@
 
 #include <QLineEdit>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "busquedaarticulo.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -63,11 +63,11 @@ private:
 
 public:
     RutaComercialList ( QWidget *parent = 0 );
-    RutaComercialList ( Company *comp = NULL, QWidget *parent = 0 );
+    RutaComercialList ( BfCompany *comp = NULL, QWidget *parent = 0 );
     ~RutaComercialList();
     void presenta();
     QString idpresupuesto();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     void imprimir();
     void setidcliente ( QString val );
     QString generaFiltro();

@@ -31,7 +31,7 @@
 #include <QMessageBox>
 
 #include "listconfiguracionview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -43,7 +43,7 @@
 \param comp
 \param parent
 **/
-ListConfiguracionView::ListConfiguracionView ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+ListConfiguracionView::ListConfiguracionView ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
     _depura ( "ListConfiguracionView::ListConfiguracionView", 1 );
     setupUi ( this );

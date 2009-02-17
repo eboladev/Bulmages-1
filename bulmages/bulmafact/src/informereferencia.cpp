@@ -23,7 +23,7 @@
 #include <QTextStream>
 
 #include "informereferencia.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
 
@@ -34,7 +34,7 @@
 /**
 \param comp
 **/
-InformeCliente::InformeCliente ( Company *comp )
+InformeCliente::InformeCliente ( BfCompany *comp )
 {
     _depura ( "InformeCliente::InformeCliente", 0 );
     companyact = comp;

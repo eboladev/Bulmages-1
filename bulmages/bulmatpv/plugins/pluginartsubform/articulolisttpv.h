@@ -22,7 +22,7 @@
 #ifndef ARTICLESLISTTPV_H
 #define ARTICLESLISTTPV_H
 
-#include "company.h"
+#include "bfcompany.h"
 #include "pgimportfiles.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -61,7 +61,7 @@ private:
     QString mdb_codigocompletoarticulo;
 
 public:
-    ArticuloList1 ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    ArticuloList1 ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     virtual ~ArticuloList1();
     QString formaQuery();
     QString idarticulo();

@@ -29,7 +29,7 @@
 #include <QTextStream>
 
 #include "pedidoproveedorview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "listlinpedidoproveedorview.h"
 #include "providerslist.h"
 #include "blfunctions.h"
@@ -40,7 +40,7 @@
 \param comp
 \param parent
 **/
-PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
+PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "PedidoProveedorView::PedidoProveedorView", 0 );

@@ -22,7 +22,7 @@
 
 #include <QObject>
 #include "pluginpromedios.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "promedioview.h"
 //#include "busquedatarifa.h"

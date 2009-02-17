@@ -24,7 +24,7 @@
 #include <QString>
 
 #include "facturasplist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "busquedaarticulo.h"
 #include "blconfiguration.h"
 #include "facturapview.h"
@@ -71,7 +71,7 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
 \param parent
 \return
 **/
-FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
@@ -210,7 +210,7 @@ void FacturasProveedorList::editar ( int row )
     try {
         mdb_idfacturap = mui_list->DBvalue ( QString ( "idfacturap" ), row );
         if ( modoEdicion() ) {
-            FacturaProveedorView * prov = new FacturaProveedorView ( ( Company * ) empresaBase(), 0 );
+            FacturaProveedorView * prov = new FacturaProveedorView ( ( BfCompany * ) empresaBase(), 0 );
             if ( prov->cargar ( mdb_idfacturap ) ) {
                 delete prov;
                 return;
@@ -245,7 +245,7 @@ void FacturasProveedorList::borrar()
     } // end if
     try {
         mdb_idfacturap = mui_list->DBvalue ( "idfacturap" );
-        FacturaProveedorView *bud = new FacturaProveedorView( ( Company * ) empresaBase(), 0 );
+        FacturaProveedorView *bud = new FacturaProveedorView( ( BfCompany * ) empresaBase(), 0 );
         bud->cargar ( mdb_idfacturap );
         bud->on_mui_borrar_clicked();
         delete bud;
@@ -273,7 +273,7 @@ void FacturasProveedorList::imprimir()
 /**
 \param comp
 **/
-void FacturasProveedorList::setMainCompany ( Company *comp )
+void FacturasProveedorList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "FacturasProveedorList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -327,7 +327,7 @@ void FacturasProveedorList::setidarticulo ( QString val )
 void FacturasProveedorList::crear()
 {
     _depura ( "FacturasProveedorList::crear", 0 );
-    FacturaProveedorView *fact = new FacturaProveedorView( ( Company * ) empresaBase(), 0 );
+    FacturaProveedorView *fact = new FacturaProveedorView( ( BfCompany * ) empresaBase(), 0 );
     empresaBase()->pWorkspace()->addWindow ( fact );
     fact->inicializar();
     fact->show();

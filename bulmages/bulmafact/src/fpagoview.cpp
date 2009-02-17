@@ -23,7 +23,7 @@
 #include <QCloseEvent>
 
 #include "fpagoview.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
@@ -31,7 +31,7 @@
 \param emp
 \param parent
 **/
-FPagoView::FPagoView ( Company *emp, QWidget *parent )
+FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
         : FichaBf ( emp, parent )
 {
     _depura ( "FPagoView::FPagoView", 0 );

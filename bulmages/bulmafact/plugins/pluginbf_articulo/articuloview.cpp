@@ -28,7 +28,7 @@
 #include <QCloseEvent>
 
 #include "articuloview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "familiasview.h"
 #include "tiposarticuloview.h"
 #include "busquedafamilia.h"
@@ -47,7 +47,7 @@
 \param parent
 \return
 **/
-ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
+ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ArticuloView::ArticuloView", 0 );

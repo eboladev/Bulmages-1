@@ -31,7 +31,7 @@
 #include <QMessageBox>
 
 #include "listtasaivaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -42,7 +42,7 @@
 \param comp
 \param parent
 **/
-ListTasaIVAView::ListTasaIVAView ( Company *comp, QWidget *parent )
+ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTasaIVAView::ListTasaIVAView", 1 );

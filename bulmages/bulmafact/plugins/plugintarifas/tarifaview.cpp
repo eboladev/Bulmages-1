@@ -23,7 +23,7 @@
 #include <QCloseEvent>
 
 #include "tarifaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "familiasview.h"
 #include "tiposarticuloview.h"
 #include "busquedafamilia.h"
@@ -38,7 +38,7 @@
 \param comp
 \param parent
 **/
-TarifaView::TarifaView ( Company *comp, QWidget *parent )
+TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "TarifaView::INIT_constructor()\n", 0 );
@@ -85,7 +85,7 @@ TarifaView::~TarifaView()
 ///
 /**
 **/
-Company *TarifaView::companyact() {
+BfCompany *TarifaView::companyact() {
 	return empresaBase();
 }
 

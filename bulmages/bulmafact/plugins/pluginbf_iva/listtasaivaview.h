@@ -59,7 +59,7 @@ class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase
     Q_OBJECT
 
 public:
-    ListTasaIVAView ( Company *comp, QWidget *parent );
+    ListTasaIVAView ( BfCompany *comp, QWidget *parent );
     ~ListTasaIVAView();
 
 public slots:

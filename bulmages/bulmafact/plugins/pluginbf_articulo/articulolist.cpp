@@ -29,7 +29,7 @@
 
 #include "articulolist.h"
 #include "pgimportfiles.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
@@ -51,7 +51,7 @@
 \param editmodo
 \return
 **/
-ArticuloList::ArticuloList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
 {
     _depura ( "ArticuloList::ArticuloList", 0 );
@@ -117,7 +117,7 @@ void ArticuloList::editar ( int row )
     mdb_nomarticulo = mui_list->DBvalue ( "nomarticulo", row );
     mdb_codigocompletoarticulo = mui_list->DBvalue ( "codigocompletoarticulo", row );
     if ( modoEdicion() ) {
-        ArticuloView * art = new ArticuloView( ( Company * ) empresaBase(), 0 );
+        ArticuloView * art = new ArticuloView( ( BfCompany * ) empresaBase(), 0 );
         empresaBase() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
@@ -304,7 +304,7 @@ void ArticuloList::submenu ( const QPoint & )
 void ArticuloList::crear()
 {
     _depura ( "ArticuloList::crear", 0 );
-	ArticuloView * art = new ArticuloView( (Company *) empresaBase());
+	ArticuloView * art = new ArticuloView( (BfCompany *) empresaBase());
     empresaBase()->m_pWorkspace->addWindow ( art );
     art->pintar();
     art->show();

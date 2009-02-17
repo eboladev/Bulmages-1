@@ -32,7 +32,7 @@
 \param emp
 \param parent
 **/
-EFactura::EFactura ( Company *emp, QWidget *parent ) : FichaBf ( emp, parent )
+EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : FichaBf ( emp, parent )
 {
 
     _depura ( "EFactura::EFactura", 2 );

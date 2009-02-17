@@ -21,7 +21,7 @@
 #include "tarifalistview.h"
 #include "tarifaview.h"
 #include "pgimportfiles.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -31,7 +31,7 @@
 \param parent
 \param editomodo
 **/
-TarifaListView::TarifaListView ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
 {
     _depura ( "TarifaListView::INIT_TarifaListView()\n", 0 );
@@ -67,7 +67,7 @@ TarifaListView::~TarifaListView()
 void TarifaListView::editar (int row)
 {
     _depura ( "TarifaListView::editar", 0 );
-    TarifaView *tar = new TarifaView ( ( Company * ) empresaBase(), 0 );
+    TarifaView *tar = new TarifaView ( ( BfCompany * ) empresaBase(), 0 );
     QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), row ) );
@@ -82,7 +82,7 @@ void TarifaListView::editar (int row)
 void TarifaListView::crear()
 {
     _depura ( "TarifaListView::crear", 0 );
-    TarifaView *tar = new TarifaView ( ( Company * ) empresaBase(), parentWidget() );
+    TarifaView *tar = new TarifaView ( ( BfCompany * ) empresaBase(), parentWidget() );
     QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->setWindowTitle(tr("Nueva tarifa"));
@@ -99,7 +99,7 @@ void TarifaListView::borrar()
     _depura ( "TarifaListView::borrar\n", 0 );
     int a = mui_list->currentRow();
     if (a >= 0) {
-	TarifaView *tar = new TarifaView ( ( Company * ) empresaBase(), 0 );
+	TarifaView *tar = new TarifaView ( ( BfCompany * ) empresaBase(), 0 );
         QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
 	tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), a ) );
 	tar->on_mui_borrar_clicked();

@@ -22,7 +22,7 @@
 
 #include "pluginfactura.h"
 #include "plugins.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "facturaview.h"
 #include "facturaslist.h"
@@ -71,7 +71,7 @@ void mypluginfact::elslot()
 void mypluginfact::elslot1()
 {
     _depura ( "mypluginfact::elslot1", 0 );
-        FacturaView * bud = new FacturaView((Company *)empresaBase(), NULL);
+        FacturaView * bud = new FacturaView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginfact::elslot1", 0 );
@@ -136,7 +136,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "factura", "SELECT" ) ) {
 	g_facturasList = new FacturasList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_facturasList );
@@ -148,7 +148,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "factura", "SELECT" ) ) {
-	FacturasList *facturasList = new FacturasList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	FacturasList *facturasList = new FacturasList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	facturasList->setModoEdicion();
 	facturasList->setObjectName("listfacturas");
 	facturasList->hideBusqueda();
@@ -171,7 +171,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        FacturaView * bud = new FacturaView((Company *)ref->empresaBase(), NULL);
+        FacturaView * bud = new FacturaView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
@@ -266,7 +266,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewFacturaView (Company *v)
+int SNewFacturaView (BfCompany *v)
 {
 	FacturaView *h = new FacturaView(v, 0);
 	g_plugParams = h;

@@ -33,7 +33,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
@@ -43,7 +43,7 @@ class PagoView : public FichaBf, public Ui_PagoBase
     Q_OBJECT
 
 public:
-    PagoView ( Company *, QWidget * );
+    PagoView ( BfCompany *, QWidget * );
     ~PagoView();
 };
 

@@ -34,7 +34,7 @@
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 #include "pagoview.h"
 
@@ -94,7 +94,7 @@ void GenPagoQToolButton::click()
 
     if (m_object->objectName() == "FacturaProveedorBase" ) {
 	FacturaProveedorView *fpv = (FacturaProveedorView *) m_object;
-	PagoView *bud = new PagoView((Company *)fpv->empresaBase(), NULL);
+	PagoView *bud = new PagoView((BfCompany *)fpv->empresaBase(), NULL);
 	fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 	bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
 	bud->setDBvalue ( "cantpago", fpv->m_totalfacturap->text() );
@@ -106,7 +106,7 @@ void GenPagoQToolButton::click()
 
     if (m_object->objectName() == "AlbaranProveedorBase" ) {
 	AlbaranProveedorView *fpv = (AlbaranProveedorView *) m_object;
-	PagoView *bud = new PagoView((Company *)fpv->empresaBase(), NULL);
+	PagoView *bud = new PagoView((BfCompany *)fpv->empresaBase(), NULL);
 	fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 	bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
 	bud->setDBvalue ( "cantpago", fpv->m_totalalbaranp->text() );
@@ -118,7 +118,7 @@ void GenPagoQToolButton::click()
 
     if (m_object->objectName() == "PedidoProveedorBase" ) {
 	PedidoProveedorView *fpv = (PedidoProveedorView *) m_object;
-	PagoView *bud = new PagoView((Company *)fpv->empresaBase(), NULL);
+	PagoView *bud = new PagoView((BfCompany *)fpv->empresaBase(), NULL);
 	fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 	bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
 	bud->setDBvalue ( "cantpago", fpv->mui_totalPedido->text() );

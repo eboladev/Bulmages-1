@@ -27,7 +27,7 @@
 
 
 #include "plugininformeclientessxc.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 

@@ -22,7 +22,7 @@
 
 #include "plugincompraventa.h"
 #include "compraventaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -53,7 +53,7 @@ void myplugincv::elslot()
 {
     _depura ( "myplugincv::elslot", 0 );
 
-    CompraVentaView *tar = new CompraVentaView ( ( Company * ) empresaBase(), NULL );
+    CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->show();
 

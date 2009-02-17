@@ -23,7 +23,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
@@ -39,7 +39,7 @@ class ImpQToolButton : public QToolButton
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
     PresupuestoList *m_presupuestoList;
     PedidosClienteList *m_pedidosClienteList;
     AlbaranClienteList *m_albaranClienteList;
@@ -61,7 +61,7 @@ class SelQToolButton : public QToolButton
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
     PresupuestoList *m_presupuestoList;
     PedidosClienteList *m_pedidosClienteList;
     AlbaranClienteList *m_albaranClienteList;
@@ -81,7 +81,7 @@ class EmailQToolButton : public QToolButton
     Q_OBJECT
 
 private:
-    Company *m_companyact;
+    BfCompany *m_companyact;
     PresupuestoList *m_presupuestoList;
     PedidosClienteList *m_pedidosClienteList;
     AlbaranClienteList *m_albaranClienteList;

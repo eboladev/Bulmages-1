@@ -25,7 +25,7 @@
 #include <QMessageBox>
 
 #include "contratoslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"
@@ -44,7 +44,7 @@
 \param editmode
 \return
 **/
-ContratosList::ContratosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag ), pgimportfiles ( comp )
 {
     _depura ( "ContratosList::ContratosList", 0 );
@@ -130,7 +130,7 @@ void ContratosList::editar ( int row )
     mdb_refcontrato = mui_list->DBvalue ( "refcontrato", row );
     mdb_nomcontrato = mui_list->DBvalue ( "nomcontrato", row );
     if ( m_modo == 0 ) {
-        ContratoView * prov = new ContratoView ( ( Company * ) empresaBase() );
+        ContratoView * prov = new ContratoView ( ( BfCompany * ) empresaBase() );
         if ( prov->cargar ( mdb_idcontrato ) ) {
             delete prov;
             return;
@@ -334,7 +334,7 @@ void ContratosList::on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
 void ContratosList::on_mui_crear_clicked()
 {
     _depura ( "ContratosList::on_mui_crear_clicked", 0 );
-    ContratoView *prov = new ContratoView ( ( Company * ) empresaBase() );
+    ContratoView *prov = new ContratoView ( ( BfCompany * ) empresaBase() );
     prov->cargar ( "0" );
     empresaBase() ->m_pWorkspace->addWindow ( prov );
     prov->show();
@@ -384,7 +384,7 @@ void ContratosList::on_mui_facturar_clicked()
 
         cur = empresaBase() ->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
         while ( !cur->eof() ) {
-            ContratoView * prov = new ContratoView ( ( Company * ) empresaBase() );
+            ContratoView * prov = new ContratoView ( ( BfCompany * ) empresaBase() );
             if ( prov->cargar ( cur->valor ( "idcontrato" ) ) ) {
                 delete prov;
             } // end if

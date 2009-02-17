@@ -26,7 +26,7 @@
 #include <QTextStream>
 
 #include "actividadview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -36,7 +36,7 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-ActividadView::ActividadView ( Company *comp, QWidget *parent )
+ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ActividadView::ActividadView", 0 );

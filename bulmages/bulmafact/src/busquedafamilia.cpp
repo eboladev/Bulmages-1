@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "busquedafamilia.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /** Se encarga de poner todos los componentes a NULL para que no exista confusion

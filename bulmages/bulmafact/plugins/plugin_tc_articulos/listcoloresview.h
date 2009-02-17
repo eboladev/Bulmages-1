@@ -60,7 +60,7 @@ class ListColoresView : public FichaBf, public Ui_ListColoresBase
     Q_OBJECT
 
 public:
-    ListColoresView ( Company *comp, QWidget *parent );
+    ListColoresView ( BfCompany *comp, QWidget *parent );
     virtual ~ListColoresView();
 
 public slots:

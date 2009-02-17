@@ -27,7 +27,7 @@
 
 #include "stdio.h"
 #include "blcompanydialog.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "fpagoview.h"
 #include "blfunctions.h"
 #include "listconfiguracionview.h"
@@ -41,27 +41,27 @@
 /**
 \param bges
 **/
-Company::Company ( Bulmafact *bges ) : BlMainCompany()
+BfCompany::BfCompany ( Bulmafact *bges ) : BlMainCompany()
 {
-    _depura ( "Company::Company", 0 );
+    _depura ( "BfCompany::BfCompany", 0 );
     m_bulmafact = bges;
-    _depura ( "END Company::Company", 0 );
+    _depura ( "END BfCompany::BfCompany", 0 );
 }
 
 
-/// El destructor de la clase Company borra toda la memoria almacenada.
+/// El destructor de la clase BfCompany borra toda la memoria almacenada.
 /**
 **/
-Company::~Company()
+BfCompany::~BfCompany()
 {
-    _depura ( "Company::~Company", 0 );
+    _depura ( "BfCompany::~BfCompany", 0 );
 
     /// Guardamos la configuracion.
     guardaConf();
 
     /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
     m_listventanas->vaciarCompleto();
-    _depura ( "END Company::~Company", 0 );
+    _depura ( "END BfCompany::~BfCompany", 0 );
 }
 
 
@@ -73,9 +73,9 @@ Company::~Company()
 \param splash
 \return
 **/
-void Company::createMainWindows ( BlSplashScreen *splash )
+void BfCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    _depura ( "Company::createMainWindows", 0 );
+    _depura ( "BfCompany::createMainWindows", 0 );
 
     /// Comprobamos que tengamos permisos para trabajar con 'Paises'.
     m_bulmafact->actionPaises->setEnabled ( FALSE );
@@ -102,7 +102,7 @@ void Company::createMainWindows ( BlSplashScreen *splash )
     m_progressbar->setValue ( 100 );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "Company_createMainWindows_Post", this );
+    int res = g_plugins->lanza ( "BfCompany_createMainWindows_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -113,7 +113,7 @@ void Company::createMainWindows ( BlSplashScreen *splash )
     m_bulmafact->statusBar() ->showMessage ( nameDB(), 2000 );
     m_bulmafact->setWindowTitle ( _( "Facturacion GPL" ) + " :: " + nameDB() );
 
-    _depura ( "END Company::createMainWindows", 0 );
+    _depura ( "END BfCompany::createMainWindows", 0 );
 }
 
 
@@ -123,13 +123,13 @@ void Company::createMainWindows ( BlSplashScreen *splash )
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
 /**
 **/
-void Company::s_FPago()
+void BfCompany::s_FPago()
 {
-    _depura ( "Company::s_FPago", 0 );
+    _depura ( "BfCompany::s_FPago", 0 );
     FPagoView *f = new FPagoView ( this, NULL );
     m_pWorkspace->addWindow ( f );
     f->show();
-    _depura ( "END Company::s_FPago", 0 );
+    _depura ( "END BfCompany::s_FPago", 0 );
 }
 
 
@@ -138,13 +138,13 @@ void Company::s_FPago()
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
 /**
 **/
-void Company::s_trabajadores()
+void BfCompany::s_trabajadores()
 {
-    _depura ( "Company::s_trabajadores", 0 );
+    _depura ( "BfCompany::s_trabajadores", 0 );
 //    TrabajadorView *t = new TrabajadorView ( this, NULL );
 //    m_pWorkspace->addWindow ( t );
 //    t->show();
-    _depura ( "END Company::s_trabajadores", 0 );
+    _depura ( "END BfCompany::s_trabajadores", 0 );
 }
 
 
@@ -153,15 +153,15 @@ void Company::s_trabajadores()
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
 /**
 **/
-void Company::s_bancos()
+void BfCompany::s_bancos()
 {
-    _depura ( "Company::s_bancos", 0 );
+    _depura ( "BfCompany::s_bancos", 0 );
 /*
     BancoView *t = new BancoView ( this, NULL );
     m_pWorkspace->addWindow ( t );
     t->show();
 */
-    _depura ( "END Company::s_bancos", 0 );
+    _depura ( "END BfCompany::s_bancos", 0 );
 }
 
 
@@ -170,13 +170,13 @@ void Company::s_bancos()
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
 /**
 **/
-void Company::s_seriesFactura()
+void BfCompany::s_seriesFactura()
 {
-    _depura ( "Company::s_seriesFactura", 0 );
+    _depura ( "BfCompany::s_seriesFactura", 0 );
     ListSerieFacturaView *lser = new ListSerieFacturaView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
-    _depura ( "END Company::s_seriesFactura", 0 );
+    _depura ( "END BfCompany::s_seriesFactura", 0 );
 }
 
 
@@ -188,20 +188,20 @@ void Company::s_seriesFactura()
 /**
 \return
 **/
-void Company::s_almacenes()
+void BfCompany::s_almacenes()
 {
-    _depura ( "Company::s_almacenes", 0 );
+    _depura ( "BfCompany::s_almacenes", 0 );
 /*
     /// Lanzamos los plugins necesarios.
-    if ( g_plugins->lanza ( "Company_s_almacenes", this ) ) {
-        _depura ( "END Company::s_almacenes", 0, "Salida por plugin" );
+    if ( g_plugins->lanza ( "BfCompany_s_almacenes", this ) ) {
+        _depura ( "END BfCompany::s_almacenes", 0, "Salida por plugin" );
         return;
     } // end if
     ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
 */
-    _depura ( "END Company::s_almacenes", 0 );
+    _depura ( "END BfCompany::s_almacenes", 0 );
 }
 
 
@@ -209,13 +209,13 @@ void Company::s_almacenes()
 */
 /**
 **/
-void Company::s_newListConfiguracionView()
+void BfCompany::s_newListConfiguracionView()
 {
-    _depura ( "Company::s_newListConfiguracionView", 0 );
+    _depura ( "BfCompany::s_newListConfiguracionView", 0 );
     ListConfiguracionView *lser = new ListConfiguracionView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
-    _depura ( "END Company::s_newListConfiguracionView", 0 );
+    _depura ( "END BfCompany::s_newListConfiguracionView", 0 );
 }
 
 
@@ -223,15 +223,15 @@ void Company::s_newListConfiguracionView()
 */
 /**
 **/
-void Company::s_TipoIVAView()
+void BfCompany::s_TipoIVAView()
 {
-    _depura ( "Company::s_TipoIVAView", 0 );
+    _depura ( "BfCompany::s_TipoIVAView", 0 );
 /*
     ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
     m_pWorkspace->addWindow ( pag );
     pag->show();
 */
-    _depura ( "END Company::s_TipoIVAView", 0 );
+    _depura ( "END BfCompany::s_TipoIVAView", 0 );
 }
 
 
@@ -239,24 +239,24 @@ void Company::s_TipoIVAView()
 */
 /**
 **/
-void Company::s_TasaIVAView()
+void BfCompany::s_TasaIVAView()
 {
-    _depura ( "Company::s_TasaIVAView", 0 );
+    _depura ( "BfCompany::s_TasaIVAView", 0 );
 /*
     ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
     m_pWorkspace->addWindow ( pag );
     pag->show();
 */
-    _depura ( "END Company::s_TasaIVAView", 0 );
+    _depura ( "END BfCompany::s_TasaIVAView", 0 );
 }
 
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 /**
 **/
-void Company::guardaConf()
+void BfCompany::guardaConf()
 {
-    _depura ( "Company::guardaConf", 0 );
+    _depura ( "BfCompany::guardaConf", 0 );
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + nameDB() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -290,7 +290,7 @@ void Company::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    _depura ( "END Company::guardaConf", 0 );
+    _depura ( "END BfCompany::guardaConf", 0 );
 }
 
 
@@ -298,9 +298,9 @@ void Company::guardaConf()
 /**
 \return
 **/
-void Company::cargaConf()
+void BfCompany::cargaConf()
 {
-    _depura ( "Company::cargaConf", 0 );
+    _depura ( "BfCompany::cargaConf", 0 );
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + nameDB() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
@@ -381,5 +381,5 @@ void Company::cargaConf()
     /// Si hay una ventana activa se pone como activa.
     if ( activewindow )
         m_bulmafact->workspace() ->setActiveWindow ( activewindow );
-    _depura ( "END Company::cargaConf", 0 );
+    _depura ( "END BfCompany::cargaConf", 0 );
 }

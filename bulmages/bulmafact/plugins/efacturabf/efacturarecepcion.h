@@ -24,14 +24,14 @@
 #include <QWidget>
 
 #include <ui_efacturarecepcionbase.h>
-#include "company.h"
+#include "bfcompany.h"
 #include "fichabf.h"
 
 class EFacturaRecepcion : public FichaBf, public Ui_EFacturaRecepcionBase
 {
     Q_OBJECT
 public:
-    EFacturaRecepcion ( Company *emp, QWidget *parent = 0 );
+    EFacturaRecepcion ( BfCompany *emp, QWidget *parent = 0 );
     ~EFacturaRecepcion();
 
 public slots:

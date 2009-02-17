@@ -35,7 +35,7 @@
 \param emp
 \param parent
 **/
-EFacturaRecepcion::EFacturaRecepcion ( Company *emp, QWidget *parent ) : FichaBf ( emp, parent )
+EFacturaRecepcion::EFacturaRecepcion ( BfCompany *emp, QWidget *parent ) : FichaBf ( emp, parent )
 {
     _depura ( "EFacturaRecepcion::EFacturaRecepcion", 0 );
     QString query;

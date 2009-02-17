@@ -34,7 +34,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -47,7 +47,7 @@ class AlmacenView : public FichaBf, public Ui_AlmacenBase
     Q_OBJECT
 
 public:
-    AlmacenView ( Company *, QWidget * );
+    AlmacenView ( BfCompany *, QWidget * );
     ~AlmacenView();
 };
 

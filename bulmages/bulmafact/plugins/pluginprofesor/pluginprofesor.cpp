@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginprofesor.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "profesorview.h"
 #include "profesoreslist.h"
@@ -69,7 +69,7 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        ProfesorView * bud = new ProfesorView((Company *)empresaBase(), NULL);
+        ProfesorView * bud = new ProfesorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
@@ -141,7 +141,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "profesor", "SELECT" ) ) {
 	g_profesoresList = new ProfesoresList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_profesoresList );
@@ -160,7 +160,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ProfesoresList *clients = new ProfesoresList ( ( Company * ) busq->empresaBase(), diag, 0, ProfesoresList::SelectMode );
+    ProfesoresList *clients = new ProfesoresList ( ( BfCompany * ) busq->empresaBase(), diag, 0, ProfesoresList::SelectMode );
     busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

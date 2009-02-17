@@ -23,7 +23,7 @@
 #define FACTURASPROVEEDORLIST_H
 
 #include "busquedaarticulo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -59,12 +59,12 @@ private:
 
 public:
     FacturasProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode  );
-    FacturasProveedorList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode  );
+    FacturasProveedorList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode  );
     ~FacturasProveedorList();
     QString idfacturap();
     QString generaFiltro();
     void presentar();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     void setidproveedor ( QString val );
     void setidarticulo ( QString val );
     void editar ( int );

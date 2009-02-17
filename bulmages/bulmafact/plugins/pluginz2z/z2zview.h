@@ -34,7 +34,7 @@
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 
@@ -45,7 +45,7 @@ class Z2ZView : public FichaBf, public Ui_Z2ZBase
     Q_OBJECT
 
 public:
-    Z2ZView ( Company *, QWidget *parent = 0 );
+    Z2ZView ( BfCompany *, QWidget *parent = 0 );
     ~Z2ZView();
     void calculaTotalTickets();
 

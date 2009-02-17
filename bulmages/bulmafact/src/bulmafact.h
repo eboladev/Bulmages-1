@@ -28,7 +28,7 @@
 #include "blmainwindow.h"
 #include "blworkspace.h"
 #include "ui_bulmafactbase.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "listventanas.h"
 
 
@@ -47,7 +47,7 @@ private:
     /// El workSpace que se va a usar con la aplicacion.
     BlWorkspace *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    Company *m_company;
+    BfCompany *m_company;
     /// El listado de ventanas abiertas que esta en forma de dock en la parte izquierda.
     ListVentanas *m_list;
 
@@ -55,7 +55,7 @@ public:
     Bulmafact ( QString bd );
     ~Bulmafact();
     BlWorkspace *workspace();
-    Company *getcompany();
+    BfCompany *getcompany();
     void createMainWindows ( BlSplashScreen * );
     QProgressBar *m_pb;
 

@@ -33,7 +33,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de Ver Cuadre de Caja.
@@ -46,7 +46,7 @@ class ZView : public FichaBf, public Ui_ZBase
     Q_OBJECT
 
 public:
-    ZView ( Company *, QWidget * );
+    ZView ( BfCompany *, QWidget * );
     ~ZView();
     int cargarPost ( QString idz );
 

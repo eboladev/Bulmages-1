@@ -21,7 +21,7 @@
 #ifndef ZLIST_H
 #define ZLIST_H
 
-#include "company.h"
+#include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 #include "bulmafact.h"
@@ -59,14 +59,14 @@ private:
     QString m_idz;
 
 public:
-    ZList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
+    ZList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~ZList();
     void presentar();
     void editar ( int );
     void borrar();
     void crear();
     QString idalmacen();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     void imprimir();
     QString generaFiltro();
     void iniciaForm();

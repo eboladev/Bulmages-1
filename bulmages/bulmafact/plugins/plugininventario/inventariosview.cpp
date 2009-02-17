@@ -23,7 +23,7 @@
 #include <QTextStream>
 
 #include "inventariosview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "inventarioview.h"
 
@@ -46,7 +46,7 @@ void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 void InventariosView::on_mui_crear_clicked()
 {
     _depura ( "InventariosView::on_mui_crear_clicked", 0 );
-    InventarioView *bud = new InventarioView ( ( Company * ) empresaBase(), 0 );
+    InventarioView *bud = new InventarioView ( ( BfCompany * ) empresaBase(), 0 );
     if ( bud->cargar ( "0" ) )
         return;
     empresaBase() ->m_pWorkspace->addWindow ( bud );
@@ -82,7 +82,7 @@ void InventariosView::presentar()
 \param comp
 \param parent
 **/
-InventariosView::InventariosView ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode )
 {
     _depura ( "InventariosView::InventariosView", 0 );
@@ -124,7 +124,7 @@ void InventariosView::on_mui_editar_clicked()
     } else {
         QString idinventario = mui_listado->DBvalue ( "idinventario" );
         if ( idinventario != "" ) {
-            InventarioView * bud = new InventarioView ( ( Company * ) empresaBase(), 0 );
+            InventarioView * bud = new InventarioView ( ( BfCompany * ) empresaBase(), 0 );
             if ( bud->cargar ( idinventario ) )
                 return;
             empresaBase() ->m_pWorkspace->addWindow ( bud );
@@ -150,7 +150,7 @@ void InventariosView::on_mui_borrar2_clicked()
     } else {
         QString idinventario = mui_listado->DBvalue ( "idinventario" );
         if ( idinventario != "" ) {
-            InventarioView * inv = new InventarioView ( ( Company * ) empresaBase(), 0 );
+            InventarioView * inv = new InventarioView ( ( BfCompany * ) empresaBase(), 0 );
             empresaBase() ->m_pWorkspace->addWindow ( inv );
             inv->cargar ( idinventario );
             /// Hacemos el borrado sin mostrar pantalla ni nada.

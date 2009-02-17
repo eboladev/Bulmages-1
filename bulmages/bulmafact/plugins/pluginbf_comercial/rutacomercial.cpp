@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 #include "rutacomercial.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 
@@ -32,7 +32,7 @@
 \param comp
 \param parent
 **/
-RutaComercial::RutaComercial ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
 
     _depura ( "RutaComercial::RutaComercial", 0 );

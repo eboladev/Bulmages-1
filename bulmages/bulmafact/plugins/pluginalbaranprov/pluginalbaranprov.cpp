@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginalbaranprov.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "albaranproveedorview.h"
 #include "albaranesproveedor.h"
@@ -69,7 +69,7 @@ void mypluginalbp::elslot()
 void mypluginalbp::elslot1()
 {
     _depura ( "mypluginalbp::elslot1", 0 );
-        AlbaranProveedorView * bud = new AlbaranProveedorView((Company *)empresaBase(), NULL);
+        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginalbp::elslot1", 0 );
@@ -134,7 +134,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "albaranp", "SELECT" ) ) {
 	g_albaranesProveedor = new AlbaranesProveedor( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_albaranesProveedor );
@@ -146,7 +146,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "albaranp", "SELECT" ) ) {
-	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	albaranesProveedor->setModoEdicion();
 	albaranesProveedor->setObjectName("listalbaranesproveedor");
 	albaranesProveedor->hideBusqueda();
@@ -169,7 +169,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * bud = new AlbaranProveedorView((Company *)ref->empresaBase(), NULL);
+        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaranp" ) );
         bud->show();
@@ -208,7 +208,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewAlbaranProveedorView (Company *v)
+int SNewAlbaranProveedorView (BfCompany *v)
 {
 	AlbaranProveedorView *h = new AlbaranProveedorView(v, 0);
 	g_plugParams = h;

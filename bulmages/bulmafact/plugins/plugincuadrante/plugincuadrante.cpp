@@ -30,7 +30,7 @@
 #include <QLocale>
 
 #include "plugincuadrante.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "cuadranteview.h"
 #include "cuadrantediarioview.h"
@@ -62,7 +62,7 @@ myplugin4::~myplugin4()
 void myplugin4::elslot()
 {
     _depura ( "myplugin4::elslot", 0 );
-    CuadranteView *cuad = new CuadranteView ( ( Company * ) empresaBase(), 0 );
+    CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     _depura ( "END myplugin4::elslot", 0 );
@@ -75,7 +75,7 @@ void myplugin4::elslot()
 void myplugin4::elslot1()
 {
     _depura ( "myplugin4::elslot1", 0 );
-    CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( Company * ) empresaBase(), 0 );
+    CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     _depura ( "END myplugin4::elslot1", 0 );

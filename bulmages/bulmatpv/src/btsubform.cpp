@@ -321,19 +321,19 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         /*
             } else if (linea->nomcampo() == "codigocompletoarticulo") {
                 BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
-                editor->setMainCompany((Company *)m_subform->empresaBase());
+                editor->setMainCompany((BfCompany *)m_subform->empresaBase());
                 return editor;
             } else if (linea->nomcampo() == "desctipo_iva") {
                 BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
-                editor->setMainCompany((Company *)m_subform->empresaBase());
+                editor->setMainCompany((BfCompany *)m_subform->empresaBase());
                 return editor;
             } else if (linea->nomcampo() == "nomtrabajador") {
                 BusquedaTrabajadorDelegate *editor = new BusquedaTrabajadorDelegate(parent);
-                editor->setMainCompany((Company *)m_subform->empresaBase());
+                editor->setMainCompany((BfCompany *)m_subform->empresaBase());
                 return editor;
             } else if (linea->nomcampo() == "nomalmacen") {
                 BusquedaAlmacenDelegate *editor = new BusquedaAlmacenDelegate(parent);
-                editor->setMainCompany((Company *)m_subform->empresaBase());
+                editor->setMainCompany((BfCompany *)m_subform->empresaBase());
                 return editor;
             } else  {
         //        QWidget *it = QItemDelegate::createEditor(parent, option, index);

@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_proveedor.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "provedit.h"
 #include "providerslist.h"
@@ -69,7 +69,7 @@ void MyPlugPro::elslot()
 void MyPlugPro::elslot1()
 {
     _depura ( "MyPlugPro::elslot1", 0 );
-        ProveedorView * bud = new ProveedorView((Company *)empresaBase(), NULL);
+        ProveedorView * bud = new ProveedorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugPro::elslot1", 0 );
@@ -134,7 +134,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "proveedor", "SELECT" ) ) {
 	g_providersList = new ProveedorList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_providersList );
@@ -153,7 +153,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ProveedorList *clients = new ProveedorList ( ( Company * ) busq->empresaBase(), diag, 0, ProveedorList::SelectMode );
+    ProveedorList *clients = new ProveedorList ( ( BfCompany * ) busq->empresaBase(), diag, 0, ProveedorList::SelectMode );
     busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -181,7 +181,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewProveedorView (Company *v)
+int SNewProveedorView (BfCompany *v)
 {
 	ProveedorView *h = new ProveedorView(v, 0);
 	g_plugParams = h;

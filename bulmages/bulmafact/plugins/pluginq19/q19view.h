@@ -35,7 +35,7 @@
 #include "facturaslist.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -49,7 +49,7 @@ class Q19View : public FichaBf, public Ui_Q19Base
 
 public:
     FacturasList *m_facturasList;
-    Q19View ( FacturasList *,  Company *, QWidget * );
+    Q19View ( FacturasList *,  BfCompany *, QWidget * );
     ~Q19View();
     QByteArray cobroQ19 ( QTextStream &, QString );
     QByteArray cabeceraPresentador ( QTextStream &, QString );

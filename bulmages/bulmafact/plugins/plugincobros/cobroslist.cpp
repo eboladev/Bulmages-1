@@ -27,7 +27,7 @@
 
 #include "blconfiguration.h"
 #include "cobroslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "cobroview.h"
 #include "blfunctions.h"
 
@@ -61,7 +61,7 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-CobrosList::CobrosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "CobrosList::CobrosList", 0 );
@@ -164,7 +164,7 @@ QString CobrosList::generaFiltro()
 void CobrosList::crear()
 {
     _depura ( "CobrosList::crear", 0 );
-    CobroView *bud = new CobroView( (Company *) empresaBase(), 0);
+    CobroView *bud = new CobroView( (BfCompany *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDBvalue ( "idcliente", m_cliente->id() );
@@ -200,7 +200,7 @@ void CobrosList::borrar()
     try {
         mdb_idcobro = mui_list->DBvalue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * cv = new CobroView( (Company *) empresaBase(), 0);
+            CobroView * cv = new CobroView( (BfCompany *) empresaBase(), 0);
             if ( cv->cargar ( mdb_idcobro ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -224,7 +224,7 @@ void CobrosList::editar ( int )
     try {
         mdb_idcobro = mui_list->DBvalue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * bud = new CobroView( (Company *) empresaBase(), 0);
+            CobroView * bud = new CobroView( (BfCompany *) empresaBase(), 0);
             if ( bud->cargar ( mdb_idcobro ) ) {
                 delete bud;
                 return;
@@ -264,7 +264,7 @@ void CobrosList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void CobrosList::setMainCompany ( Company *comp )
+void CobrosList::setMainCompany ( BfCompany *comp )
 {
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );

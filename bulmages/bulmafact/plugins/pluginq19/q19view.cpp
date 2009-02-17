@@ -25,7 +25,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -36,7 +36,7 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-Q19View::Q19View ( FacturasList *fac, Company *comp, QWidget *parent )
+Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "Q19View::Q19View", 0 );
@@ -87,7 +87,7 @@ Q19View::~Q19View()
 {
     _depura ( "Q19View::~Q19View", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
-    // ((Company *)empresaBase())->refreshCobrosCliente();
+    // ((BfCompany *)empresaBase())->refreshCobrosCliente();
     _depura ( "END Q19View::~Q19View", 0 );
 }
 

@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_cliente.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "clienteview.h"
 #include "clientslist.h"
@@ -69,7 +69,7 @@ void MyPlugCli::elslot()
 void MyPlugCli::elslot1()
 {
     _depura ( "MyPlugCli::elslot1", 0 );
-        ClienteView * bud = new ClienteView((Company *)empresaBase(), NULL);
+        ClienteView * bud = new ClienteView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugCli::elslot1", 0 );
@@ -139,7 +139,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "cliente", "SELECT" ) ) {
 	g_clientesList = new ClientsList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_clientesList );
@@ -158,7 +158,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ClientsList *clients = new ClientsList ( ( Company * ) busq->empresaBase(), diag, 0, ClientsList::SelectMode );
+    ClientsList *clients = new ClientsList ( ( BfCompany * ) busq->empresaBase(), diag, 0, ClientsList::SelectMode );
     busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -186,7 +186,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewClienteView (Company *v)
+int SNewClienteView (BfCompany *v)
 {
 	ClienteView *h = new ClienteView(v, 0);
 	g_plugParams = h;

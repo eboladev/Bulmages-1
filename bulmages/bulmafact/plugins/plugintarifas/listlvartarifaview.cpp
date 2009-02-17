@@ -27,7 +27,7 @@
 #include <QObject>
 
 #include "listlvartarifaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "busquedaalmacen.h"
 #include "busquedatarifa.h"
@@ -75,11 +75,11 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 
     if ( linea->nomcampo() == "nomtarifa" ) {
         BusquedaTarifa *editor = new BusquedaTarifa ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         BusquedaAlmacen *editor = new BusquedaAlmacen ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         return editor;
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"

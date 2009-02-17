@@ -22,7 +22,7 @@
 
 #include "pluginpresupuesto.h"
 #include "plugins.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "presupuestoview.h"
 #include "presupuestolist.h"
@@ -71,7 +71,7 @@ void mypluginpres::elslot()
 void mypluginpres::elslot1()
 {
     _depura ( "mypluginpres::elslot1", 0 );
-        PresupuestoView * bud = new PresupuestoView((Company *)empresaBase(), NULL);
+        PresupuestoView * bud = new PresupuestoView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginpres::elslot1", 0 );
@@ -138,7 +138,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "presupuesto", "SELECT" ) ) {
 	g_presupuestosList = new PresupuestoList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_presupuestosList );
@@ -150,7 +150,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "presupuesto", "SELECT" ) ) {
-	PresupuestoList *presupuestosList = new PresupuestoList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	PresupuestoList *presupuestosList = new PresupuestoList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	presupuestosList->setModoEdicion();
 	presupuestosList->setObjectName("listpresupuestos");
 	presupuestosList->hideBusqueda();
@@ -173,7 +173,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PresupuestoView * bud = new PresupuestoView((Company *)ref->empresaBase(), NULL);
+        PresupuestoView * bud = new PresupuestoView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpresupuesto" ) );
         bud->show();
@@ -217,7 +217,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewPresupuestoView (Company *v)
+int SNewPresupuestoView (BfCompany *v)
 {
 	PresupuestoView *h = new PresupuestoView(v, 0);
 	g_plugParams = h;

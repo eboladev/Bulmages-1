@@ -23,7 +23,7 @@
 #define LISTDESCALBARANCLIENTEVIEW_H
 
 #include "bfsubform.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.

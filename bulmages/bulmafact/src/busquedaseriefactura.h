@@ -23,7 +23,7 @@
 #define BUSQUEDASERIEFACTURA_H
 
 #include "blcombobox.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
 
@@ -45,7 +45,7 @@ private:
 public:
     BusquedaSerieFactura ( QWidget *parent = 0 );
     ~BusquedaSerieFactura();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     QString id();
     virtual void setId ( QString );
     void m_activated ( int index );

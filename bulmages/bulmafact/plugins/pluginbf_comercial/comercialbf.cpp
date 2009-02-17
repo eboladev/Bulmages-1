@@ -28,7 +28,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "myplugin.h"
 #include "comercialbf.h"
 #include "comercialclienteview.h"

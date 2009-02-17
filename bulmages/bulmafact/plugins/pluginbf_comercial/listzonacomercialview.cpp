@@ -29,7 +29,7 @@
 #include <fstream>
 
 #include "listzonacomercialview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -40,7 +40,7 @@
 \param comp
 \param parent
 **/
-ListZonaComercialView::ListZonaComercialView ( Company *comp, QWidget *parent )
+ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "INIT_ListZonaComercialView::ListZonaComercialView", 0 );

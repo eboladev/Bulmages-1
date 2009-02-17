@@ -26,7 +26,7 @@
 #include <QTextStream>
 
 #include "almacenview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 #include "blfunctions.h"
@@ -40,7 +40,7 @@
 \param comp
 \param parent
 **/
-AlmacenView::AlmacenView ( Company *comp, QWidget *parent )
+AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "AlmacenView::AlmacenView", 0 );

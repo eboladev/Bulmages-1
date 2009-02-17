@@ -31,7 +31,7 @@
 #include "ui_albaranclientebase.h"
 
 
-class Company;
+class BfCompany;
 
 
 
@@ -48,7 +48,7 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost ( QString );
-    AlbaranClienteView ( Company *, QWidget * );
+    AlbaranClienteView ( BfCompany *, QWidget * );
     ~AlbaranClienteView();
     void inicializar();
 

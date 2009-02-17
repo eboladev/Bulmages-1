@@ -163,7 +163,7 @@ void correctorwidget::alink ( const QUrl &url )
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
 		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewClienteView", (Company *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewClienteView", (BfCompany *) empresaBase() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de cliente");
 			return;
@@ -173,11 +173,11 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( Company * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idfactura" ) {
 		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewFacturaView", (Company *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) empresaBase() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de factura");
 			return;
@@ -187,11 +187,11 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( Company * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idproveedor" ) {
 		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewProveedorView", (Company *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewProveedorView", (BfCompany *) empresaBase() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de cliente");
 			return;
@@ -201,7 +201,7 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( Company * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     }// end if
     _depura ( "END correctorwidget::alinke", 0 );

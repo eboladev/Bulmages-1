@@ -38,7 +38,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
@@ -51,7 +51,7 @@ private:
     BlDbRecordSet *m_cursorcombo;
 
 public:
-    PresupuestoView ( Company *, QWidget * );
+    PresupuestoView ( BfCompany *, QWidget * );
     ~PresupuestoView();
     virtual int cargarPost ( QString );
     virtual int guardarPost();

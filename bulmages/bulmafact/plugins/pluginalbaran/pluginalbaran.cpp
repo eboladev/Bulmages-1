@@ -22,7 +22,7 @@
 
 #include "pluginalbaran.h"
 #include "plugins.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "albaranclienteview.h"
 #include "albaranclientelist.h"
@@ -71,7 +71,7 @@ void mypluginalb::elslot()
 void mypluginalb::elslot1()
 {
     _depura ( "mypluginalb::elslot1", 0 );
-        AlbaranClienteView * bud = new AlbaranClienteView((Company *)empresaBase(), NULL);
+        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginalb::elslot1", 0 );
@@ -137,7 +137,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "albaran", "SELECT" ) ) {
 	g_albaranClienteList = new AlbaranClienteList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_albaranClienteList );
@@ -149,7 +149,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "albaran", "SELECT" ) ) {
-	AlbaranClienteList *albaranesList = new AlbaranClienteList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	albaranesList->setModoEdicion();
 	albaranesList->setObjectName("listalbaranes");
 	albaranesList->hideBusqueda();
@@ -172,7 +172,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranClienteView * bud = new AlbaranClienteView((Company *)ref->empresaBase(), NULL);
+        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
@@ -239,7 +239,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewAlbaranClienteView (Company *v)
+int SNewAlbaranClienteView (BfCompany *v)
 {
 	AlbaranClienteView *h = new AlbaranClienteView(v, 0);
 	g_plugParams = h;

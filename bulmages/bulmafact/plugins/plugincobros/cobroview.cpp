@@ -26,7 +26,7 @@
 #include <QTextStream>
 
 #include "cobroview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -36,7 +36,7 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-CobroView::CobroView ( Company *comp, QWidget *parent )
+CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "CobroView::CobroView", 0 );

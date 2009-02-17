@@ -42,7 +42,7 @@ class FacturaProveedorView : public FichaBf, public Ui_FacturaProveedorBase
     Q_OBJECT
 
 public:
-    FacturaProveedorView ( Company *, QWidget *parent = 0 );
+    FacturaProveedorView ( BfCompany *, QWidget *parent = 0 );
     virtual ~FacturaProveedorView();
     void inicializar();
 

@@ -26,7 +26,7 @@
 #include <QTextStream>
 
 #include "cuadrante1view.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 #include "blfunctions.h"
@@ -40,7 +40,7 @@
 \param comp
 \param parent
 **/
-Cuadrante1View::Cuadrante1View ( Company *comp, QWidget *parent )
+Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "Cuadrante1View::Cuadrante1View", 0 );

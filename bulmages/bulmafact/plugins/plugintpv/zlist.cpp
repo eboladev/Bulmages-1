@@ -26,7 +26,7 @@
 
 #include "zlist.h"
 #include "zview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 
@@ -38,7 +38,7 @@
 \param flag
 \return
 **/
-ZList::ZList ( Company *comp, QWidget *parent, Qt::WFlags flag )
+ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
         : BlFormList ( comp, parent, flag )
 {
     _depura ( "ZList::ZList(2)", 0 );
@@ -101,7 +101,7 @@ QString ZList::idalmacen()
 /**
 \param comp
 **/
-void ZList::setMainCompany ( Company *comp )
+void ZList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "ZList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -117,7 +117,7 @@ void ZList::crear()
 {
     _depura ( "ZList::crear", 0 );
     /*
-        ZView *alm = new ZView((Company *)empresaBase(), 0);
+        ZView *alm = new ZView((BfCompany *)empresaBase(), 0);
         empresaBase()->pWorkspace()->addWindow(alm);
         alm->show();
     */
@@ -166,7 +166,7 @@ void ZList::editar ( int row )
         m_idz = mui_list->DBvalue ( QString ( "idz" ), row );
 
         if ( modoEdicion() ) {
-            ZView * alm = new ZView ( ( Company * ) empresaBase(), 0 );
+            ZView * alm = new ZView ( ( BfCompany * ) empresaBase(), 0 );
             empresaBase() ->pWorkspace() ->addWindow ( alm );
             alm->show();
             alm->cargar ( m_idz );
@@ -208,7 +208,7 @@ void ZList::borrar()
         try {
             m_idz = mui_list->DBvalue(QString("idalmacen"));
             if (modoEdicion()) {
-                ZView *alm = new ZView((Company *)empresaBase(), 0);
+                ZView *alm = new ZView((BfCompany *)empresaBase(), 0);
                 empresaBase()->pWorkspace()->addWindow(alm);
     //            alm->show();
                 alm->cargar(m_idz);

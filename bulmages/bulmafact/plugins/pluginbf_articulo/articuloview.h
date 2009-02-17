@@ -27,7 +27,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Esta clase controla la ventana de un articulo.
@@ -45,7 +45,7 @@ private:
     BlDbRecordSet *m_cursorcombo;
 
 public:
-    ArticuloView ( Company *emp, QWidget *parent = 0 );
+    ArticuloView ( BfCompany *emp, QWidget *parent = 0 );
     ~ArticuloView();
 
 public:

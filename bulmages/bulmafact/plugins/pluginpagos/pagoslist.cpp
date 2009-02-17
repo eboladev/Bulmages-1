@@ -26,7 +26,7 @@
 #include <QTextStream>
 
 #include "pagoslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "pagoview.h"
 #include "qtable2.h"
 #include "blfunctions.h"
@@ -61,7 +61,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
 \param parent
 \param flag
 **/
-PagosList::PagosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PagosList::PagosList", 0 );
@@ -157,7 +157,7 @@ void PagosList::editar ( int )
 {
     mdb_idpago = mui_list->DBvalue ( "idpago" );
     if ( modoEdicion() && mdb_idpago != "" ) {
-        PagoView *bud = new PagoView( ( Company * ) empresaBase(), 0 );
+        PagoView *bud = new PagoView( ( BfCompany * ) empresaBase(), 0 );
         if ( bud->cargar ( mdb_idpago ) ) {
             delete bud;
             return;
@@ -173,7 +173,7 @@ void PagosList::editar ( int )
 void PagosList::crear()
 {
     _depura ( "PagosList::crear", 0 );
-    PagoView *bud = new PagoView( ( Company * ) empresaBase(), 0 );
+    PagoView *bud = new PagoView( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDBvalue ( "idproveedor", m_proveedor->id() );
@@ -200,7 +200,7 @@ void PagosList::borrar()
     try {
         mdb_idpago = mui_list->DBvalue ( "idpago" );
         if ( modoEdicion() && mdb_idpago != "" ) {
-            PagoView * bud = new PagoView ( ( Company * ) empresaBase(), NULL );
+            PagoView * bud = new PagoView ( ( BfCompany * ) empresaBase(), NULL );
             bud->cargar ( mdb_idpago );
             bud->borrar();
         } // end if
@@ -211,7 +211,7 @@ void PagosList::borrar()
     _depura ( "END PagosList::borrar", 0 );
 }
 
-void PagosList::setMainCompany ( Company *comp )
+void PagosList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "PagosList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

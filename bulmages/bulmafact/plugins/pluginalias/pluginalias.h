@@ -30,7 +30,7 @@
 #include <QApplication>
 #include <QObject>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "bulmafact.h"
 #include "articuloview.h"
 #include "busqueda.h"

@@ -25,7 +25,7 @@
 #include <QString>
 
 
-class Company;
+class BfCompany;
 
 /// Genera un informe utilizando un identificador de cliente.
 /** */
@@ -33,10 +33,10 @@ class InformeCliente
 {
 private:
     QString m_idcliente;
-    Company* companyact;
+    BfCompany* companyact;
 
 public:
-    InformeCliente ( Company * );
+    InformeCliente ( BfCompany * );
     ~InformeCliente();
     void setCliente ( QString );
     void generarInforme();

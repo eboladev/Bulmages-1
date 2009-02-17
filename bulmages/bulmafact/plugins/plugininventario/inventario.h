@@ -26,7 +26,7 @@
 #include <QString>
 
 #include "listcontrolstockview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "fichabf.h"
 
@@ -37,10 +37,10 @@ class Inventario : public FichaBf
 {
 protected:
     ListControlStockView *listalineas;
-    Company *companyact;
+    BfCompany *companyact;
 
 public:
-    Inventario ( Company *comp, QWidget *parent );
+    Inventario ( BfCompany *comp, QWidget *parent );
     virtual ~Inventario();
     void setListControlStock ( ListControlStockView *a );
     ListControlStockView *getlistalineas();

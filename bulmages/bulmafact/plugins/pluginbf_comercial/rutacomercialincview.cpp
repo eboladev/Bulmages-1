@@ -31,7 +31,7 @@
 #include <QCloseEvent>
 
 #include "rutacomercialincview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -44,7 +44,7 @@
 \param comp
 \param parent
 **/
-RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
+RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "RutaComercialIncView::RutaComercialIncView", 0 );

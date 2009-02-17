@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -56,10 +56,10 @@ private:
 
 public:
     PagosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    PagosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    PagosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~PagosList();
     void presentar();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     QString idpago();
     void imprimir();
     void setidproveedor ( QString val );

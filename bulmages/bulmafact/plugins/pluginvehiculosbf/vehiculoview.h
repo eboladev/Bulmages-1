@@ -36,7 +36,7 @@ class VehiculoView : public FichaBf, Ui_VehiculoBase
     Q_OBJECT
 
 public:
-    VehiculoView ( Company *, QWidget *parent = 0 );
+    VehiculoView ( BfCompany *, QWidget *parent = 0 );
     ~VehiculoView();
     virtual int cargar ( QString idvehiculo );
     virtual int guardar();

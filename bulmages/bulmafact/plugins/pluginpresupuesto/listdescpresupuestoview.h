@@ -23,7 +23,7 @@
 #define LISTDESCPRESUPUESTOVIEW_H
 
 #include "bfsubform.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /// Muestra y administra la ventana con la lista de descuentos por presupuesto.

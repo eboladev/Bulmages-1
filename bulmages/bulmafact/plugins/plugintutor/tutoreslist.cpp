@@ -27,7 +27,7 @@
 
 #include "blconfiguration.h"
 #include "tutoreslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "tutorview.h"
 #include "blfunctions.h"
 
@@ -57,7 +57,7 @@ TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-TutoresList::TutoresList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "TutoresList::TutoresList", 0 );
@@ -128,7 +128,7 @@ QString TutoresList::generaFiltro()
 void TutoresList::crear()
 {
     _depura ( "TutoresList::crear", 0 );
-    TutorView *bud = new TutorView( (Company *) empresaBase(), 0);
+    TutorView *bud = new TutorView( (BfCompany *) empresaBase(), 0);
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -163,7 +163,7 @@ void TutoresList::borrar()
     try {
         mdb_idtutor = mui_list->DBvalue ( "idtutor" );
         if ( modoEdicion() ) {
-            TutorView * cv = new TutorView( (Company *) empresaBase(), 0);
+            TutorView * cv = new TutorView( (BfCompany *) empresaBase(), 0);
             if ( cv->cargar ( mdb_idtutor ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,7 +187,7 @@ void TutoresList::editar ( int )
     try {
         mdb_idtutor = mui_list->DBvalue ( "idtutor" );
         if ( modoEdicion() ) {
-            TutorView * bud = new TutorView( (Company *) empresaBase(), 0);
+            TutorView * bud = new TutorView( (BfCompany *) empresaBase(), 0);
             if ( bud->cargar ( mdb_idtutor ) ) {
                 delete bud;
                 return;
@@ -227,7 +227,7 @@ void TutoresList::submenu ( const QPoint & )
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void TutoresList::setMainCompany ( Company *comp )
+void TutoresList::setMainCompany ( BfCompany *comp )
 {
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );

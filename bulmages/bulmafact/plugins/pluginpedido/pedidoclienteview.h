@@ -47,7 +47,7 @@ class PedidoClienteView : public FichaBf, public Ui_PedidoClienteBase
     Q_OBJECT
 
 public:
-    PedidoClienteView ( Company *, QWidget *parent = 0 );
+    PedidoClienteView ( BfCompany *, QWidget *parent = 0 );
     ~PedidoClienteView();
     virtual int cargarPost ( QString );
     virtual int guardarPost();

@@ -39,9 +39,9 @@ private:
     BlDbRecordSet *m_cursorcombo;
 
 public:
-    TarifaView ( Company *emp, QWidget *parent = 0 );
+    TarifaView ( BfCompany *emp, QWidget *parent = 0 );
     ~TarifaView();
-    Company *companyact();
+    BfCompany *companyact();
 
 public:
     void pintar();

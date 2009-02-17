@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>

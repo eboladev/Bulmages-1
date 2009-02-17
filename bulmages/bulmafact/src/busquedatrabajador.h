@@ -23,7 +23,7 @@
 #define BUSQUEDATRABAJADOR_H
 
 #include "blcombobox.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
 #include "blwidget.h"

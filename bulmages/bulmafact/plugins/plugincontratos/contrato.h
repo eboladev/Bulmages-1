@@ -24,7 +24,7 @@
 #include <QString>
 
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 #include "fichabf.h"
 
@@ -37,12 +37,12 @@ class Contrato : public FichaBf
     Q_OBJECT
 
 public:
-    Contrato ( Company *, QWidget *parent );
+    Contrato ( BfCompany *, QWidget *parent );
     virtual ~Contrato();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
 
-    Company *_company();
+    BfCompany *_company();
     virtual int cargar ( QString );
     void pintar();
     virtual int guardar();

@@ -29,7 +29,7 @@
 
 #include "cuadranteview.h"
 #include "cuadrante1view.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "plugins.h"
 #include "blfunctions.h"
@@ -44,7 +44,7 @@
 \param comp
 \param parent
 **/
-CuadranteView::CuadranteView ( Company *comp, QWidget *parent )
+CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "CuadranteView::CuadranteView", 0 );

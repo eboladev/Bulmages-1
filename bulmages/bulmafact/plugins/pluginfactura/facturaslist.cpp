@@ -24,7 +24,7 @@
 
 #include "busquedaarticulo.h"
 #include "busquedafecha.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "facturaslist.h"
 #include "facturaview.h"
@@ -71,7 +71,7 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 \param flag
 \param editmodo
 **/
-FacturasList::FacturasList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "FacturasList::FacturasList", 0 );
@@ -214,7 +214,7 @@ void FacturasList::editar ( int row )
     _depura ( "FacturasList::editar", 0 );
     mdb_idfactura = mui_list->DBvalue ( QString ( "idfactura" ), row );
     if ( modoEdicion() ) {
-        FacturaView * prov = new FacturaView( ( Company * ) empresaBase(), 0);
+        FacturaView * prov = new FacturaView( ( BfCompany * ) empresaBase(), 0);
         if ( prov->cargar ( mdb_idfactura ) ) {
             delete prov;
             return;
@@ -262,7 +262,7 @@ void FacturasList::borrar()
     try {
         mdb_idfactura = mui_list->DBvalue ( QString ( "idfactura" ) );
         if ( modoEdicion() ) {
-            FacturaView * fv = new FacturaView(( Company * ) empresaBase() );
+            FacturaView * fv = new FacturaView(( BfCompany * ) empresaBase() );
             if ( fv->cargar ( mdb_idfactura ) )
                 throw - 1;
             fv->on_mui_borrar_clicked();
@@ -280,7 +280,7 @@ void FacturasList::borrar()
 /**
 \param comp
 **/
-void FacturasList::setMainCompany ( Company *comp )
+void FacturasList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "FacturasList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -333,7 +333,7 @@ void FacturasList::setidarticulo ( QString val )
 void FacturasList::crear()
 {
     _depura ( "FacturasList::crear", 0 );
-    FacturaView * bud = new FacturaView((Company *)empresaBase(), 0);
+    FacturaView * bud = new FacturaView((BfCompany *)empresaBase(), 0);
     empresaBase()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();

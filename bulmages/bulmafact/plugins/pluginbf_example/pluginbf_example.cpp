@@ -28,7 +28,7 @@
 #include <cstdio>
 
 #include "pluginbf_example.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 

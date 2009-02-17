@@ -21,7 +21,7 @@
 #ifndef COMERCIALCLIENTEVIEW_H
 #define COMERCIALCLIENTEVIEW_H
 
-#include "company.h"
+#include "bfcompany.h"
 #include "ui_comercialclientebase.h"
 #include "fichabf.h"
 
@@ -30,7 +30,7 @@ class ComercialClienteView : public FichaBf, public Ui_ComercialClienteBase
     Q_OBJECT
 
 public:
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     ComercialClienteView ( QWidget *parent = 0 );
     ~ComercialClienteView();
 };

@@ -32,7 +32,7 @@
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
 #include "clientslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "facturaview.h"
 #include "blfunctions.h"
 #include "informereferencia.h"
@@ -48,7 +48,7 @@
 \param comp
 \param parent
 **/
-FacturaView::FacturaView ( Company *comp, QWidget *parent )
+FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "FacturaView::FacturaView", 0 );

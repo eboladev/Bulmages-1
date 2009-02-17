@@ -25,7 +25,7 @@
 #include <QTextStream>
 
 #include "familiasview.h"
-#include "company.h"
+#include "bfcompany.h"
 
 #define COL_NOMFAMILIA            0
 #define COL_CODCOMPLETOFAMILIA    1
@@ -41,7 +41,7 @@
 \param parent
 \param modoConsulta
 **/
-FamiliasView::FamiliasView ( Company *comp, QWidget *parent, bool modoConsulta )
+FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta )
         : FichaBf ( comp, parent )
 {
     _depura ( "FamiliasView::FamiliasView", 0 );

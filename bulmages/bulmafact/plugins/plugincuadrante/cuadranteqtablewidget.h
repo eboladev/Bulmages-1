@@ -32,7 +32,7 @@
 #include "blwidget.h"
 
 
-class Company;
+class BfCompany;
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
 class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public BlMainCompanyPointer
@@ -46,7 +46,7 @@ public:
     QAction *m_accion;
 
 public:
-    CuadranteQTextDocument ( Company *emp, QWidget *parent = 0 );
+    CuadranteQTextDocument ( BfCompany *emp, QWidget *parent = 0 );
     virtual void setAlmFecha ( QString idalmacen, const QDate &date );
     ~CuadranteQTextDocument();
     void addTrabajador ( QString );
@@ -98,7 +98,7 @@ public:
     QString m_html;
 
 public:
-    ImpCuadrante ( Company *emp );
+    ImpCuadrante ( BfCompany *emp );
     ~ImpCuadrante();
     void generar();
     bool buscaConflictos ( QString idtrabajador, const QDate &date, QString horain, QString horafin );

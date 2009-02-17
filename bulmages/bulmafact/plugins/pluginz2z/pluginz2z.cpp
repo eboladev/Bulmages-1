@@ -31,11 +31,11 @@
 #include "pluginz2z.h"
 #include "blconfiguration.h"
 #include "bulmafact.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "z2zview.h"
 
 
-Company *g_bges;
+BfCompany *g_bges;
 
 
 ///

@@ -29,7 +29,7 @@
 #include <fstream>
 
 #include "facturaview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "contrato.h"
 #include "contratoview.h"
 #include "blfunctions.h"
@@ -43,7 +43,7 @@
 \param parent
 \return
 **/
-ContratoView::ContratoView ( Company *comp, QWidget *parent )
+ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         : Contrato ( comp, parent )
 {
     _depura ( "ContratoView::ContratoView", 0 );
@@ -276,7 +276,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 {
     _depura ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
     QString idfactura = subform2->DBvalue ( QString ( "idfactura" ), subform2->currentRow() );
-    FacturaView *prov = new FacturaView( (Company *) empresaBase(), 0);
+    FacturaView *prov = new FacturaView( (BfCompany *) empresaBase(), 0);
     if ( prov->cargar ( idfactura ) ) {
         delete prov;
         return;
@@ -313,7 +313,7 @@ void ContratoView::on_mui_facturar_clicked()
             } // end if
         } else {
             // GENERAMOS LA FACTURA
-            FacturaView *fac = new FacturaView( (Company *) empresaBase(), 0);
+            FacturaView *fac = new FacturaView( (BfCompany *) empresaBase(), 0);
             empresaBase() ->m_pWorkspace->addWindow ( fac );
             fac->cargar ( "0" );
             fac->show();

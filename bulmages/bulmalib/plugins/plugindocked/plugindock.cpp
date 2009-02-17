@@ -153,7 +153,7 @@ void entryPoint ( BlMainWindow *bges )
 
 
 
-int Company_createMainWindows_Post ( Company *cmp )
+int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
     g_emp = cmp;
     return 0;

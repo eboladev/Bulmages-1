@@ -48,7 +48,7 @@ class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase
     Q_OBJECT
 
 public:
-    PedidoProveedorView ( Company *, QWidget *parent = 0 );
+    PedidoProveedorView ( BfCompany *, QWidget *parent = 0 );
     ~PedidoProveedorView();
     void inicialize();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );

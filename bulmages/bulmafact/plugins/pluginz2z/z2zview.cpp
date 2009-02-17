@@ -31,7 +31,7 @@
 #include <fstream>
 
 #include "z2zview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 
@@ -43,7 +43,7 @@
 \param comp
 \param parent
 **/
-Z2ZView::Z2ZView ( Company *comp, QWidget *parent )
+Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "Z2ZView::Z2ZView", 0 );

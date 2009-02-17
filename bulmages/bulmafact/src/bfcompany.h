@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COMPANY_H
-#define COMPANY_H
+#ifndef BFCOMPANY_H
+#define BFCOMPANY_H
 
 #include <QObject>
 #include <QAssistantClient>
@@ -41,15 +41,15 @@ class Bulmafact;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class Company : public BlMainCompany
+class BfCompany : public BlMainCompany
 {
 private:
     /// Puntero al mainWindow
     Bulmafact *m_bulmafact;
 
 public:
-    Company ( Bulmafact *bges );
-    virtual ~Company();
+    BfCompany ( Bulmafact *bges );
+    virtual ~BfCompany();
     void createMainWindows ( BlSplashScreen * );
     void s_FPago();
     void s_Familias();

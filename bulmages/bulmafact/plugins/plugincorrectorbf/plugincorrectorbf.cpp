@@ -31,7 +31,7 @@
 
 #include "plugincorrectorbf.h"
 #include "correctorwidget.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldockwidget.h"
 
 

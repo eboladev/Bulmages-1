@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_banco.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bancoview.h"
 
@@ -54,7 +54,7 @@ MyPlugBanc::~MyPlugBanc()
 void MyPlugBanc::elslot1()
 {
     _depura ( "MyPlugBanc::elslot1", 0 );
-        BancoView * bud = new BancoView((Company *)empresaBase(), NULL);
+        BancoView * bud = new BancoView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugBanc::elslot1", 0 );
@@ -117,7 +117,7 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewBancoView (Company *v)
+int SNewBancoView (BfCompany *v)
 {
 	BancoView *h = new BancoView(v, 0);
 	g_plugParams = h;

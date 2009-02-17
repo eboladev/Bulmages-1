@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "plugininventario.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "inventariosview.h"
 
@@ -52,7 +52,7 @@ myplugininv::~myplugininv()
 void myplugininv::elslot()
 {
     _depura ( "myplugininv::elslot", 0 );
-    InventariosView *tar = new InventariosView ( ( Company * ) empresaBase(), NULL );
+    InventariosView *tar = new InventariosView ( ( BfCompany * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->show();
     _depura ( "END myplugininv::elslot", 0 );

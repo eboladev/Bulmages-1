@@ -36,7 +36,7 @@
 #include "presupuestoview.h"
 #include "facturaslist.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -169,7 +169,7 @@ void GenAlbQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new AlbaranClienteView((Company *) fpv->empresaBase(), 0);
+        bud = new AlbaranClienteView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -298,7 +298,7 @@ void GenAlbQToolButton::generarFactura2()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new AlbaranClienteView((Company *) fpv->empresaBase(), 0);
+        bud = new AlbaranClienteView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 

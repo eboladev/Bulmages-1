@@ -28,7 +28,7 @@
 #include <QObject>
 
 #include "plugin_tc_articulos.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugarticulos.h"
 #include "busquedacolor.h"
@@ -178,11 +178,11 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 
     if ( linea->nomcampo() == "nomtc_color" ) {
         BusquedaColorDelegate * editor = new BusquedaColorDelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         return editor;
     } else if ( linea->nomcampo() == "nomtc_talla" ) {
         BusquedaTallaDelegate * editor = new BusquedaTallaDelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         return editor;
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );

@@ -49,7 +49,7 @@ private:
     virtual void imprimir();
 
 public:
-    BancoView ( Company * emp, QWidget *parent = 0 );
+    BancoView ( BfCompany * emp, QWidget *parent = 0 );
     ~BancoView();
     bool trataModificado();
     virtual int guardar();

@@ -31,7 +31,7 @@
 #include <QMessageBox>
 
 #include "listalmacenview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
@@ -42,7 +42,7 @@
 \param comp
 \param parent
 **/
-ListAlmacenView::ListAlmacenView ( Company *comp, QWidget *parent )
+ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListAlmacenView::ListAlmacenView", 1 );

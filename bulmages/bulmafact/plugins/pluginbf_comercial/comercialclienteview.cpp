@@ -50,7 +50,7 @@ ComercialClienteView::~ComercialClienteView()
 /**
 \param comp
 **/
-void ComercialClienteView::setMainCompany ( Company *comp )
+void ComercialClienteView::setMainCompany ( BfCompany *comp )
 {
     _depura ( "ComercialClienteView::setcompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

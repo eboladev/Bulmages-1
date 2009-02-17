@@ -24,7 +24,7 @@
 #include <QWidget>
 
 #include <ui_efacturaenviobase.h>
-#include "company.h"
+#include "bfcompany.h"
 
 
 class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase
@@ -32,10 +32,10 @@ class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase
     Q_OBJECT
 
 private:
-    Company *empresaBase();
+    BfCompany *empresaBase();
 
 public:
-    EFacturaEnvio ( Company *emp, QWidget *parent = 0 );
+    EFacturaEnvio ( BfCompany *emp, QWidget *parent = 0 );
     ~EFacturaEnvio();
 
 // public slots:

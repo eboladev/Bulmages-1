@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "plugintutor.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "tutorview.h"
 #include "tutoreslist.h"
@@ -69,7 +69,7 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        TutorView * bud = new TutorView((Company *)empresaBase(), NULL);
+        TutorView * bud = new TutorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
@@ -132,7 +132,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "cobro", "SELECT" ) ) {
 	g_tutoresList = new TutoresList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_tutoresList );

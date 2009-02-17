@@ -26,7 +26,7 @@
 #include <QCloseEvent>
 
 #include "clienteview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 #include "informereferencia.h"
@@ -41,7 +41,7 @@
 \param parent
 \return
 **/
-ClienteView::ClienteView ( Company *comp, QWidget *parent )
+ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ClienteView::ClienteView", 0 );

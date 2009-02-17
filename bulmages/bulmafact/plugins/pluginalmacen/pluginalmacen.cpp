@@ -22,7 +22,7 @@
 #include <QToolButton>
 
 #include "pluginalmacen.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "almaceneslistview.h"
 
 
@@ -47,13 +47,13 @@ int entryPoint ( Bulmafact * )
 \param bges
 \return
 **/
-int Company_s_almacenes ( Company *bges )
+int BfCompany_s_almacenes ( BfCompany *bges )
 {
-    _depura ( "Company_s_almacenes", 0 );
+    _depura ( "BfCompany_s_almacenes", 0 );
     AlmacenesListView *lser = new AlmacenesListView ( bges, 0 );
     bges->pWorkspace() ->addWindow ( lser );
     lser->show();
-    _depura ( "END Company_s_almacenes", 0 );
+    _depura ( "END BfCompany_s_almacenes", 0 );
     /// Este plugin reemplaza completamente la funcion llamante y por eso devuelve un valor distinto de 0
     return 1;
 }

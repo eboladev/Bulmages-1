@@ -22,7 +22,7 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 #include "provedit.h"
@@ -33,7 +33,7 @@
 \param comp
 \param parent
 **/
-ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
+ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ProveedorView::ProveedorView", 0 );

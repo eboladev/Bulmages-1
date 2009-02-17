@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_articulo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "articulolist.h"
 #include "articuloview.h"
@@ -70,7 +70,7 @@ void MyPlugArt::elslot()
 void MyPlugArt::elslot1()
 {
     _depura ( "MyPlugArt::elslot1", 0 );
-        ArticuloView * bud = new ArticuloView((Company *)empresaBase(), NULL);
+        ArticuloView * bud = new ArticuloView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugArt::elslot1", 0 );
@@ -84,7 +84,7 @@ void MyPlugArt::elslot1()
 void MyPlugArt::elslot2()
 {
     _depura ( "MyPlugArt::elslot2", 0 );
-    TipoArticuloList *pag = new TipoArticuloList ( (Company *)empresaBase(), 0, FALSE );
+    TipoArticuloList *pag = new TipoArticuloList ( (BfCompany *)empresaBase(), 0, FALSE );
     empresaBase() ->m_pWorkspace->addWindow ( pag );
     pag->show();
     _depura ( "END MyPlugArt::elslot2", 0 );
@@ -97,7 +97,7 @@ void MyPlugArt::elslot2()
 void MyPlugArt::elslot3()
 {
     _depura ( "MyPlugArt::elslot3", 0 );
-    FamiliasView *pag = new FamiliasView ( (Company *)empresaBase(), 0, FALSE );
+    FamiliasView *pag = new FamiliasView ( (BfCompany *)empresaBase(), 0, FALSE );
     empresaBase() ->m_pWorkspace->addWindow ( pag );
     pag->show();
     _depura ( "END MyPlugArt::elslot3", 0 );
@@ -183,7 +183,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "articulo", "SELECT" ) ) {
 	g_articulosList = new ArticuloList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_articulosList );
@@ -202,7 +202,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ArticuloList *arts = new ArticuloList ( ( Company * ) busq->empresaBase(), diag, 0, ArticuloList::SelectMode );
+    ArticuloList *arts = new ArticuloList ( ( BfCompany * ) busq->empresaBase(), diag, 0, ArticuloList::SelectMode );
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -235,7 +235,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    TipoArticuloList *arts = new TipoArticuloList ( (Company *) busq->empresaBase(), 0, TRUE );
+    TipoArticuloList *arts = new TipoArticuloList ( (BfCompany *) busq->empresaBase(), 0, TRUE );
 
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -268,7 +268,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    FamiliasView *arts = new FamiliasView ( (Company *) busq->empresaBase(), 0, TRUE );
+    FamiliasView *arts = new FamiliasView ( (BfCompany *) busq->empresaBase(), 0, TRUE );
 
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -302,7 +302,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
         return 0;
     } // end if
 
-    ArticuloList *artlist = new ArticuloList ( ( Company * ) sub->empresaBase(), NULL, 0, ArticuloList::SelectMode );
+    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->empresaBase(), NULL, 0, ArticuloList::SelectMode );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();
@@ -333,7 +333,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewArticuloView (Company *v)
+int SNewArticuloView (BfCompany *v)
 {
 	ArticuloView *h = new ArticuloView(v, 0);
 	g_plugParams = h;

@@ -55,7 +55,7 @@ mytiptrab::~mytiptrab()
 void mytiptrab::elslot()
 {
     _depura ( "mytiptrab::elslot", 0 );
-    ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( Company * ) m_bulmafact->getcompany(), 0 );
+    ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) m_bulmafact->getcompany(), 0 );
     m_bulmafact->workspace() ->addWindow ( l );
     l->show();
     _depura ( "END mytiptrab::elslot", 0 );
@@ -283,7 +283,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
         BusquedaTipoTrabajoDelegate * editor = new BusquedaTipoTrabajoDelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         return editor;
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );

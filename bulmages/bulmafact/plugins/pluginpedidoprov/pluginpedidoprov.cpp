@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginpedidoprov.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "pedidoproveedorview.h"
 #include "pedidosproveedorlist.h"
@@ -69,7 +69,7 @@ void mypluginpedp::elslot()
 void mypluginpedp::elslot1()
 {
     _depura ( "mypluginpedp::elslot1", 0 );
-        PedidoProveedorView * bud = new PedidoProveedorView((Company *)empresaBase(), NULL);
+        PedidoProveedorView * bud = new PedidoProveedorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginpedp::elslot1", 0 );
@@ -135,7 +135,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
 	g_pedidosProveedorList = new PedidosProveedorList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_pedidosProveedorList );
@@ -147,7 +147,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
-	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	pedidosProveedorList->setModoEdicion();
 	pedidosProveedorList->setObjectName("listPedidosProveedorList");
 	pedidosProveedorList->hideBusqueda();
@@ -170,7 +170,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PedidoProveedorView * bud = new PedidoProveedorView((Company *)ref->empresaBase(), NULL);
+        PedidoProveedorView * bud = new PedidoProveedorView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidoproveedor" ) );
         bud->show();

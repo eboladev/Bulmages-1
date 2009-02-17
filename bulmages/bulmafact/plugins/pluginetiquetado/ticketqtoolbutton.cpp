@@ -28,7 +28,7 @@
 #include <QList>
 #include <QTextStream>
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 

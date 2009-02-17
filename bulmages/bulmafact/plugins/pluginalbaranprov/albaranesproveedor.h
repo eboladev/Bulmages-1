@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "busquedaarticulo.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
@@ -63,10 +63,10 @@ private:
 
 public:
     AlbaranesProveedor ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    AlbaranesProveedor ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    AlbaranesProveedor ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~AlbaranesProveedor();
     void presentar();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     QString idalbaranp();
     void imprimir();
     void setidproveedor ( QString val );

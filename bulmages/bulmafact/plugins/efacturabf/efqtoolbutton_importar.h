@@ -27,7 +27,8 @@
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
-#include "company.h"
+
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "blwidget.h"
 

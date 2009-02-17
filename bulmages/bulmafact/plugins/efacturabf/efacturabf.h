@@ -31,7 +31,7 @@
 
 #include "blapplication.h"
 #include "bulmafact.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "facturasplist.h"
 #include "blwidget.h"
 

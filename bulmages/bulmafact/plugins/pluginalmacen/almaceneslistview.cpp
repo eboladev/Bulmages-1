@@ -25,7 +25,7 @@
 #include <QTextStream>
 
 #include "almaceneslistview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 #include "blconfiguration.h"
@@ -72,7 +72,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
 \param flag
 \return
 **/
-AlmacenesListView::AlmacenesListView ( Company *comp, QWidget *parent, Qt::WFlags flag )
+AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
         : BlFormList ( comp, parent, flag )
 {
     _depura ( "AlmacenesListView::AlmacenesListView(2)", 0 );
@@ -130,7 +130,7 @@ QString AlmacenesListView::idalmacen()
 /**
 \param comp
 **/
-void AlmacenesListView::setMainCompany ( Company *comp )
+void AlmacenesListView::setMainCompany ( BfCompany *comp )
 {
     _depura ( "AlmacenesListView::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -146,9 +146,9 @@ void AlmacenesListView::crear()
 {
     _depura ( "AlmacenesListView::crear", 0 );
     /*
-        ((Company *)empresaBase())->s_newAlmacen();
+        ((BfCompany *)empresaBase())->s_newAlmacen();
     */
-    AlmacenView *alm = new AlmacenView ( ( Company * ) empresaBase(), 0 );
+    AlmacenView *alm = new AlmacenView ( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->pWorkspace() ->addWindow ( alm );
     alm->show();
     _depura ( "END AlmacenesListView::crear", 0 );
@@ -195,7 +195,7 @@ void AlmacenesListView::editar ( int row )
         m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ), row );
 
         if ( modoEdicion() ) {
-            AlmacenView * alm = new AlmacenView ( ( Company * ) empresaBase(), 0 );
+            AlmacenView * alm = new AlmacenView ( ( BfCompany * ) empresaBase(), 0 );
             empresaBase() ->pWorkspace() ->addWindow ( alm );
             alm->show();
             alm->cargar ( m_idalmacen );
@@ -235,14 +235,14 @@ void AlmacenesListView::borrar()
     try {
         m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ) );
         if ( modoEdicion() ) {
-            AlmacenView * alm = new AlmacenView ( ( Company * ) empresaBase(), 0 );
+            AlmacenView * alm = new AlmacenView ( ( BfCompany * ) empresaBase(), 0 );
             empresaBase() ->pWorkspace() ->addWindow ( alm );
 //            alm->show();
             alm->cargar ( m_idalmacen );
             alm->on_mui_borrar_clicked();
             alm->close();
             /*
-                        PresupuestoView *pv = ((Company *)empresaBase())->nuevoPresupuestoView();
+                        PresupuestoView *pv = ((BfCompany *)empresaBase())->nuevoPresupuestoView();
                         if (pv->cargar(m_idalmacen))
                             throw -1;
                         pv->on_mui_borrar_clicked();

@@ -23,7 +23,7 @@
 #define CLIENTDELIVNOTESLIST_H
 
 #include "busquedaarticulo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 
@@ -68,8 +68,8 @@ private:
 
 public:
     AlbaranClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    AlbaranClienteList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    void setMainCompany ( Company * );
+    AlbaranClienteList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    void setMainCompany ( BfCompany * );
     ~AlbaranClienteList();
     void presentar();
     void imprimir();

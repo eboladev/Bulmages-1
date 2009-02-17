@@ -33,7 +33,7 @@
 #include "blfixed.h"
 #include "cobroslist.h"
 #include "cobroview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -95,7 +95,7 @@ void Q19QToolButton::click()
 
     QDataStream out ( &file );
 //    out.setCodec("CP1252");
-    m_companyact = ( Company * ) m_cobrosList->empresaBase();
+    m_companyact = ( BfCompany * ) m_cobrosList->empresaBase();
     BlSubForm *sub = m_cobrosList->mui_list;
 
     BlFixed total ( "0.00" );

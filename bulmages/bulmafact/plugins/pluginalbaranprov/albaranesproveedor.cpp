@@ -26,7 +26,7 @@
 
 #include "albaranesproveedor.h"
 #include "albaranproveedorview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
 
@@ -64,7 +64,7 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
 /**
 \param comp
 **/
-void AlbaranesProveedor::setMainCompany ( Company *comp )
+void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
 {
     _depura ( "AlbaranesProveedor::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -88,7 +88,7 @@ void AlbaranesProveedor::crear()
 {
     _depura ( "AlbaranesProveedor::crear", 0 );
     if ( empresaBase() != NULL ) {
-        AlbaranProveedorView *albp = new AlbaranProveedorView( ( Company * ) empresaBase(), 0 );
+        AlbaranProveedorView *albp = new AlbaranProveedorView( ( BfCompany * ) empresaBase(), 0 );
         empresaBase()->pWorkspace()->addWindow ( albp );
 	albp->inicializar();
 	albp->show();
@@ -134,7 +134,7 @@ QString AlbaranesProveedor::idalbaranp()
 }
 
 
-/** Constructor completo de la clase con el puntero a Company adecuado.
+/** Constructor completo de la clase con el puntero a BfCompany adecuado.
     Inicializa todos los componentes con company.
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
@@ -145,7 +145,7 @@ QString AlbaranesProveedor::idalbaranp()
 \param parent
 \param flag
 **/
-AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
@@ -288,7 +288,7 @@ void AlbaranesProveedor::editar ( int row )
     _depura ( "AlbaranesProveedor::editar", 0 );
     mdb_idalbaranp = mui_list->DBvalue ( QString ( "idalbaranp" ), row );
     if ( modoEdicion() ) {
-        AlbaranProveedorView * prov = new AlbaranProveedorView ( ( Company * ) empresaBase(), 0 );
+        AlbaranProveedorView * prov = new AlbaranProveedorView ( ( BfCompany * ) empresaBase(), 0 );
         if ( prov->cargar ( mdb_idalbaranp ) ) {
             delete prov;
             return;
@@ -335,7 +335,7 @@ void AlbaranesProveedor::borrar()
     try {
         mdb_idalbaranp = mui_list->DBvalue ( QString ( "idalbaranp" ) );
         if ( modoEdicion() ) {
-            AlbaranProveedorView * apv = new AlbaranProveedorView(( Company * ) empresaBase(), 0);
+            AlbaranProveedorView * apv = new AlbaranProveedorView(( BfCompany * ) empresaBase(), 0);
             if ( apv->cargar ( mdb_idalbaranp ) ) {
                 throw - 1;
             } // end if

@@ -33,7 +33,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 extern "C++" class BusquedaProfesor;
@@ -49,7 +49,7 @@ class ActividadView : public FichaBf, public Ui_ActividadBase
     Q_OBJECT
 
 public:
-    ActividadView ( Company *, QWidget * );
+    ActividadView ( BfCompany *, QWidget * );
     ~ActividadView();
     virtual void imprimir();
     virtual QString nombrePlantilla(void) ;

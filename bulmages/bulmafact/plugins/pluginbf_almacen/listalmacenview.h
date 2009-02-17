@@ -62,7 +62,7 @@ class ListAlmacenView : public FichaBf, public Ui_ListAlmacenBase
     Q_OBJECT
 
 public:
-    ListAlmacenView ( Company *comp, QWidget *parent );
+    ListAlmacenView ( BfCompany *comp, QWidget *parent );
     virtual ~ListAlmacenView();
 
 public slots:

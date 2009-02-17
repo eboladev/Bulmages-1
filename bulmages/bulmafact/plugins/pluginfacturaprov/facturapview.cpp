@@ -29,7 +29,7 @@
 #include <QTextStream>
 
 #include "facturapview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "listlinfacturapview.h"
 #include "providerslist.h"
 #include "blfunctions.h"
@@ -42,7 +42,7 @@
 \param comp
 \param parent
 **/
-FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
+FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "FacturaProveedorView::FacturaProveedorView", 0 );
@@ -188,7 +188,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue ( "reffacturap" ) + "'";
     BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * albpro = new AlbaranProveedorView((Company *) empresaBase(), 0);
+        AlbaranProveedorView * albpro = new AlbaranProveedorView((BfCompany *) empresaBase(), 0);
         albpro->cargar ( cur->valor ( "idalbaranp" ) );
         empresaBase() ->m_pWorkspace->addWindow ( albpro );
         albpro->show();

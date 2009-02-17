@@ -31,7 +31,7 @@
 #include <QMessageBox>
 
 #include "listcoloresview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
 
@@ -42,7 +42,7 @@
 \param parent
 **/
 
-ListColoresView::ListColoresView ( Company *comp, QWidget *parent )
+ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListColoresView::ListColoresView", 1 );

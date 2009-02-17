@@ -23,7 +23,7 @@
 #define LISTDESCPEDIDOPROVEEDORVIEW_H
 
 #include "bfsubform.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por pedido a proveedor.

@@ -25,7 +25,7 @@
 #include <QTextStream>
 
 #include "presupuestolist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "presupuestoview.h"
 #include "blfunctions.h"
 #include "plugins.h"
@@ -68,7 +68,7 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
 \param flag
 \return
 **/
-PresupuestoList::PresupuestoList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PresupuestoList::PresupuestoList(2)", 0 );
@@ -144,7 +144,7 @@ QString PresupuestoList::idpresupuesto()
 /**
 \param comp
 **/
-void PresupuestoList::setMainCompany ( Company *comp )
+void PresupuestoList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "PresupuestoList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -185,7 +185,7 @@ void PresupuestoList::setidarticulo ( QString val )
 void PresupuestoList::crear()
 {
     _depura ( "PresupuestoList::crear", 0 );
-    PresupuestoView * bud = new PresupuestoView((Company *)empresaBase(), 0);
+    PresupuestoView * bud = new PresupuestoView((BfCompany *)empresaBase(), 0);
     empresaBase()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
@@ -269,7 +269,7 @@ void PresupuestoList::editar ( int row )
     try {
         m_idpresupuesto = mui_list->DBvalue ( QString ( "idpresupuesto" ), row );
         if ( modoEdicion() ) {
-            PresupuestoView * prov = new PresupuestoView( ( Company * ) empresaBase() , 0 );
+            PresupuestoView * prov = new PresupuestoView( ( BfCompany * ) empresaBase() , 0 );
             if ( prov->cargar ( m_idpresupuesto ) ) {
                 delete prov;
                 return;
@@ -313,7 +313,7 @@ void PresupuestoList::borrar()
     try {
         m_idpresupuesto = mui_list->DBvalue ( QString ( "idpresupuesto" ) );
         if ( modoEdicion() ) {
-            PresupuestoView * pv = new PresupuestoView ( ( Company * ) empresaBase(), 0);
+            PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) empresaBase(), 0);
             if ( pv->cargar ( m_idpresupuesto ) )
                 throw - 1;
             pv->on_mui_borrar_clicked();

@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "plugintarifas.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "busquedatarifa.h"
 #include "listltarifaview.h"
@@ -55,7 +55,7 @@ myplugin1::~myplugin1()
 void myplugin1::elslot()
 {
     _depura ( "myplugin1::elslot", 0 );
-    TarifaListView *tar = new TarifaListView ( ( ( Company * ) empresaBase() ), NULL );
+    TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) empresaBase() ), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->show();
     _depura ( "END myplugin1::elslot", 0 );

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "busquedatarifa.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 

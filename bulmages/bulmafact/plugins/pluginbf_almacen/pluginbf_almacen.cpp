@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginbf_almacen.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "listalmacenview.h"
 
@@ -54,7 +54,7 @@ MyPlugAlm::~MyPlugAlm()
 void MyPlugAlm::elslot1()
 {
     _depura ( "MyPlugAlm::elslot1", 0 );
-        ListAlmacenView * bud = new ListAlmacenView((Company *)empresaBase(), NULL);
+        ListAlmacenView * bud = new ListAlmacenView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugAlm::elslot1", 0 );
@@ -117,7 +117,7 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewAlmacenView (Company *v)
+int SNewAlmacenView (BfCompany *v)
 {
 	ListAlmacenView *h = new ListAlmacenView(v, 0);
 	g_plugParams = h;

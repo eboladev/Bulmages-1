@@ -27,7 +27,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
@@ -48,7 +48,7 @@ private:
     bool m_semaforoPintar;
 
 public:
-    TipoArticuloList ( Company *, QWidget *parent = 0, bool modoConsulta = FALSE );
+    TipoArticuloList ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();

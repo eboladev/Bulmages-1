@@ -72,7 +72,7 @@ Bulmafact::Bulmafact ( QString bd ) : BlMainWindow()
     vboxlayout->addWidget ( pWorkspace );
     vboxlayout->addWidget ( m_pb );
 
-    m_company = new Company ( this );
+    m_company = new BfCompany ( this );
     m_company->setProgressBar ( m_pb );
     m_company->init ( bd, "BulmaFact" );
     m_company->setWorkspace ( pWorkspace );
@@ -320,7 +320,7 @@ BlWorkspace * Bulmafact::workspace()
 /**
 \return
 **/
-Company * Bulmafact::getcompany()
+BfCompany * Bulmafact::getcompany()
 {
     _depura ( "Bulmafact::getcompany", 0 );
     _depura ( "END Bulmafact::getcompany", 0 );

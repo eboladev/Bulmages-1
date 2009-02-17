@@ -60,7 +60,7 @@ class ListTallasView : public FichaBf, public Ui_ListTallasBase
     Q_OBJECT
 
 public:
-    ListTallasView ( Company *comp, QWidget *parent );
+    ListTallasView ( BfCompany *comp, QWidget *parent );
     virtual ~ListTallasView();
 
 public slots:

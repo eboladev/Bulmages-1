@@ -31,7 +31,7 @@
 #include <QMessageBox>
 
 #include "listtallasview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
 
@@ -42,7 +42,7 @@
 \param parent
 **/
 
-ListTallasView::ListTallasView ( Company *comp, QWidget *parent )
+ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTallasView::ListTallasView", 1 );

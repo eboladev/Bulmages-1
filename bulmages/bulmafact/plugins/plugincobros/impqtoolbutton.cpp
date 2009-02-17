@@ -34,7 +34,7 @@
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 #include "cobroview.h"
 
@@ -110,7 +110,7 @@ void GenCobroQToolButton::click()
 	if (msgBox.clickedButton() == openButton) {
 	
 				while (!cur->eof()) {
-					CobroView *bud = new CobroView( (Company *) fpv->empresaBase(), 0);
+					CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
 					fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 					bud->cargar(cur->valor("idcobro"));
 					bud->pintar();
@@ -159,7 +159,7 @@ void GenCobroQToolButton::click()
 		if (msgBox.clickedButton() == openButton) {
 		
 					while (!cur->eof()) {
-						CobroView *bud = new CobroView( (Company *) fpv->empresaBase(), 0);
+						CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
 						fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 						bud->cargar(cur->valor("idcobro"));
 						bud->pintar();
@@ -177,7 +177,7 @@ void GenCobroQToolButton::click()
 		
 			/// Creacion de un cobro nuevo a partir de la factura.
 			if (nuevo) {
-			CobroView *bud = new CobroView((Company *)fpv->empresaBase(), 0);
+			CobroView *bud = new CobroView((BfCompany *)fpv->empresaBase(), 0);
 			fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
 			bud->setDBvalue ( "cantcobro", fpv->m_totalalbaran->text() );
@@ -208,7 +208,7 @@ void GenCobroQToolButton::click()
 		if (msgBox.clickedButton() == openButton) {
 		
 					while (!cur->eof()) {
-						CobroView *bud = new CobroView( (Company *) fpv->empresaBase(), 0);
+						CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
 						fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 						bud->cargar(cur->valor("idcobro"));
 						bud->pintar();
@@ -226,7 +226,7 @@ void GenCobroQToolButton::click()
 		
 			/// Creacion de un cobro nuevo a partir de la factura.
 			if (nuevo) {
-			CobroView *bud = new CobroView( (Company *) fpv->empresaBase(), 0);
+			CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
 			fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
 			bud->setDBvalue ( "cantcobro", fpv->m_totalpedidocliente->text() );

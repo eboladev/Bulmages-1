@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginalumno.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "alumnoview.h"
 #include "alumnoslist.h"
@@ -69,7 +69,7 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        AlumnoView * bud = new AlumnoView((Company *)empresaBase(), NULL);
+        AlumnoView * bud = new AlumnoView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
@@ -132,7 +132,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "cobro", "SELECT" ) ) {
 	g_alumnosList = new AlumnosList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_alumnosList );

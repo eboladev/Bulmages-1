@@ -32,7 +32,7 @@
 #include "blfunctions.h"
 #include "listlinpresupuestoview.h"
 #include "presupuestoview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "clientslist.h"
 #include "blconfiguration.h"
 #include "busquedaformapago.h"
@@ -46,7 +46,7 @@
 \param parent
 \return
 **/
-PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
+PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "Inicializacion de PresupuestoView", 0 );

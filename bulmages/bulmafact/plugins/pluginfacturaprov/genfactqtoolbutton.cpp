@@ -34,7 +34,7 @@
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -154,7 +154,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            FacturaProveedorView *bud = new FacturaProveedorView((Company *) fpv->empresaBase(), 0);
+            FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
             fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
@@ -163,7 +163,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
         delete cur;
 
         /// Creamos la factura.
-        FacturaProveedorView *bud = new FacturaProveedorView((Company *) fpv->empresaBase(), 0);
+        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
@@ -260,7 +260,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            FacturaProveedorView *bud = new FacturaProveedorView((Company *) fpv->empresaBase(), 0);
+            FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
             fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
@@ -269,7 +269,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         delete cur;
 
         /// Creamos la factura.
-        FacturaProveedorView *bud = new FacturaProveedorView((Company *) fpv->empresaBase(), 0);
+        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.

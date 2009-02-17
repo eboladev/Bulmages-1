@@ -30,7 +30,7 @@
 #include <QApplication>
 #include <QObject>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "bulmafact.h"
 #include "listlinalbaranproveedorview.h"
 #include "listlinalbaranclienteview.h"

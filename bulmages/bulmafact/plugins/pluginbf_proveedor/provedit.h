@@ -35,7 +35,7 @@ class ProveedorView : public FichaBf, public Ui_ProveedorBase
     Q_OBJECT
 
 public:
-    ProveedorView ( Company *comp, QWidget *parent = 0 );
+    ProveedorView ( BfCompany *comp, QWidget *parent = 0 );
     ~ProveedorView();
 
 public slots:

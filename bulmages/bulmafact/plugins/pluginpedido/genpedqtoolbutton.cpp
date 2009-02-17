@@ -33,7 +33,7 @@
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -161,7 +161,7 @@ void GenPedQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el pedidocliente.
-        bud = new PedidoClienteView((Company *) fpv->empresaBase(), 0);
+        bud = new PedidoClienteView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 

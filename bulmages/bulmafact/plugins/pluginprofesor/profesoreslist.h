@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -58,10 +58,10 @@ private:
 
 public:
     ProfesoresList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    ProfesoresList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    ProfesoresList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~ProfesoresList();
     void presentar();
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     QString idprofesor();
     void imprimir();
     QString generaFiltro();

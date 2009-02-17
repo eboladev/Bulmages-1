@@ -35,7 +35,7 @@
 #include "busquedatrabajador.h"
 #include "albaranclienteview.h"
 #include "clientslist.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
 #include "informereferencia.h"
@@ -58,7 +58,7 @@
 \param parent
 \return
 **/
-AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
+AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "AlbaranClienteView::AlbaranClienteView", 0 );
@@ -216,7 +216,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             while ( !cur->eof() ) {
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPedidoClienteView", (Company *) empresaBase());
+                    int resur = g_plugins->lanza ("SNewPedidoClienteView", (BfCompany *) empresaBase());
 					if (!resur) {
 						mensajeInfo("no se pudo crear instancia de factura");
 						return;

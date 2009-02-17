@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 #include "contrato.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "plugins.h"
 
@@ -33,7 +33,7 @@
 \param comp
 \param parent
 **/
-Contrato::Contrato ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
     _depura ( "Contrato::Contrato", 0 );
     setTitleName ( _( "Contrato" ) );
@@ -201,7 +201,7 @@ int Contrato::guardar()
 /**
 \return
 **/
-Company * Contrato::_company()
+BfCompany * Contrato::_company()
 {
     _depura ( "Contrato::_company", 0 );
     _depura ( "END Contrato::_company", 0 );

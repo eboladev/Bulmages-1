@@ -58,7 +58,7 @@ ImportCSV::~ImportCSV()
 {
     _depura ( "ImportCSV::~ImportCSV", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
-    // ((Company *)empresaBase())->refreshCobrosCliente();
+    // ((BfCompany *)empresaBase())->refreshCobrosCliente();
     _depura ( "END ImportCSV::~ImportCSV", 0 );
 }
 

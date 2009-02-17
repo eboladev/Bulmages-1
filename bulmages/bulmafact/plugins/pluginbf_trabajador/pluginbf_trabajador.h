@@ -32,7 +32,7 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int SNewTrabajadorView (Company *);
+extern "C" MY_EXPORT int SNewTrabajadorView (BfCompany *);
 
 
 class MyPlugTrab : public QObject, BlMainCompanyPointer

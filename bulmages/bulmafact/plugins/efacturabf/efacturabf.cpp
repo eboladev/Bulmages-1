@@ -30,7 +30,7 @@
 #include "efactura.h"
 // #include "efacturaenvio.h"
 #include "efacturarecepcion.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 // Exportacion
 #include "facturaview.h"
@@ -66,7 +66,7 @@ efacturabf::~efacturabf()
 void efacturabf::elslot()
 {
     _depura ( "efacturabf::elslot", 0 );
-    EFactura *ef = new EFactura ( ( Company * ) empresaBase() );
+    EFactura *ef = new EFactura ( ( BfCompany * ) empresaBase() );
     ef->show();
 
 //  EFacturaEnvio *efv = new EFacturaEnvio(empresaBase());
@@ -91,7 +91,7 @@ void efacturabf::elslot()
 void efacturabf::elslot1()
 {
     _depura ( "efacturabf::elslot1", 0 );
-    EFacturaRecepcion *efr = new EFacturaRecepcion ( ( Company * ) empresaBase() );
+    EFacturaRecepcion *efr = new EFacturaRecepcion ( ( BfCompany * ) empresaBase() );
     efr->show();
     _depura ( "END efacturabf::elslot1", 0 );
 }

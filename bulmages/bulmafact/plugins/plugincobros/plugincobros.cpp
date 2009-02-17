@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "plugincobros.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "cobroview.h"
 #include "cobroslist.h"
@@ -69,7 +69,7 @@ void myplugincob::elslot()
 void myplugincob::elslot1()
 {
     _depura ( "myplugincob::elslot1", 0 );
-        CobroView * bud = new CobroView((Company *)empresaBase(), NULL);
+        CobroView * bud = new CobroView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END myplugincob::elslot1", 0 );
@@ -133,7 +133,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "cobro", "SELECT" ) ) {
 	g_cobrosList = new CobrosList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_cobrosList );
@@ -145,7 +145,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "cobro", "SELECT" ) ) {
-		CobrosList *pagosList = new CobrosList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+		CobrosList *pagosList = new CobrosList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 		pagosList->setModoEdicion();
 		pagosList->setObjectName("listcobrosproveedor");
 		pagosList->hideBusqueda();
@@ -168,7 +168,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        CobroView * bud = new CobroView((Company *)ref->empresaBase(), NULL);
+        CobroView * bud = new CobroView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idcobro" ) );
         bud->show();

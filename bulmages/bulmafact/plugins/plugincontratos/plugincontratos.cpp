@@ -26,7 +26,7 @@
 #include <QLineEdit>
 #include <QTabWidget>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "plugincontratos.h"
 #include "blfunctions.h"
 #include "contratoslist.h"
@@ -57,7 +57,7 @@ myplugincont::~myplugincont()
 void myplugincont::elslot()
 {
     _depura ( "myplugincont::elslot", 0 );
-    ContratosList *vehiculoview = new ContratosList ( ( Company * ) m_conexionbase );
+    ContratosList *vehiculoview = new ContratosList ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
     _depura ( "END myplugincont::elslot", 0 );
@@ -119,7 +119,7 @@ int ClienteView_ClienteView ( ClienteView *art )
 {
     _depura ( "ClienteView_ClienteView", 0 );
     /// Para que funcione bien debemos iniciar con SelectMode y luego pasar a EditMode ya que si no se hace un meteWindow y no es deseable.
-    ContratosList *l = new ContratosList ( ( ( Company * ) art->empresaBase() ), art, 0, ContratosList::SelectMode );
+    ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->empresaBase() ), art, 0, ContratosList::SelectMode );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, "Contratos" );
     l->editMode();

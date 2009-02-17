@@ -21,7 +21,7 @@
 #include "blcombobox.h"
 
 #include "busquedaalmacen.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -128,7 +128,7 @@ QString BusquedaAlmacen::id()
 /**
 \param comp
 **/
-void BusquedaAlmacen::setMainCompany ( Company *comp )
+void BusquedaAlmacen::setMainCompany ( BfCompany *comp )
 {
     _depura ( "BusquedaAlmacen::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "company.h"
+#include "bfcompany.h"
 #include "tarifalistsubform.h"
 #include "blfunctions.h"
 

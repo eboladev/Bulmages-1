@@ -32,7 +32,7 @@
 #include "fichabf.h"
 
 
-class Company;
+class BfCompany;
 
 
 /** Ventana de ficha de cobro.
@@ -45,7 +45,7 @@ class Cuadrante1View : public FichaBf, public Ui_Cuadrante1Base
     Q_OBJECT
 
 public:
-    Cuadrante1View ( Company *, QWidget * );
+    Cuadrante1View ( BfCompany *, QWidget * );
     ~Cuadrante1View();
     int cargarPost ( QString );
     int guardarPost();

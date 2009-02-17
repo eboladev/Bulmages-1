@@ -28,7 +28,7 @@
 #include <fstream>
 
 #include "inventarioview.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "listcontrolstockview.h"
 #include "inventario.h"
 #include "blfunctions.h"
@@ -39,7 +39,7 @@
 \param comp
 \param parent
 **/
-InventarioView::InventarioView ( Company *comp, QWidget *parent )
+InventarioView::InventarioView ( BfCompany *comp, QWidget *parent )
         :  Inventario ( comp, parent )
 {
     _depura ( "InventarioView::InventarioView", 0 );

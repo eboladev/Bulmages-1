@@ -22,7 +22,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
 #include "plugins.h"
@@ -65,7 +65,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \param flags
 \return
 **/
-PedidosClienteList::PedidosClienteList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo)
+PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo)
 {
     _depura ( "PedidosClienteList::PedidosClienteList", 0 );
     setupUi ( this );
@@ -196,7 +196,7 @@ QString PedidosClienteList::generarFiltro()
 void PedidosClienteList::crear()
 {
     _depura ( "PedidosClienteList:crear", 0 );
-    PedidoClienteView *prov = new PedidoClienteView ( ( Company * ) empresaBase(), 0 );
+    PedidoClienteView *prov = new PedidoClienteView ( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->m_pWorkspace->addWindow ( prov );
     prov->inicializar();
     prov->show();
@@ -204,7 +204,7 @@ void PedidosClienteList::crear()
 }
 
 
-/// \TODO: Company debe instanciar la clase y no hacerse asi como esta ahora.
+/// \TODO: BfCompany debe instanciar la clase y no hacerse asi como esta ahora.
 /**
 \param row
 \return
@@ -215,7 +215,7 @@ void PedidosClienteList::editar ( int row )
     try {
         m_idpedidocliente = mui_list->DBvalue ( QString ( "idpedidocliente" ), row );
         if ( modoEdicion() ) {
-            PedidoClienteView * prov = new PedidoClienteView ( ( Company * ) empresaBase(), 0 );
+            PedidoClienteView * prov = new PedidoClienteView ( ( BfCompany * ) empresaBase(), 0 );
             if ( prov->cargar ( m_idpedidocliente ) ) {
                 delete prov;
                 return;
@@ -258,7 +258,7 @@ void PedidosClienteList::borrar()
     try {
         m_idpedidocliente = mui_list->DBvalue ( QString ( "idpedidocliente" ) );
         if ( modoEdicion() ) {
-            PedidoClienteView * pcv = new PedidoClienteView(( Company * ) empresaBase());
+            PedidoClienteView * pcv = new PedidoClienteView(( BfCompany * ) empresaBase());
             if ( pcv->cargar ( m_idpedidocliente ) ) {
                 throw - 1;
             } // end if
@@ -277,7 +277,7 @@ void PedidosClienteList::borrar()
 /**
 \param comp
 **/
-void PedidosClienteList::setMainCompany ( Company *comp )
+void PedidosClienteList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "PedidosClienteList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

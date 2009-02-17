@@ -32,7 +32,7 @@
 #include <QLocale>
 
 #include "pluginbarcodeopen.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
@@ -75,7 +75,7 @@ void myplugin::elslot()
         QStringList listaelem = text.split ( " " );
         if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewFacturaView", ( Company * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewFacturaView", ( BfCompany * ) empresaBase());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de factura");
 					return;
@@ -89,7 +89,7 @@ void myplugin::elslot()
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewPresupuestoView", ( Company * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewPresupuestoView", ( BfCompany * ) empresaBase());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de pedido cliente");
 					return;
@@ -103,7 +103,7 @@ void myplugin::elslot()
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewPedidoClienteView", ( Company * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewPedidoClienteView", ( BfCompany * ) empresaBase());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de pedido cliente");
 					return;
@@ -118,7 +118,7 @@ void myplugin::elslot()
         } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
 
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewAlbaranClienteView", ( Company * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewAlbaranClienteView", ( BfCompany * ) empresaBase());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de factura");
 					return;
@@ -132,7 +132,7 @@ void myplugin::elslot()
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
 
-            PedidoProveedorView * prov = new PedidoProveedorView ( ( Company * ) empresaBase(), 0 );
+            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;

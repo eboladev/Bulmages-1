@@ -26,7 +26,7 @@
 #include <QLineEdit>
 #include <QTabWidget>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "pluginvehiculosbf.h"
 #include "blfunctions.h"
 #include "vehiculoview.h"
@@ -58,7 +58,7 @@ myplugin::~myplugin()
 void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
-    VehiculoView *vehiculoview = new VehiculoView ( ( Company * ) m_conexionbase );
+    VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
     _depura ( "END myplugin::elslot", 0 );

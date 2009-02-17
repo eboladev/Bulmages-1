@@ -33,7 +33,7 @@
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "blfixed.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bldb.h"
 
 
@@ -150,7 +150,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            AlbaranProveedorView *bud = new AlbaranProveedorView((Company *) fpv->empresaBase(), 0);
+            AlbaranProveedorView *bud = new AlbaranProveedorView((BfCompany *) fpv->empresaBase(), 0);
             fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaranp" ) );
             bud->show();
@@ -159,7 +159,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         delete cur;
 
         /// Creamos la factura.
-        AlbaranProveedorView *bud = new AlbaranProveedorView((Company *) fpv->empresaBase(), 0);
+        AlbaranProveedorView *bud = new AlbaranProveedorView((BfCompany *) fpv->empresaBase(), 0);
         fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.

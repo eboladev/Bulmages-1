@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "busquedatipoarticulo.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 /** Inicializa todos los componentes a NULL para que no haya confusiones sobre

@@ -22,7 +22,7 @@
 #define CONTRATOSLIST_H
 
 #include "pgimportfiles.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 #include "bulmafact.h"
@@ -87,7 +87,7 @@ private:
     QString mdb_refcontrato;
 
 public:
-    ContratosList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    ContratosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~ContratosList();
     void selectMode();
     void editMode();

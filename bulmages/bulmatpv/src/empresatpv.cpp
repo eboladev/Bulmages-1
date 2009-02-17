@@ -570,7 +570,7 @@ void EmpresaTPV::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    _depura ( "END Company::guardaConf", 0 );
+    _depura ( "END BfCompany::guardaConf", 0 );
 }
 
 
@@ -615,7 +615,7 @@ void EmpresaTPV::cargaConf()
     /// Cogemos el ancho del indexador
     m_bulmaTPV->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
 
-    _depura ( "END Company::cargaConf", 0 );
+    _depura ( "END BfCompany::cargaConf", 0 );
 }
 
 

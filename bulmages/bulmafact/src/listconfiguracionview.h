@@ -61,7 +61,7 @@ class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase
     Q_OBJECT
 
 public:
-    ListConfiguracionView ( Company *comp, QWidget *parent = 0 );
+    ListConfiguracionView ( BfCompany *comp, QWidget *parent = 0 );
     ~ListConfiguracionView();
 
 public slots:

@@ -23,7 +23,7 @@
 
 #include <QComboBox>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
 #include "blwidget.h"

@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginfacturaprov.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "facturapview.h"
 #include "facturasplist.h"
@@ -69,7 +69,7 @@ void mypluginfactp::elslot()
 void mypluginfactp::elslot1()
 {
     _depura ( "mypluginfactp::elslot1", 0 );
-        FacturaProveedorView * bud = new FacturaProveedorView((Company *)empresaBase(), NULL);
+        FacturaProveedorView * bud = new FacturaProveedorView((BfCompany *)empresaBase(), NULL);
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginfactp::elslot1", 0 );
@@ -134,7 +134,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     if ( comp->has_table_privilege ( "facturap", "SELECT" ) ) {
 	g_facturasProveedorList = new FacturasProveedorList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_facturasProveedorList );
@@ -146,7 +146,7 @@ int Company_createMainWindows_Post(Company *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->empresaBase()->has_table_privilege ( "facturap", "SELECT" ) ) {
-	FacturasProveedorList *facturasProveedorList = new FacturasProveedorList( (Company *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+	FacturasProveedorList *facturasProveedorList = new FacturasProveedorList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
 	facturasProveedorList->setModoEdicion();
 	facturasProveedorList->setObjectName("listpagosproveedor");
 	facturasProveedorList->hideBusqueda();
@@ -169,7 +169,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        FacturaProveedorView * bud = new FacturaProveedorView((Company *)ref->empresaBase(), NULL);
+        FacturaProveedorView * bud = new FacturaProveedorView((BfCompany *)ref->empresaBase(), NULL);
         ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfacturap" ) );
         bud->show();
@@ -230,7 +230,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewFacturaProveedorView (Company *v)
+int SNewFacturaProveedorView (BfCompany *v)
 {
 	FacturaProveedorView *h = new FacturaProveedorView(v, 0);
 	g_plugParams = h;

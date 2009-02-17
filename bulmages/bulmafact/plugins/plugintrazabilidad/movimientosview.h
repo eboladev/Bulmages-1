@@ -22,7 +22,7 @@
 #define MOVIMIENTOSVIEW_H
 
 #include "busquedaarticulo.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "fichabf.h"
@@ -71,10 +71,10 @@ private:
 
 public:
 //    MovimientosView(QWidget *parent = 0, edmode editmodo = EditMode);
-    MovimientosView ( Company *, QWidget *parent = 0, edmode editmodo = EditMode );
+    MovimientosView ( BfCompany *, QWidget *parent = 0, edmode editmodo = EditMode );
     virtual ~MovimientosView();
     void iniciaForm();
-    void setMainCompany ( Company *comp ) {
+    void setMainCompany ( BfCompany *comp ) {
         BlMainCompanyPointer::setMainCompany ( comp );
         m_cliente->setMainCompany ( comp );
         m_articulo->setMainCompany ( comp );

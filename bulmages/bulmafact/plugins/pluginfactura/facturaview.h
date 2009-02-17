@@ -33,7 +33,7 @@
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 
@@ -44,7 +44,7 @@ class FacturaView : public FichaBf, public Ui_FacturaBase
     Q_OBJECT
 
 public:
-    FacturaView ( Company *, QWidget *parent = 0 );
+    FacturaView ( BfCompany *, QWidget *parent = 0 );
     ~FacturaView();
     void inicializar();
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );

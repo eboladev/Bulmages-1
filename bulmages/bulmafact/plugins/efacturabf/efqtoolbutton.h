@@ -23,7 +23,7 @@
 
 #include <QWidget>
 #include <QToolButton>
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 #include "blfixed.h"
 #include "blwidget.h"

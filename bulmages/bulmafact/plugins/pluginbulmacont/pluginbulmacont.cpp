@@ -25,7 +25,7 @@
 #include "pluginbulmacont.h"
 #include "blfunctions.h"
 #include "listcuentasview1.h"
-#include "company.h"
+#include "bfcompany.h"
 
 
 BcCompany *g_empresaactual;
@@ -49,7 +49,7 @@ int entryPoint ( Bulmafact *bf )
 }
 
 
-int Company_createMainWindows_Post(Company *comp) {
+int BfCompany_createMainWindows_Post(BfCompany *comp) {
     g_empresaactual = new BcCompany ( NULL );
     g_empresaactual->setProgressBar ( g_bf->m_pb );
     g_empresaactual->init ( "csoncatiu", "BulmaCont" );

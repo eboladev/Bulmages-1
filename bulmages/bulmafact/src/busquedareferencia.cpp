@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "busquedareferencia.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "informereferencia.h"
 #include "blform.h"
 #include "plugins.h"
@@ -119,7 +119,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
     BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PresupuestoView * bud = ( ( Company * ) empresaBase() ) ->nuevoPresupuestoView();
+        PresupuestoView * bud = ( ( BfCompany * ) empresaBase() ) ->nuevoPresupuestoView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpresupuesto" ) );
         bud->show();
@@ -131,7 +131,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PedidoClienteView * bud = ( ( Company * ) empresaBase() ) ->newPedidoClienteView();
+        PedidoClienteView * bud = ( ( BfCompany * ) empresaBase() ) ->newPedidoClienteView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidocliente" ) );
         bud->show();
@@ -143,7 +143,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranClienteView * bud = ( ( Company * ) empresaBase() ) ->newAlbaranClienteView();
+        AlbaranClienteView * bud = ( ( BfCompany * ) empresaBase() ) ->newAlbaranClienteView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaran" ) );
         bud->show();
@@ -156,7 +156,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        FacturaView * bud = ( ( Company * ) empresaBase() ) ->newFacturaView();
+        FacturaView * bud = ( ( BfCompany * ) empresaBase() ) ->newFacturaView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
@@ -169,7 +169,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        CobroView * bud = ( ( Company * ) empresaBase() ) ->newCobroView();
+        CobroView * bud = ( ( BfCompany * ) empresaBase() ) ->newCobroView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idcobro" ) );
         bud->show();
@@ -182,7 +182,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PedidoProveedorView * bud = ( ( Company * ) empresaBase() ) ->nuevoPedidoProveedorView();
+        PedidoProveedorView * bud = ( ( BfCompany * ) empresaBase() ) ->nuevoPedidoProveedorView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidoproveedor" ) );
         bud->show();
@@ -195,7 +195,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * bud = ( ( Company * ) empresaBase() ) ->newAlbaranProveedorView();
+        AlbaranProveedorView * bud = ( ( BfCompany * ) empresaBase() ) ->newAlbaranProveedorView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaranp" ) );
         bud->show();
@@ -208,7 +208,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        FacturaProveedorView * bud = ( ( Company * ) empresaBase() ) ->newFacturaProveedorView();
+        FacturaProveedorView * bud = ( ( BfCompany * ) empresaBase() ) ->newFacturaProveedorView();
         empresaBase() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfacturap" ) );
         bud->show();

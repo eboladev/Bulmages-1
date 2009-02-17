@@ -35,7 +35,7 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
 extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);

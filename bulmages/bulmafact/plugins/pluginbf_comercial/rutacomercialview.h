@@ -40,11 +40,11 @@ class RutaComercialView : public RutaComercial, public Ui_RutaComercialBase
     Q_OBJECT
 
 public:
-    RutaComercialView ( Company *, QWidget *parent = NULL );
+    RutaComercialView ( BfCompany *, QWidget *parent = NULL );
     RutaComercialView ( QWidget *parent = NULL );
     ~RutaComercialView();
     virtual void pintar() {};
-    void setMainCompany ( Company *comp );
+    void setMainCompany ( BfCompany *comp );
     virtual int guardar();
     virtual int cargar ( QString id );
 };

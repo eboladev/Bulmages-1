@@ -26,7 +26,7 @@
 
 #include "pedidosproveedorlist.h"
 #include "blfunctions.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "pedidoproveedorview.h"
 
@@ -60,7 +60,7 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
 \param parent
 \param flag
 **/
-PedidosProveedorList::PedidosProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
@@ -205,7 +205,7 @@ void PedidosProveedorList::borrar()
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue ( QString ( "idpedidoproveedor" ) );
         if ( modoEdicion() ) {
-            PedidoProveedorView * ppv = new PedidoProveedorView ( ( Company * ) empresaBase(), 0 );
+            PedidoProveedorView * ppv = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
             if ( ppv->cargar ( mdb_idpedidoproveedor ) ) {
                 throw - 1;
             } // end if
@@ -230,7 +230,7 @@ void PedidosProveedorList::editar ( int row )
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue ( QString ( "idpedidoproveedor" ), row );
         if ( modoEdicion() ) {
-            PedidoProveedorView * prov = new PedidoProveedorView ( ( Company * ) empresaBase(), 0 );
+            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
             if ( prov->cargar ( mdb_idpedidoproveedor ) ) {
                 delete prov;
                 return;
@@ -253,7 +253,7 @@ void PedidosProveedorList::editar ( int row )
 void PedidosProveedorList::crear()
 {
     _depura ( "PedidosProveedorList::crear", 0 );
-    PedidoProveedorView *prov = new PedidoProveedorView ( ( Company * ) empresaBase(), 0 );
+    PedidoProveedorView *prov = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
     empresaBase() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END PedidosProveedorList::crear", 0 );
@@ -264,7 +264,7 @@ void PedidosProveedorList::crear()
 /**
 \param comp
 **/
-void PedidosProveedorList::setMainCompany ( Company *comp )
+void PedidosProveedorList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "PedidosProveedorList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

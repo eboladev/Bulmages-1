@@ -567,22 +567,22 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         BusquedaArticuloDelegate * editor = new BusquedaArticuloDelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaArticulo" );
         return editor;
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         BusquedaTipoIVADelegate * editor = new BusquedaTipoIVADelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTipoIVA" );
         return editor;
     } else if ( linea->nomcampo() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
         BusquedaTrabajadorDelegate * editor = new BusquedaTrabajadorDelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
         BusquedaAlmacenDelegate * editor = new BusquedaAlmacenDelegate ( parent );
-        editor->setMainCompany ( ( Company * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );
         return editor;
     } else  {

@@ -26,7 +26,7 @@
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
 #include "plugins.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -84,7 +84,7 @@ QString AlbaranClienteList::idCliDelivNote()
 void AlbaranClienteList::crear()
 {
     _depura ( "AlbaranClienteList::crear", 0 );
-    AlbaranClienteView *bud = new AlbaranClienteView( (Company *) empresaBase(), 0);
+    AlbaranClienteView *bud = new AlbaranClienteView( (BfCompany *) empresaBase(), 0);
     empresaBase()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->pintar();
@@ -137,7 +137,7 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \param editmodo
 \return
 **/
-AlbaranClienteList::AlbaranClienteList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
@@ -192,7 +192,7 @@ void AlbaranClienteList::iniciaForm()
 /**
 \param comp
 **/
-void AlbaranClienteList::setMainCompany ( Company *comp )
+void AlbaranClienteList::setMainCompany ( BfCompany *comp )
 {
     _depura ( "AlbaranClienteList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
@@ -255,7 +255,7 @@ void AlbaranClienteList::editar ( int row )
     _depura ( "AlbaranClienteList::editar", 0 );
     mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ), row );
     if ( modoEdicion() ) {
-        AlbaranClienteView * prov = new AlbaranClienteView(( Company * ) empresaBase(), 0);
+        AlbaranClienteView * prov = new AlbaranClienteView(( BfCompany * ) empresaBase(), 0);
         if ( prov->cargar ( mdb_idalbaran ) ) {
             delete prov;
             return;
@@ -289,7 +289,7 @@ void AlbaranClienteList::borrar()
     try {
         mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ) );
         if ( modoEdicion() ) {
-            AlbaranClienteView * acv = new AlbaranClienteView(( Company * ) empresaBase(), 0);
+            AlbaranClienteView * acv = new AlbaranClienteView(( BfCompany * ) empresaBase(), 0);
             if ( acv->cargar ( mdb_idalbaran ) )
                 throw - 1;
             acv->on_mui_borrar_clicked();

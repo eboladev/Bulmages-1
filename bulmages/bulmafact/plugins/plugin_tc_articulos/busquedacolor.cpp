@@ -20,7 +20,7 @@
 
 #include "blcombobox.h"
 #include "busquedacolor.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -133,7 +133,7 @@ QString BusquedaColor::valorCampo()
 /**
 \param comp
 **/
-void BusquedaColor::setMainCompany ( Company *comp )
+void BusquedaColor::setMainCompany ( BfCompany *comp )
 {
     _depura ( "BusquedaColor::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );

@@ -29,7 +29,7 @@
 
 #include "articulolisttpv.h"
 #include "pgimportfiles.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
@@ -52,7 +52,7 @@
 \param editmodo
 \return
 **/
-ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "ArticuloList1::ArticuloList1", 0 );

@@ -30,5 +30,5 @@
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
-extern "C" MY_EXPORT int Company_createMainWindows_Post(Company *);
+extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 

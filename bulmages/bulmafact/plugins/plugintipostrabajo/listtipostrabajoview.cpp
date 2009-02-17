@@ -30,7 +30,7 @@
 #include <QLayout>
 #include <QMessageBox>
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blconfiguration.h"
 #include "listtipostrabajoview.h"
 #include "blfunctions.h"
@@ -41,7 +41,7 @@
 \param comp
 \param parent
 **/
-ListTiposTrabajoView::ListTiposTrabajoView ( Company *comp, QWidget *parent )
+ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTiposTrabajoView::ListTiposTrabajoView", 1 );

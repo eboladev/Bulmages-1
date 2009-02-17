@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 #include "inventario.h"
-#include "company.h"
+#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -31,7 +31,7 @@
 \param comp
 \param parent
 **/
-Inventario::Inventario ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
     _depura ( "Inventario::Inventario", 0 );
     companyact = comp;

@@ -21,7 +21,7 @@
 #ifndef BUSQUEDATARIFA_H
 #define BUSQUEDATARIFA_H
 
-#include "company.h"
+#include "bfcompany.h"
 #include "blpostgresqlclient.h"
 #include "blcombobox.h"
 
