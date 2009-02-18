@@ -27,14 +27,14 @@
 #include <QTextBrowser>
 
 #include "ticket.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "btsubform.h"
 
 class MTicket : public QTextBrowser, public BlMainCompanyPointer
 {
     Q_OBJECT
 public:
-    MTicket ( EmpresaTPV *emp, QWidget *parent );
+    MTicket ( BtCompany *emp, QWidget *parent );
     virtual ~MTicket();
     virtual void pintar();
 

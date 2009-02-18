@@ -25,7 +25,7 @@
 
 #include "pluginvisor.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "plugins.h"
 #include "ticket.h"
 #include "blapplication.h"

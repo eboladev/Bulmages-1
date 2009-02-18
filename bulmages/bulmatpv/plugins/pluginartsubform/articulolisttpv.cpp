@@ -35,7 +35,7 @@
 #include "busquedatipoarticulo.h"
 #include "blfunctions.h"
 #include "plugins.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 /** Constructor de la ventana de listado de articulos
@@ -213,7 +213,7 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 {
     _depura ( "myplugin::elslot", 0 );
     QString idarticulo =  mui_list->DBvalue ( "idarticulo" );
-    ( ( EmpresaTPV * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
+    ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }
 

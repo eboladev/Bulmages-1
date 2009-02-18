@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include "plugincambioivainc.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "cambio.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -44,13 +44,13 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     return 0;
 }
 
 
-int EmpresaTPV_cobrar ( EmpresaTPV *etpv )
+int BtCompany_cobrar ( BtCompany *etpv )
 {
     QDialog *diag = new QDialog;
     Cambio *camb = new Cambio ( etpv, diag );

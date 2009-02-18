@@ -27,7 +27,7 @@
 #include "blfunctions.h"
 #include "blworkspace.h"
 #include "ui_bulmatpvbase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "listventanas.h"
 #include "blsplashscreen.h"
 #include "blmainwindow.h"
@@ -48,14 +48,14 @@ private:
     /// El workSpace que se va a usar con la aplicacion.
     BlWorkspace *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    EmpresaTPV *m_empresaTPV;
+    BtCompany *m_empresaTPV;
 
 public:
     BulmaTPV ( QString bd );
     ~BulmaTPV();
     BlWorkspace *workspace();
     void createMainWindows ( BlSplashScreen * );
-    EmpresaTPV *empresaTPV();
+    BtCompany *empresaTPV();
     virtual void keyReleaseEvent ( QKeyEvent *e );
 
 public slots:

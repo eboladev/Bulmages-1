@@ -5,7 +5,7 @@
 
 #include "blwidget.h"
 #include "ui_cobrarbase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 class Cobrar : public BlWidget, public Ui_CobrarBase
@@ -13,7 +13,7 @@ class Cobrar : public BlWidget, public Ui_CobrarBase
     Q_OBJECT
 
 public:
-    Cobrar ( EmpresaTPV *emp, QWidget *parent );
+    Cobrar ( BtCompany *emp, QWidget *parent );
     virtual ~Cobrar();
 
 public slots:

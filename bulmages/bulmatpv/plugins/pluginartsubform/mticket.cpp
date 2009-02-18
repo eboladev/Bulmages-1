@@ -61,7 +61,7 @@ void myplugin::elslot1 ( QTableWidgetItem *item )
 /**
 \param bges
 **/
-void myplugin::inicializa ( EmpresaTPV *etpv )
+void myplugin::inicializa ( BtCompany *etpv )
 {
     _depura ( "myplugin::inicializa", 0 );
 

@@ -27,7 +27,7 @@
 #include "pluginartsubform.h"
 #include "blfunctions.h"
 #include "ticket.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "mticket.h"
 #include "busquedaarticulo.h"
 
@@ -48,7 +48,7 @@ int entryPoint ( BulmaTPV *tpv )
 }
 
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
 
     ArticuloList1 *lan = new ArticuloList1 ( ( BfCompany * ) etpv, NULL, 0, ArticuloList1::SelectMode );

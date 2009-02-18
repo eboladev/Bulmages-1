@@ -21,7 +21,7 @@
 
 #include "plugindevolucion2.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "devolucion2.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -36,7 +36,7 @@ MyDevButton * g_plug;
 ///
 /**
 **/
-MyDevButton::MyDevButton ( const QString & text, QWidget * parent, EmpresaTPV *emp ) : QPushButton ( text,  parent )
+MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
     _depura ( "MyDevButton::MyDevButton", 0 );
     m_emp = emp;
@@ -90,7 +90,7 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     // ============ Pruebas con abrevs
     g_plug = new MyDevButton ( "DEVOLUCION", etpv, etpv );

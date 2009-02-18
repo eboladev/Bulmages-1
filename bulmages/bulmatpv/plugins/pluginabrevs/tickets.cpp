@@ -3,14 +3,14 @@
 
 #include "tickets.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "ticket.h"
 
 
 Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     setupUi ( this );
-    EmpresaTPV *emp1 = ( EmpresaTPV * ) emp;
+    BtCompany *emp1 = ( BtCompany * ) emp;
     Ticket *ticket;
     for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
         ticket = emp1->listaTickets() ->at ( i );
@@ -37,7 +37,7 @@ Tickets::~Tickets()
 
 void Tickets::ticketClicked()
 {
-    EmpresaTPV * emp1 = ( EmpresaTPV * ) mainCompany();
+    BtCompany * emp1 = ( BtCompany * ) mainCompany();
     QPushButton *toolbutton = ( QPushButton * ) sender();
     Ticket *ticket;
     for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
@@ -45,7 +45,7 @@ void Tickets::ticketClicked()
 
         if ( toolbutton->text() == ticket->DBvalue ( "nomticket" )
                 && ticket->DBvalue ( "idtrabajador" ) == emp1->ticketActual() ->DBvalue ( "idtrabajador" ) ) {
-            ( ( EmpresaTPV * ) mainCompany() ) ->setTicketActual ( ticket );
+            ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
             ticket->pintar();
         }// end if
     }// end for

@@ -24,7 +24,7 @@
 #include <QVBoxLayout>
 
 #include "pluginartgraficos.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "artgraficos.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -61,7 +61,7 @@ int entryPoint ( BulmaTPV *tpv )
 }
 
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_graf = new ArtGraficos ( etpv, NULL );
     g_main->setCentralWidget ( g_graf );

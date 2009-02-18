@@ -5,7 +5,7 @@
 
 #include "blwidget.h"
 #include "ui_ticketsdevueltosbase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "ticket.h"
 
 class MyDevButtonTD : public QPushButton
@@ -13,8 +13,8 @@ class MyDevButtonTD : public QPushButton
     Q_OBJECT
 
 public:
-    EmpresaTPV *m_emp;
-    MyDevButtonTD ( const QString & text, QWidget * parent = 0, EmpresaTPV *emp = NULL );
+    BtCompany *m_emp;
+    MyDevButtonTD ( const QString & text, QWidget * parent = 0, BtCompany *emp = NULL );
     ~MyDevButtonTD();
 
 public slots:
@@ -27,7 +27,7 @@ class TicketsDevueltos : public BlWidget, public Ui_TicketsDevueltosBase
     Q_OBJECT
 
 public:
-    TicketsDevueltos ( EmpresaTPV *emp, QWidget *parent );
+    TicketsDevueltos ( BtCompany *emp, QWidget *parent );
     virtual ~TicketsDevueltos();
 
 public slots:

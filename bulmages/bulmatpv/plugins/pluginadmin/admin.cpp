@@ -1,7 +1,7 @@
 #include "admin.h"
 #include <QWidget>
 
-Admin::Admin ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
+Admin::Admin ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 }
@@ -17,14 +17,14 @@ void Admin::on_mui_z_clicked()
                                 _( "Realmente desea Realizar la Z?" ),
                                 QMessageBox::Ok,
                                 QMessageBox::Cancel ) == QMessageBox::Ok ) {
-  	  ( ( EmpresaTPV * ) mainCompany() ) ->z();
+  	  ( ( BtCompany * ) mainCompany() ) ->z();
     } // end if
 
 }
 
 void Admin::on_mui_x_clicked()
 {
-    ( ( EmpresaTPV * ) mainCompany() ) ->x();
+    ( ( BtCompany * ) mainCompany() ) ->x();
 }
 
 void Admin::on_mui_salir_clicked()

@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include "pluginadmin.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "admin.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -74,7 +74,7 @@ int exitPoint ( BulmaTPV *tpv )
 }
 
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_admin = new Admin ( etpv, g_admin1 );
 //    g_admin1->setWidget ( g_admin );

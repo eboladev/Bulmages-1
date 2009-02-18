@@ -24,7 +24,7 @@
 #include <QProcess>
 
 #include "pluginabrevs.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "abrevs.h"
 #include "plugins.h"
 #include "blapplication.h"
@@ -73,7 +73,7 @@ int exitPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_tot = new Abrevs ( etpv, g_doc1 );
     g_tot->setObjectName ( "abrevs" );

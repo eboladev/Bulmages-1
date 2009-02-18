@@ -5,7 +5,7 @@
 
 #include "blwidget.h"
 #include "ui_adminbase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 class Admin : public BlWidget, public Ui_AdminBase
@@ -13,7 +13,7 @@ class Admin : public BlWidget, public Ui_AdminBase
     Q_OBJECT
 
 public:
-    Admin ( EmpresaTPV *emp, QWidget *parent );
+    Admin ( BtCompany *emp, QWidget *parent );
     virtual ~Admin();
 
 public slots:

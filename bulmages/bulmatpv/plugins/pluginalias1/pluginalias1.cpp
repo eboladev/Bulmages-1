@@ -23,7 +23,7 @@
 #include <QDockWidget>
 
 #include "pluginalias1.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
@@ -37,7 +37,7 @@ int Ticket_insertarArticuloCodigoNL_Post ( Ticket *tick )
 {
 	BlDbRecordSet *cur=0;
 
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->mainCompany() )->valorInput() + "'";
+    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
 
     cur = tick->mainCompany() ->cargacursor ( query );
     if (cur) {
@@ -61,7 +61,7 @@ int Ticket_insertarArticuloCodigo_Post ( Ticket *tick )
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
-        QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->mainCompany() )->valorInput() + "'";
+        QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );

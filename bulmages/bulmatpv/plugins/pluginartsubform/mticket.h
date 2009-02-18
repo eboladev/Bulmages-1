@@ -25,7 +25,7 @@
 #include <QLabel>
 #include <QTableWidget>
 #include "ticket.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "btsubform.h"
 #include "articulolisttpv.h"
 
@@ -33,13 +33,13 @@ class myplugin : public QObject
 {
     Q_OBJECT
 private:
-    EmpresaTPV *m_etpv;
+    BtCompany *m_etpv;
     ArticuloList1 *m_lan;
 
 public:
     myplugin();
     ~myplugin();
-    void inicializa ( EmpresaTPV *etpv );
+    void inicializa ( BtCompany *etpv );
 
 public slots:
     virtual void elslot ( QString );

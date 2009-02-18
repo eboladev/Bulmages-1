@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMPRESATPV_H
-#define EMPRESATPV_H
+#ifndef BTCOMPANY_H
+#define BTCOMPANY_H
 
 #include <QObject>
 #include <QAssistantClient>
@@ -41,7 +41,7 @@ class BulmaTPV;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class EmpresaTPV : public BlMainCompany, public Input
+class BtCompany : public BlMainCompany, public Input
 {
 private:
     /// Puntero al mainWindow
@@ -50,8 +50,8 @@ private:
     Ticket *m_ticketActual;
 
 public:
-    EmpresaTPV ( BulmaTPV *bges );
-    virtual ~EmpresaTPV();
+    BtCompany ( BulmaTPV *bges );
+    virtual ~BtCompany();
     void createMainWindows ( BlSplashScreen * );
     void guardaConf();
     void cargaConf();

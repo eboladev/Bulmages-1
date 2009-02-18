@@ -15,7 +15,7 @@ extern QTextBrowser *g_browser;
 typedef QMap<QString, BlFixed> base;
 
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
+MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
 {
     _depura ( "MTicket::MTicket", 0 );
 //    emp->pWorkspace() ->addWindow ( this );
@@ -34,7 +34,7 @@ MTicket::~MTicket()
 void MTicket::pintar()
 {
     _depura ( "MTicket::pintar", 0 );
-    Ticket *tick =     ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual();
+    Ticket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";

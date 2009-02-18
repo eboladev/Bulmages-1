@@ -13,7 +13,7 @@
 typedef QMap<QString, BlFixed> base;
 
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
+MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     _depura ( "MTicket::MTicket", 0 );
     setupUi ( this );
@@ -40,7 +40,7 @@ void MTicket::pintar()
         return;
     } // end if
 
-    Ticket *tick =     ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual();
+    Ticket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
@@ -190,7 +190,7 @@ void MTicket::pintar()
 void MTicket::on_mui_subir_clicked()
 {
 /// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Up );
+    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Up );
 
 }
 
@@ -198,14 +198,14 @@ void MTicket::on_mui_subir_clicked()
 void MTicket::on_mui_bajar_clicked()
 {
 /// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Down );
+    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Down );
 }
 
 
 void MTicket::on_mui_borrar_clicked()
 {
 
-    Ticket * tick = ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual();
+    Ticket * tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();

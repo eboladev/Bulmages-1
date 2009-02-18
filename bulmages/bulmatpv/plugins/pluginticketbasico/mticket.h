@@ -26,7 +26,7 @@
 #include <QTableWidget>
 
 #include "ticket.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "ui_mticketbase.h"
 #include "btsubform.h"
 
@@ -36,7 +36,7 @@ class MTicket : public BlWidget, public Ui_MTicketBase
     Q_OBJECT
 
 public:
-    MTicket ( EmpresaTPV *emp, QWidget *parent );
+    MTicket ( BtCompany *emp, QWidget *parent );
     virtual ~MTicket();
     virtual void pintar();
 

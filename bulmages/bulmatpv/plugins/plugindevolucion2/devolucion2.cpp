@@ -10,7 +10,7 @@
 typedef QMap<QString, BlFixed> base;
 
 
-Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
+Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( ( QDialog* ) this );
     this->mui_tablesFrame->setDisabled ( TRUE );

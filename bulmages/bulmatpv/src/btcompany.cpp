@@ -36,20 +36,20 @@
 /**
 \param bges
 **/
-EmpresaTPV::EmpresaTPV ( BulmaTPV *bges ) : BlMainCompany(), Input ( this )
+BtCompany::BtCompany ( BulmaTPV *bges ) : BlMainCompany(), Input ( this )
 {
-    _depura ( "EmpresaTPV::EmpresaTPV", 0 );
+    _depura ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;
-    _depura ( "END EmpresaTPV::EmpresaTPV", 0 );
+    _depura ( "END BtCompany::BtCompany", 0 );
 }
 
 
-/// El destructor de la clase EmpresaTPV borra toda la memoria almacenada.
+/// El destructor de la clase BtCompany borra toda la memoria almacenada.
 /**
 **/
-EmpresaTPV::~EmpresaTPV()
+BtCompany::~BtCompany()
 {
-    _depura ( "EmpresaTPV::~EmpresaTPV", 0 );
+    _depura ( "BtCompany::~BtCompany", 0 );
 
     while ( !m_listaTickets.isEmpty() )
         delete m_listaTickets.takeFirst();
@@ -57,7 +57,7 @@ EmpresaTPV::~EmpresaTPV()
     /// Guardamos la configuracion.
     guardaConf();
 
-    _depura ( "END EmpresaTPV::~EmpresaTPV", 0 );
+    _depura ( "END BtCompany::~BtCompany", 0 );
 }
 
 
@@ -69,9 +69,9 @@ EmpresaTPV::~EmpresaTPV()
 \param splash
 \return
 **/
-void EmpresaTPV::createMainWindows ( BlSplashScreen *splash )
+void BtCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    _depura ( "EmpresaTPV::createMainWindows", 0 );
+    _depura ( "BtCompany::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
     splash->mensaje ( _( "Inicializando listado de articulos" ) );
@@ -88,7 +88,7 @@ void EmpresaTPV::createMainWindows ( BlSplashScreen *splash )
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "EmpresaTPV_createMainWindows_Post", this );
+    int res = g_plugins->lanza ( "BtCompany_createMainWindows_Post", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -99,13 +99,13 @@ void EmpresaTPV::createMainWindows ( BlSplashScreen *splash )
     m_bulmaTPV->statusBar() ->showMessage ( nameDB(), 2000 );
     m_bulmaTPV->setWindowTitle ( _( "Terminal Punto de Venta GPL" ) + " :: " + nameDB() );
 
-    _depura ( "END EmpresaTPV::createMainWindows", 0 );
+    _depura ( "END BtCompany::createMainWindows", 0 );
 }
 
 
-void EmpresaTPV::z()
+void BtCompany::z()
 {
-	if (g_plugins->lanza("EmpresaTPV_z", this) )
+	if (g_plugins->lanza("BtCompany_z", this) )
 		return;
     begin();
 
@@ -322,9 +322,9 @@ void EmpresaTPV::z()
 
 
 
-void EmpresaTPV::x()
+void BtCompany::x()
 {
-	if (g_plugins->lanza("EmpresaTPV_x", this) )
+	if (g_plugins->lanza("BtCompany_x", this) )
 		return;
 
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
@@ -476,23 +476,23 @@ void EmpresaTPV::x()
 
 
 
-Ticket *EmpresaTPV::newTicket()
+Ticket *BtCompany::newTicket()
 {
-    _depura ( "EmpresaTPV::newTicket", 0 );
+    _depura ( "BtCompany::newTicket", 0 );
     /// Lanzamos los plugins necesarios.
     Ticket *bud;
-    if ( g_plugins->lanza ( "EmpresaTPV_newTicket", this, ( void ** ) & bud ) )
+    if ( g_plugins->lanza ( "BtCompany_newTicket", this, ( void ** ) & bud ) )
         return bud;
     bud = new Ticket ( this, NULL );
-    _depura ( "END EmpresaTPV::newTicket", 0 );
+    _depura ( "END BtCompany::newTicket", 0 );
     return bud;
 }
 
-void EmpresaTPV::cobrar()
+void BtCompany::cobrar()
 {
     QString idtrabajador = m_ticketActual->DBvalue ( "idtrabajador" );
 
-    if ( g_plugins->lanza ( "EmpresaTPV_cobrar", this ) ) {
+    if ( g_plugins->lanza ( "BtCompany_cobrar", this ) ) {
         return;
     } // end if
 
@@ -529,21 +529,21 @@ void EmpresaTPV::cobrar()
         tick->pintar();
     }// end if
 
-    g_plugins->lanza ( "EmpresaTPV_cobrar_Post", this );
+    g_plugins->lanza ( "BtCompany_cobrar_Post", this );
 
 }
 
 
 
-Ticket *EmpresaTPV::ticketActual()
+Ticket *BtCompany::ticketActual()
 {
     return m_ticketActual;
 }
-QList<Ticket *> *EmpresaTPV::listaTickets()
+QList<Ticket *> *BtCompany::listaTickets()
 {
     return & m_listaTickets;
 }
-void EmpresaTPV::setTicketActual ( Ticket *tick )
+void BtCompany::setTicketActual ( Ticket *tick )
 {
     m_ticketActual = tick;
 }
@@ -552,7 +552,7 @@ void EmpresaTPV::setTicketActual ( Ticket *tick )
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 /**
 **/
-void EmpresaTPV::guardaConf()
+void BtCompany::guardaConf()
 {
     _depura ( "Company::guardaConf", 0 );
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + nameDB() + ".cfn" );
@@ -580,7 +580,7 @@ void EmpresaTPV::guardaConf()
 /**
 \return
 **/
-void EmpresaTPV::cargaConf()
+void BtCompany::cargaConf()
 {
     _depura ( "Company::cargaConf", 0 );
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + nameDB() + ".cfn" );

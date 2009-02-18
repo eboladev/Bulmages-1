@@ -7,7 +7,7 @@
 #include "blwidget.h"
 #include "ui_trabajadoresbase.h"
 
-class EmpresaTPV;
+class BtCompany;
 
 class Trabajadores : public QDialog, BlMainCompanyPointer, public Ui_TrabajadoresBase
 {

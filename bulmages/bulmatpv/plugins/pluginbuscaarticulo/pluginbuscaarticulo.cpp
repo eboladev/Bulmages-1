@@ -23,7 +23,7 @@
 #include <QDockWidget>
 
 #include "pluginbuscaarticulo.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "plugins.h"
 #include "ticket.h"
 #include "blapplication.h"
@@ -37,7 +37,7 @@
 typedef QMap<QString, BlFixed> base;
 BusquedaArticulo *g_busc;
 BlDockWidget *g_doc1;
-EmpresaTPV * g_emp;
+BtCompany * g_emp;
 
 
 ///
@@ -66,7 +66,7 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_busc = new BusquedaArticulo ( 0 );
     g_busc->setMainCompany ( etpv );

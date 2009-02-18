@@ -7,7 +7,7 @@
 #include "blfunctions.h"
 #include "ui_tecladonumericobase.h"
 #include "blwidget.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 class TecladoNumerico : public BlWidget, public Ui_TecladoNumericoBase
@@ -20,65 +20,65 @@ public:
 
 public slots:
     virtual void on_mui_00_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
     };
     virtual void on_mui_0_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
     };
     virtual void on_mui_1_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_1, "1" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_1, "1" );
     };
     virtual void on_mui_2_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_2, "2" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_2, "2" );
     };
     virtual void on_mui_3_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_3, "3" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_3, "3" );
     };
     virtual void on_mui_4_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_4, "4" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_4, "4" );
     };
     virtual void on_mui_5_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_5, "5" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_5, "5" );
     };
     virtual void on_mui_6_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_6, "6" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_6, "6" );
     };
     virtual void on_mui_7_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_7, "7" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_7, "7" );
     };
     virtual void on_mui_8_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_8, "8" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_8, "8" );
     };
     virtual void on_mui_9_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_9, "9" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_9, "9" );
     };
     virtual void on_mui_punto_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Colon, "." );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Colon, "." );
     };
     virtual void on_mui_borrar_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Backspace );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Backspace );
     };
     virtual void on_mui_articulo_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Return );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Return );
     };
     virtual void on_mui_cantidad_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Asterisk, "*" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Asterisk, "*" );
     };
     virtual void on_mui_precio_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Slash, "/" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Slash, "/" );
     };
     virtual void on_mui_c_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_C, "C" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_C, "C" );
     };
     virtual void on_mui_plus_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Plus, "+" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Plus, "+" );
     };
     virtual void on_mui_minus_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Minus, "-" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Minus, "-" );
     };
     virtual void on_mui_mesa_clicked() {
-        ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_M, "M" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_M, "M" );
     };
 };
 

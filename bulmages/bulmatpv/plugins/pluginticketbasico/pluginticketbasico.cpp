@@ -28,7 +28,7 @@
 
 #include "pluginticketbasico.h"
 #include "ticket.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "mticket.h"
 #include "bldockwidget.h"
 
@@ -81,7 +81,7 @@ int exitPoint ( BulmaTPV *tpv )
 }
 
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_bud =  new MTicket ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );

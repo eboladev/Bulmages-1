@@ -24,7 +24,7 @@
 
 #include "plugintpvivainc.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "escprinter.h"
 
 
@@ -282,7 +282,7 @@ int Ticket_imprimir(Ticket *tick)
 
 
 
-int EmpresaTPV_z(EmpresaTPV * emp)
+int BtCompany_z(BtCompany * emp)
 {
 
     emp->begin();
@@ -498,7 +498,7 @@ int EmpresaTPV_z(EmpresaTPV * emp)
 
 
 
-int EmpresaTPV_x(EmpresaTPV *emp)
+int BtCompany_x(BtCompany *emp)
 {
 
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";

@@ -11,7 +11,7 @@
 typedef QMap<QString, BlFixed> base;
 
 
-Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
+Compra::Compra ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( ( QDialog* ) this );
 /*

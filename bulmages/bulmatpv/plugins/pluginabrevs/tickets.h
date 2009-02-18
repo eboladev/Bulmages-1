@@ -7,7 +7,7 @@
 #include "blwidget.h"
 #include "ui_ticketsbase.h"
 
-class EmpresaTPV;
+class BtCompany;
 
 class Tickets : public QDialog, BlMainCompanyPointer, public Ui_TicketsBase
 {

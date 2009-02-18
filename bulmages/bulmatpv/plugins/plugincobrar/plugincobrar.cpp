@@ -23,7 +23,7 @@
 
 #include "plugincobrar.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "cobrar.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -63,7 +63,7 @@ int entryPoint ( BulmaTPV *tpv )
 }
 
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_cobrar = new Cobrar ( etpv, g_doc1 );
 // etpv->pWorkspace()->addWindow(g_cobrar);

@@ -26,7 +26,7 @@
 
 #include "bulmatpv.h"
 #include "articulolist.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "ticket.h"
 
 
@@ -36,6 +36,6 @@ extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( Ticket *, BlDbRecord * & );
 extern "C" MY_EXPORT int Ticket_ponerPrecio_Post ( Ticket * );
 extern "C" MY_EXPORT int Ticket_imprimir ( Ticket * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
-extern "C" MY_EXPORT int EmpresaTPV_x ( EmpresaTPV * );
-extern "C" MY_EXPORT int EmpresaTPV_z ( EmpresaTPV * );
+extern "C" MY_EXPORT int BtCompany_x ( BtCompany * );
+extern "C" MY_EXPORT int BtCompany_z ( BtCompany * );
 

@@ -71,7 +71,7 @@ BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
     vboxlayout->addWidget ( m_pb );
 
 
-    m_empresaTPV = new EmpresaTPV ( this );
+    m_empresaTPV = new BtCompany ( this );
     m_empresaTPV->setProgressBar ( m_pb );
     m_empresaTPV->init ( bd, "BulmaFact" );
     m_empresaTPV->setWorkspace ( pWorkspace );
@@ -198,7 +198,7 @@ void BulmaTPV::keyReleaseEvent ( QKeyEvent * e )
     m_empresaTPV->keyPressEvent ( e );
 }
 
-EmpresaTPV *BulmaTPV::empresaTPV()
+BtCompany *BulmaTPV::empresaTPV()
 {
     return m_empresaTPV;
 }

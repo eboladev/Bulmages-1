@@ -25,7 +25,7 @@
 #endif
 
 #include "bulmatpv.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "ticket.h"
 
 //extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );

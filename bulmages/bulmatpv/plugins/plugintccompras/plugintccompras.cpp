@@ -21,7 +21,7 @@
 
 #include "plugintccompras.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "compra.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -36,7 +36,7 @@ MyDevButton1 * g_plug;
 ///
 /**
 **/
-MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, EmpresaTPV *emp ) : QPushButton ( text,  parent )
+MyDevButton1::MyDevButton1 ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
     _depura ( "MyDevButton1::MyDevButton1", 0 );
     m_emp = emp;
@@ -92,7 +92,7 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     // ============ Pruebas con abrevs
     g_plug = new MyDevButton1 ( "STOCK", etpv, etpv );

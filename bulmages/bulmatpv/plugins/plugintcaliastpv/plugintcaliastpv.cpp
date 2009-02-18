@@ -24,7 +24,7 @@
 
 #include "plugintcaliastpv.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
@@ -44,7 +44,7 @@ int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &rec )
 
 int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
-    QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->mainCompany() )->valorInput() + "'";
+    QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
     BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
     if ( !cur->eof() ) {
         BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
@@ -68,7 +68,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
-        QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->mainCompany() )->valorInput() + "'";
+        QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
@@ -91,7 +91,7 @@ int MTicket_pintar ( MTicket *mtick )
 {
     _depura ( "MTicket_pintar", 0 );
 
-    Ticket *tick =     ( ( EmpresaTPV * ) mtick->mainCompany() ) ->ticketActual();
+    Ticket *tick =     ( ( BtCompany * ) mtick->mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";

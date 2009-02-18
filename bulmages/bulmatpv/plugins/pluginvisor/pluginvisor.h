@@ -25,12 +25,12 @@
 #endif
 
 #include "bulmatpv.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "ticket.h"
 
 extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int exitPoint ( QMainWindow * );
-extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );
+extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( Ticket * );
 extern "C" MY_EXPORT int Ticket_total ( Ticket * );
 

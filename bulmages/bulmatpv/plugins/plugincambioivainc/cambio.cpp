@@ -9,7 +9,7 @@
 typedef QMap<QString, BlFixed> base;
 
 
-Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BlWidget ( emp, parent )
+Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
 
@@ -129,7 +129,7 @@ void Cambio::on_mui_cobrar_clicked()
 
 void Cambio::on_mui_visa_clicked()
 {
-    ( ( EmpresaTPV * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
     ( ( QDialog * ) parent() )->accept();
 }
 

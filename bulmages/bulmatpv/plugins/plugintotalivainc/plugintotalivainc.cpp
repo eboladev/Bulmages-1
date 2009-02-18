@@ -21,7 +21,7 @@
  ***************************************************************************/
 
 #include "plugintotalivainc.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "total.h"
 #include "plugins.h"
 #include "ticket.h"
@@ -61,13 +61,13 @@ int entryPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "plugintotal::EmpresaTPV_createMainWindows_Post", 0 );
+    _depura ( "plugintotal::BtCompany_createMainWindows_Post", 0 );
 
     g_tot = new Total ( etpv, g_doc1 );
     g_doc1->setWidget ( g_tot );
-    _depura ( "END plugintotal::EmpresaTPV_createMainWindows_Post", 0 );
+    _depura ( "END plugintotal::BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }
@@ -93,7 +93,7 @@ int Ticket_pintar ( Ticket *tick )
     base basesimpreqeq;
     BlDbRecord *linea;
 
-    EmpresaTPV *emp = ( EmpresaTPV * ) tick->mainCompany();
+    BtCompany *emp = ( BtCompany * ) tick->mainCompany();
 
     /// Impresion de los contenidos.
     QString l;

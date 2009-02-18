@@ -7,7 +7,7 @@
 #include "blfunctions.h"
 #include "blwidget.h"
 #include "ui_artgraficosbase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 class ArtGraficos : public BlWidget, public Ui_ArtGraficosBase

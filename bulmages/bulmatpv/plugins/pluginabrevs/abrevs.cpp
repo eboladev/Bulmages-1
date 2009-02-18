@@ -7,7 +7,7 @@
 #include "abrevs.h"
 #include "blfunctions.h"
 #include "trabajadores.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "tickets.h"
 
 
@@ -95,7 +95,7 @@ void Abrevs::on_mui_usuario_clicked()
 
 void Abrevs::on_mui_aparcar_clicked()
 {
-    EmpresaTPV * emp = ( EmpresaTPV * ) mainCompany();
+    BtCompany * emp = ( BtCompany * ) mainCompany();
     // El nombre del ticket no puede estar vacio.
     if ( emp->valorInput() == "" ) {
         mensajeAviso ( _( "Asigne un nombre al ticket antes de aparcarlo." ) );
@@ -140,7 +140,7 @@ void Abrevs::on_mui_recuperar_clicked()
 
 void Abrevs::on_mui_cliente_clicked()
 {
-    EmpresaTPV * emp = ( EmpresaTPV * ) mainCompany();
+    BtCompany * emp = ( BtCompany * ) mainCompany();
 
     if ( emp->valorInput() == "" ) return;
     QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorInput() + "'";

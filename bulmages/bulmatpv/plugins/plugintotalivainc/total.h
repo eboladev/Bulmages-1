@@ -5,14 +5,14 @@
 
 #include "blwidget.h"
 #include "ui_totalbase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 class Total : public BlWidget, public Ui_TotalBase
 {
     Q_OBJECT
 
 public:
-    Total ( EmpresaTPV *emp, QWidget *parent );
+    Total ( BtCompany *emp, QWidget *parent );
     virtual ~Total();
 
 public slots:

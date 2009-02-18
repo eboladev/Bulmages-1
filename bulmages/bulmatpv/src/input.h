@@ -9,7 +9,7 @@
 #include "blfixed.h"
 
 
-class EmpresaTPV;
+class BtCompany;
 
 
 class Input : public QLineEdit
@@ -17,10 +17,10 @@ class Input : public QLineEdit
     Q_OBJECT
 
 private:
-    EmpresaTPV *m_empresaTPV;
+    BtCompany *m_empresaTPV;
 
 public:
-    Input ( EmpresaTPV * );
+    Input ( BtCompany * );
     virtual ~Input();
     virtual void keyPressEvent ( QKeyEvent *e );
     virtual void pulsaTecla ( int tecla, const QString &texto = QString() );

@@ -4,7 +4,7 @@
 #include "trabajadores.h"
 #include "blfunctions.h"
 #include "ticket.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
@@ -38,7 +38,7 @@ Trabajadores::~Trabajadores()
 
 void Trabajadores::trabajadorClicked()
 {
-    EmpresaTPV * emp1 = ( EmpresaTPV * ) mainCompany();
+    BtCompany * emp1 = ( BtCompany * ) mainCompany();
     Ticket *ticket = NULL;
     Ticket *ticketv = NULL;
     bool encontrado = FALSE;
@@ -58,7 +58,7 @@ void Trabajadores::trabajadorClicked()
         ticket = emp1->listaTickets() ->at ( i );
 
         if ( "" == ticket->DBvalue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->DBvalue ( "idtrabajador" ) ) {
-            ( ( EmpresaTPV * ) mainCompany() ) ->setTicketActual ( ticket );
+            ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
             ticket->pintar();
             ticketv = ticket;
         }// end if

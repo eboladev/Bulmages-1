@@ -8,7 +8,7 @@
 #include "ui_abrevsbase.h"
 
 
-class EmpresaTPV;
+class BtCompany;
 
 
 class Abrevs : public BlWidget, public Ui_AbrevsBase

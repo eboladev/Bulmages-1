@@ -5,7 +5,7 @@
 
 #include "blwidget.h"
 #include "ui_cambiobase.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 class Cambio : public BlWidget, public Ui_CambioBase
@@ -16,7 +16,7 @@ public:
     int m_value;
 
 public:
-    Cambio ( EmpresaTPV *emp, QWidget *parent );
+    Cambio ( BtCompany *emp, QWidget *parent );
     virtual ~Cambio();
 
 public slots:

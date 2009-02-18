@@ -1,11 +1,11 @@
 
 
 #include "input.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 #include "plugins.h"
 
 
-Input::Input ( EmpresaTPV *emp )
+Input::Input ( BtCompany *emp )
 {
     /// Establece valores iniciales.
     setText ( "" );

@@ -24,7 +24,7 @@
 
 #include "pluginaliastpv.h"
 #include "blfunctions.h"
-#include "empresatpv.h"
+#include "btcompany.h"
 
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
@@ -41,7 +41,7 @@ int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 
 int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
-    QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->mainCompany() )->valorInput() + "'";
+    QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
     BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
     if ( !cur->eof() ) {
         tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
@@ -60,7 +60,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
-        QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->mainCompany() )->valorInput() + "'";
+        QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
