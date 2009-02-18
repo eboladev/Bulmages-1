@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,37 +19,51 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef TIPOACTIVIDADVIEW_H
+#define TIPOACTIVIDADVIEW_H
 
+#include "blfunctions.h"
+#include <ui_tipoactividadbase.h>
+
+#include "fichabf.h"
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
-#include "blwidget.h"
-#include "busquedareferencia.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-//extern "C" BusquedaProfesor *bp;
-
-
-class MyPlugProf : public QObject, BlMainCompanyPointer
+/// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
+/** */
+class TipoActividadView : public FichaBf, public Ui_TipoActividadBase
 {
     Q_OBJECT
 
-public:
-    Bulmafact *m_bges;
+private:
+    BlDbRecordSet *m_cursortrabajadores;
+    /// Indica cual es el objeto que se esta mostrando.
+    QString mdb_idtrabajador;
+    /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen
+    /// tambien lo indica.
+    QString m_archivoimagen;
+    /// Indica en la lista de trabajadores cual es el item seleccionado.
+    QListWidgetItem *m_item;
+
+private:
+    /// Se encarga de hacer la carga del query inicial y de mostrar la lista bien
+    /// y presentar el elemento que se especifique.
+    void pintar();
+    virtual void imprimir();
 
 public:
-    MyPlugProf();
-    ~MyPlugProf();
-    void inicializa ( Bulmafact * );
+    TipoActividadView ( BfCompany * emp, QWidget *parent = 0 );
+    ~TipoActividadView();
+    bool trataModificado();
+    QString idtrabajador();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_borrar_clicked();
 
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
+private slots:
+    virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
+    virtual void on_mui_nuevo_clicked();
+    virtual void on_mui_imagen_clicked();
 };
+
+#endif
+

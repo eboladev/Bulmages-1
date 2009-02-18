@@ -216,6 +216,14 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>264</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -339,7 +347,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1" >
+       <item row="8" column="1" >
         <spacer>
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
@@ -352,7 +360,7 @@
          </property>
         </spacer>
        </item>
-       <item row="6" column="1" colspan="2" >
+       <item row="7" column="1" colspan="2" >
         <widget class="Busqueda" native="1" name="mui_idprofesor" >
          <property name="sizePolicy" >
           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
@@ -375,9 +383,27 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="1" >
+        <widget class="QComboBox" name="mui_idtipo_actividad" />
+       </item>
+       <item row="6" column="0" >
+        <widget class="QLabel" name="label_2" >
+         <property name="text" >
+          <string>Tipo de Actividad</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>264</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -424,6 +450,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>264</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Alumnos</string>
       </attribute>
@@ -445,6 +479,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_4" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>264</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Asistencias</string>
       </attribute>
@@ -455,6 +497,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>264</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Calendario</string>
       </attribute>
@@ -465,6 +515,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>264</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>BLMonthCalendar</string>
       </attribute>
