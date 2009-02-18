@@ -68,7 +68,8 @@ class BfSubForm : public BlSubForm
 public:
     BfSubFormDelegate *m_delegate;
     BlDbSubFormRecord *m_registrolinea;
-    BlDbSubFormField  *m_campoactual;			/// Usada para pasar parametros a los plugins.
+    /// Usada para pasar parametros a los plugins.
+    BlDbSubFormField  *m_campoactual;
 
 protected:
     QString mdb_idcliente;

@@ -43,12 +43,12 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     mui_listado->setMainCompany ( emp );
     mui_listado->setDBTableName ( "presupuestoc" );
     mui_listado->setDBCampoId ( "idpresupuestoc" );
-    mui_listado->addSHeader ( "idpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );
-    mui_listado->addSHeader ( "idc_coste", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "C. Coste" ) );
-    mui_listado->addSHeader ( "fechapresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Fecha" ) );
-    mui_listado->addSHeader ( "nombrepresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Nombre" ) );
-    mui_listado->addSHeader ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Comentarios" ) );
-    mui_listado->addSHeader ( "archpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Archivo" ) );
+    mui_listado->addSubFormHeader ( "idpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );
+    mui_listado->addSubFormHeader ( "idc_coste", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "C. Coste" ) );
+    mui_listado->addSubFormHeader ( "fechapresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Fecha" ) );
+    mui_listado->addSubFormHeader ( "nombrepresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Nombre" ) );
+    mui_listado->addSubFormHeader ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Comentarios" ) );
+    mui_listado->addSubFormHeader ( "archpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Archivo" ) );
     mui_listado->setinsercion ( FALSE );
 
     presentar();

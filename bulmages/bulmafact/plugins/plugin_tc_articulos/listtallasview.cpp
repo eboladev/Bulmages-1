@@ -96,8 +96,8 @@ ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
     _depura ( "ListTallasSubForm::ListTallasSubForm", 0 );
     setDBTableName ( "tc_talla" );
     setDBCampoId ( "idtc_talla" );
-    addSHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id color" ) );
-    addSHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
+    addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id color" ) );
+    addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
     setinsercion ( TRUE );
     _depura ( "END ListTallasSubForm::ListTallasSubForm", 0 );
 }

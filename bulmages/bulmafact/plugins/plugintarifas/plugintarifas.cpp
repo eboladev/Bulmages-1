@@ -179,14 +179,14 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setMainCompany ( art->empresaBase() );
     l->setDBTableName ( "variaciontarifa" );
     l->setDBCampoId ( "idarticulo" );
-    l->addSHeader ( "idvariaciontarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );
-    l->addSHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "ID articulo" ) );
-    l->addSHeader ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID tarifa" ) );
-    l->addSHeader ( "nomtarifa", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Tarifa" ) );
-    l->addSHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID almacen" ) );
-    l->addSHeader ( "nomalmacen", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
-    l->addSHeader ( "cantidadmayoroigualque", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad mayor o igual que" ) );
-    l->addSHeader ( "porcentajevariacion", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje variacion" ) );
+    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "ID articulo" ) );
+    l->addSubFormHeader ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID tarifa" ) );
+    l->addSubFormHeader ( "nomtarifa", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Tarifa" ) );
+    l->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID almacen" ) );
+    l->addSubFormHeader ( "nomalmacen", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
+    l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad mayor o igual que" ) );
+    l->addSubFormHeader ( "porcentajevariacion", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje variacion" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );

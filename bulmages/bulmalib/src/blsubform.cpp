@@ -346,7 +346,7 @@ void BlSubForm::cargaSpecs()
                 opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
             } // end while
 
-            addSHeader ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, ( BlSubFormHeader::dboptions ) opciones, nompheader );
+            addSubFormHeader ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, ( BlSubFormHeader::dboptions ) opciones, nompheader );
         } // end if
     } // end for
 
@@ -1625,9 +1625,9 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 \param nomp
 \return
 **/
-int BlSubForm::addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp )
+int BlSubForm::addSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp )
 {
-    _depura ( "BlSubForm::addSHeader", 0,  nom );
+    _depura ( "BlSubForm::addSubFormHeader", 0,  nom );
     BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
     mui_listcolumnas->insertRow ( mui_listcolumnas->rowCount() );
@@ -1655,7 +1655,7 @@ int BlSubForm::addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt
     it = new QTableWidgetItem2 ( "" );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 3, it );
 
-    _depura ( "END BlSubForm::addSHeader", 0, nom );
+    _depura ( "END BlSubForm::addSubFormHeader", 0, nom );
     return 0;
 }
 

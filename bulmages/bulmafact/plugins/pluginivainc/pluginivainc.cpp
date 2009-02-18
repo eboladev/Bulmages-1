@@ -83,12 +83,12 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "PVP IVA Inc" ) );
+    artl->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "PVP IVA Inc" ) );
     return 0;
 }
 
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *l) {
-	l->addSHeader ( "pvpivainclalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, "PVP IVA Inc" );
+	l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, "PVP IVA Inc" );
     return 0;
 }
 

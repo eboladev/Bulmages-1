@@ -53,10 +53,10 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     /// Inicializamos el listado.
     mui_listadomantvehiculo->setDBTableName ( "mantvehiculo" );
     mui_listadomantvehiculo->setDBCampoId ( "idmantvehiculo" );
-    mui_listadomantvehiculo->addSHeader ( "idmantvehiculo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idmantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "fechamantvehiculo", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "fechamantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "preciomantvehiculo", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "preciomantvehiculo" ) );
-    mui_listadomantvehiculo->addSHeader ( "idvehiculo", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "idmantvehiculo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idmantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "fechamantvehiculo", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "fechamantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "preciomantvehiculo", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "preciomantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "idvehiculo", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idvehiculo" ) );
     mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones

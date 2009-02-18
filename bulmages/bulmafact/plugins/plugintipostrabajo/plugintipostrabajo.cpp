@@ -194,11 +194,11 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->setMainCompany ( alm->empresaBase() );
     form->setDBTableName ( "almacentipotrabajo" );
     form->setDBCampoId ( "idalmacen" );
-    form->addSHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
-    form->addSHeader ( "numpers", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Numero de cargos necesarios" ) );
-    form->addSHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
-    form->addSHeader ( "idtipotrabajo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tipo de trabajo" ) );
-    form->addSHeader ( "origidtipotrabajo", BlDbField::DBint, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView, _("Id tipo de trabajo") );
+    form->addSubFormHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
+    form->addSubFormHeader ( "numpers", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Numero de cargos necesarios" ) );
+    form->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
+    form->addSubFormHeader ( "idtipotrabajo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tipo de trabajo" ) );
+    form->addSubFormHeader ( "origidtipotrabajo", BlDbField::DBint, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView, _("Id tipo de trabajo") );
 
     form->setinsercion ( TRUE );
     form->setDelete ( TRUE );

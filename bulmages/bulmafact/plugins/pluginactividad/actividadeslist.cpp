@@ -259,8 +259,8 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm (
         return;
     setDBTableName ( "actividad" );
     setDBCampoId ( "idactividad" );
-    addSHeader ( "idactividad", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Actividad" ) );
-    addSHeader ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Actividad" ) );
+    addSubFormHeader ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

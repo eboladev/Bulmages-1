@@ -75,12 +75,12 @@ AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
     /// Inicializamos el listado.
     mui_listcuotas->setDBTableName ( "linamortizacion" );
     mui_listcuotas->setDBCampoId ( "idlinamortizacion" );
-    mui_listcuotas->addSHeader ( "ejercicio", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Ejercicio" ) );
-    mui_listcuotas->addSHeader ( "fechaprevista", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha prevista" ) );
-    mui_listcuotas->addSHeader ( "cantidad", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
-    mui_listcuotas->addSHeader ( "idasiento", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Id asiento" ) );
-    mui_listcuotas->addSHeader ( "idlinamortizacion", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "Id lineas de amortizacion" ) );
-    mui_listcuotas->addSHeader ( "idamortizacion", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id amortizacion" ) );
+    mui_listcuotas->addSubFormHeader ( "ejercicio", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Ejercicio" ) );
+    mui_listcuotas->addSubFormHeader ( "fechaprevista", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha prevista" ) );
+    mui_listcuotas->addSubFormHeader ( "cantidad", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
+    mui_listcuotas->addSubFormHeader ( "idasiento", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Id asiento" ) );
+    mui_listcuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "Id lineas de amortizacion" ) );
+    mui_listcuotas->addSubFormHeader ( "idamortizacion", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id amortizacion" ) );
     mui_listcuotas->setinsercion ( FALSE );
     mui_listcuotas->setOrdenEnabled ( FALSE );
 

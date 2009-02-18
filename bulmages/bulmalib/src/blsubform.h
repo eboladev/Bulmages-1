@@ -253,7 +253,7 @@ public:
     void setColumnCount ( int i );
     void situarse ( unsigned int, unsigned int );
     void situarse1 ( unsigned int, unsigned int );
-    int addSHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp );
+    int addSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp );
     BlDbSubFormRecord *newSDBRecord();
     virtual void setColumnValue ( QString, QString );
     QString DBvalue ( const QString &campo, int row = -1 );

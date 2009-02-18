@@ -73,15 +73,15 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setMainCompany ( art->empresaBase() );
     l->setDBTableName ( "tc_articulo_alias" );
     l->setDBCampoId ( "idarticulo" );
-    l->addSHeader ( "aliastc_articulo_tallacolor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
-    l->addSHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "Id Articulo" ) );
-    l->addSHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
-    l->addSHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
+    l->addSubFormHeader ( "aliastc_articulo_tallacolor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "Id Articulo" ) );
+    l->addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
+    l->addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
 
 
-    l->addSHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
+    l->addSubFormHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
 
-    l->addSHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
+    l->addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
@@ -284,10 +284,10 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProv
 {
     _depura ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0 );
 
-    subform->addSHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
-    subform->addSHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
-    subform->addSHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
+    subform->addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
+    subform->addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
+    subform->addSubFormHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
+    subform->addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
@@ -306,10 +306,10 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProv
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView *subform )
 {
     _depura ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
-    subform->addSHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
-    subform->addSHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
-    subform->addSHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
+    subform->addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
+    subform->addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
+    subform->addSubFormHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
+    subform->addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
@@ -329,10 +329,10 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView *subform )
 {
     _depura ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
-    subform->addSHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
-    subform->addSHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
-    subform->addSHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
+    subform->addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
+    subform->addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
+    subform->addSubFormHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
+    subform->addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
@@ -358,10 +358,10 @@ int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView *subform )
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
     _depura ( "ListLinFacturaView_ListLinFacturaView", 0 );
-    subform->addSHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
-    subform->addSHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
-    subform->addSHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
-    subform->addSHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
+    subform->addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
+    subform->addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Talla" ) );
+    subform->addSubFormHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre color" ) );
+    subform->addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );

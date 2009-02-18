@@ -649,7 +649,7 @@ int EmpresaTPV_x(EmpresaTPV *emp)
 }
 
 int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
-	list->addSHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "PVP Iva Inc." );
+	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "PVP Iva Inc." );
 	return 0;
 }
 
