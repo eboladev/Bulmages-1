@@ -155,7 +155,7 @@ void myplugclipboard::pegaSXC()
             /// Cogemos un valor.
             QString valorcampo = cadena_valores.left ( numchars ).simplified();
             cadena_valores = cadena_valores.right ( cadena_valores.size() - numchars );
-            linea1->setDBvalue ( campos.at ( j ), valorcampo );
+            linea1->setDbValue ( campos.at ( j ), valorcampo );
         } // end for
     } // end for
     _depura ( "END myplugclipboard::pegaSXC", 0 );
@@ -193,7 +193,7 @@ void myplugclipboard::pegaODS()
         /// Iteramos para cada columna.
         for ( int j = 0; j < numcampos; ++j ) {
             /// Cogemos un valor.
-            linea1->setDBvalue ( campos.at ( j ), campos_valores.at ( j ) );
+            linea1->setDbValue ( campos.at ( j ), campos_valores.at ( j ) );
         } // end for
     } // end for
     _depura ( "END myplugclipboard::pegaODS", 0 );

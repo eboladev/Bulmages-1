@@ -72,7 +72,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     setAttribute ( Qt::WA_DeleteOnClose );
     setTitleName ( _( "Balance Jerarquico" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "asiento" );
+    setDbTableName ( "asiento" );
 
     unsigned int numdigitos = mainCompany() ->numdigitosempresa();
 

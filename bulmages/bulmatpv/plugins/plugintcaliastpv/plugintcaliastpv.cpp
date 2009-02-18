@@ -34,10 +34,10 @@ typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &rec )
 {
-    rec->addDBCampo ( "idtc_talla", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Talla" ) );
-    rec->addDBCampo ( "idtc_color", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Color" ) );
-    rec->addDBCampo ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Talla" ) );
-    rec->addDBCampo ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Color" ) );
+    rec->addDbField ( "idtc_talla", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Talla" ) );
+    rec->addDbField ( "idtc_color", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Color" ) );
+    rec->addDbField ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Talla" ) );
+    rec->addDbField ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Color" ) );
 
 }
 
@@ -48,10 +48,10 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
     BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
     if ( !cur->eof() ) {
         BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
-        rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
-        rec->setDBvalue ( "idtc_color", cur->valor ( "idtc_color" ) );
-        rec->setDBvalue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
-        rec->setDBvalue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+        rec->setDbValue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
+        rec->setDbValue ( "idtc_color", cur->valor ( "idtc_color" ) );
+        rec->setDbValue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
+        rec->setDbValue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
         tick->pintar();
     } // end if
     delete cur;
@@ -72,10 +72,10 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
         BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
-            rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
-            rec->setDBvalue ( "idtc_color", cur->valor ( "idtc_color" ) );
-            rec->setDBvalue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
-            rec->setDBvalue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+            rec->setDbValue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
+            rec->setDbValue ( "idtc_color", cur->valor ( "idtc_color" ) );
+            rec->setDbValue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
+            rec->setDbValue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
         } // end if
         delete cur;
         tick->pintar();

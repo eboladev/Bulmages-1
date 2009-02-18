@@ -37,7 +37,7 @@ propiedadesempresa::propiedadesempresa ( BcCompany *emp, QWidget *parent )
 
     setTitleName ( _( "Configuracion" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "configuracion" );
+    setDbTableName ( "configuracion" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -185,8 +185,8 @@ ListConfiguracionSubForm::~ListConfiguracionSubForm()
 ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BcSubForm ( parent )
 {
     _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
-    setDBTableName ( "configuracion" );
-    setDBCampoId ( "nombre" );
+    setDbTableName ( "configuracion" );
+    setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DBvarchar, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView, "Nombre" );
     addSubFormHeader ( "nombre", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
     addSubFormHeader ( "valor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Valor" ) );

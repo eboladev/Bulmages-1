@@ -167,15 +167,15 @@ void GenPedQToolButton::generarFactura1()
 
         /// Traspasamos los datos al pedidocliente.
         fpv->recogeValores();
-        bud->setDBvalue ( "comentpedidocliente", fpv->DBvalue ( "comentpresupuesto" ) );
-        bud->setDBvalue ( "descpedidocliente", fpv->DBvalue ( "descpresupuesto" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "refpedidocliente", fpv->DBvalue ( "refpresupuesto" ) );
-        bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-        bud->setDBvalue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
-        bud->setDBvalue ( "contactpedidocliente", fpv->DBvalue ( "contactpresupuesto" ) );
-        bud->setDBvalue ( "telpedidocliente", fpv->DBvalue ( "telpresupuesto" ) );
-        bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
+        bud->setDbValue ( "comentpedidocliente", fpv->DBvalue ( "comentpresupuesto" ) );
+        bud->setDbValue ( "descpedidocliente", fpv->DBvalue ( "descpresupuesto" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "refpedidocliente", fpv->DBvalue ( "refpresupuesto" ) );
+        bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+        bud->setDbValue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
+        bud->setDbValue ( "contactpedidocliente", fpv->DBvalue ( "contactpresupuesto" ) );
+        bud->setDbValue ( "telpedidocliente", fpv->DBvalue ( "telpresupuesto" ) );
+        bud->setDbValue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al pedidocliente.
         BlDbSubFormRecord *linea, *linea1;
@@ -185,14 +185,14 @@ void GenPedQToolButton::generarFactura1()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "desclpedidocliente", linea->DBvalue ( "desclpresupuesto" ) );
-                linea1->setDBvalue ( "cantlpedidocliente", linea->DBvalue ( "cantlpresupuesto" ) );
-                linea1->setDBvalue ( "pvplpedidocliente", linea->DBvalue ( "pvplpresupuesto" ) );
-                linea1->setDBvalue ( "ivalpedidocliente", linea->DBvalue ( "ivalpresupuesto" ) );
-                linea1->setDBvalue ( "descuentolpedidocliente", linea->DBvalue ( "descuentolpresupuesto" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "desclpedidocliente", linea->DBvalue ( "desclpresupuesto" ) );
+                linea1->setDbValue ( "cantlpedidocliente", linea->DBvalue ( "cantlpresupuesto" ) );
+                linea1->setDbValue ( "pvplpedidocliente", linea->DBvalue ( "pvplpresupuesto" ) );
+                linea1->setDbValue ( "ivalpedidocliente", linea->DBvalue ( "ivalpresupuesto" ) );
+                linea1->setDbValue ( "descuentolpedidocliente", linea->DBvalue ( "descuentolpresupuesto" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -203,8 +203,8 @@ void GenPedQToolButton::generarFactura1()
             if ( linea1->DBvalue ( "proporciondpedidocliente" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
                 bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-                linea->setDBvalue ( "conceptdpedidocliente", linea1->DBvalue ( "conceptdpresupuesto" ) );
-                linea->setDBvalue ( "proporciondpedidocliente", linea1->DBvalue ( "proporciondpresupuesto" ) );
+                linea->setDbValue ( "conceptdpedidocliente", linea1->DBvalue ( "conceptdpresupuesto" ) );
+                linea->setDbValue ( "proporciondpedidocliente", linea1->DBvalue ( "proporciondpresupuesto" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
                 bud->getlistadescuentos() ->nuevoRegistro();
             } // end if

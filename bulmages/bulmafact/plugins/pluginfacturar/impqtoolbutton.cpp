@@ -148,11 +148,11 @@ void ImpQToolButton::click()
 
                 /// Agregamos a comentarios que albaran se corresponde.
                 QString comm = fac->DBvalue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + pres->DBvalue ( "numalbaran" ) + _( "Ref:" ) + " " + pres->DBvalue ( "refalbaran" ) + _( "Fecha:" ) + " " + pres->DBvalue ( "fechaalbaran" ) + ")\n";
-                fac->setDBvalue ( "comentfactura", comm );
-                fac->setDBvalue ( "idforma_pago", pres->DBvalue ( "idforma_pago" ) );
-                fac->setDBvalue ( "reffactura", pres->DBvalue ( "refalbaran" ) );
-                fac->setDBvalue ( "idcliente", pres->DBvalue ( "idcliente" ) );
-                fac->setDBvalue ( "idalmacen", pres->DBvalue ( "idalmacen" ) );
+                fac->setDbValue ( "comentfactura", comm );
+                fac->setDbValue ( "idforma_pago", pres->DBvalue ( "idforma_pago" ) );
+                fac->setDbValue ( "reffactura", pres->DBvalue ( "refalbaran" ) );
+                fac->setDbValue ( "idcliente", pres->DBvalue ( "idcliente" ) );
+                fac->setDbValue ( "idalmacen", pres->DBvalue ( "idalmacen" ) );
 
                 QString l;
                 BlDbSubFormRecord *linea, *linea1;
@@ -163,17 +163,17 @@ void ImpQToolButton::click()
                         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
                         fac->getlistalineas() ->nuevoRegistro();
                         fac->getlistalineas() ->setProcesarCambios ( FALSE );
-                        linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                        linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
-                        linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
-                        linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
-                        linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
+                        linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                        linea1->setDbValue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
+                        linea1->setDbValue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
+                        linea1->setDbValue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
+                        linea1->setDbValue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
                         BlFixed descpar1 = BlFixed ( linea->DBvalue ( "descuentolalbaran" ) );
                         BlFixed descpar = BlFixed ( "1.000" ) - descpar1 / BlFixed ( "100" );
                         BlFixed desc = ( BlFixed ( "1.00" ) - descpar * descgen ) * BlFixed ( "100.00" );
-                        linea1->setDBvalue ( "descuentolfactura", desc.toQString ( '.' ) );
-                        linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                        linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                        linea1->setDbValue ( "descuentolfactura", desc.toQString ( '.' ) );
+                        linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                        linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                         fac->getlistalineas() ->setProcesarCambios ( TRUE );
                         linea1->refresh();
                     } // end if

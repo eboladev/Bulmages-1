@@ -274,8 +274,8 @@ void InventariosSubForm::cargar()
 InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "InventariosSubForm::InventariosSubForm", 0 );
-    setDBTableName ( "inventario" );
-    setDBCampoId ( "idinventario" );
+    setDbTableName ( "inventario" );
+    setDbFieldId ( "idinventario" );
     addSubFormHeader ( "idinventario", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoView, _( "Id inventario" ) );
     addSubFormHeader ( "nominventario", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del inventario" ) );
     addSubFormHeader ( "fechainventario", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha del inventario" ) );

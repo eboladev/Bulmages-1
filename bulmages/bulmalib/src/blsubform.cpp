@@ -611,12 +611,12 @@ void BlSubForm::showConfig()
 /**
 \param nom
 **/
-void BlSubForm::setDBTableName ( QString nom )
+void BlSubForm::setDbTableName ( QString nom )
 {
-    _depura ( "BlSubForm::setDBTableName", 0 );
+    _depura ( "BlSubForm::setDbTableName", 0 );
     m_tablename = nom;
     m_fileconfig = nom;
-    _depura ( "END BlSubForm::setDBTableName", 0 );
+    _depura ( "END BlSubForm::setDbTableName", 0 );
 }
 
 
@@ -648,11 +648,11 @@ void BlSubForm::setFileConfig ( QString nom )
 /**
 \param nom
 **/
-void BlSubForm::setDBCampoId ( QString nom )
+void BlSubForm::setDbFieldId ( QString nom )
 {
-    _depura ( "BlSubForm::setDBCampoId", 0 );
+    _depura ( "BlSubForm::setDbFieldId", 0 );
     m_campoid = nom;
-    _depura ( "END BlSubForm::setDBCampoId", 0 );
+    _depura ( "END BlSubForm::setDbFieldId", 0 );
 }
 
 
@@ -854,13 +854,13 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
 {
     _depura ( "BlSubForm::newDbSubFormRecord", 0 );
     BlDbSubFormRecord *rec = new BlDbSubFormRecord ( mainCompany() );
-    rec->setDBTableName ( m_tablename );
-    rec->setDBCampoId ( m_campoid );
+    rec->setDbTableName ( m_tablename );
+    rec->setDbFieldId ( m_campoid );
 
     BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
-        rec->addDBCampo ( linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
+        rec->addDbField ( linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     } // end for
 
     BlDbSubFormField *camp;
@@ -1674,7 +1674,7 @@ void BlSubForm::setColumnValue ( QString campo, QString valor )
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
         rec = lineaat ( i );
         if ( rec ) {
-            rec->setDBvalue ( campo, valor );
+            rec->setDbValue ( campo, valor );
         } // end if
     } // end for
     _depura ( "END BlSubForm::setColumnValue", 0 );
@@ -1734,9 +1734,9 @@ QString BlSubForm::DBvalue ( const QString &campo, int row )
 \param row   Fila correspondiente a la casilla
 \param valor Valor que tomara la casilla
 **/
-void BlSubForm::setDBvalue ( const QString &campo, int row, const QString &valor )
+void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor )
 {
-    _depura ( "BlSubForm::setDBvalue", 0 );
+    _depura ( "BlSubForm::setDbValue", 0 );
     try {
         BlDbSubFormRecord *rec;
         if ( row == -1 )
@@ -1745,8 +1745,8 @@ void BlSubForm::setDBvalue ( const QString &campo, int row, const QString &valor
             rec = lineaat ( row );
         if ( rec == NULL )
             throw - 1;
-        rec->setDBvalue ( campo, valor );
-        _depura ( "END BlSubForm::setDBvalue", 0 );
+        rec->setDbValue ( campo, valor );
+        _depura ( "END BlSubForm::setDbValue", 0 );
     } catch ( ... ) {
         mensajeInfo ( "Fila inexistente" );
         throw - 1;
@@ -1788,7 +1788,7 @@ int BlSubForm::guardar()
             if ( rec ) {
                 /// Si hay ordenacion de campos ahora la establecemos
                 if ( m_orden ) {
-                    rec->setDBvalue ( "orden" + m_tablename, QString::number ( j ) );
+                    rec->setDbValue ( "orden" + m_tablename, QString::number ( j ) );
                 } // end if
                 rec->refresh();
                 rec->guardar();
@@ -1799,7 +1799,7 @@ int BlSubForm::guardar()
         if ( !m_insercion ) {
             rec = lineaat ( mui_list->rowCount() - 1 );
             if ( m_orden )
-                rec->setDBvalue ( "orden" + m_tablename, QString::number ( mui_list->rowCount() - 1 ) );
+                rec->setDbValue ( "orden" + m_tablename, QString::number ( mui_list->rowCount() - 1 ) );
             rec->refresh();
             rec->guardar();
         } // end if
@@ -1885,8 +1885,8 @@ int BlSubForm::borrar ( int row )
         m_listaborrar.append ( rac );
         m_lista.takeAt ( m_lista.indexOf ( rec ) );
 
-        rac->setDBTableName ( rec->tableName() );
-        rac->setDBCampoId ( rec->campoId() );
+        rac->setDbTableName ( rec->tableName() );
+        rac->setDbFieldId ( rec->campoId() );
         rac->setNuevo ( FALSE );
 
         /// Sacamos celda a celda toda la fila

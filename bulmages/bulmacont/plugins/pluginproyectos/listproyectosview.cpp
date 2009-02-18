@@ -41,8 +41,8 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     setupUi ( this );
     setSubForm ( mui_listado );
     mui_listado->setMainCompany ( emp );
-    mui_listado->setDBTableName ( "presupuestoc" );
-    mui_listado->setDBCampoId ( "idpresupuestoc" );
+    mui_listado->setDbTableName ( "presupuestoc" );
+    mui_listado->setDbFieldId ( "idpresupuestoc" );
     mui_listado->addSubFormHeader ( "idpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );
     mui_listado->addSubFormHeader ( "idc_coste", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "C. Coste" ) );
     mui_listado->addSubFormHeader ( "fechapresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Fecha" ) );

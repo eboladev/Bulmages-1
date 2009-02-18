@@ -176,7 +176,7 @@ void PagosList::crear()
     PagoView *bud = new PagoView( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    bud->setDBvalue ( "idproveedor", m_proveedor->id() );
+    bud->setDbValue ( "idproveedor", m_proveedor->id() );
     bud->pintar();
 }
 
@@ -241,8 +241,8 @@ void PagosList::setidproveedor ( QString val )
 /// =============================================================================
 PagosListSubForm::PagosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    setDBTableName ( "pago" );
-    setDBCampoId ( "idpago" );
+    setDbTableName ( "pago" );
+    setDbFieldId ( "idpago" );
     addSubFormHeader ( "idpago", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id pago" ) );
     addSubFormHeader ( "idproveedor", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Id proveedor" ) );
     addSubFormHeader ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre proveedor" ) );

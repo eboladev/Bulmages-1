@@ -47,7 +47,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
 {
     _depura ( "ListColoresView::ListColoresView", 1 );
     setTitleName ( _( "Colores" ) );
-    setDBTableName ( "tc_color" );
+    setDbTableName ( "tc_color" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -94,8 +94,8 @@ ListColoresView::~ListColoresView()
 ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListColoresSubForm::ListColoresSubForm", 0 );
-    setDBTableName ( "tc_color" );
-    setDBCampoId ( "idtc_color" );
+    setDbTableName ( "tc_color" );
+    setDbFieldId ( "idtc_color" );
     addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id Color" ) );
     addSubFormHeader ( "rgbtc_color", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "RGB Color" ) );
     addSubFormHeader ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre Color" ) );

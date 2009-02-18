@@ -34,8 +34,8 @@ ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView ( QWidget *pa
         : BfSubForm ( parent )
 {
     _depura ( "ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView", 0 );
-    setDBTableName ( "dpedidoproveedor" );
-    setDBCampoId ( "iddpedidoproveedor" );
+    setDbTableName ( "dpedidoproveedor" );
+    setDbFieldId ( "iddpedidoproveedor" );
     addSubFormHeader ( "iddpedidoproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id descuento" ) );
     addSubFormHeader ( "conceptdpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondpedidoproveedor", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );

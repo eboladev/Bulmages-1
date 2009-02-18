@@ -475,9 +475,9 @@ void SelQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
-                rec->setDBvalue ( "selector", "FALSE" );
+                rec->setDbValue ( "selector", "FALSE" );
             } else {
-                rec->setDBvalue ( "selector", "TRUE" );
+                rec->setDbValue ( "selector", "TRUE" );
             } // end if
         } // end for
     }
@@ -491,9 +491,9 @@ void SelQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
-                rec->setDBvalue ( "selector", "FALSE" );
+                rec->setDbValue ( "selector", "FALSE" );
             } else {
-                rec->setDBvalue ( "selector", "TRUE" );
+                rec->setDbValue ( "selector", "TRUE" );
             } // end if
         } // end for
     }
@@ -508,9 +508,9 @@ void SelQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
-                rec->setDBvalue ( "selector", "FALSE" );
+                rec->setDbValue ( "selector", "FALSE" );
             } else {
-                rec->setDBvalue ( "selector", "TRUE" );
+                rec->setDbValue ( "selector", "TRUE" );
             } // end if
         } // end for
     }
@@ -524,9 +524,9 @@ void SelQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
-                rec->setDBvalue ( "selector", "FALSE" );
+                rec->setDbValue ( "selector", "FALSE" );
             } else {
-                rec->setDBvalue ( "selector", "TRUE" );
+                rec->setDbValue ( "selector", "TRUE" );
             } // end if
         } // end for
     }
@@ -539,9 +539,9 @@ void SelQToolButton::click()
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
             if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
-                rec->setDBvalue ( "selector", "FALSE" );
+                rec->setDbValue ( "selector", "FALSE" );
             } else {
-                rec->setDBvalue ( "selector", "TRUE" );
+                rec->setDbValue ( "selector", "TRUE" );
             } // end if
         } // end for
     }

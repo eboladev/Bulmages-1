@@ -50,9 +50,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDBCampo ( "preciocostearticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio Coste" ) );
-    trab->addDBCampo ( "margenarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Margen" ) );
-    trab->addDBCampo ( "actualizarmargenarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Actualizar PVP" ) );
+    trab->addDbField ( "preciocostearticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio Coste" ) );
+    trab->addDbField ( "margenarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Margen" ) );
+    trab->addDbField ( "actualizarmargenarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Actualizar PVP" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -155,16 +155,16 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         cur = subform->mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
-            rec->setDBvalue ( "idarticulo", cur->valor ( "idarticulo" ) );
-            rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+            rec->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
+            rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+            rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
             if (  subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"
                     || subform->tableName() == "lfacturap" ) {
-                rec->setDBvalue ( "desc" + subform->tableName(), cur->valor ( "nomarticulo" ) );
-                rec->setDBvalue ( "cant" + subform->tableName(), "1.00" );
-                rec->setDBvalue ( "descuento" + subform->tableName(), "0.00" );
-                rec->setDBvalue ( "pvp" + subform->tableName(), cur->valor ( "preciocostearticulo" ) );
+                rec->setDbValue ( "desc" + subform->tableName(), cur->valor ( "nomarticulo" ) );
+                rec->setDbValue ( "cant" + subform->tableName(), "1.00" );
+                rec->setDbValue ( "descuento" + subform->tableName(), "0.00" );
+                rec->setDbValue ( "pvp" + subform->tableName(), cur->valor ( "preciocostearticulo" ) );
             } // end if
         } else {
             mensajeAviso ( subform->tr ( "Articulo inexistente" ) );
@@ -177,19 +177,19 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             if ( subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"
                     || subform->tableName() == "lfacturap" ) {
-                rec->setDBvalue ( "iva" + subform->tableName(), cur1->valor ( "porcentasa_iva" ) );
+                rec->setDbValue ( "iva" + subform->tableName(), cur1->valor ( "porcentasa_iva" ) );
 
 
                 if ( subform->idproveedor() != "" ) {
                     cur2 = subform->mainCompany() ->cargacursor ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + subform->idproveedor() );
                     if ( !cur2->eof() ) {
                         if ( cur2->valor ( "recargoeqproveedor" ) == "t" ) {
-                            rec->setDBvalue ( "reqeq" + subform->tableName(), cur1->valor ( "porcentretasa_iva" ) );
+                            rec->setDbValue ( "reqeq" + subform->tableName(), cur1->valor ( "porcentretasa_iva" ) );
                         } // end if
                     } // end if
                     delete cur2;
                 } else {
-                    rec->setDBvalue ( "reqeq" + subform->tableName(), "0" );
+                    rec->setDbValue ( "reqeq" + subform->tableName(), "0" );
                 } // end if
 
             } // end if

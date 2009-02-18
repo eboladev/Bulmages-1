@@ -257,8 +257,8 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
     int res = g_plugins->lanza ( "ProfesoresListSubForm_ProfesoresListSubForm", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "profesor" );
-    setDBCampoId ( "idprofesor" );
+    setDbTableName ( "profesor" );
+    setDbFieldId ( "idprofesor" );
     addSubFormHeader ( "idprofesor", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id profesor" ) );
     addSubFormHeader ( "nombreprofesor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 

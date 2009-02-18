@@ -29,9 +29,9 @@
 DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "DiarioSubForm::DiarioSubForm", 0 );
-    setDBTableName ( "borrador" );
+    setDbTableName ( "borrador" );
     setFileConfig ( "DiarioSubForm" );
-    setDBCampoId ( "idborrador" );
+    setDbFieldId ( "idborrador" );
     addSubFormHeader ( "idasiento", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "idasiento" ) );
 //     addSubFormHeader ( "ordenasientoconfecha", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Asiento" ) );
     addSubFormHeader ( "ordenasiento", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Asiento" ) );

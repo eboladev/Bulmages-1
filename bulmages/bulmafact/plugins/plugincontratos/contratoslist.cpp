@@ -417,8 +417,8 @@ void ContratosList::on_mui_facturar_clicked()
 ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "ContratosListSubform::ContratosListSubform", 0 );
-    setDBTableName ( "contrato" );
-    setDBCampoId ( "idcontrato" );
+    setDbTableName ( "contrato" );
+    setDbFieldId ( "idcontrato" );
     addSubFormHeader ( "idcontrato", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID contrato" ) );
     addSubFormHeader ( "codcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo" ) );
     addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "C.I.F." ) );

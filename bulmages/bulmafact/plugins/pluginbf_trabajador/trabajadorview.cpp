@@ -42,7 +42,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
     _depura ( "TrabajadorView::TrabajadorView", 0 );
 
     setTitleName ( _( "Trabajador" ) );
-    setDBTableName ( "trabajador" );
+    setDbTableName ( "trabajador" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_tab->setDisabled ( TRUE );

@@ -523,7 +523,7 @@ void EmpresaTPV::cobrar()
     /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
     if ( !ticketv ) {
         Ticket * tick = newTicket();
-        tick->setDBvalue ( "idtrabajador", idtrabajador );
+        tick->setDbValue ( "idtrabajador", idtrabajador );
         setTicketActual ( tick );
         m_listaTickets.append ( tick );
         tick->pintar();

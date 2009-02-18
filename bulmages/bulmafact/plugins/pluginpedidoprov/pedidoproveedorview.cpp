@@ -49,21 +49,21 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         setTitleName ( _( "Pedido Proveedor" ) );
-        setDBTableName ( "pedidoproveedor" );
-        setDBCampoId ( "idpedidoproveedor" );
-        addDBCampo ( "idpedidoproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id pedido proveedor" ) );
-        addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
-        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
-        addDBCampo ( "numpedidoproveedor", BlDbField::DBint, BlDbField::DBNothing, _( "Numero pedido proveedor" ) );
-        addDBCampo ( "fechapedidoproveedor", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha pedido proveedor" ) );
-        addDBCampo ( "comentpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario pedido" ) );
-        addDBCampo ( "procesadopedidoproveedor", BlDbField::DBboolean, BlDbField::DBNothing, _( "Pedido procesado" ) );
-        addDBCampo ( "descpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion pedido" ) );
-        addDBCampo ( "refpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia pedido" ) );
-        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
-        addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Id trabajador" ) );
-        addDBCampo ( "contactpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Persona de contacto proveedor" ) );
-        addDBCampo ( "telpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono proveedor" ) );
+        setDbTableName ( "pedidoproveedor" );
+        setDbFieldId ( "idpedidoproveedor" );
+        addDbField ( "idpedidoproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id pedido proveedor" ) );
+        addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
+        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
+        addDbField ( "numpedidoproveedor", BlDbField::DBint, BlDbField::DBNothing, _( "Numero pedido proveedor" ) );
+        addDbField ( "fechapedidoproveedor", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha pedido proveedor" ) );
+        addDbField ( "comentpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario pedido" ) );
+        addDbField ( "procesadopedidoproveedor", BlDbField::DBboolean, BlDbField::DBNothing, _( "Pedido procesado" ) );
+        addDbField ( "descpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion pedido" ) );
+        addDbField ( "refpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia pedido" ) );
+        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+        addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Id trabajador" ) );
+        addDbField ( "contactpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Persona de contacto proveedor" ) );
+        addDbField ( "telpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PedidoProveedorView_PedidoProveedorView", this );

@@ -66,7 +66,7 @@ public:
     virtual void closeEvent ( QCloseEvent * );
     virtual int sacaWindow();
     virtual void meteWindow ( QString , QObject *, bool compdup = TRUE );
-    void setDBTableName ( QString nom );
+    void setDbTableName ( QString nom );
     void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();

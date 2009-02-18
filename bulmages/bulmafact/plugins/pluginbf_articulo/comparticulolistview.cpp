@@ -37,8 +37,8 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
     _depura ( "ListCompArticuloView::ListCompArticuloView", 0 );
-    setDBTableName ( "comparticulo" );
-    setDBCampoId ( "idcomponente" );
+    setDbTableName ( "comparticulo" );
+    setDbFieldId ( "idcomponente" );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave | BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Codigo completo del articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre del articulo" ) );
     addSubFormHeader ( "cantcomparticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad de componente de articulo" ) );
@@ -77,9 +77,9 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
     delete artlist;
     BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo=" + idArticle );
     if ( !cur->eof() ) {
-        rec->setDBvalue ( "idcomponente", idArticle );
-        rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+        rec->setDbValue ( "idcomponente", idArticle );
+        rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+        rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
     } // end if
     _depura ( "END ListCompArticuloView::pressedAsterisk", 0 );
 }
@@ -101,9 +101,9 @@ void ListCompArticuloView::editFinished ( int row, int col )
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         BlDbRecordSet * cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
         if ( !cur->eof() ) {
-            rec->setDBvalue ( "idcomponente", cur->valor ( "idarticulo" ) );
-            rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+            rec->setDbValue ( "idcomponente", cur->valor ( "idarticulo" ) );
+            rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+            rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
         } // end if
     } // end if
     _depura ( "END ListCompArticuloView::editFinished", 0 );

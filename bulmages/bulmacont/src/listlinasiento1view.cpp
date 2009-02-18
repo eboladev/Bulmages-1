@@ -33,9 +33,9 @@ ListLinAsiento1View::ListLinAsiento1View ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
     _depura ( "ListLinAsiento1View::ListLinAsiento1View", 0 );
-    setDBTableName ( "borrador" );
+    setDbTableName ( "borrador" );
     setFileConfig ( "asientotabla" );
-    setDBCampoId ( "idborrador" );
+    setDbFieldId ( "idborrador" );
     addSubFormHeader ( "idapunte", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Id apunte" ) );
     addSubFormHeader ( "fecha", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Fecha" ) );
     addSubFormHeader ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo" ) );

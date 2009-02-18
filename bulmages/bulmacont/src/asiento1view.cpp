@@ -257,7 +257,7 @@ void Asiento1View::on_mui_fecha_enterPressed()
     semaforo = TRUE;
     /// Cambiar la fecha del asiento.
     if ( estadoAsiento1() != Asiento1::ASCerrado && estadoAsiento1() != Asiento1::ASVacio ) {
-        setDBvalue ( "fecha", mui_fecha->text() );
+        setDbValue ( "fecha", mui_fecha->text() );
         Asiento1::guardar();
     } else {
         iniciar_asiento_nuevo();
@@ -359,10 +359,10 @@ void Asiento1View::muestraasiento ( QString v )
 void Asiento1View::prepguardar()
 {
     _depura ( "Asiento1View::prepguardar", 0 );
-    setDBvalue ( "fecha", mui_fecha->text() );
-    setDBvalue ( "ordenasiento", mui_ordenasiento->text() );
-    setDBvalue ( "comentariosasiento", mui_comentariosAsiento->toPlainText() );
-    setDBvalue ( "clase", QString::number ( mui_claseAsiento->currentIndex() ) );
+    setDbValue ( "fecha", mui_fecha->text() );
+    setDbValue ( "ordenasiento", mui_ordenasiento->text() );
+    setDbValue ( "comentariosasiento", mui_comentariosAsiento->toPlainText() );
+    setDbValue ( "clase", QString::number ( mui_claseAsiento->currentIndex() ) );
     _depura ( "END Asiento1View::prepguardar", 0 );
 }
 

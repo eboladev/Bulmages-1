@@ -36,16 +36,16 @@ IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : 
 {
     _depura ( "IncidenciaComercial::IncidenciaComercial", 0 );
     setTitleName ( _( "Incidencia comercial" ) );
-    setDBTableName ( "incidenciacomercial" );
-    setDBCampoId ( "idincidenciacomercial" );
-    addDBCampo ( "idincidenciacomercial", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
-    addDBCampo ( "fechaincidenciacomercial", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
-    addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
-    addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
-    addDBCampo ( "comentincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
-    addDBCampo ( "estadoincidenciacomercial", BlDbField::DBint, BlDbField::DBNotNull, _( "Estado" ) );
-    addDBCampo ( "horaincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Hora" ) );
-    addDBCampo ( "refincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+    setDbTableName ( "incidenciacomercial" );
+    setDbFieldId ( "idincidenciacomercial" );
+    addDbField ( "idincidenciacomercial", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
+    addDbField ( "fechaincidenciacomercial", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
+    addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
+    addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
+    addDbField ( "comentincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
+    addDbField ( "estadoincidenciacomercial", BlDbField::DBint, BlDbField::DBNotNull, _( "Estado" ) );
+    addDbField ( "horaincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Hora" ) );
+    addDbField ( "refincidenciacomercial", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
     _depura ( "END IncidenciaComercial::IncidenciaComercial", 0 );
 
 

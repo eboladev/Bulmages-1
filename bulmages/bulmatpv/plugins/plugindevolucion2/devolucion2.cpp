@@ -464,10 +464,10 @@ void Devolucion::on_mui_efectivoButton_clicked()
             for ( int j = 0; j < lista->size(); ++j ) {
                 BlDbField * camp = lista->at ( j );
                 if ( camp->nomcampo() != "numlalbaran" ) {
-                    nitem->setDBvalue ( camp->nomcampo(), camp->valorcampo() );
+                    nitem->setDbValue ( camp->nomcampo(), camp->valorcampo() );
                 }
                 if ( camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
-                    nitem->setDBvalue ( camp->nomcampo(), "-" + mui_devolverTable->item ( i, 0 )->text() );
+                    nitem->setDbValue ( camp->nomcampo(), "-" + mui_devolverTable->item ( i, 0 )->text() );
                 }
             } // end for
         }

@@ -47,7 +47,7 @@ ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
 {
     _depura ( "ListTallasView::ListTallasView", 1 );
     setTitleName ( _( "Tallas" ) );
-    setDBTableName ( "tc_talla" );
+    setDbTableName ( "tc_talla" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -94,8 +94,8 @@ ListTallasView::~ListTallasView()
 ListTallasSubForm::ListTallasSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListTallasSubForm::ListTallasSubForm", 0 );
-    setDBTableName ( "tc_talla" );
-    setDBCampoId ( "idtc_talla" );
+    setDbTableName ( "tc_talla" );
+    setDbFieldId ( "idtc_talla" );
     addSubFormHeader ( "idtc_talla", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id color" ) );
     addSubFormHeader ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre talla" ) );
     setinsercion ( TRUE );

@@ -35,8 +35,8 @@
 ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinPedidoClienteView::ListLinPedidoClienteView", 0 );
-    setDBTableName ( "lpedidocliente" );
-    setDBCampoId ( "numlpedidocliente" );
+    setDbTableName ( "lpedidocliente" );
+    setDbFieldId ( "numlpedidocliente" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ListLinPedidoClienteView_ListLinPedidoClienteView", this );
     if ( res != 0 ) {

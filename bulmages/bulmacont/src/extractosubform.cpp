@@ -40,9 +40,9 @@ ExtractoSubForm::~ExtractoSubForm()
 ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "ExtractoSubForm::ExtractoSubForm", 0 );
-    setDBTableName ( "apunte" );
+    setDbTableName ( "apunte" );
     setFileConfig ( "ExtractoSubForm" );
-    setDBCampoId ( "idapunte" );
+    setDbFieldId ( "idapunte" );
     addSubFormHeader ( "punteo", BlDbField::DBboolean, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Punteo" ) );
     addSubFormHeader ( "fecha", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBBlockView, _( "Fecha" ) );
     addSubFormHeader ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Cuenta" ) );

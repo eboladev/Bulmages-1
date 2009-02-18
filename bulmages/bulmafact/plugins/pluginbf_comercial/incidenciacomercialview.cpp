@@ -137,13 +137,13 @@ int IncidenciaComercialView::guardar()
     _depura ( "IncidenciaComercialView::guardar", 0 );
     if ( mui_fechaincidenciacomercial->text() == "" )
         return 0;
-    setDBvalue ( "fechaincidenciacomercial", mui_fechaincidenciacomercial->text() );
-    setDBvalue ( "idcliente", mui_idcliente->id() );
-    setDBvalue ( "comentincidenciacomercial", mui_comentincidenciacomercial->toPlainText() );
-    setDBvalue ( "idtrabajador", mui_idtrabajador->id() );
-    setDBvalue ( "estadoincidenciacomercial", mui_estadoincidenciacomercial->estado() );
-    setDBvalue ( "horaincidenciacomercial", mui_horaincidenciacomercial->text() );
-    setDBvalue ( "refincidenciacomercial", mui_refincidenciacomercial->text() );
+    setDbValue ( "fechaincidenciacomercial", mui_fechaincidenciacomercial->text() );
+    setDbValue ( "idcliente", mui_idcliente->id() );
+    setDbValue ( "comentincidenciacomercial", mui_comentincidenciacomercial->toPlainText() );
+    setDbValue ( "idtrabajador", mui_idtrabajador->id() );
+    setDbValue ( "estadoincidenciacomercial", mui_estadoincidenciacomercial->estado() );
+    setDbValue ( "horaincidenciacomercial", mui_horaincidenciacomercial->text() );
+    setDbValue ( "refincidenciacomercial", mui_refincidenciacomercial->text() );
     int err = IncidenciaComercial::guardar();
     _depura ( "END IncidenciaComercialView::guardar", 0 );
     return err;

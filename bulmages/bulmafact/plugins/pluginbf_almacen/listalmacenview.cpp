@@ -47,7 +47,7 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
 {
     _depura ( "ListAlmacenView::ListAlmacenView", 1 );
     setTitleName ( _( "Almacen" ) );
-    setDBTableName ( "almacen" );
+    setDbTableName ( "almacen" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -91,8 +91,8 @@ ListAlmacenView::~ListAlmacenView()
 ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListAlmacenSubForm::ListAlmacenSubForm", 0 );
-    setDBTableName ( "almacen" );
-    setDBCampoId ( "idalmacen" );
+    setDbTableName ( "almacen" );
+    setDbFieldId ( "idalmacen" );
     addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id almacen" ) );
     addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Codigo almacen" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre almacen" ) );

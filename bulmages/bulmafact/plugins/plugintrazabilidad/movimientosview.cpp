@@ -54,7 +54,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     iniciaForm();
-    setDBTableName ( "movimiento" );
+    setDbTableName ( "movimiento" );
     m_cliente->setMainCompany ( mainCompany() );
     m_articulo->setMainCompany ( mainCompany() );
     mui_list->setMainCompany ( mainCompany() );
@@ -170,8 +170,8 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
     int res = g_plugins->lanza ( "MovimientosSubform_MovimientosSubform", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "movimiento" );
-    setDBCampoId ( "idmovimiento" );
+    setDbTableName ( "movimiento" );
+    setDbFieldId ( "idmovimiento" );
     addSubFormHeader ( "idmovimiento", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "idarticulo" ) );
     addSubFormHeader ( "fechamovimiento", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha" ) );
     addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Id articulo" ) );

@@ -41,8 +41,8 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     m_companyact = emp;
     mui_listado->setMainCompany ( m_companyact );
     /// Inicializamos el listado.
-    mui_listado->setDBTableName ( "prevcobro" );
-    mui_listado->setDBCampoId ( "idprevcobro" );
+    mui_listado->setDbTableName ( "prevcobro" );
+    mui_listado->setDbFieldId ( "idprevcobro" );
     mui_listado->addSubFormHeader ( "idprevcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "idprevcobro" ) );
     mui_listado->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "fprevistaprevcobro" ) );
     mui_listado->addSubFormHeader ( "fcobroprevcobro", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "fcobroprevcobro" ) );

@@ -29,8 +29,8 @@
 ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLResArticulo::ListLResArticulo", 0 );
-    setDBTableName ( "lfactura" );
-    setDBCampoId ( "idlfactura" );
+    setDbTableName ( "lfactura" );
+    setDbFieldId ( "idlfactura" );
 
     addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "CIF" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Cliente" ) );
@@ -73,8 +73,8 @@ void ListLResArticulo::cargar ( QString idarticulo )
 ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListEntregas::ListEntregas", 0 );
-    setDBTableName ( "lalbaran" );
-    setDBCampoId ( "idlalbaran" );
+    setDbTableName ( "lalbaran" );
+    setDbFieldId ( "idlalbaran" );
 
     addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "CIF" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Cliente" ) );
@@ -116,8 +116,8 @@ void ListEntregas::cargar ( QString idarticulo )
 ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListCompras::ListCompras", 0 );
-    setDBTableName ( "lfacturap" );
-    setDBCampoId ( "idlfacturap" );
+    setDbTableName ( "lfacturap" );
+    setDbFieldId ( "idlfacturap" );
 
     addSubFormHeader ( "cifproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "CIF" ) );
     addSubFormHeader ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Proveedor" ) );
@@ -160,8 +160,8 @@ void ListCompras::cargar ( QString idarticulo )
 ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListRecogidas::ListRecogidas", 0 );
-    setDBTableName ( "lalbaranp" );
-    setDBCampoId ( "idlalbaranp" );
+    setDbTableName ( "lalbaranp" );
+    setDbFieldId ( "idlalbaranp" );
 
     addSubFormHeader ( "cifproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "CIF" ) );
     addSubFormHeader ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Proveedor" ) );

@@ -143,8 +143,8 @@ void BtSubForm::setIdCliente ( QString id )
     /// Reseteamos los valores.
     for ( int i = 0; i < rowCount() - 1; i++ ) {
         BlDbSubFormRecord *rec = lineaat ( i );
-        rec->setDBvalue ( "iva" + m_tablename, "0" );
-        rec->setDBvalue ( "reqeq" + m_tablename, "0" );
+        rec->setDbValue ( "iva" + m_tablename, "0" );
+        rec->setDbValue ( "reqeq" + m_tablename, "0" );
     } // end for
 
     mdb_idcliente = id;
@@ -166,11 +166,11 @@ void BtSubForm::setIdCliente ( QString id )
             if ( !cur->eof() ) {
 
                 if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
-                    rec->setDBvalue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                    rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
                 } // end if
 
                 if ( curcliente->valor ( "recargoeqcliente" ) == "t" ) {
-                    rec->setDBvalue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                    rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
                 } // end if
 
             } // end if
@@ -206,8 +206,8 @@ void BtSubForm::setIdProveedor ( QString id )
     /// Reseteamos los valores
     for ( int i = 0; i < rowCount() - 1; i++ ) {
         BlDbSubFormRecord *rec = lineaat ( i );
-        rec->setDBvalue ( "iva" + m_tablename, "0" );
-        rec->setDBvalue ( "reqeq" + m_tablename, "0" );
+        rec->setDbValue ( "iva" + m_tablename, "0" );
+        rec->setDbValue ( "reqeq" + m_tablename, "0" );
     } // end for
 
     BlDbRecordSet *curproveedor = mainCompany() ->cargacursor ( "SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor=" + mdb_idproveedor );
@@ -219,10 +219,10 @@ void BtSubForm::setIdProveedor ( QString id )
             BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
                 if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
-                    rec->setDBvalue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
+                    rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );
                 } // end if
                 if ( curproveedor->valor ( "recargoeqproveedor" ) == "t" ) {
-                    rec->setDBvalue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
+                    rec->setDbValue ( "reqeq" + m_tablename, cur1->valor ( "porcentretasa_iva" ) );
                 } // end if
 
             } // end if

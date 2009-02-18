@@ -191,9 +191,9 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
        subform->situarse1(subform->m_prevRow, subform->m_prevCol);
        campact->setText(cur->valor("codigocompletoarticulo"));
       } else {
-       rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
-       rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-       rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+       rec->setDbValue("idarticulo", cur->valor("idarticulo"));
+       rec->setDbValue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
+       rec->setDbValue("nomarticulo", cur->valor("nomarticulo"));
        rec->refresh();
       } // end if
      } // end if

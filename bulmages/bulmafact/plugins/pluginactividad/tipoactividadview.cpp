@@ -42,7 +42,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
     _depura ( "TipoActividadView::TipoActividadView", 0 );
 
     setTitleName ( _( "TipoActividad" ) );
-    setDBTableName ( "trabajador" );
+    setDbTableName ( "trabajador" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_tab->setDisabled ( TRUE );

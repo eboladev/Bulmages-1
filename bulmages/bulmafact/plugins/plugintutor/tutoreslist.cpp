@@ -257,8 +257,8 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     int res = g_plugins->lanza ( "TutoresListSubForm_TutoresListSubForm", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "tutor" );
-    setDBCampoId ( "idtutor" );
+    setDbTableName ( "tutor" );
+    setDbFieldId ( "idtutor" );
     addSubFormHeader ( "idtutor", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tutor" ) );
     addSubFormHeader ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 

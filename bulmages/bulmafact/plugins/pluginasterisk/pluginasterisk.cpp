@@ -50,8 +50,8 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
     _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
 
-    trab->addDBCampo ( "passasterisktrabajador", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Password." ) );
-    trab->addDBCampo ( "validasiempreasterisktrabajador", BlDbField::DBboolean, BlDbField::DBNothing, _( "Valida siempre." ) );
+    trab->addDbField ( "passasterisktrabajador", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Password." ) );
+    trab->addDbField ( "validasiempreasterisktrabajador", BlDbField::DBboolean, BlDbField::DBNothing, _( "Valida siempre." ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -94,8 +94,8 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionestrab" ) );
     l->setMainCompany ( trab->mainCompany() );
-    l->setDBTableName ( "valasterisk" );
-    l->setDBCampoId ( "idvalasterisk" );
+    l->setDbTableName ( "valasterisk" );
+    l->setDbFieldId ( "idvalasterisk" );
     l->addSubFormHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
     l->addSubFormHeader ( "horavalasterisk", BlDbField::DBvarchar, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
     l->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );
@@ -125,7 +125,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "AlmacenView_AlmacenView", 0 );
 
-    alm->addDBCampo ( "extasteriskalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Extension." ) );
+    alm->addDbField ( "extasteriskalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Extension." ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -157,8 +157,8 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     BfSubForm *l = new BfSubForm ( alm );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionesalm" ) );
     l->setMainCompany ( alm->mainCompany() );
-    l->setDBTableName ( "valasterisk" );
-    l->setDBCampoId ( "idvalasterisk" );
+    l->setDbTableName ( "valasterisk" );
+    l->setDbFieldId ( "idvalasterisk" );
     l->addSubFormHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
     l->addSubFormHeader ( "horavalasterisk", BlDbField::DBvarchar, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
     l->addSubFormHeader ( "nomtrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Trabajador" ) );

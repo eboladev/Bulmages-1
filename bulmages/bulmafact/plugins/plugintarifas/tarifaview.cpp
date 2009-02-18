@@ -45,10 +45,10 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setTitleName ( _( "Tarifa" ) );
-    setDBTableName ( "tarifa" );
-    setDBCampoId ( "idtarifa" );
-    addDBCampo ( "idtarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tarifa" ) );
-    addDBCampo ( "nomtarifa", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre de la tarifa" ) );
+    setDbTableName ( "tarifa" );
+    setDbFieldId ( "idtarifa" );
+    addDbField ( "idtarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tarifa" ) );
+    addDbField ( "nomtarifa", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre de la tarifa" ) );
     ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de 
     ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setMainCompany ( comp );
@@ -152,7 +152,7 @@ int TarifaView::cargar ( QString idtarifa )
     mui_actualizar->setEnabled(TRUE);
     mui_borrar->setEnabled(TRUE);
 
-    setDBvalue ( "idtarifa", m_idtarifa );
+    setDbValue ( "idtarifa", m_idtarifa );
     BlDbRecord::cargar ( m_idtarifa );
     mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
@@ -190,7 +190,7 @@ int TarifaView::guardar()
 	return -1;
     } // end if
 
-    setDBvalue ( "nomtarifa", mui_nomtarifa->text() );
+    setDbValue ( "nomtarifa", mui_nomtarifa->text() );
     BlDbRecord::guardar();
     /// Guardamos la lista de componentes.
     mui_list->setColumnValue ( "idtarifa", DBvalue ( "idtarifa" ) );

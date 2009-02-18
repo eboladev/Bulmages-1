@@ -95,13 +95,13 @@ void BlDbSubFormRecord::refresh()
 \param nomp Nombre a mostrar en caso de error
 \return
 **/
-int BlDbSubFormRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp )
+int BlDbSubFormRecord::addDbField ( QString nom, BlDbField::dbtype typ, int res, QString nomp )
 {
-    _depura ( "BlDbSubFormRecord::addDBCampo", 0 );
+    _depura ( "BlDbSubFormRecord::addDbField", 0 );
     BlDbSubFormField *camp = new BlDbSubFormField ( this, m_conexionbase, nom, typ, res, nomp );
     camp->set ( "" );
     m_lista.append ( camp );
-    _depura ( "END BlDbSubFormRecord::addDBCampo", 0 );
+    _depura ( "END BlDbSubFormRecord::addDbField", 0 );
     return 0;
 }
 

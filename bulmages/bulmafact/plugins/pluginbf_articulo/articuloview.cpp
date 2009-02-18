@@ -56,24 +56,24 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         setTitleName ( _( "Articulo" ) );
-        setDBTableName ( "articulo" );
-        setDBCampoId ( "idarticulo" );
-        addDBCampo ( "idarticulo", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
-        addDBCampo ( "codarticulo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Codigo" ) );
-        addDBCampo ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre del articulo" ) );
-        addDBCampo ( "abrevarticulo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Abreviacion" ) );
-        addDBCampo ( "obserarticulo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Observaciones" ) );
-        addDBCampo ( "presentablearticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Incluir en presentaciones" ) );
-        addDBCampo ( "controlstockarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Incluir en control de stock" ) );
-        addDBCampo ( "idtipo_articulo", BlDbField::DBint, BlDbField::DBNothing, _( "Tipo de articulo" ) );
-        addDBCampo ( "idtipo_iva", BlDbField::DBint, BlDbField::DBNotNull, _( "Tipo de I.V.A." ) );
-        addDBCampo ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo completo" ) );
-        addDBCampo ( "idfamilia", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
-        addDBCampo ( "stockarticulo", BlDbField::DBint, BlDbField::DBNothing, _( "Stock" ) );
-        addDBCampo ( "inactivoarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Inactivo" ) );
-        addDBCampo ( "pvparticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "P.V.P. base" ) );
-        addDBCampo ( "pesoundarticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Peso Unidad" ) );
-        addDBCampo ( "volumenundarticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Volumen Unidad" ) );
+        setDbTableName ( "articulo" );
+        setDbFieldId ( "idarticulo" );
+        addDbField ( "idarticulo", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
+        addDbField ( "codarticulo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Codigo" ) );
+        addDbField ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre del articulo" ) );
+        addDbField ( "abrevarticulo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Abreviacion" ) );
+        addDbField ( "obserarticulo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Observaciones" ) );
+        addDbField ( "presentablearticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Incluir en presentaciones" ) );
+        addDbField ( "controlstockarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Incluir en control de stock" ) );
+        addDbField ( "idtipo_articulo", BlDbField::DBint, BlDbField::DBNothing, _( "Tipo de articulo" ) );
+        addDbField ( "idtipo_iva", BlDbField::DBint, BlDbField::DBNotNull, _( "Tipo de I.V.A." ) );
+        addDbField ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo completo" ) );
+        addDbField ( "idfamilia", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
+        addDbField ( "stockarticulo", BlDbField::DBint, BlDbField::DBNothing, _( "Stock" ) );
+        addDbField ( "inactivoarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Inactivo" ) );
+        addDbField ( "pvparticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "P.V.P. base" ) );
+        addDbField ( "pesoundarticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Peso Unidad" ) );
+        addDbField ( "volumenundarticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Volumen Unidad" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ArticuloView_ArticuloView", this );

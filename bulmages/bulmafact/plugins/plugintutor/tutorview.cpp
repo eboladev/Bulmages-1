@@ -46,10 +46,10 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         centrarEnPantalla ( this );
 
         setTitleName ( _( "Tutor" ) );
-        setDBTableName ( "tutor" );
-        setDBCampoId ( "idtutor" );
-        addDBCampo ( "idtutor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tutor" ) );
-        addDBCampo ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del tutor" ) );
+        setDbTableName ( "tutor" );
+        setDbFieldId ( "idtutor" );
+        addDbField ( "idtutor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tutor" ) );
+        addDbField ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del tutor" ) );
 
 
 	mui_idprovincia->setMainCompany ( mainCompany() );

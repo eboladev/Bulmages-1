@@ -41,25 +41,25 @@ RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, 
 {
     _depura ( "RegistroIva::RegistroIva", 0 );
     setTitleName ( _( "Registro IVA" ) );
-    setDBTableName ( "registroiva" );
-    setDBCampoId ( "idregistroiva" );
-    addDBCampo ( "idregistroiva", BlDbField::DBint, BlDbField::DBPrimaryKey, _("Identificador") );
-    addDBCampo ( "contrapartida", BlDbField::DBint, BlDbField::DBNotNull, _("Contrapartida") );
-    addDBCampo ( "baseimp", BlDbField::DBnumeric, BlDbField::DBNotNull, _("Base Imponible") );
-    addDBCampo ( "iva", BlDbField::DBnumeric, BlDbField::DBNotNull, _("IVA") );
-    addDBCampo ( "ffactura", BlDbField::DBdate, BlDbField::DBNotNull, _("Fecha factura") );
-    addDBCampo ( "idborrador", BlDbField::DBint, BlDbField::DBNotNull, _("Borrador") );
-    addDBCampo ( "numorden", BlDbField::DBint, BlDbField::DBNotNull, _("Orden") );
-    addDBCampo ( "cif", BlDbField::DBvarchar, BlDbField::DBNotNull, _("CIF") );
-    addDBCampo ( "idfpago", BlDbField::DBint, BlDbField::DBNothing, _("Forma de pago") );
-    addDBCampo ( "incregistro", BlDbField::DBboolean, BlDbField::DBNotNull, _("Inc registro") );
-    addDBCampo ( "regularizacion", BlDbField::DBboolean, BlDbField::DBNothing, _("Regularizacion") );
-    addDBCampo ( "plan349", BlDbField::DBboolean, BlDbField::DBNothing, _("plan 349") );
-    addDBCampo ( "factemitida", BlDbField::DBboolean, BlDbField::DBNotNull, _("Factura emitida") );
-    addDBCampo ( "rectificaaregistroiva", BlDbField::DBint, BlDbField::DBNothing, _("Rectifica a") );
-    addDBCampo ( "factura", BlDbField::DBvarchar, BlDbField::DBNothing, _("Factura") );
-    addDBCampo ( "femisionregistroiva", BlDbField::DBdate, BlDbField::DBNotNull, _("Fecha emision") );
-    addDBCampo ( "serieregistroiva", BlDbField::DBvarchar, BlDbField::DBNothing, _("Serie") );
+    setDbTableName ( "registroiva" );
+    setDbFieldId ( "idregistroiva" );
+    addDbField ( "idregistroiva", BlDbField::DBint, BlDbField::DBPrimaryKey, _("Identificador") );
+    addDbField ( "contrapartida", BlDbField::DBint, BlDbField::DBNotNull, _("Contrapartida") );
+    addDbField ( "baseimp", BlDbField::DBnumeric, BlDbField::DBNotNull, _("Base Imponible") );
+    addDbField ( "iva", BlDbField::DBnumeric, BlDbField::DBNotNull, _("IVA") );
+    addDbField ( "ffactura", BlDbField::DBdate, BlDbField::DBNotNull, _("Fecha factura") );
+    addDbField ( "idborrador", BlDbField::DBint, BlDbField::DBNotNull, _("Borrador") );
+    addDbField ( "numorden", BlDbField::DBint, BlDbField::DBNotNull, _("Orden") );
+    addDbField ( "cif", BlDbField::DBvarchar, BlDbField::DBNotNull, _("CIF") );
+    addDbField ( "idfpago", BlDbField::DBint, BlDbField::DBNothing, _("Forma de pago") );
+    addDbField ( "incregistro", BlDbField::DBboolean, BlDbField::DBNotNull, _("Inc registro") );
+    addDbField ( "regularizacion", BlDbField::DBboolean, BlDbField::DBNothing, _("Regularizacion") );
+    addDbField ( "plan349", BlDbField::DBboolean, BlDbField::DBNothing, _("plan 349") );
+    addDbField ( "factemitida", BlDbField::DBboolean, BlDbField::DBNotNull, _("Factura emitida") );
+    addDbField ( "rectificaaregistroiva", BlDbField::DBint, BlDbField::DBNothing, _("Rectifica a") );
+    addDbField ( "factura", BlDbField::DBvarchar, BlDbField::DBNothing, _("Factura") );
+    addDbField ( "femisionregistroiva", BlDbField::DBdate, BlDbField::DBNotNull, _("Fecha emision") );
+    addDbField ( "serieregistroiva", BlDbField::DBvarchar, BlDbField::DBNothing, _("Serie") );
     _depura ( "END RegistroIva::RegistroIva", 0 );
 }
 

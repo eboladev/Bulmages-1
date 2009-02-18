@@ -257,8 +257,8 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm (
     int res = g_plugins->lanza ( "ActividadesListSubForm_ActividadesListSubForm", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "actividad" );
-    setDBCampoId ( "idactividad" );
+    setDbTableName ( "actividad" );
+    setDbFieldId ( "idactividad" );
     addSubFormHeader ( "idactividad", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Actividad" ) );
     addSubFormHeader ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 

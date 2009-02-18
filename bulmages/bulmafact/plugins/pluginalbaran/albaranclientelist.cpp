@@ -377,8 +377,8 @@ AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSub
     int res = g_plugins->lanza ( "AlbaranClienteListSubform_AlbaranClienteListSubform", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "albaran" );
-    setDBCampoId ( "idalbaran" );
+    setDbTableName ( "albaran" );
+    setDbFieldId ( "idalbaran" );
     addSubFormHeader ( "refalbaran", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Referencia de albaran" ) );
     addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo de almacen" ) );
     addSubFormHeader ( "numalbaran", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de albaran" ) );

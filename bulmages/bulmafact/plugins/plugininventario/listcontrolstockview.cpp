@@ -29,8 +29,8 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
     _depura ( "ListControlStockView::ListControlStockView", 0 );
-    setDBTableName ( "controlstock" );
-    setDBCampoId ( "idarticulo" );
+    setDbTableName ( "controlstock" );
+    setDbFieldId ( "idarticulo" );
     addSubFormHeader ( "punteocontrolstock", BlDbField::DBboolean, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Punteado" ) );
     addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo almacen" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre almacen" ) );

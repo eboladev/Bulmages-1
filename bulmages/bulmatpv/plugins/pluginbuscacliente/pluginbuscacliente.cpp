@@ -82,7 +82,7 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 int Busqueda_on_m_inputBusqueda_editingFinished_Post ( Busqueda *busc )
 {
     if ( busc->id() != "" && busc == g_busc) {
-        g_emp->ticketActual() ->setDBvalue ( "idcliente", busc->id() );
+        g_emp->ticketActual() ->setDbValue ( "idcliente", busc->id() );
         g_emp->ticketActual() ->pintar();
         g_emp->setValorInput ( "" );
         g_emp->pulsaTecla ( 0, "" );

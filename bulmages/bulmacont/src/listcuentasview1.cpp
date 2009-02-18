@@ -54,7 +54,7 @@ listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags
 
     setTitleName ( _( "Cuenta" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos
-    setDBTableName ( "cuenta" );
+    setDbTableName ( "cuenta" );
 
     m_modo = editmode;
     /// Para el listado de columnas hacemos una inicializaci&oacute;n.

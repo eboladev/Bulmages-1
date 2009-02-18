@@ -29,8 +29,8 @@
 ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLTarifaView::ListLTarifaView", 0 );
-    setDBTableName ( "ltarifa" );
-    setDBCampoId ( "idltarifa" );
+    setDbTableName ( "ltarifa" );
+    setDbFieldId ( "idltarifa" );
     addSubFormHeader ( "nomtarifa", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre tarifa" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre almacen" ) );
     addSubFormHeader ( "pvpltarifa", BlDbField::DBnumeric, BlDbField::DBRequired, BlSubFormHeader::DBNone, _( "Precio de venta" ) );
@@ -52,8 +52,8 @@ ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLTarifaView1::ListLTarifaView1", 0 );
-    setDBTableName ( "ltarifa" );
-    setDBCampoId ( "idltarifa" );
+    setDbTableName ( "ltarifa" );
+    setDbFieldId ( "idltarifa" );
     addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite , _( "Nombre almacen" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo completo del articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite , _( "Nombre articulo" ) );

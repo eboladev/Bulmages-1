@@ -35,7 +35,7 @@ fpagoview::fpagoview ( BcCompany *emp, QWidget *parent )
 
     setTitleName ( _( "Forma de Pago" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "fpago" );
+    setDbTableName ( "fpago" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );

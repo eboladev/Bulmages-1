@@ -346,8 +346,8 @@ void FacturasProveedorList::crear()
 FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
-    setDBTableName ( "facturap" );
-    setDBCampoId ( "idfacturap" );
+    setDbTableName ( "facturap" );
+    setDbFieldId ( "idfacturap" );
     addSubFormHeader ( "reffacturap", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Referencia factura" ) );
     addSubFormHeader ( "idfacturap", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id factura" ) );
     addSubFormHeader ( "numfacturap", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero factura" ) );

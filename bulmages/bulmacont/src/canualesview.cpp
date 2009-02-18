@@ -40,7 +40,7 @@ CAnualesView::CAnualesView ( BcCompany  *emp, QWidget *parent )
     _depura ( "CAnualesView::CAnualesView", 0 );
     setTitleName ( _( "Cuentas Anuales" ) );
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
-    setDBTableName ( "asiento" );
+    setDbTableName ( "asiento" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );

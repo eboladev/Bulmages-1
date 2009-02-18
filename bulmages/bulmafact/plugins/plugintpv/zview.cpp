@@ -53,22 +53,22 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         if ( g_plugins->lanza ( "ZView_ZView", this ) ) return;
 
         setTitleName ( _( "Cuadre de caja" ) );
-        setDBTableName ( "z" );
-        setDBCampoId ( "idz" );
-        addDBCampo ( "idz", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id" ) );
-        addDBCampo ( "fechaz", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
-        addDBCampo ( "horaz", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Hora" ) );
-        addDBCampo ( "totalz", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total" ) );
-        addDBCampo ( "numtickets", BlDbField::DBint, BlDbField::DBNotNull, _( "Num. tickets" ) );
-        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, _( "Id. almacen" ) );
-        addDBCampo ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Almacen" ) );
+        setDbTableName ( "z" );
+        setDbFieldId ( "idz" );
+        addDbField ( "idz", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id" ) );
+        addDbField ( "fechaz", BlDbField::DBdate, BlDbField::DBNotNull, _( "Fecha" ) );
+        addDbField ( "horaz", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Hora" ) );
+        addDbField ( "totalz", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total" ) );
+        addDbField ( "numtickets", BlDbField::DBint, BlDbField::DBNotNull, _( "Num. tickets" ) );
+        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, _( "Id. almacen" ) );
+        addDbField ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Almacen" ) );
 
         mui_idalmacen->setMainCompany ( comp );
 
 
         mui_list->setMainCompany ( comp );
-        mui_list->setDBTableName ( "albaran" );
-        mui_list->setDBCampoId ( "idalbaran" );
+        mui_list->setDbTableName ( "albaran" );
+        mui_list->setDbFieldId ( "idalbaran" );
         mui_list->addSubFormHeader ( "idalbaran",  BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Id albaran" ) );
         mui_list->addSubFormHeader ( "numalbaran",  BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Numero" ) );
         mui_list->addSubFormHeader ( "descalbaran",  BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Descripcion" ) );

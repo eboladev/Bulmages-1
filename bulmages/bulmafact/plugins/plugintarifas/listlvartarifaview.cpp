@@ -120,13 +120,13 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
         QString value = comboBox->currentText();
 	QString idvalue = comboBox->idtarifa();
         model->setData ( index, value );
-	m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtarifa", idvalue );
+	m_subform->lineaat ( index.row() ) ->setDbValue ( "idtarifa", idvalue );
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
         QString value = comboBox->currentText();
 	QString idvalue = comboBox->id();
         model->setData ( index, value );
-        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idalmacen", idvalue );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idalmacen", idvalue );
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
                 || linea->nomcampo() == "porcentajevariacion") {

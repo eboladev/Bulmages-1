@@ -167,7 +167,7 @@ void CobrosList::crear()
     CobroView *bud = new CobroView( (BfCompany *) mainCompany(), 0);
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    bud->setDBvalue ( "idcliente", m_cliente->id() );
+    bud->setDbValue ( "idcliente", m_cliente->id() );
     bud->pintar();
     _depura ( "CobrosList::crear", 0 );
 }
@@ -304,8 +304,8 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     int res = g_plugins->lanza ( "CobrosListSubForm_CobrosListSubForm", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "cobro" );
-    setDBCampoId ( "idcobro" );
+    setDbTableName ( "cobro" );
+    setDbFieldId ( "idcobro" );
     addSubFormHeader ( "idcobro", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID cobro" ) );
     addSubFormHeader ( "idcliente", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ID cliente" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );

@@ -36,8 +36,8 @@
 ListLinAlbaranProveedorView::ListLinAlbaranProveedorView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0 );
-    setDBTableName ( "lalbaranp" );
-    setDBCampoId ( "numlalbaranp" );
+    setDbTableName ( "lalbaranp" );
+    setDbFieldId ( "numlalbaranp" );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", this );

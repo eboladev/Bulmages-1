@@ -41,7 +41,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
     _depura ( "BancoView::BancoView", 0 );
     setTitleName ( _( "Banco" ) );
     /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.
-    setDBTableName ( "banco" );
+    setDbTableName ( "banco" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     groupBox1->setDisabled ( TRUE );

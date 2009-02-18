@@ -51,8 +51,8 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
     m_idalmacen = "";
     setSubForm ( mui_list );
 
-    mui_list->setDBTableName ( "almacen" );
-    mui_list->setDBCampoId ( "idalmacen" );
+    mui_list->setDbTableName ( "almacen" );
+    mui_list->setDbFieldId ( "idalmacen" );
     mui_list->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
     mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo almacen" ) );
     mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre almacen" ) );
@@ -85,8 +85,8 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
-    mui_list->setDBTableName ( "almacen" );
-    mui_list->setDBCampoId ( "idalmacen" );
+    mui_list->setDbTableName ( "almacen" );
+    mui_list->setDbFieldId ( "idalmacen" );
     mui_list->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
     mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo almacen" ) );
     mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre almacen" ) );

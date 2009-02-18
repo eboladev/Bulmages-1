@@ -68,7 +68,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 
     setTitleName ( _( "Asiento Contable" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "asiento" );
+    setDbTableName ( "asiento" );
 
     numdigitos = mainCompany() ->numdigitosempresa();
 

@@ -323,8 +323,8 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
     int res = g_plugins->lanza ( "PedidosClienteListSubform_PedidosClienteListSubform", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "pedidocliente" );
-    setDBCampoId ( "idpedidocliente" );
+    setDbTableName ( "pedidocliente" );
+    setDbFieldId ( "idpedidocliente" );
     addSubFormHeader ( "idpedidocliente", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID pedido" ) );
     addSubFormHeader ( "numpedidocliente", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Pedido" ) );
     addSubFormHeader ( "fechapedidocliente", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );

@@ -37,17 +37,17 @@ Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent
 {
     _depura ( "Contrato::Contrato", 0 );
     setTitleName ( _( "Contrato" ) );
-    setDBTableName ( "contrato" );
-    setDBCampoId ( "idcontrato" );
-    addDBCampo ( "idcontrato",  BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id contrato" ) );
-    addDBCampo ( "idcliente",   BlDbField::DBint, BlDbField::DBNotNull, _( "Id cliente" ) );
-    addDBCampo ( "refcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia contrato" ) );
-    addDBCampo ( "descontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "nomcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "loccontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "periodicidadcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "fincontrato",  BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDBCampo ( "ffincontrato", BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    setDbTableName ( "contrato" );
+    setDbFieldId ( "idcontrato" );
+    addDbField ( "idcontrato",  BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id contrato" ) );
+    addDbField ( "idcliente",   BlDbField::DBint, BlDbField::DBNotNull, _( "Id cliente" ) );
+    addDbField ( "refcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia contrato" ) );
+    addDbField ( "descontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDbField ( "nomcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDbField ( "loccontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDbField ( "periodicidadcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDbField ( "fincontrato",  BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDbField ( "ffincontrato", BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
     _depura ( "END Contrato::Contrato", 0 );
 }
 
@@ -178,7 +178,7 @@ int Contrato::guardar()
         QString id;
         mainCompany() ->begin();
         DBsave ( id );
-        setDBvalue ( "idcontrato", id );
+        setDbValue ( "idcontrato", id );
         m_listalineas->setColumnValue ( "idcontrato", id );
         m_listalineas->guardar();
         mainCompany() ->commit();

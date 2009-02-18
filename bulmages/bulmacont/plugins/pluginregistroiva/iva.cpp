@@ -28,16 +28,16 @@
 void Iva::definetabla()
 {
     _depura ( "Iva::definetabla", 0 );
-    setDBTableName ( "iva" );
-    setDBCampoId ( "idiva" );
-    addDBCampo ( "idiva", BlDbField::DBint, BlDbField::DBPrimaryKey, "Identificador" );
-    addDBCampo ( "idtipoiva", BlDbField::DBint, BlDbField::DBNotNull, "Id tipo IVA" );
-    addDBCampo ( "idregistroiva", BlDbField::DBint, BlDbField::DBNotNull, "Id registro IVA" );
-    addDBCampo ( "baseiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Cantidad" );
-    addDBCampo ( "ivaiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Precio linea presupuesto" );
-    addDBCampo ( "idcuenta", BlDbField::DBint, BlDbField::DBNoSave, "Id. cuenta" );
-    addDBCampo ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, "Codigo" );
-    addDBCampo ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNoSave, "Nombre tipo IVA" );
+    setDbTableName ( "iva" );
+    setDbFieldId ( "idiva" );
+    addDbField ( "idiva", BlDbField::DBint, BlDbField::DBPrimaryKey, "Identificador" );
+    addDbField ( "idtipoiva", BlDbField::DBint, BlDbField::DBNotNull, "Id tipo IVA" );
+    addDbField ( "idregistroiva", BlDbField::DBint, BlDbField::DBNotNull, "Id registro IVA" );
+    addDbField ( "baseiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Cantidad" );
+    addDbField ( "ivaiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Precio linea presupuesto" );
+    addDbField ( "idcuenta", BlDbField::DBint, BlDbField::DBNoSave, "Id. cuenta" );
+    addDbField ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, "Codigo" );
+    addDbField ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNoSave, "Nombre tipo IVA" );
     _depura ( "END Iva::definetabla", 0 );
 }
 
@@ -148,7 +148,7 @@ void Iva::guardaIva()
         m_companyact->rollback();
         return;
     } // end if
-    setDBvalue ( "idiva", id );
+    setDbValue ( "idiva", id );
     m_companyact->commit();
     _depura ( "END Iva::guardaIva", 0 );
 }
@@ -165,11 +165,11 @@ void Iva::setidtipoiva ( const QString &val )
     BlDbRecordSet *cur = m_companyact->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         _depura ( cur->valor ( "codigo" ), 0 );
-        setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
-        setDBvalue ( "codigo", cur->valor ( "codigo" ) );
-        setDBvalue ( "nombretipoiva", cur->valor ( "nombretipoiva" ) );
+        setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
+        setDbValue ( "codigo", cur->valor ( "codigo" ) );
+        setDbValue ( "nombretipoiva", cur->valor ( "nombretipoiva" ) );
     } // end if
     delete cur;
-    setDBvalue ( "idtipoiva", val );
+    setDbValue ( "idtipoiva", val );
 }
 

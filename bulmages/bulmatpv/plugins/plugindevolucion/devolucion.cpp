@@ -371,10 +371,10 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
                 for ( int j = 0; j < lista->size(); ++j ) {
                     BlDbField * camp = lista->at ( j );
                     if ( camp->nomcampo() != "numlalbaran" ) {
-                        nitem->setDBvalue ( camp->nomcampo(), camp->valorcampo() );
+                        nitem->setDbValue ( camp->nomcampo(), camp->valorcampo() );
                     } // end if
                     if ( camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
-                        nitem->setDBvalue ( camp->nomcampo(), "-1" );
+                        nitem->setDbValue ( camp->nomcampo(), "-1" );
                     }// end if
                 } // end if
             } // end for

@@ -31,8 +31,8 @@ TarifaListSubform::TarifaListSubform ( QWidget *parent )
         : BfSubForm ( parent )
 {
     _depura ( "TarifaListSubform::TarifaListSubform", 0 );
-    setDBTableName ( "tarifa" );
-    setDBCampoId ( "idtarifa" );
+    setDbTableName ( "tarifa" );
+    setDbFieldId ( "idtarifa" );
     addSubFormHeader ( "nomtarifa", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre de la tarifa" ) );
     addSubFormHeader ( "idtarifa", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tarifa" ) );
     setinsercion ( FALSE );

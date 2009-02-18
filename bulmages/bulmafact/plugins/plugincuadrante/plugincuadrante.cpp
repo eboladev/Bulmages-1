@@ -148,10 +148,10 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "esxtoy en la clase almacen", 0 );
 
-    alm->addDBCampo ( "aperturaalmacen", BlDbField::DBvarchar, BlDbField::DBNothing,  "Apertura Manyana" );
-    alm->addDBCampo ( "cierrealmacen", BlDbField::DBvarchar, BlDbField::DBNothing, "Cierre Manyana" );
-    alm->addDBCampo ( "apertura1almacen", BlDbField::DBvarchar, BlDbField::DBNothing,  "Apertura Tarde" );
-    alm->addDBCampo ( "cierre1almacen", BlDbField::DBvarchar, BlDbField::DBNothing, "Cierre Tarde" );
+    alm->addDbField ( "aperturaalmacen", BlDbField::DBvarchar, BlDbField::DBNothing,  "Apertura Manyana" );
+    alm->addDbField ( "cierrealmacen", BlDbField::DBvarchar, BlDbField::DBNothing, "Cierre Manyana" );
+    alm->addDbField ( "apertura1almacen", BlDbField::DBvarchar, BlDbField::DBNothing,  "Apertura Tarde" );
+    alm->addDbField ( "cierre1almacen", BlDbField::DBvarchar, BlDbField::DBNothing, "Cierre Tarde" );
 
 
 // ---------------
@@ -240,8 +240,8 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_ausencias" ) );
     l->setMainCompany ( trab->mainCompany() );
-    l->setDBTableName ( "ausencia" );
-    l->setDBCampoId ( "idausencia" );
+    l->setDbTableName ( "ausencia" );
+    l->setDbFieldId ( "idausencia" );
     l->addSubFormHeader ( "fechainausencia", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNone, _( "Fecha inicial ausencia" ) );
     l->addSubFormHeader ( "fechafinausencia", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha final ausencia" ) );
     l->addSubFormHeader ( "motivoausencia", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "Motivo" ) );

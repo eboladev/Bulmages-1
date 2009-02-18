@@ -72,8 +72,8 @@ ListZonaComercialView::~ListZonaComercialView()
 ListZonaComercialSubForm::ListZonaComercialSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListZonaComercialSubForm::ListZonaComercialSubForm", 0 );
-    setDBTableName ( "zonacomercial" );
-    setDBCampoId ( "idzonacomercial" );
+    setDbTableName ( "zonacomercial" );
+    setDbFieldId ( "idzonacomercial" );
     addSubFormHeader ( "idzonacomercial", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "ID zona comercial" ) );
     addSubFormHeader ( "nomzonacomercial", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre de la zona comercial" ) );
     setinsercion ( TRUE );

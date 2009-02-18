@@ -45,13 +45,13 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
         : FichaBf ( comp, parent )
 {
     _depura ( "ListTiposTrabajoView::ListTiposTrabajoView", 1 );
-    setDBTableName ( _( "almacen" ) );
+    setDbTableName ( _( "almacen" ) );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
 
-    mui_listado->setDBTableName ( "tipotrabajo" );
-    mui_listado->setDBCampoId ( "idtipotrabajo" );
+    mui_listado->setDbTableName ( "tipotrabajo" );
+    mui_listado->setDbFieldId ( "idtipotrabajo" );
     mui_listado->addSubFormHeader ( "idtipotrabajo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id tipo trabajo" ) );
     mui_listado->addSubFormHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre tipo trabajo" ) );
     mui_listado->addSubFormHeader ( "colortipotrabajo", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNone, _( "Color tipo trabajo" ) );

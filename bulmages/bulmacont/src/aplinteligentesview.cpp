@@ -57,7 +57,7 @@ aplinteligentesview::aplinteligentesview ( BcCompany *emp, QWidget *parent )
 
     setTitleName ( _( "Asiento" ) );
     /// Establezco cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "asiento" );
+    setDbTableName ( "asiento" );
 
     /// iniciamos los contadores de variables para que no haya problemas.
     indvariablescta = 0;

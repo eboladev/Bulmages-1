@@ -244,10 +244,10 @@ public:
     /// Define que campo se utilizar&aacute; para unir las filas que tengan el mismo texto (rowSpan).
     /// Es &uacute;til en contabilidad para unir filas del mismo asiento.
     void setColumnToRowSpan ( QString campo );
-    void setDBTableName ( QString nom );
+    void setDbTableName ( QString nom );
     QString tableName();
     void setFileConfig ( QString nom );
-    void setDBCampoId ( QString nom );
+    void setDbFieldId ( QString nom );
     void clear();
     void setRowCount ( int i );
     void setColumnCount ( int i );
@@ -257,7 +257,7 @@ public:
     BlDbSubFormRecord *newDbSubFormRecord();
     virtual void setColumnValue ( QString, QString );
     QString DBvalue ( const QString &campo, int row = -1 );
-    void setDBvalue ( const QString &campo, int row, const QString &valor );
+    void setDbValue ( const QString &campo, int row, const QString &valor );
     BlDbSubFormRecord *lineaact();
     BlDbSubFormRecord *lineaat ( int row );
     virtual void imprimirPDF ( const QString & );

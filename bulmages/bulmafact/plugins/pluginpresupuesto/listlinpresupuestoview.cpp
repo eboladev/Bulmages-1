@@ -36,8 +36,8 @@
 ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinPresupuestoView::ListLinPresupuestoView", 0 );
-    setDBTableName ( "lpresupuesto" );
-    setDBCampoId ( "idlpresupuesto" );
+    setDbTableName ( "lpresupuesto" );
+    setDbFieldId ( "idlpresupuesto" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView", this );
     if ( res != 0 ) {

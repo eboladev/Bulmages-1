@@ -117,11 +117,11 @@ int RutaComercialView::guardar()
     _depura ( "RutaComercialView::guardar", 0 );
     if ( mui_fecharutacomercial->text() == "" )
         return 0;
-    setDBvalue ( "fecharutacomercial", mui_fecharutacomercial->text() );
-    setDBvalue ( "idcliente", mui_idcliente->id() );
-    setDBvalue ( "comentariosrutacomercial", mui_comentrutacomercial->toPlainText() );
-    setDBvalue ( "horarutacomercial", mui_horarutacomercial->text() );
-    setDBvalue ( "refrutacomercial", mui_refrutacomercial->text() );
+    setDbValue ( "fecharutacomercial", mui_fecharutacomercial->text() );
+    setDbValue ( "idcliente", mui_idcliente->id() );
+    setDbValue ( "comentariosrutacomercial", mui_comentrutacomercial->toPlainText() );
+    setDbValue ( "horarutacomercial", mui_horarutacomercial->text() );
+    setDbValue ( "refrutacomercial", mui_refrutacomercial->text() );
     int err = RutaComercial::guardar();
     _depura ( "END RutaComercialView::guardar", 0 );
     return err;

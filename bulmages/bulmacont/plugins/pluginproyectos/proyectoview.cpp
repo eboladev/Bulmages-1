@@ -51,13 +51,13 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         if ( g_plugins->lanza ( "ProyectoView_ProyectoView", this ) ) return;
 
         setTitleName ( _( "Proyecto" ) );
-        setDBTableName ( "presupuestoc" );
-        setDBCampoId ( "idpresupuestoc" );
-        addDBCampo ( "idpresupuestoc", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID almacen" ) );
-        addDBCampo ( "idc_coste", BlDbField::DBint, BlDbField::DBNotNull, _( "Id CCoste" ) );
-        addDBCampo ( "nompresupuestoc", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nom Presupuesto" ) );
-        addDBCampo ( "fechapresupuestoc", BlDbField::DBdate, BlDbField::DBNothing, _( "fecha" ) );
-        addDBCampo ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
+        setDbTableName ( "presupuestoc" );
+        setDbFieldId ( "idpresupuestoc" );
+        addDbField ( "idpresupuestoc", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID almacen" ) );
+        addDbField ( "idc_coste", BlDbField::DBint, BlDbField::DBNotNull, _( "Id CCoste" ) );
+        addDbField ( "nompresupuestoc", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nom Presupuesto" ) );
+        addDbField ( "fechapresupuestoc", BlDbField::DBdate, BlDbField::DBNothing, _( "fecha" ) );
+        addDbField ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
 
         /// Inicializamos componentes.
         mui_idc_coste->setMainCompany ( comp );
@@ -66,8 +66,8 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         mui_gastos->setMainCompany ( comp );
 
         /// Inicializamos el listado.
-        mui_ingresos->setDBTableName ( "lingpresupuestoc" );
-        mui_ingresos->setDBCampoId ( "idlingpresupuestoc" );
+        mui_ingresos->setDbTableName ( "lingpresupuestoc" );
+        mui_ingresos->setDbFieldId ( "idlingpresupuestoc" );
         mui_ingresos->addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "Id. Cuenta" ) );
         mui_ingresos->addSubFormHeader ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo" ) );
         mui_ingresos->addSubFormHeader ( "descripcioncuenta", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Cuenta" ) );
@@ -85,8 +85,8 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
 
 
         /// Inicializamos el listado.
-        mui_gastos->setDBTableName ( "lgaspresupuestoc" );
-        mui_gastos->setDBCampoId ( "idlgaspresupuestoc" );
+        mui_gastos->setDbTableName ( "lgaspresupuestoc" );
+        mui_gastos->setDbFieldId ( "idlgaspresupuestoc" );
         mui_gastos->addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "Id. Cuenta" ) );
         mui_gastos->addSubFormHeader ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo" ) );
         mui_gastos->addSubFormHeader ( "descripcioncuenta", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Cuenta" ) );

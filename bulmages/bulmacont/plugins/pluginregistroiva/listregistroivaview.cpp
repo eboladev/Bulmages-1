@@ -45,8 +45,8 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
 
     /// DEFINICIONES PARA LA TABLA DE IVA Soportado.
     mui_tablasoportado->setMainCompany ( emp );
-    mui_tablasoportado->setDBTableName ( "registroiva" );
-    mui_tablasoportado->setDBCampoId ( "idregistroiva" );
+    mui_tablasoportado->setDbTableName ( "registroiva" );
+    mui_tablasoportado->setDbFieldId ( "idregistroiva" );
     mui_tablasoportado->addSubFormHeader ( "idregistroiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id" ) );
     mui_tablasoportado->addSubFormHeader ( "contrapartida", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Concepto contable" ) );
     mui_tablasoportado->addSubFormHeader ( "baseimp", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idcuenta" ) );
@@ -69,8 +69,8 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
 
     /// DEFINICIONES PARA LA TABLA DE IVA Repercutido.
     mui_tablarepercutido->setMainCompany ( emp );
-    mui_tablarepercutido->setDBTableName ( "registroiva" );
-    mui_tablarepercutido->setDBCampoId ( "idregistroiva" );
+    mui_tablarepercutido->setDbTableName ( "registroiva" );
+    mui_tablarepercutido->setDbFieldId ( "idregistroiva" );
     mui_tablarepercutido->addSubFormHeader ( "idregistroiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id" ) );
     mui_tablarepercutido->addSubFormHeader ( "contrapartida", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Concepto Contable" ) );
     mui_tablarepercutido->addSubFormHeader ( "baseimp", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idcuenta" ) );
@@ -93,8 +93,8 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
 
     /// Definiciones para la tabla de repercutido
     mui_totalRepercutido->setMainCompany ( emp );
-    mui_totalRepercutido->setDBTableName ( "" );
-    mui_totalRepercutido->setDBCampoId ( "" );
+    mui_totalRepercutido->setDbTableName ( "" );
+    mui_totalRepercutido->setDbFieldId ( "" );
     mui_totalRepercutido->addSubFormHeader ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "nombretipoiva" ) );
     mui_totalRepercutido->addSubFormHeader ( "tivaiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tivaiva" ) );
     mui_totalRepercutido->addSubFormHeader ( "tbaseiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tbaseiva" ) );
@@ -102,8 +102,8 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
 
     /// Definiciones para la tabla de soportado
     mui_totalSoportado->setMainCompany ( emp );
-    mui_totalSoportado->setDBTableName ( "" );
-    mui_totalSoportado->setDBCampoId ( "" );
+    mui_totalSoportado->setDbTableName ( "" );
+    mui_totalSoportado->setDbFieldId ( "" );
     mui_totalSoportado->addSubFormHeader ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "nombretipoiva" ) );
     mui_totalSoportado->addSubFormHeader ( "tivaiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tivaiva" ) );
     mui_totalSoportado->addSubFormHeader ( "tbaseiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tbaseiva" ) );

@@ -58,7 +58,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
         if ( g_plugins->lanza ( "CuadranteDiarioView_CuadranteDiarioView", this ) ) return;
 
         setTitleName ( _( "Almacen" ) );
-        setDBTableName ( "almacen" );
+        setDbTableName ( "almacen" );
 
         mui_listtrabajadores->setDragEnabled ( TRUE );
         mui_cuadrante->setAcceptDrops ( TRUE );
@@ -66,8 +66,8 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 
         inicializaTrabajadores();
 
-        mui_listvalidaciones->setDBTableName ( "valasterisk" );
-        mui_listvalidaciones->setDBCampoId ( "idvalasterisk" );
+        mui_listvalidaciones->setDbTableName ( "valasterisk" );
+        mui_listvalidaciones->setDbFieldId ( "idvalasterisk" );
         mui_listvalidaciones->addSubFormHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
         mui_listvalidaciones->addSubFormHeader ( "horavalasterisk", BlDbField::DBvarchar, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Hora" ) );
         mui_listvalidaciones->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone , _( "Almacen" ) );

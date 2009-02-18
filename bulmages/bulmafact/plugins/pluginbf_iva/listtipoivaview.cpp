@@ -47,7 +47,7 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
 {
     _depura ( "ListTipoIVAView::ListTipoIVAView", 1 );
     setTitleName ( _( "Tipo IVA" ) );
-    setDBTableName ( "tipo_iva" );
+    setDbTableName ( "tipo_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -100,8 +100,8 @@ int ListTipoIVAView::sacaWindow() {
 ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
-    setDBTableName ( "tipo_iva" );
-    setDBCampoId ( "idtipo_iva" );
+    setDbTableName ( "tipo_iva" );
+    setDbFieldId ( "idtipo_iva" );
     addSubFormHeader ( "idtipo_iva", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id Tipo IVA" ) );
     addSubFormHeader ( "desctipo_iva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Tipo IVA" ) );
     setinsercion ( TRUE );

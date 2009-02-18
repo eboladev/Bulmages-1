@@ -46,11 +46,11 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         centrarEnPantalla ( this );
 
         setTitleName ( _( "Actividad" ) );
-        setDBTableName ( "actividad" );
-        setDBCampoId ( "idactividad" );
-        addDBCampo ( "idactividad", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID actividad" ) );
-        addDBCampo ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del actividad" ) );
-	addDBCampo ( "idprofesor", BlDbField::DBint, BlDbField::DBNotNull, _("Id profesor"));
+        setDbTableName ( "actividad" );
+        setDbFieldId ( "idactividad" );
+        addDbField ( "idactividad", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID actividad" ) );
+        addDbField ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del actividad" ) );
+	addDbField ( "idprofesor", BlDbField::DBint, BlDbField::DBNotNull, _("Id profesor"));
 
         meteWindow ( windowTitle(), this, FALSE );
 

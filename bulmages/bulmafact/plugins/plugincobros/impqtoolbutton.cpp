@@ -130,10 +130,10 @@ void GenCobroQToolButton::click()
 		if (nuevo) {
 			CobroView *bud = new CobroView(fpv->mainCompany(), 0);
 			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-			bud->setDBvalue ( "cantcobro", fpv->m_totalfactura->text() );
-			bud->setDBvalue ( "refcobro", fpv->DBvalue ( "reffactura" ) );
-			bud->setDBvalue ( "comentcobro", fpv->DBvalue ( "descfactura" ) );
+			bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+			bud->setDbValue ( "cantcobro", fpv->m_totalfactura->text() );
+			bud->setDbValue ( "refcobro", fpv->DBvalue ( "reffactura" ) );
+			bud->setDbValue ( "comentcobro", fpv->DBvalue ( "descfactura" ) );
 			bud->pintar();
 			bud->show();
 		} // end if
@@ -179,10 +179,10 @@ void GenCobroQToolButton::click()
 			if (nuevo) {
 			CobroView *bud = new CobroView((BfCompany *)fpv->mainCompany(), 0);
 			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-			bud->setDBvalue ( "cantcobro", fpv->m_totalalbaran->text() );
-			bud->setDBvalue ( "refcobro", fpv->DBvalue ( "refalbaran" ) );
-			bud->setDBvalue ( "comentcobro", fpv->DBvalue ( "descalbaran" ) );
+			bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+			bud->setDbValue ( "cantcobro", fpv->m_totalalbaran->text() );
+			bud->setDbValue ( "refcobro", fpv->DBvalue ( "refalbaran" ) );
+			bud->setDbValue ( "comentcobro", fpv->DBvalue ( "descalbaran" ) );
 			bud->pintar();
 			bud->show();
 			} // end if
@@ -228,10 +228,10 @@ void GenCobroQToolButton::click()
 			if (nuevo) {
 			CobroView *bud = new CobroView( (BfCompany *) fpv->mainCompany(), 0);
 			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-			bud->setDBvalue ( "cantcobro", fpv->m_totalpedidocliente->text() );
-			bud->setDBvalue ( "refcobro", fpv->DBvalue ( "refpedidocliente" ) );
-			bud->setDBvalue ( "comentcobro", fpv->DBvalue ( "descpedidocliente" ) );
+			bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+			bud->setDbValue ( "cantcobro", fpv->m_totalpedidocliente->text() );
+			bud->setDbValue ( "refcobro", fpv->DBvalue ( "refpedidocliente" ) );
+			bud->setDbValue ( "comentcobro", fpv->DBvalue ( "descpedidocliente" ) );
 			bud->pintar();
 			bud->show();
 			} // end if

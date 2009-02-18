@@ -37,8 +37,8 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
         : BfSubForm ( parent )
 {
     _depura ( "ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
-    setDBTableName ( "lfacturap" );
-    setDBCampoId ( "idlfacturap" );
+    setDbTableName ( "lfacturap" );
+    setDbFieldId ( "idlfacturap" );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", this );

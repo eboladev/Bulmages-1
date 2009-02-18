@@ -39,7 +39,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     setupUi ( this );
     groupBox1->setDisabled ( TRUE );
     setTitleName ( _( "Forma de Pago" ) );
-    setDBTableName ( "forma_pago" );
+    setDbTableName ( "forma_pago" );
     setModoEdicion();
     m_cursorFPagoView = NULL;
     m_item = NULL;

@@ -68,7 +68,7 @@ void Trabajadores::trabajadorClicked()
     /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
     if ( !ticketv ) {
         Ticket * tick = emp1->newTicket();
-        tick->setDBvalue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
+        tick->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
         emp1->setTicketActual ( tick );
         emp1->listaTickets() ->append ( tick );
         tick->pintar();

@@ -43,8 +43,8 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     mui_listprovincias->setMainCompany ( emp );
 
     /// Preparamos la lista de paises.
-    mui_list->setDBTableName ( "pais" );
-    mui_list->setDBCampoId ( "idpais" );
+    mui_list->setDbTableName ( "pais" );
+    mui_list->setDbFieldId ( "idpais" );
     mui_list->addSubFormHeader ( "idpais", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
     mui_list->addSubFormHeader ( "descpais", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre Pais" ) );
     mui_list->addSubFormHeader ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 2 Digitos" ) );
@@ -54,8 +54,8 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     mui_list->setSortingEnabled ( TRUE );
 
     /// Preparamos la lista de provincias.
-    mui_listprovincias->setDBTableName ( "provincia" );
-    mui_listprovincias->setDBCampoId ( "idprovincia" );
+    mui_listprovincias->setDbTableName ( "provincia" );
+    mui_listprovincias->setDbFieldId ( "idprovincia" );
     mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Provincia" ) );
     mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DBint, BlDbField::DBNotNull , BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
     mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Provincia" ) );
@@ -65,12 +65,12 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
 
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setTitleName ( _( "Pais" ) );
-    setDBTableName ( "pais" );
-    setDBCampoId ( "idpais" );
-    addDBCampo ( "idpais", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "idpais" ) );
-    addDBCampo ( "descpais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Pais" ) );
-    addDBCampo ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 2 digitos" ) );
-    addDBCampo ( "cod3pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 3 digitos" ) );
+    setDbTableName ( "pais" );
+    setDbFieldId ( "idpais" );
+    addDbField ( "idpais", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "idpais" ) );
+    addDbField ( "descpais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Pais" ) );
+    addDbField ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 2 digitos" ) );
+    addDbField ( "cod3pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 3 digitos" ) );
 
 
     m_idpais = "0";
@@ -159,9 +159,9 @@ int PaisView::guardar()
     if ( DBvalue ( "idpais" ).isEmpty() ) {
         mensajeInfo ( _( "Seleccione un pais para guardar" ) );
     } else {
-        setDBvalue ( "descpais", mui_descpais->text() );
-        setDBvalue ( "cod2pais", mui_cod2pais->text() );
-        setDBvalue ( "cod3pais", mui_cod3pais->text() );
+        setDbValue ( "descpais", mui_descpais->text() );
+        setDbValue ( "cod2pais", mui_cod2pais->text() );
+        setDbValue ( "cod3pais", mui_cod3pais->text() );
         mainCompany() ->begin();
         DBsave ( id );
         mui_listprovincias->setColumnValue ( "idpais", id );

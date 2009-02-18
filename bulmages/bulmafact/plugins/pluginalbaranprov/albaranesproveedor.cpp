@@ -375,8 +375,8 @@ AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform()
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
-    setDBTableName ( "albaranp" );
-    setDBCampoId ( "idalbaranp" );
+    setDbTableName ( "albaranp" );
+    setDbFieldId ( "idalbaranp" );
     addSubFormHeader ( "idalbaranp", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID albaran" ) );
     addSubFormHeader ( "numalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de albaran" ) );
     addSubFormHeader ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Descripcion" ) );

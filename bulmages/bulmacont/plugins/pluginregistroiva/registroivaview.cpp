@@ -64,8 +64,8 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     m_cursorFPago = NULL;
     cargarComboFPago ( "NULL" );
 
-    mui_listIva->setDBTableName ( "iva" );
-    mui_listIva->setDBCampoId ( "idiva" );
+    mui_listIva->setDbTableName ( "iva" );
+    mui_listIva->setDbFieldId ( "idiva" );
     mui_listIva->addSubFormHeader ( "idiva", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idiva" ) );
     mui_listIva->addSubFormHeader ( "idtipoiva", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "idtipoiva" ) );
     mui_listIva->addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "idcuenta" ) );
@@ -77,8 +77,8 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listIva->addSubFormHeader ( "ivaiva", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "ivaiva" ) );
     mui_listIva->setinsercion ( FALSE );
 
-    mui_listPrevCobro->setDBTableName ( "prevcobro" );
-    mui_listPrevCobro->setDBCampoId ( "idprevcobro" );
+    mui_listPrevCobro->setDbTableName ( "prevcobro" );
+    mui_listPrevCobro->setDbFieldId ( "idprevcobro" );
     mui_listPrevCobro->addSubFormHeader ( "idprevcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idprevcobro" ) );
     mui_listPrevCobro->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "fprevistaprevcobro" ) );
     mui_listPrevCobro->addSubFormHeader ( "fcobroprevcobro", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "fcobroprevcobro" ) );
@@ -257,12 +257,12 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
         } // end if
         _depura ( "Cogemos el registro", 3 );
         BlDbSubFormRecord *rec = mui_listPrevCobro->lineaat ( mui_listPrevCobro->rowCount() - 1 );
-        rec->setDBvalue ( "fprevistaprevcobro", fpcobro.toString ( "dd/MM/yyyy" ) );
-        rec->setDBvalue ( "cantidadprevistaprevcobro", totalplazo.toQString() );
-        rec->setDBvalue ( "tipoprevcobro", tipocobro );
-        rec->setDBvalue ( "codigoctacliente", m_contrapartida->codigocuenta() );
-        rec->setDBvalue ( "idctacliente", m_contrapartida->idcuenta() );
-        rec->setDBvalue ( "nomctacliente", m_contrapartida->nomcuenta() );
+        rec->setDbValue ( "fprevistaprevcobro", fpcobro.toString ( "dd/MM/yyyy" ) );
+        rec->setDbValue ( "cantidadprevistaprevcobro", totalplazo.toQString() );
+        rec->setDbValue ( "tipoprevcobro", tipocobro );
+        rec->setDbValue ( "codigoctacliente", m_contrapartida->codigocuenta() );
+        rec->setDbValue ( "idctacliente", m_contrapartida->idcuenta() );
+        rec->setDbValue ( "nomctacliente", m_contrapartida->nomcuenta() );
         _depura ( "Pintamos", 3 );
         fpcobro = fpcobro.addDays ( plazoentrerecibo );
         mui_listPrevCobro->nuevoRegistro();

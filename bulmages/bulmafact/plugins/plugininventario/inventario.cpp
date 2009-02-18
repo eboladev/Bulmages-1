@@ -36,11 +36,11 @@ Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, pa
     _depura ( "Inventario::Inventario", 0 );
     companyact = comp;
     setTitleName ( _( "Inventario" ) );
-    setDBTableName ( "inventario" );
-    setDBCampoId ( "idinventario" );
-    addDBCampo ( "idinventario", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador inventario" ) );
-    addDBCampo ( "fechainventario", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha inventario" ) );
-    addDBCampo ( "nominventario", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre inventario" ) );
+    setDbTableName ( "inventario" );
+    setDbFieldId ( "idinventario" );
+    addDbField ( "idinventario", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador inventario" ) );
+    addDbField ( "fechainventario", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha inventario" ) );
+    addDbField ( "nominventario", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre inventario" ) );
     _depura ( "END Inventario::Inventario", 0 );
 }
 
@@ -205,7 +205,7 @@ void Inventario::pintanominventario ( QString )
 void Inventario::setidinventario ( QString val )
 {
     _depura ( "Inventario::setidinventario", 0 );
-    setDBvalue ( "idinventario", val );
+    setDbValue ( "idinventario", val );
     listalineas->setColumnValue ( "idinventario", val );
     _depura ( "END Inventario::setidinventario", 0 );
 }
@@ -218,7 +218,7 @@ void Inventario::setidinventario ( QString val )
 void Inventario::setfechainventario ( QString val )
 {
     _depura ( "Inventario::setfechainventario", 0 );
-    setDBvalue ( "fechainventario", val );
+    setDbValue ( "fechainventario", val );
     _depura ( "END Inventario::setfechainventario", 0 );
 }
 
@@ -230,7 +230,7 @@ void Inventario::setfechainventario ( QString val )
 void Inventario::setnominventario ( QString val )
 {
     _depura ( "Inventario::setnominventario", 0 );
-    setDBvalue ( "nominventario", val );
+    setDbValue ( "nominventario", val );
     _depura ( "END Inventario::setnominventario", 0 );
 }
 

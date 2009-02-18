@@ -192,8 +192,8 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->mui_list->setItemDelegate ( form->m_delegate );
     form->setObjectName ( "mui_tipostrabajo" );
     form->setMainCompany ( alm->mainCompany() );
-    form->setDBTableName ( "almacentipotrabajo" );
-    form->setDBCampoId ( "idalmacen" );
+    form->setDbTableName ( "almacentipotrabajo" );
+    form->setDbFieldId ( "idalmacen" );
     form->addSubFormHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
     form->addSubFormHeader ( "numpers", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Numero de cargos necesarios" ) );
     form->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
@@ -313,7 +313,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         BusquedaTipoTrabajoDelegate * comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
-        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtipotrabajo", comboBox->id() );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtipotrabajo", comboBox->id() );
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if

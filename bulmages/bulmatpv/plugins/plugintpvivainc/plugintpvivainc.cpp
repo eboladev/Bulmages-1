@@ -33,7 +33,7 @@ typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 {
-    item->addDBCampo ( "pvpivainclalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "IVA inc." ) );
+    item->addDbField ( "pvpivainclalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "IVA inc." ) );
     return 0;
 }
 
@@ -50,7 +50,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + tick->lineaActTicket()->DBvalue("idarticulo");
         BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            tick->lineaActTicket()->setDBvalue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
+            tick->lineaActTicket()->setDbValue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
 
         } // end if
         delete cur;
@@ -64,7 +64,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
 
 
 int Ticket_ponerPrecio_Post ( Ticket *tick ) {
-	tick->lineaActTicket()->setDBvalue("pvpivainclalbaran", tick->lineaActTicket()->DBvalue("pvplalbaran"));
+	tick->lineaActTicket()->setDbValue("pvpivainclalbaran", tick->lineaActTicket()->DBvalue("pvplalbaran"));
 }
 
 

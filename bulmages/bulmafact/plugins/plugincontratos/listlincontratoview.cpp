@@ -35,8 +35,8 @@
 ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListLinContratoView::ListLinContratoView", 0 );
-    setDBTableName ( "lcontrato" );
-    setDBCampoId ( "idlcontrato" );
+    setDbTableName ( "lcontrato" );
+    setDbFieldId ( "idlcontrato" );
     addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Id articulo" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre articulo" ) );

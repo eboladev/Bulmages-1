@@ -41,9 +41,9 @@ AmortizacionesView::AmortizacionesView ( BcCompany *emp, QWidget *parent )
     setSubForm ( mui_listado );
     /// Hacemos la inicializacion de un listado embebido.
     mui_listado->setMainCompany ( mainCompany() );
-    mui_listado->setDBTableName ( "amortizacion" );
+    mui_listado->setDbTableName ( "amortizacion" );
     mui_listado->setFileConfig ( "AmortizacionListSubform" );
-    mui_listado->setDBCampoId ( "idamortizacion" );
+    mui_listado->setDbFieldId ( "idamortizacion" );
     mui_listado->addSubFormHeader ( "idamortizacion", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id amortizacion" ) );
     mui_listado->addSubFormHeader ( "nomamortizacion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
     mui_listado->addSubFormHeader ( "fechacompra", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha compra" ) );

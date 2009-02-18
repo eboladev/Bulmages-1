@@ -257,8 +257,8 @@ AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     int res = g_plugins->lanza ( "AlumnosListSubForm_AlumnosListSubForm", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "alumno" );
-    setDBCampoId ( "idalumno" );
+    setDbTableName ( "alumno" );
+    setDbFieldId ( "idalumno" );
     addSubFormHeader ( "idalumno", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
 

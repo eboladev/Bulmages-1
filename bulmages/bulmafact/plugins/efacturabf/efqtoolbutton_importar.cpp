@@ -321,8 +321,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
         descuentos->setinsercion ( FALSE );
         mapa_dfactura = lista_mapas_dfactura.at ( i );
 
-        rec->setDBvalue ( "conceptdfacturap", mapa_dfactura["conceptdfactura"] );
-        rec->setDBvalue ( "proporciondfacturap", mapa_dfactura["proporciondfactura"] );
+        rec->setDbValue ( "conceptdfacturap", mapa_dfactura["conceptdfactura"] );
+        rec->setDbValue ( "proporciondfacturap", mapa_dfactura["proporciondfactura"] );
 
         descuentos->setinsercion ( TRUE );
         descuentos->nuevoRegistro();
@@ -407,18 +407,18 @@ void EFQToolButtonImportar::importa_factura_ubl()
         idarticulo  = articulo->valor ( "idarticulo" );
         nomarticulo = articulo->valor ( "nomarticulo" );
 
-        rec->setDBvalue ( "codigocompletoarticulo", mapa_lfactura["idarticulo"] );
+        rec->setDbValue ( "codigocompletoarticulo", mapa_lfactura["idarticulo"] );
 
 //   rec->refresh();
 
-        rec->setDBvalue ( "idarticulo", articulo->valor ( "idarticulo" ) );
+        rec->setDbValue ( "idarticulo", articulo->valor ( "idarticulo" ) );
 
-        rec->setDBvalue ( "nomarticulo", articulo->valor ( "nomarticulo" ) );
-        rec->setDBvalue ( "desclfacturap", mapa_lfactura["desclfactura"] );
-        rec->setDBvalue ( "cantlfacturap", mapa_lfactura["cantlfactura"] );
-        rec->setDBvalue ( "pvplfacturap", mapa_lfactura["pvplfactura"] );
-        rec->setDBvalue ( "ivalfacturap", mapa_lfactura["ivalfactura"] );
-        rec->setDBvalue ( "descuentolfacturap", mapa_lfactura["descuentolfactura"] );
+        rec->setDbValue ( "nomarticulo", articulo->valor ( "nomarticulo" ) );
+        rec->setDbValue ( "desclfacturap", mapa_lfactura["desclfactura"] );
+        rec->setDbValue ( "cantlfacturap", mapa_lfactura["cantlfactura"] );
+        rec->setDbValue ( "pvplfacturap", mapa_lfactura["pvplfactura"] );
+        rec->setDbValue ( "ivalfacturap", mapa_lfactura["ivalfactura"] );
+        rec->setDbValue ( "descuentolfacturap", mapa_lfactura["descuentolfactura"] );
 
         lineas->setinsercion ( TRUE );
         lineas->nuevoRegistro();
@@ -452,20 +452,20 @@ void EFQToolButtonImportar::importa_factura_ubl()
     lineas->setMainCompany ( mainCompany() );
     descuentos->setMainCompany ( mainCompany() );
 
-    fp->setDBvalue ( "idproveedor", idProveedor );
-    fp->setDBvalue ( "reffacturap", "" ); /// El valor lo pone el usuario que importa la factura
-    fp->setDBvalue ( "numfacturap", numeroFactura );
-    fp->setDBvalue ( "ffacturap", fechaFactura );
-    fp->setDBvalue ( "descfacturap", descFactura );
-    fp->setDBvalue ( "comentfacturap", "" );
+    fp->setDbValue ( "idproveedor", idProveedor );
+    fp->setDbValue ( "reffacturap", "" ); /// El valor lo pone el usuario que importa la factura
+    fp->setDbValue ( "numfacturap", numeroFactura );
+    fp->setDbValue ( "ffacturap", fechaFactura );
+    fp->setDbValue ( "descfacturap", descFactura );
+    fp->setDbValue ( "comentfacturap", "" );
 
     /// Que seleccione la forma de pago el que esta importanto la factura.
     /// Esto lo hacemos asi porque guardamos este campo como una cadena
     /// de texto dentro de la efactura, al ser algo tan variable mejor que
     /// lo haga de nuevo el propio usuario.
-    fp->setDBvalue ( "idforma_pago", "" );
+    fp->setDbValue ( "idforma_pago", "" );
 
-    fp->setDBvalue ( "procesadafacturap", "" );
+    fp->setDbValue ( "procesadafacturap", "" );
 
     _depura ( "END EFQToolButtonImportar::importa_factura_ubl", 0 );
 }

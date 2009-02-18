@@ -35,7 +35,7 @@ canalview::canalview ( BcCompany  *emp, QWidget *parent )
 
     setTitleName ( _( "Canal" ) );
     /// EStablezco cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "canal" );
+    setDbTableName ( "canal" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );

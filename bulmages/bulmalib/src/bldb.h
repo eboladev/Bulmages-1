@@ -33,7 +33,7 @@
 /// Manejo de campos de un registro de la base de datos
 /**
 Describe el comportamiento programado de un campo de registro de base de datos.
-Se usa en conjunción con BlDbRecord y suele ser invocada mediante el metodo \ref addDBCampo de esta.
+Se usa en conjunción con BlDbRecord y suele ser invocada mediante el metodo \ref addDbField de esta.
 Almacena toda la informacion relativa a un campo de un registro de base de datos, nombre, valor y
 comportamiento.
 Tambien prepara el campo para ser almacenado en la base de datos aunque el guardado real lo hace la
@@ -99,7 +99,7 @@ public:
 Sirve para operar de forma sencilla con registros de la base de datos.
 Antes de ser utilizada debe inicializarse correctamente con la base de datos que
 debe utilizar y la tabla con la que va a operar. Ademas debe describirse como
-es la tabla con que se va a operar mediante \ref addDBCampo
+es la tabla con que se va a operar mediante \ref addDbField
 El uso normal de esta clase es la carga de un registro, modificacion de sus campos
 y almacenado del mismo.
 \todo Esta clase deberia derivar de \ref BlMainCompanyPointer
@@ -120,16 +120,16 @@ public:
     BlMainCompany *conexionbase();
     int DBload ( BlDbRecordSet * );
     virtual int DBsave ( QString &id );
-    virtual int setDBvalue ( QString, QString );
+    virtual int setDbValue ( QString, QString );
     QString DBvalue ( QString );
     bool exists ( QString );
     QString DBvalueprep ( QString );
-    void setDBTableName ( QString nom );
+    void setDbTableName ( QString nom );
     void setNuevo ( bool n );
     QString tableName();
     QString campoId();
-    void setDBCampoId ( QString nom );
-    int addDBCampo ( QString, BlDbField::dbtype, int, QString );
+    void setDbFieldId ( QString nom );
+    int addDbField ( QString, BlDbField::dbtype, int, QString );
     void DBclear();
     QList<BlDbField *> *lista();
     virtual int borrar();

@@ -116,7 +116,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 {
     _depura ( "dentro del plugin", 0 );
 
-    cli->addDBCampo ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, _( "plugintarifas" ) );
+    cli->addDbField ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, _( "plugintarifas" ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -177,8 +177,8 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     l->setObjectName ( QString::fromUtf8 ( "lvariaciontarifas" ) );
     l->setMainCompany ( art->mainCompany() );
-    l->setDBTableName ( "variaciontarifa" );
-    l->setDBCampoId ( "idarticulo" );
+    l->setDbTableName ( "variaciontarifa" );
+    l->setDbFieldId ( "idarticulo" );
     l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );
     l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "ID articulo" ) );
     l->addSubFormHeader ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID tarifa" ) );
@@ -322,7 +322,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
 	/// Aplica al precio la variacion correspondiente.
 	QString res = sub->mainCompany()->PGEval( pvpactual +" * (1 + " + variacionpvp + " / 100)", 2);
-	sub->m_registrolinea->setDBvalue ( "pvp" + sub->tableName(), res);
+	sub->m_registrolinea->setDbValue ( "pvp" + sub->tableName(), res);
     } // end if
 
     _depura ( "END PluginTarifas BfSubForm_calculaPVP", 0 );

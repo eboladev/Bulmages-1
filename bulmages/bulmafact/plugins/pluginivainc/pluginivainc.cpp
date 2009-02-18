@@ -49,7 +49,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDBCampo ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio de coste" ) );
+    trab->addDbField ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio de coste" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();

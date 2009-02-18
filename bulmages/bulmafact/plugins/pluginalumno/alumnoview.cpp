@@ -46,10 +46,10 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
         centrarEnPantalla ( this );
 
         setTitleName ( _( "Alumno" ) );
-        setDBTableName ( "alumno" );
-        setDBCampoId ( "idalumno" );
-        addDBCampo ( "idalumno", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id alumno" ) );
-        addDBCampo ( "nombrealumno", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del alumno" ) );
+        setDbTableName ( "alumno" );
+        setDbFieldId ( "idalumno" );
+        addDbField ( "idalumno", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id alumno" ) );
+        addDbField ( "nombrealumno", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del alumno" ) );
 
         /// Datos por defecto.
         mui_idprovincia->setMainCompany ( mainCompany() );

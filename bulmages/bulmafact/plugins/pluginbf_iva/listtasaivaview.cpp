@@ -47,7 +47,7 @@ ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
 {
     _depura ( "ListTasaIVAView::ListTasaIVAView", 1 );
     setTitleName ( _( "Tasa IVA" ) );
-    setDBTableName ( "tasa_iva" );
+    setDbTableName ( "tasa_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -88,8 +88,8 @@ ListTasaIVAView::~ListTasaIVAView()
 ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListTasaIVASubForm::ListTasaIVASubForm", 0 );
-    setDBTableName ( "tasa_iva" );
-    setDBCampoId ( "idtasa_iva" );
+    setDbTableName ( "tasa_iva" );
+    setDbFieldId ( "idtasa_iva" );
     addSubFormHeader ( "idtasa_iva", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id Tasa IVA" ) );
     addSubFormHeader ( "desctipo_iva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Tipo IVA" ) );
     addSubFormHeader ( "idtipo_iva", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Id Tipo IVA" ) );

@@ -308,8 +308,8 @@ void PedidosProveedorList::setidproveedor ( QString val )
 PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "PedidosProveedorListSubform::PedidosProveedorListSubform", 0 );
-    setDBTableName ( "pedidoproveedor" );
-    setDBCampoId ( "idpedidoproveedor" );
+    setDbTableName ( "pedidoproveedor" );
+    setDbFieldId ( "idpedidoproveedor" );
     addSubFormHeader ( "numpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de pedido" ) );
     addSubFormHeader ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre de proveedor" ) );
     addSubFormHeader ( "fechapedidoproveedor", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha pedido proveedor" ) );

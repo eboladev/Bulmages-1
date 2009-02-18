@@ -56,17 +56,17 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
 		mui_idcliente->m_valores["nomcliente"] = "";
 
         setTitleName ( _( "Cobro" ) );
-        setDBTableName ( "cobro" );
-        setDBCampoId ( "idcobro" );
-        addDBCampo ( "idcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id cobro" ) );
-        addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
-        addDBCampo ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNothing, _( "Prevision" ) );
-        addDBCampo ( "fechacobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha del cobro" ) );
-        addDBCampo ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
-        addDBCampo ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
-        addDBCampo ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total cobro" ) );
-        addDBCampo ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion del cobro" ) );
-        addDBCampo ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Banco" ) );
+        setDbTableName ( "cobro" );
+        setDbFieldId ( "idcobro" );
+        addDbField ( "idcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id cobro" ) );
+        addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+        addDbField ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNothing, _( "Prevision" ) );
+        addDbField ( "fechacobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha del cobro" ) );
+        addDbField ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
+        addDbField ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+        addDbField ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total cobro" ) );
+        addDbField ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion del cobro" ) );
+        addDbField ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Banco" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

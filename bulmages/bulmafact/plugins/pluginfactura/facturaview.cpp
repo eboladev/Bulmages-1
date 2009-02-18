@@ -56,20 +56,20 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setTitleName ( _( "Factura" ) );
-        setDBTableName ( "factura" );
-        setDBCampoId ( "idfactura" );
-        addDBCampo ( "idfactura", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id factura" ) );
-        addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
-        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
-        addDBCampo ( "numfactura", BlDbField::DBint, BlDbField::DBNothing, _( "Numero factura" ) );
-        addDBCampo ( "ffactura", BlDbField::DBdate, BlDbField::DBNothing, _( "Ffactura" ) );
-        addDBCampo ( "procesadafactura", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesada factura" ) );
-        addDBCampo ( "codigoserie_factura", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Serie" ) );
-        addDBCampo ( "comentfactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario" ) );
-        addDBCampo ( "reffactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
-        addDBCampo ( "descfactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
-        addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Trabajador" ) );
-        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Forma de pago" ) );
+        setDbTableName ( "factura" );
+        setDbFieldId ( "idfactura" );
+        addDbField ( "idfactura", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id factura" ) );
+        addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
+        addDbField ( "numfactura", BlDbField::DBint, BlDbField::DBNothing, _( "Numero factura" ) );
+        addDbField ( "ffactura", BlDbField::DBdate, BlDbField::DBNothing, _( "Ffactura" ) );
+        addDbField ( "procesadafactura", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesada factura" ) );
+        addDbField ( "codigoserie_factura", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Serie" ) );
+        addDbField ( "comentfactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario" ) );
+        addDbField ( "reffactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+        addDbField ( "descfactura", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
+        addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Trabajador" ) );
+        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Forma de pago" ) );
 
         /// Establecemos algunos Buddies.
         mui_labelAlmacen->setText ( _( "Al&macen" ) );
@@ -206,7 +206,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
     /// Agregamos a comentarios que albaran se corresponde.
     QString comm = DBvalue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + bud->DBvalue ( "numalbaran" ) + _( "Ref:" ) + " " + bud->DBvalue ( "refalbaran" ) + _( "Fecha:" ) + " " + bud->DBvalue ( "fechaalbaran" ) + ")\n";
 
-    setDBvalue ( "comentfactura", comm );
+    setDbValue ( "comentfactura", comm );
     pintar();
 
     /// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
@@ -216,14 +216,14 @@ void FacturaView::on_mui_agregaralbaran_clicked()
         /// Los registros vacios no se tienen en cuenta.
         if ( linea->DBvalue ( "idarticulo" ) != "" ) {
             linea1 = getlistalineas() ->lineaat ( getlistalineas() ->rowCount() - 1 );
-            linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-            linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
-            linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
-            linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
-            linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
-            linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-            linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-            linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
+            linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+            linea1->setDbValue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
+            linea1->setDbValue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
+            linea1->setDbValue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
+            linea1->setDbValue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
+            linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+            linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+            linea1->setDbValue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
             getlistalineas() ->nuevoRegistro();
         } // end if
     } // end for

@@ -52,17 +52,17 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
     try {
         setupUi ( this );
         setTitleName ( _( "Albaran de proveedor" ) );
-        setDBTableName ( "albaranp" );
-        setDBCampoId ( "idalbaranp" );
-        addDBCampo ( "idalbaranp", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran proveedor" ) );
-        addDBCampo ( "numalbaranp", BlDbField::DBint, BlDbField::DBNothing, _( "Numero albaran proveedor" ) );
-        addDBCampo ( "fechaalbaranp", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha albaran proveedor" ) );
-        addDBCampo ( "comentalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario albaran proveedor" ) );
-        addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
-        addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
-        addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
-        addDBCampo ( "refalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia albaran proveedor" ) );
-        addDBCampo ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion albaran proveedor" ) );
+        setDbTableName ( "albaranp" );
+        setDbFieldId ( "idalbaranp" );
+        addDbField ( "idalbaranp", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran proveedor" ) );
+        addDbField ( "numalbaranp", BlDbField::DBint, BlDbField::DBNothing, _( "Numero albaran proveedor" ) );
+        addDbField ( "fechaalbaranp", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha albaran proveedor" ) );
+        addDbField ( "comentalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario albaran proveedor" ) );
+        addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
+        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
+        addDbField ( "refalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia albaran proveedor" ) );
+        addDbField ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion albaran proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranProveedorView_AlbaranProveedorView", this );

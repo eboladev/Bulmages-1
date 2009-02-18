@@ -53,7 +53,7 @@ extractoview1::extractoview1 ( BcCompany *emp, QWidget *parent, int ) : FichaBc 
     setupUi ( this );
 
     setTitleName ( _( "Extracto de Cuentas" ) );
-    setDBTableName ( "apunte" );
+    setDbTableName ( "apunte" );
 
     mui_list->setMainCompany ( emp );
 
@@ -416,7 +416,7 @@ void extractoview1::presentar()
                 debefinal = debefinal + debe;
                 haberfinal = haberfinal + haber;
                 if ( mui_list->lineaat ( i ) )
-                    mui_list->setDBvalue ( "saldo", i++, saldo.toQString() );
+                    mui_list->setDbValue ( "saldo", i++, saldo.toQString() );
                 cursorapt->siguienteregistro();
             } // end while
 

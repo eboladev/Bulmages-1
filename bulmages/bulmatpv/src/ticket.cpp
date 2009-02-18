@@ -37,27 +37,27 @@ Ticket::Ticket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
 {
     _depura ( "Ticket::Ticket", 0 );
     /// Inicializamos los parametros del ticket para la base de datos.
-    setDBTableName ( "albaran" );
-    setDBCampoId ( "idalbaran" );
-    addDBCampo ( "descalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
-    addDBCampo ( "nomticket", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre" ) );
-    addDBCampo ( "idalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran" ) );
-    addDBCampo ( "fechaalbaran", BlDbField::DBdate, BlDbField::DBNothing, _( "Id fechaalbaran" ) );
-    addDBCampo ( "horaalbaran", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Hora" ) );
-    addDBCampo ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
-    addDBCampo ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
-    addDBCampo ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
-    addDBCampo ( "numalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "Num" ) );
-    addDBCampo ( "refalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
-    addDBCampo ( "ticketalbaran", BlDbField::DBboolean, BlDbField::DBNothing, _( "Ticket" ) );
-    addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+    setDbTableName ( "albaran" );
+    setDbFieldId ( "idalbaran" );
+    addDbField ( "descalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
+    addDbField ( "nomticket", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre" ) );
+    addDbField ( "idalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran" ) );
+    addDbField ( "fechaalbaran", BlDbField::DBdate, BlDbField::DBNothing, _( "Id fechaalbaran" ) );
+    addDbField ( "horaalbaran", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Hora" ) );
+    addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
+    addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
+    addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
+    addDbField ( "numalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "Num" ) );
+    addDbField ( "refalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+    addDbField ( "ticketalbaran", BlDbField::DBboolean, BlDbField::DBNothing, _( "Ticket" ) );
+    addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
 
-    setDBvalue ( "ticketalbaran", "TRUE" );
-    setDBvalue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
-    setDBvalue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
-    setDBvalue ( "idtrabajador", confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
-    setDBvalue ( "descalbaran", "Ticket de venta" );
-    setDBvalue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
+    setDbValue ( "ticketalbaran", "TRUE" );
+    setDbValue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    setDbValue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
+    setDbValue ( "idtrabajador", confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
+    setDbValue ( "descalbaran", "Ticket de venta" );
+    setDbValue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<BlDbRecord *>;
@@ -79,24 +79,24 @@ BlDbRecord * Ticket::agregarLinea()
 
     /// Creamos un nuevo BlDbRecord y lo inicializamos.
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
-    item->setDBTableName ( "lalbaran" );
-    item->setDBCampoId ( "numlalbaran" );
-    item->addDBCampo ( "idalbaran", BlDbField::DBint, BlDbField::DBNotNull, _( "Id Albaran" ) );
-    item->addDBCampo ( "numlalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id lalbaran" ) );
-    item->addDBCampo ( "cantlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
-    item->addDBCampo ( "pvplalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Precio" ) );
-    item->addDBCampo ( "ivalalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "IVA" ) );
-    item->addDBCampo ( "descuentolalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Descuento" ) );
-    item->addDBCampo ( "ordenlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Orden" ) );
-    item->addDBCampo ( "reqeqlalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Req. eq." ) );
-//    item->addDBCampo ( "lotelalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Lote" ) );
-    item->addDBCampo ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, _( "Id articulo" ) );
-    item->addDBCampo ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo articulo" ) );
-    item->addDBCampo ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre articulo" ) );
-    item->addDBCampo ( "desclalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre articulo" ) );
+    item->setDbTableName ( "lalbaran" );
+    item->setDbFieldId ( "numlalbaran" );
+    item->addDbField ( "idalbaran", BlDbField::DBint, BlDbField::DBNotNull, _( "Id Albaran" ) );
+    item->addDbField ( "numlalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id lalbaran" ) );
+    item->addDbField ( "cantlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
+    item->addDbField ( "pvplalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Precio" ) );
+    item->addDbField ( "ivalalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "IVA" ) );
+    item->addDbField ( "descuentolalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Descuento" ) );
+    item->addDbField ( "ordenlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Orden" ) );
+    item->addDbField ( "reqeqlalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Req. eq." ) );
+//    item->addDbField ( "lotelalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Lote" ) );
+    item->addDbField ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, _( "Id articulo" ) );
+    item->addDbField ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo articulo" ) );
+    item->addDbField ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre articulo" ) );
+    item->addDbField ( "desclalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre articulo" ) );
 
 
-    item->setDBvalue ( "descuentolalbaran", "0" );
+    item->setDbValue ( "descuentolalbaran", "0" );
     /// Agregamos el BlDbRecord a la lista de lineas de ticket.
     m_listaLineas->append ( item );
 
@@ -142,27 +142,27 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
         /// Ya hay una linea con este articulo (es un agregado)
         BlFixed cantidadib ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
         BlFixed cant1 = cantidadib + cantidad;
-        m_lineaActual->setDBvalue ( "cantlalbaran", cant1.toQString() );
+        m_lineaActual->setDbValue ( "cantlalbaran", cant1.toQString() );
     } else {
         /// No hay ningun item con este articulo (es una insercion)
         m_lineaActual = agregarLinea();
-        m_lineaActual->setDBvalue ( "idarticulo", idArticulo );
-        m_lineaActual->setDBvalue ( "cantlalbaran", cantidad.toQString() );
+        m_lineaActual->setDbValue ( "idarticulo", idArticulo );
+        m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString() );
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
         BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            m_lineaActual->setDBvalue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
-            m_lineaActual->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-            m_lineaActual->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
-            m_lineaActual->setDBvalue ( "desclalbaran", cur->valor ( "nomarticulo" ) );
+            m_lineaActual->setDbValue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
+            m_lineaActual->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+            m_lineaActual->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+            m_lineaActual->setDbValue ( "desclalbaran", cur->valor ( "nomarticulo" ) );
 
             if ( cur->valor ( "idtipo_iva" ) != "" ) {
                 QString query2 = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1";
                 BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query2 );
                 if ( !cur1->eof() )
-                    m_lineaActual->setDBvalue ( "ivalalbaran", cur1->valor ( "porcentasa_iva" ) );
+                    m_lineaActual->setDbValue ( "ivalalbaran", cur1->valor ( "porcentasa_iva" ) );
                 delete cur1;
             } // end if
         } // end if
@@ -796,7 +796,7 @@ void Ticket::agregarCantidad ( QString cantidad )
         //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
         //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
-        m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
+        m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
     } // end if
     pintar();
     /*
@@ -812,7 +812,7 @@ void Ticket::agregarCantidad ( QString cantidad )
             listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
             m_lineaActual = listaLineas() ->at ( 0 );
         } else {
-            m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
+            m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
         } // end if
         pintar();
     */
@@ -832,7 +832,7 @@ void Ticket::ponerCantidad ( QString cantidad )
         //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
         //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
-        m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
+        m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString() );
     } // end if
     pintar();
     /*
@@ -847,7 +847,7 @@ void Ticket::ponerCantidad ( QString cantidad )
             listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
             m_lineaActual = listaLineas() ->at ( 0 );
         } else {
-            m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
+            m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString() );
         } // end if
         pintar();
     */
@@ -861,7 +861,7 @@ void Ticket::ponerPrecio ( QString precio )
         mensajeAviso ( "No existe linea" );
         return;
     } // end if
-    m_lineaActual->setDBvalue ( "pvplalbaran", valor.toQString() );
+    m_lineaActual->setDbValue ( "pvplalbaran", valor.toQString() );
 
     g_plugins->lanza ( "Ticket_ponerPrecio_Post", this );
 
@@ -949,15 +949,15 @@ int Ticket::guardar()
         for ( int i = 0; i < listaLineas() ->size(); ++i ) {
             QString id1;
             item = listaLineas() ->at ( i );
-            item->setDBvalue ( "idalbaran", id );
-            item->setDBvalue ( "ordenlalbaran", QString::number ( i ) );
+            item->setDbValue ( "idalbaran", id );
+            item->setDbValue ( "ordenlalbaran", QString::number ( i ) );
             item->DBsave ( id1 );
         }// end for
         mainCompany() ->commit();
-	setDBvalue("idalbaran", id);
+	setDbValue("idalbaran", id);
         BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM albaran WHERE idalbaran = " + id );
-	setDBvalue("refalbaran", cur->valor("refalbaran"));
-	setDBvalue("numalbaran", cur->valor("numalbaran"));
+	setDbValue("refalbaran", cur->valor("refalbaran"));
+	setDbValue("numalbaran", cur->valor("numalbaran"));
 
 //        DBload ( cur );
         delete cur;

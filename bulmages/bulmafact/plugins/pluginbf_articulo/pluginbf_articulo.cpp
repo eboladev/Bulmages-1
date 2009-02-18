@@ -320,9 +320,9 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
 
     BlDbRecordSet *cur = sub->mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
     if ( !cur->eof() ) {
-        sub->m_registrolinea->setDBvalue ( "idarticulo", idArticle );
-        sub->m_registrolinea->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        sub->m_registrolinea->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+        sub->m_registrolinea->setDbValue ( "idarticulo", idArticle );
+        sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+        sub->m_registrolinea->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
     } // end if
     delete cur;
 

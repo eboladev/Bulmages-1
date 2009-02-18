@@ -362,8 +362,8 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
     _depura ( "ArticuloListSubForm::ArticuloListSubForm", 0 );
-    setDBTableName ( "articulo" );
-    setDBCampoId ( "idarticulo" );
+    setDbTableName ( "articulo" );
+    setDbFieldId ( "idarticulo" );
 
 
     addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID articulo" ) );

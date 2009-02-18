@@ -278,8 +278,8 @@ void ProveedorListSubform::cargar ( QString a )
 ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ProveedorListSubform::ProveedorListSubform", 0 );
-    setDBTableName ( "proveedor" );
-    setDBCampoId ( "idproveedor" );
+    setDbTableName ( "proveedor" );
+    setDbFieldId ( "idproveedor" );
     addSubFormHeader ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID proveedor" ) );
     addSubFormHeader ( "codproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo" ) );
     addSubFormHeader ( "cifproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "C.I.F." ) );

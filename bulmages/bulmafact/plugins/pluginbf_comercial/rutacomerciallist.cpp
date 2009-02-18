@@ -279,8 +279,8 @@ void RutaComercialList::setidcliente ( QString val )
 RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "RutaComercialListSubForm::RutaComercialListSubForm", 0 );
-    setDBTableName ( "rutacomercial" );
-    setDBCampoId ( "idrutacomercial" );
+    setDbTableName ( "rutacomercial" );
+    setDbFieldId ( "idrutacomercial" );
     addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "CIF del cliente" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del cliente" ) );
     addSubFormHeader ( "idzonacomercial", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID zona comercial" ) );

@@ -270,8 +270,8 @@ void ClientsList::submenu ( const QPoint & )
 ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "ClienteListSubform::ClienteListSubform", 0 );
-    setDBTableName ( "cliente" );
-    setDBCampoId ( "idcliente" );
+    setDbTableName ( "cliente" );
+    setDbFieldId ( "idcliente" );
     addSubFormHeader ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID cliente" ) );
     addSubFormHeader ( "codcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo" ) );
     addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "C.I.F." ) );

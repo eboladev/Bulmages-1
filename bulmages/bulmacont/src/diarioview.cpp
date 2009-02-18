@@ -53,7 +53,7 @@ DiarioView::DiarioView ( BcCompany  *emp, QWidget *parent, int )
 
     setTitleName ( _( "Diario" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName ( "apunte" );
+    setDbTableName ( "apunte" );
 
     mui_list->setMainCompany ( emp );
     mui_contrapartida->setMainCompany ( emp );
@@ -199,13 +199,13 @@ void DiarioView::presentar()
     try {
         QString tabla = "apunte";
         QString tabla2 = "";
-        mui_list->setDBTableName ( "apunte" );
-        mui_list->setDBCampoId ( "idapunte" );
+        mui_list->setDbTableName ( "apunte" );
+        mui_list->setDbFieldId ( "idapunte" );
         if ( mui_asAbiertos->isChecked() ) {
             tabla = "borrador";
             tabla2 = "apunte,";
-            mui_list->setDBTableName ( "borrador" );
-            mui_list->setDBCampoId ( "idborrador" );
+            mui_list->setDbTableName ( "borrador" );
+            mui_list->setDbFieldId ( "idborrador" );
         } // end if
 
         QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM " + tabla2 + tabla + " LEFT JOIN cuenta ON cuenta.idcuenta = " + tabla + ".idcuenta ";

@@ -107,7 +107,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
     if ( camp->nomcampo() == "fecha" ) {
         BlDbSubFormRecord *recant = lineaat ( row - 1 );
         if ( recant ) {
-            rec->setDBvalue ( "fecha", recant->DBvalue ( "fecha" ) );
+            rec->setDbValue ( "fecha", recant->DBvalue ( "fecha" ) );
         } // end if
         return;
     } // end if
@@ -115,8 +115,8 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
     if ( camp->nomcampo() == "debe" || camp->nomcampo() == "haber" ) {
 
         /// Ponemos los campos a cero en esta fila
-        rec->setDBvalue ( "debe", "0" );
-        rec->setDBvalue ( "haber", "0" );
+        rec->setDbValue ( "debe", "0" );
+        rec->setDbValue ( "haber", "0" );
 
         /// Hacemos las sumas y las restamos
         BlFixed debe = sumarCampo ( "debe" );
@@ -125,19 +125,19 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
 
         /// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
         if ( result > 0 ) {
-            rec->setDBvalue ( "haber", result.toQString() );
+            rec->setDbValue ( "haber", result.toQString() );
         } // end if
 
         if ( result < 0 ) {
             result = result * -1;
-            rec->setDBvalue ( "debe", result.toQString() );
+            rec->setDbValue ( "debe", result.toQString() );
         } // end if
         return;
     } // end if
 
     BlDbSubFormRecord *recant = lineaat ( row - 1 );
     if ( recant ) {
-        rec->setDBvalue ( camp->nomcampo(), recant->DBvalue ( camp->nomcampo() ) );
+        rec->setDbValue ( camp->nomcampo(), recant->DBvalue ( camp->nomcampo() ) );
         return;
     } // end if
 
@@ -180,24 +180,24 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
         BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             if ( camp->nomcampo() == "codigo" ) {
-                rec->setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
-                rec->setDBvalue ( "codigo", cur->valor ( "codigo" ) );
-                rec->setDBvalue ( "tipocuenta", cur->valor ( "tipocuenta" ) );
-                rec->setDBvalue ( "descripcion", cur->valor ( "descripcion" ) );
+                rec->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
+                rec->setDbValue ( "codigo", cur->valor ( "codigo" ) );
+                rec->setDbValue ( "tipocuenta", cur->valor ( "tipocuenta" ) );
+                rec->setDbValue ( "descripcion", cur->valor ( "descripcion" ) );
                 if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
-                    rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
+                    rec->setDbValue ( "idc_coste", cur->valor ( "idc_coste" ) );
                     QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
                     BlDbRecordSet *curss = mainCompany() ->cargacursor ( query1 );
-                    rec->setDBvalue ( "nomc_coste", curss->valor ( "nombre" ) );
+                    rec->setDbValue ( "nomc_coste", curss->valor ( "nombre" ) );
                     delete curss;
                 } // end if
 
             } // end if
             if ( camp->nomcampo() == "codigoctacliente" ) {
-                rec->setDBvalue ( "idctacliente", cur->valor ( "idcuenta" ) );
-                rec->setDBvalue ( "codigoctacliente", cur->valor ( "codigo" ) );
-                rec->setDBvalue ( "tipoctacliente", cur->valor ( "tipocuenta" ) );
-                rec->setDBvalue ( "nomctacliente", cur->valor ( "descripcion" ) );
+                rec->setDbValue ( "idctacliente", cur->valor ( "idcuenta" ) );
+                rec->setDbValue ( "codigoctacliente", cur->valor ( "codigo" ) );
+                rec->setDbValue ( "tipoctacliente", cur->valor ( "tipocuenta" ) );
+                rec->setDbValue ( "nomctacliente", cur->valor ( "descripcion" ) );
 
             } // end if
         } // end if
@@ -267,15 +267,15 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            rec->setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
-            rec->setDBvalue ( "codigo", cur->valor ( "codigo" ) );
-            rec->setDBvalue ( "tipocuenta", cur->valor ( "tipocuenta" ) );
-            rec->setDBvalue ( "descripcioncuenta", cur->valor ( "descripcion" ) );
+            rec->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
+            rec->setDbValue ( "codigo", cur->valor ( "codigo" ) );
+            rec->setDbValue ( "tipocuenta", cur->valor ( "tipocuenta" ) );
+            rec->setDbValue ( "descripcioncuenta", cur->valor ( "descripcion" ) );
             if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
-                rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
+                rec->setDbValue ( "idc_coste", cur->valor ( "idc_coste" ) );
                 QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
                 BlDbRecordSet *curss = mainCompany() ->cargacursor ( query1 );
-                rec->setDBvalue ( "nomc_coste", curss->valor ( "nombre" ) );
+                rec->setDbValue ( "nomc_coste", curss->valor ( "nombre" ) );
                 delete curss;
             } // end if
         } else {
@@ -288,9 +288,9 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
         BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            rec->setDBvalue ( "idcanal", cur->valor ( "idcanal" ) );
+            rec->setDbValue ( "idcanal", cur->valor ( "idcanal" ) );
         } else {
-            rec->setDBvalue ( "idcanal", "" );
+            rec->setDbValue ( "idcanal", "" );
         } // end if
         delete cur;
     } // end if
@@ -298,24 +298,24 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
         BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
-            rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
+            rec->setDbValue ( "idc_coste", cur->valor ( "idc_coste" ) );
         } else {
-            rec->setDBvalue ( "idc_coste", "" );
+            rec->setDbValue ( "idc_coste", "" );
         } // end if
         delete cur;
     } // end if
     if ( camp->nomcampo() == "fecha" ) {
         QString nfecha = normalizafecha ( camp->text() ).toString ( "dd/MM/yyyy" );
-        rec->setDBvalue ( "fecha", nfecha );
+        rec->setDbValue ( "fecha", nfecha );
     } // end if
     if ( camp->nomcampo() == "debe" ) {
         if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
-            rec->setDBvalue ( "haber", "0.00" );
+            rec->setDbValue ( "haber", "0.00" );
         } // end if
     } // end if
     if ( camp->nomcampo() == "haber" ) {
         if ( BlFixed ( camp->text() ) != BlFixed ( "0.00" ) ) {
-            rec->setDBvalue ( "debe", "0.00" );
+            rec->setDbValue ( "debe", "0.00" );
         } // end if
     } // end if
 

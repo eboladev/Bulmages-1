@@ -49,8 +49,8 @@ ListConfiguracionView::ListConfiguracionView ( BfCompany *comp, QWidget *parent 
     setupUi ( this );
 
     setTitleName ( _( "Configuracion" ) );
-    setDBTableName ( "configuracion" );
-    setDBCampoId ( "nombre" );
+    setDbTableName ( "configuracion" );
+    setDbFieldId ( "nombre" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     mui_listado->setMainCompany ( mainCompany() );
@@ -83,8 +83,8 @@ ListConfiguracionView::~ListConfiguracionView()
 ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
-    setDBTableName ( "configuracion" );
-    setDBCampoId ( "nombre" );
+    setDbTableName ( "configuracion" );
+    setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DBvarchar, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView | BlSubFormHeader::DBBlockView, "nombre" );
     addSubFormHeader ( "nombre", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
     addSubFormHeader ( "valor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Valor" ) );

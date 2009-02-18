@@ -117,8 +117,8 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
     art->mui_tab->addTab ( l, _("Minimos almacen") );
 
-    l->setDBTableName ( "minimsalmacen" );
-    l->setDBCampoId ( "idminimsalmacen" );
+    l->setDbTableName ( "minimsalmacen" );
+    l->setDbFieldId ( "idminimsalmacen" );
     l->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
     l->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id Almacen" ) );
     l->addSubFormHeader ( "valminimsalmacen", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Minimo" ) );

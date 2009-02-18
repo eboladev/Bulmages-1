@@ -56,7 +56,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         if ( g_plugins->lanza ( "CuadranteView_CuadranteView", this ) ) return;
 
         setTitleName ( _( "Almacen" ) );
-        setDBTableName ( "almacen" );
+        setDbTableName ( "almacen" );
 
         mui_listtrabajadores->setDragEnabled ( TRUE );
         mui_cuadrante->setAcceptDrops ( TRUE );

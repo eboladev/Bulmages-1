@@ -46,10 +46,10 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         centrarEnPantalla ( this );
 
         setTitleName ( _( "Profesor" ) );
-        setDBTableName ( "profesor" );
-        setDBCampoId ( "idprofesor" );
-        addDBCampo ( "idprofesor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID profesor" ) );
-        addDBCampo ( "nombreprofesor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del profesor" ) );
+        setDbTableName ( "profesor" );
+        setDbFieldId ( "idprofesor" );
+        addDbField ( "idprofesor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID profesor" ) );
+        addDbField ( "nombreprofesor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del profesor" ) );
 
 
         /// Datos por defecto.

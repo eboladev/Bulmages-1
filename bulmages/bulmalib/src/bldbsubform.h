@@ -40,7 +40,7 @@ class BlDbSubFormRecord: public BlDbRecord
 public:
     BlDbSubFormRecord ( BlMainCompany *con );
     ~BlDbSubFormRecord();
-    int addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" );
+    int addDbField ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" );
     void refresh();
     virtual int DBsave ( QString & );
 };

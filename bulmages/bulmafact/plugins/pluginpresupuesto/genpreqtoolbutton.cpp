@@ -184,11 +184,11 @@ void GenPreQToolButton::generarFactura()
 
         /// Traspasamos los datos a la factura.
         fpv->recogeValores();
-        bud->setDBvalue ( "comentfactura", fpv->DBvalue ( "comentalbaran" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "reffactura", fpv->DBvalue ( "refalbaran" ) );
-        bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-        bud->setDBvalue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
+        bud->setDbValue ( "comentfactura", fpv->DBvalue ( "comentalbaran" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffactura", fpv->DBvalue ( "refalbaran" ) );
+        bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+        bud->setDbValue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
 
         QString l;
         BlDbSubFormRecord *linea, *linea1;
@@ -199,14 +199,14 @@ void GenPreQToolButton::generarFactura()
                 /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
-                linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
-                linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
-                linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
-                linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
+                linea1->setDbValue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
+                linea1->setDbValue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
+                linea1->setDbValue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
+                linea1->setDbValue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
                 linea1->refresh();
             } // end if
@@ -218,8 +218,8 @@ void GenPreQToolButton::generarFactura()
             if ( linea1->DBvalue ( "proporciondalbaran" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
                 bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-                linea->setDBvalue ( "conceptdfactura", linea1->DBvalue ( "conceptdalbaran" ) );
-                linea->setDBvalue ( "proporciondfactura", linea1->DBvalue ( "proporciondalbaran" ) );
+                linea->setDbValue ( "conceptdfactura", linea1->DBvalue ( "conceptdalbaran" ) );
+                linea->setDbValue ( "proporciondfactura", linea1->DBvalue ( "proporciondalbaran" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
                 bud->getlistadescuentos() ->nuevoRegistro();
             } // end if
@@ -310,15 +310,15 @@ void GenPreQToolButton::generarFactura1()
 
         /// Traspasamos los datos al albaran.
         fpv->recogeValores();
-        bud->setDBvalue ( "comentfactura", fpv->DBvalue ( "comentpedidocliente" ) );
-        bud->setDBvalue ( "descfactura", fpv->DBvalue ( "descpedidocliente" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "reffactura", fpv->DBvalue ( "refpedidocliente" ) );
-        bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-        bud->setDBvalue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
-        bud->setDBvalue ( "contactfactura", fpv->DBvalue ( "contactpedidocliente" ) );
-        bud->setDBvalue ( "telfactura", fpv->DBvalue ( "telpedidocliente" ) );
-        bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
+        bud->setDbValue ( "comentfactura", fpv->DBvalue ( "comentpedidocliente" ) );
+        bud->setDbValue ( "descfactura", fpv->DBvalue ( "descpedidocliente" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffactura", fpv->DBvalue ( "refpedidocliente" ) );
+        bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+        bud->setDbValue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
+        bud->setDbValue ( "contactfactura", fpv->DBvalue ( "contactpedidocliente" ) );
+        bud->setDbValue ( "telfactura", fpv->DBvalue ( "telpedidocliente" ) );
+        bud->setDbValue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al albaran.
         BlDbSubFormRecord *linea, *linea1;
@@ -328,14 +328,14 @@ void GenPreQToolButton::generarFactura1()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclpedidocliente" ) );
-                linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlpedidocliente" ) );
-                linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplpedidocliente" ) );
-                linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalpedidocliente" ) );
-                linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolpedidocliente" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "desclfactura", linea->DBvalue ( "desclpedidocliente" ) );
+                linea1->setDbValue ( "cantlfactura", linea->DBvalue ( "cantlpedidocliente" ) );
+                linea1->setDbValue ( "pvplfactura", linea->DBvalue ( "pvplpedidocliente" ) );
+                linea1->setDbValue ( "ivalfactura", linea->DBvalue ( "ivalpedidocliente" ) );
+                linea1->setDbValue ( "descuentolfactura", linea->DBvalue ( "descuentolpedidocliente" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -346,8 +346,8 @@ void GenPreQToolButton::generarFactura1()
             if ( linea1->DBvalue ( "proporciondpedidocliente" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
                 bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-                linea->setDBvalue ( "conceptdfactura", linea1->DBvalue ( "conceptdpedidocliente" ) );
-                linea->setDBvalue ( "proporciondfactura", linea1->DBvalue ( "proporciondpedidocliente" ) );
+                linea->setDbValue ( "conceptdfactura", linea1->DBvalue ( "conceptdpedidocliente" ) );
+                linea->setDbValue ( "proporciondfactura", linea1->DBvalue ( "proporciondpedidocliente" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
                 bud->getlistadescuentos() ->nuevoRegistro();
             } // end if
@@ -439,15 +439,15 @@ void GenPreQToolButton::generarFactura2()
 
         /// Traspasamos los datos al albaran.
         fpv->recogeValores();
-        bud->setDBvalue ( "comentfactura", fpv->DBvalue ( "comentpresupuesto" ) );
-        bud->setDBvalue ( "descfactura", fpv->DBvalue ( "descpresupuesto" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "reffactura", fpv->DBvalue ( "refpresupuesto" ) );
-        bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
-        bud->setDBvalue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
-        bud->setDBvalue ( "contactfactura", fpv->DBvalue ( "contactpresupuesto" ) );
-        bud->setDBvalue ( "telfactura", fpv->DBvalue ( "telpresupuesto" ) );
-        bud->setDBvalue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
+        bud->setDbValue ( "comentfactura", fpv->DBvalue ( "comentpresupuesto" ) );
+        bud->setDbValue ( "descfactura", fpv->DBvalue ( "descpresupuesto" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffactura", fpv->DBvalue ( "refpresupuesto" ) );
+        bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+        bud->setDbValue ( "idalmacen", fpv->DBvalue ( "idalmacen" ) );
+        bud->setDbValue ( "contactfactura", fpv->DBvalue ( "contactpresupuesto" ) );
+        bud->setDbValue ( "telfactura", fpv->DBvalue ( "telpresupuesto" ) );
+        bud->setDbValue ( "idtrabajador", fpv->DBvalue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al albaran.
         BlDbSubFormRecord *linea, *linea1;
@@ -457,14 +457,14 @@ void GenPreQToolButton::generarFactura2()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclpresupuesto" ) );
-                linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlpresupuesto" ) );
-                linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplpresupuesto" ) );
-                linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalpresupuesto" ) );
-                linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolpresupuesto" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "desclfactura", linea->DBvalue ( "desclpresupuesto" ) );
+                linea1->setDbValue ( "cantlfactura", linea->DBvalue ( "cantlpresupuesto" ) );
+                linea1->setDbValue ( "pvplfactura", linea->DBvalue ( "pvplpresupuesto" ) );
+                linea1->setDbValue ( "ivalfactura", linea->DBvalue ( "ivalpresupuesto" ) );
+                linea1->setDbValue ( "descuentolfactura", linea->DBvalue ( "descuentolpresupuesto" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -475,8 +475,8 @@ void GenPreQToolButton::generarFactura2()
             if ( linea1->DBvalue ( "proporciondpresupuesto" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
                 bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-                linea->setDBvalue ( "conceptdfactura", linea1->DBvalue ( "conceptdpresupuesto" ) );
-                linea->setDBvalue ( "proporciondfactura", linea1->DBvalue ( "proporciondpresupuesto" ) );
+                linea->setDbValue ( "conceptdfactura", linea1->DBvalue ( "conceptdpresupuesto" ) );
+                linea->setDbValue ( "proporciondfactura", linea1->DBvalue ( "proporciondpresupuesto" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
                 bud->getlistadescuentos() ->nuevoRegistro();
             } // end if

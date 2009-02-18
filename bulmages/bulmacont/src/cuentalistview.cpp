@@ -379,8 +379,8 @@ CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
     _depura ( "CuentaListSubForm::CuentaListSubForm", 0 );
-    setDBTableName ( "cuenta" );
-    setDBCampoId ( "idcuenta" );
+    setDbTableName ( "cuenta" );
+    setDbFieldId ( "idcuenta" );
 
 
     addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID cuenta" ) );

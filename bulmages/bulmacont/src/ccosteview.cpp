@@ -43,17 +43,17 @@ ccosteview::ccosteview ( BcCompany  *emp, QWidget *parent )
 
     setTitleName ( _( "Centro de Coste" ) );
     /// Etablecemos cual va a ser la tabla para obtener los permisos
-    setDBTableName ( "c_coste" );
-    setDBCampoId ( "idc_coste" );
-    addDBCampo ( "idc_coste", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id. Centro Coste" ) );
-    addDBCampo ( "nombre", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre" ) );
-    addDBCampo ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Descripcion" ) );
+    setDbTableName ( "c_coste" );
+    setDbFieldId ( "idc_coste" );
+    addDbField ( "idc_coste", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id. Centro Coste" ) );
+    addDbField ( "nombre", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre" ) );
+    addDbField ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Descripcion" ) );
 
     /// Inicializamos el subformulario de centros distribuidos
     mui_cdistribuidos->setMainCompany ( emp );
-    mui_cdistribuidos->setDBTableName ( "c_costedist" );
+    mui_cdistribuidos->setDbTableName ( "c_costedist" );
     mui_cdistribuidos->setFileConfig ( "ccostedist" );
-    mui_cdistribuidos->setDBCampoId ( "idc_costedist" );
+    mui_cdistribuidos->setDbFieldId ( "idc_costedist" );
     mui_cdistribuidos->addSubFormHeader ( "nomc_coste", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre Destinatario" ) );
     mui_cdistribuidos->addSubFormHeader ( "porcentc_costedist", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje" ) );
     mui_cdistribuidos->addSubFormHeader ( "idc_costedist", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Id" ) );

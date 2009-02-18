@@ -55,28 +55,28 @@ int BlForm_guardar_Post ( BlForm *l )
 	if (l->tableName() == "cliente") {
 
 	FichaBf *fich = new FichaBf((BfCompany *)l->mainCompany(), l);
-        fich->setDBTableName ( "proveedor" );
-        fich->setDBCampoId ( "idproveedor" );
-        fich->addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _("ID proveedor") );
-        fich->addDBCampo ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNotNull, _("Nombre del proveedor")  );
-        fich->addDBCampo ( "nomaltproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Nombre alternativo del proveedor") );
-        fich->addDBCampo ( "cifproveedor", BlDbField::DBvarchar, BlDbField::DBNotNull, _("C.I.F. del proveedor") );
-        fich->addDBCampo ( "codicliproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Codigo cliente") );
-        fich->addDBCampo ( "cbancproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Banco proveedor") );
-        fich->addDBCampo ( "dirproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Direccion") );
-        fich->addDBCampo ( "poblproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Poblacion") );
-        fich->addDBCampo ( "idprovincia", BlDbField::DBint, BlDbField::DBNothing, _("Provincia") );
-        fich->addDBCampo ( "cpproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Codigo postal") );
-        fich->addDBCampo ( "telproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Numero de telefono") );
-        fich->addDBCampo ( "faxproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Numero de fax") );
-        fich->addDBCampo ( "emailproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Direccion electronica") );
-        fich->addDBCampo ( "urlproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("URL") );
-        fich->addDBCampo ( "comentproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Comentarios") );
-        fich->addDBCampo ( "codproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Codigo") );
-        fich->addDBCampo ( "regimenfiscalproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Regimen fiscal" ) );
-        fich->addDBCampo ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
-        fich->addDBCampo ( "recargoeqproveedor", BlDbField::DBboolean, BlDbField::DBNothing, _( "Recargo de equivalencia" ) );
-        fich->addDBCampo ( "irpfproveedor", BlDbField::DBnumeric, BlDbField::DBNothing, _( "IRPF" ) );
+        fich->setDbTableName ( "proveedor" );
+        fich->setDbFieldId ( "idproveedor" );
+        fich->addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _("ID proveedor") );
+        fich->addDbField ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNotNull, _("Nombre del proveedor")  );
+        fich->addDbField ( "nomaltproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Nombre alternativo del proveedor") );
+        fich->addDbField ( "cifproveedor", BlDbField::DBvarchar, BlDbField::DBNotNull, _("C.I.F. del proveedor") );
+        fich->addDbField ( "codicliproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Codigo cliente") );
+        fich->addDbField ( "cbancproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Banco proveedor") );
+        fich->addDbField ( "dirproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Direccion") );
+        fich->addDbField ( "poblproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Poblacion") );
+        fich->addDbField ( "idprovincia", BlDbField::DBint, BlDbField::DBNothing, _("Provincia") );
+        fich->addDbField ( "cpproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Codigo postal") );
+        fich->addDbField ( "telproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Numero de telefono") );
+        fich->addDbField ( "faxproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Numero de fax") );
+        fich->addDbField ( "emailproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Direccion electronica") );
+        fich->addDbField ( "urlproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("URL") );
+        fich->addDbField ( "comentproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Comentarios") );
+        fich->addDbField ( "codproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _("Codigo") );
+        fich->addDbField ( "regimenfiscalproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Regimen fiscal" ) );
+        fich->addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+        fich->addDbField ( "recargoeqproveedor", BlDbField::DBboolean, BlDbField::DBNothing, _( "Recargo de equivalencia" ) );
+        fich->addDbField ( "irpfproveedor", BlDbField::DBnumeric, BlDbField::DBNothing, _( "IRPF" ) );
 
 	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + l->DBvalue("cifcliente")+"'";
 	BlDbRecordSet *cur = l->mainCompany()->cargacursor(query);
@@ -90,15 +90,15 @@ int BlForm_guardar_Post ( BlForm *l )
 	} // end if
 	delete cur;
 
-	fich->setDBvalue("codicliprovedor", l->DBvalue("codcliente"));
-	fich->setDBvalue("nomproveedor", l->DBvalue("nomcliente"));
-	fich->setDBvalue("cifproveedor", l->DBvalue("cifcliente"));
-	fich->setDBvalue("cpproveedor", l->DBvalue("cpcliente"));
-	fich->setDBvalue("dirproveedor", l->DBvalue("dircliente"));
-	fich->setDBvalue("poblproveedor", l->DBvalue("poblcliente"));
-	fich->setDBvalue("idprovincia", l->DBvalue("idprovincia"));
-	fich->setDBvalue("cpproveedor", l->DBvalue("cpcliente"));
-	fich->setDBvalue("telproveedor", l->DBvalue("telcliente"));
+	fich->setDbValue("codicliprovedor", l->DBvalue("codcliente"));
+	fich->setDbValue("nomproveedor", l->DBvalue("nomcliente"));
+	fich->setDbValue("cifproveedor", l->DBvalue("cifcliente"));
+	fich->setDbValue("cpproveedor", l->DBvalue("cpcliente"));
+	fich->setDbValue("dirproveedor", l->DBvalue("dircliente"));
+	fich->setDbValue("poblproveedor", l->DBvalue("poblcliente"));
+	fich->setDbValue("idprovincia", l->DBvalue("idprovincia"));
+	fich->setDbValue("cpproveedor", l->DBvalue("cpcliente"));
+	fich->setDbValue("telproveedor", l->DBvalue("telcliente"));
 
 	if (guardar)
 		fich->guardar();

@@ -142,14 +142,14 @@ int ContratoView::guardar()
 {
     _depura ( "ContratoView::guardar", 0 );
     try {
-        setDBvalue ( "refcontrato", mui_refcontrato->text() );
-        setDBvalue ( "nomcontrato", mui_nomcontrato->text() );
-        setDBvalue ( "idcliente", mui_idcliente->id() );
-        setDBvalue ( "fincontrato", mui_fincontrato->text() );
-        setDBvalue ( "ffincontrato", mui_ffincontrato->text() );
-        setDBvalue ( "loccontrato", mui_loccontrato->text() );
-        setDBvalue ( "descontrato", mui_descontrato->toPlainText() );
-        setDBvalue ( "periodicidadcontrato", mui_periodicidadcontrato->periodo() );
+        setDbValue ( "refcontrato", mui_refcontrato->text() );
+        setDbValue ( "nomcontrato", mui_nomcontrato->text() );
+        setDbValue ( "idcliente", mui_idcliente->id() );
+        setDbValue ( "fincontrato", mui_fincontrato->text() );
+        setDbValue ( "ffincontrato", mui_ffincontrato->text() );
+        setDbValue ( "loccontrato", mui_loccontrato->text() );
+        setDbValue ( "descontrato", mui_descontrato->toPlainText() );
+        setDbValue ( "periodicidadcontrato", mui_periodicidadcontrato->periodo() );
         Contrato::guardar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
@@ -317,9 +317,9 @@ void ContratoView::on_mui_facturar_clicked()
             mainCompany() ->m_pWorkspace->addWindow ( fac );
             fac->cargar ( "0" );
             fac->show();
-            fac->setDBvalue ( "reffactura", DBvalue ( "refcontrato" ) );
-            fac->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
-            fac->setDBvalue ( "descfactura", DBvalue ( "nomcontrato" ) + " Periodo:  " + cur1->valor ( "finperiodo" ).left ( 10 ) + " -- " + cur1->valor ( "ffinperiodo" ).left ( 10 ) );
+            fac->setDbValue ( "reffactura", DBvalue ( "refcontrato" ) );
+            fac->setDbValue ( "idcliente", DBvalue ( "idcliente" ) );
+            fac->setDbValue ( "descfactura", DBvalue ( "nomcontrato" ) + " Periodo:  " + cur1->valor ( "finperiodo" ).left ( 10 ) + " -- " + cur1->valor ( "ffinperiodo" ).left ( 10 ) );
 
             BlDbRecordSet *curcliente = mainCompany() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" ) );
             if ( ! curcliente ) {
@@ -338,24 +338,24 @@ void ContratoView::on_mui_facturar_clicked()
                     /// Haciendo la nueva linea antes nos evitamos problemas de foco
                     fac->getlistalineas() ->nuevoRegistro();
                     fac->getlistalineas() ->setProcesarCambios ( FALSE );
-                    linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                    linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                    linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                    linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclcontrato" ) );
-                    linea1->setDBvalue ( "descuentolfactura", "0" );
-                    linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlcontrato" ) );
-                    linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplcontrato" ) );
+                    linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                    linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                    linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                    linea1->setDbValue ( "desclfactura", linea->DBvalue ( "desclcontrato" ) );
+                    linea1->setDbValue ( "descuentolfactura", "0" );
+                    linea1->setDbValue ( "cantlfactura", linea->DBvalue ( "cantlcontrato" ) );
+                    linea1->setDbValue ( "pvplfactura", linea->DBvalue ( "pvplcontrato" ) );
                     /// Buscamos el tipo de iva que corresponde al articulo y lo ponemos.
                     BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + linea->DBvalue ( "idarticulo" ) );
                     BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
                     if ( !cur->eof() ) {
 
                         if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
-                            linea1->setDBvalue ( "ivalfactura", cur1->valor ( "porcentasa_iva" ) );
+                            linea1->setDbValue ( "ivalfactura", cur1->valor ( "porcentasa_iva" ) );
                         } // end if
 
                         if ( curcliente->valor ( "recargoeqcliente" ) == "t" ) {
-                            linea1->setDBvalue ( "reqeqlfactura", cur1->valor ( "porcentretasa_iva" ) );
+                            linea1->setDbValue ( "reqeqlfactura", cur1->valor ( "porcentretasa_iva" ) );
                         } // end if
 
                     } // end if
@@ -396,8 +396,8 @@ void ContratoView::on_mui_facturar_clicked()
 FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
     _depura ( "FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
-    setDBTableName ( "factura" );
-    setDBCampoId ( "idfactura" );
+    setDbTableName ( "factura" );
+    setDbFieldId ( "idfactura" );
     setFileConfig ( "contratofactura" );
     addSubFormHeader ( "numfactura", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero" ) );
     addSubFormHeader ( "ffactura", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );

@@ -71,8 +71,8 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     l->setObjectName ( QString::fromUtf8 ( "laliastc" ) );
     l->setMainCompany ( art->mainCompany() );
-    l->setDBTableName ( "tc_articulo_alias" );
-    l->setDBCampoId ( "idarticulo" );
+    l->setDbTableName ( "tc_articulo_alias" );
+    l->setDbFieldId ( "idarticulo" );
     l->addSubFormHeader ( "aliastc_articulo_tallacolor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
     l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "Id Articulo" ) );
     l->addSubFormHeader ( "idtc_color", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "color" ) );
@@ -212,12 +212,12 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         BusquedaColorDelegate * comboBox = static_cast<BusquedaColorDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
-        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtc_color", comboBox->id() );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_color", comboBox->id() );
     } else     if ( linea->nomcampo() == "nomtc_talla" ) {
         BusquedaTallaDelegate * comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
-        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtc_talla", comboBox->id() );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_talla", comboBox->id() );
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if

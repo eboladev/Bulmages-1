@@ -174,7 +174,7 @@ void BlForm::cargaSpecs()
                 restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
             } // end while
 
-            addDBCampo ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, nompheader );
+            addDbField ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, nompheader );
             generaCampo ( nomheader, nompheader, typeheader );
         } // end if
     } // end for
@@ -418,7 +418,7 @@ void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup )
     } // end if
 
     /// De Forma rapida hacemos un tratamiento de los permisos
-    setDBTableName ( tableName() );
+    setDbTableName ( tableName() );
     /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
     /// De configuracion por lo que si no es este no es ninguno.
     cargaSpecs();
@@ -485,10 +485,10 @@ void BlForm::procesaMenu ( QAction * )
 /**
 \param nom
 **/
-void BlForm::setDBTableName ( QString nom )
+void BlForm::setDbTableName ( QString nom )
 {
-    _depura ( "BlForm::setDBTableName", 0 );
-    BlDbRecord::setDBTableName ( nom );
+    _depura ( "BlForm::setDbTableName", 0 );
+    BlDbRecord::setDbTableName ( nom );
 
     if (mainCompany() != NULL) {
 	if ( !mainCompany() ->has_table_privilege ( nom, "INSERT" ) ) {
@@ -500,7 +500,7 @@ void BlForm::setDBTableName ( QString nom )
 	} // end if
     } // end if
 
-    _depura ( "END BlForm::setDBTableName", 0 );
+    _depura ( "END BlForm::setDbTableName", 0 );
 }
 
 
@@ -685,7 +685,7 @@ int BlForm::guardar()
         recogeValores();
         mainCompany() ->begin();
         DBsave ( id );
-        setDBvalue ( m_campoid, id );
+        setDbValue ( m_campoid, id );
         mainCompany() ->commit();
 
         /// Lanzamos los plugins.
@@ -882,8 +882,8 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
 				QLineEdit * item = it2.next();
 				QString nombre = item->objectName().right(item->objectName().size()-4);
 				QString valor = item->text();
-				addDBCampo ( nombre, BlDbField::DBvarchar, BlDbField::DBNoSave, nombre  );
-				setDBvalue ( nombre, valor );
+				addDbField ( nombre, BlDbField::DBvarchar, BlDbField::DBNoSave, nombre  );
+				setDbValue ( nombre, valor );
 			} // end while
 		} // end if
 		delete diag;

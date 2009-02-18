@@ -95,55 +95,55 @@ public:
         return DBvalue ( "serieregistroiva" );
     };
     void setidregistroiva ( const QString &val ) {
-        setDBvalue ( "idregistroiva", val );
+        setDbValue ( "idregistroiva", val );
     };
     void setcontrapartida ( const QString &val ) {
-        setDBvalue ( "contrapartida", val );
+        setDbValue ( "contrapartida", val );
     };
     void setbaseimp ( const QString &val ) {
-        setDBvalue ( "baseimp", val );
+        setDbValue ( "baseimp", val );
     };
     void setiva ( const QString &val ) {
-        setDBvalue ( "iva", val );
+        setDbValue ( "iva", val );
     };
     void setffactura ( const QString &val ) {
-        setDBvalue ( "ffactura", val );
+        setDbValue ( "ffactura", val );
     };
     void setfactura ( const QString &val ) {
-        setDBvalue ( "factura", val );
+        setDbValue ( "factura", val );
     };
     void setidborrador ( const QString &val ) {
-        setDBvalue ( "idborrador", val );
+        setDbValue ( "idborrador", val );
     };
     void setincregistro ( const QString &val ) {
-        setDBvalue ( "incregistro", val );
+        setDbValue ( "incregistro", val );
     };
     void setregularizacion ( const QString &val ) {
-        setDBvalue ( "regularizacion", val );
+        setDbValue ( "regularizacion", val );
     };
     void setplan349 ( const QString &val ) {
-        setDBvalue ( "plan349", val );
+        setDbValue ( "plan349", val );
     };
     void setnumorden ( const QString &val ) {
-        setDBvalue ( "numorden", val );
+        setDbValue ( "numorden", val );
     };
     void setcif ( const QString &val ) {
-        setDBvalue ( "cif", val );
+        setDbValue ( "cif", val );
     };
     void setidfpago ( const QString &val ) {
-        setDBvalue ( "idfpago", val );
+        setDbValue ( "idfpago", val );
     };
     void setfactemitida ( const QString &val ) {
-        setDBvalue ( "factemitida", val );
+        setDbValue ( "factemitida", val );
     };
     void setrectificaaregistroiva ( const QString &val ) {
-        setDBvalue ( "rectificaaregistroiva", val );
+        setDbValue ( "rectificaaregistroiva", val );
     };
     void setfemisionregistroiva ( const QString &val ) {
-        setDBvalue ( "femisionregistroiva", val );
+        setDbValue ( "femisionregistroiva", val );
     };
     void setserieregistroiva ( const QString &val ) {
-        setDBvalue ( "serieregistroiva", val );
+        setDbValue ( "serieregistroiva", val );
     };
     virtual void pintaidregistroiva ( const QString & ) {
         _depura ( "funcion no implementada", 2 );

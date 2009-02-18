@@ -316,11 +316,11 @@ Esta clase funciona siempre con una tabla especificada. De esta forma todas las 
 y modificaciones se hacen sobre la tabla que se haya especificado.
 \param nom Nombre de la tabla de la base de datos que se usa por defecto.
 **/
-void BlDbRecord::setDBTableName ( QString nom )
+void BlDbRecord::setDbTableName ( QString nom )
 {
-    _depura ( "BlDbRecord::setDBTableName", 0 );
+    _depura ( "BlDbRecord::setDbTableName", 0 );
     m_tablename = nom;
-    _depura ( "END BlDbRecord::setDBTableName", 0 );
+    _depura ( "END BlDbRecord::setDbTableName", 0 );
 }
 
 
@@ -370,11 +370,11 @@ QString BlDbRecord::campoId()
 /**
 \param nom El nombre del campo que se considera la clave primaria
 **/
-void BlDbRecord::setDBCampoId ( QString nom )
+void BlDbRecord::setDbFieldId ( QString nom )
 {
-    _depura ( "BlDbRecord::setDBCampoId", 0 );
+    _depura ( "BlDbRecord::setDbFieldId", 0 );
     m_campoid = nom;
-    _depura ( "END BlDbRecord::setDBCampoId", 0 );
+    _depura ( "END BlDbRecord::setDbFieldId", 0 );
 }
 
 
@@ -551,22 +551,28 @@ int BlDbRecord::DBsave ( QString &id )
 \param valor Valor que toma el campo.
 \return
 **/
-int BlDbRecord::setDBvalue ( QString nomb, QString valor )
+int BlDbRecord::setDbValue ( QString nomb, QString valor )
 {
-    _depura ( "BlDbRecord::setDBvalue", 0 );
+    _depura ( "BlDbRecord::setDbValue", 0 );
     BlDbField *campo;
     int error = 0;
     int i = 0;
     campo = m_lista.value ( i );
-    while ( campo && campo->nomcampo() != nomb )
+
+    while ( campo && campo->nomcampo() != nomb ) {
         campo = m_lista.value ( ++i ) ;
+    } // end while
+
     if ( !campo ) {
         _depura ( "Campo " + nomb + " no encontrado", 2 );
         return -1;
     } // end if
-    if ( campo->nomcampo() == nomb )
+
+    if ( campo->nomcampo() == nomb ) {
         error = campo->set ( valor );
-    _depura ( "END BlDbRecord::setDBvalue", 0 );
+    } // end if
+
+    _depura ( "END BlDbRecord::setDbValue", 0 );
     return error;
 }
 
@@ -659,14 +665,14 @@ la clase para que aprenda a operar con una tabla determinada.
 \param nomp Nombre para mostrar en los mensajes que involucren al campo
 \return
 **/
-int BlDbRecord::addDBCampo ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" )
+int BlDbRecord::addDbField ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" )
 {
-    _depura ( "BlDbRecord::addDBCampo", 0 );
+    _depura ( "BlDbRecord::addDbField", 0 );
     BlDbField *camp = new BlDbField ( m_conexionbase, nom, typ, res, nomp );
     camp->set
     ( "" );
     m_lista.append ( camp );
-    _depura ( "END BlDbRecord::addDBCampo", 0 );
+    _depura ( "END BlDbRecord::addDbField", 0 );
     return 0;
 }
 
@@ -732,7 +738,7 @@ int BlDbRecord::guardar()
     QString id;
     try {
         DBsave ( id );
-        setDBvalue ( m_campoid, id );
+        setDbValue ( m_campoid, id );
         _depura ( "END BlDbRecord::guardar", 0 );
         return 0;
     } catch ( ... ) {

@@ -67,17 +67,17 @@ public:
         return DBvalue ( "ivaiva" );
     };
     inline void setidiva ( QString val ) {
-        setDBvalue ( "idiva", val );
+        setDbValue ( "idiva", val );
     };
     void setidtipoiva ( const QString &val );
     inline void setidregistroiva ( QString val ) {
-        setDBvalue ( "idregistroiva", val );
+        setDbValue ( "idregistroiva", val );
     };
     inline void setbaseiva ( QString val ) {
-        setDBvalue ( "baseiva", val );
+        setDbValue ( "baseiva", val );
     };
     inline void setivaiva ( QString val ) {
-        setDBvalue ( "ivaiva", val );
+        setDbValue ( "ivaiva", val );
     };
     int borrar();
 };

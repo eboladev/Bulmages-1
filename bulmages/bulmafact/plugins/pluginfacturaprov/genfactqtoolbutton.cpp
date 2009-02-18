@@ -169,10 +169,10 @@ void GenFacProQToolButton::generarFacturaProveedor()
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
 
-        bud->setDBvalue ( "comentfacturap", fpv->DBvalue ( "comentalbaranp" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "reffacturap", fpv->DBvalue ( "refalbaranp" ) );
-        bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+        bud->setDbValue ( "comentfacturap", fpv->DBvalue ( "comentalbaranp" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffacturap", fpv->DBvalue ( "refalbaranp" ) );
+        bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
         bud->pintar();
         bud->show();
 
@@ -185,14 +185,14 @@ void GenFacProQToolButton::generarFacturaProveedor()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "desclfacturap", linea->DBvalue ( "desclalbaranp" ) );
-                linea1->setDBvalue ( "cantlfacturap", linea->DBvalue ( "cantlalbaranp" ) );
-                linea1->setDBvalue ( "pvplfacturap", linea->DBvalue ( "pvplalbaranp" ) );
-                linea1->setDBvalue ( "descuentolfacturap", linea->DBvalue ( "descuentolalbaranp" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                linea1->setDBvalue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
+                linea1->setDbValue ( "desclfacturap", linea->DBvalue ( "desclalbaranp" ) );
+                linea1->setDbValue ( "cantlfacturap", linea->DBvalue ( "cantlalbaranp" ) );
+                linea1->setDbValue ( "pvplfacturap", linea->DBvalue ( "pvplalbaranp" ) );
+                linea1->setDbValue ( "descuentolfacturap", linea->DBvalue ( "descuentolalbaranp" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -275,10 +275,10 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
 
-        bud->setDBvalue ( "comentfacturap", fpv->DBvalue ( "comentpedidoproveedor" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "reffacturap", fpv->DBvalue ( "refpedidoproveedor" ) );
-        bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+        bud->setDbValue ( "comentfacturap", fpv->DBvalue ( "comentpedidoproveedor" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffacturap", fpv->DBvalue ( "refpedidoproveedor" ) );
+        bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
         bud->pintar();
         bud->show();
 
@@ -291,14 +291,14 @@ void GenFacProQToolButton::generarFacturaProveedor1()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "desclfacturap", linea->DBvalue ( "desclpedidoproveedor" ) );
-                linea1->setDBvalue ( "cantlfacturap", linea->DBvalue ( "cantlpedidoproveedor" ) );
-                linea1->setDBvalue ( "pvplfacturap", linea->DBvalue ( "pvplpedidoproveedor" ) );
-                linea1->setDBvalue ( "descuentolfacturap", linea->DBvalue ( "descuentolpedidoproveedor" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                linea1->setDBvalue ( "ivalfacturap", linea->DBvalue ( "ivalpedidoproveedor" ) );
+                linea1->setDbValue ( "desclfacturap", linea->DBvalue ( "desclpedidoproveedor" ) );
+                linea1->setDbValue ( "cantlfacturap", linea->DBvalue ( "cantlpedidoproveedor" ) );
+                linea1->setDbValue ( "pvplfacturap", linea->DBvalue ( "pvplpedidoproveedor" ) );
+                linea1->setDbValue ( "descuentolfacturap", linea->DBvalue ( "descuentolpedidoproveedor" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalfacturap", linea->DBvalue ( "ivalpedidoproveedor" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for

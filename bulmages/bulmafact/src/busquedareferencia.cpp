@@ -63,8 +63,8 @@ void BusquedaReferencia::on_mui_informe_clicked()
 
     BlForm newfich ( mainCompany(), NULL );
     newfich.setTitleName ( _( "Informe" ) );
-    newfich.addDBCampo ( "referencia", BlDbField::DBvarchar, BlDbField::DBPrimaryKey, _( "Referencia" ) );
-    newfich.setDBvalue ( "referencia", mui_referencia->text() );
+    newfich.addDbField ( "referencia", BlDbField::DBvarchar, BlDbField::DBPrimaryKey, _( "Referencia" ) );
+    newfich.setDbValue ( "referencia", mui_referencia->text() );
     if (newfich.generaRML ( "informereferencia.rml" )) {
     	invocaPDF ( "informereferencia" );
     } // end if

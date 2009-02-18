@@ -53,28 +53,28 @@ AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
 
     /// Inicializamos la clase para la base de datos.
     setTitleName ( _( "Amortizacion" ) );
-    setDBTableName ( "amortizacion" );
-    setDBCampoId ( "idamortizacion" );
-    addDBCampo ( "nomamortizacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre de la amortizacion" ) );
-    addDBCampo ( "descamortizacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion de la amortizacion" ) );
-    addDBCampo ( "fechacompra", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de la compra" ) );
-    addDBCampo ( "fecha1cuota", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha 1a cuota" ) );
-    addDBCampo ( "valorcompra", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Valor de la compra" ) );
-    addDBCampo ( "periodicidad", BlDbField::DBint, BlDbField::DBNothing, _( "Periodicidad" ) );
-    addDBCampo ( "numcuotas", BlDbField::DBint, BlDbField::DBNothing, _( "Numero de cuotas" ) );
-    addDBCampo ( "metodo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Metodo" ) );
-    addDBCampo ( "nifproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "NIF del proveedor" ) );
-    addDBCampo ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del proveedor" ) );
-    addDBCampo ( "dirproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion del proveedor" ) );
-    addDBCampo ( "telproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono del proveedor" ) );
-    addDBCampo ( "agrupacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Agrupacion" ) );
-    addDBCampo ( "idamortizacion", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id amortizacion" ) );
-    addDBCampo ( "idcuentaactivo", BlDbField::DBint, BlDbField::DBNothing, _( "Identificador" ) );
-    addDBCampo ( "idcuentaamortizacion", BlDbField::DBint, BlDbField::DBNotNull, _( "Id cuenta amortizacion" ) );
+    setDbTableName ( "amortizacion" );
+    setDbFieldId ( "idamortizacion" );
+    addDbField ( "nomamortizacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre de la amortizacion" ) );
+    addDbField ( "descamortizacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion de la amortizacion" ) );
+    addDbField ( "fechacompra", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de la compra" ) );
+    addDbField ( "fecha1cuota", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha 1a cuota" ) );
+    addDbField ( "valorcompra", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Valor de la compra" ) );
+    addDbField ( "periodicidad", BlDbField::DBint, BlDbField::DBNothing, _( "Periodicidad" ) );
+    addDbField ( "numcuotas", BlDbField::DBint, BlDbField::DBNothing, _( "Numero de cuotas" ) );
+    addDbField ( "metodo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Metodo" ) );
+    addDbField ( "nifproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "NIF del proveedor" ) );
+    addDbField ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del proveedor" ) );
+    addDbField ( "dirproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion del proveedor" ) );
+    addDbField ( "telproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono del proveedor" ) );
+    addDbField ( "agrupacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Agrupacion" ) );
+    addDbField ( "idamortizacion", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id amortizacion" ) );
+    addDbField ( "idcuentaactivo", BlDbField::DBint, BlDbField::DBNothing, _( "Identificador" ) );
+    addDbField ( "idcuentaamortizacion", BlDbField::DBint, BlDbField::DBNotNull, _( "Id cuenta amortizacion" ) );
 
     /// Inicializamos el listado.
-    mui_listcuotas->setDBTableName ( "linamortizacion" );
-    mui_listcuotas->setDBCampoId ( "idlinamortizacion" );
+    mui_listcuotas->setDbTableName ( "linamortizacion" );
+    mui_listcuotas->setDbFieldId ( "idlinamortizacion" );
     mui_listcuotas->addSubFormHeader ( "ejercicio", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Ejercicio" ) );
     mui_listcuotas->addSubFormHeader ( "fechaprevista", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha prevista" ) );
     mui_listcuotas->addSubFormHeader ( "cantidad", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
@@ -128,14 +128,14 @@ int AmortizacionView::guardar()
     _depura ( "AmortizacionView::guardar", 0 );
     try {
         /// Guardamos los datos del formulario
-        setDBvalue ( "nomamortizacion", nomamortizacion->text() );
-        setDBvalue ( "idcuentaactivo",  ctaactivo->idcuenta() );
-        setDBvalue ( "valorcompra", valorcompra->text() );
-        setDBvalue ( "numcuotas", numcuotas->text() );
-        setDBvalue ( "fechacompra", fechacompra->text() );
-        setDBvalue ( "fecha1cuota", fecha1cuota->text() );
-        setDBvalue ( "idcuentaamortizacion", ctaamortizacion->idcuenta() );
-        setDBvalue ( "agrupacion", agrupacion->text() );
+        setDbValue ( "nomamortizacion", nomamortizacion->text() );
+        setDbValue ( "idcuentaactivo",  ctaactivo->idcuenta() );
+        setDbValue ( "valorcompra", valorcompra->text() );
+        setDbValue ( "numcuotas", numcuotas->text() );
+        setDbValue ( "fechacompra", fechacompra->text() );
+        setDbValue ( "fecha1cuota", fecha1cuota->text() );
+        setDbValue ( "idcuentaamortizacion", ctaamortizacion->idcuenta() );
+        setDbValue ( "agrupacion", agrupacion->text() );
 
         QString id = "";
         BlDbRecord::DBsave ( id );
@@ -239,8 +239,8 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
-            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
-            rec->setDBvalue ( "cantidad", valcuotastr );
+            rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDbValue ( "cantidad", valcuotastr );
 
             /// Dependiendo de la periodicidad actualizamos la fecha.
             if ( periodicidadtxt == _( "Anual" ) ) {
@@ -267,8 +267,8 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
-            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
-            rec->setDBvalue ( "cantidad", valcuotastr );
+            rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDbValue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
             if ( periodicidadtxt == _( "Anual" ) ) {
                 f1cuota = f1cuota.addYears ( 1 );
@@ -294,8 +294,8 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
-            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
-            rec->setDBvalue ( "cantidad", valcuotastr );
+            rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDbValue ( "cantidad", valcuotastr );
 
             /// Dependiendo de la periodicidad actualizamos la fecha.
             if ( periodicidadtxt == _( "Anual" ) ) {
@@ -326,8 +326,8 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
-            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
-            rec->setDBvalue ( "cantidad", valcuotastr );
+            rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDbValue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
             if ( periodicidadtxt == _( "Anual" ) ) {
                 f1cuota = f1cuota.addYears ( 1 );

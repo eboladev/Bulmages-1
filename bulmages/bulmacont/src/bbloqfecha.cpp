@@ -76,7 +76,7 @@ BbloqFecha::BbloqFecha ( BcCompany *emp, QWidget *parent )
 
     setTitleName ( _( "Bloquear Fechas" ) );
     /// Establecemos cual es la tabla en la que basarse para obtener permisos
-    setDBTableName ( "asiento" );
+    setDbTableName ( "asiento" );
 
     qsbloqueado = _( "Bloqueado" );
     qsabierto = _( "Abierto" );

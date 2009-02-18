@@ -231,8 +231,8 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
 {
     _depura ( "ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
 
-    setDBTableName ( "articulo" );
-    setDBCampoId ( "idarticulo" );
+    setDbTableName ( "articulo" );
+    setDbFieldId ( "idarticulo" );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList1SubForm1_ArticuloList1SubForm1", this );

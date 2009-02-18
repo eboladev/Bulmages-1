@@ -344,8 +344,8 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
         _depura ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0, "Salida por Plugin" );
         return;
     } // end if
-    setDBTableName ( "presupuesto" );
-    setDBCampoId ( "idpresupuesto" );
+    setDbTableName ( "presupuesto" );
+    setDbFieldId ( "idpresupuesto" );
     addSubFormHeader ( "idpresupuesto", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID presupuesto" ) );
     addSubFormHeader ( "numpresupuesto", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Presupuesto" ) );
     addSubFormHeader ( "fpresupuesto", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );

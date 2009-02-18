@@ -26,9 +26,9 @@
 BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
     _depura ( "BalanceSubForm::BalanceSubForm", 0 );
-    setDBTableName ( "borrador" );
+    setDbTableName ( "borrador" );
     setFileConfig ( "balancesubform" );
-    setDBCampoId ( "idborrador" );
+    setDbFieldId ( "idborrador" );
     addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "idcuenta" ) );
     addSubFormHeader ( "tipocuenta", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "tipocuenta" ) );
     addSubFormHeader ( "codigo", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "codigo" ) );

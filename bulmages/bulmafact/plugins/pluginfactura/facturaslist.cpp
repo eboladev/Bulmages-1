@@ -357,8 +357,8 @@ FacturasListSubform::FacturasListSubform ( QWidget *parent, const char * ) : BfS
     int res = g_plugins->lanza ( "FacturasListSubform_FacturasListSubform", this );
     if ( res != 0 )
         return;
-    setDBTableName ( "factura" );
-    setDBCampoId ( "idfactura" );
+    setDbTableName ( "factura" );
+    setDbFieldId ( "idfactura" );
     addSubFormHeader ( "numfactura", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero" ) );
     addSubFormHeader ( "ffactura", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre cliente" ) );

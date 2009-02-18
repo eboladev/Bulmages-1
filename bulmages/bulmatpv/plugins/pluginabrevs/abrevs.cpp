@@ -119,10 +119,10 @@ void Abrevs::on_mui_aparcar_clicked()
         }// end if
     }// end for
 
-    emp->ticketActual() ->setDBvalue ( "nomticket", emp->valorInput() );
+    emp->ticketActual() ->setDbValue ( "nomticket", emp->valorInput() );
     Ticket *tick = emp->newTicket();
     /// Ponemos al trabajador creado el trabajador del ticket actual.
-    tick->setDBvalue ( "idtrabajador", emp->ticketActual() ->DBvalue ( "idtrabajador" ) );
+    tick->setDbValue ( "idtrabajador", emp->ticketActual() ->DBvalue ( "idtrabajador" ) );
     emp->setTicketActual ( tick );
     emp->listaTickets() ->append ( tick );
     /// Borra el valor del Input.
@@ -146,9 +146,9 @@ void Abrevs::on_mui_cliente_clicked()
     QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorInput() + "'";
     BlDbRecordSet *cur = emp->cargacursor ( query );
     if ( !cur->eof() ) {
-        emp->ticketActual() ->setDBvalue ( "idcliente", cur->valor ( "idcliente" ) );
+        emp->ticketActual() ->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
     } else {
-        emp->ticketActual() ->setDBvalue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
+        emp->ticketActual() ->setDbValue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
     } // end if
     delete cur;
     emp->ticketActual() ->pintar();

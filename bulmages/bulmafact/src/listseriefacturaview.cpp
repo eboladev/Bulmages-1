@@ -46,7 +46,7 @@ ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
 {
     _depura ( "INIT_ListSerieFacturaView::ListSerieFacturaView", 1 );
     setTitleName ( _( "Serie de Factura" ) );
-    setDBTableName ( "serie_factura" );
+    setDbTableName ( "serie_factura" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -74,8 +74,8 @@ ListSerieFacturaView::~ListSerieFacturaView()
 ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
-    setDBTableName ( "serie_factura" );
-    setDBCampoId ( "codigoserie_factura" );
+    setDbTableName ( "serie_factura" );
+    setDbFieldId ( "codigoserie_factura" );
     addSubFormHeader ( "codigoserie_facturaorig", BlDbField::DBvarchar, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView | BlSubFormHeader::DBBlockView, "codigoserie_factura" );
     addSubFormHeader ( "codigoserie_factura", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Codigo serie factura" ) );
     addSubFormHeader ( "descserie_factura", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion serie factura" ) );

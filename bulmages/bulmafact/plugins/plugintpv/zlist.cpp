@@ -51,8 +51,8 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
-    mui_list->setDBTableName ( "z" );
-    mui_list->setDBCampoId ( "idz" );
+    mui_list->setDbTableName ( "z" );
+    mui_list->setDbFieldId ( "idz" );
     mui_list->addSubFormHeader ( "idz", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Z" ) );
     mui_list->addSubFormHeader ( "fechaz", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );
     mui_list->addSubFormHeader ( "horaz", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Hora" ) );

@@ -165,10 +165,10 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
 
-        bud->setDBvalue ( "comentalbaranp", fpv->DBvalue ( "comentpedidoproveedor" ) );
-        bud->setDBvalue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDBvalue ( "refalbaranp", fpv->DBvalue ( "refpedidoproveedor" ) );
-        bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+        bud->setDbValue ( "comentalbaranp", fpv->DBvalue ( "comentpedidoproveedor" ) );
+        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
+        bud->setDbValue ( "refalbaranp", fpv->DBvalue ( "refpedidoproveedor" ) );
+        bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
         bud->pintar();
         bud->show();
 
@@ -181,14 +181,14 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDBvalue ( "desclalbaranp", linea->DBvalue ( "desclpedidoproveedor" ) );
-                linea1->setDBvalue ( "cantlalbaranp", linea->DBvalue ( "cantlpedidoproveedor" ) );
-                linea1->setDBvalue ( "pvplalbaranp", linea->DBvalue ( "pvplpedidoproveedor" ) );
-                linea1->setDBvalue ( "descuentolalbaranp", linea->DBvalue ( "descuentolpedidoproveedor" ) );
-                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                linea1->setDBvalue ( "ivalalbaranp", linea->DBvalue ( "ivalpedidoproveedor" ) );
+                linea1->setDbValue ( "desclalbaranp", linea->DBvalue ( "desclpedidoproveedor" ) );
+                linea1->setDbValue ( "cantlalbaranp", linea->DBvalue ( "cantlpedidoproveedor" ) );
+                linea1->setDbValue ( "pvplalbaranp", linea->DBvalue ( "pvplpedidoproveedor" ) );
+                linea1->setDbValue ( "descuentolalbaranp", linea->DBvalue ( "descuentolpedidoproveedor" ) );
+                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalalbaranp", linea->DBvalue ( "ivalpedidoproveedor" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for

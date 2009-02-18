@@ -31,9 +31,9 @@ AsientoListSubform::AsientoListSubform ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
     _depura ( "AsientoListSubform::AsientoListSubform", 0 );
-    setDBTableName ( "asiento" );
+    setDbTableName ( "asiento" );
     setFileConfig ( "AsientoListSubform" );
-    setDBCampoId ( "idasiento" );
+    setDbFieldId ( "idasiento" );
     addSubFormHeader ( "ordenasiento", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Orden" ) );
     addSubFormHeader ( "fecha", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );
     addSubFormHeader ( "numap", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Apuntes" ) );
