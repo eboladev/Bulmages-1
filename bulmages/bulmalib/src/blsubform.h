@@ -254,7 +254,7 @@ public:
     void situarse ( unsigned int, unsigned int );
     void situarse1 ( unsigned int, unsigned int );
     int addSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp );
-    BlDbSubFormRecord *newSDBRecord();
+    BlDbSubFormRecord *newDbSubFormRecord();
     virtual void setColumnValue ( QString, QString );
     QString DBvalue ( const QString &campo, int row = -1 );
     void setDBvalue ( const QString &campo, int row, const QString &valor );

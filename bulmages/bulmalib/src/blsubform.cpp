@@ -850,9 +850,9 @@ bool BlSubForm::existsHeader ( const QString &head )
 /**
 \return
 **/
-BlDbSubFormRecord *BlSubForm::newSDBRecord()
+BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
 {
-    _depura ( "BlSubForm::newSDBRecord", 0 );
+    _depura ( "BlSubForm::newDbSubFormRecord", 0 );
     BlDbSubFormRecord *rec = new BlDbSubFormRecord ( mainCompany() );
     rec->setDBTableName ( m_tablename );
     rec->setDBCampoId ( m_campoid );
@@ -885,7 +885,7 @@ BlDbSubFormRecord *BlSubForm::newSDBRecord()
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
         } // end if
     } // end for
-    _depura ( "END BlSubForm::newSDBRecord", 0 );
+    _depura ( "END BlSubForm::newDbSubFormRecord", 0 );
     return rec;
 }
 
@@ -906,7 +906,7 @@ void BlSubForm::nuevoRegistro()
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled ( FALSE );
 
-    BlDbSubFormRecord *rec = newSDBRecord();
+    BlDbSubFormRecord *rec = newDbSubFormRecord();
 
     m_lista.append ( rec );
 
@@ -1248,7 +1248,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     int porcentajecarga = 0;
     while ( !cur->eof() && m_lista.count() < filpag ) {
-        BlDbSubFormRecord * rec = newSDBRecord();
+        BlDbSubFormRecord * rec = newDbSubFormRecord();
         rec->DBload ( cur );
         m_lista.append ( rec );
         cur->siguienteregistro();
