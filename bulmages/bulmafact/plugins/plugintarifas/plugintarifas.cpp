@@ -55,8 +55,8 @@ myplugin1::~myplugin1()
 void myplugin1::elslot()
 {
     _depura ( "myplugin1::elslot", 0 );
-    TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) empresaBase() ), NULL );
-    empresaBase() ->m_pWorkspace->addWindow ( tar );
+    TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) mainCompany() ), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
     _depura ( "END myplugin1::elslot", 0 );
 }
@@ -130,7 +130,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 
     BusquedaTarifa *bus = new BusquedaTarifa ( cli->m_frameplugin );
     bus->setObjectName ( QString::fromUtf8 ( "mui_idtarifa" ) );
-    bus->setMainCompany ( cli->empresaBase() );
+    bus->setMainCompany ( cli->mainCompany() );
     bus->setIdTarifa ( "" );
     hboxLayout160->addWidget ( bus );
 
@@ -161,7 +161,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     _depura ( "ArticuloView_ArticuloView", 0 );
     ListLTarifaView *l1 = new ListLTarifaView ( art );
     l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
-    l1->setMainCompany ( art->empresaBase() );
+    l1->setMainCompany ( art->mainCompany() );
     l1->cargar ( "0" );
     art->mui_tab->addTab ( l1, _( "Tarifas") );
 
@@ -176,7 +176,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->mui_list->setItemDelegate ( l->m_delegate );
 
     l->setObjectName ( QString::fromUtf8 ( "lvariaciontarifas" ) );
-    l->setMainCompany ( art->empresaBase() );
+    l->setMainCompany ( art->mainCompany() );
     l->setDBTableName ( "variaciontarifa" );
     l->setDBCampoId ( "idarticulo" );
     l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );
@@ -313,7 +313,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
         _depura ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
 	return 0;
     } else {
-    	cur = sub->empresaBase()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
+    	cur = sub->mainCompany()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
     } // end if
 
     /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.
@@ -321,7 +321,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
     	variacionpvp = cur->valor ( "porcentajevariacion" );
 
 	/// Aplica al precio la variacion correspondiente.
-	QString res = sub->empresaBase()->PGEval( pvpactual +" * (1 + " + variacionpvp + " / 100)", 2);
+	QString res = sub->mainCompany()->PGEval( pvpactual +" * (1 + " + variacionpvp + " / 100)", 2);
 	sub->m_registrolinea->setDBvalue ( "pvp" + sub->tableName(), res);
     } // end if
 

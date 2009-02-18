@@ -50,7 +50,7 @@ AsientosView::AsientosView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, 
     mui_filtrar->toggle();
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END AsientosView::AsientosView", 0 );
 }
 
@@ -65,7 +65,7 @@ void AsientosView::rellenaListaEjercicio()
     mui_ejercicio->clear();
     mui_ejercicio->insertItem ( 0, _( "(todos)" ) );
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
         mui_ejercicio->addItem ( cur->valor ( "ano" ) );
         cur->siguienteregistro();
@@ -81,7 +81,7 @@ void AsientosView::rellenaListaEjercicio()
 AsientosView::~AsientosView()
 {
     _depura ( "AsientosView::~AsientosView\n", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END AsientosView::~AsientosView\n", 0 );
 }
 
@@ -93,10 +93,10 @@ void AsientosView::on_mui_list_cellDoubleClicked ( int, int )
 {
     _depura ( "AsientosView::on_mui_list_cellDoubleClicked", 0 );
     QString idasiento = mui_list->DBvalue ( "idasiento" );
-    ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->muestraasiento ( idasiento );
-    ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->show();
-    ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->setFocus();
-    ( ( BcCompany * ) empresaBase() ) ->muestraapuntes1();
+    ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->muestraasiento ( idasiento );
+    ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->show();
+    ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->setFocus();
+    ( ( BcCompany * ) mainCompany() ) ->muestraapuntes1();
     _depura ( "END AsientosView::on_mui_list_cellDoubleClicked", 0 );
 }
 

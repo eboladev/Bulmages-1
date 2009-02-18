@@ -32,7 +32,7 @@ class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase
     Q_OBJECT
 
 private:
-    BfCompany *empresaBase();
+    BfCompany *mainCompany();
 
 public:
     EFacturaEnvio ( BfCompany *emp, QWidget *parent = 0 );

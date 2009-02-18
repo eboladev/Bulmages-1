@@ -109,7 +109,7 @@ int ccosteview_ccosteview ( ccosteview *ccoste )
     _depura ( "ccosteview_ccosteview", 0 );
 
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView ( ccoste->empresaBase(), ccoste, 0, BlFormList::SelectMode );
+    ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BlFormList::SelectMode );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
     l->mui_actualizar->setDisabled ( TRUE );
 //    l->setModoEdicion();

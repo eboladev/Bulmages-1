@@ -59,7 +59,7 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
 ListZonaComercialView::~ListZonaComercialView()
 {
     _depura ( "ListZonaComercialView::~ListZonaComercialView", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "ListZonaComercialView::~ListZonaComercialView", 0 );
 }
 

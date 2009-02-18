@@ -74,7 +74,7 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     presentar();
     mdb_idactividad = "";
     if ( modoEdicion() )
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
@@ -98,7 +98,7 @@ ActividadesList::~ActividadesList()
 void ActividadesList::presentar()
 {
     _depura ( "ActividadesList::presentar", 0 );
-    if ( empresaBase() != NULL ) {
+    if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM actividad WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END ActividadesList::presentar", 0 );
@@ -128,8 +128,8 @@ QString ActividadesList::generaFiltro()
 void ActividadesList::crear()
 {
     _depura ( "ActividadesList::crear", 0 );
-    ActividadView *bud = new ActividadView( (BfCompany *) empresaBase(), 0);
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    ActividadView *bud = new ActividadView( (BfCompany *) mainCompany(), 0);
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
     _depura ( "ActividadesList::crear", 0 );
@@ -163,7 +163,7 @@ void ActividadesList::borrar()
     try {
         mdb_idactividad = mui_list->DBvalue ( "idactividad" );
         if ( modoEdicion() ) {
-            ActividadView * cv = new ActividadView( (BfCompany *) empresaBase(), 0);
+            ActividadView * cv = new ActividadView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idactividad ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,12 +187,12 @@ void ActividadesList::editar ( int )
     try {
         mdb_idactividad = mui_list->DBvalue ( "idactividad" );
         if ( modoEdicion() ) {
-            ActividadView * bud = new ActividadView( (BfCompany *) empresaBase(), 0);
+            ActividadView * bud = new ActividadView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idactividad ) ) {
                 delete bud;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idactividad ) );

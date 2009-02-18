@@ -64,7 +64,7 @@ void BancoView::pintar()
     if ( m_cursorbancos != NULL ) {
         delete m_cursorbancos;
     } // end if
-    m_cursorbancos = empresaBase() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
+    m_cursorbancos = mainCompany() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
     while ( !m_cursorbancos->eof() ) {
         new QListWidgetItem ( m_cursorbancos->valor ( "nombanco" ) , mui_lista );
         m_cursorbancos->siguienteregistro();
@@ -130,32 +130,32 @@ int BancoView::guardar()
     _depura ( "BancoView::on_mui_guardar_clicked", 0 );
     try {
         QString query = "UPDATE banco SET ";
-        query += "nombanco='" + empresaBase() ->sanearCadena ( mui_nombanco->text() ) + "'";
-        query += ", dirbanco='" + empresaBase() ->sanearCadena ( mui_dirbanco->text() ) + "'";
-        query += ", poblbanco='" + empresaBase() ->sanearCadena ( mui_poblbanco->text() ) + "'";
-        query += ", cpbanco='" + empresaBase() ->sanearCadena ( mui_cpbanco->text() ) + "'";
-        query += ", telbanco='" + empresaBase() ->sanearCadena ( mui_telbanco->text() ) + "'";
-        query += ", faxbanco='" + empresaBase() ->sanearCadena ( mui_faxbanco->text() ) + "'";
-        query += ", emailbanco='" + empresaBase() ->sanearCadena ( mui_emailbanco->text() ) + "'";
-        query += ", contactobanco='" + empresaBase() ->sanearCadena ( mui_contactobanco->text() ) + "'";
-        query += ", codentidadbanco='" + empresaBase() ->sanearCadena ( mui_codentidadbanco->text() ) + "'";
-        query += ", codagenciabanco='" + empresaBase() ->sanearCadena ( mui_codagenciabanco->text() ) + "'";
-        query += ", numcuentabanco='" + empresaBase() ->sanearCadena ( mui_numcuentabanco->text() ) + "'";
-        query += ", dcbanco='" + empresaBase() ->sanearCadena ( mui_dcbanco->text() ) + "'";
-        query += ", comentbanco='" + empresaBase() ->sanearCadena ( mui_comentbanco->toPlainText() ) + "'";
-        query += ",  webbanco='" + empresaBase() ->sanearCadena ( mui_webbanco->text() ) + "'";
-        query += " WHERE idbanco=" + empresaBase() ->sanearCadena ( mdb_idbanco );
+        query += "nombanco='" + mainCompany() ->sanearCadena ( mui_nombanco->text() ) + "'";
+        query += ", dirbanco='" + mainCompany() ->sanearCadena ( mui_dirbanco->text() ) + "'";
+        query += ", poblbanco='" + mainCompany() ->sanearCadena ( mui_poblbanco->text() ) + "'";
+        query += ", cpbanco='" + mainCompany() ->sanearCadena ( mui_cpbanco->text() ) + "'";
+        query += ", telbanco='" + mainCompany() ->sanearCadena ( mui_telbanco->text() ) + "'";
+        query += ", faxbanco='" + mainCompany() ->sanearCadena ( mui_faxbanco->text() ) + "'";
+        query += ", emailbanco='" + mainCompany() ->sanearCadena ( mui_emailbanco->text() ) + "'";
+        query += ", contactobanco='" + mainCompany() ->sanearCadena ( mui_contactobanco->text() ) + "'";
+        query += ", codentidadbanco='" + mainCompany() ->sanearCadena ( mui_codentidadbanco->text() ) + "'";
+        query += ", codagenciabanco='" + mainCompany() ->sanearCadena ( mui_codagenciabanco->text() ) + "'";
+        query += ", numcuentabanco='" + mainCompany() ->sanearCadena ( mui_numcuentabanco->text() ) + "'";
+        query += ", dcbanco='" + mainCompany() ->sanearCadena ( mui_dcbanco->text() ) + "'";
+        query += ", comentbanco='" + mainCompany() ->sanearCadena ( mui_comentbanco->toPlainText() ) + "'";
+        query += ",  webbanco='" + mainCompany() ->sanearCadena ( mui_webbanco->text() ) + "'";
+        query += " WHERE idbanco=" + mainCompany() ->sanearCadena ( mdb_idbanco );
 
-        int error = empresaBase() ->ejecuta ( query );
+        int error = mainCompany() ->ejecuta ( query );
         if ( error ) {
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
             return -1;
         } // end if
         if ( m_cursorbancos != NULL ) {
             delete m_cursorbancos;
         } // end if
 
-        m_cursorbancos = empresaBase() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
+        m_cursorbancos = mainCompany() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
 
         if ( m_item ) {
             m_item->setText ( mui_nombanco->text() );
@@ -204,17 +204,17 @@ void BancoView::on_mui_nuevo_clicked()
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
         QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idbanco) AS idbanco FROM banco" );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idbanco) AS idbanco FROM banco" );
+        mainCompany() ->commit();
         mdb_idbanco = cur->valor ( "idbanco" );
         delete cur;
         pintar();
         _depura ( "END BancoView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _( "Error inesperado el crear el Banco" ) );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end catch
 }
 
@@ -230,19 +230,19 @@ void BancoView::on_mui_borrar_clicked()
     if ( mdb_idbanco == "" ) return;
     try {
         trataModificado();
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;
-        int error = empresaBase() ->ejecuta ( query );
+        int error = mainCompany() ->ejecuta ( query );
         if ( error ) {
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
             return;
         } // end if
-        empresaBase() ->commit();
+        mainCompany() ->commit();
         pintar();
         _depura ( "END BancoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _( "Error inesperado al borrar el banco" ) );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
 }
 

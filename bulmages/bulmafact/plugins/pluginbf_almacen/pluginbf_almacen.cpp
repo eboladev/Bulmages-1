@@ -54,8 +54,8 @@ MyPlugAlm::~MyPlugAlm()
 void MyPlugAlm::elslot1()
 {
     _depura ( "MyPlugAlm::elslot1", 0 );
-        ListAlmacenView * bud = new ListAlmacenView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        ListAlmacenView * bud = new ListAlmacenView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugAlm::elslot1", 0 );
 }

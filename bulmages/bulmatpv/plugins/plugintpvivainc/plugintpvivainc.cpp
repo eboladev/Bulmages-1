@@ -48,7 +48,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + tick->lineaActTicket()->DBvalue("idarticulo");
-        BlDbRecordSet *cur = tick->empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             tick->lineaActTicket()->setDBvalue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
 
@@ -106,37 +106,37 @@ int Ticket_imprimir(Ticket *tick)
         BlFixed totalIva;
     }total;
 
-    BlDbRecordSet *cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     if ( !cur->eof() )
         empresa.nombre += "\n" + cur->valor ( "valor" );
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
         empresa.direccionCompleta = cur->valor ( "valor" );
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
         empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
         empresa.ciudad = cur->valor ( "valor" );
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
         empresa.telefono = cur->valor ( "valor" );
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
         empresa.provincia = cur->valor ( "valor" );
     delete cur;
@@ -145,19 +145,19 @@ int Ticket_imprimir(Ticket *tick)
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
     trabajador.id = tick->DBvalue ( "idtrabajador" );
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->DBvalue ( "idtrabajador" ) );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->DBvalue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + tick->DBvalue ( "idcliente" ) );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + tick->DBvalue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + tick->DBvalue ( "idalmacen" ) );
+    cur = tick->mainCompany() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + tick->DBvalue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
@@ -237,7 +237,7 @@ int Ticket_imprimir(Ticket *tick)
     base::Iterator it;
     for ( it = totales.begin(); it != totales.end(); ++it ) {
 		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS iva";
-		BlDbRecordSet *cur = tick->empresaBase()->cargacursor(sqlquery);
+		BlDbRecordSet *cur = tick->mainCompany()->cargacursor(sqlquery);
 //        	BlFixed baseimp = Fixed(cur->valor("base"));;
 //		BlFixed totiva = it.value() - baseimp;
 	    pr.printText ( "Base Imponible: "+ it.key() + "%  " + cur-> valor("base") + "�\n" );

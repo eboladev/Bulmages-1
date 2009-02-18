@@ -40,7 +40,7 @@ void MTicket::pintar()
         return;
     } // end if
 
-    Ticket *tick =     ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual();
+    Ticket *tick =     ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
@@ -48,11 +48,11 @@ void MTicket::pintar()
     html1 += "Ticket: " + tick->DBvalue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->DBvalue ( "idtrabajador" );
-    BlDbRecordSet *curtrab = empresaBase() ->cargacursor ( querytrab );
+    BlDbRecordSet *curtrab = mainCompany() ->cargacursor ( querytrab );
     html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue ( "idcliente" );
-    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query );
     html1 += "Cliente: " + tick->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
@@ -81,7 +81,7 @@ void MTicket::pintar()
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -192,7 +192,7 @@ void MTicket::pintar()
 void MTicket::on_mui_subir_clicked()
 {
 /// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_Up );
+    ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Up );
 
 }
 
@@ -200,14 +200,14 @@ void MTicket::on_mui_subir_clicked()
 void MTicket::on_mui_bajar_clicked()
 {
 /// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_Down );
+    ( ( EmpresaTPV * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Down );
 }
 
 
 void MTicket::on_mui_borrar_clicked()
 {
 
-    Ticket * tick = ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual();
+    Ticket * tick = ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();

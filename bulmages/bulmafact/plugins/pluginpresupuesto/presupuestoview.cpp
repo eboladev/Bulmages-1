@@ -234,7 +234,7 @@ void PresupuestoView::generarPedidoCliente()
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = empresaBase()->cargacursor ( SQLQuery );
+        cur = mainCompany()->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un pedido y lo abrimos.
@@ -246,8 +246,8 @@ void PresupuestoView::generarPedidoCliente()
                 return;
             } // end if
 
-            bud = empresaBase() ->newPedidoClienteView();
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = mainCompany() ->newPedidoClienteView();
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idpedidocliente" ) );
             bud->show();
             delete cur;
@@ -257,9 +257,9 @@ void PresupuestoView::generarPedidoCliente()
         delete cur;
 
         /// Creamos el pedido.
-        bud = empresaBase() ->newPedidoClienteView();
+        bud = mainCompany() ->newPedidoClienteView();
         bud->cargar ( "0" );
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Traspasamos toda la informacion del presupuesto al pedido.
         recogeValores();
@@ -416,7 +416,7 @@ QString PresupuestoView::detalleArticulos()
 {
     _depura ( "PresupuestoView::detalleArticulos", 0 );
     QString texto = "";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue ( "idpresupuesto" ) );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue ( "idpresupuesto" ) );
     int i = 0;
     while ( !cur->eof() ) {
         i = !i;

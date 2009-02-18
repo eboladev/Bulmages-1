@@ -210,19 +210,19 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPedidoClienteView", (BfCompany *) empresaBase());
+                    int resur = g_plugins->lanza ("SNewPedidoClienteView", (BfCompany *) mainCompany());
 					if (!resur) {
 						mensajeInfo("no se pudo crear instancia de factura");
 						return;
 					} // end if
 					bud = (PedidoClienteView *) g_plugParams;
-                empresaBase() ->m_pWorkspace->addWindow ( bud );
+                mainCompany() ->m_pWorkspace->addWindow ( bud );
                 bud->cargar ( cur->valor ( "idpedidocliente" ) );
                 bud->show();
                 cur->siguienteregistro();
@@ -287,7 +287,7 @@ void AlbaranClienteView::generarFactura()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -298,8 +298,8 @@ void AlbaranClienteView::generarFactura()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
-            bud = empresaBase() ->newFacturaView();
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = mainCompany() ->newFacturaView();
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -307,8 +307,8 @@ void AlbaranClienteView::generarFactura()
         delete cur;
 
         /// Creamos la factura.
-        bud = empresaBase() ->newFacturaView();
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = mainCompany() ->newFacturaView();
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->cargar ( "0" );
@@ -387,7 +387,7 @@ void AlbaranClienteView::agregarFactura()
     diag->setModal ( true );
 
     /// \TODO: Debe pasar por company la creacion del listado
-    FacturasList *fac = new FacturasList ( empresaBase(), diag, 0, FacturasList::SelectMode );
+    FacturasList *fac = new FacturasList ( mainCompany(), diag, 0, FacturasList::SelectMode );
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
@@ -404,13 +404,13 @@ void AlbaranClienteView::agregarFactura()
         return;
 
     /// Creamos la factura.
-    FacturaView *bud = empresaBase() ->newFacturaView();
+    FacturaView *bud = mainCompany() ->newFacturaView();
     bud->cargar ( idfactura );
 
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
     bud->setDBvalue ( "comentfactura", bud->DBvalue ( "comentfactura" ) + _( "Num. albaran" ) + DBvalue ( "numalbaran" ) + "\n" );
 
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
     /// PERO POR AHORA PASAMOS DE HACERLO.
     QString l;

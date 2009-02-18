@@ -203,8 +203,8 @@ void CompraVentaView::on_mui_cobrar_clicked()
 {
     _depura ( "CompraVentaView::on_mui_cobrar_clicked", 0 );
     recogeValores();
-    CobroView *bud = new CobroView(empresaBase(), 0);
-    empresaBase()->pWorkspace()->addWindow(bud);
+    CobroView *bud = new CobroView(mainCompany(), 0);
+    mainCompany()->pWorkspace()->addWindow(bud);
     bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
     bud->setDBvalue ( "cantcobro", m_totalalbaran->text() );
     bud->setDBvalue ( "refcobro", DBvalue ( "refalbaran" ) );
@@ -230,7 +230,7 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 
 	if (! id.isEmpty()) {
 		QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= "+id+")";
-		BlDbRecordSet *cur = empresaBase()->cargacursor(query);
+		BlDbRecordSet *cur = mainCompany()->cargacursor(query);
 		if (!cur->eof()) {
 			m_albaranp->setDBvalue("idproveedor", cur->valor("idproveedor"));
 			subform3->setIdProveedor ( cur->valor("idproveedor") );
@@ -343,7 +343,7 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 
 	/// Buscamos si hay algun albaran de proveedor y lo cargamos.
 	QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refalbaran")+"'";
-	BlDbRecordSet *cur = empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = mainCompany()->cargacursor(query);
 	if (!cur->eof()) {
 		m_albaranp->cargar(cur->valor("idalbaranp"));
 		subform3->cargar(cur->valor("idalbaranp"));
@@ -456,7 +456,7 @@ void CompraVentaView::generarFacturaProveedor()
             SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + m_albaranp->DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + m_albaranp->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -468,9 +468,9 @@ void CompraVentaView::generarFacturaProveedor()
                 return;
             } // end if
 		SQLQuery = "DELETE FROM lfacturap WHERE idfacturap=" + cur->valor("idfacturap");
-		empresaBase()->ejecuta( SQLQuery);
+		mainCompany()->ejecuta( SQLQuery);
 		SQLQuery = "DELETE FROM facturap WHERE idfacturap = " + cur->valor("idfacturap");
-		empresaBase()->ejecuta( SQLQuery);
+		mainCompany()->ejecuta( SQLQuery);
 
         } // end if
         delete cur;
@@ -480,8 +480,8 @@ void CompraVentaView::generarFacturaProveedor()
 		return;
 
         /// Creamos la factura de proveedor.
-        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) empresaBase(), 0);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) mainCompany(), 0);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
@@ -577,7 +577,7 @@ void CompraVentaView::generarFactura()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -590,13 +590,13 @@ void CompraVentaView::generarFactura()
             }
 
 
-			int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) empresaBase() );
+			int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) mainCompany() );
 			if (!resur) {
 				mensajeInfo("No se pudo crear instancia de factura");
 				return;
 			} // end if
             bud = (FacturaView *) g_plugParams;
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -608,13 +608,13 @@ void CompraVentaView::generarFactura()
 		return;
 
         /// Creamos la factura.
-		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) mainCompany() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de factura");
 			return;
 		} // end if
 		bud = (FacturaView *) g_plugParams;
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->cargar ( "0" );

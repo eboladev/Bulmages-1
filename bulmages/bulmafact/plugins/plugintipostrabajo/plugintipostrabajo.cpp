@@ -118,7 +118,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     textLabel2_9_26->setText ( "Tipo Trabajo" );
 
     BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo ( trab->m_frameplugin );
-    tipotraba->setMainCompany ( trab->empresaBase() );
+    tipotraba->setMainCompany ( trab->mainCompany() );
     tipotraba->setidtipotrabajo ( "" );
     tipotraba->setObjectName ( QString::fromUtf8 ( "tipotraba" ) );
     hboxLayout160->addWidget ( tipotraba );
@@ -151,10 +151,10 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
     QString query = "UPDATE trabajador SET ";
     query += " idtipotrabajo = " + l->idtipotrabajo();
-    query += " WHERE idtrabajador=" + trab->empresaBase() ->sanearCadena ( trab->idtrabajador() );
-    trab->empresaBase() ->begin();
-    trab->empresaBase() ->ejecuta ( query );
-    trab->empresaBase() ->commit();
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->idtrabajador() );
+    trab->mainCompany() ->begin();
+    trab->mainCompany() ->ejecuta ( query );
+    trab->mainCompany() ->commit();
     return 0;
 }
 
@@ -168,7 +168,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
     BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
 
-    BlDbRecordSet *cur = trab->empresaBase() ->cargacursor ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    BlDbRecordSet *cur = trab->mainCompany() ->cargacursor ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
     if ( !cur->eof() ) {
         l->setidtipotrabajo ( cur->valor ( "idtipotrabajo" ) );
     }
@@ -191,7 +191,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->m_delegate = new QSubForm3BfDelegate ( form );
     form->mui_list->setItemDelegate ( form->m_delegate );
     form->setObjectName ( "mui_tipostrabajo" );
-    form->setMainCompany ( alm->empresaBase() );
+    form->setMainCompany ( alm->mainCompany() );
     form->setDBTableName ( "almacentipotrabajo" );
     form->setDBCampoId ( "idalmacen" );
     form->addSubFormHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
@@ -283,7 +283,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
         BusquedaTipoTrabajoDelegate * editor = new BusquedaTipoTrabajoDelegate ( parent );
-        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );

@@ -100,7 +100,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listPrevCobro->addSubFormHeader ( "tipocuenta", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "tipocuenta" ) );
 
     mui_listPrevCobro->setinsercion ( TRUE );
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     g_plugins->lanza ( "RegistroIvaView_RegistroIvaView_Post", this );
     _depura ( "Fin de la inicializacion de RegistroIvaView", 0 );
 }
@@ -131,7 +131,7 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
     _depura ( "RegistroIvaView::cargarComboFPago", 0 );
     if ( m_cursorFPago != NULL )
         delete m_cursorFPago;
-    m_cursorFPago = empresaBase() ->cargacursor ( "SELECT * FROM fpago" );
+    m_cursorFPago = mainCompany() ->cargacursor ( "SELECT * FROM fpago" );
     int i = 0;
     int i1 = 0;
     while ( !m_cursorFPago->eof() ) {
@@ -197,7 +197,7 @@ int RegistroIvaView::guardar()
 {
     _depura ( "RegistroIvaView::guardar", 0 );
     try {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         setcontrapartida ( m_contrapartida->idcuenta() );
         setbaseimp ( m_baseImponible->text() );
         setiva ( m_importeiva->text() );
@@ -214,11 +214,11 @@ int RegistroIvaView::guardar()
         mui_listIva->guardar();
         mui_listPrevCobro->setColumnValue ( "idregistroiva", DBvalue ( "idregistroiva" ) );
         mui_listPrevCobro->guardar();
-        empresaBase() ->commit();
+        mainCompany() ->commit();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
         mensajeInfo ( "Error al guardar el Registro de IVA" );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
     _depura ( "END RegistroIvaView::guardar" );
     return 0;

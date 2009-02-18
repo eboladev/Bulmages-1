@@ -59,7 +59,7 @@ void FPagoView::pintar()
     mui_lista->clear();
     if ( m_cursorFPagoView != NULL )
         delete m_cursorFPagoView;
-    m_cursorFPagoView = empresaBase() ->cargacursor ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
+    m_cursorFPagoView = mainCompany() ->cargacursor ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
     if ( !m_cursorFPagoView ) return;
     mui_lista->clear();
     while ( !m_cursorFPagoView->eof() ) {
@@ -117,14 +117,14 @@ int FPagoView::guardar()
     if ( mdb_idforma_pago == "" || mdb_idforma_pago == "0" ) return 0;
     try {
         QString query = "UPDATE forma_pago SET descforma_pago = '" +
-                        empresaBase() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " +
-                        empresaBase() ->sanearCadena ( mui_dias1tforma_pago->text() ) + " , descuentoforma_pago = " +
-                        empresaBase() ->sanearCadena ( mui_descuentoforma_pago->text() ) + " WHERE idforma_pago =" + mdb_idforma_pago;
-        empresaBase() ->ejecuta ( query );
+                        mainCompany() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " +
+                        mainCompany() ->sanearCadena ( mui_dias1tforma_pago->text() ) + " , descuentoforma_pago = " +
+                        mainCompany() ->sanearCadena ( mui_descuentoforma_pago->text() ) + " WHERE idforma_pago =" + mdb_idforma_pago;
+        mainCompany() ->ejecuta ( query );
         if ( m_cursorFPagoView != NULL ) {
             delete m_cursorFPagoView;
         } // end if
-        m_cursorFPagoView = empresaBase() ->cargacursor ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
+        m_cursorFPagoView = mainCompany() ->cargacursor ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
         if ( m_item ) {
             m_item->setText ( mui_descforma_pago->text() );
         } // end if
@@ -175,14 +175,14 @@ void FPagoView::on_mui_crear_clicked()
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO', 0, 0)";
-    empresaBase() ->begin();
-    int error = empresaBase() ->ejecuta ( query );
+    mainCompany() ->begin();
+    int error = mainCompany() ->ejecuta ( query );
     if ( error ) {
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return;
     } // end if
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
-    empresaBase() ->commit();
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
+    mainCompany() ->commit();
     mdb_idforma_pago = cur->valor ( "idFPagoView" );
     delete cur;
     pintar();
@@ -200,16 +200,16 @@ void FPagoView::on_mui_borrar_clicked()
     _depura ( "FPagoView::on_mui_borrar_clicked", 0 );
     trataModificado();
     try {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         QString query = "DELETE FROM forma_pago WHERE idforma_pago = " + mdb_idforma_pago;
-        empresaBase() ->ejecuta ( query );
-        empresaBase() ->commit();
+        mainCompany() ->ejecuta ( query );
+        mainCompany() ->commit();
         pintar();
         groupBox1->setDisabled ( TRUE );
         _depura ( "END FPagoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _( "Error al intentar borrar la forma de pago" ) );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
 }
 

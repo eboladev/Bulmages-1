@@ -97,7 +97,7 @@ void TicketQToolButton::click()
 
     if ( m_albaranClienteView != NULL ) {
 
-        m_companyact = m_albaranClienteView->empresaBase();
+        m_companyact = m_albaranClienteView->mainCompany();
 
 
         QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
@@ -249,7 +249,7 @@ void TicketQToolButton::click()
     } // end if
 
     if ( m_facturaView != NULL ) {
-        m_companyact = m_facturaView->empresaBase();
+        m_companyact = m_facturaView->mainCompany();
 
         //==========================
 

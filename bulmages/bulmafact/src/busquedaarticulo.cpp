@@ -81,7 +81,7 @@ void BusquedaArticulo::setcodigocompletoarticulo ( QString val )
 {
     _depura ( "BusquedaArticulo::setcodigocompletoarticulo", 0 );
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + val + "'";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         setId( cur->valor ( "idarticulo" ) );
     } else {
@@ -197,7 +197,7 @@ void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
                     if ( pos < 0 ) 
                     {
                         
-			m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE $1::text ORDER BY codigocompletoarticulo", 1, (QString[]){codigo + "%"},0,25 );
+			m_cursorcombo = mainCompany() ->cargacursor ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE $1::text ORDER BY codigocompletoarticulo", 1, (QString[]){codigo + "%"},0,25 );
 			clear();
 			while ( !m_cursorcombo->eof() )
 			{

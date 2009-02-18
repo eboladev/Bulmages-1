@@ -261,8 +261,8 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::cargaSpecs()
 {
     _depura ( "BlSubForm::cargaSpecs", 0 );
-//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
-    QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + empresaBase() ->nameDB() + "_specs.spc" );
+//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->nameDB() + "_specs.spc");
+    QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->nameDB() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         _depura ( "END BlSubForm::cargaSpecs", 0, "No se pudo abrir archivo" );
@@ -853,7 +853,7 @@ bool BlSubForm::existsHeader ( const QString &head )
 BlDbSubFormRecord *BlSubForm::newSDBRecord()
 {
     _depura ( "BlSubForm::newSDBRecord", 0 );
-    BlDbSubFormRecord *rec = new BlDbSubFormRecord ( empresaBase() );
+    BlDbSubFormRecord *rec = new BlDbSubFormRecord ( mainCompany() );
     rec->setDBTableName ( m_tablename );
     rec->setDBCampoId ( m_campoid );
 
@@ -1425,7 +1425,7 @@ void BlSubForm::cargar ( QString query )
         } // end if
         int offset = limit * ( pagact - 1 );
 
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "", limit, offset );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "", limit, offset );
         cargar ( cur );
         delete cur;
     } catch ( ... ) {
@@ -1874,7 +1874,7 @@ int BlSubForm::borrar ( int row )
         BlDbSubFormRecord *rec, *rac;
         BlDbSubFormField *camp;
 
-        rac = new BlDbSubFormRecord ( empresaBase() );
+        rac = new BlDbSubFormRecord ( mainCompany() );
 
         /// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
         rec = lineaat ( row );
@@ -1892,7 +1892,7 @@ int BlSubForm::borrar ( int row )
         /// Sacamos celda a celda toda la fila
         for ( int i = 0; i < mui_list->columnCount(); i++ ) {
             camp = ( BlDbSubFormField * ) mui_list->item ( row, i );
-            BlDbSubFormField *it = new BlDbSubFormField ( rac, empresaBase(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion() );
+            BlDbSubFormField *it = new BlDbSubFormField ( rac, mainCompany(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion() );
             rac->lista() ->append ( it );
             it->set ( camp->valorcampo() );
         } // end for
@@ -1939,7 +1939,7 @@ void BlSubForm::guardaconfig()
 {
     _depura ( "BlSubForm::guardaconfig", 0 );
     QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + empresaBase()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -1972,7 +1972,7 @@ void BlSubForm::guardaconfig()
 void BlSubForm::cargaconfig()
 {
     _depura ( "BlSubForm::cargaconfig", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + empresaBase()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {
@@ -2210,7 +2210,7 @@ QString BlSubForm::imprimir()
 void BlSubForm::on_mui_confquery_clicked()
 {
     _depura ( "BlSubForm::on_mui_confquery_clicked ", 0 );
-    if ( empresaBase() == NULL ) {
+    if ( mainCompany() == NULL ) {
         mensajeInfo ( "no se ha inicializado bien la clase" );
         return;
     } // end if
@@ -2228,7 +2228,7 @@ void BlSubForm::on_mui_confquery_clicked()
 void BlSubForm::confquery()
 {
     _depura ( "BlSubForm::confquery", 0 );
-    if ( empresaBase() == NULL ) {
+    if ( mainCompany() == NULL ) {
         mensajeInfo ( "no se ha inicializado bien la clase" );
         return;
     } // end if

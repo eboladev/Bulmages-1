@@ -61,8 +61,8 @@ myplugin4::~myplugin4()
 void myplugin4::elslot()
 {
     _depura ( "myplugin4::elslot", 0 );
-    BalanceView *cuad = new BalanceView ( ( BcCompany * ) empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( cuad );
+    BalanceView *cuad = new BalanceView ( ( BcCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     _depura ( "END myplugin4::elslot", 0 );
 }

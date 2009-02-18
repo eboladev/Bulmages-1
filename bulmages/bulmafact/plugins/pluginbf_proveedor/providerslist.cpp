@@ -58,7 +58,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     m_cifprovider = "";
     m_nomprovider = "";
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de proveedores" ) );
         mui_editar->setHidden ( TRUE );
@@ -138,8 +138,8 @@ void ProveedorList::presentar()
 void ProveedorList::crear()
 {
     _depura ( "ProveedorList::crear", 0 );
-    ProveedorView *prov = new ProveedorView( ( BfCompany * ) empresaBase() );
-    empresaBase() ->m_pWorkspace->addWindow ( prov );
+    ProveedorView *prov = new ProveedorView( ( BfCompany * ) mainCompany() );
+    mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END ProveedorList::crear", 0 );
 }
@@ -157,12 +157,12 @@ void ProveedorList::editar ( int row )
     m_cifprovider = mui_list->DBvalue ( QString ( "cifproveedor" ), row );
     m_nomprovider = mui_list->DBvalue ( QString ( "nomproveedor" ), row );
     if ( modoEdicion() ) {
-        ProveedorView * prov = new ProveedorView( ( BfCompany * ) empresaBase() );
+        ProveedorView * prov = new ProveedorView( ( BfCompany * ) mainCompany() );
         if ( prov->cargar ( mui_list->DBvalue ( QString ( "idproveedor" ), row ) ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( m_idprovider ) );
@@ -183,7 +183,7 @@ void ProveedorList::borrar()
     _depura ( "ProveedorList::borrar", 0 );
     try {
         QString idprov = mui_list->DBvalue ( QString ( "idproveedor" ) );
-        ProveedorView *prov = new ProveedorView ( ( BfCompany * ) empresaBase() );
+        ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
         prov->cargar ( idprov );
         prov->on_mui_borrar_clicked();
         delete prov;

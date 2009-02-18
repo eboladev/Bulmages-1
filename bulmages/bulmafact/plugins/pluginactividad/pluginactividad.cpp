@@ -69,8 +69,8 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        ActividadView * bud = new ActividadView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        ActividadView * bud = new ActividadView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
@@ -82,8 +82,8 @@ void MyPlugProf::elslot1()
 void MyPlugProf::elslot2()
 {
     _depura ( "MyPlugProf::elslot2", 0 );
-        TipoActividadView * bud = new TipoActividadView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        TipoActividadView * bud = new TipoActividadView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot2", 0 );
 }

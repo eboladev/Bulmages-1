@@ -43,9 +43,9 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
     QString artvarios = confpr->valor(CONF_ARTICULOS_VARIOS);
     QString codigo = m_articulos[row][column];
     if (! artvarios.contains(codigo)) {
-	    ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
+	    ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
     } else {
-	    ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column]);
+	    ( ( EmpresaTPV * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column]);
     } // end if
 }
 

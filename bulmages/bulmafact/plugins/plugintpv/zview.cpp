@@ -140,14 +140,14 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
     _depura ( "ZView::on_mui_list_doubleClicked", 0 );
 
     QString idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ), row );
-	if (g_plugins->lanza("SNewAlbaranClienteView", empresaBase()) ) {
+	if (g_plugins->lanza("SNewAlbaranClienteView", mainCompany()) ) {
 	
         AlbaranClienteView * prov = (AlbaranClienteView *) g_plugParams;
         if ( prov->cargar ( idalbaran ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
 	} // end if
     _depura ( "END ZView::on_mui_list_doubleClicked", 0 );

@@ -186,11 +186,11 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
 {
     _depura ( "FacturaProveedorView::on_mui_veralbaranes_clicked", 0 );
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue ( "reffacturap" ) + "'";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * albpro = new AlbaranProveedorView((BfCompany *) empresaBase(), 0);
+        AlbaranProveedorView * albpro = new AlbaranProveedorView((BfCompany *) mainCompany(), 0);
         albpro->cargar ( cur->valor ( "idalbaranp" ) );
-        empresaBase() ->m_pWorkspace->addWindow ( albpro );
+        mainCompany() ->m_pWorkspace->addWindow ( albpro );
         albpro->show();
         cur->siguienteregistro();
     } // end while
@@ -329,7 +329,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
 
     /// Linea de totales del presupuesto
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" );
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
         buff.replace ( "[poblproveedor]", cur->valor ( "poblproveedor" ) );

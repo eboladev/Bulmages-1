@@ -46,10 +46,10 @@ void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 void InventariosView::on_mui_crear_clicked()
 {
     _depura ( "InventariosView::on_mui_crear_clicked", 0 );
-    InventarioView *bud = new InventarioView ( ( BfCompany * ) empresaBase(), 0 );
+    InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
     if ( bud->cargar ( "0" ) )
         return;
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->mui_nominventario->setFocus();
     _depura ( "END InventariosView::on_mui_crear_clicked", 0 );
@@ -92,7 +92,7 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     mui_listado->cargar();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de Inventarios" ) );
     } // end if
@@ -124,10 +124,10 @@ void InventariosView::on_mui_editar_clicked()
     } else {
         QString idinventario = mui_listado->DBvalue ( "idinventario" );
         if ( idinventario != "" ) {
-            InventarioView * bud = new InventarioView ( ( BfCompany * ) empresaBase(), 0 );
+            InventarioView * bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( idinventario ) )
                 return;
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
             bud->mui_nominventario->setFocus();
         } // end if
@@ -150,8 +150,8 @@ void InventariosView::on_mui_borrar2_clicked()
     } else {
         QString idinventario = mui_listado->DBvalue ( "idinventario" );
         if ( idinventario != "" ) {
-            InventarioView * inv = new InventarioView ( ( BfCompany * ) empresaBase(), 0 );
-            empresaBase() ->m_pWorkspace->addWindow ( inv );
+            InventarioView * inv = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
+            mainCompany() ->m_pWorkspace->addWindow ( inv );
             inv->cargar ( idinventario );
             /// Hacemos el borrado sin mostrar pantalla ni nada.
             inv->on_mui_borrar_clicked();
@@ -207,7 +207,7 @@ void InventariosView::on_mui_imprimir_clicked()
     txt += "<tr>\n\t<td></td>\n";
 
     QString query = "SELECT * FROM articulo ";
-    BlDbRecordSet *almacenes = empresaBase() ->cargacursor ( "SELECT * FROM almacen" );
+    BlDbRecordSet *almacenes = mainCompany() ->cargacursor ( "SELECT * FROM almacen" );
     while ( !almacenes->eof() ) {
         QString idalmacen = almacenes->valor ( "idalmacen" );
         query += " LEFT JOIN ( SELECT stock AS stock" + idalmacen + ", idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
@@ -219,7 +219,7 @@ void InventariosView::on_mui_imprimir_clicked()
     query += " WHERE articulo.stockarticulo <> 0";
 
 
-    BlDbRecordSet *cstock = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cstock = mainCompany() ->cargacursor ( query );
     while ( !cstock->eof() ) {
         txt += "<tr>\n";
         txt += "\t<td>" + cstock->valor ( "nomarticulo" ) + "</td>\n";

@@ -80,7 +80,7 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     mdb_idpago = "";
     setSubForm ( mui_list );
     if (modoEdicion()) {
-    	empresaBase() ->meteWindow ( windowTitle(), this );
+    	mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -101,7 +101,7 @@ PagosList::~PagosList()
 void PagosList::presentar()
 {
     _depura ( "PagosList::presentar()", 0 );
-    if ( empresaBase() != NULL ) {
+    if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantpago" );
@@ -157,12 +157,12 @@ void PagosList::editar ( int )
 {
     mdb_idpago = mui_list->DBvalue ( "idpago" );
     if ( modoEdicion() && mdb_idpago != "" ) {
-        PagoView *bud = new PagoView( ( BfCompany * ) empresaBase(), 0 );
+        PagoView *bud = new PagoView( ( BfCompany * ) mainCompany(), 0 );
         if ( bud->cargar ( mdb_idpago ) ) {
             delete bud;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     } else {
         close();
@@ -173,8 +173,8 @@ void PagosList::editar ( int )
 void PagosList::crear()
 {
     _depura ( "PagosList::crear", 0 );
-    PagoView *bud = new PagoView( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    PagoView *bud = new PagoView( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDBvalue ( "idproveedor", m_proveedor->id() );
     bud->pintar();
@@ -200,7 +200,7 @@ void PagosList::borrar()
     try {
         mdb_idpago = mui_list->DBvalue ( "idpago" );
         if ( modoEdicion() && mdb_idpago != "" ) {
-            PagoView * bud = new PagoView ( ( BfCompany * ) empresaBase(), NULL );
+            PagoView * bud = new PagoView ( ( BfCompany * ) mainCompany(), NULL );
             bud->cargar ( mdb_idpago );
             bud->borrar();
         } // end if

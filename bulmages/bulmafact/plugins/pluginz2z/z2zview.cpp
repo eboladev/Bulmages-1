@@ -100,7 +100,7 @@ void Z2ZView::calculaTotalTickets() {
 	QString query = "SELECT sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) IN ("+listarefs+")";
 	
 
-	BlDbRecordSet *cur = empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = mainCompany()->cargacursor(query);
 	mui_totaltickets->setText(cur->valor("tot"));
 	delete cur;
 
@@ -110,12 +110,12 @@ void Z2ZView::calculaTotalTickets() {
 	for (int i=0; i < mui_listarefs->count(); i++) {
 
 		QString query1 = "SELECT COALESCE(sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2), 0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		BlDbRecordSet *cur1 = empresaBase()->cargacursor(query1);
+		BlDbRecordSet *cur1 = mainCompany()->cargacursor(query1);
 		total = total + BlFixed(cur1->valor("tot"));
 		delete cur1;
 
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		BlDbRecordSet *cur2 = empresaBase()->cargacursor(query2);
+		BlDbRecordSet *cur2 = mainCompany()->cargacursor(query2);
 		min = min + BlFixed(cur2->valor("tot"));
 		delete cur2;
 	} // end for
@@ -143,14 +143,14 @@ try {
     db->inicializa ( confpr->valor(CONF_FACT_ALT) );
     db->begin();
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "z2z_" + empresaBase()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file.open ( QIODevice::WriteOnly ) ) {
 	return;
     } // end if
     QTextStream stream ( &file );
 
-    QFile file1 ( confpr->valor ( CONF_DIR_USER ) + "insert_z2z_" + empresaBase()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file1 ( confpr->valor ( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file1.open ( QIODevice::WriteOnly ) ) {
 	file.close();
@@ -158,7 +158,7 @@ try {
     } // end if
     QTextStream stream1 ( &file1 );
 	
-    QFile file2 ( confpr->valor ( CONF_DIR_USER ) + "delete_z2z_" + empresaBase()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file2 ( confpr->valor ( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file2.open ( QIODevice::WriteOnly ) ) {
 	file.close();
@@ -167,7 +167,7 @@ try {
     } // end if
     QTextStream stream2 ( &file2 );
 
-    QFile file3 ( confpr->valor ( CONF_DIR_USER ) + "refs_z2z_" + empresaBase()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file3 ( confpr->valor ( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file3.open ( QIODevice::WriteOnly ) ) {
 	file.close();
@@ -193,12 +193,12 @@ try {
 
 		/// Buscamos el minimo del albaran pasado.
 		QString query2 = "SELECT COALESCE(min(pvpivainclalbaran),0) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		BlDbRecordSet *cur2 = empresaBase()->cargacursor(query2);
+		BlDbRecordSet *cur2 = mainCompany()->cargacursor(query2);
 		QString min = cur2->valor("tot");
 		delete cur2;
 
 		QString query3 = "SELECT * FROM  albaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-		BlDbRecordSet *cur3 = empresaBase()->cargacursor(query3);
+		BlDbRecordSet *cur3 = mainCompany()->cargacursor(query3);
 
 		/// Los albaranes con visa no los ponemos
 		if (cur3->valor("idforma_pago") != "2") {
@@ -206,7 +206,7 @@ try {
 
 			/// Iteramos sobre las lineas de albaran.
 			QString query1 = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) = upper('" + mui_listarefs->item(i)->text() + "')";
-			BlDbRecordSet *cur1 = empresaBase()->cargacursor(query1);
+			BlDbRecordSet *cur1 = mainCompany()->cargacursor(query1);
 
 			if (!cur1->eof() && totaltraspasado < totaltraspasable) {
 				QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz, idforma_pago) VALUES ('"+ cur3->valor("refalbaran")+"', "+cur3->valor("idcliente")+", "+cur3->valor("idalmacen")+", "+curz->valor("idz")+", "+cur3->valor("idforma_pago")+")";
@@ -232,7 +232,7 @@ try {
 	
 				stream2 << "DELETE FROM lalbaran WHERE numlalbaran="+cur1->valor("numlalbaran") << endl;
 				QString query9 = "DELETE FROM lalbaran WHERE numlalbaran = " +cur1->valor("numlalbaran");
-				empresaBase()->ejecuta(query9);
+				mainCompany()->ejecuta(query9);
 
 				cur1->siguienteregistro();
 			} // end while

@@ -52,7 +52,7 @@ FichaBf::FichaBf ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
 FichaBf::~FichaBf()
 {
     _depura ( "FichaBf::~FichaBf", 0, this->windowTitle() );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END FichaBf::~FichaBf", 0 );
 }
 
@@ -61,11 +61,11 @@ FichaBf::~FichaBf()
 /**
 \return
 **/
-BfCompany * FichaBf::empresaBase()
+BfCompany * FichaBf::mainCompany()
 {
     _depura ( "FichaBf::getcompany", 0 );
     _depura ( "END FichaBf::getcompany", 0 );
-    return ( BfCompany * ) BlForm::empresaBase();
+    return ( BfCompany * ) BlForm::mainCompany();
 }
 
 
@@ -85,7 +85,7 @@ void FichaBf::calculaypintatotales()
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -94,7 +94,7 @@ void FichaBf::calculaypintatotales()
     } // end if
 
     if ( exists ( "idproveedor" ) && DBvalue ( "idproveedor" ) != "" ) {
-        cur = empresaBase() ->cargacursor ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
+        cur = mainCompany() ->cargacursor ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "irpfproveedor" ) );
@@ -152,12 +152,12 @@ void FichaBf::calculaypintatotales()
         BlFixed piva ( it.key().toAscii().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
 	    QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
-	    QString tot = empresaBase()->PGEval(evpariva);
+	    QString tot = mainCompany()->PGEval(evpariva);
 	    pariva = BlFixed(tot);
 //            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
 	    QString evpariva = it.value().toQString() + " * " + piva.toQString() + " / 100";
-	    QString tot = empresaBase()->PGEval(evpariva);
+	    QString tot = mainCompany()->PGEval(evpariva);
 	    pariva = BlFixed(tot);
         } // end if
         totiva = totiva + pariva;
@@ -261,7 +261,7 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         base basesimpreqeq;
 
         BlFixed irpf ( "0" );
-        cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+        cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -581,7 +581,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -590,7 +590,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     } // end if
 
     if ( exists ( "idproveedor" ) && DBvalue ( "idproveedor" ) != "" ) {
-        cur = empresaBase() ->cargacursor ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
+        cur = mainCompany() ->cargacursor ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "irpfproveedor" ) );
@@ -651,7 +651,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
         BlFixed piva ( it.key().toAscii().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
 	    QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
-	    QString tot = empresaBase()->PGEval(evpariva);
+	    QString tot = mainCompany()->PGEval(evpariva);
 	    pariva = BlFixed(tot);
         } else {
             pariva = it.value() * piva / 100;

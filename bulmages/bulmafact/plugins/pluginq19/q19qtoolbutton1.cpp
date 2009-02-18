@@ -86,9 +86,9 @@ void Q19QToolButton1::click()
 {
     _depura ( "Q19QToolButton1::click", 0 );
 
-    Q19View *q19 = new Q19View ( m_facturasList, ( BfCompany * ) m_facturasList->empresaBase(), 0 );
-// m_facturasList->empresaBase()->meteWindow("Domiciliaciones Bancarias", q19);
-    m_facturasList->empresaBase() ->pWorkspace() ->addWindow ( q19 );
+    Q19View *q19 = new Q19View ( m_facturasList, ( BfCompany * ) m_facturasList->mainCompany(), 0 );
+// m_facturasList->mainCompany()->meteWindow("Domiciliaciones Bancarias", q19);
+    m_facturasList->mainCompany() ->pWorkspace() ->addWindow ( q19 );
     q19->show();
 
     /*
@@ -101,7 +101,7 @@ void Q19QToolButton1::click()
      
         QTextStream out ( &file );
      
-        m_companyact = ( BfCompany * ) m_facturasList->empresaBase();
+        m_companyact = ( BfCompany * ) m_facturasList->mainCompany();
         BlSubForm *sub = m_facturasList->mui_list;
      
         BlFixed total ( "0.00" );

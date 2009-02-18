@@ -71,7 +71,7 @@ void BusquedaTrabajador::setId ( QString idtrabajador )
 
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM trabajador" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -171,7 +171,7 @@ void BusquedaTrabajadorDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT nomtrabajador, apellidostrabajador FROM trabajador " );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT nomtrabajador, apellidostrabajador FROM trabajador " );
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );

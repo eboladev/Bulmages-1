@@ -66,7 +66,7 @@ tipoivaview::~tipoivaview()
     _depura ( "tipoivaview::~tipoivaview", 0 );
     if ( m_curtipoiva != NULL )
         delete m_curtipoiva;
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END tipoivaview::~tipoivaview", 0 );
 }
 
@@ -83,7 +83,7 @@ void tipoivaview::pintar ( QString idtipoiva )
     if ( m_curtipoiva != NULL )
         delete m_curtipoiva;
     QString query = "SELECT * from tipoiva left join cuenta ON tipoiva.idcuenta = cuenta.idcuenta ORDER BY nombretipoiva";
-    m_curtipoiva = empresaBase() ->cargacursor ( query );
+    m_curtipoiva = mainCompany() ->cargacursor ( query );
     mui_comboTipoIVA->clear();
     int i = 0;
     while ( !m_curtipoiva->eof() ) {
@@ -167,14 +167,14 @@ void tipoivaview::on_mui_crear_clicked()
         } // end if
 
         QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('" + nombreTipoIVA + "', 0, id_cuenta('" + mui_idcuenta->text() + "'))";
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
+        mainCompany() ->commit();
         pintar ( cur->valor ( "idtipoiva" ) );
         delete cur;
     } catch ( ... ) {
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return;
     } // end try
     _depura ( "END tipoivaview::on_mui_crear_clicked()", 0 );

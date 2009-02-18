@@ -81,9 +81,9 @@ void Listado347::on_m_boton_recalcular_clicked()
     query += "WHERE codigo LIKE '4300%') GROUP BY idcuenta) AS facturado USING(idcuenta) ";
     query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
 
-    empresaBase() ->begin();
-    BlDbRecordSet *recordSet = empresaBase() ->cargacursor ( query, "recordSet" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *recordSet = mainCompany() ->cargacursor ( query, "recordSet" );
+    mainCompany() ->commit();
 
     tablaventas->setColumnCount ( 5 );
     tablaventas->setRowCount ( recordSet->numregistros() );
@@ -120,9 +120,9 @@ void Listado347::on_m_boton_recalcular_clicked()
     query += "WHERE codigo SIMILAR TO '4(0|1)00%') GROUP BY idcuenta) AS facturado USING(idcuenta) ";
     query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
 
-    empresaBase() ->begin();
-    recordSet = empresaBase() ->cargacursor ( query, "recordSet" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    recordSet = mainCompany() ->cargacursor ( query, "recordSet" );
+    mainCompany() ->commit();
 
     tablacompras->setColumnCount ( 5 );
     tablacompras->setRowCount ( recordSet->numregistros() );

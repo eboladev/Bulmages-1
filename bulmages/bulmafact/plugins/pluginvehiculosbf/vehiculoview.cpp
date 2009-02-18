@@ -60,7 +60,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     cargar ( "1" );
     _depura ( "END VehiculoView::VehiculoView", 0 );
 }
@@ -72,7 +72,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
 VehiculoView::~VehiculoView()
 {
     _depura ( "VehiculoView::~VehiculoView", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END VehiculoView::~VehiculoView", 0 );
 }
 
@@ -127,7 +127,7 @@ int VehiculoView::cargar ( QString idvehiculo )
         mui_listadomantvehiculo->cargar ( mantenimientos );
 
         dialogChanges_cargaInicial();
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
         _depura ( "END VehiculoView::cargar", 0 );
         return 0;
     } catch ( ... ) {

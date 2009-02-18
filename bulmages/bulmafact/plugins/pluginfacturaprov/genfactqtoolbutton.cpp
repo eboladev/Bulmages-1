@@ -143,7 +143,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -154,8 +154,8 @@ void GenFacProQToolButton::generarFacturaProveedor()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->mainCompany(), 0);
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
             return;
@@ -163,8 +163,8 @@ void GenFacProQToolButton::generarFacturaProveedor()
         delete cur;
 
         /// Creamos la factura.
-        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
@@ -249,7 +249,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->DBvalue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -260,8 +260,8 @@ void GenFacProQToolButton::generarFacturaProveedor1()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->mainCompany(), 0);
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
             return;
@@ -269,8 +269,8 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         delete cur;
 
         /// Creamos la factura.
-        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        FacturaProveedorView *bud = new FacturaProveedorView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();

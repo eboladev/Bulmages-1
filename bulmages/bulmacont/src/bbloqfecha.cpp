@@ -84,7 +84,7 @@ BbloqFecha::BbloqFecha ( BcCompany *emp, QWidget *parent )
     setupUi ( this );
     QString query;
     inicializa();
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "ENd BbloqFecha::BbloqFecha", 0 );
 }
 
@@ -95,7 +95,7 @@ BbloqFecha::BbloqFecha ( BcCompany *emp, QWidget *parent )
 BbloqFecha::~BbloqFecha()
 {
     _depura ( "BbloqFecha::~BbloqFecha", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "ENd BbloqFecha::~BbloqFecha", 0 );
 }
 
@@ -121,7 +121,7 @@ void BbloqFecha::inicializa()
 
     /// Consultamos a la base de datos.
     consultabd.sprintf ( "SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC" );
-    BlDbRecordSet *curPeri, *curEjer = empresaBase() ->cargacursor ( consultabd );
+    BlDbRecordSet *curPeri, *curEjer = mainCompany() ->cargacursor ( consultabd );
 
     while ( !curEjer->eof() ) {
 
@@ -139,7 +139,7 @@ void BbloqFecha::inicializa()
 
 
         consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor ( "ejercicio" ).toAscii().constData() );
-        curPeri = empresaBase() ->cargacursor ( consultabd );
+        curPeri = mainCompany() ->cargacursor ( consultabd );
         while ( !curPeri->eof() ) {
             switch ( curPeri->valor ( "periodo" ).toInt() ) {
             case 12:
@@ -216,11 +216,11 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, in
         if ( item->text ( 1 ) == qsbloqueado ) {
             item->setText ( 1, qsabierto );
             QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = empresaBase() ->ejecuta ( consultabd );
+            error = mainCompany() ->ejecuta ( consultabd );
         } else {
             item->setText ( 1, qsbloqueado );
             QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = empresaBase() ->ejecuta ( consultabd );
+            error = mainCompany() ->ejecuta ( consultabd );
         } // end if
     } // end if
     _depura ( "END BbloqFecha::on_mui_treeWidget_doubleClicked", 0 );
@@ -238,7 +238,7 @@ void BbloqFecha::on_mui_crear_clicked()
 
     /// Miramos si ya hay ejercicios introducidos y si es asi cogemos el siguiente como referencia.
     QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    BlDbRecordSet *cur = empresaBase()->cargacursor ( consultabd );
+    BlDbRecordSet *cur = mainCompany()->cargacursor ( consultabd );
     if ( cur ) {
         if ( !cur->eof() ) {
             if ( cur->valor ( "ej" ).toInt() != 0 )
@@ -260,7 +260,7 @@ void BbloqFecha::on_mui_crear_clicked()
         return;
     } // end if
     QString query = "SELECT * FROM ejercicios WHERE ejercicio = " + QString::number ( ejer );
-    cur = empresaBase()->cargacursor ( query );
+    cur = mainCompany()->cargacursor ( query );
     if ( cur ) {
         if ( cur->numregistros() > 0 ) {
             delete cur;
@@ -274,12 +274,12 @@ void BbloqFecha::on_mui_crear_clicked()
     for ( int x = 0; x <= 12; x++ ) {
         try {
             QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number ( ejer ) + "', '" + QString::number ( x ) + "', 'f')";
-            empresaBase()->begin();
-            empresaBase() ->ejecuta ( consultabd );
-            empresaBase()->commit();
+            mainCompany()->begin();
+            mainCompany() ->ejecuta ( consultabd );
+            mainCompany()->commit();
         } catch ( ... ) {
             mensajeInfo ( "Error con la base de datos" );
-            empresaBase()->rollback();
+            mainCompany()->rollback();
         } // end try
     } // end for
 

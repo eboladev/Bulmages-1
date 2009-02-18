@@ -86,7 +86,7 @@ int entryPoint ( Bulmafact * )
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
     _depura ( "ArticuloView_ArticuloView", 0 );
-    PromedioView *l = new PromedioView ( art->empresaBase(), art );
+    PromedioView *l = new PromedioView ( art->mainCompany(), art );
     l->setObjectName ( QString::fromUtf8 ( "lpromedios" ) );
     art->mui_tab->addTab ( l, "Promedios" );
     _depura ( "END ArticuloView_ArticuloView", 0 );

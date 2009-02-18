@@ -162,11 +162,11 @@ int PaisView::guardar()
         setDBvalue ( "descpais", mui_descpais->text() );
         setDBvalue ( "cod2pais", mui_cod2pais->text() );
         setDBvalue ( "cod3pais", mui_cod3pais->text() );
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         DBsave ( id );
         mui_listprovincias->setColumnValue ( "idpais", id );
         mui_listprovincias->guardar();
-        empresaBase() ->commit();
+        mainCompany() ->commit();
         dialogChanges_cargaInicial();
         pintar();
     }
@@ -195,16 +195,16 @@ void PaisView::on_mui_crear_clicked()
 
         QString query;
         query.sprintf ( "INSERT INTO pais (cod2pais, cod3pais, descpais) VALUES ('--', '---', 'Nuevo pais')" );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
+        mainCompany() ->commit();
         pintar();
         mui_list->setCurrentItem ( mui_list->rowCount(), 1 );
         mostrarplantilla();
         _depura ( "END PaisView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _( "Error al crear el banco" ) );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
 }
 
@@ -227,15 +227,15 @@ void PaisView::on_mui_borrar_clicked()
         QString query;
         try {
             query = "DELETE FROM pais WHERE idpais = " + m_idpais;
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
+            mainCompany() ->begin();
+            mainCompany() ->ejecuta ( query );
+            mainCompany() ->commit();
             m_idpais = "0";
             pintar();
             mui_datospais->setDisabled ( TRUE );
         } catch ( ... ) {
             mensajeInfo ( _( "Error al intentar borrar el pais" ) );
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
         } // end try
     } // end switch
     _depura ( "END PaisView::on_mui_borrar_clicked", 0 );

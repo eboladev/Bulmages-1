@@ -86,7 +86,7 @@ int entryPoint ( Bulmafact * )
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
     _depura ( "ArticuloView_ArticuloView", 0 );
-    QWebCamView *l = new QWebCamView ( art->empresaBase(), art );
+    QWebCamView *l = new QWebCamView ( art->mainCompany(), art );
     l->setObjectName ( QString::fromUtf8 ( "lpromedios" ) );
     art->mui_tab->addTab ( l, "QWebCams" );
     _depura ( "END ArticuloView_ArticuloView", 0 );

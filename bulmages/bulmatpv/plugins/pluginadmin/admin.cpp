@@ -17,14 +17,14 @@ void Admin::on_mui_z_clicked()
                                 _( "Realmente desea Realizar la Z?" ),
                                 QMessageBox::Ok,
                                 QMessageBox::Cancel ) == QMessageBox::Ok ) {
-  	  ( ( EmpresaTPV * ) empresaBase() ) ->z();
+  	  ( ( EmpresaTPV * ) mainCompany() ) ->z();
     } // end if
 
 }
 
 void Admin::on_mui_x_clicked()
 {
-    ( ( EmpresaTPV * ) empresaBase() ) ->x();
+    ( ( EmpresaTPV * ) mainCompany() ) ->x();
 }
 
 void Admin::on_mui_salir_clicked()

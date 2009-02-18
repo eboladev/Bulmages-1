@@ -155,7 +155,7 @@ void GenFacQToolButton::generarFactura()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refalbaran" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -166,8 +166,8 @@ void GenFacQToolButton::generarFactura()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             }
-            bud = new FacturaView( (BfCompany *) fpv->empresaBase(), 0);
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new FacturaView( (BfCompany *) fpv->mainCompany(), 0);
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -175,8 +175,8 @@ void GenFacQToolButton::generarFactura()
         delete cur;
 
         /// Creamos la factura.
-        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = new FacturaView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->cargar ( "0" );
@@ -283,7 +283,7 @@ void GenFacQToolButton::generarFactura1()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -294,8 +294,8 @@ void GenFacQToolButton::generarFactura1()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            bud = new FacturaView ( fpv->empresaBase(), NULL );
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new FacturaView ( fpv->mainCompany(), NULL );
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -303,8 +303,8 @@ void GenFacQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = new FacturaView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.
@@ -412,7 +412,7 @@ void GenFacQToolButton::generarFactura2()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -423,8 +423,8 @@ void GenFacQToolButton::generarFactura2()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            bud = new FacturaView ( fpv->empresaBase(), NULL );
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new FacturaView ( fpv->mainCompany(), NULL );
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -432,8 +432,8 @@ void GenFacQToolButton::generarFactura2()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new FacturaView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = new FacturaView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.
@@ -581,7 +581,7 @@ void AgFacQToolButton::generarFactura()
     diag->setModal ( true );
 
     /// \TODO: Debe pasar por company la creacion del listado
-    FacturasList *fac = new FacturasList ( fpv->empresaBase(), diag, 0, FacturasList::SelectMode );
+    FacturasList *fac = new FacturasList ( fpv->mainCompany(), diag, 0, FacturasList::SelectMode );
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
@@ -598,13 +598,13 @@ void AgFacQToolButton::generarFactura()
         return;
 
     /// Creamos la factura.
-    FacturaView *bud = new FacturaView( (BfCompany*) fpv->empresaBase());
+    FacturaView *bud = new FacturaView( (BfCompany*) fpv->mainCompany());
     bud->cargar ( idfactura );
 
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
     bud->setDBvalue ( "comentfactura", bud->DBvalue ( "comentfactura" ) + _( "Num. albaran" ) + fpv->DBvalue ( "numalbaran" ) + "\n" );
 
-    fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
     /// PERO POR AHORA PASAMOS DE HACERLO.
     QString l;

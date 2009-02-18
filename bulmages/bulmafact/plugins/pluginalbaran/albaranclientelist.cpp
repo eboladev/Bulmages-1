@@ -84,8 +84,8 @@ QString AlbaranClienteList::idCliDelivNote()
 void AlbaranClienteList::crear()
 {
     _depura ( "AlbaranClienteList::crear", 0 );
-    AlbaranClienteView *bud = new AlbaranClienteView( (BfCompany *) empresaBase(), 0);
-    empresaBase()->m_pWorkspace->addWindow ( bud );
+    AlbaranClienteView *bud = new AlbaranClienteView( (BfCompany *) mainCompany(), 0);
+    mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->pintar();
     bud->show();
@@ -161,7 +161,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     presentar();
     mdb_idalbaran = "";
     if ( modoEdicion() )
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
@@ -225,7 +225,7 @@ void AlbaranClienteList::presentar()
     mui_list->cargar ( "SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
     /// Esta consulta podria resultar NULA y debe tratarse el caso
     if ( cur ) {
         m_total->setText ( cur->valor ( "total" ) );
@@ -255,12 +255,12 @@ void AlbaranClienteList::editar ( int row )
     _depura ( "AlbaranClienteList::editar", 0 );
     mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ), row );
     if ( modoEdicion() ) {
-        AlbaranClienteView * prov = new AlbaranClienteView(( BfCompany * ) empresaBase(), 0);
+        AlbaranClienteView * prov = new AlbaranClienteView(( BfCompany * ) mainCompany(), 0);
         if ( prov->cargar ( mdb_idalbaran ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idalbaran ) );
@@ -289,7 +289,7 @@ void AlbaranClienteList::borrar()
     try {
         mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ) );
         if ( modoEdicion() ) {
-            AlbaranClienteView * acv = new AlbaranClienteView(( BfCompany * ) empresaBase(), 0);
+            AlbaranClienteView * acv = new AlbaranClienteView(( BfCompany * ) mainCompany(), 0);
             if ( acv->cargar ( mdb_idalbaran ) )
                 throw - 1;
             acv->on_mui_borrar_clicked();

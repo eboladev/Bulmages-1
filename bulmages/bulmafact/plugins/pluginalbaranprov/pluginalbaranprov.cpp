@@ -69,8 +69,8 @@ void mypluginalbp::elslot()
 void mypluginalbp::elslot1()
 {
     _depura ( "mypluginalbp::elslot1", 0 );
-        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginalbp::elslot1", 0 );
 }
@@ -145,8 +145,8 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "albaranp", "SELECT" ) ) {
-	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+    if ( prov->mainCompany()->has_table_privilege ( "albaranp", "SELECT" ) ) {
+	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	albaranesProveedor->setModoEdicion();
 	albaranesProveedor->setObjectName("listalbaranesproveedor");
 	albaranesProveedor->hideBusqueda();
@@ -156,7 +156,7 @@ int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
 }
 
 int ProveedorView_cargarPost_Post (ProveedorView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "albaranp", "SELECT" ) ) {
+    if ( prov->mainCompany()->has_table_privilege ( "albaranp", "SELECT" ) ) {
 	AlbaranesProveedor *albaranesProveedor = prov->findChild<AlbaranesProveedor *> ( "listalbaranesproveedor" );
         albaranesProveedor->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
         albaranesProveedor->presentar();
@@ -167,10 +167,10 @@ int ProveedorView_cargarPost_Post (ProveedorView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)ref->empresaBase(), NULL);
-        ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)ref->mainCompany(), NULL);
+        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaranp" ) );
         bud->show();
         cur->siguienteregistro();

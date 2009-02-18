@@ -79,11 +79,11 @@ void BcSubForm::setMainCompany ( BlMainCompany *c )
 /**
 \return
 **/
-BcCompany *BcSubForm::empresaBase()
+BcCompany *BcSubForm::mainCompany()
 {
-    _depura ( "BcSubForm::empresaBase", 0 );
-    _depura ( "END BcSubForm::empresaBase", 0 );
-    return ( ( BcCompany * ) BlMainCompanyPointer::empresaBase() );
+    _depura ( "BcSubForm::mainCompany", 0 );
+    _depura ( "END BcSubForm::mainCompany", 0 );
+    return ( ( BcCompany * ) BlMainCompanyPointer::mainCompany() );
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + +
@@ -167,7 +167,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
+    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, CuentaListView::SelectMode );
 //    listcuentas->inicializa();
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -177,7 +177,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 
     if ( codigo != "" ) {
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             if ( camp->nomcampo() == "codigo" ) {
                 rec->setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
@@ -187,7 +187,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
                 if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
                     rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
                     QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
-                    BlDbRecordSet *curss = empresaBase() ->cargacursor ( query1 );
+                    BlDbRecordSet *curss = mainCompany() ->cargacursor ( query1 );
                     rec->setDBvalue ( "nomc_coste", curss->valor ( "nombre" ) );
                     delete curss;
                 } // end if
@@ -263,9 +263,9 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( camp->nomcampo() == "codigo" && camp->text() != "*" ) {
-        QString codigoext = extiendecodigo ( camp->text(), ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa() );
+        QString codigoext = extiendecodigo ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
             rec->setDBvalue ( "codigo", cur->valor ( "codigo" ) );
@@ -274,7 +274,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
                 rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
                 QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
-                BlDbRecordSet *curss = empresaBase() ->cargacursor ( query1 );
+                BlDbRecordSet *curss = mainCompany() ->cargacursor ( query1 );
                 rec->setDBvalue ( "nomc_coste", curss->valor ( "nombre" ) );
                 delete curss;
             } // end if
@@ -286,7 +286,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
     if ( camp->nomcampo() == "nomcanal" ) {
         QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idcanal", cur->valor ( "idcanal" ) );
         } else {
@@ -296,7 +296,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
     if ( camp->nomcampo() == "nomc_coste" ) {
         QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idc_coste", cur->valor ( "idc_coste" ) );
         } else {
@@ -332,7 +332,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 void BcSubForm::boton_asiento()
 {
     _depura ( "BcSubForm::boton_asiento", 0 );
-    BcCompany *companyact = ( BcCompany * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString numasiento = DBvalue ( "idasiento" );
     if ( numasiento != "" ) {
         companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
@@ -352,7 +352,7 @@ void BcSubForm::boton_asiento()
 void BcSubForm::boton_extracto1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_extracto1", 0 );
-    BcCompany *companyact = ( BcCompany * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact;
     QString fecha = DBvalue ( "fecha" ).left ( 10 );
     QString codigo = DBvalue ( "codigo" );
@@ -390,7 +390,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
 void BcSubForm::boton_diario1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_diario1", 0 );
-    BcCompany *companyact = ( BcCompany * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
     fechaact1 = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
@@ -428,7 +428,7 @@ void BcSubForm::boton_diario1 ( int tipo )
 void BcSubForm::boton_balance1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_balance1", 0 );
-    BcCompany *companyact = ( BcCompany * ) empresaBase();
+    BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString fecha = DBvalue ( "fecha" ).left ( 10 );
     QString codigo = DBvalue ( "codigo" );
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -448,7 +448,7 @@ void BcSubForm::boton_balance1 ( int tipo )
             fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-        empresaBase() ->balanceempresa() ->inicializa1 ( codigo, codigo, fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), "0" );
+        mainCompany() ->balanceempresa() ->inicializa1 ( codigo, codigo, fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), "0" );
         companyact->balanceempresa() ->accept();
         companyact->librobalance();
     } // end if
@@ -533,17 +533,17 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
         BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
-        editor->setMainCompany ( ( BcCompany * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BcCompany * ) m_subform->mainCompany() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * editor = new BusquedaCanalDelegate ( parent );
-        editor->setMainCompany ( m_subform->empresaBase() );
+        editor->setMainCompany ( m_subform->mainCompany() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCanalDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         BusquedaCCosteDelegate * editor = new BusquedaCCosteDelegate ( parent );
-        editor->setMainCompany ( m_subform->empresaBase() );
+        editor->setMainCompany ( m_subform->mainCompany() );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
@@ -606,7 +606,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BusquedaCuentaDelegate * comboBox = static_cast<BusquedaCuentaDelegate*> ( editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
-        QString codigoext = extiendecodigo ( value,  m_subform->empresaBase() ->numdigitosempresa() );
+        QString codigoext = extiendecodigo ( value,  m_subform->mainCompany() ->numdigitosempresa() );
         model->setData ( index, codigoext );
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * comboBox = static_cast<BusquedaCanalDelegate*> ( editor );

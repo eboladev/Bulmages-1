@@ -97,11 +97,11 @@ void libromayorprint::accept()
     FILE *mifile;
     mifile = fopen ( "mayor.txt", "wt" );
     if ( mifile != NULL ) {
-        empresaBase() ->begin();
-        cursoraux = empresaBase() ->cargacuentascodigo ( -1, codinicial, codfinal );
+        mainCompany() ->begin();
+        cursoraux = mainCompany() ->cargacuentascodigo ( -1, codinicial, codfinal );
         while ( !cursoraux->eof() ) {
             idcuenta = atoi ( cursoraux->valor ( 0 ).toAscii() );
-            cursoraux1 = empresaBase() ->cargaapuntesctafecha ( idcuenta, finicial, ffinal );
+            cursoraux1 = mainCompany() ->cargaapuntesctafecha ( idcuenta, finicial, ffinal );
             if ( !cursoraux1->eof() ) {
                 activo = strcmp ( ( char * ) cursoraux->valor ( 13 ).toAscii().constData() , "f" );
                 fprintf ( mifile, "\n\n%12s %50s", cursoraux->valor ( 1 ).toAscii().constData(), cursoraux->valor ( 2 ).toAscii().constData() );
@@ -110,7 +110,7 @@ void libromayorprint::accept()
                 } else {
                     fprintf ( mifile, " Cuenta de Pasivo\n" );
                 } // end if
-                cursoraux2 = empresaBase() ->cargasaldoscuentafecha ( idcuenta, finicial );
+                cursoraux2 = mainCompany() ->cargasaldoscuentafecha ( idcuenta, finicial );
                 if ( !cursoraux2->eof() ) {
                     debeinicial = BlFixed ( cursoraux2->valor ( 0 ).toAscii().constData() );
                     haberinicial = BlFixed ( cursoraux2->valor ( 1 ).toAscii().constData() );
@@ -156,7 +156,7 @@ void libromayorprint::accept()
             cursoraux->siguienteregistro();
         } // end while
         fclose ( mifile );
-        empresaBase() ->commit();
+        mainCompany() ->commit();
         delete cursoraux;
     } // end if
     QString cadaux = confpr->valor ( CONF_EDITOR ) + " mayor.txt";

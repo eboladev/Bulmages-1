@@ -208,9 +208,9 @@ int ListLinAsiento1View_boton_iva ( ListLinAsiento1View *as )
     as->guardar();
     try {
         int idborrador = as->DBvalue ( "idborrador" ).toInt();
-        RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->empresaBase(), 0 );
+        RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->mainCompany(), 0 );
         nuevae->inicializa1 ( idborrador );
-        ( ( BcCompany * ) as->empresaBase() ) ->pWorkspace() ->addWindow ( nuevae );
+        ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
         mensajeInfo ( _("Debe seleccionar un apunte") );

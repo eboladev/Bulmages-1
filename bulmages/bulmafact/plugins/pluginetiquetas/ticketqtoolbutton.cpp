@@ -82,7 +82,7 @@ void TicketQToolButton::click()
 
     if ( m_albaranProveedorView != NULL ) {
         _depura ( "Impresion de ticket", 2 );
-        m_companyact = m_albaranProveedorView->empresaBase();
+        m_companyact = m_albaranProveedorView->mainCompany();
 
     } // end if
 

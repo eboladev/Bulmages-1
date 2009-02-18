@@ -33,14 +33,14 @@
 class BlMainCompanyPointer
 {
 private:
-    BlMainCompany *m_empresaBase;
+    BlMainCompany *m_mainCompany;
 
 public:
     BlMainCompanyPointer ( BlMainCompany * );
     BlMainCompanyPointer();
     virtual ~BlMainCompanyPointer();
     virtual void setMainCompany ( BlMainCompany * );
-    virtual BlMainCompany *empresaBase();
+    virtual BlMainCompany *mainCompany();
     virtual QString valorCampo();
     virtual void setValorCampo ( QString );
 };

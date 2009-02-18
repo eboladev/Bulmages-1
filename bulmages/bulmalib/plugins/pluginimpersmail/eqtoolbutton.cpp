@@ -138,7 +138,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
 		QString idcliente = m_BlForm->DBvalue ( "idcliente" );
 		if (!idcliente.isEmpty()) {
 			QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-			BlDbRecordSet *curs = ((BlForm *)parent())->empresaBase()->cargacursor ( query );
+			BlDbRecordSet *curs = ((BlForm *)parent())->mainCompany()->cargacursor ( query );
 			if (!curs->eof()) {
 				email = curs->valor ( "mailcliente" );
 			} // end if

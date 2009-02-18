@@ -50,8 +50,8 @@ int BX11EmbedContainer::sacaWindow()
 {
     _depura ( "BX11EmbedContainer::sacaWindow", 0 );
     discardClient();
-    if ( empresaBase() != NULL ) {
-        empresaBase() ->sacaWindow ( this );
+    if ( mainCompany() != NULL ) {
+        mainCompany() ->sacaWindow ( this );
     } // end if
     _depura ( "END BX11EmbedContainer::sacaWindow", 0 );
     return 0;

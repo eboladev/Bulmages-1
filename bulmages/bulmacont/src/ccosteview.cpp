@@ -91,7 +91,7 @@ ccosteview::ccosteview ( BcCompany  *emp, QWidget *parent )
 ccosteview::~ccosteview()
 {
     _depura ( "ccosteview::~ccosteview", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END ccosteview::~ccosteview", 0 );
 }
 
@@ -112,7 +112,7 @@ void ccosteview::repintar()
     mui_list->clear();
 
     /// Cargamos las cuentas de primer nivel.
-    cursoraux1 = empresaBase() ->cargacursor ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
+    cursoraux1 = mainCompany() ->cargacursor ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
     while ( !cursoraux1->eof() ) {
         padre = atoi ( cursoraux1->valor ( "padre" ).toAscii() );
         idc_coste1 = atoi ( cursoraux1->valor ( "idc_coste" ).toAscii() );
@@ -127,7 +127,7 @@ void ccosteview::repintar()
     delete cursoraux1;
 
     /// Cargamos las cuentas hijas
-    cursoraux2 = empresaBase() ->cargacursor ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
+    cursoraux2 = mainCompany() ->cargacursor ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
     while ( !cursoraux2->eof() ) {
         padre = cursoraux2->valor ( "padre" ).toInt();
         idc_coste1 = cursoraux2->valor ( "idc_coste" ).toInt();
@@ -147,7 +147,7 @@ void ccosteview::repintar()
 
     /// Ya que se han producido cambios en los centros de coste
     /// Se inicializa el selector de centros de coste.
-    SelectCCosteView *scoste = empresaBase() ->getselccostes();
+    SelectCCosteView *scoste = mainCompany() ->getselccostes();
     scoste->cargacostes();
     _depura ( "END ccosteview::pintar", 0 );
 }
@@ -237,18 +237,18 @@ void ccosteview::on_mui_crear_clicked()
     if ( it ) {
         idc_coste = atoi ( it->text ( COL_IDC_COSTE ).toAscii() );
         query.sprintf ( "INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
     } else {
         query.sprintf ( "INSERT INTO c_coste (nombre, descripcion) VALUES ('Nuevo centro de coste', 'Escriba su descripcion')" );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
     } // end if
     query.sprintf ( "SELECT MAX(idc_coste) AS id_coste FROM c_coste" );
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     idc_coste = atoi ( cur->valor ( "id_coste" ).toAscii() );
     delete cur;
-    empresaBase() ->commit();
+    mainCompany() ->commit();
     repintar();
     _depura ( "END ccosteview::on_mui_crear_clicked", 0 );
 }
@@ -268,15 +268,15 @@ void ccosteview::on_mui_borrar_clicked()
         case 0: /// Retry clicked or Enter pressed.
             QString query;
             query.sprintf ( "DELETE FROM c_coste WHERE idc_coste = %d", idc_coste );
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
+            mainCompany() ->begin();
+            mainCompany() ->ejecuta ( query );
+            mainCompany() ->commit();
             idc_coste = 0;
             repintar();
         } // end switch
     } catch ( ... ) {
         mensajeInfo ( _( "No se pudo borrar el Centro de Coste" ) );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return;
     } // end try
     _depura ( "END ccosteview::on_mui_borrar_clicked", 0 );

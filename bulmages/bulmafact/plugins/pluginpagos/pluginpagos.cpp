@@ -69,8 +69,8 @@ void mypluginpag::elslot()
 void mypluginpag::elslot1()
 {
     _depura ( "mypluginpag::elslot1", 0 );
-        PagoView * bud = new PagoView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        PagoView * bud = new PagoView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginpag::elslot1", 0 );
 }
@@ -145,8 +145,8 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "pago", "SELECT" ) ) {
-	PagosList *pagosList = new PagosList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+    if ( prov->mainCompany()->has_table_privilege ( "pago", "SELECT" ) ) {
+	PagosList *pagosList = new PagosList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	pagosList->setModoEdicion();
 	pagosList->setObjectName("listpagosproveedor");
 	pagosList->hideBusqueda();
@@ -156,7 +156,7 @@ int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
 }
 
 int ProveedorView_cargarPost_Post (ProveedorView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "pago", "SELECT" ) ) {
+    if ( prov->mainCompany()->has_table_privilege ( "pago", "SELECT" ) ) {
 	PagosList *pagosList = prov->findChild<PagosList *> ( "listpagosproveedor" );
         pagosList->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
         pagosList->presentar();
@@ -167,10 +167,10 @@ int ProveedorView_cargarPost_Post (ProveedorView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM pago WHERE refpago = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PagoView * bud = new PagoView((BfCompany *)ref->empresaBase(), NULL);
-        ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        PagoView * bud = new PagoView((BfCompany *)ref->mainCompany(), NULL);
+        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpago" ) );
         bud->show();
         cur->siguienteregistro();

@@ -93,7 +93,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionestrab" ) );
-    l->setMainCompany ( trab->empresaBase() );
+    l->setMainCompany ( trab->mainCompany() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
     l->addSubFormHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
@@ -156,7 +156,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     /// Anyadimos el subformulario de validaciones
     BfSubForm *l = new BfSubForm ( alm );
     l->setObjectName ( QString::fromUtf8 ( "m_validacionesalm" ) );
-    l->setMainCompany ( alm->empresaBase() );
+    l->setMainCompany ( alm->mainCompany() );
     l->setDBTableName ( "valasterisk" );
     l->setDBCampoId ( "idvalasterisk" );
     l->addSubFormHeader ( "fechavalasterisk", BlDbField::DBdate, BlDbField::DBNotNull , BlSubFormHeader::DBNone, _( "Fecha" ) );
@@ -197,14 +197,14 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     } else {
         query += "FALSE";
     } // end if
-    query += " WHERE idtrabajador=" + trab->empresaBase() ->sanearCadena ( trab->idtrabajador() );
-    trab->empresaBase() ->begin();
-    trab->empresaBase() ->ejecuta ( query );
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->idtrabajador() );
+    trab->mainCompany() ->begin();
+    trab->mainCompany() ->ejecuta ( query );
 
     BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
     l1->setColumnValue ( "idtrabajador", trab->idtrabajador() );
     l1->guardar();
-    trab->empresaBase() ->commit();
+    trab->mainCompany() ->commit();
     return 0;
 }
 
@@ -219,7 +219,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
     QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passasterisktrabajador" );
     QCheckBox * l9 = trab->findChild<QCheckBox *> ( "mui_validasiempreasterisktrabajador" );
 
-    BlDbRecordSet *cur = trab->empresaBase() ->cargacursor ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    BlDbRecordSet *cur = trab->mainCompany() ->cargacursor ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
     if ( !cur->eof() ) {
         l->setText ( cur->valor ( "passasterisktrabajador" ) );
         l9->setChecked ( ( cur->valor ( "validasiempreasterisktrabajador" ) == "t" ) );

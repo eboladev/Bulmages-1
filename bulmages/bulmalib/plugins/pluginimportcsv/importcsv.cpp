@@ -45,7 +45,7 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
         setupUi ( this );
         rellenarTablas();
 
-        empresaBase()->meteWindow ( windowTitle(), this );
+        mainCompany()->meteWindow ( windowTitle(), this );
     } catch ( ... ) {
         mensajeInfo ( _( "Error al crear la ventana de importacion" ) );
     } // end try
@@ -58,7 +58,7 @@ ImportCSV::~ImportCSV()
 {
     _depura ( "ImportCSV::~ImportCSV", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
-    // ((BfCompany *)empresaBase())->refreshCobrosCliente();
+    // ((BfCompany *)mainCompany())->refreshCobrosCliente();
     _depura ( "END ImportCSV::~ImportCSV", 0 );
 }
 
@@ -84,12 +84,12 @@ void ImportCSV::on_mui_aceptar_clicked()
         file.readLine();
     } // end if
 
-    empresaBase()->begin();
+    mainCompany()->begin();
     while ( !file.atEnd() ) {
         QByteArray line = file.readLine();
         procesarLinea ( line );
     } // end while
-    empresaBase()->commit();
+    mainCompany()->commit();
     file.close();
 
     _depura ( "END ImportCSV::on_mui_aceptar_clicked", 0 );
@@ -161,14 +161,14 @@ void ImportCSV::procesarLinea ( const QString &linea )
     } // end for
     query += ")";
 
-    empresaBase()->ejecuta ( query );
+    mainCompany()->ejecuta ( query );
 }
 
 
 void ImportCSV::rellenarTablas()
 {
     QString query = "select * from information_schema.tables where table_schema='public' and table_type='BASE TABLE' ORDER BY table_name";
-    BlDbRecordSet *cur = empresaBase()->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany()->cargacursor ( query );
     mui_combotablas->clear();
     while ( !cur->eof() ) {
         mui_combotablas->addItem ( cur->valor ( "table_name" ) );
@@ -182,7 +182,7 @@ void ImportCSV::on_mui_combotablas_activated ( const QString & text )
 {
 
     QString query = "SELECT a.attnum, a.attname AS field, t.typname AS type, a.attlen AS length, a.atttypmod AS lengthvar, a.attnotnull AS notnull FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = '" + text + "' and  a.attnum > 0 and a.attrelid = c.oid and a.atttypid = t.oid ORDER BY a.attnum";
-    BlDbRecordSet *cur = empresaBase()->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany()->cargacursor ( query );
     mui_list->setRowCount ( cur->numregistros() );
     mui_list->setColumnCount ( 2 );
     int row = 0;

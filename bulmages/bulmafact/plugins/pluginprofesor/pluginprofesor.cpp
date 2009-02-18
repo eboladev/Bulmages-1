@@ -69,8 +69,8 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        ProfesorView * bud = new ProfesorView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        ProfesorView * bud = new ProfesorView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
@@ -160,7 +160,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ProfesoresList *clients = new ProfesoresList ( ( BfCompany * ) busq->empresaBase(), diag, 0, ProfesoresList::SelectMode );
+    ProfesoresList *clients = new ProfesoresList ( ( BfCompany * ) busq->mainCompany(), diag, 0, ProfesoresList::SelectMode );
     busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

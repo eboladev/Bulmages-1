@@ -102,7 +102,7 @@ void ImpQToolButton::click()
     QString res = "";
 
     if ( m_albaranClienteList != NULL ) {
-        m_companyact = ( BfCompany * ) m_albaranClienteList->empresaBase();
+        m_companyact = ( BfCompany * ) m_albaranClienteList->mainCompany();
         BlSubForm *sub = m_albaranClienteList->mui_list;
 
         /// Creamos la factura

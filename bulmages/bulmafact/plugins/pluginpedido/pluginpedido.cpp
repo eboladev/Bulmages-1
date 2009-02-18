@@ -71,8 +71,8 @@ void mypluginped::elslot()
 void mypluginped::elslot1()
 {
     _depura ( "mypluginped::elslot1", 0 );
-        PedidoClienteView * bud = new PedidoClienteView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        PedidoClienteView * bud = new PedidoClienteView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginped::elslot1", 0 );
 }
@@ -147,8 +147,8 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
-	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+    if ( prov->mainCompany()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	pedidosClienteList->setModoEdicion();
 	pedidosClienteList->setObjectName("listpedidoclientees");
 	pedidosClienteList->hideBusqueda();
@@ -158,7 +158,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+    if ( prov->mainCompany()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
 	PedidosClienteList *pedidosClienteList = prov->findChild<PedidosClienteList *> ( "listpedidoclientees" );
         pedidosClienteList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         pedidosClienteList->presentar();
@@ -169,10 +169,10 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        PedidoClienteView * bud = new PedidoClienteView((BfCompany *)ref->empresaBase(), NULL);
-        ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        PedidoClienteView * bud = new PedidoClienteView((BfCompany *)ref->mainCompany(), NULL);
+        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidocliente" ) );
         bud->show();
         cur->siguienteregistro();

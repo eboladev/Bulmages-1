@@ -55,11 +55,11 @@ MyPlugIVA::~MyPlugIVA()
 void MyPlugIVA::elslot()
 {
     _depura ( "MyPlugIVA::elslot", 0 );
-    ListTasaIVAView *pag = new ListTasaIVAView ( (BfCompany *)empresaBase(), NULL );
-    empresaBase() ->m_pWorkspace->addWindow ( pag );
+    ListTasaIVAView *pag = new ListTasaIVAView ( (BfCompany *)mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
 */
     _depura ( "END MyPlugIVA::elslot", 0 );
@@ -72,11 +72,11 @@ void MyPlugIVA::elslot()
 void MyPlugIVA::elslot1()
 {
     _depura ( "MyPlugIVA::elslot1", 0 );
-    ListTipoIVAView *pag = new ListTipoIVAView ( (BfCompany *)empresaBase(), NULL );
-    empresaBase() ->m_pWorkspace->addWindow ( pag );
+    ListTipoIVAView *pag = new ListTipoIVAView ( (BfCompany *)mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
 */
     _depura ( "END MyPlugIVA::elslot1", 0 );

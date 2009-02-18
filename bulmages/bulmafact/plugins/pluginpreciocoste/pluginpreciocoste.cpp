@@ -129,7 +129,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
 
         QString query = "SELECT preciocostearticulo FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" );
-        cur = subform->empresaBase() ->cargacursor ( query );
+        cur = subform->mainCompany() ->cargacursor ( query );
         if ( ! cur->eof() ) {
             if ( "'" + cur->valor ( "preciocostearticulo" ) + "'" == camp->valorcampoprep ( err ) ) {
                 delete cur;
@@ -145,15 +145,15 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
         if ( ret == QMessageBox::Yes ) {
             QString query1 = "UPDATE articulo SET preciocostearticulo=" + camp->valorcampoprep ( err ) + " where idarticulo=" + rec->DBvalue ( "idarticulo" );
-            subform->empresaBase() ->begin();
-            subform->empresaBase() ->ejecuta ( query1 );
-            subform->empresaBase() ->commit();
+            subform->mainCompany() ->begin();
+            subform->mainCompany() ->ejecuta ( query1 );
+            subform->mainCompany() ->commit();
         } // end if
         return 0;
     } // end if
 
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
-        cur = subform->empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
+        cur = subform->mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
             rec->setDBvalue ( "idarticulo", cur->valor ( "idarticulo" ) );
             rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -172,7 +172,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             return -1;
         } // end if
 
-        cur1 = subform->empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+        cur1 = subform->mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
         if ( !cur->eof() ) {
             if ( subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"
@@ -181,7 +181,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
 
                 if ( subform->idproveedor() != "" ) {
-                    cur2 = subform->empresaBase() ->cargacursor ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + subform->idproveedor() );
+                    cur2 = subform->mainCompany() ->cargacursor ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + subform->idproveedor() );
                     if ( !cur2->eof() ) {
                         if ( cur2->valor ( "recargoeqproveedor" ) == "t" ) {
                             rec->setDBvalue ( "reqeq" + subform->tableName(), cur1->valor ( "porcentretasa_iva" ) );

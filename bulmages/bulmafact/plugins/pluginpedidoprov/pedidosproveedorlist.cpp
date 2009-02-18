@@ -78,7 +78,7 @@ PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Q
     setSubForm ( mui_list );
     mdb_idpedidoproveedor = "";
     if (modoEdicion()) {
-    	empresaBase() ->meteWindow ( windowTitle(), this );
+    	mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -125,7 +125,7 @@ void PedidosProveedorList::presentar()
     _depura ( "PedidosProveedorList::presentar", 0 );
     mui_list->cargar ( "SELECT *, totalpedidoproveedor AS total, bimppedidoproveedor AS base, imppedidoproveedor AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro() );
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro() );
     /// En caso de que el query haya fallado (por problemas de permisos p.ej.) salimos.
     if ( !cur ) return;
     m_total->setText ( cur->valor ( "total" ) );
@@ -205,7 +205,7 @@ void PedidosProveedorList::borrar()
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue ( QString ( "idpedidoproveedor" ) );
         if ( modoEdicion() ) {
-            PedidoProveedorView * ppv = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
+            PedidoProveedorView * ppv = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( ppv->cargar ( mdb_idpedidoproveedor ) ) {
                 throw - 1;
             } // end if
@@ -230,12 +230,12 @@ void PedidosProveedorList::editar ( int row )
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue ( QString ( "idpedidoproveedor" ), row );
         if ( modoEdicion() ) {
-            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
+            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( prov->cargar ( mdb_idpedidoproveedor ) ) {
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( mdb_idpedidoproveedor ) );
@@ -253,8 +253,8 @@ void PedidosProveedorList::editar ( int row )
 void PedidosProveedorList::crear()
 {
     _depura ( "PedidosProveedorList::crear", 0 );
-    PedidoProveedorView *prov = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase() ->m_pWorkspace->addWindow ( prov );
+    PedidoProveedorView *prov = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END PedidosProveedorList::crear", 0 );
 }

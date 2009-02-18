@@ -41,7 +41,7 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
 
     /// Listamos los atributos de la tabla.
     QString fields = "SELECT a.attnum AS ordinal_position, a.attname AS column_name, t.typname AS data_type, a.attlen AS character_maximum_length, a.atttypmod AS modifier, a.attnotnull AS notnull, a.atthasdef AS hasdefault FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = '" + m_BlForm->tableName() + "' AND a.attnum > 0 AND a.attrelid = c.oid AND a.atttypid = t.oid ORDER BY a.attnum;";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( fields );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( fields );
 
     mui_databasetable->setRowCount ( cur->numregistros() );
     mui_databasetable->setColumnCount ( cur->numcampos() );
@@ -83,7 +83,7 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
                          ", has_table_privilege(pg_user.usename, '" + m_BlForm->tableName() + "', 'INSERT') AS pinsert" \
                          ", has_table_privilege(pg_user.usename, '" + m_BlForm->tableName() + "', 'UPDATE') AS pupdate" \
                          ", has_table_privilege(pg_user.usename, '" + m_BlForm->tableName() + "', 'RULE') AS prules  FROM pg_user";
-    cur = empresaBase() ->cargacursor ( queryusers );
+    cur = mainCompany() ->cargacursor ( queryusers );
 
     mui_usertable->setRowCount ( cur->numregistros() );
     mui_usertable->setColumnCount ( cur->numcampos() );
@@ -98,7 +98,7 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
     } // end while
     delete cur;
 
-    cur = empresaBase() ->cargacursor ( "SELECT user" );
+    cur = mainCompany() ->cargacursor ( "SELECT user" );
     if ( !cur ) return;
 
     mui_currentuser->setText ( cur->valor ( "current_user" ) );

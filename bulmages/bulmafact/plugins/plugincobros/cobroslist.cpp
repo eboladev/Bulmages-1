@@ -83,7 +83,7 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     presentar();
     mdb_idcobro = "";
     if ( modoEdicion() )
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
@@ -107,7 +107,7 @@ CobrosList::~CobrosList()
 void CobrosList::presentar()
 {
     _depura ( "CobrosList::presentar", 0 );
-    if ( empresaBase() != NULL ) {
+    if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantcobro" );
@@ -164,8 +164,8 @@ QString CobrosList::generaFiltro()
 void CobrosList::crear()
 {
     _depura ( "CobrosList::crear", 0 );
-    CobroView *bud = new CobroView( (BfCompany *) empresaBase(), 0);
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    CobroView *bud = new CobroView( (BfCompany *) mainCompany(), 0);
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDBvalue ( "idcliente", m_cliente->id() );
     bud->pintar();
@@ -200,7 +200,7 @@ void CobrosList::borrar()
     try {
         mdb_idcobro = mui_list->DBvalue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * cv = new CobroView( (BfCompany *) empresaBase(), 0);
+            CobroView * cv = new CobroView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idcobro ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -224,12 +224,12 @@ void CobrosList::editar ( int )
     try {
         mdb_idcobro = mui_list->DBvalue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * bud = new CobroView( (BfCompany *) empresaBase(), 0);
+            CobroView * bud = new CobroView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idcobro ) ) {
                 delete bud;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idcobro ) );

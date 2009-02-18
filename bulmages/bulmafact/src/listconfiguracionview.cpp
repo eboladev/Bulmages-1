@@ -53,7 +53,7 @@ ListConfiguracionView::ListConfiguracionView ( BfCompany *comp, QWidget *parent 
     setDBCampoId ( "nombre" );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
-    mui_listado->setMainCompany ( empresaBase() );
+    mui_listado->setMainCompany ( mainCompany() );
     mui_listado->cargar();
 
     meteWindow ( windowTitle(), this, FALSE );

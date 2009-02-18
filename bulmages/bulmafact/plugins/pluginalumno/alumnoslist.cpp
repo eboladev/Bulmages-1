@@ -74,7 +74,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     mdb_idalumno = "";
     if ( modoEdicion() )
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
@@ -98,7 +98,7 @@ AlumnosList::~AlumnosList()
 void AlumnosList::presentar()
 {
     _depura ( "AlumnosList::presentar", 0 );
-    if ( empresaBase() != NULL ) {
+    if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM alumno WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END AlumnosList::presentar", 0 );
@@ -128,8 +128,8 @@ QString AlumnosList::generaFiltro()
 void AlumnosList::crear()
 {
     _depura ( "AlumnosList::crear", 0 );
-    AlumnoView *bud = new AlumnoView( (BfCompany *) empresaBase(), 0);
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    AlumnoView *bud = new AlumnoView( (BfCompany *) mainCompany(), 0);
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
     _depura ( "AlumnosList::crear", 0 );
@@ -163,7 +163,7 @@ void AlumnosList::borrar()
     try {
         mdb_idalumno = mui_list->DBvalue ( "idalumno" );
         if ( modoEdicion() ) {
-            AlumnoView * cv = new AlumnoView( (BfCompany *) empresaBase(), 0);
+            AlumnoView * cv = new AlumnoView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idalumno ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,12 +187,12 @@ void AlumnosList::editar ( int )
     try {
         mdb_idalumno = mui_list->DBvalue ( "idalumno" );
         if ( modoEdicion() ) {
-            AlumnoView * bud = new AlumnoView( (BfCompany *) empresaBase(), 0);
+            AlumnoView * bud = new AlumnoView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idalumno ) ) {
                 delete bud;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idalumno ) );

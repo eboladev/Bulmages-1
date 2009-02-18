@@ -118,7 +118,7 @@ BlFormList::~BlFormList()
 int BlFormList::sacaWindow()
 {
     _depura ( "BlFormList::sacaWindow", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END BlFormList::sacaWindow", 0 );
     return 0;
 }
@@ -132,7 +132,7 @@ int BlFormList::sacaWindow()
 int BlFormList::meteWindow ( QString title )
 {
     _depura ( "BlFormList::meteWindow", 0 );
-    empresaBase() ->meteWindow ( title, this );
+    mainCompany() ->meteWindow ( title, this );
     _depura ( "END BlFormList::meteWindow", 0 );
     return 0;
 }
@@ -459,7 +459,7 @@ void BlFormList::trataPermisos ( QString nomtabla )
 {
     _depura ( "BlFormList::trataPermisos", 0 );
 
-    if ( !empresaBase() ->has_table_privilege ( nomtabla, "INSERT" ) ) {
+    if ( !mainCompany() ->has_table_privilege ( nomtabla, "INSERT" ) ) {
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
         QToolButton * b = findChild<QToolButton *> ( "mui_crear" );
         if ( b ) b->setDisabled ( TRUE );
@@ -471,7 +471,7 @@ void BlFormList::trataPermisos ( QString nomtabla )
 
 
 
-    if ( !empresaBase() ->has_table_privilege ( nomtabla, "UPDATE" ) ) {
+    if ( !mainCompany() ->has_table_privilege ( nomtabla, "UPDATE" ) ) {
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
         QToolButton * b = findChild<QToolButton *> ( "mui_editar" );
         if ( b ) b->setDisabled ( TRUE );

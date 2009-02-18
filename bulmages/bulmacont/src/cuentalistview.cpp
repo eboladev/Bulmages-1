@@ -63,7 +63,7 @@ CuentaListView::CuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlags fl
     setSubForm ( mui_list );
 
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de articulos" ) );
         mui_imprimir->setHidden ( TRUE );

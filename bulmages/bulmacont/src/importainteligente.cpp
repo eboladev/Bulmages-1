@@ -56,23 +56,23 @@ bool importainteligente::startElement ( const QString&, const QString&, const QS
     QString SQLQuery;
     if ( tag == "ainteligente" ) {
         SQLQuery.sprintf ( "INSERT INTO ainteligente (descripcion) VALUES ('Elemento importado')\n" );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idainteligente) AS idainteligente FROM ainteligente";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
-        empresaBase() ->commit();
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery, "unquerymas" );
+        mainCompany() ->commit();
         if ( !cur->eof() ) {
             tvalores["idainteligente"] = cur->valor ( "idainteligente" );
         } // end if
         delete cur;
     } // end if
     if ( tag == "binteligente" ) {
-        SQLQuery.sprintf ( "INSERT INTO binteligente (idainteligente) VALUES (%s)\n", empresaBase() ->sanearCadena ( tvalores["idainteligente"] ).toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
+        SQLQuery.sprintf ( "INSERT INTO binteligente (idainteligente) VALUES (%s)\n", mainCompany() ->sanearCadena ( tvalores["idainteligente"] ).toAscii().constData() );
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idbinteligente) AS idbinteligente FROM binteligente";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery, "unquerymas" );
-        empresaBase() ->commit();
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery, "unquerymas" );
+        mainCompany() ->commit();
         if ( !cur->eof() ) {
             tvalores["idbinteligente"] = cur->valor ( "idbinteligente" );
         } // end if
@@ -102,59 +102,59 @@ bool importainteligente::endElement ( const QString&, const QString&, const QStr
     QString SQLQuery;
     if ( qName == "ainteligente" ) {
         SQLQuery.sprintf ( "UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE ainteligente SET comentariosasiento = '%s' WHERE idainteligente = %s\n", tvalores["comentariosasiento"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
     } // end if
     if ( qName == "binteligente" ) {
         SQLQuery.sprintf ( "UPDATE binteligente SET fecha = '%s' WHERE idbinteligente = %s\n", tvalores["fecha"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET conceptocontable = '%s' WHERE idbinteligente=%s\n", tvalores["conceptocontable"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET codcuenta = '%s' WHERE idbinteligente = %s\n", tvalores["codcuenta"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET descripcion = '%s' WHERE idbinteligente = %s\n", tvalores["descripcionb"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET debe = '%s' WHERE idbinteligente = %s\n", tvalores["debe"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET haber = '%s' WHERE idbinteligente = %s\n", tvalores["haber"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET contrapartida = '%s' WHERE idbinteligente = %s\n", tvalores["contrapartida"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET comentario = '%s' WHERE idbinteligente = %s\n", tvalores["comentario"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET canal = '%s' WHERE idbinteligente = %s\n", tvalores["canal"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET idc_coste = '%s' WHERE idbinteligente = %s\n", tvalores["idc_coste"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET marcaconciliacion = '%s' WHERE idbinteligente = %s\n", tvalores["marcaconciliacion"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
     } // end if
     tag = "";
     data = "";

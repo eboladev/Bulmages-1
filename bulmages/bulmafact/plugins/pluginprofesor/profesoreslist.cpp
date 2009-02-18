@@ -74,7 +74,7 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     presentar();
     mdb_idprofesor = "";
     if ( modoEdicion() )
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
@@ -98,7 +98,7 @@ ProfesoresList::~ProfesoresList()
 void ProfesoresList::presentar()
 {
     _depura ( "ProfesoresList::presentar", 0 );
-    if ( empresaBase() != NULL ) {
+    if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM profesor WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END ProfesoresList::presentar", 0 );
@@ -128,8 +128,8 @@ QString ProfesoresList::generaFiltro()
 void ProfesoresList::crear()
 {
     _depura ( "ProfesoresList::crear", 0 );
-    ProfesorView *bud = new ProfesorView( (BfCompany *) empresaBase(), 0);
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+    ProfesorView *bud = new ProfesorView( (BfCompany *) mainCompany(), 0);
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
     _depura ( "ProfesoresList::crear", 0 );
@@ -163,7 +163,7 @@ void ProfesoresList::borrar()
     try {
         mdb_idprofesor = mui_list->DBvalue ( "idprofesor" );
         if ( modoEdicion() ) {
-            ProfesorView * cv = new ProfesorView( (BfCompany *) empresaBase(), 0);
+            ProfesorView * cv = new ProfesorView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idprofesor ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -187,12 +187,12 @@ void ProfesoresList::editar ( int )
     try {
         mdb_idprofesor = mui_list->DBvalue ( "idprofesor" );
         if ( modoEdicion() ) {
-            ProfesorView * bud = new ProfesorView( (BfCompany *) empresaBase(), 0);
+            ProfesorView * bud = new ProfesorView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idprofesor ) ) {
                 delete bud;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idprofesor ) );

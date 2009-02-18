@@ -11,7 +11,7 @@ Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( p
 {
     setupUi ( this );
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM trabajador" );
     while ( !cur->eof() ) {
         QPushButton * toolbutton = new QPushButton ( mui_frame );
         toolbutton->setText ( cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) );
@@ -38,13 +38,13 @@ Trabajadores::~Trabajadores()
 
 void Trabajadores::trabajadorClicked()
 {
-    EmpresaTPV * emp1 = ( EmpresaTPV * ) empresaBase();
+    EmpresaTPV * emp1 = ( EmpresaTPV * ) mainCompany();
     Ticket *ticket = NULL;
     Ticket *ticketv = NULL;
     bool encontrado = FALSE;
 
     /// Buscamos cual ha sido el trabajador pulsado.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM trabajador" );
     while ( !encontrado ) {
         if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) ) {
             encontrado = TRUE;
@@ -58,7 +58,7 @@ void Trabajadores::trabajadorClicked()
         ticket = emp1->listaTickets() ->at ( i );
 
         if ( "" == ticket->DBvalue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->DBvalue ( "idtrabajador" ) ) {
-            ( ( EmpresaTPV * ) empresaBase() ) ->setTicketActual ( ticket );
+            ( ( EmpresaTPV * ) mainCompany() ) ->setTicketActual ( ticket );
             ticket->pintar();
             ticketv = ticket;
         }// end if

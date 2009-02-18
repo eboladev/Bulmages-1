@@ -51,7 +51,7 @@ canalview::canalview ( BcCompany  *emp, QWidget *parent )
     dialogChanges_setQObjectExcluido ( mui_idcanal );
     dialogChanges_cargaInicial();
     on_mui_idcanal_valueChanged ( 0 );
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END canalview::canalview", 0 );
 }
 
@@ -62,7 +62,7 @@ canalview::canalview ( BcCompany  *emp, QWidget *parent )
 canalview::~canalview()
 {
     _depura ( "canalview::~canalview", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END canalview::~canalview", 0 );
 }
 
@@ -85,7 +85,7 @@ void canalview::pintar()
     } // end if
 
     /// Si se han cambiado los canales, se rehace el selector de canales.
-    selectcanalview *scanal = empresaBase() ->getselcanales();
+    selectcanalview *scanal = mainCompany() ->getselcanales();
     scanal->cargacanales();
     _depura ( "END canalview::pintar", 0 );
 }
@@ -139,7 +139,7 @@ void canalview::mostrarplantilla()
     _depura ( "canalview::mostrarplantilla", 0 );
     QString query;
     QTextStream ( &query ) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
-    BlDbRecordSet *cursorcanal = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cursorcanal = mainCompany() ->cargacursor ( query );
     if ( !cursorcanal->eof() ) {
         mui_nomcanal->setText ( cursorcanal->valor ( "nombre" ) );
         mui_desccanal->setPlainText ( cursorcanal->valor ( "descripcion" ) );
@@ -161,11 +161,11 @@ void canalview::on_mui_guardar_clicked()
     QString desc = mui_desccanal->toPlainText();
     QString query;
     QTextStream ( &query ) << "UPDATE canal SET nombre = '"
-    << empresaBase() ->sanearCadena ( nom ).toAscii().constData()
+    << mainCompany() ->sanearCadena ( nom ).toAscii().constData()
     << "', descripcion = '"
-    << empresaBase() ->sanearCadena ( desc ).toAscii().constData()
+    << mainCompany() ->sanearCadena ( desc ).toAscii().constData()
     << "' WHERE idcanal = '" << idcanal << "'";
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     dialogChanges_cargaInicial();
     pintar();
     _depura ( "END canalview::on_mui_guardar_clicked", 0 );
@@ -188,14 +188,14 @@ void canalview::on_mui_crear_clicked()
     } // end if
     QString query = "";
     QTextStream ( &query ) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << _( "Nuevo canal" ) << "', '" << _( "Escriba su descripcion" ) << "')";
-    empresaBase() ->begin();
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->begin();
+    mainCompany() ->ejecuta ( query );
     query = "";
     QTextStream ( &query ) << "SELECT MAX(idcanal) AS id FROM canal";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "queryy" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "queryy" );
     idcanal = atoi ( cur->valor ( "id" ).toAscii() );
     delete cur;
-    empresaBase() ->commit();
+    mainCompany() ->commit();
     pintar();
     _depura ( "END canalview::on_mui_crear_clicked", 0 );
 }
@@ -214,9 +214,9 @@ void canalview::on_mui_borrar_clicked()
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         query.sprintf ( "DELETE FROM canal WHERE idcanal = %d", idcanal );
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
+        mainCompany() ->commit();
         idcanal = 0;
         pintar();
     } // end switch

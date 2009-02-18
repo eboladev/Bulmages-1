@@ -42,7 +42,7 @@ DiarioPrintView::DiarioPrintView ( BcCompany  *emp, QWidget *parent )
 {
     _depura ( "DiarioPrintView::DiarioPrintView", 0 );
     setupUi ( this );
-    numdigitos = ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa();
+    numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
     _depura ( "END DiarioPrintView::DiarioPrintView", 0 );
 }
 
@@ -66,7 +66,7 @@ DiarioPrintView::~DiarioPrintView()
 QString DiarioPrintView::montaQuery()
 {
     _depura ( "DiarioPrintView::montaQuery", 0 );
-    DiarioView *diario = ( ( BcCompany * ) empresaBase() ) ->diarioempresa();
+    DiarioView *diario = ( ( BcCompany * ) mainCompany() ) ->diarioempresa();
     QString query;
     QString fecha;
     QString fechaasiento;
@@ -80,8 +80,8 @@ QString DiarioPrintView::montaQuery()
     QString cad;
 
     /// Consideraciones para centros de coste y canales.
-    selectcanalview *scanal = ( ( BcCompany * ) empresaBase() ) ->getselcanales();
-    SelectCCosteView *scoste = ( ( BcCompany * ) empresaBase() ) ->getselccostes();
+    selectcanalview *scanal = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
+    SelectCCosteView *scoste = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
     QString ccostes = scoste->cadcoste();
     if ( ccostes != "" ) {
         ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
@@ -134,7 +134,7 @@ void DiarioPrintView::accept()
 void DiarioPrintView::presentar ( const char *tipus )
 {
     _depura ( "DiarioPrintView::presentar", 0 );
-    DiarioView *diario = ( ( BcCompany * ) empresaBase() ) ->diarioempresa();
+    DiarioView *diario = ( ( BcCompany * ) mainCompany() ) ->diarioempresa();
     int txt, html, txtapren, htmlapren;
     float debe, haber;
     int idcuenta;
@@ -202,9 +202,9 @@ void DiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripcio</td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
             } // end if
             QString query = montaQuery();
-            empresaBase() ->begin();
-            cursoraux = empresaBase() ->cargacursor ( query, "elquerydb" );
-            empresaBase() ->commit();
+            mainCompany() ->begin();
+            cursoraux = mainCompany() ->cargacursor ( query, "elquerydb" );
+            mainCompany() ->commit();
 
             for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
                 fechaasiento = cursoraux->valor ( "fechaasiento" ).toAscii().constData();
@@ -289,8 +289,8 @@ void DiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "<table><tr><td colspan=\"7\" class=titoldiariapren> Llibre diari <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
             } // end if
-            empresaBase() ->begin();
-            cursoraux = empresaBase() ->cargaasientosfecha ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
+            mainCompany() ->begin();
+            cursoraux = mainCompany() ->cargaasientosfecha ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
 
             for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
                 int idasiento = atoi ( cursoraux->valor ( "idasiento" ).toAscii() );
@@ -305,9 +305,9 @@ void DiarioPrintView::presentar ( const char *tipus )
                 char consulta[400];
                 char codicompte[20];
                 sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento=%d AND apunte.haber=0 AND cuenta.idcuenta=apunte.idcuenta", idasiento );
-                empresaBase() ->begin();
-                BlDbRecordSet *cursasiento = empresaBase() ->cargacursor ( consulta, "asiento" );
-                empresaBase() ->commit();
+                mainCompany() ->begin();
+                BlDbRecordSet *cursasiento = mainCompany() ->cargacursor ( consulta, "asiento" );
+                mainCompany() ->commit();
 
                 while ( !cursasiento->eof() ) {
                     if ( txtapren ) {
@@ -324,9 +324,9 @@ void DiarioPrintView::presentar ( const char *tipus )
 
                 delete cursasiento;
                 sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento = %d AND apunte.debe = 0 AND cuenta.idcuenta = apunte.idcuenta", idasiento );
-                empresaBase() ->begin();
-                cursasiento = empresaBase() ->cargacursor ( consulta, "asiento" );
-                empresaBase() ->commit();
+                mainCompany() ->begin();
+                cursasiento = mainCompany() ->cargacursor ( consulta, "asiento" );
+                mainCompany() ->commit();
 
                 while ( !cursasiento->eof() ) {
                     if ( txtapren ) {
@@ -344,7 +344,7 @@ void DiarioPrintView::presentar ( const char *tipus )
             } // end for
 
             delete cursoraux;
-            empresaBase() ->commit();
+            mainCompany() ->commit();
 
             if ( txtapren ) {
                 fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentacio text format aprenentatge

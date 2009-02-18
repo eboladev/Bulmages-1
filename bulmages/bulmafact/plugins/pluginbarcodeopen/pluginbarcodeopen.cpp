@@ -75,7 +75,7 @@ void myplugin::elslot()
         QStringList listaelem = text.split ( " " );
         if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewFacturaView", ( BfCompany * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewFacturaView", ( BfCompany * ) mainCompany());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de factura");
 					return;
@@ -85,11 +85,11 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewPresupuestoView", ( BfCompany * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewPresupuestoView", ( BfCompany * ) mainCompany());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de pedido cliente");
 					return;
@@ -99,11 +99,11 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewPedidoClienteView", ( BfCompany * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewPedidoClienteView", ( BfCompany * ) mainCompany());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de pedido cliente");
 					return;
@@ -113,12 +113,12 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
 
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewAlbaranClienteView", ( BfCompany * ) empresaBase());
+				int resur = g_plugins->lanza ("SNewAlbaranClienteView", ( BfCompany * ) mainCompany());
 				if (!resur) {
 					mensajeInfo("no se pudo crear instancia de factura");
 					return;
@@ -128,16 +128,16 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
 
-            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) empresaBase(), 0 );
+            PedidoProveedorView * prov = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } // end if
     } // end if

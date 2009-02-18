@@ -57,9 +57,9 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     m_codigofinal->setMainCompany ( emp );
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     QString query = "SELECT nivel(codigo) FROM cuenta GROUP BY nivel ORDER BY nivel";
-    BlDbRecordSet *niveles = empresaBase() ->cargacursor ( query, "Niveles" );
+    BlDbRecordSet *niveles = mainCompany() ->cargacursor ( query, "Niveles" );
     int i = 0;
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
@@ -67,7 +67,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
         niveles->siguienteregistro();
         i++;
     } // end while
-    empresaBase() ->commit();
+    mainCompany() ->commit();
     delete niveles;
     _depura ( "END BalancePrintView::BalancePrintView", 0 );
 }
@@ -187,10 +187,10 @@ void BalancePrintView::presentar ( const char* tipus )
             /// los distintos niveles de cuentas.
             /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
             /// n&uacute;mero de cuentas de nivel 2) y las vamos creando.
-            empresaBase() ->begin();
+            mainCompany() ->begin();
             query.sprintf ( "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo" );
             BlDbRecordSet *ramas;
-            ramas = empresaBase() ->cargacursor ( query, "Ramas" );
+            ramas = mainCompany() ->cargacursor ( query, "Ramas" );
             Arbol *arbol;
             arbol = new Arbol;
             while ( !ramas->eof() ) {
@@ -260,7 +260,7 @@ void BalancePrintView::presentar ( const char* tipus )
             /// establecer as&iacute; los valores de cada cuenta.
             query.sprintf ( "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.toAscii().constData(), finicial.toAscii().constData(), ffinal.toAscii().constData(), finicial.toAscii().constData() );
             BlDbRecordSet *cuentas;
-            cuentas = empresaBase() ->cargacursor ( query, "Periodo" );
+            cuentas = mainCompany() ->cargacursor ( query, "Periodo" );
             /// Para cada cuenta con sus apuntes hechos hay que actualizar hojas
             /// del &aacute;rbol.
             while ( !cuentas->eof() ) {
@@ -387,7 +387,7 @@ void BalancePrintView::presentar ( const char* tipus )
 
             /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
             delete arbol;
-            empresaBase() ->commit();
+            mainCompany() ->commit();
 
             filetxt.close();
             filekugar.close();
@@ -424,7 +424,7 @@ void BalancePrintView::presentar ( const char* tipus )
 void BalancePrintView::on_mui_canales_clicked()
 {
     _depura ( "BalancePrintView::on_mui_canales_clicked", 0 );
-    selectcanalview *selcanales = ( ( BcCompany * ) empresaBase() ) ->getselcanales();
+    selectcanalview *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
     _depura ( "END BalancePrintView::on_mui_canales_clicked", 0 );
@@ -439,7 +439,7 @@ void BalancePrintView::on_mui_canales_clicked()
 void BalancePrintView::on_mui_ccostes_clicked()
 {
     _depura ( "BalancePrintView::on_mui_ccostes_clicked", 0 );
-    SelectCCosteView *selccostes = ( ( BcCompany * ) empresaBase() ) ->getselccostes();
+    SelectCCosteView *selccostes = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
     _depura ( "END BalancePrintView::on_mui_ccostes_clicked", 0 );

@@ -65,14 +65,14 @@ void ResumCtaWidget::alink ( const QUrl &url )
 
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( linker == "ver" ) {
-        ( ( BcCompany * ) empresaBase() ) ->muestracuentas();
+        ( ( BcCompany * ) mainCompany() ) ->muestracuentas();
     } else if ( linker == "asiento" ) {
         //QString ordenasiento = l.right(l.length() - 2);
-        Asiento1View * view = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa();
+        Asiento1View * view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
         bool ok;
         //view->muestraasiento(ordenasiento.toInt(&ok));
     } else {
-        Asiento1View *view = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa();
+        Asiento1View *view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
         bool ok;
         view->muestraasiento ( linker.toInt ( &ok ) );
         //QMessageBox::warning(0, tr("Opcion no implementada"), tr("No se puede acceder al error"), 0, 1, 2);

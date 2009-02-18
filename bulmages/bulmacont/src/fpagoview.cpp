@@ -92,7 +92,7 @@ void fpagoview::pintar ( QString idfpago )
     if ( m_curfpago != NULL )
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
-    m_curfpago = empresaBase() ->cargacursor ( query );
+    m_curfpago = mainCompany() ->cargacursor ( query );
     mui_comboFPago->clear();
     int i = 0;
     while ( !m_curfpago->eof() ) {
@@ -187,7 +187,7 @@ int fpagoview::guardar()
     _depura ( "fpagoview::on_mui_guardarFPago_clicked", 0 );
     QString idfpago = m_curfpago->valor ( "idfpago", m_posactual );
     QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor ( "idfpago", m_posactual );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     dialogChanges_cargaInicial();
     pintar ( m_curfpago->valor ( "idfpago", m_posactual ) );
     _depura ( "END fpagoview::on_mui_guardarFPago_clicked", 0 );
@@ -212,14 +212,14 @@ void fpagoview::on_mui_crear_clicked()
     } // end if
     try {
         QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _( "Nueva forma de pago" ) + "', 0, 0, 0)";
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( query );
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT max(idfpago) AS idfpago FROM fpago" );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idfpago) AS idfpago FROM fpago" );
+        mainCompany() ->commit();
         pintar ( cur->valor ( "idfpago" ) );
         delete cur;
     } catch ( ... ) {
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return;
     } // end try
     _depura ( "END fpagoview::crear", 0 );
@@ -243,7 +243,7 @@ void fpagoview::on_mui_borrar_clicked()
                                         _( "Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n" ),
                                         QMessageBox::Ok, QMessageBox::Cancel ) ) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            empresaBase() ->ejecuta ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );
+            mainCompany() ->ejecuta ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );
             pintar();
             break;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.

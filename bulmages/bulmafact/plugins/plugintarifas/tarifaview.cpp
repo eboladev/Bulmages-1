@@ -77,7 +77,7 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
 TarifaView::~TarifaView()
 {
     _depura ( "TarifaView::INIT_destructor()\n", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "TarifaView::END_destructor()\n", 0 );
 }
 
@@ -86,7 +86,7 @@ TarifaView::~TarifaView()
 /**
 **/
 BfCompany *TarifaView::companyact() {
-	return empresaBase();
+	return mainCompany();
 }
 
 
@@ -241,13 +241,13 @@ void TarifaView::on_mui_borrar_clicked()
                                      _( "Borrar tarifa" ),
                                      _( "Esta a punto de borrar una tarifa. Desea continuar?" ),
                                      _( "&Si" ), _( "&No" ), 0, 1, 0 ) == 0 ) {
-            empresaBase() ->begin();
+            mainCompany() ->begin();
             int error = mui_list->borrar();
             error += borrar();
             if ( error ) {
-                empresaBase() ->rollback();
+                mainCompany() ->rollback();
             } else {
-                empresaBase() ->commit();
+                mainCompany() ->commit();
                 emit guardartarifa();
             } // end if
             dialogChanges_cargaInicial();

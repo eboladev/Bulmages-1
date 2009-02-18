@@ -112,7 +112,7 @@ void TicketQToolButton::click()
 
 
     /// Hacemos el texto de las etiquetas.
-    m_companyact = m_albaranProveedorView->empresaBase();
+    m_companyact = m_albaranProveedorView->mainCompany();
 
     QString query = "SELECT * , ceil(cantlalbaranp) AS cantidad FROM lalbaranp NATURAL LEFT JOIN articulo WHERE idalbaranp = " + m_albaranProveedorView->DBvalue ( "idalbaranp" );
     BlDbRecordSet *cur = m_companyact->cargacursor ( query );

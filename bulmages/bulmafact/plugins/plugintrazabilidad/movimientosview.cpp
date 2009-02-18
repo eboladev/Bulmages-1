@@ -55,9 +55,9 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
     setupUi ( this );
     iniciaForm();
     setDBTableName ( "movimiento" );
-    m_cliente->setMainCompany ( empresaBase() );
-    m_articulo->setMainCompany ( empresaBase() );
-    mui_list->setMainCompany ( empresaBase() );
+    m_cliente->setMainCompany ( mainCompany() );
+    m_articulo->setMainCompany ( mainCompany() );
+    mui_list->setMainCompany ( mainCompany() );
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
@@ -100,7 +100,7 @@ void MovimientosView::iniciaForm()
 MovimientosView::~MovimientosView()
 {
     _depura ( "MovimientosView::~MovimientosView", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END MovimientosView::~MovimientosView", 0 );
 }
 

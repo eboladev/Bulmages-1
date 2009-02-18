@@ -81,9 +81,9 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     if ( res != 0 )
         return;
     iniciaForm();
-    m_cliente->setMainCompany ( empresaBase() );
-    m_articulo->setMainCompany ( empresaBase() );
-    mui_list->setMainCompany ( empresaBase() );
+    m_cliente->setMainCompany ( mainCompany() );
+    m_articulo->setMainCompany ( mainCompany() );
+    mui_list->setMainCompany ( mainCompany() );
     setSubForm ( mui_list );
 		/// Establecemos los parametros de busqueda del Cliente
     m_cliente->setLabel ( _( "Cliente:" ) );
@@ -93,7 +93,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     presentar();
     mdb_idfactura = "";
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -143,7 +143,7 @@ void FacturasList::presentar()
     mui_list->cargar ( "SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalfactura)::NUMERIC(12,2) AS total, SUM(bimpfactura)::NUMERIC(12,2) AS base, SUM(impfactura)::NUMERIC(12,2) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalfactura)::NUMERIC(12,2) AS total, SUM(bimpfactura)::NUMERIC(12,2) AS base, SUM(impfactura)::NUMERIC(12,2) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
     /// Esta consulta podria resultar en NULL y por tanto debe tratarse el caso
 	/// Usamos el localeformat porque los datos son presentados en pantalla y el punto decimal debe salir bien.
     if ( cur ) {
@@ -214,12 +214,12 @@ void FacturasList::editar ( int row )
     _depura ( "FacturasList::editar", 0 );
     mdb_idfactura = mui_list->DBvalue ( QString ( "idfactura" ), row );
     if ( modoEdicion() ) {
-        FacturaView * prov = new FacturaView( ( BfCompany * ) empresaBase(), 0);
+        FacturaView * prov = new FacturaView( ( BfCompany * ) mainCompany(), 0);
         if ( prov->cargar ( mdb_idfactura ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idfactura ) );
@@ -262,7 +262,7 @@ void FacturasList::borrar()
     try {
         mdb_idfactura = mui_list->DBvalue ( QString ( "idfactura" ) );
         if ( modoEdicion() ) {
-            FacturaView * fv = new FacturaView(( BfCompany * ) empresaBase() );
+            FacturaView * fv = new FacturaView(( BfCompany * ) mainCompany() );
             if ( fv->cargar ( mdb_idfactura ) )
                 throw - 1;
             fv->on_mui_borrar_clicked();
@@ -333,8 +333,8 @@ void FacturasList::setidarticulo ( QString val )
 void FacturasList::crear()
 {
     _depura ( "FacturasList::crear", 0 );
-    FacturaView * bud = new FacturaView((BfCompany *)empresaBase(), 0);
-    empresaBase()->m_pWorkspace->addWindow ( bud );
+    FacturaView * bud = new FacturaView((BfCompany *)mainCompany(), 0);
+    mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
     bud->mui_descfactura->setFocus ( Qt::OtherFocusReason );

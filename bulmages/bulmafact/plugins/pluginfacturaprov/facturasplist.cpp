@@ -81,8 +81,8 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     if ( res != 0 ) {
         return;
     } // end if
-    m_proveedor->setMainCompany ( empresaBase() );
-    m_articulo->setMainCompany ( empresaBase() );
+    m_proveedor->setMainCompany ( mainCompany() );
+    m_articulo->setMainCompany ( mainCompany() );
     mui_list->setMainCompany ( comp );
     presentar();
     setSubForm ( mui_list );
@@ -93,7 +93,7 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
 	m_proveedor->m_valores["cifproveedor"] = "";
 	m_proveedor->m_valores["nomproveedor"] = "";
     if(modoEdicion()) {
-    	empresaBase() ->meteWindow ( windowTitle(), this );
+    	mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -146,7 +146,7 @@ void FacturasProveedorList::presentar()
     mui_list->cargar ( "SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
     /// Si ha habido un error con el query salimos
     if ( !cur ) return;
     m_total->setText ( cur->valor ( "total" ) );
@@ -210,12 +210,12 @@ void FacturasProveedorList::editar ( int row )
     try {
         mdb_idfacturap = mui_list->DBvalue ( QString ( "idfacturap" ), row );
         if ( modoEdicion() ) {
-            FacturaProveedorView * prov = new FacturaProveedorView ( ( BfCompany * ) empresaBase(), 0 );
+            FacturaProveedorView * prov = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( prov->cargar ( mdb_idfacturap ) ) {
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( mdb_idfacturap ) );
@@ -245,7 +245,7 @@ void FacturasProveedorList::borrar()
     } // end if
     try {
         mdb_idfacturap = mui_list->DBvalue ( "idfacturap" );
-        FacturaProveedorView *bud = new FacturaProveedorView( ( BfCompany * ) empresaBase(), 0 );
+        FacturaProveedorView *bud = new FacturaProveedorView( ( BfCompany * ) mainCompany(), 0 );
         bud->cargar ( mdb_idfacturap );
         bud->on_mui_borrar_clicked();
         delete bud;
@@ -327,8 +327,8 @@ void FacturasProveedorList::setidarticulo ( QString val )
 void FacturasProveedorList::crear()
 {
     _depura ( "FacturasProveedorList::crear", 0 );
-    FacturaProveedorView *fact = new FacturaProveedorView( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase()->pWorkspace()->addWindow ( fact );
+    FacturaProveedorView *fact = new FacturaProveedorView( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany()->pWorkspace()->addWindow ( fact );
     fact->inicializar();
     fact->show();
     fact->mui_descfacturap->setFocus ( Qt::OtherFocusReason );

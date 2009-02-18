@@ -43,11 +43,11 @@ propiedadesempresa::propiedadesempresa ( BcCompany *emp, QWidget *parent )
     setupUi ( this );
     inicializa();
 
-    mui_subform->setMainCompany ( empresaBase() );
+    mui_subform->setMainCompany ( mainCompany() );
     mui_subform->cargar();
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END propiedadesempresa::propiedadesempresa", 0 );
 }
 
@@ -58,7 +58,7 @@ propiedadesempresa::propiedadesempresa ( BcCompany *emp, QWidget *parent )
 propiedadesempresa::~propiedadesempresa()
 {
     _depura ( "propiedadesempresa::~propiedadesempresa", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END propiedadesempresa::~propiedadesempresa", 0 );
 
 }
@@ -74,7 +74,7 @@ int propiedadesempresa::inicializa()
     int num;
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-    BlDbRecordSet *curs = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *curs = mainCompany() ->cargacursor ( query );
     num = curs->numregistros();
     if ( num > 0 ) {
         modcodigo->setText ( curs->valor ( "valor" ) );
@@ -93,11 +93,11 @@ void propiedadesempresa::on_mui_guardar_clicked()
 {
     _depura ( "propiedadesempresa::on_mui_guardar_clicked", 0 );
     /// Iniciamos transaccion.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     mui_subform->guardar();
 
     /// Procesamos la transaccion.
-    empresaBase() ->commit();
+    mainCompany() ->commit();
     dialogChanges_cargaInicial();
     _depura ( "END propiedadesempresa::on_mui_guardar_clicked", 0 );
 }
@@ -139,21 +139,21 @@ void propiedadesempresa::on_mui_modificarplan_clicked()
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     while ( !cur->eof() ) {
         codigo = cur->valor ( "codigo" );
         codigo = ajustacodigo ( codigo, nlong );
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor ( "idcuenta" );
-        empresaBase() ->ejecuta ( query );
-        empresaBase() ->commit();
+        mainCompany() ->ejecuta ( query );
+        mainCompany() ->commit();
         cur->siguienteregistro();
     } // end while
     delete cur;
     query = "UPDATE configuracion SET valor = '" + modcodigo->text() + "' WHERE nombre = 'CodCuenta'";
-    empresaBase() ->begin();
-    empresaBase() ->ejecuta ( query );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    mainCompany() ->ejecuta ( query );
+    mainCompany() ->commit();
     if ( QMessageBox::warning ( this,
                                 _( "Salir del programa" ),
                                 _( "Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?" ),

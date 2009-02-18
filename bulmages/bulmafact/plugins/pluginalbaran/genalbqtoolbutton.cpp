@@ -149,7 +149,7 @@ void GenAlbQToolButton::generarFactura1()
             SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -160,8 +160,8 @@ void GenAlbQToolButton::generarFactura1()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            bud = new AlbaranClienteView ( fpv->empresaBase(), NULL );
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new AlbaranClienteView ( fpv->mainCompany(), NULL );
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             return;
@@ -169,8 +169,8 @@ void GenAlbQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new AlbaranClienteView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = new AlbaranClienteView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.
@@ -278,7 +278,7 @@ void GenAlbQToolButton::generarFactura2()
             SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -289,8 +289,8 @@ void GenAlbQToolButton::generarFactura2()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            bud = new AlbaranClienteView ( fpv->empresaBase(), NULL );
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new AlbaranClienteView ( fpv->mainCompany(), NULL );
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             return;
@@ -298,8 +298,8 @@ void GenAlbQToolButton::generarFactura2()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new AlbaranClienteView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = new AlbaranClienteView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.

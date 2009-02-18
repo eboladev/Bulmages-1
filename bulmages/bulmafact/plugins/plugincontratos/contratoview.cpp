@@ -276,12 +276,12 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 {
     _depura ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
     QString idfactura = subform2->DBvalue ( QString ( "idfactura" ), subform2->currentRow() );
-    FacturaView *prov = new FacturaView( (BfCompany *) empresaBase(), 0);
+    FacturaView *prov = new FacturaView( (BfCompany *) mainCompany(), 0);
     if ( prov->cargar ( idfactura ) ) {
         delete prov;
         return;
     } // end if
-    empresaBase() ->m_pWorkspace->addWindow ( prov );
+    mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END ContratoView::on_subform2_itemDoubleClicked", 0 );
 }
@@ -299,29 +299,29 @@ void ContratoView::on_mui_facturar_clicked()
     while ( !end ) {
         query = "SELECT ('" + DBvalue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo - 1 ) + "* '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL) AS finperiodo";
         query += ", ('" + DBvalue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo ) + "* '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL) AS ffinperiodo";
-        BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query );
 
         query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '" + cur1->valor ( "finperiodo" ) + "'";
         query += " AND ffactura <  '" + cur1->valor ( "ffinperiodo" ) + "'";
         query += " AND reffactura = '" + DBvalue ( "refcontrato" ) + "'";
         query += " AND idcliente = " + DBvalue ( "idcliente" );
 
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( cur->valor ( "cuenta" ) != "0" ) {
             if ( cur->valor ( "cuenta" ) != "1" ) {
                 _depura ( "Detectada doble factura en un periodo", 2, cur->valor ( "cuenta" ) );
             } // end if
         } else {
             // GENERAMOS LA FACTURA
-            FacturaView *fac = new FacturaView( (BfCompany *) empresaBase(), 0);
-            empresaBase() ->m_pWorkspace->addWindow ( fac );
+            FacturaView *fac = new FacturaView( (BfCompany *) mainCompany(), 0);
+            mainCompany() ->m_pWorkspace->addWindow ( fac );
             fac->cargar ( "0" );
             fac->show();
             fac->setDBvalue ( "reffactura", DBvalue ( "refcontrato" ) );
             fac->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
             fac->setDBvalue ( "descfactura", DBvalue ( "nomcontrato" ) + " Periodo:  " + cur1->valor ( "finperiodo" ).left ( 10 ) + " -- " + cur1->valor ( "ffinperiodo" ).left ( 10 ) );
 
-            BlDbRecordSet *curcliente = empresaBase() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" ) );
+            BlDbRecordSet *curcliente = mainCompany() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" ) );
             if ( ! curcliente ) {
                 return;
             } // end if
@@ -346,8 +346,8 @@ void ContratoView::on_mui_facturar_clicked()
                     linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlcontrato" ) );
                     linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplcontrato" ) );
                     /// Buscamos el tipo de iva que corresponde al articulo y lo ponemos.
-                    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + linea->DBvalue ( "idarticulo" ) );
-                    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+                    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + linea->DBvalue ( "idarticulo" ) );
+                    BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
                     if ( !cur->eof() ) {
 
                         if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
@@ -375,7 +375,7 @@ void ContratoView::on_mui_facturar_clicked()
 
 
         query = "SELECT (now() < '" + DBvalue ( "fincontrato" ) + "'::DATE + '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL *" + QString::number ( periodo ) + " ) AS dato";
-        cur = empresaBase() ->cargacursor ( query );
+        cur = mainCompany() ->cargacursor ( query );
         if ( cur->valor ( "dato" ) == "t" ) {
             end = TRUE;
         }// end if

@@ -87,7 +87,7 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
 	m_cliente->m_valores["nomcliente"] = "";
 
     if(modoEdicion()) {
-    	empresaBase() ->meteWindow ( windowTitle(), this );
+    	mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -135,7 +135,7 @@ void PedidosClienteList::presentar()
     mui_list->cargar ( "SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, imppedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente = cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
     /// Esta consulta podria resultar NULL por problemas de permisos y debe tratarse el caso.
     if ( cur ) {
         m_total->setText ( cur->valor ( "total" ) );
@@ -196,8 +196,8 @@ QString PedidosClienteList::generarFiltro()
 void PedidosClienteList::crear()
 {
     _depura ( "PedidosClienteList:crear", 0 );
-    PedidoClienteView *prov = new PedidoClienteView ( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase() ->m_pWorkspace->addWindow ( prov );
+    PedidoClienteView *prov = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->inicializar();
     prov->show();
     _depura ( "END PedidosClienteList:crear", 0 );
@@ -215,12 +215,12 @@ void PedidosClienteList::editar ( int row )
     try {
         m_idpedidocliente = mui_list->DBvalue ( QString ( "idpedidocliente" ), row );
         if ( modoEdicion() ) {
-            PedidoClienteView * prov = new PedidoClienteView ( ( BfCompany * ) empresaBase(), 0 );
+            PedidoClienteView * prov = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
             if ( prov->cargar ( m_idpedidocliente ) ) {
                 delete prov;
                 return;
             } // end if
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( m_idpedidocliente ) );
@@ -258,7 +258,7 @@ void PedidosClienteList::borrar()
     try {
         m_idpedidocliente = mui_list->DBvalue ( QString ( "idpedidocliente" ) );
         if ( modoEdicion() ) {
-            PedidoClienteView * pcv = new PedidoClienteView(( BfCompany * ) empresaBase());
+            PedidoClienteView * pcv = new PedidoClienteView(( BfCompany * ) mainCompany());
             if ( pcv->cargar ( m_idpedidocliente ) ) {
                 throw - 1;
             } // end if

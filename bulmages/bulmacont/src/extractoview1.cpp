@@ -85,7 +85,7 @@ extractoview1::~extractoview1()
     _depura ( "extractoview1::~extractoview1", 0 );
    guardar();
     delete m_cursorcta;
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END extractoview1::~extractoview1", 0 );
 }
 
@@ -101,10 +101,10 @@ void extractoview1::on_mui_list_cellDoubleClicked ( int, int columna )
     textoHeader =  mui_list->cabecera() ->at ( columna ) ->nomcampo().toAscii();
     if ( textoHeader == "ordenasiento" ) {
         QString idasiento = mui_list->DBvalue ( "idasiento" );
-        empresaBase() ->intapuntsempresa() ->muestraasiento ( idasiento );
-        empresaBase() ->intapuntsempresa() ->show();
-        empresaBase() ->intapuntsempresa() ->setFocus();
-        empresaBase() ->muestraapuntes1();
+        mainCompany() ->intapuntsempresa() ->muestraasiento ( idasiento );
+        mainCompany() ->intapuntsempresa() ->show();
+        mainCompany() ->intapuntsempresa() ->setFocus();
+        mainCompany() ->muestraapuntes1();
     } // end if
     _depura ( "END asientosview::on_mui_list_cellDoubleClicked", 0 );
 }
@@ -154,7 +154,7 @@ void extractoview1::accept()
     if ( m_cursorcta != NULL ) {
         delete m_cursorcta;
     } // end if
-    m_cursorcta = empresaBase() ->cargacursor ( query );
+    m_cursorcta = mainCompany() ->cargacursor ( query );
     presentar();
     _depura ( "END extractoview1::accept", 0 );
 }
@@ -228,7 +228,7 @@ void extractoview1::boton_fin()
 void extractoview1::boton_imprimir()
 {
     _depura ( "extractoview1::boton_imprimir", 0 );
-    ExtractoPrintView *print = new ExtractoPrintView ( empresaBase(), 0 );
+    ExtractoPrintView *print = new ExtractoPrintView ( mainCompany(), 0 );
     print->exec();
     _depura ( "END extractoview1::boton_imprimir", 0 );
 }
@@ -246,7 +246,7 @@ void extractoview1::boton_guardar()
                  _( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {
-        libromayorprint libromayor ( empresaBase() );
+        libromayorprint libromayor ( mainCompany() );
         QString finicial = m_fechainicial1->text().toAscii().constData();
         QString ffinal = m_fechafinal1->text().toAscii().constData();
         libromayor.inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), finicial, ffinal );
@@ -341,8 +341,8 @@ void extractoview1::presentar()
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
         /// no se pueden implementar.
-        selectcanalview *scanal = empresaBase() ->getselcanales();
-        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        selectcanalview *scanal = mainCompany() ->getselcanales();
+        SelectCCosteView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
@@ -385,12 +385,12 @@ void extractoview1::presentar()
         mui_list->cargar ( query );
 
 
-        cursorapt = empresaBase() ->cargacursor ( query );
+        cursorapt = mainCompany() ->cargacursor ( query );
         cursorapt->primerregistro();
         if ( !cursorapt->eof() ) {
             /// Cargamos los saldos iniciales.
             query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
-            cursoraux = empresaBase() ->cargacursor ( query );
+            cursoraux = mainCompany() ->cargacursor ( query );
             if ( !cursoraux->eof() ) {
                 debeinicial = BlFixed ( cursoraux->valor ( "tdebe" ) );
                 haberinicial = BlFixed ( cursoraux->valor ( "thaber" ) );
@@ -465,21 +465,21 @@ void extractoview1::on_mui_casacion_clicked()
     _depura ( "extractoview1::on_mui_casacion_clicked", 0 );
     try {
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
-        BlDbRecordSet *curshaber = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *curshaber = mainCompany() ->cargacursor ( query );
         BlProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
         barra.show();
         barra.setText ( _( "Cargando Extracto de Cuentas" ) );
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->valor ( "haber" ) + " AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
-            BlDbRecordSet *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );
+            BlDbRecordSet *cursdebe = mainCompany() ->cargacursor ( query.toAscii(), "cursdebe" );
             if ( !cursdebe->eof() ) {
                 query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->valor ( "idapunte" );
-                empresaBase() ->begin();
-                empresaBase() ->ejecuta ( query );
+                mainCompany() ->begin();
+                mainCompany() ->ejecuta ( query );
                 query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + cursdebe->valor ( "idapunte" );
-                empresaBase() ->ejecuta ( query );
-                empresaBase() ->commit();
+                mainCompany() ->ejecuta ( query );
+                mainCompany() ->commit();
             } // end if
             delete cursdebe;
             curshaber->siguienteregistro();
@@ -515,7 +515,7 @@ void extractoview1::on_mui_guardarpunteo_clicked()
         if ( mifile != NULL ) {
             QString query;
             query = "SELECT * FROM apunte WHERE punteo = TRUE";
-            BlDbRecordSet *cursp = empresaBase() ->cargacursor ( query );
+            BlDbRecordSet *cursp = mainCompany() ->cargacursor ( query );
             while ( !cursp->eof() ) {
                 fprintf ( mifile, "%s\n", cursp->valor ( "idapunte" ).toAscii().constData() );
                 cursp->siguienteregistro();
@@ -545,9 +545,9 @@ void extractoview1::on_mui_borrapunteo_clicked()
                                                 Desea continuar?" ),
                                            QMessageBox::Yes, QMessageBox::No );
         if ( valor == QMessageBox::Yes ) {
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->valor ( "idcuenta" ) );
-            empresaBase() ->commit();
+            mainCompany() ->begin();
+            mainCompany() ->ejecuta ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->valor ( "idcuenta" ) );
+            mainCompany() ->commit();
             presentar();
         } // end if
     } catch ( ... ) {
@@ -577,23 +577,23 @@ void extractoview1::on_mui_cargarpunteos_clicked()
                 return;
             } // end if
             QTextStream filestr ( &file );
-            empresaBase()->begin();
+            mainCompany()->begin();
             QString query = "UPDATE apunte SET punteo = FALSE";
-            empresaBase() ->ejecuta ( query );
+            mainCompany() ->ejecuta ( query );
             QString a = filestr.readLine();
             while ( !a.isNull() ) {
                 QString query;
                 query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + a;
-                empresaBase() ->ejecuta ( query );
+                mainCompany() ->ejecuta ( query );
                 a = filestr.readLine();
             } // end while
-            empresaBase()->commit();
+            mainCompany()->commit();
             file.close();
         } // end if
         presentar();
     } catch ( ... ) {
         mensajeInfo ( "Error en la carga del punteo" );
-        empresaBase()->rollback();
+        mainCompany()->rollback();
     } // end try
     _depura ( "END extractoview1::on_mui_cargarpunteos_clicked", 0 );
 }
@@ -643,8 +643,8 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
         QString query = "";
         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
         /// no se pueden implementar.
-        selectcanalview *scanal = empresaBase() ->getselcanales();
-        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        selectcanalview *scanal = mainCompany() ->getselcanales();
+        SelectCCosteView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes.sprintf ( " AND t5.idc_coste IN (%s) ", ccostes.toAscii().constData() );
@@ -673,13 +673,13 @@ if (!mui_asAbiertos->isChecked() ) {
 
         query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
 
-        cursorapt = empresaBase() ->cargacursor ( query );
+        cursorapt = mainCompany() ->cargacursor ( query );
         if ( !cursorapt ) throw - 1;
 
         /// Cargamos los saldos iniciales.
         BlDbRecordSet *cursoraux;
         query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM " +tabla+ " WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
-        cursoraux = empresaBase() ->cargacursor ( query );
+        cursoraux = mainCompany() ->cargacursor ( query );
         if ( !cursoraux ) {
             delete cursorapt;
             throw - 1;
@@ -695,7 +695,7 @@ if (!mui_asAbiertos->isChecked() ) {
         delete cursoraux;
 
         /// Presentamos la informacion inicial y de la cuenta.
-        BlDbRecordSet *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
+        BlDbRecordSet *cursorcta = mainCompany() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
         if ( !cursorcta ) throw - 1;
 
 
@@ -838,7 +838,7 @@ void extractoview1::on_mui_imprimir_clicked()
 
     /// Tabla temporal de contrapartidas.
     QString query1 = "CREATE TEMPORARY TABLE contrapart AS select idapunte, ccontrapartida(idapunte) AS contra FROM apunte";
-    empresaBase()->ejecuta(query1);
+    mainCompany()->ejecuta(query1);
 
 
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
@@ -858,7 +858,7 @@ void extractoview1::on_mui_imprimir_clicked()
         fitxersortidatxt += "</blockTable>\n";
 
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
-    BlDbRecordSet *curcta = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *curcta = mainCompany() ->cargacursor ( query );
     if ( !curcta ) return;
    	barra->setRange ( 0, curcta->numregistros() );
 	int i = 0;
@@ -871,7 +871,7 @@ void extractoview1::on_mui_imprimir_clicked()
 
     /// Tabla temporal de contrapartidas.
     query1 = "DROP TABLE contrapart";
-    empresaBase()->ejecuta(query1);
+    mainCompany()->ejecuta(query1);
 
 	delete barra;
 

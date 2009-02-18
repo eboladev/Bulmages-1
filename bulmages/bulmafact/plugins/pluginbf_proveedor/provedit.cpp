@@ -71,10 +71,10 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mui_tab->setTabEnabled ( 7, FALSE );
 
         /// Cargamos algunos valores por defecto.
-        mui_idforma_pago->setMainCompany ( empresaBase() );
+        mui_idforma_pago->setMainCompany ( mainCompany() );
         mui_idforma_pago->setId ( "0" );
 
-        mui_idprovincia->setMainCompany ( empresaBase() );
+        mui_idprovincia->setMainCompany ( mainCompany() );
     mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
     mui_idprovincia->setCampoId ("idprovincia");

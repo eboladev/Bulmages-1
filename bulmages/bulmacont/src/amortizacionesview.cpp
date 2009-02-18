@@ -40,7 +40,7 @@ AmortizacionesView::AmortizacionesView ( BcCompany *emp, QWidget *parent )
     setupUi ( this );
     setSubForm ( mui_listado );
     /// Hacemos la inicializacion de un listado embebido.
-    mui_listado->setMainCompany ( empresaBase() );
+    mui_listado->setMainCompany ( mainCompany() );
     mui_listado->setDBTableName ( "amortizacion" );
     mui_listado->setFileConfig ( "AmortizacionListSubform" );
     mui_listado->setDBCampoId ( "idamortizacion" );
@@ -78,8 +78,8 @@ AmortizacionesView::~AmortizacionesView()
 void AmortizacionesView::crear()
 {
     _depura ( "AmortizacionesView::on_mui_crear_clicked", 0 );
-    AmortizacionView *amor = new AmortizacionView ( ( BcCompany * ) empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( amor );
+    AmortizacionView *amor = new AmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( amor );
     amor->show();
     _depura ( "END AmortizacionesView::on_mui_crear_clicked", 0 );
 }
@@ -96,11 +96,11 @@ void AmortizacionesView::borrar()
         QString codigo = mui_listado->DBvalue ( "idamortizacion" );
         if ( codigo != "" ) {
             QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( query );
+            mainCompany() ->begin();
+            mainCompany() ->ejecuta ( query );
             query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
+            mainCompany() ->ejecuta ( query );
+            mainCompany() ->commit();
             presentar();
         } // end if
     } catch ( ... ) {
@@ -128,9 +128,9 @@ void AmortizacionesView::editar ( int row )
     mdb_nomamortizacion = mui_listado->DBvalue ( "nomamortizacion" );
     if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        AmortizacionView * amor = new AmortizacionView ( ( BcCompany * ) empresaBase(), 0 );
+        AmortizacionView * amor = new AmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
         amor->cargar ( mdb_idamortizacion );
-        empresaBase() ->pWorkspace() ->addWindow ( amor );
+        mainCompany() ->pWorkspace() ->addWindow ( amor );
         amor->show();
     } else {
         close();

@@ -85,7 +85,7 @@ void CatalogoQToolButton::click()
 {
     _depura ( "CatalogoQToolButton::click", 0 );
 
-    setMainCompany ( m_articuloList->empresaBase() );
+    setMainCompany ( m_articuloList->mainCompany() );
 
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "articulos.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "articulos.rml";
@@ -146,7 +146,7 @@ QString CatalogoQToolButton::detalleArticulos()
     barra.setText ( _( "Generando catalogo" ) );
 
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( m_articuloList->formaQuery() );
     barra.setRange ( 0, cur->numregistros() );
     barra.setValue ( 0 );
     while ( !cur->eof() ) {

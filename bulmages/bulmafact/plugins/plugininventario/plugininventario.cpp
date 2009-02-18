@@ -52,8 +52,8 @@ myplugininv::~myplugininv()
 void myplugininv::elslot()
 {
     _depura ( "myplugininv::elslot", 0 );
-    InventariosView *tar = new InventariosView ( ( BfCompany * ) empresaBase(), NULL );
-    empresaBase() ->m_pWorkspace->addWindow ( tar );
+    InventariosView *tar = new InventariosView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
     _depura ( "END myplugininv::elslot", 0 );
 }
@@ -113,7 +113,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 {
     _depura ( "ArticuloView_ArticuloView", 0 );
     BfSubForm *l = new BfSubForm ( art );
-    l->setMainCompany ( art->empresaBase() );
+    l->setMainCompany ( art->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
     art->mui_tab->addTab ( l, _("Minimos almacen") );
 
@@ -191,7 +191,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
 
         QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
-        BlDbRecordSet *cur1 = subform->empresaBase() ->cargacursor ( query1 );
+        BlDbRecordSet *cur1 = subform->mainCompany() ->cargacursor ( query1 );
         BlFixed stock ( "0" );
         if ( !cur1 ) return 0;
         if ( !cur1->eof() ) {
@@ -202,7 +202,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
 
         QString query = "SELECT * FROM minimsalmacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
-        BlDbRecordSet *cur = subform->empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = subform->mainCompany() ->cargacursor ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
             BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );

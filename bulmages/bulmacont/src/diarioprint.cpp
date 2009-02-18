@@ -96,12 +96,12 @@ void DiarioPrint::accept()
         fprintf ( mifile, "Fecha Inicial: %s, Fecha Final: %s\n", finicial, ffinal );
         fprintf ( mifile, "%5.5s %10.10s %10s %30.30s %9.2s %9.2s\n", "ASIENTO", "FECHA", "SUBCUENTA", "DESCRIPCION", "DEBE", "HABER" );
         fprintf ( mifile, "----------------------------------------------------------------------------------------------------------\n" );
-        empresaBase() ->begin();
-        cursoraux = empresaBase() ->cargaasientosfecha ( finicial, ffinal );
+        mainCompany() ->begin();
+        cursoraux = mainCompany() ->cargaasientosfecha ( finicial, ffinal );
         for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
             fechaasiento = cursoraux->valor ( 2 ).toAscii().constData();
             idasiento = atoi ( cursoraux->valor ( 0 ).toAscii() );
-            cursoraux1 = empresaBase() ->cargaapuntes ( idasiento );
+            cursoraux1 = mainCompany() ->cargaapuntes ( idasiento );
             for ( ; !cursoraux1->eof(); cursoraux1->siguienteregistro() ) {
                 fecha = cursoraux1->valor ( 4 ).toAscii().constData();
                 descripcion = cursoraux1->valor ( 5 ).toAscii().constData();
@@ -110,7 +110,7 @@ void DiarioPrint::accept()
                 haber = atof ( cursoraux1->valor ( 9 ).toAscii() );
                 idcuenta = atoi ( cursoraux1->valor ( 6 ).toAscii() );
 
-                cursoraux2 = empresaBase() ->cargacuenta ( idcuenta, NULL );
+                cursoraux2 = mainCompany() ->cargacuenta ( idcuenta, NULL );
                 if ( !cursoraux2->eof() ) {
                     codigocuenta = cursoraux2->valor ( 1 ).toAscii().constData();
                 } // end if
@@ -123,7 +123,7 @@ void DiarioPrint::accept()
             fprintf ( mifile, "\n" );
         } // end for
         delete cursoraux;
-        empresaBase() ->commit();
+        mainCompany() ->commit();
         fclose ( mifile );
     } // end if
 

@@ -122,9 +122,9 @@ void Devolucion::on_mui_refLineEdit_returnPressed()
 
     QString query1 = "SELECT * FROM albaran WHERE refalbaran = '" + mui_refLineEdit->text() + "'";
 
-    BlDbRecordSet *curs = empresaBase()->cargacursor ( query1 );
+    BlDbRecordSet *curs = mainCompany()->cargacursor ( query1 );
     if ( !curs->eof() ) {
-        m_ticket = new Ticket ( empresaBase(), NULL );
+        m_ticket = new Ticket ( mainCompany(), NULL );
         m_ticket->cargar ( curs->valor ( "idalbaran" ) );
         this->mui_tablesFrame->setEnabled ( TRUE );
         pintar();
@@ -203,7 +203,7 @@ void Devolucion::pintar()
     QObject::connect ( this->mui_devolverTable, SIGNAL ( cellDoubleClicked ( int, int ) ),
                        this, SLOT ( devolverTableDoubleclick ( int , int ) ) );
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
     if ( !cur->eof() ) {
         mui_clienteLabel->setText ( cur->valor ( "cifcliente" ).toAscii() + " " + cur->valor ( "nomcliente" ).toAscii() );
     }

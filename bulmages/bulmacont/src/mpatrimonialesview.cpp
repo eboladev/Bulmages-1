@@ -107,10 +107,10 @@ int mpatrimonialesview::inicializa()
 
     /// Vamos a cargar el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer
     /// una introducci&oacute;n de numeros de cuenta m&aacute;s pr&aacute;ctica.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursoraux1 = empresaBase() ->cargacursor ( query, "codcuenta" );
-    empresaBase() ->commit();
+    cursoraux1 = mainCompany() ->cargacursor ( query, "codcuenta" );
+    mainCompany() ->commit();
     numdigitos = cursoraux1->valor ( "valor" ).length();
     delete cursoraux1;
     fprintf ( stderr, "las cuentas tienen %d digitos\n", numdigitos );
@@ -137,9 +137,9 @@ void mpatrimonialesview::inicializatabla()
     mui_tabla->setColumnWidth ( 1, 400 );
 
     QString query = "SELECT * FROM mpatrimonial WHERE idbalance ISNULL";
-    empresaBase() ->begin();
-    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "elquery" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query, "elquery" );
+    mainCompany() ->commit();
 
     mui_tabla->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
@@ -171,7 +171,7 @@ void mpatrimonialesview::dbtabla ( int row, int colummn, int button, const QPoin
     if ( modo == 0 ) {
         QString idmpatrimonial = mui_tabla->item ( row, 0 ) ->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        mpatrimonialview *masa = new mpatrimonialview ( ( BcCompany* ) empresaBase(), this );
+        mpatrimonialview *masa = new mpatrimonialview ( ( BcCompany* ) mainCompany(), this );
         masa->inicializa1 ( idmpatrimonial );
         masa->exec();
         delete masa;
@@ -216,11 +216,11 @@ void mpatrimonialesview::on_mui_borrar_clicked()
     idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
     QString query;
     query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
-    empresaBase() ->begin();
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->begin();
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
-    empresaBase() ->ejecuta ( query );
-    empresaBase() ->commit();
+    mainCompany() ->ejecuta ( query );
+    mainCompany() ->commit();
     inicializatabla();
     _depura ( "END mpatrimonialesview::on_mui_borrar_clicked", 0 );
 }
@@ -232,7 +232,7 @@ void mpatrimonialesview::on_mui_borrar_clicked()
 void mpatrimonialesview::on_mui_nuevo_clicked()
 {
     _depura ( "mpatrimonialesview::on_mui_nuevo_clicked", 0 );
-    mpatrimonialview *masa = new mpatrimonialview ( ( BcCompany * ) empresaBase(), this );
+    mpatrimonialview *masa = new mpatrimonialview ( ( BcCompany * ) mainCompany(), this );
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.

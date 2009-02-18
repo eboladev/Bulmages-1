@@ -82,23 +82,23 @@ int RegistroIva::borrar()
 {
     _depura ( "RegistroIva::borraRegistroIva", 0 );
     if ( DBvalue ( "idregistroiva" ) != "" ) {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         try {
-            int error = empresaBase() ->ejecuta ( "DELETE FROM iva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
+            int error = mainCompany() ->ejecuta ( "DELETE FROM iva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
 
             if ( error ) throw - 1;
 
-            error = empresaBase() ->ejecuta ( "DELETE FROM registroiva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
+            error = mainCompany() ->ejecuta ( "DELETE FROM registroiva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
 
             if ( error ) throw - 1;
 
-            empresaBase() ->commit();
+            mainCompany() ->commit();
             _depura ( "Registro borrado satisfactoriamente", 2 );
             dialogChanges_cargaInicial();
             close();
         } catch ( ... ) {
             _depura ( "No se pudo borrar el registro de IVA", 2 );
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
         } // end try
     } // end if
     _depura ( "END RegistroIva::borraRegistroIva", 0 );
@@ -155,7 +155,7 @@ int RegistroIva::cargar ( QString id )
     _depura ( "RegistroIva::cargaRegistroIva", 0 );
     int error = 0;
     QString query = "SELECT * FROM registroiva WHERE idregistroiva = " + id;
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
 
     if ( cur->error() ) error = 1;
 
@@ -217,14 +217,14 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
     int registro = 0;
     try {
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe - borrador.haber AS baseimp FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
-        empresaBase() ->begin();
-        int error = empresaBase() ->ejecuta ( SQLQuery );
+        mainCompany() ->begin();
+        int error = mainCompany() ->ejecuta ( SQLQuery );
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
-        error = empresaBase() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->ejecuta ( SQLQuery );
 
         if ( error ) {
             _depura ( "Error en la creacion del temporary table", 2 );
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
             return -1;
         } // end if
 
@@ -232,7 +232,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         /// Montamos los querys en base a la cadena cuentas.
         QString cuentas = "";
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasIngresos'";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             cuentas += cur->valor ( "valor" );
@@ -240,7 +240,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
 
         delete cur;
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasGastos'";
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             cuentas += ";" + cur->valor ( "valor" );
@@ -252,7 +252,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         /// Vamos a tener en cuenta tambi&eacute;n las cuentas de IVA.
         QString cuentasIVA = "";
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida'";
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             cuentasIVA += cur->valor ( "valor" );
@@ -260,7 +260,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
 
         delete cur;
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'RegistroSoportada'";
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             cuentasIVA += ";" + cur->valor ( "valor" );
@@ -271,7 +271,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cuentasIVA = "'^" + cuentasIVA + "%'";
         /// Atentos que aqu&iacute; es donde se incorpora el par&aacute;metro.
         SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO " + cuentas + " OR codigo SIMILAR TO " + cuentasIVA;
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         while ( !cur->eof() ) {
             fprintf ( stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->valor ( "idborrador" ).toAscii().constData(), cur->valor ( "contrapartida" ).toAscii().constData(), cur->valor ( "codigo" ).toAscii().constData() );
@@ -284,7 +284,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         /// El c&aacute;lculo se compara con el formato conocido de IVA
         /// (16, 7, 4: por tanto, formato de 2 digitos con 0 decimales).
         SQLQuery = "SELECT abs(sum(baseimp)) AS subtotal FROM lacosa, (SELECT baseimp AS iva FROM lacosa WHERE codigo SIMILAR TO " + cuentasIVA + ") AS iva WHERE codigo SIMILAR TO " + cuentas + " AND (iva.iva*100/baseimp)::NUMERIC(2,0) IN (SELECT porcentajetipoiva FROM tipoiva)";
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             setbaseimp ( cur->valor ( "subtotal" ) );
@@ -292,11 +292,11 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
 
         delete cur;
         SQLQuery = "DROP TABLE lacosa";
-        error = empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        error = mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
     } catch ( ... ) {
         _depura ( "RegistroIva:: Error en transaccion", 2 );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
     _depura ( "END RegistroIva::buscaborradorservicio", 0 );
     return registro;
@@ -316,12 +316,12 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
     QString SQLQuery;
     int registro = 0;
     try {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.cifent_cuenta, cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta where borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
-        int error = empresaBase() ->ejecuta ( SQLQuery );
+        int error = mainCompany() ->ejecuta ( SQLQuery );
 
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
-        error = empresaBase() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->ejecuta ( SQLQuery );
         /// Cogemos de la configuracion las cuentas que queremos que se apunten.
         /// Montamos los querys en base a la cadena cuentas.
         /// Se consideran cuentas de Derechos y de Obligaciones a Clientes y Proveedores,
@@ -330,13 +330,13 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         /// de la factura.
         QString cuentas = "";
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasDerechos'";
-        BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( SQLQuery );
         if ( !cur1->eof() ) {
             cuentas += cur1->valor ( "valor" );
         } // end if
         delete cur1;
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasObligaciones'";
-        cur1 = empresaBase() ->cargacursor ( SQLQuery );
+        cur1 = mainCompany() ->cargacursor ( SQLQuery );
         if ( !cur1->eof() ) {
             cuentas += ";" + cur1->valor ( "valor" );
         } // end if
@@ -346,7 +346,7 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
 
         /// Atentos que aqu&iacute; es donde se incorpora el par&aacute;metro.
         SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO " + cuentas;
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
         while ( !cur->eof() ) {
             /// Ponemos la cuenta de cliente y los valores adyacentes.
             setcontrapartida ( cur->valor ( "idcuenta" ) );
@@ -363,11 +363,11 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         } // end while
         delete cur;
         SQLQuery = "DROP TABLE lacosa";
-        error = empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        error = mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
     } catch ( ... ) {
         _depura ( "RegistroIva:: Error en buscaborradorcliente", 2 );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
     _depura ( "ENd RegistroIva::buscaborradorcliente", 0 );
     return registro;
@@ -399,7 +399,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
         idborrador = idapunte1;
     ///Busca entradas de IVA en la tabla registroiva.
     query.sprintf ( "SELECT * FROM registroiva WHERE idborrador = %d", idborrador );
-    BlDbRecordSet *cursoriva = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cursoriva = mainCompany() ->cargacursor ( query );
     if ( !cursoriva->eof() ) {
         /// El registro ya existe.
         cargar ( cursoriva->valor ( "idregistroiva" ) );
@@ -439,17 +439,17 @@ int RegistroIva::buscaborradoriva ( int idborrador )
     _depura ( "RegistroIva::buscaborradoriva", 0 );
     int error = 0;
     try {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         QString SQLQuery;
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
-        error = empresaBase() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->ejecuta ( SQLQuery );
         if ( error ) {
             _depura ( "error en la base de datos", 2 );
             _depura ( SQLQuery, 2 );
         } // end if
 
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
-        error = empresaBase() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->ejecuta ( SQLQuery );
 
         if ( error ) {
             _depura ( "error en la base de datos", 2 );
@@ -460,16 +460,16 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         SQLQuery =  "SELECT *, GREATEST(debe * 100 / porcentajetipoiva, haber * 100 / porcentajetipoiva)::NUMERIC(12, 1) AS baseiva, GREATEST (ivadebe, ivahaber) AS ivaiva FROM tipoiva ";
         SQLQuery += " LEFT JOIN (SELECT *, ivadebe AS debe, ivahaber AS haber FROM lacosa) AS lacosa ON tipoiva.idcuenta = lacosa.idcuenta ";
         //22/09/07 Ahora se pasa el query
-        //BlDbRecordSet *cur = empresaBase()->cargacursor(SQLQuery);
+        //BlDbRecordSet *cur = mainCompany()->cargacursor(SQLQuery);
         m_lineas->cargar ( SQLQuery );
         recalculaIva();
         _depura ( "limpiamos la base de datos" );
         SQLQuery = "DROP TABLE lacosa";
-        error = empresaBase() ->ejecuta ( SQLQuery );
-        empresaBase() ->commit();
+        error = mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->commit();
     } catch ( ... ) {
         _depura ( "Error al buscar el borrador", 2 );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
     } // end try
     _depura ( "END RegistroIva::buscaborradoriva", 0 );
     return 0;
@@ -484,7 +484,7 @@ void RegistroIva::buscafecha ( int idborrador )
 {
     _depura ( "RegistroIva::buscafecha", 0 );
     QString SQLQuery;
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT fecha from borrador WHERE idborrador = " + QString::number ( idborrador ) );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT fecha from borrador WHERE idborrador = " + QString::number ( idborrador ) );
     if ( !cur->eof() ) {
         setffactura ( cur->valor ( "fecha" ).left ( 10 ) );
         setfemisionregistroiva ( cur->valor ( "fecha" ).left ( 10 ) );
@@ -510,7 +510,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
     QString cadena;
     int numord;
     query.sprintf ( "SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador = '%i'))", idborrador );
-    recordset = empresaBase() ->cargacursor ( query );
+    recordset = mainCompany() ->cargacursor ( query );
     if ( !recordset->eof() ) {
         setfactura ( recordset->valor ( "factura" ) );
         setnumorden ( recordset->valor ( "numorden" ) );
@@ -519,7 +519,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         /// Vemos si podemos extraer de la descripci&oacute;n del apunte el
         /// n&uacute;mero de factura.
         query.sprintf ( "SELECT * FROM borrador WHERE idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = '%i') AND debe = 0", idborrador );
-        recordset = empresaBase() ->cargacursor ( query, "recordset" );
+        recordset = mainCompany() ->cargacursor ( query, "recordset" );
 
         QString num_ser = recordset->valor ( "conceptocontable" );
         QRegExp patrons ( " ([A-Z]*)[0-9]+$" );
@@ -540,7 +540,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         setfactura ( num_fra );
         /// Buscamos qu&eacute; n&uacute;mero de orden poner.
         query.sprintf ( "SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden <> ''" );
-        recordset = empresaBase() ->cargacursor ( query, "recordset" );
+        recordset = mainCompany() ->cargacursor ( query, "recordset" );
         if ( !recordset->eof() ) {
             numord = 1 + atoi ( recordset->valor ( "numorden" ).toAscii().constData() );
         } else {

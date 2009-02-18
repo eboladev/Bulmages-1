@@ -70,7 +70,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
-    numdigitos = empresaBase() ->numdigitosempresa();
+    numdigitos = mainCompany() ->numdigitosempresa();
 
     m_codigoinicial->setMainCompany ( emp );
     m_codigofinal->setMainCompany ( emp );
@@ -81,7 +81,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 //    mui_combocoste->setMainCompany ( emp );
 //    mui_combocoste->setidc_coste ( "0" );
 
-    mui_listado->setMainCompany ( empresaBase() );
+    mui_listado->setMainCompany ( mainCompany() );
     /*
         listado->clear();
 
@@ -177,11 +177,11 @@ void BalanceView::boton_extracto1 ( int tipo )
             fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-//        empresaBase() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
+//        mainCompany() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
     } // end if
-    empresaBase() ->extractoempresa() ->accept();
-    empresaBase() ->extractoempresa() ->show();
-    empresaBase() ->extractoempresa() ->setFocus();
+    mainCompany() ->extractoempresa() ->accept();
+    mainCompany() ->extractoempresa() ->show();
+    mainCompany() ->extractoempresa() ->setFocus();
     _depura ( "END BalanceView::boton_extracto1", 0 );
 }
 
@@ -214,11 +214,11 @@ void BalanceView::boton_diario1 ( int tipo )
             fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-        empresaBase() ->diarioempresa() ->inicializa1 ( fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), 0 );
+        mainCompany() ->diarioempresa() ->inicializa1 ( fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), 0 );
     } // end if
-    empresaBase() ->diarioempresa() ->accept();
-    empresaBase() ->diarioempresa() ->show();
-    empresaBase() ->diarioempresa() ->setFocus();
+    mainCompany() ->diarioempresa() ->accept();
+    mainCompany() ->diarioempresa() ->show();
+    mainCompany() ->diarioempresa() ->setFocus();
     _depura ( "END BalanceView::boton_diario1", 0 );
 }
 
@@ -229,8 +229,8 @@ void BalanceView::boton_diario1 ( int tipo )
 void BalanceView::boton_asiento()
 {
     _depura ( "BalanceView::boton_asiento", 0 );
-    empresaBase() ->intapuntsempresa() ->show();
-    empresaBase() ->intapuntsempresa() ->setFocus();
+    mainCompany() ->intapuntsempresa() ->show();
+    mainCompany() ->intapuntsempresa() ->setFocus();
     _depura ( "END BalanceView::boton_asiento", 0 );
 }
 
@@ -270,8 +270,8 @@ void BalanceView::generarBalance()
 
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
     // Consideraciones para centros de coste y canales
-    selectcanalview *scanal = empresaBase() ->getselcanales();
-    SelectCCosteView *scoste = empresaBase() ->getselccostes();
+    selectcanalview *scanal = mainCompany() ->getselcanales();
+    SelectCCosteView *scoste = mainCompany() ->getselccostes();
     QString ccostes = scoste->cadcoste();
     QString logicand = "";
     if ( ccostes != "" ) {
@@ -294,48 +294,48 @@ void BalanceView::generarBalance()
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '" + finicial + "' " + clauswhere + " GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' " + clauswhere + " GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
-    empresaBase() ->begin();
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->begin();
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET padre = 0 WHERE padre ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
     query.sprintf ( "DELETE FROM balancetemp WHERE debe = 0 AND haber = 0" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     /// Vamos a implementar el tema del c&oacute;digo.
     if ( cinicial != "" ) {
         query.sprintf ( "DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii().constData() );
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
     } // end if
     if ( cfinal != "" ) {
         query.sprintf ( "DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii().constData() );
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
     } // end if
 
     /// Para evitar problemas con los nulls hacemos algunos updates.
     query.sprintf ( "UPDATE balancetemp SET tsaldo = 0 WHERE tsaldo ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET tdebe = 0 WHERE tdebe ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET thaber = 0 WHERE thaber ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET asaldo = 0 WHERE asaldo ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET ejsaldo = 0 WHERE ejsaldo ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET ejdebe = 0 WHERE ejdebe ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET ejhaber = 0 WHERE ejhaber ISNULL" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
     /// Cargamos el balance temporal
     query.sprintf ( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC" );
-    cursorapt = empresaBase() ->cargacursor ( query );
+    cursorapt = mainCompany() ->cargacursor ( query );
     while ( !cursorapt->eof() ) {
         query.sprintf ( "SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor ( "idcuenta" ).toAscii().constData() );
-        BlDbRecordSet *mycur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *mycur = mainCompany() ->cargacursor ( query );
         if ( !mycur->eof() ) {
             query = "UPDATE balancetemp SET tsaldo = tsaldo + " + mycur->valor ( "tsaldo" ) + ", tdebe = tdebe + " + mycur->valor ( "tdebe" ) + ", thaber = thaber +" + mycur->valor ( "thaber" ) + ", asaldo = asaldo+" + mycur->valor ( "asaldo" ) + ", ejdebe = ejdebe + " + mycur->valor ( "ejdebe" ) + ", ejhaber = ejhaber + " + mycur->valor ( "ejhaber" ) + ", ejsaldo = ejsaldo + " + mycur->valor ( "ejsaldo" ) + " WHERE idcuenta = " + mycur->valor ( "padre" );
-            empresaBase() ->ejecuta ( query );
+            mainCompany() ->ejecuta ( query );
         } /// end if
         delete mycur;
         cursorapt->siguienteregistro();
@@ -344,11 +344,11 @@ void BalanceView::generarBalance()
 
 
     query.sprintf ( "DELETE FROM balancetemp WHERE tdebe = 0 AND thaber = 0" );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
 //    if(!mui_jerarquico->isChecked()) {
     query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
-    empresaBase()->ejecuta ( query );
+    mainCompany()->ejecuta ( query );
 //    } // end if
 
 }
@@ -371,8 +371,8 @@ void BalanceView::presentar()
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query.sprintf ( "DROP TABLE balancetemp" );
-    empresaBase() ->ejecuta ( query );
-    empresaBase() ->commit();
+    mainCompany() ->ejecuta ( query );
+    mainCompany() ->commit();
 
     /// Hacemos la actualizacion de los saldos totales.
     totalsaldoant->setText ( QString::number ( tsaldoant, 'f', 2 ) );
@@ -446,8 +446,8 @@ void BalanceView::imprimir()
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query = "DROP TABLE balancetemp" ;
-    empresaBase() ->ejecuta ( query );
-    empresaBase() ->commit();
+    mainCompany() ->ejecuta ( query );
+    mainCompany() ->commit();
 
     _depura ( "END BalanceView::on_mui_imprimir_clicked", 0 );
 }
@@ -511,7 +511,7 @@ void BalanceView::on_mui_hojacalculo_clicked()
 
 /// Generamos el query
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
-    BlDbRecordSet *cursorapt1 = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cursorapt1 = mainCompany() ->cargacursor ( query );
 
     int y = 1;
     int x = 1;
@@ -553,8 +553,8 @@ void BalanceView::on_mui_hojacalculo_clicked()
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query.sprintf ( "DROP TABLE balancetemp" );
-    empresaBase() ->ejecuta ( query );
-    empresaBase() ->commit();
+    mainCompany() ->ejecuta ( query );
+    mainCompany() ->commit();
 
     fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"listadosxc.sxc\");\n";
     fitxersortidatxt += "\n";

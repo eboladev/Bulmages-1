@@ -75,7 +75,7 @@ void ListControlStockView::cargar ( int idinventario )
 int ListControlStockView::borrar()
 {
     _depura ( "ListControlStockView::borrar", 0 );
-    empresaBase() ->ejecuta ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
+    mainCompany() ->ejecuta ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
     _depura ( "END ListControlStockView::borrar", 0 );
     return 0;
 }

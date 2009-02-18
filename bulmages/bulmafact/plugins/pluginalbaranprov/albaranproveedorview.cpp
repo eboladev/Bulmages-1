@@ -187,11 +187,11 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
 {
     _depura ( "AlbaranProveedorView::on_mui_verpedidos_clicked", 0 );
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue ( "refalbaranp" ) + "'";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     while ( !cur->eof() ) {
-        PedidoProveedorView * pedpro = new PedidoProveedorView( (BfCompany *) empresaBase(), 0);
+        PedidoProveedorView * pedpro = new PedidoProveedorView( (BfCompany *) mainCompany(), 0);
         pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
-        empresaBase() ->m_pWorkspace->addWindow ( pedpro );
+        mainCompany() ->m_pWorkspace->addWindow ( pedpro );
         pedpro->show();
         cur->siguienteregistro();
     } // end while

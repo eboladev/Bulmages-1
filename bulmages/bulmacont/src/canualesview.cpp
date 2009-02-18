@@ -46,7 +46,7 @@ CAnualesView::CAnualesView ( BcCompany  *emp, QWidget *parent )
     setupUi ( this );
     m_modo = 0;
     inicializatabla();
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END CAnualesView::CAnualesView", 0 );
 }
 
@@ -57,7 +57,7 @@ CAnualesView::CAnualesView ( BcCompany  *emp, QWidget *parent )
 CAnualesView::~CAnualesView()
 {
     _depura ( "CAnualesView::~CAnualesView\n", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END CAnualesView::~CAnualesView\n", 0 );
 }
 
@@ -177,7 +177,7 @@ void CAnualesView::imprimir()
 {
     _depura ( "CAnualesView::imprimir", 0 );
     QString idbalance = mui_listado->item ( mui_listado->currentRow(), COL_ARCHIVO ) ->text();
-    CAnualesPrintView *b = new CAnualesPrintView ( empresaBase(), 0 );
+    CAnualesPrintView *b = new CAnualesPrintView ( mainCompany(), 0 );
     b->setidbalance ( idbalance );
     b->exec();
     delete b;

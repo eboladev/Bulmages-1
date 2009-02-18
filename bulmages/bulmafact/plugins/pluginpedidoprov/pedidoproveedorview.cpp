@@ -281,7 +281,7 @@ void PedidoProveedorView::imprimir()
         substrConf(buff);
 
         /// Linea de totales del pedido.
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
         if ( !cur->eof() ) {
             buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
             buff.replace ( "[poblproveedor]", cur->valor ( "poblproveedor" ) );

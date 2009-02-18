@@ -94,8 +94,8 @@ void GenPagoQToolButton::click()
 
     if (m_object->objectName() == "FacturaProveedorBase" ) {
 	FacturaProveedorView *fpv = (FacturaProveedorView *) m_object;
-	PagoView *bud = new PagoView((BfCompany *)fpv->empresaBase(), NULL);
-	fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
+	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 	bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
 	bud->setDBvalue ( "cantpago", fpv->m_totalfacturap->text() );
 	bud->setDBvalue ( "refpago", fpv->DBvalue ( "reffacturap" ) );
@@ -106,8 +106,8 @@ void GenPagoQToolButton::click()
 
     if (m_object->objectName() == "AlbaranProveedorBase" ) {
 	AlbaranProveedorView *fpv = (AlbaranProveedorView *) m_object;
-	PagoView *bud = new PagoView((BfCompany *)fpv->empresaBase(), NULL);
-	fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
+	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 	bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
 	bud->setDBvalue ( "cantpago", fpv->m_totalalbaranp->text() );
 	bud->setDBvalue ( "refpago", fpv->DBvalue ( "refalbaranp" ) );
@@ -118,8 +118,8 @@ void GenPagoQToolButton::click()
 
     if (m_object->objectName() == "PedidoProveedorBase" ) {
 	PedidoProveedorView *fpv = (PedidoProveedorView *) m_object;
-	PagoView *bud = new PagoView((BfCompany *)fpv->empresaBase(), NULL);
-	fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
+	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 	bud->setDBvalue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
 	bud->setDBvalue ( "cantpago", fpv->mui_totalPedido->text() );
 	bud->setDBvalue ( "refpago", fpv->DBvalue ( "refpedidoproveedor" ) );

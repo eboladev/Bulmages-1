@@ -59,7 +59,7 @@ int EmpresaTPV_cobrar ( EmpresaTPV *etpv )
     diag->setModal ( true );
 
     etpv->ticketActual()->abrircajon();
-//    TipoArticuloList *tip = ( ( BfCompany * ) empresaBase() ) ->newTipoArticuloList ( diag, TRUE );
+//    TipoArticuloList *tip = ( ( BfCompany * ) mainCompany() ) ->newTipoArticuloList ( diag, TRUE );
 //    connect ( tip, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

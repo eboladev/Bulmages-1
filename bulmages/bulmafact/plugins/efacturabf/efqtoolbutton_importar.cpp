@@ -49,7 +49,7 @@ EFQToolButtonImportar::EFQToolButtonImportar ( FacturasProveedorList *faclistado
 {
     _depura ( "EFQToolButtonImportar::EFQToolButtonImportar", 0 );
     m_faclistado = faclistado;
-    setMainCompany ( faclistado->empresaBase() );
+    setMainCompany ( faclistado->mainCompany() );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     _depura ( "END EFQToolButtonImportar::EFQToolButtonImportar", 0 );
 }
@@ -277,7 +277,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QString idProveedor = obten_id_proveedor ( &doc );
 
     QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + idProveedor + "'";
-    BlDbRecordSet *proveedor = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *proveedor = mainCompany() ->cargacursor ( query );
 
     if ( proveedor->numregistros() == 0 ) {
         _depura ( "El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2 );
@@ -287,8 +287,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
 /// Mostramos la ficha con la informacion de la factura importada --------------------------------------
 
-    FacturaProveedorView *fp = ( ( BfCompany * ) empresaBase() ) ->newFacturaProveedorView();
-    empresaBase() ->m_pWorkspace->addWindow ( fp );
+    FacturaProveedorView *fp = ( ( BfCompany * ) mainCompany() ) ->newFacturaProveedorView();
+    mainCompany() ->m_pWorkspace->addWindow ( fp );
     fp->inicializar();
     fp->pintar();
     fp->show();
@@ -386,7 +386,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         /// Si no es asi, mandamos una alerta al usuario y anyadimos ese
         /// articulo a la linea como articulo generico
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mapa_lfactura["idarticulo"] + "'";
-        articulo = empresaBase() ->cargacursor ( query );
+        articulo = mainCompany() ->cargacursor ( query );
 
         /// Si no obtenemos resultados cargamos en el cursor articulo los
         /// valores que necesitamos (idarticulo y nomarticulo)
@@ -395,13 +395,13 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
             /// Obtenemos el codigo de articulo generico
             query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
-            articulo = empresaBase() ->cargacursor ( query );
+            articulo = mainCompany() ->cargacursor ( query );
 
             mapa_lfactura["idarticulo"] = articulo->valor ( "valor" );
 
             /// Datos necesarios para guardar correctamente la linea de factura
             query = "SELECT idarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo = '" + articulo->valor ( "valor" ) + "'";
-            articulo = empresaBase() ->cargacursor ( query );
+            articulo = mainCompany() ->cargacursor ( query );
         } // end if
 
         idarticulo  = articulo->valor ( "idarticulo" );
@@ -449,8 +449,8 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
 /// Damos valores a los campos DBvalue -----------------------------------------------------------------
 
-    lineas->setMainCompany ( empresaBase() );
-    descuentos->setMainCompany ( empresaBase() );
+    lineas->setMainCompany ( mainCompany() );
+    descuentos->setMainCompany ( mainCompany() );
 
     fp->setDBvalue ( "idproveedor", idProveedor );
     fp->setDBvalue ( "reffacturap", "" ); /// El valor lo pone el usuario que importa la factura

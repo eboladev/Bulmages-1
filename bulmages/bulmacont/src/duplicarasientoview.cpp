@@ -22,7 +22,7 @@
 #include "bccompany.h"
 #include "blfunctions.h"
 
-#define NUMDIGITOS   empresaBase()->numdigitosempresa()
+#define NUMDIGITOS   mainCompany()->numdigitosempresa()
 
 
 ///
@@ -62,9 +62,9 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
     aoinicial->setText ( ainicial );
     aofinal->setText ( afinal );
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
-    empresaBase() ->begin();
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "hola" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "hola" );
+    mainCompany() ->commit();
     if ( !cur->eof() ) {
         foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
     } // end if
@@ -82,9 +82,9 @@ void DuplicarAsientoView::lostFocus()
     _depura ( "DuplicarAsientoView::lostFocus", 0 );
     QString ainicial = aoinicial->text();
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
-    empresaBase() ->begin();
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "hola" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "hola" );
+    mainCompany() ->commit();
     if ( !cur->eof() ) {
         foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
     } // end if
@@ -115,15 +115,15 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     /*
         /// Buscamos el orden asiento para la duplicaci&oacute;n.
         QString query = "SELECT max(ordenasiento) AS orden FROM asiento ";
-        empresaBase()->begin();
-        BlDbRecordSet *cur = empresaBase()->cargacursor(query);
+        mainCompany()->begin();
+        BlDbRecordSet *cur = mainCompany()->cargacursor(query);
         if (!cur->eof()) {
             ordeninicial = atoi(cur->valor("orden").toAscii()) + 1;
         } // end if
         delete cur;
      
         query1 = "SELECT max(idasiento) AS maxim FROM asiento";
-        BlDbRecordSet *cursaux = empresaBase()->cargacursor(query1);
+        BlDbRecordSet *cursaux = mainCompany()->cargacursor(query1);
         if (!cursaux->eof()) {
             idasiento = atoi(cursaux->valor("maxim").toAscii());
             idasientoinicial = atoi(cursaux->valor("maxim").toAscii()) + 1;
@@ -132,15 +132,15 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     */
 
     query1 = "SELECT * FROM asiento WHERE ordenasiento >= " + asientoi + " AND ordenasiento <= " + asientof + " AND EXTRACT (YEAR FROM fecha) = EXTRACT (YEAR FROM '" + fedinicial.toString ( "dd/MM/yyyy" ) + "'::date)";
-    BlDbRecordSet *curasiento = empresaBase() ->cargacursor ( query1 );
+    BlDbRecordSet *curasiento = mainCompany() ->cargacursor ( query1 );
     while ( !curasiento->eof() ) {
 
         query1 = "INSERT INTO asiento (descripcion, fecha, comentariosasiento) VALUES('" + curasiento->valor ( "descripcion" ) + "','" + fedinicial.toString ( "dd/MM/yyyy" ) + "','" + curasiento->valor ( "comentariosasiento" ) + "')";
-        empresaBase() ->ejecuta ( query1 );
+        mainCompany() ->ejecuta ( query1 );
 
 
         query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
-        BlDbRecordSet *cursaux = empresaBase() ->cargacursor ( query1 );
+        BlDbRecordSet *cursaux = mainCompany() ->cargacursor ( query1 );
         if ( !cursaux->eof() ) {
             idasiento = cursaux->valor ( "idasiento" );
             ordenasiento = cursaux->valor ( "ordenasiento" );
@@ -150,7 +150,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
 
 
         query2 = "SELECT * FROM borrador WHERE idasiento = " + curasiento->valor ( "idasiento" );
-        BlDbRecordSet *curborrador = empresaBase() ->cargacursor ( query2 );
+        BlDbRecordSet *curborrador = mainCompany() ->cargacursor ( query2 );
 
         while ( !curborrador->eof() ) {
             QString textiddiario = curborrador->valor ( "iddiario" );
@@ -176,17 +176,17 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
                 textorden = "0";
             } // end if
             query2 = "INSERT INTO borrador (orden, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida) VALUES (" + textorden + "," + idasiento + "," + textiddiario + ",'" + textfecha + "','" + textconceptocontable + "'," + textidcuenta + ",'" + textdescripcion + "'," + textdebe + "," + texthaber + "," + textcontrapartida + ")";
-            empresaBase() ->ejecuta ( query2 );
+            mainCompany() ->ejecuta ( query2 );
             curborrador->siguienteregistro();
         } // end while
         delete curborrador;
         query2 = "SELECT cierraasiento(" + idasiento + ")";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query2 );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query2 );
         delete cur;
         curasiento->siguienteregistro();
     } // end while
     delete curasiento;
-    empresaBase() ->commit();
+    mainCompany() ->commit();
     done ( 1 );
     _depura ( "END DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
 }

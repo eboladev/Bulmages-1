@@ -106,8 +106,8 @@ BlForm::~BlForm()
 void BlForm::cargaSpecs()
 {
     _depura ( "BlForm::cargaSpecs", 0 );
-//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
-    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
+//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->nameDB() + "_specs.spc");
+    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->nameDB() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         _depura ( "END BlForm::cargaSpecs", 0, "Fichero no se puede abrir" );
@@ -396,8 +396,8 @@ void BlForm::closeEvent ( QCloseEvent *e )
 int BlForm::sacaWindow()
 {
     _depura ( "BlForm::sacaWindow", 0 );
-    if ( empresaBase() != NULL ) {
-        empresaBase() ->sacaWindow ( this );
+    if ( mainCompany() != NULL ) {
+        mainCompany() ->sacaWindow ( this );
     } // end if
     _depura ( "END BlForm::sacaWindow", 0 );
     return 0;
@@ -413,8 +413,8 @@ int BlForm::sacaWindow()
 void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup )
 {
     _depura ( "BlForm::meteWindow", 0 );
-    if ( empresaBase() != NULL ) {
-        empresaBase() ->meteWindow ( nom, obj, compdup );
+    if ( mainCompany() != NULL ) {
+        mainCompany() ->meteWindow ( nom, obj, compdup );
     } // end if
 
     /// De Forma rapida hacemos un tratamiento de los permisos
@@ -447,7 +447,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
 
     if ( opcion ) {
         if ( opcion == avconfig ) {
-            new FichaCfg ( empresaBase(), this, 0 );
+            new FichaCfg ( mainCompany(), this, 0 );
         } else if ( opcion == avprint ) {
             BlForm::imprimir();
         } // end if
@@ -490,8 +490,8 @@ void BlForm::setDBTableName ( QString nom )
     _depura ( "BlForm::setDBTableName", 0 );
     BlDbRecord::setDBTableName ( nom );
 
-    if (empresaBase() != NULL) {
-	if ( !empresaBase() ->has_table_privilege ( nom, "INSERT" ) ) {
+    if (mainCompany() != NULL) {
+	if ( !mainCompany() ->has_table_privilege ( nom, "INSERT" ) ) {
 		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
 		QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
 		if ( b ) b->setDisabled ( TRUE );
@@ -683,10 +683,10 @@ int BlForm::guardar()
     try {
         QString id;
         recogeValores();
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         DBsave ( id );
         setDBvalue ( m_campoid, id );
-        empresaBase() ->commit();
+        mainCompany() ->commit();
 
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "BlForm_guardar_Post", this ) ) return 0;
@@ -705,12 +705,12 @@ int BlForm::guardar()
         if ( valor == -1 ) {
             mensajeInfo ( "Error inesperado al guardar" );
         } // end if
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return -1;
 
     } catch ( ... ) {
         mensajeInfo ( "Error inesperado al guardar" );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return -1;
     } // end try
 }
@@ -996,7 +996,7 @@ QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
 	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query1 );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query1 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
         result = datos;
@@ -1023,7 +1023,7 @@ QString BlForm::trataIf ( const QString &query, const QString &datos, const QStr
 
     QString query2 = "SELECT (" + query1 + ") AS res";
     /// Cargamos el query y lo recorremos
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query2 );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query2 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
         if ( cur->valor ( "res" ) == "t" ) {
@@ -1053,7 +1053,7 @@ QString BlForm::trataQuery ( const QString &query, const QString &datos, int tip
 	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
-    result = trataCursor( empresaBase() ->cargacursor ( query1 ), datos, tipoEscape);
+    result = trataCursor( mainCompany() ->cargacursor ( query1 ), datos, tipoEscape);
     _depura ( "END BlForm::trataQuery", 0 );
     return result;
 
@@ -1144,8 +1144,8 @@ int BlForm::generaRML ( const QString &arch )
 	m_variables.clear();
 
 	/// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
-	m_variables["CONF_DBNAME"] = empresaBase()->nameDB();
-	m_variables["CONF_DBUSER"] = empresaBase()->currentUser();
+	m_variables["CONF_DBNAME"] = mainCompany()->nameDB();
+	m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
 
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BlForm_generaRML", this );

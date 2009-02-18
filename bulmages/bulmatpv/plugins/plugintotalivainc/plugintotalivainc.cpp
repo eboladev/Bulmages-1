@@ -93,7 +93,7 @@ int Ticket_pintar ( Ticket *tick )
     base basesimpreqeq;
     BlDbRecord *linea;
 
-    EmpresaTPV *emp = ( EmpresaTPV * ) tick->empresaBase();
+    EmpresaTPV *emp = ( EmpresaTPV * ) tick->mainCompany();
 
     /// Impresion de los contenidos.
     QString l;

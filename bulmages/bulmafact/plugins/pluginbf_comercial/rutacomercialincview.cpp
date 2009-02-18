@@ -63,7 +63,7 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
 RutaComercialIncView::~RutaComercialIncView()
 {
     _depura ( "RutaComercialIncView::~RutaComercialIncView", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END RutaComercialIncView::~RutaComercialIncView", 0 );
 }
 

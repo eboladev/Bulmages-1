@@ -65,8 +65,8 @@ void BusquedaAlmacen::setId ( QString idalmacen )
     _depura ( "BusquedaAlmacen::setidalmacen", 0, idalmacen );
 
      try {
-		/// Si no existe la empresaBase() pq aun no ha sido establecida salimos
-		if (!empresaBase()) return;
+		/// Si no existe la mainCompany() pq aun no ha sido establecida salimos
+		if (!mainCompany()) return;
 
 		/// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
 		if (idalmacen.isEmpty() || idalmacen == "0") {
@@ -78,7 +78,7 @@ void BusquedaAlmacen::setId ( QString idalmacen )
 			delete m_cursorcombo;
 		} // end if
 	
-		m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+		m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
 		if ( !m_cursorcombo ) return;
 		int i = 0;
 		int i1 = 0;
@@ -132,7 +132,7 @@ void BusquedaAlmacen::setMainCompany ( BfCompany *comp )
 {
     _depura ( "BusquedaAlmacen::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             m_codigoalmacen = cur->valor ( "valor" );
@@ -207,7 +207,7 @@ void BusquedaAlmacenDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) );

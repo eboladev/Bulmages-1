@@ -86,7 +86,7 @@ void Abrevs::on_mui_usuario_clicked()
     */
 /// **** PRUEBAS DE EMBEBIDO
 
-    Trabajadores * trab = new Trabajadores ( empresaBase(), 0 );
+    Trabajadores * trab = new Trabajadores ( mainCompany(), 0 );
 
 //    doc2->setWidget(trab);
     trab->exec();
@@ -95,7 +95,7 @@ void Abrevs::on_mui_usuario_clicked()
 
 void Abrevs::on_mui_aparcar_clicked()
 {
-    EmpresaTPV * emp = ( EmpresaTPV * ) empresaBase();
+    EmpresaTPV * emp = ( EmpresaTPV * ) mainCompany();
     // El nombre del ticket no puede estar vacio.
     if ( emp->valorInput() == "" ) {
         mensajeAviso ( _( "Asigne un nombre al ticket antes de aparcarlo." ) );
@@ -133,14 +133,14 @@ void Abrevs::on_mui_aparcar_clicked()
 void Abrevs::on_mui_recuperar_clicked()
 {
 
-    Tickets * trab = new Tickets ( empresaBase(), 0 );
+    Tickets * trab = new Tickets ( mainCompany(), 0 );
     trab->exec();
 }
 
 
 void Abrevs::on_mui_cliente_clicked()
 {
-    EmpresaTPV * emp = ( EmpresaTPV * ) empresaBase();
+    EmpresaTPV * emp = ( EmpresaTPV * ) mainCompany();
 
     if ( emp->valorInput() == "" ) return;
     QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorInput() + "'";

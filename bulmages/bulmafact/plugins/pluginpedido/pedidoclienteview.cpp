@@ -193,7 +193,7 @@ void PedidoClienteView::generarAlbaran()
             SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -204,8 +204,8 @@ void PedidoClienteView::generarAlbaran()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            bud = new AlbaranClienteView ( empresaBase(), NULL );
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new AlbaranClienteView ( mainCompany(), NULL );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             return;
@@ -213,8 +213,8 @@ void PedidoClienteView::generarAlbaran()
         delete cur;
 
         /// Creamos el albaran.
-        bud = empresaBase() ->newAlbaranClienteView();
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = mainCompany() ->newAlbaranClienteView();
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.

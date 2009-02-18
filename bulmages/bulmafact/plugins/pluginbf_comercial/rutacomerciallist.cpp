@@ -65,12 +65,12 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     setSubForm ( mui_list );
-    m_idcliente->setMainCompany ( empresaBase() );
+    m_idcliente->setMainCompany ( mainCompany() );
     mui_list->setMainCompany ( comp );
     presenta();
     m_idpresupuesto = "";
     hideBusqueda();
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END RutaComercialList::RutaComercialList", 0 );
 
 		/// Establecemos los parametros de busqueda del Cliente
@@ -148,11 +148,11 @@ void RutaComercialList::editar ( int row )
     _depura ( "RutaComercialList::editar", 0 );
     QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial", row );
     QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial", row );
-    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) empresaBase(), NULL );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
-    empresaBase() ->m_pWorkspace->addWindow ( rut );
-    empresaBase() ->meteWindow ( _("Nueva incidencia comercial"), rut );
+    mainCompany() ->m_pWorkspace->addWindow ( rut );
+    mainCompany() ->meteWindow ( _("Nueva incidencia comercial"), rut );
     rut->show();
     _depura ( "END RutaComercialList::editar", 0 );
 }
@@ -164,9 +164,9 @@ void RutaComercialList::editar ( int row )
 void RutaComercialList::crear()
 {
     _depura ( "RutaComercialList::crear", 0 );
-    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) empresaBase(), NULL );
-    empresaBase() ->m_pWorkspace->addWindow ( rut );
-    empresaBase() ->meteWindow ( _("Nueva incidencia comercial"), rut );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( rut );
+    mainCompany() ->meteWindow ( _("Nueva incidencia comercial"), rut );
     rut->show();
     _depura ( "END RutaComercialList::crear", 0 );
 }
@@ -235,7 +235,7 @@ void RutaComercialList::borrar()
     _depura ( "RutaComercialList::borrar", 0 );
     QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial" );
     QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial" );
-    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) empresaBase(), NULL );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     rut->on_mui_borrar_clicked();

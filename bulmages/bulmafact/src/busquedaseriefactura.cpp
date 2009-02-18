@@ -72,7 +72,7 @@ void BusquedaSerieFactura::setId ( QString codigo )
 
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM serie_factura" );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM serie_factura" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -141,7 +141,7 @@ void BusquedaSerieFactura::setMainCompany ( BfCompany *comp )
 {
     _depura ( "BusquedaSerieFactura::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
     if ( !cur ) return;
     if ( !cur->eof() ) {
         m_codigoserie_factura = cur->valor ( "valor" );

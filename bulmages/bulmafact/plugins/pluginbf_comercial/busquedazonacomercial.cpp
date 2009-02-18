@@ -59,7 +59,7 @@ void BusquedaZonaComercial::setidzonacomercial ( QString idzonacomercial )
     _depura ( "BusquedaZonaComercial::~BusquedaZonaComercial", 0 );
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM zonacomercial" );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM zonacomercial" );
     int i = 0;
     int i1 = 0;
     clear();

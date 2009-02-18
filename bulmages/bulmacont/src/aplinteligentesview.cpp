@@ -70,9 +70,9 @@ aplinteligentesview::aplinteligentesview ( BcCompany *emp, QWidget *parent )
     /// Cada apunte la tiene o no la tiene, pero no se debe aplicar.
     indvariablesapunte = 1;
     variablesapunte[VAR_APUNT_CIFCUENTA][0] = "$cifcuenta$";
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     setmodo ( 0 );
-    empresaBase() ->intapuntsempresa()->mui_inteligente->setDisabled ( TRUE );
+    mainCompany() ->intapuntsempresa()->mui_inteligente->setDisabled ( TRUE );
     _depura ( "END aplinteligentesview::aplinteligentesview", 0 );
 }
 
@@ -84,8 +84,8 @@ aplinteligentesview::~aplinteligentesview()
 {
     _depura ( "aplinteligentesview::~aplinteligentesview", 0 );
     borrawidgets();
-    empresaBase() ->sacaWindow ( this );
-    empresaBase() ->intapuntsempresa()->mui_inteligente->setEnabled ( TRUE );
+    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->intapuntsempresa()->mui_inteligente->setEnabled ( TRUE );
     _depura ( "END aplinteligentesview::~aplinteligentesview", 0 );
 }
 
@@ -121,11 +121,11 @@ void aplinteligentesview::inicializa ( int idasiento )
             mui_comboainteligentes->addItem ( listaOrdenada.takeFirst() ); /// y se carga en el combo
 
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-        BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query1, "codcuenta" );
+        BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query1, "codcuenta" );
         numdigitos = cursoraux1->valor ( 2 ).length();
-        empresaBase() ->commit();
+        mainCompany() ->commit();
         delete cursoraux1;
 
         on_mui_comboainteligentes_activated ( 0 );
@@ -150,9 +150,9 @@ void aplinteligentesview::inicializavariables()
     variablespredefinidas[VAR_PRED_FECHAACTUAL][0] = "$fechaactual$";
     variablespredefinidas[VAR_PRED_FECHAACTUAL][1] = subcadena;
     buffer.sprintf ( "SELECT * FROM asiento WHERE idasiento = %d", numasiento );
-    empresaBase() ->begin();
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( buffer, "cargaasiento" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( buffer, "cargaasiento" );
+    mainCompany() ->commit();
     if ( !cur->eof() ) {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][0] = "$fechaasiento$";
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = cur->valor ( "fecha" );
@@ -178,9 +178,9 @@ void aplinteligentesview::cifcuenta ( int idcuenta )
     _depura ( "aplinteligentesview::cifcuenta", 0 );
     QString query;
     query.sprintf ( "SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta );
-    empresaBase() ->begin();
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query, "cursor" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "cursor" );
+    mainCompany() ->commit();
     if ( !cur->eof() ) {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->valor ( "cifent_cuenta" );
     } else {
@@ -284,21 +284,21 @@ void aplinteligentesview::on_mui_aceptar_clicked()
 		if ( numasiento != 0 ) {
 			recogevalores();
 			creaasiento();
-			empresaBase() ->intapuntsempresa() ->muestraasiento ( numasiento );
+			mainCompany() ->intapuntsempresa() ->muestraasiento ( numasiento );
 			selectfirst();
 		} else {
 			/// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
 			/// Asi que debemos facilitar las cosas al m&aacute;ximo.
 			variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
 			recogevalores();
-			empresaBase() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
-			empresaBase() ->intapuntsempresa() ->vaciar();
-			empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
-			empresaBase() ->intapuntsempresa() ->iniciar_asiento_nuevo();
-			numasiento = empresaBase() ->intapuntsempresa() ->idasiento().toInt();
+			mainCompany() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
+			mainCompany() ->intapuntsempresa() ->vaciar();
+			mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+			mainCompany() ->intapuntsempresa() ->iniciar_asiento_nuevo();
+			numasiento = mainCompany() ->intapuntsempresa() ->idasiento().toInt();
 			creaasiento();
-			empresaBase() ->intapuntsempresa() ->cerrar();
-			empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+			mainCompany() ->intapuntsempresa() ->cerrar();
+			mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
 			numasiento = 0;
 			fechaasiento->selectAll();
 			fechaasiento->setFocus();
@@ -435,7 +435,7 @@ void aplinteligentesview::mostrarplantilla()
             labelcta[i]->show();
             varcta[i] = new BusquedaCuenta ( mui_datosAsiento );
             varcta[i]->setGeometry ( QRect ( 150, inc , 300, 50 ) );
-            varcta[i]->setMainCompany ( empresaBase() );
+            varcta[i]->setMainCompany ( mainCompany() );
             connect ( varcta[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_cta() ) );
             connect ( varcta[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( codigo_textChanged ( const QString & ) ) );
             varcta[i]->show();
@@ -570,11 +570,11 @@ void aplinteligentesview::creaasiento()
     QString query;
     BlDbRecordSet *cur1 = NULL;
     try {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         /// Calculamos a partir de que orden debemos empezar.
         int orden = 0;
         query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento = " + QString::number ( numasiento );
-        cur1 = empresaBase() ->cargacursor ( query );
+        cur1 = mainCompany() ->cargacursor ( query );
         if ( !cur1 ) throw - 1;
         if ( !cur1->eof() ) {
             orden = cur1->valor ( "ordmax" ).toInt() + 1;
@@ -585,7 +585,7 @@ void aplinteligentesview::creaasiento()
             QDomNode item = litems.item ( i );
             codcuenta = aplicavariable ( item.firstChildElement ( "codcuenta" ).text() );
             query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii().constData() );
-            cur1 = empresaBase() ->cargacursor ( query, "buscacodigo" );
+            cur1 = mainCompany() ->cargacursor ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
                 idcuenta = atoi ( cur1->valor ( "idcuenta" ).toAscii().constData() );
@@ -594,7 +594,7 @@ void aplinteligentesview::creaasiento()
 
             contrapartida = aplicavariable ( item.firstChildElement ( "contrapartida" ).text() );
             query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii().constData() );
-            cur1 = empresaBase() ->cargacursor ( query, "buscacodigo" );
+            cur1 = mainCompany() ->cargacursor ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
                 idcontrapartida = cur1->valor ( "idcuenta" );
@@ -608,12 +608,12 @@ void aplinteligentesview::creaasiento()
             conceptocontable = aplicavariable ( item.firstChildElement ( "conceptocontable" ).text() );
             descripcion = aplicavariable ( item.firstChildElement ( "descripcion" ).text() );
             query.sprintf ( "INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii().constData(), debe.toAscii().constData(), haber.toAscii().constData(), fecha.toAscii().constData(), conceptocontable.toAscii().constData(), descripcion.toAscii().constData(), orden++ );
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
+            mainCompany() ->ejecuta ( query );
+            mainCompany() ->commit();
         } // end for
     } catch ( ... ) {
         mensajeInfo ( _( "Error al crear el asiento" ) );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         return;
     } // end try
     _depura ( "END aplinteligentesview::creaasiento", 0 );

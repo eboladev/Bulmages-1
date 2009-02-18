@@ -161,15 +161,15 @@ int Asiento1::borrar ( bool atendido )
                                             QMessageBox::Ok,
                                             QMessageBox::Cancel ) ) {
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-                empresaBase() ->begin();
+                mainCompany() ->begin();
                 listalineas->borrar();
-                error = empresaBase() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
-                error += empresaBase() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                error = mainCompany() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                error += mainCompany() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
                 if ( error ) {
-                    empresaBase() ->rollback();
+                    mainCompany() ->rollback();
                     return -1;
                 } // end if
-                empresaBase() ->commit();
+                mainCompany() ->commit();
                 vaciar();
                 dialogChanges_cargaInicial();
                 return 3;
@@ -177,15 +177,15 @@ int Asiento1::borrar ( bool atendido )
                 return 2;
             } // end switch
         } else {
-            empresaBase() ->begin();
+            mainCompany() ->begin();
             listalineas->borrar();
-            error = empresaBase() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
-            error += empresaBase() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            error = mainCompany() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            error += mainCompany() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
             if ( error ) {
-                empresaBase() ->rollback();
+                mainCompany() ->rollback();
                 return -1;
             } // end if
-            empresaBase() ->commit();
+            mainCompany() ->commit();
             vaciar();
             dialogChanges_cargaInicial();
             return 3;
@@ -259,7 +259,7 @@ int Asiento1::cargar ( QString idasiento )
     } // end if
 
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     if ( !cur->eof() ) {
         DBload ( cur );
     } // end if
@@ -310,7 +310,7 @@ void Asiento1::abrir()
         _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Inexistente" );
         return;
     }
-    empresaBase() ->abreasiento ( id.toInt() );
+    mainCompany() ->abreasiento ( id.toInt() );
     trataestadoAsiento1();
     _depura ( "END Asiento1::abreAsiento1", 0 );
 }
@@ -335,7 +335,7 @@ void Asiento1::cerrar()
         return;
     } // end if
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT cierraasiento(" + id + ")" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT cierraasiento(" + id + ")" );
     delete cur;
     vaciar();
     dialogChanges_cargaInicial();
@@ -357,12 +357,12 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1()
     } // end if
 
     QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" );
-    BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( SQLQuery1 );
+    BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( SQLQuery1 );
     QString numap = cur1->valor ( "cuenta1" );
     delete cur1;
 
     QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue ( "idasiento" );
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
     QString numborr = cur->valor ( "cuenta" );
     delete cur;
 
@@ -388,7 +388,7 @@ int Asiento1::guardar()
 {
     _depura ( "Asiento1::guardar", 0 );
     QString id;
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     try {
         DBsave ( id );
         setidasiento ( id );
@@ -399,17 +399,17 @@ int Asiento1::guardar()
         if ( res != 0 )
             return 0;
 
-        empresaBase() ->commit();
+        mainCompany() ->commit();
 
         if ( estadoAsiento1() == ASCerrado )
-            empresaBase() ->cierraasiento ( id.toInt() );
+            mainCompany() ->cierraasiento ( id.toInt() );
         dialogChanges_cargaInicial();
         cargar ( id );
         g_main->statusBar() ->showMessage ( _( "El asiento se ha guardado correctamente." ), 2000 );
         _depura ( "END Asiento1::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         _depura ( "END Asiento1::guardar", 0, "Error en el guardado" );
         return -1;
     } // end try
@@ -424,7 +424,7 @@ BcCompany *Asiento1::companyact()
 {
     _depura ( "Asiento1::companyact", 0 );
     _depura ( "END Asiento1::companyact", 0 );
-    return empresaBase();
+    return mainCompany();
 }
 
 

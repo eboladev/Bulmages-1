@@ -68,7 +68,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( m_modo == EditMode ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de contratos" ) );
         mui_editar->setHidden ( TRUE );
@@ -89,7 +89,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 ContratosList::~ContratosList()
 {
     _depura ( "ContratosList::~ContratosList", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END ContratosList::~ContratosList", 0 );
 }
 
@@ -130,12 +130,12 @@ void ContratosList::editar ( int row )
     mdb_refcontrato = mui_list->DBvalue ( "refcontrato", row );
     mdb_nomcontrato = mui_list->DBvalue ( "nomcontrato", row );
     if ( m_modo == 0 ) {
-        ContratoView * prov = new ContratoView ( ( BfCompany * ) empresaBase() );
+        ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
         if ( prov->cargar ( mdb_idcontrato ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idcontrato ) );
@@ -190,7 +190,7 @@ void ContratosList::on_mui_borrar_clicked()
     try {
         /*
                 QString idcontrato = mui_list->DBvalue("idcontrato");
-                ClienteView *cli = empresaBase()->newClienteView();
+                ClienteView *cli = mainCompany()->newClienteView();
                 if (cli->cargar(idcontrato)) {
                     delete cli;
                     throw -1;
@@ -334,9 +334,9 @@ void ContratosList::on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
 void ContratosList::on_mui_crear_clicked()
 {
     _depura ( "ContratosList::on_mui_crear_clicked", 0 );
-    ContratoView *prov = new ContratoView ( ( BfCompany * ) empresaBase() );
+    ContratoView *prov = new ContratoView ( ( BfCompany * ) mainCompany() );
     prov->cargar ( "0" );
-    empresaBase() ->m_pWorkspace->addWindow ( prov );
+    mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END ContratosList::on_mui_crear_clicked", 0 );
 }
@@ -382,13 +382,13 @@ void ContratosList::on_mui_facturar_clicked()
             where = " AND contrato.idcliente = " + mui_idcliente->id();
         } // end if
 
-        cur = empresaBase() ->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
+        cur = mainCompany() ->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
         while ( !cur->eof() ) {
-            ContratoView * prov = new ContratoView ( ( BfCompany * ) empresaBase() );
+            ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
             if ( prov->cargar ( cur->valor ( "idcontrato" ) ) ) {
                 delete prov;
             } // end if
-//        empresaBase() ->m_pWorkspace->addWindow ( prov );
+//        mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->on_mui_facturar_clicked();
             delete prov;
 

@@ -53,8 +53,8 @@ void myplugincv::elslot()
 {
     _depura ( "myplugincv::elslot", 0 );
 
-    CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) empresaBase(), NULL );
-    empresaBase() ->m_pWorkspace->addWindow ( tar );
+    CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
 
     _depura ( "END myplugincv::elslot", 0 );

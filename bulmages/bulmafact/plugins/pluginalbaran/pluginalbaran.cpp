@@ -71,8 +71,8 @@ void mypluginalb::elslot()
 void mypluginalb::elslot1()
 {
     _depura ( "mypluginalb::elslot1", 0 );
-        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginalb::elslot1", 0 );
 }
@@ -148,8 +148,8 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "albaran", "SELECT" ) ) {
-	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+    if ( prov->mainCompany()->has_table_privilege ( "albaran", "SELECT" ) ) {
+	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	albaranesList->setModoEdicion();
 	albaranesList->setObjectName("listalbaranes");
 	albaranesList->hideBusqueda();
@@ -159,7 +159,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "albaran", "SELECT" ) ) {
+    if ( prov->mainCompany()->has_table_privilege ( "albaran", "SELECT" ) ) {
 	AlbaranClienteList *albaranesList = prov->findChild<AlbaranClienteList *> ( "listalbaranes" );
         albaranesList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         albaranesList->presentar();
@@ -170,10 +170,10 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)ref->empresaBase(), NULL);
-        ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)ref->mainCompany(), NULL);
+        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
         cur->siguienteregistro();

@@ -99,7 +99,7 @@ void EmailThunderbirdQToolButton::click()
     _depura ( "EmailThunderbirdQToolButton::click", 0 );
 
     if ( m_presupuestoView != NULL ) {
-        m_companyact = m_presupuestoView->empresaBase();
+        m_companyact = m_presupuestoView->mainCompany();
 
         QString id = m_presupuestoView->DBvalue ( "idpresupuesto" );
         QString num = m_presupuestoView->DBvalue ( "numpresupuesto" );
@@ -122,7 +122,7 @@ void EmailThunderbirdQToolButton::click()
     } // end if
 
     if ( m_pedidoClienteView != NULL ) {
-        m_companyact = m_pedidoClienteView->empresaBase();
+        m_companyact = m_pedidoClienteView->mainCompany();
 
         QString id = m_pedidoClienteView->DBvalue ( "idpedidocliente" );
         QString num = m_pedidoClienteView->DBvalue ( "numpedidocliente" );
@@ -146,7 +146,7 @@ void EmailThunderbirdQToolButton::click()
     } // end if
 
     if ( m_albaranClienteView != NULL ) {
-        m_companyact = m_albaranClienteView->empresaBase();
+        m_companyact = m_albaranClienteView->mainCompany();
 
         QString id = m_albaranClienteView->DBvalue ( "idalbaran" );
         QString num = m_albaranClienteView->DBvalue ( "numalbaran" );
@@ -170,7 +170,7 @@ void EmailThunderbirdQToolButton::click()
     } // end if
 
     if ( m_facturaView != NULL ) {
-        m_companyact = m_facturaView->empresaBase();
+        m_companyact = m_facturaView->mainCompany();
 
         QString id = m_facturaView->DBvalue ( "idfactura" );
         QString num = m_facturaView->DBvalue ( "numfactura" );

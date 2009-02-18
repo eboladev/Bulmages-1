@@ -58,7 +58,7 @@ public:
     BcSubFormDelegate *m_delegate;
 
 public:
-    BcCompany *empresaBase();
+    BcCompany *mainCompany();
     BcSubForm ( QWidget *parent = 0 );
     virtual ~BcSubForm();
     virtual void boton_asiento();

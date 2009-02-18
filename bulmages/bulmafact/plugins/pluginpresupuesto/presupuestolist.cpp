@@ -90,7 +90,7 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     presentar();
     m_idpresupuesto = "";
     if (modoEdicion()) {
-    	empresaBase() ->meteWindow ( windowTitle(), this );
+    	mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -185,8 +185,8 @@ void PresupuestoList::setidarticulo ( QString val )
 void PresupuestoList::crear()
 {
     _depura ( "PresupuestoList::crear", 0 );
-    PresupuestoView * bud = new PresupuestoView((BfCompany *)empresaBase(), 0);
-    empresaBase()->m_pWorkspace->addWindow ( bud );
+    PresupuestoView * bud = new PresupuestoView((BfCompany *)mainCompany(), 0);
+    mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
     bud->mui_descpresupuesto->setFocus ( Qt::OtherFocusReason );
@@ -205,7 +205,7 @@ void PresupuestoList::presentar()
     mui_list->cargar ( "SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
     /// Si por un problema de permisos este query devuelve NULL debe contemplarse el caso.
     if ( cur ) {
         m_total->setText ( cur->valor ( "total" ) );
@@ -269,12 +269,12 @@ void PresupuestoList::editar ( int row )
     try {
         m_idpresupuesto = mui_list->DBvalue ( QString ( "idpresupuesto" ), row );
         if ( modoEdicion() ) {
-            PresupuestoView * prov = new PresupuestoView( ( BfCompany * ) empresaBase() , 0 );
+            PresupuestoView * prov = new PresupuestoView( ( BfCompany * ) mainCompany() , 0 );
             if ( prov->cargar ( m_idpresupuesto ) ) {
                 delete prov;
                 return;
             }
-            empresaBase() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( m_idpresupuesto ) );
@@ -313,7 +313,7 @@ void PresupuestoList::borrar()
     try {
         m_idpresupuesto = mui_list->DBvalue ( QString ( "idpresupuesto" ) );
         if ( modoEdicion() ) {
-            PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) empresaBase(), 0);
+            PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0);
             if ( pv->cargar ( m_idpresupuesto ) )
                 throw - 1;
             pv->on_mui_borrar_clicked();

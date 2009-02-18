@@ -118,7 +118,7 @@ public slots:
         presenta();
     }
     virtual void on_mui_crear_clicked() {
-//        empresaBase() ->s_newFacturaCli();
+//        mainCompany() ->s_newFacturaCli();
     };
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_configurar_toggled ( bool checked ) {

@@ -74,7 +74,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
-    unsigned int numdigitos = empresaBase() ->numdigitosempresa();
+    unsigned int numdigitos = mainCompany() ->numdigitosempresa();
 
     m_codigoinicial->setMainCompany ( emp );
     m_codigofinal->setMainCompany ( emp );
@@ -185,11 +185,11 @@ void BalanceTreeView::boton_extracto1 ( int tipo )
             fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-//        empresaBase() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
+//        mainCompany() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
     } // end if
-    empresaBase() ->extractoempresa() ->accept();
-    empresaBase() ->extractoempresa() ->show();
-    empresaBase() ->extractoempresa() ->setFocus();
+    mainCompany() ->extractoempresa() ->accept();
+    mainCompany() ->extractoempresa() ->show();
+    mainCompany() ->extractoempresa() ->setFocus();
     _depura ( "END BalanceTreeView::boton_extracto1", 0 );
 }
 
@@ -222,11 +222,11 @@ void BalanceTreeView::boton_diario1 ( int tipo )
             fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-        empresaBase() ->diarioempresa() ->inicializa1 ( fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), 0 );
+        mainCompany() ->diarioempresa() ->inicializa1 ( fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), 0 );
     } // end if
-    empresaBase() ->diarioempresa() ->accept();
-    empresaBase() ->diarioempresa() ->show();
-    empresaBase() ->diarioempresa() ->setFocus();
+    mainCompany() ->diarioempresa() ->accept();
+    mainCompany() ->diarioempresa() ->show();
+    mainCompany() ->diarioempresa() ->setFocus();
     _depura ( "END BalanceTreeView::boton_diario1", 0 );
 }
 
@@ -237,8 +237,8 @@ void BalanceTreeView::boton_diario1 ( int tipo )
 void BalanceTreeView::boton_asiento()
 {
     _depura ( "BalanceTreeView::boton_asiento", 0 );
-    empresaBase() ->intapuntsempresa() ->show();
-    empresaBase() ->intapuntsempresa() ->setFocus();
+    mainCompany() ->intapuntsempresa() ->show();
+    mainCompany() ->intapuntsempresa() ->setFocus();
     _depura ( "END BalanceTreeView::boton_asiento", 0 );
 }
 
@@ -274,11 +274,11 @@ bool BalanceTreeView::generaBalance()
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     /// numero de cuentas de nivel 2) y las vamos creando.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     BlDbRecordSet *ramas;
-    ramas = empresaBase() ->cargacursor ( query, "Ramas" );
-    empresaBase() ->commit();
+    ramas = mainCompany() ->cargacursor ( query, "Ramas" );
+    mainCompany() ->commit();
     if ( ramas == NULL ) {
         mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
@@ -300,8 +300,8 @@ bool BalanceTreeView::generaBalance()
 
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
     /// Consideraciones para centros de coste y canales
-    selectcanalview *scanal = empresaBase() ->getselcanales();
-    SelectCCosteView *scoste = empresaBase() ->getselccostes();
+    selectcanalview *scanal = mainCompany() ->getselcanales();
+    SelectCCosteView *scoste = mainCompany() ->getselccostes();
     QString ccostes = scoste->cadcoste();
     QString logicand = "";
     if ( ccostes != "" ) {
@@ -331,7 +331,7 @@ bool BalanceTreeView::generaBalance()
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' " + clauswhere + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "'" + clauswhere + " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
     BlDbRecordSet *hojas;
-    hojas = empresaBase() ->cargacursor ( query);
+    hojas = mainCompany() ->cargacursor ( query);
     if ( hojas == NULL ) {
         mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
@@ -359,7 +359,7 @@ void BalanceTreeView::presentar()
 
         QTreeWidgetItem* it;
         QList <QTreeWidgetItem *> ptrList, ptrIt;
-        for ( int i = 0; i <= empresaBase()->numdigitosempresa(); i++ )
+        for ( int i = 0; i <= mainCompany()->numdigitosempresa(); i++ )
             ptrIt << NULL; // Reservamos las posiciones de la lista que coincidiran con los niveles de cuentas
         BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
         QString cinicial = m_codigoinicial->codigocuenta().left ( 1 );
@@ -669,7 +669,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //
 // /// Generamos el query
 //     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
-//     BlDbRecordSet *cursorapt1 = empresaBase() ->cargacursor ( query );
+//     BlDbRecordSet *cursorapt1 = mainCompany() ->cargacursor ( query );
 //
 //     int y = 1;
 //     int x = 1;
@@ -711,8 +711,8 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //
 //     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
 //     query.sprintf ( "DROP TABLE balancetemp" );
-//     empresaBase() ->ejecuta ( query );
-//     empresaBase() ->commit();
+//     mainCompany() ->ejecuta ( query );
+//     mainCompany() ->commit();
 //
 //     fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"listadosxc.sxc\");\n";
 //     fitxersortidatxt += "\n";

@@ -58,8 +58,8 @@ myplugin::~myplugin()
 void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
-    MovimientosView *mov = new MovimientosView ( ( BfCompany * ) empresaBase() );
-    empresaBase() ->pWorkspace() ->addWindow ( mov );
+    MovimientosView *mov = new MovimientosView ( ( BfCompany * ) mainCompany() );
+    mainCompany() ->pWorkspace() ->addWindow ( mov );
     mov->show();
     _depura ( "END myplugin::elslot", 0 );
 }
@@ -185,7 +185,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
      
         if (camp->nomcampo() == "lote"+subform->tableName()) {
      QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
-     BlDbRecordSet *cur = subform->empresaBase()->cargacursor(query);
+     BlDbRecordSet *cur = subform->mainCompany()->cargacursor(query);
      if (!cur->eof()) {
       if (campact->nomcampo() == "codigocompletoarticulo") {
        subform->situarse1(subform->m_prevRow, subform->m_prevCol);

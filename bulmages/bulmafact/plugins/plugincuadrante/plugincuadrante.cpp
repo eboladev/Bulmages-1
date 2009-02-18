@@ -62,8 +62,8 @@ myplugin4::~myplugin4()
 void myplugin4::elslot()
 {
     _depura ( "myplugin4::elslot", 0 );
-    CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( cuad );
+    CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     _depura ( "END myplugin4::elslot", 0 );
 }
@@ -75,8 +75,8 @@ void myplugin4::elslot()
 void myplugin4::elslot1()
 {
     _depura ( "myplugin4::elslot1", 0 );
-    CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( cuad );
+    CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     _depura ( "END myplugin4::elslot1", 0 );
 }
@@ -239,7 +239,7 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     _depura ( "TrabajadorView_TrabajadorView", 0 );
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_ausencias" ) );
-    l->setMainCompany ( trab->empresaBase() );
+    l->setMainCompany ( trab->mainCompany() );
     l->setDBTableName ( "ausencia" );
     l->setDBCampoId ( "idausencia" );
     l->addSubFormHeader ( "fechainausencia", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNone, _( "Fecha inicial ausencia" ) );

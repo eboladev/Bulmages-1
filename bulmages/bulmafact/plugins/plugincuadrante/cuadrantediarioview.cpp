@@ -51,7 +51,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        mui_listvalidaciones->setMainCompany ( empresaBase() );
+        mui_listvalidaciones->setMainCompany ( mainCompany() );
 
 
         /// Lanzamos los plugins.
@@ -124,7 +124,7 @@ void CuadranteDiarioView::inicializaTrabajadores()
     mui_listtrabajadores->clear();
     mui_listtrabajadores->setColumnCount ( 2 );
     mui_listtrabajadores->hideColumn ( 1 );
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT * FROM tipotrabajo" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM tipotrabajo" );
     if ( cur ) {
         while ( !cur->eof() ) {
             QTreeWidgetItem * it = new QTreeWidgetItem ( mui_listtrabajadores );
@@ -132,7 +132,7 @@ void CuadranteDiarioView::inicializaTrabajadores()
             it->setTextColor ( 0, QColor ( "#FF0000" ) );
 
             /// Cargamos los trabajadores correspondientes a este tipo de trabajo.
-            BlDbRecordSet *curtrab = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtipotrabajo = " + cur->valor ( "idtipotrabajo" ) + "ORDER BY nomtrabajador, apellidostrabajador" );
+            BlDbRecordSet *curtrab = mainCompany() ->cargacursor ( "SELECT * FROM trabajador WHERE idtipotrabajo = " + cur->valor ( "idtipotrabajo" ) + "ORDER BY nomtrabajador, apellidostrabajador" );
             if ( curtrab ) {
                 while ( !curtrab->eof() ) {
                     QTreeWidgetItem * itt = new QTreeWidgetItem ( it );
@@ -178,7 +178,7 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 
         mui_cuadrante->clear();
 
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT idalmacen, tipoalmacen, nomalmacen FROM almacen ORDER BY tipoalmacen DESC, nomalmacen" );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT idalmacen, tipoalmacen, nomalmacen FROM almacen ORDER BY tipoalmacen DESC, nomalmacen" );
         if ( !cur ) throw - 1;
 
 
@@ -202,7 +202,7 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 
                 mui_cuadrante->setColumnWidth ( column, 250 );
 
-                CuadranteQTextDocument *newItem = new CuadranteQTextDocument ( empresaBase(), mui_cuadrante );
+                CuadranteQTextDocument *newItem = new CuadranteQTextDocument ( mainCompany(), mui_cuadrante );
 
                 newItem->setAlmFecha ( cur->valor ( "idalmacen" ), date );
 
@@ -267,8 +267,8 @@ void CuadranteDiarioView::on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidge
 void CuadranteDiarioView::on_mui_editar_clicked()
 {
     _depura ( "editar cuadrante", 0 );
-    Cuadrante1View *cuad = new Cuadrante1View ( empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( cuad );
+    Cuadrante1View *cuad = new Cuadrante1View ( mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
     CuadranteQTextDocument *newItem = ( CuadranteQTextDocument * ) mui_cuadrante->cellWidget ( mui_cuadrante->currentRow(), mui_cuadrante->currentColumn() );
     newItem->connect ( cuad, SIGNAL ( save() ), newItem, SLOT ( refresh() ) );
@@ -291,15 +291,15 @@ void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const Q
 
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( "UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( "UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->commit();
     } // end if
 
     if ( opcion == fiesta ) {
-        empresaBase() ->begin();
-        empresaBase() ->ejecuta ( "UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        mainCompany() ->ejecuta ( "UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->commit();
     } // end if
 
     inicializaCuadrante ( mui_calendario->selectedDate() );
@@ -328,9 +328,9 @@ void CuadranteDiarioView::on_mui_limpiar_clicked()
     QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 );
     QDate datefin = date.addDays ( 6 );
     QString query = "DELETE FROM horario WHERE idcuadrante IN (SELECT idcuadrante FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "')";
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     query = "DELETE FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "'";
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
     on_mui_actualizar_clicked();
     _depura ( "CuadranteDiarioView::on_mui_limpiar_clicked", 0 );
 }
@@ -349,7 +349,7 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
         QDate fechaant = date.addDays ( -7 );
         QString query = "SELECT * FROM cuadrante WHERE fechacuadrante = '" + fechaant.toString ( "dd/MM/yyyy" ) + "'";
         _depura ( query, 2 );
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         while ( !cur->eof() ) {
             query = "UPDATE cuadrante SET ";
             query += " comentcuadrante = '" + cur->valor ( "comentcuadrante" ) + "'";
@@ -359,13 +359,13 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
             query += ", cierre1cuadrante = " + ( ( cur->valor ( "cierre1cuadrante" ) == "" ) ? "NULL" : "'" + cur->valor ( "cierre1cuadrante" ) + "'" );
             query += ", fiestacuadrante = '" + cur->valor ( "fiestacuadrante" ) + "'";
             query += " WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" );
-            empresaBase() ->ejecuta ( query );
+            mainCompany() ->ejecuta ( query );
 
-            BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" ) );
+            BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" ) );
             QString idcuadrante = cur1->valor ( "idcuadrante" );
             delete cur1;
 
-            BlDbRecordSet *cur2 = empresaBase() ->cargacursor ( "SELECT * FROM horario WHERE idcuadrante=" + cur->valor ( "idcuadrante" ) );
+            BlDbRecordSet *cur2 = mainCompany() ->cargacursor ( "SELECT * FROM horario WHERE idcuadrante=" + cur->valor ( "idcuadrante" ) );
             while ( !cur2->eof() ) {
                 query = "INSERT INTO horario (idtrabajador, idcuadrante, horainhorario, horafinhorario) VALUES (";
                 query += cur2->valor ( "idtrabajador" );
@@ -373,7 +373,7 @@ void CuadranteDiarioView::on_mui_duplicar_clicked()
                 query += ",'" + cur2->valor ( "horainhorario" ) + "'";
                 query += ",'" + cur2->valor ( "horafinhorario" ) + "'";
                 query += ")";
-                empresaBase() ->ejecuta ( query );
+                mainCompany() ->ejecuta ( query );
                 cur2->siguienteregistro();
             } // end while
             delete cur2;
@@ -448,7 +448,7 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
     /// Buscamos el Lunes de la Semana
 //    QDate date = mui_calendario->selectedDate().addDays(-mui_calendario->selectedDate().dayOfWeek() + 1);
 
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( "SELECT idalmacen FROM almacen" );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT idalmacen FROM almacen" );
     if ( !cur ) throw - 1;
 
     mui_cuadrante->setRowCount ( cur->numregistros() );

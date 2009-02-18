@@ -40,7 +40,7 @@ public:
     BfSubForm *m_listadescuentos;
 
 public:
-    BfCompany *empresaBase();
+    BfCompany *mainCompany();
     FichaBf ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual ~FichaBf();
     void setListaLineas ( BfSubForm *form );

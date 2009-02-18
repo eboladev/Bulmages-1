@@ -141,7 +141,7 @@ void GenPedQToolButton::generarFactura1()
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->empresaBase() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un pedidocliente y que la abriremos.
@@ -152,8 +152,8 @@ void GenPedQToolButton::generarFactura1()
                                          _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            bud = new PedidoClienteView ( fpv->empresaBase(), NULL );
-            fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud = new PedidoClienteView ( fpv->mainCompany(), NULL );
+            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idpedidocliente" ) );
             bud->show();
             return;
@@ -161,8 +161,8 @@ void GenPedQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el pedidocliente.
-        bud = new PedidoClienteView((BfCompany *) fpv->empresaBase(), 0);
-        fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud = new PedidoClienteView((BfCompany *) fpv->mainCompany(), 0);
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al pedidocliente.

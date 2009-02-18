@@ -63,8 +63,8 @@ CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     addDBCampo ( "emailent_cuenta", BlDbField::DBvarchar, BlDbField::DBNothing, _( "E-Mail de la cuenta" ) );
     addDBCampo ( "dirent_cuenta", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion de la cuenta" ) );
 
-    mui_padre->setMainCompany ( empresaBase() );
-    mui_idc_coste->setMainCompany ( empresaBase() );
+    mui_padre->setMainCompany ( mainCompany() );
+    mui_idc_coste->setMainCompany ( mainCompany() );
 
     /// Establecemos los valores para el menu radio tipo_cuenta
     mui_tipocuenta_1->setValorCampo ( "1" );
@@ -74,7 +74,7 @@ CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_tipocuenta_5->setValorCampo ( "5" );
     mui_tipocuenta_0->setValorCampo ( "0" );
 
-    mui_idprovincia->setMainCompany ( empresaBase() );
+    mui_idprovincia->setMainCompany ( mainCompany() );
     mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
     mui_idprovincia->setCampoId ("idprovincia");
@@ -83,7 +83,7 @@ CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
 
 
     dialogChanges_cargaInicial();
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END CuentaView::CuentaView", 0 );
 }
 
@@ -113,7 +113,7 @@ int CuentaView::nuevacuenta ( QString codpadre )
     QString cpadreaux;
     QString query;
     query = "SELECT * FROM cuenta WHERE padre = id_cuenta('" + codpadre + "') ORDER BY codigo DESC";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     if ( !cur->eof() ) {
         long int valor = cur->valor ( "codigo" ).toLong();
         valor ++;
@@ -143,7 +143,7 @@ int CuentaView::nuevacuenta ( QString codpadre )
         } // end switch
     } else {
         QString codint = codpadre;
-        while ( codint.length() < ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa() - 1 ) {
+        while ( codint.length() < ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() - 1 ) {
             codint = codint + "0";
         } // end while
         codint = codint + "0";

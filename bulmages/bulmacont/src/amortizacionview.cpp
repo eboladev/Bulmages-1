@@ -109,9 +109,9 @@ int AmortizacionView::borrar()
     _depura ( "AmortizacionView::borrar", 0 );
     if ( m_idamortizacion != "" ) {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + m_idamortizacion;
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
         query = "DELETE FROM amortizacion WHERE idamortizacion = " + m_idamortizacion;
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
         close();
     } // end if
     _depura ( "END AmortizacionView::borrar", 0 );
@@ -185,7 +185,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
-        BlDbRecordSet *curs = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *curs = mainCompany() ->cargacursor ( query );
         if ( !curs->eof() ) {
             amortizado->setText ( curs->valor ( "amortizado" ) );
         } // end if
@@ -193,7 +193,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
 
         /// Calculamos lo que nos falta por amortizar y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS pdte FROM linamortizacion WHERE idasiento IS NULL AND idamortizacion = " + m_idamortizacion;
-        curs = empresaBase() ->cargacursor ( query, "pdte" );
+        curs = mainCompany() ->cargacursor ( query, "pdte" );
         if ( !curs->eof() ) {
             pendiente->setText ( curs->valor ( "pdte" ) );
         } // end if
@@ -203,7 +203,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
         /// est&aacute; hecha.
         mui_btcalcular->setDisabled ( TRUE );
         dialogChanges_cargaInicial();
-        empresaBase() ->meteWindow ( windowTitle() + DBvalue ( "idamortizacion" ), this );
+        mainCompany() ->meteWindow ( windowTitle() + DBvalue ( "idamortizacion" ), this );
 
         _depura ( "END AmortizacionView::cargar", 0 );
         return 0;
@@ -418,18 +418,18 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         QString query = "DELETE FROM linamortizacion WHERE idlinamortizacion = " + idlinamortizacion;
         if ( idlinamortizacion != "" ) {
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
+            mainCompany() ->begin();
+            mainCompany() ->ejecuta ( query );
+            mainCompany() ->commit();
         } // end if
         on_mui_confquery_clicked();
     } // end if
     if ( opcion->text() == _( "Ver asiento" ) || opcion->text() == _( "Borrar asiento" ) ) {
         /// Si se va a mostrar el asiento, o se va a borrar.
         /*
-                ((BcCompany *)empresaBase())->intapuntsempresa()->show();
+                ((BcCompany *)mainCompany())->intapuntsempresa()->show();
                 QString idasiento = DBvalue("idasiento");
-                ((BcCompany *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento.toInt());
+                ((BcCompany *)mainCompany())->intapuntsempresa()->muestraasiento(idasiento.toInt());
         */
         boton_asiento();
     } // end if
@@ -438,11 +438,11 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         QString idasiento = DBvalue ( "idasiento" );
         QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         QString query = "UPDATE linamortizacion SET idasiento = NULL WHERE idlinamortizacion = " + idlinamortizacion;
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
     } // end if
     if ( opcion->text() == _( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
-        ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
+        ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
     } // end if
     if ( opcion->text() == _( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
@@ -453,17 +453,17 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
 
         QString cuenta, cuentaamort;
         QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + DBvalue ( "idamortizacion" );
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
         if ( ! cur->eof() ) {
             query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaactivo" );
-            BlDbRecordSet *cur1 = empresaBase() ->cargacursor ( query );
+            BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query );
             if ( ! cur1->eof() ) {
                 cuenta = cur1->valor ( "codigo" );
             } // end if
             delete cur1;
 
             query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaamortizacion" );
-            cur1 = empresaBase() ->cargacursor ( query );
+            cur1 = mainCompany() ->cargacursor ( query );
             if ( ! cur1->eof() ) {
                 cuentaamort = cur1->valor ( "codigo" );
             } // end if
@@ -472,7 +472,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         } // end if
         delete cur;
 
-        aplinteligentesview *nueva = new aplinteligentesview ( ( ( BcCompany * ) empresaBase() ), 0 );
+        aplinteligentesview *nueva = new aplinteligentesview ( ( ( BcCompany * ) mainCompany() ), 0 );
         nueva->inicializa ( 0 );
 
         nueva->muestraplantilla ( "amortizacion" );
@@ -485,17 +485,17 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar
         /// el control en cuanto se haya hecho la inserci&oacute;n del asiento.
         nueva->setmodo ( 1 );
-        empresaBase() ->pWorkspace() ->addWindow ( nueva );
+        mainCompany() ->pWorkspace() ->addWindow ( nueva );
         nueva->show();
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int numasiento1 = ( ( BcCompany * ) empresaBase() ) ->intapuntsempresa() ->idasiento().toInt();
+        int numasiento1 = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->idasiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number ( numasiento1 );
-        empresaBase() ->begin();
-        cur = empresaBase() ->cargacursor ( SQLQuery );
-        empresaBase() ->commit();
+        mainCompany() ->begin();
+        cur = mainCompany() ->cargacursor ( SQLQuery );
+        mainCompany() ->commit();
         if ( !cur->eof() ) {
             ordenasiento = cur->valor ( "ordenasiento" );
         } // end if
@@ -503,7 +503,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         /// Debemos guardar la modificaci&oacute;n en la l&iacute;nea de amortizaci&oacute;n.
         QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
-        empresaBase() ->ejecuta ( SQLQuery );
+        mainCompany() ->ejecuta ( SQLQuery );
     } // end if
 //    on_mui_confquery_clicked();
 }

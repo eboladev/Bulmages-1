@@ -70,7 +70,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->mui_list->setItemDelegate ( l->m_delegate );
 
     l->setObjectName ( QString::fromUtf8 ( "laliastc" ) );
-    l->setMainCompany ( art->empresaBase() );
+    l->setMainCompany ( art->mainCompany() );
     l->setDBTableName ( "tc_articulo_alias" );
     l->setDBCampoId ( "idarticulo" );
     l->addSubFormHeader ( "aliastc_articulo_tallacolor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
@@ -178,11 +178,11 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 
     if ( linea->nomcampo() == "nomtc_color" ) {
         BusquedaColorDelegate * editor = new BusquedaColorDelegate ( parent );
-        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
     } else if ( linea->nomcampo() == "nomtc_talla" ) {
         BusquedaTallaDelegate * editor = new BusquedaTallaDelegate ( parent );
-        editor->setMainCompany ( ( BfCompany * ) m_subform->empresaBase() );
+        editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
@@ -259,7 +259,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
 		QString val = busc->m_inputBusqueda->text();
 	
 		QString SQLQuery = "SELECT * FROM tc_articulo_alias LEFT JOIN articulo ON tc_articulo_alias.idarticulo = articulo.idarticulo WHERE aliastc_articulo_tallacolor = '" + val + "'";
-		BlDbRecordSet *cur = busc->empresaBase() ->cargacursor ( SQLQuery );
+		BlDbRecordSet *cur = busc->mainCompany() ->cargacursor ( SQLQuery );
 		if ( !cur->eof() ) {
 			busc->setId ( cur->valor ( "idarticulo" ) );
 			encontrado = TRUE;

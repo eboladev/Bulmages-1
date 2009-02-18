@@ -69,8 +69,8 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        TutorView * bud = new TutorView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        TutorView * bud = new TutorView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
 }

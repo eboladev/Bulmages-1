@@ -54,7 +54,7 @@ int BlForm_guardar_Post ( BlForm *l )
 	bool guardar = FALSE;
 	if (l->tableName() == "cliente") {
 
-	FichaBf *fich = new FichaBf((BfCompany *)l->empresaBase(), l);
+	FichaBf *fich = new FichaBf((BfCompany *)l->mainCompany(), l);
         fich->setDBTableName ( "proveedor" );
         fich->setDBCampoId ( "idproveedor" );
         fich->addDBCampo ( "idproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _("ID proveedor") );
@@ -79,7 +79,7 @@ int BlForm_guardar_Post ( BlForm *l )
         fich->addDBCampo ( "irpfproveedor", BlDbField::DBnumeric, BlDbField::DBNothing, _( "IRPF" ) );
 
 	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + l->DBvalue("cifcliente")+"'";
-	BlDbRecordSet *cur = l->empresaBase()->cargacursor(query);
+	BlDbRecordSet *cur = l->mainCompany()->cargacursor(query);
 	if (!cur->eof()) {
 		fich->cargar(cur->valor("idproveedor"));
 		guardar = TRUE;

@@ -67,7 +67,7 @@ void BusquedaBanco::setidbanco ( QString idbanco )
     _depura ( "BusquedaBanco::setidbanco", 0 );
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM banco" );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM banco" );
     /// Tratamos el caso en que no se haya devuelto nada.
     if ( m_cursorcombo == NULL ) return;
     int i = 0;

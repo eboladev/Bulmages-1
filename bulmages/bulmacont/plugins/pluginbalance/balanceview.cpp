@@ -63,7 +63,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     /// EStablezco cual es la tabla en la que basarse para el sistema de permisos.
     setDBTableName ( "asiento" );
 
-    numdigitos = empresaBase() ->numdigitosempresa();
+    numdigitos = mainCompany() ->numdigitosempresa();
     m_codigoinicial->setMainCompany ( emp );
     m_codigofinal->setMainCompany ( emp );
     /// Inicializamos la tabla de nivel.
@@ -94,7 +94,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     m_fechafinal1->setText ( cadena );
 
 
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END BalanceView::BalanceView", 0 );
 }
 
@@ -189,10 +189,10 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
     try {
         /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
         /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
 
-        ramas = empresaBase() ->cargacursor ( query );
+        ramas = mainCompany() ->cargacursor ( query );
 
         /// Creamos el arbol y lo inicializamos con todas las cuentas.
         Arbol *arbol;
@@ -212,8 +212,8 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// Sacamos la subcadena para centros de coste y canales.
         // Consideraciones para centros de coste y canales
         QString cadand = "";
-        selectcanalview *scanal = empresaBase() ->getselcanales();
-        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        selectcanalview *scanal = mainCompany() ->getselcanales();
+        SelectCCosteView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes = " AND apunte.idc_coste IN (" + ccostes + ") ";
@@ -243,7 +243,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
 
         /// Poblamos el &aacute;rbol de hojas (cuentas).
-        hojas = empresaBase() ->cargacursor ( query );
+        hojas = mainCompany() ->cargacursor ( query );
         while ( !hojas->eof() ) {
             /// Para cada cuenta con apuntes introducidos hay que actualizar hojas del &aacute;rbol.
             arbol->actualizaHojas ( hojas );
@@ -391,10 +391,10 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// Eliminamos el &aacute;rbol de la mem&oacute;ria y cerramos la conexi&oacute;n
         /// con la BD.
         delete arbol;
-        empresaBase() ->commit();
+        mainCompany() ->commit();
     } catch ( ... ) {
         mensajeInfo ( "error en los calculos" );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         /// Libermos posible memoria utilizada
         if ( ramas ) delete ramas;
         if ( hojas ) delete hojas;
@@ -423,7 +423,7 @@ void BalanceView::accept()
 void BalanceView::imprimir()
 {
     _depura ( "BalanceView::on_mui_imprimir_clicked", 0 );
-    BalancePrintView *balan = new BalancePrintView ( empresaBase() );
+    BalancePrintView *balan = new BalancePrintView ( mainCompany() );
     balan->inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
     balan->exec();
     _depura ( "END BalanceView::on_mui_imprimir_clicked", 0 );

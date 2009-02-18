@@ -83,7 +83,7 @@ void BlComboBox::setId ( QString id )
         delete m_cursorcombo;
     } // end if
 
-    m_cursorcombo = empresaBase() ->cargacursor ( m_query );
+    m_cursorcombo = mainCompany() ->cargacursor ( m_query );
     /// Si ha habido un problema con la base de datos salimos.
     if ( !m_cursorcombo ) return;
 

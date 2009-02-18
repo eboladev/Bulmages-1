@@ -96,7 +96,7 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
 
     presentar();
     m_idalmacen = "";
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "almacen" );
@@ -146,10 +146,10 @@ void AlmacenesListView::crear()
 {
     _depura ( "AlmacenesListView::crear", 0 );
     /*
-        ((BfCompany *)empresaBase())->s_newAlmacen();
+        ((BfCompany *)mainCompany())->s_newAlmacen();
     */
-    AlmacenView *alm = new AlmacenView ( ( BfCompany * ) empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( alm );
+    AlmacenView *alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( alm );
     alm->show();
     _depura ( "END AlmacenesListView::crear", 0 );
 }
@@ -195,8 +195,8 @@ void AlmacenesListView::editar ( int row )
         m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ), row );
 
         if ( modoEdicion() ) {
-            AlmacenView * alm = new AlmacenView ( ( BfCompany * ) empresaBase(), 0 );
-            empresaBase() ->pWorkspace() ->addWindow ( alm );
+            AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
+            mainCompany() ->pWorkspace() ->addWindow ( alm );
             alm->show();
             alm->cargar ( m_idalmacen );
         } else {
@@ -235,14 +235,14 @@ void AlmacenesListView::borrar()
     try {
         m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ) );
         if ( modoEdicion() ) {
-            AlmacenView * alm = new AlmacenView ( ( BfCompany * ) empresaBase(), 0 );
-            empresaBase() ->pWorkspace() ->addWindow ( alm );
+            AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
+            mainCompany() ->pWorkspace() ->addWindow ( alm );
 //            alm->show();
             alm->cargar ( m_idalmacen );
             alm->on_mui_borrar_clicked();
             alm->close();
             /*
-                        PresupuestoView *pv = ((BfCompany *)empresaBase())->nuevoPresupuestoView();
+                        PresupuestoView *pv = ((BfCompany *)mainCompany())->nuevoPresupuestoView();
                         if (pv->cargar(m_idalmacen))
                             throw -1;
                         pv->on_mui_borrar_clicked();

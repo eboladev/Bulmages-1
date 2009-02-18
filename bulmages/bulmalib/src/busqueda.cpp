@@ -124,7 +124,7 @@ void Busqueda::setId ( QString val )
 			} // end while
     } else {
         QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE id" + m_tabla + "= '" + mdb_id + "'";
-        BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
         if ( !cur->eof() ) {
 
 			/// Inicializamos los valores de vuelta a ""
@@ -167,7 +167,7 @@ void Busqueda::setValorCampo ( QString campo, QString val )
     _depura ( "Busqueda::setcifprofesor", 0, val );
 
     QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+campo+" = '" + val + "'";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
 
     if ( !cur->eof() ) {
 			/// Inicializamos los valores de vuelta a ""
@@ -268,7 +268,7 @@ void Busqueda::on_m_inputBusqueda_textChanged ( const QString &val )
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_id = cur->valor ( "id"+m_tabla );
 			/// Inicializamos los valores de vuelta a ""
@@ -295,7 +295,7 @@ void Busqueda::on_m_inputBusqueda_textChanged ( const QString &val )
 			} // end while
 
         QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
             mdb_id = cur->valor ( "id"+m_tabla );
 			/// Inicializamos los valores de vuelta a ""

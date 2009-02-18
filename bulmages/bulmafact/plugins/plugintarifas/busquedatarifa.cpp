@@ -60,7 +60,7 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
         delete m_cursorcombo;
     } // end if
 
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tarifa" );
+    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM tarifa" );
     int i = 0;
     int i1 = 0;
     clear();

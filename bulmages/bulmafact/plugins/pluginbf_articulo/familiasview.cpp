@@ -81,7 +81,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        empresaBase()->meteWindow ( windowTitle(), this, FALSE );
+        mainCompany()->meteWindow ( windowTitle(), this, FALSE );
     } // end if
 
     pintar();
@@ -119,7 +119,7 @@ void FamiliasView::pintar()
         delete it;
     } // end while
 
-    cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia" );
+    cursoraux1 = mainCompany()->cargacursor ( "SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia" );
     while ( !cursoraux1->eof() ) {
         padre = cursoraux1->valor ( "padrefamilia" ).toInt();
         idfamilia = cursoraux1->valor ( "idfamilia" ).toInt();
@@ -135,7 +135,7 @@ void FamiliasView::pintar()
         cursoraux1->siguienteregistro();
     } // end while
     delete cursoraux1;
-    cursoraux2 = empresaBase()->cargacursor ( "SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia" );
+    cursoraux2 = mainCompany()->cargacursor ( "SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia" );
     while ( !cursoraux2->eof() ) {
         padre = cursoraux2->valor ( "padrefamilia" ).toInt();
         idfamilia = cursoraux2->valor ( "idfamilia" ).toInt();
@@ -276,7 +276,7 @@ void FamiliasView::mostrarplantilla()
         mui_codFamilia->setEnabled ( TRUE );
 
         query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
-        BlDbRecordSet *cursorfamilia = empresaBase()->cargacursor ( query );
+        BlDbRecordSet *cursorfamilia = mainCompany()->cargacursor ( query );
         if ( !cursorfamilia->eof() ) {
             mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
             mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
@@ -348,10 +348,10 @@ int FamiliasView::guardar()
             prodfam = " FALSE ";
         } // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
-                        empresaBase()->sanearCadena ( mui_nomFamilia->text() ) + "', descfamilia = '" +
-                        empresaBase()->sanearCadena ( mui_descFamilia->toPlainText() ) + "' , codigofamilia = '" +
-                        empresaBase()->sanearCadena ( mui_codFamilia->text() ) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
-        int error = empresaBase()->ejecuta ( query );
+                        mainCompany()->sanearCadena ( mui_nomFamilia->text() ) + "', descfamilia = '" +
+                        mainCompany()->sanearCadena ( mui_descFamilia->toPlainText() ) + "' , codigofamilia = '" +
+                        mainCompany()->sanearCadena ( mui_codFamilia->text() ) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
+        int error = mainCompany()->ejecuta ( query );
         if ( error ) {
             throw - 1;
         } // end if
@@ -382,7 +382,7 @@ void FamiliasView::pintar ( QTreeWidgetItem *it )
 {
     QString idfamilia = it->text ( COL_IDFAMILIA );
     if ( it ) {
-        BlDbRecordSet * cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM familia WHERE idfamilia = " + idfamilia );
+        BlDbRecordSet * cursoraux1 = mainCompany()->cargacursor ( "SELECT * FROM familia WHERE idfamilia = " + idfamilia );
         if ( !cursoraux1->eof() ) {
             it->setText ( COL_NOMFAMILIA, cursoraux1->valor ( "nombrefamilia" ) );
             it->setText ( COL_CODFAMILIA, cursoraux1->valor ( "codigofamilia" ) );
@@ -404,7 +404,7 @@ void FamiliasView::on_mui_crear_clicked()
 {
     _depura ( "FamiliasView::on_mui_crear_clicked", 0 );
     try {
-        empresaBase()->begin();
+        mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
         QString padrefamilia;
@@ -416,18 +416,18 @@ void FamiliasView::on_mui_crear_clicked()
 
         QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia', " + padrefamilia + ", 'XXX')";
 
-        int error = empresaBase()->ejecuta ( query );
+        int error = mainCompany()->ejecuta ( query );
         if ( error ) {
             throw - 1;
         } // end if
-        BlDbRecordSet *cur = empresaBase()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
-        empresaBase()->commit();
+        BlDbRecordSet *cur = mainCompany()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
+        mainCompany()->commit();
         m_idfamilia = cur->valor ( "idfamilia" );
         delete cur;
         pintar();
         _depura ( "END FamiliasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        empresaBase()->rollback();
+        mainCompany()->rollback();
         mensajeInfo ( _( "Error al crear la familia" ) );
     } // end try
 }
@@ -442,24 +442,24 @@ void FamiliasView::on_mui_crearRaiz_clicked()
 {
     _depura ( "FamiliasView::on_mui_crearRaiz_clicked", 0 );
     try {
-        empresaBase()->begin();
+        mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
 
         QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia',  NULL , 'XXX')";
 
-        int error = empresaBase()->ejecuta ( query );
+        int error = mainCompany()->ejecuta ( query );
         if ( error ) {
             throw - 1;
         } // end if
-        BlDbRecordSet *cur = empresaBase()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
-        empresaBase()->commit();
+        BlDbRecordSet *cur = mainCompany()->cargacursor ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
+        mainCompany()->commit();
         m_idfamilia = cur->valor ( "idfamilia" );
         delete cur;
         pintar();
         _depura ( "END FamiliasView::on_mui_crearRaiz_clicked", 0 );
     } catch ( ... ) {
-        empresaBase()->rollback();
+        mainCompany()->rollback();
         mensajeInfo ( _("Error al crear la familia") );
     } // end try
 }
@@ -506,7 +506,7 @@ int FamiliasView::borrar()
     } // end if
     try {
         QString query = "DELETE FROM FAMILIA WHERE idfamilia = " + m_idfamilia;
-        int error = empresaBase()->ejecuta ( query );
+        int error = mainCompany()->ejecuta ( query );
         if ( error ) {
             throw - 1;
         } // end if
@@ -569,7 +569,7 @@ void FamiliasView::on_mui_imprimir_clicked()
     fitxersortidatxt += "        <td>" + _( "Nombre" ) + "</td>";
     fitxersortidatxt += "</tr>";
 
-    BlDbRecordSet *cur = empresaBase()->cargacursor ( "SELECT * FROM familia ORDER BY codigocompletofamilia" );
+    BlDbRecordSet *cur = mainCompany()->cargacursor ( "SELECT * FROM familia ORDER BY codigocompletofamilia" );
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>";
         fitxersortidatxt += "        <td>" + cur->valor ( "codigocompletofamilia" ) + "</td>";

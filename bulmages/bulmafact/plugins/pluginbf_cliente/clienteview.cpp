@@ -85,7 +85,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         } // end if
 
         /// Datos por defecto.
-        mui_idprovincia->setMainCompany ( empresaBase() );
+        mui_idprovincia->setMainCompany ( mainCompany() );
 
     mui_idprovincia->setQuery("SELECT idprovincia, provincia||' ('||descpais||')' AS desc FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
@@ -93,7 +93,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
     mui_idprovincia->m_valores["desc"] = "";
         mui_idprovincia->setId ( "" );
 
-        mui_idforma_pago->setMainCompany ( empresaBase() );
+        mui_idforma_pago->setMainCompany ( mainCompany() );
         mui_idforma_pago->setId ( 0 );
 
         /// Metemos la ventana en el workSpace.
@@ -117,7 +117,7 @@ ClienteView::~ClienteView()
     _depura ( "ClienteView::~ClienteView", 0 );
     /// Disparamos los plugins.
     g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END ClienteView::~ClienteView", 0 );
 }
 
@@ -162,7 +162,7 @@ void ClienteView::on_mui_informe_clicked()
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ) );
     } else {
-        InformeCliente inf ( empresaBase() );
+        InformeCliente inf ( mainCompany() );
         inf.setCliente ( DBvalue ( "idcliente" ) );
         inf.generarInforme();
     } // end if

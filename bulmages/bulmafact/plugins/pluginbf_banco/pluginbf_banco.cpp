@@ -54,8 +54,8 @@ MyPlugBanc::~MyPlugBanc()
 void MyPlugBanc::elslot1()
 {
     _depura ( "MyPlugBanc::elslot1", 0 );
-        BancoView * bud = new BancoView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        BancoView * bud = new BancoView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugBanc::elslot1", 0 );
 }

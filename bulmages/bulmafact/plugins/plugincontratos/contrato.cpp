@@ -76,18 +76,18 @@ int Contrato::borrar()
 {
     _depura ( "Contrato::borrar", 0 );
     if ( DBvalue ( "idcontrato" ) != "" ) {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         int error = m_listalineas->borrar();
         if ( error ) {
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
             return -1;
         } // end if
         error = BlDbRecord::borrar();
         if ( error ) {
-            empresaBase() ->rollback();
+            mainCompany() ->rollback();
             return -1;
         } // end if
-        empresaBase() ->commit();
+        mainCompany() ->commit();
     } // end if
     _depura ( "END Contrato::borrar", 0 );
     return 0;
@@ -146,7 +146,7 @@ int Contrato::cargar ( QString idbudget )
     _depura ( "Contrato::cargar", 0 );
     inicialize();
     QString query = "SELECT * FROM contrato WHERE idcontrato = " + idbudget;
-    BlDbRecordSet * cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet * cur = mainCompany() ->cargacursor ( query );
     if ( !cur->eof() ) {
         DBload ( cur );
     } // end if
@@ -176,12 +176,12 @@ int Contrato::guardar()
     try {
         /// Calculamos el proximo numero de contrato para poder insertarlo en caso de que este sea nulo.
         QString id;
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         DBsave ( id );
         setDBvalue ( "idcontrato", id );
         m_listalineas->setColumnValue ( "idcontrato", id );
         m_listalineas->guardar();
-        empresaBase() ->commit();
+        mainCompany() ->commit();
 
         /// Hacemos una carga para recuperar datos como la referencia
         cargar ( id );
@@ -190,7 +190,7 @@ int Contrato::guardar()
         return 0;
     } catch ( ... ) {
         _depura ( "Contrato::guardar() se produjo un error guardando la contrato", 0 );
-        empresaBase() ->rollback();
+        mainCompany() ->rollback();
         throw  - 1;
     } // end try
 }
@@ -205,7 +205,7 @@ BfCompany * Contrato::_company()
 {
     _depura ( "Contrato::_company", 0 );
     _depura ( "END Contrato::_company", 0 );
-    return empresaBase();
+    return mainCompany();
 }
 
 

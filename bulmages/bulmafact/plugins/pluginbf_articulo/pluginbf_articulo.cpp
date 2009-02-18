@@ -70,8 +70,8 @@ void MyPlugArt::elslot()
 void MyPlugArt::elslot1()
 {
     _depura ( "MyPlugArt::elslot1", 0 );
-        ArticuloView * bud = new ArticuloView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        ArticuloView * bud = new ArticuloView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugArt::elslot1", 0 );
 }
@@ -84,8 +84,8 @@ void MyPlugArt::elslot1()
 void MyPlugArt::elslot2()
 {
     _depura ( "MyPlugArt::elslot2", 0 );
-    TipoArticuloList *pag = new TipoArticuloList ( (BfCompany *)empresaBase(), 0, FALSE );
-    empresaBase() ->m_pWorkspace->addWindow ( pag );
+    TipoArticuloList *pag = new TipoArticuloList ( (BfCompany *)mainCompany(), 0, FALSE );
+    mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
     _depura ( "END MyPlugArt::elslot2", 0 );
 }
@@ -97,8 +97,8 @@ void MyPlugArt::elslot2()
 void MyPlugArt::elslot3()
 {
     _depura ( "MyPlugArt::elslot3", 0 );
-    FamiliasView *pag = new FamiliasView ( (BfCompany *)empresaBase(), 0, FALSE );
-    empresaBase() ->m_pWorkspace->addWindow ( pag );
+    FamiliasView *pag = new FamiliasView ( (BfCompany *)mainCompany(), 0, FALSE );
+    mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
     _depura ( "END MyPlugArt::elslot3", 0 );
 }
@@ -202,7 +202,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ArticuloList *arts = new ArticuloList ( ( BfCompany * ) busq->empresaBase(), diag, 0, ArticuloList::SelectMode );
+    ArticuloList *arts = new ArticuloList ( ( BfCompany * ) busq->mainCompany(), diag, 0, ArticuloList::SelectMode );
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -235,7 +235,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    TipoArticuloList *arts = new TipoArticuloList ( (BfCompany *) busq->empresaBase(), 0, TRUE );
+    TipoArticuloList *arts = new TipoArticuloList ( (BfCompany *) busq->mainCompany(), 0, TRUE );
 
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -268,7 +268,7 @@ int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    FamiliasView *arts = new FamiliasView ( (BfCompany *) busq->empresaBase(), 0, TRUE );
+    FamiliasView *arts = new FamiliasView ( (BfCompany *) busq->mainCompany(), 0, TRUE );
 
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -302,7 +302,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
         return 0;
     } // end if
 
-    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->empresaBase(), NULL, 0, ArticuloList::SelectMode );
+    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, ArticuloList::SelectMode );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();
@@ -318,7 +318,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
         return 0;
     } // end if
 
-    BlDbRecordSet *cur = sub->empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
+    BlDbRecordSet *cur = sub->mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDBvalue ( "idarticulo", idArticle );
         sub->m_registrolinea->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );

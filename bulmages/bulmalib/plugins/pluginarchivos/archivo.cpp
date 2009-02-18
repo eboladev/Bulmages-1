@@ -56,7 +56,7 @@ Archivo::~Archivo()
 {
     _depura ( "Archivo::~Archivo", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
-    // ((BfCompany *)empresaBase())->refreshCobrosCliente();
+    // ((BfCompany *)mainCompany())->refreshCobrosCliente();
     _depura ( "END Archivo::~Archivo", 0 );
 }
 
@@ -81,12 +81,12 @@ void Archivo::on_mui_aceptar_clicked()
         file.readLine();
     } // end if
 
-    empresaBase()->begin();
+    mainCompany()->begin();
     while ( !file.atEnd() ) {
         QByteArray line = file.readLine();
         procesarLinea ( line );
     } // end while
-    empresaBase()->commit();
+    mainCompany()->commit();
     file.close();
 */
     _depura ( "END Archivo::on_mui_aceptar_clicked", 0 );

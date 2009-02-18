@@ -22,7 +22,7 @@
 #include  "listcuentasview1.h"
 #include  "bccompany.h"
 
-#define NUMDIGITOS   (BcCompany *)empresaBase())->numdigitosempresa()
+#define NUMDIGITOS   (BcCompany *)mainCompany())->numdigitosempresa()
 
 
 ///
@@ -138,13 +138,13 @@ void CambiaCtaView::accept()
     if ( ffinal != "" ) {
         query4 = query4 + " AND ffactura <= '" + ffinal + "'";
     } // end if
-    empresaBase() ->begin();
-    empresaBase() ->ejecuta ( query );
-    empresaBase() ->ejecuta ( query1 );
-    empresaBase() ->ejecuta ( query2 );
-    empresaBase() ->ejecuta ( query3 );
-    empresaBase() ->ejecuta ( query4 );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    mainCompany() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query1 );
+    mainCompany() ->ejecuta ( query2 );
+    mainCompany() ->ejecuta ( query3 );
+    mainCompany() ->ejecuta ( query4 );
+    mainCompany() ->commit();
     done ( 1 );
     _depura ( "END CambiaCtaView::accept", 0 );
 }

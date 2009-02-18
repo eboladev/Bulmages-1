@@ -96,7 +96,7 @@ void GenCobroQToolButton::click()
 		int nuevo = 1;
 		/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
 		QString query = "SELECT * FROM cobro WHERE refcobro ='"+ fpv->DBvalue("reffactura")+"'";
-		BlDbRecordSet *cur = fpv->empresaBase()->cargacursor(query);
+		BlDbRecordSet *cur = fpv->mainCompany()->cargacursor(query);
 		if (cur->numregistros() > 0) {
 		QMessageBox msgBox;
 		msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));
@@ -110,8 +110,8 @@ void GenCobroQToolButton::click()
 	if (msgBox.clickedButton() == openButton) {
 	
 				while (!cur->eof()) {
-					CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
-					fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+					CobroView *bud = new CobroView( (BfCompany *) fpv->mainCompany(), 0);
+					fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 					bud->cargar(cur->valor("idcobro"));
 					bud->pintar();
 					bud->show();
@@ -128,8 +128,8 @@ void GenCobroQToolButton::click()
 	
 		/// Creacion de un cobro nuevo a partir de la factura.
 		if (nuevo) {
-			CobroView *bud = new CobroView(fpv->empresaBase(), 0);
-			fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+			CobroView *bud = new CobroView(fpv->mainCompany(), 0);
+			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
 			bud->setDBvalue ( "cantcobro", fpv->m_totalfactura->text() );
 			bud->setDBvalue ( "refcobro", fpv->DBvalue ( "reffactura" ) );
@@ -145,7 +145,7 @@ void GenCobroQToolButton::click()
 			int nuevo = 1;
 			/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
 			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->DBvalue("refalbaran")+"'";
-			BlDbRecordSet *cur = fpv->empresaBase()->cargacursor(query);
+			BlDbRecordSet *cur = fpv->mainCompany()->cargacursor(query);
 			if (cur->numregistros() > 0) {
 			QMessageBox msgBox;
 			msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));
@@ -159,8 +159,8 @@ void GenCobroQToolButton::click()
 		if (msgBox.clickedButton() == openButton) {
 		
 					while (!cur->eof()) {
-						CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
-						fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+						CobroView *bud = new CobroView( (BfCompany *) fpv->mainCompany(), 0);
+						fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 						bud->cargar(cur->valor("idcobro"));
 						bud->pintar();
 						bud->show();
@@ -177,8 +177,8 @@ void GenCobroQToolButton::click()
 		
 			/// Creacion de un cobro nuevo a partir de la factura.
 			if (nuevo) {
-			CobroView *bud = new CobroView((BfCompany *)fpv->empresaBase(), 0);
-			fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+			CobroView *bud = new CobroView((BfCompany *)fpv->mainCompany(), 0);
+			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
 			bud->setDBvalue ( "cantcobro", fpv->m_totalalbaran->text() );
 			bud->setDBvalue ( "refcobro", fpv->DBvalue ( "refalbaran" ) );
@@ -194,7 +194,7 @@ void GenCobroQToolButton::click()
 			int nuevo = 1;
 			/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
 			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->DBvalue("refpedidocliente")+"'";
-			BlDbRecordSet *cur = fpv->empresaBase()->cargacursor(query);
+			BlDbRecordSet *cur = fpv->mainCompany()->cargacursor(query);
 			if (cur->numregistros() > 0) {
 			QMessageBox msgBox;
 			msgBox.setText(tr("Ya existe un cobro con esta referencia\n"));
@@ -208,8 +208,8 @@ void GenCobroQToolButton::click()
 		if (msgBox.clickedButton() == openButton) {
 		
 					while (!cur->eof()) {
-						CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
-						fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+						CobroView *bud = new CobroView( (BfCompany *) fpv->mainCompany(), 0);
+						fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 						bud->cargar(cur->valor("idcobro"));
 						bud->pintar();
 						bud->show();
@@ -226,8 +226,8 @@ void GenCobroQToolButton::click()
 		
 			/// Creacion de un cobro nuevo a partir de la factura.
 			if (nuevo) {
-			CobroView *bud = new CobroView( (BfCompany *) fpv->empresaBase(), 0);
-			fpv->empresaBase() ->m_pWorkspace->addWindow ( bud );
+			CobroView *bud = new CobroView( (BfCompany *) fpv->mainCompany(), 0);
+			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 			bud->setDBvalue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
 			bud->setDBvalue ( "cantcobro", fpv->m_totalpedidocliente->text() );
 			bud->setDBvalue ( "refcobro", fpv->DBvalue ( "refpedidocliente" ) );

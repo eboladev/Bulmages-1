@@ -75,7 +75,7 @@ DiarioView::DiarioView ( BcCompany  *emp, QWidget *parent, int )
 DiarioView::~DiarioView()
 {
     _depura ( "DiarioView::~DiarioView", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END DiarioView::~DiarioView", 0 );
 }
 
@@ -146,7 +146,7 @@ void DiarioView::inicializa1 ( QString finicial, QString ffinal, int )
 void DiarioView::boton_imprimir()
 {
     _depura ( "DiarioView::boton_imprimir", 0 );
-    DiarioPrintView *print = new DiarioPrintView ( empresaBase(), 0 );
+    DiarioPrintView *print = new DiarioPrintView ( mainCompany(), 0 );
     print->exec();
     _depura ( "END DiarioView::boton_imprimir", 0 );
 }
@@ -166,10 +166,10 @@ void DiarioView::boton_guardar()
     if ( !fn.isEmpty() ) {
         /// Si se ha proporcionado un nombre de archivo v&aacute;lido
         /// invocamos la clase diarioprint y hacemos que guarde el archivo.
-        DiarioPrint diariop ( empresaBase() );
+        DiarioPrint diariop ( mainCompany() );
         QString finicial = mui_fechainicial->text();
         QString ffinal = mui_fechafinal->text();
-        diariop.setMainCompany ( empresaBase() );
+        diariop.setMainCompany ( mainCompany() );
         diariop.inicializa1 ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
         diariop.inicializa2 ( ( char * ) fn.toAscii().constData() );
         diariop.accept();
@@ -239,8 +239,8 @@ void DiarioView::presentar()
         } // end if
 
         // Consideraciones para centros de coste y canales
-        selectcanalview *scanal = empresaBase() ->getselcanales();
-        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        selectcanalview *scanal = mainCompany() ->getselcanales();
+        SelectCCosteView *scoste = mainCompany() ->getselccostes();
         QString ccostes = scoste->cadcoste();
         if ( ccostes != "" ) {
             ccostes = " " + tabla + ".idc_coste IN (" + ccostes + ") ";
@@ -277,7 +277,7 @@ void DiarioView::presentar()
         totalcadena = query + cad + " ORDER BY ordenasiento,apunte.haber,codigo ";
         mui_list->cargar ( totalcadena );
 
-        cur = empresaBase() ->cargacursor ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
+        cur = mainCompany() ->cargacursor ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
         if ( !cur->eof() ) {
             totaldebe->setText ( cur->valor ( "totaldebe" ) );
             totalhaber->setText ( cur->valor ( "totalhaber" ) );

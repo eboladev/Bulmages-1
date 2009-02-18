@@ -65,16 +65,16 @@ int BlForm_DesFicha ( BlForm *ficha )
     QString query = "";
     if ( ficha->DBvalue ( ficha->campoId() ) != "" ) {
         QString usuario = "";
-        BlDbRecordSet *cur = ficha->empresaBase()->cargacursor ( "SELECT current_user" );
+        BlDbRecordSet *cur = ficha->mainCompany()->cargacursor ( "SELECT current_user" );
         if ( !cur->eof() ) {
             usuario = cur->valor ( "current_user" );
         } // end if
         delete cur;
         query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo = '" + usuario + "'";
-        BlDbRecordSet *cur1 = ficha->empresaBase()->cargacursor ( query );
+        BlDbRecordSet *cur1 = ficha->mainCompany()->cargacursor ( query );
         if ( !cur1->eof() ) {
             query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "'";
-            ficha->empresaBase()->ejecuta ( query );
+            ficha->mainCompany()->ejecuta ( query );
         } // end if
         delete cur1;
     } // end if

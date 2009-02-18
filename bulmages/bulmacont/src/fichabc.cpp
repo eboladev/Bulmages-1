@@ -49,7 +49,7 @@ FichaBc::FichaBc ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
 FichaBc::~FichaBc()
 {
     _depura ( "FichaBc::~FichaBc", 0 );
-    empresaBase() ->sacaWindow ( this );
+    mainCompany() ->sacaWindow ( this );
     _depura ( "END FichaBc::~FichaBc", 0 );
 }
 
@@ -82,11 +82,11 @@ BcSubForm* FichaBc::listalineas()
 /**
 \return
 **/
-BcCompany * FichaBc::empresaBase()
+BcCompany * FichaBc::mainCompany()
 {
-    _depura ( "FichaBc::empresaBase", 0 );
-    _depura ( "END FichaBc::empresaBase", 0 );
-    return ( BcCompany * ) BlForm::empresaBase();
+    _depura ( "FichaBc::mainCompany", 0 );
+    _depura ( "END FichaBc::mainCompany", 0 );
+    return ( BcCompany * ) BlForm::mainCompany();
 }
 
 

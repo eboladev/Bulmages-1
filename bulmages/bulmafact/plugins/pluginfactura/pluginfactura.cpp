@@ -71,8 +71,8 @@ void mypluginfact::elslot()
 void mypluginfact::elslot1()
 {
     _depura ( "mypluginfact::elslot1", 0 );
-        FacturaView * bud = new FacturaView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        FacturaView * bud = new FacturaView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END mypluginfact::elslot1", 0 );
 }
@@ -147,8 +147,8 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "factura", "SELECT" ) ) {
-	FacturasList *facturasList = new FacturasList( (BfCompany *)prov->empresaBase(), NULL, 0, BlFormList::SelectMode );
+    if ( prov->mainCompany()->has_table_privilege ( "factura", "SELECT" ) ) {
+	FacturasList *facturasList = new FacturasList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	facturasList->setModoEdicion();
 	facturasList->setObjectName("listfacturas");
 	facturasList->hideBusqueda();
@@ -158,7 +158,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->empresaBase()->has_table_privilege ( "factura", "SELECT" ) ) {
+    if ( prov->mainCompany()->has_table_privilege ( "factura", "SELECT" ) ) {
 	FacturasList *facturasList = prov->findChild<FacturasList *> ( "listfacturas" );
         facturasList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         facturasList->presentar();
@@ -169,10 +169,10 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->empresaBase() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
-        FacturaView * bud = new FacturaView((BfCompany *)ref->empresaBase(), NULL);
-        ref->empresaBase() ->m_pWorkspace->addWindow ( bud );
+        FacturaView * bud = new FacturaView((BfCompany *)ref->mainCompany(), NULL);
+        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
         cur->siguienteregistro();

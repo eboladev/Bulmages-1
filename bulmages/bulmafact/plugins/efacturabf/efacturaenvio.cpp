@@ -38,7 +38,7 @@ EFacturaEnvio::EFacturaEnvio ( BfCompany *emp, QWidget *parent ) : QWidget ( par
 
     setupUi ( this );  // Para que el form se inicialice bien
 
-    //empresaBase() = emp;
+    //mainCompany() = emp;
     _depura ( "END EFacturaEnvio::EFacturaEnvio", 0 );
 }
 

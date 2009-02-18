@@ -54,8 +54,8 @@ MyPlugTrab::~MyPlugTrab()
 void MyPlugTrab::elslot1()
 {
     _depura ( "MyPlugTrab::elslot1", 0 );
-        TrabajadorView * bud = new TrabajadorView((BfCompany *)empresaBase(), NULL);
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->show();
     _depura ( "END MyPlugTrab::elslot1", 0 );
 }

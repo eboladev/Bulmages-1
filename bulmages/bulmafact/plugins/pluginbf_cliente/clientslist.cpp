@@ -57,7 +57,7 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de clientes" ) );
         mui_editar->setHidden ( TRUE );
@@ -107,12 +107,12 @@ void ClientsList::editar ( int row )
     mdb_cifcliente = mui_list->DBvalue ( "cifcliente", row );
     mdb_nomcliente = mui_list->DBvalue ( "nomcliente", row );
     if ( modoEdicion() ) {
-        ClienteView * prov = new ClienteView ( ( BfCompany * ) empresaBase(), 0 ) ;
+        ClienteView * prov = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
         if ( prov->cargar ( mdb_idcliente ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idcliente ) );
@@ -142,7 +142,7 @@ void ClientsList::borrar()
     _depura ( "ClientsList::on_mui_borrar_clicked", 0 );
     try {
         QString idcliente = mui_list->DBvalue ( "idcliente" );
-        ClienteView *cli = new ClienteView ( ( BfCompany * ) empresaBase(), 0 ) ;
+        ClienteView *cli = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
         if ( cli->cargar ( idcliente ) ) {
             delete cli;
             throw - 1;
@@ -230,8 +230,8 @@ QString ClientsList::cifclient()
 **/
 void ClientsList::crear()
 {
-    ClienteView *bud = new ClienteView( ( BfCompany * ) empresaBase() , 0);
-    empresaBase()->m_pWorkspace->addWindow ( bud );
+    ClienteView *bud = new ClienteView( ( BfCompany * ) mainCompany() , 0);
+    mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();
     bud->setWindowTitle ( _( "Nuevo cliente" ) );

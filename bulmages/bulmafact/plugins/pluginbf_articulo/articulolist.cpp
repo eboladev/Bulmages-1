@@ -69,7 +69,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de articulos" ) );
         mui_editar->setHidden ( TRUE );
@@ -117,8 +117,8 @@ void ArticuloList::editar ( int row )
     mdb_nomarticulo = mui_list->DBvalue ( "nomarticulo", row );
     mdb_codigocompletoarticulo = mui_list->DBvalue ( "codigocompletoarticulo", row );
     if ( modoEdicion() ) {
-        ArticuloView * art = new ArticuloView( ( BfCompany * ) empresaBase(), 0 );
-        empresaBase() ->m_pWorkspace->addWindow ( art );
+        ArticuloView * art = new ArticuloView( ( BfCompany * ) mainCompany(), 0 );
+        mainCompany() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
             delete art;
@@ -168,7 +168,7 @@ void ArticuloList::borrar()
                 _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
                 QMessageBox::Yes, QMessageBox::No ) ) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = empresaBase() ->ejecuta ( SQLQuery );
+            int error = mainCompany() ->ejecuta ( SQLQuery );
             if ( error )
                 throw - 1;
             presentar();
@@ -304,8 +304,8 @@ void ArticuloList::submenu ( const QPoint & )
 void ArticuloList::crear()
 {
     _depura ( "ArticuloList::crear", 0 );
-	ArticuloView * art = new ArticuloView( (BfCompany *) empresaBase());
-    empresaBase()->m_pWorkspace->addWindow ( art );
+	ArticuloView * art = new ArticuloView( (BfCompany *) mainCompany());
+    mainCompany()->m_pWorkspace->addWindow ( art );
     art->pintar();
     art->show();
     art->setWindowTitle ( _( "Nuevo Articulo" ) );

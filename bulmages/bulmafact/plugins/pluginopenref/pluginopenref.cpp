@@ -63,7 +63,7 @@ int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia *l )
 
 	if (ficha) {
 		QString query = "SELECT * FROM " +ficha->tableName() + " WHERE ref"+ficha->tableName()+" = '" + l->text() +"'";
-		BlDbRecordSet *cur = l->empresaBase()->cargacursor(query);
+		BlDbRecordSet *cur = l->mainCompany()->cargacursor(query);
 		if (!cur->eof()) {
 			ficha->cargar(cur->valor("id"+ficha->tableName()));
 		} // end if

@@ -67,7 +67,7 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
 
     presentar();
     m_idz = "";
-    empresaBase() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "almacen" );
@@ -117,8 +117,8 @@ void ZList::crear()
 {
     _depura ( "ZList::crear", 0 );
     /*
-        ZView *alm = new ZView((BfCompany *)empresaBase(), 0);
-        empresaBase()->pWorkspace()->addWindow(alm);
+        ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
+        mainCompany()->pWorkspace()->addWindow(alm);
         alm->show();
     */
     _depura ( "END ZList::crear", 0 );
@@ -166,8 +166,8 @@ void ZList::editar ( int row )
         m_idz = mui_list->DBvalue ( QString ( "idz" ), row );
 
         if ( modoEdicion() ) {
-            ZView * alm = new ZView ( ( BfCompany * ) empresaBase(), 0 );
-            empresaBase() ->pWorkspace() ->addWindow ( alm );
+            ZView * alm = new ZView ( ( BfCompany * ) mainCompany(), 0 );
+            mainCompany() ->pWorkspace() ->addWindow ( alm );
             alm->show();
             alm->cargar ( m_idz );
         } else {
@@ -208,8 +208,8 @@ void ZList::borrar()
         try {
             m_idz = mui_list->DBvalue(QString("idalmacen"));
             if (modoEdicion()) {
-                ZView *alm = new ZView((BfCompany *)empresaBase(), 0);
-                empresaBase()->pWorkspace()->addWindow(alm);
+                ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
+                mainCompany()->pWorkspace()->addWindow(alm);
     //            alm->show();
                 alm->cargar(m_idz);
          alm->on_mui_borrar_clicked();

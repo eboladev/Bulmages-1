@@ -82,19 +82,19 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     int i = 0;
     idmpatrimonial = idmpatrimonial1;
     QString query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial = " + idmpatrimonial;
-    empresaBase() ->begin();
-    BlDbRecordSet *cursor = empresaBase() ->cargacursor ( query, "micursor" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    BlDbRecordSet *cursor = mainCompany() ->cargacursor ( query, "micursor" );
+    mainCompany() ->commit();
     if ( !cursor->eof() ) {
         descmpatrimonial->setText ( cursor->valor ( "descmpatrimonial" ) );
     } // end if
     delete cursor;
 
     /// Leemos las cuentas y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM compmasap WHERE masaperteneciente = " + idmpatrimonial + " AND signo = true)";
-    BlDbRecordSet *cursoraux = empresaBase() ->cargacursor ( query, "cursorusuario" );
-    empresaBase() ->commit();
+    BlDbRecordSet *cursoraux = mainCompany() ->cargacursor ( query, "cursorusuario" );
+    mainCompany() ->commit();
 
     while ( !cursoraux->eof() ) {
         /// Anyade una nueva fila a la tabla.
@@ -113,10 +113,10 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     delete cursoraux;
 
     /// Leemos las masas patrimoniales y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial IN (SELECT idmpatrimonial FROM compmasap WHERE masaperteneciente = " + idmpatrimonial + " AND signo = true)";
-    cursoraux = empresaBase() ->cargacursor ( query, "cursorusuario" );
-    empresaBase() ->commit();
+    cursoraux = mainCompany() ->cargacursor ( query, "cursorusuario" );
+    mainCompany() ->commit();
     i = 0;
     while ( !cursoraux->eof() ) {
         componentessuma->insertRow ( i );
@@ -134,10 +134,10 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     delete cursoraux;
 
     /// Leemos las cuentas y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM compmasap WHERE masaperteneciente = " + idmpatrimonial + " AND signo = false)";
-    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
-    empresaBase() ->commit();
+    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query, "cursorusuario" );
+    mainCompany() ->commit();
     i = 0;
     while ( !cursoraux1->eof() ) {
         componentesresta->insertRow ( i );
@@ -155,10 +155,10 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
     delete cursoraux1;
 
     /// Leemos las masas patrimoniales y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial IN (SELECT idmpatrimonial FROM compmasap WHERE masaperteneciente = " + idmpatrimonial + " AND signo = false)";
-    cursoraux = empresaBase() ->cargacursor ( query, "cursorusuario" );
-    empresaBase() ->commit();
+    cursoraux = mainCompany() ->cargacursor ( query, "cursorusuario" );
+    mainCompany() ->commit();
     i = 0;
     while ( !cursoraux->eof() ) {
         componentesresta->insertRow ( i );
@@ -193,10 +193,10 @@ void mpatrimonialview::on_mui_nuevasuma_clicked()
     QString masapatrimonial = mpatrimonial->text();
 
     /// Leemos las cuentas y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     QString query = "SELECT * FROM cuenta WHERE codigo = '" + codcuenta + "'";
-    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
-    empresaBase() ->commit();
+    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query, "cursorusuario" );
+    mainCompany() ->commit();
     i = componentessuma->rowCount();
     while ( !cursoraux1->eof() ) {
         componentessuma->insertRow ( i );
@@ -214,10 +214,10 @@ void mpatrimonialview::on_mui_nuevasuma_clicked()
     delete cursoraux1;
 
     /// Leemos las masas patrimoniales y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial = " + masapatrimonial;
-    cursoraux1 = empresaBase() ->cargacursor ( query, "cursormpatrimonial" );
-    empresaBase() ->commit();
+    cursoraux1 = mainCompany() ->cargacursor ( query, "cursormpatrimonial" );
+    mainCompany() ->commit();
     i = componentessuma->rowCount();
     while ( !cursoraux1->eof() ) {
         componentessuma->insertRow ( i );
@@ -262,10 +262,10 @@ void mpatrimonialview::on_mui_nuevaresta_clicked()
     QString masapatrimonial = mpatrimonial->text();
 
     /// Leemos las cuentas y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     QString query = "SELECT * FROM cuenta WHERE codigo = '" + codcuenta + "'";
-    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query, "cursorusuario" );
-    empresaBase() ->commit();
+    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query, "cursorusuario" );
+    mainCompany() ->commit();
     i = componentesresta->rowCount();
     while ( !cursoraux1->eof() ) {
         componentesresta->insertRow ( i );
@@ -283,10 +283,10 @@ void mpatrimonialview::on_mui_nuevaresta_clicked()
     delete cursoraux1;
 
     /// Leemos las masas patrimoniales y las metemos en la lista que corresponda.
-    empresaBase() ->begin();
+    mainCompany() ->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial = " + masapatrimonial;
-    cursoraux1 = empresaBase() ->cargacursor ( query, "cursormpatrimonial" );
-    empresaBase() ->commit();
+    cursoraux1 = mainCompany() ->cargacursor ( query, "cursormpatrimonial" );
+    mainCompany() ->commit();
     i = componentesresta->rowCount();
     while ( !cursoraux1->eof() ) {
         componentesresta->insertRow ( i );
@@ -322,7 +322,7 @@ void mpatrimonialview::on_mui_borraresta_clicked()
 void mpatrimonialview::on_mui_buscampatrimonial_clicked()
 {
     _depura ( "mpatrimonialview::on_mui_buscampatrimonial_clicked", 0 );
-    mpatrimonialesview *nuevae = new mpatrimonialesview ( ( BcCompany * ) empresaBase(), 0 );
+    mpatrimonialesview *nuevae = new mpatrimonialesview ( ( BcCompany * ) mainCompany(), 0 );
     nuevae->inicializa();
     nuevae->setmodoselector();
     nuevae->exec();
@@ -354,22 +354,22 @@ void mpatrimonialview::on_mui_aceptar_clicked()
 
     /// Si idmpatrimonial == NULL implica que es una inserci&oacute;n y no una modificaci&oacute;n
     if ( idmpatrimonial == "" ) {
-        empresaBase() ->begin();
+        mainCompany() ->begin();
         query.sprintf ( "INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')" );
-        empresaBase() ->ejecuta ( query.toAscii() );
+        mainCompany() ->ejecuta ( query.toAscii() );
         query.sprintf ( "SELECT MAX(idmpatrimonial) as id FROM mpatrimonial" );
-        BlDbRecordSet *curs = empresaBase() ->cargacursor ( query, "cargaid" );
-        empresaBase() ->commit();
+        BlDbRecordSet *curs = mainCompany() ->cargacursor ( query, "cargaid" );
+        mainCompany() ->commit();
         idmpatrimonial = curs->valor ( "id" ).toAscii();
     } // end if
 
     /// Ponemos los datos correctos sobre la masa patrimonial.
     QString text = descmpatrimonial->text();
     query.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s", text.toAscii().constData(), idmpatrimonial.toAscii().constData() );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
     query.sprintf ( "DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.toAscii().constData() );
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
     for ( i = 0; i < componentessuma->rowCount(); i++ ) {
         QString id = componentessuma->item ( i, 0 ) ->text();
@@ -377,14 +377,14 @@ void mpatrimonialview::on_mui_aceptar_clicked()
 
         if ( tipo == "cuenta" ) {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (%s, NULL, %s, true)",
-                            empresaBase() ->sanearCadena ( id ).toAscii().constData(),
-                            empresaBase() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
         } else {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (NULL, %s, %s, true)",
-                            empresaBase() ->sanearCadena ( id ).toAscii().constData(),
-                            empresaBase() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
         } // end if
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
     } // end for
 
     for ( i = 0; i < componentesresta->rowCount(); i++ ) {
@@ -393,14 +393,14 @@ void mpatrimonialview::on_mui_aceptar_clicked()
 
         if ( tipo == "cuenta" ) {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (%s, NULL, %s, false)",
-                            empresaBase() ->sanearCadena ( id ).toAscii().constData(),
-                            empresaBase() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
         } else {
             query.sprintf ( "INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (NULL, %s, %s, false)",
-                            empresaBase() ->sanearCadena ( id ).toAscii().constData(),
-                            empresaBase() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
+                            mainCompany() ->sanearCadena ( id ).toAscii().constData(),
+                            mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
         } // end if
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
     } // end for
     close();
     _depura ( "END mpatrimonialview::on_mui_aceptar_clicked", 0 );

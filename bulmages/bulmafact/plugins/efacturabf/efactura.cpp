@@ -42,17 +42,17 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : FichaBf ( emp, parent )
     setupUi ( this );  // Para que el form se inicialice bien
 
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server'";
-//  BlDbRecordSet *cur1 = empresaBase()->cargacursor(query);
+//  BlDbRecordSet *cur1 = mainCompany()->cargacursor(query);
 //  mui_URLServidorTiempo->setText(cur1->valor("valor"));
 //  delete cur1;
 //
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_certificado'";
-//  BlDbRecordSet *cur2 = empresaBase()->cargacursor(query);
+//  BlDbRecordSet *cur2 = mainCompany()->cargacursor(query);
 //  mui_ficheroECertificado->setText(cur2->valor("valor"));
 //  delete cur2;
 //
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server_valida'";
-//  BlDbRecordSet *cur3 = empresaBase()->cargacursor(query);
+//  BlDbRecordSet *cur3 = mainCompany()->cargacursor(query);
 //  mui_URLServidorValidaCert->setText(cur3->valor("valor"));
 //  delete cur3;
 
@@ -82,12 +82,12 @@ void EFactura::on_mui_guardar_clicked()
 
     if ( mui_URLServidorTiempo->isModified() ) {
         query = "DELETE FROM configuracion WHERE nombre = 'eFactura_server'";
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
 
         query = "INSERT INTO configuracion (nombre, valor) VALUES ('eFactura_server', '";
         query += mui_URLServidorTiempo->text();
         query += "')";
-        empresaBase() ->ejecuta ( query );
+        mainCompany() ->ejecuta ( query );
     }
 
     /// Como el setText() pone siempre a false el valor de retorno de isModified()
@@ -95,12 +95,12 @@ void EFactura::on_mui_guardar_clicked()
     /// de certificado digital
 
     query = "DELETE FROM configuracion WHERE nombre = 'eFactura_certificado'";
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
     query = "INSERT INTO configuracion (nombre, valor) VALUES ('eFactura_certificado', '";
     query += mui_ficheroECertificado->text();
     query += "')";
-    empresaBase() ->ejecuta ( query );
+    mainCompany() ->ejecuta ( query );
 
     _depura ( "END EFactura::on_mui_guardar_clicked", 0 );
 }
@@ -137,7 +137,7 @@ void EFactura::on_mui_cancelar_clicked()
     _depura ( "EFactura::on_mui_cancelar_clicked", 0 );
 
 //  QString query = "SELECT * FROM configuracion";
-//  BlDbRecordSet *cur = empresaBase()->cargacursor(query);
+//  BlDbRecordSet *cur = mainCompany()->cargacursor(query);
 //
 //  while(!cur->eof()) {
 //   _depura(cur->valor("nombre"), 0);
@@ -147,8 +147,8 @@ void EFactura::on_mui_cancelar_clicked()
 //  delete cur;
 //
 //  query = "UPDATE configuracion SET nombre='nombre' WHRE nombre='elnombre'";
-//  empresaBase()->begin();
-//  empresaBase()->ejecuta(query);
-//  empresaBase()->rollback();
+//  mainCompany()->begin();
+//  mainCompany()->ejecuta(query);
+//  mainCompany()->rollback();
     _depura ( "END EFactura::on_mui_cancelar_clicked", 0 );
 }

@@ -94,7 +94,7 @@ listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags
 
     installEventFilter ( this );
     if ( m_modo == EditMode )
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END listcuentasview1::listcuentasview1", 0 );
 }
 
@@ -106,7 +106,7 @@ listcuentasview1::~listcuentasview1()
 {
     _depura ( "listcuentasview1::~listcuentasview1", 10 );
     if ( m_modo == EditMode ) {
-        empresaBase() ->sacaWindow ( this );
+        mainCompany() ->sacaWindow ( this );
     }// end if
     _depura ( "END listcuentasview1::~listcuentasview1", 10 );
 }
@@ -141,7 +141,7 @@ int listcuentasview1::inicializa()
         mui_arbolcuentas->clear();
 
         /// Cargamos y pintamos las cuentas hijas.
-        BlDbRecordSet *ctas = empresaBase() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
+        BlDbRecordSet *ctas = mainCompany() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
         while ( !ctas->eof() ) {
 
             idcuenta = ctas->valor ( "idcuenta" ).toInt();
@@ -188,7 +188,7 @@ int listcuentasview1::inicializa()
 
         /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una
         /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
-        numdigitos = empresaBase() ->numdigitosempresa();
+        numdigitos = mainCompany() ->numdigitosempresa();
 
         inicializatabla();
     } catch ( ... ) {
@@ -211,7 +211,7 @@ void listcuentasview1::inicializatabla()
     _depura ( "listcuentasview1::inicializatabla", 0 );
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
-    BlDbRecordSet *cursoraux1 = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query );
     mui_tablacuentas->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
     QTableWidgetItem *dato;
@@ -317,10 +317,10 @@ void listcuentasview1::on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidgetItem *
     mdb_idcuenta = it->text ( cidcuenta );
     mdb_desccuenta = it->text ( cdesccuenta );
     if ( m_modo == EditMode ) {
-        CuentaView * nuevae = new CuentaView ( empresaBase(), 0 );
+        CuentaView * nuevae = new CuentaView ( mainCompany(), 0 );
         nuevae->cargar ( idcuenta() );
         inicializa();
-        empresaBase() ->pWorkspace() ->addWindow ( nuevae );
+        mainCompany() ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } else {
         emit ( selected ( mdb_idcuenta ) );
@@ -343,7 +343,7 @@ void listcuentasview1::on_mui_crear_clicked()
     _depura ( "listcuentasview1::on_mui_crear_clicked", 0 );
     QString codigo;
 
-    CuentaView *nuevae = new CuentaView ( empresaBase(), 0 );
+    CuentaView *nuevae = new CuentaView ( mainCompany(), 0 );
 
     if ( mui_arbolcuentas->selectedItems().count() > 0 ) {
         QTreeWidgetItem * it;
@@ -354,7 +354,7 @@ void listcuentasview1::on_mui_crear_clicked()
         } // end if
     } // end if
 
-    empresaBase() ->pWorkspace() ->addWindow ( nuevae );
+    mainCompany() ->pWorkspace() ->addWindow ( nuevae );
     nuevae->show();
     _depura ( "END listcuentasview1::on_mui_crear_clicked", 0 );
 }
@@ -383,9 +383,9 @@ void listcuentasview1::on_mui_editar_clicked()
     mdb_codcuenta = it->text ( ccuenta );
     mdb_idcuenta = it->text ( cidcuenta );
     mdb_desccuenta = it->text ( cdesccuenta );
-    CuentaView *nuevae = new CuentaView ( empresaBase(), 0 );
+    CuentaView *nuevae = new CuentaView ( mainCompany(), 0 );
     nuevae->cargar ( idcuenta() );
-    empresaBase() ->pWorkspace() ->addWindow ( nuevae );
+    mainCompany() ->pWorkspace() ->addWindow ( nuevae );
     nuevae->show();
     _depura ( "END listcuentasview1::on_mui_editar_clicked", 0 );
 }
@@ -410,13 +410,13 @@ void listcuentasview1::on_mui_borrar_clicked()
                                        QMessageBox::Yes, QMessageBox::No );
     if ( valor ==  QMessageBox::Yes ) {
         int idcuenta = atoi ( ( char * ) it->text ( cidcuenta ).toAscii().constData() );
-        empresaBase() ->begin();
-        if ( empresaBase() ->borrarcuenta ( idcuenta ) == 0 ) {
+        mainCompany() ->begin();
+        if ( mainCompany() ->borrarcuenta ( idcuenta ) == 0 ) {
             delete it;
         } else {
             mensajeInfo ( "No se ha podido borrar la cuenta." );
         } // end if
-        empresaBase() ->commit();
+        mainCompany() ->commit();
     } // end if
     _depura ( "END listcuentasview1::on_mui_borrar_clicked", 0 );
 }
@@ -501,7 +501,7 @@ void listcuentasview1::imprimir()
     QString fitxersortidatxt;
 
     QString query = "SELECT * FROM cuenta ORDER BY codigo";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
 
     /// L&iacute;nea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";

@@ -28,7 +28,7 @@
 BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 {
     _depura ( "BlMainCompanyPointer::BlMainCompanyPointer", 0 );
-    m_empresaBase = emp;
+    m_mainCompany = emp;
     _depura ( "END BlMainCompanyPointer::BlMainCompanyPointer", 0 );
 }
 
@@ -39,7 +39,7 @@ BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 BlMainCompanyPointer::BlMainCompanyPointer()
 {
     _depura ( "BlMainCompanyPointer::BlMainCompanyPointers", 0 );
-    m_empresaBase = NULL;
+    m_mainCompany = NULL;
     _depura ( "END BlMainCompanyPointer::BlMainCompanyPointers", 0 );
 }
 
@@ -61,7 +61,7 @@ BlMainCompanyPointer::~BlMainCompanyPointer()
 void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 {
     _depura ( "BlMainCompanyPointer::setMainCompany", 0 );
-    m_empresaBase = emp;
+    m_mainCompany = emp;
     _depura ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
 
@@ -70,11 +70,11 @@ void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 /**
 \return
 **/
-BlMainCompany *BlMainCompanyPointer::empresaBase()
+BlMainCompany *BlMainCompanyPointer::mainCompany()
 {
-    _depura ( "BlMainCompanyPointer::empresaBase", 0 );
-    _depura ( "END BlMainCompanyPointer::empresaBase", 0 );
-    return m_empresaBase;
+    _depura ( "BlMainCompanyPointer::mainCompany", 0 );
+    _depura ( "END BlMainCompanyPointer::mainCompany", 0 );
+    return m_mainCompany;
 }
 
 

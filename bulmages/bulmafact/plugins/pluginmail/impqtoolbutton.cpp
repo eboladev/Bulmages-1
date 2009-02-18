@@ -94,7 +94,7 @@ void EmailQToolButton::click()
 
 
     if ( m_presupuestoView != NULL ) {
-        m_companyact = m_presupuestoView->empresaBase();
+        m_companyact = m_presupuestoView->mainCompany();
 
 
         QString id = m_presupuestoView->DBvalue ( "idpresupuesto" );
@@ -119,7 +119,7 @@ void EmailQToolButton::click()
     } // end if
 
     if ( m_pedidoClienteView != NULL ) {
-        m_companyact = m_pedidoClienteView->empresaBase();
+        m_companyact = m_pedidoClienteView->mainCompany();
 
 
         QString id = m_pedidoClienteView->DBvalue ( "idpedidocliente" );
@@ -146,7 +146,7 @@ void EmailQToolButton::click()
 
 
     if ( m_albaranClienteView != NULL ) {
-        m_companyact = m_albaranClienteView->empresaBase();
+        m_companyact = m_albaranClienteView->mainCompany();
 
 
         QString id = m_albaranClienteView->DBvalue ( "idalbaran" );
@@ -173,7 +173,7 @@ void EmailQToolButton::click()
 
 
     if ( m_facturaView != NULL ) {
-        m_companyact = m_facturaView->empresaBase();
+        m_companyact = m_facturaView->mainCompany();
 
 
         QString id = m_facturaView->DBvalue ( "idfactura" );

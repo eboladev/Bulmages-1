@@ -36,7 +36,7 @@ selectcanalview::selectcanalview ( BcCompany *emp, QWidget *parent )
 {
     _depura ( "selectcanalview::selectcanalview", 0 );
     setupUi ( this );
-    numdigitos = ( ( BcCompany * ) empresaBase() ) ->numdigitosempresa();
+    numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
 
     m_listCanales->setColumnCount ( 5 );
@@ -74,9 +74,9 @@ void selectcanalview::cargacanales()
     BlDbRecordSet *cursoraux1;
     /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
-    empresaBase() ->begin();
-    cursoraux1 = empresaBase() ->cargacursor ( "SELECT * FROM canal", "canalillos" );
-    empresaBase() ->commit();
+    mainCompany() ->begin();
+    cursoraux1 = mainCompany() ->cargacursor ( "SELECT * FROM canal", "canalillos" );
+    mainCompany() ->commit();
     while ( !cursoraux1->eof() ) {
         idcanal = atoi ( cursoraux1->valor ( "idcanal" ).toAscii() );
         it = new QTreeWidgetItem ( m_listCanales );

@@ -77,7 +77,7 @@ void correctorwidget::on_mui_corregir_clicked()
     QString cadena;
 
     QString query = "SELECT * from factura WHERE reffactura NOT IN (SELECT refalbaran FROM albaran)";
-    BlDbRecordSet *cur = empresaBase() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
     while ( ! cur->eof() ) {
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La factura num. <B>" + cur->valor ( "numfactura" ) + "</B> No esta avalada por ningun albaran, esto puede ser causa de descontrol en el stock.";
         agregarError ( cadena, "factura", "idfactura=" + cur->valor ( "idfactura" ) );
@@ -86,7 +86,7 @@ void correctorwidget::on_mui_corregir_clicked()
     delete cur;
 
     query = "SELECT * from cliente WHERE length(cifcliente) < 6";
-    cur = empresaBase() ->cargacursor ( query );
+    cur = mainCompany() ->cargacursor ( query );
     while ( ! cur->eof() ) {
 	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> no tiene CIF.";
 	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
@@ -95,7 +95,7 @@ void correctorwidget::on_mui_corregir_clicked()
     delete cur;
 
     query = "SELECT * from proveedor WHERE length(cifproveedor) < 6";
-    cur = empresaBase() ->cargacursor ( query );
+    cur = mainCompany() ->cargacursor ( query );
     while ( ! cur->eof() ) {
 	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> no tiene CIF.";
 	  agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
@@ -105,7 +105,7 @@ void correctorwidget::on_mui_corregir_clicked()
 
 
     query = "SELECT * FROM cliente";
-    cur = empresaBase()->cargacursor ( query );
+    cur = mainCompany()->cargacursor ( query );
     while (! cur->eof() ) {
 	QChar digito;
 	if (! validarCIFNIF(cur->valor("cifcliente"), digito)) {
@@ -117,7 +117,7 @@ void correctorwidget::on_mui_corregir_clicked()
     delete cur;
 
     query = "SELECT * FROM proveedor";
-    cur = empresaBase()->cargacursor ( query );
+    cur = mainCompany()->cargacursor ( query );
     while (! cur->eof() ) {
 	QChar digito;
 	if (! validarCIFNIF(cur->valor("cifproveedor"), digito)) {
@@ -163,7 +163,7 @@ void correctorwidget::alink ( const QUrl &url )
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
 		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewClienteView", (BfCompany *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewClienteView", (BfCompany *) mainCompany() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de cliente");
 			return;
@@ -173,11 +173,11 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( BfCompany * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idfactura" ) {
 		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) mainCompany() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de factura");
 			return;
@@ -187,11 +187,11 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( BfCompany * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idproveedor" ) {
 		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewProveedorView", (BfCompany *) empresaBase() );
+		int resur = g_plugins->lanza ("SNewProveedorView", (BfCompany *) mainCompany() );
 		if (!resur) {
 			mensajeInfo("No se pudo crear instancia de cliente");
 			return;
@@ -201,7 +201,7 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( BfCompany * ) empresaBase() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     }// end if
     _depura ( "END correctorwidget::alinke", 0 );

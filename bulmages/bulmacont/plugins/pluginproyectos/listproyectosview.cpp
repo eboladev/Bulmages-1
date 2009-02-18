@@ -53,7 +53,7 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
 
     presentar();
     if ( modoEdicion() ) {
-        empresaBase() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de Proyectos" ) );
         mui_crear->setHidden ( TRUE );
@@ -85,8 +85,8 @@ ListProyectosView::~ListProyectosView()
 void ListProyectosView::crear()
 {
     _depura ( "ListProyectosView::on_mui_crear_clicked", 0 );
-    ProyectoView *proj = new ProyectoView ( ( BcCompany * ) empresaBase(), 0 );
-    empresaBase() ->pWorkspace() ->addWindow ( proj );
+    ProyectoView *proj = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
+    mainCompany() ->pWorkspace() ->addWindow ( proj );
     proj->show();
     _depura ( "END ListProyectosView::on_mui_crear_clicked", 0 );
 }
@@ -103,11 +103,11 @@ void ListProyectosView::borrar()
         QString codigo = mui_listado->DBvalue ( "idamortizacion" );
         if ( codigo != "" ) {
             QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( query );
+            mainCompany() ->begin();
+            mainCompany() ->ejecuta ( query );
             query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
+            mainCompany() ->ejecuta ( query );
+            mainCompany() ->commit();
             presentar();
         } // end if
     } catch ( ... ) {
@@ -135,9 +135,9 @@ void ListProyectosView::editar ( int row )
     mdb_nompresupuestoc = mui_listado->DBvalue ( "nompresupuestoc" );
     if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        ProyectoView * amor = new ProyectoView ( ( BcCompany * ) empresaBase(), 0 );
+        ProyectoView * amor = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
         amor->cargar ( mdb_idpresupuestoc );
-        empresaBase() ->pWorkspace() ->addWindow ( amor );
+        mainCompany() ->pWorkspace() ->addWindow ( amor );
         amor->show();
     } else {
         close();

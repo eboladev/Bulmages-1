@@ -183,7 +183,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
-    AlbaranClienteList *fac = new AlbaranClienteList ( empresaBase(), diag, 0, AlbaranClienteList::SelectMode );
+    AlbaranClienteList *fac = new AlbaranClienteList ( mainCompany(), diag, 0, AlbaranClienteList::SelectMode );
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.
@@ -200,7 +200,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
         return;
 
     /// Creamos la factura.
-    AlbaranClienteView *bud = new AlbaranClienteView ( empresaBase(), NULL );
+    AlbaranClienteView *bud = new AlbaranClienteView ( mainCompany(), NULL );
     bud->cargar ( idalbaran );
 
     /// Agregamos a comentarios que albaran se corresponde.
@@ -251,11 +251,11 @@ void FacturaView::on_mui_veralbaranes_clicked()
     BlDbRecordSet *cur = NULL;
     try {
         QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "reffactura" ) + "'";
-        cur = empresaBase() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->cargacursor ( SQLQuery );
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
-                bud = new AlbaranClienteView ( empresaBase(), NULL );
-                empresaBase() ->m_pWorkspace->addWindow ( bud );
+                bud = new AlbaranClienteView ( mainCompany(), NULL );
+                mainCompany() ->m_pWorkspace->addWindow ( bud );
                 bud->cargar ( cur->valor ( "idalbaran" ) );
                 bud->show();
                 cur->siguienteregistro();

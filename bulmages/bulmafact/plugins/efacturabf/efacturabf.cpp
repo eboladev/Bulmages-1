@@ -66,13 +66,13 @@ efacturabf::~efacturabf()
 void efacturabf::elslot()
 {
     _depura ( "efacturabf::elslot", 0 );
-    EFactura *ef = new EFactura ( ( BfCompany * ) empresaBase() );
+    EFactura *ef = new EFactura ( ( BfCompany * ) mainCompany() );
     ef->show();
 
-//  EFacturaEnvio *efv = new EFacturaEnvio(empresaBase());
+//  EFacturaEnvio *efv = new EFacturaEnvio(mainCompany());
 //  efv->show();
 
-//  EFacturaRecepcion *efr = new EFacturaRecepcion(empresaBase());
+//  EFacturaRecepcion *efr = new EFacturaRecepcion(mainCompany());
 //  efr->show();
 
 //     fprintf(stderr,"Sa ha activado el slot\n");
@@ -91,7 +91,7 @@ void efacturabf::elslot()
 void efacturabf::elslot1()
 {
     _depura ( "efacturabf::elslot1", 0 );
-    EFacturaRecepcion *efr = new EFacturaRecepcion ( ( BfCompany * ) empresaBase() );
+    EFacturaRecepcion *efr = new EFacturaRecepcion ( ( BfCompany * ) mainCompany() );
     efr->show();
     _depura ( "END efacturabf::elslot1", 0 );
 }
