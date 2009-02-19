@@ -172,15 +172,14 @@ public:
 class BlPostgreSqlClient
 {
 private:
-    QString pghost; /// Indica cual es el host de las bases de datos.
-    QString pgport; /// Indica por que puerto acceder a dicho host.
-    QString pgoptions; /// Indica las opciones especiales que pueda tener la conexion.
-    QString pgtty; /// Indica algunos par&aacute;metros de la conexi&oacute;n (Desgraciadamente no se cuales).
-    QString dbName; /// Indica el nombre de la base de datos con la que se conecta.
-    int nFields; /// Indica el n&uacute;mero de campos que tiene algo (no se que).
+    QString m_pgHost; /// Indica cual es el host de las bases de datos.
+    QString m_pgPort; /// Indica por que puerto acceder a dicho host.
+    QString m_pgOptions; /// Indica las opciones especiales que pueda tener la conexion.
+    QString m_pgTty; /// Indica algunos par&aacute;metros de la conexi&oacute;n (Desgraciadamente no se cuales).
+    QString m_pgDbName; /// Indica el nombre de la base de datos con la que se conecta.
     PGconn *conn; /// Representa la conexi&oacute;n.
     int open; /// Indica si el postgresiface esta abierto o no.
-    bool m_transaccion; /// Indica si estamos dentro de una transacci&oacute;n.
+    bool m_insideTransaction; /// Indica si estamos dentro de una transacci&oacute;n.
     QString m_currentUser;   /// Indica el usuario que se ha conectado.
 
 private:
@@ -237,9 +236,9 @@ public:
     /// Returns the parent of a determinated account code.
     QString searchParent ( QString );
     /// Returns the name of the database opened, if none as open then returns "".
-    QString nameDB();
+    QString dbName();
     /// Returns table privileges of current user
-    bool has_table_privilege ( QString tabla, QString permiso );
+    bool hasTablePrivilege ( QString table, QString privilege );
     /// Evalua expresiones con el motor de calculo de la base de datos
     QString PGEval(QString evalexp, int precision = 2 );
 };

@@ -261,8 +261,8 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::cargaSpecs()
 {
     _depura ( "BlSubForm::cargaSpecs", 0 );
-//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->nameDB() + "_specs.spc");
-    QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->nameDB() + "_specs.spc" );
+//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
+    QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         _depura ( "END BlSubForm::cargaSpecs", 0, "No se pudo abrir archivo" );
@@ -1939,7 +1939,7 @@ void BlSubForm::guardaconfig()
 {
     _depura ( "BlSubForm::guardaconfig", 0 );
     QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -1972,7 +1972,7 @@ void BlSubForm::guardaconfig()
 void BlSubForm::cargaconfig()
 {
     _depura ( "BlSubForm::cargaconfig", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {

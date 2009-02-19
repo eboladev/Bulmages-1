@@ -110,7 +110,7 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-        QString confEsp = CONFGLOBAL + bges->empresaTPV()->nameDB() + ".conf";
+        QString confEsp = CONFGLOBAL + bges->empresaTPV()->dbName() + ".conf";
         QDir archivoConf;
         if (!archivoConf.exists(confEsp)) {
             QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";

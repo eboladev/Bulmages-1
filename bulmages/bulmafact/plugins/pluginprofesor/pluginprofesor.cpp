@@ -85,7 +85,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 {
     _depura ( "MyPlugProf::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "cobro", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Docencia", "menuDocencia", "menuMaestro");
@@ -142,7 +142,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "profesor", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "profesor", "SELECT" ) ) {
 	g_profesoresList = new ProfesoresList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_profesoresList );
 	g_profesoresList->hide();

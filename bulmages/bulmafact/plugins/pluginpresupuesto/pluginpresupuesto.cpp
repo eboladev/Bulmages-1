@@ -87,7 +87,7 @@ void mypluginpres::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginpres::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "presupuesto", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 
 
     /// Miramos si existe un menu Ventas
@@ -139,7 +139,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "presupuesto", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 	g_presupuestosList = new PresupuestoList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_presupuestosList );
 	g_presupuestosList->hide();
@@ -149,7 +149,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "presupuesto", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 	PresupuestoList *presupuestosList = new PresupuestoList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	presupuestosList->setModoEdicion();
 	presupuestosList->setObjectName("listpresupuestos");
@@ -160,7 +160,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "presupuesto", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 	PresupuestoList *presupuestosList = prov->findChild<PresupuestoList *> ( "listpresupuestos" );
         presupuestosList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         presupuestosList->presentar();

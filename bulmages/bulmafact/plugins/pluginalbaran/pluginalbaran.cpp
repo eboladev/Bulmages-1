@@ -87,7 +87,7 @@ void mypluginalb::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginalb::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "albaran", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
@@ -138,7 +138,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "albaran", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 	g_albaranClienteList = new AlbaranClienteList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_albaranClienteList );
 	g_albaranClienteList->hide();
@@ -148,7 +148,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "albaran", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	albaranesList->setModoEdicion();
 	albaranesList->setObjectName("listalbaranes");
@@ -159,7 +159,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "albaran", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 	AlbaranClienteList *albaranesList = prov->findChild<AlbaranClienteList *> ( "listalbaranes" );
         albaranesList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         albaranesList->presentar();

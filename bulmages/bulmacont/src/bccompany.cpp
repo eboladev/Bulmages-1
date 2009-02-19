@@ -969,7 +969,7 @@ void BcCompany::guardaConf()
 	/// guardamos la configuracion.
 	if (!m_bulmacont) return;
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -1018,7 +1018,7 @@ void BcCompany::cargaConf()
 	/// guardamos la configuracion.
 	if (!m_bulmacont) return;
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

@@ -79,6 +79,6 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmatpv bulmalib)
+add_dependencies(${plugin} bulmatpv bulmalib pluginticketbasico)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

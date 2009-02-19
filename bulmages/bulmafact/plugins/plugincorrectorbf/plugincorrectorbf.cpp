@@ -79,7 +79,7 @@ void entryPoint ( Bulmafact *bcont )
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( viewCorrector );
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -98,7 +98,7 @@ void entryPoint ( Bulmafact *bcont )
 int Bulmafact_closeEvent ( Bulmafact *bcont )
 {
     BlMainCompany * emp = bcont->getcompany();
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

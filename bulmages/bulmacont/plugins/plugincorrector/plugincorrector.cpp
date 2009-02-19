@@ -80,7 +80,7 @@ void entryPoint ( Bulmacont *bcont )
 
     corr->m_viewCorrector = viewCorrector;
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -99,7 +99,7 @@ void entryPoint ( Bulmacont *bcont )
 int Bulmacont_closeEvent ( Bulmacont *bcont )
 {
     BcCompany * emp = bcont->empresaactual();
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

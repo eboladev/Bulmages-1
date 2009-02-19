@@ -85,7 +85,7 @@ void mypluginpedp::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginpedp::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 
     /// Miramos si existe un menu Compras
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
@@ -136,7 +136,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 	g_pedidosProveedorList = new PedidosProveedorList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_pedidosProveedorList );
 	g_pedidosProveedorList->hide();
@@ -146,7 +146,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 	PedidosProveedorList *pedidosProveedorList = new PedidosProveedorList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	pedidosProveedorList->setModoEdicion();
 	pedidosProveedorList->setObjectName("listPedidosProveedorList");
@@ -157,7 +157,7 @@ int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
 }
 
 int ProveedorView_cargarPost_Post (ProveedorView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "pedidoproveedor", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 	PedidosProveedorList *pedidosProveedorList = prov->findChild<PedidosProveedorList *> ( "listPedidosProveedorList" );
         pedidosProveedorList->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
         pedidosProveedorList->presentar();

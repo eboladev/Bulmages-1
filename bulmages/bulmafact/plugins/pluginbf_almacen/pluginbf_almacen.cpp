@@ -70,7 +70,7 @@ void MyPlugAlm::inicializa ( Bulmafact *bges )
 {
     _depura ( "MyPlugAlm::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "almacen", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->menuMaestro;

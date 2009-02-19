@@ -80,21 +80,21 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
     /// Comprobamos que tengamos permisos para trabajar con 'Paises'.
     m_bulmafact->actionPaises->setEnabled ( FALSE );
 
-    if ( has_table_privilege ( "pais", "SELECT" ) ) {
+    if ( hasTablePrivilege ( "pais", "SELECT" ) ) {
         m_bulmafact->actionPaises->setEnabled ( TRUE );
     } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con 'Formas de pago'.
     m_bulmafact->actionFormas_de_Pago->setEnabled ( FALSE );
 
-    if ( has_table_privilege ( "forma_pago", "SELECT" ) ) {
+    if ( hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
         m_bulmafact->actionFormas_de_Pago->setEnabled ( TRUE );
     } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con 'Series de factura'.
     m_bulmafact->actionSeries_de_Factura->setEnabled ( FALSE );
 
-    if ( has_table_privilege ( "serie_factura", "SELECT" ) ) {
+    if ( hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
         m_bulmafact->actionSeries_de_Factura->setEnabled ( TRUE );
     } // end if
 
@@ -110,8 +110,8 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
     cargaConf();
 
     /// Ponemos el titulo de la ventana
-    m_bulmafact->statusBar() ->showMessage ( nameDB(), 2000 );
-    m_bulmafact->setWindowTitle ( _( "Facturacion GPL" ) + " :: " + nameDB() );
+    m_bulmafact->statusBar() ->showMessage ( dbName(), 2000 );
+    m_bulmafact->setWindowTitle ( _( "Facturacion GPL" ) + " :: " + dbName() );
 
     _depura ( "END BfCompany::createMainWindows", 0 );
 }
@@ -257,7 +257,7 @@ void BfCompany::s_TasaIVAView()
 void BfCompany::guardaConf()
 {
     _depura ( "BfCompany::guardaConf", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -301,7 +301,7 @@ void BfCompany::guardaConf()
 void BfCompany::cargaConf()
 {
     _depura ( "BfCompany::cargaConf", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

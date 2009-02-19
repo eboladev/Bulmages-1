@@ -92,7 +92,7 @@ void MyPlugIVA::inicializa ( Bulmafact *bges )
 {
     _depura ( "MyPlugIVA::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "tipo_iva", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->menuMaestro;

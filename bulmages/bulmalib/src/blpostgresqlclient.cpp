@@ -467,11 +467,11 @@ bool BlDbRecordSet::esprimerregistro()
 /**
 \return
 **/
-QString BlPostgreSqlClient::nameDB()
+QString BlPostgreSqlClient::dbName()
 {
-    _depura ( "BlPostgreSqlClient::nameDB", 0 );
-    _depura ( "END BlPostgreSqlClient::nameDB", 0 );
-    return dbName;
+    _depura ( "BlPostgreSqlClient::dbName", 0 );
+    _depura ( "END BlPostgreSqlClient::dbName", 0 );
+    return m_pgDbName;
 }
 
 
@@ -481,7 +481,7 @@ QString BlPostgreSqlClient::nameDB()
 BlPostgreSqlClient::BlPostgreSqlClient()
 {
     _depura ( "BlPostgreSqlClient::BlPostgreSqlClient", 0 );
-    m_transaccion = FALSE;
+    m_insideTransaction = FALSE;
     _depura ( "END BlPostgreSqlClient::BlPostgreSqlClient", 0 );
 }
 
@@ -520,11 +520,11 @@ BlPostgreSqlClient::~BlPostgreSqlClient()
 int BlPostgreSqlClient::inicializa ( QString nomdb )
 {
     _depura ( "BlPostgreSqlClient::inicializa", 0, nomdb );
-    dbName = nomdb;
-    pghost = confpr->valor ( CONF_SERVIDOR ); /// host name of the backend server.
-    pgport = confpr->valor ( CONF_PUERTO ); /// port of the backend server.
-    pgoptions = ""; /// special options to start up the backend server.
-    pgtty = ""; /// debugging tty for the backend server.
+    m_pgDbName = nomdb;
+    m_pgHost = confpr->valor ( CONF_SERVIDOR ); /// host name of the backend server.
+    m_pgPort = confpr->valor ( CONF_PUERTO ); /// port of the backend server.
+    m_pgOptions = ""; /// special options to start up the backend server.
+    m_pgTty = ""; /// debugging tty for the backend server.
     QString conexion;
 
     QString user = confpr->valor ( CONF_LOGIN_USER );
@@ -533,19 +533,22 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
     try {
     /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
     /// Ahora si se pone -- se considera conexion local.
-    if ( pghost != "--" )
-        conexion = "host = " + pghost;
-    conexion += " port = " + pgport;
-    conexion += " dbname = " + dbName;
-    if ( user != "" )
+    if ( m_pgHost != "--" ) {
+        conexion = "host = " + m_pgHost;
+    } // end if
+    conexion += " port = " + m_pgPort;
+    conexion += " dbname = " + m_pgDbName;
+    if ( user != "" ) {
         conexion += " user = " + user;
-    if ( passwd != "" )
+    } // end if
+    if ( passwd != "" ) {
         conexion += " password = " + passwd;
+    } // end if
 
     _depura ( conexion, 0 );
     conn = PQconnectdb ( conexion.toAscii().data() );
     if ( PQstatus ( conn ) == CONNECTION_BAD ) {
-        _depura ( "La conexion con la base de datos '" + dbName + "' ha fallado.\n", 0 );
+        _depura ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
         if ( passwd != "" && confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
             _depura ( PQerrorMessage ( conn ), 2 );
         } else {
@@ -618,7 +621,7 @@ int BlPostgreSqlClient::formatofecha()
 int BlPostgreSqlClient::begin()
 {
     _depura ( "BlPostgreSqlClient::begin", 0 );
-    if ( m_transaccion ) {
+    if ( m_insideTransaction ) {
         _depura ( "Ya estamos dentro de una transaccion", 0 );
         return -1;
     } // end if
@@ -630,7 +633,7 @@ int BlPostgreSqlClient::begin()
         return -1;
     } // end if
     PQclear ( res );
-    m_transaccion = TRUE;
+    m_insideTransaction = TRUE;
     _depura ( "END BlPostgreSqlClient::begin", 0 );
     return ( 0 );
 }
@@ -645,14 +648,14 @@ int BlPostgreSqlClient::begin()
 void BlPostgreSqlClient::commit()
 {
     _depura ( "BlPostgreSqlClient::commit", 0 );
-    if ( !m_transaccion ) {
+    if ( !m_insideTransaction ) {
         _depura ( "END BlPostgreSqlClient::commit", 0, "No estamos en ninguna transaccion" );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "COMMIT" );
     PQclear ( res );
-    m_transaccion = FALSE;
+    m_insideTransaction = FALSE;
     _depura ( "END BlPostgreSqlClient::commit", 0 );
 }
 
@@ -666,14 +669,14 @@ void BlPostgreSqlClient::commit()
 void BlPostgreSqlClient::rollback()
 {
     _depura ( "BlPostgreSqlClient::rollback", 0 );
-    if ( !m_transaccion ) {
+    if ( !m_insideTransaction ) {
         _depura ( "END BlPostgreSqlClient::rollback", 0, "No estamos en ninguna transaccion" );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "ROLLBACK" );
     PQclear ( res );
-    m_transaccion = FALSE;
+    m_insideTransaction = FALSE;
     _depura ( "END BlPostgreSqlClient::rollback", 0 );
 }
 
@@ -1374,24 +1377,25 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
 
 /// Comprueba si el usuario actual tiene permisos para actuar sobre una tabla y
 /// devuelve TRUE o FALSE.
-/// \param tabla La tabla que se quiere consultar.
-/// \param permiso El tipo de permiso "SELECT", "INSERT" o "UPDATE".
+/// \param table La tabla que se quiere consultar.
+/// \param privilege El tipo de permiso "SELECT", "INSERT" o "UPDATE".
 /// \return TRUE si se tiene permiso, FALSE si no se lo tiene.
-bool BlPostgreSqlClient::has_table_privilege ( QString tabla, QString permiso )
+bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
 {
-    _depura ( "BlPostgreSqlClient::has_table_privilege", 0 );
+    _depura ( "BlPostgreSqlClient::hasTablePrivilege", 0 );
     /// Comprobamos que tengamos permisos para trabajar con articulos.
-    BlDbRecordSet *cur = cargacursor ( "SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins" );
-    bool privileges = FALSE;
-    if ( cur ) {
-        if ( cur->valor ( "pins" ) == "t" ) {
-            privileges = TRUE;
+    BlDbRecordSet *rs = cargacursor ( "SELECT has_table_privilege('" + table + "', '" + privilege + "') AS pins" );
+    bool hasPrivilege = FALSE;
+    if ( rs ) {
+        if ( rs->valor ( "pins" ) == "t" ) {
+            hasPrivilege = TRUE;
         } // end if
-        delete cur;
+        delete rs;
     } // end if
-    _depura ( "END BlPostgreSqlClient::has_table_privilege", 0 );
-    return privileges;
+    _depura ( "END BlPostgreSqlClient::hasTablePrivilege", 0 );
+    return hasPrivilege;
 }
+
 
 /// Evaluacion de formulas usando la base de dato como motor de calculo
 QString BlPostgreSqlClient::PGEval(QString evalexp, int precision) {

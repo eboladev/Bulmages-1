@@ -85,7 +85,7 @@ void mypluginalbp::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginalbp::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "albaranp", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
     /// Miramos si existe un menu Compras
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
 	pPluginMenu->addSeparator();
@@ -135,7 +135,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "albaranp", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
 	g_albaranesProveedor = new AlbaranesProveedor( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_albaranesProveedor );
 	g_albaranesProveedor->hide();
@@ -145,7 +145,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "albaranp", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
 	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	albaranesProveedor->setModoEdicion();
 	albaranesProveedor->setObjectName("listalbaranesproveedor");
@@ -156,7 +156,7 @@ int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
 }
 
 int ProveedorView_cargarPost_Post (ProveedorView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "albaranp", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
 	AlbaranesProveedor *albaranesProveedor = prov->findChild<AlbaranesProveedor *> ( "listalbaranesproveedor" );
         albaranesProveedor->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
         albaranesProveedor->presentar();

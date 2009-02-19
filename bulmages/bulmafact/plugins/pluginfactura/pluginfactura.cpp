@@ -87,7 +87,7 @@ void mypluginfact::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginfact::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "factura", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
 	pPluginMenu->addSeparator();
@@ -137,7 +137,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "factura", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "factura", "SELECT" ) ) {
 	g_facturasList = new FacturasList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_facturasList );
 	g_facturasList->hide();
@@ -147,7 +147,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "factura", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
 	FacturasList *facturasList = new FacturasList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	facturasList->setModoEdicion();
 	facturasList->setObjectName("listfacturas");
@@ -158,7 +158,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "factura", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
 	FacturasList *facturasList = prov->findChild<FacturasList *> ( "listfacturas" );
         facturasList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         facturasList->presentar();

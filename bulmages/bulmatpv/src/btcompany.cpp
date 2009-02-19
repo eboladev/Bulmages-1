@@ -96,8 +96,8 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     cargaConf();
 
     /// Ponemos el titulo de la ventana
-    m_bulmaTPV->statusBar() ->showMessage ( nameDB(), 2000 );
-    m_bulmaTPV->setWindowTitle ( _( "Terminal Punto de Venta GPL" ) + " :: " + nameDB() );
+    m_bulmaTPV->statusBar() ->showMessage ( dbName(), 2000 );
+    m_bulmaTPV->setWindowTitle ( _( "Terminal Punto de Venta GPL" ) + " :: " + dbName() );
 
     _depura ( "END BtCompany::createMainWindows", 0 );
 }
@@ -555,7 +555,7 @@ void BtCompany::setTicketActual ( Ticket *tick )
 void BtCompany::guardaConf()
 {
     _depura ( "Company::guardaConf", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -583,7 +583,7 @@ void BtCompany::guardaConf()
 void BtCompany::cargaConf()
 {
     _depura ( "Company::cargaConf", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + nameDB() + ".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

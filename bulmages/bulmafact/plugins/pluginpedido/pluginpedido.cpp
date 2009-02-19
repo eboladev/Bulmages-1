@@ -87,7 +87,7 @@ void mypluginped::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginped::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
@@ -137,7 +137,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 	g_pedidosClienteList = new PedidosClienteList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_pedidosClienteList );
 	g_pedidosClienteList->hide();
@@ -147,7 +147,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 	PedidosClienteList *pedidosClienteList = new PedidosClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	pedidosClienteList->setModoEdicion();
 	pedidosClienteList->setObjectName("listpedidoclientees");
@@ -158,7 +158,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "pedidocliente", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 	PedidosClienteList *pedidosClienteList = prov->findChild<PedidosClienteList *> ( "listpedidoclientees" );
         pedidosClienteList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         pedidosClienteList->presentar();

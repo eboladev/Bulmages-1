@@ -85,7 +85,7 @@ void myplugincob::inicializa ( Bulmafact *bges )
 {
     _depura ( "myplugincob::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "cobro", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
@@ -134,7 +134,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "cobro", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 	g_cobrosList = new CobrosList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_cobrosList );
 	g_cobrosList->hide();
@@ -144,7 +144,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "cobro", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 		CobrosList *pagosList = new CobrosList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 		pagosList->setModoEdicion();
 		pagosList->setObjectName("listcobrosproveedor");
@@ -155,7 +155,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 }
 
 int ClienteView_cargarPost_Post (ClienteView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "cobro", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 		CobrosList *pagosList = prov->findChild<CobrosList *> ( "listcobrosproveedor" );
         pagosList->setidcliente ( prov->DBvalue ( "idcliente" ) );
         pagosList->presentar();

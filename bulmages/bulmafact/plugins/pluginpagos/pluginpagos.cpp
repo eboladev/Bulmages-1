@@ -85,7 +85,7 @@ void mypluginpag::inicializa ( Bulmafact *bges )
 {
     _depura ( "mypluginpag::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "pago", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "pago", "SELECT" ) ) {
     /// Miramos si existe un menu Compras
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
 	pPluginMenu->addSeparator();
@@ -135,7 +135,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "pago", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "pago", "SELECT" ) ) {
 	g_pagosList = new PagosList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_pagosList );
 	g_pagosList->hide();
@@ -145,7 +145,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "pago", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "pago", "SELECT" ) ) {
 	PagosList *pagosList = new PagosList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
 	pagosList->setModoEdicion();
 	pagosList->setObjectName("listpagosproveedor");
@@ -156,7 +156,7 @@ int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
 }
 
 int ProveedorView_cargarPost_Post (ProveedorView *prov) {
-    if ( prov->mainCompany()->has_table_privilege ( "pago", "SELECT" ) ) {
+    if ( prov->mainCompany()->hasTablePrivilege ( "pago", "SELECT" ) ) {
 	PagosList *pagosList = prov->findChild<PagosList *> ( "listpagosproveedor" );
         pagosList->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
         pagosList->presentar();

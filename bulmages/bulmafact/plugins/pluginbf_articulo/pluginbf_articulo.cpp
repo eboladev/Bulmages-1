@@ -113,7 +113,7 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 {
     _depura ( "MyPlugArt::inicializa", 0 );
 
-    if ( bges->getcompany()->has_table_privilege ( "articulo", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
     /// Miramos si existe un menu Articulos
 	QMenu *pPluginMenu = bges->newMenu("&Articulos", "menuArticulos", "menuMaestro");
@@ -184,7 +184,7 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->has_table_privilege ( "articulo", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 	g_articulosList = new ArticuloList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_articulosList );
 	g_articulosList->hide();

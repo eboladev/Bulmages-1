@@ -106,8 +106,8 @@ BlForm::~BlForm()
 void BlForm::cargaSpecs()
 {
     _depura ( "BlForm::cargaSpecs", 0 );
-//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->nameDB() + "_specs.spc");
-    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->nameDB() + "_spec.spc" );
+//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
+    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         _depura ( "END BlForm::cargaSpecs", 0, "Fichero no se puede abrir" );
@@ -491,7 +491,7 @@ void BlForm::setDbTableName ( QString nom )
     BlDbRecord::setDbTableName ( nom );
 
     if (mainCompany() != NULL) {
-	if ( !mainCompany() ->has_table_privilege ( nom, "INSERT" ) ) {
+	if ( !mainCompany() ->hasTablePrivilege ( nom, "INSERT" ) ) {
 		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
 		QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
 		if ( b ) b->setDisabled ( TRUE );
@@ -1144,7 +1144,7 @@ int BlForm::generaRML ( const QString &arch )
 	m_variables.clear();
 
 	/// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
-	m_variables["CONF_DBNAME"] = mainCompany()->nameDB();
+	m_variables["CONF_DBNAME"] = mainCompany()->dbName();
 	m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
 
     /// Disparamos los plugins

@@ -143,14 +143,14 @@ try {
     db->inicializa ( confpr->valor(CONF_FACT_ALT) );
     db->begin();
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file.open ( QIODevice::WriteOnly ) ) {
 	return;
     } // end if
     QTextStream stream ( &file );
 
-    QFile file1 ( confpr->valor ( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file1 ( confpr->valor ( CONF_DIR_USER ) + "insert_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file1.open ( QIODevice::WriteOnly ) ) {
 	file.close();
@@ -158,7 +158,7 @@ try {
     } // end if
     QTextStream stream1 ( &file1 );
 	
-    QFile file2 ( confpr->valor ( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file2 ( confpr->valor ( CONF_DIR_USER ) + "delete_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file2.open ( QIODevice::WriteOnly ) ) {
 	file.close();
@@ -167,7 +167,7 @@ try {
     } // end if
     QTextStream stream2 ( &file2 );
 
-    QFile file3 ( confpr->valor ( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->nameDB() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
+    QFile file3 ( confpr->valor ( CONF_DIR_USER ) + "refs_z2z_" + mainCompany()->dbName() + "_" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm") +".sql" );
     /// Guardado del orden y de configuraciones varias.
     if (! file3.open ( QIODevice::WriteOnly ) ) {
 	file.close();

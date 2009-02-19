@@ -82,7 +82,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginalmacen)
+add_dependencies(${plugin} bulmafact bulmalib pluginalmacen pluginbf_trabajador)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)

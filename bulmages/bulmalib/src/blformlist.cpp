@@ -459,7 +459,7 @@ void BlFormList::trataPermisos ( QString nomtabla )
 {
     _depura ( "BlFormList::trataPermisos", 0 );
 
-    if ( !mainCompany() ->has_table_privilege ( nomtabla, "INSERT" ) ) {
+    if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "INSERT" ) ) {
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
         QToolButton * b = findChild<QToolButton *> ( "mui_crear" );
         if ( b ) b->setDisabled ( TRUE );
@@ -471,7 +471,7 @@ void BlFormList::trataPermisos ( QString nomtabla )
 
 
 
-    if ( !mainCompany() ->has_table_privilege ( nomtabla, "UPDATE" ) ) {
+    if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "UPDATE" ) ) {
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
         QToolButton * b = findChild<QToolButton *> ( "mui_editar" );
         if ( b ) b->setDisabled ( TRUE );
