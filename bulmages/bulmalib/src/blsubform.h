@@ -30,7 +30,7 @@
 #include "blfunctions.h"
 #include "ui_blsubformbase.h"
 #include "blpostgresqlclient.h"
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bldbsubform.h"
 #include "blfixed.h"
 #include "blwidget.h"

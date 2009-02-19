@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,60 +19,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeyEvent>
-#include <QEvent>
+#ifndef BLTEXTEDITDELEGATE_H
+#define BLTEXTEDITDELEGATE_H
 
-#include "qtexteditdelegate.h"
+#include <QTextEdit>
+
+#include "blfunctions.h"
 
 
-///
-/**
-\param parent
-**/
-QTextEditDelegate::QTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent )
+class BlTextEditDelegate : public QTextEdit
 {
-    _depura ( "QTextEditDelegate::QTextEditDelegate", 0 );
-    installEventFilter ( this );
-    _depura ( "END QTextEditDelegate::QTextEditDelegate", 0 );
-}
+    Q_OBJECT
 
+public:
+    BlTextEditDelegate ( QWidget *parent = 0 );
+    virtual ~BlTextEditDelegate();
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
+};
 
-///
-/**
-**/
-QTextEditDelegate::~QTextEditDelegate()
-{
-    _depura ( "QTextEditDelegate::~QTextEditDelegate", 0 );
-    _depura ( "END QTextEditDelegate::~QTextEditDelegate", 0 );
-}
-
-
-///
-/**
-\param obj
-\param event
-\return
-**/
-bool QTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
-{
-    _depura ( "QTextEditDelegate::eventFilter", 0, QString::number ( event->type() ) );
-    /// Si es un release de tecla se hace la funcionalidad especificada.
-    if ( event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease ) {
-        QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
-        int key = keyEvent->key();
-        _depura ( "QTextEditDelegate::key = :", 0, QString::number ( key ) );
-        Qt::KeyboardModifiers mod = keyEvent->modifiers();
-/*
-      switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-	      event->ignore();
-              return TRUE;
-            break;
-        } // end switch
-*/
-    } // end if
-    _depura ( "END QTextEditDelegate::eventFilter()", 0 );
-    return QTextEdit::eventFilter ( obj, event );
-}
+#endif
 

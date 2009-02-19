@@ -23,100 +23,22 @@
 #include <QLineEdit>
 #include <QTextEdit>
 
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "blconfiguration.h"
 
 
-/** Constructor de la clase estandar de delegacion para la edicion de elementos
-en el QTable2 */
-/**
-\param parent
-**/
-QTableItemTextDelegate::QTableItemTextDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent )
-{
-    _depura ( "QTableItemTextDelegate::QTableItemTextDelegate", 0 );
-    _depura ( "END QTableItemTextDelegate::QTableItemTextDelegate", 0 );
-}
-
-
-/** Destructor de la clase estandar de delegacion para la edicion de elementos en el Qtable2
-*/
-/**
-**/
-QTableItemTextDelegate::~QTableItemTextDelegate()
-{
-    _depura ( "QTableItemTextDelegate::~QTableItemTextDelegate", 0 );
-    _depura ( "END QTableItemTextDelegate::~QTableItemTextDelegate", 0 );
-}
-
-
-/** Creacion del editor basado en un QTextEdit para el caso de edicion de elementos
-de Qtable2
-*/
-/**
-\param parent
-\return
-**/
-QWidget *QTableItemTextDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &, const QModelIndex & ) const
-{
-    _depura ( "QTableItemTextDelegate::createEditor", 0 );
-    QTextEdit *textedit = new QTextEdit ( parent );
-    _depura ( "END QTableItemTextDelegate::createEditor", 0 );
-    return textedit;
-}
-
-
-/** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
-de edicion
-*/
-/**
-\param editor
-\param model
-\param index
-**/
-void QTableItemTextDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
-{
-    _depura ( "QTableItemTextDelegate::setModelData", 0 );
-    QTextEdit *textedit = qobject_cast<QTextEdit *> ( editor );
-    model->setData ( index, textedit->toPlainText() );
-    _depura ( "END QTableItemTextDelegate::setModelData", 0 );
-
-}
-
-
-/** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
-de edicion
-*/
-/**
-\param editor
-\param index
-**/
-void QTableItemTextDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
-{
-    _depura ( "QTableItemTextDelegate::setEditorData", 0 );
-    QString data = index.data ( Qt::DisplayRole ).toString();
-    QTextEdit *textedit = qobject_cast<QTextEdit *> ( editor );
-    textedit->setPlainText ( data );
-    textedit->setGeometry ( textedit->x(), textedit->y(), textedit->width() + 150, textedit->height() + 50 );
-    _depura ( "END QTableItemTextDelegate::setEditorData", 0 );
-}
-
-
-/// ======================================================================
-
-
-/** Constructor de QTableWidget2 clase derivada de QTableWidget con
+/** Constructor de BlTableWidget clase derivada de QTableWidget con
 un eventHandler especifico
 */
 /**
 \param parent
 **/
-QTableWidget2::QTableWidget2 ( QWidget *parent ) : QTableWidget ( parent )
+BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
 {
-    _depura ( "QTableWidget2::QTableWidget2", 0 );
+    _depura ( "BlTableWidget::BlTableWidget", 0 );
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
-    _depura ( "END QTableWidget2::QTableWidget2", 0 );
+    _depura ( "END BlTableWidget::BlTableWidget", 0 );
 }
 
 
@@ -124,20 +46,20 @@ QTableWidget2::QTableWidget2 ( QWidget *parent ) : QTableWidget ( parent )
 */
 /**
 **/
-void QTableWidget2::editItem ( QTableWidgetItem * )
+void BlTableWidget::editItem ( QTableWidgetItem * )
 {
-    _depura ( "QTableWidget2::editItem", 0 );
-    _depura ( "END QTableWidget2::editItem", 0 );
+    _depura ( "BlTableWidget::editItem", 0 );
+    _depura ( "END BlTableWidget::editItem", 0 );
 }
 
 
 ///
 /**
 **/
-void QTableWidget2::sitemChanged ( QTableWidgetItem * )
+void BlTableWidget::sitemChanged ( QTableWidgetItem * )
 {
-    _depura ( "QTableWidget2::sitemChanged", 0 );
-    _depura ( "END QTableWidget2::sitemChanged", 0 );
+    _depura ( "BlTableWidget::sitemChanged", 0 );
+    _depura ( "END BlTableWidget::sitemChanged", 0 );
 }
 
 
@@ -146,11 +68,11 @@ void QTableWidget2::sitemChanged ( QTableWidgetItem * )
 \param type
 \param mode
 **/
-QTableWidgetItem2::QTableWidgetItem2 ( int type, int mode ) : QTableWidgetItem ( type )
+BlTableWidgetItem::BlTableWidgetItem ( int type, int mode ) : QTableWidgetItem ( type )
 {
-    _depura ( "QTableWidgetItem2::QTableWidgetItem2", 0 );
+    _depura ( "BlTableWidgetItem::BlTableWidgetItem", 0 );
     modo = mode;
-    _depura ( "END QTableWidgetItem2::QTableWidgetItem2", 0 );
+    _depura ( "END BlTableWidgetItem::BlTableWidgetItem", 0 );
 }
 
 ///
@@ -159,21 +81,21 @@ QTableWidgetItem2::QTableWidgetItem2 ( int type, int mode ) : QTableWidgetItem (
 \param type
 \param mode
 **/
-QTableWidgetItem2::QTableWidgetItem2 ( const QString &text, int type, int mode ) : QTableWidgetItem ( text, type )
+BlTableWidgetItem::BlTableWidgetItem ( const QString &text, int type, int mode ) : QTableWidgetItem ( text, type )
 {
-    _depura ( "QTableWidgetItem2::QTableWidgetItem2", 0 );
+    _depura ( "BlTableWidgetItem::BlTableWidgetItem", 0 );
     modo = mode;
-    _depura ( "END QTableWidgetItem2::QTableWidgetItem2", 0 );
+    _depura ( "END BlTableWidgetItem::BlTableWidgetItem", 0 );
 }
 
 
 ///
 /**
 **/
-QTableWidgetItem2::~QTableWidgetItem2()
+BlTableWidgetItem::~BlTableWidgetItem()
 {
-    _depura ( "QTableWidgetItem2::~QTableWidgetItem2", 0 );
-    _depura ( "END QTableWidgetItem2::~QTableWidgetItem2", 0 );
+    _depura ( "BlTableWidgetItem::~BlTableWidgetItem", 0 );
+    _depura ( "END BlTableWidgetItem::~BlTableWidgetItem", 0 );
 }
 
 
@@ -182,9 +104,9 @@ QTableWidgetItem2::~QTableWidgetItem2()
 \param other
 \return
 **/
-bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
+bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
 {
-    _depura ( "QTableWidgetItem2::operator<", 0, text() + " < " + other.text() );
+    _depura ( "BlTableWidgetItem::operator<", 0, text() + " < " + other.text() );
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -195,7 +117,7 @@ bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
         double ncad = cad.toDouble ( &oknumero );
         double ncad1 = cad1.toDouble ( &oknumero1 );
         if ( oknumero && oknumero1 ) {
-            _depura ( "END QTableWidgetItem2::operator<", 0 );
+            _depura ( "END BlTableWidgetItem::operator<", 0 );
             return ncad < ncad1;
         } // end if
         /// Comprobamos si es una fecha
@@ -205,12 +127,12 @@ bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
             QDate fcad1 = normalizafecha ( cad1 );
             QString acad1 = fcad1.toString ( Qt::ISODate );
             if ( acad[4] == '-' && acad1[4] == '-' && acad[7] == '-' && acad1[7] == '-' ) {
-                _depura ( "END QTableWidgetItem2::operator<", 0 );
+                _depura ( "END BlTableWidgetItem::operator<", 0 );
                 return fcad < fcad1;
             } // end if
         } // end if
     } // end if
-    _depura ( "END QTableWidgetItem2::operator<", 0 );
+    _depura ( "END BlTableWidgetItem::operator<", 0 );
     return cad < cad1;
 }
 
@@ -219,10 +141,10 @@ bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
 /**
 \return
 **/
-int QTableWidget2::tipoorden()
+int BlTableWidget::tipoorden()
 {
-    _depura ( "QTableWidget2::tipoorden", 0 );
-    _depura ( "END QTableWidget2::tipoorden", 0 );
+    _depura ( "BlTableWidget::tipoorden", 0 );
+    _depura ( "END BlTableWidget::tipoorden", 0 );
     return m_tipoorden;
 }
 
@@ -231,10 +153,10 @@ int QTableWidget2::tipoorden()
 /**
 \return
 **/
-int QTableWidget2::colorden()
+int BlTableWidget::colorden()
 {
-    _depura ( "QTableWidget2::colorden", 0 );
-    _depura ( "END QTableWidget2::colorden", 0 );
+    _depura ( "BlTableWidget::colorden", 0 );
+    _depura ( "END BlTableWidget::colorden", 0 );
     return m_colorden;
 }
 
@@ -243,11 +165,11 @@ int QTableWidget2::colorden()
 /**
 \param t
 **/
-void QTableWidget2::settipoorden ( int t )
+void BlTableWidget::settipoorden ( int t )
 {
-    _depura ( "QTableWidget2::settipoorden", 0 );
+    _depura ( "BlTableWidget::settipoorden", 0 );
     m_tipoorden = t;
-    _depura ( "END QTableWidget2::settipoorden", 0 );
+    _depura ( "END BlTableWidget::settipoorden", 0 );
 }
 
 
@@ -255,11 +177,11 @@ void QTableWidget2::settipoorden ( int t )
 /**
 \param t
 **/
-void QTableWidget2::setcolorden ( int t )
+void BlTableWidget::setcolorden ( int t )
 {
-    _depura ( "QTableWidget2::setcolorden", 0 );
+    _depura ( "BlTableWidget::setcolorden", 0 );
     m_colorden = t;
-    _depura ( "END QTableWidget2::setcolorden", 0 );
+    _depura ( "END BlTableWidget::setcolorden", 0 );
 }
 
 ///
@@ -268,36 +190,36 @@ void QTableWidget2::setcolorden ( int t )
 \param oldIndex
 \param newIndex
 **/
-void QTableWidget2::columnMoved ( int column, int oldIndex, int newIndex )
+void BlTableWidget::columnMoved ( int column, int oldIndex, int newIndex )
 {
-    _depura ( "QTableWidget2::columnMoved", 0 );
+    _depura ( "BlTableWidget::columnMoved", 0 );
     QTableWidget::columnMoved ( column, oldIndex, newIndex );
-    _depura ( "END QTableWidget2::columnMoved", 0 );
+    _depura ( "END BlTableWidget::columnMoved", 0 );
 }
 
 
 ///
 /**
 **/
-QTableWidget2::~QTableWidget2()
+BlTableWidget::~BlTableWidget()
 {
-    _depura ( "QTableWidget2::~QTableWidget2", 0 );
-    _depura ( "END QTableWidget2::~QTableWidget2", 0 );
+    _depura ( "BlTableWidget::~BlTableWidget", 0 );
+    _depura ( "END BlTableWidget::~BlTableWidget", 0 );
 }
 
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
 /**
 \param sorting
 **/
-void QTableWidget2::setSortingEnabled ( bool sorting )
+void BlTableWidget::setSortingEnabled ( bool sorting )
 {
-    _depura ( "QTableWidget2::setSortingEnabled", 0 );
+    _depura ( "BlTableWidget::setSortingEnabled", 0 );
     QTableWidget::setSortingEnabled ( sorting );
-    _depura ( "END QTableWidget2::setSortingEnabled", 0 );
+    _depura ( "END BlTableWidget::setSortingEnabled", 0 );
 }
 
 
-/** EventFilter para QTableWidget2, procesa los eventos recibidos por la
+/** EventFilter para BlTableWidget, procesa los eventos recibidos por la
 tabla y emite signals si lo considera adecuado.
 */
 /**
@@ -305,10 +227,10 @@ tabla y emite signals si lo considera adecuado.
 \param event
 \return
 **/
-bool QTableWidget2::eventFilter ( QObject *obj, QEvent *event )
+bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
 {
     if ( event->type() == QEvent::KeyPress ) {
-//        _depura ( "QTableWidget2::eventFilter() :" + QString::number ( event->type() ), 1 );
+//        _depura ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
         int row = currentRow();
@@ -330,7 +252,7 @@ bool QTableWidget2::eventFilter ( QObject *obj, QEvent *event )
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyRelease ) {
-//        _depura ( "QTableWidget2::eventFilter() :" + QString::number ( event->type() ), 1 );
+//        _depura ( "BlTableWidget::eventFilter() :" + QString::number ( event->type() ), 1 );
 
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
@@ -404,7 +326,7 @@ bool QTableWidget2::eventFilter ( QObject *obj, QEvent *event )
             } // end if
         } // end switch
     } // end if
-//    _depura("END QTableWidget2::eventFilter()", 0);
+//    _depura("END BlTableWidget::eventFilter()", 0);
     return QTableWidget::eventFilter ( obj, event );
 //      return TRUE;
 }
@@ -415,14 +337,14 @@ metodo de ordenacion.
 */
 /**
 **/
-void QTableWidget2::ordenar()
+void BlTableWidget::ordenar()
 {
-    _depura ( "QTableWidget2::ordenar", 0, QString::number ( m_colorden ) );
+    _depura ( "BlTableWidget::ordenar", 0, QString::number ( m_colorden ) );
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
     if ( m_colorden < columnCount() ) {
         sortByColumn ( m_colorden );
     } // end if
-    _depura ( "END QTableWidget2::ordenar", 0, QString::number ( m_colorden ) );
+    _depura ( "END BlTableWidget::ordenar", 0, QString::number ( m_colorden ) );
 }
 
 
@@ -434,10 +356,10 @@ void QTableWidget2::ordenar()
 \param y
 \param val
 **/
-void QTableWidget2::setText ( int x, int y, const QString & val )
+void BlTableWidget::setText ( int x, int y, const QString & val )
 {
     _depura ( "QTableWidget::setText", 0 );
-    QTableWidgetItem2 *newitem = new QTableWidgetItem2 ( val );
+    BlTableWidgetItem *newitem = new BlTableWidgetItem ( val );
     setItem ( x, y, newitem );
     _depura ( "END QTableWidget::setText", 0 );
 }
@@ -448,11 +370,11 @@ void QTableWidget2::setText ( int x, int y, const QString & val )
 \param column
 \param order
 **/
-void QTableWidget2::sortByColumn ( int column, Qt::SortOrder order )
+void BlTableWidget::sortByColumn ( int column, Qt::SortOrder order )
 {
-    _depura ( "QTableWidget2::sortByColumn", 0 );
+    _depura ( "BlTableWidget::sortByColumn", 0 );
     QTableWidget::sortByColumn ( column, order );
-    _depura ( "END QTableWidget2::sortByColumn", 0 );
+    _depura ( "END BlTableWidget::sortByColumn", 0 );
 }
 
 
@@ -461,23 +383,23 @@ void QTableWidget2::sortByColumn ( int column, Qt::SortOrder order )
 \param column
 \param order
 **/
-void QTableWidget2::sortItems ( int column, Qt::SortOrder order )
+void BlTableWidget::sortItems ( int column, Qt::SortOrder order )
 {
-    _depura ( "QTableWidget2::sortItems", 0 );
+    _depura ( "BlTableWidget::sortItems", 0 );
     QTableWidget::sortItems ( column, order );
-    _depura ( "END QTableWidget2::sortItems", 0 );
+    _depura ( "END BlTableWidget::sortItems", 0 );
 }
 
 
-void QTableWidget2::showColumn(int column) {
-    _depura ( "QTableWidget2::showColumn", 0 );
+void BlTableWidget::showColumn(int column) {
+    _depura ( "BlTableWidget::showColumn", 0 );
     QTableWidget::showColumn ( column );
-    _depura ( "END QTableWidget2::showColumn", 0 );
+    _depura ( "END BlTableWidget::showColumn", 0 );
 }
 
 
-void QTableWidget2::hideColumn(int column) {
-    _depura ( "QTableWidget2::hideColumn", 0 );
+void BlTableWidget::hideColumn(int column) {
+    _depura ( "BlTableWidget::hideColumn", 0 );
     QTableWidget::hideColumn ( column );
-    _depura ( "END QTableWidget2::hideColumn", 0 );
+    _depura ( "END BlTableWidget::hideColumn", 0 );
 }

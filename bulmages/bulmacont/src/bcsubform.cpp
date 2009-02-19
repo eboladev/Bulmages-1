@@ -29,7 +29,7 @@
 #include "bccompany.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
-#include "qtexteditdelegate.h"
+#include "bltexteditdelegate.h"
 #include "bldoublespinbox.h"
 #include "busquedacanal.h"
 #include "busquedaccoste.h"
@@ -521,9 +521,9 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     _depura ( "BcSubFormDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
 
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
-        QTextEditDelegate * editor = new QTextEditDelegate ( parent );
-        editor->setObjectName ( "QTextEditDelegate" );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "QTextEditDelegate" );
+        BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
+        editor->setObjectName ( "BlTextEditDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BlTextEditDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
@@ -587,7 +587,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
 
 //    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
-        QTextEditDelegate * textedit = qobject_cast<QTextEditDelegate *> ( editor );
+        BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
 
 //    Este return sobra.
@@ -653,7 +653,7 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
     //if (linea->nomcampo() == "desc" + m_subform->tableName()) {
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*> ( editor );
+        BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
         textedit->selectAll();
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
@@ -716,7 +716,7 @@ bool BcSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if ( obj->objectName() == "QTextEditDelegate" ) {
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
                 return TRUE;
             } // end if
@@ -736,7 +736,7 @@ bool BcSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if ( obj->objectName() == "QTextEditDelegate" ) {
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
                 return TRUE;
             } // end if

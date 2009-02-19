@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QTABLE2_H
-#define QTABLE2_H
+#ifndef BLTABLEWIDGET_H
+#define BLTABLEWIDGET_H
 
 #include <QEvent>
 #include <QTableWidget>
@@ -29,28 +29,14 @@
 #include "blfunctions.h"
 
 
-/** Implementa los elementos de edicion por defecto de un QTableWidgetItem2.
-Mediante esta clase se crean editores especificos que luego pueden sobrecargarse.
-*/
-class QTableItemTextDelegate : public QItemDelegate
-{
-public:
-    QTableItemTextDelegate ( QObject * );
-    ~QTableItemTextDelegate();
-    void setEditorData ( QWidget *, const QModelIndex &index ) const;
-    void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
-    QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
-};
-
-
-/// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class QTableWidgetItem2 : public QTableWidgetItem
+/// Reimplementa los items de BlTableWidget para que podamos programar cosas en ellos.
+class BlTableWidgetItem : public QTableWidgetItem
 {
 public:
     int modo;
-    QTableWidgetItem2 ( int type = Type, int mode = 0 );
-    QTableWidgetItem2 ( const QString &text, int type = Type, int mode = 0 );
-    ~QTableWidgetItem2();
+    BlTableWidgetItem ( int type = Type, int mode = 0 );
+    BlTableWidgetItem ( const QString &text, int type = Type, int mode = 0 );
+    ~BlTableWidgetItem();
     virtual bool operator< ( const QTableWidgetItem &other ) const;
 };
 
@@ -58,7 +44,7 @@ public:
 /// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
 /// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
-class QTableWidget2 : public QTableWidget
+class BlTableWidget : public QTableWidget
 {
     Q_OBJECT
 
@@ -76,8 +62,8 @@ public:
     void settipoorden ( int t );
     void setcolorden ( int t );
     void columnMoved ( int column, int oldIndex, int newIndex );
-    QTableWidget2 ( QWidget *parent = 0 );
-    ~QTableWidget2();
+    BlTableWidget ( QWidget *parent = 0 );
+    ~BlTableWidget();
     void editItem ( QTableWidgetItem *it );
     virtual bool eventFilter ( QObject *obj, QEvent *event );
     void setText ( int x, int y, const QString &val );

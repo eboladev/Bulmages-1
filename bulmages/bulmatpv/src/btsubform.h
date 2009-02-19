@@ -26,7 +26,7 @@
 
 #include "blfunctions.h"
 #include "btcompany.h"
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bldbsubform.h"
 #include "blsubform.h"
 #include "bldoublespinbox.h"

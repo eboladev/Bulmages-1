@@ -1632,8 +1632,8 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, i
     m_lcabecera.append ( camp );
     mui_listcolumnas->insertRow ( mui_listcolumnas->rowCount() );
     /// 19/07/2007
-    /// Cambiado QTableWidgetItem por QTableWidgetItem2 para usar nuevas funcionalidades.
-    QTableWidgetItem2 *it = new QTableWidgetItem2 ( "" );
+    /// Cambiado QTableWidgetItem por BlTableWidgetItem para usar nuevas funcionalidades.
+    BlTableWidgetItem *it = new BlTableWidgetItem ( "" );
     it->setFlags ( Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
 
     if ( opt & BlSubFormHeader::DBNoView ) {
@@ -1648,11 +1648,11 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, i
     } // end if
 
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 0, it );
-    it = new QTableWidgetItem2 ( nom );
+    it = new BlTableWidgetItem ( nom );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 1, it );
-    it = new QTableWidgetItem2 ( nomp );
+    it = new BlTableWidgetItem ( nomp );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 2, it );
-    it = new QTableWidgetItem2 ( "" );
+    it = new BlTableWidgetItem ( "" );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 3, it );
 
     _depura ( "END BlSubForm::addSubFormHeader", 0, nom );

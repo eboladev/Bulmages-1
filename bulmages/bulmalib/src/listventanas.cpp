@@ -33,20 +33,20 @@
 /**
 \param parent
 **/
-QListWidget1::QListWidget1 ( QWidget * parent ) : QListWidget ( parent )
+BlListWidget::BlListWidget ( QWidget * parent ) : QListWidget ( parent )
 {
-    _depura ( "QListWidget1::QListWidget1", 0 );
-    _depura ( "END QListWidget1::QListWidget1", 0 );
+    _depura ( "BlListWidget::BlListWidget", 0 );
+    _depura ( "END BlListWidget::BlListWidget", 0 );
 }
 
 
 ///
 /**
 **/
-QListWidget1::~QListWidget1()
+BlListWidget::~BlListWidget()
 {
-    _depura ( "QListWidget1::~QListWidget1", 0 );
-    _depura ( "END QListWidget1::~QListWidget1", 0 );
+    _depura ( "BlListWidget::~BlListWidget", 0 );
+    _depura ( "END BlListWidget::~BlListWidget", 0 );
 }
 
 
@@ -55,22 +55,22 @@ QListWidget1::~QListWidget1()
 \param l
 \param p
 **/
-QListWidgetItem1::QListWidgetItem1 ( QListWidget1 *l, QPixmap &p ) : QListWidgetItem ( l )
+BlListWidgetItem::BlListWidgetItem ( BlListWidget *l, QPixmap &p ) : QListWidgetItem ( l )
 {
-    _depura ( "QListWidgetItem1::QListWidgetItem1", 0 );
+    _depura ( "BlListWidgetItem::BlListWidgetItem", 0 );
     setIcon ( QIcon ( p ) );
     m_list = l;
-    _depura ( "END QListWidgetItem1::QListWidgetItem1", 0 );
+    _depura ( "END BlListWidgetItem::BlListWidgetItem", 0 );
 }
 
 
 ///
 /**
 **/
-QListWidgetItem1::~QListWidgetItem1()
+BlListWidgetItem::~BlListWidgetItem()
 {
-    _depura ( "QListWidget1::~QListWidgetItem1", 0 );
-    _depura ( "END QListWidget1::~QListWidgetItem1", 0 );
+    _depura ( "BlListWidget::~BlListWidgetItem", 0 );
+    _depura ( "END BlListWidget::~BlListWidgetItem", 0 );
 }
 
 
@@ -78,11 +78,11 @@ QListWidgetItem1::~QListWidgetItem1()
 /**
 \param m
 **/
-void QListWidgetItem1::setObject ( QObject *m )
+void BlListWidgetItem::setObject ( QObject *m )
 {
-    _depura ( "QListWidgetItem1::setObject", 0 );
+    _depura ( "BlListWidgetItem::setObject", 0 );
     m_obj = m;
-    _depura ( "END QListWidgetItem1::setObject", 0 );
+    _depura ( "END BlListWidgetItem::setObject", 0 );
 }
 
 
@@ -90,12 +90,12 @@ void QListWidgetItem1::setObject ( QObject *m )
 /**
 \param m
 **/
-void QListWidgetItem1::setNombre ( QString m )
+void BlListWidgetItem::setNombre ( QString m )
 {
-    _depura ( "QListWidgetItem1::setNombre", 0 );
+    _depura ( "BlListWidgetItem::setNombre", 0 );
     m_nombre = m;
     setText ( m );
-    _depura ( "END QListWidgetItem1::setNombre", 0 );
+    _depura ( "END BlListWidgetItem::setNombre", 0 );
 }
 
 
@@ -103,10 +103,10 @@ void QListWidgetItem1::setNombre ( QString m )
 /**
 \return
 **/
-QObject *QListWidgetItem1::object()
+QObject *BlListWidgetItem::object()
 {
-    _depura ( "QListWidgetItem1::object", 0 );
-    _depura ( "END QListWidgetItem1::object", 0 );
+    _depura ( "BlListWidgetItem::object", 0 );
+    _depura ( "END BlListWidgetItem::object", 0 );
     return m_obj;
 }
 
@@ -115,10 +115,10 @@ QObject *QListWidgetItem1::object()
 /**
 \return
 **/
-QString QListWidgetItem1::nombre()
+QString BlListWidgetItem::nombre()
 {
-    _depura ( "QListWidgetItem1::nombre", 0 );
-    _depura ( "END QListWidgetItem1::nombre", 0 );
+    _depura ( "BlListWidgetItem::nombre", 0 );
+    _depura ( "END BlListWidgetItem::nombre", 0 );
     return m_nombre;
 }
 
@@ -142,7 +142,7 @@ void ListVentanas::setWorkspace ( BlWorkspace *w )
 ListVentanas::ListVentanas ( QWidget *a ) : QDockWidget ( a )
 {
     _depura ( "ListVentanas::ListVentanas", 0 );
-    m_listBox = new QListWidget1 ( this );
+    m_listBox = new BlListWidget ( this );
     m_listBox->setIconSize ( QSize ( 32, 32 ) );
     m_listBox->setContentsMargins ( 0, 0, 0, 0 );
     m_listBox->setSpacing ( 0 );
@@ -163,7 +163,7 @@ ListVentanas::ListVentanas ( QWidget *a ) : QDockWidget ( a )
 void ListVentanas::dclicked()
 {
     _depura ( "ListVentanas::dclicked", 0 );
-    QWidget *widget = ( QWidget * ) ( ( QListWidgetItem1 * ) m_listBox->currentItem() ) ->object();
+    QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
         if ( widget->isMaximized() == TRUE ) {
             widget->showNormal();
@@ -181,7 +181,7 @@ void ListVentanas::dclicked()
 void ListVentanas::clicked()
 {
     _depura ( "ListVentanas::clicked", 0 );
-    QWidget *widget = ( QWidget * ) ( ( QListWidgetItem1 * ) m_listBox->currentItem() ) ->object();
+    QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
         widget->show();
         widget->parentWidget() ->raise();
@@ -211,7 +211,7 @@ void ListVentanas::vaciar()
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
-        QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+        BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
         if ( ( ( QWidget * ) m->object() ) ->testAttribute ( Qt::WA_DeleteOnClose ) ) {
             delete m->object();
         } else {
@@ -242,7 +242,7 @@ int ListVentanas::numVentanas()
 QObject *ListVentanas::ventana ( int index )
 {
     _depura ( "ListVentanas::ventana", 0 );
-    QListWidgetItem1 *m = ( QListWidgetItem1 * ) m_listBox->item ( index );
+    BlListWidgetItem *m = ( BlListWidgetItem * ) m_listBox->item ( index );
     _depura ( "END ListVentanas::ventana", 0 );
     return m->object();
 }
@@ -257,7 +257,7 @@ void ListVentanas::vaciarCompleto()
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
-        QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+        BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
         delete m->object();
     } // end while
     _depura ( "END ListVentanas::vaciarCompleto", 0 );
@@ -279,7 +279,7 @@ int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
     try {
         int i = 0;
         while ( i < m_listBox->count() ) {
-            QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+            BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Si la ventana ya esta en la lista.
             if ( m->object() == obj ) {
                 _depura ( "END ListVentanas::meteWindow", 0, "Ya existe" + nombre );
@@ -299,7 +299,7 @@ int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
         } // end while
         if ( i >= m_listBox->count() ) {
             QPixmap icon = ( ( QWidget * ) obj ) ->windowIcon().pixmap ( 32, 32 );
-            QListWidgetItem1 *m = new QListWidgetItem1 ( m_listBox, icon );
+            BlListWidgetItem *m = new BlListWidgetItem ( m_listBox, icon );
             m->setObject ( obj );
             m->setNombre ( nombre );
         } // end if
@@ -324,7 +324,7 @@ int ListVentanas::seleccionaWindow ( QString nombre, QObject *obj )
     try {
         int i = 0;
         while ( i < m_listBox->count() ) {
-            QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+            BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Encuentra la ventana en la lista.
             if ( m->object() == obj ) {
                 _depura ( "END ListVentanas::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre );
@@ -369,7 +369,7 @@ void ListVentanas::sacaWindow ( QObject *obj )
     /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
-        QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+        BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
         if ( m->object() == obj ) {
             _depura ( "Ventana encontrada y vamos a sacarla", 0, m->nombre() );
             m_listBox->takeItem ( i );

@@ -26,7 +26,7 @@
 
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bldb.h"
 
 
@@ -51,7 +51,7 @@ public:
 Junta la informacion de campo (Base de Datos) con  un QTableWidgetItem.
 De esta forma los elementos adscritos a una talba y a un recordset son los mismos.
 */
-class BlDbSubFormField: public QTableWidgetItem2, public BlDbField
+class BlDbSubFormField: public BlTableWidgetItem, public BlDbField
 {
 private:
     BlDbSubFormRecord *m_pare; ///< Puntero al \ref BlDbSubFormRecord al que pertenece. Acelera procesos.

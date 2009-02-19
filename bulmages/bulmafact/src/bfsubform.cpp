@@ -29,7 +29,7 @@
 #include "bfsubform.h"
 #include "blfunctions.h"
 #include "busquedatipoiva.h"
-#include "qtexteditdelegate.h"
+#include "bltexteditdelegate.h"
 #include "busquedatrabajador.h"
 #include "busquedaalmacen.h"
 #include "busquedaarticulo.h"
@@ -548,8 +548,8 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     linea = m_subform->cabecera() ->at ( index.column() );
 
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
-        QTextEditDelegate * editor = new QTextEditDelegate ( parent );
-        editor->setObjectName ( "QTextEditDelegate" );
+        BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
+        editor->setObjectName ( "BlTextEditDelegate" );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "QTextEdit" );
         return editor;
 
@@ -612,7 +612,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
-        QTextEditDelegate * textedit = qobject_cast<QTextEditDelegate *> ( editor );
+        BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
                 || linea->nomcampo() == "pvp" + m_subform->tableName()
@@ -671,7 +671,7 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*> ( editor );
+        BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
                 || linea->nomcampo() == "pvp" + m_subform->tableName()
@@ -726,7 +726,7 @@ bool BfSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if ( obj->objectName() == "QTextEditDelegate" ) {
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
                 return TRUE;
             } // end if
@@ -746,7 +746,7 @@ bool BfSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if ( obj->objectName() == "QTextEditDelegate" ) {
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
                 return TRUE;
             } // end if

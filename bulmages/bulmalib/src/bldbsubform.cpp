@@ -116,7 +116,7 @@ int BlDbSubFormRecord::addDbField ( QString nom, BlDbField::dbtype typ, int res,
 \param nomp el nombre a presentar en caso de error.
 **/
 BlDbSubFormField::BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
-        : QTableWidgetItem2(), BlDbField ( com, nom, typ, res, nomp )
+        : BlTableWidgetItem(), BlDbField ( com, nom, typ, res, nomp )
 {
     _depura ( "BlDbSubFormField::BlDbSubFormField", 0 );
     m_pare = par;

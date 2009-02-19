@@ -21,7 +21,7 @@
 #ifndef TARIFALISTSUBFORM_H
 #define TARIFALISTSUBFORM_H
 
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bfsubform.h"
 
 

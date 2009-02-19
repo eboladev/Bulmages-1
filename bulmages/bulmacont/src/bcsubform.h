@@ -23,7 +23,7 @@
 #define BCSUBFORM_H
 
 #include "bccompany.h"
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bldbsubform.h"
 #include "blsubform.h"
 

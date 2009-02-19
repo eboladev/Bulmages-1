@@ -2413,7 +2413,7 @@
     </widget>
    </item>
    <item row="0" column="0" >
-    <widget class="QTableWidget2" name="mui_list" >
+    <widget class="BlTableWidget" name="mui_list" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
        <horstretch>0</horstretch>
@@ -2432,9 +2432,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QTableWidget2</class>
+   <class>BlTableWidget</class>
    <extends>QTableWidget</extends>
-   <header>qtable2.h</header>
+   <header>bltablewidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

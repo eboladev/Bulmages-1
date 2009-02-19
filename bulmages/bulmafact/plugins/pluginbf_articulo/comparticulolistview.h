@@ -25,7 +25,7 @@
 #include <QEvent>
 
 #include "bfcompany.h"
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bfsubform.h"
 
 

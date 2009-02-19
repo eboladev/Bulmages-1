@@ -28,7 +28,7 @@
 #include "pagoslist.h"
 #include "bfcompany.h"
 #include "pagoview.h"
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "blfunctions.h"
 #include "blconfiguration.h"
 

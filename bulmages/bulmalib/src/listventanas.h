@@ -29,26 +29,26 @@
 #include "blworkspace.h"
 
 
-class QListWidget1 : public QListWidget
+class BlListWidget : public QListWidget
 {
     Q_OBJECT
 
 public:
-    QListWidget1 ( QWidget * parent = 0 );
-    ~QListWidget1();
+    BlListWidget ( QWidget * parent = 0 );
+    ~BlListWidget();
 };
 
 
-class QListWidgetItem1 : public QListWidgetItem
+class BlListWidgetItem : public QListWidgetItem
 {
 private:
     QObject *m_obj;
     QString m_nombre;
-    QListWidget1 *m_list;
+    BlListWidget *m_list;
 
 public:
-    QListWidgetItem1 ( QListWidget1 *l, QPixmap &p );
-    ~QListWidgetItem1();
+    BlListWidgetItem ( BlListWidget *l, QPixmap &p );
+    ~BlListWidgetItem();
     void setObject ( QObject *m );
     void setNombre ( QString m );
     QObject *object();
@@ -64,7 +64,7 @@ class ListVentanas : public QDockWidget
     Q_OBJECT
 
 private:
-    QListWidget1 *m_listBox;
+    BlListWidget *m_listBox;
     BlWorkspace *m_pWorkspace;
 
 public:

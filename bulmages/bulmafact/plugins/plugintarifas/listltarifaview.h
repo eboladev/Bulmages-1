@@ -21,7 +21,7 @@
 #ifndef LISTLTARIFAVIEW_H
 #define LISTLTARIFAVIEW_H
 
-#include "qtable2.h"
+#include "bltablewidget.h"
 #include "bfsubform.h"
 #include "blwidget.h"
 

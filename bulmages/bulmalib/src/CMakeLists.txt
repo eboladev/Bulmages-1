@@ -40,7 +40,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blfixed.cpp
 			msgerror.cpp
 			busquedafecha.cpp
-			qtable2.cpp
+			bltablewidget.cpp
 			bldockwidget.cpp
 			pgimportfiles.cpp
 			plugins.cpp
@@ -53,7 +53,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blapplication.cpp
 			blform.cpp
 			blmaincompany.cpp
-			qtexteditdelegate.cpp
+			bltexteditdelegate.cpp
 			bldoublespinbox.cpp
 			blwidget.cpp
 			blformlist.cpp
@@ -74,7 +74,7 @@ set(bulmalib_MOCS	logpass.h
 			blcompanydialog.h
 			msgerror.h
 			busquedafecha.h
-			qtable2.h
+			bltablewidget.h
 			busquedaperiodo.h
 			bldockwidget.h
 			blsubform.h
@@ -82,7 +82,7 @@ set(bulmalib_MOCS	logpass.h
 			blworkspace.h
 			blapplication.h
 			blform.h
-			qtexteditdelegate.h
+			bltexteditdelegate.h
 			bldoublespinbox.h
 			blwidget.h
 			blmainwindow.h
@@ -115,8 +115,8 @@ set (bulmalib_HDRS	blcompanydialog.h
 			plugins.h
 			blpostgresqlclient.h
 			blapplication.h
-			qtable2.h
-			qtexteditdelegate.h
+			bltablewidget.h
+			bltexteditdelegate.h
 			blworkspace.h
 			bldbsubform.h
 			blsubform.h

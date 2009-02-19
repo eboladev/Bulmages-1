@@ -34,7 +34,7 @@
 
 class BfCompany;
 
-/// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
+/// Reimplementa los items de BlTableWidget para que podamos programar cosas en ellos.
 class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public BlMainCompanyPointer
 {
     Q_OBJECT
@@ -88,7 +88,7 @@ public slots:
 };
 
 
-/// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
+/// Reimplementa los items de BlTableWidget para que podamos programar cosas en ellos.
 class ImpCuadrante :  public BlMainCompanyPointer
 {
 public:

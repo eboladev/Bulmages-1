@@ -27,7 +27,7 @@
 #include <QAbstractItemView>
 
 #include "btsubform.h"
-#include "qtexteditdelegate.h"
+#include "bltexteditdelegate.h"
 #include "plugins.h"
 
 
@@ -303,8 +303,8 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     _depura ( "BtSubFormDelegate::createEditor", 0, "CurrentRow" + QString::number ( index.row() ) );
 
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
-        QTextEditDelegate * editor = new QTextEditDelegate ( parent );
-        editor->setObjectName ( "QTextEditDelegate" );
+        BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
+        editor->setObjectName ( "BlTextEditDelegate" );
         return editor;
 
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
@@ -369,7 +369,7 @@ void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
-        QTextEditDelegate * textedit = qobject_cast<QTextEditDelegate *> ( editor );
+        BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
         return;
 
@@ -423,7 +423,7 @@ void BtSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*> ( editor );
+        BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
 
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
@@ -481,7 +481,7 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if ( obj->objectName() == "QTextEditDelegate" ) {
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
                 return TRUE;
             } // end if
@@ -501,7 +501,7 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if ( obj->objectName() == "QTextEditDelegate" ) {
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
                 obj->event ( event );
                 return TRUE;
             } // end if
