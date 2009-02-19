@@ -25,7 +25,7 @@
 #include <QLocale>
 
 #include <climits>
-#include <math.h>
+#include <cmath>
 
 #include "blpostgresqlclient.h"
 #include "msgerror.h"
@@ -691,7 +691,7 @@ BlDbRecordSet *BlPostgreSqlClient::cargacursor ( QString query, QString nomcurso
  return cargacursor(query,0,NULL,nomcursor,limit,offset);
 }
 
- const size_t digitsInt = 1+int(ceil(log10(1+INT_MAX)));
+ const size_t digitsInt = 1+int(ceil(log10(1.0 +INT_MAX)));
 
 BlDbRecordSet *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
                        QString *paramValues, QString nomcursor, 

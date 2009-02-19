@@ -122,7 +122,7 @@ ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 # This are the two main targets
 # they are empty. The macros fill them with dependencies
 add_custom_target( messages_extract )
-add_custom_target( translations )
+add_custom_target( translations ALL)
 add_custom_target( update_pots )
 add_custom_target( update_lang_po )
 
