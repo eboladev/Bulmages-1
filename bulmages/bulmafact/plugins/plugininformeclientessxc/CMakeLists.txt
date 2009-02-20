@@ -82,4 +82,4 @@ set(files informeclientessxc.png)
 
 install(FILES ${files} DESTINATION share/bulmages/icons)
 
-add_dependencies(${plugin} bulmafact bulmalib )
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente pluginbf_proveedor)
