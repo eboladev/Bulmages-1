@@ -55,10 +55,6 @@
      <string>Maest&amp;ro</string>
     </property>
     <addaction name="actionPaises" />
-    <addaction name="separator" />
-    <addaction name="actionSeries_de_Factura" />
-    <addaction name="separator" />
-    <addaction name="actionBancos" />
    </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
@@ -191,11 +187,6 @@
     <string>Propiedades de la empresa</string>
    </property>
   </action>
-  <action name="actionSeries_de_Factura" >
-   <property name="text" >
-    <string>Se&amp;ries de factura</string>
-   </property>
-  </action>
   <action name="actionVentana_Completa" >
    <property name="checkable" >
     <bool>true</bool>
@@ -210,26 +201,6 @@
   <action name="actionAcerta_de" >
    <property name="text" >
     <string>&amp;Acerca de BulmaFact</string>
-   </property>
-  </action>
-  <action name="actionFichas" >
-   <property name="checkable" >
-    <bool>true</bool>
-   </property>
-   <property name="checked" >
-    <bool>true</bool>
-   </property>
-   <property name="text" >
-    <string>Fichas</string>
-   </property>
-  </action>
-  <action name="actionAlmacenes" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/warehouse.svg</normaloff>:/Images/warehouse.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Almacenes</string>
    </property>
   </action>
   <action name="actionDocumentacion" >
@@ -258,15 +229,6 @@
    </property>
    <property name="shortcut" >
     <string>Ctrl+I</string>
-   </property>
-  </action>
-  <action name="actionBancos" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/bank.svg</normaloff>:/Images/bank.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Bancos</string>
    </property>
   </action>
   <action name="actionOrganizaci_n_en_Cascada" >

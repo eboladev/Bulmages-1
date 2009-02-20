@@ -9,6 +9,9 @@ add_subdirectory(pluginbf_iva)
 add_subdirectory(pluginbf_almacen)
 add_subdirectory(pluginbf_banco)
 add_subdirectory(pluginbf_formasdepago)
+add_subdirectory(pluginbf_seriesfactura)
+
+
 #efacturabf en desarrollo
 #add_subdirectory(efacturabf)
 

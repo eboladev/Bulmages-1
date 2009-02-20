@@ -30,7 +30,6 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "listconfiguracionview.h"
-#include "listseriefacturaview.h"
 #include "plugins.h"
 #include "bulmafact.h"
 
@@ -81,13 +80,6 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
     if ( hasTablePrivilege ( "pais", "SELECT" ) ) {
         m_bulmafact->actionPaises->setEnabled ( TRUE );
-    } // end if
-
-    /// Comprobamos que tengamos permisos para trabajar con 'Series de factura'.
-    m_bulmafact->actionSeries_de_Factura->setEnabled ( FALSE );
-
-    if ( hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
-        m_bulmafact->actionSeries_de_Factura->setEnabled ( TRUE );
     } // end if
 
     /// pb = 100%
@@ -167,9 +159,11 @@ void BfCompany::s_bancos()
 void BfCompany::s_seriesFactura()
 {
     _depura ( "BfCompany::s_seriesFactura", 0 );
+	/*
     ListSerieFacturaView *lser = new ListSerieFacturaView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
+	*/
     _depura ( "END BfCompany::s_seriesFactura", 0 );
 }
 
