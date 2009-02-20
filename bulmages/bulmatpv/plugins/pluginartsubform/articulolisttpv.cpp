@@ -30,7 +30,6 @@
 #include "articulolisttpv.h"
 #include "pgimportfiles.h"
 #include "bfcompany.h"
-#include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
 #include "blfunctions.h"

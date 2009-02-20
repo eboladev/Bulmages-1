@@ -28,7 +28,7 @@
     <number>5</number>
    </property>
    <item row="2" column="0" >
-    <widget class="ArticuloListSubForm" name="mui_list" >
+    <widget class="ArticuloList1SubForm1" name="mui_list" >
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -352,14 +352,14 @@
    <header>busquedatipoarticulo.h</header>
   </customwidget>
   <customwidget>
-   <class>ArticuloListSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>articulolist.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFamilia</class>
    <extends>QWidget</extends>
    <header>busquedafamilia.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ArticuloList1SubForm1</class>
+   <extends>QTableWidget</extends>
+   <header>articulolisttpv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
