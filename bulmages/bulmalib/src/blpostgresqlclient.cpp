@@ -560,13 +560,13 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
     formatofecha();
 
     /// Buscamos cual es el usuario ejecutando y lo almacenamos.
-        BlDbRecordSet *cur = cargacursor ( "SELECT current_user" );
-        if ( !cur->eof() ) {
-            m_currentUser = cur->valor ( "current_user" );
+        BlDbRecordSet *rs = cargacursor ( "SELECT current_user" );
+        if ( !rs->eof() ) {
+            m_currentUser = rs->valor ( "current_user" );
 	} else {
 	    m_currentUser = "";
         } // end if
-        delete cur;
+        delete rs;
 	} catch(...) {
 		_depura("Error en la conexion postgresifcace2::inicializa", 2);
 	} // end try
@@ -702,7 +702,7 @@ BlDbRecordSet *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
 { 
         _depura ( "BlPostgreSqlClient::cargacursor", 0, query );
 
-    BlDbRecordSet *cur = NULL;
+    BlDbRecordSet *rs = NULL;
     /// Iniciamos la depuracion.
     try {
          QString pristineQuery = query;
@@ -723,17 +723,17 @@ BlDbRecordSet *BlPostgreSqlClient::cargacursor ( QString query, int numParams,
              query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
          };
 
-        cur = new BlDbRecordSet ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
+        rs = new BlDbRecordSet ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
         
         _depura ( "END BlPostgreSqlClient::cargacursor", 0, nomcursor );
 
     } catch ( ... ) {
-        if ( cur ) delete cur;
+        if ( rs ) delete rs;
 	_depura("La consulta: \"" + query + "\" Ha generado un error",2);
         _depura ( "END BlPostgreSqlClient::cargacursor", 0, "Error en la base de datos" );
-        cur = NULL;
+        rs = NULL;
     } // end try
-    return cur;
+    return rs;
 }
 
 
@@ -804,14 +804,14 @@ QString BlPostgreSqlClient::searchParent ( QString cod )
     while ( !fin ) {
         query = "SELECT * FROM cuenta WHERE codigo = '" + cod.left ( i ) + "'";
         begin();
-        BlDbRecordSet *cur = cargacursor ( query, "unquery" );
+        BlDbRecordSet *rs = cargacursor ( query, "unquery" );
         commit();
-        if ( !cur->eof() ) {
-            padre = cur->valor ( "codigo" );
+        if ( !rs->eof() ) {
+            padre = rs->valor ( "codigo" );
         } else {
             fin = 1;
         } // end if
-        delete cur;
+        delete rs;
         i++;
     } // end while
     _depura ( "END BlPostgreSqlClient::searchParent", 0 );
@@ -941,9 +941,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargacuenta ( int idcuenta, QString ccuenta )
     }  else  {
         query.sprintf ( "SELECT * FROM cuenta WHERE codigo LIKE '%s' ORDER BY codigo", ccuenta.toAscii().data() );
     } // end if
-    BlDbRecordSet *cur = cargacursor ( query, "cargacuenta" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargacuenta" );
     _depura ( "END BlPostgreSqlClient::cargacuenta", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -957,9 +957,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargaasiento ( int idasiento )
     _depura ( "BlPostgreSqlClient::cargaasiento", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM asiento WHERE idasiento = %d", idasiento );
-    BlDbRecordSet *cur = cargacursor ( query, "cargaasiento" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargaasiento" );
     _depura ( "END BlPostgreSqlClient::cargaasiento", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -974,9 +974,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargaapuntes ( int tidasiento )
     _depura ( "BlPostgreSqlClient::cargaapuntes", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM apunte where idasiento = %d ORDER BY idapunte", tidasiento );
-    BlDbRecordSet *cur = cargacursor ( query, "cargaapuntes" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargaapuntes" );
     _depura ( "END BlPostgreSqlClient::cargaapuntes", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -991,9 +991,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargaborradores ( int tidasiento )
     _depura ( "BlPostgreSqlClient::cargaborradores", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM borrador where idasiento = %d ORDER BY idborrador", tidasiento );
-    BlDbRecordSet *cur = cargacursor ( query, "cargaborradores" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargaborradores" );
     _depura ( "END BlPostgreSqlClient::cargaborradores", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1018,9 +1018,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargacuentas ( int padre )
     } else if ( padre == -2 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE NOT padre isnull ORDER BY padre " );
     }// end if
-    BlDbRecordSet *cur = cargacursor ( query, "cargaborradores" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargaborradores" );
     _depura ( "END BlPostgreSqlClient::cargacuentas", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1032,9 +1032,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargagrupos()
 {
     _depura ( "BlPostgreSqlClient::cargagrupos", 0 );
     QString query = "SELECT * FROM grupo";
-    BlDbRecordSet *cur = cargacursor ( query, "cargagrupos" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargagrupos" );
     _depura ( "END BlPostgreSqlClient::cargagrupos", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1051,9 +1051,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargaapuntesctafecha ( int tidcuenta, QString
     _depura ( "ostgresiface2::cargaapuntesctafecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM apunte where idcuenta = %d AND fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", tidcuenta, fechainicial.toAscii().data(), fechafinal.toAscii().data() );
-    BlDbRecordSet *cur = cargacursor ( query, "cargasaldoscuentafecha" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargasaldoscuentafecha" );
     _depura ( "END ostgresiface2::cargaapuntesctafecha", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1069,9 +1069,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargasaldoscuentafecha ( int idcuenta, QStrin
     _depura ( "BlPostgreSqlClient::cargasaldoscuentafecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = %d AND fecha <'%s'", idcuenta, fecha.toAscii().data() );
-    BlDbRecordSet *cur = cargacursor ( query, "cargasaldoscuentafecha" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargasaldoscuentafecha" );
     _depura ( "END BlPostgreSqlClient::cargasaldoscuentafecha", 0 );
-    return ( cur );
+    return rs;
 }
 
 
@@ -1086,9 +1086,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargaasientosfecha ( QString fechini, QString
     _depura ( "BlPostgreSqlClient::cargaasientosfecha", 0 );
     QString query = "";
     query.sprintf ( "SELECT * FROM asiento WHERE fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", fechini.toAscii().data(), fechfin.toAscii().data() );
-    BlDbRecordSet *cur = cargacursor ( query, "cargaasientosfecha" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargaasientosfecha" );
     _depura ( "END BlPostgreSqlClient::cargaasientosfecha", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1115,9 +1115,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargacuentascodigo ( int padre, QString codig
     } else if ( padre == -1 ) {
         query.sprintf ( "SELECT * FROM cuenta WHERE codigo >= '%s' AND codigo <= '%s' ORDER BY codigo", codigoinicial.toAscii().data(), codigofinal.toAscii().data() );
     } // end if
-    BlDbRecordSet *cur = cargacursor ( query, "cargasaldoscuentafecha" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargasaldoscuentafecha" );
     _depura ( "END BlPostgreSqlClient::cargacuentascodigo", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1131,8 +1131,8 @@ int BlPostgreSqlClient::cierraasiento ( int idasiento )
     _depura ( "BlPostgreSqlClient::cierraasiento", 0 );
     QString query;
     query.sprintf ( "SELECT cierraasiento(%d)", idasiento );
-    BlDbRecordSet *cur = cargacursor ( query, "abreasientos" );
-    delete cur;
+    BlDbRecordSet *rs = cargacursor ( query, "abreasientos" );
+    delete rs;
     _depura ( "END BlPostgreSqlClient::cierraasiento", 0 );
     return 1;
 }
@@ -1198,8 +1198,8 @@ int BlPostgreSqlClient::abreasiento ( int idasiento )
     _depura ( "BlPostgreSqlClient::abreasiento", 0 );
     QString query = "";
     query.sprintf ( "SELECT abreasiento(%d)", idasiento );
-    BlDbRecordSet *cur = cargacursor ( query, "abreasientos" );
-    delete cur;
+    BlDbRecordSet *rs = cargacursor ( query, "abreasientos" );
+    delete rs;
     _depura ( "END BlPostgreSqlClient::abreasiento", 0 );
     return 1;
 }
@@ -1309,9 +1309,9 @@ BlDbRecordSet *BlPostgreSqlClient::cargaempresas()
     _depura ( "BlPostgreSqlClient::cargaempresas", 0 );
     QString query;
     query = "SELECT * FROM empresa";
-    BlDbRecordSet *cur = cargacursor ( query, "cargaempresas" );
+    BlDbRecordSet *rs = cargacursor ( query, "cargaempresas" );
     _depura ( "END BlPostgreSqlClient::cargaempresas", 0 );
-    return cur;
+    return rs;
 }
 
 
@@ -1403,10 +1403,10 @@ QString BlPostgreSqlClient::PGEval(QString evalexp, int precision) {
 	/// Ninguna expresion numerica acepta comas.
 	evalexp.replace(",", ".");
 	QString query = "SELECT (" + evalexp + ")::NUMERIC(12,"+QString::number(precision)+") AS res";
-	BlDbRecordSet *cur = cargacursor(query);
-	if (cur) {
-		res = cur->valor("res");
-		delete cur;
+	BlDbRecordSet *rs = cargacursor(query);
+	if (rs) {
+		res = rs->valor("res");
+		delete rs;
 	} // end if
 	return res;
 }

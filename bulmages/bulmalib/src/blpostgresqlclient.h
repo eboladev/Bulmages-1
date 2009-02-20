@@ -178,7 +178,6 @@ private:
     QString m_pgTty; /// Indica algunos par&aacute;metros de la conexi&oacute;n (Desgraciadamente no se cuales).
     QString m_pgDbName; /// Indica el nombre de la base de datos con la que se conecta.
     PGconn *conn; /// Representa la conexi&oacute;n.
-    int open; /// Indica si el postgresiface esta abierto o no.
     bool m_insideTransaction; /// Indica si estamos dentro de una transacci&oacute;n.
     QString m_currentUser;   /// Indica el usuario que se ha conectado.
 
