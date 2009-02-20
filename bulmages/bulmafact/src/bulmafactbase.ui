@@ -25,23 +25,14 @@
    <iconset resource="../../bulmages.qrc" >
     <normaloff>:/Bulmafact32x32/images/png/iconbulmafact.xpm</normaloff>:/Bulmafact32x32/images/png/iconbulmafact.xpm</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>38</y>
-     <width>750</width>
-     <height>489</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>750</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -68,8 +59,6 @@
     <addaction name="actionSeries_de_Factura" />
     <addaction name="separator" />
     <addaction name="actionBancos" />
-    <addaction name="separator" />
-    <addaction name="actionFormas_de_Pago" />
    </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
@@ -85,25 +74,8 @@
    <addaction name="menuVentana" />
    <addaction name="menuAcerca_de" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>527</y>
-     <width>750</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar" />
   <widget class="QToolBar" name="Listados" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>24</y>
-     <width>14</width>
-     <height>14</height>
-    </rect>
-   </property>
    <property name="focusPolicy" >
     <enum>Qt::TabFocus</enum>
    </property>
@@ -142,14 +114,6 @@
    </attribute>
   </widget>
   <widget class="QToolBar" name="Fichas" >
-   <property name="geometry" >
-    <rect>
-     <x>14</x>
-     <y>24</y>
-     <width>736</width>
-     <height>14</height>
-    </rect>
-   </property>
    <property name="sizePolicy" >
     <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
      <horstretch>0</horstretch>
@@ -257,15 +221,6 @@
    </property>
    <property name="text" >
     <string>Fichas</string>
-   </property>
-  </action>
-  <action name="actionFormas_de_Pago" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/payment-method.svg</normaloff>:/Images/payment-method.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Formas de pago</string>
    </property>
   </action>
   <action name="actionAlmacenes" >

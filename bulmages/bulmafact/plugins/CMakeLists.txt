@@ -8,7 +8,7 @@ add_subdirectory(pluginbf_trabajador)
 add_subdirectory(pluginbf_iva)
 add_subdirectory(pluginbf_almacen)
 add_subdirectory(pluginbf_banco)
-
+add_subdirectory(pluginbf_formasdepago)
 #efacturabf en desarrollo
 #add_subdirectory(efacturabf)
 

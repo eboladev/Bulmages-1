@@ -1,18 +1,13 @@
 ###########################################
-# Plugin for bulmafact                    #
+# Plugin for bulmafact					  #
 ###########################################
-#pluginivainc
+#pluginbf_formasdepago
 
-set (plugin pluginivainc)
+set (plugin pluginbf_formasdepago)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-
-# Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginivainc.h)
-list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
 file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
@@ -27,12 +22,12 @@ include_directories(
 	${QT_QTASSISTANT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_formasdepago/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_formasdepago/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -40,6 +35,7 @@ include_directories(
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT4_ADD_RESOURCES(pluginprofesor_RCC_SRCS ${pluginprofesor_RCCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
@@ -55,10 +51,9 @@ if(USE_GETTEXT)
                         ${plugin_SRCS} ${plugin_MOCS})
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+#   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
+#                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
-
 
 # build sources, moc'd sources, and rcc'd sources
 
@@ -67,7 +62,7 @@ if(APPLE)
 endif(APPLE)
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
-	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS} ${pluginprofesor_RCC_SRCS})
 
 
 set_target_properties( ${plugin} PROPERTIES 
@@ -81,7 +76,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
-install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
+add_dependencies(${plugin} bulmafact bulmalib)

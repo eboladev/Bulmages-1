@@ -28,7 +28,6 @@
 #include "stdio.h"
 #include "blcompanydialog.h"
 #include "bfcompany.h"
-#include "fpagoview.h"
 #include "blfunctions.h"
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
@@ -84,13 +83,6 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
         m_bulmafact->actionPaises->setEnabled ( TRUE );
     } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con 'Formas de pago'.
-    m_bulmafact->actionFormas_de_Pago->setEnabled ( FALSE );
-
-    if ( hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
-        m_bulmafact->actionFormas_de_Pago->setEnabled ( TRUE );
-    } // end if
-
     /// Comprobamos que tengamos permisos para trabajar con 'Series de factura'.
     m_bulmafact->actionSeries_de_Factura->setEnabled ( FALSE );
 
@@ -126,9 +118,11 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 void BfCompany::s_FPago()
 {
     _depura ( "BfCompany::s_FPago", 0 );
+	/*
     FPagoView *f = new FPagoView ( this, NULL );
     m_pWorkspace->addWindow ( f );
     f->show();
+	*/
     _depura ( "END BfCompany::s_FPago", 0 );
 }
 
