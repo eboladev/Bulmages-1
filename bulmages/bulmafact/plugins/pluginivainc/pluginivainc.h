@@ -26,9 +26,9 @@
 
 #include <QObject>
 #include "bulmafact.h"
-#include "articuloview.h"
 #include "blform.h"
 #include "bfsubform.h"
+#include "articuloview.h"
 #include "articulolist.h"
 #include "listlinalbaranclienteview.h"
 

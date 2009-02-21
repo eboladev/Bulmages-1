@@ -31,7 +31,6 @@
 int entryPoint ( Bulmafact * )
 {
     _depura ( "Estoy dentro del plugin de iva incluido", 0 );
-
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginivainc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
@@ -40,11 +39,15 @@ int entryPoint ( Bulmafact * )
 }
 
 
+
+
+
 /// Al crear la ventana de trabajadores tambien creamos un combo box para el tipo de trabajador.
 /**
 \param trab
 \return
 **/
+
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
@@ -83,13 +86,13 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "PVP IVA Inc" ) );
+    artl->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite,  "PVP IVA Inc" );
     return 0;
 }
+
 
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *l) {
 	l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, "PVP IVA Inc" );
     return 0;
 }
-
 
