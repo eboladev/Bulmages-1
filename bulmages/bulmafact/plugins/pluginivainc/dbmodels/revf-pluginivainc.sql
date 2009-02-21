@@ -62,7 +62,7 @@ BEGIN
 		ALTER TABLE articulo ADD COLUMN ivaincarticulo BOOLEAN DEFAULT FALSE;
 	END IF;
 
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''ivaincarticulo'';
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''pvpivainclalbaran'';
 	IF NOT FOUND THEN
 		ALTER TABLE lalbaran ADD COLUMN pvpivainclalbaran NUMERIC(12,2) DEFAULT 0;
 		ALTER TABLE lfactura ADD COLUMN pvpivainclfactura NUMERIC(12,2) DEFAULT 0;
