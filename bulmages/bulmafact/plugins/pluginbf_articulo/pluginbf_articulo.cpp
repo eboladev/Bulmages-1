@@ -318,7 +318,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
         return 0;
     } // end if
 
-    BlDbRecordSet *cur = sub->mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idarticulo", idArticle );
         sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );

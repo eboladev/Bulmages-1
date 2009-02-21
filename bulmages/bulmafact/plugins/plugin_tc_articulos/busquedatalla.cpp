@@ -64,7 +64,7 @@ void BusquedaTalla::setidtc_talla ( QString idtc_talla )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM tc_talla ORDER BY nomtc_talla" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tc_talla ORDER BY nomtc_talla" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -205,7 +205,7 @@ void BusquedaTallaDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomtc_talla" ) );

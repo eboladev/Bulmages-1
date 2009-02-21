@@ -123,7 +123,7 @@ void aplinteligentesview::inicializa ( int idasiento )
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
         mainCompany() ->begin();
         QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-        BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query1, "codcuenta" );
+        BlDbRecordSet *cursoraux1 = mainCompany() ->loadQuery ( query1, "codcuenta" );
         numdigitos = cursoraux1->valor ( 2 ).length();
         mainCompany() ->commit();
         delete cursoraux1;
@@ -151,7 +151,7 @@ void aplinteligentesview::inicializavariables()
     variablespredefinidas[VAR_PRED_FECHAACTUAL][1] = subcadena;
     buffer.sprintf ( "SELECT * FROM asiento WHERE idasiento = %d", numasiento );
     mainCompany() ->begin();
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( buffer, "cargaasiento" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( buffer, "cargaasiento" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][0] = "$fechaasiento$";
@@ -179,7 +179,7 @@ void aplinteligentesview::cifcuenta ( int idcuenta )
     QString query;
     query.sprintf ( "SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta );
     mainCompany() ->begin();
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "cursor" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "cursor" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->valor ( "cifent_cuenta" );
@@ -574,7 +574,7 @@ void aplinteligentesview::creaasiento()
         /// Calculamos a partir de que orden debemos empezar.
         int orden = 0;
         query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento = " + QString::number ( numasiento );
-        cur1 = mainCompany() ->cargacursor ( query );
+        cur1 = mainCompany() ->loadQuery ( query );
         if ( !cur1 ) throw - 1;
         if ( !cur1->eof() ) {
             orden = cur1->valor ( "ordmax" ).toInt() + 1;
@@ -585,7 +585,7 @@ void aplinteligentesview::creaasiento()
             QDomNode item = litems.item ( i );
             codcuenta = aplicavariable ( item.firstChildElement ( "codcuenta" ).text() );
             query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii().constData() );
-            cur1 = mainCompany() ->cargacursor ( query, "buscacodigo" );
+            cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
                 idcuenta = atoi ( cur1->valor ( "idcuenta" ).toAscii().constData() );
@@ -594,7 +594,7 @@ void aplinteligentesview::creaasiento()
 
             contrapartida = aplicavariable ( item.firstChildElement ( "contrapartida" ).text() );
             query.sprintf ( "SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii().constData() );
-            cur1 = mainCompany() ->cargacursor ( query, "buscacodigo" );
+            cur1 = mainCompany() ->loadQuery ( query, "buscacodigo" );
             if ( !cur1 ) throw - 1;
             if ( !cur1->eof() ) {
                 idcontrapartida = cur1->valor ( "idcuenta" );

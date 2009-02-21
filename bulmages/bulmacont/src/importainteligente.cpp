@@ -59,7 +59,7 @@ bool importainteligente::startElement ( const QString&, const QString&, const QS
         mainCompany() ->begin();
         mainCompany() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idainteligente) AS idainteligente FROM ainteligente";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery, "unquerymas" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
             tvalores["idainteligente"] = cur->valor ( "idainteligente" );
@@ -71,7 +71,7 @@ bool importainteligente::startElement ( const QString&, const QString&, const QS
         mainCompany() ->begin();
         mainCompany() ->ejecuta ( SQLQuery );
         SQLQuery = "SELECT max(idbinteligente) AS idbinteligente FROM binteligente";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery, "unquerymas" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
             tvalores["idbinteligente"] = cur->valor ( "idbinteligente" );

@@ -106,7 +106,7 @@ void TicketQToolButton::click()
         } // end if
 
 
-        BlDbRecordSet *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+        BlDbRecordSet *cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
         if ( !cur->eof() ) {
             file.write ( cur->valor ( "valor" ).toAscii() );
             file.write ( "\n", 1 );
@@ -115,19 +115,19 @@ void TicketQToolButton::click()
         // file.write ( QString ( "Conetxia Soluciones Informaticas S.L\n" ).toAscii() );
         file.write ( QString ( "====================================\n" ).toAscii() );
         // file.write ( QString ( "Joaquin Turina, 1 Local 4\n" ).toAscii() );
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
         if ( !cur->eof() ) {
             file.write ( cur->valor ( "valor" ).toAscii() );
             file.write ( "\n", 1 );
         } // end if
         delete cur;
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
         if ( !cur->eof() ) {
             file.write ( QString ( "CP: " ).toAscii() );
             file.write ( cur->valor ( "valor" ).toAscii() );
         } // end if
         delete cur;
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
         if ( !cur->eof() ) {
             file.write ( QString ( " " ).toAscii() );
             file.write ( cur->valor ( "valor" ).toAscii() );
@@ -136,7 +136,7 @@ void TicketQToolButton::click()
         delete cur;
 
         // file.write ( QString ( "CP: 07004 Palma de Mallorca\n" ).toAscii() );
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
         if ( !cur->eof() ) {
             file.write ( QString ( "Tel: " ).toAscii() );
             file.write ( cur->valor ( "valor" ).toAscii() );
@@ -259,7 +259,7 @@ void TicketQToolButton::click()
         } // end if
 
 
-        BlDbRecordSet *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+        BlDbRecordSet *cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
         if ( !cur->eof() ) {
             file.write ( cur->valor ( "valor" ).toAscii() );
             file.write ( "\n", 1 );
@@ -268,19 +268,19 @@ void TicketQToolButton::click()
         // file.write ( QString ( "Conetxia Soluciones Informaticas S.L\n" ).toAscii() );
         file.write ( QString ( "====================================\n" ).toAscii() );
         // file.write ( QString ( "Joaquin Turina, 1 Local 4\n" ).toAscii() );
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
         if ( !cur->eof() ) {
             file.write ( cur->valor ( "valor" ).toAscii() );
             file.write ( "\n", 1 );
         } // end if
         delete cur;
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
         if ( !cur->eof() ) {
             file.write ( QString ( "CP: " ).toAscii() );
             file.write ( cur->valor ( "valor" ).toAscii() );
         } // end if
         delete cur;
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
         if ( !cur->eof() ) {
             file.write ( QString ( " " ).toAscii() );
             file.write ( cur->valor ( "valor" ).toAscii() );
@@ -289,7 +289,7 @@ void TicketQToolButton::click()
         delete cur;
 
         // file.write ( QString ( "CP: 07004 Palma de Mallorca\n" ).toAscii() );
-        cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+        cur = m_companyact ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
         if ( !cur->eof() ) {
             file.write ( QString ( "Tel: " ).toAscii() );
             file.write ( cur->valor ( "valor" ).toAscii() );

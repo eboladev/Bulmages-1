@@ -92,7 +92,7 @@ void fpagoview::pintar ( QString idfpago )
     if ( m_curfpago != NULL )
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
-    m_curfpago = mainCompany() ->cargacursor ( query );
+    m_curfpago = mainCompany() ->loadQuery ( query );
     mui_comboFPago->clear();
     int i = 0;
     while ( !m_curfpago->eof() ) {
@@ -214,7 +214,7 @@ void fpagoview::on_mui_crear_clicked()
         QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _( "Nueva forma de pago" ) + "', 0, 0, 0)";
         mainCompany() ->begin();
         mainCompany() ->ejecuta ( query );
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idfpago) AS idfpago FROM fpago" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idfpago) AS idfpago FROM fpago" );
         mainCompany() ->commit();
         pintar ( cur->valor ( "idfpago" ) );
         delete cur;

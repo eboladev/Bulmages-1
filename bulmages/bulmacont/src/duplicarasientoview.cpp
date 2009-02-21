@@ -63,7 +63,7 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
     aofinal->setText ( afinal );
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
     mainCompany() ->begin();
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "hola" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "hola" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
         foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
@@ -83,7 +83,7 @@ void DuplicarAsientoView::lostFocus()
     QString ainicial = aoinicial->text();
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
     mainCompany() ->begin();
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "hola" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "hola" );
     mainCompany() ->commit();
     if ( !cur->eof() ) {
         foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
@@ -116,14 +116,14 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
         /// Buscamos el orden asiento para la duplicaci&oacute;n.
         QString query = "SELECT max(ordenasiento) AS orden FROM asiento ";
         mainCompany()->begin();
-        BlDbRecordSet *cur = mainCompany()->cargacursor(query);
+        BlDbRecordSet *cur = mainCompany()->loadQuery(query);
         if (!cur->eof()) {
             ordeninicial = atoi(cur->valor("orden").toAscii()) + 1;
         } // end if
         delete cur;
      
         query1 = "SELECT max(idasiento) AS maxim FROM asiento";
-        BlDbRecordSet *cursaux = mainCompany()->cargacursor(query1);
+        BlDbRecordSet *cursaux = mainCompany()->loadQuery(query1);
         if (!cursaux->eof()) {
             idasiento = atoi(cursaux->valor("maxim").toAscii());
             idasientoinicial = atoi(cursaux->valor("maxim").toAscii()) + 1;
@@ -132,7 +132,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     */
 
     query1 = "SELECT * FROM asiento WHERE ordenasiento >= " + asientoi + " AND ordenasiento <= " + asientof + " AND EXTRACT (YEAR FROM fecha) = EXTRACT (YEAR FROM '" + fedinicial.toString ( "dd/MM/yyyy" ) + "'::date)";
-    BlDbRecordSet *curasiento = mainCompany() ->cargacursor ( query1 );
+    BlDbRecordSet *curasiento = mainCompany() ->loadQuery ( query1 );
     while ( !curasiento->eof() ) {
 
         query1 = "INSERT INTO asiento (descripcion, fecha, comentariosasiento) VALUES('" + curasiento->valor ( "descripcion" ) + "','" + fedinicial.toString ( "dd/MM/yyyy" ) + "','" + curasiento->valor ( "comentariosasiento" ) + "')";
@@ -140,7 +140,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
 
 
         query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
-        BlDbRecordSet *cursaux = mainCompany() ->cargacursor ( query1 );
+        BlDbRecordSet *cursaux = mainCompany() ->loadQuery ( query1 );
         if ( !cursaux->eof() ) {
             idasiento = cursaux->valor ( "idasiento" );
             ordenasiento = cursaux->valor ( "ordenasiento" );
@@ -150,7 +150,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
 
 
         query2 = "SELECT * FROM borrador WHERE idasiento = " + curasiento->valor ( "idasiento" );
-        BlDbRecordSet *curborrador = mainCompany() ->cargacursor ( query2 );
+        BlDbRecordSet *curborrador = mainCompany() ->loadQuery ( query2 );
 
         while ( !curborrador->eof() ) {
             QString textiddiario = curborrador->valor ( "iddiario" );
@@ -181,7 +181,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
         } // end while
         delete curborrador;
         query2 = "SELECT cierraasiento(" + idasiento + ")";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query2 );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
         delete cur;
         curasiento->siguienteregistro();
     } // end while

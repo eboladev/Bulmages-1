@@ -203,7 +203,7 @@ void DiarioPrintView::presentar ( const char *tipus )
             } // end if
             QString query = montaQuery();
             mainCompany() ->begin();
-            cursoraux = mainCompany() ->cargacursor ( query, "elquerydb" );
+            cursoraux = mainCompany() ->loadQuery ( query, "elquerydb" );
             mainCompany() ->commit();
 
             for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
@@ -306,7 +306,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                 char codicompte[20];
                 sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento=%d AND apunte.haber=0 AND cuenta.idcuenta=apunte.idcuenta", idasiento );
                 mainCompany() ->begin();
-                BlDbRecordSet *cursasiento = mainCompany() ->cargacursor ( consulta, "asiento" );
+                BlDbRecordSet *cursasiento = mainCompany() ->loadQuery ( consulta, "asiento" );
                 mainCompany() ->commit();
 
                 while ( !cursasiento->eof() ) {
@@ -325,7 +325,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                 delete cursasiento;
                 sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento = %d AND apunte.debe = 0 AND cuenta.idcuenta = apunte.idcuenta", idasiento );
                 mainCompany() ->begin();
-                cursasiento = mainCompany() ->cargacursor ( consulta, "asiento" );
+                cursasiento = mainCompany() ->loadQuery ( consulta, "asiento" );
                 mainCompany() ->commit();
 
                 while ( !cursasiento->eof() ) {

@@ -996,7 +996,7 @@ QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
 	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query1 );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query1 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
         result = datos;
@@ -1023,7 +1023,7 @@ QString BlForm::trataIf ( const QString &query, const QString &datos, const QStr
 
     QString query2 = "SELECT (" + query1 + ") AS res";
     /// Cargamos el query y lo recorremos
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query2 );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
         if ( cur->valor ( "res" ) == "t" ) {
@@ -1053,7 +1053,7 @@ QString BlForm::trataQuery ( const QString &query, const QString &datos, int tip
 	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
-    result = trataCursor( mainCompany() ->cargacursor ( query1 ), datos, tipoEscape);
+    result = trataCursor( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape);
     _depura ( "END BlForm::trataQuery", 0 );
     return result;
 

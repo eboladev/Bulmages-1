@@ -129,7 +129,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
 
         QString query = "SELECT preciocostearticulo FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" );
-        cur = subform->mainCompany() ->cargacursor ( query );
+        cur = subform->mainCompany() ->loadQuery ( query );
         if ( ! cur->eof() ) {
             if ( "'" + cur->valor ( "preciocostearticulo" ) + "'" == camp->valorcampoprep ( err ) ) {
                 delete cur;
@@ -153,7 +153,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     } // end if
 
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
-        cur = subform->mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
+        cur = subform->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
             rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -172,7 +172,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             return -1;
         } // end if
 
-        cur1 = subform->mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+        cur1 = subform->mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
         if ( !cur->eof() ) {
             if ( subform->tableName() == "lpedidoproveedor"
                     || subform->tableName() == "lalbaranp"
@@ -181,7 +181,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
 
                 if ( subform->idproveedor() != "" ) {
-                    cur2 = subform->mainCompany() ->cargacursor ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + subform->idproveedor() );
+                    cur2 = subform->mainCompany() ->loadQuery ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + subform->idproveedor() );
                     if ( !cur2->eof() ) {
                         if ( cur2->valor ( "recargoeqproveedor" ) == "t" ) {
                             rec->setDbValue ( "reqeq" + subform->tableName(), cur1->valor ( "porcentretasa_iva" ) );

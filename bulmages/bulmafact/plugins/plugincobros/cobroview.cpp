@@ -89,7 +89,7 @@ CobroView::~CobroView()
 int CobroView::trataTags ( QString &buff ) {
    // pillar los datos de cliente equivale a un <!--QUERY-->      implicito que contiene toda la plantilla.
    QString params[1] = {DBvalue ( "idcliente" )};
-   buff = trataCursor(mainCompany() ->cargacursor ( 
+   buff = trataCursor(mainCompany() ->loadQuery ( 
           "SELECT * FROM cliente WHERE idcliente = $1" , 
            1, params ,NULL,0,0), buff);
 
@@ -135,10 +135,10 @@ void CobroView::imprimir()
 int CobroView::guardarPost() {
 	_depura(" CobroView::guardarPost", 0);
 	QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + DBvalue("refcobro") + "'";
-	BlDbRecordSet *cur1 = mainCompany()->cargacursor(query1);
+	BlDbRecordSet *cur1 = mainCompany()->loadQuery(query1);
 
 	QString query = "SELECT COALESCE(sum(totalfactura), 0) AS total FROM factura WHERE reffactura='" + DBvalue("refcobro") + "'";
-	BlDbRecordSet *cur = mainCompany()->cargacursor(query);
+	BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 	if (cur->valor("total") == cur1->valor("totalc") ) {
 		mensajeInfo("Procesar todos los documentos con esta referencia ?");
 		QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + DBvalue("refcobro") + "'";

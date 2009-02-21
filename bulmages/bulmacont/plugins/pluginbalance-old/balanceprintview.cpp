@@ -59,7 +59,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     /// de cuentas.
     mainCompany()->begin();
     QString query = "SELECT nivel(codigo) FROM cuenta GROUP BY nivel ORDER BY nivel";
-    BlDbRecordSet *niveles = mainCompany()->cargacursor ( query, "Niveles" );
+    BlDbRecordSet *niveles = mainCompany()->loadQuery ( query, "Niveles" );
     int i = 0;
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
@@ -175,7 +175,7 @@ void BalancePrintView::presentar ( const char *tipus )
             mainCompany()->begin();
             query.sprintf ( "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo" );
             BlDbRecordSet *ramas;
-            ramas = mainCompany()->cargacursor ( query, "Ramas" );
+            ramas = mainCompany()->loadQuery ( query, "Ramas" );
             Arbol *arbol;
             arbol = new Arbol;
             while ( !ramas->eof() ) {
@@ -254,7 +254,7 @@ void BalancePrintView::presentar ( const char *tipus )
             /// establecer as&iacute; los valores de cada cuenta.
             query.sprintf ( "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.toAscii().constData(), finicial.toAscii().constData(), ffinal.toAscii().constData(), finicial.toAscii().constData() );
             BlDbRecordSet *cuentas;
-            cuentas = mainCompany()->cargacursor ( query, "Periodo" );
+            cuentas = mainCompany()->loadQuery ( query, "Periodo" );
             /// Para cada cuenta con sus apuntes hechos hay que actualizar hojas
             /// del &aacute;rbol.
             while ( !cuentas->eof() ) {

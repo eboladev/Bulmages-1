@@ -110,7 +110,7 @@ void resmensualview::presentar()
             if ( query != "" ) {
                 fprintf ( stderr, "%s\n", query.ascii() );
                 conexionbase->begin();
-                BlDbRecordSet *curs = conexionbase->cargacursor ( query, "midursor" );
+                BlDbRecordSet *curs = conexionbase->loadQuery ( query, "midursor" );
                 conexionbase->commit();
                 if ( !curs->eof() ) {
                     milistad[i].push_back ( movant + atof ( curs->valor ( "tdebe" ).ascii() ) + atof ( curs->valor ( "thaber" ).ascii() ) );
@@ -246,7 +246,7 @@ void resmensualview::presentarpie()
     for ( int i = 0; i < 3; i++ ) {
         conexionbase->begin();
         sprintf ( query, "SELECT sum(debe) as tdebe, sum(haber) as thaber, contrapartida FROM apunte WHERE apunte.idcuenta=id_cuenta('%s') GROUP BY contrapartida", codigo[i].ascii() );
-        cursorapt = conexionbase->cargacursor ( query, "mycursor" );
+        cursorapt = conexionbase->loadQuery ( query, "mycursor" );
         conexionbase->commit();
         // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
         std::list<double> valores;
@@ -257,7 +257,7 @@ void resmensualview::presentarpie()
             // Acumulamos los totales para al final poder escribirlos
             sprintf ( query, "SELECT * FROM cuenta WHERE idcuenta = %s", cursorapt->valor ( "contrapartida" ).ascii() );
             conexionbase->begin();
-            BlDbRecordSet *micurs = conexionbase->cargacursor ( query, "mioldcursor" );
+            BlDbRecordSet *micurs = conexionbase->loadQuery ( query, "mioldcursor" );
             if ( !micurs->eof() ) {
                 nomcuenta = micurs->valor ( "codigo" ) + " " + micurs->valor ( "descripcion" );
             }// end if

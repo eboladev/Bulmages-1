@@ -177,7 +177,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 
     if ( codigo != "" ) {
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             if ( camp->nomcampo() == "codigo" ) {
                 rec->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
@@ -187,7 +187,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
                 if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
                     rec->setDbValue ( "idc_coste", cur->valor ( "idc_coste" ) );
                     QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
-                    BlDbRecordSet *curss = mainCompany() ->cargacursor ( query1 );
+                    BlDbRecordSet *curss = mainCompany() ->loadQuery ( query1 );
                     rec->setDbValue ( "nomc_coste", curss->valor ( "nombre" ) );
                     delete curss;
                 } // end if
@@ -265,7 +265,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     if ( camp->nomcampo() == "codigo" && camp->text() != "*" ) {
         QString codigoext = extiendecodigo ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
             rec->setDbValue ( "codigo", cur->valor ( "codigo" ) );
@@ -274,7 +274,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             if ( rec->exists ( "idc_coste" ) && cur->valor ( "idc_coste" ) != "" ) {
                 rec->setDbValue ( "idc_coste", cur->valor ( "idc_coste" ) );
                 QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " + cur->valor ( "idc_coste" );
-                BlDbRecordSet *curss = mainCompany() ->cargacursor ( query1 );
+                BlDbRecordSet *curss = mainCompany() ->loadQuery ( query1 );
                 rec->setDbValue ( "nomc_coste", curss->valor ( "nombre" ) );
                 delete curss;
             } // end if
@@ -286,7 +286,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
     if ( camp->nomcampo() == "nomcanal" ) {
         QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idcanal", cur->valor ( "idcanal" ) );
         } else {
@@ -296,7 +296,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
     if ( camp->nomcampo() == "nomc_coste" ) {
         QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idc_coste", cur->valor ( "idc_coste" ) );
         } else {

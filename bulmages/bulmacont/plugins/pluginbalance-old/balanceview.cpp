@@ -329,10 +329,10 @@ void BalanceView::generarBalance()
 
     /// Cargamos el balance temporal
     query.sprintf ( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC" );
-    cursorapt = mainCompany() ->cargacursor ( query );
+    cursorapt = mainCompany() ->loadQuery ( query );
     while ( !cursorapt->eof() ) {
         query.sprintf ( "SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor ( "idcuenta" ).toAscii().constData() );
-        BlDbRecordSet *mycur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *mycur = mainCompany() ->loadQuery ( query );
         if ( !mycur->eof() ) {
             query = "UPDATE balancetemp SET tsaldo = tsaldo + " + mycur->valor ( "tsaldo" ) + ", tdebe = tdebe + " + mycur->valor ( "tdebe" ) + ", thaber = thaber +" + mycur->valor ( "thaber" ) + ", asaldo = asaldo+" + mycur->valor ( "asaldo" ) + ", ejdebe = ejdebe + " + mycur->valor ( "ejdebe" ) + ", ejhaber = ejhaber + " + mycur->valor ( "ejhaber" ) + ", ejsaldo = ejsaldo + " + mycur->valor ( "ejsaldo" ) + " WHERE idcuenta = " + mycur->valor ( "padre" );
             mainCompany() ->ejecuta ( query );
@@ -511,7 +511,7 @@ void BalanceView::on_mui_hojacalculo_clicked()
 
 /// Generamos el query
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
-    BlDbRecordSet *cursorapt1 = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cursorapt1 = mainCompany() ->loadQuery ( query );
 
     int y = 1;
     int x = 1;

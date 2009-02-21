@@ -155,14 +155,14 @@ void BtSubForm::setIdCliente ( QString id )
         return;
     } // end if
 
-    BlDbRecordSet *curcliente = mainCompany() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente );
+    BlDbRecordSet *curcliente = mainCompany() ->loadQuery ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente );
 
     if ( !curcliente->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
-            BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
-            BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
 
                 if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
@@ -210,13 +210,13 @@ void BtSubForm::setIdProveedor ( QString id )
         rec->setDbValue ( "reqeq" + m_tablename, "0" );
     } // end for
 
-    BlDbRecordSet *curproveedor = mainCompany() ->cargacursor ( "SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor=" + mdb_idproveedor );
+    BlDbRecordSet *curproveedor = mainCompany() ->loadQuery ( "SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor=" + mdb_idproveedor );
     if ( !curproveedor->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
-            BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
-            BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
                 if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
                     rec->setDbValue ( "iva" + m_tablename, cur1->valor ( "porcentasa_iva" ) );

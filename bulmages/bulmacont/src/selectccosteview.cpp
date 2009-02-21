@@ -75,7 +75,7 @@ void SelectCCosteView::cargacostes()
 
     /// Cogemos los centros de coste principales y los ponemos donde toca.
     mui_listCostes->clear();
-    cursoraux1 = mainCompany() ->cargacursor ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
+    cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
     while ( !cursoraux1->eof() ) {
         idc_coste = cursoraux1->valor ( "idc_coste" ).toInt();
 
@@ -93,7 +93,7 @@ void SelectCCosteView::cargacostes()
     /// Una vez que hemos puesto los centros de coste padre, todo lo dem&aacute;s es una
     /// Tarea de ir colocando centros de coste a sus respectivos
     /// deja de ser recursivo y pasa a ser lineal.
-    cursoraux2 = mainCompany() ->cargacursor ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
+    cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
     while ( !cursoraux2->eof() ) {
         padre = cursoraux2->valor ( "padre" ).toInt();
         idc_coste = cursoraux2->valor ( "idc_coste" ).toInt();

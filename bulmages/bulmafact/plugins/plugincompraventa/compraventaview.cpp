@@ -230,7 +230,7 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 
 	if (! id.isEmpty()) {
 		QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= "+id+")";
-		BlDbRecordSet *cur = mainCompany()->cargacursor(query);
+		BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 		if (!cur->eof()) {
 			m_albaranp->setDbValue("idproveedor", cur->valor("idproveedor"));
 			subform3->setIdProveedor ( cur->valor("idproveedor") );
@@ -343,7 +343,7 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 
 	/// Buscamos si hay algun albaran de proveedor y lo cargamos.
 	QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refalbaran")+"'";
-	BlDbRecordSet *cur = mainCompany()->cargacursor(query);
+	BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 	if (!cur->eof()) {
 		m_albaranp->cargar(cur->valor("idalbaranp"));
 		subform3->cargar(cur->valor("idalbaranp"));
@@ -456,7 +456,7 @@ void CompraVentaView::generarFacturaProveedor()
             SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + m_albaranp->DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + m_albaranp->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -577,7 +577,7 @@ void CompraVentaView::generarFactura()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.

@@ -139,7 +139,7 @@ void canalview::mostrarplantilla()
     _depura ( "canalview::mostrarplantilla", 0 );
     QString query;
     QTextStream ( &query ) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
-    BlDbRecordSet *cursorcanal = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cursorcanal = mainCompany() ->loadQuery ( query );
     if ( !cursorcanal->eof() ) {
         mui_nomcanal->setText ( cursorcanal->valor ( "nombre" ) );
         mui_desccanal->setPlainText ( cursorcanal->valor ( "descripcion" ) );
@@ -192,7 +192,7 @@ void canalview::on_mui_crear_clicked()
     mainCompany() ->ejecuta ( query );
     query = "";
     QTextStream ( &query ) << "SELECT MAX(idcanal) AS id FROM canal";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "queryy" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "queryy" );
     idcanal = atoi ( cur->valor ( "id" ).toAscii() );
     delete cur;
     mainCompany() ->commit();

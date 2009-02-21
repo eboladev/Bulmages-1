@@ -171,7 +171,7 @@ void InformeQToolButton::click()
     y = 5;
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM cliente ORDER BY nomcliente";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     /// Tratamos la barra de progreso
     BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
@@ -264,7 +264,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente, int row, int any
         SQLQuery += " WHERE ffactura >= ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes - 1 ) + " mon'::INTERVAL ";
         SQLQuery += " AND ffactura < ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes ) + " mon'::INTERVAL ";
         SQLQuery += " AND idcliente = " + idcliente + " GROUP BY idcliente";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( mes + 3 ) + ", " + QString::number ( row ) + ");\n";
             fitxersortidatxt += "$doc->oooSet(\"text-color\", \"00FF\");\n";
@@ -425,7 +425,7 @@ void InformeProveedorQToolButton::click()
     y = 5;
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM proveedor ORDER BY nomproveedor";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
@@ -513,7 +513,7 @@ QString InformeProveedorQToolButton::generarProveedor ( QString idproveedor, int
         SQLQuery += " WHERE ffacturap >= ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes - 1 ) + " mon'::INTERVAL ";
         SQLQuery += " AND ffacturap < ('01/01/" + QString::number ( anyo ) + "')::DATE + '@" + QString::number ( mes ) + " mon'::INTERVAL ";
         SQLQuery += " AND idproveedor = " + idproveedor + " GROUP BY idproveedor";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( mes + 3 ) + ", " + QString::number ( row ) + ");\n";
             fitxersortidatxt += "$doc->oooSet(\"text-color\", \"00FF\");\n";

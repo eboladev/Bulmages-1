@@ -168,7 +168,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
     BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
 
-    BlDbRecordSet *cur = trab->mainCompany() ->cargacursor ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
     if ( !cur->eof() ) {
         l->setidtipotrabajo ( cur->valor ( "idtipotrabajo" ) );
     }

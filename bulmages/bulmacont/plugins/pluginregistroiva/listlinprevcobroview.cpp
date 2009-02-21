@@ -194,7 +194,7 @@ void ListLinPrevCobroView::pintalistlinprevcobro ( linprevcobro *linea, int pos 
     item ( pos, COL_DOCPREVCOBRO ) ->setText ( linea->docprevcobro() );
 
     /// Ponemos los iconos para que la cosa parezca mas guay.
-    BlDbRecordSet *cursoraux1 = m_companyact->cargacursor ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idcuenta() );
+    BlDbRecordSet *cursoraux1 = m_companyact->loadQuery ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idcuenta() );
     if ( !cursoraux1->eof() ) {
         if ( cursoraux1->valor ( "tipocuenta" ) == "1" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cactivo ) ) );
@@ -211,7 +211,7 @@ void ListLinPrevCobroView::pintalistlinprevcobro ( linprevcobro *linea, int pos 
     delete cursoraux1;
 
     /// Ponemos los iconos para que la cosa parezca mas guay.
-    cursoraux1 = m_companyact->cargacursor ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idctacliente() );
+    cursoraux1 = m_companyact->loadQuery ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idctacliente() );
     if ( !cursoraux1->eof() ) {
         if ( cursoraux1->valor ( "tipocuenta" ) == "1" ) {
             item ( pos, COL_CODIGOCTACLIENTE ) ->setIcon ( QIcon ( QPixmap ( cactivo ) ) );
@@ -335,7 +335,7 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     } // end if
     if ( opcion == menuverfact ) {
         query = "SELECT idborrador FROM registroiva WHERE idregistroiva = " + linea->idregistroiva();
-        cur = m_companyact->cargacursor ( query );
+        cur = m_companyact->loadQuery ( query );
         if ( linea->idregistroiva() != "" ) {
             RegistroIvaView * iva = new RegistroIvaView ( m_companyact, 0 );
             iva->inicializa1 ( cur->valor ( "idborrador" ).toInt() );

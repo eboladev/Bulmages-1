@@ -146,7 +146,7 @@ void FacturasProveedorList::presentar()
     mui_list->cargar ( "SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
     /// Si ha habido un error con el query salimos
     if ( !cur ) return;
     m_total->setText ( cur->valor ( "total" ) );

@@ -191,7 +191,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
 
         QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
-        BlDbRecordSet *cur1 = subform->mainCompany() ->cargacursor ( query1 );
+        BlDbRecordSet *cur1 = subform->mainCompany() ->loadQuery ( query1 );
         BlFixed stock ( "0" );
         if ( !cur1 ) return 0;
         if ( !cur1->eof() ) {
@@ -202,7 +202,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
 
         QString query = "SELECT * FROM minimsalmacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
-        BlDbRecordSet *cur = subform->mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
             BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );

@@ -100,7 +100,7 @@ void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfac
     QString numero = QString::number ( numerolinea );
 
     QString query = "SELECT * FROM articulo WHERE idarticulo = " + lfactura->valor ( "idarticulo" );
-    BlDbRecordSet *articulo = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *articulo = mainCompany() ->loadQuery ( query );
 
     QString string_iva = lfactura->valor ( "ivalfactura" );
     QString string_bimp = lfactura->valor ( "pvplfactura" );
@@ -241,11 +241,11 @@ void EFQToolButton::exporta_factura_ubl()
 
     // Datos de la factura que no estan en el BlDbRecord
     query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
-    BlDbRecordSet *factura_totales = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *factura_totales = mainCompany() ->loadQuery ( query );
 
     // Datos del cliente
     query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->DBvalue ( "idcliente" );
-    BlDbRecordSet *cliente = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cliente = mainCompany() ->loadQuery ( query );
 
     // Datos del trabajador que emitio la factura
 
@@ -253,31 +253,31 @@ void EFQToolButton::exporta_factura_ubl()
 
     if ( !error_idtrabajador ) {
         query = "SELECT * FROM trabajador WHERE idtrabajador = " + m_factura->DBvalue ( "idtrabajador" );
-        trabajador = mainCompany() ->cargacursor ( query );
+        trabajador = mainCompany() ->loadQuery ( query );
     }
 
     // Datos de la forma de pago convenida
     query = "SELECT * FROM forma_pago WHERE idforma_pago = " + m_factura->DBvalue ( "idforma_pago" );
-    BlDbRecordSet *forma_pago = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *forma_pago = mainCompany() ->loadQuery ( query );
 
     // Datos de la tabla configuracion
 
     bool error_configuracion = false;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'";
-    BlDbRecordSet *nombre_empresa = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *nombre_empresa = mainCompany() ->loadQuery ( query );
 
     query = "SELECT * FROM configuracion WHERE nombre = 'CIF'";
-    BlDbRecordSet *cif_empresa = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cif_empresa = mainCompany() ->loadQuery ( query );
 
     query = "SELECT * FROM configuracion WHERE nombre = 'DireccionCompleta'";
-    BlDbRecordSet *dir_empresa = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *dir_empresa = mainCompany() ->loadQuery ( query );
 
     query = "SELECT * FROM configuracion WHERE nombre = 'Ciudad'";
-    BlDbRecordSet *ciudad_empresa = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *ciudad_empresa = mainCompany() ->loadQuery ( query );
 
     query = "SELECT * FROM configuracion WHERE nombre = 'CodPostal'";
-    BlDbRecordSet *cp_empresa = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cp_empresa = mainCompany() ->loadQuery ( query );
 
     if ( nombre_empresa->valor ( "valor" ).isEmpty() ) {
         _depura ( "El campo valor con nombre nombre_empresa de la tabla de configuracion esta vacio", 2 );
@@ -353,7 +353,7 @@ void EFQToolButton::exporta_factura_ubl()
     /// Obtenemos las lineas de factura y las escribimos en el buffer
 
     query = "SELECT * FROM lfactura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
-    BlDbRecordSet *lfacturas = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *lfacturas = mainCompany() ->loadQuery ( query );
 
     // Por si las moscas...
     lfacturas->primerregistro();
@@ -378,7 +378,7 @@ void EFQToolButton::exporta_factura_ubl()
 
     /// Descuento al PVP de la factura (cogidos de la tabla dfactura)
     query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
-    BlDbRecordSet *descuentos_factura = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *descuentos_factura = mainCompany() ->loadQuery ( query );
 
     QString DescuentosFactura = "\n";
 

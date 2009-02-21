@@ -382,7 +382,7 @@ void ContratosList::on_mui_facturar_clicked()
             where = " AND contrato.idcliente = " + mui_idcliente->id();
         } // end if
 
-        cur = mainCompany() ->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
+        cur = mainCompany() ->loadQuery ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
         while ( !cur->eof() ) {
             ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
             if ( prov->cargar ( cur->valor ( "idcontrato" ) ) ) {

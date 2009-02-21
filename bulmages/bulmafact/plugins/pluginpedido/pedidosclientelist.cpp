@@ -135,7 +135,7 @@ void PedidosClienteList::presentar()
     mui_list->cargar ( "SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, imppedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente = cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
 
     /// Hacemos el calculo del total.
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
     /// Esta consulta podria resultar NULL por problemas de permisos y debe tratarse el caso.
     if ( cur ) {
         m_total->setText ( cur->valor ( "total" ) );

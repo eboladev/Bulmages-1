@@ -141,7 +141,7 @@ int listcuentasview1::inicializa()
         mui_arbolcuentas->clear();
 
         /// Cargamos y pintamos las cuentas hijas.
-        BlDbRecordSet *ctas = mainCompany() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
+        BlDbRecordSet *ctas = mainCompany() ->loadQuery ( "SELECT * FROM cuenta ORDER BY codigo" );
         while ( !ctas->eof() ) {
 
             idcuenta = ctas->valor ( "idcuenta" ).toInt();
@@ -211,7 +211,7 @@ void listcuentasview1::inicializatabla()
     _depura ( "listcuentasview1::inicializatabla", 0 );
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
-    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cursoraux1 = mainCompany() ->loadQuery ( query );
     mui_tablacuentas->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
     QTableWidgetItem *dato;
@@ -501,7 +501,7 @@ void listcuentasview1::imprimir()
     QString fitxersortidatxt;
 
     QString query = "SELECT * FROM cuenta ORDER BY codigo";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
 
     /// L&iacute;nea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";

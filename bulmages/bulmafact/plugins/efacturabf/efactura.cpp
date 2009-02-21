@@ -42,17 +42,17 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : FichaBf ( emp, parent )
     setupUi ( this );  // Para que el form se inicialice bien
 
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server'";
-//  BlDbRecordSet *cur1 = mainCompany()->cargacursor(query);
+//  BlDbRecordSet *cur1 = mainCompany()->loadQuery(query);
 //  mui_URLServidorTiempo->setText(cur1->valor("valor"));
 //  delete cur1;
 //
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_certificado'";
-//  BlDbRecordSet *cur2 = mainCompany()->cargacursor(query);
+//  BlDbRecordSet *cur2 = mainCompany()->loadQuery(query);
 //  mui_ficheroECertificado->setText(cur2->valor("valor"));
 //  delete cur2;
 //
 //  query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server_valida'";
-//  BlDbRecordSet *cur3 = mainCompany()->cargacursor(query);
+//  BlDbRecordSet *cur3 = mainCompany()->loadQuery(query);
 //  mui_URLServidorValidaCert->setText(cur3->valor("valor"));
 //  delete cur3;
 
@@ -137,7 +137,7 @@ void EFactura::on_mui_cancelar_clicked()
     _depura ( "EFactura::on_mui_cancelar_clicked", 0 );
 
 //  QString query = "SELECT * FROM configuracion";
-//  BlDbRecordSet *cur = mainCompany()->cargacursor(query);
+//  BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 //
 //  while(!cur->eof()) {
 //   _depura(cur->valor("nombre"), 0);

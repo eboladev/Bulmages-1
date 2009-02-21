@@ -151,7 +151,7 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             m_lineaActual->setDbValue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
             m_lineaActual->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -160,7 +160,7 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
 
             if ( cur->valor ( "idtipo_iva" ) != "" ) {
                 QString query2 = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1";
-                BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query2 );
+                BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query2 );
                 if ( !cur1->eof() )
                     m_lineaActual->setDbValue ( "ivalalbaran", cur1->valor ( "porcentasa_iva" ) );
                 delete cur1;
@@ -264,13 +264,13 @@ void  Ticket::imprimir()
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( "\n", 1 );
     } // end if
     delete cur;
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( "\n", 1 );
@@ -278,14 +278,14 @@ void  Ticket::imprimir()
     ///file.write ( QString ( "C/LAS POZAS 181, LOCAL 43\n" ).toAscii() );
     delete cur;
     /// file.write ( QString ( "ALIMENTACION ECOLOGICA. HERBOLARIO\n" ).toAscii() );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
     } // end if
     delete cur;
 
     file.write ( QString ( " " ).toAscii() );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( QString ( " " ).toAscii() );
@@ -293,7 +293,7 @@ void  Ticket::imprimir()
     delete cur;
 
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() ) {
         file.write ( QString ( "(" ).toAscii() );
         file.write ( cur->valor ( "valor" ).toAscii() );
@@ -321,7 +321,7 @@ void  Ticket::imprimir()
 
     /// Imprimimos el trabajador
     file.write ( QString ( "Trabajador: " ).toAscii() );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
     if ( !cur->eof() ) {
         file.write ( DBvalue ( "idtrabajador" ).toAscii() );
         file.write ( " " );
@@ -331,7 +331,7 @@ void  Ticket::imprimir()
     delete cur;
 
     /// Imprimimos el cliente
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
     if ( !cur->eof() ) {
         file.write ( QString ( "Cliente: " ).toAscii() );
         file.write ( cur->valor ( "cifcliente" ).toAscii() );
@@ -342,7 +342,7 @@ void  Ticket::imprimir()
     delete cur;
 
     /// Imprimimos el almacen
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
     if ( !cur->eof() ) {
         file.write ( QString ( "Almacen: " ).toAscii() );
         file.write ( cur->valor ( "nomalmacen" ).toAscii() );
@@ -359,7 +359,7 @@ void  Ticket::imprimir()
     QString l;
     BlFixed irpf ( "0" );
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -498,7 +498,7 @@ void  Ticket::imprimir()
     /// Imprimimos el trabajador
 
     file.write ( QString ( "LE ATENDIO: " ).toAscii() );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
     if ( !cur->eof() ) {
         file.write ( DBvalue ( "idtrabajador" ).toAscii() );
         file.write ( " " );
@@ -536,7 +536,7 @@ void  Ticket::imprimir()
     file.write ( "\x00", 1 );
     file.write ( "\n", 1 );
     file.write ( QString ( "TELF. " ).toAscii() );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='telefono'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='telefono'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( QString ( " " ).toAscii() );
@@ -545,7 +545,7 @@ void  Ticket::imprimir()
 
     file.write ( "\n", 1 );
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='web'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='web'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( QString ( " " ).toAscii() );
@@ -617,32 +617,32 @@ void Ticket::imprimir()
         BlFixed totalIva;
     }total;
 
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
         empresa.direccionCompleta = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
         empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
         empresa.ciudad = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
         empresa.telefono = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
         empresa.provincia = cur->valor ( "valor" );
     delete cur;
@@ -651,19 +651,19 @@ void Ticket::imprimir()
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
     trabajador.id = DBvalue ( "idtrabajador" );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
@@ -873,7 +873,7 @@ void Ticket::insertarArticuloCodigo ( QString codigo )
     _depura ( "Ticket::insertarArticuloCodigo", 0 );
 
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
@@ -889,7 +889,7 @@ void Ticket::insertarArticuloCodigoNL ( QString codigo )
 {
     _depura("Ticket::insertarArticuloCodigoNL",0);
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
     } // end if
@@ -903,14 +903,14 @@ int Ticket::cargar ( QString id )
 {
     try {
         QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( cur ) {
             if ( !cur->eof() ) {
                 DBload ( cur );
             }
             delete cur;
         } // end if
-        cur = mainCompany() ->cargacursor ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
+        cur = mainCompany() ->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
         while ( !cur->eof() ) {
             BlDbRecord *l = agregarLinea();
             l->DBload ( cur );
@@ -955,7 +955,7 @@ int Ticket::guardar()
         }// end for
         mainCompany() ->commit();
 	setDbValue("idalbaran", id);
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM albaran WHERE idalbaran = " + id );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM albaran WHERE idalbaran = " + id );
 	setDbValue("refalbaran", cur->valor("refalbaran"));
 	setDbValue("numalbaran", cur->valor("numalbaran"));
 

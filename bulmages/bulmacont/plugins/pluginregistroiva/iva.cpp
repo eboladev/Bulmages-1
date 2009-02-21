@@ -66,7 +66,7 @@ Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
     m_companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
-    BlDbRecordSet *cur = m_companyact->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = m_companyact->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
         DBload ( cur );
     } else {
@@ -162,7 +162,7 @@ void Iva::setidtipoiva ( const QString &val )
 {
     _depura ( "Iva::setidtipoiva", 0 );
     QString SQLQuery = "SELECT * FROM tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta WHERE idtipoiva = " + val;
-    BlDbRecordSet *cur = m_companyact->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = m_companyact->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
         _depura ( cur->valor ( "codigo" ), 0 );
         setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );

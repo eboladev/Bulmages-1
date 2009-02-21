@@ -64,7 +64,7 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM tc_color ORDER BY nomtc_color" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tc_color ORDER BY nomtc_color" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -205,7 +205,7 @@ void BusquedaColorDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT idtc_color, nomtc_color FROM tc_color ORDER BY nomtc_color" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT idtc_color, nomtc_color FROM tc_color ORDER BY nomtc_color" );
     clear();
 //    addItem("--");
     while ( !m_cursorcombo->eof() ) {

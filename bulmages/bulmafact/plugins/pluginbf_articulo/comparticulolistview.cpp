@@ -75,7 +75,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
     this->setEnabled ( true );
     QString idArticle = artlist->idarticulo();
     delete artlist;
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo=" + idArticle );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo=" + idArticle );
     if ( !cur->eof() ) {
         rec->setDbValue ( "idcomponente", idArticle );
         rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -99,7 +99,7 @@ void ListCompArticuloView::editFinished ( int row, int col )
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
-        BlDbRecordSet * cur = mainCompany() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
+        BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idcomponente", cur->valor ( "idarticulo" ) );
             rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );

@@ -64,7 +64,7 @@ void BancoView::pintar()
     if ( m_cursorbancos != NULL ) {
         delete m_cursorbancos;
     } // end if
-    m_cursorbancos = mainCompany() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
+    m_cursorbancos = mainCompany() ->loadQuery ( "SELECT * FROM banco ORDER BY nombanco" );
     while ( !m_cursorbancos->eof() ) {
         new QListWidgetItem ( m_cursorbancos->valor ( "nombanco" ) , mui_lista );
         m_cursorbancos->siguienteregistro();
@@ -155,7 +155,7 @@ int BancoView::guardar()
             delete m_cursorbancos;
         } // end if
 
-        m_cursorbancos = mainCompany() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
+        m_cursorbancos = mainCompany() ->loadQuery ( "SELECT * FROM banco ORDER BY nombanco" );
 
         if ( m_item ) {
             m_item->setText ( mui_nombanco->text() );
@@ -206,7 +206,7 @@ void BancoView::on_mui_nuevo_clicked()
         QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
         mainCompany() ->begin();
         mainCompany() ->ejecuta ( query );
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idbanco) AS idbanco FROM banco" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idbanco) AS idbanco FROM banco" );
         mainCompany() ->commit();
         mdb_idbanco = cur->valor ( "idbanco" );
         delete cur;

@@ -131,7 +131,7 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
     _depura ( "RegistroIvaView::cargarComboFPago", 0 );
     if ( m_cursorFPago != NULL )
         delete m_cursorFPago;
-    m_cursorFPago = mainCompany() ->cargacursor ( "SELECT * FROM fpago" );
+    m_cursorFPago = mainCompany() ->loadQuery ( "SELECT * FROM fpago" );
     int i = 0;
     int i1 = 0;
     while ( !m_cursorFPago->eof() ) {

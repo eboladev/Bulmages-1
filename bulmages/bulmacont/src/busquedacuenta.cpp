@@ -239,7 +239,7 @@ void BusquedaCuenta::setidcuenta ( QString val )
     if ( val == "" ) return;
 
     QString SQLQuery = "SELECT * FROM cuenta WHERE idcuenta = '" + mdb_idcuenta + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_codigocuenta = cur->valor ( "codigo" );
         mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -267,7 +267,7 @@ void BusquedaCuenta::setcodigocuenta ( QString val )
     mdb_codigocuenta = val;
     if ( val == "" ) return;
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_idcuenta = cur->valor ( "idcuenta" );
         mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -361,7 +361,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 
 
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + extiendecodigo ( val, m_numdigitos ) + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
         mdb_idcuenta = cur->valor ( "idcuenta" );
         mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -374,7 +374,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 
     if ( ! encontrado ) {
         SQLQuery = "SELECT * FROM cuenta WHERE upper(descripcion) = upper('" + val + "')";
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
             mdb_idcuenta = cur->valor ( "idcuenta" );
             mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -387,7 +387,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 
     if ( ! encontrado ) {
         SQLQuery = "SELECT * FROM cuenta WHERE upper(descripcion) LIKE upper('%" + val + "%')";
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
             mdb_idcuenta = cur->valor ( "idcuenta" );
             mdb_nomcuenta = cur->valor ( "descripcion" );
@@ -499,7 +499,7 @@ void BusquedaCuentaDelegate::s_editTextChanged ( const QString &cod )
     } // end if
 
     codigo = codigo.left ( codigo.indexOf ( ".-" ) );
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25" );
     clear();
 
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que

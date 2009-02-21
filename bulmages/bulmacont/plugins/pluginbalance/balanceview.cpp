@@ -192,7 +192,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         mainCompany() ->begin();
         QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
 
-        ramas = mainCompany() ->cargacursor ( query );
+        ramas = mainCompany() ->loadQuery ( query );
 
         /// Creamos el arbol y lo inicializamos con todas las cuentas.
         Arbol *arbol;
@@ -243,7 +243,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
 
         /// Poblamos el &aacute;rbol de hojas (cuentas).
-        hojas = mainCompany() ->cargacursor ( query );
+        hojas = mainCompany() ->loadQuery ( query );
         while ( !hojas->eof() ) {
             /// Para cada cuenta con apuntes introducidos hay que actualizar hojas del &aacute;rbol.
             arbol->actualizaHojas ( hojas );

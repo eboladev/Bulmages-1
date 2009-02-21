@@ -47,7 +47,7 @@
 
 
 /// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.
-/** Se carga normalmente a partir de la clase 'BlPostgreSqlClient' con el m&eacute;todo 'cargacursor'.
+/** Se carga normalmente a partir de la clase 'BlPostgreSqlClient' con el m&eacute;todo 'loadQuery'.
     Crea las estructuras necesarias para recorrer un recordset de postgres. */
 class BlDbRecordSet
 {
@@ -200,8 +200,8 @@ public:
     /// Termina una transacci&oacute;n de forma abrupta.
     void rollback();
     /// Carga el cursor con una consulta.
-    BlDbRecordSet *cargacursor ( QString query, QString nomcursor = "", int limit = 0, int offset = 0 );
-    BlDbRecordSet *cargacursor ( QString query, int numParams,
+    BlDbRecordSet *loadQuery ( QString query, QString nomcursor = "", int limit = 0, int offset = 0 );
+    BlDbRecordSet *loadQuery ( QString query, int numParams,
                        QString  * paramValues, QString nomcursor = "", 
                        int limit =0, int offset = 0 );
 

@@ -210,7 +210,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
@@ -287,7 +287,7 @@ void AlbaranClienteView::generarFactura()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.

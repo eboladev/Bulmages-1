@@ -156,7 +156,7 @@ void GenPreQToolButton::generarFactura()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refalbaran" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -284,7 +284,7 @@ void GenPreQToolButton::generarFactura1()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -413,7 +413,7 @@ void GenPreQToolButton::generarFactura2()
             SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -601,7 +601,7 @@ void VerPreQToolButton::verPresupuesto()
             SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + fpv->DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {

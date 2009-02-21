@@ -72,7 +72,7 @@ void BusquedaFamilia::setcodigocompletofamilia ( QString val )
     _depura ( "BusquedaFamilia::setcodigocompletofamilia", 0 );
 
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + val + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
     if ( !cur->eof() ) {
         setId(cur->valor ( "idfamilia" ));

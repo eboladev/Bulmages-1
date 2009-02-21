@@ -73,7 +73,7 @@ void BusquedaFormaPago::setId ( QString idforma_pago )
 
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM forma_pago" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM forma_pago" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -107,7 +107,7 @@ void BusquedaFormaPago::setIdCliente ( QString idcliente )
         return;
     } // end if
 
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente );
 
     if ( !cur->eof() ) {
         setId ( cur->valor ( "idforma_pago" ) );
@@ -130,7 +130,7 @@ void BusquedaFormaPago::setIdProveedor ( QString idproveedor )
     if ( idproveedor == "" )
         return;
 
-    BlDbRecordSet * cur = mainCompany() ->cargacursor ( "SELECT idforma_pago FROM proveedor WHERE idproveedor=" + idproveedor );
+    BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT idforma_pago FROM proveedor WHERE idproveedor=" + idproveedor );
 
     if ( !cur->eof() ) {
         setId ( cur->valor ( "idforma_pago" ) );

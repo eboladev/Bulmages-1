@@ -149,7 +149,7 @@ void GenAlbQToolButton::generarFactura1()
             SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.
@@ -278,7 +278,7 @@ void GenAlbQToolButton::generarFactura2()
             SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.

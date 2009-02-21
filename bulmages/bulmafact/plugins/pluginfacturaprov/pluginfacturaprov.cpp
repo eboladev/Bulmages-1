@@ -167,7 +167,7 @@ int ProveedorView_cargarPost_Post (ProveedorView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         FacturaProveedorView * bud = new FacturaProveedorView((BfCompany *)ref->mainCompany(), NULL);
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );

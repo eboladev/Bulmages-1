@@ -83,7 +83,7 @@ void tipoivaview::pintar ( QString idtipoiva )
     if ( m_curtipoiva != NULL )
         delete m_curtipoiva;
     QString query = "SELECT * from tipoiva left join cuenta ON tipoiva.idcuenta = cuenta.idcuenta ORDER BY nombretipoiva";
-    m_curtipoiva = mainCompany() ->cargacursor ( query );
+    m_curtipoiva = mainCompany() ->loadQuery ( query );
     mui_comboTipoIVA->clear();
     int i = 0;
     while ( !m_curtipoiva->eof() ) {
@@ -169,7 +169,7 @@ void tipoivaview::on_mui_crear_clicked()
         QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('" + nombreTipoIVA + "', 0, id_cuenta('" + mui_idcuenta->text() + "'))";
         mainCompany() ->begin();
         mainCompany() ->ejecuta ( query );
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
         mainCompany() ->commit();
         pintar ( cur->valor ( "idtipoiva" ) );
         delete cur;

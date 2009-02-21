@@ -319,7 +319,7 @@ int pgimportfiles::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
     /// ordenacion en arbol.
     QString query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
     conexionbase->begin();
-    BlDbRecordSet *curcta = conexionbase->cargacursor ( query, "elquery" );
+    BlDbRecordSet *curcta = conexionbase->loadQuery ( query, "elquery" );
     conexionbase->commit();
     while ( !curcta->eof() ) {
         QString linea = "";
@@ -346,7 +346,7 @@ int pgimportfiles::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
         query += " AND asiento.fecha <= '" + m_fFinal + "'";
     query += " ORDER BY asiento.idasiento ";
     conexionbase->begin();
-    BlDbRecordSet *curas = conexionbase->cargacursor ( query, "masquery" );
+    BlDbRecordSet *curas = conexionbase->loadQuery ( query, "masquery" );
     conexionbase->commit();
     int i = 0;
     int numreg = curas->numregistros() + 1;
@@ -464,7 +464,7 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
         /// Antes de hacer una insercion comprobamos que la cuenta no exista ya en el sistema.
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + cod + "'";
         conexionbase->begin();
-        BlDbRecordSet *cursaux = conexionbase->cargacursor ( query, "hol" );
+        BlDbRecordSet *cursaux = conexionbase->loadQuery ( query, "hol" );
         conexionbase->commit();
         if ( cursaux->eof() ) {
             if ( !cod.isEmpty() ) {
@@ -567,7 +567,7 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
                 query = "SELECT cierraasiento(" + idasiento + ")";
                 if ( !modoTest() ) {
                     conexionbase->begin();
-                    BlDbRecordSet * cur = conexionbase->cargacursor ( query, "hola" );
+                    BlDbRecordSet * cur = conexionbase->loadQuery ( query, "hola" );
                     conexionbase->commit();
                     delete cur;
                 } // end if
@@ -583,7 +583,7 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
                     } // end if
                 } // end if
                 query = "SELECT max(idasiento) as idasiento FROM asiento";
-                BlDbRecordSet *cur = conexionbase->cargacursor ( query );
+                BlDbRecordSet *cur = conexionbase->loadQuery ( query );
                 idasiento = cur->valor ( "idasiento" );
                 conexionbase->commit();
                 delete cur;
@@ -604,7 +604,7 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
         } // end if
         query = "SELECT * FROM cuenta WHERE codigo = '" + subcta + "'";
         conexionbase->begin();
-        BlDbRecordSet *cur = conexionbase->cargacursor ( query, "elquery" );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( query, "elquery" );
         conexionbase->commit();
         if ( !cur->eof() ) {
             if ( fecha1 >= fechain && fecha1 <= fechafi ) {
@@ -627,7 +627,7 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
     if ( lastasiento != "0" ) {
         if ( !modoTest() ) {
             query = "SELECT cierraasiento(" + idasiento + ")";
-            BlDbRecordSet * cur = conexionbase->cargacursor ( query );
+            BlDbRecordSet * cur = conexionbase->loadQuery ( query );
             delete cur;
         } // end if
     } // end if
@@ -655,7 +655,7 @@ QString pgimportfiles::searchParent ( QString cod )
     while ( !fin ) {
         query = "SELECT * FROM cuenta WHERE codigo = '" + cod.left ( i ) + "'";
         conexionbase->begin();
-        BlDbRecordSet *cur = conexionbase->cargacursor ( query, "unquery" );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( query, "unquery" );
         conexionbase->commit();
         if ( !cur->eof() ) {
             padre = cur->valor ( "idcuenta" );
@@ -687,7 +687,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 
     if ( tipo & IMPORT_FORMAS_PAGO ) {
         QString query = "SELECT * FROM forma_pago";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FORMA_PAGO>\n";
             stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
@@ -703,7 +703,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 
     if ( tipo & IMPORT_ALMACENES ) {
         QString query = "SELECT * FROM almacen";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ALMACEN>\n";
             stream << "\t<IDALMACEN>" << XMLProtect ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
@@ -724,7 +724,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 
     if ( tipo & IMPORT_TRABAJADORES ) {
         QString query = "SELECT * FROM trabajador";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<TRABAJADOR>\n";
             stream << "\t<IDTRABAJADOR>" << XMLProtect ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
@@ -745,7 +745,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 
     if ( tipo & IMPORT_CLIENTES ) {
         QString query = "SELECT * FROM cliente ORDER BY cifcliente";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<CLIENTE>\n";
             stream << "\t<IDCLIENTE>" << XMLProtect ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
@@ -773,7 +773,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 
     if ( tipo & IMPORT_PROVEEDORES ) {
         QString query = "SELECT * FROM proveedor ORDER BY cifproveedor";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PROVEEDOR>\n";
             stream << "\t<IDPROVEEDOR>" << XMLProtect ( curc->valor ( "idproveedor" ) ) << "</IDPROVEEDOR>\n";
@@ -800,7 +800,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 
     if ( tipo & IMPORT_FAMILIAS ) {
         QString query = "SELECT * FROM familia ORDER BY codigocompletofamilia ";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FAMILIA>\n";
             stream << "\t<IDFAMILIA>" << XMLProtect ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
@@ -820,7 +820,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
         query += " LEFT JOIN tipo_articulo ON articulo.idtipo_articulo = tipo_articulo.idtipo_articulo ";
         query += " LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva ";
         query += " ORDER BY codigocompletoarticulo ";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ARTICULO>\n";
             stream << "\t<IDARTICULO>" << XMLProtect ( curc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
@@ -856,7 +856,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
         query += " LEFT JOIN cliente ON cliente.idcliente = factura.idcliente ";
         query += " LEFT JOIN trabajador ON trabajador.idtrabajador = factura.idtrabajador ";
         query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = factura.idforma_pago ";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FACTURA>\n";
             stream << "\t<IDFACTURA>" << XMLProtect ( curc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
@@ -908,7 +908,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
 
             /// Incorporamos las lineas de detalles de la factura.
-            BlDbRecordSet *curlc = conexionbase->cargacursor ( "SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura = " + curc->valor ( "idfactura" ) );
+            BlDbRecordSet *curlc = conexionbase->loadQuery ( "SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura = " + curc->valor ( "idfactura" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LFACTURA>\n";
                 stream << "\t\t\t<IDLFACTURA>" << XMLProtect ( curlc->valor ( "idlfactura" ) ) << "</IDLFACTURA>\n";
@@ -929,7 +929,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             } // end while
             delete curlc;
             /// Incorporamos los descuentos de la factura.
-            curlc = conexionbase->cargacursor ( "SELECT * FROM dfactura WHERE idfactura = " + curc->valor ( "idfactura" ) );
+            curlc = conexionbase->loadQuery ( "SELECT * FROM dfactura WHERE idfactura = " + curc->valor ( "idfactura" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DFACTURA>\n";
                 stream << "\t\t\t<IDDFACTURA>" << XMLProtect ( curlc->valor ( "iddfactura" ) ) << "</IDDFACTURA>\n";
@@ -953,7 +953,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
         query += " LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente ";
         query += " LEFT JOIN trabajador ON trabajador.idtrabajador = presupuesto.idtrabajador ";
         query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = presupuesto.idforma_pago ";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PRESUPUESTO>\n";
             stream << "\t<IDPRESUPUESTO>" << XMLProtect ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
@@ -1004,7 +1004,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
             stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            BlDbRecordSet *curlc = conexionbase->cargacursor ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
+            BlDbRecordSet *curlc = conexionbase->loadQuery ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
             while ( !curlc->eof() ) {
                 stream << "\t<LPRESUPUESTO>\n";
                 stream << "\t\t<IDLPRESUPUESTO>" << XMLProtect ( curlc->valor ( "idlpresupuesto" ) ) << "</IDLPRESUPUESTO>\n";
@@ -1025,7 +1025,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = conexionbase->cargacursor ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
+            curlc = conexionbase->loadQuery ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
             while ( !curlc->eof() ) {
                 stream << "\t<DPRESUPUESTO>\n";
                 stream << "\t\t<IDDPRESUPUESTO>" << XMLProtect ( curlc->valor ( "iddpresupuesto" ) ) << "</IDDPRESUPUESTO>\n";
@@ -1049,7 +1049,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
         query += " LEFT JOIN cliente ON cliente.idcliente = pedidocliente.idcliente ";
         query += " LEFT JOIN trabajador ON trabajador.idtrabajador = pedidocliente.idtrabajador ";
         query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = pedidocliente.idforma_pago ";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PEDIDOCLIENTE>\n";
             stream << "\t<IDPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
@@ -1100,7 +1100,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
             stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            BlDbRecordSet *curlc = conexionbase->cargacursor ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
+            BlDbRecordSet *curlc = conexionbase->loadQuery ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LPEDIDOCLIENTE>\n";
                 stream << "\t\t\t<IDLPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "idlpedidocliente" ) ) << "</IDLPEDIDOCLIENTE>\n";
@@ -1121,7 +1121,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = conexionbase->cargacursor ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
+            curlc = conexionbase->loadQuery ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DPEDIDOCLIENTE>\n";
                 stream << "\t\t\t<IDDPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "iddpedidocliente" ) ) << "</IDDPEDIDOCLIENTE>\n";
@@ -1145,7 +1145,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
         query += " LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente ";
         query += " LEFT JOIN trabajador ON trabajador.idtrabajador = albaran.idtrabajador ";
         query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = albaran.idforma_pago ";
-        BlDbRecordSet *curc = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curc = conexionbase->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ALBARAN>\n";
             stream << "\t<IDALBARAN>" << XMLProtect ( curc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
@@ -1195,7 +1195,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
             stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            BlDbRecordSet *curlc = conexionbase->cargacursor ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
+            BlDbRecordSet *curlc = conexionbase->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LALBARAN>\n";
                 stream << "\t\t\t<IDLALBARAN>" << XMLProtect ( curlc->valor ( "idlalbaran" ) ) << "</IDLALBARAN>\n";
@@ -1216,7 +1216,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
             } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = conexionbase->cargacursor ( "SELECT * FROM dalbaran WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
+            curlc = conexionbase->loadQuery ( "SELECT * FROM dalbaran WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DALBARAN>\n";
                 stream << "\t\t\t<IDDALBARAN>" << XMLProtect ( curlc->valor ( "iddalbaran" ) ) << "</IDDALBARAN>\n";
@@ -1263,7 +1263,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
     if ( tipo & IMPORT_CUENTAS ) {
         /// Se exporta todo el plan contable
         query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
-        BlDbRecordSet *curcta = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curcta = conexionbase->loadQuery ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
             stream << "\t<IDCUENTA>" << XMLProtect ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
@@ -1289,7 +1289,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         } // end while
         delete curcta;
         query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
-        curcta = conexionbase->cargacursor ( query );
+        curcta = conexionbase->loadQuery ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
             stream << "\t<IDCUENTA>" << XMLProtect ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
@@ -1321,7 +1321,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
     if ( tipo & IMPORT_TIPOSIVA ) {
         /// Se vana exportar los tipos de IVA.
         query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
-        BlDbRecordSet *curtiva = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curtiva = conexionbase->loadQuery ( query );
         while ( !curtiva->eof() ) {
             stream << "<TIPOIVA>\n";
             stream << "\t<IDTIPOIVA>" << XMLProtect ( curtiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
@@ -1343,7 +1343,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         if ( m_fFinal != "" )
             query += " AND asiento.fecha <= '" + m_fFinal + "'";
         query += " ORDER BY asiento.fecha, asiento.idasiento ";
-        BlDbRecordSet *curas = conexionbase->cargacursor ( query );
+        BlDbRecordSet *curas = conexionbase->loadQuery ( query );
         int i = 0;
         /// Iteramos.
         numreg = curas->numregistros() + 1;
@@ -1359,7 +1359,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
             query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
             query += "LEFT JOIN (SELECT codigo AS codcontrapartida, idcuenta FROM cuenta) AS contra ON contra.idcuenta = apunte.contrapartida ";
             query += " WHERE " + curas->valor ( "idasiento" ) + " = apunte.idasiento ";
-            BlDbRecordSet *curap = conexionbase->cargacursor ( query, "masquery1" );
+            BlDbRecordSet *curap = conexionbase->loadQuery ( query, "masquery1" );
             while ( !curap->eof() ) {
                 stream << "\t<APUNTE>\n";
                 QString fecha = curap->valor ( "fecha" );
@@ -1380,7 +1380,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                 query  = "SELECT * FROM registroiva";
                 query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
                 query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=" + curas->valor ( "idasiento" ) + " AND orden = " + curap->valor ( "orden" ) + ")";
-                BlDbRecordSet *curreg = conexionbase->cargacursor ( query, "queryregiva" );
+                BlDbRecordSet *curreg = conexionbase->loadQuery ( query, "queryregiva" );
                 while ( !curreg->eof() ) {
                     stream << "\t\t<REGISTROIVA>\n";
                     stream << "\t\t\t<CONTRAPARTIDA>" << XMLProtect ( curreg->valor ( "codigo" ) ) << "</CONTRAPARTIDA>\n";
@@ -1396,7 +1396,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                     query  = "SELECT * FROM iva ";
                     query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
                     query += " WHERE idregistroiva = " + curreg->valor ( "idregistroiva" );
-                    BlDbRecordSet *curiva = conexionbase->cargacursor ( query, "queryiva" );
+                    BlDbRecordSet *curiva = conexionbase->loadQuery ( query, "queryiva" );
                     while ( !curiva->eof() ) {
                         stream << "\t\t\t<RIVA>\n";
                         stream << "\t\t\t\t<IDTIPOIVA>" << XMLProtect ( curiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
@@ -1536,7 +1536,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
         conexionbase->begin();
         conexionbase->ejecuta ( query );
-        BlDbRecordSet *cur = conexionbase->cargacursor ( "SELECT MAX(idasiento) AS max FROM asiento", "otroquery" );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( "SELECT MAX(idasiento) AS max FROM asiento", "otroquery" );
         conexionbase->commit();
         if ( !cur->eof() ) {
             idasiento = cur->valor ( "max" );
@@ -1549,7 +1549,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES (" + idasiento + ", 0, 0, id_cuenta('AUX'), '01/01/2003', " + QString::number ( m_ordenapunte++ ) + ")";
         conexionbase->begin();
         conexionbase->ejecuta ( query );
-        BlDbRecordSet *cur = conexionbase->cargacursor ( "SELECT MAX(idborrador) AS max FROM borrador", "otroquery1" );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( "SELECT MAX(idborrador) AS max FROM borrador", "otroquery1" );
         conexionbase->commit();
         if ( !cur->eof() ) {
             idborrador = cur->valor ( "max" );
@@ -1561,7 +1561,7 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), " + idborrador + ")";
         conexionbase->begin();
         conexionbase->ejecuta ( query );
-        BlDbRecordSet *cur = conexionbase->cargacursor ( "SELECT MAX(idregistroiva) AS max FROM registroiva", "otroquery13" );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( "SELECT MAX(idregistroiva) AS max FROM registroiva", "otroquery13" );
         conexionbase->commit();
         if ( !cur->eof() ) {
             m_idRegistroIva = cur->valor ( "max" );
@@ -1607,7 +1607,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
                         conexionbase->sanearCadena ( XMLDesProtect ( idasiento ) );
         conexionbase->begin();
         conexionbase->ejecuta ( query );
-        BlDbRecordSet *cur = conexionbase->cargacursor ( "SELECT cierraasiento(" + idasiento + ")" );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( "SELECT cierraasiento(" + idasiento + ")" );
         conexionbase->commit();
         delete cur;
     } // end if
@@ -1650,7 +1650,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             m_tipoCuenta = "NULL";
 
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigocuenta + "'";
-        BlDbRecordSet *cur = conexionbase->cargacursor ( query );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( query );
         if ( cur->eof() ) {
             QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, bloqueada, nodebe, nohaber) VALUES (" +
                             conexionbase->sanearCadena ( m_tipoCuenta ) + ",'" +
@@ -1717,7 +1717,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
     if ( qName == "RIVA" && m_tipo & IMPORT_FACTURAS ) {
         QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '" + m_nombreTipoIva + "'";
         conexionbase->begin();
-        BlDbRecordSet * cur = conexionbase->cargacursor ( query1, "elqueryd" );
+        BlDbRecordSet * cur = conexionbase->loadQuery ( query1, "elqueryd" );
         if ( !cur->eof() ) {
             QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES (" + m_idRegistroIva + ", " + cur->valor ( "idtipoiva" ) + ", " + m_baseIva + ")";
             conexionbase->ejecuta ( query );
@@ -1903,7 +1903,7 @@ int ImportBulmaFact::trataCliente()
     QString dcif = valores["CIFCLIENTE"];
     if ( dcif != "" ) {
         QString query = "SELECT * FROM cliente WHERE cifcliente SIMILAR TO '" + dcif + "'";
-        BlDbRecordSet *cur = conexionbase->cargacursor ( query );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             /// El cliente ya existe se pueden hacer modificaciones.
             pgimport->mensajeria ( _( "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n" ) );
@@ -1938,7 +1938,7 @@ int ImportBulmaFact::trataProveedor()
     QString cifprov = valores["CIFPROVEEDOR"];
     if ( cifprov != "" ) {
         QString query = "SELECT * FROM proveedor WHERE cifproveedor SIMILAR TO '" + cifprov + "'";
-        BlDbRecordSet *cur = conexionbase->cargacursor ( query );
+        BlDbRecordSet *cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             /// El cliente ya existe se pueden hacer modificaciones.
             pgimport->mensajeria ( "<LI>" + _( "El proveedor ya existe, se pueden hacer modificaciones") + "<LI>\n" );
@@ -1982,7 +1982,7 @@ int ImportBulmaFact::trataFormaPago()
 
     /// Comprobamos que no este ya creada una forma de pago de este tipo.
     QString query = "SELECT * FROM forma_pago WHERE dias1tforma_pago = " + dias1tforma_pago + " AND descuentoforma_pago = " + descuentoforma_pago;
-    BlDbRecordSet *cur = conexionbase->cargacursor ( query );
+    BlDbRecordSet *cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         pgimport->mensajeria ( "<LI>" + _( "Ya existe esta forma de pago." ) );
         delete cur;
@@ -2030,7 +2030,7 @@ int ImportBulmaFact::trataAlmacen()
     } // end if
     /// Comprobamos que no este ya creada un almacen de este tipo.
     QString query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
-    BlDbRecordSet *cur = conexionbase->cargacursor ( query );
+    BlDbRecordSet *cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         pgimport->mensajeria ( "<LI>" + _( "Ya existe este almacen." ) );
         delete cur;
@@ -2076,7 +2076,7 @@ int ImportBulmaFact::trataFamilia()
         idpadre = "NULL";
     } else {
         query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigopadre + "'";
-        cur = conexionbase->cargacursor ( query );
+        cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             idpadre = cur->valor ( "idfamilia" );
         } else {
@@ -2091,7 +2091,7 @@ int ImportBulmaFact::trataFamilia()
     } // end if
     /// Comprobamos que no este ya creada un familia de este tipo.
     query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigocompletofamilia + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         pgimport->mensajeria ( "<P>" + _( "Ya existe esta familia." ) + "</P>" );
         delete cur;
@@ -2144,7 +2144,7 @@ int ImportBulmaFact::trataArticulo()
     QString desctipo_iva = valores["DESCTIPO_IVA"];
 
     query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigocompletofamilia + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idfamilia = cur->valor ( "idfamilia" );
     } else {
@@ -2154,7 +2154,7 @@ int ImportBulmaFact::trataArticulo()
     delete cur;
 
     query = "SELECT * from tipo_articulo WHERE codtipo_articulo = '" + codtipo_articulo + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idtipo_articulo = cur->valor ( "idtipo_articulo" );
     } else {
@@ -2163,7 +2163,7 @@ int ImportBulmaFact::trataArticulo()
     delete cur;
 
     query = "SELECT * from tipo_iva WHERE desctipo_iva = '" + desctipo_iva + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idtipo_iva = cur->valor ( "idtipo_iva" );
     } else {
@@ -2180,7 +2180,7 @@ int ImportBulmaFact::trataArticulo()
 
     /// Comprobamos que no este ya creada un articulo de este tipo.
     query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         pgimport->mensajeria ( "<P>" + _( "Ya existe este articulo." ) + "</P>" );
         delete cur;
@@ -2314,7 +2314,7 @@ int ImportBulmaFact::trataPedidoCliente()
 
     /// Completamos datos que puedan faltar.
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
@@ -2324,7 +2324,7 @@ int ImportBulmaFact::trataPedidoCliente()
     delete cur;
 
     query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
@@ -2334,7 +2334,7 @@ int ImportBulmaFact::trataPedidoCliente()
     delete cur;
 
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
@@ -2344,7 +2344,7 @@ int ImportBulmaFact::trataPedidoCliente()
     delete cur;
 
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
@@ -2372,7 +2372,7 @@ int ImportBulmaFact::trataPedidoCliente()
 
     conexionbase->begin();
     conexionbase->ejecuta ( query );
-    cur = conexionbase->cargacursor ( "SELECT MAX(idpedidocliente) AS id FROM pedidocliente" );
+    cur = conexionbase->loadQuery ( "SELECT MAX(idpedidocliente) AS id FROM pedidocliente" );
     idpedidocliente = cur->valor ( "id" );
     delete cur;
     conexionbase->commit();
@@ -2395,7 +2395,7 @@ int ImportBulmaFact::trataPedidoCliente()
         QString codigocompletoarticulo = ( *lpedidoclientemap ) ["CODIGOCOMPLETOARTICULO"];
         /// Completamos datos de la linea de presupuesto.
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
-        cur = conexionbase->cargacursor ( query );
+        cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
@@ -2543,7 +2543,7 @@ int ImportBulmaFact::trataAlbaran()
 
     /// Completamos datos que puedan faltar.
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
@@ -2553,7 +2553,7 @@ int ImportBulmaFact::trataAlbaran()
     delete cur;
 
     query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
@@ -2562,7 +2562,7 @@ int ImportBulmaFact::trataAlbaran()
     } // end if
     delete cur;
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
@@ -2571,7 +2571,7 @@ int ImportBulmaFact::trataAlbaran()
     } // end if
     delete cur;
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
@@ -2598,7 +2598,7 @@ int ImportBulmaFact::trataAlbaran()
 
     conexionbase->begin();
     conexionbase->ejecuta ( query );
-    cur = conexionbase->cargacursor ( "SELECT MAX(idalbaran) AS id FROM albaran" );
+    cur = conexionbase->loadQuery ( "SELECT MAX(idalbaran) AS id FROM albaran" );
     idalbaran = cur->valor ( "id" );
     delete cur;
     conexionbase->commit();
@@ -2621,7 +2621,7 @@ int ImportBulmaFact::trataAlbaran()
         QString codigocompletoarticulo = ( *lalbaranmap ) ["CODIGOCOMPLETOARTICULO"];
         /// Completamos datos de la linea de presupuesto.
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
-        cur = conexionbase->cargacursor ( query );
+        cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
@@ -2768,7 +2768,7 @@ int ImportBulmaFact::trataFactura()
 
     /// Completamos datos que puedan faltar.
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
@@ -2777,7 +2777,7 @@ int ImportBulmaFact::trataFactura()
     } // end if
     delete cur;
     query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
@@ -2786,7 +2786,7 @@ int ImportBulmaFact::trataFactura()
     } // end if
     delete cur;
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
@@ -2796,7 +2796,7 @@ int ImportBulmaFact::trataFactura()
     delete cur;
 
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
@@ -2807,7 +2807,7 @@ int ImportBulmaFact::trataFactura()
 
     /// Hacemos comprobaciones de integridad para saber si la factura es insertable o no.
     query = "SELECT * FROM factura WHERE numfactura = '" + numfactura + "' AND codigoserie_factura = '" + codigoserie_factura + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         delete cur;
         pgimport->mensajeria ( _( "La factura ya existe y no se va a insertar." ) );
@@ -2836,7 +2836,7 @@ int ImportBulmaFact::trataFactura()
 
     conexionbase->begin();
     conexionbase->ejecuta ( query );
-    cur = conexionbase->cargacursor ( "SELECT MAX(idfactura) AS id FROM factura" );
+    cur = conexionbase->loadQuery ( "SELECT MAX(idfactura) AS id FROM factura" );
     idfactura = cur->valor ( "id" );
     delete cur;
     conexionbase->commit();
@@ -2859,7 +2859,7 @@ int ImportBulmaFact::trataFactura()
         QString codigocompletoarticulo = ( *lfacturamap ) ["CODIGOCOMPLETOARTICULO"];
         /// Completamos datos de la linea de presupuesto.
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
-        cur = conexionbase->cargacursor ( query );
+        cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
@@ -3006,7 +3006,7 @@ int ImportBulmaFact::trataPresupuesto()
     QString descuentoforma_pago = valores["DESCUENTOFORMA_PAGO"];
     /// Completamos datos que puedan faltar.
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
@@ -3016,7 +3016,7 @@ int ImportBulmaFact::trataPresupuesto()
     delete cur;
 
     query = "SELECT * FROM cliente WHERE cifcliente='" + cifcliente + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
@@ -3026,7 +3026,7 @@ int ImportBulmaFact::trataPresupuesto()
     delete cur;
 
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
@@ -3036,7 +3036,7 @@ int ImportBulmaFact::trataPresupuesto()
     delete cur;
 
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
-    cur = conexionbase->cargacursor ( query );
+    cur = conexionbase->loadQuery ( query );
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
@@ -3064,7 +3064,7 @@ int ImportBulmaFact::trataPresupuesto()
 
     conexionbase->begin();
     conexionbase->ejecuta ( query );
-    cur = conexionbase->cargacursor ( "SELECT MAX(idpresupuesto) AS id FROM presupuesto" );
+    cur = conexionbase->loadQuery ( "SELECT MAX(idpresupuesto) AS id FROM presupuesto" );
     idpresupuesto = cur->valor ( "id" );
     delete cur;
     conexionbase->commit();
@@ -3088,7 +3088,7 @@ int ImportBulmaFact::trataPresupuesto()
         QString codigocompletoarticulo = ( *lpresupuestomap ) ["CODIGOCOMPLETOARTICULO"];
         /// Completamos datos de la linea de presupuesto.
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
-        cur = conexionbase->cargacursor ( query );
+        cur = conexionbase->loadQuery ( query );
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {

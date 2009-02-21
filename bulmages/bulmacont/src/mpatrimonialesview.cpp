@@ -109,7 +109,7 @@ int mpatrimonialesview::inicializa()
     /// una introducci&oacute;n de numeros de cuenta m&aacute;s pr&aacute;ctica.
     mainCompany() ->begin();
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursoraux1 = mainCompany() ->cargacursor ( query, "codcuenta" );
+    cursoraux1 = mainCompany() ->loadQuery ( query, "codcuenta" );
     mainCompany() ->commit();
     numdigitos = cursoraux1->valor ( "valor" ).length();
     delete cursoraux1;
@@ -138,7 +138,7 @@ void mpatrimonialesview::inicializatabla()
 
     QString query = "SELECT * FROM mpatrimonial WHERE idbalance ISNULL";
     mainCompany() ->begin();
-    BlDbRecordSet *cursoraux1 = mainCompany() ->cargacursor ( query, "elquery" );
+    BlDbRecordSet *cursoraux1 = mainCompany() ->loadQuery ( query, "elquery" );
     mainCompany() ->commit();
 
     mui_tabla->setRowCount ( cursoraux1->numregistros() );

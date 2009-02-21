@@ -56,7 +56,7 @@ void BusquedaCanal::setidcanal ( QString idcanal )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM canal" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM canal" );
     int i = 0;
     int i1 = 0;
     clear();
@@ -170,7 +170,7 @@ void BusquedaCanalDelegate::set ( const QString &codigo )
     _depura ( "BusquedaCanalDelegate::set", 0 );
     int index = 0;
 
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT nombre FROM canal ORDER BY nombre" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT nombre FROM canal ORDER BY nombre" );
     clear();
 
     addItem ( "--" );

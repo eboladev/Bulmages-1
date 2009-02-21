@@ -143,7 +143,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     QAction *fest = m_menu->addAction ( "Festivo" );
     QAction *nofest = m_menu->addAction ( "No Festivo" );
     QMenu *menu1 = m_menu->addMenu ( "Eliminar Personal" );
-    BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario" );
+    BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario" );
     if ( !cur1 ) throw - 1;
     while ( !cur1->eof() ) {
         QAction * ac = menu1->addAction ( cur1->valor ( "nomtrabajador" ) + "(" + cur1->valor ( "horainhorario" ) + ":" + cur1->valor ( "horafinhorario" ) + ")" );
@@ -249,7 +249,7 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
         QString horafin1 = "20:00";
 
         QString querycuad = "SELECT * FROM cuadrante WHERE idcuadrante=" + mdb_idcuadrante;
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( querycuad );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( querycuad );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             if ( cur->valor ( "aperturacuadrante" ) != "" )
@@ -291,7 +291,7 @@ void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date 
     BlDbRecordSet *cur1 = NULL;
     try {
         /// Comprobamos que exista el cuadrante y si no existe lo creamos.
-        cur1 = mainCompany() ->cargacursor ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen=" + idalmacen );
+        cur1 = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen=" + idalmacen );
         if ( !cur1 ) throw - 1;
         if ( cur1->eof() ) {
             QString query = "INSERT INTO cuadrante (idalmacen, fechacuadrante) VALUES (" + idalmacen + ",'" + date.toString ( "dd/MM/yyyy" ) + "')";
@@ -414,7 +414,7 @@ const QString CuadranteQTextDocument::impresion()
         QString html = "";
         html += "<td>\n";
         QString style = "";
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             if ( cur->valor ( "fiestacuadrante" ) == "t" ) {
@@ -426,7 +426,7 @@ const QString CuadranteQTextDocument::impresion()
 
         QString oldnomtipotrabajo = "";
 
-        BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, horainhorario, nomtrabajador" );
+        BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, horainhorario, nomtrabajador" );
         if ( !cur1 ) throw - 1;
         while ( !cur1->eof() ) {
             if ( oldnomtipotrabajo != cur1->valor ( "nomtipotrabajo" ) ) {
@@ -497,7 +497,7 @@ void ImpCuadrante::generar()
 
     try {
         QString html = "";
-        cur = mainCompany() ->cargacursor ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
+        cur = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen=" + mdb_idalmacen + " AND cuadrante.fechacuadrante ='" + mdb_fechacuadrante.toString ( "dd/MM/yyyy" ) + "'" );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             if ( cur->valor ( "fiestacuadrante" ) == "t" ) {
@@ -511,7 +511,7 @@ void ImpCuadrante::generar()
 
         QString oldnomtipotrabajo = "";
 
-        cur1 = mainCompany() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario " );
+        cur1 = mainCompany() ->loadQuery ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario " );
         if ( !cur1 ) throw - 1;
         while ( !cur1->eof() ) {
 
@@ -569,7 +569,7 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
     query += " OR (horainhorario < '" + horafin + "' AND horafinhorario > '" + horafin + "')";
     query += ")";
     query += " AND fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( cur ) {
         if ( cur->numregistros() > 1 ) {
 
@@ -579,7 +579,7 @@ bool ImpCuadrante::buscaConflictos ( QString idtrabajador, const QDate &date, QS
     }
 
     query = "SELECT * FROM ausencia WHERE idtrabajador = " + idtrabajador + " AND fechainausencia <= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechafinausencia >= '" + date.toString ( "dd/MM/yyyy" ) + "'";
-    cur = mainCompany() ->cargacursor ( query );
+    cur = mainCompany() ->loadQuery ( query );
     if ( cur ) {
         if ( !cur->eof() ) {
 

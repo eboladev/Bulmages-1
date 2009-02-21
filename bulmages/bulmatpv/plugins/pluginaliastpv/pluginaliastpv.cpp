@@ -42,7 +42,7 @@ int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
     QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
-    BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
@@ -61,7 +61,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
     if ( semaforo == 0 ) {
         semaforo = 1;
         QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
-        BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
         } // end if

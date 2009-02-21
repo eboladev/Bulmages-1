@@ -74,32 +74,32 @@ void Devolucion::on_mui_vale_clicked()
         BlFixed totalIva;
     }total;
 
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
         empresa.direccionCompleta = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
         empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
         empresa.ciudad = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
         empresa.telefono = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
         empresa.provincia = cur->valor ( "valor" );
     delete cur;
@@ -108,19 +108,19 @@ void Devolucion::on_mui_vale_clicked()
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
     trabajador.id = m_ticket->DBvalue ( "idtrabajador" );
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->DBvalue ( "idtrabajador" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->DBvalue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = mainCompany() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->DBvalue ( "idalmacen" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->DBvalue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
@@ -186,7 +186,7 @@ void Devolucion::on_mui_ref_returnPressed()
 
     QString query1 = "SELECT * FROM albaran WHERE refalbaran = '" + mui_ref->text() + "'";
 
-    BlDbRecordSet *curs = mainCompany()->cargacursor ( query1 );
+    BlDbRecordSet *curs = mainCompany()->loadQuery ( query1 );
     if ( !curs->eof() ) {
         m_ticket = new Ticket ( mainCompany(), NULL );
         m_ticket->cargar ( curs->valor ( "idalbaran" ) );
@@ -207,11 +207,11 @@ void Devolucion::pintar()
     html1 += "Ticket: " + m_ticket->DBvalue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + m_ticket->DBvalue ( "idtrabajador" );
-    BlDbRecordSet *curtrab = mainCompany() ->cargacursor ( querytrab );
+    BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( querytrab );
     html1 += "Trabajador: " + m_ticket->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + m_ticket->DBvalue ( "idcliente" );
-    BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
     html1 += "Cliente: " + m_ticket->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
@@ -254,7 +254,7 @@ void Devolucion::pintar()
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );

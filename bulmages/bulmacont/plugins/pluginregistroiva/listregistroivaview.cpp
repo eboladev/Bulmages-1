@@ -202,13 +202,13 @@ void ListRegistroIvaView::inicializa()
     mui_totalSoportado->cargar ( SQLQuery );
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='" + finicial->text() + "' AND ffactura <='" + ffinal->text() + "'";
-    cur = m_companyact->cargacursor ( SQLQuery );
+    cur = m_companyact->loadQuery ( SQLQuery );
     m_baseimps->setText ( cur->valor ( "tbaseimp" ) );
     m_ivas->setText ( cur->valor ( "tbaseiva" ) );
     delete cur;
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE NOT factemitida AND ffactura >='" + finicial->text() + "' AND ffactura <='" + ffinal->text() + "'";
-    cur = m_companyact->cargacursor ( SQLQuery );
+    cur = m_companyact->loadQuery ( SQLQuery );
     m_baseimpr->setText ( cur->valor ( "tbaseimp" ) );
     m_ivar->setText ( cur->valor ( "tbaseiva" ) );
     delete cur;

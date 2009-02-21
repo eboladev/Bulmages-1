@@ -86,7 +86,7 @@ void TipoActividadView::pintar()
     if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
-    m_cursortrabajadores = mainCompany() ->cargacursor ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
+    m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
     while ( !m_cursortrabajadores->eof() ) {
         new QListWidgetItem ( m_cursortrabajadores->valor ( "apellidostrabajador" ) + " " + m_cursortrabajadores->valor ( "nomtrabajador" ), mui_lista );
         m_cursortrabajadores->siguienteregistro();
@@ -185,7 +185,7 @@ void TipoActividadView::on_mui_guardar_clicked()
             delete m_cursortrabajadores;
         } // end if
 
-        m_cursortrabajadores = mainCompany() ->cargacursor ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
+        m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
 
         if ( m_item ) {
             m_item->setText ( m_apellidostrabajador->text() + m_nomtrabajador->text() );
@@ -243,7 +243,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
         QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
         mainCompany() ->begin();
         mainCompany() ->ejecuta ( query );
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
         mainCompany() ->commit();
         mdb_idtrabajador = cur->valor ( "idtrabajador" );
         delete cur;

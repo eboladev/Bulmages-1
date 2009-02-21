@@ -85,7 +85,7 @@ void FichaBf::calculaypintatotales()
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -94,7 +94,7 @@ void FichaBf::calculaypintatotales()
     } // end if
 
     if ( exists ( "idproveedor" ) && DBvalue ( "idproveedor" ) != "" ) {
-        cur = mainCompany() ->cargacursor ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
+        cur = mainCompany() ->loadQuery ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "irpfproveedor" ) );
@@ -261,7 +261,7 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
         base basesimpreqeq;
 
         BlFixed irpf ( "0" );
-        cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+        cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -581,7 +581,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -590,7 +590,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     } // end if
 
     if ( exists ( "idproveedor" ) && DBvalue ( "idproveedor" ) != "" ) {
-        cur = mainCompany() ->cargacursor ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
+        cur = mainCompany() ->loadQuery ( "SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" ) );
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "irpfproveedor" ) );

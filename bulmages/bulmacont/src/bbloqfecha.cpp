@@ -121,7 +121,7 @@ void BbloqFecha::inicializa()
 
     /// Consultamos a la base de datos.
     consultabd.sprintf ( "SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC" );
-    BlDbRecordSet *curPeri, *curEjer = mainCompany() ->cargacursor ( consultabd );
+    BlDbRecordSet *curPeri, *curEjer = mainCompany() ->loadQuery ( consultabd );
 
     while ( !curEjer->eof() ) {
 
@@ -139,7 +139,7 @@ void BbloqFecha::inicializa()
 
 
         consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor ( "ejercicio" ).toAscii().constData() );
-        curPeri = mainCompany() ->cargacursor ( consultabd );
+        curPeri = mainCompany() ->loadQuery ( consultabd );
         while ( !curPeri->eof() ) {
             switch ( curPeri->valor ( "periodo" ).toInt() ) {
             case 12:
@@ -238,7 +238,7 @@ void BbloqFecha::on_mui_crear_clicked()
 
     /// Miramos si ya hay ejercicios introducidos y si es asi cogemos el siguiente como referencia.
     QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    BlDbRecordSet *cur = mainCompany()->cargacursor ( consultabd );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( consultabd );
     if ( cur ) {
         if ( !cur->eof() ) {
             if ( cur->valor ( "ej" ).toInt() != 0 )
@@ -260,7 +260,7 @@ void BbloqFecha::on_mui_crear_clicked()
         return;
     } // end if
     QString query = "SELECT * FROM ejercicios WHERE ejercicio = " + QString::number ( ejer );
-    cur = mainCompany()->cargacursor ( query );
+    cur = mainCompany()->loadQuery ( query );
     if ( cur ) {
         if ( cur->numregistros() > 0 ) {
             delete cur;

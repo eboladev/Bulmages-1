@@ -193,7 +193,7 @@ void PedidoClienteView::generarAlbaran()
             SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un albaran y que la abriremos.

@@ -185,7 +185,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
-        BlDbRecordSet *curs = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
         if ( !curs->eof() ) {
             amortizado->setText ( curs->valor ( "amortizado" ) );
         } // end if
@@ -193,7 +193,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
 
         /// Calculamos lo que nos falta por amortizar y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS pdte FROM linamortizacion WHERE idasiento IS NULL AND idamortizacion = " + m_idamortizacion;
-        curs = mainCompany() ->cargacursor ( query, "pdte" );
+        curs = mainCompany() ->loadQuery ( query, "pdte" );
         if ( !curs->eof() ) {
             pendiente->setText ( curs->valor ( "pdte" ) );
         } // end if
@@ -453,17 +453,17 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
 
         QString cuenta, cuentaamort;
         QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + DBvalue ( "idamortizacion" );
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( ! cur->eof() ) {
             query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaactivo" );
-            BlDbRecordSet *cur1 = mainCompany() ->cargacursor ( query );
+            BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
             if ( ! cur1->eof() ) {
                 cuenta = cur1->valor ( "codigo" );
             } // end if
             delete cur1;
 
             query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaamortizacion" );
-            cur1 = mainCompany() ->cargacursor ( query );
+            cur1 = mainCompany() ->loadQuery ( query );
             if ( ! cur1->eof() ) {
                 cuentaamort = cur1->valor ( "codigo" );
             } // end if
@@ -494,7 +494,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number ( numasiento1 );
         mainCompany() ->begin();
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
             ordenasiento = cur->valor ( "ordenasiento" );

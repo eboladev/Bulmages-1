@@ -170,7 +170,7 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 
 int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + ref->mui_referencia->text() + "'";
-    BlDbRecordSet *cur = ref->mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)ref->mainCompany(), NULL);
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );

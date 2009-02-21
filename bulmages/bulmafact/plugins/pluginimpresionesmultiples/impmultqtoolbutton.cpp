@@ -324,7 +324,7 @@ void ImpQToolButton::click()
 
                     if ( pres->DBvalue ( "idbanco" ) != "" ) {
                         QString query = "SELECT * FROM banco WHERE idbanco =" + pres->DBvalue ( "idbanco" );
-                        cur1 = m_companyact->cargacursor ( query );
+                        cur1 = m_companyact->loadQuery ( query );
                         if ( !cur1->eof() ) {
                             txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4.4 ) + "cm\">" + cur1->valor ( "nombanco" ) + "</drawString>\n";
                             txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4 ) + "cm\">" + cur1->valor ( "pobbanco" ) + "</drawString>\n";
@@ -336,7 +336,7 @@ void ImpQToolButton::click()
 
                     if ( pres->DBvalue ( "idcliente" ) != "" ) {
                         QString query = "SELECT * FROM cliente WHERE idcliente =" + pres->DBvalue ( "idcliente" );
-                        cur = m_companyact->cargacursor ( query );
+                        cur = m_companyact->loadQuery ( query );
                         if ( !cur->eof() ) {
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 2.3 ) + "cm\">" + cur->valor ( "nomcliente" ) + "</drawString>\n";
 //    txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
@@ -628,7 +628,7 @@ void EmailQToolButton::click()
                 QString id = rec->DBvalue ( "idpresupuesto" );
                 QString idcliente = rec->DBvalue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -672,7 +672,7 @@ void EmailQToolButton::click()
                 QString id = rec->DBvalue ( "idpedidocliente" );
                 QString idcliente = rec->DBvalue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -717,7 +717,7 @@ void EmailQToolButton::click()
                 QString id = rec->DBvalue ( "idalbaran" );
                 QString idcliente = rec->DBvalue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -766,7 +766,7 @@ void EmailQToolButton::click()
                 QString fecha = rec->DBvalue ( "ffactura" );
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -818,7 +818,7 @@ void EmailQToolButton::click()
                 QString fecha = rec->DBvalue ( "fcobro" );
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-                BlDbRecordSet *curs = m_companyact->cargacursor ( query );
+                BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
                 CobroView *pres = new CobroView ( m_companyact, 0 );

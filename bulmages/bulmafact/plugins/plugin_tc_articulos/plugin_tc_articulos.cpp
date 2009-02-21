@@ -259,7 +259,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
 		QString val = busc->m_inputBusqueda->text();
 	
 		QString SQLQuery = "SELECT * FROM tc_articulo_alias LEFT JOIN articulo ON tc_articulo_alias.idarticulo = articulo.idarticulo WHERE aliastc_articulo_tallacolor = '" + val + "'";
-		BlDbRecordSet *cur = busc->mainCompany() ->cargacursor ( SQLQuery );
+		BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
 		if ( !cur->eof() ) {
 			busc->setId ( cur->valor ( "idarticulo" ) );
 			encontrado = TRUE;

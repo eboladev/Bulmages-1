@@ -277,7 +277,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QString idProveedor = obten_id_proveedor ( &doc );
 
     QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + idProveedor + "'";
-    BlDbRecordSet *proveedor = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *proveedor = mainCompany() ->loadQuery ( query );
 
     if ( proveedor->numregistros() == 0 ) {
         _depura ( "El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2 );
@@ -386,7 +386,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         /// Si no es asi, mandamos una alerta al usuario y anyadimos ese
         /// articulo a la linea como articulo generico
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mapa_lfactura["idarticulo"] + "'";
-        articulo = mainCompany() ->cargacursor ( query );
+        articulo = mainCompany() ->loadQuery ( query );
 
         /// Si no obtenemos resultados cargamos en el cursor articulo los
         /// valores que necesitamos (idarticulo y nomarticulo)
@@ -395,13 +395,13 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
             /// Obtenemos el codigo de articulo generico
             query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
-            articulo = mainCompany() ->cargacursor ( query );
+            articulo = mainCompany() ->loadQuery ( query );
 
             mapa_lfactura["idarticulo"] = articulo->valor ( "valor" );
 
             /// Datos necesarios para guardar correctamente la linea de factura
             query = "SELECT idarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo = '" + articulo->valor ( "valor" ) + "'";
-            articulo = mainCompany() ->cargacursor ( query );
+            articulo = mainCompany() ->loadQuery ( query );
         } // end if
 
         idarticulo  = articulo->valor ( "idarticulo" );

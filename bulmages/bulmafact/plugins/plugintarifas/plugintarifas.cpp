@@ -313,7 +313,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
         _depura ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
 	return 0;
     } else {
-    	cur = sub->mainCompany()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
+    	cur = sub->mainCompany()->loadQuery ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
     } // end if
 
     /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.

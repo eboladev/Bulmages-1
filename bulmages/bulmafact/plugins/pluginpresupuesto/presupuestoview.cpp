@@ -234,7 +234,7 @@ void PresupuestoView::generarPedidoCliente()
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
         } // end if
 
-        cur = mainCompany()->cargacursor ( SQLQuery );
+        cur = mainCompany()->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un pedido y lo abrimos.
@@ -416,7 +416,7 @@ QString PresupuestoView::detalleArticulos()
 {
     _depura ( "PresupuestoView::detalleArticulos", 0 );
     QString texto = "";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue ( "idpresupuesto" ) );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue ( "idpresupuesto" ) );
     int i = 0;
     while ( !cur->eof() ) {
         i = !i;

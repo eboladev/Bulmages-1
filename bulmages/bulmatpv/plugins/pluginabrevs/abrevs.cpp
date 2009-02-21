@@ -144,7 +144,7 @@ void Abrevs::on_mui_cliente_clicked()
 
     if ( emp->valorInput() == "" ) return;
     QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorInput() + "'";
-    BlDbRecordSet *cur = emp->cargacursor ( query );
+    BlDbRecordSet *cur = emp->loadQuery ( query );
     if ( !cur->eof() ) {
         emp->ticketActual() ->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
     } else {

@@ -65,7 +65,7 @@ void BusquedaTipoIva::setId ( QString idtipo_iva )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM tipo_iva" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tipo_iva" );
     /// Tratamos el caso en que no se haya devuelto nada.
     if ( m_cursorcombo == NULL ) return;
     int i = 0;
@@ -170,7 +170,7 @@ void BusquedaTipoIVADelegate::set ( const QString &cod )
         delete m_cursorcombo;
     } // end if
 
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT desctipo_iva FROM tipo_iva " );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT desctipo_iva FROM tipo_iva " );
     /// Comprobamos que no haya habido errores
     if ( !m_cursorcombo ) return;
 

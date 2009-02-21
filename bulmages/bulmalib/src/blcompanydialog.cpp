@@ -374,7 +374,7 @@ void BlCompanyDialog::guardaArchivo()
         if ( db->inicializa ( QString ( "bulmafact" ) ) )
             if ( db->inicializa ( QString ( "bulmacont" ) ) )
                 return;
-    BlDbRecordSet *curs = db->cargacursor ( "SELECT datname FROM pg_database" );
+    BlDbRecordSet *curs = db->loadQuery ( "SELECT datname FROM pg_database" );
 
     /// Preparamos el listado
     preparamui_empresas();
@@ -411,14 +411,14 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
         db1 = new BlPostgreSqlClient();
         db1->inicializa ( empresa );
         try {
-            BlDbRecordSet *cursa = db1->cargacursor ( "SELECT * FROM pg_tables WHERE tablename = 'configuracion'" );
+            BlDbRecordSet *cursa = db1->loadQuery ( "SELECT * FROM pg_tables WHERE tablename = 'configuracion'" );
             if ( !cursa ) return;
             if ( cursa->eof() ) {
                 delete cursa;
                 return;
             } // end if
             delete cursa;
-            cursa = db1->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'Tipo'" );
+            cursa = db1->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'Tipo'" );
             if ( !cursa ) return;
             if ( !cursa->eof() ) {
                 tipo = cursa->valor ( "valor" );
@@ -428,7 +428,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
                 delete cursa;
                 return;
             } // end if
-            cursa = db1->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'" );
+            cursa = db1->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'" );
             if ( !cursa ) return;
             if ( !cursa->eof() ) {
                 nombre = cursa->valor ( "valor" );
@@ -437,7 +437,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
                 delete cursa;
                 return;
             } // end if
-            cursa = db1->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'Ejercicio'" );
+            cursa = db1->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'Ejercicio'" );
             if ( cursa ) {
                 if ( !cursa->eof() )
                     ano = cursa->valor ( "valor" );

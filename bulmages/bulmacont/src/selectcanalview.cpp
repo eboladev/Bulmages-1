@@ -75,7 +75,7 @@ void selectcanalview::cargacanales()
     /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
     mainCompany() ->begin();
-    cursoraux1 = mainCompany() ->cargacursor ( "SELECT * FROM canal", "canalillos" );
+    cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM canal", "canalillos" );
     mainCompany() ->commit();
     while ( !cursoraux1->eof() ) {
         idcanal = atoi ( cursoraux1->valor ( "idcanal" ).toAscii() );

@@ -169,7 +169,7 @@ void adocumental::inicializa()
     _depura ( "adocumental::inicializa", 0 );
     QString query = "SELECT * FROM adocumental LEFT JOIN asiento ON adocumental.idasiento = asiento.idasiento ORDER BY ordenasiento";
     conexionbase->begin();
-    BlDbRecordSet *cursoraux1 = conexionbase->cargacursor ( query, "elquery" );
+    BlDbRecordSet *cursoraux1 = conexionbase->loadQuery ( query, "elquery" );
     conexionbase->commit();
     m_listado->setRowCount ( cursoraux1->numregistros() );
     int i = 0;

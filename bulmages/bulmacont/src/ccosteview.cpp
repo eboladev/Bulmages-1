@@ -112,7 +112,7 @@ void ccosteview::repintar()
     mui_list->clear();
 
     /// Cargamos las cuentas de primer nivel.
-    cursoraux1 = mainCompany() ->cargacursor ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
+    cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
     while ( !cursoraux1->eof() ) {
         padre = atoi ( cursoraux1->valor ( "padre" ).toAscii() );
         idc_coste1 = atoi ( cursoraux1->valor ( "idc_coste" ).toAscii() );
@@ -127,7 +127,7 @@ void ccosteview::repintar()
     delete cursoraux1;
 
     /// Cargamos las cuentas hijas
-    cursoraux2 = mainCompany() ->cargacursor ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
+    cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
     while ( !cursoraux2->eof() ) {
         padre = cursoraux2->valor ( "padre" ).toInt();
         idc_coste1 = cursoraux2->valor ( "idc_coste" ).toInt();
@@ -245,7 +245,7 @@ void ccosteview::on_mui_crear_clicked()
         mainCompany() ->ejecuta ( query );
     } // end if
     query.sprintf ( "SELECT MAX(idc_coste) AS id_coste FROM c_coste" );
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     idc_coste = atoi ( cur->valor ( "id_coste" ).toAscii() );
     delete cur;
     mainCompany() ->commit();

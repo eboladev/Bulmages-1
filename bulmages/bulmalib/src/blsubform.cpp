@@ -1425,7 +1425,7 @@ void BlSubForm::cargar ( QString query )
         } // end if
         int offset = limit * ( pagact - 1 );
 
-        BlDbRecordSet *cur = mainCompany() ->cargacursor ( query, "", limit, offset );
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "", limit, offset );
         cargar ( cur );
         delete cur;
     } catch ( ... ) {

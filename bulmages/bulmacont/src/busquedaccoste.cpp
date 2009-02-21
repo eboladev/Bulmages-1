@@ -102,7 +102,7 @@ void BusquedaCCoste::setidc_coste ( QString idc_coste )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM c_coste" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM c_coste" );
     int i = 0;
     int i1 = 0;
     clear();
@@ -174,7 +174,7 @@ void BusquedaCCosteDelegate::set ( const QString &cod )
 
     int index = 0;
 
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT nombre FROM c_coste ORDER BY nombre " );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT nombre FROM c_coste ORDER BY nombre " );
     clear();
 
     addItem ( "--" );

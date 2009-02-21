@@ -73,11 +73,11 @@ void estadisticasview::presentar()
 
 
     query.sprintf ( "SELECT idcuenta FROM balance ORDER BY padre DESC" );
-    cursorapt = conexionbase->cargacursor ( query, "Balance1view" );
+    cursorapt = conexionbase->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
         query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
-        BlDbRecordSet *mycur = conexionbase->cargacursor ( query, "cursorrefresco" );
+        BlDbRecordSet *mycur = conexionbase->loadQuery ( query, "cursorrefresco" );
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
         //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
@@ -98,7 +98,7 @@ void estadisticasview::presentar()
 
 
     query.sprintf ( "SELECT descripcion, abs(tsaldo)::integer AS tsaldoi FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo" );
-    cursorapt = conexionbase->cargacursor ( query, "mycursor" );
+    cursorapt = conexionbase->loadQuery ( query, "mycursor" );
 
     QString valores = "data=[";
     int init = 0;
@@ -172,11 +172,11 @@ void estadisticasview::presentarbarras()
 
 
     query.sprintf ( "SELECT idcuenta FROM balance ORDER BY padre DESC" );
-    cursorapt = conexionbase->cargacursor ( query, "Balance1view" );
+    cursorapt = conexionbase->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
         query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
-        BlDbRecordSet *mycur = conexionbase->cargacursor ( query, "cursorrefresco" );
+        BlDbRecordSet *mycur = conexionbase->loadQuery ( query, "cursorrefresco" );
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
         //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
@@ -197,7 +197,7 @@ void estadisticasview::presentarbarras()
 
 
     query.sprintf ( "SELECT descripcion, tsaldo::integer AS tsaldoi FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo" );
-    cursorapt = conexionbase->cargacursor ( query, "mycursor" );
+    cursorapt = conexionbase->loadQuery ( query, "mycursor" );
 
     QString valores = "data=[(";
     QString plot = "";

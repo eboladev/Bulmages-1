@@ -65,7 +65,7 @@ bool posibleAlias(QString alias, BlMainCompany *eb) {
        invalidaEstadAlias();
    }
    if ((g_minAlias==NULL)&&(g_maxAlias==NULL)) {
-       	BlDbRecordSet *cur = eb ->cargacursor (
+       	BlDbRecordSet *cur = eb ->loadQuery (
         "SELECT \
    (SELECT cadalias FROM alias ORDER by cadalias  USING ~<~ LIMIT 1) as minalias,\
    (SELECT cadalias FROM alias ORDER by cadalias  USING ~>~ LIMIT 1) as maxalias,\
@@ -177,7 +177,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
                 // i compararia el valor entrat amb un altre.
 		QString valors[1] = {val};
 		QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
-		BlDbRecordSet *cur = busc->mainCompany() ->cargacursor ( SQLQuery, 1, valors, NULL, NULL );
+		BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery, 1, valors, NULL, NULL );
 		if ( !cur->eof() )
 		{
 			busc->setId( cur->valor ( "idarticulo" ) );
@@ -205,7 +205,7 @@ int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel 
                 _depura("possible Alias ",0, baDel->entrada());
 		QString SQLQuery = "SELECT codigocompletoarticulo,nomarticulo,cadalias FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
 		QString valors[1] = {baDel->entrada() };
-		BlDbRecordSet *cur = baDel->mainCompany() ->cargacursor ( SQLQuery, 1, valors );
+		BlDbRecordSet *cur = baDel->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
 
 		if ( !cur->eof() )
 		{

@@ -63,7 +63,7 @@ void BusquedaTipoTrabajo::setidtipotrabajo ( QString idtipotrabajo )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT * FROM tipotrabajo ORDER BY nomtipotrabajo" );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tipotrabajo ORDER BY nomtipotrabajo" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -167,7 +167,7 @@ void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = mainCompany() ->cargacursor ( "SELECT idtipotrabajo, nomtipotrabajo FROM tipotrabajo " );
+    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT idtipotrabajo, nomtipotrabajo FROM tipotrabajo " );
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );

@@ -117,7 +117,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     /// Empezamos con los presupuestos.
 /*
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         PresupuestoView * bud = ( ( BfCompany * ) mainCompany() ) ->nuevoPresupuestoView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -129,7 +129,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 */
 /*
     SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         PedidoClienteView * bud = ( ( BfCompany * ) mainCompany() ) ->newPedidoClienteView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -141,7 +141,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 */
 /*
     SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = ( ( BfCompany * ) mainCompany() ) ->newAlbaranClienteView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -154,7 +154,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 
 /*
     SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         FacturaView * bud = ( ( BfCompany * ) mainCompany() ) ->newFacturaView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -167,7 +167,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 
 /*
     SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         CobroView * bud = ( ( BfCompany * ) mainCompany() ) ->newCobroView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -180,7 +180,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 
 /*
     SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         PedidoProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->nuevoPedidoProveedorView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -193,7 +193,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 
 /*
     SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         AlbaranProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->newAlbaranProveedorView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -206,7 +206,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
 
 /*
     SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_referencia->text() + "'";
-    cur = mainCompany() ->cargacursor ( SQLQuery );
+    cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         FacturaProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->newFacturaProveedorView();
         mainCompany() ->m_pWorkspace->addWindow ( bud );

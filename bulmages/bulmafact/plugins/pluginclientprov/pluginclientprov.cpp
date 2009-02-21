@@ -79,7 +79,7 @@ int BlForm_guardar_Post ( BlForm *l )
         fich->addDbField ( "irpfproveedor", BlDbField::DBnumeric, BlDbField::DBNothing, _( "IRPF" ) );
 
 	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + l->DBvalue("cifcliente")+"'";
-	BlDbRecordSet *cur = l->mainCompany()->cargacursor(query);
+	BlDbRecordSet *cur = l->mainCompany()->loadQuery(query);
 	if (!cur->eof()) {
 		fich->cargar(cur->valor("idproveedor"));
 		guardar = TRUE;

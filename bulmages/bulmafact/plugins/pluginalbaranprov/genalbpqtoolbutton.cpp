@@ -139,7 +139,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->DBvalue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.

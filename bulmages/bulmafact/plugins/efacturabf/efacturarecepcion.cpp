@@ -66,16 +66,16 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
     /// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
 
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_dirEmail'";
-    BlDbRecordSet *dirEmail = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *dirEmail = mainCompany() ->loadQuery ( query );
 
     query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_serverRec'";
-    BlDbRecordSet *serverRec = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *serverRec = mainCompany() ->loadQuery ( query );
 
     query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Email'";
-    BlDbRecordSet *Email = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *Email = mainCompany() ->loadQuery ( query );
 
     query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Password'";
-    BlDbRecordSet *Password = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *Password = mainCompany() ->loadQuery ( query );
 
     /// Comprobamos que el directorio especificado existeAboutView
 

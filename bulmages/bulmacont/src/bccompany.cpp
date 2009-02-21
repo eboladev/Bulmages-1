@@ -190,7 +190,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
         /// de la Empresa.
         QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
-        BlDbRecordSet *cursoraux1 = cargacursor ( query );
+        BlDbRecordSet *cursoraux1 = loadQuery ( query );
         numdigitos = cursoraux1->valor ( "numdigitos" ).toInt();
         delete cursoraux1;
         if ( extracto != NULL ) {
@@ -700,7 +700,7 @@ void BcCompany::abrirAsientos()
     _depura ( "BcCompany::Abrirasientos", 0 );
     BlDbRecordSet *cur = NULL;
     try {
-        cur = cargacursor ( "SELECT abreasientos()" );
+        cur = loadQuery ( "SELECT abreasientos()" );
         g_main->statusBar() ->showMessage ( _( "Se han espaciado los asientos" ), 2000 );
         delete cur;
         _depura ( "END BcCompany::Abrirasientos", 0 );
@@ -720,7 +720,7 @@ void BcCompany::cerrarAsientos()
     _depura ( "BcCompany::cerrarAsientos", 0 );
     BlDbRecordSet *cur = NULL;
     try {
-        cur = cargacursor ( "SELECT cierraasiento(idasiento) FROM asiento" );
+        cur = loadQuery ( "SELECT cierraasiento(idasiento) FROM asiento" );
         g_main->statusBar() ->showMessage ( _( "Se han cerrado los asientos" ), 2000 );
         delete cur;
         _depura ( "END BcCompany::cerrarAsientos", 0 );
@@ -740,7 +740,7 @@ void BcCompany::Ordenarasientos()
     QString query = "SELECT reordenaasientosall()";
     BlDbRecordSet *cur = NULL;
     try {
-        cur = cargacursor ( query );
+        cur = loadQuery ( query );
         g_main->statusBar() ->showMessage ( _( "Se han ordenado los asientos" ), 2000 );
         delete cur;
         _depura ( "END BcCompany::Ordenarasientos", 10 );
@@ -906,7 +906,7 @@ void BcCompany::recalculasaldos()
 {
     _depura ( "BcCompany::recalculasaldos", 0 );
 	mensajeInfo("recalcular Saldos");
-    BlDbRecordSet *cur = cargacursor("SELECT recalculasaldos()");
+    BlDbRecordSet *cur = loadQuery("SELECT recalculasaldos()");
     delete cur;
     _depura ( "END BcCompany::recalculasaldos", 0 );
 }

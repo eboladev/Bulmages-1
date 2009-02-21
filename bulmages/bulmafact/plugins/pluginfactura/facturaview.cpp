@@ -251,7 +251,7 @@ void FacturaView::on_mui_veralbaranes_clicked()
     BlDbRecordSet *cur = NULL;
     try {
         QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "reffactura" ) + "'";
-        cur = mainCompany() ->cargacursor ( SQLQuery );
+        cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
                 bud = new AlbaranClienteView ( mainCompany(), NULL );

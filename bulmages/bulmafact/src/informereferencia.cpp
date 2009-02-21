@@ -102,7 +102,7 @@ void InformeCliente::generarInforme()
 
     /// Sacamos los datos del cliente
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + m_idcliente;
-    BlDbRecordSet *cur = companyact->cargacursor ( SQLQuery );
+    BlDbRecordSet *cur = companyact->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         buff.replace ( "[nomcliente]", cur->valor ( "nomcliente" ) );
         buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );
@@ -120,7 +120,7 @@ void InformeCliente::generarInforme()
     SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " + m_idcliente;
     SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " + m_idcliente;
     SQLQuery += " UNION SELECT refcobro   FROM cobro   AS referencia WHERE idcliente = " + m_idcliente;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     if ( cur->eof() ) {
         delete cur;
         return;
@@ -151,7 +151,7 @@ void InformeCliente::generarInforme()
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE (cantlpresupuestot <> 0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "<td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
@@ -187,7 +187,7 @@ void InformeCliente::generarInforme()
 
     fprintf ( stdout, "%s\n", SQLQuery.toAscii().constData() );
 
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
@@ -221,31 +221,31 @@ void InformeCliente::generarInforme()
 
     /// Total presupuestado.
     SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "tpres" ) + "</td>\n";
     delete cur;
 
     /// Total pedido.
     SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "tpedcli" ) + "</td>\n";
     delete cur;
 
     /// Total trabajado.
     SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "talb" ) + "</td>\n";
     delete cur;
 
     /// Total facturado.
     SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "tfact" ) + "</td>\n";
     delete cur;
 
     /// Total cobrado.
     SQLQuery = "SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "     <td>" + cur->valor ( "tcobro" ) + "</td>\n";
     delete cur;
 
@@ -268,25 +268,25 @@ void InformeCliente::generarInforme()
 
     /// Total pedido.
     SQLQuery = "SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "tpedpro" ) + "</td>\n";
     delete cur;
 
     /// Total trabajado.
     SQLQuery = "SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "talbp" ) + "</td>\n";
     delete cur;
 
     /// Total facturado.
     SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "    <td>" + cur->valor ( "tfactp" ) + "</td>\n";
     delete cur;
 
     /// Total cobrado.
     SQLQuery = "SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago IN " + referencias;
-    cur = companyact->cargacursor ( SQLQuery );
+    cur = companyact->loadQuery ( SQLQuery );
     fitxersortidatxt += "     <td>" + cur->valor ( "tpago" ) + "</td>\n";
     delete cur;
 

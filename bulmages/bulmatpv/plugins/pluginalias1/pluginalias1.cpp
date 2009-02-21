@@ -39,7 +39,7 @@ int Ticket_insertarArticuloCodigoNL_Post ( Ticket *tick )
 
     QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
 
-    cur = tick->mainCompany() ->cargacursor ( query );
+    cur = tick->mainCompany() ->loadQuery ( query );
     if (cur) {
 	if ( !cur->eof() ) {
 		tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
@@ -62,7 +62,7 @@ int Ticket_insertarArticuloCodigo_Post ( Ticket *tick )
     if ( semaforo == 0 ) {
         semaforo = 1;
         QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
-        BlDbRecordSet *cur = tick->mainCompany() ->cargacursor ( query );
+        BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
         } // end if

@@ -523,7 +523,7 @@ int BlDbRecord::DBsave ( QString &id )
             QString query = "INSERT INTO " + m_tablename + " (" + listcampos + ") VALUES (" + listvalores + ")";
             m_conexionbase->ejecuta ( query );
             _depura ( query, 0 );
-            BlDbRecordSet *cur = m_conexionbase->cargacursor ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
+            BlDbRecordSet *cur = m_conexionbase->loadQuery ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
             id = cur->valor ( m_campoid );
             delete cur;
         } else {
@@ -759,7 +759,7 @@ int BlDbRecord::cargar ( QString id )
     _depura ( "BlDbRecord::cargar", 0 );
     try {
         QString query = "SELECT * FROM " + m_tablename + " WHERE " + m_campoid + " = " + id;
-        BlDbRecordSet *cur = m_conexionbase->cargacursor ( query );
+        BlDbRecordSet *cur = m_conexionbase->loadQuery ( query );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             DBload ( cur );

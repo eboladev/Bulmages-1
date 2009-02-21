@@ -99,7 +99,7 @@ int Ticket_pintar ( Ticket *tick )
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = emp->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );

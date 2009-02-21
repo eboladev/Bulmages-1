@@ -245,7 +245,7 @@ void Inventario::imprimirInventario()
     txt += "<tr><td></td>\n";
 
     QString query = "SELECT idarticulo, codigocompeltoarticulo, nomarticulo FROM articulo ";
-    BlDbRecordSet *almacenes = companyact->cargacursor ( "SELECT * FROM almacen" );
+    BlDbRecordSet *almacenes = companyact->loadQuery ( "SELECT * FROM almacen" );
     while ( !almacenes->eof() ) {
         QString idalmacen = almacenes->valor ( "idalmacen" );
         query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
@@ -255,7 +255,7 @@ void Inventario::imprimirInventario()
     delete almacenes;
     txt += "</tr>\n";
 
-    BlDbRecordSet *cstock = companyact->cargacursor ( query );
+    BlDbRecordSet *cstock = companyact->loadQuery ( query );
     while ( !cstock->eof() ) {
         txt += "<tr>\n";
         txt += "<td>" + cstock->valor ( "nomarticulo" );

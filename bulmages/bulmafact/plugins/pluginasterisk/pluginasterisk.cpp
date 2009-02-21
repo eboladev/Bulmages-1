@@ -219,7 +219,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
     QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passasterisktrabajador" );
     QCheckBox * l9 = trab->findChild<QCheckBox *> ( "mui_validasiempreasterisktrabajador" );
 
-    BlDbRecordSet *cur = trab->mainCompany() ->cargacursor ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
     if ( !cur->eof() ) {
         l->setText ( cur->valor ( "passasterisktrabajador" ) );
         l9->setChecked ( ( cur->valor ( "validasiempreasterisktrabajador" ) == "t" ) );

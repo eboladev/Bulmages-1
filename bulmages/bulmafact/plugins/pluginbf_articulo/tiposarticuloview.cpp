@@ -120,7 +120,7 @@ void TipoArticuloList::pintar()
             delete it;
         } // end while
 
-        cursoraux1 = mainCompany()->cargacursor ( "SELECT * FROM tipo_articulo ORDER BY codtipo_articulo" );
+        cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM tipo_articulo ORDER BY codtipo_articulo" );
         while ( !cursoraux1->eof() ) {
             it = new QTreeWidgetItem ( m_listTipos );
             it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
@@ -257,7 +257,7 @@ void TipoArticuloList::mostrarplantilla()
 
         QString query;
         query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
-        BlDbRecordSet *cursortipo = mainCompany()->cargacursor ( query );
+        BlDbRecordSet *cursortipo = mainCompany()->loadQuery ( query );
         if ( !cursortipo->eof() ) {
             mui_codigotipo_articulo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
             mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
@@ -328,7 +328,7 @@ int TipoArticuloList::guardar()
     QList<QTreeWidgetItem *> listit =  m_listTipos->findItems ( m_idtipo, Qt::MatchExactly, COL_IDTIPOARTICULO );
     QTreeWidgetItem *it = listit.first();
     if ( it ) {
-        BlDbRecordSet *cursoraux1 = mainCompany()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
+        BlDbRecordSet *cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
         if ( !cursoraux1->eof() ) {
             it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
             it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
@@ -356,7 +356,7 @@ void TipoArticuloList::on_mui_crear_clicked()
         mainCompany()->begin();
         int error = mainCompany()->ejecuta ( query );
         if ( error ) throw - 1;
-        cur = mainCompany()->cargacursor ( "SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo" );
+        cur = mainCompany()->loadQuery ( "SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo" );
         mainCompany()->commit();
         m_idtipo = cur->valor ( "idtipo" );
         delete cur;
@@ -437,7 +437,7 @@ void TipoArticuloList::pintar ( QTreeWidgetItem *it )
 {
     QString idtipo = it->text ( COL_IDTIPOARTICULO );
     if ( it ) {
-        BlDbRecordSet * cursoraux1 = mainCompany()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + idtipo );
+        BlDbRecordSet * cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + idtipo );
         if ( !cursoraux1->eof() ) {
             it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
             it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );

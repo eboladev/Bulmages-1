@@ -168,7 +168,7 @@ void ImportCSV::procesarLinea ( const QString &linea )
 void ImportCSV::rellenarTablas()
 {
     QString query = "select * from information_schema.tables where table_schema='public' and table_type='BASE TABLE' ORDER BY table_name";
-    BlDbRecordSet *cur = mainCompany()->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
     mui_combotablas->clear();
     while ( !cur->eof() ) {
         mui_combotablas->addItem ( cur->valor ( "table_name" ) );
@@ -182,7 +182,7 @@ void ImportCSV::on_mui_combotablas_activated ( const QString & text )
 {
 
     QString query = "SELECT a.attnum, a.attname AS field, t.typname AS type, a.attlen AS length, a.atttypmod AS lengthvar, a.attnotnull AS notnull FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = '" + text + "' and  a.attnum > 0 and a.attrelid = c.oid and a.atttypid = t.oid ORDER BY a.attnum";
-    BlDbRecordSet *cur = mainCompany()->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
     mui_list->setRowCount ( cur->numregistros() );
     mui_list->setColumnCount ( 2 );
     int row = 0;

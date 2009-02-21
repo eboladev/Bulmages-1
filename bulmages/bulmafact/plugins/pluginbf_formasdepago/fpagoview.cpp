@@ -59,7 +59,7 @@ void FPagoView::pintar()
     mui_lista->clear();
     if ( m_cursorFPagoView != NULL )
         delete m_cursorFPagoView;
-    m_cursorFPagoView = mainCompany() ->cargacursor ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
+    m_cursorFPagoView = mainCompany() ->loadQuery ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
     if ( !m_cursorFPagoView ) return;
     mui_lista->clear();
     while ( !m_cursorFPagoView->eof() ) {
@@ -124,7 +124,7 @@ int FPagoView::guardar()
         if ( m_cursorFPagoView != NULL ) {
             delete m_cursorFPagoView;
         } // end if
-        m_cursorFPagoView = mainCompany() ->cargacursor ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
+        m_cursorFPagoView = mainCompany() ->loadQuery ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
         if ( m_item ) {
             m_item->setText ( mui_descforma_pago->text() );
         } // end if
@@ -181,7 +181,7 @@ void FPagoView::on_mui_crear_clicked()
         mainCompany() ->rollback();
         return;
     } // end if
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idforma_pago) AS idFPagoView FROM forma_pago" );
     mainCompany() ->commit();
     mdb_idforma_pago = cur->valor ( "idFPagoView" );
     delete cur;

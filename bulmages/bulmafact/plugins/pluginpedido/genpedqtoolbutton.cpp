@@ -141,7 +141,7 @@ void GenPedQToolButton::generarFactura1()
             SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + fpv->DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + fpv->DBvalue ( "idcliente" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay un pedidocliente y que la abriremos.

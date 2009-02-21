@@ -106,7 +106,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
             if( !e1.isNull() ) { /// the node was really an element.
                 /// Este es el c&aacute;lculo de los saldos para la cuenta.
                 QString query = "SELECT saldototal('" + e1.text() + "','" + finicial + "','" + ffinal + "') AS valoract, saldototal('" + e1.text() + "','" + finicial1 + "','" + ffinal1 + "') AS valorant";
-                BlDbRecordSet *cur = mainCompany()->cargacursor(query);
+                BlDbRecordSet *cur = mainCompany()->loadQuery(query);
                 if (!cur->eof()) {
                     QString valoract = cur->valor("valoract");
                     QString valorant = cur->valor("valorant");
@@ -129,7 +129,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     mainCompany() ->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     BlDbRecordSet *ramas;
-    ramas = mainCompany() ->cargacursor ( query, "Ramas" );
+    ramas = mainCompany() ->loadQuery ( query, "Ramas" );
     Arbol *arbolP1, *arbolP2; /// un arbol por cada periodo
     arbolP1 = new Arbol;
     arbolP2 = new Arbol;
@@ -165,7 +165,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     mainCompany() ->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '" + finicial + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable NOT SIMILAR TO '" + asiento + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     BlDbRecordSet *hojas;
-    hojas = mainCompany() ->cargacursor ( query, "Periodo1" );
+    hojas = mainCompany() ->loadQuery ( query, "Periodo1" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() ) {
         arbolP1->actualizaHojas ( hojas );
@@ -182,7 +182,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     /// establecer as&iacute; los valores de cada cuenta para el periodo 2.
     mainCompany() ->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '" + finicial1 + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial1 + "' AND fecha <= '" + ffinal1 + "' AND conceptocontable NOT SIMILAR TO '" + asiento + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial1 + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
-    hojas = mainCompany() ->cargacursor ( query, "Periodo2" );
+    hojas = mainCompany() ->loadQuery ( query, "Periodo2" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() ) {
         arbolP2->actualizaHojas ( hojas );

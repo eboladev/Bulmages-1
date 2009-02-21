@@ -143,7 +143,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.
@@ -249,7 +249,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->DBvalue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
         } // end if
 
-        cur = fpv->mainCompany() ->cargacursor ( SQLQuery );
+        cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
             /// Informamos que ya hay una factura y que la abriremos.

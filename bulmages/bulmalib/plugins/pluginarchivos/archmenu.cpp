@@ -73,7 +73,7 @@ void ArchMenu::pintaMenu ( QMenu *menu )
     addaction->setObjectName("addarchivo");
     nmenu->addSeparator();
     QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->campoId() + "' AND identificadorfichaarchivo= '" +m_BlForm->DBvalue ( m_BlForm->campoId() ) + "'";
-    BlDbRecordSet *cur = m_BlForm->mainCompany()->cargacursor(query);
+    BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery(query);
     while(!cur->eof()) {
 	QAction *addaction = nmenu->addAction(cur->valor("rutaarchivo"));
 	addaction->setObjectName("archivo_" + cur->valor("idarchivo"));
@@ -122,7 +122,7 @@ void ArchMenu::trataMenu ( QAction *action )
     if( action->objectName().left(8) == "archivo_") {
 	QString idarchivo = action->objectName().right(action->objectName().size() - 8);
 	QString query = "SELECT * FROM archivo WHERE idarchivo = "+ idarchivo;
-	BlDbRecordSet *cur = m_BlForm->mainCompany()->cargacursor(query);
+	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery(query);
 	if (!cur->eof()) {
 		QString comando = "konqueror "+ cur->valor("rutaarchivo") + " &";
 		system(comando.toAscii());

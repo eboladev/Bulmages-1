@@ -74,7 +74,7 @@ int propiedadesempresa::inicializa()
     int num;
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-    BlDbRecordSet *curs = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
     num = curs->numregistros();
     if ( num > 0 ) {
         modcodigo->setText ( curs->valor ( "valor" ) );
@@ -139,7 +139,7 @@ void propiedadesempresa::on_mui_modificarplan_clicked()
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
-    BlDbRecordSet *cur = mainCompany() ->cargacursor ( query );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         codigo = cur->valor ( "codigo" );
         codigo = ajustacodigo ( codigo, nlong );

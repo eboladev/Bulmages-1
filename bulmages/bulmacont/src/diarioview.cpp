@@ -277,7 +277,7 @@ void DiarioView::presentar()
         totalcadena = query + cad + " ORDER BY ordenasiento,apunte.haber,codigo ";
         mui_list->cargar ( totalcadena );
 
-        cur = mainCompany() ->cargacursor ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
+        cur = mainCompany() ->loadQuery ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
         if ( !cur->eof() ) {
             totaldebe->setText ( cur->valor ( "totaldebe" ) );
             totalhaber->setText ( cur->valor ( "totalhaber" ) );
