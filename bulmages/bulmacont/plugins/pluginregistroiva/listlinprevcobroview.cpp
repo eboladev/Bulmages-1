@@ -323,7 +323,7 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     if ( opcion == menudesvinculaasiento ) {
         if ( linea->idasiento() != "" ) {
             query = "UPDATE prevcobro SET idasiento = NULL WHERE idprevcobro = " + linea->idprevcobro();
-            m_companyact->ejecuta ( query );
+            m_companyact->runQuery ( query );
             linea->setidasiento ( "" );
             pintalistlinprevcobro();
         } // end if

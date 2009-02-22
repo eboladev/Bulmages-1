@@ -174,7 +174,7 @@ int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidoproveedor" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 }// end if

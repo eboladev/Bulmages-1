@@ -148,7 +148,7 @@ void mpatrimonialesview::inicializatabla()
         mui_tabla->setItem ( i, 0, item0 );
         item1 = new QTableWidgetItem ( cursoraux1->valor ( "descmpatrimonial" ) );
         mui_tabla->setItem ( i, 1, item1 );
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
         i++;
     } // end while
     delete cursoraux1;
@@ -217,9 +217,9 @@ void mpatrimonialesview::on_mui_borrar_clicked()
     QString query;
     query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
     mainCompany() ->begin();
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     inicializatabla();
     _depura ( "END mpatrimonialesview::on_mui_borrar_clicked", 0 );

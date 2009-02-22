@@ -84,7 +84,7 @@ void BusquedaFormaPago::setId ( QString idforma_pago )
         if ( m_cursorcombo->valor ( "idforma_pago" ) == idforma_pago )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "descforma_pago" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaFormaPago::setidforma_pago", 0 );

@@ -266,7 +266,7 @@ void ExtractoPrintView::presentar ( const QString &tipus )
                     debefinal = debeinicial;
                     haberfinal = haberinicial;
 
-                    for ( ; !cursoraux1->eof(); cursoraux1->siguienteregistro() ) {
+                    for ( ; !cursoraux1->eof(); cursoraux1->nextRecord() ) {
                         idasiento = atoi ( cursoraux1->valor ( "idasiento" ).toAscii() );
                         contrapartida = atoi ( cursoraux1->valor ( "contrapartida" ).toAscii() );
                         mainCompany() ->begin();
@@ -312,7 +312,7 @@ void ExtractoPrintView::presentar ( const QString &tipus )
                 } // end if
             }
             cursoraux1->cerrar();
-            cursoraux->siguienteregistro();
+            cursoraux->nextRecord();
         } // end while
         if ( html ) {
             /// Presentaci&oacute;n html.

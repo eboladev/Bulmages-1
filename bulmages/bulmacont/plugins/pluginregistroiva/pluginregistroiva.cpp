@@ -171,7 +171,7 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
     while ( !curvalor->eof() ) {
         /// Preparamos una expresi&oacute;n regular para usar en la consulta.
         cuentas += curvalor->valor ( "valor" ) + "%|";
-        curvalor->siguienteregistro();
+        curvalor->nextRecord();
     } // end while
     delete curvalor;
     /// Le quitamos el &uacute;ltimo '|' que nos sobra.
@@ -188,7 +188,7 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
         reg->inicializa1 ( idborrador );
         companyact->pWorkspace() ->addWindow ( reg );
         reg->show();
-        cursborr->siguienteregistro();
+        cursborr->nextRecord();
     } // end while
     delete cursborr;
     _depura ( "END Asiento1_guardaAsiento1_post", 0 );

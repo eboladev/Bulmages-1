@@ -51,7 +51,7 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
             QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( j, i ) );
             mui_databasetable->setItem ( i, j, newItem );
         } // end for
-        cur->siguienteregistro();
+        cur->nextRecord();
         i++;
     } // end while
     delete cur;
@@ -93,7 +93,7 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
             QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( j, i ) );
             mui_usertable->setItem ( i, j, newItem );
         } // end for
-        cur->siguienteregistro();
+        cur->nextRecord();
         i++;
     } // end while
     delete cur;

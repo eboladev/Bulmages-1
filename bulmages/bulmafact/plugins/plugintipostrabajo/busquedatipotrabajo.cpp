@@ -74,7 +74,7 @@ void BusquedaTipoTrabajo::setidtipotrabajo ( QString idtipotrabajo )
         if ( m_cursorcombo->valor ( "idtipotrabajo" ) == idtipotrabajo )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } //end while
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
@@ -171,9 +171,9 @@ void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "nomtipotrabajo" ) == cod )
-            index = m_cursorcombo->regactual();
+            index = m_cursorcombo->currentRecord();
     }// end while
     setEditText ( cod );
     setCurrentIndex ( index );

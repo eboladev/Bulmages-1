@@ -115,7 +115,7 @@ void GenCobroQToolButton::click()
 					bud->cargar(cur->valor("idcobro"));
 					bud->pintar();
 					bud->show();
-					cur->siguienteregistro();
+					cur->nextRecord();
 				} // end while
 				nuevo = 0;
 	} // end if
@@ -164,7 +164,7 @@ void GenCobroQToolButton::click()
 						bud->cargar(cur->valor("idcobro"));
 						bud->pintar();
 						bud->show();
-						cur->siguienteregistro();
+						cur->nextRecord();
 					} // end while
 					nuevo = 0;
 		} // end if
@@ -213,7 +213,7 @@ void GenCobroQToolButton::click()
 						bud->cargar(cur->valor("idcobro"));
 						bud->pintar();
 						bud->show();
-						cur->siguienteregistro();
+						cur->nextRecord();
 					} // end while
 					nuevo = 0;
 		} // end if

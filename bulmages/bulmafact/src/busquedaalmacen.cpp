@@ -92,7 +92,7 @@ void BusquedaAlmacen::setId ( QString idalmacen )
 			if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
 				i1 = i;
 			addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
-			m_cursorcombo->siguienteregistro();
+			m_cursorcombo->nextRecord();
 		} //end while
 		if ( i1 != 0 ) {
 			setCurrentIndex ( i1 );
@@ -211,9 +211,9 @@ void BusquedaAlmacenDelegate::set ( const QString &cod )
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) == cod )
-            index = m_cursorcombo->regactual();
+            index = m_cursorcombo->currentRecord();
     }// end while
     setEditText ( cod );
     setCurrentIndex ( index );

@@ -203,7 +203,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
                 /// de una ra&iacute;z).
                 arbol->nuevaRama ( ramas );
             } // end if
-            ramas->siguienteregistro();
+            ramas->nextRecord();
         } // end while
         arbol->inicializa ( ramas );
         delete ramas;
@@ -247,7 +247,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         while ( !hojas->eof() ) {
             /// Para cada cuenta con apuntes introducidos hay que actualizar hojas del &aacute;rbol.
             arbol->actualizaHojas ( hojas );
-            hojas->siguienteregistro();
+            hojas->nextRecord();
         } // end while
         delete hojas;
         /// Establecemos la hoja activa

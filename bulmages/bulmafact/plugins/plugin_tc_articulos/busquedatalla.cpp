@@ -76,7 +76,7 @@ void BusquedaTalla::setidtc_talla ( QString idtc_talla )
         if ( m_cursorcombo->valor ( "idtc_talla" ) == idtc_talla )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "nomtc_talla" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } //end while
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
@@ -209,9 +209,9 @@ void BusquedaTallaDelegate::set ( const QString &cod )
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomtc_talla" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "nomtc_talla" )  == cod )
-            index = m_cursorcombo->regactual();
+            index = m_cursorcombo->currentRecord();
     }// end while
     setEditText ( cod );
     setCurrentIndex ( index );

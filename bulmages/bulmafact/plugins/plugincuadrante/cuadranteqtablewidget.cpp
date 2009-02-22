@@ -148,7 +148,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     while ( !cur1->eof() ) {
         QAction * ac = menu1->addAction ( cur1->valor ( "nomtrabajador" ) + "(" + cur1->valor ( "horainhorario" ) + ":" + cur1->valor ( "horafinhorario" ) + ")" );
         horarios[ac] = cur1->valor ( "idhorario" );
-        cur1->siguienteregistro();
+        cur1->nextRecord();
     } // end while
     delete cur1;
 
@@ -164,28 +164,28 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     /// Miramos y tratamos la opcion seleccionada.
     if ( sel == at ) {
         QString query = "DELETE FROM horario WHERE idcuadrante = " + mdb_idcuadrante;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
 
     if ( horarios.contains ( sel ) ) {
         QString query = "DELETE FROM horario WHERE idhorario = " + horarios[sel];
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
 
     if ( sel == fest ) {
         QString query = "UPDATE cuadrante SET fiestacuadrante = TRUE WHERE idcuadrante = " + mdb_idcuadrante;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
 
     if ( sel == nofest ) {
         QString query = "UPDATE cuadrante SET fiestacuadrante = FALSE WHERE idcuadrante = " + mdb_idcuadrante;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
 
 
     if ( sel == com ) {
         QString query = "UPDATE cuadrante SET comentcuadrante = '' WHERE idcuadrante = " + mdb_idcuadrante;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
 
     g_plugins->lanza ( "CuadranteQTextDocument_on_customContextMenuRequested_Post", this );
@@ -265,8 +265,8 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
         QString query = "INSERT INTO horario (idtrabajador, idcuadrante, horainhorario, horafinhorario) VALUES (" + idtrabajador + "," + mdb_idcuadrante + ",'" + horain + "','" + horafin + "')";
         QString query1 = "INSERT INTO horario (idtrabajador, idcuadrante, horainhorario, horafinhorario) VALUES (" + idtrabajador + "," + mdb_idcuadrante + ",'" + horain1 + "','" + horafin1 + "')";
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
-        mainCompany() ->ejecuta ( query1 );
+        mainCompany() ->runQuery ( query );
+        mainCompany() ->runQuery ( query1 );
         mainCompany() ->commit();
         pintaCuadrante ( mdb_idalmacen, mdb_fechacuadrante );
         _depura ( "END CuadranteQTextDocument::addTrabajador", 0 );
@@ -296,7 +296,7 @@ void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date 
         if ( cur1->eof() ) {
             QString query = "INSERT INTO cuadrante (idalmacen, fechacuadrante) VALUES (" + idalmacen + ",'" + date.toString ( "dd/MM/yyyy" ) + "')";
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
         } // end if
         delete cur1;
@@ -436,7 +436,7 @@ const QString CuadranteQTextDocument::impresion()
             html += "<para " + style + "><font face=\"Helvetica\" size=\"6\" color=\"" + cur1->valor ( "colortipotrabajo" ) + "\">" + cur1->valor ( "nomtrabajador" ) + " " + cur1->valor ( "apellidostrabajador" );
             html += "<sup>(" + cur1->valor ( "horainhorario" ).left ( 5 ) + "--" + cur1->valor ( "horafinhorario" ).left ( 5 ) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
 
-            cur1->siguienteregistro();
+            cur1->nextRecord();
         } // end while
         delete cur1;
 
@@ -529,7 +529,7 @@ void ImpCuadrante::generar()
             html += "<font size=\"3\" color=\"" + cur1->valor ( "colortipotrabajo" ) + "\">" + cur1->valor ( "nomtrabajador" ) + " " + cur1->valor ( "apellidostrabajador" );
             html += " (" + cur1->valor ( "horainhorario" ).left ( 5 ) + "--" + cur1->valor ( "horafinhorario" ).left ( 5 ) + ") </font><BR>";
 
-            cur1->siguienteregistro();
+            cur1->nextRecord();
         } // end while
         delete cur1;
 

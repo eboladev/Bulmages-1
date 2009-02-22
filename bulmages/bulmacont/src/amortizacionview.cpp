@@ -109,9 +109,9 @@ int AmortizacionView::borrar()
     _depura ( "AmortizacionView::borrar", 0 );
     if ( m_idamortizacion != "" ) {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + m_idamortizacion;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         query = "DELETE FROM amortizacion WHERE idamortizacion = " + m_idamortizacion;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         close();
     } // end if
     _depura ( "END AmortizacionView::borrar", 0 );
@@ -419,7 +419,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         QString query = "DELETE FROM linamortizacion WHERE idlinamortizacion = " + idlinamortizacion;
         if ( idlinamortizacion != "" ) {
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
         } // end if
         on_mui_confquery_clicked();
@@ -438,7 +438,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         QString idasiento = DBvalue ( "idasiento" );
         QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         QString query = "UPDATE linamortizacion SET idasiento = NULL WHERE idlinamortizacion = " + idlinamortizacion;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
     if ( opcion->text() == _( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
@@ -503,7 +503,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         /// Debemos guardar la modificaci&oacute;n en la l&iacute;nea de amortizaci&oacute;n.
         QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
     } // end if
 //    on_mui_confquery_clicked();
 }

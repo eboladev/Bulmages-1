@@ -25,7 +25,7 @@ void TicketsDevueltos::on_mui_cancelar_clicked()
 void TicketsDevueltos::on_mui_ref_returnPressed()
 {
     QString query1 = "UPDATE albaran SET olvidadoalbaran = TRUE WHERE refalbaran = '"+ mui_ref->text() + "'";
-    mainCompany()->ejecuta ( query1 );
+    mainCompany()->runQuery ( query1 );
     mui_ref->setText("");
 }
 

@@ -55,21 +55,21 @@ void estadisticasview::presentar()
     fprintf ( stderr, "BALANCE: Empezamos a hacer la presentacion\n" );
     conexionbase->begin();
     query.sprintf ( "CREATE TEMPORARY TABLE balance AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET padre=0 WHERE padre ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "DELETE FROM balance WHERE debe=0 AND haber =0" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
     // Para evitar problemas con los nulls hacemos algunos updates
     query.sprintf ( "UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET tdebe=0 WHERE tdebe ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET thaber=0 WHERE thaber ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
 
     query.sprintf ( "SELECT idcuenta FROM balance ORDER BY padre DESC" );
@@ -81,20 +81,20 @@ void estadisticasview::presentar()
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
         //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
-        conexionbase->ejecuta ( query );
+        conexionbase->runQuery ( query );
         delete mycur;
-        cursorapt->siguienteregistro();
+        cursorapt->nextRecord();
     }// end while
     delete cursorapt;
 
 
     // Borramos todo lo que no es de este nivel
     query.sprintf ( "DELETE FROM balance where nivel(codigo)>%s", "2" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
     //Borramos todo lo que tiene un hijo en el balance
     query.sprintf ( "DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
 
     query.sprintf ( "SELECT descripcion, abs(tsaldo)::integer AS tsaldoi FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo" );
@@ -108,7 +108,7 @@ void estadisticasview::presentar()
         if ( init != 0 ) valores += ",";
         // Acumulamos los totales para al final poder escribirlos
         valores += "(\\\"" + cursorapt->valor ( "descripcion" ) + "\\\"," + QString::number ( cursorapt->valor ( "tsaldoi" ).toInt() ) + ")";
-        cursorapt->siguienteregistro();
+        cursorapt->nextRecord();
         init = 1;
     }// end while
     valores += "]";
@@ -116,7 +116,7 @@ void estadisticasview::presentar()
     // Vaciamos el cursor de la base de datos.
     delete cursorapt;
     query.sprintf ( "DROP TABLE balance" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     conexionbase->commit();
 
     /* values to chart */
@@ -154,21 +154,21 @@ void estadisticasview::presentarbarras()
     fprintf ( stderr, "BALANCE: Empezamos a hacer la presentacion\n" );
     conexionbase->begin();
     query.sprintf ( "CREATE TEMPORARY TABLE balance AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET padre=0 WHERE padre ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "DELETE FROM balance WHERE debe=0 AND haber =0" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
     // Para evitar problemas con los nulls hacemos algunos updates
     query.sprintf ( "UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET tdebe=0 WHERE tdebe ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET thaber=0 WHERE thaber ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
 
     query.sprintf ( "SELECT idcuenta FROM balance ORDER BY padre DESC" );
@@ -180,20 +180,20 @@ void estadisticasview::presentarbarras()
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
         //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
-        conexionbase->ejecuta ( query );
+        conexionbase->runQuery ( query );
         delete mycur;
-        cursorapt->siguienteregistro();
+        cursorapt->nextRecord();
     }// end while
     delete cursorapt;
 
 
     // Borramos todo lo que no es de este nivel
     query.sprintf ( "DELETE FROM balance where nivel(codigo)>%s", "2" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
     //Borramos todo lo que tiene un hijo en el balance
     query.sprintf ( "DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
 
 
     query.sprintf ( "SELECT descripcion, tsaldo::integer AS tsaldoi FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo" );
@@ -211,7 +211,7 @@ void estadisticasview::presentarbarras()
 
         plot += "plot" + QString::number ( iplot ) + "=bar_plot.T(label=\\\"" + cursorapt->valor ( "descripcion" ) + "\\\", hcol=" + QString::number ( iplot - 1 ) + ", cluster=(" + QString::number ( iplot - 1 ) + ",3)) \\n";
         iplot++;
-        cursorapt->siguienteregistro();
+        cursorapt->nextRecord();
         init = 1;
     }// end while
     valores += ")]";
@@ -225,7 +225,7 @@ void estadisticasview::presentarbarras()
     // Vaciamos el cursor de la base de datos.
     delete cursorapt;
     query.sprintf ( "DROP TABLE balance" );
-    conexionbase->ejecuta ( query );
+    conexionbase->runQuery ( query );
     conexionbase->commit();
 
     /* values to chart */

@@ -392,7 +392,7 @@ void ContratosList::on_mui_facturar_clicked()
             prov->on_mui_facturar_clicked();
             delete prov;
 
-            cur->siguienteregistro();
+            cur->nextRecord();
         } // end while
         delete cur;
 

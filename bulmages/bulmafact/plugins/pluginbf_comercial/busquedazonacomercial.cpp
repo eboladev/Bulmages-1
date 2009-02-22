@@ -69,7 +69,7 @@ void BusquedaZonaComercial::setidzonacomercial ( QString idzonacomercial )
         if ( m_cursorcombo->valor ( "idzonacomercial" ) == idzonacomercial )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "nomzonacomercial" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaZonaComercial::~BusquedaZonaComercial", 0 );

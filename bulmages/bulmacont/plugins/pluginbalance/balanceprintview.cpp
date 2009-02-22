@@ -64,7 +64,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
         combonivel->insertItem ( i, niveles->valor ( "nivel" ) );
-        niveles->siguienteregistro();
+        niveles->nextRecord();
         i++;
     } // end while
     mainCompany() ->commit();
@@ -197,7 +197,7 @@ void BalancePrintView::presentar ( const char* tipus )
                 if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
                     arbol->nuevaRama ( ramas );
                 } // end if
-                ramas->siguienteregistro();
+                ramas->nextRecord();
             } // end while
             arbol->inicializa ( ramas );
             delete ramas;
@@ -265,7 +265,7 @@ void BalancePrintView::presentar ( const char* tipus )
             /// del &aacute;rbol.
             while ( !cuentas->eof() ) {
                 arbol->actualizaHojas ( cuentas );
-                cuentas->siguienteregistro();
+                cuentas->nextRecord();
             } // end while
 
             /// Ir&aacute; contando las l&iacute;neas impresas en el impreso de Kugar.

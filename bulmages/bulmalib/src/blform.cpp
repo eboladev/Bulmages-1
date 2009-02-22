@@ -1097,7 +1097,7 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
         } // end while
 
         result += salidatemp;
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END BlForm::trataCursor", 0 );

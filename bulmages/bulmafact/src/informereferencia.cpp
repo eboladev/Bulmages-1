@@ -108,7 +108,7 @@ void InformeCliente::generarInforme()
         buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );
         buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
         buff.replace ( "[poblcliente]", cur->valor ( "poblcliente" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -128,7 +128,7 @@ void InformeCliente::generarInforme()
     while ( !cur->eof() ) {
         referencias += coma + "'" + cur->valor ( "referencia" ) + "' ";
         coma = ",";
-        cur->siguienteregistro();
+        cur->nextRecord();
     }
     delete cur;
     referencias += ")";
@@ -160,7 +160,7 @@ void InformeCliente::generarInforme()
         fitxersortidatxt += "<td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
         fitxersortidatxt += "<td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -195,7 +195,7 @@ void InformeCliente::generarInforme()
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 

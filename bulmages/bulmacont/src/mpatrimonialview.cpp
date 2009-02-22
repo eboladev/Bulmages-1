@@ -107,7 +107,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
         componentessuma->setItem ( i, 3, it3 );
         it0 = new QTableWidgetItem ( cursoraux->valor ( "idcuenta" ) );
         componentessuma->setItem ( i, 0, it0 );
-        cursoraux->siguienteregistro();
+        cursoraux->nextRecord();
         i++;
     } // end while
     delete cursoraux;
@@ -129,7 +129,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
         it0 = new QTableWidgetItem ( cursoraux->valor ( "idmpatrimonial" ) );
         componentessuma->setItem ( i, 0, it0 );
         i++;
-        cursoraux->siguienteregistro();
+        cursoraux->nextRecord();
     } // end while
     delete cursoraux;
 
@@ -150,7 +150,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
         it0 = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     delete cursoraux1;
 
@@ -171,7 +171,7 @@ void mpatrimonialview::inicializa1 ( QString idmpatrimonial1 )
         it0 = new QTableWidgetItem ( cursoraux->valor ( "idmpatrimonial" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
-        cursoraux->siguienteregistro();
+        cursoraux->nextRecord();
     } // end while
     delete cursoraux;
     _depura ( "mpatrimonialview::inicializa1", 0 );
@@ -209,7 +209,7 @@ void mpatrimonialview::on_mui_nuevasuma_clicked()
         it0 = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
         componentessuma->setItem ( i, 0, it0 );
         i++;
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     delete cursoraux1;
 
@@ -230,7 +230,7 @@ void mpatrimonialview::on_mui_nuevasuma_clicked()
         it0 = new QTableWidgetItem ( cursoraux1->valor ( "idmpatrimonial" ) );
         componentessuma->setItem ( i, 0, it0 );
         i++;
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     _depura ( "END mpatrimonialview::on_mui_nuevasuma_clicked", 0 );
 }
@@ -278,7 +278,7 @@ void mpatrimonialview::on_mui_nuevaresta_clicked()
         it0 = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     delete cursoraux1;
 
@@ -299,7 +299,7 @@ void mpatrimonialview::on_mui_nuevaresta_clicked()
         it0 = new QTableWidgetItem ( cursoraux1->valor ( "idmpatrimonial" ) );
         componentesresta->setItem ( i, 0, it0 );
         i++;
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     _depura ( "END mpatrimonialview::on_mui_nuevaresta_clicked", 0 );
 }
@@ -356,7 +356,7 @@ void mpatrimonialview::on_mui_aceptar_clicked()
     if ( idmpatrimonial == "" ) {
         mainCompany() ->begin();
         query.sprintf ( "INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')" );
-        mainCompany() ->ejecuta ( query.toAscii() );
+        mainCompany() ->runQuery ( query.toAscii() );
         query.sprintf ( "SELECT MAX(idmpatrimonial) as id FROM mpatrimonial" );
         BlDbRecordSet *curs = mainCompany() ->loadQuery ( query, "cargaid" );
         mainCompany() ->commit();
@@ -366,10 +366,10 @@ void mpatrimonialview::on_mui_aceptar_clicked()
     /// Ponemos los datos correctos sobre la masa patrimonial.
     QString text = descmpatrimonial->text();
     query.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s", text.toAscii().constData(), idmpatrimonial.toAscii().constData() );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
     query.sprintf ( "DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.toAscii().constData() );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
     for ( i = 0; i < componentessuma->rowCount(); i++ ) {
         QString id = componentessuma->item ( i, 0 ) ->text();
@@ -384,7 +384,7 @@ void mpatrimonialview::on_mui_aceptar_clicked()
                             mainCompany() ->sanearCadena ( id ).toAscii().constData(),
                             mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
         } // end if
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end for
 
     for ( i = 0; i < componentesresta->rowCount(); i++ ) {
@@ -400,7 +400,7 @@ void mpatrimonialview::on_mui_aceptar_clicked()
                             mainCompany() ->sanearCadena ( id ).toAscii().constData(),
                             mainCompany() ->sanearCadena ( idmpatrimonial ).toAscii().constData() );
         } // end if
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end for
     close();
     _depura ( "END mpatrimonialview::on_mui_aceptar_clicked", 0 );

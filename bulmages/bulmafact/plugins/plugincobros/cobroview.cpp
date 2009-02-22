@@ -142,7 +142,7 @@ int CobroView::guardarPost() {
 	if (cur->valor("total") == cur1->valor("totalc") ) {
 		mensajeInfo("Procesar todos los documentos con esta referencia ?");
 		QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + DBvalue("refcobro") + "'";
-		mainCompany()->ejecuta(query2);
+		mainCompany()->runQuery(query2);
 	} // end if
 	delete cur;
 	delete cur1;

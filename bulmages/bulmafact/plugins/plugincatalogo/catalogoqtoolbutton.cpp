@@ -167,7 +167,7 @@ QString CatalogoQToolButton::detalleArticulos()
         }
         texto += "</tr>\n";
         texto += "</blockTable>";
-        cur->siguienteregistro();
+        cur->nextRecord();
         barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;

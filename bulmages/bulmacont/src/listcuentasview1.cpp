@@ -181,7 +181,7 @@ int listcuentasview1::inicializa()
             else if ( ctas->valor ( "tipocuenta" ) == "5" )
                 it->setIcon ( ccuenta, QPixmap ( cgastos ) );
 
-            ctas->siguienteregistro();
+            ctas->nextRecord();
         } // end while
         mui_arbolcuentas->expandAll();
         delete ctas;
@@ -241,7 +241,7 @@ void listcuentasview1::inicializatabla()
         if ( ( unsigned int ) codigo.length() != numdigitos ) {
             mui_tablacuentas->hideRow ( i );
         } // end if
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
         i++;
     } // end while
     delete cursoraux1;
@@ -516,7 +516,7 @@ void listcuentasview1::imprimir()
         fitxersortidatxt += "<td>" + cur->valor ( "debe" ) + "</td>\n";
         fitxersortidatxt += "<td>" + cur->valor ( "haber" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     fitxersortidatxt += "</blockTable>";
 

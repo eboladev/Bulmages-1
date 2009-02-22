@@ -82,7 +82,7 @@ void BusquedaTrabajador::setId ( QString idtrabajador )
         if ( m_cursorcombo->valor ( "idtrabajador" ) == idtrabajador )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaTrabajador::setidtrabajador", 0 );
@@ -175,9 +175,9 @@ void BusquedaTrabajadorDelegate::set ( const QString &cod )
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) == cod )
-            index = m_cursorcombo->regactual();
+            index = m_cursorcombo->currentRecord();
     }// end while
     setEditText ( cod );
     setCurrentIndex ( index );

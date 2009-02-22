@@ -163,7 +163,7 @@ int ListLinPrevCobro::chargeBudgetLines()
                                                 cur->valor ( "nomctacliente" ) );
         m_lista.append ( lin );
         i++;
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END de ListLinPrevCobro::chargeBudgetLines\n" );
@@ -210,7 +210,7 @@ void ListLinPrevCobro::borrar()
     _depura ( "ListLinPrevCobro::borrar", 0 );
     if ( mdb_idregistroiva != "" )  {
         m_companyact->begin();
-        m_companyact->ejecuta ( "DELETE FROM prevcobro WHERE idregistroiva = " + mdb_idregistroiva );
+        m_companyact->runQuery ( "DELETE FROM prevcobro WHERE idregistroiva = " + mdb_idregistroiva );
         m_companyact->commit();
     } // end if
     _depura ( "END ListLinPrevCobro::borrar", 0 );

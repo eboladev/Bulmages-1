@@ -86,7 +86,7 @@ void BusquedaSerieFactura::setId ( QString codigo )
         if ( m_cursorcombo->valor ( "codigoserie_factura" ) == codigo )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "codigoserie_factura" ) + ".-" + m_cursorcombo->valor ( "descserie_factura" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end if
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );

@@ -140,7 +140,7 @@ void InformeQToolButton::click()
             fitxersortidatxt += "\n<nextPage/>\n";
             fitxersortidatxt += "\n<nextFrame/>\n";
         } // end if
-        cur->siguienteregistro();
+        cur->nextRecord();
         barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
@@ -183,7 +183,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
     while ( !cur->eof() ) {
         referencias += coma + "'" + cur->valor ( "referencia" ) + "' ";
         coma = ",";
-        cur->siguienteregistro();
+        cur->nextRecord();
     }
     delete cur;
     referencias += ")";
@@ -215,7 +215,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -248,7 +248,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -498,7 +498,7 @@ QString InformeArtQToolButton::generarArticulos()
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        cur->siguienteregistro();
+        cur->nextRecord();
         barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;

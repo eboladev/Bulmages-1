@@ -109,7 +109,7 @@ void BlComboBox::setId ( QString id )
 	} // end while
 
         addItem ( cad );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
 
     setCurrentIndex ( i1 );

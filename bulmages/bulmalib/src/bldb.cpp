@@ -521,7 +521,7 @@ int BlDbRecord::DBsave ( QString &id )
         } // end for
         if ( m_nuevoCampo ) {
             QString query = "INSERT INTO " + m_tablename + " (" + listcampos + ") VALUES (" + listvalores + ")";
-            m_conexionbase->ejecuta ( query );
+            m_conexionbase->runQuery ( query );
             _depura ( query, 0 );
             BlDbRecordSet *cur = m_conexionbase->loadQuery ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
             id = cur->valor ( m_campoid );
@@ -529,7 +529,7 @@ int BlDbRecord::DBsave ( QString &id )
         } else {
             QString query = "UPDATE " + m_tablename + " SET " + queryupdate + " WHERE " + querywhere;
             _depura ( query, 0 );
-            m_conexionbase->ejecuta ( query );
+            m_conexionbase->runQuery ( query );
         } // end if
         m_nuevoCampo = FALSE;
 
@@ -639,16 +639,21 @@ QString BlDbRecord::DBvalueprep ( QString nomb )
     BlDbField *campo;
     int i = 0;
     campo = m_lista.value ( i );
-    while ( campo && campo->nomcampo() != nomb )
+
+    while ( campo && campo->nomcampo() != nomb ) {
         campo = m_lista.value ( ++i );
+    } // end while
+
     if ( !campo ) {
         mensajeAviso ( "No se ha encontrado el campo '" + nomb + "'." );
         return "";
     } // end if
+
     if ( campo->nomcampo() == nomb ) {
         int err;
         return campo->valorcampoprep ( err );
     } // end if
+
     _depura ( "END BlDbRecord::DBvalueprep", 0 );
     return "";
 }
@@ -713,7 +718,7 @@ int BlDbRecord::borrar()
         } // end for
 
         if ( m_nuevoCampo == FALSE ) {
-            m_conexionbase->ejecuta ( "DELETE FROM " + m_tablename + " WHERE " + querywhere );
+            m_conexionbase->runQuery ( "DELETE FROM " + m_tablename + " WHERE " + querywhere );
         } // end if
 
         _depura ( "END BlDbRecord::borrar", 0 );

@@ -288,7 +288,7 @@ bool BalanceTreeView::generaBalance()
     while ( !ramas->eof() ) {
         if ( ramas->valor ( "nivel" ).toInt() == 2 )
             arbol->nuevaRama ( ramas );
-        ramas->siguienteregistro();
+        ramas->nextRecord();
     } // end while
 
     /// Inicializamos el arbol desde sus raices (desde sus cuentas de nivel 2)
@@ -340,7 +340,7 @@ bool BalanceTreeView::generaBalance()
     /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del arbol.
     while ( !hojas->eof() ) {
         arbol->actualizaHojas ( hojas );
-        hojas->siguienteregistro();
+        hojas->nextRecord();
     } // end while
     delete hojas;
     _depura ( "END BalanceTreeView::generaBalance", 0 );
@@ -704,14 +704,14 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //
 //         } // end for
 //         y++;
-//         cursorapt1->siguienteregistro();
+//         cursorapt1->nextRecord();
 //     } // end while
 //     /// Vaciamos el cursor de la base de datos.
 //     delete cursorapt1;
 //
 //     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
 //     query.sprintf ( "DROP TABLE balancetemp" );
-//     mainCompany() ->ejecuta ( query );
+//     mainCompany() ->runQuery ( query );
 //     mainCompany() ->commit();
 //
 //     fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"listadosxc.sxc\");\n";

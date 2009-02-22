@@ -1251,7 +1251,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
         BlDbSubFormRecord * rec = newDbSubFormRecord();
         rec->DBload ( cur );
         m_lista.append ( rec );
-        cur->siguienteregistro();
+        cur->nextRecord();
         porcentajecarga++;
     } // end while
 

@@ -193,7 +193,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
         pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
         mainCompany() ->m_pWorkspace->addWindow ( pedpro );
         pedpro->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END AlbaranProveedorView::on_mui_verpedidos_clicked", 0 );

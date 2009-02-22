@@ -214,7 +214,7 @@ void Asiento1View::iniciar_asiento_nuevo ( QString nuevoordenasiento )
 
         /// Creamos el asiento en la base de datos.
         query = "INSERT INTO asiento ( fecha, ordenasiento) VALUES ('" + mainCompany() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
 
         query = "SELECT MAX(idasiento) AS id FROM asiento";
         cur = mainCompany() ->loadQuery ( query );
@@ -538,7 +538,7 @@ void ListAsientos::boton_inicio()
 {
     _depura ( "ListAsientos::boton_inicio", 0 );
     if ( cursorasientos->numregistros() != 0 ) {
-        cursorasientos->primerregistro();
+        cursorasientos->firstRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     } // end if
     _depura ( "END ListAsientos::boton_inicio", 0 );
@@ -555,7 +555,7 @@ void ListAsientos::boton_fin()
 {
     _depura ( "ListAsientos::boton_fin", 0 );
     if ( cursorasientos->numregistros() != 0 ) {
-        cursorasientos->ultimoregistro();
+        cursorasientos->lastRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     } // end if
     _depura ( "END ListAsientos::boton_fin", 0 );
@@ -576,8 +576,8 @@ void ListAsientos::boton_siguiente()
     if ( cursorasientos->numregistros() == 0 ) {
         return;
     } // end if
-    if ( !cursorasientos->esultimoregistro() ) {
-        cursorasientos->siguienteregistro();
+    if ( !cursorasientos->isLastRecord() ) {
+        cursorasientos->nextRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     }// end if
     _depura ( "END ListAsientos::boton_siguiente", 0 );
@@ -599,8 +599,8 @@ void ListAsientos::boton_anterior()
     if ( cursorasientos->numregistros() == 0 ) {
         return;
     } // end if
-    if ( !cursorasientos->esprimerregistro() ) {
-        cursorasientos->registroanterior();
+    if ( !cursorasientos->isFirstRecord() ) {
+        cursorasientos->previousRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     } // end if
     _depura ( "END ListAsientos::boton_anterior", 0 );
@@ -620,9 +620,9 @@ void ListAsientos::situarasiento ( QString idasiento )
     try {
         if ( cursorasientos == NULL )
             throw - 1;
-        cursorasientos->primerregistro();
-        while ( cursorasientos->valor ( "idasiento" ) != idasiento && !cursorasientos->esultimoregistro() ) {
-            cursorasientos->siguienteregistro();
+        cursorasientos->firstRecord();
+        while ( cursorasientos->valor ( "idasiento" ) != idasiento && !cursorasientos->isLastRecord() ) {
+            cursorasientos->nextRecord();
         } // end while
     } catch ( ... ) {
         mensajeInfo ( "Error al intentar situarse en el asiento" );
@@ -639,10 +639,10 @@ void ListAsientos::situarasiento ( QString idasiento )
 QString ListAsientos::idasientoanterior()
 {
     _depura ( "ListAsientos::idasientoanterior", 0 );
-    if ( !cursorasientos->esprimerregistro() ) {
-        cursorasientos->registroanterior();
+    if ( !cursorasientos->isFirstRecord() ) {
+        cursorasientos->previousRecord();
         QString id = cursorasientos->valor ( "idasiento" );
-        cursorasientos->siguienteregistro();
+        cursorasientos->nextRecord();
         _depura ( "END ListAsientos::idasientoanterior", 0 );
         return id;
     } else {
@@ -659,10 +659,10 @@ QString ListAsientos::idasientoanterior()
 QString ListAsientos::idasientosiguiente()
 {
     _depura ( "ListAsientos::idasientosiguiente", 0 );
-    if ( !cursorasientos->esultimoregistro() ) {
-        cursorasientos->siguienteregistro();
+    if ( !cursorasientos->isLastRecord() ) {
+        cursorasientos->nextRecord();
         QString id = cursorasientos->valor ( "idasiento" );
-        cursorasientos->registroanterior();
+        cursorasientos->previousRecord();
         _depura ( "END ListAsientos::idasientosiguiente", 0 );
         return id;
     } else {
@@ -723,7 +723,7 @@ bool ListAsientos::esprimerasiento()
 {
     _depura ( "ListAsientos::esprimerasiento", 0 );
     _depura ( "END ListAsientos::esprimerasiento", 0 );
-    return cursorasientos->esprimerregistro();
+    return cursorasientos->isFirstRecord();
 }
 
 
@@ -735,7 +735,7 @@ bool ListAsientos::esultimoasiento()
 {
     _depura ( "ListAsientos::esultimoasiento", 0 );
     _depura ( "END ListAsientos::esultimoasiento", 0 );
-    return cursorasientos->esultimoregistro();
+    return cursorasientos->isLastRecord();
 }
 
 
@@ -914,7 +914,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
 
         /// Creamos un asiento nuevo con la fecha final indicada.
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "')";
-        mainCompany() ->ejecuta ( supquery );
+        mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
         int idasiento = cur->valor ( "id" ).toInt();
@@ -959,10 +959,10 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
             query +=  "," +   totalhaber.toQString().replace ( ",", "." );
             query +=  "," +   QString::number ( idasiento ) + ")";
 
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
 
             /// Fin de la insercion de Borrador
-            cur->siguienteregistro();
+            cur->nextRecord();
         }// end while
         delete cur;
 
@@ -978,7 +978,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
             query += ", 0";
             query += "," + totaldebe1.toQString().replace ( ",", "." );
             query += "," + QString::number ( idasiento ) + ")";
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
         } // end if
 
 
@@ -993,7 +993,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
             query += "," + totalhaber1.toQString().replace ( ",", "." );
             query += ", 0";
             query += "," + QString::number ( idasiento ) + ")";
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
         }// end if
 
         mainCompany() ->commit();
@@ -1019,7 +1019,7 @@ void Asiento1View::asiento_cierre ( QString finicial, QString ffinal )
 
         /// Creamos un asiento nuevo con la fecha final indicada.
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "')";
-        mainCompany() ->ejecuta ( supquery );
+        mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
         int idasiento = cur->valor ( "id" ).toInt();
@@ -1060,10 +1060,10 @@ void Asiento1View::asiento_cierre ( QString finicial, QString ffinal )
                 query += "," + snuevohaber;
                 query += "," + QString::number ( idasiento ) + ")";
 
-                mainCompany() ->ejecuta ( query );
+                mainCompany() ->runQuery ( query );
 
             }// end if
-            cursor->siguienteregistro();
+            cursor->nextRecord();
         }// end while
         delete cursor;
 
@@ -1087,7 +1087,7 @@ void Asiento1View::asiento_apertura ( QString ffinal )
 
         /// Creamos un asiento nuevo con la fecha final indicada.
         QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Apertura " + ffinal + "', 'Asiento de Apertura " + ffinal + "')";
-        mainCompany() ->ejecuta ( supquery );
+        mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
         int idasiento = cur->valor ( "id" ).toInt();
@@ -1123,8 +1123,8 @@ void Asiento1View::asiento_apertura ( QString ffinal )
             SQLQuery1 += ","   + totaldebe.replace ( ",", "." );
             SQLQuery1 += ","   + QString::number ( idasiento ) + ")";
 
-            mainCompany() ->ejecuta ( SQLQuery1 );
-            cur->siguienteregistro();
+            mainCompany() ->runQuery ( SQLQuery1 );
+            cur->nextRecord();
         }// end while
         delete cur;
 

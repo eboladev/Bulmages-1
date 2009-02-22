@@ -82,7 +82,7 @@ bool pluginCAnualesODS::Arboles()
             arbolEjercicioActual->nuevaRama ( ramas );
             arbolEjercicioAnterior->nuevaRama ( ramas );
         } // end if
-        ramas->siguienteregistro();
+        ramas->nextRecord();
     } // end while
 
     /// Inicializamos el arbol desde sus raices (desde sus cuentas de nivel 2)
@@ -107,7 +107,7 @@ bool pluginCAnualesODS::Arboles()
     /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del �rbol.
     while ( !hojas->eof() ) {
         arbolEjercicioActual->actualizaHojas ( hojas );
-        hojas->siguienteregistro();
+        hojas->nextRecord();
     } // end while
 
     /// Finalmente, recopilamos todos los apuntes agrupados por cuenta para poder
@@ -124,7 +124,7 @@ bool pluginCAnualesODS::Arboles()
     /// De nuevo, para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del arbol.
     while ( !hojas->eof() ) {
         arbolEjercicioAnterior->actualizaHojas ( hojas );
-        hojas->siguienteregistro();
+        hojas->nextRecord();
     } // end while
 
     _depura ( "END pluginCAnualesODS::Arboles", 0 );
@@ -168,7 +168,7 @@ OK, aqui poden haver passat 3 coses.
          o si el que volem es recorrer el query ho feim d'aquesta altre forma
 
          while (!cur->eof()) {
-           cur->siguienteregistro();
+           cur->nextRecord();
          }
 
         Nota que pot esser normal obtenir un resultat buid, pero en canvi no sol

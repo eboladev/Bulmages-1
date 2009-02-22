@@ -295,37 +295,37 @@ void BalanceView::generarBalance()
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' " + clauswhere + " GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
     mainCompany() ->begin();
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET padre = 0 WHERE padre ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
     query.sprintf ( "DELETE FROM balancetemp WHERE debe = 0 AND haber = 0" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     /// Vamos a implementar el tema del c&oacute;digo.
     if ( cinicial != "" ) {
         query.sprintf ( "DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii().constData() );
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
     if ( cfinal != "" ) {
         query.sprintf ( "DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii().constData() );
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
 
     /// Para evitar problemas con los nulls hacemos algunos updates.
     query.sprintf ( "UPDATE balancetemp SET tsaldo = 0 WHERE tsaldo ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET tdebe = 0 WHERE tdebe ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET thaber = 0 WHERE thaber ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET asaldo = 0 WHERE asaldo ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET ejsaldo = 0 WHERE ejsaldo ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET ejdebe = 0 WHERE ejdebe ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query.sprintf ( "UPDATE balancetemp SET ejhaber = 0 WHERE ejhaber ISNULL" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
     /// Cargamos el balance temporal
     query.sprintf ( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC" );
@@ -335,20 +335,20 @@ void BalanceView::generarBalance()
         BlDbRecordSet *mycur = mainCompany() ->loadQuery ( query );
         if ( !mycur->eof() ) {
             query = "UPDATE balancetemp SET tsaldo = tsaldo + " + mycur->valor ( "tsaldo" ) + ", tdebe = tdebe + " + mycur->valor ( "tdebe" ) + ", thaber = thaber +" + mycur->valor ( "thaber" ) + ", asaldo = asaldo+" + mycur->valor ( "asaldo" ) + ", ejdebe = ejdebe + " + mycur->valor ( "ejdebe" ) + ", ejhaber = ejhaber + " + mycur->valor ( "ejhaber" ) + ", ejsaldo = ejsaldo + " + mycur->valor ( "ejsaldo" ) + " WHERE idcuenta = " + mycur->valor ( "padre" );
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
         } /// end if
         delete mycur;
-        cursorapt->siguienteregistro();
+        cursorapt->nextRecord();
     } // end while
     delete cursorapt;
 
 
     query.sprintf ( "DELETE FROM balancetemp WHERE tdebe = 0 AND thaber = 0" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
 //    if(!mui_jerarquico->isChecked()) {
     query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
-    mainCompany()->ejecuta ( query );
+    mainCompany()->runQuery ( query );
 //    } // end if
 
 }
@@ -371,7 +371,7 @@ void BalanceView::presentar()
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query.sprintf ( "DROP TABLE balancetemp" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
 
     /// Hacemos la actualizacion de los saldos totales.
@@ -446,7 +446,7 @@ void BalanceView::imprimir()
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query = "DROP TABLE balancetemp" ;
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
 
     _depura ( "END BalanceView::on_mui_imprimir_clicked", 0 );
@@ -546,14 +546,14 @@ void BalanceView::on_mui_hojacalculo_clicked()
 
         } // end for
         y++;
-        cursorapt1->siguienteregistro();
+        cursorapt1->nextRecord();
     } // end while
     /// Vaciamos el cursor de la base de datos.
     delete cursorapt1;
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query.sprintf ( "DROP TABLE balancetemp" );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
 
     fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"listadosxc.sxc\");\n";

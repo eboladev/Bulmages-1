@@ -64,7 +64,7 @@ void FPagoView::pintar()
     mui_lista->clear();
     while ( !m_cursorFPagoView->eof() ) {
         new QListWidgetItem ( m_cursorFPagoView->valor ( "descforma_pago" ), mui_lista );
-        m_cursorFPagoView->siguienteregistro();
+        m_cursorFPagoView->nextRecord();
     } // end while
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
@@ -120,7 +120,7 @@ int FPagoView::guardar()
                         mainCompany() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " +
                         mainCompany() ->sanearCadena ( mui_dias1tforma_pago->text() ) + " , descuentoforma_pago = " +
                         mainCompany() ->sanearCadena ( mui_descuentoforma_pago->text() ) + " WHERE idforma_pago =" + mdb_idforma_pago;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         if ( m_cursorFPagoView != NULL ) {
             delete m_cursorFPagoView;
         } // end if
@@ -176,7 +176,7 @@ void FPagoView::on_mui_crear_clicked()
     trataModificado();
     QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO', 0, 0)";
     mainCompany() ->begin();
-    int error = mainCompany() ->ejecuta ( query );
+    int error = mainCompany() ->runQuery ( query );
     if ( error ) {
         mainCompany() ->rollback();
         return;
@@ -202,7 +202,7 @@ void FPagoView::on_mui_borrar_clicked()
     try {
         mainCompany() ->begin();
         QString query = "DELETE FROM forma_pago WHERE idforma_pago = " + mdb_idforma_pago;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         pintar();
         groupBox1->setDisabled ( TRUE );

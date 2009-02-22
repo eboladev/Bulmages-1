@@ -139,11 +139,11 @@ void CambiaCtaView::accept()
         query4 = query4 + " AND ffactura <= '" + ffinal + "'";
     } // end if
     mainCompany() ->begin();
-    mainCompany() ->ejecuta ( query );
-    mainCompany() ->ejecuta ( query1 );
-    mainCompany() ->ejecuta ( query2 );
-    mainCompany() ->ejecuta ( query3 );
-    mainCompany() ->ejecuta ( query4 );
+    mainCompany() ->runQuery ( query );
+    mainCompany() ->runQuery ( query1 );
+    mainCompany() ->runQuery ( query2 );
+    mainCompany() ->runQuery ( query3 );
+    mainCompany() ->runQuery ( query4 );
     mainCompany() ->commit();
     done ( 1 );
     _depura ( "END CambiaCtaView::accept", 0 );

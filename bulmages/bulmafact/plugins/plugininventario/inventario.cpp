@@ -67,7 +67,7 @@ int Inventario::borrar()
 
         listalineas->borrar();
         _depura ( "Vamos a borrar el resto", 0 );
-        int error = companyact->ejecuta ( "DELETE FROM inventario WHERE idinventario = " + DBvalue ( "idinventario" ) );
+        int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + DBvalue ( "idinventario" ) );
         if ( error ) {
             companyact->rollback();
             return -1;
@@ -250,7 +250,7 @@ void Inventario::imprimirInventario()
         QString idalmacen = almacenes->valor ( "idalmacen" );
         query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
         txt += "<td>" + almacenes->valor ( "nomalmacen" ) + "</td>";
-        almacenes->siguienteregistro();
+        almacenes->nextRecord();
     } // end while
     delete almacenes;
     txt += "</tr>\n";
@@ -262,7 +262,7 @@ void Inventario::imprimirInventario()
         for ( int i = 0; i < cstock->numcampos(); i++ ) {
             txt += "<td>" + cstock->valor ( i ) + "</td>";
         } // end for
-        cstock->siguienteregistro();
+        cstock->nextRecord();
         txt += "\n";
         txt += "</tr>\n";
     } // end while

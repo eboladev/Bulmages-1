@@ -468,9 +468,9 @@ void CompraVentaView::generarFacturaProveedor()
                 return;
             } // end if
 		SQLQuery = "DELETE FROM lfacturap WHERE idfacturap=" + cur->valor("idfacturap");
-		mainCompany()->ejecuta( SQLQuery);
+		mainCompany()->runQuery( SQLQuery);
 		SQLQuery = "DELETE FROM facturap WHERE idfacturap = " + cur->valor("idfacturap");
-		mainCompany()->ejecuta( SQLQuery);
+		mainCompany()->runQuery( SQLQuery);
 
         } // end if
         delete cur;

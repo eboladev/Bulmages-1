@@ -225,7 +225,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
                 mainCompany() ->m_pWorkspace->addWindow ( bud );
                 bud->cargar ( cur->valor ( "idpedidocliente" ) );
                 bud->show();
-                cur->siguienteregistro();
+                cur->nextRecord();
             } // end while
         } else {
             mensajeInfo ( _( "No hay pedidos con la misma referencia." ), this );

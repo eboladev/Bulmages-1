@@ -67,7 +67,7 @@ void BancoView::pintar()
     m_cursorbancos = mainCompany() ->loadQuery ( "SELECT * FROM banco ORDER BY nombanco" );
     while ( !m_cursorbancos->eof() ) {
         new QListWidgetItem ( m_cursorbancos->valor ( "nombanco" ) , mui_lista );
-        m_cursorbancos->siguienteregistro();
+        m_cursorbancos->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
@@ -146,7 +146,7 @@ int BancoView::guardar()
         query += ",  webbanco='" + mainCompany() ->sanearCadena ( mui_webbanco->text() ) + "'";
         query += " WHERE idbanco=" + mainCompany() ->sanearCadena ( mdb_idbanco );
 
-        int error = mainCompany() ->ejecuta ( query );
+        int error = mainCompany() ->runQuery ( query );
         if ( error ) {
             mainCompany() ->rollback();
             return -1;
@@ -205,7 +205,7 @@ void BancoView::on_mui_nuevo_clicked()
         trataModificado();
         QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idbanco) AS idbanco FROM banco" );
         mainCompany() ->commit();
         mdb_idbanco = cur->valor ( "idbanco" );
@@ -232,7 +232,7 @@ void BancoView::on_mui_borrar_clicked()
         trataModificado();
         mainCompany() ->begin();
         QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;
-        int error = mainCompany() ->ejecuta ( query );
+        int error = mainCompany() ->runQuery ( query );
         if ( error ) {
             mainCompany() ->rollback();
             return;

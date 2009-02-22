@@ -89,7 +89,7 @@ void TipoActividadView::pintar()
     m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
     while ( !m_cursortrabajadores->eof() ) {
         new QListWidgetItem ( m_cursortrabajadores->valor ( "apellidostrabajador" ) + " " + m_cursortrabajadores->valor ( "nomtrabajador" ), mui_lista );
-        m_cursortrabajadores->siguienteregistro();
+        m_cursortrabajadores->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
@@ -179,7 +179,7 @@ void TipoActividadView::on_mui_guardar_clicked()
         query += " WHERE idtrabajador=" + mainCompany() ->sanearCadena ( mdb_idtrabajador );
 
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         if ( m_cursortrabajadores != NULL ) {
             delete m_cursortrabajadores;
@@ -242,7 +242,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
         trataModificado();
         QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
         mainCompany() ->commit();
         mdb_idtrabajador = cur->valor ( "idtrabajador" );
@@ -269,7 +269,7 @@ void TipoActividadView::on_mui_borrar_clicked()
         trataModificado();
         mainCompany() ->begin();
         QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         mdb_idtrabajador = "";
         pintar();

@@ -101,7 +101,7 @@ bool ImportBalance::startElement1 ( const QString&, const QString&, const QStrin
     if ( m_tag == "balance" ) {
         SQLQuery.sprintf ( "INSERT INTO balance (nombrebalance) VALUES ('Elemento importado')\n" );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idbalance) AS idbalance FROM balance";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
@@ -113,7 +113,7 @@ bool ImportBalance::startElement1 ( const QString&, const QString&, const QStrin
     if ( m_tag == "mpatrimonial" ) {
         SQLQuery.sprintf ( "INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_tvalores["idbalance"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idmpatrimonial) AS idmpatrimonial FROM mpatrimonial";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
@@ -146,7 +146,7 @@ bool ImportBalance::endElement1 ( const QString&, const QString&, const QString&
     if ( qName == "balance" ) {
         SQLQuery.sprintf ( "UPDATE balance SET nombrebalance = '%s' WHERE idbalance = %s\n", m_tvalores["nombrebalance"].toAscii().constData(), m_tvalores["idbalance"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     }
     if ( qName == "mpatrimonial" ) {
@@ -157,33 +157,33 @@ bool ImportBalance::endElement1 ( const QString&, const QString&, const QString&
         m_identmasasp[m_tvalores["idmasa"]] = m_tvalores["idmpatrimonial_nueva"];
         SQLQuery.sprintf ( "UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s\n", m_tvalores["descmpatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         if ( m_tvalores["orden"] != "" ) {
             SQLQuery.sprintf ( "UPDATE mpatrimonial SET orden = %s WHERE idmpatrimonial = %s\n", m_tvalores["orden"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( SQLQuery );
+            mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["orden"] = "";
         } // end if
         if ( m_tvalores["tabulacion"] != "" ) {
             SQLQuery.sprintf ( "UPDATE mpatrimonial SET tabulacion = %s WHERE idmpatrimonial = %s\n", m_tvalores["tabulacion"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( SQLQuery );
+            mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["tabulacion"] = "";
         } // end if
         if ( m_tvalores["opdesc"] != "" ) {
             SQLQuery.sprintf ( "UPDATE mpatrimonial SET opdesc = %s WHERE idmpatrimonial = %s\n", m_tvalores["opdesc"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( SQLQuery );
+            mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["opdesc"] = "";
         } // end if
         if ( m_tvalores["tipompatrimonial"] != "" ) {
             SQLQuery.sprintf ( "UPDATE mpatrimonial SET tipompatrimonial = %s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData() );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( SQLQuery );
+            mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
             m_tvalores["tipompatrimonial"] = "";
         } // end if
@@ -227,7 +227,7 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
     if ( m_tag == "compmasap" ) {
         SQLQuery.sprintf ( "INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["masaperteneciente"]] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idcompmasap) AS idcompmasap FROM compmasap";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
@@ -239,7 +239,7 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
     if ( m_tag == "compbalance" ) {
         SQLQuery.sprintf ( "INSERT INTO compbalance (idbalance) VALUES (%s)\n", mainCompany() ->sanearCadena ( m_tvalores["idbalance"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idcompbalance) AS idcompbalance FROM compbalance";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
@@ -256,7 +256,7 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
         if ( m_tvalores["idmpatrimonial"] != "" && m_tvalores["codigo"] == "" ) {
             SQLQuery.sprintf ( "UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["idmpatrimonial"]] ).toAscii().constData(), mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( SQLQuery );
+            mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
         } // end if
         if ( m_tvalores["codigo"] != "" ) {
@@ -264,20 +264,20 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
                                mainCompany() ->sanearCadena ( m_tvalores["codigo"] ).toAscii().constData(),
                                mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( SQLQuery );
+            mainCompany() ->runQuery ( SQLQuery );
             mainCompany() ->commit();
         } // end if
         SQLQuery.sprintf ( "UPDATE compmasap SET signo = '%s' WHERE idcompmasap = %s\n",
                            mainCompany() ->sanearCadena ( m_tvalores["signo"] ).toAscii().constData(),
                            mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compmasap SET nombre = '%s' WHERE idcompmasap = %s\n",
                            mainCompany() ->sanearCadena ( m_tvalores["nombre"] ).toAscii().constData(),
                            mainCompany() ->sanearCadena ( m_tvalores["idcompmasap"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         m_tvalores["codigo"] = "";
         m_tvalores["idmpatrimonial"] = "";
@@ -288,25 +288,25 @@ bool ImportBalance::endElement2 ( const QString&, const QString&, const QString 
                            mainCompany() ->sanearCadena ( m_identmasasp[m_tvalores["idmpatrimonial"]] ).toAscii().constData(),
                            mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compbalance SET orden = %s WHERE idcompbalance = %s\n",
                            mainCompany() ->sanearCadena ( m_tvalores["orden"] ).toAscii().constData(),
                            mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compbalance SET concepto = '%s' WHERE idcompbalance = %s\n",
                            mainCompany() ->sanearCadena ( m_tvalores["concepto"] ).toAscii().constData(),
                            mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE compbalance SET tabulacion = %s WHERE idcompbalance = %s\n",
                            mainCompany() ->sanearCadena ( m_tvalores["tabulacion"] ).toAscii().constData(),
                            mainCompany() ->sanearCadena ( m_tvalores["idcompbalance"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         m_tvalores["codigo"] = "";
         m_tvalores["idmpatrimonial"] = "";

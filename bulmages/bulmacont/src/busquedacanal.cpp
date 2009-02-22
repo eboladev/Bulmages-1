@@ -67,7 +67,7 @@ void BusquedaCanal::setidcanal ( QString idcanal )
             i1 = i;
         } // end if
         addItem ( m_cursorcombo->valor ( "nombre" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } //end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaCanal::setidcanal", 0, idcanal );
@@ -179,8 +179,8 @@ void BusquedaCanalDelegate::set ( const QString &codigo )
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nombre" ) );
         if ( m_cursorcombo->valor ( "nombre" ) == codigo )
-            index = m_cursorcombo->regactual() + 1;
-        m_cursorcombo->siguienteregistro();
+            index = m_cursorcombo->currentRecord() + 1;
+        m_cursorcombo->nextRecord();
     }
     delete m_cursorcombo;
     setEditText ( codigo );

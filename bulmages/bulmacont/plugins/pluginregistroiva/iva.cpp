@@ -121,7 +121,7 @@ int Iva::borrar()
     _depura ( "Iva::borrar", 0 );
     if ( DBvalue ( "idiva" ) != "" ) {
         m_companyact->begin();
-        int error = m_companyact->ejecuta ( "DELETE FROM iva WHERE idiva = " + DBvalue ( "idiva" ) );
+        int error = m_companyact->runQuery ( "DELETE FROM iva WHERE idiva = " + DBvalue ( "idiva" ) );
         if ( error ) {
             m_companyact->rollback();
             return -1;

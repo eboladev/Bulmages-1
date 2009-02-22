@@ -196,7 +196,7 @@ void PaisView::on_mui_crear_clicked()
         QString query;
         query.sprintf ( "INSERT INTO pais (cod2pais, cod3pais, descpais) VALUES ('--', '---', 'Nuevo pais')" );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         pintar();
         mui_list->setCurrentItem ( mui_list->rowCount(), 1 );
@@ -228,7 +228,7 @@ void PaisView::on_mui_borrar_clicked()
         try {
             query = "DELETE FROM pais WHERE idpais = " + m_idpais;
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
             m_idpais = "0";
             pintar();

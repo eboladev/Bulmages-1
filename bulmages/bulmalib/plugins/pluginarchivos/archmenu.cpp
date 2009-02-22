@@ -77,7 +77,7 @@ void ArchMenu::pintaMenu ( QMenu *menu )
     while(!cur->eof()) {
 	QAction *addaction = nmenu->addAction(cur->valor("rutaarchivo"));
 	addaction->setObjectName("archivo_" + cur->valor("idarchivo"));
-	cur->siguienteregistro();
+	cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END ArchMenu::pintaMenu", 0 );
@@ -112,7 +112,7 @@ void ArchMenu::trataMenu ( QAction *action )
 
     if (diag->exec()) {
     QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_BlForm->campoId() + "', '" +m_BlForm->DBvalue ( m_BlForm->campoId() ) + "' , '"+ camb->mui_archivo->text() +"') ";
-    m_BlForm->mainCompany()->ejecuta(query);
+    m_BlForm->mainCompany()->runQuery(query);
     } // end if
 
     delete diag;

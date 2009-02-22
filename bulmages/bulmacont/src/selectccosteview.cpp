@@ -87,7 +87,7 @@ void SelectCCosteView::cargacostes()
 // descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
         Lista[idc_coste] = item;
 
-        cursoraux1->siguienteregistro ();
+        cursoraux1->nextRecord ();
     } // end while
     delete cursoraux1;
     /// Una vez que hemos puesto los centros de coste padre, todo lo dem&aacute;s es una
@@ -107,7 +107,7 @@ void SelectCCosteView::cargacostes()
 // descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
         Lista[idc_coste] = item;
 
-        cursoraux2->siguienteregistro();
+        cursoraux2->nextRecord();
     } // end while
     delete cursoraux2;
     _depura ( "END SelectCCosteView::cargacostes", 0 );

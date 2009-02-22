@@ -188,7 +188,7 @@ void adocumental::inicializa()
         m_listado->setItem ( i, COL_ARCHIVOADOCUMENTAL, nuevoItem5 );
         QTableWidgetItem *nuevoItem6 = new QTableWidgetItem ( cursoraux1->valor ( "ordenasiento" ) );
         m_listado->setItem ( i, COL_ORDENASIENTO, nuevoItem6 );
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
         i++;
     } // end while
     delete cursoraux1;
@@ -226,7 +226,7 @@ void adocumental::newADocumental ( QString archivo )
     _depura ( "adocumental::newADocumental", 0 );
     QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + conexionbase->sanearCadena ( archivo ) + "')";
     conexionbase->begin();
-    conexionbase->ejecuta ( SQLQuery );
+    conexionbase->runQuery ( SQLQuery );
     conexionbase->commit();
     _depura ( "END adocumental::newADocumental", 0 );
 }
@@ -275,7 +275,7 @@ void adocumental::asociaasiento ( QString idasiento )
         QString SQLQuery = "UPDATE adocumental SET idasiento = " + idasiento + " WHERE idadocumental = " + idadocumental;
         _depura ( SQLQuery, 10 );
         conexionbase->begin();
-        conexionbase->ejecuta ( SQLQuery );
+        conexionbase->runQuery ( SQLQuery );
         conexionbase->commit();
     } // end if
     inicializa();
@@ -310,7 +310,7 @@ void adocumental::boton_desasociar()
     if ( idadocumental != "" ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = NULL WHERE idadocumental = " + idadocumental;
         conexionbase->begin();
-        conexionbase->ejecuta ( SQLQuery );
+        conexionbase->runQuery ( SQLQuery );
         conexionbase->commit();
     } // end if
     inicializa();
@@ -328,7 +328,7 @@ void adocumental::s_deleteADocumental()
     if ( idadocumental != "" ) {
         QString SQLQuery = "DELETE FROM adocumental WHERE idadocumental = " + idadocumental;
         conexionbase->begin();
-        conexionbase->ejecuta ( SQLQuery );
+        conexionbase->runQuery ( SQLQuery );
         conexionbase->commit();
     } // end if
     inicializa();
@@ -349,7 +349,7 @@ void adocumental::s_saveADocumental()
         Query += "descripcionadocumental = '" + m_listado->item ( row, COL_DESCRIPCIONADOCUMENTAL ) ->text() + "'";
         Query += " WHERE idadocumental = " + idadocumental;
         conexionbase->begin();
-        conexionbase->ejecuta ( Query );
+        conexionbase->runQuery ( Query );
         conexionbase->commit();
     } // end if
     inicializa();

@@ -289,7 +289,7 @@ void resmensualview::presentarpie()
             }// end if
 
             // Calculamos la siguiente cuenta registro y finalizamos el bucle
-            cursorapt->siguienteregistro();
+            cursorapt->nextRecord();
 #ifdef GDCHART
             j++;
 #endif

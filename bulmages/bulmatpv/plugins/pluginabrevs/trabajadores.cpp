@@ -25,7 +25,7 @@ Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( p
         } // end if
         m_hboxLayout1->addWidget ( toolbutton );
         connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( trabajadorClicked() ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 }
@@ -49,7 +49,7 @@ void Trabajadores::trabajadorClicked()
         if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) ) {
             encontrado = TRUE;
         } else {
-            cur->siguienteregistro();
+            cur->nextRecord();
         } // end if
     } // end while
 

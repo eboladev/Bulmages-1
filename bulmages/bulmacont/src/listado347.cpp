@@ -106,7 +106,7 @@ void Listado347::on_m_boton_recalcular_clicked()
         item->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         tablaventas->setItem ( i, 4, item );
         ++i;
-        recordSet->siguienteregistro();
+        recordSet->nextRecord();
     } // end while
     /// A por la tabla de Compras...
     query =  "SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta ";
@@ -142,7 +142,7 @@ void Listado347::on_m_boton_recalcular_clicked()
         item->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         tablacompras->setItem ( i, 4, item );
         ++i;
-        recordSet->siguienteregistro();
+        recordSet->nextRecord();
     } // end while
     tablacompras->resizeColumnsToContents();
     tablaventas->resizeColumnsToContents();

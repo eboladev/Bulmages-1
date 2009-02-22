@@ -78,7 +78,7 @@ void BusquedaTipoIva::setId ( QString idtipo_iva )
             i1 = i;
         } // end if
         addItem ( m_cursorcombo->valor ( "desctipo_iva" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaTipoIva::setidtipo_iva", 0 );
@@ -177,9 +177,9 @@ void BusquedaTipoIVADelegate::set ( const QString &cod )
     clear();
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "desctipo_iva" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "desctipo_iva" ) == cod )
-            index = m_cursorcombo->regactual();
+            index = m_cursorcombo->currentRecord();
     } // end while
     setEditText ( cod );
     setCurrentIndex ( index );

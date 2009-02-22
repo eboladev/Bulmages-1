@@ -65,10 +65,10 @@ QString BlDbRecordSet::pristineQuery()
 /**
 \return
 **/
-int BlDbRecordSet::regactual()
+int BlDbRecordSet::currentRecord()
 {
-    _depura ( "BlDbRecordSet::regactual", 0 );
-    _depura ( "END BlDbRecordSet::regactual", 0 );
+    _depura ( "BlDbRecordSet::currentRecord", 0 );
+    _depura ( "END BlDbRecordSet::currentRecord", 0 );
     return registroactual;
 }
 
@@ -86,6 +86,7 @@ BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, 
    inicializa(nombre, conn1, SQLQuery, 0, (char **)NULL,pristineQuery);
 }
 
+
 BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const QString *paramValues, QString pristineQuery
                        ) {
@@ -98,11 +99,13 @@ BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, 
       inicializa(nombre, conn1, SQLQuery, numParams, charValues, pristineQuery);
 }
 
+
 BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char * const *paramValues, QString pristineQuery
                        ) {
    inicializa(nombre, conn1, SQLQuery, numParams, paramValues, pristineQuery);
 }
+
 
 void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char * const *paramValues, QString pristineQuery
@@ -359,10 +362,10 @@ int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull)
 /**
 \return
 **/
-int BlDbRecordSet::siguienteregistro()
+int BlDbRecordSet::nextRecord()
 {
-    _depura ( "BlDbRecordSet::siguienteregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
-    _depura ( "END BlDbRecordSet::siguienteregistro", 0 );
+    _depura ( "BlDbRecordSet::nextRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "END BlDbRecordSet::nextRecord", 0 );
     return ++registroactual;
 }
 
@@ -371,9 +374,9 @@ int BlDbRecordSet::siguienteregistro()
 /**
 \return
 **/
-int BlDbRecordSet::registroanterior()
+int BlDbRecordSet::previousRecord()
 {
-    _depura ( "BlDbRecordSet::registroanterior", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "BlDbRecordSet::previousRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     return --registroactual;
 }
 
@@ -382,11 +385,11 @@ int BlDbRecordSet::registroanterior()
 /**
 \return
 **/
-int BlDbRecordSet::primerregistro()
+int BlDbRecordSet::firstRecord()
 {
-    _depura ( "BlDbRecordSet::primerregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "BlDbRecordSet::firstRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = 0;
-    _depura ( "END BlDbRecordSet::primerregistro", 0 );
+    _depura ( "END BlDbRecordSet::firstRecord", 0 );
     return 0;
 }
 
@@ -395,11 +398,11 @@ int BlDbRecordSet::primerregistro()
 /**
 \return
 **/
-int BlDbRecordSet::ultimoregistro()
+int BlDbRecordSet::lastRecord()
 {
-    _depura ( "BlDbRecordSet::ultimoregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
+    _depura ( "BlDbRecordSet::lastRecord", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = nregistros - 1;
-    _depura ( "END BlDbRecordSet::ultimoregistro", 0 );
+    _depura ( "END BlDbRecordSet::lastRecord", 0 );
     return registroactual;
 }
 
@@ -440,10 +443,10 @@ bool BlDbRecordSet::bof()
 /**
 \return
 **/
-bool BlDbRecordSet::esultimoregistro()
+bool BlDbRecordSet::isLastRecord()
 {
-    _depura ( "BlDbRecordSet::esultimoregistro", 0 );
-    _depura ( "END BlDbRecordSet::esultimoregistro", 0 );
+    _depura ( "BlDbRecordSet::isLastRecord", 0 );
+    _depura ( "END BlDbRecordSet::isLastRecord", 0 );
     return ( registroactual == nregistros - 1 );
 }
 
@@ -452,10 +455,10 @@ bool BlDbRecordSet::esultimoregistro()
 /**
 \return
 **/
-bool BlDbRecordSet::esprimerregistro()
+bool BlDbRecordSet::isFirstRecord()
 {
-    _depura ( "BlDbRecordSet::esprimerregistro", 0 );
-    _depura ( "END BlDbRecordSet::esprimerregistro", 0 );
+    _depura ( "BlDbRecordSet::isFirstRecord", 0 );
+    _depura ( "END BlDbRecordSet::isFirstRecord", 0 );
     return ( registroactual == 0 );
 }
 
@@ -749,9 +752,9 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
 /**
 \param Query
 **/
-int BlPostgreSqlClient::ejecuta ( QString Query )
+int BlPostgreSqlClient::runQuery ( QString Query )
 {
-    _depura ( "BlPostgreSqlClient::ejecuta", 0, Query );
+    _depura ( "BlPostgreSqlClient::runQuery", 0, Query );
     PGresult *result = NULL;
     try {
         /// Prova de control de permisos.
@@ -764,24 +767,24 @@ int BlPostgreSqlClient::ejecuta ( QString Query )
 		if (PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus( result ) != 2 )
 			throw -1;
         PQclear ( result );
-        _depura ( "END BlPostgreSqlClient::ejecuta", 0 );
+        _depura ( "END BlPostgreSqlClient::runQuery", 0 );
         return 0;
     } catch ( int e ) {
         if ( e == 42501 ) {
-            _depura ( "END BlPostgreSqlClient::ejecuta", 0, "SQL command failed: " + Query );
+            _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
             QString mensaje = "No tiene permisos suficientes para ejecutar el comando SQL:\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } else {
-            _depura ( "END BlPostgreSqlClient::ejecuta", 0, "SQL command failed: " + Query );
+            _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
             QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " +QString::number(PQresultStatus ( result )) + "\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } // end if
     } catch ( ... ) {
-        _depura ( "END BlPostgreSqlClient::ejecuta", 0, "SQL command failed: " + Query );
+        _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
         throw - 1;
     } // end try
 }
@@ -875,7 +878,7 @@ int BlPostgreSqlClient::nuevoborrador ( int idcuenta, int idasiento, QString con
                     sanearCadena ( textidccoste ).toAscii().data(),
                     sanearCadena ( textidcanal ).toAscii().data() );
     _depura ( "END BlPostgreSqlClient::nuevoborrador", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 
@@ -920,7 +923,7 @@ int BlPostgreSqlClient::modificaborrador ( int idborrador, int idcuenta, float i
     query.sprintf ( "UPDATE borrador SET idcuenta = %d, debe = %2.2f, haber = %2.2f, conceptocontable = '%s', fecha = '%s', contrapartida = %s, idtipoiva = %d, idc_coste = %s, idcanal = %s WHERE idborrador = %d", idcuenta, idebe, ihaber, concepto.toAscii().data(), fecha.toAscii().data(), textcontrapartida.toAscii().data(), idtipoiva, textidccoste.toAscii().data(), textocanal.toAscii().data(), idborrador );
     _depura ( query );
     _depura ( "END BlPostgreSqlClient::modificaborrador", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 
@@ -1151,7 +1154,7 @@ int BlPostgreSqlClient::borrarasiento ( int idasiento )
     QString query = "";
     query.sprintf ( "DELETE FROM asiento WHERE idasiento = %d", idasiento );
     _depura ( "END BlPostgreSqlClient::borrarasiento", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 
@@ -1167,7 +1170,7 @@ int BlPostgreSqlClient::borrarborrador ( int idborrador )
     QString query = "";
     query.sprintf ( "DELETE FROM borrador WHERE idborrador = %d", idborrador );
     _depura ( "END BlPostgreSqlClient::borrarborrador", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 
@@ -1183,7 +1186,7 @@ int BlPostgreSqlClient::borrarcuenta ( int idcuenta )
     QString query = "";
     query.sprintf ( "DELETE FROM cuenta WHERE idcuenta = %d", idcuenta );
     _depura ( "END BlPostgreSqlClient::borrarcuenta", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 
@@ -1241,7 +1244,7 @@ int BlPostgreSqlClient::modificacuenta ( int idcuenta, QString desccuenta, QStri
     query.sprintf ( "UPDATE cuenta SET descripcion = '%s', codigo = '%s', imputacion = %s, bloqueada = %s, idgrupo = %d, activo = %s, nombreent_cuenta = '%s', cifent_cuenta = '%s', dirent_cuenta = '%s', cpent_cuenta = '%s', telent_cuenta = '%s', coment_cuenta = '%s', bancoent_cuenta = '%s', emailent_cuenta = '%s', webent_cuenta = '%s', tipocuenta = %d, nodebe = %s, nohaber = %s WHERE idcuenta = %d\n", desccuenta.toAscii().data(), codigo.toAscii().data(), imputacion.toAscii().data(), bloqueada.toAscii().data(), idgrupo, activo.toAscii().data(), nombreent.toAscii().data(), cifent.toAscii().data(), dir.toAscii().data(), cp.toAscii().data(), tel.toAscii().data(), comm.toAscii().data(), banco.toAscii().data(), email.toAscii().data(), web.toAscii().data(), tipocuenta, nodebe.toAscii().data(), nohaber.toAscii().data(), idcuenta );
     _depura ( query );
     _depura ( "END BlPostgreSqlClient::modificacuenta", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 
@@ -1296,7 +1299,7 @@ int BlPostgreSqlClient::nuevacuenta ( QString desccuenta, QString codigo, int pa
                     sanearCadena ( nodebe ).toAscii().data(),
                     sanearCadena ( nohaber ).toAscii().data() );
     _depura ( "END BlPostgreSqlClient::nuevacuenta", 0 );
-    return ( ejecuta ( query ) );
+    return ( runQuery ( query ) );
 }
 
 

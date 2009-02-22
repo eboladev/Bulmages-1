@@ -129,7 +129,7 @@ void TicketQToolButton::click()
             fitxersortidatxt += "<spacer length=\"0.5cm\"/>\n";
             i++;
         } // end while
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 

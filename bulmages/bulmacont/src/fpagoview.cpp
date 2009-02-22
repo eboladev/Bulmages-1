@@ -99,7 +99,7 @@ void fpagoview::pintar ( QString idfpago )
         mui_comboFPago->insertItem ( i, m_curfpago->valor ( "nomfpago" ) );
         if ( idfpago == m_curfpago->valor ( "idfpago" ) )
             posicion = i;
-        m_curfpago->siguienteregistro();
+        m_curfpago->nextRecord();
         i++;
     } // end while
 
@@ -187,7 +187,7 @@ int fpagoview::guardar()
     _depura ( "fpagoview::on_mui_guardarFPago_clicked", 0 );
     QString idfpago = m_curfpago->valor ( "idfpago", m_posactual );
     QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor ( "idfpago", m_posactual );
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     dialogChanges_cargaInicial();
     pintar ( m_curfpago->valor ( "idfpago", m_posactual ) );
     _depura ( "END fpagoview::on_mui_guardarFPago_clicked", 0 );
@@ -213,7 +213,7 @@ void fpagoview::on_mui_crear_clicked()
     try {
         QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _( "Nueva forma de pago" ) + "', 0, 0, 0)";
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idfpago) AS idfpago FROM fpago" );
         mainCompany() ->commit();
         pintar ( cur->valor ( "idfpago" ) );
@@ -243,7 +243,7 @@ void fpagoview::on_mui_borrar_clicked()
                                         _( "Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n" ),
                                         QMessageBox::Ok, QMessageBox::Cancel ) ) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            mainCompany() ->ejecuta ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );
+            mainCompany() ->runQuery ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );
             pintar();
             break;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.

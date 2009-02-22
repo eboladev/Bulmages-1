@@ -163,8 +163,8 @@ int Asiento1::borrar ( bool atendido )
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
                 mainCompany() ->begin();
                 listalineas->borrar();
-                error = mainCompany() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
-                error += mainCompany() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
                 if ( error ) {
                     mainCompany() ->rollback();
                     return -1;
@@ -179,8 +179,8 @@ int Asiento1::borrar ( bool atendido )
         } else {
             mainCompany() ->begin();
             listalineas->borrar();
-            error = mainCompany() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
-            error += mainCompany() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
             if ( error ) {
                 mainCompany() ->rollback();
                 return -1;

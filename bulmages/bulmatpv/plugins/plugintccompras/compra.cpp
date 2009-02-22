@@ -152,7 +152,7 @@ void Compra::on_mui_codigoarticulo_returnPressed() {
 		} // end if
 		delete cur1;
 		delete cur2;
-		cur->siguienteregistro();
+		cur->nextRecord();
 		if (bgcolor == "#FFFFFF") {
 			bgcolor = "#CCCCFF";
 		} else {

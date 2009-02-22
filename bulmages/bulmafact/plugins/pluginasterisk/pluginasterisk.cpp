@@ -199,7 +199,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     } // end if
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->idtrabajador() );
     trab->mainCompany() ->begin();
-    trab->mainCompany() ->ejecuta ( query );
+    trab->mainCompany() ->runQuery ( query );
 
     BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
     l1->setColumnValue ( "idtrabajador", trab->idtrabajador() );

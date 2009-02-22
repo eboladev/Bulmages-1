@@ -82,12 +82,12 @@ void EFactura::on_mui_guardar_clicked()
 
     if ( mui_URLServidorTiempo->isModified() ) {
         query = "DELETE FROM configuracion WHERE nombre = 'eFactura_server'";
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
 
         query = "INSERT INTO configuracion (nombre, valor) VALUES ('eFactura_server', '";
         query += mui_URLServidorTiempo->text();
         query += "')";
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     }
 
     /// Como el setText() pone siempre a false el valor de retorno de isModified()
@@ -95,12 +95,12 @@ void EFactura::on_mui_guardar_clicked()
     /// de certificado digital
 
     query = "DELETE FROM configuracion WHERE nombre = 'eFactura_certificado'";
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
     query = "INSERT INTO configuracion (nombre, valor) VALUES ('eFactura_certificado', '";
     query += mui_ficheroECertificado->text();
     query += "')";
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
 
     _depura ( "END EFactura::on_mui_guardar_clicked", 0 );
 }
@@ -141,14 +141,14 @@ void EFactura::on_mui_cancelar_clicked()
 //
 //  while(!cur->eof()) {
 //   _depura(cur->valor("nombre"), 0);
-//   cur->siguienteregistro();
+//   cur->nextRecord();
 //  } // end while
 //
 //  delete cur;
 //
 //  query = "UPDATE configuracion SET nombre='nombre' WHRE nombre='elnombre'";
 //  mainCompany()->begin();
-//  mainCompany()->ejecuta(query);
+//  mainCompany()->runQuery(query);
 //  mainCompany()->rollback();
     _depura ( "END EFactura::on_mui_cancelar_clicked", 0 );
 }

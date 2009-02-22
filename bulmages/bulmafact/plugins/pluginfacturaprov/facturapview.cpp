@@ -192,7 +192,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
         albpro->cargar ( cur->valor ( "idalbaranp" ) );
         mainCompany() ->m_pWorkspace->addWindow ( albpro );
         albpro->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END FacturaProveedorView::on_mui_veralbaranes_clicked", 0 );

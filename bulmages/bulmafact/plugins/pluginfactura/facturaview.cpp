@@ -258,7 +258,7 @@ void FacturaView::on_mui_veralbaranes_clicked()
                 mainCompany() ->m_pWorkspace->addWindow ( bud );
                 bud->cargar ( cur->valor ( "idalbaran" ) );
                 bud->show();
-                cur->siguienteregistro();
+                cur->nextRecord();
             } // end while
         } else {
             mensajeInfo ( _( "No hay albaranes con esta referencia" ), this );

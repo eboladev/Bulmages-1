@@ -138,7 +138,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
             arbolP1->nuevaRama ( ramas );
             arbolP2->nuevaRama ( ramas );
         } // end if
-        ramas->siguienteregistro();
+        ramas->nextRecord();
     } // end while
     arbolP1->inicializa ( ramas );
     arbolP2->inicializa ( ramas );
@@ -169,7 +169,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() ) {
         arbolP1->actualizaHojas ( hojas );
-        hojas->siguienteregistro();
+        hojas->nextRecord();
     } // end while
     mainCompany() ->commit();
     asientoReg->on_mui_borrar_clicked ( FALSE ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
@@ -186,7 +186,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() ) {
         arbolP2->actualizaHojas ( hojas );
-        hojas->siguienteregistro();
+        hojas->nextRecord();
     } // end while
     delete hojas;
     mainCompany() ->commit();

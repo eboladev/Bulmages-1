@@ -82,7 +82,7 @@ void correctorwidget::on_mui_corregir_clicked()
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> con fecha <B>" + cur->valor ( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
         agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idas" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -94,7 +94,7 @@ void correctorwidget::on_mui_corregir_clicked()
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->valor ( "codigo" ) + "</B> no hija..";
         agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -120,7 +120,7 @@ void correctorwidget::on_mui_corregir_clicked()
             cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
             agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
         } // end if
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -133,7 +133,7 @@ void correctorwidget::on_mui_corregir_clicked()
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una inserci� en el debe de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
         agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -145,7 +145,7 @@ void correctorwidget::on_mui_corregir_clicked()
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
         agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -157,7 +157,7 @@ void correctorwidget::on_mui_corregir_clicked()
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->valor ( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->valor ( "fechaprevista" ) + "</B>.";
         agregarError ( cadena, "amortizacion", "idamortizacion=" + cur->valor ( "idamortizacion" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -169,7 +169,7 @@ void correctorwidget::on_mui_corregir_clicked()
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->valor ( "codigo" ) + ") sin que haya una factura asociada.";
         agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 

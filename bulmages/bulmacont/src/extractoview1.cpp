@@ -167,9 +167,9 @@ void extractoview1::boton_siguiente()
 {
     _depura ( "extractoview1::boton_siguiente", 0 );
     if ( m_cursorcta != NULL ) {
-        if ( !m_cursorcta->esultimoregistro() ) {
+        if ( !m_cursorcta->isLastRecord() ) {
             guardar();
-            m_cursorcta->siguienteregistro();
+            m_cursorcta->nextRecord();
             presentar();
         } // end if
     } // end if
@@ -184,9 +184,9 @@ void extractoview1::boton_anterior()
 {
     _depura ( "extractoview1::boton_anterior", 0 );
     if ( m_cursorcta != NULL ) {
-        if ( !m_cursorcta->esprimerregistro() ) {
+        if ( !m_cursorcta->isFirstRecord() ) {
             guardar();
-            m_cursorcta->registroanterior();
+            m_cursorcta->previousRecord();
             presentar();
         } // end if
     } // end if
@@ -201,7 +201,7 @@ void extractoview1::boton_inicio()
     _depura ( "extractoview1::boton_inicio", 0 );
     if ( m_cursorcta != NULL ) {
         guardar();
-        m_cursorcta->primerregistro();
+        m_cursorcta->firstRecord();
         presentar();
     } // end if
     _depura ( "END extractoview1::boton_inicio", 0 );
@@ -215,7 +215,7 @@ void extractoview1::boton_fin()
     _depura ( "extractoview1::boton_fin", 0 );
     if ( m_cursorcta != NULL ) {
         guardar();
-        m_cursorcta->ultimoregistro();
+        m_cursorcta->lastRecord();
         presentar();
     } // end if
     _depura ( "END extractoview1::boton_fin", 0 );
@@ -386,7 +386,7 @@ void extractoview1::presentar()
 
 
         cursorapt = mainCompany() ->loadQuery ( query );
-        cursorapt->primerregistro();
+        cursorapt->firstRecord();
         if ( !cursorapt->eof() ) {
             /// Cargamos los saldos iniciales.
             query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
@@ -417,7 +417,7 @@ void extractoview1::presentar()
                 haberfinal = haberfinal + haber;
                 if ( mui_list->lineaat ( i ) )
                     mui_list->setDbValue ( "saldo", i++, saldo.toQString() );
-                cursorapt->siguienteregistro();
+                cursorapt->nextRecord();
             } // end while
 
             saldofinal = debefinal - haberfinal;
@@ -476,13 +476,13 @@ void extractoview1::on_mui_casacion_clicked()
             if ( !cursdebe->eof() ) {
                 query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->valor ( "idapunte" );
                 mainCompany() ->begin();
-                mainCompany() ->ejecuta ( query );
+                mainCompany() ->runQuery ( query );
                 query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + cursdebe->valor ( "idapunte" );
-                mainCompany() ->ejecuta ( query );
+                mainCompany() ->runQuery ( query );
                 mainCompany() ->commit();
             } // end if
             delete cursdebe;
-            curshaber->siguienteregistro();
+            curshaber->nextRecord();
             barra.setValue ( barra.value() + 1 );
         } // end while
         delete curshaber;
@@ -518,7 +518,7 @@ void extractoview1::on_mui_guardarpunteo_clicked()
             BlDbRecordSet *cursp = mainCompany() ->loadQuery ( query );
             while ( !cursp->eof() ) {
                 fprintf ( mifile, "%s\n", cursp->valor ( "idapunte" ).toAscii().constData() );
-                cursp->siguienteregistro();
+                cursp->nextRecord();
             } // end while
             delete cursp;
             fclose ( mifile );
@@ -546,7 +546,7 @@ void extractoview1::on_mui_borrapunteo_clicked()
                                            QMessageBox::Yes, QMessageBox::No );
         if ( valor == QMessageBox::Yes ) {
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->valor ( "idcuenta" ) );
+            mainCompany() ->runQuery ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->valor ( "idcuenta" ) );
             mainCompany() ->commit();
             presentar();
         } // end if
@@ -579,12 +579,12 @@ void extractoview1::on_mui_cargarpunteos_clicked()
             QTextStream filestr ( &file );
             mainCompany()->begin();
             QString query = "UPDATE apunte SET punteo = FALSE";
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             QString a = filestr.readLine();
             while ( !a.isNull() ) {
                 QString query;
                 query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + a;
-                mainCompany() ->ejecuta ( query );
+                mainCompany() ->runQuery ( query );
                 a = filestr.readLine();
             } // end while
             mainCompany()->commit();
@@ -754,7 +754,7 @@ if (!mui_asAbiertos->isChecked() ) {
 		salida +=  "</tr>\n";
 //	    } // end if
 //	    delete cur;
-            cursorapt->siguienteregistro();
+            cursorapt->nextRecord();
         } // end while
 
 
@@ -838,7 +838,7 @@ void extractoview1::on_mui_imprimir_clicked()
 
     /// Tabla temporal de contrapartidas.
     QString query1 = "CREATE TEMPORARY TABLE contrapart AS select idapunte, ccontrapartida(idapunte) AS contra FROM apunte";
-    mainCompany()->ejecuta(query1);
+    mainCompany()->runQuery(query1);
 
 
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
@@ -864,14 +864,14 @@ void extractoview1::on_mui_imprimir_clicked()
 	int i = 0;
     while ( ! curcta->eof() ) {
         fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
-        curcta->siguienteregistro();
+        curcta->nextRecord();
 		barra->setValue ( i++ );
     }// end while
     delete curcta;
 
     /// Tabla temporal de contrapartidas.
     query1 = "DROP TABLE contrapart";
-    mainCompany()->ejecuta(query1);
+    mainCompany()->runQuery(query1);
 
 	delete barra;
 

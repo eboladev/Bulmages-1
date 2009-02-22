@@ -194,9 +194,9 @@ void BbloqFecha::inicializa()
             itemlevel1->ej = curEjer->valor ( "ejercicio" );
             itemlevel1->per = curPeri->valor ( "periodo" );
             curPeri->valor ( "bloqueado" ) == "t" ? itemlevel1->setText ( 1, qsbloqueado ) : itemlevel1->setText ( 1, qsabierto );
-            curPeri->siguienteregistro();
+            curPeri->nextRecord();
         } // end while
-        curEjer->siguienteregistro();
+        curEjer->nextRecord();
     } // end while
     _depura ( "ENd BbloqFecha::inicializa", 0 );
 }
@@ -216,11 +216,11 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, in
         if ( item->text ( 1 ) == qsbloqueado ) {
             item->setText ( 1, qsabierto );
             QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = mainCompany() ->ejecuta ( consultabd );
+            error = mainCompany() ->runQuery ( consultabd );
         } else {
             item->setText ( 1, qsbloqueado );
             QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = mainCompany() ->ejecuta ( consultabd );
+            error = mainCompany() ->runQuery ( consultabd );
         } // end if
     } // end if
     _depura ( "END BbloqFecha::on_mui_treeWidget_doubleClicked", 0 );
@@ -275,7 +275,7 @@ void BbloqFecha::on_mui_crear_clicked()
         try {
             QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number ( ejer ) + "', '" + QString::number ( x ) + "', 'f')";
             mainCompany()->begin();
-            mainCompany() ->ejecuta ( consultabd );
+            mainCompany() ->runQuery ( consultabd );
             mainCompany()->commit();
         } catch ( ... ) {
             mensajeInfo ( "Error con la base de datos" );

@@ -161,7 +161,7 @@ void ImportCSV::procesarLinea ( const QString &linea )
     } // end for
     query += ")";
 
-    mainCompany()->ejecuta ( query );
+    mainCompany()->runQuery ( query );
 }
 
 
@@ -172,7 +172,7 @@ void ImportCSV::rellenarTablas()
     mui_combotablas->clear();
     while ( !cur->eof() ) {
         mui_combotablas->addItem ( cur->valor ( "table_name" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 }
@@ -189,7 +189,7 @@ void ImportCSV::on_mui_combotablas_activated ( const QString & text )
     while ( !cur->eof() ) {
         QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( "field" ) );
         mui_list->setItem ( row, 0, newItem );
-        cur->siguienteregistro();
+        cur->nextRecord();
         row ++;
     } // end while
     delete cur;

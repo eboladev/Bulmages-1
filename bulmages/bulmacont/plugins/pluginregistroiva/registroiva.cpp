@@ -84,11 +84,11 @@ int RegistroIva::borrar()
     if ( DBvalue ( "idregistroiva" ) != "" ) {
         mainCompany() ->begin();
         try {
-            int error = mainCompany() ->ejecuta ( "DELETE FROM iva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
+            int error = mainCompany() ->runQuery ( "DELETE FROM iva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
 
             if ( error ) throw - 1;
 
-            error = mainCompany() ->ejecuta ( "DELETE FROM registroiva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
+            error = mainCompany() ->runQuery ( "DELETE FROM registroiva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
 
             if ( error ) throw - 1;
 
@@ -218,9 +218,9 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
     try {
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe - borrador.haber AS baseimp FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
         mainCompany() ->begin();
-        int error = mainCompany() ->ejecuta ( SQLQuery );
+        int error = mainCompany() ->runQuery ( SQLQuery );
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
 
         if ( error ) {
             _depura ( "Error en la creacion del temporary table", 2 );
@@ -276,7 +276,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         while ( !cur->eof() ) {
             fprintf ( stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->valor ( "idborrador" ).toAscii().constData(), cur->valor ( "contrapartida" ).toAscii().constData(), cur->valor ( "codigo" ).toAscii().constData() );
             registro = atoi ( cur->valor ( "idborrador" ).toAscii().constData() );
-            cur->siguienteregistro();
+            cur->nextRecord();
         } //end while
 
         delete cur;
@@ -292,7 +292,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
 
         delete cur;
         SQLQuery = "DROP TABLE lacosa";
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
         _depura ( "RegistroIva:: Error en transaccion", 2 );
@@ -318,10 +318,10 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
     try {
         mainCompany() ->begin();
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.cifent_cuenta, cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta where borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
-        int error = mainCompany() ->ejecuta ( SQLQuery );
+        int error = mainCompany() ->runQuery ( SQLQuery );
 
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
         /// Cogemos de la configuracion las cuentas que queremos que se apunten.
         /// Montamos los querys en base a la cadena cuentas.
         /// Se consideran cuentas de Derechos y de Obligaciones a Clientes y Proveedores,
@@ -359,11 +359,11 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
                 setfactemitida ( "f" );
             } // end if
             registro = cur->valor ( "idborrador" ).toInt();
-            cur->siguienteregistro();
+            cur->nextRecord();
         } // end while
         delete cur;
         SQLQuery = "DROP TABLE lacosa";
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
         _depura ( "RegistroIva:: Error en buscaborradorcliente", 2 );
@@ -442,14 +442,14 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         mainCompany() ->begin();
         QString SQLQuery;
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
         if ( error ) {
             _depura ( "error en la base de datos", 2 );
             _depura ( SQLQuery, 2 );
         } // end if
 
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
 
         if ( error ) {
             _depura ( "error en la base de datos", 2 );
@@ -465,7 +465,7 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         recalculaIva();
         _depura ( "limpiamos la base de datos" );
         SQLQuery = "DROP TABLE lacosa";
-        error = mainCompany() ->ejecuta ( SQLQuery );
+        error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
         _depura ( "Error al buscar el borrador", 2 );

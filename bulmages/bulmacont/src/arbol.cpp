@@ -76,7 +76,7 @@ void Arbol::inicializa ( BlDbRecordSet *ramas )
     unsigned int i;
     QString padre;
     tiporama* guia = NULL;
-    ramas->primerregistro();
+    ramas->firstRecord();
     /// Hay que construir el arbol con todas sus hojitas (cuentas).
     for ( i = 0; i < raiz.size(); ++i ) {
         padre = raiz.at ( i )->codigo;
@@ -106,7 +106,7 @@ void Arbol::inicializa ( BlDbRecordSet *ramas )
                 /// crezcan, en tal caso habr&aacute; que sintetizarlas.
                 SintetizarRamas ( &ramas, & ( hoja->ramas ) );
             } else {
-                ramas->siguienteregistro();
+                ramas->nextRecord();
             } // end if
         } // end while
     } // end for
@@ -129,7 +129,7 @@ void Arbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **ramas )
     int nivel;
     BlDbRecordSet *ptrcuentas = *cuentas;
     nivel = atoi ( ptrcuentas->valor ( "nivel" ).toAscii().constData() );
-    ptrcuentas->siguienteregistro();
+    ptrcuentas->nextRecord();
     guia = NULL;
     while ( !ptrcuentas->eof() && ( atoi ( ptrcuentas->valor ( "nivel" ).toAscii().constData() ) > nivel ) ) {
         /// Reservamos un huequecito de memoria para almacenar los datos de la rama.

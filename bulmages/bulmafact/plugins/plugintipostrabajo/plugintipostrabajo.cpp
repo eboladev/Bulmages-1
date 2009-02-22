@@ -153,7 +153,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     query += " idtipotrabajo = " + l->idtipotrabajo();
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->idtrabajador() );
     trab->mainCompany() ->begin();
-    trab->mainCompany() ->ejecuta ( query );
+    trab->mainCompany() ->runQuery ( query );
     trab->mainCompany() ->commit();
     return 0;
 }

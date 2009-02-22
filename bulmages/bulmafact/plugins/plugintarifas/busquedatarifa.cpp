@@ -70,7 +70,7 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
         if ( m_cursorcombo->valor ( "idtarifa" ) == idtarifa )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "nomtarifa" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     }
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaTarifa::setIdTarifa", 0 );

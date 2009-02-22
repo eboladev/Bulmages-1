@@ -98,11 +98,11 @@ void DiarioPrint::accept()
         fprintf ( mifile, "----------------------------------------------------------------------------------------------------------\n" );
         mainCompany() ->begin();
         cursoraux = mainCompany() ->cargaasientosfecha ( finicial, ffinal );
-        for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
+        for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
             fechaasiento = cursoraux->valor ( 2 ).toAscii().constData();
             idasiento = atoi ( cursoraux->valor ( 0 ).toAscii() );
             cursoraux1 = mainCompany() ->cargaapuntes ( idasiento );
-            for ( ; !cursoraux1->eof(); cursoraux1->siguienteregistro() ) {
+            for ( ; !cursoraux1->eof(); cursoraux1->nextRecord() ) {
                 fecha = cursoraux1->valor ( 4 ).toAscii().constData();
                 descripcion = cursoraux1->valor ( 5 ).toAscii().constData();
                 concepto = cursoraux->valor ( 1 ).toAscii().constData();

@@ -116,16 +116,16 @@ void BtCompany::z()
     if ( total == "" ) total = "0";
     delete cur;
     query = "INSERT INTO z (idalmacen, totalz, numtickets) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ", "+total+","+numtickets+")";
-    ejecuta ( query );
+    runQuery ( query );
     query = "SELECT max(idz) AS id FROM z";
     cur = loadQuery ( query );
     QString idz = cur->valor ( "id" );
     delete cur;
     query = "UPDATE albaran set idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE";
-    ejecuta ( query );
+    runQuery ( query );
 
 //    query = "UPDATE z SET totalz = " + total + ", numtickets = " + numtickets + " WHERE idz =" + idz;
-//    ejecuta ( query );
+//    runQuery ( query );
     commit();
     delete cur;
 
@@ -281,7 +281,7 @@ void BtCompany::z()
 		file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
 	} // end if
 
-	cur-> siguienteregistro();
+	cur-> nextRecord();
     } // end if
     delete cur;
 // Fin informes por familias

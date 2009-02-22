@@ -612,7 +612,7 @@ void VerPreQToolButton::verPresupuesto()
                     return;
                 } // end if
                 bud->show();
-                cur->siguienteregistro();
+                cur->nextRecord();
             } // end while
         } else {
             mensajeInfo ( _( "No hay presupuestos con la misma referencia." ), this );

@@ -145,14 +145,14 @@ void propiedadesempresa::on_mui_modificarplan_clicked()
         codigo = ajustacodigo ( codigo, nlong );
         mainCompany() ->begin();
         query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor ( "idcuenta" );
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     query = "UPDATE configuracion SET valor = '" + modcodigo->text() + "' WHERE nombre = 'CodCuenta'";
     mainCompany() ->begin();
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     if ( QMessageBox::warning ( this,
                                 _( "Salir del programa" ),

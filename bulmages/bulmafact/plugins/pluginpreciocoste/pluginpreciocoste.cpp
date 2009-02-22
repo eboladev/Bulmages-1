@@ -146,7 +146,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( ret == QMessageBox::Yes ) {
             QString query1 = "UPDATE articulo SET preciocostearticulo=" + camp->valorcampoprep ( err ) + " where idarticulo=" + rec->DBvalue ( "idarticulo" );
             subform->mainCompany() ->begin();
-            subform->mainCompany() ->ejecuta ( query1 );
+            subform->mainCompany() ->runQuery ( query1 );
             subform->mainCompany() ->commit();
         } // end if
         return 0;

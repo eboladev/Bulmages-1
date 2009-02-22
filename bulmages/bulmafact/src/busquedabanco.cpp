@@ -79,7 +79,7 @@ void BusquedaBanco::setidbanco ( QString idbanco )
         if ( m_cursorcombo->valor ( "idbanco" ) == idbanco )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "nombanco" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaBanco::setidbanco", 0 );

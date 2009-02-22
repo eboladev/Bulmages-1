@@ -113,7 +113,7 @@ void BusquedaCCoste::setidc_coste ( QString idc_coste )
             i1 = i;
         } // end if
         addItem ( m_cursorcombo->valor ( "nombre" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } //end while
     setCurrentIndex ( i1 );
     _depura ( "END BusquedaCCoste::setidc_coste", 0, idc_coste );
@@ -181,8 +181,8 @@ void BusquedaCCosteDelegate::set ( const QString &cod )
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nombre" ) );
         if ( m_cursorcombo->valor ( "nombre" ) == cod )
-            index = m_cursorcombo->regactual() + 1;
-        m_cursorcombo->siguienteregistro();
+            index = m_cursorcombo->currentRecord() + 1;
+        m_cursorcombo->nextRecord();
     } // end while
     delete m_cursorcombo;
     setEditText ( cod );

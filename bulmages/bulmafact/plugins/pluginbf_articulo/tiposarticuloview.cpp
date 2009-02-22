@@ -127,7 +127,7 @@ void TipoArticuloList::pintar()
             it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
             it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
             //it->setOpen(true);
-            cursoraux1->siguienteregistro();
+            cursoraux1->nextRecord();
         } // end while
         delete cursoraux1;
         m_idtipo = "";
@@ -316,7 +316,7 @@ int TipoArticuloList::guardar()
                     mainCompany()->sanearCadena ( mui_codigotipo_articulo->text() ) + "', desctipo_articulo = '" +
                     mainCompany()->sanearCadena ( mui_desctipo_articulo->toPlainText() ) + "' WHERE idtipo_articulo = " + m_idtipo;
     mainCompany()->begin();
-    int error = mainCompany()->ejecuta ( query );
+    int error = mainCompany()->runQuery ( query );
     if ( error ) {
         mainCompany()->rollback();
         return -1;
@@ -354,7 +354,7 @@ void TipoArticuloList::on_mui_crear_clicked()
     try {
         QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX', 'Descripcion del tipo')";
         mainCompany()->begin();
-        int error = mainCompany()->ejecuta ( query );
+        int error = mainCompany()->runQuery ( query );
         if ( error ) throw - 1;
         cur = mainCompany()->loadQuery ( "SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo" );
         mainCompany()->commit();
@@ -413,7 +413,7 @@ int TipoArticuloList::borrar()
     } // end if
     try {
         QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
-        int error = mainCompany()->ejecuta ( query );
+        int error = mainCompany()->runQuery ( query );
         if ( error ) {
             throw - 1;
         } // end if

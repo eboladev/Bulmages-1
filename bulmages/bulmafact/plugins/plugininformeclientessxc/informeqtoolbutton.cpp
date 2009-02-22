@@ -192,7 +192,7 @@ void InformeQToolButton::click()
             fitxersortidatxt += "\n";
             y++;
         } // end if
-        cur->siguienteregistro();
+        cur->nextRecord();
         barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
@@ -444,7 +444,7 @@ void InformeProveedorQToolButton::click()
             fitxersortidatxt += "\n";
             y++;
         } // end if
-        cur->siguienteregistro();
+        cur->nextRecord();
         barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;

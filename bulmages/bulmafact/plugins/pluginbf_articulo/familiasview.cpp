@@ -132,7 +132,7 @@ void FamiliasView::pintar()
         it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux1->valor ( "codigocompletofamilia" ) );
         it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux1->valor ( "productofisicofamilia" ) );
         m_listFamilias->expandItem ( it );
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     delete cursoraux1;
     cursoraux2 = mainCompany()->loadQuery ( "SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia" );
@@ -148,7 +148,7 @@ void FamiliasView::pintar()
         it->setText ( COL_CODCOMPLETOFAMILIA, cursoraux2->valor ( "codigocompletofamilia" ) );
         it->setText ( COL_PRODUCTOFISICOFAMILIA, cursoraux2->valor ( "productofisicofamilia" ) );
         m_listFamilias->expandItem ( it );
-        cursoraux2->siguienteregistro();
+        cursoraux2->nextRecord();
     } // end while
     delete cursoraux2;
     m_idfamilia = "";
@@ -351,7 +351,7 @@ int FamiliasView::guardar()
                         mainCompany()->sanearCadena ( mui_nomFamilia->text() ) + "', descfamilia = '" +
                         mainCompany()->sanearCadena ( mui_descFamilia->toPlainText() ) + "' , codigofamilia = '" +
                         mainCompany()->sanearCadena ( mui_codFamilia->text() ) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
-        int error = mainCompany()->ejecuta ( query );
+        int error = mainCompany()->runQuery ( query );
         if ( error ) {
             throw - 1;
         } // end if
@@ -416,7 +416,7 @@ void FamiliasView::on_mui_crear_clicked()
 
         QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia', " + padrefamilia + ", 'XXX')";
 
-        int error = mainCompany()->ejecuta ( query );
+        int error = mainCompany()->runQuery ( query );
         if ( error ) {
             throw - 1;
         } // end if
@@ -448,7 +448,7 @@ void FamiliasView::on_mui_crearRaiz_clicked()
 
         QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia',  NULL , 'XXX')";
 
-        int error = mainCompany()->ejecuta ( query );
+        int error = mainCompany()->runQuery ( query );
         if ( error ) {
             throw - 1;
         } // end if
@@ -506,7 +506,7 @@ int FamiliasView::borrar()
     } // end if
     try {
         QString query = "DELETE FROM FAMILIA WHERE idfamilia = " + m_idfamilia;
-        int error = mainCompany()->ejecuta ( query );
+        int error = mainCompany()->runQuery ( query );
         if ( error ) {
             throw - 1;
         } // end if
@@ -575,7 +575,7 @@ void FamiliasView::on_mui_imprimir_clicked()
         fitxersortidatxt += "        <td>" + cur->valor ( "codigocompletofamilia" ) + "</td>";
         fitxersortidatxt += "        <td>" + cur->valor ( "nombrefamilia" ) + "</td>";
         fitxersortidatxt += "</tr>";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end if
     delete cur;
     fitxersortidatxt += "</blockTable>";

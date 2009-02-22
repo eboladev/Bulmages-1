@@ -165,7 +165,7 @@ void linprevcobro::borrar()
     _depura ( "linprevcobro::borrar", 0 );
     if ( mdb_idprevcobro != "" ) {
         conexionbase->begin();
-        conexionbase->ejecuta ( "DELETE FROM prevcobro WHERE idprevcobro = " + mdb_idprevcobro );
+        conexionbase->runQuery ( "DELETE FROM prevcobro WHERE idprevcobro = " + mdb_idprevcobro );
         conexionbase->commit();
         vacialinprevcobro();
     } // end if
@@ -203,7 +203,7 @@ void linprevcobro::guardalinprevcobro()
                            "'" + conexionbase->sanearCadena ( mdb_docprevcobro ) + "', " +
                            conexionbase->sanearCadena ( mdb_idctacliente ) + ")";
         conexionbase->begin();
-        conexionbase->ejecuta ( SQLQuery );
+        conexionbase->runQuery ( SQLQuery );
         BlDbRecordSet *cur = conexionbase->loadQuery ( "SELECT MAX(idprevcobro) AS m FROM prevcobro " );
         if ( !cur->eof() ) {
             mdb_idprevcobro = cur->valor ( "m" );
@@ -225,7 +225,7 @@ void linprevcobro::guardalinprevcobro()
         SQLQuery += " ,idctacliente = " + conexionbase->sanearCadena ( mdb_idctacliente ) + " ";
         SQLQuery += " WHERE idprevcobro = " + conexionbase->sanearCadena ( mdb_idprevcobro );
         conexionbase->begin();
-        conexionbase->ejecuta ( SQLQuery );
+        conexionbase->runQuery ( SQLQuery );
         conexionbase->commit();
     } // end if
     _depura ( "END linprevcobro::guardalinprevcobro", 0 );

@@ -57,7 +57,7 @@ bool importainteligente::startElement ( const QString&, const QString&, const QS
     if ( tag == "ainteligente" ) {
         SQLQuery.sprintf ( "INSERT INTO ainteligente (descripcion) VALUES ('Elemento importado')\n" );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idainteligente) AS idainteligente FROM ainteligente";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
@@ -69,7 +69,7 @@ bool importainteligente::startElement ( const QString&, const QString&, const QS
     if ( tag == "binteligente" ) {
         SQLQuery.sprintf ( "INSERT INTO binteligente (idainteligente) VALUES (%s)\n", mainCompany() ->sanearCadena ( tvalores["idainteligente"] ).toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         SQLQuery = "SELECT max(idbinteligente) AS idbinteligente FROM binteligente";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
@@ -103,57 +103,57 @@ bool importainteligente::endElement ( const QString&, const QString&, const QStr
     if ( qName == "ainteligente" ) {
         SQLQuery.sprintf ( "UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE ainteligente SET comentariosasiento = '%s' WHERE idainteligente = %s\n", tvalores["comentariosasiento"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } // end if
     if ( qName == "binteligente" ) {
         SQLQuery.sprintf ( "UPDATE binteligente SET fecha = '%s' WHERE idbinteligente = %s\n", tvalores["fecha"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET conceptocontable = '%s' WHERE idbinteligente=%s\n", tvalores["conceptocontable"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET codcuenta = '%s' WHERE idbinteligente = %s\n", tvalores["codcuenta"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET descripcion = '%s' WHERE idbinteligente = %s\n", tvalores["descripcionb"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET debe = '%s' WHERE idbinteligente = %s\n", tvalores["debe"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET haber = '%s' WHERE idbinteligente = %s\n", tvalores["haber"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET contrapartida = '%s' WHERE idbinteligente = %s\n", tvalores["contrapartida"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET comentario = '%s' WHERE idbinteligente = %s\n", tvalores["comentario"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET canal = '%s' WHERE idbinteligente = %s\n", tvalores["canal"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET idc_coste = '%s' WHERE idbinteligente = %s\n", tvalores["idc_coste"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
         SQLQuery.sprintf ( "UPDATE binteligente SET marcaconciliacion = '%s' WHERE idbinteligente = %s\n", tvalores["marcaconciliacion"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData() );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( SQLQuery );
+        mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } // end if
     tag = "";

@@ -136,7 +136,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     while ( !curasiento->eof() ) {
 
         query1 = "INSERT INTO asiento (descripcion, fecha, comentariosasiento) VALUES('" + curasiento->valor ( "descripcion" ) + "','" + fedinicial.toString ( "dd/MM/yyyy" ) + "','" + curasiento->valor ( "comentariosasiento" ) + "')";
-        mainCompany() ->ejecuta ( query1 );
+        mainCompany() ->runQuery ( query1 );
 
 
         query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
@@ -176,14 +176,14 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
                 textorden = "0";
             } // end if
             query2 = "INSERT INTO borrador (orden, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida) VALUES (" + textorden + "," + idasiento + "," + textiddiario + ",'" + textfecha + "','" + textconceptocontable + "'," + textidcuenta + ",'" + textdescripcion + "'," + textdebe + "," + texthaber + "," + textcontrapartida + ")";
-            mainCompany() ->ejecuta ( query2 );
-            curborrador->siguienteregistro();
+            mainCompany() ->runQuery ( query2 );
+            curborrador->nextRecord();
         } // end while
         delete curborrador;
         query2 = "SELECT cierraasiento(" + idasiento + ")";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
         delete cur;
-        curasiento->siguienteregistro();
+        curasiento->nextRecord();
     } // end while
     delete curasiento;
     mainCompany() ->commit();

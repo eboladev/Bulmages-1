@@ -179,7 +179,7 @@ try {
 
 
 		QString query7 = "INSERT INTO z (idalmacen) VALUES (3)";
-		db->ejecuta(query7);
+		db->runQuery(query7);
 
 		QString query8 = "SELECT max(idz) as idz from z";
 		BlDbRecordSet *curz = db->loadQuery(query8);
@@ -210,7 +210,7 @@ try {
 
 			if (!cur1->eof() && totaltraspasado < totaltraspasable) {
 				QString query4 = "INSERT INTO albaran (refalbaran, idcliente, idalmacen, idz, idforma_pago) VALUES ('"+ cur3->valor("refalbaran")+"', "+cur3->valor("idcliente")+", "+cur3->valor("idalmacen")+", "+curz->valor("idz")+", "+cur3->valor("idforma_pago")+")";
-				db->ejecuta(query4);
+				db->runQuery(query4);
 				delete cur3;
 			} // end if
 
@@ -223,7 +223,7 @@ try {
 				stream << "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+",'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+");" << endl;
 				
 				QString query6 = "INSERT INTO lalbaran (cantlalbaran, pvpivainclalbaran, ivalalbaran, desclalbaran, idarticulo, idalbaran ) VALUES ("+cur1->valor("cantlalbaran")+","+cur1->valor("pvpivainclalbaran")+", 0,'"+cur1->valor("desclalbaran")+"',"+cur1->valor("idarticulo")+", "+cur4->valor("idalbaran")+")";
-				db->ejecuta(query6);
+				db->runQuery(query6);
 	
 				totaltraspasado = totaltraspasado + BlFixed(cur1->valor("cantlalbaran")) * BlFixed(cur1->valor("pvpivainclalbaran"));
 
@@ -232,9 +232,9 @@ try {
 	
 				stream2 << "DELETE FROM lalbaran WHERE numlalbaran="+cur1->valor("numlalbaran") << endl;
 				QString query9 = "DELETE FROM lalbaran WHERE numlalbaran = " +cur1->valor("numlalbaran");
-				mainCompany()->ejecuta(query9);
+				mainCompany()->runQuery(query9);
 
-				cur1->siguienteregistro();
+				cur1->nextRecord();
 			} // end while
 			delete cur1;
 	
@@ -248,7 +248,7 @@ try {
 	file2.close();
 	file3.close();
 	QString query15 = "UPDATE z set idz=idz";
-	db->ejecuta(query15);
+	db->runQuery(query15);
 
 	db->commit();
 	delete db;

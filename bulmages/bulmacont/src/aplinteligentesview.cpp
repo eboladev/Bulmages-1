@@ -608,7 +608,7 @@ void aplinteligentesview::creaasiento()
             conceptocontable = aplicavariable ( item.firstChildElement ( "conceptocontable" ).text() );
             descripcion = aplicavariable ( item.firstChildElement ( "descripcion" ).text() );
             query.sprintf ( "INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii().constData(), debe.toAscii().constData(), haber.toAscii().constData(), fecha.toAscii().constData(), conceptocontable.toAscii().constData(), descripcion.toAscii().constData(), orden++ );
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
         } // end for
     } catch ( ... ) {

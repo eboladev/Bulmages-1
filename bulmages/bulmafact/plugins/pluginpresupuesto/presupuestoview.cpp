@@ -445,7 +445,7 @@ QString PresupuestoView::detalleArticulos()
         } // end if
         texto += "</tr>\n";
         texto += "</blockTable>";
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END PresupuestoView::detalleArticulos", 0 );

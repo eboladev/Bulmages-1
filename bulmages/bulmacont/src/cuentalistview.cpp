@@ -168,7 +168,7 @@ void CuentaListView::borrar()
                 _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
                 QMessageBox::Yes, QMessageBox::No ) ) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = BlMainCompany() ->ejecuta ( SQLQuery );
+            int error = BlMainCompany() ->runQuery ( SQLQuery );
             if ( error )
                 throw - 1;
             presentar();

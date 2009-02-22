@@ -126,7 +126,7 @@ void libromayorprint::accept()
                 saldo = saldoinicial;
                 debefinal = debeinicial;
                 haberfinal = haberinicial;
-                for ( ; !cursoraux1->eof(); cursoraux1->siguienteregistro() ) {
+                for ( ; !cursoraux1->eof(); cursoraux1->nextRecord() ) {
                     idasiento = atoi ( cursoraux1->valor ( 2 ).toAscii() );
                     textasiento = ( char * ) cursoraux1->valor ( 5 ).toAscii().constData();
                     debe = BlFixed ( cursoraux1->valor ( 8 ).toAscii().constData() );
@@ -153,7 +153,7 @@ void libromayorprint::accept()
             } // end if
             cursoraux1->cerrar();
             delete cursoraux1;
-            cursoraux->siguienteregistro();
+            cursoraux->nextRecord();
         } // end while
         fclose ( mifile );
         mainCompany() ->commit();

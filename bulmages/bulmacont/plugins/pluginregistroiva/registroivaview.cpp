@@ -140,7 +140,7 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
             i1 = i;
         } // end if
         m_fPago->addItem ( m_cursorFPago->valor ( "nomfpago" ) );
-        m_cursorFPago->siguienteregistro();
+        m_cursorFPago->nextRecord();
     } // end while
     if ( i1 != 0 ) {
         m_fPago->setCurrentIndex ( i1 - 1 );

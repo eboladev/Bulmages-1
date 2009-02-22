@@ -213,7 +213,7 @@ void InventariosView::on_mui_imprimir_clicked()
         query += " LEFT JOIN ( SELECT stock AS stock" + idalmacen + ", idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
 
         txt += "\t<td>" + almacenes->valor ( "nomalmacen" ) + "</td>\n";
-        almacenes->siguienteregistro();
+        almacenes->nextRecord();
     } // end while
     txt += "</tr>\n";
     query += " WHERE articulo.stockarticulo <> 0";
@@ -223,12 +223,12 @@ void InventariosView::on_mui_imprimir_clicked()
     while ( !cstock->eof() ) {
         txt += "<tr>\n";
         txt += "\t<td>" + cstock->valor ( "nomarticulo" ) + "</td>\n";
-        almacenes->primerregistro();
+        almacenes->firstRecord();
         while ( !almacenes->eof() ) {
             txt += "\t<td>" + cstock->valor ( "stock" + almacenes->valor ( "idalmacen" ) ) + "</td>\n";
-            almacenes->siguienteregistro();
+            almacenes->nextRecord();
         } // end while
-        cstock->siguienteregistro();
+        cstock->nextRecord();
         txt += "</tr>\n";
     } // end while
     delete cstock;

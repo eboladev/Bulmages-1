@@ -123,7 +123,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpresupuesto" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -135,7 +135,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidocliente" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -147,7 +147,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaran" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -160,7 +160,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -173,7 +173,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idcobro" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -186,7 +186,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidoproveedor" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -199,7 +199,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaranp" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */
@@ -212,7 +212,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
         mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfacturap" ) );
         bud->show();
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 */

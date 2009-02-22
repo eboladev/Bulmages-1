@@ -197,7 +197,7 @@ void ProyectoView::on_mui_geninforme_clicked()
                 fitxersortidatxt += "doc.set_cell_value( 2 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "tdebe" ) + "')\n\n";
                 fitxersortidatxt += "doc.set_cell_value( 3 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "thaber" ) + "')\n\n";
                 fitxersortidatxt += "doc.set_cell_value( 4 ," + QString::number ( row ) + ", 'float' , '" + curing->valor ( "tdebe" ) + "-" + curing->valor ( "thaber" ) + "')\n\n";
-                curing->siguienteregistro();
+                curing->nextRecord();
             } // end while
             delete curing;
 
@@ -205,7 +205,7 @@ void ProyectoView::on_mui_geninforme_clicked()
             BlDbRecordSet *curling = mainCompany()->loadQuery ( queryling );
             while ( !curling->eof() ) {
                 fitxersortidatxt += "doc.set_cell_value( 5 ," + QString::number ( row ) + ", 'float' , '" + curling->valor ( "cantlingpresupuestoc" ) + "*" + curling->valor ( "precioundlingpresupuestoc" ) + "')\n\n";
-                curling->siguienteregistro();
+                curling->nextRecord();
             } // end while
             delete curling;
 
@@ -213,15 +213,15 @@ void ProyectoView::on_mui_geninforme_clicked()
             BlDbRecordSet *curlgas = mainCompany()->loadQuery ( querylgas );
             while ( !curlgas->eof() ) {
                 fitxersortidatxt += "doc.set_cell_value( 6 ," + QString::number ( row ) + ", 'float' , '" + curlgas->valor ( "cantlgaspresupuestoc" ) + "*" + curlgas->valor ( "precioundlgaspresupuestoc" ) + "')\n\n";
-                curlgas->siguienteregistro();
+                curlgas->nextRecord();
             } // end while
             delete curlgas;
 
             row++;
-            curcta->siguienteregistro();
+            curcta->nextRecord();
         } // end while
         delete curcta;
-        curej->siguienteregistro();
+        curej->nextRecord();
 
         row += 10;
     } // end while

@@ -79,7 +79,7 @@ int BlForm_cargar ( BlForm *ficha )
     } else {
 
         query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('" + ficha->campoId() + "','" + ficha->DBvalue ( ficha->campoId() ) + "','" + ficha->mainCompany()->currentUser() + "')";
-        ficha->mainCompany()->ejecuta ( query );
+        ficha->mainCompany()->runQuery ( query );
 
     } // end if
 
@@ -103,7 +103,7 @@ int BlForm_DesFicha ( BlForm *ficha )
         BlDbRecordSet *cur1 = ficha->mainCompany()->loadQuery ( query );
         if ( !cur1->eof() ) {
             query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "'";
-            ficha->mainCompany()->ejecuta ( query );
+            ficha->mainCompany()->runQuery ( query );
         } // end if
         delete cur1;
     } // end if

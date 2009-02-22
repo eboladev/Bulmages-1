@@ -190,7 +190,7 @@ void regivaprintview::presentar ( const char *tipus )
                     fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor ( "idasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->valor ( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->valor ( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->valor ( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->valor ( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << numberstr.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->valor ( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->valor ( "cif" ).toAscii().constData() << "</td></tr> \n";
                 } // end if
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
-                cursorapt->siguienteregistro();
+                cursorapt->nextRecord();
             } // end while
             /// Vaciamos el cursor de la base de datos.
             delete cursorapt;
@@ -220,7 +220,7 @@ void regivaprintview::presentar ( const char *tipus )
 
                 tivar = tivar + baseiva;
                 tbaseimpr = tbaseimpr + baseimp;
-                cur->siguienteregistro();
+                cur->nextRecord();
                 j++;
             } // end while
             delete cur;
@@ -274,7 +274,7 @@ void regivaprintview::presentar ( const char *tipus )
                     fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor ( "ordenasiento" ).toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->valor ( "contrapartida" ).toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->valor ( "descripcion" ).toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->valor ( "baseimp" ).toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->valor ( "iva" ).toAscii().constData() << "</td><td class=quotaiva>" << total.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->valor ( "factura" ).toAscii().constData() << "</td><td class=cifiva>" << cursorapt->valor ( "cif" ).toAscii().constData() << "</td></tr> \n";
                 }
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
-                cursorapt->siguienteregistro();
+                cursorapt->nextRecord();
             } // end while
             /// Vaciamos el cursor de la base de datos.
             delete cursorapt;
@@ -307,7 +307,7 @@ void regivaprintview::presentar ( const char *tipus )
 
                 tivas = tivas + ivacalculado;
                 tbaseimps = tbaseimps + baseiva;
-                cur->siguienteregistro();
+                cur->nextRecord();
                 j++;
             } // end while
             delete cur;

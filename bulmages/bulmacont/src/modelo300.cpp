@@ -70,7 +70,7 @@ Mod300ps::Mod300ps ( QWidget *parent ) : QDialog ( parent )
         numerccc[i] = cur->valor ( "bancoent_cuenta" );
 //        cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
         combocuentas->addItem ( nombresccc[i] );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end for
     delete cur;
     delete metabase;

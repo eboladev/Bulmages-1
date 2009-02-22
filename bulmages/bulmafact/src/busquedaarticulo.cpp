@@ -204,7 +204,7 @@ void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
 				addItem ( m_cursorcombo->valor ( "codigocompletoarticulo" ) 
                                           + ".-" + m_cursorcombo->valor ( "nomarticulo" )
                                 , QVariant(m_cursorcombo->valor ( "codigocompletoarticulo" ) ));
-				m_cursorcombo->siguienteregistro();
+				m_cursorcombo->nextRecord();
 			} // end while
 			delete m_cursorcombo;
 

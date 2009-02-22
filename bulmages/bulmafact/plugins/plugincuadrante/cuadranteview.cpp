@@ -111,12 +111,12 @@ void CuadranteView::inicializaTrabajadores()
                     itt->setText ( 0, curtrab->valor ( "nomtrabajador" ) + " " + curtrab->valor ( "apellidostrabajador" ) );
                     itt->setText ( 1, curtrab->valor ( "idtrabajador" ) );
                     itt->setTextColor ( 0, QColor ( "#000000" ) );
-                    curtrab->siguienteregistro();
+                    curtrab->nextRecord();
                 } // end while
                 delete curtrab;
             } // end if
 
-            cur->siguienteregistro();
+            cur->nextRecord();
         } // end if
         delete cur;
     } // end if
@@ -178,7 +178,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 
                 date = date.addDays ( 1 );
             } // end for
-            cur->siguienteregistro();
+            cur->nextRecord();
             row++;
             barra.setValue ( row );
         } // end while
@@ -253,13 +253,13 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( "UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
         mainCompany() ->commit();
     } // end if
 
     if ( opcion == fiesta ) {
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( "UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
+        mainCompany() ->runQuery ( "UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'" );
         mainCompany() ->commit();
     } // end if
 
@@ -289,9 +289,9 @@ void CuadranteView::on_mui_limpiar_clicked()
     QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 );
     QDate datefin = date.addDays ( 6 );
     QString query = "DELETE FROM horario WHERE idcuadrante IN (SELECT idcuadrante FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "')";
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query = "DELETE FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "'";
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     on_mui_actualizar_clicked();
     _depura ( "CuadranteView::on_mui_limpiar_clicked", 0 );
 }
@@ -320,7 +320,7 @@ void CuadranteView::on_mui_duplicar_clicked()
             query += ", cierre1cuadrante = " + ( ( cur->valor ( "cierre1cuadrante" ) == "" ) ? "NULL" : "'" + cur->valor ( "cierre1cuadrante" ) + "'" );
             query += ", fiestacuadrante = '" + cur->valor ( "fiestacuadrante" ) + "'";
             query += " WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" );
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
 
             BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString ( "dd/MM/yyyy" ) + "' AND idalmacen = " + cur->valor ( "idalmacen" ) );
             QString idcuadrante = cur1->valor ( "idcuadrante" );
@@ -334,12 +334,12 @@ void CuadranteView::on_mui_duplicar_clicked()
                 query += ",'" + cur2->valor ( "horainhorario" ) + "'";
                 query += ",'" + cur2->valor ( "horafinhorario" ) + "'";
                 query += ")";
-                mainCompany() ->ejecuta ( query );
-                cur2->siguienteregistro();
+                mainCompany() ->runQuery ( query );
+                cur2->nextRecord();
             } // end while
             delete cur2;
 
-            cur->siguienteregistro();
+            cur->nextRecord();
         } // end while
         delete cur;
 
@@ -422,7 +422,7 @@ void CuadranteView::on_mui_imprimir_clicked()
             CuadranteQTextDocument *newItem = ( CuadranteQTextDocument * ) mui_cuadrante->cellWidget ( row, column );
             fitxersortidatxt += newItem->impresion();
         } // end for
-        cur->siguienteregistro();
+        cur->nextRecord();
         row++;
         fitxersortidatxt += "</tr>\n";
     } // end while

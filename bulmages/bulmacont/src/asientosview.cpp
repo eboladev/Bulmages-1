@@ -68,7 +68,7 @@ void AsientosView::rellenaListaEjercicio()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         mui_ejercicio->addItem ( cur->valor ( "ano" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
     _depura ( "END AsientosView::rellenaListaEjercicio", 0 );

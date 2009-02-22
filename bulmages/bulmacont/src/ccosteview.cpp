@@ -122,7 +122,7 @@ void ccosteview::repintar()
         it->setText ( COL_DESC_COSTE, cursoraux1->valor ( "descripcion" ) );
         it->setText ( COL_NOM_COSTE, cursoraux1->valor ( "nombre" ) );
         mui_list->expandItem ( it );
-        cursoraux1->siguienteregistro();
+        cursoraux1->nextRecord();
     } // end while
     delete cursoraux1;
 
@@ -141,7 +141,7 @@ void ccosteview::repintar()
         } else {
             _depura ( _( "Error en la carga de centros de coste" ), 2 );
         } // end if
-        cursoraux2->siguienteregistro();
+        cursoraux2->nextRecord();
     } // end while
     delete cursoraux2;
 
@@ -238,11 +238,11 @@ void ccosteview::on_mui_crear_clicked()
         idc_coste = atoi ( it->text ( COL_IDC_COSTE ).toAscii() );
         query.sprintf ( "INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } else {
         query.sprintf ( "INSERT INTO c_coste (nombre, descripcion) VALUES ('Nuevo centro de coste', 'Escriba su descripcion')" );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
     } // end if
     query.sprintf ( "SELECT MAX(idc_coste) AS id_coste FROM c_coste" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -269,7 +269,7 @@ void ccosteview::on_mui_borrar_clicked()
             QString query;
             query.sprintf ( "DELETE FROM c_coste WHERE idc_coste = %d", idc_coste );
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
             idc_coste = 0;
             repintar();

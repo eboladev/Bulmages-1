@@ -914,7 +914,7 @@ int Ticket::cargar ( QString id )
         while ( !cur->eof() ) {
             BlDbRecord *l = agregarLinea();
             l->DBload ( cur );
-            cur->siguienteregistro();
+            cur->nextRecord();
         } // end while
         delete cur;
     } catch ( ... ) {

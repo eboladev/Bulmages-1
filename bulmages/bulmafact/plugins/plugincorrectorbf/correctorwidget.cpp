@@ -81,7 +81,7 @@ void correctorwidget::on_mui_corregir_clicked()
     while ( ! cur->eof() ) {
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La factura num. <B>" + cur->valor ( "numfactura" ) + "</B> No esta avalada por ningun albaran, esto puede ser causa de descontrol en el stock.";
         agregarError ( cadena, "factura", "idfactura=" + cur->valor ( "idfactura" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -90,7 +90,7 @@ void correctorwidget::on_mui_corregir_clicked()
     while ( ! cur->eof() ) {
 	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> no tiene CIF.";
 	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -99,7 +99,7 @@ void correctorwidget::on_mui_corregir_clicked()
     while ( ! cur->eof() ) {
 	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> no tiene CIF.";
 	  agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -112,7 +112,7 @@ void correctorwidget::on_mui_corregir_clicked()
 	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ,"+ cur->valor("cifcliente")+" <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString(digito);
 	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
 	} // end if
-	cur->siguienteregistro();
+	cur->nextRecord();
     } // end while
     delete cur;
 
@@ -124,7 +124,7 @@ void correctorwidget::on_mui_corregir_clicked()
 	    cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + ","+cur->valor("cifproveedor")+ "</B> tiene CIF invalido. Digito de Control: " + QString(digito);
 	    agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
 	} // end if
-	cur->siguienteregistro();
+	cur->nextRecord();
     } // end while
     delete cur;
 

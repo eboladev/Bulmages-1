@@ -97,9 +97,9 @@ void AmortizacionesView::borrar()
         if ( codigo != "" ) {
             QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
             mainCompany() ->begin();
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
-            mainCompany() ->ejecuta ( query );
+            mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
             presentar();
         } // end if

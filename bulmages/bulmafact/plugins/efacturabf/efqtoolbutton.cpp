@@ -356,7 +356,7 @@ void EFQToolButton::exporta_factura_ubl()
     BlDbRecordSet *lfacturas = mainCompany() ->loadQuery ( query );
 
     // Por si las moscas...
-    lfacturas->primerregistro();
+    lfacturas->firstRecord();
 
     QString LineasFactura = "\n";
     int numerolinea = 1;
@@ -370,7 +370,7 @@ void EFQToolButton::exporta_factura_ubl()
 
         totalFactura = totalFactura + ( BlFixed ( lfacturas->valor ( "cantlfactura" ) ) * BlFixed ( lfacturas->valor ( "pvplfactura" ) ) );
 
-        lfacturas->siguienteregistro();
+        lfacturas->nextRecord();
         numerolinea++;
     }
 
@@ -382,11 +382,11 @@ void EFQToolButton::exporta_factura_ubl()
 
     QString DescuentosFactura = "\n";
 
-    descuentos_factura->primerregistro();
+    descuentos_factura->firstRecord();
 
     while ( !descuentos_factura->eof() ) {
         escribe_descuento_factura ( DescuentosFactura, descuentos_factura, totalFactura );
-        descuentos_factura->siguienteregistro();
+        descuentos_factura->nextRecord();
     }
 
     FacturaXml.replace ( "[descuentos]", DescuentosFactura );

@@ -90,7 +90,7 @@ int ListIva::cargaListIva ( QString idregistroiva )
         /// Creamos un elemento del tipo linpresupuesto y lo agregamos a la lista.
         Iva * lin = new Iva ( companyact, cur );
         m_lista.append ( lin );
-        cur->siguienteregistro();
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -198,7 +198,7 @@ void ListIva::borrar()
     _depura ( "ListIva::borrar", 0 );
     if ( mdb_idregistroiva != "" )  {
         companyact->begin();
-        int error = companyact->ejecuta ( "DELETE FROM iva WHERE idregistroiva = " + mdb_idregistroiva );
+        int error = companyact->runQuery ( "DELETE FROM iva WHERE idregistroiva = " + mdb_idregistroiva );
         if ( error ) {
             companyact->rollback();
             return;

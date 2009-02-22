@@ -382,7 +382,7 @@ void BlCompanyDialog::guardaArchivo()
     /// Para cada base de datos nos intentamos conectanos y mirar de qu&eacute; tipo es.
     while ( !curs->eof() ) {
         trataEmpresa ( curs->valor ( "datname" ), &file );
-        curs->siguienteregistro();
+        curs->nextRecord();
     } // end while
     delete curs;
     delete db;

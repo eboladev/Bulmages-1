@@ -90,7 +90,7 @@ void tipoivaview::pintar ( QString idtipoiva )
         mui_comboTipoIVA->insertItem ( i, m_curtipoiva->valor ( "nombretipoiva" ) );
         if ( idtipoiva == m_curtipoiva->valor ( "idtipoiva" ) )
             posicion = i;
-        m_curtipoiva->siguienteregistro();
+        m_curtipoiva->nextRecord();
         i++;
     } // end while
     _depura ( "END tipoivaview::pintar", 0 );
@@ -168,7 +168,7 @@ void tipoivaview::on_mui_crear_clicked()
 
         QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('" + nombreTipoIVA + "', 0, id_cuenta('" + mui_idcuenta->text() + "'))";
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );
         mainCompany() ->commit();
         pintar ( cur->valor ( "idtipoiva" ) );

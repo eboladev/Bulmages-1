@@ -506,7 +506,7 @@ void BusquedaCuentaDelegate::s_editTextChanged ( const QString &cod )
     /// coincidan con el texto escrito para poder elegirlo.
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "codigo" ) + ".-" + m_cursorcombo->valor ( "descripcion" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } // end while
     delete m_cursorcombo;
 

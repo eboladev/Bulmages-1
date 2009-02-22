@@ -206,7 +206,7 @@ void DiarioPrintView::presentar ( const char *tipus )
             cursoraux = mainCompany() ->loadQuery ( query, "elquerydb" );
             mainCompany() ->commit();
 
-            for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
+            for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
                 fechaasiento = cursoraux->valor ( "fechaasiento" ).toAscii().constData();
                 idasiento = atoi ( cursoraux->valor ( "ordenasiento" ).toAscii() );
                 fecha = cursoraux->valor ( "fecha" ).toAscii().constData();
@@ -292,7 +292,7 @@ void DiarioPrintView::presentar ( const char *tipus )
             mainCompany() ->begin();
             cursoraux = mainCompany() ->cargaasientosfecha ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
 
-            for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
+            for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
                 int idasiento = atoi ( cursoraux->valor ( "idasiento" ).toAscii() );
                 if ( txtapren ) {
                     /// Presentaci&oacute;n txt formato aprendizaje.
@@ -319,7 +319,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                         /// Presentaci&oacute;n html formato aprendizaje.
                         fitxersortidahtml << " <tr><td class=deurediariapren> " << atof ( cursasiento->valor ( "debe" ).toAscii() ) << " </td><td class=codidiariapren> ( " << cursasiento->valor ( "codigo" ).toAscii().constData() << " ) </td><td class=nomcomptediariapren> " << cursasiento->valor ( "nomcuenta" ).toAscii().constData() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
                     } // end if
-                    cursasiento->siguienteregistro();
+                    cursasiento->nextRecord();
                 } // end while
 
                 delete cursasiento;
@@ -338,7 +338,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                         /// Presentaci&oacute;n html formato aprendizaje.
                         fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->valor ( "nomcuenta" ).toAscii().constData() << " </td><td class=codidiariapren> ( " << cursasiento->valor ( "codigo" ).toAscii().constData() << " ) </td><td class=haverdiariapren> " <<  atof ( cursasiento->valor ( "haber" ).toAscii() ) << " </td></tr>\n";
                     } // end if
-                    cursasiento->siguienteregistro();
+                    cursasiento->nextRecord();
                 } // end while
                 delete cursasiento;
             } // end for

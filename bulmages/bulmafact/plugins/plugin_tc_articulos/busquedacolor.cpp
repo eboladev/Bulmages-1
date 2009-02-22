@@ -76,7 +76,7 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
         if ( m_cursorcombo->valor ( "idtc_color" ) == idtc_color )
             i1 = i;
         addItem ( m_cursorcombo->valor ( "nomtc_color" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
     } //end while
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
@@ -210,9 +210,9 @@ void BusquedaColorDelegate::set ( const QString &cod )
 //    addItem("--");
     while ( !m_cursorcombo->eof() ) {
         addItem ( m_cursorcombo->valor ( "nomtc_color" ) );
-        m_cursorcombo->siguienteregistro();
+        m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "nomtc_color" ) == cod )
-            index = m_cursorcombo->regactual();
+            index = m_cursorcombo->currentRecord();
     }// end while
     setEditText ( cod );
     setCurrentIndex ( index );

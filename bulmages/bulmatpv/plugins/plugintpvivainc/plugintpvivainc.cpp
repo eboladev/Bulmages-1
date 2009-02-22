@@ -289,20 +289,20 @@ int BtCompany_z(BtCompany * emp)
 
     emp->begin();
     QString query = "INSERT INTO z (idalmacen) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";
-    emp->ejecuta ( query );
+    emp->runQuery ( query );
     query = "SELECT max(idz) AS id FROM z";
     BlDbRecordSet *cur = emp->loadQuery ( query );
     QString idz = cur->valor ( "id" );
     delete cur;
     query = "UPDATE albaran set idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE";
-    emp->ejecuta ( query );
+    emp->runQuery ( query );
     query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz;
     cur = emp->loadQuery ( query );
     QString numtickets = cur->valor ( "numtickets" );
     QString total = cur->valor ( "total" );
     if ( total == "" ) total = "0";
     query = "UPDATE z SET totalz = " + total + ", numtickets = " + numtickets + " WHERE idz =" + idz;
-    emp->ejecuta ( query );
+    emp->runQuery ( query );
     emp->commit();
     delete cur;
 
@@ -458,7 +458,7 @@ int BtCompany_z(BtCompany * emp)
 
         file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
 
-	cur-> siguienteregistro();
+	cur-> nextRecord();
     } // end if
     delete cur;
 // Fin informes por familias

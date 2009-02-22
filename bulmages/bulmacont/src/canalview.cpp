@@ -165,7 +165,7 @@ void canalview::on_mui_guardar_clicked()
     << "', descripcion = '"
     << mainCompany() ->sanearCadena ( desc ).toAscii().constData()
     << "' WHERE idcanal = '" << idcanal << "'";
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     dialogChanges_cargaInicial();
     pintar();
     _depura ( "END canalview::on_mui_guardar_clicked", 0 );
@@ -189,7 +189,7 @@ void canalview::on_mui_crear_clicked()
     QString query = "";
     QTextStream ( &query ) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << _( "Nuevo canal" ) << "', '" << _( "Escriba su descripcion" ) << "')";
     mainCompany() ->begin();
-    mainCompany() ->ejecuta ( query );
+    mainCompany() ->runQuery ( query );
     query = "";
     QTextStream ( &query ) << "SELECT MAX(idcanal) AS id FROM canal";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "queryy" );
@@ -215,7 +215,7 @@ void canalview::on_mui_borrar_clicked()
         QString query;
         query.sprintf ( "DELETE FROM canal WHERE idcanal = %d", idcanal );
         mainCompany() ->begin();
-        mainCompany() ->ejecuta ( query );
+        mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         idcanal = 0;
         pintar();

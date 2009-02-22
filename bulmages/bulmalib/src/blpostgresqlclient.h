@@ -141,15 +141,15 @@ public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
     QString valor ( const QString &campo, int registro = -1, bool localeformat = FALSE );
     /// Avanza el puntero de recorrido en forma de cola una posici&oacute;n.
-    int siguienteregistro();
+    int nextRecord();
     /// Retrocede el puntero de recorrido en forma de cola una posici&oacute;n.
-    int registroanterior();
+    int previousRecord();
     /// Establece la posici&oacute;n del puntero de recorrido de cola al primer registro.
-    int primerregistro();
+    int firstRecord();
     /// Establece la posici&oacute;n del puntero de recorrido de cola en el &uacute;ltimo registro.
-    int ultimoregistro();
+    int lastRecord();
     /// Devuelve la posici&oacute;n del registro actual.
-    int regactual();
+    int currentRecord();
     /// Libera la memoria que se ha ocupado en las consultas.
     void cerrar();
     /// Devuelve el nombre del campo de una columna determinada de la consulta.
@@ -163,9 +163,9 @@ public:
     /// Indica que se ha alcanzado el &uacute;ltimo registro de la consulta.
     bool bof();
     /// Informa sobre si el registro actual es el &uacute;ltimo registro de la consulta.
-    bool esultimoregistro();
+    bool isLastRecord();
     /// Informa sobre si el registro actual es el primer registro de la consulta.
-    bool esprimerregistro();
+    bool isFirstRecord();
 };
 
 
@@ -206,7 +206,7 @@ public:
                        int limit =0, int offset = 0 );
 
     /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
-    int ejecuta ( QString );
+    int runQuery ( QString );
     int nuevoborrador ( int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal );
     int modificaborrador ( int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal );
     BlDbRecordSet *cargacuenta ( int idcuenta, QString ccuenta = "" );
