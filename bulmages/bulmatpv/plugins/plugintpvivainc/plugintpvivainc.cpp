@@ -236,7 +236,9 @@ int Ticket_imprimir(Ticket *tick)
 
     base::Iterator it;
     for ( it = totales.begin(); it != totales.end(); ++it ) {
-		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS iva";
+		QString tipoIva = it.key();
+		
+		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS iva";
 		BlDbRecordSet *cur = tick->mainCompany()->loadQuery(sqlquery);
 //        	BlFixed baseimp = Fixed(cur->valor("base"));;
 //		BlFixed totiva = it.value() - baseimp;
