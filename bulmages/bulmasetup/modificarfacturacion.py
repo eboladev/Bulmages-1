@@ -2,6 +2,7 @@
 
 import sys
 import os
+from config import *
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from modificarfacturacionbase import *
@@ -95,7 +96,6 @@ class ModificarFacturacion( Ui_ModificarFacturacionBase, Facturacion):
 
 
 def main(args):
-  from config import *
   app=QtGui.QApplication(args)
   win=ModificarFacturacion('bulmafact')
   win.exec_()
