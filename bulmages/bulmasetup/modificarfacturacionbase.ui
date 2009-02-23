@@ -33,7 +33,7 @@
     <rect>
      <x>4</x>
      <y>4</y>
-     <width>73</width>
+     <width>119</width>
      <height>24</height>
     </rect>
    </property>
@@ -47,19 +47,29 @@
   <widget class="QLineEdit" name="mui_nomempresa" >
    <property name="geometry" >
     <rect>
-     <x>81</x>
+     <x>127</x>
      <y>4</y>
-     <width>385</width>
+     <width>390</width>
      <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="mui_descripcion" >
+   <property name="geometry" >
+    <rect>
+     <x>521</x>
+     <y>4</y>
+     <width>275</width>
+     <height>573</height>
     </rect>
    </property>
   </widget>
   <widget class="QLabel" name="label_2" >
    <property name="geometry" >
     <rect>
-     <x>470</x>
-     <y>4</y>
-     <width>98</width>
+     <x>4</x>
+     <y>32</y>
+     <width>119</width>
      <height>24</height>
     </rect>
    </property>
@@ -73,9 +83,9 @@
   <widget class="QLineEdit" name="mui_nomdb" >
    <property name="geometry" >
     <rect>
-     <x>572</x>
-     <y>4</y>
-     <width>224</width>
+     <x>127</x>
+     <y>32</y>
+     <width>178</width>
      <height>24</height>
     </rect>
    </property>
@@ -87,8 +97,8 @@
    <property name="geometry" >
     <rect>
      <x>4</x>
-     <y>32</y>
-     <width>138</width>
+     <y>60</y>
+     <width>119</width>
      <height>24</height>
     </rect>
    </property>
@@ -99,9 +109,9 @@
   <widget class="QLineEdit" name="mui_databaserevision" >
    <property name="geometry" >
     <rect>
-     <x>242</x>
-     <y>32</y>
-     <width>224</width>
+     <x>127</x>
+     <y>60</y>
+     <width>178</width>
      <height>24</height>
     </rect>
    </property>
@@ -112,92 +122,118 @@
   <widget class="QCheckBox" name="mui_soporteTPV" >
    <property name="geometry" >
     <rect>
-     <x>470</x>
-     <y>32</y>
-     <width>326</width>
+     <x>309</x>
+     <y>60</y>
+     <width>208</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text" >
-    <string>Activar Soporte para TPV</string>
+    <string>Instalar Soporte para TPV en esta empresa</string>
    </property>
    <property name="checked" >
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4" >
+  <widget class="QGroupBox" name="groupBox" >
    <property name="geometry" >
     <rect>
      <x>4</x>
-     <y>60</y>
-     <width>462</width>
-     <height>16</height>
+     <y>88</y>
+     <width>513</width>
+     <height>58</height>
     </rect>
    </property>
-   <property name="text" >
-    <string>Plugins Instalados</string>
+   <property name="title" >
+    <string>Opciones de Filtrado de Plugins</string>
    </property>
-  </widget>
-  <widget class="QCheckBox" name="mui_vertodos" >
-   <property name="geometry" >
-    <rect>
-     <x>4</x>
-     <y>78</y>
-     <width>462</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Mostrar todos los plugins o solo los instalados</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="mui_categoria" >
-   <property name="geometry" >
-    <rect>
-     <x>81</x>
-     <y>105</y>
-     <width>385</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text" >
-     <string>Todas las Categorias</string>
+   <layout class="QHBoxLayout" name="horizontalLayout_2" >
+    <property name="spacing" >
+     <number>0</number>
     </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Facturacion Generica</string>
+    <property name="margin" >
+     <number>0</number>
     </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Asociaciones de Padres de Alumnos</string>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Fabricacion y Trazabilidad</string>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>IVA. Incluido</string>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Utilidades Genericas</string>
-    </property>
-   </item>
+    <item>
+     <widget class="QCheckBox" name="mui_vertodos" >
+      <property name="text" >
+       <string>Mostrar todos los plugins o solo los instalados</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer" >
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>43</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" >
+      <property name="spacing" >
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_5" >
+        <property name="text" >
+         <string>Categoria</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_categoria</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="mui_categoria" >
+        <item>
+         <property name="text" >
+          <string>Todas las Categorias</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Facturacion Generica</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Asociaciones de Padres de Alumnos</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Fabricacion y Trazabilidad</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>IVA. Incluido</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Utilidades Genericas</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QTabWidget" name="tabWidget" >
    <property name="geometry" >
     <rect>
      <x>4</x>
-     <y>133</y>
-     <width>792</width>
-     <height>444</height>
+     <y>150</y>
+     <width>513</width>
+     <height>427</height>
     </rect>
    </property>
    <property name="currentIndex" >
@@ -215,6 +251,15 @@
       <widget class="QTableWidget" name="mui_plugins" >
        <property name="alternatingRowColors" >
         <bool>true</bool>
+       </property>
+       <property name="selectionMode" >
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="selectionBehavior" >
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="gridStyle" >
+        <enum>Qt::NoPen</enum>
        </property>
        <column>
         <property name="text" >
@@ -247,6 +292,15 @@
       <widget class="QTableWidget" name="mui_plugins1" >
        <property name="alternatingRowColors" >
         <bool>true</bool>
+       </property>
+       <property name="selectionMode" >
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="selectionBehavior" >
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="gridStyle" >
+        <enum>Qt::NoPen</enum>
        </property>
        <column>
         <property name="text" >
@@ -283,46 +337,46 @@
     <rect>
      <x>4</x>
      <y>581</y>
-     <width>138</width>
+     <width>162</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text" >
-    <string>Actualizar Base de Datos</string>
+    <string>Actualizar Base de Datos (DEbe desaparecer)</string>
    </property>
   </widget>
   <widget class="QPushButton" name="mui_aceptar" >
    <property name="geometry" >
     <rect>
-     <x>146</x>
+     <x>170</x>
      <y>581</y>
      <width>92</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text" >
-    <string>Aplicar plugins</string>
+    <string>Aplicar cambios</string>
    </property>
   </widget>
   <widget class="QPushButton" name="mui_hacerbackup" >
    <property name="geometry" >
     <rect>
-     <x>242</x>
+     <x>266</x>
      <y>581</y>
-     <width>224</width>
+     <width>251</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text" >
-    <string>Hacer copia de Seguridad</string>
+    <string>Hacer copia de seguridad</string>
    </property>
   </widget>
   <widget class="QPushButton" name="mui_cancelar" >
    <property name="geometry" >
     <rect>
-     <x>572</x>
+     <x>521</x>
      <y>581</y>
-     <width>224</width>
+     <width>275</width>
      <height>23</height>
     </rect>
    </property>
@@ -330,20 +384,20 @@
     <string>Cerrar</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5" >
+  <widget class="QCheckBox" name="mui_soporteTPV_2" >
    <property name="geometry" >
     <rect>
-     <x>30</x>
-     <y>110</y>
-     <width>41</width>
-     <height>14</height>
+     <x>310</x>
+     <y>30</y>
+     <width>208</width>
+     <height>23</height>
     </rect>
    </property>
    <property name="text" >
-    <string>Categoria</string>
+    <string>Actualizar Base de Datos</string>
    </property>
-   <property name="buddy" >
-    <cstring>mui_categoria</cstring>
+   <property name="checked" >
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

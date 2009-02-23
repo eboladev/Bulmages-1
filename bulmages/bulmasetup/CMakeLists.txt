@@ -18,7 +18,7 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
 
-configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/bulmasetup.in bulmasetup.py @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/config.in config.py @ONLY)
 
 install(FILES ${CMAKE_BINARY_DIR}/bulmasetup.py DESTINATION bin RENAME bulmasetup
                PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ

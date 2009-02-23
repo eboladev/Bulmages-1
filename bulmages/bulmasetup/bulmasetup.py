@@ -11,8 +11,10 @@ import commands
 import sys
 
 sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup')
+#sys.path.append('/home/tborras/bulmages/trunk/bulmages/bulmasetup')
 
 
+from config import *
 from bulmasetupbase import *
 from PyQt4 import *
 from nuevousuario import NuevoUsuario
@@ -20,24 +22,24 @@ from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
 from listempresas import ListEmpresas
 from restbackup   import RestBackup
-import plugins
-from plugins import PluginsBulmaSetup
+
 
 #Variables para la version de produccion
-plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
-plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
-plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
-plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
-plugins.pathdbplugins = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/plugins/'
-plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
-plugins.confsharebulmages = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
+#plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
+#plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
+#plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
+#plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
+#plugins.pathdbplugins = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/plugins/'
+#plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
+#plugins.confsharebulmages = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
 
 # Variables para la version de desarrollo
-#plugins.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'
-#plugins.pathdbbulmacont = '/usr/share/bulmages/dbmodels/crear/bulmacont/'
-#plugins.pathdbbulmatpv = '/usr/share/bulmages/dbmodels/crear/bulmatpv/'
-#plugins.pathdbparches = '/usr/share/bulmages/dbmodels/actualizar/'
+#plugins.pathdbbulmafact = '/usr/local/share/bulmages/dbmodels/crear/bulmafact/'
+#plugins.pathdbbulmacont = '/usr/local/share/bulmages/dbmodels/crear/bulmacont/'
+#plugins.pathdbbulmatpv = '/usr/local/share/bulmages/dbmodels/crear/bulmatpv/'
+#plugins.pathdbparches = '/usr/local/share/bulmages/dbmodels/actualizar/'
 #plugins.configfiles = '/etc/'
+#plugins.confsharebulmages = '/usr/local/share/bulmages/'
 
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
