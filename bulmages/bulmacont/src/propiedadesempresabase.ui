@@ -16,35 +16,57 @@
    <string>Propiedades de la empresa</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_configuracion.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/BulmaCont32x32/images/png/i_configuracion.xpm</normaloff>:/BulmaCont32x32/images/png/i_configuracion.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
      </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <item>
       <widget class="QLabel" name="label_2" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
        <property name="pixmap" >
         <pixmap resource="../../bulmages.qrc" >:/Images/document-properties.svg</pixmap>
        </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QFrame" name="frame" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
@@ -52,10 +74,10 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="margin" >
          <number>5</number>
         </property>
         <item>
@@ -70,7 +92,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -91,7 +114,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>101</width>
             <height>25</height>
@@ -128,7 +151,7 @@
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>21</width>
            <height>20</height>
@@ -150,11 +173,11 @@
           </property>
           <item row="0" column="0" >
            <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
             <property name="spacing" >
              <number>5</number>
+            </property>
+            <property name="margin" >
+             <number>0</number>
             </property>
             <item>
              <widget class="QLabel" name="TextLabel1_2" >
@@ -191,18 +214,18 @@ yyyy --> Digitos de cuenta.</string>
           </item>
           <item row="1" column="0" >
            <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
             <property name="spacing" >
              <number>5</number>
+            </property>
+            <property name="margin" >
+             <number>0</number>
             </property>
             <item>
              <spacer>
               <property name="orientation" >
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" >
+              <property name="sizeHint" stdset="0" >
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -222,7 +245,7 @@ yyyy --> Digitos de cuenta.</string>
               <property name="orientation" >
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" >
+              <property name="sizeHint" stdset="0" >
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -240,7 +263,7 @@ yyyy --> Digitos de cuenta.</string>
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>20</width>
            <height>40</height>
@@ -256,7 +279,7 @@ yyyy --> Digitos de cuenta.</string>
          <property name="sizeType" >
           <enum>QSizePolicy::Preferred</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>20</width>
            <height>40</height>
@@ -269,7 +292,7 @@ yyyy --> Digitos de cuenta.</string>
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>40</width>
            <height>20</height>
@@ -284,10 +307,10 @@ yyyy --> Digitos de cuenta.</string>
        <string>Propiedades generales</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
