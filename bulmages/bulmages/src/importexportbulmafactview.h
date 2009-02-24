@@ -34,7 +34,7 @@ class ImportExportBulmafactView : public QDialog, public Ui_ImportExportBulmafac
     Q_OBJECT
 
 private:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     QString mensajein;
 
 private:

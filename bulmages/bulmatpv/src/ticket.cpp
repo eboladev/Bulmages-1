@@ -39,18 +39,18 @@ Ticket::Ticket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
     /// Inicializamos los parametros del ticket para la base de datos.
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
-    addDbField ( "descalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion" ) );
-    addDbField ( "nomticket", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre" ) );
-    addDbField ( "idalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran" ) );
-    addDbField ( "fechaalbaran", BlDbField::DBdate, BlDbField::DBNothing, _( "Id fechaalbaran" ) );
-    addDbField ( "horaalbaran", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Hora" ) );
-    addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, _( "Trabajador" ) );
-    addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
-    addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
-    addDbField ( "numalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "Num" ) );
-    addDbField ( "refalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
-    addDbField ( "ticketalbaran", BlDbField::DBboolean, BlDbField::DBNothing, _( "Ticket" ) );
-    addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+    addDbField ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion" ) );
+    addDbField ( "nomticket", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Nombre" ) );
+    addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id albaran" ) );
+    addDbField ( "fechaalbaran", BlDbField::DbDate, BlDbField::DbNothing, _( "Id fechaalbaran" ) );
+    addDbField ( "horaalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Hora" ) );
+    addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, _( "Trabajador" ) );
+    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Cliente" ) );
+    addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Almacen" ) );
+    addDbField ( "numalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "Num" ) );
+    addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
+    addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Ticket" ) );
+    addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
 
     setDbValue ( "ticketalbaran", "TRUE" );
     setDbValue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
@@ -81,19 +81,19 @@ BlDbRecord * Ticket::agregarLinea()
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
     item->setDbTableName ( "lalbaran" );
     item->setDbFieldId ( "numlalbaran" );
-    item->addDbField ( "idalbaran", BlDbField::DBint, BlDbField::DBNotNull, _( "Id Albaran" ) );
-    item->addDbField ( "numlalbaran", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id lalbaran" ) );
-    item->addDbField ( "cantlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
-    item->addDbField ( "pvplalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Precio" ) );
-    item->addDbField ( "ivalalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "IVA" ) );
-    item->addDbField ( "descuentolalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Descuento" ) );
-    item->addDbField ( "ordenlalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Orden" ) );
-    item->addDbField ( "reqeqlalbaran", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Req. eq." ) );
-//    item->addDbField ( "lotelalbaran", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Lote" ) );
-    item->addDbField ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, _( "Id articulo" ) );
-    item->addDbField ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo articulo" ) );
-    item->addDbField ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Nombre articulo" ) );
-    item->addDbField ( "desclalbaran", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre articulo" ) );
+    item->addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id Albaran" ) );
+    item->addDbField ( "numlalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id lalbaran" ) );
+    item->addDbField ( "cantlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
+    item->addDbField ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Precio" ) );
+    item->addDbField ( "ivalalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "IVA" ) );
+    item->addDbField ( "descuentolalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Descuento" ) );
+    item->addDbField ( "ordenlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Orden" ) );
+    item->addDbField ( "reqeqlalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Req. eq." ) );
+//    item->addDbField ( "lotelalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Lote" ) );
+    item->addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id articulo" ) );
+    item->addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Codigo articulo" ) );
+    item->addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Nombre articulo" ) );
+    item->addDbField ( "desclalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre articulo" ) );
 
 
     item->setDbValue ( "descuentolalbaran", "0" );
@@ -134,13 +134,13 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
 
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         item = listaLineas() ->at ( i );
-        if ( item->DBvalue ( "idarticulo" ) == idArticulo )
+        if ( item->dbValue ( "idarticulo" ) == idArticulo )
             m_lineaActual = item;
     }// end for
 
     if ( m_lineaActual && nuevaLinea == FALSE ) {
         /// Ya hay una linea con este articulo (es un agregado)
-        BlFixed cantidadib ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+        BlFixed cantidadib ( m_lineaActual->dbValue ( "cantlalbaran" ) );
         BlFixed cant1 = cantidadib + cantidad;
         m_lineaActual->setDbValue ( "cantlalbaran", cant1.toQString() );
     } else {
@@ -304,7 +304,7 @@ void  Ticket::imprimir()
 
     /// Imprimimos el numero de Ticket
     file.write ( QString ( "Ticket: " ).toAscii() );
-    file.write ( DBvalue ( "numalbaran" ).toAscii() );
+    file.write ( dbValue ( "numalbaran" ).toAscii() );
     file.write ( "\n", 1 );
 
 
@@ -321,9 +321,9 @@ void  Ticket::imprimir()
 
     /// Imprimimos el trabajador
     file.write ( QString ( "Trabajador: " ).toAscii() );
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + dbValue ( "idtrabajador" ) );
     if ( !cur->eof() ) {
-        file.write ( DBvalue ( "idtrabajador" ).toAscii() );
+        file.write ( dbValue ( "idtrabajador" ).toAscii() );
         file.write ( " " );
         file.write ( cur->valor ( "nomtrabajador" ).toAscii() );
         file.write ( "\n", 1 );
@@ -331,7 +331,7 @@ void  Ticket::imprimir()
     delete cur;
 
     /// Imprimimos el cliente
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
         file.write ( QString ( "Cliente: " ).toAscii() );
         file.write ( cur->valor ( "cifcliente" ).toAscii() );
@@ -342,7 +342,7 @@ void  Ticket::imprimir()
     delete cur;
 
     /// Imprimimos el almacen
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + dbValue ( "idalmacen" ) );
     if ( !cur->eof() ) {
         file.write ( QString ( "Almacen: " ).toAscii() );
         file.write ( cur->valor ( "nomalmacen" ).toAscii() );
@@ -371,21 +371,21 @@ void  Ticket::imprimir()
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         linea = listaLineas() ->at ( i );
-        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
-        BlFixed iva = ( linea->DBvalue ( "ivalalbaran" ) );
+        BlFixed iva = ( linea->dbValue ( "ivalalbaran" ) );
         BlFixed percentiva = ( iva / 100 );
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        BlFixed subtotreq = ( base +  linea->DBvalue ( "reqeqlalbaran" ) );
+        BlFixed subtotreq = ( base +  linea->dbValue ( "reqeqlalbaran" ) );
         BlFixed subtotaliva = ( subtotreq * percentiva ) + subtotreq;
         BlFixed totalunidad = pvpund + ( ( pvpund - ( pvpund * desc1 / 100 ) ) * percentiva );
-        basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-        basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
+        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
         /// Hacemos la impresion
-        QString str =  linea->DBvalue ( "desclalbaran" ).leftJustified ( 22, ' ', TRUE ) + linea->DBvalue ( "cantlalbaran" ).rightJustified ( 1, ' ' ) + QString ( " " ) + totalunidad.toQString().rightJustified ( 2, ' ' )  + subtotaliva.toQString().rightJustified ( 8, ' ' );
+        QString str =  linea->dbValue ( "desclalbaran" ).leftJustified ( 22, ' ', TRUE ) + linea->dbValue ( "cantlalbaran" ).rightJustified ( 1, ' ' ) + QString ( " " ) + totalunidad.toQString().rightJustified ( 2, ' ' )  + subtotaliva.toQString().rightJustified ( 8, ' ' );
         file.write ( str.toAscii() );
         file.write ( "\n", 1 );
     } // end for
@@ -498,9 +498,9 @@ void  Ticket::imprimir()
     /// Imprimimos el trabajador
 
     file.write ( QString ( "LE ATENDIO: " ).toAscii() );
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + dbValue ( "idtrabajador" ) );
     if ( !cur->eof() ) {
-        file.write ( DBvalue ( "idtrabajador" ).toAscii() );
+        file.write ( dbValue ( "idtrabajador" ).toAscii() );
         file.write ( " " );
         file.write ( cur->valor ( "nomtrabajador" ).toAscii() );
         file.write ( "\n", 1 );
@@ -528,11 +528,11 @@ void  Ticket::imprimir()
     file.write ( "\x1Dk\x04", 3 );
     file.write ( QString ( "ALB" ).toAscii() );
     file.write ( " ", 1 );
-    file.write ( DBvalue ( "idalbaran" ).toAscii() );
+    file.write ( dbValue ( "idalbaran" ).toAscii() );
     file.write ( " ", 1 );
-    file.write ( DBvalue ( "numalbaran" ).toAscii() );
+    file.write ( dbValue ( "numalbaran" ).toAscii() );
     file.write ( " ", 1 );
-    file.write ( DBvalue ( "refalbaran" ).toAscii() );
+    file.write ( dbValue ( "refalbaran" ).toAscii() );
     file.write ( "\x00", 1 );
     file.write ( "\n", 1 );
     file.write ( QString ( "TELF. " ).toAscii() );
@@ -650,31 +650,31 @@ void Ticket::imprimir()
     fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
-    trabajador.id = DBvalue ( "idtrabajador" );
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    trabajador.id = dbValue ( "idtrabajador" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
 
     BlDbRecord *linea;
     if ( listaLineas() ->size() )
-        total.iva = BlFixed ( listaLineas()->at ( 0 )->DBvalue ( "ivalalbaran" ) );
+        total.iva = BlFixed ( listaLineas()->at ( 0 )->dbValue ( "ivalalbaran" ) );
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         linea = listaLineas() ->at ( i );
-        BlFixed cantidad = BlFixed ( linea->DBvalue ( "cantlalbaran" ) );
-        total.baseImponible = total.baseImponible + cantidad * BlFixed ( linea->DBvalue ( "pvplalbaran" ) );
+        BlFixed cantidad = BlFixed ( linea->dbValue ( "cantlalbaran" ) );
+        total.baseImponible = total.baseImponible + cantidad * BlFixed ( linea->dbValue ( "pvplalbaran" ) );
     } // end for
     total.totalIva = total.baseImponible + total.baseImponible * total.iva / BlFixed ( "100" );
 
@@ -710,12 +710,12 @@ void Ticket::imprimir()
         if ( i == listaLineas()->size() - 1 )
             pr.setUnderlineMode ( 1 );
         linea = listaLineas() ->at ( i );
-        BlFixed iva = BlFixed ( linea->DBvalue ( "ivalalbaran" ) );
-        BlFixed pvp = BlFixed ( linea->DBvalue ( "pvplalbaran" ) );
+        BlFixed iva = BlFixed ( linea->dbValue ( "ivalalbaran" ) );
+        BlFixed pvp = BlFixed ( linea->dbValue ( "pvplalbaran" ) );
         pvp = pvp + pvp * iva / BlFixed ( "100" );
-        BlFixed pvptotal = BlFixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
-        pr.printText ( linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
-        pr.printText ( linea->DBvalue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
+        BlFixed pvptotal = BlFixed ( linea->dbValue ( "cantlalbaran" ) ) * pvp;
+        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
+        pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
         QString pvpstr = pvp.toQString();
         QString pvptotalstr = pvptotal.toQString();
         pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );
@@ -749,7 +749,7 @@ void Ticket::imprimir()
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
 
-    QByteArray qba = DBvalue ( "refalbaran" ).toAscii();
+    QByteArray qba = dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
     pr.setJustification ( center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
@@ -789,7 +789,7 @@ void Ticket::agregarCantidad ( QString cantidad )
         mensajeAviso ( "No existe linea" );
         return;
     } // end if
-    BlFixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+    BlFixed cantorig ( m_lineaActual->dbValue ( "cantlalbaran" ) );
     BlFixed suma = cant + cantorig;
     if ( suma == BlFixed ( "0.00" ) ) {
         borrarLinea ( m_lineaActual );
@@ -806,7 +806,7 @@ void Ticket::agregarCantidad ( QString cantidad )
             mensajeAviso ( "No existe linea" );
             return;
         } // end if
-        BlFixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+        BlFixed cantorig ( m_lineaActual->dbValue ( "cantlalbaran" ) );
         BlFixed suma = cant + cantorig;
         if ( suma == BlFixed ( "0.00" ) ) {
             listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );

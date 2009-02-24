@@ -43,28 +43,28 @@ public:
     void guardaIva();
     void vaciaIva();
     inline QString idiva() {
-        return DBvalue ( "idiva" );
+        return dbValue ( "idiva" );
     };
     inline QString idtipoiva() {
-        return DBvalue ( "idtipoiva" );
+        return dbValue ( "idtipoiva" );
     };
     inline QString idregistroiva() {
-        return DBvalue ( "idregistroiva" );
+        return dbValue ( "idregistroiva" );
     };
     inline QString idcuenta() {
-        return DBvalue ( "idcuenta" );
+        return dbValue ( "idcuenta" );
     };
     inline QString codigo() {
-        return DBvalue ( "codigo" );
+        return dbValue ( "codigo" );
     };
     inline QString nombretipoiva() {
-        return DBvalue ( "nombretipoiva" );
+        return dbValue ( "nombretipoiva" );
     };
     inline QString baseiva() {
-        return DBvalue ( "baseiva" );
+        return dbValue ( "baseiva" );
     };
     inline QString ivaiva() {
-        return DBvalue ( "ivaiva" );
+        return dbValue ( "ivaiva" );
     };
     inline void setidiva ( QString val ) {
         setDbValue ( "idiva", val );

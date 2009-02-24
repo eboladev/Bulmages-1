@@ -102,8 +102,8 @@ int Ticket_pintar ( Ticket *tick )
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->DBvalue ( "pvpivainclalbaran" ) );
+        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
 	total = total + cantpvp;
     } // end for

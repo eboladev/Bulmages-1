@@ -27,7 +27,7 @@ class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject
     Q_OBJECT
 
 public:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     empresa *empresaactual;
 
 public:

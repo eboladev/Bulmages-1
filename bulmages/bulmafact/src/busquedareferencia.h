@@ -40,9 +40,9 @@ public:
     BusquedaReferencia ( QWidget *parent = 0 );
     ~BusquedaReferencia();
     virtual void setText ( QString val );
-    virtual void setValorCampo ( QString val );
+    virtual void setFieldValue ( QString val );
     virtual QString text();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     virtual void on_mui_informe_clicked();

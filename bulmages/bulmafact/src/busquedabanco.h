@@ -45,9 +45,9 @@ public:
     BusquedaBanco ( QWidget *parent = 0 );
     ~BusquedaBanco();
     virtual void setidbanco ( QString idbanco );
-    virtual void setValorCampo ( QString idbanco );
+    virtual void setFieldValue ( QString idbanco );
     QString idbanco();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     void m_activated ( int index );

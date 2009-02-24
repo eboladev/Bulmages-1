@@ -49,7 +49,7 @@ private:
     QString mdb_nomcuenta;
     QString mdb_nomctacliente;
     BcCompany *empresaactual;
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
 
 public:
     linprevcobro ( BcCompany * );

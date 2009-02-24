@@ -57,7 +57,7 @@ myplugincont::~myplugincont()
 void myplugincont::elslot()
 {
     _depura ( "myplugincont::elslot", 0 );
-    ZList *vehiculoview = new ZList ( ( BfCompany * ) m_conexionbase );
+    ZList *vehiculoview = new ZList ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
     _depura ( "END myplugincont::elslot", 0 );
@@ -85,7 +85,7 @@ void myplugincont::inicializa ( Bulmafact *bges )
     } // end if
 
     /// Creamos el men&uacute;.
-    m_conexionbase = bges->getcompany();
+    m_dbConnection = bges->getcompany();
     m_bulmafact = bges;
     QAction *accion = new QAction ( "&Cuadres de Caja", 0 );
     accion->setStatusTip ( "Listado de Cuadres de Caja" );

@@ -107,20 +107,20 @@ void Devolucion::on_mui_vale_clicked()
     fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
-    trabajador.id = m_ticket->DBvalue ( "idtrabajador" );
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->DBvalue ( "idtrabajador" ) );
+    trabajador.id = m_ticket->dbValue ( "idtrabajador" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->DBvalue ( "idalmacen" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
@@ -164,7 +164,7 @@ void Devolucion::on_mui_vale_clicked()
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
 
-    QByteArray qba = m_ticket->DBvalue ( "refalbaran" ).toAscii();
+    QByteArray qba = m_ticket->dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
     pr.setJustification ( center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
@@ -204,15 +204,15 @@ void Devolucion::pintar()
     QString html = "<p style=\"font-family:monospace; font-size: 8pt;\">";
     QString html1 = "<font size=\"1\">";
 
-    html1 += "Ticket: " + m_ticket->DBvalue ( "nomticket" ) + "<BR>";
+    html1 += "Ticket: " + m_ticket->dbValue ( "nomticket" ) + "<BR>";
 
-    QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + m_ticket->DBvalue ( "idtrabajador" );
+    QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + m_ticket->dbValue ( "idtrabajador" );
     BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( querytrab );
-    html1 += "Trabajador: " + m_ticket->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
+    html1 += "Trabajador: " + m_ticket->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
-    QString query = "SELECT * FROM cliente WHERE idcliente = " + m_ticket->DBvalue ( "idcliente" );
+    QString query = "SELECT * FROM cliente WHERE idcliente = " + m_ticket->dbValue ( "idcliente" );
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
-    html1 += "Cliente: " + m_ticket->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
+    html1 += "Cliente: " + m_ticket->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
     if (m_ticket->listaLineas()->size() > 0) {
@@ -233,7 +233,7 @@ void Devolucion::pintar()
 		item = m_ticket->listaLineas() ->at ( i );
 	
 		html += "<TR>";
-		html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">-</A></td>";
+		html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->dbValue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->dbValue ( "numlalbaran" ) + "\">-</A></td>";
 		for ( int j = 0; j < item->lista()->size(); ++j ) {
 		BlDbField *camp = item->lista()->at ( j );
 		if ( camp->nomcampo().left ( 2 ) != "id" && camp->nomcampo().left ( 3 ) != "num" )
@@ -266,14 +266,14 @@ void Devolucion::pintar()
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
         linea = m_ticket->listaLineas() ->at ( i );
-        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-        basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
+        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
     } // end for
 
     BlFixed basei ( "0.00" );
@@ -361,11 +361,11 @@ void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
 {
     if ( anchor.queryItemValue ( "op" ) == "minus" ) {
 
-        if ( m_ticket->DBvalue ( "idalbaran" ).isEmpty() ) return;
+        if ( m_ticket->dbValue ( "idalbaran" ).isEmpty() ) return;
         int sizein = m_ticket->listaLineas()->size();
         for ( int i = 0; i < sizein; ++i ) {
             BlDbRecord *item = m_ticket->listaLineas() ->at ( i );
-            if ( item->DBvalue ( "numlalbaran" ) == anchor.queryItemValue ( "numlalbaran" ) ) {
+            if ( item->dbValue ( "numlalbaran" ) == anchor.queryItemValue ( "numlalbaran" ) ) {
                 BlDbRecord *nitem = m_ticket->agregarLinea();
                 QList<BlDbField *> *lista = item->lista();
                 for ( int j = 0; j < lista->size(); ++j ) {

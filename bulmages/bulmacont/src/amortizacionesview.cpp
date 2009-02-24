@@ -44,11 +44,11 @@ AmortizacionesView::AmortizacionesView ( BcCompany *emp, QWidget *parent )
     mui_listado->setDbTableName ( "amortizacion" );
     mui_listado->setFileConfig ( "AmortizacionListSubform" );
     mui_listado->setDbFieldId ( "idamortizacion" );
-    mui_listado->addSubFormHeader ( "idamortizacion", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id amortizacion" ) );
-    mui_listado->addSubFormHeader ( "nomamortizacion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
-    mui_listado->addSubFormHeader ( "fechacompra", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha compra" ) );
-    mui_listado->addSubFormHeader ( "fecha1cuota", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha 1 cuota" ) );
-    mui_listado->addSubFormHeader ( "numcuotas", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Num cuotas" ) );
+    mui_listado->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id amortizacion" ) );
+    mui_listado->addSubFormHeader ( "nomamortizacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    mui_listado->addSubFormHeader ( "fechacompra", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha compra" ) );
+    mui_listado->addSubFormHeader ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha 1 cuota" ) );
+    mui_listado->addSubFormHeader ( "numcuotas", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Num cuotas" ) );
     mui_listado->setinsercion ( FALSE );
     presentar();
 
@@ -93,7 +93,7 @@ void AmortizacionesView::borrar()
 {
     _depura ( "AmortizacionesView::on_mui_borrar_clicked", 0 );
     try {
-        QString codigo = mui_listado->DBvalue ( "idamortizacion" );
+        QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
             QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
             mainCompany() ->begin();
@@ -124,8 +124,8 @@ void AmortizacionesView::borrar()
 void AmortizacionesView::editar ( int row )
 {
     _depura ( "AmortizacionesView::editAmortizacion " + row, 0 );
-    mdb_idamortizacion = mui_listado->DBvalue ( "idamortizacion" );
-    mdb_nomamortizacion = mui_listado->DBvalue ( "nomamortizacion" );
+    mdb_idamortizacion = mui_listado->dbValue ( "idamortizacion" );
+    mdb_nomamortizacion = mui_listado->dbValue ( "nomamortizacion" );
     if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
         AmortizacionView * amor = new AmortizacionView ( ( BcCompany * ) mainCompany(), 0 );

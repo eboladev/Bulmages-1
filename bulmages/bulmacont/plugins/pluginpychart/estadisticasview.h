@@ -31,7 +31,7 @@ class estadisticasview : public estadisticasdlg
     Q_OBJECT
 
 public:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     int inicializa ( BlPostgreSqlClient *, int );
     estadisticasview ( QWidget *parent = 0, const char *name = 0 );
     ~estadisticasview();
@@ -45,7 +45,7 @@ class myplugin : public QObject
     Q_OBJECT
 
 public:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     empresa *empresaactual;
 
 public:

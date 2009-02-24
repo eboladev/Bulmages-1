@@ -103,7 +103,7 @@ int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
     QWebCamView *l = art->findChild<QWebCamView *> ( "lpromedios" );
-    l->cargar ( art->DBvalue ( "idarticulo" ) );
+    l->cargar ( art->dbValue ( "idarticulo" ) );
     _depura ( "END ArticuloView_cargar", 0 );
     return 0;
 }

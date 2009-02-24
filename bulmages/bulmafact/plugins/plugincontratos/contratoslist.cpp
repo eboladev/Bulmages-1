@@ -126,9 +126,9 @@ void ContratosList::editar ( int row )
 {
 
     _depura ( "ContratosList::editar", 0 );
-    mdb_idcontrato = mui_list->DBvalue ( "idcontrato", row );
-    mdb_refcontrato = mui_list->DBvalue ( "refcontrato", row );
-    mdb_nomcontrato = mui_list->DBvalue ( "nomcontrato", row );
+    mdb_idcontrato = mui_list->dbValue ( "idcontrato", row );
+    mdb_refcontrato = mui_list->dbValue ( "refcontrato", row );
+    mdb_nomcontrato = mui_list->dbValue ( "nomcontrato", row );
     if ( m_modo == 0 ) {
         ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
         if ( prov->cargar ( mdb_idcontrato ) ) {
@@ -189,7 +189,7 @@ void ContratosList::on_mui_borrar_clicked()
     _depura ( "ContratosList::on_mui_borrar_clicked", 0 );
     try {
         /*
-                QString idcontrato = mui_list->DBvalue("idcontrato");
+                QString idcontrato = mui_list->dbValue("idcontrato");
                 ClienteView *cli = mainCompany()->newClienteView();
                 if (cli->cargar(idcontrato)) {
                     delete cli;
@@ -419,15 +419,15 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : B
     _depura ( "ContratosListSubform::ContratosListSubform", 0 );
     setDbTableName ( "contrato" );
     setDbFieldId ( "idcontrato" );
-    addSubFormHeader ( "idcontrato", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID contrato" ) );
-    addSubFormHeader ( "codcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo" ) );
-    addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "C.I.F." ) );
-    addSubFormHeader ( "refcontrato", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Referencia" ) );
-    addSubFormHeader ( "nomcontrato", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre de contrato" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre alternativo del contrato" ) );
-    addSubFormHeader ( "fincontrato", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de alta del contrato" ) );
-    addSubFormHeader ( "ffincontrato", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de baja del contrato" ) );
-    addSubFormHeader ( "periodicidadcontrato", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de baja del contrato" ) );
+    addSubFormHeader ( "idcontrato", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID contrato" ) );
+    addSubFormHeader ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
+    addSubFormHeader ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
+    addSubFormHeader ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de contrato" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre alternativo del contrato" ) );
+    addSubFormHeader ( "fincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de alta del contrato" ) );
+    addSubFormHeader ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de baja del contrato" ) );
+    addSubFormHeader ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de baja del contrato" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

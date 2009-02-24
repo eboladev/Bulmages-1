@@ -286,7 +286,7 @@ QString AlbaranesProveedor::generaFiltro()
 void AlbaranesProveedor::editar ( int row )
 {
     _depura ( "AlbaranesProveedor::editar", 0 );
-    mdb_idalbaranp = mui_list->DBvalue ( QString ( "idalbaranp" ), row );
+    mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ), row );
     if ( modoEdicion() ) {
         AlbaranProveedorView * prov = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         if ( prov->cargar ( mdb_idalbaranp ) ) {
@@ -333,7 +333,7 @@ void AlbaranesProveedor::borrar()
         return;
     } // end if
     try {
-        mdb_idalbaranp = mui_list->DBvalue ( QString ( "idalbaranp" ) );
+        mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ) );
         if ( modoEdicion() ) {
             AlbaranProveedorView * apv = new AlbaranProveedorView(( BfCompany * ) mainCompany(), 0);
             if ( apv->cargar ( mdb_idalbaranp ) ) {
@@ -377,22 +377,22 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
     _depura ( "AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
     setDbTableName ( "albaranp" );
     setDbFieldId ( "idalbaranp" );
-    addSubFormHeader ( "idalbaranp", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID albaran" ) );
-    addSubFormHeader ( "numalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de albaran" ) );
-    addSubFormHeader ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Descripcion" ) );
-    addSubFormHeader ( "refalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Referencia" ) );
-    addSubFormHeader ( "fechaalbaranp", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha" ) );
-    addSubFormHeader ( "comentalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Comentario" ) );
-    addSubFormHeader ( "procesadoalbaranp", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Procesado" ) );
-    addSubFormHeader ( "idproveedor", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ID proveedor" ) );
-    addSubFormHeader ( "idforma_pago", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ID forma de pago" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
-    addSubFormHeader ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del proveedor" ) );
-    addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del almacen" ) );
-    addSubFormHeader ( "descforma_pago", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Descripcion de la forma de pago" ) );
-    addSubFormHeader ( "base", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Base imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Impuestos" ) );
-    addSubFormHeader ( "total", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Total albaran" ) );
+    addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID albaran" ) );
+    addSubFormHeader ( "numalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de albaran" ) );
+    addSubFormHeader ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
+    addSubFormHeader ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
+    addSubFormHeader ( "fechaalbaranp", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
+    addSubFormHeader ( "comentalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario" ) );
+    addSubFormHeader ( "procesadoalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Procesado" ) );
+    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID proveedor" ) );
+    addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID forma de pago" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
+    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del proveedor" ) );
+    addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del almacen" ) );
+    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion de la forma de pago" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total albaran" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

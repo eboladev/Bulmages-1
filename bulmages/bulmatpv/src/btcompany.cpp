@@ -490,13 +490,13 @@ Ticket *BtCompany::newTicket()
 
 void BtCompany::cobrar()
 {
-    QString idtrabajador = m_ticketActual->DBvalue ( "idtrabajador" );
+    QString idtrabajador = m_ticketActual->dbValue ( "idtrabajador" );
 
     if ( g_plugins->lanza ( "BtCompany_cobrar", this ) ) {
         return;
     } // end if
 
-    if (m_ticketActual->DBvalue("idalbaran") != "") {
+    if (m_ticketActual->dbValue("idalbaran") != "") {
 	    m_ticketActual->guardar();
     } else {
 	    m_ticketActual->guardar();
@@ -513,7 +513,7 @@ void BtCompany::cobrar()
     for ( int i = 0; i < m_listaTickets.size(); ++i ) {
         ticket = m_listaTickets.at ( i );
 
-        if ( "" == ticket->DBvalue ( "nomticket" ) && idtrabajador == ticket->DBvalue ( "idtrabajador" ) ) {
+        if ( "" == ticket->dbValue ( "nomticket" ) && idtrabajador == ticket->dbValue ( "idtrabajador" ) ) {
             setTicketActual ( ticket );
             ticket->pintar();
             ticketv = ticket;

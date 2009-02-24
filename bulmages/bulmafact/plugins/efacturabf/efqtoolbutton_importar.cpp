@@ -447,7 +447,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     fp->calculaypintatotales();
     fp->m_totalDiscounts->setText ( descuentoFactura );
 
-/// Damos valores a los campos DBvalue -----------------------------------------------------------------
+/// Damos valores a los campos dbValue -----------------------------------------------------------------
 
     lineas->setMainCompany ( mainCompany() );
     descuentos->setMainCompany ( mainCompany() );

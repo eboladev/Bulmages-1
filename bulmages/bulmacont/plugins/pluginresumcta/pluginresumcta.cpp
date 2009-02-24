@@ -149,9 +149,9 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
     if ( subform->currentRow() < 0 )
         return 0;
     if ( subform->existsHeader ( "codigo" ) ) {
-        QString cod = subform->DBvalue ( "codigo", subform->currentRow() );
-        QString nom = subform->DBvalue ( "descripcioncuenta", subform->currentRow() );
-        QString id = subform->DBvalue ( "idcuenta", subform->currentRow() );
+        QString cod = subform->dbValue ( "codigo", subform->currentRow() );
+        QString nom = subform->dbValue ( "descripcioncuenta", subform->currentRow() );
+        QString id = subform->dbValue ( "idcuenta", subform->currentRow() );
 
         if ( id == "" ) return 0;
         BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( "SELECT *, debe-haber AS saldo FROM cuenta WHERE idcuenta = " + id );

@@ -50,9 +50,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDbField ( "preciocostearticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Precio Coste" ) );
-    trab->addDbField ( "margenarticulo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Margen" ) );
-    trab->addDbField ( "actualizarmargenarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Actualizar PVP" ) );
+    trab->addDbField ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Precio Coste" ) );
+    trab->addDbField ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Margen" ) );
+    trab->addDbField ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Actualizar PVP" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -126,9 +126,9 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     if ( camp->nomcampo() == "pvplalbaranp"  || camp->nomcampo() == "pvplfacturap" ) {
         BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
 
-        if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
+        if ( rec->dbValue ( "idarticulo" ) == "" ) return 0;
 
-        QString query = "SELECT preciocostearticulo FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" );
+        QString query = "SELECT preciocostearticulo FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" );
         cur = subform->mainCompany() ->loadQuery ( query );
         if ( ! cur->eof() ) {
             if ( "'" + cur->valor ( "preciocostearticulo" ) + "'" == camp->valorcampoprep ( err ) ) {
@@ -144,7 +144,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
                                           QMessageBox::No );
 
         if ( ret == QMessageBox::Yes ) {
-            QString query1 = "UPDATE articulo SET preciocostearticulo=" + camp->valorcampoprep ( err ) + " where idarticulo=" + rec->DBvalue ( "idarticulo" );
+            QString query1 = "UPDATE articulo SET preciocostearticulo=" + camp->valorcampoprep ( err ) + " where idarticulo=" + rec->dbValue ( "idarticulo" );
             subform->mainCompany() ->begin();
             subform->mainCompany() ->runQuery ( query1 );
             subform->mainCompany() ->commit();
@@ -206,9 +206,9 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSubFormHeader ( "preciocostearticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "P Coste" ) );
-    artl->addSubFormHeader ( "margenarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "Margen" ) );
-    artl->addSubFormHeader ( "actualizarmargenarticulo", BlDbField::DBboolean, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, artl->tr ( "Actualizar Margen" ) );
+    artl->addSubFormHeader ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "P Coste" ) );
+    artl->addSubFormHeader ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "Margen" ) );
+    artl->addSubFormHeader ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "Actualizar Margen" ) );
 }
 
 

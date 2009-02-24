@@ -25,7 +25,7 @@
 
 int estadisticasview::inicializa ( BlPostgreSqlClient *conexion, int tipo )
 {
-    conexionbase = conexion;
+    dbConnection = conexion;
     if ( tipo == 0 )
         presentar();
     else
@@ -53,35 +53,35 @@ void estadisticasview::presentar()
     // La consulta es compleja, requiere la creacion de una tabla temporal y de cierta mandanga por lo que puede
     // Causar problemas con el motor de base de datos.
     fprintf ( stderr, "BALANCE: Empezamos a hacer la presentacion\n" );
-    conexionbase->begin();
+    dbConnection->begin();
     query.sprintf ( "CREATE TEMPORARY TABLE balance AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET padre=0 WHERE padre ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "DELETE FROM balance WHERE debe=0 AND haber =0" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
     // Para evitar problemas con los nulls hacemos algunos updates
     query.sprintf ( "UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET tdebe=0 WHERE tdebe ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET thaber=0 WHERE thaber ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
 
     query.sprintf ( "SELECT idcuenta FROM balance ORDER BY padre DESC" );
-    cursorapt = conexionbase->loadQuery ( query, "Balance1view" );
+    cursorapt = dbConnection->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
         query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
-        BlDbRecordSet *mycur = conexionbase->loadQuery ( query, "cursorrefresco" );
+        BlDbRecordSet *mycur = dbConnection->loadQuery ( query, "cursorrefresco" );
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
         //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
-        conexionbase->runQuery ( query );
+        dbConnection->runQuery ( query );
         delete mycur;
         cursorapt->nextRecord();
     }// end while
@@ -90,15 +90,15 @@ void estadisticasview::presentar()
 
     // Borramos todo lo que no es de este nivel
     query.sprintf ( "DELETE FROM balance where nivel(codigo)>%s", "2" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
     //Borramos todo lo que tiene un hijo en el balance
     query.sprintf ( "DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
 
     query.sprintf ( "SELECT descripcion, abs(tsaldo)::integer AS tsaldoi FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo" );
-    cursorapt = conexionbase->loadQuery ( query, "mycursor" );
+    cursorapt = dbConnection->loadQuery ( query, "mycursor" );
 
     QString valores = "data=[";
     int init = 0;
@@ -116,8 +116,8 @@ void estadisticasview::presentar()
     // Vaciamos el cursor de la base de datos.
     delete cursorapt;
     query.sprintf ( "DROP TABLE balance" );
-    conexionbase->runQuery ( query );
-    conexionbase->commit();
+    dbConnection->runQuery ( query );
+    dbConnection->commit();
 
     /* values to chart */
     fprintf ( stderr, "Llamamos a sacapie\n" );
@@ -152,35 +152,35 @@ void estadisticasview::presentarbarras()
     // La consulta es compleja, requiere la creacion de una tabla temporal y de cierta mandanga por lo que puede
     // Causar problemas con el motor de base de datos.
     fprintf ( stderr, "BALANCE: Empezamos a hacer la presentacion\n" );
-    conexionbase->begin();
+    dbConnection->begin();
     query.sprintf ( "CREATE TEMPORARY TABLE balance AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET padre=0 WHERE padre ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "DELETE FROM balance WHERE debe=0 AND haber =0" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
     // Para evitar problemas con los nulls hacemos algunos updates
     query.sprintf ( "UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET tdebe=0 WHERE tdebe ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET thaber=0 WHERE thaber ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
     query.sprintf ( "UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
 
     query.sprintf ( "SELECT idcuenta FROM balance ORDER BY padre DESC" );
-    cursorapt = conexionbase->loadQuery ( query, "Balance1view" );
+    cursorapt = dbConnection->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
         query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
-        BlDbRecordSet *mycur = conexionbase->loadQuery ( query, "cursorrefresco" );
+        BlDbRecordSet *mycur = dbConnection->loadQuery ( query, "cursorrefresco" );
 
         query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
         //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
-        conexionbase->runQuery ( query );
+        dbConnection->runQuery ( query );
         delete mycur;
         cursorapt->nextRecord();
     }// end while
@@ -189,15 +189,15 @@ void estadisticasview::presentarbarras()
 
     // Borramos todo lo que no es de este nivel
     query.sprintf ( "DELETE FROM balance where nivel(codigo)>%s", "2" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
     //Borramos todo lo que tiene un hijo en el balance
     query.sprintf ( "DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)" );
-    conexionbase->runQuery ( query );
+    dbConnection->runQuery ( query );
 
 
     query.sprintf ( "SELECT descripcion, tsaldo::integer AS tsaldoi FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo" );
-    cursorapt = conexionbase->loadQuery ( query, "mycursor" );
+    cursorapt = dbConnection->loadQuery ( query, "mycursor" );
 
     QString valores = "data=[(";
     QString plot = "";
@@ -225,8 +225,8 @@ void estadisticasview::presentarbarras()
     // Vaciamos el cursor de la base de datos.
     delete cursorapt;
     query.sprintf ( "DROP TABLE balance" );
-    conexionbase->runQuery ( query );
-    conexionbase->commit();
+    dbConnection->runQuery ( query );
+    dbConnection->commit();
 
     /* values to chart */
     fprintf ( stderr, "Llamamos a sacapie\n" );
@@ -262,7 +262,7 @@ void myplugin::BalanceGrafico()
 {
     // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
     estadisticasview * est = new estadisticasview ( 0, 0 );
-    est->inicializa ( conexionbase, 0 );
+    est->inicializa ( dbConnection, 0 );
     est->exec();
     delete est;
 }// end BalanceGrafico
@@ -271,7 +271,7 @@ void myplugin::BalanceBarras()
 {
     // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
     estadisticasview * est = new estadisticasview ( 0, 0 );
-    est->inicializa ( conexionbase, 1 );
+    est->inicializa ( dbConnection, 1 );
     est->exec();
     delete est;
 }

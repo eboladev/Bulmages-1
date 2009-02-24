@@ -121,11 +121,11 @@ void BlComboBox::setId ( QString id )
 /**
 \param idprovincia
 **/
-void BlComboBox::setValorCampo ( QString id )
+void BlComboBox::setFieldValue ( QString id )
 {
-    _depura ( "BlComboBox::setValorCampo", 0 );
+    _depura ( "BlComboBox::setFieldValue", 0 );
     setId ( id );
-    _depura ( "END BlComboBox::setValorCampo", 0 );
+    _depura ( "END BlComboBox::setFieldValue", 0 );
 }
 
 
@@ -173,10 +173,10 @@ QString BlComboBox::id()
 /**
 \return
 **/
-QString BlComboBox::valorCampo()
+QString BlComboBox::fieldValue()
 {
-    _depura ( "BlComboBox::valorCampo", 0 );
-    _depura ( "END BlComboBox::valorCampo", 0 );
+    _depura ( "BlComboBox::fieldValue", 0 );
+    _depura ( "END BlComboBox::fieldValue", 0 );
     return id();
 }
 

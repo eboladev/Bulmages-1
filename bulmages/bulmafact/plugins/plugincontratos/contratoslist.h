@@ -33,7 +33,7 @@ class myplugincont : public QObject
     Q_OBJECT
 
 public:
-    BlPostgreSqlClient *m_conexionbase;
+    BlPostgreSqlClient *m_dbConnection;
     Bulmafact *m_bulmafact;
 
 public:

@@ -106,9 +106,9 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setMainCompany ( art->mainCompany() );
     l->setDbTableName ( "alias" );
     l->setDbFieldId ( "idalias" );
-    l->addSubFormHeader ( "cadalias", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Alias" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "Id articulo" ) );
-    l->addSubFormHeader ( "idalias", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id validacion" ) );
+    l->addSubFormHeader ( "cadalias", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Alias" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite , _( "Id articulo" ) );
+    l->addSubFormHeader ( "idalias", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id validacion" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -131,7 +131,7 @@ int ArticuloView_cargar ( ArticuloView *art )
     _depura ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
     if ( l ) {
-        l->cargar ( "SELECT * FROM alias WHERE idarticulo = " + art->DBvalue ( "idarticulo" ) );
+        l->cargar ( "SELECT * FROM alias WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
     } // end if
     _depura ( "END ArticuloView_cargar", 0 );
     return 0;
@@ -149,7 +149,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
     _depura ( "ArticuloView_guardar_post", 0 );
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
-        l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+        l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
         l->guardar();
         invalidaEstadAlias();
         return 0;

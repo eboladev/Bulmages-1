@@ -77,7 +77,7 @@ ImportExportBulmafactView::ImportExportBulmafactView ( BlPostgreSqlClient *con, 
     QObject::connect ( pushButtonF_X, SIGNAL ( clicked() ), this, SLOT ( close() ) );
     QObject::connect ( toolButton1_5, SIGNAL ( clicked() ), this, SLOT ( botonBuscarXML() ) );
 
-    conexionbase = con;
+    dbConnection = con;
     inicializaMensajeria();
     _depura ( "END ImportExportBulmafactView::ImportExportBulmafactView", 0 );
 }

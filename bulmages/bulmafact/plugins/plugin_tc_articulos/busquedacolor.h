@@ -63,10 +63,10 @@ public:
     BusquedaColor ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaColor();
     virtual void setidtc_color ( QString idtc_color );
-    virtual void setValorCampo ( QString idtc_color );
+    virtual void setFieldValue ( QString idtc_color );
     QString idtc_color();
     void setMainCompany ( BfCompany * );
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     void m_activated ( int index );

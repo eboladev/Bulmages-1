@@ -131,50 +131,50 @@ void BlForm::cargaSpecs()
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
-            BlDbField::dbtype type = BlDbField::DBvarchar;
+            BlDbField::DbType type = BlDbField::DbVarChar;
             QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
             if ( exists ( nomheader ) ) return;
             QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
             QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
             if ( typeheader == "DBVARCHAR" ) {
-                type = BlDbField::DBvarchar;
+                type = BlDbField::DbVarChar;
             } else if ( typeheader == "DBINT" ) {
-                type = BlDbField::DBint;
+                type = BlDbField::DbInt;
             } else if ( typeheader == "DBNUMERIC" ) {
-                type = BlDbField::DBnumeric;
+                type = BlDbField::DbNumeric;
             } else if ( typeheader == "DBBOOLEAN" ) {
-                type = BlDbField::DBboolean;
+                type = BlDbField::DbBoolean;
             } else if ( typeheader == "DBDATE" ) {
-                type = BlDbField::DBdate;
+                type = BlDbField::DbDate;
             } // end if
 
-            int restricciones = ( int ) BlDbField::DBNothing;
+            int restricciones = ( int ) BlDbField::DbNothing;
             QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
             while ( !restrict.isNull() ) {
                 QString trestrict = restrict.text();
                 if ( trestrict == "DBNOTHING" ) {
-                    restricciones |= BlDbField::DBvarchar;
+                    restricciones |= BlDbField::DbVarChar;
                 } else if ( trestrict == "DBNOTNULL" ) {
-                    restricciones |= BlDbField::DBNotNull;
+                    restricciones |= BlDbField::DbNotNull;
                 } else if ( trestrict == "DBPRIMARYKEY" ) {
-                    restricciones |= BlDbField::DBPrimaryKey;
+                    restricciones |= BlDbField::DbPrimaryKey;
                 } else if ( trestrict == "DBNOSAVE" ) {
-                    restricciones |= BlDbField::DBNoSave;
+                    restricciones |= BlDbField::DbNoSave;
                 } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= BlDbField::DBAuto;
+                    restricciones |= BlDbField::DbAuto;
                 } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= BlDbField::DBAuto;
+                    restricciones |= BlDbField::DbAuto;
                 } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
-                    restricciones |= BlDbField::DBDupPrimaryKey;
+                    restricciones |= BlDbField::DbDupPrimaryKey;
                 } else if ( trestrict == "DBREQUIRED" ) {
-                    restricciones |= BlDbField::DBRequired;
+                    restricciones |= BlDbField::DbRequired;
                 } else if ( trestrict == "DBNOLOAD" ) {
-                    restricciones |= BlDbField::DBNoLoad;
+                    restricciones |= BlDbField::DbNoLoad;
                 } // end if
                 restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
             } // end while
 
-            addDbField ( nomheader, type, ( BlDbField::dbrestrict ) restricciones, nompheader );
+            addDbField ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, nompheader );
             generaCampo ( nomheader, nompheader, typeheader );
         } // end if
     } // end for
@@ -540,13 +540,13 @@ void BlForm::pintar()
         /// sirve para los campos personales.
         BlWidget *l1 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
         if ( l1 ) {
-            l1->setValorCampo ( campo->valorcampo() );
+            l1->setFieldValue ( campo->valorcampo() );
         } // end if
         /// Buscamos BlComboBox que coincidan con el campo supuestamente
         /// sirve para los campos personales.
         BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
-            l2->setValorCampo ( campo->valorcampo() );
+            l2->setFieldValue ( campo->valorcampo() );
         } // end if
         /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
@@ -561,7 +561,7 @@ void BlForm::pintar()
         /// Buscamos los 'Radio Buttons' y los preparamos.
         QList<BlRadioButton *> l6 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
         for ( int i = 0; i < l6.size(); ++i ) {
-            if ( l6.at ( i ) ->valorCampo() == campo->valorcampo() ) {
+            if ( l6.at ( i ) ->fieldValue() == campo->valorcampo() ) {
                 l6.at ( i ) ->setChecked ( TRUE );
             } else {
                 l6.at ( i ) ->setChecked ( FALSE );
@@ -600,12 +600,12 @@ void BlForm::recogeValores()
         /// Buscamos BlWidgets que coincidan con el campo. Supuestamente sirve para los campos personales.
         BlWidget *l1 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
         if ( l1 )
-            campo->set ( l1->valorCampo() );
+            campo->set ( l1->fieldValue() );
 
         /// Buscamos BlComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
         BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
-            campo->set ( l2->valorCampo() );
+            campo->set ( l2->fieldValue() );
 	} // end for
 
         /// Buscamos un QCheckBox con nombre coincidente.
@@ -624,7 +624,7 @@ void BlForm::recogeValores()
             int aux = 0;
             for ( int i = 0; i < l6.size(); ++i ) {
                 if ( l6.at ( i ) ->isChecked() ) {
-                    campo->set ( l6.at ( i ) ->valorCampo() );
+                    campo->set ( l6.at ( i ) ->fieldValue() );
                     aux = 1;
                 } // end if
             } // end for
@@ -653,7 +653,7 @@ int BlForm::cargar ( QString id )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "BlForm_cargar", this ) ) return 0;
         cargarPost ( id );
-        setWindowTitle ( m_title + " " + DBvalue ( m_campoid ) );
+        setWindowTitle ( m_title + " " + dbValue ( m_campoid ) );
         /// Activamos documentos adicionales
         activaDocumentos();
 
@@ -811,13 +811,13 @@ void BlForm::substrVars ( QString &buff, int tipoEscape ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
 		switch (tipoEscape) {
 			case 1:
-	            	buff.replace ( pos, rx.matchedLength(), xmlEscape(DBvalue ( rx.cap ( 1 ) )) );
+	            	buff.replace ( pos, rx.matchedLength(), xmlEscape(dbValue ( rx.cap ( 1 ) )) );
 			break;
 			case 2:
-	            	buff.replace ( pos, rx.matchedLength(), pythonEscape(DBvalue ( rx.cap ( 1 ) )) );
+	            	buff.replace ( pos, rx.matchedLength(), pythonEscape(dbValue ( rx.cap ( 1 ) )) );
 			break;
 			default:
-	            	buff.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
+	            	buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ) );
 
 		} // end switch
 			
@@ -882,7 +882,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
 				QLineEdit * item = it2.next();
 				QString nombre = item->objectName().right(item->objectName().size()-4);
 				QString valor = item->text();
-				addDbField ( nombre, BlDbField::DBvarchar, BlDbField::DBNoSave, nombre  );
+				addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
 				setDbValue ( nombre, valor );
 			} // end while
 		} // end if

@@ -159,7 +159,7 @@ int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
 int ProveedorView_cargarPost_Post (ProveedorView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 	PedidosProveedorList *pedidosProveedorList = prov->findChild<PedidosProveedorList *> ( "listPedidosProveedorList" );
-        pedidosProveedorList->setidproveedor ( prov->DBvalue ( "idproveedor" ) );
+        pedidosProveedorList->setidproveedor ( prov->dbValue ( "idproveedor" ) );
         pedidosProveedorList->presentar();
     }// end if
     return 0;

@@ -55,12 +55,12 @@ public:
     ~Busqueda();
     void pinta();
     virtual QString id();
-    virtual QString valorCampo();
-    virtual QString valorCampo(QString campo);
+    virtual QString fieldValue();
+    virtual QString fieldValue(QString campo);
     virtual QString tableName();
     virtual void setId ( QString val );
-    virtual void setValorCampo ( QString val );
-    virtual void setValorCampo ( QString campo, QString val );
+    virtual void setFieldValue ( QString val );
+    virtual void setFieldValue ( QString campo, QString val );
     virtual void setLabel(QString label);
     virtual void setTableName(QString tableName);
 

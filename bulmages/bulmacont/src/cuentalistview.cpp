@@ -110,9 +110,9 @@ void CuentaListView::presentar()
 void CuentaListView::editar ( int row )
 {
     _depura ( "CuentaListView::editar", 0 );
-    mdb_idcuenta = mui_list->DBvalue ( "idcuenta", row );
-    mdb_nombrecuenta = mui_list->DBvalue ( "descripcion", row );
-    mdb_codigocuenta = mui_list->DBvalue ( "codigo", row );
+    mdb_idcuenta = mui_list->dbValue ( "idcuenta", row );
+    mdb_nombrecuenta = mui_list->dbValue ( "descripcion", row );
+    mdb_codigocuenta = mui_list->dbValue ( "codigo", row );
     if ( modoEdicion() ) {
 /*
         ArticuloView * art = ( ( BcCompany * ) BlMainCompany() ) ->newArticuloView();
@@ -162,7 +162,7 @@ void CuentaListView::borrar()
         return;
     } // end if
     try {
-        QString idarticulo = mui_list->DBvalue ( "idarticulo" );
+        QString idarticulo = mui_list->dbValue ( "idarticulo" );
         if ( QMessageBox::Yes == QMessageBox::question ( this,
                 _( "Borrar articulo" ),
                 _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
@@ -383,16 +383,16 @@ CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
     setDbFieldId ( "idcuenta" );
 
 
-    addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID cuenta" ) );
-    addSubFormHeader ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo Cuenta" ) );
-    addSubFormHeader ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre de la cuenta" ) );
+    addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID cuenta" ) );
+    addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo Cuenta" ) );
+    addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de la cuenta" ) );
 /*
-    addSubFormHeader ( "abrevarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Descripcion abreviada del articulo" ) );
-    addSubFormHeader ( "obserarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Observaciones sobre el articulo" ) );
-    addSubFormHeader ( "desctipo_articulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Descripcion del tipo de articulo" ) );
-    addSubFormHeader ( "desctipo_iva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Descripcion tipo de I.V.A." ) );
-    addSubFormHeader ( "pvparticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "P.V.P. articulo" ) );
-    addSubFormHeader ( "stockarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Disponible en stock" ) );
+    addSubFormHeader ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion abreviada del articulo" ) );
+    addSubFormHeader ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Observaciones sobre el articulo" ) );
+    addSubFormHeader ( "desctipo_articulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion del tipo de articulo" ) );
+    addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion tipo de I.V.A." ) );
+    addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "P.V.P. articulo" ) );
+    addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Disponible en stock" ) );
 */
     setinsercion ( FALSE );
     setDelete ( FALSE );

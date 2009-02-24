@@ -43,23 +43,23 @@ RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, 
     setTitleName ( _( "Registro IVA" ) );
     setDbTableName ( "registroiva" );
     setDbFieldId ( "idregistroiva" );
-    addDbField ( "idregistroiva", BlDbField::DBint, BlDbField::DBPrimaryKey, _("Identificador") );
-    addDbField ( "contrapartida", BlDbField::DBint, BlDbField::DBNotNull, _("Contrapartida") );
-    addDbField ( "baseimp", BlDbField::DBnumeric, BlDbField::DBNotNull, _("Base Imponible") );
-    addDbField ( "iva", BlDbField::DBnumeric, BlDbField::DBNotNull, _("IVA") );
-    addDbField ( "ffactura", BlDbField::DBdate, BlDbField::DBNotNull, _("Fecha factura") );
-    addDbField ( "idborrador", BlDbField::DBint, BlDbField::DBNotNull, _("Borrador") );
-    addDbField ( "numorden", BlDbField::DBint, BlDbField::DBNotNull, _("Orden") );
-    addDbField ( "cif", BlDbField::DBvarchar, BlDbField::DBNotNull, _("CIF") );
-    addDbField ( "idfpago", BlDbField::DBint, BlDbField::DBNothing, _("Forma de pago") );
-    addDbField ( "incregistro", BlDbField::DBboolean, BlDbField::DBNotNull, _("Inc registro") );
-    addDbField ( "regularizacion", BlDbField::DBboolean, BlDbField::DBNothing, _("Regularizacion") );
-    addDbField ( "plan349", BlDbField::DBboolean, BlDbField::DBNothing, _("plan 349") );
-    addDbField ( "factemitida", BlDbField::DBboolean, BlDbField::DBNotNull, _("Factura emitida") );
-    addDbField ( "rectificaaregistroiva", BlDbField::DBint, BlDbField::DBNothing, _("Rectifica a") );
-    addDbField ( "factura", BlDbField::DBvarchar, BlDbField::DBNothing, _("Factura") );
-    addDbField ( "femisionregistroiva", BlDbField::DBdate, BlDbField::DBNotNull, _("Fecha emision") );
-    addDbField ( "serieregistroiva", BlDbField::DBvarchar, BlDbField::DBNothing, _("Serie") );
+    addDbField ( "idregistroiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, _("Identificador") );
+    addDbField ( "contrapartida", BlDbField::DbInt, BlDbField::DbNotNull, _("Contrapartida") );
+    addDbField ( "baseimp", BlDbField::DbNumeric, BlDbField::DbNotNull, _("Base Imponible") );
+    addDbField ( "iva", BlDbField::DbNumeric, BlDbField::DbNotNull, _("IVA") );
+    addDbField ( "ffactura", BlDbField::DbDate, BlDbField::DbNotNull, _("Fecha factura") );
+    addDbField ( "idborrador", BlDbField::DbInt, BlDbField::DbNotNull, _("Borrador") );
+    addDbField ( "numorden", BlDbField::DbInt, BlDbField::DbNotNull, _("Orden") );
+    addDbField ( "cif", BlDbField::DbVarChar, BlDbField::DbNotNull, _("CIF") );
+    addDbField ( "idfpago", BlDbField::DbInt, BlDbField::DbNothing, _("Forma de pago") );
+    addDbField ( "incregistro", BlDbField::DbBoolean, BlDbField::DbNotNull, _("Inc registro") );
+    addDbField ( "regularizacion", BlDbField::DbBoolean, BlDbField::DbNothing, _("Regularizacion") );
+    addDbField ( "plan349", BlDbField::DbBoolean, BlDbField::DbNothing, _("plan 349") );
+    addDbField ( "factemitida", BlDbField::DbBoolean, BlDbField::DbNotNull, _("Factura emitida") );
+    addDbField ( "rectificaaregistroiva", BlDbField::DbInt, BlDbField::DbNothing, _("Rectifica a") );
+    addDbField ( "factura", BlDbField::DbVarChar, BlDbField::DbNothing, _("Factura") );
+    addDbField ( "femisionregistroiva", BlDbField::DbDate, BlDbField::DbNotNull, _("Fecha emision") );
+    addDbField ( "serieregistroiva", BlDbField::DbVarChar, BlDbField::DbNothing, _("Serie") );
     _depura ( "END RegistroIva::RegistroIva", 0 );
 }
 
@@ -81,14 +81,14 @@ RegistroIva::~RegistroIva()
 int RegistroIva::borrar()
 {
     _depura ( "RegistroIva::borraRegistroIva", 0 );
-    if ( DBvalue ( "idregistroiva" ) != "" ) {
+    if ( dbValue ( "idregistroiva" ) != "" ) {
         mainCompany() ->begin();
         try {
-            int error = mainCompany() ->runQuery ( "DELETE FROM iva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
+            int error = mainCompany() ->runQuery ( "DELETE FROM iva WHERE idregistroiva = " + dbValue ( "idregistroiva" ) );
 
             if ( error ) throw - 1;
 
-            error = mainCompany() ->runQuery ( "DELETE FROM registroiva WHERE idregistroiva = " + DBvalue ( "idregistroiva" ) );
+            error = mainCompany() ->runQuery ( "DELETE FROM registroiva WHERE idregistroiva = " + dbValue ( "idregistroiva" ) );
 
             if ( error ) throw - 1;
 
@@ -123,23 +123,23 @@ void RegistroIva::vaciaRegistroIva()
 void RegistroIva::pintaRegistroIva()
 {
     _depura ( "RegistroIva::pintaRegistroIva", 0 );
-    pintaidregistroiva ( DBvalue ( "idregistroiva" ) );
-    pintacontrapartida ( DBvalue ( "contrapartida" ) );
-    pintabaseimp ( DBvalue ( "baseimp" ) );
-    pintaiva ( DBvalue ( "iva" ) );
-    pintaffactura ( DBvalue ( "ffactura" ) );
-    pintafactura ( DBvalue ( "factura" ) );
-    pintaidborrador ( DBvalue ( "idborrador" ) );
-    pintaincregistro ( DBvalue ( "incregistro" ) );
-    pintaregularizacion ( DBvalue ( "regularizacion" ) );
-    pintaplan349 ( DBvalue ( "plan349" ) );
-    pintanumorden ( DBvalue ( "numorden" ) );
-    pintacif ( DBvalue ( "cif" ) );
-    pintaidfpago ( DBvalue ( "idfpago" ) );
-    pintafactemitida ( DBvalue ( "factemitida" ) );
-    pintarectificaaregistroiva ( DBvalue ( "rectificaaregistroiva" ) );
-    pintafemisionregistroiva ( DBvalue ( "femisionregistroiva" ) );
-    pintaserieregistroiva ( DBvalue ( "serieregistroiva" ) );
+    pintaidregistroiva ( dbValue ( "idregistroiva" ) );
+    pintacontrapartida ( dbValue ( "contrapartida" ) );
+    pintabaseimp ( dbValue ( "baseimp" ) );
+    pintaiva ( dbValue ( "iva" ) );
+    pintaffactura ( dbValue ( "ffactura" ) );
+    pintafactura ( dbValue ( "factura" ) );
+    pintaidborrador ( dbValue ( "idborrador" ) );
+    pintaincregistro ( dbValue ( "incregistro" ) );
+    pintaregularizacion ( dbValue ( "regularizacion" ) );
+    pintaplan349 ( dbValue ( "plan349" ) );
+    pintanumorden ( dbValue ( "numorden" ) );
+    pintacif ( dbValue ( "cif" ) );
+    pintaidfpago ( dbValue ( "idfpago" ) );
+    pintafactemitida ( dbValue ( "factemitida" ) );
+    pintarectificaaregistroiva ( dbValue ( "rectificaaregistroiva" ) );
+    pintafemisionregistroiva ( dbValue ( "femisionregistroiva" ) );
+    pintaserieregistroiva ( dbValue ( "serieregistroiva" ) );
     calculaypintatotales();
     _depura ( "END RegistroIva::pintaRegistroIva", 0 );
 }

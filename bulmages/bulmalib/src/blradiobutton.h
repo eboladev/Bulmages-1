@@ -39,8 +39,8 @@ public:
     BlRadioButton ( QWidget *parent );
     BlRadioButton ( const QString & text, QWidget * parent = 0 );
     ~BlRadioButton();
-    void setValorCampo ( QString val );
-    QString valorCampo();
+    void setFieldValue ( QString val );
+    QString fieldValue();
 };
 
 #endif

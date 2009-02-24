@@ -63,10 +63,10 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
 {
     _depura ( "ClienteView_ClienteView_Post", 0 );
     /// Agregamos los campos de registro que hacen falta.
-    cli->addDbField ( "idzonacomercial", BlDbField::DBint, BlDbField::DBNothing, _( "Zona comercial" ) );
-    cli->addDbField ( "fechabasecomercialcliente", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha base" ) );
-    cli->addDbField ( "periodocomercialcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Periodo" ) );
-    cli->addDbField ( "comentcomercialcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios para el comercial" ) );
+    cli->addDbField ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbNothing, _( "Zona comercial" ) );
+    cli->addDbField ( "fechabasecomercialcliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha base" ) );
+    cli->addDbField ( "periodocomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Periodo" ) );
+    cli->addDbField ( "comentcomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios para el comercial" ) );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *l = new ComercialClienteView ( cli );
     l->setMainCompany ( cli->mainCompany() );
@@ -110,10 +110,10 @@ int Cliente_pintaCliente(Cliente *cli) {
     _depura("Cliente_pintaCliente", 0);
     ClienteView *clo = (ClienteView *) cli;
     ComercialClienteView *bus = clo->findChild<ComercialClienteView *>("lcomercial");
-    bus->mui_zonacomercial->setidzonacomercial(clo->DBvalue("idzonacomercial"));
-    bus->mui_fechabasecomercialcliente->setfecha(clo->DBvalue("fechabasecomercialcliente"));
-    bus->mui_periodocomercialcliente->setperiodo(clo->DBvalue("periodocomercialcliente"));
-    bus->mui_comentcomercialcliente->setPlainText(clo->DBvalue("comentcomercialcliente"));
+    bus->mui_zonacomercial->setidzonacomercial(clo->dbValue("idzonacomercial"));
+    bus->mui_fechabasecomercialcliente->setfecha(clo->dbValue("fechabasecomercialcliente"));
+    bus->mui_periodocomercialcliente->setperiodo(clo->dbValue("periodocomercialcliente"));
+    bus->mui_comentcomercialcliente->setPlainText(clo->dbValue("comentcomercialcliente"));
     _depura("END Cliente_pintaCliente", 0);
     return 0;
 }

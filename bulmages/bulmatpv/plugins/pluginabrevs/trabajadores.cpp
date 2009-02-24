@@ -57,7 +57,7 @@ void Trabajadores::trabajadorClicked()
     for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
         ticket = emp1->listaTickets() ->at ( i );
 
-        if ( "" == ticket->DBvalue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->DBvalue ( "idtrabajador" ) ) {
+        if ( "" == ticket->dbValue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->dbValue ( "idtrabajador" ) ) {
             ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
             ticket->pintar();
             ticketv = ticket;

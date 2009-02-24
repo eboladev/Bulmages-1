@@ -58,15 +58,15 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Cobro" ) );
         setDbTableName ( "cobro" );
         setDbFieldId ( "idcobro" );
-        addDbField ( "idcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id cobro" ) );
-        addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
-        addDbField ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNothing, _( "Prevision" ) );
-        addDbField ( "fechacobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha del cobro" ) );
-        addDbField ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
-        addDbField ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
-        addDbField ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Total cobro" ) );
-        addDbField ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion del cobro" ) );
-        addDbField ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Banco" ) );
+        addDbField ( "idcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id cobro" ) );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Cliente" ) );
+        addDbField ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Prevision" ) );
+        addDbField ( "fechacobro", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha del cobro" ) );
+        addDbField ( "fechavenccobro", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de vencimiento" ) );
+        addDbField ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
+        addDbField ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Total cobro" ) );
+        addDbField ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion del cobro" ) );
+        addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _( "Banco" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
@@ -88,17 +88,17 @@ CobroView::~CobroView()
 
 int CobroView::trataTags ( QString &buff ) {
    // pillar los datos de cliente equivale a un <!--QUERY-->      implicito que contiene toda la plantilla.
-   QString params[1] = {DBvalue ( "idcliente" )};
+   QString params[1] = {dbValue ( "idcliente" )};
    buff = trataCursor(mainCompany() ->loadQuery ( 
           "SELECT * FROM cliente WHERE idcliente = $1" , 
            1, params ,NULL,0,0), buff);
 
     // mantenemos compatibilidad con RML preexistentes 
     // que usen estos nombres de variable
-    buff.replace ( "[referencia]" , xmlEscape(DBvalue ( "refcobro" )) );
-    buff.replace ( "[cantidad]" , xmlEscape(DBvalue ( "cantcobro" )) );
-    buff.replace ( "[comentario]" , xmlEscape(DBvalue ( "comentcobro" )) );
-    buff.replace ( "[fecha]" , xmlEscape(DBvalue ( "fechacobro" )) );
+    buff.replace ( "[referencia]" , xmlEscape(dbValue ( "refcobro" )) );
+    buff.replace ( "[cantidad]" , xmlEscape(dbValue ( "cantcobro" )) );
+    buff.replace ( "[comentario]" , xmlEscape(dbValue ( "comentcobro" )) );
+    buff.replace ( "[fecha]" , xmlEscape(dbValue ( "fechacobro" )) );
 
     // admitimos sustituciones , QUERY, IFACE, SETVAR... y los
     // nombres de campos de BD para cobros 
@@ -116,7 +116,7 @@ void CobroView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
@@ -134,14 +134,14 @@ void CobroView::imprimir()
 
 int CobroView::guardarPost() {
 	_depura(" CobroView::guardarPost", 0);
-	QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + DBvalue("refcobro") + "'";
+	QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + dbValue("refcobro") + "'";
 	BlDbRecordSet *cur1 = mainCompany()->loadQuery(query1);
 
-	QString query = "SELECT COALESCE(sum(totalfactura), 0) AS total FROM factura WHERE reffactura='" + DBvalue("refcobro") + "'";
+	QString query = "SELECT COALESCE(sum(totalfactura), 0) AS total FROM factura WHERE reffactura='" + dbValue("refcobro") + "'";
 	BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 	if (cur->valor("total") == cur1->valor("totalc") ) {
 		mensajeInfo("Procesar todos los documentos con esta referencia ?");
-		QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + DBvalue("refcobro") + "'";
+		QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + dbValue("refcobro") + "'";
 		mainCompany()->runQuery(query2);
 	} // end if
 	delete cur;

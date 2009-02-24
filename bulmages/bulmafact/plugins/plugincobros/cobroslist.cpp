@@ -198,7 +198,7 @@ void CobrosList::borrar()
         return;
     } // end if
     try {
-        mdb_idcobro = mui_list->DBvalue ( "idcobro" );
+        mdb_idcobro = mui_list->dbValue ( "idcobro" );
         if ( modoEdicion() ) {
             CobroView * cv = new CobroView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idcobro ) )
@@ -222,7 +222,7 @@ void CobrosList::editar ( int )
 {
     _depura ( "CobrosList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idcobro = mui_list->DBvalue ( "idcobro" );
+        mdb_idcobro = mui_list->dbValue ( "idcobro" );
         if ( modoEdicion() ) {
             CobroView * bud = new CobroView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idcobro ) ) {
@@ -306,22 +306,22 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
         return;
     setDbTableName ( "cobro" );
     setDbFieldId ( "idcobro" );
-    addSubFormHeader ( "idcobro", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID cobro" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "C.I.F." ) );
-    addSubFormHeader ( "telcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de telefono" ) );
-    addSubFormHeader ( "mailcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Direccion de correo electronico" ) );
-    addSubFormHeader ( "fechacobro", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de cobro" ) );
-    addSubFormHeader ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de vencimiento" ) );
-    addSubFormHeader ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Cantidad" ) );
-    addSubFormHeader ( "nombanco", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Banco" ) );
-    addSubFormHeader ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Referencia del cobro" ) );
-    addSubFormHeader ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Prevision de cobro" ) );
-    addSubFormHeader ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Comentarios" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ID trabajador" ) );
-    addSubFormHeader ( "nomtrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del trabajador" ) );
-    addSubFormHeader ( "apellidostrabajador", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Apellidos del trabajador" ) );
+    addSubFormHeader ( "idcobro", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID cobro" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
+    addSubFormHeader ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de telefono" ) );
+    addSubFormHeader ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion de correo electronico" ) );
+    addSubFormHeader ( "fechacobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de cobro" ) );
+    addSubFormHeader ( "fechavenccobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de vencimiento" ) );
+    addSubFormHeader ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Cantidad" ) );
+    addSubFormHeader ( "nombanco", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Banco" ) );
+    addSubFormHeader ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia del cobro" ) );
+    addSubFormHeader ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Prevision de cobro" ) );
+    addSubFormHeader ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
+    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del trabajador" ) );
+    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Apellidos del trabajador" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

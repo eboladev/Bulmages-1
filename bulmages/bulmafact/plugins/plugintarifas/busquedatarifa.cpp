@@ -107,18 +107,18 @@ QString BusquedaTarifa::idtarifa()
 }
 
 
-QString BusquedaTarifa::valorCampo()
+QString BusquedaTarifa::fieldValue()
 {
-    _depura("BusquedaTarifa::valorCampo", 0);
-    _depura("END BusquedaTarifa::valorCampo", 0);
+    _depura("BusquedaTarifa::fieldValue", 0);
+    _depura("END BusquedaTarifa::fieldValue", 0);
     return idtarifa();
 }
 
 
-void BusquedaTarifa::setValorCampo(QString idtarifa)
+void BusquedaTarifa::setFieldValue(QString idtarifa)
 {
-    _depura("BusquedaTarifa::setValorCampo", 0);
+    _depura("BusquedaTarifa::setFieldValue", 0);
     setIdTarifa(idtarifa);
-    _depura("END BusquedaTarifa::setValorCampo", 0);
+    _depura("END BusquedaTarifa::setFieldValue", 0);
 }
 

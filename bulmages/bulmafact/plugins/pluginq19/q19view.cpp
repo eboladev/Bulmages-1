@@ -58,15 +58,15 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
         /*
                 setTitleName ( _( "Cobro" ) );
          
-                addDbField ( "idcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID cobro" ) );
-                addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "ID cliente" ) );
-                addDbField ( "previsioncobro", BlDbField::DBboolean, BlDbField::DBNothing, _( "Prevision de cobro" ) );
-                addDbField ( "fechacobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de cobro" ) );
-                addDbField ( "fechavenccobro", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de vencimiento" ) );
-                addDbField ( "refcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia del cobro" ) );
-                addDbField ( "cantcobro", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
-                addDbField ( "comentcobro", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
-                addDbField ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Comentarios" ) );
+                addDbField ( "idcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID cobro" ) );
+                addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "ID cliente" ) );
+                addDbField ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Prevision de cobro" ) );
+                addDbField ( "fechacobro", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de cobro" ) );
+                addDbField ( "fechavenccobro", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de vencimiento" ) );
+                addDbField ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia del cobro" ) );
+                addDbField ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
+                addDbField ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
+                addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _( "Comentarios" ) );
          
                 pintar();
                 dialogChanges_cargaInicial();
@@ -542,16 +542,16 @@ void Q19View::on_mui_aceptar_clicked()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
                 /// La primera vez se ponen las cabeceras
                 if ( j == 0 ) {
-                    cabeceraPresentador ( out, rec->DBvalue ( "idfactura" ) );
-                    cabeceraOrdenante ( out, rec->DBvalue ( "idfactura" ) );
+                    cabeceraPresentador ( out, rec->dbValue ( "idfactura" ) );
+                    cabeceraOrdenante ( out, rec->dbValue ( "idfactura" ) );
                 } // end if
-                cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
+                cobroQ19 ( out, rec->dbValue ( "idfactura" ) );
                 j++;
-                total = total + BlFixed ( rec->DBvalue ( "total" ) );
+                total = total + BlFixed ( rec->dbValue ( "total" ) );
             } // end if
         } // end for
 

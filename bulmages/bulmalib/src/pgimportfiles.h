@@ -61,7 +61,7 @@ class pgimportfiles
 private:
     /// Base de datos con la que trabaja la clase y de la que se hace
     /// importaci&oacute;n/exportaci&oacute;n.
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     /// La clase puede hacer una simulaci&oacute;n o no dependiendo del valor de esta
     /// variable.
     bool m_modoTest;

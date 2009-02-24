@@ -89,16 +89,16 @@ int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
     ListLResArticulo *l = art->findChild<ListLResArticulo *> ( "lresfacturacion" );
-    l->cargar ( art->DBvalue ( "idarticulo" ) );
+    l->cargar ( art->dbValue ( "idarticulo" ) );
 
     ListEntregas *l1 = art->findChild<ListEntregas *> ( "lentregas" );
-    l1->cargar ( art->DBvalue ( "idarticulo" ) );
+    l1->cargar ( art->dbValue ( "idarticulo" ) );
 
     ListCompras *lc = art->findChild<ListCompras *> ( "lcompras" );
-    lc->cargar ( art->DBvalue ( "idarticulo" ) );
+    lc->cargar ( art->dbValue ( "idarticulo" ) );
 
     ListRecogidas *llr = art->findChild<ListRecogidas *> ( "lrecogidas" );
-    llr->cargar ( art->DBvalue ( "idarticulo" ) );
+    llr->cargar ( art->dbValue ( "idarticulo" ) );
 
     _depura ( "END ArticuloView_cargar", 0 );
     return 0;

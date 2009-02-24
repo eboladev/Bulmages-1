@@ -65,11 +65,11 @@ bool pluginCAnualesODS::Arboles()
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     /// numero de cuentas de nivel 2) y las vamos creando.
-    conexionbase->begin();
+    dbConnection->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     BlDbRecordSet *ramas;
-    ramas = conexionbase->loadQuery ( query, "Ramas" );
-    conexionbase->commit();
+    ramas = dbConnection->loadQuery ( query, "Ramas" );
+    dbConnection->commit();
     if ( ramas == NULL ) {
         mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
@@ -92,13 +92,13 @@ bool pluginCAnualesODS::Arboles()
 
     /// Seguidamente, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer asi los valores de cada cuenta para el Ejercicio N.
-    conexionbase->begin();
+    dbConnection->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicioActual_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioActual_fechaBalance.right ( 4 ) + "' AND fecha <= '" + ejercicioActual_fechaBalance + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '01/01/" + ejercicioActual_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
 
     BlDbRecordSet *hojas;
-    hojas = conexionbase->loadQuery ( query, "Ejercicio N" );
-    conexionbase->commit();
+    hojas = dbConnection->loadQuery ( query, "Ejercicio N" );
+    dbConnection->commit();
     if ( hojas == NULL ) {
         mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
@@ -112,10 +112,10 @@ bool pluginCAnualesODS::Arboles()
 
     /// Finalmente, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer asi los valores de cada cuenta para el Ejercicio N-1.
-    conexionbase->begin();
+    dbConnection->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicioAnterior_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right ( 4 ) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '01/01/" + ejercicioAnterior_fechaBalance.right ( 4 ) + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
-    hojas = conexionbase->loadQuery ( query, "Ejercicio N-1" );
-    conexionbase->commit();
+    hojas = dbConnection->loadQuery ( query, "Ejercicio N-1" );
+    dbConnection->commit();
     if ( hojas == NULL ) {
         mensajeInfo ( _( "Error con la base de datos" ) );
         return 0;
@@ -198,9 +198,9 @@ OK, aqui poden haver passat 3 coses.
 //
 //     QString query = QString( "SELECT saldototal FROM (SELECT SUBSTR(codigo, 1, 3) AS cod, SUM(saldo) as saldototal FROM cuenta LEFT JOIN (SELECT idcuenta, (SUM(debe) - SUM(haber) ) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioActual_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioActual_fechaBalance + "' AND conceptocontable ~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS saldo ON saldo.idcuenta=cuenta.idcuenta GROUP BY cod ORDER BY cod) AS saldo_ctas WHERE cod=" + QString::number ( cuenta ) );
 //
-//     conexionbase->begin();
-//     cur = conexionbase->loadQuery ( query );
-//     conexionbase->commit();
+//     dbConnection->begin();
+//     cur = dbConnection->loadQuery ( query );
+//     dbConnection->commit();
 //     if (cur != NULL)
 //  resultado = cur->valor ( "saldototal" );
 //     else
@@ -249,9 +249,9 @@ BlFixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 //
 //     QString query = QString( "SELECT saldototal FROM (SELECT SUBSTR(codigo, 1, 3) AS cod, SUM(saldo) as saldototal FROM cuenta LEFT JOIN (SELECT idcuenta, (SUM(debe) - SUM(haber) ) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance + "' AND conceptocontable ~* '.*asiento.*(cierre|apertura|regularizaci).*' GROUP BY idcuenta) AS saldo ON saldo.idcuenta=cuenta.idcuenta GROUP BY cod ORDER BY cod) AS saldo_ctas WHERE cod=" + QString::number ( cuenta ) );
 //
-//     conexionbase->begin();
-//     cur = conexionbase->loadQuery ( query );
-//     conexionbase->commit();
+//     dbConnection->begin();
+//     cur = dbConnection->loadQuery ( query );
+//     dbConnection->commit();
 //     if (cur != NULL)
 //  resultado = cur->valor ( "saldototal" );
 //     else
@@ -460,7 +460,7 @@ void pluginCAnualesODS::inicializa ( Bulmacont *bcont )
     bcont->menuBar() ->addMenu ( pPluginMenu );
 
     empresaact = bcont->empresaactual();
-    conexionbase = empresaact->bdempresa();
+    dbConnection = empresaact->bdempresa();
 
     _depura ( "END pluginCAnualesODS::inicializa", 0 );
 }

@@ -179,7 +179,7 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las
     /// preguntamos antes de cerrar nada.
-    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + as->DBvalue ( "idasiento" ) + " AND codigo SIMILAR TO '" + companyact->sanearCadena ( cuentas.toAscii().constData() ) + "' GROUP BY contra";
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + as->dbValue ( "idasiento" ) + " AND codigo SIMILAR TO '" + companyact->sanearCadena ( cuentas.toAscii().constData() ) + "' GROUP BY contra";
 
     BlDbRecordSet *cursborr = companyact->loadQuery ( SQLQuery );
     while ( !cursborr->eof() ) {
@@ -207,7 +207,7 @@ int ListLinAsiento1View_boton_iva ( ListLinAsiento1View *as )
     _depura ( "ListLinAsiento1View_boton_iva", 0 );
     as->guardar();
     try {
-        int idborrador = as->DBvalue ( "idborrador" ).toInt();
+        int idborrador = as->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->mainCompany(), 0 );
         nuevae->inicializa1 ( idborrador );
         ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );

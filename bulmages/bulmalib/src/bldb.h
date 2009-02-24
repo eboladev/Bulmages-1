@@ -45,26 +45,26 @@ class BlDbField
 public:
     /**
     Indica el tipo de dato al que pertenece el campo.
-    - DBint  . Entero
-    - DBvarchar . String de longitud indeterminada.
-    - DBdate . Fecha en formato Europeo (dd/mm/yyyy)
-    - DBnumeric . Numero en punto fijo
-    - DBboolean . Valor Booleano (TRUE / FALSE) (t / f)
+    - DbInt  . Entero
+    - DbVarChar . String de longitud indeterminada.
+    - DbDate . Fecha en formato Europeo (dd/mm/yyyy)
+    - DbNumeric . Numero en punto fijo
+    - DbBoolean . Valor Booleano (TRUE / FALSE) (t / f)
     */
-    enum dbtype {DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean = 5};
+    enum DbType {DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean = 5};
     /** Indica las restricciones que soporta el dato.
-    - DBNothing . Ninguna,
-    - DBNotNull . No puede ser nulo,
-    - DBPrimaryKey . Es clave primaria,
-    - DBNoSave . No se debe almacenenar en la base de datos.
-    - DBAuto . Es autonumerico,
-    - DBDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal
+    - DbNothing . Ninguna,
+    - DbNotNull . No puede ser nulo,
+    - DbPrimaryKey . Es clave primaria,
+    - DbNoSave . No se debe almacenenar en la base de datos.
+    - DbAuto . Es autonumerico,
+    - DbDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal
       puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
-    - DBRequired . Requerido,
-    - DBNoLoad . No debe cargarse desde la base de datos.
+    - DbRequired . Requerido,
+    - DbNoLoad . No debe cargarse desde la base de datos.
     **/
-    enum dbrestrict {DBNothing = 0, DBNotNull = 1, DBPrimaryKey = 2,
-                     DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32, DBNoLoad = 64
+    enum DbRestrict {DbNothing = 0, DbNotNull = 1, DbPrimaryKey = 2,
+                     DbNoSave = 4, DbAuto = 8, DbDupPrimaryKey = 16, DbRequired = 32, DbNoLoad = 64
                     };
 
 private:
@@ -72,19 +72,19 @@ private:
     QString m_valorcampo;         ///< El valor actual del campo, en el registro, no en la base de datos
     QString m_nompresentacion;         ///< El nombre que se mostrara en los mensajes de error y presentacion
     int m_restrict;          ///< Las restricciones del campo
-    dbtype m_tipo;          ///< El tipo de dato almacenado
-    BlPostgreSqlClient *m_conexionbase; ///< Puntero a la base de datos a utilizar
+    DbType m_tipo;          ///< El tipo de dato almacenado
+    BlPostgreSqlClient *m_dbConnection; ///< Puntero a la base de datos a utilizar
     QString m_valorcampoorig;         ///< indica el valor del campo en un estado anterior para determinar si ha habido cambios.
 
 
 public:
-    BlDbField ( BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp = "" );
     virtual ~BlDbField();
     bool cambiado();
     void resetCambio();
-    BlPostgreSqlClient *conexionbase();
-    void setconexionbase ( BlPostgreSqlClient *comp );
-    dbtype tipo();
+    BlPostgreSqlClient *dbConnection();
+    void setDbConnection ( BlPostgreSqlClient *comp );
+    DbType dbFieldType();
     virtual int set ( QString val );
     int restrictcampo();
     QString nomcampo();
@@ -108,7 +108,7 @@ class BlDbRecord
 {
 protected:
     QList<BlDbField *> m_lista; ///< Lista de campos que conforman la tabla de la BD
-    BlMainCompany *m_conexionbase; ///< Puntero a la base de datos con la que se opera
+    BlMainCompany *m_dbConnection; ///< Puntero a la base de datos con la que se opera
     QString m_tablename; ///< Nombre de la tabla por defecto que se utiliza
     QString m_campoid; ///< Nombre del campo identificador en la tabla
     bool m_nuevoCampo; ///< Indicador sobre si es un nuevo registro o un registro modificado
@@ -116,20 +116,20 @@ protected:
 public:
     BlDbRecord ( BlMainCompany * );
     virtual ~BlDbRecord();
-    void setconexionbase ( BlMainCompany *comp );
-    BlMainCompany *conexionbase();
+    void setDbConnection ( BlMainCompany *comp );
+    BlMainCompany *dbConnection();
     int DBload ( BlDbRecordSet * );
     virtual int DBsave ( QString &id );
     virtual int setDbValue ( QString, QString );
-    QString DBvalue ( QString );
+    QString dbValue ( QString );
     bool exists ( QString );
-    QString DBvalueprep ( QString );
+    QString dbValueprep ( QString );
     void setDbTableName ( QString nom );
     void setNuevo ( bool n );
     QString tableName();
-    QString campoId();
+    QString fieldId();
     void setDbFieldId ( QString nom );
-    int addDbField ( QString, BlDbField::dbtype, int, QString );
+    int addDbField ( QString, BlDbField::DbType, int, QString );
     void DBclear();
     QList<BlDbField *> *lista();
     virtual int borrar();

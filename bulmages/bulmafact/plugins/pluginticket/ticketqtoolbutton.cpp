@@ -157,15 +157,15 @@ void TicketQToolButton::click()
         file.write ( "\n", 1 );
 
         file.write ( QString ( "Cliente: " ).toAscii() );
-        file.write ( m_albaranClienteView->mui_idcliente->valorCampo("cifcliente").toAscii() );
+        file.write ( m_albaranClienteView->mui_idcliente->fieldValue("cifcliente").toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_albaranClienteView->mui_idcliente->valorCampo("nomcliente").toAscii() );
+        file.write ( m_albaranClienteView->mui_idcliente->fieldValue("nomcliente").toAscii() );
         file.write ( "\n", 1 );
 
 
 
         file.write ( QString ( "Descripcion: " ).toAscii() );
-        file.write ( m_albaranClienteView->DBvalue ( "descalbaran" ).toAscii() );
+        file.write ( m_albaranClienteView->dbValue ( "descalbaran" ).toAscii() );
         file.write ( "\n", 1 );
 
         /// Imprimimos espacios
@@ -175,8 +175,8 @@ void TicketQToolButton::click()
         BlDbSubFormRecord *linea;
         for ( int i = 0; i < m_albaranClienteView->getlistalineas() ->rowCount(); ++i ) {
             linea = m_albaranClienteView->getlistalineas() ->lineaat ( i );
-            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
-                QString str = linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ' ) + QString ( "   " ) + linea->DBvalue ( "desclalbaran" ).leftJustified ( 23, ' ', TRUE ) + linea->DBvalue ( "pvplalbaran" ).rightJustified ( 10, ' ' );
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                QString str = linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ' ) + QString ( "   " ) + linea->dbValue ( "desclalbaran" ).leftJustified ( 23, ' ', TRUE ) + linea->dbValue ( "pvplalbaran" ).rightJustified ( 10, ' ' );
                 file.write ( str.toAscii() );
                 file.write ( "\n", 1 );
             } // end if
@@ -224,11 +224,11 @@ void TicketQToolButton::click()
         file.write ( "\x1Dk\x04", 3 );
         file.write ( QString ( "ALB" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_albaranClienteView->DBvalue ( "idalbaran" ).toAscii() );
+        file.write ( m_albaranClienteView->dbValue ( "idalbaran" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_albaranClienteView->DBvalue ( "numalbaran" ).toAscii() );
+        file.write ( m_albaranClienteView->dbValue ( "numalbaran" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_albaranClienteView->DBvalue ( "refalbaran" ).toAscii() );
+        file.write ( m_albaranClienteView->dbValue ( "refalbaran" ).toAscii() );
         file.write ( "\x00", 1 );
 
         /// Imprimimos el dibujo final
@@ -306,15 +306,15 @@ void TicketQToolButton::click()
         file.write ( "\n", 1 );
 
         file.write ( QString ( "Cliente: " ).toAscii() );
-        file.write ( m_facturaView->mui_idcliente->valorCampo("cifcliente").toAscii() );
+        file.write ( m_facturaView->mui_idcliente->fieldValue("cifcliente").toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_facturaView->mui_idcliente->valorCampo("nomcliente").toAscii() );
+        file.write ( m_facturaView->mui_idcliente->fieldValue("nomcliente").toAscii() );
         file.write ( "\n", 1 );
 
 
 
         file.write ( QString ( "Descripcion: " ).toAscii() );
-        file.write ( m_facturaView->DBvalue ( "descfactura" ).toAscii() );
+        file.write ( m_facturaView->dbValue ( "descfactura" ).toAscii() );
         file.write ( "\n", 1 );
 
         /// Imprimimos espacios
@@ -324,8 +324,8 @@ void TicketQToolButton::click()
         BlDbSubFormRecord *linea;
         for ( int i = 0; i < m_facturaView->getlistalineas() ->rowCount(); ++i ) {
             linea = m_facturaView->getlistalineas() ->lineaat ( i );
-            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
-                QString str = linea->DBvalue ( "cantlfactura" ).rightJustified ( 5, ' ' ) + QString ( "   " ) + linea->DBvalue ( "desclfactura" ).leftJustified ( 23, ' ', TRUE ) + linea->DBvalue ( "pvplfactura" ).rightJustified ( 10, ' ' );
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                QString str = linea->dbValue ( "cantlfactura" ).rightJustified ( 5, ' ' ) + QString ( "   " ) + linea->dbValue ( "desclfactura" ).leftJustified ( 23, ' ', TRUE ) + linea->dbValue ( "pvplfactura" ).rightJustified ( 10, ' ' );
                 file.write ( str.toAscii() );
                 file.write ( "\n", 1 );
             } // end if
@@ -373,11 +373,11 @@ void TicketQToolButton::click()
         file.write ( "\x1Dk\x04", 3 );
         file.write ( QString ( "FAC" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_facturaView->DBvalue ( "idfactura" ).toAscii() );
+        file.write ( m_facturaView->dbValue ( "idfactura" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_facturaView->DBvalue ( "numfactura" ).toAscii() );
+        file.write ( m_facturaView->dbValue ( "numfactura" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_facturaView->DBvalue ( "reffactura" ).toAscii() );
+        file.write ( m_facturaView->dbValue ( "reffactura" ).toAscii() );
         file.write ( "\x00", 1 );
 
         /// Imprimimos el dibujo final

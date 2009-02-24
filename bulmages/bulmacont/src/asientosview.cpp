@@ -92,7 +92,7 @@ AsientosView::~AsientosView()
 void AsientosView::on_mui_list_cellDoubleClicked ( int, int )
 {
     _depura ( "AsientosView::on_mui_list_cellDoubleClicked", 0 );
-    QString idasiento = mui_list->DBvalue ( "idasiento" );
+    QString idasiento = mui_list->dbValue ( "idasiento" );
     ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->muestraasiento ( idasiento );
     ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->show();
     ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->setFocus();

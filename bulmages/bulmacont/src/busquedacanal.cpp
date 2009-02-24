@@ -78,11 +78,11 @@ void BusquedaCanal::setidcanal ( QString idcanal )
 /**
 \param idcanal
 **/
-void BusquedaCanal::setValorCampo ( QString idcanal )
+void BusquedaCanal::setFieldValue ( QString idcanal )
 {
-    _depura ( "BusquedaCanal::setValorCampo", 0 );
+    _depura ( "BusquedaCanal::setFieldValue", 0 );
     setidcanal ( idcanal );
-    _depura ( "END BusquedaCanal::setValorCampo", 0 );
+    _depura ( "END BusquedaCanal::setFieldValue", 0 );
 }
 
 
@@ -123,7 +123,7 @@ QString BusquedaCanal::idcanal()
 /**
 \return
 **/
-QString BusquedaCanal::valorCampo()
+QString BusquedaCanal::fieldValue()
 {
     return idcanal();
 }

@@ -45,10 +45,10 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     /// Preparamos la lista de paises.
     mui_list->setDbTableName ( "pais" );
     mui_list->setDbFieldId ( "idpais" );
-    mui_list->addSubFormHeader ( "idpais", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
-    mui_list->addSubFormHeader ( "descpais", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre Pais" ) );
-    mui_list->addSubFormHeader ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 2 Digitos" ) );
-    mui_list->addSubFormHeader ( "cod3pais", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo 3 Digitos" ) );
+    mui_list->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id. Pais" ) );
+    mui_list->addSubFormHeader ( "descpais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre Pais" ) );
+    mui_list->addSubFormHeader ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo 2 Digitos" ) );
+    mui_list->addSubFormHeader ( "cod3pais", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo 3 Digitos" ) );
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
@@ -56,9 +56,9 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     /// Preparamos la lista de provincias.
     mui_listprovincias->setDbTableName ( "provincia" );
     mui_listprovincias->setDbFieldId ( "idprovincia" );
-    mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Provincia" ) );
-    mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DBint, BlDbField::DBNotNull , BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id. Pais" ) );
-    mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Provincia" ) );
+    mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id. Provincia" ) );
+    mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id. Pais" ) );
+    mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Provincia" ) );
     mui_listprovincias->setinsercion ( TRUE );
     mui_listprovincias->setDelete ( TRUE );
     mui_listprovincias->setSortingEnabled ( FALSE );
@@ -67,10 +67,10 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     setTitleName ( _( "Pais" ) );
     setDbTableName ( "pais" );
     setDbFieldId ( "idpais" );
-    addDbField ( "idpais", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "idpais" ) );
-    addDbField ( "descpais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Pais" ) );
-    addDbField ( "cod2pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 2 digitos" ) );
-    addDbField ( "cod3pais", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo 3 digitos" ) );
+    addDbField ( "idpais", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "idpais" ) );
+    addDbField ( "descpais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Pais" ) );
+    addDbField ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo 2 digitos" ) );
+    addDbField ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo 3 digitos" ) );
 
 
     m_idpais = "0";
@@ -110,7 +110,7 @@ void PaisView::on_mui_list_itemClicked ( QTableWidgetItem * )
 {
     _depura ( "PaisView::on_mui_list_itemSelectionChanged", 0 );
     /// Busca el item correcto.
-    QString previdpais = mui_list->DBvalue ( "idpais" );
+    QString previdpais = mui_list->dbValue ( "idpais" );
 
     if ( m_idpais != "0" && dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -136,9 +136,9 @@ void PaisView::mostrarplantilla()
     if ( m_idpais != "0" ) {
         mui_datospais->setEnabled ( TRUE );
         cargar ( m_idpais );
-        mui_descpais->setText ( DBvalue ( "descpais" ) );
-        mui_cod2pais->setText ( DBvalue ( "cod2pais" ) );
-        mui_cod3pais->setText ( DBvalue ( "cod3pais" ) );
+        mui_descpais->setText ( dbValue ( "descpais" ) );
+        mui_cod2pais->setText ( dbValue ( "cod2pais" ) );
+        mui_cod3pais->setText ( dbValue ( "cod3pais" ) );
 
         mui_listprovincias->cargar ( "SELECT * FROM provincia WHERE idpais=" + m_idpais );
 
@@ -156,7 +156,7 @@ int PaisView::guardar()
     _depura ( "PaisView::on_mui_guardar_clicked", 0 );
     QString id;
 
-    if ( DBvalue ( "idpais" ).isEmpty() ) {
+    if ( dbValue ( "idpais" ).isEmpty() ) {
         mensajeInfo ( _( "Seleccione un pais para guardar" ) );
     } else {
         setDbValue ( "descpais", mui_descpais->text() );

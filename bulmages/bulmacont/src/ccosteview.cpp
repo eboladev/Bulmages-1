@@ -45,20 +45,20 @@ ccosteview::ccosteview ( BcCompany  *emp, QWidget *parent )
     /// Etablecemos cual va a ser la tabla para obtener los permisos
     setDbTableName ( "c_coste" );
     setDbFieldId ( "idc_coste" );
-    addDbField ( "idc_coste", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id. Centro Coste" ) );
-    addDbField ( "nombre", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre" ) );
-    addDbField ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Descripcion" ) );
+    addDbField ( "idc_coste", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id. Centro Coste" ) );
+    addDbField ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre" ) );
+    addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Descripcion" ) );
 
     /// Inicializamos el subformulario de centros distribuidos
     mui_cdistribuidos->setMainCompany ( emp );
     mui_cdistribuidos->setDbTableName ( "c_costedist" );
     mui_cdistribuidos->setFileConfig ( "ccostedist" );
     mui_cdistribuidos->setDbFieldId ( "idc_costedist" );
-    mui_cdistribuidos->addSubFormHeader ( "nomc_coste", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Nombre Destinatario" ) );
-    mui_cdistribuidos->addSubFormHeader ( "porcentc_costedist", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje" ) );
-    mui_cdistribuidos->addSubFormHeader ( "idc_costedist", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Id" ) );
-    mui_cdistribuidos->addSubFormHeader ( "idc_coste", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Destinatario" ) );
-    mui_cdistribuidos->addSubFormHeader ( "iddestc_coste", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "Origen" ) );
+    mui_cdistribuidos->addSubFormHeader ( "nomc_coste", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre Destinatario" ) );
+    mui_cdistribuidos->addSubFormHeader ( "porcentc_costedist", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Porcentaje" ) );
+    mui_cdistribuidos->addSubFormHeader ( "idc_costedist", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "Id" ) );
+    mui_cdistribuidos->addSubFormHeader ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "Destinatario" ) );
+    mui_cdistribuidos->addSubFormHeader ( "iddestc_coste", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "Origen" ) );
     mui_cdistribuidos->setinsercion ( TRUE );
     mui_cdistribuidos->setOrdenEnabled ( FALSE );
     idc_coste = 0;

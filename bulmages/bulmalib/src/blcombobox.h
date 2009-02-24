@@ -55,8 +55,8 @@ protected:
 public:
     BlComboBox ( QWidget *parent );
     ~BlComboBox();
-    QString valorCampo();
-    void setValorCampo(QString);
+    QString fieldValue();
+    void setFieldValue(QString);
     virtual QString id();
     virtual void setId(QString);
     void setQuery(QString);

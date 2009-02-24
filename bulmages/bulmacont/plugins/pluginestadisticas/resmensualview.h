@@ -42,7 +42,7 @@ class resmensualview : public resmensualdlg
 
 private:
     empresa *empresaactual;
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
 
 public:
     QString idmpatrimonial1, idmpatrimonial2, idmpatrimonial3;

@@ -47,27 +47,27 @@ class BlSubFormHeader
 {
 public:
     /** Opciones para la columna del SubFormulario
-    - DBNone . Opciones por defecto.
-    - DBReadOnly . La columna es de solo lectura.
-    - DBNoView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
-    - DBNoWrite . El usuario no puede escribir en esta columna.
-    - DBBlockView . El usuario no podrá ver esta columna ni aun configurandola
+    - DbNone . Opciones por defecto.
+    - DbReadOnly . La columna es de solo lectura.
+    - DbNoView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
+    - DbNoWrite . El usuario no puede escribir en esta columna.
+    - DbBlockView . El usuario no podrá ver esta columna ni aun configurandola
     */
-    enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4, DBBlockView = 8};
+    enum DbOptions {DbNone = 0, DbReadOnly = 1, DbNoView = 2, DbNoWrite = 4, DbBlockView = 8};
 
 protected:
     QString m_nomcampo;   ///< El nombre de la cabecera en el recordset
     QString m_nompresentacion;  ///< El nombre para mostrar en los errores
     unsigned int m_restricciones; ///< Las restricciones de la columna en el recordset
-    BlDbField::dbtype m_tipo;  ///< El tipo de los datos
+    BlDbField::DbType m_tipo;  ///< El tipo de los datos
     unsigned int m_options;  ///< Las opciones para la columna en el SubFormulario
 
 public:
-    BlSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp = "" );
+    BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp = "" );
     ~BlSubFormHeader();
     unsigned int options();
     unsigned int restricciones();
-    BlDbField::dbtype tipo();
+    BlDbField::DbType type();
     QString nompresentacion();
     int restrictcampo();
     QString nomcampo();
@@ -253,10 +253,10 @@ public:
     void setColumnCount ( int i );
     void situarse ( unsigned int, unsigned int );
     void situarse1 ( unsigned int, unsigned int );
-    int addSubFormHeader ( QString nom, BlDbField::dbtype typ, int res, int opt, QString nomp );
+    int addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp );
     BlDbSubFormRecord *newDbSubFormRecord();
     virtual void setColumnValue ( QString, QString );
-    QString DBvalue ( const QString &campo, int row = -1 );
+    QString dbValue ( const QString &campo, int row = -1 );
     void setDbValue ( const QString &campo, int row, const QString &valor );
     BlDbSubFormRecord *lineaact();
     BlDbSubFormRecord *lineaat ( int row );
@@ -274,7 +274,7 @@ public:
     bool existsHeader ( const QString & );
     virtual int cerrarEditor();
     virtual void confquery();
-    QString columnDBfieldName ( int columna );
+    QString dbFieldNameByColumnId ( int columna );
     /// Funciones para manipular los modos.
     void setModoConsulta();
     void setModoEdicion();

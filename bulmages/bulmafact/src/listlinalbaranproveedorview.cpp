@@ -44,18 +44,18 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView ( QWidget *parent ) : B
     if ( res != 0 )
         return;
 
-    addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Id articulo" ) );
-    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo articulo" ) );
-    addSubFormHeader ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre articulo" ) );
-    addSubFormHeader ( "numlalbaranp", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Numero de linea" ) );
-    addSubFormHeader ( "desclalbaranp", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion" ) );
-    addSubFormHeader ( "cantlalbaranp", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
-    addSubFormHeader ( "pvplalbaranp", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Precio" ) );
-    addSubFormHeader ( "ivalalbaranp", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% I.V.A." ) );
-    addSubFormHeader ( "reqeqlalbaranp", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "% R.E." ) );
-    addSubFormHeader ( "descuentolalbaranp", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% Descuento" ) );
-    addSubFormHeader ( "idalbaranp", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id albaran" ) );
-    addSubFormHeader ( "ordenlalbaranp", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Orden" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "Id articulo" ) );
+    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Codigo completo articulo" ) );
+    addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Nombre articulo" ) );
+    addSubFormHeader ( "numlalbaranp", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView, _( "Numero de linea" ) );
+    addSubFormHeader ( "desclalbaranp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Descripcion" ) );
+    addSubFormHeader ( "cantlalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad" ) );
+    addSubFormHeader ( "pvplalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Precio" ) );
+    addSubFormHeader ( "ivalalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "% I.V.A." ) );
+    addSubFormHeader ( "reqeqlalbaranp", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "% R.E." ) );
+    addSubFormHeader ( "descuentolalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "% Descuento" ) );
+    addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id albaran" ) );
+    addSubFormHeader ( "ordenlalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "Orden" ) );
     setinsercion ( TRUE );
     setDelete ( TRUE );
     setOrdenEnabled ( TRUE );

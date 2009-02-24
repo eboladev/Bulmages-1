@@ -137,12 +137,12 @@ int RutaComercialView::cargar ( QString id )
 {
     _depura ( "RutaComercialView::cargar", 0 );
     int err = RutaComercial::cargar ( id );
-    setWindowTitle ( _( "Ruta comercial" ) + " " + DBvalue ( "idrutacomercial" ) );
-    mui_fecharutacomercial->setText ( DBvalue ( "fecharutacomercial" ) );
-    mui_idcliente->setId ( DBvalue ( "idcliente" ) );
-    mui_comentrutacomercial->setPlainText ( DBvalue ( "comentariosrutacomercial" ) );
-    mui_horarutacomercial->setText ( DBvalue ( "horarutacomercial" ) );
-    mui_refrutacomercial->setText ( DBvalue ( "refrutacomercial" ) );
+    setWindowTitle ( _( "Ruta comercial" ) + " " + dbValue ( "idrutacomercial" ) );
+    mui_fecharutacomercial->setText ( dbValue ( "fecharutacomercial" ) );
+    mui_idcliente->setId ( dbValue ( "idcliente" ) );
+    mui_comentrutacomercial->setPlainText ( dbValue ( "comentariosrutacomercial" ) );
+    mui_horarutacomercial->setText ( dbValue ( "horarutacomercial" ) );
+    mui_refrutacomercial->setText ( dbValue ( "refrutacomercial" ) );
     dialogChanges_cargaInicial();
     _depura ( "END RutaComercialView::cargar", 0 );
     return err;

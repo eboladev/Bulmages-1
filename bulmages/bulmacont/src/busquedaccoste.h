@@ -57,9 +57,9 @@ public:
     BusquedaCCoste ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaCCoste();
     virtual void setidc_coste ( QString idc_coste );
-    virtual void setValorCampo ( QString idc_coste );
+    virtual void setFieldValue ( QString idc_coste );
     QString idc_coste();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     void m_activated ( int index );

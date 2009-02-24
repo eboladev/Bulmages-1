@@ -31,7 +31,7 @@ void myplugin::BalanceGrafico()
 {
     // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
     estadisticasview * est = new estadisticasview ( 0, 0 );
-    est->inicializa ( conexionbase );
+    est->inicializa ( dbConnection );
     est->exec();
     delete est;
 }// end BalanceGrafico
@@ -42,7 +42,7 @@ void myplugin::inicializa ( Bulmages01 *bges )
     QPixmap * estadisticasIcon = new QPixmap ( estadisticas );
 
     empresaactual = & ( bges->empresaactual );
-    conexionbase = empresaactual->bdempresa();
+    dbConnection = empresaactual->bdempresa();
     //El menu de empresa
     QPopupMenu *pPluginMenu = new QPopupMenu();
     pPluginMenu->setCheckable ( true );

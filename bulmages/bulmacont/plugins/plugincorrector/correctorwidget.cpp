@@ -77,7 +77,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de asientos abiertos.
     QString query;
     query.sprintf ( "SELECT *, asiento.idasiento AS idas FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL" );
-    cur = conexionbase->loadQuery ( query );
+    cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> con fecha <B>" + cur->valor ( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
@@ -89,7 +89,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de insercion en cuentas intermedias (con hijos).
     /// --------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento = asiento.idasiento" );
-    cur = conexionbase->loadQuery ( query );
+    cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->valor ( "codigo" ) + "</B> no hija..";
@@ -107,7 +107,7 @@ void correctorwidget::on_mui_corregir_clicked()
     query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento ";
     query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento ";
     query += " ORDER BY ordenasiento";
-    cur = conexionbase->loadQuery ( query );
+    cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         float ing, gas, act, pas, net;
         ing = cur->valor ( "ingresos" ).toFloat();
@@ -128,7 +128,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// --------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe <> 0" );
     _depura ( query, 10 );
-    cur = conexionbase->loadQuery ( query, "hola1" );
+    cur = dbConnection->loadQuery ( query, "hola1" );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una inserci� en el debe de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
@@ -140,7 +140,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de cuentas con insercion en el haber que lo tienen bloqueado.
     /// ---------------------------------------------------------------------
     query.sprintf ( "SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nohaber AND apunte.idasiento = asiento.idasiento AND apunte.haber <> 0" );
-    cur = conexionbase->loadQuery ( query );
+    cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
@@ -152,7 +152,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de amortizaciones con plazos expirados.
     /// -----------------------------------------------
     query = "SELECT * FROM linamortizacion WHERE fechaprevista < now() AND idasiento IS NULL";
-    cur = conexionbase->loadQuery ( query );
+    cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->valor ( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->valor ( "fechaprevista" ) + "</B>.";
@@ -164,7 +164,7 @@ void correctorwidget::on_mui_corregir_clicked()
     /// Calculo de asientos con IVA y sin facturas asociadas.
     /// -----------------------------------------------------
     query = "SELECT * FROM borrador, cuenta WHERE cuenta.idcuenta = borrador.idcuenta AND codigo LIKE '%47%' AND idasiento NOT IN (SELECT idasiento FROM registroiva)";
-    cur = conexionbase->loadQuery ( query );
+    cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
         cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->valor ( "codigo" ) + ") sin que haya una factura asociada.";

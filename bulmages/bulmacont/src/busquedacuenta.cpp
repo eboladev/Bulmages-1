@@ -69,10 +69,10 @@ QString BusquedaCuenta::text()
 /**
 \return
 **/
-QString BusquedaCuenta::valorCampo()
+QString BusquedaCuenta::fieldValue()
 {
-    _depura("BusquedaCuenta::valorCampo()");
-    _depura("END BusquedaCuenta::valorCampo()");
+    _depura("BusquedaCuenta::fieldValue()");
+    _depura("END BusquedaCuenta::fieldValue()");
     return mdb_idcuenta;
 }
 
@@ -92,10 +92,10 @@ void BusquedaCuenta::setText ( QString val )
 /**
 \param val
 **/
-void BusquedaCuenta::setValorCampo ( QString val )
+void BusquedaCuenta::setFieldValue ( QString val )
 {
-    _depura("BusquedaCuenta::setValorCampo", 0, val);
-    _depura("END BusquedaCuenta::setValorCampo"); 
+    _depura("BusquedaCuenta::setFieldValue", 0, val);
+    _depura("END BusquedaCuenta::setFieldValue"); 
     setidcuenta ( val );
 }
 

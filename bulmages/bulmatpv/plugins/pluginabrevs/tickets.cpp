@@ -14,9 +14,9 @@ Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), B
     Ticket *ticket;
     for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
         ticket = emp1->listaTickets() ->at ( i );
-        if ( ticket->DBvalue ( "idtrabajador" ) == emp1->ticketActual() ->DBvalue ( "idtrabajador" ) ) {
+        if ( ticket->dbValue ( "idtrabajador" ) == emp1->ticketActual() ->dbValue ( "idtrabajador" ) ) {
             QPushButton * toolbutton = new QPushButton ( mui_frame );
-            toolbutton->setText ( ticket->DBvalue ( "nomticket" ) );
+            toolbutton->setText ( ticket->dbValue ( "nomticket" ) );
 
             QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
             if ( !m_hboxLayout1 ) {
@@ -43,8 +43,8 @@ void Tickets::ticketClicked()
     for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
         ticket = emp1->listaTickets() ->at ( i );
 
-        if ( toolbutton->text() == ticket->DBvalue ( "nomticket" )
-                && ticket->DBvalue ( "idtrabajador" ) == emp1->ticketActual() ->DBvalue ( "idtrabajador" ) ) {
+        if ( toolbutton->text() == ticket->dbValue ( "nomticket" )
+                && ticket->dbValue ( "idtrabajador" ) == emp1->ticketActual() ->dbValue ( "idtrabajador" ) ) {
             ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
             ticket->pintar();
         }// end if

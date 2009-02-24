@@ -30,14 +30,14 @@ void Iva::definetabla()
     _depura ( "Iva::definetabla", 0 );
     setDbTableName ( "iva" );
     setDbFieldId ( "idiva" );
-    addDbField ( "idiva", BlDbField::DBint, BlDbField::DBPrimaryKey, "Identificador" );
-    addDbField ( "idtipoiva", BlDbField::DBint, BlDbField::DBNotNull, "Id tipo IVA" );
-    addDbField ( "idregistroiva", BlDbField::DBint, BlDbField::DBNotNull, "Id registro IVA" );
-    addDbField ( "baseiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Cantidad" );
-    addDbField ( "ivaiva", BlDbField::DBnumeric, BlDbField::DBNotNull, "Precio linea presupuesto" );
-    addDbField ( "idcuenta", BlDbField::DBint, BlDbField::DBNoSave, "Id. cuenta" );
-    addDbField ( "codigo", BlDbField::DBvarchar, BlDbField::DBNoSave, "Codigo" );
-    addDbField ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNoSave, "Nombre tipo IVA" );
+    addDbField ( "idiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, "Identificador" );
+    addDbField ( "idtipoiva", BlDbField::DbInt, BlDbField::DbNotNull, "Id tipo IVA" );
+    addDbField ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNotNull, "Id registro IVA" );
+    addDbField ( "baseiva", BlDbField::DbNumeric, BlDbField::DbNotNull, "Cantidad" );
+    addDbField ( "ivaiva", BlDbField::DbNumeric, BlDbField::DbNotNull, "Precio linea presupuesto" );
+    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, "Id. cuenta" );
+    addDbField ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, "Codigo" );
+    addDbField ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, "Nombre tipo IVA" );
     _depura ( "END Iva::definetabla", 0 );
 }
 
@@ -119,9 +119,9 @@ void Iva::vaciaIva()
 int Iva::borrar()
 {
     _depura ( "Iva::borrar", 0 );
-    if ( DBvalue ( "idiva" ) != "" ) {
+    if ( dbValue ( "idiva" ) != "" ) {
         m_companyact->begin();
-        int error = m_companyact->runQuery ( "DELETE FROM iva WHERE idiva = " + DBvalue ( "idiva" ) );
+        int error = m_companyact->runQuery ( "DELETE FROM iva WHERE idiva = " + dbValue ( "idiva" ) );
         if ( error ) {
             m_companyact->rollback();
             return -1;

@@ -40,14 +40,14 @@ Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
         BlFixed descuentolinea ( "0.00" );
         for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
             linea = tick->listaLineas() ->at ( i );
-            BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-            BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-            BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+            BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+            BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+            BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
             BlFixed cantpvp = cant * pvpund;
             BlFixed base = cantpvp - cantpvp * desc1 / 100;
             descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-            basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-            basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
+            basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+            basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
         } // end for
 
         BlFixed basei ( "0.00" );
@@ -151,11 +151,11 @@ void Devolucion::pintar()
 
     for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
         item = m_ticket->listaLineas() ->at ( i );
-        float cantidadLinea = QString ( item->DBvalue ( "cantlalbaran" ) ).toFloat();
+        float cantidadLinea = QString ( item->dbValue ( "cantlalbaran" ) ).toFloat();
         lineastr newlinea;
         newlinea.cantidad = cantidadLinea;
-        newlinea.ref = item->DBvalue ( "codigocompletoarticulo" );
-        newlinea.precioUnidad = item->DBvalue ( "pvplalbaran" ).toFloat();
+        newlinea.ref = item->dbValue ( "codigocompletoarticulo" );
+        newlinea.precioUnidad = item->dbValue ( "pvplalbaran" ).toFloat();
         newlinea.linea = i;
 
         if ( cantidadLinea > 0 ) {
@@ -203,12 +203,12 @@ void Devolucion::pintar()
     QObject::connect ( this->mui_devolverTable, SIGNAL ( cellDoubleClicked ( int, int ) ),
                        this, SLOT ( devolverTableDoubleclick ( int , int ) ) );
 
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
         mui_clienteLabel->setText ( cur->valor ( "cifcliente" ).toAscii() + " " + cur->valor ( "nomcliente" ).toAscii() );
     }
     delete cur;
-    mui_fechaLabel->setText ( m_ticket->DBvalue ( "fechalbaran" ) + " " + m_ticket->DBvalue ( "horaalbaran" ) );
+    mui_fechaLabel->setText ( m_ticket->dbValue ( "fechalbaran" ) + " " + m_ticket->dbValue ( "horaalbaran" ) );
 
     refreshDevolver();
 
@@ -257,14 +257,14 @@ void Devolucion::pintar()
             tableItem = new QTableWidgetItem ( BlFixed ( QString::number ( lineasPositivas[i].cantidad ) ).toQString() );
             this->mui_ticketTable->setItem ( tmp, 0, tableItem );
 
-            tableItem = new QTableWidgetItem ( item->DBvalue ( "nomarticulo" ) );
+            tableItem = new QTableWidgetItem ( item->dbValue ( "nomarticulo" ) );
             this->mui_ticketTable->setItem ( tmp, 1, tableItem );
 
-            tableItem = new QTableWidgetItem ( item->DBvalue ( "pvplalbaran" ) );
+            tableItem = new QTableWidgetItem ( item->dbValue ( "pvplalbaran" ) );
             this->mui_ticketTable->setItem ( tmp, 2, tableItem );
 
             BlFixed totalLinea ( "0.00" );
-            totalLinea = BlFixed ( item->DBvalue ( "pvplalbaran" ) ) * lineasPositivas[i].cantidad;
+            totalLinea = BlFixed ( item->dbValue ( "pvplalbaran" ) ) * lineasPositivas[i].cantidad;
             tableItem = new QTableWidgetItem ( totalLinea.toQString() );
             this->mui_ticketTable->setItem ( tmp, 3, tableItem );
 
@@ -279,17 +279,17 @@ void Devolucion::pintar()
      this->mui_ticketTable->insertRow ( i );
      item = m_ticket->listaLineas() ->at ( i );
 
-     tableItem = new QTableWidgetItem ( item->DBvalue ( "cantlalbaran" ) );
+     tableItem = new QTableWidgetItem ( item->dbValue ( "cantlalbaran" ) );
      this->mui_ticketTable->setItem ( i, 0, tableItem );
 
-     tableItem = new QTableWidgetItem ( item->DBvalue ( "nomarticulo" ) );
+     tableItem = new QTableWidgetItem ( item->dbValue ( "nomarticulo" ) );
      this->mui_ticketTable->setItem ( i, 1, tableItem );
 
-     tableItem = new QTableWidgetItem ( item->DBvalue ( "pvplalbaran" ) );
+     tableItem = new QTableWidgetItem ( item->dbValue ( "pvplalbaran" ) );
      this->mui_ticketTable->setItem ( i, 2, tableItem );
 
      BlFixed totalLinea ( "0.00" );
-     totalLinea = BlFixed ( item->DBvalue ( "cantlalbaran" ) ) * BlFixed ( item->DBvalue ( "pvplalbaran" ) );
+     totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
      tableItem = new QTableWidgetItem ( totalLinea.toQString() );
      this->mui_ticketTable->setItem ( i, 3, tableItem );
 
@@ -447,7 +447,7 @@ void Devolucion::on_mui_valeButton_clicked()
 void Devolucion::on_mui_efectivoButton_clicked()
 {
     if ( m_ticket == NULL ) return;
-    if ( m_ticket->DBvalue ( "idalbaran" ).isEmpty() ) return;
+    if ( m_ticket->dbValue ( "idalbaran" ).isEmpty() ) return;
 
 
     int ret = QMessageBox::information ( this, QString ( "Confirmacion" ),
@@ -499,13 +499,13 @@ void Devolucion::refreshDevolver()
         int numlinea = ( int ) ( QString ( mui_devolverTable->item ( i, 4 )->text() ).toInt() );
         linea = m_ticket->listaLineas() ->at ( numlinea );
         BlFixed cant ( mui_devolverTable->item ( i, 0 )->text() );
-        BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-        basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
+        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
     } // end for
 
     BlFixed basei ( "0.00" );
@@ -522,7 +522,7 @@ void Devolucion::refreshDevolver()
         if (m_listadescuentos->rowCount()) {
             for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
                 linea1 = m_listadescuentos->lineaat(i);
-                BlFixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
                 porcentt = porcentt + propor;
             } // end for
         } // end if

@@ -110,16 +110,16 @@ void Q19QToolButton1::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
                 /// La primera vez se ponen las cabeceras
                 if ( j == 0 ) {
-                    cabeceraPresentador ( out, rec->DBvalue ( "idfactura" ) );
-                    cabeceraOrdenante ( out, rec->DBvalue ( "idfactura" ) );
+                    cabeceraPresentador ( out, rec->dbValue ( "idfactura" ) );
+                    cabeceraOrdenante ( out, rec->dbValue ( "idfactura" ) );
                 }
-                cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
+                cobroQ19 ( out, rec->dbValue ( "idfactura" ) );
                 j++;
-                total = total + BlFixed ( rec->DBvalue ( "totalfactura" ) );
+                total = total + BlFixed ( rec->dbValue ( "totalfactura" ) );
             } // end if
         } // end for
      

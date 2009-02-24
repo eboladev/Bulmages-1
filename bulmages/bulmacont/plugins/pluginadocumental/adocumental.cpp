@@ -39,7 +39,7 @@ myplugin1::myplugin1 ( BcCompany *emp )
 {
     _depura ( "myplugin1::myplugin1", 0 );
     empresaactual = emp;
-    conexionbase = emp->bdempresa();
+    dbConnection = emp->bdempresa();
     _depura ( "END myplugin1::myplugin1", 0 );
 }
 
@@ -120,7 +120,7 @@ adocumental::adocumental ( BcCompany *emp, QWidget *parent )
     setupUi ( this );
 
     empresaactual = emp;
-    conexionbase = emp->bdempresa();
+    dbConnection = emp->bdempresa();
     modo = 0;
     idadocumental = "";
     QString query;
@@ -168,9 +168,9 @@ void adocumental::inicializa()
 {
     _depura ( "adocumental::inicializa", 0 );
     QString query = "SELECT * FROM adocumental LEFT JOIN asiento ON adocumental.idasiento = asiento.idasiento ORDER BY ordenasiento";
-    conexionbase->begin();
-    BlDbRecordSet *cursoraux1 = conexionbase->loadQuery ( query, "elquery" );
-    conexionbase->commit();
+    dbConnection->begin();
+    BlDbRecordSet *cursoraux1 = dbConnection->loadQuery ( query, "elquery" );
+    dbConnection->commit();
     m_listado->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
     while ( !cursoraux1->eof() ) {
@@ -224,10 +224,10 @@ void adocumental::doubleclicked ( int row, int, int, const QPoint & )
 void adocumental::newADocumental ( QString archivo )
 {
     _depura ( "adocumental::newADocumental", 0 );
-    QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + conexionbase->sanearCadena ( archivo ) + "')";
-    conexionbase->begin();
-    conexionbase->runQuery ( SQLQuery );
-    conexionbase->commit();
+    QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + dbConnection->sanearCadena ( archivo ) + "')";
+    dbConnection->begin();
+    dbConnection->runQuery ( SQLQuery );
+    dbConnection->commit();
     _depura ( "END adocumental::newADocumental", 0 );
 }
 
@@ -274,9 +274,9 @@ void adocumental::asociaasiento ( QString idasiento )
     if ( ( idadocumental != "" ) && ( idasiento != "" ) ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = " + idasiento + " WHERE idadocumental = " + idadocumental;
         _depura ( SQLQuery, 10 );
-        conexionbase->begin();
-        conexionbase->runQuery ( SQLQuery );
-        conexionbase->commit();
+        dbConnection->begin();
+        dbConnection->runQuery ( SQLQuery );
+        dbConnection->commit();
     } // end if
     inicializa();
 }
@@ -309,9 +309,9 @@ void adocumental::boton_desasociar()
     idadocumental = m_listado->item ( m_listado->currentRow(), COL_IDADOCUMENTAL ) ->text();
     if ( idadocumental != "" ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = NULL WHERE idadocumental = " + idadocumental;
-        conexionbase->begin();
-        conexionbase->runQuery ( SQLQuery );
-        conexionbase->commit();
+        dbConnection->begin();
+        dbConnection->runQuery ( SQLQuery );
+        dbConnection->commit();
     } // end if
     inicializa();
     _depura ( "END adocumental::boton_desasociar", 0 );
@@ -327,9 +327,9 @@ void adocumental::s_deleteADocumental()
     idadocumental = m_listado->item ( m_listado->currentRow(), COL_IDADOCUMENTAL ) ->text();
     if ( idadocumental != "" ) {
         QString SQLQuery = "DELETE FROM adocumental WHERE idadocumental = " + idadocumental;
-        conexionbase->begin();
-        conexionbase->runQuery ( SQLQuery );
-        conexionbase->commit();
+        dbConnection->begin();
+        dbConnection->runQuery ( SQLQuery );
+        dbConnection->commit();
     } // end if
     inicializa();
     _depura ( "END adocumental::s_deleteADocumental", 0 );
@@ -348,9 +348,9 @@ void adocumental::s_saveADocumental()
         Query  = "UPDATE adocumental SET ";
         Query += "descripcionadocumental = '" + m_listado->item ( row, COL_DESCRIPCIONADOCUMENTAL ) ->text() + "'";
         Query += " WHERE idadocumental = " + idadocumental;
-        conexionbase->begin();
-        conexionbase->runQuery ( Query );
-        conexionbase->commit();
+        dbConnection->begin();
+        dbConnection->runQuery ( Query );
+        dbConnection->commit();
     } // end if
     inicializa();
     _depura ( "END adocumental::s_saveADocumental", 0 );

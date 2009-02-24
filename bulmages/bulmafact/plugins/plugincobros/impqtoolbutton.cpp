@@ -95,7 +95,7 @@ void GenCobroQToolButton::click()
 		FacturaView *fpv = (FacturaView *) m_object;
 		int nuevo = 1;
 		/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
-		QString query = "SELECT * FROM cobro WHERE refcobro ='"+ fpv->DBvalue("reffactura")+"'";
+		QString query = "SELECT * FROM cobro WHERE refcobro ='"+ fpv->dbValue("reffactura")+"'";
 		BlDbRecordSet *cur = fpv->mainCompany()->loadQuery(query);
 		if (cur->numregistros() > 0) {
 		QMessageBox msgBox;
@@ -130,10 +130,10 @@ void GenCobroQToolButton::click()
 		if (nuevo) {
 			CobroView *bud = new CobroView(fpv->mainCompany(), 0);
 			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-			bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+			bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
 			bud->setDbValue ( "cantcobro", fpv->m_totalfactura->text() );
-			bud->setDbValue ( "refcobro", fpv->DBvalue ( "reffactura" ) );
-			bud->setDbValue ( "comentcobro", fpv->DBvalue ( "descfactura" ) );
+			bud->setDbValue ( "refcobro", fpv->dbValue ( "reffactura" ) );
+			bud->setDbValue ( "comentcobro", fpv->dbValue ( "descfactura" ) );
 			bud->pintar();
 			bud->show();
 		} // end if
@@ -144,7 +144,7 @@ void GenCobroQToolButton::click()
 			AlbaranClienteView *fpv = (AlbaranClienteView *) m_object;
 			int nuevo = 1;
 			/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
-			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->DBvalue("refalbaran")+"'";
+			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->dbValue("refalbaran")+"'";
 			BlDbRecordSet *cur = fpv->mainCompany()->loadQuery(query);
 			if (cur->numregistros() > 0) {
 			QMessageBox msgBox;
@@ -179,10 +179,10 @@ void GenCobroQToolButton::click()
 			if (nuevo) {
 			CobroView *bud = new CobroView((BfCompany *)fpv->mainCompany(), 0);
 			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-			bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+			bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
 			bud->setDbValue ( "cantcobro", fpv->m_totalalbaran->text() );
-			bud->setDbValue ( "refcobro", fpv->DBvalue ( "refalbaran" ) );
-			bud->setDbValue ( "comentcobro", fpv->DBvalue ( "descalbaran" ) );
+			bud->setDbValue ( "refcobro", fpv->dbValue ( "refalbaran" ) );
+			bud->setDbValue ( "comentcobro", fpv->dbValue ( "descalbaran" ) );
 			bud->pintar();
 			bud->show();
 			} // end if
@@ -193,7 +193,7 @@ void GenCobroQToolButton::click()
 			PedidoClienteView *fpv = (PedidoClienteView *) m_object;
 			int nuevo = 1;
 			/// Comprobamos que no haya ya un cobro con la misma referencia y lo ponemos
-			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->DBvalue("refpedidocliente")+"'";
+			QString query = "SELECT * FROM cobro WHERE refcobro ='"+fpv->dbValue("refpedidocliente")+"'";
 			BlDbRecordSet *cur = fpv->mainCompany()->loadQuery(query);
 			if (cur->numregistros() > 0) {
 			QMessageBox msgBox;
@@ -228,10 +228,10 @@ void GenCobroQToolButton::click()
 			if (nuevo) {
 			CobroView *bud = new CobroView( (BfCompany *) fpv->mainCompany(), 0);
 			fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-			bud->setDbValue ( "idcliente", fpv->DBvalue ( "idcliente" ) );
+			bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
 			bud->setDbValue ( "cantcobro", fpv->m_totalpedidocliente->text() );
-			bud->setDbValue ( "refcobro", fpv->DBvalue ( "refpedidocliente" ) );
-			bud->setDbValue ( "comentcobro", fpv->DBvalue ( "descpedidocliente" ) );
+			bud->setDbValue ( "refcobro", fpv->dbValue ( "refpedidocliente" ) );
+			bud->setDbValue ( "comentcobro", fpv->dbValue ( "descpedidocliente" ) );
 			bud->pintar();
 			bud->show();
 			} // end if

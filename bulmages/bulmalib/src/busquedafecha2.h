@@ -37,9 +37,9 @@ public:
     ~BusquedaFecha2();
 
     void setText ( QString val );
-    virtual void setValorCampo ( QString val );
+    virtual void setFieldValue ( QString val );
     QString text();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
     void selectAll();
     virtual bool eventFilter ( QObject *obj, QEvent *event );
 

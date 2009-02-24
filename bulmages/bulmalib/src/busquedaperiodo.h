@@ -38,9 +38,9 @@ public:
     BusquedaPeriodo ( QWidget *parent = 0 );
     ~BusquedaPeriodo();
     virtual void setperiodo ( QString periodo );
-    virtual void setValorCampo ( QString periodo );
+    virtual void setFieldValue ( QString periodo );
     QString periodo();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     void s_activated ( int index );

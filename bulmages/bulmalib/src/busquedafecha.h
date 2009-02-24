@@ -38,10 +38,10 @@ public:
     ~BusquedaFecha();
     virtual void setfecha ( QString val );
     virtual void setText ( QString val );
-    virtual void setValorCampo ( QString val );
+    virtual void setFieldValue ( QString val );
     virtual QString fecha();
     virtual QString text();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     virtual void s_searchFecha();

@@ -56,19 +56,19 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Pedido Cliente" ) );
         setDbTableName ( "pedidocliente" );
         setDbFieldId ( "idpedidocliente" );
-        addDbField ( "idpedidocliente", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
-        addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull, _( "Cliente" ) );
-        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Almacen" ) );
-        addDbField ( "numpedidocliente", BlDbField::DBint, BlDbField::DBNothing, _( "Numero pedido cliente" ) );
-        addDbField ( "fechapedidocliente", BlDbField::DBdate, BlDbField::DBNothing, _( "Identificador presupuesto" ) );
-        addDbField ( "descpedidocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Fecha" ) );
-        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Forma pago" ) );
-        addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Trabajador" ) );
-        addDbField ( "contactpedidocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Contacto" ) );
-        addDbField ( "telpedidocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono" ) );
-        addDbField ( "comentpedidocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
-        addDbField ( "procesadopedidocliente", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesado" ) );
-        addDbField ( "refpedidocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia" ) );
+        addDbField ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Identificador" ) );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Cliente" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Almacen" ) );
+        addDbField ( "numpedidocliente", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero pedido cliente" ) );
+        addDbField ( "fechapedidocliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Identificador presupuesto" ) );
+        addDbField ( "descpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Fecha" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Forma pago" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _( "Trabajador" ) );
+        addDbField ( "contactpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Contacto" ) );
+        addDbField ( "telpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono" ) );
+        addDbField ( "comentpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
+        addDbField ( "procesadopedidocliente", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Procesado" ) );
+        addDbField ( "refpedidocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
 
 
         /// Disparamos los plugins.
@@ -179,7 +179,7 @@ void PedidoClienteView::generarAlbaran()
 
         QString SQLQuery = "";
 
-        if ( DBvalue ( "refpedidocliente" ).isEmpty() || DBvalue ( "idcliente" ).isEmpty() ) {
+        if ( dbValue ( "refpedidocliente" ).isEmpty() || dbValue ( "idcliente" ).isEmpty() ) {
             /// El presupuesto no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
@@ -190,7 +190,7 @@ void PedidoClienteView::generarAlbaran()
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_refpedidocliente->text() + "' AND idcliente = " + mui_idcliente->idcliente();
             } // end if
         } else {
-            SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
+            SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + dbValue ( "refpedidocliente" ) + "' AND idcliente = " + dbValue ( "idcliente" );
         } // end if
 
         cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -219,32 +219,32 @@ void PedidoClienteView::generarAlbaran()
 
         /// Traspasamos los datos al albaran.
         recogeValores();
-        bud->setDbValue ( "comentalbaran", DBvalue ( "comentpedidocliente" ) );
-        bud->setDbValue ( "descalbaran", DBvalue ( "descpedidocliente" ) );
-        bud->setDbValue ( "idforma_pago", DBvalue ( "idforma_pago" ) );
-        bud->setDbValue ( "refalbaran", DBvalue ( "refpedidocliente" ) );
-        bud->setDbValue ( "idcliente", DBvalue ( "idcliente" ) );
-        bud->setDbValue ( "idalmacen", DBvalue ( "idalmacen" ) );
-        bud->setDbValue ( "contactalbaran", DBvalue ( "contactpedidocliente" ) );
-        bud->setDbValue ( "telalbaran", DBvalue ( "telpedidocliente" ) );
-        bud->setDbValue ( "idtrabajador", DBvalue ( "idtrabajador" ) );
+        bud->setDbValue ( "comentalbaran", dbValue ( "comentpedidocliente" ) );
+        bud->setDbValue ( "descalbaran", dbValue ( "descpedidocliente" ) );
+        bud->setDbValue ( "idforma_pago", dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "refalbaran", dbValue ( "refpedidocliente" ) );
+        bud->setDbValue ( "idcliente", dbValue ( "idcliente" ) );
+        bud->setDbValue ( "idalmacen", dbValue ( "idalmacen" ) );
+        bud->setDbValue ( "contactalbaran", dbValue ( "contactpedidocliente" ) );
+        bud->setDbValue ( "telalbaran", dbValue ( "telpedidocliente" ) );
+        bud->setDbValue ( "idtrabajador", dbValue ( "idtrabajador" ) );
 
         /// Traspasamos las lineas al albaran.
         BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
             linea = m_listalineas->lineaat ( i );
-            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDbValue ( "desclalbaran", linea->DBvalue ( "desclpedidocliente" ) );
-                linea1->setDbValue ( "cantlalbaran", linea->DBvalue ( "cantlpedidocliente" ) );
-                linea1->setDbValue ( "pvplalbaran", linea->DBvalue ( "pvplpedidocliente" ) );
-                linea1->setDbValue ( "ivalalbaran", linea->DBvalue ( "ivalpedidocliente" ) );
-                linea1->setDbValue ( "descuentolalbaran", linea->DBvalue ( "descuentolpedidocliente" ) );
-                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDbValue ( "desclalbaran", linea->dbValue ( "desclpedidocliente" ) );
+                linea1->setDbValue ( "cantlalbaran", linea->dbValue ( "cantlpedidocliente" ) );
+                linea1->setDbValue ( "pvplalbaran", linea->dbValue ( "pvplpedidocliente" ) );
+                linea1->setDbValue ( "ivalalbaran", linea->dbValue ( "ivalpedidocliente" ) );
+                linea1->setDbValue ( "descuentolalbaran", linea->dbValue ( "descuentolpedidocliente" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -252,11 +252,11 @@ void PedidoClienteView::generarAlbaran()
         /// Traspasamos los descuentos.
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
-            if ( linea1->DBvalue ( "proporciondpedidocliente" ) != "" ) {
+            if ( linea1->dbValue ( "proporciondpedidocliente" ) != "" ) {
                 linea = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
                 bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-                linea->setDbValue ( "conceptdalbaran", linea1->DBvalue ( "conceptdpedidocliente" ) );
-                linea->setDbValue ( "proporciondalbaran", linea1->DBvalue ( "proporciondpedidocliente" ) );
+                linea->setDbValue ( "conceptdalbaran", linea1->dbValue ( "conceptdpedidocliente" ) );
+                linea->setDbValue ( "proporciondalbaran", linea1->dbValue ( "proporciondpedidocliente" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
                 bud->getlistadescuentos() ->nuevoRegistro();
             } // end if
@@ -332,9 +332,9 @@ int PedidoClienteView::cargarPost ( QString idbudget )
 int PedidoClienteView::guardarPost()
 {
     _depura ( "PedidoClienteView::guardar", 0 );
-    m_listalineas->setColumnValue ( "idpedidocliente", DBvalue ( "idpedidocliente" ) );
+    m_listalineas->setColumnValue ( "idpedidocliente", dbValue ( "idpedidocliente" ) );
     m_listalineas->guardar();
-    m_listadescuentos->setColumnValue ( "idpedidocliente", DBvalue ( "idpedidocliente" ) );
+    m_listadescuentos->setColumnValue ( "idpedidocliente", dbValue ( "idpedidocliente" ) );
     m_listadescuentos->guardar();
     return 0;
 }

@@ -118,9 +118,9 @@ void ImpQToolButton::click()
             for ( int i = 0; i < sub->rowCount(); i++ ) {
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
-                QString val = rec->DBvalue ( "selector" );
+                QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
-                    QString id = rec->DBvalue ( "idpresupuesto" );
+                    QString id = rec->dbValue ( "idpresupuesto" );
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewPresupuestoView", m_companyact);
 					if (!resur) {
@@ -152,9 +152,9 @@ void ImpQToolButton::click()
             for ( int i = 0; i < sub->rowCount(); i++ ) {
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
-                QString val = rec->DBvalue ( "selector" );
+                QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
-                    QString id = rec->DBvalue ( "idfactura" );
+                    QString id = rec->dbValue ( "idfactura" );
 
 
 
@@ -190,9 +190,9 @@ void ImpQToolButton::click()
             for ( int i = 0; i < sub->rowCount(); i++ ) {
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
-                QString val = rec->DBvalue ( "selector" );
+                QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
-                    QString id = rec->DBvalue ( "idpedidocliente" );
+                    QString id = rec->dbValue ( "idpedidocliente" );
 
 					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
@@ -226,9 +226,9 @@ void ImpQToolButton::click()
             for ( int i = 0; i < sub->rowCount(); i++ ) {
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
-                QString val = rec->DBvalue ( "selector" );
+                QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
-                    QString id = rec->DBvalue ( "idalbaran" );
+                    QString id = rec->dbValue ( "idalbaran" );
 
 				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
 				int resur = g_plugins->lanza ("SNewAlbaranClienteView", m_companyact);
@@ -300,9 +300,9 @@ void ImpQToolButton::click()
             for ( int i = 0; i < sub->rowCount(); i++ ) {
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
-                QString val = rec->DBvalue ( "selector" );
+                QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
-                    QString id = rec->DBvalue ( "idcobro" );
+                    QString id = rec->dbValue ( "idcobro" );
 
                     CobroView *pres = new CobroView ( m_companyact, 0 );
                     pres->cargar ( id );
@@ -315,15 +315,15 @@ void ImpQToolButton::click()
 
                     txt += " <storyPlace x=\"0cm\" y=\"0cm\" width=\"15cm\" height=\"1cm\">\n";
                     txt += " <setFont name=\"Courier\" size=\"8\"/>\n";
-                    txt += " <drawString x=\"4.7cm\" y=\"" + QString::number ( col + 7.6 ) + "cm\">" + pres->DBvalue ( "idcobro" ) + "</drawString>\n";
+                    txt += " <drawString x=\"4.7cm\" y=\"" + QString::number ( col + 7.6 ) + "cm\">" + pres->dbValue ( "idcobro" ) + "</drawString>\n";
                     txt += " <drawString x=\"7.2cm\" y=\"" + QString::number ( col + 7.6 ) + "cm\">PALMA DE MALLORCA</drawString>\n";
-                    txt += " <drawString x=\"14.2cm\" y=\"" + QString::number ( col + 7.6 ) + "cm\">EUROS " + pres->DBvalue ( "cantcobro" ) + "</drawString>\n";
+                    txt += " <drawString x=\"14.2cm\" y=\"" + QString::number ( col + 7.6 ) + "cm\">EUROS " + pres->dbValue ( "cantcobro" ) + "</drawString>\n";
 
-                    txt += " <drawString x=\"5.7cm\" y=\"" + QString::number ( col + 6.8 ) + "cm\">" + pres->DBvalue ( "fechacobro" ) + "</drawString>\n";
-                    txt += " <drawString x=\"12.4cm\" y=\"" + QString::number ( col + 6.8 ) + "cm\">" + pres->DBvalue ( "fechavenccobro" ) + "</drawString>\n";
+                    txt += " <drawString x=\"5.7cm\" y=\"" + QString::number ( col + 6.8 ) + "cm\">" + pres->dbValue ( "fechacobro" ) + "</drawString>\n";
+                    txt += " <drawString x=\"12.4cm\" y=\"" + QString::number ( col + 6.8 ) + "cm\">" + pres->dbValue ( "fechavenccobro" ) + "</drawString>\n";
 
-                    if ( pres->DBvalue ( "idbanco" ) != "" ) {
-                        QString query = "SELECT * FROM banco WHERE idbanco =" + pres->DBvalue ( "idbanco" );
+                    if ( pres->dbValue ( "idbanco" ) != "" ) {
+                        QString query = "SELECT * FROM banco WHERE idbanco =" + pres->dbValue ( "idbanco" );
                         cur1 = m_companyact->loadQuery ( query );
                         if ( !cur1->eof() ) {
                             txt += " <drawString x=\"9.4cm\" y=\"" + QString::number ( col + 4.4 ) + "cm\">" + cur1->valor ( "nombanco" ) + "</drawString>\n";
@@ -334,8 +334,8 @@ void ImpQToolButton::click()
                     } // end if
 
 
-                    if ( pres->DBvalue ( "idcliente" ) != "" ) {
-                        QString query = "SELECT * FROM cliente WHERE idcliente =" + pres->DBvalue ( "idcliente" );
+                    if ( pres->dbValue ( "idcliente" ) != "" ) {
+                        QString query = "SELECT * FROM cliente WHERE idcliente =" + pres->dbValue ( "idcliente" );
                         cur = m_companyact->loadQuery ( query );
                         if ( !cur->eof() ) {
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 2.3 ) + "cm\">" + cur->valor ( "nomcliente" ) + "</drawString>\n";
@@ -347,7 +347,7 @@ void ImpQToolButton::click()
                     } // end if
 
                     txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.6 ) + "cm\">a</drawString>\n";
-                    txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.2 ) + "cm\">" + num2texto ( pres->DBvalue ( "cantcobro" ) ) + "</drawString>\n";
+                    txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.2 ) + "cm\">" + num2texto ( pres->dbValue ( "cantcobro" ) ) + "</drawString>\n";
 
                     txt += " </storyPlace>\n";
 
@@ -474,7 +474,7 @@ void SelQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
+            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
                 rec->setDbValue ( "selector", "FALSE" );
             } else {
                 rec->setDbValue ( "selector", "TRUE" );
@@ -490,7 +490,7 @@ void SelQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
+            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
                 rec->setDbValue ( "selector", "FALSE" );
             } else {
                 rec->setDbValue ( "selector", "TRUE" );
@@ -507,7 +507,7 @@ void SelQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
+            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
                 rec->setDbValue ( "selector", "FALSE" );
             } else {
                 rec->setDbValue ( "selector", "TRUE" );
@@ -523,7 +523,7 @@ void SelQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
+            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
                 rec->setDbValue ( "selector", "FALSE" );
             } else {
                 rec->setDbValue ( "selector", "TRUE" );
@@ -538,7 +538,7 @@ void SelQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            if ( rec->DBvalue ( "selector" ) == "TRUE" ) {
+            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
                 rec->setDbValue ( "selector", "FALSE" );
             } else {
                 rec->setDbValue ( "selector", "TRUE" );
@@ -623,10 +623,10 @@ void EmailQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                QString id = rec->DBvalue ( "idpresupuesto" );
-                QString idcliente = rec->DBvalue ( "idcliente" );
+                QString id = rec->dbValue ( "idpresupuesto" );
+                QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
@@ -667,10 +667,10 @@ void EmailQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                QString id = rec->DBvalue ( "idpedidocliente" );
-                QString idcliente = rec->DBvalue ( "idcliente" );
+                QString id = rec->dbValue ( "idpedidocliente" );
+                QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
@@ -712,10 +712,10 @@ void EmailQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                QString id = rec->DBvalue ( "idalbaran" );
-                QString idcliente = rec->DBvalue ( "idcliente" );
+                QString id = rec->dbValue ( "idalbaran" );
+                QString idcliente = rec->dbValue ( "idcliente" );
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
@@ -756,14 +756,14 @@ void EmailQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                QString id = rec->DBvalue ( "idfactura" );
-                QString idcliente = rec->DBvalue ( "idcliente" );
-                QString num = rec->DBvalue ( "numfactura" );
-                QString serie = rec->DBvalue ( "codigoserie_factura" );
-                QString ref = rec->DBvalue ( "reffactura" );
-                QString fecha = rec->DBvalue ( "ffactura" );
+                QString id = rec->dbValue ( "idfactura" );
+                QString idcliente = rec->dbValue ( "idcliente" );
+                QString num = rec->dbValue ( "numfactura" );
+                QString serie = rec->dbValue ( "codigoserie_factura" );
+                QString ref = rec->dbValue ( "reffactura" );
+                QString fecha = rec->dbValue ( "ffactura" );
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
@@ -810,12 +810,12 @@ void EmailQToolButton::click()
         for ( int i = 0; i < sub->rowCount(); i++ ) {
             BlDbSubFormRecord *rec = sub->lineaat ( i );
             rec->refresh();
-            QString val = rec->DBvalue ( "selector" );
+            QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                QString id = rec->DBvalue ( "idcobro" );
-                QString idcliente = rec->DBvalue ( "idcliente" );
-                QString ref = rec->DBvalue ( "refcobro" );
-                QString fecha = rec->DBvalue ( "fcobro" );
+                QString id = rec->dbValue ( "idcobro" );
+                QString idcliente = rec->dbValue ( "idcliente" );
+                QString ref = rec->dbValue ( "refcobro" );
+                QString fecha = rec->dbValue ( "fcobro" );
 
                 QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );

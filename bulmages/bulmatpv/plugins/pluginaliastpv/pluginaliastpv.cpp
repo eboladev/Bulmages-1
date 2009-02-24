@@ -31,8 +31,8 @@ int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 {
 
     mensajeInfo ( "hola" );
-    item->addDbField ( "idtc_talla", BlDbField::DBint, BlDbField::DBNothing, _( "Talla" ) );
-    item->addDbField ( "idtc_color", BlDbField::DBint, BlDbField::DBNothing, _( "Color" ) );
+    item->addDbField ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, _( "Talla" ) );
+    item->addDbField ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, _( "Color" ) );
 
     return 0;
 }

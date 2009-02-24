@@ -47,66 +47,66 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablasoportado->setMainCompany ( emp );
     mui_tablasoportado->setDbTableName ( "registroiva" );
     mui_tablasoportado->setDbFieldId ( "idregistroiva" );
-    mui_tablasoportado->addSubFormHeader ( "idregistroiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id" ) );
-    mui_tablasoportado->addSubFormHeader ( "contrapartida", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Concepto contable" ) );
-    mui_tablasoportado->addSubFormHeader ( "baseimp", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idcuenta" ) );
-    mui_tablasoportado->addSubFormHeader ( "iva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "IVA" ) );
-    mui_tablasoportado->addSubFormHeader ( "ffactura", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Fecha de factura" ) );
-    mui_tablasoportado->addSubFormHeader ( "femisionregistroiva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "descripcioncuenta" ) );
-    mui_tablasoportado->addSubFormHeader ( "factura", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "descripcion" ) );
-    mui_tablasoportado->addSubFormHeader ( "serieregistroiva", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Debe" ) );
-    mui_tablasoportado->addSubFormHeader ( "idborrador", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Haber" ) );
-    mui_tablasoportado->addSubFormHeader ( "incregistro", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Contrapartida" ) );
-    mui_tablasoportado->addSubFormHeader ( "regularizacion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Comentario" ) );
-    mui_tablasoportado->addSubFormHeader ( "plan349", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "ID Canal" ) );
-    mui_tablasoportado->addSubFormHeader ( "numorden", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Conciliacion" ) );
-    mui_tablasoportado->addSubFormHeader ( "cif", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "idc_coste" ) );
-    mui_tablasoportado->addSubFormHeader ( "idfpago", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "idapunte" ) );
-    mui_tablasoportado->addSubFormHeader ( "factemitida", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "idtipoiva" ) );
-    mui_tablasoportado->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "orden" ) );
-    mui_tablasoportado->addSubFormHeader ( "idasiento", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "idasiento" ) );
+    mui_tablasoportado->addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Id" ) );
+    mui_tablasoportado->addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "Concepto contable" ) );
+    mui_tablasoportado->addSubFormHeader ( "baseimp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "idcuenta" ) );
+    mui_tablasoportado->addSubFormHeader ( "iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "IVA" ) );
+    mui_tablasoportado->addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Fecha de factura" ) );
+    mui_tablasoportado->addSubFormHeader ( "femisionregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "descripcioncuenta" ) );
+    mui_tablasoportado->addSubFormHeader ( "factura", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "descripcion" ) );
+    mui_tablasoportado->addSubFormHeader ( "serieregistroiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "Debe" ) );
+    mui_tablasoportado->addSubFormHeader ( "idborrador", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "Haber" ) );
+    mui_tablasoportado->addSubFormHeader ( "incregistro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Contrapartida" ) );
+    mui_tablasoportado->addSubFormHeader ( "regularizacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Comentario" ) );
+    mui_tablasoportado->addSubFormHeader ( "plan349", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "ID Canal" ) );
+    mui_tablasoportado->addSubFormHeader ( "numorden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Conciliacion" ) );
+    mui_tablasoportado->addSubFormHeader ( "cif", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idc_coste" ) );
+    mui_tablasoportado->addSubFormHeader ( "idfpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idapunte" ) );
+    mui_tablasoportado->addSubFormHeader ( "factemitida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idtipoiva" ) );
+    mui_tablasoportado->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "orden" ) );
+    mui_tablasoportado->addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idasiento" ) );
     mui_tablasoportado->setinsercion ( FALSE );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Repercutido.
     mui_tablarepercutido->setMainCompany ( emp );
     mui_tablarepercutido->setDbTableName ( "registroiva" );
     mui_tablarepercutido->setDbFieldId ( "idregistroiva" );
-    mui_tablarepercutido->addSubFormHeader ( "idregistroiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id" ) );
-    mui_tablarepercutido->addSubFormHeader ( "contrapartida", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "Concepto Contable" ) );
-    mui_tablarepercutido->addSubFormHeader ( "baseimp", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idcuenta" ) );
-    mui_tablarepercutido->addSubFormHeader ( "iva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "codigo" ) );
-    mui_tablarepercutido->addSubFormHeader ( "ffactura", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "tipocuenta" ) );
-    mui_tablarepercutido->addSubFormHeader ( "femisionregistroiva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "descripcioncuenta" ) );
-    mui_tablarepercutido->addSubFormHeader ( "factura", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "descripcion" ) );
-    mui_tablarepercutido->addSubFormHeader ( "serieregistroiva", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Debe" ) );
-    mui_tablarepercutido->addSubFormHeader ( "idborrador", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Haber" ) );
-    mui_tablarepercutido->addSubFormHeader ( "incregistro", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Contrapartida" ) );
-    mui_tablarepercutido->addSubFormHeader ( "regularizacion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Comentario" ) );
-    mui_tablarepercutido->addSubFormHeader ( "plan349", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "ID Canal" ) );
-    mui_tablarepercutido->addSubFormHeader ( "numorden", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Conciliacion" ) );
-    mui_tablarepercutido->addSubFormHeader ( "cif", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "idc_coste" ) );
-    mui_tablarepercutido->addSubFormHeader ( "idfpago", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "idapunte" ) );
-    mui_tablarepercutido->addSubFormHeader ( "factemitida", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "idtipoiva" ) );
-    mui_tablarepercutido->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "orden" ) );
-    mui_tablarepercutido->addSubFormHeader ( "idasiento", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "idasiento" ) );
+    mui_tablarepercutido->addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Id" ) );
+    mui_tablarepercutido->addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "Concepto Contable" ) );
+    mui_tablarepercutido->addSubFormHeader ( "baseimp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "idcuenta" ) );
+    mui_tablarepercutido->addSubFormHeader ( "iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "codigo" ) );
+    mui_tablarepercutido->addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "tipocuenta" ) );
+    mui_tablarepercutido->addSubFormHeader ( "femisionregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "descripcioncuenta" ) );
+    mui_tablarepercutido->addSubFormHeader ( "factura", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "descripcion" ) );
+    mui_tablarepercutido->addSubFormHeader ( "serieregistroiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Debe" ) );
+    mui_tablarepercutido->addSubFormHeader ( "idborrador", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Haber" ) );
+    mui_tablarepercutido->addSubFormHeader ( "incregistro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Contrapartida" ) );
+    mui_tablarepercutido->addSubFormHeader ( "regularizacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Comentario" ) );
+    mui_tablarepercutido->addSubFormHeader ( "plan349", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "ID Canal" ) );
+    mui_tablarepercutido->addSubFormHeader ( "numorden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Conciliacion" ) );
+    mui_tablarepercutido->addSubFormHeader ( "cif", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "idc_coste" ) );
+    mui_tablarepercutido->addSubFormHeader ( "idfpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "idapunte" ) );
+    mui_tablarepercutido->addSubFormHeader ( "factemitida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "idtipoiva" ) );
+    mui_tablarepercutido->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "orden" ) );
+    mui_tablarepercutido->addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idasiento" ) );
     mui_tablarepercutido->setinsercion ( FALSE );
 
     /// Definiciones para la tabla de repercutido
     mui_totalRepercutido->setMainCompany ( emp );
     mui_totalRepercutido->setDbTableName ( "" );
     mui_totalRepercutido->setDbFieldId ( "" );
-    mui_totalRepercutido->addSubFormHeader ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "nombretipoiva" ) );
-    mui_totalRepercutido->addSubFormHeader ( "tivaiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tivaiva" ) );
-    mui_totalRepercutido->addSubFormHeader ( "tbaseiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tbaseiva" ) );
+    mui_totalRepercutido->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "nombretipoiva" ) );
+    mui_totalRepercutido->addSubFormHeader ( "tivaiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "tivaiva" ) );
+    mui_totalRepercutido->addSubFormHeader ( "tbaseiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "tbaseiva" ) );
     mui_totalRepercutido->setinsercion ( FALSE );
 
     /// Definiciones para la tabla de soportado
     mui_totalSoportado->setMainCompany ( emp );
     mui_totalSoportado->setDbTableName ( "" );
     mui_totalSoportado->setDbFieldId ( "" );
-    mui_totalSoportado->addSubFormHeader ( "nombretipoiva", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "nombretipoiva" ) );
-    mui_totalSoportado->addSubFormHeader ( "tivaiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tivaiva" ) );
-    mui_totalSoportado->addSubFormHeader ( "tbaseiva", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite, _( "tbaseiva" ) );
+    mui_totalSoportado->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "nombretipoiva" ) );
+    mui_totalSoportado->addSubFormHeader ( "tivaiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "tivaiva" ) );
+    mui_totalSoportado->addSubFormHeader ( "tbaseiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "tbaseiva" ) );
     mui_totalSoportado->setinsercion ( FALSE );
 
     /// Fin de las definiciones para la tabla de IVA.
@@ -132,7 +132,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked ( int, int )
 {
     _depura ( "ListRegistroIvaView::on_mui_tablasoportado_itemDoubleClicked", 0 );
     int idasiento;
-    idasiento = mui_tablasoportado->DBvalue ( "idasiento" ).toInt();
+    idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
     m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
     m_companyact->intapuntsempresa() ->show();
     m_companyact->intapuntsempresa() ->setFocus();
@@ -148,7 +148,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked ( int, int )
 {
     _depura ( "ListRegistroIvaView::on_mui_tablarepercutido_itemDoubleClicked", 0 );
     int idasiento;
-    idasiento = mui_tablarepercutido->DBvalue ( "idasiento" ).toInt();
+    idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
     m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
     m_companyact->intapuntsempresa() ->show();
     m_companyact->intapuntsempresa() ->setFocus();
@@ -260,7 +260,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
 {
     _depura ( "ListRegistroIvaView::on_mui_tablasoportado_trataMenu", 0 );
     if ( m_verreg == ac ) {
-        QString idborrador = mui_tablasoportado->DBvalue ( "idborrador" );
+        QString idborrador = mui_tablasoportado->dbValue ( "idborrador" );
         RegistroIvaView *nuevae = new RegistroIvaView ( m_companyact, 0 );
         nuevae->inicializa1 ( idborrador.toInt() );
         m_companyact->pWorkspace() ->addWindow ( nuevae );
@@ -268,7 +268,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
     } // end if
     if ( m_verasiento == ac ) {
         int idasiento;
-        idasiento = mui_tablasoportado->DBvalue ( "idasiento" ).toInt();
+        idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
         m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
         m_companyact->intapuntsempresa() ->show();
         m_companyact->intapuntsempresa() ->setFocus();
@@ -285,7 +285,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
 {
     _depura ( "ListRegistroIvaView::on_mui_tablarepercutido_trataMenu", 0 );
     if ( m_verreg == ac ) {
-        QString idborrador = mui_tablarepercutido->DBvalue ( "idborrador" );
+        QString idborrador = mui_tablarepercutido->dbValue ( "idborrador" );
         RegistroIvaView *nuevae = new RegistroIvaView ( m_companyact, 0 );
         nuevae->inicializa1 ( idborrador.toInt() );
         m_companyact->pWorkspace() ->addWindow ( nuevae );
@@ -293,7 +293,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
     } // end if
     if ( m_verasiento == ac ) {
         int idasiento;
-        idasiento = mui_tablarepercutido->DBvalue ( "idasiento" ).toInt();
+        idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
         m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
         m_companyact->intapuntsempresa() ->show();
         m_companyact->intapuntsempresa() ->setFocus();

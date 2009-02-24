@@ -96,10 +96,10 @@ void GenPagoQToolButton::click()
 	FacturaProveedorView *fpv = (FacturaProveedorView *) m_object;
 	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
 	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-	bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+	bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
 	bud->setDbValue ( "cantpago", fpv->m_totalfacturap->text() );
-	bud->setDbValue ( "refpago", fpv->DBvalue ( "reffacturap" ) );
-	bud->setDbValue ( "comentpago", fpv->DBvalue ( "descfacturap" ) );
+	bud->setDbValue ( "refpago", fpv->dbValue ( "reffacturap" ) );
+	bud->setDbValue ( "comentpago", fpv->dbValue ( "descfacturap" ) );
 	bud->pintar();
 	bud->show();
     }// end if
@@ -108,10 +108,10 @@ void GenPagoQToolButton::click()
 	AlbaranProveedorView *fpv = (AlbaranProveedorView *) m_object;
 	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
 	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-	bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+	bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
 	bud->setDbValue ( "cantpago", fpv->m_totalalbaranp->text() );
-	bud->setDbValue ( "refpago", fpv->DBvalue ( "refalbaranp" ) );
-	bud->setDbValue ( "comentpago", fpv->DBvalue ( "descalbaranp" ) );
+	bud->setDbValue ( "refpago", fpv->dbValue ( "refalbaranp" ) );
+	bud->setDbValue ( "comentpago", fpv->dbValue ( "descalbaranp" ) );
 	bud->pintar();
 	bud->show();
     }// end if
@@ -120,10 +120,10 @@ void GenPagoQToolButton::click()
 	PedidoProveedorView *fpv = (PedidoProveedorView *) m_object;
 	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
 	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-	bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+	bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
 	bud->setDbValue ( "cantpago", fpv->mui_totalPedido->text() );
-	bud->setDbValue ( "refpago", fpv->DBvalue ( "refpedidoproveedor" ) );
-	bud->setDbValue ( "comentpago", fpv->DBvalue ( "descpedidoproveedor" ) );
+	bud->setDbValue ( "refpago", fpv->dbValue ( "refpedidoproveedor" ) );
+	bud->setDbValue ( "comentpago", fpv->dbValue ( "descpedidoproveedor" ) );
 	bud->pintar();
 	bud->show();
     }// end if

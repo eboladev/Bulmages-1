@@ -194,11 +194,11 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->setMainCompany ( alm->mainCompany() );
     form->setDbTableName ( "almacentipotrabajo" );
     form->setDbFieldId ( "idalmacen" );
-    form->addSubFormHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNoSave , BlSubFormHeader::DBNone, _( "ID nombre del tipo de trabajo" ) );
-    form->addSubFormHeader ( "numpers", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Numero de cargos necesarios" ) );
-    form->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
-    form->addSubFormHeader ( "idtipotrabajo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tipo de trabajo" ) );
-    form->addSubFormHeader ( "origidtipotrabajo", BlDbField::DBint, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView, _("Id tipo de trabajo") );
+    form->addSubFormHeader ( "nomtipotrabajo", BlDbField::DbVarChar, BlDbField::DbNoSave , BlSubFormHeader::DbNone, _( "ID nombre del tipo de trabajo" ) );
+    form->addSubFormHeader ( "numpers", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Numero de cargos necesarios" ) );
+    form->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
+    form->addSubFormHeader ( "idtipotrabajo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID tipo de trabajo" ) );
+    form->addSubFormHeader ( "origidtipotrabajo", BlDbField::DbInt, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbNoView, _("Id tipo de trabajo") );
 
     form->setinsercion ( TRUE );
     form->setDelete ( TRUE );
@@ -218,7 +218,7 @@ int BlForm_cargar ( BlForm *fich )
 {
     BlSubForm * form = fich->findChild<BlSubForm *> ( "mui_tipostrabajo" );
     if ( form )
-        form->cargar ( "SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) );
+        form->cargar ( "SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->dbValue ( "idalmacen" ) );
     return 0;
 }
 
@@ -233,7 +233,7 @@ int BlForm_guardar_Post ( BlForm *fich )
     _depura ( "BlForm_guardar_Post", 0 );
     BlSubForm * form = fich->findChild<BlSubForm *> ( "mui_tipostrabajo" );
     if ( form ) {
-        form->setColumnValue ( "idalmacen", fich->DBvalue ( "idalmacen" ) );
+        form->setColumnValue ( "idalmacen", fich->dbValue ( "idalmacen" ) );
         form->guardar();
     }
     _depura ( "END BlForm_guardar_Post", 0 );

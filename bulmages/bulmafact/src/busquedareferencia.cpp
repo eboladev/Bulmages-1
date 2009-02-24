@@ -63,7 +63,7 @@ void BusquedaReferencia::on_mui_informe_clicked()
 
     BlForm newfich ( mainCompany(), NULL );
     newfich.setTitleName ( _( "Informe" ) );
-    newfich.addDbField ( "referencia", BlDbField::DBvarchar, BlDbField::DBPrimaryKey, _( "Referencia" ) );
+    newfich.addDbField ( "referencia", BlDbField::DbVarChar, BlDbField::DbPrimaryKey, _( "Referencia" ) );
     newfich.setDbValue ( "referencia", mui_referencia->text() );
     if (newfich.generaRML ( "informereferencia.rml" )) {
     	invocaPDF ( "informereferencia" );
@@ -240,7 +240,7 @@ void BusquedaReferencia::setText ( QString val )
 /**
 \param val
 **/
-void BusquedaReferencia::setValorCampo ( QString val )
+void BusquedaReferencia::setFieldValue ( QString val )
 {
     _depura ( "BusquedaReferencia::setText", 0 );
     mui_referencia->setText ( val );
@@ -266,7 +266,7 @@ QString BusquedaReferencia::text()
 /**
 \return
 **/
-QString BusquedaReferencia::valorCampo()
+QString BusquedaReferencia::fieldValue()
 {
     _depura ( "BusquedaReferencia::text", 0 );
     _depura ( "END BusquedaReferencia::text", 0 );

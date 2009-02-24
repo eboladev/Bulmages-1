@@ -82,9 +82,9 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         QTextStream out ( g_file );
-        out <<   tick->lineaActTicket()->DBvalue ( "codigocompletoarticulo" ).left ( 5 );
-        out << " " << tick->lineaActTicket()->DBvalue ( "nomarticulo" ).left ( 10 );
-        out << "\n      P.V.P. : " << tick->lineaActTicket()->DBvalue ( "pvplalbaran" );
+        out <<   tick->lineaActTicket()->dbValue ( "codigocompletoarticulo" ).left ( 5 );
+        out << " " << tick->lineaActTicket()->dbValue ( "nomarticulo" ).left ( 10 );
+        out << "\n      P.V.P. : " << tick->lineaActTicket()->dbValue ( "pvplalbaran" );
         g_file->flush();
         g_file->close();
     } // end if

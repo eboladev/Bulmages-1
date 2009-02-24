@@ -140,7 +140,7 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         return;
     } // end if
 
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
     if ( !cur ) {
         _depura ( "END BfSubForm::pressedMinus", 0, "No hay un idarticulo" );
         return;
@@ -358,7 +358,7 @@ void BfSubForm::setIdCliente ( QString id )
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
-            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
 
@@ -419,7 +419,7 @@ void BfSubForm::setIdProveedor ( QString id )
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
-            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
                 if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
@@ -623,7 +623,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
-	QString valueanterior = m_subform->lista()->at ( index.row() )->DBvalue ( "cant" + m_subform->tableName());
+	QString valueanterior = m_subform->lista()->at ( index.row() )->dbValue ( "cant" + m_subform->tableName());
 
         model->setData ( index, value );
 
@@ -804,7 +804,7 @@ void BfSubForm::calculaPVP(BlDbSubFormRecord *rec) {
 	BlDbRecordSet *cur3 = NULL;
 
 	/// Saca 'codigocompletoarticulo' del BlDbSubFormRecord pasado como parametro.
-	QString codigocompleto = rec->DBvalue("codigocompletoarticulo");
+	QString codigocompleto = rec->dbValue("codigocompletoarticulo");
 
         cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompleto + "'" );
         if ( !cur->eof() ) {

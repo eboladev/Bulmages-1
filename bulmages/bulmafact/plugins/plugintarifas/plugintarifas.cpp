@@ -116,7 +116,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 {
     _depura ( "dentro del plugin", 0 );
 
-    cli->addDbField ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, _( "plugintarifas" ) );
+    cli->addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, _( "plugintarifas" ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -179,14 +179,14 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setMainCompany ( art->mainCompany() );
     l->setDbTableName ( "variaciontarifa" );
     l->setDbFieldId ( "idarticulo" );
-    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite , _( "ID variacion tarifa" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "ID articulo" ) );
-    l->addSubFormHeader ( "idtarifa", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID tarifa" ) );
-    l->addSubFormHeader ( "nomtarifa", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Tarifa" ) );
-    l->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoView, _( "ID almacen" ) );
-    l->addSubFormHeader ( "nomalmacen", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
-    l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad mayor o igual que" ) );
-    l->addSubFormHeader ( "porcentajevariacion", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Porcentaje variacion" ) );
+    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite , _( "ID variacion tarifa" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "ID articulo" ) );
+    l->addSubFormHeader ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoView, _( "ID tarifa" ) );
+    l->addSubFormHeader ( "nomtarifa", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Tarifa" ) );
+    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoView, _( "ID almacen" ) );
+    l->addSubFormHeader ( "nomalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Almacen" ) );
+    l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad mayor o igual que" ) );
+    l->addSubFormHeader ( "porcentajevariacion", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Porcentaje variacion" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
@@ -215,12 +215,12 @@ int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
     ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
-    l1->cargar ( art->DBvalue ( "idarticulo" ) );
+    l1->cargar ( art->dbValue ( "idarticulo" ) );
 
     /// Variacion de tarifas.
     BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
     if ( l ) {
-	QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->DBvalue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
+	QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->dbValue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
         l->cargar ( SQLQuery );
     } // end if
 
@@ -239,11 +239,11 @@ int ArticuloView_guardar_post ( ArticuloView *art )
     _depura ( "ArticuloView_guardar_post", 0 );
     try {
         ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
-        l1->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+        l1->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
     	/// Variacion de tarifas.
         BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
-        l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+        l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
         l1->guardar();
         l->guardar();
@@ -269,7 +269,7 @@ int ArticuloView_borrar ( ArticuloView *art )
 
     	/// Variacion de tarifas.
         BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
-        l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+        l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
         l1->borrar();
         l->borrar();
@@ -304,8 +304,8 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
     BlDbRecordSet *cur = NULL;
 
-    QString cantactual = sub->m_registrolinea->DBvalue ( "cant" + sub->tableName() ).replace(",",".");
-    QString pvpactual = sub->m_registrolinea->DBvalue ( "pvp" + sub->tableName() ).replace(",",".");
+    QString cantactual = sub->m_registrolinea->dbValue ( "cant" + sub->tableName() ).replace(",",".");
+    QString pvpactual = sub->m_registrolinea->dbValue ( "pvp" + sub->tableName() ).replace(",",".");
     QString variacionpvp;
 
     /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.

@@ -38,9 +38,9 @@ Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, pa
     setTitleName ( _( "Inventario" ) );
     setDbTableName ( "inventario" );
     setDbFieldId ( "idinventario" );
-    addDbField ( "idinventario", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador inventario" ) );
-    addDbField ( "fechainventario", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha inventario" ) );
-    addDbField ( "nominventario", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre inventario" ) );
+    addDbField ( "idinventario", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Identificador inventario" ) );
+    addDbField ( "fechainventario", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha inventario" ) );
+    addDbField ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre inventario" ) );
     _depura ( "END Inventario::Inventario", 0 );
 }
 
@@ -61,13 +61,13 @@ Inventario::~Inventario()
 **/
 int Inventario::borrar()
 {
-    if ( DBvalue ( "idinventario" ) != "" ) {
+    if ( dbValue ( "idinventario" ) != "" ) {
         _depura ( "vamos a borrar las lineas del inventario", 0 );
         companyact->begin();
 
         listalineas->borrar();
         _depura ( "Vamos a borrar el resto", 0 );
-        int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + DBvalue ( "idinventario" ) );
+        int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + dbValue ( "idinventario" ) );
         if ( error ) {
             companyact->rollback();
             return -1;
@@ -95,9 +95,9 @@ void Inventario::vaciaInventario()
 void Inventario::pintaInventario()
 {
     _depura ( "pintaInventario\n", 0 );
-    pintaidinventario ( DBvalue ( "idinventario" ) );
-    pintanominventario ( DBvalue ( "nominventario" ) );
-    pintafechainventario ( DBvalue ( "fechainventario" ) );
+    pintaidinventario ( dbValue ( "idinventario" ) );
+    pintanominventario ( dbValue ( "nominventario" ) );
+    pintafechainventario ( dbValue ( "fechainventario" ) );
     /// Pinta el subformulario de detalle del Inventario.
     //listalineas->pintaListControlStock();
 }

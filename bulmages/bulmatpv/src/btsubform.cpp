@@ -161,7 +161,7 @@ void BtSubForm::setIdCliente ( QString id )
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
-            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
 
@@ -215,7 +215,7 @@ void BtSubForm::setIdProveedor ( QString id )
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
             BlDbSubFormRecord *rec = lineaat ( i );
-            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + rec->dbValue ( "idarticulo" ) );
             BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
             if ( !cur->eof() ) {
                 if ( curproveedor->valor ( "regimenfiscalproveedor" ) == "Normal" ) {
@@ -337,7 +337,7 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
                 return editor;
             } else  {
         //        QWidget *it = QItemDelegate::createEditor(parent, option, index);
-        //        if (linea->tipo() == DBint) {
+        //        if (linea->type() == DbInt) {
                     /// es un numero y se alinea a la derecha.
         //        } else {
          

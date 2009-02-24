@@ -52,31 +52,31 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Cliente" ) );
         setDbTableName ( "cliente" );
         setDbFieldId ( "idcliente" );
-        addDbField ( "idcliente", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID cliente" ) );
-        addDbField ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre del cliente" ) );
-        addDbField ( "nomaltcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre alternativo del cliente" ) );
-        addDbField ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "C.I.F. del cliente" ) );
-        addDbField ( "bancocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero cuenta corriente" ) );
-        addDbField ( "dircliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion" ) );
-        addDbField ( "poblcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Poblacion" ) );
-        addDbField ( "idprovincia", BlDbField::DBint, BlDbField::DBNothing, _( "Provincia" ) );
-        addDbField ( "cpcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo postal" ) );
-        addDbField ( "telcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero de telefono" ) );
-        addDbField ( "teltrabcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero de telefono en el trabajo" ) );
-        addDbField ( "movilcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero de telefono movil" ) );
-        addDbField ( "faxcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero de fax" ) );
-        addDbField ( "mailcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion electronica" ) );
-        addDbField ( "urlcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Identificador de presupuesto" ) );
-        addDbField ( "faltacliente", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de alta del cliente" ) );
-        addDbField ( "fbajacliente", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de baja del cliente" ) );
-        addDbField ( "comentcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
-        addDbField ( "ecommercedatacliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Datos de comercio electronico" ) );
-        addDbField ( "inactivocliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Cliente inactivo" ) );
-        addDbField ( "regimenfiscalcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Regimen fiscal" ) );
-        addDbField ( "codcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo" ) );
-        addDbField ( "corpcliente", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Empresa" ) );
-        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Forma de pago" ) );
-        addDbField ( "recargoeqcliente", BlDbField::DBboolean, BlDbField::DBNothing, _( "Recargo de Equivalencia" ) );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID cliente" ) );
+        addDbField ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre del cliente" ) );
+        addDbField ( "nomaltcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre alternativo del cliente" ) );
+        addDbField ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "C.I.F. del cliente" ) );
+        addDbField ( "bancocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero cuenta corriente" ) );
+        addDbField ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion" ) );
+        addDbField ( "poblcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Poblacion" ) );
+        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _( "Provincia" ) );
+        addDbField ( "cpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo postal" ) );
+        addDbField ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono" ) );
+        addDbField ( "teltrabcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono en el trabajo" ) );
+        addDbField ( "movilcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono movil" ) );
+        addDbField ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de fax" ) );
+        addDbField ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion electronica" ) );
+        addDbField ( "urlcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Identificador de presupuesto" ) );
+        addDbField ( "faltacliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de alta del cliente" ) );
+        addDbField ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de baja del cliente" ) );
+        addDbField ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
+        addDbField ( "ecommercedatacliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Datos de comercio electronico" ) );
+        addDbField ( "inactivocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Cliente inactivo" ) );
+        addDbField ( "regimenfiscalcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Regimen fiscal" ) );
+        addDbField ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo" ) );
+        addDbField ( "corpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Empresa" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Forma de pago" ) );
+        addDbField ( "recargoeqcliente", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Recargo de Equivalencia" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ClienteView_ClienteView", this );
@@ -159,11 +159,11 @@ void ClienteView::on_mui_informe_clicked()
 {
     _depura ( "ClienteView::on_mui_informe_clicked", 0 );
 
-    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ) );
     } else {
         InformeCliente inf ( mainCompany() );
-        inf.setCliente ( DBvalue ( "idcliente" ) );
+        inf.setCliente ( dbValue ( "idcliente" ) );
         inf.generarInforme();
     } // end if
 

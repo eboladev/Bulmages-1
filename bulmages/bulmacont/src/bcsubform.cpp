@@ -107,7 +107,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
     if ( camp->nomcampo() == "fecha" ) {
         BlDbSubFormRecord *recant = lineaat ( row - 1 );
         if ( recant ) {
-            rec->setDbValue ( "fecha", recant->DBvalue ( "fecha" ) );
+            rec->setDbValue ( "fecha", recant->dbValue ( "fecha" ) );
         } // end if
         return;
     } // end if
@@ -137,7 +137,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
 
     BlDbSubFormRecord *recant = lineaat ( row - 1 );
     if ( recant ) {
-        rec->setDbValue ( camp->nomcampo(), recant->DBvalue ( camp->nomcampo() ) );
+        rec->setDbValue ( camp->nomcampo(), recant->dbValue ( camp->nomcampo() ) );
         return;
     } // end if
 
@@ -333,7 +333,7 @@ void BcSubForm::boton_asiento()
 {
     _depura ( "BcSubForm::boton_asiento", 0 );
     BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QString numasiento = DBvalue ( "idasiento" );
+    QString numasiento = dbValue ( "idasiento" );
     if ( numasiento != "" ) {
         companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
         companyact->muestraapuntes1();
@@ -354,8 +354,8 @@ void BcSubForm::boton_extracto1 ( int tipo )
     _depura ( "BcSubForm::boton_extracto1", 0 );
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact;
-    QString fecha = DBvalue ( "fecha" ).left ( 10 );
-    QString codigo = DBvalue ( "codigo" );
+    QString fecha = dbValue ( "fecha" ).left ( 10 );
+    QString codigo = dbValue ( "codigo" );
     if ( fecha != "" && codigo != "" ) {
         fechaact = normalizafecha ( fecha );
         switch ( tipo ) {
@@ -392,9 +392,9 @@ void BcSubForm::boton_diario1 ( int tipo )
     _depura ( "BcSubForm::boton_diario1", 0 );
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact, fechaact1;
-    fechaact = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
-    fechaact1 = normalizafecha ( DBvalue ( "fecha" ).left ( 10 ) );
-    if ( DBvalue ( "fecha" ).left ( 10 ) != "" ) {
+    fechaact = normalizafecha ( dbValue ( "fecha" ).left ( 10 ) );
+    fechaact1 = normalizafecha ( dbValue ( "fecha" ).left ( 10 ) );
+    if ( dbValue ( "fecha" ).left ( 10 ) != "" ) {
         switch ( tipo ) {
         case 0:
             fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
@@ -429,8 +429,8 @@ void BcSubForm::boton_balance1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_balance1", 0 );
     BcCompany *companyact = ( BcCompany * ) mainCompany();
-    QString fecha = DBvalue ( "fecha" ).left ( 10 );
-    QString codigo = DBvalue ( "codigo" );
+    QString fecha = dbValue ( "fecha" ).left ( 10 );
+    QString codigo = dbValue ( "codigo" );
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( fecha != "" && codigo != "" ) {
         fechaact = normalizafecha ( fecha );
@@ -551,8 +551,8 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaFecha2" );
         return editor;
     } else {
-        /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
-        //if (linea->tipo() == BlDbField::DBint) {
+        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
+        //if (linea->type() == BlDbField::DbInt) {
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
         QLineEdit *editor = new QLineEdit ( parent );
@@ -621,8 +621,8 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = ( ( QLineEdit * ) comboBox ) ->text();
         model->setData ( index, value );
     } else {
-        /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
-        //if (linea->tipo() == BlDbField::DBint) {
+        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
+        //if (linea->type() == BlDbField::DbInt) {
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->interpretText();
         //    int value = spinBox->value();
@@ -681,8 +681,8 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         ( ( QLineEdit * ) bf ) ->setText ( value );
         ( ( QLineEdit * ) bf ) ->selectAll();
     } else {
-        /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
-        //if (linea->tipo() == BlDbField::DBint) {
+        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
+        //if (linea->type() == BlDbField::DbInt) {
         //    int value = index.model()->data(index, Qt::DisplayRole).toInt();
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->setValue(value);

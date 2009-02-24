@@ -72,7 +72,7 @@ void ArchMenu::pintaMenu ( QMenu *menu )
     QAction *addaction = nmenu->addAction(tr("Agregar Archivo "));
     addaction->setObjectName("addarchivo");
     nmenu->addSeparator();
-    QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->campoId() + "' AND identificadorfichaarchivo= '" +m_BlForm->DBvalue ( m_BlForm->campoId() ) + "'";
+    QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" +m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
     BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery(query);
     while(!cur->eof()) {
 	QAction *addaction = nmenu->addAction(cur->valor("rutaarchivo"));
@@ -111,7 +111,7 @@ void ArchMenu::trataMenu ( QAction *action )
     diag->setWindowTitle ( "Agregar Archivo Documental" );
 
     if (diag->exec()) {
-    QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_BlForm->campoId() + "', '" +m_BlForm->DBvalue ( m_BlForm->campoId() ) + "' , '"+ camb->mui_archivo->text() +"') ";
+    QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_BlForm->fieldId() + "', '" +m_BlForm->dbValue ( m_BlForm->fieldId() ) + "' , '"+ camb->mui_archivo->text() +"') ";
     m_BlForm->mainCompany()->runQuery(query);
     } // end if
 

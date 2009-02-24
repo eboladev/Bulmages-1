@@ -37,9 +37,9 @@ public:
     BusquedaRegimenFiscal ( QWidget *parent = 0 );
     ~BusquedaRegimenFiscal();
     QString regimenFiscal();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
     virtual void setRegimenFiscal ( QString regimen );
-    virtual void setValorCampo ( QString regimen );
+    virtual void setFieldValue ( QString regimen );
 
 public slots:
     virtual void m_activated ( int index );

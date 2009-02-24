@@ -37,9 +37,9 @@ public:
     BLBancoEdit ( QWidget *parent = 0 );
     ~BLBancoEdit();
     virtual void setText ( QString val );
-    virtual void setValorCampo ( QString val );
+    virtual void setFieldValue ( QString val );
     virtual QString text();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
     void checkDC();
 
 public slots:

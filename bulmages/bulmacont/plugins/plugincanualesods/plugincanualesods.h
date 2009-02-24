@@ -77,7 +77,7 @@ private:
 
 public:
     BcCompany *empresaact;
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
 
 public:
     pluginCAnualesODS();

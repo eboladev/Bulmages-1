@@ -54,21 +54,21 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Almacen" ) );
         setDbTableName ( "almacen" );
         setDbFieldId ( "idalmacen" );
-        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID almacen" ) );
-        addDbField ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Codigo almacen" ) );
-        addDbField ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull  , _( "Nombre almacen" ) );
-        addDbField ( "diralmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion almacen" ) );
-        addDbField ( "poblalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Poblacion almacen" ) );
-        addDbField ( "cpalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Codigo postal" ) );
-        addDbField ( "telalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono almacen" ) );
-        addDbField ( "faxalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Fax almacen" ) );
-        addDbField ( "emailalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "email almacen" ) );
-        addDbField ( "fechaalmacen", BlDbField::DBdate, BlDbField::DBNoSave, _( "Fecha almacen" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID almacen" ) );
+        addDbField ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo almacen" ) );
+        addDbField ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull  , _( "Nombre almacen" ) );
+        addDbField ( "diralmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion almacen" ) );
+        addDbField ( "poblalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Poblacion almacen" ) );
+        addDbField ( "cpalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo postal" ) );
+        addDbField ( "telalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono almacen" ) );
+        addDbField ( "faxalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Fax almacen" ) );
+        addDbField ( "emailalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "email almacen" ) );
+        addDbField ( "fechaalmacen", BlDbField::DbDate, BlDbField::DbNoSave, _( "Fecha almacen" ) );
 
 
-        addDbField ( "tipoalmacen", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Tipo almacen" ) );
-        mui_tipoalmacen_t->setValorCampo ( "Tienda" );
-        mui_tipoalmacen_a->setValorCampo ( "Almacen" );
+        addDbField ( "tipoalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Tipo almacen" ) );
+        mui_tipoalmacen_t->setFieldValue ( "Tienda" );
+        mui_tipoalmacen_a->setFieldValue ( "Almacen" );
 
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );

@@ -100,7 +100,7 @@ void extractoview1::on_mui_list_cellDoubleClicked ( int, int columna )
     QString textoHeader;
     textoHeader =  mui_list->cabecera() ->at ( columna ) ->nomcampo().toAscii();
     if ( textoHeader == "ordenasiento" ) {
-        QString idasiento = mui_list->DBvalue ( "idasiento" );
+        QString idasiento = mui_list->dbValue ( "idasiento" );
         mainCompany() ->intapuntsempresa() ->muestraasiento ( idasiento );
         mainCompany() ->intapuntsempresa() ->show();
         mainCompany() ->intapuntsempresa() ->setFocus();

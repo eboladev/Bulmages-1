@@ -36,14 +36,14 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->DBvalue ( "pvpivainclalbaran" ) );
-        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
+        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-        basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
+        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
     } // end for
 
     BlFixed basei ( "0.00" );

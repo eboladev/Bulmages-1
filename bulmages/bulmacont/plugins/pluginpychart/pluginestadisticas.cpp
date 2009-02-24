@@ -21,7 +21,7 @@ void entryPoint ( Bulmages01 *bges )
     myplugin *plug = new myplugin();
 
     plug->empresaactual = bges->empresaactual();
-    plug->conexionbase = plug->empresaactual->bdempresa();
+    plug->dbConnection = plug->empresaactual->bdempresa();
     //El menu de empresa
     Q3PopupMenu *pPluginMenu = new Q3PopupMenu();
     pPluginMenu->setCheckable ( true );

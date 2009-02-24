@@ -159,14 +159,14 @@ int IncidenciaComercialView::cargar ( QString id )
 {
     _depura ( "IncidenciaComercialView::cargar", 0 );
     int err = IncidenciaComercial::cargar ( id );
-    setWindowTitle ( _( "Incidencia comercial" ) + " " + DBvalue ( "idincidenciacomercial" ) );
-    mui_fechaincidenciacomercial->setText ( DBvalue ( "fechaincidenciacomercial" ) );
-    mui_idcliente->setId ( DBvalue ( "idcliente" ) );
-    mui_comentincidenciacomercial->setPlainText ( DBvalue ( "comentincidenciacomercial" ) );
-    mui_idtrabajador->setId ( DBvalue ( "idtrabajador" ) );
-    mui_estadoincidenciacomercial->setestado ( DBvalue ( "estadoincidenciacomercial" ) );
-    mui_horaincidenciacomercial->setText ( DBvalue ( "horaincidenciacomercial" ) );
-    mui_refincidenciacomercial->setText ( DBvalue ( "refincidenciacomercial" ) );
+    setWindowTitle ( _( "Incidencia comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
+    mui_fechaincidenciacomercial->setText ( dbValue ( "fechaincidenciacomercial" ) );
+    mui_idcliente->setId ( dbValue ( "idcliente" ) );
+    mui_comentincidenciacomercial->setPlainText ( dbValue ( "comentincidenciacomercial" ) );
+    mui_idtrabajador->setId ( dbValue ( "idtrabajador" ) );
+    mui_estadoincidenciacomercial->setestado ( dbValue ( "estadoincidenciacomercial" ) );
+    mui_horaincidenciacomercial->setText ( dbValue ( "horaincidenciacomercial" ) );
+    mui_refincidenciacomercial->setText ( dbValue ( "refincidenciacomercial" ) );
     dialogChanges_cargaInicial();
     _depura ( "END IncidenciaComercialView::cargar", 0 );
     return err;

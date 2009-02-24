@@ -65,14 +65,14 @@ BlRadioButton::~BlRadioButton()
 
 /**
 **/
-void BlRadioButton::setValorCampo ( QString val ) {
+void BlRadioButton::setFieldValue ( QString val ) {
 	m_valorcampo = val;
 }
 
 
 /**
 **/
-QString BlRadioButton::valorCampo() {
+QString BlRadioButton::fieldValue() {
 	return m_valorcampo;
 }
 

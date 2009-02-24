@@ -86,7 +86,7 @@ importContaplus::importContaplus ( BlPostgreSqlClient *con, QWidget *parent, Qt:
 
     progress = m_progressbar;
     mensajes = m_mensajes;
-    conexionbase = con;
+    dbConnection = con;
     _depura ( "END importContaplus::importContaplus", 0 );
 }
 

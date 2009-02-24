@@ -48,8 +48,8 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Alumno" ) );
         setDbTableName ( "alumno" );
         setDbFieldId ( "idalumno" );
-        addDbField ( "idalumno", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id alumno" ) );
-        addDbField ( "nombrealumno", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del alumno" ) );
+        addDbField ( "idalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id alumno" ) );
+        addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del alumno" ) );
 
         /// Datos por defecto.
         mui_idprovincia->setMainCompany ( mainCompany() );
@@ -91,7 +91,7 @@ void AlumnoView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;

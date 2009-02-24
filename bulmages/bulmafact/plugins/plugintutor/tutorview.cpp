@@ -48,8 +48,8 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Tutor" ) );
         setDbTableName ( "tutor" );
         setDbFieldId ( "idtutor" );
-        addDbField ( "idtutor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tutor" ) );
-        addDbField ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del tutor" ) );
+        addDbField ( "idtutor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tutor" ) );
+        addDbField ( "nombretutor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
 
 
 	mui_idprovincia->setMainCompany ( mainCompany() );
@@ -91,7 +91,7 @@ void TutorView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;

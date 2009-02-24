@@ -91,11 +91,11 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
 /**
 \param idtc_color
 **/
-void BusquedaColor::setValorCampo ( QString idtc_color )
+void BusquedaColor::setFieldValue ( QString idtc_color )
 {
-    _depura ( "BusquedaColor::setValorCampo", 0 );
+    _depura ( "BusquedaColor::setFieldValue", 0 );
     setidtc_color ( idtc_color );
-    _depura ( "END BusquedaColor::setValorCampo", 0 );
+    _depura ( "END BusquedaColor::setFieldValue", 0 );
 }
 
 
@@ -121,10 +121,10 @@ QString BusquedaColor::idtc_color()
 /**
 \return
 **/
-QString BusquedaColor::valorCampo()
+QString BusquedaColor::fieldValue()
 {
-    _depura ( "BusquedaColor::valorCampo", 0 );
-    _depura ( "END BusquedaColor::valorCampo", 0 );
+    _depura ( "BusquedaColor::fieldValue", 0 );
+    _depura ( "END BusquedaColor::fieldValue", 0 );
     return idtc_color();
 }
 

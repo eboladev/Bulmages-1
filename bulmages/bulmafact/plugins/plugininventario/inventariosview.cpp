@@ -122,7 +122,7 @@ void InventariosView::on_mui_editar_clicked()
         mensajeInfo ( _( "Tiene que seleccionar un inventario" ) );
         return;
     } else {
-        QString idinventario = mui_listado->DBvalue ( "idinventario" );
+        QString idinventario = mui_listado->dbValue ( "idinventario" );
         if ( idinventario != "" ) {
             InventarioView * bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( idinventario ) )
@@ -148,7 +148,7 @@ void InventariosView::on_mui_borrar2_clicked()
         mensajeInfo ( _( "Tiene que seleccionar un inventario" ) );
         return;
     } else {
-        QString idinventario = mui_listado->DBvalue ( "idinventario" );
+        QString idinventario = mui_listado->dbValue ( "idinventario" );
         if ( idinventario != "" ) {
             InventarioView * inv = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
             mainCompany() ->m_pWorkspace->addWindow ( inv );
@@ -276,9 +276,9 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent 
     _depura ( "InventariosSubForm::InventariosSubForm", 0 );
     setDbTableName ( "inventario" );
     setDbFieldId ( "idinventario" );
-    addSubFormHeader ( "idinventario", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoView, _( "Id inventario" ) );
-    addSubFormHeader ( "nominventario", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre del inventario" ) );
-    addSubFormHeader ( "fechainventario", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha del inventario" ) );
+    addSubFormHeader ( "idinventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoView, _( "Id inventario" ) );
+    addSubFormHeader ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del inventario" ) );
+    addSubFormHeader ( "fechainventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha del inventario" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

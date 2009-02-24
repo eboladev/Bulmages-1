@@ -48,9 +48,9 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Convocatoria" ) );
         setDbTableName ( "actividad" );
         setDbFieldId ( "idactividad" );
-        addDbField ( "idactividad", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID actividad" ) );
-        addDbField ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del actividad" ) );
-	addDbField ( "idprofesor", BlDbField::DBint, BlDbField::DBNotNull, _("Id profesor"));
+        addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID actividad" ) );
+        addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del actividad" ) );
+	addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
 
         meteWindow ( windowTitle(), this, FALSE );
 
@@ -90,7 +90,7 @@ void ConvocatoriaView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;

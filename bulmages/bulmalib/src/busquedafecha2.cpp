@@ -60,11 +60,11 @@ void BusquedaFecha2::setText ( QString val )
 /**
 \param val
 **/
-void BusquedaFecha2::setValorCampo ( QString val )
+void BusquedaFecha2::setFieldValue ( QString val )
 {
-    _depura ( "BusquedaFecha2::setValorCampo", 0 );
+    _depura ( "BusquedaFecha2::setFieldValue", 0 );
     QLineEdit::setText ( val );
-    _depura ( "END BusquedaFecha2::setValorCampo", 0 );
+    _depura ( "END BusquedaFecha2::setFieldValue", 0 );
 }
 
 
@@ -94,10 +94,10 @@ QString BusquedaFecha2::text()
 /**
 \return
 **/
-QString BusquedaFecha2::valorCampo()
+QString BusquedaFecha2::fieldValue()
 {
-    _depura ( "BusquedaFecha2::valorCampo", 0 );
-    _depura ( "END BusquedaFecha2::valorCampo", 0 );
+    _depura ( "BusquedaFecha2::fieldValue", 0 );
+    _depura ( "END BusquedaFecha2::fieldValue", 0 );
     return QLineEdit::text();
 }
 

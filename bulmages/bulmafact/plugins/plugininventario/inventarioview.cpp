@@ -100,7 +100,7 @@ int InventarioView::sacaWindow()
 void InventarioView::on_mui_borrar2_clicked()
 {
     _depura ( "InventarioView::on_mui_borrar2_clicked", 0 );
-    if ( DBvalue ( "idinventario" ) != "" ) {
+    if ( dbValue ( "idinventario" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _( "Borrar inventario" ),
                                      _( "Esta a punto de borrar un inventario. Desea continuar?" ),
@@ -177,7 +177,7 @@ void InventarioView::on_mui_pregenerar_clicked()
 void InventarioView::on_mui_actualizar_released()
 {
     _depura ( "InventarioView::on_mui_actualizar_released", 0 );
-    cargar ( DBvalue ( "idinventario" ) );
+    cargar ( dbValue ( "idinventario" ) );
     _depura ( "END InventarioView::on_mui_actualizar_released", 0 );
 }
 

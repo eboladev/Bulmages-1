@@ -58,7 +58,7 @@ myplugin::~myplugin()
 void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
-    VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_conexionbase );
+    VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
     _depura ( "END myplugin::elslot", 0 );
@@ -73,7 +73,7 @@ void myplugin::inicializa ( Bulmafact *bges )
 {
     _depura ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
-    m_conexionbase = bges->getcompany();
+    m_dbConnection = bges->getcompany();
     m_bulmafact = bges;
     QMenu *pPluginMenu = new QMenu ( "&Vehiculos" );
     QAction *accion = new QAction ( "&Nuevo vehiculo", 0 );

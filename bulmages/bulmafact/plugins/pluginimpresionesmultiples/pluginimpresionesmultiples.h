@@ -52,7 +52,7 @@ class myplugin : public QObject {
     Q_OBJECT
 
 public:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
 
 public:
     myplugin();

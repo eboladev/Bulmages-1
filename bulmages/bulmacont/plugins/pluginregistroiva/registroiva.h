@@ -44,55 +44,55 @@ public:
     };
     RegistroIva ( BcCompany *, QWidget * );
     QString idregistroiva() {
-        return DBvalue ( "idregistroiva" );
+        return dbValue ( "idregistroiva" );
     };
     QString contrapartida() {
-        return DBvalue ( "contrapartida" );
+        return dbValue ( "contrapartida" );
     };
     QString baseimp() {
-        return DBvalue ( "baseimp" );
+        return dbValue ( "baseimp" );
     };
     QString iva() {
-        return DBvalue ( "iva" );
+        return dbValue ( "iva" );
     };
     QString ffactura() {
-        return DBvalue ( "ffactura" );
+        return dbValue ( "ffactura" );
     };
     QString femisionregistroiva() {
-        return DBvalue ( "femisionregistroiva" );
+        return dbValue ( "femisionregistroiva" );
     };
     QString factura() {
-        return DBvalue ( "factura" );
+        return dbValue ( "factura" );
     };
     QString idborrador() {
-        return DBvalue ( "idborrador" );
+        return dbValue ( "idborrador" );
     };
     QString incregistro() {
-        return DBvalue ( "incregistro" );
+        return dbValue ( "incregistro" );
     };
     QString regularizacion() {
-        return DBvalue ( "regularizacion" );
+        return dbValue ( "regularizacion" );
     };
     QString plan349() {
-        return DBvalue ( "plan349" );
+        return dbValue ( "plan349" );
     };
     QString numorden() {
-        return DBvalue ( "numorden" );
+        return dbValue ( "numorden" );
     };
     QString cif() {
-        return DBvalue ( "cif" );
+        return dbValue ( "cif" );
     };
     QString idfpago() {
-        return DBvalue ( "idfpago" );
+        return dbValue ( "idfpago" );
     };
     QString factemitida() {
-        return DBvalue ( "factemitida" );
+        return dbValue ( "factemitida" );
     };
     QString rectificaaregistroiva() {
-        return DBvalue ( "rectificaaregistroiva" );
+        return dbValue ( "rectificaaregistroiva" );
     };
     QString serieregistroiva() {
-        return DBvalue ( "serieregistroiva" );
+        return dbValue ( "serieregistroiva" );
     };
     void setidregistroiva ( const QString &val ) {
         setDbValue ( "idregistroiva", val );

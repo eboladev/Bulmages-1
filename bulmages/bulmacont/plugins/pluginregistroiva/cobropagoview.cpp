@@ -43,18 +43,18 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     /// Inicializamos el listado.
     mui_listado->setDbTableName ( "prevcobro" );
     mui_listado->setDbFieldId ( "idprevcobro" );
-    mui_listado->addSubFormHeader ( "idprevcobro", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "idprevcobro" ) );
-    mui_listado->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "fprevistaprevcobro" ) );
-    mui_listado->addSubFormHeader ( "fcobroprevcobro", BlDbField::DBint, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "fcobroprevcobro" ) );
-    mui_listado->addSubFormHeader ( "idctacliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idctacliente" ) );
-    mui_listado->addSubFormHeader ( "idfpago", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite , _( "idfpago" ) );
-    mui_listado->addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "idcuenta" ) );
-    mui_listado->addSubFormHeader ( "idasiento", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "idasiento" ) );
-    mui_listado->addSubFormHeader ( "cantidadprevistaprevcobro", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "cantidadprevistaprevcobro" ) );
-    mui_listado->addSubFormHeader ( "cantidadprevcobro", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "cantidadprevcobro" ) );
-    mui_listado->addSubFormHeader ( "idregistroiva", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "idregistroiva" ) );
-    mui_listado->addSubFormHeader ( "tipoprevcobro", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "tipoprevcobro" ) );
-    mui_listado->addSubFormHeader ( "docprevcobro", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "docprevcobro" ) );
+    mui_listado->addSubFormHeader ( "idprevcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _( "idprevcobro" ) );
+    mui_listado->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _( "fprevistaprevcobro" ) );
+    mui_listado->addSubFormHeader ( "fcobroprevcobro", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _( "fcobroprevcobro" ) );
+    mui_listado->addSubFormHeader ( "idctacliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "idctacliente" ) );
+    mui_listado->addSubFormHeader ( "idfpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _( "idfpago" ) );
+    mui_listado->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "idcuenta" ) );
+    mui_listado->addSubFormHeader ( "idasiento", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "idasiento" ) );
+    mui_listado->addSubFormHeader ( "cantidadprevistaprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "cantidadprevistaprevcobro" ) );
+    mui_listado->addSubFormHeader ( "cantidadprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "cantidadprevcobro" ) );
+    mui_listado->addSubFormHeader ( "idregistroiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "idregistroiva" ) );
+    mui_listado->addSubFormHeader ( "tipoprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "tipoprevcobro" ) );
+    mui_listado->addSubFormHeader ( "docprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "docprevcobro" ) );
     mui_listado->setinsercion ( FALSE );
     /// Dejamos de inicializar el listado.
     m_cuenta->setMainCompany ( emp );
@@ -115,10 +115,10 @@ void cobropagoview::s_recalculaSaldo()
     for ( int i = 0; i < mui_listado->rowCount(); i++ ) {
         BlDbSubFormRecord *rec = mui_listado->lineaat ( i );
         if ( rec ) {
-            if ( rec->DBvalue ( "tipoprevcobro" ) == "f" ) {
-                totalcobro = totalcobro + BlFixed ( rec->DBvalue ( "cantidadprevcobro" ) );
+            if ( rec->dbValue ( "tipoprevcobro" ) == "f" ) {
+                totalcobro = totalcobro + BlFixed ( rec->dbValue ( "cantidadprevcobro" ) );
             } else {
-                totalpago = totalpago + BlFixed ( rec->DBvalue ( "cantidadprevcobro" ) );
+                totalpago = totalpago + BlFixed ( rec->dbValue ( "cantidadprevcobro" ) );
             } // end if
         } // end if
     } // end for

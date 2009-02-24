@@ -54,15 +54,15 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Albaran de proveedor" ) );
         setDbTableName ( "albaranp" );
         setDbFieldId ( "idalbaranp" );
-        addDbField ( "idalbaranp", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id albaran proveedor" ) );
-        addDbField ( "numalbaranp", BlDbField::DBint, BlDbField::DBNothing, _( "Numero albaran proveedor" ) );
-        addDbField ( "fechaalbaranp", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha albaran proveedor" ) );
-        addDbField ( "comentalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario albaran proveedor" ) );
-        addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
-        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
-        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
-        addDbField ( "refalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia albaran proveedor" ) );
-        addDbField ( "descalbaranp", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion albaran proveedor" ) );
+        addDbField ( "idalbaranp", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id albaran proveedor" ) );
+        addDbField ( "numalbaranp", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero albaran proveedor" ) );
+        addDbField ( "fechaalbaranp", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha albaran proveedor" ) );
+        addDbField ( "comentalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario albaran proveedor" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id almacen" ) );
+        addDbField ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia albaran proveedor" ) );
+        addDbField ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion albaran proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranProveedorView_AlbaranProveedorView", this );
@@ -186,7 +186,7 @@ void AlbaranProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tot
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
 {
     _depura ( "AlbaranProveedorView::on_mui_verpedidos_clicked", 0 );
-    QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue ( "refalbaranp" ) + "'";
+    QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + dbValue ( "refalbaranp" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         PedidoProveedorView * pedpro = new PedidoProveedorView( (BfCompany *) mainCompany(), 0);
@@ -269,8 +269,8 @@ int AlbaranProveedorView::guardarPost()
 {
     _depura ( "AlbaranProveedorView::guardar", 0 );
 
-    m_listalineas->setColumnValue ( "idalbaranp", DBvalue ( "idalbaranp" ) );
-    m_listadescuentos->setColumnValue ( "idalbaranp", DBvalue ( "idalbaranp" ) );
+    m_listalineas->setColumnValue ( "idalbaranp", dbValue ( "idalbaranp" ) );
+    m_listadescuentos->setColumnValue ( "idalbaranp", dbValue ( "idalbaranp" ) );
 
     m_listalineas->guardar();
     m_listadescuentos->guardar();

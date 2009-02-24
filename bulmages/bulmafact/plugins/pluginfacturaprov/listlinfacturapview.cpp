@@ -45,18 +45,18 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
     if ( res != 0 )
         return;
 
-    addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Articulo" ) );
-    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Codigo completo" ) );
-    addSubFormHeader ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "idlfacturap", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Linea" ) );
-    addSubFormHeader ( "desclfacturap", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Descripcion" ) );
-    addSubFormHeader ( "cantlfacturap", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
-    addSubFormHeader ( "pvplfacturap", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "P.V.P." ) );
-    addSubFormHeader ( "ivalfacturap", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "% I.V.A." ) );
-    addSubFormHeader ( "reqeqlfacturap", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "% Recargo" ) );
-    addSubFormHeader ( "descuentolfacturap", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Descuento" ) );
-    addSubFormHeader ( "idfacturap", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Factura" ) );
-    addSubFormHeader ( "ordenlfacturap", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView, _( "Orden" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "Articulo" ) );
+    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Codigo completo" ) );
+    addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idlfacturap", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView, _( "Linea" ) );
+    addSubFormHeader ( "desclfacturap", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Descripcion" ) );
+    addSubFormHeader ( "cantlfacturap", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad" ) );
+    addSubFormHeader ( "pvplfacturap", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "P.V.P." ) );
+    addSubFormHeader ( "ivalfacturap", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "% I.V.A." ) );
+    addSubFormHeader ( "reqeqlfacturap", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "% Recargo" ) );
+    addSubFormHeader ( "descuentolfacturap", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Descuento" ) );
+    addSubFormHeader ( "idfacturap", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Factura" ) );
+    addSubFormHeader ( "ordenlfacturap", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "Orden" ) );
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
 

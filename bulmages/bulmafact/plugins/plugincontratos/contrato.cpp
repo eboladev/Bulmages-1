@@ -39,15 +39,15 @@ Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent
     setTitleName ( _( "Contrato" ) );
     setDbTableName ( "contrato" );
     setDbFieldId ( "idcontrato" );
-    addDbField ( "idcontrato",  BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id contrato" ) );
-    addDbField ( "idcliente",   BlDbField::DBint, BlDbField::DBNotNull, _( "Id cliente" ) );
-    addDbField ( "refcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia contrato" ) );
-    addDbField ( "descontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDbField ( "nomcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDbField ( "loccontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDbField ( "periodicidadcontrato", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDbField ( "fincontrato",  BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
-    addDbField ( "ffincontrato", BlDbField::DBdate, BlDbField::DBNothing, _( "Descripcion contrato" ) );
+    addDbField ( "idcontrato",  BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id contrato" ) );
+    addDbField ( "idcliente",   BlDbField::DbInt, BlDbField::DbNotNull, _( "Id cliente" ) );
+    addDbField ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia contrato" ) );
+    addDbField ( "descontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
+    addDbField ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
+    addDbField ( "loccontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
+    addDbField ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
+    addDbField ( "fincontrato",  BlDbField::DbDate, BlDbField::DbNothing, _( "Descripcion contrato" ) );
+    addDbField ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNothing, _( "Descripcion contrato" ) );
     _depura ( "END Contrato::Contrato", 0 );
 }
 
@@ -75,7 +75,7 @@ Contrato::~Contrato()
 int Contrato::borrar()
 {
     _depura ( "Contrato::borrar", 0 );
-    if ( DBvalue ( "idcontrato" ) != "" ) {
+    if ( dbValue ( "idcontrato" ) != "" ) {
         mainCompany() ->begin();
         int error = m_listalineas->borrar();
         if ( error ) {
@@ -115,14 +115,14 @@ void Contrato::vaciaContrato()
 void Contrato::pintar()
 {
     _depura ( "pintaContrato", 0 );
-    pintaidcliente ( DBvalue ( "idcliente" ) );
-    pintafincontrato ( DBvalue ( "fincontrato" ) );
-    pintaffincontrato ( DBvalue ( "ffincontrato" ) );
-    pintaperiodicidadcontrato ( DBvalue ( "periodicidadcontrato" ) );
-    pintarefcontrato ( DBvalue ( "refcontrato" ) );
-    pintadescontrato ( DBvalue ( "descontrato" ) );
-    pintanomcontrato ( DBvalue ( "nomcontrato" ) );
-    pintaloccontrato ( DBvalue ( "loccontrato" ) );
+    pintaidcliente ( dbValue ( "idcliente" ) );
+    pintafincontrato ( dbValue ( "fincontrato" ) );
+    pintaffincontrato ( dbValue ( "ffincontrato" ) );
+    pintaperiodicidadcontrato ( dbValue ( "periodicidadcontrato" ) );
+    pintarefcontrato ( dbValue ( "refcontrato" ) );
+    pintadescontrato ( dbValue ( "descontrato" ) );
+    pintanomcontrato ( dbValue ( "nomcontrato" ) );
+    pintaloccontrato ( dbValue ( "loccontrato" ) );
     /// Pintamoslas lineas
     m_listalineas->pintar();
     _depura ( "END pintaContrato", 0 );

@@ -132,10 +132,10 @@ void EQToolButtonMail::trataMenu ( QAction *action )
             if(m_BlForm->generaRML ( fileInfo.fileName() )) {
 
 		QString email = "";
-		QString id = m_BlForm->DBvalue ( "id"+m_BlForm->tableName() );
-		QString num = m_BlForm->DBvalue ( "num"+m_BlForm->tableName() );
-		QString ref = m_BlForm->DBvalue ( "ref"+m_BlForm->tableName() );
-		QString idcliente = m_BlForm->DBvalue ( "idcliente" );
+		QString id = m_BlForm->dbValue ( "id"+m_BlForm->tableName() );
+		QString num = m_BlForm->dbValue ( "num"+m_BlForm->tableName() );
+		QString ref = m_BlForm->dbValue ( "ref"+m_BlForm->tableName() );
+		QString idcliente = m_BlForm->dbValue ( "idcliente" );
 		if (!idcliente.isEmpty()) {
 			QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
 			BlDbRecordSet *curs = ((BlForm *)parent())->mainCompany()->loadQuery ( query );

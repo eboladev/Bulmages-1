@@ -91,11 +91,11 @@ void BusquedaTalla::setidtc_talla ( QString idtc_talla )
 /**
 \param idtc_talla
 **/
-void BusquedaTalla::setValorCampo ( QString idtc_talla )
+void BusquedaTalla::setFieldValue ( QString idtc_talla )
 {
-    _depura ( "BusquedaTalla::setValorCampo", 0 );
+    _depura ( "BusquedaTalla::setFieldValue", 0 );
     setidtc_talla ( idtc_talla );
-    _depura ( "END BusquedaTalla::setValorCampo", 0 );
+    _depura ( "END BusquedaTalla::setFieldValue", 0 );
 }
 
 
@@ -121,10 +121,10 @@ QString BusquedaTalla::idtc_talla()
 /**
 \return
 **/
-QString BusquedaTalla::valorCampo()
+QString BusquedaTalla::fieldValue()
 {
-    _depura ( "BusquedaTalla::valorCampo", 0 );
-    _depura ( "END BusquedaTalla::valorCampo", 0 );
+    _depura ( "BusquedaTalla::fieldValue", 0 );
+    _depura ( "END BusquedaTalla::fieldValue", 0 );
     return idtc_talla();
 }
 

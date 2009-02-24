@@ -70,7 +70,7 @@ void TarifaListView::editar (int row)
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
     QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
     mainCompany() ->m_pWorkspace->addWindow ( tar );
-    tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), row ) );
+    tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
     _depura ( "END TarifaListView::editar", 0 );
 }
@@ -101,7 +101,7 @@ void TarifaListView::borrar()
     if (a >= 0) {
 	TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
         QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
-	tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), a ) );
+	tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), a ) );
 	tar->on_mui_borrar_clicked();
 	delete tar;
     } else {

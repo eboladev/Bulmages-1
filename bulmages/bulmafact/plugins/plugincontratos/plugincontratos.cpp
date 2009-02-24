@@ -57,7 +57,7 @@ myplugincont::~myplugincont()
 void myplugincont::elslot()
 {
     _depura ( "myplugincont::elslot", 0 );
-    ContratosList *vehiculoview = new ContratosList ( ( BfCompany * ) m_conexionbase );
+    ContratosList *vehiculoview = new ContratosList ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
     _depura ( "END myplugincont::elslot", 0 );
@@ -72,7 +72,7 @@ void myplugincont::inicializa ( Bulmafact *bges )
 {
     _depura ( "myplugincont::inicializa", 0 );
     /// Creamos el men&uacute;.
-    m_conexionbase = bges->getcompany();
+    m_dbConnection = bges->getcompany();
     m_bulmafact = bges;
 
     /// Miramos si existe un menu Ventas
@@ -138,7 +138,7 @@ int BlForm_cargar ( BlForm *fich )
     _depura ( "BlForm_cargar", 0 );
     ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );
     if ( l ) {
-        l->mui_idcliente->setId ( fich->DBvalue ( "idcliente" ) );
+        l->mui_idcliente->setId ( fich->dbValue ( "idcliente" ) );
         l->on_mui_actualizar_clicked();
         return 0;
     } // end if

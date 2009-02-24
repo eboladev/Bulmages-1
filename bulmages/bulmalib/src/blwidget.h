@@ -41,8 +41,8 @@ public:
     virtual ~BlMainCompanyPointer();
     virtual void setMainCompany ( BlMainCompany * );
     virtual BlMainCompany *mainCompany();
-    virtual QString valorCampo();
-    virtual void setValorCampo ( QString );
+    virtual QString fieldValue();
+    virtual void setFieldValue ( QString );
 };
 
 

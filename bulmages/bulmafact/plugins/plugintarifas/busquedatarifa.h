@@ -38,8 +38,8 @@ public:
     BusquedaTarifa ( QWidget *parent = 0 );
     ~BusquedaTarifa();
     virtual void setIdTarifa ( QString idtarifa );
-    virtual QString valorCampo();
-    virtual void setValorCampo( QString idtarifa );
+    virtual QString fieldValue();
+    virtual void setFieldValue( QString idtarifa );
     QString idtarifa();
 
 public slots:

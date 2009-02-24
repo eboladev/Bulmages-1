@@ -79,11 +79,11 @@ void BusquedaRegimenFiscal::setRegimenFiscal ( QString regimen )
 /**
 \param regimen
 **/
-void BusquedaRegimenFiscal::setValorCampo ( QString regimen )
+void BusquedaRegimenFiscal::setFieldValue ( QString regimen )
 {
-    _depura ( "BusquedaRegimenFiscal::setValorCampo", 0 );
+    _depura ( "BusquedaRegimenFiscal::setFieldValue", 0 );
     setRegimenFiscal ( regimen );
-    _depura ( "END BusquedaRegimenFiscal::setValorCampo", 0 );
+    _depura ( "END BusquedaRegimenFiscal::setFieldValue", 0 );
 }
 
 
@@ -121,7 +121,7 @@ QString BusquedaRegimenFiscal::regimenFiscal()
 /**
 \return
 **/
-QString BusquedaRegimenFiscal::valorCampo()
+QString BusquedaRegimenFiscal::fieldValue()
 {
     _depura ( "BusquedaRegimenFiscal::regimenFiscal", 0 );
     _depura ( "END BusquedaRegimenFiscal::regimenFiscal", 0 );

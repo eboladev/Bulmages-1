@@ -40,7 +40,7 @@ class BlDbSubFormRecord: public BlDbRecord
 public:
     BlDbSubFormRecord ( BlMainCompany *con );
     ~BlDbSubFormRecord();
-    int addDbField ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" );
+    int addDbField ( QString nom, BlDbField::DbType typ, int res, QString nomp = "" );
     void refresh();
     virtual int DBsave ( QString & );
 };
@@ -57,7 +57,7 @@ private:
     BlDbSubFormRecord *m_pare; ///< Puntero al \ref BlDbSubFormRecord al que pertenece. Acelera procesos.
 
 public:
-    BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp = "" );
+    BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp = "" );
     virtual ~BlDbSubFormField();
     BlDbSubFormRecord *pare();
     virtual int set ( QString val );

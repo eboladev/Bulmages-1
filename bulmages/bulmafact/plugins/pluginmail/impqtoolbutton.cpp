@@ -97,10 +97,10 @@ void EmailQToolButton::click()
         m_companyact = m_presupuestoView->mainCompany();
 
 
-        QString id = m_presupuestoView->DBvalue ( "idpresupuesto" );
-        QString num = m_presupuestoView->DBvalue ( "numpresupuesto" );
-        QString ref = m_presupuestoView->DBvalue ( "refpresupuesto" );
-        QString idcliente = m_presupuestoView->DBvalue ( "idcliente" );
+        QString id = m_presupuestoView->dbValue ( "idpresupuesto" );
+        QString num = m_presupuestoView->dbValue ( "numpresupuesto" );
+        QString ref = m_presupuestoView->dbValue ( "refpresupuesto" );
+        QString idcliente = m_presupuestoView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
@@ -122,11 +122,11 @@ void EmailQToolButton::click()
         m_companyact = m_pedidoClienteView->mainCompany();
 
 
-        QString id = m_pedidoClienteView->DBvalue ( "idpedidocliente" );
-        QString num = m_pedidoClienteView->DBvalue ( "numpedidocliente" );
-        QString ref = m_pedidoClienteView->DBvalue ( "refpedidocliente" );
+        QString id = m_pedidoClienteView->dbValue ( "idpedidocliente" );
+        QString num = m_pedidoClienteView->dbValue ( "numpedidocliente" );
+        QString ref = m_pedidoClienteView->dbValue ( "refpedidocliente" );
 
-        QString idcliente = m_pedidoClienteView->DBvalue ( "idcliente" );
+        QString idcliente = m_pedidoClienteView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
@@ -149,11 +149,11 @@ void EmailQToolButton::click()
         m_companyact = m_albaranClienteView->mainCompany();
 
 
-        QString id = m_albaranClienteView->DBvalue ( "idalbaran" );
-        QString num = m_albaranClienteView->DBvalue ( "numalbaran" );
-        QString ref = m_albaranClienteView->DBvalue ( "refalbaran" );
+        QString id = m_albaranClienteView->dbValue ( "idalbaran" );
+        QString num = m_albaranClienteView->dbValue ( "numalbaran" );
+        QString ref = m_albaranClienteView->dbValue ( "refalbaran" );
 
-        QString idcliente = m_albaranClienteView->DBvalue ( "idcliente" );
+        QString idcliente = m_albaranClienteView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
@@ -176,13 +176,13 @@ void EmailQToolButton::click()
         m_companyact = m_facturaView->mainCompany();
 
 
-        QString id = m_facturaView->DBvalue ( "idfactura" );
-        QString num = m_facturaView->DBvalue ( "numfactura" );
-        QString serie = m_facturaView->DBvalue ( "codigoserie_factura" );
-        QString ref = m_facturaView->DBvalue ( "reffactura" );
-        QString fecha = m_facturaView->DBvalue ( "ffactura" );
+        QString id = m_facturaView->dbValue ( "idfactura" );
+        QString num = m_facturaView->dbValue ( "numfactura" );
+        QString serie = m_facturaView->dbValue ( "codigoserie_factura" );
+        QString ref = m_facturaView->dbValue ( "reffactura" );
+        QString fecha = m_facturaView->dbValue ( "ffactura" );
 
-        QString idcliente = m_facturaView->DBvalue ( "idcliente" );
+        QString idcliente = m_facturaView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );

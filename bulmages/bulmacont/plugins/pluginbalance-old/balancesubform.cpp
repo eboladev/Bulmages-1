@@ -29,17 +29,17 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( p
     setDbTableName ( "borrador" );
     setFileConfig ( "balancesubform" );
     setDbFieldId ( "idborrador" );
-    addSubFormHeader ( "idcuenta", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "idcuenta" ) );
-    addSubFormHeader ( "tipocuenta", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "tipocuenta" ) );
-    addSubFormHeader ( "codigo", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "codigo" ) );
-    addSubFormHeader ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "descripcion" ) );
-    addSubFormHeader ( "asaldo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "asaldo" ) );
-    addSubFormHeader ( "tdebe", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "tdebe" ) );
-    addSubFormHeader ( "thaber", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "thaber" ) );
-    addSubFormHeader ( "tsaldo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "tsaldo" ) );
-    addSubFormHeader ( "ejdebe", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ejdebe" ) );
-    addSubFormHeader ( "ejhaber", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ejhaber" ) );
-    addSubFormHeader ( "ejsaldo", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "ejsaldo" ) );
+    addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "idcuenta" ) );
+    addSubFormHeader ( "tipocuenta", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "tipocuenta" ) );
+    addSubFormHeader ( "codigo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "codigo" ) );
+    addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "descripcion" ) );
+    addSubFormHeader ( "asaldo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "asaldo" ) );
+    addSubFormHeader ( "tdebe", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "tdebe" ) );
+    addSubFormHeader ( "thaber", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "thaber" ) );
+    addSubFormHeader ( "tsaldo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "tsaldo" ) );
+    addSubFormHeader ( "ejdebe", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ejdebe" ) );
+    addSubFormHeader ( "ejhaber", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ejhaber" ) );
+    addSubFormHeader ( "ejsaldo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ejsaldo" ) );
     setinsercion ( FALSE );
     _depura ( "END BalanceSubForm::BalanceSubForm", 0 );
 }

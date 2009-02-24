@@ -46,7 +46,7 @@ resmensualview::resmensualview ( empresa *emp, QWidget *parent, const char *name
 {
 
     empresaactual = emp;
-    conexionbase = emp->bdempresa();
+    dbConnection = emp->bdempresa();
 // Inicializamos los valores de las masas patrimoniales.
     idmpatrimonial1 = "";
     idmpatrimonial2 = "";
@@ -109,9 +109,9 @@ void resmensualview::presentar()
             }// end if
             if ( query != "" ) {
                 fprintf ( stderr, "%s\n", query.ascii() );
-                conexionbase->begin();
-                BlDbRecordSet *curs = conexionbase->loadQuery ( query, "midursor" );
-                conexionbase->commit();
+                dbConnection->begin();
+                BlDbRecordSet *curs = dbConnection->loadQuery ( query, "midursor" );
+                dbConnection->commit();
                 if ( !curs->eof() ) {
                     milistad[i].push_back ( movant + atof ( curs->valor ( "tdebe" ).ascii() ) + atof ( curs->valor ( "thaber" ).ascii() ) );
                     milistas[i].push_back ( saldoant + atof ( curs->valor ( "tdebe" ).ascii() ) - atof ( curs->valor ( "thaber" ).ascii() ) );
@@ -179,7 +179,7 @@ void resmensualview::buscacodigocta2()
 void resmensualview::buscampatrimonial1()
 {
     mpatrimonialesview * nuevae = new mpatrimonialesview ( 0, "mpatrimoniales", true );
-    nuevae->inicializa ( conexionbase );
+    nuevae->inicializa ( dbConnection );
     nuevae->setmodoselector();
     nuevae->exec();
     mpatrimonial1->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
@@ -191,7 +191,7 @@ void resmensualview::buscampatrimonial1()
 void resmensualview::buscampatrimonial2()
 {
     mpatrimonialesview * nuevae = new mpatrimonialesview ( 0, "mpatrimoniales", true );
-    nuevae->inicializa ( conexionbase );
+    nuevae->inicializa ( dbConnection );
     nuevae->setmodoselector();
     nuevae->exec();
     mpatrimonial2->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
@@ -203,7 +203,7 @@ void resmensualview::buscampatrimonial2()
 void resmensualview::buscampatrimonial3()
 {
     mpatrimonialesview * nuevae = new mpatrimonialesview ( 0, "mpatrimoniales", true );
-    nuevae->inicializa ( conexionbase );
+    nuevae->inicializa ( dbConnection );
     nuevae->setmodoselector();
     nuevae->exec();
     mpatrimonial3->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
@@ -244,10 +244,10 @@ void resmensualview::presentarpie()
 #endif
 
     for ( int i = 0; i < 3; i++ ) {
-        conexionbase->begin();
+        dbConnection->begin();
         sprintf ( query, "SELECT sum(debe) as tdebe, sum(haber) as thaber, contrapartida FROM apunte WHERE apunte.idcuenta=id_cuenta('%s') GROUP BY contrapartida", codigo[i].ascii() );
-        cursorapt = conexionbase->loadQuery ( query, "mycursor" );
-        conexionbase->commit();
+        cursorapt = dbConnection->loadQuery ( query, "mycursor" );
+        dbConnection->commit();
         // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
         std::list<double> valores;
         std::list<QString> labels;
@@ -256,8 +256,8 @@ void resmensualview::presentarpie()
             QString nomcuenta;
             // Acumulamos los totales para al final poder escribirlos
             sprintf ( query, "SELECT * FROM cuenta WHERE idcuenta = %s", cursorapt->valor ( "contrapartida" ).ascii() );
-            conexionbase->begin();
-            BlDbRecordSet *micurs = conexionbase->loadQuery ( query, "mioldcursor" );
+            dbConnection->begin();
+            BlDbRecordSet *micurs = dbConnection->loadQuery ( query, "mioldcursor" );
             if ( !micurs->eof() ) {
                 nomcuenta = micurs->valor ( "codigo" ) + " " + micurs->valor ( "descripcion" );
             }// end if

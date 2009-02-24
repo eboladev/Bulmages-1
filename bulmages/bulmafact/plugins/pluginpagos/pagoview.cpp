@@ -58,14 +58,14 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Pago" ) );
         setDbTableName ( "pago" );
         setDbFieldId ( "idpago" );
-        addDbField ( "idpago", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id pago" ) );
-        addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
-        addDbField ( "previsionpago", BlDbField::DBboolean, BlDbField::DBNothing, _( "Previcion de pago" ) );
-        addDbField ( "fechapago", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de pago" ) );
-        addDbField ( "refpago", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia de pago" ) );
-        addDbField ( "cantpago", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Cantidad" ) );
-        addDbField ( "comentpago", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario del pago" ) );
-        addDbField ( "idbanco", BlDbField::DBint, BlDbField::DBNothing, _( "Banco" ) );
+        addDbField ( "idpago", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id pago" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
+        addDbField ( "previsionpago", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Previcion de pago" ) );
+        addDbField ( "fechapago", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de pago" ) );
+        addDbField ( "refpago", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia de pago" ) );
+        addDbField ( "cantpago", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
+        addDbField ( "comentpago", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario del pago" ) );
+        addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _( "Banco" ) );
 
 	/// Establecemos los parametros de busqueda del Cliente
 	mui_idproveedor->setLabel ( _( "Proveedor:" ) );

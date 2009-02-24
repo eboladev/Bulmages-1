@@ -58,22 +58,22 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Articulo" ) );
         setDbTableName ( "articulo" );
         setDbFieldId ( "idarticulo" );
-        addDbField ( "idarticulo", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Identificador" ) );
-        addDbField ( "codarticulo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Codigo" ) );
-        addDbField ( "nomarticulo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre del articulo" ) );
-        addDbField ( "abrevarticulo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Abreviacion" ) );
-        addDbField ( "obserarticulo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Observaciones" ) );
-        addDbField ( "presentablearticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Incluir en presentaciones" ) );
-        addDbField ( "controlstockarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Incluir en control de stock" ) );
-        addDbField ( "idtipo_articulo", BlDbField::DBint, BlDbField::DBNothing, _( "Tipo de articulo" ) );
-        addDbField ( "idtipo_iva", BlDbField::DBint, BlDbField::DBNotNull, _( "Tipo de I.V.A." ) );
-        addDbField ( "codigocompletoarticulo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Codigo completo" ) );
-        addDbField ( "idfamilia", BlDbField::DBint, BlDbField::DBNotNull, _( "Familia" ) );
-        addDbField ( "stockarticulo", BlDbField::DBint, BlDbField::DBNothing, _( "Stock" ) );
-        addDbField ( "inactivoarticulo", BlDbField::DBboolean, BlDbField::DBNothing, _( "Inactivo" ) );
-        addDbField ( "pvparticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "P.V.P. base" ) );
-        addDbField ( "pesoundarticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Peso Unidad" ) );
-        addDbField ( "volumenundarticulo", BlDbField::DBnumeric, BlDbField::DBNotNull, _( "Volumen Unidad" ) );
+        addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Identificador" ) );
+        addDbField ( "codarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo" ) );
+        addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre del articulo" ) );
+        addDbField ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Abreviacion" ) );
+        addDbField ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Observaciones" ) );
+        addDbField ( "presentablearticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Incluir en presentaciones" ) );
+        addDbField ( "controlstockarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Incluir en control de stock" ) );
+        addDbField ( "idtipo_articulo", BlDbField::DbInt, BlDbField::DbNothing, _( "Tipo de articulo" ) );
+        addDbField ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbNotNull, _( "Tipo de I.V.A." ) );
+        addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Codigo completo" ) );
+        addDbField ( "idfamilia", BlDbField::DbInt, BlDbField::DbNotNull, _( "Familia" ) );
+        addDbField ( "stockarticulo", BlDbField::DbInt, BlDbField::DbNothing, _( "Stock" ) );
+        addDbField ( "inactivoarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Inactivo" ) );
+        addDbField ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "P.V.P. base" ) );
+        addDbField ( "pesoundarticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Peso Unidad" ) );
+        addDbField ( "volumenundarticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Volumen Unidad" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ArticuloView_ArticuloView", this );
@@ -87,7 +87,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         m_componentes->setMainCompany ( comp );
 
         /// Inicializamos para que no se queden sin ser pintada.
-        mui_idtipo_iva->setValorCampo ( "0" );
+        mui_idtipo_iva->setFieldValue ( "0" );
         mui_pvparticulo->setText("0.0");
         mui_volumenundarticulo->setText("0.00");
         mui_pesoundarticulo->setText("0.0");
@@ -186,7 +186,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 {
     _depura ( "ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
 
-    if ( mui_codigocompletoarticulo->text() == DBvalue ( "codigocompletoarticulo" ) ) {
+    if ( mui_codigocompletoarticulo->text() == dbValue ( "codigocompletoarticulo" ) ) {
         return;
     } // end if
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mui_codigocompletoarticulo->text() + "'";
@@ -214,7 +214,7 @@ int ArticuloView::guardarPost()
     _depura ( "ArticuloView::guardarPost", 0 );
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
-        BlDbRecordSet * cur1 = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
+        BlDbRecordSet * cur1 = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + dbValue ( "idarticulo" ) );
         if ( !cur1 ) throw - 1;
         m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
 
@@ -227,7 +227,7 @@ int ArticuloView::guardarPost()
     } // end if
 
     /// Guardamos la lista de componentes.
-    m_componentes->setColumnValue ( "idarticulo", DBvalue ( "idarticulo" ) );
+    m_componentes->setColumnValue ( "idarticulo", dbValue ( "idarticulo" ) );
     if ( m_componentes->guardar() != 0 ) {
         throw - 1;
     } // end if

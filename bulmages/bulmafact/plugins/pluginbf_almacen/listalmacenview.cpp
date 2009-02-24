@@ -93,9 +93,9 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent 
     _depura ( "ListAlmacenSubForm::ListAlmacenSubForm", 0 );
     setDbTableName ( "almacen" );
     setDbFieldId ( "idalmacen" );
-    addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id almacen" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Codigo almacen" ) );
-    addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre almacen" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView, _( "Id almacen" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Codigo almacen" ) );
+    addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Nombre almacen" ) );
     setinsercion ( TRUE );
     _depura ( "END ListAlmacenSubForm::ListAlmacenSubForm", 0 );
 }

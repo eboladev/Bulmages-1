@@ -41,7 +41,7 @@ class myplugin1 : public QObject
 
 public:
     BcCompany *empresaactual;
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
 
 public:
     myplugin1 ( BcCompany * );
@@ -60,7 +60,7 @@ class adocumental : public QDialog, public Ui_adocumentalbase
 
 private:
     BcCompany *empresaactual;
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     QString RutaADocumental;
     /// En el modo edicion la ventana responde como si fuese un listado sobre el que se
     /// pueden editar los elementos la hacer doble click sobre ellos.

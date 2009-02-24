@@ -129,7 +129,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
 
         QString SQLQuery = "";
 
-        if ( fpv->DBvalue ( "refalbaranp" ).isEmpty() || fpv->DBvalue ( "idproveedor" ).isEmpty() ) {
+        if ( fpv->dbValue ( "refalbaranp" ).isEmpty() || fpv->dbValue ( "idproveedor" ).isEmpty() ) {
             /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
@@ -140,7 +140,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->mui_refalbaranp->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
             } // end if
         } else {
-            SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
+            SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->dbValue ( "refalbaranp" ) + "' AND idproveedor = " + fpv->dbValue ( "idproveedor" );
         } // end if
 
         cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
@@ -169,10 +169,10 @@ void GenFacProQToolButton::generarFacturaProveedor()
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
 
-        bud->setDbValue ( "comentfacturap", fpv->DBvalue ( "comentalbaranp" ) );
-        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDbValue ( "reffacturap", fpv->DBvalue ( "refalbaranp" ) );
-        bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+        bud->setDbValue ( "comentfacturap", fpv->dbValue ( "comentalbaranp" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffacturap", fpv->dbValue ( "refalbaranp" ) );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
         bud->pintar();
         bud->show();
 
@@ -181,18 +181,18 @@ void GenFacProQToolButton::generarFacturaProveedor()
         BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
-            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDbValue ( "desclfacturap", linea->DBvalue ( "desclalbaranp" ) );
-                linea1->setDbValue ( "cantlfacturap", linea->DBvalue ( "cantlalbaranp" ) );
-                linea1->setDbValue ( "pvplfacturap", linea->DBvalue ( "pvplalbaranp" ) );
-                linea1->setDbValue ( "descuentolfacturap", linea->DBvalue ( "descuentolalbaranp" ) );
-                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                linea1->setDbValue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
+                linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclalbaranp" ) );
+                linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlalbaranp" ) );
+                linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplalbaranp" ) );
+                linea1->setDbValue ( "descuentolfacturap", linea->dbValue ( "descuentolalbaranp" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalalbaranp" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -235,7 +235,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
 
         QString SQLQuery = "";
 
-        if ( fpv->DBvalue ( "refpedidoproveedor" ).isEmpty() || fpv->DBvalue ( "idproveedor" ).isEmpty() ) {
+        if ( fpv->dbValue ( "refpedidoproveedor" ).isEmpty() || fpv->dbValue ( "idproveedor" ).isEmpty() ) {
             /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
@@ -246,7 +246,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
             } // end if
         } else {
-            SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->DBvalue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
+            SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->dbValue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->dbValue ( "idproveedor" );
         } // end if
 
         cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
@@ -275,10 +275,10 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
 
-        bud->setDbValue ( "comentfacturap", fpv->DBvalue ( "comentpedidoproveedor" ) );
-        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDbValue ( "reffacturap", fpv->DBvalue ( "refpedidoproveedor" ) );
-        bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+        bud->setDbValue ( "comentfacturap", fpv->dbValue ( "comentpedidoproveedor" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "reffacturap", fpv->dbValue ( "refpedidoproveedor" ) );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
         bud->pintar();
         bud->show();
 
@@ -287,18 +287,18 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
-            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDbValue ( "desclfacturap", linea->DBvalue ( "desclpedidoproveedor" ) );
-                linea1->setDbValue ( "cantlfacturap", linea->DBvalue ( "cantlpedidoproveedor" ) );
-                linea1->setDbValue ( "pvplfacturap", linea->DBvalue ( "pvplpedidoproveedor" ) );
-                linea1->setDbValue ( "descuentolfacturap", linea->DBvalue ( "descuentolpedidoproveedor" ) );
-                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                linea1->setDbValue ( "ivalfacturap", linea->DBvalue ( "ivalpedidoproveedor" ) );
+                linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclpedidoproveedor" ) );
+                linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlpedidoproveedor" ) );
+                linea1->setDbValue ( "pvplfacturap", linea->dbValue ( "pvplpedidoproveedor" ) );
+                linea1->setDbValue ( "descuentolfacturap", linea->dbValue ( "descuentolpedidoproveedor" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalfacturap", linea->dbValue ( "ivalpedidoproveedor" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for

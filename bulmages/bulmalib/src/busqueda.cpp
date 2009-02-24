@@ -145,11 +145,11 @@ void Busqueda::setId ( QString val )
 /**
 \param val
 **/
-void Busqueda::setValorCampo ( QString val )
+void Busqueda::setFieldValue ( QString val )
 {
-    _depura ( "Busqueda::setValorCampo", 0 );
+    _depura ( "Busqueda::setFieldValue", 0 );
     setId ( val );
-    _depura ( "END Busqueda::setValorCampo", 0 );
+    _depura ( "END Busqueda::setFieldValue", 0 );
 }
 
 
@@ -162,7 +162,7 @@ void Busqueda::setValorCampo ( QString val )
 /**
 \param val
 **/
-void Busqueda::setValorCampo ( QString campo, QString val )
+void Busqueda::setFieldValue ( QString campo, QString val )
 {
     _depura ( "Busqueda::setcifprofesor", 0, val );
 
@@ -339,10 +339,10 @@ void Busqueda::on_m_inputBusqueda_textChanged ( const QString &val )
 /**
 \return
 **/
-QString Busqueda::valorCampo(QString campo)
+QString Busqueda::fieldValue(QString campo)
 {
-    _depura ( "Busqueda::valorCampo", 0 );
-    _depura ( "END Busqueda::valorCampo", 0 );
+    _depura ( "Busqueda::fieldValue", 0 );
+    _depura ( "END Busqueda::fieldValue", 0 );
     return m_valores[campo];
 }
 
@@ -361,10 +361,10 @@ QString Busqueda::id()
 /**
 \return
 **/
-QString Busqueda::valorCampo()
+QString Busqueda::fieldValue()
 {
-    _depura ( "Busqueda::valorCampo", 0 );
-    _depura ( "END Busqueda::valorCampo", 0 );
+    _depura ( "Busqueda::fieldValue", 0 );
+    _depura ( "END Busqueda::fieldValue", 0 );
     return mdb_id;
 }
 

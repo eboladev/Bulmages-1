@@ -54,16 +54,16 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Factura Proveedor" ) );
         setDbTableName ( "facturap" );
         setDbFieldId ( "idfacturap" );
-        addDbField ( "idfacturap", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id facturap" ) );
-        addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
-        addDbField ( "numfacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Numero" ) );
-        addDbField ( "ffacturap", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha" ) );
-        addDbField ( "procesadafacturap", BlDbField::DBboolean, BlDbField::DBNothing, _( "Procesada facturap" ) );
-        addDbField ( "comentfacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario facturap" ) );
-        addDbField ( "reffacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia facturap" ) );
-        addDbField ( "descfacturap", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion facturap" ) );
-        addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Id trabajador" ) );
-        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
+        addDbField ( "idfacturap", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id facturap" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
+        addDbField ( "numfacturap", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero" ) );
+        addDbField ( "ffacturap", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha" ) );
+        addDbField ( "procesadafacturap", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Procesada facturap" ) );
+        addDbField ( "comentfacturap", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario facturap" ) );
+        addDbField ( "reffacturap", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia facturap" ) );
+        addDbField ( "descfacturap", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion facturap" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _( "Id trabajador" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "FacturaProveedorView_FacturaProveedorView", this );
@@ -185,7 +185,7 @@ void FacturaProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tot
 void FacturaProveedorView::on_mui_veralbaranes_clicked()
 {
     _depura ( "FacturaProveedorView::on_mui_veralbaranes_clicked", 0 );
-    QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue ( "reffacturap" ) + "'";
+    QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + dbValue ( "reffacturap" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         AlbaranProveedorView * albpro = new AlbaranProveedorView((BfCompany *) mainCompany(), 0);
@@ -269,8 +269,8 @@ int FacturaProveedorView::cargarPost ( QString idfacturap )
 int FacturaProveedorView::guardarPost()
 {
     _depura ( "FacturaProveedorView::guardar()", 0 );
-    m_listalineas->setColumnValue ( "idfacturap", DBvalue ( "idfacturap" ) );
-    m_listadescuentos->setColumnValue ( "idfacturap", DBvalue ( "idfacturap" ) );
+    m_listalineas->setColumnValue ( "idfacturap", dbValue ( "idfacturap" ) );
+    m_listadescuentos->setColumnValue ( "idfacturap", dbValue ( "idfacturap" ) );
     m_listalineas->guardar();
     m_listadescuentos->guardar();
     _depura ( "END FacturaProveedorView::guardar()", 0 );
@@ -328,7 +328,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     QString fitxersortidatxt = "";
 
     /// Linea de totales del presupuesto
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" );
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
         buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
@@ -339,11 +339,11 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     } // end if
     delete cur;
 
-    buff.replace ( "[numfacturap]", DBvalue ( "numfacturap" ) );
-    buff.replace ( "[ffacturap]", DBvalue ( "ffacturap" ) );
-    buff.replace ( "[comentfacturap]", DBvalue ( "comentfacturap" ) );
-    buff.replace ( "[descfacturap]", DBvalue ( "descfacturap" ) );
-    buff.replace ( "[reffacturap]", DBvalue ( "reffacturap" ) );
+    buff.replace ( "[numfacturap]", dbValue ( "numfacturap" ) );
+    buff.replace ( "[ffacturap]", dbValue ( "ffacturap" ) );
+    buff.replace ( "[comentfacturap]", dbValue ( "comentfacturap" ) );
+    buff.replace ( "[descfacturap]", dbValue ( "descfacturap" ) );
+    buff.replace ( "[reffacturap]", dbValue ( "reffacturap" ) );
 
     /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
@@ -363,16 +363,16 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     BlDbSubFormRecord *linea;
     for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
         linea = m_listalineas->lineaat ( i );
-        BlFixed base = BlFixed ( linea->DBvalue ( "cantlfacturap" ).toAscii().constData() ) * BlFixed ( linea->DBvalue ( "pvplfacturap" ).toAscii().constData() );
-        basesimp[linea->DBvalue ( "ivalfacturap" ) ] = basesimp[linea->DBvalue ( "ivalfacturap" ) ] + base - base * BlFixed ( linea->DBvalue ( "descuentolfacturap" ).toAscii().constData() ) / 100;
+        BlFixed base = BlFixed ( linea->dbValue ( "cantlfacturap" ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvplfacturap" ).toAscii().constData() );
+        basesimp[linea->dbValue ( "ivalfacturap" ) ] = basesimp[linea->dbValue ( "ivalfacturap" ) ] + base - base * BlFixed ( linea->dbValue ( "descuentolfacturap" ).toAscii().constData() ) / 100;
 
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "        <td>" + linea->DBvalue ( "codigocompletoarticulo" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->DBvalue ( "desclfacturap" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->DBvalue ( "cantlfacturap" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->DBvalue ( "pvplfacturap" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + linea->DBvalue ( "descuentolfacturap" ) + " %</td>\n";
-        fitxersortidatxt += "        <td>" + ( base - base * BlFixed ( linea->DBvalue ( "descuentolfacturap" ) ) / 100 ).toQString() + "</td>\n";
+        fitxersortidatxt += "        <td>" + linea->dbValue ( "codigocompletoarticulo" ) + "</td>\n";
+        fitxersortidatxt += "        <td>" + linea->dbValue ( "desclfacturap" ) + "</td>\n";
+        fitxersortidatxt += "        <td>" + linea->dbValue ( "cantlfacturap" ) + "</td>\n";
+        fitxersortidatxt += "        <td>" + linea->dbValue ( "pvplfacturap" ) + "</td>\n";
+        fitxersortidatxt += "        <td>" + linea->dbValue ( "descuentolfacturap" ) + " %</td>\n";
+        fitxersortidatxt += "        <td>" + ( base - base * BlFixed ( linea->dbValue ( "descuentolfacturap" ) ) / 100 ).toQString() + "</td>\n";
         fitxersortidatxt += "</tr>";
         i++;
     } // end for
@@ -402,11 +402,11 @@ void FacturaProveedorView::imprimirFacturaProveedor()
         fitxersortidatxt += "</tr>\n";
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
-            porcentt = porcentt + BlFixed ( linea1->DBvalue ( "proporciondfacturap" ).toAscii().constData() );
+            porcentt = porcentt + BlFixed ( linea1->dbValue ( "proporciondfacturap" ).toAscii().constData() );
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "        <td>" + linea1->DBvalue ( "conceptdfacturap" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + linea1->DBvalue ( "proporciondfacturap" ) + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->DBvalue ( "proporciondfacturap" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + linea1->dbValue ( "conceptdfacturap" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + linea1->dbValue ( "proporciondfacturap" ) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporciondfacturap" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";

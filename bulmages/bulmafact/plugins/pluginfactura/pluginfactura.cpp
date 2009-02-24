@@ -160,7 +160,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 int ClienteView_cargarPost_Post (ClienteView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
 	FacturasList *facturasList = prov->findChild<FacturasList *> ( "listfacturas" );
-        facturasList->setidcliente ( prov->DBvalue ( "idcliente" ) );
+        facturasList->setidcliente ( prov->dbValue ( "idcliente" ) );
         facturasList->presentar();
     }// end if
     return 0;

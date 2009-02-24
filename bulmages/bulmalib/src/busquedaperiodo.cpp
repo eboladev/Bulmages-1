@@ -37,10 +37,10 @@ QString BusquedaPeriodo::periodo()
 /**
 \return
 **/
-QString BusquedaPeriodo::valorCampo()
+QString BusquedaPeriodo::fieldValue()
 {
-    _depura ( "BusquedaPeriodo::valorCampo", 0 );
-    _depura ( "END BusquedaPeriodo::valorCampo", 0 );
+    _depura ( "BusquedaPeriodo::fieldValue", 0 );
+    _depura ( "END BusquedaPeriodo::fieldValue", 0 );
     return m_valores[currentIndex() ];
 }
 
@@ -131,11 +131,11 @@ void BusquedaPeriodo::setperiodo ( QString periodo )
 /**
 \param periodo
 **/
-void BusquedaPeriodo::setValorCampo ( QString periodo )
+void BusquedaPeriodo::setFieldValue ( QString periodo )
 {
-    _depura ( "BusquedaPeriodo::setValorCampo", 0 );
+    _depura ( "BusquedaPeriodo::setFieldValue", 0 );
     setperiodo ( periodo );
-    _depura ( "END BusquedaPeriodo::setValorCampo", 0 );
+    _depura ( "END BusquedaPeriodo::setFieldValue", 0 );
 }
 
 

@@ -103,9 +103,9 @@ void ClientsList::presentar()
 void ClientsList::editar ( int row )
 {
     _depura ( "ClientsList::editar", 0 );
-    mdb_idcliente = mui_list->DBvalue ( "idcliente", row );
-    mdb_cifcliente = mui_list->DBvalue ( "cifcliente", row );
-    mdb_nomcliente = mui_list->DBvalue ( "nomcliente", row );
+    mdb_idcliente = mui_list->dbValue ( "idcliente", row );
+    mdb_cifcliente = mui_list->dbValue ( "cifcliente", row );
+    mdb_nomcliente = mui_list->dbValue ( "nomcliente", row );
     if ( modoEdicion() ) {
         ClienteView * prov = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
         if ( prov->cargar ( mdb_idcliente ) ) {
@@ -141,7 +141,7 @@ void ClientsList::borrar()
 {
     _depura ( "ClientsList::on_mui_borrar_clicked", 0 );
     try {
-        QString idcliente = mui_list->DBvalue ( "idcliente" );
+        QString idcliente = mui_list->dbValue ( "idcliente" );
         ClienteView *cli = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
         if ( cli->cargar ( idcliente ) ) {
             delete cli;
@@ -272,23 +272,23 @@ ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : BfSub
     _depura ( "ClienteListSubform::ClienteListSubform", 0 );
     setDbTableName ( "cliente" );
     setDbFieldId ( "idcliente" );
-    addSubFormHeader ( "idcliente", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "codcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo" ) );
-    addSubFormHeader ( "cifcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "C.I.F." ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre de cliente" ) );
-    addSubFormHeader ( "nomaltcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre alternativo del cliente" ) );
-    addSubFormHeader ( "bancocliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero cuenta corriente" ) );
-    addSubFormHeader ( "dircliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Direccion" ) );
-    addSubFormHeader ( "poblcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Poblacion" ) );
-    addSubFormHeader ( "cpcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo postal" ) );
-    addSubFormHeader ( "telcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de telefono" ) );
-    addSubFormHeader ( "faxcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Numero de fax" ) );
-    addSubFormHeader ( "mailcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Direccion de correo electronica" ) );
-    addSubFormHeader ( "urlcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Direccion URL" ) );
-    addSubFormHeader ( "corpcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Empresa" ) );
-    addSubFormHeader ( "faltacliente", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de alta del cliente" ) );
-    addSubFormHeader ( "fbajacliente", BlDbField::DBdate, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Fecha de baja del cliente" ) );
-    addSubFormHeader ( "comentcliente", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Comentarios" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
+    addSubFormHeader ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de cliente" ) );
+    addSubFormHeader ( "nomaltcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre alternativo del cliente" ) );
+    addSubFormHeader ( "bancocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero cuenta corriente" ) );
+    addSubFormHeader ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion" ) );
+    addSubFormHeader ( "poblcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Poblacion" ) );
+    addSubFormHeader ( "cpcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo postal" ) );
+    addSubFormHeader ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de telefono" ) );
+    addSubFormHeader ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de fax" ) );
+    addSubFormHeader ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion de correo electronica" ) );
+    addSubFormHeader ( "urlcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion URL" ) );
+    addSubFormHeader ( "corpcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Empresa" ) );
+    addSubFormHeader ( "faltacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de alta del cliente" ) );
+    addSubFormHeader ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de baja del cliente" ) );
+    addSubFormHeader ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

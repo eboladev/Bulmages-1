@@ -161,7 +161,7 @@ void ProfesoresList::borrar()
         return;
     } // end if
     try {
-        mdb_idprofesor = mui_list->DBvalue ( "idprofesor" );
+        mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
         if ( modoEdicion() ) {
             ProfesorView * cv = new ProfesorView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idprofesor ) )
@@ -185,7 +185,7 @@ void ProfesoresList::editar ( int )
 {
     _depura ( "ProfesoresList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idprofesor = mui_list->DBvalue ( "idprofesor" );
+        mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
         if ( modoEdicion() ) {
             ProfesorView * bud = new ProfesorView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idprofesor ) ) {
@@ -259,8 +259,8 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
         return;
     setDbTableName ( "profesor" );
     setDbFieldId ( "idprofesor" );
-    addSubFormHeader ( "idprofesor", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "Id profesor" ) );
-    addSubFormHeader ( "nombreprofesor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id profesor" ) );
+    addSubFormHeader ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

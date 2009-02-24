@@ -69,9 +69,9 @@ public:
     BusquedaCuenta ( QWidget *parent = 0 );
     ~BusquedaCuenta();
     QString text();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
     virtual void setText ( QString val );
-    virtual void setValorCampo ( QString val );
+    virtual void setFieldValue ( QString val );
     virtual QString codigocuenta();
     virtual QString idcuenta();
     virtual QString nomcuenta();

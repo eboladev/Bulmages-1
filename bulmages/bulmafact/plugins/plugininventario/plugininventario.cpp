@@ -119,11 +119,11 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     l->setDbTableName ( "minimsalmacen" );
     l->setDbFieldId ( "idminimsalmacen" );
-    l->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone, _( "Almacen" ) );
-    l->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Id Almacen" ) );
-    l->addSubFormHeader ( "valminimsalmacen", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Minimo" ) );
-    l->addSubFormHeader ( "idminimsalmacen", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Validacion" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Trabajador" ) );
+    l->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Almacen" ) );
+    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Id Almacen" ) );
+    l->addSubFormHeader ( "valminimsalmacen", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Minimo" ) );
+    l->addSubFormHeader ( "idminimsalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID Validacion" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID Trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -143,7 +143,7 @@ int BlForm_cargar ( BlForm *fich )
 {
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form )
-        form->cargar ( "SELECT * FROM minimsalmacen NATURAL LEFT JOIN almacen WHERE idarticulo = " + fich->DBvalue ( "idarticulo" ) );
+        form->cargar ( "SELECT * FROM minimsalmacen NATURAL LEFT JOIN almacen WHERE idarticulo = " + fich->dbValue ( "idarticulo" ) );
     return 0;
 }
 
@@ -153,7 +153,7 @@ int BlForm_guardar_Post ( BlForm *fich )
 {
     BlSubForm * form = fich->findChild<BlSubForm *> ( "m_lmin" );
     if ( form ) {
-        form->setColumnValue ( "idarticulo", fich->DBvalue ( "idarticulo" ) );
+        form->setColumnValue ( "idarticulo", fich->dbValue ( "idarticulo" ) );
         form->guardar();
     } // end if
     return 0;
@@ -185,12 +185,12 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         if ( !wid ) return 0;
 
         BlForm *fich = ( BlForm * ) wid;
-        QString idalmacen = fich->DBvalue ( "idalmacen" );
+        QString idalmacen = fich->dbValue ( "idalmacen" );
         if ( idalmacen == "" ) return 0;
 
-        if ( rec->DBvalue ( "idarticulo" ) == "" ) return 0;
+        if ( rec->dbValue ( "idarticulo" ) == "" ) return 0;
 
-        QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
+        QString query1 = "SELECT * FROM stock_almacen where idarticulo=" + rec->dbValue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
         BlDbRecordSet *cur1 = subform->mainCompany() ->loadQuery ( query1 );
         BlFixed stock ( "0" );
         if ( !cur1 ) return 0;
@@ -201,7 +201,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 
 
 
-        QString query = "SELECT * FROM minimsalmacen where idarticulo=" + rec->DBvalue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
+        QString query = "SELECT * FROM minimsalmacen where idarticulo=" + rec->dbValue ( "idarticulo" ) + " AND idalmacen = " + idalmacen;
         BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {

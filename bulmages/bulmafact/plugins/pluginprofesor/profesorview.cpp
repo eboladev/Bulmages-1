@@ -48,8 +48,8 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Profesor" ) );
         setDbTableName ( "profesor" );
         setDbFieldId ( "idprofesor" );
-        addDbField ( "idprofesor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID profesor" ) );
-        addDbField ( "nombreprofesor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del profesor" ) );
+        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID profesor" ) );
+        addDbField ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del profesor" ) );
 
 
         /// Datos por defecto.
@@ -92,7 +92,7 @@ void ProfesorView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;

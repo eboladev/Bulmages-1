@@ -43,12 +43,12 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     mui_listado->setMainCompany ( emp );
     mui_listado->setDbTableName ( "presupuestoc" );
     mui_listado->setDbFieldId ( "idpresupuestoc" );
-    mui_listado->addSubFormHeader ( "idpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "Identificador" ) );
-    mui_listado->addSubFormHeader ( "idc_coste", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNoWrite, _( "C. Coste" ) );
-    mui_listado->addSubFormHeader ( "fechapresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Fecha" ) );
-    mui_listado->addSubFormHeader ( "nombrepresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Nombre" ) );
-    mui_listado->addSubFormHeader ( "comentpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Comentarios" ) );
-    mui_listado->addSubFormHeader ( "archpresupuestoc", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Archivo" ) );
+    mui_listado->addSubFormHeader ( "idpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNoWrite, _( "Identificador" ) );
+    mui_listado->addSubFormHeader ( "idc_coste", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNoWrite, _( "C. Coste" ) );
+    mui_listado->addSubFormHeader ( "fechapresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Fecha" ) );
+    mui_listado->addSubFormHeader ( "nombrepresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Nombre" ) );
+    mui_listado->addSubFormHeader ( "comentpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Comentarios" ) );
+    mui_listado->addSubFormHeader ( "archpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Archivo" ) );
     mui_listado->setinsercion ( FALSE );
 
     presentar();
@@ -100,7 +100,7 @@ void ListProyectosView::borrar()
 {
     _depura ( "ListProyectosView::on_mui_borrar_clicked", 0 );
     try {
-        QString codigo = mui_listado->DBvalue ( "idamortizacion" );
+        QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
             QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
             mainCompany() ->begin();
@@ -131,8 +131,8 @@ void ListProyectosView::borrar()
 void ListProyectosView::editar ( int row )
 {
     _depura ( "ListProyectosView::editAmortizacion " + row, 0 );
-    mdb_idpresupuestoc = mui_listado->DBvalue ( "idpresupuestoc" );
-    mdb_nompresupuestoc = mui_listado->DBvalue ( "nompresupuestoc" );
+    mdb_idpresupuestoc = mui_listado->dbValue ( "idpresupuestoc" );
+    mdb_nompresupuestoc = mui_listado->dbValue ( "nompresupuestoc" );
     if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
         ProyectoView * amor = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );

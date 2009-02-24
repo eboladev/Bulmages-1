@@ -127,7 +127,7 @@ int BlForm_cargar ( BlForm *ficha )
 {
     ListProyectosView * l = ficha->findChild<ListProyectosView *> ( "mui_proyectos" );
     if ( l )
-        l->mui_listado->cargar ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->DBvalue ( "idc_coste" ) );
+        l->mui_listado->cargar ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->dbValue ( "idc_coste" ) );
     return 0;
 }
 

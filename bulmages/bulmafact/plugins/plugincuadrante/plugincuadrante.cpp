@@ -148,10 +148,10 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
     _depura ( "esxtoy en la clase almacen", 0 );
 
-    alm->addDbField ( "aperturaalmacen", BlDbField::DBvarchar, BlDbField::DBNothing,  "Apertura Manyana" );
-    alm->addDbField ( "cierrealmacen", BlDbField::DBvarchar, BlDbField::DBNothing, "Cierre Manyana" );
-    alm->addDbField ( "apertura1almacen", BlDbField::DBvarchar, BlDbField::DBNothing,  "Apertura Tarde" );
-    alm->addDbField ( "cierre1almacen", BlDbField::DBvarchar, BlDbField::DBNothing, "Cierre Tarde" );
+    alm->addDbField ( "aperturaalmacen", BlDbField::DbVarChar, BlDbField::DbNothing,  "Apertura Manyana" );
+    alm->addDbField ( "cierrealmacen", BlDbField::DbVarChar, BlDbField::DbNothing, "Cierre Manyana" );
+    alm->addDbField ( "apertura1almacen", BlDbField::DbVarChar, BlDbField::DbNothing,  "Apertura Tarde" );
+    alm->addDbField ( "cierre1almacen", BlDbField::DbVarChar, BlDbField::DbNothing, "Cierre Tarde" );
 
 
 // ---------------
@@ -242,11 +242,11 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     l->setMainCompany ( trab->mainCompany() );
     l->setDbTableName ( "ausencia" );
     l->setDbFieldId ( "idausencia" );
-    l->addSubFormHeader ( "fechainausencia", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNone, _( "Fecha inicial ausencia" ) );
-    l->addSubFormHeader ( "fechafinausencia", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha final ausencia" ) );
-    l->addSubFormHeader ( "motivoausencia", BlDbField::DBvarchar, BlDbField::DBNothing, BlSubFormHeader::DBNone , _( "Motivo" ) );
-    l->addSubFormHeader ( "idausencia", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID ausencia" ) );
-    l->addSubFormHeader ( "idtrabajador", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID trabajador" ) );
+    l->addSubFormHeader ( "fechainausencia", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _( "Fecha inicial ausencia" ) );
+    l->addSubFormHeader ( "fechafinausencia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Fecha final ausencia" ) );
+    l->addSubFormHeader ( "motivoausencia", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "Motivo" ) );
+    l->addSubFormHeader ( "idausencia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID ausencia" ) );
+    l->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

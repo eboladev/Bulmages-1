@@ -82,9 +82,9 @@ BlMainCompany *BlMainCompanyPointer::mainCompany()
 /**
 \return
 **/
-QString BlMainCompanyPointer::valorCampo()
+QString BlMainCompanyPointer::fieldValue()
 {
-    _depura ( "BlMainCompanyPointer::valorCampo", 2, "debe ser derivado" );
+    _depura ( "BlMainCompanyPointer::fieldValue", 2, "debe ser derivado" );
     return "";
 }
 
@@ -92,9 +92,9 @@ QString BlMainCompanyPointer::valorCampo()
 ///
 /**
 **/
-void BlMainCompanyPointer::setValorCampo ( QString )
+void BlMainCompanyPointer::setFieldValue ( QString )
 {
-    _depura ( "BlMainCompanyPointer::setValorCampo", 2, "debe ser derivado" );
+    _depura ( "BlMainCompanyPointer::setFieldValue", 2, "debe ser derivado" );
 }
 
 

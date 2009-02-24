@@ -65,11 +65,11 @@ BlDbField::~BlDbField()
 /**
 \return
 **/
-BlPostgreSqlClient *BlDbField::conexionbase()
+BlPostgreSqlClient *BlDbField::dbConnection()
 {
-    _depura ( "BlDbField::conexionbase", 0 );
-    _depura ( "END BlDbField::conexionbase", 0 );
-    return m_conexionbase;
+    _depura ( "BlDbField::dbConnection", 0 );
+    _depura ( "END BlDbField::dbConnection", 0 );
+    return m_dbConnection;
 }
 
 
@@ -77,11 +77,11 @@ BlPostgreSqlClient *BlDbField::conexionbase()
 /**
 \param comp
 **/
-void BlDbField::setconexionbase ( BlPostgreSqlClient *comp )
+void BlDbField::setDbConnection ( BlPostgreSqlClient *comp )
 {
-    _depura ( "BlDbField::setconexionbase", 0 );
-    m_conexionbase = comp;
-    _depura ( "END BlDbField::setconexionbase", 0 );
+    _depura ( "BlDbField::setDbConnection", 0 );
+    m_dbConnection = comp;
+    _depura ( "END BlDbField::setDbConnection", 0 );
 }
 
 
@@ -89,7 +89,7 @@ void BlDbField::setconexionbase ( BlPostgreSqlClient *comp )
 /**
 \return
 **/
-BlDbField::dbtype BlDbField::tipo()
+BlDbField::DbType BlDbField::dbFieldType()
 {
     _depura ( "BlDbField::tipo", 0 );
     _depura ( "END BlDbField::tipo", 0 );
@@ -156,7 +156,7 @@ QString BlDbField::valorcampo()
     _depura ( "BlDbField::valorcampo", 0 );
 	QString valor = m_valorcampo;
 	switch (m_tipo) {
-		case DBnumeric:
+		case DbNumeric:
 				QLocale locale;
 				if (locale.decimalPoint() == '.') 
 					valor.replace ( ",", locale.decimalPoint () );
@@ -177,10 +177,10 @@ QString BlDbField::valorcampo()
 \param res
 \param nomp
 **/
-BlDbField::BlDbField ( BlPostgreSqlClient *com, QString nom, dbtype typ, int res, QString nomp )
+BlDbField::BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp )
 {
     _depura ( "BlDbField::BlDbField", 0 );
-    m_conexionbase = com;
+    m_dbConnection = com;
     m_nomcampo = nom;
     m_tipo = typ;
     m_restrict = res;
@@ -201,7 +201,7 @@ QString BlDbField::valorcampoprep ( int &error )
     _depura ( "BlDbField::valorcampoprep", 0 );
     error = 0;
     QString valor = "";
-    if ( ( m_restrict & DBNotNull ) && ! ( m_restrict & DBAuto ) ) {
+    if ( ( m_restrict & DbNotNull ) && ! ( m_restrict & DbAuto ) ) {
         if ( m_valorcampo == "" ) {
             mensajeAviso ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -20200;
@@ -211,43 +211,43 @@ QString BlDbField::valorcampoprep ( int &error )
     } // end if
 
     switch ( m_tipo ) {
-    case DBint:
+    case DbInt:
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else {
             m_valorcampo.replace ( ",", "." );
-            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            valor = "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
         } // end if
         break;
-    case DBvarchar:
+    case DbVarChar:
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else {
-            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            valor = "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
         } // end if
         break;
-    case DBdate:
+    case DbDate:
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else {
-            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            valor = "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
         } // end if
         break;
-    case DBnumeric:
+    case DbNumeric:
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else {
             m_valorcampo.replace ( ",", "." );
-            valor =  "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            valor =  "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
         } // end if
         break;
-    case DBboolean:
+    case DbBoolean:
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else if ( m_valorcampo == "f" || m_valorcampo == "t" ) {
-            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            valor = "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
         } else {
-            valor = m_conexionbase->sanearCadena ( m_valorcampo );
+            valor = m_dbConnection->sanearCadena ( m_valorcampo );
         } // end if
         break;
     default:
@@ -266,7 +266,7 @@ QString BlDbField::valorcampoprep ( int &error )
 BlDbRecord::BlDbRecord ( BlMainCompany *con )
 {
     _depura ( "BlDbRecord::BlDbRecord", 0 );
-    m_conexionbase = con;
+    m_dbConnection = con;
     m_nuevoCampo = TRUE;
     _depura ( "END BlDbRecord::BlDbRecord", 0 );
 }
@@ -290,11 +290,11 @@ Esta clase funciona siempre ligada a una base de datos. Esta se especifica
 en el constructor de la clase.
 \param comp Puntero a la base de datos que debe utilizar la clase.
 **/
-void BlDbRecord::setconexionbase ( BlMainCompany *comp )
+void BlDbRecord::setDbConnection ( BlMainCompany *comp )
 {
-    _depura ( "BlDbRecord::setconexionbase", 0 );
-    m_conexionbase = comp;
-    _depura ( "END BlDbRecord::setconexionbase", 0 );
+    _depura ( "BlDbRecord::setDbConnection", 0 );
+    m_dbConnection = comp;
+    _depura ( "END BlDbRecord::setDbConnection", 0 );
 }
 
 
@@ -302,11 +302,11 @@ void BlDbRecord::setconexionbase ( BlMainCompany *comp )
 /**
 \return Puntero a la base de datos con la que se ha inicializado la clase.
 **/
-BlMainCompany *BlDbRecord::conexionbase()
+BlMainCompany *BlDbRecord::dbConnection()
 {
-    _depura ( "BlDbRecord::conexionbase", 0 );
-    _depura ( "END BlDbRecord::conexionbase", 0 );
-    return m_conexionbase;
+    _depura ( "BlDbRecord::dbConnection", 0 );
+    _depura ( "END BlDbRecord::dbConnection", 0 );
+    return m_dbConnection;
 }
 
 
@@ -358,10 +358,10 @@ QString BlDbRecord::tableName()
 /**
 \return El nombre del campo que se considera Identificador. (Clave Primaria)
 **/
-QString BlDbRecord::campoId()
+QString BlDbRecord::fieldId()
 {
-    _depura ( "BlDbRecord::campoId", 0 );
-    _depura ( "END BlDbRecord::campoId", 0 );
+    _depura ( "BlDbRecord::fieldId", 0 );
+    _depura ( "END BlDbRecord::fieldId", 0 );
     return m_campoid;
 }
 
@@ -418,12 +418,12 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
         int error = 0;
         for ( int i = 0; i < m_lista.size(); ++i ) {
             campo = m_lista.at ( i );
-            if ( ! ( campo->restrictcampo() & BlDbField::DBNoLoad ) ) {
+            if ( ! ( campo->restrictcampo() & BlDbField::DbNoLoad ) ) {
                 QString nom = campo->nomcampo();
                 QString val = cur->valor ( nom );
-                if ( ( campo->restrictcampo() & BlDbField::DBPrimaryKey ) && ( val == "" ) )
+                if ( ( campo->restrictcampo() & BlDbField::DbPrimaryKey ) && ( val == "" ) )
                     m_nuevoCampo = TRUE;
-                if ( ( campo->restrictcampo() & BlDbField::DBDupPrimaryKey ) && ( val == "" ) )
+                if ( ( campo->restrictcampo() & BlDbField::DbDupPrimaryKey ) && ( val == "" ) )
                     m_nuevoCampo = TRUE;
                 error += campo->set ( val );
                 /// Al ser una carga consideramos que los cambios estan inicializados.
@@ -476,7 +476,7 @@ int BlDbRecord::DBsave ( QString &id )
             campo = m_lista.at ( i );
 
             /// Si el campo esta en DupPrimaryKey lo ponemos en el query.
-            if ( campo->restrictcampo() & BlDbField::DBDupPrimaryKey ) {
+            if ( campo->restrictcampo() & BlDbField::DbDupPrimaryKey ) {
                 QString lin = campo->valorcampoprep ( err );
                 if ( err )
                     throw ( err );
@@ -486,14 +486,14 @@ int BlDbRecord::DBsave ( QString &id )
 
             /// Si el campo es requerido y no esta entonces salimos sin dar error.
             /// No es lo mismo que los not null ya que estos si dan error
-            if ( ! ( campo->restrictcampo() & BlDbField::DBNoSave ) ) {
-                if ( campo->restrictcampo() & BlDbField::DBRequired ) {
+            if ( ! ( campo->restrictcampo() & BlDbField::DbNoSave ) ) {
+                if ( campo->restrictcampo() & BlDbField::DbRequired ) {
                     if ( campo->valorcampo() == "" ) {
                         _depura ( "END BlDbRecord::DBsave", 0, "Campo requerido vacio" );
                         return 0;
                     } // end if
                 } // end if
-                if ( campo->restrictcampo() & BlDbField::DBPrimaryKey ) {
+                if ( campo->restrictcampo() & BlDbField::DbPrimaryKey ) {
                     QString lin = campo->valorcampoprep ( err );
                     if ( err )
                         throw ( err );
@@ -521,15 +521,15 @@ int BlDbRecord::DBsave ( QString &id )
         } // end for
         if ( m_nuevoCampo ) {
             QString query = "INSERT INTO " + m_tablename + " (" + listcampos + ") VALUES (" + listvalores + ")";
-            m_conexionbase->runQuery ( query );
+            m_dbConnection->runQuery ( query );
             _depura ( query, 0 );
-            BlDbRecordSet *cur = m_conexionbase->loadQuery ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
+            BlDbRecordSet *cur = m_dbConnection->loadQuery ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
             id = cur->valor ( m_campoid );
             delete cur;
         } else {
             QString query = "UPDATE " + m_tablename + " SET " + queryupdate + " WHERE " + querywhere;
             _depura ( query, 0 );
-            m_conexionbase->runQuery ( query );
+            m_dbConnection->runQuery ( query );
         } // end if
         m_nuevoCampo = FALSE;
 
@@ -582,9 +582,9 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
 \param nomb Nombre del campo que queremos consultar.
 \return Valor que contiene el campo.
 **/
-QString BlDbRecord::DBvalue ( QString nomb )
+QString BlDbRecord::dbValue ( QString nomb )
 {
-    _depura ( "BlDbRecord::DBvalue", 0, nomb );
+    _depura ( "BlDbRecord::dbValue", 0, nomb );
     BlDbField *campo;
     QString valor = "";
     int i = 0;
@@ -599,7 +599,7 @@ QString BlDbRecord::DBvalue ( QString nomb )
     } else if ( campo->nomcampo() == nomb ) {
         valor = campo->valorcampo();
     } // end if
-    _depura ( "END BlDbRecord::DBvalue", 0, nomb );
+    _depura ( "END BlDbRecord::dbValue", 0, nomb );
     return valor;
 }
 
@@ -633,9 +633,9 @@ bool BlDbRecord::exists ( QString nomb )
 \param nomb campo a preparar para ser guardado
 \return El valor del campo una vez preprocesado para el guardado.
 **/
-QString BlDbRecord::DBvalueprep ( QString nomb )
+QString BlDbRecord::dbValueprep ( QString nomb )
 {
-    _depura ( "BlDbRecord::DBvalueprep", 0 );
+    _depura ( "BlDbRecord::dbValueprep", 0 );
     BlDbField *campo;
     int i = 0;
     campo = m_lista.value ( i );
@@ -654,7 +654,7 @@ QString BlDbRecord::DBvalueprep ( QString nomb )
         return campo->valorcampoprep ( err );
     } // end if
 
-    _depura ( "END BlDbRecord::DBvalueprep", 0 );
+    _depura ( "END BlDbRecord::dbValueprep", 0 );
     return "";
 }
 
@@ -670,10 +670,10 @@ la clase para que aprenda a operar con una tabla determinada.
 \param nomp Nombre para mostrar en los mensajes que involucren al campo
 \return
 **/
-int BlDbRecord::addDbField ( QString nom, BlDbField::dbtype typ, int res, QString nomp = "" )
+int BlDbRecord::addDbField ( QString nom, BlDbField::DbType typ, int res, QString nomp = "" )
 {
     _depura ( "BlDbRecord::addDbField", 0 );
-    BlDbField *camp = new BlDbField ( m_conexionbase, nom, typ, res, nomp );
+    BlDbField *camp = new BlDbField ( m_dbConnection, nom, typ, res, nomp );
     camp->set
     ( "" );
     m_lista.append ( camp );
@@ -696,7 +696,7 @@ int BlDbRecord::borrar()
 
         for ( int i = 0; i < m_lista.size(); ++i ) {
             campo = m_lista.at ( i );
-            if ( campo->restrictcampo() & BlDbField::DBDupPrimaryKey ) {
+            if ( campo->restrictcampo() & BlDbField::DbDupPrimaryKey ) {
                 int err;
                 QString lin = campo->valorcampoprep ( err );
                 if ( err )
@@ -705,8 +705,8 @@ int BlDbRecord::borrar()
                 separadorwhere = " AND ";
             } // end if
 
-            if ( ! ( campo->restrictcampo() & BlDbField::DBNoSave ) ) {
-                if ( campo->restrictcampo() & BlDbField::DBPrimaryKey ) {
+            if ( ! ( campo->restrictcampo() & BlDbField::DbNoSave ) ) {
+                if ( campo->restrictcampo() & BlDbField::DbPrimaryKey ) {
                     int err;
                     QString lin = campo->valorcampoprep ( err );
                     if ( err )
@@ -718,7 +718,7 @@ int BlDbRecord::borrar()
         } // end for
 
         if ( m_nuevoCampo == FALSE ) {
-            m_conexionbase->runQuery ( "DELETE FROM " + m_tablename + " WHERE " + querywhere );
+            m_dbConnection->runQuery ( "DELETE FROM " + m_tablename + " WHERE " + querywhere );
         } // end if
 
         _depura ( "END BlDbRecord::borrar", 0 );
@@ -764,7 +764,7 @@ int BlDbRecord::cargar ( QString id )
     _depura ( "BlDbRecord::cargar", 0 );
     try {
         QString query = "SELECT * FROM " + m_tablename + " WHERE " + m_campoid + " = " + id;
-        BlDbRecordSet *cur = m_conexionbase->loadQuery ( query );
+        BlDbRecordSet *cur = m_dbConnection->loadQuery ( query );
         if ( !cur ) throw - 1;
         if ( !cur->eof() ) {
             DBload ( cur );
@@ -812,7 +812,7 @@ QString BlDbRecord::story ( void ) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "   <td>" + xmlEscape(campo->nomcampo()) + "</td>\n";
         fitxersortidatxt += "   <td>" + xmlEscape(campo->nompresentacion()) + "</td>\n";
-        if ( campo->tipo() & BlDbField::DBnumeric )
+        if ( campo->dbFieldType() & BlDbField::DbNumeric )
             fitxersortidatxt += "   <td>" + xmlEscape(spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 )) + "</td>\n";
         else
             fitxersortidatxt += "   <td>" + xmlEscape(campo->valorcampo()) + "</td>\n";

@@ -156,11 +156,11 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     if ( linea->nomcampo() == "nomtarifa" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
-	comboBox->setIdTarifa(m_subform->lineaat ( index.row() ) ->DBvalue("idtarifa"));
+	comboBox->setIdTarifa(m_subform->lineaat ( index.row() ) ->dbValue("idtarifa"));
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
-	comboBox->setId(m_subform->lineaat ( index.row() ) ->DBvalue("idalmacen"));
+	comboBox->setId(m_subform->lineaat ( index.row() ) ->dbValue("idalmacen"));
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
                 || linea->nomcampo() == "porcentajevariacion") {

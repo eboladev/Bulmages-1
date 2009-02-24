@@ -34,7 +34,7 @@ class importContaplus: public QDialog, public Ui_importContaplusBase, public pgi
     Q_OBJECT
 
 private:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
 
 public:
     importContaplus ( BlPostgreSqlClient *, QWidget *, Qt::WFlags );

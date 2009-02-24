@@ -203,24 +203,24 @@ void EFQToolButton::exporta_factura_ubl()
 
     bool error_idtrabajador = false;
 
-    if ( m_factura->DBvalue ( "idfactura" ).isEmpty() ) {
+    if ( m_factura->dbValue ( "idfactura" ).isEmpty() ) {
         _depura ( "ERROR: El campo idfactura del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
-    if ( m_factura->DBvalue ( "idcliente" ).isEmpty() ) {
+    if ( m_factura->dbValue ( "idcliente" ).isEmpty() ) {
         _depura ( "ERROR: El campo idcliente del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
-    if ( m_factura->DBvalue ( "idtrabajador" ).isEmpty() ) {
+    if ( m_factura->dbValue ( "idtrabajador" ).isEmpty() ) {
         // Esto no es un error grave. Este campo falta si la factura no viene desde un albaran.
         // Marcamos el error y evitamos hacer el query despues
         error_idtrabajador = true;
 
     }
 
-    if ( m_factura->DBvalue ( "idforma_pago" ).isEmpty() ) {
+    if ( m_factura->dbValue ( "idforma_pago" ).isEmpty() ) {
         _depura ( "ERROR: El campo idforma_pago del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
@@ -229,7 +229,7 @@ void EFQToolButton::exporta_factura_ubl()
 
     QString nombrearchivo = "";
     nombrearchivo += QString ( _RESULTADO_ );
-    nombrearchivo += QString ( m_factura->DBvalue ( "idfactura" ) );
+    nombrearchivo += QString ( m_factura->dbValue ( "idfactura" ) );
     nombrearchivo += ".xml";
 
     QFile *file_out = new QFile ( nombrearchivo );
@@ -240,11 +240,11 @@ void EFQToolButton::exporta_factura_ubl()
     }
 
     // Datos de la factura que no estan en el BlDbRecord
-    query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
+    query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->dbValue ( "idfactura" );
     BlDbRecordSet *factura_totales = mainCompany() ->loadQuery ( query );
 
     // Datos del cliente
-    query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->DBvalue ( "idcliente" );
+    query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->dbValue ( "idcliente" );
     BlDbRecordSet *cliente = mainCompany() ->loadQuery ( query );
 
     // Datos del trabajador que emitio la factura
@@ -252,12 +252,12 @@ void EFQToolButton::exporta_factura_ubl()
     BlDbRecordSet *trabajador = NULL;
 
     if ( !error_idtrabajador ) {
-        query = "SELECT * FROM trabajador WHERE idtrabajador = " + m_factura->DBvalue ( "idtrabajador" );
+        query = "SELECT * FROM trabajador WHERE idtrabajador = " + m_factura->dbValue ( "idtrabajador" );
         trabajador = mainCompany() ->loadQuery ( query );
     }
 
     // Datos de la forma de pago convenida
-    query = "SELECT * FROM forma_pago WHERE idforma_pago = " + m_factura->DBvalue ( "idforma_pago" );
+    query = "SELECT * FROM forma_pago WHERE idforma_pago = " + m_factura->dbValue ( "idforma_pago" );
     BlDbRecordSet *forma_pago = mainCompany() ->loadQuery ( query );
 
     // Datos de la tabla configuracion
@@ -323,9 +323,9 @@ void EFQToolButton::exporta_factura_ubl()
 
     // Sustituimos...
 
-    FacturaXml.replace ( "[numfactura]", m_factura->DBvalue ( "numfactura" ) );
-    FacturaXml.replace ( "[ffactura]", m_factura->DBvalue ( "ffactura" ) );
-    FacturaXml.replace ( "[descfactura]", m_factura->DBvalue ( "descfactura" ) );
+    FacturaXml.replace ( "[numfactura]", m_factura->dbValue ( "numfactura" ) );
+    FacturaXml.replace ( "[ffactura]", m_factura->dbValue ( "ffactura" ) );
+    FacturaXml.replace ( "[descfactura]", m_factura->dbValue ( "descfactura" ) );
     FacturaXml.replace ( "[impfactura]", factura_totales->valor ( "impfactura" ) );
     FacturaXml.replace ( "[bimpfactura]", factura_totales->valor ( "bimpfactura" ) );
     FacturaXml.replace ( "[totalfactura]", factura_totales->valor ( "totalfactura" ) );
@@ -352,7 +352,7 @@ void EFQToolButton::exporta_factura_ubl()
 
     /// Obtenemos las lineas de factura y las escribimos en el buffer
 
-    query = "SELECT * FROM lfactura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
+    query = "SELECT * FROM lfactura WHERE idfactura = " + m_factura->dbValue ( "idfactura" );
     BlDbRecordSet *lfacturas = mainCompany() ->loadQuery ( query );
 
     // Por si las moscas...
@@ -377,7 +377,7 @@ void EFQToolButton::exporta_factura_ubl()
     FacturaXml.replace ( "[lineas_factura]", LineasFactura );
 
     /// Descuento al PVP de la factura (cogidos de la tabla dfactura)
-    query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue ( "idfactura" );
+    query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->dbValue ( "idfactura" );
     BlDbRecordSet *descuentos_factura = mainCompany() ->loadQuery ( query );
 
     QString DescuentosFactura = "\n";
@@ -454,7 +454,7 @@ void EFQToolButton::click()
 
     _depura ( "EFQToolButton::click", 0 );
 
-    if ( ( !m_factura->dialogChanges_hayCambios() ) && ( m_factura->DBvalue ( "idfactura" ) != "" ) ) {
+    if ( ( !m_factura->dialogChanges_hayCambios() ) && ( m_factura->dbValue ( "idfactura" ) != "" ) ) {
         exporta_factura_ubl();
     } else {
         _depura ( "Es necesario Guardar la factura antes de exportarla a UBL", 2 );

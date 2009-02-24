@@ -41,22 +41,22 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     setTitleName ( _( "Vehiculo" ) );
     setDbTableName ( "vehiculo" );
     setDbFieldId ( "idvehiculo" );
-    addDbField ( "idvehiculo", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "idvehiculo" ) );
-    addDbField ( "matriculavehiculo", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "matriculavehiculo" ) );
-    addDbField ( "marcavehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "marcavehiculo" ) );
-    addDbField ( "modelovehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "modelovehiculo" ) );
-    addDbField ( "bastidorvehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "bastidorvehiculo" ) );
-    addDbField ( "colorvehiculo", BlDbField::DBvarchar, BlDbField::DBNothing, _( "colorvehiculo" ) );
-    addDbField ( "fechacompravehiculo", BlDbField::DBdate, BlDbField::DBNothing, _( "fechavehiculo" ) );
-    addDbField ( "preciovehiculo", BlDbField::DBnumeric, BlDbField::DBNothing, _( "preciovehiculo" ) );
+    addDbField ( "idvehiculo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "idvehiculo" ) );
+    addDbField ( "matriculavehiculo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "matriculavehiculo" ) );
+    addDbField ( "marcavehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "marcavehiculo" ) );
+    addDbField ( "modelovehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "modelovehiculo" ) );
+    addDbField ( "bastidorvehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "bastidorvehiculo" ) );
+    addDbField ( "colorvehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "colorvehiculo" ) );
+    addDbField ( "fechacompravehiculo", BlDbField::DbDate, BlDbField::DbNothing, _( "fechavehiculo" ) );
+    addDbField ( "preciovehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "preciovehiculo" ) );
 
     /// Inicializamos el listado.
     mui_listadomantvehiculo->setDbTableName ( "mantvehiculo" );
     mui_listadomantvehiculo->setDbFieldId ( "idmantvehiculo" );
-    mui_listadomantvehiculo->addSubFormHeader ( "idmantvehiculo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite, _( "idmantvehiculo" ) );
-    mui_listadomantvehiculo->addSubFormHeader ( "fechamantvehiculo", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "fechamantvehiculo" ) );
-    mui_listadomantvehiculo->addSubFormHeader ( "preciomantvehiculo", BlDbField::DBnumeric, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "preciomantvehiculo" ) );
-    mui_listadomantvehiculo->addSubFormHeader ( "idvehiculo", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite | BlSubFormHeader::DBNoView, _( "idvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "idmantvehiculo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _( "idmantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "fechamantvehiculo", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "fechamantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "preciomantvehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "preciomantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "idvehiculo", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "idvehiculo" ) );
     mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones
@@ -117,11 +117,11 @@ int VehiculoView::cargar ( QString idvehiculo )
         BlDbRecord::cargar ( idvehiculo );
 
         // Se pinta.
-        mui_matriculavehiculo->setText ( DBvalue ( "matriculavehiculo" ) );
-        mui_marcavehiculo->setText ( DBvalue ( "marcavehiculo" ) );
-        mui_modelovehiculo->setText ( DBvalue ( "modelovehiculo" ) );
-        mui_fechacompravehiculo->setText ( DBvalue ( "fechacompravehiculo" ) );
-        mui_preciovehiculo->setText ( DBvalue ( "preciovehiculo" ) );
+        mui_matriculavehiculo->setText ( dbValue ( "matriculavehiculo" ) );
+        mui_marcavehiculo->setText ( dbValue ( "marcavehiculo" ) );
+        mui_modelovehiculo->setText ( dbValue ( "modelovehiculo" ) );
+        mui_fechacompravehiculo->setText ( dbValue ( "fechacompravehiculo" ) );
+        mui_preciovehiculo->setText ( dbValue ( "preciovehiculo" ) );
 
         QString mantenimientos = "SELECT * FROM mantvehiculo WHERE idvehiculo = '" + idvehiculo + "'";
         mui_listadomantvehiculo->cargar ( mantenimientos );

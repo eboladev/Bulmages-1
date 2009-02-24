@@ -56,9 +56,9 @@ public:
     BusquedaCanal ( QWidget *parent = 0 );
     ~BusquedaCanal();
     virtual void setidcanal ( QString idcanal );
-    virtual void setValorCampo ( QString idcanal );
+    virtual void setFieldValue ( QString idcanal );
     QString idcanal();
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     void m_activated ( int index );

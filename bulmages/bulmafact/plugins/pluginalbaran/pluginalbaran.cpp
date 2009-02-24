@@ -161,7 +161,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 int ClienteView_cargarPost_Post (ClienteView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 	AlbaranClienteList *albaranesList = prov->findChild<AlbaranClienteList *> ( "listalbaranes" );
-        albaranesList->setidcliente ( prov->DBvalue ( "idcliente" ) );
+        albaranesList->setidcliente ( prov->dbValue ( "idcliente" ) );
         albaranesList->presentar();
     }// end if
     return 0;

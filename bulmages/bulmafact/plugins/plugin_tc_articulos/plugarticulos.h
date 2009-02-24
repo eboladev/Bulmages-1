@@ -12,7 +12,7 @@ class plugin_tc_articulos : public QObject
     Q_OBJECT
 
 public:
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     Bulmafact *m_bulmafact;
 
 public:

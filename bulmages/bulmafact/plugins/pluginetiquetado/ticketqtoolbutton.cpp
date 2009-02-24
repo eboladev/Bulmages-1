@@ -114,7 +114,7 @@ void TicketQToolButton::click()
     /// Hacemos el texto de las etiquetas.
     m_companyact = m_albaranProveedorView->mainCompany();
 
-    QString query = "SELECT * , ceil(cantlalbaranp) AS cantidad FROM lalbaranp NATURAL LEFT JOIN articulo WHERE idalbaranp = " + m_albaranProveedorView->DBvalue ( "idalbaranp" );
+    QString query = "SELECT * , ceil(cantlalbaranp) AS cantidad FROM lalbaranp NATURAL LEFT JOIN articulo WHERE idalbaranp = " + m_albaranProveedorView->dbValue ( "idalbaranp" );
     BlDbRecordSet *cur = m_companyact->loadQuery ( query );
     while ( !cur->eof() ) {
         int i = 0;
@@ -122,7 +122,7 @@ void TicketQToolButton::click()
             fitxersortidatxt += "<blockTable><tr><td>";
             fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->valor ( "nomarticulo" ) + "</font></para>\n";
             fitxersortidatxt += "<barCode code=\"code128\" height=\"0.60cm\">" + cur->valor ( "codigocompletoarticulo" ) + "</barCode>\n";
-            fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->valor ( "codigocompletoarticulo" ) + " - (" + m_albaranProveedorView->DBvalue ( "fechaalbaranp" ).left ( 10 ) + ")</font></para>\n";
+            fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\">" + cur->valor ( "codigocompletoarticulo" ) + " - (" + m_albaranProveedorView->dbValue ( "fechaalbaranp" ).left ( 10 ) + ")</font></para>\n";
 //     if (cur->numcampo("lotelalbaranp") != -1)
 //             fitxersortidatxt += "<para><font face=\"Helvetica\" size=\"4\"> Lote: " + cur->valor("lotelalbaranp") + "</font></para>\n";
             fitxersortidatxt += "</td></tr></blockTable>";

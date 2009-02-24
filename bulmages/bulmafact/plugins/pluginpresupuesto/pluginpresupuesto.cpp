@@ -162,7 +162,7 @@ int ClienteView_ClienteView_Post (ClienteView *prov) {
 int ClienteView_cargarPost_Post (ClienteView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 	PresupuestoList *presupuestosList = prov->findChild<PresupuestoList *> ( "listpresupuestos" );
-        presupuestosList->setidcliente ( prov->DBvalue ( "idcliente" ) );
+        presupuestosList->setidcliente ( prov->dbValue ( "idcliente" ) );
         presupuestosList->presentar();
     }// end if
     return 0;

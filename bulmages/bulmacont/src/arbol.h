@@ -58,7 +58,7 @@ private:
     QList <tipohoja*> raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
     tipohoja* hoja; /// Hoja que contiene los datos de una cuenta.
     tiporama* rama; /// Rama que contiene una hoja y m&aacute;s ramas o no.
-    BlPostgreSqlClient* conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
+    BlPostgreSqlClient* dbConnection; /// Nos da acceso a la base de datos con la que estamos trabajando.
     /*QString hojaactiva;*/ /// Código de la última hoja visitada (nos servirá de índice para recorred el árbol).
     tipohoja* hojaactiva;
 

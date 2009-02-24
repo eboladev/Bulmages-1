@@ -127,7 +127,7 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
     _depura ( "RutaComercialIncView::cargar", 0 );
     int err = mui_rutacomercial->cargar ( id );
     err = mui_incidenciacomercial->cargar ( id1 );
-    setWindowTitle ( _( "Accion comercial" ) + " " + mui_rutacomercial->DBvalue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->DBvalue ( "idincidenciacomercial" ) );
+    setWindowTitle ( _( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
     meteWindow ( windowTitle(), this );
     _depura ( "END RutaComercialIncView::cargar", 0 );
     return err;

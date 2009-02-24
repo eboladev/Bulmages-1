@@ -51,19 +51,19 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Pedido Proveedor" ) );
         setDbTableName ( "pedidoproveedor" );
         setDbFieldId ( "idpedidoproveedor" );
-        addDbField ( "idpedidoproveedor", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id pedido proveedor" ) );
-        addDbField ( "idproveedor", BlDbField::DBint, BlDbField::DBNotNull, _( "Id proveedor" ) );
-        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull, _( "Id almacen" ) );
-        addDbField ( "numpedidoproveedor", BlDbField::DBint, BlDbField::DBNothing, _( "Numero pedido proveedor" ) );
-        addDbField ( "fechapedidoproveedor", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha pedido proveedor" ) );
-        addDbField ( "comentpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentario pedido" ) );
-        addDbField ( "procesadopedidoproveedor", BlDbField::DBboolean, BlDbField::DBNothing, _( "Pedido procesado" ) );
-        addDbField ( "descpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion pedido" ) );
-        addDbField ( "refpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Referencia pedido" ) );
-        addDbField ( "idforma_pago", BlDbField::DBint, BlDbField::DBNothing, _( "Id forma de pago" ) );
-        addDbField ( "idtrabajador", BlDbField::DBint, BlDbField::DBNothing, _( "Id trabajador" ) );
-        addDbField ( "contactpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Persona de contacto proveedor" ) );
-        addDbField ( "telpedidoproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono proveedor" ) );
+        addDbField ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id pedido proveedor" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id almacen" ) );
+        addDbField ( "numpedidoproveedor", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero pedido proveedor" ) );
+        addDbField ( "fechapedidoproveedor", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha pedido proveedor" ) );
+        addDbField ( "comentpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario pedido" ) );
+        addDbField ( "procesadopedidoproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Pedido procesado" ) );
+        addDbField ( "descpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion pedido" ) );
+        addDbField ( "refpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia pedido" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _( "Id trabajador" ) );
+        addDbField ( "contactpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Persona de contacto proveedor" ) );
+        addDbField ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PedidoProveedorView_PedidoProveedorView", this );
@@ -212,8 +212,8 @@ int PedidoProveedorView::guardarPost()
 {
     _depura ( "PedidoProveedor::guardar", 0 );
 
-    m_listalineas->setColumnValue ( "idpedidoproveedor", DBvalue ( "idpedidoproveedor" ) );
-    m_listadescuentos->setColumnValue ( "idpedidoproveedor", DBvalue ( "idpedidoproveedor" ) );
+    m_listalineas->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
+    m_listadescuentos->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
 
     m_listalineas->guardar();
     m_listadescuentos->guardar();
@@ -234,12 +234,12 @@ void PedidoProveedorView::imprimir()
 
         QString SQLQuery = "";
 
-        if ( DBvalue ( "idproveedor" ).isEmpty() ) {
+        if ( dbValue ( "idproveedor" ).isEmpty() ) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
             mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
             return;
         } else {
-            SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" );
+            SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" );
         } // end if
 
         base basesimp;
@@ -293,13 +293,13 @@ void PedidoProveedorView::imprimir()
         } // end if
         delete cur;
 
-        buff.replace ( "[numpedidoproveedor]", DBvalue ( "numpedidoproveedor" ) );
-        buff.replace ( "[fechapedidoproveedor]", DBvalue ( "fechapedidoproveedor" ) );
-        buff.replace ( "[contactpedidoproveedor]", DBvalue ( "contactpedidoproveedor" ) );
-        buff.replace ( "[telpedidoproveedor]", DBvalue ( "telpedidoproveedor" ) );
-        buff.replace ( "[comentpedidoproveedor]", DBvalue ( "comentpedidoproveedor" ) );
-        buff.replace ( "[descpedidoproveedor]", DBvalue ( "descpedidoproveedor" ) );
-        buff.replace ( "[refpedidoproveedor]", DBvalue ( "refpedidoproveedor" ) );
+        buff.replace ( "[numpedidoproveedor]", dbValue ( "numpedidoproveedor" ) );
+        buff.replace ( "[fechapedidoproveedor]", dbValue ( "fechapedidoproveedor" ) );
+        buff.replace ( "[contactpedidoproveedor]", dbValue ( "contactpedidoproveedor" ) );
+        buff.replace ( "[telpedidoproveedor]", dbValue ( "telpedidoproveedor" ) );
+        buff.replace ( "[comentpedidoproveedor]", dbValue ( "comentpedidoproveedor" ) );
+        buff.replace ( "[descpedidoproveedor]", dbValue ( "descpedidoproveedor" ) );
+        buff.replace ( "[refpedidoproveedor]", dbValue ( "refpedidoproveedor" ) );
 
         /// Impresion de la tabla de contenidos.
         QString l;
@@ -307,15 +307,15 @@ void PedidoProveedorView::imprimir()
         BlDbSubFormRecord *linea;
         for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
             linea = m_listalineas->lineaat ( i );
-            BlFixed base = BlFixed ( linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) * BlFixed ( linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() );
-            basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] = basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] + base - base * BlFixed ( linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
+            BlFixed base = BlFixed ( linea->dbValue ( "cantlpedidoproveedor" ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvplpedidoproveedor" ).toAscii().constData() );
+            basesimp[linea->dbValue ( "ivalpedidoproveedor" ) ] = basesimp[linea->dbValue ( "ivalpedidoproveedor" ) ] + base - base * BlFixed ( linea->dbValue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "   <td>" + linea->DBvalue ( "codigocompletoarticulo" ) + "</td>\n";
-            fitxersortidatxt += "   <td><para>" + XMLProtect ( linea->DBvalue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
-            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
-            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
-            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
-            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->DBvalue ( "descuentolpedidoproveedor" ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+            fitxersortidatxt += "   <td>" + linea->dbValue ( "codigocompletoarticulo" ) + "</td>\n";
+            fitxersortidatxt += "   <td><para>" + XMLProtect ( linea->dbValue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
+            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->dbValue ( "cantlpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
+            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->dbValue ( "pvplpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
+            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->dbValue ( "descuentolpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
+            fitxersortidatxt += "   <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuentolpedidoproveedor" ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
 
@@ -341,11 +341,11 @@ void PedidoProveedorView::imprimir()
             fitxersortidatxt += "</tr>\n";
             for ( int i = 0; i < m_listadescuentos->rowCount() - 1; ++i ) {
                 linea1 = m_listadescuentos->lineaat ( i );
-                porcentt = porcentt + BlFixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() );
+                porcentt = porcentt + BlFixed ( linea1->dbValue ( "proporciondpedidoproveedor" ).toAscii().constData() );
                 fitxersortidatxt += "<tr>\n";
-                fitxersortidatxt += "        <td>" + linea1->DBvalue ( "conceptdpedidoproveedor" ) + "</td>\n";
-                fitxersortidatxt += "        <td>" + l.sprintf ( "%s", linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
-                fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+                fitxersortidatxt += "        <td>" + linea1->dbValue ( "conceptdpedidoproveedor" ) + "</td>\n";
+                fitxersortidatxt += "        <td>" + l.sprintf ( "%s", linea1->dbValue ( "proporciondpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
+                fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporciondpedidoproveedor" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
                 fitxersortidatxt += "</tr>";
             } // end for
             fitxersortidatxt += "</blockTable>\n";

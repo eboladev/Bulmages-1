@@ -42,12 +42,12 @@ Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, parent
     setTitleName ( _( "Asiento Contable" ) );
     setDbTableName ( "asiento" );
     setDbFieldId ( "idasiento" );
-    addDbField ( "idasiento", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id asiento" ) );
-    addDbField ( "descripcion", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Descripcion del asiento" ) );
-    addDbField ( "fecha", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha del asiento" ) );
-    addDbField ( "comentariosasiento", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios del asiento" ) );
-    addDbField ( "ordenasiento", BlDbField::DBint, BlDbField::DBNothing, _( "Orden de asiento" ) );
-    addDbField ( "clase", BlDbField::DBint, BlDbField::DBNothing, _( "Tipo de asiento" ) );
+    addDbField ( "idasiento", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id asiento" ) );
+    addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Descripcion del asiento" ) );
+    addDbField ( "fecha", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha del asiento" ) );
+    addDbField ( "comentariosasiento", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios del asiento" ) );
+    addDbField ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNothing, _( "Orden de asiento" ) );
+    addDbField ( "clase", BlDbField::DbInt, BlDbField::DbNothing, _( "Tipo de asiento" ) );
     listalineas = NULL;
     _depura ( "END Asiento1::Asiento1", 0 );
 }
@@ -153,7 +153,7 @@ int Asiento1::borrar ( bool atendido )
 {
     _depura ( "Asiento1::borrar", 0 );
     int error;
-    if ( DBvalue ( "idasiento" ) != "" ) {
+    if ( dbValue ( "idasiento" ) != "" ) {
         if ( atendido ) {
             switch ( QMessageBox::warning ( 0,
                                             _( "Borrar asiento" ),
@@ -163,8 +163,8 @@ int Asiento1::borrar ( bool atendido )
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
                 mainCompany() ->begin();
                 listalineas->borrar();
-                error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
-                error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
+                error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
                 if ( error ) {
                     mainCompany() ->rollback();
                     return -1;
@@ -179,8 +179,8 @@ int Asiento1::borrar ( bool atendido )
         } else {
             mainCompany() ->begin();
             listalineas->borrar();
-            error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
-            error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            error = mainCompany() ->runQuery ( "DELETE FROM apunte WHERE idasiento = " + dbValue ( "idasiento" ) );
+            error += mainCompany() ->runQuery ( "DELETE FROM asiento WHERE idasiento = " + dbValue ( "idasiento" ) );
             if ( error ) {
                 mainCompany() ->rollback();
                 return -1;
@@ -218,11 +218,11 @@ void Asiento1::pintar()
 {
     _depura ( "Asiento1::pintar", 0, idasiento() );
     pintaidasiento ( idasiento() );
-    pintadescripcion ( DBvalue ( "descripcion" ) );
-    pintafecha ( DBvalue ( "fecha" ) );
-    pintacomentariosasiento ( DBvalue ( "comentariosasiento" ) );
-    pintaordenasiento ( DBvalue ( "ordenasiento" ) );
-    pintaclase ( DBvalue ( "clase" ) );
+    pintadescripcion ( dbValue ( "descripcion" ) );
+    pintafecha ( dbValue ( "fecha" ) );
+    pintacomentariosasiento ( dbValue ( "comentariosasiento" ) );
+    pintaordenasiento ( dbValue ( "ordenasiento" ) );
+    pintaclase ( dbValue ( "clase" ) );
     /// Pintamos los totales.
     calculaypintatotales();
     trataestadoAsiento1();
@@ -305,7 +305,7 @@ void Asiento1::abrir()
         _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Abierto" );
         return;
     } // end if
-    QString id = DBvalue ( "idasiento" );
+    QString id = dbValue ( "idasiento" );
     if ( id == "" ) {
         _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Inexistente" );
         return;
@@ -329,7 +329,7 @@ void Asiento1::cerrar()
     } // end if
     if ( guardar() )
         return;
-    QString id = DBvalue ( "idasiento" );
+    QString id = dbValue ( "idasiento" );
     if ( id == "" ) {
         _depura ( "Asiento1::cerrar" , 0, "No hay asiento" );
         return;
@@ -351,17 +351,17 @@ void Asiento1::cerrar()
 Asiento1::estadoasiento Asiento1::estadoAsiento1()
 {
     _depura ( "Asiento1::estadoasiento", 0 );
-    if ( DBvalue ( "idasiento" ) == "" ) {
+    if ( dbValue ( "idasiento" ) == "" ) {
         _depura ( "END Asiento1::estadoasiento", 0, "Asiento Vacio" );
         return ASVacio;
     } // end if
 
-    QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" );
+    QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + dbValue ( "idasiento" );
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( SQLQuery1 );
     QString numap = cur1->valor ( "cuenta1" );
     delete cur1;
 
-    QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue ( "idasiento" );
+    QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + dbValue ( "idasiento" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     QString numborr = cur->valor ( "cuenta" );
     delete cur;
@@ -449,7 +449,7 @@ QString Asiento1::idasiento()
 {
     _depura ( "Asiento1::idasiento", 0 );
     _depura ( "END Asiento1::idasiento", 0 );
-    return DBvalue ( "idasiento" );
+    return dbValue ( "idasiento" );
 }
 
 

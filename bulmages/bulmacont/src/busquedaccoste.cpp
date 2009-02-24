@@ -68,10 +68,10 @@ QString BusquedaCCoste::idc_coste()
 /**
 \return
 **/
-QString BusquedaCCoste::valorCampo()
+QString BusquedaCCoste::fieldValue()
 {
-    _depura ( "BusquedaCCoste::valorCampo", 0 );
-    _depura ( "END BusquedaCCoste::valorCampo", 0 );
+    _depura ( "BusquedaCCoste::fieldValue", 0 );
+    _depura ( "END BusquedaCCoste::fieldValue", 0 );
     return idc_coste();
 }
 
@@ -124,11 +124,11 @@ void BusquedaCCoste::setidc_coste ( QString idc_coste )
 /**
 \param idc_coste
 **/
-void BusquedaCCoste::setValorCampo ( QString idc_coste )
+void BusquedaCCoste::setFieldValue ( QString idc_coste )
 {
-    _depura ( "BusquedaCCoste::setValorCampo", 0 );
+    _depura ( "BusquedaCCoste::setFieldValue", 0 );
     setidc_coste ( idc_coste );
-    _depura ( "END BusquedaCCoste::setValorCampo", 0 );
+    _depura ( "END BusquedaCCoste::setFieldValue", 0 );
 }
 
 /// ===================================================================

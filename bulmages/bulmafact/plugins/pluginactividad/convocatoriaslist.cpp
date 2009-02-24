@@ -161,7 +161,7 @@ void ConvocatoriasList::borrar()
         return;
     } // end if
     try {
-        mdb_idactividad = mui_list->DBvalue ( "idactividad" );
+        mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
             ConvocatoriaView * cv = new ConvocatoriaView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idactividad ) )
@@ -185,7 +185,7 @@ void ConvocatoriasList::editar ( int )
 {
     _depura ( "ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idactividad = mui_list->DBvalue ( "idactividad" );
+        mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
             ConvocatoriaView * bud = new ConvocatoriaView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idactividad ) ) {
@@ -259,8 +259,8 @@ ConvocatoriasListSubForm::ConvocatoriasListSubForm ( QWidget *parent ) : BfSubFo
         return;
     setDbTableName ( "actividad" );
     setDbFieldId ( "idactividad" );
-    addSubFormHeader ( "idactividad", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID Convocatoria" ) );
-    addSubFormHeader ( "nombreactividad", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID Convocatoria" ) );
+    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

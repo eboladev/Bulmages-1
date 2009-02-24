@@ -47,8 +47,8 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     setTitleName ( _( "Tarifa" ) );
     setDbTableName ( "tarifa" );
     setDbFieldId ( "idtarifa" );
-    addDbField ( "idtarifa", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID tarifa" ) );
-    addDbField ( "nomtarifa", BlDbField::DBvarchar, BlDbField::DBNotNull, _( "Nombre de la tarifa" ) );
+    addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tarifa" ) );
+    addDbField ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre de la tarifa" ) );
     ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de 
     ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setMainCompany ( comp );
@@ -96,7 +96,7 @@ BfCompany *TarifaView::companyact() {
 void TarifaView::pintar()
 {
     _depura ( "TarifaView::pintar", 0 );
-    mui_nomtarifa->setText ( DBvalue ( "nomtarifa" ) );
+    mui_nomtarifa->setText ( dbValue ( "nomtarifa" ) );
     setWindowTitle ( _( "Tarifa" ) + " " + mui_nomtarifa->text() );
     _depura ( "END TarifaView::pintar", 1 );
 }
@@ -156,7 +156,7 @@ int TarifaView::cargar ( QString idtarifa )
     BlDbRecord::cargar ( m_idtarifa );
     mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
-    setWindowTitle ( _( "Tarifa" ) + " " + DBvalue ( "nomtarifa" ) );
+    setWindowTitle ( _( "Tarifa" ) + " " + dbValue ( "nomtarifa" ) );
     meteWindow ( windowTitle(), this );
 
     /// Tratamiento de excepciones.
@@ -193,12 +193,12 @@ int TarifaView::guardar()
     setDbValue ( "nomtarifa", mui_nomtarifa->text() );
     BlDbRecord::guardar();
     /// Guardamos la lista de componentes.
-    mui_list->setColumnValue ( "idtarifa", DBvalue ( "idtarifa" ) );
+    mui_list->setColumnValue ( "idtarifa", dbValue ( "idtarifa" ) );
     mui_list->guardar();
     dialogChanges_cargaInicial();
 
     /// Se recarga el listado de articulos para poder establecer precios a esa tarifa.
-    cargar( DBvalue ( "idtarifa" ) );
+    cargar( dbValue ( "idtarifa" ) );
 
     emit guardartarifa();
 
@@ -236,7 +236,7 @@ void TarifaView::on_mui_actualizar_clicked()
 void TarifaView::on_mui_borrar_clicked()
 {
     _depura ( "TarifaView::INIT_boton_borrar()\n", 0 );
-    if ( DBvalue ( "idtarifa" ) != "" ) {
+    if ( dbValue ( "idtarifa" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _( "Borrar tarifa" ),
                                      _( "Esta a punto de borrar una tarifa. Desea continuar?" ),

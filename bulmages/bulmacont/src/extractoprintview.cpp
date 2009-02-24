@@ -41,7 +41,7 @@
 /** @param emp Empresa con la que va a trabajar esta clase.
     @param parent Ventana que llama a esta ventana.
     @param name Nombre de la ventana.
-    Aqu&iacute; tambi&eacute;n se inicializa la variable global conexionbase. */
+    Aqu&iacute; tambi&eacute;n se inicializa la variable global dbConnection. */
 ExtractoPrintView::ExtractoPrintView ( BcCompany *emp, QWidget *parent = 0 )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {

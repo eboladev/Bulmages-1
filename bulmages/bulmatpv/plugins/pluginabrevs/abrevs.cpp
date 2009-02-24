@@ -113,7 +113,7 @@ void Abrevs::on_mui_aparcar_clicked()
     Ticket *ticket;
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
-        if ( emp->valorInput() == ticket->DBvalue ( "nomticket" ) ) {
+        if ( emp->valorInput() == ticket->dbValue ( "nomticket" ) ) {
             mensajeAviso ( _( "Ya existe un ticket aparcado con el mismo nombre." ) );
             return;
         }// end if
@@ -122,7 +122,7 @@ void Abrevs::on_mui_aparcar_clicked()
     emp->ticketActual() ->setDbValue ( "nomticket", emp->valorInput() );
     Ticket *tick = emp->newTicket();
     /// Ponemos al trabajador creado el trabajador del ticket actual.
-    tick->setDbValue ( "idtrabajador", emp->ticketActual() ->DBvalue ( "idtrabajador" ) );
+    tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
     emp->setTicketActual ( tick );
     emp->listaTickets() ->append ( tick );
     /// Borra el valor del Input.

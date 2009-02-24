@@ -52,9 +52,9 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
 
     mui_listado->setDbTableName ( "tipotrabajo" );
     mui_listado->setDbFieldId ( "idtipotrabajo" );
-    mui_listado->addSubFormHeader ( "idtipotrabajo", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView, _( "Id tipo trabajo" ) );
-    mui_listado->addSubFormHeader ( "nomtipotrabajo", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Nombre tipo trabajo" ) );
-    mui_listado->addSubFormHeader ( "colortipotrabajo", BlDbField::DBvarchar, BlDbField::DBNothing , BlSubFormHeader::DBNone, _( "Color tipo trabajo" ) );
+    mui_listado->addSubFormHeader ( "idtipotrabajo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView, _( "Id tipo trabajo" ) );
+    mui_listado->addSubFormHeader ( "nomtipotrabajo", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Nombre tipo trabajo" ) );
+    mui_listado->addSubFormHeader ( "colortipotrabajo", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _( "Color tipo trabajo" ) );
     mui_listado->setinsercion ( TRUE );
 
     mui_listado->cargar ( "SELECT * FROM tipotrabajo" );

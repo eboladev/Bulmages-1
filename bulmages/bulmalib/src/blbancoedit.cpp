@@ -109,11 +109,11 @@ void BLBancoEdit::setText ( QString val )
 /**
 \param val
 **/
-void BLBancoEdit::setValorCampo ( QString val )
+void BLBancoEdit::setFieldValue ( QString val )
 {
-    _depura ( "BLBancoEdit::setValorCampo", 0 );
+    _depura ( "BLBancoEdit::setFieldValue", 0 );
     setText ( val );
-    _depura ( "END BLBancoEdit::setValorCampo", 0 );
+    _depura ( "END BLBancoEdit::setFieldValue", 0 );
 }
 
 
@@ -138,10 +138,10 @@ QString BLBancoEdit::text()
 /**
 \return
 **/
-QString BLBancoEdit::valorCampo()
+QString BLBancoEdit::fieldValue()
 {
-    _depura ( "BLBancoEdit::valorCampo", 0 );
-    _depura ( "END BLBancoEdit::valorCampo", 0 );
+    _depura ( "BLBancoEdit::fieldValue", 0 );
+    _depura ( "END BLBancoEdit::fieldValue", 0 );
     return text();
 }
 

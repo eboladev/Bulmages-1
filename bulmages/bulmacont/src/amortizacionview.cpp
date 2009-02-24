@@ -55,32 +55,32 @@ AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
     setTitleName ( _( "Amortizacion" ) );
     setDbTableName ( "amortizacion" );
     setDbFieldId ( "idamortizacion" );
-    addDbField ( "nomamortizacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre de la amortizacion" ) );
-    addDbField ( "descamortizacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Descripcion de la amortizacion" ) );
-    addDbField ( "fechacompra", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha de la compra" ) );
-    addDbField ( "fecha1cuota", BlDbField::DBdate, BlDbField::DBNothing, _( "Fecha 1a cuota" ) );
-    addDbField ( "valorcompra", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Valor de la compra" ) );
-    addDbField ( "periodicidad", BlDbField::DBint, BlDbField::DBNothing, _( "Periodicidad" ) );
-    addDbField ( "numcuotas", BlDbField::DBint, BlDbField::DBNothing, _( "Numero de cuotas" ) );
-    addDbField ( "metodo", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Metodo" ) );
-    addDbField ( "nifproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "NIF del proveedor" ) );
-    addDbField ( "nomproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Nombre del proveedor" ) );
-    addDbField ( "dirproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Direccion del proveedor" ) );
-    addDbField ( "telproveedor", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Telefono del proveedor" ) );
-    addDbField ( "agrupacion", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Agrupacion" ) );
-    addDbField ( "idamortizacion", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "Id amortizacion" ) );
-    addDbField ( "idcuentaactivo", BlDbField::DBint, BlDbField::DBNothing, _( "Identificador" ) );
-    addDbField ( "idcuentaamortizacion", BlDbField::DBint, BlDbField::DBNotNull, _( "Id cuenta amortizacion" ) );
+    addDbField ( "nomamortizacion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre de la amortizacion" ) );
+    addDbField ( "descamortizacion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion de la amortizacion" ) );
+    addDbField ( "fechacompra", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de la compra" ) );
+    addDbField ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha 1a cuota" ) );
+    addDbField ( "valorcompra", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Valor de la compra" ) );
+    addDbField ( "periodicidad", BlDbField::DbInt, BlDbField::DbNothing, _( "Periodicidad" ) );
+    addDbField ( "numcuotas", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero de cuotas" ) );
+    addDbField ( "metodo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Metodo" ) );
+    addDbField ( "nifproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "NIF del proveedor" ) );
+    addDbField ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del proveedor" ) );
+    addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion del proveedor" ) );
+    addDbField ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono del proveedor" ) );
+    addDbField ( "agrupacion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Agrupacion" ) );
+    addDbField ( "idamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id amortizacion" ) );
+    addDbField ( "idcuentaactivo", BlDbField::DbInt, BlDbField::DbNothing, _( "Identificador" ) );
+    addDbField ( "idcuentaamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id cuenta amortizacion" ) );
 
     /// Inicializamos el listado.
     mui_listcuotas->setDbTableName ( "linamortizacion" );
     mui_listcuotas->setDbFieldId ( "idlinamortizacion" );
-    mui_listcuotas->addSubFormHeader ( "ejercicio", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNone, _( "Ejercicio" ) );
-    mui_listcuotas->addSubFormHeader ( "fechaprevista", BlDbField::DBdate, BlDbField::DBNotNull, BlSubFormHeader::DBNone , _( "Fecha prevista" ) );
-    mui_listcuotas->addSubFormHeader ( "cantidad", BlDbField::DBnumeric, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Cantidad" ) );
-    mui_listcuotas->addSubFormHeader ( "idasiento", BlDbField::DBint, BlDbField::DBNothing, BlSubFormHeader::DBNoWrite , _( "Id asiento" ) );
-    mui_listcuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DBint, BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoWrite , _( "Id lineas de amortizacion" ) );
-    mui_listcuotas->addSubFormHeader ( "idamortizacion", BlDbField::DBint, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite , _( "Id amortizacion" ) );
+    mui_listcuotas->addSubFormHeader ( "ejercicio", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Ejercicio" ) );
+    mui_listcuotas->addSubFormHeader ( "fechaprevista", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Fecha prevista" ) );
+    mui_listcuotas->addSubFormHeader ( "cantidad", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad" ) );
+    mui_listcuotas->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Id asiento" ) );
+    mui_listcuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _( "Id lineas de amortizacion" ) );
+    mui_listcuotas->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _( "Id amortizacion" ) );
     mui_listcuotas->setinsercion ( FALSE );
     mui_listcuotas->setOrdenEnabled ( FALSE );
 
@@ -169,16 +169,16 @@ int AmortizacionView::cargar ( QString idamortizacion )
         mui_listcuotas->setinsercion ( TRUE );
 
         /// se ha cargado de la base de datos.
-        nomamortizacion->setText ( DBvalue ( "nomamortizacion" ) );
-        valorcompra->setText ( DBvalue ( "valorcompra" ) );
-        numcuotas->setText ( DBvalue ( "numcuotas" ) );
-        fechacompra->setText ( DBvalue ( "fechacompra" ) );
-        fecha1cuota->setText ( DBvalue ( "fecha1cuota" ) );
-        ctaactivo->setidcuenta ( DBvalue ( "idcuentaactivo" ) );
-        m_idctaactivo = DBvalue ( "idcuentaactivo" );
-        ctaamortizacion->setidcuenta ( DBvalue ( "idcuentaamortizacion" ) );
-        m_idctaamortizacion = DBvalue ( "idcuentaamortizacion" );
-        agrupacion->setText ( DBvalue ( "agrupacion" ) );
+        nomamortizacion->setText ( dbValue ( "nomamortizacion" ) );
+        valorcompra->setText ( dbValue ( "valorcompra" ) );
+        numcuotas->setText ( dbValue ( "numcuotas" ) );
+        fechacompra->setText ( dbValue ( "fechacompra" ) );
+        fecha1cuota->setText ( dbValue ( "fecha1cuota" ) );
+        ctaactivo->setidcuenta ( dbValue ( "idcuentaactivo" ) );
+        m_idctaactivo = dbValue ( "idcuentaactivo" );
+        ctaamortizacion->setidcuenta ( dbValue ( "idcuentaamortizacion" ) );
+        m_idctaamortizacion = dbValue ( "idcuentaamortizacion" );
+        agrupacion->setText ( dbValue ( "agrupacion" ) );
 
         QString query = "SELECT *, fechaprevista <= now() AS ant FROM linamortizacion LEFT JOIN asiento ON linamortizacion.idasiento = asiento.idasiento WHERE idamortizacion = " + m_idamortizacion + " ORDER BY fechaprevista";
         mui_listcuotas->cargar ( query );
@@ -203,7 +203,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
         /// est&aacute; hecha.
         mui_btcalcular->setDisabled ( TRUE );
         dialogChanges_cargaInicial();
-        mainCompany() ->meteWindow ( windowTitle() + DBvalue ( "idamortizacion" ), this );
+        mainCompany() ->meteWindow ( windowTitle() + dbValue ( "idamortizacion" ), this );
 
         _depura ( "END AmortizacionView::cargar", 0 );
         return 0;
@@ -385,7 +385,7 @@ void AmortizacionSubForm::creaMenu ( QMenu *menu )
     QAction *opt3 = menu->addAction ( _( "Desvincular asiento" ) );
     QAction *opt4 = menu->addAction ( _( "Borrar asiento" ) );
 
-    if ( DBvalue ( "idasiento" ) == "" ) {
+    if ( dbValue ( "idasiento" ) == "" ) {
         opt1->setEnabled ( TRUE );
         opt2->setEnabled ( FALSE );
         opt3->setEnabled ( FALSE );
@@ -415,7 +415,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
 
 
     if ( opcion->text() == _( "Borrar cuota" ) ) {
-        QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
+        QString idlinamortizacion = dbValue ( "idlinamortizacion" );
         QString query = "DELETE FROM linamortizacion WHERE idlinamortizacion = " + idlinamortizacion;
         if ( idlinamortizacion != "" ) {
             mainCompany() ->begin();
@@ -428,15 +428,15 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         /// Si se va a mostrar el asiento, o se va a borrar.
         /*
                 ((BcCompany *)mainCompany())->intapuntsempresa()->show();
-                QString idasiento = DBvalue("idasiento");
+                QString idasiento = dbValue("idasiento");
                 ((BcCompany *)mainCompany())->intapuntsempresa()->muestraasiento(idasiento.toInt());
         */
         boton_asiento();
     } // end if
     if ( opcion->text() == _( "Desvincular asiento" ) || opcion->text() == _( "Borrar asiento" ) ) {
         /// Si se va a desvincular el asiento o se va a borrar.
-        QString idasiento = DBvalue ( "idasiento" );
-        QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
+        QString idasiento = dbValue ( "idasiento" );
+        QString idlinamortizacion = dbValue ( "idlinamortizacion" );
         QString query = "UPDATE linamortizacion SET idasiento = NULL WHERE idlinamortizacion = " + idlinamortizacion;
         mainCompany() ->runQuery ( query );
     } // end if
@@ -446,13 +446,13 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
     } // end if
     if ( opcion->text() == _( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
-        QString fecha = DBvalue ( "fechaprevista" );
+        QString fecha = dbValue ( "fechaprevista" );
         //            fprintf(stderr, "Fecha: %s\n", fecha.toAscii().constData());
-        QString cant = DBvalue ( "cantidad" );
+        QString cant = dbValue ( "cantidad" );
         //            fprintf(stderr, "Cuota: %s\n", cant.toAscii().constData());
 
         QString cuenta, cuentaamort;
-        QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + DBvalue ( "idamortizacion" );
+        QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + dbValue ( "idamortizacion" );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( ! cur->eof() ) {
             query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaactivo" );
@@ -501,7 +501,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         } // end if
         delete cur;
         /// Debemos guardar la modificaci&oacute;n en la l&iacute;nea de amortizaci&oacute;n.
-        QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
+        QString idlinamortizacion = dbValue ( "idlinamortizacion" );
         SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
         mainCompany() ->runQuery ( SQLQuery );
     } // end if

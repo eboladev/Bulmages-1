@@ -42,7 +42,7 @@ void myplugin::elslot ( QString item )
 {
     _depura ( "myplugin::elslot", 0 );
     mensajeInfo ( "Seleccionado" );
-    QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
+    QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }
@@ -52,7 +52,7 @@ void myplugin::elslot1 ( QTableWidgetItem *item )
 {
     _depura ( "myplugin::elslot", 0 );
     mensajeInfo ( "Seleccionado" );
-    QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
+    QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }

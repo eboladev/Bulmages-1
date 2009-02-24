@@ -47,7 +47,7 @@ class correctorwidget : public QWidget, public Ui_correctorbase
 
 public:
     /// Base de datos con la que se esta operando.
-    BlPostgreSqlClient *conexionbase;
+    BlPostgreSqlClient *dbConnection;
     /// Empresa que ha hecho la instancia del corrector.
     BcCompany *empresaactual;
     /// El informe generado se forma en HTML y se presenta mediante este QString.
@@ -67,7 +67,7 @@ public:
     /// del corrector es anterior a la construccion de la clase empresa.
     void setCompany  ( BcCompany *empres ) {
         empresaactual = empres;
-        conexionbase = empres->bdempresa();
+        dbConnection = empres->bdempresa();
     }
     void agregarError ( QString, QString, QString );
 

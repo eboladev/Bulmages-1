@@ -33,7 +33,7 @@ typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 {
-    item->addDbField ( "pvpivainclalbaran", BlDbField::DBint, BlDbField::DBNothing, _( "IVA inc." ) );
+    item->addDbField ( "pvpivainclalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "IVA inc." ) );
     return 0;
 }
 
@@ -47,7 +47,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
         semaforo = 1;
 
         /// Buscamos los parametros en la base de datos.
-        QString query = "SELECT * FROM articulo WHERE idarticulo = " + tick->lineaActTicket()->DBvalue("idarticulo");
+        QString query = "SELECT * FROM articulo WHERE idarticulo = " + tick->lineaActTicket()->dbValue("idarticulo");
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             tick->lineaActTicket()->setDbValue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
@@ -64,7 +64,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
 
 
 int Ticket_ponerPrecio_Post ( Ticket *tick ) {
-	tick->lineaActTicket()->setDbValue("pvpivainclalbaran", tick->lineaActTicket()->DBvalue("pvplalbaran"));
+	tick->lineaActTicket()->setDbValue("pvpivainclalbaran", tick->lineaActTicket()->dbValue("pvplalbaran"));
 }
 
 
@@ -144,20 +144,20 @@ int Ticket_imprimir(Ticket *tick)
     fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
-    trabajador.id = tick->DBvalue ( "idtrabajador" );
-    cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->DBvalue ( "idtrabajador" ) );
+    trabajador.id = tick->dbValue ( "idtrabajador" );
+    cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->DBvalue ( "idcliente" ) );
+    cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->DBvalue ( "idalmacen" ) );
+    cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
@@ -169,16 +169,16 @@ int Ticket_imprimir(Ticket *tick)
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
 	BlFixed init("0.00");
-        totales[linea->DBvalue ( "ivalalbaran" ) ] = init;
+        totales[linea->dbValue ( "ivalalbaran" ) ] = init;
     } // end for
 
 
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        BlFixed cantidad = BlFixed ( linea->DBvalue ( "cantlalbaran" ) );
-	BlFixed totlinea = cantidad * BlFixed( linea->DBvalue("pvpivainclalbaran"));
-        total.totalIva = total.totalIva + cantidad * BlFixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
-        totales[linea->DBvalue ( "ivalalbaran" ) ] = totales[linea->DBvalue ( "ivalalbaran" ) ] + totlinea;
+        BlFixed cantidad = BlFixed ( linea->dbValue ( "cantlalbaran" ) );
+	BlFixed totlinea = cantidad * BlFixed( linea->dbValue("pvpivainclalbaran"));
+        total.totalIva = total.totalIva + cantidad * BlFixed ( linea->dbValue ( "pvpivainclalbaran" ) );
+        totales[linea->dbValue ( "ivalalbaran" ) ] = totales[linea->dbValue ( "ivalalbaran" ) ] + totlinea;
     } // end for
 
     EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
@@ -200,7 +200,7 @@ int Ticket_imprimir(Ticket *tick)
     pr.printText ( "\n" );
     pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
     pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
-    pr.printText ( "Num. Ticket:  " + tick->DBvalue("numalbaran") + "\n" );
+    pr.printText ( "Num. Ticket:  " + tick->dbValue("numalbaran") + "\n" );
 
     pr.printText ( "\n" );
 
@@ -217,12 +217,12 @@ int Ticket_imprimir(Ticket *tick)
         if ( i == tick->listaLineas()->size() - 1 )
             pr.setUnderlineMode ( 1 );
         linea = tick->listaLineas() ->at ( i );
-        BlFixed iva = BlFixed ( linea->DBvalue ( "ivalalbaran" ) );
-        BlFixed pvp = BlFixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
+        BlFixed iva = BlFixed ( linea->dbValue ( "ivalalbaran" ) );
+        BlFixed pvp = BlFixed ( linea->dbValue ( "pvpivainclalbaran" ) );
         pvp = pvp + pvp * iva / BlFixed ( "100" );
-        BlFixed pvptotal = BlFixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
-        pr.printText ( linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
-        pr.printText ( linea->DBvalue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
+        BlFixed pvptotal = BlFixed ( linea->dbValue ( "cantlalbaran" ) ) * pvp;
+        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
+        pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
         QString pvpstr = pvp.toQString();
         QString pvptotalstr = pvptotal.toQString();
         pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );
@@ -270,7 +270,7 @@ int Ticket_imprimir(Ticket *tick)
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
 
-    QByteArray qba = tick->DBvalue ( "refalbaran" ).toAscii();
+    QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
     pr.setJustification ( center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
@@ -651,7 +651,7 @@ int BtCompany_x(BtCompany *emp)
 }
 
 int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
-	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DBnumeric, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, "PVP Iva Inc." );
+	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
 	return 0;
 }
 

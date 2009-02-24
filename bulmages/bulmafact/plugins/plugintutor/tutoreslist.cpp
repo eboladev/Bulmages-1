@@ -161,7 +161,7 @@ void TutoresList::borrar()
         return;
     } // end if
     try {
-        mdb_idtutor = mui_list->DBvalue ( "idtutor" );
+        mdb_idtutor = mui_list->dbValue ( "idtutor" );
         if ( modoEdicion() ) {
             TutorView * cv = new TutorView( (BfCompany *) mainCompany(), 0);
             if ( cv->cargar ( mdb_idtutor ) )
@@ -185,7 +185,7 @@ void TutoresList::editar ( int )
 {
     _depura ( "TutoresList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idtutor = mui_list->DBvalue ( "idtutor" );
+        mdb_idtutor = mui_list->dbValue ( "idtutor" );
         if ( modoEdicion() ) {
             TutorView * bud = new TutorView( (BfCompany *) mainCompany(), 0);
             if ( bud->cargar ( mdb_idtutor ) ) {
@@ -259,8 +259,8 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
         return;
     setDbTableName ( "tutor" );
     setDbFieldId ( "idtutor" );
-    addSubFormHeader ( "idtutor", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID tutor" ) );
-    addSubFormHeader ( "nombretutor", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idtutor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID tutor" ) );
+    addSubFormHeader ( "nombretutor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

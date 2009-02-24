@@ -65,10 +65,10 @@ public:
     BusquedaTalla ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaTalla();
     virtual void setidtc_talla ( QString idalmacen );
-    virtual void setValorCampo ( QString idalmacen );
+    virtual void setFieldValue ( QString idalmacen );
     QString idtc_talla();
     void setMainCompany ( BfCompany * );
-    virtual QString valorCampo();
+    virtual QString fieldValue();
 
 public slots:
     void m_activated ( int index );

@@ -90,11 +90,11 @@ void BusquedaBanco::setidbanco ( QString idbanco )
 /**
 \param idbanco
 **/
-void BusquedaBanco::setValorCampo ( QString idbanco )
+void BusquedaBanco::setFieldValue ( QString idbanco )
 {
-    _depura ( "BusquedaBanco::setValorCampo", 0 );
+    _depura ( "BusquedaBanco::setFieldValue", 0 );
     setidbanco ( idbanco );
-    _depura ( "END BusquedaBanco::setValorCampo", 0 );
+    _depura ( "END BusquedaBanco::setFieldValue", 0 );
 }
 
 /** Devuelve el identificador del banco seleccionado
@@ -119,7 +119,7 @@ QString BusquedaBanco::idbanco()
 /**
 \return
 **/
-QString BusquedaBanco::valorCampo()
+QString BusquedaBanco::fieldValue()
 {
     return idbanco();
 }

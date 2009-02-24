@@ -85,9 +85,9 @@ ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BfSubFo
     _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
-    addSubFormHeader ( "nombreorig", BlDbField::DBvarchar, BlDbField::DBDupPrimaryKey | BlDbField::DBNoSave, BlSubFormHeader::DBNoView | BlSubFormHeader::DBBlockView, "nombre" );
-    addSubFormHeader ( "nombre", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "valor", BlDbField::DBvarchar, BlDbField::DBNotNull, BlSubFormHeader::DBNone, _( "Valor" ) );
+    addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbNoView | BlSubFormHeader::DbBlockView, "nombre" );
+    addSubFormHeader ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Valor" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );

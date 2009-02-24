@@ -58,7 +58,7 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
 
     /// Miramos los temas de BlDbRecord.
     mui_formtablename->setText ( m_BlForm->tableName() );
-    mui_formcampoindice->setText ( m_BlForm->campoId() );
+    mui_formcampoindice->setText ( m_BlForm->fieldId() );
 
     QList<BlDbField *> *lista = m_BlForm->lista();
 

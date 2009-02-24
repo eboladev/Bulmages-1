@@ -53,9 +53,9 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
 
     mui_list->setDbTableName ( "almacen" );
     mui_list->setDbFieldId ( "idalmacen" );
-    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
-    mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo almacen" ) );
-    mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre almacen" ) );
+    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
+    mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo almacen" ) );
+    mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre almacen" ) );
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
@@ -87,9 +87,9 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
 
     mui_list->setDbTableName ( "almacen" );
     mui_list->setDbFieldId ( "idalmacen" );
-    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DBint, BlDbField::DBNotNull | BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite, _( "ID almacen" ) );
-    mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Codigo almacen" ) );
-    mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DBvarchar, BlDbField::DBNoSave, BlSubFormHeader::DBNone | BlSubFormHeader::DBNoWrite, _( "Nombre almacen" ) );
+    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
+    mui_list->addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo almacen" ) );
+    mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre almacen" ) );
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
@@ -192,7 +192,7 @@ void AlmacenesListView::editar ( int row )
 {
     _depura ( "AlmacenesListView::editar", 0 );
     try {
-        m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ), row );
+        m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ), row );
 
         if ( modoEdicion() ) {
             AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
@@ -233,7 +233,7 @@ void AlmacenesListView::borrar()
         return;
     } // end if
     try {
-        m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ) );
+        m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ) );
         if ( modoEdicion() ) {
             AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
             mainCompany() ->pWorkspace() ->addWindow ( alm );

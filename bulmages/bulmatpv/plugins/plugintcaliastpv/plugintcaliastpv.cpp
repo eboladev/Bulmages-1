@@ -34,10 +34,10 @@ typedef QMap<QString, BlFixed> base;
 
 int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &rec )
 {
-    rec->addDbField ( "idtc_talla", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Talla" ) );
-    rec->addDbField ( "idtc_color", BlDbField::DBnumeric, BlDbField::DBNothing, _( "Color" ) );
-    rec->addDbField ( "nomtc_talla", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Talla" ) );
-    rec->addDbField ( "nomtc_color", BlDbField::DBvarchar, BlDbField::DBNoSave, _( "Color" ) );
+    rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Talla" ) );
+    rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Color" ) );
+    rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Talla" ) );
+    rec->addDbField ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Color" ) );
 
 }
 
@@ -96,15 +96,15 @@ int MTicket_pintar ( MTicket *mtick )
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
 
-    html1 += "Ticket: " + tick->DBvalue ( "nomticket" ) + "<BR>";
+    html1 += "Ticket: " + tick->dbValue ( "nomticket" ) + "<BR>";
 
-    QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->DBvalue ( "idtrabajador" );
+    QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *curtrab = mtick->mainCompany() ->loadQuery ( querytrab );
-    html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
+    html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
-    QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue ( "idcliente" );
+    QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
     BlDbRecordSet *cur1 = mtick->mainCompany() ->loadQuery ( query );
-    html1 += "Cliente: " + tick->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
+    html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
     html += "<TABLE border=\"0\">";
@@ -114,14 +114,14 @@ int MTicket_pintar ( MTicket *mtick )
         QString bgcolor = "#FFFFFF";
         if ( item == tick->lineaActTicket() ) bgcolor = "#CCFFFF";
         html += "<TR>";
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->DBvalue ( "cantlalbaran" ) + "</TD>";
-        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomarticulo" ) + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
 
-        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomtc_talla" ) + "</TD>";
-        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomtc_color" ) + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomtc_talla" ) + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomtc_color" ) + "</TD>";
 
         BlFixed totalLinea ( "0.00" );
-        totalLinea = BlFixed ( item->DBvalue ( "cantlalbaran" ) ) * BlFixed ( item->DBvalue ( "pvplalbaran" ) );
+        totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
         html += "</TR>";
     }// end for
@@ -148,14 +148,14 @@ int MTicket_pintar ( MTicket *mtick )
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        BlFixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-        BlFixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
+        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-        basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
+        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
     } // end for
 
     BlFixed basei ( "0.00" );
@@ -172,7 +172,7 @@ int MTicket_pintar ( MTicket *mtick )
         if (m_listadescuentos->rowCount()) {
             for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
                 linea1 = m_listadescuentos->lineaat(i);
-                BlFixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
                 porcentt = porcentt + propor;
             } // end for
         } // end if

@@ -125,7 +125,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
 
         QString SQLQuery = "";
 
-        if ( fpv->DBvalue ( "refpedidoproveedor" ).isEmpty() || fpv->DBvalue ( "idproveedor" ).isEmpty() ) {
+        if ( fpv->dbValue ( "refpedidoproveedor" ).isEmpty() || fpv->dbValue ( "idproveedor" ).isEmpty() ) {
             /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
@@ -136,7 +136,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
                 SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
             } // end if
         } else {
-            SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->DBvalue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->DBvalue ( "idproveedor" );
+            SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->dbValue ( "refpedidoproveedor" ) + "' AND idproveedor = " + fpv->dbValue ( "idproveedor" );
         } // end if
 
         cur = fpv->mainCompany() ->loadQuery ( SQLQuery );
@@ -165,10 +165,10 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
 
-        bud->setDbValue ( "comentalbaranp", fpv->DBvalue ( "comentpedidoproveedor" ) );
-        bud->setDbValue ( "idforma_pago", fpv->DBvalue ( "idforma_pago" ) );
-        bud->setDbValue ( "refalbaranp", fpv->DBvalue ( "refpedidoproveedor" ) );
-        bud->setDbValue ( "idproveedor", fpv->DBvalue ( "idproveedor" ) );
+        bud->setDbValue ( "comentalbaranp", fpv->dbValue ( "comentpedidoproveedor" ) );
+        bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+        bud->setDbValue ( "refalbaranp", fpv->dbValue ( "refpedidoproveedor" ) );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
         bud->pintar();
         bud->show();
 
@@ -177,18 +177,18 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
             linea = fpv->m_listalineas->lineaat ( i );
-            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+            if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea1->setDbValue ( "desclalbaranp", linea->DBvalue ( "desclpedidoproveedor" ) );
-                linea1->setDbValue ( "cantlalbaranp", linea->DBvalue ( "cantlpedidoproveedor" ) );
-                linea1->setDbValue ( "pvplalbaranp", linea->DBvalue ( "pvplpedidoproveedor" ) );
-                linea1->setDbValue ( "descuentolalbaranp", linea->DBvalue ( "descuentolpedidoproveedor" ) );
-                linea1->setDbValue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-                linea1->setDbValue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDbValue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-                linea1->setDbValue ( "ivalalbaranp", linea->DBvalue ( "ivalpedidoproveedor" ) );
+                linea1->setDbValue ( "desclalbaranp", linea->dbValue ( "desclpedidoproveedor" ) );
+                linea1->setDbValue ( "cantlalbaranp", linea->dbValue ( "cantlpedidoproveedor" ) );
+                linea1->setDbValue ( "pvplalbaranp", linea->dbValue ( "pvplpedidoproveedor" ) );
+                linea1->setDbValue ( "descuentolalbaranp", linea->dbValue ( "descuentolpedidoproveedor" ) );
+                linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                linea1->setDbValue ( "ivalalbaranp", linea->dbValue ( "ivalpedidoproveedor" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for

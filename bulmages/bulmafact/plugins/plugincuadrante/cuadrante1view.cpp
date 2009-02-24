@@ -54,27 +54,27 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         setTitleName ( _( "Cuadrante" ) );
         setDbTableName ( "cuadrante" );
         setDbFieldId ( "idcuadrante" );
-        addDbField ( "idcuadrante", BlDbField::DBint, BlDbField::DBPrimaryKey, _( "ID cuadrante" ) );
-        addDbField ( "idalmacen", BlDbField::DBint, BlDbField::DBNoSave, _( "Almacen" ) );
-        addDbField ( "fechacuadrante", BlDbField::DBdate, BlDbField::DBNoSave  , _( "Fecha" ) );
-        addDbField ( "comentcuadrante", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Comentarios" ) );
-        addDbField ( "aperturacuadrante", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Apertura manyana" ) );
-        addDbField ( "cierrecuadrante", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Cierre manyana" ) );
-        addDbField ( "apertura1cuadrante", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Apartura tarde" ) );
-        addDbField ( "cierre1cuadrante", BlDbField::DBvarchar, BlDbField::DBNothing, _( "Cierre tarde" ) );
-        addDbField ( "fiestacuadrante", BlDbField::DBboolean, BlDbField::DBNothing, _( "Festivo" ) );
+        addDbField ( "idcuadrante", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID cuadrante" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, _( "Almacen" ) );
+        addDbField ( "fechacuadrante", BlDbField::DbDate, BlDbField::DbNoSave  , _( "Fecha" ) );
+        addDbField ( "comentcuadrante", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
+        addDbField ( "aperturacuadrante", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Apertura manyana" ) );
+        addDbField ( "cierrecuadrante", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Cierre manyana" ) );
+        addDbField ( "apertura1cuadrante", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Apartura tarde" ) );
+        addDbField ( "cierre1cuadrante", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Cierre tarde" ) );
+        addDbField ( "fiestacuadrante", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Festivo" ) );
 
         mui_idalmacen->setMainCompany ( comp );
 
         mui_list->setMainCompany ( comp );
         mui_list->setDbTableName ( "horario" );
         mui_list->setDbFieldId ( "idhorario" );
-        mui_list->addSubFormHeader ( "nomtrabajador",  BlDbField::DBvarchar, BlDbField::DBNoSave,     BlSubFormHeader::DBNone,                         _( "Nombre Trabajador" ) );
-        mui_list->addSubFormHeader ( "horainhorario",  BlDbField::DBvarchar, BlDbField::DBNotNull,    BlSubFormHeader::DBNone,                         _( "Hora Inicio" ) );
-        mui_list->addSubFormHeader ( "horafinhorario", BlDbField::DBvarchar, BlDbField::DBNotNull,    BlSubFormHeader::DBNone,                         _( "Hora Fin" ) );
-        mui_list->addSubFormHeader ( "idcuadrante",    BlDbField::DBint,     BlDbField::DBNotNull,    BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite,  _( "ID Cuadrante" ) );
-        mui_list->addSubFormHeader ( "idtrabajador",   BlDbField::DBint,     BlDbField::DBNotNull,    BlSubFormHeader::DBNone,  _( "ID trabajador" ) );
-        mui_list->addSubFormHeader ( "idhorario",      BlDbField::DBint,     BlDbField::DBPrimaryKey, BlSubFormHeader::DBNoView | BlSubFormHeader::DBNoWrite,  _( "ID horario" ) );
+        mui_list->addSubFormHeader ( "nomtrabajador",  BlDbField::DbVarChar, BlDbField::DbNoSave,     BlSubFormHeader::DbNone,                         _( "Nombre Trabajador" ) );
+        mui_list->addSubFormHeader ( "horainhorario",  BlDbField::DbVarChar, BlDbField::DbNotNull,    BlSubFormHeader::DbNone,                         _( "Hora Inicio" ) );
+        mui_list->addSubFormHeader ( "horafinhorario", BlDbField::DbVarChar, BlDbField::DbNotNull,    BlSubFormHeader::DbNone,                         _( "Hora Fin" ) );
+        mui_list->addSubFormHeader ( "idcuadrante",    BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite,  _( "ID Cuadrante" ) );
+        mui_list->addSubFormHeader ( "idtrabajador",   BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbNone,  _( "ID trabajador" ) );
+        mui_list->addSubFormHeader ( "idhorario",      BlDbField::DbInt,     BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite,  _( "ID horario" ) );
         mui_list->setinsercion ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
@@ -117,7 +117,7 @@ int Cuadrante1View::cargarPost ( QString idcuadrante )
 **/
 int Cuadrante1View::guardarPost()
 {
-    mui_list->setColumnValue ( "idcuadrante", DBvalue ( "idcuadrante" ) );
+    mui_list->setColumnValue ( "idcuadrante", dbValue ( "idcuadrante" ) );
     mui_list->guardar();
     emit ( save() );
     return 0;

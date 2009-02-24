@@ -89,7 +89,7 @@ void RegIVAQToolButton::click()
     ListLinAsiento1View *las = m_asiento1View->mui_list;
     las->guardar();
     try {
-        int idborrador = las->DBvalue ( "idborrador" ).toInt();
+        int idborrador = las->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) las->mainCompany(), 0 );
         nuevae->inicializa1 ( idborrador );
         ( ( BcCompany * ) las->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );

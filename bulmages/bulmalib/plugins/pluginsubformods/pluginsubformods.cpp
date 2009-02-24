@@ -147,7 +147,7 @@ void myplugsubformods::sacaods()
             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
             QString textocabecera = ( subf->mui_listcolumnas->item ( h, 1 ) ->text() );
-            //QString textocabecera = (subf->mui_listcolumnas->columnDBfieldName());
+            //QString textocabecera = (subf->mui_listcolumnas->dbFieldNameByColumnId());
             textocabecera.replace ( QString ( "\n" ), QString ( "\\n\\\n" ) );
 
             fitxersortidatxt += "doc.set_cell_property('bold', True)\n";
