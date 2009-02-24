@@ -649,6 +649,7 @@ QString num2texto ( QString numero, QString moneda, QString singular )
     postfijos["10000000-1"] = " millones ";
     postfijos["100000000-1"] = " millones ";
 
+    numero = numero.replace(",",".");
     QString decimal_break = ".";
     //echo "test run on ".$numero."<br>";
     QString entero = numero.split ( decimal_break ).at ( 0 );

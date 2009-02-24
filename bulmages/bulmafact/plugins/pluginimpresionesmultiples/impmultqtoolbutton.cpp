@@ -224,6 +224,7 @@ void ImpQToolButton::click()
 
             /// Reseteamos los valores
             for ( int i = 0; i < sub->rowCount(); i++ ) {
+              
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
@@ -298,14 +299,22 @@ void ImpQToolButton::click()
             /// Reseteamos los valores
             int j = 0;
             for ( int i = 0; i < sub->rowCount(); i++ ) {
+
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
+
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idcobro" );
-
-                    CobroView *pres = new CobroView ( m_companyact, 0 );
+               /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ("SNewCobroView", m_companyact);
+               if (!resur) {
+                  mensajeInfo("no se pudo crear instancia de cobro");
+                  return;
+               } // end if
+                    CobroView *pres = (CobroView *) g_plugParams;
                     pres->cargar ( id );
+                   
 
                     int col1 = j % 3;
                     double col = 0;
@@ -341,14 +350,14 @@ void ImpQToolButton::click()
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 2.3 ) + "cm\">" + cur->valor ( "nomcliente" ) + "</drawString>\n";
 //    txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
                             txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.5 ) + "cm\">" + cur->valor ( "dircliente" ) + "</drawString>\n";
-                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.1 ) + "cm\">" + cur->valor ( "cpcliente" ) + " " + cur->valor ( "provcliente" ) + "</drawString>\n";
+                            txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 1.1 ) + "cm\">" + cur->valor ( "cpcliente" ) + "</drawString>\n";
                         } // end if
                         delete cur;
                     } // end if
 
                     txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.6 ) + "cm\">a</drawString>\n";
                     txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.2 ) + "cm\">" + num2texto ( pres->dbValue ( "cantcobro" ) ) + "</drawString>\n";
-
+                            
                     txt += " </storyPlace>\n";
 
                     if ( col1 == 2 )
@@ -792,7 +801,6 @@ void EmailQToolButton::click()
                 cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
                 cad += " --attach " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
 				
-				mensajeInfo(cad);
                 system ( cad.toAscii().data() );
 
                 res += confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";

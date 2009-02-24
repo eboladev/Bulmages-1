@@ -35,6 +35,7 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int SNewCobroView (BfCompany *);
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);

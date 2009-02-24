@@ -249,3 +249,12 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     return 0;
 }
 
+
+/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
+/// Sino que se llama desde multiples partes del sistema.
+int SNewCobroView (BfCompany *v)
+{
+   CobroView *h = new CobroView(v, 0);
+   g_plugParams = h;
+   return 1;
+}
