@@ -38,7 +38,7 @@ BlComboBox::BlComboBox ( QWidget *parent )
         : QComboBox ( parent ), BlMainCompanyPointer()
 {
     _depura ( "BlComboBox::BlComboBox", 0 );
-    m_cursorcombo = NULL;
+    m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect(theApp, SIGNAL(tablaCambiada(const QString &)), this, SLOT(onTablaCambiada(const QString &)));
     m_null = TRUE;
@@ -53,8 +53,8 @@ BlComboBox::BlComboBox ( QWidget *parent )
 BlComboBox::~BlComboBox()
 {
     _depura ( "BlComboBox::~BlComboBox", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL )
+        delete m_comboRecordSet;
     _depura ( "END BlComboBox::~BlComboBox", 0 );
 }
 
@@ -63,7 +63,7 @@ BlComboBox::~BlComboBox()
 /**
 **/
 void BlComboBox::onTablaCambiada(const QString &t) {
-	if (m_tabla == t) {
+	if (m_table == t) {
 		setId(id());
 	} // end if
 }
@@ -79,13 +79,13 @@ void BlComboBox::onTablaCambiada(const QString &t) {
 void BlComboBox::setId ( QString id )
 {
     _depura ( "BlComboBox::setId", 0, id );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
     } // end if
 
-    m_cursorcombo = mainCompany() ->loadQuery ( m_query );
+    m_comboRecordSet = mainCompany() ->loadQuery ( m_query );
     /// Si ha habido un problema con la base de datos salimos.
-    if ( !m_cursorcombo ) return;
+    if ( !m_comboRecordSet ) return;
 
     int i = 0;
     int i1 = 0;
@@ -94,9 +94,9 @@ void BlComboBox::setId ( QString id )
 	addItem ( "--" );
     } // end if
 
-    while ( !m_cursorcombo->eof() ) {
+    while ( !m_comboRecordSet->eof() ) {
         i ++;
-        if ( m_cursorcombo->valor ( m_id ) == id ) {
+        if ( m_comboRecordSet->valor ( m_fieldId ) == id ) {
             i1 = i;
 	} // end if
 
@@ -105,11 +105,11 @@ void BlComboBox::setId ( QString id )
 	QString cad;
 	while (it.hasNext()) {
 		it.next();
-		cad = cad +" "+ m_cursorcombo->valor(it.key());
+		cad = cad +" "+ m_comboRecordSet->valor(it.key());
 	} // end while
 
         addItem ( cad );
-        m_cursorcombo->nextRecord();
+        m_comboRecordSet->nextRecord();
     } // end while
 
     setCurrentIndex ( i1 );
@@ -138,9 +138,9 @@ void BlComboBox::m_activated ( int index )
     _depura ( "BlComboBox::m_activated", 0 );
     if ( index > 0 ) {
 	if (m_null) {
-	        emit ( valueChanged ( m_cursorcombo->valor ( m_id, index - 1 ) ) );
+	        emit ( valueChanged ( m_comboRecordSet->valor ( m_fieldId, index - 1 ) ) );
 	} else {
-	        emit ( valueChanged ( m_cursorcombo->valor ( m_id, index ) ) );
+	        emit ( valueChanged ( m_comboRecordSet->valor ( m_fieldId, index ) ) );
 	} // end if
     } else {
         emit ( valueChanged ( "" ) );
@@ -158,9 +158,9 @@ QString BlComboBox::id()
     _depura ( "BlComboBox::id", 0 );
     if ( currentIndex() > 0 ) {
 	if (m_null) {
-        return m_cursorcombo->valor ( m_id, currentIndex() - 1 );
+        return m_comboRecordSet->valor ( m_fieldId, currentIndex() - 1 );
 	} else {
-        return m_cursorcombo->valor ( m_id, currentIndex() );
+        return m_comboRecordSet->valor ( m_fieldId, currentIndex() );
 	} // end if
     } else {
         return "";
@@ -193,22 +193,23 @@ void BlComboBox::setQuery(QString q) {
 /**
 **/
 void BlComboBox::setTableName(QString tableName) {
-	m_tabla = tableName;
+	m_table = tableName;
 }
 
 
 ///
 /**
 **/
-void BlComboBox::setCampoId(QString cid) {
-	m_id = cid;
+void BlComboBox::setFieldId(QString fieldId) {
+	m_fieldId = fieldId;
 }
 
 
 ///
 /**
 **/
-void BlComboBox::allowNull(bool v) {
+void BlComboBox::setAllowNull(bool v) {
 	m_null = v;
 }
+
 

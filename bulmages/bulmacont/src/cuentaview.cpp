@@ -77,7 +77,7 @@ CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_idprovincia->setMainCompany ( mainCompany() );
     mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setCampoId ("idprovincia");
+    mui_idprovincia->setFieldId ("idprovincia");
     mui_idprovincia->m_valores["nomprovincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
 

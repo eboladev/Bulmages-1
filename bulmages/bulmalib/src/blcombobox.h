@@ -33,22 +33,20 @@ class BlComboBox : public QComboBox, public BlMainCompanyPointer
     Q_OBJECT
 
 public:
-	/// QHash de los valores a comprobar
-	QMap <QString, QString> m_valores;
+    /// QHash de los valores a comprobar
+    QMap <QString, QString> m_valores;
 
 private:
     /// Indica cual es el identificador para la tabla.
-    QString m_id;
+    QString m_fieldId;
     QString m_query;
-    /// Almacena el nombreprofesor del profesor seleccionado.
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
 
-
 protected:
-    QString m_tabla;
-    /// Cursor que almacena en memoria la lista de provincias.
-    BlDbRecordSet *m_cursorcombo;
+    QString m_table;
+    /// RecordSet que almacena en memoria la lista de elementos.
+    BlDbRecordSet *m_comboRecordSet;
     /// Indica si adminte nulos o no
     bool m_null;
 
@@ -61,8 +59,8 @@ public:
     virtual void setId(QString);
     void setQuery(QString);
     virtual void setTableName(QString tableName);
-    virtual void setCampoId(QString cid);
-    void allowNull(bool v);
+    virtual void setFieldId(QString fieldId);
+    void setAllowNull(bool v);
 
 public slots:
     virtual void m_activated(int);

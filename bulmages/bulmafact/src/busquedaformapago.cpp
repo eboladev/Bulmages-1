@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include "blcombobox.h"
-
 #include "busquedaformapago.h"
 
 
@@ -35,9 +34,11 @@ BusquedaFormaPago::BusquedaFormaPago ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaFormaPago::BusquedaFormaPago", 0 );
-    m_cursorcombo = NULL;
-    m_tabla= "forma_pago";
+
+    m_comboRecordSet = NULL;
+    m_table= "forma_pago";
     m_null = TRUE;
+
     _depura ( "END BusquedaFormaPago::BusquedaFormaPago", 0 );
 }
 
@@ -67,26 +68,37 @@ void BusquedaFormaPago::setId ( QString idforma_pago )
 {
     _depura ( "BusquedaFormaPago::setidforma_pago", 0 );
 
-	/// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
-	if (idforma_pago.isEmpty() || idforma_pago == "0")
-		idforma_pago = confpr->valor(CONF_IDFORMA_PAGO_DEFECTO);
+    /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
+    if (idforma_pago.isEmpty() || idforma_pago == "0") {
+	idforma_pago = confpr->valor(CONF_IDFORMA_PAGO_DEFECTO);
+    } // end if
 
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM forma_pago" );
-    if ( !m_cursorcombo ) return;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
+    } // end if
+
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM forma_pago" );
+
+    if ( !m_comboRecordSet ) return;
+
     int i = 0;
     int i1 = 0;
     clear();
     addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
+
+    while ( !m_comboRecordSet->eof() ) {
         i ++;
-        if ( m_cursorcombo->valor ( "idforma_pago" ) == idforma_pago )
+
+        if ( m_comboRecordSet->valor ( "idforma_pago" ) == idforma_pago ) {
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "descforma_pago" ) );
-        m_cursorcombo->nextRecord();
+	} // end if
+
+        addItem ( m_comboRecordSet->valor ( "descforma_pago" ) );
+        m_comboRecordSet->nextRecord();
     } // end while
+
     setCurrentIndex ( i1 );
+
     _depura ( "END BusquedaFormaPago::setidforma_pago", 0 );
 }
 
@@ -100,7 +112,6 @@ void BusquedaFormaPago::setIdCliente ( QString idcliente )
 {
     _depura ( "BusquedaFormaPago::setIdCliente", 0, idcliente );
 
-
     /// Si el idcliente no existe salimos.
     if ( idcliente == "" ) {
         _depura ( "END BusquedaFormaPago::setIdCliente", 0, "idcliente invalido" );
@@ -112,7 +123,9 @@ void BusquedaFormaPago::setIdCliente ( QString idcliente )
     if ( !cur->eof() ) {
         setId ( cur->valor ( "idforma_pago" ) );
     } // end if
+
     delete cur;
+
     _depura ( "END BusquedaFormaPago::setIdCliente", 0 );
 }
 
@@ -147,11 +160,13 @@ void BusquedaFormaPago::setIdProveedor ( QString idproveedor )
 void BusquedaFormaPago::m_activated ( int index )
 {
     _depura ( "BusquedaFormaPago::m_activated", 0 );
+
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idforma_pago", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->valor ( "idforma_pago", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
+
     _depura ( "END BusquedaFormaPago::m_activated", 0 );
 }
 
@@ -165,10 +180,13 @@ QString BusquedaFormaPago::id()
 {
     _depura ( "BusquedaFormaPago::idforma_pago", 0 );
     _depura ( "END BusquedaFormaPago::idforma_pago", 0 );
-    if ( !m_cursorcombo ) return "0";
+
+    if ( !m_comboRecordSet ) return "0";
+
     if (currentIndex() > 0) {
-	    return ( m_cursorcombo->valor ( "idforma_pago", currentIndex() - 1 ) );
+	    return ( m_comboRecordSet->valor ( "idforma_pago", currentIndex() - 1 ) );
     } // end if
+
     return "";
 }
 

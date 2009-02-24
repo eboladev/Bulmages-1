@@ -35,9 +35,11 @@ BusquedaTrabajador::BusquedaTrabajador ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaTrabajador::BusquedaTrabajador", 0 );
-    m_cursorcombo = NULL;
-    m_tabla = "trabajador";
-	m_null = TRUE;
+
+    m_comboRecordSet = NULL;
+    m_table = "trabajador";
+    m_null = TRUE;
+
     _depura ( "END BusquedaTrabajador::BusquedaTrabajador", 0 );
 }
 
@@ -65,26 +67,35 @@ void BusquedaTrabajador::setId ( QString idtrabajador )
 {
     _depura ( "BusquedaTrabajador::setidtrabajador", 0 );
 
-	/// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
-	if (idtrabajador.isEmpty() || idtrabajador == "0")
+    /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
+    if (idtrabajador.isEmpty() || idtrabajador == "0") {
 		idtrabajador = confpr->valor(CONF_IDTRABAJADOR_DEFECTO);
+    } // end if
 
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
-    if ( !m_cursorcombo ) return;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
+    } // end if
+
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
+    if ( !m_comboRecordSet ) return;
     int i = 0;
     int i1 = 0;
     clear();
     addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
+
+    while ( !m_comboRecordSet->eof() ) {
         i ++;
-        if ( m_cursorcombo->valor ( "idtrabajador" ) == idtrabajador )
+
+        if ( m_comboRecordSet->valor ( "idtrabajador" ) == idtrabajador ) {
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );
-        m_cursorcombo->nextRecord();
+	} // end if
+
+        addItem ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) );
+        m_comboRecordSet->nextRecord();
     } // end while
+
     setCurrentIndex ( i1 );
+
     _depura ( "END BusquedaTrabajador::setidtrabajador", 0 );
 }
 
@@ -99,8 +110,12 @@ QString BusquedaTrabajador::id()
 {
     _depura ( "BusquedaTrabajador::idtrabajador", 0 );
     _depura ( "END BusquedaTrabajador::idtrabajador", 0 );
-    if ( !m_cursorcombo ) return "0";
-    return m_cursorcombo->valor ( "idtrabajador", currentIndex() - 1 );
+
+    if ( !m_comboRecordSet ) {
+	return "0";
+    } // end if
+
+    return m_comboRecordSet->valor ( "idtrabajador", currentIndex() - 1 );
 }
 
 
@@ -114,11 +129,13 @@ QString BusquedaTrabajador::id()
 void BusquedaTrabajador::m_activated ( int index )
 {
     _depura ( "BusquedaTrabajador::m_activated", 0 );
+
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idtrabajador", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->valor ( "idtrabajador", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
-    }
+    } // end if
+
     _depura ( "END BusquedaTrabajador::m_activated", 0 );
 }
 
@@ -135,9 +152,11 @@ BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0 );
-    m_cursorcombo = NULL;
+
+    m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+
     _depura ( "END BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0 );
 }
 
@@ -149,8 +168,11 @@ BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate ( QWidget *parent )
 BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate()
 {
     _depura ( "BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
+
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
+    } // end if
+
     _depura ( "END BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0 );
 }
 
@@ -168,22 +190,23 @@ void BusquedaTrabajadorDelegate::set ( const QString &cod )
     int index = 0;
     QString codigo = cod;
 
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
+    } // end if
 
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT nomtrabajador, apellidostrabajador FROM trabajador " );
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT nomtrabajador, apellidostrabajador FROM trabajador " );
     clear();
-    while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );
-        m_cursorcombo->nextRecord();
-        if ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) == cod )
-            index = m_cursorcombo->currentRecord();
-    }// end while
+
+    while ( !m_comboRecordSet->eof() ) {
+        addItem ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) );
+        m_comboRecordSet->nextRecord();
+        if ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) == cod )
+            index = m_comboRecordSet->currentRecord();
+    } // end while
+
     setEditText ( cod );
     setCurrentIndex ( index );
 
     _depura ( "END BusquedaTrabajadorDelegate::set", 0 );
 }
-
-
 

@@ -34,8 +34,8 @@ BusquedaTipoIva::BusquedaTipoIva ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaTipoIva::BusquedaTipoIva", 0 );
-    m_cursorcombo = NULL;
-    m_tabla="tipo_iva";
+    m_comboRecordSet = NULL;
+    m_table = "tipo_iva";
     _depura ( "END BusquedaTipoIva::BusquedaTipoIva", 0 );
 }
 
@@ -62,25 +62,34 @@ BusquedaTipoIva::~BusquedaTipoIva()
 void BusquedaTipoIva::setId ( QString idtipo_iva )
 {
     _depura ( "BusquedaTipoIva::setidtipo_iva", 0 );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
+
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
     } // end if
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tipo_iva" );
+
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM tipo_iva" );
     /// Tratamos el caso en que no se haya devuelto nada.
-    if ( m_cursorcombo == NULL ) return;
+
+    if ( m_comboRecordSet == NULL ) return;
+
     int i = 0;
     int i1 = 0;
     clear();
     addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
+
+    while ( !m_comboRecordSet->eof() ) {
         i ++;
-        if ( m_cursorcombo->valor ( "idtipo_iva" ) == idtipo_iva ) {
+
+        if ( m_comboRecordSet->valor ( "idtipo_iva" ) == idtipo_iva ) {
             i1 = i;
         } // end if
-        addItem ( m_cursorcombo->valor ( "desctipo_iva" ) );
-        m_cursorcombo->nextRecord();
+
+        addItem ( m_comboRecordSet->valor ( "desctipo_iva" ) );
+        m_comboRecordSet->nextRecord();
     } // end while
+
     setCurrentIndex ( i1 );
+
     _depura ( "END BusquedaTipoIva::setidtipo_iva", 0 );
 }
 
@@ -95,9 +104,11 @@ QString BusquedaTipoIva::id()
 {
     _depura ( "BusquedaTipoIva::idtipo_iva", 0 );
     _depura ( "END BusquedaTipoIva::idtipo_iva", 0 );
+
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
-    if ( !m_cursorcombo ) return "0";
-    return m_cursorcombo->valor ( "idtipo_iva", currentIndex() - 1 );
+    if ( !m_comboRecordSet ) return "0";
+
+    return m_comboRecordSet->valor ( "idtipo_iva", currentIndex() - 1 );
 }
 
 
@@ -109,11 +120,13 @@ QString BusquedaTipoIva::id()
 void BusquedaTipoIva::m_activated ( int index )
 {
     _depura ( "BusquedaTipoIva::m_activated", 0 );
+
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idtipo_iva", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->valor ( "idtipo_iva", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
+
     _depura ( "END BusquedaTipoIva::m_activated", 0 );
 }
 
@@ -132,7 +145,7 @@ BusquedaTipoIVADelegate::BusquedaTipoIVADelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0 );
-    m_cursorcombo = NULL;
+    m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     _depura ( "END BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0 );
@@ -146,9 +159,11 @@ BusquedaTipoIVADelegate::BusquedaTipoIVADelegate ( QWidget *parent )
 BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate()
 {
     _depura ( "BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0 );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
+
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
     } // end if
+
     _depura ( "END BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0 );
 }
 
@@ -163,24 +178,28 @@ BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate()
 void BusquedaTipoIVADelegate::set ( const QString &cod )
 {
     _depura ( "BusquedaTipoIVADelegate::set", 0 );
+
     int index = 0;
     QString codigo = cod;
 
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
     } // end if
 
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT desctipo_iva FROM tipo_iva " );
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT desctipo_iva FROM tipo_iva " );
+
     /// Comprobamos que no haya habido errores
-    if ( !m_cursorcombo ) return;
+    if ( !m_comboRecordSet ) return;
 
     clear();
-    while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "desctipo_iva" ) );
-        m_cursorcombo->nextRecord();
-        if ( m_cursorcombo->valor ( "desctipo_iva" ) == cod )
-            index = m_cursorcombo->currentRecord();
+
+    while ( !m_comboRecordSet->eof() ) {
+        addItem ( m_comboRecordSet->valor ( "desctipo_iva" ) );
+        m_comboRecordSet->nextRecord();
+        if ( m_comboRecordSet->valor ( "desctipo_iva" ) == cod )
+            index = m_comboRecordSet->currentRecord();
     } // end while
+
     setEditText ( cod );
     setCurrentIndex ( index );
 

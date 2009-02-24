@@ -77,7 +77,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idprovincia->setMainCompany ( mainCompany() );
     mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setCampoId ("idprovincia");
+    mui_idprovincia->setFieldId ("idprovincia");
     mui_idprovincia->m_valores["provincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
         mui_idprovincia->setId ( "" );

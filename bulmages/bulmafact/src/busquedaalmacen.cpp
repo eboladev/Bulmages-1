@@ -34,9 +34,9 @@ BusquedaAlmacen::BusquedaAlmacen ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaAlmacen::BusquedaAlmacen", 0 );
-    m_cursorcombo = NULL;
+    m_comboRecordSet = NULL;
     m_codigoalmacen = "";
-    m_tabla = "almacen";
+    m_table = "almacen";
     _depura ( "END BusquedaAlmacen::BusquedaAlmacen", 0 );
 }
 
@@ -74,25 +74,25 @@ void BusquedaAlmacen::setId ( QString idalmacen )
 		} // end if
 
 		/// Si ya esta creado el cursorcombo lo borramos.	
-		if ( m_cursorcombo != NULL ) {
-			delete m_cursorcombo;
+		if ( m_comboRecordSet != NULL ) {
+			delete m_comboRecordSet;
 		} // end if
 	
-		m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM almacen ORDER BY nomalmacen" );
-		if ( !m_cursorcombo ) return;
+		m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+		if ( !m_comboRecordSet ) return;
 		int i = 0;
 		int i1 = 0;
 		int i2 = 0;
 		clear();
 		addItem ( "--" );
-		while ( !m_cursorcombo->eof() ) {
+		while ( !m_comboRecordSet->eof() ) {
 			i++;
-			if ( m_cursorcombo->valor ( "codigoalmacen" ) == m_codigoalmacen )
+			if ( m_comboRecordSet->valor ( "codigoalmacen" ) == m_codigoalmacen )
 				i2 = i;
-			if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
+			if ( m_comboRecordSet->valor ( "idalmacen" ) == idalmacen )
 				i1 = i;
-			addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
-			m_cursorcombo->nextRecord();
+			addItem ( m_comboRecordSet->valor ( "nomalmacen" ) );
+			m_comboRecordSet->nextRecord();
 		} //end while
 		if ( i1 != 0 ) {
 			setCurrentIndex ( i1 );
@@ -115,9 +115,10 @@ QString BusquedaAlmacen::id()
 {
     _depura ( "BusquedaAlmacen::idalmacen", 0 );
     int index = currentIndex();
+
     if ( index > 0 ) {
-        _depura ( "END BusquedaAlmacen::idalmacen", 0, m_cursorcombo->valor ( "idalmacen", index - 1 ) );
-        return ( m_cursorcombo->valor ( "idalmacen", index - 1 ) );
+        _depura ( "END BusquedaAlmacen::idalmacen", 0, m_comboRecordSet->valor ( "idalmacen", index - 1 ) );
+        return ( m_comboRecordSet->valor ( "idalmacen", index - 1 ) );
     } else {
         _depura ( "END BusquedaAlmacen::idalmacen", 0 );
         return "";
@@ -150,13 +151,16 @@ void BusquedaAlmacen::setMainCompany ( BfCompany *comp )
 void BusquedaAlmacen::m_activated ( int index )
 {
     _depura ( "BusquedaAlmacen::m_activated", 0 );
+
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idalmacen", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->valor ( "idalmacen", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
+
     _depura ( "END BusquedaAlmacen::m_activated", 0 );
 }
+
 
 /// ========================= ITEM DELEGATE ===============================0
 
@@ -171,7 +175,7 @@ BusquedaAlmacenDelegate::BusquedaAlmacenDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0 );
-    m_cursorcombo = NULL;
+    m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     _depura ( "END BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0 );
@@ -185,8 +189,8 @@ BusquedaAlmacenDelegate::BusquedaAlmacenDelegate ( QWidget *parent )
 BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate()
 {
     _depura ( "BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL )
+        delete m_comboRecordSet;
     _depura ( "END BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0 );
 }
 
@@ -204,17 +208,23 @@ void BusquedaAlmacenDelegate::set ( const QString &cod )
     int index = 0;
     QString codigo = cod;
 
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
+    } // end if
 
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
     clear();
-    while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) );
-        m_cursorcombo->nextRecord();
-        if ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) == cod )
-            index = m_cursorcombo->currentRecord();
+
+    while ( !m_comboRecordSet->eof() ) {
+        addItem ( m_comboRecordSet->valor ( "nomalmacen" ) + ", " + m_comboRecordSet->valor ( "codigoalmacen" ) );
+        m_comboRecordSet->nextRecord();
+
+        if ( m_comboRecordSet->valor ( "nomalmacen" ) + ", " + m_comboRecordSet->valor ( "codigoalmacen" ) == cod ) {
+            index = m_comboRecordSet->currentRecord();
+	} // end if
+
     }// end while
+
     setEditText ( cod );
     setCurrentIndex ( index );
 

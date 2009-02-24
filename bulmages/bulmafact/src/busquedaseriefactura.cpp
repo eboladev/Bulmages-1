@@ -36,9 +36,9 @@ BusquedaSerieFactura::BusquedaSerieFactura ( QWidget *parent )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaSerieFactura::BusquedaSerieFactura", 0 );
-    m_cursorcombo = NULL;
+    m_comboRecordSet = NULL;
     m_codigoserie_factura = "";
-	m_tabla = "serie_factura";
+    m_table = "serie_factura";
     _depura ( "END BusquedaSerieFactura::BusquedaSerieFactura", 0 );
 }
 
@@ -70,23 +70,23 @@ void BusquedaSerieFactura::setId ( QString codigo )
 	codigo = confpr->valor(CONF_SERIE_FACTURA_DEFECTO);
     } // end if
 
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM serie_factura" );
-    if ( !m_cursorcombo ) return;
+    if ( m_comboRecordSet != NULL )
+        delete m_comboRecordSet;
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM serie_factura" );
+    if ( !m_comboRecordSet ) return;
     int i = 0;
     int i1 = 0;
     int i2 = 0;
     clear();
     addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
+    while ( !m_comboRecordSet->eof() ) {
         i ++;
-        if ( m_cursorcombo->valor ( "codigoserie_factura" ) == m_codigoserie_factura )
+        if ( m_comboRecordSet->valor ( "codigoserie_factura" ) == m_codigoserie_factura )
             i2 = i;
-        if ( m_cursorcombo->valor ( "codigoserie_factura" ) == codigo )
+        if ( m_comboRecordSet->valor ( "codigoserie_factura" ) == codigo )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "codigoserie_factura" ) + ".-" + m_cursorcombo->valor ( "descserie_factura" ) );
-        m_cursorcombo->nextRecord();
+        addItem ( m_comboRecordSet->valor ( "codigoserie_factura" ) + ".-" + m_comboRecordSet->valor ( "descserie_factura" ) );
+        m_comboRecordSet->nextRecord();
     } // end if
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
@@ -105,7 +105,7 @@ void BusquedaSerieFactura::m_activated ( int index )
 {
     _depura ( "BusquedaSerieFactura::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "codigoserie_factura", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->valor ( "codigoserie_factura", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -122,7 +122,7 @@ QString BusquedaSerieFactura::id()
     _depura ( "BusquedaSerieFactura::codigoserie_factura", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        return ( m_cursorcombo->valor ( "codigoserie_factura", index - 1 ) );
+        return ( m_comboRecordSet->valor ( "codigoserie_factura", index - 1 ) );
     } else {
         return "";
     } // end if

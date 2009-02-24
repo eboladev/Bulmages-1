@@ -89,7 +89,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
 
     mui_idprovincia->setQuery("SELECT idprovincia, provincia||' ('||descpais||')' AS desc FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
     mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setCampoId ("idprovincia");
+    mui_idprovincia->setFieldId ("idprovincia");
     mui_idprovincia->m_valores["desc"] = "";
         mui_idprovincia->setId ( "" );
 
