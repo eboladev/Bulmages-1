@@ -37,10 +37,10 @@ ListDescuentoPresupuestoView::ListDescuentoPresupuestoView ( QWidget *parent )
     _depura ( "ListDescuentoPresupuestoView::ListDescuentoPresupuestoView", 0 );
     setDbTableName ( "dpresupuesto" );
     setDbFieldId ( "iddpresupuesto" );
-    addSubFormHeader ( "iddpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id descuento" ) );
+    addSubFormHeader ( "iddpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id descuento" ) );
     addSubFormHeader ( "conceptdpresupuesto", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "% Descuento" ) );
-    addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id presupuesto" ) );
+    addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id presupuesto" ) );
     setinsercion ( TRUE );
     _depura ( "END ListDescuentoPresupuestoView::ListDescuentoPresupuestoView", 0 );
 }

@@ -45,7 +45,7 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     /// Preparamos la lista de paises.
     mui_list->setDbTableName ( "pais" );
     mui_list->setDbFieldId ( "idpais" );
-    mui_list->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id. Pais" ) );
+    mui_list->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id. Pais" ) );
     mui_list->addSubFormHeader ( "descpais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre Pais" ) );
     mui_list->addSubFormHeader ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo 2 Digitos" ) );
     mui_list->addSubFormHeader ( "cod3pais", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo 3 Digitos" ) );
@@ -56,8 +56,8 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     /// Preparamos la lista de provincias.
     mui_listprovincias->setDbTableName ( "provincia" );
     mui_listprovincias->setDbFieldId ( "idprovincia" );
-    mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id. Provincia" ) );
-    mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "Id. Pais" ) );
+    mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id. Provincia" ) );
+    mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id. Pais" ) );
     mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Provincia" ) );
     mui_listprovincias->setinsercion ( TRUE );
     mui_listprovincias->setDelete ( TRUE );

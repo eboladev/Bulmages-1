@@ -90,9 +90,9 @@ ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
     _depura ( "ListTasaIVASubForm::ListTasaIVASubForm", 0 );
     setDbTableName ( "tasa_iva" );
     setDbFieldId ( "idtasa_iva" );
-    addSubFormHeader ( "idtasa_iva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView, _( "Id Tasa IVA" ) );
+    addSubFormHeader ( "idtasa_iva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _( "Id Tasa IVA" ) );
     addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Tipo IVA" ) );
-    addSubFormHeader ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "Id Tipo IVA" ) );
+    addSubFormHeader ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "Id Tipo IVA" ) );
     addSubFormHeader ( "porcentasa_iva", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Porcentaje IVA" ) );
     addSubFormHeader ( "porcentretasa_iva", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Porcentaje Recargo Equivalencia" ) );
     addSubFormHeader ( "fechatasa_iva", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Fecha Entrada en Vigor" ) );

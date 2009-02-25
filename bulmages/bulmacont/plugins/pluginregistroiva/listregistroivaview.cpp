@@ -49,7 +49,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablasoportado->setDbFieldId ( "idregistroiva" );
     mui_tablasoportado->addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Id" ) );
     mui_tablasoportado->addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "Concepto contable" ) );
-    mui_tablasoportado->addSubFormHeader ( "baseimp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "idcuenta" ) );
+    mui_tablasoportado->addSubFormHeader ( "baseimp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "idcuenta" ) );
     mui_tablasoportado->addSubFormHeader ( "iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "IVA" ) );
     mui_tablasoportado->addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Fecha de factura" ) );
     mui_tablasoportado->addSubFormHeader ( "femisionregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "descripcioncuenta" ) );
@@ -73,7 +73,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablarepercutido->setDbFieldId ( "idregistroiva" );
     mui_tablarepercutido->addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Id" ) );
     mui_tablarepercutido->addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _( "Concepto Contable" ) );
-    mui_tablarepercutido->addSubFormHeader ( "baseimp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbNoView, _( "idcuenta" ) );
+    mui_tablarepercutido->addSubFormHeader ( "baseimp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "idcuenta" ) );
     mui_tablarepercutido->addSubFormHeader ( "iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "codigo" ) );
     mui_tablarepercutido->addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "tipocuenta" ) );
     mui_tablarepercutido->addSubFormHeader ( "femisionregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "descripcioncuenta" ) );

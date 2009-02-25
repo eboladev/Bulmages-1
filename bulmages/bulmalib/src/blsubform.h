@@ -49,11 +49,11 @@ public:
     /** Opciones para la columna del SubFormulario
     - DbNone . Opciones por defecto.
     - DbReadOnly . La columna es de solo lectura.
-    - DbNoView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
+    - DbHideView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
     - DbNoWrite . El usuario no puede escribir en esta columna.
-    - DbBlockView . El usuario no podrá ver esta columna ni aun configurandola
+    - DbDisableView . El usuario no podrá ver esta columna ni aun configurandola
     */
-    enum DbOptions {DbNone = 0, DbReadOnly = 1, DbNoView = 2, DbNoWrite = 4, DbBlockView = 8};
+    enum DbOptions {DbNone = 0, DbReadOnly = 1, DbHideView = 2, DbNoWrite = 4, DbDisableView = 8};
 
 protected:
     QString m_nomcampo;   ///< El nombre de la cabecera en el recordset
@@ -67,7 +67,7 @@ public:
     ~BlSubFormHeader();
     unsigned int options();
     unsigned int restricciones();
-    BlDbField::DbType type();
+    BlDbField::DbType dbFieldType();
     QString nompresentacion();
     int restrictcampo();
     QString nomcampo();

@@ -552,7 +552,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->type() == BlDbField::DbInt) {
+        //if (linea->dbFieldType() == BlDbField::DbInt) {
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
         QLineEdit *editor = new QLineEdit ( parent );
@@ -622,7 +622,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         model->setData ( index, value );
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->type() == BlDbField::DbInt) {
+        //if (linea->dbFieldType() == BlDbField::DbInt) {
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->interpretText();
         //    int value = spinBox->value();
@@ -682,7 +682,7 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         ( ( QLineEdit * ) bf ) ->selectAll();
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
-        //if (linea->type() == BlDbField::DbInt) {
+        //if (linea->dbFieldType() == BlDbField::DbInt) {
         //    int value = index.model()->data(index, Qt::DisplayRole).toInt();
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->setValue(value);

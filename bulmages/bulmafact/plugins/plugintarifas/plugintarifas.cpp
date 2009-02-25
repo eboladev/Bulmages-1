@@ -179,11 +179,11 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setMainCompany ( art->mainCompany() );
     l->setDbTableName ( "variaciontarifa" );
     l->setDbFieldId ( "idarticulo" );
-    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite , _( "ID variacion tarifa" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, _( "ID articulo" ) );
-    l->addSubFormHeader ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoView, _( "ID tarifa" ) );
+    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _( "ID variacion tarifa" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "ID articulo" ) );
+    l->addSubFormHeader ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "ID tarifa" ) );
     l->addSubFormHeader ( "nomtarifa", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Tarifa" ) );
-    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoView, _( "ID almacen" ) );
+    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "ID almacen" ) );
     l->addSubFormHeader ( "nomalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Almacen" ) );
     l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad mayor o igual que" ) );
     l->addSubFormHeader ( "porcentajevariacion", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Porcentaje variacion" ) );

@@ -276,7 +276,7 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent 
     _depura ( "InventariosSubForm::InventariosSubForm", 0 );
     setDbTableName ( "inventario" );
     setDbFieldId ( "idinventario" );
-    addSubFormHeader ( "idinventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoView, _( "Id inventario" ) );
+    addSubFormHeader ( "idinventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _( "Id inventario" ) );
     addSubFormHeader ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del inventario" ) );
     addSubFormHeader ( "fechainventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha del inventario" ) );
     setinsercion ( FALSE );

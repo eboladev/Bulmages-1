@@ -141,7 +141,7 @@ Tiene especial intereses con los campos checkables ya que su tratamiento no es d
 void BlDbSubFormField::refresh()
 {
     _depura ( "BlDbSubFormField::refresh", 0 );
-    if ( this->type() == BlDbField::DbBoolean )
+    if ( this->dbFieldType() == BlDbField::DbBoolean )
         BlDbField::set ( checkState() == Qt::Checked ? "TRUE" : "FALSE" );
     else
         BlDbField::set ( text() );
@@ -162,18 +162,22 @@ int BlDbSubFormField::set ( QString val )
     _depura ( "BlDbSubFormField::set", 0, nomcampo() + " = " + val );
     BlDbField::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
-    if ( type() == BlDbField::DbBoolean ) {
+
+
+    if ( dbFieldType() == BlDbField::DbBoolean ) {
         if ( restrictcampo() == BlSubFormHeader::DbNoWrite ) {
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
+	
+	
         if ( val == "TRUE" || val == "t" ) {
             setCheckState ( Qt::Checked );
         } else {
             setCheckState ( Qt::Unchecked );
         } // end if
-    } else if ( type() == BlDbField::DbNumeric && importe.exactMatch ( val ) ) {
+    } else if ( dbFieldType() == BlDbField::DbNumeric && importe.exactMatch ( val ) ) {
         setText ( valorcampo() );
-    } else if ( type() == BlDbField::DbDate ) {
+    } else if ( dbFieldType() == BlDbField::DbDate ) {
         setText ( val.left ( 10 ) );
     } else {
         setText ( valorcampo() );
@@ -194,18 +198,18 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
     _depura ( "BlDbSubFormField::operator <", 0, text() );
     BlDbSubFormField *ot = ( BlDbSubFormField * ) & other;
     DbType tip = ot->dbFieldType();
-    if ( tip == this->type() ) {
+    if ( tip == this->dbFieldType() ) {
         QString val = ot->valorcampo();
 
-        if ( this->type() == BlDbField::DbNumeric || this->type() == BlDbField::DbInt ) {
-            _depura ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->type() ) );
+        if ( this->dbFieldType() == BlDbField::DbNumeric || this->dbFieldType() == BlDbField::DbInt ) {
+            _depura ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
             double db1 = this->valorcampo().toDouble();
             double db2 = val.toDouble();
             return ( db1 < db2 );
         } // end if
 
-        if ( this->type() == BlDbField::DbDate ) {
-            _depura ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->type() ) );
+        if ( this->dbFieldType() == BlDbField::DbDate ) {
+            _depura ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
             QDate fech = normalizafecha ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
             QDate fech1 = normalizafecha ( val );
@@ -213,8 +217,8 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
             return ( db1 < db2 );
         } // end if
 
-        if ( this->type() == BlDbField::DbVarChar ) {
-            _depura ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->type() ) );
+        if ( this->dbFieldType() == BlDbField::DbVarChar ) {
+            _depura ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
             return ( this->valorcampo() < val );
         } // end if
         _depura ( "tipo desconocido", 0 );

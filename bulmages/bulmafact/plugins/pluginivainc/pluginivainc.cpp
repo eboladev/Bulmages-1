@@ -92,7 +92,7 @@ int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 
 
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *l) {
-	l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNoView, "PVP IVA Inc" );
+	l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, "PVP IVA Inc" );
     return 0;
 }
 

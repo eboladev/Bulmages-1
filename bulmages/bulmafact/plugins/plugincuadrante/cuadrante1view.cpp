@@ -72,9 +72,9 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "nomtrabajador",  BlDbField::DbVarChar, BlDbField::DbNoSave,     BlSubFormHeader::DbNone,                         _( "Nombre Trabajador" ) );
         mui_list->addSubFormHeader ( "horainhorario",  BlDbField::DbVarChar, BlDbField::DbNotNull,    BlSubFormHeader::DbNone,                         _( "Hora Inicio" ) );
         mui_list->addSubFormHeader ( "horafinhorario", BlDbField::DbVarChar, BlDbField::DbNotNull,    BlSubFormHeader::DbNone,                         _( "Hora Fin" ) );
-        mui_list->addSubFormHeader ( "idcuadrante",    BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite,  _( "ID Cuadrante" ) );
+        mui_list->addSubFormHeader ( "idcuadrante",    BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  _( "ID Cuadrante" ) );
         mui_list->addSubFormHeader ( "idtrabajador",   BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbNone,  _( "ID trabajador" ) );
-        mui_list->addSubFormHeader ( "idhorario",      BlDbField::DbInt,     BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite,  _( "ID horario" ) );
+        mui_list->addSubFormHeader ( "idhorario",      BlDbField::DbInt,     BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  _( "ID horario" ) );
         mui_list->setinsercion ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );

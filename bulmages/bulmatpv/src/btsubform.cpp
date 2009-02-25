@@ -337,7 +337,7 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
                 return editor;
             } else  {
         //        QWidget *it = QItemDelegate::createEditor(parent, option, index);
-        //        if (linea->type() == DbInt) {
+        //        if (linea->dbFieldType() == DbInt) {
                     /// es un numero y se alinea a la derecha.
         //        } else {
          

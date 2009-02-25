@@ -92,10 +92,10 @@ unsigned int BlSubFormHeader::restricciones()
 /**
 \return
 **/
-BlDbField::DbType BlSubFormHeader::type()
+BlDbField::DbType BlSubFormHeader::dbFieldType()
 {
-    _depura ( "BlSubFormHeader::tipo", 0 );
-    _depura ( "END BlSubFormHeader::tipo", 0 );
+    _depura ( "BlSubFormHeader::dbFieldType", 0 );
+    _depura ( "END BlSubFormHeader::dbFieldType", 0 );
     return m_tipo;
 
 }
@@ -336,12 +336,12 @@ void BlSubForm::cargaSpecs()
                     opciones |= BlSubFormHeader::DbNone;
                 } else if ( topci == "DBREADONLY" ) {
                     opciones |= BlSubFormHeader::DbReadOnly;
-                } else if ( topci == "DBNOVIEW" ) {
-                    opciones |= BlSubFormHeader::DbNoView;
+                } else if ( topci == "DBHIDEVIEW" ) {
+                    opciones |= BlSubFormHeader::DbHideView;
                 } else if ( topci == "DBNOWRITE" ) {
                     opciones |= BlSubFormHeader::DbNoWrite;
-                } else if ( topci == "DBBLOCKVIEW" ) {
-                    opciones |= BlSubFormHeader::DbBlockView;
+                } else if ( topci == "DBDISABLEVIEW" ) {
+                    opciones |= BlSubFormHeader::DbDisableView;
                 } // end if
                 opci = opci.nextSiblingElement ( "OPTIONSHEADER" );
             } // end while
@@ -860,7 +860,7 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
     BlSubFormHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
-        rec->addDbField ( linea->nomcampo(), linea->type(), linea->restricciones(), linea->nompresentacion() );
+        rec->addDbField ( linea->nomcampo(), linea->dbFieldType(), linea->restricciones(), linea->nompresentacion() );
     } // end for
 
     BlDbSubFormField *camp;
@@ -872,14 +872,14 @@ BlDbSubFormRecord *BlSubForm::newDbSubFormRecord()
 
         if ( ! ( head->options() & BlSubFormHeader::DbNoWrite ) )
             flags |= Qt::ItemIsEditable;
-        if ( head->type() == BlDbField::DbBoolean ) {
+        if ( head->dbFieldType() == BlDbField::DbBoolean ) {
             flags |= Qt::ItemIsUserCheckable;
         } // end if
 
         camp->setFlags ( flags );
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
-        if ( head->type() == BlDbField::DbInt || head->type() == BlDbField::DbNumeric || head->type() == BlDbField::DbDate ) {
+        if ( head->dbFieldType() == BlDbField::DbInt || head->dbFieldType() == BlDbField::DbNumeric || head->dbFieldType() == BlDbField::DbDate ) {
             camp->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         } else {
             camp->setTextAlignment ( Qt::AlignLeft | Qt::AlignVCenter );
@@ -937,7 +937,7 @@ void BlSubForm::pintaCabeceras()
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
         linea = m_lcabecera.at ( i );
         headers << linea->nompresentacion();
-        if ( linea->options() & BlSubFormHeader::DbNoView ) {
+        if ( linea->options() & BlSubFormHeader::DbHideView ) {
             mui_list->hideColumn ( i );
         } else {
             mui_list->showColumn ( i );
@@ -973,7 +973,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col )
         } // end if
         linea = m_lcabecera.at ( ncol );
         invalido = FALSE;
-        if ( linea->options() & BlSubFormHeader::DbNoView )
+        if ( linea->options() & BlSubFormHeader::DbHideView )
             invalido = TRUE;
         if ( linea->options() & BlSubFormHeader::DbNoWrite )
             invalido = TRUE;
@@ -1007,7 +1007,7 @@ void BlSubForm::situarse1 ( unsigned int row, unsigned int col )
         } // end if
         linea = m_lcabecera.at ( ncol );
         invalido = FALSE;
-        if ( linea->options() & BlSubFormHeader::DbNoView )
+        if ( linea->options() & BlSubFormHeader::DbHideView )
             invalido = TRUE;
         if ( linea->options() & BlSubFormHeader::DbNoWrite )
             invalido = TRUE;
@@ -1505,8 +1505,8 @@ bool BlSubForm::campoCompleto ( int row )
         header = m_lcabecera.at ( i );
         if ( camp->restrictcampo() & BlDbField::DbNotNull
                 && camp->text() == ""
-                && ! ( header->options() & BlSubFormHeader::DbNoView )
-                && camp->type() != BlDbField::DbBoolean ) {
+                && ! ( header->options() & BlSubFormHeader::DbHideView )
+                && camp->dbFieldType() != BlDbField::DbBoolean ) {
             _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
             return FALSE;
         } // end if
@@ -1635,14 +1635,14 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
     BlTableWidgetItem *it = new BlTableWidgetItem ( "" );
     it->setFlags ( Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
 
-    if ( opt & BlSubFormHeader::DbNoView ) {
+    if ( opt & BlSubFormHeader::DbHideView ) {
         mui_list->hideColumn ( mui_listcolumnas->rowCount() - 1 );
         it->setCheckState ( Qt::Unchecked );
     } else {
         it->setCheckState ( Qt::Checked );
     } // end if
 
-    if ( opt & BlSubFormHeader::DbBlockView ) {
+    if ( opt & BlSubFormHeader::DbDisableView ) {
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
@@ -2188,7 +2188,7 @@ QString BlSubForm::imprimir()
             if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 QString restante;
                 BlDbSubFormField *valor = ( BlDbSubFormField * ) mui_list->item ( i, j );
-                if ( valor->type() & BlDbField::DbNumeric )
+                if ( valor->dbFieldType() & BlDbField::DbNumeric )
                     fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString ( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
                 else
                     fitxersortidarml += "    <td>" + XMLProtect ( valor->text() ) + "</td>\n";

@@ -44,18 +44,18 @@ ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : BcSubForm (
     setFileConfig ( "ExtractoSubForm" );
     setDbFieldId ( "idapunte" );
     addSubFormHeader ( "punteo", BlDbField::DbBoolean, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Punteo" ) );
-    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbBlockView, _( "Fecha" ) );
+    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _( "Fecha" ) );
     addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Cuenta" ) );
-    addSubFormHeader ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbBlockView, _( "Asiento" ) );
+    addSubFormHeader ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _( "Asiento" ) );
     addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
     addSubFormHeader ( "descripcionapunte", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion Apunte" ) );
     addSubFormHeader ( "descripcionasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion Asiento" ) );
     addSubFormHeader ( "conceptocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Concepto" ) );
-    addSubFormHeader ( "debe", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbBlockView, _( "Debe" ) );
-    addSubFormHeader ( "haber", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbBlockView, _( "Haber" ) );
+    addSubFormHeader ( "debe", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _( "Debe" ) );
+    addSubFormHeader ( "haber", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbDisableView, _( "Haber" ) );
     addSubFormHeader ( "saldo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Saldo" ) );
 
-    addSubFormHeader ( "idapunte", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoView | BlSubFormHeader::DbNoWrite, _( "idapunte" ) );
+    addSubFormHeader ( "idapunte", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "idapunte" ) );
     addSubFormHeader ( "codigoborrador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "codigoborrador" ) );
     addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "idasiento" ) );
     addSubFormHeader ( "iddiario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "iddiario" ) );
