@@ -314,8 +314,8 @@ void BlSubForm::cargaSpecs()
                     restricciones |= BlDbField::DbPrimaryKey;
                 } else if ( trestrict == "DBNOSAVE" ) {
                     restricciones |= BlDbField::DbNoSave;
-                } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= BlDbField::DbAuto;
+//                } else if ( trestrict == "DBAUTO" ) {
+//                    restricciones |= BlDbField::DbAuto;
                 } else if ( trestrict == "DBAUTO" ) {
                     restricciones |= BlDbField::DbAuto;
                 } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
@@ -1631,8 +1631,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
     BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
     mui_listcolumnas->insertRow ( mui_listcolumnas->rowCount() );
-    /// 19/07/2007
-    /// Cambiado QTableWidgetItem por BlTableWidgetItem para usar nuevas funcionalidades.
+
     BlTableWidgetItem *it = new BlTableWidgetItem ( "" );
     it->setFlags ( Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
 
