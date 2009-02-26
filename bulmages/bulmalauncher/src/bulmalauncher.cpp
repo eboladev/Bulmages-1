@@ -21,13 +21,15 @@
 #include <unistd.h>
 
 #include <QtGui>
+#include <QObject>
 
 #include "bulmalauncher.h"
 
 
 BulmaLauncher::BulmaLauncher()
 {
-    setWindowTitle("BulmaLauncher");
+    setupUi(this);
+    setWindowTitle("Lanzador BulmaGes");
 
     createTrayIcon();
     trayIcon->setIcon(QIcon(":/images/iconbulmafact.png"));
@@ -37,6 +39,41 @@ BulmaLauncher::BulmaLauncher()
 
 BulmaLauncher::~BulmaLauncher()
 {
+}
+
+
+void BulmaLauncher::on_mui_lanzabulmacont_clicked() {
+    launchBulmaCont();
+}
+
+
+void BulmaLauncher::on_mui_lanzabulmafact_clicked() {
+    launchBulmaFact();
+}
+
+
+void BulmaLauncher::on_mui_lanzabulmatpv_clicked() {
+    launchBulmaTPV();
+}
+
+
+void BulmaLauncher::on_mui_lanzabulmasetup_clicked() {
+    launchBulmaSetup();
+}
+
+
+void BulmaLauncher::on_mui_cerrar_clicked() {
+    hide();
+}
+
+
+void BulmaLauncher::activado(QSystemTrayIcon::ActivationReason reason) {
+
+    if (reason == QSystemTrayIcon::Trigger) {
+	// Click boton izquierdo
+	show();
+    } // end if
+
 }
 
 
@@ -70,29 +107,36 @@ void BulmaLauncher::createTrayIcon()
 
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
+
+    connect( trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(activado(QSystemTrayIcon::ActivationReason)) );
+
 }
 
 
 void BulmaLauncher::launchBulmaCont()
 {
+    hide();
     runCommand("bulmacont");
 }
 
 
 void BulmaLauncher::launchBulmaFact()
 {
+    hide();
     runCommand("bulmafact");
 }
 
 
 void BulmaLauncher::launchBulmaTPV()
 {
+    hide();
     runCommand("bulmatpv");
 }
 
 
 void BulmaLauncher::launchBulmaSetup()
 {
+    hide();
     runCommand("bulmasetup");
 }
 

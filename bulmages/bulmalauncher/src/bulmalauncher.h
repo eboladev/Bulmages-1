@@ -45,8 +45,10 @@
 #include <QSystemTrayIcon>
 #include <QDialog>
 
+#include "ui_bulmalauncherbase.h"
 
-class BulmaLauncher : public QDialog
+
+class BulmaLauncher : public QDialog, private Ui::BulmaLauncherBase
 {
     Q_OBJECT
 
@@ -61,10 +63,16 @@ private:
     void runCommand(QString command);
 
 private slots:
+    void activado(QSystemTrayIcon::ActivationReason reason);
     void launchBulmaFact();
     void launchBulmaCont();
     void launchBulmaTPV();
     void launchBulmaSetup();
+    void on_mui_lanzabulmacont_clicked();
+    void on_mui_lanzabulmafact_clicked();
+    void on_mui_lanzabulmatpv_clicked();
+    void on_mui_lanzabulmasetup_clicked();
+    void on_mui_cerrar_clicked();
 };
 
 #endif

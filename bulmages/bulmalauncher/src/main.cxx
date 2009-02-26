@@ -55,7 +55,6 @@ int main ( int argc, char **argv )
     }
     QApplication::setQuitOnLastWindowClosed(false);
 
-
     BulmaLauncher blauncher;
     blauncher.hide();
 
