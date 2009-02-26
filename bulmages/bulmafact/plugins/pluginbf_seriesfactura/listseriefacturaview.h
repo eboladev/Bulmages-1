@@ -31,7 +31,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "bfsubform.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
@@ -60,7 +60,7 @@ public slots:
 
 /// Muestra y administra la ventana con la lista de series de facturas.
 /** */
-class ListSerieFacturaView : public FichaBf, public Ui_ListSerieFacturaBase
+class ListSerieFacturaView : public BfForm, public Ui_ListSerieFacturaBase
 {
     Q_OBJECT
 

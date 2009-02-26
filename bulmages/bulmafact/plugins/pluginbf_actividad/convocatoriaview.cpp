@@ -37,7 +37,7 @@
     Mete la ventana en el workSpace.
 */
 ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ConvocatoriaView::ConvocatoriaView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -100,7 +100,7 @@ void ConvocatoriaView::imprimir()
     if ( res != 0 ) {
         return;
     } // end if
-    FichaBf::imprimir();
+    BfForm::imprimir();
 
     _depura ( "END ConvocatoriaView::imprimir", 0 );
 }

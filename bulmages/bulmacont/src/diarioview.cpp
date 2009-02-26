@@ -46,7 +46,7 @@
 \param parent
 **/
 DiarioView::DiarioView ( BcCompany  *emp, QWidget *parent, int )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "DiarioView::DiarioView", 0 );
     setupUi ( this );

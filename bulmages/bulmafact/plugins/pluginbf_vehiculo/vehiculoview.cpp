@@ -30,7 +30,7 @@
 \param parent
 **/
 VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
-        : FichaBf ( emp, parent )
+        : BfForm ( emp, parent )
 {
     _depura ( "VehiculoView::VehiculoView", 0 );
     this->setAttribute ( Qt::WA_DeleteOnClose );

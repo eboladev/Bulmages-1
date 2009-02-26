@@ -44,7 +44,7 @@
 \param parent
 **/
 Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "Z2ZView::Z2ZView", 0 );
     setupUi ( this );

@@ -70,7 +70,7 @@ miQTreeWidgetItem::~miQTreeWidgetItem()
 \param parent
 **/
 BbloqFecha::BbloqFecha ( BcCompany *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "BbloqFecha::BbloqFecha", 0 );
 

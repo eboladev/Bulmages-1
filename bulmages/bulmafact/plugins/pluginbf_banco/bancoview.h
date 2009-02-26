@@ -25,13 +25,13 @@
 #include "blfunctions.h"
 #include <ui_bancobase.h>
 
-#include "fichabf.h"
+#include "bfform.h"
 #include "blpostgresqlclient.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un banco.
 /** */
-class BancoView : public FichaBf, private Ui_BancoBase
+class BancoView : public BfForm, private Ui_BancoBase
 {
     Q_OBJECT
 

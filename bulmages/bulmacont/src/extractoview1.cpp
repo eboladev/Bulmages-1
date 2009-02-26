@@ -47,7 +47,7 @@
 \param emp
 \param parent
 **/
-extractoview1::extractoview1 ( BcCompany *emp, QWidget *parent, int ) : FichaBc ( emp, parent )
+extractoview1::extractoview1 ( BcCompany *emp, QWidget *parent, int ) : BcForm ( emp, parent )
 {
     _depura ( "extractoview1::extractoview1", 0 );
     setupUi ( this );

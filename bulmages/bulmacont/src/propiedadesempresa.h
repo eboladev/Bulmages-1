@@ -28,7 +28,7 @@
 
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "fichabc.h"
+#include "bcform.h"
 #include "bcsubform.h"
 
 
@@ -57,7 +57,7 @@ public slots:
 sobre la tabla configuracion en dicha empresa
  @TODO: Como estan duplicadas estas tablas tanto en bulmafact conmo en bulmacont se podria hacer una abstraccion en bulmalib.
 */
-class propiedadesempresa : public FichaBc, public Ui_PropiedadesEmpresaBase
+class propiedadesempresa : public BcForm, public Ui_PropiedadesEmpresaBase
 {
     Q_OBJECT
 

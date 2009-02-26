@@ -29,7 +29,7 @@
 \param parent
 **/
 ComercialClienteView::ComercialClienteView ( QWidget *parent )
-        : FichaBf ( NULL, parent )
+        : BfForm ( NULL, parent )
 {
     _depura ( "ComercialClienteView::ComercialClienteView", 0 );
     setupUi ( this );

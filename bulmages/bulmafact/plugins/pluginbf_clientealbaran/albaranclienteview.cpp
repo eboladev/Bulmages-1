@@ -59,7 +59,7 @@
 \return
 **/
 AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "AlbaranClienteView::AlbaranClienteView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

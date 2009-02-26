@@ -33,7 +33,7 @@
 \param comp
 \param parent
 **/
-Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
+Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "Contrato::Contrato", 0 );
     setTitleName ( _( "Contrato" ) );

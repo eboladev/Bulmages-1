@@ -31,7 +31,7 @@
 \param comp
 \param parent
 **/
-Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
+Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "Inventario::Inventario", 0 );
     companyact = comp;

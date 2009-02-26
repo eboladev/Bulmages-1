@@ -43,7 +43,7 @@
 \param parent
 **/
 ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ListTasaIVAView::ListTasaIVAView", 1 );
     setTitleName ( _( "Tasa IVA" ) );

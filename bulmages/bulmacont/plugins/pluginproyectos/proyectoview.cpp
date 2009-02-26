@@ -40,7 +40,7 @@
 \param parent
 **/
 ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
-        : FichaBc ( comp, parent )
+        : BcForm ( comp, parent )
 {
     _depura ( "ProyectoView::ProyectoView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

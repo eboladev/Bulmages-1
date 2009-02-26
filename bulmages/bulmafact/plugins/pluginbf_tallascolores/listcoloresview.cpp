@@ -43,7 +43,7 @@
 **/
 
 ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ListColoresView::ListColoresView", 1 );
     setTitleName ( _( "Colores" ) );

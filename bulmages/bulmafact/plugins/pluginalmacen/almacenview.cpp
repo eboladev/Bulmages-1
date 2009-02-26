@@ -41,7 +41,7 @@
 \param parent
 **/
 AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "AlmacenView::AlmacenView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

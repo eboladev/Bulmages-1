@@ -24,7 +24,7 @@
 
 #include "blfunctions.h"
 #include "ui_familiasbase.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
@@ -32,7 +32,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class FamiliasView : public FichaBf, public Ui_familiasbase
+class FamiliasView : public BfForm, public Ui_familiasbase
 {
     Q_OBJECT
 

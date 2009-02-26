@@ -42,7 +42,7 @@
 \param parent
 **/
 ZView::ZView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ZView::ZView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

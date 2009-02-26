@@ -39,7 +39,7 @@
 \param parent
 **/
 TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "TarifaView::INIT_constructor()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

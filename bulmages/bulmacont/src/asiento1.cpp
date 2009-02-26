@@ -36,7 +36,7 @@
 \param comp
 \param parent
 **/
-Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, parent )
+Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
 {
     _depura ( "Asiento1::Asiento1", 0 );
     setTitleName ( _( "Asiento Contable" ) );

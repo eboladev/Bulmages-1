@@ -30,13 +30,13 @@
 
 #include "ui_canalbase.h"
 #include "dialogchanges.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class BcCompany;
 
 
-class canalview : public FichaBc, public Ui_canaldlg
+class canalview : public BcForm, public Ui_canaldlg
 {
     Q_OBJECT
 

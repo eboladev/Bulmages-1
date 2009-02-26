@@ -32,7 +32,7 @@
 \param comp
 \param parent
 **/
-IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
+IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "IncidenciaComercial::IncidenciaComercial", 0 );
     setTitleName ( _( "Incidencia comercial" ) );

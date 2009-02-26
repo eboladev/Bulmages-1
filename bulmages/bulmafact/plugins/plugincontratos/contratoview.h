@@ -32,7 +32,7 @@
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class company;

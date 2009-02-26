@@ -29,7 +29,7 @@
 \param fl
 **/
 CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
-        : FichaBc ( emp, parent, fl )
+        : BcForm ( emp, parent, fl )
 {
     _depura ( "CuentaView::CuentaView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

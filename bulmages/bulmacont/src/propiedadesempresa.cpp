@@ -31,7 +31,7 @@
 \param parent
 **/
 propiedadesempresa::propiedadesempresa ( BcCompany *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "propiedadesempresa::propiedadesempresa", 0 );
 

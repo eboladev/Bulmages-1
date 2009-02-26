@@ -43,7 +43,7 @@
 \param parent
 **/
 ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ListTipoIVAView::ListTipoIVAView", 1 );
     setTitleName ( _( "Tipo IVA" ) );

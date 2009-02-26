@@ -35,7 +35,7 @@
 #include "busquedatrabajador.h"
 #include "dialogchanges.h"
 #include "blfixed.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class company;
@@ -43,7 +43,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
 /** */
-class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase
+class PedidoProveedorView : public BfForm, public Ui_PedidoProveedorBase
 {
     Q_OBJECT
 

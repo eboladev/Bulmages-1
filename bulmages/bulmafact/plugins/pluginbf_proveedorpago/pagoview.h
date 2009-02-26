@@ -30,7 +30,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
@@ -38,7 +38,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
 /** */
-class PagoView : public FichaBf, public Ui_PagoBase
+class PagoView : public BfForm, public Ui_PagoBase
 {
     Q_OBJECT
 

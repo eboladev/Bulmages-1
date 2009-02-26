@@ -44,7 +44,7 @@
 \param parent
 **/
 CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "CuadranteDiarioView::CuadranteDiarioView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

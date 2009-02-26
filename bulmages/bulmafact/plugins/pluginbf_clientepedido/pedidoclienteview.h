@@ -35,14 +35,14 @@
 #include "busquedatrabajador.h"
 #include "dialogchanges.h"
 #include "blfixed.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 #include "ui_pedidoclientebase.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
-class PedidoClienteView : public FichaBf, public Ui_PedidoClienteBase
+class PedidoClienteView : public BfForm, public Ui_PedidoClienteBase
 {
     Q_OBJECT
 

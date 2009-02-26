@@ -28,12 +28,12 @@
 #include "listiva.h"
 #include "listlinprevcobro.h"
 #include "bccompany.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 /// Clase que hace de intermediaria entre la tabla de presupuesto de la base de datos y
 /// el programa.
-class RegistroIva : public FichaBc
+class RegistroIva : public BcForm
 {
 protected:
     BcSubForm *m_lineas;

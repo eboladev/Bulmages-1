@@ -43,7 +43,7 @@
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 #include "ui_aplinteligentesbase.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
@@ -61,7 +61,7 @@
     al asiento abierto.
     En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
 */
-class aplinteligentesview : public FichaBc, public Ui_AplInteligentesBase
+class aplinteligentesview : public BcForm, public Ui_AplInteligentesBase
 {
     Q_OBJECT
 

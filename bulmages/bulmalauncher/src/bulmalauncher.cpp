@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <unistd.h>
+#include <stdlib.h>
 
 #include <QtGui>
 #include <QObject>
@@ -137,16 +138,13 @@ void BulmaLauncher::launchBulmaTPV()
 void BulmaLauncher::launchBulmaSetup()
 {
     hide();
-    runCommand("bulmasetup");
+    runCommand("kdesu -c bulmasetup --");
 }
 
 
 void BulmaLauncher::runCommand(QString command)
 {
-    pid_t pid = fork();
-    if ( pid == 0 ) {
-        // In the child, do exec  
-	execvp(command.toAscii(), NULL);
-    } // end if
+    command = command + QString(" &");
+    system(command.toAscii().constData());
 }
 

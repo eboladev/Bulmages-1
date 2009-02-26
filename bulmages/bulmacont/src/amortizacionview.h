@@ -26,7 +26,7 @@
 #include "dialogchanges.h"
 #include "bcsubform.h"
 #include "bldb.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class empresa;
@@ -49,7 +49,7 @@ public:
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class AmortizacionView : public FichaBc, public Ui_AmortizacionBase
+class AmortizacionView : public BcForm, public Ui_AmortizacionBase
 {
     Q_OBJECT
 

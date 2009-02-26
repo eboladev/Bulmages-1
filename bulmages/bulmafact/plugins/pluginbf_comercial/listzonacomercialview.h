@@ -30,7 +30,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "bfsubform.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class ListZonaComercialSubForm : public BfSubForm
@@ -52,7 +52,7 @@ public slots:
 #include "ui_listzonacomercialbase.h"
 
 
-class ListZonaComercialView : public FichaBf, public Ui_ListZonaComercialBase
+class ListZonaComercialView : public BfForm, public Ui_ListZonaComercialBase
 {
     Q_OBJECT
 

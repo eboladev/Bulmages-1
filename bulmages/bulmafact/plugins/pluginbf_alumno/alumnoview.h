@@ -31,7 +31,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
@@ -42,7 +42,7 @@ class BfCompany;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class AlumnoView : public FichaBf, public Ui_AlumnoBase
+class AlumnoView : public BfForm, public Ui_AlumnoBase
 {
     Q_OBJECT
 

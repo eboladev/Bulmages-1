@@ -23,7 +23,7 @@
 #include <QToolButton>
 
 #include "pluginclientprov.h"
-#include "fichabf.h"
+#include "bfform.h"
 #include "blfunctions.h"
 
 
@@ -54,7 +54,7 @@ int BlForm_guardar_Post ( BlForm *l )
 	bool guardar = FALSE;
 	if (l->tableName() == "cliente") {
 
-	FichaBf *fich = new FichaBf((BfCompany *)l->mainCompany(), l);
+	BfForm *fich = new BfForm((BfCompany *)l->mainCompany(), l);
         fich->setDbTableName ( "proveedor" );
         fich->setDbFieldId ( "idproveedor" );
         fich->addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _("ID proveedor") );

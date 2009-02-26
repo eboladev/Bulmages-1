@@ -24,10 +24,10 @@
 #include <QString>
 
 #include "bfcompany.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
-class RutaComercial : public FichaBf
+class RutaComercial : public BfForm
 {
 
 public:

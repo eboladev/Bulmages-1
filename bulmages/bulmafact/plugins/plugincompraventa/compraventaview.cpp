@@ -53,7 +53,7 @@
 \return
 **/
 CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "CompraVentaView::CompraVentaView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -693,7 +693,7 @@ void CompraVentaView::generarFactura()
 
 void CompraVentaView::imprimir() {
 
-    _depura ( "FichaBf::imprimir", 0 );
+    _depura ( "BfForm::imprimir", 0 );
     try {
 
         /// Si devuelve 0 significa que el archivo RML se ha generado mal
@@ -702,7 +702,7 @@ void CompraVentaView::imprimir() {
             invocaPDF ( "compraventa" );
         } // end if
 
-        _depura ( "END FichaBf::imprimir", 0 );
+        _depura ( "END BfForm::imprimir", 0 );
 
     } catch (int e) {
 	if (e == 100) {

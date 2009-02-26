@@ -43,7 +43,7 @@
 \param parent
 **/
 PagoView::PagoView ( BfCompany *comp, QWidget *parent )
-        :  FichaBf ( comp, parent )
+        :  BfForm ( comp, parent )
 {
     _depura ( "PagoView::PagoView", 0 );
     try {

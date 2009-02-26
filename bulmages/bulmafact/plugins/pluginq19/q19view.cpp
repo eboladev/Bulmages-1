@@ -37,7 +37,7 @@
     Mete la ventana en el workSpace.
 */
 Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "Q19View::Q19View", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

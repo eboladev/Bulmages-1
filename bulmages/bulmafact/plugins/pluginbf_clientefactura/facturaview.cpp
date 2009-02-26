@@ -49,7 +49,7 @@
 \param parent
 **/
 FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "FacturaView::FacturaView", 0 );
     setupUi ( this );
@@ -88,7 +88,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         mui_codigoserie_factura->setMainCompany ( comp );
         mui_reffactura->setMainCompany ( comp );
 
-        /// Inicializamos FichaBf.
+        /// Inicializamos BfForm.
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 

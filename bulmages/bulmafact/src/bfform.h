@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,34 +19,46 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FICHABC_H
-#define FICHABC_H
+#ifndef BFFORM_H
+#define BFFORM_H
 
 #include "blform.h"
-#include "bcsubform.h"
-#include "bccompany.h"
+#include "bfsubform.h"
+#include "bfcompany.h"
 
 
-/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
-    comunes a todas las pantallas.
-*/
-class FichaBc : public BlForm
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
+typedef QMap<QString, BlFixed> base;
+
+class BfForm : public BlForm
 {
     Q_OBJECT
 
 public:
-    /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
-    BcSubForm *m_listalineas;
+    BfSubForm *m_listalineas;
+    BfSubForm *m_listadescuentos;
 
 public:
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer
-    /// traspaso de mensajes.
-    BcCompany *mainCompany();
-    FichaBc ( BcCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0 );
-    virtual ~FichaBc();
-    void setListaLineas ( BcSubForm * form );
-    BcSubForm* listalineas();
-
+    BfCompany *mainCompany();
+    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    virtual ~BfForm();
+    void setListaLineas ( BfSubForm *form );
+    void setListaDescuentos ( BfSubForm *form );
+    BfSubForm* getlistalineas();
+    BfSubForm* getlistadescuentos();
+    virtual void imprimir();
+    virtual QString nombrePlantilla(void) ;
+    virtual int generaRML ( void );
+    virtual int generaRML ( const QString &arch );
+    virtual void calculaypintatotales();
+    virtual void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed ) {};
+    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
+    virtual void trataTagsBf( QString &buff, int tipoEscape = 0 );
+    virtual QString trataLineasDetalle ( const QString &det, int tipoEscape = 0 );
+    virtual QString trataLineasDescuento ( const QString &det, int tipoEscape = 0 );
+    virtual QString trataTotales ( const QString &det, int bimporeq = 1 );
+ 
 };
 
 #endif

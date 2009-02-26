@@ -48,7 +48,7 @@
 \param editmodo
 **/
 MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode editmodo )
-        : FichaBf ( comp, parent, 0 )
+        : BfForm ( comp, parent, 0 )
 {
     _depura ( "MovimientosView::MovimientosView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

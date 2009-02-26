@@ -31,7 +31,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "bfsubform.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class company;
@@ -57,7 +57,7 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListAlmacenView : public FichaBf, public Ui_ListAlmacenBase
+class ListAlmacenView : public BfForm, public Ui_ListAlmacenBase
 {
     Q_OBJECT
 

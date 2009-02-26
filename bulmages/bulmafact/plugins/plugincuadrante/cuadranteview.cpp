@@ -45,7 +45,7 @@
 \param parent
 **/
 CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "CuadranteView::CuadranteView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

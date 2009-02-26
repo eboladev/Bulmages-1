@@ -29,7 +29,7 @@
 \param parent
 **/
 canalview::canalview ( BcCompany  *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "canalview::canalview", 0 );
 

@@ -41,7 +41,7 @@
 \param parent
 **/
 PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "PedidoProveedorView::PedidoProveedorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

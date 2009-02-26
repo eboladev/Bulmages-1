@@ -32,7 +32,7 @@
 #include "blfunctions.h"
 
 
-class RutaComercialIncView : public FichaBf, public Ui_RutaComercialIncBase
+class RutaComercialIncView : public BfForm, public Ui_RutaComercialIncBase
 {
     Q_OBJECT
 

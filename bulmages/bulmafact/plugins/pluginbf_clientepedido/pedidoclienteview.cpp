@@ -45,7 +45,7 @@
 \return
 **/
 PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "PedidoClienteView::PedidoClienteView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

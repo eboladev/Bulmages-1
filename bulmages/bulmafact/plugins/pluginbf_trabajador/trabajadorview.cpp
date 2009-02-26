@@ -37,7 +37,7 @@
 \return
 **/
 TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
-        : FichaBf ( emp, parent )
+        : BfForm ( emp, parent )
 {
     _depura ( "TrabajadorView::TrabajadorView", 0 );
 

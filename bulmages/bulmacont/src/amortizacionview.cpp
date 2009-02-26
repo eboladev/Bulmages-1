@@ -36,7 +36,7 @@
 \param parent
 **/
 AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "AmortizacionView::AmortizacionView", 0 );
 

@@ -25,7 +25,7 @@
 #include <QString>
 
 #include "blfixed.h"
-#include "fichabc.h"
+#include "bcform.h"
 #include "listlinasiento1view.h"
 
 
@@ -34,7 +34,7 @@ class BcCompany ;
 
 /// Clase Asiento1.
 /** */
-class Asiento1 : public FichaBc
+class Asiento1 : public BcForm
 {
     Q_OBJECT
 

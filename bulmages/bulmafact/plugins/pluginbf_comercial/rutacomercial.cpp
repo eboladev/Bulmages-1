@@ -32,7 +32,7 @@
 \param comp
 \param parent
 **/
-RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
+RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
 
     _depura ( "RutaComercial::RutaComercial", 0 );

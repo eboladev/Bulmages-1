@@ -29,10 +29,10 @@
 #include "ui_proyectobase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
-class ProyectoView : public FichaBc, public Ui_ProyectoBase
+class ProyectoView : public BcForm, public Ui_ProyectoBase
 {
     Q_OBJECT
 

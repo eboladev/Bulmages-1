@@ -25,9 +25,9 @@
 
 #include <ui_efacturarecepcionbase.h>
 #include "bfcompany.h"
-#include "fichabf.h"
+#include "bfform.h"
 
-class EFacturaRecepcion : public FichaBf, public Ui_EFacturaRecepcionBase
+class EFacturaRecepcion : public BfForm, public Ui_EFacturaRecepcionBase
 {
     Q_OBJECT
 public:

@@ -43,7 +43,7 @@
 **/
 
 ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ListTallasView::ListTallasView", 1 );
     setTitleName ( _( "Tallas" ) );

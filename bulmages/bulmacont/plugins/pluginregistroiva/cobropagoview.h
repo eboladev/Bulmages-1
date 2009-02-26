@@ -27,7 +27,7 @@
 
 
 /// Listado de gestion de cobros y pagos.
-/// TODO: Esta clase debe derivar de FichaBc
+/// TODO: Esta clase debe derivar de BcForm
 class cobropagoview : public BlForm, public Ui_CobroPagoBase
 {
     Q_OBJECT

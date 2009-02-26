@@ -28,12 +28,12 @@
 #include "listcontrolstockview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 /// Administra los datos de inventario.
 /** */
-class Inventario : public FichaBf
+class Inventario : public BfForm
 {
 protected:
     ListControlStockView *listalineas;

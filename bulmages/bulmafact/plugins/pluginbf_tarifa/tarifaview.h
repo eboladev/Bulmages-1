@@ -26,10 +26,10 @@
 #include "ui_tarifabase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
-class TarifaView : public FichaBf, public Ui_TarifaBase
+class TarifaView : public BfForm, public Ui_TarifaBase
 {
     Q_OBJECT
 

@@ -66,7 +66,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
 		mui_idcliente->setTableName( "cliente" );
 		mui_idcliente->m_valores["cifcliente"] = "";
 		mui_idcliente->m_valores["nomcliente"] = "";
-        /// Inicializamos FichaBf
+        /// Inicializamos BfForm
         setListaLineas ( mui_lineas );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {

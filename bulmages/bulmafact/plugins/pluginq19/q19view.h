@@ -31,7 +31,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 #include "facturaslist.h"
 
 
@@ -41,9 +41,9 @@ class BfCompany;
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
     en dicha ventana.
-    Deriva de FichaBf para metodos comunes a todas las ventanas.
+    Deriva de BfForm para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class Q19View : public FichaBf, public Ui_Q19Base
+class Q19View : public BfForm, public Ui_Q19Base
 {
     Q_OBJECT
 

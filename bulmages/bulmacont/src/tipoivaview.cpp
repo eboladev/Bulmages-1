@@ -31,7 +31,7 @@
 \param parent
 **/
 tipoivaview::tipoivaview ( BcCompany *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "tipoivaview::tipoivaview", 0 );
     this->setAttribute ( Qt::WA_DeleteOnClose );

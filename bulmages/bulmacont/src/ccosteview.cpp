@@ -35,7 +35,7 @@
 \param parent
 **/
 ccosteview::ccosteview ( BcCompany  *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "ccosteview::ccosteview", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -185,7 +185,7 @@ void ccosteview::mostrarplantilla()
     QString query;
 
     _depura ( "mostrarplantilla", 2, QString::number ( idc_coste ) );
-    FichaBc::cargar ( QString::number ( idc_coste ) );
+    BcForm::cargar ( QString::number ( idc_coste ) );
 
     query = "SELECT * FROM c_costedist LEFT JOIN (SELECT idc_coste AS idcc, nombre AS nomc_coste FROM c_coste) AS t1 ON c_costedist.idc_Coste = t1.idcc WHERE iddestc_coste=" + QString::number ( idc_coste );
     mui_cdistribuidos->cargar ( query );
@@ -202,7 +202,7 @@ void ccosteview::mostrarplantilla()
 int ccosteview::guardar()
 {
     _depura ( "ccosteview::guardar", 0 );
-    FichaBc::guardar();
+    BcForm::guardar();
 
     mui_cdistribuidos->setColumnValue ( "iddestc_coste", QString::number ( idc_coste ) );
     mui_cdistribuidos->guardar();

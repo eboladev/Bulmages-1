@@ -33,14 +33,14 @@
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 #include "bfcompany.h"
 
 
 
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
-class Z2ZView : public FichaBf, public Ui_Z2ZBase
+class Z2ZView : public BfForm, public Ui_Z2ZBase
 {
     Q_OBJECT
 

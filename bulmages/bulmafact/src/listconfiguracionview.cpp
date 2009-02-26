@@ -43,7 +43,7 @@
 \param comp
 \param parent
 **/
-ListConfiguracionView::ListConfiguracionView ( BfCompany *comp, QWidget *parent ) : FichaBf ( comp, parent )
+ListConfiguracionView::ListConfiguracionView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "ListConfiguracionView::ListConfiguracionView", 1 );
     setupUi ( this );

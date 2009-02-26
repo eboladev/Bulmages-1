@@ -61,7 +61,7 @@
 \param parent
 **/
 BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     setupUi ( this );
     _depura ( "BalanceView::BalanceView", 0 );

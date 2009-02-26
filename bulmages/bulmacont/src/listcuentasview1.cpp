@@ -47,7 +47,7 @@
 \param editmode
 **/
 listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : FichaBc ( emp, parent, flag ), pgimportfiles ( emp )
+        : BcForm ( emp, parent, flag ), pgimportfiles ( emp )
 {
     _depura ( "listcuentasview1::listcuentasview1", 0 );
     setupUi ( this );

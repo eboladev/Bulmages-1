@@ -31,7 +31,7 @@
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "bfsubform.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de tasas de IVA.
@@ -54,7 +54,7 @@ public slots:
 
 /// Muestra y administra el listado de tasas de IVA.
 /** */
-class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase
+class ListTasaIVAView : public BfForm, public Ui_ListTasaIVABase
 {
     Q_OBJECT
 

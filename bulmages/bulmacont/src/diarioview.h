@@ -23,7 +23,7 @@
 #define DIARIOVIEW12_H
 
 #include "ui_diariobase.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class BcCompany;
@@ -31,7 +31,7 @@ class BcCompany;
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public FichaBc, public Ui::DiarioBase
+class DiarioView : public BcForm, public Ui::DiarioBase
 {
     Q_OBJECT
 

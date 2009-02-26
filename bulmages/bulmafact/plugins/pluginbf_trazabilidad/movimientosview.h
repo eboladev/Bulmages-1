@@ -25,7 +25,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 /// Administra el detalle del listado de facturas a clientes.
@@ -55,7 +55,7 @@ public slots:
 
 /// Administra el listado de facturas a clientes.
 /** */
-class MovimientosView : public FichaBf, public Ui_MovimientosBase
+class MovimientosView : public BfForm, public Ui_MovimientosBase
 {
     Q_OBJECT
 

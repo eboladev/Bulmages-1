@@ -42,7 +42,7 @@
 \param parent
 **/
 ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "INIT_ListSerieFacturaView::ListSerieFacturaView", 1 );
     setTitleName ( _( "Serie de Factura" ) );

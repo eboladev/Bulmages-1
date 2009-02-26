@@ -43,7 +43,7 @@
 \param parent
 **/
 ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ListAlmacenView::ListAlmacenView", 1 );
     setTitleName ( _( "Almacen" ) );

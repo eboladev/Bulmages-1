@@ -24,7 +24,7 @@
 
 #include "ui_cuadrantediariobase.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
@@ -32,8 +32,8 @@ class BfCompany;
 
 /** Ventana de cuadrantes
     Se encarga de la creacion de cuadrantes en la empresa, para ubicar empleados, etc etc etc
-    Deriva de FichaBf para metodos comunes a todas las fichas. */
-class CuadranteDiarioView : public FichaBf, public Ui_CuadranteDiarioBase
+    Deriva de BfForm para metodos comunes a todas las fichas. */
+class CuadranteDiarioView : public BfForm, public Ui_CuadranteDiarioBase
 {
     Q_OBJECT
 

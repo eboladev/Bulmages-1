@@ -26,13 +26,13 @@
 #include "blfixed.h"
 #include "bfcompany.h"
 #include "bldb.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 /// Administra los datos de una contrato a cliente.
 /** Intermedia entre la base de datos y la pantalla de presentacion.
 */
-class Contrato : public FichaBf
+class Contrato : public BfForm
 {
     Q_OBJECT
 

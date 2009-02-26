@@ -42,7 +42,7 @@
 \return
 **/
 ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ClienteView::ClienteView", 0 );
     setupUi ( this );

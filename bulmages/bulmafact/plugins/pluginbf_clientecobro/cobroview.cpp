@@ -37,7 +37,7 @@
     Mete la ventana en el workSpace.
 */
 CobroView::CobroView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "CobroView::CobroView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -102,7 +102,7 @@ int CobroView::trataTags ( QString &buff ) {
 
     // admitimos sustituciones , QUERY, IFACE, SETVAR... y los
     // nombres de campos de BD para cobros 
-    FichaBf::trataTags(buff);
+    BfForm::trataTags(buff);
 }
 
 QString CobroView::nombrePlantilla(void) 
@@ -126,7 +126,7 @@ void CobroView::imprimir()
     if ( res != 0 ) {
         return;
     } // end if
-    FichaBf::imprimir();
+    BfForm::imprimir();
 
     _depura ( "END CobroView::imprimir", 0 );
 }

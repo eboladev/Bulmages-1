@@ -37,7 +37,7 @@
 \return
 **/
 TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
-        : FichaBf ( emp, parent )
+        : BfForm ( emp, parent )
 {
     _depura ( "TipoActividadView::TipoActividadView", 0 );
 

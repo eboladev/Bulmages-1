@@ -34,7 +34,7 @@
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "ui_balancebase.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class intapunts3view;
@@ -50,7 +50,7 @@ class BcCompany ;
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
     presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
     determinado. */
-class BalanceView : public FichaBc, public Ui_BalanceBase
+class BalanceView : public BcForm, public Ui_BalanceBase
 {
     Q_OBJECT
 

@@ -32,14 +32,14 @@
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
-#include "fichabf.h"
+#include "bfform.h"
 #include "bfcompany.h"
 
 
 
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
-class FacturaView : public FichaBf, public Ui_FacturaBase
+class FacturaView : public BfForm, public Ui_FacturaBase
 {
     Q_OBJECT
 

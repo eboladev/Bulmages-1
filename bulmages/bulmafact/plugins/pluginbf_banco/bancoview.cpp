@@ -36,7 +36,7 @@
 \param parent
 **/
 BancoView::BancoView ( BfCompany *emp, QWidget *parent )
-        : FichaBf ( emp, parent )
+        : BfForm ( emp, parent )
 {
     _depura ( "BancoView::BancoView", 0 );
     setTitleName ( _( "Banco" ) );

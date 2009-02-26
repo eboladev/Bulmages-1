@@ -30,7 +30,7 @@
 
 
 #include "bfsubform.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 #include "ui_listtipostrabajobase.h"
@@ -39,7 +39,7 @@ class company;
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListTiposTrabajoView : public FichaBf, public Ui_ListTiposTrabajoBase
+class ListTiposTrabajoView : public BfForm, public Ui_ListTiposTrabajoBase
 {
     Q_OBJECT
 

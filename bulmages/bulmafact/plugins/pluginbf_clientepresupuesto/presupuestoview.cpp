@@ -47,7 +47,7 @@
 \return
 **/
 PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "Inicializacion de PresupuestoView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

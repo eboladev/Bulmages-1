@@ -25,13 +25,13 @@
 #include "dialogchanges.h"
 #include "ui_vehiculobase.h"
 #include "bldb.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class VehiculoView : public FichaBf, Ui_VehiculoBase
+class VehiculoView : public BfForm, Ui_VehiculoBase
 {
     Q_OBJECT
 

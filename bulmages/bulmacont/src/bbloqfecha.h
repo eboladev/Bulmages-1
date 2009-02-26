@@ -26,7 +26,7 @@
 
 #include "blfunctions.h"
 #include "ui_bbloqfechabase.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class BcCompany ;
@@ -43,7 +43,7 @@ public:
 };
 
 
-class BbloqFecha : public FichaBc, public Ui_BBloqFechaBase
+class BbloqFecha : public BcForm, public Ui_BBloqFechaBase
 {
     Q_OBJECT
 

@@ -49,7 +49,7 @@
 \param parent
 **/
 aplinteligentesview::aplinteligentesview ( BcCompany *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "aplinteligentesview::aplinteligentesview", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

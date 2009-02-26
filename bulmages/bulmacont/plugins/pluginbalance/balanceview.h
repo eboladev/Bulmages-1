@@ -30,7 +30,7 @@
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "listcuentasview1.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class BcCompany ;
@@ -42,7 +42,7 @@ class BcCompany ;
     Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
     ventana dise&ntilde;ada espec&iacute;ficamente para ello.
 */
-class BalanceView : public FichaBc, public Ui_BalanceBase
+class BalanceView : public BcForm, public Ui_BalanceBase
 {
     Q_OBJECT
 

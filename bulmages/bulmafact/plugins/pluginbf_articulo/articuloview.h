@@ -24,17 +24,17 @@
 
 #include "ui_articleeditbase.h"
 #include "blpostgresqlclient.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
 
 
 /** Esta clase controla la ventana de un articulo.
-    Deriva de la clase FichaBf para el control de la ventana y de la clase Articulo
+    Deriva de la clase BfForm para el control de la ventana y de la clase Articulo
     para el control con la base de datos.
 */
-class ArticuloView : public FichaBf, public Ui_ArticuloBase
+class ArticuloView : public BfForm, public Ui_ArticuloBase
 {
     Q_OBJECT
 

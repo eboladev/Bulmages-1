@@ -35,7 +35,7 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "blfixed.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class BfCompany;
@@ -43,7 +43,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public FichaBf, public Ui_PresupuestoClienteBase
+class PresupuestoView : public BfForm, public Ui_PresupuestoClienteBase
 {
     Q_OBJECT
 

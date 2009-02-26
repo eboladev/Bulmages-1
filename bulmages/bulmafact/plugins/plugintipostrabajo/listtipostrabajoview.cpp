@@ -42,7 +42,7 @@
 \param parent
 **/
 ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "ListTiposTrabajoView::ListTiposTrabajoView", 1 );
     setDbTableName ( _( "almacen" ) );

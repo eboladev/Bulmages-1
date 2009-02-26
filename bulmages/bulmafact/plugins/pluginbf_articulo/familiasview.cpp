@@ -42,7 +42,7 @@
 \param modoConsulta
 **/
 FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "FamiliasView::FamiliasView", 0 );
     setupUi ( this );
@@ -604,7 +604,7 @@ void FamiliasView::on_mui_aceptar_clicked()
     } else {
         m_idfamilia = "";
     } // end if
-    FichaBf::on_mui_aceptar_clicked();
+    BfForm::on_mui_aceptar_clicked();
     _depura ( "END FamiliasView::on_mui_aceptar_clicked", 0 );
 }
 

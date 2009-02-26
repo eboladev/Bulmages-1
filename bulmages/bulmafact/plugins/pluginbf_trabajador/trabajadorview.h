@@ -25,13 +25,13 @@
 #include "blfunctions.h"
 #include <ui_trabajadorbase.h>
 
-#include "fichabf.h"
+#include "bfform.h"
 #include "blpostgresqlclient.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
-class TrabajadorView : public FichaBf, public Ui_TrabajadorBase
+class TrabajadorView : public BfForm, public Ui_TrabajadorBase
 {
     Q_OBJECT
 

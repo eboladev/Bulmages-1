@@ -35,7 +35,7 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "ui_compraventabase.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 class company;
@@ -46,7 +46,7 @@ class company;
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
     Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.
 */
-class CompraVentaView : public FichaBf, public Ui_CompraVentaBase
+class CompraVentaView : public BfForm, public Ui_CompraVentaBase
 {
     Q_OBJECT
 

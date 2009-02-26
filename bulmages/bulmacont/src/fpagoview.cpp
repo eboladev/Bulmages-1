@@ -29,7 +29,7 @@
 \param parent
 **/
 fpagoview::fpagoview ( BcCompany *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "fpagoview::fpagoview", 0 );
 

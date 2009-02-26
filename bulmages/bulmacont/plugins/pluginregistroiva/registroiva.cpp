@@ -37,7 +37,7 @@ typedef QMap<QString, BlFixed> base;
 \param comp
 \param parent
 **/
-RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : FichaBc ( comp, parent )
+RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
 {
     _depura ( "RegistroIva::RegistroIva", 0 );
     setTitleName ( _( "Registro IVA" ) );

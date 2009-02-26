@@ -35,7 +35,7 @@
 \param parent
 **/
 CAnualesView::CAnualesView ( BcCompany  *emp, QWidget *parent )
-        : FichaBc ( emp, parent )
+        : BcForm ( emp, parent )
 {
     _depura ( "CAnualesView::CAnualesView", 0 );
     setTitleName ( _( "Cuentas Anuales" ) );

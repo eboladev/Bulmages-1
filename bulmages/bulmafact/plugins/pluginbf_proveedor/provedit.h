@@ -24,13 +24,13 @@
 
 #include "ui_proveditbase.h"
 #include "bldb.h"
-#include "fichabf.h"
+#include "bfform.h"
 
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
 /** */
-class ProveedorView : public FichaBf, public Ui_ProveedorBase
+class ProveedorView : public BfForm, public Ui_ProveedorBase
 {
     Q_OBJECT
 

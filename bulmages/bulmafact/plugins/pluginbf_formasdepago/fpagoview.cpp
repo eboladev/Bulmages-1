@@ -32,7 +32,7 @@
 \param parent
 **/
 FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
-        : FichaBf ( emp, parent )
+        : BfForm ( emp, parent )
 {
     _depura ( "FPagoView::FPagoView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

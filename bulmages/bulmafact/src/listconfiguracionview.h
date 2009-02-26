@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "fichabf.h"
+#include "bfform.h"
 #include "blpostgresqlclient.h"
 #include "bfsubform.h"
 
@@ -56,7 +56,7 @@ public slots:
 
 /// Muestra y administra el listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase
+class ListConfiguracionView : public BfForm, public Ui_ListConfiguracionBase
 {
     Q_OBJECT
 

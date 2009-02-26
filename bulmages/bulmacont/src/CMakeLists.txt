@@ -66,7 +66,7 @@ set(bulmacont_MOCS bulmacont.h
 	   	   asientolistsubform.h 
 		   busquedaccoste.h 
 	       busquedacanal.h 
-	       fichabc.h
+	       bcform.h
 	       cuentalistview.h)
 
 # ficheros no MOc's

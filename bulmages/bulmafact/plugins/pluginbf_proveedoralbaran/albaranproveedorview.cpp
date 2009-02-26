@@ -45,7 +45,7 @@
 \return
 **/
 AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "AlbaranProveedorView::AlbaranProveedorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -76,7 +76,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         m_descuentos->setMainCompany ( comp );
         mui_refalbaranp->setMainCompany ( comp );
 
-        /// Inicializamos FichaBf.
+        /// Inicializamos BfForm.
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 

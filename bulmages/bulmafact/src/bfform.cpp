@@ -21,7 +21,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "fichabf.h"
+#include "bfform.h"
 #include "plugins.h"
 
 
@@ -35,13 +35,13 @@ class BlFixed;
 \param f
 \param modo
 **/
-FichaBf::FichaBf ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
+BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
         : BlForm ( comp, parent, f, modo )
 {
-    _depura ( "FichaBf::FichaBf", 0 );
+    _depura ( "BfForm::BfForm", 0 );
     m_listalineas = NULL;
     m_listadescuentos = NULL;
-    _depura ( "END FichaBf::FichaBf", 0 );
+    _depura ( "END BfForm::BfForm", 0 );
 }
 
 
@@ -49,11 +49,11 @@ FichaBf::FichaBf ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
 /**
 \return
 **/
-FichaBf::~FichaBf()
+BfForm::~BfForm()
 {
-    _depura ( "FichaBf::~FichaBf", 0, this->windowTitle() );
+    _depura ( "BfForm::~BfForm", 0, this->windowTitle() );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END FichaBf::~FichaBf", 0 );
+    _depura ( "END BfForm::~BfForm", 0 );
 }
 
 
@@ -61,10 +61,10 @@ FichaBf::~FichaBf()
 /**
 \return
 **/
-BfCompany * FichaBf::mainCompany()
+BfCompany * BfForm::mainCompany()
 {
-    _depura ( "FichaBf::getcompany", 0 );
-    _depura ( "END FichaBf::getcompany", 0 );
+    _depura ( "BfForm::getcompany", 0 );
+    _depura ( "END BfForm::getcompany", 0 );
     return ( BfCompany * ) BlForm::mainCompany();
 }
 
@@ -75,9 +75,9 @@ BfCompany * FichaBf::mainCompany()
 /**
 \return
 **/
-void FichaBf::calculaypintatotales()
+void BfForm::calculaypintatotales()
 {
-    _depura ( "FichaBf::calculaypintatotales", 0 );
+    _depura ( "BfForm::calculaypintatotales", 0 );
     base basesimp;
     base basesimpreqeq;
     BlDbSubFormRecord *linea;
@@ -178,7 +178,7 @@ void FichaBf::calculaypintatotales()
 
     BlFixed totirpf = totbaseimp * irpf / 100;
     pintatotales ( totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, ( basei * porcentt / 100 ) + descuentolinea, totirpf, totreqeq );
-    _depura ( "END FichaBf::calculaypintatotales", 0 );
+    _depura ( "END BfForm::calculaypintatotales", 0 );
 }
 
 
@@ -187,9 +187,9 @@ void FichaBf::calculaypintatotales()
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int FichaBf::trataTags ( QString &buff, int tipoEscape )
+int BfForm::trataTags ( QString &buff, int tipoEscape )
 {
-    _depura ( "FichaBf::trataTags", 0 );
+    _depura ( "BfForm::trataTags", 0 );
     int pos =  0;
 
     /// Buscamos algo de lineas de detalle
@@ -247,13 +247,13 @@ int FichaBf::trataTags ( QString &buff, int tipoEscape )
     int ret = BlForm::trataTags ( buff, tipoEscape );
 
     trataTagsBf(buff, tipoEscape); 
-    _depura ( "END FichaBf::trataTags", 0 );
+    _depura ( "END BfForm::trataTags", 0 );
     return ret;
 }
 
 
 
-void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
+void BfForm::trataTagsBf( QString &buff, int tipoEscape ) {
    QString fitxersortidatxt="";   
    BlDbRecordSet *cur = NULL;
    try {
@@ -443,9 +443,9 @@ void FichaBf::trataTagsBf( QString &buff, int tipoEscape ) {
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QString FichaBf::trataLineasDetalle ( const QString &det, int tipoEscape )
+QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 {
-    _depura ( "FichaBf::trataLineasDetalle", 0 );
+    _depura ( "BfForm::trataLineasDetalle", 0 );
     QString result = "";
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
@@ -498,7 +498,7 @@ QString FichaBf::trataLineasDetalle ( const QString &det, int tipoEscape )
         result += salidatemp;
     } // end for
 
-    _depura ( "END FichaBf::trataLineasDetalle", 0 );
+    _depura ( "END BfForm::trataLineasDetalle", 0 );
     return result;
 }
 
@@ -508,9 +508,9 @@ QString FichaBf::trataLineasDetalle ( const QString &det, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QString FichaBf::trataLineasDescuento ( const QString &det, int tipoEscape )
+QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 {
-    _depura ( "FichaBf::trataLineasDescuento", 0 );
+    _depura ( "BfForm::trataLineasDescuento", 0 );
     QString result = "";
 
     base basesimp;
@@ -558,7 +558,7 @@ QString FichaBf::trataLineasDescuento ( const QString &det, int tipoEscape )
 
         result += salidatemp;
     } // end for
-    _depura ( "END FichaBf::trataLineasDescuento", 0 );
+    _depura ( "END BfForm::trataLineasDescuento", 0 );
     return result;
 }
 
@@ -569,9 +569,9 @@ QString FichaBf::trataLineasDescuento ( const QString &det, int tipoEscape )
 /**
 \return
 **/
-QString FichaBf::trataTotales ( const QString &det, int bimporeq )
+QString BfForm::trataTotales ( const QString &det, int bimporeq )
 {
-    _depura ( "FichaBf::trataTotales", 0 );
+    _depura ( "BfForm::trataTotales", 0 );
     QString result = "";
     QString salidatemp = "";
     base basesimp;
@@ -771,18 +771,18 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
 
     } // end switch
 
-    _depura ( "END FichaBf::trataTotales", 0 );
+    _depura ( "END BfForm::trataTotales", 0 );
     return result;
 }
 
 
-int FichaBf::generaRML ( void )
+int BfForm::generaRML ( void )
 {
    BlForm::generaRML();
 }
 
 
-QString FichaBf::nombrePlantilla(void) 
+QString BfForm::nombrePlantilla(void) 
 {
    return m_tablename;
 }
@@ -792,9 +792,9 @@ QString FichaBf::nombrePlantilla(void)
 \param arch archivo a generar
 \return 0 si ha ocurrido un error, != 0 si todo ha ido bien.
 **/
-int FichaBf::generaRML ( const QString &arch )
+int BfForm::generaRML ( const QString &arch )
 {
-    _depura ( "FichaBf::generaRML", 0, arch );
+    _depura ( "BfForm::generaRML", 0, arch );
     try {
 
         if ( dbValue ( "id" + m_tablename ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty()) {
@@ -802,14 +802,14 @@ int FichaBf::generaRML ( const QString &arch )
         } // end if
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "FichaBf_generaRML", this );
+        int res = g_plugins->lanza ( "BfForm_generaRML", this );
         if ( res != 0 ) {
             return 1;
         } // end if
 
          BlForm::generaRML(arch);
 
-        _depura ( "END FichaBf::generaRML", 0 );
+        _depura ( "END BfForm::generaRML", 0 );
         return 1;
 
     } catch (int e) {
@@ -827,19 +827,19 @@ int FichaBf::generaRML ( const QString &arch )
 /**
 \return
 **/
-void FichaBf::imprimir()
+void BfForm::imprimir()
 {
-    _depura ( "FichaBf::imprimir", 0 );
+    _depura ( "BfForm::imprimir", 0 );
     try {
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "FichaBf_imprimir", this );
+        int res = g_plugins->lanza ( "BfForm_imprimir", this );
         if ( res != 0 ) {
             return;
         } // end if
 
         BlForm::imprimir(); 
 
-        _depura ( "END FichaBf::imprimir", 0 );
+        _depura ( "END BfForm::imprimir", 0 );
 
     } catch (int e) {
 	if (e == 100) {
@@ -857,22 +857,22 @@ void FichaBf::imprimir()
 /**
 \param form
 **/
-void FichaBf::setListaLineas ( BfSubForm *form )
+void BfForm::setListaLineas ( BfSubForm *form )
 {
-    _depura ( "FichaBf::setListaLineas", 0 );
+    _depura ( "BfForm::setListaLineas", 0 );
     m_listalineas = form;
-    _depura ( "END FichaBf::setListaLineas", 0 );
+    _depura ( "END BfForm::setListaLineas", 0 );
 }
 
 ///
 /**
 \param form
 **/
-void FichaBf::setListaDescuentos ( BfSubForm *form )
+void BfForm::setListaDescuentos ( BfSubForm *form )
 {
-    _depura ( "FichaBf::setListaDescuentos", 0 );
+    _depura ( "BfForm::setListaDescuentos", 0 );
     m_listadescuentos = form;
-    _depura ( "END FichaBf::setListaDescuentos", 0 );
+    _depura ( "END BfForm::setListaDescuentos", 0 );
 }
 
 
@@ -880,10 +880,10 @@ void FichaBf::setListaDescuentos ( BfSubForm *form )
 /**
 \return
 **/
-BfSubForm* FichaBf::getlistalineas()
+BfSubForm* BfForm::getlistalineas()
 {
-    _depura ( "FichaBf::getlistalineas", 0 );
-    _depura ( "END FichaBf::getlistalineas", 0 );
+    _depura ( "BfForm::getlistalineas", 0 );
+    _depura ( "END BfForm::getlistalineas", 0 );
     return m_listalineas;
 }
 
@@ -892,10 +892,10 @@ BfSubForm* FichaBf::getlistalineas()
 /**
 \return
 **/
-BfSubForm* FichaBf::getlistadescuentos()
+BfSubForm* BfForm::getlistadescuentos()
 {
-    _depura ( "FichaBf::getlistadescuentos", 0 );
-    _depura ( "END FichaBf::getlistadescuentos", 0 );
+    _depura ( "BfForm::getlistadescuentos", 0 );
+    _depura ( "END BfForm::getlistadescuentos", 0 );
     return m_listadescuentos;
 }
 

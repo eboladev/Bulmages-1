@@ -35,7 +35,7 @@
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
 #include "dialogchanges.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class BcCompany;
@@ -43,7 +43,7 @@ class BcCompany;
 
 /// Visualiza una cuenta.
 /** */
-class CuentaView : public FichaBc, public Ui_CuentaBase
+class CuentaView : public BcForm, public Ui_CuentaBase
 {
     Q_OBJECT
 

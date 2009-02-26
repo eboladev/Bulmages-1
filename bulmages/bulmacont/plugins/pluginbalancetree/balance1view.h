@@ -34,7 +34,7 @@
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "ui_balancetreebase.h"
-#include "fichabc.h"
+#include "bcform.h"
 #include "arbol.h"
 
 
@@ -51,7 +51,7 @@ class BcCompany ;
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
     presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
     determinado. */
-class BalanceTreeView : public FichaBc, public Ui_BalanceTreeBase
+class BalanceTreeView : public BcForm, public Ui_BalanceTreeBase
 {
     Q_OBJECT
 

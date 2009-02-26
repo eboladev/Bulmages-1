@@ -41,7 +41,7 @@
 \param parent
 **/
 ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "INIT_ListZonaComercialView::ListZonaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

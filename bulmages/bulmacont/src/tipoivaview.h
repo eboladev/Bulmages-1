@@ -25,7 +25,7 @@
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "ui_tipoivabase.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class empresa;
@@ -33,7 +33,7 @@ class empresa;
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
 /** Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales. */
-class tipoivaview : public FichaBc, public Ui_TipoIvaBase
+class tipoivaview : public BcForm, public Ui_TipoIvaBase
 {
     Q_OBJECT
 

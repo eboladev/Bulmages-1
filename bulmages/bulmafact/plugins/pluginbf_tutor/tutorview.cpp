@@ -37,7 +37,7 @@
     Mete la ventana en el workSpace.
 */
 TutorView::TutorView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "TutorView::TutorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -101,7 +101,7 @@ void TutorView::imprimir()
     if ( res != 0 ) {
         return;
     } // end if
-    FichaBf::imprimir();
+    BfForm::imprimir();
 
     _depura ( "END TutorView::imprimir", 0 );
 }

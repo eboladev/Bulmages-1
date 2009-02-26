@@ -37,7 +37,7 @@
 \param modoConsultas
 **/
 TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modoConsulta )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "TipoArticuloList::TipoArticuloList", 0 );
     setupUi ( this );

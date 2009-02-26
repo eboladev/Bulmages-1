@@ -23,7 +23,7 @@
 
 #include "pluginopenref.h"
 #include "blfunctions.h"
-#include "fichabf.h"
+#include "bfform.h"
 #include "busquedareferencia.h"
 
 
@@ -53,12 +53,12 @@ int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia *l )
     _depura ( "BusquedaReferencia_on_mui_rferencia_returnPressed", 0 );
 
 	/// Buscamos la ficha que corresponde al widget.
-	QList<FichaBf *> lista = g_main->findChildren<FichaBf *>();
+	QList<BfForm *> lista = g_main->findChildren<BfForm *>();
 	
-	FichaBf *ficha = (FichaBf *) l->parentWidget();
+	BfForm *ficha = (BfForm *) l->parentWidget();
 
 	while (ficha && !lista.contains(ficha)) {
-		ficha = (FichaBf *) ficha->parentWidget();
+		ficha = (BfForm *) ficha->parentWidget();
 	} // end while
 
 	if (ficha) {

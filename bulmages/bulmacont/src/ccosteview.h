@@ -30,7 +30,7 @@
 #include "ui_ccostebase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
-#include "fichabc.h"
+#include "bcform.h"
 
 
 class BcCompany;
@@ -38,7 +38,7 @@ class BcCompany;
 
 /// Visualiza un centro de coste.
 /** */
-class ccosteview : public FichaBc, public Ui_ccostebase
+class ccosteview : public BcForm, public Ui_ccostebase
 {
     Q_OBJECT
 

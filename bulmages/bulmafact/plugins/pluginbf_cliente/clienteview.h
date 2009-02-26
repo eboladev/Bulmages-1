@@ -22,16 +22,16 @@
 #ifndef CLIENTEVIEW_H
 #define CLIENTEVIEW_H
 
-#include "fichabf.h"
+#include "bfform.h"
 #include "ui_clientebase.h"
 
 
 /** Clase que se encarga de la pantalla de cliente.
-    Deriva de la clase FichaBf para la estandarizacion de pantallas y
+    Deriva de la clase BfForm para la estandarizacion de pantallas y
     de la clase Cliente para el manejo con la base de datos.
     Se encarga de recibir y lanzar eventos.
 */
-class ClienteView : public FichaBf, public Ui_ClienteBase
+class ClienteView : public BfForm, public Ui_ClienteBase
 {
     Q_OBJECT
 

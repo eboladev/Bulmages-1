@@ -45,7 +45,7 @@
 \param parent
 **/
 RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
-        : FichaBf ( comp, parent )
+        : BfForm ( comp, parent )
 {
     _depura ( "RutaComercialIncView::RutaComercialIncView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

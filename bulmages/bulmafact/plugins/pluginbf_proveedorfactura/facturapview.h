@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 #include "ui_facturapbase.h"
-#include "fichabf.h"
+#include "bfform.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
@@ -37,7 +37,7 @@
 /** Implementa la pantalla de Facturas de Proveedores.
     Deriva de la clase ficha para heredar metodos comunes a las fichas.
     Tambien deriva de la clase \ref FacturaProveedor para trabajar con la tabla facturap. */
-class FacturaProveedorView : public FichaBf, public Ui_FacturaProveedorBase
+class FacturaProveedorView : public BfForm, public Ui_FacturaProveedorBase
 {
     Q_OBJECT
 

@@ -21,7 +21,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "fichabc.h"
+#include "bcform.h"
 #include "plugins.h"
 
 
@@ -34,23 +34,23 @@ class Fixed;
 \param parent
 \param f
 **/
-FichaBc::FichaBc ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
+BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
         : BlForm ( comp, parent, f )
 {
-    _depura ( "FichaBc::FichaBc", 0 );
+    _depura ( "BcForm::BcForm", 0 );
     m_listalineas = NULL;
-    _depura ( "END FichaBc::FichaBc", 0 );
+    _depura ( "END BcForm::BcForm", 0 );
 }
 
 
 ///
 /**
 **/
-FichaBc::~FichaBc()
+BcForm::~BcForm()
 {
-    _depura ( "FichaBc::~FichaBc", 0 );
+    _depura ( "BcForm::~BcForm", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END FichaBc::~FichaBc", 0 );
+    _depura ( "END BcForm::~BcForm", 0 );
 }
 
 
@@ -58,11 +58,11 @@ FichaBc::~FichaBc()
 /**
 \param form
 **/
-void FichaBc::setListaLineas ( BcSubForm * form )
+void BcForm::setListaLineas ( BcSubForm * form )
 {
-    _depura ( "FichaBc::setListaLineas", 0 );
+    _depura ( "BcForm::setListaLineas", 0 );
     m_listalineas = form;
-    _depura ( "END FichaBc::setListaLineas", 0 );
+    _depura ( "END BcForm::setListaLineas", 0 );
 }
 
 
@@ -70,10 +70,10 @@ void FichaBc::setListaLineas ( BcSubForm * form )
 /**
 \return
 **/
-BcSubForm* FichaBc::listalineas()
+BcSubForm* BcForm::listalineas()
 {
-    _depura ( "FichaBc::listalineas", 0 );
-    _depura ( "END FichaBc::listalineas", 0 );
+    _depura ( "BcForm::listalineas", 0 );
+    _depura ( "END BcForm::listalineas", 0 );
     return m_listalineas;
 }
 
@@ -82,10 +82,10 @@ BcSubForm* FichaBc::listalineas()
 /**
 \return
 **/
-BcCompany * FichaBc::mainCompany()
+BcCompany * BcForm::mainCompany()
 {
-    _depura ( "FichaBc::mainCompany", 0 );
-    _depura ( "END FichaBc::mainCompany", 0 );
+    _depura ( "BcForm::mainCompany", 0 );
+    _depura ( "END BcForm::mainCompany", 0 );
     return ( BcCompany * ) BlForm::mainCompany();
 }
 
