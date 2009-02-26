@@ -48,12 +48,8 @@ class ModificarFacturacion( Ui_ModificarFacturacionBase, Facturacion):
     self.mui_plugins.resizeRowsToContents()
     self.mui_plugins1.resizeRowsToContents()
   
-  def on_mui_actualizardatabase_released(self):
-    self.actualizarDatabase()
-
   def on_mui_hacerbackup_released(self):
     self.writecommand("Backup")
-
     self.savefile = QFileDialog.getSaveFileName(self,  QString("Guardar  Elija archivo destino"), QString("/home"), QString("SQL (*.sql *.pgdump)") )
     self.command = 'su postgres -c \"pg_dump -f ' + self.savefile + ' ' + self.database  + '\"'
     self.writecommand(self.command)
@@ -63,9 +59,12 @@ class ModificarFacturacion( Ui_ModificarFacturacionBase, Facturacion):
 
 
   def on_mui_aceptar_released(self):
+    if (self.mui_actualizarDB.checkState() == Qt.Checked ):
+      self.actualizarDatabase()
     self.mui_textBrowser.clear()
     self.actualizarPlugins()
     self.writeConfig()
+
 
   def on_mui_vertodos_stateChanged(self, status):
     if (status == 2):

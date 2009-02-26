@@ -137,10 +137,45 @@ class Contabilidad(Empresa):
 	def writeConfig(self):
 		self.writecommand('ESCRIBIENDO CONFIGURACION')
 		self.writecommand("Escribiendo configuracion en " + plugins.configfiles )
+      
+      # TRATAMOS EL ARCHIVO DE BULMACONT
+      # ================================
+
+      # Tocamos el archivo por si no existe
+      self.string = "touch " + plugins.configfiles + "bulmacont_" + self.database + ".conf "
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.writecommand(self.process.readAllStandardOutput())
+
+      # Hacemos un backup del archivo
+      self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.writecommand(self.process.readAllStandardOutput())
+      
+      # Abrimos el backup para lectura
+      self.file1 = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf~");
+      if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
+        return;
+      self.vin = QTextStream(self.file1)
+
+      
 		self.file = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf");
 		if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
 			return;
 		self.out = QTextStream(self.file)
+      
+      # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
+      self.text = self.vin.readLine()
+      while (not (self.text.isNull()) and not(self.text.contains("CONF_PLUGINS_BULMACONT")) ):
+        self.out << self.text << "\n"
+        self.text = self.vin.readLine()
+        
+      # Quitamos todo lo que es el parametro porque no debe estar
+      while (not (self.text.isNull()) and self.text.contains("lib")):
+        self.text = self.vin.readLine()
+      
+      # Escribimos la configuracion de plugins.
 		self.terminador = ""
 		self.out << "CONF_PLUGINS_BULMACONT   "
 		
@@ -162,4 +197,12 @@ class Contabilidad(Empresa):
 				self.i = self.i + 1
 			self.x = self.x + 1
 		self.out << "\n"
+      
+      # Terminamos de poner el resto de las linea.
+      while (not (self.text.isNull()) ):
+        self.out << self.text << "\n"
+        self.text = self.vin.readLine()
+        
+      # Cerramos slo ficheros.
 		self.file.close()
+      self.file1.close()
