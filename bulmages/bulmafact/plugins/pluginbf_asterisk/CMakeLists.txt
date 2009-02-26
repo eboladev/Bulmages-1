@@ -31,8 +31,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_almacen/
-        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_almacen/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalmacen/
+        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalmacen/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_trabajador/
         ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_trabajador/)
 
@@ -82,7 +82,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_almacen pluginbf_trabajador)
+add_dependencies(${plugin} bulmafact bulmalib pluginalmacen pluginbf_trabajador)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)

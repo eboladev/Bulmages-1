@@ -31,8 +31,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealmacen/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealmacen/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalmacen/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalmacen/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_trabajador/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_trabajador/
 	)

@@ -3,7 +3,7 @@
 ###########################################
 #pluginclientprov
 
-set (plugin pluginclientprov)
+set (plugin pluginbf_clienteproveedor)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)

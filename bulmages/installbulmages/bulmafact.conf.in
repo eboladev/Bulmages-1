@@ -49,7 +49,7 @@ CONF_PLUGINS_BULMAFACT        libpluginq19@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libplugininformeclientessxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginmail@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginpromedios@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libplugintrazabilidad@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbf_trazabilidad@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginsubformsxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libplugindocked@CMAKE_SHARED_LIBRARY_SUFFIX@; \
