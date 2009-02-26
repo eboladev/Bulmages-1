@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -507,7 +507,7 @@ msgstr "A.5) RESULTADO DEL EJERCICIO (A.4+18)"
 msgid "ABRIL"
 msgstr "ABRIL"
 
-#: pcapgc08.cpp:43 pcapgc08.cpp:49 pcapymes08.cpp:69
+#: pcapymes08.cpp:69 pcapgc08.cpp:43 pcapgc08.cpp:49
 msgid "ACTIVO"
 msgstr "ACTIVO"
 
@@ -635,7 +635,7 @@ msgstr "DICIEMBRE"
 
 #: ui_datosbase.h:136
 msgid "Datos para generar el balance"
-msgstr ""
+msgstr "Datos para generar el balance"
 
 #: pcapgc07.cpp:42
 msgid "Diciembre"
@@ -679,11 +679,11 @@ msgstr "Ejercicio N-1"
 
 #: ui_datosbase.h:137
 msgid "Ejercicio actual:"
-msgstr ""
+msgstr "Ejercicio actual:"
 
 #: ui_datosbase.h:139
 msgid "Ejercicio anterior:"
-msgstr ""
+msgstr "Ejercicio anterior:"
 
 #: plugincanualesods.cpp:600
 msgid ""
@@ -712,7 +712,7 @@ msgstr "Febrero"
 
 #: ui_datosbase.h:138 ui_datosbase.h:140
 msgid "Fecha balance:"
-msgstr ""
+msgstr "Fecha balance:"
 
 #: pcapgc08.cpp:456
 msgid "I. Activos financieros disponibles para la venta."
@@ -736,7 +736,7 @@ msgid ""
 msgstr ""
 "I. Pasivos vinculados con activos no corrientes mantenidos para la venta."
 
-#: pcapgc08.cpp:979 pcaapgc08.cpp:581
+#: pcaapgc08.cpp:581 pcapgc08.cpp:979
 msgid "I. Por valoracion de instrumentos financieros."
 msgstr "I. Por valoracion de instrumentos financieros."
 
@@ -896,7 +896,7 @@ msgstr "Octubre"
 msgid "PATRIMONIO NETO Y PASIVO"
 msgstr "PATRIMONIO NETO Y PASIVO"
 
-#: pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970 pcaapgc08.cpp:571
+#: pcaapgc08.cpp:571 pcapgc08.cpp:657 pcapgc08.cpp:663 pcapgc08.cpp:970
 msgid "PERDIDAS_Y_GANANCIAS"
 msgstr "PERDIDAS_Y_GANANCIAS"
 

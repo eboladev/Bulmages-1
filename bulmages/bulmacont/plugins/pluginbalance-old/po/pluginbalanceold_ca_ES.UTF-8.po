@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,19 +25,20 @@ msgstr "Balanç"
 
 #: ui_balanceprintbase.h:316
 msgid "&Kugar"
-msgstr ""
+msgstr "&Kugar"
 
 #: ui_balanceprintbase.h:313
 msgid "&Texto Plano"
-msgstr ""
+msgstr "&Text pla"
 
 #: pluginbalance.cpp:87
 msgid "&Ver"
 msgstr "&Veure"
 
 #: ui_balancebase.h:424 ui_balancebase.h:429
+#, fuzzy
 msgid "Actualizar balance"
-msgstr ""
+msgstr "Actual·litza llistat"
 
 #: balanceview.cpp:69
 #, fuzzy
@@ -45,16 +46,17 @@ msgid "Asiento Contable"
 msgstr "Assentament final"
 
 #: ui_balancebase.h:409
+#, fuzzy
 msgid "Balance de cuentas"
-msgstr ""
+msgstr "Banc del compte"
 
 #: ui_balanceprintbase.h:307
 msgid "Codigo Final"
-msgstr ""
+msgstr "Codi final"
 
 #: ui_balanceprintbase.h:304
 msgid "Codigo Inicial\n"
-msgstr ""
+msgstr "Codi inicial\n"
 
 #: ui_balancebase.h:448 ui_balancebase.h:453
 msgid "Configurar"
@@ -73,32 +75,37 @@ msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
 #: ui_balancebase.h:462
+#, fuzzy
 msgid "Cuenta final:"
-msgstr ""
+msgstr "Data final:"
 
 #: ui_balancebase.h:461
+#, fuzzy
 msgid "Cuenta inicial:"
-msgstr ""
+msgstr "Data inicial:"
 
 #: ui_balanceprintbase.h:303
 msgid "Datos del listado:"
-msgstr ""
+msgstr "Dades del llistat:"
 
 #: ui_balancebase.h:467
+#, fuzzy
 msgid "Debe:"
-msgstr ""
+msgstr "Deure"
 
 #: ui_balancebase.h:433
 msgid "F5"
 msgstr "F5"
 
 #: ui_balanceprintbase.h:308
+#, fuzzy
 msgid "Fecha Final"
-msgstr ""
+msgstr "Data final"
 
 #: ui_balanceprintbase.h:306
+#, fuzzy
 msgid "Fecha Inicial"
-msgstr ""
+msgstr "Data inicial"
 
 #: ui_balancebase.h:459
 msgid "Fecha final:"
@@ -109,44 +116,54 @@ msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
 #: ui_balancebase.h:412 ui_balancebase.h:417
+#, fuzzy
 msgid "Filtrar balance"
-msgstr ""
+msgstr "Filtrar balanç"
 
 #: ui_balanceprintbase.h:312
+#, fuzzy
 msgid "Formato:"
-msgstr ""
+msgstr "Form"
 
 #: ui_balancebase.h:463
+#, fuzzy
 msgid "GroupBox"
-msgstr ""
+msgstr "Grup"
 
 #: ui_balanceprintbase.h:315
+#, fuzzy
 msgid "HT&ML"
-msgstr ""
+msgstr "HT&ML"
 
 #: ui_balancebase.h:465
+#, fuzzy
 msgid "Haber:"
-msgstr ""
+msgstr "Haver"
 
 #: ui_balanceprintbase.h:299
+#, fuzzy
 msgid "Impresion del Balance de Sumas y Saldos"
-msgstr ""
+msgstr "Balanç"
 
 #: ui_balancebase.h:436 ui_balancebase.h:441
+#, fuzzy
 msgid "Imprimir balance"
-msgstr ""
+msgstr "Imprimeix albarà"
 
 #: ui_balanceprintbase.h:311
+#, fuzzy
 msgid "Incl&uir resultados parciales"
-msgstr ""
+msgstr "Incloure resultats parcials"
 
 #: ui_balanceprintbase.h:310
+#, fuzzy
 msgid "Incluir &niveles superiores."
-msgstr ""
+msgstr "Incloure resultats parcials"
 
 #: ui_balanceprintbase.h:309
+#, fuzzy
 msgid "Nivel de Cuentas"
-msgstr ""
+msgstr "Tipus de compte"
 
 #: ui_balancebase.h:458
 msgid "Nivel:"
@@ -162,28 +179,31 @@ msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
 #: ui_balanceprintbase.h:314
+#, fuzzy
 msgid "Propietario"
-msgstr ""
+msgstr "Comentari"
 
 #: ui_balancebase.h:466
+#, fuzzy
 msgid "Saldo anterior:"
-msgstr ""
+msgstr "Saldo anterior"
 
 #: ui_balancebase.h:464
+#, fuzzy
 msgid "Saldo:"
-msgstr ""
+msgstr "Saldo"
 
 #: balanceview.cpp:401
 msgid "Ver Diario (este anyo)"
-msgstr ""
+msgstr "Veure diari (aquest any)"
 
 #: balanceview.cpp:399
 msgid "Ver Diario (este dia)"
-msgstr ""
+msgstr "Veure diari (aquest dia)"
 
 #: balanceview.cpp:400
 msgid "Ver Diario (este mes)"
-msgstr ""
+msgstr "Veure diari (aquest mes)"
 
 #: balanceview.cpp:405
 msgid "Ver extracto (este anyo)"
@@ -232,16 +252,16 @@ msgstr "Finestre"
 
 #: balancesubform.cpp:37
 msgid "tdebe"
-msgstr ""
+msgstr "tdebe"
 
 #: balancesubform.cpp:38
 msgid "thaber"
-msgstr ""
+msgstr "thaber"
 
 #: balancesubform.cpp:33
 msgid "tipocuenta"
-msgstr ""
+msgstr "tipocuenta"
 
 #: balancesubform.cpp:39
 msgid "tsaldo"
-msgstr ""
+msgstr "tsaldo"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 
 #: ui_devolucion.h:381 ui_devolucion.h:383 ui_untitled.h:294 ui_untitled.h:296
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: ui_devolucion.h:385 ui_untitled.h:301
 msgid "->"
-msgstr ""
+msgstr "->"
 
 #: ui_devolucion.h:386 ui_untitled.h:302
 msgid "<-"
-msgstr ""
+msgstr "<-"
 
 #: ui_devolucion.h:389
 msgid "A DEVOLVER"
@@ -41,7 +41,7 @@ msgstr "<P> Article <B>"
 
 #: ui_devolucion.h:393 ui_untitled.h:310
 msgid "CANCELAR"
-msgstr ""
+msgstr "CANCELA"
 
 #: ui_devolucion.h:380 ui_untitled.h:293
 #, fuzzy
@@ -49,28 +49,32 @@ msgid "Cliente:"
 msgstr "Pendent:"
 
 #: ui_devolucion.h:378
+#, fuzzy
 msgid "Devoluciones"
-msgstr ""
+msgstr "Denominació"
 
 #: ui_untitled.h:291
+#, fuzzy
 msgid "Dialog"
-msgstr ""
+msgstr "Diari"
 
 #: ui_devolucion.h:391 ui_untitled.h:308
 msgid "EFECTIVO"
 msgstr ""
 
 #: ui_devolucion.h:382 ui_untitled.h:295
+#, fuzzy
 msgid "Fecha: del ticket"
-msgstr ""
+msgstr "Data de l'assentament"
 
 #: devolucion2.cpp:232 devolucion2.cpp:247
 msgid "Linea"
 msgstr "Línia"
 
 #: ui_devolucion.h:384 ui_untitled.h:297
+#, fuzzy
 msgid "Lineas Ticket"
-msgstr ""
+msgstr "Totals:"
 
 #: ui_devolucion.h:388 ui_untitled.h:304
 msgid "Lineas a devolver"
@@ -81,8 +85,9 @@ msgid "NO IMPLEMENTADO"
 msgstr ""
 
 #: devolucion2.cpp:230 devolucion2.cpp:245
+#, fuzzy
 msgid "P.U."
-msgstr ""
+msgstr "..."
 
 #: ui_untitled.h:300 ui_untitled.h:307
 #, fuzzy
@@ -90,12 +95,14 @@ msgid "Precio"
 msgstr "Adreça:"
 
 #: devolucion2.cpp:229 devolucion2.cpp:244 ui_untitled.h:299 ui_untitled.h:306
+#, fuzzy
 msgid "Producto"
-msgstr ""
+msgstr "Propietari"
 
 #: ui_devolucion.h:387 ui_untitled.h:303
+#, fuzzy
 msgid "Todo"
-msgstr ""
+msgstr "Tots"
 
 #: devolucion2.cpp:231 devolucion2.cpp:246
 #, fuzzy

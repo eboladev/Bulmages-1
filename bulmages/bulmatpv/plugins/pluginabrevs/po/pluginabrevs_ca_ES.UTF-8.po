@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:32+0100\n"
+"POT-Creation-Date: 2009-02-26 01:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,17 +24,18 @@ msgstr ""
 
 #: abrevs.cpp:101
 msgid "Asigne un nombre al ticket antes de aparcarlo."
-msgstr ""
+msgstr "Assigna un nombre al ticket abans d'aparcar-lo."
 
 #: ui_abrevsbase.h:96
 msgid "CLIENTE"
-msgstr ""
+msgstr "CLIENT"
 
 #: abrevs.cpp:107
+#, fuzzy
 msgid "El ticket esta vacio. No se puede aparcar."
-msgstr ""
+msgstr "&No."
 
-#: ui_trabajadoresbase.h:70 ui_abrevsbase.h:93 ui_ticketsbase.h:57
+#: ui_ticketsbase.h:57 ui_abrevsbase.h:93 ui_trabajadoresbase.h:70
 msgid "Form"
 msgstr "Form"
 

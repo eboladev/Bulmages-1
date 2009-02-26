@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,12 +133,12 @@ msgstr "Archivo"
 #: ui_listproyectosbase.h:150 ui_listproyectosbase.h:155
 #: ui_listproyectosbase.h:162 ui_listproyectosbase.h:167
 msgid "Borrar amortizacion"
-msgstr ""
+msgstr "Borrar amortizacion"
 
 #: ui_proyectobase.h:256 ui_proyectobase.h:261 ui_proyectobase.h:268
 #: ui_proyectobase.h:273
 msgid "Borrar proyecto"
-msgstr ""
+msgstr "Borrar proyecto"
 
 #: listproyectosview.cpp:47
 msgid "C. Coste"
@@ -157,7 +157,7 @@ msgstr "Codigo"
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
+#: ui_proyectobase.h:265 ui_proyectobase.h:277 ui_listproyectosbase.h:159
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -199,7 +199,7 @@ msgstr "Fecha"
 
 #: ui_proyectobase.h:279
 msgid "Gastos"
-msgstr ""
+msgstr "Gastos"
 
 #: ui_proyectobase.h:278
 msgid "General"
@@ -207,7 +207,7 @@ msgstr "General"
 
 #: ui_proyectobase.h:244 ui_proyectobase.h:249
 msgid "Guardar Proyecto"
-msgstr ""
+msgstr "Guardar Proyecto"
 
 #: proyectoview.cpp:56
 msgid "ID almacen"
@@ -235,11 +235,11 @@ msgstr "Identificador"
 
 #: ui_proyectobase.h:280
 msgid "Ingresos"
-msgstr ""
+msgstr "Ingresos"
 
 #: ui_listproyectosbase.h:135
 msgid "Listado de Proyectos"
-msgstr ""
+msgstr "Listado de Proyectos"
 
 #: proyectoview.cpp:58
 msgid "Nom Presupuesto"
@@ -251,11 +251,11 @@ msgstr "Nombre"
 
 #: ui_listproyectosbase.h:138 ui_listproyectosbase.h:143
 msgid "Nueva amortizacion"
-msgstr ""
+msgstr "Nueva amortizacion"
 
 #: ui_proyectobase.h:240
 msgid "Nuevo proyecto"
-msgstr ""
+msgstr "Nuevo proyecto"
 
 #: proyectoview.cpp:81 proyectoview.cpp:100
 msgid "Orden"

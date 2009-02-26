@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,11 +124,11 @@ msgstr "&Cancelar"
 
 #: ui_balanceprintbase.h:316
 msgid "&Kugar"
-msgstr ""
+msgstr "&Kugar"
 
 #: ui_balanceprintbase.h:313
 msgid "&Texto Plano"
-msgstr ""
+msgstr "&Texto Plano"
 
 #: pluginbalance.cpp:87
 msgid "&Ver"
@@ -136,7 +136,7 @@ msgstr "&Ver"
 
 #: ui_balancesprintdlg.h:201
 msgid "&texto plano"
-msgstr ""
+msgstr "&texto plano"
 
 #: ui_balancebase.h:454
 msgid "1"
@@ -144,11 +144,11 @@ msgstr "1"
 
 #: ui_balancesprintdlg.h:204
 msgid "Acep&tar"
-msgstr ""
+msgstr "Acep&tar"
 
 #: ui_balancebase.h:414 ui_balancebase.h:419
 msgid "Actualizar balance"
-msgstr ""
+msgstr "Actualizar balance"
 
 #: balancesubform.cpp:80
 msgid "Ajustar altura"
@@ -168,7 +168,7 @@ msgstr "Ajustar columnas"
 
 #: ui_balancesprintdlg.h:202
 msgid "Alt+T"
-msgstr ""
+msgstr "Alt+T"
 
 #: balanceview.cpp:62 ui_balancesprintdlg.h:197
 msgid "Balance"
@@ -176,15 +176,15 @@ msgstr "Balance"
 
 #: ui_balancebase.h:399
 msgid "Balance de cuentas"
-msgstr ""
+msgstr "Balance de cuentas"
 
 #: ui_balancebase.h:453
 msgid "Balance jerarquico"
-msgstr ""
+msgstr "Balance jerarquico"
 
 #: ui_balancetreebase.h:375
 msgid "Balance jerarquico de Cuentas"
-msgstr ""
+msgstr "Balance jerarquico de Cuentas"
 
 #: ui_balancetreebase.h:378 ui_balancetreebase.h:383
 msgid "Borrar albaran"
@@ -196,7 +196,7 @@ msgstr "Borrar registro"
 
 #: ui_balancetreebase.h:414
 msgid "Centro de coste:"
-msgstr ""
+msgstr "Centro de coste:"
 
 #: balanceview.cpp:259
 msgid "Codigo"
@@ -204,11 +204,11 @@ msgstr "Codigo"
 
 #: ui_balanceprintbase.h:307
 msgid "Codigo Final"
-msgstr ""
+msgstr "Codigo Final"
 
 #: ui_balanceprintbase.h:304
 msgid "Codigo Inicial\n"
-msgstr ""
+msgstr "Codigo Inicial\n"
 
 #: ui_balancebase.h:438 ui_balancebase.h:443
 msgid "Configurar"
@@ -226,17 +226,17 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_balancebase.h:451 ui_balancetreebase.h:409
+#: ui_balancetreebase.h:409 ui_balancebase.h:451
 msgid "Cuenta final:"
-msgstr ""
+msgstr "Cuenta final:"
 
-#: ui_balancebase.h:449 ui_balancetreebase.h:412
+#: ui_balancetreebase.h:412 ui_balancebase.h:449
 msgid "Cuenta inicial:"
-msgstr ""
+msgstr "Cuenta inicial:"
 
 #: ui_balanceprintbase.h:303
 msgid "Datos del listado:"
-msgstr ""
+msgstr "Datos del listado:"
 
 #: balanceview.cpp:259
 msgid "Debe"
@@ -248,7 +248,7 @@ msgstr "Debe "
 
 #: ui_balancebase.h:459
 msgid "Debe:"
-msgstr ""
+msgstr "Debe:"
 
 #: balanceview.cpp:259
 msgid "Denominacion"
@@ -258,45 +258,45 @@ msgstr "Denominacion"
 msgid "F5"
 msgstr "F5"
 
-#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:308
+#: ui_balanceprintbase.h:308 ui_balancesprintdlg.h:199
 msgid "Fecha Final"
-msgstr ""
+msgstr "Fecha Final"
 
-#: ui_balancesprintdlg.h:198 ui_balanceprintbase.h:306
+#: ui_balanceprintbase.h:306 ui_balancesprintdlg.h:198
 msgid "Fecha Inicial"
-msgstr ""
+msgstr "Fecha Inicial"
 
-#: ui_balancebase.h:450 ui_balancetreebase.h:410
+#: ui_balancetreebase.h:410 ui_balancebase.h:450
 msgid "Fecha final:"
 msgstr "Fecha final:"
 
-#: ui_balancebase.h:448 ui_balancetreebase.h:411
+#: ui_balancetreebase.h:411 ui_balancebase.h:448
 msgid "Fecha inicial:"
 msgstr "Fecha inicial:"
 
 #: ui_balancebase.h:402 ui_balancebase.h:407
 msgid "Filtrar balance"
-msgstr ""
+msgstr "Filtrar balance"
 
 #: ui_balancesprintdlg.h:200
 msgid "Formato"
-msgstr ""
+msgstr "Formato"
 
 #: ui_balanceprintbase.h:312
 msgid "Formato:"
-msgstr ""
+msgstr "Formato:"
 
 #: ui_balancebase.h:455
 msgid "GroupBox"
-msgstr ""
+msgstr "GroupBox"
 
 #: ui_balanceprintbase.h:315
 msgid "HT&ML"
-msgstr ""
+msgstr "HT&ML"
 
 #: ui_balancesprintdlg.h:203
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: balanceview.cpp:259
 msgid "Haber"
@@ -308,15 +308,15 @@ msgstr "Haber "
 
 #: ui_balancebase.h:457
 msgid "Haber:"
-msgstr ""
+msgstr "Haber:"
 
 #: ui_balancesprintdlg.h:196
 msgid "Impresion de Balances"
-msgstr ""
+msgstr "Impresion de Balances"
 
 #: ui_balanceprintbase.h:299
 msgid "Impresion del Balance de Sumas y Saldos"
-msgstr ""
+msgstr "Impresion del Balance de Sumas y Saldos"
 
 #: ui_balancetreebase.h:389 ui_balancetreebase.h:394 ui_balancetreebase.h:400
 #: ui_balancetreebase.h:405
@@ -325,23 +325,23 @@ msgstr "Imprimir albaran"
 
 #: ui_balancebase.h:426 ui_balancebase.h:431
 msgid "Imprimir balance"
-msgstr ""
+msgstr "Imprimir balance"
 
 #: ui_balanceprintbase.h:311
 msgid "Incl&uir resultados parciales"
-msgstr ""
+msgstr "Incl&uir resultados parciales"
 
 #: ui_balanceprintbase.h:310
 msgid "Incluir &niveles superiores."
-msgstr ""
+msgstr "Incluir &niveles superiores."
 
 #: ui_balanceprintbase.h:309
 msgid "Nivel de Cuentas"
-msgstr ""
+msgstr "Nivel de Cuentas"
 
-#: ui_balancebase.h:452 ui_balancetreebase.h:413
+#: ui_balancetreebase.h:413 ui_balancebase.h:452
 msgid "Nivel:"
-msgstr ""
+msgstr "Nivel:"
 
 #: pluginbalance.cpp:92
 msgid "Permite realizar balances"
@@ -353,7 +353,7 @@ msgstr "Podra disponer de la informacion del balance"
 
 #: ui_balanceprintbase.h:314
 msgid "Propietario"
-msgstr ""
+msgstr "Propietario"
 
 #: balanceview.cpp:259
 msgid "Saldo"
@@ -367,21 +367,21 @@ msgstr "Saldo "
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 
-#: ui_balancebase.h:458 ui_balancetreebase.h:415
+#: ui_balancetreebase.h:415 ui_balancebase.h:458
 msgid "Saldo anterior:"
-msgstr ""
+msgstr "Saldo anterior:"
 
-#: ui_balancebase.h:456 ui_balancetreebase.h:418
+#: ui_balancetreebase.h:418 ui_balancebase.h:456
 msgid "Saldo:"
-msgstr ""
+msgstr "Saldo:"
 
 #: ui_balancetreebase.h:416
 msgid "Total Debe:"
-msgstr ""
+msgstr "Total Debe:"
 
 #: ui_balancetreebase.h:417
 msgid "Total Haber:"
-msgstr ""
+msgstr "Total Haber:"
 
 #: balancesubform.cpp:84
 msgid "Ver configurador de subformulario"

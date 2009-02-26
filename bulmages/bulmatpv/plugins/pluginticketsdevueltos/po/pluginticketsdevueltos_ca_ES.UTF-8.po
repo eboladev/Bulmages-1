@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,12 +23,14 @@ msgid "CERRAR"
 msgstr ""
 
 #: ui_ticketsdevueltosbase.h:105
+#, fuzzy
 msgid "Dialog"
-msgstr ""
+msgstr "Diari"
 
 #: ui_ticketsdevueltosbase.h:106
+#, fuzzy
 msgid "Referencia Ticket"
-msgstr ""
+msgstr "Referència factura"
 
 #: pluginticketsdevueltos.cpp:75
 msgid "Tickets olvidados"

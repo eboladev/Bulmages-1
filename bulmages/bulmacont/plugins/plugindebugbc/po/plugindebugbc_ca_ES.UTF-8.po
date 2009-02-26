@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: plugindebugbc.cpp:84
 msgid "&Modo debug"
-msgstr ""
+msgstr "&Mode debug"
 
 #: plugindebugbc.cpp:93
 msgid "Activa/Desactiva el modo debug"
-msgstr ""
+msgstr "Activa/Desactiva el mode debug"
 
 #: plugindebugbc.cpp:94
 msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,11 +132,11 @@ msgstr "Actualizar"
 
 #: balance1view.cpp:73
 msgid "Balance Jerarquico"
-msgstr ""
+msgstr "Balance Jerarquico"
 
 #: ui_balancetreebase.h:386
 msgid "Balance jerarquico de Cuentas"
-msgstr ""
+msgstr "Balance jerarquico de Cuentas"
 
 #: balance1view.cpp:92
 msgid "Cuenta"
@@ -144,11 +144,11 @@ msgstr "Cuenta"
 
 #: ui_balancetreebase.h:431
 msgid "Cuenta final:"
-msgstr ""
+msgstr "Cuenta final:"
 
 #: ui_balancetreebase.h:434
 msgid "Cuenta inicial:"
-msgstr ""
+msgstr "Cuenta inicial:"
 
 #: balance1view.cpp:95
 msgid "Debe"
@@ -156,7 +156,7 @@ msgstr "Debe"
 
 #: balance1view.cpp:98
 msgid "Debe ejercicio"
-msgstr ""
+msgstr "Debe ejercicio"
 
 #: balance1view.cpp:283 balance1view.cpp:336
 msgid "Error con la base de datos"
@@ -164,7 +164,7 @@ msgstr "Error con la base de datos"
 
 #: ui_balancetreebase.h:422 ui_balancetreebase.h:427
 msgid "Exportar a Hoja de Calculo"
-msgstr ""
+msgstr "Exportar a Hoja de Calculo"
 
 #: ui_balancetreebase.h:432
 msgid "Fecha final:"
@@ -184,7 +184,7 @@ msgstr "Haber"
 
 #: balance1view.cpp:99
 msgid "Haber ejercicio"
-msgstr ""
+msgstr "Haber ejercicio"
 
 #: ui_balancetreebase.h:389 ui_balancetreebase.h:394
 msgid "Imprimir"
@@ -192,19 +192,19 @@ msgstr "Imprimir"
 
 #: balance1view.cpp:325
 msgid "Introduzca la Fecha Final"
-msgstr ""
+msgstr "Introduzca la Fecha Final"
 
 #: balance1view.cpp:320
 msgid "Introduzca la Fecha Inicial"
-msgstr ""
+msgstr "Introduzca la Fecha Inicial"
 
 #: ui_balancetreebase.h:436
 msgid "Jerarquico"
-msgstr ""
+msgstr "Jerarquico"
 
 #: ui_balancetreebase.h:435
 msgid "Nivel:"
-msgstr ""
+msgstr "Nivel:"
 
 #: balance1view.cpp:93
 msgid "Nombre de la cuenta"
@@ -228,23 +228,23 @@ msgstr "Saldo anterior"
 
 #: ui_balancetreebase.h:438
 msgid "Saldo anterior:"
-msgstr ""
+msgstr "Saldo anterior:"
 
 #: balance1view.cpp:100
 msgid "Saldo ejercicio"
-msgstr ""
+msgstr "Saldo ejercicio"
 
 #: ui_balancetreebase.h:441
 msgid "Saldo:"
-msgstr ""
+msgstr "Saldo:"
 
 #: ui_balancetreebase.h:439
 msgid "Total Debe:"
-msgstr ""
+msgstr "Total Debe:"
 
 #: ui_balancetreebase.h:440
 msgid "Total Haber:"
-msgstr ""
+msgstr "Total Haber:"
 
 #: balance1view.cpp:566
 msgid "Ver Diario (este anyo)"

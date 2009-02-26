@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_listtallasbase.h:117 ui_listcoloresbase.h:117
+#: ui_listcoloresbase.h:117 ui_listtallasbase.h:117
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -43,7 +43,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_listtallasbase.h:118 ui_listcoloresbase.h:118
+#: ui_listcoloresbase.h:118 ui_listtallasbase.h:118
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -64,19 +64,19 @@ msgstr "Total files:"
 
 #: plugarticulos.cpp:72
 msgid "&Tallas y colores"
-msgstr ""
+msgstr "&Talles i colors"
 
 #: plugin_tc_articulos.cpp:76
 #, fuzzy
 msgid "Alias"
 msgstr "Aplicar"
 
-#: plugarticulos.cpp:84 plugarticulos.cpp:85 listcoloresview.cpp:49
+#: listcoloresview.cpp:49 plugarticulos.cpp:84 plugarticulos.cpp:85
 #: ui_listcoloresbase.h:116
 msgid "Colores"
-msgstr ""
+msgstr "Colors"
 
-#: listtallasview.cpp:71 listcoloresview.cpp:71
+#: listcoloresview.cpp:71 listtallasview.cpp:71
 #, fuzzy
 msgid "Error al guardar los colores"
 msgstr "Desitja desar els canvis?"
@@ -108,16 +108,17 @@ msgstr "Nom"
 msgid "Nombre color"
 msgstr "Nom"
 
-#: plugin_tc_articulos.cpp:84 plugin_tc_articulos.cpp:290
-#: plugin_tc_articulos.cpp:312 plugin_tc_articulos.cpp:335
-#: plugin_tc_articulos.cpp:364 listtallasview.cpp:100
+#: listtallasview.cpp:100 plugin_tc_articulos.cpp:84
+#: plugin_tc_articulos.cpp:290 plugin_tc_articulos.cpp:312
+#: plugin_tc_articulos.cpp:335 plugin_tc_articulos.cpp:364
 #, fuzzy
 msgid "Nombre talla"
 msgstr "Nom del compte"
 
 #: listcoloresview.cpp:100
+#, fuzzy
 msgid "RGB Color"
-msgstr ""
+msgstr "Color"
 
 #: plugin_tc_articulos.cpp:79 plugin_tc_articulos.cpp:288
 #: plugin_tc_articulos.cpp:310 plugin_tc_articulos.cpp:333
@@ -125,7 +126,7 @@ msgstr ""
 msgid "Talla"
 msgstr ""
 
-#: listtallasview.cpp:49 plugarticulos.cpp:78 plugarticulos.cpp:79
+#: plugarticulos.cpp:78 plugarticulos.cpp:79 listtallasview.cpp:49
 #: ui_listtallasbase.h:116
 #, fuzzy
 msgid "Tallas"

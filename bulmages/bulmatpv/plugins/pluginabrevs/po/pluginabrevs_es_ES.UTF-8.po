@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:32+0100\n"
+"POT-Creation-Date: 2009-02-26 01:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: ui_abrevsbase.h:97
 msgid "APARCAR"
-msgstr ""
+msgstr "APARCAR"
 
 #: abrevs.cpp:101
 msgid "Asigne un nombre al ticket antes de aparcarlo."
@@ -124,27 +124,27 @@ msgstr "Asigne un nombre al ticket antes de aparcarlo."
 
 #: ui_abrevsbase.h:96
 msgid "CLIENTE"
-msgstr ""
+msgstr "CLIENTE"
 
 #: abrevs.cpp:107
 msgid "El ticket esta vacio. No se puede aparcar."
 msgstr "El ticket esta vacio. No se puede aparcar."
 
-#: ui_trabajadoresbase.h:70 ui_abrevsbase.h:93 ui_ticketsbase.h:57
+#: ui_ticketsbase.h:57 ui_abrevsbase.h:93 ui_trabajadoresbase.h:70
 msgid "Form"
 msgstr "Form"
 
 #: ui_abrevsbase.h:98
 msgid "RECUPERAR"
-msgstr ""
+msgstr "RECUPERAR"
 
 #: ui_abrevsbase.h:94
 msgid "TECLADO"
-msgstr ""
+msgstr "TECLADO"
 
 #: ui_abrevsbase.h:95
 msgid "USUARIO"
-msgstr ""
+msgstr "USUARIO"
 
 #: abrevs.cpp:117
 msgid "Ya existe un ticket aparcado con el mismo nombre."

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr "&Sí"
 
 #: plugintarifas.cpp:81
 msgid "&Tarifas"
-msgstr ""
+msgstr "&Tarifes"
 
 #: ui_tarifalistbase.h:179 ui_tarifalistbase.h:184 ui_tarifabase.h:258
 #: ui_tarifabase.h:263
@@ -56,8 +56,9 @@ msgid "Borrar tarifa"
 msgstr "Esborra tarifa"
 
 #: plugintarifas.cpp:188
+#, fuzzy
 msgid "Cantidad mayor o igual que"
-msgstr ""
+msgstr "Quantitat Maig Anual"
 
 #: listltarifaview.cpp:41 listltarifaview.cpp:58
 msgid "Codigo completo del articulo"
@@ -91,7 +92,7 @@ msgstr "<LI> Magatzem <B>"
 msgid "ID articulo"
 msgstr "<P> Article <B>"
 
-#: tarifalistsubform.cpp:37 tarifaview.cpp:50 plugintarifas.cpp:184
+#: tarifalistsubform.cpp:37 plugintarifas.cpp:184 tarifaview.cpp:50
 #: listltarifaview.cpp:39 listltarifaview.cpp:63
 msgid "ID tarifa"
 msgstr ""
@@ -146,8 +147,8 @@ msgstr "Id compte d'amortizació"
 msgid "Precio de venta"
 msgstr "Preu de venta"
 
-#: tarifaview.cpp:47 tarifaview.cpp:100 tarifaview.cpp:159
-#: plugintarifas.cpp:185 ui_tarifabase.h:233
+#: plugintarifas.cpp:185 tarifaview.cpp:47 tarifaview.cpp:100
+#: tarifaview.cpp:159 ui_tarifabase.h:233
 msgid "Tarifa"
 msgstr ""
 
@@ -155,11 +156,11 @@ msgstr ""
 msgid "Tarifa edicion"
 msgstr ""
 
-#: plugintarifas.cpp:82 plugintarifas.cpp:83 plugintarifas.cpp:166
-#: tarifalistview.cpp:43 ui_tarifalistbase.h:146
+#: tarifalistview.cpp:43 plugintarifas.cpp:82 plugintarifas.cpp:83
+#: plugintarifas.cpp:166 ui_tarifalistbase.h:146
 msgid "Tarifas"
 msgstr ""
 
 #: plugintarifas.cpp:119
 msgid "plugintarifas"
-msgstr ""
+msgstr "plugintarifas"

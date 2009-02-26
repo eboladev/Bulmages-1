@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,7 +245,7 @@ msgstr "Cal triar un compte"
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:336
+#: pedidosclientelist.cpp:336 listlinpedidoclienteview.cpp:50
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -500,8 +500,9 @@ msgid "Pedido Cliente"
 msgstr "<HR><B>Tractant comana del client"
 
 #: genpedqtoolbutton.cpp:150
+#, fuzzy
 msgid "Pedido ya existe"
-msgstr ""
+msgstr "Comanda"
 
 #: pluginpedido.cpp:100 pluginpedido.cpp:101 pedidosclientelist.cpp:241
 #: ui_pedidosclientelistbase.h:376

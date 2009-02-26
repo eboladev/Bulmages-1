@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgstr "Actual·litza llistat"
 msgid "Apellidos trabajador"
 msgstr "Cognoms del treballador"
 
-#: pagoview.cpp:68 pagoslist.cpp:254
+#: pagoslist.cpp:254 pagoview.cpp:68
 #, fuzzy
 msgid "Banco"
 msgstr "Balanç"
@@ -97,7 +97,7 @@ msgstr "Cerca:"
 msgid "C.I.F. proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoview.cpp:66 pagoslist.cpp:253
+#: pagoslist.cpp:253 pagoview.cpp:66
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -149,7 +149,7 @@ msgstr "Esborra forma de pagament"
 msgid "Error al crear el pago"
 msgstr "Esborra forma de pagament"
 
-#: pagoview.cpp:64 pagoslist.cpp:252
+#: pagoslist.cpp:252 pagoview.cpp:64
 #, fuzzy
 msgid "Fecha de pago"
 msgstr "<LI> Forma de pagament <B>"
@@ -177,12 +177,12 @@ msgstr "Filtrar"
 msgid "Guardar pago"
 msgstr "Desar"
 
-#: pagoview.cpp:61 pagoslist.cpp:246
+#: pagoslist.cpp:246 pagoview.cpp:61
 #, fuzzy
 msgid "Id pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: pagoview.cpp:62 pagoslist.cpp:247
+#: pagoslist.cpp:247 pagoview.cpp:62
 #, fuzzy
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
@@ -245,7 +245,7 @@ msgstr "Previsió de pagament"
 msgid "Previsiones de Pago"
 msgstr "Previsions de Pagament"
 
-#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
+#: pagoslist.cpp:49 pagoslist.cpp:74 pagoview.cpp:71
 msgid "Proveedor:"
 msgstr "Proveïdor:"
 
@@ -253,7 +253,7 @@ msgstr "Proveïdor:"
 msgid "Provision de fondos"
 msgstr "Provisió de fons"
 
-#: pagoview.cpp:65 pagoslist.cpp:255
+#: pagoslist.cpp:255 pagoview.cpp:65
 #, fuzzy
 msgid "Referencia de pago"
 msgstr "Nova forma de pagament"

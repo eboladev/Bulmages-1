@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,8 +114,8 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: listdescpresupuestoview.cpp:42 listlinpresupuestoview.cpp:55
-#: presupuestoview.cpp:70
+#: presupuestoview.cpp:70 listdescpresupuestoview.cpp:42
+#: listlinpresupuestoview.cpp:55
 msgid "% Descuento"
 msgstr "% Descuento"
 
@@ -211,7 +211,7 @@ msgid "Base Imponible"
 msgstr "Base Imponible"
 
 #: ui_presupuestoclientebase.h:788 ui_albaranclientebase.h:777
-#: ui_pedidoclientebase.h:703 ui_facturabase.h:711 ui_facturaslistbase.h:431
+#: ui_pedidoclientebase.h:703 ui_facturaslistbase.h:431 ui_facturabase.h:711
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
@@ -220,8 +220,8 @@ msgstr "Base imponible:"
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
-#: ui_facturabase.h:648 ui_facturabase.h:653 ui_facturaslistbase.h:461
-#: ui_facturaslistbase.h:466
+#: ui_facturaslistbase.h:461 ui_facturaslistbase.h:466 ui_facturabase.h:648
+#: ui_facturabase.h:653
 msgid "Borrar factura"
 msgstr "Borrar factura"
 
@@ -340,7 +340,7 @@ msgstr "Debe seleccionar una linea"
 msgid "Desc&uentos"
 msgstr "Desc&uentos"
 
-#: listlinpresupuestoview.cpp:50 presupuestolist.cpp:357
+#: presupuestolist.cpp:357 listlinpresupuestoview.cpp:50
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -566,7 +566,7 @@ msgid "Impuestos"
 msgstr "Impuestos"
 
 #: ui_presupuestoclientebase.h:790 ui_albaranclientebase.h:779
-#: ui_pedidoclientebase.h:705 ui_facturabase.h:713 ui_facturaslistbase.h:432
+#: ui_pedidoclientebase.h:705 ui_facturaslistbase.h:432 ui_facturabase.h:713
 msgid "Impuestos:"
 msgstr "Impuestos:"
 
@@ -679,7 +679,7 @@ msgstr "Precio de venta s/IVA"
 msgid "Presupuesto"
 msgstr "Presupuesto"
 
-#: pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103 presupuestolist.cpp:296
+#: presupuestolist.cpp:296 pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103
 #: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
 msgstr "Presupuestos a clientes"
@@ -747,8 +747,8 @@ msgstr "Total"
 
 #: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:792
 #: ui_albaranclientebase.h:781 ui_pedidoclientebase.h:707
-#: ui_pedidosclientelistbase.h:466 ui_facturabase.h:715
-#: ui_facturaslistbase.h:433
+#: ui_pedidosclientelistbase.h:466 ui_facturaslistbase.h:433
+#: ui_facturabase.h:715
 msgid "Total:"
 msgstr "Total:"
 

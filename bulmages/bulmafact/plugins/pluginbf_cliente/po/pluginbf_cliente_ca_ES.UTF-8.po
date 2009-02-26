@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,7 +103,7 @@ msgstr "Assentaments"
 msgid "Clientes (*.xml)"
 msgstr "Contaplus (*.xml)"
 
-#: clienteview.cpp:76 clientslist.cpp:276
+#: clientslist.cpp:276 clienteview.cpp:76
 msgid "Codigo"
 msgstr "Codi"
 
@@ -112,7 +112,7 @@ msgstr "Codi"
 msgid "Codigo de cliente:"
 msgstr "Codi de compte corrent.:"
 
-#: clienteview.cpp:63 clientslist.cpp:283
+#: clientslist.cpp:283 clienteview.cpp:63
 #, fuzzy
 msgid "Codigo postal"
 msgstr "Codi compte"
@@ -122,7 +122,7 @@ msgstr "Codi compte"
 msgid "Codigo postal:"
 msgstr "Codi compte"
 
-#: clienteview.cpp:72 clientslist.cpp:291
+#: clientslist.cpp:291 clienteview.cpp:72
 #, fuzzy
 msgid "Comentarios"
 msgstr ""
@@ -166,7 +166,7 @@ msgstr "Correo electrònic:"
 msgid "Datos de comercio electronico:"
 msgstr "Correo electrònic:"
 
-#: clienteview.cpp:60 clientslist.cpp:281
+#: clientslist.cpp:281 clienteview.cpp:60
 #, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
@@ -203,7 +203,7 @@ msgstr "Editar compte"
 msgid "Elija el archivo"
 msgstr "Trii el arxiu"
 
-#: clienteview.cpp:77 clientslist.cpp:288
+#: clientslist.cpp:288 clienteview.cpp:77
 #, fuzzy
 msgid "Empresa"
 msgstr "&Empresa"
@@ -224,12 +224,12 @@ msgstr "Error al crear el client"
 msgid "Exportar"
 msgstr "Exportar"
 
-#: clienteview.cpp:70 clientslist.cpp:289
+#: clientslist.cpp:289 clienteview.cpp:70
 #, fuzzy
 msgid "Fecha de alta del cliente"
 msgstr "Data de l'assentament"
 
-#: clienteview.cpp:71 clientslist.cpp:290
+#: clientslist.cpp:290 clienteview.cpp:71
 #, fuzzy
 msgid "Fecha de baja del cliente"
 msgstr "Data de l'assentament"
@@ -253,7 +253,7 @@ msgstr "Forma de pagament:"
 msgid "Guardar cliente"
 msgstr "Desa assentament"
 
-#: clienteview.cpp:55 clientslist.cpp:275
+#: clientslist.cpp:275 clienteview.cpp:55
 #, fuzzy
 msgid "ID cliente"
 msgstr "Id assentament"
@@ -282,7 +282,7 @@ msgstr "Imprimeix la comanda"
 msgid "Listado de Clientes"
 msgstr "Llistat d'assentaments"
 
-#: clienteview.cpp:57 clientslist.cpp:279
+#: clientslist.cpp:279 clienteview.cpp:57
 #, fuzzy
 msgid "Nombre alternativo del cliente"
 msgstr "Nom del compte"
@@ -309,17 +309,17 @@ msgstr "Nom del client"
 msgid "Nuevo"
 msgstr "Nou"
 
-#: pluginbf_cliente.cpp:107 pluginbf_cliente.cpp:108 clientslist.cpp:237
+#: clientslist.cpp:237 pluginbf_cliente.cpp:107 pluginbf_cliente.cpp:108
 #, fuzzy
 msgid "Nuevo cliente"
 msgstr "Nou assentament"
 
-#: clienteview.cpp:59 clientslist.cpp:280
+#: clientslist.cpp:280 clienteview.cpp:59
 #, fuzzy
 msgid "Numero cuenta corriente"
 msgstr "Codi de compte corrent.:"
 
-#: clienteview.cpp:67 clientslist.cpp:285
+#: clientslist.cpp:285 clienteview.cpp:67
 #, fuzzy
 msgid "Numero de fax"
 msgstr "Nombre de quotes"
@@ -329,7 +329,7 @@ msgstr "Nombre de quotes"
 msgid "Numero de fax:"
 msgstr "Nombre de quotes"
 
-#: clienteview.cpp:64 clientslist.cpp:284
+#: clientslist.cpp:284 clienteview.cpp:64
 #, fuzzy
 msgid "Numero de telefono"
 msgstr "Nombre de quotes"
@@ -351,7 +351,7 @@ msgstr ""
 msgid "Pagina web:"
 msgstr "URL de la pàgina web:"
 
-#: clienteview.cpp:61 clientslist.cpp:282
+#: clientslist.cpp:282 clienteview.cpp:61
 #, fuzzy
 msgid "Poblacion"
 msgstr "Paginació"

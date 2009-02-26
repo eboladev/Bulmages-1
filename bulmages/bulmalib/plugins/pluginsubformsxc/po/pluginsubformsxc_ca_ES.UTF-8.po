@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:32+0100\n"
+"POT-Creation-Date: 2009-02-26 01:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,5 +23,6 @@ msgid "Exportando datos a SXC"
 msgstr "Exportando datos a SXC"
 
 #: pluginsubformsxc.cpp:78 pluginsubformsxc.cpp:90
+#, fuzzy
 msgid "Exportar a hoja de calculo (SXC)"
-msgstr ""
+msgstr "Expor&ta"

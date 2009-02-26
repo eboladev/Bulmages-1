@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:32+0100\n"
+"POT-Creation-Date: 2009-02-26 01:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr "Aceptar"
 
 #: importcsv.cpp:68
 msgid "All files (*)"
-msgstr ""
+msgstr "Tots els fitxers (*)"
 
 #: ui_importcsvbase.h:197
 #, fuzzy
@@ -56,7 +56,7 @@ msgstr "Llegir empresa"
 
 #: ui_importcsvbase.h:204
 msgid "Composicion de Campos"
-msgstr ""
+msgstr "Composició de camps"
 
 #: importcsv.cpp:50
 #, fuzzy
@@ -75,7 +75,7 @@ msgstr "&Importa"
 
 #: importcsv.cpp:68
 msgid "Open file"
-msgstr ""
+msgstr "Obre fitxer"
 
 #: ui_importcsvbase.h:202
 msgid "Primera fila son cabeceras"

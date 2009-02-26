@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: listdescfacturaview.cpp:42 listlinfacturaview.cpp:56
+#: listlinfacturaview.cpp:56 listdescfacturaview.cpp:42
 msgid "% Descuento"
 msgstr "% Descuento"
 
@@ -205,7 +205,7 @@ msgstr "Almacen:"
 msgid "Base imponible"
 msgstr "Base imponible"
 
-#: ui_facturabase.h:711 ui_facturaslistbase.h:431 ui_albaranclientebase.h:777
+#: ui_facturaslistbase.h:431 ui_facturabase.h:711 ui_albaranclientebase.h:777
 #: ui_pedidoclientebase.h:703
 msgid "Base imponible:"
 msgstr "Base imponible:"
@@ -215,8 +215,8 @@ msgstr "Base imponible:"
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
-#: ui_facturabase.h:648 ui_facturabase.h:653 ui_facturaslistbase.h:461
-#: ui_facturaslistbase.h:466
+#: ui_facturaslistbase.h:461 ui_facturaslistbase.h:466 ui_facturabase.h:648
+#: ui_facturabase.h:653
 msgid "Borrar factura"
 msgstr "Borrar factura"
 
@@ -326,7 +326,7 @@ msgstr "Debe seleccionar una linea"
 msgid "Desc&uentos"
 msgstr "Desc&uentos"
 
-#: facturaslist.cpp:370 listlinfacturaview.cpp:51 facturaview.cpp:70
+#: facturaslist.cpp:370 facturaview.cpp:70 listlinfacturaview.cpp:51
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -408,7 +408,7 @@ msgstr "Factura existente"
 msgid "Factura ya existe"
 msgstr "Factura ya existe"
 
-#: pluginfactura.cpp:100 pluginfactura.cpp:101 facturaslist.cpp:240
+#: facturaslist.cpp:240 pluginfactura.cpp:100 pluginfactura.cpp:101
 #: ui_facturaslistbase.h:427
 msgid "Facturas a clientes"
 msgstr "Facturas a clientes"
@@ -503,8 +503,8 @@ msgstr "Id cliente"
 msgid "Id descuento"
 msgstr "Id descuento"
 
-#: facturaslist.cpp:371 listdescfacturaview.cpp:43 listlinfacturaview.cpp:57
-#: facturaview.cpp:61
+#: facturaslist.cpp:371 facturaview.cpp:61 listlinfacturaview.cpp:57
+#: listdescfacturaview.cpp:43
 msgid "Id factura"
 msgstr "Id factura"
 
@@ -538,7 +538,7 @@ msgstr "Imprimir pedido"
 msgid "Impuestos"
 msgstr "Impuestos"
 
-#: ui_facturabase.h:713 ui_facturaslistbase.h:432 ui_albaranclientebase.h:779
+#: ui_facturaslistbase.h:432 ui_facturabase.h:713 ui_albaranclientebase.h:779
 #: ui_pedidoclientebase.h:705
 msgid "Impuestos:"
 msgstr "Impuestos:"
@@ -695,7 +695,7 @@ msgstr "Todas las facturas"
 msgid "Total"
 msgstr "Total"
 
-#: ui_facturabase.h:715 ui_facturaslistbase.h:433 ui_albaranclientebase.h:781
+#: ui_facturaslistbase.h:433 ui_facturabase.h:715 ui_albaranclientebase.h:781
 #: ui_pedidoclientebase.h:707 ui_pedidosclientelistbase.h:466
 msgid "Total:"
 msgstr "Total:"

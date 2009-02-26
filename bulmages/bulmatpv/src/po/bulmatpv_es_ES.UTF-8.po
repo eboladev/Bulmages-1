@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,15 +124,15 @@ msgstr "&Cerrar"
 
 #: ui_tpvdlg.h:366
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ui_tpvdlg.h:367
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ui_tpvdlg.h:371
 msgid "00"
-msgstr ""
+msgstr "00"
 
 #: ui_tpvdlg.h:356
 msgid "1"
@@ -140,35 +140,35 @@ msgstr "1"
 
 #: ui_tpvdlg.h:368
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: ui_tpvdlg.h:359
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: ui_tpvdlg.h:360
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: ui_tpvdlg.h:362
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ui_tpvdlg.h:357
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: ui_tpvdlg.h:358
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: ui_tpvdlg.h:370
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: ui_tpvdlg.h:365
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: ui_aboutbase.h:279
 msgid ""
@@ -196,11 +196,11 @@ msgstr ""
 
 #: ui_tpvdlg.h:376
 msgid "<p align=\"right\">Codigo</p>"
-msgstr ""
+msgstr "<p align=\"right\">Codigo</p>"
 
 #: ui_tpvdlg.h:377
 msgid "<p align=\"right\">Total:</p>"
-msgstr ""
+msgstr "<p align=\"right\">Total:</p>"
 
 #: ui_aboutbase.h:284
 msgid "A&utores"
@@ -208,7 +208,7 @@ msgstr "A&utores"
 
 #: ui_tpvdlg.h:364
 msgid "ATRÁS"
-msgstr ""
+msgstr "ATRÁS"
 
 #: ui_aboutbase.h:275
 msgid "Acerca de BulmaFact"
@@ -220,7 +220,7 @@ msgstr "Acuerdo de &licencia"
 
 #: ui_bulmatpvbase.h:99
 msgid "Administrador"
-msgstr ""
+msgstr "Administrador"
 
 #: ticket.cpp:49
 msgid "Almacen"
@@ -228,11 +228,11 @@ msgstr "Almacen"
 
 #: ui_bulmatpvbase.h:93
 msgid "Anyadir"
-msgstr ""
+msgstr "Anyadir"
 
 #: ui_tpvdlg.h:361
 msgid "BORRAR"
-msgstr ""
+msgstr "BORRAR"
 
 #: ui_bulmatpvbase.h:95
 msgid "Borrar"
@@ -240,11 +240,11 @@ msgstr "Borrar"
 
 #: ui_tpvdlg.h:355 ui_bulmatpvbase.h:87
 msgid "BulmaTPV"
-msgstr ""
+msgstr "BulmaTPV"
 
 #: ui_tpvdlg.h:372
 msgid "Cambio Operador"
-msgstr ""
+msgstr "Cambio Operador"
 
 #: ui_tpvdlg.h:380 ticket.cpp:86
 msgid "Cantidad"
@@ -292,11 +292,11 @@ msgstr "Error inesperado en BulmaTPV. El programa se cerrara."
 
 #: ui_bulmatpvbase.h:97
 msgid "Estadisticas"
-msgstr ""
+msgstr "Estadisticas"
 
 #: ui_aboutbase.h:277
 msgid "Facturacion GPL - Version 0.10.1 -"
-msgstr ""
+msgstr "Facturacion GPL - Version 0.10.1 -"
 
 #: ticket.cpp:46
 msgid "Hora"
@@ -332,13 +332,13 @@ msgstr "Id lalbaran"
 
 #: ui_bulmatpvbase.h:96
 msgid "Identificacion"
-msgstr ""
+msgstr "Identificacion"
 
 #: main.cxx:152
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
-#: empresatpv.cpp:77
+#: btcompany.cpp:77
 msgid "Inicializando listado de articulos"
 msgstr "Inicializando listado de articulos"
 
@@ -356,11 +356,11 @@ msgstr "Leyendo configuracion"
 
 #: ui_bulmatpvbase.h:94
 msgid "Modificar"
-msgstr ""
+msgstr "Modificar"
 
 #: ui_tpvdlg.h:363
 msgid "NO"
-msgstr ""
+msgstr "NO"
 
 #: ticket.cpp:43
 msgid "Nombre"
@@ -388,7 +388,7 @@ msgstr "Precio"
 
 #: ui_bulmatpvbase.h:92
 msgid "Preferencias"
-msgstr ""
+msgstr "Preferencias"
 
 #: ticket.cpp:51
 msgid "Referencia"
@@ -400,23 +400,23 @@ msgstr "Req. eq."
 
 #: ui_tpvdlg.h:369
 msgid "SI"
-msgstr ""
+msgstr "SI"
 
 #: ui_tpvdlg.h:373
 msgid "Seleccion Cliente"
-msgstr ""
+msgstr "Seleccion Cliente"
 
 #: ui_bulmatpvbase.h:88
 msgid "Sobre BulmaTPV"
-msgstr ""
+msgstr "Sobre BulmaTPV"
 
 #: ui_bulmatpvbase.h:89
 msgid "Sobre Bulmages"
-msgstr ""
+msgstr "Sobre Bulmages"
 
 #: ui_bulmatpvbase.h:90
 msgid "Sobre Qt"
-msgstr ""
+msgstr "Sobre Qt"
 
 #: ui_aboutbase.h:285
 msgid "Sopor&te"
@@ -426,7 +426,7 @@ msgstr "Sopor&te"
 msgid "Terminado"
 msgstr "Terminado"
 
-#: empresatpv.cpp:100
+#: btcompany.cpp:100
 msgid "Terminal Punto de Venta GPL"
 msgstr "Terminal Punto de Venta GPL"
 
@@ -440,7 +440,7 @@ msgstr "Trabajador"
 
 #: ui_tpvdlg.h:374 ui_tpvdlg.h:375
 msgid "pushButton18"
-msgstr ""
+msgstr "pushButton18"
 
 #~ msgid "Cargando traducciones"
 #~ msgstr "Cargando traducciones"

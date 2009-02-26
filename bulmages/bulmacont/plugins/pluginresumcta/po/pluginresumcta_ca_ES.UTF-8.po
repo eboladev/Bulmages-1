@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: pluginresumcta.cpp:76
 msgid "&Resumen Cta"
-msgstr ""
+msgstr "&Resum Cta"
 
 #: pluginresumcta.cpp:80
 msgid ""
@@ -28,6 +28,9 @@ msgid ""
 "\n"
 "Muestra/oculta el corrector"
 msgstr ""
+"Corrector.\n"
+"\n"
+"Mostra/amaga el corrector"
 
 #: pluginresumcta.cpp:79
 msgid "Muestra/oculta el resumen de cuenta"

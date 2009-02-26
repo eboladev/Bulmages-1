@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,8 +196,9 @@ msgid "Crear &Nueva Empresa"
 msgstr "Créer &nouvelle entreprise"
 
 #: ui_nuevafactbase.h:140
+#, fuzzy
 msgid "Datos de facturacion:"
-msgstr ""
+msgstr "Données de l'asiette:"
 
 #: ui_nuevaempresadlg.h:140
 msgid "Datos de la contabilidad:"
@@ -338,8 +339,9 @@ msgid "Nueva empresa"
 msgstr "Nouvelle entreprise"
 
 #: ui_nuevafactbase.h:139
+#, fuzzy
 msgid "Nueva facturacion"
-msgstr ""
+msgstr "Nouveau amortissement"
 
 #: ui_configuracion.h:540
 msgid "Page"

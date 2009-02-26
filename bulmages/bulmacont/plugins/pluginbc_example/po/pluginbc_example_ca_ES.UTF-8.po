@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: pluginbc_example.cpp:84
 msgid "&Plugin"
-msgstr ""
+msgstr "&Plugin"
 
 #: pluginbc_example.cpp:85
 #, fuzzy
@@ -29,11 +29,11 @@ msgstr "Quant a Bulm&aCont"
 
 #: pluginbc_example.cpp:87
 msgid "Muestra que es esto"
-msgstr ""
+msgstr "Mostra que és això"
 
 #: pluginbc_example.cpp:86
 msgid "Muestra statustip"
-msgstr ""
+msgstr "Mostra statustip"
 
 #: pluginbc_example.cpp:107
 #, fuzzy

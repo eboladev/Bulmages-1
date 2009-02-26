@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,11 +116,11 @@ msgstr ""
 
 #: ui_cambiobase.h:518
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ui_cambiobase.h:519
 msgid "00"
-msgstr ""
+msgstr "00"
 
 #: ui_cambiobase.h:515
 msgid "1"
@@ -128,47 +128,47 @@ msgstr "1"
 
 #: ui_cambiobase.h:516
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: ui_cambiobase.h:517
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: ui_cambiobase.h:512
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: ui_cambiobase.h:513
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ui_cambiobase.h:514
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: ui_cambiobase.h:509
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: ui_cambiobase.h:510
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: ui_cambiobase.h:511
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: ui_cambiobase.h:508
 msgid "A devolver:"
-msgstr ""
+msgstr "A devolver:"
 
 #: ui_cambiobase.h:520
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: ui_cambiobase.h:523
 msgid "CANCELAR"
-msgstr ""
+msgstr "CANCELAR"
 
 #: plugincambio.cpp:72
 msgid "Cobro"
@@ -176,20 +176,20 @@ msgstr "Cobro"
 
 #: ui_cambiobase.h:505
 msgid "Dialog"
-msgstr ""
+msgstr "Dialog"
 
 #: ui_cambiobase.h:521
 msgid "EFECTIVO"
-msgstr ""
+msgstr "EFECTIVO"
 
 #: ui_cambiobase.h:507
 msgid "Entregado:"
-msgstr ""
+msgstr "Entregado:"
 
 #: ui_cambiobase.h:506
 msgid "Total a cobrar:"
-msgstr ""
+msgstr "Total a cobrar:"
 
 #: ui_cambiobase.h:522
 msgid "VISA"
-msgstr ""
+msgstr "VISA"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,8 +94,9 @@ msgid "Imprimir factura"
 msgstr "Imprimeix albarà"
 
 #: ui_z2zbase.h:407
+#, fuzzy
 msgid "No cambiar precios de articulos"
-msgstr ""
+msgstr "&No"
 
 #: ui_z2zbase.h:406
 msgid "Num Minimo lineas ticket"
@@ -121,7 +122,7 @@ msgstr "Total Haver:"
 
 #: ui_z2zbase.h:400
 msgid "Total aprox a Traspasar"
-msgstr ""
+msgstr "Total aprox a traspassar"
 
 #: ui_z2zbase.h:401
 msgid "Traspasar"

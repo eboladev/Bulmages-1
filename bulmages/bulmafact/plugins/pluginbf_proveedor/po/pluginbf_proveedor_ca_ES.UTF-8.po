@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr "&Proveïdors"
 
 #: ui_proveditbase.h:790
 msgid "&Telefono:"
-msgstr ""
+msgstr "&Telèfon:"
 
 #: ui_providerslistbase.h:336 ui_providerslistbase.h:341
 msgid "Actualizar listado"
@@ -317,8 +317,9 @@ msgid "Pagina &web:"
 msgstr "URL de la pàgina web:"
 
 #: ui_proveditbase.h:788
+#, fuzzy
 msgid "Poblacio&n:"
-msgstr ""
+msgstr "Pagi&nació:"
 
 #: providerslist.cpp:292 provedit.cpp:52
 #, fuzzy

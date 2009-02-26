@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,11 +116,11 @@ msgstr ""
 
 #: ui_devolucionbase.h:273
 msgid "A Devolver"
-msgstr ""
+msgstr "A Devolver"
 
 #: ui_devolucionbase.h:276
 msgid "CANCELAR"
-msgstr ""
+msgstr "CANCELAR"
 
 #: ui_devolucionbase.h:270
 msgid "Comentarios"
@@ -136,15 +136,15 @@ msgstr "Devolucion"
 
 #: ui_devolucionbase.h:267
 msgid "Dialog"
-msgstr ""
+msgstr "Dialog"
 
 #: ui_devolucionbase.h:274
 msgid "EFECTIVO"
-msgstr ""
+msgstr "EFECTIVO"
 
 #: ui_devolucionbase.h:272
 msgid "Nuevo Total"
-msgstr ""
+msgstr "Nuevo Total"
 
 #: ui_devolucionbase.h:268
 msgid "Ticket"
@@ -152,8 +152,8 @@ msgstr "Ticket"
 
 #: ui_devolucionbase.h:271
 msgid "Total Original"
-msgstr ""
+msgstr "Total Original"
 
 #: ui_devolucionbase.h:275
 msgid "VALE COMPRA"
-msgstr ""
+msgstr "VALE COMPRA"

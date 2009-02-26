@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,23 +28,24 @@ msgstr "Tan&ca"
 
 #: ui_tpvdlg.h:366
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ui_tpvdlg.h:367
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ui_tpvdlg.h:371
 msgid "00"
-msgstr ""
+msgstr "00"
 
 #: ui_tpvdlg.h:356
 msgid "1"
 msgstr "1"
 
 #: ui_tpvdlg.h:368
+#, fuzzy
 msgid "2"
-msgstr ""
+msgstr "F2"
 
 #: ui_tpvdlg.h:359
 msgid "3"
@@ -55,8 +56,9 @@ msgid "4"
 msgstr ""
 
 #: ui_tpvdlg.h:362
+#, fuzzy
 msgid "5"
-msgstr ""
+msgstr "F5"
 
 #: ui_tpvdlg.h:357
 msgid "6"
@@ -100,11 +102,11 @@ msgstr ""
 
 #: ui_tpvdlg.h:376
 msgid "<p align=\"right\">Codigo</p>"
-msgstr ""
+msgstr "<p align=\"right\">Codigo</p>"
 
 #: ui_tpvdlg.h:377
 msgid "<p align=\"right\">Total:</p>"
-msgstr ""
+msgstr "<p align=\"right\">Total:</p>"
 
 #: ui_aboutbase.h:284
 msgid "A&utores"
@@ -125,7 +127,7 @@ msgstr "Acord de &llicència"
 
 #: ui_bulmatpvbase.h:99
 msgid "Administrador"
-msgstr ""
+msgstr "Administrador"
 
 #: ticket.cpp:49
 #, fuzzy
@@ -134,11 +136,11 @@ msgstr "<LI> Magatzem <B>"
 
 #: ui_bulmatpvbase.h:93
 msgid "Anyadir"
-msgstr ""
+msgstr "Afegir"
 
 #: ui_tpvdlg.h:361
 msgid "BORRAR"
-msgstr ""
+msgstr "ESBORRA"
 
 #: ui_bulmatpvbase.h:95
 msgid "Borrar"
@@ -146,11 +148,12 @@ msgstr "Esborra"
 
 #: ui_tpvdlg.h:355 ui_bulmatpvbase.h:87
 msgid "BulmaTPV"
-msgstr ""
+msgstr "BulmaTPV"
 
 #: ui_tpvdlg.h:372
+#, fuzzy
 msgid "Cambio Operador"
-msgstr ""
+msgstr "Importa dades"
 
 #: ui_tpvdlg.h:380 ticket.cpp:86
 msgid "Cantidad"
@@ -196,16 +199,19 @@ msgid "El ticket esta vacio."
 msgstr ""
 
 #: main.cxx:173
+#, fuzzy
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
-msgstr ""
+msgstr "BulmaTPV."
 
 #: ui_bulmatpvbase.h:97
+#, fuzzy
 msgid "Estadisticas"
-msgstr ""
+msgstr "Assentaments"
 
 #: ui_aboutbase.h:277
+#, fuzzy
 msgid "Facturacion GPL - Version 0.10.1 -"
-msgstr ""
+msgstr "Facturació GPL - Versió 0.11.1 -"
 
 #: ticket.cpp:46
 #, fuzzy
@@ -232,8 +238,9 @@ msgid "Id articulo"
 msgstr "<P> Article <B>"
 
 #: ticket.cpp:45
+#, fuzzy
 msgid "Id fechaalbaran"
-msgstr ""
+msgstr "Id"
 
 #: ticket.cpp:53
 #, fuzzy
@@ -246,14 +253,15 @@ msgid "Id lalbaran"
 msgstr "Imprimeix albarà"
 
 #: ui_bulmatpvbase.h:96
+#, fuzzy
 msgid "Identificacion"
-msgstr ""
+msgstr "Identificador"
 
 #: main.cxx:152
 msgid "Inicializando componentes"
 msgstr ""
 
-#: empresatpv.cpp:77
+#: btcompany.cpp:77
 msgid "Inicializando listado de articulos"
 msgstr "Inicialitzant el llistat d'articles"
 
@@ -272,8 +280,9 @@ msgid "Leyendo configuracion"
 msgstr "Arranjament"
 
 #: ui_bulmatpvbase.h:94
+#, fuzzy
 msgid "Modificar"
-msgstr ""
+msgstr "identificador"
 
 #: ui_tpvdlg.h:363
 msgid "NO"
@@ -307,8 +316,9 @@ msgid "Precio"
 msgstr "Adreça:"
 
 #: ui_bulmatpvbase.h:92
+#, fuzzy
 msgid "Preferencias"
-msgstr ""
+msgstr "Referència"
 
 #: ticket.cpp:51
 msgid "Referencia"
@@ -323,20 +333,24 @@ msgid "SI"
 msgstr ""
 
 #: ui_tpvdlg.h:373
+#, fuzzy
 msgid "Seleccion Cliente"
-msgstr ""
+msgstr "<HR><B>Tractant comana del client"
 
 #: ui_bulmatpvbase.h:88
+#, fuzzy
 msgid "Sobre BulmaTPV"
-msgstr ""
+msgstr "BulmaTPV"
 
 #: ui_bulmatpvbase.h:89
+#, fuzzy
 msgid "Sobre Bulmages"
-msgstr ""
+msgstr "Llançador BulmaGés"
 
 #: ui_bulmatpvbase.h:90
+#, fuzzy
 msgid "Sobre Qt"
-msgstr ""
+msgstr "Nom del compte"
 
 #: ui_aboutbase.h:285
 msgid "Sopor&te"
@@ -347,7 +361,7 @@ msgstr "Supor&t"
 msgid "Terminado"
 msgstr "<LI>Terminat</LI>\n"
 
-#: empresatpv.cpp:100
+#: btcompany.cpp:100
 msgid "Terminal Punto de Venta GPL"
 msgstr ""
 
@@ -361,4 +375,4 @@ msgstr "Treballador"
 
 #: ui_tpvdlg.h:374 ui_tpvdlg.h:375
 msgid "pushButton18"
-msgstr ""
+msgstr "pushButton18"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,11 +122,11 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_zlistbase.h:289 ui_zlistbase.h:294 ui_zbase.h:312 ui_zbase.h:317
+#: ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289 ui_zlistbase.h:294
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: zlist.cpp:59 zview.cpp:64 ui_zbase.h:321
+#: zview.cpp:64 zlist.cpp:59 ui_zbase.h:321
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -198,7 +198,7 @@ msgstr "Error al crear el almacen"
 msgid "Error al editar el almacen"
 msgstr "Error al editar el almacen"
 
-#: zlist.cpp:57 zview.cpp:59 zview.cpp:76 ui_zbase.h:322
+#: zview.cpp:59 zview.cpp:76 zlist.cpp:57 ui_zbase.h:322
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -218,7 +218,7 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Guardar almacen"
 
-#: zlist.cpp:58 zview.cpp:60 zview.cpp:81 ui_zbase.h:323
+#: zview.cpp:60 zview.cpp:81 zlist.cpp:58 ui_zbase.h:323
 msgid "Hora"
 msgstr "Hora"
 
@@ -238,7 +238,7 @@ msgstr "Id albaran"
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: zlist.cpp:62 zview.cpp:63
+#: zview.cpp:63 zlist.cpp:62
 msgid "Id. almacen"
 msgstr "Id. almacen"
 
@@ -278,6 +278,6 @@ msgstr "Referencia"
 msgid "Tickets"
 msgstr "Tickets"
 
-#: zlist.cpp:60 zview.cpp:61 zview.cpp:82 ui_zbase.h:325
+#: zview.cpp:61 zview.cpp:82 zlist.cpp:60 ui_zbase.h:325
 msgid "Total"
 msgstr "Total"

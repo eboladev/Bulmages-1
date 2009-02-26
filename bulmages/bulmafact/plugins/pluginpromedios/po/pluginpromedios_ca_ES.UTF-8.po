@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,16 +38,19 @@ msgid "Compras"
 msgstr "Compres"
 
 #: ui_promediobase.h:301 ui_promediobase.h:309
+#, fuzzy
 msgid "Precio Mayor"
-msgstr ""
+msgstr "Adreça:"
 
 #: ui_promediobase.h:300 ui_promediobase.h:306
+#, fuzzy
 msgid "Precio Medio"
-msgstr ""
+msgstr "Adreça:"
 
 #: ui_promediobase.h:302 ui_promediobase.h:307
+#, fuzzy
 msgid "Precio Menor"
-msgstr ""
+msgstr "Adreça:"
 
 #: ui_promediobase.h:299 ui_promediobase.h:310
 #, fuzzy

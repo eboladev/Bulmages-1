@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,11 +120,11 @@ msgstr "0.00"
 
 #: ui_totalbase.h:110
 msgid "ABRIR CAJON"
-msgstr ""
+msgstr "ABRIR CAJON"
 
 #: ui_totalbase.h:112
 msgid "COBRAR"
-msgstr ""
+msgstr "COBRAR"
 
 #: ui_totalbase.h:108
 msgid "Form"
@@ -132,7 +132,7 @@ msgstr "Form"
 
 #: ui_totalbase.h:111
 msgid "IMPRIMIR TICKET"
-msgstr ""
+msgstr "IMPRIMIR TICKET"
 
 #: plugintotal.cpp:52
 msgid "Total"

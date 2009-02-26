@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,7 +147,7 @@ msgstr "Buscar:"
 msgid "Codigo Almacen"
 msgstr "Codigo Almacen"
 
-#: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:58
+#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:91
 msgid "Codigo almacen"
 msgstr "Codigo almacen"
 
@@ -247,7 +247,7 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Guardar almacen"
 
-#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:57
+#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:90
 msgid "ID almacen"
 msgstr "ID almacen"
 
@@ -263,7 +263,7 @@ msgstr "Mostrar:"
 msgid "Nombre Almacen"
 msgstr "Nombre Almacen"
 
-#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
+#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:92
 msgid "Nombre almacen"
 msgstr "Nombre almacen"
 

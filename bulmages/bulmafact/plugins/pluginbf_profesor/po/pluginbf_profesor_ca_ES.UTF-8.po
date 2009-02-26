@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr "&Dades comptables"
 
 #: pluginprofesor.cpp:104
 msgid "&Nuevo Profesor"
-msgstr ""
+msgstr "&Nou professor"
 
 #: pluginprofesor.cpp:96
 msgid "&Profesores"
-msgstr ""
+msgstr "&Professors"
 
 #: pluginprofesor.cpp:112
 msgid "About FAPAC"
@@ -196,12 +196,14 @@ msgid "Direccion:"
 msgstr "Adreça:"
 
 #: ui_profesoreslistbase.h:329 ui_profesoreslistbase.h:334
+#, fuzzy
 msgid "Editar Profesor"
-msgstr ""
+msgstr "Edita"
 
 #: profesoreslist.cpp:217
+#, fuzzy
 msgid "Editar profesor"
-msgstr ""
+msgstr "Edita"
 
 #: ui_profesorbase.h:508
 msgid "Empresa:"
@@ -228,8 +230,9 @@ msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
 #: ui_profesoreslistbase.h:365 ui_profesoreslistbase.h:370
+#, fuzzy
 msgid "Filtrar Profesores"
-msgstr ""
+msgstr "Filtrar"
 
 #: ui_profesorbase.h:472 ui_profesorbase.h:477
 #, fuzzy
@@ -266,8 +269,9 @@ msgstr "Nom del proveïdor"
 
 #: ui_profesorbase.h:468 ui_profesoreslistbase.h:317
 #: ui_profesoreslistbase.h:322
+#, fuzzy
 msgid "Nuevo Profesor"
-msgstr ""
+msgstr "Nou"
 
 #: pluginprofesor.cpp:106 pluginprofesor.cpp:107
 #, fuzzy
@@ -297,7 +301,7 @@ msgstr "Paginació"
 msgid "Profesor"
 msgstr ""
 
-#: pluginprofesor.cpp:98 pluginprofesor.cpp:99 profesoreslist.cpp:144
+#: profesoreslist.cpp:144 pluginprofesor.cpp:98 pluginprofesor.cpp:99
 #: ui_profesoreslistbase.h:308
 msgid "Profesores"
 msgstr ""

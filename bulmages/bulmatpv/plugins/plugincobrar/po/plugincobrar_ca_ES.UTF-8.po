@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,20 @@ msgstr ""
 
 #: ui_cobrarbase.h:461
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ui_cobrarbase.h:462
 msgid "00"
-msgstr ""
+msgstr "00"
 
 #: ui_cobrarbase.h:458
 msgid "1"
 msgstr "1"
 
 #: ui_cobrarbase.h:459
+#, fuzzy
 msgid "2"
-msgstr ""
+msgstr "F2"
 
 #: ui_cobrarbase.h:460
 msgid "3"
@@ -43,8 +44,9 @@ msgid "4"
 msgstr ""
 
 #: ui_cobrarbase.h:456
+#, fuzzy
 msgid "5"
-msgstr ""
+msgstr "F5"
 
 #: ui_cobrarbase.h:457
 msgid "6"
@@ -68,7 +70,7 @@ msgstr ""
 
 #: ui_cobrarbase.h:463
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: plugincobrar.cpp:54
 #, fuzzy
@@ -87,13 +89,15 @@ msgstr ""
 "Tan&car"
 
 #: ui_cobrarbase.h:445
+#, fuzzy
 msgid "Dialog"
-msgstr ""
+msgstr "Diari"
 
 #: ui_cobrarbase.h:448
+#, fuzzy
 msgid "Entregado:"
-msgstr ""
+msgstr "Estat"
 
 #: ui_cobrarbase.h:446
 msgid "Total a cobrar:"
-msgstr ""
+msgstr "Total a cobrar:"

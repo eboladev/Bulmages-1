@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: ui_mticketbase.h:148 ui_mticketbase.h:153
 msgid "Bajar"
-msgstr ""
+msgstr "Bajar"
 
 #: ui_mticketbase.h:159 ui_mticketbase.h:164
 msgid "Borrar articulo"
@@ -128,11 +128,11 @@ msgstr "Form"
 
 #: ui_mticketbase.h:126 ui_mticketbase.h:131
 msgid "Imprimir ticket"
-msgstr ""
+msgstr "Imprimir ticket"
 
 #: ui_mticketbase.h:137 ui_mticketbase.h:142
 msgid "Subir"
-msgstr ""
+msgstr "Subir"
 
 #: pluginticketbasico.cpp:53
 msgid "Ticket"

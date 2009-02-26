@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,8 +55,9 @@ msgstr ""
 "&Cancel·lar"
 
 #: listtipostrabajoview.cpp:57
+#, fuzzy
 msgid "Color tipo trabajo"
-msgstr ""
+msgstr "Color tipus"
 
 #: plugintipostrabajo.cpp:199
 #, fuzzy
@@ -79,12 +80,14 @@ msgid "Id tipo de trabajo"
 msgstr "Id tipus d'IVA"
 
 #: listtipostrabajoview.cpp:55
+#, fuzzy
 msgid "Id tipo trabajo"
-msgstr ""
+msgstr "Id tipus"
 
 #: listtipostrabajoview.cpp:56
+#, fuzzy
 msgid "Nombre tipo trabajo"
-msgstr ""
+msgstr "Nom tipus"
 
 #: plugintipostrabajo.cpp:198
 #, fuzzy

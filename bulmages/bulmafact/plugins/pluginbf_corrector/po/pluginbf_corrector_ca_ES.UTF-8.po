@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,7 @@ msgstr "Arranjament"
 
 #: ui_correctorbase.h:92
 msgid "Corrector"
-msgstr ""
+msgstr "Corrector"
 
 #: ui_correctorbase.h:95 ui_correctorbase.h:100
 #, fuzzy
@@ -94,8 +94,9 @@ msgid "Reglas de Corrector"
 msgstr "Regles del corrector"
 
 #: ui_confreglasbase.h:292
+#, fuzzy
 msgid "Reglas sobre Apuntes"
-msgstr ""
+msgstr "Apunts"
 
 #: ui_confreglasbase.h:287
 #, fuzzy

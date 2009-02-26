@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: listdescpresupuestoview.cpp:42 listlinpresupuestoview.cpp:55
-#: presupuestoview.cpp:70
+#: presupuestoview.cpp:70 listdescpresupuestoview.cpp:42
+#: listlinpresupuestoview.cpp:55
 #, fuzzy
 msgid "% Descuento"
 msgstr "Document:"
@@ -92,7 +92,7 @@ msgstr "&No"
 
 #: pluginpresupuesto.cpp:108
 msgid "&Nuevo presupuesto a cliente"
-msgstr ""
+msgstr "&Nou pressupost a client"
 
 #: pluginpresupuesto.cpp:100
 msgid "&Presupuestos a clientes"
@@ -152,7 +152,7 @@ msgid "Base Imponible"
 msgstr "Base Imposable"
 
 #: ui_presupuestoclientebase.h:788 ui_albaranclientebase.h:777
-#: ui_pedidoclientebase.h:703 ui_facturabase.h:711 ui_facturaslistbase.h:431
+#: ui_pedidoclientebase.h:703 ui_facturaslistbase.h:431 ui_facturabase.h:711
 #, fuzzy
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
@@ -162,8 +162,8 @@ msgstr "Empreses disponibles:"
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
-#: ui_facturabase.h:648 ui_facturabase.h:653 ui_facturaslistbase.h:461
-#: ui_facturaslistbase.h:466
+#: ui_facturaslistbase.h:461 ui_facturaslistbase.h:466 ui_facturabase.h:648
+#: ui_facturabase.h:653
 #, fuzzy
 msgid "Borrar factura"
 msgstr "Esborra quota"
@@ -305,7 +305,7 @@ msgstr "Cal triar un compte"
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: listlinpresupuestoview.cpp:50 presupuestolist.cpp:357
+#: presupuestolist.cpp:357 listlinpresupuestoview.cpp:50
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -404,8 +404,9 @@ msgid "Factura existente"
 msgstr "Factura existent"
 
 #: genpreqtoolbutton.cpp:422
+#, fuzzy
 msgid "Factura ya existe"
-msgstr ""
+msgstr "Factura"
 
 #: ui_facturaslistbase.h:427
 msgid "Facturas a clientes"
@@ -568,7 +569,7 @@ msgid "Impuestos"
 msgstr "Imputació"
 
 #: ui_presupuestoclientebase.h:790 ui_albaranclientebase.h:779
-#: ui_pedidoclientebase.h:705 ui_facturabase.h:713 ui_facturaslistbase.h:432
+#: ui_pedidoclientebase.h:705 ui_facturaslistbase.h:432 ui_facturabase.h:713
 #, fuzzy
 msgid "Impuestos:"
 msgstr "Imputació"
@@ -600,8 +601,9 @@ msgid "No de linea"
 msgstr "Tipus de balanç"
 
 #: genpreqtoolbutton.cpp:618
+#, fuzzy
 msgid "No hay presupuestos con la misma referencia."
-msgstr ""
+msgstr "&No."
 
 #: listlinpresupuestoview.cpp:48
 #, fuzzy
@@ -703,7 +705,7 @@ msgstr "Extracte de comptes"
 msgid "Presupuesto"
 msgstr "<HR><B>Tractant el pressupost"
 
-#: pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103 presupuestolist.cpp:296
+#: presupuestolist.cpp:296 pluginpresupuesto.cpp:102 pluginpresupuesto.cpp:103
 #: ui_presupuestoslistbase.h:363
 msgid "Presupuestos a clientes"
 msgstr "Pressuposts a clients"
@@ -778,8 +780,8 @@ msgstr "Totals:"
 
 #: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:792
 #: ui_albaranclientebase.h:781 ui_pedidoclientebase.h:707
-#: ui_pedidosclientelistbase.h:466 ui_facturabase.h:715
-#: ui_facturaslistbase.h:433
+#: ui_pedidosclientelistbase.h:466 ui_facturaslistbase.h:433
+#: ui_facturabase.h:715
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"

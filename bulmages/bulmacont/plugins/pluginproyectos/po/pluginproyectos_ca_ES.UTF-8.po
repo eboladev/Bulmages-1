@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,12 +43,13 @@ msgstr ""
 #: ui_listproyectosbase.h:150 ui_listproyectosbase.h:155
 #: ui_listproyectosbase.h:162 ui_listproyectosbase.h:167
 msgid "Borrar amortizacion"
-msgstr ""
+msgstr "Esborra amortizació"
 
 #: ui_proyectobase.h:256 ui_proyectobase.h:261 ui_proyectobase.h:268
 #: ui_proyectobase.h:273
+#, fuzzy
 msgid "Borrar proyecto"
-msgstr ""
+msgstr "Esborra professor"
 
 #: listproyectosview.cpp:47
 #, fuzzy
@@ -73,7 +74,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
+#: ui_proyectobase.h:265 ui_proyectobase.h:277 ui_listproyectosbase.h:159
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -137,8 +138,9 @@ msgid "General"
 msgstr "General"
 
 #: ui_proyectobase.h:244 ui_proyectobase.h:249
+#, fuzzy
 msgid "Guardar Proyecto"
-msgstr ""
+msgstr "Desa empresa"
 
 #: proyectoview.cpp:56
 #, fuzzy
@@ -146,12 +148,14 @@ msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
 #: proyectoview.cpp:57
+#, fuzzy
 msgid "Id CCoste"
-msgstr ""
+msgstr "Id"
 
 #: proyectoview.cpp:79 proyectoview.cpp:98
+#, fuzzy
 msgid "Id linea de Ingreso Presupuesto"
-msgstr ""
+msgstr "Id <HR><B>Tractant el pressupost"
 
 #: proyectoview.cpp:71 proyectoview.cpp:90
 #, fuzzy
@@ -171,20 +175,23 @@ msgstr ""
 "Compte"
 
 #: proyectoview.cpp:80 proyectoview.cpp:99
+#, fuzzy
 msgid "Id. Proyecto"
-msgstr ""
+msgstr "Id Propietari"
 
 #: listproyectosview.cpp:46
 msgid "Identificador"
 msgstr "Identificador"
 
 #: ui_proyectobase.h:280
+#, fuzzy
 msgid "Ingresos"
-msgstr ""
+msgstr "Inc registre"
 
 #: ui_listproyectosbase.h:135
+#, fuzzy
 msgid "Listado de Proyectos"
-msgstr ""
+msgstr "<HR><B>Trotant el proveïdor"
 
 #: proyectoview.cpp:58
 #, fuzzy
@@ -196,12 +203,14 @@ msgid "Nombre"
 msgstr "Nom"
 
 #: ui_listproyectosbase.h:138 ui_listproyectosbase.h:143
+#, fuzzy
 msgid "Nueva amortizacion"
-msgstr ""
+msgstr "Id compte d'amortizació"
 
 #: ui_proyectobase.h:240
+#, fuzzy
 msgid "Nuevo proyecto"
-msgstr ""
+msgstr "Nova empresa"
 
 #: proyectoview.cpp:81 proyectoview.cpp:100
 msgid "Orden"
@@ -223,8 +232,9 @@ msgid "Proyectos"
 msgstr "Paràmetres"
 
 #: pluginproyectos.cpp:116
+#, fuzzy
 msgid "Proyectos asociados"
-msgstr ""
+msgstr "Paràmetres"
 
 #: listproyectosview.cpp:58
 #, fuzzy

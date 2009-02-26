@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,7 +160,7 @@ msgstr "Albaran"
 msgid "Albaran ya existe"
 msgstr "Albaran ya existe"
 
-#: pluginalbaran.cpp:101 pluginalbaran.cpp:102 albaranclientelist.cpp:311
+#: albaranclientelist.cpp:311 pluginalbaran.cpp:101 pluginalbaran.cpp:102
 #: ui_albaranclientelistbase.h:434
 msgid "Albaranes a clientes"
 msgstr "Albaranes a clientes"
@@ -202,7 +202,7 @@ msgstr "Buscar:"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: albaranclienteview.cpp:105 albaranclientelist.cpp:156
+#: albaranclientelist.cpp:156 albaranclienteview.cpp:105
 msgid "Cliente:"
 msgstr "Cliente:"
 
@@ -266,7 +266,7 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: albaranclienteview.cpp:84 albaranclientelist.cpp:385
+#: albaranclientelist.cpp:385 albaranclienteview.cpp:84
 msgid "Descripcion"
 msgstr "Descripcion"
 
@@ -431,7 +431,7 @@ msgstr "Nuevo albaran"
 msgid "Nuevo albaran a cliente"
 msgstr "Nuevo albaran a cliente"
 
-#: albaranclienteview.cpp:75 albaranclientelist.cpp:384
+#: albaranclientelist.cpp:384 albaranclienteview.cpp:75
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 

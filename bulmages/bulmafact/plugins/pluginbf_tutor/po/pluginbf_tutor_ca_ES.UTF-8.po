@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgstr "Nou assentament"
 
 #: plugintutor.cpp:96
 msgid "&Tutores"
-msgstr ""
+msgstr "&Tutors"
 
 #: ui_tutoreslistbase.h:389 ui_tutoreslistbase.h:394
 msgid "Actualizar listado"
@@ -216,9 +216,9 @@ msgstr "Desa arxiu"
 msgid "Hijos"
 msgstr ""
 
-#: tutoreslist.cpp:262 tutorview.cpp:51
+#: tutorview.cpp:51 tutoreslist.cpp:262
 msgid "ID tutor"
-msgstr ""
+msgstr "ID tutor"
 
 #: ui_tutoreslistbase.h:353 ui_tutoreslistbase.h:358
 #, fuzzy
@@ -287,7 +287,7 @@ msgstr ""
 
 #: tutorview.cpp:48
 msgid "Tutor"
-msgstr ""
+msgstr "Tutor"
 
 #: tutoreslist.cpp:144 plugintutor.cpp:98 plugintutor.cpp:99
 #: ui_tutoreslistbase.h:308

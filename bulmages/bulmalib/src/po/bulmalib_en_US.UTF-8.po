@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:32+0100\n"
+"POT-Creation-Date: 2009-02-26 01:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr "Reserved option to experts!"
 msgid "&Borrar"
 msgstr "Erase"
 
-#: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
+#: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119
+#: paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancel"
 
@@ -34,6 +35,7 @@ msgstr "&Close"
 msgid "&Cerrar el programa"
 msgstr "&Close the program"
 
+#: blcompanydialog.cpp:212
 msgid "&Cierra el programa"
 msgstr "&Closes the program"
 
@@ -120,19 +122,19 @@ msgstr "Update Listing"
 msgid "Actualizar Listado de Empresas"
 msgstr "Update Listing of Companies"
 
-#: blsubform.cpp:2436
+#: blsubform.cpp:2435
 msgid "Ajustar altura"
 msgstr "Fit height"
 
-#: blsubform.cpp:2439
+#: blsubform.cpp:2438
 msgid "Ajustar alturas"
 msgstr "Fit heights"
 
-#: blsubform.cpp:2435
+#: blsubform.cpp:2434
 msgid "Ajustar columa"
 msgstr "Fit column"
 
-#: blsubform.cpp:2438
+#: blsubform.cpp:2437
 msgid "Ajustar columnas"
 msgstr "Fit columns"
 
@@ -145,6 +147,7 @@ msgstr "<LI> Warehouse <B>"
 msgid "Anual"
 msgstr "Annual"
 
+#: blcompanydialog.cpp:490
 msgid "Anyo"
 msgstr "Year"
 
@@ -156,6 +159,7 @@ msgstr "Apply"
 msgid "Application name"
 msgstr "Application name"
 
+#: blcompanydialog.cpp:490
 msgid "Archivo"
 msgstr "File"
 
@@ -181,7 +185,7 @@ msgstr "Erase"
 msgid "Borrar pais"
 msgstr "Erase"
 
-#: blsubform.cpp:2432
+#: blsubform.cpp:2431
 msgid "Borrar registro"
 msgstr "Erase registry"
 
@@ -359,7 +363,7 @@ msgstr "Companies available:"
 msgid "Error al crear el banco"
 msgstr ""
 
-#: blpostgresqlclient.cpp:138
+#: blpostgresqlclient.cpp:141
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Error when doing the consultation with the data base."
 
@@ -439,7 +443,7 @@ msgstr ""
 msgid "Id. Provincia"
 msgstr ""
 
-#: blsubform.cpp:2173
+#: blsubform.cpp:2172
 msgid "Imprimiendo "
 msgstr ""
 
@@ -521,6 +525,7 @@ msgstr "It has not been possible to erase"
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "The window due to an error could not be closed"
 
+#: blcompanydialog.cpp:490 blsubform.cpp:197
 msgid "Nombre"
 msgstr "Name"
 
@@ -583,6 +588,7 @@ msgstr ""
 msgid "Paises"
 msgstr ""
 
+#: blcompanydialog.cpp:281
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "In order to enter, before it must select a company."
 
@@ -652,6 +658,7 @@ msgstr ""
 msgid "Tiene que seleccionar un elemento"
 msgstr "Must select an element"
 
+#: blcompanydialog.cpp:490
 msgid "Tipo"
 msgstr "Type"
 
@@ -764,7 +771,7 @@ msgstr ""
 msgid "Usuario Actual"
 msgstr ""
 
-#: blsubform.cpp:2442
+#: blsubform.cpp:2441
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "See/Hide configurador of subform"
 

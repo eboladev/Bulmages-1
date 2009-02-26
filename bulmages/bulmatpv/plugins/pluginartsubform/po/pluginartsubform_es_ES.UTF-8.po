@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,7 +126,7 @@ msgstr "Alt+O"
 msgid "Articulos"
 msgstr "Articulos"
 
-#: articulolisttpv.cpp:162
+#: articulolisttpv.cpp:161
 msgid "Borrar articulo"
 msgstr "Borrar articulo"
 
@@ -134,7 +134,7 @@ msgstr "Borrar articulo"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: articulolisttpv.cpp:243
+#: articulolisttpv.cpp:242
 msgid "Codigo completo del articulo"
 msgstr "Codigo completo del articulo"
 
@@ -142,23 +142,23 @@ msgstr "Codigo completo del articulo"
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: articulolisttpv.cpp:245
+#: articulolisttpv.cpp:244
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripcion abreviada del articulo"
 
-#: articulolisttpv.cpp:247
+#: articulolisttpv.cpp:246
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripcion del tipo de articulo"
 
-#: articulolisttpv.cpp:248
+#: articulolisttpv.cpp:247
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripcion tipo de I.V.A."
 
-#: articulolisttpv.cpp:250
+#: articulolisttpv.cpp:249
 msgid "Disponible en stock"
 msgstr "Disponible en stock"
 
-#: articulolisttpv.cpp:161
+#: articulolisttpv.cpp:160
 msgid "Editar articulo"
 msgstr "Editar articulo"
 
@@ -166,19 +166,19 @@ msgstr "Editar articulo"
 msgid "Filtrar listado"
 msgstr "Filtrar listado"
 
-#: articulolisttpv.cpp:242
+#: articulolisttpv.cpp:241
 msgid "ID articulo"
 msgstr "ID articulo"
 
-#: articulolisttpv.cpp:244
+#: articulolisttpv.cpp:243
 msgid "Nombre del articulo"
 msgstr "Nombre del articulo"
 
-#: articulolisttpv.cpp:246
+#: articulolisttpv.cpp:245
 msgid "Observaciones sobre el articulo"
 msgstr "Observaciones sobre el articulo"
 
-#: articulolisttpv.cpp:249
+#: articulolisttpv.cpp:248
 msgid "P.V.P. articulo"
 msgstr "P.V.P. articulo"
 

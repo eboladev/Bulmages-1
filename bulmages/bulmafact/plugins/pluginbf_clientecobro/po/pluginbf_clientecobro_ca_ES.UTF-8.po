@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,7 +113,7 @@ msgstr "Pendent:"
 
 #: cobroview.cpp:58
 msgid "Cobro"
-msgstr ""
+msgstr "Cobrament"
 
 #: cobroslist.cpp:181 plugincobros.cpp:99 plugincobros.cpp:100
 msgid "Cobros a clientes"
@@ -312,8 +312,9 @@ msgid "Nuevo cobro a cliente"
 msgstr "Nou assentament"
 
 #: ui_cobrobase.h:365
+#, fuzzy
 msgid "Nuevo cobro de cliente"
-msgstr ""
+msgstr "Nou"
 
 #: cobroslist.cpp:313
 #, fuzzy

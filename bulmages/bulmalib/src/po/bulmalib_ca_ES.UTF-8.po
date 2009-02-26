@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:32+0100\n"
+"POT-Creation-Date: 2009-02-26 01:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr "¡Opció reservada per a experts!"
 msgid "&Borrar"
 msgstr "Tan&car"
 
-#: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119 paisview.cpp:225
+#: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119
+#: paisview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancel·lar"
 
@@ -34,6 +35,7 @@ msgstr "Tan&car"
 msgid "&Cerrar el programa"
 msgstr "Tan&car el programa"
 
+#: blcompanydialog.cpp:212
 msgid "&Cierra el programa"
 msgstr "Tan&ca el programa"
 
@@ -119,19 +121,19 @@ msgstr "Actualitzar Llistat"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualitzar Llistat d'Empreses"
 
-#: blsubform.cpp:2436
+#: blsubform.cpp:2435
 msgid "Ajustar altura"
 msgstr "Ajustar altura"
 
-#: blsubform.cpp:2439
+#: blsubform.cpp:2438
 msgid "Ajustar alturas"
 msgstr "Ajustar altures"
 
-#: blsubform.cpp:2435
+#: blsubform.cpp:2434
 msgid "Ajustar columa"
 msgstr "Ajustar columna"
 
-#: blsubform.cpp:2438
+#: blsubform.cpp:2437
 msgid "Ajustar columnas"
 msgstr "Ajustar columnes"
 
@@ -144,6 +146,7 @@ msgstr "<LI> Magatzem <B>"
 msgid "Anual"
 msgstr "Anual"
 
+#: blcompanydialog.cpp:490
 msgid "Anyo"
 msgstr "Any"
 
@@ -155,6 +158,7 @@ msgstr "Aplicar"
 msgid "Application name"
 msgstr "Nom de la aplicació"
 
+#: blcompanydialog.cpp:490
 msgid "Archivo"
 msgstr "Arxiu"
 
@@ -181,17 +185,17 @@ msgstr "Esborrar"
 msgid "Borrar pais"
 msgstr "Esborrar"
 
-#: blsubform.cpp:2432
+#: blsubform.cpp:2431
 msgid "Borrar registro"
 msgstr "Esborrar registre"
 
 #: ui_busquedabase.h:99
 msgid "Busqueda"
-msgstr ""
+msgstr "Cerca"
 
 #: ui_fichacfgbase.h:285
 msgid "Campo Indice"
-msgstr ""
+msgstr "Camp índex"
 
 #: ui_paisbase.h:274
 #, fuzzy
@@ -209,28 +213,34 @@ msgid "Cerrar"
 msgstr "Tan&car"
 
 #: paisview.cpp:50
+#, fuzzy
 msgid "Codigo 2 Digitos"
-msgstr ""
+msgstr "Codi"
 
 #: paisview.cpp:72
+#, fuzzy
 msgid "Codigo 2 digitos"
-msgstr ""
+msgstr "Codi"
 
 #: ui_paisbase.h:262
+#, fuzzy
 msgid "Codigo 2 letras:"
-msgstr ""
+msgstr "Codi:"
 
 #: paisview.cpp:51
+#, fuzzy
 msgid "Codigo 3 Digitos"
-msgstr ""
+msgstr "Codi"
 
 #: paisview.cpp:73
+#, fuzzy
 msgid "Codigo 3 digitos"
-msgstr ""
+msgstr "Codi"
 
 #: ui_paisbase.h:261
+#, fuzzy
 msgid "Codigo 3 letras:"
-msgstr ""
+msgstr "Codi:"
 
 #: ui_blsubformbase.h:607
 msgid "Columnas visibles"
@@ -358,7 +368,7 @@ msgstr "Empreses disponibles:"
 msgid "Error al crear el banco"
 msgstr ""
 
-#: blpostgresqlclient.cpp:138
+#: blpostgresqlclient.cpp:141
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Error al fer una consulta a la base de dades."
 
@@ -432,20 +442,23 @@ msgid "Guardar pais"
 msgstr "Desar"
 
 #: paisview.cpp:48 paisview.cpp:60
+#, fuzzy
 msgid "Id. Pais"
-msgstr ""
+msgstr "Id"
 
 #: paisview.cpp:59
+#, fuzzy
 msgid "Id. Provincia"
-msgstr ""
+msgstr "Id Provincia"
 
-#: blsubform.cpp:2173
+#: blsubform.cpp:2172
 msgid "Imprimiendo "
 msgstr ""
 
 #: blform.cpp:445
+#, fuzzy
 msgid "Imprimir ficha"
-msgstr ""
+msgstr "Imprimeix"
 
 #: listventanas.cpp:149 listventanas.cpp:150
 msgid "Indexador"
@@ -521,6 +534,7 @@ msgstr "No s'ha pogut esborrar"
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
+#: blcompanydialog.cpp:490 blsubform.cpp:197
 msgid "Nombre"
 msgstr "Nom"
 
@@ -549,8 +563,9 @@ msgid "Nombre del pais:"
 msgstr "Nom d'usuari:"
 
 #: ui_paisbase.h:277 ui_paisbase.h:282
+#, fuzzy
 msgid "Nuevo pais"
-msgstr ""
+msgstr "Nou"
 
 #: blfunctions.cpp:527
 msgid "Omitir &clase"
@@ -584,12 +599,14 @@ msgstr ""
 msgid "Paises"
 msgstr ""
 
+#: blcompanydialog.cpp:281
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Per a entrar, abans ha de seleccionar una empresa."
 
 #: ui_fichacfgbase.h:288
+#, fuzzy
 msgid "Propietario de la tablas"
-msgstr ""
+msgstr "Comentari"
 
 #: paisview.cpp:61
 msgid "Provincia"
@@ -652,6 +669,7 @@ msgstr ""
 msgid "Tiene que seleccionar un elemento"
 msgstr "Ha de seleccionar un element"
 
+#: blcompanydialog.cpp:490
 msgid "Tipo"
 msgstr "Tipus"
 
@@ -764,7 +782,7 @@ msgstr "Arranjament d'usuari"
 msgid "Usuario Actual"
 msgstr "Usuari actual "
 
-#: blsubform.cpp:2442
+#: blsubform.cpp:2441
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Ver/Ocultar configurador de subformulari"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 21:36+0100\n"
+"POT-Creation-Date: 2009-02-26 01:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgstr "&No"
 
 #: pluginalbaran.cpp:107
 msgid "&Nuevo albaran a cliente"
-msgstr ""
+msgstr "&Nou albarà a client"
 
 #: genalbqtoolbutton.cpp:160 genalbqtoolbutton.cpp:289
 msgid "&Si"
@@ -64,13 +64,13 @@ msgstr "Actual·litza llistat"
 
 #: albaranclienteview.cpp:69
 msgid "Albaran"
-msgstr ""
+msgstr "Albarà"
 
 #: genalbqtoolbutton.cpp:158
 msgid "Albaran ya existe"
 msgstr "Albarà ja existent"
 
-#: pluginalbaran.cpp:101 pluginalbaran.cpp:102 albaranclientelist.cpp:311
+#: albaranclientelist.cpp:311 pluginalbaran.cpp:101 pluginalbaran.cpp:102
 #: ui_albaranclientelistbase.h:434
 msgid "Albaranes a clientes"
 msgstr "Albarans a clients"
@@ -118,7 +118,7 @@ msgstr "Cerca:"
 msgid "Cliente"
 msgstr "Següent"
 
-#: albaranclienteview.cpp:105 albaranclientelist.cpp:156
+#: albaranclientelist.cpp:156 albaranclienteview.cpp:105
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"
@@ -194,7 +194,7 @@ msgstr "Ctrl+P"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: albaranclienteview.cpp:84 albaranclientelist.cpp:385
+#: albaranclientelist.cpp:385 albaranclienteview.cpp:84
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -256,8 +256,9 @@ msgid "F5"
 msgstr "F5"
 
 #: genalbqtoolbutton.cpp:287
+#, fuzzy
 msgid "Factura ya existe"
-msgstr ""
+msgstr "Factura"
 
 #: albaranclientelist.cpp:386
 #, fuzzy
@@ -364,8 +365,9 @@ msgid "Mostrar:"
 msgstr "Mostrar assentament"
 
 #: albaranclienteview.cpp:231
+#, fuzzy
 msgid "No hay pedidos con la misma referencia."
-msgstr ""
+msgstr "&No."
 
 #: albaranclientelist.cpp:387
 #, fuzzy
@@ -382,7 +384,7 @@ msgstr "Esborra albarà"
 msgid "Nuevo albaran a cliente"
 msgstr "Nou assentament"
 
-#: albaranclienteview.cpp:75 albaranclientelist.cpp:384
+#: albaranclientelist.cpp:384 albaranclienteview.cpp:75
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Nombre de quotes"
