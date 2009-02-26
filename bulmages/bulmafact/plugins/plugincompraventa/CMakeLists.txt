@@ -28,16 +28,16 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaran/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/plugincobros/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/plugincobros/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfacturaprov/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfacturaprov/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaranprov/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaranprov/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientecobro/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientecobro/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -85,11 +85,9 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib plugincobros pluginfacturaprov pluginfactura pluginalbaranprov pluginalbaran)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientecobro pluginbf_proveedorfactura pluginbf_clientefactura pluginbf_proveedoralbaran pluginbf_clientealbaran)
 
 
 file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
 
 install (FILES ${report_files} DESTINATION share/bulmages/openreports)
-
-

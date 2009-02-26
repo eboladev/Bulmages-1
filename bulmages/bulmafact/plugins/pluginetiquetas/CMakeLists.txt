@@ -30,12 +30,12 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaranprov/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaranprov/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginfacturaprov/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginfacturaprov/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -78,5 +78,5 @@ install_targets(/lib/bulmafact/plugins ${plugin})
 set(files ticket.png)
 install(FILES ${files} DESTINATION share/bulmages/icons)
 
-add_dependencies(${plugin} bulmafact bulmalib pluginalbaranprov pluginfactura pluginfacturaprov)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_proveedoralbaran pluginbf_clientefactura pluginbf_proveedorfactura)
 

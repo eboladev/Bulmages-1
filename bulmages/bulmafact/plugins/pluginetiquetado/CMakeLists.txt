@@ -31,8 +31,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalbaranprov/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalbaranprov/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -82,5 +82,5 @@ install(FILES ${files} DESTINATION share/bulmages/icons)
 set(files1 etiquetas.rml)
 install(FILES ${files1} DESTINATION share/bulmages/openreports)
 
-add_dependencies(${plugin} bulmafact bulmalib pluginalbaranprov)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_proveedoralbaran)
 
