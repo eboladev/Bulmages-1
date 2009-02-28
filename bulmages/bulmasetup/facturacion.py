@@ -71,7 +71,7 @@ class Facturacion(Empresa):
             self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmafact[self.i][1]) > 3):
-              self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
+              self.writecommand('Hay que actualizar ' + self.pluginsbulmafact[self.i][0])
               self.out << self.terminador << self.pluginsbulmafact[self.i][1]
               self.terminador = "; \\\n";
           self.i = self.i + 1

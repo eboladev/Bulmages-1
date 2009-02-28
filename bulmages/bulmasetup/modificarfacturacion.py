@@ -65,8 +65,27 @@ class ModificarFacturacion( Ui_ModificarFacturacionBase, Facturacion):
     self.actualizarPlugins()
     self.writeConfig()
 
-
+  def on_mui_categoria_currentIndexChanged(self, index):
+    self.presentar()
+  
+  
   def on_mui_vertodos_stateChanged(self, status):
+    self.presentar()
+  
+  def presentar(self):
+    status = self.mui_vertodos.checkState()
+    
+    # Hacemos todas las lineas visibles para luego ocultarlas.
+    self.i = 0
+    while (self.i < self.mui_plugins1.rowCount()):
+      self.mui_plugins1.showRow(self.i)
+      self.i = self.i + 1
+
+    self.i = 0
+    while (self.i < self.mui_plugins.rowCount()):
+      self.mui_plugins.showRow(self.i)
+      self.i = self.i + 1
+    
     if (status == 2):
       # Establezco la tabla de bulmafact
       self.i = 0
@@ -81,16 +100,30 @@ class ModificarFacturacion( Ui_ModificarFacturacionBase, Facturacion):
         if (self.mui_plugins1.item(self.i, 0).checkState() != Qt.Checked ):
           self.mui_plugins1.hideRow(self.i)
         self.i = self.i + 1
-    else:
-      self.i = 0
-      while (self.i < self.mui_plugins1.rowCount()):
-        self.mui_plugins1.showRow(self.i)
-        self.i = self.i + 1
-
+        
+    if (self.mui_categoria.currentIndex() > 0):
+      # VAmos a trabajar con el combo Box
+      print self.mui_categoria.currentText()
+      cat = self.mui_categoria.currentText()
+      print self.mui_categoria.currentIndex()
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
-        self.mui_plugins.showRow(self.i)
-        self.i = self.i + 1
+        text = QString(self.pluginsbulmafact[self.i][8])
+        a = text.contains(cat)
+        print text
+        print a
+        if (not a):
+          self.mui_plugins.hideRow(self.i)
+        self.i = self.i +1
+        
+      # VAmos a trabajar con el combo Box
+      self.i = 0
+      while (self.i < self.mui_plugins1.rowCount()):
+        text = QString(self.pluginsbulmatpv[self.i][8])
+        a = text.contains(cat)
+        if (not a):
+          self.mui_plugins1.hideRow(self.i)
+        self.i = self.i +1
 
 
 
