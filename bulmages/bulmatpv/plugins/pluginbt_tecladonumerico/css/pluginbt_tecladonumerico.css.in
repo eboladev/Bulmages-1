@@ -7,9 +7,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_00:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_00:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_0 {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_0:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_0:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_1 {
@@ -17,9 +37,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_1:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_1:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_2 {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_2:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_2:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_3 {
@@ -27,9 +67,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_3:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_3:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_4 {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_4:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_4:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_5 {
@@ -37,9 +97,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_5:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_5:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_6 {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_6:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_6:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_7 {
@@ -47,9 +127,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_7:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_7:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_8 {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_8:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_8:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_9 {
@@ -57,9 +157,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_9:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_9:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_plus {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_plus:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_plus:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_minus {
@@ -67,9 +187,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_minus:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_minus:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_borrar {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_borrar:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_borrar:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_c {
@@ -77,9 +217,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_c:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_c:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_articulo {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_articulo:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_articulo:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_cantidad {
@@ -87,9 +247,29 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_cantidad:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_cantidad:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_precio {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_precio:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_precio:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
 #TecladoNumericoBase QToolButton#mui_mesa {
@@ -97,8 +277,28 @@
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
 }
 
+#TecladoNumericoBase QToolButton#mui_mesa:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_mesa:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
+}
+
 #TecladoNumericoBase QToolButton#mui_punto {
 	border:none;
 	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_punto:hover {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-verde.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_punto:pressed {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-pulsada-verde.png);
 }
 
