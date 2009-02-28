@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <class>ArticuloListBase1</class>
- <widget class="QWidget" name="ArticuloListBase1" >
+ <class>ArticuloSubFormBase</class>
+ <widget class="QWidget" name="ArticuloSubFormBase" >
   <property name="enabled" >
    <bool>true</bool>
   </property>

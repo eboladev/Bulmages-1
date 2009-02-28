@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginalbaran
+#pluginbf_clientealbaran
 
 set (plugin pluginbf_clientealbaran)
 set (docs README.es)
@@ -12,6 +12,10 @@ file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${plugin}.css @ONLY)
+
 
 INCLUDE( ${QT_USE_FILE} )
 
@@ -104,3 +108,8 @@ foreach(dfile ${docs})
 endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientepresupuesto pluginbf_clientepedido)
+
+FILE(READ ${CMAKE_BINARY_DIR}/${plugin}.css VAR_CSS)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact.css "${VAR_CSS}" )
+
+install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)

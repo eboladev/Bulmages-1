@@ -139,3 +139,14 @@ BlWidget::~BlWidget()
     _depura ( "END BlWidget::~BlWidget", 0 );
 }
 
+
+/* Necesario para poner estilos a traves de hojas CSS.
+*/
+void BlWidget::paintEvent(QPaintEvent *)
+{
+    QStyleOption opt;
+    opt.initFrom(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+}
+

@@ -42,13 +42,13 @@ public:
 };
 
 
-#include "ui_articleslistbase1.h"
+#include "ui_articulosubformbase.h"
 
 
 /** Clase que maneja la ventana de listado de articulos
     Se encarga del control y manejo de la venta que presenta el listado de articulos.
 */
-class ArticuloList1 : public BlFormList, public Ui_ArticuloListBase1
+class ArticuloList1 : public BlFormList, public Ui_ArticuloSubFormBase
 {
     Q_OBJECT
 

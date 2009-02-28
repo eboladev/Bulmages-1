@@ -24,6 +24,7 @@
 
 #include <QWidget>
 #include <QCloseEvent>
+#include <QPainter>
 
 #include "dialogchanges.h"
 #include "blfunctions.h"
@@ -49,6 +50,9 @@ public:
 class BlWidget : public QWidget, public BlMainCompanyPointer
 {
     Q_OBJECT
+
+protected:
+    virtual void paintEvent(QPaintEvent *);
 
 public:
     BlWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );

@@ -29,9 +29,11 @@
 #include "btsubform.h"
 #include "articulolisttpv.h"
 
+
 class myplugin : public QObject
 {
     Q_OBJECT
+
 private:
     BtCompany *m_etpv;
     ArticuloList1 *m_lan;
@@ -44,7 +46,6 @@ public:
 public slots:
     virtual void elslot ( QString );
     virtual void elslot1 ( QTableWidgetItem * );
-
 };
 
 #endif
