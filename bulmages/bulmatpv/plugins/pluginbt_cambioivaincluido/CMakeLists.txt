@@ -1,16 +1,16 @@
 ###########################################
 # Plugin for bulmatpv                     #
 ###########################################
-# plugintcaliastpv
+# pluginbt_cambioivaincluido
 
-set (plugin plugintcaliastpv)
+set (plugin pluginbt_cambioivaincluido)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS plugintcaliastpv.h)
+file(GLOB plugin_NO_MOCS plugincambioivainc.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
@@ -29,8 +29,6 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_ticket/
-	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_ticket/
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
@@ -61,10 +59,6 @@ endif(USE_GETTEXT)
 
 # build sources, moc'd sources, and rcc'd sources
 
-if(APPLE)
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
-endif(APPLE)
-
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
@@ -79,6 +73,6 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmatpv bulmalib pluginbt_ticket)
+add_dependencies(${plugin} bulmatpv bulmalib)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

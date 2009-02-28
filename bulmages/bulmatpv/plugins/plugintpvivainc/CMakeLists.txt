@@ -33,8 +33,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/
         ${CMAKE_BINARY_DIR}/bulmafact/src/
         ${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginartsubform/
-	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginartsubform/
+	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_articulosubform/
+	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_articulosubform/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
 
@@ -83,6 +83,6 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmatpv bulmalib bulmafact pluginartsubform)
+add_dependencies(${plugin} bulmatpv bulmalib bulmafact pluginbt_articulosubform)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

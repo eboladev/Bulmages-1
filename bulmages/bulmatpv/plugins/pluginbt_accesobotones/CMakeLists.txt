@@ -1,16 +1,16 @@
 ###########################################
 # Plugin for bulmatpv                     #
 ###########################################
-# plugintcaliastpv
+# pluginbt_accesobotones
 
-set (plugin plugintcaliastpv)
+set (plugin pluginbt_accesobotones)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS plugintcaliastpv.h)
+file(GLOB plugin_NO_MOCS pluginabrevs.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
@@ -25,12 +25,11 @@ include_directories(
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
 	${QT_QTASSISTANT_INCLUDE_DIR}
+	${QT_QTGUI_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_ticket/
-	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_ticket/
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
@@ -60,7 +59,6 @@ if(USE_GETTEXT)
 endif(USE_GETTEXT)
 
 # build sources, moc'd sources, and rcc'd sources
-
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
@@ -79,6 +77,6 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmatpv bulmalib pluginbt_ticket)
+add_dependencies(${plugin} bulmatpv bulmalib)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

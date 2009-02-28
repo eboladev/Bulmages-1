@@ -94,6 +94,8 @@ endif(NOT PGSQL_FOUND)
 
 set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
 
+# Remove directory to prevent that css files can grow with plugins css merge.
+FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
 
 ########### bulmages library ##########
 message(STATUS "Working on bulmalib")

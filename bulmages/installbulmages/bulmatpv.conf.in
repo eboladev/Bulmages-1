@@ -8,11 +8,11 @@
 
 
 CONF_PLUGINS_BULMATPV		libpluginbt_tecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				libpluginticketbasico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				libplugintotal@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginbt_ticket@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginbt_total@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 				libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				libpluginartgraficos@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				libpluginabrevs@CMAKE_SHARED_LIBRARY_SUFFIX@
+				libpluginbt_articulografico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginbt_accesobotones@CMAKE_SHARED_LIBRARY_SUFFIX@
 
 CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
 CONF_TICKET_PRINTER_FILE	/dev/null
