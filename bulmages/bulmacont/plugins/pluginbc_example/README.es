@@ -8,7 +8,9 @@ Nombre: Ejemplo de desarrollo
 
 Biblioteca: libplugin.so
 
-Descripción: Plugin ejemplo para poder desarrollar otros plugins.
+Descripción: <H1>Plugin de Ejemplo</H1>
+<P>Plugin ejemplo para poder desarrollar otros plugins.</P>
+<HR>
 
 ParmBD: -
 
@@ -19,6 +21,8 @@ ArchivoSQLdeins: -
 Dependencias:
 
 Incompatibles:
+
+Categorias: Utilidades Avanzadas;
 
 Orden: 90
 

@@ -10,15 +10,15 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="maximumSize" >
    <size>
-    <width>800</width>
-    <height>608</height>
+    <width>2800</width>
+    <height>2500</height>
    </size>
   </property>
   <property name="windowTitle" >
@@ -29,6 +29,12 @@
     <normaloff>../../../../.designer/images/png/bulmafact.png</normaloff>../../../../.designer/images/png/bulmafact.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
@@ -43,6 +49,31 @@
     <widget class="QLineEdit" name="mui_nomempresa" />
    </item>
    <item rowspan="5" row="0" column="4" >
+    <widget class="QToolButton" name="toolButton" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Expanding" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>15</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>..</string>
+     </property>
+     <property name="checkable" >
+      <bool>true</bool>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="5" row="0" column="5" >
     <widget class="QTextBrowser" name="mui_descripcion" />
    </item>
    <item row="1" column="0" >
@@ -147,7 +178,7 @@
          <widget class="QComboBox" name="mui_categoria" >
           <item>
            <property name="text" >
-            <string>Todas las Categorias</string>
+            <string>-- Todas --</string>
            </property>
           </item>
           <item>
@@ -173,6 +204,16 @@
           <item>
            <property name="text" >
             <string>Utilidades Genericas</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Utilidades Avanzadas</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Experimentales</string>
            </property>
           </item>
          </widget>
@@ -295,7 +336,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="4" >
+   <item row="5" column="4" colspan="2" >
     <widget class="QPushButton" name="mui_cancelar" >
      <property name="text" >
       <string>Cerrar</string>
@@ -329,12 +370,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>607</x>
-     <y>46</y>
+     <x>532</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel" >
      <x>184</x>
      <y>301</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_descripcion</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>538</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>625</x>
+     <y>270</y>
     </hint>
    </hints>
   </connection>

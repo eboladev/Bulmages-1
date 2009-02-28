@@ -8,8 +8,10 @@ Nombre: Gestión de Comerciales
 
 Biblioteca: libplugincomercialesbf.so
 
-Descripción: Permite llevar la gestión de los comerciales de la empresa.
-Teniendo un planing de visitas y de rutas a realizar.
+Descripción: <H1>Comerciales</H1>
+<P>Permite llevar la gestión de los comerciales de la empresa.
+Teniendo un planing de visitas y de rutas a realizar.</P>
+<HR>
 
 ParmBD: DBRev-ComercialBF
 
@@ -21,7 +23,9 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;Experimentales;
+
+Orden: 60
 
 Comentarios: Imprescindible para empresas con comerciales.
 

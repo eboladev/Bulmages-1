@@ -8,10 +8,11 @@ Nombre: Cuentas Anuales
 
 Biblioteca: libplugincanualesods.so
 
-Descripción: Permite obtener un balance de cuentas anuales para los planes
+Descripción:<H1>Cuentas Anuales</H1>
+<P>Permite obtener un balance de cuentas anuales para los planes
 contables españoles del 2008: Cuentas Anuales, Abreviadas y de PYMES. Y para
 los planes contables anteriores al 2008: Cuentas Anuales y Abreviadas de
-Asociaciones sin lucro. 
+Asociaciones sin lucro. </P>
 
 ParmBD: -
 
@@ -22,6 +23,8 @@ ArchivoSQLdeins: -
 Dependencias:
 
 Incompatibles:
+
+Categorias: Contabilidad General;
 
 Orden: 70
 

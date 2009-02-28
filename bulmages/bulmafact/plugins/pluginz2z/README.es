@@ -6,9 +6,11 @@
 
 Nombre: Traspaso de Z
 
-Biblioteca: libplugindebugbf.so
+Biblioteca: libpluginz2z.so
 
-Descripción: Mueve lineas de albaran de una facturacion a otra.
+Descripción: <H1>Traspaso de Z a Z</H1>
+<P>Mueve lineas de albaran de una facturacion a otra.</P>
+<HR>
 
 ParmBD: 
 
@@ -19,6 +21,8 @@ ArchivoSQLdeins:
 Dependencias:
 
 Incompatibles:
+
+Categorias: Facturacion General;
 
 Orden:
 

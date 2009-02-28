@@ -6,9 +6,11 @@
 
 Nombre: Corrector de Facturacion
 
-Biblioteca: libplugincorrectorbf.so
+Biblioteca: libpluginbf_corrector.so
 
-Descripción: Efectura tests sobre la facturacion para encontrar errores.
+Descripción: <H1>Corrector de Facturacion</H1>
+<P>Efectura tests sobre la facturacion para encontrar errores.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades Genericas;
+
+Orden: 80
 
 Comentarios: No está terminado

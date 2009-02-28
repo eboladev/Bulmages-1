@@ -6,10 +6,12 @@
 
 Nombre: Demostración del funcionamiento de los plugins
 
-Biblioteca: libplugin.so
+Biblioteca: libpluginbf_example.so
 
-Descripción: Sirve para demostrar el funcionamiento de los plugins. Es, principalmente
-un ejemplo de programacion.
+Descripción: <H1>Ejemplo</H1>
+<P>Sirve para demostrar el funcionamiento de los plugins. Es, principalmente
+un ejemplo de programacion.</P>
+<HR>
 
 ParmBD: 
 
@@ -21,7 +23,9 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades Avanzadas;
+
+Orden: 90
 
 Comentarios: 
 

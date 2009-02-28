@@ -8,8 +8,13 @@ Nombre: Exportacion de listados a ODS.
 
 Biblioteca: libpluginsubformods.so
 
-Descripción: Permite la exportación de cualquier subformulario a formato de hoja
-de cálculo. 
+Descripción: <H1>Exportar a ODS</H1>
+<P>Permite la exportación de cualquier subformulario a formato de hoja
+de cálculo. </P>
+<P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
+la opcion de menu contextual <B>Exportar a hoja de calculo ODS</B> que hara la exportacion del 
+subformulario a formato <B>ODS</B></P>
+<HR>
 
 ParmBD: -
 
@@ -20,6 +25,8 @@ ArchivoSQLdeins: -
 Dependencias:
 
 Incompatibles:
+
+Categorias: Utilidades Genericas;Experimentales;
 
 Orden: 50
 

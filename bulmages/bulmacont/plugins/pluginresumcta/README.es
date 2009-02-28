@@ -8,8 +8,13 @@ Nombre: Resumen de una cuenta.
 
 Biblioteca: libpluginresumcta.so
 
-Descripción: Muestra el resumen de la cuentas que se haya seleccionado,
-mostrando: saldo, debe, haber, entidad y otros datos.
+Descripción: <H1>Resumen de cuentas</H1>
+<P>Muestra el resumen de la cuentas que se haya seleccionado,
+mostrando: saldo, debe, haber, entidad y otros datos.</P>
+<P>Una vez instalado el plugin en el menu <B>Ver</B> aparecera la opcion resumen de cuenta
+que abrira un Dock que sera actualizada cada vez que introduzcamos una cuenta en el sistema a
+traves de un subformulario o a traves de un cuadro de busqueda de cuentas</P>
+<HR>
 
 ParmBD: -
 
@@ -20,6 +25,8 @@ ArchivoSQLdeins: -
 Dependencias:
 
 Incompatibles:
+
+Categorias: Utilidades Genericas;
 
 Orden: 40
 

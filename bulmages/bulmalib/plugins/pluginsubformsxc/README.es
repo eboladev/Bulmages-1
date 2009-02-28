@@ -8,8 +8,13 @@ Nombre: Exportacion de listados a SXC.
 
 Biblioteca: libpluginsubformsxc.so
 
-Descripción: Permite la exportación de cualquier subformulario a formato de hoja
-de cálculo. 
+Descripción: <H1>Exportar listados a SXC</H1>
+<P>Permite la exportación de cualquier subformulario a formato de hoja
+de cálculo. </P>
+<P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
+la opcion <B>Exportar a hoja de calculo SXC</B> que hará la exportacion a hoja de calculo y la abrira
+para que pueda ser manejada</P>
+<HR>
 
 ParmBD: -
 
@@ -20,6 +25,8 @@ ArchivoSQLdeins: -
 Dependencias:
 
 Incompatibles:
+
+Categorias: Utilidades Genericas;Experimentales;
 
 Orden: 70
 

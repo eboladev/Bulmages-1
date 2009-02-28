@@ -8,7 +8,9 @@ Nombre: Registro de IVA
 
 Biblioteca: libpluginregistroiva.so
 
-Descripción: Permite registras las facturas para hacer el listado modelo 347. 
+Descripción: <H1>Registro de IVA</H1>
+<P>Permite registras las facturas para hacer el listado modelo 347. </P>
+<HR>
 
 ParmBD:
 
@@ -19,6 +21,8 @@ ArchivoSQLdeins:
 Dependencias:
 
 Incompatibles:
+
+Categorias: Contabilidad General;Experimentales;
 
 Orden:
 

@@ -8,8 +8,10 @@ Nombre: Promedios en Artículos
 
 Biblioteca: libpluginpromedios.so
 
-Descripción: Agrega una pestaña a la ficha de articulos que muestra información relativa a
-las compras y ventas de dicho artículo y algunos datos estadísticos adicionales sobre el mismo.
+Descripción: <H1>Promedios en Articulos</H1>
+<P>Agrega una pestaña a la ficha de articulos que muestra información relativa a
+las compras y ventas de dicho artículo y algunos datos estadísticos adicionales sobre el mismo.</P>
+<HR>
 
 ParmBD: 
 
@@ -21,6 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 70
 
 Comentarios: 

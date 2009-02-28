@@ -8,7 +8,9 @@ Nombre: Impresion de Informes Personalizados por e-mail
 
 Biblioteca: libpluginimpersmail.so
 
-Descripción: Permite el envio por correo electronico de los informes personalizados utilizados con el plugin de Informes Personalizados.
+Descripción: <H1>Informes personalizados por e-mail</H1>
+<P>Permite el envio por correo electronico de los informes personalizados utilizados con el plugin de Informes Personalizados.</P>
+<HR>
 
 ParmBD:
 
@@ -19,6 +21,8 @@ ArchivoSQLdeins:
 Dependencias:
 
 Incompatibles:
+
+Categorias: Utilidades Genericas;Experimentales;
 
 Orden: 60
 
