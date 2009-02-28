@@ -18,6 +18,9 @@ public:
     TecladoNumerico ( BlMainCompany *emp, QWidget *parent );
     virtual ~TecladoNumerico();
 
+protected:
+    virtual void paintEvent(QPaintEvent *);
+
 public slots:
     virtual void on_mui_00_clicked() {
         ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_0, "0" );
@@ -69,7 +72,7 @@ public slots:
         ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Slash, "/" );
     };
     virtual void on_mui_c_clicked() {
-        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_C, "C" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F4, "" );
     };
     virtual void on_mui_plus_clicked() {
         ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Plus, "+" );

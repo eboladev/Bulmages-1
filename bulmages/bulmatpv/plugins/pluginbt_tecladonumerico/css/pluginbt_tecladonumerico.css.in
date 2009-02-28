@@ -1,0 +1,104 @@
+#TecladoNumericoBase {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-teclado-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_00 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_0 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_1 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_2 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_3 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_4 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_5 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_6 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_7 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_8 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_9 {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_plus {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_minus {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_borrar {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_c {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_articulo {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_cantidad {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_precio {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_mesa {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+
+#TecladoNumericoBase QToolButton#mui_punto {
+	border:none;
+	image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/pluginbt_tecladonumerico-fondo-tecla-gris.png);
+}
+

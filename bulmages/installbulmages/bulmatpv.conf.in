@@ -7,12 +7,12 @@
 
 
 
-CONF_PLUGINS_BULMATPV	libplugintecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				            libpluginticketbasico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				            libplugintotal@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				            libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				            libpluginartgraficos@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				            libpluginabrevs@CMAKE_SHARED_LIBRARY_SUFFIX@
+CONF_PLUGINS_BULMATPV		libpluginbt_tecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginticketbasico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libplugintotal@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginartgraficos@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginabrevs@CMAKE_SHARED_LIBRARY_SUFFIX@
 
 CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
 CONF_TICKET_PRINTER_FILE	/dev/null
@@ -32,11 +32,14 @@ CONF_IDTRABAJADOR_DEFECTO       1
 CONF_IDFORMA_PAGO_VISA		1
 CONF_IDFORMA_PAGO_CONTADO	1
 
-CONF_SPLASH_BULMATPV       @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmatpv.jpg
+CONF_SPLASH_BULMATPV		@CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmatpv.jpg
 
-CONF_ARTICULOS_VARIOS          ESPECIFICAR
+CONF_ARTICULOS_VARIOS		ESPECIFICAR
 
 
-CONF_BACKGROUND_COLOR      #0D1164
-CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmatpv-background.png
+CONF_BACKGROUND_COLOR		#0D1164
+CONF_BACKGROUND_IMAGE		@CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmatpv-background.png
+
+# Hoja de estilo a utilizar
+CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmatpv.css
 

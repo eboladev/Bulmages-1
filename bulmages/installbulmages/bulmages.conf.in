@@ -9,63 +9,63 @@
 
 
 # Parametros de configuracion de la base de datos postgresql.
-CONF_SERVIDOR                  --
-CONF_PUERTO                    5432
+CONF_SERVIDOR			--
+CONF_PUERTO			5432
 
 # Parametros de configuracion de programas.
 # Por defecto se proponen estos programas. Configurar a gusto.
-CONF_EDITOR                    kate
-CONF_NAVEGADOR                 x-www-browser
-CONF_PDF                       konqueror
-CONF_DIR_TMP                   /tmp/
+CONF_EDITOR			kate
+CONF_NAVEGADOR			x-www-browser
+CONF_PDF			konqueror
+CONF_DIR_TMP			/tmp/
 
 
 # Hoja de estilo a utilizar
-CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmages.css
+CONF_STYLESHEET			@CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmages.css
 
 
 # Parametros de configuracion del programa.
 # Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp, creaemp, borraemp).
-CONF_EJECUTABLES               @CMAKE_INSTALL_PREFIX@/bin/
+CONF_EJECUTABLES		@CMAKE_INSTALL_PREFIX@/bin/
 
 # Esto indica que idioma utilizar (es  ca en fr de o locales(coger el idioma de las locales)).
-CONF_TRADUCCION                locales
+CONF_TRADUCCION			locales
 
 # Este parametro indica en que directorio estan las traducciones.
 # (No cambiar: Se usa CMAKE_INSTALL_PREFIX/share/locale para 'gettext')
-CONF_DIR_TRADUCCION            @CMAKE_INSTALL_PREFIX@/share/locale
+CONF_DIR_TRADUCCION		@CMAKE_INSTALL_PREFIX@/share/locale
 
 
 # Parametro que indica donde se encuentra el archivo de log.
-CONF_ARCHIVO_LOG               /var/log/bulmages.log
+CONF_ARCHIVO_LOG		/var/log/bulmages.log
 
 
-CONF_DIR_PLUGINS     @CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/; \
-		               @CMAKE_INSTALL_PREFIX@/lib/bulmalib/plugins/; \
-		               @CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/; \
-		               @CMAKE_INSTALL_PREFIX@/lib/bulmafact/plugins/; \
-		               @CMAKE_INSTALL_PREFIX@/lib/bulmatpv/plugins/
+CONF_DIR_PLUGINS		@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmalib/plugins/; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmafact/plugins/; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmatpv/plugins/
 
 
 # Este parametro indica en que directorio se hayan los archivos de informes formularios.
-CONF_PROGDATA                 @CMAKE_INSTALL_PREFIX@/share/bulmages/
+CONF_PROGDATA			@CMAKE_INSTALL_PREFIX@/share/bulmages/
 
 # Este parametro indica en que directorio se encuentran los archivos de OPENREPORTS.
-CONF_DIR_OPENREPORTS          @CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/
+CONF_DIR_OPENREPORTS		@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/
 
 # Este parametro indica familias genericas para Bulmages.
-CONF_FONTFAMILY_BULMAGES      Sans
-CONF_FONTSIZE_BULMAGES        10
+CONF_FONTFAMILY_BULMAGES	Sans
+CONF_FONTSIZE_BULMAGES		10
 
 # Refresco de los listados tras el cierre de una ficha.
-CONF_REFRESH_LIST             TRUE
+CONF_REFRESH_LIST		TRUE
 
 #Mostrar la barra de progreso
-CONF_SHOW_PROGRESS_BAR         TRUE
+CONF_SHOW_PROGRESS_BAR		TRUE
 
-CONF_DEBUG                    FALSE
+CONF_DEBUG			FALSE
 
-CONF_ALERTAS_DBF               Yes
+CONF_ALERTAS_DBF		Yes
 
 
 # NOTA PARA DESARROLLADORES:

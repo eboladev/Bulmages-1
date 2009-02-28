@@ -1,6 +1,6 @@
 add_subdirectory(pluginticketbasico)
 add_subdirectory(pluginticketbasicoivainc)
-add_subdirectory(plugintecladonumerico)
+add_subdirectory(pluginbt_tecladonumerico)
 add_subdirectory(plugintotal)
 add_subdirectory(plugintotalivainc)
 add_subdirectory(pluginartgraficos)

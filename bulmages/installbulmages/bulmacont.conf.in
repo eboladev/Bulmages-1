@@ -65,6 +65,9 @@ CONF_BACKGROUND_COLOR      #0D1164
 CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmacont-background.png
 
 
+# Hoja de estilo a utilizar
+CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmacont.css
+
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------

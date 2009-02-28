@@ -31,10 +31,22 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>10</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>0</number>
+   </property>
+   <property name="verticalSpacing" >
     <number>5</number>
    </property>
    <item row="3" column="2" >

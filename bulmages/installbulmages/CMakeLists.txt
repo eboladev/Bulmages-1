@@ -51,7 +51,17 @@ file(GLOB f_rml bgtrml2pdf/*.py)
 install(FILES ${f_rml} 
 		DESTINATION share/bulmages/bgtrml2pdf)
 
-install(DIRECTORY ainteligentes canuales planescontables css
+
+FILE(GLOB f_css css/*.css)
+
+foreach(fcss ${f_css})
+    FILE(READ ${fcss} VAR_CSS)
+    GET_FILENAME_COMPONENT(css_file ${fcss} NAME)
+    FILE(APPEND ${CMAKE_BINARY_DIR}/css/${css_file} "${VAR_CSS}" )
+endforeach(fcss in ${f_css})
+
+
+install(DIRECTORY ainteligentes canuales planescontables ${CMAKE_BINARY_DIR}/css
             openreports icons images
             DESTINATION share/bulmages
             PATTERN ".svn" EXCLUDE)
