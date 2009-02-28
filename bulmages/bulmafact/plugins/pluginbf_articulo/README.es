@@ -8,7 +8,14 @@ Nombre: Gestion de Articulos
 
 Biblioteca: libpluginbf_articulo.so
 
-Descripción: Gestionar los articulos.
+Descripción: <H1>Gestion de articulos</H1>
+<PARA>Este plugin permite la introduccion de articulos en el sistema. </PARA>
+<HR>
+<PARA>Presenta el listado de articulos y permite agregar, editar y modificar articulos.</PARA>
+<BR>
+<PARA>Al instalar el plugin aparecerá el menu Articulos en la aplicacion con las opciones <B>Listado de Articulos</B> y la
+opcion <B>Nuevo Articulo</B></PARA>
+<HR>
 
 ParmBD:
 
@@ -20,6 +27,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Orden: 29
+
+Categorias: Facturacion Generica;
 
 Comentarios:

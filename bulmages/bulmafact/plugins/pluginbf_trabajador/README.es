@@ -8,7 +8,17 @@ Nombre: Gestion de Trabajadores
 
 Biblioteca: libpluginbf_trabajador.so
 
-Descripción: Gestionar los trabajadores.
+Descripción: <H1>Gestion de trabajadores</H1>
+<P>Este plugin permite realizar la gestion de trabjadores de la empresa</P>
+<BR>
+<P>Una vez instalado aparecera en el <B>Menu Maestro</B> la opcion de <B>Trabajadores</B>. Accionando dicha opcion
+tendremos acceso a la ventana de gestion de trabajadores</P>
+<BR>
+<P>La ventana de trabajadores esta dividida en dos partes. En la parte derecha aparece el listado de trabajadores y en
+la parte izquierda aparecen los detalles del trabajador seleccionado. Para crear un nuevo trabajador tenemos el botón superior de <B>Nuevo</B> que al ser pulsado directamente creará un nuevo trabajador con el nombre <B>NUEVO TRABAJADOR el cual poddra editarse como cualquier otro elemento de la lista de trabajadores</P>
+<BR>
+<P>Al pulsar sobre un elemento de la lista de trabajadores los datos de éste aparecen en el formulario para poder ser cambiados</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +30,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Orden: 60
+
+Categorias: Facturacion Generica;
 
 Comentarios:
