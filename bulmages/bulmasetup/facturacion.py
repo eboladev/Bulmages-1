@@ -232,12 +232,22 @@ class Facturacion(Empresa):
         if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
           self.writecommand('Actualizando ' + self.pluginsbulmafact[self.i][0])
           self.writecommand('============ \n ' )
-        if (len(self.pluginsbulmafact[self.i][4]) > 0):
-          self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
-          self.writecommand(self.command)
-          self.process.start(self.command)
-          self.process.waitForFinished(-1)
-          self.writecommand(self.process.readAllStandardOutput())
+          # Si hay parche de actualizacion lo aplicamos
+          if (len(self.pluginsbulmafact[self.i][4]) > 0):
+            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
+            self.writecommand(self.command)
+            self.process.start(self.command)
+            self.process.waitForFinished(-1)
+            self.writecommand(self.process.readAllStandardOutput())
+        else:
+          # Si no esta chequeado hacemos un borrado del plugin
+          if (len(self.pluginsbulmafact[self.i][9]) > 0):
+            # Aplicamos el parche  de borrado.
+            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][9] +' '+ self.database +'\"'
+            self.writecommand(self.command)
+            self.process.start(self.command)
+            self.process.waitForFinished(-1)
+            self.writecommand(self.process.readAllStandardOutput())
         self.i = self.i +1
    
       if (self.mui_soporteTPV.isChecked()):
@@ -248,6 +258,15 @@ class Facturacion(Empresa):
             if (len(self.pluginsbulmatpv[self.i][4]) >0):
               self.writecommand('Actualizando ' + self.pluginsbulmatpv[self.i][0])
               self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][4] +' '+ self.database +'\"'
+              self.writecommand(self.command)
+              self.process.start(self.command)
+              self.process.waitForFinished(-1)
+              self.writecommand(self.process.readAllStandardOutput())
+          else:
+            # Si no esta chequeado hacemos un borrado del plugin
+            if (len(self.pluginsbulmatpv[self.i][9]) > 0):
+              # Aplicamos el parche  de borrado.
+              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][9] +' '+ self.database +'\"'
               self.writecommand(self.command)
               self.process.start(self.command)
               self.process.waitForFinished(-1)

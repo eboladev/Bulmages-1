@@ -18,7 +18,7 @@ ParmBD: DBRev-Archivos
 
 ArchivoSQLpatch: rev-pluginarchivos.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginarchivos.sql
 
 Dependencias:
 

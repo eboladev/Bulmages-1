@@ -16,7 +16,7 @@ ParmBD: DBRev-Inventario
 
 ArchivoSQLpatch: revf-plugininventario.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-plugininventario.sql
 
 Dependencias:
 

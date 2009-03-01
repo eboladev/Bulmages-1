@@ -16,7 +16,7 @@ ParmBD: DBRev-TiposTrabajo
 
 ArchivoSQLpatch: revf-plugintipostrabajo.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-plugintipostrabajo.sql
 
 Dependencias:
 

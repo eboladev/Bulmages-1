@@ -18,7 +18,7 @@ ParmBD: DBRev-Bloqueo
 
 ArchivoSQLpatch: rev-pluginbloqueos.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginbloqueos.sql
 
 Dependencias:
 
@@ -26,6 +26,6 @@ Incompatibles:
 
 Categorias: Utilidades Genericas;Experimentales;
 
-Orden: 10
+Orden: 800
 
 Comentarios: 

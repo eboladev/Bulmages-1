@@ -17,7 +17,7 @@ ParmBD: DBRev-Tallas-y-Colores
 
 ArchivoSQLpatch: revf-plugin_tc_articulos.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-plugin_tc_articulos.sql
 
 Dependencias:
 

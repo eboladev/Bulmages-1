@@ -17,7 +17,7 @@ ParmBD: DBRev-Trazabilidad
 
 ArchivoSQLpatch: revf-plugintrazabilidad.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-plugintrazabilidad.sql
 
 Dependencias:
 

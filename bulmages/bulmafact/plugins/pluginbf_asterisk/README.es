@@ -19,7 +19,7 @@ ParmBD: DBRev-ValAsterisk
 
 ArchivoSQLpatch: revf-pluginasterisk.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginasterisk.sql
 
 Dependencias: libpluginalmacen.so libplugincuadrante.so
 

@@ -77,7 +77,7 @@ class PluginsBulmaSetup:
             if m <> None:
               if (m.group(1).isdigit()):
                   orden = int(m.group(1))
-            plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden, categorias])
+            plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden, categorias, archivosqldeins])
 
 
 if __name__=="__main__":

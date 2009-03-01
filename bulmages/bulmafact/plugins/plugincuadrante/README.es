@@ -17,7 +17,7 @@ ParmBD: DBRev-Cuadrante
 
 ArchivoSQLpatch: revf-plugincuadrante.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-plugincuadrante.sql
 
 Dependencias:
 

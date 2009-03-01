@@ -16,7 +16,7 @@ ParmBD: DBRev-Contratos
 
 ArchivoSQLpatch: revf-plugincontratos.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-plugincontratos.sql
 
 Dependencias:
 

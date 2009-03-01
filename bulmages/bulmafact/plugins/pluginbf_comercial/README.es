@@ -17,7 +17,7 @@ ParmBD: DBRev-ComercialBF
 
 ArchivoSQLpatch: revf-comercialbf.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-comercialbf.sql
 
 Dependencias:
 

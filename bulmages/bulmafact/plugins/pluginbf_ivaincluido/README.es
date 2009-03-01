@@ -16,7 +16,7 @@ ParmBD: DBRev-IVAInc
 
 ArchivoSQLpatch: revf-pluginivainc.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginivainc.sql
 
 Dependencias:
 

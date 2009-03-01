@@ -96,6 +96,15 @@ class Contabilidad(Empresa):
                self.process.start(self.command)
                self.process.waitForFinished(-1)
                self.writecommand(self.process.readAllStandardOutput())
+         else:
+            # Si no esta chequeado hacemos un borrado del plugin
+            if (len(self.pluginsbulmacont[self.i][9]) > 0):
+              # Aplicamos el parche  de borrado.
+              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][9] +' '+ self.database +'\"'
+              self.writecommand(self.command)
+              self.process.start(self.command)
+              self.process.waitForFinished(-1)
+              self.writecommand(self.process.readAllStandardOutput())
          self.i = self.i + 1
 
    def marcar(self, plug):
