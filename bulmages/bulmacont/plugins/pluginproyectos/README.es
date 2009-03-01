@@ -16,7 +16,7 @@ ParmBD: DBRev-PresContables
 
 ArchivoSQLpatch: rev-pluginpresupuestos.sql
 
-ArchivoSQLdeins: -
+ArchivoSQLdeins: rm-pluginpresupuestos.sql
 
 Dependencias:
 

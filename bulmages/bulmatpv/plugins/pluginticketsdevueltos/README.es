@@ -8,17 +8,21 @@ Nombre: Plugin Tickets Devueltos
 
 Biblioteca: libpluginticketsdevueltos.so
 
-Descripción: Permite indicar que tickets no han sido recogidos por los clientes.
+Descripción: <H1>Tickets Devueltos</H1>
+<P>Permite indicar que tickets no han sido recogidos por los clientes.</P>
+<HR>
 
-ParmBD: 
+ParmBD: DBRev-TicketsDevueltos
 
-ArchivoSQLpatch: 
+ArchivoSQLpatch: revf-pluginticketsdevueltos.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginticketsdevueltos.sql
 
 Dependencias: libpluginabrevs.so
 
 Incompatibles:
+
+Categorias: Facturacion Generica; Experimentales
 
 Orden: 50
 

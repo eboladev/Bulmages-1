@@ -1,7 +1,7 @@
 --
 -- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Trazabilidad
 --
-\echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ALIAS *********"
+\echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRESUPUESTOS CONTABLES *********"
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
@@ -52,46 +52,26 @@ END;
 '
 language 'plpgsql';
 
+
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-        rec RECORD;
-
+	as RECORD;
 BEGIN
-        SELECT INTO rec * FROM pg_attribute WHERE attname = ''idalias'';
-        IF NOT FOUND THEN
-                CREATE TABLE alias (
-                        idalias SERIAL PRIMARY KEY,
-                        idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-                        cadalias VARCHAR
-                );
-        END IF;
-        RETURN 0;
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''idpresupuestoc'';
+	IF FOUND THEN
+      DROP TABLE lgaspresupuestoc;
+      DROP TABLE lingpresuupestoc;
+      DROP TABLE presupuestoc;
+	END IF;
+
+	RETURN 0;
 END;
-' LANGUAGE plpgsql;
+'   LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo ":: Agregada la tabla de Alias ... "
+\echo "Eliminamos las tablas necesarias para presupuestos contables"
 
-CREATE OR REPLACE FUNCTION drop_index(text) RETURNS INTEGER AS '
-DECLARE
-        nom_index ALIAS FOR $1;
-        rec RECORD;
 
-BEGIN
-        SELECT INTO rec * FROM pg_class WHERE relname = $1; 
-        IF FOUND THEN
-             EXECUTE ''DROP INDEX '' || $1 ;
-        END IF;
-        RETURN 0;
-END;
-' LANGUAGE plpgsql;
-SELECT drop_index('ix_alias_cadalias');
-
-create index ix_alias_cadalias on alias (cadalias varchar_pattern_ops );
-
-SELECT drop_index('ix_alias_len_cadalias');
-create index ix_alias_len_cadalias on alias (length(cadalias));
-\echo ":: Indexada la tabla de Alias ... "
 
 
 -- ==============================================================================
@@ -103,18 +83,16 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Alias'';
+	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-PresContables'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.2'' WHERE nombre=''DBRev-Alias'';
-	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Alias'', ''0.11.2'');
+		DELETE FROM CONFIGURACION WHERE nombre=''DBRev-PresContables'';
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.11.1"
+\echo "Eliminamos la revision de la base de datos"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;

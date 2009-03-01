@@ -14,9 +14,9 @@ Descripción: <H1>Tarifas</H1>
 
 ParmBD: 
 
-ArchivoSQLpatch: 
+ArchivoSQLpatch: revf-pluginvariaciontarifa.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginvariaciontarifa.sql
 
 Dependencias:
 

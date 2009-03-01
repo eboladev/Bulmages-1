@@ -58,41 +58,18 @@ DECLARE
 
 BEGIN
         SELECT INTO rec * FROM pg_attribute WHERE attname = ''idalias'';
-        IF NOT FOUND THEN
-                CREATE TABLE alias (
-                        idalias SERIAL PRIMARY KEY,
-                        idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-                        cadalias VARCHAR
-                );
+        IF FOUND THEN
+              DROP TABLE alias;
         END IF;
         RETURN 0;
 END;
 ' LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo ":: Agregada la tabla de Alias ... "
+\echo ":: Eliminaad la tabla de Alias ... "
 
-CREATE OR REPLACE FUNCTION drop_index(text) RETURNS INTEGER AS '
-DECLARE
-        nom_index ALIAS FOR $1;
-        rec RECORD;
-
-BEGIN
-        SELECT INTO rec * FROM pg_class WHERE relname = $1; 
-        IF FOUND THEN
-             EXECUTE ''DROP INDEX '' || $1 ;
-        END IF;
-        RETURN 0;
-END;
-' LANGUAGE plpgsql;
-SELECT drop_index('ix_alias_cadalias');
-
-create index ix_alias_cadalias on alias (cadalias varchar_pattern_ops );
-
-SELECT drop_index('ix_alias_len_cadalias');
-create index ix_alias_len_cadalias on alias (length(cadalias));
-\echo ":: Indexada la tabla de Alias ... "
-
+drop index IF EXISTS ix_alias_cadalias;
+DROP INDEX IF EXISTS ix_alias_len_cadalias;
 
 -- ==============================================================================
 
@@ -105,16 +82,14 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Alias'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.2'' WHERE nombre=''DBRev-Alias'';
-	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Alias'', ''0.11.2'');
+		DELETE FROM CONFIGURACION WHERE nombre=''DBRev-Alias'';
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.11.1"
+\echo "Eliminada la revision de la base de datos"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;

@@ -17,7 +17,7 @@ ParmBD: DBRev-Alias
 
 ArchivoSQLpatch: revf-pluginalias.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginalias.sql
 
 Dependencias:
 
