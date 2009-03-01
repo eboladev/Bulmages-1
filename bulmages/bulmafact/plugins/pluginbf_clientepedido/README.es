@@ -6,9 +6,11 @@
 
 Nombre: Pedidos de Clientes
 
-Biblioteca: libpluginpedido.so
+Biblioteca: libpluginbf_clientepedido.so
 
-Descripción:  Soporte para pedidos de clientes.
+Descripción:  <H1>Pedidos de Clientes</H1>
+<P>Soporte para pedidos de clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 560
 
 Comentarios:

@@ -4,11 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Articulos con IVA Incluido
+Nombre: IVA Incluido
 
-Biblioteca: libpluginivainc.so
+Biblioteca: libpluginbf_ivaincluido.so
 
-Descripción: Permite trabajar con articulos que llevan el IVA incluido en el precio en lugar de separar la base imponible del IVA.
+Descripción: <H1>IVA Incluido</H1>
+<P>Permite trabajar con articulos que llevan el IVA incluido en el precio en lugar de separar la base imponible del IVA.</P>
+<HR>
 
 ParmBD: DBRev-IVAInc
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; Experimentales;
+
+Orden: 610
 
 Comentarios: 

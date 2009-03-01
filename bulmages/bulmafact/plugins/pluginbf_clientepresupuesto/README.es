@@ -6,9 +6,11 @@
 
 Nombre: Presupuestos a clientes
 
-Biblioteca: libpluginpresupuesto.so
+Biblioteca: libpluginbf_clientepresupuesto.so
 
-Descripción:  Soporte para presupuestos a clientes.
+Descripción:  <H1>Presupuestos a Clientes</H1>
+<P>Soporte para presupuestos a clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 620
 
 Comentarios:

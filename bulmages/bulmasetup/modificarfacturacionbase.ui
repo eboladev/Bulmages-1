@@ -188,6 +188,11 @@
           </item>
           <item>
            <property name="text" >
+            <string>Facturacion Avanzada</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
             <string>Asociaciones de Padres de Alumnos</string>
            </property>
           </item>

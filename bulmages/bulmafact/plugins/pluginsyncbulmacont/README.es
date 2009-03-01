@@ -8,7 +8,29 @@ Nombre: Sincronización con BulmaCont
 
 Biblioteca: 
 
-Descripción: Permite la sincronización con Bulmacont
+Descripción: <H1>Sincronizacion BulmaCont</H1>
+<P>Permite la sincronización con Bulmacont</>
+<P> Precisa de tener instalado dblink.</P>
+<P>No se instala propiamente como un plugin ya que no lleva librerías asociadas.</P>
+<P>Prerequisitos:</P>
+<P>Debe instalarse DBlink que esta en el paquete postgresql-contrib (distros Debian o Ubuntu)</P>
+<P>para poner DBlink en la base de datos seleccionada debe hacerse:</P>
+<P>   $ psql database < dblink.sql</P>
+<H2>Instalacion del plugin</H2>
+<P>Debe ejecutarse el script de funcionamiento en la base de datos seleccionada.</P>
+<P>Ejemplo:
+   $ psql bulmafact < revf-pluginsyncbulmacont.sql
+</P>
+<P>Una vez instalado el plugin debe configurarse el parametro de la facturacion DataBaseContabilidad y especificar en dicho parametro la base de datos de contabilidad que se debe actualizar automaticamente.</P>
+<P>Una vez hechos estos pasos todas las operaciones que realicemos con faturacion serán traspasadas a contabilidad.</P>
+<H2>Notas</H2>
+<P>En este plugin se proporcionan dos scripts adicionales.</P>
+<LI>El primero quita toda la funcionalidad de sincronizacion de una base de datos de facturacion.</LI>
+<LI>El segundo hace un sincronizado de TODOS los datos (util para bases de datos ya formadas).</LI>
+<P>Mediante estos scripts se puede hacer una sincronizacion manual en lugar de una sincronizacion automatica.</P>
+<P>Las opciones de sincronizacion son ''standar'' si quiere opciones de sincronización especiales modifique los scripts
+para que se ajusten a sus necesidades.</P>
+<HR>
 
 ParmBD: DBRev-SyncBulmaCont
 
@@ -20,7 +42,9 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades Avanzadas; Experimentales;
+
+Orden: 900
 
 Comentarios: Precisa de tener instalado dblink.
 No se instala propiamente como un plugin ya que no lleva librerías asociadas.

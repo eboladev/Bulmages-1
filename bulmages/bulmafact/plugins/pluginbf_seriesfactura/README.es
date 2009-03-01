@@ -8,7 +8,9 @@ Nombre: Gestion de Series de Factura
 
 Biblioteca: libpluginbf_seriesfactura.so
 
-Descripción: Gestionar las series de factura.
+Descripción: <H1>Series de Factura</H1>
+<P>Gestionar las series de factura.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 750
 
 Comentarios:

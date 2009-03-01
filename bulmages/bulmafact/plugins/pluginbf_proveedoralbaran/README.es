@@ -6,9 +6,11 @@
 
 Nombre: Albaranes de Proveedor
 
-Biblioteca: libpluginalbaranprov.so
+Biblioteca: libpluginbf_proveedoralbaran.so
 
-Descripción:  Soporte para albaranes de proveedor.
+Descripción: <H1>Albaranes de Proveedor</H1>
+<P> Soporte para albaranes de proveedor.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 430
 
 Comentarios:

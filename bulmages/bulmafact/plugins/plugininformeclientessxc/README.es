@@ -8,7 +8,9 @@ Nombre: Informe Clientes en Hoja de Cálculo.
 
 Biblioteca: libplugininformeclientessxc.so
 
-Descripción: Genera un informe de totales en formato SXC que se abre directamente con kspread.
+Descripción: <H1>Informe Clientes en Hoja de Calculo</H1>
+<P>Genera un informe de totales en formato SXC que se abre directamente con kspread.</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; Experimentales;
+
+Orden: 860
 
 Comentarios: 

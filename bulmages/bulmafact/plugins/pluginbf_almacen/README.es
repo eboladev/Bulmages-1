@@ -4,11 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Gestion de Almacens
+Nombre: Almacenes
 
 Biblioteca: libpluginbf_almacen.so
 
-Descripción: Gestionar los Almacenes.
+Descripción: <H1>Almacenes</H1>
+<P>Gestionar los Almacenes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 800
 
 Comentarios:

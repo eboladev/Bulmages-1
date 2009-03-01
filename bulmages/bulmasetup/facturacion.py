@@ -131,7 +131,7 @@ class Facturacion(Empresa):
         
         # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
         self.x = 1
-        while (self.x < 100) :
+        while (self.x < 1000) :
           self.i = 0
           while (self.i < self.mui_plugins1.rowCount()):
               if (self.pluginsbulmatpv[self.i][7] == self.x):

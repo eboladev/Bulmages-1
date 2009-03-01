@@ -6,9 +6,11 @@
 
 Nombre: Facturas a Clientes
 
-Biblioteca: libpluginfactura.so
+Biblioteca: libpluginbf_clientefactura.so
 
-Descripción:  Soporte para facturas a clientes.
+Descripción: <H1>Facturas a Clientes</H1>
+<P>Soporte para facturas a clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 840
 
 Comentarios:

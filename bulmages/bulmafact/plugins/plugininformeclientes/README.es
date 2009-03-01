@@ -8,7 +8,9 @@ Nombre: Informe Clientes.
 
 Biblioteca: libplugininformeclientes.so
 
-Descripción: Genera un informe de ventas a clientes configurable mediante RML.
+Descripción: <H1>Informe Clientes</H1>
+<P>Genera un informe de ventas a clientes configurable mediante RML.</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; 
+
+Orden: 900
 
 Comentarios: 

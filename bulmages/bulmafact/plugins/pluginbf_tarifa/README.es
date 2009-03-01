@@ -6,9 +6,11 @@
 
 Nombre: Tarifas
 
-Biblioteca: libplugintarifas.so
+Biblioteca: libpluginbf_tarifaso
 
-Descripción: Permite el control de listas de precios a las que se suscribe cada cliente. Agrega la gestión de tarifas a los articulos y la selección de las mismas en los clientes.
+Descripción: <H1>Tarifas</H1>
+<P>Permite el control de listas de precios a las que se suscribe cada cliente. Agrega la gestión de tarifas a los articulos y la selección de las mismas en los clientes.</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada;
+
+Orden: 600
 
 Comentarios: 

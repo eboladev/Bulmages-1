@@ -8,7 +8,9 @@ Nombre: Envio de Documentos por e-mail
 
 Biblioteca: libpluginmail.so
 
-Descripción: Permite enviar, mediante un botón nuevo en las fichas, los documentos impresos por e-mail directamente. Al pulsar sobre le botón de enviar por e-mail se abre el kmail con un texto y el documento adjunto
+Descripción: <H1>Envios por e-mail</H1>
+<P>Permite enviar, mediante un botón nuevo en las fichas, los documentos impresos por e-mail directamente. Al pulsar sobre le botón de enviar por e-mail se abre el kmail con un texto y el documento adjunto</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades Genericas;
+
+Orden: 900
 
 Comentarios: Precisa el kmail, aunque sería sencilla hacer versiones para otros gestores de correo electronico.

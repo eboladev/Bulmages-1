@@ -6,9 +6,11 @@
 
 Nombre: Cobros
 
-Biblioteca: libplugincobros.so
+Biblioteca: libpluginbf_clientecobro.so
 
-Descripción: Gestionar los cobros realizados a los clientes.
+Descripción: <H1>Cobros</H1>
+<P>Gestionar los cobros realizados a los clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 590
 
 Comentarios:

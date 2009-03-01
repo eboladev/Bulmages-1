@@ -6,9 +6,11 @@
 
 Nombre: Profesor. Gestion de Profesores
 
-Biblioteca: libpluginprofesor.so
+Biblioteca: libpluginbf_profesor.so
 
-Descripción: Gestionar los cobros realizados a los clientes.
+Descripción: <H1>Profesores</H1>
+<P>Gestionar los cobros realizados a los clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,9 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+
+Orden: 610
+
 
 Comentarios:

@@ -8,8 +8,10 @@ Nombre: Ampliación de Almacenes
 
 Biblioteca: libpluginalmacen.so
 
-Descripción: Crea la ficha de almacenes y amplia la información que en ella se presenta.
-Sirve para aquellas gestiones que requieran de un uso mejorado y ampliable de los almacenes.
+Descripción: <H1>Ampliacion de Almacenes</H1>
+<P>Crea la ficha de almacenes y amplia la información que en ella se presenta.
+Sirve para aquellas gestiones que requieran de un uso mejorado y ampliable de los almacenes.</P>
+<HR>
 
 ParmBD: 
 
@@ -21,7 +23,9 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; Experimentales;
+
+Orden: 860
 
 Comentarios: Imprescindible para empresas con múltiples almacenes.
 

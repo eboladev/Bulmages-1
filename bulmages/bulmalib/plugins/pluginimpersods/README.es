@@ -34,7 +34,7 @@ Incompatibles:
 
 Orden: 60
 
-Categorias: Utilidades Genericas;Experimentales;
+Categorias: Utilidades Genericas;
 
 
 Comentarios: Su funcionamiento se basa en que haya un documento RML cuyo nombre

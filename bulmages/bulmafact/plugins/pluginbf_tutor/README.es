@@ -4,11 +4,14 @@
 #README.es
 #20080501
 
-Nombre: Tutor. Gestion de Tutores
+Nombre: Tutores
 
-Biblioteca: libplugintutor.so
+Biblioteca: libpluginbf_tutor.so
 
-Descripción: Gestionar los cobros realizados a los clientes.
+Descripción: <H1>Tutores</H1>
+<P>Gestionar los tutores de la asociacion.</P>
+<HR>
+
 
 ParmBD:
 
@@ -20,6 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+
+Orden: 500
 
 Comentarios:

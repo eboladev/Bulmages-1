@@ -4,11 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Abre una ficha al escribir la referencia.
+Nombre: Apertura por referencia.
 
 Biblioteca: libpluginopenref.so
 
-Descripción: Al pulsar el Enter sobre el campo de referencia se intenta abrir la ficha que tiene dicha referencia.
+Descripción: <H1>Apertura por referencia</H1>
+<P>Al pulsar el Enter sobre el campo de referencia se intenta abrir la ficha que tiene dicha referencia.</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades Generales;
+
+Orden: 900
 
 Comentarios:

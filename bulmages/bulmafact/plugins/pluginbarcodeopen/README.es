@@ -8,9 +8,11 @@ Nombre: Apertura Rapida Desde Códigos de Barras
 
 Biblioteca: libpluginbarcodeopen.so
 
-Descripción: Presenta una opción de menu que permite acceder de forma rápida a la ficha
+Descripción: <H1>Codigos de Barras</H1>
+<P>Presenta una opción de menu que permite acceder de forma rápida a la ficha
 de un documento impreso pasandolo por el lector de códigos de barras. Las plantillas de 
-impresión deben tener activada la identificación en código de barras.
+impresión deben tener activada la identificación en código de barras.</P>
+<HR>
 
 ParmBD: 
 
@@ -22,6 +24,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden: 60
+Categorias: Utilidades Genericas;
+
+Orden: 600
 
 Comentarios: Requiere de la extensión rlbarcode instalada en reportlab.

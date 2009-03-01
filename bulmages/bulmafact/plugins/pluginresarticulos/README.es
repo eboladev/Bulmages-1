@@ -8,7 +8,9 @@ Nombre: Listas de Precios
 
 Biblioteca: libpluginresarticulos.so
 
-Descripción: Permite el control de listas de precios a las que se suscribe cada cliente.
+Descripción: <H1>Listas de Precios</H1>
+<P>Permite el control de listas de precios a las que se suscribe cada cliente.</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; Experimentales;
+
+Orden: 900
 
 Comentarios: 

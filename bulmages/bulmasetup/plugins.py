@@ -73,7 +73,7 @@ class PluginsBulmaSetup:
             if m <> None:
               incompatibles = m.group(1)
             m = re.search('Orden: (.*)', cont)
-            orden = 99
+            orden = 999
             if m <> None:
               if (m.group(1).isdigit()):
                   orden = int(m.group(1))

@@ -8,7 +8,9 @@ Nombre: Compra-Venta.
 
 Biblioteca: libplugincompraventa.so
 
-Descripción: Unifica las operaciones de compra y venta.
+Descripción: <H1>Compra Venta</H1>
+<P>Unifica las operaciones de compra y venta.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanazada; Experimentales;
+
+Orden: 600
 
 Comentarios:

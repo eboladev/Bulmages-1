@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Sat Feb 28 21:35:19 2009
+# Created: Sun Mar  1 02:29:56 2009
 #      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -87,6 +87,7 @@ class Ui_ModificarFacturacionBase(object):
         self.horizontalLayout.addWidget(self.label_5)
         self.mui_categoria = QtGui.QComboBox(self.groupBox)
         self.mui_categoria.setObjectName("mui_categoria")
+        self.mui_categoria.addItem(QtCore.QString())
         self.mui_categoria.addItem(QtCore.QString())
         self.mui_categoria.addItem(QtCore.QString())
         self.mui_categoria.addItem(QtCore.QString())
@@ -184,12 +185,13 @@ class Ui_ModificarFacturacionBase(object):
         self.label_5.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Categoria", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_categoria.setItemText(0, QtGui.QApplication.translate("ModificarFacturacionBase", "-- Todas --", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_categoria.setItemText(1, QtGui.QApplication.translate("ModificarFacturacionBase", "Facturacion Generica", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_categoria.setItemText(2, QtGui.QApplication.translate("ModificarFacturacionBase", "Asociaciones de Padres de Alumnos", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_categoria.setItemText(3, QtGui.QApplication.translate("ModificarFacturacionBase", "Fabricacion y Trazabilidad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_categoria.setItemText(4, QtGui.QApplication.translate("ModificarFacturacionBase", "IVA. Incluido", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_categoria.setItemText(5, QtGui.QApplication.translate("ModificarFacturacionBase", "Utilidades Genericas", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_categoria.setItemText(6, QtGui.QApplication.translate("ModificarFacturacionBase", "Utilidades Avanzadas", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_categoria.setItemText(7, QtGui.QApplication.translate("ModificarFacturacionBase", "Experimentales", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(2, QtGui.QApplication.translate("ModificarFacturacionBase", "Facturacion Avanzada", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(3, QtGui.QApplication.translate("ModificarFacturacionBase", "Asociaciones de Padres de Alumnos", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(4, QtGui.QApplication.translate("ModificarFacturacionBase", "Fabricacion y Trazabilidad", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(5, QtGui.QApplication.translate("ModificarFacturacionBase", "IVA. Incluido", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(6, QtGui.QApplication.translate("ModificarFacturacionBase", "Utilidades Genericas", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(7, QtGui.QApplication.translate("ModificarFacturacionBase", "Utilidades Avanzadas", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_categoria.setItemText(8, QtGui.QApplication.translate("ModificarFacturacionBase", "Experimentales", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))

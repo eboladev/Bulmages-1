@@ -22,8 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion General;
+Categorias: Facturacion Generica;
 
-Orden:
+Orden: 900
 
 Comentarios: Es un complemento bastante util con los TPV's

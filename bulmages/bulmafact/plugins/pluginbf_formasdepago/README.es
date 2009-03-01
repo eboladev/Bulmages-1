@@ -8,7 +8,9 @@ Nombre: Gestion de Formas de Pago
 
 Biblioteca: libpluginbf_formasdepago.so
 
-Descripción: Gestionar las formas de pago.
+Descripción: <H1>Formas de Pago</H1>
+<P>Gestionar las formas de pago.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 823
 
 Comentarios:

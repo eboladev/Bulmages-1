@@ -182,7 +182,7 @@ class Contabilidad(Empresa):
    
       # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
       self.x = 1
-      while (self.x < 100) :
+      while (self.x < 1000) :
          # Iteramos sobre la lista de plugins disponibles en bulmacont
          self.i = 0
          while (self.i < self.mui_plugins.rowCount()):

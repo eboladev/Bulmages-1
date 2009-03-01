@@ -6,9 +6,11 @@
 
 Nombre: Pedidos a Proveedor
 
-Biblioteca: libpluginpedidoprov.so
+Biblioteca: libpluginbf_proveedorpedido.so
 
-Descripción:  Soporte para pedidos a proveedores.
+Descripción: <H1>Pedidos a proveedores</H1>
+<P>Soporte para pedidos a proveedores.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 620
 
 Comentarios:

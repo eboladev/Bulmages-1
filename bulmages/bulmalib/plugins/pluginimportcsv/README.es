@@ -8,7 +8,7 @@ Nombre: Importacion de datos separados por coma
 
 Biblioteca: libpluginimportcsv.so
 
-Descripción: <H1>Importar CSV>/H1>
+Descripción: <H1>Importar CSV</H1>
 <P>Permite la importacion de datos tabulares en formato CSV (coma
 separated values). </P>
 <P>Una vez instalado el plugin tendremos una opcion en el menu contextual de la ficha que nos permite seleccionar el

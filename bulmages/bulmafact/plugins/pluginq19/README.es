@@ -8,7 +8,9 @@ Nombre: Remesas Bancarias
 
 Biblioteca: libpluginq19.so
 
-Descripción: Agrega un botón de generacion de remesas bancarias al listado de facturas. Funciona en conjuncion con el plugin de impresionesmultiples y al seleccionar varias facturas y darle a este botón genera el archivo q19 para poder pasarlo al banco.
+Descripción: <H1>Remesas Bancarias</H1>
+<P>Agrega un botón de generacion de remesas bancarias al listado de facturas. Funciona en conjuncion con el plugin de impresionesmultiples y al seleccionar varias facturas y darle a este botón genera el archivo q19 para poder pasarlo al banco.</P>
+<HR>
 
 ParmBD: 
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; Experimentales;
+
+Orden: 900
 
 Comentarios: 

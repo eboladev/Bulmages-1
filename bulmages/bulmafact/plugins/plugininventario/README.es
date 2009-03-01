@@ -8,7 +8,9 @@ Nombre: Gestión de Inventarios.
 
 Biblioteca: libplugininventario.so
 
-Descripción: Creación de inventarios y control de stock. Inventarios en múltiples almacenes y con rehubicación.
+Descripción: <H1>Inventarios</H1>
+<P>Creación de inventarios y control de stock. Inventarios en múltiples almacenes y con rehubicación.</P>
+<HR>
 
 ParmBD: DBRev-Inventario
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica; Experimentales;
+
+Orden: 550
 
 Comentarios: Imprescindible en los sistema de control de stock.

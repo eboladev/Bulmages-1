@@ -6,9 +6,11 @@
 
 Nombre: Facturas de Proveedor
 
-Biblioteca: libpluginfacturaprov.so
+Biblioteca: libpluginbf_proveedorfactura.so
 
-Descripción:  Soporte para facturas de proveedor.
+Descripción:  <H1>Facturas de Proveedores</H1>
+<P>Soporte para facturas de proveedor.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 570
 
 Comentarios:

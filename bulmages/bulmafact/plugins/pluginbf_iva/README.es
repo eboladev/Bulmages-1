@@ -4,11 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Gestion de IVA
+Nombre: IVA y Tasas de IVA
 
 Biblioteca: libpluginbf_iva.so
 
-Descripción: Gestionar los Impuestos.
+Descripción: <H1>IVA</H1>
+<P>Gestionar los Impuestos.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 7820
 
 Comentarios:

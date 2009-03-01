@@ -4,11 +4,14 @@
 #README.es
 #20080501
 
-Nombre: Actividad. Gestion de Actividades
+Nombre: Actividades
 
-Biblioteca: libpluginactividad.so
+Biblioteca: libpluginbf_actividad.so
 
-Descripción: Gestionar los cobros realizados a los clientes.
+Descripción: <H1>Actividades</H1>
+<P>Gestionar las actividades llevadas a cabo por la asociacion.</P>
+<HR>
+
 
 ParmBD:
 
@@ -20,6 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+
+Orden: 300
 
 Comentarios:

@@ -6,9 +6,11 @@
 
 Nombre: Pagos
 
-Biblioteca: libpluginpagos.so
+Biblioteca: libpluginbf_proveedorpago.so
 
-Descripción: Gestion de pagos a proveedores.
+Descripción: <H1>Pagos</H1>
+<P>Gestion de pagos a proveedores.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 790
 
 Comentarios:

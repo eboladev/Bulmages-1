@@ -6,9 +6,11 @@
 
 Nombre: Flota de Vehiculos
 
-Biblioteca: libpluginvehiculosbf.so
+Biblioteca: libpluginbf_vehiculo.so
 
-Descripción: Gestión de flotas de vehículos de la empresa. Kilometrajes, etc
+Descripción: <H1>Vehiculos</H1>
+<P>Gestión de flotas de vehículos de la empresa. Kilometrajes, etc</P>
+<HR>
 
 ParmBD: DBRev-PluginVehiculosBF
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Avanzada; Experimentales;
+
+Orden: 900
 
 Comentarios: No está terminado

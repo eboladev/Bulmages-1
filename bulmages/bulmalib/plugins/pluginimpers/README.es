@@ -30,7 +30,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;Experimentales;
+Categorias: Utilidades Genericas;
 
 Orden: 60
 

@@ -6,9 +6,11 @@
 
 Nombre: Alumno. Gestion de Alumnos
 
-Biblioteca: libpluginalumno.so
+Biblioteca: libpluginbf_alumno.so
 
-Descripción: Gestionar los cobros realizados a los clientes.
+Descripción: <H1> Alumnos</H1>
+<P>Gestionar los cobros realizados a los clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+
+Orden: 600
 
 Comentarios:

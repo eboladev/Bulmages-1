@@ -6,9 +6,11 @@
 
 Nombre: Albaranes a Clientes
 
-Biblioteca: libpluginalbaran.so
+Biblioteca: libpluginbf_clientealbaran.so
 
-Descripción:  Soporte para albaranes a clientes.
+Descripción: <H1>Albaranes a Clientes</H1>
+<P> Soporte para albaranes a clientes.</P>
+<HR>
 
 ParmBD:
 
@@ -20,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Facturacion Generica;
+
+Orden: 40
 
 Comentarios:
