@@ -10,9 +10,8 @@ from empresa import Empresa
 import plugins
 
 class Contabilidad(Empresa):
-   def __init__(self, parent = None):
-      Empresa.__init__(self)
-      self.database = ''
+   def __init__(self, database, parent = None):
+      Empresa.__init__(self, database)
    
    def actualizarDatabase(self):
       self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]

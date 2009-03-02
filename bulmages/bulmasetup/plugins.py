@@ -68,7 +68,6 @@ class PluginsBulmaSetup:
             m = re.search('Categorias: (.*)', cont)
             if m <> None:
               categorias = m.group(1)
-            print categorias
             m = re.search('Incompatibles: (.*)', cont)
             if m <> None:
               incompatibles = m.group(1)

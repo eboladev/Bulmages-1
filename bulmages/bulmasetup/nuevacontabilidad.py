@@ -12,7 +12,7 @@ import plugins
 
 class NuevaContabilidad(Ui_NuevaContabilidadBase, Contabilidad):
     def __init__(self, parent = None):
-	Contabilidad.__init__(self)
+	Contabilidad.__init__(self, '')
 	self.setupUi(self)
 	
 	self.process = QtCore.QProcess()

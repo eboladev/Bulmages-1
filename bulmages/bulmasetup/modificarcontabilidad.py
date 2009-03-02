@@ -11,7 +11,7 @@ import plugins
 
 class ModificarContabilidad(Ui_ModificarContabilidadBase, Contabilidad):
     def __init__(self, database, parent = None):
-        Contabilidad.__init__(self,parent)
+        Contabilidad.__init__(self,database, parent)
 	self.setupUi(self)
 	
 	self.process = QtCore.QProcess()
@@ -21,7 +21,6 @@ class ModificarContabilidad(Ui_ModificarContabilidadBase, Contabilidad):
 	self.connect(self.process, SIGNAL("started()"), self.started)
 	self.mui_nomdb.setText(database)
 	# Establecemos cual va a ser la base de datos con la que trabajaremos todo el rato
-	self.database = database
 	self.nombre = self.execQuery('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\';').replace('\n', '')
 	self.databaserevision = self.execQuery('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\';').replace('\n', '')
 	self.mui_nomempresa.setText(self.nombre.replace('\n', ''))
