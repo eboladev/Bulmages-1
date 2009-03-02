@@ -76,3 +76,7 @@ foreach(dfile ${docs})
 endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib)
+
+install(DIRECTORY dbmodels/ 
+      DESTINATION share/bulmages/dbmodels/plugins
+      PATTERN ".svn" EXCLUDE)

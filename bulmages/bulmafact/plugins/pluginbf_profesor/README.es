@@ -12,11 +12,11 @@ Descripción: <H1>Profesores</H1>
 <P>Gestionar los cobros realizados a los clientes.</P>
 <HR>
 
-ParmBD:
+ParmBD: DBRev-Profesor
 
-ArchivoSQLpatch:
+ArchivoSQLpatch: revf-pluginprofesor.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: rm-pluginprofesor.sql
 
 Dependencias:
 

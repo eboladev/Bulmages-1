@@ -84,7 +84,6 @@ endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura)
 
-set(files dbmodels/revf-plugincontratos.sql)
-
-install(FILES ${files} DESTINATION share/bulmages/dbmodels/plugins)
-
+install(DIRECTORY dbmodels/ 
+      DESTINATION share/bulmages/dbmodels/plugins
+      PATTERN ".svn" EXCLUDE)

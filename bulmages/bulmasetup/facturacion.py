@@ -55,14 +55,11 @@ class Facturacion(Empresa):
       while (not (self.text.isNull()) and self.text.contains("lib")):
         self.text = self.vin.readLine()
       
-      # Escribimos la configuracion de plugins.
-      self.terminador = ""
-      self.out << "CONF_PLUGINS_BULMAFACT   "
-      
+      self.nuevo = 1
    
       # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
       self.x = 1
-      while (self.x < 100) :
+      while (self.x < 1000) :
         # Iteramos sobre la lista de plugins disponibles en bulmafact
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
@@ -71,6 +68,12 @@ class Facturacion(Empresa):
             self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmafact[self.i][1]) > 3):
+              if (self.nuevo == 1):
+                 self.nuevo = 0
+                 # Escribimos la configuracion de plugins.
+                 self.terminador = ""
+                 self.out << "CONF_PLUGINS_BULMAFACT   "
+
               self.writecommand('Hay que actualizar ' + self.pluginsbulmafact[self.i][0])
               self.out << self.terminador << self.pluginsbulmafact[self.i][1]
               self.terminador = "; \\\n";
@@ -127,8 +130,8 @@ class Facturacion(Empresa):
       
       # Escribimos la configuracion de plugins.
         self.terminador = ""
-        self.out << "CONF_PLUGINS_BULMATPV   "
-        
+
+        self.nuevo = 1
         # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
         self.x = 1
         while (self.x < 1000) :
@@ -138,6 +141,9 @@ class Facturacion(Empresa):
                 print 'Tratando:' + self.pluginsbulmatpv[self.i][1]
                 self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
                 if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmatpv[self.i][1]) > 3):
+                  if (self.nuevo == 1):
+                    self.nuevo = 0
+                    self.out << "CONF_PLUGINS_BULMATPV   "
                   self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
                   self.out << self.terminador << self.pluginsbulmatpv[self.i][1]
                   self.terminador = "; \\\n";

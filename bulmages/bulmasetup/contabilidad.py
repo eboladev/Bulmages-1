@@ -186,8 +186,7 @@ class Contabilidad(Empresa):
       
       # Escribimos la configuracion de plugins.
       self.terminador = ""
-      self.out << "CONF_PLUGINS_BULMACONT   "
-   
+      self.nuevo = 1
    
       # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
       self.x = 1
@@ -200,6 +199,9 @@ class Contabilidad(Empresa):
                self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
                # Si el plugin esta checked lo escribimos.
                if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmacont[self.i][1]) > 3):
+                  if (self.nuevo ==1):
+                    self.nuevo = 0
+                    self.out << "CONF_PLUGINS_BULMACONT   "
                   self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
                   self.out << self.terminador << self.pluginsbulmacont[self.i][1]
                   self.terminador = "; \\\n";
