@@ -66,7 +66,7 @@ int main ( int argc, char **argv )
         theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
         /// Cargamos el BlSplashScreen.
-        BlSplashScreen* splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMATPV ), "BulmaTPV", CONFIG_VERSION );
+        BlSplashScreen* splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTPV", CONFIG_VERSION );
         splashScr->mensaje ( _("Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 

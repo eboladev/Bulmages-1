@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>BulmaTPV</string>
+   <string>Iglues/BulmaTPV</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >

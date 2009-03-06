@@ -43,7 +43,7 @@ sobreview::sobreview ( QWidget *parent ) : QDialog ( parent )
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Contabilidad GPL</h2></center>";
 
-    str_autores = "<center><h2>Autores de BulmaCont</h2>" \
+    str_autores = "<center><h2>Autores de Iglues/BulmaCont</h2>" \
                   "<p>" \
                   "Programaci&oacute;n:<br/> " \
                   "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \

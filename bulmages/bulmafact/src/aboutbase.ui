@@ -497,7 +497,7 @@
    </palette>
   </property>
   <property name="windowTitle" >
-   <string>Acerca de BulmaFact</string>
+   <string>Acerca de Iglues/BulmaFact</string>
   </property>
   <property name="windowIcon" >
    <iconset>
@@ -593,15 +593,10 @@
        <property name="layoutDirection" >
         <enum>Qt::LeftToRight</enum>
        </property>
+       <property name="currentIndex" >
+        <number>0</number>
+       </property>
        <widget class="QWidget" name="Acercade" >
-        <property name="geometry" >
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>584</width>
-          <height>224</height>
-         </rect>
-        </property>
         <attribute name="title" >
          <string>&amp;Acerca de</string>
         </attribute>
@@ -625,14 +620,6 @@
         </layout>
        </widget>
        <widget class="QWidget" name="autores" >
-        <property name="geometry" >
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>512</width>
-          <height>307</height>
-         </rect>
-        </property>
         <attribute name="title" >
          <string>A&amp;utores</string>
         </attribute>
@@ -666,14 +653,6 @@ p, li { white-space: pre-wrap; }
         </layout>
        </widget>
        <widget class="QWidget" name="soporte" >
-        <property name="geometry" >
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>512</width>
-          <height>307</height>
-         </rect>
-        </property>
         <attribute name="title" >
          <string>Sopor&amp;te</string>
         </attribute>
@@ -697,14 +676,6 @@ p, li { white-space: pre-wrap; }
         </layout>
        </widget>
        <widget class="QWidget" name="licencia" >
-        <property name="geometry" >
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>512</width>
-          <height>307</height>
-         </rect>
-        </property>
         <attribute name="title" >
          <string>Acuerdo de &amp;licencia</string>
         </attribute>

@@ -19,7 +19,7 @@
    <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle" >
-   <string>BulmaFact - Facturacion GPL</string>
+   <string>Iglues/BulmaFact - Facturacion GPL</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
@@ -32,7 +32,7 @@
      <x>0</x>
      <y>0</y>
      <width>750</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -200,7 +200,7 @@
   </action>
   <action name="actionAcerta_de" >
    <property name="text" >
-    <string>&amp;Acerca de BulmaFact</string>
+    <string>&amp;Acerca de Iglues/BulmaFact</string>
    </property>
   </action>
   <action name="actionDocumentacion" >

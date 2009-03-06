@@ -41,7 +41,7 @@ AboutView::AboutView ( QDialog *parent ) : QDialog ( parent )
     mui_lbversion->setText ( mui_lbversion->text() + " " +   _( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Facturaci&oacute;n GPL</h2></center>";
-    str_autores = "<center><h2>Autores de BulmaFact</h2>" \
+    str_autores = "<center><h2>Autores de Iglues/BulmaFact</h2>" \
                   "<p>" \
                   "Programaci&oacute;n:<br/> " \
                   "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \

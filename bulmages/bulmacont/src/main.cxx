@@ -93,7 +93,7 @@ int main ( int argc, char **argv )
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
         /// Cargamos el BlSplashScreen.
-        BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", CONFIG_VERSION );
+        BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMACONT ), "Iglues/BulmaCont", CONFIG_VERSION );
         splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 

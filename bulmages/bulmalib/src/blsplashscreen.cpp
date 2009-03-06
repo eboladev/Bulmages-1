@@ -60,7 +60,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     l0->setGeometry ( 0, 0, image0->width(), image0->height() );
     l0->setAlignment ( Qt::AlignTop );
     l0->setFont ( QFont ( "Arial", 20, QFont::Bold ) );
-    l0->setText ( "<center><font size=+1 color=\"#a3ffa3\">" + appName + "</font>&nbsp;<font color=\"#0000ff\">" + appVersion + "</font></center>" );
+    l0->setText ( "<center><font size=+1 color=\"#a3ffa3\">" + appName + "</font><br/><font color=\"#0000ff\">" + appVersion + "</font></center>" );
 
     m_label = new QLabel ( this );
     m_label->setTextFormat ( Qt::RichText );
