@@ -261,7 +261,7 @@ msgstr "Abandona"
 
 #: ui_bulmacontbase.h:345
 msgid "&Salir del programa"
-msgstr "De&sa el programa"
+msgstr "&Abandona el programa"
 
 #: asiento1view.cpp:333 canalview.cpp:238
 msgid "&Si"

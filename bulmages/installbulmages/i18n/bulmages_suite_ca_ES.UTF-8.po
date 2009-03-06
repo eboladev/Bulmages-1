@@ -623,7 +623,7 @@ msgstr "&Professors"
 
 #: ui_bulmacontbase.h:338 ui_bulmafactbase.h:152
 msgid "&Propiedades de la empresa..."
-msgstr "&propietats de l'empresa..."
+msgstr "&Propietats de l'empresa..."
 
 #: pluginbf_proveedor.cpp:96
 msgid "&Proveedores"
@@ -667,7 +667,7 @@ msgstr "Abandona"
 
 #: ui_bulmacontbase.h:345 ui_bulmafactbase.h:150
 msgid "&Salir del programa"
-msgstr "De&sa el programa"
+msgstr "&Abandona el programa"
 
 #: asiento1view.cpp:333 canalview.cpp:238 incidenciacomercialview.cpp:106
 #: rutacomercialincview.cpp:80 genpreqtoolbutton.cpp:167
@@ -3947,9 +3947,8 @@ msgid "Datos de la cuenta:"
 msgstr "Banc del compte"
 
 #: ui_registroivabase.h:606
-#, fuzzy
 msgid "Datos de la empresa:"
-msgstr "Propietats de l'empresa"
+msgstr "Dades de l'empresa"
 
 #: ui_registroivabase.h:609
 #, fuzzy
