@@ -6,13 +6,21 @@ from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from plugins import PluginsBulmaSetup
+from modificarcontabilidadbase import *
 from empresa import Empresa
 import plugins
 
-class Contabilidad(Empresa):
+class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
    def __init__(self, database, parent = None):
       Empresa.__init__(self, database)
-   
+      self.setupUi(self)
+      # Ocultamos la columna de las descripciones.
+      self.mui_plugins.hideColumn(1)
+      # Buscamos los Plugins
+      self.buscaPlugins()
+      # Ajustamos la presentacion
+      self.mui_plugins.resizeColumnsToContents()
+
    def actualizarDatabase(self):
       self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]
       #Parcheamos todo lo que hay que parchear
@@ -64,7 +72,14 @@ class Contabilidad(Empresa):
    
    
    def buscaPlugins(self):
-      self.writecommand("Buscando Pluggins")
+      self.writecommand("Buscando Plugins")
+      
+      #Creamos la bara de progreso
+      self.progress = QtGui.QProgressBar()
+      self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
+      self.progress.setRange(0, len(self.pluginsbulmacont))
+      self.progress.show()
+      
       self.semaforo = 0
    
       self.mui_plugins.setRowCount(len(self.pluginsbulmacont))
@@ -79,11 +94,22 @@ class Contabilidad(Empresa):
          self.mui_plugins.setItem(self.i, 0, self.check)
          self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
          self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setRowHeight(self.i, 50)
          self.i = self.i + 1
-   
+         self.progress.setValue(self.progress.value() + 1)
+      self.progress.hide()
+        
+
+
    def actualizarPlugins(self):
       self.writecommand('ACTUALIZANDO PLUGINS')
+      
+      #Creamos la bara de progreso
+      self.progress = QtGui.QProgressBar(self)
+      self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
+      self.progress.setRange(0, self.mui_plugins.rowCount())
+      self.progress.show()
+      
+      
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
          self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
@@ -105,6 +131,8 @@ class Contabilidad(Empresa):
               self.process.waitForFinished(-1)
               self.writecommand(self.process.readAllStandardOutput())
          self.i = self.i + 1
+         self.progress.setValue(self.progress.value() + 1)
+      self.progress.hide()
 
    def marcar(self, plug):
       self.j = 0
@@ -121,6 +149,7 @@ class Contabilidad(Empresa):
          self.j = self.j + 1
 
    def on_mui_plugins_cellClicked(self, row, col):
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text())
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0
@@ -142,11 +171,13 @@ class Contabilidad(Empresa):
                   self.desmarcar(self.dep)
             self.i = self.i +1
 
+
+    
    def writeConfig(self):
       self.writecommand('ESCRIBIENDO CONFIGURACION')
-      self.writecommand("Escribiendo configuracion en " + plugins.configfiles )
+      self.writecommand("Escribiendo configuracion en "+ plugins.configfiles)
       
-      # TRATAMOS EL ARCHIVO DE BULMACONT
+      # TRATAMOS EL ARCHIVO DE BULMAFACT
       # ================================
 
       # Tocamos el archivo por si no existe
@@ -166,11 +197,11 @@ class Contabilidad(Empresa):
       if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
         return;
       self.vin = QTextStream(self.file1)
-
       
+      # Abrimos el archivo para escritura.
       self.file = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf");
       if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
-         return;
+        return;
       self.out = QTextStream(self.file)
       
       # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
@@ -183,29 +214,30 @@ class Contabilidad(Empresa):
       while (not (self.text.isNull()) and self.text.contains("lib")):
         self.text = self.vin.readLine()
       
-      # Escribimos la configuracion de plugins.
-      self.terminador = ""
       self.nuevo = 1
    
       # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
       self.x = 1
       while (self.x < 1000) :
-         # Iteramos sobre la lista de plugins disponibles en bulmacont
-         self.i = 0
-         while (self.i < self.mui_plugins.rowCount()):
-            # Si el plugin tiene el orden adecuado lo consideramos.
-            if (self.pluginsbulmacont[self.i][7] == self.x ):
-               self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
-               # Si el plugin esta checked lo escribimos.
-               if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmacont[self.i][1]) > 3):
-                  if (self.nuevo ==1):
-                    self.nuevo = 0
-                    self.out << "CONF_PLUGINS_BULMACONT   "
-                  self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
-                  self.out << self.terminador << self.pluginsbulmacont[self.i][1]
-                  self.terminador = "; \\\n";
-            self.i = self.i + 1
-         self.x = self.x + 1
+        # Iteramos sobre la lista de plugins disponibles en bulmafact
+        self.i = 0
+        while (self.i < self.mui_plugins.rowCount()):
+          # Si el plugin tiene el orden adecuado lo consideramos.
+          if (self.pluginsbulmacont[self.i][7] == self.x ):
+            self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
+            # Si el plugin esta checked lo escribimos.
+            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmacont[self.i][1]) > 3):
+              if (self.nuevo == 1):
+                 self.nuevo = 0
+                 # Escribimos la configuracion de plugins.
+                 self.terminador = ""
+                 self.out << "CONF_PLUGINS_BULMACONT   "
+
+              self.writecommand('Hay que actualizar ' + self.pluginsbulmacont[self.i][0])
+              self.out << self.terminador << self.pluginsbulmacont[self.i][1]
+              self.terminador = "; \\\n";
+          self.i = self.i + 1
+        self.x = self.x + 1
       self.out << "\n"
       
       # Terminamos de poner el resto de las linea.
@@ -216,3 +248,41 @@ class Contabilidad(Empresa):
       # Cerramos slo ficheros.
       self.file.close()
       self.file1.close()
+
+   def on_mui_categoria_currentIndexChanged(self, index):
+      self.presentar()
+  
+  
+   def on_mui_vertodos_stateChanged(self, status):
+      self.presentar()
+  
+   def presentar(self):
+      status = self.mui_vertodos.checkState()
+      
+      # Hacemos todas las lineas visibles para luego ocultarlas.
+      self.i = 0
+      while (self.i < self.mui_plugins.rowCount()):
+        self.mui_plugins.showRow(self.i)
+        self.i = self.i + 1
+      
+      if (status == 2):
+        # Establezco la tabla de bulmafact
+        self.i = 0
+        while (self.i < self.mui_plugins.rowCount()):
+          if (self.mui_plugins.item(self.i, 0).checkState() != Qt.Checked ):
+            self.mui_plugins.hideRow(self.i)
+          self.i = self.i + 1
+
+      if (self.mui_categoria.currentIndex() > 0):
+        # VAmos a trabajar con el combo Box
+        cat = self.mui_categoria.currentText()
+        self.i = 0
+        while (self.i < self.mui_plugins.rowCount()):
+          text = QString(self.pluginsbulmacont[self.i][8])
+          a = text.contains(cat)
+          if (not a):
+            self.mui_plugins.hideRow(self.i)
+          self.i = self.i +1
+
+
+

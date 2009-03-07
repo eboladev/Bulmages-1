@@ -246,6 +246,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             
    def actualizarPlugins(self):
       self.writecommand('ACTUALIZANDO PLUGINS')
+      
+      #Creamos la bara de progreso
+      self.progress = QtGui.QProgressBar(self)
+      self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
+      self.progress.setRange(0, self.mui_plugins.rowCount()+self.mui_plugins1.rowCount())
+      self.progress.show()
+      
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
         self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
@@ -269,6 +276,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.process.waitForFinished(-1)
             self.writecommand(self.process.readAllStandardOutput())
         self.i = self.i +1
+        self.progress.setValue(self.progress.value() + 1)
    
       if (self.mui_soporteTPV.isChecked()):
         self.i = 0
@@ -292,9 +300,19 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
               self.process.waitForFinished(-1)
               self.writecommand(self.process.readAllStandardOutput())
           self.i = self.i +1
+          self.progress.setValue(self.progress.value() + 1)
+        self.progress.hide()
 
    def buscaPlugins(self):
       self.writecommand("Buscando Pluggins")
+      
+      #Creamos la bara de progreso
+      self.progress = QtGui.QProgressBar()
+      self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
+      self.progress.setRange(0, len(self.pluginsbulmafact)+len(self.pluginsbulmatpv))
+      self.progress.show()
+          
+      
       self.semaforo = 0
       self.mui_plugins.setRowCount(len(self.pluginsbulmafact))
       self.i = 0
@@ -310,7 +328,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
 #        self.mui_plugins.setRowHeight(self.i, 50)
         self.i = self.i + 1
-      
+        self.progress.setValue(self.progress.value() + 1)
+        
+        
       self.mui_plugins1.setRowCount(len(self.pluginsbulmatpv))
       self.i = 0
       while (self.i < len(self.pluginsbulmatpv)):
@@ -323,9 +343,11 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins1.setItem(self.i, 0, self.check)
         self.mui_plugins1.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
         self.mui_plugins1.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
- #       self.mui_plugins1.setRowHeight(self.i, 50)
         self.i = self.i + 1
+        self.progress.setValue(self.progress.value() + 1)
+        
       self.semaforo = 1
+      self.progress.hide()
       
       
    def buscaPluginInstalado(self, plugin, libreria):

@@ -10,24 +10,31 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="maximumSize" >
    <size>
-    <width>800</width>
-    <height>608</height>
+    <width>2800</width>
+    <height>2500</height>
    </size>
   </property>
   <property name="windowTitle" >
-   <string>Modificar Contabilidad</string>
+   <string>Contabilidad</string>
   </property>
   <property name="windowIcon" >
-   <iconset>../../../../.designer/images/png/bulmafact.png</iconset>
+   <iconset>
+    <normaloff>bulmasetup_bulmacont.png</normaloff>bulmasetup_bulmacont.png</iconset>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QGridLayout" name="gridLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
@@ -38,10 +45,38 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
+   <item row="0" column="1" colspan="3" >
     <widget class="QLineEdit" name="mui_nomempresa" />
    </item>
-   <item row="0" column="3" >
+   <item rowspan="5" row="0" column="4" >
+    <widget class="QToolButton" name="toolButton" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Expanding" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>15</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>..</string>
+     </property>
+     <property name="checkable" >
+      <bool>true</bool>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="5" row="0" column="5" >
+    <widget class="QTextBrowser" name="mui_descripcion" />
+   </item>
+   <item row="1" column="0" >
     <widget class="QLabel" name="label_2" >
      <property name="text" >
       <string>Nombre Base de Datos</string>
@@ -51,91 +86,211 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="4" colspan="2" >
+   <item row="1" column="1" colspan="2" >
     <widget class="QLineEdit" name="mui_nomdb" >
      <property name="readOnly" >
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2" >
+   <item row="1" column="3" >
+    <widget class="QCheckBox" name="mui_actualizarDB" >
+     <property name="text" >
+      <string>Actualizar Base de Datos</string>
+     </property>
+     <property name="checked" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
     <widget class="QLabel" name="label_3" >
      <property name="text" >
       <string>Version de la Base de Datos</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="2" >
+   <item row="2" column="1" colspan="2" >
     <widget class="QLineEdit" name="mui_databaserevision" >
      <property name="readOnly" >
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QLabel" name="label_4" >
-     <property name="text" >
-      <string>Plugins Instalados</string>
+   <item row="3" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Opciones de Filtrado de Plugins</string>
      </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="6" >
-    <widget class="QTableWidget" name="mui_plugins" >
-     <property name="alternatingRowColors" >
-      <bool>true</bool>
-     </property>
-     <column>
-      <property name="text" >
-       <string>Plugin</string>
+     <layout class="QHBoxLayout" name="horizontalLayout_2" >
+      <property name="spacing" >
+       <number>0</number>
       </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Descripcion</string>
+      <property name="margin" >
+       <number>0</number>
       </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Version Instalada</string>
-      </property>
-     </column>
+      <item>
+       <widget class="QCheckBox" name="mui_vertodos" >
+        <property name="text" >
+         <string>Mostrar todos los plugins o solo los instalados</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer" >
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0" >
+         <size>
+          <width>43</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" >
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_5" >
+          <property name="text" >
+           <string>Categoria</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mui_categoria</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="mui_categoria" >
+          <item>
+           <property name="text" >
+            <string>-- Todas --</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Facturacion Generica</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Facturacion Avanzada</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Asociaciones de Padres de Alumnos</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Fabricacion y Trazabilidad</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>IVA. Incluido</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Utilidades Genericas</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Utilidades Avanzadas</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Experimentales</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="3" >
-    <widget class="QCheckBox" name="mui_checkbox" >
-     <property name="text" >
-      <string>Ver Consola</string>
+   <item row="4" column="0" colspan="4" >
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="currentIndex" >
+      <number>0</number>
      </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Plugins BulmaCont</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="mui_plugins" >
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode" >
+          <enum>QAbstractItemView::NoSelection</enum>
+         </property>
+         <property name="selectionBehavior" >
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="gridStyle" >
+          <enum>Qt::NoPen</enum>
+         </property>
+         <column>
+          <property name="text" >
+           <string>Plugin</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Descripcion</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Version Instalada</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3" >
+      <attribute name="title" >
+       <string>Consola</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout" >
+       <item>
+        <widget class="QTextBrowser" name="mui_textBrowser" />
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
-   <item row="5" column="0" colspan="6" >
-    <widget class="QTextBrowser" name="mui_textBrowser" />
-   </item>
-   <item row="6" column="0" colspan="2" >
-    <widget class="QPushButton" name="mui_actualizardatabase" >
-     <property name="text" >
-      <string>Actualizar Base de Datos</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2" >
-    <widget class="QPushButton" name="mui_hacerbackup" >
-     <property name="text" >
-      <string>Hacer copia de Seguridad</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="3" colspan="2" >
+   <item row="5" column="0" colspan="2" >
     <widget class="QPushButton" name="mui_aceptar" >
      <property name="text" >
-      <string>Generar .conf</string>
+      <string>Aplicar cambios</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="5" >
+   <item row="5" column="2" colspan="2" >
+    <widget class="QPushButton" name="mui_hacerbackup" >
+     <property name="text" >
+      <string>Hacer copia de seguridad</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4" colspan="2" >
     <widget class="QPushButton" name="mui_cancelar" >
      <property name="text" >
       <string>Cerrar</string>
@@ -163,18 +318,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>mui_checkbox</sender>
+   <sender>toolButton</sender>
    <signal>toggled(bool)</signal>
-   <receiver>mui_textBrowser</receiver>
-   <slot>setVisible(bool)</slot>
+   <receiver>mui_descripcion</receiver>
+   <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>63</x>
-     <y>432</y>
+     <x>538</x>
+     <y>198</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>120</x>
-     <y>510</y>
+     <x>625</x>
+     <y>270</y>
     </hint>
    </hints>
   </connection>
