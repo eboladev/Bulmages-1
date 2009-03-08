@@ -25,99 +25,111 @@
    <string>Listado de Empresas</string>
   </property>
   <property name="windowIcon" >
-   <iconset>../images/png/i_empresa.xpm</iconset>
+   <iconset>
+    <normaloff>../images/png/i_empresa.xpm</normaloff>../images/png/i_empresa.xpm</iconset>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <widget class="QTableWidget" name="mui_listado" >
-     <property name="focusPolicy" >
-      <enum>Qt::ClickFocus</enum>
+  <layout class="QVBoxLayout" name="verticalLayout" >
+   <item>
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="currentIndex" >
+      <number>0</number>
      </property>
-     <property name="horizontalScrollBarPolicy" >
-      <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
-     <property name="autoScroll" >
-      <bool>true</bool>
-     </property>
-     <property name="editTriggers" >
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="tabKeyNavigation" >
-      <bool>false</bool>
-     </property>
-     <property name="showDropIndicator" stdset="0" >
-      <bool>false</bool>
-     </property>
-     <property name="dragDropOverwriteMode" >
-      <bool>false</bool>
-     </property>
-     <property name="alternatingRowColors" >
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode" >
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior" >
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="textElideMode" >
-      <enum>Qt::ElideLeft</enum>
-     </property>
-     <property name="verticalScrollMode" >
-      <enum>QAbstractItemView::ScrollPerItem</enum>
-     </property>
-     <property name="showGrid" >
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle" >
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="wordWrap" >
-      <bool>true</bool>
-     </property>
-     <property name="cornerButtonEnabled" >
-      <bool>true</bool>
-     </property>
-     <column>
-      <property name="text" >
-       <string>Nombre</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Base de Datos</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Tipo</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Version</string>
-      </property>
-     </column>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Listado Empresas</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2" >
+       <item row="0" column="0" >
+        <widget class="QTableWidget" name="mui_listado" >
+         <property name="focusPolicy" >
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="autoScroll" >
+          <bool>true</bool>
+         </property>
+         <property name="editTriggers" >
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="tabKeyNavigation" >
+          <bool>false</bool>
+         </property>
+         <property name="showDropIndicator" stdset="0" >
+          <bool>false</bool>
+         </property>
+         <property name="dragDropOverwriteMode" >
+          <bool>false</bool>
+         </property>
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode" >
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior" >
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="textElideMode" >
+          <enum>Qt::ElideLeft</enum>
+         </property>
+         <property name="verticalScrollMode" >
+          <enum>QAbstractItemView::ScrollPerItem</enum>
+         </property>
+         <property name="showGrid" >
+          <bool>true</bool>
+         </property>
+         <property name="gridStyle" >
+          <enum>Qt::DotLine</enum>
+         </property>
+         <property name="wordWrap" >
+          <bool>true</bool>
+         </property>
+         <property name="cornerButtonEnabled" >
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text" >
+           <string>Nombre</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Base de Datos</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Tipo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Version</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2" >
+      <attribute name="title" >
+       <string>Consola</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTextBrowser" name="mui_textBrowser" >
+         <property name="horizontalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QCheckBox" name="mui_checkbox" >
-     <property name="text" >
-      <string>Ver Consola</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QTextBrowser" name="mui_textBrowser" >
-     <property name="horizontalScrollBarPolicy" >
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" >
+   <item>
     <widget class="QPushButton" name="mui_cancelar" >
      <property name="text" >
       <string>Cerrar</string>
@@ -141,22 +153,6 @@
     <hint type="destinationlabel" >
      <x>297</x>
      <y>496</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_checkbox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>mui_textBrowser</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>77</x>
-     <y>341</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>104</x>
-     <y>411</y>
     </hint>
    </hints>
   </connection>

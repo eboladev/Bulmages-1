@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Orden: 30
+Orden: 300
 
 Categorias: Facturacion Generica;
 

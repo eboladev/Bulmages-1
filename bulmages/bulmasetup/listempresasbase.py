@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Mon Mar 10 20:00:05 2008
-#      by: PyQt4 UI code generator 4.3
+# Created: Sun Mar  8 00:28:20 2009
+#      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,26 +12,31 @@ from PyQt4 import QtCore, QtGui
 class Ui_ListEmpresasBase(object):
     def setupUi(self, ListEmpresasBase):
         ListEmpresasBase.setObjectName("ListEmpresasBase")
-        ListEmpresasBase.resize(QtCore.QSize(QtCore.QRect(0,0,800,608).size()).expandedTo(ListEmpresasBase.minimumSizeHint()))
-
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed,QtGui.QSizePolicy.Fixed)
+        ListEmpresasBase.resize(800, 608)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(ListEmpresasBase.sizePolicy().hasHeightForWidth())
         ListEmpresasBase.setSizePolicy(sizePolicy)
-        ListEmpresasBase.setMaximumSize(QtCore.QSize(800,608))
-        ListEmpresasBase.setWindowIcon(QtGui.QIcon("../images/png/i_empresa.xpm"))
-
-        self.gridlayout = QtGui.QGridLayout(ListEmpresasBase)
-        self.gridlayout.setObjectName("gridlayout")
-
-        self.mui_listado = QtGui.QTableWidget(ListEmpresasBase)
+        ListEmpresasBase.setMaximumSize(QtCore.QSize(800, 608))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../images/png/i_empresa.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        ListEmpresasBase.setWindowIcon(icon)
+        self.verticalLayout = QtGui.QVBoxLayout(ListEmpresasBase)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.tabWidget = QtGui.QTabWidget(ListEmpresasBase)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab = QtGui.QWidget()
+        self.tab.setObjectName("tab")
+        self.gridLayout_2 = QtGui.QGridLayout(self.tab)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.mui_listado = QtGui.QTableWidget(self.tab)
         self.mui_listado.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.mui_listado.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.mui_listado.setAutoScroll(True)
         self.mui_listado.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.mui_listado.setTabKeyNavigation(False)
-        self.mui_listado.setProperty("showDropIndicator",QtCore.QVariant(False))
+        self.mui_listado.setProperty("showDropIndicator", QtCore.QVariant(False))
         self.mui_listado.setDragDropOverwriteMode(False)
         self.mui_listado.setAlternatingRowColors(True)
         self.mui_listado.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
@@ -43,48 +48,44 @@ class Ui_ListEmpresasBase(object):
         self.mui_listado.setWordWrap(True)
         self.mui_listado.setCornerButtonEnabled(True)
         self.mui_listado.setObjectName("mui_listado")
-        self.gridlayout.addWidget(self.mui_listado,0,0,1,1)
-
-        self.mui_checkbox = QtGui.QCheckBox(ListEmpresasBase)
-        self.mui_checkbox.setChecked(True)
-        self.mui_checkbox.setObjectName("mui_checkbox")
-        self.gridlayout.addWidget(self.mui_checkbox,1,0,1,1)
-
-        self.mui_textBrowser = QtGui.QTextBrowser(ListEmpresasBase)
+        self.mui_listado.setColumnCount(4)
+        self.mui_listado.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.mui_listado.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.mui_listado.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.mui_listado.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.mui_listado.setHorizontalHeaderItem(3, item)
+        self.gridLayout_2.addWidget(self.mui_listado, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QtGui.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.gridLayout = QtGui.QGridLayout(self.tab_2)
+        self.gridLayout.setObjectName("gridLayout")
+        self.mui_textBrowser = QtGui.QTextBrowser(self.tab_2)
         self.mui_textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.mui_textBrowser.setObjectName("mui_textBrowser")
-        self.gridlayout.addWidget(self.mui_textBrowser,2,0,1,1)
-
+        self.gridLayout.addWidget(self.mui_textBrowser, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab_2, "")
+        self.verticalLayout.addWidget(self.tabWidget)
         self.mui_cancelar = QtGui.QPushButton(ListEmpresasBase)
         self.mui_cancelar.setObjectName("mui_cancelar")
-        self.gridlayout.addWidget(self.mui_cancelar,3,0,1,1)
+        self.verticalLayout.addWidget(self.mui_cancelar)
 
         self.retranslateUi(ListEmpresasBase)
-        QtCore.QObject.connect(self.mui_cancelar,QtCore.SIGNAL("released()"),ListEmpresasBase.reject)
-        QtCore.QObject.connect(self.mui_checkbox,QtCore.SIGNAL("toggled(bool)"),self.mui_textBrowser.setVisible)
+        self.tabWidget.setCurrentIndex(0)
+        QtCore.QObject.connect(self.mui_cancelar, QtCore.SIGNAL("released()"), ListEmpresasBase.reject)
         QtCore.QMetaObject.connectSlotsByName(ListEmpresasBase)
 
     def retranslateUi(self, ListEmpresasBase):
         ListEmpresasBase.setWindowTitle(QtGui.QApplication.translate("ListEmpresasBase", "Listado de Empresas", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_listado.clear()
-        self.mui_listado.setColumnCount(4)
-        self.mui_listado.setRowCount(0)
-
-        headerItem = QtGui.QTableWidgetItem()
-        headerItem.setText(QtGui.QApplication.translate("ListEmpresasBase", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_listado.setHorizontalHeaderItem(0,headerItem)
-
-        headerItem1 = QtGui.QTableWidgetItem()
-        headerItem1.setText(QtGui.QApplication.translate("ListEmpresasBase", "Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_listado.setHorizontalHeaderItem(1,headerItem1)
-
-        headerItem2 = QtGui.QTableWidgetItem()
-        headerItem2.setText(QtGui.QApplication.translate("ListEmpresasBase", "Tipo", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_listado.setHorizontalHeaderItem(2,headerItem2)
-
-        headerItem3 = QtGui.QTableWidgetItem()
-        headerItem3.setText(QtGui.QApplication.translate("ListEmpresasBase", "Version", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_listado.setHorizontalHeaderItem(3,headerItem3)
-        self.mui_checkbox.setText(QtGui.QApplication.translate("ListEmpresasBase", "Ver Consola", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_listado.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ListEmpresasBase", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_listado.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ListEmpresasBase", "Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_listado.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ListEmpresasBase", "Tipo", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_listado.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("ListEmpresasBase", "Version", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("ListEmpresasBase", "Listado Empresas", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("ListEmpresasBase", "Consola", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_cancelar.setText(QtGui.QApplication.translate("ListEmpresasBase", "Cerrar", None, QtGui.QApplication.UnicodeUTF8))
 

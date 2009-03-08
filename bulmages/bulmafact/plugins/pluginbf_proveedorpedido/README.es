@@ -24,6 +24,6 @@ Incompatibles:
 
 Categorias: Facturacion Generica;
 
-Orden: 620
+Orden: 630
 
 Comentarios:

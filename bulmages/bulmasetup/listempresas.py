@@ -23,7 +23,6 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
     self.buscarEmpresas()
 
     self.mui_listado.resizeColumnsToContents()
-    self.mui_checkbox.setCheckState(Qt.Unchecked)
     
   def readOutput(self):
     self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))

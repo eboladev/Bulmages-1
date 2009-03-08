@@ -6,7 +6,7 @@
 
 Nombre: Gestión de Comerciales
 
-Biblioteca: libplugincomercialesbf.so
+Biblioteca: libpluginbf_comercial.so
 
 Descripción: <H1>Comerciales</H1>
 <P>Permite llevar la gestión de los comerciales de la empresa.
@@ -25,7 +25,7 @@ Incompatibles:
 
 Categorias: Facturacion Generica;Experimentales;
 
-Orden: 60
+Orden: 700
 
 Comentarios: Imprescindible para empresas con comerciales.
 
