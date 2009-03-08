@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
+ *   fcojavmc@todo-redes.com                                               *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,36 +21,52 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef LISTCUOTASPORALUMNOVIEW_H
+#define LISTCUOTASPORALUMNOVIEW_H
+
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
 
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
-#include "blwidget.h"
-#include "busquedareferencia.h"
+#include "busquedafecha.h"
+#include "bfsubform.h"
+#include "bfform.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+class company;
 
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+/// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
+/** */
+class ListCuotasPorAlumnoSubForm : public BfSubForm
 {
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
-
-public:
-    MyPlugProf();
-    ~MyPlugProf();
-    void inicializa ( Bulmafact * );
+    ListCuotasPorAlumnoSubForm ( QWidget *parent = 0 );
+    virtual ~ListCuotasPorAlumnoSubForm() {};
 
 public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
+    virtual void cargar();
 };
+
+
+#include "ui_listcuotasporalumnobase.h"
+
+
+/// Muestra y administra el listado de almacenes.
+/** */
+class ListCuotasPorAlumnoView : public BfForm, public Ui_ListCuotasPorAlumnoBase
+{
+    Q_OBJECT
+
+public:
+    ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *parent );
+    virtual ~ListCuotasPorAlumnoView();
+
+public slots:
+    virtual void on_mui_aceptar_clicked();
+};
+
+#endif

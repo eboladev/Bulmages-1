@@ -25,7 +25,7 @@
 #include "blfunctions.h"
 #include "alumnoview.h"
 #include "alumnoslist.h"
-
+#include "listcuotasporalumnoview.h"
 
 
 AlumnosList *g_alumnosList=NULL;
@@ -76,6 +76,18 @@ void MyPlugProf::elslot1()
 }
 
 
+///
+/**
+**/
+void MyPlugProf::elslot2()
+{
+    _depura ( "MyPlugProf::elslot2", 0 );
+        ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView((BfCompany *)mainCompany(), NULL);
+        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        bud->show();
+    _depura ( "END MyPlugProf::elslot2", 0 );
+}
+
 
 ///
 /**
@@ -85,7 +97,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 {
     _depura ( "MyPlugProf::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "alumno", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Docencia", "menuDocencia", "menuMaestro");
@@ -108,6 +120,16 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+   
+   
+   QAction *cuotaspalumno = new QAction ( _( "&Cuotas por Alumno" ), 0 );
+   cuotaspalumno->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ));
+   cuotaspalumno->setStatusTip ( _( "Cuotas por alumno" ) );
+   cuotaspalumno->setWhatsThis ( _( "Cuotas por alumno" ) );
+   pPluginMenu->addAction ( cuotaspalumno );
+   bges->Fichas->addAction (cuotaspalumno);
+   connect ( cuotaspalumno, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+   
     }// end if
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
