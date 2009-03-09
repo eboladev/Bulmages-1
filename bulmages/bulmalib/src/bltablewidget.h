@@ -57,11 +57,11 @@ public:
     int m_teclasalida; /// Indica con que tecla se ha salido de la edicion.
 
 public:
+    void moveRow(int oldRow, int newRow);
     int tipoorden();
     int colorden();
     void settipoorden ( int t );
     void setcolorden ( int t );
-    void columnMoved ( int column, int oldIndex, int newIndex );
     BlTableWidget ( QWidget *parent = 0 );
     ~BlTableWidget();
     void editItem ( QTableWidgetItem *it );
@@ -76,6 +76,9 @@ public:
 
 public slots:
     virtual void sitemChanged ( QTableWidgetItem *it );
+
+protected slots:
+    void columnMoved ( int column, int oldIndex, int newIndex );
 
 signals:
     void cellRePosition ( int, int );

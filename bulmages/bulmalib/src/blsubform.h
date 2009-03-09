@@ -282,6 +282,7 @@ public:
     bool modoConsulta();
 
 public slots:
+    void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );
     void on_mui_list_cellChanged ( int, int );
     virtual void contextMenuEvent ( QContextMenuEvent * );

@@ -36,9 +36,35 @@ un eventHandler especifico
 BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
 {
     _depura ( "BlTableWidget::BlTableWidget", 0 );
+    setcolorden(-1);
+    settipoorden(-1);
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
     _depura ( "END BlTableWidget::BlTableWidget", 0 );
+}
+
+
+void BlTableWidget::moveRow(int oldRow, int newRow) {
+
+	int column;
+	QList<QTableWidgetItem *> rowItemsOld;
+
+	/// Captura los items de las fila
+	for (column = 0; column < columnCount(); ++column) {
+		rowItemsOld << takeItem(oldRow, column);
+	} // end for
+
+	removeRow(oldRow);
+	insertRow(newRow);
+
+	/// Aqui habria que averiguar si esta activado la ordenacion
+	/// automatica para deshabilitarla antes y habilitarla despues.
+
+	/// Establece los items de la fila
+	for (column = 0; column < columnCount(); ++column) {
+		setItem(newRow, column, rowItemsOld.at(column));
+	} // end for
+
 }
 
 
@@ -341,7 +367,7 @@ void BlTableWidget::ordenar()
 {
     _depura ( "BlTableWidget::ordenar", 0, QString::number ( m_colorden ) );
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
-    if ( m_colorden < columnCount() ) {
+    if ( m_colorden < columnCount() && m_colorden >= 0 ) {
         sortByColumn ( m_colorden );
     } // end if
     _depura ( "END BlTableWidget::ordenar", 0, QString::number ( m_colorden ) );

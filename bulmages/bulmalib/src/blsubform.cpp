@@ -181,8 +181,15 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     m_colorfondo1 = p.color ( QPalette::Normal, QPalette::Base );
     m_colorfondo2 = p.color ( QPalette::Normal, QPalette::AlternateBase );
 
+
+    QHeaderView *hh = mui_list->horizontalHeader();
+
+    /// Para conocer cuando el usuario altera el orden de las columnas.
+    connect ( (QObject *) hh, SIGNAL(sectionMoved ( int, int, int ) ), this, SLOT( columnMovedByUser ( int, int, int ) ) );
+
+
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
-    /// el panel de configuracion del subform3.
+    /// el panel de configuracion del BlSubForm.
     QShortcut *shortcut = new QShortcut ( QKeySequence ( "Ctrl+B" ), this );
     connect ( shortcut, SIGNAL ( activated() ), this, SLOT ( toogleConfig() ) );
 
@@ -194,18 +201,20 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
 
     /// Para el listado de columnas hacemos una inicializacion.
     QStringList headers;
-    headers << "" << _( "Nombre" ) << _( "Nombre de campo" ) << _( "Visible" );
+    headers << _( "Nombre de campo" ) << _( "Nombre" ) << _( "Visible" ) << _( "Orden" );
     mui_listcolumnas->setColumnCount ( 4 );
     mui_listcolumnas->setHorizontalHeaderLabels ( headers );
     mui_listcolumnas->setShowGrid ( FALSE );
-    mui_listcolumnas->setColumnWidth ( 0, 25 );
-    mui_listcolumnas->setColumnWidth ( 1, 100 );
-    mui_listcolumnas->setColumnWidth ( 2, 175 );
-    mui_listcolumnas->setColumnWidth ( 3, 0 );
     mui_listcolumnas->setSelectionBehavior ( QAbstractItemView::SelectRows );
     mui_listcolumnas->verticalHeader() ->hide();
     mui_listcolumnas->setEditTriggers ( QAbstractItemView::NoEditTriggers );
-    mui_listcolumnas->horizontalHeader() ->setResizeMode ( 0, QHeaderView::Stretch );
+    mui_listcolumnas->horizontalHeader() ->setResizeMode ( 0, QHeaderView::ResizeToContents );
+    mui_listcolumnas->setColumnWidth ( 0, 175 );
+    mui_listcolumnas->setColumnWidth ( 1, 100 );
+    mui_listcolumnas->setColumnWidth ( 2, 0 );
+    mui_listcolumnas->setColumnWidth ( 3, 0 );
+    mui_listcolumnas->hideColumn(2);
+    mui_listcolumnas->hideColumn(3);
 
     /// Siempre que arrancamos mostramos la pagina 0.
     mui_paginaact->setValue ( 1 );
@@ -227,6 +236,13 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     _depura ( "END BlSubForm::BlSubForm", 0 );
 }
 
+
+void BlSubForm::columnMovedByUser(int, int oldIndex, int newIndex)
+{
+    _depura ( "BlSubForm::columnMovedByUser", 0 );
+    mui_listcolumnas->moveRow(oldIndex, newIndex);
+    _depura ( "END BlSubForm::columnMovedByUser", 0 );
+}
 
 
 /// Destructor de Clase que guarda la configuracion.
@@ -903,7 +919,7 @@ void BlSubForm::nuevoRegistro()
         return;
     } // end if
 
-    /// Desactivamos el sorting debido a un error en las Qt4
+    /// Desactivamos la ordenacion automatica.
     mui_list->setSortingEnabled ( FALSE );
 
     BlDbSubFormRecord *rec = newDbSubFormRecord();
@@ -920,7 +936,7 @@ void BlSubForm::nuevoRegistro()
     /// Nos posicionamos en una celda del nuevo registro ya que si no un bug no nos permite usar currentRow()
     mui_list->setCurrentCell ( m_lista.size() - 1, 2 );
 
-    /// Activamos el sorting debido a un error en las Qt4
+    /// Activamos la ordenacion automatica.
     mui_list->setSortingEnabled ( m_sorting );
     _depura ( "END BlSubForm::nuevoRegistro", 0 );
 }
@@ -1628,11 +1644,12 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
 int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp )
 {
     _depura ( "BlSubForm::addSubFormHeader", 0,  nom );
+
     BlSubFormHeader *camp = new BlSubFormHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
     mui_listcolumnas->insertRow ( mui_listcolumnas->rowCount() );
 
-    BlTableWidgetItem *it = new BlTableWidgetItem ( "" );
+    BlTableWidgetItem *it = new BlTableWidgetItem ( nomp );
     it->setFlags ( Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
 
     if ( opt & BlSubFormHeader::DbHideView ) {
@@ -1646,12 +1663,14 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
+
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 0, it );
     it = new BlTableWidgetItem ( nom );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 1, it );
-    it = new BlTableWidgetItem ( nomp );
-    mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 2, it );
     it = new BlTableWidgetItem ( "" );
+    mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 2, it );
+    /// Escribe el order de las columnas.
+    it = new BlTableWidgetItem ( QString::number(mui_listcolumnas->rowCount() - 1) );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 3, it );
 
     _depura ( "END BlSubForm::addSubFormHeader", 0, nom );
@@ -1946,19 +1965,32 @@ void BlSubForm::guardaconfig()
         stream << mui_list->tipoorden() << "\n";
         stream << mui_filaspagina->text() << "\n";
 
-        /// Guardado del ancho de las columnas
-        for ( int i = 0; i < mui_list->columnCount(); i++ ) {
-            mui_list->showColumn ( i );
-            stream << mui_list->columnWidth ( i ) << "\n";
-        } // end for
-
         /// Guarda la visibilidad de los elementos consultando la tabla de configuracion.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-            if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked )
-                stream << "1" << "\n";
-            else
-                stream << "0" << "\n";
+		for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
+			if (mui_listcolumnas->item(j, 3)->text().toInt() == i) {
+				if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
+					stream << "1" << "\n";
+				} else {
+					stream << "0" << "\n";
+				} // end if
+			} // end if
+		} // end for
         } // end for
+
+	/// Guarda la configuracion de mui_list.
+	stream << QString(mui_list->horizontalHeader()->saveState().toBase64()) << "\n";
+	stream << QString(mui_list->verticalHeader()->saveState().toBase64()) << "\n";
+
+	/// Guarda la configuracion de mui_listcolumnas.
+	stream << QString(mui_listcolumnas->horizontalHeader()->saveState().toBase64()) << "\n";
+	stream << QString(mui_listcolumnas->verticalHeader()->saveState().toBase64()) << "\n";
+
+        /// Guarda el orden de la lista de elementos en mui_listcolumnas.
+        for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
+                stream << mui_listcolumnas->item ( i, 3 )->text() << "\n";
+        } // end for
+
         file.close();
     } // end if
     _depura ( "END BlSubForm::guardaconfig", 0 );
@@ -1992,18 +2024,7 @@ void BlSubForm::cargaconfig()
             mui_filaspagina->setValue ( linea.toInt() );
         } // end if
 
-        /// Establecemos el ancho de las columnas.
-        for ( int i = 0; i < mui_list->columnCount(); i++ ) {
-            linea = stream.readLine();
-            if ( linea.toInt() > 0 ) {
-                mui_list->setColumnWidth ( i, linea.toInt() );
-            } else {
-                mui_list->setColumnWidth ( i, 30 );
-                error = 1;
-            } // end if
-        } // end for
-
-        /// Leemos el status de las columnas.
+        /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
             linea = stream.readLine();
             if ( linea == "1" ) {
@@ -2014,6 +2035,31 @@ void BlSubForm::cargaconfig()
                 error = 1;
             } // end if
         } // end for
+
+	/// Restaura el estado de mui_list.
+        linea = stream.readLine();
+	mui_list->horizontalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+        linea = stream.readLine();
+	mui_list->verticalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+
+	/// Restaura el estado de mui_listcolumnas.
+        linea = stream.readLine();
+	mui_listcolumnas->horizontalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+        linea = stream.readLine();
+	mui_listcolumnas->verticalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+
+        /// Restaura el orden de mui_listcolumnas.
+        for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
+		linea = stream.readLine();
+		/// Busca en la 4a columna la fila que tenga el valor igual a 'linea.toInt()'. Que fila es?
+		/// ese sera el valor de rowOld. i = rowNew.
+	        for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
+	    		if (mui_listcolumnas->item(j, 3)->text().toInt() == linea.toInt()) {
+				mui_listcolumnas->moveRow(j, i);
+			} // end if
+		} // end for
+        } // end for
+
         file.close();
         on_mui_confcol_clicked();
     } // end if
@@ -2034,10 +2080,12 @@ void BlSubForm::on_mui_confcol_clicked()
 {
     _depura ( "BlSubForm::on_mui_confcol_clicked", 0 );
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-        if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked )
-            mui_list->showColumn ( i );
-        else
-            mui_list->hideColumn ( i );
+        if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked ) {
+            mui_list->showColumn ( mui_listcolumnas->item(i, 3)->text().toInt() );
+        } else {
+	    /// Coge el valor de la columna de 'order' para ocultarla.
+            mui_list->hideColumn ( mui_listcolumnas->item(i, 3)->text().toInt() );
+	} // end if
     } // end for
     _depura ( "END BlSubForm::on_mui_confcol_clicked", 0 );
 }
@@ -2177,7 +2225,7 @@ QString BlSubForm::imprimir()
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
-            fitxersortidarml += "    <td>" + XMLProtect ( mui_listcolumnas->item ( h, 2 ) ->text() ) + "</td>\n";
+            fitxersortidarml += "    <td>" + XMLProtect ( mui_listcolumnas->item ( h, 0 ) ->text() ) + "</td>\n";
         } // end if
         barra.setValue ( barra.value() + 1 );
     } // end for
