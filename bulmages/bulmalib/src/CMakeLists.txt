@@ -60,7 +60,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			busquedafecha2.cpp
 			blsplashscreen.cpp
 			fichacfg.cpp
-			paisview.cpp
+			blcountryview.cpp
 			blradiobutton.cpp
 			blcombobox.cpp
 			blprogressbar.cpp
@@ -90,7 +90,7 @@ set(bulmalib_MOCS	logpass.h
 			busquedafecha2.h
 			blsplashscreen.h
 			fichacfg.h
-			paisview.h
+			blcountryview.h
 			blradiobutton.h
 			blcombobox.h
 			blbancoedit.h
@@ -144,7 +144,7 @@ set(bulmalib_UIS	logpassbase.ui
 			busquedafechabase.ui 
 			blsubformbase.ui 
 			fichacfgbase.ui 
-			paisbase.ui
+			blcountrybase.ui
 			blprogressbarbase.ui
 			busquedabase.ui
 			blbancoeditbase.ui)

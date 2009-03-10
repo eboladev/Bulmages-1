@@ -180,7 +180,7 @@ msgstr "Bienal"
 msgid "Borrar"
 msgstr "&Cerrar"
 
-#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
+#: ui_blcountrybase.h:289 ui_blcountrybase.h:294 paisview.cpp:223
 msgid "Borrar pais"
 msgstr "Borrar pais"
 
@@ -196,7 +196,7 @@ msgstr "Busqueda"
 msgid "Campo Indice"
 msgstr "Campo Indice"
 
-#: ui_paisbase.h:274
+#: ui_blcountrybase.h:274
 #, fuzzy
 msgid "Cancelar"
 msgstr "&Cancelar"
@@ -219,7 +219,7 @@ msgstr "Codigo 2 Digitos"
 msgid "Codigo 2 digitos"
 msgstr "Codigo 2 digitos"
 
-#: ui_paisbase.h:262
+#: ui_blcountrybase.h:262
 msgid "Codigo 2 letras:"
 msgstr "Codigo 2 letras:"
 
@@ -231,7 +231,7 @@ msgstr "Codigo 3 Digitos"
 msgid "Codigo 3 digitos"
 msgstr "Codigo 3 digitos"
 
-#: ui_paisbase.h:261
+#: ui_blcountrybase.h:261
 msgid "Codigo 3 letras:"
 msgstr "Codigo 3 letras:"
 
@@ -247,7 +247,7 @@ msgstr "Configuración Subformularios"
 msgid "Contrasenya:"
 msgstr "Contraseña:"
 
-#: ui_paisbase.h:298
+#: ui_blcountrybase.h:298
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -255,11 +255,11 @@ msgstr "Ctrl+D"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_blcompanydialogbase.h:202 ui_paisbase.h:286
+#: ui_blcompanydialogbase.h:202 ui_blcountrybase.h:286
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_paisbase.h:310
+#: ui_blcountrybase.h:310
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -271,7 +271,7 @@ msgstr "Database Table"
 msgid "Databse Scripting"
 msgstr "Databse Scripting"
 
-#: ui_paisbase.h:259
+#: ui_blcountrybase.h:259
 msgid "Datos del pais:"
 msgstr "Datos del pais:"
 
@@ -426,7 +426,7 @@ msgstr "<LI> Forma de pago <B>"
 msgid "Guardar"
 msgstr "Guardar"
 
-#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
+#: ui_blcountrybase.h:301 ui_blcountrybase.h:306 paisview.cpp:117 paisview.cpp:188
 msgid "Guardar pais"
 msgstr "Guardar pais"
 
@@ -503,7 +503,7 @@ msgstr "Mensaje"
 msgid "Mostrar listado de profesors"
 msgstr "Mostrar listado de profesors"
 
-#: ui_paisbase.h:265 ui_paisbase.h:270
+#: ui_blcountrybase.h:265 ui_blcountrybase.h:270
 msgid "Mostrar/ocultar detalle"
 msgstr "Mostrar/ocultar detalle"
 
@@ -542,12 +542,12 @@ msgstr "Nombre de usuario:"
 msgid "Nombre de usuario:"
 msgstr "Nombre de usuario:"
 
-#: ui_paisbase.h:260
+#: ui_blcountrybase.h:260
 #, fuzzy
 msgid "Nombre del pais:"
 msgstr "Nombre de usuario:"
 
-#: ui_paisbase.h:277 ui_paisbase.h:282
+#: ui_blcountrybase.h:277 ui_blcountrybase.h:282
 msgid "Nuevo pais"
 msgstr "Nuevo pais"
 
@@ -579,7 +579,7 @@ msgstr "Paginación"
 msgid "Pais"
 msgstr "Pais"
 
-#: ui_paisbase.h:258
+#: ui_blcountrybase.h:258
 msgid "Paises"
 msgstr "Paises"
 

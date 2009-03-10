@@ -2314,7 +2314,7 @@ msgstr "Borrar linea"
 msgid "Borrar pago"
 msgstr "Borrar pago"
 
-#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
+#: ui_blcountrybase.h:289 ui_blcountrybase.h:294 paisview.cpp:223
 msgid "Borrar pais"
 msgstr "Borrar pais"
 
@@ -2652,7 +2652,7 @@ msgid "Canales"
 msgstr "Canales"
 
 #: ui_modelo300base.h:208 ui_uivisorempresas.h:69 ui_regivaprintbase.h:225
-#: ui_mpatrimonialbase.h:349 ui_q19base.h:226 ui_paisbase.h:274
+#: ui_mpatrimonialbase.h:349 ui_q19base.h:226 ui_blcountrybase.h:274
 #: ui_importcsvbase.h:206 ui_archivobase.h:103
 msgid "Cancelar"
 msgstr "Cancelar"
@@ -2921,7 +2921,7 @@ msgstr "Codigo 2 Digitos"
 msgid "Codigo 2 digitos"
 msgstr "Codigo 2 digitos"
 
-#: ui_paisbase.h:262
+#: ui_blcountrybase.h:262
 msgid "Codigo 2 letras:"
 msgstr "Codigo 2 letras:"
 
@@ -2933,7 +2933,7 @@ msgstr "Codigo 3 Digitos"
 msgid "Codigo 3 digitos"
 msgstr "Codigo 3 digitos"
 
-#: ui_paisbase.h:261
+#: ui_blcountrybase.h:261
 msgid "Codigo 3 letras:"
 msgstr "Codigo 3 letras:"
 
@@ -3410,7 +3410,7 @@ msgstr "Ctrl+C"
 #: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
 #: ui_cobroslistbase.h:416 ui_cobrobase.h:390 ui_alumnoslistbase.h:350
 #: ui_alumnobase.h:488 ui_profesorbase.h:493 ui_profesoreslistbase.h:350
-#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368 ui_paisbase.h:298
+#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368 ui_blcountrybase.h:298
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -3473,7 +3473,7 @@ msgstr "Ctrl+M"
 #: ui_convocatoriaslistbase.h:326 ui_actividadeslistbase.h:326
 #: ui_albaranesproveedorlistbase.h:437 ui_cobroslistbase.h:392
 #: ui_alumnoslistbase.h:326 ui_profesoreslistbase.h:326
-#: ui_almaceneslistbase.h:344 ui_blcompanydialogbase.h:202 ui_paisbase.h:286
+#: ui_almaceneslistbase.h:344 ui_blcompanydialogbase.h:202 ui_blcountrybase.h:286
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
@@ -3510,7 +3510,7 @@ msgstr "Ctrl+Q"
 #: ui_facturapbase.h:584 ui_convocatoriabase.h:420 ui_actividadbase.h:420
 #: ui_zbase.h:297 ui_albaranproveedorbase.h:583 ui_cobrobase.h:378
 #: ui_alumnobase.h:476 ui_profesorbase.h:481 ui_almacenbase.h:331
-#: ui_paisbase.h:310
+#: ui_blcountrybase.h:310
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -3733,7 +3733,7 @@ msgstr "Datos del asiento:"
 msgid "Datos del listado:"
 msgstr "Datos del listado:"
 
-#: ui_paisbase.h:259
+#: ui_blcountrybase.h:259
 msgid "Datos del pais:"
 msgstr "Datos del pais:"
 
@@ -5807,7 +5807,7 @@ msgstr "Guardar libro diario"
 msgid "Guardar pago"
 msgstr "Guardar pago"
 
-#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
+#: ui_blcountrybase.h:301 ui_blcountrybase.h:306 paisview.cpp:117 paisview.cpp:188
 msgid "Guardar pais"
 msgstr "Guardar pais"
 
@@ -7264,7 +7264,7 @@ msgstr "Mostrar/Ocultar cabecera"
 msgid "Mostrar/ocultar cabecera"
 msgstr "Mostrar/ocultar cabecera"
 
-#: ui_paisbase.h:265 ui_paisbase.h:270
+#: ui_blcountrybase.h:265 ui_blcountrybase.h:270
 msgid "Mostrar/ocultar detalle"
 msgstr "Mostrar/ocultar detalle"
 
@@ -7665,7 +7665,7 @@ msgstr "Nombre del cliente"
 msgid "Nombre del inventario"
 msgstr "Nombre del inventario"
 
-#: ui_paisbase.h:260
+#: ui_blcountrybase.h:260
 msgid "Nombre del pais:"
 msgstr "Nombre del pais:"
 
@@ -7906,7 +7906,7 @@ msgstr "Nuevo pago"
 msgid "Nuevo pago a proveedor"
 msgstr "Nuevo pago a proveedor"
 
-#: ui_paisbase.h:277 ui_paisbase.h:282
+#: ui_blcountrybase.h:277 ui_blcountrybase.h:282
 msgid "Nuevo pais"
 msgstr "Nuevo pais"
 
@@ -8306,7 +8306,7 @@ msgstr "Pagos efectivos"
 msgid "Pais"
 msgstr "Pais"
 
-#: ui_bulmacontbase.h:396 ui_paisbase.h:258
+#: ui_bulmacontbase.h:396 ui_blcountrybase.h:258
 msgid "Paises"
 msgstr "Paises"
 

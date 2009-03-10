@@ -43,7 +43,7 @@
 #include "bbloqfecha.h"
 #include "diarioview.h"
 #include "listado347.h"
-#include "paisview.h"
+#include "blcountryview.h"
 #include "bulmacont.h"
 #include "extractoview1.h"
 

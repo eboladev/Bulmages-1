@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "paisview.h"
+#include "blcountryview.h"
 #include "blmaincompany.h"
 #include "blsubform.h"
 
@@ -29,10 +29,10 @@
 \param emp
 \param parent
 **/
-PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
+BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
         : BlForm ( emp, parent )
 {
-    _depura ( "PaisView::PaisView", 0 );
+    _depura ( "BlCountryView::BlCountryView", 0 );
 
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -73,46 +73,46 @@ PaisView::PaisView ( BlMainCompany *emp, QWidget *parent )
     addDbField ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo 3 digitos" ) );
 
 
-    m_idpais = "0";
+    m_countryId = "0";
 
     meteWindow ( windowTitle(), this );
     pintar();
     dialogChanges_cargaInicial();
-    _depura ( "END PaisView::PaisView", 0 );
+    _depura ( "END BlCountryView::BlCountryView", 0 );
 }
 
 
 ///
 /**
 **/
-PaisView::~PaisView()
+BlCountryView::~BlCountryView()
 {
-    _depura ( "PaisView::~PaisView", 0 );
-    _depura ( "END PaisView::~PaisView", 0 );
+    _depura ( "BlCountryView::~BlCountryView", 0 );
+    _depura ( "END BlCountryView::~BlCountryView", 0 );
 }
 
 
 ///
 /**
 **/
-void PaisView::pintar()
+void BlCountryView::pintar()
 {
-    _depura ( "PaisView::pintar", 0 );
+    _depura ( "BlCountryView::pintar", 0 );
     mui_list->cargar ( "SELECT * FROM pais ORDER BY descpais" );
-    _depura ( "END PaisView::pintar", 0 );
+    _depura ( "END BlCountryView::pintar", 0 );
 }
 
 
 ///
 /**
 **/
-void PaisView::on_mui_list_itemClicked ( QTableWidgetItem * )
+void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
 {
-    _depura ( "PaisView::on_mui_list_itemSelectionChanged", 0 );
+    _depura ( "BlCountryView::on_mui_list_itemSelectionChanged", 0 );
     /// Busca el item correcto.
     QString previdpais = mui_list->dbValue ( "idpais" );
 
-    if ( m_idpais != "0" && dialogChanges_hayCambios() ) {
+    if ( m_countryId != "0" && dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
                                     _( "Guardar pais" ),
                                     _( "Desea guardar los cambios?" ),
@@ -120,40 +120,40 @@ void PaisView::on_mui_list_itemClicked ( QTableWidgetItem * )
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    m_idpais = previdpais;
+    m_countryId = previdpais;
     mostrarplantilla();
-    _depura ( "END PaisView::on_mui_list_itemSelectionChanged", 0 );
+    _depura ( "END BlCountryView::on_mui_list_itemSelectionChanged", 0 );
 }
 
 
 ///
 /**
 **/
-void PaisView::mostrarplantilla()
+void BlCountryView::mostrarplantilla()
 {
-    _depura ( "PaisView::mostrarplantilla", 0 );
+    _depura ( "BlCountryView::mostrarplantilla", 0 );
 
-    if ( m_idpais != "0" ) {
+    if ( m_countryId != "0" ) {
         mui_datospais->setEnabled ( TRUE );
-        cargar ( m_idpais );
+        cargar ( m_countryId );
         mui_descpais->setText ( dbValue ( "descpais" ) );
         mui_cod2pais->setText ( dbValue ( "cod2pais" ) );
         mui_cod3pais->setText ( dbValue ( "cod3pais" ) );
 
-        mui_listprovincias->cargar ( "SELECT * FROM provincia WHERE idpais=" + m_idpais );
+        mui_listprovincias->cargar ( "SELECT * FROM provincia WHERE idpais=" + m_countryId );
 
         dialogChanges_cargaInicial();
     } // end if
-    _depura ( "END PaisView::mostrarplantilla", 0 );
+    _depura ( "END BlCountryView::mostrarplantilla", 0 );
 }
 
 
 ///
 /**
 **/
-int PaisView::guardar()
+int BlCountryView::guardar()
 {
-    _depura ( "PaisView::on_mui_guardar_clicked", 0 );
+    _depura ( "BlCountryView::on_mui_guardar_clicked", 0 );
     QString id;
 
     if ( dbValue ( "idpais" ).isEmpty() ) {
@@ -170,7 +170,7 @@ int PaisView::guardar()
         dialogChanges_cargaInicial();
         pintar();
     }
-    _depura ( "END PaisView::on_mui_guardar_clicked", 0 );
+    _depura ( "END BlCountryView::on_mui_guardar_clicked", 0 );
     return 0;
 }
 
@@ -178,9 +178,9 @@ int PaisView::guardar()
 ///
 /**
 **/
-void PaisView::on_mui_crear_clicked()
+void BlCountryView::on_mui_crear_clicked()
 {
-    _depura ( "PaisView::on_mui_crear_clicked", 0 );
+    _depura ( "BlCountryView::on_mui_crear_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() ) {
@@ -201,7 +201,7 @@ void PaisView::on_mui_crear_clicked()
         pintar();
         mui_list->setCurrentItem ( mui_list->rowCount(), 1 );
         mostrarplantilla();
-        _depura ( "END PaisView::on_mui_crear_clicked", 0 );
+        _depura ( "END BlCountryView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _( "Error al crear el banco" ) );
         mainCompany() ->rollback();
@@ -212,10 +212,10 @@ void PaisView::on_mui_crear_clicked()
 ///
 /**
 **/
-void PaisView::on_mui_borrar_clicked()
+void BlCountryView::on_mui_borrar_clicked()
 {
-    _depura ( "PaisView::on_mui_borrar_clicked", 0 );
-    if ( m_idpais == "" | m_idpais == "0" ) {
+    _depura ( "BlCountryView::on_mui_borrar_clicked", 0 );
+    if ( m_countryId == "" | m_countryId == "0" ) {
         mensajeInfo ( _( "Debe seleccionar un elemento de la lista" ) );
         return;
     } // end if
@@ -226,11 +226,11 @@ void PaisView::on_mui_borrar_clicked()
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         try {
-            query = "DELETE FROM pais WHERE idpais = " + m_idpais;
+            query = "DELETE FROM pais WHERE idpais = " + m_countryId;
             mainCompany() ->begin();
             mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
-            m_idpais = "0";
+            m_countryId = "0";
             pintar();
             mui_datospais->setDisabled ( TRUE );
         } catch ( ... ) {
@@ -238,7 +238,7 @@ void PaisView::on_mui_borrar_clicked()
             mainCompany() ->rollback();
         } // end try
     } // end switch
-    _depura ( "END PaisView::on_mui_borrar_clicked", 0 );
+    _depura ( "END BlCountryView::on_mui_borrar_clicked", 0 );
 }
 
 

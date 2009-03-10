@@ -1105,7 +1105,7 @@ msgid "Vista Previa"
 msgstr ""
 
 #: ui_modelo300base.h:208 ui_uivisorempresas.h:69 ui_regivaprintbase.h:225
-#: ui_mpatrimonialbase.h:349 ui_q19base.h:226 ui_paisbase.h:274
+#: ui_mpatrimonialbase.h:349 ui_q19base.h:226 ui_blcountrybase.h:274
 #: ui_importcsvbase.h:206 ui_archivobase.h:103
 msgid "Cancelar"
 msgstr ""
@@ -1418,7 +1418,7 @@ msgstr ""
 #: ui_convocatoriaslistbase.h:326 ui_actividadeslistbase.h:326
 #: ui_albaranesproveedorlistbase.h:437 ui_cobroslistbase.h:392
 #: ui_alumnoslistbase.h:326 ui_profesoreslistbase.h:326
-#: ui_almaceneslistbase.h:344 ui_blcompanydialogbase.h:202 ui_paisbase.h:286
+#: ui_almaceneslistbase.h:344 ui_blcompanydialogbase.h:202 ui_blcountrybase.h:286
 msgid "Ctrl+N"
 msgstr ""
 
@@ -1449,7 +1449,7 @@ msgstr ""
 #: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
 #: ui_cobroslistbase.h:416 ui_cobrobase.h:390 ui_alumnoslistbase.h:350
 #: ui_alumnobase.h:488 ui_profesorbase.h:493 ui_profesoreslistbase.h:350
-#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368 ui_paisbase.h:298
+#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368 ui_blcountrybase.h:298
 msgid "Ctrl+D"
 msgstr ""
 
@@ -1513,7 +1513,7 @@ msgstr ""
 #: ui_facturapbase.h:584 ui_convocatoriabase.h:420 ui_actividadbase.h:420
 #: ui_zbase.h:297 ui_albaranproveedorbase.h:583 ui_cobrobase.h:378
 #: ui_alumnobase.h:476 ui_profesorbase.h:481 ui_almacenbase.h:331
-#: ui_paisbase.h:310
+#: ui_blcountrybase.h:310
 msgid "Ctrl+S"
 msgstr ""
 
@@ -2231,7 +2231,7 @@ msgstr ""
 msgid "''"
 msgstr ""
 
-#: ui_bulmacontbase.h:396 ui_paisbase.h:258
+#: ui_bulmacontbase.h:396 ui_blcountrybase.h:258
 msgid "Paises"
 msgstr ""
 
@@ -11163,35 +11163,35 @@ msgstr ""
 msgid "Qt Scripting"
 msgstr ""
 
-#: ui_paisbase.h:259
+#: ui_blcountrybase.h:259
 msgid "Datos del pais:"
 msgstr ""
 
-#: ui_paisbase.h:260
+#: ui_blcountrybase.h:260
 msgid "Nombre del pais:"
 msgstr ""
 
-#: ui_paisbase.h:261
+#: ui_blcountrybase.h:261
 msgid "Codigo 3 letras:"
 msgstr ""
 
-#: ui_paisbase.h:262
+#: ui_blcountrybase.h:262
 msgid "Codigo 2 letras:"
 msgstr ""
 
-#: ui_paisbase.h:265 ui_paisbase.h:270
+#: ui_blcountrybase.h:265 ui_blcountrybase.h:270
 msgid "Mostrar/ocultar detalle"
 msgstr ""
 
-#: ui_paisbase.h:277 ui_paisbase.h:282
+#: ui_blcountrybase.h:277 ui_blcountrybase.h:282
 msgid "Nuevo pais"
 msgstr ""
 
-#: ui_paisbase.h:289 ui_paisbase.h:294 paisview.cpp:223
+#: ui_blcountrybase.h:289 ui_blcountrybase.h:294 paisview.cpp:223
 msgid "Borrar pais"
 msgstr ""
 
-#: ui_paisbase.h:301 ui_paisbase.h:306 paisview.cpp:117 paisview.cpp:188
+#: ui_blcountrybase.h:301 ui_blcountrybase.h:306 paisview.cpp:117 paisview.cpp:188
 msgid "Guardar pais"
 msgstr ""
 

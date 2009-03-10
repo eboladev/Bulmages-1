@@ -44,7 +44,7 @@ class Asiento1View;
 class DiarioView;
 class AsientosView;
 class CuentaView;
-class PaisView;
+class BlCountryView;
 class extractoview1;
 class listcuentasview1;
 class Bulmacont;

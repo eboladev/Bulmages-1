@@ -20,7 +20,7 @@
 
 #include "blmaincompany.h"
 #include "blcompanydialog.h"
-#include "paisview.h"
+#include "blcountryview.h"
 
 
 ///
@@ -226,7 +226,7 @@ void BlMainCompany::s_indexadorCambiaEstado ( bool visible )
 void BlMainCompany::muestraPaises()
 {
     _depura ( "BlMainCompany::muestrapaises", 0 );
-    PaisView *pais = new PaisView ( this, 0 );
+    BlCountryView *pais = new BlCountryView ( this, 0 );
     m_pWorkspace->addWindow ( pais );
     pais->show();
     _depura ( "END BlMainCompany::muestrapaises", 0 );

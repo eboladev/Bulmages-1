@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>paisbase</class>
- <widget class="QWidget" name="paisbase" >
+ <class>BlCountryBase</class>
+ <widget class="QWidget" name="BlCountryBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -429,7 +429,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>paisbase</receiver>
+   <receiver>BlCountryBase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >

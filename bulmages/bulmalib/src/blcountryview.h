@@ -19,14 +19,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CPAISVIEW_H
-#define CPAISVIEW_H
+#ifndef BLCOUNTRYVIEW_H
+#define BLCOUNTRYVIEW_H
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QCloseEvent>
 
-#include "ui_paisbase.h"
+#include "ui_blcountrybase.h"
 #include "blpostgresqlclient.h"
 #include "dialogchanges.h"
 #include "blform.h"
@@ -37,18 +37,18 @@ class BlMainCompany;
 
 /// Visualiza un centro de coste.
 /** */
-class PaisView : public BlForm, public Ui_paisbase
+class BlCountryView : public BlForm, public Ui_BlCountryBase
 {
     Q_OBJECT
 
 public:
-    QString m_idpais; /// Indica cual es el pais que se esta visualizando.
+    QString m_countryId; /// Indica cual es el pais que se esta visualizando.
     /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
 
 
 public:
-    PaisView ( BlMainCompany *, QWidget *parent = 0 );
-    ~PaisView();
+    BlCountryView ( BlMainCompany *, QWidget *parent = 0 );
+    ~BlCountryView();
     void pintar();
     void mostrarplantilla();
     virtual void on_mui_borrar_clicked();
