@@ -643,7 +643,7 @@ void BlForm::recogeValores()
 \param id
 \return
 **/
-int BlForm::cargar ( QString id )
+int BlForm::cargar ( QString id, bool paint)
 {
     _depura ( "BlForm::cargar", 0, id );
     try {
@@ -657,7 +657,10 @@ int BlForm::cargar ( QString id )
         /// Activamos documentos adicionales
         activaDocumentos();
 
-        pintar();
+        if (paint == TRUE) {
+            pintar();
+        } // end if
+
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this );
     } catch ( ... ) {

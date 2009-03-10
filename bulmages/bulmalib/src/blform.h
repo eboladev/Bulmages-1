@@ -70,7 +70,7 @@ public:
     void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();
-    virtual int cargar ( QString id );
+    virtual int cargar ( QString id, bool paint = TRUE );
     virtual int cargarPost ( QString id );
     virtual void recogeValores();
     virtual void creaMenu ( QMenu * );
