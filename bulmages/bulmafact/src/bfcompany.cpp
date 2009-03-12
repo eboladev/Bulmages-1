@@ -77,13 +77,10 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Comprobamos que tengamos permisos para trabajar con 'Paises'.
     m_bulmafact->actionPaises->setEnabled ( FALSE );
-
     if ( hasTablePrivilege ( "pais", "SELECT" ) ) {
         m_bulmafact->actionPaises->setEnabled ( TRUE );
     } // end if
 
-    /// pb = 100%
-    m_progressbar->setValue ( 100 );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfCompany_createMainWindows_Post", this );
@@ -92,6 +89,9 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
     } // end if
 
     cargaConf();
+    
+    /// pb = 100%
+    m_progressbar->setValue ( 100 );
 
     /// Ponemos el titulo de la ventana
     m_bulmafact->statusBar() ->showMessage ( dbName(), 2000 );

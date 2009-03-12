@@ -151,19 +151,19 @@ int main ( int argc, char **argv )
 	} // end if
 
         splashScr->mensaje ( _( "Cargando plugins" ) );
-        splashScr->setBarraProgreso ( 4 );
+        splashScr->setBarraProgreso ( 10 );
 
         /// Hacemos la carga de las librerias que contienen los plugins.
         g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMAFACT ) );
 
         splashScr->mensaje ( _( "Lanzando plugins" ) );
-        splashScr->setBarraProgreso ( 5 );
+        splashScr->setBarraProgreso ( 20 );
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "entryPoint", bges );
 
         splashScr->mensaje ( _( "Inicializando componentes" ) );
-        splashScr->setBarraProgreso ( 6 );
+        splashScr->setBarraProgreso ( 30 );
 
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows ( splashScr );
