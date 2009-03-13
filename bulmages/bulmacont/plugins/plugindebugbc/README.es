@@ -6,7 +6,7 @@
 
 Nombre: Activar Modo Debug
 
-Biblioteca: libpluginbf_debug.so
+Biblioteca: libplugindebugbc.so
 
 Descripción: <H1>Modo Debug</H1>
 <P>Agrega en el menu ver la opcion Modo Debug que comienza a hacer las trazas del programa para poder ser depurado, tambián habilita la aparicion de warnings (si se producen) en ventanas emergentes.</P>
