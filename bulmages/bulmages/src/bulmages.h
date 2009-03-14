@@ -37,24 +37,25 @@
 **
 ****************************************************************************/
 
-#ifndef BULMALAUNCHER_H
-#define BULMALAUNCHER_H
+#ifndef BULMAGES_H
+#define BULMAGES_H
 
-#include <QMainWindow>
-#include <QGraphicsView>
+#include <QObject>
 #include <QSystemTrayIcon>
 #include <QDialog>
+#include <QMenu>
+#include <QString>
 
-#include "ui_bulmalauncherbase.h"
+#include "ui_bulmagesbase.h"
 
 
-class BulmaLauncher : public QDialog, private Ui::BulmaLauncherBase
+class BulmaGes : public QDialog, private Ui::BulmaGesBase
 {
     Q_OBJECT
 
 public:
-    BulmaLauncher();
-    ~BulmaLauncher();
+    BulmaGes();
+    ~BulmaGes();
 
 private:
     void createTrayIcon();

@@ -109,7 +109,7 @@ add_subdirectory(bulmacont)
 message(STATUS "Working on bulmafact")
 add_subdirectory(bulmafact)
 
-########### bulmages launch ##########
+########### bulmages launcher ##########
 message(STATUS "Working on bulmages")
 add_subdirectory(bulmages)
 
@@ -120,10 +120,6 @@ add_subdirectory(bulmatpv)
 ########### bulmasetup ##########
 message(STATUS "Working on bulmasetup")
 add_subdirectory(bulmasetup)
-
-########### bulmasetup ##########
-message(STATUS "Working on bulmalauncher")
-add_subdirectory(bulmalauncher)
 
 
 ########### private code ########

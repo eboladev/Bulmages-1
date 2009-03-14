@@ -39,12 +39,13 @@
 
 #include <QtGui>
 
-#include "bulmalauncher.h"
+#include "bulmages.h"
+
 
 int main ( int argc, char **argv )
 {
 
-    Q_INIT_RESOURCE(blauncher);
+    Q_INIT_RESOURCE(bulmages);
 
     QApplication app(argc, argv);
 
@@ -55,8 +56,8 @@ int main ( int argc, char **argv )
     }
     QApplication::setQuitOnLastWindowClosed(false);
 
-    BulmaLauncher blauncher;
-    blauncher.hide();
+    BulmaGes bges;
+    bges.hide();
 
     return app.exec();
 }

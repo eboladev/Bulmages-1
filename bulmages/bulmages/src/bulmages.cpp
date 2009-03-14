@@ -21,13 +21,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include <QtGui>
-#include <QObject>
+#include <QAction>
 
-#include "bulmalauncher.h"
+#include "bulmages.h"
 
 
-BulmaLauncher::BulmaLauncher()
+BulmaGes::BulmaGes()
 {
     setupUi(this);
     setWindowTitle("Lanzador BulmaGes");
@@ -38,37 +37,37 @@ BulmaLauncher::BulmaLauncher()
 }
 
 
-BulmaLauncher::~BulmaLauncher()
+BulmaGes::~BulmaGes()
 {
 }
 
 
-void BulmaLauncher::on_mui_lanzabulmacont_clicked() {
+void BulmaGes::on_mui_lanzabulmacont_clicked() {
     launchBulmaCont();
 }
 
 
-void BulmaLauncher::on_mui_lanzabulmafact_clicked() {
+void BulmaGes::on_mui_lanzabulmafact_clicked() {
     launchBulmaFact();
 }
 
 
-void BulmaLauncher::on_mui_lanzabulmatpv_clicked() {
+void BulmaGes::on_mui_lanzabulmatpv_clicked() {
     launchBulmaTPV();
 }
 
 
-void BulmaLauncher::on_mui_lanzabulmasetup_clicked() {
+void BulmaGes::on_mui_lanzabulmasetup_clicked() {
     launchBulmaSetup();
 }
 
 
-void BulmaLauncher::on_mui_cerrar_clicked() {
+void BulmaGes::on_mui_cerrar_clicked() {
     hide();
 }
 
 
-void BulmaLauncher::activado(QSystemTrayIcon::ActivationReason reason) {
+void BulmaGes::activado(QSystemTrayIcon::ActivationReason reason) {
 
     if (reason == QSystemTrayIcon::Trigger) {
 	// Click boton izquierdo
@@ -78,7 +77,7 @@ void BulmaLauncher::activado(QSystemTrayIcon::ActivationReason reason) {
 }
 
 
-void BulmaLauncher::createTrayIcon()
+void BulmaGes::createTrayIcon()
 {
     QAction *bulmaContAction;
     QAction *bulmaFactAction;
@@ -114,35 +113,35 @@ void BulmaLauncher::createTrayIcon()
 }
 
 
-void BulmaLauncher::launchBulmaCont()
+void BulmaGes::launchBulmaCont()
 {
     hide();
     runCommand("bulmacont");
 }
 
 
-void BulmaLauncher::launchBulmaFact()
+void BulmaGes::launchBulmaFact()
 {
     hide();
     runCommand("bulmafact");
 }
 
 
-void BulmaLauncher::launchBulmaTPV()
+void BulmaGes::launchBulmaTPV()
 {
     hide();
     runCommand("bulmatpv");
 }
 
 
-void BulmaLauncher::launchBulmaSetup()
+void BulmaGes::launchBulmaSetup()
 {
     hide();
     runCommand("kdesu -c bulmasetup --");
 }
 
 
-void BulmaLauncher::runCommand(QString command)
+void BulmaGes::runCommand(QString command)
 {
     command = command + QString(" &");
     system(command.toAscii().constData());
