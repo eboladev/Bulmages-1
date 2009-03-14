@@ -79,10 +79,10 @@ void MyPlugBanc::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Trabajadores" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Trabajadores" ) );
-	planCuentas->setWhatsThis ( _( "Trabajadores" ) );
+	QAction *planCuentas = new QAction ( _( "&Bancos" ), 0 );
+	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/bank.svg" ) ));
+	planCuentas->setStatusTip ( _( "Bancos" ) );
+	planCuentas->setWhatsThis ( _( "Bancos" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -102,7 +102,7 @@ void MyPlugBanc::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    _depura ( "Punto de Entrada del plugin de bancos\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
