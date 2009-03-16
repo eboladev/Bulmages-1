@@ -36,12 +36,9 @@ class BfSubForm;
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BfSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+class BfSubFormDelegate : public BlSubFormDelegate
 {
     Q_OBJECT
-
-protected:
-    BfSubForm *m_subform;
 
 public:
     BfSubFormDelegate ( QObject * );
@@ -49,11 +46,6 @@ public:
     virtual void setEditorData ( QWidget *, const QModelIndex &index ) const;
     virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
-    virtual bool eventFilter ( QObject *obj, QEvent *event );
-    virtual int cerrarEditor ( QWidget *editor );
-
-signals:
-     void cant_changed(BlDbSubFormRecord *) const;
 };
 
 
@@ -67,9 +59,7 @@ class BfSubForm : public BlSubForm
 
 public:
     BfSubFormDelegate *m_delegate;
-    BlDbSubFormRecord *m_registrolinea;
-    /// Usada para pasar parametros a los plugins.
-    BlDbSubFormField  *m_campoactual;
+
 
 protected:
     QString mdb_idcliente;

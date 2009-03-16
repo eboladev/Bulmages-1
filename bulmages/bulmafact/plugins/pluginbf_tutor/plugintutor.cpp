@@ -26,7 +26,7 @@
 #include "tutorview.h"
 #include "tutoreslist.h"
 
-
+#include "busqueda.h"
 
 TutoresList *g_tutoresList=NULL;
 
@@ -93,7 +93,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Tutores" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Tutores/Socios" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
 	planCuentas->setStatusTip ( _( "Tutores" ) );
 	planCuentas->setWhatsThis ( _( "Tutores" ) );
@@ -101,10 +101,10 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo tutor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo tutor/socio" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo tutor" ) );
-	npago->setWhatsThis ( _( "Nuevo tutor" ) );
+	npago->setStatusTip ( _( "Nuevo tutor/socio" ) );
+	npago->setWhatsThis ( _( "Nuevo tutor/socio" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -133,10 +133,51 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "tutor", "SELECT" ) ) {
 	g_tutoresList = new TutoresList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_tutoresList );
 	g_tutoresList->hide();
     }// end if
     return 0;
+}
+
+
+int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
+//  mensajeInfo(g_nomcampo);
+    if (g_nomcampo == "nombrealumno") {
+        BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+        editor->m_valores["nombrealumno"] = "";
+        editor->m_tabla = "alumno";
+        g_plugParams =  editor;
+  return -1;
+  } // end if
+  return 0;
+}
+
+int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
+    if (g_nomcampo == "nombrealumno") {
+        BusquedaDelegate * comboBox = static_cast<BusquedaDelegate*> ( g_editor );
+        QString value = comboBox->currentText();
+        value = value.left ( value.indexOf ( ".-" ) );
+        g_model->setData ( g_index, value );
+  return -1;
+    } // end if
+  return 0;
+}
+
+
+int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
+    if (g_nomcampo == "nombrealumno") {
+        QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
+        BusquedaDelegate *comboBox = static_cast<BusquedaDelegate*> ( g_editor );
+        comboBox->addItem ( value );
+//        comboBox->set ( value );
+  return -1;
+      } // end if
+  return 0;
+}
+
+int BlSubForm_editFinished(BlSubForm *sub) {
+  return 0;
 }

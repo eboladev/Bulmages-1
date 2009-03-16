@@ -36,6 +36,7 @@
 #include "blwidget.h"
 #include "plugins.h"
 
+class BlSubForm;
 
 /// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref BlSubForm
 /**
@@ -74,6 +75,40 @@ public:
 };
 
 
+
+
+// Necesito exportar algunos datos.
+extern  QModelIndex g_index;
+extern  QWidget *g_editor;
+extern  QAbstractItemModel *g_model;
+extern  QString g_nomcampo;
+
+
+/// Clase BfSubFormDelegate
+/** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
+class BlSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+{
+    Q_OBJECT
+
+public:
+    BlSubForm *m_subform;
+
+    
+public:
+    BlSubFormDelegate ( QObject * );
+    virtual ~BlSubFormDelegate();
+    virtual void setEditorData ( QWidget *, const QModelIndex &index ) const;
+    virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
+    virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
+
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
+    virtual int cerrarEditor ( QWidget *editor );
+
+signals:
+     void cant_changed(BlDbSubFormRecord *) const;
+};
+
+
 /// BlSubForm, constructor de la clase base para subformularios.
 /** Proporciona un widget que combina la clase QTable con los
 registros de la base de datos proporcionando un potente manejador
@@ -87,7 +122,10 @@ public:
     enum edmode {
         EditMode = 0, SelectMode = 1
     };
-
+    BlDbSubFormRecord *m_registrolinea;
+    /// Usada para pasar parametros a los plugins.
+    BlDbSubFormField  *m_campoactual;
+    
 private:
     virtual void cargar ( BlDbRecordSet *cur );
 

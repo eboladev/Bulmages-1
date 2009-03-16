@@ -74,6 +74,8 @@ BEGIN
 
         END IF;
 
+
+
         SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
         IF NOT FOUND THEN
 
@@ -84,6 +86,38 @@ BEGIN
         );
 
         END IF;
+
+	SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
+	IF NOT FOUND THEN
+	    CREATE TABLE socio (
+		idsocio SERIAL PRIMARY KEY,
+		nomsocio VARCHAR NOT NULL,
+		numsocio VARCHAR NOT NULL,
+		idtutor INTEGER REFERENCES tutor (idtutor)
+	    );
+	END IF;
+	
+           SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnotutor'';
+        IF NOT FOUND THEN
+
+        CREATE TABLE alumnotutor (
+       idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
+       idtutor INTEGER NOT NULL REFERENCES tutor(idtutor),
+       PRIMARY KEY (idalumno, idtutor)
+        );
+
+        END IF;
+   
+   
+	SELECT INTO as * FROM pg_tables WHERE tablename = ''cuota'';
+	IF NOT FOUND THEN
+	    CREATE TABLE cuota (
+		idcuota SERIAL PRIMARY KEY,
+		idsocio INTEGER NOT NULL REFERENCES socio(idsocio),
+		fechacuota DATE,
+		cantcuota NUMERIC (12,2)
+	    );
+	END IF;
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
         IF NOT FOUND THEN
@@ -99,7 +133,6 @@ BEGIN
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
         IF NOT FOUND THEN
-
         CREATE TABLE sesionactividad (
 	    idsesionactividad SERIAL PRIMARY KEY,
 	    idactividad INTEGER NOT NULL REFERENCES actividad(idactividad),
@@ -107,10 +140,17 @@ BEGIN
 	    fechainsesion timestamp DEFAULT now() NOT NULL,
 	    fechafinsesion timestamp DEFAULT now() NOT NULL
         );
-
         END IF;
 
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''cuotaporalumno'';
+        IF NOT FOUND THEN
 
+        CREATE TABLE cuotaporalumno (
+       numalumnoscuotaporalumno INTEGER NOT NULL PRIMARY KEY,
+       cuotacuotaporalumno NUMERIC (12,2)
+        );
+
+        END IF;
 
 
 	RETURN 0;

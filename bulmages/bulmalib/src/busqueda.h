@@ -27,6 +27,7 @@
 
 #include "blfunctions.h"
 #include "blwidget.h"
+#include "blcombobox.h"
 #include "ui_busquedabase.h"
 
 
@@ -46,7 +47,6 @@ private:
     QString m_tabla;
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
-    /// Almacena el nombreprofesor del profesor seleccionado.
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
 
@@ -73,6 +73,38 @@ public slots:
 signals:
     void valueChanged ( QString );
 };
+
+
+
+/// Delegate Generico
+class BusquedaDelegate : public BlComboBox
+{
+    Q_OBJECT
+
+public:
+    /// QHash de los valores a comprobar
+    QMap <QString, QString> m_valores;
+    /// Almacena la tabla sobre la que vamos a buscar.
+    QString m_tabla;
+    
+private:
+    /// Almacena el id de la tabla seleccionada.
+    QString mdb_id;
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    BlDbRecordSet *m_cursorcombo;
+    /// Texto entrado por el usuario (para uso de los plugins)
+    QString m_entrada; 
+public:
+    BusquedaDelegate ( QWidget *parent = 0 );
+    ~BusquedaDelegate();
+    QString entrada();
+    QString unicaEleccion(void) ;
+    QString eligeUnico(void) ;
+public slots:
+    virtual void s_editTextChanged ( const QString & );
+    virtual void focusOutEvent ( QFocusEvent * event );
+};
+
 
 #endif
 

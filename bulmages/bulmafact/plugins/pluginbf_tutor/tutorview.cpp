@@ -30,7 +30,7 @@
 #include "blconfiguration.h"
 #include "busquedafecha.h"
 #include "blfunctions.h"
-
+#include "blpostgresqlclient.h"
 
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
@@ -52,13 +52,14 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "nombretutor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
 
 
-	mui_idprovincia->setMainCompany ( mainCompany() );
-    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
-    mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setFieldId ("idprovincia");
-    mui_idprovincia->m_valores["provincia"] = "";
-    mui_idprovincia->m_valores["descpais"] = "";
-    mui_idprovincia->setAllowNull(TRUE);
+        mui_alumnosList->setMainCompany(mainCompany());
+        mui_idprovincia->setMainCompany ( mainCompany() );
+        mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
+        mui_idprovincia->setTableName ("provincia");
+        mui_idprovincia->setFieldId ("idprovincia");
+        mui_idprovincia->m_valores["provincia"] = "";
+        mui_idprovincia->m_valores["descpais"] = "";
+        mui_idprovincia->setAllowNull(TRUE);
         mui_idprovincia->setId ( "" );
 
         meteWindow ( windowTitle(), this, FALSE );
@@ -91,13 +92,13 @@ void TutorView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( dbValue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idtutor" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     } 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->lanza ( "TutorView_imprimir", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -109,8 +110,91 @@ void TutorView::imprimir()
 
 int TutorView::guardarPost() {
 	_depura(" TutorView::guardarPost", 0);
-
+  if (mui_numsocio->text() != "") {
+    QString query1 = "SELECT * FROM socio WHERE idtutor = " + dbValue("idtutor");
+    BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
+    if (!cur->eof()) {
+      QString query = "UPDATE socio SET numsocio = '"+mui_numsocio->text()+"', nomsocio='"+dbValue("nombretutor")+"' WHERE idtutor= "+dbValue("idtutor");
+      mainCompany()->runQuery(query);
+      mainCompany()->runQuery(query);
+    } else {
+      QString query = "INSERT INTO socio (numsocio, idtutor, nomsocio) VALUES ('"+mui_numsocio->text()+"', "+dbValue("idtutor")+", '"+dbValue("nombretutor")+"')";
+      mainCompany()->runQuery(query);
+    } // end if
+    delete cur;
+  } else {
+    QString query = "DELETE FROM socio WHERE idtutor=" + dbValue("idtutor");
+    mainCompany()->runQuery(query);
+  } // end if
 	_depura("END TutorView::guardarPost", 0);
-
+  return 0;
 }
+
+int TutorView::borrarPre() {
+    QString query = "DELETE FROM socio WHERE idtutor=" + dbValue("idtutor");
+    mainCompany()->runQuery(query);
+    return 0;
+}
+
+
+
+int TutorView::cargarPost(QString id) {
+   _depura(" TutorView::cargarPost", 0);
+
+    QString query1 = "SELECT * FROM socio WHERE idtutor = " + id;
+    BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
+    if (!cur->eof()) {
+      mui_numsocio->setText(cur->valor("numsocio"));
+    } // end if
+    delete cur;
+
+    mui_alumnosList->cargar(id);
+
+   _depura("END TutorView::cargarPost", 0);
+  return 0;
+}
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+/** Prepara el subformulario para trabajar con la tabla factura.
+*/
+/**
+\param parent
+**/
+
+
+///
+/**
+\param parent
+**/
+ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( parent )
+{
+    _depura ( "ListAlumnosTutorView::ListAlumnosTutorView", 0 );
+    setDbTableName ( "alumnotutor" );
+    setDbFieldId ( "idalumno" );
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "Id alumno" ) );
+    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
+
+    addSubFormHeader ( "idtutor", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id tutor" ) );
+
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
+    _depura ( "END ListAlumnosTutorView::ListAlumnosTutorView", 0 );
+}
+
+
+///
+/**
+\param idcontrato
+**/
+void ListAlumnosTutorView::cargar ( QString idtutor )
+{
+    _depura ( "ListAlumnosTutorView::cargar", 0 );
+    BlSubForm::cargar ( "SELECT * FROM alumnotutor LEFT JOIN alumno ON alumnotutor.idalumno = alumno.idalumno  WHERE alumnotutor.idtutor=" + idtutor  );
+    _depura ( "END ListAlumnosTutorView::cargar", 0 );
+}
+
 

@@ -34,6 +34,13 @@
 #include "blprogressbar.h"
 
 
+// Necesito exportar algunos datos.
+QModelIndex g_index;
+QWidget *g_editor;
+QAbstractItemModel *g_model;
+QString g_nomcampo;
+
+
 /// Construye una columna de la descripcion del recordset
 /**
 \param nom Nombre de la columna
@@ -1424,11 +1431,6 @@ void BlSubForm::cargar ( QString query )
 
     try {
         m_query = query;
-
-//	if ( m_primero ) {
-//		cargaconfig();
-//	} // end if
-
         /// Tratramos con la paginacion.
         int limit = mui_filaspagina->text().toInt();
         if ( limit <= 0 ) {
@@ -2596,9 +2598,16 @@ QString BlSubForm::dbFieldNameByColumnId ( int columna )
 
 
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
-void BlSubForm::editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
+void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "BlSubForm::editFinished", 0 );
+        m_registrolinea = rec;
+    m_campoactual = camp;
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "BlSubForm_editFinished", this );
+
+
     _depura ( "END BlSubForm::editFinished", 0 );
 }
 
@@ -2678,3 +2687,183 @@ bool BlSubForm::modoConsulta()
     _depura ( "END BlSubForm::modoConsulta", 0 );
     return m_modo == SelectMode;
 }
+
+
+
+
+
+/// ===============================================================
+///  Tratamientos del Item Delegate
+/// ===============================================================
+///
+/**
+\param parent
+**/
+BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
+{
+    _depura ( "BlSubFormDelegate::BlSubFormDelegate", 0 );
+    m_subform = ( BlSubForm * ) parent;
+    installEventFilter ( this );
+    g_plugins->lanza("BlSubFormDelegate_BlSubFormDelegate_Post", this);
+    _depura ( "END BlSubFormDelegate::BlSubFormDelegate", 0 );
+}
+
+
+///
+/**
+**/
+BlSubFormDelegate::~BlSubFormDelegate()
+{
+    _depura ( "BlSubFormDelegate::~BlSubFormDelegate", 0 );
+    _depura ( "END BlSubFormDelegate::~BlSubFormDelegate", 0 );
+}
+
+
+///
+/**
+\param parent
+\param option
+\param index
+**/
+QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
+{
+    _depura ( "BlSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
+    BlSubFormHeader *linea;
+    linea = m_subform->cabecera() ->at ( index.column() );
+    g_nomcampo = linea->nomcampo();
+    g_editor = parent;
+    
+    if (g_plugins->lanza("BlSubFormDelegate_createEditor", (void *)this)) {
+      return (QWidget *) g_plugParams;
+    } // end if
+         _depura ( "END BlSubFormDelegate::createEditor", 0, "Default Editor" );
+        return QItemDelegate::createEditor ( parent, option, index );
+}
+
+
+///
+/**
+\param editor
+\param model
+\param index
+\return
+**/
+void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
+{
+    _depura ( "BlSubFormDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
+
+    /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
+    if ( index.column() < 0 || index.row() < 0 ) {
+        _depura ( "END BlSubFormDelegate::setModelData", 0, "Fila o columna invalida" );
+        return;
+    } // end if
+    g_index = index;
+    g_model = model;
+    g_editor = editor;
+    BlSubFormHeader *linea;
+    linea = m_subform->cabecera() ->at ( index.column() );
+    g_nomcampo = linea->nomcampo();
+    
+    if (g_plugins->lanza("BlSubFormDelegate_setModelData", (void *) this)) {
+      return;
+    } // end if
+
+        QItemDelegate::setModelData ( editor, model, index );
+
+    _depura ( "END BlSubFormDelegate::setModelData", 0 );
+}
+
+
+///
+/**
+\param editor
+\param index
+**/
+void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
+{
+    _depura ( "BlSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
+    
+    
+    g_index = index;
+    g_editor = editor;
+    BlSubFormHeader *linea;
+    linea = m_subform->cabecera() ->at ( index.column() );
+    g_nomcampo = linea->nomcampo();
+    
+    if (g_plugins->lanza("BlSubFormDelegate_setEditorData", (void *) this)) {
+      return;
+    } // end if
+    
+        QItemDelegate::setEditorData ( editor, index );
+    _depura ( "END BlSubFormDelegate::setEditorData", 0 );
+}
+
+
+///
+/**
+\param obj
+\param event
+\return
+**/
+bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
+{
+    /// Si es un release de tecla se hace la funcionalidad especificada.
+    if ( event->type() == QEvent::KeyPress ) {
+        _depura ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
+        int key = keyEvent->key();
+        _depura ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// Anulamos el caso de una pulsacion de tabulador o de enter
+        switch ( key ) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
+                obj->event ( event );
+                return TRUE;
+            } // end if
+        case Qt::Key_Tab:
+            return TRUE;
+        } // end switch
+        return QItemDelegate::eventFilter ( obj, event );
+    } // end if
+
+    if ( event->type() == QEvent::KeyRelease ) {
+        _depura ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
+        int key = keyEvent->key();
+        _depura ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
+        switch ( key ) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            if ( obj->objectName() == "BlTextEditDelegate" ) {
+                obj->event ( event );
+                return TRUE;
+            } // end if
+        case Qt::Key_Tab:
+            QApplication::sendEvent ( m_subform->mui_list, event );
+            return TRUE;
+        } // end switch
+        return QItemDelegate::eventFilter ( obj, event );
+    } // end if
+
+    return QItemDelegate::eventFilter ( obj, event );
+}
+
+
+///
+/**
+\param editor
+\return
+**/
+int BlSubFormDelegate::cerrarEditor ( QWidget *editor )
+{
+    _depura ( "BlSubFormDelegate::cerrarEditor", 0 );
+    emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
+    _depura ( "END BlSubFormDelegate::cerrarEditor", 0 );
+    return 0;
+}
+
+

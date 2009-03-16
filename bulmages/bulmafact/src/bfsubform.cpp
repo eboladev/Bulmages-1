@@ -516,11 +516,11 @@ QString BfSubForm::idAlmacen ()
 /**
 \param parent
 **/
-BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
+BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate(parent)
 {
     _depura ( "BfSubFormDelegate::BfSubFormDelegate", 0 );
-    m_subform = ( BfSubForm * ) parent;
-    installEventFilter ( this );
+//    m_subform = ( BlSubForm * ) parent;
+//    installEventFilter ( this );
     _depura ( "END BfSubFormDelegate::BfSubFormDelegate", 0 );
 }
 
@@ -587,7 +587,7 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else  {
         _depura ( "END BfSubFormDelegate::createEditor", 0, "Default Editor" );
-        return QItemDelegate::createEditor ( parent, option, index );
+        return BlSubFormDelegate::createEditor ( parent, option, index );
     } // end if
 }
 
@@ -653,7 +653,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else {
-        QItemDelegate::setModelData ( editor, model, index );
+        BlSubFormDelegate::setModelData ( editor, model, index );
     } // end if
     _depura ( "END BfSubFormDelegate::setModelData", 0 );
 }
@@ -701,78 +701,12 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         BusquedaAlmacenDelegate *comboBox = static_cast<BusquedaAlmacenDelegate*> ( editor );
         comboBox->set ( value );
     } else {
-        QItemDelegate::setEditorData ( editor, index );
+        BlSubFormDelegate::setEditorData ( editor, index );
     } // end if
     _depura ( "END BfSubFormDelegate::setEditorData", 0 );
 }
 
 
-///
-/**
-\param obj
-\param event
-\return
-**/
-bool BfSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
-{
-    /// Si es un release de tecla se hace la funcionalidad especificada.
-    if ( event->type() == QEvent::KeyPress ) {
-        _depura ( "BfSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
-        int key = keyEvent->key();
-        _depura ( "BfSubFormDelegate::key = : ", 0, QString::number ( key ) );
-        Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// Anulamos el caso de una pulsacion de tabulador o de enter
-        switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            if ( obj->objectName() == "BlTextEditDelegate" ) {
-                obj->event ( event );
-                return TRUE;
-            } // end if
-        case Qt::Key_Tab:
-            return TRUE;
-        } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
-    } // end if
-
-    if ( event->type() == QEvent::KeyRelease ) {
-        _depura ( "BfSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
-        int key = keyEvent->key();
-        _depura ( "BfSubFormDelegate::key = : ", 0, QString::number ( key ) );
-        Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
-        switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            if ( obj->objectName() == "BlTextEditDelegate" ) {
-                obj->event ( event );
-                return TRUE;
-            } // end if
-        case Qt::Key_Tab:
-            QApplication::sendEvent ( m_subform->mui_list, event );
-            return TRUE;
-        } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
-    } // end if
-
-    return QItemDelegate::eventFilter ( obj, event );
-}
-
-
-///
-/**
-\param editor
-\return
-**/
-int BfSubFormDelegate::cerrarEditor ( QWidget *editor )
-{
-    _depura ( "BfSubFormDelegate::cerrarEditor", 0 );
-    emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
-    _depura ( "END BfSubFormDelegate::cerrarEditor", 0 );
-    return 0;
-}
 
 
 ///

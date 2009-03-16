@@ -488,11 +488,11 @@ void BcSubForm::procesaMenu ( QAction * )
 /**
 \param parent
 **/
-BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
+BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate(parent)
 {
     _depura ( "BcSubFormDelegate::BcSubFormDelegate", 0 );
-    m_subform = ( BcSubForm * ) parent;
-    installEventFilter ( this );
+//    m_subform = ( BlSubForm * ) parent;
+//    installEventFilter ( this );
     _depura ( "END BcSubFormDelegate::BcSubFormDelegate", 0 );
 }
 
@@ -512,7 +512,7 @@ BcSubFormDelegate::~BcSubFormDelegate()
 \param parent
 \param index
 **/
-QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &index ) const
+QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &opcion, const QModelIndex &index ) const
 {
     _depura ( "BcSubFormDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
@@ -555,11 +555,12 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         //if (linea->dbFieldType() == BlDbField::DbInt) {
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
-        QLineEdit *editor = new QLineEdit ( parent );
+/*        QLineEdit *editor = new QLineEdit ( parent );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "QLineEdit" );
         return editor;
+*/
         //} else {
-        //    return QItemDelegate::createEditor(parent, option, index);
+            return BlSubFormDelegate::createEditor(parent, opcion, index);
         //} // end if
     } // end if
 }
@@ -606,7 +607,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BusquedaCuentaDelegate * comboBox = static_cast<BusquedaCuentaDelegate*> ( editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
-        QString codigoext = extiendecodigo ( value,  m_subform->mainCompany() ->numdigitosempresa() );
+        QString codigoext = extiendecodigo ( value, ((BcSubForm*) m_subform)->mainCompany() ->numdigitosempresa() );
         model->setData ( index, codigoext );
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * comboBox = static_cast<BusquedaCanalDelegate*> ( editor );
@@ -628,11 +629,13 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         //    int value = spinBox->value();
         //    model->setData(index, value);
         //} else {
-        //    QItemDelegate::setModelData(editor, model, index);
+            BlSubFormDelegate::setModelData(editor, model, index);
         //} // end if
-        QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
+
+/*QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
         QString value = lineedit->text();
         model->setData ( index, value );
+*/
     } // end if
 
 
@@ -687,67 +690,16 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->setValue(value);
         //} else {
-        //    QItemDelegate::setEditorData(editor, index);
+            BlSubFormDelegate::setEditorData(editor, index);
         //} // end if
-        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+/*        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
         lineedit->setText ( value );
+*/
     } // end if
     _depura ( "END BcSubFormDelegate::setEditorData", 0 );
 }
 
 
-///
-/**
-\param obj
-\param event
-\return
-**/
-bool BcSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
-{
-    /// Si es un release de tecla se hace la funcionalidad especificada.
-    if ( event->type() == QEvent::KeyPress ) {
-        _depura ( "BcSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
-        int key = keyEvent->key();
-        _depura ( "BcSubFormDelegate::key = : ", 0, QString::number ( key ) );
-        Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// Anulamos el caso de una pulsacion de tabulador o de enter
-        switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            if ( obj->objectName() == "BlTextEditDelegate" ) {
-                obj->event ( event );
-                return TRUE;
-            } // end if
-        case Qt::Key_Tab:
-            return TRUE;
-        } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
-    } // end if
-
-    if ( event->type() == QEvent::KeyRelease ) {
-        _depura ( "BcSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
-        int key = keyEvent->key();
-        _depura ( "BcSubFormDelegate::key = : ", 0, QString::number ( key ) );
-        Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
-        switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            if ( obj->objectName() == "BlTextEditDelegate" ) {
-                obj->event ( event );
-                return TRUE;
-            } // end if
-        case Qt::Key_Tab:
-            QApplication::sendEvent ( m_subform->mui_list, event );
-            return TRUE;
-        } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
-    } // end if
-
-    return QItemDelegate::eventFilter ( obj, event );
-}
 
 

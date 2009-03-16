@@ -34,11 +34,8 @@ class BcSubForm;
 
 /// Clase BcSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class BcSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+class BcSubFormDelegate : public BlSubFormDelegate
 {
-private:
-    /// Clase padre y acceso a base de datos.
-    BcSubForm *m_subform;
 
 public:
     BcSubFormDelegate ( QObject * );
@@ -46,7 +43,6 @@ public:
     void setEditorData ( QWidget *, const QModelIndex &index ) const;
     void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
     QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
-    virtual bool eventFilter ( QObject *obj, QEvent *event );
 };
 
 

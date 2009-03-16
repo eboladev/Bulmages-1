@@ -27,12 +27,16 @@
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
+#include "blsubform.h"
 #include "busquedareferencia.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-
+extern "C" MY_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
