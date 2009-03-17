@@ -101,9 +101,9 @@ BEGIN
         IF NOT FOUND THEN
 
         CREATE TABLE alumnotutor (
+       idalumnotutor SERIAL PRIMARY KEY,
        idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
-       idtutor INTEGER NOT NULL REFERENCES tutor(idtutor),
-       PRIMARY KEY (idalumno, idtutor)
+       idtutor INTEGER NOT NULL REFERENCES tutor(idtutor)
         );
 
         END IF;
@@ -125,11 +125,22 @@ BEGIN
         CREATE TABLE actividad (
 	    idactividad SERIAL PRIMARY KEY,
 	    idprofesor  INTEGER NOT NULL REFERENCES profesor(idprofesor),
+       codigoactividad VARCHAR UNIQUE NOT NULL,
 	    nombreactividad VARCHAR NOT NULL
         );
 
         END IF;
 
+           SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnoactividad'';
+        IF NOT FOUND THEN
+
+        CREATE TABLE alumnoactividad (
+       idalumnoactividad SERIAL PRIMARY KEY,
+       idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
+       idactividad INTEGER NOT NULL REFERENCES actividad(idactividad)
+        );
+
+        END IF;
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
         IF NOT FOUND THEN

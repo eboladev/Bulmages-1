@@ -396,7 +396,9 @@ BusquedaDelegate::BusquedaDelegate ( QWidget *parent )
     _depura ( "BusquedaDelegate::BusquedaDelegate", 0 );
     m_cursorcombo = NULL;
     setEditable ( true );
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
+    disconnect (this, SIGNAL (activated (int)), 0, 0);
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
     _depura ( "END BusquedaDelegate::BusquedaDelegate", 0 );
 }
@@ -422,67 +424,56 @@ BusquedaDelegate::~BusquedaDelegate()
 **/
 void BusquedaDelegate::s_editTextChanged ( const QString &cod )
 {
-   _depura ( "BusquedaDelegate::s_editTextChanged : "+cod, 0 );
+   _depura ( "BusquedaDelegate::s_editTextChanged", 0, cod );
    static bool semaforo = FALSE;
-
-
-
-   if ( semaforo )
-   {
+   if ( semaforo ) {
       _depura ( "END BusquedaDelegate::s_editTextChanged (semafor ocupat)", 0 );
       return;
-   }
-   else
-   {
+   } else {
       semaforo = TRUE;
    } // end if
    m_entrada = cod;
-   if ( !g_plugins->lanza ( "BusquedaDelegate_textChanged", this ) )
-   {
+   if ( !g_plugins->lanza ( "BusquedaDelegate_textChanged", this ) ) {
       QString codigo = m_entrada;
-      if ( codigo.size() >= 3 )
-      {
-                    int pos = codigo.indexOf ( ".-" );
-                    // no se si es el autoComplete o què però em criden a 
-                    // aquesta senyal quan omplo el combo, amb el primer valor 
-                    // i si no m'aturo ara, recalcularia el combo amb nomes 
-                    // aquest valor encara que l'usuari nomes hagi escrit 
-                    // un prefix que permeti mes candidats
-                    if ( pos < 0 )  {
-        QString cadwhere = "";
-         /// Inicializamos los valores de vuelta a ""
-         QMapIterator<QString, QString> i(m_valores);
-         QString cador = "";
-         while (i.hasNext()) {
-            i.next();
-            cadwhere = cadwhere + cador + " upper("+i.key()+") LIKE  upper('%"+cod+"%')";
-            cador = " OR ";
-         } // end while
-
-        QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
-        m_cursorcombo = mainCompany() ->loadQuery ( SQLQuery );
-         clear();
-         while ( !m_cursorcombo->eof() )
-         {
-         QMapIterator<QString, QString> i(m_valores);
-         QString cad = "";
-         QString sep = ".- ";
-         QString cad1 = "";
-         while (i.hasNext()) {
-          i.next();
-          cad = cad + m_cursorcombo->valor(i.key()) + sep;
-          if (sep == ".- ") {
-            cad1 = i.key();
-            sep = " ";
-          } // end if
-         } // end while
+      if ( codigo.size() >= 3 ) {
+        int pos = codigo.indexOf ( ".-" );
+        // no se si es el autoComplete o què però em criden a 
+        // aquesta senyal quan omplo el combo, amb el primer valor 
+        // i si no m'aturo ara, recalcularia el combo amb nomes 
+        // aquest valor encara que l'usuari nomes hagi escrit 
+        // un prefix que permeti mes candidats
+        if ( pos < 0 )  {
+          QString cadwhere = "";
+          /// Inicializamos los valores de vuelta a ""
+          QMapIterator<QString, QString> i(m_valores);
+          QString cador = "";
+          while (i.hasNext()) {
+              i.next();
+              cadwhere = cadwhere + cador + " upper("+i.key()+") LIKE  upper('%"+cod+"%')";
+              cador = " OR ";
+          } // end while
+          QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
+          m_cursorcombo = mainCompany() ->loadQuery ( SQLQuery );
+          clear();
+          while ( !m_cursorcombo->eof() ) {
+            QMapIterator<QString, QString> i(m_valores);
+            QString cad = "";
+            QString sep = ".- ";
+            QString cad1 = "";
+            while (i.hasNext()) {
+              i.next();
+              cad = cad + m_cursorcombo->valor(i.key()) + sep;
+              if (sep == ".- ") {
+                cad1 = i.key();
+                sep = " ";
+              } // end if
+            } // end while
             addItem ( cad , QVariant(m_cursorcombo->valor ( cad1 ) ));
             m_cursorcombo->nextRecord();
-         } // end while
-        delete m_cursorcombo;
-
-                } // end if
-      } // end if
+          } // end while
+          delete m_cursorcombo;
+        } // end if
+    } // end if
    } // end if
    g_plugins->lanza ( "BusquedaDelegate_textChanged_Post", this );
    setEditText ( cod );
@@ -490,56 +481,51 @@ void BusquedaDelegate::s_editTextChanged ( const QString &cod )
    _depura ( "END BusquedaDelegate::s_editTextChanged", 0 );
 }
 
-/// Retorna el codi d'article associat a la unica entrada del combo que 
+/// Retorna el codi associat a la unica entrada del combo que 
 /// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Això 
 /// permet que abans de donar un error per codi d'article incorrecte 
 /// se li assigni l'unic article trobat per l'entrada (incompleta?) de l'usuari.
 /// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
 QString BusquedaDelegate::unicaEleccion(void) {
+  _depura ("BusquedaDelegate::unicaEleccion", 0);
    int num = 0;
    QString elec = NULL;
    for(int i=0; (num<2)&&(i<count()); i++) {
-       _depura("item "+QString::number(i)+". num= "+QString::number(num)
-               +" itemText='"+itemText(i)+"' itemData="+itemData(i).toString(),0);
        if (itemData(i).isValid()) {
-         _depura("aquest item es un article trobat, no entrada de l'usuari",0);
          elec= itemData(i).toString();
          num++;
-       };
-       _depura("END item "+QString::number(i)+". num= "+QString::number(num)
-               +" itemText='"+itemText(i)+"' itemData="+itemData(i).toString(),0);
-       
-   }
+       } // end if
+   } // end for
+   _depura("END BusquedaDelegate::unicaEleccion");
    return (num==1?elec:NULL);
 }
 
 /// Sii el combo nomes ha trobat un article a la BD per l'entrada de 
 /// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
 QString BusquedaDelegate::eligeUnico(void) {
-   _depura("BusquedaDelegate::eligeUnico. count=" 
-           + QString::number(count()),0);
+   _depura("BusquedaDelegate::eligeUnico", 0, "count = " + QString::number(count()));
   
    QString elec = unicaEleccion();
-   if (!elec.isNull()) 
-   {  
+   if (!elec.isNull()) {  
       _depura("elec="+elec,0);
       setEditText(elec);
-   } 
-   _depura("END BusquedaDelegate::eligeUnico." ,0);
+   } // end if
+   _depura("END BusquedaDelegate::eligeUnico" ,0);
    return elec;
 } 
 
 /// quan deixa d'editar el camp substituim el que ha posat 
 /// per l'article que volia trobar si nomes hi ha un article candidat
 void BusquedaDelegate::focusOutEvent ( QFocusEvent * event ) {
-   _depura("BusquedaDelegate::focusOutEvent. count=" 
-           + QString::number(count()),0);
+   _depura("BusquedaDelegate::focusOutEvent", 0, "count = " + QString::number(count()));
     eligeUnico();
    BlComboBox::focusOutEvent(event);
    _depura("END BusquedaDelegate::focusOutEvent",0);
 }
 
 QString BusquedaDelegate::entrada() {
+  _depura("BusquedaDelegate::entrada", 0);
+  _depura("END BusquedaDelegate::entrada", 0);
    return m_entrada;
 }
 

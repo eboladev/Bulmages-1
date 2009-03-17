@@ -36,9 +36,9 @@ class TipoActividadView : public BfForm, public Ui_TipoActividadBase
     Q_OBJECT
 
 private:
-    BlDbRecordSet *m_cursortrabajadores;
+    BlDbRecordSet *m_cursortipoactividades;
     /// Indica cual es el objeto que se esta mostrando.
-    QString mdb_idtrabajador;
+    QString mdb_idtipoactividad;
     /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen
     /// tambien lo indica.
     QString m_archivoimagen;
@@ -55,7 +55,7 @@ public:
     TipoActividadView ( BfCompany * emp, QWidget *parent = 0 );
     ~TipoActividadView();
     bool trataModificado();
-    QString idtrabajador();
+    QString idtipoactividad();
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_borrar_clicked();
 

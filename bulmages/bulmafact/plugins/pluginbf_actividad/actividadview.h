@@ -19,14 +19,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROVIEW_H
-#define COBROVIEW_H
+#ifndef ACTIVIDADVIEW_H
+#define ACTIVIDADVIEW_H
 
 #include <QLineEdit>
 #include <QLabel>
 #include <QCheckBox>
 
-#include "ui_actividadbase.h"
+
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
@@ -38,6 +38,22 @@ class BfCompany;
 
 extern "C++" class BusquedaProfesor;
 
+
+/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
+/** */
+class ListAlumnosActividadView : public BfSubForm
+{
+    Q_OBJECT
+
+public:
+    ListAlumnosActividadView ( QWidget *parent = 0 );
+    ~ListAlumnosActividadView() {};
+public slots:
+    virtual void cargar ( QString idcontrato );
+};
+
+
+#include "ui_actividadbase.h"
 
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
@@ -54,6 +70,8 @@ public:
     virtual void imprimir();
     virtual QString nombrePlantilla(void) ;
     virtual int guardarPost();
+    virtual int borrarPre();
+    virtual int cargarPost(QString );
 };
 
 #endif

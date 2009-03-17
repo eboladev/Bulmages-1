@@ -51,7 +51,6 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idtutor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tutor" ) );
         addDbField ( "nombretutor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
 
-
         mui_alumnosList->setMainCompany(mainCompany());
         mui_idprovincia->setMainCompany ( mainCompany() );
         mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
@@ -110,6 +109,10 @@ void TutorView::imprimir()
 
 int TutorView::guardarPost() {
 	_depura(" TutorView::guardarPost", 0);
+   
+  mui_alumnosList->setColumnValue("idtutor", dbValue("idtutor"));
+  mui_alumnosList->guardar();
+   
   if (mui_numsocio->text() != "") {
     QString query1 = "SELECT * FROM socio WHERE idtutor = " + dbValue("idtutor");
     BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
@@ -132,6 +135,8 @@ int TutorView::guardarPost() {
 
 int TutorView::borrarPre() {
     QString query = "DELETE FROM socio WHERE idtutor=" + dbValue("idtutor");
+    mainCompany()->runQuery(query);
+    query = "DELETE FROM alumnotutor WHERE idtutor=" + dbValue("idtutor");
     mainCompany()->runQuery(query);
     return 0;
 }
@@ -174,10 +179,10 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 {
     _depura ( "ListAlumnosTutorView::ListAlumnosTutorView", 0 );
     setDbTableName ( "alumnotutor" );
-    setDbFieldId ( "idalumno" );
-    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "Id alumno" ) );
+    setDbFieldId ( "idalumnotutor" );
+    addSubFormHeader ( "idalumnotutor", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );   
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
-
     addSubFormHeader ( "idtutor", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id tutor" ) );
 
     setinsercion ( TRUE );

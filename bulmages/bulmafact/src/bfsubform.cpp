@@ -172,6 +172,9 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     BlDbRecordSet *cur = NULL;
     BlDbRecordSet *cur1 = NULL;
 
+    /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
+    BlSubForm::editFinished( row, col, rec, camp);
+
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
     if ( res != 0 ) {
@@ -200,9 +203,6 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
     } // end if
 
-
-
-
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
@@ -219,9 +219,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                 rec->setDbValue ( "desc" + m_tablename, cur->valor ( "nomarticulo" ) );
                 rec->setDbValue ( "cant" + m_tablename, "1.00" );
                 rec->setDbValue ( "descuento" + m_tablename, "0.00" );
-
-		calculaPVP(rec);
-
+                calculaPVP(rec);
             } // end if
         } else {
             mensajeAviso ( _( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );

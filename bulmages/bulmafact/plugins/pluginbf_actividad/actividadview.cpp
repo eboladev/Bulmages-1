@@ -50,10 +50,15 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         setDbFieldId ( "idactividad" );
         addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID actividad" ) );
         addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del actividad" ) );
+        addDbField ( "codigoactividad", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo" ) );
+        
 	addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
 
         meteWindow ( windowTitle(), this, FALSE );
 
+      /// Inicializamos el subformulario de alumnos
+      mui_alumnosList->setMainCompany(comp);
+      
 		/// Establecemos los parametros de busqueda de Profesor
 	mui_idprofesor->setMainCompany(comp);
     mui_idprofesor->setLabel ( _( "Profesor:" ) );
@@ -108,8 +113,68 @@ void ActividadView::imprimir()
 
 int ActividadView::guardarPost() {
 	_depura(" ActividadView::guardarPost", 0);
-
+  mui_alumnosList->setColumnValue("idactividad", dbValue("idactividad"));
+  mui_alumnosList->guardar();
 	_depura("END ActividadView::guardarPost", 0);
-
 }
+
+
+int ActividadView::borrarPre() {
+
+  QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue("idactividad");
+    mainCompany()->runQuery(query);
+    return 0;
+}
+
+
+
+int ActividadView::cargarPost(QString id) {
+   _depura(" ActividadView::cargarPost", 0);
+
+    mui_alumnosList->cargar(id);
+
+   _depura("END ActividadView::cargarPost", 0);
+  return 0;
+}
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+///
+/**
+\param parent
+**/
+ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubForm ( parent )
+{
+    _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    setDbTableName ( "alumnoactividad" );
+    setDbFieldId ( "idalumnoactividad" );
+    addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );   
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
+    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id Actividad" ) );
+
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
+    _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+}
+
+
+///
+/**
+\param idcontrato
+**/
+void ListAlumnosActividadView::cargar ( QString idactividad )
+{
+    _depura ( "ListAlumnosActividadView::cargar", 0 );
+    BlSubForm::cargar ( "SELECT * FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno  WHERE alumnoactividad.idactividad=" + idactividad  );
+    _depura ( "END ListAlumnosActividadView::cargar", 0 );
+}
+
+
+
+
+
 

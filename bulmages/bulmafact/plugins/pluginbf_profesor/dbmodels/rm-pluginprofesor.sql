@@ -51,7 +51,10 @@ DECLARE
 	as RECORD;
 BEGIN
 
-
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnotutor'';
+        IF FOUND THEN
+       DROP TABLE alumnotutor;
+        END IF;
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
         IF FOUND THEN

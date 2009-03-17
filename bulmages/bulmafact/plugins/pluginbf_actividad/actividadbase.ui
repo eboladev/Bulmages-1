@@ -20,7 +20,7 @@
    <string>Nueva Actividad</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../pluginprofesor/gestionaula.qrc" >
+   <iconset>
     <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
@@ -50,7 +50,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../pluginprofesor/gestionaula.qrc" >:/ImgGestionAula/icons/actividad.svg</pixmap>
+        <pixmap>:/ImgGestionAula/icons/actividad.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -213,17 +213,9 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="Tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>264</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -396,14 +388,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>264</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -450,43 +434,16 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>264</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Alumnos</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3" >
        <item row="0" column="0" >
-        <widget class="QTableWidget" name="tableWidget" >
-         <column>
-          <property name="text" >
-           <string>Alumno</string>
-          </property>
-         </column>
-         <column>
-          <property name="text" >
-           <string>Fecha inscripcion</string>
-          </property>
-         </column>
-        </widget>
+        <widget class="ListAlumnosActividadView" name="mui_alumnosList" />
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_4" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>264</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Asistencias</string>
       </attribute>
@@ -497,14 +454,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>264</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Calendario</string>
       </attribute>
@@ -515,14 +464,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>719</width>
-        <height>264</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>BLMonthCalendar</string>
       </attribute>
@@ -589,6 +530,11 @@
    <extends>QWidget</extends>
    <header>busqueda.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ListAlumnosActividadView</class>
+   <extends>QTableWidget</extends>
+   <header>actividadview.h</header>
   </customwidget>
  </customwidgets>
  <resources>
