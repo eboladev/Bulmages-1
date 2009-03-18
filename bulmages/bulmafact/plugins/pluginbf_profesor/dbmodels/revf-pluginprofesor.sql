@@ -76,16 +76,24 @@ BEGIN
 
 
 
-        SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
-        IF NOT FOUND THEN
+  SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
+    IF NOT FOUND THEN
+    CREATE TABLE tutor (
+    idtutor SERIAL PRIMARY KEY,
+    nombretutor VARCHAR NOT NULL,
+    idprovincia INTEGER REFERENCES provincia(idprovincia)
+    );
+  END IF;
 
-        CREATE TABLE tutor (
-	    idtutor SERIAL PRIMARY KEY,
-	    nombretutor VARCHAR NOT NULL,
-	    idprovincia INTEGER REFERENCES provincia(idprovincia)
-        );
+  SELECT INTO as * FROM pg_tables  WHERE tablename=''recibo'';
+    IF NOT FOUND THEN
+    CREATE TABLE recibo (
+    idrecibo SERIAL PRIMARY KEY,
+    nombrerecibo VARCHAR NOT NULL,
+    idtutor INTEGER REFERENCES tutor(idtutor)
+    );
+  END IF;
 
-        END IF;
 
 	SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
 	IF NOT FOUND THEN

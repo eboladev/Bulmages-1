@@ -1,13 +1,13 @@
 <ui version="4.0" >
  <author>Alvaro de Miguel</author>
- <class>AlumnoBase</class>
- <widget class="QWidget" name="AlumnoBase" >
+ <class>ReciboBase</class>
+ <widget class="QWidget" name="ReciboBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>754</width>
-    <height>384</height>
+    <width>741</width>
+    <height>406</height>
    </rect>
   </property>
   <property name="minimumSize" >
@@ -17,11 +17,11 @@
    </size>
   </property>
   <property name="windowTitle" >
-   <string>Nuevo Alumno</string>
+   <string>Nueva Actividad</string>
   </property>
   <property name="windowIcon" >
    <iconset>
-    <normaloff>:/ImgGestionAula/icons/alumno.svg</normaloff>:/ImgGestionAula/icons/alumno.svg</iconset>
+    <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
@@ -50,7 +50,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap>:/ImgGestionAula/icons/alumno.svg</pixmap>
+        <pixmap>:/ImgGestionAula/icons/actividad.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -219,105 +219,45 @@
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2" >
+      <layout class="QGridLayout" name="_2" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
        <item row="0" column="0" >
         <widget class="QLabel" name="textLabel2_5" >
          <property name="text" >
-          <string>C.I.F./N.I.F./N.I.E.:</string>
+          <string>Codigo Actividad</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>mui_cifcliente</cstring>
+          <cstring>mui_codigoactividad</cstring>
          </property>
         </widget>
        </item>
        <item row="0" column="1" >
-        <widget class="QLineEdit" name="mui_cifcliente" >
+        <widget class="QLineEdit" name="mui_codigoactividad" >
          <property name="maxLength" >
           <number>200</number>
          </property>
         </widget>
        </item>
-       <item rowspan="5" row="0" column="2" colspan="2" >
-        <widget class="QGroupBox" name="groupBox_5" >
-         <property name="title" >
-          <string>Fotografia</string>
+       <item row="0" column="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
          </property>
-         <layout class="QGridLayout" name="_4" >
-          <property name="margin" >
-           <number>5</number>
-          </property>
-          <property name="spacing" >
-           <number>5</number>
-          </property>
-          <item row="0" column="0" colspan="2" >
-           <widget class="QLabel" name="mui_imagen_2" >
-            <property name="sizePolicy" >
-             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>150</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="frameShape" >
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow" >
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="scaledContents" >
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QPushButton" name="mui_cambiarimagen_2" >
-            <property name="text" >
-             <string>Cam&amp;biar imagen</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QPushButton" name="mui_borrarimagen_2" >
-            <property name="minimumSize" >
-             <size>
-              <width>22</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>22</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Borrar imagen</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-            <property name="icon" >
-             <iconset resource="../../../bulmages.qrc" >
-              <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
-            </property>
-            <property name="iconSize" >
-             <size>
-              <width>16</width>
-              <height>16</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item row="1" column="0" >
         <widget class="QLabel" name="textLabel2_2" >
@@ -328,21 +268,58 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>mui_nombrealumno</cstring>
+          <cstring>mui_nombreactividad</cstring>
          </property>
         </widget>
        </item>
-       <item row="1" column="1" >
-        <widget class="QLineEdit" name="mui_nombrealumno" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="1" column="1" colspan="5" >
+        <widget class="QLineEdit" name="mui_nombreactividad" >
+         <property name="maxLength" >
+          <number>100</number>
          </property>
         </widget>
        </item>
        <item row="2" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2" >
+         <property name="text" >
+          <string>Lugar</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_corpcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="5" >
+        <widget class="QLineEdit" name="mui_corpcliente" >
+         <property name="maxLength" >
+          <number>200</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="textLabel2_4" >
+         <property name="text" >
+          <string>Profesor Encargado</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_nomaltcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="5" >
+        <widget class="QLineEdit" name="mui_nomaltcliente" >
+         <property name="maxLength" >
+          <number>300</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
         <widget class="QLabel" name="textLabel2_6" >
          <property name="text" >
           <string>Direccion:</string>
@@ -355,140 +332,58 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1" >
+       <item row="4" column="1" colspan="3" >
         <widget class="QLineEdit" name="mui_dircliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel2_9" >
-         <property name="text" >
-          <string>Poblacion:</string>
+       <item row="8" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-         <property name="buddy" >
-          <cstring>mui_poblcliente</cstring>
-         </property>
-        </widget>
+        </spacer>
        </item>
-       <item row="3" column="1" >
-        <widget class="QLineEdit" name="mui_poblcliente" >
-         <property name="maxLength" >
-          <number>40</number>
+       <item row="7" column="1" colspan="2" >
+        <widget class="Busqueda" native="1" name="mui_idprofesor" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-        </widget>
-       </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="textLabel2_8" >
-         <property name="text" >
-          <string>Telefono fijo:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_telcliente</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1" >
-        <widget class="QLineEdit" name="mui_telcliente" >
-         <property name="maxLength" >
-          <number>20</number>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" >
-        <widget class="QLabel" name="textLabel2_8_5" >
-         <property name="text" >
-          <string>Telefono movil:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_movilcliente</cstring>
+         <property name="minimumSize" >
+          <size>
+           <width>150</width>
+           <height>100</height>
+          </size>
          </property>
         </widget>
        </item>
        <item row="5" column="1" >
-        <widget class="QLineEdit" name="mui_movilcliente" >
-         <property name="maxLength" >
-          <number>20</number>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" >
-        <widget class="QLabel" name="textLabel2_7" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QCheckBox" name="mui_recargoeqcliente" >
          <property name="text" >
-          <string>Codigo postal:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_cpcliente</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="3" >
-        <widget class="QLineEdit" name="mui_cpcliente" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maxLength" >
-          <number>10</number>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" >
-        <widget class="QLabel" name="textLabel2_8_3" >
-         <property name="text" >
-          <string>Correo electronico:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_mailcliente</cstring>
+          <string>Vigente</string>
          </property>
         </widget>
        </item>
        <item row="6" column="1" >
-        <widget class="QLineEdit" name="mui_mailcliente" >
-         <property name="maxLength" >
-          <number>100</number>
-         </property>
-        </widget>
+        <widget class="QComboBox" name="mui_idtipo_actividad" />
        </item>
-       <item row="6" column="2" >
-        <widget class="QLabel" name="textLabel2_9_2" >
+       <item row="6" column="0" >
+        <widget class="QLabel" name="label_2" >
          <property name="text" >
-          <string>Provincia:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_idprovincia</cstring>
+          <string>Tipo de Actividad</string>
          </property>
         </widget>
-       </item>
-       <item row="6" column="3" >
-        <widget class="BlComboBox" name="mui_idprovincia" />
        </item>
       </layout>
      </widget>
@@ -496,7 +391,13 @@
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout" >
+      <layout class="QGridLayout" name="_3" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
        <item row="0" column="0" colspan="3" >
         <widget class="QFrame" name="m_frameplugin" >
          <property name="frameShape" >
@@ -530,45 +431,45 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel2_4_3" >
-         <property name="text" >
-          <string>Datos bancarios:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_bancocliente</cstring>
-         </property>
-        </widget>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3" >
+      <attribute name="title" >
+       <string>Alumnos</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3" >
+       <item row="0" column="0" >
+        <widget class="QTableWidget" name="mui_alumnosList" />
        </item>
-       <item row="3" column="1" colspan="2" >
-        <widget class="BLBancoEdit" name="mui_bancocliente" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4" >
+      <attribute name="title" >
+       <string>Asistencias</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4" >
+       <item row="0" column="0" >
+        <widget class="QTableWidget" name="tableWidget_2" />
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
-       <string>Padres/Tutores</string>
+       <string>Calendario</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_3" >
+      <layout class="QGridLayout" name="gridLayout" >
        <item row="0" column="0" >
-        <widget class="ListAlumnosTutorView" name="mui_tutoresList" />
+        <widget class="QCalendarWidget" name="calendarWidget" />
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
       <attribute name="title" >
-       <string>Hermanos</string>
+       <string>BLMonthCalendar</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4" >
+      <layout class="QGridLayout" name="gridLayout_2" >
        <item row="0" column="0" >
-        <widget class="QTableWidget" name="tableWidget_2" />
+        <widget class="BLMonthCalendar" native="1" name="widget" />
        </item>
       </layout>
      </widget>
@@ -619,19 +520,16 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BLBancoEdit</class>
-   <extends>QLineEdit</extends>
-   <header>blbancoedit.h</header>
+   <class>BLMonthCalendar</class>
+   <extends>QWidget</extends>
+   <header>blmonthcalendar.h</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
-   <class>BlComboBox</class>
-   <extends>QComboBox</extends>
-   <header>blcombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListAlumnosTutorView</class>
-   <extends>QTableWidget</extends>
-   <header>alumnoview.h</header>
+   <class>Busqueda</class>
+   <extends>QWidget</extends>
+   <header>busqueda.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

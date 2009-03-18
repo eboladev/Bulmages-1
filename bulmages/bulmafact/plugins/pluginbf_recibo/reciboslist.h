@@ -19,56 +19,61 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROVIEW_H
-#define COBROVIEW_H
+#ifndef COBROSLIST_H
+#define COBROSLIST_H
 
 #include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
 
+#include "bfcompany.h"
 #include "blfunctions.h"
-
-#include "blpostgresqlclient.h"
-#include "busquedafecha.h"
-#include "dialogchanges.h"
-#include "bfform.h"
+#include "bfsubform.h"
+#include "blformlist.h"
 
 
-class BfCompany;
-
-
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
-/** */
-class ListAlumnosTutorView : public BfSubForm
+/** Subformulario especializado en el trabajo con Cobros.
+*/
+class RecibosListSubForm : public BfSubForm
 {
     Q_OBJECT
 
 public:
-    ListAlumnosTutorView ( QWidget *parent = 0 );
-    ~ListAlumnosTutorView() {};
-public slots:
-    virtual void cargar ( QString idcontrato );
+    RecibosListSubForm ( QWidget *parent = 0 );
+    ~RecibosListSubForm();
 };
 
-#include "ui_alumnobase.h"
 
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
-class AlumnoView : public BfForm, public Ui_AlumnoBase
+#include "ui_reciboslistbase.h"
+
+
+/** Clase que presenta el listado de Cobros.
+    Deriva de la clase BlFormList para estandarizacion de Formularios.
+    Controla los eventos y la sincronizacion del listado con el filtrado. */
+class RecibosList : public BlFormList, public Ui_RecibosListBase
 {
     Q_OBJECT
 
+private:
+    /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
+    QString mdb_idactividad;
+
 public:
-    AlumnoView ( BfCompany *, QWidget * );
-    ~AlumnoView();
-    virtual void imprimir();
-    virtual QString nombrePlantilla(void) ;
-    virtual int guardarPost();
-    virtual int borrarPre();
-    virtual int cargarPost(QString id);
+    RecibosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    RecibosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    ~RecibosList();
+    void presentar();
+    void setMainCompany ( BfCompany *comp );
+    QString idactividad();
+    void imprimir();
+    QString generaFiltro();
+    void borrar();
+    void crear();
+    void editar ( int );
+    void submenu ( const QPoint & );
+
+signals:
+    /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
+    void selected ( QString );
 };
 
 #endif
+

@@ -155,6 +155,15 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
         g_plugParams =  editor;
         ret = -1;
   } // end if
+  
+    if (g_nomcampo == "nombretutor") {
+        BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+        editor->m_valores["nombretutor"] = "";
+        editor->m_tabla = "tutor";
+        g_plugParams =  editor;
+        ret = -1;
+  } // end if  
   _depura("END pluginbf_tutor::BlSubFormDelegate_createEditor", 0);
 
   return ret;
@@ -163,7 +172,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
 int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setModelData", 0);
   int ret = 0;
-    if (g_nomcampo == "nombrealumno") {
+    if (g_nomcampo == "nombrealumno" || g_nomcampo== "nombretutor") {
         BusquedaDelegate * comboBox = static_cast<BusquedaDelegate*> ( g_editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
@@ -178,11 +187,10 @@ int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
 int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setEditorData", 0);
   int ret = 0;
-  if (g_nomcampo == "nombrealumno") {
+  if (g_nomcampo == "nombrealumno" || g_nomcampo == "nombretutor" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
         BusquedaDelegate *comboBox = static_cast<BusquedaDelegate*> ( g_editor );
         comboBox->addItem ( value );
-//        comboBox->set ( value );
         ret = -1;
       } // end if
   _depura("END pluginbf_tutor::BlSubFormDelegate_setEditorData", 0);
@@ -195,6 +203,13 @@ int BlSubForm_editFinished(BlSubForm *sub) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idalumno FROM alumno WHERE nombrealumno = '" + sub->m_campoactual->text() + "'" );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idalumno", cur->valor ( "idalumno" ) );
+        } // end if
+        delete cur;
+    } // end if
+    if ( sub->m_campoactual->nomcampo() == "nombretutor" ) {
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idtutor FROM tutor WHERE nombretutor = '" + sub->m_campoactual->text() + "'" );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idtutor", cur->valor ( "idtutor" ) );
         } // end if
         delete cur;
     } // end if

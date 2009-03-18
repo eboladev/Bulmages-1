@@ -19,14 +19,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROVIEW_H
-#define COBROVIEW_H
+#ifndef RECIBOVIEW_H
+#define RECIBOVIEW_H
 
 #include <QLineEdit>
 #include <QLabel>
 #include <QCheckBox>
 
-#include "blfunctions.h"
 
 #include "blpostgresqlclient.h"
 #include "busquedafecha.h"
@@ -37,38 +36,42 @@
 class BfCompany;
 
 
+extern "C++" class BusquedaProfesor;
+
+
 /// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
 /** */
-class ListAlumnosTutorView : public BfSubForm
+class ListAlumnosReciboView : public BfSubForm
 {
     Q_OBJECT
 
 public:
-    ListAlumnosTutorView ( QWidget *parent = 0 );
-    ~ListAlumnosTutorView() {};
+    ListAlumnosReciboView ( QWidget *parent = 0 );
+    ~ListAlumnosReciboView() {};
 public slots:
-    virtual void cargar ( QString idcontrato );
+    virtual void cargar ( QString );
 };
 
-#include "ui_alumnobase.h"
+
+#include "ui_recibobase.h"
 
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class AlumnoView : public BfForm, public Ui_AlumnoBase
+class ReciboView : public BfForm, public Ui_ReciboBase
 {
     Q_OBJECT
 
 public:
-    AlumnoView ( BfCompany *, QWidget * );
-    ~AlumnoView();
+    ReciboView ( BfCompany *, QWidget * );
+    ~ReciboView();
     virtual void imprimir();
     virtual QString nombrePlantilla(void) ;
     virtual int guardarPost();
     virtual int borrarPre();
-    virtual int cargarPost(QString id);
+    virtual int cargarPost(QString );
 };
 
 #endif

@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,56 +18,37 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROVIEW_H
-#define COBROVIEW_H
-
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-
-#include "blfunctions.h"
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
 #include "blpostgresqlclient.h"
-#include "busquedafecha.h"
-#include "dialogchanges.h"
-#include "bfform.h"
+#include "bulmafact.h"
+#include "blwidget.h"
+#include "busquedareferencia.h"
 
 
-class BfCompany;
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+//extern "C" BusquedaProfesor *bp;
 
 
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
-/** */
-class ListAlumnosTutorView : public BfSubForm
+class MyPlugProf : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
-    ListAlumnosTutorView ( QWidget *parent = 0 );
-    ~ListAlumnosTutorView() {};
+    Bulmafact *m_bges;
+
+public:
+    MyPlugProf();
+    ~MyPlugProf();
+    void inicializa ( Bulmafact * );
+
 public slots:
-    virtual void cargar ( QString idcontrato );
+    void elslot();
+    void elslot1();
+    void elslot2();
 };
-
-#include "ui_alumnobase.h"
-
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
-class AlumnoView : public BfForm, public Ui_AlumnoBase
-{
-    Q_OBJECT
-
-public:
-    AlumnoView ( BfCompany *, QWidget * );
-    ~AlumnoView();
-    virtual void imprimir();
-    virtual QString nombrePlantilla(void) ;
-    virtual int guardarPost();
-    virtual int borrarPre();
-    virtual int cargarPost(QString id);
-};
-
-#endif
