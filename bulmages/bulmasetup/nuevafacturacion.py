@@ -19,6 +19,7 @@ class NuevaFacturacion(Facturacion):
     self.label_3.hide()
     self.mui_actualizarDB.hide()
     self.mui_hacerbackup.hide()
+    self.mui_nomdb.setReadOnly(False)
 
   def on_mui_aceptar_released(self):
     self.mui_textBrowser.clear()

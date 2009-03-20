@@ -301,7 +301,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
               self.writecommand(self.process.readAllStandardOutput())
           self.i = self.i +1
           self.progress.setValue(self.progress.value() + 1)
-        self.progress.hide()
+      self.progress.hide()
 
    def buscaPlugins(self):
       self.writecommand("Buscando Pluggins")
