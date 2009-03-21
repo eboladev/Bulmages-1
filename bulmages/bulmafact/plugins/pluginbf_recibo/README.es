@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Actividades
+Nombre: Recibos
 
 Biblioteca: libpluginbf_recibo.so
 
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+Categorias: Asociaciones de Padres de Alumnos; Experimentales; ONG;
 
 Orden: 200
 

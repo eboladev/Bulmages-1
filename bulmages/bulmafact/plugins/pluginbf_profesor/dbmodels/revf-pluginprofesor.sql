@@ -75,24 +75,20 @@ BEGIN
         END IF;
 
 
-
-  SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
-    IF NOT FOUND THEN
-    CREATE TABLE tutor (
-    idtutor SERIAL PRIMARY KEY,
-    nombretutor VARCHAR NOT NULL,
-    idprovincia INTEGER REFERENCES provincia(idprovincia)
-    );
-  END IF;
-
   SELECT INTO as * FROM pg_tables  WHERE tablename=''recibo'';
     IF NOT FOUND THEN
     CREATE TABLE recibo (
     idrecibo SERIAL PRIMARY KEY,
     nombrerecibo VARCHAR NOT NULL,
-    idtutor INTEGER REFERENCES tutor(idtutor)
+    idcliente INTEGER REFERENCES cliente(idcliente)
     );
   END IF;
+
+
+   SELECT INTO as * FROM pg_attribute WHERe attname = ''numsociocliente'';
+   IF NOT FOUND THEN
+      ALTER TABLE cliente ADD COLUMN numsociocliente int;
+   END IF;
 
 
 	SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
@@ -101,17 +97,17 @@ BEGIN
 		idsocio SERIAL PRIMARY KEY,
 		nomsocio VARCHAR NOT NULL,
 		numsocio VARCHAR NOT NULL,
-		idtutor INTEGER REFERENCES tutor (idtutor)
+		idcliente INTEGER REFERENCES cliente (idcliente)
 	    );
 	END IF;
 	
-           SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnotutor'';
+           SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnocliente'';
         IF NOT FOUND THEN
 
-        CREATE TABLE alumnotutor (
-       idalumnotutor SERIAL PRIMARY KEY,
+        CREATE TABLE alumnocliente (
+       idalumnocliente SERIAL PRIMARY KEY,
        idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
-       idtutor INTEGER NOT NULL REFERENCES tutor(idtutor)
+       idcliente INTEGER NOT NULL REFERENCES cliente(idcliente)
         );
 
         END IF;

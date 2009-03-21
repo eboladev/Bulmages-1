@@ -21,6 +21,26 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       # Ajustamos la presentacion
       self.mui_plugins.resizeColumnsToContents()
 
+
+      # Inicializamos el combo de categoria.
+      self.mui_categoria.clear()
+      self.i =0 ;
+      self.cadcategorias = '';
+      while (self.i < len(self.pluginsbulmacont)):
+         self.cadcategorias = self.cadcategorias + self.pluginsbulmacont[self.i][8]
+         self.i = self.i + 1
+      # Tratamos toda la cadena de categorias.
+      self.cadcategorias = self.cadcategorias.replace('; ',';')
+      self.cadcategorias = self.cadcategorias.replace(' ;',';')
+      self.arra = self.cadcategorias.split(';')
+      self.arra.sort()
+      self.j = 0
+      self.mui_categoria.addItem('--Todas las Categorias--')
+      while (self.j < len ( self.arra)):
+         if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
+            self.mui_categoria.addItem( self.arra[self.j])
+         self.j = self.j + 1
+
    def actualizarDatabase(self):
       self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]
       #Parcheamos todo lo que hay que parchear

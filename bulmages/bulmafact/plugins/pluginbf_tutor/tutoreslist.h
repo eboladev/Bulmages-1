@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROSLIST_H
-#define COBROSLIST_H
+#ifndef TUTORESLIST_H
+#define TUTORESLIST_H
 
 #include <QLineEdit>
 
@@ -54,7 +54,7 @@ class TutoresList : public BlFormList, public Ui_TutoresListBase
 
 private:
     /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
-    QString mdb_idtutor;
+    QString mdb_idcliente;
 
 public:
     TutoresList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
@@ -62,7 +62,7 @@ public:
     ~TutoresList();
     void presentar();
     void setMainCompany ( BfCompany *comp );
-    QString idtutor();
+    QString idcliente();
     void imprimir();
     QString generaFiltro();
     void borrar();

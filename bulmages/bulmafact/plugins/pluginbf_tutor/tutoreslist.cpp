@@ -45,7 +45,7 @@ TutoresList::TutoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     int res = g_plugins->lanza ( "TutoresList_TutoresList", this );
     if ( res != 0 )
         return;
-    mdb_idtutor = "";
+    mdb_idcliente = "";
     setSubForm ( mui_list );
     hideBusqueda();
 
@@ -72,7 +72,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 
     setSubForm ( mui_list );
     presentar();
-    mdb_idtutor = "";
+    mdb_idcliente = "";
     if ( modoEdicion() )
         mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
@@ -99,7 +99,7 @@ void TutoresList::presentar()
 {
     _depura ( "TutoresList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM tutor WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM cliente WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END TutoresList::presentar", 0 );
 }
@@ -161,10 +161,10 @@ void TutoresList::borrar()
         return;
     } // end if
     try {
-        mdb_idtutor = mui_list->dbValue ( "idtutor" );
+        mdb_idcliente = mui_list->dbValue ( "idcliente" );
         if ( modoEdicion() ) {
             TutorView * cv = new TutorView( (BfCompany *) mainCompany(), 0);
-            if ( cv->cargar ( mdb_idtutor ) )
+            if ( cv->cargar ( mdb_idcliente ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -185,17 +185,17 @@ void TutoresList::editar ( int )
 {
     _depura ( "TutoresList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idtutor = mui_list->dbValue ( "idtutor" );
+        mdb_idcliente = mui_list->dbValue ( "idcliente" );
         if ( modoEdicion() ) {
             TutorView * bud = new TutorView( (BfCompany *) mainCompany(), 0);
-            if ( bud->cargar ( mdb_idtutor ) ) {
+            if ( bud->cargar ( mdb_idcliente ) ) {
                 delete bud;
                 return;
             } // end if
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
-            emit ( selected ( mdb_idtutor ) );
+            emit ( selected ( mdb_idcliente ) );
         } // end if
     } catch ( ... ) {
         mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
@@ -235,11 +235,11 @@ void TutoresList::setMainCompany ( BfCompany *comp )
 
 /** Devuelve el identificador del cobro seleccionado
 **/
-QString TutoresList::idtutor()
+QString TutoresList::idcliente()
 {
-    _depura ( "TutoresList::idtutor", 0 );
-    _depura ( "END TutoresList::idtutor", 0 );
-    return mdb_idtutor;
+    _depura ( "TutoresList::idcliente", 0 );
+    _depura ( "END TutoresList::idcliente", 0 );
+    return mdb_idcliente;
 }
 
 
@@ -257,10 +257,26 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     int res = g_plugins->lanza ( "TutoresListSubForm_TutoresListSubForm", this );
     if ( res != 0 )
         return;
-    setDbTableName ( "tutor" );
-    setDbFieldId ( "idtutor" );
-    addSubFormHeader ( "idtutor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID tutor" ) );
-    addSubFormHeader ( "nombretutor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    setDbTableName ( "cliente" );
+    setDbFieldId ( "idcliente" );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID tutor" ) );
+    addSubFormHeader ( "numsociocliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero Socio" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
+    addSubFormHeader ( "nomaltcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre alternativo del cliente" ) );
+    addSubFormHeader ( "bancocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero cuenta corriente" ) );
+    addSubFormHeader ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion" ) );
+    addSubFormHeader ( "poblcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Poblacion" ) );
+    addSubFormHeader ( "cpcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo postal" ) );
+    addSubFormHeader ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de telefono" ) );
+    addSubFormHeader ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de fax" ) );
+    addSubFormHeader ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion de correo electronica" ) );
+    addSubFormHeader ( "urlcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion URL" ) );
+    addSubFormHeader ( "corpcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Empresa" ) );
+    addSubFormHeader ( "faltacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de alta del cliente" ) );
+    addSubFormHeader ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de baja del cliente" ) );
+    addSubFormHeader ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

@@ -28,7 +28,31 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.mui_plugins.resizeRowsToContents()
       self.mui_plugins1.resizeRowsToContents()
 
-    
+
+      # Inicializamos el combo de categoria.
+      self.mui_categoria.clear()
+      self.i =0 ;
+      self.cadcategorias = '';
+      while (self.i < len(self.pluginsbulmafact)):
+         self.cadcategorias = self.cadcategorias + self.pluginsbulmafact[self.i][8]
+         self.i = self.i + 1
+      self.i = 0
+      while (self.i < len(self.pluginsbulmatpv)):
+         self.cadcategorias = self.cadcategorias + self.pluginsbulmatpv[self.i][8]
+         self.i = self.i + 1
+      # Tratamos toda la cadena de categorias.
+      self.cadcategorias = self.cadcategorias.replace('; ',';')
+      self.cadcategorias = self.cadcategorias.replace(' ;',';')
+      self.arra = self.cadcategorias.split(';')
+      self.arra.sort()
+      self.j = 0
+      self.mui_categoria.addItem('--Todas las Categorias--')
+      while (self.j < len ( self.arra)):
+         if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
+            self.mui_categoria.addItem( self.arra[self.j])
+         self.j = self.j + 1
+ 
+      
    def writeConfig(self):
       self.writecommand('ESCRIBIENDO CONFIGURACION')
       self.writecommand("Escribiendo configuracion en "+ plugins.configfiles)

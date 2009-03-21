@@ -157,7 +157,7 @@
         <item>
          <widget class="QLabel" name="label_5" >
           <property name="text" >
-           <string>Categoria</string>
+           <string>Categoria </string>
           </property>
           <property name="buddy" >
            <cstring>mui_categoria</cstring>
@@ -165,53 +165,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="mui_categoria" >
-          <item>
-           <property name="text" >
-            <string>-- Todas --</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Facturacion Generica</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Facturacion Avanzada</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Asociaciones de Padres de Alumnos</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Fabricacion y Trazabilidad</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>IVA. Incluido</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Utilidades Genericas</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Utilidades Avanzadas</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Experimentales</string>
-           </property>
-          </item>
-         </widget>
+         <widget class="QComboBox" name="mui_categoria" />
         </item>
        </layout>
       </item>
@@ -224,6 +178,14 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>664</width>
+        <height>405</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Plugins BulmaCont</string>
       </attribute>
@@ -265,6 +227,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>512</width>
+        <height>240</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Consola</string>
       </attribute>

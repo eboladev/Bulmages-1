@@ -17,8 +17,8 @@
    <string>Actividades</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="gestionaula.qrc" >
-    <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
+   <iconset resource="../../../bulmages.qrc" >
+    <normaloff>:/Images/receive.svg</normaloff>:/Images/receive.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -183,7 +183,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="gestionaula.qrc" >:/ImgGestionAula/icons/actividad.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/receive.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -553,7 +553,7 @@
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
-  <include location="gestionaula.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Generales;
+Categorias: Utilidades Genericas;
 
 Orden: 900
 

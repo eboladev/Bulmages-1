@@ -46,10 +46,22 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         centrarEnPantalla ( this );
 
         setTitleName ( _( "Tutor" ) );
-        setDbTableName ( "tutor" );
-        setDbFieldId ( "idtutor" );
-        addDbField ( "idtutor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tutor" ) );
-        addDbField ( "nombretutor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
+        setDbTableName ( "cliente" );
+        setDbFieldId ( "idcliente" );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tutor" ) );
+        addDbField ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
+        addDbField ( "numsociocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
+        addDbField ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "poblcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "cpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "teltrabcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "movilcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+        addDbField ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
+
 
         mui_alumnosList->setMainCompany(mainCompany());
         mui_idprovincia->setMainCompany ( mainCompany() );
@@ -91,7 +103,7 @@ void TutorView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( dbValue ( "idtutor" ).isEmpty() ) {
+    if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
@@ -110,33 +122,38 @@ void TutorView::imprimir()
 int TutorView::guardarPost() {
 	_depura(" TutorView::guardarPost", 0);
    
-  mui_alumnosList->setColumnValue("idtutor", dbValue("idtutor"));
+  mui_alumnosList->setColumnValue("idcliente", dbValue("idcliente"));
   mui_alumnosList->guardar();
-   
+
+/*
+
   if (mui_numsocio->text() != "") {
-    QString query1 = "SELECT * FROM socio WHERE idtutor = " + dbValue("idtutor");
+    QString query1 = "SELECT * FROM socio WHERE idcliente = " + dbValue("idcliente");
     BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
     if (!cur->eof()) {
-      QString query = "UPDATE socio SET numsocio = '"+mui_numsocio->text()+"', nomsocio='"+dbValue("nombretutor")+"' WHERE idtutor= "+dbValue("idtutor");
+      QString query = "UPDATE socio SET numsocio = '"+mui_numsocio->text()+"', nomsocio='"+dbValue("nombretutor")+"' WHERE idcliente= "+dbValue("idcliente");
       mainCompany()->runQuery(query);
       mainCompany()->runQuery(query);
     } else {
-      QString query = "INSERT INTO socio (numsocio, idtutor, nomsocio) VALUES ('"+mui_numsocio->text()+"', "+dbValue("idtutor")+", '"+dbValue("nombretutor")+"')";
+      QString query = "INSERT INTO socio (numsocio, idcliente, nomsocio) VALUES ('"+mui_numsocio->text()+"', "+dbValue("idcliente")+", '"+dbValue("nombretutor")+"')";
       mainCompany()->runQuery(query);
     } // end if
     delete cur;
   } else {
-    QString query = "DELETE FROM socio WHERE idtutor=" + dbValue("idtutor");
+    QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
     mainCompany()->runQuery(query);
   } // end if
+*/
 	_depura("END TutorView::guardarPost", 0);
   return 0;
 }
 
 int TutorView::borrarPre() {
-    QString query = "DELETE FROM socio WHERE idtutor=" + dbValue("idtutor");
+/*
+    QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
     mainCompany()->runQuery(query);
-    query = "DELETE FROM alumnotutor WHERE idtutor=" + dbValue("idtutor");
+*/
+    QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue("idcliente");
     mainCompany()->runQuery(query);
     return 0;
 }
@@ -146,13 +163,14 @@ int TutorView::borrarPre() {
 int TutorView::cargarPost(QString id) {
    _depura(" TutorView::cargarPost", 0);
 
-    QString query1 = "SELECT * FROM socio WHERE idtutor = " + id;
+/*
+    QString query1 = "SELECT * FROM socio WHERE idcliente = " + id;
     BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
     if (!cur->eof()) {
       mui_numsocio->setText(cur->valor("numsocio"));
     } // end if
     delete cur;
-
+*/
     mui_alumnosList->cargar(id);
 
    _depura("END TutorView::cargarPost", 0);
@@ -178,12 +196,12 @@ int TutorView::cargarPost(QString id) {
 ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListAlumnosTutorView::ListAlumnosTutorView", 0 );
-    setDbTableName ( "alumnotutor" );
-    setDbFieldId ( "idalumnotutor" );
-    addSubFormHeader ( "idalumnotutor", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );   
+    setDbTableName ( "alumnocliente" );
+    setDbFieldId ( "idalumnocliente" );
+    addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
-    addSubFormHeader ( "idtutor", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id tutor" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id tutor" ) );
 
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
@@ -195,10 +213,10 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 /**
 \param idcontrato
 **/
-void ListAlumnosTutorView::cargar ( QString idtutor )
+void ListAlumnosTutorView::cargar ( QString idcliente )
 {
     _depura ( "ListAlumnosTutorView::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM alumnotutor LEFT JOIN alumno ON alumnotutor.idalumno = alumno.idalumno  WHERE alumnotutor.idtutor=" + idtutor  );
+    BlSubForm::cargar ( "SELECT * FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     _depura ( "END ListAlumnosTutorView::cargar", 0 );
 }
 

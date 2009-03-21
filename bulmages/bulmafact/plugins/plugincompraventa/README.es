@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Avanazada; Experimentales;
+Categorias: Facturacion Avanzada; Experimentales;
 
 Orden: 600
 

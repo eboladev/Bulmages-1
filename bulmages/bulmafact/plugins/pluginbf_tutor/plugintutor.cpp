@@ -124,7 +124,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("plugintutor", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_tutor", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
@@ -134,7 +134,7 @@ int entryPoint ( Bulmafact *bges )
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
   _depura("pluginbf_tutor::BfCompany_createMainWindows_Post", 0);
-    if ( comp->hasTablePrivilege ( "tutor", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
       g_tutoresList = new TutoresList( comp, NULL );	
       comp->m_pWorkspace->addWindow ( g_tutoresList );
       g_tutoresList->hide();
@@ -156,11 +156,11 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
         ret = -1;
   } // end if
   
-    if (g_nomcampo == "nombretutor") {
+    if (g_nomcampo == "nomcliente") {
         BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
-        editor->m_valores["nombretutor"] = "";
-        editor->m_tabla = "tutor";
+        editor->m_valores["nomcliente"] = "";
+        editor->m_tabla = "cliente";
         g_plugParams =  editor;
         ret = -1;
   } // end if  
@@ -172,7 +172,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
 int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setModelData", 0);
   int ret = 0;
-    if (g_nomcampo == "nombrealumno" || g_nomcampo== "nombretutor") {
+    if (g_nomcampo == "nombrealumno" || g_nomcampo== "nomcliente") {
         BusquedaDelegate * comboBox = static_cast<BusquedaDelegate*> ( g_editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
@@ -187,7 +187,7 @@ int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
 int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setEditorData", 0);
   int ret = 0;
-  if (g_nomcampo == "nombrealumno" || g_nomcampo == "nombretutor" ) {
+  if (g_nomcampo == "nombrealumno" || g_nomcampo == "nomcliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
         BusquedaDelegate *comboBox = static_cast<BusquedaDelegate*> ( g_editor );
         comboBox->addItem ( value );
@@ -206,10 +206,10 @@ int BlSubForm_editFinished(BlSubForm *sub) {
         } // end if
         delete cur;
     } // end if
-    if ( sub->m_campoactual->nomcampo() == "nombretutor" ) {
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idtutor FROM tutor WHERE nombretutor = '" + sub->m_campoactual->text() + "'" );
+    if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente FROM cliente WHERE nomcliente = '" + sub->m_campoactual->text() + "'" );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idtutor", cur->valor ( "idtutor" ) );
+            sub->m_registrolinea->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
         } // end if
         delete cur;
     } // end if

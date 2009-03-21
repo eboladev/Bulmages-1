@@ -17,13 +17,19 @@
    </size>
   </property>
   <property name="windowTitle" >
-   <string>Nueva Actividad</string>
+   <string>Nuevo Recibo</string>
   </property>
   <property name="windowIcon" >
-   <iconset>
-    <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
+   <iconset resource="../../../bulmages.qrc" >
+    <normaloff>:/Images/receive.svg</normaloff>:/Images/receive.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
+   <property name="spacing" >
+    <number>2</number>
+   </property>
+   <property name="margin" >
+    <number>5</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" >
      <property name="spacing" >
@@ -50,7 +56,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap>:/ImgGestionAula/icons/actividad.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/receive.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -213,9 +219,17 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex" >
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>276</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -388,6 +402,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>276</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -434,6 +456,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>276</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Alumnos</string>
       </attribute>
@@ -444,6 +474,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_4" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>276</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Asistencias</string>
       </attribute>
@@ -454,6 +492,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>276</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Calendario</string>
       </attribute>
@@ -464,6 +510,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>276</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>BLMonthCalendar</string>
       </attribute>
@@ -534,7 +588,7 @@
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
-  <include location="../pluginprofesor/gestionaula.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>
