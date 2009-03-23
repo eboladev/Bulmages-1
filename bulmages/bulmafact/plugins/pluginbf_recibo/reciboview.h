@@ -39,20 +39,6 @@ class BfCompany;
 extern "C++" class BusquedaProfesor;
 
 
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
-/** */
-class ListAlumnosReciboView : public BfSubForm
-{
-    Q_OBJECT
-
-public:
-    ListAlumnosReciboView ( QWidget *parent = 0 );
-    ~ListAlumnosReciboView() {};
-public slots:
-    virtual void cargar ( QString );
-};
-
-
 #include "ui_recibobase.h"
 
 /** Ventana de ficha de cobro.

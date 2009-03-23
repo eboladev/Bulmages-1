@@ -26,7 +26,7 @@
 #include "actividadview.h"
 #include "actividadeslist.h"
 #include "tipoactividadview.h"
-
+#include "busqueda.h"
 
 ActividadesList *g_actividadesList=NULL;
 
@@ -156,10 +156,72 @@ int entryPoint ( Bulmafact *bges )
 
 
 int BfCompany_createMainWindows_Post(BfCompany *comp) {
-    if ( comp->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( comp->hasTablePrivilege ( "actividad", "SELECT" ) ) {
 	g_actividadesList = new ActividadesList( comp, NULL );	
 	comp->m_pWorkspace->addWindow ( g_actividadesList );
 	g_actividadesList->hide();
     }// end if
     return 0;
 }
+
+
+
+
+int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
+  _depura("pluginbf_actividad::BlSubFormDelegate_createEditor", 0);
+  int ret = 0;
+  if (g_nomcampo == "nombreactividad") {
+        BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        editor->setObjectName("EditNombreActividad");
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+        editor->m_valores["nombreactividad"] = "";
+        editor->m_tabla = "actividad";
+        g_plugParams =  editor;
+        ret = -1;
+  } // end if
+  _depura("END pluginbf_actividad::BlSubFormDelegate_createEditor", 0);
+  return ret;
+}
+
+int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
+  _depura("pluginbf_actividad::BlSubFormDelegate_setModelData", 0);
+  int ret = 0;
+    if (g_editor->objectName() == "EditNombreActividad") {
+        BusquedaDelegate * comboBox = (BusquedaDelegate *) g_editor;
+        QString value = comboBox->currentText();
+        value = value.left ( value.indexOf ( ".-" ) );
+        g_model->setData ( g_index, value );
+        ret = -1;
+    } // end if
+  _depura("END pluginbf_actividad::BlSubFormDelegate_setModelData", 0);
+  return ret;
+}
+
+
+int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
+  _depura("pluginbf_actividad::BlSubFormDelegate_setEditorData", 0);
+  int ret = 0;
+        if (g_editor->objectName() == "EditNombreActividad") {
+        QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
+            BusquedaDelegate *comboBox = (BusquedaDelegate *) g_editor;
+            comboBox->addItem ( value );
+            ret = -1;
+      } // end if
+  _depura("END pluginbf_actividad::BlSubFormDelegate_setEditorData", 0);
+  return ret;
+}
+
+int BlSubForm_editFinished(BlSubForm *sub) {
+  _depura("pluginbf_actividad::BlSubForm_editFinished", 0);
+    if ( sub->m_campoactual->nomcampo() == "nombreactividad" ) {
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idactividad FROM actividad WHERE nombreactividad = '" + sub->m_campoactual->text() + "'" );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idactividad", cur->valor ( "idactividad" ) );
+        } // end if
+        delete cur;
+    } // end if
+
+    _depura("END pluginbf_actividad::BlSubForm_editFinished", 0);
+  return 0;
+}
+

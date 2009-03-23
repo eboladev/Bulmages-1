@@ -63,6 +63,8 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString id);
+public slots:
+   virtual void on_mui_sociocliente_toggled(bool);
 };
 
 #endif

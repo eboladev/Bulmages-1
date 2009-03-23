@@ -42,12 +42,24 @@ class BfCompany;
 class ListAlumnosTutorView : public BfSubForm
 {
     Q_OBJECT
-
 public:
     ListAlumnosTutorView ( QWidget *parent = 0 );
     ~ListAlumnosTutorView() {};
 public slots:
-    virtual void cargar ( QString idcontrato );
+    virtual void cargar ( QString  );
+};
+
+
+/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
+/** */
+class ListAlumnosActividadView : public BfSubForm
+{
+    Q_OBJECT
+public:
+    ListAlumnosActividadView ( QWidget *parent = 0 );
+    ~ListAlumnosActividadView() {};
+public slots:
+    virtual void cargar ( QString  );
 };
 
 #include "ui_alumnobase.h"

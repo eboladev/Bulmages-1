@@ -85,7 +85,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 {
     _depura ( "MyPlugProf::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Docencia", "menuDocencia", "menuMaestro");
@@ -149,6 +149,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
   int ret = 0;
     if (g_nomcampo == "nombrealumno") {
         BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        editor->setObjectName("EditNombreAlumno");
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nombrealumno"] = "";
         editor->m_tabla = "alumno";
@@ -158,6 +159,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
   
     if (g_nomcampo == "nomcliente") {
         BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        editor->setObjectName("EditNombreCliente");
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nomcliente"] = "";
         editor->m_tabla = "cliente";
@@ -172,8 +174,8 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
 int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setModelData", 0);
   int ret = 0;
-    if (g_nomcampo == "nombrealumno" || g_nomcampo== "nomcliente") {
-        BusquedaDelegate * comboBox = static_cast<BusquedaDelegate*> ( g_editor );
+    if (g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente") {
+        BusquedaDelegate * comboBox = (BusquedaDelegate *) g_editor;
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
         g_model->setData ( g_index, value );
@@ -187,9 +189,9 @@ int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
 int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setEditorData", 0);
   int ret = 0;
-  if (g_nomcampo == "nombrealumno" || g_nomcampo == "nomcliente" ) {
+    if (g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente") {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
-        BusquedaDelegate *comboBox = static_cast<BusquedaDelegate*> ( g_editor );
+        BusquedaDelegate *comboBox = (BusquedaDelegate *) g_editor ;
         comboBox->addItem ( value );
         ret = -1;
       } // end if

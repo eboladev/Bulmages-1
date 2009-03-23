@@ -106,11 +106,8 @@ int Plugins::lanza ( const char *func, void *clase )
     int a = 0;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         myFunction = ( MyPrototype ) m_lista.at ( i ) ->resolve ( func );
-        if ( myFunction ) {
-//            _depura ( "Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo" );
+        if ( myFunction && a == 0) {
             a = myFunction ( clase );
-        } else {
-//            _depura ( "Plugins_lanza", 0, "No ha entrado la libreria" );
         } // end if
     } // end for
     _depura ( "END Plugins::lanza", 0 );
@@ -128,7 +125,7 @@ int Plugins::lanza ( const char *func, void *clase, void **ret )
     int a = 0;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         myFunction1 = ( MyPrototype1 ) m_lista.at ( i ) ->resolve ( func );
-        if ( myFunction1 ) {
+        if ( myFunction1 && a == 0) {
             _depura ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
             a = myFunction1 ( clase, ret );
         } else {

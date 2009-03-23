@@ -145,7 +145,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de entrada del plugin de actividades\n", 0 );
+    _depura ( "Punto de entrada del plugin de recibos\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");

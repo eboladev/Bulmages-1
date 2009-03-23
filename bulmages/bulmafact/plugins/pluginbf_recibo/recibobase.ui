@@ -243,18 +243,18 @@
        <item row="0" column="0" >
         <widget class="QLabel" name="textLabel2_5" >
          <property name="text" >
-          <string>Codigo Actividad</string>
+          <string>Cantidad</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>mui_codigoactividad</cstring>
+          <cstring>mui_cantrecibo</cstring>
          </property>
         </widget>
        </item>
        <item row="0" column="1" >
-        <widget class="QLineEdit" name="mui_codigoactividad" >
+        <widget class="QLineEdit" name="mui_cantrecibo" >
          <property name="maxLength" >
           <number>200</number>
          </property>
@@ -367,7 +367,7 @@
         </spacer>
        </item>
        <item row="7" column="1" colspan="2" >
-        <widget class="Busqueda" native="1" name="mui_idprofesor" >
+        <widget class="Busqueda" native="1" name="mui_idcliente" >
          <property name="sizePolicy" >
           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
            <horstretch>0</horstretch>
@@ -455,24 +455,6 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>276</height>
-       </rect>
-      </property>
-      <attribute name="title" >
-       <string>Alumnos</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_3" >
-       <item row="0" column="0" >
-        <widget class="QTableWidget" name="mui_alumnosList" />
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="tab_4" >
       <property name="geometry" >
        <rect>
@@ -488,42 +470,6 @@
       <layout class="QGridLayout" name="gridLayout_4" >
        <item row="0" column="0" >
         <widget class="QTableWidget" name="tableWidget_2" />
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>276</height>
-       </rect>
-      </property>
-      <attribute name="title" >
-       <string>Calendario</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout" >
-       <item row="0" column="0" >
-        <widget class="QCalendarWidget" name="calendarWidget" />
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>276</height>
-       </rect>
-      </property>
-      <attribute name="title" >
-       <string>BLMonthCalendar</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_2" >
-       <item row="0" column="0" >
-        <widget class="BLMonthCalendar" native="1" name="widget" />
        </item>
       </layout>
      </widget>
@@ -573,12 +519,6 @@
  </widget>
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
-  <customwidget>
-   <class>BLMonthCalendar</class>
-   <extends>QWidget</extends>
-   <header>blmonthcalendar.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>Busqueda</class>
    <extends>QWidget</extends>

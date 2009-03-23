@@ -49,10 +49,9 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
         setDbTableName ( "recibo" );
         setDbFieldId ( "idrecibo" );
         addDbField ( "idrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID recibo" ) );
-        addDbField ( "nombrerecibo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del recibo" ) );
-        addDbField ( "codigorecibo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo" ) );
+        addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
         
-	addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
+	addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _("Id cliente"));
 
         meteWindow ( windowTitle(), this, FALSE );
 
@@ -60,10 +59,10 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
 //      mui_alumnosList->setMainCompany(comp);
       
 		/// Establecemos los parametros de busqueda de Profesor
-	mui_idprofesor->setMainCompany(comp);
-    mui_idprofesor->setLabel ( _( "Profesor:" ) );
-	mui_idprofesor->setTableName( "profesor" );
-	mui_idprofesor->m_valores["nombreprofesor"] = "";
+	mui_idcliente->setMainCompany(comp);
+    mui_idcliente->setLabel ( _( "Tutor/Socio:" ) );
+	mui_idcliente->setTableName( "cliente" );
+	mui_idcliente->m_valores["nomcliente"] = "";
 
 
         pintar();
@@ -121,8 +120,6 @@ int ReciboView::guardarPost() {
 
 int ReciboView::borrarPre() {
 
-  QString query = "DELETE FROM alumnorecibo WHERE idrecibo=" + dbValue("idrecibo");
-    mainCompany()->runQuery(query);
     return 0;
 }
 
@@ -131,50 +128,9 @@ int ReciboView::borrarPre() {
 int ReciboView::cargarPost(QString id) {
    _depura(" ReciboView::cargarPost", 0);
 
-//    mui_alumnosList->cargar(id);
-
    _depura("END ReciboView::cargarPost", 0);
   return 0;
 }
-
-
-/// =============================================================================
-///                    SUBFORMULARIO
-/// =============================================================================
-
-///
-/**
-\param parent
-**/
-ListAlumnosReciboView::ListAlumnosReciboView ( QWidget *parent ) : BfSubForm ( parent )
-{
-    _depura ( "ListAlumnosReciboView::ListAlumnosReciboView", 0 );
-    setDbTableName ( "alumnorecibo" );
-    setDbFieldId ( "idalumnorecibo" );
-    addSubFormHeader ( "idalumnorecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );   
-    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
-    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
-    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id Actividad" ) );
-
-    setinsercion ( TRUE );
-    setOrdenEnabled ( TRUE );
-    _depura ( "END ListAlumnosReciboView::ListAlumnosReciboView", 0 );
-}
-
-
-///
-/**
-\param idcontrato
-**/
-void ListAlumnosReciboView::cargar ( QString idrecibo )
-{
-    _depura ( "ListAlumnosReciboView::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM alumnorecibo LEFT JOIN alumno ON alumnorecibo.idalumno = alumno.idalumno  WHERE alumnorecibo.idrecibo=" + idrecibo  );
-    _depura ( "END ListAlumnosReciboView::cargar", 0 );
-}
-
-
-
 
 
 

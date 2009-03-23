@@ -51,6 +51,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tutor" ) );
         addDbField ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
         addDbField ( "numsociocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del tutor" ) );
+        addDbField ( "sociocliente", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Es Socio" ) );
         addDbField ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
         addDbField ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
         addDbField ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de Socio" ) );
@@ -90,6 +91,19 @@ TutorView::~TutorView()
     _depura ( "TutorView::~TutorView", 0 );
     _depura ( "END TutorView::~TutorView", 0 );
 }
+
+
+void TutorView::on_mui_sociocliente_toggled(bool state) {
+    _depura ( "TutorView::on_mui_sociocliente_toggled", 0 );
+    if (mui_numsociocliente->text() == "" && state) {
+//         mensajeInfo("Asociado");
+         QString query = "SELECT COALESCE(max(numsociocliente) + 1 , 0) AS numsoc FROM cliente";
+         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query);
+         mui_numsociocliente->setText(cur->valor("numsoc"));
+    } // end if
+    _depura ( "END TutorView::on_mui_sociocliente_toggled", 0 );
+}
+
 
 
 QString TutorView::nombrePlantilla(void) 

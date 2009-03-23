@@ -45,7 +45,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     int res = g_plugins->lanza ( "RecibosList_RecibosList", this );
     if ( res != 0 )
         return;
-    mdb_idactividad = "";
+    mdb_idrecibo = "";
     setSubForm ( mui_list );
     hideBusqueda();
 
@@ -72,7 +72,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 
     setSubForm ( mui_list );
     presentar();
-    mdb_idactividad = "";
+    mdb_idrecibo = "";
     if ( modoEdicion() )
         mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
@@ -99,7 +99,7 @@ void RecibosList::presentar()
 {
     _depura ( "RecibosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM actividad WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM recibo WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END RecibosList::presentar", 0 );
 }
@@ -112,7 +112,7 @@ QString RecibosList::generaFiltro()
     _depura ( "RecibosList::generaFiltro", 0 );
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(nombreactividad) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro = " AND ( lower(nombrerecibo) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro += " ) ";
     } // end if
 
@@ -161,10 +161,10 @@ void RecibosList::borrar()
         return;
     } // end if
     try {
-        mdb_idactividad = mui_list->dbValue ( "idactividad" );
+        mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
         if ( modoEdicion() ) {
             ReciboView * cv = new ReciboView( (BfCompany *) mainCompany(), 0);
-            if ( cv->cargar ( mdb_idactividad ) )
+            if ( cv->cargar ( mdb_idrecibo ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -185,17 +185,17 @@ void RecibosList::editar ( int )
 {
     _depura ( "RecibosList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idactividad = mui_list->dbValue ( "idactividad" );
+        mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
         if ( modoEdicion() ) {
             ReciboView * bud = new ReciboView( (BfCompany *) mainCompany(), 0);
-            if ( bud->cargar ( mdb_idactividad ) ) {
+            if ( bud->cargar ( mdb_idrecibo ) ) {
                 delete bud;
                 return;
             } // end if
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
-            emit ( selected ( mdb_idactividad ) );
+            emit ( selected ( mdb_idrecibo ) );
         } // end if
     } catch ( ... ) {
         mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
@@ -235,11 +235,11 @@ void RecibosList::setMainCompany ( BfCompany *comp )
 
 /** Devuelve el identificador del cobro seleccionado
 **/
-QString RecibosList::idactividad()
+QString RecibosList::idrecibo()
 {
-    _depura ( "RecibosList::idactividad", 0 );
-    _depura ( "END RecibosList::idactividad", 0 );
-    return mdb_idactividad;
+    _depura ( "RecibosList::idrecibo", 0 );
+    _depura ( "END RecibosList::idrecibo", 0 );
+    return mdb_idrecibo;
 }
 
 
@@ -257,10 +257,12 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     int res = g_plugins->lanza ( "RecibosListSubForm_RecibosListSubForm", this );
     if ( res != 0 )
         return;
-    setDbTableName ( "actividad" );
-    setDbFieldId ( "idactividad" );
-    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Actividad" ) );
-    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    setDbTableName ( "recibo" );
+    setDbFieldId ( "idrecibo" );
+    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Actividad" ) );
+    addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

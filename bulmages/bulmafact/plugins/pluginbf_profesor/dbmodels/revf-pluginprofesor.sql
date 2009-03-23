@@ -69,23 +69,47 @@ BEGIN
         CREATE TABLE alumno (
 	    idalumno SERIAL PRIMARY KEY,
 	    nombrealumno VARCHAR NOT NULL,
-	    idprovincia INTEGER REFERENCES provincia(idprovincia)
+	    idprovincia INTEGER REFERENCES provincia(idprovincia),
+       apellido1alumno VARCHAR,
+       fechanacimientoalumno DATE
         );
-
         END IF;
+
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido1alumno'';
+   IF NOT FOUND THEN
+      ALTER TABLE alumno ADD COLUMN apellido1alumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN fechanacimientoalumno DATE;
+   END IF;
+
 
 
   SELECT INTO as * FROM pg_tables  WHERE tablename=''recibo'';
     IF NOT FOUND THEN
     CREATE TABLE recibo (
     idrecibo SERIAL PRIMARY KEY,
+    fecharecibo DATE DEFAULT now(),
     nombrerecibo VARCHAR NOT NULL,
+    cantrecibo NUMERIC(12,2),
     idcliente INTEGER REFERENCES cliente(idcliente)
     );
   END IF;
 
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''cantrecibo'';
+   IF NOT FOUND THEN
+      ALTER TABLE recibo ADD COLUMN cantrecibo NUMERIC(12,2);
+   END IF;
 
-   SELECT INTO as * FROM pg_attribute WHERe attname = ''numsociocliente'';
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''fecharecibo'';
+   IF NOT FOUND THEN
+      ALTER TABLE recibo ADD COLUMN fecharecibo DATE DEFAULT now();
+   END IF;
+
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''sociocliente'';
+   IF NOT FOUND THEN
+      ALTER TABLE cliente ADD COLUMN sociocliente boolean DEFAULT FALSE;
+   END IF;
+
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''numsociocliente'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD COLUMN numsociocliente int;
    END IF;

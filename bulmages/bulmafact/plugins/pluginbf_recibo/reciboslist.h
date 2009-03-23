@@ -54,7 +54,7 @@ class RecibosList : public BlFormList, public Ui_RecibosListBase
 
 private:
     /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
-    QString mdb_idactividad;
+    QString mdb_idrecibo;
 
 public:
     RecibosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
@@ -62,7 +62,7 @@ public:
     ~RecibosList();
     void presentar();
     void setMainCompany ( BfCompany *comp );
-    QString idactividad();
+    QString idrecibo();
     void imprimir();
     QString generaFiltro();
     void borrar();

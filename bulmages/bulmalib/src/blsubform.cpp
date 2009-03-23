@@ -2704,7 +2704,7 @@ BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( p
     _depura ( "BlSubFormDelegate::BlSubFormDelegate", 0 );
     m_subform = ( BlSubForm * ) parent;
     installEventFilter ( this );
-    g_plugins->lanza("BlSubFormDelegate_BlSubFormDelegate_Post", this);
+    g_plugins->lanza("BlSubFormDelegate_BlSubFormDelegate_Post", (void *) this);
     _depura ( "END BlSubFormDelegate::BlSubFormDelegate", 0 );
 }
 
@@ -2733,7 +2733,7 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     g_nomcampo = linea->nomcampo();
     g_editor = parent;
     
-    if (g_plugins->lanza("BlSubFormDelegate_createEditor", (void *)this)) {
+    if (g_plugins->lanza("BlSubFormDelegate_createEditor", (void *) this)) {
       return (QWidget *) g_plugParams;
     } // end if
          _depura ( "END BlSubFormDelegate::createEditor", 0, "Default Editor" );
@@ -2768,7 +2768,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
       return;
     } // end if
 
-        QItemDelegate::setModelData ( editor, model, index );
+    QItemDelegate::setModelData ( editor, model, index );
 
     _depura ( "END BlSubFormDelegate::setModelData", 0 );
 }
