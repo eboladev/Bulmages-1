@@ -26,14 +26,17 @@
 			<lines>
 				1.5cm 8cm 19.5cm 8cm
 			</lines>
-			
+
+<!--IF QUERY="SELECT * FROM CLIENTE WHERE idcliente = [idcliente]"-->
+<!--QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->
+
 			<setFont name="Helvetica-Bold" size="16"/>
 			<drawString x="13cm" y="2.5cm">TOTAL:</drawString>
 			<drawString x="13cm" y="8.75cm">FECHA:</drawString>
 			
 			<setFont name="Helvetica" size="12"/>
-			<drawString x="16cm" y="2.5cm">[cantidad] &#8364;</drawString>
-			<drawString x="16cm" y="8.75cm">[fecha]</drawString>
+			<drawString x="16cm" y="2.5cm">[cantcobro] &#8364;</drawString>
+			<drawString x="16cm" y="8.75cm">[fechacobro]</drawString>
 			
 			<setFont name="Helvetica-Bold" size="12"/>
 			<drawString x="3cm" y="7.2cm">Referencia:</drawString>
@@ -42,10 +45,13 @@
 			<drawString x="3cm" y="4.2cm">Comentario:</drawString>
 			
 			<setFont name="Helvetica" size="12"/>
-			<drawString x="13cm" y="7.2cm">[referencia]</drawString>
+			<drawString x="13cm" y="7.2cm">[refcobro]</drawString>
 			<drawString x="13cm" y="6.2cm">[nomcliente]</drawString>
 			<drawString x="13cm" y="5.2cm">[cifcliente]</drawString>
-			<drawString x="13cm" y="4.2cm">[comentario]</drawString>
+			<drawString x="13cm" y="4.2cm">[comentcobro]</drawString>
+
+<!--END QUERY-->
+<!--END IF QUERY-->
 
 			<lineMode width="1.5" />
 			<lines>
