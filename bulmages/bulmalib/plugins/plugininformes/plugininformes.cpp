@@ -77,7 +77,7 @@ void MyPluginInformes::elslot1( )
 }
 
 
-void entryPoint ( QMainWindow *bges )
+int entryPoint ( QMainWindow *bges )
 {
     _depura ( "Entrada del plugin Docket", 0 );
 
