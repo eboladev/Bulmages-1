@@ -140,6 +140,7 @@ void entryPoint ( QMainWindow *bges )
         pPluginMenu->addAction ( accion );
     } // end for
     _depura ( "Iniciado correctamente el plugin dock", 10 );
+    return 0;
 }
 
 
