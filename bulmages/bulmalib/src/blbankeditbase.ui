@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>BlBankBase</class>
- <widget class="QWidget" name="BlBankBase" >
+ <class>BlBankEditBase</class>
+ <widget class="QWidget" name="BlBankEditBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

@@ -19,17 +19,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BLBANKVIEW_H
-#define BLBANKVIEW_H
+#ifndef BLBANKEDIT_H
+#define BLBANKEDIT_H
 
 #include <QLineEdit>
 
 #include "blfunctions.h"
 #include "blwidget.h"
-#include "ui_blbankbase.h"
+#include "ui_blbankeditbase.h"
 
 
-class BlBankEdit : public BlWidget, public Ui_BlBankBase
+class BlBankEdit : public BlWidget, public Ui_BlBankEditBase
 {
     Q_OBJECT
 
