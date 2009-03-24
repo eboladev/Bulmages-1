@@ -43,7 +43,7 @@ QAction *viewCorrector;
 /**
 \param bcont
 **/
-void entryPoint ( Bulmafact *bcont )
+int entryPoint ( Bulmafact *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
@@ -89,6 +89,7 @@ void entryPoint ( Bulmafact *bcont )
     } // end if
 
     _depura ( "Iniciado correctamente el plugin Corrector", 10 );
+    return 0;
 }
 
 ///

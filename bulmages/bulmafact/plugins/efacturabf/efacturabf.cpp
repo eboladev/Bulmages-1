@@ -135,7 +135,7 @@ void efacturabf::inicializa ( Bulmafact *bges )
 /**
 \param bges
 **/
-void entryPoint ( Bulmafact *bges )
+int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Estoy dentro del plugin de e-factura", 0 );
 
@@ -150,6 +150,7 @@ void entryPoint ( Bulmafact *bges )
     bges->setWindowTitle ( "Prueba de plugin e-factura." );
 
     _depura ( "Acaba el entry point de e-factura", 0 );
+    return 0;
 }
 
 

@@ -17,7 +17,7 @@
 #include <qobject.h>
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );
+extern "C" MY_EXPORT int entryPoint ( Bulmages01 * );
 extern QApplication *theApp;
 
 

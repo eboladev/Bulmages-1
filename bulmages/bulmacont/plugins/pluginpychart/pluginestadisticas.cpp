@@ -13,7 +13,7 @@
 #include <Q3PopupMenu>
 
 
-void entryPoint ( Bulmages01 *bges )
+int entryPoint ( Bulmages01 *bges )
 {
     fprintf ( stderr, "Estoy dentro del plugin\n" );
 
@@ -38,6 +38,6 @@ void entryPoint ( Bulmages01 *bges )
     planCuentas2->setWhatsThis ( "Balance Barras" );
     planCuentas2->addTo ( pPluginMenu );
     QObject::connect ( planCuentas2, SIGNAL ( activated() ), plug, SLOT ( BalanceBarras() ) );
-
+    return 0;
 }
 

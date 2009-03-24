@@ -172,7 +172,7 @@ void myplugin::inicializa ( Bulmafact *bges )
 /**
 \param bges
 **/
-void entryPoint ( Bulmafact *bges )
+int entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0 );
 
@@ -183,5 +183,6 @@ void entryPoint ( Bulmafact *bges )
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
     _depura ( "END entryPoint", 0 );
+    return 0;
 }
 

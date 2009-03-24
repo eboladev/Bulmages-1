@@ -470,7 +470,7 @@ void pluginCAnualesODS::inicializa ( Bulmacont *bcont )
 /**
 \param bcont
 **/
-void entryPoint ( Bulmacont *bcont )
+int entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
 
@@ -482,6 +482,7 @@ void entryPoint ( Bulmacont *bcont )
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
+    return 0;
 }
 
 

@@ -39,7 +39,7 @@ QMainWindow *g_bges_importcsv = NULL;
 BlMainCompany *g_emp_importcsv = NULL;
 
 
-void entryPoint ( QMainWindow *bges )
+int entryPoint ( QMainWindow *bges )
 {
     _depura ( "Entrada del plugin ImportCSV", 0 );
 
@@ -80,6 +80,7 @@ void entryPoint ( QMainWindow *bges )
 
 
     _depura ( "Iniciado correctamente el plugin imoprtcsv", 10 );
+    return 0;
 }
 
 

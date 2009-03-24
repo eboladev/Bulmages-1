@@ -29,6 +29,6 @@
 #include "bccompany.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
 extern "C" MY_EXPORT int Bulmacont_closeEvent ( Bulmacont * );
 

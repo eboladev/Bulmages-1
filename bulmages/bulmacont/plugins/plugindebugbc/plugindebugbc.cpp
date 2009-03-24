@@ -69,7 +69,7 @@ void myplugin::cambia ( bool valor )
 /**
 \param bcont
 **/
-void entryPoint ( Bulmacont *bcont )
+int entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
@@ -96,5 +96,6 @@ void entryPoint ( Bulmacont *bcont )
     bcont->mui_MenuVer() ->addSeparator();
     bcont->mui_MenuVer() ->addAction ( viewCorrector );
     _depura ( "Iniciado correctamente el plugin Corrector", 10 );
+    return 0;
 }
 

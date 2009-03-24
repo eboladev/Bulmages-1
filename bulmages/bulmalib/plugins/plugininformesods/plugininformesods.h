@@ -30,7 +30,7 @@
 #include "bfcompany.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( QMainWindow * );
+extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 

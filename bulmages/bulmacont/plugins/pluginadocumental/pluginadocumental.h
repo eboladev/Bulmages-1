@@ -28,5 +28,5 @@
 #include "bulmacont.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
 

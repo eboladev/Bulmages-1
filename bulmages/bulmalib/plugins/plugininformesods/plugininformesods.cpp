@@ -93,7 +93,7 @@ void MyPluginInformesODS::elslot1( )
 }
 
 
-void entryPoint ( QMainWindow *bges )
+int entryPoint ( QMainWindow *bges )
 {
     _depura ( "Entrada del plugin Docket", 0 );
 
@@ -158,6 +158,7 @@ void entryPoint ( QMainWindow *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
 //    bges->menuBar() ->insertMenu ( 0, pPluginMenu );
     _depura ( "Iniciado correctamente el plugin dock", 10 );
+    return 0;
 }
 
 

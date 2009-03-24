@@ -43,7 +43,7 @@
 /**
 \param bcont
 **/
-void entryPoint ( Bulmacont *bcont )
+int entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Entrada del plugin ADocumental.", 10 );
 
@@ -86,5 +86,7 @@ void entryPoint ( Bulmacont *bcont )
     bcont->mui_MenuHerramientas() ->addSeparator();
     bcont->mui_MenuHerramientas() ->addAction ( ArchDoc );
     _depura ( "Iniciado correctamente el plugin ADocumental.", 10 );
+    
+    return 0;
 }
 

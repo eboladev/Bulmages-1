@@ -106,7 +106,7 @@ void pluginbalancemyplugin4::inicializa ( Bulmacont *bges )
 /**
 \param bcont
 **/
-void entryPoint ( Bulmacont *bcont )
+int entryPoint ( Bulmacont *bcont )
 {
     _depura ( "entryPoint::entryPoint", 0 );
 
@@ -117,5 +117,6 @@ void entryPoint ( Bulmacont *bcont )
     pluginbalancemyplugin4 *plug = new pluginbalancemyplugin4();
     plug->inicializa ( bcont );
     _depura ( "END entryPoint::entryPoint", 0 );
+    return 0;
 }
 

@@ -39,7 +39,7 @@
 /**
 \param bges
 **/
-void entryPoint ( Bulmafact *bges )
+int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Estoy dentro del plugin de tallas y colores", 0 );
 
@@ -49,6 +49,7 @@ void entryPoint ( Bulmafact *bges )
 
     plugin_tc_articulos *plug = new plugin_tc_articulos();
     plug->inicializa ( bges );
+    return 0;
 }
 
 

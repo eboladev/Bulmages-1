@@ -88,12 +88,17 @@ BEGIN
     CREATE TABLE recibo (
     idrecibo SERIAL PRIMARY KEY,
     fecharecibo DATE DEFAULT now(),
-    nombrerecibo VARCHAR NOT NULL,
     cantrecibo NUMERIC(12,2),
     idcliente INTEGER REFERENCES cliente(idcliente)
     );
   END IF;
-
+  
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idcliente'' AND relname=''recibo'';
+   IF NOT FOUND THEN
+      ALTER TABLE recibo ADD COLUMN idcliente INTEGER REFERENCES cliente(idcliente);
+   END IF;
+   
+   
    SELECT INTO as * FROM pg_attribute WHERE attname = ''cantrecibo'';
    IF NOT FOUND THEN
       ALTER TABLE recibo ADD COLUMN cantrecibo NUMERIC(12,2);
@@ -102,6 +107,11 @@ BEGIN
    SELECT INTO as * FROM pg_attribute WHERE attname = ''fecharecibo'';
    IF NOT FOUND THEN
       ALTER TABLE recibo ADD COLUMN fecharecibo DATE DEFAULT now();
+   END IF;
+
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''nombrerecibo'';
+   IF FOUND THEN
+      ALTER TABLE recibo DROP COLUMN nombrerecibo;
    END IF;
 
    SELECT INTO as * FROM pg_attribute WHERE attname = ''sociocliente'';

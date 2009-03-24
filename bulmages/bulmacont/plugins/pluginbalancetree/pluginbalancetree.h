@@ -29,7 +29,7 @@
 #include "bccompany.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
 
 
 class myplugin4 : public QObject, BlMainCompanyPointer

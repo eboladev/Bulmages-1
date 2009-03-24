@@ -34,8 +34,7 @@
 #include "bulmafact.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
-
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int ClientsList_ClientsList ( ClientsList * );
 extern "C" MY_EXPORT int ProveedorList_ProveedorList ( ProveedorList * );
 

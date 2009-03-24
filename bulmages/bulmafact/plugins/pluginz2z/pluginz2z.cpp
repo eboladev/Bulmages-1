@@ -77,7 +77,7 @@ void mypluginzz::elslot (  )
 /**
 \param bcont
 **/
-void entryPoint ( Bulmafact *bges )
+int entryPoint ( Bulmafact *bges )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
@@ -103,5 +103,6 @@ void entryPoint ( Bulmafact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( viewCorrector );
     _depura ( "Iniciado correctamente el plugin de Traspaso de Z", 10 );
+    return 0;
 }
 

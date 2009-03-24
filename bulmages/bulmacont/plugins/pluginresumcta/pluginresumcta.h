@@ -31,7 +31,7 @@
 #include "bcsubform.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
 extern "C" MY_EXPORT int BusquedaCuenta_setidcuenta_post ( BusquedaCuenta * );
 extern "C" MY_EXPORT int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta * );
 extern "C" MY_EXPORT int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm * );

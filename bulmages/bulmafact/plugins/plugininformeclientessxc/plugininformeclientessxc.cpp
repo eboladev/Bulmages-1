@@ -34,13 +34,14 @@
 ///
 /**
 **/
-void entryPoint ( Bulmafact * )
+int entryPoint ( Bulmafact * )
 {
     _depura ( "Estoy dentro del plugin de informe ClientesSXC", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("plugininformeclientessxc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    return 0;
 }
 
 

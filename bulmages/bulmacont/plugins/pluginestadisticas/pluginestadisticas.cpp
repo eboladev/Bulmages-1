@@ -63,7 +63,7 @@ void myplugin::inicializa ( Bulmages01 *bges )
 }// end inicializa
 
 
-void entryPoint ( Bulmages01 *bges )
+int entryPoint ( Bulmages01 *bges )
 {
     fprintf ( stderr, "Estoy dentro del plugin\n" );
     myplugin *plug = new myplugin( );

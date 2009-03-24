@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -57,8 +57,8 @@ void MyPlugProf::elslot()
 {
     _depura ( "MyPlugProf::elslot", 0 );
     if (g_recibosList) {
-	g_recibosList->hide();
-	g_recibosList->show();
+	   g_recibosList->hide();
+	   g_recibosList->show();
     }// end if
     _depura ( "END MyPlugProf::elslot", 0 );
 }
@@ -82,11 +82,6 @@ void MyPlugProf::elslot1()
 void MyPlugProf::elslot2()
 {
     _depura ( "MyPlugProf::elslot2", 0 );
-    /*
-        TipoReciboView * bud = new TipoReciboView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
-    */
     _depura ( "END MyPlugProf::elslot2", 0 );
 }
 
@@ -101,28 +96,28 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 	
-		/// Miramos si existe un menu Ventas
-		QMenu *pPluginMenu = bges->newMenu("&Gestion", "menuGestion", "menuMaestro");
-		pPluginMenu->addSeparator();
+	/// Miramos si existe un menu Ventas
+	QMenu *pPluginMenu = bges->newMenu("&Gestion", "menuGestion", "menuMaestro");
+	pPluginMenu->addSeparator();
 
-		/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-		m_bges = bges;
-		setMainCompany ( bges->getcompany() );
-		QAction *planCuentas = new QAction ( _( "&Recibos" ), 0 );
-		planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
-		planCuentas->setStatusTip ( _( "Recibos" ) );
-		planCuentas->setWhatsThis ( _( "Recibos" ) );
-		pPluginMenu->addAction ( planCuentas );
-		bges->Listados->addAction (planCuentas);
-		connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-	
-		QAction *npago = new QAction ( _( "&Nuevo recibo" ), 0 );
-		npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
-		npago->setStatusTip ( _( "Nuevo recibo" ) );
-		npago->setWhatsThis ( _( "Nuevo recibo" ) );
-		pPluginMenu->addAction ( npago );
-		bges->Fichas->addAction (npago);
-		connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+	m_bges = bges;
+	setMainCompany ( bges->getcompany() );
+	QAction *planCuentas = new QAction ( _( "&Recibos" ), 0 );
+	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
+	planCuentas->setStatusTip ( _( "Recibos" ) );
+	planCuentas->setWhatsThis ( _( "Recibos" ) );
+	pPluginMenu->addAction ( planCuentas );
+	bges->Listados->addAction (planCuentas);
+	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+
+	QAction *npago = new QAction ( _( "&Nuevo recibo" ), 0 );
+	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
+	npago->setStatusTip ( _( "Nuevo recibo" ) );
+	npago->setWhatsThis ( _( "Nuevo recibo" ) );
+	pPluginMenu->addAction ( npago );
+	bges->Fichas->addAction (npago);
+	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
       QAction *npago1 = new QAction ( _( "&Emitir Recibos Periodo" ), 0 );

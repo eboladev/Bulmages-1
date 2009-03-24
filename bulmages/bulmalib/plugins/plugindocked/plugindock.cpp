@@ -115,7 +115,7 @@ void myplugincont::elslot1()
 
 
 
-void entryPoint ( BlMainWindow *bges )
+int entryPoint ( BlMainWindow *bges )
 {
     _depura ( "Entrada del plugin Docket", 0 );
 
@@ -148,6 +148,7 @@ void entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion1 );
 
     _depura ( "Iniciado correctamente el plugin dock", 10 );
+    return 0;
 }
 
 

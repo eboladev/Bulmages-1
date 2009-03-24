@@ -70,7 +70,7 @@ void myplugin::cambia ( bool valor )
 /**
 \param bcont
 **/
-void entryPoint ( Bulmafact *bcont )
+int entryPoint ( Bulmafact *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
@@ -97,5 +97,6 @@ void entryPoint ( Bulmafact *bcont )
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( viewCorrector );
     _depura ( "Iniciado correctamente el plugin Corrector", 10 );
+    return 0;
 }
 

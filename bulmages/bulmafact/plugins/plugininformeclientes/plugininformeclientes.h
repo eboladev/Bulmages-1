@@ -33,7 +33,7 @@
 #include "bulmafact.h"
 #include "articulolist.h"
 
-extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 extern "C" MY_EXPORT int ClientsList_ClientsList ( ClientsList * );
 

@@ -37,7 +37,7 @@
 #include "trabajadorview.h"
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
 extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
