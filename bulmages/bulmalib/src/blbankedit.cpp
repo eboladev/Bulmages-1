@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "blbancoedit.h"
+#include "blbankedit.h"
 
 
 int pesosdc[] = {6,3,7,9,10,5,8,4,2,1};
@@ -28,30 +28,30 @@ int pesosdc[] = {6,3,7,9,10,5,8,4,2,1};
 /**
 \param parent
 **/
-BLBancoEdit::BLBancoEdit ( QWidget *parent ) : BlWidget ( parent )
+BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
 {
-    _depura ( "BLBancoEdit::BLBancoEdit", 0 );
+    _depura ( "BlBankEdit::BlBankEdit", 0 );
     setupUi ( this );
     QObject::connect ( m_cuenta, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SLOT ( s_cuentalostFocus() ) );
     QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
-    _depura ( "END BLBancoEdit::BLBancoEdit", 0 );
+    _depura ( "END BlBankEdit::BlBankEdit", 0 );
 }
 
 
 /// No requiere de acciones especiales en el destructor.
 /**
 **/
-BLBancoEdit::~BLBancoEdit()
+BlBankEdit::~BlBankEdit()
 {
-    _depura ( "BLBancoEdit::~BLBancoEdit", 0 );
-    _depura ( "END BLBancoEdit::~BLBancoEdit", 0 );
+    _depura ( "BlBankEdit::~BlBankEdit", 0 );
+    _depura ( "END BlBankEdit::~BlBankEdit", 0 );
 }
 
 
 /// Comprueba que los DC son correctos y si no lo son da un mensaje de aviso
-void BLBancoEdit::checkDC() {
-	_depura ( "BLBancoEdit::checkDC", 0 );
+void BlBankEdit::checkDC() {
+	_depura ( "BlBankEdit::checkDC", 0 );
 	QString cad1 = m_entidad->text() + m_oficina->text(); 
 	QString cad2 = m_cuenta->text();
 	int dc1 = 0;
@@ -85,7 +85,7 @@ void BLBancoEdit::checkDC() {
 		mensajeInfo("Cuenta bancaria incorrecta");
 		throw -1;
 	} // end if
-	_depura ( "END BLBancoEdit::checkDC", 0 );
+	_depura ( "END BlBankEdit::checkDC", 0 );
 }
 
 
@@ -93,15 +93,15 @@ void BLBancoEdit::checkDC() {
 /**
 \param val
 **/
-void BLBancoEdit::setText ( QString val )
+void BlBankEdit::setText ( QString val )
 {
-    _depura ( "BLBancoEdit::setText", 0 );
+    _depura ( "BlBankEdit::setText", 0 );
     s_cuentalostFocus();
     m_entidad->setText(val.left(4));
     m_oficina->setText(val.left(8).right(4));
     m_dc->setText(val.left(10).right(2));
     m_cuenta->setText ( val.left(20).right(10) );
-    _depura ( "END BLBancoEdit::setText", 0 );
+    _depura ( "END BlBankEdit::setText", 0 );
 }
 
 
@@ -109,11 +109,11 @@ void BLBancoEdit::setText ( QString val )
 /**
 \param val
 **/
-void BLBancoEdit::setFieldValue ( QString val )
+void BlBankEdit::setFieldValue ( QString val )
 {
-    _depura ( "BLBancoEdit::setFieldValue", 0 );
+    _depura ( "BlBankEdit::setFieldValue", 0 );
     setText ( val );
-    _depura ( "END BLBancoEdit::setFieldValue", 0 );
+    _depura ( "END BlBankEdit::setFieldValue", 0 );
 }
 
 
@@ -123,10 +123,10 @@ void BLBancoEdit::setFieldValue ( QString val )
 /**
 \return
 **/
-QString BLBancoEdit::text()
+QString BlBankEdit::text()
 {
-    _depura ( "BLBancoEdit::text", 0 );
-    _depura ( "END BLBancoEdit::text", 0 );
+    _depura ( "BlBankEdit::text", 0 );
+    _depura ( "END BlBankEdit::text", 0 );
     s_cuentalostFocus();
     QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     checkDC();
@@ -138,10 +138,10 @@ QString BLBancoEdit::text()
 /**
 \return
 **/
-QString BLBancoEdit::fieldValue()
+QString BlBankEdit::fieldValue()
 {
-    _depura ( "BLBancoEdit::fieldValue", 0 );
-    _depura ( "END BLBancoEdit::fieldValue", 0 );
+    _depura ( "BlBankEdit::fieldValue", 0 );
+    _depura ( "END BlBankEdit::fieldValue", 0 );
     return text();
 }
 
@@ -149,34 +149,34 @@ QString BLBancoEdit::fieldValue()
 ///
 /**
 **/
-void BLBancoEdit::s_returnPressed()
+void BlBankEdit::s_returnPressed()
 {
-    _depura ( "BLBancoEdit::s_enterPressed", 0 );
+    _depura ( "BlBankEdit::s_enterPressed", 0 );
     s_cuentalostFocus();
     emit returnPressed();
-    _depura ( "END BLBancoEdit::s_enterPressed", 0 );
+    _depura ( "END BlBankEdit::s_enterPressed", 0 );
 }
 
 
 ///
 /**
 **/
-void BLBancoEdit::selectAll()
+void BlBankEdit::selectAll()
 {
-    _depura ( "BLBancoEdit::selectAll", 0 );
+    _depura ( "BlBankEdit::selectAll", 0 );
     m_cuenta->selectAll();
-    _depura ( "END BLBancoEdit::selectAll", 0 );
+    _depura ( "END BlBankEdit::selectAll", 0 );
 }
 
 
 ///
 /**
 **/
-void BLBancoEdit::setFocus()
+void BlBankEdit::setFocus()
 {
-    _depura ( "BLBancoEdit::setFocus", 0 );
+    _depura ( "BlBankEdit::setFocus", 0 );
     m_cuenta->setFocus ( Qt::OtherFocusReason );
-    _depura ( "END BLBancoEdit::setFocus", 0 );
+    _depura ( "END BlBankEdit::setFocus", 0 );
 }
 
 
@@ -185,9 +185,9 @@ void BLBancoEdit::setFocus()
 \param texto
 \return
 **/
-void BLBancoEdit::s_cuentatextChanged ( const QString &texto )
+void BlBankEdit::s_cuentatextChanged ( const QString &texto )
 {
-    _depura ( "BLBancoEdit::s_fechatextChanged", 0 );
+    _depura ( "BlBankEdit::s_fechatextChanged", 0 );
 /*
     if ( texto == "+" )
         s_searchFecha();
@@ -200,7 +200,7 @@ void BLBancoEdit::s_cuentatextChanged ( const QString &texto )
     } // end if
 */
     emit ( valueChanged ( m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text() ) );
-    _depura ( "END BLBancoEdit::s_fechatextChanged", 0 );
+    _depura ( "END BlBankEdit::s_fechatextChanged", 0 );
 }
 
 
@@ -208,12 +208,12 @@ void BLBancoEdit::s_cuentatextChanged ( const QString &texto )
 ///
 /**
 **/
-void BLBancoEdit::s_cuentalostFocus()
+void BlBankEdit::s_cuentalostFocus()
 {
-    _depura ( "BLBancoEdit::s_cuentalostFocus", 0 );
+    _depura ( "BlBankEdit::s_cuentalostFocus", 0 );
     QString fech = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     if ( fech != "" )
         s_cuentatextChanged ( fech );
-    _depura ( "END BLBancoEdit::s_cuentalostFocus", 0 );
+    _depura ( "END BlBankEdit::s_cuentalostFocus", 0 );
 }
 

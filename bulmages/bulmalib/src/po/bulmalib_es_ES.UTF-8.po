@@ -404,7 +404,7 @@ msgstr "<P> Familia <B>"
 msgid "Filas por pagina:"
 msgstr "Filas por página:"
 
-#: ui_fichacfgbase.h:281 ui_blbancoeditbase.h:89
+#: ui_fichacfgbase.h:281 ui_blbankbase.h:89
 #, fuzzy
 msgid "Form"
 msgstr "Busqueda Fecha"

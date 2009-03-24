@@ -65,7 +65,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blcombobox.cpp
 			blprogressbar.cpp
 			blmainwindow.cpp
-			blbancoedit.cpp
+			blbankedit.cpp
 			blmonthcalendar.cpp
 			busqueda.cpp
 			bli18n.cpp)
@@ -93,7 +93,7 @@ set(bulmalib_MOCS	logpass.h
 			blcountryview.h
 			blradiobutton.h
 			blcombobox.h
-			blbancoedit.h
+			blbankedit.h
 			blmonthcalendar.h
 			busqueda.h)
 
@@ -121,7 +121,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			bldbsubform.h
 			blsubform.h
 			blprogressbar.h
-			blbancoedit.h)
+			blbankedit.h)
 #headers that are not moc'ed
 #			blpostgresqlclient.h 
 #			blconfiguration.h 
@@ -147,7 +147,7 @@ set(bulmalib_UIS	logpassbase.ui
 			blcountrybase.ui
 			blprogressbarbase.ui
 			busquedabase.ui
-			blbancoeditbase.ui)
+			blbankeditbase.ui)
 
 include_directories(
       ${QT_INCLUDE_DIR}

@@ -609,7 +609,7 @@
         </widget>
        </item>
        <item row="3" column="1" colspan="2" >
-        <widget class="BLBancoEdit" name="mui_bancocliente" >
+        <widget class="BlBankEdit" name="mui_bancocliente" >
          <property name="sizePolicy" >
           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
            <horstretch>0</horstretch>
@@ -667,9 +667,9 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BLBancoEdit</class>
+   <class>BlBankEdit</class>
    <extends>QLineEdit</extends>
-   <header>blbancoedit.h</header>
+   <header>blbankedit.h</header>
   </customwidget>
   <customwidget>
    <class>BlComboBox</class>

@@ -6161,7 +6161,7 @@ msgstr ""
 #: ui_totalbase.h:108 ui_adminbase.h:72 ui_mticketbase.h:123
 #: ui_ticketsbase.h:57 ui_abrevsbase.h:93 ui_trabajadoresbase.h:70
 #: ui_tecladonumericobase.h:346 ui_comercialclientebase.h:134
-#: ui_fichacfgbase.h:281 ui_blbancoeditbase.h:89
+#: ui_fichacfgbase.h:281 ui_blbankbase.h:89
 msgid "Form"
 msgstr ""
 

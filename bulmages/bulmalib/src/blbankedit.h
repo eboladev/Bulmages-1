@@ -19,23 +19,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BLBANCOEDIT_H
-#define BLBANCOEDIT_H
+#ifndef BLBANKVIEW_H
+#define BLBANKVIEW_H
 
 #include <QLineEdit>
 
 #include "blfunctions.h"
 #include "blwidget.h"
-#include "ui_blbancoeditbase.h"
+#include "ui_blbankbase.h"
 
 
-class BLBancoEdit : public BlWidget, public Ui_BLBancoEditBase
+class BlBankEdit : public BlWidget, public Ui_BlBankBase
 {
     Q_OBJECT
 
 public:
-    BLBancoEdit ( QWidget *parent = 0 );
-    ~BLBancoEdit();
+    BlBankEdit ( QWidget *parent = 0 );
+    ~BlBankEdit();
     virtual void setText ( QString val );
     virtual void setFieldValue ( QString val );
     virtual QString text();
