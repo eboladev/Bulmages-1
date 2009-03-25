@@ -881,7 +881,7 @@ void Bulmacont::informaindexador ( QWidget *w )
     m_empresaactual->seleccionaWindow ( w->windowTitle(), w );
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
-    printf ( texto.toAscii().constData() );
+    printf ( "%s", texto.toAscii().constData() );
 
     _depura ( "END Bulmacont::informaindexador", 0 );
 }

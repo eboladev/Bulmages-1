@@ -132,7 +132,7 @@ int main ( int argc, char **argv )
         QDir archivoConf;
         if ( !archivoConf.exists ( confEsp ) ) {
             QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-            fprintf ( stderr, mensaje.toAscii().constData() );
+            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
         } else {
             confpr->leeconfig ( confEsp );
         } // end if

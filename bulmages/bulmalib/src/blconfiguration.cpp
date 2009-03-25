@@ -94,17 +94,17 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     /// Directorios y archivos obligatorios (sale si no existe):
     if ( !dirGlobalConf.exists() ) {
         mensaje = "--> ERROR: El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
         exit ( -1 );
     } else {
         if ( !genericGlobalConfFile.exists ( m_dirGlobalConf + m_genericGlobalConfFile ) ) {
             mensaje = "--> ERROR: El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
-            fprintf ( stderr, mensaje.toAscii().constData() );
+            fprintf ( stderr,"%s", mensaje.toAscii().constData() );
             exit ( -1 );
         } else {
             /// 1) Leemos la configuracion del archivo generico global.
             mensaje = "--> Leyendo el archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "'<--\n";
-            fprintf ( stderr, mensaje.toAscii().constData() );
+            fprintf ( stderr,"%s", mensaje.toAscii().constData() );
             leeconfig ( m_dirGlobalConf + m_genericGlobalConfFile );
         }// end if
     } // end if
@@ -112,11 +112,11 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     /// Directorios y archivos opcionales:
     if ( !programGlobalConfFile.exists ( m_dirGlobalConf + m_programGlobalConfFile ) ) {
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
     } else {
         /// 2) Leemos la configuracion del archivo especifico global.
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
         leeconfig ( m_dirGlobalConf + m_programGlobalConfFile );
     }// end if
 
@@ -125,31 +125,31 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     if ( !dirGlobalConf.exists ( m_dirLocalConf ) ) {
         if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == TRUE ) {
             mensaje = "--> Se ha creado el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, mensaje.toAscii().constData() );
+            fprintf ( stderr,"%s", mensaje.toAscii().constData() );
         } else {
             mensaje = "--> ERROR: No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
-            fprintf ( stderr, mensaje.toAscii().constData() );
+            fprintf ( stderr,"%s", mensaje.toAscii().constData() );
             exit ( -1 );
         }// end if
     } // end if
 
     if ( !genericLocalConfFile.exists ( m_dirLocalConf + m_genericLocalConfFile ) ) {
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
     } else {
         /// 3) Leemos la configuracion del archivo generico local.
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
         leeconfig ( m_dirLocalConf + m_genericLocalConfFile );
     }// end if
 
     if ( !programLocalConfFile.exists ( m_dirLocalConf + m_programLocalConfFile ) ) {
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' no existe. <--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
     } else {
         /// 4) Leemos la configuracion del archivo especifico local.
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' existe. Se va a leer.<--\n";
-        fprintf ( stderr, mensaje.toAscii().constData() );
+        fprintf ( stderr,"%s", mensaje.toAscii().constData() );
         leeconfig ( m_dirLocalConf + m_programLocalConfFile );
     }// end if
 
@@ -428,8 +428,8 @@ bool BlConfiguration::leeconfig ( QString fich )
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
 	QString cadaux1 = "Leyendo configuracion" + fich + "\n";
-        fprintf ( stderr, cadaux1.toAscii() );
-	fprintf ( stderr, "\n");
+        fprintf ( stderr,"%s", cadaux1.toAscii().constData() );
+	fprintf ( stderr,"%s", "\n");
         QTextStream in ( &arch );
         while ( !in.atEnd() ) {
             QString cad = in.readLine();
@@ -451,7 +451,7 @@ bool BlConfiguration::leeconfig ( QString fich )
             } // end for
         } // end while
         arch.close();
-        fprintf ( stderr, "FIN Leyendo configuracion\n" );
+        fprintf ( stderr,"%s", "FIN Leyendo configuracion\n" );
         return TRUE;
     } // end if
 //    _depura("END BlConfiguration::leeconfig", 0);
