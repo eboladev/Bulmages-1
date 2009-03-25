@@ -29,7 +29,7 @@
 #include "blfunctions.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "contratoview.h"
 
 

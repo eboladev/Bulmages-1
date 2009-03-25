@@ -26,7 +26,7 @@
 #include "pluginartgraficos.h"
 #include "btcompany.h"
 #include "artgraficos.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "ticket.h"
 #include "bldockwidget.h"
 

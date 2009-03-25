@@ -33,7 +33,7 @@
 #include "blfunctions.h"
 #include "listlinalbaranproveedorview.h"
 #include "pedidoproveedorview.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa todos los componentes de la ventana.

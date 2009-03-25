@@ -23,7 +23,7 @@
 #include "plugincambioivainc.h"
 #include "btcompany.h"
 #include "cambio.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "ticket.h"
 #include "blapplication.h"
 

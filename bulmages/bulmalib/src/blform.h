@@ -25,14 +25,14 @@
 #include <QWidget>
 #include <QCloseEvent>
 
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "blfunctions.h"
 #include "blmaincompany.h"
 #include "blwidget.h"
 #include "bldb.h"
 
 
-class BlForm : public BlWidget, public BlDbRecord, public dialogChanges
+class BlForm : public BlWidget, public BlDbRecord, public BlDialogChanges
 {
     Q_OBJECT
 

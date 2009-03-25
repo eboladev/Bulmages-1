@@ -26,7 +26,7 @@
 #include <QDomDocument>
 
 #include "stdio.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 #include "bulmatpv.h"
 

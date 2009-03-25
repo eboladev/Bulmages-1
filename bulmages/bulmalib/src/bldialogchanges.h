@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __DIALOGCHANGES__
-#define __DIALOGCHANGES__
+#ifndef BLDIALOGCHANGES_H
+#define BLDIALOGCHANGES_H
 
 #include <QObject>
 
@@ -31,7 +31,7 @@
 /// La idea original es de Alvaro de Miguel en la que lo que hace la funcion es
 /// coger todos los campos de un determinado formulario y formar una cadena.
 /// Luego para saber si hay cambios en el formulario vuelve a comparar.
-class dialogChanges
+class BlDialogChanges
 {
 private:
     int m_maxQLine;
@@ -47,8 +47,8 @@ private:
     QList<QObject*> m_listaExcluidos;
 
 public:
-    dialogChanges ( QObject *ob );
-    ~dialogChanges();
+    BlDialogChanges ( QObject *ob );
+    ~BlDialogChanges();
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();
     void dialogChanges_setQObjectExcluido ( QObject *objetoexcluido );
@@ -60,4 +60,3 @@ private:
 };
 
 #endif
-

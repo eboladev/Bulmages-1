@@ -30,7 +30,7 @@
 #include "busquedaalmacen.h"
 #include "comparticulolistview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

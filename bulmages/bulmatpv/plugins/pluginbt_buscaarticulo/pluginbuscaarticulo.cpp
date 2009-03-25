@@ -24,7 +24,7 @@
 
 #include "pluginbuscaarticulo.h"
 #include "btcompany.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "ticket.h"
 #include "blapplication.h"
 #include "busquedaarticulo.h"

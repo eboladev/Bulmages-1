@@ -2,7 +2,7 @@
 
 #include "input.h"
 #include "btcompany.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 Input::Input ( BtCompany *emp )

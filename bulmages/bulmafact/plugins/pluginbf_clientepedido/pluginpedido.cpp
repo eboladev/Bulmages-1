@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginpedido.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "pedidoclienteview.h"

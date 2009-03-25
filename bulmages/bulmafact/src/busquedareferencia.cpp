@@ -22,7 +22,7 @@
 #include "bfcompany.h"
 #include "informereferencia.h"
 #include "blform.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya

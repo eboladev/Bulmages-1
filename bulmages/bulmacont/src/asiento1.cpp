@@ -26,7 +26,7 @@
 #include "asiento1view.h"
 #include "blfixed.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bccompany.h"
 #include "arbol.h"
 

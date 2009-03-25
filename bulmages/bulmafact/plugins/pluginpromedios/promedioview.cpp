@@ -23,7 +23,7 @@
 #include "promedioview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///
@@ -32,7 +32,7 @@
 \param parent
 **/
 PromedioView::PromedioView ( BfCompany *comp, QWidget *parent )
-        : QWidget ( parent ) , dialogChanges ( this ), BlDbRecord ( comp )
+        : QWidget ( parent ) , BlDialogChanges ( this ), BlDbRecord ( comp )
 {
     _depura ( "PromedioView::PromedioView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

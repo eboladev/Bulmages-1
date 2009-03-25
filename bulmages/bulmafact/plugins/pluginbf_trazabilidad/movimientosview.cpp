@@ -28,7 +28,7 @@
 #include "blconfiguration.h"
 #include "movimientosview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blform.h"
 #include "blmaincompany.h"
 

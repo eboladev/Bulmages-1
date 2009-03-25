@@ -35,7 +35,7 @@
 #include "busquedatipoarticulo.h"
 #include "comparticulolistview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Se encarga de la inicializacion de todos los componentes de la ventana de 'Articulo'.

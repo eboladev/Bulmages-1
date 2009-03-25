@@ -29,7 +29,7 @@
 #include "facturaslist.h"
 #include "facturaview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Prepara todos los componentes i los inicializa a NULL para que no haya dudas sobre si

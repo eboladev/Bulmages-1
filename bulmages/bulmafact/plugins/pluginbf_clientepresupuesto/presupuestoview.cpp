@@ -37,7 +37,7 @@
 #include "blconfiguration.h"
 #include "busquedaformapago.h"
 #include "informereferencia.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

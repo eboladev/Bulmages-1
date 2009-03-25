@@ -25,7 +25,7 @@
 
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 

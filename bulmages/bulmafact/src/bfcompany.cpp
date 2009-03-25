@@ -30,7 +30,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "listconfiguracionview.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bulmafact.h"
 
 

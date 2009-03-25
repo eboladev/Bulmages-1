@@ -24,7 +24,7 @@
 #include "contrato.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** PReparamos la clase BlDbRecord para funcionar con la tabla contrato.

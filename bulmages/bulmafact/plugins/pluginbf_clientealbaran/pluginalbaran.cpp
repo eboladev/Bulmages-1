@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginalbaran.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "albaranclienteview.h"

@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINS_H
-#define PLUGINS_H
+#ifndef BLPLUGINS_H
+#define BLPLUGINS_H
 
 #include <QList>
 #include <QLibrary>
@@ -30,20 +30,20 @@
 
 /** Controla el sistema de carga y disparo segun metodo de los plugins
  */
-class Plugins
+class BlPlugins
 {
 private:
     QList<QLibrary *> m_lista;
 
 public:
-    Plugins();
-    ~Plugins();
+    BlPlugins();
+    ~BlPlugins();
     void cargaLibs ( const QString &libs );
     int lanza ( const char *func, void *clase );
     int lanza ( const char *func, void *clase, void **ret );
 };
 
-extern Plugins *g_plugins;
+extern BlPlugins *g_plugins;
 extern void *g_plugParams;
 
 #endif

@@ -33,7 +33,7 @@
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "btcompany.h"
 
 

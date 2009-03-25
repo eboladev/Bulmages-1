@@ -40,7 +40,7 @@
 #include "listdescalbaranclienteview.h"
 #include "listlinalbaranclienteview.h"
 #include "blpostgresqlclient.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Constructor de la clase corresponde a la parte visual de la ficha de cliente.

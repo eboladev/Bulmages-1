@@ -24,7 +24,7 @@
 
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "provedit.h"
 
 

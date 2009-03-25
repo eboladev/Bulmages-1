@@ -31,7 +31,7 @@
 #include "blfunctions.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa todos los componentes del listado.

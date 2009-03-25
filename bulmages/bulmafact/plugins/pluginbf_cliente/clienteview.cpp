@@ -28,7 +28,7 @@
 #include "clienteview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "informereferencia.h"
 
 

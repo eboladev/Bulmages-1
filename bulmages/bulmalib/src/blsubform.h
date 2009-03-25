@@ -34,7 +34,7 @@
 #include "bldbsubform.h"
 #include "blfixed.h"
 #include "blwidget.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 class BlSubForm;
 

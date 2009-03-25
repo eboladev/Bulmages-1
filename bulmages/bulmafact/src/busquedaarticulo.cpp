@@ -21,7 +21,7 @@
 #include "busquedaarticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 /** Inicializa todos los componentes a null para que no haya posibles
     errores al introducir el puntero a company. */

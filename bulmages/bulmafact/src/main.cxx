@@ -26,13 +26,13 @@
 
 #include "blapplication.h"
 #include "blconfiguration.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bulmafact.h"
 #include "blsplashscreen.h"
 #include "logpass.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "config.h"
 #include "bli18n.h"
 
@@ -69,7 +69,7 @@ int main ( int argc, char **argv )
         theApp = new BlApplication ( argc, argv );
 
         /// Preparamos el sistema de plugins.
-        g_plugins = new Plugins();
+        g_plugins = new BlPlugins();
 
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );

@@ -25,7 +25,7 @@
 
 #include "blmaincompany.h"
 #include "ticket.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "escprinter.h"
 
 

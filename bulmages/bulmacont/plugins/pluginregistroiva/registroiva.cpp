@@ -26,7 +26,7 @@
 #include "blconfiguration.h"
 #include "blfixed.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 typedef QMap<QString, BlFixed> base;

@@ -27,7 +27,7 @@
 #include "almaceneslistview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blconfiguration.h"
 #include "almacenview.h"
 

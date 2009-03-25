@@ -26,7 +26,7 @@
 #include "pluginabrevs.h"
 #include "btcompany.h"
 #include "abrevs.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blapplication.h"
 #include "trabajadores.h"
 #include "bldockwidget.h"

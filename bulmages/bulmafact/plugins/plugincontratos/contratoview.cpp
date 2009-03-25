@@ -33,7 +33,7 @@
 #include "contrato.h"
 #include "contratoview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.

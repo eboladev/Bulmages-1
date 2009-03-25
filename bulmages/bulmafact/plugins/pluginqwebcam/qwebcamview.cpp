@@ -23,7 +23,7 @@
 #include "qwebcamview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///
@@ -32,7 +32,7 @@
 \param parent
 **/
 QWebCamView::QWebCamView ( BfCompany *comp, QWidget *parent )
-        : QWidget ( parent ) , dialogChanges ( this ), BlDbRecord ( comp )
+        : QWidget ( parent ) , BlDialogChanges ( this ), BlDbRecord ( comp )
 {
     _depura ( "QWebCamView::QWebCamView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

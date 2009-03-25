@@ -33,7 +33,7 @@
 #include "busquedatrabajador.h"
 #include "busquedaalmacen.h"
 #include "busquedaarticulo.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /// Clase de subformularios especificos.

@@ -21,7 +21,7 @@
 #include <QMenu>
 
 #include "listlinasiento1view.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bccompany.h"
 
 

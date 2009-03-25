@@ -46,7 +46,7 @@
 #include "blpostgresqlclient.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Constructor de la clase corresponde a la parte visual de la ficha de cliente.

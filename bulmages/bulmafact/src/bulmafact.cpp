@@ -38,7 +38,7 @@
 #include "listventanas.h"
 #include "aboutview.h"
 #include "busquedaperiodo.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Prepara la pantalla principal para que tenga todos los componentes.

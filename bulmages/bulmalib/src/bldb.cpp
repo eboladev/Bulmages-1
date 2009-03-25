@@ -26,7 +26,7 @@
 #include <QXmlStreamReader>
 
 #include "bldb.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

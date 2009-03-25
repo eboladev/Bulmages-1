@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "pluginpresupuesto.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "presupuestoview.h"

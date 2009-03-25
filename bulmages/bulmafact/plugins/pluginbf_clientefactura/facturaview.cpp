@@ -38,7 +38,7 @@
 #include "informereferencia.h"
 #include "listdescfacturaview.h"
 #include "listlinfacturaview.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa la pantalla.

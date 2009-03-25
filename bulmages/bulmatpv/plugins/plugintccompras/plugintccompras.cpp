@@ -23,7 +23,7 @@
 #include "blfunctions.h"
 #include "btcompany.h"
 #include "compra.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "ticket.h"
 #include "blapplication.h"
 #include "bldockwidget.h"

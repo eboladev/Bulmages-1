@@ -22,7 +22,7 @@
 #include <QLibrary>
 #include <QStringList>
 
-#include "plugins.h"
+#include "blplugins.h"
 #include "blconfiguration.h"
 
 
@@ -32,27 +32,27 @@ MyPrototype myFunction;
 typedef int ( *MyPrototype1 ) ( void *, void ** );
 MyPrototype1 myFunction1;
 
-Plugins *g_plugins;
+BlPlugins *g_plugins;
 void *g_plugParams;
 
 
 ///
 /**
 **/
-Plugins::Plugins()
+BlPlugins::BlPlugins()
 {
-    _depura ( "Plugins::Plugins", 0 );
-    _depura ( "END Plugins::Plugins", 0 );
+    _depura ( "BlPlugins::BlPlugins", 0 );
+    _depura ( "END BlPlugins::BlPlugins", 0 );
 }
 
 
 ///
 /**
 **/
-Plugins::~Plugins()
+BlPlugins::~BlPlugins()
 {
-    _depura ( "Plugins::~Plugins", 0 );
-    _depura ( "END Plugins::~Plugins", 0 );
+    _depura ( "BlPlugins::~BlPlugins", 0 );
+    _depura ( "END BlPlugins::~BlPlugins", 0 );
 }
 
 
@@ -60,16 +60,16 @@ Plugins::~Plugins()
 /**
 \param libs
 **/
-void Plugins::cargaLibs ( const QString &libs )
+void BlPlugins::cargaLibs ( const QString &libs )
 {
-    _depura ( "Plugins::cargaLibs", 0, libs );
+    _depura ( "BlPlugins::cargaLibs", 0, libs );
 
     bool cargado = FALSE;
     /// Hacemos la carga de los plugins.
     QString cad = libs;
 
     if ( cad == "" ) {
-        _depura ( "END Plugins::cargaLibs", 0, cad );
+        _depura ( "END BlPlugins::cargaLibs", 0, cad );
         return;
     } // end if
 
@@ -91,7 +91,7 @@ void Plugins::cargaLibs ( const QString &libs )
             mensajeInfo ( "No se ha podido cargar la libreria: " + *it );
         } // end if
     } // end for
-    _depura ( "END Plugins::cargaLibs", 0 );
+    _depura ( "END BlPlugins::cargaLibs", 0 );
 }
 
 ///
@@ -100,9 +100,9 @@ void Plugins::cargaLibs ( const QString &libs )
 \param clase
 \return
 **/
-int Plugins::lanza ( const char *func, void *clase )
+int BlPlugins::lanza ( const char *func, void *clase )
 {
-    _depura ( "Plugins::lanza", 0, func );
+    _depura ( "BlPlugins::lanza", 0, func );
     int a = 0;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         myFunction = ( MyPrototype ) m_lista.at ( i ) ->resolve ( func );
@@ -110,7 +110,7 @@ int Plugins::lanza ( const char *func, void *clase )
             a = myFunction ( clase );
         } // end if
     } // end for
-    _depura ( "END Plugins::lanza", 0 );
+    _depura ( "END BlPlugins::lanza", 0 );
     return a;
 }
 
@@ -119,9 +119,9 @@ int Plugins::lanza ( const char *func, void *clase )
 /**
 \return
 **/
-int Plugins::lanza ( const char *func, void *clase, void **ret )
+int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 {
-    _depura ( "Plugins::lanza", 0, func );
+    _depura ( "BlPlugins::lanza", 0, func );
     int a = 0;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         myFunction1 = ( MyPrototype1 ) m_lista.at ( i ) ->resolve ( func );
@@ -132,6 +132,6 @@ int Plugins::lanza ( const char *func, void *clase, void **ret )
             _depura ( "Plugins_lanza ", 0, "No ha entrado la libreria" );
         } // end if
     } // end for
-    _depura ( "END Plugins::lanza", 0 );
+    _depura ( "END BlPlugins::lanza", 0 );
     return a;
 }

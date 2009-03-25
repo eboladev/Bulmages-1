@@ -28,7 +28,7 @@
 #include "busquedaarticulo.h"
 #include "blconfiguration.h"
 #include "facturapview.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa todos los componentes del listado a NULL para que no exista consusion sobre

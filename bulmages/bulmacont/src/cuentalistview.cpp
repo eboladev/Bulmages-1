@@ -31,7 +31,7 @@
 #include "bccompany.h"
 #include "cuentaview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Constructor de la ventana de listado de articulos

@@ -38,7 +38,7 @@
 #include "blconfiguration.h"
 #include "qtextcodec.h"
 #include "logpass.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blapplication.h"
 #include "config.h"
 
@@ -82,7 +82,7 @@ int main ( int argc, char **argv )
         textdomain ("bulmacont");
 
         /// Inicializamos el objeto global para uso de plugins.
-        g_plugins = new Plugins();
+        g_plugins = new BlPlugins();
 
         /// Creamos la aplicaci&oacute;n principal.
         theApp = new BlApplication ( argc, argv );

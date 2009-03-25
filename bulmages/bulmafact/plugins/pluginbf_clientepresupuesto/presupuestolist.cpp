@@ -28,7 +28,7 @@
 #include "bfcompany.h"
 #include "presupuestoview.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blconfiguration.h"
 
 

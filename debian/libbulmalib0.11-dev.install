@@ -14,7 +14,7 @@ usr/include/logpass.h
 usr/include/msgerror.h
 usr/include/numerocuenta.h
 usr/include/pgimportfiles.h
-usr/include/plugins.h
+usr/include/blplugins.h
 usr/include/postgresiface2.h
 usr/include/qapplication2.h
 usr/include/qtable2.h

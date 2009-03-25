@@ -22,7 +22,7 @@
 #include <QTextStream>
 
 #include "bfform.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 class BlFixed;

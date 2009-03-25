@@ -28,7 +28,7 @@
 
 #include "btsubform.h"
 #include "bltexteditdelegate.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

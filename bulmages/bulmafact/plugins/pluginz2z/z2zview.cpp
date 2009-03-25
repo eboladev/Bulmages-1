@@ -33,7 +33,7 @@
 #include "z2zview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa la pantalla.

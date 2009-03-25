@@ -25,7 +25,7 @@
 #include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "pedidoclienteview.h"
 #include "pedidosclientelist.h"
 

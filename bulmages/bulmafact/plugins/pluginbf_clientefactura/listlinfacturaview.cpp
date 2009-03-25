@@ -25,7 +25,7 @@
 #include "listlinfacturaview.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

@@ -24,14 +24,14 @@
 #include "blfunctions.h"
 #include "ui_promediobase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bldb.h"
 
 
 class BfCompany;
 
 
-class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public BlDbRecord
+class PromedioView : public QWidget, public Ui_PromedioBase, public BlDialogChanges, public BlDbRecord
 {
     Q_OBJECT
 

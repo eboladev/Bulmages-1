@@ -30,7 +30,7 @@
 #include <QCloseEvent>
 #include <fstream>
 
-#include <plugins.h>
+#include <blplugins.h>
 
 #include "listivaview.h"
 #include "registroivaview.h"

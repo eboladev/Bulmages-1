@@ -34,7 +34,7 @@
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Constructor de la ventana de listado de articulos

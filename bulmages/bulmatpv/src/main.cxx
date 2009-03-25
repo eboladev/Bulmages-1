@@ -25,13 +25,13 @@
 
 #include "blapplication.h"
 #include "blconfiguration.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bulmatpv.h"
 #include "blsplashscreen.h"
 #include "logpass.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "config.h"
 
 #ifdef WIN32
@@ -55,7 +55,7 @@ int main ( int argc, char **argv )
         /// Leemos la configuracion que luego podremos usar siempre.
         confpr = new BlConfiguration ( "bulmatpv" );
         /// Preparamos el sistema de plugins.
-        g_plugins = new Plugins();
+        g_plugins = new BlPlugins();
         /// Iniciamos la clase QApplication para el uso de las Qt.
         theApp = new BlApplication ( argc, argv );
 

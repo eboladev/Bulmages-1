@@ -21,7 +21,7 @@
 #include  "busquedacuenta.h"
 #include  "listcuentasview1.h"
 #include  "bccompany.h"
-#include  "plugins.h"
+#include  "blplugins.h"
 #include  "cuentalistview.h"
 
 

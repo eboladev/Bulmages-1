@@ -32,7 +32,7 @@
 #include "blform.h"
 #include "fichacfg.h"
 #include "blcombobox.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blradiobutton.h"
 #include "busquedafecha.h"
 
@@ -43,7 +43,7 @@
 \param f
 \param modo
 **/
-BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), BlDbRecord ( NULL ), dialogChanges ( this )
+BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f ), BlDbRecord ( NULL ), BlDialogChanges ( this )
 {
     _depura ( "BlForm::BlForm", 0 );
 
@@ -69,7 +69,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
 \param f
 \param modo
 **/
-BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), dialogChanges ( this )
+BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f ), BlDbRecord ( emp ), BlDialogChanges ( this )
 {
     _depura ( "BlForm::BlForm", 0 );
 

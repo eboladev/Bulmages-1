@@ -30,7 +30,7 @@
 class BfCompany;
 
 
-class QWebCamView : public QWidget, public Ui_QWebCamBase, public dialogChanges, public BlDbRecord
+class QWebCamView : public QWidget, public Ui_QWebCamBase, public BlDialogChanges, public BlDbRecord
 {
     Q_OBJECT
 

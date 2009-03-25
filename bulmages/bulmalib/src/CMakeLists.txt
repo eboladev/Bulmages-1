@@ -36,14 +36,14 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blfunctions.cpp
 			logpass.cpp
 			blcompanydialog.cpp
-			dialogchanges.cpp
+			bldialogchanges.cpp
 			blfixed.cpp
 			msgerror.cpp
 			busquedafecha.cpp
 			bltablewidget.cpp
 			bldockwidget.cpp
 			pgimportfiles.cpp
-			plugins.cpp
+			blplugins.cpp
 			busquedaperiodo.cpp
 			bldb.cpp
 			bldbsubform.cpp
@@ -102,7 +102,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			busquedaperiodo.h
 			blconfiguration.h
 			bldb.h
-			dialogchanges.h
+			bldialogchanges.h
 			blmaincompany.h
 			blform.h
 			blfixed.h
@@ -112,7 +112,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			msgerror.h
 			numerocuenta.h
 			pgimportfiles.h
-			plugins.h
+			blplugins.h
 			blpostgresqlclient.h
 			blapplication.h
 			bltablewidget.h
@@ -130,7 +130,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 #			dialogchanges.h 
 #			blfixed.h 
 #			pgimportfiles.h 
-#			plugins.h 
+#			blplugins.h 
 #			bldb.h 
 #			bldbsubform.h 
 #			blmaincompany.h 

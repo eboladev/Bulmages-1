@@ -39,7 +39,7 @@
 #include "fpagoview.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "bbloqfecha.h"
 #include "diarioview.h"
 #include "listado347.h"

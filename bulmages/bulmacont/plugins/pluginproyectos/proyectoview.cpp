@@ -27,7 +27,7 @@
 #include "proyectoview.h"
 #include "bccompany.h"
 #include "blconfiguration.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "blfunctions.h"
 
 

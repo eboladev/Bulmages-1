@@ -35,7 +35,7 @@
 #include "clientslist.h"
 #include "informereferencia.h"
 #include "blfunctions.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

@@ -24,7 +24,7 @@
 #include "rutacomercial.h"
 #include "bfcompany.h"
 #include "blconfiguration.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 ///

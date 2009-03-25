@@ -23,7 +23,7 @@
 #include "pluginadmin.h"
 #include "btcompany.h"
 #include "admin.h"
-#include "plugins.h"
+#include "blplugins.h"
 #include "ticket.h"
 #include "bldockwidget.h"
 #include "blapplication.h"

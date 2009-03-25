@@ -20,7 +20,7 @@
 
 #include "busqueda.h"
 #include "blmaincompany.h"
-#include "plugins.h"
+#include "blplugins.h"
 
 
 /** Inicializa la clase poniendo a NULL todos los valores para que no haya confusion
