@@ -10,7 +10,7 @@ usr/include/ficha.h
 usr/include/fixed.h
 usr/include/funcaux.h
 usr/include/listventanas.h
-usr/include/logpass.h
+usr/include/bldblogindialog.h
 usr/include/msgerror.h
 usr/include/numerocuenta.h
 usr/include/pgimportfiles.h

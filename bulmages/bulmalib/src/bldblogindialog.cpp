@@ -22,7 +22,7 @@
 #include <QString>
 #include <QLabel>
 
-#include "logpass.h"
+#include "bldblogindialog.h"
 #include "blpostgresqlclient.h"
 
 
@@ -30,10 +30,10 @@
 /**
 \return
 **/
-bool logpass::authOK()
+bool BlDbLoginDialog::authOK()
 {
-    _depura ( "logpass::authOK", 0 );
-    _depura ( "END logpass::authOK", 0 );
+    _depura ( "BlDbLogindialog::authOK", 0 );
+    _depura ( "END BlDbLoginDialog::authOK", 0 );
     return m_authOK;
 }
 
@@ -43,35 +43,35 @@ bool logpass::authOK()
 \param parent
 \param name
 **/
-logpass::logpass ( QWidget *parent, const char *name ) : QDialog ( parent )
+BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog ( parent )
 {
-    _depura ( "logpass::logpass", 0 );
+    _depura ( "BlDbLoginDialog::BlDbLoginDialog", 0 );
     setWindowTitle ( name );
     setupUi ( this );
     grpAuthError->setVisible ( TRUE );
     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validar() ) );
     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
     validar();
-    _depura ( "END logpass::logpass", 0 );
+    _depura ( "END BlDbLoginDialog::BlDbLoginDialog", 0 );
 }
 
 
 ///
 /**
 **/
-logpass::~logpass()
+BlDbLoginDialog::~BlDbLoginDialog()
 {
-    _depura ( "logpass::~logpass", 0 );
-    _depura ( "END logpass::~logpass", 0 );
+    _depura ( "BlDbLoginDialog::~BlDbLoginDialog", 0 );
+    _depura ( "END BlDbLoginDialog::~BlDbLoginDialog", 0 );
 }
 
 
 /// Valida si postgres puede abrir bases de datos y si no es asi pide login y password.
 /**
 **/
-void logpass::validar()
+void BlDbLoginDialog::validar()
 {
-    _depura ( "logpass::validar" );
+    _depura ( "BlDbLoginDialog::validar" );
     m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
@@ -111,6 +111,6 @@ void logpass::validar()
         m_password->setText ( "" );
         m_login->setFocus();
     } // end if
-    _depura ( "END logpass::validar" );
+    _depura ( "END BlDbLoginDialog::validar" );
 }
 

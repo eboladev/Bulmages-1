@@ -31,7 +31,7 @@ msgstr "&Cancéler"
 msgid "&Cerrar"
 msgstr "&Fermer"
 
-#: ui_logpassbase.h:156
+#: ui_bldblogindialogbase.h:156
 msgid "&Cerrar el programa"
 msgstr "&Fermer le programme"
 
@@ -69,7 +69,7 @@ msgstr "&Omettre"
 msgid "&Si"
 msgstr "&Oui"
 
-#: ui_logpassbase.h:155
+#: ui_bldblogindialogbase.h:155
 msgid "&Validar"
 msgstr "&Valider"
 
@@ -243,7 +243,7 @@ msgstr "Colonnes visibles"
 msgid "Configuracion Subformularios"
 msgstr "Configuration Subformulaires"
 
-#: ui_logpassbase.h:154
+#: ui_bldblogindialogbase.h:154
 msgid "Contrasenya:"
 msgstr "Mot de passe:"
 
@@ -382,7 +382,7 @@ msgstr ""
 "Érreur dans la XML\n"
 "Document mal formé."
 
-#: logpass.cpp:109
+#: bldblogindialog.cpp:109
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Erreur: usuaire et/ou mot de passe incorrects"
 
@@ -482,7 +482,7 @@ msgstr "La famille de l'article n'éxiste pas<BR>"
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
 
-#: ui_logpassbase.h:149
+#: ui_bldblogindialogbase.h:149
 msgid "Lanzador Bulmages"
 msgstr "Lanceur Bulmages"
 
@@ -494,7 +494,7 @@ msgstr ""
 msgid "Mensaje"
 msgstr "Méssaje"
 
-#: ui_logpassbase.h:150
+#: ui_bldblogindialogbase.h:150
 msgid "Mensaje de error:"
 msgstr "Mésaje d'érreur:"
 
@@ -542,7 +542,7 @@ msgstr "Nom de  champ"
 msgid "Nombre de la Tabla"
 msgstr "Nom de  champ"
 
-#: ui_logpassbase.h:153
+#: ui_bldblogindialogbase.h:153
 msgid "Nombre de usuario:"
 msgstr "Nom d'usuaire:"
 
@@ -612,7 +612,7 @@ msgstr "Query"
 msgid "Quincenal"
 msgstr "Bimensuel"
 
-#: ui_logpassbase.h:152
+#: ui_bldblogindialogbase.h:152
 msgid "Registro de entrada:"
 msgstr "Régistre d'entrée:"
 

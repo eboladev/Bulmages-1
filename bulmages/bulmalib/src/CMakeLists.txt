@@ -34,7 +34,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
 			numerocuenta.cpp
 			blfunctions.cpp
-			logpass.cpp
+			bldblogindialog.cpp
 			blcompanydialog.cpp
 			bldialogchanges.cpp
 			blfixed.cpp
@@ -70,7 +70,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			busqueda.cpp
 			bli18n.cpp)
 
-set(bulmalib_MOCS	logpass.h
+set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
 			msgerror.h
 			busquedafecha.h
@@ -108,7 +108,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			blfixed.h
 			blfunctions.h
 			listventanas.h
-			logpass.h
+			bldblogindialog.h
 			msgerror.h
 			numerocuenta.h
 			pgimportfiles.h
@@ -138,7 +138,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 
 
 set(bulmalib_RCCS ../../bulmages.qrc)
-set(bulmalib_UIS	logpassbase.ui 
+set(bulmalib_UIS	bldblogindialogbase.ui 
 			blcompanydialogbase.ui 
 			msgerrorbase.ui 
 			busquedafechabase.ui 

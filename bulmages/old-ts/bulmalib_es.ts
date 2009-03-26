@@ -650,7 +650,7 @@
 <context>
     <name>logpass</name>
     <message>
-        <location filename="logpass.cpp" line="72"/>
+        <location filename="bldblogindialog.cpp" line="72"/>
         <source>Error: usuario y/o contrasenya incorrectos</source>
         <translation>Error: usuario y/o contraseña incorrectos</translation>
     </message>
@@ -658,37 +658,37 @@
 <context>
     <name>logpassbase</name>
     <message>
-        <location filename="logpassbase.ui" line="146"/>
+        <location filename="bldblogindialogbase.ui" line="146"/>
         <source>&amp;Validar</source>
         <translation>&amp;Validar</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="24"/>
+        <location filename="bldblogindialogbase.ui" line="24"/>
         <source>Lanzador Bulmages</source>
         <translation>Lanzador Bulmagés</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="36"/>
+        <location filename="bldblogindialogbase.ui" line="36"/>
         <source>Mensaje de error:</source>
         <translation>Mensaje de error:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="67"/>
+        <location filename="bldblogindialogbase.ui" line="67"/>
         <source>Registro de entrada:</source>
         <translation>Registro de entrada:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="82"/>
+        <location filename="bldblogindialogbase.ui" line="82"/>
         <source>Nombre de usuario:</source>
         <translation>Nombre de usuario:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="92"/>
+        <location filename="bldblogindialogbase.ui" line="92"/>
         <source>Contrasenya:</source>
         <translation>Contraseña:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="159"/>
+        <location filename="bldblogindialogbase.ui" line="159"/>
         <source>&amp;Cerrar el programa</source>
         <translation>&amp;Cerrar el programa</translation>
     </message>

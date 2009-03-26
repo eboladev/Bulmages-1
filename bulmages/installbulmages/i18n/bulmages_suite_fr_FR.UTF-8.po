@@ -214,7 +214,7 @@ msgstr ""
 msgid "&Cerrar"
 msgstr "&Fermer"
 
-#: ui_logpassbase.h:156
+#: ui_bldblogindialogbase.h:156
 msgid "&Cerrar el programa"
 msgstr "&Fermer le programme"
 
@@ -814,7 +814,7 @@ msgstr "&Ouvriers"
 msgid "&Tutores"
 msgstr "A&uteurs"
 
-#: ui_logpassbase.h:155
+#: ui_bldblogindialogbase.h:155
 msgid "&Validar"
 msgstr "&Valider"
 
@@ -3616,7 +3616,7 @@ msgstr "Contenu de la famille:"
 msgid "Contrapartida"
 msgstr "contrepartie"
 
-#: ui_logpassbase.h:154
+#: ui_bldblogindialogbase.h:154
 msgid "Contrasenya:"
 msgstr "Mot de passe:"
 
@@ -5302,7 +5302,7 @@ msgstr ""
 msgid "Error inesperado."
 msgstr "</B>Inserré"
 
-#: logpass.cpp:109
+#: bldblogindialog.cpp:109
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Erreur: usuaire et/ou mot de passe incorrects"
 
@@ -7710,7 +7710,7 @@ msgstr "La date initiale est postérieure à la date finale."
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
 
-#: ui_logpassbase.h:149
+#: ui_bldblogindialogbase.h:149
 msgid "Lanzador Bulmages"
 msgstr "Lanceur Bulmages"
 
@@ -7926,7 +7926,7 @@ msgstr "Mai"
 msgid "Mensaje"
 msgstr "Méssaje"
 
-#: ui_logpassbase.h:150
+#: ui_bldblogindialogbase.h:150
 msgid "Mensaje de error:"
 msgstr "Mésaje d'érreur:"
 
@@ -8458,7 +8458,7 @@ msgstr "Nom du fournisseur"
 msgid "Nombre de trabajador"
 msgstr "Nouveau ouvrier"
 
-#: ui_logpassbase.h:153
+#: ui_bldblogindialogbase.h:153
 msgid "Nombre de usuario:"
 msgstr "Nom d'usuaire:"
 
@@ -10029,7 +10029,7 @@ msgstr "Régistre d'entrée:"
 msgid "Registro de IVA"
 msgstr "Régistre de &TVA"
 
-#: ui_logpassbase.h:152
+#: ui_bldblogindialogbase.h:152
 msgid "Registro de entrada:"
 msgstr "Régistre d'entrée:"
 

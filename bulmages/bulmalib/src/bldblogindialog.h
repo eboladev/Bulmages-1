@@ -19,19 +19,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LOGPASS_H
-#define LOGPASS_H
+#ifndef BLDBLOGINDIALOG_H
+#define BLDBLOGINDIALOG_H
 
 #include <QDialog>
 
 #include "blfunctions.h"
-#include "ui_logpassbase.h"
+#include "ui_bldblogindialogbase.h"
 #include "blpostgresqlclient.h"
 
 
 /// Presenta un di&aacute;logo que pregunta el usuario y la contrase&ntilde;a
 /// para acceder a la base de datos.
-class logpass : public QDialog, public Ui_logpassbase
+class BlDbLoginDialog : public QDialog, public Ui_BlDbLoginDialogBase
 {
     Q_OBJECT
 
@@ -42,8 +42,8 @@ private:
     BlPostgreSqlClient *metabase;
 
 public:
-    logpass ( QWidget *parent = 0, const char *name = 0 );
-    ~logpass();
+    BlDbLoginDialog ( QWidget *parent = 0, const char *name = 0 );
+    ~BlDbLoginDialog();
     bool authOK();
 
 public slots:

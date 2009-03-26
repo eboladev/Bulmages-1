@@ -2,8 +2,8 @@
  <author></author>
  <comment></comment>
  <exportmacro></exportmacro>
- <class>logpassbase</class>
- <widget class="QDialog" name="logpassbase" >
+ <class>BlDbLoginDialogBase</class>
+ <widget class="QDialog" name="BlDbLoginDialogBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

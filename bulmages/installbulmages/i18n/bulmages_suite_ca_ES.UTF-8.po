@@ -190,7 +190,7 @@ msgstr "&Cancel·la"
 msgid "&Cerrar"
 msgstr "Tan&ca"
 
-#: ui_logpassbase.h:156
+#: ui_bldblogindialogbase.h:156
 msgid "&Cerrar el programa"
 msgstr "Tan&car el programa"
 
@@ -742,7 +742,7 @@ msgstr "&Treballadors"
 msgid "&Tutores"
 msgstr "&Tutors"
 
-#: ui_logpassbase.h:155
+#: ui_bldblogindialogbase.h:155
 msgid "&Validar"
 msgstr "&Valida"
 
@@ -3455,7 +3455,7 @@ msgstr "Dades de la comptabilitat:"
 msgid "Contrapartida"
 msgstr "Contrapartida"
 
-#: ui_logpassbase.h:154
+#: ui_bldblogindialogbase.h:154
 msgid "Contrasenya:"
 msgstr "Paraula de pas:"
 
@@ -5142,7 +5142,7 @@ msgstr ""
 msgid "Error inesperado."
 msgstr "inserit"
 
-#: logpass.cpp:109
+#: bldblogindialog.cpp:109
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuari i/o contrasenya incorrecta"
 
@@ -7540,7 +7540,7 @@ msgstr "La data inicial és posterior a la data final."
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forma de pagament del pressupost no existeix"
 
-#: ui_logpassbase.h:149
+#: ui_bldblogindialogbase.h:149
 msgid "Lanzador Bulmages"
 msgstr "Llançador BulmaGés"
 
@@ -7765,7 +7765,7 @@ msgstr "Maig"
 msgid "Mensaje"
 msgstr "Missatge"
 
-#: ui_logpassbase.h:150
+#: ui_bldblogindialogbase.h:150
 msgid "Mensaje de error:"
 msgstr "Missatge d'error:"
 
@@ -8296,7 +8296,7 @@ msgstr "Nom del proveïdor"
 msgid "Nombre de trabajador"
 msgstr "Nom del proveïdor"
 
-#: ui_logpassbase.h:153
+#: ui_bldblogindialogbase.h:153
 msgid "Nombre de usuario:"
 msgstr "Nom d'usuari:"
 
@@ -9845,7 +9845,7 @@ msgstr "Registre factura"
 msgid "Registro de IVA"
 msgstr "Registre d'IVA"
 
-#: ui_logpassbase.h:152
+#: ui_bldblogindialogbase.h:152
 msgid "Registro de entrada:"
 msgstr "Registre d'entrada:"
 

@@ -37,7 +37,7 @@
 #include "blsplashscreen.h"
 #include "blconfiguration.h"
 #include "qtextcodec.h"
-#include "logpass.h"
+#include "bldblogindialog.h"
 #include "blplugins.h"
 #include "blapplication.h"
 #include "config.h"
@@ -112,7 +112,7 @@ int main ( int argc, char **argv )
             bges = new Bulmacont ( NULL, 0, db );
             bges->hide();
         } else {
-            logpass *login1 = new logpass ( 0, "" );
+            BlDbLoginDialog *login1 = new BlDbLoginDialog ( 0, "" );
             if ( !login1->authOK() )
                 login1->exec();
             if ( !login1->authOK() )

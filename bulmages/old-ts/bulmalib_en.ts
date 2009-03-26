@@ -658,7 +658,7 @@ Consulta SQL</translation>
 <context>
     <name>logpass</name>
     <message>
-        <location filename="logpass.cpp" line="72"/>
+        <location filename="bldblogindialog.cpp" line="72"/>
         <source>Error: usuario y/o contrasenya incorrectos</source>
         <translation>Error: incorrect user and/or password</translation>
     </message>
@@ -666,37 +666,37 @@ Consulta SQL</translation>
 <context>
     <name>logpassbase</name>
     <message>
-        <location filename="logpassbase.ui" line="146"/>
+        <location filename="bldblogindialogbase.ui" line="146"/>
         <source>&amp;Validar</source>
         <translation>&amp;Validate</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="24"/>
+        <location filename="bldblogindialogbase.ui" line="24"/>
         <source>Lanzador Bulmages</source>
         <translation>Lanzador Bulmages</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="36"/>
+        <location filename="bldblogindialogbase.ui" line="36"/>
         <source>Mensaje de error:</source>
         <translation>Message of error:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="67"/>
+        <location filename="bldblogindialogbase.ui" line="67"/>
         <source>Registro de entrada:</source>
         <translation>Incoming log:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="82"/>
+        <location filename="bldblogindialogbase.ui" line="82"/>
         <source>Nombre de usuario:</source>
         <translation>Name of user:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="92"/>
+        <location filename="bldblogindialogbase.ui" line="92"/>
         <source>Contrasenya:</source>
         <translation>Password:</translation>
     </message>
     <message>
-        <location filename="logpassbase.ui" line="159"/>
+        <location filename="bldblogindialogbase.ui" line="159"/>
         <source>&amp;Cerrar el programa</source>
         <translation>&amp;Close the program</translation>
     </message>

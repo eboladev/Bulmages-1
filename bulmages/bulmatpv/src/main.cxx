@@ -28,7 +28,7 @@
 #include "blplugins.h"
 #include "bulmatpv.h"
 #include "blsplashscreen.h"
-#include "logpass.h"
+#include "bldblogindialog.h"
 #include "blfunctions.h"
 #include "blfixed.h"
 #include "blplugins.h"
@@ -90,7 +90,7 @@ int main ( int argc, char **argv )
             bges = new BulmaTPV ( db );
             bges->hide();
         } else {
-            logpass* login1 = new logpass ( 0, "" );
+            BlDbLoginDialog* login1 = new BlDbLoginDialog ( 0, "" );
             if ( !login1->authOK() ) {
                 login1->exec();
             } // end if
