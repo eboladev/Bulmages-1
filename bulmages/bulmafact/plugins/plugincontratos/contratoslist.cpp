@@ -27,7 +27,7 @@
 #include "contratoslist.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "informereferencia.h"
 #include "blplugins.h"
 #include "contratoview.h"
@@ -45,7 +45,7 @@
 \return
 **/
 ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : BlFormList ( comp, parent, flag ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag ), BlImportExport ( comp )
 {
     _depura ( "ContratosList::ContratosList", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

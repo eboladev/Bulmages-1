@@ -40,7 +40,7 @@
 #include "listcuentasview1.h"
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedacuenta.h"
 #include "ui_aplinteligentesbase.h"
 #include "bcform.h"
@@ -92,7 +92,7 @@ private:
     QLabel *labelnumero[100];
     QLabel *labeltexto[100];
     BusquedaCuenta *varcta[100];
-    BusquedaFecha *varfecha[100];
+    BlDateSearch *varfecha[100];
     QLineEdit *varnumero[100];
     QLineEdit *vartexto[100];
 

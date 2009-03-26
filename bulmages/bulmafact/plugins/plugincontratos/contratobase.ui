@@ -459,7 +459,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaPeriodo" name="mui_periodicidadcontrato" />
+         <widget class="BlPeriodicityComboBox" name="mui_periodicidadcontrato" />
         </item>
        </layout>
       </item>
@@ -516,7 +516,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="mui_ffincontrato" >
+         <widget class="BlDateSearch" native="1" name="mui_ffincontrato" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
             <horstretch>0</horstretch>
@@ -563,7 +563,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="mui_fincontrato" >
+         <widget class="BlDateSearch" native="1" name="mui_fincontrato" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
             <horstretch>0</horstretch>
@@ -747,9 +747,9 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
@@ -767,9 +767,9 @@
    <header>listlincontratoview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaPeriodo</class>
+   <class>BlPeriodicityComboBox</class>
    <extends>QComboBox</extends>
-   <header>busquedaperiodo.h</header>
+   <header>blperiodicitycombobox.h</header>
   </customwidget>
   <customwidget>
    <class>Busqueda</class>

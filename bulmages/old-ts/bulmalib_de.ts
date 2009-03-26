@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1">
 <context>
-    <name>BusquedaFecha</name>
+    <name>BlDateSearch</name>
     <message>
-        <location filename="busquedafecha.cpp" line="101"/>
+        <location filename="bldatesearch.cpp" line="101"/>
         <source>Seleccione fecha</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>BusquedaFechaBase</name>
+    <name>BlDateSearchBase</name>
     <message>
-        <location filename="busquedafechabase.ui" line="25"/>
+        <location filename="bldatesearchbase.ui" line="25"/>
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>BusquedaPeriodo</name>
+    <name>BlPeriodicityComboBox</name>
     <message>
-        <location filename="busquedaperiodo.cpp" line="43"/>
+        <location filename="blperiodicitycombobox.cpp" line="43"/>
         <source>Semanal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="busquedaperiodo.cpp" line="44"/>
+        <location filename="blperiodicitycombobox.cpp" line="44"/>
         <source>Quincenal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="busquedaperiodo.cpp" line="45"/>
+        <location filename="blperiodicitycombobox.cpp" line="45"/>
         <source>Mensual</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="busquedaperiodo.cpp" line="46"/>
+        <location filename="blperiodicitycombobox.cpp" line="46"/>
         <source>Trimestral</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="busquedaperiodo.cpp" line="47"/>
+        <location filename="blperiodicitycombobox.cpp" line="47"/>
         <source>Semestral</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="busquedaperiodo.cpp" line="48"/>
+        <location filename="blperiodicitycombobox.cpp" line="48"/>
         <source>Anual</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="busquedaperiodo.cpp" line="49"/>
+        <location filename="blperiodicitycombobox.cpp" line="49"/>
         <source>Bienal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -105,254 +105,254 @@
 <context>
     <name>ImportBulmaFact</name>
     <message>
-        <location filename="pgimportfiles.cpp" line="1706"/>
+        <location filename="blimportexport.cpp" line="1706"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el cliente </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1714"/>
+        <location filename="blimportexport.cpp" line="1714"/>
         <source>&lt;LI&gt; El cliente ya existe se pueden hacer modificaciones&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1733"/>
+        <location filename="blimportexport.cpp" line="1733"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el proveedor </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1741"/>
+        <location filename="blimportexport.cpp" line="1741"/>
         <source>&lt;LI&gt; El proveedor ya existe se pueden hacer modificaciones&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1760"/>
+        <location filename="blimportexport.cpp" line="1760"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando la froma de pago </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1768"/>
+        <location filename="blimportexport.cpp" line="1768"/>
         <source>&lt;LI&gt;Datos insuficientes para tratar la forma de pago.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1777"/>
+        <location filename="blimportexport.cpp" line="1777"/>
         <source>&lt;LI&gt; Ya existe esta forma de pago.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1787"/>
+        <location filename="blimportexport.cpp" line="1787"/>
         <source>&lt;LI&gt; Forma de pago &lt;B&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1787"/>
+        <location filename="blimportexport.cpp" line="1787"/>
         <source>&lt;/B&gt; Insertada</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1796"/>
+        <location filename="blimportexport.cpp" line="1796"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando almacen </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1827"/>
+        <location filename="blimportexport.cpp" line="1827"/>
         <source>&lt;/B&gt; Insertado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1864"/>
+        <location filename="blimportexport.cpp" line="1864"/>
         <source>&lt;P&gt;Datos insuficientes para tratar la familia.&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1881"/>
+        <location filename="blimportexport.cpp" line="1881"/>
         <source>&lt;P&gt; Familia &lt;B&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1976"/>
+        <location filename="blimportexport.cpp" line="1976"/>
         <source>&lt;/B&gt; Insertado&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1893"/>
+        <location filename="blimportexport.cpp" line="1893"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Articulo </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1984"/>
+        <location filename="blimportexport.cpp" line="1984"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LPedidoCliente </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2005"/>
+        <location filename="blimportexport.cpp" line="2005"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DPedidoCliente </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2019"/>
+        <location filename="blimportexport.cpp" line="2019"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Pedido Cliente </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2481"/>
+        <location filename="blimportexport.cpp" line="2481"/>
         <source>El almace&#xc5;&#x84; del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2490"/>
+        <location filename="blimportexport.cpp" line="2490"/>
         <source>El cliente&#xc5;&#x84; del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2718"/>
+        <location filename="blimportexport.cpp" line="2718"/>
         <source>La forma de pago&#xc5;&#x84; del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2728"/>
+        <location filename="blimportexport.cpp" line="2728"/>
         <source>El empleado del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2190"/>
+        <location filename="blimportexport.cpp" line="2190"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LAlbaran </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2211"/>
+        <location filename="blimportexport.cpp" line="2211"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DAlbaran </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2225"/>
+        <location filename="blimportexport.cpp" line="2225"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Albaran </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2395"/>
+        <location filename="blimportexport.cpp" line="2395"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LFactura </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2416"/>
+        <location filename="blimportexport.cpp" line="2416"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DFactura </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2430"/>
+        <location filename="blimportexport.cpp" line="2430"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Factura </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2519"/>
+        <location filename="blimportexport.cpp" line="2519"/>
         <source>La factura ya existe y no se va a insertar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2612"/>
+        <location filename="blimportexport.cpp" line="2612"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LPresupuesto </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2633"/>
+        <location filename="blimportexport.cpp" line="2633"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DPresupuesto </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2647"/>
+        <location filename="blimportexport.cpp" line="2647"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Presupuesto </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1719"/>
+        <location filename="blimportexport.cpp" line="1719"/>
         <source>&lt;LI&gt; El cliente no existe, se debe hacer una insercion de este&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1746"/>
+        <location filename="blimportexport.cpp" line="1746"/>
         <source>&lt;LI&gt; El proveedor no existe, se debe hacer una insercion de este&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1810"/>
+        <location filename="blimportexport.cpp" line="1810"/>
         <source>&lt;LI&gt;Datos insuficientes para tratar el almacen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1818"/>
+        <location filename="blimportexport.cpp" line="1818"/>
         <source>&lt;LI&gt; Ya existe este almacen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1827"/>
+        <location filename="blimportexport.cpp" line="1827"/>
         <source>&lt;LI&gt; Almacen &lt;B&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1839"/>
+        <location filename="blimportexport.cpp" line="1839"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando familia </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1859"/>
+        <location filename="blimportexport.cpp" line="1859"/>
         <source>&lt;P&gt; No se ha encontrado el padre de esta familia.&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1872"/>
+        <location filename="blimportexport.cpp" line="1872"/>
         <source>&lt;P&gt; Ya existe esta familia.&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1920"/>
+        <location filename="blimportexport.cpp" line="1920"/>
         <source>La familia del articulo no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1945"/>
+        <location filename="blimportexport.cpp" line="1945"/>
         <source>&lt;P&gt;Datos insuficientes para tratar el articulo.&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1954"/>
+        <location filename="blimportexport.cpp" line="1954"/>
         <source>&lt;P&gt; Ya existe este articulo.&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1976"/>
+        <location filename="blimportexport.cpp" line="1976"/>
         <source>&lt;P&gt; Articulo &lt;B&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2780"/>
+        <location filename="blimportexport.cpp" line="2780"/>
         <source>El articulo de la linea de presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2698"/>
+        <location filename="blimportexport.cpp" line="2698"/>
         <source>El almacen del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2708"/>
+        <location filename="blimportexport.cpp" line="2708"/>
         <source>El cliente del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="2296"/>
+        <location filename="blimportexport.cpp" line="2296"/>
         <source>La forma de pago del presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
@@ -706,58 +706,58 @@
     </message>
 </context>
 <context>
-    <name>pgimportfiles</name>
+    <name>BlImportExport</name>
     <message>
-        <location filename="pgimportfiles.cpp" line="1330"/>
+        <location filename="blimportexport.cpp" line="1330"/>
         <source>Exportando :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="412"/>
+        <location filename="blimportexport.cpp" line="412"/>
         <source>&lt;LI&gt;Se ha insertado la cuenta </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="554"/>
+        <location filename="blimportexport.cpp" line="554"/>
         <source>&lt;LI&gt;Apunte fuera de fecha&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="565"/>
+        <location filename="blimportexport.cpp" line="565"/>
         <source>&lt;LI&gt;Terminado&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="613"/>
+        <location filename="blimportexport.cpp" line="613"/>
         <source>&lt;LI&gt;Exportando Nueva Forma de Pago&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1372"/>
+        <location filename="blimportexport.cpp" line="1372"/>
         <source>Application name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="1372"/>
+        <location filename="blimportexport.cpp" line="1372"/>
         <source>Error en el XML.
 Documento mal formado.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="415"/>
+        <location filename="blimportexport.cpp" line="415"/>
         <source>&lt;LI&gt;Ya hay una cuenta con el codigo </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="524"/>
+        <location filename="blimportexport.cpp" line="524"/>
         <source>&lt;LI&gt;Insercion de asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pgimportfiles.cpp" line="552"/>
+        <location filename="blimportexport.cpp" line="552"/>
         <source>&lt;LI&gt;Insercion de apunte</source>
         <translation type="unfinished"></translation>
     </message>

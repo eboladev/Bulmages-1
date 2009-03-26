@@ -28,7 +28,7 @@
 
 #include "ui_pagobase.h"
 #include "blpostgresqlclient.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "dialogchanges.h"
 #include "bfform.h"
 

@@ -27,7 +27,7 @@
 #include <QFrame>
 
 #include "blconfiguration.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "asiento1.h"
 #include "ui_asientobase.h"
 

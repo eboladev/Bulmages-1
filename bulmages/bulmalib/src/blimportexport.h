@@ -20,8 +20,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __PGIMPORTFILES__
-#define __PGIMPORTFILES__
+#ifndef BLIMPORTEXPORT_H
+#define BLIMPORTEXPORT_H
 
 #include <QFile>
 #include <QString>
@@ -56,7 +56,7 @@
 
 /// Clase para importaci&oacute;n y exportaci&oacute;n a distintos formatos de archivo de datos.
 /** */
-class pgimportfiles
+class BlImportExport
 {
 private:
     /// Base de datos con la que trabaja la clase y de la que se hace
@@ -84,8 +84,8 @@ public:
     void setModoTest();
     void setModoNormal();
     bool modoTest();
-    pgimportfiles ( BlPostgreSqlClient * );
-    virtual ~pgimportfiles();
+    BlImportExport ( BlPostgreSqlClient * );
+    virtual ~BlImportExport();
     int contaplus2Bulmages ( QFile &, QFile & );
     int bulmages2Contaplus ( QFile &, QFile & );
     /// Esta funci&oacute;n pasa datos de una empresa al formato XML.

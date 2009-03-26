@@ -394,7 +394,7 @@
     </widget>
    </item>
    <item row="3" column="1" >
-    <widget class="BusquedaFecha" native="1" name="mui_fechainventario" >
+    <widget class="BlDateSearch" native="1" name="mui_fechainventario" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
        <horstretch>0</horstretch>
@@ -521,9 +521,9 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>ListControlStockView</class>

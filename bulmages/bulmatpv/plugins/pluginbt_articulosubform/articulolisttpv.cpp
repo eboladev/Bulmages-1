@@ -28,7 +28,7 @@
 #include <QFileDialog>
 
 #include "articulolisttpv.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfcompany.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"

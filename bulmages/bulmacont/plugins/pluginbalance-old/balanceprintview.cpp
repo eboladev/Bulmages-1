@@ -27,7 +27,7 @@
 #include <QToolButton>
 #include <QCheckBox>
 
-#include <busquedafecha.h>
+#include <bldatesearch.h>
 
 #include "balanceprintview.h"
 #include "listcuentasview1.h"

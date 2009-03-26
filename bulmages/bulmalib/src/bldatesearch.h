@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,34 +19,42 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDAPERIODO_H
-#define BUSQUEDAPERIODO_H
+#ifndef BLDATESEARCH_H
+#define BLDATESEARCH_H
 
-#include "blcombobox.h"
+#include <QLineEdit>
+
 #include "blfunctions.h"
+#include "blwidget.h"
+#include "ui_bldatesearchbase.h"
 
 
-class BusquedaPeriodo : public BlComboBox
+class BlDateSearch : public BlWidget, public Ui_BlDateSearchBase
 {
     Q_OBJECT
 
-private:
-    QString m_textos[10];
-    QString m_valores[10];
-
 public:
-    BusquedaPeriodo ( QWidget *parent = 0 );
-    ~BusquedaPeriodo();
-    virtual void setperiodo ( QString periodo );
-    virtual void setFieldValue ( QString periodo );
-    QString periodo();
+    BlDateSearch ( QWidget *parent = 0 );
+    ~BlDateSearch();
+    virtual void setfecha ( QString val );
+    virtual void setText ( QString val );
+    virtual void setFieldValue ( QString val );
+    virtual QString fecha();
+    virtual QString text();
     virtual QString fieldValue();
 
 public slots:
-    void s_activated ( int index );
+    virtual void s_searchFecha();
+    virtual void s_fechatextChanged ( const QString & );
+    virtual void s_fechalostFocus();
+    virtual void s_returnPressed();
+    virtual void selectAll();
+    virtual void setFocus();
 
 signals:
     void valueChanged ( QString );
+    void returnPressed();
+    void editingFinished();
 };
 
 #endif

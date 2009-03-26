@@ -333,7 +333,7 @@
        <widget class="QLineEdit" name="mui_saldoinf" />
       </item>
       <item row="0" column="2" >
-       <widget class="BusquedaFecha" native="1" name="mui_fechainicial" >
+       <widget class="BlDateSearch" native="1" name="mui_fechainicial" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
@@ -359,7 +359,7 @@
        </widget>
       </item>
       <item row="0" column="5" >
-       <widget class="BusquedaFecha" native="1" name="mui_fechafinal" >
+       <widget class="BlDateSearch" native="1" name="mui_fechafinal" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -587,9 +587,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <resources>

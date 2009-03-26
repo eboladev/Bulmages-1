@@ -31,7 +31,7 @@
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
 #include "busquedaformapago.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "blfixed.h"

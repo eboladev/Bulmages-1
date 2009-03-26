@@ -42,7 +42,7 @@
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="BusquedaFecha" name="mui_ejercicioActual_fechaBalance" />
+       <widget class="BlDateSearch" name="mui_ejercicioActual_fechaBalance" />
       </item>
      </layout>
     </widget>
@@ -70,7 +70,7 @@
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="BusquedaFecha" name="mui_ejercicioAnterior_fechaBalance" />
+       <widget class="BlDateSearch" name="mui_ejercicioAnterior_fechaBalance" />
       </item>
      </layout>
     </widget>
@@ -129,9 +129,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

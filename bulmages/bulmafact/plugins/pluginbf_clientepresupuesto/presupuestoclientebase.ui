@@ -521,7 +521,7 @@
        </widget>
       </item>
       <item row="2" column="3" colspan="2" >
-       <widget class="BusquedaFecha" name="mui_fpresupuesto" >
+       <widget class="BlDateSearch" name="mui_fpresupuesto" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -556,7 +556,7 @@
        </widget>
       </item>
       <item row="3" column="3" colspan="2" >
-       <widget class="BusquedaFecha" name="mui_vencpresupuesto" >
+       <widget class="BlDateSearch" name="mui_vencpresupuesto" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1499,9 +1499,9 @@
    <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaTrabajador</class>

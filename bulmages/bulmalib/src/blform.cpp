@@ -34,7 +34,7 @@
 #include "blcombobox.h"
 #include "blplugins.h"
 #include "blradiobutton.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 
 
 ///
@@ -213,7 +213,7 @@ void BlForm::generaCampo ( const QString &objname, const QString &textname, cons
     textLabel2_9_26->setText ( textname );
 
     if ( type == "DBDATE" ) {
-        BusquedaFecha * bus = new BusquedaFecha ( frame );
+        BlDateSearch * bus = new BlDateSearch ( frame );
         bus->setObjectName ( objname );
         hboxLayout160->addWidget ( bus );
     } else {

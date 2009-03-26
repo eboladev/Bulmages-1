@@ -27,7 +27,7 @@
 #include "bldbsubform.h"
 #include "blsubform.h"
 
-#include "busquedafecha2.h"
+#include "bldatelineedit.h"
 
 
 class BcSubForm;

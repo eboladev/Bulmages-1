@@ -33,7 +33,7 @@
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 #include "bccompany.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedacuenta.h"
 
 

@@ -28,7 +28,7 @@
 #include <QCheckBox>
 
 #include "blpostgresqlclient.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "bfsubform.h"
 #include "bfform.h"
 

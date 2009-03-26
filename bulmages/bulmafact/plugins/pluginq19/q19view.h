@@ -29,7 +29,7 @@
 
 #include "ui_q19base.h"
 #include "blpostgresqlclient.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "dialogchanges.h"
 #include "bfform.h"
 #include "facturaslist.h"

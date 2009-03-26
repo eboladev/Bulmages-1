@@ -20,7 +20,7 @@
 
 #include "tarifalistview.h"
 #include "tarifaview.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 
@@ -32,7 +32,7 @@
 \param editomodo
 **/
 TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : BlFormList ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
     _depura ( "TarifaListView::INIT_TarifaListView()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );

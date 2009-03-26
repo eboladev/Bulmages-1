@@ -23,7 +23,7 @@
 #define ARTICLESLISTTPV_H
 
 #include "bfcompany.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 

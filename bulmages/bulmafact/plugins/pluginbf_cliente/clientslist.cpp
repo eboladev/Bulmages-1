@@ -29,7 +29,7 @@
 #include "clienteview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "informereferencia.h"
 #include "blplugins.h"
 
@@ -39,7 +39,7 @@
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
 ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : BlFormList ( comp, parent, flag, editmode ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     _depura ( "ClientsList::ClientsList", 0 );
     setupUi ( this );

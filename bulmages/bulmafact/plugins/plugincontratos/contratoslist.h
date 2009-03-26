@@ -21,7 +21,7 @@
 #ifndef CONTRATOSLIST_H
 #define CONTRATOSLIST_H
 
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -66,7 +66,7 @@ public:
     Deriva de Ficha para la estandarizacion de Pantallas.
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
-class ContratosList : public BlFormList, public Ui_ContratosListBase, public pgimportfiles
+class ContratosList : public BlFormList, public Ui_ContratosListBase, public BlImportExport
 {
     Q_OBJECT
 

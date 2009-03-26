@@ -22,7 +22,7 @@
 #ifndef clientslist_H
 #define clientslist_H
 
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
@@ -46,7 +46,7 @@ public:
 
 /** Esta clase implementa la pantalla de listado de clientes.
 */
-class ClientsList : public BlFormList, public Ui_ClientsListBase, public pgimportfiles
+class ClientsList : public BlFormList, public Ui_ClientsListBase, public BlImportExport
 {
     Q_OBJECT
 

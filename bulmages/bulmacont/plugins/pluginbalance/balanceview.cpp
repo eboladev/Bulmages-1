@@ -29,7 +29,7 @@
 #include "arbol.h"
 #include "blpostgresqlclient.h"
 #include "balanceprintview.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedacuenta.h"
 #include "busquedaccoste.h"
 #include "selectccosteview.h"

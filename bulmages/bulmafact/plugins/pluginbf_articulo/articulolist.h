@@ -23,7 +23,7 @@
 #define ARTICLESLIST_H
 
 #include "bfcompany.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 
@@ -48,7 +48,7 @@ public:
 /** Clase que maneja la ventana de listado de articulos
     Se encarga del control y manejo de la venta que presenta el listado de articulos.
 */
-class ArticuloList : public BlFormList, public Ui_ArticuloListBase, public pgimportfiles
+class ArticuloList : public BlFormList, public Ui_ArticuloListBase, public BlImportExport
 {
     Q_OBJECT
 

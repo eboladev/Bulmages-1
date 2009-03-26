@@ -79,7 +79,7 @@
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="BusquedaFecha" name="m_fechafin" >
+       <widget class="BlDateSearch" name="m_fechafin" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
           <horstretch>0</horstretch>
@@ -102,7 +102,7 @@
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="BusquedaFecha" name="m_fechain" >
+       <widget class="BlDateSearch" name="m_fechain" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
           <horstretch>0</horstretch>
@@ -663,9 +663,9 @@
    <header>busquedabanco.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>CobrosListSubForm</class>

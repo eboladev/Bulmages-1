@@ -540,7 +540,7 @@
        </widget>
       </item>
       <item row="3" column="3" >
-       <widget class="BusquedaFecha" name="mui_fechaalbaran" >
+       <widget class="BlDateSearch" name="mui_fechaalbaran" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1490,9 +1490,9 @@
    <header>listdescalbaranclienteview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaFormaPago</class>

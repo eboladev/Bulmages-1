@@ -27,7 +27,7 @@
 #include <QLineEdit>
 #include <QLabel>
 
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "ui_albaranproveedorbase.h"

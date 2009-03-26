@@ -20,32 +20,32 @@
 
 #include <QCalendarWidget>
 
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 
 
 ///  Inicializa el objeto y hace todas las conexiones necesarias.
 /**
 \param parent
 **/
-BusquedaFecha::BusquedaFecha ( QWidget *parent ) : BlWidget ( parent )
+BlDateSearch::BlDateSearch ( QWidget *parent ) : BlWidget ( parent )
 {
-    _depura ( "BusquedaFecha::BusquedaFecha", 0 );
+    _depura ( "BlDateSearch::BlDateSearch", 0 );
     setupUi ( this );
     QObject::connect ( mui_busquedaFecha, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_searchFecha() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SLOT ( s_fechalostFocus() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
-    _depura ( "END BusquedaFecha::BusquedaFecha", 0 );
+    _depura ( "END BlDateSearch::BlDateSearch", 0 );
 }
 
 
 /// No requiere de acciones especiales en el destructor.
 /**
 **/
-BusquedaFecha::~BusquedaFecha()
+BlDateSearch::~BlDateSearch()
 {
-    _depura ( "BusquedaFecha::~BusquedaFecha", 0 );
-    _depura ( "END BusquedaFecha::~BusquedaFecha", 0 );
+    _depura ( "BlDateSearch::~BlDateSearch", 0 );
+    _depura ( "END BlDateSearch::~BlDateSearch", 0 );
 }
 
 
@@ -53,23 +53,23 @@ BusquedaFecha::~BusquedaFecha()
 /**
 \param val
 **/
-void BusquedaFecha::setfecha ( QString val )
+void BlDateSearch::setfecha ( QString val )
 {
-    _depura ( "BusquedaFecha::setfecha", 0 );
+    _depura ( "BlDateSearch::setfecha", 0 );
     mui_textoFecha->setText ( val );
-    _depura ( "END BusquedaFecha::setfecha", 0 );
+    _depura ( "END BlDateSearch::setfecha", 0 );
 }
 
 ///
 /**
 \param val
 **/
-void BusquedaFecha::setText ( QString val )
+void BlDateSearch::setText ( QString val )
 {
-    _depura ( "BusquedaFecha::setText", 0 );
+    _depura ( "BlDateSearch::setText", 0 );
     s_fechalostFocus();
     mui_textoFecha->setText ( val );
-    _depura ( "END BusquedaFecha::setText", 0 );
+    _depura ( "END BlDateSearch::setText", 0 );
 }
 
 
@@ -77,11 +77,11 @@ void BusquedaFecha::setText ( QString val )
 /**
 \param val
 **/
-void BusquedaFecha::setFieldValue ( QString val )
+void BlDateSearch::setFieldValue ( QString val )
 {
-    _depura ( "BusquedaFecha::setFieldValue", 0 );
+    _depura ( "BlDateSearch::setFieldValue", 0 );
     mui_textoFecha->setText ( val );
-    _depura ( "END BusquedaFecha::setFieldValue", 0 );
+    _depura ( "END BlDateSearch::setFieldValue", 0 );
 }
 
 
@@ -89,10 +89,10 @@ void BusquedaFecha::setFieldValue ( QString val )
 /**
 \return
 **/
-QString BusquedaFecha::fecha()
+QString BlDateSearch::fecha()
 {
-    _depura ( "BusquedaFecha::fecha", 0 );
-    _depura ( "END BusquedaFecha::fecha", 0 );
+    _depura ( "BlDateSearch::fecha", 0 );
+    _depura ( "END BlDateSearch::fecha", 0 );
     s_fechalostFocus();
     return mui_textoFecha->text();
 }
@@ -102,10 +102,10 @@ QString BusquedaFecha::fecha()
 /**
 \return
 **/
-QString BusquedaFecha::text()
+QString BlDateSearch::text()
 {
-    _depura ( "BusquedaFecha::text", 0 );
-    _depura ( "END BusquedaFecha::text", 0 );
+    _depura ( "BlDateSearch::text", 0 );
+    _depura ( "END BlDateSearch::text", 0 );
     s_fechalostFocus();
     return mui_textoFecha->text();
 }
@@ -115,11 +115,11 @@ QString BusquedaFecha::text()
 /**
 \return
 **/
-QString BusquedaFecha::fieldValue()
+QString BlDateSearch::fieldValue()
 {
-    _depura ( "BusquedaFecha::fieldValue", 0 );
+    _depura ( "BlDateSearch::fieldValue", 0 );
     s_fechalostFocus();
-    _depura ( "END BusquedaFecha::fieldValue", 0 );
+    _depura ( "END BlDateSearch::fieldValue", 0 );
     return mui_textoFecha->text();
 }
 
@@ -127,43 +127,43 @@ QString BusquedaFecha::fieldValue()
 ///
 /**
 **/
-void BusquedaFecha::s_returnPressed()
+void BlDateSearch::s_returnPressed()
 {
-    _depura ( "BusquedaFecha::s_enterPressed", 0 );
+    _depura ( "BlDateSearch::s_enterPressed", 0 );
     s_fechalostFocus();
     emit returnPressed();
-    _depura ( "END BusquedaFecha::s_enterPressed", 0 );
+    _depura ( "END BlDateSearch::s_enterPressed", 0 );
 }
 
 
 ///
 /**
 **/
-void BusquedaFecha::selectAll()
+void BlDateSearch::selectAll()
 {
-    _depura ( "BusquedaFecha::selectAll", 0 );
+    _depura ( "BlDateSearch::selectAll", 0 );
     mui_textoFecha->selectAll();
-    _depura ( "END BusquedaFecha::selectAll", 0 );
+    _depura ( "END BlDateSearch::selectAll", 0 );
 }
 
 
 ///
 /**
 **/
-void BusquedaFecha::setFocus()
+void BlDateSearch::setFocus()
 {
-    _depura ( "BusquedaFecha::setFocus", 0 );
+    _depura ( "BlDateSearch::setFocus", 0 );
     mui_textoFecha->setFocus ( Qt::OtherFocusReason );
-    _depura ( "END BusquedaFecha::setFocus", 0 );
+    _depura ( "END BlDateSearch::setFocus", 0 );
 }
 
 
 ///
 /**
 **/
-void BusquedaFecha::s_searchFecha()
+void BlDateSearch::s_searchFecha()
 {
-    _depura ( "BusquedaFecha::s_searchFecha", 0 );
+    _depura ( "BlDateSearch::s_searchFecha", 0 );
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -188,7 +188,7 @@ void BusquedaFecha::s_searchFecha()
     delete diag;
 
     emit ( valueChanged ( mui_textoFecha->text() ) );
-    _depura ( "END BusquedaFecha::s_searchFecha", 0 );
+    _depura ( "END BlDateSearch::s_searchFecha", 0 );
 }
 
 
@@ -197,9 +197,9 @@ void BusquedaFecha::s_searchFecha()
 \param texto
 \return
 **/
-void BusquedaFecha::s_fechatextChanged ( const QString &texto )
+void BlDateSearch::s_fechatextChanged ( const QString &texto )
 {
-    _depura ( "BusquedaFecha::s_fechatextChanged", 0 );
+    _depura ( "BlDateSearch::s_fechatextChanged", 0 );
     if ( texto == "+" )
         s_searchFecha();
     if ( texto == "*" )
@@ -210,19 +210,19 @@ void BusquedaFecha::s_fechatextChanged ( const QString &texto )
         return;
     } // end if
     emit ( valueChanged ( mui_textoFecha->text() ) );
-    _depura ( "END BusquedaFecha::s_fechatextChanged", 0 );
+    _depura ( "END BlDateSearch::s_fechatextChanged", 0 );
 }
 
 
 ///
 /**
 **/
-void BusquedaFecha::s_fechalostFocus()
+void BlDateSearch::s_fechalostFocus()
 {
-    _depura ( "BusquedaFecha::s_fechalostFocus", 0 );
+    _depura ( "BlDateSearch::s_fechalostFocus", 0 );
     QString fech = mui_textoFecha->text();
     if ( fech != "" )
         s_fechatextChanged ( fech );
-    _depura ( "END BusquedaFecha::s_fechalostFocus", 0 );
+    _depura ( "END BlDateSearch::s_fechalostFocus", 0 );
 }
 

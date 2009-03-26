@@ -27,7 +27,7 @@
 
 #include "ui_inventariobase.h"
 #include "inventario.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "blpostgresqlclient.h"
 #include "blform.h"
 

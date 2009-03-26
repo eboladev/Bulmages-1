@@ -29,7 +29,7 @@
 #include "blfunctions.h"
 #include "bfcompany.h"
 #include "provedit.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 
 
 ///
@@ -41,7 +41,7 @@
 \return
 **/
 ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
-        : BlFormList ( comp, parent, flag, editmode ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
     _depura ( "ProveedorList::ProveedorList", 0 );
     setupUi ( this );

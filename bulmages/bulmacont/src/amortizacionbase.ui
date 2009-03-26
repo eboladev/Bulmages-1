@@ -435,7 +435,7 @@
           </widget>
          </item>
          <item row="2" column="6" >
-          <widget class="BusquedaFecha" native="1" name="fecha1cuota" />
+          <widget class="BlDateSearch" native="1" name="fecha1cuota" />
          </item>
          <item row="0" column="0" >
           <widget class="QLabel" name="textLabel1_2_4" >
@@ -478,7 +478,7 @@
           </widget>
          </item>
          <item row="2" column="1" colspan="2" >
-          <widget class="BusquedaFecha" native="1" name="fechacompra" />
+          <widget class="BlDateSearch" native="1" name="fechacompra" />
          </item>
          <item row="2" column="3" colspan="2" >
           <spacer>
@@ -1738,9 +1738,9 @@
    <header>amortizacionview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaCuenta</class>

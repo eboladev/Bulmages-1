@@ -1,7 +1,7 @@
 usr/lib/libbulmalib.so 
 usr/include/abreempresaview.h
-usr/include/busquedafecha.h
-usr/include/busquedaperiodo.h
+usr/include/bldatesearch.h
+usr/include/blperiodicitycombobox.h
 usr/include/configuracion.h
 usr/include/dbrecord.h
 usr/include/dialogchanges.h
@@ -13,7 +13,7 @@ usr/include/listventanas.h
 usr/include/bldblogindialog.h
 usr/include/msgerror.h
 usr/include/numerocuenta.h
-usr/include/pgimportfiles.h
+usr/include/blimportexport.h
 usr/include/blplugins.h
 usr/include/postgresiface2.h
 usr/include/qapplication2.h

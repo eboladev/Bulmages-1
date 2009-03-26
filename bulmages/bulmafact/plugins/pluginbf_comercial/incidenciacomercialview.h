@@ -29,7 +29,7 @@
 #include "ui_incidenciacomercialbase.h"
 #include "blpostgresqlclient.h"
 #include "incidenciacomercial.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "dialogchanges.h"
 
 

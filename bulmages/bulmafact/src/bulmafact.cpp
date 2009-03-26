@@ -37,7 +37,7 @@
 #include "bulmafact.h"
 #include "listventanas.h"
 #include "aboutview.h"
-#include "busquedaperiodo.h"
+#include "blperiodicitycombobox.h"
 #include "blplugins.h"
 
 

@@ -120,7 +120,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="fechafinal" >
+      <widget class="BlDateSearch" name="fechafinal" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>13</hsizetype>
@@ -157,7 +157,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="fechainicial" >
+      <widget class="BlDateSearch" name="fechainicial" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>13</hsizetype>
@@ -306,9 +306,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

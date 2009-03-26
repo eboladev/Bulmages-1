@@ -272,7 +272,7 @@
         </widget>
        </item>
        <item row="1" column="0" >
-        <widget class="BusquedaFecha" name="mui_fechapresupuestoc" />
+        <widget class="BlDateSearch" name="mui_fechapresupuestoc" />
        </item>
       </layout>
      </widget>
@@ -382,9 +382,9 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaCCoste</class>

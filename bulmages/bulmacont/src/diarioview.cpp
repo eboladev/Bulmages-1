@@ -37,7 +37,7 @@
 #include "extractoview1.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 
 
 ///

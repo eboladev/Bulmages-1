@@ -40,10 +40,10 @@
          <number>6</number>
         </property>
         <item row="2" column="1" >
-         <widget class="BusquedaPeriodo" name="mui_periodocomercialcliente" />
+         <widget class="BlPeriodicityComboBox" name="mui_periodocomercialcliente" />
         </item>
         <item row="1" column="1" >
-         <widget class="BusquedaFecha" name="mui_fechabasecomercialcliente" />
+         <widget class="BlDateSearch" name="mui_fechabasecomercialcliente" />
         </item>
         <item row="2" column="0" >
          <widget class="QLabel" name="label_K4_4" >
@@ -107,9 +107,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BusquedaPeriodo</class>
+   <class>BlPeriodicityComboBox</class>
    <extends>QComboBox</extends>
-   <header>busquedaperiodo.h</header>
+   <header>blperiodicitycombobox.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaZonaComercial</class>
@@ -117,9 +117,9 @@
    <header>busquedazonacomercial.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -28,7 +28,7 @@
 #include <QFileDialog>
 
 #include "articulolist.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfcompany.h"
 #include "articuloview.h"
 #include "busquedafamilia.h"
@@ -52,7 +52,7 @@
 \return
 **/
 ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
-        : BlFormList ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
+        : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
     _depura ( "ArticuloList::ArticuloList", 0 );
     setupUi ( this );

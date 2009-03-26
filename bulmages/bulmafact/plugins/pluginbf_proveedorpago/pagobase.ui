@@ -236,7 +236,7 @@
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="BusquedaFecha" name="mui_fechapago" >
+       <widget class="BlDateSearch" name="mui_fechapago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -466,9 +466,9 @@
    <header>busquedabanco.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>

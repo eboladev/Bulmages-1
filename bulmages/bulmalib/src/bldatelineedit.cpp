@@ -18,29 +18,29 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "busquedafecha2.h"
+#include "bldatelineedit.h"
 
 
 /// Inicializa el objeto y hace todas las conexiones necesarias.
 /**
 \param parent
 **/
-BusquedaFecha2::BusquedaFecha2 ( QWidget *parent ) : QLineEdit ( parent )
+BlDateLineEdit::BlDateLineEdit ( QWidget *parent ) : QLineEdit ( parent )
 {
-    _depura ( "BusquedaFecha2::BusquedaFecha2", 0 );
+    _depura ( "BlDateLineEdit::BlDateLineEdit", 0 );
     installEventFilter ( this );
     QObject::connect ( this, SIGNAL ( editingFinished() ), this, SLOT ( on_mui_editingFinished() ) );
-    _depura ( "END BusquedaFecha2::BusquedaFecha2", 0 );
+    _depura ( "END BlDateLineEdit::BlDateLineEdit", 0 );
 }
 
 
 ///No requiere de acciones especiales en el destructor.
 /**
 **/
-BusquedaFecha2::~BusquedaFecha2()
+BlDateLineEdit::~BlDateLineEdit()
 {
-    _depura ( "BusquedaFecha2::~BusquedaFecha2", 0 );
-    _depura ( "END BusquedaFecha2::~BusquedaFecha2", 0 );
+    _depura ( "BlDateLineEdit::~BlDateLineEdit", 0 );
+    _depura ( "END BlDateLineEdit::~BlDateLineEdit", 0 );
 }
 
 
@@ -48,11 +48,11 @@ BusquedaFecha2::~BusquedaFecha2()
 /**
 \param val
 **/
-void BusquedaFecha2::setText ( QString val )
+void BlDateLineEdit::setText ( QString val )
 {
-    _depura ( "BusquedaFecha2::setText", 0 );
+    _depura ( "BlDateLineEdit::setText", 0 );
     QLineEdit::setText ( val );
-    _depura ( "END BusquedaFecha2::setText", 0 );
+    _depura ( "END BlDateLineEdit::setText", 0 );
 }
 
 
@@ -60,21 +60,21 @@ void BusquedaFecha2::setText ( QString val )
 /**
 \param val
 **/
-void BusquedaFecha2::setFieldValue ( QString val )
+void BlDateLineEdit::setFieldValue ( QString val )
 {
-    _depura ( "BusquedaFecha2::setFieldValue", 0 );
+    _depura ( "BlDateLineEdit::setFieldValue", 0 );
     QLineEdit::setText ( val );
-    _depura ( "END BusquedaFecha2::setFieldValue", 0 );
+    _depura ( "END BlDateLineEdit::setFieldValue", 0 );
 }
 
 
 ///
 /**
 **/
-void BusquedaFecha2::selectAll()
+void BlDateLineEdit::selectAll()
 {
-    _depura ( "BusquedaFecha2::selectAll", 0 );
-    _depura ( "END BusquedaFecha2::selectAll", 0 );
+    _depura ( "BlDateLineEdit::selectAll", 0 );
+    _depura ( "END BlDateLineEdit::selectAll", 0 );
 }
 
 
@@ -82,10 +82,10 @@ void BusquedaFecha2::selectAll()
 /**
 \return
 **/
-QString BusquedaFecha2::text()
+QString BlDateLineEdit::text()
 {
-    _depura ( "BusquedaFecha2::text", 0 );
-    _depura ( "END BusquedaFecha2::text", 0 );
+    _depura ( "BlDateLineEdit::text", 0 );
+    _depura ( "END BlDateLineEdit::text", 0 );
     return QLineEdit::text();
 }
 
@@ -94,10 +94,10 @@ QString BusquedaFecha2::text()
 /**
 \return
 **/
-QString BusquedaFecha2::fieldValue()
+QString BlDateLineEdit::fieldValue()
 {
-    _depura ( "BusquedaFecha2::fieldValue", 0 );
-    _depura ( "END BusquedaFecha2::fieldValue", 0 );
+    _depura ( "BlDateLineEdit::fieldValue", 0 );
+    _depura ( "END BlDateLineEdit::fieldValue", 0 );
     return QLineEdit::text();
 }
 
@@ -105,11 +105,11 @@ QString BusquedaFecha2::fieldValue()
 ///
 /**
 **/
-void BusquedaFecha2::on_mui_editingFinished()
+void BlDateLineEdit::on_mui_editingFinished()
 {
-    _depura ( "BusquedaFecha2::on_mui_editingFinished", 0 );
+    _depura ( "BlDateLineEdit::on_mui_editingFinished", 0 );
     setText ( normalizafecha ( text() ).toString ( "dd/MM/yyyy" ) );
-    _depura ( "END BusquedaFecha2::on_mui_editingFinished", 0 );
+    _depura ( "END BlDateLineEdit::on_mui_editingFinished", 0 );
 }
 
 
@@ -119,9 +119,9 @@ void BusquedaFecha2::on_mui_editingFinished()
 \param event
 \return
 **/
-bool BusquedaFecha2::eventFilter ( QObject *obj, QEvent *event )
+bool BlDateLineEdit::eventFilter ( QObject *obj, QEvent *event )
 {
-    _depura ( "BusquedaFecha2::eventFilter", 0 );
+    _depura ( "BlDateLineEdit::eventFilter", 0 );
     /*
         if (event->type() == QEvent::KeyRelease) {
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
@@ -140,7 +140,7 @@ bool BusquedaFecha2::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end if
     */
-    _depura ( "END BusquedaFecha2::eventFilter", 0 );
+    _depura ( "END BlDateLineEdit::eventFilter", 0 );
     return QLineEdit::eventFilter ( obj, event );
 }
 

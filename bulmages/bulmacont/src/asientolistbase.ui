@@ -164,7 +164,7 @@
        </widget>
       </item>
       <item row="0" column="3" >
-       <widget class="BusquedaFecha" name="mui_fechaInicial" >
+       <widget class="BlDateSearch" name="mui_fechaInicial" >
         <property name="minimumSize" >
          <size>
           <width>100</width>
@@ -174,7 +174,7 @@
        </widget>
       </item>
       <item row="0" column="5" >
-       <widget class="BusquedaFecha" name="mui_fechaFinal" >
+       <widget class="BlDateSearch" name="mui_fechaFinal" >
         <property name="minimumSize" >
          <size>
           <width>100</width>
@@ -696,9 +696,9 @@
    <header>asientolistsubform.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

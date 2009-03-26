@@ -28,7 +28,7 @@
 #include "tutorview.h"
 #include "bfcompany.h"
 #include "blconfiguration.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 

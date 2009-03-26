@@ -189,7 +189,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="finicial" />
+      <widget class="BlDateSearch" native="1" name="finicial" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_4" >
@@ -199,7 +199,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="ffinal" />
+      <widget class="BlDateSearch" native="1" name="ffinal" />
      </item>
      <item>
       <spacer>
@@ -457,9 +457,9 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BcSubForm</class>

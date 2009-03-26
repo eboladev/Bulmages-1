@@ -27,7 +27,7 @@
 
 
 #include "contrato.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedaformapago.h"
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"

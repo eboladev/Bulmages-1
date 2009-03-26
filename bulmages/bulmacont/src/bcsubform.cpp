@@ -547,8 +547,8 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
-        BusquedaFecha2 * editor = new BusquedaFecha2 ( parent );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaFecha2" );
+        BlDateLineEdit * editor = new BlDateLineEdit ( parent );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDateLineEdit" );
         return editor;
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
@@ -618,7 +618,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
-        BusquedaFecha2 * comboBox = static_cast<BusquedaFecha2*> ( editor );
+        BlDateLineEdit * comboBox = static_cast<BlDateLineEdit*> ( editor );
         QString value = ( ( QLineEdit * ) comboBox ) ->text();
         model->setData ( index, value );
     } else {
@@ -680,7 +680,7 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         comboBox->set ( value );
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaFecha2 *bf = static_cast<BusquedaFecha2*> ( editor );
+        BlDateLineEdit *bf = static_cast<BlDateLineEdit*> ( editor );
         ( ( QLineEdit * ) bf ) ->setText ( value );
         ( ( QLineEdit * ) bf ) ->selectAll();
     } else {

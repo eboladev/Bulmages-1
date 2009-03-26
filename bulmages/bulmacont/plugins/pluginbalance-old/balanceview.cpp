@@ -21,7 +21,7 @@
 #include <QPixmap>
 #include <QMenu>
 #include <QTextStream>
-#include <busquedafecha.h>
+#include <bldatesearch.h>
 
 #include "balanceview.h"
 #include "listcuentasview1.h"

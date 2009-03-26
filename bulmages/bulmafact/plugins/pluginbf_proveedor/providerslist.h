@@ -22,7 +22,7 @@
 #ifndef PROVIDERSLIST_H
 #define PROVIDERSLIST_H
 
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 
@@ -48,7 +48,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de proveedores.
 /** */
-class ProveedorList : public BlFormList, public Ui_ProveedorListBase, public pgimportfiles
+class ProveedorList : public BlFormList, public Ui_ProveedorListBase, public BlImportExport
 {
     Q_OBJECT
 

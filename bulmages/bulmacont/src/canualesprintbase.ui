@@ -71,7 +71,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="mui_fechainicial" />
+      <widget class="BlDateSearch" native="1" name="mui_fechainicial" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_2_2" >
@@ -81,7 +81,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="mui_fechafinal" />
+      <widget class="BlDateSearch" native="1" name="mui_fechafinal" />
      </item>
     </layout>
    </item>
@@ -108,7 +108,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="mui_fechainicial1" />
+      <widget class="BlDateSearch" native="1" name="mui_fechainicial1" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_2_3" >
@@ -118,7 +118,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="mui_fechafinal1" />
+      <widget class="BlDateSearch" native="1" name="mui_fechafinal1" />
      </item>
     </layout>
    </item>
@@ -183,9 +183,9 @@
  <layoutdefault spacing="6" margin="12" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "busquedaperiodo.h"
+#include "blperiodicitycombobox.h"
 
 
 ///
 /**
 \return
 **/
-QString BusquedaPeriodo::periodo()
+QString BlPeriodicityComboBox::periodo()
 {
-    _depura ( "BusquedaPeriodo::periodo", 0 );
-    _depura ( "END BusquedaPeriodo::periodo", 0 );
+    _depura ( "BlPeriodicityComboBox::periodo", 0 );
+    _depura ( "END BlPeriodicityComboBox::periodo", 0 );
     return m_valores[currentIndex() ];
 }
 
@@ -37,10 +37,10 @@ QString BusquedaPeriodo::periodo()
 /**
 \return
 **/
-QString BusquedaPeriodo::fieldValue()
+QString BlPeriodicityComboBox::fieldValue()
 {
-    _depura ( "BusquedaPeriodo::fieldValue", 0 );
-    _depura ( "END BusquedaPeriodo::fieldValue", 0 );
+    _depura ( "BlPeriodicityComboBox::fieldValue", 0 );
+    _depura ( "END BlPeriodicityComboBox::fieldValue", 0 );
     return m_valores[currentIndex() ];
 }
 
@@ -49,7 +49,7 @@ QString BusquedaPeriodo::fieldValue()
 /**
 \param index
 **/
-void BusquedaPeriodo::s_activated ( int index )
+void BlPeriodicityComboBox::s_activated ( int index )
 {
     _depura ( "Activado el combo box.", 0 );
     if ( index > 0 ) {
@@ -64,9 +64,9 @@ void BusquedaPeriodo::s_activated ( int index )
 /**
 \param parent
 **/
-BusquedaPeriodo::BusquedaPeriodo ( QWidget *parent ) : BlComboBox ( parent )
+BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : BlComboBox ( parent )
 {
-    _depura ( "BusquedaPeriodo::BusquedaPeriodo", 0 );
+    _depura ( "BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
     m_textos[0] = _( "Semanal" );
     m_textos[1] = _( "Quincenal" );
     m_textos[2] = _( "Mensual" );
@@ -93,17 +93,17 @@ BusquedaPeriodo::BusquedaPeriodo ( QWidget *parent ) : BlComboBox ( parent )
     } // end while
 
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( s_activated ( int ) ) );
-    _depura ( "END BusquedaPeriodo::BusquedaPeriodo", 0 );
+    _depura ( "END BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaPeriodo::~BusquedaPeriodo()
+BlPeriodicityComboBox::~BlPeriodicityComboBox()
 {
-    _depura ( "BusquedaPeriodo::~BusquedaPeriodo", 0 );
-    _depura ( "END BusquedaPeriodo::~BusquedaPeriodo", 0 );
+    _depura ( "BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
+    _depura ( "END BlPeriodicityComboBox::~BlPeriodicityComboBox", 0 );
 }
 
 
@@ -111,9 +111,9 @@ BusquedaPeriodo::~BusquedaPeriodo()
 /**
 \param periodo
 **/
-void BusquedaPeriodo::setperiodo ( QString periodo )
+void BlPeriodicityComboBox::setperiodo ( QString periodo )
 {
-    _depura ( "BusquedaPeriodo::setperiodo", 0 );
+    _depura ( "BlPeriodicityComboBox::setperiodo", 0 );
     int i = 0;
     while ( m_valores[i] != periodo && m_valores[i] != "" ) {
 // _depura(m_valores[i]+" "+periodo, 2);
@@ -123,7 +123,7 @@ void BusquedaPeriodo::setperiodo ( QString periodo )
         setCurrentIndex ( i );
     else
         setCurrentIndex ( 0 );
-    _depura ( "END BusquedaPeriodo::setperiodo", 0 );
+    _depura ( "END BlPeriodicityComboBox::setperiodo", 0 );
 }
 
 
@@ -131,11 +131,11 @@ void BusquedaPeriodo::setperiodo ( QString periodo )
 /**
 \param periodo
 **/
-void BusquedaPeriodo::setFieldValue ( QString periodo )
+void BlPeriodicityComboBox::setFieldValue ( QString periodo )
 {
-    _depura ( "BusquedaPeriodo::setFieldValue", 0 );
+    _depura ( "BlPeriodicityComboBox::setFieldValue", 0 );
     setperiodo ( periodo );
-    _depura ( "END BusquedaPeriodo::setFieldValue", 0 );
+    _depura ( "END BlPeriodicityComboBox::setFieldValue", 0 );
 }
 
 

@@ -39,12 +39,12 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bldialogchanges.cpp
 			blfixed.cpp
 			msgerror.cpp
-			busquedafecha.cpp
+			bldatesearch.cpp
 			bltablewidget.cpp
 			bldockwidget.cpp
-			pgimportfiles.cpp
+			blimportexport.cpp
 			blplugins.cpp
-			busquedaperiodo.cpp
+			blperiodicitycombobox.cpp
 			bldb.cpp
 			bldbsubform.cpp
 			blsubform.cpp
@@ -57,7 +57,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bldoublespinbox.cpp
 			blwidget.cpp
 			blformlist.cpp
-			busquedafecha2.cpp
+			bldatelineedit.cpp
 			blsplashscreen.cpp
 			fichacfg.cpp
 			blcountryview.cpp
@@ -73,9 +73,9 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
 			msgerror.h
-			busquedafecha.h
+			bldatesearch.h
 			bltablewidget.h
-			busquedaperiodo.h
+			blperiodicitycombobox.h
 			bldockwidget.h
 			blsubform.h
 			listventanas.h
@@ -87,7 +87,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blwidget.h
 			blmainwindow.h
 			blformlist.h
-			busquedafecha2.h
+			bldatelineedit.h
 			blsplashscreen.h
 			fichacfg.h
 			blcountryview.h
@@ -98,8 +98,8 @@ set(bulmalib_MOCS	bldblogindialog.h
 			busqueda.h)
 
 set (bulmalib_HDRS	blcompanydialog.h
-			busquedafecha.h
-			busquedaperiodo.h
+			bldatesearch.h
+			blperiodicitycombobox.h
 			blconfiguration.h
 			bldb.h
 			bldialogchanges.h
@@ -111,7 +111,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			bldblogindialog.h
 			msgerror.h
 			numerocuenta.h
-			pgimportfiles.h
+			blimportexport.h
 			blplugins.h
 			blpostgresqlclient.h
 			blapplication.h
@@ -129,7 +129,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 #			blfunctions.h 
 #			dialogchanges.h 
 #			blfixed.h 
-#			pgimportfiles.h 
+#			blimportexport.h 
 #			blplugins.h 
 #			bldb.h 
 #			bldbsubform.h 
@@ -141,7 +141,7 @@ set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS	bldblogindialogbase.ui 
 			blcompanydialogbase.ui 
 			msgerrorbase.ui 
-			busquedafechabase.ui 
+			bldatesearchbase.ui 
 			blsubformbase.ui 
 			fichacfgbase.ui 
 			blcountrybase.ui

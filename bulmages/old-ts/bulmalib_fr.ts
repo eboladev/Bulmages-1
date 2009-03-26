@@ -2,55 +2,55 @@
 <!DOCTYPE TS><TS version="1.1" language="fr">
 <defaultcodec></defaultcodec>
 <context>
-    <name>BusquedaFecha</name>
+    <name>BlDateSearch</name>
     <message>
-        <location filename="../../../../../BULMAGES/busquedafecha.cpp" line="101"/>
+        <location filename="../../../../../BULMAGES/bldatesearch.cpp" line="101"/>
         <source>Seleccione fecha</source>
         <translation>Sélectionner date</translation>
     </message>
 </context>
 <context>
-    <name>BusquedaFechaBase</name>
+    <name>BlDateSearchBase</name>
     <message>
-        <location filename="../../../../../BULMAGES/busquedafechabase.ui" line="25"/>
+        <location filename="../../../../../BULMAGES/bldatesearchbase.ui" line="25"/>
         <source>Form1</source>
         <translation>Form 1</translation>
     </message>
 </context>
 <context>
-    <name>BusquedaPeriodo</name>
+    <name>BlPeriodicityComboBox</name>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="43"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="43"/>
         <source>Semanal</source>
         <translation>Semainal</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="44"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="44"/>
         <source>Quincenal</source>
         <translation>Bimensuel</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="45"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="45"/>
         <source>Mensual</source>
         <translation>Mensuel</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="46"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="46"/>
         <source>Trimestral</source>
         <translation>Trimestrel</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="47"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="47"/>
         <source>Semestral</source>
         <translation>Semestriel</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="48"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="48"/>
         <source>Anual</source>
         <translation>Annuel</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/busquedaperiodo.cpp" line="49"/>
+        <location filename="../../../../../BULMAGES/blperiodicitycombobox.cpp" line="49"/>
         <source>Bienal</source>
         <translation>Biannuel</translation>
     </message>
@@ -106,254 +106,254 @@
 <context>
     <name>ImportBulmaFact</name>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1706"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1706"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el cliente </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traîtant le cliente </translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1714"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1714"/>
         <source>&lt;LI&gt; El cliente ya existe se pueden hacer modificaciones&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Le client existe déjà, on peut faire des modifications&lt;/LI&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1733"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1733"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el proveedor </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant le fournisseur</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1741"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1741"/>
         <source>&lt;LI&gt; El proveedor ya existe se pueden hacer modificaciones&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Le fournisseur éxiste déjà, on peut faire des modifications&lt;/LI&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1760"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1760"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando la froma de pago </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant la forme de payement</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1768"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1768"/>
         <source>&lt;LI&gt;Datos insuficientes para tratar la forma de pago.</source>
         <translation>&lt;LI&gt;Données insuficientes pour traiter la forme de payement.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1777"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1777"/>
         <source>&lt;LI&gt; Ya existe esta forma de pago.</source>
         <translation>&lt;LI&gt;Il éxiste déjà cette forme de payement.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1787"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1787"/>
         <source>&lt;LI&gt; Forma de pago &lt;B&gt;</source>
         <translation>&lt;LI&gt;Forme de payement&lt;B&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1787"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1787"/>
         <source>&lt;/B&gt; Insertada</source>
         <translation>&lt;/B&gt;Insertée</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1796"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1796"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando almacen </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant magasin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1827"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1827"/>
         <source>&lt;/B&gt; Insertado</source>
         <translation>&lt;/B&gt;Inserré</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1864"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1864"/>
         <source>&lt;P&gt;Datos insuficientes para tratar la familia.&lt;/P&gt;</source>
         <translation>&lt;P&gt;Données insuficientes pour traiter la famille&lt;/P&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1881"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1881"/>
         <source>&lt;P&gt; Familia &lt;B&gt;</source>
         <translation>&lt;P&gt;Famille&lt;B&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1976"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1976"/>
         <source>&lt;/B&gt; Insertado&lt;/P&gt;</source>
         <translation>&lt;/B&gt;Inserré&lt;/P&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1893"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1893"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Articulo </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant article</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1984"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1984"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LPedidoCliente </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant LPétition Client</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2005"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2005"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DPedidoCliente </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant DPétitionClient</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2019"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2019"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Pedido Cliente </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant Pétition Client</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2481"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2481"/>
         <source>El almace&#xc5;&#x84; del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>Le magasin du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2490"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2490"/>
         <source>El cliente&#xc5;&#x84; del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>Le client  du bulletin n&apos;éxiste&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2718"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2718"/>
         <source>La forma de pago&#xc5;&#x84; del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>La forme de payement du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2728"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2728"/>
         <source>El empleado del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>L&apos;ouvrier du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2190"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2190"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LAlbaran </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant LBulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2211"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2211"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DAlbaran </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant DBulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2225"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2225"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Albaran </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant bulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2395"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2395"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LFactura </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant LFacture</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2416"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2416"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DFactura </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant DFacture</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2430"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2430"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Factura </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant facture</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2519"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2519"/>
         <source>La factura ya existe y no se va a insertar.</source>
         <translation>La facture éxiste déjà et on ne vas pas l&apos;inserré.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2612"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2612"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LPresupuesto </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant LBulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2633"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2633"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DPresupuesto </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant DBulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2647"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2647"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Presupuesto </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant Bulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1719"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1719"/>
         <source>&lt;LI&gt; El cliente no existe, se debe hacer una insercion de este&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Le client n&apos;éxiste pas, ons doit faire une inserction de ce&lt;/LI&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1746"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1746"/>
         <source>&lt;LI&gt; El proveedor no existe, se debe hacer una insercion de este&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Le fournisseur n&apos;éxiste pas, ons doit faire une insertion de ce&lt;/LI&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1810"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1810"/>
         <source>&lt;LI&gt;Datos insuficientes para tratar el almacen.</source>
         <translation>&lt;LI&gt;Données insufitients pour traiter le magasin.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1818"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1818"/>
         <source>&lt;LI&gt; Ya existe este almacen.</source>
         <translation>&lt;LI&gt;Il éxiste déjà ce magasin.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1827"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1827"/>
         <source>&lt;LI&gt; Almacen &lt;B&gt;</source>
         <translation>&lt;LI&gt;Magasin&lt;B&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1839"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1839"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando familia </source>
         <translation>&lt;HR&gt;&lt;B&gt;Traitant famille</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1859"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1859"/>
         <source>&lt;P&gt; No se ha encontrado el padre de esta familia.&lt;/P&gt;</source>
         <translation>&lt;P&gt;On n&apos;a pas trouvé le père de cette famille&lt;/P&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1872"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1872"/>
         <source>&lt;P&gt; Ya existe esta familia.&lt;/P&gt;</source>
         <translation>&lt;P&gt;Il éxiste déjà cette famille.&lt;/P&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1920"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1920"/>
         <source>La familia del articulo no existe&lt;BR&gt;
 </source>
         <translation>La famille de l&apos;article n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1945"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1945"/>
         <source>&lt;P&gt;Datos insuficientes para tratar el articulo.&lt;/P&gt;</source>
         <translation>&lt;P&gt;Données insuficients pour traiter l&apos;article.&lt;/P&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1954"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1954"/>
         <source>&lt;P&gt; Ya existe este articulo.&lt;/P&gt;</source>
         <translation>&lt;P&gt;&lt;P&gt;Il éxiste déjà cet article.&lt;/P&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1976"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1976"/>
         <source>&lt;P&gt; Articulo &lt;B&gt;</source>
         <translation>&lt;P&gt;Article&lt;B&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2780"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2780"/>
         <source>El articulo de la linea de presupuesto no existe&lt;BR&gt;
 </source>
         <translation>L&apos;article de la ligne du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2698"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2698"/>
         <source>El almacen del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>La magasin du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2708"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2708"/>
         <source>El cliente del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>Le client du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="2296"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="2296"/>
         <source>La forma de pago del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>La forme de payement du bulletin n&apos;éxiste pas&lt;BR&gt;</translation>
@@ -707,59 +707,59 @@
     </message>
 </context>
 <context>
-    <name>pgimportfiles</name>
+    <name>BlImportExport</name>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1330"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1330"/>
         <source>Exportando :</source>
         <translation>Éxportant:</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="412"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="412"/>
         <source>&lt;LI&gt;Se ha insertado la cuenta </source>
         <translation>&lt;LI&gt;Il c&apos;est inséré le compte</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="554"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="554"/>
         <source>&lt;LI&gt;Apunte fuera de fecha&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Note hors de date&lt;/LI&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="565"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="565"/>
         <source>&lt;LI&gt;Terminado&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Términé&lt;/LI&gt;&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="613"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="613"/>
         <source>&lt;LI&gt;Exportando Nueva Forma de Pago&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt;Exportant nouvelle forme de payement&lt;/LI&gt;</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1372"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1372"/>
         <source>Application name</source>
         <translation>Nom d&apos;application</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="1372"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="1372"/>
         <source>Error en el XML.
 Documento mal formado.</source>
         <translation>Érreur dans la XML
 Document mal formé.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="415"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="415"/>
         <source>&lt;LI&gt;Ya hay una cuenta con el codigo </source>
         <translation>&lt;LI&gt;Il y a déjà une compte contre le code</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="524"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="524"/>
         <source>&lt;LI&gt;Insercion de asiento</source>
         <translation>&lt;LI&gt;Insertion d&apos;assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/pgimportfiles.cpp" line="552"/>
+        <location filename="../../../../../BULMAGES/blimportexport.cpp" line="552"/>
         <source>&lt;LI&gt;Insercion de apunte</source>
         <translation>&lt;LI&gt;Insertion de note</translation>
     </message>

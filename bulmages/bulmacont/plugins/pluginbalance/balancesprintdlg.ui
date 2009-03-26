@@ -67,7 +67,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="fechain" />
+      <widget class="BlDateSearch" native="1" name="fechain" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_2_2" >
@@ -80,7 +80,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" native="1" name="fechafin" />
+      <widget class="BlDateSearch" native="1" name="fechafin" />
      </item>
     </layout>
    </item>
@@ -213,9 +213,9 @@
    <header>Qt3Support/Q3ProgressBar</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -226,8 +226,8 @@
   <tabstop>pushButton1_2</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >busquedafecha.h</include>
-  <include location="local" >busquedafecha.h</include>
+  <include location="local" >bldatesearch.h</include>
+  <include location="local" >bldatesearch.h</include>
  </includes>
  <resources/>
  <connections>

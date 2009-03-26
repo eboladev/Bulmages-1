@@ -37,7 +37,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="mui_fecha_final" />
+      <widget class="BlDateSearch" name="mui_fecha_final" />
      </item>
     </layout>
    </item>
@@ -89,9 +89,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

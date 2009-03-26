@@ -29,7 +29,7 @@
 
 #include "listlinpedidoclienteview.h"
 #include "listdescpedidoclienteview.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"

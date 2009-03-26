@@ -419,7 +419,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechain" />
+         <widget class="BlDateSearch" native="1" name="m_fechain" />
         </item>
         <item>
          <spacer>
@@ -445,7 +445,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
+         <widget class="BlDateSearch" native="1" name="m_fechafin" />
         </item>
         <item>
          <spacer>
@@ -518,9 +518,9 @@
    <header>rutacomerciallist.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>Busqueda</class>

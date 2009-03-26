@@ -32,7 +32,7 @@
 #include <QLabel>
 
 #include "asiento1view.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "duplicarasientoview.h"
 #include "aplinteligentesview.h"
 #include "listlinasiento1view.h"

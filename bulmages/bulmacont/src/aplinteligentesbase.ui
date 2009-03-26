@@ -147,7 +147,7 @@
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="BusquedaFecha" name="fechaasiento" >
+       <widget class="BlDateSearch" name="fechaasiento" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -280,9 +280,9 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

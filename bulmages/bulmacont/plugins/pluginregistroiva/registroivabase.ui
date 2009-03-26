@@ -363,7 +363,7 @@
                </widget>
               </item>
               <item>
-               <widget class="BusquedaFecha" native="1" name="m_ffactura" />
+               <widget class="BlDateSearch" native="1" name="m_ffactura" />
               </item>
               <item>
                <spacer>
@@ -405,7 +405,7 @@
                </widget>
               </item>
               <item>
-               <widget class="BusquedaFecha" native="1" name="m_femisionregistroiva" />
+               <widget class="BlDateSearch" native="1" name="m_femisionregistroiva" />
               </item>
               <item>
                <spacer>
@@ -881,9 +881,9 @@
    <header>bcsubform.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends></extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -28,7 +28,7 @@
 #include "ui_rutacomercialbase.h"
 #include "blpostgresqlclient.h"
 #include "rutacomercial.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "dialogchanges.h"
 
 

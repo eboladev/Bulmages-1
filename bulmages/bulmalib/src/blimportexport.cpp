@@ -24,7 +24,7 @@
 #include <QXmlDefaultHandler>
 
 #include "blapplication.h"
-#include "pgimportfiles.h"
+#include "blimportexport.h"
 
 #define EURO                166.386
 #define S_EURO             "166.386"
@@ -154,7 +154,7 @@ private:
     tvalores valores;
     /// El tagpadre indica en que posicion estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc.
     QString tagpadre;
-    pgimportfiles *pgimport;
+    BlImportExport *pgimport;
     /// Estas estructuras sirven para guardar datos intermedios.
     QList<tvalores> listalpresupuesto;
     QList<tvalores> listadpresupuesto;
@@ -166,7 +166,7 @@ private:
     QList<tvalores> listadpedidocliente;
 
 public:
-    ImportBulmaFact ( pgimportfiles *, BlPostgreSqlClient *, unsigned long long int tip = IMPORT_TODO );
+    ImportBulmaFact ( BlImportExport *, BlPostgreSqlClient *, unsigned long long int tip = IMPORT_TODO );
     ~ImportBulmaFact();
     bool startDocument();
     bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );
@@ -204,17 +204,17 @@ private:
 ///
 /**
 **/
-void pgimportfiles::alerta ( int, int )
+void BlImportExport::alerta ( int, int )
 {
-    _depura ( "pgimportfiles::alerta", 0 );
-    _depura ( "END pgimportfiles::alerta", 0 );
+    _depura ( "BlImportExport::alerta", 0 );
+    _depura ( "END BlImportExport::alerta", 0 );
 }
 
 
 ///
 /**
 **/
-void pgimportfiles::mensajeria ( QString )
+void BlImportExport::mensajeria ( QString )
 {
     _depura ( "Funcion no implementada en esta clase\n", 2 );
 }
@@ -224,11 +224,11 @@ void pgimportfiles::mensajeria ( QString )
 /**
 \param f
 **/
-void pgimportfiles::setFInicial ( QString f )
+void BlImportExport::setFInicial ( QString f )
 {
-    _depura ( "pgimportfiles::setFInicial", 0 );
+    _depura ( "BlImportExport::setFInicial", 0 );
     m_fInicial = f;
-    _depura ( "END pgimportfiles::setFInicial", 0 );
+    _depura ( "END BlImportExport::setFInicial", 0 );
 }
 
 
@@ -236,33 +236,33 @@ void pgimportfiles::setFInicial ( QString f )
 /**
 \param f
 **/
-void pgimportfiles::setFFinal ( QString f )
+void BlImportExport::setFFinal ( QString f )
 {
-    _depura ( "pgimportfiles::setFFinal", 0 );
+    _depura ( "BlImportExport::setFFinal", 0 );
     m_fFinal = f;
-    _depura ( "END pgimportfiles::setFFinal", 0 );
+    _depura ( "END BlImportExport::setFFinal", 0 );
 }
 
 
 ///
 /**
 **/
-void pgimportfiles::setModoTest()
+void BlImportExport::setModoTest()
 {
-    _depura ( "pgimportfiles::setModoTest", 0 );
+    _depura ( "BlImportExport::setModoTest", 0 );
     m_modoTest = TRUE;
-    _depura ( "END pgimportfiles::setModoTest", 0 );
+    _depura ( "END BlImportExport::setModoTest", 0 );
 }
 
 
 ///
 /**
 **/
-void pgimportfiles::setModoNormal()
+void BlImportExport::setModoNormal()
 {
-    _depura ( "pgimportfiles::setModoNormal", 0 );
+    _depura ( "BlImportExport::setModoNormal", 0 );
     m_modoTest = FALSE;
-    _depura ( "END pgimportfiles::setModoNormal", 0 );
+    _depura ( "END BlImportExport::setModoNormal", 0 );
 }
 
 
@@ -270,34 +270,34 @@ void pgimportfiles::setModoNormal()
 /**
 \return
 **/
-bool pgimportfiles::modoTest()
+bool BlImportExport::modoTest()
 {
-    _depura ( "pgimportfiles::modoTest", 0 );
-    _depura ( "END spgimportfiles::modoTest", 0 );
+    _depura ( "BlImportExport::modoTest", 0 );
+    _depura ( "END BlImportExport::modoTest", 0 );
     return ( m_modoTest == TRUE );
 }
 
 ///
 /**
 **/
-pgimportfiles::~pgimportfiles()
+BlImportExport::~BlImportExport()
 {
-    _depura ( "pgimportfiles::~pgimportfiles", 0 );
-    _depura ( "END pgimportfiles::~pgimportfiles", 0 );
+    _depura ( "BlImportExport::~BlImportExport", 0 );
+    _depura ( "END BlImportExport::~BlImportExport", 0 );
 }
 
 ///
 /**
 \param con
 **/
-pgimportfiles::pgimportfiles ( BlPostgreSqlClient *con )
+BlImportExport::BlImportExport ( BlPostgreSqlClient *con )
 {
-    _depura ( "pgimportfiles::pgimportfiles", 0 );
+    _depura ( "BlImportExport::BlImportExport", 0 );
     dbConnection = con;
     m_fInicial = "";
     m_fFinal = "";
     setModoNormal();
-    _depura ( "END pgimportfiles::pgimportfiles", 0 );
+    _depura ( "END BlImportExport::BlImportExport", 0 );
 }
 
 /// Esta funcion se encarga de pasar los datos de BulmaGes a Contaplus.
@@ -306,9 +306,9 @@ pgimportfiles::pgimportfiles ( BlPostgreSqlClient *con )
 \param asientos
 \return
 **/
-int pgimportfiles::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
+int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
 {
-    _depura ( "pgimportfiles::bulmages2Contaplus", 0 );
+    _depura ( "BlImportExport::bulmages2Contaplus", 0 );
     QString codigo, descripcion;
     QString strblancomax;
     QTextStream stream ( &subcuentas );
@@ -403,7 +403,7 @@ int pgimportfiles::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
     } // end while
     delete curas;
     alerta ( 100, 100 );
-    _depura ( "END pgimportfiles::bulmages2Contaplus", 0 );
+    _depura ( "END BlImportExport::bulmages2Contaplus", 0 );
     return 0;
 } // end if
 
@@ -414,9 +414,9 @@ int pgimportfiles::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
 \param asientos
 \return
 **/
-int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
+int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
 {
-    _depura ( "pgimportfiles::contaplus2Bulmages", 0 );
+    _depura ( "BlImportExport::contaplus2Bulmages", 0 );
     QString idasiento;
     QString lopd_str, cuenta_str;
     QString debe, haber;
@@ -633,7 +633,7 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
     } // end if
     mensajeria ( _( "<LI>Terminado</LI>\n" ) );
     alerta ( subcuentas.size() + asientos.size(), subcuentas.size() + asientos.size() );
-    _depura ( "END pgimportfiles::contaplus2Bulmages", 0 );
+    _depura ( "END BlImportExport::contaplus2Bulmages", 0 );
     return 0;
 }
 
@@ -645,9 +645,9 @@ int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
 \param cod
 \return
 **/
-QString pgimportfiles::searchParent ( QString cod )
+QString BlImportExport::searchParent ( QString cod )
 {
-    _depura ( "pgimportfiles::searchParent", 0 );
+    _depura ( "BlImportExport::searchParent", 0 );
     QString padre = "NULL"; /// Almacena el padre de la cuenta.
     QString query;
     int i = 2;
@@ -665,7 +665,7 @@ QString pgimportfiles::searchParent ( QString cod )
         delete cur;
         i++;
     } // end while
-    _depura ( "END pgimportfiles::searchParent", 0 );
+    _depura ( "END BlImportExport::searchParent", 0 );
     return padre;
 }
 
@@ -676,9 +676,9 @@ QString pgimportfiles::searchParent ( QString cod )
 \param tipo
 \return
 **/
-int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
+int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 {
-    _depura ( "pgimportfiles::bulmafact2XML", 0 );
+    _depura ( "BlImportExport::bulmafact2XML", 0 );
     QTextStream stream ( &xmlfile );
     stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
     "<!DOCTYPE FUGIT>\n"
@@ -1234,7 +1234,7 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
     } // end if
     stream << "</FUGIT>\n";
     alerta ( 100, 100 );
-    _depura ( "END pgimportfiles::bulmafact2XML", 0 );
+    _depura ( "END BlImportExport::bulmafact2XML", 0 );
     return 0;
 }
 
@@ -1246,9 +1246,9 @@ int pgimportfiles::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo )
 \param tipo
 \return
 **/
-int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
+int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
 {
-    _depura ( "pgimportfiles::bulmages2XML", 0 );
+    _depura ( "BlImportExport::bulmages2XML", 0 );
     QString codigo, descripcion;
     QString strblancomax;
     QString query;
@@ -1422,7 +1422,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
     } // end if
     stream << "</FUGIT>\n";
     alerta ( numreg, numreg );
-    _depura ( "END pgimportfiles::bulmages2XML", 0 );
+    _depura ( "END BlImportExport::bulmages2XML", 0 );
     return 0;
 }
 
@@ -1435,16 +1435,16 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
 \param tip
 \return
 **/
-int pgimportfiles::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
+int BlImportExport::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
 {
-    _depura ( "pgimportfiles::XML2Bulmages", 0 );
+    _depura ( "BlImportExport::XML2Bulmages", 0 );
     StructureParser handler ( dbConnection, tip );
     QXmlInputSource source ( &fichero );
     QXmlSimpleReader reader;
     reader.setContentHandler ( &handler );
     reader.parse ( source );
     alerta ( 100, 100 );
-    _depura ( "END pgimportfiles::XML2Bulmages", 0 );
+    _depura ( "END BlImportExport::XML2Bulmages", 0 );
     return 0;
 }
 
@@ -1457,9 +1457,9 @@ int pgimportfiles::XML2Bulmages ( QFile &fichero, unsigned long long int tip )
 \param tip
 \return
 **/
-int pgimportfiles::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
+int BlImportExport::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
 {
-    _depura ( "pgimportfiles::XML2BulmaFact", 0 );
+    _depura ( "BlImportExport::XML2BulmaFact", 0 );
     bool noerror = TRUE;
     ImportBulmaFact handler ( this, dbConnection, tip );
     QXmlInputSource source ( &fichero );
@@ -1470,7 +1470,7 @@ int pgimportfiles::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
         QMessageBox::warning ( 0, _( "Application name" ), _( "Error en el XML.\nDocumento mal formado." ), "OK", 0, 0 );
     }
     alerta ( 100, 100 );
-    _depura ( "END pgimportfiles::XML2BulmaFact", 0 );
+    _depura ( "END BlImportExport::XML2BulmaFact", 0 );
     return 0;
 }
 
@@ -1757,7 +1757,7 @@ bool StructureParser::characters ( const QString& n1 )
 \param con
 \param tip
 **/
-ImportBulmaFact::ImportBulmaFact ( pgimportfiles *imp, BlPostgreSqlClient *con, unsigned long long int tip )
+ImportBulmaFact::ImportBulmaFact ( BlImportExport *imp, BlPostgreSqlClient *con, unsigned long long int tip )
 {
     _depura ( "ImportBulmaFact::ImportBulmaFact", 0 );
     dbConnection = con;

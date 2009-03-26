@@ -2,7 +2,7 @@
 <!DOCTYPE TS><TS version="1.1" language="ca">
 <defaultcodec></defaultcodec>
 <context>
-    <name>BusquedaFechaBase</name>
+    <name>BlDateSearchBase</name>
     <message>
         <location filename="" line="0"/>
         <source>Form1</source>
@@ -10,7 +10,7 @@
     </message>
 </context>
 <context>
-    <name>BusquedaPeriodo</name>
+    <name>BlPeriodicityComboBox</name>
     <message>
         <location filename="" line="0"/>
         <source>Semanal</source>
@@ -812,7 +812,7 @@
     </message>
 </context>
 <context>
-    <name>pgimportfiles</name>
+    <name>BlImportExport</name>
     <message>
         <location filename="" line="0"/>
         <source>Exportando :</source>

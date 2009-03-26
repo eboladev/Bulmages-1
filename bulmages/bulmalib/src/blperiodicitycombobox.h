@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,32 +19,34 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDAFECHA2_H
-#define BUSQUEDAFECHA2_H
+#ifndef BLPERIODICITYCOMBOBOX_H
+#define BLPERIODICITYCOMBOBOX_H
 
-#include <QLineEdit>
-#include <QKeyEvent>
-
+#include "blcombobox.h"
 #include "blfunctions.h"
 
 
-class BusquedaFecha2 : public QLineEdit
+class BlPeriodicityComboBox : public BlComboBox
 {
     Q_OBJECT
 
-public:
-    BusquedaFecha2 ( QWidget *parent = 0 );
-    ~BusquedaFecha2();
+private:
+    QString m_textos[10];
+    QString m_valores[10];
 
-    void setText ( QString val );
-    virtual void setFieldValue ( QString val );
-    QString text();
+public:
+    BlPeriodicityComboBox ( QWidget *parent = 0 );
+    ~BlPeriodicityComboBox();
+    virtual void setperiodo ( QString periodo );
+    virtual void setFieldValue ( QString periodo );
+    QString periodo();
     virtual QString fieldValue();
-    void selectAll();
-    virtual bool eventFilter ( QObject *obj, QEvent *event );
 
 public slots:
-    void on_mui_editingFinished();
+    void s_activated ( int index );
+
+signals:
+    void valueChanged ( QString );
 };
 
 #endif

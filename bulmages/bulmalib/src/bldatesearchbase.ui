@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>BusquedaFechaBase</class>
- <widget class="QWidget" name="BusquedaFechaBase" >
+ <class>BlDateSearchBase</class>
+ <widget class="QWidget" name="BlDateSearchBase" >
   <property name="windowModality" >
    <enum>Qt::NonModal</enum>
   </property>

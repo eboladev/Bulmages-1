@@ -25,7 +25,7 @@
 #include <QTextStream>
 // #include <QLocale>
 
-#include <busquedafecha.h>
+#include <bldatesearch.h>
 
 #include "balance1view.h"
 #include "listcuentasview1.h"

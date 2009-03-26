@@ -57,7 +57,7 @@
         </widget>
        </item>
        <item>
-        <widget class="BusquedaFecha" name="mui_fechaincidenciacomercial" />
+        <widget class="BlDateSearch" name="mui_fechaincidenciacomercial" />
        </item>
       </layout>
      </item>
@@ -343,9 +343,9 @@
    <header>busquedatrabajador.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>Busqueda</class>

@@ -271,7 +271,7 @@
 						</widget>
 					</item>
 					<item row="0" column="6" colspan="3" >
-						<widget class="BusquedaFecha" native="1" name="mui_fechanacimientoalumno" />
+						<widget class="BlDateSearch" native="1" name="mui_fechanacimientoalumno" />
 					</item>
 					<item rowspan="2" row="1" column="4" colspan="3" >
 						<widget class="QLabel" name="textLabel2_3" >
@@ -709,9 +709,9 @@
 		<header>alumnoview.h</header>
 	</customwidget>
 	<customwidget>
-		<class>BusquedaFecha</class>
+		<class>BlDateSearch</class>
 		<extends>QWidget</extends>
-		<header>busquedafecha.h</header>
+		<header>bldatesearch.h</header>
 		<container>1</container>
 	</customwidget>
 	<customwidget>

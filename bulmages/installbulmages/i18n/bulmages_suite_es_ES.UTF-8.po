@@ -1244,43 +1244,43 @@ msgstr ""
 msgid "<-"
 msgstr "<-"
 
-#: pgimportfiles.cpp:1901
+#: blimportexport.cpp:1901
 msgid "<HR><B>Tratando el cliente "
 msgstr "<HR><B>Tratando el cliente "
 
-#: pgimportfiles.cpp:1914
+#: blimportexport.cpp:1914
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 msgstr "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 
-#: pgimportfiles.cpp:1909
+#: blimportexport.cpp:1909
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
 msgstr "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
 
-#: pgimportfiles.cpp:623
+#: blimportexport.cpp:623
 msgid "<LI>Apunte fuera de fecha</LI>\n"
 msgstr "<LI>Apunte fuera de fecha</LI>\n"
 
-#: pgimportfiles.cpp:698
+#: blimportexport.cpp:698
 msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
 msgstr "<LI>Exportando Nueva Forma de Pago</LI>\n"
 
-#: pgimportfiles.cpp:621
+#: blimportexport.cpp:621
 msgid "<LI>Insercion de apunte"
 msgstr "<LI>Insercion de apunte"
 
-#: pgimportfiles.cpp:593
+#: blimportexport.cpp:593
 msgid "<LI>Insercion de asiento"
 msgstr "<LI>Insercion de asiento"
 
-#: pgimportfiles.cpp:481
+#: blimportexport.cpp:481
 msgid "<LI>Se ha insertado la cuenta "
 msgstr "<LI>Se ha insertado la cuenta "
 
-#: pgimportfiles.cpp:634
+#: blimportexport.cpp:634
 msgid "<LI>Terminado</LI>\n"
 msgstr "<LI>Terminado</LI>\n"
 
-#: pgimportfiles.cpp:484
+#: blimportexport.cpp:484
 msgid "<LI>Ya hay una cuenta con el codigo "
 msgstr "<LI>Ya hay una cuenta con el codigo "
 
@@ -1668,7 +1668,7 @@ msgstr "All files (*)"
 #: pluginasterisk.cpp:101 albaranclienteview.cpp:74 zview.cpp:64 zlist.cpp:59
 #: ui_zbase.h:321 listalmacenview.cpp:49 compraventaview.cpp:84
 #: pedidoclienteview.cpp:61 pedidosclientelist.cpp:340 facturaview.cpp:63
-#: almacenview.cpp:54 ui_almacenbase.h:346 pgimportfiles.cpp:2044
+#: almacenview.cpp:54 ui_almacenbase.h:346 blimportexport.cpp:2044
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -1751,7 +1751,7 @@ msgid "Anterior"
 msgstr "Anterior"
 
 #: ui_amortizacionbase.h:665 amortizacionview.cpp:246 amortizacionview.cpp:273
-#: amortizacionview.cpp:301 amortizacionview.cpp:332 busquedaperiodo.cpp:75
+#: amortizacionview.cpp:301 amortizacionview.cpp:332 blperiodicitycombobox.cpp:75
 msgid "Anual"
 msgstr "Anual"
 
@@ -1840,7 +1840,7 @@ msgstr "Aplicar Asiento Inteligente"
 msgid "Aplicar Recargo de Equivalencia"
 msgstr "Aplicar Recargo de Equivalencia"
 
-#: pgimportfiles.cpp:1470
+#: blimportexport.cpp:1470
 msgid "Application name"
 msgstr "Application name"
 
@@ -1905,7 +1905,7 @@ msgstr "Archivo de SubCta"
 #: ui_busquedaarticulobase.h:95 informereferencia.cpp:141
 #: informereferencia.cpp:174 articuloview.cpp:58 listlinfacturapview.cpp:48
 #: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
-#: informeqtoolbutton.cpp:463 pgimportfiles.cpp:2207
+#: informeqtoolbutton.cpp:463 blimportexport.cpp:2207
 msgid "Articulo"
 msgstr "Articulo"
 
@@ -2118,7 +2118,7 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: busquedaperiodo.cpp:76
+#: blperiodicitycombobox.cpp:76
 msgid "Bienal"
 msgstr "Bienal"
 
@@ -3741,19 +3741,19 @@ msgstr "Datos del pais:"
 msgid "Datos incompletos"
 msgstr "Datos incompletos"
 
-#: pgimportfiles.cpp:2027
+#: blimportexport.cpp:2027
 msgid "Datos insuficientes para tratar el almacen."
 msgstr "Datos insuficientes para tratar el almacen."
 
-#: pgimportfiles.cpp:2176
+#: blimportexport.cpp:2176
 msgid "Datos insuficientes para tratar el articulo."
 msgstr "Datos insuficientes para tratar el articulo."
 
-#: pgimportfiles.cpp:2088
+#: blimportexport.cpp:2088
 msgid "Datos insuficientes para tratar la familia."
 msgstr "Datos insuficientes para tratar la familia."
 
-#: pgimportfiles.cpp:1978
+#: blimportexport.cpp:1978
 msgid "Datos insuficientes para tratar la forma de pago."
 msgstr "Datos insuficientes para tratar la forma de pago."
 
@@ -4368,13 +4368,13 @@ msgstr "Ejercicios de la empresa:"
 msgid "Ejercicios ya contemplado"
 msgstr "Ejercicios ya contemplado"
 
-#: pgimportfiles.cpp:2321 pgimportfiles.cpp:2550 pgimportfiles.cpp:2775
-#: pgimportfiles.cpp:3013
+#: blimportexport.cpp:2321 blimportexport.cpp:2550 blimportexport.cpp:2775
+#: blimportexport.cpp:3013
 msgid "El almacen del presupuesto no existe"
 msgstr "El almacen del presupuesto no existe"
 
-#: pgimportfiles.cpp:2402 pgimportfiles.cpp:2628 pgimportfiles.cpp:2866
-#: pgimportfiles.cpp:3095
+#: blimportexport.cpp:2402 blimportexport.cpp:2628 blimportexport.cpp:2866
+#: blimportexport.cpp:3095
 msgid "El articulo de la linea de presupuesto no existe"
 msgstr "El articulo de la linea de presupuesto no existe"
 
@@ -4382,8 +4382,8 @@ msgstr "El articulo de la linea de presupuesto no existe"
 msgid "El asiento se ha guardado correctamente."
 msgstr "El asiento se ha guardado correctamente."
 
-#: pgimportfiles.cpp:2331 pgimportfiles.cpp:2560 pgimportfiles.cpp:2784
-#: pgimportfiles.cpp:3023
+#: blimportexport.cpp:2331 blimportexport.cpp:2560 blimportexport.cpp:2784
+#: blimportexport.cpp:3023
 msgid "El cliente del presupuesto no existe"
 msgstr "El cliente del presupuesto no existe"
 
@@ -4395,16 +4395,16 @@ msgstr ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 
-#: pgimportfiles.cpp:2351 pgimportfiles.cpp:2578 pgimportfiles.cpp:2803
-#: pgimportfiles.cpp:3043
+#: blimportexport.cpp:2351 blimportexport.cpp:2578 blimportexport.cpp:2803
+#: blimportexport.cpp:3043
 msgid "El empleado del presupuesto no existe"
 msgstr "El empleado del presupuesto no existe"
 
-#: pgimportfiles.cpp:1949
+#: blimportexport.cpp:1949
 msgid "El proveedor no existe, se debe hacer una insercion de este"
 msgstr "El proveedor no existe, se debe hacer una insercion de este"
 
-#: pgimportfiles.cpp:1944
+#: blimportexport.cpp:1944
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "El proveedor ya existe, se pueden hacer modificaciones"
 
@@ -4744,7 +4744,7 @@ msgstr "Error con la base de datos"
 msgid "Error del programa"
 msgstr "Error del programa"
 
-#: pgimportfiles.cpp:1470
+#: blimportexport.cpp:1470
 msgid ""
 "Error en el XML.\n"
 "Documento mal formado."
@@ -4939,7 +4939,7 @@ msgstr "Expor&tar"
 msgid "Exporta datos"
 msgstr "Exporta datos"
 
-#: pgimportfiles.cpp:400 pgimportfiles.cpp:1413
+#: blimportexport.cpp:400 blimportexport.cpp:1413
 msgid "Exportando :"
 msgstr "Exportando :"
 
@@ -5088,7 +5088,7 @@ msgid "Facturas procesadas"
 msgstr "Facturas procesadas"
 
 #: rutacomercial.cpp:44 incidenciacomercial.cpp:43 articuloview.cpp:71
-#: ui_inventariobase.h:360 pgimportfiles.cpp:2105
+#: ui_inventariobase.h:360 blimportexport.cpp:2105
 msgid "Familia"
 msgstr "Familia"
 
@@ -5541,7 +5541,7 @@ msgstr "Forma de Pago"
 
 #: registroiva.cpp:54 clienteview.cpp:78 presupuestoview.cpp:72
 #: albaranclienteview.cpp:81 zview.cpp:79 compraventaview.cpp:91
-#: facturaview.cpp:72 pgimportfiles.cpp:1997
+#: facturaview.cpp:72 blimportexport.cpp:1997
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
@@ -6860,7 +6860,7 @@ msgstr "Iniciando clases"
 msgid "Inicio"
 msgstr "Inicio"
 
-#: pgimportfiles.cpp:1997
+#: blimportexport.cpp:1997
 msgid "Insertada"
 msgstr "Insertada"
 
@@ -6928,11 +6928,11 @@ msgstr "Julio"
 msgid "Junio"
 msgstr "Junio"
 
-#: pgimportfiles.cpp:2813
+#: blimportexport.cpp:2813
 msgid "La factura ya existe y no se va a insertar."
 msgstr "La factura ya existe y no se va a insertar."
 
-#: pgimportfiles.cpp:2151
+#: blimportexport.cpp:2151
 msgid "La familia del articulo no existe"
 msgstr "La familia del articulo no existe"
 
@@ -6940,8 +6940,8 @@ msgstr "La familia del articulo no existe"
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr "La fecha inicial es posterior a la fecha final."
 
-#: pgimportfiles.cpp:2341 pgimportfiles.cpp:2569 pgimportfiles.cpp:2793
-#: pgimportfiles.cpp:3033
+#: blimportexport.cpp:2341 blimportexport.cpp:2569 blimportexport.cpp:2793
+#: blimportexport.cpp:3033
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forma de pago del presupuesto no existe"
 
@@ -7157,7 +7157,7 @@ msgid "Mensaje."
 msgstr "Mensaje."
 
 #: ui_amortizacionbase.h:668 amortizacionview.cpp:248 amortizacionview.cpp:275
-#: amortizacionview.cpp:303 amortizacionview.cpp:334 busquedaperiodo.cpp:72
+#: amortizacionview.cpp:303 amortizacionview.cpp:334 blperiodicitycombobox.cpp:72
 msgid "Mensual"
 msgstr "Mensual"
 
@@ -7405,7 +7405,7 @@ msgstr "No puede dejar campos en blanco para crear una nueva empresa.\n"
 msgid "No quiere nada"
 msgstr "No quiere nada"
 
-#: pgimportfiles.cpp:2083
+#: blimportexport.cpp:2083
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "No se ha encontrado el padre de esta familia."
 
@@ -8822,7 +8822,7 @@ msgstr "Qt Scripting"
 msgid "Query"
 msgstr "Query"
 
-#: busquedaperiodo.cpp:71
+#: blperiodicitycombobox.cpp:71
 msgid "Quincenal"
 msgstr "Quincenal"
 
@@ -9290,7 +9290,7 @@ msgstr "Seleccione archivo"
 msgid "Seleccione el archivo"
 msgstr "Seleccione el archivo"
 
-#: busquedafecha.cpp:182
+#: bldatesearch.cpp:182
 msgid "Seleccione fecha"
 msgstr "Seleccione fecha"
 
@@ -9354,12 +9354,12 @@ msgstr "Selector de contratos"
 msgid "Selector de proveedores"
 msgstr "Selector de proveedores"
 
-#: busquedaperiodo.cpp:70
+#: blperiodicitycombobox.cpp:70
 msgid "Semanal"
 msgstr "Semanal"
 
 #: ui_amortizacionbase.h:666 amortizacionview.cpp:250 amortizacionview.cpp:277
-#: amortizacionview.cpp:305 amortizacionview.cpp:336 busquedaperiodo.cpp:74
+#: amortizacionview.cpp:305 amortizacionview.cpp:336 blperiodicitycombobox.cpp:74
 msgid "Semestral"
 msgstr "Semestral"
 
@@ -9977,76 +9977,76 @@ msgstr "Traspaso de Z"
 msgid "Tratamiento de la fecha:"
 msgstr "Tratamiento de la fecha:"
 
-#: pgimportfiles.cpp:2477
+#: blimportexport.cpp:2477
 msgid "Tratando DAlbaran"
 msgstr "Tratando DAlbaran"
 
-#: pgimportfiles.cpp:2703
+#: blimportexport.cpp:2703
 msgid "Tratando DFactura"
 msgstr "Tratando DFactura"
 
-#: pgimportfiles.cpp:2250
+#: blimportexport.cpp:2250
 msgid "Tratando DPedidoCliente"
 msgstr "Tratando DPedidoCliente"
 
-#: pgimportfiles.cpp:2941
+#: blimportexport.cpp:2941
 msgid "Tratando DPresupuesto"
 msgstr "Tratando DPresupuesto"
 
-#: pgimportfiles.cpp:2449
+#: blimportexport.cpp:2449
 msgid "Tratando LAlbaran"
 msgstr "Tratando LAlbaran"
 
-#: pgimportfiles.cpp:2675
+#: blimportexport.cpp:2675
 msgid "Tratando LFactura"
 msgstr "Tratando LFactura"
 
-#: pgimportfiles.cpp:2222
+#: blimportexport.cpp:2222
 msgid "Tratando LPedidoCliente"
 msgstr "Tratando LPedidoCliente"
 
-#: pgimportfiles.cpp:2913
+#: blimportexport.cpp:2913
 msgid "Tratando LPresupuesto"
 msgstr "Tratando LPresupuesto"
 
-#: pgimportfiles.cpp:2498
+#: blimportexport.cpp:2498
 msgid "Tratando albaran"
 msgstr "Tratando albaran"
 
-#: pgimportfiles.cpp:2013
+#: blimportexport.cpp:2013
 msgid "Tratando almacen"
 msgstr "Tratando almacen"
 
-#: pgimportfiles.cpp:2124
+#: blimportexport.cpp:2124
 msgid "Tratando articulo"
 msgstr "Tratando articulo"
 
-#: pgimportfiles.cpp:1936
+#: blimportexport.cpp:1936
 msgid "Tratando el proveedor"
 msgstr "Tratando el proveedor"
 
-#: pgimportfiles.cpp:2724
+#: blimportexport.cpp:2724
 msgid "Tratando factura"
 msgstr "Tratando factura"
 
-#: pgimportfiles.cpp:2063
+#: blimportexport.cpp:2063
 msgid "Tratando familia"
 msgstr "Tratando familia"
 
-#: pgimportfiles.cpp:1970
+#: blimportexport.cpp:1970
 msgid "Tratando la forma de pago"
 msgstr "Tratando la forma de pago"
 
-#: pgimportfiles.cpp:2271
+#: blimportexport.cpp:2271
 msgid "Tratando pedido cliente"
 msgstr "Tratando pedido cliente"
 
-#: pgimportfiles.cpp:2962
+#: blimportexport.cpp:2962
 msgid "Tratando presupuesto"
 msgstr "Tratando presupuesto"
 
 #: ui_amortizacionbase.h:667 amortizacionview.cpp:252 amortizacionview.cpp:279
-#: amortizacionview.cpp:307 amortizacionview.cpp:338 busquedaperiodo.cpp:73
+#: amortizacionview.cpp:307 amortizacionview.cpp:338 blperiodicitycombobox.cpp:73
 msgid "Trimestral"
 msgstr "Trimestral"
 
@@ -10342,19 +10342,19 @@ msgstr "Web de la cuenta"
 msgid "X"
 msgstr "X"
 
-#: pgimportfiles.cpp:2096
+#: blimportexport.cpp:2096
 msgid "Ya existe esta familia."
 msgstr "Ya existe esta familia."
 
-#: pgimportfiles.cpp:1987
+#: blimportexport.cpp:1987
 msgid "Ya existe esta forma de pago."
 msgstr "Ya existe esta forma de pago."
 
-#: pgimportfiles.cpp:2035
+#: blimportexport.cpp:2035
 msgid "Ya existe este almacen."
 msgstr "Ya existe este almacen."
 
-#: pgimportfiles.cpp:2185
+#: blimportexport.cpp:2185
 msgid "Ya existe este articulo."
 msgstr "Ya existe este articulo."
 
@@ -10677,11 +10677,11 @@ msgstr "idusuario"
 msgid "igual"
 msgstr "igual"
 
-#: pgimportfiles.cpp:2105
+#: blimportexport.cpp:2105
 msgid "insertada"
 msgstr "insertada"
 
-#: pgimportfiles.cpp:2044 pgimportfiles.cpp:2207
+#: blimportexport.cpp:2044 blimportexport.cpp:2207
 msgid "insertado"
 msgstr "insertado"
 

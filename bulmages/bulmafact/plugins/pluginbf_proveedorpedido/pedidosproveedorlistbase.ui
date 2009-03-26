@@ -147,7 +147,7 @@
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+       <widget class="BlDateSearch" native="1" name="m_fechafin" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
           <horstretch>0</horstretch>
@@ -163,7 +163,7 @@
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="BusquedaFecha" native="1" name="m_fechain" >
+       <widget class="BlDateSearch" native="1" name="m_fechain" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
           <horstretch>0</horstretch>
@@ -667,9 +667,9 @@
    <header>busquedaarticulo.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>PedidosProveedorListSubform</class>

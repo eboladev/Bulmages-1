@@ -276,7 +276,7 @@
       <item row="0" column="1" >
        <layout class="QHBoxLayout" >
         <item>
-         <widget class="BusquedaFecha" name="mui_fechacobro" >
+         <widget class="BlDateSearch" name="mui_fechacobro" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -325,7 +325,7 @@
       <item row="1" column="1" >
        <layout class="QHBoxLayout" >
         <item>
-         <widget class="BusquedaFecha" name="mui_fechavenccobro" >
+         <widget class="BlDateSearch" name="mui_fechavenccobro" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -579,9 +579,9 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>busquedafecha.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>Busqueda</class>

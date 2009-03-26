@@ -23,7 +23,7 @@
 #include <QTextStream>
 
 #include "busquedaarticulo.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "bfcompany.h"
 #include "blconfiguration.h"
 #include "movimientosview.h"

@@ -209,8 +209,8 @@ void aplinteligentesview::eturn_cta()
 void aplinteligentesview::eturn_fecha()
 {
     _depura ( "aplinteligentesview::eturn_fecha", 0 );
-    BusquedaFecha *numero;
-    numero = ( BusquedaFecha * ) sender();
+    BlDateSearch *numero;
+    numero = ( BlDateSearch * ) sender();
     selectsiguiente ( numero );
     _depura ( "END aplinteligentesview::eturn_fecha", 0 );
 }
@@ -448,7 +448,7 @@ void aplinteligentesview::mostrarplantilla()
             labelfecha[i]->setText ( variablesfecha[i][2] );
             labelfecha[i]->show();
 
-            varfecha[i] = new BusquedaFecha ( mui_datosAsiento );
+            varfecha[i] = new BlDateSearch ( mui_datosAsiento );
             varfecha[i]->setGeometry ( QRect ( 150, inc , 150, 25 ) );
 
             connect ( varfecha[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_fecha() ) );

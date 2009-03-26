@@ -19,42 +19,32 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDAFECHA_H
-#define BUSQUEDAFECHA_H
+#ifndef BLDATELINEEDIT_H
+#define BLDATELINEEDIT_H
 
 #include <QLineEdit>
+#include <QKeyEvent>
 
 #include "blfunctions.h"
-#include "blwidget.h"
-#include "ui_busquedafechabase.h"
 
 
-class BusquedaFecha : public BlWidget, public Ui_BusquedaFechaBase
+class BlDateLineEdit : public QLineEdit
 {
     Q_OBJECT
 
 public:
-    BusquedaFecha ( QWidget *parent = 0 );
-    ~BusquedaFecha();
-    virtual void setfecha ( QString val );
-    virtual void setText ( QString val );
+    BlDateLineEdit ( QWidget *parent = 0 );
+    ~BlDateLineEdit();
+
+    void setText ( QString val );
     virtual void setFieldValue ( QString val );
-    virtual QString fecha();
-    virtual QString text();
+    QString text();
     virtual QString fieldValue();
+    void selectAll();
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
 
 public slots:
-    virtual void s_searchFecha();
-    virtual void s_fechatextChanged ( const QString & );
-    virtual void s_fechalostFocus();
-    virtual void s_returnPressed();
-    virtual void selectAll();
-    virtual void setFocus();
-
-signals:
-    void valueChanged ( QString );
-    void returnPressed();
-    void editingFinished();
+    void on_mui_editingFinished();
 };
 
 #endif

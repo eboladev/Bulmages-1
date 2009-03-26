@@ -35,7 +35,7 @@
 #include "listcuentasview1.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
-#include "busquedafecha.h"
+#include "bldatesearch.h"
 #include "busquedacuenta.h"
 #include "extractosubform.h"
 #include "blprogressbar.h"
