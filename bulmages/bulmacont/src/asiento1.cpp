@@ -310,7 +310,8 @@ void Asiento1::abrir()
         _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Inexistente" );
         return;
     }
-    mainCompany() ->abreasiento ( id.toInt() );
+    BlDbRecordSet *cursoraux = mainCompany() ->loadQuery ( "SELECT abreasiento("+ id +")");
+    delete cursoraux;
     trataestadoAsiento1();
     _depura ( "END Asiento1::abreAsiento1", 0 );
 }
@@ -401,8 +402,10 @@ int Asiento1::guardar()
 
         mainCompany() ->commit();
 
-        if ( estadoAsiento1() == ASCerrado )
-            mainCompany() ->cierraasiento ( id.toInt() );
+        if ( estadoAsiento1() == ASCerrado ) {
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT cierraasiento(" + id + ")" );
+            delete cur;
+        } // end if
         dialogChanges_cargaInicial();
         cargar ( id );
         g_main->statusBar() ->showMessage ( _( "El asiento se ha guardado correctamente." ), 2000 );

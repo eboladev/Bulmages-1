@@ -290,7 +290,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
             } // end if
             mainCompany() ->begin();
-            cursoraux = mainCompany() ->cargaasientosfecha ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
+            cursoraux = mainCompany() -> loadQuery ("SELECT * FROM asiento WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' ORDER BY fecha");
 
             for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
                 int idasiento = atoi ( cursoraux->valor ( "idasiento" ).toAscii() );

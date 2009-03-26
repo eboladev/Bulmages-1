@@ -37,7 +37,7 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
     QFile archivo ( appSplash );
     if ( !archivo.exists() ) {
         QString mensaje = "BlSplashScreen: No existe el archivo " + appSplash + "\n";
-        fprintf ( stderr, mensaje.toAscii() );
+        fprintf ( stderr, "%s", mensaje.toAscii().constData() );
         image0 = new QPixmap ( 350, 263 );
         image0->fill ( QColor ( QColor ( 150, 150, 200 ) ) );
     } else {

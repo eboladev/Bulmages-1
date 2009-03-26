@@ -409,9 +409,8 @@ void listcuentasview1::on_mui_borrar_clicked()
                                        _( "Se procedera a borrar la cuenta." ),
                                        QMessageBox::Yes, QMessageBox::No );
     if ( valor ==  QMessageBox::Yes ) {
-        int idcuenta = atoi ( ( char * ) it->text ( cidcuenta ).toAscii().constData() );
         mainCompany() ->begin();
-        if ( mainCompany() ->borrarcuenta ( idcuenta ) == 0 ) {
+        if ( mainCompany() ->runQuery ( "DELETE FROM cuenta WHERE idcuenta = "+ it->text(cidcuenta) ) == 0 ) {
             delete it;
         } else {
             mensajeInfo ( "No se ha podido borrar la cuenta." );

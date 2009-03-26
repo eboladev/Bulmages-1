@@ -207,27 +207,6 @@ public:
 
     /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
     int runQuery ( QString );
-    int nuevoborrador ( int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal );
-    int modificaborrador ( int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal );
-    BlDbRecordSet *cargacuenta ( int idcuenta, QString ccuenta = "" );
-    BlDbRecordSet *cargaasiento ( int idasiento );
-    BlDbRecordSet *cargaapuntes ( int tidasiento );
-    BlDbRecordSet *cargaborradores ( int tidasiento );
-    BlDbRecordSet *cargacuentas ( int padre );
-    BlDbRecordSet *cargagrupos();
-    BlDbRecordSet *cargasaldoscuentafecha ( int, QString );
-    BlDbRecordSet *cargaapuntesctafecha ( int, QString, QString );
-    BlDbRecordSet *cargacuentascodigo ( int, QString, QString );
-    BlDbRecordSet *cargaasientosfecha ( QString, QString );
-    int cierraasiento ( int idasiento );
-    int borrarasiento ( int idasiento );
-    int borrarborrador ( int idborrador );
-    int abreasiento ( int idasiento );
-    int borrarcuenta ( int idcuenta );
-    int modificacuenta ( int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool );
-    int nuevacuenta ( QString desccuenta, QString codigo, int padre, int idgrupo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool );
-    /// Carga en un query las empresas especificadas.
-    BlDbRecordSet *cargaempresas();
     /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
     static QString sanearCadena ( QString cadena );
     void terminar();
