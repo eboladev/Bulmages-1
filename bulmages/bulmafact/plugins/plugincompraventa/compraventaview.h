@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "blfixed.h"
 #include "bldatesearch.h"
 #include "busquedaformapago.h"

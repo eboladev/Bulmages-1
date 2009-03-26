@@ -33,7 +33,7 @@
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "blfixed.h"
 #include "bfform.h"
 

@@ -29,7 +29,7 @@
 #include "blpostgresqlclient.h"
 #include "rutacomercial.h"
 #include "bldatesearch.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 
 
 class company;

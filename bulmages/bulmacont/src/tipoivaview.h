@@ -23,7 +23,7 @@
 #define TIPOIVAVIEW_H
 
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "ui_tipoivabase.h"
 #include "bcform.h"
 

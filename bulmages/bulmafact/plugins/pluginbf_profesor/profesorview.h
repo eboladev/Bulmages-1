@@ -30,7 +30,7 @@
 #include "ui_profesorbase.h"
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bfform.h"
 
 

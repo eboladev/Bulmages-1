@@ -29,7 +29,7 @@
 
 #include "ui_ccostebase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcform.h"
 
 

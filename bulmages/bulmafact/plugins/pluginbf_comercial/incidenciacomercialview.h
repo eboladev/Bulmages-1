@@ -30,7 +30,7 @@
 #include "blpostgresqlclient.h"
 #include "incidenciacomercial.h"
 #include "bldatesearch.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 
 
 class IncidenciaComercialView : public IncidenciaComercial, private Ui_IncidenciaComercialBase

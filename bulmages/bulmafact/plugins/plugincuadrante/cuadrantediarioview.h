@@ -23,7 +23,7 @@
 #define CUADRANTEDIARIOVIEW_H
 
 #include "ui_cuadrantediariobase.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bfform.h"
 
 

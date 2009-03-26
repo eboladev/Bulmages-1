@@ -29,7 +29,7 @@
 #include <QTextStream>
 
 #include "ui_canalbase.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcform.h"
 
 

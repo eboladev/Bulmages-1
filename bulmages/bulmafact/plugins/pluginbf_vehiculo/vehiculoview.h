@@ -22,7 +22,7 @@
 #define VEHICULOVIEW_H
 
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "ui_vehiculobase.h"
 #include "bldb.h"
 #include "bfform.h"

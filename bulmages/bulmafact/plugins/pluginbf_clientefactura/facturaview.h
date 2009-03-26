@@ -31,7 +31,7 @@
 #include "busquedaformapago.h"
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bfform.h"
 #include "bfcompany.h"
 

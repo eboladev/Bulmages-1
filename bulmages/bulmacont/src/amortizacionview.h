@@ -23,7 +23,7 @@
 #define AMORTIZACIONDLGAMORTIZACIONVIEW_H
 
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcsubform.h"
 #include "bldb.h"
 #include "bcform.h"

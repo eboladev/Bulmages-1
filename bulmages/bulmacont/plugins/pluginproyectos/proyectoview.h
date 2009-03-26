@@ -28,7 +28,7 @@
 
 #include "ui_proyectobase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcform.h"
 
 

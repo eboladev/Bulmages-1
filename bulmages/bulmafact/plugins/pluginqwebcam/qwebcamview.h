@@ -23,7 +23,7 @@
 
 #include "ui_qwebcambase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bldb.h"
 
 

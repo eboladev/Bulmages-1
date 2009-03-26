@@ -26,7 +26,7 @@
 #include <QCloseEvent>
 #include <QPainter>
 
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "blfunctions.h"
 #include "blmaincompany.h"
 

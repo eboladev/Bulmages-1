@@ -28,7 +28,7 @@
 
 #include "ui_cuadrante1base.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bfform.h"
 
 

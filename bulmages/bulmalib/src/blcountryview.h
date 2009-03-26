@@ -28,7 +28,7 @@
 
 #include "ui_blcountrybase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "blform.h"
 
 

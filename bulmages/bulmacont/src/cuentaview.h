@@ -34,7 +34,7 @@
 #include "ui_cuentabase.h"
 #include "blpostgresqlclient.h"
 #include "blfunctions.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcform.h"
 
 

@@ -30,7 +30,7 @@
 #include "blpostgresqlclient.h"
 #include "blform.h"
 #include "blfixed.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 
 
 class empresa;

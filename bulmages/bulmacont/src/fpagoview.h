@@ -25,7 +25,7 @@
 #include "blfunctions.h"
 #include "ui_fpagobase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcform.h"
 
 

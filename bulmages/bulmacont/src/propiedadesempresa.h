@@ -27,7 +27,7 @@
 #include <QLineEdit>
 
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bcform.h"
 #include "bcsubform.h"
 

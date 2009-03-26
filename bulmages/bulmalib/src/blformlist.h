@@ -25,7 +25,7 @@
 #include <QWidget>
 #include <QCloseEvent>
 
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "blfunctions.h"
 #include "blmaincompany.h"
 #include "blsubform.h"

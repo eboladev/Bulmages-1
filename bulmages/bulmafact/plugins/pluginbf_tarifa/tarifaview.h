@@ -25,7 +25,7 @@
 
 #include "ui_tarifabase.h"
 #include "blpostgresqlclient.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bfform.h"
 
 

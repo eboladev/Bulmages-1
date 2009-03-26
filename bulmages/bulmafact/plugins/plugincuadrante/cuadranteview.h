@@ -23,7 +23,7 @@
 #define CUADRANTEVIEW_H
 
 #include "ui_cuadrantebase.h"
-#include "dialogchanges.h"
+#include "bldialogchanges.h"
 #include "bfform.h"
 
 
