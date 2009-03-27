@@ -614,10 +614,10 @@ void BlForm::recogeValores()
         if ( l2 ) {
             campo->set ( l2->fieldValue() );
 	} else {
-        /// Buscamos BlComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
+        /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
         QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l7 ) {
-            campo->set ( l2->currentText() );
+            campo->set ( l7->currentText() );
    } // end if
    } // end if
         /// Buscamos un QCheckBox con nombre coincidente.
