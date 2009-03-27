@@ -1958,6 +1958,11 @@ int BlSubForm::cerrarEditor()
 void BlSubForm::guardaconfig()
 {
     _depura ( "BlSubForm::guardaconfig", 0 );
+
+   /// Si el subformulario no esta inicializado no hacemos el guardado.
+   if (! mainCompany() )
+      return;
+
     QString aux = "";
     QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
