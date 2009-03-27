@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras                                    *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,29 +18,70 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MSGERROR_H
-#define MSGERROR_H
-
-#include <QDialog>
-
-#include "blfunctions.h"
-#include <ui_msgerrorbase.h>
+#include "blerrordialog.h"
 
 
-class msgError : public QDialog, public Ui_msgErrorBase
+///
+/**
+**/
+void BlErrorDialog::hideFrame()
 {
-    Q_OBJECT
+    m_framedetalles->hide();
+}
 
-public:
-    msgError ( QWidget *parent = 0 );
-    msgError ( QString, QString );
-    virtual ~msgError();
-    void hideFrame();
-    void showFrame();
 
-public slots:
-    virtual void s_mostrarDetalles();
-};
+///
+/**
+**/
+void BlErrorDialog::showFrame()
+{
+    m_framedetalles->show();
+}
 
-#endif
+
+///
+/**
+**/
+void BlErrorDialog::s_mostrarDetalles()
+{
+    if ( m_framedetalles->isVisible() ) {
+        hideFrame();
+    } else {
+        showFrame();
+    } // end if
+}
+
+
+///
+/**
+\param parent
+**/
+BlErrorDialog::BlErrorDialog ( QWidget *parent ) : QDialog ( parent )
+{
+    setupUi ( this );
+    QObject::connect ( pushButton1, SIGNAL ( clicked ( bool ) ), this, SLOT ( close() ) );
+    QObject::connect ( pushButton2, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_mostarDetalles() ) );
+}
+
+
+///
+/**
+\param mensaje
+\param descripcion
+**/
+BlErrorDialog::BlErrorDialog ( QString mensaje, QString descripcion )
+{
+    setupUi ( this );
+    hideFrame();
+    m_mensaje->setText ( mensaje );
+    m_detalles->setPlainText ( descripcion );
+    exec();
+}
+
+
+///
+/**
+**/
+BlErrorDialog::~BlErrorDialog()
+{}
 

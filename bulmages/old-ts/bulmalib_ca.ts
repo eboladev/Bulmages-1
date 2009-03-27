@@ -794,7 +794,7 @@
     </message>
 </context>
 <context>
-    <name>msgErrorBase</name>
+    <name>BlErrorDialogBase</name>
     <message>
         <location filename="" line="0"/>
         <source>Mensaje</source>

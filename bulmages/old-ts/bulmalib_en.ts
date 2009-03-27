@@ -702,19 +702,19 @@ Consulta SQL</translation>
     </message>
 </context>
 <context>
-    <name>msgErrorBase</name>
+    <name>BlErrorDialogBase</name>
     <message>
-        <location filename="msgerrorbase.ui" line="13"/>
+        <location filename="blerrordialogbase.ui" line="13"/>
         <source>Mensaje</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location filename="msgerrorbase.ui" line="93"/>
+        <location filename="blerrordialogbase.ui" line="93"/>
         <source>&amp;Detalles</source>
         <translation>&amp;Details</translation>
     </message>
     <message>
-        <location filename="msgerrorbase.ui" line="103"/>
+        <location filename="blerrordialogbase.ui" line="103"/>
         <source>&amp;Cerrar</source>
         <translation>&amp;Close</translation>
     </message>

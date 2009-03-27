@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras                                    *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,70 +19,29 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "msgerror.h"
+#ifndef BLERRORDIALOG_H
+#define BLERRORDIALOG_H
+
+#include <QDialog>
+
+#include "blfunctions.h"
+#include "ui_blerrordialogbase.h"
 
 
-///
-/**
-**/
-void msgError::hideFrame()
+class BlErrorDialog : public QDialog, public Ui_BlErrorDialogBase
 {
-    m_framedetalles->hide();
-}
+    Q_OBJECT
 
+public:
+    BlErrorDialog ( QWidget *parent = 0 );
+    BlErrorDialog ( QString, QString );
+    virtual ~BlErrorDialog();
+    void hideFrame();
+    void showFrame();
 
-///
-/**
-**/
-void msgError::showFrame()
-{
-    m_framedetalles->show();
-}
+public slots:
+    virtual void s_mostrarDetalles();
+};
 
-
-///
-/**
-**/
-void msgError::s_mostrarDetalles()
-{
-    if ( m_framedetalles->isVisible() ) {
-        hideFrame();
-    } else {
-        showFrame();
-    } // end if
-}
-
-
-///
-/**
-\param parent
-**/
-msgError::msgError ( QWidget *parent ) : QDialog ( parent )
-{
-    setupUi ( this );
-    QObject::connect ( pushButton1, SIGNAL ( clicked ( bool ) ), this, SLOT ( close() ) );
-    QObject::connect ( pushButton2, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_mostarDetalles() ) );
-}
-
-
-///
-/**
-\param mensaje
-\param descripcion
-**/
-msgError::msgError ( QString mensaje, QString descripcion )
-{
-    setupUi ( this );
-    hideFrame();
-    m_mensaje->setText ( mensaje );
-    m_detalles->setPlainText ( descripcion );
-    exec();
-}
-
-
-///
-/**
-**/
-msgError::~msgError()
-{}
+#endif
 

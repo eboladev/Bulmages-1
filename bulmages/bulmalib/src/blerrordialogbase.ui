@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>msgErrorBase</class>
- <widget class="QDialog" name="msgErrorBase" >
+ <class>BlErrorDialogBase</class>
+ <widget class="QDialog" name="BlErrorDialogBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -115,7 +115,7 @@
   <connection>
    <sender>pushButton1</sender>
    <signal>clicked()</signal>
-   <receiver>msgErrorBase</receiver>
+   <receiver>BlErrorDialogBase</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >

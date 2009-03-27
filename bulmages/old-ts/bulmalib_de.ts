@@ -688,19 +688,19 @@
     </message>
 </context>
 <context>
-    <name>msgErrorBase</name>
+    <name>BlErrorDialogBase</name>
     <message>
-        <location filename="msgerrorbase.ui" line="13"/>
+        <location filename="blerrordialogbase.ui" line="13"/>
         <source>Mensaje</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="msgerrorbase.ui" line="93"/>
+        <location filename="blerrordialogbase.ui" line="93"/>
         <source>&amp;Detalles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="msgerrorbase.ui" line="103"/>
+        <location filename="blerrordialogbase.ui" line="103"/>
         <source>&amp;Cerrar</source>
         <translation type="unfinished"></translation>
     </message>

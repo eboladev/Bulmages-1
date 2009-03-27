@@ -11,7 +11,7 @@ usr/include/fixed.h
 usr/include/funcaux.h
 usr/include/listventanas.h
 usr/include/bldblogindialog.h
-usr/include/msgerror.h
+usr/include/blerrordialog.h
 usr/include/numerocuenta.h
 usr/include/blimportexport.h
 usr/include/blplugins.h

@@ -28,7 +28,7 @@
 #include <cmath>
 
 #include "blpostgresqlclient.h"
-#include "msgerror.h"
+#include "blerrordialog.h"
 
 
 ///
@@ -138,7 +138,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
             _depura ( PQerrorMessage ( conn ) );
             _depura ( "QUERY command failed [" + SQLQuery + "]", 10 );
             if ( confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
-                msgError ( _( "Error al hacer la consulta con la base de datos." ) + QString("\n:: ") + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
+                BlErrorDialog ( _( "Error al hacer la consulta con la base de datos." ) + QString("\n:: ") + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
             throw - 1;
@@ -771,13 +771,13 @@ int BlPostgreSqlClient::runQuery ( QString Query )
         if ( e == 42501 ) {
             _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
             QString mensaje = "No tiene permisos suficientes para ejecutar el comando SQL:\n";
-            msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
+            BlErrorDialog ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } else {
             _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
             QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " +QString::number(PQresultStatus ( result )) + "\n";
-            msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
+            BlErrorDialog ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } // end if

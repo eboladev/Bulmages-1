@@ -38,7 +38,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blcompanydialog.cpp
 			bldialogchanges.cpp
 			blfixed.cpp
-			msgerror.cpp
+			blerrordialog.cpp
 			bldatesearch.cpp
 			bltablewidget.cpp
 			bldockwidget.cpp
@@ -72,7 +72,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
-			msgerror.h
+			blerrordialog.h
 			bldatesearch.h
 			bltablewidget.h
 			blperiodicitycombobox.h
@@ -109,7 +109,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 			blfunctions.h
 			listventanas.h
 			bldblogindialog.h
-			msgerror.h
+			blerrordialog.h
 			numerocuenta.h
 			blimportexport.h
 			blplugins.h
@@ -140,7 +140,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS	bldblogindialogbase.ui 
 			blcompanydialogbase.ui 
-			msgerrorbase.ui 
+			blerrordialogbase.ui 
 			bldatesearchbase.ui 
 			blsubformbase.ui 
 			fichacfgbase.ui 

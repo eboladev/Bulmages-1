@@ -689,19 +689,19 @@
     </message>
 </context>
 <context>
-    <name>msgErrorBase</name>
+    <name>BlErrorDialogBase</name>
     <message>
-        <location filename="../../../../../BULMAGES/msgerrorbase.ui" line="13"/>
+        <location filename="../../../../../BULMAGES/blerrordialogbase.ui" line="13"/>
         <source>Mensaje</source>
         <translation>Méssaje</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/msgerrorbase.ui" line="93"/>
+        <location filename="../../../../../BULMAGES/blerrordialogbase.ui" line="93"/>
         <source>&amp;Detalles</source>
         <translation>&amp;Détails</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/msgerrorbase.ui" line="103"/>
+        <location filename="../../../../../BULMAGES/blerrordialogbase.ui" line="103"/>
         <source>&amp;Cerrar</source>
         <translation>&amp;Fermer</translation>
     </message>
