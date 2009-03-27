@@ -31,7 +31,7 @@
 #include "blconfiguration.h"
 
 
-extern BlApplication *theApp;
+extern BlApplication *g_theApp;
 
 ///
 /**
@@ -114,7 +114,7 @@ void BlDockWidget::cargaconf()
 
         // Buscamos el area
         int area = stream.readLine().toInt();
-// theApp->((QMainWindow *)mainWidget())->
+// g_theApp->((QMainWindow *)mainWidget())->
         g_main->addDockWidget ( ( Qt::DockWidgetArea ) area, this );
 
         /// Establecemos la columna de ordenaci&oacute;n

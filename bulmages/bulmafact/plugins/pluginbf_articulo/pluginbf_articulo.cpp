@@ -307,7 +307,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
     sub->setEnabled ( false );
     artlist->show();
     while ( !artlist->isHidden() )
-        theApp->processEvents();
+        g_theApp->processEvents();
     sub->setEnabled ( true );
     QString idArticle = artlist->idarticulo();
     delete artlist;

@@ -131,7 +131,7 @@ int FPagoView::guardar()
         dialogChanges_cargaInicial();
 
 	/// Emitimos la senyal apropiada en el qapplication2
-	theApp->tablaCambiada1("forma_pago");
+	g_theApp->tablaCambiada1("forma_pago");
 
         _depura ( "END FPagoView::on_mui_guardar_clicked", 0 );
         return 0;

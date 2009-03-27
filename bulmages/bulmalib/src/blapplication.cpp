@@ -24,6 +24,11 @@
 #include "blform.h"
 
 
+
+// La variable global g_theApp esta definida aqui.
+BlApplication *g_theApp;
+
+
 ///
 /**
 \param argc

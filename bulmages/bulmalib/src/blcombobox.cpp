@@ -22,8 +22,8 @@
 #include "blcombobox.h"
 
 
-/// Existe una instancia del objeto global theApp.
-extern BlApplication *theApp;
+/// Existe una instancia del objeto global g_theApp.
+extern BlApplication *g_theApp;
 
 
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
@@ -40,7 +40,7 @@ BlComboBox::BlComboBox ( QWidget *parent )
     _depura ( "BlComboBox::BlComboBox", 0 );
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    connect(theApp, SIGNAL(tablaCambiada(const QString &)), this, SLOT(onTablaCambiada(const QString &)));
+    connect(g_theApp, SIGNAL(tablaCambiada(const QString &)), this, SLOT(onTablaCambiada(const QString &)));
     m_null = TRUE;
 
     _depura ( "END BlComboBox::BlComboBox", 0 );

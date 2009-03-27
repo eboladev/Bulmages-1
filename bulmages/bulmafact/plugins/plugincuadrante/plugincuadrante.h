@@ -43,7 +43,7 @@ extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
 
-extern BlApplication *theApp;
+extern BlApplication *g_theApp;
 
 
 class myplugin4 : public QObject, BlMainCompanyPointer

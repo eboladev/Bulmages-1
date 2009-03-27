@@ -196,7 +196,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         } // end if
 
 		/// Emitimos la senyal apropiada en el qapplication2
-		theApp->tablaCambiada1("trabajador");
+		g_theApp->tablaCambiada1("trabajador");
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();

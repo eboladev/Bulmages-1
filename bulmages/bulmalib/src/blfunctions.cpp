@@ -48,7 +48,7 @@ QString editaTexto ( QString texto )
     g_main->setEnabled ( FALSE );
     ed->show();
     while ( !ed->isHidden() ) {
-        theApp->processEvents();
+        g_theApp->processEvents();
     } // end while
     g_main->setEnabled ( TRUE );
     QString vuelta = ed->toPlainText();

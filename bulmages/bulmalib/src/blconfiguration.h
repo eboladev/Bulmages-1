@@ -271,8 +271,8 @@ public:
 /// Se va a llamar muy a menudo a este objeto en los demas archivos.
 /// Existe una instancia del objeto global confpr.
 extern BlConfiguration *confpr;
-/// Existe una instancia del objeto global theApp.
-extern BlApplication *theApp;
+/// Existe una instancia del objeto global g_theApp.
+extern BlApplication *g_theApp;
 
 #endif
 

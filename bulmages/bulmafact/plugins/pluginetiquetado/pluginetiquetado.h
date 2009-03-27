@@ -38,7 +38,7 @@ extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
-// extern BlApplication *theApp;
+// extern BlApplication *g_theApp;
 
 /*
 class myplugin : public QObject {

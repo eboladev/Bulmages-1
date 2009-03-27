@@ -51,7 +51,7 @@
 
 extern QMainWindow *g_main;
 
-extern BlApplication *theApp;
+extern BlApplication *g_theApp;
 
 
 

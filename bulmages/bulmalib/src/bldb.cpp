@@ -534,7 +534,7 @@ int BlDbRecord::DBsave ( QString &id )
         m_nuevoCampo = FALSE;
 
 	/// Emitimos la senyal apropiada en el qapplication2
-	theApp->tablaCambiada1(m_tablename);
+	g_theApp->tablaCambiada1(m_tablename);
 
     } catch ( int error ) {
         _depura ( "END BlDbRecord::DBsave", 0, "Error de guardado" );

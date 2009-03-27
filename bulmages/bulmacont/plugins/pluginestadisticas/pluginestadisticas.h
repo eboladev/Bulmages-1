@@ -19,7 +19,7 @@
 
 extern "C" MY_EXPORT int entryPoint ( Bulmages01 * );
 
-extern QApplication *theApp;
+extern QApplication *g_theApp;
 
 
 class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject

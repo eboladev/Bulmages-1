@@ -40,8 +40,6 @@
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmatpv_")
 #endif
 
-
-BlApplication* theApp;
 BulmaTPV* bges;
 
 /// Inicio de ejecucion del programa.
@@ -57,13 +55,13 @@ int main ( int argc, char **argv )
         /// Preparamos el sistema de plugins.
         g_plugins = new BlPlugins();
         /// Iniciamos la clase QApplication para el uso de las Qt.
-        theApp = new BlApplication ( argc, argv );
+        g_theApp = new BlApplication ( argc, argv );
 
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-        theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+        g_theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
         /// Cargamos el BlSplashScreen.
         BlSplashScreen* splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTPV", CONFIG_VERSION );
@@ -134,7 +132,7 @@ int main ( int argc, char **argv )
 	QFile arch(confpr->valor(CONF_STYLESHEET));
 	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
 	  QString style = arch.readAll();
-	  theApp->setStyleSheet(style);
+	  g_theApp->setStyleSheet(style);
 	} // end if
 
         splashScr->mensaje ( _( "Cargando plugins" ) );
@@ -165,7 +163,7 @@ int main ( int argc, char **argv )
 		bges->showMaximized();
 	} // end if
 
-        theApp->exec();
+        g_theApp->exec();
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "exitPoint", bges );
@@ -176,7 +174,7 @@ int main ( int argc, char **argv )
     fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
     /// Liberamos memoria.
     delete bges;
-    delete theApp;
+    delete g_theApp;
     delete confpr;
 
     return 0;

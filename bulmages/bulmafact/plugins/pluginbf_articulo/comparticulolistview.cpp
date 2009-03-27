@@ -71,7 +71,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
     this->setEnabled ( false );
     artlist->show();
     while ( !artlist->isHidden() )
-        theApp->processEvents();
+        g_theApp->processEvents();
     this->setEnabled ( true );
     QString idArticle = artlist->idarticulo();
     delete artlist;

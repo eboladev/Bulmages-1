@@ -112,7 +112,7 @@ void myplugclipboard::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugclipboard::s_trataMenu", 0 );
     if ( action->text() == _( "Pegar desde Hoja de Calculo" ) ) {
-        if ( theApp->clipboard() ->text().contains ( "\t" ) ) {
+        if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
             pegaODS();
         } else {
             pegaSXC();
@@ -129,7 +129,7 @@ void myplugclipboard::pegaSXC()
 {
     _depura ( "myplugclipboard::pegaSXC", 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
-    QString clipboard = theApp->clipboard() ->text();
+    QString clipboard = g_theApp->clipboard() ->text();
 
     QStringList lineas = clipboard.split ( "\n" );
 
@@ -169,7 +169,7 @@ void myplugclipboard::pegaODS()
 {
     _depura ( "myplugclipboard::pegaODS", 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
-    QString clipboard = theApp->clipboard() ->text();
+    QString clipboard = g_theApp->clipboard() ->text();
 
     QStringList lineas = clipboard.split ( "\n" );
 

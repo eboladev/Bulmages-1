@@ -201,7 +201,7 @@ void TipoActividadView::on_mui_guardar_clicked()
         } // end if
 
 		/// Emitimos la senyal apropiada en el qapplication2
-		theApp->tablaCambiada1("tipoactividad");
+		g_theApp->tablaCambiada1("tipoactividad");
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();

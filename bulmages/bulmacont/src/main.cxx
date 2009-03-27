@@ -50,11 +50,6 @@
 
 #include <iostream>
 
-
-/// Estas son las variables globales de la aplicaci&oacute;n.
-/// El puntero de la aplicaci&oacute;n.
-BlApplication *theApp;
-
 /// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
 
 /// Los datos de ejecuci&oacute;n del programa son sencillos.
@@ -85,8 +80,8 @@ int main ( int argc, char **argv )
         g_plugins = new BlPlugins();
 
         /// Creamos la aplicaci&oacute;n principal.
-        theApp = new BlApplication ( argc, argv );
-        theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii() ) ) );
+        g_theApp = new BlApplication ( argc, argv );
+        g_theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii() ) ) );
 
         /// Definimos la codificaci&oacute;n a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
@@ -152,7 +147,7 @@ int main ( int argc, char **argv )
 	QFile arch(confpr->valor(CONF_STYLESHEET));
 	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
 	  QString style = arch.readAll();
-	  theApp->setStyleSheet(style);
+	  g_theApp->setStyleSheet(style);
 	} // end if
 
         /// Cargamos las librerias de g_plugins.
@@ -172,7 +167,7 @@ int main ( int argc, char **argv )
         bges->show();
         delete splashScr;
 
-        valorsalida = theApp->exec();
+        valorsalida = g_theApp->exec();
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "exitPoint", bges );
@@ -183,7 +178,7 @@ int main ( int argc, char **argv )
 
     /// Liberamos memoria.
     delete bges;
-    delete theApp;
+    delete g_theApp;
     delete confpr;
 
     fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );

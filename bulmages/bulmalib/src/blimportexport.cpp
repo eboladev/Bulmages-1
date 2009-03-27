@@ -76,7 +76,7 @@
 #define LEN_NUMEROINV        10
 
 
-extern BlApplication *theApp;
+extern BlApplication *g_theApp;
 
 
 /// ---------------------------------------------

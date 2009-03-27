@@ -26,7 +26,6 @@
 #include <QWidget>
 #include <QMainWindow>
 
-
 class BlForm;
 
 
@@ -46,6 +45,11 @@ public:
 signals:
 	void tablaCambiada(const QString &);
 };
+
+
+/// Declaramos la variable g_theApp como extern para que funcione con un entorno multilibreria.
+extern BlApplication *g_theApp;
+
 
 #endif
 
