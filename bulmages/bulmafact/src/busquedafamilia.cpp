@@ -29,7 +29,7 @@
 \param parent
 **/
 BusquedaFamilia::BusquedaFamilia ( QWidget *parent )
-        : Busqueda ( parent )
+        : BlSearchWidget ( parent )
 {
     _depura ( "BusquedaFamilia::BusquedaFamilia", 0 );
 		/// Establecemos los parametros de busqueda del Cliente

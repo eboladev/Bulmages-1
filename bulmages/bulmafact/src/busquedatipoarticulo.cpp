@@ -29,7 +29,7 @@
 \param parent
 **/
 BusquedaTipoArticulo::BusquedaTipoArticulo ( QWidget *parent )
-        : Busqueda ( parent )
+        : BlSearchWidget ( parent )
 {
     _depura ( "BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
 

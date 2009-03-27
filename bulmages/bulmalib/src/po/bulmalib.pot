@@ -625,7 +625,7 @@ msgstr ""
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr ""
 
-#: listventanas.cpp:149 listventanas.cpp:150
+#: blwindowlistdock.cpp:149 blwindowlistdock.cpp:150
 msgid "Indexador"
 msgstr ""
 

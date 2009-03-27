@@ -418,7 +418,7 @@
        <number>5</number>
       </property>
       <item rowspan="3" row="0" column="0" >
-       <widget class="Busqueda" name="mui_idproveedor" >
+       <widget class="BlSearchWidget" name="mui_idproveedor" >
         <property name="minimumSize" >
          <size>
           <width>250</width>
@@ -1228,7 +1228,7 @@
   <customwidget>
    <class>Busqueda</class>
    <extends>QTextEdit</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

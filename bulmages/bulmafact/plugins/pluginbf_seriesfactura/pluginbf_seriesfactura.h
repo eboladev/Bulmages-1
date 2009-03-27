@@ -28,7 +28,7 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "busquedareferencia.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );

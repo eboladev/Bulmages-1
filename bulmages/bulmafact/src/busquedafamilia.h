@@ -26,7 +26,7 @@
 #include <QLabel>
 
 #include "blwidget.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 
 
 class BfCompany;
@@ -35,7 +35,7 @@ class BfCompany;
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
 /** Este Widget permite buscar y seleccionar una familia de art&iacute;culos.
     Para usar en forma de selector de articulos. */
-class BusquedaFamilia : public Busqueda
+class BusquedaFamilia : public BlSearchWidget
 {
     Q_OBJECT
 

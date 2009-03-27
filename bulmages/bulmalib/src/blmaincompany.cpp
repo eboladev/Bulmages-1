@@ -27,7 +27,7 @@
 /**
 \param doc
 **/
-void BlMainCompany::setListVentanas ( ListVentanas *doc )
+void BlMainCompany::setListVentanas ( BlWindowListDock *doc )
 {
     _depura ( "BlMainCompany::setListVentanas", 0 );
     m_listventanas = doc;
@@ -51,7 +51,7 @@ BlWorkspace *BlMainCompany::pWorkspace()
 /**
 \return
 **/
-ListVentanas *BlMainCompany::listVentanas()
+BlWindowListDock *BlMainCompany::listVentanas()
 {
     _depura ( "BlMainCompany::listVentanas", 0 );
     _depura ( "END BlMainCompany::listVentanas", 0 );

@@ -27,7 +27,7 @@
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 #include "blworkspace.h"
 
 
@@ -36,7 +36,7 @@ class BlMainCompany : public BlPostgreSqlClient
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
     /// mensajes tiene el control de la lista de ventanas.
-    ListVentanas *m_listventanas;
+    BlWindowListDock *m_listventanas;
 
 public:
     /// Puntero al BlWorkspace de la aplicacion. Ya que esta clase crea todas las ventanas,
@@ -51,8 +51,8 @@ public:
     virtual ~BlMainCompany();
     virtual void init ( QString bd, QString tipo );
     QString searchCompany ( QString );
-    void setListVentanas ( ListVentanas *doc );
-    ListVentanas *listVentanas();
+    void setListVentanas ( BlWindowListDock *doc );
+    BlWindowListDock *listVentanas();
     BlWorkspace *pWorkspace();
     void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );

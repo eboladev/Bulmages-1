@@ -294,7 +294,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="Busqueda" native="1" name="m_cliente" >
+         <widget class="BlSearchWidget" native="1" name="m_cliente" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
             <horstretch>0</horstretch>
@@ -461,7 +461,7 @@
   <customwidget>
    <class>Busqueda</class>
    <extends>QWidget</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

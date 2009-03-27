@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <class>FichaCfgBase</class>
- <widget class="QWidget" name="FichaCfgBase" >
+ <class>BlFormConfigBase</class>
+ <widget class="QWidget" name="BlFormConfigBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -328,7 +328,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>FichaCfgBase</receiver>
+   <receiver>BlFormConfigBase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >

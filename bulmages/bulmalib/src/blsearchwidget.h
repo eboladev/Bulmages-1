@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDA_H
-#define BUSQUEDA_H
+#ifndef BLSEARCHWIDGET_H
+#define BLSEARCHWIDGET_H
 
 #include <QLineEdit>
 #include <QLabel>
@@ -28,7 +28,7 @@
 #include "blfunctions.h"
 #include "blwidget.h"
 #include "blcombobox.h"
-#include "ui_busquedabase.h"
+#include "ui_blsearchwidgetbase.h"
 
 
 /// Permite buscar y seleccionar un profesor.

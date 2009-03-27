@@ -27,7 +27,7 @@
 #include <QLibraryInfo>
 
 #include "blpostgresqlclient.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 #include "blworkspace.h"
 #include "blmaincompany.h"
 #include "blsplashscreen.h"

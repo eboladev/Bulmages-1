@@ -26,7 +26,7 @@
 
 #include "bulmafact.h"
 #include "articuloview.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 #include "listlinalbaranproveedorview.h"
 #include "listlinalbaranclienteview.h"
 #include "listlinfacturaview.h"
@@ -39,7 +39,7 @@ extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
-extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda * );
+extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
 
 extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView * );
 extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView * );

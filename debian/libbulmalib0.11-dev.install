@@ -9,10 +9,10 @@ usr/include/empresabase.h
 usr/include/ficha.h
 usr/include/fixed.h
 usr/include/funcaux.h
-usr/include/listventanas.h
+usr/include/blwindowlistdock.h
 usr/include/bldblogindialog.h
 usr/include/blerrordialog.h
-usr/include/numerocuenta.h
+usr/include/blspainbankaccountnumber.h
 usr/include/blimportexport.h
 usr/include/blplugins.h
 usr/include/postgresiface2.h

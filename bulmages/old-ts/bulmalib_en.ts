@@ -650,7 +650,7 @@ Consulta SQL</translation>
 <context>
     <name>listventanas</name>
     <message>
-        <location filename="listventanas.cpp" line="87"/>
+        <location filename="blwindowlistdock.cpp" line="87"/>
         <source>Indexador</source>
         <translation>Indexador</translation>
     </message>

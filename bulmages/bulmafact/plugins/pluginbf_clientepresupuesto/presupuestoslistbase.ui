@@ -488,7 +488,7 @@
        </widget>
       </item>
       <item rowspan="3" row="3" column="1" >
-       <widget class="Busqueda" name="m_cliente" >
+       <widget class="BlSearchWidget" name="m_cliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -670,9 +670,9 @@
    <header>busquedaarticulo.h</header>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
+   <class>BlSearchWidget</class>
    <extends>QTextEdit</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

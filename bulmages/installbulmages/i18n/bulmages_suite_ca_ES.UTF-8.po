@@ -7346,7 +7346,7 @@ msgid "Incluir resultados parciales"
 msgstr "Incloure resultats parcials"
 
 #: ui_bulmacontbase.h:391 ui_bulmafactbase.h:164 ui_bulmafactbase.h:167
-#: listventanas.cpp:149 listventanas.cpp:150
+#: blwindowlistdock.cpp:149 blwindowlistdock.cpp:150
 msgid "Indexador"
 msgstr "Indexador"
 

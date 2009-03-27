@@ -38,7 +38,7 @@
 #include "bccompany.h"
 #include "bbloqfecha.h"
 #include "blconfiguration.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 #include "blworkspace.h"
 #include "blmainwindow.h"
 
@@ -55,7 +55,7 @@ private:
     BcCompany *m_empresaactual;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
     BlWorkspace *m_pWorkspace;
-    ListVentanas *m_list;
+    BlWindowListDock *m_list;
 
 public:
     Bulmacont ( QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "" );

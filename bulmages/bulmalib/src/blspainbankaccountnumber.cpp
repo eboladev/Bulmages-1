@@ -19,14 +19,14 @@
 
 #include <QString>
 
-#include "numerocuenta.h"
+#include "blspainbankaccountnumber.h"
 
 
 ///
 /**
 \return
 **/
-bool numerocuenta::cuentaesvalida()
+bool BlSpainBankAccountNumber::cuentaesvalida()
 {
     return ( getdc() == dc );
 }
@@ -37,7 +37,7 @@ bool numerocuenta::cuentaesvalida()
 \param sep
 \return
 **/
-QString numerocuenta::getcodigo ( QString sep )
+QString BlSpainBankAccountNumber::getcodigo ( QString sep )
 {
     return ( banco + sep + entidad + sep + dc + sep + numcuenta );
 }
@@ -47,7 +47,7 @@ QString numerocuenta::getcodigo ( QString sep )
 /**
 \return
 **/
-QString numerocuenta::getnumcuenta()
+QString BlSpainBankAccountNumber::getnumcuenta()
 {
     return numcuenta;
 }
@@ -57,7 +57,7 @@ QString numerocuenta::getnumcuenta()
 /**
 \return
 **/
-QString numerocuenta::getbanco()
+QString BlSpainBankAccountNumber::getbanco()
 {
     return banco;
 }
@@ -67,7 +67,7 @@ QString numerocuenta::getbanco()
 /**
 \return
 **/
-QString numerocuenta::getentidad()
+QString BlSpainBankAccountNumber::getentidad()
 {
     return entidad;
 }
@@ -77,7 +77,7 @@ QString numerocuenta::getentidad()
 /**
 \param cad
 **/
-void numerocuenta::setnumcuenta ( QString cad )
+void BlSpainBankAccountNumber::setnumcuenta ( QString cad )
 {
     numcuenta = cad.rightJustified ( 10, '0' );
 }
@@ -87,7 +87,7 @@ void numerocuenta::setnumcuenta ( QString cad )
 /**
 \param cad
 **/
-void numerocuenta::setbanco ( QString cad )
+void BlSpainBankAccountNumber::setbanco ( QString cad )
 {
     banco = cad.rightJustified ( 4, '0' );
 }
@@ -97,7 +97,7 @@ void numerocuenta::setbanco ( QString cad )
 /**
 \param cad
 **/
-void numerocuenta::setentidad ( QString cad )
+void BlSpainBankAccountNumber::setentidad ( QString cad )
 {
     entidad = cad.rightJustified ( 4, '0' );
 }
@@ -108,7 +108,7 @@ void numerocuenta::setentidad ( QString cad )
 /// \param entidadpar Codigo entidad (4 digitos)
 /// \param dcpar Digitos de Control (2 digitos)
 /// \param numcuentapar Codigo de cuenta (10 digitos)
-numerocuenta::numerocuenta ( QString bancopar, QString entidadpar, QString dcpar, QString numcuentapar )
+BlSpainBankAccountNumber::BlSpainBankAccountNumber ( QString bancopar, QString entidadpar, QString dcpar, QString numcuentapar )
 {
     setbanco ( bancopar );
     setentidad ( entidadpar );
@@ -123,7 +123,7 @@ numerocuenta::numerocuenta ( QString bancopar, QString entidadpar, QString dcpar
 \param entidadpar
 \param numcuentapar
 **/
-numerocuenta::numerocuenta ( QString bancopar, QString entidadpar, QString numcuentapar )
+BlSpainBankAccountNumber::BlSpainBankAccountNumber ( QString bancopar, QString entidadpar, QString numcuentapar )
 {
     setbanco ( bancopar );
     setentidad ( entidadpar );
@@ -136,7 +136,7 @@ numerocuenta::numerocuenta ( QString bancopar, QString entidadpar, QString numcu
 /**
 \param cuenpar
 **/
-numerocuenta::numerocuenta ( QString cuenpar )
+BlSpainBankAccountNumber::BlSpainBankAccountNumber ( QString cuenpar )
 {
     QString tem = cuenpar;
     tem.remove ( "-" ); /// TODO: Que elimine tambien otro tipo de caracteres como espacios, etc.
@@ -150,7 +150,7 @@ numerocuenta::numerocuenta ( QString cuenpar )
 ///
 /**
 **/
-numerocuenta::~numerocuenta()
+BlSpainBankAccountNumber::~BlSpainBankAccountNumber()
 {}
 
 
@@ -158,7 +158,7 @@ numerocuenta::~numerocuenta()
 /**
 \return
 **/
-QString numerocuenta::getdc()
+QString BlSpainBankAccountNumber::getdc()
 {
     QString resul;
     int i;

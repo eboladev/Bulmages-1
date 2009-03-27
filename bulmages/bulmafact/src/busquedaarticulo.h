@@ -27,7 +27,7 @@
 
 #include "blcombobox.h"
 #include "blpostgresqlclient.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 
 
 class company;
@@ -60,7 +60,7 @@ public slots:
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BusquedaArticulo : public Busqueda
+class BusquedaArticulo : public BlSearchWidget
 {
     Q_OBJECT
 

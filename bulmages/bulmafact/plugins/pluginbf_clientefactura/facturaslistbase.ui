@@ -95,7 +95,7 @@
          </widget>
         </item>
         <item>
-         <widget class="Busqueda" name="m_cliente" >
+         <widget class="BlSearchWidget" name="m_cliente" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
             <horstretch>0</horstretch>
@@ -874,7 +874,7 @@
   <customwidget>
    <class>Busqueda</class>
    <extends>QTextEdit</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

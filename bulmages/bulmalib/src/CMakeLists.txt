@@ -32,7 +32,7 @@ INCLUDE(${QT_USE_FILE})
 
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
-			numerocuenta.cpp
+			blspainbankaccountnumber.cpp
 			blfunctions.cpp
 			bldblogindialog.cpp
 			blcompanydialog.cpp
@@ -48,7 +48,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bldb.cpp
 			bldbsubform.cpp
 			blsubform.cpp
-			listventanas.cpp
+			blwindowlistdock.cpp
 			blworkspace.cpp
 			blapplication.cpp
 			blform.cpp
@@ -59,7 +59,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blformlist.cpp
 			bldatelineedit.cpp
 			blsplashscreen.cpp
-			fichacfg.cpp
+			blformconfig.cpp
 			blcountryview.cpp
 			blradiobutton.cpp
 			blcombobox.cpp
@@ -67,7 +67,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blmainwindow.cpp
 			blbankedit.cpp
 			blmonthcalendar.cpp
-			busqueda.cpp
+			blsearchwidget.cpp
 			bli18n.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
@@ -78,7 +78,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blperiodicitycombobox.h
 			bldockwidget.h
 			blsubform.h
-			listventanas.h
+			blwindowlistdock.h
 			blworkspace.h
 			blapplication.h
 			blform.h
@@ -89,13 +89,13 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blformlist.h
 			bldatelineedit.h
 			blsplashscreen.h
-			fichacfg.h
+			blformconfig.h
 			blcountryview.h
 			blradiobutton.h
 			blcombobox.h
 			blbankedit.h
 			blmonthcalendar.h
-			busqueda.h)
+			blsearchwidget.h)
 
 set (bulmalib_HDRS	blcompanydialog.h
 			bldatesearch.h
@@ -107,10 +107,10 @@ set (bulmalib_HDRS	blcompanydialog.h
 			blform.h
 			blfixed.h
 			blfunctions.h
-			listventanas.h
+			blwindowlistdock.h
 			bldblogindialog.h
 			blerrordialog.h
-			numerocuenta.h
+			blspainbankaccountnumber.h
 			blimportexport.h
 			blplugins.h
 			blpostgresqlclient.h
@@ -125,7 +125,7 @@ set (bulmalib_HDRS	blcompanydialog.h
 #headers that are not moc'ed
 #			blpostgresqlclient.h 
 #			blconfiguration.h 
-#			numerocuenta.h 
+#			blspainbankaccountnumber.h 
 #			blfunctions.h 
 #			dialogchanges.h 
 #			blfixed.h 
@@ -143,10 +143,10 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blerrordialogbase.ui 
 			bldatesearchbase.ui 
 			blsubformbase.ui 
-			fichacfgbase.ui 
+			blformconfigbase.ui 
 			blcountrybase.ui
 			blprogressbarbase.ui
-			busquedabase.ui
+			blsearchwidgetbase.ui
 			blbankeditbase.ui)
 
 include_directories(

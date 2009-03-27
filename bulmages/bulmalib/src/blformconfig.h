@@ -19,16 +19,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FICHACFG_H
-#define FICHACFG_H
+#ifndef BLFORMCONFIG_H
+#define BLFORMCONFIG_H
 
 #include "blfunctions.h"
 #include "blwidget.h"
-#include "ui_fichacfgbase.h"
+#include "ui_blformconfigbase.h"
 #include "blform.h"
 
 
-class FichaCfg : public BlWidget, public Ui_FichaCfgBase
+class BlFormConfig : public BlWidget, public Ui_BlFormConfigBase
 {
     Q_OBJECT
 
@@ -36,8 +36,8 @@ private:
     BlForm *m_BlForm;
 
 public:
-    FichaCfg ( BlMainCompany *, BlForm *parent = 0, Qt::WFlags f = 0 );
-    ~FichaCfg();
+    BlFormConfig ( BlMainCompany *, BlForm *parent = 0, Qt::WFlags f = 0 );
+    ~BlFormConfig();
 };
 
 #endif

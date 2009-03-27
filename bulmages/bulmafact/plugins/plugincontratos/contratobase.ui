@@ -411,7 +411,7 @@
        <number>5</number>
       </property>
       <item rowspan="3" row="0" column="0" >
-       <widget class="Busqueda" native="1" name="mui_idcliente" >
+       <widget class="BlSearchWidget" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -774,7 +774,7 @@
   <customwidget>
    <class>Busqueda</class>
    <extends>QWidget</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

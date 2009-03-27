@@ -28,7 +28,7 @@
 #include "blworkspace.h"
 #include "ui_bulmatpvbase.h"
 #include "btcompany.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 #include "blsplashscreen.h"
 #include "blmainwindow.h"
 

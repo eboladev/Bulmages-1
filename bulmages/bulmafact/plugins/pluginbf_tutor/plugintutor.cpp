@@ -26,7 +26,7 @@
 #include "tutorview.h"
 #include "tutoreslist.h"
 
-#include "busqueda.h"
+#include "blsearchwidget.h"
 
 TutoresList *g_tutoresList=NULL;
 
@@ -148,7 +148,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_createEditor", 0);
   int ret = 0;
     if (g_nomcampo == "nombrealumno") {
-        BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName("EditNombreAlumno");
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nombrealumno"] = "";
@@ -158,7 +158,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
   } // end if
   
     if (g_nomcampo == "nomcliente") {
-        BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName("EditNombreCliente");
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nomcliente"] = "";
@@ -175,7 +175,7 @@ int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
   _depura("pluginbf_tutor::BlSubFormDelegate_setModelData", 0);
   int ret = 0;
     if (g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente") {
-        BusquedaDelegate * comboBox = (BusquedaDelegate *) g_editor;
+        BlDbCompleterComboBox * comboBox = (BlDbCompleterComboBox *) g_editor;
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
         g_model->setData ( g_index, value );
@@ -191,7 +191,7 @@ int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
   int ret = 0;
     if (g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente") {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
-        BusquedaDelegate *comboBox = (BusquedaDelegate *) g_editor ;
+        BlDbCompleterComboBox *comboBox = (BlDbCompleterComboBox *) g_editor ;
         comboBox->addItem ( value );
         ret = -1;
       } // end if

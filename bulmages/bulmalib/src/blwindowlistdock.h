@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __LISTVENTANAS__
-#define __LISTVENTANAS__
+#ifndef BLWINDOWLISTDOCK_H
+#define BLWINDOWLISTDOCK_H
 
 #include <QDockWidget>
 #include <QListWidget>
@@ -59,7 +59,7 @@ public:
 /// Provides the dock window to list all windows in BulmaFact
 /// \param m_listBox this variable is the listBox that contains all
 /// titles of the diferent windows.
-class ListVentanas : public QDockWidget
+class BlWindowListDock : public QDockWidget
 {
     Q_OBJECT
 
@@ -69,8 +69,8 @@ private:
 
 public:
     void setWorkspace ( BlWorkspace *w );
-    ListVentanas ( QWidget *a = 0 );
-    ~ListVentanas();
+    BlWindowListDock ( QWidget *a = 0 );
+    ~BlWindowListDock();
 
 public:
     int meteWindow ( QString, QObject *, bool compdup = TRUE );

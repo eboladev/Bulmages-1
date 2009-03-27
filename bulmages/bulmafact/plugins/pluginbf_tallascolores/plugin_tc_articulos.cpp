@@ -251,7 +251,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
 }
 
 
-int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
+int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 {
     bool encontrado = FALSE;
 

@@ -34,7 +34,7 @@
 
 #include "blworkspace.h"
 #include "bulmatpv.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 #include "aboutview.h"
 #include "blperiodicitycombobox.h"
 #include "blmainwindow.h"
@@ -85,7 +85,7 @@ BulmaTPV::BulmaTPV ( QString bd ) : BlMainWindow()
 
 // ============== OJO El listventanas no se utiliza pero lo pongo para poder usar componentes de bulmafact.
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
-    ListVentanas *list = new ListVentanas ( 0 );
+    BlWindowListDock *list = new BlWindowListDock ( 0 );
     list->setVisible ( FALSE );
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     list->setWorkspace ( pWorkspace );

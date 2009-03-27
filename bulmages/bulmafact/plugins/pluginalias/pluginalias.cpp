@@ -160,7 +160,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 }
 
 
-int Busqueda_on_m_inputBusqueda_textChanged ( Busqueda *busc )
+int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 {
     bool encontrado = FALSE;
 

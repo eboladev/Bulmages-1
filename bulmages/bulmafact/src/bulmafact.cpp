@@ -35,7 +35,7 @@
 
 #include "blworkspace.h"
 #include "bulmafact.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 #include "aboutview.h"
 #include "blperiodicitycombobox.h"
 #include "blplugins.h"
@@ -80,7 +80,7 @@ Bulmafact::Bulmafact ( QString bd ) : BlMainWindow()
     connect ( pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
-    m_list = new ListVentanas ( 0 );
+    m_list = new BlWindowListDock ( 0 );
     m_list->setVisible ( FALSE );
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace ( pWorkspace );

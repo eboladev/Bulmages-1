@@ -26,7 +26,7 @@
 #include "actividadview.h"
 #include "actividadeslist.h"
 #include "tipoactividadview.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 
 ActividadesList *g_actividadesList=NULL;
 
@@ -171,7 +171,7 @@ int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
   _depura("pluginbf_actividad::BlSubFormDelegate_createEditor", 0);
   int ret = 0;
   if (g_nomcampo == "nombreactividad") {
-        BusquedaDelegate * editor = new BusquedaDelegate ( g_editor );
+        BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName("EditNombreActividad");
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nombreactividad"] = "";
@@ -187,7 +187,7 @@ int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
   _depura("pluginbf_actividad::BlSubFormDelegate_setModelData", 0);
   int ret = 0;
     if (g_editor->objectName() == "EditNombreActividad") {
-        BusquedaDelegate * comboBox = (BusquedaDelegate *) g_editor;
+        BlDbCompleterComboBox * comboBox = (BlDbCompleterComboBox *) g_editor;
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
         g_model->setData ( g_index, value );
@@ -203,7 +203,7 @@ int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
   int ret = 0;
         if (g_editor->objectName() == "EditNombreActividad") {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
-            BusquedaDelegate *comboBox = (BusquedaDelegate *) g_editor;
+            BlDbCompleterComboBox *comboBox = (BlDbCompleterComboBox *) g_editor;
             comboBox->addItem ( value );
             ret = -1;
       } // end if

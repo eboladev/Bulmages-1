@@ -104,9 +104,9 @@ void Mod300ps::accept()
     m_es_borrador = borradorcheckbox->isChecked();
 
     if ( cuentaButton->isChecked() ) {
-        ccc = new numerocuenta ( numerccc[combocuentas->currentIndex() ] );
+        ccc = new BlSpainBankAccountNumber ( numerccc[combocuentas->currentIndex() ] );
     } else
-        ccc = new numerocuenta ( banco->text(), entidad->text(), dc->text(), cuenta->text() );
+        ccc = new BlSpainBankAccountNumber ( banco->text(), entidad->text(), dc->text(), cuenta->text() );
 
 //    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toAscii().constData() << "\n";
 //    cout << "dc=" << ccc->getdc().toAscii().constData() << "\n";

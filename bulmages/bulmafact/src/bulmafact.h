@@ -29,7 +29,7 @@
 #include "blworkspace.h"
 #include "ui_bulmafactbase.h"
 #include "bfcompany.h"
-#include "listventanas.h"
+#include "blwindowlistdock.h"
 
 
 /** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
@@ -49,7 +49,7 @@ private:
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     BfCompany *m_company;
     /// El listado de ventanas abiertas que esta en forma de dock en la parte izquierda.
-    ListVentanas *m_list;
+    BlWindowListDock *m_list;
 
 public:
     Bulmafact ( QString bd );

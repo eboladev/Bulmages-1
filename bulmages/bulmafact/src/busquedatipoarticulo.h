@@ -26,7 +26,7 @@
 #include <QLabel>
 
 #include "blwidget.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 
 
 class company;
@@ -34,7 +34,7 @@ class company;
 /// Permite buscar y seleccionar un tipo de art&iacute;culo.
 /** Este Widget permite buscar y seleccionar un
     tipo de art&iacute;culo. */
-class BusquedaTipoArticulo : public Busqueda
+class BusquedaTipoArticulo : public BlSearchWidget
 {
     Q_OBJECT
 

@@ -262,7 +262,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="4" >
-       <widget class="Busqueda" name="mui_idproveedor" >
+       <widget class="BlSearchWidget" name="mui_idproveedor" >
         <property name="focusPolicy" >
          <enum>Qt::StrongFocus</enum>
         </property>
@@ -478,7 +478,7 @@
   <customwidget>
    <class>Busqueda</class>
    <extends>QTextEdit</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

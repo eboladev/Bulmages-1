@@ -209,7 +209,7 @@
         </widget>
        </item>
        <item>
-        <widget class="Busqueda" name="mui_idcliente" />
+        <widget class="BlSearchWidget" name="mui_idcliente" />
        </item>
       </layout>
      </item>
@@ -350,7 +350,7 @@
   <customwidget>
    <class>Busqueda</class>
    <extends>QLineEdit</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

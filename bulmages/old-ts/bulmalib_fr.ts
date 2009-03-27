@@ -637,7 +637,7 @@
 <context>
     <name>listventanas</name>
     <message>
-        <location filename="../../../../../BULMAGES/listventanas.cpp" line="87"/>
+        <location filename="../../../../../BULMAGES/blwindowlistdock.cpp" line="87"/>
         <source>Indexador</source>
         <translation>Indéxateur</translation>
     </message>

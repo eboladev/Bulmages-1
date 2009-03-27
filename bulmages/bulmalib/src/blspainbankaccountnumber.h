@@ -17,24 +17,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef NUMEROCUENTA_H
-#define NUMEROCUENTA_H
+#ifndef BLSPAINBANKACCOUNTNUMBER_H
+#define BLSPAINBANKACCOUNTNUMBER_H
 
 #include <QString>
 
 
 /// Esta clase implementa el C&oacute;digo Cuenta Cliente (CCC) de un banco.
 /** Su funci&oacute;n m&aacute;s importante es 'cuentaesvalida'. */
-class numerocuenta
+class BlSpainBankAccountNumber
 {
 public:
     /// Banco, entidad, dc y numcuenta.
-    numerocuenta ( QString, QString, QString, QString );
+    BlSpainBankAccountNumber ( QString, QString, QString, QString );
     /// Banco, entidad y numcuenta. El dc lo calcula autom&aacute;ticamente.
-    numerocuenta ( QString, QString, QString );
+    BlSpainBankAccountNumber ( QString, QString, QString );
     /// Banco, entidad, dc y numcuenta todo seguido, con guiones opcionales.
-    numerocuenta ( QString );
-    ~numerocuenta();
+    BlSpainBankAccountNumber ( QString );
+    ~BlSpainBankAccountNumber();
     /// Calcula y devuelve los digitos de control del ccc.
     QString getdc();
     /// Comprueba si es un numero de cuenta valido.

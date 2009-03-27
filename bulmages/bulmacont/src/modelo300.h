@@ -27,7 +27,7 @@
 #include "blfunctions.h"
 #include "ui_modelo300base.h"
 #include "modelosps.h"
-#include "numerocuenta.h"
+#include "blspainbankaccountnumber.h"
 
 
 /// Modelo 300 del IVA.
@@ -71,7 +71,7 @@ private:
     QString *nombresccc;
     QString *numerccc;
     /// C&oacute;digo de Cuenta Corriente.
-    numerocuenta *ccc;
+    BlSpainBankAccountNumber *ccc;
     void personalButtonPressed();
     /// Si es true, no tenemos ninguna cuenta de banco en nuestra base de datos.
     bool sincuentasbancarias;

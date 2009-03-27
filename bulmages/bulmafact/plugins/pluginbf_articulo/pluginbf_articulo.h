@@ -28,13 +28,13 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "busquedareferencia.h"
-#include "busqueda.h"
+#include "blsearchwidget.h"
 #include "bfsubform.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(Busqueda *);
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" MY_EXPORT int SNewArticuloView (BfCompany *);
 extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 

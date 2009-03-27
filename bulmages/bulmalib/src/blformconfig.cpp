@@ -20,7 +20,7 @@
 
 #include <QWidget>
 
-#include "fichacfg.h"
+#include "blformconfig.h"
 
 
 ///  Inicializa el objeto y hace todas las conexiones necesarias.
@@ -29,9 +29,9 @@
 \param parent
 \param f
 **/
-FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidget ( emp, parent, f )
+BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidget ( emp, parent, f )
 {
-    _depura ( "FichaCfg::FichaCfg", 0 );
+    _depura ( "BlFormConfig::BlFormConfig", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     m_BlForm = parent;
@@ -103,16 +103,16 @@ FichaCfg::FichaCfg ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidg
 
     mui_currentuser->setText ( cur->valor ( "current_user" ) );
     delete cur;
-    _depura ( "END FichaCfg::FichaCfg", 0 );
+    _depura ( "END BlFormConfig::BlFormConfig", 0 );
 }
 
 
 /// No requiere de acciones especiales en el destructor.
 /**
 **/
-FichaCfg::~FichaCfg()
+BlFormConfig::~BlFormConfig()
 {
-    _depura ( "FichaCfg::~FichaCfg", 0 );
-    _depura ( "END FichaCfg::~FichaCfg", 0 );
+    _depura ( "BlFormConfig::~BlFormConfig", 0 );
+    _depura ( "END BlFormConfig::~BlFormConfig", 0 );
 }
 

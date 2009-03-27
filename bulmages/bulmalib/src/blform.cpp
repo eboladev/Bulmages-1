@@ -30,7 +30,7 @@
 #include <QUiLoader>
 
 #include "blform.h"
-#include "fichacfg.h"
+#include "blformconfig.h"
 #include "blcombobox.h"
 #include "blplugins.h"
 #include "blradiobutton.h"
@@ -447,7 +447,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
 
     if ( opcion ) {
         if ( opcion == avconfig ) {
-            new FichaCfg ( mainCompany(), this, 0 );
+            new BlFormConfig ( mainCompany(), this, 0 );
         } else if ( opcion == avprint ) {
             BlForm::imprimir();
         } // end if

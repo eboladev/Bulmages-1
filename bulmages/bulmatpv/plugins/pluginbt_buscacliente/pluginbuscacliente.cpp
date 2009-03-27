@@ -34,7 +34,7 @@
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
-Busqueda *g_busc;
+BlSearchWidget *g_busc;
 BlDockWidget *g_doc1;
 BtCompany * g_emp;
 
@@ -67,7 +67,7 @@ int entryPoint ( BulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    g_busc = new Busqueda ( 0 );
+    g_busc = new BlSearchWidget ( 0 );
     g_busc->setMainCompany ( etpv );
 		/// Establecemos los parametros de busqueda del Cliente
     g_busc->setLabel ( _( "Cliente:" ) );
@@ -79,7 +79,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     return 0;
 }
 
-int Busqueda_on_m_inputBusqueda_editingFinished_Post ( Busqueda *busc )
+int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
 {
     if ( busc->id() != "" && busc == g_busc) {
         g_emp->ticketActual() ->setDbValue ( "idcliente", busc->id() );

@@ -193,7 +193,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 }
 
 
-int Busqueda_on_mui_buscar_clicked(Busqueda *busq) {
+int Busqueda_on_mui_buscar_clicked(BlSearchWidget *busq) {
 	if (busq->tableName() == "articulo") {
 
 

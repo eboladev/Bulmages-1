@@ -467,7 +467,7 @@
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
-       <widget class="Busqueda" name="mui_idcliente" >
+       <widget class="BlSearchWidget" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
           <horstretch>0</horstretch>
@@ -1509,9 +1509,9 @@
    <header>busquedatrabajador.h</header>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
+   <class>BlSearchWidget</class>
    <extends>QTextEdit</extends>
-   <header>busqueda.h</header>
+   <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>BusquedaBase</class>
- <widget class="QWidget" name="BusquedaBase" >
+ <class>BlSearchWidgetBase</class>
+ <widget class="QWidget" name="BlSearchWidgetBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -28,7 +28,7 @@
       </size>
      </property>
      <property name="text" >
-      <string>Busqueda</string>
+      <string>BlSearchWidget</string>
      </property>
     </widget>
    </item>
