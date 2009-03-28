@@ -39,7 +39,7 @@
 extern "C" MY_EXPORT int entryPoint ( QApplication * );
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
-extern BlApplication *g_theApp;
+
 
 
 class myplugclipboard : public QObject

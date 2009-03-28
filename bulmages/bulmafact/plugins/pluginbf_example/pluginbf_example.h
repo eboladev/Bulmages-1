@@ -36,7 +36,7 @@
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
-extern BlApplication *g_theApp;
+
 
 
 class myplugin : public QObject

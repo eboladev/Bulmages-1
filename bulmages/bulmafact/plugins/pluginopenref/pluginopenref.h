@@ -31,7 +31,7 @@ extern "C" MY_EXPORT int BusquedaReferencia_on_mui_rferencia_returnPressed ( Bus
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
-// extern BlApplication *g_theApp;
+// 
 
 /*
 class myplugin : public QObject {

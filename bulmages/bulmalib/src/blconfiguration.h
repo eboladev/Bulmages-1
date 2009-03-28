@@ -272,7 +272,7 @@ public:
 /// Existe una instancia del objeto global confpr.
 extern BlConfiguration *confpr;
 /// Existe una instancia del objeto global g_theApp.
-extern BlApplication *g_theApp;
+
 
 #endif
 

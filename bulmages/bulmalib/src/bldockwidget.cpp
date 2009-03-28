@@ -31,7 +31,7 @@
 #include "blconfiguration.h"
 
 
-extern BlApplication *g_theApp;
+
 
 ///
 /**

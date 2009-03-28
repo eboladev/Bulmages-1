@@ -39,7 +39,7 @@
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
-extern BlApplication *g_theApp;
+
 
 
 class efacturabf : public QObject, BlMainCompanyPointer

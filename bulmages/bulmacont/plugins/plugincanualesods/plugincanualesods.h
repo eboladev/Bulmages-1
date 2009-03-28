@@ -44,7 +44,7 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
-extern BlApplication *g_theApp;
+
 
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL

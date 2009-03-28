@@ -45,7 +45,7 @@ extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaV
 extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
-extern BlApplication *g_theApp;
+
 
 
 class myplugin : public QObject, BlMainCompanyPointer

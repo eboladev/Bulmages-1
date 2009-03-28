@@ -23,7 +23,7 @@
 
 
 /// Existe una instancia del objeto global g_theApp.
-extern BlApplication *g_theApp;
+
 
 
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
