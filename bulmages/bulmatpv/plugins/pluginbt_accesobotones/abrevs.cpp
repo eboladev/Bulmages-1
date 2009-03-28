@@ -9,7 +9,7 @@
 #include "trabajadores.h"
 #include "btcompany.h"
 #include "tickets.h"
-
+#include "blmainwindow.h"
 
 Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {

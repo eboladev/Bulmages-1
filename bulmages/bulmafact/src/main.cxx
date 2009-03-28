@@ -45,13 +45,14 @@
 #endif
 
 
-Bulmafact *bges;
 
 
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado confpr.
 int main ( int argc, char **argv )
 {
+    /// Puntero a Bulmafact
+    Bulmafact *bges;
     try {
         fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
         Q_INIT_RESOURCE ( bulmages );

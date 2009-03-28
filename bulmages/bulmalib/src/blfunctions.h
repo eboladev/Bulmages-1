@@ -49,11 +49,6 @@
 #include "config.h"
 #include "bli18n.h"
 
-extern QMainWindow *g_main;
-
-
-
-
 
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.

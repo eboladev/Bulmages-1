@@ -40,12 +40,14 @@
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmatpv_")
 #endif
 
-BulmaTPV* bges;
 
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado confpr.
 int main ( int argc, char **argv )
 {
+    /// Puntero a BulmaTPV que crea la ventana principal
+    BulmaTPV* bges;
+
     try {
         fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
         Q_INIT_RESOURCE ( bulmages );

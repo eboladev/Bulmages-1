@@ -29,7 +29,7 @@
 #include "blplugins.h"
 #include "bccompany.h"
 #include "arbol.h"
-
+#include "blmainwindow.h"
 
 ///
 /**

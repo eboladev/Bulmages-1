@@ -866,6 +866,28 @@ bool BlSubForm::existsHeader ( const QString &head )
     return FALSE;
 }
 
+///
+/**
+\param head
+\return
+**/
+BlSubFormHeader * BlSubForm::header ( const QString &head )
+{
+    _depura ( "BlSubForm::existsHeader", 0 );
+    BlSubFormHeader *linea = NULL;
+    for ( int i = 0; i < m_lcabecera.size(); ++i ) {
+        linea = m_lcabecera.at ( i );
+        if ( linea->nomcampo() == head ) {
+            _depura ( "END BlSubForm::existsHeader", 0 );
+            return linea;
+        } // end if
+    } // end for
+    _depura ( "END BlSubForm::existsHeader", 0 );
+    return NULL;
+}
+
+
+
 
 /// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
 /// tenga todos los elementos necesarios (columnas).
@@ -2482,10 +2504,14 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     creaMenu ( popup );
 
+
+
     if ( m_delete ) {
-        del = popup->addAction ( _( "Borrar registro" ) );
         popup->addSeparator();
+        del = popup->addAction ( _( "Borrar registro" ) );
     } // end if
+    popup->addSeparator();
+
     QAction *ajustc = popup->addAction ( _( "Ajustar columa" ) );
     QAction *ajustac = popup->addAction ( _( "Ajustar altura" ) );
 

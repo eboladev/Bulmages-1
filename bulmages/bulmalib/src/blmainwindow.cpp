@@ -25,6 +25,11 @@
 #include "blmainwindow.h"
 
 
+/// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
+QMainWindow *g_main = NULL;
+
+
+
 BlMainWindow::BlMainWindow ( QWidget * parent, Qt::WindowFlags flags) {
 }
 
@@ -48,3 +53,5 @@ QMenu *BlMainWindow::newMenu(const QString &name, const QString &objname, const 
 
     return pPluginMenu;
 }
+
+

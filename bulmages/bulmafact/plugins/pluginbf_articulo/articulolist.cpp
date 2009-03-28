@@ -378,6 +378,7 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
+
     /// Disparamos los plugins.
     g_plugins->lanza ( "ArticuloListSubForm_ArticuloListSubForm_Post", this );
     _depura ( "END ArticuloListSubForm::ArticuloListSubForm", 0 );

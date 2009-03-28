@@ -35,5 +35,8 @@ public:
     QMenu *newMenu(const QString &name,const QString &objname, const QString &before="");
 };
 
+
+extern QMainWindow *g_main;
+
 #endif
 

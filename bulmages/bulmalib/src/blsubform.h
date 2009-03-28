@@ -310,6 +310,7 @@ public:
     virtual void procesaMenu ( QAction * );
     virtual BlFixed sumarCampo ( QString );
     bool existsHeader ( const QString & );
+    BlSubFormHeader *header ( const QString & );
     virtual int cerrarEditor();
     virtual void confquery();
     QString dbFieldNameByColumnId ( int columna );

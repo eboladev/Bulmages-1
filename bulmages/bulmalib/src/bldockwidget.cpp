@@ -29,7 +29,7 @@
 
 #include "bldockwidget.h"
 #include "blconfiguration.h"
-
+#include "blmainwindow.h"
 
 
 

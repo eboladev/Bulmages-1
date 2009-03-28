@@ -132,8 +132,8 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 
 	QAction *npago = new QAction ( _( "&Nuevo Articulo" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo cliente" ) );
-	npago->setWhatsThis ( _( "Nuevo cliente" ) );
+	npago->setStatusTip ( _( "Nuevo articulo" ) );
+	npago->setWhatsThis ( _( "Nuevo articulo" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -339,3 +339,169 @@ int SNewArticuloView (BfCompany *v)
 	g_plugParams = h;
 	return 1;
 }
+
+
+
+
+
+/// --------------------------------------------------------------
+/// --------- Implemento la edicion de articulos -----------------
+/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+/// Aparezca el identificador de articulo como elemento y permite de forma sencilla
+/// La creacion, la edicion, y la seleccion.
+///
+
+
+/**
+\param parent
+**/
+MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
+{
+    _depura ( "MyPlugArt1::MyPlugArt1", 0 );
+    _depura ( "END MyPlugArt1::MyPlugArt1", 0 );
+}
+
+///
+/**
+**/
+MyPlugArt1::~MyPlugArt1()
+{
+    _depura ( "MyPlugArt1::~MyPlugArt1", 0 );
+    _depura ( "END MyPlugArt1::~MyPlugArt1", 0 );
+}
+
+
+///
+/**
+\param menu
+**/
+void MyPlugArt1::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "MyPlugArt1::s_pintaMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    BlSubFormHeader *header = sub->header("codigocompletoarticulo");
+    if (header ) {
+       menu->addSeparator();
+       menu->addAction ( _( "Nuevo articulo" ) );
+       QString idarticulo = sub->dbValue("idarticulo");
+       if (idarticulo != "") menu->addAction ( _( "Editar articulo" ) );
+       if ( ! (header->options() & BlSubFormHeader::DbNoWrite) )  {
+            menu->addAction ( _( "Seleccionar articulo" ) );
+       } // end if
+    } // end if
+    _depura ( "END MyPlugArt1::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPlugArt1::s_trataMenu ( QAction *action )
+{
+    _depura ( "MyPlugArt1::s_trataMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    if ( action->text() == _( "Editar articulo" ) ) {
+        QString idarticulo = sub->dbValue("idarticulo");
+        if (idarticulo != "")
+          editarArticulo( idarticulo );
+    } else if ( action->text() == _("Seleccionar articulo") ) {
+        seleccionarArticulo(sub);
+    } else if ( action->text() == _("Nuevo articulo")  ) {
+        nuevoArticulo();
+    } // end if
+
+    _depura ( "END MyPlugArt1::s_trataMenu", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugArt1::editarArticulo( QString idarticulo)
+{
+    _depura ( "MyPlugArt1::editarArticulo", 0 );
+        BlSubForm * subf = ( BlSubForm * ) parent();
+        ArticuloView * art = new ArticuloView( ( BfCompany * ) subf->mainCompany(), 0 );
+        subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+        /// Si la carga no va bien entonces terminamos.
+        if ( art->cargar ( idarticulo ) ) {
+            delete art;
+            _depura ( "END ArticuloList::editar", 0, "Carga Erronea" );
+            return;
+        } // end if
+        art->hide();
+        art->show();
+    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+}
+
+
+
+///
+/**
+**/
+void MyPlugArt1::nuevoArticulo( )
+{
+    _depura ( "MyPlugArt1::editarArticulo", 0 );
+        BlSubForm * subf = ( BlSubForm * ) parent();
+        ArticuloView * art = new ArticuloView( ( BfCompany * ) subf->mainCompany(), 0 );
+        subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+        art->hide();
+        art->show();
+    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugArt1::seleccionarArticulo( BfSubForm *sub )
+{
+    _depura ( "MyPlugArt1::editarArticulo", 0 );
+
+    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, ArticuloList::SelectMode );
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    artlist->show();
+    while ( !artlist->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString idArticle = artlist->idarticulo();
+    delete artlist;
+
+    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idArticle == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
+    if ( !cur->eof() ) {
+        sub->lineaact()->setDbValue ( "idarticulo", idArticle );
+        sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+        sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+    } // end if
+    delete cur;
+
+    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
+
+
+
+

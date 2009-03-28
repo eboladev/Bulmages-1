@@ -31,13 +31,9 @@
 #include <QProcess>
 #include <QTime>
 
-#include "blconfiguration.h"
 #include "blfunctions.h"
-
-
-/// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
-QMainWindow *g_main = NULL;
-
+#include "blconfiguration.h"
+#include "blmainwindow.h"
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto ( QString texto )

@@ -1,6 +1,9 @@
 #include "admin.h"
 #include <QWidget>
 
+#include "blmainwindow.h"
+
+
 Admin::Admin ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
