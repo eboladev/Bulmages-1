@@ -46,7 +46,7 @@
 #include <QStatusBar>
 
 #include "blapplication.h"
-#include "config.h"
+#include "blconfig.h"
 #include "bli18n.h"
 
 

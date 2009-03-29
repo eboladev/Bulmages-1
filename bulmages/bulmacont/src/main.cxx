@@ -40,7 +40,7 @@
 #include "bldblogindialog.h"
 #include "blplugins.h"
 #include "blapplication.h"
-#include "config.h"
+#include "blconfig.h"
 
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmacont_"

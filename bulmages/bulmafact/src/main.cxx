@@ -33,7 +33,7 @@
 #include "blfunctions.h"
 #include "blfixed.h"
 #include "blplugins.h"
-#include "config.h"
+#include "blconfig.h"
 #include "bli18n.h"
 
 //#include "dbusobject.h"

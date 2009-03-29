@@ -34,7 +34,7 @@
 #include <unistd.h>
 #endif
 
-#include "config.h"
+#include "blconfig.h"
 #include "blconfiguration.h"
 #include "blcompanydialog.h"
 

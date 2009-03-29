@@ -32,7 +32,7 @@
 #include "blfunctions.h"
 #include "blfixed.h"
 #include "blplugins.h"
-#include "config.h"
+#include "blconfig.h"
 
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmatpv_"

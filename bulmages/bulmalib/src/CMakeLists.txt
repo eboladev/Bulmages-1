@@ -21,7 +21,7 @@
 
 #Bulmalib
 
-configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/config.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/config.h @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
 #bulmalib needs QtAssistant and QtXml
 set(QT_USE_QTASSISTANT true)
