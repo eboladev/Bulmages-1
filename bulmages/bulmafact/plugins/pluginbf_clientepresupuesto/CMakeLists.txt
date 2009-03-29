@@ -49,8 +49,8 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 ADD_DEFINITIONS(-DQT_SHARED)
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"${plugin}\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
 
 if(USE_GETTEXT)
    set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
@@ -68,6 +68,10 @@ endif(USE_GETTEXT)
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
+
+if(WIN32)
+  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+endif(WIN32)
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

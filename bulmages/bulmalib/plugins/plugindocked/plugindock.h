@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef WIN32
+
 #ifdef Q_WS_WIN
 # define MY_EXPORT __declspec(dllexport)
 #else
@@ -35,3 +37,6 @@ extern "C" MY_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 
+
+
+#endif

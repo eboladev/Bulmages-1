@@ -42,8 +42,8 @@ if(APPLE)
 endif(APPLE)
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"${plugin}\", String)'" )
+ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"${plugin}\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
 
 # build sources, moc'd sources, and rcc'd sources
 

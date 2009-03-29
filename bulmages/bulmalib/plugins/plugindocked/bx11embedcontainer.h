@@ -22,11 +22,11 @@
 #ifndef BX11EMBEDCONTAINER_H
 #define BX11EMBEDCONTAINER_H
 
+
 #include <QWidget>
 #include <QCloseEvent>
-#include <QX11EmbedContainer>
-
 #include "blwidget.h"
+#include <QX11EmbedContainer>
 
 class BX11EmbedContainer : public QX11EmbedContainer, public BlMainCompanyPointer
 {
@@ -37,6 +37,7 @@ public:
     virtual ~BX11EmbedContainer();
     int sacaWindow();
 };
+
 
 #endif
 

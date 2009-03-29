@@ -12,6 +12,8 @@ add_subdirectory(pluginbloqueos)
 add_subdirectory(pluginsubformprint)
 add_subdirectory(pluginarchivos)
 
+if(NOT WIN32)
 if(NOT APPLE)
 add_subdirectory(plugindocked)
 endif(NOT APPLE)
+endif(NOT WIN32)

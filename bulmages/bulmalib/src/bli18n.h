@@ -24,7 +24,12 @@
 
 #include <QString>
 
+/// En Windows no se puede usar GETTEXT de momento
+
+#ifndef WIN32
 #include <libintl.h>
+#endif
+
 #include <locale.h>
 
 
@@ -32,6 +37,13 @@ QString BlI18n(const char *, int = 0);
 
 /// Gettext con dominio
 QString BlI18n(const char *, const char *);
+
+
+#ifdef WIN32
+void bindtextdomain(const char *, const char *);
+void textdomain(const char *);
+#endif
+
 
 #endif
 

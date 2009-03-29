@@ -1,6 +1,8 @@
 #ifndef MYPLUGINDOCK_H
 #define MYPLUGINDOCK_H
 
+#ifndef WIN32
+
 #include <QObject>
 
 
@@ -20,4 +22,4 @@ public slots:
 
 
 #endif
-
+#endif
