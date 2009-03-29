@@ -189,8 +189,15 @@ target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
 
 # i18n
+if(WIN32)
 ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmalib\\\",String)" )
 ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
+endif(WIN32)
+
+if(NOT WIN32)
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmalib\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmalib\",String)'" )
+endif(NOT WIN32)
 
 if(USE_GETTEXT)
    set(bulmalib_STR ${bulmalib} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
