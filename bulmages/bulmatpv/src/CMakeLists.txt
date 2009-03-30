@@ -61,8 +61,16 @@ target_link_libraries( libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 add_executable(bulmatpv   ${bulmatpvEx})
 
 # i18n
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmatpv\", String)'" )
-ADD_DEFINITIONS("-D'N_(String, Int)=BlI18n(\"bulmatpv\", String)'" )
+if(WIN32)
+ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmatpv\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmatpv\\\",String)" )
+endif(WIN32)
+
+if(NOT WIN32)
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmatpv\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmatpv\",String)'" )
+endif(NOT WIN32)
+
 
 if(USE_GETTEXT)
    set(bulmatpv_i18n ${bulmatpvEx} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
