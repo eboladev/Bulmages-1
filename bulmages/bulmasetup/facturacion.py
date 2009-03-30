@@ -473,7 +473,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
           self.i = self.i + 1
           
       if (self.mui_categoria.currentIndex() > 0):
-        # VAmos a trabajar con el combo Box
+        # Vamos a trabajar con el combo Box
         cat = self.mui_categoria.currentText()
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
@@ -483,7 +483,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.mui_plugins.hideRow(self.i)
           self.i = self.i +1
           
-        # VAmos a trabajar con el combo Box
+        # Vamos a trabajar con el combo Box
         self.i = 0
         while (self.i < self.mui_plugins1.rowCount()):
           text = QString(self.pluginsbulmatpv[self.i][8])

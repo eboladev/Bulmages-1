@@ -265,7 +265,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.out << self.text << "\n"
         self.text = self.vin.readLine()
         
-      # Cerramos slo ficheros.
+      # Cerramos los ficheros.
       self.file.close()
       self.file1.close()
 
@@ -294,7 +294,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
           self.i = self.i + 1
 
       if (self.mui_categoria.currentIndex() > 0):
-        # VAmos a trabajar con el combo Box
+        # Vamos a trabajar con el combo Box
         cat = self.mui_categoria.currentText()
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):

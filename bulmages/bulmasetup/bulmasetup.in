@@ -40,23 +40,28 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
 	    self.mui_crearbulmacont.setEnabled(False)
 	    self.mui_adminempresas.setEnabled(False)
 	    self.mui_restbackup.setEnabled(False)
-	
+            
+	# Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_mui_crearusuario_released(self):
 	    win = NuevoUsuario()
 	    win.exec_()
-	    
+            
+        # Evento al hacer clic en el Boton para crear nueva Empresa de Facturacion
     def on_mui_crearbulmafact_released(self):
 	    win = NuevaFacturacion()
 	    win.exec_()
 	    
+        # Evento al hacer clck en el Boton para crear nueva Empresa de Contablidad
     def on_mui_crearbulmacont_released(self):
 	    win = NuevaContabilidad()
 	    win.exec_()
 	    
+        # Evento al hacer clic en el Boton para Administrar una Empresa ya existente
     def on_mui_adminempresas_released(self):
 	    win = ListEmpresas()
 	    win.exec_()
 	    
+        # Evento al hacer clic en el Boton para restaurar Copia de Seguridad
     def on_mui_restbackup_released(self):
 	    win = RestBackup()
 	    win.exec_()
@@ -65,6 +70,7 @@ def main(args):
     app=QtGui.QApplication(args)
     win=HelloWindow()
     win.show()
+    # Envio de señal para cerrar la ventana principal de BulmaSetup
     app.connect(app, QtCore.SIGNAL("lastWindowClosed()"),
                 app, QtCore.SLOT("quit()"))
     app.exec_()
