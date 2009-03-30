@@ -51,8 +51,16 @@ if(APPLE)
 endif(APPLE)
 
 # i18n
-ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"${plugin}\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
+if(WIN32)
+ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmafact\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmafact\\\",String)" )
+endif(WIN32)
+
+if(NOT WIN32)
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmafact\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmafact\",String)'" )
+endif(NOT WIN32)
+
 
 if(USE_GETTEXT)
    set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
