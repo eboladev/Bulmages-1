@@ -21,7 +21,7 @@
 ###########################################
 # Plugin for bulmalib                     #
 ###########################################
-#PluginBl_Template2ODS
+#pluginbl_template2ods
 
 set (plugin pluginbl_template2ods)
 set (docs README.es)
@@ -65,13 +65,13 @@ ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 # i18n
 if(WIN32)
-ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmalib\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
+ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"${plugin}\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"${plugin}\\\",String)" )
 endif(WIN32)
 
 if(NOT WIN32)
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmalib\",String)'" )
-ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmalib\",String)'" )
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"${plugin}\",String)'" )
 endif(NOT WIN32)
 
 if(USE_GETTEXT)
