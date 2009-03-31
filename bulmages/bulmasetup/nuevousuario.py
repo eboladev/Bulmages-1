@@ -6,10 +6,8 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from nuevousuariobase import *
 
-
-
-
 class NuevoUsuario(QtGui.QDialog, Ui_NuevoUsuario):
+
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
 	self.setupUi(self)
@@ -17,7 +15,14 @@ class NuevoUsuario(QtGui.QDialog, Ui_NuevoUsuario):
 	
     def on_mui_botonera_accepted(self):
 	# Creamos el usuario
-	self.command = 'su postgres -c "createuser -s -d -r  \'' + self.mui_nombre.text().replace('\\','\\\\').replace('\'','\\\'') +'\'"'
+        self.flag = ""
+        
+        if (self.mui_superusuario.isChecked()):
+            self.flag = " -s"
+        else:
+            self.flag = " -S"
+           
+	self.command = 'su postgres -c "createuser' + str(self.flag) + ' -d -r  \'' + self.mui_nombre.text().replace('\\','\\\\').replace('\'','\\\'') +'\'"'
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
 
@@ -27,7 +32,6 @@ class NuevoUsuario(QtGui.QDialog, Ui_NuevoUsuario):
         os.system(self.command.toAscii().data())
 	
 	self.accept()
-
 
 def main(args):
     app=QtGui.QApplication(args)
