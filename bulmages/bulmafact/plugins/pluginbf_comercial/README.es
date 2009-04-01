@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestión de Comerciales
+Nombre: Gestión de comerciales
 
 Biblioteca: libpluginbf_comercial.so
 
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;Experimentales;
+Categorias: Facturacion generica;Experimentales;
 
 Orden: 700
 

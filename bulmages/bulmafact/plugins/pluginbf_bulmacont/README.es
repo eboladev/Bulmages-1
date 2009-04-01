@@ -4,12 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Contabilidad en la Facturacion
+Nombre: Contabilidad en la facturacion
 
 Biblioteca: libpluginbf_bulmacont.so
 
-Descripción: <H1>Contabilidad en BulmaFact</H1>
-<P>Abre una instancia de contabilidad junto a la facturacion para poder usar pantallas de la contabilidad en la facturacion.</P>
+Descripción: <H1>Contabilidad en bulmaFact</H1>
+<P>Abre una instancia de contabilidad junto a la facturacion para poder usar pantallas de la contabilidad
+en la facturacion.</P>
 <HR>
 
 ParmBD: 
@@ -22,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Caracteristicas: Utilidades Avanzadas; Experimentales;
+Caracteristicas: Utilidades avanzadas; Experimentales;
 
 Orden: 800
 

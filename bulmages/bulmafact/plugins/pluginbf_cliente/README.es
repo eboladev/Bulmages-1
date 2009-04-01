@@ -9,8 +9,8 @@ Nombre: Gestion de clientes
 Biblioteca: libpluginbf_cliente.so
 
 Descripción: <H1>Gestion de clientes</H1>
-<P> Permite realizar la gestion de clientes de la empresa. Mostrando el listado de clientes y permitiendo hacer
-altas, bajas y modificaciones</P>
+<P> Permite realizar la gestion de clientes de la empresa. Mostrando el listado de clientes y permitiendo
+hacer altas, bajas y modificaciones</P>
 <P> Este plugin es imprescindible para todos aquellos modelos de negocio donde se trabaje con clientes</P>
 <P> Tambien sirve como soporte a muchos otros plugins que extienden la capacidad de éste</P>
 
@@ -26,6 +26,6 @@ Incompatibles:
 
 Orden: 300
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Comentarios:

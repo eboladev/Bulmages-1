@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Impresion de Informes Personalizados por e-mail
+Nombre: Impresion de informes personalizados por e-mail
 
 Biblioteca: libpluginbl_template2mail.so
 
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;Experimentales;
+Categorias: Utilidades genericas;Experimentales;
 
 Orden: 60
 

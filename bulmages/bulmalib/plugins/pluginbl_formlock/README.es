@@ -4,7 +4,7 @@
 #README
 #20080501
 
-Nombre: Bloqueo de Fichas
+Nombre: Bloqueo de fichas
 
 Biblioteca: libpluginbl_formlock.so
 
@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;Experimentales;
+Categorias: Utilidades genericas;Experimentales;
 
 Orden: 800
 

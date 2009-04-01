@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Impresion de Informes Personalizados
+Nombre: Impresion de informes personalizados
 
 Biblioteca: libpluginbl_template.so
 
@@ -30,7 +30,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 Orden: 60
 

@@ -4,11 +4,11 @@ Plugins
 #README
 20080502
 
-Nombre: Impresion de Informes Personalizados en ODS
+Nombre: Impresion de informes personalizados en ODS
 
 Biblioteca: libpluginbl_template2ods.so
 
-Descripción: <H1>Informes Personalizados ODS</H1>
+Descripción: <H1>Informes personalizados ODS</H1>
 <P>Permite la generacion de informes personalizados relacionados con
 una ficha generica. Los informes realizados mediante plantillas PYS (Python) generan
 documentos en hoja de calculo.</P>
@@ -34,7 +34,7 @@ Incompatibles:
 
 Orden: 60
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 
 Comentarios: Su funcionamiento se basa en que haya un documento RML cuyo nombre

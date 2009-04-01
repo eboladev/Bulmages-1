@@ -4,11 +4,11 @@
 #README.es
 #20080501
 
-Nombre: Informes Personalizados
+Nombre: Informes personalizados
 
 Biblioteca: libpluginbl_report.so
 
-Descripción: <H1>Informes Personalizados</H1>
+Descripción: <H1>Informes personalizados</H1>
 <P>Presenta un nuevo menu Informes que permite lanzar los informes personalizados
 de que se disponga. Dichos informes son plantillas RML ubicadas en el directorio openreports.</P>
 <P>Los archivos deben empezar por inf_ y tener la extension .rml para aparecer en el menu</P>
@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 Orden: 70
 

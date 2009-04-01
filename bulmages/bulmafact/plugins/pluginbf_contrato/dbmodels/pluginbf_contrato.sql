@@ -149,11 +149,11 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Contratos'';
+	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Contrato'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Contratos'';
+		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Contrato'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Contratos'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Contrato'', ''0.11.1-0001'');
 	END IF;
 	RETURN 0;
 END;

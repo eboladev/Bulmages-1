@@ -52,10 +52,10 @@ CONF_DIR_AINTELIGENTES         @CMAKE_INSTALL_PREFIX@/share/bulmages/ainteligent
 CONF_PLUGINS_BULMACONT        libplugincanualesods@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libpluginbalancetree@CMAKE_SHARED_LIBRARY_SUFFIX@; \
                               libplugincorrector@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginsubformsxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libplugindocked@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-                              libpluginsubformods@CMAKE_SHARED_LIBRARY_SUFFIX@
+                              libpluginbl_template@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbl_subform2sxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbl_embed@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbl_subform2ods@CMAKE_SHARED_LIBRARY_SUFFIX@
                               
 
 

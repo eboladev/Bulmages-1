@@ -27,7 +27,7 @@
 #include <QTabWidget>
 
 #include "bfcompany.h"
-#include "pluginbf_contratos.h"
+#include "pluginbf_contrato.h"
 #include "blfunctions.h"
 #include "contratoslist.h"
 #include "blform.h"
@@ -97,15 +97,15 @@ void myplugincont::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_contratos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_contrato", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
     return 0;
 }
 

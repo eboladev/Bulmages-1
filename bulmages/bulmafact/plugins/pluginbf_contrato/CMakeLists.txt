@@ -1,16 +1,16 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginbf_informeclientes
+#pluginbf_contrato
 
-set (plugin pluginbf_informeclientes)
+set (plugin pluginbf_contrato)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_informeclientes.h)
+file(GLOB plugin_NO_MOCS pluginbf_contrato.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
@@ -29,12 +29,12 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -69,6 +69,10 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
+if(APPLE)
+  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+endif(APPLE)
+
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
@@ -79,18 +83,15 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_clientefactura ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura)
 
-set(files informeclientes.png)
-set(files1 informeclientes.rml informearticulos.rml)
-
-install(FILES ${files} DESTINATION share/bulmages/icons)
-install (FILES ${files1} DESTINATION share/bulmages/openreports)
-
+install(DIRECTORY dbmodels/ 
+      DESTINATION share/bulmages/dbmodels/plugins
+      PATTERN ".svn" EXCLUDE)

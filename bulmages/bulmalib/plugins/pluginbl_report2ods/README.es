@@ -4,14 +4,15 @@
 #README.es
 #20080501
 
-Nombre: Informes Personalizados en hoja de calculo
+Nombre: Informes personalizados en hoja de calculo
 
 Biblioteca: libpluginbl_report2ods.so
 
-Descripción: <H1>Informes Personalizados en Hoja de Calculo</H1>
+Descripción: <H1>Informes personalizados en hoja de calculo</H1>
 <P>Presenta un nuevo menu Informes que permite lanzar los informes personalizados
 de que se disponga. Dichos informes son scripts Python con ooolib.</P>
-<P>Los informes deben estar en formato PYS y deben llamarse inf_XXXX.pys para que aparezcan en el menu <B>Informes Personales SXC</B></P>
+<P>Los informes deben estar en formato PYS y deben llamarse inf_XXXX.pys para que aparezcan en el menu
+<B>Informes personales SXC</B></P>
 <HR>
 
 ParmBD: 
@@ -24,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 Orden: 70
 

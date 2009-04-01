@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de Bancos
+Nombre: Gestion de bancos
 
 Biblioteca: libpluginbf_banco.so
 
@@ -20,7 +20,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 880
 

@@ -22,9 +22,9 @@ add_subdirectory(pluginbf_almacen)
 add_subdirectory(pluginbf_trazabilidad)
 add_subdirectory(pluginbarcodeopen)
 add_subdirectory(pluginbf_catalogo)
-add_subdirectory(pluginbf_informeclientes)
+add_subdirectory(pluginbf_informecliente)
 add_subdirectory(pluginbf_inventario)
-add_subdirectory(pluginbf_contratos)
+add_subdirectory(pluginbf_contrato)
 add_subdirectory(pluginbf_ticket)
 
 #plugin_tc_articulos en desarrollo

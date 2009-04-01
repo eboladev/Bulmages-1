@@ -19,13 +19,11 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QToolButton>
 
-
 #include "informeqtoolbutton.h"
-
-
-#include "pluginbf_informeclientes.h"
+#include "pluginbf_informecliente.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 

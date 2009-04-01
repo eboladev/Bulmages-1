@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Alumno. Gestion de Alumnos
+Nombre: Alumno. Gestion de alumnos
 
 Biblioteca: libpluginbf_alumno.so
 
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+Categorias: Asociaciones de padres de alumnos; Experimentales;
 
 Orden: 202
 

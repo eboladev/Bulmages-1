@@ -6,7 +6,7 @@
 
 Nombre: Apertura por referencia.
 
-Biblioteca: libpluginopenref.so
+Biblioteca: libpluginbf_abrereferencia.so
 
 Descripción: <H1>Apertura por referencia</H1>
 <P>Al pulsar el Enter sobre el campo de referencia se intenta abrir la ficha que tiene dicha referencia.</P>
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 Orden: 900
 

@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Asociaciones de Padres de Alumnos; Experimentales;
+Categorias: Asociaciones de padres de alumnos; Experimentales;
 
 Orden: 200
 

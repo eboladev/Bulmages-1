@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Control de Presencia por Centralita Asterisk
+Nombre: Control de presencia por centralita Asterisk
 
 Biblioteca: libpluginbf_asterisk.so
 
@@ -25,7 +25,7 @@ Dependencias: libpluginalmacen.so libplugincuadrante.so
 
 Incompatibles:
 
-Categorias: Utilidades Avanzadas; Experimentales;
+Categorias: Utilidades avanzadas; Experimentales;
 
 Orden: 900
 

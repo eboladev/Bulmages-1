@@ -4,14 +4,15 @@
 #README
 #20080801
 
-Nombre: Archivo Documental
+Nombre: Adjuntar documentos
 
 Biblioteca: libpluginbl_attachdocument.so
 
-Descripción: <H1>Archivo Documental</H1>
-<P>Permite asociar archivos a fichas para abrirlas posteriormente. Guarda un vinculo a la aplicacion.</P>
-<P> Una vez instalado el plugin en todas las fichas del programar aparecera una opcion en el menu contextual de la ficha que nos permitira
-agregar referencias a la ficha, ver los archivos existentes y borrar las referencias</P>
+Descripción: <H1>Adjuntar documentos</H1>
+<P>Permite asociar archivos a fichas para abrirlas posteriormente. Guarda un vínculo a la aplicación.</P>
+<P>Una vez instalado el plugin en todas las fichas del programar aparecera una opción en el menú contextual
+de la ficha que nos permitira agregar referencias a la ficha, ver los archivos existentes y borrar las
+referencias</P>
 <HR>
 
 ParmBD: PluginBl_AttachDocument
@@ -24,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;Experimentales;
+Categorias: Utilidades genericas;Experimentales;
 
 Orden: 90
 

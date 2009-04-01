@@ -4,11 +4,11 @@
 #README.es
 #20080501
 
-Nombre: Pedidos de Clientes
+Nombre: Pedidos de clientes
 
 Biblioteca: libpluginbf_clientepedido.so
 
-Descripción:  <H1>Pedidos de Clientes</H1>
+Descripción:  <H1>Pedidos de clientes</H1>
 <P>Soporte para pedidos de clientes.</P>
 <HR>
 
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 621
 

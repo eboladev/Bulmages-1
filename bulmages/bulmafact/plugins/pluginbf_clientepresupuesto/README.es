@@ -8,7 +8,7 @@ Nombre: Presupuestos a clientes
 
 Biblioteca: libpluginbf_clientepresupuesto.so
 
-Descripción:  <H1>Presupuestos a Clientes</H1>
+Descripción:  <H1>Presupuestos a clientes</H1>
 <P>Soporte para presupuestos a clientes.</P>
 <HR>
 
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 620
 

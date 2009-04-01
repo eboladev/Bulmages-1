@@ -9,7 +9,7 @@ Nombre: Almacenes
 Biblioteca: libpluginbf_almacen.so
 
 Descripción: <H1>Almacenes</H1>
-<P>Gestionar los Almacenes.</P>
+<P>Gestionar los almacenes.</P>
 <HR>
 
 ParmBD:
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 800
 

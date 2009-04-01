@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de Articulos
+Nombre: Gestion de articulos
 
 Biblioteca: libpluginbf_articulo.so
 
@@ -29,6 +29,6 @@ Incompatibles:
 
 Orden: 29
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Comentarios:

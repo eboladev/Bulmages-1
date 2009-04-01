@@ -10,7 +10,7 @@
 CONF_PLUGINS_BULMATPV		libpluginbt_tecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 				libpluginbt_ticket@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 				libpluginbt_total@CMAKE_SHARED_LIBRARY_SUFFIX@; \
-				libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				libpluginbl_template@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 				libpluginbt_articulografico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 				libpluginbt_accesobotones@CMAKE_SHARED_LIBRARY_SUFFIX@
 
