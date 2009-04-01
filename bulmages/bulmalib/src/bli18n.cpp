@@ -58,3 +58,4 @@ QString BlI18n(const char *domain, const char *cadena) {
 void bindtextdomain(const char *, const char *) {};
 void textdomain(const char *) {};
 #endif
+
