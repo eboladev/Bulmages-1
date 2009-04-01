@@ -13,11 +13,11 @@ Descripción: <H1>Comerciales</H1>
 Teniendo un planing de visitas y de rutas a realizar.</P>
 <HR>
 
-ParmBD: DBRev-ComercialBF
+ParmBD: PluginBf_Comercial
 
-ArchivoSQLpatch: revf-comercialbf.sql
+ArchivoSQLpatch: pluginbf_comercial.sql
 
-ArchivoSQLdeins: rm-comercialbf.sql
+ArchivoSQLdeins: pluginbf_comercial-rm.sql
 
 Dependencias:
 

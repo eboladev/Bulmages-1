@@ -87,11 +87,10 @@ void MyPlugCli::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
+	/// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
 	pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setMainCompany ( bges->getcompany() );
 	QAction *planCuentas = new QAction ( _( "&Clientes" ), 0 );
@@ -102,15 +101,13 @@ void MyPlugCli::inicializa ( Bulmafact *bges )
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo Cliente" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo cliente" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client.svg" ) ));
 	npago->setStatusTip ( _( "Nuevo cliente" ) );
 	npago->setWhatsThis ( _( "Nuevo cliente" ) );
 	pPluginMenu->addAction ( npago );
 	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
 
     }// end if
     _depura ( "END MyPlugCli::inicializa", 0 );
@@ -150,8 +147,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 
 int Busqueda_on_mui_buscar_clicked(BlSearchWidget *busq) {
-	if (busq->tableName() == "cliente") {
-
+    if (busq->tableName() == "cliente") {
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -171,16 +167,18 @@ int Busqueda_on_mui_buscar_clicked(BlSearchWidget *busq) {
     diag->setWindowTitle ( clients->windowTitle() );
 
     diag->exec();
+
     if ( clients->idclient() != "" ) {
         busq->setId ( clients->idclient() );
     } // end if
+
     delete diag;
 
 
-		return 1;
-	} // end if
-	return 0;
+    return 1;
+    } // end if
 
+    return 0;
 }
 
 

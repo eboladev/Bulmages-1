@@ -12,11 +12,11 @@ Descripción: <H1>Tarifas</H1>
 <P>Permite el control de listas de precios a las que se suscribe cada cliente. Agrega la gestión de tarifas a los articulos y la selección de las mismas en los clientes.</P>
 <HR>
 
-ParmBD: 
+ParmBD: PluginBf_VariacionTarifa
 
-ArchivoSQLpatch: revf-pluginvariaciontarifa.sql
+ArchivoSQLpatch: pluginbf_variaciontarifa.sql
 
-ArchivoSQLdeins: rm-pluginvariaciontarifa.sql
+ArchivoSQLdeins: pluginbf_variaciontarifa-rm.sql
 
 Dependencias:
 

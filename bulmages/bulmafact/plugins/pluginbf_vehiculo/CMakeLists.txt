@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginvehiculosbf
+#pluginbf_vehiculo
 
 set (plugin pluginbf_vehiculo)
 set (docs README.es)

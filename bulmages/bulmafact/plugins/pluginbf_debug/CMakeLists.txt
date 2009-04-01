@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugindebugbf
+#pluginbf_debug
 
 set (plugin pluginbf_debug)
 set (docs README.es)

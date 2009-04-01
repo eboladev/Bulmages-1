@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginpedidoprov
+#pluginbf_proveedorpedido
 
 set (plugin pluginbf_proveedorpedido)
 set (docs README.es)

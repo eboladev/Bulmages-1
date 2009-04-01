@@ -122,8 +122,8 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 
       QAction *npago1 = new QAction ( _( "&Emitir Recibos Periodo" ), 0 );
       npago1->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
-      npago1->setStatusTip ( _( "Emitir Recibos" ) );
-      npago1->setWhatsThis ( _( "Emitir Recibos" ) );
+      npago1->setStatusTip ( _( "Emitir recibos" ) );
+      npago1->setWhatsThis ( _( "Emitir recibos" ) );
       pPluginMenu->addAction ( npago1 );
       bges->Fichas->addAction (npago1);
       connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );

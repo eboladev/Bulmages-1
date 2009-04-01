@@ -76,13 +76,12 @@ void MyPlugFPago::inicializa ( Bulmafact *bges )
 	QMenu *pPluginMenu = bges->menuMaestro;
 	pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
 	m_bges = bges;
 	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Formas de Pago" ), 0 );
+	QAction *planCuentas = new QAction ( _( "&Formas de pago" ), 0 );
 	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/payment-method.svg" ) ));
-	planCuentas->setStatusTip ( _( "Formas de Pago" ) );
-	planCuentas->setWhatsThis ( _( "Formas de Pago" ) );
+	planCuentas->setStatusTip ( _( "Formas de pago" ) );
+	planCuentas->setWhatsThis ( _( "Formas de pago" ) );
 	pPluginMenu->addAction ( planCuentas );
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -102,7 +101,7 @@ void MyPlugFPago::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    _depura ( "Entra plugin pluginbf_formasdepago\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");

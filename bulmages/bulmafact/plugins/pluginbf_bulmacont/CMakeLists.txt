@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginbulmacont
+#pluginbf_bulmacont
 
 set (plugin pluginbf_bulmacont)
 set (docs README.es)
@@ -10,7 +10,7 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbulmacont.h)
+file(GLOB plugin_NO_MOCS pluginbf_bulmacont.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)

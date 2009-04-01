@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugincorrectorbf
+#pluginbf_corrector
 
 set (plugin pluginbf_corrector)
 set (docs README.es)
@@ -10,7 +10,7 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS plugincorrectorbf.h)
+file(GLOB plugin_NO_MOCS pluginbf_corrector.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)

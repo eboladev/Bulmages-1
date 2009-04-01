@@ -12,11 +12,11 @@ Descripción: <H1>IVA Incluido</H1>
 <P>Permite trabajar con articulos que llevan el IVA incluido en el precio en lugar de separar la base imponible del IVA.</P>
 <HR>
 
-ParmBD: DBRev-IVAInc
+ParmBD: PluginBf_IVAIncluido
 
-ArchivoSQLpatch: revf-pluginivainc.sql
+ArchivoSQLpatch: pluginbf_ivaincluido.sql
 
-ArchivoSQLdeins: rm-pluginivainc.sql
+ArchivoSQLdeins: pluginbf_ivaincluido-rm.sql
 
 Dependencias:
 

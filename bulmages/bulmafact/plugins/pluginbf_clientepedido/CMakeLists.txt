@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginpedido
+#pluginbf_clientepedido
 
 set (plugin pluginbf_clientepedido)
 set (docs README.es)

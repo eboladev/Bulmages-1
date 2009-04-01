@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginpagos
+#pluginbf_proveedorpago
 
 set (plugin pluginbf_proveedorpago)
 set (docs README.es)

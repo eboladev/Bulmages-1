@@ -13,11 +13,11 @@ Descripción: <H1>Trazabilidad</H1>
     "lote" que permite identificar productos desde su compra hasta su venta.</P>
 <HR>
 
-ParmBD: DBRev-Trazabilidad
+ParmBD: PluginBf_Trazabilidad
 
-ArchivoSQLpatch: revf-plugintrazabilidad.sql
+ArchivoSQLpatch: pluginbf_trazabilidad.sql
 
-ArchivoSQLdeins: rm-plugintrazabilidad.sql
+ArchivoSQLdeins: pluginbf_trazabilidad-rm.sql
 
 Dependencias:
 

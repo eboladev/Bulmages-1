@@ -89,7 +89,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setSortingEnabled ( FALSE );
     art->dialogChanges_setQObjectExcluido ( l->mui_list );
 
-    art->mui_tab->addTab ( l, "Tallas y Colores" );
+    art->mui_tab->addTab ( l, "Tallas y colores" );
 
     _depura ( "END ArticuloView_ArticuloView", 0 );
     return 0;

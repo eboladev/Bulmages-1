@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugintrazabilidad
+#pluginbf_trazabilidad
 
 set (plugin pluginbf_trazabilidad)
 set (docs README.es)

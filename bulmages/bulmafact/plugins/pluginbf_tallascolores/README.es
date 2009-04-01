@@ -13,11 +13,11 @@ Descripción: <H1>Tallas y Colores</H1>
 del tallaje y del color.</P>
 <HR>
 
-ParmBD: DBRev-Tallas-y-Colores
+ParmBD: PluginBf_Tallas-y-Colores
 
-ArchivoSQLpatch: revf-plugin_tc_articulos.sql
+ArchivoSQLpatch: pluginbf_tc_articulos.sql
 
-ArchivoSQLdeins: rm-plugin_tc_articulos.sql
+ArchivoSQLdeins: pluginbf_tc_articulos-rm.sql
 
 Dependencias:
 

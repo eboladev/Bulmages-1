@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginpresupuesto
+#pluginbf_clientepresupuesto
 set (plugin pluginbf_clientepresupuesto)
 set (docs README.es)
 

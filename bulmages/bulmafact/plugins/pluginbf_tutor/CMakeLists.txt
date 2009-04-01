@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugintutor
+#pluginbf_tutor
 
 set (plugin pluginbf_tutor)
 set (docs README.es)

@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginalbaranprov
+#pluginbf_proveedoralbaran
 
 set (plugin pluginbf_proveedoralbaran)
 set (docs README.es)

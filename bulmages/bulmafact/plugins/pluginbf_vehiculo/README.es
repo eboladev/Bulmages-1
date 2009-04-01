@@ -12,9 +12,9 @@ Descripción: <H1>Vehiculos</H1>
 <P>Gestión de flotas de vehículos de la empresa. Kilometrajes, etc</P>
 <HR>
 
-ParmBD: DBRev-PluginVehiculosBF
+ParmBD: PluginBf_Vehiculos
 
-ArchivoSQLpatch: revf-pluginvehiculosbf.sql
+ArchivoSQLpatch: pluginbf_vehiculos.sql
 
 ArchivoSQLdeins: 
 

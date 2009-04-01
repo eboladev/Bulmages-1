@@ -15,11 +15,11 @@ También incluye en el código fuente ejemplos de scritps de validacion hecho en
 puestos en marcha en la centralita con agi.</P>
 <HR>
 
-ParmBD: DBRev-ValAsterisk
+ParmBD: PluginBf_Asterisk
 
-ArchivoSQLpatch: revf-pluginasterisk.sql
+ArchivoSQLpatch: pluginasterisk.sql
 
-ArchivoSQLdeins: rm-pluginasterisk.sql
+ArchivoSQLdeins: pluginasterisk-rm.sql
 
 Dependencias: libpluginalmacen.so libplugincuadrante.so
 

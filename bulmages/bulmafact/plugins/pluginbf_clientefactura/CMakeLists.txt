@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginfactura
+#pluginbf_clientefactura
 
 set (plugin pluginbf_clientefactura)
 set (docs README.es)

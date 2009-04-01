@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginfacturaprov
+#pluginbf_proveedorfactura
 
 set (plugin pluginbf_proveedorfactura)
 set (docs README.es)

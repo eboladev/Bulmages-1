@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact           	  #
 ###########################################
-#pluginfacturar
+#pluginbf_clientealbaranesfactura
 
 set (plugin pluginbf_clientealbaranesfactura)
 
@@ -9,7 +9,7 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginfacturar.h)
+file(GLOB plugin_NO_MOCS pluginbf_clientealbaranfacturar.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)

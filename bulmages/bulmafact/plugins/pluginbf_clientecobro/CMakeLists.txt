@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugincobros
+#pluginbf_clientecobros
 
 set (plugin pluginbf_clientecobro)
 set (docs README.es)

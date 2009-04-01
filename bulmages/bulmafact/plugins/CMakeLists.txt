@@ -21,41 +21,41 @@ add_subdirectory(pluginbf_almacen)
 
 add_subdirectory(pluginbf_trazabilidad)
 add_subdirectory(pluginbarcodeopen)
-add_subdirectory(plugincatalogo)
-add_subdirectory(plugininformeclientes)
-add_subdirectory(plugininventario)
-add_subdirectory(plugincontratos)
+add_subdirectory(pluginbf_catalogo)
+add_subdirectory(pluginbf_informeclientes)
+add_subdirectory(pluginbf_inventario)
+add_subdirectory(pluginbf_contratos)
 add_subdirectory(pluginbf_ticket)
 
 #plugin_tc_articulos en desarrollo
 add_subdirectory(pluginbf_tallascolores)
 
-add_subdirectory(pluginpromedios)
-add_subdirectory(pluginimpresionesmultiples)
-add_subdirectory(pluginq19)
-add_subdirectory(pluginmail)
-add_subdirectory(pluginmailthunderbird)
-add_subdirectory(plugintipostrabajo)
-add_subdirectory(plugincuadrante)
+add_subdirectory(pluginbf_promedios)
+add_subdirectory(pluginbf_multiimprimir)
+add_subdirectory(pluginbf_q19)
+add_subdirectory(pluginbf_correo)
+add_subdirectory(pluginbf_correothunderbird)
+add_subdirectory(pluginbf_tipotrabajo)
+add_subdirectory(pluginbf_cuadrante)
 add_subdirectory(pluginbf_asterisk)
 add_subdirectory(pluginbf_bulmatpv)
 add_subdirectory(pluginbf_debug)
 add_subdirectory(pluginbf_preciocoste)
 add_subdirectory(pluginresarticulos)
 add_subdirectory(pluginalias)
-add_subdirectory(plugindatosbase)
+add_subdirectory(pluginbf_datosbase)
 
 add_subdirectory(pluginbf_ivaincluido)
 
 add_subdirectory(pluginbf_bulmacont)
 
-add_subdirectory(pluginsyncbulmacont)
-add_subdirectory(plugininformeclientessxc)
-add_subdirectory(pluginetiquetado)
-add_subdirectory(pluginetiquetas)
-add_subdirectory(plugincompraventa)
+add_subdirectory(pluginbf_sincrobulmacont)
+add_subdirectory(pluginbf_informecliente2sxc)
+add_subdirectory(pluginbf_etiquetado)
+add_subdirectory(pluginbf_etiquetas)
+add_subdirectory(pluginbf_compraventa)
 add_subdirectory(pluginbf_clienteproveedor)
-add_subdirectory(pluginopenref)
+add_subdirectory(pluginbf_abrereferencia)
 
 add_subdirectory(pluginbf_corrector)
 add_subdirectory(pluginbf_clientealbaranesfactura)
@@ -74,7 +74,7 @@ add_subdirectory(pluginbf_proveedorpedido)
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)
 
-add_subdirectory(pluginz2z)
+add_subdirectory(pluginbf_z2z)
 
 # if you want to add some private code
 # simple put your add_directory in a

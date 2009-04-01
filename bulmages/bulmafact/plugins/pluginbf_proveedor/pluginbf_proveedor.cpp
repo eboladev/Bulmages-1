@@ -101,7 +101,7 @@ void MyPlugPro::inicializa ( Bulmafact *bges )
 	bges->Listados->addAction (planCuentas);
 	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo Proveedor" ), 0 );
+	QAction *npago = new QAction ( _( "&Nuevo proveedor" ), 0 );
 	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier.svg" ) ));
 	npago->setStatusTip ( _( "Nuevo proveedor" ) );
 	npago->setWhatsThis ( _( "Nuevo proveedor" ) );
@@ -122,7 +122,7 @@ void MyPlugPro::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Proveedores\n", 0 );
+    _depura ( "Punto de Entrada del plugin de proveedores\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
