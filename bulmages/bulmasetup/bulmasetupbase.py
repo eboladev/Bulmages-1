@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Mon Mar 30 10:48:17 2009
+# Created: Tue Mar 31 18:41:30 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,21 +26,21 @@ class Ui_MainWindow(object):
         self.label.setMaximumSize(QtCore.QSize(209, 150))
         self.label.setPixmap(QtGui.QPixmap(":/images/bulmasetup_iglues.jpg"))
         self.label.setObjectName("label")
-        self.mui_crearusuario = QtGui.QPushButton(self.centralwidget)
-        self.mui_crearusuario.setGeometry(QtCore.QRect(250, 30, 291, 61))
-        self.mui_crearusuario.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.mui_crearusuario.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.mui_gestionusuarios = QtGui.QPushButton(self.centralwidget)
+        self.mui_gestionusuarios.setGeometry(QtCore.QRect(250, 30, 291, 61))
+        self.mui_gestionusuarios.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.mui_gestionusuarios.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon = QtGui.QIcon()
-        icon.addFile(":/images/bulmasetup_usuario.xpm")
-        self.mui_crearusuario.setIcon(icon)
-        self.mui_crearusuario.setIconSize(QtCore.QSize(48, 48))
-        self.mui_crearusuario.setObjectName("mui_crearusuario")
+        icon.addPixmap(QtGui.QPixmap(":/images/bulmasetup_usuario.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_gestionusuarios.setIcon(icon)
+        self.mui_gestionusuarios.setIconSize(QtCore.QSize(48, 48))
+        self.mui_gestionusuarios.setObjectName("mui_gestionusuarios")
         self.mui_crearbulmacont = QtGui.QPushButton(self.centralwidget)
         self.mui_crearbulmacont.setGeometry(QtCore.QRect(250, 100, 291, 61))
         self.mui_crearbulmacont.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmacont.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon1 = QtGui.QIcon()
-        icon1.addFile(":/images/bulmasetup_bulmacont.png")
+        icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_bulmacont.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_crearbulmacont.setIcon(icon1)
         self.mui_crearbulmacont.setIconSize(QtCore.QSize(48, 48))
         self.mui_crearbulmacont.setObjectName("mui_crearbulmacont")
@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmafact.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon2 = QtGui.QIcon()
-        icon2.addFile(":/images/bulmasetup_bulmafact.png")
+        icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_bulmafact.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_crearbulmafact.setIcon(icon2)
         self.mui_crearbulmafact.setIconSize(QtCore.QSize(48, 48))
         self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.mui_salir = QtGui.QPushButton(self.centralwidget)
         self.mui_salir.setGeometry(QtCore.QRect(460, 420, 75, 24))
         icon3 = QtGui.QIcon()
-        icon3.addFile(":/images/bulmasetup_exit.png")
+        icon3.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_salir.setIcon(icon3)
         self.mui_salir.setObjectName("mui_salir")
         self.line = QtGui.QFrame(self.centralwidget)
@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_adminempresas.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon4 = QtGui.QIcon()
-        icon4.addFile(":/images/bulmasetup_empresa.xpm")
+        icon4.addPixmap(QtGui.QPixmap(":/images/bulmasetup_empresa.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_adminempresas.setIcon(icon4)
         self.mui_adminempresas.setIconSize(QtCore.QSize(48, 48))
         self.mui_adminempresas.setObjectName("mui_adminempresas")
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon5 = QtGui.QIcon()
-        icon5.addFile(":/images/bulmasetup_cargarempresa.xpm")
+        icon5.addPixmap(QtGui.QPixmap(":/images/bulmasetup_cargarempresa.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_restbackup.setIcon(icon5)
         self.mui_restbackup.setIconSize(QtCore.QSize(48, 48))
         self.mui_restbackup.setObjectName("mui_restbackup")
@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_crearusuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevo Usuario de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_gestionusuarios.setText(QtGui.QApplication.translate("MainWindow", "Gestiónar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmacont.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Contabilidad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturacion / TPV", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

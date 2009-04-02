@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'nuevousuariobase.ui'
 #
-# Created: Mon Mar 30 17:54:23 2009
+# Created: Thu Apr  2 17:19:36 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,6 +19,10 @@ class Ui_NuevoUsuario(object):
         sizePolicy.setHeightForWidth(NuevoUsuario.sizePolicy().hasHeightForWidth())
         NuevoUsuario.setSizePolicy(sizePolicy)
         NuevoUsuario.setMaximumSize(QtCore.QSize(355, 118))
+        NuevoUsuario.setFocusPolicy(QtCore.Qt.TabFocus)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/images/bulmasetup_nuevousuario.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        NuevoUsuario.setWindowIcon(icon)
         self.gridlayout = QtGui.QGridLayout(NuevoUsuario)
         self.gridlayout.setMargin(9)
         self.gridlayout.setSpacing(6)
@@ -42,6 +46,7 @@ class Ui_NuevoUsuario(object):
         self.label.setObjectName("label")
         self.gridlayout.addWidget(self.label, 0, 0, 1, 1)
         self.mui_superusuario = QtGui.QCheckBox(NuevoUsuario)
+        self.mui_superusuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_superusuario.setObjectName("mui_superusuario")
         self.gridlayout.addWidget(self.mui_superusuario, 2, 0, 1, 1)
         self.label_2.setBuddy(self.mui_password)
@@ -51,6 +56,8 @@ class Ui_NuevoUsuario(object):
         QtCore.QObject.connect(self.mui_botonera, QtCore.SIGNAL("accepted()"), NuevoUsuario.accept)
         QtCore.QObject.connect(self.mui_botonera, QtCore.SIGNAL("rejected()"), NuevoUsuario.reject)
         QtCore.QMetaObject.connectSlotsByName(NuevoUsuario)
+        NuevoUsuario.setTabOrder(self.mui_nombre, self.mui_password)
+        NuevoUsuario.setTabOrder(self.mui_password, self.mui_botonera)
 
     def retranslateUi(self, NuevoUsuario):
         NuevoUsuario.setWindowTitle(QtGui.QApplication.translate("NuevoUsuario", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
@@ -58,3 +65,4 @@ class Ui_NuevoUsuario(object):
         self.label.setText(QtGui.QApplication.translate("NuevoUsuario", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_superusuario.setText(QtGui.QApplication.translate("NuevoUsuario", "Super Usuario", None, QtGui.QApplication.UnicodeUTF8))
 
+import resources_rc

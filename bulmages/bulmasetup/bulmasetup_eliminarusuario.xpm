@@ -1,5 +1,5 @@
 /* XPM */
-static char * bulmasetup_usuario_xpm[] = {
+static char * bulmasetup_eliminarusuario_xpm[] = {
 "32 32 144 2",
 "  	c None",
 ". 	c #9B9D97",

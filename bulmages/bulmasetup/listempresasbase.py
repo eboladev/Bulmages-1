@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Sun Mar  8 00:28:20 2009
-#      by: PyQt4 UI code generator 4.4.3
+# Created: Thu Apr  2 17:12:08 2009
+#      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,7 +20,7 @@ class Ui_ListEmpresasBase(object):
         ListEmpresasBase.setSizePolicy(sizePolicy)
         ListEmpresasBase.setMaximumSize(QtCore.QSize(800, 608))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../images/png/i_empresa.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/images/bulmasetup_empresabase.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ListEmpresasBase.setWindowIcon(icon)
         self.verticalLayout = QtGui.QVBoxLayout(ListEmpresasBase)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -89,3 +89,4 @@ class Ui_ListEmpresasBase(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("ListEmpresasBase", "Consola", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_cancelar.setText(QtGui.QApplication.translate("ListEmpresasBase", "Cerrar", None, QtGui.QApplication.UnicodeUTF8))
 
+import resources_rc

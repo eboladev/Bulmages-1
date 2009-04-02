@@ -25,8 +25,8 @@
    <string>Listado de Empresas</string>
   </property>
   <property name="windowIcon" >
-   <iconset>
-    <normaloff>../images/png/i_empresa.xpm</normaloff>../images/png/i_empresa.xpm</iconset>
+   <iconset resource="resources.qrc" >
+    <normaloff>:/images/bulmasetup_empresabase.xpm</normaloff>:/images/bulmasetup_empresabase.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
@@ -138,7 +138,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_cancelar</sender>

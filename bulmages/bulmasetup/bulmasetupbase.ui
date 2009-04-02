@@ -47,7 +47,7 @@
      <pixmap resource="resources.qrc" >:/images/bulmasetup_iglues.jpg</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="mui_crearusuario" >
+   <widget class="QPushButton" name="mui_gestionusuarios" >
     <property name="geometry" >
      <rect>
       <x>250</x>
@@ -63,10 +63,11 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text" >
-     <string>Nuevo Usuario de PostgreSQL</string>
+     <string>Gestiónar Usuarios de PostgreSQL</string>
     </property>
     <property name="icon" >
-     <iconset resource="resources.qrc" >:/images/bulmasetup_usuario.xpm</iconset>
+     <iconset resource="resources.qrc" >
+      <normaloff>:/images/bulmasetup_usuario.xpm</normaloff>:/images/bulmasetup_usuario.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -94,7 +95,8 @@
      <string>Nueva Empresa de Contabilidad</string>
     </property>
     <property name="icon" >
-     <iconset resource="resources.qrc" >:/images/bulmasetup_bulmacont.png</iconset>
+     <iconset resource="resources.qrc" >
+      <normaloff>:/images/bulmasetup_bulmacont.png</normaloff>:/images/bulmasetup_bulmacont.png</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -122,7 +124,8 @@
      <string>Nueva Empresa de Facturacion / TPV</string>
     </property>
     <property name="icon" >
-     <iconset resource="resources.qrc" >:/images/bulmasetup_bulmafact.png</iconset>
+     <iconset resource="resources.qrc" >
+      <normaloff>:/images/bulmasetup_bulmafact.png</normaloff>:/images/bulmasetup_bulmafact.png</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -166,7 +169,8 @@ p, li { white-space: pre-wrap; }
      <string>Salir</string>
     </property>
     <property name="icon" >
-     <iconset resource="resources.qrc" >:/images/bulmasetup_exit.png</iconset>
+     <iconset resource="resources.qrc" >
+      <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
     </property>
    </widget>
    <widget class="Line" name="line" >
@@ -201,7 +205,8 @@ p, li { white-space: pre-wrap; }
      <string>Administrar Empresas Existentes</string>
     </property>
     <property name="icon" >
-     <iconset resource="resources.qrc" >:/images/bulmasetup_empresa.xpm</iconset>
+     <iconset resource="resources.qrc" >
+      <normaloff>:/images/bulmasetup_empresa.xpm</normaloff>:/images/bulmasetup_empresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -229,7 +234,8 @@ p, li { white-space: pre-wrap; }
      <string>Restaurar una Copia de Seguridad</string>
     </property>
     <property name="icon" >
-     <iconset resource="resources.qrc" >:/images/bulmasetup_cargarempresa.xpm</iconset>
+     <iconset resource="resources.qrc" >
+      <normaloff>:/images/bulmasetup_cargarempresa.xpm</normaloff>:/images/bulmasetup_cargarempresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>

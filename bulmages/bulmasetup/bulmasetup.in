@@ -15,7 +15,7 @@ sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup')
 from config import *
 from bulmasetupbase import *
 from PyQt4 import *
-from nuevousuario import NuevoUsuario
+from gestionusuarios import GestionUsuarios
 from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
 from listempresas import ListEmpresas
@@ -29,21 +29,21 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
 	
 	# Detecta si hemos accedido como 'root' o no y deshabilita las opciones que necesitan esos permisos.
 	if commands.getstatusoutput("whoami")[1] == 'root':
-	    self.mui_crearusuario.setEnabled(True)
+	    self.mui_gestionusuarios.setEnabled(True)
 	    self.mui_crearbulmafact.setEnabled(True)
 	    self.mui_crearbulmacont.setEnabled(True)
 	    self.mui_adminempresas.setEnabled(True)
 	    self.mui_restbackup.setEnabled(True)
 	else:
-	    self.mui_crearusuario.setEnabled(False)
+	    self.mui_gestionusuarios.setEnabled(False)
 	    self.mui_crearbulmafact.setEnabled(False)
 	    self.mui_crearbulmacont.setEnabled(False)
 	    self.mui_adminempresas.setEnabled(False)
 	    self.mui_restbackup.setEnabled(False)
             
 	# Evento al hacer clic en el Boton para crear un nuevo usuario
-    def on_mui_crearusuario_released(self):
-	    win = NuevoUsuario()
+    def on_mui_gestionusuarios_released(self):
+	    win = GestionUsuarios()
 	    win.exec_()
             
         # Evento al hacer clic en el Boton para crear nueva Empresa de Facturacion

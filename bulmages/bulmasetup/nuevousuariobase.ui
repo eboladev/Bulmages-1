@@ -21,8 +21,15 @@
     <height>118</height>
    </size>
   </property>
+  <property name="focusPolicy" >
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle" >
    <string>Dialog</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="resources.qrc" >
+    <normaloff>:/images/bulmasetup_nuevousuario.xpm</normaloff>:/images/bulmasetup_nuevousuario.xpm</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -73,6 +80,9 @@
    </item>
    <item row="2" column="0" >
     <widget class="QCheckBox" name="mui_superusuario" >
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="text" >
       <string>Super Usuario</string>
      </property>
@@ -80,7 +90,14 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>mui_nombre</tabstop>
+  <tabstop>mui_password</tabstop>
+  <tabstop>mui_botonera</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_botonera</sender>

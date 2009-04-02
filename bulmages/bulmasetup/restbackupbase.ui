@@ -24,6 +24,10 @@
   <property name="windowTitle" >
    <string>Restaurar Backup</string>
   </property>
+  <property name="windowIcon" >
+   <iconset resource="resources.qrc" >
+    <normaloff>:/images/bulmasetup_cargarempresa.xpm</normaloff>:/images/bulmasetup_cargarempresa.xpm</iconset>
+  </property>
   <layout class="QGridLayout" >
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
@@ -71,7 +75,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_cancelar</sender>
