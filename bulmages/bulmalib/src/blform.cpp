@@ -364,6 +364,7 @@ void BlForm::on_mui_borrar_clicked()
 void BlForm::closeEvent ( QCloseEvent *e )
 {
     _depura ( "BlForm::closeEvent", 0, windowTitle() );
+    
     try {
         if ( dialogChanges_hayCambios() ) {
             int val = QMessageBox::warning ( this,

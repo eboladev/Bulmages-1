@@ -63,7 +63,6 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int borrar();
-    virtual void closeEvent ( QCloseEvent * );
     virtual int sacaWindow();
     virtual void meteWindow ( QString , QObject *, bool compdup = TRUE );
     void setDbTableName ( QString nom );
@@ -88,6 +87,9 @@ public:
     virtual void activaDocumentos();
     virtual void desactivaDocumentos();
 
+protected:
+    virtual void closeEvent ( QCloseEvent * );
+
 public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
@@ -98,7 +100,7 @@ public slots:
     virtual void on_mui_imprimir_clicked();
 
 signals:
-    virtual void cerrar();
+    //virtual void cerrar();
     void pintaMenu ( QMenu * );
     void trataMenu ( QAction * );
 };
