@@ -31,7 +31,7 @@
 #include "blfunctions.h"
 
 
-class BlDoubleSpinBox : public QDoubleSpinBox
+class BL_EXPORT BlDoubleSpinBox : public QDoubleSpinBox
 {
     Q_OBJECT
 

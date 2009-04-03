@@ -242,7 +242,7 @@ typedef QMap<int, QString> mapa;
 /// NOTA: tambien ha adoptado la capacidad de ser un paso de parametros configurables de
 /// la aplicacion. Esto se traduce en que algunos parametros se pueden modificar en tiempo
 /// de ejecucion.
-class BlConfiguration
+class BL_EXPORT BlConfiguration
 {
 private:
     /// La forma de almacenar los campos va a ser mediante un mapa de valores.
@@ -270,7 +270,7 @@ public:
 /// ATENCION.- Este es un objeto global, y va a existir durante toda la aplicacion asi que
 /// Se va a llamar muy a menudo a este objeto en los demas archivos.
 /// Existe una instancia del objeto global confpr.
-extern BlConfiguration *confpr;
+extern BL_EXPORT BlConfiguration *confpr;
 /// Existe una instancia del objeto global g_theApp.
 
 

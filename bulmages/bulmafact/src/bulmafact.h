@@ -39,7 +39,7 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class Bulmafact: public BlMainWindow, public Ui_bulmafactbase
+class BL_EXPORT Bulmafact: public BlMainWindow, public Ui_bulmafactbase
 {
     Q_OBJECT
 

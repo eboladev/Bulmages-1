@@ -30,7 +30,7 @@
 
 
 /// Reimplementa los items de BlTableWidget para que podamos programar cosas en ellos.
-class BlTableWidgetItem : public QTableWidgetItem
+class BL_EXPORT BlTableWidgetItem : public QTableWidgetItem
 {
 public:
     int modo;
@@ -44,7 +44,7 @@ public:
 /// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
 /// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
-class BlTableWidget : public QTableWidget
+class BL_EXPORT BlTableWidget : public QTableWidget
 {
     Q_OBJECT
 

@@ -30,7 +30,7 @@
 
 /** Controla el sistema de carga y disparo segun metodo de los plugins
  */
-class BlPlugins
+class BL_EXPORT BlPlugins
 {
 private:
     QList<QLibrary *> m_lista;
@@ -43,8 +43,8 @@ public:
     int lanza ( const char *func, void *clase, void **ret );
 };
 
-extern BlPlugins *g_plugins;
-extern void *g_plugParams;
+extern BL_EXPORT BlPlugins *g_plugins;
+extern BL_EXPORT void *g_plugParams;
 
 #endif
 

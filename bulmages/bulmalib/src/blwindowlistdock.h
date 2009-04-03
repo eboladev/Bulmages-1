@@ -29,7 +29,7 @@
 #include "blworkspace.h"
 
 
-class BlListWidget : public QListWidget
+class BL_EXPORT BlListWidget : public QListWidget
 {
     Q_OBJECT
 
@@ -39,7 +39,7 @@ public:
 };
 
 
-class BlListWidgetItem : public QListWidgetItem
+class BL_EXPORT BlListWidgetItem : public QListWidgetItem
 {
 private:
     QObject *m_obj;
@@ -59,14 +59,13 @@ public:
 /// Provides the dock window to list all windows in BulmaFact
 /// \param m_listBox this variable is the listBox that contains all
 /// titles of the diferent windows.
-class BlWindowListDock : public QDockWidget
+class BL_EXPORT BlWindowListDock : public QDockWidget
 {
     Q_OBJECT
 
 private:
     BlListWidget *m_listBox;
     BlWorkspace *m_pWorkspace;
-
 public:
     void setWorkspace ( BlWorkspace *w );
     BlWindowListDock ( QWidget *a = 0 );

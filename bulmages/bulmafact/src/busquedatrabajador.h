@@ -33,7 +33,7 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un ComboBox */
-class BusquedaTrabajadorDelegate : public BlComboBox
+class BL_EXPORT BusquedaTrabajadorDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -50,7 +50,7 @@ public:
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaTrabajador : public BlComboBox
+class BL_EXPORT BusquedaTrabajador : public BlComboBox
 {
     Q_OBJECT
 

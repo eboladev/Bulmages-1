@@ -31,7 +31,7 @@
 #include "blmaincompany.h"
 
 
-class BlMainCompanyPointer
+class BL_EXPORT BlMainCompanyPointer
 {
 private:
     BlMainCompany *m_mainCompany;
@@ -47,7 +47,7 @@ public:
 };
 
 
-class BlWidget : public QWidget, public BlMainCompanyPointer
+class BL_EXPORT BlWidget : public QWidget, public BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -21,11 +21,11 @@
 #define BLSPAINBANKACCOUNTNUMBER_H
 
 #include <QString>
-
+#include "bldefs.h"
 
 /// Esta clase implementa el C&oacute;digo Cuenta Cliente (CCC) de un banco.
 /** Su funci&oacute;n m&aacute;s importante es 'cuentaesvalida'. */
-class BlSpainBankAccountNumber
+class BL_EXPORT BlSpainBankAccountNumber
 {
 public:
     /// Banco, entidad, dc y numcuenta.

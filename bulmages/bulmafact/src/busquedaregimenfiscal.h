@@ -29,7 +29,7 @@
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaRegimenFiscal : public BlComboBox
+class BL_EXPORT BusquedaRegimenFiscal : public BlComboBox
 {
     Q_OBJECT
 

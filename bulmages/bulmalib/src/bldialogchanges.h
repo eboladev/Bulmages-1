@@ -31,7 +31,7 @@
 /// La idea original es de Alvaro de Miguel en la que lo que hace la funcion es
 /// coger todos los campos de un determinado formulario y formar una cadena.
 /// Luego para saber si hay cambios en el formulario vuelve a comparar.
-class BlDialogChanges
+class BL_EXPORT BlDialogChanges
 {
 private:
     int m_maxQLine;

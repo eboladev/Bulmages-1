@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,28 +19,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __INFORMEREFERENCIA__
-#define __INFORMEREFERENCIA__
 
-#include <QString>
-#include "bldefs.h"
+#ifndef BL_DEFS
+#define BL_DEFS
 
-class BfCompany;
+#ifdef WIN32
 
-/// Genera un informe utilizando un identificador de cliente.
-/** */
-class BL_EXPORT InformeCliente
-{
-private:
-    QString m_idcliente;
-    BfCompany* companyact;
+#define BL_EXPORT __declspec(dllexport)
 
-public:
-    InformeCliente ( BfCompany * );
-    ~InformeCliente();
-    void setCliente ( QString );
-    void generarInforme();
-};
+#else
+
+#define BL_EXPORT
+
 
 #endif
 
+#endif

@@ -31,7 +31,7 @@
 
 /// Presenta un di&aacute;logo que pregunta el usuario y la contrase&ntilde;a
 /// para acceder a la base de datos.
-class BlDbLoginDialog : public QDialog, public Ui_BlDbLoginDialogBase
+class BL_EXPORT BlDbLoginDialog : public QDialog, public Ui_BlDbLoginDialogBase
 {
     Q_OBJECT
 

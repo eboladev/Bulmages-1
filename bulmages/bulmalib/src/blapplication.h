@@ -25,11 +25,12 @@
 #include <QApplication>
 #include <QWidget>
 #include <QMainWindow>
+#include "bldefs.h"
 
 class BlForm;
 
 
-class BlApplication : public QApplication
+class BL_EXPORT BlApplication : public QApplication
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ signals:
 
 
 /// Declaramos la variable g_theApp como extern para que funcione con un entorno multilibreria.
-extern BlApplication *g_theApp;
+extern BL_EXPORT BlApplication *g_theApp;
 
 
 #endif

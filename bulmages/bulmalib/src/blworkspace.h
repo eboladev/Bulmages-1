@@ -28,7 +28,7 @@
 #include "blfunctions.h"
 
 
-class BlWorkspace : public QWorkspace
+class BL_EXPORT BlWorkspace : public QWorkspace
 {
     Q_OBJECT
 

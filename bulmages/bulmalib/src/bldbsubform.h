@@ -35,7 +35,7 @@
    Maneja un registro de un subformulario de tal forma que permite el trabajo mediante tablas de los registros.
    Es muy similar a la clase \ref BlDbRecord pero reimplementa el guardado
 */
-class BlDbSubFormRecord: public BlDbRecord
+class BL_EXPORT BlDbSubFormRecord: public BlDbRecord
 {
 public:
     BlDbSubFormRecord ( BlMainCompany *con );
@@ -51,7 +51,7 @@ public:
 Junta la informacion de campo (Base de Datos) con  un QTableWidgetItem.
 De esta forma los elementos adscritos a una talba y a un recordset son los mismos.
 */
-class BlDbSubFormField: public BlTableWidgetItem, public BlDbField
+class BL_EXPORT BlDbSubFormField: public BlTableWidgetItem, public BlDbField
 {
 private:
     BlDbSubFormRecord *m_pare; ///< Puntero al \ref BlDbSubFormRecord al que pertenece. Acelera procesos.

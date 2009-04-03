@@ -28,7 +28,7 @@
 #include "blfunctions.h"
 
 
-class BlDateLineEdit : public QLineEdit
+class BL_EXPORT BlDateLineEdit : public QLineEdit
 {
     Q_OBJECT
 

@@ -40,7 +40,7 @@ Tambien prepara el campo para ser almacenado en la base de datos aunque el guard
 clase \ref BlDbRecord
 \todo Esta clase deberia derivar de \ref BlMainCompanyPointer
 */
-class BlDbField
+class BL_EXPORT BlDbField
 {
 public:
     /**
@@ -104,7 +104,7 @@ El uso normal de esta clase es la carga de un registro, modificacion de sus camp
 y almacenado del mismo.
 \todo Esta clase deberia derivar de \ref BlMainCompanyPointer
 */
-class BlDbRecord
+class BL_EXPORT BlDbRecord
 {
 protected:
     QList<BlDbField *> m_lista; ///< Lista de campos que conforman la tabla de la BD

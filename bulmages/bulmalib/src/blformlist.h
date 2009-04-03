@@ -32,7 +32,7 @@
 #include "blwidget.h"
 
 
-class BlFormList : public BlWidget
+class BL_EXPORT BlFormList : public BlWidget
 {
     Q_OBJECT
 

@@ -49,7 +49,7 @@
 /// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.
 /** Se carga normalmente a partir de la clase 'BlPostgreSqlClient' con el m&eacute;todo 'loadQuery'.
     Crea las estructuras necesarias para recorrer un recordset de postgres. */
-class BlDbRecordSet
+class BL_EXPORT BlDbRecordSet
 {
 private:
     /// El nombre del cursor, (OBSOLETE).
@@ -70,8 +70,6 @@ private:
     QString m_pristineQuery;
 
     QHash<QString, int> m_campos;
-//      QList<QString, int>m_campos;
-//    QMap<QString, int> m_campos;
 
     void inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char * const *paramValues, QString pristineQuery=NULL
@@ -169,7 +167,7 @@ public:
 };
 
 
-class BlPostgreSqlClient
+class BL_EXPORT BlPostgreSqlClient
 {
 private:
     QString m_pgHost; /// Indica cual es el host de las bases de datos.

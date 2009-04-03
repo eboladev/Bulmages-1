@@ -27,7 +27,7 @@
 #include "blfunctions.h"
 
 
-class BlTextEditDelegate : public QTextEdit
+class BL_EXPORT BlTextEditDelegate : public QTextEdit
 {
     Q_OBJECT
 

@@ -33,7 +33,7 @@
 #include "blfunctions.h"
 
 
-class BLMonthCalendar : public QWidget
+class BL_EXPORT BLMonthCalendar : public QWidget
 {
     Q_OBJECT
 

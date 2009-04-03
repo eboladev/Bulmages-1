@@ -39,7 +39,7 @@ class company;
     Antes de utilizarlo debe ser inicializado con setMainCompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaTipoIva : public BlComboBox
+class BL_EXPORT BusquedaTipoIva : public BlComboBox
 {
     Q_OBJECT
 
@@ -56,7 +56,7 @@ public:
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un 'QComboBox' */
-class BusquedaTipoIVADelegate : public BlComboBox
+class BL_EXPORT BusquedaTipoIVADelegate : public BlComboBox
 {
     Q_OBJECT
 

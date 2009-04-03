@@ -31,7 +31,7 @@
 #include "blworkspace.h"
 
 
-class BlMainCompany : public BlPostgreSqlClient
+class BL_EXPORT BlMainCompany : public BlPostgreSqlClient
 {
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de

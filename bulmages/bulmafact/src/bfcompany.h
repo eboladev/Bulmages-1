@@ -41,7 +41,7 @@ class Bulmafact;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class BfCompany : public BlMainCompany
+class BL_EXPORT BfCompany : public BlMainCompany
 {
 private:
     /// Puntero al mainWindow

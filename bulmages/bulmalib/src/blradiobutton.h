@@ -28,7 +28,7 @@
 #include "blfunctions.h"
 
 
-class BlRadioButton : public QRadioButton
+class BL_EXPORT BlRadioButton : public QRadioButton
 {
     Q_OBJECT
 

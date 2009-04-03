@@ -35,11 +35,9 @@ class BfCompany;
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
 /** Este Widget permite buscar y seleccionar una familia de art&iacute;culos.
     Para usar en forma de selector de articulos. */
-class BusquedaFamilia : public BlSearchWidget
+class BL_EXPORT BusquedaFamilia : public BlSearchWidget
 {
     Q_OBJECT
-
-
 public:
     BusquedaFamilia ( QWidget *parent = 0 );
     ~BusquedaFamilia();

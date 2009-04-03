@@ -42,7 +42,7 @@
 
 /// Muestra y administra la ventana de bienvenida al programa.
 /** */
-class BlSplashScreen : public QDialog
+class BL_EXPORT BlSplashScreen : public QDialog
 {
     Q_OBJECT
 

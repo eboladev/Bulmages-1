@@ -34,7 +34,7 @@
 /// Permite buscar y seleccionar un profesor.
 /** Implementa un Widget que permite buscar y seleccionar un
     profesor de BulmaFact de forma generica. */
-class BlSearchWidget : public BlWidget, public Ui_BlSearchWidgetBase
+class BL_EXPORT BlSearchWidget : public BlWidget, public Ui_BlSearchWidgetBase
 {
     Q_OBJECT
 
@@ -77,7 +77,7 @@ signals:
 
 
 /// Delegate Generico
-class BlDbCompleterComboBox : public BlComboBox
+class BL_EXPORT BlDbCompleterComboBox : public BlComboBox
 {
     Q_OBJECT
 

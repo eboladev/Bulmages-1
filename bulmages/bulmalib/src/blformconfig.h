@@ -28,7 +28,7 @@
 #include "blform.h"
 
 
-class BlFormConfig : public BlWidget, public Ui_BlFormConfigBase
+class BL_EXPORT BlFormConfig : public BlWidget, public Ui_BlFormConfigBase
 {
     Q_OBJECT
 

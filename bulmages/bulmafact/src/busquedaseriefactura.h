@@ -34,7 +34,7 @@
     Antes de utilizarlo debe ser inicializa con setcompany.
     Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
 */
-class BusquedaSerieFactura : public BlComboBox
+class BL_EXPORT BusquedaSerieFactura : public BlComboBox
 {
     Q_OBJECT
 

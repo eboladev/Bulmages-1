@@ -44,7 +44,7 @@ Al crear un subformulario \ref BlSubForm, todos los registros tienen exactamente
 Esta clase sirve para describir una cabecera. Es analoga a la clase \ref BlDbField pero en lugar de
 describir un unico registro describe a varios.
 */
-class BlSubFormHeader
+class BL_EXPORT BlSubFormHeader
 {
 public:
     /** Opciones para la columna del SubFormulario
@@ -78,22 +78,20 @@ public:
 
 
 // Necesito exportar algunos datos.
-extern  QModelIndex g_index;
-extern  QWidget *g_editor;
-extern  QAbstractItemModel *g_model;
-extern  QString g_nomcampo;
+extern  BL_EXPORT QModelIndex g_index;
+extern  BL_EXPORT QWidget *g_editor;
+extern  BL_EXPORT QAbstractItemModel *g_model;
+extern  BL_EXPORT QString g_nomcampo;
 
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BlSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+class BL_EXPORT BlSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
     BlSubForm *m_subform;
-
-    
 public:
     BlSubFormDelegate ( QObject * );
     virtual ~BlSubFormDelegate();
@@ -114,7 +112,7 @@ signals:
 registros de la base de datos proporcionando un potente manejador
 tabular de datos que puede generar desde listados hasta subformularios
 */
-class BlSubForm: public BlWidget, public Ui_BlSubFormBase
+class BL_EXPORT BlSubForm: public BlWidget, public Ui_BlSubFormBase
 {
     Q_OBJECT
 

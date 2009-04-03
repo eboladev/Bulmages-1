@@ -29,7 +29,7 @@
 #include "ui_bldatesearchbase.h"
 
 
-class BlDateSearch : public BlWidget, public Ui_BlDateSearchBase
+class BL_EXPORT BlDateSearch : public BlWidget, public Ui_BlDateSearchBase
 {
     Q_OBJECT
 

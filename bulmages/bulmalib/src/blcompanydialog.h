@@ -37,7 +37,7 @@
     La ventana siempre se abre en modo 'modal' y detiene la ejecuci&oacute;n del programa.
     Se puede especificar, si es preciso, un tipo de mui_empresas a mostrar
     (bulmacont o bulmafact) para facilitar la selecci&oacute;n de elementos. */
-class BlCompanyDialog : public QDialog, public Ui_BlCompanyDialogBase
+class BL_EXPORT BlCompanyDialog : public QDialog, public Ui_BlCompanyDialogBase
 {
     Q_OBJECT
 

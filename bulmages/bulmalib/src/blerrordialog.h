@@ -28,7 +28,7 @@
 #include "ui_blerrordialogbase.h"
 
 
-class BlErrorDialog : public QDialog, public Ui_BlErrorDialogBase
+class BL_EXPORT BlErrorDialog : public QDialog, public Ui_BlErrorDialogBase
 {
     Q_OBJECT
 

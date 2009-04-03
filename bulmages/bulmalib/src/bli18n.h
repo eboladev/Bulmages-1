@@ -31,17 +31,17 @@
 #endif
 
 #include <locale.h>
+#include "bldefs.h"
 
-
-QString BlI18n(const char *, int = 0);
+QString BL_EXPORT BlI18n(const char *, int = 0);
 
 /// Gettext con dominio
-QString BlI18n(const char *, const char *);
+QString BL_EXPORT BlI18n(const char *, const char *);
 
 
 #ifdef WIN32
-void bindtextdomain(const char *, const char *);
-void textdomain(const char *);
+void BL_EXPORT bindtextdomain(const char *, const char *);
+void BL_EXPORT textdomain(const char *);
 #endif
 
 

@@ -29,7 +29,7 @@
 #include "ui_blbankeditbase.h"
 
 
-class BlBankEdit : public BlWidget, public Ui_BlBankEditBase
+class BL_EXPORT BlBankEdit : public BlWidget, public Ui_BlBankEditBase
 {
     Q_OBJECT
 

@@ -37,7 +37,7 @@ class BlMainCompany;
 
 /// Visualiza un centro de coste.
 /** */
-class BlCountryView : public BlForm, public Ui_BlCountryBase
+class BL_EXPORT BlCountryView : public BlForm, public Ui_BlCountryBase
 {
     Q_OBJECT
 

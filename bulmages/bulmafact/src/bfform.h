@@ -31,7 +31,7 @@
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-class BfForm : public BlForm
+class BL_EXPORT BfForm : public BlForm
 {
     Q_OBJECT
 

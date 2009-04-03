@@ -23,9 +23,9 @@
 #define BLMAINWINDOW_H
 
 #include <QMainWindow>
+#include "bldefs.h"
 
-
-class BlMainWindow : public QMainWindow
+class BL_EXPORT BlMainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -36,7 +36,7 @@ public:
 };
 
 
-extern QMainWindow *g_main;
+extern BL_EXPORT QMainWindow *g_main;
 
 #endif
 

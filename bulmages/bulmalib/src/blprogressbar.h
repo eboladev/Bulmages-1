@@ -29,7 +29,7 @@
 #include "ui_blprogressbarbase.h"
 
 
-class BlProgressBar : public QDialog, public Ui_BlProgressBarBase
+class BL_EXPORT BlProgressBar : public QDialog, public Ui_BlProgressBarBase
 {
 public:
     BlProgressBar (  );

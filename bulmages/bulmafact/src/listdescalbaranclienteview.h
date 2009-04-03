@@ -28,7 +28,7 @@
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
 /** */
-class ListDescuentoAlbaranClienteView : public BfSubForm
+class BL_EXPORT ListDescuentoAlbaranClienteView : public BfSubForm
 {
     Q_OBJECT
 

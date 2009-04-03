@@ -31,7 +31,7 @@
 /// Provides the dock window to list all windows in BulmaFact
 /// \param m_listBox this variable is the listBox that contains all
 /// titles of the diferent windows.
-class BlDockWidget : public QDockWidget
+class BL_EXPORT BlDockWidget : public QDockWidget
 {
     Q_OBJECT
 

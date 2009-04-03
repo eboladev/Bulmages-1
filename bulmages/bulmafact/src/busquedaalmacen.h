@@ -32,7 +32,7 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un ComboBox */
-class BusquedaAlmacenDelegate : public BlComboBox
+class BL_EXPORT BusquedaAlmacenDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -50,7 +50,7 @@ public:
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaAlmacen : public BlComboBox
+class BL_EXPORT BusquedaAlmacen : public BlComboBox
 {
     Q_OBJECT
 
