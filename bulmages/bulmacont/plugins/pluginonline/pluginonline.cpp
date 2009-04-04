@@ -25,7 +25,7 @@ void myplugin::elslot()
         exit ( errno );
     }// end if
     if ( !pid ) {
-        error = execvp ( confpr->valor ( CONF_NAVEGADOR ).ascii(), args );
+        error = execvp ( g_confpr->valor ( CONF_NAVEGADOR ).ascii(), args );
     }// end if
 #endif
 }// end elslot
@@ -41,7 +41,7 @@ void myplugin::soporte()
         exit ( errno );
     }// end if
     if ( !pid ) {
-        error = execvp ( confpr->valor ( CONF_NAVEGADOR ).ascii(), args );
+        error = execvp ( g_confpr->valor ( CONF_NAVEGADOR ).ascii(), args );
     }// end if
 #endif
 }// end elslot

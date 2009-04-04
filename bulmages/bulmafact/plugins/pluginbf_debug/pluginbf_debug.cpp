@@ -60,7 +60,7 @@ myplugin::~myplugin()
 void myplugin::cambia ( bool valor )
 {
     _depura ( "myplugin::cambia", 0 );
-    confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
+    g_confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
     _depura ( "END myplugin::cambia", 0 );
 }
 
@@ -76,7 +76,7 @@ int entryPoint ( Bulmafact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_debug", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_debug", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugin *corr = new myplugin();
 
@@ -85,7 +85,7 @@ int entryPoint ( Bulmafact *bcont )
     QAction *viewCorrector = new QAction ( "&Modo depuracion", 0 );
     viewCorrector->setCheckable ( TRUE );
 
-    if ( confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
+    if ( g_confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
         viewCorrector->setChecked ( TRUE );
     } else {
         viewCorrector->setChecked ( FALSE );

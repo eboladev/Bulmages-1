@@ -373,9 +373,9 @@ void pluginCAnualesODS::balanceSituacionODS ( CAnuales tipus )
         break;
     }
 
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "canualesods.py";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "canualesods.py";
 
-    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "canualesods.ods";
+    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -389,9 +389,9 @@ void pluginCAnualesODS::balanceSituacionODS ( CAnuales tipus )
     } else
         mensajeError ( _( "ERROR: No se ha podido crear el archivo" ) );
 
-    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
+    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
     system ( cadena.toAscii() );
     _depura ( "END pluginCAnualesODS::balanceSituacionODS", 0 );
 }
@@ -476,7 +476,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("plugincanualesods", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("plugincanualesods", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     pluginCAnualesODS *plug = new pluginCAnualesODS();
     plug->inicializa ( bcont );

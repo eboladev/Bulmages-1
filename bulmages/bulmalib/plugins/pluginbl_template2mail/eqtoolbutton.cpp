@@ -68,7 +68,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
     QMenu *ajust = menu->addMenu ( _( "Inf. personales por e-mail" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -83,7 +83,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
 
 
         QFile file;
-        file.setFileName ( confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();
@@ -114,7 +114,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
     _depura ( "EQToolButtonMail::trataMenu", 0 );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -148,10 +148,10 @@ void EQToolButtonMail::trataMenu ( QAction *action )
 		QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
             	generaPDF ( doc );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + doc + ".pdf " + confpr->valor ( CONF_DIR_USER ) +   doc  + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + doc + ".pdf " + g_confpr->valor ( CONF_DIR_USER ) +   doc  + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "kmail -s \" "+ doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
+		cad = "kmail -s \" "+ doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
 
 		system ( cad.toAscii().data() );
 

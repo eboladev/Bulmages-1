@@ -295,7 +295,7 @@ void BusquedaCuenta::s_searchCuenta()
     diag->setModal ( true );
 
     /// Creamos una instancia del selector de cuentas.
-    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, CuentaListView::SelectMode );
+    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, BL_SELECT_MODE );
 
     /// Hacemos la conexi&oacute;n del cerrar de las cuentas con el cerrar di&aacute;logo.
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );

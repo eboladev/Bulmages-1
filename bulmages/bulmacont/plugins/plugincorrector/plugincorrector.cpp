@@ -48,7 +48,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("plugincorrector", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("plugincorrector", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
@@ -80,7 +80,7 @@ int entryPoint ( Bulmacont *bcont )
 
     corr->m_viewCorrector = viewCorrector;
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -100,7 +100,7 @@ int entryPoint ( Bulmacont *bcont )
 int Bulmacont_closeEvent ( Bulmacont *bcont )
 {
     BcCompany * emp = bcont->empresaactual();
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

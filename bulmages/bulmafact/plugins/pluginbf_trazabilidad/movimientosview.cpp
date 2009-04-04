@@ -66,7 +66,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
 	m_cliente->setTableName( "cliente" );
 	m_cliente->m_valores["cifcliente"] = "";
 	m_cliente->m_valores["nomcliente"] = "";
-    if ( m_modo == EditMode ) {
+    if ( m_modo == BL_EDIT_MODE ) {
         meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();

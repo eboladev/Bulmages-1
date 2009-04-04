@@ -175,7 +175,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_articulo", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_articulo", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     MyPlugArt *plug = new MyPlugArt();
     plug->inicializa ( bges );
@@ -202,7 +202,7 @@ int Busqueda_on_mui_buscar_clicked(BlSearchWidget *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ArticuloList *arts = new ArticuloList ( ( BfCompany * ) busq->mainCompany(), diag, 0, ArticuloList::SelectMode );
+    ArticuloList *arts = new ArticuloList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
     busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -302,7 +302,7 @@ int BfSubForm_pressedAsterisk(BfSubForm *sub) {
         return 0;
     } // end if
 
-    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, ArticuloList::SelectMode );
+    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();
@@ -459,7 +459,7 @@ void MyPlugArt1::seleccionarArticulo( BfSubForm *sub )
 {
     _depura ( "MyPlugArt1::editarArticulo", 0 );
 
-    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, ArticuloList::SelectMode );
+    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();

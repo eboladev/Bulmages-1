@@ -128,7 +128,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_clientefactura", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_clientefactura", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     mypluginfact *plug = new mypluginfact();
     plug->inicializa ( bges );
@@ -148,7 +148,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
-	FacturasList *facturasList = new FacturasList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
+	FacturasList *facturasList = new FacturasList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
 	facturasList->setModoEdicion();
 	facturasList->setObjectName("listfacturas");
 	facturasList->hideBusqueda();

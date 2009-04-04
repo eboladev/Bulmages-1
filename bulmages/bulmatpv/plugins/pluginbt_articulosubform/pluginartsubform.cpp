@@ -42,7 +42,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginartsubform", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginartsubform", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -51,7 +51,7 @@ int entryPoint ( BulmaTPV *tpv )
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
 
-    ArticuloList1 *lan = new ArticuloList1 ( ( BfCompany * ) etpv, NULL, 0, ArticuloList1::SelectMode );
+    ArticuloList1 *lan = new ArticuloList1 ( ( BfCompany * ) etpv, NULL, 0, BL_SELECT_MODE );
     g_main->setCentralWidget ( lan );
 
     return 0;

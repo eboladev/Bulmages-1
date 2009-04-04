@@ -45,7 +45,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginartgraficos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginartgraficos", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
 
 	/// Ponemos el widget de pantallas.

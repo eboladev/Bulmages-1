@@ -68,7 +68,8 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blbankedit.cpp
 			blmonthcalendar.cpp
 			blsearchwidget.cpp
-			bli18n.cpp)
+			bli18n.cpp
+			blmaincompanypointer.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
@@ -77,11 +78,9 @@ set(bulmalib_MOCS	bldblogindialog.h
 			bltablewidget.h
 			blperiodicitycombobox.h
 			bldockwidget.h
-			blsubform.h
 			blwindowlistdock.h
 			blworkspace.h
 			blapplication.h
-			blform.h
 			bltexteditdelegate.h
 			bldoublespinbox.h
 			blwidget.h
@@ -93,35 +92,28 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blcountryview.h
 			blradiobutton.h
 			blcombobox.h
-			blbankedit.h
 			blmonthcalendar.h
-			blsearchwidget.h)
-
-set (bulmalib_HDRS	blcompanydialog.h
-			bldatesearch.h
-			blperiodicitycombobox.h
-			blconfiguration.h
-			bldb.h
-			bldialogchanges.h
+			blsearchwidget.h
+			blform.h			
+			blsubform.h	
+			bldbsubform.h
+			blprogressbar.h
+			blbankedit.h
 			blmaincompany.h
-			blform.h
+			blconfiguration.h
+			bldialogchanges.h
+			blspainbankaccountnumber.h)
+
+set (bulmalib_HDRS	blmaincompanypointer.h
+			bldb.h
 			blfixed.h
 			blfunctions.h
-			blwindowlistdock.h
-			bldblogindialog.h
-			blerrordialog.h
-			blspainbankaccountnumber.h
 			blimportexport.h
 			blplugins.h
 			blpostgresqlclient.h
-			blapplication.h
-			bltablewidget.h
-			bltexteditdelegate.h
-			blworkspace.h
-			bldbsubform.h
-			blsubform.h
-			blprogressbar.h
-			blbankedit.h)
+)
+			
+			
 #headers that are not moc'ed
 #			blpostgresqlclient.h 
 #			blconfiguration.h 
@@ -170,6 +162,10 @@ QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
+ENDIF(WIN32)
 
 # Defines if we want our own debugging code
 #ADD_DEFINITIONS(-DDEPURA_DEBUG)

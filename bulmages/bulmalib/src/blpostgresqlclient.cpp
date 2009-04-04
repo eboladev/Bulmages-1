@@ -137,7 +137,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
             m_error = TRUE;
             _depura ( PQerrorMessage ( conn ) );
             _depura ( "QUERY command failed [" + SQLQuery + "]", 10 );
-            if ( confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
+            if ( g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
                 BlErrorDialog ( _( "Error al hacer la consulta con la base de datos." ) + QString("\n:: ") + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
@@ -522,14 +522,14 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
 {
     _depura ( "BlPostgreSqlClient::inicializa", 0, nomdb );
     m_pgDbName = nomdb;
-    m_pgHost = confpr->valor ( CONF_SERVIDOR ); /// host name of the backend server.
-    m_pgPort = confpr->valor ( CONF_PUERTO ); /// port of the backend server.
+    m_pgHost = g_confpr->valor ( CONF_SERVIDOR ); /// host name of the backend server.
+    m_pgPort = g_confpr->valor ( CONF_PUERTO ); /// port of the backend server.
     m_pgOptions = ""; /// special options to start up the backend server.
     m_pgTty = ""; /// debugging tty for the backend server.
     QString conexion;
 
-    QString user = confpr->valor ( CONF_LOGIN_USER );
-    QString passwd = confpr->valor ( CONF_PASSWORD_USER );
+    QString user = g_confpr->valor ( CONF_LOGIN_USER );
+    QString passwd = g_confpr->valor ( CONF_PASSWORD_USER );
 
     try {
     /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
@@ -550,7 +550,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
     conn = PQconnectdb ( conexion.toAscii().data() );
     if ( PQstatus ( conn ) == CONNECTION_BAD ) {
         _depura ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
-        if ( passwd != "" && confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
+        if ( passwd != "" && g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
             _depura ( PQerrorMessage ( conn ), 2 );
         } else {
             _depura ( PQerrorMessage ( conn ), 0 );
@@ -756,7 +756,7 @@ int BlPostgreSqlClient::runQuery ( QString Query )
     PGresult *result = NULL;
     try {
         /// Prova de control de permisos.
-        if ( confpr->valor ( CONF_PRIVILEGIOS_USUARIO ) != "1" && ( Query.left ( 6 ) == "DELETE" || Query.left ( 6 ) == "UPDATE" || Query.left ( 6 ) == "INSERT" ) )
+        if ( g_confpr->valor ( CONF_PRIVILEGIOS_USUARIO ) != "1" && ( Query.left ( 6 ) == "DELETE" || Query.left ( 6 ) == "UPDATE" || Query.left ( 6 ) == "INSERT" ) )
             throw 42501;
         /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result = PQexec ( conn, ( const char * ) Query.toUtf8() );

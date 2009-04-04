@@ -29,7 +29,7 @@ class BfCompany;
 
 /// Genera un informe utilizando un identificador de cliente.
 /** */
-class BL_EXPORT InformeCliente
+class BF_EXPORT InformeCliente
 {
 private:
     QString m_idcliente;

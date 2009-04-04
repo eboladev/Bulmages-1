@@ -161,8 +161,8 @@ void DiarioPrintView::presentar ( const char *tipus )
     if ( txt | html ) {
         /// Creamos los archivos de salida.
 
-        QString archivo = confpr->valor ( CONF_DIR_USER ) + "diario.txt";
-        QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "diario.html";
+        QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "diario.txt";
+        QString archivohtml = g_confpr->valor ( CONF_DIR_USER ) + "diario.html";
 
 
         QFile filehtml;
@@ -193,7 +193,7 @@ void DiarioPrintView::presentar ( const char *tipus )
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
                 fitxersortidahtml << "    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n";
-                fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"" << confpr->valor ( CONF_PLANTILLA ).toAscii().constData() << "\" TYPE=\"text/css\" MEDIA=screen>\n";
+                fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"" << g_confpr->valor ( CONF_PLANTILLA ).toAscii().constData() << "\" TYPE=\"text/css\" MEDIA=screen>\n";
                 fitxersortidahtml << "  <title> Llibre Diari </title>\n";
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
@@ -239,12 +239,12 @@ void DiarioPrintView::presentar ( const char *tipus )
         } // end if
         if ( txt ) {
             /// Presentaci&oacute; txt normal.
-            QString cadaux = confpr->valor ( CONF_EDITOR ) + " diairo.txt";
+            QString cadaux = g_confpr->valor ( CONF_EDITOR ) + " diairo.txt";
             system ( cadaux.toAscii() );
         }
         if ( html ) {
             /// Presentaci&oacute; html normal.
-            QString cadaux = confpr->valor ( CONF_NAVEGADOR ) + " diario.html";
+            QString cadaux = g_confpr->valor ( CONF_NAVEGADOR ) + " diario.html";
             system ( cadaux.toAscii() );
         } // end if
     } // end if
@@ -252,8 +252,8 @@ void DiarioPrintView::presentar ( const char *tipus )
 
     if ( txtapren | htmlapren ) {
 
-        QString archivo = confpr->valor ( CONF_DIR_USER ) + "diario.txt";
-        QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "diario.html";
+        QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "diario.txt";
+        QString archivohtml = g_confpr->valor ( CONF_DIR_USER ) + "diario.html";
 
 
         QFile filehtml;
@@ -356,12 +356,12 @@ void DiarioPrintView::presentar ( const char *tipus )
             } // end if
             if ( txtapren ) {
                 /// Presentaci&oacute;n txt formato aprendizaje.
-                QString cadaux = confpr->valor ( CONF_EDITOR ) + " diario.txt";
+                QString cadaux = g_confpr->valor ( CONF_EDITOR ) + " diario.txt";
                 system ( cadaux.toAscii() );
             } // end if
             if ( htmlapren ) {
                 /// Presentaci&oacute;n html formato aprendizaje.
-                QString cadaux = confpr->valor ( CONF_NAVEGADOR ) + " diario.txt";
+                QString cadaux = g_confpr->valor ( CONF_NAVEGADOR ) + " diario.txt";
                 system ( cadaux.toAscii() );
             } // end if
         } // end if

@@ -41,7 +41,7 @@ int entryPoint ( QApplication * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_subform2ods", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbl_subform2ods", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
     return 0;
@@ -102,7 +102,7 @@ void myplugsubformods::sacaods()
 {
     _depura ( "myplugsubformods::sacaods", 0 );
 
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
     BlSubForm * subf = ( BlSubForm * ) parent();
 
 
@@ -213,7 +213,7 @@ void myplugsubformods::sacaods()
 
     fitxersortidatxt += "doc.save(\"listadoods.ods\")\n";
 
-    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
+    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -226,9 +226,9 @@ void myplugsubformods::sacaods()
         file.close();
     } // end if
 
-    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
+    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
     _depura ( "END myplugsubformods::sacaods", 0 );

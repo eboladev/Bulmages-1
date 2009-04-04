@@ -33,7 +33,7 @@
 class company;
 
 
-class BL_EXPORT BusquedaArticuloDelegate : public BlComboBox
+class BF_EXPORT BusquedaArticuloDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -60,7 +60,7 @@ public slots:
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BL_EXPORT BusquedaArticulo : public BlSearchWidget
+class BF_EXPORT BusquedaArticulo : public BlSearchWidget
 {
     Q_OBJECT
 

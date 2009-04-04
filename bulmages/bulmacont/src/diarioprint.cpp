@@ -129,7 +129,7 @@ void DiarioPrint::accept()
     } // end if
 
     /// Hacemos la llamada de sistema para imprimir.
-    QString cadaux = confpr->valor ( CONF_EDITOR ) + " diario.txt";
+    QString cadaux = g_confpr->valor ( CONF_EDITOR ) + " diario.txt";
     system ( cadaux.toAscii().constData() );
     _depura ( "END DiarioPrint::accept", 0 );
 }

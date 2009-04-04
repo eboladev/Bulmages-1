@@ -50,7 +50,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbusquedaarticulo", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbusquedaarticulo", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_emp = tpv->empresaTPV();
 

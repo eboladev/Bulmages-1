@@ -49,7 +49,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginadocumental", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginadocumental", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     QPixmap *img = new QPixmap ( napuntedoc );
     QPixmap *img1 = new QPixmap ( ndoc );

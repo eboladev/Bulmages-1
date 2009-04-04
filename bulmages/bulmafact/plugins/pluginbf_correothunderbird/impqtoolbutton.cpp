@@ -101,10 +101,10 @@ void EmailThunderbirdQToolButton::click()
         if (m_presupuestoView->generaRML()) {
 		generaPDF ( "presupuesto" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "thunderbird -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
+		cad = "thunderbird -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
 	
 		system ( cad.toAscii().data() );
 	} // end if
@@ -125,10 +125,10 @@ void EmailThunderbirdQToolButton::click()
         if (m_pedidoClienteView->generaRML()) {
 		generaPDF ( "pedidocliente" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "thunderbird -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
+		cad = "thunderbird -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
 	
 		system ( cad.toAscii().data() );
 	} // end if
@@ -149,10 +149,10 @@ void EmailThunderbirdQToolButton::click()
         if (m_albaranClienteView->generaRML()) {
 		generaPDF ( "albaran" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "thunderbird -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
+		cad = "thunderbird -compose to='" + email + "',subject='Albaran " + num + "',body='Adjunto remito albaran numero " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
 	
 		system ( cad.toAscii().data() );
 	} // end if
@@ -175,10 +175,10 @@ void EmailThunderbirdQToolButton::click()
         if(m_facturaView->generaRML()) {
 		generaPDF ( "factura" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "thunderbird -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente:\n\nAdjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\nSin otro particular reciba un cordial saludo.\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
+		cad = "thunderbird -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente:\n\nAdjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\nSin otro particular reciba un cordial saludo.\n',attachment='file://" + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
 	
 		system ( cad.toAscii().data() );
 	} // end if

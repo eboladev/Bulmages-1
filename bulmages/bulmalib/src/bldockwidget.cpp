@@ -107,7 +107,7 @@ void BlDockWidget::cargaconf()
 {
     /// Si existe el archivo de configuracion lo cargamos y configuramos el aspecto del widget.
 // ============================
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
     QString line;
     if ( file.open ( QIODevice::ReadOnly ) ) {
         QTextStream stream ( &file );
@@ -142,7 +142,7 @@ void BlDockWidget::guardaconf()
     int lheight = height();
 
     QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );

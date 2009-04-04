@@ -72,7 +72,7 @@ void CatalogoQToolButton::setBoton()
     setStatusTip ( "Imprimir Catalogo" );
     setToolTip ( "Imprimir Catalogo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END CatalogoQToolButton::setBoton", 0 );
 }
@@ -87,9 +87,9 @@ void CatalogoQToolButton::click()
 
     setMainCompany ( m_articuloList->mainCompany() );
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "articulos.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "articulos.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "articulos.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "articulos.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -103,10 +103,10 @@ void CatalogoQToolButton::click()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -154,11 +154,11 @@ QString CatalogoQToolButton::detalleArticulos()
         texto += "<tr>\n";
         texto += "<td><para><H1>" + XMLProtect ( cur->valor ( "nomarticulo" ) ) + "</H1></para>";
         texto += "<para>" + XMLProtect ( cur->valor ( "obserarticulo" ) ) + "</para></td></tr><tr>\n";
-        QString file = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) + ".jpg";
+        QString file = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) + ".jpg";
         QFile f ( file );
         if ( f.exists() ) {
             texto += "<td><!-- illustration x=\"0\" y=\"0\" height=\"5cm\" -->\n"
-                     "<image file=\"" + confpr->valor ( CONF_DIR_IMG_ARTICLES ) +
+                     "<image file=\"" + g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) +
                      XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) +
                      ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                      "<!-- /illustration --></td>\n";

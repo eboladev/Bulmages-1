@@ -34,7 +34,7 @@ class company;
 /// Permite buscar y seleccionar un tipo de art&iacute;culo.
 /** Este Widget permite buscar y seleccionar un
     tipo de art&iacute;culo. */
-class BL_EXPORT BusquedaTipoArticulo : public BlSearchWidget
+class BF_EXPORT BusquedaTipoArticulo : public BlSearchWidget
 {
     Q_OBJECT
 

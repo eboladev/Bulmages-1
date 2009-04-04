@@ -58,8 +58,8 @@ private:
     QString mdb_idfacturap;
 
 public:
-    FacturasProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode  );
-    FacturasProveedorList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode  );
+    FacturasProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE  );
+    FacturasProveedorList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE  );
     ~FacturasProveedorList();
     QString idfacturap();
     QString generaFiltro();

@@ -70,12 +70,6 @@ class ContratosList : public BlFormList, public Ui_ContratosListBase, public BlI
 {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0,
-        SelectMode = 1
-    };
-
 private:
     /// Indica si la pantalla esta en modo edicion o en modo seleccion.
     edmode m_modo;
@@ -87,7 +81,7 @@ private:
     QString mdb_refcontrato;
 
 public:
-    ContratosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    ContratosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~ContratosList();
     void selectMode();
     void editMode();

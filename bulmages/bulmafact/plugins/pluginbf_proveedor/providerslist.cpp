@@ -213,7 +213,7 @@ void ProveedorList::on_mui_exportar_clicked()
 {
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _( "Seleccione el archivo" ),
-                    confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->valor ( CONF_DIR_USER ),
                     _( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
@@ -231,7 +231,7 @@ void ProveedorList::on_mui_importar_clicked()
 {
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _( "Elija el archivo" ),
-                    confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->valor ( CONF_DIR_USER ),
                     _( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {

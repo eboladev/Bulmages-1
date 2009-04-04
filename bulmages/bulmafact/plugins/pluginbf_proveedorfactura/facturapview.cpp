@@ -293,9 +293,9 @@ void FacturaProveedorView::imprimirFacturaProveedor()
 
     base basesimp;
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "facturap.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "facturap.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "facturap.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "facturap.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -311,10 +311,10 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );

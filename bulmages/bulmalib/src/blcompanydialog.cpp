@@ -301,7 +301,7 @@ void BlCompanyDialog::mui_empresasdobleclick()
 void BlCompanyDialog::cargaArchivo()
 {
     _depura ( "BlCompanyDialog::cargaArchivo", 0 );
-    QString dir1 = confpr->valor ( CONF_DIR_USER ) + LISTEMPRESAS;
+    QString dir1 = g_confpr->valor ( CONF_DIR_USER ) + LISTEMPRESAS;
 
     /// Si el archivo no existe hacemos una recarga.
     _depura ( "Vamos a comprobar la existencia", 1 );
@@ -364,8 +364,8 @@ void BlCompanyDialog::guardaArchivo()
 
     /// Deshabilitamos las alertas para que no aparezcan avisos con bases de datos
     /// que no son del sistema.
-    QString alertas = confpr->valor ( CONF_ALERTAS_DB );
-    confpr->setValor ( CONF_ALERTAS_DB, "No" );
+    QString alertas = g_confpr->valor ( CONF_ALERTAS_DB );
+    g_confpr->setValor ( CONF_ALERTAS_DB, "No" );
     /// Nos conectamos a la base de datos 'template1' para obtener un listado de todas
     /// las bases de datos existentes.
     BlPostgreSqlClient *db;
@@ -386,7 +386,7 @@ void BlCompanyDialog::guardaArchivo()
     } // end while
     delete curs;
     delete db;
-    confpr->setValor ( CONF_ALERTAS_DB, alertas );
+    g_confpr->setValor ( CONF_ALERTAS_DB, alertas );
     file.close();
     _depura ( "END BlCompanyDialog::guardaArchivo", 0 );
 }

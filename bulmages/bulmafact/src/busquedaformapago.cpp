@@ -70,7 +70,7 @@ void BusquedaFormaPago::setId ( QString idforma_pago )
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if (idforma_pago.isEmpty() || idforma_pago == "0") {
-	idforma_pago = confpr->valor(CONF_IDFORMA_PAGO_DEFECTO);
+	idforma_pago = g_confpr->valor(CONF_IDFORMA_PAGO_DEFECTO);
     } // end if
 
     if ( m_comboRecordSet != NULL ) {

@@ -387,7 +387,7 @@ void AlbaranClienteView::agregarFactura()
     diag->setModal ( true );
 
     /// \TODO: Debe pasar por company la creacion del listado
-    FacturasList *fac = new FacturasList ( mainCompany(), diag, 0, FacturasList::SelectMode );
+    FacturasList *fac = new FacturasList ( mainCompany(), diag, 0, BL_SELECT_MODE );
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.

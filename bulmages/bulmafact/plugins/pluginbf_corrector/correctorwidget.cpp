@@ -79,7 +79,7 @@ void correctorwidget::on_mui_corregir_clicked()
     QString query = "SELECT * from factura WHERE reffactura NOT IN (SELECT refalbaran FROM albaran)";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( ! cur->eof() ) {
-        cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La factura num. <B>" + cur->valor ( "numfactura" ) + "</B> No esta avalada por ningun albaran, esto puede ser causa de descontrol en el stock.";
+        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La factura num. <B>" + cur->valor ( "numfactura" ) + "</B> No esta avalada por ningun albaran, esto puede ser causa de descontrol en el stock.";
         agregarError ( cadena, "factura", "idfactura=" + cur->valor ( "idfactura" ) );
         cur->nextRecord();
     } // end while
@@ -88,7 +88,7 @@ void correctorwidget::on_mui_corregir_clicked()
     query = "SELECT * from cliente WHERE length(cifcliente) < 6";
     cur = mainCompany() ->loadQuery ( query );
     while ( ! cur->eof() ) {
-	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> no tiene CIF.";
+	  cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> no tiene CIF.";
 	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
         cur->nextRecord();
     } // end while
@@ -97,7 +97,7 @@ void correctorwidget::on_mui_corregir_clicked()
     query = "SELECT * from proveedor WHERE length(cifproveedor) < 6";
     cur = mainCompany() ->loadQuery ( query );
     while ( ! cur->eof() ) {
-	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> no tiene CIF.";
+	  cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> no tiene CIF.";
 	  agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
         cur->nextRecord();
     } // end while
@@ -109,7 +109,7 @@ void correctorwidget::on_mui_corregir_clicked()
     while (! cur->eof() ) {
 	QChar digito;
 	if (! validarCIFNIF(cur->valor("cifcliente"), digito)) {
-	  cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ,"+ cur->valor("cifcliente")+" <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString(digito);
+	  cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ,"+ cur->valor("cifcliente")+" <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString(digito);
 	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
 	} // end if
 	cur->nextRecord();
@@ -121,7 +121,7 @@ void correctorwidget::on_mui_corregir_clicked()
     while (! cur->eof() ) {
 	QChar digito;
 	if (! validarCIFNIF(cur->valor("cifproveedor"), digito)) {
-	    cadena = "<img src='" + confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + ","+cur->valor("cifproveedor")+ "</B> tiene CIF invalido. Digito de Control: " + QString(digito);
+	    cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + ","+cur->valor("cifproveedor")+ "</B> tiene CIF invalido. Digito de Control: " + QString(digito);
 	    agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
 	} // end if
 	cur->nextRecord();

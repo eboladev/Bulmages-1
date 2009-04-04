@@ -35,7 +35,7 @@
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class BL_EXPORT ListConfiguracionSubForm : public BfSubForm
+class BF_EXPORT ListConfiguracionSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -56,7 +56,7 @@ public slots:
 
 /// Muestra y administra el listado de configuraci&oacute;nes.
 /** */
-class BL_EXPORT ListConfiguracionView : public BfForm, public Ui_ListConfiguracionBase
+class BF_EXPORT ListConfiguracionView : public BfForm, public Ui_ListConfiguracionBase
 {
     Q_OBJECT
 

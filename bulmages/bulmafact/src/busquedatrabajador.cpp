@@ -69,7 +69,7 @@ void BusquedaTrabajador::setId ( QString idtrabajador )
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if (idtrabajador.isEmpty() || idtrabajador == "0") {
-		idtrabajador = confpr->valor(CONF_IDTRABAJADOR_DEFECTO);
+		idtrabajador = g_confpr->valor(CONF_IDTRABAJADOR_DEFECTO);
     } // end if
 
     if ( m_comboRecordSet != NULL ) {

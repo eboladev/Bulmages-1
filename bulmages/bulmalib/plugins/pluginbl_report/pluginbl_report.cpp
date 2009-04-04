@@ -83,7 +83,7 @@ int entryPoint ( QMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_report", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbl_report", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_bges = bges;
 
@@ -102,7 +102,7 @@ int entryPoint ( QMainWindow *bges )
     } // end if
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -116,7 +116,7 @@ int entryPoint ( QMainWindow *bges )
         QFileInfo fileInfo = list.at ( i );
 
         QFile file;
-        file.setFileName ( confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();

@@ -40,7 +40,7 @@ private:
     void rellenaListaEjercicio();
 
 public:
-    AsientosView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    AsientosView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~AsientosView();
     void presentar();
     void imprimir();

@@ -70,7 +70,7 @@ void BusquedaAlmacen::setId ( QString idalmacen )
 
 		/// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
 		if (idalmacen.isEmpty() || idalmacen == "0") {
-			idalmacen = confpr->valor(CONF_IDALMACEN_DEFECTO);
+			idalmacen = g_confpr->valor(CONF_IDALMACEN_DEFECTO);
 		} // end if
 
 		/// Si ya esta creado el cursorcombo lo borramos.	

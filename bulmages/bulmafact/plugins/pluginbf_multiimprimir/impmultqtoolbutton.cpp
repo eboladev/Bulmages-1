@@ -135,9 +135,9 @@ void ImpQToolButton::click()
 	
 			generaPDF ( "presupuesto" );
 	
-			QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+			QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
 			system ( cad.toAscii().data() );
-			res += confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+			res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
 		    } // end if
 		    pres->close();
                 } // end if
@@ -173,9 +173,9 @@ void ImpQToolButton::click()
 
                     generaPDF ( "factura" );
 
-                    QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf";
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf";
                     system ( cad.toAscii().data() );
-                    res += confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf ";
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf ";
 		    } // end if
                     pres->close();
                 } // end if
@@ -208,9 +208,9 @@ void ImpQToolButton::click()
 
                     generaPDF ( "pedidocliente" );
 
-                    QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
                     system ( cad.toAscii().data() );
-                    res += confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
 			} // end if
                     pres->close();
                 } // end if
@@ -245,9 +245,9 @@ void ImpQToolButton::click()
 
                     generaPDF ( "albaran" );
 
-                    QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
                     system ( cad.toAscii().data() );
-                    res += confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
 			} // end if
                     pres->close();
                 } // end if
@@ -262,9 +262,9 @@ void ImpQToolButton::click()
             QString txt = "";
 
 
-            QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "recibos.rml";
-            QString archivod = confpr->valor ( CONF_DIR_USER ) + "recibos.rml";
-            QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+            QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "recibos.rml";
+            QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "recibos.rml";
+            QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
             /// Copiamos el archivo.
@@ -280,10 +280,10 @@ void ImpQToolButton::click()
             /// Copiamos el logo
 #ifdef WINDOWS
 
-            archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+            archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-            archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+            archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
             system ( archivologo.toAscii().constData() );
@@ -372,7 +372,7 @@ void ImpQToolButton::click()
 
             buff.replace ( "[story]", txt );
 
-            res = confpr->valor ( CONF_DIR_USER ) + "recibos.pdf ";
+            res = g_confpr->valor ( CONF_DIR_USER ) + "recibos.pdf ";
 
 
             /// En la version para windows hay problemas con las imagenes,
@@ -654,12 +654,12 @@ void EmailQToolButton::click()
 
                 generaPDF ( "presupuesto" );
 
-                QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
                 system ( cad.toAscii().data() );
 
-                cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
+                cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
                 system ( cad.toAscii().data() );
-                res += confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+                res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
 		} // end if
                 pres->close();
             } // end if
@@ -698,12 +698,12 @@ void EmailQToolButton::click()
 
                 generaPDF ( "pedidocliente" );
 
-                QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
                 system ( cad.toAscii().data() );
 
-                cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
+                cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
                 system ( cad.toAscii().data() );
-                res += confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+                res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
 		} // end if
                 pres->close();
             } // end if
@@ -742,12 +742,12 @@ void EmailQToolButton::click()
 
                 generaPDF ( "albaran" );
 
-                QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
                 system ( cad.toAscii().data() );
 
-                cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
+                cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
                 system ( cad.toAscii().data() );
-                res += confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+                res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
 		} // end if
                 pres->close();
             } // end if
@@ -792,18 +792,18 @@ void EmailQToolButton::click()
 
                 generaPDF ( "factura" );
 
-                QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
                 system ( cad.toAscii().data() );
 
 
                 cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
                 cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
                 cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
-                cad += " --attach " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
+                cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
 				
                 system ( cad.toAscii().data() );
 
-                res += confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
+                res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
 		} // end if
                 pres->close();
             } // end if
@@ -834,17 +834,17 @@ void EmailQToolButton::click()
 
                 generaPDF ( "recibo" );
 
-                QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
+                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
                 system ( cad.toAscii().data() );
 
 
                 cad = "kmail -s \"Recibo " + fecha + ref + "\" --body \"Estimado cliente,\n\n";
                 cad += "Adjunto le enviamos el recibo numero " + fecha + ref + " con fecha " + fecha + "\n";
                 cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
-                cad += " --attach " + confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf " + email;
+                cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf " + email;
                 system ( cad.toAscii().data() );
 
-                res += confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf ";
+                res += g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf ";
                 delete pres;
             } // end if
         } // end for

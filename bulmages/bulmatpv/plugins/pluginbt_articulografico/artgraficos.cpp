@@ -40,7 +40,7 @@ ArtGraficos::~ArtGraficos()
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
-    QString artvarios = confpr->valor(CONF_ARTICULOS_VARIOS);
+    QString artvarios = g_confpr->valor(CONF_ARTICULOS_VARIOS);
     QString codigo = m_articulos[row][column];
     if (! artvarios.contains(codigo)) {
 	    ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
@@ -123,17 +123,17 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                 /// El escalado lateral tambien tarda demasiado
 //                lab->setPixmap(QPixmap("/var/bulmages/articles/"+text+".jpg").scaledToWidth(cellwidth.toInt()));
                 /// Ponemos las imagenes sin escalado.
-//                lab->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
+//                lab->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
 
 // Probamos con una Picture 
          QPicture picture; 
          QPainter painter;
          painter.begin(&picture);           // paint in picture
-//	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+//	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
-	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ));
+	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ));
 
-	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt()-25,QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt()-25,QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
 //         painter.drawEllipse(10,20, 80,70); // draw an ellipse
 	 painter.setPen(QColor(0,0,0));

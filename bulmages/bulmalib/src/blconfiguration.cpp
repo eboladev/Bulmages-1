@@ -41,7 +41,13 @@
 
 /// El objeto global confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
-BlConfiguration *confpr;
+BlConfiguration BL_EXPORT *g_confpr = NULL;
+
+
+
+void initConfiguration(QString config) {
+  g_confpr = new BlConfiguration(config);
+}
 
 /// Constructor de la clase que hace directamente la lectura de los posibles
 /// archivos que pueden tener informacion de configuracion. Como parametro

@@ -31,7 +31,7 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes de un proveedor.
 /** */
-class BL_EXPORT ListLinAlbaranProveedorView : public BfSubForm
+class BF_EXPORT ListLinAlbaranProveedorView : public BfSubForm
 {
     Q_OBJECT
 

@@ -105,7 +105,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_formasdepago", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_formasdepago", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     MyPlugFPago *plug = new MyPlugFPago();
     plug->inicializa ( bges );

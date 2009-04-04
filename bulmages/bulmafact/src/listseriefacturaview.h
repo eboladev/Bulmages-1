@@ -39,7 +39,7 @@ class BfCompany;
 
 /// Administra el detalle del listado de series de factura.
 /** */
-class BL_EXPORT ListSerieFacturaSubForm : public BfSubForm
+class BF_EXPORT ListSerieFacturaSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -60,7 +60,7 @@ public slots:
 
 /// Muestra y administra la ventana con la lista de series de facturas.
 /** */
-class BL_EXPORT ListSerieFacturaView : public BfForm, public Ui_ListSerieFacturaBase
+class BF_EXPORT ListSerieFacturaView : public BfForm, public Ui_ListSerieFacturaBase
 {
     Q_OBJECT
 

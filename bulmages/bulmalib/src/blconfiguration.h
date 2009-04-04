@@ -270,9 +270,8 @@ public:
 /// ATENCION.- Este es un objeto global, y va a existir durante toda la aplicacion asi que
 /// Se va a llamar muy a menudo a este objeto en los demas archivos.
 /// Existe una instancia del objeto global confpr.
-extern BL_EXPORT BlConfiguration *confpr;
-/// Existe una instancia del objeto global g_theApp.
-
+extern BL_EXPORT BlConfiguration *g_confpr;
+void BL_EXPORT initConfiguration(QString );
 
 #endif
 

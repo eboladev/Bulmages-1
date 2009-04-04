@@ -57,8 +57,8 @@ private:
     QString mdb_idrecibo;
 
 public:
-    RecibosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    RecibosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    RecibosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    RecibosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~RecibosList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

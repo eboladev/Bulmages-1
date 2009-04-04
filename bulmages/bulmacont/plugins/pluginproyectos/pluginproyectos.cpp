@@ -55,7 +55,7 @@ void mytiptrab::elslot()
 {
     _depura ( "mytiptrab::elslot", 0 );
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BlFormList::EditMode );
+    ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BlFormList::BL_EDIT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
 //    m_bulmacont->empresaactual()->meteWindow(l);
     m_bulmacont->workspace() ->addWindow ( l );
@@ -92,7 +92,7 @@ int entryPoint ( Bulmacont *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginproyectos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginproyectos", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     mytiptrab *plug = new mytiptrab();
     plug->inicializa ( bges );
@@ -109,7 +109,7 @@ int ccosteview_ccosteview ( ccosteview *ccoste )
     _depura ( "ccosteview_ccosteview", 0 );
 
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BlFormList::SelectMode );
+    ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
     l->mui_actualizar->setDisabled ( TRUE );
 //    l->setModoEdicion();

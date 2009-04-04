@@ -126,7 +126,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_proveedorfactura", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_proveedorfactura", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     mypluginfactp *plug = new mypluginfactp();
     plug->inicializa ( bges );
@@ -146,7 +146,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
-	FacturasProveedorList *facturasProveedorList = new FacturasProveedorList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
+	FacturasProveedorList *facturasProveedorList = new FacturasProveedorList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
 	facturasProveedorList->setModoEdicion();
 	facturasProveedorList->setObjectName("listpagosproveedor");
 	facturasProveedorList->hideBusqueda();

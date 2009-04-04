@@ -25,6 +25,7 @@
 #include <QLineEdit>
 
 #include "blfunctions.h"
+#include "blmaincompanypointer.h"
 #include "blwidget.h"
 #include "ui_bldatesearchbase.h"
 

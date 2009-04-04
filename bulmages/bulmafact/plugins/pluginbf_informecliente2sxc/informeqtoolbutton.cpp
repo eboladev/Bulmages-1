@@ -71,7 +71,7 @@ void InformeQToolButton::setBoton()
     setStatusTip ( "Informe en Hoja de Calculo" );
     setToolTip ( "Informe en Hoja de Calculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeQToolButton::setBoton", 0 );
 }
@@ -96,15 +96,15 @@ void InformeQToolButton::click()
                                           _( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.perl";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.perl";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
     /// Copiamos el logo.
 #ifdef WINDOWS
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
 
@@ -223,7 +223,7 @@ void InformeQToolButton::click()
     fitxersortidatxt += "exit;\n";
 
 
-    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.sxc";
+    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.sxc";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -235,9 +235,9 @@ void InformeQToolButton::click()
         file.close();
     } // end if
 
-    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
     system ( cadena.toAscii() );
-    cadena = "kspread " + confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.sxc &";
+    cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.sxc &";
     system ( cadena.toAscii() );
 
     _depura ( "END InformeQToolButton::click", 0 );
@@ -325,7 +325,7 @@ void InformeProveedorQToolButton::setBoton()
     setStatusTip ( "Informe en Hoja de Calculo" );
     setToolTip ( "Informe en Hoja de Calculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeProveedorQToolButton::setBoton", 0 );
 }
@@ -350,15 +350,15 @@ void InformeProveedorQToolButton::click()
                                           _( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.perl";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.perl";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
     /// Copiamos el logo.
 #ifdef WINDOWS
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
 
@@ -475,7 +475,7 @@ void InformeProveedorQToolButton::click()
     fitxersortidatxt += "exit;\n";
 
 
-    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.sxc";
+    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.sxc";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -487,9 +487,9 @@ void InformeProveedorQToolButton::click()
         file.close();
     } // end if
 
-    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
     system ( cadena.toAscii() );
-    cadena = "kspread " + confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
+    cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
     system ( cadena.toAscii() );
 
     _depura ( "END InformeProveedorQToolButton::click", 0 );

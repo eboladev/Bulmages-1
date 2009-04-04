@@ -148,7 +148,7 @@ void Abrevs::on_mui_cliente_clicked()
     if ( !cur->eof() ) {
         emp->ticketActual() ->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
     } else {
-        emp->ticketActual() ->setDbValue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
+        emp->ticketActual() ->setDbValue ( "idcliente", g_confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
     } // end if
     delete cur;
     emp->ticketActual() ->pintar();

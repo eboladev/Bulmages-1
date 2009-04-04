@@ -25,13 +25,33 @@
 
 #ifdef WIN32
 
+#ifdef BL_BULMALIB
 #define BL_EXPORT __declspec(dllexport)
+#else
+#define BL_EXPORT __declspec(dllimport)
+#endif
+
+#ifdef BF_BULMAFACT
+#define BF_EXPORT __declspec(dllexport)
+#else
+#define BF_EXPORT __declspec(dllimport)
+#endif
+
 
 #else
 
 #define BL_EXPORT
-
-
-#endif
+#define BF_EXPORT
 
 #endif
+
+
+#define BL_EDIT_MODE   0
+#define BL_SELECT_MODE 1
+
+
+typedef unsigned int edmode;
+#endif
+
+
+

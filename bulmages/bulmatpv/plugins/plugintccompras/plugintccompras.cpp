@@ -78,7 +78,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("plugintccompras", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("plugintccompras", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
 /*
     g_doc1 = new BlDockWidget ( "Articulo", tpv, "articulodock" );

@@ -183,7 +183,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
-    AlbaranClienteList *fac = new AlbaranClienteList ( mainCompany(), diag, 0, AlbaranClienteList::SelectMode );
+    AlbaranClienteList *fac = new AlbaranClienteList ( mainCompany(), diag, 0, BL_SELECT_MODE );
     connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.

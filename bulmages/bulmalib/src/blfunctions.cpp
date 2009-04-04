@@ -321,15 +321,15 @@ void reemplazaarchivo ( QString archivo, QString texto1, QString texto2, QString
 void generaPDF ( const QString arch )
 {
     _depura ( "generaPDF " + arch, 0 );
-    QDir::setCurrent ( confpr->valor ( CONF_DIR_USER ) );
+    QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
 #ifdef WINDOWS
 
-    cadsys = confpr->valor ( CONF_PYTHON ) + " " + confpr->valor ( CONF_PROGDATA ) + "trml2pdf\\bgtrml2pdf " + arch + ".rml > " + confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
+    cadsys = g_confpr->valor ( CONF_PYTHON ) + " " + g_confpr->valor ( CONF_PROGDATA ) + "trml2pdf\\bgtrml2pdf " + arch + ".rml > " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
     system ( cadsys.toAscii() );
     _depura ( cadsys, 0 );
-    cadsys = confpr->valor ( CONF_FLIP ) + " -u " + confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
+    cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
     system ( cadsys.toAscii().data() );
     _depura ( cadsys, 0 );
 #else
@@ -342,13 +342,13 @@ void generaPDF ( const QString arch )
 /// Genera un ODS a partir de un pys sin abrirlo.
 void generaPYS ( const QString arch ) {
     _depura ( "generaPYS " + arch, 0 );
-    QDir::setCurrent ( confpr->valor ( CONF_DIR_USER ) );
+    QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
-    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
+    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
     system ( cadena.toAscii() );
 
-    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
+    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
     system ( cadena.toAscii() );
 
 }
@@ -357,7 +357,7 @@ void generaPYS ( const QString arch ) {
 /// Genera un ODS a partir de un pys usand python. y ademas lo muestra.
 void invocaPYS (const QString arch) {
     generaPYS (arch);
-    QString cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
+    QString cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
     system ( cadena.toAscii() );
 
 }
@@ -368,7 +368,7 @@ void invocaPYS (const QString arch) {
 void invocaPDF ( const QString arch )
 {
     generaPDF ( arch );
-    QString cadsys = confpr->valor ( CONF_PDF ) + " " + confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
+    QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
     system ( cadsys.toAscii().data() );
 }
 
@@ -415,12 +415,12 @@ QString windowID ( const QString &app )
 
 
 void _debugOn () {
-    confpr->setValor ( CONF_DEBUG, "TRUE" );
+    g_confpr->setValor ( CONF_DEBUG, "TRUE" );
 }
 
 
 void _debugOff () {
-    confpr->setValor ( CONF_DEBUG, "FALSE" );
+    g_confpr->setValor ( CONF_DEBUG, "FALSE" );
 }
 
 
@@ -435,18 +435,18 @@ void _debugOff () {
 void _depura ( const QString &cad, int nivel, const QString &param )
 {
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
-    if ( confpr == NULL ) {
+    if ( g_confpr == NULL ) {
         return;
     } // end if
 
     static bool semaforo = 0;
 
 
-    if ( confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
-        static QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmagesout.txt" );
+    if ( g_confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
+        static QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmagesout.txt" );
         static QTextStream out ( &file );
 
-        static QFile filexml ( confpr->valor ( CONF_DIR_USER ) + "bulmagesout.xml" );
+        static QFile filexml ( g_confpr->valor ( CONF_DIR_USER ) + "bulmagesout.xml" );
         static QTextStream outxml ( &filexml );
 
         static int auxxml = 0;

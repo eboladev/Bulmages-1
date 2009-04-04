@@ -57,8 +57,8 @@ private:
     QString mdb_idactividad;
 
 public:
-    ActividadesList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    ActividadesList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    ActividadesList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ActividadesList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~ActividadesList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

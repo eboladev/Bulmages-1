@@ -78,7 +78,7 @@ void myplugin4::inicializa ( Bulmacont *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbalancetree", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbalancetree", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -118,7 +118,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbalancetree", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbalancetree", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );

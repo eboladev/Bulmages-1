@@ -32,7 +32,7 @@
 /** Es invocada desde el menu About y presenta la licencia, autores y entidades
     que dan soporte al programa.
     */
-class BL_EXPORT AboutView : public QDialog, private Ui::aboutdlg
+class BF_EXPORT AboutView : public QDialog, private Ui::aboutdlg
 {
     Q_OBJECT
 

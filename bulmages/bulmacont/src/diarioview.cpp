@@ -160,7 +160,7 @@ void DiarioView::boton_guardar()
     _depura ( "DiarioView::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  _( "Guardar Libro Diario" ),
-                 confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->valor ( CONF_DIR_USER ),
                  _( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {

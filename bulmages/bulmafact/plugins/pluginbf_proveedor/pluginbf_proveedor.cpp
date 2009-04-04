@@ -126,7 +126,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_proveedor", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_proveedor", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     MyPlugPro *plug = new MyPlugPro();
     plug->inicializa ( bges );
@@ -153,7 +153,7 @@ int Busqueda_on_mui_buscar_clicked(BlSearchWidget *busq) {
     diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
     centrarEnPantalla ( diag );
 
-    ProveedorList *clients = new ProveedorList ( ( BfCompany * ) busq->mainCompany(), diag, 0, ProveedorList::SelectMode );
+    ProveedorList *clients = new ProveedorList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
     busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

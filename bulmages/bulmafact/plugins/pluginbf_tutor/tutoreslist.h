@@ -57,8 +57,8 @@ private:
     QString mdb_idcliente;
 
 public:
-    TutoresList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    TutoresList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    TutoresList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    TutoresList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~TutoresList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

@@ -35,10 +35,10 @@
 
 
 // Necesito exportar algunos datos.
-QModelIndex g_index;
-QWidget *g_editor;
-QAbstractItemModel *g_model;
-QString g_nomcampo;
+QModelIndex BL_EXPORT g_index;
+QWidget BL_EXPORT *g_editor;
+QAbstractItemModel BL_EXPORT *g_model;
+QString BL_EXPORT g_nomcampo;
 
 
 /// Construye una columna de la descripcion del recordset
@@ -154,7 +154,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     setupUi ( this );
 
     /// Por defecto es modo edicion
-    m_modo = EditMode;
+    m_modo = BL_EDIT_MODE;
 
     /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
     /// Se inicializan con -1 para considerar que no hay celda previa.
@@ -284,7 +284,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::cargaSpecs()
 {
     _depura ( "BlSubForm::cargaSpecs", 0 );
-//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
+//    QFile file(g_confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -1986,7 +1986,7 @@ void BlSubForm::guardaconfig()
       return;
 
     QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -2032,7 +2032,7 @@ void BlSubForm::guardaconfig()
 void BlSubForm::cargaconfig()
 {
     _depura ( "BlSubForm::cargaconfig", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {
@@ -2426,9 +2426,9 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     _depura ( "BlSubForm::imprimir", 0 );
 
     /// Los listados siempre usan la misma plantilla para imprimir listado.
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "listado.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -2442,10 +2442,10 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii() );
@@ -2679,7 +2679,7 @@ void BlSubForm::pressedSlash ( int, int, BlDbSubFormRecord *, BlDbSubFormField *
 void BlSubForm::setModoConsulta()
 {
     _depura ( "BlSubForm::setModoConsulta", 0 );
-    m_modo = SelectMode;
+    m_modo = BL_SELECT_MODE;
     _depura ( "END BlSubForm::setModoConsulta", 0 );
 
 }
@@ -2691,7 +2691,7 @@ void BlSubForm::setModoConsulta()
 void BlSubForm::setModoEdicion()
 {
     _depura ( "BlSubForm::setModoEdicion", 0 );
-    m_modo = EditMode;
+    m_modo = BL_EDIT_MODE;
     _depura ( "END BlSubForm::setModoEdicion", 0 );
 }
 
@@ -2704,7 +2704,7 @@ bool BlSubForm::modoEdicion()
 {
     _depura ( "BlSubForm::modoEdicion", 0 );
     _depura ( "END BlSubForm::modoEdicion", 0 );
-    return m_modo == EditMode;
+    return m_modo == BL_EDIT_MODE;
 }
 
 
@@ -2716,7 +2716,7 @@ bool BlSubForm::modoConsulta()
 {
     _depura ( "BlSubForm::modoConsulta", 0 );
     _depura ( "END BlSubForm::modoConsulta", 0 );
-    return m_modo == SelectMode;
+    return m_modo == BL_SELECT_MODE;
 }
 
 

@@ -73,7 +73,7 @@ void InformeQToolButton::setBoton()
     setStatusTip ( "Imprimir Catalogo" );
     setToolTip ( "Imprimir Catalogo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon (  confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
+    setIcon ( QIcon (  g_confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeQToolButton::setBoton", 0 );
 }
@@ -88,9 +88,9 @@ void InformeQToolButton::click()
     // Puede que no se haya actualizado bien el company
     setMainCompany ( m_clientsList->mainCompany() );
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "informeclientes.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informeclientes.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "informeclientes.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeclientes.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -106,10 +106,10 @@ void InformeQToolButton::click()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
@@ -385,7 +385,7 @@ void InformeArtQToolButton::setBoton()
     setStatusTip ( "Imprimir Informe Resumen" );
     setToolTip ( "Imprimir Informe Resumen" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeArtQToolButton::setBoton", 0 );
 }
@@ -400,9 +400,9 @@ void InformeArtQToolButton::click()
     // Puede que no se haya actualizado bien el company
     setMainCompany ( m_articuloList->mainCompany() );
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "informearticulos.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informearticulos.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "informearticulos.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informearticulos.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -418,10 +418,10 @@ void InformeArtQToolButton::click()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;

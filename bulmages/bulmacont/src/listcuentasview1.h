@@ -41,12 +41,6 @@ class listcuentasview1 : public BcForm, public Ui_ListCuentasBase, public BlImpo
 {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0,
-        SelectMode = 1
-    };
-
 private:
     int ccuenta, cdesccuenta;
     int cidcuenta, cbloqueada, cnodebe, cnohaber, cregularizacion, cimputacion, ctipocuenta;
@@ -74,7 +68,7 @@ public:
     void imprimir();
 
 public:
-    listcuentasview1 ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    listcuentasview1 ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~listcuentasview1();
     int inicializa();
     virtual void on_mui_borrar_clicked();

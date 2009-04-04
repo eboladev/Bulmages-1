@@ -242,7 +242,7 @@ void extractoview1::boton_guardar()
     _depura ( "extractoview1::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  _( "Guardar libro diario" ),
-                 confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->valor ( CONF_DIR_USER ),
                  _( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -502,7 +502,7 @@ void extractoview1::on_mui_guardarpunteo_clicked()
     _depura ( "extractoview1::on_mui_guardarpunteo_clicked", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  _( "Guardar punteo" ),
-                 confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->valor ( CONF_DIR_USER ),
                  _( "Punteos (*.pto)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -568,7 +568,7 @@ void extractoview1::on_mui_cargarpunteos_clicked()
     try {
         QString fn = QFileDialog::getOpenFileName ( this,
                      _( "Cargar punteo" ),
-                     confpr->valor ( CONF_DIR_USER ),
+                     g_confpr->valor ( CONF_DIR_USER ),
                      _( "Punteo (*.pto);;Todos los archivos (*)" ) );
 
         if ( !fn.isEmpty() ) {
@@ -792,9 +792,9 @@ void extractoview1::on_mui_imprimir_clicked()
     _depura ( "extractoview1::on_mui_imprimir_clicked", 0 );
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "extracto.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "extracto.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -808,10 +808,10 @@ void extractoview1::on_mui_imprimir_clicked()
     /// Copiamos el logo
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );

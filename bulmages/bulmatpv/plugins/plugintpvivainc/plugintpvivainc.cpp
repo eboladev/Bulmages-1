@@ -181,13 +181,13 @@ int Ticket_imprimir(Ticket *tick)
         totales[linea->dbValue ( "ivalalbaran" ) ] = totales[linea->dbValue ( "ivalalbaran" ) ] + totlinea;
     } // end for
 
-    EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    EscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( center );
 
-    if ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-        pr.printImage ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
     } // end if
     pr.printText ( empresa.nombre + "\n" );
     pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
@@ -288,7 +288,7 @@ int BtCompany_z(BtCompany * emp)
 {
 
     emp->begin();
-    QString query = "INSERT INTO z (idalmacen) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";
+    QString query = "INSERT INTO z (idalmacen) VALUES(" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";
     emp->runQuery ( query );
     query = "SELECT max(idz) AS id FROM z";
     BlDbRecordSet *cur = emp->loadQuery ( query );
@@ -306,14 +306,14 @@ int BtCompany_z(BtCompany * emp)
     emp->commit();
     delete cur;
 
-    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
     BlDbRecordSet *cur1 = emp->loadQuery ( querycont );
     QString numticketscont = cur1->valor ( "numtickets" );
     QString totalcont = cur1->valor ( "total" );
     if ( totalcont == "" ) totalcont = "0";
     delete cur1;
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ g_confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
     BlDbRecordSet *cur2 = emp->loadQuery ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -323,7 +323,7 @@ int BtCompany_z(BtCompany * emp)
 
 // ========================================
 
-    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
         return -1;
@@ -384,7 +384,7 @@ int BtCompany_z(BtCompany * emp)
     file.write ( "\n", 1 );
 
     /// Imprimimos el almacen
-    cur = emp->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    cur = emp->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
     if ( !cur->eof() ) {
         file.write ( QString ( "Almacen: " ).toAscii() );
         file.write ( cur->valor ( "nomalmacen" ).toAscii() );
@@ -510,7 +510,7 @@ int BtCompany_x(BtCompany *emp)
     if ( total == "" ) total = "0";
     delete cur;
 
-    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
     BlDbRecordSet *cur1 = emp->loadQuery ( querycont );
     QString numticketscont = cur1->valor ( "numtickets" );
     QString totalcont = cur1->valor ( "total" );
@@ -518,7 +518,7 @@ int BtCompany_x(BtCompany *emp)
     delete cur1;
 
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ g_confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
     BlDbRecordSet *cur2 = emp->loadQuery ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -529,7 +529,7 @@ int BtCompany_x(BtCompany *emp)
 
 // ========================================
 
-    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
         return -1;
@@ -590,7 +590,7 @@ int BtCompany_x(BtCompany *emp)
     file.write ( "\n", 1 );
 
     /// Imprimimos el almacen
-    cur = emp->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    cur = emp->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
     if ( !cur->eof() ) {
         file.write ( QString ( "Almacen: " ).toAscii() );
         file.write ( cur->valor ( "nomalmacen" ).toAscii() );

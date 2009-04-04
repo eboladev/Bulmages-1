@@ -161,7 +161,7 @@ void Listado347::on_m_boton_imprimir_clicked()
     _depura ( "Listado347::click_imprimir", 0 );
     int i, numventas, numcompras;
     QString codigo, descripcion, cif, importe, cp;
-    QFile fichero ( confpr->valor ( CONF_DIR_USER ) + "listado347.txt" );
+    QFile fichero ( g_confpr->valor ( CONF_DIR_USER ) + "listado347.txt" );
     if ( fichero.open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
         QTextStream listado ( &fichero );
         listado << "LISTADO 347\n";
@@ -190,7 +190,7 @@ void Listado347::on_m_boton_imprimir_clicked()
         } // end for
         fichero.close();
     } // end if
-    QString comando = confpr->valor ( CONF_EDITOR ).toAscii() + " " + fichero.fileName();
+    QString comando = g_confpr->valor ( CONF_EDITOR ).toAscii() + " " + fichero.fileName();
     system ( comando.toAscii().constData() );
 
     _depura ( "END Listado347::click_imprimir", 0 );

@@ -53,11 +53,11 @@ Ticket::Ticket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
     addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
 
     setDbValue ( "ticketalbaran", "TRUE" );
-    setDbValue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
-    setDbValue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
-    setDbValue ( "idtrabajador", confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
+    setDbValue ( "idalmacen", g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    setDbValue ( "idcliente", g_confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
+    setDbValue ( "idtrabajador", g_confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
     setDbValue ( "descalbaran", "Ticket de venta" );
-    setDbValue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
+    setDbValue ( "idforma_pago", g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<BlDbRecord *>;
@@ -234,15 +234,15 @@ void Ticket::abrircajon()
 {
 
     QString filestr="/dev/null";
-    if (confpr->valor ( CONF_CASHBOX_FILE ) != "") {
-	filestr = confpr->valor(CONF_CASHBOX_FILE);
+    if (g_confpr->valor ( CONF_CASHBOX_FILE ) != "") {
+	filestr = g_confpr->valor(CONF_CASHBOX_FILE);
     } // end if
     QFile file ( filestr );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
 
-    QStringList secuencia = confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
+    QStringList secuencia = g_confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
 
     /// El comando de apertura de cajon
     for (int i = 0; i < secuencia.size(); ++i) {
@@ -260,7 +260,7 @@ void  Ticket::imprimir()
     base basesimp;
     base basesimpreqeq;
 
-    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
@@ -678,13 +678,13 @@ void Ticket::imprimir()
     } // end for
     total.totalIva = total.baseImponible + total.baseImponible * total.iva / BlFixed ( "100" );
 
-    EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    EscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( center );
 
-    if ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-        pr.printImage ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
     } // end if
     pr.printText ( empresa.nombre + "\n" );
     pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );

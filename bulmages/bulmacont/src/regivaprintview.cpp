@@ -117,8 +117,8 @@ void regivaprintview::presentar ( const char *tipus )
 
     if ( txt | html ) {
 
-        QString archivo = confpr->valor ( CONF_DIR_USER ) + "iva.txt";
-        QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "iva.html";
+        QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "iva.txt";
+        QString archivohtml = g_confpr->valor ( CONF_DIR_USER ) + "iva.html";
 
 
         QFile filehtml;
@@ -315,14 +315,14 @@ void regivaprintview::presentar ( const char *tipus )
             /// Ahora cerramos los ficheros.
             if ( txt ) {
                 filetxt.close();
-                QString comando = confpr->valor ( CONF_EDITOR ) + " " + archivo + " &";
+                QString comando = g_confpr->valor ( CONF_EDITOR ) + " " + archivo + " &";
                 system ( comando.toAscii() );
             } // end if
             if ( html ) {
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";
                 filehtml.close();
                 /// Presentaci&oacute;n html normal.
-                QString comando = confpr->valor ( CONF_NAVEGADOR ) + " " + archivohtml + " &";
+                QString comando = g_confpr->valor ( CONF_NAVEGADOR ) + " " + archivohtml + " &";
                 system ( comando.toAscii() );
             } // end if
         }

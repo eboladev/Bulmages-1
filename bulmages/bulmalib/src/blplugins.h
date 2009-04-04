@@ -43,8 +43,12 @@ public:
     int lanza ( const char *func, void *clase, void **ret );
 };
 
-extern BL_EXPORT BlPlugins *g_plugins;
-extern BL_EXPORT void *g_plugParams;
+//extern BL_EXPORT BlPlugins *g_plugins;
+//extern BL_EXPORT void *g_plugParams;
+
+extern BlPlugins BL_EXPORT *g_plugins;
+extern void BL_EXPORT *g_plugParams;
+void BL_EXPORT initPlugins();
 
 #endif
 

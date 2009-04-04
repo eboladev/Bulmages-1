@@ -178,7 +178,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbarcodeopen", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbarcodeopen", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );

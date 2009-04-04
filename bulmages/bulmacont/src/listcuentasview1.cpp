@@ -93,7 +93,7 @@ listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags
     mui_tablacuentas->setColumnWidth ( 0, 100 );
 
     installEventFilter ( this );
-    if ( m_modo == EditMode )
+    if ( m_modo == BL_EDIT_MODE )
         mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END listcuentasview1::listcuentasview1", 0 );
 }
@@ -105,7 +105,7 @@ listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags
 listcuentasview1::~listcuentasview1()
 {
     _depura ( "listcuentasview1::~listcuentasview1", 10 );
-    if ( m_modo == EditMode ) {
+    if ( m_modo == BL_EDIT_MODE ) {
         mainCompany() ->sacaWindow ( this );
     }// end if
     _depura ( "END listcuentasview1::~listcuentasview1", 10 );
@@ -316,7 +316,7 @@ void listcuentasview1::on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidgetItem *
     mdb_codcuenta = it->text ( ccuenta );
     mdb_idcuenta = it->text ( cidcuenta );
     mdb_desccuenta = it->text ( cdesccuenta );
-    if ( m_modo == EditMode ) {
+    if ( m_modo == BL_EDIT_MODE ) {
         CuentaView * nuevae = new CuentaView ( mainCompany(), 0 );
         nuevae->cargar ( idcuenta() );
         inicializa();
@@ -467,9 +467,9 @@ void listcuentasview1::on_mui_busqueda_editFinished()
 void listcuentasview1::imprimir()
 {
     _depura ( "listcuentasview1::imprimir", 0 );
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "listado.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -483,10 +483,10 @@ void listcuentasview1::imprimir()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -542,7 +542,7 @@ void listcuentasview1::on_mui_exportar_clicked()
     _depura ( "listcuentasview1::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _( "Elija el archivo" ),
-                    confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->valor ( CONF_DIR_USER ),
                     _( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmages2XML ( filexml, IMPORT_CUENTAS );
@@ -580,7 +580,7 @@ void listcuentasview1::on_mui_importar_clicked()
 void listcuentasview1::selectMode()
 {
     _depura ( "listcuentasview1::selectMode", 0 );
-    m_modo = SelectMode;
+    m_modo = BL_SELECT_MODE;
     _depura ( "END listcuentasview1::selectMode", 0 );
 }
 
@@ -591,7 +591,7 @@ void listcuentasview1::selectMode()
 void listcuentasview1::editMode()
 {
     _depura ( "listcuentasview1::editMode", 0 );
-    m_modo = EditMode;
+    m_modo = BL_EDIT_MODE;
     _depura ( "END listcuentasview1::editMode", 0 );
 }
 

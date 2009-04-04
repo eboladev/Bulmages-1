@@ -57,8 +57,8 @@ private:
     QString mdb_idcobro;
 
 public:
-    CobrosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
-    CobrosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    CobrosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    CobrosList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
     ~CobrosList();
     void presentar();
     void setMainCompany ( BfCompany *comp );

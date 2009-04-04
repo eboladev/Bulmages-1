@@ -106,7 +106,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_Almacen", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_Almacen", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     MyPlugAlm *plug = new MyPlugAlm();
     plug->inicializa ( bges );

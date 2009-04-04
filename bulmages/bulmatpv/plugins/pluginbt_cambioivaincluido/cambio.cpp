@@ -129,7 +129,7 @@ void Cambio::on_mui_cobrar_clicked()
 
 void Cambio::on_mui_visa_clicked()
 {
-    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", g_confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
     ( ( QDialog * ) parent() )->accept();
 }
 

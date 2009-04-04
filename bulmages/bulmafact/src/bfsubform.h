@@ -36,7 +36,7 @@ class BfSubForm;
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BL_EXPORT BfSubFormDelegate : public BlSubFormDelegate
+class BF_EXPORT BfSubFormDelegate : public BlSubFormDelegate
 {
     Q_OBJECT
 
@@ -53,7 +53,7 @@ public:
 /** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
     comunes de la facturaci&oacute;n.
 */
-class BL_EXPORT BfSubForm : public BlSubForm
+class BF_EXPORT BfSubForm : public BlSubForm
 {
     Q_OBJECT
 

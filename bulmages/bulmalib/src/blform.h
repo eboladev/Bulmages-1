@@ -36,11 +36,6 @@ class BL_EXPORT BlForm : public BlWidget, public BlDbRecord, public BlDialogChan
 {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0, SelectMode = 1
-    };
-
 private:
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
@@ -55,8 +50,8 @@ protected:
     bool modoConsulta();
 
 public:
-    BlForm ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
-    BlForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlForm ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BlForm ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
     void substrVars(QString &buff, int tipoEscape = 0);
     virtual ~BlForm();
     virtual int guardar();

@@ -250,7 +250,7 @@ void CuentaListView::on_mui_exportar_clicked()
     _depura ( "CuentaListView::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _( "Elija el archivo" ),
-                    confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->valor ( CONF_DIR_USER ),
                     _( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
@@ -277,7 +277,7 @@ void CuentaListView::on_mui_importar_clicked()
     _depura ( "CuentaListView::INIT_s_importar", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _( "Elija el archivo" ),
-                    confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->valor ( CONF_DIR_USER ),
                     _( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {

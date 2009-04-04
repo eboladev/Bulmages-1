@@ -117,9 +117,6 @@ class BL_EXPORT BlSubForm: public BlWidget, public Ui_BlSubFormBase
     Q_OBJECT
 
 public:
-    enum edmode {
-        EditMode = 0, SelectMode = 1
-    };
     BlDbSubFormRecord *m_registrolinea;
     /// Usada para pasar parametros a los plugins.
     BlDbSubFormField  *m_campoactual;

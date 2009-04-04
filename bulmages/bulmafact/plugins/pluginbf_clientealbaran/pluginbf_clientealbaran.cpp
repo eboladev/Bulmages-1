@@ -128,7 +128,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_clientealbaran", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_clientealbaran", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     mypluginalb *plug = new mypluginalb();
     plug->inicializa ( bges );
@@ -148,7 +148,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
-	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
+	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
 	albaranesList->setModoEdicion();
 	albaranesList->setObjectName("listalbaranes");
 	albaranesList->hideBusqueda();

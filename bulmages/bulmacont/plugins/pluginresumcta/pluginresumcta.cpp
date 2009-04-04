@@ -51,7 +51,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginresumcta", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginresumcta", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
@@ -84,7 +84,7 @@ int entryPoint ( Bulmacont *bcont )
     bcont->mui_MenuVer() ->addSeparator();
     bcont->mui_MenuVer() ->addAction ( viewCorrector );
 
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -180,7 +180,7 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 int Bulmacont_closeEvent ( Bulmacont *bcont )
 {
     BcCompany * emp = bcont->empresaactual();
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

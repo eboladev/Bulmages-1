@@ -38,7 +38,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("plugincambioivainc", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("plugincambioivainc", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     _depura ( "END entryPoint", 0 );
     return 0;

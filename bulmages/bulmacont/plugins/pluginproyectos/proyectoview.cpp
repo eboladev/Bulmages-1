@@ -160,7 +160,7 @@ void ProyectoView::on_mui_geninforme_clicked()
 {
     int row = 1;
 
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.py";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.py";
     QString fitxersortidatxt = "";
 
     fitxersortidatxt += "#!/usr/bin/python\n";
@@ -230,7 +230,7 @@ void ProyectoView::on_mui_geninforme_clicked()
 
     fitxersortidatxt += "doc.save(\"informeproyectoc.ods\")\n";
 
-    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods";
+    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -243,9 +243,9 @@ void ProyectoView::on_mui_geninforme_clicked()
         file.close();
     } // end if
 
-    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods &";
+    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods &";
     system ( cadena.toAscii() );
 
 }

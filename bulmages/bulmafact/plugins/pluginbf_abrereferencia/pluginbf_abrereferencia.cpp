@@ -37,7 +37,7 @@ int entryPoint ( Bulmafact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_abrereferencia", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_abrereferencia", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     return 0;
 }

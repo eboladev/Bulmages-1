@@ -31,7 +31,7 @@
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-class BL_EXPORT BfForm : public BlForm
+class BF_EXPORT BfForm : public BlForm
 {
     Q_OBJECT
 
@@ -41,7 +41,7 @@ public:
 
 public:
     BfCompany *mainCompany();
-    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BfForm ( BfCompany *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
     virtual ~BfForm();
     void setListaLineas ( BfSubForm *form );
     void setListaDescuentos ( BfSubForm *form );

@@ -75,8 +75,8 @@ void BlDbLoginDialog::validar()
     m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
-    confpr->setValor ( CONF_LOGIN_USER, m_login->text() );
-    confpr->setValor ( CONF_PASSWORD_USER, m_password->text() );
+    g_confpr->setValor ( CONF_LOGIN_USER, m_login->text() );
+    g_confpr->setValor ( CONF_PASSWORD_USER, m_password->text() );
 
     /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new BlPostgreSqlClient();

@@ -178,9 +178,9 @@ void RutaComercialList::crear()
 void RutaComercialList::imprimir()
 {
     _depura ( "RutaComercialList::imprimir", 0 );
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "rutascomerciales.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "rutascomerciales.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "rutascomerciales.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "rutascomerciales.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -194,10 +194,10 @@ void RutaComercialList::imprimir()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii() );

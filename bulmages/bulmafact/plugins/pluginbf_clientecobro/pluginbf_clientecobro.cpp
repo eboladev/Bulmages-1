@@ -125,7 +125,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_clientecobro", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_clientecobro", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugincob *plug = new myplugincob();
     plug->inicializa ( bges );
@@ -145,7 +145,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 int ClienteView_ClienteView_Post (ClienteView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-		CobrosList *pagosList = new CobrosList( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
+		CobrosList *pagosList = new CobrosList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
 		pagosList->setModoEdicion();
 		pagosList->setObjectName("listcobrosproveedor");
 		pagosList->hideBusqueda();

@@ -124,7 +124,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_embed", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbl_embed", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_bges = bges;
 

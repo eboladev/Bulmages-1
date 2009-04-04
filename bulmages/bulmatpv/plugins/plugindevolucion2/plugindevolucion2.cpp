@@ -78,7 +78,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("plugindevolucion2", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("plugindevolucion2", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_doc1 = new BlDockWidget ( _("Articulo"), tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );

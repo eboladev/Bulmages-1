@@ -66,7 +66,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
     if ( camp->nomcampo() != "codigocompletoarticulo" )
         return;
     _depura ( "ListCompArticuloView::searchArticle", 0 );
-    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) mainCompany(), NULL, 0, ArticuloList::SelectMode );
+    ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled ( false );
     artlist->show();

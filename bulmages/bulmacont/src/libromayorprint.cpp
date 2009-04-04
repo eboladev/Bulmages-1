@@ -161,7 +161,7 @@ void libromayorprint::accept()
         mainCompany() ->commit();
         delete cursoraux;
     } // end if
-    QString cadaux = confpr->valor ( CONF_EDITOR ) + " mayor.txt";
+    QString cadaux = g_confpr->valor ( CONF_EDITOR ) + " mayor.txt";
     system ( cadaux.toAscii().constData() );
     _depura ( "END libromayorprint::accept", 0 );
 }

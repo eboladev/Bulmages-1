@@ -80,7 +80,7 @@ void TicketQToolButton::setBoton()
     setStatusTip ( _("Imprimir Ticket") );
     setToolTip ( _("Imprimir Ticket") );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END TicketQToolButton::setBoton", 0 );
 }
@@ -100,7 +100,7 @@ void TicketQToolButton::click()
         m_companyact = m_albaranClienteView->mainCompany();
 
 
-        QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+        QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
             _depura ( "Error en la Impresion de ticket", 2 );
         } // end if
@@ -253,7 +253,7 @@ void TicketQToolButton::click()
 
         //==========================
 
-        QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+        QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
             _depura ( "Error en la Impresion de ticket", 2 );
         } // end if

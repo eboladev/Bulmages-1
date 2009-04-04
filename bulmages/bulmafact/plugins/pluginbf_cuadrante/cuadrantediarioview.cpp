@@ -396,9 +396,9 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
 {
     _depura ( "CuadranteDiarioView::on_mui_imprimir_clicked", 0 );
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "cuadrante.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "cuadrante.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -414,10 +414,10 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
@@ -488,7 +488,7 @@ void CuadranteDiarioView::guardaconfig()
 {
     _depura ( "CuadranteDiarioView::guardaconfig", 0 );
     QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -515,7 +515,7 @@ void CuadranteDiarioView::guardaconfig()
 void CuadranteDiarioView::cargaconfig()
 {
     _depura ( "CuadranteDiarioView::cargaconfig", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {

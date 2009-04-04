@@ -36,11 +36,6 @@ class BL_EXPORT BlFormList : public BlWidget
 {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0, SelectMode = 1
-    };
-
     BlSubForm *m_listado;
 
 private:
@@ -52,8 +47,8 @@ protected:
     void setSubForm ( BlSubForm * );
 
 public:
-    BlFormList ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
-    BlFormList ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    BlFormList ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
+    BlFormList ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE );
     virtual void editar ( int );
     virtual void imprimir();
     virtual void presentar();

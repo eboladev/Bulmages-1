@@ -126,7 +126,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_proveedoralbaran", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_proveedoralbaran", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     mypluginalbp *plug = new mypluginalbp();
     plug->inicializa ( bges );
@@ -146,7 +146,7 @@ int BfCompany_createMainWindows_Post(BfCompany *comp) {
 
 int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
     if ( prov->mainCompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
-	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->mainCompany(), NULL, 0, BlFormList::SelectMode );
+	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
 	albaranesProveedor->setModoEdicion();
 	albaranesProveedor->setObjectName("listalbaranesproveedor");
 	albaranesProveedor->hideBusqueda();

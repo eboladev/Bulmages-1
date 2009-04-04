@@ -101,7 +101,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_contrato", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_contrato", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );
@@ -118,8 +118,8 @@ int entryPoint ( Bulmafact *bges )
 int ClienteView_ClienteView ( ClienteView *art )
 {
     _depura ( "ClienteView_ClienteView", 0 );
-    /// Para que funcione bien debemos iniciar con SelectMode y luego pasar a EditMode ya que si no se hace un meteWindow y no es deseable.
-    ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, ContratosList::SelectMode );
+    /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un meteWindow y no es deseable.
+    ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, "Contratos" );
     l->editMode();

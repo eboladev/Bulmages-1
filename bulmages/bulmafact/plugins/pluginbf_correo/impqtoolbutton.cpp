@@ -111,10 +111,10 @@ void EmailQToolButton::click()
         if (m_presupuestoView->generaRML()) {
 		generaPDF ( "presupuesto" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "kmail -s \"Presupuesto " + num + "\" --body \" Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf " + email;
+		cad = "kmail -s \"Presupuesto " + num + "\" --body \" Adjunto remito presupuesto numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf " + email;
 		system ( cad.toAscii().data() );
 	} // end if
     } // end if
@@ -137,10 +137,10 @@ void EmailQToolButton::click()
         if (m_pedidoClienteView->generaRML()) {
 		generaPDF ( "pedidocliente" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
+		cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito pedido numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf " + email;
 		system ( cad.toAscii().data() );
 	} // end if
     } // end if
@@ -164,10 +164,10 @@ void EmailQToolButton::click()
         if (m_albaranClienteView->generaRML()) {
 		generaPDF ( "albaran" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
-		cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
+		cad = "kmail -s \"Pedido " + num + "\" --body \" Adjunto remito albaran numero " + num + " con referencia   " + ref + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf " + email;
 		system ( cad.toAscii().data() );
 	} // end if
     } // end if
@@ -192,14 +192,14 @@ void EmailQToolButton::click()
         if (m_facturaView->generaRML()) {
 		generaPDF ( "factura" );
 	
-		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
 		system ( cad.toAscii().data() );
 	
 	
 		cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
 		cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
 		cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
-		cad += " --attach " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
+		cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
 		system ( cad.toAscii().data() );
 	} // end if
     } // end if

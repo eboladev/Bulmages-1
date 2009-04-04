@@ -92,7 +92,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginticketsdevueltos", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginticketsdevueltos", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     _depura ( "END entryPoint", 0 );
     return 0;

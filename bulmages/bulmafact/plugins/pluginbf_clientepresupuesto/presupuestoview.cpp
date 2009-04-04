@@ -430,11 +430,11 @@ QString PresupuestoView::detalleArticulos()
             texto += "<td><h1>" + cur->valor ( "nomarticulo" ) + "</h1>";
             texto += "<para><pre>" + cur->valor ( "obserarticulo" ) + "</pre></para></td>\n";
         } // end if
-        QString file = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur->valor ( "codigocompletoarticulo" ) + ".jpg";
+        QString file = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur->valor ( "codigocompletoarticulo" ) + ".jpg";
         QFile f ( file );
         if ( f.exists() ) {
             texto += "    <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                     "        <image file=\"" + confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur->valor ( "codigocompletoarticulo" ) + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "        <image file=\"" + g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur->valor ( "codigocompletoarticulo" ) + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                      "        </illustration></td>\n";
         } else {
             texto += "<td></td>\n";

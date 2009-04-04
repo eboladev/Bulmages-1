@@ -783,8 +783,8 @@ void BlDbRecord::substrConf( QString &buff) {
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 500; i++ ) {
-        if ( confpr->nombre ( i ) != "" ) {
-            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+        if ( g_confpr->nombre ( i ) != "" ) {
+            buff.replace ( "[" + g_confpr->nombre ( i ) + "]", g_confpr->valor ( i ) );
         } // end if
     } // end for
 }
@@ -841,9 +841,9 @@ int BlDbRecord::generaRML ( const QString &arch )
 	tipoescape = 2;
 
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + arch;
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -858,10 +858,10 @@ int BlDbRecord::generaRML ( const QString &arch )
     /// Copiamos el logo
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );

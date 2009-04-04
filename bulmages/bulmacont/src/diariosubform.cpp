@@ -62,8 +62,8 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : BcSubForm ( par
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
     setListadoPijama ( FALSE );
     setColumnToRowSpan ( "ordenasientoconfecha" );
-    setColorFondo1 ( confpr->valor ( CONF_BG_DIARIO ) );
-    setColorFondo2 ( confpr->valor ( CONF_BG_ALT_DIARIO ) );
+    setColorFondo1 ( g_confpr->valor ( CONF_BG_DIARIO ) );
+    setColorFondo2 ( g_confpr->valor ( CONF_BG_ALT_DIARIO ) );
     setinsercion ( FALSE );
     setOrdenEnabled ( FALSE );
     setOrdenPorQuery ( TRUE );

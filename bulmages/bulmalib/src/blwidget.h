@@ -26,30 +26,15 @@
 #include <QCloseEvent>
 #include <QPainter>
 
+#include "blmaincompanypointer.h"
 #include "bldialogchanges.h"
 #include "blfunctions.h"
 #include "blmaincompany.h"
 
 
-class BL_EXPORT BlMainCompanyPointer
-{
-private:
-    BlMainCompany *m_mainCompany;
-
-public:
-    BlMainCompanyPointer ( BlMainCompany * );
-    BlMainCompanyPointer();
-    virtual ~BlMainCompanyPointer();
-    virtual void setMainCompany ( BlMainCompany * );
-    virtual BlMainCompany *mainCompany();
-    virtual QString fieldValue();
-    virtual void setFieldValue ( QString );
-};
-
-
 class BL_EXPORT BlWidget : public QWidget, public BlMainCompanyPointer
 {
-    Q_OBJECT
+Q_OBJECT
 
 protected:
     virtual void paintEvent(QPaintEvent *);
@@ -59,5 +44,7 @@ public:
     BlWidget ( BlMainCompany *, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~BlWidget();
 };
+
+
 
 #endif

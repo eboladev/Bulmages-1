@@ -32,9 +32,13 @@ MyPrototype myFunction;
 typedef int ( *MyPrototype1 ) ( void *, void ** );
 MyPrototype1 myFunction1;
 
-BlPlugins *g_plugins;
-void *g_plugParams;
+BlPlugins BL_EXPORT *g_plugins = NULL;
+void BL_EXPORT *g_plugParams = NULL;
 
+
+void initPlugins() {
+  g_plugins = new BlPlugins();
+}
 
 ///
 /**
@@ -73,7 +77,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
         return;
     } // end if
 
-    QStringList dirs = confpr->valor ( CONF_DIR_PLUGINS ).split ( ";" );
+    QStringList dirs = g_confpr->valor ( CONF_DIR_PLUGINS ).split ( ";" );
 
     QStringList plugins = cad.split ( ";" );
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {

@@ -111,7 +111,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbalance", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbalance", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );

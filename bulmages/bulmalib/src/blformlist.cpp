@@ -30,7 +30,7 @@
 void BlFormList::setModoConsulta()
 {
     _depura ( "BlFormList::setModoConsulta", 0 );
-    m_modo = SelectMode;
+    m_modo = BL_SELECT_MODE;
     _depura ( "END BlFormList::setModoConsulta", 0 );
 
 }
@@ -42,7 +42,7 @@ void BlFormList::setModoConsulta()
 void BlFormList::setModoEdicion()
 {
     _depura ( "BlFormList::setModoEdicion", 0 );
-    m_modo = EditMode;
+    m_modo = BL_EDIT_MODE;
     _depura ( "END BlFormList::setModoEdicion", 0 );
 }
 
@@ -55,7 +55,7 @@ bool BlFormList::modoEdicion()
 {
     _depura ( "BlFormList::modoEdicion", 0 );
     _depura ( "END BlFormList::modoEdicion", 0 );
-    return m_modo == EditMode;
+    return m_modo == BL_EDIT_MODE;
 }
 
 
@@ -67,7 +67,7 @@ bool BlFormList::modoConsulta()
 {
     _depura ( "BlFormList::modoConsulta", 0 );
     _depura ( "END BlFormList::modoConsulta", 0 );
-    return m_modo == SelectMode;
+    return m_modo == BL_SELECT_MODE;
 }
 
 
@@ -211,7 +211,7 @@ void BlFormList::setSubForm ( BlSubForm *list )
     _depura ( "BlFormList::setSubForm", 0 );
     m_listado = list;
     /// Establecemos el mismo modo en el subformulario que en el listado.
-    if (m_modo == EditMode) {
+    if (m_modo == BL_EDIT_MODE) {
 	m_listado->setModoEdicion();
     } else {
 	m_listado->setModoConsulta();

@@ -245,7 +245,7 @@ void BfCompany::s_TasaIVAView()
 void BfCompany::guardaConf()
 {
     _depura ( "BfCompany::guardaConf", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -289,7 +289,7 @@ void BfCompany::guardaConf()
 void BfCompany::cargaConf()
 {
     _depura ( "BfCompany::cargaConf", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

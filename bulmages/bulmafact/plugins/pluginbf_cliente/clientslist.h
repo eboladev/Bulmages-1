@@ -59,7 +59,7 @@ private:
     QString mdb_cifcliente;
 
 public:
-    ClientsList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
+    ClientsList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     virtual ~ClientsList();
     void presentar();
     void editar ( int );

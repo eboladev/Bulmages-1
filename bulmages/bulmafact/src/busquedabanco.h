@@ -33,7 +33,7 @@
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BL_EXPORT BusquedaBanco : public BlComboBox
+class BF_EXPORT BusquedaBanco : public BlComboBox
 {
     Q_OBJECT
 

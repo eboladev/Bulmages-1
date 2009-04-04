@@ -145,7 +145,7 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
         return;
     } // end if
     dialogChanges_cargaInicial();
-    m_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
+    m_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
     _depura ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
@@ -191,7 +191,7 @@ void TrabajadorView::on_mui_guardar_clicked()
             m_item->setText ( m_apellidostrabajador->text() + m_nomtrabajador->text() );
         } // end if
         if ( m_archivoimagen != "" ) {
-            QString cadena = "cp " + m_archivoimagen + " " + confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
+            QString cadena = "cp " + m_archivoimagen + " " + g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
             system ( cadena.toAscii().constData() );
         } // end if
 

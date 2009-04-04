@@ -637,7 +637,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //
 // // =================================================================
 //
-//     QString archivod = confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
+//     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
 //     BlSubForm * subf = ( BlSubForm * ) parent();
 //
 //     QString fitxersortidatxt = "";
@@ -718,7 +718,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //     fitxersortidatxt += "\n";
 //     fitxersortidatxt += "exit;\n";
 //
-//     QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc";
+//     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc";
 //     system ( cadena.toAscii() );
 //     cadena = "rm " + archivod;
 //     system ( cadena.toAscii() );
@@ -731,9 +731,9 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //         file.close();
 //     } // end if
 //
-//     cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+//     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
 //     system ( cadena.toAscii() );
-//     cadena = "kspread " + confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
+//     cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
 //     system ( cadena.toAscii() );
 
     _depura ( "END BalanceTreeView::on_mui_hojacalculo_clicked", 0 );

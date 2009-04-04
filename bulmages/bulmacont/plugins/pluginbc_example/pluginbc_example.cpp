@@ -78,7 +78,7 @@ void myplugin::inicializa ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbc_example", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbc_example", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = new QMenu ( _("&Plugin") );

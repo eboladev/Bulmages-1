@@ -19,9 +19,9 @@
 const int MAX_FIXED_PRECISION = 15;
 const int MAX_FIXED_LENGTH = 28;
 
-typedef long long int BlFixed_numerator;
+typedef long long int BL_EXPORT BlFixed_numerator;
 
-inline long long int BL_EXPORT integer ( BlFixed_numerator x )
+inline long long int integer ( BlFixed_numerator x )
 {
     return ( int ) x;
 }
@@ -76,73 +76,96 @@ public:
 };
 
 
-inline bool BL_EXPORT operator != ( BlFixed x, BlFixed y )
+
+BlFixed BL_EXPORT operator / ( BlFixed x, BlFixed y );
+BlFixed BL_EXPORT operator / ( BlFixed x, int y );
+
+
+BlFixed BL_EXPORT operator * ( BlFixed x, BlFixed y );
+BlFixed BL_EXPORT operator * ( BlFixed x, int y );
+
+BlFixed BL_EXPORT operator + (BlFixed x, BlFixed y);
+BlFixed BL_EXPORT operator + (BlFixed x, int y);
+
+BlFixed BL_EXPORT operator - (BlFixed x, BlFixed y);
+BlFixed BL_EXPORT operator - (BlFixed x, int y);
+
+bool BL_EXPORT operator == (BlFixed x, BlFixed y);
+bool BL_EXPORT operator == (BlFixed x, int y);
+
+bool BL_EXPORT operator < (BlFixed x, BlFixed y);
+bool BL_EXPORT operator < (BlFixed x, int y);
+bool BL_EXPORT operator < (int x, BlFixed y);
+
+
+inline bool operator != ( BlFixed x, BlFixed y )
 {
     return ! ( x == y );
 }
 
 
-inline bool BL_EXPORT operator != ( BlFixed x, int y )
+inline bool operator != ( BlFixed x, int y )
 {
     return ! ( x == y );
 }
 
 
-inline bool BL_EXPORT operator != ( int x, BlFixed y )
+inline bool operator != ( int x, BlFixed y )
 {
     return ! ( x == y );
 }
 
 
-inline bool BL_EXPORT operator >= ( BlFixed x, BlFixed y )
+inline bool operator >= ( BlFixed x, BlFixed y )
 {
     return ! ( x < y );
 }
 
 
-inline bool BL_EXPORT operator >= ( BlFixed x, int y )
+inline bool operator >= ( BlFixed x, int y )
 {
     return ! ( x < y );
 }
 
 
-inline bool BL_EXPORT operator >= ( int x, BlFixed y )
+inline bool operator >= ( int x, BlFixed y )
 {
     return ! ( x < y );
 }
 
 
-inline bool BL_EXPORT operator > ( BlFixed x, BlFixed y )
+
+inline bool operator > ( BlFixed x, BlFixed y )
 {
     return y < x;
 }
 
 
-inline bool BL_EXPORT operator > ( BlFixed x, int y )
+inline bool operator > ( BlFixed x, int y )
 {
     return y < x;
 }
 
 
-inline bool BL_EXPORT operator > ( int x, BlFixed y )
+inline bool operator > ( int x, BlFixed y )
 {
     return y < x;
 }
 
 
-inline bool BL_EXPORT operator <= ( BlFixed x, BlFixed y )
+inline bool operator <= ( BlFixed x, BlFixed y )
 {
     return ! ( y < x );
 }
 
 
-inline bool BL_EXPORT operator <= ( BlFixed x, int y )
+inline bool operator <= ( BlFixed x, int y )
 {
     return ! ( y < x );
 }
 
 
-inline bool BL_EXPORT operator <= ( int x, BlFixed y )
+inline bool operator <= ( int x, BlFixed y )
 {
     return ! ( y < x );
 }

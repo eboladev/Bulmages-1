@@ -67,7 +67,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 	mui_idcliente->m_valores["nomcliente"] = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( m_modo == EditMode ) {
+    if ( m_modo == BL_EDIT_MODE ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _( "Selector de contratos" ) );
@@ -212,7 +212,7 @@ void ContratosList::on_mui_borrar_clicked()
 void ContratosList::selectMode()
 {
     _depura ( "ContratosList::selectMode", 0 );
-    m_modo = SelectMode;
+    m_modo = BL_SELECT_MODE;
     _depura ( "END ContratosList::selectMode", 0 );
 }
 
@@ -222,7 +222,7 @@ void ContratosList::selectMode()
 void ContratosList::editMode()
 {
     _depura ( "ContratosList::editMode", 0 );
-    m_modo = EditMode;
+    m_modo = BL_EDIT_MODE;
     _depura ( "END ContratosList::editMode", 0 );
 }
 

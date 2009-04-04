@@ -64,7 +64,7 @@ void TicketQToolButton::setBoton()
     setStatusTip ( _("Imprimir Etiquetas") );
     setToolTip ( _("Imprimir Etiquetas") );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png" ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END TicketQToolButton::setBoton", 0 );
 }
@@ -78,9 +78,9 @@ void TicketQToolButton::click()
     _depura ( "ImpQToolButton::click", 2 );
     QString txt = "";
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "etiquetas.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "etiquetas.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "etiquetas.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "etiquetas.rml";
+    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -96,10 +96,10 @@ void TicketQToolButton::click()
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;

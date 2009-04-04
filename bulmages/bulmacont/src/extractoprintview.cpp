@@ -170,8 +170,8 @@ void ExtractoPrintView::presentar ( const QString &tipus )
     html = (tipus == "html"?1:0);
 
 
-    QString archivo = confpr->valor ( CONF_DIR_USER ) + "mayor.txt";
-    QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "mayor.html";
+    QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "mayor.txt";
+    QString archivohtml = g_confpr->valor ( CONF_DIR_USER ) + "mayor.html";
 
 
     QFile filehtml;
@@ -324,13 +324,13 @@ void ExtractoPrintView::presentar ( const QString &tipus )
     if ( txt ) {
         /// Presentaci&oacute;n txt.
         filetxt.close();
-        QString cad = confpr->valor ( CONF_EDITOR ) + " mayor.txt";
+        QString cad = g_confpr->valor ( CONF_EDITOR ) + " mayor.txt";
         system ( cad.toAscii().constData() );
     } // end if
     if ( html ) {
         /// Presentaci&oacute;n html.
         filehtml.close();
-        QString cad = confpr->valor ( CONF_NAVEGADOR ) + " mayor.html";
+        QString cad = g_confpr->valor ( CONF_NAVEGADOR ) + " mayor.html";
         system ( cad.toAscii().constData() );
     } // end if
     _depura ( "END ExtractoPrintView::presentar", 0 );

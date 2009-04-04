@@ -96,7 +96,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         dialogChanges_setQObjectExcluido ( m_componentes );
         dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
         m_archivoimagen = "";
-        mui_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ArticuloView_ArticuloView_Post", this );
@@ -133,7 +133,7 @@ void ArticuloView::pintarPost()
     /// que el articulo no tiene imagen asociada.
 
     QString archivoimagen;
-    archivoimagen = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );
@@ -143,7 +143,7 @@ void ArticuloView::pintarPost()
         mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
     } else  {
         /// Muestra la imagen por defecto.
-        mui_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
     } // end if
 
     _depura ( "END ArticuloView::pintar", 0 );
@@ -219,7 +219,7 @@ int ArticuloView::guardarPost()
         m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
-        if ( mui_imagen->pixmap()->save ( confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
+        if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
             mensajeError ( _( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
@@ -299,7 +299,7 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
 void ArticuloView::on_mui_borrarimagen_clicked()
 {
     QString archivoimagen;
-    archivoimagen = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );

@@ -126,13 +126,13 @@ void Devolucion::on_mui_vale_clicked()
     delete cur;
 
 
-    EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    EscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( center );
 
-    if ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-        pr.printImage ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
     } // end if
     pr.printText ( empresa.nombre + "\n" );
     pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );

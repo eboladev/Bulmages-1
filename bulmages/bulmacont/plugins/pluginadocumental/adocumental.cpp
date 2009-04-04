@@ -240,7 +240,7 @@ void adocumental::boton_newadocumental()
 {
     _depura ( "adocumental::boton_newadocumental", 0 );
     QString fn = QFileDialog::getOpenFileName ( this, _( "Elija el nombre del archivo" ),
-                 confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->valor ( CONF_DIR_USER ),
                  _( "Todos (*.*)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -364,7 +364,7 @@ void adocumental::s_agregarDirectorio()
 {
     _depura ( "adocumental::s_agregarDirectorio", 0 );
     QString fn = QFileDialog::getExistingDirectory ( this, _( "Elija un directorio" ),
-                 confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->valor ( CONF_DIR_USER ),
                  QFileDialog::ShowDirsOnly
                  | QFileDialog::DontResolveSymlinks );
 

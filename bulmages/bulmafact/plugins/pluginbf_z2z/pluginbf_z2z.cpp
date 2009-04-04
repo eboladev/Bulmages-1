@@ -83,7 +83,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_z2z", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_z2z", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_bges = bges->getcompany();
 

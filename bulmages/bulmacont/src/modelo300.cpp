@@ -147,7 +147,7 @@ void Mod300ps::generaps()
     pdfname = QString ( getenv ( "HOME" ) ) + "/.bulmages/formularios/mod300e.pdf";
 
     if ( !QFile::exists ( pdfname ) )
-        pdfname = confpr->valor ( CONF_PROGDATA ) + "formularios/mod300e.pdf";
+        pdfname = g_confpr->valor ( CONF_PROGDATA ) + "formularios/mod300e.pdf";
 
     bool doit = true;
     if ( !QFile::exists ( pdfname ) ) {
@@ -253,7 +253,7 @@ void Mod300ps::generaps()
             m_fichlec.close();
             m_fich.close();
 
-//            cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA).toAscii().constData() << "\n";
+//            cout << "Se supone que tengo que leer los formularios desde " << g_confpr->valor(CONF_PROGDATA).toAscii().constData() << "\n";
 //            cout << "[TODO] OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
 //            cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 

@@ -52,16 +52,24 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
+
+set(bulmafact_RCCS ../../bulmages.qrc)
+
 # generate rules for building source files from the resources
 #
 
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
+QT4_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBF_BULMAFACT)
+ENDIF(WIN32)
 
 
 add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
-		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} )
+		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS}  ${bulmafact_RCC_SRCS})
 
 
 
@@ -74,7 +82,7 @@ target_link_libraries( libbulmafact bulmalib ${QT_LIBRARIES}
 				${PGSQL_LIBRARIES})
 
 
-add_executable(bulmafact ${bulmafactEx})
+add_executable(bulmafact ${bulmafactEx} ${bulmafact_RCC_SRCS})
 
 
 

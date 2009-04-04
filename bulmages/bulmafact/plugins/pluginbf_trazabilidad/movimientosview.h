@@ -59,19 +59,13 @@ class MovimientosView : public BfForm, public Ui_MovimientosBase
 {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0,
-        SelectMode = 1
-    };
-
 private:
     edmode m_modo;
     QString mdb_idfactura;
 
 public:
-//    MovimientosView(QWidget *parent = 0, edmode editmodo = EditMode);
-    MovimientosView ( BfCompany *, QWidget *parent = 0, edmode editmodo = EditMode );
+//    MovimientosView(QWidget *parent = 0, edmode editmodo = BL_EDIT_MODE);
+    MovimientosView ( BfCompany *, QWidget *parent = 0, edmode editmodo = BL_EDIT_MODE );
     virtual ~MovimientosView();
     void iniciaForm();
     void setMainCompany ( BfCompany *comp ) {
@@ -85,10 +79,10 @@ public:
         return m_modo;
     };
     void modoseleccion() {
-        m_modo = SelectMode;
+        m_modo = BL_SELECT_MODE;
     };
     void modoedicion() {
-        m_modo = EditMode;
+        m_modo = BL_EDIT_MODE;
     };
     QString idfactura() {
         return mdb_idfactura;

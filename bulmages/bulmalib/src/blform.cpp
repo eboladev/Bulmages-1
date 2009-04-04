@@ -106,7 +106,7 @@ BlForm::~BlForm()
 void BlForm::cargaSpecs()
 {
     _depura ( "BlForm::cargaSpecs", 0 );
-//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
+//    QFile file(g_confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -230,7 +230,7 @@ void BlForm::generaCampo ( const QString &objname, const QString &textname, cons
 void BlForm::setModoConsulta()
 {
     _depura ( "BlForm::setModoConsulta", 0 );
-    m_modo = SelectMode;
+    m_modo = BL_SELECT_MODE;
     _depura ( "END BlForm::setModoConsulta", 0 );
 }
 
@@ -241,7 +241,7 @@ void BlForm::setModoConsulta()
 void BlForm::setModoEdicion()
 {
     _depura ( "BlForm::setModoEdicion", 0 );
-    m_modo = EditMode;
+    m_modo = BL_EDIT_MODE;
     _depura ( "END BlForm::setModoEdicion", 0 );
 }
 
@@ -254,7 +254,7 @@ bool BlForm::modoEdicion()
 {
     _depura ( "BlForm::modoEdicion", 0 );
     _depura ( "END BlForm::modoEdicion", 0 );
-    return m_modo == EditMode;
+    return m_modo == BL_EDIT_MODE;
 }
 
 
@@ -266,7 +266,7 @@ bool BlForm::modoConsulta()
 {
     _depura ( "BlForm::modoConsulta", 0 );
     _depura ( "END BlForm::modoConsulta", 0 );
-    return m_modo == SelectMode;
+    return m_modo == BL_SELECT_MODE;
 }
 
 

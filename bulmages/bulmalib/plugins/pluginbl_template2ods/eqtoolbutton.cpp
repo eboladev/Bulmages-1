@@ -68,7 +68,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
     QMenu *ajust = menu->addMenu ( _( "Informes personales ODS" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -83,7 +83,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 
 
         QFile file;
-        file.setFileName ( confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();
@@ -114,7 +114,7 @@ void EQToolButton::trataMenu ( QAction *action )
     _depura ( "EQToolButton::trataMenu", 0 );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda

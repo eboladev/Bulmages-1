@@ -126,7 +126,7 @@ void CAnualesView::inicializatabla()
     mui_listado->setColumnWidth ( COL_NOMBRE, 290 );
     mui_listado->hideColumn ( COL_ARCHIVO );
 
-    QDir dir ( confpr->valor ( CONF_DIR_CANUALES ) );
+    QDir dir ( g_confpr->valor ( CONF_DIR_CANUALES ) );
 
     dir.setFilter ( QDir::Files );
     dir.setSorting ( QDir::Size | QDir::Reversed );

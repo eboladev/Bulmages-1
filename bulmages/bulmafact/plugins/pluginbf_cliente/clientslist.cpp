@@ -167,7 +167,7 @@ void ClientsList::on_mui_exportar_clicked()
     QFile filexml ( QFileDialog::getSaveFileName (
                         this,
                         _( "Elija el archivo" ),
-                        confpr->valor ( CONF_DIR_USER ),
+                        g_confpr->valor ( CONF_DIR_USER ),
                         _( "Clientes (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_CLIENTES );
@@ -190,7 +190,7 @@ void ClientsList::on_mui_importar_clicked()
     QFile filexml ( QFileDialog::getOpenFileName (
                         this,
                         _( "Elija el archivo" ),
-                        confpr->valor ( CONF_DIR_USER ),
+                        g_confpr->valor ( CONF_DIR_USER ),
                         _( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {

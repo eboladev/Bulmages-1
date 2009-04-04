@@ -123,7 +123,7 @@ int entryPoint ( Bulmacont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginregistroiva", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginregistroiva", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myRegIVA *my = new myRegIVA();
     my->inicializa ( bcont );
