@@ -24,7 +24,7 @@
     <number>5</number>
    </property>
    <item row="0" column="0" colspan="6" >
-    <layout class="QHBoxLayout" >
+    <layout class="QHBoxLayout" name="_2" >
      <property name="spacing" >
       <number>5</number>
      </property>
@@ -239,7 +239,7 @@
         <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -687,14 +687,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>129</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -711,14 +703,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>129</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Descuen&amp;tos</string>
       </attribute>
@@ -735,14 +719,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>129</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Comentario&amp;s</string>
       </attribute>
@@ -1475,29 +1451,9 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListLinAlbaranClienteView</class>
-   <extends>QWidget</extends>
-   <header>listlinalbaranclienteview.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoAlbaranClienteView</class>
-   <extends>QWidget</extends>
-   <header>listdescalbaranclienteview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BlDateSearch</class>
-   <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaAlmacen</class>
@@ -1505,14 +1461,34 @@
    <header>busquedaalmacen.h</header>
   </customwidget>
   <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QLineEdit</extends>
+   <header>../../bulmalib/src/bldatesearch.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaTrabajador</class>
    <extends>QComboBox</extends>
    <header>busquedatrabajador.h</header>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
+   <class>BlSearchWidget</class>
    <extends>QTextEdit</extends>
    <header>blsearchwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinAlbaranClienteView</class>
+   <extends>QWidget</extends>
+   <header>listlinalbaranclienteview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoAlbaranClienteView</class>
+   <extends>QWidget</extends>
+   <header>listdescalbaranclienteview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

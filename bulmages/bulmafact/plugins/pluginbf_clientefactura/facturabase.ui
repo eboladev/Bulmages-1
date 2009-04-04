@@ -195,7 +195,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Preferred</enum>
+           <enum>QSizePolicy::Expanding</enum>
           </property>
           <property name="sizeHint" stdset="0" >
            <size>
@@ -278,7 +278,7 @@
         <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -343,6 +343,15 @@
          </widget>
         </item>
        </layout>
+       <zorder>mui_borrar</zorder>
+       <zorder>mui_imprimir</zorder>
+       <zorder>mui_veralbaranes</zorder>
+       <zorder>mui_agregaralbaran</zorder>
+       <zorder>mui_plugbotones</zorder>
+       <zorder>label5</zorder>
+       <zorder>mui_reffactura</zorder>
+       <zorder></zorder>
+       <zorder>mui_guardar</zorder>
       </widget>
      </item>
     </layout>
@@ -513,7 +522,7 @@
        <widget class="BusquedaSerieFactura" name="mui_codigoserie_factura" />
       </item>
       <item rowspan="3" row="1" column="0" >
-       <widget class="BlSearchWidget" name="mui_idcliente" >
+       <widget class="BlSearchWidget" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -632,14 +641,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>200</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -663,14 +664,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>200</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Desc&amp;uentos</string>
       </attribute>
@@ -694,14 +687,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>200</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Comentarios</string>
       </attribute>
@@ -1330,8 +1315,8 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
-   <extends>QTextEdit</extends>
+   <class>BlSearchWidget</class>
+   <extends>QWidget</extends>
    <header>blsearchwidget.h</header>
   </customwidget>
  </customwidgets>

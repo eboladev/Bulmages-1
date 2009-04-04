@@ -20,14 +20,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QToolButton>
 
 #include "pluginbf_correothunderbird.h"
 #include "blfunctions.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "impqtoolbutton.h"
-
 
 ///
 /**
@@ -53,15 +51,18 @@ int entryPoint ( Bulmafact * )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
     _depura ( "PresupuestoView_PresupuestoView", 0 );
-
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( l, NULL, NULL,  NULL, l->mui_plugbotones );
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-
-    m_hboxLayout1->setSpacing ( 5 );
-    m_hboxLayout1->setMargin ( 5 );
-    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }
+    
     m_hboxLayout1->addWidget ( mui_envia_email );
-
+    
     _depura ( "END PresupuestoView_PresupuestoView", 0 );
 
     return 0;
@@ -78,11 +79,15 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     _depura ( "PedidoClienteView_PedidoClienteView", 0 );
 
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, l, NULL, NULL, l->mui_plugbotones );
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-    m_hboxLayout1->setSpacing ( 5 );
-    m_hboxLayout1->setMargin ( 5 );
-    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }
+    
     m_hboxLayout1->addWidget ( mui_envia_email );
 
     _depura ( "END PedidoClienteView_PedidoClienteView", 0 );
@@ -101,11 +106,15 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
     _depura ( "FacturaView_FacturaView", 0 );
 
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, NULL, l, NULL, l->mui_plugbotones );
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-    m_hboxLayout1->setSpacing ( 5 );
-    m_hboxLayout1->setMargin ( 5 );
-    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }
+    
     m_hboxLayout1->addWidget ( mui_envia_email );
 
     _depura ( "END FacturaView_FacturaView", 0 );
@@ -124,11 +133,15 @@ int FacturaView_FacturaView ( FacturaView *l )
     _depura ( "FacturaView_FacturaView", 0 );
 
     EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, NULL, NULL, l, l->mui_plugbotones );
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-    m_hboxLayout1->setSpacing ( 5 );
-    m_hboxLayout1->setMargin ( 5 );
-    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }
+    
     m_hboxLayout1->addWidget ( mui_envia_email );
 
     _depura ( "END FacturaView_FacturaView", 0 );

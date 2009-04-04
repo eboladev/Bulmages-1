@@ -15,6 +15,7 @@ add_subdirectory(pluginbf_almacen)
 
 #efacturabf en desarrollo
 #add_subdirectory(efacturabf)
+#add_subdirectory(pluginbf_efacturapdf)
 
 #pluginvehiculosbf en desarrollo
 #add_subdirectory(pluginbf_vehiculo)

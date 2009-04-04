@@ -214,7 +214,7 @@
         <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -467,7 +467,7 @@
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
-       <widget class="BlSearchWidget" name="mui_idcliente" >
+       <widget class="BlSearchWidget" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
           <horstretch>0</horstretch>
@@ -714,14 +714,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>163</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -745,14 +737,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>512</width>
-        <height>240</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Desc&amp;uentos</string>
       </attribute>
@@ -776,14 +760,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>512</width>
-        <height>240</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Datos &amp;generales</string>
       </attribute>
@@ -1474,9 +1450,9 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoPresupuestoView</class>
-   <extends>QWidget</extends>
-   <header>listdescpresupuestoview.h</header>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
@@ -1484,19 +1460,9 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>ListLinPresupuestoView</class>
-   <extends>QWidget</extends>
-   <header>listlinpresupuestoview.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaAlmacen</class>
    <extends>QComboBox</extends>
    <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>
@@ -1504,14 +1470,24 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
+   <class>BlSearchWidget</class>
+   <extends>QWidget</extends>
+   <header>blsearchwidget.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaTrabajador</class>
    <extends>QComboBox</extends>
    <header>busquedatrabajador.h</header>
   </customwidget>
   <customwidget>
-   <class>BlSearchWidget</class>
-   <extends>QTextEdit</extends>
-   <header>blsearchwidget.h</header>
+   <class>ListDescuentoPresupuestoView</class>
+   <extends>QWidget</extends>
+   <header>listdescpresupuestoview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinPresupuestoView</class>
+   <extends>QWidget</extends>
+   <header>listlinpresupuestoview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

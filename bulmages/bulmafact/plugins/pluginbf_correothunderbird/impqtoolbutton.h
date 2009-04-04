@@ -24,10 +24,6 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
-
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "facturaview.h"

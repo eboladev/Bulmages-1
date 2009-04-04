@@ -21,20 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-
 #include "impqtoolbutton.h"
 #include "blfunctions.h"
-
-/// Necesarios para importacion de efactura
-#include <QtXml/QDomDocument>
-#include <QtXml/QDomNodeList>
-#include <QtXml/QDomNode>
-#include <QString>
-#include <QFileDialog>
-#include <QMap>
-#include <QList>
-
 #include "presupuestoview.h"
 #include "blfixed.h"
 #include "facturaview.h"
@@ -85,7 +73,8 @@ void EmailThunderbirdQToolButton::setBoton()
     setStatusTip ( _("Enviar por e-mail con Thunderbird al cliente" ));
     setToolTip ( _("Enviar por e-mail con Thunderbird al cliente") );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
+    setMaximumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/icon_mozilla-thunderbird.xpm"  ) );
     setIconSize ( QSize ( 22, 22 ) );
 
     _depura ( "END EmailThunderbirdQToolButton::setBoton", 0 );
