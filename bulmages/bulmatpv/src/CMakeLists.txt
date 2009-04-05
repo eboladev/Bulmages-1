@@ -3,7 +3,6 @@
 ###########################################
 
 file(GLOB bulmatpv_SRC *.c *.cpp)
-#file(GLOB bulmatpv_MOCS *.hpp *.h)
 file(GLOB bulmatpv_UIS *.ui)
 
 set(bulmatpvEx main.cxx)
@@ -40,6 +39,12 @@ QT4_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
 
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
+IF(WIN32)
+set(bulmatpv_RCCS ../../bulmages.qrc)
+QT4_ADD_RESOURCES(bulmatpv_RCC_SRCS ${bulmatpv_RCCS})
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBT_BULMATPV)
+ENDIF(WIN32)
+
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
@@ -49,7 +54,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 
 add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
-        ${bulmatpv_SRC} ${bulmatpv_MOCS})
+        ${bulmatpv_SRC} ${bulmatpv_MOCS} ${bulmatpv_RCC_SRCS})
 
 set_target_properties( libbulmatpv PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
@@ -58,7 +63,7 @@ set_target_properties( libbulmatpv PROPERTIES
 
 target_link_libraries( libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
-add_executable(bulmatpv   ${bulmatpvEx})
+add_executable(bulmatpv   ${bulmatpvEx} ${bulmatpv_RCC_SRCS})
 
 # i18n
 if(WIN32)

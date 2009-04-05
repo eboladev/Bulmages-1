@@ -56,6 +56,8 @@
 //
 
 #include <QtCore/qtextcodec.h>
+#include "bldefs.h"
+
 
 QT_BEGIN_NAMESPACE
 
@@ -63,7 +65,7 @@ QT_BEGIN_NAMESPACE
 
 template <typename T> class QAtomicPointer;
 
-class QCP850EuroTextCodec: public QTextCodec
+class BT_EXPORT QCP850EuroTextCodec: public QTextCodec
 {
 public:
     enum { numSimpleCodecs = 1 };

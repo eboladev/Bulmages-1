@@ -41,7 +41,7 @@ class BulmaTPV;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class BtCompany : public BlMainCompany, public Input
+class BT_EXPORT BtCompany : public BlMainCompany, public Input
 {
 private:
     /// Puntero al mainWindow

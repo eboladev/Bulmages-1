@@ -12,7 +12,7 @@
 class BtCompany;
 
 
-class Input : public QLineEdit
+class BT_EXPORT Input : public QLineEdit
 {
     Q_OBJECT
 

@@ -111,6 +111,12 @@ include_directories(
 QT4_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 
+IF(WIN32)
+set(bulmacont_RCCS ../../bulmages.qrc)
+QT4_ADD_RESOURCES(bulmacont_RCC_SRCS ${bulmacont_RCCS})
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBC_BULMACONT)
+ENDIF(WIN32)
+
 
 # i18n
 if(WIN32)
@@ -137,7 +143,7 @@ endif(USE_GETTEXT)
 
 
 add_library(libbulmacont SHARED ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
-		${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS} )
+		${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS} ${bulmacont_RCC_SRCS})
 
 set_target_properties( libbulmacont PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
@@ -148,7 +154,7 @@ target_link_libraries( libbulmacont bulmalib ${QT_LIBRARIES}
 				${PGSQL_LIBRARIES})
 
 
-add_executable(bulmacont ${bulmacontEx})
+add_executable(bulmacont ${bulmacontEx} ${bulmafact_RCC_SRCS})
 
 target_link_libraries( bulmacont libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 

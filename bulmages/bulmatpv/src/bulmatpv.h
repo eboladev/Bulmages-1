@@ -40,7 +40,7 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class BulmaTPV: public BlMainWindow, public Ui_BulmaTPVBase
+class BT_EXPORT BulmaTPV: public BlMainWindow, public Ui_BulmaTPVBase
 {
     Q_OBJECT
 

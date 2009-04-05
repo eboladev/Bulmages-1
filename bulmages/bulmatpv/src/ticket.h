@@ -32,7 +32,7 @@
 #include "blfixed.h"
 
 
-class Ticket :  public BlWidget, public BlDbRecord
+class BT_EXPORT Ticket :  public BlWidget, public BlDbRecord
 {
     Q_OBJECT
 

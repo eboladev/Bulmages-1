@@ -23,6 +23,14 @@
 #ifndef BL_DEFS
 #define BL_DEFS
 
+
+/// Creo las macros de exportacion/importacion para windows
+/// En windows una libreria dinamica (DLL) requiere una
+/// exportacion de las funciones al ser compilada y una
+/// importacion de las mismas al ser utilizada. De ahi las macros
+
+/// NOTA: Tal vez estas definiciones deberian ir en cada uno
+/// de los programas pero de momento es mas facil juntarlos aqui.
 #ifdef WIN32
 
 #ifdef BL_BULMALIB
@@ -37,19 +45,32 @@
 #define BF_EXPORT __declspec(dllimport)
 #endif
 
+#ifdef BC_BULMACONT
+#define BC_EXPORT __declspec(dllexport)
+#else
+#define BC_EXPORT __declspec(dllimport)
+#endif
 
+#ifdef BT_BULMATPV
+#define BT_EXPORT __declspec(dllexport)
+#else
+#define BT_EXPORT __declspec(dllimport)
+#endif
 #else
 
 #define BL_EXPORT
 #define BF_EXPORT
+#define BC_EXPORT
+#define BT_EXPORT
 
 #endif
 
 
+/// Trasladamos los modos edicion o seleccion a defines ya
+/// que son utilizados en muchas clases y ademas no hay
+/// una superclase que los englobe a todos.
 #define BL_EDIT_MODE   0
 #define BL_SELECT_MODE 1
-
-
 typedef unsigned int edmode;
 #endif
 

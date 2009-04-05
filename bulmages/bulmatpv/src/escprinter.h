@@ -24,6 +24,8 @@
 
 #include <QString>
 #include <QByteArray>
+#include "bldefs.h"
+
 
 #define CHARACTER_FONTA_SELECTED 0x00
 #define CHARACTER_FONTB_SELECTED 0x01
@@ -133,7 +135,7 @@ enum qrErrorCorrection {
 
 };
 
-class EscPrinter
+class BT_EXPORT EscPrinter
 {
 public:
     EscPrinter();

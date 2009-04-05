@@ -37,7 +37,7 @@ class BtSubForm;
 
 /// Clase BtSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BtSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+class BT_EXPORT BtSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
 {
 protected:
     BtSubForm *m_subform;
@@ -57,7 +57,7 @@ public:
 /** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
     comunes de la facturaci&oacute;n.
 */
-class BtSubForm : public BlSubForm
+class BT_EXPORT BtSubForm : public BlSubForm
 {
     Q_OBJECT
 
