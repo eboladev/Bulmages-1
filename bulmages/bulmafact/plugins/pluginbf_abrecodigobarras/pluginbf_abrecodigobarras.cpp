@@ -31,7 +31,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include "pluginbarcodeopen.h"
+#include "pluginbf_abrecodigobarras.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "facturaview.h"
@@ -178,7 +178,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbarcodeopen", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_abrecodigobarras", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );

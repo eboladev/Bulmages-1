@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef clientslist_H
-#define clientslist_H
+#ifndef CLIENTSLIST_H
+#define CLIENTSLIST_H
 
 #include "blimportexport.h"
 #include "bfcompany.h"

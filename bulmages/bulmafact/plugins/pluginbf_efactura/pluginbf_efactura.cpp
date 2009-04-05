@@ -26,7 +26,7 @@
 
 #include <stdio.h>
 
-#include "efacturabf.h"
+#include "pluginbf_efactura.h"
 #include "efactura.h"
 // #include "efacturaenvio.h"
 #include "efacturarecepcion.h"
@@ -141,7 +141,7 @@ int entryPoint ( Bulmafact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginefacturabf", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_efactura", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     efacturabf *efact = new efacturabf();
     efact->inicializa ( bges );

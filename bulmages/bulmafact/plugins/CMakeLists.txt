@@ -14,14 +14,13 @@ add_subdirectory(pluginbf_almacen)
 
 
 #efacturabf en desarrollo
-#add_subdirectory(efacturabf)
-#add_subdirectory(pluginbf_efacturapdf)
+#add_subdirectory(pluginbf_efactura)
 
 #pluginvehiculosbf en desarrollo
 #add_subdirectory(pluginbf_vehiculo)
 
 add_subdirectory(pluginbf_trazabilidad)
-add_subdirectory(pluginbarcodeopen)
+add_subdirectory(pluginbf_abrecodigobarras)
 add_subdirectory(pluginbf_catalogo)
 add_subdirectory(pluginbf_informecliente)
 add_subdirectory(pluginbf_inventario)
@@ -43,7 +42,7 @@ add_subdirectory(pluginbf_bulmatpv)
 add_subdirectory(pluginbf_debug)
 add_subdirectory(pluginbf_preciocoste)
 add_subdirectory(pluginresarticulos)
-add_subdirectory(pluginalias)
+add_subdirectory(pluginbf_alias)
 add_subdirectory(pluginbf_datosbase)
 
 add_subdirectory(pluginbf_ivaincluido)

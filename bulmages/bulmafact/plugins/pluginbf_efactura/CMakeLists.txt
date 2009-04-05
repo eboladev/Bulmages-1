@@ -1,10 +1,9 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginbarcodeopen
+#pluginbf_efactura
 
-set (plugin pluginbarcodeopen)
-set (docs README.es)
+set (plugin pluginbf_efactura)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -25,19 +24,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepedido/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
- 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbarcodeopen/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/
- 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
- 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -50,7 +37,6 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
-
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
@@ -67,15 +53,6 @@ ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"${plugin}\",String)'" )
 endif(NOT WIN32)
 
 
-if(USE_GETTEXT)
-   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
-                        ${plugin_SRCS} ${plugin_MOCS})
-   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
-                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
-endif(USE_GETTEXT)
-
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
@@ -88,9 +65,4 @@ set_target_properties( ${plugin} PROPERTIES
 
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
-
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
-
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_proveedorpedido pluginbf_clientefactura pluginbf_proveedoralbaran pluginbf_clientecobro pluginbf_proveedorpago pluginbf_proveedorfactura pluginbf_clientealbaran pluginbf_clientepedido)
+add_dependencies(${plugin} bulmafact bulmalib)

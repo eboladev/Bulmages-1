@@ -6,7 +6,7 @@
 
 Nombre: Apertura Rapida Desde Códigos de Barras
 
-Biblioteca: libpluginbarcodeopen.so
+Biblioteca: libpluginbf_abrecodigobarras.so
 
 Descripción: <H1>Codigos de Barras</H1>
 <P>Presenta una opción de menu que permite acceder de forma rápida a la ficha

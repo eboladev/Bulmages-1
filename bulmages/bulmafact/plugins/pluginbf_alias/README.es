@@ -6,24 +6,24 @@
 
 Nombre: Alias
 
-Biblioteca: libpluginalias.so
+Biblioteca: libpluginbf_alias.so
 
 Descripción: <H1>Alias</H1>
 <P>Permite la intruduccion de aliases de articulo que sirven como codigos adicionales de articulo.
 Esta capacidad es muy util cuando tenemos varios articulos que tienen codigos de barras distintos pero
 que se tratan como el mismo articulo.</P>
 
-ParmBD: DBRev-Alias
+ParmBD: PluginBf_Alias
 
-ArchivoSQLpatch: revf-pluginalias.sql
+ArchivoSQLpatch: pluginbf_alias.sql
 
-ArchivoSQLdeins: rm-pluginalias.sql
+ArchivoSQLdeins: pluginbf_alias-rm.sql
 
 Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 Orden: 900
 

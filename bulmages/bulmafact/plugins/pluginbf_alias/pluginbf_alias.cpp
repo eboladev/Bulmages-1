@@ -22,7 +22,7 @@
 #include <QTime>
 #include <QWidget>
 
-#include "pluginalias.h"
+#include "pluginbf_alias.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 
@@ -40,12 +40,12 @@ int g_minLenAlias=0;
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    
+
     _depura ( "Punto de entrada del plugin de alias\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginalias", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbf_alias", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     g_ultimRefrescAlias.start();
     return 0;
@@ -59,8 +59,9 @@ void invalidaEstadAlias(void) {
         g_maxLenAlias = 0;
 }
 
+
 bool posibleAlias(QString alias, BlMainCompany *eb) {
-   if ( MILISEG_REFRESCO_ESTAD_ALIAS &&       
+   if ( MILISEG_REFRESCO_ESTAD_ALIAS && 
        (g_ultimRefrescAlias.elapsed()>MILISEG_REFRESCO_ESTAD_ALIAS)) {
        invalidaEstadAlias();
    }
@@ -230,7 +231,7 @@ int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel 
 }
 
 int BlSubForm_campoCompleto(BlSubForm *grid,void **resultat) {
-   _depura("BlSubForm_campoCompleto de pluginalias",0);
+   _depura("BlSubForm_campoCompleto de pluginbf_alias",0);
    BusquedaArticuloDelegate *baDel = dynamic_cast<BusquedaArticuloDelegate *>( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ));
     if (baDel) {
          _depura("camp de codi article/alias. count="+QString::number(baDel->count()),0);
@@ -240,7 +241,7 @@ int BlSubForm_campoCompleto(BlSubForm *grid,void **resultat) {
          }
     }
   
-   _depura("END BlSubForm_campoCompleto de pluginalias",0);
+   _depura("END BlSubForm_campoCompleto de pluginbf_alias",0);
     
   return 0; // continua el processament normal
  }

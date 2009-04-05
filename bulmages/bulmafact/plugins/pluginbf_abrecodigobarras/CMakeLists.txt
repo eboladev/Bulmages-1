@@ -1,18 +1,13 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginalias
+#pluginbf_abrecodigobarras
 
-set (plugin pluginalias)
+set (plugin pluginbf_abrecodigobarras)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
-
-# Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginalias.h)
-list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
 file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
@@ -31,8 +26,18 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepedido/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorpedido/
+ 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbarcodeopen/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbarcodeopen/
+ 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
+ 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -45,7 +50,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
-# build sources, moc'd sources, and rcc'd sources
+
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
@@ -71,6 +76,7 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
+# build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
@@ -87,12 +93,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
-install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
-
-set(files dbmodels/revf-pluginalias.sql)
-
-install(FILES ${files} DESTINATION share/bulmages/dbmodels/plugins)
-
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_proveedorpedido pluginbf_clientefactura pluginbf_proveedoralbaran pluginbf_clientecobro pluginbf_proveedorpago pluginbf_proveedorfactura pluginbf_clientealbaran pluginbf_clientepedido)
