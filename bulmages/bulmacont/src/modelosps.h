@@ -39,7 +39,7 @@ enum {
 
 
 /// Clase base para rellenar todos los formularios oficiales desde el pdf de www.aeat.es
-class Genps_thread : public QThread
+class BC_EXPORT Genps_thread : public QThread
 {
 public:
     Genps_thread ( QString, QString, QProgressDialog * );
@@ -49,7 +49,7 @@ public:
 };
 
 
-class Psprogressdialog : public QProgressDialog
+class BC_EXPORT Psprogressdialog : public QProgressDialog
 {
 public:
     Psprogressdialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera );
@@ -61,7 +61,7 @@ public:
 /** Utiliza los formularios oficiales obtenidos de www.aeat.es convertidos de pdf a postscript.
     funciona insertando c&oacute;digo postscript para escribir los n&uacute;meros en las casillas.
     Usa la fuente Courier-Bold a 12 puntos. */
-class Modgenps : public QObject
+class BC_EXPORT Modgenps : public QObject
 {
 public:
     Modgenps();

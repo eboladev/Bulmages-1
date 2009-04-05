@@ -28,7 +28,7 @@
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class AsientoListSubform : public BcSubForm
+class BC_EXPORT AsientoListSubform : public BcSubForm
 {
     Q_OBJECT
 

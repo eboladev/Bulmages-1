@@ -35,7 +35,7 @@ class BcCompany;
 /// La clase fpagoview se encarga de la gesti&oacute;n de formas de pago.
 /** Las formas de pago son unas plantillas que se usan para determinar las formas en
     que se pagan o se cobran las facturas emitidas o recibidas. */
-class fpagoview : public BcForm, public Ui_FPagoBase
+class BC_EXPORT fpagoview : public BcForm, public Ui_FPagoBase
 {
     Q_OBJECT
 

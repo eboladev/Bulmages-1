@@ -28,7 +28,7 @@
 class BcCompany;
 
 
-class CambiaCtaView : public QDialog, public Ui_CambiaCuentaBase, public BlMainCompanyPointer
+class BC_EXPORT CambiaCtaView : public QDialog, public Ui_CambiaCuentaBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 public:

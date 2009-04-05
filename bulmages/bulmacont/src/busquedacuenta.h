@@ -35,7 +35,7 @@
 class BcCompany;
 
 
-class BusquedaCuentaDelegate : public BlComboBox
+class BC_EXPORT BusquedaCuentaDelegate : public BlComboBox
 {
     Q_OBJECT
 
@@ -53,7 +53,7 @@ public slots:
 };
 
 
-class BusquedaCuenta : public BlWidget, public Ui_BusquedaCuentaBase
+class BC_EXPORT BusquedaCuenta : public BlWidget, public Ui_BusquedaCuentaBase
 {
     Q_OBJECT
 

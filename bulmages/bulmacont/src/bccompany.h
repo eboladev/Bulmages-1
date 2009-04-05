@@ -36,6 +36,7 @@
 #include "blworkspace.h"
 #include "blmaincompany.h"
 #include "blsplashscreen.h"
+#include "bldefs.h"
 
 
 class SelectCCosteView;
@@ -61,7 +62,7 @@ class Bulmacont;
     objetos de modo que estos s&oacute;lo tengan referencias a esta clase y haciendo el
     flujo del c&oacute;digo m&aacute;s f&aacute;cil de entender.
     \todo Proporcionar la funcionalidad de comunicaci&oacute;n entre las otras clases. */
-class BcCompany : public BlMainCompany
+class BC_EXPORT BcCompany : public BlMainCompany
 {
 private:
     Bulmacont *m_bulmacont;

@@ -36,7 +36,7 @@
 class BcCompany;
 
 
-class canalview : public BcForm, public Ui_canaldlg
+class BC_EXPORT canalview : public BcForm, public Ui_canaldlg
 {
     Q_OBJECT
 

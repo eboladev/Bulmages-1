@@ -32,7 +32,7 @@
 class BcCompany ;
 
 
-class miQTreeWidgetItem : public QTreeWidgetItem
+class BC_EXPORT miQTreeWidgetItem : public QTreeWidgetItem
 {
 public:
     miQTreeWidgetItem ( QTreeWidget *parent );
@@ -43,7 +43,7 @@ public:
 };
 
 
-class BbloqFecha : public BcForm, public Ui_BBloqFechaBase
+class BC_EXPORT BbloqFecha : public BcForm, public Ui_BBloqFechaBase
 {
     Q_OBJECT
 

@@ -23,11 +23,11 @@
 #define _QLINEEDIT1_H_
 
 #include <QLineEdit>
-
+#include "bldefs.h"
 
 ///
 /** */
-class QLineEdit1: public QLineEdit
+class BC_EXPORT QLineEdit1: public QLineEdit
 {
 public:
     int hola;

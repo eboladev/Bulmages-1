@@ -37,7 +37,7 @@ class BcCompany;
 /// Presenta un listado del plan contable.
 /** Esta pantalla tiene dos modos de funcionamiento, en uno act&uacute;a como selector de
     cuentas y en el otro act&uacute;a como soporte para la edici&oacute;n del plan contable. */
-class listcuentasview1 : public BcForm, public Ui_ListCuentasBase, public BlImportExport
+class BC_EXPORT listcuentasview1 : public BcForm, public Ui_ListCuentasBase, public BlImportExport
 {
     Q_OBJECT
 

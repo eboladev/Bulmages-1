@@ -61,7 +61,7 @@
     al asiento abierto.
     En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
 */
-class aplinteligentesview : public BcForm, public Ui_AplInteligentesBase
+class BC_EXPORT aplinteligentesview : public BcForm, public Ui_AplInteligentesBase
 {
     Q_OBJECT
 

@@ -35,7 +35,7 @@
     postscript.
     Utiliza los formularios oficiales obtenidos de la Agencia Tributaria (http://www.aeat.es)
     convertidos de pdf a postscript. Hereda de \ref Modgenps */
-class Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps
+class BC_EXPORT Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps
 {
     Q_OBJECT
 

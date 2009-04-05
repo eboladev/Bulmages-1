@@ -35,7 +35,7 @@ class BcCompany;
 
 ///
 /** */
-class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public BlMainCompanyPointer
+class BC_EXPORT mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

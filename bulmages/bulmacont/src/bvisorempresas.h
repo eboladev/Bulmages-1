@@ -18,6 +18,7 @@
 
 #include <QListView>
 
+#include "bldefs.h"
 #include "bselector.h"
 #include "uivisorempresas.h"
 #include "blpostgresqlclient.h"
@@ -26,7 +27,7 @@
 class BSelector;
 
 
-class BVisorEmpresas : public UIvisorEmpresas
+class BC_EXPORT BVisorEmpresas : public UIvisorEmpresas
 {
 
 public:

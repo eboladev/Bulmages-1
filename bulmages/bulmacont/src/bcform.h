@@ -30,7 +30,7 @@
 /** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
     comunes a todas las pantallas.
 */
-class BcForm : public BlForm
+class BC_EXPORT BcForm : public BlForm
 {
     Q_OBJECT
 

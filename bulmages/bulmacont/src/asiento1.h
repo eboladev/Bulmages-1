@@ -34,7 +34,7 @@ class BcCompany ;
 
 /// Clase Asiento1.
 /** */
-class Asiento1 : public BcForm
+class BC_EXPORT Asiento1 : public BcForm
 {
     Q_OBJECT
 

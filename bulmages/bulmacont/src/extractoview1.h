@@ -35,7 +35,7 @@ class BcCompany;
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
-class extractoview1 : public BcForm, public Ui_ExtractoBase
+class BC_EXPORT extractoview1 : public BcForm, public Ui_ExtractoBase
 {
     Q_OBJECT
 

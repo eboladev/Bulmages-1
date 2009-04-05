@@ -42,7 +42,7 @@ class BcCompany;
 /// Clase que corresponde con la ventana de impresi&oacute;n de extractos.
 /** \todo Falta hacer que en los campos se haga el autocompletado.
     \todo Falta incluir el filtrado en el extracto. */
-class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, BlMainCompanyPointer
+class BC_EXPORT ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, BlMainCompanyPointer
 {
     Q_OBJECT
 

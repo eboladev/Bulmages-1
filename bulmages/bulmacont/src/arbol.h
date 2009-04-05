@@ -37,7 +37,7 @@
     todos los estados de cada cuenta (las hojas) cada vez que se modifican los valores
     de alguna de ellas.
 */
-class Arbol
+class BC_EXPORT Arbol
 {
 private:
     struct tipohoja;
