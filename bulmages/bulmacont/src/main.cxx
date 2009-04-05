@@ -50,7 +50,7 @@
 
 #include <iostream>
 
-/// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
+/// Faltan el configurador de par&aacute;metros g_confpr y el sistema de log ctlog.
 
 /// Los datos de ejecuci&oacute;n del programa son sencillos.
 /** La ejecuci&oacute;n primero crea e inicializa los objetos configuraci&oacute;n,
@@ -62,7 +62,7 @@
 int main ( int argc, char **argv )
 {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
-    confpr = new BlConfiguration ( "bulmacont" );
+    g_confpr = new BlConfiguration ( "bulmacont" );
     int valorsalida = 0;
     bool success = false;
     QString db = "";
@@ -73,7 +73,7 @@ int main ( int argc, char **argv )
     try {
         /// Inicializa el sistema de traducciones 'gettext'.
         setlocale(LC_ALL, "");
-        bindtextdomain ("bulmacont", confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        bindtextdomain ("bulmacont", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         textdomain ("bulmacont");
 
         /// Inicializamos el objeto global para uso de plugins.
@@ -81,14 +81,14 @@ int main ( int argc, char **argv )
 
         /// Creamos la aplicaci&oacute;n principal.
         g_theApp = new BlApplication ( argc, argv );
-        g_theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii() ) ) );
+        g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii() ) ) );
 
         /// Definimos la codificaci&oacute;n a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
         /// Cargamos el BlSplashScreen.
-        BlSplashScreen *splashScr = new BlSplashScreen ( confpr->valor ( CONF_SPLASH_BULMACONT ), "Iglues/BulmaCont", CONFIG_VERSION );
+        BlSplashScreen *splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMACONT ), "Iglues/BulmaCont", CONFIG_VERSION );
         splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
@@ -98,8 +98,8 @@ int main ( int argc, char **argv )
 	    db = argv[2];
 	    us = argv[3];
 	    pass = argv[4];
-            confpr->setValor ( CONF_LOGIN_USER, us );
-            confpr->setValor ( CONF_PASSWORD_USER, pass );
+            g_confpr->setValor ( CONF_LOGIN_USER, us );
+            g_confpr->setValor ( CONF_PASSWORD_USER, pass );
             bges = new Bulmacont ( NULL, 0, db );
             bges->hide();
         } else if ( argc == 3 ) {
@@ -129,29 +129,29 @@ int main ( int argc, char **argv )
             QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
             fprintf ( stderr, "%s", mensaje.toAscii().constData() );
         } else {
-            confpr->leeconfig ( confEsp );
+            g_confpr->leeconfig ( confEsp );
         } // end if
 
 
 	// Pone el color de fondo del workspace si esta definido y es un color valido.
-	if ( QColor(confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
-	    bges->workspace()->setBackground(QBrush(QColor( confpr->valor ( CONF_BACKGROUND_COLOR ) )));
+	if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
+	    bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
 	} // end if
 
 	// Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-	if ( !QImage(confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-	    bges->workspace()->setBackground(QBrush( QImage(confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+	if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
+	    bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
 	} // end if
 
 	/// Hacemos la carga de las hojas de estilo.
-	QFile arch(confpr->valor(CONF_STYLESHEET));
+	QFile arch(g_confpr->valor(CONF_STYLESHEET));
 	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
 	  QString style = arch.readAll();
 	  g_theApp->setStyleSheet(style);
 	} // end if
 
         /// Cargamos las librerias de g_plugins.
-        g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMACONT ) );
+        g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMACONT ) );
 
         splashScr->mensaje ( _( "Lanzando plugins" ) );
         splashScr->setBarraProgreso ( 5 );
@@ -179,7 +179,7 @@ int main ( int argc, char **argv )
     /// Liberamos memoria.
     delete bges;
     delete g_theApp;
-    delete confpr;
+    delete g_confpr;
 
     fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
     return valorsalida;

@@ -64,7 +64,7 @@ bool posibleAlias(QString alias, BlMainCompany *eb) {
        (g_ultimRefrescAlias.elapsed()>MILISEG_REFRESCO_ESTAD_ALIAS)) {
        invalidaEstadAlias();
    }
-   if ((g_minAlias==NULL)&&(g_maxAlias==NULL)) {
+   if ((g_minAlias == (QString)NULL)&&(g_maxAlias==(QString)NULL)) {
        	BlDbRecordSet *cur = eb ->loadQuery (
         "SELECT \
    (SELECT cadalias FROM alias ORDER by cadalias  USING ~<~ LIMIT 1) as minalias,\
@@ -78,7 +78,7 @@ bool posibleAlias(QString alias, BlMainCompany *eb) {
 
         // si la taula alias es buida posem un max impossible per evitar tornar 
         // a buscar fins que en donin un d'alta (en l'alta posen NULL a g_maxAlias)
-        if (g_maxAlias == NULL) {
+        if (g_maxAlias == (QString)NULL) {
             g_maxAlias="";
         }
         g_ultimRefrescAlias.restart();

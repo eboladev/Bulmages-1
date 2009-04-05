@@ -74,7 +74,7 @@ void EmailThunderbirdQToolButton::setBoton()
     setToolTip ( _("Enviar por e-mail con Thunderbird al cliente") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/icon_mozilla-thunderbird.xpm"  ) );
+    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/icon_mozilla-thunderbird.xpm"  ) );
     setIconSize ( QSize ( 22, 22 ) );
 
     _depura ( "END EmailThunderbirdQToolButton::setBoton", 0 );
