@@ -38,13 +38,46 @@ mantenimiento compilando bulmatpv en sus nuevas versiones junto a sus plugins.
 Plugins
 =======
 
-Actualmente se compilan estos plugins por defecto en la mayoria de plataformas:
+Actualmente hay los siguientes plugins disponibles para BulmaTPV:
 
-- pluginticketbasico 
-- plugintecladonumerico
-- plugintotal
-- pluginartgraficos
-- pluginadmin
-- plugincobrar
+
 - pluginabrevs * no en OSX
+- pluginadmin
+- pluginalias1
+- pluginaliastpv
+- pluginartgraficos
+- pluginartsubform
+- pluginbt_btaccesobotones
+- pluginbt_articulografico
+- pluginbt_articulosubform
+- pluginbt_buscaarticulo
+- pluginbt_buscacliente
+- pluginbt_cambio
+- pluginbt_cambioivaincluido
+- pluginbt_cobrar
+- pluginbt_tecladonumerico
+- pluginbt_ticket
+- pluginbt_ticketivaincluido
+- pluginbt_total
+- pluginbt_totalivaincluido
+- pluginbt_visor
+- pluginbuscaarticulo
+- pluginbuscacliente
+- plugincambio
+- plugincambioivainc
+- plugincobrar
+- plugindevolucion
+- plugindevolucion2
+- plugintcaliastpv
+- plugintccompras
+- plugintecladonumerico
+- pluginticketbasico
+- pluginticketbasicoivainc
+- pluginticketdesglose
+- pluginticketsdevueltos
+- plugintotal
+- plugintotalivainc
+- plugintpvivainc
+- plugintpvsuncbulmacont
+- pluginvisor
 

@@ -33,29 +33,103 @@ Plugins
 
 Actualmente se compilan estos plugins por defecto en la mayoria de plataformas:
 
-- comercialbf (Plugin de Comerciales)
-- plugintpv (Plugin de TPV)
-- plugin (Plugin ejemplo)
-- barcodeopen (Plugin de apertura rápida a partir de códigos de barras)
-- plugincatalogo (Plugin de catálogos)
-- plugincontratos (Plugin de Informes de Clientes)
-- impresionesmultiples (Plugin de Impresiones Múltiples)
-- plugininformeclientes (Plugin de Informes de Clientes)
-- plugininventarios (Plugin de Inventarios)
-- pluginmail (Plugin de  envio de documentos por e-mail)
-- pluginpromedios (Plugin promedios)
-- pluginq19 (Plugin q19)
-- pluginsyncbulmacont (Sincronización con Bulmacont)
-- plugintarifas (Plugin de tarifas)
-- pluginticket (Plugin de  impresion de tickets)
-- plugintrazabilidad (Plugin de Trazabilidad)
-- plugintipostrabajo (Plugin de trabajadores)
-- pluginresarticulos (Plugin de Resumenes por Articulo)
-- plugincuadrante (Plugin de cuadrante)
-- plugininformeclientessxc (Plugin de Informes de Clientes)
+- pluginbf_comercial (Plugin de Comerciales)
+- pluginbf_bulmatpv (Plugin de TPV)
+- pluginbf_abrecodigobarras (Plugin de apertura rápida a partir de códigos de barras)
+- pluginbf_catalogo (Plugin de catálogos)
+- pluginbf_contrato (Plugin de Informes de Clientes)
+- pluginbf_multiimprimir (Plugin de Impresiones Múltiples)
+- pluginbf_informecliente (Plugin de Informes de Clientes)
+- pluginbf_inventario (Plugin de Inventarios)
+- pluginbf_correo (Plugin de  envio de documentos por e-mail)
+- pluginbf_promedios (Plugin promedios)
+- pluginbf_q19 (Plugin q19)
+- pluginbf_sincrobulmacont (Sincronización con Bulmacont)
+- pluginbf_tarifa (Plugin de tarifas)
+- pluginbF_ticket (Plugin de  impresion de tickets)
+- pluginbf_trazabilidad (Plugin de Trazabilidad)
+- pluginbf_tipotrabajo (Plugin de trabajadores)
+- pluginbf_articulo (Plugin de Resumenes por Articulo)
+- pluginbf_cuadrante (Plugin de cuadrante)
+- pluginbf_informecliente2sxc (Plugin de Informes de Clientes)
 
 
-#sense info
+Todos los Plugins
+=================
+
+Aqui esta la lista de todos los plugins disponibles para BulmaFact
+
+
+- pluginalmacen
+- pluginbf_abrecodigobarras
+- pluginbf_abrereferencia
+- pluginbf_actividad
+- pluginbf_alias
+- pluginbf_almacen
+- pluginbf_alumno
+- pluginbf_articulo
+- pluginbf_asociacion
+- pluginbf_asterisk
+- pluginbf_banco
+- pluginbf_bulmacont
+- pluginbf_bulmatpv
+- pluginbf_catalogo
+- pluginbf_cliente
+- pluginbf_clientealbaran
+- pluginbf_clientealbaranesfactura
+- pluginbf_clientecobro
+- pluginbf_clientefactura
+- pluginbf_clientepedido
+- pluginbf_clientepresupuesto
+- pluginbf_clienteproveedor
+- pluginbf_comercial
+- pluginbf_compraventa
+- pluginbf_contrato
+- pluginbf_corrector
+- pluginbf_correo
+- pluginbf_correothunderbird
+- pluginbf_cuadrante
+- pluginbf_datosbase
+- pluginbf_debug
+- pluginbf_efactura
+- pluginbf_etiquetado
+- pluginbf_etiquetas
+- pluginbf_example
+- pluginbf_formasdepago
+- pluginbf_gestassociacio
+- pluginbf_informecliente
+- pluginbf_informecliente2sxc
+- pluginbf_inventario
+- pluginbf_iva
+- pluginbf_ivaincluido
+- pluginbf_multiimprimir
+- pluginbf_preciocoste
+- pluginbf_preciocoste
+- pluginbf_profesor
+- pluginbf_promedios
+- pluginbf_proveedor
+- pluginbf_proveedoralbaran
+- pluginbf_proveedorfactura
+- pluginbf_proveedorpago
+- pluginbf_proveedorpedido
+- pluginbf_ql9
+- pluginbf_qwebcam
+- pluginbf_recibo
+- pluginbf_seriesfactura
+- pluginbf_sincrobulmacont
+- pluginbf_tallascolores
+- pluginbf_tarifa
+- pluginbf_ticket
+- pluginbf_tipotrabajo
+- pluginbf_trabajador
+- pluginbf_trazabilidad
+- pluginbf_tutor
+- pluginbf_vehiculo
+- pluginbf_z2z
+- pluginresarticulos
+
+
+
 add_subdirectory(pluginalmacen)
 add_subdirectory(pluginasterisk)
 add_subdirectory(plugindebugbf)

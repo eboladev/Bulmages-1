@@ -28,24 +28,26 @@ plugin.
 Nota: Cree plugins específicos para sus clientes y ofrezca un servicio de
 mantenimiento compilando bulmacont en sus nuevas versiones junto a sus plugins.
 
-Plugins
-=======
+Plugins Disponibles
+===================
 
-Actualmente se compilan estos plugins por defecto en la mayoria de plataformas:
+Actualmente estan disponibles los siguientes plugins para BulmaCont:
 
-- pluginregistroiva (Plugin registro de IVA)
-- plugincorrector (Plugin corrector)
 - plugin (Plugin ejemplo)
-- plugindebugbc
-- pluginbalancetree
-- pluginbalance1
-- plugincanualesods (Plugin de balances)
+- plugindocumental
 - pluginbalance
-- pluginresumcta
-
-Bajo desarrollo y no operativos estan:
+- pluginbalance-old
+- pluginbalancetree
+- pluginbc_example
+- plugincanualesods (Plugin de balances)
+- plugincorrector (Plugin corrector)
+- plugindebugbc
+- pluginestadisticas
+- pluginonline
 - pluginproyectos
-- pluginimportcontaplus
-
+- pluginpychart
+- pluginregistroiva (Plugin registro de IVA)
+- pluginresumcta
+- pluginregistroiva
 
 

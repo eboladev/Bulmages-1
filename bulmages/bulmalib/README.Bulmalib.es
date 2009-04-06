@@ -31,11 +31,16 @@ Plugins
 
 Bulmalib contiene los siguientes plugins: 
 
-- pluginsubformsxc
-- pluginsubformods
-- pluginclipboardbf
-- pluginimpers
-- pluginimportcsv
-- plugininformes
-- pluginsubformprint
-- plugindocked * no en OSX
+- pluginbl_attachdocument
+- pluginbl_embed
+- pluginbl_importcsv
+- pluginbl_report2ods
+- pluginbl_subform2pdf
+- pluginbl_template
+- pluginbl_template2ods
+- pluginbl_clipboard
+- pluginbl_formlock
+- pluginbl_report
+- pluginbl_subform2ods
+- pluginbl_subform2sxc
+- pluginbl_template2mail

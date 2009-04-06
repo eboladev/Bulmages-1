@@ -11,8 +11,24 @@ BulmaSetup
 ==========
 
 Este directorio contiene todo el código fuente del programa de BulmaSetup.
-BulmaSetup es un probrama escrito en PyQt4 y sirve para configurar la suite
+BulmaSetup es un programa escrito en PyQt4 y sirve para configurar la suite
 BulmaGés.
+
+Con BulmaSetup podras:
+=====================
+
+- Crear Usuarios de PostgreSQL
+- Modificar permisos de los Usuarios de PostgreSQL
+- Eliminar Usuarios de PostgreSQL
+
+- Crear una nueva Empresa en BulmaCont
+- Crear una nueva Empresa en BulmaFact
+
+- Administrar Empresas ya existentes
+
+- Restaurar Copias de Seguridad de bases de datos de PostgreSQL
+
+
 
 Estructura
 ==========
