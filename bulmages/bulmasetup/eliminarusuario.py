@@ -49,24 +49,41 @@ class EliminarUsuario(QtGui.QDialog, Ui_EliminarUsuario):
             
     def on_mui_eliminarusuario_released(self):
         
-        numero = self.listWidget.count()
-        temp = QtGui.QListWidgetItem() 
+        Yes = 'Si'
+        No = 'No'
+        respuesta = False
         
-        for x in range (numero):
-        	temp = self.listWidget.item(x)
-        	
-        	if (temp.isSelected()):
-        		self.username = temp.text()
-        		self.listWidget.takeItem(x)
-        		break
-        		
-	if self.username.contains("  (su)"):
-		self.username.remove("  (su)")
-		
-        self.comando = 'su postgres -c "dropuser ' + str(self.username) + '"'
-	self.process.start(self.comando)
-	self.process.waitForFinished(-1)
-	
+        message = QtGui.QMessageBox(self)
+        message.setText('Seguro que deseas eliminar el usuario ?')
+        message.setWindowTitle('Confirmacion')
+        message.setIcon(QtGui.QMessageBox.Question)
+        message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+        message.addButton(No, QtGui.QMessageBox.RejectRole)
+        
+        message.exec_()
+        
+        respuesta = message.clickedButton().text()
+        
+        if respuesta == Yes:
+            
+            numero = self.listWidget.count()
+            temp = QtGui.QListWidgetItem()
+            
+            for x in range (numero):
+                    temp = self.listWidget.item(x)
+                    
+                    if (temp.isSelected()):
+                            self.username = temp.text()
+                            self.listWidget.takeItem(x)
+                            break
+                            
+            if self.username.contains("  (su)"):
+                    self.username.remove("  (su)")
+                    
+            self.comando = 'su postgres -c "dropuser ' + str(self.username) + '"'
+            self.process.start(self.comando)
+            self.process.waitForFinished(-1)
+        
 def main(args):
     app=QtGui.QApplication(args)
     win=EliminarUsuario()
