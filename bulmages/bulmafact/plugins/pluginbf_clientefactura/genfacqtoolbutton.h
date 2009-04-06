@@ -18,9 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef GENFACQTOOLBUTTON_H
+#define GENFACQTOOLBUTTON_H
+
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
+#include "pdefs.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
@@ -28,7 +32,7 @@
 #include <QString>
 
 
-class GenFacQToolButton : public QToolButton
+class MY_EXPORT GenFacQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -48,7 +52,7 @@ public slots:
 
 };
 
-class AgFacQToolButton : public QToolButton
+class MY_EXPORT AgFacQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -65,4 +69,6 @@ public slots:
     virtual void click();
 
 };
+
+#endif
 

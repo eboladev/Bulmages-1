@@ -17,13 +17,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+ 
+#ifndef PLUGINBF_CLIENTEFACTURA_H
+#define PLUGINBF_CLIENTEFACTURA_H
+ 
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
+#include "pdefs.h"
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
@@ -35,7 +34,6 @@
 #include "presupuestoview.h"
 #include "bfcompany.h"
 
-
 extern "C" MY_EXPORT int SNewFacturaView (BfCompany *);
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
@@ -46,8 +44,7 @@ extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteV
 extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
-
-// 
+ 
 class mypluginfact : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
@@ -64,3 +61,6 @@ public slots:
     void elslot();
     void elslot1();
 };
+
+
+#endif
