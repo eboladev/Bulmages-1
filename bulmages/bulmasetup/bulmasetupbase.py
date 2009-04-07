@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Tue Mar 31 18:41:30 2009
+# Created: Tue Apr  7 16:18:14 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_gestionusuarios.setText(QtGui.QApplication.translate("MainWindow", "Gestiónar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_gestionusuarios.setText(QtGui.QApplication.translate("MainWindow", "Gestionar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmacont.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Contabilidad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturacion / TPV", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

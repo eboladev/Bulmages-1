@@ -22,7 +22,7 @@ class EliminarUsuario(QtGui.QDialog, Ui_EliminarUsuario):
             # superusuario de bases de datos de postgres para que este script
             # funcione correctamente. Con el usuario postgres basta con poner:
             # createuser root
-            conn = psycopg2.connect("dbname='template1' user='root' host='localhost'")
+            conn = psycopg2.connect("dbname='template1' user='root'")
         except:
             print "Fallo en la conexion con PostgreSQL."
             sys.exit()

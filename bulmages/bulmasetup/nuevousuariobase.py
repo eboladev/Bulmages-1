@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'nuevousuariobase.ui'
 #
-# Created: Thu Apr  2 17:19:36 2009
+# Created: Tue Apr  7 16:18:52 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -60,7 +60,7 @@ class Ui_NuevoUsuario(object):
         NuevoUsuario.setTabOrder(self.mui_password, self.mui_botonera)
 
     def retranslateUi(self, NuevoUsuario):
-        NuevoUsuario.setWindowTitle(QtGui.QApplication.translate("NuevoUsuario", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        NuevoUsuario.setWindowTitle(QtGui.QApplication.translate("NuevoUsuario", "Nuevo Usuario", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("NuevoUsuario", "Password", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("NuevoUsuario", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_superusuario.setText(QtGui.QApplication.translate("NuevoUsuario", "Super Usuario", None, QtGui.QApplication.UnicodeUTF8))

@@ -63,7 +63,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text" >
-     <string>Gestiónar Usuarios de PostgreSQL</string>
+     <string>Gestionar Usuarios de PostgreSQL</string>
     </property>
     <property name="icon" >
      <iconset resource="resources.qrc" >
