@@ -27,6 +27,7 @@
 #include <QWidget>
 #include <QString>
 
+#include "pdefs.h"
 #include "bfform.h"
 #include "ui_albaranclientebase.h"
 
@@ -40,7 +41,7 @@ class BfCompany;
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
     Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.
 */
-class AlbaranClienteView : public BfForm, public Ui_AlbaranClienteBase
+class MY_EXPORT AlbaranClienteView : public BfForm, public Ui_AlbaranClienteBase
 {
     Q_OBJECT
 

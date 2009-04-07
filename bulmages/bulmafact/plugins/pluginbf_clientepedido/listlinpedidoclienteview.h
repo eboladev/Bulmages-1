@@ -27,11 +27,11 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra las l&iacute;neas de detalle de un pedido de un cliente.
 /** */
-class ListLinPedidoClienteView : public BfSubForm
+class MY_EXPORT ListLinPedidoClienteView : public BfSubForm
 {
     Q_OBJECT
 

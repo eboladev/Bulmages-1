@@ -24,11 +24,11 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n de proveedor.
 /** */
-class ListDescuentoAlbaranProvView : public BfSubForm
+class MY_EXPORT ListDescuentoAlbaranProvView : public BfSubForm
 {
     Q_OBJECT
 

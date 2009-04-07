@@ -25,14 +25,14 @@
 #include "blfunctions.h"
 #include "ui_tiposarticulobase.h"
 #include "bfform.h"
-
+#include "pdefs.h"
 
 class BfCompany;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
 /** */
-class TipoArticuloList : public BfForm, public Ui_tiposarticulobase
+class MY_EXPORT TipoArticuloList : public BfForm, public Ui_tiposarticulobase
 {
     Q_OBJECT
 

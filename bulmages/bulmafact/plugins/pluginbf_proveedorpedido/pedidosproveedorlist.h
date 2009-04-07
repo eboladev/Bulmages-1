@@ -27,11 +27,11 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-
+#include "pdefs.h"
 
 /// Administra las l&iacute;neas de detalle de pedidos a proveedor.
 /** */
-class PedidosProveedorListSubform : public BfSubForm
+class MY_EXPORT PedidosProveedorListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +48,7 @@ public:
 
 /// Muestra y administra la ventana con la informaci&oacute;n de los pedidos a proveedor.
 /** */
-class PedidosProveedorList : public BlFormList, public Ui_PedidosProveedorListBase
+class MY_EXPORT PedidosProveedorList : public BlFormList, public Ui_PedidosProveedorListBase
 {
     Q_OBJECT
 

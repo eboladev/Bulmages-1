@@ -24,19 +24,18 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra la ventana de lista de descuentos por pedido a proveedor.
 /** */
-class ListDescuentoPedidoProveedorView : public BfSubForm
+class MY_EXPORT ListDescuentoPedidoProveedorView : public BfSubForm
 {
     Q_OBJECT
 
 public:
     QString mdb_idpedidoproveedor;
     ListDescuentoPedidoProveedorView ( QWidget *parent = 0 );
-    ~ListDescuentoPedidoProveedorView() {}
-    ;
+    ~ListDescuentoPedidoProveedorView() {};
 
 public slots:
     virtual void cargar ( QString idpedidoproveedor ) {

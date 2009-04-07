@@ -18,6 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef GENPREQTOOLBUTTON_H
+#define GENPREQTOOLBUTTON_H
+
+#include "pdefs.h"
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
@@ -28,7 +32,7 @@
 #include <QString>
 
 
-class GenPreQToolButton : public QToolButton
+class MY_EXPORT GenPreQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -48,7 +52,7 @@ public slots:
 
 };
 
-class VerPreQToolButton : public QToolButton
+class MY_EXPORT VerPreQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -66,3 +70,4 @@ public slots:
 
 };
 
+#endif

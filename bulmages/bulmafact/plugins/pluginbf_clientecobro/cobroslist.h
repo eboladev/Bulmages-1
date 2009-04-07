@@ -28,11 +28,11 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-
+#include "pdefs.h"
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class CobrosListSubForm : public BfSubForm
+class MY_EXPORT CobrosListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +48,7 @@ public:
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class CobrosList : public BlFormList, public Ui_CobrosListBase
+class MY_EXPORT CobrosList : public BlFormList, public Ui_CobrosListBase
 {
     Q_OBJECT
 

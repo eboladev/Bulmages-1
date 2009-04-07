@@ -36,13 +36,14 @@
 #include "bldialogchanges.h"
 #include "blfixed.h"
 #include "bfform.h"
+#include "pdefs.h"
 
 #include "ui_pedidoclientebase.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
-class PedidoClienteView : public BfForm, public Ui_PedidoClienteBase
+class MY_EXPORT PedidoClienteView : public BfForm, public Ui_PedidoClienteBase
 {
     Q_OBJECT
 

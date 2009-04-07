@@ -25,7 +25,7 @@
 #include "ui_articleeditbase.h"
 #include "blpostgresqlclient.h"
 #include "bfform.h"
-
+#include "pdefs.h"
 
 class BfCompany;
 
@@ -34,7 +34,7 @@ class BfCompany;
     Deriva de la clase BfForm para el control de la ventana y de la clase Articulo
     para el control con la base de datos.
 */
-class ArticuloView : public BfForm, public Ui_ArticuloBase
+class MY_EXPORT ArticuloView : public BfForm, public Ui_ArticuloBase
 {
     Q_OBJECT
 

@@ -26,7 +26,7 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-
+#include "pdefs.h"
 
 /// Subformulario de albaranes de clientes.
 /** Esta clase se encarga de implementar el subformulario de albaranes a clientes.
@@ -38,7 +38,7 @@
 
     Reimplementa los metodos de cargar para producir el query adecuado.
 */
-class AlbaranClienteListSubform : public BfSubForm
+class MY_EXPORT AlbaranClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -58,7 +58,7 @@ public slots:
 /** Albaranes a Clientes.
     Esta clase representa la pantalla de albaranes a clientes.
 */
-class AlbaranClienteList : public BlFormList, public Ui_AlbaranClienteListBase
+class MY_EXPORT AlbaranClienteList : public BlFormList, public Ui_AlbaranClienteListBase
 {
     Q_OBJECT
 

@@ -36,14 +36,14 @@
 #include "bldialogchanges.h"
 #include "blfixed.h"
 #include "bfform.h"
-
+#include "pdefs.h"
 
 class company;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
 /** */
-class PedidoProveedorView : public BfForm, public Ui_PedidoProveedorBase
+class MY_EXPORT PedidoProveedorView : public BfForm, public Ui_PedidoProveedorBase
 {
     Q_OBJECT
 

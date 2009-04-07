@@ -24,19 +24,18 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra la ventana de lista de descuentos por factura de proveedor.
 /** */
-class ListDescuentoFacturaProvView : public BfSubForm
+class MY_EXPORT ListDescuentoFacturaProvView : public BfSubForm
 {
     Q_OBJECT
 
 public:
     QString mdb_idfacturap;
     ListDescuentoFacturaProvView ( QWidget *parent = 0 );
-    ~ListDescuentoFacturaProvView() {}
-    ;
+    ~ListDescuentoFacturaProvView() {};
 
 public slots:
     virtual void cargar ( QString idfacturap ) {

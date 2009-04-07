@@ -29,13 +29,13 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-
+#include "pdefs.h"
 
 /// Clase que maneja el subformulario de los albaranes de proveedor.
 /** Deriva de la clase BfSubForm.
     Reimplementa los metodos de carga para que trabajan con la tabla albaranp.
 */
-class AlbaranesProveedorListSubform : public BfSubForm
+class MY_EXPORT AlbaranesProveedorListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -53,7 +53,7 @@ public slots:
 
 
 /// Clase que controla la pantalla de listado de albaranes a proveedor.
-class AlbaranesProveedor : public BlFormList, public Ui_AlbaranesProveedorListBase
+class MY_EXPORT AlbaranesProveedor : public BlFormList, public Ui_AlbaranesProveedorListBase
 {
     Q_OBJECT
 

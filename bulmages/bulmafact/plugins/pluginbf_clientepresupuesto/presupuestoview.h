@@ -26,6 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
+#include "pdefs.h"
 #include "ui_presupuestoclientebase.h"
 #include "blpostgresqlclient.h"
 #include "listlinpresupuestoview.h"
@@ -43,7 +44,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public BfForm, public Ui_PresupuestoClienteBase
+class MY_EXPORT PresupuestoView : public BfForm, public Ui_PresupuestoClienteBase
 {
     Q_OBJECT
 

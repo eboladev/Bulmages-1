@@ -27,11 +27,11 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra las l&iacute;neas de detalle de una factura de proveedor.
 /** */
-class ListLinFacturaProveedorView : public BfSubForm
+class MY_EXPORT ListLinFacturaProveedorView : public BfSubForm
 {
     Q_OBJECT
 

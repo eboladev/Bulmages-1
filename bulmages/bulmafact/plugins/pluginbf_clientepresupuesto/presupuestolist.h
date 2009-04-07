@@ -24,6 +24,7 @@
 
 #include <QLineEdit>
 
+#include "pdefs.h"
 #include "bfcompany.h"
 #include "busquedaarticulo.h"
 #include "bfsubform.h"
@@ -32,7 +33,7 @@
 
 /// Administra el listado de presupuestos.
 /** */
-class PresupuestoListSubForm : public BfSubForm
+class MY_EXPORT PresupuestoListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -51,7 +52,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public BlFormList, public Ui_PresupuestosListBase
+class MY_EXPORT PresupuestoList : public BlFormList, public Ui_PresupuestosListBase
 {
     Q_OBJECT
 

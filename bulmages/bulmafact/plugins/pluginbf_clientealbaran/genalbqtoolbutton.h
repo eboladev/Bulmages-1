@@ -17,18 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include "pdefs.h"
 
 
-class GenAlbQToolButton : public QToolButton
+class MY_EXPORT GenAlbQToolButton : public QToolButton
 {
     Q_OBJECT
 

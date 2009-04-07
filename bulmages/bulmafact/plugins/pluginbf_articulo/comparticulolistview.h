@@ -27,7 +27,7 @@
 #include "bfcompany.h"
 #include "bltablewidget.h"
 #include "bfsubform.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra el listado de los componentes de un art&iacute;culo.
 /** Implementa el subformulario de componentes de articulo que aparece en la ficha de articulo.
@@ -35,7 +35,7 @@
     de la base de datos.
     Al ser una clase derivada de BfSubForm para funcionar debe ser previamente inicializada
     con setcompany. */
-class ListCompArticuloView : public BfSubForm
+class MY_EXPORT ListCompArticuloView : public BfSubForm
 {
     Q_OBJECT
 

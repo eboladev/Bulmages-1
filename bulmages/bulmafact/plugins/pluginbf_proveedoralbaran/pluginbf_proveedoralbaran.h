@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
@@ -31,7 +25,7 @@
 #include "busquedareferencia.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
-
+#include "pdefs.h"
 
 extern "C" MY_EXPORT int SNewAlbaranProveedorView (BfCompany *);
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
@@ -41,8 +35,6 @@ extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
 extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
 extern "C" MY_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 
-
-// 
 class mypluginalbp : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT

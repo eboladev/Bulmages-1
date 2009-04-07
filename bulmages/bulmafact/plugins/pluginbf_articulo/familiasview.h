@@ -25,14 +25,14 @@
 #include "blfunctions.h"
 #include "ui_familiasbase.h"
 #include "bfform.h"
-
+#include "pdefs.h"
 
 class BfCompany;
 
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class FamiliasView : public BfForm, public Ui_familiasbase
+class MY_EXPORT FamiliasView : public BfForm, public Ui_familiasbase
 {
     Q_OBJECT
 
@@ -68,10 +68,6 @@ public slots:
     virtual void on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem * );
     virtual void on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
     virtual void on_mui_crear_clicked();
-
-// No es necesario en Qt4.4
-//    virtual void on_mui_crearRaiz_clicked();
-
 
 signals:
     void selected ( QString );

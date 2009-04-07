@@ -18,11 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
 
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
@@ -34,7 +29,7 @@
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "bfcompany.h"
-
+#include "pdefs.h"
 
 extern "C" MY_EXPORT int SNewAlbaranClienteView (BfCompany *);
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );

@@ -4,6 +4,8 @@
 #pluginbf_clientealbaran
 
 set (plugin pluginbf_clientealbaran)
+ADD_DEFINITIONS(-D${plugin})
+
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -49,14 +51,9 @@ QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
-
-# delete previous list of files to process (i18n)
-#FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list)
-
-#FOREACH(loop ${plugin_UIS_H} ${plugin_SRC})
-#    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list ${loop} "\n")
-#ENDFOREACH(loop)
-
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)

@@ -4,6 +4,7 @@
 #pluginbf_cliente
 
 set (plugin pluginbf_cliente)
+ADD_DEFINITIONS(-D${plugin})
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -29,15 +30,13 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
-# generate rules for building source files from the resources
-#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-#QT4_ADD_RESOURCES(pluginprofesor_RCC_SRCS ${pluginprofesor_RCCS})
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
@@ -52,7 +51,6 @@ if(NOT WIN32)
 ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\",String)'" )
 ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"${plugin}\",String)'" )
 endif(NOT WIN32)
-
 
 if(USE_GETTEXT)
    set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}

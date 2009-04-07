@@ -26,12 +26,12 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-
+#include "pdefs.h"
 
 /** Subformulario de clientes.
     Esta clase derivada de BfSubForm presenta todo el listado de clientes.
 */
-class ClienteListSubform : public BfSubForm
+class MY_EXPORT ClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -46,7 +46,7 @@ public:
 
 /** Esta clase implementa la pantalla de listado de clientes.
 */
-class ClientsList : public BlFormList, public Ui_ClientsListBase, public BlImportExport
+class MY_EXPORT ClientsList : public BlFormList, public Ui_ClientsListBase, public BlImportExport
 {
     Q_OBJECT
 

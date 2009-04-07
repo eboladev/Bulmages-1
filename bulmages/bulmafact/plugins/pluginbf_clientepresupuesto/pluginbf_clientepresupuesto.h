@@ -17,13 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef PLUGINBF_CLIENTEPRESUPUESTO_H
+#define PLUGINBF_CLIENTEPRESUPUESTO_H
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
+#include "pdefs.h"
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
@@ -60,3 +57,6 @@ public slots:
     void elslot();
     void elslot1();
 };
+
+#endif
+

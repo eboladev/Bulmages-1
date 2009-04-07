@@ -27,11 +27,11 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-
+#include "pdefs.h"
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
 /** */
-class PedidosClienteListSubform : public BfSubForm
+class MY_EXPORT PedidosClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -50,7 +50,7 @@ public slots:
 
 /// Muestra y administra el listado de pedidos de cliente.
 /** */
-class PedidosClienteList : public BlFormList, public Ui_PedidosClienteListBase
+class MY_EXPORT PedidosClienteList : public BlFormList, public Ui_PedidosClienteListBase
 {
     Q_OBJECT
 

@@ -24,11 +24,11 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-
+#include "pdefs.h"
 
 /// Muestra y administra la ventana de lista de descuentos por pedido de cliente.
 /** */
-class ListDescuentoPedidoClienteView : public BfSubForm
+class MY_EXPORT ListDescuentoPedidoClienteView : public BfSubForm
 {
     Q_OBJECT
 

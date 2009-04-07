@@ -32,7 +32,7 @@
 #include "busquedaalmacen.h"
 #include "ui_albaranproveedorbase.h"
 #include "bfform.h"
-
+#include "pdefs.h"
 
 class BfCompany;
 
@@ -41,7 +41,7 @@ class BfCompany;
     Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
     de manejo de la base de datos.
  */
-class AlbaranProveedorView : public BfForm, public Ui_AlbaranProveedorBase
+class MY_EXPORT AlbaranProveedorView : public BfForm, public Ui_AlbaranProveedorBase
 {
     Q_OBJECT
 
