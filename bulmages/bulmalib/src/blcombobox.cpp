@@ -92,23 +92,25 @@ void BlComboBox::setId ( QString id )
     clear();
     if (m_null) {
 	addItem ( "--" );
+      i++;
     } // end if
 
     while ( !m_comboRecordSet->eof() ) {
-        i ++;
+
         if ( m_comboRecordSet->valor ( m_fieldId ) == id ) {
             i1 = i;
-	} // end if
+        } // end if
 
-	/// Inicializamos los valores de vuelta a ""
-	QMapIterator<QString, QString> it(m_valores);
-	QString cad;
-	while (it.hasNext()) {
-		it.next();
-		cad = cad +" "+ m_comboRecordSet->valor(it.key());
-	} // end while
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> it(m_valores);
+        QString cad;
+        while (it.hasNext()) {
+            it.next();
+            cad = cad +" "+ m_comboRecordSet->valor(it.key());
+        } // end while
 
         addItem ( cad );
+                i ++;
         m_comboRecordSet->nextRecord();
     } // end while
 
