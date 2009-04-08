@@ -38,25 +38,25 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     mui_listadomantvehiculo->setMainCompany ( emp );
 
     /// Inicializamos la clase para la base de datos.
-    setTitleName ( _( "Vehiculo" ) );
+    setTitleName ( _ ( "Vehiculo" ) );
     setDbTableName ( "vehiculo" );
     setDbFieldId ( "idvehiculo" );
-    addDbField ( "idvehiculo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "idvehiculo" ) );
-    addDbField ( "matriculavehiculo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "matriculavehiculo" ) );
-    addDbField ( "marcavehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "marcavehiculo" ) );
-    addDbField ( "modelovehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "modelovehiculo" ) );
-    addDbField ( "bastidorvehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "bastidorvehiculo" ) );
-    addDbField ( "colorvehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "colorvehiculo" ) );
-    addDbField ( "fechacompravehiculo", BlDbField::DbDate, BlDbField::DbNothing, _( "fechavehiculo" ) );
-    addDbField ( "preciovehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "preciovehiculo" ) );
+    addDbField ( "idvehiculo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "idvehiculo" ) );
+    addDbField ( "matriculavehiculo", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "matriculavehiculo" ) );
+    addDbField ( "marcavehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "marcavehiculo" ) );
+    addDbField ( "modelovehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "modelovehiculo" ) );
+    addDbField ( "bastidorvehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "bastidorvehiculo" ) );
+    addDbField ( "colorvehiculo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "colorvehiculo" ) );
+    addDbField ( "fechacompravehiculo", BlDbField::DbDate, BlDbField::DbNothing, _ ( "fechavehiculo" ) );
+    addDbField ( "preciovehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "preciovehiculo" ) );
 
     /// Inicializamos el listado.
     mui_listadomantvehiculo->setDbTableName ( "mantvehiculo" );
     mui_listadomantvehiculo->setDbFieldId ( "idmantvehiculo" );
-    mui_listadomantvehiculo->addSubFormHeader ( "idmantvehiculo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _( "idmantvehiculo" ) );
-    mui_listadomantvehiculo->addSubFormHeader ( "fechamantvehiculo", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "fechamantvehiculo" ) );
-    mui_listadomantvehiculo->addSubFormHeader ( "preciomantvehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "preciomantvehiculo" ) );
-    mui_listadomantvehiculo->addSubFormHeader ( "idvehiculo", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "idvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "idmantvehiculo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _ ( "idmantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "fechamantvehiculo", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "fechamantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "preciomantvehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "preciomantvehiculo" ) );
+    mui_listadomantvehiculo->addSubFormHeader ( "idvehiculo", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "idvehiculo" ) );
     mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones
@@ -98,7 +98,7 @@ int VehiculoView::guardar()
         dialogChanges_cargaInicial();
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al guardar la ficha" ) );
+        mensajeInfo ( _ ( "Error al guardar la ficha" ) );
         return -1;
     } // end try
     _depura ( "END VehiculoView::guardar", 0 );
@@ -131,7 +131,7 @@ int VehiculoView::cargar ( QString idvehiculo )
         _depura ( "END VehiculoView::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al cargar los datos en la ficha." ) );
+        mensajeInfo ( _ ( "Error al cargar los datos en la ficha." ) );
         return -1;
     }
 }

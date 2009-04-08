@@ -75,8 +75,8 @@ int entryPoint ( Bulmafact *bcont )
     _depura ( "Entrada del plugin depuracion", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_debug", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_debug", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin *corr = new myplugin();
 
@@ -91,8 +91,8 @@ int entryPoint ( Bulmafact *bcont )
         viewCorrector->setChecked ( FALSE );
     }
 
-    viewCorrector->setStatusTip ( _("Activa/desactiva el modo de depuracion") );
-    viewCorrector->setWhatsThis ( _("Depuracion.\n\nActiva/desactiva el modo de depuracion") );
+    viewCorrector->setStatusTip ( _ ( "Activa/desactiva el modo de depuracion" ) );
+    viewCorrector->setWhatsThis ( _ ( "Depuracion.\n\nActiva/desactiva el modo de depuracion" ) );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     bcont->menuVentana->addSeparator();
     bcont->menuVentana->addAction ( viewCorrector );

@@ -65,7 +65,7 @@ CuentaListView::CuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlags fl
     if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _( "Selector de articulos" ) );
+        setWindowTitle ( _ ( "Selector de articulos" ) );
         mui_imprimir->setHidden ( TRUE );
     } // end if
 
@@ -114,18 +114,18 @@ void CuentaListView::editar ( int row )
     mdb_nombrecuenta = mui_list->dbValue ( "descripcion", row );
     mdb_codigocuenta = mui_list->dbValue ( "codigo", row );
     if ( modoEdicion() ) {
-/*
-        ArticuloView * art = ( ( BcCompany * ) BlMainCompany() ) ->newArticuloView();
-        BlMainCompany() ->m_pWorkspace->addWindow ( art );
-        /// Si la carga no va bien entonces terminamos.
-        if ( art->cargar ( mdb_idarticulo ) ) {
-            delete art;
-            _depura ( "END CuentaListView::editar", 0, "Carga Erronea" );
-            return;
-        } // end if
-        art->hide();
-        art->show();
-*/
+        /*
+                ArticuloView * art = ( ( BcCompany * ) BlMainCompany() ) ->newArticuloView();
+                BlMainCompany() ->m_pWorkspace->addWindow ( art );
+                /// Si la carga no va bien entonces terminamos.
+                if ( art->cargar ( mdb_idarticulo ) ) {
+                    delete art;
+                    _depura ( "END CuentaListView::editar", 0, "Carga Erronea" );
+                    return;
+                } // end if
+                art->hide();
+                art->show();
+        */
     } else {
         close();
         emit ( selected ( mdb_idcuenta ) );
@@ -154,30 +154,30 @@ CuentaListView::~CuentaListView()
 **/
 void CuentaListView::borrar()
 {
-/*
-    _depura ( "CuentaListView::on_mui_borrar_clicked", 0 );
-    int a = mui_list->currentRow();
-    if ( a < 0 ) {
-        mensajeInfo ( _( "Tiene que seleccionar un articulo" ), this );
-        return;
-    } // end if
-    try {
-        QString idarticulo = mui_list->dbValue ( "idarticulo" );
-        if ( QMessageBox::Yes == QMessageBox::question ( this,
-                _( "Borrar articulo" ),
-                _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
-                QMessageBox::Yes, QMessageBox::No ) ) {
-            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = BlMainCompany() ->runQuery ( SQLQuery );
-            if ( error )
-                throw - 1;
-            presentar();
+    /*
+        _depura ( "CuentaListView::on_mui_borrar_clicked", 0 );
+        int a = mui_list->currentRow();
+        if ( a < 0 ) {
+            mensajeInfo ( _( "Tiene que seleccionar un articulo" ), this );
+            return;
         } // end if
-        _depura ( "END CuentaListView::on_mui_borrar_clicked", 0 );
-    } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el articulo" ), this );
-    } // end try
-*/
+        try {
+            QString idarticulo = mui_list->dbValue ( "idarticulo" );
+            if ( QMessageBox::Yes == QMessageBox::question ( this,
+                    _( "Borrar articulo" ),
+                    _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
+                    QMessageBox::Yes, QMessageBox::No ) ) {
+                QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
+                int error = BlMainCompany() ->runQuery ( SQLQuery );
+                if ( error )
+                    throw - 1;
+                presentar();
+            } // end if
+            _depura ( "END CuentaListView::on_mui_borrar_clicked", 0 );
+        } catch ( ... ) {
+            mensajeInfo ( _( "Error al borrar el articulo" ), this );
+        } // end try
+    */
 }
 
 
@@ -191,33 +191,33 @@ QString CuentaListView::formaQuery()
 {
     _depura ( "CuentaListView::formaQuery", 0 );
     QString query = "";
-	
+
     query = "SELECT * FROM cuenta WHERE 1=1 ";
     if ( m_filtro->text() != "" ) {
         query += " AND  ( lower(descripcion) LIKE lower('%" + m_filtro->text() + "%') ";
         query += " OR lower(codigo) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
 
-    if (mui_nivel->currentText() != "") {
-	query += " AND nivel(codigo) >= " + mui_nivel->currentText();
+    if ( mui_nivel->currentText() != "" ) {
+        query += " AND nivel(codigo) >= " + mui_nivel->currentText();
     } // end if
 
-/*
-    query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
-    if ( m_presentablearticulo->isChecked() )
-        query += " AND presentablearticulo ";
-    if ( m_usadoarticulo->isChecked() )
-        query += " AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto"
-                 " UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
-                 " UNION SELECT DISTINCT idarticulo FROM lalbaran"
-                 " UNION SELECT DISTINCT idarticulo FROM lfactura"
-                 " UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor"
-                 " UNION SELECT DISTINCT idarticulo FROM lalbaranp"
-                 " UNION SELECT DISTINCT idarticulo FROM lfacturap"
-                 ") ";
-    if ( m_filtro->text() != "" )
-        query += " AND lower(nomarticulo) LIKE lower('%" + m_filtro->text() + "%') ";
-*/
+    /*
+        query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
+        if ( m_presentablearticulo->isChecked() )
+            query += " AND presentablearticulo ";
+        if ( m_usadoarticulo->isChecked() )
+            query += " AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto"
+                     " UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
+                     " UNION SELECT DISTINCT idarticulo FROM lalbaran"
+                     " UNION SELECT DISTINCT idarticulo FROM lfactura"
+                     " UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor"
+                     " UNION SELECT DISTINCT idarticulo FROM lalbaranp"
+                     " UNION SELECT DISTINCT idarticulo FROM lfacturap"
+                     ") ";
+        if ( m_filtro->text() != "" )
+            query += " AND lower(nomarticulo) LIKE lower('%" + m_filtro->text() + "%') ";
+    */
 //    if ( m_familia->idfamilia() != "" ) {
 //        query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '" + m_familia->codigocompletofamilia() + "%')";
 //    } // end if
@@ -246,22 +246,22 @@ void CuentaListView::imprimir()
 **/
 void CuentaListView::on_mui_exportar_clicked()
 {
-/*
-    _depura ( "CuentaListView::on_mui_exportar_clicked", 0 );
-    QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    _( "Elija el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Clientes (*.xml)" ) ) );
+    /*
+        _depura ( "CuentaListView::on_mui_exportar_clicked", 0 );
+        QFile filexml ( QFileDialog::getSaveFileName ( this,
+                        _( "Elija el archivo" ),
+                        g_confpr->valor ( CONF_DIR_USER ),
+                        _( "Clientes (*.xml)" ) ) );
 
-    if ( filexml.open ( QIODevice::WriteOnly ) ) {
-        bulmafact2XML ( filexml, IMPORT_ARTICULOS );
-        filexml.close();
-    } else {
-        _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
-    } // end if
+        if ( filexml.open ( QIODevice::WriteOnly ) ) {
+            bulmafact2XML ( filexml, IMPORT_ARTICULOS );
+            filexml.close();
+        } else {
+            _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
+        } // end if
 
-    _depura ( "END CuentaListView::on_mui_exportar_clicked", 0 );
-*/
+        _depura ( "END CuentaListView::on_mui_exportar_clicked", 0 );
+    */
 }
 
 
@@ -273,22 +273,22 @@ void CuentaListView::on_mui_exportar_clicked()
 **/
 void CuentaListView::on_mui_importar_clicked()
 {
-/*
-    _depura ( "CuentaListView::INIT_s_importar", 0 );
-    QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    _( "Elija el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Clientes (*.xml)" ) ) );
+    /*
+        _depura ( "CuentaListView::INIT_s_importar", 0 );
+        QFile filexml ( QFileDialog::getOpenFileName ( this,
+                        _( "Elija el archivo" ),
+                        g_confpr->valor ( CONF_DIR_USER ),
+                        _( "Clientes (*.xml)" ) ) );
 
-    if ( filexml.open ( QIODevice::ReadOnly ) ) {
-        XML2BulmaFact ( filexml, IMPORT_ARTICULOS );
-        filexml.close();
-        presentar();
-    } else {
-        _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
-    } // end if
-    _depura ( "CuentaListView::END_s_importar", 0 );
-*/
+        if ( filexml.open ( QIODevice::ReadOnly ) ) {
+            XML2BulmaFact ( filexml, IMPORT_ARTICULOS );
+            filexml.close();
+            presentar();
+        } else {
+            _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
+        } // end if
+        _depura ( "CuentaListView::END_s_importar", 0 );
+    */
 }
 
 
@@ -306,8 +306,8 @@ void CuentaListView::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar articulo" ) );
-    QAction *del = popup->addAction ( _( "Borrar articulo" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar articulo" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar articulo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -322,11 +322,11 @@ void CuentaListView::submenu ( const QPoint & )
 **/
 void CuentaListView::crear()
 {
-/*
-    _depura ( "CuentaListView::crear", 0 );
-    ( ( BcCompany * ) BlMainCompany() ) ->s_newArticulo();
-    _depura ( "END CuentaListView::crear", 0 );
-*/
+    /*
+        _depura ( "CuentaListView::crear", 0 );
+        ( ( BcCompany * ) BlMainCompany() ) ->s_newArticulo();
+        _depura ( "END CuentaListView::crear", 0 );
+    */
 }
 
 
@@ -383,17 +383,17 @@ CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
     setDbFieldId ( "idcuenta" );
 
 
-    addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID cuenta" ) );
-    addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo Cuenta" ) );
-    addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de la cuenta" ) );
-/*
-    addSubFormHeader ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion abreviada del articulo" ) );
-    addSubFormHeader ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Observaciones sobre el articulo" ) );
-    addSubFormHeader ( "desctipo_articulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion del tipo de articulo" ) );
-    addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion tipo de I.V.A." ) );
-    addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "P.V.P. articulo" ) );
-    addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Disponible en stock" ) );
-*/
+    addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID cuenta" ) );
+    addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo Cuenta" ) );
+    addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de la cuenta" ) );
+    /*
+        addSubFormHeader ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion abreviada del articulo" ) );
+        addSubFormHeader ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Observaciones sobre el articulo" ) );
+        addSubFormHeader ( "desctipo_articulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion del tipo de articulo" ) );
+        addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion tipo de I.V.A." ) );
+        addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "P.V.P. articulo" ) );
+        addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Disponible en stock" ) );
+    */
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

@@ -32,12 +32,12 @@ BusquedaEstadoIncidencia::BusquedaEstadoIncidencia ( QWidget *parent )
         : QComboBox ( parent )
 {
     _depura ( "BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0 );
-    m_textos[0] = _( "Pendiente" );
-    m_textos[1] = _( "Terminada" );
-    m_textos[2] = _( "No quiere nada" );
-    m_textos[3] = _( "No paga" );
-    m_textos[4] = _( "Cambio datos" );
-    m_textos[5] = _( "Revisar" );
+    m_textos[0] = _ ( "Pendiente" );
+    m_textos[1] = _ ( "Terminada" );
+    m_textos[2] = _ ( "No quiere nada" );
+    m_textos[3] = _ ( "No paga" );
+    m_textos[4] = _ ( "Cambio datos" );
+    m_textos[5] = _ ( "Revisar" );
 
     m_valores[0] = "1";
     m_valores[1] = "2";

@@ -86,40 +86,40 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
     _depura ( "MyPlugProf::inicializa", 0 );
 
     if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-	
-		/// Miramos si existe un menu Ventas
-		QMenu *pPluginMenu = bges->newMenu("&Asociacion", "menuAsociacion", "menuMaestro");
-		pPluginMenu->addSeparator();
 
-		/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-		m_bges = bges;
-		setMainCompany ( bges->getcompany() );
-		QAction *planCuentas = new QAction ( _( "&Asociacion" ), 0 );
-		planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
-		planCuentas->setStatusTip ( _( "Asociacion" ) );
-		planCuentas->setWhatsThis ( _( "Asociacion" ) );
-		pPluginMenu->addAction ( planCuentas );
-		bges->Listados->addAction (planCuentas);
-		connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-	
-		QAction *npago = new QAction ( _( "&Junta Directiva" ), 0 );
-		npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
-		npago->setStatusTip ( _( "Junta Directiva" ) );
-		npago->setWhatsThis ( _( "Junta Directiva" ) );
-		pPluginMenu->addAction ( npago );
-		bges->Fichas->addAction (npago);
-		connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Asociacion", "menuAsociacion", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Asociacion" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Asociacion" ) );
+        planCuentas->setWhatsThis ( _ ( "Asociacion" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+
+        QAction *npago = new QAction ( _ ( "&Junta Directiva" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        npago->setStatusTip ( _ ( "Junta Directiva" ) );
+        npago->setWhatsThis ( _ ( "Junta Directiva" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
-      QAction *npago1 = new QAction ( _( "&Comisiones" ), 0 );
-      npago1->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ));
-      npago1->setStatusTip ( _( "Comisiones" ) );
-      npago1->setWhatsThis ( _( "Comisiones" ) );
-      pPluginMenu->addAction ( npago1 );
-      bges->Fichas->addAction (npago1);
-      connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        QAction *npago1 = new QAction ( _ ( "&Comisiones" ), 0 );
+        npago1->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        npago1->setStatusTip ( _ ( "Comisiones" ) );
+        npago1->setWhatsThis ( _ ( "Comisiones" ) );
+        pPluginMenu->addAction ( npago1 );
+        bges->Fichas->addAction ( npago1 );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
-}// end if
+    }// end if
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
 
@@ -134,8 +134,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de entrada del plugin de asociaciones\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_asociacion", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_asociacion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
@@ -143,6 +143,7 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     return 0;
 }

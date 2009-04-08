@@ -60,7 +60,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _( "Selector de proveedores" ) );
+        setWindowTitle ( _ ( "Selector de proveedores" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
@@ -138,7 +138,7 @@ void ProveedorList::presentar()
 void ProveedorList::crear()
 {
     _depura ( "ProveedorList::crear", 0 );
-    ProveedorView *prov = new ProveedorView( ( BfCompany * ) mainCompany() );
+    ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
     mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
     _depura ( "END ProveedorList::crear", 0 );
@@ -157,7 +157,7 @@ void ProveedorList::editar ( int row )
     m_cifprovider = mui_list->dbValue ( QString ( "cifproveedor" ), row );
     m_nomprovider = mui_list->dbValue ( QString ( "nomproveedor" ), row );
     if ( modoEdicion() ) {
-        ProveedorView * prov = new ProveedorView( ( BfCompany * ) mainCompany() );
+        ProveedorView * prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
         if ( prov->cargar ( mui_list->dbValue ( QString ( "idproveedor" ), row ) ) ) {
             delete prov;
             return;
@@ -189,7 +189,7 @@ void ProveedorList::borrar()
         delete prov;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el proveedor" ) );
+        mensajeInfo ( _ ( "Error al borrar el proveedor" ) );
     } // end try
     _depura ( "END ProveedorList::borrar", 0 );
 }
@@ -201,7 +201,7 @@ void ProveedorList::borrar()
 void ProveedorList::imprimir()
 {
     _depura ( "ProveedorList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _( "Listado de Proveedores" ) );
+    mui_list->imprimirPDF ( _ ( "Listado de Proveedores" ) );
     _depura ( "END ProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -212,9 +212,9 @@ void ProveedorList::imprimir()
 void ProveedorList::on_mui_exportar_clicked()
 {
     QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    _( "Seleccione el archivo" ),
+                    _ ( "Seleccione el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Proveedores (*.xml)" ) ) );
+                    _ ( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_PROVEEDORES );
@@ -230,9 +230,9 @@ void ProveedorList::on_mui_exportar_clicked()
 void ProveedorList::on_mui_importar_clicked()
 {
     QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    _( "Elija el archivo" ),
+                    _ ( "Elija el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Proveedores (*.xml)" ) ) );
+                    _ ( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2BulmaFact ( filexml, IMPORT_PROVEEDORES );
@@ -280,22 +280,22 @@ ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : BfSubForm ( par
     _depura ( "ProveedorListSubform::ProveedorListSubform", 0 );
     setDbTableName ( "proveedor" );
     setDbFieldId ( "idproveedor" );
-    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID proveedor" ) );
-    addSubFormHeader ( "codproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo" ) );
-    addSubFormHeader ( "cifproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
-    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "nomaltproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre alternativo" ) );
-    addSubFormHeader ( "codicliproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo" ) );
-    addSubFormHeader ( "cbancproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de cuenta corriente" ) );
-    addSubFormHeader ( "comentproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios" ) );
-    addSubFormHeader ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion" ) );
-    addSubFormHeader ( "poblproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Poblacion" ) );
-    addSubFormHeader ( "cpproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo postal" ) );
-    addSubFormHeader ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de telefono" ) );
-    addSubFormHeader ( "faxproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de fax" ) );
-    addSubFormHeader ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion de correo electronico" ) );
-    addSubFormHeader ( "urlproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion de URL" ) );
-    addSubFormHeader ( "clavewebproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Clave de acceso a la web del proveedor" ) );
+    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID proveedor" ) );
+    addSubFormHeader ( "codproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
+    addSubFormHeader ( "cifproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F." ) );
+    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "nomaltproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre alternativo" ) );
+    addSubFormHeader ( "codicliproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
+    addSubFormHeader ( "cbancproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de cuenta corriente" ) );
+    addSubFormHeader ( "comentproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );
+    addSubFormHeader ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion" ) );
+    addSubFormHeader ( "poblproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Poblacion" ) );
+    addSubFormHeader ( "cpproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo postal" ) );
+    addSubFormHeader ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de telefono" ) );
+    addSubFormHeader ( "faxproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de fax" ) );
+    addSubFormHeader ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion de correo electronico" ) );
+    addSubFormHeader ( "urlproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion de URL" ) );
+    addSubFormHeader ( "clavewebproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Clave de acceso a la web del proveedor" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

@@ -49,34 +49,34 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
 
-        setTitleName ( _( "Cliente" ) );
+        setTitleName ( _ ( "Cliente" ) );
         setDbTableName ( "cliente" );
         setDbFieldId ( "idcliente" );
-        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID cliente" ) );
-        addDbField ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre del cliente" ) );
-        addDbField ( "nomaltcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre alternativo del cliente" ) );
-        addDbField ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "C.I.F. del cliente" ) );
-        addDbField ( "bancocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero cuenta corriente" ) );
-        addDbField ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion" ) );
-        addDbField ( "poblcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Poblacion" ) );
-        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _( "Provincia" ) );
-        addDbField ( "cpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo postal" ) );
-        addDbField ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono" ) );
-        addDbField ( "teltrabcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono en el trabajo" ) );
-        addDbField ( "movilcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono movil" ) );
-        addDbField ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de fax" ) );
-        addDbField ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion electronica" ) );
-        addDbField ( "urlcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Identificador de presupuesto" ) );
-        addDbField ( "faltacliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de alta del cliente" ) );
-        addDbField ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de baja del cliente" ) );
-        addDbField ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
-        addDbField ( "ecommercedatacliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Datos de comercio electronico" ) );
-        addDbField ( "inactivocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Cliente inactivo" ) );
-        addDbField ( "regimenfiscalcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Regimen fiscal" ) );
-        addDbField ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo" ) );
-        addDbField ( "corpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Empresa" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Forma de pago" ) );
-        addDbField ( "recargoeqcliente", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Recargo de Equivalencia" ) );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID cliente" ) );
+        addDbField ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Nombre del cliente" ) );
+        addDbField ( "nomaltcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre alternativo del cliente" ) );
+        addDbField ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "C.I.F. del cliente" ) );
+        addDbField ( "bancocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero cuenta corriente" ) );
+        addDbField ( "dircliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
+        addDbField ( "poblcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Poblacion" ) );
+        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
+        addDbField ( "cpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo postal" ) );
+        addDbField ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono" ) );
+        addDbField ( "teltrabcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono en el trabajo" ) );
+        addDbField ( "movilcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono movil" ) );
+        addDbField ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de fax" ) );
+        addDbField ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion electronica" ) );
+        addDbField ( "urlcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Identificador de presupuesto" ) );
+        addDbField ( "faltacliente", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de alta del cliente" ) );
+        addDbField ( "fbajacliente", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de baja del cliente" ) );
+        addDbField ( "comentcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+        addDbField ( "ecommercedatacliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Datos de comercio electronico" ) );
+        addDbField ( "inactivocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Cliente inactivo" ) );
+        addDbField ( "regimenfiscalcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Regimen fiscal" ) );
+        addDbField ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo" ) );
+        addDbField ( "corpcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Empresa" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de pago" ) );
+        addDbField ( "recargoeqcliente", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Recargo de Equivalencia" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ClienteView_ClienteView", this );
@@ -87,10 +87,10 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         /// Datos por defecto.
         mui_idprovincia->setMainCompany ( mainCompany() );
 
-    mui_idprovincia->setQuery("SELECT idprovincia, provincia||' ('||descpais||')' AS desc FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
-    mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setFieldId ("idprovincia");
-    mui_idprovincia->m_valores["desc"] = "";
+        mui_idprovincia->setQuery ( "SELECT idprovincia, provincia||' ('||descpais||')' AS desc FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
+        mui_idprovincia->setTableName ( "provincia" );
+        mui_idprovincia->setFieldId ( "idprovincia" );
+        mui_idprovincia->m_valores["desc"] = "";
         mui_idprovincia->setId ( "" );
 
         mui_idforma_pago->setMainCompany ( mainCompany() );
@@ -102,7 +102,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins.
         res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el cliente" ) );
+        mensajeInfo ( _ ( "Error al crear el cliente" ) );
     } // end try
     _depura ( "END ClienteView::ClienteView", 0 );
 }
@@ -143,7 +143,7 @@ int ClienteView::cargarPost ( QString idcliente )
     _depura ( "ClienteView::cargarPost", 0 );
 
     /// Lanzamos los plugins de carga
-    g_plugins->lanza("ClienteView_cargarPost_Post", this);
+    g_plugins->lanza ( "ClienteView_cargarPost_Post", this );
 
     _depura ( "END ClienteView::cargarPost", 0 );
     return 0;
@@ -160,7 +160,7 @@ void ClienteView::on_mui_informe_clicked()
     _depura ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
-        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
     } else {
         InformeCliente inf ( mainCompany() );
         inf.setCliente ( dbValue ( "idcliente" ) );
@@ -178,10 +178,10 @@ void ClienteView::on_mui_informe_clicked()
 void ClienteView::on_mui_cifcliente_lostFocus()
 {
     _depura ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
-	QChar digito;
-	if (!validarCIFNIF(mui_cifcliente->text(), digito)) {
-		mensajeInfo("Error en el CIF del cliente. Control:" + QString(digito));
-	} // end if
+    QChar digito;
+    if ( !validarCIFNIF ( mui_cifcliente->text(), digito ) ) {
+        mensajeInfo ( "Error en el CIF del cliente. Control:" + QString ( digito ) );
+    } // end if
     _depura ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );
 }
 

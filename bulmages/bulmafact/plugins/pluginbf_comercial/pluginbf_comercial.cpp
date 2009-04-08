@@ -42,11 +42,11 @@
 int entryPoint ( Bulmafact *bges )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
-    
+
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_comercial", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-    
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_comercial", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
     mypluginbf *plug = new mypluginbf();
     plug->inicializa ( bges );
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
@@ -63,15 +63,15 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
 {
     _depura ( "ClienteView_ClienteView_Post", 0 );
     /// Agregamos los campos de registro que hacen falta.
-    cli->addDbField ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbNothing, _( "Zona comercial" ) );
-    cli->addDbField ( "fechabasecomercialcliente", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha base" ) );
-    cli->addDbField ( "periodocomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Periodo" ) );
-    cli->addDbField ( "comentcomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios para el comercial" ) );
+    cli->addDbField ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Zona comercial" ) );
+    cli->addDbField ( "fechabasecomercialcliente", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha base" ) );
+    cli->addDbField ( "periodocomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Periodo" ) );
+    cli->addDbField ( "comentcomercialcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios para el comercial" ) );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *l = new ComercialClienteView ( cli );
     l->setMainCompany ( cli->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "lcomercial" ) );
-    cli->mui_tab->addTab ( l, _( "&Comercial" ) );
+    cli->mui_tab->addTab ( l, _ ( "&Comercial" ) );
     _depura ( "END ClienteView_ClienteView_Post", 0 );
     return 0;
 }

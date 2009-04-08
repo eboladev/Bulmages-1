@@ -57,7 +57,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "CuadranteDiarioView_CuadranteDiarioView", this ) ) return;
 
-        setTitleName ( _( "Almacen" ) );
+        setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );
 
         mui_listtrabajadores->setDragEnabled ( TRUE );
@@ -68,11 +68,11 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 
         mui_listvalidaciones->setDbTableName ( "valasterisk" );
         mui_listvalidaciones->setDbFieldId ( "idvalasterisk" );
-        mui_listvalidaciones->addSubFormHeader ( "fechavalasterisk", BlDbField::DbDate, BlDbField::DbNotNull , BlSubFormHeader::DbNone, _( "Fecha" ) );
-        mui_listvalidaciones->addSubFormHeader ( "horavalasterisk", BlDbField::DbVarChar, BlDbField::DbNotNull , BlSubFormHeader::DbNone, _( "Hora" ) );
-        mui_listvalidaciones->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone , _( "Almacen" ) );
-        mui_listvalidaciones->addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone , _( "Almacen" ) );
-        mui_listvalidaciones->addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone , _( "Almacen" ) );
+        mui_listvalidaciones->addSubFormHeader ( "fechavalasterisk", BlDbField::DbDate, BlDbField::DbNotNull , BlSubFormHeader::DbNone, _ ( "Fecha" ) );
+        mui_listvalidaciones->addSubFormHeader ( "horavalasterisk", BlDbField::DbVarChar, BlDbField::DbNotNull , BlSubFormHeader::DbNone, _ ( "Hora" ) );
+        mui_listvalidaciones->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone , _ ( "Almacen" ) );
+        mui_listvalidaciones->addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone , _ ( "Almacen" ) );
+        mui_listvalidaciones->addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone , _ ( "Almacen" ) );
 
         /*
             mui_listvalidaciones->addSubFormHeader ( "aperturaalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _( "Apertura Manyanas" ) );
@@ -95,7 +95,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al iniciar el cuadrante" ) );
+        mensajeInfo ( _ ( "Error al iniciar el cuadrante" ) );
     } // end try
     _depura ( "END CuadranteDiarioView::CuadranteDiarioView", 0 );
 }
@@ -162,13 +162,13 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
 {
     _depura ( "CuadranteDiarioView::inicializaCuadrante", 0 );
     QString diassem[7];
-    diassem[0] = _( "Lunes" );
-    diassem[1] = _( "Martes" );
-    diassem[2] = _( "Miercoles" );
-    diassem[3] = _( "Jueves" );
-    diassem[4] = _( "Viernes" );
-    diassem[5] = _( "Sabado" );
-    diassem[6] = _( "Domingo" );
+    diassem[0] = _ ( "Lunes" );
+    diassem[1] = _ ( "Martes" );
+    diassem[2] = _ ( "Miercoles" );
+    diassem[3] = _ ( "Jueves" );
+    diassem[4] = _ ( "Viernes" );
+    diassem[5] = _ ( "Sabado" );
+    diassem[6] = _ ( "Domingo" );
 
 
     try {
@@ -286,8 +286,8 @@ void CuadranteDiarioView::on_mui_calendario_customContextMenuRequested ( const Q
     QMenu *popup = new QMenu ( mui_calendario );
 
     popup->addSeparator();
-    QAction *norm = popup->addAction ( _( "Normal" ) );
-    QAction *fiesta = popup->addAction ( _( "Fiesta general" ) );
+    QAction *norm = popup->addAction ( _ ( "Normal" ) );
+    QAction *fiesta = popup->addAction ( _ ( "Fiesta general" ) );
 
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {

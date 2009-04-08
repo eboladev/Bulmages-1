@@ -51,7 +51,7 @@ DiarioView::DiarioView ( BcCompany  *emp, QWidget *parent, int )
     _depura ( "DiarioView::DiarioView", 0 );
     setupUi ( this );
 
-    setTitleName ( _( "Diario" ) );
+    setTitleName ( _ ( "Diario" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "apunte" );
 
@@ -159,9 +159,9 @@ void DiarioView::boton_guardar()
 {
     _depura ( "DiarioView::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
-                 _( "Guardar Libro Diario" ),
+                 _ ( "Guardar Libro Diario" ),
                  g_confpr->valor ( CONF_DIR_USER ),
-                 _( "Diarios (*.txt)" ) );
+                 _ ( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {
         /// Si se ha proporcionado un nombre de archivo v&aacute;lido

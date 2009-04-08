@@ -43,11 +43,11 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
     setupUi ( this );
     m_idpresupuesto = "";
 
-		/// Establecemos los parametros de busqueda del Cliente
-    m_idcliente->setLabel ( _( "Cliente:" ) );
-	m_idcliente->setTableName( "cliente" );
-	m_idcliente->m_valores["cifcliente"] = "";
-	m_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_idcliente->setLabel ( _ ( "Cliente:" ) );
+    m_idcliente->setTableName ( "cliente" );
+    m_idcliente->m_valores["cifcliente"] = "";
+    m_idcliente->m_valores["nomcliente"] = "";
 
     _depura ( "END RutaComercialList::RutaComercialList", 0 );
 }
@@ -73,12 +73,12 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
     mainCompany() ->meteWindow ( windowTitle(), this );
     _depura ( "END RutaComercialList::RutaComercialList", 0 );
 
-		/// Establecemos los parametros de busqueda del Cliente
-	m_idcliente->setMainCompany(comp);
-    m_idcliente->setLabel ( _( "Cliente:" ) );
-	m_idcliente->setTableName( "cliente" );
-	m_idcliente->m_valores["cifcliente"] = "";
-	m_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_idcliente->setMainCompany ( comp );
+    m_idcliente->setLabel ( _ ( "Cliente:" ) );
+    m_idcliente->setTableName ( "cliente" );
+    m_idcliente->m_valores["cifcliente"] = "";
+    m_idcliente->m_valores["nomcliente"] = "";
 }
 
 
@@ -152,7 +152,7 @@ void RutaComercialList::editar ( int row )
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     mainCompany() ->m_pWorkspace->addWindow ( rut );
-    mainCompany() ->meteWindow ( _("Nueva incidencia comercial"), rut );
+    mainCompany() ->meteWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
     _depura ( "END RutaComercialList::editar", 0 );
 }
@@ -166,7 +166,7 @@ void RutaComercialList::crear()
     _depura ( "RutaComercialList::crear", 0 );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( rut );
-    mainCompany() ->meteWindow ( _("Nueva incidencia comercial"), rut );
+    mainCompany() ->meteWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
     _depura ( "END RutaComercialList::crear", 0 );
 }
@@ -281,27 +281,27 @@ RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : BfSubFo
     _depura ( "RutaComercialListSubForm::RutaComercialListSubForm", 0 );
     setDbTableName ( "rutacomercial" );
     setDbFieldId ( "idrutacomercial" );
-    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "CIF del cliente" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del cliente" ) );
-    addSubFormHeader ( "idzonacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID zona comercial" ) );
-    addSubFormHeader ( "fecharutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha ruta comercial" ) );
-    addSubFormHeader ( "fechaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha incidencia comercial" ) );
-    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del trabajador" ) );
-    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Apellidos del trabajador" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
-    addSubFormHeader ( "idrutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID ruta comercial" ) );
-    addSubFormHeader ( "comentariosrutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios ruta comercial" ) );
-    addSubFormHeader ( "idincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID incidencia comercial" ) );
-    addSubFormHeader ( "comentincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario de la incidencia comercial" ) );
-    addSubFormHeader ( "estadoincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Estado de la incidencia comercial" ) );
-    addSubFormHeader ( "idpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID pedido cliente" ) );
-    addSubFormHeader ( "idcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID cobro" ) );
-    addSubFormHeader ( "nomzonacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre zona comercial" ) );
-    addSubFormHeader ( "refrutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia ruta" ) );
-    addSubFormHeader ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Hora ruta" ) );
-    addSubFormHeader ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia de la incidencia" ) );
-    addSubFormHeader ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Hora de la incidencia" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "CIF del cliente" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del cliente" ) );
+    addSubFormHeader ( "idzonacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID zona comercial" ) );
+    addSubFormHeader ( "fecharutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha ruta comercial" ) );
+    addSubFormHeader ( "fechaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha incidencia comercial" ) );
+    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del trabajador" ) );
+    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apellidos del trabajador" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
+    addSubFormHeader ( "idrutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID ruta comercial" ) );
+    addSubFormHeader ( "comentariosrutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios ruta comercial" ) );
+    addSubFormHeader ( "idincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID incidencia comercial" ) );
+    addSubFormHeader ( "comentincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario de la incidencia comercial" ) );
+    addSubFormHeader ( "estadoincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Estado de la incidencia comercial" ) );
+    addSubFormHeader ( "idpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID pedido cliente" ) );
+    addSubFormHeader ( "idcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID cobro" ) );
+    addSubFormHeader ( "nomzonacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre zona comercial" ) );
+    addSubFormHeader ( "refrutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia ruta" ) );
+    addSubFormHeader ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora ruta" ) );
+    addSubFormHeader ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia de la incidencia" ) );
+    addSubFormHeader ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora de la incidencia" ) );
     setinsercion ( FALSE );
     _depura ( "END RutaComercialListSubForm::RutaComercialListSubForm", 0 );
 };

@@ -45,7 +45,7 @@ ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
     _depura ( "INIT_ListSerieFacturaView::ListSerieFacturaView", 1 );
-    setTitleName ( _( "Serie de Factura" ) );
+    setTitleName ( _ ( "Serie de Factura" ) );
     setDbTableName ( "serie_factura" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -77,8 +77,8 @@ ListSerieFacturaSubForm::ListSerieFacturaSubForm ( QWidget *parent ) : BfSubForm
     setDbTableName ( "serie_factura" );
     setDbFieldId ( "codigoserie_factura" );
     addSubFormHeader ( "codigoserie_facturaorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "codigoserie_factura" );
-    addSubFormHeader ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Codigo serie factura" ) );
-    addSubFormHeader ( "descserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Descripcion serie factura" ) );
+    addSubFormHeader ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo serie factura" ) );
+    addSubFormHeader ( "descserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion serie factura" ) );
     setinsercion ( TRUE );
     _depura ( "END ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0 );
 }

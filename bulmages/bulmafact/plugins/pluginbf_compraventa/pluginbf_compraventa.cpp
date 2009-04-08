@@ -73,14 +73,14 @@ void myplugincv::inicializa ( Bulmafact *bges )
     setMainCompany ( bges->getcompany() );
 
     /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
+    QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
 
-    QAction *planCuentas = new QAction ( _( "&CompraVenta" ), 0 );
-    planCuentas->setStatusTip ( _( "CompraVenta" ) );
-    planCuentas->setWhatsThis ( _( "CompraVenta" ) );
+    QAction *planCuentas = new QAction ( _ ( "&CompraVenta" ), 0 );
+    planCuentas->setStatusTip ( _ ( "CompraVenta" ) );
+    planCuentas->setWhatsThis ( _ ( "CompraVenta" ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
+    bges->Listados->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     _depura ( "END myplugincv::inicializa", 0 );
 }
@@ -96,8 +96,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de CompraVenta\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_compraventa", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_compraventa", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugincv *plug = new myplugincv();
     plug->inicializa ( bges );

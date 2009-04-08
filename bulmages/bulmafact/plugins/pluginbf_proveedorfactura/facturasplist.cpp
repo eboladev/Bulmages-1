@@ -40,7 +40,7 @@
 \param flag
 \return
 **/
-FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
+FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
@@ -52,11 +52,11 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
     } // end if
     mdb_idfacturap = "";
     setSubForm ( mui_list );
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     iniciaForm();
     g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
@@ -87,13 +87,13 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     presentar();
     setSubForm ( mui_list );
     mdb_idfacturap = "";
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
-    if(modoEdicion()) {
-    	mainCompany() ->meteWindow ( windowTitle(), this );
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
+    if ( modoEdicion() ) {
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -118,9 +118,9 @@ void FacturasProveedorList::iniciaForm()
     int res = g_plugins->lanza ( "FacturasProveedorList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, _( "Todas las facturas" ) );
-    mui_procesada->insertItem ( 1, _( "Facturas procesadas" ) );
-    mui_procesada->insertItem ( 2, _( "Facturas no procesadas" ) );
+    mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
+    mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
+    mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
     _depura ( "END FacturasProveedorList::iniciaForm" );
 }
 
@@ -221,7 +221,7 @@ void FacturasProveedorList::editar ( int row )
             emit ( selected ( mdb_idfacturap ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al cargar la factura proveedor" ), this );
+        mensajeInfo ( _ ( "Error al cargar la factura proveedor" ), this );
     } // end try
     _depura ( "END FacturasProveedorList::editar", 0 );
 }
@@ -240,18 +240,18 @@ void FacturasProveedorList::borrar()
     _depura ( "FacturasProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
         mdb_idfacturap = mui_list->dbValue ( "idfacturap" );
-        FacturaProveedorView *bud = new FacturaProveedorView( ( BfCompany * ) mainCompany(), 0 );
+        FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         bud->cargar ( mdb_idfacturap );
         bud->on_mui_borrar_clicked();
         delete bud;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar la factura de proveedor" ), this );
+        mensajeInfo ( _ ( "Error al borrar la factura de proveedor" ), this );
     } // end try
     _depura ( "END FacturasProveedorList::borrar", 0 );
 }
@@ -264,7 +264,7 @@ void FacturasProveedorList::borrar()
 void FacturasProveedorList::imprimir()
 {
     _depura ( "FacturasProveedorList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _( "Facturas de proveedores" ) );
+    mui_list->imprimirPDF ( _ ( "Facturas de proveedores" ) );
     _depura ( "END FacturasProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -327,7 +327,7 @@ void FacturasProveedorList::setidarticulo ( QString val )
 void FacturasProveedorList::crear()
 {
     _depura ( "FacturasProveedorList::crear", 0 );
-    FacturaProveedorView *fact = new FacturaProveedorView( ( BfCompany * ) mainCompany(), 0 );
+    FacturaProveedorView *fact = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->pWorkspace()->addWindow ( fact );
     fact->inicializar();
     fact->show();
@@ -348,19 +348,19 @@ FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) :
     _depura ( "FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
     setDbTableName ( "facturap" );
     setDbFieldId ( "idfacturap" );
-    addSubFormHeader ( "reffacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia factura" ) );
-    addSubFormHeader ( "idfacturap", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id factura" ) );
-    addSubFormHeader ( "numfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero factura" ) );
-    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre proveedor" ) );
-    addSubFormHeader ( "ffacturap", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha factura" ) );
-    addSubFormHeader ( "contactfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Persona de contacto" ) );
-    addSubFormHeader ( "telfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Telefono factura" ) );
-    addSubFormHeader ( "comentfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario factura" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id trabajador" ) );
-    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id proveedor" ) );
-    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total" ) );
-    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
+    addSubFormHeader ( "reffacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia factura" ) );
+    addSubFormHeader ( "idfacturap", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id factura" ) );
+    addSubFormHeader ( "numfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero factura" ) );
+    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre proveedor" ) );
+    addSubFormHeader ( "ffacturap", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha factura" ) );
+    addSubFormHeader ( "contactfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Persona de contacto" ) );
+    addSubFormHeader ( "telfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Telefono factura" ) );
+    addSubFormHeader ( "comentfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario factura" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
+    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id proveedor" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

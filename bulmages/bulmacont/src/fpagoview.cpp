@@ -33,7 +33,7 @@ fpagoview::fpagoview ( BcCompany *emp, QWidget *parent )
 {
     _depura ( "fpagoview::fpagoview", 0 );
 
-    setTitleName ( _( "Forma de Pago" ) );
+    setTitleName ( _ ( "Forma de Pago" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "fpago" );
 
@@ -143,8 +143,8 @@ void fpagoview::mostrarplantilla ( int pos )
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    _( "Guardar forma de pago" ),
-                                    _( "Desea guardar los cambios?" ),
+                                    _ ( "Guardar forma de pago" ),
+                                    _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
     } // end if
@@ -205,13 +205,13 @@ void fpagoview::on_mui_crear_clicked()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    _( "Guardar forma de pago" ),
-                                    _( "Desea guardar los cambios?" ),
+                                    _ ( "Guardar forma de pago" ),
+                                    _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
     } // end if
     try {
-        QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _( "Nueva forma de pago" ) + "', 0, 0, 0)";
+        QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _ ( "Nueva forma de pago" ) + "', 0, 0, 0)";
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idfpago) AS idfpago FROM fpago" );
@@ -235,12 +235,12 @@ void fpagoview::on_mui_borrar_clicked()
 {
     _depura ( "fpagoview::borrar", 0 );
     if ( mui_comboFPago->currentIndex() == -1 ) {
-        mensajeInfo ( _( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
+        mensajeInfo ( _ ( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
         return;
     } else {
         switch ( QMessageBox::warning ( this,
-                                        _( "Borrar forma de pago" ),
-                                        _( "Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n" ),
+                                        _ ( "Borrar forma de pago" ),
+                                        _ ( "Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n" ),
                                         QMessageBox::Ok, QMessageBox::Cancel ) ) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
             mainCompany() ->runQuery ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );

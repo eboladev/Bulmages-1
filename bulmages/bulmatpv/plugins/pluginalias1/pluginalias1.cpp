@@ -35,18 +35,18 @@ int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
 
 int Ticket_insertarArticuloCodigoNL_Post ( Ticket *tick )
 {
-	BlDbRecordSet *cur=0;
+    BlDbRecordSet *cur = 0;
 
     QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( BtCompany * ) tick->mainCompany() )->valorInput() + "'";
 
     cur = tick->mainCompany() ->loadQuery ( query );
-    if (cur) {
-	if ( !cur->eof() ) {
-		tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
-	} // end if
-	
-		
-	delete cur;
+    if ( cur ) {
+        if ( !cur->eof() ) {
+            tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
+        } // end if
+
+
+        delete cur;
     } // end if
 
     return 0;

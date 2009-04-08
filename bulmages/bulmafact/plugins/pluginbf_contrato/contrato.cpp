@@ -36,18 +36,18 @@
 Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "Contrato::Contrato", 0 );
-    setTitleName ( _( "Contrato" ) );
+    setTitleName ( _ ( "Contrato" ) );
     setDbTableName ( "contrato" );
     setDbFieldId ( "idcontrato" );
-    addDbField ( "idcontrato",  BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id contrato" ) );
-    addDbField ( "idcliente",   BlDbField::DbInt, BlDbField::DbNotNull, _( "Id cliente" ) );
-    addDbField ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia contrato" ) );
-    addDbField ( "descontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
-    addDbField ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
-    addDbField ( "loccontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
-    addDbField ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion contrato" ) );
-    addDbField ( "fincontrato",  BlDbField::DbDate, BlDbField::DbNothing, _( "Descripcion contrato" ) );
-    addDbField ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNothing, _( "Descripcion contrato" ) );
+    addDbField ( "idcontrato",  BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id contrato" ) );
+    addDbField ( "idcliente",   BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cliente" ) );
+    addDbField ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia contrato" ) );
+    addDbField ( "descontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+    addDbField ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+    addDbField ( "loccontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+    addDbField ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+    addDbField ( "fincontrato",  BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+    addDbField ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
     _depura ( "END Contrato::Contrato", 0 );
 }
 

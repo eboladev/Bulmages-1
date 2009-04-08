@@ -106,13 +106,13 @@ void ImpQToolButton::click()
         BlSubForm *sub = m_albaranClienteList->mui_list;
 
         /// Creamos la factura
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
-				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de factura");
-					return;
-				} // end if
-				FacturaView *fac = (FacturaView *) g_plugParams;
+        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+        int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
+        if ( !resur ) {
+            mensajeInfo ( "no se pudo crear instancia de factura" );
+            return;
+        } // end if
+        FacturaView *fac = ( FacturaView * ) g_plugParams;
         m_companyact->m_pWorkspace->addWindow ( fac );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
@@ -126,13 +126,13 @@ void ImpQToolButton::click()
             if ( val == "TRUE" ) {
                 QString id = rec->dbValue ( "idalbaran" );
 
-			/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewAlbaranClienteView", m_companyact);
-				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de albaran");
-					return;
-				} // end if
-                    AlbaranClienteView *pres = (AlbaranClienteView *) g_plugParams;
+                /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                int resur = g_plugins->lanza ( "SNewAlbaranClienteView", m_companyact );
+                if ( !resur ) {
+                    mensajeInfo ( "no se pudo crear instancia de albaran" );
+                    return;
+                } // end if
+                AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;
                 pres->cargar ( id );
                 if ( pres->mui_procesadoalbaran->isChecked() ) {
                     pres->close();
@@ -147,7 +147,7 @@ void ImpQToolButton::click()
                 BlFixed descgen = BlFixed ( "1.000" ) - descgen1 / BlFixed ( "100" );
 
                 /// Agregamos a comentarios que albaran se corresponde.
-                QString comm = fac->dbValue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + pres->dbValue ( "numalbaran" ) + _( "Ref:" ) + " " + pres->dbValue ( "refalbaran" ) + _( "Fecha:" ) + " " + pres->dbValue ( "fechaalbaran" ) + ")\n";
+                QString comm = fac->dbValue ( "comentfactura" ) + "(" + _ ( "ALBARAN: Num " ) + pres->dbValue ( "numalbaran" ) + _ ( "Ref:" ) + " " + pres->dbValue ( "refalbaran" ) + _ ( "Fecha:" ) + " " + pres->dbValue ( "fechaalbaran" ) + ")\n";
                 fac->setDbValue ( "comentfactura", comm );
                 fac->setDbValue ( "idforma_pago", pres->dbValue ( "idforma_pago" ) );
                 fac->setDbValue ( "reffactura", pres->dbValue ( "refalbaran" ) );

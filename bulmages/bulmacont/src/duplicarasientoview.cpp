@@ -121,7 +121,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
             ordeninicial = atoi(cur->valor("orden").toAscii()) + 1;
         } // end if
         delete cur;
-     
+
         query1 = "SELECT max(idasiento) AS maxim FROM asiento";
         BlDbRecordSet *cursaux = mainCompany()->loadQuery(query1);
         if (!cursaux->eof()) {

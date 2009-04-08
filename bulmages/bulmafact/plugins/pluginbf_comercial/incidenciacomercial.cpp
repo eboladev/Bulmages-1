@@ -35,17 +35,17 @@
 IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "IncidenciaComercial::IncidenciaComercial", 0 );
-    setTitleName ( _( "Incidencia comercial" ) );
+    setTitleName ( _ ( "Incidencia comercial" ) );
     setDbTableName ( "incidenciacomercial" );
     setDbFieldId ( "idincidenciacomercial" );
-    addDbField ( "idincidenciacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Identificador" ) );
-    addDbField ( "fechaincidenciacomercial", BlDbField::DbDate, BlDbField::DbNotNull, _( "Fecha" ) );
-    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Familia" ) );
-    addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, _( "Trabajador" ) );
-    addDbField ( "comentincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
-    addDbField ( "estadoincidenciacomercial", BlDbField::DbInt, BlDbField::DbNotNull, _( "Estado" ) );
-    addDbField ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Hora" ) );
-    addDbField ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
+    addDbField ( "idincidenciacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador" ) );
+    addDbField ( "fechaincidenciacomercial", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha" ) );
+    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Familia" ) );
+    addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Trabajador" ) );
+    addDbField ( "comentincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+    addDbField ( "estadoincidenciacomercial", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Estado" ) );
+    addDbField ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
+    addDbField ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
     _depura ( "END IncidenciaComercial::IncidenciaComercial", 0 );
 
 
@@ -91,7 +91,7 @@ int IncidenciaComercial::cargar ( QString id )
         DBload ( cur );
     }
     delete cur;
-    setWindowTitle ( _( "Ruta comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
+    setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
     dialogChanges_cargaInicial();
     _depura ( "END IncidenciaComercial::cargar", 0 );
     return 0;

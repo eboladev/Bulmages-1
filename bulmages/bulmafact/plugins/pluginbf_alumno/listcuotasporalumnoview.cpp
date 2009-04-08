@@ -46,7 +46,7 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
         : BfForm ( comp, parent )
 {
     _depura ( "ListCuotasPorAlumnoView::ListCuotasPorAlumnoView", 1 );
-    setTitleName ( _( "CuotasPorAlumno" ) );
+    setTitleName ( _ ( "CuotasPorAlumno" ) );
     setDbTableName ( "cuotaporalumno" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -67,7 +67,7 @@ void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al guardar las cuotas" ) );
+        mensajeInfo ( _ ( "Error al guardar las cuotas" ) );
     } // end try
     _depura ( "END ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );
 }
@@ -93,8 +93,8 @@ ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfS
     _depura ( "ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm", 0 );
     setDbTableName ( "cuotaporalumno" );
     setDbFieldId ( "numalumnoscuotaporalumno" );
-    addSubFormHeader ( "numalumnoscuotaporalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _( "Codigo almacen" ) );
-    addSubFormHeader ( "cuotacuotaporalumno", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cuota" ) );
+    addSubFormHeader ( "numalumnoscuotaporalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
+    addSubFormHeader ( "cuotacuotaporalumno", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cuota" ) );
     setinsercion ( TRUE );
     _depura ( "END ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm", 0 );
 }

@@ -48,8 +48,8 @@ int entryPoint ( Bulmafact *bcont )
     _depura ( "Entrada del plugin Corrector", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_corrector", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_corrector", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BlMainCompany *emp = bcont->getcompany();
     /// Vamos a probar con un docwindow.

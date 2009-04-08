@@ -33,11 +33,11 @@
 **/
 int entryPoint ( Bulmafact * )
 {
-    _depura ( _("Estoy dentro del plugin de Abertura de Referencia"), 0 );
+    _depura ( _ ( "Estoy dentro del plugin de Abertura de Referencia" ), 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_abrereferencia", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_abrereferencia", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -52,23 +52,23 @@ int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia *l )
 {
     _depura ( "BusquedaReferencia_on_mui_rferencia_returnPressed", 0 );
 
-	/// Buscamos la ficha que corresponde al widget.
-	QList<BfForm *> lista = g_main->findChildren<BfForm *>();
-	
-	BfForm *ficha = (BfForm *) l->parentWidget();
+    /// Buscamos la ficha que corresponde al widget.
+    QList<BfForm *> lista = g_main->findChildren<BfForm *>();
 
-	while (ficha && !lista.contains(ficha)) {
-		ficha = (BfForm *) ficha->parentWidget();
-	} // end while
+    BfForm *ficha = ( BfForm * ) l->parentWidget();
 
-	if (ficha) {
-		QString query = "SELECT * FROM " +ficha->tableName() + " WHERE ref"+ficha->tableName()+" = '" + l->text() +"'";
-		BlDbRecordSet *cur = l->mainCompany()->loadQuery(query);
-		if (!cur->eof()) {
-			ficha->cargar(cur->valor("id"+ficha->tableName()));
-		} // end if
-		delete cur;
-	}// end if
+    while ( ficha && !lista.contains ( ficha ) ) {
+        ficha = ( BfForm * ) ficha->parentWidget();
+    } // end while
+
+    if ( ficha ) {
+        QString query = "SELECT * FROM " + ficha->tableName() + " WHERE ref" + ficha->tableName() + " = '" + l->text() + "'";
+        BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
+        if ( !cur->eof() ) {
+            ficha->cargar ( cur->valor ( "id" + ficha->tableName() ) );
+        } // end if
+        delete cur;
+    }// end if
 
     _depura ( "END BusquedaReferencia_on_mui_rferencia_returnPressed", 0 );
     return 0;

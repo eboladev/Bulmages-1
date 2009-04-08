@@ -74,7 +74,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     _depura ( "BtCompany::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
-    splash->mensaje ( _( "Inicializando listado de articulos" ) );
+    splash->mensaje ( _ ( "Inicializando listado de articulos" ) );
     splash->setBarraProgreso ( 30 );
     m_progressbar->setValue ( 30 );
 
@@ -97,7 +97,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmaTPV->statusBar() ->showMessage ( dbName(), 2000 );
-    m_bulmaTPV->setWindowTitle ( _( "Terminal Punto de Venta GPL" ) + " :: " + dbName() );
+    m_bulmaTPV->setWindowTitle ( _ ( "Terminal Punto de Venta GPL" ) + " :: " + dbName() );
 
     _depura ( "END BtCompany::createMainWindows", 0 );
 }
@@ -105,8 +105,8 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
 void BtCompany::z()
 {
-	if (g_plugins->lanza("BtCompany_z", this) )
-		return;
+    if ( g_plugins->lanza ( "BtCompany_z", this ) )
+        return;
     begin();
 
     QString query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE ";
@@ -115,7 +115,7 @@ void BtCompany::z()
     QString total = cur->valor ( "total" );
     if ( total == "" ) total = "0";
     delete cur;
-    query = "INSERT INTO z (idalmacen, totalz, numtickets) VALUES(" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ", "+total+","+numtickets+")";
+    query = "INSERT INTO z (idalmacen, totalz, numtickets) VALUES(" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ", " + total + "," + numtickets + ")";
     runQuery ( query );
     query = "SELECT max(idz) AS id FROM z";
     cur = loadQuery ( query );
@@ -136,7 +136,7 @@ void BtCompany::z()
     if ( totalcont == "" ) totalcont = "0";
     delete cur1;
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ g_confpr->valor(CONF_IDFORMA_PAGO_VISA);
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_VISA );
 
     BlDbRecordSet *cur2 = loadQuery ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -255,33 +255,33 @@ void BtCompany::z()
 // Informes por familias
 
     /// Imprimimos el almacen
-    cur = loadQuery ( "SELECT * FROM familia");
+    cur = loadQuery ( "SELECT * FROM familia" );
     while ( !cur->eof() ) {
 
-	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
-	BlDbRecordSet *cur1 = loadQuery ( querycont );
-	QString numticketscont = cur1->valor ( "unidades" );
-	QString totalcont = cur1->valor ( "total" );
-	if ( totalcont == "" ) totalcont = "0";
-	delete cur1;
+        QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz=" + idz + ")  AND idfamilia = " + cur->valor ( "idfamilia" );
+        BlDbRecordSet *cur1 = loadQuery ( querycont );
+        QString numticketscont = cur1->valor ( "unidades" );
+        QString totalcont = cur1->valor ( "total" );
+        if ( totalcont == "" ) totalcont = "0";
+        delete cur1;
 
-	if ( totalcont != "") {
-		file.write ( QString ( "Familia: " ).toAscii() );
-		file.write (cur->valor ( "nomfamilia" ).toAscii() );
-		file.write ( "\n", 1 );
-	
-		str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
-		file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-		file.write ( "\n", 1 );
-		
-		str = "Total:" + totalcont.rightJustified ( 10, ' ' );
-		file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-		file.write ( "\n", 1 );
-	
-		file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
-	} // end if
+        if ( totalcont != "" ) {
+            file.write ( QString ( "Familia: " ).toAscii() );
+            file.write ( cur->valor ( "nomfamilia" ).toAscii() );
+            file.write ( "\n", 1 );
 
-	cur-> nextRecord();
+            str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
+            file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+            file.write ( "\n", 1 );
+
+            str = "Total:" + totalcont.rightJustified ( 10, ' ' );
+            file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+            file.write ( "\n", 1 );
+
+            file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+        } // end if
+
+        cur-> nextRecord();
     } // end if
     delete cur;
 // Fin informes por familias
@@ -324,8 +324,8 @@ void BtCompany::z()
 
 void BtCompany::x()
 {
-	if (g_plugins->lanza("BtCompany_x", this) )
-		return;
+    if ( g_plugins->lanza ( "BtCompany_x", this ) )
+        return;
 
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
     BlDbRecordSet *cur = loadQuery ( query );
@@ -342,7 +342,7 @@ void BtCompany::x()
     delete cur1;
 
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ g_confpr->valor(CONF_IDFORMA_PAGO_VISA);
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_VISA );
 
     BlDbRecordSet *cur2 = loadQuery ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -496,11 +496,11 @@ void BtCompany::cobrar()
         return;
     } // end if
 
-    if (m_ticketActual->dbValue("idalbaran") != "") {
-	    m_ticketActual->guardar();
+    if ( m_ticketActual->dbValue ( "idalbaran" ) != "" ) {
+        m_ticketActual->guardar();
     } else {
-	    m_ticketActual->guardar();
-	    m_ticketActual->imprimir();
+        m_ticketActual->guardar();
+        m_ticketActual->imprimir();
     } // end if
 
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
@@ -565,7 +565,7 @@ void BtCompany::guardaConf()
         stream << "\t\t\t<Y>" + QString::number ( m_bulmaTPV->y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmaTPV->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmaTPV->height() ) + "</HEIGHT>\n";
-	stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString(m_bulmaTPV->saveState().toBase64()) + "</TOOLBARSDOCKWIDGETS>\n";
+        stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmaTPV->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
         stream << "\t</PRINCIPAL>\n";
         stream << "</CONFIG>\n";
         file.close();
@@ -613,7 +613,7 @@ void BtCompany::cargaConf()
     m_bulmaTPV->setGeometry ( nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt() );
 
     /// Cogemos el ancho del indexador
-    m_bulmaTPV->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
+    m_bulmaTPV->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
 
     _depura ( "END BfCompany::cargaConf", 0 );
 }

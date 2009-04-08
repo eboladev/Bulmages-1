@@ -61,15 +61,15 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
         int key = keyEvent->key();
         _depura ( "BlTextEditDelegate::key = :", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-/*
-      switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-	      event->ignore();
-              return TRUE;
-            break;
-        } // end switch
-*/
+        /*
+              switch ( key ) {
+                case Qt::Key_Return:
+                case Qt::Key_Enter:
+               event->ignore();
+                      return TRUE;
+                    break;
+                } // end switch
+        */
     } // end if
     _depura ( "END BlTextEditDelegate::eventFilter()", 0 );
     return QTextEdit::eventFilter ( obj, event );

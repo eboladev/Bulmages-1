@@ -70,7 +70,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
-    setTitleName ( _( "Balance Jerarquico" ) );
+    setTitleName ( _ ( "Balance Jerarquico" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
 
@@ -89,15 +89,15 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 
     listado->setColumnCount ( 9 );
     QStringList nombrecolumnas;
-    nombrecolumnas << _( "Cuenta" )
-    << _( "Nombre de la cuenta" )
-    << _( "Saldo anterior" )
-    << _( "Debe" )
-    << _( "Haber" )
-    << _( "Saldo" )
-    << _( "Debe ejercicio" )
-    << _( "Haber ejercicio" )
-    << _( "Saldo ejercicio" );
+    nombrecolumnas << _ ( "Cuenta" )
+    << _ ( "Nombre de la cuenta" )
+    << _ ( "Saldo anterior" )
+    << _ ( "Debe" )
+    << _ ( "Haber" )
+    << _ ( "Saldo" )
+    << _ ( "Debe ejercicio" )
+    << _ ( "Haber ejercicio" )
+    << _ ( "Saldo ejercicio" );
 //     << _( "Nivel" )
 //     << _( "ID Cuenta" )
 //     << _( "ID Cuenta Padre" );
@@ -280,7 +280,7 @@ bool BalanceTreeView::generaBalance()
     ramas = mainCompany() ->loadQuery ( query, "Ramas" );
     mainCompany() ->commit();
     if ( ramas == NULL ) {
-        mensajeInfo ( _( "Error con la base de datos" ) );
+        mensajeInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -317,12 +317,12 @@ bool BalanceTreeView::generaBalance()
 
     QString finicial = m_fechainicial1->text();
     if ( finicial == "" ) {
-        mensajeInfo ( _( "Introduzca la Fecha Inicial" ) );
+        mensajeInfo ( _ ( "Introduzca la Fecha Inicial" ) );
         return 0;
     }
     QString ffinal = m_fechafinal1->text();
     if ( ffinal == "" ) {
-        mensajeInfo ( _( "Introduzca la Fecha Final" ) );
+        mensajeInfo ( _ ( "Introduzca la Fecha Final" ) );
         return 0;
     }
     QString ejercicio = ffinal.right ( 4 );
@@ -331,9 +331,9 @@ bool BalanceTreeView::generaBalance()
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' " + clauswhere + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "'" + clauswhere + " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
     BlDbRecordSet *hojas;
-    hojas = mainCompany() ->loadQuery ( query);
+    hojas = mainCompany() ->loadQuery ( query );
     if ( hojas == NULL ) {
-        mensajeInfo ( _( "Error con la base de datos" ) );
+        mensajeInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -561,13 +561,13 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
     _depura ( "BalanceTreeView::contextmenu", 0 );
 
     QMenu *menupopup = new QMenu ( this );
-    QAction *opt1 = menupopup->addAction ( _( "Ver Diario (este dia)" ) );
-    QAction *opt2 = menupopup->addAction ( _( "Ver Diario (este mes)" ) );
-    QAction *opt3 = menupopup->addAction ( _( "Ver Diario (este anyo)" ) );
+    QAction *opt1 = menupopup->addAction ( _ ( "Ver Diario (este dia)" ) );
+    QAction *opt2 = menupopup->addAction ( _ ( "Ver Diario (este mes)" ) );
+    QAction *opt3 = menupopup->addAction ( _ ( "Ver Diario (este anyo)" ) );
     menupopup->addSeparator();
-    QAction *opt4 = menupopup->addAction ( _( "Ver extracto (este dia)" ) );
-    QAction *opt5 = menupopup->addAction ( _( "Ver extracto (este mes)" ) );
-    QAction *opt6 = menupopup->addAction ( _( "Ver extracto (este anyo)" ) );
+    QAction *opt4 = menupopup->addAction ( _ ( "Ver extracto (este dia)" ) );
+    QAction *opt5 = menupopup->addAction ( _ ( "Ver extracto (este mes)" ) );
+    QAction *opt6 = menupopup->addAction ( _ ( "Ver extracto (este anyo)" ) );
     QAction *opcion = menupopup->exec ( point );
 
     if ( opcion == opt1 ) {
@@ -602,10 +602,10 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
 void BalanceTreeView::imprimir()
 {
     _depura ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
-     QString queryalance();
+    QString queryalance();
 //
-     generaRML ( "balance.rml" );
-     invocaPDF ( "balance" );
+    generaRML ( "balance.rml" );
+    invocaPDF ( "balance" );
 
     _depura ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
 }

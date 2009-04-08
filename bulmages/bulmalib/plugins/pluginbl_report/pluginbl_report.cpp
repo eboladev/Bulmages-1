@@ -70,7 +70,7 @@ void MyPluginInformes::elslot1( )
     _depura ( "MyPluginInformes::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
-    if (!ficha->generaRML ( sender()->objectName() )) return;
+    if ( !ficha->generaRML ( sender()->objectName() ) ) return;
     invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
     _depura ( "END MyPluginInformes::elslot", 0 );
@@ -82,8 +82,8 @@ int entryPoint ( QMainWindow *bges )
     _depura ( "Entrada del plugin Docket", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_report", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_report", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges = bges;
 
@@ -95,10 +95,10 @@ int entryPoint ( QMainWindow *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-    	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
-        pPluginMenu = new QMenu ( _("&Informes"), bges->menuBar() );
+        QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
+        pPluginMenu = new QMenu ( _ ( "&Informes" ), bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformes" ) );
-		bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
+        bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
     } // end if
 
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -134,8 +134,8 @@ int entryPoint ( QMainWindow *bges )
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( titulo, 0 );
         accion->setObjectName ( fileInfo.fileName() );
-        accion->setStatusTip ( _("Informe") );
-        accion->setWhatsThis ( _("Informe") );
+        accion->setStatusTip ( _ ( "Informe" ) );
+        accion->setWhatsThis ( _ ( "Informe" ) );
         mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
         pPluginMenu->addAction ( accion );
     } // end for

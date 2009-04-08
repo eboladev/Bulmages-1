@@ -33,11 +33,11 @@ BusquedaTipoArticulo::BusquedaTipoArticulo ( QWidget *parent )
 {
     _depura ( "BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
 
-		/// Establecemos los parametros de busqueda del Cliente
-		setLabel ( _( "Tipo Articulo:" ) );
-		setTableName( "tipo_articulo" );
-		m_valores["codtipo_articulo"] = "";
-		m_valores["desctipo_articulo"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    setLabel ( _ ( "Tipo Articulo:" ) );
+    setTableName ( "tipo_articulo" );
+    m_valores["codtipo_articulo"] = "";
+    m_valores["desctipo_articulo"] = "";
 
     _depura ( "END BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
 }
@@ -64,7 +64,7 @@ BusquedaTipoArticulo::~BusquedaTipoArticulo()
 void BusquedaTipoArticulo::setidtipo_articulo ( QString val )
 {
     _depura ( "BusquedaTipoArticulo::setidtipo_articulo", 0 );
-	setId(val);
+    setId ( val );
     _depura ( "END BusquedaTipoArticulo::setidtipo_articulo", 0 );
 }
 
@@ -85,9 +85,9 @@ void BusquedaTipoArticulo::setcodtipo_articulo ( QString val )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
     if ( !cur->eof() ) {
-        setId( cur->valor ( "idtipo_articulo" ) );
+        setId ( cur->valor ( "idtipo_articulo" ) );
     } else {
-        setId( "" );
+        setId ( "" );
     } // end if
 
     delete cur;

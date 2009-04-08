@@ -77,25 +77,25 @@ void myplugin4::inicializa ( Bulmacont *bges )
     _depura ( "myplugin4::inicializa", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbalancetree", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbalancetree", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _( "menuVentana" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _( "&Ver" ), bges->menuBar() );
+        pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
     } // end if
 
-    QAction *accion = new QAction ( _("&Balance jerarquico"), 0 );
-    accion->setStatusTip ( _("Permite realizar balances") );
-    accion->setWhatsThis ( _("Podra disponer de la informacion del balance") );
+    QAction *accion = new QAction ( _ ( "&Balance jerarquico" ), 0 );
+    accion->setStatusTip ( _ ( "Permite realizar balances" ) );
+    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_arbolBalance.xpm" ) ) );
     bges->toolBar->addAction ( accion );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -117,8 +117,8 @@ int entryPoint ( Bulmacont *bcont )
     _depura ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbalancetree", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbalancetree", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );

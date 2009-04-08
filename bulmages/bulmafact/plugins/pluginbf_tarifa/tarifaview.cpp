@@ -44,12 +44,12 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     _depura ( "TarifaView::INIT_constructor()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    setTitleName ( _( "Tarifa" ) );
+    setTitleName ( _ ( "Tarifa" ) );
     setDbTableName ( "tarifa" );
     setDbFieldId ( "idtarifa" );
-    addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID tarifa" ) );
-    addDbField ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre de la tarifa" ) );
-    ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de 
+    addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID tarifa" ) );
+    addDbField ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Nombre de la tarifa" ) );
+    ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de
     ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setMainCompany ( comp );
     mui_almacen->setMainCompany ( comp );
@@ -59,12 +59,12 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     /// Desactivamos los campos que solo se utilizan si existe un 'idtarifa',
     /// es decir, si estamos creando una nueva tarifa no tenemos que emplear
     /// estos campos.
-    mui_list->setEnabled(FALSE);
-    mui_filtro->setEnabled(FALSE);
-    mui_actualizar->setEnabled(FALSE);
-    mui_borrar->setEnabled(FALSE);
+    mui_list->setEnabled ( FALSE );
+    mui_filtro->setEnabled ( FALSE );
+    mui_actualizar->setEnabled ( FALSE );
+    mui_borrar->setEnabled ( FALSE );
 
-    meteWindow ( _( "Tarifa edicion" ), this );
+    meteWindow ( _ ( "Tarifa edicion" ), this );
 
     dialogChanges_cargaInicial();
     _depura ( "TarifaView::END_constructor()\n", 0 );
@@ -85,8 +85,9 @@ TarifaView::~TarifaView()
 ///
 /**
 **/
-BfCompany *TarifaView::companyact() {
-	return mainCompany();
+BfCompany *TarifaView::companyact()
+{
+    return mainCompany();
 }
 
 
@@ -97,7 +98,7 @@ void TarifaView::pintar()
 {
     _depura ( "TarifaView::pintar", 0 );
     mui_nomtarifa->setText ( dbValue ( "nomtarifa" ) );
-    setWindowTitle ( _( "Tarifa" ) + " " + mui_nomtarifa->text() );
+    setWindowTitle ( _ ( "Tarifa" ) + " " + mui_nomtarifa->text() );
     _depura ( "END TarifaView::pintar", 1 );
 }
 
@@ -147,16 +148,16 @@ int TarifaView::cargar ( QString idtarifa )
     m_idtarifa = idtarifa;
 
     /// Si se ha guardado bien entonces de habilitan los botones y demas.
-    mui_list->setEnabled(TRUE);
-    mui_filtro->setEnabled(TRUE);
-    mui_actualizar->setEnabled(TRUE);
-    mui_borrar->setEnabled(TRUE);
+    mui_list->setEnabled ( TRUE );
+    mui_filtro->setEnabled ( TRUE );
+    mui_actualizar->setEnabled ( TRUE );
+    mui_borrar->setEnabled ( TRUE );
 
     setDbValue ( "idtarifa", m_idtarifa );
     BlDbRecord::cargar ( m_idtarifa );
     mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
-    setWindowTitle ( _( "Tarifa" ) + " " + dbValue ( "nomtarifa" ) );
+    setWindowTitle ( _ ( "Tarifa" ) + " " + dbValue ( "nomtarifa" ) );
     meteWindow ( windowTitle(), this );
 
     /// Tratamiento de excepciones.
@@ -185,9 +186,9 @@ int TarifaView::guardar()
     /// - Se comprueba que el nombre no este vacio.
     /// - \TODO: Se comprueba que no exista un nombre igual.
     /// Si existe un 'idtarifa' se actualiza sus datos (UPDATE).
-    if (mui_nomtarifa->text().isEmpty()) {
-	mensajeAviso(tr("El nombre de la tarifa no puede estar vacio."));
-	return -1;
+    if ( mui_nomtarifa->text().isEmpty() ) {
+        mensajeAviso ( tr ( "El nombre de la tarifa no puede estar vacio." ) );
+        return -1;
     } // end if
 
     setDbValue ( "nomtarifa", mui_nomtarifa->text() );
@@ -198,7 +199,7 @@ int TarifaView::guardar()
     dialogChanges_cargaInicial();
 
     /// Se recarga el listado de articulos para poder establecer precios a esa tarifa.
-    cargar( dbValue ( "idtarifa" ) );
+    cargar ( dbValue ( "idtarifa" ) );
 
     emit guardartarifa();
 
@@ -238,9 +239,9 @@ void TarifaView::on_mui_borrar_clicked()
     _depura ( "TarifaView::INIT_boton_borrar()\n", 0 );
     if ( dbValue ( "idtarifa" ) != "" ) {
         if ( QMessageBox::question ( this,
-                                     _( "Borrar tarifa" ),
-                                     _( "Esta a punto de borrar una tarifa. Desea continuar?" ),
-                                     _( "&Si" ), _( "&No" ), 0, 1, 0 ) == 0 ) {
+                                     _ ( "Borrar tarifa" ),
+                                     _ ( "Esta a punto de borrar una tarifa. Desea continuar?" ),
+                                     _ ( "&Si" ), _ ( "&No" ), 0, 1, 0 ) == 0 ) {
             mainCompany() ->begin();
             int error = mui_list->borrar();
             error += borrar();

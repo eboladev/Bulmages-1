@@ -74,13 +74,13 @@ void myplugin1::inicializa ( Bulmafact *bges )
     setMainCompany ( bges->getcompany() );
 
     /// Miramos si existe un menu Articulos
-	QMenu *pPluginMenu = bges->newMenu("&Articulos", "menuArticulos", "menuMaestro");
-	pPluginMenu->addSeparator();
+    QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+    pPluginMenu->addSeparator();
 
 
-    QAction *planCuentas = new QAction ( _( "&Tarifas" ), 0 );
-    planCuentas->setStatusTip ( _( "Tarifas" ) );
-    planCuentas->setWhatsThis ( _( "Tarifas" ) );
+    QAction *planCuentas = new QAction ( _ ( "&Tarifas" ), 0 );
+    planCuentas->setStatusTip ( _ ( "Tarifas" ) );
+    planCuentas->setWhatsThis ( _ ( "Tarifas" ) );
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -98,8 +98,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de tarifas\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_tarifa", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_tarifa", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin1 *plug = new myplugin1();
     plug->inicializa ( bges );
@@ -116,7 +116,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 {
     _depura ( "dentro del plugin", 0 );
 
-    cli->addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, _( "plugintarifas" ) );
+    cli->addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, _ ( "plugintarifas" ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -137,11 +137,11 @@ int ClienteView_ClienteView ( ClienteView *cli )
     /// 1) Comprueba si existe un 'layout' dentro de m_frameplugin
     /// 2) Si existe es porque otro 'plugin' ha metido 'widgets' y no se pueden tocar. Ponemos nuestros
     ///    'widgets' a continuacion. Si no existe lo creamos y ponemos el nuestro.
-    if (cli->m_frameplugin->layout() == 0) {
-	/// No existe layout creamos uno.
-        cli->m_frameplugin->setLayout(hboxLayout160);
+    if ( cli->m_frameplugin->layout() == 0 ) {
+        /// No existe layout creamos uno.
+        cli->m_frameplugin->setLayout ( hboxLayout160 );
     } else {
-	/// \TODO: Existe layout ponemos nuestros 'widgets' a continuacion.
+        /// \TODO: Existe layout ponemos nuestros 'widgets' a continuacion.
 
 
     } // end if
@@ -163,7 +163,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
     l1->setMainCompany ( art->mainCompany() );
     l1->cargar ( "0" );
-    art->mui_tab->addTab ( l1, _( "Tarifas") );
+    art->mui_tab->addTab ( l1, _ ( "Tarifas" ) );
 
     /// VARIACION DE TARIFAS
 
@@ -179,14 +179,14 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setMainCompany ( art->mainCompany() );
     l->setDbTableName ( "variaciontarifa" );
     l->setDbFieldId ( "idarticulo" );
-    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _( "ID variacion tarifa" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "ID articulo" ) );
-    l->addSubFormHeader ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "ID tarifa" ) );
-    l->addSubFormHeader ( "nomtarifa", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Tarifa" ) );
-    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "ID almacen" ) );
-    l->addSubFormHeader ( "nomalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Almacen" ) );
-    l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad mayor o igual que" ) );
-    l->addSubFormHeader ( "porcentajevariacion", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Porcentaje variacion" ) );
+    l->addSubFormHeader ( "idvariaciontarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _ ( "ID variacion tarifa" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "ID articulo" ) );
+    l->addSubFormHeader ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "ID tarifa" ) );
+    l->addSubFormHeader ( "nomtarifa", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Tarifa" ) );
+    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "ID almacen" ) );
+    l->addSubFormHeader ( "nomalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Almacen" ) );
+    l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad mayor o igual que" ) );
+    l->addSubFormHeader ( "porcentajevariacion", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Porcentaje variacion" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
@@ -196,10 +196,10 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     art->mui_tab->addTab ( l, "Variacion Tarifas" );
 
     /// Establece anchos de las columnas.
-    l->setColumnWidth(1, 150);
-    l->setColumnWidth(2, 250);
-    l->setColumnWidth(3, 250);
-    l->setColumnWidth(4, 200);
+    l->setColumnWidth ( 1, 150 );
+    l->setColumnWidth ( 2, 250 );
+    l->setColumnWidth ( 3, 250 );
+    l->setColumnWidth ( 4, 200 );
 
     _depura ( "END ArticuloView_ArticuloView", 0 );
     return 0;
@@ -220,7 +220,7 @@ int ArticuloView_cargar ( ArticuloView *art )
     /// Variacion de tarifas.
     BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
     if ( l ) {
-	QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->dbValue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
+        QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->dbValue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
         l->cargar ( SQLQuery );
     } // end if
 
@@ -241,7 +241,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
         ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
         l1->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
-    	/// Variacion de tarifas.
+        /// Variacion de tarifas.
         BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
@@ -267,7 +267,7 @@ int ArticuloView_borrar ( ArticuloView *art )
     try {
         ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
 
-    	/// Variacion de tarifas.
+        /// Variacion de tarifas.
         BfSubForm *l = art->findChild<BfSubForm *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
 
@@ -289,7 +289,7 @@ int BfSubForm_BfSubForm ( BfSubForm *sub )
     _depura ( "PluginTarifas BfSubForm_BfSubForm", 0 );
     /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
     /// calculo del PVP en funcion del cliente y otros parametros.
-    QObject::connect(sub->m_delegate, SIGNAL(cant_changed(BlDbSubFormRecord *)), sub, SLOT(calculaPVP(BlDbSubFormRecord *)));
+    QObject::connect ( sub->m_delegate, SIGNAL ( cant_changed ( BlDbSubFormRecord * ) ), sub, SLOT ( calculaPVP ( BlDbSubFormRecord * ) ) );
     _depura ( "END PluginTarifas BfSubForm_BfSubForm", 0 );
     return 0;
 }
@@ -304,25 +304,25 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
     BlDbRecordSet *cur = NULL;
 
-    QString cantactual = sub->m_registrolinea->dbValue ( "cant" + sub->tableName() ).replace(",",".");
-    QString pvpactual = sub->m_registrolinea->dbValue ( "pvp" + sub->tableName() ).replace(",",".");
+    QString cantactual = sub->m_registrolinea->dbValue ( "cant" + sub->tableName() ).replace ( ",", "." );
+    QString pvpactual = sub->m_registrolinea->dbValue ( "pvp" + sub->tableName() ).replace ( ",", "." );
     QString variacionpvp;
 
     /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.
-    if (sub->idArticulo().isEmpty() || sub->idTarifa().isEmpty() || sub->idAlmacen().isEmpty()) {
+    if ( sub->idArticulo().isEmpty() || sub->idTarifa().isEmpty() || sub->idAlmacen().isEmpty() ) {
         _depura ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
-	return 0;
+        return 0;
     } else {
-    	cur = sub->mainCompany()->loadQuery ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
+        cur = sub->mainCompany()->loadQuery ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
     } // end if
 
     /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.
-    if (cur->numregistros() > 0) {
-    	variacionpvp = cur->valor ( "porcentajevariacion" );
+    if ( cur->numregistros() > 0 ) {
+        variacionpvp = cur->valor ( "porcentajevariacion" );
 
-	/// Aplica al precio la variacion correspondiente.
-	QString res = sub->mainCompany()->PGEval( pvpactual +" * (1 + " + variacionpvp + " / 100)", 2);
-	sub->m_registrolinea->setDbValue ( "pvp" + sub->tableName(), res);
+        /// Aplica al precio la variacion correspondiente.
+        QString res = sub->mainCompany()->PGEval ( pvpactual + " * (1 + " + variacionpvp + " / 100)", 2 );
+        sub->m_registrolinea->setDbValue ( "pvp" + sub->tableName(), res );
     } // end if
 
     _depura ( "END PluginTarifas BfSubForm_calculaPVP", 0 );

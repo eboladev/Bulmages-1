@@ -43,19 +43,19 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
     mui_listado->setMainCompany ( emp );
     mui_listado->setDbTableName ( "presupuestoc" );
     mui_listado->setDbFieldId ( "idpresupuestoc" );
-    mui_listado->addSubFormHeader ( "idpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNoWrite, _( "Identificador" ) );
-    mui_listado->addSubFormHeader ( "idc_coste", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNoWrite, _( "C. Coste" ) );
-    mui_listado->addSubFormHeader ( "fechapresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Fecha" ) );
-    mui_listado->addSubFormHeader ( "nombrepresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Nombre" ) );
-    mui_listado->addSubFormHeader ( "comentpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Comentarios" ) );
-    mui_listado->addSubFormHeader ( "archpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Archivo" ) );
+    mui_listado->addSubFormHeader ( "idpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNoWrite, _ ( "Identificador" ) );
+    mui_listado->addSubFormHeader ( "idc_coste", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNoWrite, _ ( "C. Coste" ) );
+    mui_listado->addSubFormHeader ( "fechapresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Fecha" ) );
+    mui_listado->addSubFormHeader ( "nombrepresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Nombre" ) );
+    mui_listado->addSubFormHeader ( "comentpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Comentarios" ) );
+    mui_listado->addSubFormHeader ( "archpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Archivo" ) );
     mui_listado->setinsercion ( FALSE );
 
     presentar();
     if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _( "Selector de Proyectos" ) );
+        setWindowTitle ( _ ( "Selector de Proyectos" ) );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
     } // end if
@@ -111,7 +111,7 @@ void ListProyectosView::borrar()
             presentar();
         } // end if
     } catch ( ... ) {
-        _depura ( _( "Error al borrar la amortizacion" ), 2 );
+        _depura ( _ ( "Error al borrar la amortizacion" ), 2 );
     } // end try
     _depura ( "END ListProyectosView::on_mui_borrar_clicked", 0 );
 }

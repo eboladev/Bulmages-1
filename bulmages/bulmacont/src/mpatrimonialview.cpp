@@ -42,7 +42,7 @@ mpatrimonialview::mpatrimonialview ( BcCompany *emp, QWidget *parent, Qt::WFlags
     componentesresta->setColumnCount ( 4 );
 
     QStringList etiquetas;
-    etiquetas << _( "identificador" ) << _( "codigo" ) << _( "descripcion" ) << _( "tipo" );
+    etiquetas << _ ( "identificador" ) << _ ( "codigo" ) << _ ( "descripcion" ) << _ ( "tipo" );
     componentessuma->setHorizontalHeaderLabels ( etiquetas );
     componentesresta->setHorizontalHeaderLabels ( etiquetas );
     _depura ( "END mpatrimonialview::mpatrimonialview", 0 );

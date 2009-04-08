@@ -32,7 +32,7 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
 {
     _depura ( "BusquedaTarifa::BusquedaTarifa", 0 );
     m_cursorcombo = NULL;
-    setMouseTracking(TRUE);
+    setMouseTracking ( TRUE );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     _depura ( "END BusquedaTarifa::BusquedaTarifa", 0 );
 }
@@ -77,48 +77,48 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
 }
 
 
-void BusquedaTarifa::m_activated(int index)
+void BusquedaTarifa::m_activated ( int index )
 {
-    _depura("BusquedaTarifa::m_activated", 0);
+    _depura ( "BusquedaTarifa::m_activated", 0 );
     if ( index > 0 ) {
-	emit (valueChanged ( m_cursorcombo->valor("idtarifa", index -1) ));
+        emit ( valueChanged ( m_cursorcombo->valor ( "idtarifa", index - 1 ) ) );
     } else {
-	emit (valueChanged ( "" ));
+        emit ( valueChanged ( "" ) );
     } // end if
-    
-    _depura("END BusquedaTarifa::m_activated", 0);
-    
+
+    _depura ( "END BusquedaTarifa::m_activated", 0 );
+
 }
 
 
 QString BusquedaTarifa::idtarifa()
 {
-    _depura("BusquedaTarifa::idtarifa", 0);
-    
+    _depura ( "BusquedaTarifa::idtarifa", 0 );
+
     int index = currentIndex();
     if ( index > 0 ) {
-        _depura("END BusquedaTarifa::idtarifa", 0, m_cursorcombo->valor("idtarifa", index -1));
-	return ( m_cursorcombo->valor("idtarifa", index -1));
+        _depura ( "END BusquedaTarifa::idtarifa", 0, m_cursorcombo->valor ( "idtarifa", index - 1 ) );
+        return ( m_cursorcombo->valor ( "idtarifa", index - 1 ) );
     } else {
-        _depura("END BusquedaTarifa::idtarifa", 0);
-	return "";
+        _depura ( "END BusquedaTarifa::idtarifa", 0 );
+        return "";
     } // end if
-    
+
 }
 
 
 QString BusquedaTarifa::fieldValue()
 {
-    _depura("BusquedaTarifa::fieldValue", 0);
-    _depura("END BusquedaTarifa::fieldValue", 0);
+    _depura ( "BusquedaTarifa::fieldValue", 0 );
+    _depura ( "END BusquedaTarifa::fieldValue", 0 );
     return idtarifa();
 }
 
 
-void BusquedaTarifa::setFieldValue(QString idtarifa)
+void BusquedaTarifa::setFieldValue ( QString idtarifa )
 {
-    _depura("BusquedaTarifa::setFieldValue", 0);
-    setIdTarifa(idtarifa);
-    _depura("END BusquedaTarifa::setFieldValue", 0);
+    _depura ( "BusquedaTarifa::setFieldValue", 0 );
+    setIdTarifa ( idtarifa );
+    _depura ( "END BusquedaTarifa::setFieldValue", 0 );
 }
 

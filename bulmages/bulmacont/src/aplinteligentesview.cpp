@@ -55,7 +55,7 @@ aplinteligentesview::aplinteligentesview ( BcCompany *emp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-    setTitleName ( _( "Asiento" ) );
+    setTitleName ( _ ( "Asiento" ) );
     /// Establezco cual es la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
 
@@ -276,50 +276,50 @@ void aplinteligentesview::muestraplantilla ( QString plantilla )
 void aplinteligentesview::on_mui_aceptar_clicked()
 {
     _depura ( "aplinteligentesview::on_mui_aceptar_clicked", 0 );
-	try {
-		
-		
-		/// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
-		/// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
-		if ( numasiento != 0 ) {
-			recogevalores();
-			creaasiento();
-			mainCompany() ->intapuntsempresa() ->muestraasiento ( numasiento );
-			selectfirst();
-		} else {
-			/// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
-			/// Asi que debemos facilitar las cosas al m&aacute;ximo.
-			variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
-			recogevalores();
-			mainCompany() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
-			mainCompany() ->intapuntsempresa() ->vaciar();
-			mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
-			mainCompany() ->intapuntsempresa() ->iniciar_asiento_nuevo();
-			numasiento = mainCompany() ->intapuntsempresa() ->idasiento().toInt();
-			creaasiento();
-			mainCompany() ->intapuntsempresa() ->cerrar();
-			mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
-			numasiento = 0;
-			fechaasiento->selectAll();
-			fechaasiento->setFocus();
-		} // end if
-		/// Si estamos en modo exclusivo cerramos la ventana. Y as&iacute; devolvemos
-		/// el control a la aplicaci&oacute;n principal.
-		if ( modo == 1 ) {
-			close();
-		} else {
-			/// Reseteamos los valores de numeros y texto para que no haya dobles inserciones.
-			for ( int i = 0; i < indvariablesnumero; i++ ) {
-			varnumero[i]->setText ( "" );
-			} // end for
-			for ( int i = 0; i < indvariablestexto; i++ ) {
-			vartexto[i]->setText ( "" );
-			} // end for
-		} // end if
+    try {
 
-	} catch (...) {
-		mensajeInfo ("Fue imposible crear el asiento");
-	} /// end try
+
+        /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
+        /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
+        if ( numasiento != 0 ) {
+            recogevalores();
+            creaasiento();
+            mainCompany() ->intapuntsempresa() ->muestraasiento ( numasiento );
+            selectfirst();
+        } else {
+            /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
+            /// Asi que debemos facilitar las cosas al m&aacute;ximo.
+            variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
+            recogevalores();
+            mainCompany() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
+            mainCompany() ->intapuntsempresa() ->vaciar();
+            mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+            mainCompany() ->intapuntsempresa() ->iniciar_asiento_nuevo();
+            numasiento = mainCompany() ->intapuntsempresa() ->idasiento().toInt();
+            creaasiento();
+            mainCompany() ->intapuntsempresa() ->cerrar();
+            mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+            numasiento = 0;
+            fechaasiento->selectAll();
+            fechaasiento->setFocus();
+        } // end if
+        /// Si estamos en modo exclusivo cerramos la ventana. Y as&iacute; devolvemos
+        /// el control a la aplicaci&oacute;n principal.
+        if ( modo == 1 ) {
+            close();
+        } else {
+            /// Reseteamos los valores de numeros y texto para que no haya dobles inserciones.
+            for ( int i = 0; i < indvariablesnumero; i++ ) {
+                varnumero[i]->setText ( "" );
+            } // end for
+            for ( int i = 0; i < indvariablestexto; i++ ) {
+                vartexto[i]->setText ( "" );
+            } // end for
+        } // end if
+
+    } catch ( ... ) {
+        mensajeInfo ( "Fue imposible crear el asiento" );
+    } /// end try
     _depura ( "END aplinteligentesview::on_mui_aceptar_clicked", 0 );
 }
 
@@ -439,7 +439,7 @@ void aplinteligentesview::mostrarplantilla()
             connect ( varcta[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_cta() ) );
             connect ( varcta[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( codigo_textChanged ( const QString & ) ) );
             varcta[i]->show();
-	    inc += 57;
+            inc += 57;
         } // end for
 
         for ( int i = 0;i < indvariablesfecha; i++ ) {
@@ -454,7 +454,7 @@ void aplinteligentesview::mostrarplantilla()
             connect ( varfecha[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_fecha() ) );
             connect ( varfecha[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( fecha_textChanged ( const QString & ) ) );
             varfecha[i]->show();
-	    inc += 32;
+            inc += 32;
         } // end for
 
         for ( int i = 0;i < indvariablesnumero; i++ ) {
@@ -466,7 +466,7 @@ void aplinteligentesview::mostrarplantilla()
             varnumero[i]->setGeometry ( QRect ( 150, inc , 150, 25 ) );
             connect ( varnumero[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_numero() ) );
             varnumero[i]->show();
-	    inc += 32;
+            inc += 32;
         } // end for
 
         for ( int i = 0;i < indvariablestexto; i++ ) {
@@ -478,7 +478,7 @@ void aplinteligentesview::mostrarplantilla()
             vartexto[i]->setGeometry ( QRect ( 150, inc , 350, 25 ) );
             connect ( vartexto[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_texto() ) );
             vartexto[i]->show();
-	    inc += 32;
+            inc += 32;
         } // end for
     }
     _depura ( "END aplinteligentesview::mostrarplantilla", 0 );
@@ -533,18 +533,18 @@ void aplinteligentesview::recogevalores()
     } // end for
     for ( i = 0; i < indvariablesnumero; i++ ) {
         variablesnumero[i][1] = varnumero[i]->text();
-	if (variablesnumero[i][1].isEmpty())
-		throw -1;
+        if ( variablesnumero[i][1].isEmpty() )
+            throw - 1;
     } // end for
     for ( i = 0; i < indvariablesfecha; i++ ) {
         variablesfecha[i][1] = varfecha[i]->text();
-	if (variablesfecha[i][1].isEmpty())
-		throw -1;
+        if ( variablesfecha[i][1].isEmpty() )
+            throw - 1;
     } // end for
     for ( i = 0; i < indvariablescta; i++ ) {
         variablescta[i][1] = varcta[i]->text();
-	if (variablescta[i][1].isEmpty())
-		throw -1;
+        if ( variablescta[i][1].isEmpty() )
+            throw - 1;
     } // end for
     _depura ( "END aplinteligentesview::recogevalores", 0 );
 }
@@ -612,7 +612,7 @@ void aplinteligentesview::creaasiento()
             mainCompany() ->commit();
         } // end for
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el asiento" ) );
+        mensajeInfo ( _ ( "Error al crear el asiento" ) );
         mainCompany() ->rollback();
         return;
     } // end try

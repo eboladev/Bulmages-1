@@ -97,11 +97,11 @@ void DiarioPrint::accept()
         fprintf ( mifile, "%5.5s %10.10s %10s %30.30s %9.2s %9.2s\n", "ASIENTO", "FECHA", "SUBCUENTA", "DESCRIPCION", "DEBE", "HABER" );
         fprintf ( mifile, "----------------------------------------------------------------------------------------------------------\n" );
         mainCompany() ->begin();
-        cursoraux = mainCompany() -> loadQuery ("SELECT * FROM asiento WHERE fecha >= '"+ QString(finicial) +"' AND fecha <= '"+ QString(ffinal) +"' ORDER BY fecha");
+        cursoraux = mainCompany() -> loadQuery ( "SELECT * FROM asiento WHERE fecha >= '" + QString ( finicial ) + "' AND fecha <= '" + QString ( ffinal ) + "' ORDER BY fecha" );
         for ( ; !cursoraux->eof(); cursoraux->nextRecord() ) {
             fechaasiento = cursoraux->valor ( "fechaasiento" ).toAscii().constData();
             idasiento = atoi ( cursoraux->valor ( "idasiento" ).toAscii() );
-            cursoraux1 = mainCompany() ->loadQuery ("SELECT * FROM apunte where idasiento = "+ cursoraux->valor("idasiento") +" ORDER BY idapunte");
+            cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM apunte where idasiento = " + cursoraux->valor ( "idasiento" ) + " ORDER BY idapunte" );
             for ( ; !cursoraux1->eof(); cursoraux1->nextRecord() ) {
                 fecha = cursoraux1->valor ( 4 ).toAscii().constData();
                 descripcion = cursoraux1->valor ( 5 ).toAscii().constData();
@@ -110,7 +110,7 @@ void DiarioPrint::accept()
                 haber = atof ( cursoraux1->valor ( 9 ).toAscii() );
                 idcuenta = atoi ( cursoraux1->valor ( "idcuenta" ).toAscii() );
 
-                cursoraux2 = mainCompany() ->loadQuery("SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->valor("idcuenta"));
+                cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->valor ( "idcuenta" ) );
 
                 if ( !cursoraux2->eof() ) {
                     codigocuenta = cursoraux2->valor ( "codigo" ).toAscii().constData();

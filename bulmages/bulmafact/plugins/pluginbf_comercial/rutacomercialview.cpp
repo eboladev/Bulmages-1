@@ -51,12 +51,12 @@ RutaComercialView::RutaComercialView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-	/// Establecemos los parametros de busqueda del Cliente
-	mui_idcliente->setMainCompany(comp);
-    mui_idcliente->setLabel ( _( "Cliente:" ) );
-	mui_idcliente->setTableName( "cliente" );
-	mui_idcliente->m_valores["cifcliente"] = "";
-	mui_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setMainCompany ( comp );
+    mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+    mui_idcliente->setTableName ( "cliente" );
+    mui_idcliente->m_valores["cifcliente"] = "";
+    mui_idcliente->m_valores["nomcliente"] = "";
 
     dialogChanges_cargaInicial();
 
@@ -75,11 +75,11 @@ RutaComercialView::RutaComercialView ( QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-	/// Establecemos los parametros de busqueda del Cliente
-    mui_idcliente->setLabel ( _( "Cliente:" ) );
-	mui_idcliente->setTableName( "cliente" );
-	mui_idcliente->m_valores["cifcliente"] = "";
-	mui_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+    mui_idcliente->setTableName ( "cliente" );
+    mui_idcliente->m_valores["cifcliente"] = "";
+    mui_idcliente->m_valores["nomcliente"] = "";
 
     dialogChanges_cargaInicial();
     _depura ( "END RutaComercialView::RutaComercialView", 0 );
@@ -137,7 +137,7 @@ int RutaComercialView::cargar ( QString id )
 {
     _depura ( "RutaComercialView::cargar", 0 );
     int err = RutaComercial::cargar ( id );
-    setWindowTitle ( _( "Ruta comercial" ) + " " + dbValue ( "idrutacomercial" ) );
+    setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idrutacomercial" ) );
     mui_fecharutacomercial->setText ( dbValue ( "fecharutacomercial" ) );
     mui_idcliente->setId ( dbValue ( "idcliente" ) );
     mui_comentrutacomercial->setPlainText ( dbValue ( "comentariosrutacomercial" ) );

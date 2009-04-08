@@ -37,12 +37,12 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
     m_textBusqueda->setText ( "" );
     mdb_id = "";
 
-	/// Inicializamos los valores de vuelta a ""
-	QMapIterator<QString, QString> i(m_valores);
-	while (i.hasNext()) {
-		i.next();
-		m_valores.insert(i.key(), "");
-	}
+    /// Inicializamos los valores de vuelta a ""
+    QMapIterator<QString, QString> i ( m_valores );
+    while ( i.hasNext() ) {
+        i.next();
+        m_valores.insert ( i.key(), "" );
+    }
 
     m_semaforo = FALSE;
     _depura ( "END BlSearchWidget::BlSearchWidget", 0 );
@@ -70,17 +70,17 @@ void BlSearchWidget::pinta()
     _depura ( "BlSearchWidget::pinta", 0 );
     m_semaforo = TRUE;
 
-	/// Inicializamos los valores de vuelta a ""
-	QMapIterator<QString, QString> i(m_valores);
-	if (i.hasNext()) {
-		i.next();
-		m_inputBusqueda->setText(m_valores[i.key()]);
-	} // end if
-	QString cad;
-	while (i.hasNext()) {
-		i.next();
-		cad = cad +" "+ m_valores.value(i.key());
-	}
+    /// Inicializamos los valores de vuelta a ""
+    QMapIterator<QString, QString> i ( m_valores );
+    if ( i.hasNext() ) {
+        i.next();
+        m_inputBusqueda->setText ( m_valores[i.key() ] );
+    } // end if
+    QString cad;
+    while ( i.hasNext() ) {
+        i.next();
+        cad = cad + " " + m_valores.value ( i.key() );
+    }
 
     m_textBusqueda->setText ( cad );
 
@@ -104,31 +104,31 @@ void BlSearchWidget::setId ( QString val )
     _depura ( "BlSearchWidget::setId", 0, val );
     mdb_id = val;
 
-    if (m_tabla == "") {
-		return;
+    if ( m_tabla == "" ) {
+        return;
     } // end if
 
     if ( val == "" ) {
         m_inputBusqueda->setText ( "" );
         m_textBusqueda->setText ( "" );
         mdb_id = "";
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores.insert(i.key(), "");
-			} // end while
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            m_valores.insert ( i.key(), "" );
+        } // end while
     } else {
         QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE id" + m_tabla + "= '" + mdb_id + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
 
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores.insert(i.key(), cur->valor(i.key()));
-			} // end while
+            /// Inicializamos los valores de vuelta a ""
+            QMapIterator<QString, QString> i ( m_valores );
+            while ( i.hasNext() ) {
+                i.next();
+                m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+            } // end while
         } // end if
         delete cur;
     } // end if
@@ -162,23 +162,23 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 {
     _depura ( "BlSearchWidget::setcifprofesor", 0, val );
 
-    QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+campo+" = '" + val + "'";
+    QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = '" + val + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
     if ( !cur->eof() ) {
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores.insert(i.key(), cur->valor(i.key()));
-			} // end while
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+        } // end while
     } else {
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores.insert(i.key(), "");
-			} // end while
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            m_valores.insert ( i.key(), "" );
+        } // end while
     } // end if
     delete cur;
     pinta();
@@ -246,33 +246,33 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     } // end if
 
 
-    if (g_plugins->lanza ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
-		return;
-	} // end if
+    if ( g_plugins->lanza ( "Busqueda_on_m_inputBusqueda_textChanged", this ) ) {
+        return;
+    } // end if
 
 
-	QString cadwhere = "";
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			QString cador = "";
-			while (i.hasNext()) {
-				i.next();
-				cadwhere = cadwhere + cador + " "+i.key()+" = '"+val+"'";
-				cador = " OR ";
-			} // end while
+    QString cadwhere = "";
+    /// Inicializamos los valores de vuelta a ""
+    QMapIterator<QString, QString> i ( m_valores );
+    QString cador = "";
+    while ( i.hasNext() ) {
+        i.next();
+        cadwhere = cadwhere + cador + " " + i.key() + " = '" + val + "'";
+        cador = " OR ";
+    } // end while
 
 
     bool encontrado = FALSE;
-    QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
+    QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_id = cur->valor ( "id"+m_tabla );
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores[i.key()] == cur->valor(i.key());
-			} // end while
+        mdb_id = cur->valor ( "id" + m_tabla );
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            m_valores[i.key() ] == cur->valor ( i.key() );
+        } // end while
         encontrado = TRUE;
     }
     delete cur;
@@ -280,26 +280,26 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 
 
     if ( ! encontrado ) {
-		cadwhere = "";
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			QString cador = "";
-			while (i.hasNext()) {
-				i.next();
-				cadwhere = cadwhere + cador + " upper("+i.key()+") LIKE  upper('%"+val+"%')";
-				cador = " OR ";
-			} // end while
+        cadwhere = "";
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( m_valores );
+        QString cador = "";
+        while ( i.hasNext() ) {
+            i.next();
+            cadwhere = cadwhere + cador + " upper(" + i.key() + ") LIKE  upper('%" + val + "%')";
+            cador = " OR ";
+        } // end while
 
-        QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
+        QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
-            mdb_id = cur->valor ( "id"+m_tabla );
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores.insert(i.key(),cur->valor(i.key()));
-			} // end while
+            mdb_id = cur->valor ( "id" + m_tabla );
+            /// Inicializamos los valores de vuelta a ""
+            QMapIterator<QString, QString> i ( m_valores );
+            while ( i.hasNext() ) {
+                i.next();
+                m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+            } // end while
             encontrado = TRUE;
         } // end if
         delete cur;
@@ -309,21 +309,21 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     if ( !encontrado ) {
         m_textBusqueda->setText ( "" );
         mdb_id = "";
-			/// Inicializamos los valores de vuelta a ""
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				m_valores[i.key()] == "";
-			} // end while
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            m_valores[i.key() ] == "";
+        } // end while
     } // end if
 
     if ( encontrado ) {
-			QString cad = "";
-			QMapIterator<QString, QString> i(m_valores);
-			while (i.hasNext()) {
-				i.next();
-				cad = cad + " " + i.value();
-			} // end while
+        QString cad = "";
+        QMapIterator<QString, QString> i ( m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            cad = cad + " " + i.value();
+        } // end while
         m_textBusqueda->setText ( cad );
     } // end if
     _depura ( "END BlSearchWidget::on_m_cifprofesor_textChanged", 0 );
@@ -335,7 +335,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 /**
 \return
 **/
-QString BlSearchWidget::fieldValue(QString campo)
+QString BlSearchWidget::fieldValue ( QString campo )
 {
     _depura ( "BlSearchWidget::fieldValue", 0 );
     _depura ( "END BlSearchWidget::fieldValue", 0 );
@@ -365,18 +365,21 @@ QString BlSearchWidget::fieldValue()
 }
 
 
-void BlSearchWidget::setLabel(QString label) {
+void BlSearchWidget::setLabel ( QString label )
+{
     mui_labelBusqueda->setText ( label  );
     mui_labelBusqueda->setBuddy ( mui_buscar );
 }
 
 
-QString BlSearchWidget::tableName() {
-	return m_tabla;
+QString BlSearchWidget::tableName()
+{
+    return m_tabla;
 }
 
-void BlSearchWidget::setTableName(QString tableName) {
-	m_tabla = tableName;
+void BlSearchWidget::setTableName ( QString tableName )
+{
+    m_tabla = tableName;
 }
 
 
@@ -398,7 +401,7 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
     setEditable ( true );
 //    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
-    disconnect (this, SIGNAL (activated (int)), 0, 0);
+    disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
     _depura ( "END BlDbCompleterComboBox::BlDbCompleterComboBox", 0 );
 }
@@ -424,109 +427,113 @@ BlDbCompleterComboBox::~BlDbCompleterComboBox()
 **/
 void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
 {
-   _depura ( "BlDbCompleterComboBox::s_editTextChanged", 0, cod );
-   static bool semaforo = FALSE;
-   if ( semaforo ) {
-      _depura ( "END BlDbCompleterComboBox::s_editTextChanged (semafor ocupat)", 0 );
-      return;
-   } else {
-      semaforo = TRUE;
-   } // end if
-   m_entrada = cod;
-   if ( !g_plugins->lanza ( "BlDbCompleterComboBox_textChanged", this ) ) {
-      QString codigo = m_entrada;
-      if ( codigo.size() >= 3 ) {
-        int pos = codigo.indexOf ( ".-" );
-        // no se si es el autoComplete o què però em criden a 
-        // aquesta senyal quan omplo el combo, amb el primer valor 
-        // i si no m'aturo ara, recalcularia el combo amb nomes 
-        // aquest valor encara que l'usuari nomes hagi escrit 
-        // un prefix que permeti mes candidats
-        if ( pos < 0 )  {
-          QString cadwhere = "";
-          /// Inicializamos los valores de vuelta a ""
-          QMapIterator<QString, QString> i(m_valores);
-          QString cador = "";
-          while (i.hasNext()) {
-              i.next();
-              cadwhere = cadwhere + cador + " upper("+i.key()+") LIKE  upper('%"+cod+"%')";
-              cador = " OR ";
-          } // end while
-          QString SQLQuery = "SELECT * FROM "+m_tabla+" WHERE "+ cadwhere;
-          m_cursorcombo = mainCompany() ->loadQuery ( SQLQuery );
-          clear();
-          while ( !m_cursorcombo->eof() ) {
-            QMapIterator<QString, QString> i(m_valores);
-            QString cad = "";
-            QString sep = ".- ";
-            QString cad1 = "";
-            while (i.hasNext()) {
-              i.next();
-              cad = cad + m_cursorcombo->valor(i.key()) + sep;
-              if (sep == ".- ") {
-                cad1 = i.key();
-                sep = " ";
-              } // end if
-            } // end while
-            addItem ( cad , QVariant(m_cursorcombo->valor ( cad1 ) ));
-            m_cursorcombo->nextRecord();
-          } // end while
-          delete m_cursorcombo;
+    _depura ( "BlDbCompleterComboBox::s_editTextChanged", 0, cod );
+    static bool semaforo = FALSE;
+    if ( semaforo ) {
+        _depura ( "END BlDbCompleterComboBox::s_editTextChanged (semafor ocupat)", 0 );
+        return;
+    } else {
+        semaforo = TRUE;
+    } // end if
+    m_entrada = cod;
+    if ( !g_plugins->lanza ( "BlDbCompleterComboBox_textChanged", this ) ) {
+        QString codigo = m_entrada;
+        if ( codigo.size() >= 3 ) {
+            int pos = codigo.indexOf ( ".-" );
+            // no se si es el autoComplete o què però em criden a
+            // aquesta senyal quan omplo el combo, amb el primer valor
+            // i si no m'aturo ara, recalcularia el combo amb nomes
+            // aquest valor encara que l'usuari nomes hagi escrit
+            // un prefix que permeti mes candidats
+            if ( pos < 0 )  {
+                QString cadwhere = "";
+                /// Inicializamos los valores de vuelta a ""
+                QMapIterator<QString, QString> i ( m_valores );
+                QString cador = "";
+                while ( i.hasNext() ) {
+                    i.next();
+                    cadwhere = cadwhere + cador + " upper(" + i.key() + ") LIKE  upper('%" + cod + "%')";
+                    cador = " OR ";
+                } // end while
+                QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
+                m_cursorcombo = mainCompany() ->loadQuery ( SQLQuery );
+                clear();
+                while ( !m_cursorcombo->eof() ) {
+                    QMapIterator<QString, QString> i ( m_valores );
+                    QString cad = "";
+                    QString sep = ".- ";
+                    QString cad1 = "";
+                    while ( i.hasNext() ) {
+                        i.next();
+                        cad = cad + m_cursorcombo->valor ( i.key() ) + sep;
+                        if ( sep == ".- " ) {
+                            cad1 = i.key();
+                            sep = " ";
+                        } // end if
+                    } // end while
+                    addItem ( cad , QVariant ( m_cursorcombo->valor ( cad1 ) ) );
+                    m_cursorcombo->nextRecord();
+                } // end while
+                delete m_cursorcombo;
+            } // end if
         } // end if
     } // end if
-   } // end if
-   g_plugins->lanza ( "BlDbCompleterComboBox_textChanged_Post", this );
-   setEditText ( cod );
-   semaforo = FALSE;
-   _depura ( "END BlDbCompleterComboBox::s_editTextChanged", 0 );
+    g_plugins->lanza ( "BlDbCompleterComboBox_textChanged_Post", this );
+    setEditText ( cod );
+    semaforo = FALSE;
+    _depura ( "END BlDbCompleterComboBox::s_editTextChanged", 0 );
 }
 
-/// Retorna el codi associat a la unica entrada del combo que 
-/// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Això 
-/// permet que abans de donar un error per codi d'article incorrecte 
+/// Retorna el codi associat a la unica entrada del combo que
+/// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Això
+/// permet que abans de donar un error per codi d'article incorrecte
 /// se li assigni l'unic article trobat per l'entrada (incompleta?) de l'usuari.
 /// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
-QString BlDbCompleterComboBox::unicaEleccion(void) {
-  _depura ("BlDbCompleterComboBox::unicaEleccion", 0);
-   int num = 0;
-   QString elec = NULL;
-   for(int i=0; (num<2)&&(i<count()); i++) {
-       if (itemData(i).isValid()) {
-         elec= itemData(i).toString();
-         num++;
-       } // end if
-   } // end for
-   _depura("END BlDbCompleterComboBox::unicaEleccion");
-   return (num==1?elec:NULL);
+QString BlDbCompleterComboBox::unicaEleccion ( void )
+{
+    _depura ( "BlDbCompleterComboBox::unicaEleccion", 0 );
+    int num = 0;
+    QString elec = NULL;
+    for ( int i = 0; ( num < 2 ) && ( i < count() ); i++ ) {
+        if ( itemData ( i ).isValid() ) {
+            elec = itemData ( i ).toString();
+            num++;
+        } // end if
+    } // end for
+    _depura ( "END BlDbCompleterComboBox::unicaEleccion" );
+    return ( num == 1 ? elec : NULL );
 }
 
-/// Sii el combo nomes ha trobat un article a la BD per l'entrada de 
+/// Sii el combo nomes ha trobat un article a la BD per l'entrada de
 /// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
-QString BlDbCompleterComboBox::eligeUnico(void) {
-   _depura("BlDbCompleterComboBox::eligeUnico", 0, "count = " + QString::number(count()));
-  
-   QString elec = unicaEleccion();
-   if (!elec.isNull()) {  
-      _depura("elec="+elec,0);
-      setEditText(elec);
-   } // end if
-   _depura("END BlDbCompleterComboBox::eligeUnico" ,0);
-   return elec;
-} 
+QString BlDbCompleterComboBox::eligeUnico ( void )
+{
+    _depura ( "BlDbCompleterComboBox::eligeUnico", 0, "count = " + QString::number ( count() ) );
 
-/// quan deixa d'editar el camp substituim el que ha posat 
-/// per l'article que volia trobar si nomes hi ha un article candidat
-void BlDbCompleterComboBox::focusOutEvent ( QFocusEvent * event ) {
-   _depura("BlDbCompleterComboBox::focusOutEvent", 0, "count = " + QString::number(count()));
-    eligeUnico();
-   BlComboBox::focusOutEvent(event);
-   _depura("END BlDbCompleterComboBox::focusOutEvent",0);
+    QString elec = unicaEleccion();
+    if ( !elec.isNull() ) {
+        _depura ( "elec=" + elec, 0 );
+        setEditText ( elec );
+    } // end if
+    _depura ( "END BlDbCompleterComboBox::eligeUnico" , 0 );
+    return elec;
 }
 
-QString BlDbCompleterComboBox::entrada() {
-  _depura("BlDbCompleterComboBox::entrada", 0);
-  _depura("END BlDbCompleterComboBox::entrada", 0);
-   return m_entrada;
+/// quan deixa d'editar el camp substituim el que ha posat
+/// per l'article que volia trobar si nomes hi ha un article candidat
+void BlDbCompleterComboBox::focusOutEvent ( QFocusEvent * event )
+{
+    _depura ( "BlDbCompleterComboBox::focusOutEvent", 0, "count = " + QString::number ( count() ) );
+    eligeUnico();
+    BlComboBox::focusOutEvent ( event );
+    _depura ( "END BlDbCompleterComboBox::focusOutEvent", 0 );
+}
+
+QString BlDbCompleterComboBox::entrada()
+{
+    _depura ( "BlDbCompleterComboBox::entrada", 0 );
+    _depura ( "END BlDbCompleterComboBox::entrada", 0 );
+    return m_entrada;
 }
 
 

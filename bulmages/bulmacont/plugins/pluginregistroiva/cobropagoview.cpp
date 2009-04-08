@@ -43,18 +43,18 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     /// Inicializamos el listado.
     mui_listado->setDbTableName ( "prevcobro" );
     mui_listado->setDbFieldId ( "idprevcobro" );
-    mui_listado->addSubFormHeader ( "idprevcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _( "idprevcobro" ) );
-    mui_listado->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _( "fprevistaprevcobro" ) );
-    mui_listado->addSubFormHeader ( "fcobroprevcobro", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _( "fcobroprevcobro" ) );
-    mui_listado->addSubFormHeader ( "idctacliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "idctacliente" ) );
-    mui_listado->addSubFormHeader ( "idfpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _( "idfpago" ) );
-    mui_listado->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "idcuenta" ) );
-    mui_listado->addSubFormHeader ( "idasiento", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "idasiento" ) );
-    mui_listado->addSubFormHeader ( "cantidadprevistaprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "cantidadprevistaprevcobro" ) );
-    mui_listado->addSubFormHeader ( "cantidadprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "cantidadprevcobro" ) );
-    mui_listado->addSubFormHeader ( "idregistroiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "idregistroiva" ) );
-    mui_listado->addSubFormHeader ( "tipoprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "tipoprevcobro" ) );
-    mui_listado->addSubFormHeader ( "docprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "docprevcobro" ) );
+    mui_listado->addSubFormHeader ( "idprevcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _ ( "idprevcobro" ) );
+    mui_listado->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( "fprevistaprevcobro" ) );
+    mui_listado->addSubFormHeader ( "fcobroprevcobro", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _ ( "fcobroprevcobro" ) );
+    mui_listado->addSubFormHeader ( "idctacliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "idctacliente" ) );
+    mui_listado->addSubFormHeader ( "idfpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _ ( "idfpago" ) );
+    mui_listado->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "idcuenta" ) );
+    mui_listado->addSubFormHeader ( "idasiento", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "idasiento" ) );
+    mui_listado->addSubFormHeader ( "cantidadprevistaprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "cantidadprevistaprevcobro" ) );
+    mui_listado->addSubFormHeader ( "cantidadprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "cantidadprevcobro" ) );
+    mui_listado->addSubFormHeader ( "idregistroiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "idregistroiva" ) );
+    mui_listado->addSubFormHeader ( "tipoprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "tipoprevcobro" ) );
+    mui_listado->addSubFormHeader ( "docprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "docprevcobro" ) );
     mui_listado->setinsercion ( FALSE );
     /// Dejamos de inicializar el listado.
     m_cuenta->setMainCompany ( emp );

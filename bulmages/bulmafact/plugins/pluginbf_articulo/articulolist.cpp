@@ -71,7 +71,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _( "Selector de articulos" ) );
+        setWindowTitle ( _ ( "Selector de articulos" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
@@ -117,7 +117,7 @@ void ArticuloList::editar ( int row )
     mdb_nomarticulo = mui_list->dbValue ( "nomarticulo", row );
     mdb_codigocompletoarticulo = mui_list->dbValue ( "codigocompletoarticulo", row );
     if ( modoEdicion() ) {
-        ArticuloView * art = new ArticuloView( ( BfCompany * ) mainCompany(), 0 );
+        ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany(), 0 );
         mainCompany() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
@@ -158,14 +158,14 @@ void ArticuloList::borrar()
     _depura ( "ArticuloList::on_mui_borrar_clicked", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Tiene que seleccionar un articulo" ) );
+        mensajeInfo ( _ ( "Tiene que seleccionar un articulo" ) );
         return;
     } // end if
     try {
         QString idarticulo = mui_list->dbValue ( "idarticulo" );
         if ( QMessageBox::Yes == QMessageBox::question ( this,
-                _( "Borrar articulo" ),
-                _( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
+                _ ( "Borrar articulo" ),
+                _ ( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
                 QMessageBox::Yes, QMessageBox::No ) ) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
             int error = mainCompany() ->runQuery ( SQLQuery );
@@ -175,7 +175,7 @@ void ArticuloList::borrar()
         } // end if
         _depura ( "END ArticuloList::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el articulo" ) );
+        mensajeInfo ( _ ( "Error al borrar el articulo" ) );
     } // end try
 }
 
@@ -234,9 +234,9 @@ void ArticuloList::on_mui_exportar_clicked()
 {
     _depura ( "ArticuloList::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    _( "Elija el archivo" ),
+                    _ ( "Elija el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Clientes (*.xml)" ) ) );
+                    _ ( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmafact2XML ( filexml, IMPORT_ARTICULOS );
@@ -259,9 +259,9 @@ void ArticuloList::on_mui_importar_clicked()
 {
     _depura ( "ArticuloList::INIT_s_importar", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    _( "Elija el archivo" ),
+                    _ ( "Elija el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Clientes (*.xml)" ) ) );
+                    _ ( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2BulmaFact ( filexml, IMPORT_ARTICULOS );
@@ -287,8 +287,8 @@ void ArticuloList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar articulo" ) );
-    QAction *del = popup->addAction ( _( "Borrar articulo" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar articulo" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar articulo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -304,11 +304,11 @@ void ArticuloList::submenu ( const QPoint & )
 void ArticuloList::crear()
 {
     _depura ( "ArticuloList::crear", 0 );
-	ArticuloView * art = new ArticuloView( (BfCompany *) mainCompany());
+    ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany() );
     mainCompany()->m_pWorkspace->addWindow ( art );
     art->pintar();
     art->show();
-    art->setWindowTitle ( _( "Nuevo Articulo" ) );
+    art->setWindowTitle ( _ ( "Nuevo Articulo" ) );
     _depura ( "END ArticuloList::crear", 0 );
 }
 
@@ -366,15 +366,15 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
     setDbFieldId ( "idarticulo" );
 
 
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID articulo" ) );
-    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo completo del articulo" ) );
-    addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del articulo" ) );
-    addSubFormHeader ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion abreviada del articulo" ) );
-    addSubFormHeader ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Observaciones sobre el articulo" ) );
-    addSubFormHeader ( "desctipo_articulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion del tipo de articulo" ) );
-    addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion tipo de I.V.A." ) );
-    addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "P.V.P. articulo" ) );
-    addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Disponible en stock" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID articulo" ) );
+    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo completo del articulo" ) );
+    addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del articulo" ) );
+    addSubFormHeader ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion abreviada del articulo" ) );
+    addSubFormHeader ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Observaciones sobre el articulo" ) );
+    addSubFormHeader ( "desctipo_articulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion del tipo de articulo" ) );
+    addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion tipo de I.V.A." ) );
+    addSubFormHeader ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "P.V.P. articulo" ) );
+    addSubFormHeader ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Disponible en stock" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

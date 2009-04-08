@@ -41,15 +41,16 @@ int entryPoint ( Bulmafact *bf )
     _depura ( "Estoy dentro del plugin BulmaCont", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_bulmacont", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_bulmacont", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bf = bf;
     return 0;
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     g_empresaactual = new BcCompany ( NULL );
     g_empresaactual->setProgressBar ( g_bf->m_pb );
     g_empresaactual->init ( "csoncatiu", "BulmaCont" );

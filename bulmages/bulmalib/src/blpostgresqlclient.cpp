@@ -81,55 +81,57 @@ int BlDbRecordSet::currentRecord()
 /// \param nombre Nombre que obtendra el query (OBSOLETO)
 /// \param conn1 Conexion con la base de datos (Inicializada en \ref BlPostgreSqlClient
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
-BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery)
+BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, QString pristineQuery )
 {
-   inicializa(nombre, conn1, SQLQuery, 0, (char **)NULL,pristineQuery);
+    inicializa ( nombre, conn1, SQLQuery, 0, ( char ** ) NULL, pristineQuery );
 }
 
 
 BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const QString *paramValues, QString pristineQuery
-                       ) {
-         char *charValues[numParams]; 
-         QByteArray qbaValues[numParams]; //si sabes C++ i Qt sabria si no cal ?
-         for (int i=0; i<numParams ; i++) {
-             qbaValues[i] = paramValues[i].toUtf8();
-             charValues[i] = qbaValues[i].data();
-         };
-      inicializa(nombre, conn1, SQLQuery, numParams, charValues, pristineQuery);
+                               const QString *paramValues, QString pristineQuery
+                             )
+{
+    char *charValues[numParams];
+    QByteArray qbaValues[numParams]; //si sabes C++ i Qt sabria si no cal ?
+    for ( int i = 0; i < numParams ; i++ ) {
+        qbaValues[i] = paramValues[i].toUtf8();
+        charValues[i] = qbaValues[i].data();
+    };
+    inicializa ( nombre, conn1, SQLQuery, numParams, charValues, pristineQuery );
 }
 
 
 BlDbRecordSet::BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const char * const *paramValues, QString pristineQuery
-                       ) {
-   inicializa(nombre, conn1, SQLQuery, numParams, paramValues, pristineQuery);
+                               const char * const *paramValues, QString pristineQuery
+                             )
+{
+    inicializa ( nombre, conn1, SQLQuery, numParams, paramValues, pristineQuery );
 }
 
 
 void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
-                       const char * const *paramValues, QString pristineQuery
-                       )
+                                 const char * const *paramValues, QString pristineQuery
+                               )
 {
     _depura ( "BlDbRecordSet::BlDbRecordSet", 0, SQLQuery );
-    for( int i=0; i<numParams; i++) {
-       _depura("param=",0, QString::fromUtf8(paramValues[i]));
+    for ( int i = 0; i < numParams; i++ ) {
+        _depura ( "param=", 0, QString::fromUtf8 ( paramValues[i] ) );
     } ;
     try {
         conn = conn1;
         m_error = FALSE;
         m_query = SQLQuery;
-        if (pristineQuery.isNull()) {
-           m_pristineQuery = SQLQuery; // a falta de + info. Qui ens cridi ja ho sobreescriurà
+        if ( pristineQuery.isNull() ) {
+            m_pristineQuery = SQLQuery; // a falta de + info. Qui ens cridi ja ho sobreescriurà
         } else {
-           m_pristineQuery = pristineQuery;
+            m_pristineQuery = pristineQuery;
         }
         nomcursor = nombre;
         nregistros = 0;
         registroactual = 0;
         _depura ( SQLQuery, 0 );
-        result = PQexecParams ( conn, SQLQuery.toUtf8().data(), numParams, NULL, 
-                               (numParams==0?NULL:paramValues), NULL, NULL, 0  );
+        result = PQexecParams ( conn, SQLQuery.toUtf8().data(), numParams, NULL,
+                                ( numParams == 0 ? NULL : paramValues ), NULL, NULL, 0  );
         switch ( PQresultStatus ( result ) ) {
         case PGRES_NONFATAL_ERROR:
         case PGRES_FATAL_ERROR:
@@ -138,7 +140,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
             _depura ( PQerrorMessage ( conn ) );
             _depura ( "QUERY command failed [" + SQLQuery + "]", 10 );
             if ( g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
-                BlErrorDialog ( _( "Error al hacer la consulta con la base de datos." ) + QString("\n:: ") + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
+                BlErrorDialog ( _ ( "Error al hacer la consulta con la base de datos." ) + QString ( "\n:: " ) + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + " ::", SQLQuery + QString ( "\n" ) + ( QString ) PQerrorMessage ( conn ) );
             } // end if
             PQclear ( result );
             throw - 1;
@@ -159,7 +161,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
         } // end for
 
         _depura ( "------------ RESULTADO DE LA CONSULTA -----------------" );
-        _depura ( "Numero de registros: " + QString::number(nregistros) + ", Numero de campos: " + QString::number(ncampos) );
+        _depura ( "Numero de registros: " + QString::number ( nregistros ) + ", Numero de campos: " + QString::number ( ncampos ) );
         _depura ( "--------- FIN RESULTADO DE LA CONSULTA ----------------" );
     } catch ( ... ) {
         _depura ( "BlDbRecordSet::BlDbRecordSet: Error en la consulta: " + SQLQuery, 2 );
@@ -253,10 +255,11 @@ int BlDbRecordSet::numcampo ( const QString &campo )
 
 /// Esta funcion devuelve el tipo del campo posicion
 /// \return un OID con el indice a la tabla pg_type (que puede considerarse una constante).
-int BlDbRecordSet::dbFieldType(int posicion) {
+int BlDbRecordSet::dbFieldType ( int posicion )
+{
     _depura ( "BlDbRecordSet::tipo", 0, QString::number ( posicion ) );
-    _depura ( "END BlDbRecordSet::tipo", 0);
-    return ( PQftype(result, posicion) );
+    _depura ( "END BlDbRecordSet::tipo", 0 );
+    return ( PQftype ( result, posicion ) );
 }
 
 
@@ -270,19 +273,19 @@ QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
 {
     _depura ( "BlDbRecordSet::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
 
-	QLocale locale;
+    QLocale locale;
 
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
-    QString val = QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ));
-	/// Si el campo es del tipo numeric y esmos con locales lo parseamos.
-	if (localeformat) {
-		if ( dbFieldType(posicion) == 1700) {
-			/// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
-			val.replace(".", locale.decimalPoint ());
-		} // end if
-	} // end if
+    QString val = QString::fromUtf8 ( PQgetvalue ( result, registro, posicion ) );
+    /// Si el campo es del tipo numeric y esmos con locales lo parseamos.
+    if ( localeformat ) {
+        if ( dbFieldType ( posicion ) == 1700 ) {
+            /// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
+            val.replace ( ".", locale.decimalPoint () );
+        } // end if
+    } // end if
     _depura ( "END BlDbRecordSet::valor", 0 );
     return ( val );
 }
@@ -307,35 +310,35 @@ QString BlDbRecordSet::valor ( const QString &campo, int registro, bool localefo
         return "";
     } // end if
     _depura ( "END BlDbRecordSet::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
-    return valor(i, registro, localeformat );
+    return valor ( i, registro, localeformat );
 }
 
 /// Esta funci&oacute;n devuelve el valor entero del campo posicion del registro
 /// pasado, o siNull si el campo es null .
-/// Si se pasa -1 como registro se devuelve el registro actual. 
+/// Si se pasa -1 como registro se devuelve el registro actual.
 /// Si el campo no es entero no la llames, explotar&aacute;.
 /// \param posicion El n&uacute;mero de campo del que se quiere la posicion.
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \param siNull Valor a devolver cuando el campo este a nulo
 /// \return El valor de la posicion.
-int BlDbRecordSet::valorInt ( int posicion, int registro , int siNull)
+int BlDbRecordSet::valorInt ( int posicion, int registro , int siNull )
 {
     _depura ( "BlDbRecordSet::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
     if ( registro == -1 ) {
         registro = registroactual;
     } // end if
     _depura ( "END BlDbRecordSet::valor", 0 );
-    if (PQgetisnull(result, registro, posicion )) {
-       _depura ( "END BlDbRecordSet::valor ", 0," ----- Valor: null");
+    if ( PQgetisnull ( result, registro, posicion ) ) {
+        _depura ( "END BlDbRecordSet::valor ", 0, " ----- Valor: null" );
         return siNull;
     }
-    _depura ( "END BlDbRecordSet::valor ", 0,  (QString)" ----- Valor:" + PQgetvalue ( result, registro, posicion ) );
+    _depura ( "END BlDbRecordSet::valor ", 0,  ( QString ) " ----- Valor:" + PQgetvalue ( result, registro, posicion ) );
 
-    return (atoi (PQgetvalue ( result, registro, posicion  ) ));
+    return ( atoi ( PQgetvalue ( result, registro, posicion  ) ) );
 }
 
-/// Esta funci&oacute;n devuelve el valor entero del campo especificado 
+/// Esta funci&oacute;n devuelve el valor entero del campo especificado
 /// (por nombre) del registro pasado, o siNull en caso que el campo sea null.
 /// Si se pasa como registro -1 se devuelve el registro actual.
 /// Si el campo no es entero no la llames, explotar&aacute;.
@@ -344,7 +347,7 @@ int BlDbRecordSet::valorInt ( int posicion, int registro , int siNull)
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \param siNull Valor a devolver cuando el campo este a nulo
 /// \return El valor de la posici&oacute;n.
-int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull)
+int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull )
 {
     _depura ( "BlDbRecordSet::valor", 0, campo + " " + QString::number ( registro ) );
     int i = 0;
@@ -353,7 +356,7 @@ int BlDbRecordSet::valorInt ( const QString &campo, int registro , int siNull)
         _depura ( "END BlDbRecordSet::valor ", 0, "No hay valor" );
         return siNull;
     } // end if
-    return valorInt(i,registro,siNull);
+    return valorInt ( i, registro, siNull );
 }
 
 /// Devuelve la posici&oacute;n siguiente al registro que se est&aacute; recorriendo.
@@ -532,45 +535,45 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
     QString passwd = g_confpr->valor ( CONF_PASSWORD_USER );
 
     try {
-    /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
-    /// Ahora si se pone -- se considera conexion local.
-    if ( m_pgHost != "--" ) {
-        conexion = "host = " + m_pgHost;
-    } // end if
-    conexion += " port = " + m_pgPort;
-    conexion += " dbname = " + m_pgDbName;
-    if ( user != "" ) {
-        conexion += " user = " + user;
-    } // end if
-    if ( passwd != "" ) {
-        conexion += " password = " + passwd;
-    } // end if
-
-    _depura ( conexion, 0 );
-    conn = PQconnectdb ( conexion.toAscii().data() );
-    if ( PQstatus ( conn ) == CONNECTION_BAD ) {
-        _depura ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
-        if ( passwd != "" && g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
-            _depura ( PQerrorMessage ( conn ), 2 );
-        } else {
-            _depura ( PQerrorMessage ( conn ), 0 );
+        /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
+        /// Ahora si se pone -- se considera conexion local.
+        if ( m_pgHost != "--" ) {
+            conexion = "host = " + m_pgHost;
         } // end if
-        return 1;
-    } // end if
-    _depura ( "La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0 );
-    formatofecha();
+        conexion += " port = " + m_pgPort;
+        conexion += " dbname = " + m_pgDbName;
+        if ( user != "" ) {
+            conexion += " user = " + user;
+        } // end if
+        if ( passwd != "" ) {
+            conexion += " password = " + passwd;
+        } // end if
 
-    /// Buscamos cual es el usuario ejecutando y lo almacenamos.
+        _depura ( conexion, 0 );
+        conn = PQconnectdb ( conexion.toAscii().data() );
+        if ( PQstatus ( conn ) == CONNECTION_BAD ) {
+            _depura ( "La conexion con la base de datos '" + m_pgDbName + "' ha fallado.\n", 0 );
+            if ( passwd != "" && g_confpr->valor ( CONF_ALERTAS_DB ) == "Yes" ) {
+                _depura ( PQerrorMessage ( conn ), 2 );
+            } else {
+                _depura ( PQerrorMessage ( conn ), 0 );
+            } // end if
+            return 1;
+        } // end if
+        _depura ( "La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0 );
+        formatofecha();
+
+        /// Buscamos cual es el usuario ejecutando y lo almacenamos.
         BlDbRecordSet *rs = loadQuery ( "SELECT current_user" );
         if ( !rs->eof() ) {
             m_currentUser = rs->valor ( "current_user" );
-	} else {
-	    m_currentUser = "";
+        } else {
+            m_currentUser = "";
         } // end if
         delete rs;
-	} catch(...) {
-		_depura("Error en la conexion postgresifcace2::inicializa", 2);
-	} // end try
+    } catch ( ... ) {
+        _depura ( "Error en la conexion postgresifcace2::inicializa", 2 );
+    } // end try
 
     _depura ( "END BlPostgreSqlClient::inicializa", 0, nomdb );
     return 0;
@@ -692,45 +695,45 @@ void BlPostgreSqlClient::rollback()
 **/
 BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, QString nomcursor, int limit, int offset )
 {
- return loadQuery(query,0,NULL,nomcursor,limit,offset);
+    return loadQuery ( query, 0, NULL, nomcursor, limit, offset );
 }
 
- const size_t digitsInt = 1+int(ceil(log10(1.0 +INT_MAX)));
+const size_t digitsInt = 1 + int ( ceil ( log10 ( 1.0 + INT_MAX ) ) );
 
 BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
-                       QString *paramValues, QString nomcursor, 
-                       int limit, int offset )
-{ 
-        _depura ( "BlPostgreSqlClient::loadQuery", 0, query );
+        QString *paramValues, QString nomcursor,
+        int limit, int offset )
+{
+    _depura ( "BlPostgreSqlClient::loadQuery", 0, query );
 
     BlDbRecordSet *rs = NULL;
     /// Iniciamos la depuracion.
     try {
-         QString pristineQuery = query;
-        //digitsInt >= longitud expressio decimal d'un int positiu qualsevol 
-         int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
-         QString newParamValues[midaParams];
-         for (int i=0; i<numParams ; i++) {
-             newParamValues[i] = paramValues[i];
-         };
-         /// Si hay establecidas clausulas limit o offset modificamos el query
-         /// y anyadimos parametros
-         if ( limit != 0 ) {
-             newParamValues[numParams] =  QString::number ( limit);
-             query += " LIMIT $" + QString::number ( ++numParams ) +"::int4";
-         };
-         if ( offset != 0 && !query.contains("OFFSET", Qt::CaseInsensitive)) {
-             newParamValues[numParams] =  QString::number ( offset ); 
-             query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
-         };
+        QString pristineQuery = query;
+        //digitsInt >= longitud expressio decimal d'un int positiu qualsevol
+        int midaParams = numParams + ( limit != 0 ? 1 : 0 ) + ( offset != 0 ? 1 : 0 );
+        QString newParamValues[midaParams];
+        for ( int i = 0; i < numParams ; i++ ) {
+            newParamValues[i] = paramValues[i];
+        };
+        /// Si hay establecidas clausulas limit o offset modificamos el query
+        /// y anyadimos parametros
+        if ( limit != 0 ) {
+            newParamValues[numParams] =  QString::number ( limit );
+            query += " LIMIT $" + QString::number ( ++numParams ) + "::int4";
+        };
+        if ( offset != 0 && !query.contains ( "OFFSET", Qt::CaseInsensitive ) ) {
+            newParamValues[numParams] =  QString::number ( offset );
+            query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
+        };
 
         rs = new BlDbRecordSet ( nomcursor, conn, query, numParams, newParamValues, pristineQuery );
-        
+
         _depura ( "END BlPostgreSqlClient::loadQuery", 0, nomcursor );
 
     } catch ( ... ) {
         if ( rs ) delete rs;
-	_depura("La consulta: \"" + query + "\" Ha generado un error",2);
+        _depura ( "La consulta: \"" + query + "\" Ha generado un error", 2 );
         _depura ( "END BlPostgreSqlClient::loadQuery", 0, "Error en la base de datos" );
         rs = NULL;
     } // end try
@@ -761,9 +764,9 @@ int BlPostgreSqlClient::runQuery ( QString Query )
         /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result = PQexec ( conn, ( const char * ) Query.toUtf8() );
         if ( !result )
-            throw -1;
-		if (PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus( result ) != 2 )
-			throw -1;
+            throw - 1;
+        if ( PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus ( result ) != 2 )
+            throw - 1;
         PQclear ( result );
         _depura ( "END BlPostgreSqlClient::runQuery", 0 );
         return 0;
@@ -776,7 +779,7 @@ int BlPostgreSqlClient::runQuery ( QString Query )
             throw - 1;
         } else {
             _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
-            QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " +QString::number(PQresultStatus ( result )) + "\n";
+            QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " + QString::number ( PQresultStatus ( result ) ) + "\n";
             BlErrorDialog ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
@@ -903,20 +906,22 @@ bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
 
 
 /// Evaluacion de formulas usando la base de dato como motor de calculo
-QString BlPostgreSqlClient::PGEval(QString evalexp, int precision) {
-	QString res="";
-	/// Ninguna expresion numerica acepta comas.
-	evalexp.replace(",", ".");
-	QString query = "SELECT (" + evalexp + ")::NUMERIC(12,"+QString::number(precision)+") AS res";
-	BlDbRecordSet *rs = loadQuery(query);
-	if (rs) {
-		res = rs->valor("res");
-		delete rs;
-	} // end if
-	return res;
+QString BlPostgreSqlClient::PGEval ( QString evalexp, int precision )
+{
+    QString res = "";
+    /// Ninguna expresion numerica acepta comas.
+    evalexp.replace ( ",", "." );
+    QString query = "SELECT (" + evalexp + ")::NUMERIC(12," + QString::number ( precision ) + ") AS res";
+    BlDbRecordSet *rs = loadQuery ( query );
+    if ( rs ) {
+        res = rs->valor ( "res" );
+        delete rs;
+    } // end if
+    return res;
 }
 
-const QString BlPostgreSqlClient::currentUser() {
-	return m_currentUser;
+const QString BlPostgreSqlClient::currentUser()
+{
+    return m_currentUser;
 }
 

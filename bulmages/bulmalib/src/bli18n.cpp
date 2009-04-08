@@ -23,31 +23,33 @@
 #include "bli18n.h"
 
 
-QString BlI18n(const char *cadena, int) {
+QString BlI18n ( const char *cadena, int )
+{
 //    QString salida = QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
 //    fprintf(stderr, salida.toAscii());
 
-//    
+//
 #ifdef WIN32
-      return (cadena);
+    return ( cadena );
 #else
-      return QString(gettext(cadena));
+    return QString ( gettext ( cadena ) );
 #endif
 }
 
 
-QString BlI18n(const char *domain, const char *cadena) {
+QString BlI18n ( const char *domain, const char *cadena )
+{
 //    QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");
 //    fprintf(stderr, salida.toAscii());
 
 
 //    return QString(dgettext(domain, cadena));
 
-      return cadena;
+    return cadena;
 #ifdef WIN32
-      return (cadena);
+    return ( cadena );
 #else
-      return QString(dgettext(domain, cadena));
+    return QString ( dgettext ( domain, cadena ) );
 #endif
 }
 
@@ -55,7 +57,7 @@ QString BlI18n(const char *domain, const char *cadena) {
 
 /// En windows de momento no vamos a usar GETTEXT. Aunque la macro deberia ser #ifdef USE_GETTEXT
 #ifdef WIN32
-void bindtextdomain(const char *, const char *) {};
-void textdomain(const char *) {};
+void bindtextdomain ( const char *, const char * ) {};
+void textdomain ( const char * ) {};
 #endif
 

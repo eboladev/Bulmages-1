@@ -34,12 +34,12 @@ QString pluginCAnualesODS::cuentaAnualCAPGC07()
     barra.setRange ( 0, 21 );
     barra.setValue ( 0 );
     barra.show();
-    barra.setText ( _( "Calculando Balance y Resultados" ) );
+    barra.setText ( _ ( "Calculando Balance y Resultados" ) );
 
     QString ejercicioActual = ejercicioActual_fechaBalance.right ( 4 );
     QString ejercicioAnterior = ejercicioAnterior_fechaBalance.right ( 4 );
     QList <QString> meses; // Para poder indexar los meses de ejercicio segun la fecha pasada
-    meses  << _( "Enero" ) << _( "Febrero" ) << _( "Marzo" ) << _( "Abril" ) << _( "Mayo" ) << _( "Junio" ) << _( "Julio" ) << _( "Agosto" ) << _( "Septiembre" ) << _( "Octubre" ) << _( "Noviembre" ) << _( "Diciembre" );
+    meses  << _ ( "Enero" ) << _ ( "Febrero" ) << _ ( "Marzo" ) << _ ( "Abril" ) << _ ( "Mayo" ) << _ ( "Junio" ) << _ ( "Julio" ) << _ ( "Agosto" ) << _ ( "Septiembre" ) << _ ( "Octubre" ) << _ ( "Noviembre" ) << _ ( "Diciembre" );
     unsigned int mesInicio = 0;
     unsigned int mesFin = ejercicioActual_fechaBalance.mid ( 3, 2 ).toInt() - 1;
 
@@ -72,7 +72,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append( "\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 9, 'string', 'B) Inmovilizado' ) \n\
@@ -200,7 +200,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append( "\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 40, 'string', 'C) Gastos a distribuir en varios ejercicios' ) \n\
@@ -211,7 +211,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append("\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 42, 'string', 'D) Activo circulante' ) \n\
@@ -345,7 +345,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append( "\
+                                     codigoPython.append ( "\
                                      \
                                      \n\
                                      doc.new_sheet ( \"Pasivo\")\n\n\
@@ -430,7 +430,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append("\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 24, 'string', 'B) Ingresos a distribuir en varios ejercicios' ) \n\
@@ -454,7 +454,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append( "\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 29, 'string', 'C) Provisiones para riesgos y gastos' ) \n\
@@ -481,7 +481,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append( "\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 35, 'string', 'D) Acreedores a largo plazo' ) \n\
@@ -518,7 +518,7 @@ doc.set_cell_property('bold', False)\n\
                                      doc.set_cell_value ( 4, 42, 'float', '" + ( -saldoCuentaAnt ( 160 ) + ( -saldoCuentaAnt ( 162 ) ) + ( -saldoCuentaAnt ( 164 ) ) ).toQString ( '.' ) + "' ) \n\
                                      \
                                      doc.set_cell_value ( 2, 43, 'string', '       2. Deudas con empresas asociadas' ) \n\
-                                     doc.set_cell_value ( 3, 43, 'float', '" + ( -saldoCuenta ( 161 ) + ( -saldoCuenta ( 163 ) )+ ( -saldoCuenta ( 165 ) ) ).toQString ( '.' ) + "' ) \n\
+                                     doc.set_cell_value ( 3, 43, 'float', '" + ( -saldoCuenta ( 161 ) + ( -saldoCuenta ( 163 ) ) + ( -saldoCuenta ( 165 ) ) ).toQString ( '.' ) + "' ) \n\
                                      doc.set_cell_value ( 4, 43, 'float', '" + ( -saldoCuentaAnt ( 161 ) + ( -saldoCuentaAnt ( 163 ) ) + ( -saldoCuentaAnt ( 165 ) ) ).toQString ( '.' ) + "' ) \n\
                                      \
                                      doc.set_cell_value ( 2, 44, 'string', '   IV.  Otros acreedores' ) \n\
@@ -556,7 +556,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append("\
+                                     codigoPython.append ( "\
                                      \
                                      doc.set_cell_property ( 'bold', True ) \n\
                                      doc.set_cell_value ( 2, 53, 'string', 'E) Acreedores a corto plazo' ) \n\
@@ -601,7 +601,7 @@ doc.set_cell_property('bold', False)\n\
                                      doc.set_cell_value ( 4, 62, 'formula', '=SUM(D63:D64)' ) \n\
                                      \
                                      doc.set_cell_value ( 2, 63, 'string', '       1. Deudas con empresas del grupo' ) \n\
-                                     doc.set_cell_value ( 3, 63, 'float', '" + ( -saldoCuenta ( 402 ) + ( -saldoCuenta ( 510 ) ) + ( -saldoCuenta ( 512 ) )+ ( -saldoCuenta ( 514 ) ) + ( -saldoCuenta ( 516 ) ) + ( -saldoCuenta ( 551 ) ) ).toQString ( '.' ) + "' ) \n\
+                                     doc.set_cell_value ( 3, 63, 'float', '" + ( -saldoCuenta ( 402 ) + ( -saldoCuenta ( 510 ) ) + ( -saldoCuenta ( 512 ) ) + ( -saldoCuenta ( 514 ) ) + ( -saldoCuenta ( 516 ) ) + ( -saldoCuenta ( 551 ) ) ).toQString ( '.' ) + "' ) \n\
                                      doc.set_cell_value ( 4, 63, 'float', '" + ( -saldoCuentaAnt ( 402 ) + ( -saldoCuentaAnt ( 510 ) ) + ( -saldoCuentaAnt ( 512 ) ) + ( -saldoCuentaAnt ( 514 ) ) + ( -saldoCuentaAnt ( 516 ) ) + ( -saldoCuentaAnt ( 551 ) ) ).toQString ( '.' ) + "' ) \n\
                                      \
                                      doc.set_cell_value ( 2, 64, 'string', '       2. Deudas con empresas asociadas' ) \n\
@@ -666,7 +666,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      barra.setValue ( barra.value() + 1 );
 
-                                     codigoPython.append("\
+                                     codigoPython.append ( "\
                                      \
                                      \n\
                                      doc.new_sheet ( \"Debe\")\n\n\
@@ -1090,6 +1090,6 @@ doc.set_cell_property('bold', False)\n\
 # Guardamos el documento\n\
 doc.save(\"canualesods.ods\")\n" );
 
-                                     return codigoPython;
-                                 }
+                                                           return codigoPython;
+                                                       }
 

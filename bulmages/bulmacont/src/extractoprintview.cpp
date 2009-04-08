@@ -166,8 +166,8 @@ void ExtractoPrintView::presentar ( const QString &tipus )
     QString cfinal = extracto->m_codigofinal->text();
 
     /// Tipos de presentaci&oacute;n.
-    txt = (tipus == "txt"?1:0); 
-    html = (tipus == "html"?1:0);
+    txt = ( tipus == "txt" ? 1 : 0 );
+    html = ( tipus == "html" ? 1 : 0 );
 
 
     QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "mayor.txt";
@@ -212,12 +212,12 @@ void ExtractoPrintView::presentar ( const QString &tipus )
             fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Fecha Inicial: " << finicial.toAscii().constData() << " -  Fecha Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
         } // end if
         mainCompany() ->begin();
-        cursoraux = mainCompany() -> loadQuery("SELECT * FROM cuenta WHERE codigo >= '"+ cinicial +"' AND codigo <= '"+ cfinal +"' ORDER BY codigo");
+        cursoraux = mainCompany() -> loadQuery ( "SELECT * FROM cuenta WHERE codigo >= '" + cinicial + "' AND codigo <= '" + cfinal + "' ORDER BY codigo" );
         mainCompany() ->commit();
         while ( !cursoraux->eof() ) {
             idcuenta = atoi ( cursoraux->valor ( "idcuenta" ).toAscii() );
             mainCompany() ->begin();
-            cursoraux1 = mainCompany() ->loadQuery("SELECT * FROM apunte WHERE idcuenta = " + cursoraux->valor("idcuenta") + " AND fecha >= '"+ finicial +"' AND fecha <= '"+ ffinal +"'");
+            cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM apunte WHERE idcuenta = " + cursoraux->valor ( "idcuenta" ) + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'" );
             mainCompany() ->commit();
             if ( !cursoraux1->eof() ) {
                 activo = strcmp ( ( char * ) cursoraux->valor ( "activo" ).toAscii().constData(), "f" );
@@ -238,7 +238,7 @@ void ExtractoPrintView::presentar ( const QString &tipus )
                     } // end if
                 } // end if
                 mainCompany() ->begin();
-                cursoraux2 = mainCompany() ->loadQuery("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = "+ cursoraux->valor ( "idcuenta" ) +" AND fecha <'"+ finicial +"'");
+                cursoraux2 = mainCompany() ->loadQuery ( "SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = " + cursoraux->valor ( "idcuenta" ) + " AND fecha <'" + finicial + "'" );
                 mainCompany() ->commit();
                 if ( !cursoraux2->eof() ) {
                     debeinicial = atof ( cursoraux2->valor ( "tdebe" ).toAscii() );
@@ -270,7 +270,7 @@ void ExtractoPrintView::presentar ( const QString &tipus )
                         idasiento = atoi ( cursoraux1->valor ( "idasiento" ).toAscii() );
                         contrapartida = atoi ( cursoraux1->valor ( "contrapartida" ).toAscii() );
                         mainCompany() ->begin();
-                        cursoraux3 = mainCompany() ->loadQuery("SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->valor("contrapartida"));
+                        cursoraux3 = mainCompany() ->loadQuery ( "SELECT * FROM cuenta WHERE idcuenta = " + cursoraux1->valor ( "contrapartida" ) );
                         codcontrapartida = cursoraux3->valor ( "codigo" ).toAscii().constData();
                         mainCompany() ->commit();
                         debe = atof ( cursoraux1->valor ( "debe" ).toAscii() );

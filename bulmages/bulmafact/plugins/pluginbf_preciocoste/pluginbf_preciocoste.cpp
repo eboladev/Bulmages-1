@@ -34,8 +34,8 @@ int entryPoint ( Bulmafact * )
     _depura ( "Estoy dentro del plugin de precio de Coste", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_preciocoste", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_preciocoste", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -50,9 +50,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDbField ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Precio Coste" ) );
-    trab->addDbField ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Margen" ) );
-    trab->addDbField ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Actualizar PVP" ) );
+    trab->addDbField ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio Coste" ) );
+    trab->addDbField ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Margen" ) );
+    trab->addDbField ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Actualizar PVP" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();

@@ -41,9 +41,9 @@ AsientosView::AsientosView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, 
     _depura ( "AsientosView::AsientosView", 0 );
     setupUi ( this );
 
-    mui_mostrar->insertItem ( 0, _( "Todos los asientos" ) );
-    mui_mostrar->insertItem ( 1, _( "Asientos cerrados" ) );
-    mui_mostrar->insertItem ( 2, _( "Asientos abiertos" ) );
+    mui_mostrar->insertItem ( 0, _ ( "Todos los asientos" ) );
+    mui_mostrar->insertItem ( 1, _ ( "Asientos cerrados" ) );
+    mui_mostrar->insertItem ( 2, _ ( "Asientos abiertos" ) );
 
     rellenaListaEjercicio();
 
@@ -63,7 +63,7 @@ void AsientosView::rellenaListaEjercicio()
     _depura ( "AsientosView::rellenaListaEjercicio", 0 );
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
-    mui_ejercicio->insertItem ( 0, _( "(todos)" ) );
+    mui_ejercicio->insertItem ( 0, _ ( "(todos)" ) );
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
@@ -167,10 +167,10 @@ void AsientosView::presentar()
         if ( pand ) {
             textnombreasiento = " AND ";
         } // end if
-	textnombreasiento += "(";
+        textnombreasiento += "(";
         textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM borrador WHERE lower(conceptocontable) LIKE '%" + nombreasiento + "%' )";
-	textnombreasiento += " OR lower(asiento.descripcion) LIKE '%"+ nombreasiento +"%' ";
-	textnombreasiento += " OR lower(asiento.comentariosasiento) LIKE '%"+ nombreasiento +"%' ";
+        textnombreasiento += " OR lower(asiento.descripcion) LIKE '%" + nombreasiento + "%' ";
+        textnombreasiento += " OR lower(asiento.comentariosasiento) LIKE '%" + nombreasiento + "%' ";
         textnombreasiento += ")";
         pand = 1;
     } // end if
@@ -230,7 +230,7 @@ void AsientosView::presentar()
         /// Primero se comprueba que la fecha final sea mayor que la fecha inicial.
         if ( QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ) > QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ) ) {
             /// Error de fechas.
-            mensajeAviso ( _( "La fecha inicial es posterior a la fecha final." ) );
+            mensajeAviso ( _ ( "La fecha inicial es posterior a la fecha final." ) );
             return;
         } else {
             if ( pand ) {
@@ -297,7 +297,7 @@ void AsientosView::presentar()
 void AsientosView::imprimir()
 {
     _depura ( "AsientosView::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _( "Asientos" ) );
+    mui_list->imprimirPDF ( _ ( "Asientos" ) );
     _depura ( "END AsientosView::on_mui_imprimir_clicked", 0 );
 }
 

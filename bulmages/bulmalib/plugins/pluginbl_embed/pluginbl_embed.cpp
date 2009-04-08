@@ -123,28 +123,28 @@ int entryPoint ( BlMainWindow *bges )
     _depura ( "Entrada del plugin Docket", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_embed", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_embed", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges = bges;
 
     myplugincont *mcont = new myplugincont;
 
     /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( _("&Dock Aplicacion"), 0 );
-    accion->setStatusTip ( _("Dockear Aplicacion") );
-    accion->setWhatsThis ( _("Dockear Aplicacion") );
+    QAction *accion = new QAction ( _ ( "&Dock Aplicacion" ), 0 );
+    accion->setStatusTip ( _ ( "Dockear Aplicacion" ) );
+    accion->setWhatsThis ( _ ( "Dockear Aplicacion" ) );
 
     /// Creamos el men&uacute;.
-    QAction *accion1 = new QAction ( _("&Embeber Aplicacion"), 0 );
-    accion1->setStatusTip ( _("Embeber Aplicacion") );
-    accion1->setWhatsThis ( _("Embeber Aplicacion") );
+    QAction *accion1 = new QAction ( _ ( "&Embeber Aplicacion" ), 0 );
+    accion1->setStatusTip ( _ ( "Embeber Aplicacion" ) );
+    accion1->setWhatsThis ( _ ( "Embeber Aplicacion" ) );
 
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
     mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
 
     /// Miramos si existe un menu Herramientas
-	QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
+    QMenu *pPluginMenu = bges->newMenu ( "&Herramientas", "menuHerramientas", "menuAcerca_de" );
 
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );

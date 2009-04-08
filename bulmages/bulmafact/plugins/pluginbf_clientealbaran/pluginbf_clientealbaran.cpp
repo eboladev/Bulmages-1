@@ -30,7 +30,7 @@
 #include "genalbqtoolbutton.h"
 
 
-AlbaranClienteList *g_albaranClienteList=NULL;
+AlbaranClienteList *g_albaranClienteList = NULL;
 
 ///
 /**
@@ -58,9 +58,9 @@ mypluginalb::~mypluginalb()
 void mypluginalb::elslot()
 {
     _depura ( "mypluginalb::elslot", 0 );
-    if (g_albaranClienteList) {
-	g_albaranClienteList->hide();
-	g_albaranClienteList->show();
+    if ( g_albaranClienteList ) {
+        g_albaranClienteList->hide();
+        g_albaranClienteList->show();
     }// end if
     _depura ( "END mypluginalb::elslot", 0 );
 }
@@ -71,9 +71,9 @@ void mypluginalb::elslot()
 void mypluginalb::elslot1()
 {
     _depura ( "mypluginalb::elslot1", 0 );
-        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END mypluginalb::elslot1", 0 );
 }
 
@@ -89,27 +89,27 @@ void mypluginalb::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
 
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Albaranes a clientes" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Albaranes a clientes" ) );
-	planCuentas->setWhatsThis ( _( "Albaranes a clientes" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Albaranes a clientes" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Albaranes a clientes" ) );
+        planCuentas->setWhatsThis ( _ ( "Albaranes a clientes" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo albaran a cliente" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo albaran a cliente" ) );
-	npago->setWhatsThis ( _( "Nuevo albaran a cliente" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nuevo albaran a cliente" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.svg" ) ) );
+        npago->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
+        npago->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
     }// end if
@@ -127,8 +127,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Albaranes a Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_clientealbaran", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_clientealbaran", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     mypluginalb *plug = new mypluginalb();
     plug->inicializa ( bges );
@@ -136,30 +136,33 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     if ( comp->hasTablePrivilege ( "albaran", "SELECT" ) ) {
-	g_albaranClienteList = new AlbaranClienteList( comp, NULL );	
-	comp->m_pWorkspace->addWindow ( g_albaranClienteList );
-	g_albaranClienteList->hide();
+        g_albaranClienteList = new AlbaranClienteList ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_albaranClienteList );
+        g_albaranClienteList->hide();
     }// end if
     return 0;
 }
 
 
-int ClienteView_ClienteView_Post (ClienteView *prov) {
+int ClienteView_ClienteView_Post ( ClienteView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
-	AlbaranClienteList *albaranesList = new AlbaranClienteList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-	albaranesList->setModoEdicion();
-	albaranesList->setObjectName("listalbaranes");
-	albaranesList->hideBusqueda();
+        AlbaranClienteList *albaranesList = new AlbaranClienteList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        albaranesList->setModoEdicion();
+        albaranesList->setObjectName ( "listalbaranes" );
+        albaranesList->hideBusqueda();
         prov->mui_tab->addTab ( albaranesList, "Albaranes" );
     }// end if
     return 0;
 }
 
-int ClienteView_cargarPost_Post (ClienteView *prov) {
+int ClienteView_cargarPost_Post ( ClienteView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
-	AlbaranClienteList *albaranesList = prov->findChild<AlbaranClienteList *> ( "listalbaranes" );
+        AlbaranClienteList *albaranesList = prov->findChild<AlbaranClienteList *> ( "listalbaranes" );
         albaranesList->setidcliente ( prov->dbValue ( "idcliente" ) );
         albaranesList->presentar();
     }// end if
@@ -167,11 +170,12 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
+int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+{
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranClienteView * bud = new AlbaranClienteView((BfCompany *)ref->mainCompany(), NULL);
+        AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
@@ -195,12 +199,12 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     _depura ( "END PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
@@ -223,12 +227,12 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     _depura ( "END PluginFactura_PresupuestoView_PresupuestoView", 0 );
@@ -238,10 +242,10 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewAlbaranClienteView (BfCompany *v)
+int SNewAlbaranClienteView ( BfCompany *v )
 {
-	AlbaranClienteView *h = new AlbaranClienteView(v, 0);
-	g_plugParams = h;
-	return 1;
+    AlbaranClienteView *h = new AlbaranClienteView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }
 

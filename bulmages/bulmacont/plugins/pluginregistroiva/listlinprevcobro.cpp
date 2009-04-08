@@ -137,9 +137,9 @@ int ListLinPrevCobro::chargeBudgetLines()
         cadwhere += " AND idasiento IS NULL ";
 
     BlDbRecordSet *cur = m_companyact->loadQuery ( "SELECT * FROM prevcobro "
-                   " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
-                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
-                   " WHERE 1 = 1 " + cadwhere + " ORDER BY fcobroprevcobro " );
+                         " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
+                         " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+                         " WHERE 1 = 1 " + cadwhere + " ORDER BY fcobroprevcobro " );
 
     int i = 0;
     while ( !cur->eof() ) {

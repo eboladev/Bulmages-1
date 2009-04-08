@@ -30,25 +30,28 @@ QMainWindow *g_main = NULL;
 
 
 
-BlMainWindow::BlMainWindow ( QWidget * parent, Qt::WindowFlags flags) {
+BlMainWindow::BlMainWindow ( QWidget * parent, Qt::WindowFlags flags )
+{
 }
 
 
-BlMainWindow::~BlMainWindow() {
+BlMainWindow::~BlMainWindow()
+{
 }
 
 
-QMenu *BlMainWindow::newMenu(const QString &name, const QString &objname, const QString &before) {
+QMenu *BlMainWindow::newMenu ( const QString &name, const QString &objname, const QString &before )
+{
     /// Miramos si existe un menu Ventas
     QMenu *pPluginMenu = NULL;
     pPluginMenu = menuBar() ->findChild<QMenu *> ( objname );
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-    	QMenu *pPluginMaestro = NULL;
-	pPluginMaestro = menuBar() ->findChild<QMenu *> ( before );
+        QMenu *pPluginMaestro = NULL;
+        pPluginMaestro = menuBar() ->findChild<QMenu *> ( before );
         pPluginMenu = new QMenu ( name, menuBar() );
         pPluginMenu->setObjectName (  objname );
-	menuBar()->insertMenu(pPluginMaestro->menuAction(), pPluginMenu);
+        menuBar()->insertMenu ( pPluginMaestro->menuAction(), pPluginMenu );
     } // end if
 
     return pPluginMenu;

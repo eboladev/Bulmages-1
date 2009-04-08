@@ -60,7 +60,7 @@ Asiento1View::Asiento1View ( BcCompany *emp, QWidget *parent, int )
     mui_ordenasiento->installEventFilter ( eventosOrdenAsiento );
 
     /// Conectamos el siganl returnPressed de mui_fecha
-    connect(mui_fecha, SIGNAL(returnPressed()), this, SLOT(on_mui_fecha_enterPressed()));
+    connect ( mui_fecha, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_fecha_enterPressed() ) );
 
     mui_list->setMainCompany ( emp );
     setListLinAsiento1 ( mui_list );
@@ -328,9 +328,9 @@ void Asiento1View::boton_cargarasiento()
     } else {
         /// Si el asiento no existe se da la posibilidad de crear uno nuevo.
         if ( QMessageBox::question ( this,
-                                     _( "Asiento inexistente." ),
-                                     _( "Desea crear un nuevo asiento en esa posicion?" ),
-                                     _( "&Si" ), _( "&No" ), 0, 0, 1 ) == 0 ) {
+                                     _ ( "Asiento inexistente." ),
+                                     _ ( "Desea crear un nuevo asiento en esa posicion?" ),
+                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 ) {
             iniciar_asiento_nuevo ( mui_ordenasiento->text() );
         } // end if
         pintar();

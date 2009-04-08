@@ -47,7 +47,7 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
 
         mainCompany()->meteWindow ( windowTitle(), this );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear la ventana de importacion" ) );
+        mensajeInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
     _depura ( "END ImportCSV::ImportCSV", 0 );
 }
@@ -65,7 +65,7 @@ ImportCSV::~ImportCSV()
 void ImportCSV::on_mui_buscarArchivo_clicked()
 {
 
-    QString fileName = QFileDialog::getOpenFileName ( this, _( "Open file" ), "", _( "All files (*)" ) );
+    QString fileName = QFileDialog::getOpenFileName ( this, _ ( "Open file" ), "", _ ( "All files (*)" ) );
     mui_archivo->setText ( fileName );
 }
 

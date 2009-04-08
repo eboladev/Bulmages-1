@@ -42,11 +42,11 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
     _depura ( "PedidosProveedorList::PedidosProveedorList", 0 );
     setupUi ( this );
     mdb_idpedidoproveedor = "";
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
@@ -68,17 +68,17 @@ PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Q
     m_proveedor->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
 
     presentar();
     setSubForm ( mui_list );
     mdb_idpedidoproveedor = "";
-    if (modoEdicion()) {
-    	mainCompany() ->meteWindow ( windowTitle(), this );
+    if ( modoEdicion() ) {
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -109,9 +109,9 @@ void PedidosProveedorList::iniciaForm()
     int res = g_plugins->lanza ( "PedidosProveedorList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, _( "Todos los pedidos" ) );
-    mui_procesada->insertItem ( 1, _( "Pedidos procesados" ) );
-    mui_procesada->insertItem ( 2, _( "Pedidos no procesados" ) );
+    mui_procesada->insertItem ( 0, _ ( "Todos los pedidos" ) );
+    mui_procesada->insertItem ( 1, _ ( "Pedidos procesados" ) );
+    mui_procesada->insertItem ( 2, _ ( "Pedidos no procesados" ) );
     _depura ( "END PedidosProveedorList::iniciaForm" );
 }
 
@@ -185,7 +185,7 @@ QString PedidosProveedorList::generarFiltro()
 void PedidosProveedorList::imprimir()
 {
     _depura ( "PedidosProveedorList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Pedidos a proveedores" ) );
+    mui_list->imprimirPDF ( _ ( "Pedidos a proveedores" ) );
     _depura ( "END PedidosProveedorList::imprimir", 0 );
 }
 
@@ -199,7 +199,7 @@ void PedidosProveedorList::borrar()
     _depura ( "PedidosProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -214,7 +214,7 @@ void PedidosProveedorList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el pedido a proveedor" ), this );
+        mensajeInfo ( _ ( "Error al borrar el pedido a proveedor" ), this );
     } // end try
     _depura ( "END PedidosProveedorList::borrar", 0 );
 }
@@ -241,7 +241,7 @@ void PedidosProveedorList::editar ( int row )
             emit ( selected ( mdb_idpedidoproveedor ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al cargar el pedido proveedor" ), this );
+        mensajeInfo ( _ ( "Error al cargar el pedido proveedor" ), this );
     } // end try
     _depura ( "END PedidosProveedorList::editar", 0 );
 }
@@ -310,22 +310,22 @@ PedidosProveedorListSubform::PedidosProveedorListSubform ( QWidget *parent ) : B
     _depura ( "PedidosProveedorListSubform::PedidosProveedorListSubform", 0 );
     setDbTableName ( "pedidoproveedor" );
     setDbFieldId ( "idpedidoproveedor" );
-    addSubFormHeader ( "numpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de pedido" ) );
-    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de proveedor" ) );
-    addSubFormHeader ( "fechapedidoproveedor", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha pedido proveedor" ) );
-    addSubFormHeader ( "refpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia pedido" ) );
-    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base Imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
-    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total pedido" ) );
-    addSubFormHeader ( "descpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion pedido proveedor" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo de almacen" ) );
-    addSubFormHeader ( "contactpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Persona de contacto proveedor" ) );
-    addSubFormHeader ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Telefono proveedor" ) );
-    addSubFormHeader ( "comentpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario pedido proveedor" ) );
-    addSubFormHeader ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id pedido" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id trabajador" ) );
-    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id proveedor" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id almacen" ) );
+    addSubFormHeader ( "numpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de pedido" ) );
+    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de proveedor" ) );
+    addSubFormHeader ( "fechapedidoproveedor", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha pedido proveedor" ) );
+    addSubFormHeader ( "refpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia pedido" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base Imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total pedido" ) );
+    addSubFormHeader ( "descpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion pedido proveedor" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo de almacen" ) );
+    addSubFormHeader ( "contactpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Persona de contacto proveedor" ) );
+    addSubFormHeader ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Telefono proveedor" ) );
+    addSubFormHeader ( "comentpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario pedido proveedor" ) );
+    addSubFormHeader ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pedido" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
+    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id proveedor" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

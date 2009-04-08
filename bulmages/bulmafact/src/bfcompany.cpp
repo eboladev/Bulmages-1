@@ -89,13 +89,13 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
     } // end if
 
     cargaConf();
-    
+
     /// pb = 100%
     m_progressbar->setValue ( 100 );
 
     /// Ponemos el titulo de la ventana
     m_bulmafact->statusBar() ->showMessage ( dbName(), 2000 );
-    m_bulmafact->setWindowTitle ( _( "Facturacion GPL" ) + " :: " + dbName() );
+    m_bulmafact->setWindowTitle ( _ ( "Facturacion GPL" ) + " :: " + dbName() );
 
     _depura ( "END BfCompany::createMainWindows", 0 );
 }
@@ -110,11 +110,11 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
 void BfCompany::s_FPago()
 {
     _depura ( "BfCompany::s_FPago", 0 );
-	/*
-    FPagoView *f = new FPagoView ( this, NULL );
-    m_pWorkspace->addWindow ( f );
-    f->show();
-	*/
+    /*
+       FPagoView *f = new FPagoView ( this, NULL );
+       m_pWorkspace->addWindow ( f );
+       f->show();
+    */
     _depura ( "END BfCompany::s_FPago", 0 );
 }
 
@@ -142,11 +142,11 @@ void BfCompany::s_trabajadores()
 void BfCompany::s_bancos()
 {
     _depura ( "BfCompany::s_bancos", 0 );
-/*
-    BancoView *t = new BancoView ( this, NULL );
-    m_pWorkspace->addWindow ( t );
-    t->show();
-*/
+    /*
+        BancoView *t = new BancoView ( this, NULL );
+        m_pWorkspace->addWindow ( t );
+        t->show();
+    */
     _depura ( "END BfCompany::s_bancos", 0 );
 }
 
@@ -159,11 +159,11 @@ void BfCompany::s_bancos()
 void BfCompany::s_seriesFactura()
 {
     _depura ( "BfCompany::s_seriesFactura", 0 );
-	/*
-    ListSerieFacturaView *lser = new ListSerieFacturaView ( this, 0 );
-    m_pWorkspace->addWindow ( lser );
-    lser->show();
-	*/
+    /*
+       ListSerieFacturaView *lser = new ListSerieFacturaView ( this, 0 );
+       m_pWorkspace->addWindow ( lser );
+       lser->show();
+    */
     _depura ( "END BfCompany::s_seriesFactura", 0 );
 }
 
@@ -179,16 +179,16 @@ void BfCompany::s_seriesFactura()
 void BfCompany::s_almacenes()
 {
     _depura ( "BfCompany::s_almacenes", 0 );
-/*
-    /// Lanzamos los plugins necesarios.
-    if ( g_plugins->lanza ( "BfCompany_s_almacenes", this ) ) {
-        _depura ( "END BfCompany::s_almacenes", 0, "Salida por plugin" );
-        return;
-    } // end if
-    ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
-    m_pWorkspace->addWindow ( lser );
-    lser->show();
-*/
+    /*
+        /// Lanzamos los plugins necesarios.
+        if ( g_plugins->lanza ( "BfCompany_s_almacenes", this ) ) {
+            _depura ( "END BfCompany::s_almacenes", 0, "Salida por plugin" );
+            return;
+        } // end if
+        ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
+        m_pWorkspace->addWindow ( lser );
+        lser->show();
+    */
     _depura ( "END BfCompany::s_almacenes", 0 );
 }
 
@@ -214,11 +214,11 @@ void BfCompany::s_newListConfiguracionView()
 void BfCompany::s_TipoIVAView()
 {
     _depura ( "BfCompany::s_TipoIVAView", 0 );
-/*
-    ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
-    m_pWorkspace->addWindow ( pag );
-    pag->show();
-*/
+    /*
+        ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
+        m_pWorkspace->addWindow ( pag );
+        pag->show();
+    */
     _depura ( "END BfCompany::s_TipoIVAView", 0 );
 }
 
@@ -230,11 +230,11 @@ void BfCompany::s_TipoIVAView()
 void BfCompany::s_TasaIVAView()
 {
     _depura ( "BfCompany::s_TasaIVAView", 0 );
-/*
-    ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
-    m_pWorkspace->addWindow ( pag );
-    pag->show();
-*/
+    /*
+        ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
+        m_pWorkspace->addWindow ( pag );
+        pag->show();
+    */
     _depura ( "END BfCompany::s_TasaIVAView", 0 );
 }
 
@@ -256,7 +256,7 @@ void BfCompany::guardaConf()
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmafact->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmafact->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
-	stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString(m_bulmafact->saveState().toBase64()) + "</TOOLBARSDOCKWIDGETS>\n";
+        stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmafact->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
         stream << "\t</PRINCIPAL>\n";
 
 
@@ -329,7 +329,7 @@ void BfCompany::cargaConf()
     } // end if
 
     /// Cogemos el ancho del indexador
-    m_bulmafact->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
+    m_bulmafact->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
 
     /// Tratamos cada ventana
     QWidget *activewindow = NULL;

@@ -83,7 +83,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         return editor;
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
-                || linea->nomcampo() == "porcentajevariacion") {
+                || linea->nomcampo() == "porcentajevariacion" ) {
 
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
@@ -118,18 +118,18 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     if ( linea->nomcampo() == "nomtarifa" ) {
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
         QString value = comboBox->currentText();
-	QString idvalue = comboBox->idtarifa();
+        QString idvalue = comboBox->idtarifa();
         model->setData ( index, value );
-	m_subform->lineaat ( index.row() ) ->setDbValue ( "idtarifa", idvalue );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtarifa", idvalue );
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
         QString value = comboBox->currentText();
-	QString idvalue = comboBox->id();
+        QString idvalue = comboBox->id();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idalmacen", idvalue );
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
-                || linea->nomcampo() == "porcentajevariacion") {
+                || linea->nomcampo() == "porcentajevariacion" ) {
 
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
@@ -156,14 +156,14 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     if ( linea->nomcampo() == "nomtarifa" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
-	comboBox->setIdTarifa(m_subform->lineaat ( index.row() ) ->dbValue("idtarifa"));
+        comboBox->setIdTarifa ( m_subform->lineaat ( index.row() ) ->dbValue ( "idtarifa" ) );
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
-	comboBox->setId(m_subform->lineaat ( index.row() ) ->dbValue("idalmacen"));
+        comboBox->setId ( m_subform->lineaat ( index.row() ) ->dbValue ( "idalmacen" ) );
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"
-                || linea->nomcampo() == "porcentajevariacion") {
+                || linea->nomcampo() == "porcentajevariacion" ) {
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );

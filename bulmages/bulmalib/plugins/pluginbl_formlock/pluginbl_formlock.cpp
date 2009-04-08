@@ -45,8 +45,8 @@ int entryPoint ( QMainWindow *bcont )
     _depura ( "Iniciado correctamente el plugin Bloqueos", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_formlock", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_formlock", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return ( 0 );
 }
@@ -61,7 +61,7 @@ int BlForm_cargar ( BlForm *ficha )
     BlDbRecordSet *cur1 = ficha->mainCompany()->loadQuery ( query );
 
     if ( !cur1->eof() ) {
-        mensajeInfo ( _("Ficha bloqueada por otro usuario, no podra hacer modificaciones") );
+        mensajeInfo ( _ ( "Ficha bloqueada por otro usuario, no podra hacer modificaciones" ) );
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
         QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );

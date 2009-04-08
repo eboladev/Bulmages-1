@@ -28,7 +28,7 @@
 
 
 
-ProfesoresList *g_profesoresList=NULL;
+ProfesoresList *g_profesoresList = NULL;
 
 ///
 /**
@@ -56,9 +56,9 @@ MyPlugProf::~MyPlugProf()
 void MyPlugProf::elslot()
 {
     _depura ( "MyPlugProf::elslot", 0 );
-    if (g_profesoresList) {
-	g_profesoresList->hide();
-	g_profesoresList->show();
+    if ( g_profesoresList ) {
+        g_profesoresList->hide();
+        g_profesoresList->show();
     }// end if
     _depura ( "END MyPlugProf::elslot", 0 );
 }
@@ -69,9 +69,9 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        ProfesorView * bud = new ProfesorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
 
@@ -87,30 +87,30 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Docencia", "menuDocencia", "menuMaestro");
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Profesores" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ));
-	planCuentas->setStatusTip ( _( "Profesores" ) );
-	planCuentas->setWhatsThis ( _( "Profesores" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Profesores" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
+        planCuentas->setStatusTip ( _ ( "Profesores" ) );
+        planCuentas->setWhatsThis ( _ ( "Profesores" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo profesor" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ));
-	npago->setStatusTip ( _( "Nuevo profesor" ) );
-	npago->setWhatsThis ( _( "Nuevo profesor" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nuevo profesor" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
+        npago->setStatusTip ( _ ( "Nuevo profesor" ) );
+        npago->setWhatsThis ( _ ( "Nuevo profesor" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
-	QAction *nfapac = new QAction ( _( "About FAPAC" ), 0 );
-	bges->menuAcerca_de->addAction(nfapac);
+        QAction *nfapac = new QAction ( _ ( "About FAPAC" ), 0 );
+        bges->menuAcerca_de->addAction ( nfapac );
 
 
 
@@ -132,8 +132,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Profesores\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_profesor", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_profesor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
@@ -141,47 +141,49 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     if ( comp->hasTablePrivilege ( "profesor", "SELECT" ) ) {
-	g_profesoresList = new ProfesoresList( comp, NULL );	
-	comp->m_pWorkspace->addWindow ( g_profesoresList );
-	g_profesoresList->hide();
+        g_profesoresList = new ProfesoresList ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_profesoresList );
+        g_profesoresList->hide();
     }// end if
     return 0;
 }
 
 
-int Busqueda_on_mui_buscar_clicked(BlSearchWidget *busq) {
-	if (busq->tableName() == "profesor") {
+int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
+{
+    if ( busq->tableName() == "profesor" ) {
 
 
-    QDialog *diag = new QDialog ( 0 );
-    diag->setModal ( true );
-    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-    centrarEnPantalla ( diag );
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
 
-    ProfesoresList *clients = new ProfesoresList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
-    busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+        ProfesoresList *clients = new ProfesoresList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
+        busq->connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
-    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
-    /// para que sea redimensionable y aparezca el titulo de la ventana.
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget ( clients );
-    layout->setMargin ( 0 );
-    layout->setSpacing ( 0 );
-    diag->setLayout ( layout );
-    diag->setWindowTitle ( clients->windowTitle() );
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( clients );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( clients->windowTitle() );
 
-    diag->exec();
-    if ( clients->idprofesor() != "" ) {
-        busq->setId ( clients->idprofesor() );
+        diag->exec();
+        if ( clients->idprofesor() != "" ) {
+            busq->setId ( clients->idprofesor() );
+        } // end if
+        delete diag;
+
+
+        return 1;
     } // end if
-    delete diag;
-
-
-		return 1;
-	} // end if
-	return 0;
+    return 0;
 
 }
 

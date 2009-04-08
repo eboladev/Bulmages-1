@@ -211,10 +211,10 @@ void BlFormList::setSubForm ( BlSubForm *list )
     _depura ( "BlFormList::setSubForm", 0 );
     m_listado = list;
     /// Establecemos el mismo modo en el subformulario que en el listado.
-    if (m_modo == BL_EDIT_MODE) {
-	m_listado->setModoEdicion();
+    if ( m_modo == BL_EDIT_MODE ) {
+        m_listado->setModoEdicion();
     } else {
-	m_listado->setModoConsulta();
+        m_listado->setModoConsulta();
     } // end if
     _depura ( "END BlFormList::setSubForm", 0 );
 }
@@ -323,7 +323,7 @@ void BlFormList::on_mui_editar_clicked()
     _depura ( "ArticuloList::INIT_s_editArticle", 0 );
     int a = m_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Tiene que seleccionar un elemento" ) );
+        mensajeInfo ( _ ( "Tiene que seleccionar un elemento" ) );
         return;
     } // end if
     editar ( a );
@@ -374,8 +374,8 @@ void BlFormList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar" ) );
-    QAction *del = popup->addAction ( _( "Borrar" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();

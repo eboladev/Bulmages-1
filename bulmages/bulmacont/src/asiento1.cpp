@@ -39,15 +39,15 @@
 Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
 {
     _depura ( "Asiento1::Asiento1", 0 );
-    setTitleName ( _( "Asiento Contable" ) );
+    setTitleName ( _ ( "Asiento Contable" ) );
     setDbTableName ( "asiento" );
     setDbFieldId ( "idasiento" );
-    addDbField ( "idasiento", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id asiento" ) );
-    addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Descripcion del asiento" ) );
-    addDbField ( "fecha", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha del asiento" ) );
-    addDbField ( "comentariosasiento", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios del asiento" ) );
-    addDbField ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNothing, _( "Orden de asiento" ) );
-    addDbField ( "clase", BlDbField::DbInt, BlDbField::DbNothing, _( "Tipo de asiento" ) );
+    addDbField ( "idasiento", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id asiento" ) );
+    addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Descripcion del asiento" ) );
+    addDbField ( "fecha", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha del asiento" ) );
+    addDbField ( "comentariosasiento", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios del asiento" ) );
+    addDbField ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Orden de asiento" ) );
+    addDbField ( "clase", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Tipo de asiento" ) );
     listalineas = NULL;
     _depura ( "END Asiento1::Asiento1", 0 );
 }
@@ -156,8 +156,8 @@ int Asiento1::borrar ( bool atendido )
     if ( dbValue ( "idasiento" ) != "" ) {
         if ( atendido ) {
             switch ( QMessageBox::warning ( 0,
-                                            _( "Borrar asiento" ),
-                                            _( "Se va a borrar el asiento. Esta seguro?" ),
+                                            _ ( "Borrar asiento" ),
+                                            _ ( "Se va a borrar el asiento. Esta seguro?" ),
                                             QMessageBox::Ok,
                                             QMessageBox::Cancel ) ) {
             case QMessageBox::Ok: /// Retry clicked or Enter pressed.
@@ -310,7 +310,7 @@ void Asiento1::abrir()
         _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Inexistente" );
         return;
     }
-    BlDbRecordSet *cursoraux = mainCompany() ->loadQuery ( "SELECT abreasiento("+ id +")");
+    BlDbRecordSet *cursoraux = mainCompany() ->loadQuery ( "SELECT abreasiento(" + id + ")" );
     delete cursoraux;
     trataestadoAsiento1();
     _depura ( "END Asiento1::abreAsiento1", 0 );
@@ -408,7 +408,7 @@ int Asiento1::guardar()
         } // end if
         dialogChanges_cargaInicial();
         cargar ( id );
-        g_main->statusBar() ->showMessage ( _( "El asiento se ha guardado correctamente." ), 2000 );
+        g_main->statusBar() ->showMessage ( _ ( "El asiento se ha guardado correctamente." ), 2000 );
         _depura ( "END Asiento1::guardar", 0 );
         return 0;
     } catch ( ... ) {

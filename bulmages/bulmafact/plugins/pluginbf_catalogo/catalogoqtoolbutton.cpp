@@ -143,7 +143,7 @@ QString CatalogoQToolButton::detalleArticulos()
 
     BlProgressBar barra;
     barra.show();
-    barra.setText ( _( "Generando catalogo" ) );
+    barra.setText ( _ ( "Generando catalogo" ) );
 
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( m_articuloList->formaQuery() );

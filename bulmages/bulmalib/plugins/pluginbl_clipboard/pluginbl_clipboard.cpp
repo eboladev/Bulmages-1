@@ -46,8 +46,8 @@ int entryPoint ( QApplication * )
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_clipboard", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_clipboard", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
     return 0;
@@ -99,7 +99,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugclipboard::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _( "Pegar desde hoja de calculo" ) );
+    menu->addAction ( _ ( "Pegar desde hoja de calculo" ) );
     _depura ( "END myplugclipboard::s_pintaMenu", 0 );
 }
 
@@ -111,7 +111,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 void myplugclipboard::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugclipboard::s_trataMenu", 0 );
-    if ( action->text() == _( "Pegar desde Hoja de Calculo" ) ) {
+    if ( action->text() == _ ( "Pegar desde Hoja de Calculo" ) ) {
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
             pegaODS();
         } else {

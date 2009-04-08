@@ -37,10 +37,10 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView ( QWidget *parent
     _depura ( "ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0 );
     setDbTableName ( "dpedidocliente" );
     setDbFieldId ( "iddpedidocliente" );
-    addSubFormHeader ( "iddpedidocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id descuento" ) );
-    addSubFormHeader ( "conceptdpedidocliente", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Concepto descuento" ) );
-    addSubFormHeader ( "proporciondpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "% Descuento" ) );
-    addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id pedido" ) );
+    addSubFormHeader ( "iddpedidocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
+    addSubFormHeader ( "conceptdpedidocliente", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
+    addSubFormHeader ( "proporciondpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
+    addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pedido" ) );
     setinsercion ( TRUE );
     _depura ( "END ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0 );
 }

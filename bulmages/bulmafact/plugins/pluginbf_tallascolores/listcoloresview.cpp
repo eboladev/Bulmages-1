@@ -46,7 +46,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
     _depura ( "ListColoresView::ListColoresView", 1 );
-    setTitleName ( _( "Colores" ) );
+    setTitleName ( _ ( "Colores" ) );
     setDbTableName ( "tc_color" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -68,7 +68,7 @@ void ListColoresView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al guardar los colores" ) );
+        mensajeInfo ( _ ( "Error al guardar los colores" ) );
     } // end try
     _depura ( "END ListColoresView::on_mui_aceptar_clicked", 0 );
 }
@@ -96,9 +96,9 @@ ListColoresSubForm::ListColoresSubForm ( QWidget *parent ) : BfSubForm ( parent 
     _depura ( "ListColoresSubForm::ListColoresSubForm", 0 );
     setDbTableName ( "tc_color" );
     setDbFieldId ( "idtc_color" );
-    addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _( "Id Color" ) );
-    addSubFormHeader ( "rgbtc_color", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "RGB Color" ) );
-    addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Nombre Color" ) );
+    addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Color" ) );
+    addSubFormHeader ( "rgbtc_color", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "RGB Color" ) );
+    addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Color" ) );
     setinsercion ( TRUE );
     _depura ( "END ListColoresSubForm::ListColoresSubForm", 0 );
 }

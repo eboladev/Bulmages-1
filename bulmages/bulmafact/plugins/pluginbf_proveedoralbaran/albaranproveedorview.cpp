@@ -51,18 +51,18 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
-        setTitleName ( _( "Albaran de proveedor" ) );
+        setTitleName ( _ ( "Albaran de proveedor" ) );
         setDbTableName ( "albaranp" );
         setDbFieldId ( "idalbaranp" );
-        addDbField ( "idalbaranp", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id albaran proveedor" ) );
-        addDbField ( "numalbaranp", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero albaran proveedor" ) );
-        addDbField ( "fechaalbaranp", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha albaran proveedor" ) );
-        addDbField ( "comentalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario albaran proveedor" ) );
-        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id almacen" ) );
-        addDbField ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia albaran proveedor" ) );
-        addDbField ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion albaran proveedor" ) );
+        addDbField ( "idalbaranp", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id albaran proveedor" ) );
+        addDbField ( "numalbaranp", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero albaran proveedor" ) );
+        addDbField ( "fechaalbaranp", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha albaran proveedor" ) );
+        addDbField ( "comentalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentario albaran proveedor" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id proveedor" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id forma de pago" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id almacen" ) );
+        addDbField ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia albaran proveedor" ) );
+        addDbField ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion albaran proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranProveedorView_AlbaranProveedorView", this );
@@ -80,11 +80,11 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 
-	/// Establecemos los parametros de busqueda del Cliente
-	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
-	mui_idproveedor->setTableName( "proveedor" );
-	mui_idproveedor->m_valores["cifproveedor"] = "";
-	mui_idproveedor->m_valores["nomproveedor"] = "";
+        /// Establecemos los parametros de busqueda del Cliente
+        mui_idproveedor->setLabel ( _ ( "Proveedor:" ) );
+        mui_idproveedor->setTableName ( "proveedor" );
+        mui_idproveedor->m_valores["cifproveedor"] = "";
+        mui_idproveedor->m_valores["nomproveedor"] = "";
 
         m_totalBases->setReadOnly ( TRUE );
         m_totalBases->setAlignment ( Qt::AlignRight );
@@ -98,7 +98,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setId ( "0" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el albaran proveedor" ), this );
+        mensajeInfo ( _ ( "Error al crear el albaran proveedor" ), this );
     } // end try
     _depura ( "END AlbaranProveedorView::AlbaranProveedorView", 0 );
 }
@@ -189,7 +189,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + dbValue ( "refalbaranp" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
-        PedidoProveedorView * pedpro = new PedidoProveedorView( (BfCompany *) mainCompany(), 0);
+        PedidoProveedorView * pedpro = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
         mainCompany() ->m_pWorkspace->addWindow ( pedpro );
         pedpro->show();

@@ -48,7 +48,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     setupUi ( this );
     m_listFamilias->setColumnCount ( 3 );
     QStringList headers;
-    headers << _( "Nombre" ) << _( "Codigo" ) << _( "Descripcion" ) << _( "Id familia" ) << _( "Codigo completo" );
+    headers << _ ( "Nombre" ) << _ ( "Codigo" ) << _ ( "Descripcion" ) << _ ( "Id familia" ) << _ ( "Codigo completo" );
     m_listFamilias->setHeaderLabels ( headers );
 
     m_listFamilias->setColumnWidth ( 0, 200 );
@@ -316,8 +316,8 @@ bool FamiliasView::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    _( "Guardar familia" ),
-                                    _( "Desea guardar los cambios?" ),
+                                    _ ( "Guardar familia" ),
+                                    _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok ) {
             on_mui_guardar_clicked();
@@ -339,7 +339,7 @@ int FamiliasView::guardar()
     QString prodfam;
     try {
         if ( m_idfamilia.isEmpty() ) {
-            mensajeInfo ( _( "Debe seleccionar una familia" ) );
+            mensajeInfo ( _ ( "Debe seleccionar una familia" ) );
             return -1;
         } // end if
         if ( mui_productofamilia->isChecked() ) {
@@ -368,7 +368,7 @@ int FamiliasView::guardar()
         _depura ( "END FamiliasView::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al guardar la familia" ) );
+        mensajeInfo ( _ ( "Error al guardar la familia" ) );
         return -1;
     } // end try
 }
@@ -428,7 +428,7 @@ void FamiliasView::on_mui_crear_clicked()
         _depura ( "END FamiliasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
-        mensajeInfo ( _( "Error al crear la familia" ) );
+        mensajeInfo ( _ ( "Error al crear la familia" ) );
     } // end try
 }
 
@@ -475,8 +475,8 @@ void FamiliasView::on_mui_borrar_clicked()
     _depura ( "FamiliasView::on_mui_borrar_clicked", 0 );
 
     int val = QMessageBox::question ( this,
-                                      _( "Borrar" ) + " " + windowTitle(),
-                                      _( "Desea eliminar" ) + " " + windowTitle(),
+                                      _ ( "Borrar" ) + " " + windowTitle(),
+                                      _ ( "Desea eliminar" ) + " " + windowTitle(),
                                       QMessageBox::Yes,
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
@@ -485,7 +485,7 @@ void FamiliasView::on_mui_borrar_clicked()
             dialogChanges_cargaInicial();
             _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
-            mensajeInfo ( windowTitle() + " " + _( "no se ha podido borrar" ) );
+            mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
     _depura ( "END FamiliasView::on_mui_borrar_clicked", 0 );
@@ -501,7 +501,7 @@ int FamiliasView::borrar()
 {
     _depura ( "FamiliasView::borrar", 0 );
     if ( m_idfamilia == "" ) {
-        mensajeInfo ( _( "Debe seleccionar una familia" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una familia" ) );
         return -1;
     } // end if
     try {
@@ -515,7 +515,7 @@ int FamiliasView::borrar()
         pintar();
         _depura ( "END FamiliasView::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar la familia" ) );
+        mensajeInfo ( _ ( "Error al borrar la familia" ) );
         return -1;
     } // end try
     return 0;
@@ -565,8 +565,8 @@ void FamiliasView::on_mui_imprimir_clicked()
     /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 15cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "        <td>" + _( "Codigo" ) + "</td>";
-    fitxersortidatxt += "        <td>" + _( "Nombre" ) + "</td>";
+    fitxersortidatxt += "        <td>" + _ ( "Codigo" ) + "</td>";
+    fitxersortidatxt += "        <td>" + _ ( "Nombre" ) + "</td>";
     fitxersortidatxt += "</tr>";
 
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM familia ORDER BY codigocompletofamilia" );

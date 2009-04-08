@@ -65,9 +65,9 @@ mypluginzz::~mypluginzz()
 void mypluginzz::elslot (  )
 {
     _depura ( "mypluginzz::cambia", 0 );
-        Z2ZView * bud = new Z2ZView(g_bges, NULL);
-        g_bges ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    Z2ZView * bud = new Z2ZView ( g_bges, NULL );
+    g_bges ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END mypluginzz::cambia", 0 );
 }
 
@@ -82,8 +82,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Entrada del plugin Corrector", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_z2z", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_z2z", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges = bges->getcompany();
 
@@ -94,7 +94,7 @@ int entryPoint ( Bulmafact *bges )
     QAction *viewCorrector = new QAction ( "&Traspaso de Z", 0 );
 
     /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
+    QMenu *pPluginMenu = bges->newMenu ( "&Herramientas", "menuHerramientas", "menuAcerca_de" );
 
 
     viewCorrector->setStatusTip ( "Traspaso de Z" );

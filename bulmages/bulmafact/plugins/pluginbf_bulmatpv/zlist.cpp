@@ -53,13 +53,13 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
 
     mui_list->setDbTableName ( "z" );
     mui_list->setDbFieldId ( "idz" );
-    mui_list->addSubFormHeader ( "idz", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Z" ) );
-    mui_list->addSubFormHeader ( "fechaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
-    mui_list->addSubFormHeader ( "horaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Hora" ) );
-    mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Almacen" ) );
-    mui_list->addSubFormHeader ( "totalz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total" ) );
-    mui_list->addSubFormHeader ( "numtickets", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Tickets" ) );
-    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id. almacen" ) );
+    mui_list->addSubFormHeader ( "idz", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Z" ) );
+    mui_list->addSubFormHeader ( "fechaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+    mui_list->addSubFormHeader ( "horaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora" ) );
+    mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Almacen" ) );
+    mui_list->addSubFormHeader ( "totalz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
+    mui_list->addSubFormHeader ( "numtickets", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tickets" ) );
+    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id. almacen" ) );
 
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
@@ -175,7 +175,7 @@ void ZList::editar ( int row )
         } // end if
         _depura ( "END ZList::editar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al editar el almacen" ) );
+        mensajeInfo ( _ ( "Error al editar el almacen" ) );
     } // end try
 
 }
@@ -187,7 +187,7 @@ void ZList::editar ( int row )
 void ZList::imprimir()
 {
     _depura ( "ZList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Almacenes" ) );
+    mui_list->imprimirPDF ( _ ( "Almacenes" ) );
     _depura ( "END ZList::imprimir", 0 );
 }
 
@@ -214,7 +214,7 @@ void ZList::borrar()
                 alm->cargar(m_idz);
          alm->on_mui_borrar_clicked();
          alm->close();
-     
+
             } // end if
             presentar();
         } catch (...) {

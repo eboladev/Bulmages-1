@@ -88,8 +88,8 @@ void correctorwidget::on_mui_corregir_clicked()
     query = "SELECT * from cliente WHERE length(cifcliente) < 6";
     cur = mainCompany() ->loadQuery ( query );
     while ( ! cur->eof() ) {
-	  cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> no tiene CIF.";
-	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
+        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente <B>" + cur->valor ( "nomcliente" ) + "</B> no tiene CIF.";
+        agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -97,8 +97,8 @@ void correctorwidget::on_mui_corregir_clicked()
     query = "SELECT * from proveedor WHERE length(cifproveedor) < 6";
     cur = mainCompany() ->loadQuery ( query );
     while ( ! cur->eof() ) {
-	  cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> no tiene CIF.";
-	  agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
+        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "</B> no tiene CIF.";
+        agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -106,25 +106,25 @@ void correctorwidget::on_mui_corregir_clicked()
 
     query = "SELECT * FROM cliente";
     cur = mainCompany()->loadQuery ( query );
-    while (! cur->eof() ) {
-	QChar digito;
-	if (! validarCIFNIF(cur->valor("cifcliente"), digito)) {
-	  cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ,"+ cur->valor("cifcliente")+" <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString(digito);
-	  agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
-	} // end if
-	cur->nextRecord();
+    while ( ! cur->eof() ) {
+        QChar digito;
+        if ( ! validarCIFNIF ( cur->valor ( "cifcliente" ), digito ) ) {
+            cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ," + cur->valor ( "cifcliente" ) + " <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString ( digito );
+            agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
+        } // end if
+        cur->nextRecord();
     } // end while
     delete cur;
 
     query = "SELECT * FROM proveedor";
     cur = mainCompany()->loadQuery ( query );
-    while (! cur->eof() ) {
-	QChar digito;
-	if (! validarCIFNIF(cur->valor("cifproveedor"), digito)) {
-	    cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + ","+cur->valor("cifproveedor")+ "</B> tiene CIF invalido. Digito de Control: " + QString(digito);
-	    agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
-	} // end if
-	cur->nextRecord();
+    while ( ! cur->eof() ) {
+        QChar digito;
+        if ( ! validarCIFNIF ( cur->valor ( "cifproveedor" ), digito ) ) {
+            cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "," + cur->valor ( "cifproveedor" ) + "</B> tiene CIF invalido. Digito de Control: " + QString ( digito );
+            agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
+        } // end if
+        cur->nextRecord();
     } // end while
     delete cur;
 
@@ -162,13 +162,13 @@ void correctorwidget::alink ( const QUrl &url )
     QString linker = url.fragment();
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
-		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewClienteView", (BfCompany *) mainCompany() );
-		if (!resur) {
-			mensajeInfo("No se pudo crear instancia de cliente");
-			return;
-		} // end if
-		ClienteView *prov = (ClienteView *) g_plugParams;
+        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+        int resur = g_plugins->lanza ( "SNewClienteView", ( BfCompany * ) mainCompany() );
+        if ( !resur ) {
+            mensajeInfo ( "No se pudo crear instancia de cliente" );
+            return;
+        } // end if
+        ClienteView *prov = ( ClienteView * ) g_plugParams;
         if ( prov->cargar ( list[1] ) ) {
             delete prov;
             return;
@@ -176,13 +176,13 @@ void correctorwidget::alink ( const QUrl &url )
         ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idfactura" ) {
-		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewFacturaView", (BfCompany *) mainCompany() );
-		if (!resur) {
-			mensajeInfo("No se pudo crear instancia de factura");
-			return;
-		} // end if
-		FacturaView *prov = (FacturaView *) g_plugParams;
+        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+        int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+        if ( !resur ) {
+            mensajeInfo ( "No se pudo crear instancia de factura" );
+            return;
+        } // end if
+        FacturaView *prov = ( FacturaView * ) g_plugParams;
         if ( prov->cargar ( list[1] ) ) {
             delete prov;
             return;
@@ -190,13 +190,13 @@ void correctorwidget::alink ( const QUrl &url )
         ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else if ( list[0] == "idproveedor" ) {
-		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-		int resur = g_plugins->lanza ("SNewProveedorView", (BfCompany *) mainCompany() );
-		if (!resur) {
-			mensajeInfo("No se pudo crear instancia de cliente");
-			return;
-		} // end if
-		ProveedorView *prov = (ProveedorView *) g_plugParams;
+        /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+        int resur = g_plugins->lanza ( "SNewProveedorView", ( BfCompany * ) mainCompany() );
+        if ( !resur ) {
+            mensajeInfo ( "No se pudo crear instancia de cliente" );
+            return;
+        } // end if
+        ProveedorView *prov = ( ProveedorView * ) g_plugParams;
         if ( prov->cargar ( list[1] ) ) {
             delete prov;
             return;

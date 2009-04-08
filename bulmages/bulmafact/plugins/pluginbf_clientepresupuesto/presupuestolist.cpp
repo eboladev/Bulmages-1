@@ -49,11 +49,11 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
         return;
     m_idpresupuesto = "";
     setSubForm ( mui_list );
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
 
     hideBusqueda();
     iniciaForm();
@@ -81,16 +81,16 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
     iniciaForm();
     presentar();
     m_idpresupuesto = "";
-    if (modoEdicion()) {
-    	mainCompany() ->meteWindow ( windowTitle(), this );
+    if ( modoEdicion() ) {
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -110,10 +110,10 @@ void PresupuestoList::iniciaForm()
     int res = g_plugins->lanza ( "PresupuestoList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, _( "Todos los presupuestos" ) );
-    mui_procesada->insertItem ( 1, _( "Presupuestos procesados" ) );
-    mui_procesada->insertItem ( 2, _( "Presupuestos no procesados" ) );
-	mui_procesada->setCurrentIndex(2);
+    mui_procesada->insertItem ( 0, _ ( "Todos los presupuestos" ) );
+    mui_procesada->insertItem ( 1, _ ( "Presupuestos procesados" ) );
+    mui_procesada->insertItem ( 2, _ ( "Presupuestos no procesados" ) );
+    mui_procesada->setCurrentIndex ( 2 );
     _depura ( "END PresupuestoList::iniciaForm" );
 }
 
@@ -185,7 +185,7 @@ void PresupuestoList::setidarticulo ( QString val )
 void PresupuestoList::crear()
 {
     _depura ( "PresupuestoList::crear", 0 );
-    PresupuestoView * bud = new PresupuestoView((BfCompany *)mainCompany(), 0);
+    PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
@@ -269,7 +269,7 @@ void PresupuestoList::editar ( int row )
     try {
         m_idpresupuesto = mui_list->dbValue ( QString ( "idpresupuesto" ), row );
         if ( modoEdicion() ) {
-            PresupuestoView * prov = new PresupuestoView( ( BfCompany * ) mainCompany() , 0 );
+            PresupuestoView * prov = new PresupuestoView ( ( BfCompany * ) mainCompany() , 0 );
             if ( prov->cargar ( m_idpresupuesto ) ) {
                 delete prov;
                 return;
@@ -281,7 +281,7 @@ void PresupuestoList::editar ( int row )
         } // end if
         _depura ( "END PresupuestoList::editar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al editar el presupuesto" ), this );
+        mensajeInfo ( _ ( "Error al editar el presupuesto" ), this );
     } // end try
 }
 
@@ -293,7 +293,7 @@ void PresupuestoList::editar ( int row )
 void PresupuestoList::imprimir()
 {
     _depura ( "PresupuestoList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Presupuestos a clientes" ) );
+    mui_list->imprimirPDF ( _ ( "Presupuestos a clientes" ) );
     _depura ( "END PresupuestoList::imprimir", 0 );
 }
 
@@ -307,13 +307,13 @@ void PresupuestoList::borrar()
     _depura ( "PresupuestoList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
         m_idpresupuesto = mui_list->dbValue ( QString ( "idpresupuesto" ) );
         if ( modoEdicion() ) {
-            PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0);
+            PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
             if ( pv->cargar ( m_idpresupuesto ) )
                 throw - 1;
             pv->on_mui_borrar_clicked();
@@ -321,7 +321,7 @@ void PresupuestoList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el presupuesto" ), this );
+        mensajeInfo ( _ ( "Error al borrar el presupuesto" ), this );
     } // end try
     _depura ( "END PresupuestoList::borrar", 0 );
 }
@@ -346,22 +346,22 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
     } // end if
     setDbTableName ( "presupuesto" );
     setDbFieldId ( "idpresupuesto" );
-    addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID presupuesto" ) );
-    addSubFormHeader ( "numpresupuesto", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Presupuesto" ) );
-    addSubFormHeader ( "fpresupuesto", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Cliente" ) );
-    addSubFormHeader ( "refpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
-    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base Imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
-    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total" ) );
-    addSubFormHeader ( "descpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
-    addSubFormHeader ( "contactpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Persona de contacto" ) );
-    addSubFormHeader ( "telpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Telefono" ) );
-    addSubFormHeader ( "comentpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Almacen" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
+    addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID presupuesto" ) );
+    addSubFormHeader ( "numpresupuesto", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Presupuesto" ) );
+    addSubFormHeader ( "fpresupuesto", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cliente" ) );
+    addSubFormHeader ( "refpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base Imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
+    addSubFormHeader ( "descpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion" ) );
+    addSubFormHeader ( "contactpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Persona de contacto" ) );
+    addSubFormHeader ( "telpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Telefono" ) );
+    addSubFormHeader ( "comentpresupuesto", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Almacen" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

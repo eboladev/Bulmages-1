@@ -77,17 +77,17 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("plugintccompras", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "plugintccompras", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-/*
-    g_doc1 = new BlDockWidget ( "Articulo", tpv, "articulodock" );
-    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    g_doc1->setGeometry ( 100, 100, 100, 500 );
-    g_doc1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
-    g_doc1->show();
-*/
+    /*
+        g_doc1 = new BlDockWidget ( "Articulo", tpv, "articulodock" );
+        g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+        g_doc1->setGeometry ( 100, 100, 100, 500 );
+        g_doc1->resize ( 330, 400 );
+        tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
+        g_doc1->show();
+    */
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -99,20 +99,20 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
     g_plug->setMinimumSize ( QSize ( 72, 72 ) );
     g_plug->setMaximumSize ( QSize ( 200, 72 ) );
-/*
-    g_doc1->setWidget ( g_plug );
-*/
-     QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
-     if ( fr ) {
-         QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
-         if ( !m_hboxLayout1 ) {
-             m_hboxLayout1 = new QHBoxLayout ( fr );
-             m_hboxLayout1->setSpacing ( 5 );
-             m_hboxLayout1->setMargin ( 5 );
-             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-         } // end if
-         m_hboxLayout1->addWidget ( g_plug );
-     } // end if*/
+    /*
+        g_doc1->setWidget ( g_plug );
+    */
+    QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
+    if ( fr ) {
+        QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
+        if ( !m_hboxLayout1 ) {
+            m_hboxLayout1 = new QHBoxLayout ( fr );
+            m_hboxLayout1->setSpacing ( 5 );
+            m_hboxLayout1->setMargin ( 5 );
+            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+        } // end if
+        m_hboxLayout1->addWidget ( g_plug );
+    } // end if*/
     return 0;
 }
 

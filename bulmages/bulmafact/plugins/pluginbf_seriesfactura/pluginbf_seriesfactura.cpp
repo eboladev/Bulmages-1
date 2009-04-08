@@ -54,9 +54,9 @@ MyPlugSeriesFactura::~MyPlugSeriesFactura()
 void MyPlugSeriesFactura::elslot1()
 {
     _depura ( "MyPlugSeriesFactura::elslot1", 0 );
-        ListSerieFacturaView * bud = new ListSerieFacturaView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    ListSerieFacturaView * bud = new ListSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugSeriesFactura::elslot1", 0 );
 }
 
@@ -72,19 +72,19 @@ void MyPlugSeriesFactura::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->menuMaestro;
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
 
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Series de factura" ), 0 );
-	//planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Series de factura" ) );
-	planCuentas->setWhatsThis ( _( "Series de factura" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Series de factura" ), 0 );
+        //planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ));
+        planCuentas->setStatusTip ( _ ( "Series de factura" ) );
+        planCuentas->setWhatsThis ( _ ( "Series de factura" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
     _depura ( "END MyPlugSeriesFactura::inicializa", 0 );
@@ -104,8 +104,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_seriesfactura", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_seriesfactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugSeriesFactura *plug = new MyPlugSeriesFactura();
     plug->inicializa ( bges );
@@ -116,9 +116,9 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewTrabajadorView (BfCompany *v)
+int SNewTrabajadorView ( BfCompany *v )
 {
-	ListSerieFacturaView *h = new ListSerieFacturaView(v, 0);
-	g_plugParams = h;
-	return 1;
+    ListSerieFacturaView *h = new ListSerieFacturaView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }

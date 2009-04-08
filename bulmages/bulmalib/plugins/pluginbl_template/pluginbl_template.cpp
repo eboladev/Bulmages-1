@@ -33,8 +33,8 @@ int entryPoint ( QApplication * )
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_template", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_template", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
     return 0;

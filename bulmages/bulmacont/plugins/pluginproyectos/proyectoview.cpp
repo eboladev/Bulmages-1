@@ -50,14 +50,14 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "ProyectoView_ProyectoView", this ) ) return;
 
-        setTitleName ( _( "Proyecto" ) );
+        setTitleName ( _ ( "Proyecto" ) );
         setDbTableName ( "presupuestoc" );
         setDbFieldId ( "idpresupuestoc" );
-        addDbField ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID almacen" ) );
-        addDbField ( "idc_coste", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id CCoste" ) );
-        addDbField ( "nompresupuestoc", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nom Presupuesto" ) );
-        addDbField ( "fechapresupuestoc", BlDbField::DbDate, BlDbField::DbNothing, _( "fecha" ) );
-        addDbField ( "comentpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
+        addDbField ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID almacen" ) );
+        addDbField ( "idc_coste", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id CCoste" ) );
+        addDbField ( "nompresupuestoc", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Nom Presupuesto" ) );
+        addDbField ( "fechapresupuestoc", BlDbField::DbDate, BlDbField::DbNothing, _ ( "fecha" ) );
+        addDbField ( "comentpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
 
         /// Inicializamos componentes.
         mui_idc_coste->setMainCompany ( comp );
@@ -68,17 +68,17 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         /// Inicializamos el listado.
         mui_ingresos->setDbTableName ( "lingpresupuestoc" );
         mui_ingresos->setDbFieldId ( "idlingpresupuestoc" );
-        mui_ingresos->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id. Cuenta" ) );
-        mui_ingresos->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Codigo" ) );
-        mui_ingresos->addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Cuenta" ) );
-        mui_ingresos->addSubFormHeader ( "cantlingpresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad" ) );
-        mui_ingresos->addSubFormHeader ( "precioundlingpresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Precio Und" ) );
-        mui_ingresos->addSubFormHeader ( "ejerciciolingpresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Ejercicio" ) );
-        mui_ingresos->addSubFormHeader ( "comentlingpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Comentarios" ) );
-        mui_ingresos->addSubFormHeader ( "desclingpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Descripcion" ) );
-        mui_ingresos->addSubFormHeader ( "idlingpresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _( "Id linea de Ingreso Presupuesto" ) );
-        mui_ingresos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "Id. Proyecto" ) );
-        mui_ingresos->addSubFormHeader ( "ordenlingpresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Orden" ) );
+        mui_ingresos->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id. Cuenta" ) );
+        mui_ingresos->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo" ) );
+        mui_ingresos->addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Cuenta" ) );
+        mui_ingresos->addSubFormHeader ( "cantlingpresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
+        mui_ingresos->addSubFormHeader ( "precioundlingpresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio Und" ) );
+        mui_ingresos->addSubFormHeader ( "ejerciciolingpresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Ejercicio" ) );
+        mui_ingresos->addSubFormHeader ( "comentlingpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Comentarios" ) );
+        mui_ingresos->addSubFormHeader ( "desclingpresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
+        mui_ingresos->addSubFormHeader ( "idlingpresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _ ( "Id linea de Ingreso Presupuesto" ) );
+        mui_ingresos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Proyecto" ) );
+        mui_ingresos->addSubFormHeader ( "ordenlingpresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
         mui_ingresos->setinsercion ( TRUE );
         mui_ingresos->setOrdenEnabled ( TRUE );
         mui_ingresos->setOrdenPorQuery ( FALSE );
@@ -87,17 +87,17 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         /// Inicializamos el listado.
         mui_gastos->setDbTableName ( "lgaspresupuestoc" );
         mui_gastos->setDbFieldId ( "idlgaspresupuestoc" );
-        mui_gastos->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id. Cuenta" ) );
-        mui_gastos->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Codigo" ) );
-        mui_gastos->addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Cuenta" ) );
-        mui_gastos->addSubFormHeader ( "cantlgaspresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad" ) );
-        mui_gastos->addSubFormHeader ( "precioundlgaspresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Precio Und" ) );
-        mui_gastos->addSubFormHeader ( "ejerciciolgaspresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Ejercicio" ) );
-        mui_gastos->addSubFormHeader ( "comentlgaspresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Comentarios" ) );
-        mui_gastos->addSubFormHeader ( "desclgaspresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Descripcion" ) );
-        mui_gastos->addSubFormHeader ( "idlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _( "Id linea de Ingreso Presupuesto" ) );
-        mui_gastos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _( "Id. Proyecto" ) );
-        mui_gastos->addSubFormHeader ( "ordenlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Orden" ) );
+        mui_gastos->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id. Cuenta" ) );
+        mui_gastos->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo" ) );
+        mui_gastos->addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Cuenta" ) );
+        mui_gastos->addSubFormHeader ( "cantlgaspresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
+        mui_gastos->addSubFormHeader ( "precioundlgaspresupuestoc", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio Und" ) );
+        mui_gastos->addSubFormHeader ( "ejerciciolgaspresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Ejercicio" ) );
+        mui_gastos->addSubFormHeader ( "comentlgaspresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Comentarios" ) );
+        mui_gastos->addSubFormHeader ( "desclgaspresupuestoc", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
+        mui_gastos->addSubFormHeader ( "idlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _ ( "Id linea de Ingreso Presupuesto" ) );
+        mui_gastos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Proyecto" ) );
+        mui_gastos->addSubFormHeader ( "ordenlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
         mui_gastos->setinsercion ( TRUE );
         mui_gastos->setOrdenEnabled ( TRUE );
         mui_gastos->setOrdenPorQuery ( FALSE );
@@ -106,7 +106,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el almacen" ) );
+        mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END ProyectoView::ProyectoView", 0 );
 }

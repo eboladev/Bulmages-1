@@ -45,43 +45,43 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _( "Actividad" ) );
+        setTitleName ( _ ( "Actividad" ) );
         setDbTableName ( "actividad" );
         setDbFieldId ( "idactividad" );
-        addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID actividad" ) );
-        addDbField ( "idtipoactividad", BlDbField::DbInt, BlDbField::DbNothing, _( "ID tipo actividad" ) );
-        addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del actividad" ) );
-        addDbField ( "codigoactividad", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo" ) );
-        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
+        addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID actividad" ) );
+        addDbField ( "idtipoactividad", BlDbField::DbInt, BlDbField::DbNothing, _ ( "ID tipo actividad" ) );
+        addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del actividad" ) );
+        addDbField ( "codigoactividad", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo" ) );
+        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id profesor" ) );
 
 
 
 
         meteWindow ( windowTitle(), this, FALSE );
 
-      /// Inicializamos el subformulario de alumnos
-      mui_alumnosList->setMainCompany(comp);
-      
-		/// Establecemos los parametros de busqueda de Profesor
-	mui_idprofesor->setMainCompany(comp);
-    mui_idprofesor->setLabel ( _( "Profesor:" ) );
-	mui_idprofesor->setTableName( "profesor" );
-	mui_idprofesor->m_valores["nombreprofesor"] = "";
+        /// Inicializamos el subformulario de alumnos
+        mui_alumnosList->setMainCompany ( comp );
 
-      /// Establecemos los parametros de busqueda de tipo de actividad.
+        /// Establecemos los parametros de busqueda de Profesor
+        mui_idprofesor->setMainCompany ( comp );
+        mui_idprofesor->setLabel ( _ ( "Profesor:" ) );
+        mui_idprofesor->setTableName ( "profesor" );
+        mui_idprofesor->m_valores["nombreprofesor"] = "";
+
+        /// Establecemos los parametros de busqueda de tipo de actividad.
         mui_idtipoactividad->setMainCompany ( mainCompany() );
-    mui_idtipoactividad->setQuery("SELECT * FROM tipoactividad ORDER BY ascii(nombretipoactividad), nombretipoactividad");
-    mui_idtipoactividad->setTableName ("tipoactividad");
-    mui_idtipoactividad->setFieldId ("idtipoactividad");
-    mui_idtipoactividad->m_valores["nombretipoactividad"] = "";
-    mui_idtipoactividad->setAllowNull(FALSE);
+        mui_idtipoactividad->setQuery ( "SELECT * FROM tipoactividad ORDER BY ascii(nombretipoactividad), nombretipoactividad" );
+        mui_idtipoactividad->setTableName ( "tipoactividad" );
+        mui_idtipoactividad->setFieldId ( "idtipoactividad" );
+        mui_idtipoactividad->m_valores["nombretipoactividad"] = "";
+        mui_idtipoactividad->setAllowNull ( FALSE );
         mui_idtipoactividad->setId ( "" );
 
 
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el actividad" ), this );
+        mensajeInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
     _depura ( "END ActividadView::ActividadView", 0 );
 }
@@ -96,9 +96,9 @@ ActividadView::~ActividadView()
 }
 
 
-QString ActividadView::nombrePlantilla(void) 
+QString ActividadView::nombrePlantilla ( void )
 {
-   return QString("recibo");
+    return QString ( "recibo" );
 }
 
 void ActividadView::imprimir()
@@ -109,9 +109,9 @@ void ActividadView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
-    } 
+    }
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
@@ -123,30 +123,33 @@ void ActividadView::imprimir()
 }
 
 
-int ActividadView::guardarPost() {
-	_depura(" ActividadView::guardarPost", 0);
-  mui_alumnosList->setColumnValue("idactividad", dbValue("idactividad"));
-  mui_alumnosList->guardar();
-	_depura("END ActividadView::guardarPost", 0);
+int ActividadView::guardarPost()
+{
+    _depura ( " ActividadView::guardarPost", 0 );
+    mui_alumnosList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
+    mui_alumnosList->guardar();
+    _depura ( "END ActividadView::guardarPost", 0 );
 }
 
 
-int ActividadView::borrarPre() {
+int ActividadView::borrarPre()
+{
 
-  QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue("idactividad");
-    mainCompany()->runQuery(query);
+    QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue ( "idactividad" );
+    mainCompany()->runQuery ( query );
     return 0;
 }
 
 
 
-int ActividadView::cargarPost(QString id) {
-   _depura(" ActividadView::cargarPost", 0);
+int ActividadView::cargarPost ( QString id )
+{
+    _depura ( " ActividadView::cargarPost", 0 );
 
-    mui_alumnosList->cargar(id);
+    mui_alumnosList->cargar ( id );
 
-   _depura("END ActividadView::cargarPost", 0);
-  return 0;
+    _depura ( "END ActividadView::cargarPost", 0 );
+    return 0;
 }
 
 
@@ -163,10 +166,10 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
-    addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );   
-    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
-    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
-    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _( "Id Actividad" ) );
+    addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
+    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );

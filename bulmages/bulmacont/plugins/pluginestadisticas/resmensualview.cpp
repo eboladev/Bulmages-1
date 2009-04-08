@@ -132,11 +132,11 @@ void resmensualview::presentar()
 #ifdef ESTADISTICAS
     line->clear();
     line->showGrid ( 12 );
-    line->setTitle ( _( "Progresion de saldos" ) );
+    line->setTitle ( _ ( "Progresion de saldos" ) );
     line->setSamples ( 12 );
     line1->clear();
     line1->showGrid ( 12 );
-    line1->setTitle ( _( "Movimientos menusales" ) );
+    line1->setTitle ( _ ( "Movimientos menusales" ) );
     line1->setSamples ( 12 );
     for ( int i = 0; i < 12;i++ ) {
         line->addValues ( milistas[i], mes[i] );

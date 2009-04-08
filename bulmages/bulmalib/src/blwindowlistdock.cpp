@@ -146,11 +146,11 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
     m_listBox->setIconSize ( QSize ( 32, 32 ) );
     m_listBox->setContentsMargins ( 0, 0, 0, 0 );
     m_listBox->setSpacing ( 0 );
-    m_listBox->setWindowTitle ( _( "Indexador" ) );
-    setWindowTitle ( _( "Indexador" ) );
+    m_listBox->setWindowTitle ( _ ( "Indexador" ) );
+    setWindowTitle ( _ ( "Indexador" ) );
     setFocusPolicy ( Qt::StrongFocus );
     setWidget ( m_listBox );
-    setObjectName ("Indexador");
+    setObjectName ( "Indexador" );
     connect ( m_listBox, SIGNAL ( itemDoubleClicked ( QListWidgetItem * ) ), this, SLOT ( dclicked() ) );
     connect ( m_listBox, SIGNAL ( itemClicked ( QListWidgetItem * ) ), this, SLOT ( clicked() ) );
     _depura ( "END BlWindowListDock::BlWindowListDock", 0 );

@@ -52,12 +52,12 @@ IncidenciaComercialView::IncidenciaComercialView ( BfCompany *comp, QWidget *par
     setupUi ( this );
     dialogChanges_cargaInicial();
 
-		/// Establecemos los parametros de busqueda del Cliente
-	mui_idcliente->setMainCompany(comp);
-    mui_idcliente->setLabel ( _( "Cliente:" ) );
-	mui_idcliente->setTableName( "cliente" );
-	mui_idcliente->m_valores["cifcliente"] = "";
-	mui_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setMainCompany ( comp );
+    mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+    mui_idcliente->setTableName ( "cliente" );
+    mui_idcliente->m_valores["cifcliente"] = "";
+    mui_idcliente->m_valores["nomcliente"] = "";
     _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
@@ -75,11 +75,11 @@ IncidenciaComercialView::IncidenciaComercialView ( QWidget *parent )
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     dialogChanges_cargaInicial();
 
-		/// Establecemos los parametros de busqueda del Cliente
-    mui_idcliente->setLabel ( _( "Cliente:" ) );
-	mui_idcliente->setTableName( "cliente" );
-	mui_idcliente->m_valores["cifcliente"] = "";
-	mui_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+    mui_idcliente->setTableName ( "cliente" );
+    mui_idcliente->m_valores["cifcliente"] = "";
+    mui_idcliente->m_valores["nomcliente"] = "";
     _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
@@ -102,8 +102,8 @@ void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
     _depura ( "closeEvent", 0 );
     if ( dialogChanges_hayCambios() ) {
         int val = QMessageBox::warning ( this,
-                                         _( "Guardar la incidencia" ),
-                                         _( "Desea guardar los cambios?" ), _( "&Si" ), _( "&No" ), _( "&Cancelar" ), 0, 2 );
+                                         _ ( "Guardar la incidencia" ),
+                                         _ ( "Desea guardar los cambios?" ), _ ( "&Si" ), _ ( "&No" ), _ ( "&Cancelar" ), 0, 2 );
         if ( val == 0 )
             guardar();
         if ( val == 2 )
@@ -159,7 +159,7 @@ int IncidenciaComercialView::cargar ( QString id )
 {
     _depura ( "IncidenciaComercialView::cargar", 0 );
     int err = IncidenciaComercial::cargar ( id );
-    setWindowTitle ( _( "Incidencia comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
+    setWindowTitle ( _ ( "Incidencia comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
     mui_fechaincidenciacomercial->setText ( dbValue ( "fechaincidenciacomercial" ) );
     mui_idcliente->setId ( dbValue ( "idcliente" ) );
     mui_comentincidenciacomercial->setPlainText ( dbValue ( "comentincidenciacomercial" ) );

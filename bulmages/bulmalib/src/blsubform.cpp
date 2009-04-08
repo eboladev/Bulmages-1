@@ -192,7 +192,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     QHeaderView *hh = mui_list->horizontalHeader();
 
     /// Para conocer cuando el usuario altera el orden de las columnas.
-    connect ( (QObject *) hh, SIGNAL(sectionMoved ( int, int, int ) ), this, SLOT( columnMovedByUser ( int, int, int ) ) );
+    connect ( ( QObject * ) hh, SIGNAL ( sectionMoved ( int, int, int ) ), this, SLOT ( columnMovedByUser ( int, int, int ) ) );
 
 
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
@@ -208,7 +208,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
 
     /// Para el listado de columnas hacemos una inicializacion.
     QStringList headers;
-    headers << _( "Nombre de campo" ) << _( "Nombre" ) << _( "Visible" ) << _( "Orden" );
+    headers << _ ( "Nombre de campo" ) << _ ( "Nombre" ) << _ ( "Visible" ) << _ ( "Orden" );
     mui_listcolumnas->setColumnCount ( 4 );
     mui_listcolumnas->setHorizontalHeaderLabels ( headers );
     mui_listcolumnas->setShowGrid ( FALSE );
@@ -220,8 +220,8 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     mui_listcolumnas->setColumnWidth ( 1, 100 );
     mui_listcolumnas->setColumnWidth ( 2, 0 );
     mui_listcolumnas->setColumnWidth ( 3, 0 );
-    mui_listcolumnas->hideColumn(2);
-    mui_listcolumnas->hideColumn(3);
+    mui_listcolumnas->hideColumn ( 2 );
+    mui_listcolumnas->hideColumn ( 3 );
 
     /// Siempre que arrancamos mostramos la pagina 0.
     mui_paginaact->setValue ( 1 );
@@ -244,10 +244,10 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
 }
 
 
-void BlSubForm::columnMovedByUser(int, int oldIndex, int newIndex)
+void BlSubForm::columnMovedByUser ( int, int oldIndex, int newIndex )
 {
     _depura ( "BlSubForm::columnMovedByUser", 0 );
-    mui_listcolumnas->moveRow(oldIndex, newIndex);
+    mui_listcolumnas->moveRow ( oldIndex, newIndex );
     _depura ( "END BlSubForm::columnMovedByUser", 0 );
 }
 
@@ -1221,7 +1221,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     if ( cur->numregistros() > 100 ) {
         barra->setValue ( 0 );
         barra->show();
-        barra->setText ( _( "Cargando SubFormulario " ) + m_tablename );
+        barra->setText ( _ ( "Cargando SubFormulario " ) + m_tablename );
     } // end if
 
     /// Desactivamos el sorting debido a un error en las Qt4.
@@ -1412,7 +1412,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     if ( m_primero ) {
         cargaconfig();
     } else {
-	    on_mui_confcol_clicked();
+        on_mui_confcol_clicked();
     } // end if
 
     /// Reactivamos el sorting
@@ -1526,38 +1526,37 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
 bool BlSubForm::campoCompleto ( int row )
 {
     _depura ( "BlSubForm::campoCompleto", 0 );
-    bool resultat=false;
-    bool *pResultat=&resultat;
-    if (g_plugins->lanza("BlSubForm_campoCompleto",this,(void**)&pResultat)) 
-    {
-       _depura ( "END BlSubForm::campoCompleto", 0 ,"plugin retorna "+*pResultat);
-       return resultat;
+    bool resultat = false;
+    bool *pResultat = &resultat;
+    if ( g_plugins->lanza ( "BlSubForm_campoCompleto", this, ( void** ) &pResultat ) ) {
+        _depura ( "END BlSubForm::campoCompleto", 0 , "plugin retorna " + *pResultat );
+        return resultat;
     } else {
-    BlDbSubFormField *camp;
-    BlSubFormHeader *header;
-    /// Sacamos celda a celda toda la fila
-    for ( int i = 0; i < mui_list->columnCount(); i++ ) {
-        camp = ( BlDbSubFormField * ) mui_list->item ( row, i );
+        BlDbSubFormField *camp;
+        BlSubFormHeader *header;
+        /// Sacamos celda a celda toda la fila
+        for ( int i = 0; i < mui_list->columnCount(); i++ ) {
+            camp = ( BlDbSubFormField * ) mui_list->item ( row, i );
 
-        /// Si el dato no es valido se sale
-        if ( !camp ) return FALSE;
+            /// Si el dato no es valido se sale
+            if ( !camp ) return FALSE;
 
-        header = m_lcabecera.at ( i );
-        if ( camp->restrictcampo() & BlDbField::DbNotNull
-                && camp->text() == ""
-                && ! ( header->options() & BlSubFormHeader::DbHideView )
-                && camp->dbFieldType() != BlDbField::DbBoolean ) {
-            _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
-            return FALSE;
-        } // end if
-        if ( camp->restrictcampo() & BlDbField::DbRequired
-                && camp->text() == "" ) {
-            _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
-            return FALSE;
-        } // end if
+            header = m_lcabecera.at ( i );
+            if ( camp->restrictcampo() & BlDbField::DbNotNull
+                    && camp->text() == ""
+                    && ! ( header->options() & BlSubFormHeader::DbHideView )
+                    && camp->dbFieldType() != BlDbField::DbBoolean ) {
+                _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
+                return FALSE;
+            } // end if
+            if ( camp->restrictcampo() & BlDbField::DbRequired
+                    && camp->text() == "" ) {
+                _depura ( "END BlSubForm::campoCompleto", 0, "El campo no es completo." );
+                return FALSE;
+            } // end if
 
-    } // end for
-    _depura ( "END BlSubForm::campoCompleto", 0 );
+        } // end for
+        _depura ( "END BlSubForm::campoCompleto", 0 );
     }
     return TRUE;
 }
@@ -1576,8 +1575,8 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 
     /// Implementacion del semaforo
     static bool semaforo = FALSE;
-    if (semaforo)
-      return;
+    if ( semaforo )
+        return;
     semaforo = TRUE;
 
     bool creado = FALSE;
@@ -1694,7 +1693,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
     it = new BlTableWidgetItem ( "" );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 2, it );
     /// Escribe el order de las columnas.
-    it = new BlTableWidgetItem ( QString::number(mui_listcolumnas->rowCount() - 1) );
+    it = new BlTableWidgetItem ( QString::number ( mui_listcolumnas->rowCount() - 1 ) );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 3, it );
 
     _depura ( "END BlSubForm::addSubFormHeader", 0, nom );
@@ -1981,12 +1980,12 @@ void BlSubForm::guardaconfig()
 {
     _depura ( "BlSubForm::guardaconfig", 0 );
 
-   /// Si el subformulario no esta inicializado no hacemos el guardado.
-   if (! mainCompany() )
-      return;
+    /// Si el subformulario no esta inicializado no hacemos el guardado.
+    if ( ! mainCompany() )
+        return;
 
     QString aux = "";
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -1996,28 +1995,28 @@ void BlSubForm::guardaconfig()
 
         /// Guarda la visibilidad de los elementos consultando la tabla de configuracion.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-		for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
-			if (mui_listcolumnas->item(j, 3)->text().toInt() == i) {
-				if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
-					stream << "1" << "\n";
-				} else {
-					stream << "0" << "\n";
-				} // end if
-			} // end if
-		} // end for
+            for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
+                if ( mui_listcolumnas->item ( j, 3 )->text().toInt() == i ) {
+                    if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
+                        stream << "1" << "\n";
+                    } else {
+                        stream << "0" << "\n";
+                    } // end if
+                } // end if
+            } // end for
         } // end for
 
-	/// Guarda la configuracion de mui_list.
-	stream << QString(mui_list->horizontalHeader()->saveState().toBase64()) << "\n";
-	stream << QString(mui_list->verticalHeader()->saveState().toBase64()) << "\n";
+        /// Guarda la configuracion de mui_list.
+        stream << QString ( mui_list->horizontalHeader()->saveState().toBase64() ) << "\n";
+        stream << QString ( mui_list->verticalHeader()->saveState().toBase64() ) << "\n";
 
-	/// Guarda la configuracion de mui_listcolumnas.
-	stream << QString(mui_listcolumnas->horizontalHeader()->saveState().toBase64()) << "\n";
-	stream << QString(mui_listcolumnas->verticalHeader()->saveState().toBase64()) << "\n";
+        /// Guarda la configuracion de mui_listcolumnas.
+        stream << QString ( mui_listcolumnas->horizontalHeader()->saveState().toBase64() ) << "\n";
+        stream << QString ( mui_listcolumnas->verticalHeader()->saveState().toBase64() ) << "\n";
 
         /// Guarda el orden de la lista de elementos en mui_listcolumnas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-                stream << mui_listcolumnas->item ( i, 3 )->text() << "\n";
+            stream << mui_listcolumnas->item ( i, 3 )->text() << "\n";
         } // end for
 
         file.close();
@@ -2032,7 +2031,7 @@ void BlSubForm::guardaconfig()
 void BlSubForm::cargaconfig()
 {
     _depura ( "BlSubForm::cargaconfig", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {
@@ -2065,28 +2064,28 @@ void BlSubForm::cargaconfig()
             } // end if
         } // end for
 
-	/// Restaura el estado de mui_list.
+        /// Restaura el estado de mui_list.
         linea = stream.readLine();
-	mui_list->horizontalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+        mui_list->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
         linea = stream.readLine();
-	mui_list->verticalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+        mui_list->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
 
-	/// Restaura el estado de mui_listcolumnas.
+        /// Restaura el estado de mui_listcolumnas.
         linea = stream.readLine();
-	mui_listcolumnas->horizontalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+        mui_listcolumnas->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
         linea = stream.readLine();
-	mui_listcolumnas->verticalHeader()->restoreState( QByteArray::fromBase64( linea.toAscii() ) );
+        mui_listcolumnas->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
 
         /// Restaura el orden de mui_listcolumnas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-		linea = stream.readLine();
-		/// Busca en la 4a columna la fila que tenga el valor igual a 'linea.toInt()'. Que fila es?
-		/// ese sera el valor de rowOld. i = rowNew.
-	        for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
-	    		if (mui_listcolumnas->item(j, 3)->text().toInt() == linea.toInt()) {
-				mui_listcolumnas->moveRow(j, i);
-			} // end if
-		} // end for
+            linea = stream.readLine();
+            /// Busca en la 4a columna la fila que tenga el valor igual a 'linea.toInt()'. Que fila es?
+            /// ese sera el valor de rowOld. i = rowNew.
+            for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
+                if ( mui_listcolumnas->item ( j, 3 )->text().toInt() == linea.toInt() ) {
+                    mui_listcolumnas->moveRow ( j, i );
+                } // end if
+            } // end for
         } // end for
 
         file.close();
@@ -2110,11 +2109,11 @@ void BlSubForm::on_mui_confcol_clicked()
     _depura ( "BlSubForm::on_mui_confcol_clicked", 0 );
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
         if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked ) {
-            mui_list->showColumn ( mui_listcolumnas->item(i, 3)->text().toInt() );
+            mui_list->showColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
         } else {
-	    /// Coge el valor de la columna de 'order' para ocultarla.
-            mui_list->hideColumn ( mui_listcolumnas->item(i, 3)->text().toInt() );
-	} // end if
+            /// Coge el valor de la columna de 'order' para ocultarla.
+            mui_list->hideColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
+        } // end if
     } // end for
     _depura ( "END BlSubForm::on_mui_confcol_clicked", 0 );
 }
@@ -2246,7 +2245,7 @@ QString BlSubForm::imprimir()
     BlProgressBar barra;
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
-    barra.setText ( _( "Imprimiendo " ) +  m_tablename );
+    barra.setText ( _ ( "Imprimiendo " ) +  m_tablename );
     barra.setValue ( 0 );
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
     QLocale spanish;
@@ -2508,18 +2507,18 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
 
     if ( m_delete ) {
         popup->addSeparator();
-        del = popup->addAction ( _( "Borrar registro" ) );
+        del = popup->addAction ( _ ( "Borrar registro" ) );
     } // end if
     popup->addSeparator();
 
-    QAction *ajustc = popup->addAction ( _( "Ajustar columa" ) );
-    QAction *ajustac = popup->addAction ( _( "Ajustar altura" ) );
+    QAction *ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
+    QAction *ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
 
-    QAction *ajust = popup->addAction ( _( "Ajustar columnas" ) );
-    QAction *ajusta = popup->addAction ( _( "Ajustar alturas" ) );
+    QAction *ajust = popup->addAction ( _ ( "Ajustar columnas" ) );
+    QAction *ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
 
     popup->addSeparator();
-    QAction *verconfig = popup->addAction ( _( "Ver/Ocultar configurador de subformulario" ) );
+    QAction *verconfig = popup->addAction ( _ ( "Ver/Ocultar configurador de subformulario" ) );
 
     QAction *opcion = popup->exec ( QCursor::pos() );
 
@@ -2632,7 +2631,7 @@ QString BlSubForm::dbFieldNameByColumnId ( int columna )
 void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     _depura ( "BlSubForm::editFinished", 0 );
-        m_registrolinea = rec;
+    m_registrolinea = rec;
     m_campoactual = camp;
 
     /// Disparamos los plugins.
@@ -2735,7 +2734,7 @@ BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( p
     _depura ( "BlSubFormDelegate::BlSubFormDelegate", 0 );
     m_subform = ( BlSubForm * ) parent;
     installEventFilter ( this );
-    g_plugins->lanza("BlSubFormDelegate_BlSubFormDelegate_Post", (void *) this);
+    g_plugins->lanza ( "BlSubFormDelegate_BlSubFormDelegate_Post", ( void * ) this );
     _depura ( "END BlSubFormDelegate::BlSubFormDelegate", 0 );
 }
 
@@ -2763,12 +2762,12 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     linea = m_subform->cabecera() ->at ( index.column() );
     g_nomcampo = linea->nomcampo();
     g_editor = parent;
-    
-    if (g_plugins->lanza("BlSubFormDelegate_createEditor", (void *) this)) {
-      return (QWidget *) g_plugParams;
+
+    if ( g_plugins->lanza ( "BlSubFormDelegate_createEditor", ( void * ) this ) ) {
+        return ( QWidget * ) g_plugParams;
     } // end if
-         _depura ( "END BlSubFormDelegate::createEditor", 0, "Default Editor" );
-        return QItemDelegate::createEditor ( parent, option, index );
+    _depura ( "END BlSubFormDelegate::createEditor", 0, "Default Editor" );
+    return QItemDelegate::createEditor ( parent, option, index );
 }
 
 
@@ -2794,9 +2793,9 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     g_nomcampo = linea->nomcampo();
-    
-    if (g_plugins->lanza("BlSubFormDelegate_setModelData", (void *) this)) {
-      return;
+
+    if ( g_plugins->lanza ( "BlSubFormDelegate_setModelData", ( void * ) this ) ) {
+        return;
     } // end if
 
     QItemDelegate::setModelData ( editor, model, index );
@@ -2813,19 +2812,19 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
     _depura ( "BlSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
-    
-    
+
+
     g_index = index;
     g_editor = editor;
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     g_nomcampo = linea->nomcampo();
-    
-    if (g_plugins->lanza("BlSubFormDelegate_setEditorData", (void *) this)) {
-      return;
+
+    if ( g_plugins->lanza ( "BlSubFormDelegate_setEditorData", ( void * ) this ) ) {
+        return;
     } // end if
-    
-        QItemDelegate::setEditorData ( editor, index );
+
+    QItemDelegate::setEditorData ( editor, index );
     _depura ( "END BlSubFormDelegate::setEditorData", 0 );
 }
 

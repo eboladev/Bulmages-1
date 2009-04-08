@@ -36,34 +36,35 @@ un eventHandler especifico
 BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
 {
     _depura ( "BlTableWidget::BlTableWidget", 0 );
-    setcolorden(-1);
-    settipoorden(-1);
+    setcolorden ( -1 );
+    settipoorden ( -1 );
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
     _depura ( "END BlTableWidget::BlTableWidget", 0 );
 }
 
 
-void BlTableWidget::moveRow(int oldRow, int newRow) {
+void BlTableWidget::moveRow ( int oldRow, int newRow )
+{
 
-	int column;
-	QList<QTableWidgetItem *> rowItemsOld;
+    int column;
+    QList<QTableWidgetItem *> rowItemsOld;
 
-	/// Captura los items de las fila
-	for (column = 0; column < columnCount(); ++column) {
-		rowItemsOld << takeItem(oldRow, column);
-	} // end for
+    /// Captura los items de las fila
+    for ( column = 0; column < columnCount(); ++column ) {
+        rowItemsOld << takeItem ( oldRow, column );
+    } // end for
 
-	removeRow(oldRow);
-	insertRow(newRow);
+    removeRow ( oldRow );
+    insertRow ( newRow );
 
-	/// Aqui habria que averiguar si esta activado la ordenacion
-	/// automatica para deshabilitarla antes y habilitarla despues.
+    /// Aqui habria que averiguar si esta activado la ordenacion
+    /// automatica para deshabilitarla antes y habilitarla despues.
 
-	/// Establece los items de la fila
-	for (column = 0; column < columnCount(); ++column) {
-		setItem(newRow, column, rowItemsOld.at(column));
-	} // end for
+    /// Establece los items de la fila
+    for ( column = 0; column < columnCount(); ++column ) {
+        setItem ( newRow, column, rowItemsOld.at ( column ) );
+    } // end for
 
 }
 
@@ -284,7 +285,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
         int key = keyEvent->key();
         int col = currentColumn();
         int row = currentRow();
-  
+
         m_teclasalida = 0;
         /// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos
         /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
@@ -297,12 +298,12 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Return:
         case Qt::Key_Enter:
         case Qt::Key_Tab:
-			if (!(mod & Qt::ShiftModifier)) {
-				m_teclasalida = key;
-				emit cellRePosition ( row, col );
-				return TRUE;
-	            break;
-			}// end if
+            if ( ! ( mod & Qt::ShiftModifier ) ) {
+                m_teclasalida = key;
+                emit cellRePosition ( row, col );
+                return TRUE;
+                break;
+            }// end if
         case Qt::Key_Slash:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedSlash ( row, col );
@@ -417,14 +418,16 @@ void BlTableWidget::sortItems ( int column, Qt::SortOrder order )
 }
 
 
-void BlTableWidget::showColumn(int column) {
+void BlTableWidget::showColumn ( int column )
+{
     _depura ( "BlTableWidget::showColumn", 0 );
     QTableWidget::showColumn ( column );
     _depura ( "END BlTableWidget::showColumn", 0 );
 }
 
 
-void BlTableWidget::hideColumn(int column) {
+void BlTableWidget::hideColumn ( int column )
+{
     _depura ( "BlTableWidget::hideColumn", 0 );
     QTableWidget::hideColumn ( column );
     _depura ( "END BlTableWidget::hideColumn", 0 );

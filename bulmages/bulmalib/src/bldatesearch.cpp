@@ -179,7 +179,7 @@ void BlDateSearch::s_searchFecha()
     layout->setMargin ( 0 );
     layout->setSpacing ( 0 );
     diag->setLayout ( layout );
-    diag->setWindowTitle ( _( "Seleccione fecha" ) );
+    diag->setWindowTitle ( _ ( "Seleccione fecha" ) );
     diag->exec();
 
     mui_textoFecha->setText ( calend->selectedDate().toString ( "dd/MM/yyyy" ) );

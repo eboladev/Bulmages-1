@@ -55,13 +55,13 @@ MyPlugIVA::~MyPlugIVA()
 void MyPlugIVA::elslot()
 {
     _depura ( "MyPlugIVA::elslot", 0 );
-    ListTasaIVAView *pag = new ListTasaIVAView ( (BfCompany *)mainCompany(), NULL );
+    ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
-*/
+    /*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            bud->show();
+    */
     _depura ( "END MyPlugIVA::elslot", 0 );
 }
 
@@ -72,13 +72,13 @@ void MyPlugIVA::elslot()
 void MyPlugIVA::elslot1()
 {
     _depura ( "MyPlugIVA::elslot1", 0 );
-    ListTipoIVAView *pag = new ListTipoIVAView ( (BfCompany *)mainCompany(), NULL );
+    ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-/*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
-*/
+    /*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            bud->show();
+    */
     _depura ( "END MyPlugIVA::elslot1", 0 );
 }
 
@@ -94,32 +94,32 @@ void MyPlugIVA::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->menuMaestro;
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tipos de IVA en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Tipos de IVA" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ));
-	planCuentas->setStatusTip ( _( "Tipos de IVA" ) );
-	planCuentas->setWhatsThis ( _( "Tipos de IVA" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        /// El men&uacute; de Tipos de IVA en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Tipos de IVA" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Tipos de IVA" ) );
+        planCuentas->setWhatsThis ( _ ( "Tipos de IVA" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
-	/// El men&uacute; de Tasa de IVA en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas1 = new QAction ( _( "&Tasas de IVA" ), 0 );
-	planCuentas1->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ));
-	planCuentas1->setStatusTip ( _( "Tasas de IVA" ) );
-	planCuentas1->setWhatsThis ( _( "Tasas de IVA" ) );
-	pPluginMenu->addAction ( planCuentas1 );
-	bges->Listados->addAction (planCuentas1);
-	connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tasa de IVA en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas1 = new QAction ( _ ( "&Tasas de IVA" ), 0 );
+        planCuentas1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ) );
+        planCuentas1->setStatusTip ( _ ( "Tasas de IVA" ) );
+        planCuentas1->setWhatsThis ( _ ( "Tasas de IVA" ) );
+        pPluginMenu->addAction ( planCuentas1 );
+        bges->Listados->addAction ( planCuentas1 );
+        connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
     }// end if
     _depura ( "END MyPlugIVA::inicializa", 0 );
@@ -139,8 +139,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de IVA\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_iva", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_iva", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugIVA *plug = new MyPlugIVA();
     plug->inicializa ( bges );

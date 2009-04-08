@@ -28,7 +28,7 @@
 #include "genfactqtoolbutton.h"
 
 
-FacturasProveedorList *g_facturasProveedorList=NULL;
+FacturasProveedorList *g_facturasProveedorList = NULL;
 
 ///
 /**
@@ -56,9 +56,9 @@ mypluginfactp::~mypluginfactp()
 void mypluginfactp::elslot()
 {
     _depura ( "mypluginfactp::elslot", 0 );
-    if (g_facturasProveedorList) {
-	g_facturasProveedorList->hide();
-	g_facturasProveedorList->show();
+    if ( g_facturasProveedorList ) {
+        g_facturasProveedorList->hide();
+        g_facturasProveedorList->show();
     }// end if
     _depura ( "END mypluginfactp::elslot", 0 );
 }
@@ -69,9 +69,9 @@ void mypluginfactp::elslot()
 void mypluginfactp::elslot1()
 {
     _depura ( "mypluginfactp::elslot1", 0 );
-        FacturaProveedorView * bud = new FacturaProveedorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END mypluginfactp::elslot1", 0 );
 }
 
@@ -86,28 +86,28 @@ void mypluginfactp::inicializa ( Bulmafact *bges )
     _depura ( "mypluginfactp::inicializa", 0 );
 
     if ( bges->getcompany()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
-    /// Miramos si existe un menu Compras
-	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Compras
+        QMenu *pPluginMenu = bges->newMenu ( "&Compras", "menuCompras", "menuMaestro" );
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Facturas proveedores" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Facturas de proveedores" ) );
-	planCuentas->setWhatsThis ( _( "Facturas de proveedores" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Facturas proveedores" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Facturas de proveedores" ) );
+        planCuentas->setWhatsThis ( _ ( "Facturas de proveedores" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nueva factura de proveedor" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.svg" ) ));
-	npago->setStatusTip ( _( "Nueva factura de proveedor" ) );
-	npago->setWhatsThis ( _( "Nueva factura de proveedor" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nueva factura de proveedor" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.svg" ) ) );
+        npago->setStatusTip ( _ ( "Nueva factura de proveedor" ) );
+        npago->setWhatsThis ( _ ( "Nueva factura de proveedor" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
     }// end if
@@ -125,8 +125,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_proveedorfactura", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_proveedorfactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     mypluginfactp *plug = new mypluginfactp();
     plug->inicializa ( bges );
@@ -134,30 +134,33 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     if ( comp->hasTablePrivilege ( "facturap", "SELECT" ) ) {
-	g_facturasProveedorList = new FacturasProveedorList( comp, NULL );	
-	comp->m_pWorkspace->addWindow ( g_facturasProveedorList );
-	g_facturasProveedorList->hide();
+        g_facturasProveedorList = new FacturasProveedorList ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_facturasProveedorList );
+        g_facturasProveedorList->hide();
     }// end if
     return 0;
 }
 
 
-int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
+int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
-	FacturasProveedorList *facturasProveedorList = new FacturasProveedorList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-	facturasProveedorList->setModoEdicion();
-	facturasProveedorList->setObjectName("listpagosproveedor");
-	facturasProveedorList->hideBusqueda();
+        FacturasProveedorList *facturasProveedorList = new FacturasProveedorList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        facturasProveedorList->setModoEdicion();
+        facturasProveedorList->setObjectName ( "listpagosproveedor" );
+        facturasProveedorList->hideBusqueda();
         prov->mui_tab->addTab ( facturasProveedorList, "Facturas" );
     }// end if
     return 0;
 }
 
-int ProveedorView_cargarPost_Post (ProveedorView *prov) {
+int ProveedorView_cargarPost_Post ( ProveedorView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
-	FacturasProveedorList *facturasProveedorList = prov->findChild<FacturasProveedorList *> ( "listpagosproveedor" );
+        FacturasProveedorList *facturasProveedorList = prov->findChild<FacturasProveedorList *> ( "listpagosproveedor" );
         facturasProveedorList->setidproveedor ( prov->dbValue ( "idproveedor" ) );
         facturasProveedorList->presentar();
     }// end if
@@ -165,11 +168,12 @@ int ProveedorView_cargarPost_Post (ProveedorView *prov) {
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
+int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+{
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        FacturaProveedorView * bud = new FacturaProveedorView((BfCompany *)ref->mainCompany(), NULL);
+        FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idfacturap" ) );
         bud->show();
@@ -191,12 +195,12 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     _depura ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
@@ -216,12 +220,12 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
@@ -230,10 +234,10 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewFacturaProveedorView (BfCompany *v)
+int SNewFacturaProveedorView ( BfCompany *v )
 {
-	FacturaProveedorView *h = new FacturaProveedorView(v, 0);
-	g_plugParams = h;
-	return 1;
+    FacturaProveedorView *h = new FacturaProveedorView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }
 

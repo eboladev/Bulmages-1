@@ -38,18 +38,18 @@
 \param parent
 \param flag
 **/
-PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo)
+PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "PagosList::PagosList", 0 );
     setupUi ( this );
     mdb_idpago = "";
     setSubForm ( mui_list );
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     _depura ( "END PagosList::PagosList", 0 );
 }
@@ -70,17 +70,17 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     mui_list->setMainCompany ( comp );
     mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
 
     presentar();
     mdb_idpago = "";
     setSubForm ( mui_list );
-    if (modoEdicion()) {
-    	mainCompany() ->meteWindow ( windowTitle(), this );
+    if ( modoEdicion() ) {
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -157,7 +157,7 @@ void PagosList::editar ( int )
 {
     mdb_idpago = mui_list->dbValue ( "idpago" );
     if ( modoEdicion() && mdb_idpago != "" ) {
-        PagoView *bud = new PagoView( ( BfCompany * ) mainCompany(), 0 );
+        PagoView *bud = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
         if ( bud->cargar ( mdb_idpago ) ) {
             delete bud;
             return;
@@ -173,7 +173,7 @@ void PagosList::editar ( int )
 void PagosList::crear()
 {
     _depura ( "PagosList::crear", 0 );
-    PagoView *bud = new PagoView( ( BfCompany * ) mainCompany(), 0 );
+    PagoView *bud = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDbValue ( "idproveedor", m_proveedor->id() );
@@ -184,7 +184,7 @@ void PagosList::crear()
 void PagosList::imprimir()
 {
     _depura ( "PagosList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Pagos a proveedores" ) );
+    mui_list->imprimirPDF ( _ ( "Pagos a proveedores" ) );
     _depura ( "END PagosList::imprimir", 0 );
 }
 
@@ -194,7 +194,7 @@ void PagosList::borrar()
     _depura ( "PagosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -206,7 +206,7 @@ void PagosList::borrar()
         } // end if
         presentar();
     } catch ( ... )  {
-        mensajeInfo ( _( "Error al borrar el pago" ), this );
+        mensajeInfo ( _ ( "Error al borrar el pago" ), this );
     } // end try
     _depura ( "END PagosList::borrar", 0 );
 }
@@ -243,21 +243,21 @@ PagosListSubForm::PagosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     setDbTableName ( "pago" );
     setDbFieldId ( "idpago" );
-    addSubFormHeader ( "idpago", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id pago" ) );
-    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id proveedor" ) );
-    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre proveedor" ) );
-    addSubFormHeader ( "cifproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F. proveedor" ) );
-    addSubFormHeader ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Telefono proveedor" ) );
-    addSubFormHeader ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Email proveedor" ) );
-    addSubFormHeader ( "fechapago", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de pago" ) );
-    addSubFormHeader ( "cantpago", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Cantidad" ) );
-    addSubFormHeader ( "nombanco", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Banco" ) );
-    addSubFormHeader ( "refpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia de pago" ) );
-    addSubFormHeader ( "previsionpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Prevision pago" ) );
-    addSubFormHeader ( "comentpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario pago" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id trabajador" ) );
-    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de trabajador" ) );
-    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Apellidos trabajador" ) );
+    addSubFormHeader ( "idpago", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pago" ) );
+    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id proveedor" ) );
+    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre proveedor" ) );
+    addSubFormHeader ( "cifproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F. proveedor" ) );
+    addSubFormHeader ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Telefono proveedor" ) );
+    addSubFormHeader ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Email proveedor" ) );
+    addSubFormHeader ( "fechapago", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de pago" ) );
+    addSubFormHeader ( "cantpago", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cantidad" ) );
+    addSubFormHeader ( "nombanco", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Banco" ) );
+    addSubFormHeader ( "refpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia de pago" ) );
+    addSubFormHeader ( "previsionpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Prevision pago" ) );
+    addSubFormHeader ( "comentpago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario pago" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
+    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de trabajador" ) );
+    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apellidos trabajador" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

@@ -44,17 +44,17 @@ int entryPoint ( QMainWindow *bges )
     _depura ( "Entrada del plugin ImportCSV", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_importcsv", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_importcsv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges_importcsv = bges;
 
     mypluginimportcsv *mcont = new mypluginimportcsv;
 
     /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( _("&Importacion CSV"), 0 );
-    accion->setStatusTip ( _("Importacion CSV") );
-    accion->setWhatsThis ( _("Importacion CSV") );
+    QAction *accion = new QAction ( _ ( "&Importacion CSV" ), 0 );
+    accion->setStatusTip ( _ ( "Importacion CSV" ) );
+    accion->setWhatsThis ( _ ( "Importacion CSV" ) );
 
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
 

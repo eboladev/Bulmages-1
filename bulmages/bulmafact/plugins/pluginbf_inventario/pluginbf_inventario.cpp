@@ -71,13 +71,13 @@ void myplugininv::inicializa ( Bulmafact *bges )
     setMainCompany ( bges->getcompany() );
 
     /// Miramos si existe un menu Articulos
-	QMenu *pPluginMenu = bges->newMenu("&Articulos", "menuArticulos", "menuMaestro");
-	pPluginMenu->addSeparator();
+    QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+    pPluginMenu->addSeparator();
 
 
-    QAction *planCuentas = new QAction ( _( "&Inventarios" ), 0 );
-    planCuentas->setStatusTip ( _( "Inventarios" ) );
-    planCuentas->setWhatsThis ( _( "Inventarios" ) );
+    QAction *planCuentas = new QAction ( _ ( "&Inventarios" ), 0 );
+    planCuentas->setStatusTip ( _ ( "Inventarios" ) );
+    planCuentas->setWhatsThis ( _ ( "Inventarios" ) );
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -95,8 +95,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_inventario", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_inventario", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugininv *plug = new myplugininv();
     plug->inicializa ( bges );
@@ -115,15 +115,15 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     BfSubForm *l = new BfSubForm ( art );
     l->setMainCompany ( art->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
-    art->mui_tab->addTab ( l, _("Minimos almacen") );
+    art->mui_tab->addTab ( l, _ ( "Minimos almacen" ) );
 
     l->setDbTableName ( "minimsalmacen" );
     l->setDbFieldId ( "idminimsalmacen" );
-    l->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Almacen" ) );
-    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Id Almacen" ) );
-    l->addSubFormHeader ( "valminimsalmacen", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Minimo" ) );
-    l->addSubFormHeader ( "idminimsalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Validacion" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Trabajador" ) );
+    l->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Almacen" ) );
+    l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Id Almacen" ) );
+    l->addSubFormHeader ( "valminimsalmacen", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Minimo" ) );
+    l->addSubFormHeader ( "idminimsalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Validacion" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -208,7 +208,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );
             BlFixed valb = BlFixed ( camp->valorcampo() );
             if ( stock - valb <= val )
-                mensajeAviso ( _("Stock minimo superado") );
+                mensajeAviso ( _ ( "Stock minimo superado" ) );
         } // end if
         delete cur;
     } // end if

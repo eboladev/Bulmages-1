@@ -41,7 +41,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
 {
     _depura ( "TipoActividadView::TipoActividadView", 0 );
 
-    setTitleName ( _( "TipoActividad" ) );
+    setTitleName ( _ ( "TipoActividad" ) );
     setDbTableName ( "tipoactividad" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -134,7 +134,7 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
     if ( res != 0 ) {
         return;
     } // end if
- 
+
     dialogChanges_cargaInicial();
 
     _depura ( "END on_mui_lista_currentItemChanged", 0 );
@@ -156,7 +156,7 @@ void TipoActividadView::on_mui_guardar_clicked()
         if ( res != 0 ) {
             return;
         } // end if
-        
+
         QString query = "UPDATE tipoactividad SET ";
         query += "  nombretipoactividad='" + mainCompany() ->sanearCadena ( m_nombretipoactividad->text() ) + "'";
         query += " WHERE idtipoactividad=" + mainCompany() ->sanearCadena ( mdb_idtipoactividad );
@@ -164,23 +164,23 @@ void TipoActividadView::on_mui_guardar_clicked()
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
-        
+
         /// Si hay un cursor en activo lo borramos para recargarlo
         pintar();
 
 
-		/// Emitimos la senyal apropiada en el qapplication2
-		g_theApp->tablaCambiada1("tipoactividad");
+        /// Emitimos la senyal apropiada en el qapplication2
+        g_theApp->tablaCambiada1 ( "tipoactividad" );
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al guardar el tipoactividad" ) );
+        mensajeInfo ( _ ( "Error al guardar el tipoactividad" ) );
         mainCompany() ->rollback();
     } // end try
 
 
-_depura ( "END TipoActividadView::on_mui_guardar_clicked", 0 );
+    _depura ( "END TipoActividadView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -194,9 +194,9 @@ bool TipoActividadView::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    _( "Guardar datos del tipoactividad" ),
-                                    _( "Desea guardar los cambios?" ),
-                                    _( "&Si" ), _( "&No" ), 0, 0, 1 ) == 0 )
+                                    _ ( "Guardar datos del tipoactividad" ),
+                                    _ ( "Desea guardar los cambios?" ),
+                                    _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
@@ -226,7 +226,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
         pintar();
         _depura ( "END TipoActividadView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear un nuevo TipoActividad" ) );
+        mensajeInfo ( _ ( "Error al crear un nuevo TipoActividad" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -251,7 +251,7 @@ void TipoActividadView::on_mui_borrar_clicked()
         pintar();
         _depura ( "END TipoActividadView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el TipoActividad" ) );
+        mensajeInfo ( _ ( "Error al borrar el TipoActividad" ) );
         mainCompany() ->rollback();
     }// end try
 }

@@ -65,7 +65,7 @@ EQToolButton::~EQToolButton()
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
     _depura ( "EQToolButton::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( _( "Informes personales ODS" ) );
+    QMenu *ajust = menu->addMenu ( _ ( "Informes personales ODS" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -127,9 +127,9 @@ void EQToolButton::trataMenu ( QAction *action )
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
         if ( action->objectName() == fileInfo.fileName() ) {
-            if(m_BlForm->generaRML ( fileInfo.fileName() )) {
-            	invocaPYS ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
-		    } // end if
+            if ( m_BlForm->generaRML ( fileInfo.fileName() ) ) {
+                invocaPYS ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
+            } // end if
         } // end if
     }
     _depura ( "END EQToolButton::trataMenu", 0 );

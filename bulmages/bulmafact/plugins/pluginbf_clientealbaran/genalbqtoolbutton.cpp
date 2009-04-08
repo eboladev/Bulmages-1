@@ -78,10 +78,10 @@ void GenAlbQToolButton::setBoton()
     setStatusTip ( "Generar Albaran" );
     setToolTip ( "Generar Albaran" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setMaximumSize ( QSize (32, 32 ) );
+    setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-to-note.svg" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
-    setContentsMargins (0, 0, 0, 0);
+    setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenAlbQToolButton::setBoton", 0 );
 }
 
@@ -93,14 +93,14 @@ void GenAlbQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
 
-    if (m_object->objectName() == "PedidoClienteBase" ) {
-	PedidoClienteView *fpv = (PedidoClienteView *) m_object;
-		generarFactura1();
+    if ( m_object->objectName() == "PedidoClienteBase" ) {
+        PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
+        generarFactura1();
     }// end if
 
-    if (m_object->objectName() == "PresupuestoClienteBase" ) {
-	PresupuestoView *fpv = (PresupuestoView *) m_object;
-		generarFactura2();
+    if ( m_object->objectName() == "PresupuestoClienteBase" ) {
+        PresupuestoView *fpv = ( PresupuestoView * ) m_object;
+        generarFactura2();
     }// end if
 
 
@@ -121,7 +121,7 @@ void GenAlbQToolButton::generarFactura1()
 {
     _depura ( "GenAlbQToolButton::generarFacturaProveedor1", 0 );
 
-	PedidoClienteView *fpv = (PedidoClienteView *) m_object;
+    PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
 
 
     AlbaranClienteView *bud = NULL;
@@ -140,7 +140,7 @@ void GenAlbQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -155,9 +155,9 @@ void GenAlbQToolButton::generarFactura1()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         _( "Albaran ya existe" ),
-                                         _( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
+                                         _ ( "Albaran ya existe" ),
+                                         _ ( "Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new AlbaranClienteView ( fpv->mainCompany(), NULL );
@@ -169,7 +169,7 @@ void GenAlbQToolButton::generarFactura1()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new AlbaranClienteView((BfCompany *) fpv->mainCompany(), 0);
+        bud = new AlbaranClienteView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -223,7 +223,7 @@ void GenAlbQToolButton::generarFactura1()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado" ), this );
+        mensajeInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -250,7 +250,7 @@ void GenAlbQToolButton::generarFactura2()
 {
     _depura ( "GenAlbQToolButton::generarFactura2", 0 );
 
-	PresupuestoView *fpv = (PresupuestoView *) m_object;
+    PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
 
     AlbaranClienteView *bud = NULL;
@@ -269,7 +269,7 @@ void GenAlbQToolButton::generarFactura2()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
+                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -284,9 +284,9 @@ void GenAlbQToolButton::generarFactura2()
             /// Informamos que ya hay un albaran y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         _( "Factura ya existe" ),
-                                         _( "Existe una albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
-                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
+                                         _ ( "Factura ya existe" ),
+                                         _ ( "Existe una albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?" ),
+                                         _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
             bud = new AlbaranClienteView ( fpv->mainCompany(), NULL );
@@ -298,7 +298,7 @@ void GenAlbQToolButton::generarFactura2()
         delete cur;
 
         /// Creamos el albaran.
-        bud = new AlbaranClienteView((BfCompany *) fpv->mainCompany(), 0);
+        bud = new AlbaranClienteView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( "0" );
 
@@ -352,7 +352,7 @@ void GenAlbQToolButton::generarFactura2()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado" ), this );
+        mensajeInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

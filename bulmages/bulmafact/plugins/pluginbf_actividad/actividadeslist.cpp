@@ -128,7 +128,7 @@ QString ActividadesList::generaFiltro()
 void ActividadesList::crear()
 {
     _depura ( "ActividadesList::crear", 0 );
-    ActividadView *bud = new ActividadView( (BfCompany *) mainCompany(), 0);
+    ActividadView *bud = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -141,7 +141,7 @@ void ActividadesList::crear()
 void ActividadesList::imprimir()
 {
     _depura ( "ActividadesList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Actividades" ) );
+    mui_list->imprimirPDF ( _ ( "Actividades" ) );
     _depura ( "END ActividadesList::imprimir", 0 );
 }
 
@@ -157,13 +157,13 @@ void ActividadesList::borrar()
     _depura ( "ActividadesList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
-            ActividadView * cv = new ActividadView( (BfCompany *) mainCompany(), 0);
+            ActividadView * cv = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idactividad ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -171,7 +171,7 @@ void ActividadesList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:ActividadesList::borrar", 0 );
 }
@@ -187,7 +187,7 @@ void ActividadesList::editar ( int )
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
-            ActividadView * bud = new ActividadView( (BfCompany *) mainCompany(), 0);
+            ActividadView * bud = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( mdb_idactividad ) ) {
                 delete bud;
                 return;
@@ -198,7 +198,7 @@ void ActividadesList::editar ( int )
             emit ( selected ( mdb_idactividad ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END ActividadesList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -214,8 +214,8 @@ void ActividadesList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar Actividad" ) );
-    QAction *del = popup->addAction ( _( "Borrar Actividad" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar Actividad" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar Actividad" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -259,8 +259,8 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm (
         return;
     setDbTableName ( "actividad" );
     setDbFieldId ( "idactividad" );
-    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Actividad" ) );
-    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Actividad" ) );
+    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

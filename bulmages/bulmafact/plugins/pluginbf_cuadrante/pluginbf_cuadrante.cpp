@@ -129,8 +129,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_cuadrante", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_cuadrante", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bges );
@@ -243,11 +243,11 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     l->setMainCompany ( trab->mainCompany() );
     l->setDbTableName ( "ausencia" );
     l->setDbFieldId ( "idausencia" );
-    l->addSubFormHeader ( "fechainausencia", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _( "Fecha inicial ausencia" ) );
-    l->addSubFormHeader ( "fechafinausencia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Fecha final ausencia" ) );
-    l->addSubFormHeader ( "motivoausencia", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone , _( "Motivo" ) );
-    l->addSubFormHeader ( "idausencia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID ausencia" ) );
-    l->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
+    l->addSubFormHeader ( "fechainausencia", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _ ( "Fecha inicial ausencia" ) );
+    l->addSubFormHeader ( "fechafinausencia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Fecha final ausencia" ) );
+    l->addSubFormHeader ( "motivoausencia", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Motivo" ) );
+    l->addSubFormHeader ( "idausencia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID ausencia" ) );
+    l->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

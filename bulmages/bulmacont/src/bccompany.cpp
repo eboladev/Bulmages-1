@@ -209,14 +209,14 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 
         /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
         /// pb = 0%
-        splash->mensaje ( _( "Inicializando extracto" ) );
+        splash->mensaje ( _ ( "Inicializando extracto" ) );
         splash->setBarraProgreso ( 7 );
         m_progressbar->setValue ( 0 );
         extracto = new extractoview1 ( this, 0 );
         m_pWorkspace->addWindow ( extracto );
 
         /// pb = 20%
-        splash->mensaje ( _( "Inicializando diario" ) );
+        splash->mensaje ( _ ( "Inicializando diario" ) );
         splash->setBarraProgreso ( 20 );
         m_progressbar->setValue ( 20 );
         diario = new DiarioView ( this, 0 );
@@ -239,14 +239,14 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         */
 
         /// pb = 60%
-        splash->mensaje ( _( "Inicializando asientos" ) );
+        splash->mensaje ( _ ( "Inicializando asientos" ) );
         splash->setBarraProgreso ( 60 );
         m_progressbar->setValue ( 60 );
         introapunts2 = new Asiento1View ( this, 0 );
         m_pWorkspace->addWindow ( introapunts2 );
 
         /// pb = 75%
-        splash->mensaje ( _( "Inicializando asientos" ) );
+        splash->mensaje ( _ ( "Inicializando asientos" ) );
         splash->setBarraProgreso ( 75 );
         m_progressbar->setValue ( 75 );
         m_listasientos = new AsientosView ( this );
@@ -254,7 +254,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         m_pWorkspace->addWindow ( m_listasientos );
 
         /// pb = 90%
-        splash->mensaje ( _( "Inicializando cuentas" ) );
+        splash->mensaje ( _ ( "Inicializando cuentas" ) );
         splash->setBarraProgreso ( 90 );
         m_progressbar->setValue ( 90 );
         m_listcuentas = new listcuentasview1 ( this, 0 );
@@ -262,7 +262,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         m_pWorkspace->addWindow ( m_listcuentas );
 
         /// pb = 100%
-        splash->mensaje ( _( "Terminado" ) );
+        splash->mensaje ( _ ( "Terminado" ) );
         splash->setBarraProgreso ( 100 );
         m_progressbar->setValue ( 100 );
 
@@ -701,7 +701,7 @@ void BcCompany::abrirAsientos()
     BlDbRecordSet *cur = NULL;
     try {
         cur = loadQuery ( "SELECT abreasientos()" );
-        g_main->statusBar() ->showMessage ( _( "Se han espaciado los asientos" ), 2000 );
+        g_main->statusBar() ->showMessage ( _ ( "Se han espaciado los asientos" ), 2000 );
         delete cur;
         _depura ( "END BcCompany::Abrirasientos", 0 );
     } catch ( ... ) {
@@ -721,7 +721,7 @@ void BcCompany::cerrarAsientos()
     BlDbRecordSet *cur = NULL;
     try {
         cur = loadQuery ( "SELECT cierraasiento(idasiento) FROM asiento" );
-        g_main->statusBar() ->showMessage ( _( "Se han cerrado los asientos" ), 2000 );
+        g_main->statusBar() ->showMessage ( _ ( "Se han cerrado los asientos" ), 2000 );
         delete cur;
         _depura ( "END BcCompany::cerrarAsientos", 0 );
     } catch ( ... ) {
@@ -741,7 +741,7 @@ void BcCompany::Ordenarasientos()
     BlDbRecordSet *cur = NULL;
     try {
         cur = loadQuery ( query );
-        g_main->statusBar() ->showMessage ( _( "Se han ordenado los asientos" ), 2000 );
+        g_main->statusBar() ->showMessage ( _ ( "Se han ordenado los asientos" ), 2000 );
         delete cur;
         _depura ( "END BcCompany::Ordenarasientos", 10 );
     } catch ( ... ) {
@@ -778,7 +778,7 @@ void BcCompany::cierraempresa()
 
     bool ok;
     QString text = QInputDialog::getText ( 0,
-                                           _( "Fecha inicial" ), _( "Fecha inicial ejercicio:" ), QLineEdit::Normal,
+                                           _ ( "Fecha inicial" ), _ ( "Fecha inicial ejercicio:" ), QLineEdit::Normal,
                                            finicial, &ok );
     if ( ok && !text.isEmpty() ) {
         finicial = text;
@@ -787,7 +787,7 @@ void BcCompany::cierraempresa()
     } // end if
 
     QString text1 = QInputDialog::getText ( 0,
-                                            _( "Fecha final" ), _( "Fecha final ejercicio:" ), QLineEdit::Normal,
+                                            _ ( "Fecha final" ), _ ( "Fecha final ejercicio:" ), QLineEdit::Normal,
                                             hoy, &ok );
     if ( ok && !text1.isEmpty() ) {
         hoy = text1;
@@ -812,7 +812,7 @@ void BcCompany::abreempresa()
 
     bool ok;
     QString text1 = QInputDialog::getText ( 0,
-                                            _( "Fecha" ), _( "Fecha:" ), QLineEdit::Normal,
+                                            _ ( "Fecha" ), _ ( "Fecha:" ), QLineEdit::Normal,
                                             hoy, &ok );
     if ( ok && !text1.isEmpty() ) {
         hoy = text1;
@@ -837,7 +837,7 @@ void BcCompany::regularizaempresa()
 
     bool ok;
     QString text = QInputDialog::getText ( 0,
-                                           _( "Fecha inicial" ), _( "Fecha inicial regularizacion:" ), QLineEdit::Normal,
+                                           _ ( "Fecha inicial" ), _ ( "Fecha inicial regularizacion:" ), QLineEdit::Normal,
                                            finicial, &ok );
     if ( ok && !text.isEmpty() ) {
         finicial = text;
@@ -846,7 +846,7 @@ void BcCompany::regularizaempresa()
     } // end if
 
     QString text1 = QInputDialog::getText ( 0,
-                                            _( "Fecha final" ), _( "Fecha final regularizacion:" ), QLineEdit::Normal,
+                                            _ ( "Fecha final" ), _ ( "Fecha final regularizacion:" ), QLineEdit::Normal,
                                             hoy, &ok );
     if ( ok && !text1.isEmpty() ) {
         hoy = text1;
@@ -905,8 +905,8 @@ void BcCompany::reemplazacuentaenasientos()
 void BcCompany::recalculasaldos()
 {
     _depura ( "BcCompany::recalculasaldos", 0 );
-	mensajeInfo("recalcular Saldos");
-    BlDbRecordSet *cur = loadQuery("SELECT recalculasaldos()");
+    mensajeInfo ( "recalcular Saldos" );
+    BlDbRecordSet *cur = loadQuery ( "SELECT recalculasaldos()" );
     delete cur;
     _depura ( "END BcCompany::recalculasaldos", 0 );
 }
@@ -965,9 +965,9 @@ void BcCompany::guardaConf()
 {
     _depura ( "BcCompany::guardaConf", 0 );
 
-	/// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
-	/// guardamos la configuracion.
-	if (!m_bulmacont) return;
+    /// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
+    /// guardamos la configuracion.
+    if ( !m_bulmacont ) return;
 
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
@@ -980,7 +980,7 @@ void BcCompany::guardaConf()
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmacont->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmacont->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmacont->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
-		stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString(m_bulmacont->saveState().toBase64()) + "</TOOLBARSDOCKWIDGETS>\n";
+        stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmacont->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
         stream << "\t</PRINCIPAL>\n";
 
 
@@ -1014,9 +1014,9 @@ void BcCompany::cargaConf()
     _depura ( "BcCompany::cargaConf", 0 );
 
 
-	/// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
-	/// guardamos la configuracion.
-	if (!m_bulmacont) return;
+    /// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
+    /// guardamos la configuracion.
+    if ( !m_bulmacont ) return;
 
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
@@ -1058,7 +1058,7 @@ void BcCompany::cargaConf()
     } // end if
 
     /// Cogemos el ancho del indexador
-    m_bulmacont->restoreState( QByteArray::fromBase64(QByteArray(principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii())) );
+    m_bulmacont->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
 
 
     /// Tratamos cada ventana

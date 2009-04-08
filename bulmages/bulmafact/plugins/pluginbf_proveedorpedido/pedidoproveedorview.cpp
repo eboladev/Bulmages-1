@@ -48,22 +48,22 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( _( "Pedido Proveedor" ) );
+        setTitleName ( _ ( "Pedido Proveedor" ) );
         setDbTableName ( "pedidoproveedor" );
         setDbFieldId ( "idpedidoproveedor" );
-        addDbField ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id pedido proveedor" ) );
-        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id almacen" ) );
-        addDbField ( "numpedidoproveedor", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero pedido proveedor" ) );
-        addDbField ( "fechapedidoproveedor", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha pedido proveedor" ) );
-        addDbField ( "comentpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario pedido" ) );
-        addDbField ( "procesadopedidoproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Pedido procesado" ) );
-        addDbField ( "descpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion pedido" ) );
-        addDbField ( "refpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia pedido" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
-        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _( "Id trabajador" ) );
-        addDbField ( "contactpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Persona de contacto proveedor" ) );
-        addDbField ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono proveedor" ) );
+        addDbField ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id pedido proveedor" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id proveedor" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id almacen" ) );
+        addDbField ( "numpedidoproveedor", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero pedido proveedor" ) );
+        addDbField ( "fechapedidoproveedor", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha pedido proveedor" ) );
+        addDbField ( "comentpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentario pedido" ) );
+        addDbField ( "procesadopedidoproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Pedido procesado" ) );
+        addDbField ( "descpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion pedido" ) );
+        addDbField ( "refpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia pedido" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id forma de pago" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id trabajador" ) );
+        addDbField ( "contactpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Persona de contacto proveedor" ) );
+        addDbField ( "telpedidoproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono proveedor" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PedidoProveedorView_PedidoProveedorView", this );
@@ -85,11 +85,11 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idtrabajador->setId ( "0" );
         mui_refpedidoproveedor->setMainCompany ( comp );
 
-	/// Establecemos los parametros de busqueda del Cliente
-	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
-	mui_idproveedor->setTableName( "proveedor" );
-	mui_idproveedor->m_valores["cifproveedor"] = "";
-	mui_idproveedor->m_valores["nomproveedor"] = "";
+        /// Establecemos los parametros de busqueda del Cliente
+        mui_idproveedor->setLabel ( _ ( "Proveedor:" ) );
+        mui_idproveedor->setTableName ( "proveedor" );
+        mui_idproveedor->m_valores["cifproveedor"] = "";
+        mui_idproveedor->m_valores["nomproveedor"] = "";
 
         setListaLineas ( mui_lineasDetalle );
         setListaDescuentos ( mui_descuentos );
@@ -97,7 +97,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el pedido a proveedor" ), this );
+        mensajeInfo ( _ ( "Error al crear el pedido a proveedor" ), this );
     } // end try
     _depura ( "END PedidoProveedorView::PedidoProveedorView", 0 );
 }
@@ -236,7 +236,7 @@ void PedidoProveedorView::imprimir()
 
         if ( dbValue ( "idproveedor" ).isEmpty() ) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+            mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
             return;
         } else {
             SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" );
@@ -278,7 +278,7 @@ void PedidoProveedorView::imprimir()
         file.close();
         QString fitxersortidatxt = "";
 
-        substrConf(buff);
+        substrConf ( buff );
 
         /// Linea de totales del pedido.
         cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -335,9 +335,9 @@ void PedidoProveedorView::imprimir()
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "        <td>" + _( "Descuento" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + _( "Porcentaje" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + _( "Total" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + _ ( "Descuento" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + _ ( "Porcentaje" ) + "</td>\n";
+            fitxersortidatxt += "        <td>" + _ ( "Total" ) + "</td>\n";
             fitxersortidatxt += "</tr>\n";
             for ( int i = 0; i < m_listadescuentos->rowCount() - 1; ++i ) {
                 linea1 = m_listadescuentos->lineaat ( i );
@@ -367,7 +367,7 @@ void PedidoProveedorView::imprimir()
                 parbaseimp = it.value();
             } // end if
             totbaseimp = totbaseimp + parbaseimp;
-            tr1 += "        <td>" + _( "Base " ) + it.key() + " %</td>\n";
+            tr1 += "        <td>" + _ ( "Base " ) + it.key() + " %</td>\n";
             tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
         } // end for
 
@@ -380,10 +380,10 @@ void PedidoProveedorView::imprimir()
                 pariva = it.value() * BlFixed ( it.key() ) / 100;
             } // end if
             totiva = totiva + pariva;
-            tr1 += "        <td>" + _( "Iva " ) + it.key() + " %</td>\n";
+            tr1 += "        <td>" + _ ( "Iva " ) + it.key() + " %</td>\n";
             tr2 += "        <td>" + l.sprintf ( "%s", pariva.toQString().toAscii().constData() ) + "</td>\n";
         } // end for
-        tr1 += "        <td>" + _( "Total " ) + " </td>\n";
+        tr1 += "        <td>" + _ ( "Total " ) + " </td>\n";
         tr2 += "        <td>" + l.sprintf ( "%s", ( totiva + totbaseimp ).toQString().toAscii().constData() ) + "</td>\n";
         fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
         buff.replace ( "[totales]", fitxersortidatxt );

@@ -54,9 +54,9 @@ MyPlugAlm::~MyPlugAlm()
 void MyPlugAlm::elslot1()
 {
     _depura ( "MyPlugAlm::elslot1", 0 );
-        ListAlmacenView * bud = new ListAlmacenView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugAlm::elslot1", 0 );
 }
 
@@ -72,20 +72,20 @@ void MyPlugAlm::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->menuMaestro;
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Almacenes" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Almacenes" ) );
-	planCuentas->setWhatsThis ( _( "Almacenes" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Almacenes" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Almacenes" ) );
+        planCuentas->setWhatsThis ( _ ( "Almacenes" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
     _depura ( "END MyPlugAlm::inicializa", 0 );
@@ -105,8 +105,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_Almacen", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_Almacen", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugAlm *plug = new MyPlugAlm();
     plug->inicializa ( bges );
@@ -117,9 +117,9 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewAlmacenView (BfCompany *v)
+int SNewAlmacenView ( BfCompany *v )
 {
-	ListAlmacenView *h = new ListAlmacenView(v, 0);
-	g_plugParams = h;
-	return 1;
+    ListAlmacenView *h = new ListAlmacenView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }

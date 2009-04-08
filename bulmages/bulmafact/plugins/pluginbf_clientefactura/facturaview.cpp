@@ -55,24 +55,24 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setTitleName ( _( "Factura" ) );
+        setTitleName ( _ ( "Factura" ) );
         setDbTableName ( "factura" );
         setDbFieldId ( "idfactura" );
-        addDbField ( "idfactura", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id factura" ) );
-        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Cliente" ) );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Almacen" ) );
-        addDbField ( "numfactura", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero factura" ) );
-        addDbField ( "ffactura", BlDbField::DbDate, BlDbField::DbNothing, _( "Ffactura" ) );
-        addDbField ( "procesadafactura", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Procesada factura" ) );
-        addDbField ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Serie" ) );
-        addDbField ( "comentfactura", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario" ) );
-        addDbField ( "reffactura", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
-        addDbField ( "descfactura", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion" ) );
-        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _( "Trabajador" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Forma de pago" ) );
+        addDbField ( "idfactura", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id factura" ) );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Cliente" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Almacen" ) );
+        addDbField ( "numfactura", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero factura" ) );
+        addDbField ( "ffactura", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Ffactura" ) );
+        addDbField ( "procesadafactura", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Procesada factura" ) );
+        addDbField ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Serie" ) );
+        addDbField ( "comentfactura", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentario" ) );
+        addDbField ( "reffactura", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+        addDbField ( "descfactura", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de pago" ) );
 
         /// Establecemos algunos Buddies.
-        mui_labelAlmacen->setText ( _( "Al&macen" ) );
+        mui_labelAlmacen->setText ( _ ( "Al&macen" ) );
         mui_labelAlmacen->setBuddy ( mui_idalmacen );
 
         /// Disparamos los plugins.
@@ -92,13 +92,13 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 
-		/// Establecemos los parametros de busqueda del Cliente
-		mui_idcliente->setLabel ( _( "Cliente:" ) );
-		mui_idcliente->setTableName( "cliente" );
-		mui_idcliente->m_valores["cifcliente"] = "";
-		mui_idcliente->m_valores["nomcliente"] = "";
+        /// Establecemos los parametros de busqueda del Cliente
+        mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+        mui_idcliente->setTableName ( "cliente" );
+        mui_idcliente->m_valores["cifcliente"] = "";
+        mui_idcliente->m_valores["nomcliente"] = "";
 
-	/// Establecemos valores por defecto en los combo boxes para que no se queden sin inicializar.
+        /// Establecemos valores por defecto en los combo boxes para que no se queden sin inicializar.
         mui_idalmacen->setId ( "" );
         mui_codigoserie_factura->setId ( "" );
         mui_idforma_pago->setId ( "" );
@@ -113,7 +113,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         m_totalfactura->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear la factura" ), this );
+        mensajeInfo ( _ ( "Error al crear la factura" ), this );
     }
     _depura ( "END FacturaView::FacturaView" );
 }
@@ -204,7 +204,7 @@ void FacturaView::on_mui_agregaralbaran_clicked()
     bud->cargar ( idalbaran );
 
     /// Agregamos a comentarios que albaran se corresponde.
-    QString comm = dbValue ( "comentfactura" ) + "(" + _( "ALBARAN: Num " ) + bud->dbValue ( "numalbaran" ) + _( "Ref:" ) + " " + bud->dbValue ( "refalbaran" ) + _( "Fecha:" ) + " " + bud->dbValue ( "fechaalbaran" ) + ")\n";
+    QString comm = dbValue ( "comentfactura" ) + "(" + _ ( "ALBARAN: Num " ) + bud->dbValue ( "numalbaran" ) + _ ( "Ref:" ) + " " + bud->dbValue ( "refalbaran" ) + _ ( "Fecha:" ) + " " + bud->dbValue ( "fechaalbaran" ) + ")\n";
 
     setDbValue ( "comentfactura", comm );
     pintar();
@@ -261,11 +261,11 @@ void FacturaView::on_mui_veralbaranes_clicked()
                 cur->nextRecord();
             } // end while
         } else {
-            mensajeInfo ( _( "No hay albaranes con esta referencia" ), this );
+            mensajeInfo ( _ ( "No hay albaranes con esta referencia" ), this );
         } // end if
         delete cur;
     } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado" ), this );
+        mensajeInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

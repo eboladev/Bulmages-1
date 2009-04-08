@@ -50,12 +50,12 @@ int entryPoint ( Bulmacont *bcont )
     _depura ( "Entrada del plugin ResumCta", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginresumcta", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginresumcta", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    BlDockWidget *doc1 = new BlDockWidget ( _("Resumen cuenta"), bcont );
+    BlDockWidget *doc1 = new BlDockWidget ( _ ( "Resumen cuenta" ), bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );
@@ -73,11 +73,11 @@ int entryPoint ( Bulmacont *bcont )
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    viewCorrector = new QAction ( _("&Resumen Cta"), 0 );
+    viewCorrector = new QAction ( _ ( "&Resumen Cta" ), 0 );
     viewCorrector->setCheckable ( TRUE );
     viewCorrector->setChecked ( TRUE );
-    viewCorrector->setStatusTip ( _("Muestra/oculta el resumen de cuenta") );
-    viewCorrector->setWhatsThis ( _("Corrector.\n\nMuestra/oculta el corrector") );
+    viewCorrector->setStatusTip ( _ ( "Muestra/oculta el resumen de cuenta" ) );
+    viewCorrector->setWhatsThis ( _ ( "Corrector.\n\nMuestra/oculta el corrector" ) );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( cambiaVisible ( bool ) ) );
     QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), viewCorrector, SLOT ( setChecked ( bool ) ) );
 

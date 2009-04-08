@@ -98,11 +98,11 @@ void libromayorprint::accept()
     mifile = fopen ( "mayor.txt", "wt" );
     if ( mifile != NULL ) {
         mainCompany() ->begin();
-        cursoraux = mainCompany() -> loadQuery("SELECT * FROM cuenta WHERE codigo >= '"+ codinicial +"' AND codigo <= '"+ codfinal +"' ORDER BY codigo");
+        cursoraux = mainCompany() -> loadQuery ( "SELECT * FROM cuenta WHERE codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo" );
         while ( !cursoraux->eof() ) {
             idcuenta = atoi ( cursoraux->valor ( "idcuenta" ).toAscii() );
 
-            QString query = "SELECT * FROM apunte where idcuenta = "+cursoraux->valor("idcuenta")+" AND fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' ORDER BY fecha";
+            QString query = "SELECT * FROM apunte where idcuenta = " + cursoraux->valor ( "idcuenta" ) + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' ORDER BY fecha";
             cursoraux1 = mainCompany() ->loadQuery ( query );
             if ( !cursoraux1->eof() ) {
                 activo = strcmp ( ( char * ) cursoraux->valor ( 13 ).toAscii().constData() , "f" );
@@ -112,7 +112,7 @@ void libromayorprint::accept()
                 } else {
                     fprintf ( mifile, " Cuenta de Pasivo\n" );
                 } // end if
-                cursoraux2 = mainCompany() ->loadQuery("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = "+ cursoraux->valor ( "idcuenta" ) +" AND fecha <'"+ finicial +"'");
+                cursoraux2 = mainCompany() ->loadQuery ( "SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = " + cursoraux->valor ( "idcuenta" ) + " AND fecha <'" + finicial + "'" );
                 if ( !cursoraux2->eof() ) {
                     debeinicial = BlFixed ( cursoraux2->valor ( 0 ).toAscii().constData() );
                     haberinicial = BlFixed ( cursoraux2->valor ( 1 ).toAscii().constData() );

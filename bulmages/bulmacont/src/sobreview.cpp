@@ -39,7 +39,7 @@ sobreview::sobreview ( QWidget *parent ) : QDialog ( parent )
     QString str_licencia;
     setupUi ( this );
 
-    mui_lbversion->setText ( mui_lbversion->text() + " " + _( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
+    mui_lbversion->setText ( mui_lbversion->text() + " " + _ ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Contabilidad GPL</h2></center>";
 

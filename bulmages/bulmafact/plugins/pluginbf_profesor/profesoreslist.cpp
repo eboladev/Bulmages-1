@@ -128,7 +128,7 @@ QString ProfesoresList::generaFiltro()
 void ProfesoresList::crear()
 {
     _depura ( "ProfesoresList::crear", 0 );
-    ProfesorView *bud = new ProfesorView( (BfCompany *) mainCompany(), 0);
+    ProfesorView *bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -141,7 +141,7 @@ void ProfesoresList::crear()
 void ProfesoresList::imprimir()
 {
     _depura ( "ProfesoresList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Profesores" ) );
+    mui_list->imprimirPDF ( _ ( "Profesores" ) );
     _depura ( "END ProfesoresList::imprimir", 0 );
 }
 
@@ -157,13 +157,13 @@ void ProfesoresList::borrar()
     _depura ( "ProfesoresList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
         mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
         if ( modoEdicion() ) {
-            ProfesorView * cv = new ProfesorView( (BfCompany *) mainCompany(), 0);
+            ProfesorView * cv = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idprofesor ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -171,7 +171,7 @@ void ProfesoresList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:ProfesoresList::borrar", 0 );
 }
@@ -187,7 +187,7 @@ void ProfesoresList::editar ( int )
     try {
         mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
         if ( modoEdicion() ) {
-            ProfesorView * bud = new ProfesorView( (BfCompany *) mainCompany(), 0);
+            ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( mdb_idprofesor ) ) {
                 delete bud;
                 return;
@@ -198,7 +198,7 @@ void ProfesoresList::editar ( int )
             emit ( selected ( mdb_idprofesor ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END ProfesoresList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -214,8 +214,8 @@ void ProfesoresList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar profesor" ) );
-    QAction *del = popup->addAction ( _( "Borrar profesor" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar profesor" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar profesor" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -259,8 +259,8 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
         return;
     setDbTableName ( "profesor" );
     setDbFieldId ( "idprofesor" );
-    addSubFormHeader ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id profesor" ) );
-    addSubFormHeader ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id profesor" ) );
+    addSubFormHeader ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

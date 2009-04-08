@@ -113,10 +113,10 @@ void Mod300ps::accept()
 
     if ( !ccc->cuentaesvalida() ) {
         switch ( QMessageBox::warning ( this,
-                                        _( "Formulario 300" ),
-                                        _( "Aviso: El numero de cuenta bancario introducido\n"
-                                                      "no se corresponde con un CCC correcto." ),
-                                        _( "Generar de todas formas" ), _( "Volver" ), 0,
+                                        _ ( "Formulario 300" ),
+                                        _ ( "Aviso: El numero de cuenta bancario introducido\n"
+                                            "no se corresponde con un CCC correcto." ),
+                                        _ ( "Generar de todas formas" ), _ ( "Volver" ), 0,
                                         0, 1 ) ) {
         case 0:
             generaps();
@@ -152,12 +152,12 @@ void Mod300ps::generaps()
     bool doit = true;
     if ( !QFile::exists ( pdfname ) ) {
         QMessageBox::warning ( this,
-                               _( "Formulario 300" ),
-                               _( "Lo siento, no encuentro el formulario original en pdf.\n"
-                                             "Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
-                                             "/usr/share/bulmages/formularios/ o en\n"
-                                             "~/.bulmages/formularios/." ),
-                               _( "&Aceptar" ), 0, 0, 0, 1 );
+                               _ ( "Formulario 300" ),
+                               _ ( "Lo siento, no encuentro el formulario original en pdf.\n"
+                                   "Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
+                                   "/usr/share/bulmages/formularios/ o en\n"
+                                   "~/.bulmages/formularios/." ),
+                               _ ( "&Aceptar" ), 0, 0, 0, 1 );
         doit = false;
     } // end if
 
@@ -167,7 +167,7 @@ void Mod300ps::generaps()
             command = "pdftops " + pdfname + " " + tempname;
             system ( command.toAscii().constData() );
         } else {
-            Psprogressdialog progress ( _( "Creando formulario" ), _( "&Cancelar" ), 0, 50, this, 0 );
+            Psprogressdialog progress ( _ ( "Creando formulario" ), _ ( "&Cancelar" ), 0, 50, this, 0 );
             this->convierte_a_postscript = new Genps_thread ( pdfname, tempname, &progress );
             progress.setValue ( 0 );
 

@@ -97,8 +97,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("plugintrazabilidad", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "plugintrazabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
@@ -171,18 +171,18 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
     _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
 
     /*
-     
+
         if(subform->m_prevRow == -1 || subform->m_prevCol == -1) {
      return 0;
         } // end if
-     
+
         BlDbSubFormRecord *rec = subform->lineaat(subform->m_prevRow);
         BlDbSubFormField *camp = (BlDbSubFormField *) subform->item(subform->m_prevRow, subform->m_prevCol);
         BlDbSubFormField *campact = (BlDbSubFormField *) subform->item(subform->currentRow(), subform->currentColumn());
         camp->refresh();
-     
-     
-     
+
+
+
         if (camp->nomcampo() == "lote"+subform->tableName()) {
      QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
      BlDbRecordSet *cur = subform->mainCompany()->loadQuery(query);
@@ -199,7 +199,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
      } // end if
      delete cur;
         } // end if
-     
+
     */
     return 0;
 

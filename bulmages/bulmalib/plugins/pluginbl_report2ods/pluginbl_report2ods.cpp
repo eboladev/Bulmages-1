@@ -72,21 +72,21 @@ void MyPluginInformesODS::elslot1( )
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
-    if (!ficha->generaRML ( sender()->objectName() )) return;
+    if ( !ficha->generaRML ( sender()->objectName() ) ) return;
 
     QString archivod = sender()->objectName();
     QString archivo =  sender()->objectName().left ( sender()->objectName().size() - 4 );
-    invocaPYS(archivo);
+    invocaPYS ( archivo );
 
-/*
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + archivo + ".ods";
-    system ( cadena.toAscii() );
+    /*
+        QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + archivo + ".ods";
+        system ( cadena.toAscii() );
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
-    system ( cadena.toAscii() );
-    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + archivo + ".ods &";
-    system ( cadena.toAscii() );
-*/
+        cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+        system ( cadena.toAscii() );
+        cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + archivo + ".ods &";
+        system ( cadena.toAscii() );
+    */
 
     delete ficha;
     _depura ( "END MyPluginInformesODS::elslot", 0 );
@@ -98,8 +98,8 @@ int entryPoint ( QMainWindow *bges )
     _depura ( "Entrada del plugin Docket", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_report2ods", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_report2ods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges = bges;
 
@@ -111,10 +111,10 @@ int entryPoint ( QMainWindow *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-	QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
-	pPluginMenu = new QMenu ( _("Informes &ODS"), bges->menuBar() );
-	pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
-	bges->menuBar()->insertMenu(pPluginVer->menuAction(), pPluginMenu);
+        QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
+        pPluginMenu = new QMenu ( _ ( "Informes &ODS" ), bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
+        bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
     } // end if
 
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -149,8 +149,8 @@ int entryPoint ( QMainWindow *bges )
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( titulo, 0 );
         accion->setObjectName ( fileInfo.fileName() );
-        accion->setStatusTip ( _("Informe") );
-        accion->setWhatsThis ( _("Informe") );
+        accion->setStatusTip ( _ ( "Informe" ) );
+        accion->setWhatsThis ( _ ( "Informe" ) );
         mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
         pPluginMenu->addAction ( accion );
     } // end for

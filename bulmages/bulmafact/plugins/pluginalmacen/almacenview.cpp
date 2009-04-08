@@ -51,29 +51,29 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "AlmacenView_AlmacenView", this ) ) return;
 
-        setTitleName ( _( "Almacen" ) );
+        setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );
         setDbFieldId ( "idalmacen" );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID almacen" ) );
-        addDbField ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo almacen" ) );
-        addDbField ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull  , _( "Nombre almacen" ) );
-        addDbField ( "diralmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion almacen" ) );
-        addDbField ( "poblalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Poblacion almacen" ) );
-        addDbField ( "cpalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo postal" ) );
-        addDbField ( "telalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono almacen" ) );
-        addDbField ( "faxalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Fax almacen" ) );
-        addDbField ( "emailalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "email almacen" ) );
-        addDbField ( "fechaalmacen", BlDbField::DbDate, BlDbField::DbNoSave, _( "Fecha almacen" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID almacen" ) );
+        addDbField ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo almacen" ) );
+        addDbField ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull  , _ ( "Nombre almacen" ) );
+        addDbField ( "diralmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion almacen" ) );
+        addDbField ( "poblalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Poblacion almacen" ) );
+        addDbField ( "cpalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo postal" ) );
+        addDbField ( "telalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono almacen" ) );
+        addDbField ( "faxalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Fax almacen" ) );
+        addDbField ( "emailalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "email almacen" ) );
+        addDbField ( "fechaalmacen", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha almacen" ) );
 
 
-        addDbField ( "tipoalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Tipo almacen" ) );
+        addDbField ( "tipoalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Tipo almacen" ) );
         mui_tipoalmacen_t->setFieldValue ( "Tienda" );
         mui_tipoalmacen_a->setFieldValue ( "Almacen" );
 
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el almacen" ) );
+        mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END AlmacenView::AlmacenView", 0 );
 }

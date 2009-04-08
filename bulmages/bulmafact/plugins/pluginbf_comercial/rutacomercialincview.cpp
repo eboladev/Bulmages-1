@@ -75,9 +75,9 @@ void RutaComercialIncView::on_mui_borrar_clicked()
 {
     _depura ( "RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
     if ( QMessageBox::warning ( this,
-                                _( "BulmaFact - Rutas comerciales" ),
-                                _( "Desea borrar esta ruta?" ),
-                                _( "&Si" ), _( "&No" ) ) == 0 ) {
+                                _ ( "BulmaFact - Rutas comerciales" ),
+                                _ ( "Desea borrar esta ruta?" ),
+                                _ ( "&Si" ), _ ( "&No" ) ) == 0 ) {
         mui_rutacomercial->borrar();
         mui_incidenciacomercial->borrar();
     } // end if
@@ -127,7 +127,7 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
     _depura ( "RutaComercialIncView::cargar", 0 );
     int err = mui_rutacomercial->cargar ( id );
     err = mui_incidenciacomercial->cargar ( id1 );
-    setWindowTitle ( _( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
+    setWindowTitle ( _ ( "Accion comercial" ) + " " + mui_rutacomercial->dbValue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->dbValue ( "idincidenciacomercial" ) );
     meteWindow ( windowTitle(), this );
     _depura ( "END RutaComercialIncView::cargar", 0 );
     return err;

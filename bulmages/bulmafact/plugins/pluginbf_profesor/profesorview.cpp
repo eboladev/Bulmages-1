@@ -45,28 +45,28 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _( "Profesor" ) );
+        setTitleName ( _ ( "Profesor" ) );
         setDbTableName ( "profesor" );
         setDbFieldId ( "idprofesor" );
-        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID profesor" ) );
-        addDbField ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del profesor" ) );
+        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID profesor" ) );
+        addDbField ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del profesor" ) );
 
 
         /// Datos por defecto.
-	mui_idprovincia->setMainCompany ( mainCompany() );
-    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
-    mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setFieldId ("idprovincia");
-    mui_idprovincia->m_valores["provincia"] = "";
-    mui_idprovincia->m_valores["descpais"] = "";
-    mui_idprovincia->setAllowNull(TRUE);
+        mui_idprovincia->setMainCompany ( mainCompany() );
+        mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
+        mui_idprovincia->setTableName ( "provincia" );
+        mui_idprovincia->setFieldId ( "idprovincia" );
+        mui_idprovincia->m_valores["provincia"] = "";
+        mui_idprovincia->m_valores["descpais"] = "";
+        mui_idprovincia->setAllowNull ( TRUE );
         mui_idprovincia->setId ( "" );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el profesor" ), this );
+        mensajeInfo ( _ ( "Error al crear el profesor" ), this );
     } // end try
     _depura ( "END ProfesorView::ProfesorView", 0 );
 }
@@ -81,9 +81,9 @@ ProfesorView::~ProfesorView()
 }
 
 
-QString ProfesorView::nombrePlantilla(void) 
+QString ProfesorView::nombrePlantilla ( void )
 {
-   return QString("recibo");
+    return QString ( "recibo" );
 }
 
 void ProfesorView::imprimir()
@@ -94,9 +94,9 @@ void ProfesorView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
-    } 
+    }
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
@@ -108,10 +108,11 @@ void ProfesorView::imprimir()
 }
 
 
-int ProfesorView::guardarPost() {
-	_depura(" ProfesorView::guardarPost", 0);
+int ProfesorView::guardarPost()
+{
+    _depura ( " ProfesorView::guardarPost", 0 );
 
-	_depura("END ProfesorView::guardarPost", 0);
+    _depura ( "END ProfesorView::guardarPost", 0 );
 
 }
 

@@ -69,18 +69,18 @@ void myplugin::elslot()
 {
     _depura ( "myplugin::elslot", 0 );
     bool ok;
-    QString text = QInputDialog::getText ( 0, _( "QInputDialog::getText()" ),
-                                           _( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
+    QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),
+                                           _ ( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
     if ( ok && !text.isEmpty() ) {
         QStringList listaelem = text.split ( " " );
         if ( listaelem.at ( 0 ) == QString ( "FAC" ) ) {
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewFacturaView", ( BfCompany * ) mainCompany());
-				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de factura");
-					return;
-				} // end if
-				FacturaView *prov = (FacturaView *) g_plugParams;
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+            if ( !resur ) {
+                mensajeInfo ( "no se pudo crear instancia de factura" );
+                return;
+            } // end if
+            FacturaView *prov = ( FacturaView * ) g_plugParams;
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;
@@ -88,13 +88,13 @@ void myplugin::elslot()
             mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewPresupuestoView", ( BfCompany * ) mainCompany());
-				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de pedido cliente");
-					return;
-				} // end if
-            PresupuestoView * prov =  (PresupuestoView *) g_plugParams;
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewPresupuestoView", ( BfCompany * ) mainCompany() );
+            if ( !resur ) {
+                mensajeInfo ( "no se pudo crear instancia de pedido cliente" );
+                return;
+            } // end if
+            PresupuestoView * prov =  ( PresupuestoView * ) g_plugParams;
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;
@@ -102,13 +102,13 @@ void myplugin::elslot()
             mainCompany() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewPedidoClienteView", ( BfCompany * ) mainCompany());
-				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de pedido cliente");
-					return;
-				} // end if
-            PedidoClienteView * prov = (PedidoClienteView *) g_plugParams;
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewPedidoClienteView", ( BfCompany * ) mainCompany() );
+            if ( !resur ) {
+                mensajeInfo ( "no se pudo crear instancia de pedido cliente" );
+                return;
+            } // end if
+            PedidoClienteView * prov = ( PedidoClienteView * ) g_plugParams;
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;
@@ -117,13 +117,13 @@ void myplugin::elslot()
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
 
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewAlbaranClienteView", ( BfCompany * ) mainCompany());
-				if (!resur) {
-					mensajeInfo("no se pudo crear instancia de factura");
-					return;
-				} // end if
-				AlbaranClienteView *prov = (AlbaranClienteView *) g_plugParams;
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewAlbaranClienteView", ( BfCompany * ) mainCompany() );
+            if ( !resur ) {
+                mensajeInfo ( "no se pudo crear instancia de factura" );
+                return;
+            } // end if
+            AlbaranClienteView *prov = ( AlbaranClienteView * ) g_plugParams;
             if ( prov->cargar ( listaelem.at ( 1 ) ) ) {
                 delete prov;
                 return;
@@ -157,7 +157,7 @@ void myplugin::inicializa ( Bulmafact *bges )
     m_bulmafact = bges;
 
     /// Miramos si existe un menu Herramientas
-	QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
+    QMenu *pPluginMenu = bges->newMenu ( "&Herramientas", "menuHerramientas", "menuAcerca_de" );
 
     QAction *accion = new QAction ( "&Apertura Rapida", 0 );
     accion->setStatusTip ( "Abre documentos a partir del codigo de barras" );
@@ -177,8 +177,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_abrecodigobarras", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_abrecodigobarras", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );

@@ -44,11 +44,11 @@ AmortizacionesView::AmortizacionesView ( BcCompany *emp, QWidget *parent )
     mui_listado->setDbTableName ( "amortizacion" );
     mui_listado->setFileConfig ( "AmortizacionListSubform" );
     mui_listado->setDbFieldId ( "idamortizacion" );
-    mui_listado->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id amortizacion" ) );
-    mui_listado->addSubFormHeader ( "nomamortizacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
-    mui_listado->addSubFormHeader ( "fechacompra", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha compra" ) );
-    mui_listado->addSubFormHeader ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha 1 cuota" ) );
-    mui_listado->addSubFormHeader ( "numcuotas", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Num cuotas" ) );
+    mui_listado->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id amortizacion" ) );
+    mui_listado->addSubFormHeader ( "nomamortizacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    mui_listado->addSubFormHeader ( "fechacompra", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha compra" ) );
+    mui_listado->addSubFormHeader ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha 1 cuota" ) );
+    mui_listado->addSubFormHeader ( "numcuotas", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Num cuotas" ) );
     mui_listado->setinsercion ( FALSE );
     presentar();
 
@@ -104,7 +104,7 @@ void AmortizacionesView::borrar()
             presentar();
         } // end if
     } catch ( ... ) {
-        _depura ( _( "Error al borrar la amortizacion" ), 2 );
+        _depura ( _ ( "Error al borrar la amortizacion" ), 2 );
     } // end try
     _depura ( "END AmortizacionesView::on_mui_borrar_clicked", 0 );
 }

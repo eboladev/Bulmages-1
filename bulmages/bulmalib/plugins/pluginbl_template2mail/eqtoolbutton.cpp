@@ -65,7 +65,7 @@ EQToolButtonMail::~EQToolButtonMail()
 void EQToolButtonMail::pintaMenu ( QMenu *menu )
 {
     _depura ( "EQToolButtonMail::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( _( "Inf. personales por e-mail" ) );
+    QMenu *ajust = menu->addMenu ( _ ( "Inf. personales por e-mail" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -99,7 +99,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
 
 
         QAction * action = ajust->addAction ( titulo );
-        action->setObjectName ( "em_"+fileInfo.fileName() );
+        action->setObjectName ( "em_" + fileInfo.fileName() );
     }
     _depura ( "END EQToolButtonMail::pintaMenu", 0 );
 }
@@ -127,36 +127,36 @@ void EQToolButtonMail::trataMenu ( QAction *action )
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
 
-        if ( action->objectName() == "em_"+fileInfo.fileName() ) {
+        if ( action->objectName() == "em_" + fileInfo.fileName() ) {
 
-            if(m_BlForm->generaRML ( fileInfo.fileName() )) {
+            if ( m_BlForm->generaRML ( fileInfo.fileName() ) ) {
 
-		QString email = "";
-		QString id = m_BlForm->dbValue ( "id"+m_BlForm->tableName() );
-		QString num = m_BlForm->dbValue ( "num"+m_BlForm->tableName() );
-		QString ref = m_BlForm->dbValue ( "ref"+m_BlForm->tableName() );
-		QString idcliente = m_BlForm->dbValue ( "idcliente" );
-		if (!idcliente.isEmpty()) {
-			QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-			BlDbRecordSet *curs = ((BlForm *)parent())->mainCompany()->loadQuery ( query );
-			if (!curs->eof()) {
-				email = curs->valor ( "mailcliente" );
-			} // end if
-			delete curs;
-		} // end if
+                QString email = "";
+                QString id = m_BlForm->dbValue ( "id" + m_BlForm->tableName() );
+                QString num = m_BlForm->dbValue ( "num" + m_BlForm->tableName() );
+                QString ref = m_BlForm->dbValue ( "ref" + m_BlForm->tableName() );
+                QString idcliente = m_BlForm->dbValue ( "idcliente" );
+                if ( !idcliente.isEmpty() ) {
+                    QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
+                    BlDbRecordSet *curs = ( ( BlForm * ) parent() )->mainCompany()->loadQuery ( query );
+                    if ( !curs->eof() ) {
+                        email = curs->valor ( "mailcliente" );
+                    } // end if
+                    delete curs;
+                } // end if
 
-		QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
-            	generaPDF ( doc );
-	
-		QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + doc + ".pdf " + g_confpr->valor ( CONF_DIR_USER ) +   doc  + num + ".pdf";
-		system ( cad.toAscii().data() );
-	
-		cad = "kmail -s \" "+ doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
+                QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
+                generaPDF ( doc );
 
-		system ( cad.toAscii().data() );
+                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + doc + ".pdf " + g_confpr->valor ( CONF_DIR_USER ) +   doc  + num + ".pdf";
+                system ( cad.toAscii().data() );
+
+                cad = "kmail -s \" " + doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
+
+                system ( cad.toAscii().data() );
 
 
-	    } // end if
+            } // end if
         } // end if
     }
     _depura ( "END EQToolButtonMail::trataMenu", 0 );

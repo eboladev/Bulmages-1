@@ -46,8 +46,8 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginvisor", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginvisor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_file = new QFile ( g_confpr->valor ( CONF_TPV_VISOR_FILE ) );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {

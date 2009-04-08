@@ -57,7 +57,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
 
         /*
                 setTitleName ( _( "Cobro" ) );
-         
+
                 addDbField ( "idcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID cobro" ) );
                 addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "ID cliente" ) );
                 addDbField ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Prevision de cobro" ) );
@@ -67,7 +67,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
                 addDbField ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
                 addDbField ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
                 addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _( "Comentarios" ) );
-         
+
                 pintar();
                 dialogChanges_cargaInicial();
         */
@@ -75,7 +75,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
 
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el archivo" ) );
+        mensajeInfo ( _ ( "Error al crear el archivo" ) );
     } // end try
     _depura ( "END Q19View::Q19View", 0 );
 }

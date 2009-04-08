@@ -40,7 +40,7 @@ SelectCCosteView::SelectCCosteView ( BcCompany *emp, QWidget *parent )
     mui_listCostes->setColumnCount ( 5 );
 
     QStringList etiquetas;
-    etiquetas << _( "nom_coste" ) << _( "desc_coste" ) << _( "Status" ) << _( "idc_coste" ) << _( "Seleccion" );
+    etiquetas << _ ( "nom_coste" ) << _ ( "desc_coste" ) << _ ( "Status" ) << _ ( "idc_coste" ) << _ ( "Seleccion" );
     mui_listCostes->setHeaderLabels ( etiquetas );
     cargacostes();
     _depura ( "END SelectCCosteView::SelectCCosteView", 0 );

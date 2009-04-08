@@ -77,10 +77,10 @@ void GenPagoQToolButton::setBoton()
     setStatusTip ( "Generar Pago" );
     setToolTip ( "Generar Pago" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setMaximumSize ( QSize (32, 32 ) );
+    setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.svg" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
-    setContentsMargins (0, 0, 0, 0);
+    setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenPagoQToolButton::setBoton", 0 );
 }
 
@@ -92,40 +92,40 @@ void GenPagoQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
 
-    if (m_object->objectName() == "FacturaProveedorBase" ) {
-	FacturaProveedorView *fpv = (FacturaProveedorView *) m_object;
-	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
-	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-	bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
-	bud->setDbValue ( "cantpago", fpv->m_totalfacturap->text() );
-	bud->setDbValue ( "refpago", fpv->dbValue ( "reffacturap" ) );
-	bud->setDbValue ( "comentpago", fpv->dbValue ( "descfacturap" ) );
-	bud->pintar();
-	bud->show();
+    if ( m_object->objectName() == "FacturaProveedorBase" ) {
+        FacturaProveedorView *fpv = ( FacturaProveedorView * ) m_object;
+        PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+        bud->setDbValue ( "cantpago", fpv->m_totalfacturap->text() );
+        bud->setDbValue ( "refpago", fpv->dbValue ( "reffacturap" ) );
+        bud->setDbValue ( "comentpago", fpv->dbValue ( "descfacturap" ) );
+        bud->pintar();
+        bud->show();
     }// end if
 
-    if (m_object->objectName() == "AlbaranProveedorBase" ) {
-	AlbaranProveedorView *fpv = (AlbaranProveedorView *) m_object;
-	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
-	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-	bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
-	bud->setDbValue ( "cantpago", fpv->m_totalalbaranp->text() );
-	bud->setDbValue ( "refpago", fpv->dbValue ( "refalbaranp" ) );
-	bud->setDbValue ( "comentpago", fpv->dbValue ( "descalbaranp" ) );
-	bud->pintar();
-	bud->show();
+    if ( m_object->objectName() == "AlbaranProveedorBase" ) {
+        AlbaranProveedorView *fpv = ( AlbaranProveedorView * ) m_object;
+        PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+        bud->setDbValue ( "cantpago", fpv->m_totalalbaranp->text() );
+        bud->setDbValue ( "refpago", fpv->dbValue ( "refalbaranp" ) );
+        bud->setDbValue ( "comentpago", fpv->dbValue ( "descalbaranp" ) );
+        bud->pintar();
+        bud->show();
     }// end if
 
-    if (m_object->objectName() == "PedidoProveedorBase" ) {
-	PedidoProveedorView *fpv = (PedidoProveedorView *) m_object;
-	PagoView *bud = new PagoView((BfCompany *)fpv->mainCompany(), NULL);
-	fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-	bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
-	bud->setDbValue ( "cantpago", fpv->mui_totalPedido->text() );
-	bud->setDbValue ( "refpago", fpv->dbValue ( "refpedidoproveedor" ) );
-	bud->setDbValue ( "comentpago", fpv->dbValue ( "descpedidoproveedor" ) );
-	bud->pintar();
-	bud->show();
+    if ( m_object->objectName() == "PedidoProveedorBase" ) {
+        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
+        PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
+        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+        bud->setDbValue ( "cantpago", fpv->mui_totalPedido->text() );
+        bud->setDbValue ( "refpago", fpv->dbValue ( "refpedidoproveedor" ) );
+        bud->setDbValue ( "comentpago", fpv->dbValue ( "descpedidoproveedor" ) );
+        bud->pintar();
+        bud->show();
     }// end if
 
     _depura ( "END ImpQToolButton::click", 0 );

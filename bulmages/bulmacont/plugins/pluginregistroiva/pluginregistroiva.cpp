@@ -96,13 +96,13 @@ void myRegIVA::inicializa ( Bulmacont *bges )
 {
     /// Creamos el men&uacute;.
     m_bulmacont = bges;
-    QAction *accion = new QAction ( _("&Registro de IVA"), 0 );
-    accion->setStatusTip ( _("Registro de IVA") );
-    accion->setWhatsThis ( _("Registro de IVA") );
+    QAction *accion = new QAction ( _ ( "&Registro de IVA" ), 0 );
+    accion->setStatusTip ( _ ( "Registro de IVA" ) );
+    accion->setWhatsThis ( _ ( "Registro de IVA" ) );
 
-    QAction *accion1 = new QAction ( _("&Cobros y pagos"), 0 );
-    accion1->setStatusTip ( _("Cobros y pagos") );
-    accion1->setWhatsThis ( _("Cobros y pagos") );
+    QAction *accion1 = new QAction ( _ ( "&Cobros y pagos" ), 0 );
+    accion1->setStatusTip ( _ ( "Cobros y pagos" ) );
+    accion1->setWhatsThis ( _ ( "Cobros y pagos" ) );
 
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     connect ( accion1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
@@ -122,8 +122,8 @@ int entryPoint ( Bulmacont *bcont )
     _depura ( "Punto de entrada del plugin registroIVA", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginregistroiva", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginregistroiva", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myRegIVA *my = new myRegIVA();
     my->inicializa ( bcont );
@@ -213,7 +213,7 @@ int ListLinAsiento1View_boton_iva ( ListLinAsiento1View *as )
         ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
-        mensajeInfo ( _("Debe seleccionar un apunte") );
+        mensajeInfo ( _ ( "Debe seleccionar un apunte" ) );
         return 0;
     } // end try
     _depura ( "END ListLinAsiento1View_boton_iva", 0 );

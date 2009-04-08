@@ -465,7 +465,7 @@ void BcSubForm::boton_balance1 ( int tipo )
 void BcSubForm::creaMenu ( QMenu *menu )
 {
     _depura ( "BcSubForm::pintaMenu", 0 );
-    menu->addAction ( _( "Submenu de contabilidad" ) );
+    menu->addAction ( _ ( "Submenu de contabilidad" ) );
     menu->addSeparator();
     _depura ( "END BcSubForm::pintaMenu", 0 );
 }
@@ -488,7 +488,7 @@ void BcSubForm::procesaMenu ( QAction * )
 /**
 \param parent
 **/
-BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate(parent)
+BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate ( parent )
 {
     _depura ( "BcSubFormDelegate::BcSubFormDelegate", 0 );
 //    m_subform = ( BlSubForm * ) parent;
@@ -555,12 +555,12 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         //if (linea->dbFieldType() == BlDbField::DbInt) {
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
-/*        QLineEdit *editor = new QLineEdit ( parent );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "QLineEdit" );
-        return editor;
-*/
+        /*        QLineEdit *editor = new QLineEdit ( parent );
+                _depura ( "END BcSubFormDelegate::createEditor", 0, "QLineEdit" );
+                return editor;
+        */
         //} else {
-            return BlSubFormDelegate::createEditor(parent, opcion, index);
+        return BlSubFormDelegate::createEditor ( parent, opcion, index );
         //} // end if
     } // end if
 }
@@ -607,7 +607,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BusquedaCuentaDelegate * comboBox = static_cast<BusquedaCuentaDelegate*> ( editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
-        QString codigoext = extiendecodigo ( value, ((BcSubForm*) m_subform)->mainCompany() ->numdigitosempresa() );
+        QString codigoext = extiendecodigo ( value, ( ( BcSubForm* ) m_subform )->mainCompany() ->numdigitosempresa() );
         model->setData ( index, codigoext );
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * comboBox = static_cast<BusquedaCanalDelegate*> ( editor );
@@ -629,13 +629,13 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         //    int value = spinBox->value();
         //    model->setData(index, value);
         //} else {
-            BlSubFormDelegate::setModelData(editor, model, index);
+        BlSubFormDelegate::setModelData ( editor, model, index );
         //} // end if
 
-/*QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
-        QString value = lineedit->text();
-        model->setData ( index, value );
-*/
+        /*QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
+                QString value = lineedit->text();
+                model->setData ( index, value );
+        */
     } // end if
 
 
@@ -690,12 +690,12 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
         //    spinBox->setValue(value);
         //} else {
-            BlSubFormDelegate::setEditorData(editor, index);
+        BlSubFormDelegate::setEditorData ( editor, index );
         //} // end if
-/*        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
-        lineedit->setText ( value );
-*/
+        /*        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+                QLineEdit *lineedit = static_cast<QLineEdit*> ( editor );
+                lineedit->setText ( value );
+        */
     } // end if
     _depura ( "END BcSubFormDelegate::setEditorData", 0 );
 }

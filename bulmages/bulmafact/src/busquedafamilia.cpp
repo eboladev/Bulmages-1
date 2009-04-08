@@ -32,11 +32,11 @@ BusquedaFamilia::BusquedaFamilia ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
     _depura ( "BusquedaFamilia::BusquedaFamilia", 0 );
-		/// Establecemos los parametros de busqueda del Cliente
-		setLabel ( _( "Familia:" ) );
-		setTableName( "familia" );
-		m_valores["codigocompletofamilia"] = "";
-		m_valores["nombrefamilia"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    setLabel ( _ ( "Familia:" ) );
+    setTableName ( "familia" );
+    m_valores["codigocompletofamilia"] = "";
+    m_valores["nombrefamilia"] = "";
     _depura ( "END BusquedaFamilia::BusquedaFamilia", 0 );
 }
 
@@ -59,7 +59,7 @@ BusquedaFamilia::~BusquedaFamilia()
 void BusquedaFamilia::setidfamilia ( QString val )
 {
     _depura ( "BusquedaFamilia::setidfamilia", 0 );
-    setId(val);
+    setId ( val );
     _depura ( "END BusquedaFamilia::setidfamilia", 0 );
 }
 
@@ -75,9 +75,9 @@ void BusquedaFamilia::setcodigocompletofamilia ( QString val )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
     if ( !cur->eof() ) {
-        setId(cur->valor ( "idfamilia" ));
+        setId ( cur->valor ( "idfamilia" ) );
     } else {
-		setId("");
+        setId ( "" );
     } // end if
 
     delete cur;

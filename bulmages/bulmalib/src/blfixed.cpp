@@ -70,16 +70,15 @@ BlFixed::BlFixed()
 BlFixed::scale BlFixed::SCALE;
 
 
-BlFixed::scale::scale(void)
+BlFixed::scale::scale ( void )
 {
-  int i;
-  BlFixed_numerator n;
-  n = 1;
-  for (i = 0; i <= MAX_FIXED_PRECISION; i++)
-  {
-    x[i] = n;
-    n = 10 * n;
-  }
+    int i;
+    BlFixed_numerator n;
+    n = 1;
+    for ( i = 0; i <= MAX_FIXED_PRECISION; i++ ) {
+        x[i] = n;
+        n = 10 * n;
+    }
 }
 
 
@@ -117,9 +116,9 @@ BlFixed BlFixed::operator = ( int x )
 
 BlFixed operator / ( BlFixed x, BlFixed y )
 {
-    x.setprecision(6);
-    y.setprecision(6);
-    x.value = (x.value * BlFixed::SCALE.x[y.precision]) / y.value;
+    x.setprecision ( 6 );
+    y.setprecision ( 6 );
+    x.value = ( x.value * BlFixed::SCALE.x[y.precision] ) / y.value;
     return x;
 }
 
@@ -144,11 +143,11 @@ BlFixed operator / ( int x, BlFixed y )
 QString BlFixed::toQString ( QChar separadorDecimal, int precision )
 {
     _depura ( "BlFixed::toQString", 0 );
-	/// Si no se pasa separador decimal cogemos el de las locales
-	if  ( separadorDecimal == '0' ) {
-		QLocale locale;
-		separadorDecimal = locale.decimalPoint ();
-	} // end if
+    /// Si no se pasa separador decimal cogemos el de las locales
+    if  ( separadorDecimal == '0' ) {
+        QLocale locale;
+        separadorDecimal = locale.decimalPoint ();
+    } // end if
 
 
     setprecision ( precision );

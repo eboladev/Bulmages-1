@@ -61,11 +61,11 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
     if ( m_modo == BL_EDIT_MODE ) {
         meteWindow ( windowTitle(), this );
     } // end if
@@ -85,9 +85,9 @@ void MovimientosView::iniciaForm()
     int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, _( "Todas las facturas" ) );
-    mui_procesada->insertItem ( 1, _( "Facturas procesadas" ) );
-    mui_procesada->insertItem ( 2, _( "Facturas no procesadas" ) );
+    mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
+    mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
+    mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
     _depura ( "END MovimientosView::iniciaForm" );
 }
 
@@ -146,7 +146,7 @@ QString MovimientosView::generaFiltro()
 void MovimientosView::on_mui_imprimir_clicked()
 {
     _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _( "Facturas a clientes" ) );
+    mui_list->imprimirPDF ( _ ( "Facturas a clientes" ) );
     _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
 }
 
@@ -172,18 +172,18 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
         return;
     setDbTableName ( "movimiento" );
     setDbFieldId ( "idmovimiento" );
-    addSubFormHeader ( "idmovimiento", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "idarticulo" ) );
-    addSubFormHeader ( "fechamovimiento", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Fecha" ) );
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id articulo" ) );
-    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo articulo" ) );
-    addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre articulo" ) );
-    addSubFormHeader ( "cantidadmovimiento", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Cantidad" ) );
-    addSubFormHeader ( "lotemovimiento", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Lote" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Id almacen" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo almacen" ) );
-    addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre almacen" ) );
-    addSubFormHeader ( "idlalbaran", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Id albaran cliente" ) );
-    addSubFormHeader ( "idlalbaranp", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Id albaran proveedor" ) );
+    addSubFormHeader ( "idmovimiento", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "idarticulo" ) );
+    addSubFormHeader ( "fechamovimiento", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Fecha" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id articulo" ) );
+    addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo articulo" ) );
+    addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre articulo" ) );
+    addSubFormHeader ( "cantidadmovimiento", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Cantidad" ) );
+    addSubFormHeader ( "lotemovimiento", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Lote" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id almacen" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo almacen" ) );
+    addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre almacen" ) );
+    addSubFormHeader ( "idlalbaran", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Id albaran cliente" ) );
+    addSubFormHeader ( "idlalbaranp", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Id albaran proveedor" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

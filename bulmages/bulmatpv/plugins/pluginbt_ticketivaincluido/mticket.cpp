@@ -97,9 +97,9 @@ void MTicket::pintar()
         BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
         BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
-	BlFixed iva (linea->dbValue("ivalalbaran"));
+        BlFixed iva ( linea->dbValue ( "ivalalbaran" ) );
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
-	base = base / (BlFixed("1") + (iva / BlFixed("100")));
+        base = base / ( BlFixed ( "1" ) + ( iva / BlFixed ( "100" ) ) );
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
         basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
         basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;

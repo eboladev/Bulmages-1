@@ -55,7 +55,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "CuadranteView_CuadranteView", this ) ) return;
 
-        setTitleName ( _( "Almacen" ) );
+        setTitleName ( _ ( "Almacen" ) );
         setDbTableName ( "almacen" );
 
         mui_listtrabajadores->setDragEnabled ( TRUE );
@@ -67,7 +67,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el almacen" ) );
+        mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END CuadranteView::CuadranteView", 0 );
 }
@@ -148,7 +148,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
         mui_cuadrante->setColumnCount ( 7 );
 
         QStringList headers;
-        headers << _( "Lunes" ) << _( "Martes" ) << _( "Miercoles" ) << _( "Jueves" ) << _( "Viernes" ) << _( "Sabado" ) << _( "Domingo" );
+        headers << _ ( "Lunes" ) << _ ( "Martes" ) << _ ( "Miercoles" ) << _ ( "Jueves" ) << _ ( "Viernes" ) << _ ( "Sabado" ) << _ ( "Domingo" );
         mui_cuadrante->setHorizontalHeaderLabels ( headers );
 
 
@@ -156,7 +156,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
         BlProgressBar barra;
         barra.setRange ( 0, cur->numregistros() );
         barra.show();
-        barra.setText ( _( "Generando Informe" ) );
+        barra.setText ( _ ( "Generando Informe" ) );
 
         while ( !cur->eof() ) {
 
@@ -247,8 +247,8 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
     QMenu *popup = new QMenu ( mui_calendario );
 
     popup->addSeparator();
-    QAction *norm = popup->addAction ( _( "Normal" ) );
-    QAction *fiesta = popup->addAction ( _( "Fiesta general" ) );
+    QAction *norm = popup->addAction ( _ ( "Normal" ) );
+    QAction *fiesta = popup->addAction ( _ ( "Fiesta general" ) );
 
     QAction *opcion = popup->exec ( mapToGlobal ( pos ) );
     if ( opcion == norm ) {

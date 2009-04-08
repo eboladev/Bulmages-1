@@ -38,8 +38,8 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("plugincambio", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "plugincambio", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint", 0 );
     return 0;
@@ -69,7 +69,7 @@ int BtCompany_cobrar ( BtCompany *etpv )
     layout->setMargin ( 0 );
     layout->setSpacing ( 0 );
     diag->setLayout ( layout );
-    diag->setWindowTitle ( _("Cobro") );
+    diag->setWindowTitle ( _ ( "Cobro" ) );
 
     diag->exec();
 

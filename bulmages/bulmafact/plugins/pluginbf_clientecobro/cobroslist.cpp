@@ -47,11 +47,11 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         return;
     mdb_idcobro = "";
     setSubForm ( mui_list );
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";    hideBusqueda();
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";    hideBusqueda();
 
     _depura ( "END CobrosList::CobrosList", 0 );
 }
@@ -75,11 +75,11 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
     setSubForm ( mui_list );
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
     presentar();
     mdb_idcobro = "";
     if ( modoEdicion() )
@@ -164,7 +164,7 @@ QString CobrosList::generaFiltro()
 void CobrosList::crear()
 {
     _depura ( "CobrosList::crear", 0 );
-    CobroView *bud = new CobroView( (BfCompany *) mainCompany(), 0);
+    CobroView *bud = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDbValue ( "idcliente", m_cliente->id() );
@@ -178,7 +178,7 @@ void CobrosList::crear()
 void CobrosList::imprimir()
 {
     _depura ( "CobrosList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Cobros a clientes" ) );
+    mui_list->imprimirPDF ( _ ( "Cobros a clientes" ) );
     _depura ( "END CobrosList::imprimir", 0 );
 }
 
@@ -194,13 +194,13 @@ void CobrosList::borrar()
     _depura ( "CobrosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
         mdb_idcobro = mui_list->dbValue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * cv = new CobroView( (BfCompany *) mainCompany(), 0);
+            CobroView * cv = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idcobro ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -208,7 +208,7 @@ void CobrosList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:CobrosList::borrar", 0 );
 }
@@ -224,7 +224,7 @@ void CobrosList::editar ( int )
     try {
         mdb_idcobro = mui_list->dbValue ( "idcobro" );
         if ( modoEdicion() ) {
-            CobroView * bud = new CobroView( (BfCompany *) mainCompany(), 0);
+            CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( mdb_idcobro ) ) {
                 delete bud;
                 return;
@@ -235,7 +235,7 @@ void CobrosList::editar ( int )
             emit ( selected ( mdb_idcobro ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END CobrosList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -251,8 +251,8 @@ void CobrosList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar cobro" ) );
-    QAction *del = popup->addAction ( _( "Borrar cobro" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar cobro" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar cobro" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -306,22 +306,22 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
         return;
     setDbTableName ( "cobro" );
     setDbFieldId ( "idcobro" );
-    addSubFormHeader ( "idcobro", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID cobro" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
-    addSubFormHeader ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de telefono" ) );
-    addSubFormHeader ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Direccion de correo electronico" ) );
-    addSubFormHeader ( "fechacobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de cobro" ) );
-    addSubFormHeader ( "fechavenccobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de vencimiento" ) );
-    addSubFormHeader ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Cantidad" ) );
-    addSubFormHeader ( "nombanco", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Banco" ) );
-    addSubFormHeader ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia del cobro" ) );
-    addSubFormHeader ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Prevision de cobro" ) );
-    addSubFormHeader ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
-    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del trabajador" ) );
-    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Apellidos del trabajador" ) );
+    addSubFormHeader ( "idcobro", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID cobro" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F." ) );
+    addSubFormHeader ( "telcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de telefono" ) );
+    addSubFormHeader ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion de correo electronico" ) );
+    addSubFormHeader ( "fechacobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de cobro" ) );
+    addSubFormHeader ( "fechavenccobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de vencimiento" ) );
+    addSubFormHeader ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cantidad" ) );
+    addSubFormHeader ( "nombanco", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Banco" ) );
+    addSubFormHeader ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia del cobro" ) );
+    addSubFormHeader ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Prevision de cobro" ) );
+    addSubFormHeader ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
+    addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del trabajador" ) );
+    addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apellidos del trabajador" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

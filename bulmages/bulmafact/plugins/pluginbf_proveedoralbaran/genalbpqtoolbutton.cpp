@@ -75,10 +75,10 @@ void GenAlbProQToolButton::setBoton()
     setStatusTip ( "Generar Factura Proveedor" );
     setToolTip ( "Generar Factura Proveedor" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setMaximumSize ( QSize (32, 32 ) );
+    setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.svg" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
-    setContentsMargins (0, 0, 0, 0);
+    setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenAlbProQToolButton::setBoton", 0 );
 }
 
@@ -90,9 +90,9 @@ void GenAlbProQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
 
-    if (m_object->objectName() == "PedidoProveedorBase" ) {
-	PedidoProveedorView *fpv = (PedidoProveedorView *) m_object;
-		generarAlbaranProveedor();
+    if ( m_object->objectName() == "PedidoProveedorBase" ) {
+        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
+        generarAlbaranProveedor();
     }// end if
 
     _depura ( "END ImpQToolButton::click", 0 );
@@ -111,7 +111,7 @@ void GenAlbProQToolButton::click()
 void GenAlbProQToolButton::generarAlbaranProveedor()
 {
     _depura ( "GenAlbProQToolButton::generarAlbaranProveedor", 0 );
-	PedidoProveedorView *fpv = (PedidoProveedorView *) m_object;
+    PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
 
 
     AlbaranProveedorView *bud = NULL;
@@ -130,7 +130,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idproveedor->id().isEmpty() ) {
-                mensajeInfo ( _( "Tiene que seleccionar un proveedor" ), this );
+                mensajeInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
@@ -145,12 +145,12 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             /// Informamos que ya hay una factura y que la abriremos.
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
-                                         _( "Albaran de proveedor existente" ),
-                                         _( "Existe un albaran de este proveedor con la misma referencia que este pedido. Desea abrirla para verificar?" ),
-                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
+                                         _ ( "Albaran de proveedor existente" ),
+                                         _ ( "Existe un albaran de este proveedor con la misma referencia que este pedido. Desea abrirla para verificar?" ),
+                                         _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            AlbaranProveedorView *bud = new AlbaranProveedorView((BfCompany *) fpv->mainCompany(), 0);
+            AlbaranProveedorView *bud = new AlbaranProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaranp" ) );
             bud->show();
@@ -159,7 +159,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         delete cur;
 
         /// Creamos la factura.
-        AlbaranProveedorView *bud = new AlbaranProveedorView((BfCompany *) fpv->mainCompany(), 0);
+        AlbaranProveedorView *bud = new AlbaranProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
         fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
@@ -172,7 +172,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         bud->pintar();
         bud->show();
 
-	/// Traspasamos las lineas de factura
+        /// Traspasamos las lineas de factura
         QString l;
         BlDbSubFormRecord *linea, *linea1;
         for ( int i = 0; i < fpv->m_listalineas->rowCount(); ++i ) {
@@ -195,7 +195,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado" ), this );
+        mensajeInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

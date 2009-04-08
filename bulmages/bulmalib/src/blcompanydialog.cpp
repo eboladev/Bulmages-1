@@ -209,7 +209,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
     /// Si el m_modo es false (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if ( !modoDestructivo() )
-        botonCancelar->setText ( _( "&Cierra el programa" ) );
+        botonCancelar->setText ( _ ( "&Cierra el programa" ) );
     // end if
     cargaArchivo();
     _depura ( "END BlCompanyDialog::BlCompanyDialog", 0 );
@@ -278,7 +278,7 @@ void BlCompanyDialog::accept()
         setTipoEmpresa ( itemfilaactual3->text() );
         done ( 0 );
     } else
-        mensajeInfo ( _( "Para entrar, antes tiene que seleccionar una empresa." ) );
+        mensajeInfo ( _ ( "Para entrar, antes tiene que seleccionar una empresa." ) );
     _depura ( "END BlCompanyDialog::accept", 0 );
 }
 
@@ -487,7 +487,7 @@ void BlCompanyDialog::preparamui_empresas()
     mui_empresas->setRowCount ( 0 );
     mui_empresas->setColumnCount ( 4 );
     QStringList nombrecolumnas;
-    nombrecolumnas << _( "Nombre" ) << _( "Anyo" ) << _( "Archivo" ) << _( "Tipo" );
+    nombrecolumnas << _ ( "Nombre" ) << _ ( "Anyo" ) << _ ( "Archivo" ) << _ ( "Tipo" );
     mui_empresas->setHorizontalHeaderLabels ( nombrecolumnas );
     mui_empresas->horizontalHeader() ->setResizeMode ( 0, QHeaderView::Stretch );
 

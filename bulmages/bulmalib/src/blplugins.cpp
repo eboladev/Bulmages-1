@@ -36,8 +36,9 @@ BlPlugins BL_EXPORT *g_plugins = NULL;
 void BL_EXPORT *g_plugParams = NULL;
 
 
-void initPlugins() {
-  g_plugins = new BlPlugins();
+void initPlugins()
+{
+    g_plugins = new BlPlugins();
 }
 
 ///
@@ -110,7 +111,7 @@ int BlPlugins::lanza ( const char *func, void *clase )
     int a = 0;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         myFunction = ( MyPrototype ) m_lista.at ( i ) ->resolve ( func );
-        if ( myFunction && a == 0) {
+        if ( myFunction && a == 0 ) {
             a = myFunction ( clase );
         } // end if
     } // end for
@@ -129,7 +130,7 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
     int a = 0;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         myFunction1 = ( MyPrototype1 ) m_lista.at ( i ) ->resolve ( func );
-        if ( myFunction1 && a == 0) {
+        if ( myFunction1 && a == 0 ) {
             _depura ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
             a = myFunction1 ( clase, ret );
         } else {

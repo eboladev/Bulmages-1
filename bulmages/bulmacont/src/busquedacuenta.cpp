@@ -59,8 +59,8 @@ BusquedaCuenta::~BusquedaCuenta()
 **/
 QString BusquedaCuenta::text()
 {
-    _depura("BusquedaCuenta::text");
-    _depura("END BusquedaCuenta::text");
+    _depura ( "BusquedaCuenta::text" );
+    _depura ( "END BusquedaCuenta::text" );
     return mdb_codigocuenta;
 }
 
@@ -71,8 +71,8 @@ QString BusquedaCuenta::text()
 **/
 QString BusquedaCuenta::fieldValue()
 {
-    _depura("BusquedaCuenta::fieldValue()");
-    _depura("END BusquedaCuenta::fieldValue()");
+    _depura ( "BusquedaCuenta::fieldValue()" );
+    _depura ( "END BusquedaCuenta::fieldValue()" );
     return mdb_idcuenta;
 }
 
@@ -83,9 +83,9 @@ QString BusquedaCuenta::fieldValue()
 **/
 void BusquedaCuenta::setText ( QString val )
 {
-    _depura("BusquedaCuenta::setText", 0, val);
+    _depura ( "BusquedaCuenta::setText", 0, val );
     setcodigocuenta ( val );
-    _depura("END BusquedaCuenta::setText");
+    _depura ( "END BusquedaCuenta::setText" );
 }
 
 ///
@@ -94,8 +94,8 @@ void BusquedaCuenta::setText ( QString val )
 **/
 void BusquedaCuenta::setFieldValue ( QString val )
 {
-    _depura("BusquedaCuenta::setFieldValue", 0, val);
-    _depura("END BusquedaCuenta::setFieldValue"); 
+    _depura ( "BusquedaCuenta::setFieldValue", 0, val );
+    _depura ( "END BusquedaCuenta::setFieldValue" );
     setidcuenta ( val );
 }
 
@@ -106,8 +106,8 @@ void BusquedaCuenta::setFieldValue ( QString val )
 **/
 QString BusquedaCuenta::codigocuenta()
 {
-    _depura("BusquedaCuenta::codigocuenta");
-    _depura("END BusquedaCuenta::codigocuenta");
+    _depura ( "BusquedaCuenta::codigocuenta" );
+    _depura ( "END BusquedaCuenta::codigocuenta" );
     return mui_codigocuenta->text();
 }
 
@@ -118,8 +118,8 @@ QString BusquedaCuenta::codigocuenta()
 **/
 QString BusquedaCuenta::idcuenta()
 {
-     _depura("BusquedaCuenta::idcuenta");
-     _depura("END BusquedaCuenta::idcuenta");
+    _depura ( "BusquedaCuenta::idcuenta" );
+    _depura ( "END BusquedaCuenta::idcuenta" );
     return mdb_idcuenta;
 }
 
@@ -130,8 +130,8 @@ QString BusquedaCuenta::idcuenta()
 **/
 QString BusquedaCuenta::nomcuenta()
 {
-    _depura("BusquedaCuenta::nomcuenta");
-    _depura("END BusquedaCuenta::nomcuenta()");
+    _depura ( "BusquedaCuenta::nomcuenta" );
+    _depura ( "END BusquedaCuenta::nomcuenta()" );
     return mdb_nomcuenta;
 }
 
@@ -142,8 +142,8 @@ QString BusquedaCuenta::nomcuenta()
 **/
 QString BusquedaCuenta::tipocuenta()
 {
-    _depura("BusquedaCuenta::tipocuenta");
-    _depura("END BusquedaCuenta::tipocuenta");
+    _depura ( "BusquedaCuenta::tipocuenta" );
+    _depura ( "END BusquedaCuenta::tipocuenta" );
     return mdb_tipocuenta;
 }
 
@@ -153,8 +153,8 @@ QString BusquedaCuenta::tipocuenta()
 **/
 void BusquedaCuenta::hideNombre()
 {
-    _depura("BusquedaCuenta::hideNombre");
-    _depura("END BusquedaCuenta::hideNombre");
+    _depura ( "BusquedaCuenta::hideNombre" );
+    _depura ( "END BusquedaCuenta::hideNombre" );
     mui_nomcuenta->hide();
 }
 
@@ -164,9 +164,9 @@ void BusquedaCuenta::hideNombre()
 **/
 void BusquedaCuenta::showNombre()
 {
-    _depura("BusquedaCuenta::showNombre");
+    _depura ( "BusquedaCuenta::showNombre" );
     mui_nomcuenta->show();
-    _depura("END BusquedaCuenta::showNombre");
+    _depura ( "END BusquedaCuenta::showNombre" );
 }
 
 
@@ -175,9 +175,9 @@ void BusquedaCuenta::showNombre()
 **/
 void BusquedaCuenta::on_mui_buscar_clicked()
 {
-    _depura("BusquedaCuenta::on_mui_buscar_clicked");
+    _depura ( "BusquedaCuenta::on_mui_buscar_clicked" );
     s_searchCuenta();
-    _depura("END BusquedaCuenta::on_mui_buscar_clicked");
+    _depura ( "END BusquedaCuenta::on_mui_buscar_clicked" );
 }
 
 
@@ -187,9 +187,9 @@ void BusquedaCuenta::on_mui_buscar_clicked()
 **/
 void BusquedaCuenta::on_mui_codigocuenta_textChanged ( const QString &q )
 {
-    _depura("BusquedaCuenta::on_mui_codigocuenta_textChanged", 0, q);
+    _depura ( "BusquedaCuenta::on_mui_codigocuenta_textChanged", 0, q );
     s_codigocuentatextChanged ( q );
-    _depura("END BusquedaCuenta::on_mui_codigocuenta_textChanged");
+    _depura ( "END BusquedaCuenta::on_mui_codigocuenta_textChanged" );
 }
 
 
@@ -198,9 +198,9 @@ void BusquedaCuenta::on_mui_codigocuenta_textChanged ( const QString &q )
 **/
 void BusquedaCuenta::selectAll()
 {
-    _depura("BusquedaCuenta::selectAll");
+    _depura ( "BusquedaCuenta::selectAll" );
     mui_codigocuenta->selectAll();
-    _depura("END BusquedaCuenta::selectAll");
+    _depura ( "END BusquedaCuenta::selectAll" );
 }
 
 
@@ -209,9 +209,9 @@ void BusquedaCuenta::selectAll()
 **/
 void BusquedaCuenta::setFocus()
 {
-    _depura("BusquedaCuenta::setFocus");
+    _depura ( "BusquedaCuenta::setFocus" );
     mui_codigocuenta->setFocus();
-    _depura("END BusquedaCuenta::setFocus");
+    _depura ( "END BusquedaCuenta::setFocus" );
 }
 
 
@@ -343,7 +343,7 @@ void BusquedaCuenta::pinta()
 **/
 void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 {
-	_depura ( "BusquedaCuenta::s_codigocuentatextChanged", 0, val );
+    _depura ( "BusquedaCuenta::s_codigocuentatextChanged", 0, val );
 
     bool encontrado = FALSE;
 
@@ -353,10 +353,10 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
     } // end if
 
     /// Comprobamos si se ha pulsado el * y entonces hacemos la busqueda
-    if (val == "*") {
-	on_mui_buscar_clicked();
-	_depura ( "END BusquedaCuenta::s_codigocuentatextChanged", 0 );
-	return;
+    if ( val == "*" ) {
+        on_mui_buscar_clicked();
+        _depura ( "END BusquedaCuenta::s_codigocuentatextChanged", 0 );
+        return;
     } // end if
 
 
@@ -366,7 +366,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
         mdb_idcuenta = cur->valor ( "idcuenta" );
         mdb_nomcuenta = cur->valor ( "descripcion" );
         mdb_codigocuenta = cur->valor ( "codigo" );
-	mdb_tipocuenta = cur->valor("tipocuenta");
+        mdb_tipocuenta = cur->valor ( "tipocuenta" );
         encontrado = TRUE;
     }
     delete cur;
@@ -379,7 +379,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
             mdb_idcuenta = cur->valor ( "idcuenta" );
             mdb_nomcuenta = cur->valor ( "descripcion" );
             mdb_codigocuenta = cur->valor ( "codigo" );
-	    mdb_tipocuenta = cur->valor("tipocuenta");
+            mdb_tipocuenta = cur->valor ( "tipocuenta" );
             encontrado = TRUE;
         } // end if
         delete cur;
@@ -392,7 +392,7 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
             mdb_idcuenta = cur->valor ( "idcuenta" );
             mdb_nomcuenta = cur->valor ( "descripcion" );
             mdb_codigocuenta = cur->valor ( "codigo" );
-	    mdb_tipocuenta = cur->valor("tipocuenta");
+            mdb_tipocuenta = cur->valor ( "tipocuenta" );
             encontrado = TRUE;
         } // end if
         delete cur;
@@ -405,12 +405,12 @@ void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
         mdb_idcuenta = "";
         mdb_nomcuenta = "";
         mdb_codigocuenta = "";
-	mdb_tipocuenta = "";
+        mdb_tipocuenta = "";
         g_plugins->lanza ( "BusquedaCuenta_textChanged_Post", this );
     } // end if
 
     if ( encontrado ) {
-	mui_nomcuenta->setText(mdb_nomcuenta);
+        mui_nomcuenta->setText ( mdb_nomcuenta );
         emit ( valueChanged ( mdb_idcuenta ) );
 
     } // end if

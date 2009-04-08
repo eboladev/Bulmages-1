@@ -54,9 +54,9 @@ MyPlugTrab::~MyPlugTrab()
 void MyPlugTrab::elslot1()
 {
     _depura ( "MyPlugTrab::elslot1", 0 );
-        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugTrab::elslot1", 0 );
 }
 
@@ -72,20 +72,20 @@ void MyPlugTrab::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->menuMaestro;
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Trabajadores" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Trabajadores" ) );
-	planCuentas->setWhatsThis ( _( "Trabajadores" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Trabajadores" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Trabajadores" ) );
+        planCuentas->setWhatsThis ( _ ( "Trabajadores" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
     _depura ( "END MyPlugTrab::inicializa", 0 );
@@ -105,8 +105,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_trabajador", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_trabajador", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugTrab *plug = new MyPlugTrab();
     plug->inicializa ( bges );
@@ -117,9 +117,9 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewTrabajadorView (BfCompany *v)
+int SNewTrabajadorView ( BfCompany *v )
 {
-	TrabajadorView *h = new TrabajadorView(v, 0);
-	g_plugParams = h;
-	return 1;
+    TrabajadorView *h = new TrabajadorView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }

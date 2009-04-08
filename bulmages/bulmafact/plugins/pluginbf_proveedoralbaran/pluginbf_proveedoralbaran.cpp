@@ -28,7 +28,7 @@
 #include "genalbpqtoolbutton.h"
 
 
-AlbaranesProveedor *g_albaranesProveedor=NULL;
+AlbaranesProveedor *g_albaranesProveedor = NULL;
 
 ///
 /**
@@ -56,9 +56,9 @@ mypluginalbp::~mypluginalbp()
 void mypluginalbp::elslot()
 {
     _depura ( "mypluginalbp::elslot", 0 );
-    if (g_albaranesProveedor) {
-	g_albaranesProveedor->hide();
-	g_albaranesProveedor->show();
+    if ( g_albaranesProveedor ) {
+        g_albaranesProveedor->hide();
+        g_albaranesProveedor->show();
     }// end if
     _depura ( "END mypluginalbp::elslot", 0 );
 }
@@ -69,9 +69,9 @@ void mypluginalbp::elslot()
 void mypluginalbp::elslot1()
 {
     _depura ( "mypluginalbp::elslot1", 0 );
-        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END mypluginalbp::elslot1", 0 );
 }
 
@@ -86,28 +86,28 @@ void mypluginalbp::inicializa ( Bulmafact *bges )
     _depura ( "mypluginalbp::inicializa", 0 );
 
     if ( bges->getcompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
-    /// Miramos si existe un menu Compras
-	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Compras
+        QMenu *pPluginMenu = bges->newMenu ( "&Compras", "menuCompras", "menuMaestro" );
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Albaranes de proveedores" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Albaranes de proveedores" ) );
-	planCuentas->setWhatsThis ( _( "Albaranes de proveedores" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Albaranes de proveedores" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Albaranes de proveedores" ) );
+        planCuentas->setWhatsThis ( _ ( "Albaranes de proveedores" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo albaran de proveedor" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo albaran de proveedor" ) );
-		npago->setWhatsThis ( _( "Nuevo albaran de proveedor" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nuevo albaran de proveedor" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.svg" ) ) );
+        npago->setStatusTip ( _ ( "Nuevo albaran de proveedor" ) );
+        npago->setWhatsThis ( _ ( "Nuevo albaran de proveedor" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
     }// end if
@@ -125,8 +125,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de entrada del plugin de facturas de proveedor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_proveedoralbaran", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_proveedoralbaran", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     mypluginalbp *plug = new mypluginalbp();
     plug->inicializa ( bges );
@@ -134,30 +134,33 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     if ( comp->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
-	g_albaranesProveedor = new AlbaranesProveedor( comp, NULL );	
-	comp->m_pWorkspace->addWindow ( g_albaranesProveedor );
-	g_albaranesProveedor->hide();
+        g_albaranesProveedor = new AlbaranesProveedor ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_albaranesProveedor );
+        g_albaranesProveedor->hide();
     }// end if
     return 0;
 }
 
 
-int ProveedorView_ProveedorView_Post (ProveedorView *prov) {
+int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
-	AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-	albaranesProveedor->setModoEdicion();
-	albaranesProveedor->setObjectName("listalbaranesproveedor");
-	albaranesProveedor->hideBusqueda();
+        AlbaranesProveedor *albaranesProveedor = new AlbaranesProveedor ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        albaranesProveedor->setModoEdicion();
+        albaranesProveedor->setObjectName ( "listalbaranesproveedor" );
+        albaranesProveedor->hideBusqueda();
         prov->mui_tab->addTab ( albaranesProveedor, "Albaranes" );
     }// end if
     return 0;
 }
 
-int ProveedorView_cargarPost_Post (ProveedorView *prov) {
+int ProveedorView_cargarPost_Post ( ProveedorView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
-	AlbaranesProveedor *albaranesProveedor = prov->findChild<AlbaranesProveedor *> ( "listalbaranesproveedor" );
+        AlbaranesProveedor *albaranesProveedor = prov->findChild<AlbaranesProveedor *> ( "listalbaranesproveedor" );
         albaranesProveedor->setidproveedor ( prov->dbValue ( "idproveedor" ) );
         albaranesProveedor->presentar();
     }// end if
@@ -165,11 +168,12 @@ int ProveedorView_cargarPost_Post (ProveedorView *prov) {
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
+int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+{
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        AlbaranProveedorView * bud = new AlbaranProveedorView((BfCompany *)ref->mainCompany(), NULL);
+        AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idalbaranp" ) );
         bud->show();
@@ -193,12 +197,12 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
@@ -208,11 +212,11 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewAlbaranProveedorView (BfCompany *v)
+int SNewAlbaranProveedorView ( BfCompany *v )
 {
-	AlbaranProveedorView *h = new AlbaranProveedorView(v, 0);
-	g_plugParams = h;
-	return 1;
+    AlbaranProveedorView *h = new AlbaranProveedorView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }
 
 

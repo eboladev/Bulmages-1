@@ -34,15 +34,15 @@ AsientoListSubform::AsientoListSubform ( QWidget *parent, const char * )
     setDbTableName ( "asiento" );
     setFileConfig ( "AsientoListSubform" );
     setDbFieldId ( "idasiento" );
-    addSubFormHeader ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Orden" ) );
-    addSubFormHeader ( "fecha", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
-    addSubFormHeader ( "numap", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Apuntes" ) );
-    addSubFormHeader ( "numborr", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Borrador" ) );
-    addSubFormHeader ( "comentariosasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios" ) );
-    addSubFormHeader ( "totaldebe", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Debe" ) );
-    addSubFormHeader ( "totalhaber", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Haber" ) );
-    addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id asiento" ) );
-    addSubFormHeader ( "clase", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Clase" ) );
+    addSubFormHeader ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Orden" ) );
+    addSubFormHeader ( "fecha", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+    addSubFormHeader ( "numap", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apuntes" ) );
+    addSubFormHeader ( "numborr", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Borrador" ) );
+    addSubFormHeader ( "comentariosasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );
+    addSubFormHeader ( "totaldebe", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Debe" ) );
+    addSubFormHeader ( "totalhaber", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Haber" ) );
+    addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id asiento" ) );
+    addSubFormHeader ( "clase", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Clase" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setOrdenPorQuery ( TRUE );
@@ -74,11 +74,11 @@ void AsientoListSubform::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _( "Mostrar asiento" ) );
+    menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
-    menu->addAction ( _( "Mostrar extracto (dia)" ) );
-    menu->addAction ( _( "Mostrar extracto (mes)" ) );
-    menu->addAction ( _( "Mostrar extracto (ano)" ) );
+    menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
+    menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
+    menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
 }
 
@@ -91,13 +91,13 @@ void AsientoListSubform::s_trataMenu ( QAction *action )
 {
     _depura ( "ListLinAsiento1View::s_trataMenu", 0 );
     if ( !action ) return;
-    if ( action->text() == _( "Mostrar asiento" ) )
+    if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
-    if ( action->text() == _( "Mostrar extracto (dia)" ) )
+    if ( action->text() == _ ( "Mostrar extracto (dia)" ) )
         boton_extracto1 ( 0 );
-    if ( action->text() == _( "Mostrar extracto (mes)" ) )
+    if ( action->text() == _ ( "Mostrar extracto (mes)" ) )
         boton_extracto1 ( 1 );
-    if ( action->text() == _( "Mostrar extracto (ano)" ) )
+    if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
     _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );

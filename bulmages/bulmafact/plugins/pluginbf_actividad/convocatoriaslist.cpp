@@ -128,7 +128,7 @@ QString ConvocatoriasList::generaFiltro()
 void ConvocatoriasList::crear()
 {
     _depura ( "ConvocatoriasList::crear", 0 );
-    ConvocatoriaView *bud = new ConvocatoriaView( (BfCompany *) mainCompany(), 0);
+    ConvocatoriaView *bud = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -141,7 +141,7 @@ void ConvocatoriasList::crear()
 void ConvocatoriasList::imprimir()
 {
     _depura ( "ConvocatoriasList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Convocatorias" ) );
+    mui_list->imprimirPDF ( _ ( "Convocatorias" ) );
     _depura ( "END ConvocatoriasList::imprimir", 0 );
 }
 
@@ -157,13 +157,13 @@ void ConvocatoriasList::borrar()
     _depura ( "ConvocatoriasList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
-            ConvocatoriaView * cv = new ConvocatoriaView( (BfCompany *) mainCompany(), 0);
+            ConvocatoriaView * cv = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idactividad ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -171,7 +171,7 @@ void ConvocatoriasList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:ConvocatoriasList::borrar", 0 );
 }
@@ -187,7 +187,7 @@ void ConvocatoriasList::editar ( int )
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
-            ConvocatoriaView * bud = new ConvocatoriaView( (BfCompany *) mainCompany(), 0);
+            ConvocatoriaView * bud = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( mdb_idactividad ) ) {
                 delete bud;
                 return;
@@ -198,7 +198,7 @@ void ConvocatoriasList::editar ( int )
             emit ( selected ( mdb_idactividad ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -214,8 +214,8 @@ void ConvocatoriasList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar Convocatoria" ) );
-    QAction *del = popup->addAction ( _( "Borrar Convocatoria" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar Convocatoria" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar Convocatoria" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -259,8 +259,8 @@ ConvocatoriasListSubForm::ConvocatoriasListSubForm ( QWidget *parent ) : BfSubFo
         return;
     setDbTableName ( "actividad" );
     setDbFieldId ( "idactividad" );
-    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Convocatoria" ) );
-    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Convocatoria" ) );
+    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

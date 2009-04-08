@@ -69,8 +69,8 @@ int entryPoint ( Bulmafact * )
     _depura ( "Punto de Entrada del plugin de Promedios", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_promedios", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_promedios", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 //    myplugin1 *plug = new myplugin1();
 //    plug->inicializa(bges);

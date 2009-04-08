@@ -87,7 +87,7 @@ void BlWorkspace::addWindow ( QWidget * w )
 
     /// Crea un QAction para manejar la tecla rapida ESC para cerrar la ventana.
     QAction *accionEsc = new QAction ( w );
-    accionEsc->setShortcut ( _( "Esc" ) );
+    accionEsc->setShortcut ( _ ( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
     _depura ( "END BlWorkspace::addWindow", 0 );

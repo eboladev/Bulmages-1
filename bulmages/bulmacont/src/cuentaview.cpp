@@ -35,33 +35,33 @@ CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
-    setTitleName ( _( "Cuenta" ) );
+    setTitleName ( _ ( "Cuenta" ) );
     /// Establecemos cual es la tabla en la que basarse para el tema de los permisos
     setDbTableName ( "cuenta" );
     setDbFieldId ( "idcuenta" );
 
-    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID cuenta" ) );
-    addDbField ( "codigo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo cuenta" ) );
-    addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion" ) );
-    addDbField ( "padre", BlDbField::DbInt  , BlDbField::DbNothing, _( "Padre" ) );
-    addDbField ( "imputacion", BlDbField::DbBoolean , BlDbField::DbNothing, _( "Imputacion" ) );
-    addDbField ( "bloqueada", BlDbField::DbBoolean , BlDbField::DbNothing, _( "Bloqueada" ) );
-    addDbField ( "nodebe", BlDbField::DbBoolean , BlDbField::DbNothing, _( "NoDebe" ) );
-    addDbField ( "nohaber", BlDbField::DbBoolean , BlDbField::DbNothing, _( "NoHaber" ) );
-    addDbField ( "regularizacion", BlDbField::DbBoolean , BlDbField::DbNothing, _( "Regularizacion" ) );
-    addDbField ( "tipocuenta", BlDbField::DbInt , BlDbField::DbNothing, _( "Tipo de Cuenta" ) );
-    addDbField ( "debe", BlDbField::DbNumeric , BlDbField::DbNoSave, _( "Debe" ) );
-    addDbField ( "haber", BlDbField::DbNumeric , BlDbField::DbNoSave, _( "Haber" ) );
-    addDbField ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, _( "Centro de coste por defecto" ) );
-    addDbField ( "nombreent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Entidad de la cuenta" ) );
-    addDbField ( "cifent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "CIF de la cuenta" ) );
-    addDbField ( "cpent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "CP de la cuenta" ) );
-    addDbField ( "telent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono de la cuenta" ) );
-    addDbField ( "coment_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios de la cuenta" ) );
-    addDbField ( "bancoent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Banco de la cuenta" ) );
-    addDbField ( "webent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Web de la cuenta" ) );
-    addDbField ( "emailent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "E-Mail de la cuenta" ) );
-    addDbField ( "dirent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion de la cuenta" ) );
+    addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID cuenta" ) );
+    addDbField ( "codigo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo cuenta" ) );
+    addDbField ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
+    addDbField ( "padre", BlDbField::DbInt  , BlDbField::DbNothing, _ ( "Padre" ) );
+    addDbField ( "imputacion", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "Imputacion" ) );
+    addDbField ( "bloqueada", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "Bloqueada" ) );
+    addDbField ( "nodebe", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "NoDebe" ) );
+    addDbField ( "nohaber", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "NoHaber" ) );
+    addDbField ( "regularizacion", BlDbField::DbBoolean , BlDbField::DbNothing, _ ( "Regularizacion" ) );
+    addDbField ( "tipocuenta", BlDbField::DbInt , BlDbField::DbNothing, _ ( "Tipo de Cuenta" ) );
+    addDbField ( "debe", BlDbField::DbNumeric , BlDbField::DbNoSave, _ ( "Debe" ) );
+    addDbField ( "haber", BlDbField::DbNumeric , BlDbField::DbNoSave, _ ( "Haber" ) );
+    addDbField ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Centro de coste por defecto" ) );
+    addDbField ( "nombreent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Entidad de la cuenta" ) );
+    addDbField ( "cifent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "CIF de la cuenta" ) );
+    addDbField ( "cpent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "CP de la cuenta" ) );
+    addDbField ( "telent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono de la cuenta" ) );
+    addDbField ( "coment_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios de la cuenta" ) );
+    addDbField ( "bancoent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Banco de la cuenta" ) );
+    addDbField ( "webent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Web de la cuenta" ) );
+    addDbField ( "emailent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "E-Mail de la cuenta" ) );
+    addDbField ( "dirent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion de la cuenta" ) );
 
     mui_padre->setMainCompany ( mainCompany() );
     mui_idc_coste->setMainCompany ( mainCompany() );
@@ -75,9 +75,9 @@ CuentaView::CuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_tipocuenta_0->setFieldValue ( "0" );
 
     mui_idprovincia->setMainCompany ( mainCompany() );
-    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
-    mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setFieldId ("idprovincia");
+    mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
+    mui_idprovincia->setTableName ( "provincia" );
+    mui_idprovincia->setFieldId ( "idprovincia" );
     mui_idprovincia->m_valores["nomprovincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
 

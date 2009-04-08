@@ -36,7 +36,7 @@ BusquedaFormaPago::BusquedaFormaPago ( QWidget *parent )
     _depura ( "BusquedaFormaPago::BusquedaFormaPago", 0 );
 
     m_comboRecordSet = NULL;
-    m_table= "forma_pago";
+    m_table = "forma_pago";
     m_null = TRUE;
 
     _depura ( "END BusquedaFormaPago::BusquedaFormaPago", 0 );
@@ -69,8 +69,8 @@ void BusquedaFormaPago::setId ( QString idforma_pago )
     _depura ( "BusquedaFormaPago::setidforma_pago", 0 );
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
-    if (idforma_pago.isEmpty() || idforma_pago == "0") {
-	idforma_pago = g_confpr->valor(CONF_IDFORMA_PAGO_DEFECTO);
+    if ( idforma_pago.isEmpty() || idforma_pago == "0" ) {
+        idforma_pago = g_confpr->valor ( CONF_IDFORMA_PAGO_DEFECTO );
     } // end if
 
     if ( m_comboRecordSet != NULL ) {
@@ -91,7 +91,7 @@ void BusquedaFormaPago::setId ( QString idforma_pago )
 
         if ( m_comboRecordSet->valor ( "idforma_pago" ) == idforma_pago ) {
             i1 = i;
-	} // end if
+        } // end if
 
         addItem ( m_comboRecordSet->valor ( "descforma_pago" ) );
         m_comboRecordSet->nextRecord();
@@ -183,8 +183,8 @@ QString BusquedaFormaPago::id()
 
     if ( !m_comboRecordSet ) return "0";
 
-    if (currentIndex() > 0) {
-	    return ( m_comboRecordSet->valor ( "idforma_pago", currentIndex() - 1 ) );
+    if ( currentIndex() > 0 ) {
+        return ( m_comboRecordSet->valor ( "idforma_pago", currentIndex() - 1 ) );
     } // end if
 
     return "";

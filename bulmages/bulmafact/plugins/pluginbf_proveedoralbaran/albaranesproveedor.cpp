@@ -49,11 +49,11 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
     setupUi ( this );
     mdb_idalbaranp = "";
     setSubForm ( mui_list );
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     iniciaForm();
     _depura ( "END AlbaranesProveedor::AlbaranesProveedor", 0 );
@@ -71,11 +71,11 @@ void AlbaranesProveedor::setMainCompany ( BfCompany *comp )
     m_proveedor->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-	/// Establecemos los parametros de busqueda del Cliente
-	m_proveedor->setLabel ( _( "Proveedor:" ) );
-	m_proveedor->setTableName( "proveedor" );
-	m_proveedor->m_valores["cifproveedor"] = "";
-	m_proveedor->m_valores["nomproveedor"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_proveedor->setLabel ( _ ( "Proveedor:" ) );
+    m_proveedor->setTableName ( "proveedor" );
+    m_proveedor->m_valores["cifproveedor"] = "";
+    m_proveedor->m_valores["nomproveedor"] = "";
 
     _depura ( "END AlbaranesProveedor::setMainCompany", 0 );
 }
@@ -88,11 +88,11 @@ void AlbaranesProveedor::crear()
 {
     _depura ( "AlbaranesProveedor::crear", 0 );
     if ( mainCompany() != NULL ) {
-        AlbaranProveedorView *albp = new AlbaranProveedorView( ( BfCompany * ) mainCompany(), 0 );
+        AlbaranProveedorView *albp = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         mainCompany()->pWorkspace()->addWindow ( albp );
-	albp->inicializar();
-	albp->show();
-	albp->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
+        albp->inicializar();
+        albp->show();
+        albp->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
     }// end if
     _depura ( "END AlbaranesProveedor::crear", 0 );
 }
@@ -156,8 +156,8 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     setSubForm ( mui_list );
     presentar();
     mdb_idalbaranp = "";
-    if (modoEdicion()) {
-    	mainCompany() ->meteWindow ( windowTitle(), this );
+    if ( modoEdicion() ) {
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -180,9 +180,9 @@ void AlbaranesProveedor::iniciaForm()
         _depura ( "END AlbaranesProveedor::iniciaForm", 0, "Salida por Plugin" );
         return;
     } // end if
-    mui_procesada->insertItem ( 0, _( "Todos los albaranes" ) );
-    mui_procesada->insertItem ( 1, _( "Albaranes procesados" ) );
-    mui_procesada->insertItem ( 2, _( "Albaranes no procesados" ) );
+    mui_procesada->insertItem ( 0, _ ( "Todos los albaranes" ) );
+    mui_procesada->insertItem ( 1, _ ( "Albaranes procesados" ) );
+    mui_procesada->insertItem ( 2, _ ( "Albaranes no procesados" ) );
     _depura ( "END AlbaranesProveedor::iniciaForm", 0 );
 }
 
@@ -221,10 +221,10 @@ void AlbaranesProveedor::presentar()
 
         /// Hacemos el calculo del total.
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalalbaranp) " \
-                       "AS total FROM albaranp LEFT JOIN proveedor ON " \
-                       "albaranp.idproveedor = proveedor.idproveedor LEFT " \
-                       "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \
-                       "WHERE 1 = 1 " + generaFiltro() );
+                             "AS total FROM albaranp LEFT JOIN proveedor ON " \
+                             "albaranp.idproveedor = proveedor.idproveedor LEFT " \
+                             "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \
+                             "WHERE 1 = 1 " + generaFiltro() );
         /// En caso de que el query haya fallado salimos.
         if ( !cur ) return;
         m_total->setText ( cur->valor ( "total" ) );
@@ -310,7 +310,7 @@ void AlbaranesProveedor::editar ( int row )
 void AlbaranesProveedor::imprimir()
 {
     _depura ( "AlbaranesProveedor::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Albaranes de proveedor" ) );
+    mui_list->imprimirPDF ( _ ( "Albaranes de proveedor" ) );
     _depura ( "END AlbaranesProveedor::imprimir", 0 );
 }
 
@@ -329,13 +329,13 @@ void AlbaranesProveedor::borrar()
     _depura ( "AlbaranesProveedor::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
         mdb_idalbaranp = mui_list->dbValue ( QString ( "idalbaranp" ) );
         if ( modoEdicion() ) {
-            AlbaranProveedorView * apv = new AlbaranProveedorView(( BfCompany * ) mainCompany(), 0);
+            AlbaranProveedorView * apv = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
             if ( apv->cargar ( mdb_idalbaranp ) ) {
                 throw - 1;
             } // end if
@@ -344,7 +344,7 @@ void AlbaranesProveedor::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar albaran de proveedor" ), this );
+        mensajeInfo ( _ ( "Error al borrar albaran de proveedor" ), this );
     } // end try
     _depura ( "END AlbaranesProveedor::borrar", 0 );
 }
@@ -377,22 +377,22 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform ( QWidget *parent )
     _depura ( "AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0 );
     setDbTableName ( "albaranp" );
     setDbFieldId ( "idalbaranp" );
-    addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID albaran" ) );
-    addSubFormHeader ( "numalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de albaran" ) );
-    addSubFormHeader ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
-    addSubFormHeader ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
-    addSubFormHeader ( "fechaalbaranp", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
-    addSubFormHeader ( "comentalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario" ) );
-    addSubFormHeader ( "procesadoalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Procesado" ) );
-    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID proveedor" ) );
-    addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID forma de pago" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
-    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del proveedor" ) );
-    addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre del almacen" ) );
-    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion de la forma de pago" ) );
-    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
-    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total albaran" ) );
+    addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID albaran" ) );
+    addSubFormHeader ( "numalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de albaran" ) );
+    addSubFormHeader ( "descalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion" ) );
+    addSubFormHeader ( "refalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia" ) );
+    addSubFormHeader ( "fechaalbaranp", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+    addSubFormHeader ( "comentalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario" ) );
+    addSubFormHeader ( "procesadoalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Procesado" ) );
+    addSubFormHeader ( "idproveedor", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID proveedor" ) );
+    addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID forma de pago" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
+    addSubFormHeader ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del proveedor" ) );
+    addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre del almacen" ) );
+    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion de la forma de pago" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total albaran" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

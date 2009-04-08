@@ -84,7 +84,7 @@ QString AlbaranClienteList::idCliDelivNote()
 void AlbaranClienteList::crear()
 {
     _depura ( "AlbaranClienteList::crear", 0 );
-    AlbaranClienteView *bud = new AlbaranClienteView( (BfCompany *) mainCompany(), 0);
+    AlbaranClienteView *bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->pintar();
@@ -152,11 +152,11 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     setSubForm ( mui_list );
     iniciaForm();
 
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
 
     presentar();
     mdb_idalbaran = "";
@@ -180,10 +180,10 @@ void AlbaranClienteList::iniciaForm()
     int res = g_plugins->lanza ( "AlbaranClienteList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, _( "Todos los albaranes" ) );
-    mui_procesada->insertItem ( 1, _( "Albaranes procesados" ) );
-    mui_procesada->insertItem ( 2, _( "Albaranes no procesados" ) );
-	mui_procesada->setCurrentIndex(2);
+    mui_procesada->insertItem ( 0, _ ( "Todos los albaranes" ) );
+    mui_procesada->insertItem ( 1, _ ( "Albaranes procesados" ) );
+    mui_procesada->insertItem ( 2, _ ( "Albaranes no procesados" ) );
+    mui_procesada->setCurrentIndex ( 2 );
     _depura ( "END AlbaranClienteList::iniciaForm" );
 }
 
@@ -255,7 +255,7 @@ void AlbaranClienteList::editar ( int row )
     _depura ( "AlbaranClienteList::editar", 0 );
     mdb_idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
     if ( modoEdicion() ) {
-        AlbaranClienteView * prov = new AlbaranClienteView(( BfCompany * ) mainCompany(), 0);
+        AlbaranClienteView * prov = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
         if ( prov->cargar ( mdb_idalbaran ) ) {
             delete prov;
             return;
@@ -283,13 +283,13 @@ void AlbaranClienteList::borrar()
     _depura ( "AlbaranClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
         mdb_idalbaran = mui_list->dbValue ( QString ( "idalbaran" ) );
         if ( modoEdicion() ) {
-            AlbaranClienteView * acv = new AlbaranClienteView(( BfCompany * ) mainCompany(), 0);
+            AlbaranClienteView * acv = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
             if ( acv->cargar ( mdb_idalbaran ) )
                 throw - 1;
             acv->on_mui_borrar_clicked();
@@ -297,7 +297,7 @@ void AlbaranClienteList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el albaran a cliente" ), this );
+        mensajeInfo ( _ ( "Error al borrar el albaran a cliente" ), this );
     } // end try
     _depura ( "END AlbaranClienteList::borrar", 0 );
 }
@@ -308,7 +308,7 @@ void AlbaranClienteList::borrar()
 void AlbaranClienteList::imprimir()
 {
     _depura ( "AlbaranClienteList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Albaranes a clientes" ) );
+    mui_list->imprimirPDF ( _ ( "Albaranes a clientes" ) );
     _depura ( "END AlbaranClienteList::imprimir", 0 );
 }
 
@@ -379,22 +379,22 @@ AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSub
         return;
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
-    addSubFormHeader ( "refalbaran", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Referencia de albaran" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo de almacen" ) );
-    addSubFormHeader ( "numalbaran", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Numero de albaran" ) );
-    addSubFormHeader ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
-    addSubFormHeader ( "fechaalbaran", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de albaran" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de cliente" ) );
-    addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID forma de pago" ) );
-    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion de forma de pago" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID albaran" ) );
-    addSubFormHeader ( "comentalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentarios del albaran" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
-    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
-    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total" ) );
+    addSubFormHeader ( "refalbaran", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Referencia de albaran" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo de almacen" ) );
+    addSubFormHeader ( "numalbaran", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de albaran" ) );
+    addSubFormHeader ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion" ) );
+    addSubFormHeader ( "fechaalbaran", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de albaran" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de cliente" ) );
+    addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID forma de pago" ) );
+    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion de forma de pago" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
+    addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID albaran" ) );
+    addSubFormHeader ( "comentalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios del albaran" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

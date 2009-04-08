@@ -66,7 +66,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
     setupUi ( this );
     _depura ( "BalanceView::BalanceView", 0 );
 
-    setTitleName ( _( "Asiento Contable" ) );
+    setTitleName ( _ ( "Asiento Contable" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
 
@@ -396,13 +396,13 @@ void BalanceView::contextmenu ( const QPoint &point )
     _depura ( "BalanceView::contextmenu", 0 );
 
     QMenu *menupopup = new QMenu ( this );
-    QAction *opt1 = menupopup->addAction ( _( "Ver Diario (este dia)" ) );
-    QAction *opt2 = menupopup->addAction ( _( "Ver Diario (este mes)" ) );
-    QAction *opt3 = menupopup->addAction ( _( "Ver Diario (este anyo)" ) );
+    QAction *opt1 = menupopup->addAction ( _ ( "Ver Diario (este dia)" ) );
+    QAction *opt2 = menupopup->addAction ( _ ( "Ver Diario (este mes)" ) );
+    QAction *opt3 = menupopup->addAction ( _ ( "Ver Diario (este anyo)" ) );
     menupopup->addSeparator();
-    QAction *opt4 = menupopup->addAction ( _( "Ver extracto (este dia)" ) );
-    QAction *opt5 = menupopup->addAction ( _( "Ver extracto (este mes)" ) );
-    QAction *opt6 = menupopup->addAction ( _( "Ver extracto (este anyo)" ) );
+    QAction *opt4 = menupopup->addAction ( _ ( "Ver extracto (este dia)" ) );
+    QAction *opt5 = menupopup->addAction ( _ ( "Ver extracto (este mes)" ) );
+    QAction *opt6 = menupopup->addAction ( _ ( "Ver extracto (este anyo)" ) );
     QAction *opcion = menupopup->exec ( point );
 
     if ( opcion == opt1 ) {
@@ -440,8 +440,8 @@ void BalanceView::imprimir()
     QString query;
     generarBalance();
 
-    if (generaRML ( "balance.rml" )) {
-	    invocaPDF ( "balance" );
+    if ( generaRML ( "balance.rml" ) ) {
+        invocaPDF ( "balance" );
     } // end if
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.

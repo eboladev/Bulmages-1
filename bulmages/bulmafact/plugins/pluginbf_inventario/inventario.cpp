@@ -35,12 +35,12 @@ Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 {
     _depura ( "Inventario::Inventario", 0 );
     companyact = comp;
-    setTitleName ( _( "Inventario" ) );
+    setTitleName ( _ ( "Inventario" ) );
     setDbTableName ( "inventario" );
     setDbFieldId ( "idinventario" );
-    addDbField ( "idinventario", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Identificador inventario" ) );
-    addDbField ( "fechainventario", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha inventario" ) );
-    addDbField ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre inventario" ) );
+    addDbField ( "idinventario", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador inventario" ) );
+    addDbField ( "fechainventario", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha inventario" ) );
+    addDbField ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre inventario" ) );
     _depura ( "END Inventario::Inventario", 0 );
 }
 

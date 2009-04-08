@@ -52,35 +52,35 @@ AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
     ctaamortizacion->setMainCompany ( emp );
 
     /// Inicializamos la clase para la base de datos.
-    setTitleName ( _( "Amortizacion" ) );
+    setTitleName ( _ ( "Amortizacion" ) );
     setDbTableName ( "amortizacion" );
     setDbFieldId ( "idamortizacion" );
-    addDbField ( "nomamortizacion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre de la amortizacion" ) );
-    addDbField ( "descamortizacion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion de la amortizacion" ) );
-    addDbField ( "fechacompra", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de la compra" ) );
-    addDbField ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha 1a cuota" ) );
-    addDbField ( "valorcompra", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Valor de la compra" ) );
-    addDbField ( "periodicidad", BlDbField::DbInt, BlDbField::DbNothing, _( "Periodicidad" ) );
-    addDbField ( "numcuotas", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero de cuotas" ) );
-    addDbField ( "metodo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Metodo" ) );
-    addDbField ( "nifproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "NIF del proveedor" ) );
-    addDbField ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del proveedor" ) );
-    addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion del proveedor" ) );
-    addDbField ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Telefono del proveedor" ) );
-    addDbField ( "agrupacion", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Agrupacion" ) );
-    addDbField ( "idamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id amortizacion" ) );
-    addDbField ( "idcuentaactivo", BlDbField::DbInt, BlDbField::DbNothing, _( "Identificador" ) );
-    addDbField ( "idcuentaamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id cuenta amortizacion" ) );
+    addDbField ( "nomamortizacion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre de la amortizacion" ) );
+    addDbField ( "descamortizacion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion de la amortizacion" ) );
+    addDbField ( "fechacompra", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de la compra" ) );
+    addDbField ( "fecha1cuota", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha 1a cuota" ) );
+    addDbField ( "valorcompra", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Valor de la compra" ) );
+    addDbField ( "periodicidad", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Periodicidad" ) );
+    addDbField ( "numcuotas", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero de cuotas" ) );
+    addDbField ( "metodo", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Metodo" ) );
+    addDbField ( "nifproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "NIF del proveedor" ) );
+    addDbField ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del proveedor" ) );
+    addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion del proveedor" ) );
+    addDbField ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono del proveedor" ) );
+    addDbField ( "agrupacion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Agrupacion" ) );
+    addDbField ( "idamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id amortizacion" ) );
+    addDbField ( "idcuentaactivo", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Identificador" ) );
+    addDbField ( "idcuentaamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cuenta amortizacion" ) );
 
     /// Inicializamos el listado.
     mui_listcuotas->setDbTableName ( "linamortizacion" );
     mui_listcuotas->setDbFieldId ( "idlinamortizacion" );
-    mui_listcuotas->addSubFormHeader ( "ejercicio", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Ejercicio" ) );
-    mui_listcuotas->addSubFormHeader ( "fechaprevista", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Fecha prevista" ) );
-    mui_listcuotas->addSubFormHeader ( "cantidad", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Cantidad" ) );
-    mui_listcuotas->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _( "Id asiento" ) );
-    mui_listcuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _( "Id lineas de amortizacion" ) );
-    mui_listcuotas->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _( "Id amortizacion" ) );
+    mui_listcuotas->addSubFormHeader ( "ejercicio", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Ejercicio" ) );
+    mui_listcuotas->addSubFormHeader ( "fechaprevista", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Fecha prevista" ) );
+    mui_listcuotas->addSubFormHeader ( "cantidad", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
+    mui_listcuotas->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Id asiento" ) );
+    mui_listcuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _ ( "Id lineas de amortizacion" ) );
+    mui_listcuotas->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( "Id amortizacion" ) );
     mui_listcuotas->setinsercion ( FALSE );
     mui_listcuotas->setOrdenEnabled ( FALSE );
 
@@ -208,7 +208,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
         _depura ( "END AmortizacionView::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _( "Error en la carga de la amortizacion" ) );
+        mensajeInfo ( _ ( "Error en la carga de la amortizacion" ) );
         return -1;
     } // end try
 }
@@ -243,13 +243,13 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             rec->setDbValue ( "cantidad", valcuotastr );
 
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if ( periodicidadtxt == _( "Anual" ) ) {
+            if ( periodicidadtxt == _ ( "Anual" ) ) {
                 f1cuota = f1cuota.addYears ( 1 );
-            } else if ( periodicidadtxt == _( "Mensual" ) ) {
+            } else if ( periodicidadtxt == _ ( "Mensual" ) ) {
                 f1cuota = f1cuota.addMonths ( 1 );
-            } else if ( periodicidadtxt == _( "Semestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Semestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 6 );
-            } else if ( periodicidadtxt == _( "Trimestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Trimestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
@@ -270,13 +270,13 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if ( periodicidadtxt == _( "Anual" ) ) {
+            if ( periodicidadtxt == _ ( "Anual" ) ) {
                 f1cuota = f1cuota.addYears ( 1 );
-            } else if ( periodicidadtxt == _( "Mensual" ) ) {
+            } else if ( periodicidadtxt == _ ( "Mensual" ) ) {
                 f1cuota = f1cuota.addMonths ( 1 );
-            } else if ( periodicidadtxt == _( "Semestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Semestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 6 );
-            } else if ( periodicidadtxt == _( "Trimestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Trimestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
@@ -298,13 +298,13 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             rec->setDbValue ( "cantidad", valcuotastr );
 
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if ( periodicidadtxt == _( "Anual" ) ) {
+            if ( periodicidadtxt == _ ( "Anual" ) ) {
                 f1cuota = f1cuota.addYears ( 1 );
-            } else if ( periodicidadtxt == _( "Mensual" ) ) {
+            } else if ( periodicidadtxt == _ ( "Mensual" ) ) {
                 f1cuota = f1cuota.addMonths ( 1 );
-            } else if ( periodicidadtxt == _( "Semestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Semestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 6 );
-            } else if ( periodicidadtxt == _( "Trimestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Trimestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
@@ -329,13 +329,13 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if ( periodicidadtxt == _( "Anual" ) ) {
+            if ( periodicidadtxt == _ ( "Anual" ) ) {
                 f1cuota = f1cuota.addYears ( 1 );
-            } else if ( periodicidadtxt == _( "Mensual" ) ) {
+            } else if ( periodicidadtxt == _ ( "Mensual" ) ) {
                 f1cuota = f1cuota.addMonths ( 1 );
-            } else if ( periodicidadtxt == _( "Semestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Semestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 6 );
-            } else if ( periodicidadtxt == _( "Trimestral" ) ) {
+            } else if ( periodicidadtxt == _ ( "Trimestral" ) ) {
                 f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
@@ -378,12 +378,12 @@ AmortizacionSubForm::~AmortizacionSubForm()
 void AmortizacionSubForm::creaMenu ( QMenu *menu )
 {
     _depura ( "AmortizacionSubForm::creaMenu", 0 );
-    QAction *opt1 = menu->addAction ( _( "Generar asiento" ) );
+    QAction *opt1 = menu->addAction ( _ ( "Generar asiento" ) );
     menu->addSeparator();
-    QAction *opt2 = menu->addAction ( _( "Ver asiento" ) );
+    QAction *opt2 = menu->addAction ( _ ( "Ver asiento" ) );
     menu->addSeparator();
-    QAction *opt3 = menu->addAction ( _( "Desvincular asiento" ) );
-    QAction *opt4 = menu->addAction ( _( "Borrar asiento" ) );
+    QAction *opt3 = menu->addAction ( _ ( "Desvincular asiento" ) );
+    QAction *opt4 = menu->addAction ( _ ( "Borrar asiento" ) );
 
     if ( dbValue ( "idasiento" ) == "" ) {
         opt1->setEnabled ( TRUE );
@@ -414,7 +414,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         return;
 
 
-    if ( opcion->text() == _( "Borrar cuota" ) ) {
+    if ( opcion->text() == _ ( "Borrar cuota" ) ) {
         QString idlinamortizacion = dbValue ( "idlinamortizacion" );
         QString query = "DELETE FROM linamortizacion WHERE idlinamortizacion = " + idlinamortizacion;
         if ( idlinamortizacion != "" ) {
@@ -424,7 +424,7 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         } // end if
         on_mui_confquery_clicked();
     } // end if
-    if ( opcion->text() == _( "Ver asiento" ) || opcion->text() == _( "Borrar asiento" ) ) {
+    if ( opcion->text() == _ ( "Ver asiento" ) || opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a mostrar el asiento, o se va a borrar.
         /*
                 ((BcCompany *)mainCompany())->intapuntsempresa()->show();
@@ -433,18 +433,18 @@ void AmortizacionSubForm::procesaMenu ( QAction *opcion )
         */
         boton_asiento();
     } // end if
-    if ( opcion->text() == _( "Desvincular asiento" ) || opcion->text() == _( "Borrar asiento" ) ) {
+    if ( opcion->text() == _ ( "Desvincular asiento" ) || opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a desvincular el asiento o se va a borrar.
         QString idasiento = dbValue ( "idasiento" );
         QString idlinamortizacion = dbValue ( "idlinamortizacion" );
         QString query = "UPDATE linamortizacion SET idasiento = NULL WHERE idlinamortizacion = " + idlinamortizacion;
         mainCompany() ->runQuery ( query );
     } // end if
-    if ( opcion->text() == _( "Borrar asiento" ) ) {
+    if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
         ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
     } // end if
-    if ( opcion->text() == _( "Generar asiento" ) ) {
+    if ( opcion->text() == _ ( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
         QString fecha = dbValue ( "fechaprevista" );
         //            fprintf(stderr, "Fecha: %s\n", fecha.toAscii().constData());

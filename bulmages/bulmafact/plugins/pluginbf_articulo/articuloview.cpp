@@ -55,25 +55,25 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( _( "Articulo" ) );
+        setTitleName ( _ ( "Articulo" ) );
         setDbTableName ( "articulo" );
         setDbFieldId ( "idarticulo" );
-        addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Identificador" ) );
-        addDbField ( "codarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo" ) );
-        addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre del articulo" ) );
-        addDbField ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Abreviacion" ) );
-        addDbField ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Observaciones" ) );
-        addDbField ( "presentablearticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Incluir en presentaciones" ) );
-        addDbField ( "controlstockarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Incluir en control de stock" ) );
-        addDbField ( "idtipo_articulo", BlDbField::DbInt, BlDbField::DbNothing, _( "Tipo de articulo" ) );
-        addDbField ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbNotNull, _( "Tipo de I.V.A." ) );
-        addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Codigo completo" ) );
-        addDbField ( "idfamilia", BlDbField::DbInt, BlDbField::DbNotNull, _( "Familia" ) );
-        addDbField ( "stockarticulo", BlDbField::DbInt, BlDbField::DbNothing, _( "Stock" ) );
-        addDbField ( "inactivoarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Inactivo" ) );
-        addDbField ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "P.V.P. base" ) );
-        addDbField ( "pesoundarticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Peso Unidad" ) );
-        addDbField ( "volumenundarticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Volumen Unidad" ) );
+        addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador" ) );
+        addDbField ( "codarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo" ) );
+        addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Nombre del articulo" ) );
+        addDbField ( "abrevarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Abreviacion" ) );
+        addDbField ( "obserarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Observaciones" ) );
+        addDbField ( "presentablearticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Incluir en presentaciones" ) );
+        addDbField ( "controlstockarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Incluir en control de stock" ) );
+        addDbField ( "idtipo_articulo", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Tipo de articulo" ) );
+        addDbField ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Tipo de I.V.A." ) );
+        addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Codigo completo" ) );
+        addDbField ( "idfamilia", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Familia" ) );
+        addDbField ( "stockarticulo", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Stock" ) );
+        addDbField ( "inactivoarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Inactivo" ) );
+        addDbField ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "P.V.P. base" ) );
+        addDbField ( "pesoundarticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Peso Unidad" ) );
+        addDbField ( "volumenundarticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Volumen Unidad" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ArticuloView_ArticuloView", this );
@@ -88,10 +88,10 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
 
         /// Inicializamos para que no se queden sin ser pintada.
         mui_idtipo_iva->setFieldValue ( "0" );
-        mui_pvparticulo->setText("0.0");
-        mui_volumenundarticulo->setText("0.00");
-        mui_pesoundarticulo->setText("0.0");
-	mui_abrevarticulo->setMaxLength(30);
+        mui_pvparticulo->setText ( "0.0" );
+        mui_volumenundarticulo->setText ( "0.00" );
+        mui_pesoundarticulo->setText ( "0.0" );
+        mui_abrevarticulo->setMaxLength ( 30 );
 
         dialogChanges_setQObjectExcluido ( m_componentes );
         dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
@@ -104,7 +104,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el articulo" ) );
+        mensajeInfo ( _ ( "Error al crear el articulo" ) );
     } // end try
     _depura ( "END ArticuloView::ArticuloView", 0 );
 }
@@ -220,7 +220,7 @@ int ArticuloView::guardarPost()
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
         if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
-            mensajeError ( _( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
+            mensajeError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
         delete cur1;
@@ -274,15 +274,15 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
 
     m_archivoimagen = QFileDialog::getOpenFileName (
                           this,
-                          _( "Seleccione un archivo de imagen" ),
+                          _ ( "Seleccione un archivo de imagen" ),
                           "",
-                          _( "Imagenes (*.jpg)" ) );
+                          _ ( "Imagenes (*.jpg)" ) );
 
     /// Comprueba si se ha seleccionado un archivo.
     if ( !m_archivoimagen.isNull() ) {
         /// Comprueba que la imagen del archivo es valida.
         if ( imagen.load ( m_archivoimagen ) == false ) {
-            mensajeError ( _( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
+            mensajeError ( _ ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
             return;
         } // end if
 
@@ -306,8 +306,8 @@ void ArticuloView::on_mui_borrarimagen_clicked()
 
     if ( archivo.exists() ) {
         int val = QMessageBox::question ( this,
-                                          _( "Borrar imagen del articulo" ),
-                                          _( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?" ),
+                                          _ ( "Borrar imagen del articulo" ),
+                                          _ ( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?" ),
                                           QMessageBox::Yes,
                                           QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
@@ -315,7 +315,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
             /// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
 
             if ( archivo.remove() == false ) {
-                mensajeError ( _( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
+                mensajeError ( _ ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
             } // end if
         } // end if
     } // end if

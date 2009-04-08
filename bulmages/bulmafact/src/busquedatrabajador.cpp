@@ -68,8 +68,8 @@ void BusquedaTrabajador::setId ( QString idtrabajador )
     _depura ( "BusquedaTrabajador::setidtrabajador", 0 );
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
-    if (idtrabajador.isEmpty() || idtrabajador == "0") {
-		idtrabajador = g_confpr->valor(CONF_IDTRABAJADOR_DEFECTO);
+    if ( idtrabajador.isEmpty() || idtrabajador == "0" ) {
+        idtrabajador = g_confpr->valor ( CONF_IDTRABAJADOR_DEFECTO );
     } // end if
 
     if ( m_comboRecordSet != NULL ) {
@@ -88,7 +88,7 @@ void BusquedaTrabajador::setId ( QString idtrabajador )
 
         if ( m_comboRecordSet->valor ( "idtrabajador" ) == idtrabajador ) {
             i1 = i;
-	} // end if
+        } // end if
 
         addItem ( m_comboRecordSet->valor ( "apellidostrabajador" ) + ", " + m_comboRecordSet->valor ( "nomtrabajador" ) );
         m_comboRecordSet->nextRecord();
@@ -112,7 +112,7 @@ QString BusquedaTrabajador::id()
     _depura ( "END BusquedaTrabajador::idtrabajador", 0 );
 
     if ( !m_comboRecordSet ) {
-	return "0";
+        return "0";
     } // end if
 
     return m_comboRecordSet->valor ( "idtrabajador", currentIndex() - 1 );

@@ -28,7 +28,7 @@
 
 #include "blsearchwidget.h"
 
-TutoresList *g_tutoresList=NULL;
+TutoresList *g_tutoresList = NULL;
 
 ///
 /**
@@ -56,9 +56,9 @@ MyPlugProf::~MyPlugProf()
 void MyPlugProf::elslot()
 {
     _depura ( "MyPlugProf::elslot", 0 );
-    if (g_tutoresList) {
-	g_tutoresList->hide();
-	g_tutoresList->show();
+    if ( g_tutoresList ) {
+        g_tutoresList->hide();
+        g_tutoresList->show();
     }// end if
     _depura ( "END MyPlugProf::elslot", 0 );
 }
@@ -69,9 +69,9 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
-        TutorView * bud = new TutorView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    TutorView * bud = new TutorView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
 
@@ -87,27 +87,27 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Docencia", "menuDocencia", "menuMaestro");
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Tutores/Socios" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
-	planCuentas->setStatusTip ( _( "Tutores" ) );
-	planCuentas->setWhatsThis ( _( "Tutores" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Tutores/Socios" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Tutores" ) );
+        planCuentas->setWhatsThis ( _ ( "Tutores" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo tutor/socio" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo tutor/socio" ) );
-	npago->setWhatsThis ( _( "Nuevo tutor/socio" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nuevo tutor/socio" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ) );
+        npago->setStatusTip ( _ ( "Nuevo tutor/socio" ) );
+        npago->setWhatsThis ( _ ( "Nuevo tutor/socio" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
@@ -123,8 +123,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de entrada del plugin de tutores\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_tutor", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_tutor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
@@ -132,75 +132,80 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
-  _depura("pluginbf_tutor::BfCompany_createMainWindows_Post", 0);
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
+    _depura ( "pluginbf_tutor::BfCompany_createMainWindows_Post", 0 );
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
-      g_tutoresList = new TutoresList( comp, NULL );	
-      comp->m_pWorkspace->addWindow ( g_tutoresList );
-      g_tutoresList->hide();
+        g_tutoresList = new TutoresList ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_tutoresList );
+        g_tutoresList->hide();
     }// end if
-  _depura("END pluginbf_tutor::BfCompany_createMainWindows_Post", 0);
+    _depura ( "END pluginbf_tutor::BfCompany_createMainWindows_Post", 0 );
     return 0;
 }
 
 
-int BlSubFormDelegate_createEditor(BlSubFormDelegate *bl) {
-  _depura("pluginbf_tutor::BlSubFormDelegate_createEditor", 0);
-  int ret = 0;
-    if (g_nomcampo == "nombrealumno") {
+int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbf_tutor::BlSubFormDelegate_createEditor", 0 );
+    int ret = 0;
+    if ( g_nomcampo == "nombrealumno" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
-        editor->setObjectName("EditNombreAlumno");
+        editor->setObjectName ( "EditNombreAlumno" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nombrealumno"] = "";
         editor->m_tabla = "alumno";
         g_plugParams =  editor;
         ret = -1;
-  } // end if
-  
-    if (g_nomcampo == "nomcliente") {
+    } // end if
+
+    if ( g_nomcampo == "nomcliente" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
-        editor->setObjectName("EditNombreCliente");
+        editor->setObjectName ( "EditNombreCliente" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
         editor->m_valores["nomcliente"] = "";
         editor->m_tabla = "cliente";
         g_plugParams =  editor;
         ret = -1;
-  } // end if  
-  _depura("END pluginbf_tutor::BlSubFormDelegate_createEditor", 0);
+    } // end if
+    _depura ( "END pluginbf_tutor::BlSubFormDelegate_createEditor", 0 );
 
-  return ret;
+    return ret;
 }
 
-int BlSubFormDelegate_setModelData(BlSubFormDelegate *bl) {
-  _depura("pluginbf_tutor::BlSubFormDelegate_setModelData", 0);
-  int ret = 0;
-    if (g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente") {
-        BlDbCompleterComboBox * comboBox = (BlDbCompleterComboBox *) g_editor;
+int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbf_tutor::BlSubFormDelegate_setModelData", 0 );
+    int ret = 0;
+    if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
+        BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-  _depura("END pluginbf_tutor::BlSubFormDelegate_setModelData", 0);
-  return ret;
+    _depura ( "END pluginbf_tutor::BlSubFormDelegate_setModelData", 0 );
+    return ret;
 }
 
 
-int BlSubFormDelegate_setEditorData(BlSubFormDelegate *bl) {
-  _depura("pluginbf_tutor::BlSubFormDelegate_setEditorData", 0);
-  int ret = 0;
-    if (g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente") {
+int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbf_tutor::BlSubFormDelegate_setEditorData", 0 );
+    int ret = 0;
+    if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
-        BlDbCompleterComboBox *comboBox = (BlDbCompleterComboBox *) g_editor ;
+        BlDbCompleterComboBox *comboBox = ( BlDbCompleterComboBox * ) g_editor ;
         comboBox->addItem ( value );
         ret = -1;
-      } // end if
-  _depura("END pluginbf_tutor::BlSubFormDelegate_setEditorData", 0);
-  return ret;
+    } // end if
+    _depura ( "END pluginbf_tutor::BlSubFormDelegate_setEditorData", 0 );
+    return ret;
 }
 
-int BlSubForm_editFinished(BlSubForm *sub) {
-  _depura("pluginbf_tutor::BlSubForm_editFinished", 0);
+int BlSubForm_editFinished ( BlSubForm *sub )
+{
+    _depura ( "pluginbf_tutor::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "nombrealumno" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idalumno FROM alumno WHERE nombrealumno = '" + sub->m_campoactual->text() + "'" );
         if ( !cur->eof() ) {
@@ -215,6 +220,6 @@ int BlSubForm_editFinished(BlSubForm *sub) {
         } // end if
         delete cur;
     } // end if
-    _depura("END pluginbf_tutor::BlSubForm_editFinished", 0);
-  return 0;
+    _depura ( "END pluginbf_tutor::BlSubForm_editFinished", 0 );
+    return 0;
 }

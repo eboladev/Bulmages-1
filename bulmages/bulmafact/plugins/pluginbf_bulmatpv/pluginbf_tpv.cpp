@@ -77,11 +77,11 @@ void myplugincont::inicializa ( Bulmafact *bges )
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-    	QMenu *pPluginVentas = NULL;
-	    pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        QMenu *pPluginVentas = NULL;
+        pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
         pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ));
-		bges->menuBar()->insertMenu(pPluginVentas->menuAction(), pPluginMenu);
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ) );
+        bges->menuBar()->insertMenu ( pPluginVentas->menuAction(), pPluginMenu );
     } // end if
 
     /// Creamos el men&uacute;.
@@ -108,8 +108,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_tpv", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_tpv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );

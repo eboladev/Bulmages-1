@@ -32,8 +32,8 @@ int entryPoint ( Bulmafact * )
 {
     _depura ( "Estoy dentro del plugin de iva incluido", 0 );
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_ivaincluido", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_ivaincluido", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -52,7 +52,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     _depura ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDbField ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Precio de coste" ) );
+    trab->addDbField ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio de coste" ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -91,8 +91,9 @@ int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 }
 
 
-int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *l) {
-	l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, "PVP IVA Inc" );
+int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post ( ListLinAlbaranClienteView *l )
+{
+    l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, "PVP IVA Inc" );
     return 0;
 }
 

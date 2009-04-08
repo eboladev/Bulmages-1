@@ -28,11 +28,11 @@
 
 BulmaGes::BulmaGes()
 {
-    setupUi(this);
-    setWindowTitle("Lanzador BulmaGes");
+    setupUi ( this );
+    setWindowTitle ( "Lanzador BulmaGes" );
 
     createTrayIcon();
-    trayIcon->setIcon(QIcon(":/images/iconbulmafact.png"));
+    trayIcon->setIcon ( QIcon ( ":/images/iconbulmafact.png" ) );
     trayIcon->show();
 }
 
@@ -42,36 +42,42 @@ BulmaGes::~BulmaGes()
 }
 
 
-void BulmaGes::on_mui_lanzabulmacont_clicked() {
+void BulmaGes::on_mui_lanzabulmacont_clicked()
+{
     launchBulmaCont();
 }
 
 
-void BulmaGes::on_mui_lanzabulmafact_clicked() {
+void BulmaGes::on_mui_lanzabulmafact_clicked()
+{
     launchBulmaFact();
 }
 
 
-void BulmaGes::on_mui_lanzabulmatpv_clicked() {
+void BulmaGes::on_mui_lanzabulmatpv_clicked()
+{
     launchBulmaTPV();
 }
 
 
-void BulmaGes::on_mui_lanzabulmasetup_clicked() {
+void BulmaGes::on_mui_lanzabulmasetup_clicked()
+{
     launchBulmaSetup();
 }
 
 
-void BulmaGes::on_mui_cerrar_clicked() {
+void BulmaGes::on_mui_cerrar_clicked()
+{
     hide();
 }
 
 
-void BulmaGes::activado(QSystemTrayIcon::ActivationReason reason) {
+void BulmaGes::activado ( QSystemTrayIcon::ActivationReason reason )
+{
 
-    if (reason == QSystemTrayIcon::Trigger) {
-	// Click boton izquierdo
-	show();
+    if ( reason == QSystemTrayIcon::Trigger ) {
+        // Click boton izquierdo
+        show();
     } // end if
 
 }
@@ -85,30 +91,30 @@ void BulmaGes::createTrayIcon()
     QAction *bulmaSetupAction;
     QAction *salirAction;
 
-    bulmaContAction = new QAction(tr("BulmaCont"), this);
-    bulmaFactAction = new QAction(tr("BulmaFact"), this);
-    bulmaTPVAction = new QAction(tr("BulmaTPV"), this);
-    bulmaSetupAction = new QAction(tr("BulmaSetup"), this);
-    salirAction = new QAction(tr("&Salir"), this);
+    bulmaContAction = new QAction ( tr ( "BulmaCont" ), this );
+    bulmaFactAction = new QAction ( tr ( "BulmaFact" ), this );
+    bulmaTPVAction = new QAction ( tr ( "BulmaTPV" ), this );
+    bulmaSetupAction = new QAction ( tr ( "BulmaSetup" ), this );
+    salirAction = new QAction ( tr ( "&Salir" ), this );
 
-    connect(bulmaContAction, SIGNAL(triggered()), this , SLOT(launchBulmaCont()));
-    connect(bulmaFactAction, SIGNAL(triggered()), this , SLOT(launchBulmaFact()));
-    connect(bulmaTPVAction, SIGNAL(triggered()), this , SLOT(launchBulmaTPV()));
-    connect(bulmaSetupAction, SIGNAL(triggered()), this , SLOT(launchBulmaSetup()));
-    connect(salirAction, SIGNAL(triggered()), qApp , SLOT(quit()));
+    connect ( bulmaContAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaCont() ) );
+    connect ( bulmaFactAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaFact() ) );
+    connect ( bulmaTPVAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaTPV() ) );
+    connect ( bulmaSetupAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaSetup() ) );
+    connect ( salirAction, SIGNAL ( triggered() ), qApp , SLOT ( quit() ) );
 
-    trayIconMenu = new QMenu(this);
-    trayIconMenu->addAction(bulmaContAction);
-    trayIconMenu->addAction(bulmaFactAction);
-    trayIconMenu->addAction(bulmaTPVAction);
-    trayIconMenu->addAction(bulmaSetupAction);
+    trayIconMenu = new QMenu ( this );
+    trayIconMenu->addAction ( bulmaContAction );
+    trayIconMenu->addAction ( bulmaFactAction );
+    trayIconMenu->addAction ( bulmaTPVAction );
+    trayIconMenu->addAction ( bulmaSetupAction );
     trayIconMenu->addSeparator();
-    trayIconMenu->addAction(salirAction);
+    trayIconMenu->addAction ( salirAction );
 
-    trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setContextMenu(trayIconMenu);
+    trayIcon = new QSystemTrayIcon ( this );
+    trayIcon->setContextMenu ( trayIconMenu );
 
-    connect( trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(activado(QSystemTrayIcon::ActivationReason)) );
+    connect ( trayIcon, SIGNAL ( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT ( activado ( QSystemTrayIcon::ActivationReason ) ) );
 
 }
 
@@ -116,34 +122,34 @@ void BulmaGes::createTrayIcon()
 void BulmaGes::launchBulmaCont()
 {
     hide();
-    runCommand("bulmacont");
+    runCommand ( "bulmacont" );
 }
 
 
 void BulmaGes::launchBulmaFact()
 {
     hide();
-    runCommand("bulmafact");
+    runCommand ( "bulmafact" );
 }
 
 
 void BulmaGes::launchBulmaTPV()
 {
     hide();
-    runCommand("bulmatpv");
+    runCommand ( "bulmatpv" );
 }
 
 
 void BulmaGes::launchBulmaSetup()
 {
     hide();
-    runCommand("kdesu -c bulmasetup --");
+    runCommand ( "kdesu -c bulmasetup --" );
 }
 
 
-void BulmaGes::runCommand(QString command)
+void BulmaGes::runCommand ( QString command )
 {
-    command = command + QString(" &");
-    system(command.toAscii().constData());
+    command = command + QString ( " &" );
+    system ( command.toAscii().constData() );
 }
 

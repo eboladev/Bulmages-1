@@ -52,14 +52,14 @@ listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags
     _depura ( "listcuentasview1::listcuentasview1", 0 );
     setupUi ( this );
 
-    setTitleName ( _( "Cuenta" ) );
+    setTitleName ( _ ( "Cuenta" ) );
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos
     setDbTableName ( "cuenta" );
 
     m_modo = editmode;
     /// Para el listado de columnas hacemos una inicializaci&oacute;n.
     QStringList headers;
-    headers << _( "Codigo cuenta" ) << _( "Nombre cuenta" ) << _( "Debe" ) << _( "Haber" ) << _( "ID cuenta" ) << _( "Bloqueada" ) << _( "Nodebe" ) << _( "Nohaber" ) << _( "Regularizacion" ) << _( "Imputacion" ) << _( "Grupo" ) << _( "Tipo cuenta" );
+    headers << _ ( "Codigo cuenta" ) << _ ( "Nombre cuenta" ) << _ ( "Debe" ) << _ ( "Haber" ) << _ ( "ID cuenta" ) << _ ( "Bloqueada" ) << _ ( "Nodebe" ) << _ ( "Nohaber" ) << _ ( "Regularizacion" ) << _ ( "Imputacion" ) << _ ( "Grupo" ) << _ ( "Tipo cuenta" );
     mui_arbolcuentas->setHeaderLabels ( headers );
     ccuenta = 0;
     cdesccuenta = 1;
@@ -85,7 +85,7 @@ listcuentasview1::listcuentasview1 ( BcCompany *emp, QWidget *parent, Qt::WFlags
     mui_arbolcuentas->hideColumn ( ctipocuenta );
 
     mui_tablacuentas->setColumnCount ( 3 );
-    headers << _( "CODIGO" ) << _( "NOMBRE" );
+    headers << _ ( "CODIGO" ) << _ ( "NOMBRE" );
     mui_tablacuentas->setHorizontalHeaderLabels ( headers );
 
     mui_tablacuentas->hideColumn ( 2 );
@@ -375,7 +375,7 @@ void listcuentasview1::on_mui_editar_clicked()
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
-        mensajeInfo ( _( "Debe seleccionar una cuenta" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una cuenta" ) );
         _depura ( "END listcuentasview1::on_mui_editar_clicked", 0, "Debe seleccionar una cuenta" );
         return;
     }
@@ -401,16 +401,16 @@ void listcuentasview1::on_mui_borrar_clicked()
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
-        mensajeInfo ( _( "Debe seleccionar una cuenta" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una cuenta" ) );
         return;
     } // end if
     int valor = QMessageBox::warning ( 0,
-                                       _( "Borrar cuenta" ),
-                                       _( "Se procedera a borrar la cuenta." ),
+                                       _ ( "Borrar cuenta" ),
+                                       _ ( "Se procedera a borrar la cuenta." ),
                                        QMessageBox::Yes, QMessageBox::No );
     if ( valor ==  QMessageBox::Yes ) {
         mainCompany() ->begin();
-        if ( mainCompany() ->runQuery ( "DELETE FROM cuenta WHERE idcuenta = "+ it->text(cidcuenta) ) == 0 ) {
+        if ( mainCompany() ->runQuery ( "DELETE FROM cuenta WHERE idcuenta = " + it->text ( cidcuenta ) ) == 0 ) {
             delete it;
         } else {
             mensajeInfo ( "No se ha podido borrar la cuenta." );
@@ -541,9 +541,9 @@ void listcuentasview1::on_mui_exportar_clicked()
 {
     _depura ( "listcuentasview1::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
-                    _( "Elija el archivo" ),
+                    _ ( "Elija el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
-                    _( "Plan contable (*.xml)" ) ) );
+                    _ ( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
         bulmages2XML ( filexml, IMPORT_CUENTAS );
         filexml.close();
@@ -560,9 +560,9 @@ void listcuentasview1::on_mui_importar_clicked()
 {
     _depura ( "listcuentasview1::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
-                    _( "Elija el archivo" ),
+                    _ ( "Elija el archivo" ),
                     "/usr/share/bulmages",
-                    _( "Plan contable (*.xml)" ) ) );
+                    _ ( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2Bulmages ( filexml, IMPORT_CUENTAS );
         filexml.close();

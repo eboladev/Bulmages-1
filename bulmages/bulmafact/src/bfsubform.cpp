@@ -92,7 +92,7 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 {
     _depura ( "BfSubForm::pressedAsterisk", 0 );
 
-	/// Establezco las variables de clase para que los plugins puedan operar.
+    /// Establezco las variables de clase para que los plugins puedan operar.
     m_registrolinea = rec;
     m_campoactual = camp;
 
@@ -133,7 +133,7 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 {
     _depura ( "BfSubForm::pressedMinus", 0 );
 
-	/// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
+    /// Como no invoca llamadas al listado de articulos lo podemos dejar aqui aunque en pluginbf_articulo estaria mucho mejor.
 
     if ( !rec->exists ( "idarticulo" ) ) {
         _depura ( "END BfSubForm::pressedMinus", 0, "No hay un idarticulo" );
@@ -173,7 +173,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     BlDbRecordSet *cur1 = NULL;
 
     /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
-    BlSubForm::editFinished( row, col, rec, camp);
+    BlSubForm::editFinished ( row, col, rec, camp );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
@@ -219,10 +219,10 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                 rec->setDbValue ( "desc" + m_tablename, cur->valor ( "nomarticulo" ) );
                 rec->setDbValue ( "cant" + m_tablename, "1.00" );
                 rec->setDbValue ( "descuento" + m_tablename, "0.00" );
-                calculaPVP(rec);
+                calculaPVP ( rec );
             } // end if
         } else {
-            mensajeAviso ( _( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );
+            mensajeAviso ( _ ( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );
             /// \TODO Preparo para revisarlo para la version 0.11.2 o posterior.
             /** El codigo introducido no existe en la base de datos.
             Aqui se tiene que dar la siguiente informacion:
@@ -263,7 +263,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             return;
         } // end if
 
-	// Miramos el IVA del articulo y lo ponemos.
+        // Miramos el IVA del articulo y lo ponemos.
         cur1 = mainCompany() ->loadQuery ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
         if ( !cur1->eof() ) {
             if ( m_tablename == "lpresupuesto"
@@ -443,9 +443,9 @@ void BfSubForm::setIdProveedor ( QString id )
 **/
 void BfSubForm::setIdAlmacen ( QString id )
 {
-	_depura("BfSubForm::setIdAlmacen", 0);
-	m_idAlmacen = id;
-	_depura("END BfSubForm::setIdAlmacen", 0);
+    _depura ( "BfSubForm::setIdAlmacen", 0 );
+    m_idAlmacen = id;
+    _depura ( "END BfSubForm::setIdAlmacen", 0 );
 }
 
 
@@ -501,9 +501,9 @@ QString BfSubForm::idproveedor()
 **/
 QString BfSubForm::idAlmacen ()
 {
-	_depura("BfSubForm::idAlmacen", 0);
-	_depura("END BfSubForm::idAlmacen", 0);
-	return m_idAlmacen;
+    _depura ( "BfSubForm::idAlmacen", 0 );
+    _depura ( "END BfSubForm::idAlmacen", 0 );
+    return m_idAlmacen;
 }
 
 
@@ -514,7 +514,7 @@ QString BfSubForm::idAlmacen ()
 /**
 \param parent
 **/
-BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate(parent)
+BfSubFormDelegate::BfSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate ( parent )
 {
     _depura ( "BfSubFormDelegate::BfSubFormDelegate", 0 );
 //    m_subform = ( BlSubForm * ) parent;
@@ -621,17 +621,17 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
-	QString valueanterior = m_subform->lista()->at ( index.row() )->dbValue ( "cant" + m_subform->tableName());
+        QString valueanterior = m_subform->lista()->at ( index.row() )->dbValue ( "cant" + m_subform->tableName() );
 
         model->setData ( index, value );
 
-	/// Dispara senyales:
-	if ( linea->nomcampo() == "cant" + m_subform->tableName() ) {
-		/// Mira si se ha cambiado la cantidad o es la misma que habia.
-		if (valueanterior.toDouble() != value.toDouble()) {
-			emit cant_changed(m_subform->lista()->at ( index.row() ));
-		} // end if
-	} // end if
+        /// Dispara senyales:
+        if ( linea->nomcampo() == "cant" + m_subform->tableName() ) {
+            /// Mira si se ha cambiado la cantidad o es la misma que habia.
+            if ( valueanterior.toDouble() != value.toDouble() ) {
+                emit cant_changed ( m_subform->lista()->at ( index.row() ) );
+            } // end if
+        } // end if
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         BusquedaArticuloDelegate * comboBox = static_cast<BusquedaArticuloDelegate*> ( editor );
@@ -712,7 +712,7 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
 **/
 QString BfSubForm::idArticulo()
 {
-	return m_idArticulo;
+    return m_idArticulo;
 }
 
 
@@ -721,57 +721,58 @@ QString BfSubForm::idArticulo()
 **/
 QString BfSubForm::idTarifa()
 {
-	return m_idTarifa;
+    return m_idTarifa;
 }
 
 
 ///
 /**
 **/
-void BfSubForm::calculaPVP(BlDbSubFormRecord *rec) {
+void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
+{
 
-	_depura("BfSubForm::calculaPVP" , 0);
+    _depura ( "BfSubForm::calculaPVP" , 0 );
 
-	BlDbRecordSet *cur = NULL;
-	BlDbRecordSet *cur3 = NULL;
+    BlDbRecordSet *cur = NULL;
+    BlDbRecordSet *cur3 = NULL;
 
-	/// Saca 'codigocompletoarticulo' del BlDbSubFormRecord pasado como parametro.
-	QString codigocompleto = rec->dbValue("codigocompletoarticulo");
+    /// Saca 'codigocompletoarticulo' del BlDbSubFormRecord pasado como parametro.
+    QString codigocompleto = rec->dbValue ( "codigocompletoarticulo" );
 
-        cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompleto + "'" );
-        if ( !cur->eof() ) {
-		/// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
-		/// el cliente y la tarifa asignada si procede.
-		if (!mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty()) {
-			/// Se ha seleccionado un cliente.
-			m_idArticulo = cur->valor ( "idarticulo" );
-			cur3 = mainCompany() ->loadQuery ( "SELECT cliente.idtarifa, ltarifa.pvpltarifa, ltarifa.idalmacen FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE ltarifa.idalmacen = " + m_idAlmacen + " AND cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + m_idArticulo );
-			m_idTarifa = cur3->valor ( "idtarifa" );
-			if (cur3->numregistros() > 0) {
-				/// A) Se dispone de tarifa especial.
-				rec->setDbValue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompleto + "'" );
+    if ( !cur->eof() ) {
+        /// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
+        /// el cliente y la tarifa asignada si procede.
+        if ( !mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty() ) {
+            /// Se ha seleccionado un cliente.
+            m_idArticulo = cur->valor ( "idarticulo" );
+            cur3 = mainCompany() ->loadQuery ( "SELECT cliente.idtarifa, ltarifa.pvpltarifa, ltarifa.idalmacen FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE ltarifa.idalmacen = " + m_idAlmacen + " AND cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + m_idArticulo );
+            m_idTarifa = cur3->valor ( "idtarifa" );
+            if ( cur3->numregistros() > 0 ) {
+                /// A) Se dispone de tarifa especial.
+                rec->setDbValue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
 
-				/// Disparamos los plugins.
-				int res = g_plugins->lanza ( "BfSubForm_calculaPVP", this );
-				if ( res != 0 ) {
-					_depura ( "END BfSubForm::calculapvp", 0, "Salida por plugins" );
-					return;
-				} // end if
+                /// Disparamos los plugins.
+                int res = g_plugins->lanza ( "BfSubForm_calculaPVP", this );
+                if ( res != 0 ) {
+                    _depura ( "END BfSubForm::calculapvp", 0, "Salida por plugins" );
+                    return;
+                } // end if
 
-			} else {
-				/// B) No tiene tarifa especial se usa la asignada por defecto.
-				rec->setDbValue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
-			} // end if
-		} else {
-			/// Sin cliente asignado se usa la tarifa asignada por defecto.
-			rec->setDbValue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
-		} // end if
-		
-	} // end if
+            } else {
+                /// B) No tiene tarifa especial se usa la asignada por defecto.
+                rec->setDbValue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+            } // end if
+        } else {
+            /// Sin cliente asignado se usa la tarifa asignada por defecto.
+            rec->setDbValue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+        } // end if
 
-	delete cur;
-	delete cur3;
-	_depura("END BfSubForm::calculaPVP",0);
+    } // end if
+
+    delete cur;
+    delete cur3;
+    _depura ( "END BfSubForm::calculaPVP", 0 );
 }
 
 

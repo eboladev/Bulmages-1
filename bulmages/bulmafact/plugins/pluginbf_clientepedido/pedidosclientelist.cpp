@@ -48,11 +48,11 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     m_idpedidocliente = "";
     setSubForm ( mui_list );
     hideBusqueda();
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
     iniciaForm();
     _depura ( "END PedidosClienteList::PedidosClienteList", 0 );
 }
@@ -65,7 +65,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 \param flags
 \return
 **/
-PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo)
+PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "PedidosClienteList::PedidosClienteList", 0 );
     setupUi ( this );
@@ -80,14 +80,14 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     iniciaForm();
     presentar();
     m_idpedidocliente = "";
-		/// Establecemos los parametros de busqueda del Cliente
-    m_cliente->setLabel ( _( "Cliente:" ) );
-	m_cliente->setTableName( "cliente" );
-	m_cliente->m_valores["cifcliente"] = "";
-	m_cliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    m_cliente->setLabel ( _ ( "Cliente:" ) );
+    m_cliente->setTableName ( "cliente" );
+    m_cliente->m_valores["cifcliente"] = "";
+    m_cliente->m_valores["nomcliente"] = "";
 
-    if(modoEdicion()) {
-    	mainCompany() ->meteWindow ( windowTitle(), this );
+    if ( modoEdicion() ) {
+        mainCompany() ->meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -107,10 +107,10 @@ void PedidosClienteList::iniciaForm()
     int res = g_plugins->lanza ( "PedidosClienteList_iniciaForm", this );
     if ( res != 0 )
         return;
-    mui_procesada->insertItem ( 0, _( "Todos los pedidos" ) );
-    mui_procesada->insertItem ( 1, _( "Pedidos procesados" ) );
-    mui_procesada->insertItem ( 2, _( "Pedidos no procesados" ) );
-	mui_procesada->setCurrentIndex(2);
+    mui_procesada->insertItem ( 0, _ ( "Todos los pedidos" ) );
+    mui_procesada->insertItem ( 1, _ ( "Pedidos procesados" ) );
+    mui_procesada->insertItem ( 2, _ ( "Pedidos no procesados" ) );
+    mui_procesada->setCurrentIndex ( 2 );
     _depura ( "END PedidosClienteList::iniciaForm" );
 }
 
@@ -226,7 +226,7 @@ void PedidosClienteList::editar ( int row )
             emit ( selected ( m_idpedidocliente ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al cargar el pedido cliente" ), this );
+        mensajeInfo ( _ ( "Error al cargar el pedido cliente" ), this );
     } // end try
     _depura ( "END ProveedorList::editar", 0 );
 }
@@ -238,7 +238,7 @@ void PedidosClienteList::editar ( int row )
 void PedidosClienteList::imprimir()
 {
     _depura ( "PedidosClienteList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Pedidos de clientes" ) );
+    mui_list->imprimirPDF ( _ ( "Pedidos de clientes" ) );
     _depura ( "END PedidosClienteList::imprimir", 0 );
 }
 
@@ -252,13 +252,13 @@ void PedidosClienteList::borrar()
     _depura ( "PedidosClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ), this );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
         m_idpedidocliente = mui_list->dbValue ( QString ( "idpedidocliente" ) );
         if ( modoEdicion() ) {
-            PedidoClienteView * pcv = new PedidoClienteView(( BfCompany * ) mainCompany());
+            PedidoClienteView * pcv = new PedidoClienteView ( ( BfCompany * ) mainCompany() );
             if ( pcv->cargar ( m_idpedidocliente ) ) {
                 throw - 1;
             } // end if
@@ -267,7 +267,7 @@ void PedidosClienteList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el pedido de cliente" ), this );
+        mensajeInfo ( _ ( "Error al borrar el pedido de cliente" ), this );
     } // end try
     _depura ( "END PedidosClienteList::borrar", 0 );
 }
@@ -325,22 +325,22 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
         return;
     setDbTableName ( "pedidocliente" );
     setDbFieldId ( "idpedidocliente" );
-    addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID pedido" ) );
-    addSubFormHeader ( "numpedidocliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Pedido" ) );
-    addSubFormHeader ( "fechapedidocliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Cliente" ) );
-    addSubFormHeader ( "refpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
-    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Base Imponible" ) );
-    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
-    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Total" ) );
-    addSubFormHeader ( "descpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
-    addSubFormHeader ( "contactpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Persona de contacto" ) );
-    addSubFormHeader ( "telpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Telefono" ) );
-    addSubFormHeader ( "comentpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Comentario" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Almacen" ) );
-    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID trabajador" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID cliente" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "ID almacen" ) );
+    addSubFormHeader ( "idpedidocliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID pedido" ) );
+    addSubFormHeader ( "numpedidocliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Pedido" ) );
+    addSubFormHeader ( "fechapedidocliente", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cliente" ) );
+    addSubFormHeader ( "refpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia" ) );
+    addSubFormHeader ( "base", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Base Imponible" ) );
+    addSubFormHeader ( "impuestos", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
+    addSubFormHeader ( "total", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
+    addSubFormHeader ( "descpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion" ) );
+    addSubFormHeader ( "contactpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Persona de contacto" ) );
+    addSubFormHeader ( "telpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Telefono" ) );
+    addSubFormHeader ( "comentpedidocliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentario" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Almacen" ) );
+    addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID trabajador" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID almacen" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

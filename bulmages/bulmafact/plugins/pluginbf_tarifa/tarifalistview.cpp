@@ -39,9 +39,9 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     setupUi ( this );
     mui_list->setMainCompany ( mainCompany() );
     mui_list->cargar();
-    mui_list->setColumnWidth(0, 250);
-    mainCompany() ->meteWindow ( _( "Tarifas" ), this );
-    setSubForm(mui_list);
+    mui_list->setColumnWidth ( 0, 250 );
+    mainCompany() ->meteWindow ( _ ( "Tarifas" ), this );
+    setSubForm ( mui_list );
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     //trataPermisos ( "tarifas" );
 
@@ -64,11 +64,11 @@ TarifaListView::~TarifaListView()
 /**
 \param row
 **/
-void TarifaListView::editar (int row)
+void TarifaListView::editar ( int row )
 {
     _depura ( "TarifaListView::editar", 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
-    QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
+    QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
@@ -83,9 +83,9 @@ void TarifaListView::crear()
 {
     _depura ( "TarifaListView::crear", 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), parentWidget() );
-    QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
+    QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
-    tar->setWindowTitle(tr("Nueva tarifa"));
+    tar->setWindowTitle ( tr ( "Nueva tarifa" ) );
     tar->show();
     _depura ( "END  TarifaListView::crear", 0 );
 }
@@ -98,14 +98,14 @@ void TarifaListView::borrar()
 {
     _depura ( "TarifaListView::borrar\n", 0 );
     int a = mui_list->currentRow();
-    if (a >= 0) {
-	TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
-        QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
-	tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), a ) );
-	tar->on_mui_borrar_clicked();
-	delete tar;
+    if ( a >= 0 ) {
+        TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
+        QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
+        tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), a ) );
+        tar->on_mui_borrar_clicked();
+        delete tar;
     } else {
-	mensajeInfo(tr("No ha seleccionado ninguna tarifa"));
+        mensajeInfo ( tr ( "No ha seleccionado ninguna tarifa" ) );
     } // end if
     _depura ( "END TarifaListView::borrar\n", 0 );
 }

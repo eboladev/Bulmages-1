@@ -77,8 +77,8 @@ void TicketQToolButton::setBoton()
     _depura ( "TicketQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( _("Imprimir Ticket") );
-    setToolTip ( _("Imprimir Ticket") );
+    setStatusTip ( _ ( "Imprimir Ticket" ) );
+    setToolTip ( _ ( "Imprimir Ticket" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -146,7 +146,7 @@ void TicketQToolButton::click()
         /// Imprimimos espacios
         file.write ( "\n \n", 3 );
         /// Imprimimos la fecha
-        file.write ( QString ( _("Fecha: ") ).toAscii() );
+        file.write ( QString ( _ ( "Fecha: " ) ).toAscii() );
         QDate fecha = QDate::currentDate();
         QString sfecha = fecha.toString ( "d-M-yyyy" );
         file.write ( sfecha.toAscii() );
@@ -157,9 +157,9 @@ void TicketQToolButton::click()
         file.write ( "\n", 1 );
 
         file.write ( QString ( "Cliente: " ).toAscii() );
-        file.write ( m_albaranClienteView->mui_idcliente->fieldValue("cifcliente").toAscii() );
+        file.write ( m_albaranClienteView->mui_idcliente->fieldValue ( "cifcliente" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_albaranClienteView->mui_idcliente->fieldValue("nomcliente").toAscii() );
+        file.write ( m_albaranClienteView->mui_idcliente->fieldValue ( "nomcliente" ).toAscii() );
         file.write ( "\n", 1 );
 
 
@@ -306,9 +306,9 @@ void TicketQToolButton::click()
         file.write ( "\n", 1 );
 
         file.write ( QString ( "Cliente: " ).toAscii() );
-        file.write ( m_facturaView->mui_idcliente->fieldValue("cifcliente").toAscii() );
+        file.write ( m_facturaView->mui_idcliente->fieldValue ( "cifcliente" ).toAscii() );
         file.write ( " ", 1 );
-        file.write ( m_facturaView->mui_idcliente->fieldValue("nomcliente").toAscii() );
+        file.write ( m_facturaView->mui_idcliente->fieldValue ( "nomcliente" ).toAscii() );
         file.write ( "\n", 1 );
 
 

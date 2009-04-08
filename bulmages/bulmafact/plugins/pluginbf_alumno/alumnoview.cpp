@@ -45,32 +45,32 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _( "Alumno" ) );
+        setTitleName ( _ ( "Alumno" ) );
         setDbTableName ( "alumno" );
         setDbFieldId ( "idalumno" );
-        addDbField ( "idalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id alumno" ) );
-        addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del alumno" ) );
-        addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del alumno" ) );
-        addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _( "Nombre del alumno" ) );
+        addDbField ( "idalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id alumno" ) );
+        addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
+        addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
+        addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
 
         /// Datos por defecto.
         mui_tutoresList->setMainCompany ( mainCompany() );
         mui_actividadesList->setMainCompany ( mainCompany() );
-        
+
         mui_idprovincia->setMainCompany ( mainCompany() );
-    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
-    mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setFieldId ("idprovincia");
-    mui_idprovincia->m_valores["provincia"] = "";
-    mui_idprovincia->m_valores["descpais"] = "";
-    mui_idprovincia->setAllowNull(TRUE);
+        mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
+        mui_idprovincia->setTableName ( "provincia" );
+        mui_idprovincia->setFieldId ( "idprovincia" );
+        mui_idprovincia->m_valores["provincia"] = "";
+        mui_idprovincia->m_valores["descpais"] = "";
+        mui_idprovincia->setAllowNull ( TRUE );
         mui_idprovincia->setId ( "" );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el alumno" ), this );
+        mensajeInfo ( _ ( "Error al crear el alumno" ), this );
     } // end try
     _depura ( "END AlumnoView::AlumnoView", 0 );
 }
@@ -85,9 +85,9 @@ AlumnoView::~AlumnoView()
 }
 
 
-QString AlumnoView::nombrePlantilla(void) 
+QString AlumnoView::nombrePlantilla ( void )
 {
-   return QString("recibo");
+    return QString ( "recibo" );
 }
 
 void AlumnoView::imprimir()
@@ -98,9 +98,9 @@ void AlumnoView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
-    } 
+    }
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
@@ -112,40 +112,43 @@ void AlumnoView::imprimir()
 }
 
 
-int AlumnoView::guardarPost() {
-	_depura(" AlumnoView::guardarPost", 0);
- mui_tutoresList->setColumnValue("idalumno", dbValue("idalumno"));
-  mui_tutoresList->guardar();
+int AlumnoView::guardarPost()
+{
+    _depura ( " AlumnoView::guardarPost", 0 );
+    mui_tutoresList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
+    mui_tutoresList->guardar();
 
- mui_actividadesList->setColumnValue("idalumno", dbValue("idalumno"));
-  mui_actividadesList->guardar();
-   
-	_depura("END AlumnoView::guardarPost", 0);
+    mui_actividadesList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
+    mui_actividadesList->guardar();
+
+    _depura ( "END AlumnoView::guardarPost", 0 );
 
 }
 
 
 
-int AlumnoView::borrarPre() {
-    QString query = "DELETE FROM alumnocliente WHERE idalumno =" + dbValue("idalumno");
-    mainCompany()->runQuery(query);
+int AlumnoView::borrarPre()
+{
+    QString query = "DELETE FROM alumnocliente WHERE idalumno =" + dbValue ( "idalumno" );
+    mainCompany()->runQuery ( query );
 
-    QString query1 = "DELETE FROM alumnoactividad WHERE idalumno =" + dbValue("idalumno");
-    mainCompany()->runQuery(query1);
+    QString query1 = "DELETE FROM alumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
+    mainCompany()->runQuery ( query1 );
 
     return 0;
 }
 
 
 
-int AlumnoView::cargarPost(QString id) {
-   _depura(" AlumnoView::cargarPost", 0);
+int AlumnoView::cargarPost ( QString id )
+{
+    _depura ( " AlumnoView::cargarPost", 0 );
 
-    mui_tutoresList->cargar(id);
-    mui_actividadesList->cargar(id);
+    mui_tutoresList->cargar ( id );
+    mui_actividadesList->cargar ( id );
 
-   _depura("END AlumnoView::cargarPost", 0);
-  return 0;
+    _depura ( "END AlumnoView::cargarPost", 0 );
+    return 0;
 }
 
 
@@ -162,10 +165,10 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     _depura ( "ListAlumnosTutorView::ListAlumnosTutorView", 0 );
     setDbTableName ( "alumnocliente" );
     setDbFieldId ( "idalumnocliente" );
-    addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );
-    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre alumno" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _( "Id tutor" ) );
+    addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
@@ -195,10 +198,10 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
-    addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _( "Identificador" ) );
-    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _( "Id alumno" ) );
-    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Nombre actividad" ) );
-    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _( "Id actividad" ) );
+    addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
+    addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre actividad" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id actividad" ) );
 
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );

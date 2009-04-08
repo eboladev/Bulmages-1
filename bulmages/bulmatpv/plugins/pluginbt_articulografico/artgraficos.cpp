@@ -25,7 +25,7 @@ ArtGraficos::ArtGraficos ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( em
     mui_list->horizontalHeader() ->hide();
     mui_list->verticalHeader() ->hide();
     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
-	ponPantallas();
+    ponPantallas();
     muestraPantalla ( 0 );
     _depura ( "END ArtGraficos::~ArtGraficos", 0 );
 }
@@ -40,12 +40,12 @@ ArtGraficos::~ArtGraficos()
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
-    QString artvarios = g_confpr->valor(CONF_ARTICULOS_VARIOS);
+    QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
     QString codigo = m_articulos[row][column];
-    if (! artvarios.contains(codigo)) {
-	    ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
+    if ( ! artvarios.contains ( codigo ) ) {
+        ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
     } else {
-	    ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column]);
+        ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column] );
     } // end if
 }
 
@@ -105,15 +105,15 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
             if ( nitem < nodos.count() ) {
                 QDomNode ventana = nodos.item ( nitem );
 
-		QString nombre = ventana.firstChildElement ( "TITULO").toElement().text();
+                QString nombre = ventana.firstChildElement ( "TITULO" ).toElement().text();
 
                 QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
                 QString text = e1.text();
 
-		QString codigo = ventana.firstChildElement ( "CODIGO").toElement().text();
-		if (codigo.isEmpty()) {
-			codigo = text;
-		} // end if
+                QString codigo = ventana.firstChildElement ( "CODIGO" ).toElement().text();
+                if ( codigo.isEmpty() ) {
+                    codigo = text;
+                } // end if
 
 
                 /// Creamos el elemento y lo ponemos en la tabla.
@@ -125,31 +125,31 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                 /// Ponemos las imagenes sin escalado.
 //                lab->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
 
-// Probamos con una Picture 
-         QPicture picture; 
-         QPainter painter;
-         painter.begin(&picture);           // paint in picture
-//	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+// Probamos con una Picture
+                QPicture picture;
+                QPainter painter;
+                painter.begin ( &picture );        // paint in picture
+//  painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
-	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ));
+                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
 
-	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt()-25,QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 25, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
 
 //         painter.drawEllipse(10,20, 80,70); // draw an ellipse
-	 painter.setPen(QColor(0,0,0));
-	 painter.setBackground(QColor(0,0,0));
+                painter.setPen ( QColor ( 0, 0, 0 ) );
+                painter.setBackground ( QColor ( 0, 0, 0 ) );
 
-	 painter.drawText(5,95,nombre);
-//	 painter.setPen(QColor(0,25,0));
-//	 painter.drawText(5,10,nombre);
-//	 painter.drawText(5,15,nombre);
-//	 painter.drawText(5,5,codigo);
-//	 painter.drawText(5,10,cellwidth);
+                painter.drawText ( 5, 95, nombre );
+//  painter.setPen(QColor(0,25,0));
+//  painter.drawText(5,10,nombre);
+//  painter.drawText(5,15,nombre);
+//  painter.drawText(5,5,codigo);
+//  painter.drawText(5,10,cellwidth);
 
-         painter.end();                     // painting done
+                painter.end();                     // painting done
 
 
-       lab->setPicture ( picture );
+                lab->setPicture ( picture );
 
                 mui_list->setCellWidget ( row, column, lab );
                 m_articulos[row][column] = codigo;
@@ -175,36 +175,38 @@ void ArtGraficos::cargaXML ( QString filename )
 
 }
 
-void ArtGraficos::ponPantallas() {
-	/// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginartgraficos.cpp
-	QWidget *widget = new QWidget;
+void ArtGraficos::ponPantallas()
+{
+    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginartgraficos.cpp
+    QWidget *widget = new QWidget;
     QVBoxLayout *hboxLayout1 = new QVBoxLayout;
     hboxLayout1->setSpacing ( 5 );
     hboxLayout1->setMargin ( 5 );
     hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
 
-	/// Itero sobre las pantallas para obtener los nombres de pantalla y crear los botones pretinentes.
-	QDomElement docElem = m_doc.documentElement();
-	QDomNodeList nodos = docElem.elementsByTagName("PANTALLA");
+    /// Itero sobre las pantallas para obtener los nombres de pantalla y crear los botones pretinentes.
+    QDomElement docElem = m_doc.documentElement();
+    QDomNodeList nodos = docElem.elementsByTagName ( "PANTALLA" );
 
-	int i=0;
-	for (int i=0; i < nodos.count(); i++) {
-		/// Cogemos el titulo de la pantalla
-		QString titulo = nodos.item(i).firstChildElement( "NOMBRE" ).text();
-		QPushButton *pb = new QPushButton( titulo, g_pantallas );
-		pb->setText(titulo);
-		pb->setObjectName(QString::number(i));
-		/// Hago la conexcion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
-		connect (pb, SIGNAL(pressed()), this, SLOT(pulsadoBoton()));
-		hboxLayout1->addWidget(pb);
-	}
+    int i = 0;
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        /// Cogemos el titulo de la pantalla
+        QString titulo = nodos.item ( i ).firstChildElement ( "NOMBRE" ).text();
+        QPushButton *pb = new QPushButton ( titulo, g_pantallas );
+        pb->setText ( titulo );
+        pb->setObjectName ( QString::number ( i ) );
+        /// Hago la conexcion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
+        connect ( pb, SIGNAL ( pressed() ), this, SLOT ( pulsadoBoton() ) );
+        hboxLayout1->addWidget ( pb );
+    }
 
-	/// Agrego el widget al BLDockWidget
-	widget->setLayout(hboxLayout1);
-	g_pantallas->setWidget(widget);
+    /// Agrego el widget al BLDockWidget
+    widget->setLayout ( hboxLayout1 );
+    g_pantallas->setWidget ( widget );
 }
 
 
-void ArtGraficos::pulsadoBoton() {
-	muestraPantalla(sender()->objectName().toInt());
+void ArtGraficos::pulsadoBoton()
+{
+    muestraPantalla ( sender()->objectName().toInt() );
 }

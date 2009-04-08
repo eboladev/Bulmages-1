@@ -35,7 +35,7 @@ AboutView::AboutView ( QDialog *parent ) : QDialog ( parent )
     QString str_licencia;
     setupUi ( this );
 
-    mui_lbversion->setText ( mui_lbversion->text() + " " + _( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
+    mui_lbversion->setText ( mui_lbversion->text() + " " + _ ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Terminal Punto de Venta GPL</h2></center>";
     str_autores = "<center><h2>Autores de Iglues/BulmaTPV</h2>" \

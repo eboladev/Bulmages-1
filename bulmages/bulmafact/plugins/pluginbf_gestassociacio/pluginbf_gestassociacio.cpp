@@ -60,8 +60,8 @@ void myplugin::elslot()
     _depura ( "myplugin::elslot", 0 );
     fprintf ( stderr, "S'ha activado el slot\n" );
     QMessageBox::warning ( 0,
-                           _("Titulo de la ventana"),
-                           _("Mensaje."),
+                           _ ( "Titulo de la ventana" ),
+                           _ ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
     _depura ( "END myplugin::elslot", 0 );
@@ -81,14 +81,14 @@ void myplugin::inicializa ( Bulmafact *bges )
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _("&Herramientas"), bges->menuBar() );
+        pPluginMenu = new QMenu ( _ ( "&Herramientas" ), bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
     } // end if
     /// Creamos el men&uacute;.
 
-    QAction *accion = new QAction ( _("&Prueba de plugin"), 0 );
-    accion->setStatusTip ( _("Muestra statustip") );
-    accion->setWhatsThis ( _("Muestra que es esto") );
+    QAction *accion = new QAction ( _ ( "&Prueba de plugin" ), 0 );
+    accion->setStatusTip ( _ ( "Muestra statustip" ) );
+    accion->setWhatsThis ( _ ( "Muestra que es esto" ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
@@ -106,14 +106,14 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Estoy dentro del plugin de demo", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_example", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-    
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_example", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bges->setWindowTitle ( _("Prueba de plugin para Bulmafact.") );
+    bges->setWindowTitle ( _ ( "Prueba de plugin para Bulmafact." ) );
     return 0;
 }
 

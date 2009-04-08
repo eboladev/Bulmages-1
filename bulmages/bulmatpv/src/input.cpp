@@ -60,7 +60,7 @@ void Input::keyPressEvent ( QKeyEvent *e )
         setText ( "" );
         break;
     case Qt::Key_F4:
-	// Limpia el display.
+        // Limpia el display.
         setText ( "" );
         break;
     case Qt::Key_Return:

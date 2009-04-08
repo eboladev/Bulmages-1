@@ -35,7 +35,7 @@ propiedadesempresa::propiedadesempresa ( BcCompany *emp, QWidget *parent )
 {
     _depura ( "propiedadesempresa::propiedadesempresa", 0 );
 
-    setTitleName ( _( "Configuracion" ) );
+    setTitleName ( _ ( "Configuracion" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "configuracion" );
 
@@ -113,9 +113,9 @@ bool propiedadesempresa::close()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::question ( this,
-                                     _( "Guardar cambios" ),
-                                     _( "Desea guardar los cambios?" ),
-                                     _( "&Guardar" ), _( "&No guardar" ), 0, 0, 1 ) == 0 ) {
+                                     _ ( "Guardar cambios" ),
+                                     _ ( "Desea guardar los cambios?" ),
+                                     _ ( "&Guardar" ), _ ( "&No guardar" ), 0, 0, 1 ) == 0 ) {
             on_mui_guardar_clicked();
         } // end if
     } // end if
@@ -155,9 +155,9 @@ void propiedadesempresa::on_mui_modificarplan_clicked()
     mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     if ( QMessageBox::warning ( this,
-                                _( "Salir del programa" ),
-                                _( "Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?" ),
-                                _( "&Salir" ), _( "&No salir" ), 0, 0, 1 ) == 0 ) {
+                                _ ( "Salir del programa" ),
+                                _ ( "Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?" ),
+                                _ ( "&Salir" ), _ ( "&No salir" ), 0, 0, 1 ) == 0 ) {
         exit ( 1 );
     } // end if
     dialogChanges_cargaInicial();
@@ -188,8 +188,8 @@ ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BcSubFo
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView, "Nombre" );
-    addSubFormHeader ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Valor" ) );
+    addSubFormHeader ( "nombre", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );

@@ -80,17 +80,17 @@ void pluginbalancemyplugin4::inicializa ( Bulmacont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _( "menuVentana" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _( "&Ver" ), bges->menuBar() );
+        pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
     } // end if
 
-    QAction *accion = new QAction ( _("&Balance"), 0 );
-    accion->setStatusTip ( _("Permite realizar balances") );
-    accion->setWhatsThis ( _("Podra disponer de la informacion del balance") );
+    QAction *accion = new QAction ( _ ( "&Balance" ), 0 );
+    accion->setStatusTip ( _ ( "Permite realizar balances" ) );
+    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_Balance.xpm" ) ) );
     bges->toolBar->addAction ( accion );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -111,8 +111,8 @@ int entryPoint ( Bulmacont *bcont )
     _depura ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbalance-old", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbalance-old", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     pluginbalancemyplugin4 *plug = new pluginbalancemyplugin4();
     plug->inicializa ( bcont );

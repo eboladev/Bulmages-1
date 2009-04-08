@@ -48,13 +48,13 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbusquedacliente", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbusquedacliente", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_emp = tpv->empresaTPV();
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BlDockWidget ( _("Cliente"), tpv, "buscaclientedock" );
+    g_doc1 = new BlDockWidget ( _ ( "Cliente" ), tpv, "buscaclientedock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
@@ -69,11 +69,11 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_busc = new BlSearchWidget ( 0 );
     g_busc->setMainCompany ( etpv );
-		/// Establecemos los parametros de busqueda del Cliente
-    g_busc->setLabel ( _( "Cliente:" ) );
-	g_busc->setTableName( "cliente" );
-	g_busc->m_valores["cifcliente"] = "";
-	g_busc->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    g_busc->setLabel ( _ ( "Cliente:" ) );
+    g_busc->setTableName ( "cliente" );
+    g_busc->m_valores["cifcliente"] = "";
+    g_busc->m_valores["nomcliente"] = "";
     g_doc1->setWidget ( g_busc );
 
     return 0;
@@ -81,7 +81,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
 {
-    if ( busc->id() != "" && busc == g_busc) {
+    if ( busc->id() != "" && busc == g_busc ) {
         g_emp->ticketActual() ->setDbValue ( "idcliente", busc->id() );
         g_emp->ticketActual() ->pintar();
         g_emp->setValorInput ( "" );

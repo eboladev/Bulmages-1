@@ -338,8 +338,8 @@ void BlForm::on_mui_borrar_clicked()
     _depura ( "BlForm::on_mui_borrar_clicked", 0 );
 
     int val = QMessageBox::question ( this,
-                                      _( "Borrar" ) + " " + windowTitle(),
-                                      _( "Desea eliminar '" ) + " " + windowTitle() + "' ?",
+                                      _ ( "Borrar" ) + " " + windowTitle(),
+                                      _ ( "Desea eliminar '" ) + " " + windowTitle() + "' ?",
                                       QMessageBox::Yes,
                                       QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
@@ -349,7 +349,7 @@ void BlForm::on_mui_borrar_clicked()
             _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
             close();
         } else {
-            mensajeInfo ( windowTitle() + _( "No se ha podido borrar" ) );
+            mensajeInfo ( windowTitle() + _ ( "No se ha podido borrar" ) );
         }// end if
     } // end if
     _depura ( "END BlForm::on_mui_borrar_clicked", 0 );
@@ -364,13 +364,13 @@ void BlForm::on_mui_borrar_clicked()
 void BlForm::closeEvent ( QCloseEvent *e )
 {
     _depura ( "BlForm::closeEvent", 0, windowTitle() );
-    
+
     try {
         if ( dialogChanges_hayCambios() ) {
             int val = QMessageBox::warning ( this,
-                                             _( "Guardar" ) + " " + windowTitle(),
-                                             _( "Desea guardar los cambios?" ),
-                                             _( "&Si" ), _( "&No" ), _( "&Cancelar" ), 0, 2 );
+                                             _ ( "Guardar" ) + " " + windowTitle(),
+                                             _ ( "Desea guardar los cambios?" ),
+                                             _ ( "&Si" ), _ ( "&No" ), _ ( "&Cancelar" ), 0, 2 );
             if ( val == 0 ) {
                 guardar();
             } // end if
@@ -383,7 +383,7 @@ void BlForm::closeEvent ( QCloseEvent *e )
         /// sacar las ventanas de listventanas.
 //        sacaWindow();
     } catch ( ... ) {
-        mensajeInfo ( _( "No se pudo cerrar la ventana debido a un error" ) );
+        mensajeInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
     } // end try
     _depura ( "END BlForm::closeEvent", 0 );
@@ -442,8 +442,8 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
     creaMenu ( popup );
 
 
-    QAction *avconfig = popup->addAction ( _( "Opciones avanzadas de ficha" ) );
-    QAction *avprint = popup->addAction ( _( "Imprimir ficha" ) );
+    QAction *avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
+    QAction *avprint = popup->addAction ( _ ( "Imprimir ficha" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
 
     if ( opcion ) {
@@ -491,14 +491,14 @@ void BlForm::setDbTableName ( QString nom )
     _depura ( "BlForm::setDbTableName", 0 );
     BlDbRecord::setDbTableName ( nom );
 
-    if (mainCompany() != NULL) {
-	if ( !mainCompany() ->hasTablePrivilege ( nom, "INSERT" ) ) {
-		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
-		QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
-		if ( b ) b->setDisabled ( TRUE );
-		b = findChild<QToolButton *> ( "mui_borrar" );
-		if ( b ) b->setDisabled ( TRUE );
-	} // end if
+    if ( mainCompany() != NULL ) {
+        if ( !mainCompany() ->hasTablePrivilege ( nom, "INSERT" ) ) {
+            /// Buscamos los permisos que tiene el usuario y desactivamos botones.
+            QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
+            if ( b ) b->setDisabled ( TRUE );
+            b = findChild<QToolButton *> ( "mui_borrar" );
+            if ( b ) b->setDisabled ( TRUE );
+        } // end if
     } // end if
 
     _depura ( "END BlForm::setDbTableName", 0 );
@@ -549,12 +549,12 @@ void BlForm::pintar()
         if ( l2 ) {
             l2->setFieldValue ( campo->valorcampo() );
         } else {
-                /// Buscamos BlComboBox que coincidan con el campo supuestamente
-          /// sirve para los campos personales.
-          QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
-          if ( l7 ) {
-              l7->setCurrentIndex ( l7->findText(campo->valorcampo() ));
-          } // end if
+            /// Buscamos BlComboBox que coincidan con el campo supuestamente
+            /// sirve para los campos personales.
+            QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+            if ( l7 ) {
+                l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
+            } // end if
         } // end if
         /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
@@ -614,13 +614,13 @@ void BlForm::recogeValores()
         BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
             campo->set ( l2->fieldValue() );
-	} else {
-        /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-        QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
-        if ( l7 ) {
-            campo->set ( l7->currentText() );
-   } // end if
-   } // end if
+        } else {
+            /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
+            QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+            if ( l7 ) {
+                campo->set ( l7->currentText() );
+            } // end if
+        } // end if
         /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
@@ -656,7 +656,7 @@ void BlForm::recogeValores()
 \param id
 \return
 **/
-int BlForm::cargar ( QString id, bool paint)
+int BlForm::cargar ( QString id, bool paint )
 {
     _depura ( "BlForm::cargar", 0, id );
     try {
@@ -670,7 +670,7 @@ int BlForm::cargar ( QString id, bool paint)
         /// Activamos documentos adicionales
         activaDocumentos();
 
-        if (paint == TRUE) {
+        if ( paint == TRUE ) {
             pintar();
         } // end if
 
@@ -802,41 +802,42 @@ void BlForm::pintarPost()
 
 /// Sustituye valores en el texto pasado como variables por su valor.
 /// tipoEscape puede ser 0 --> Sin parseo
-///			 1 --> ParseoXML
-///			 2 --> ParseoPython
+///    1 --> ParseoXML
+///    2 --> ParseoPython
 
-void BlForm::substrVars ( QString &buff, int tipoEscape ) {
+void BlForm::substrVars ( QString &buff, int tipoEscape )
+{
 
-	int pos = 0;
+    int pos = 0;
 
     /// Tratamos la sustitucion de variables de m_variables
-	QMapIterator<QString, QString> i(m_variables);
-	while (i.hasNext()) {
-		i.next();
+    QMapIterator<QString, QString> i ( m_variables );
+    while ( i.hasNext() ) {
+        i.next();
         buff.replace ( "[" + i.key() + "]", i.value() );
-	} // end while
+    } // end while
 
 
-    substrConf(buff);
+    substrConf ( buff );
 
     pos =  0;
-    
+
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
-		switch (tipoEscape) {
-			case 1:
-	            	buff.replace ( pos, rx.matchedLength(), xmlEscape(dbValue ( rx.cap ( 1 ) )) );
-			break;
-			case 2:
-	            	buff.replace ( pos, rx.matchedLength(), pythonEscape(dbValue ( rx.cap ( 1 ) )) );
-			break;
-			default:
-	            	buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ) );
+            switch ( tipoEscape ) {
+            case 1:
+                buff.replace ( pos, rx.matchedLength(), xmlEscape ( dbValue ( rx.cap ( 1 ) ) ) );
+                break;
+            case 2:
+                buff.replace ( pos, rx.matchedLength(), pythonEscape ( dbValue ( rx.cap ( 1 ) ) ) );
+                break;
+            default:
+                buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ) );
 
-		} // end switch
-			
+            } // end switch
+
             pos = 0;
         } else {
             pos += rx.matchedLength();
@@ -864,70 +865,70 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx70.setMinimal ( TRUE );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
-		QString cadarchivo = rx70.cap(1);
-	
-            substrConf(cadarchivo); 
+        QString cadarchivo = rx70.cap ( 1 );
 
-	    QFile fichero(cadarchivo);
-	    if (fichero.exists()) {
-		QUiLoader loader;
-		fichero.open(QFile::ReadOnly);
-		QWidget *iface = loader.load(&fichero, this);
-		fichero.close();
-		QDialog *diag = new QDialog ( 0 );
-		diag->setModal ( true );
-		
-		/// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
-		/// para que sea redimensionable y aparezca el titulo de la ventana.
-		QHBoxLayout *layout = new QHBoxLayout;
-		layout->addWidget ( iface );
-		layout->setMargin ( 5 );
-		layout->setSpacing ( 5 );
-		diag->setLayout ( layout );
-		diag->setWindowTitle ( iface->windowTitle() );
-		diag->setGeometry(0, 0, iface->width(), iface->height());
-		QPushButton *button = iface->findChild<QPushButton *>("mui_aceptar");
-		connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
-		QPushButton *button1 = iface->findChild<QPushButton *>("mui_cancelar");
-		connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
-		int ret = diag->exec();
-		if (ret) {
-			QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
-			QListIterator<QLineEdit *> it2 ( l2 );
-			while ( it2.hasNext() ) {
-				QLineEdit * item = it2.next();
-				QString nombre = item->objectName().right(item->objectName().size()-4);
-				QString valor = item->text();
-				addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
-				setDbValue ( nombre, valor );
-			} // end while
-		} // end if
-		delete diag;
-		// Si se ha pulsado cancelar entonce se sale del informe.
-		if (!ret) return 0;
-	    } else {
-		mensajeInfo("Archivo de Interficie no existe");
-	    }// end if
+        substrConf ( cadarchivo );
+
+        QFile fichero ( cadarchivo );
+        if ( fichero.exists() ) {
+            QUiLoader loader;
+            fichero.open ( QFile::ReadOnly );
+            QWidget *iface = loader.load ( &fichero, this );
+            fichero.close();
+            QDialog *diag = new QDialog ( 0 );
+            diag->setModal ( true );
+
+            /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+            /// para que sea redimensionable y aparezca el titulo de la ventana.
+            QHBoxLayout *layout = new QHBoxLayout;
+            layout->addWidget ( iface );
+            layout->setMargin ( 5 );
+            layout->setSpacing ( 5 );
+            diag->setLayout ( layout );
+            diag->setWindowTitle ( iface->windowTitle() );
+            diag->setGeometry ( 0, 0, iface->width(), iface->height() );
+            QPushButton *button = iface->findChild<QPushButton *> ( "mui_aceptar" );
+            connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
+            QPushButton *button1 = iface->findChild<QPushButton *> ( "mui_cancelar" );
+            connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
+            int ret = diag->exec();
+            if ( ret ) {
+                QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
+                QListIterator<QLineEdit *> it2 ( l2 );
+                while ( it2.hasNext() ) {
+                    QLineEdit * item = it2.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->text();
+                    addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+            } // end if
+            delete diag;
+            // Si se ha pulsado cancelar entonce se sale del informe.
+            if ( !ret ) return 0;
+        } else {
+            mensajeInfo ( "Archivo de Interficie no existe" );
+        }// end if
 
         buff.replace ( pos, rx70.matchedLength(), "" );
         pos = 0;
     } // end while
 
 
-	/// Buscamos establecimiento de variables y los ponemos en m_variables
-	pos = 0;
-	QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-	rx54.setMinimal ( TRUE );
-	while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1) {
-		QString valor = rx54.cap(2);
-		substrVars(valor, tipoEscape);
-		m_variables[rx54.cap (1)] = valor;
-		buff.replace( pos, rx54.matchedLength(), "");
-		pos = 0;
-	} // end while
+    /// Buscamos establecimiento de variables y los ponemos en m_variables
+    pos = 0;
+    QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx54.setMinimal ( TRUE );
+    while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1 ) {
+        QString valor = rx54.cap ( 2 );
+        substrVars ( valor, tipoEscape );
+        m_variables[rx54.cap ( 1 ) ] = valor;
+        buff.replace ( pos, rx54.matchedLength(), "" );
+        pos = 0;
+    } // end while
 
-	/// Tratamos las variables establecidas.
-	substrVars(buff);
+    /// Tratamos las variables establecidas.
+    substrVars ( buff );
 
 
 
@@ -1009,7 +1010,7 @@ QString BlForm::trataIfQuery ( const QString &query, const QString &datos )
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-	substrVars(query1);
+    substrVars ( query1 );
 
     /// Cargamos el query y lo recorremos
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query1 );
@@ -1035,7 +1036,7 @@ QString BlForm::trataIf ( const QString &query, const QString &datos, const QStr
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-	substrVars(query1);
+    substrVars ( query1 );
 
     QString query2 = "SELECT (" + query1 + ") AS res";
     /// Cargamos el query y lo recorremos
@@ -1066,10 +1067,10 @@ QString BlForm::trataQuery ( const QString &query, const QString &datos, int tip
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-	substrVars(query1);
+    substrVars ( query1 );
 
     /// Cargamos el query y lo recorremos
-    result = trataCursor( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape);
+    result = trataCursor ( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape );
     _depura ( "END BlForm::trataQuery", 0 );
     return result;
 
@@ -1080,9 +1081,8 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
     _depura ( "BlForm::trataCursor", 0 );
     QString result = "";
 
-    if ( !cur )  
-    {
-        _depura ( "END BlForm::trataCursor", 0 , "cur==NULL");
+    if ( !cur ) {
+        _depura ( "END BlForm::trataCursor", 0 , "cur==NULL" );
         return "";
     };
     while ( !cur->eof() ) {
@@ -1095,17 +1095,17 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             //_depura("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
-		switch (tipoEscape) {
-			case 1:
-		                salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
-			break;
-			case 2:
-		                salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
-			break;
-			default:
-		                salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ) );
-			break;
-		} // emd switch
+                switch ( tipoEscape ) {
+                case 1:
+                    salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    break;
+                case 2:
+                    salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    break;
+                default:
+                    salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ) );
+                    break;
+                } // emd switch
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
@@ -1134,7 +1134,7 @@ QString BlForm::trataExists ( const QString &query, const QString &datos )
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-	substrVars(query1);
+    substrVars ( query1 );
 
     QFile file ( query1 );
     if ( file.exists() )
@@ -1147,7 +1147,7 @@ QString BlForm::trataExists ( const QString &query, const QString &datos )
 
 int BlForm::generaRML ( void )
 {
-   BlDbRecord::generaRML();
+    BlDbRecord::generaRML();
 }
 ///
 /**
@@ -1156,12 +1156,12 @@ int BlForm::generaRML ( const QString &arch )
 {
     _depura ( "BlForm::generaRML", 0 );
 
-	/// Vaciamos las variables de RML
-	m_variables.clear();
+    /// Vaciamos las variables de RML
+    m_variables.clear();
 
-	/// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
-	m_variables["CONF_DBNAME"] = mainCompany()->dbName();
-	m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
+    /// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
+    m_variables["CONF_DBNAME"] = mainCompany()->dbName();
+    m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
 
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BlForm_generaRML", this );
@@ -1169,7 +1169,7 @@ int BlForm::generaRML ( const QString &arch )
         return 1;
     } // end if
 
-    res = BlDbRecord::generaRML( arch );
+    res = BlDbRecord::generaRML ( arch );
 
     _depura ( "END BlForm::generaRML", 0 );
     return res;

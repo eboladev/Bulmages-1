@@ -38,8 +38,8 @@ int entryPoint ( QApplication * )
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_subform2sxc", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_subform2sxc", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
     return 0;
@@ -75,7 +75,7 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformsxc::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _( "Exportar a hoja de calculo (SXC)" ) );
+    menu->addAction ( _ ( "Exportar a hoja de calculo (SXC)" ) );
     _depura ( "END myplugsubformsxc::s_pintaMenu", 0 );
 }
 
@@ -87,7 +87,7 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 void myplugsubformsxc::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugsubformsxc::s_trataMenu", 0 );
-    if ( action->text() == _( "Exportar a hoja de calculo (SXC)" ) ) {
+    if ( action->text() == _ ( "Exportar a hoja de calculo (SXC)" ) ) {
         sacaSXC();
     } // end if
     _depura ( "END myplugsubformsxc::s_trataMenu", 0 );
@@ -156,9 +156,9 @@ void myplugsubformsxc::sacaSXC()
     /// Tratamos el progreso de la operacion.
     BlProgressBar barra;
     barra.setRange ( 0, subf->mui_list->rowCount() - 1 );
-    barra.setText ( _( "Exportando datos a SXC" ) );
+    barra.setText ( _ ( "Exportando datos a SXC" ) );
     barra.show();
-    barra.setText ( _( "Exportando datos a SXC" ) );
+    barra.setText ( _ ( "Exportando datos a SXC" ) );
 
     /// Sacamos el contenido
     for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {

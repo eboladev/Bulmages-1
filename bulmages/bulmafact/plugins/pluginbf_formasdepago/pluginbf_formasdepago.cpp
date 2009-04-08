@@ -54,9 +54,9 @@ MyPlugFPago::~MyPlugFPago()
 void MyPlugFPago::elslot1()
 {
     _depura ( "MyPlugFPago::elslot1", 0 );
-        FPagoView * bud = new FPagoView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    FPagoView * bud = new FPagoView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugFPago::elslot1", 0 );
 }
 
@@ -72,19 +72,19 @@ void MyPlugFPago::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->menuMaestro;
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
 
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Formas de pago" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/payment-method.svg" ) ));
-	planCuentas->setStatusTip ( _( "Formas de pago" ) );
-	planCuentas->setWhatsThis ( _( "Formas de pago" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Formas de pago" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/payment-method.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Formas de pago" ) );
+        planCuentas->setWhatsThis ( _ ( "Formas de pago" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
     _depura ( "END MyPlugFPago::inicializa", 0 );
@@ -104,8 +104,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Entra plugin pluginbf_formasdepago\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_formasdepago", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_formasdepago", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     MyPlugFPago *plug = new MyPlugFPago();
     plug->inicializa ( bges );
@@ -116,9 +116,9 @@ int entryPoint ( Bulmafact *bges )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewFPagoView (BfCompany *v)
+int SNewFPagoView ( BfCompany *v )
 {
-	FPagoView *h = new FPagoView(v, 0);
-	g_plugParams = h;
-	return 1;
+    FPagoView *h = new FPagoView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }

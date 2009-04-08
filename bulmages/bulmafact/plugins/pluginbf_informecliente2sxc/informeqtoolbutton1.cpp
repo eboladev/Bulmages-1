@@ -93,8 +93,8 @@ void InformeQToolButton1::click()
 
     // Solicitamos el ejercicio
     bool ok;
-    int anyo = QInputDialog::getInteger ( this, _( "Ejercicio del Informe" ),
-                                          _( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
+    int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
+                                          _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.perl";
@@ -176,7 +176,7 @@ void InformeQToolButton1::click()
     BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
-    barra.setText ( _( "Generando Informe" ) );
+    barra.setText ( _ ( "Generando Informe" ) );
 
     while ( !cur->eof() ) {
         QString gen = generarCliente ( cur->valor ( "idcliente" ), y, anyo );
@@ -346,8 +346,8 @@ void InformeProveedorQToolButton1::click()
 
     // Solicitamos el ejercicio
     bool ok;
-    int anyo = QInputDialog::getInteger ( this, _( "Ejercicio del Informe" ),
-                                          _( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
+    int anyo = QInputDialog::getInteger ( this, _ ( "Ejercicio del Informe" ),
+                                          _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.perl";
@@ -431,7 +431,7 @@ void InformeProveedorQToolButton1::click()
     BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
-    barra.setText ( _( "Generando informe" ) );
+    barra.setText ( _ ( "Generando informe" ) );
 
     while ( !cur->eof() ) {
         QString gen = generarProveedor ( cur->valor ( "idproveedor" ), y, anyo );

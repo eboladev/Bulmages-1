@@ -30,7 +30,7 @@
 #include "genpreqtoolbutton.h"
 
 
-PresupuestoList *g_presupuestosList=NULL;
+PresupuestoList *g_presupuestosList = NULL;
 
 ///
 /**
@@ -58,9 +58,9 @@ mypluginpres::~mypluginpres()
 void mypluginpres::elslot()
 {
     _depura ( "mypluginpres::elslot", 0 );
-    if (g_presupuestosList) {
-	g_presupuestosList->hide();
-	g_presupuestosList->show();
+    if ( g_presupuestosList ) {
+        g_presupuestosList->hide();
+        g_presupuestosList->show();
     }// end if
     _depura ( "END mypluginpres::elslot", 0 );
 }
@@ -71,9 +71,9 @@ void mypluginpres::elslot()
 void mypluginpres::elslot1()
 {
     _depura ( "mypluginpres::elslot1", 0 );
-        PresupuestoView * bud = new PresupuestoView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END mypluginpres::elslot1", 0 );
 }
 
@@ -90,28 +90,28 @@ void mypluginpres::inicializa ( Bulmafact *bges )
     if ( bges->getcompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Presupuestos a clientes" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Presupuestos a clientes" ) );
-	planCuentas->setWhatsThis ( _( "Presupuestos a clientes" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Presupuestos a clientes" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Presupuestos a clientes" ) );
+        planCuentas->setWhatsThis ( _ ( "Presupuestos a clientes" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo presupuesto a cliente" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-quote.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo presupuesto a cliente" ) );
-	npago->setWhatsThis ( _( "Nuevo presupuesto a cliente" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nuevo presupuesto a cliente" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.svg" ) ) );
+        npago->setStatusTip ( _ ( "Nuevo presupuesto a cliente" ) );
+        npago->setWhatsThis ( _ ( "Nuevo presupuesto a cliente" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
     }// end if
@@ -129,8 +129,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Presupuestos a Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginpresupuesto", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginpresupuesto", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     mypluginpres *plug = new mypluginpres();
     plug->inicializa ( bges );
@@ -138,30 +138,33 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     if ( comp->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
-	g_presupuestosList = new PresupuestoList( comp, NULL );	
-	comp->m_pWorkspace->addWindow ( g_presupuestosList );
-	g_presupuestosList->hide();
+        g_presupuestosList = new PresupuestoList ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_presupuestosList );
+        g_presupuestosList->hide();
     }// end if
     return 0;
 }
 
 
-int ClienteView_ClienteView_Post (ClienteView *prov) {
+int ClienteView_ClienteView_Post ( ClienteView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
-	PresupuestoList *presupuestosList = new PresupuestoList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-	presupuestosList->setModoEdicion();
-	presupuestosList->setObjectName("listpresupuestos");
-	presupuestosList->hideBusqueda();
+        PresupuestoList *presupuestosList = new PresupuestoList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        presupuestosList->setModoEdicion();
+        presupuestosList->setObjectName ( "listpresupuestos" );
+        presupuestosList->hideBusqueda();
         prov->mui_tab->addTab ( presupuestosList, "Presupuestos" );
     }// end if
     return 0;
 }
 
-int ClienteView_cargarPost_Post (ClienteView *prov) {
+int ClienteView_cargarPost_Post ( ClienteView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
-	PresupuestoList *presupuestosList = prov->findChild<PresupuestoList *> ( "listpresupuestos" );
+        PresupuestoList *presupuestosList = prov->findChild<PresupuestoList *> ( "listpresupuestos" );
         presupuestosList->setidcliente ( prov->dbValue ( "idcliente" ) );
         presupuestosList->presentar();
     }// end if
@@ -169,11 +172,12 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
+int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+{
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        PresupuestoView * bud = new PresupuestoView((BfCompany *)ref->mainCompany(), NULL);
+        PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idpresupuesto" ) );
         bud->show();
@@ -199,12 +203,12 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_epresupuesto2 );
 
     _depura ( "END PluginPresupuesto_PedidoClienteView_PedidoClienteView", 0 );
@@ -217,10 +221,10 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewPresupuestoView (BfCompany *v)
+int SNewPresupuestoView ( BfCompany *v )
 {
-	PresupuestoView *h = new PresupuestoView(v, 0);
-	g_plugParams = h;
-	return 1;
+    PresupuestoView *h = new PresupuestoView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }
 

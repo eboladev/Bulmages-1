@@ -86,9 +86,9 @@ void Q19QToolButton::click()
 {
     _depura ( "Q19QToolButton::click", 0 );
 
-    QString fileName = QFileDialog::getSaveFileName ( this, _( "Save file" ),
+    QString fileName = QFileDialog::getSaveFileName ( this, _ ( "Save file" ),
                        "",
-                       _( "*.q19" ) );
+                       _ ( "*.q19" ) );
     QFile file ( fileName );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
         return;

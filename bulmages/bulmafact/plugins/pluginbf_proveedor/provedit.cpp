@@ -39,29 +39,29 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
     _depura ( "ProveedorView::ProveedorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setTitleName ( _( "Proveedor" ) );
+        setTitleName ( _ ( "Proveedor" ) );
         setDbTableName ( "proveedor" );
         setDbFieldId ( "idproveedor" );
-        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID proveedor" ) );
-        addDbField ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Nombre del proveedor" ) );
-        addDbField ( "nomaltproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre alternativo del proveedor" ) );
-        addDbField ( "cifproveedor", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "C.I.F. del proveedor" ) );
-        addDbField ( "codicliproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo cliente" ) );
-        addDbField ( "cbancproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Banco proveedor" ) );
-        addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion" ) );
-        addDbField ( "poblproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Poblacion" ) );
-        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _( "Provincia" ) );
-        addDbField ( "cpproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo postal" ) );
-        addDbField ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono" ) );
-        addDbField ( "faxproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de fax" ) );
-        addDbField ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Direccion electronica" ) );
-        addDbField ( "urlproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "URL" ) );
-        addDbField ( "comentproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
-        addDbField ( "codproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo" ) );
-        addDbField ( "regimenfiscalproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Regimen Fiscal" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Forma_Pago" ) );
-        addDbField ( "recargoeqproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Recargo de Equivalencia" ) );
-        addDbField ( "irpfproveedor", BlDbField::DbNumeric, BlDbField::DbNothing, _( "IRPF" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID proveedor" ) );
+        addDbField ( "nomproveedor", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Nombre del proveedor" ) );
+        addDbField ( "nomaltproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre alternativo del proveedor" ) );
+        addDbField ( "cifproveedor", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "C.I.F. del proveedor" ) );
+        addDbField ( "codicliproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo cliente" ) );
+        addDbField ( "cbancproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Banco proveedor" ) );
+        addDbField ( "dirproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
+        addDbField ( "poblproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Poblacion" ) );
+        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
+        addDbField ( "cpproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo postal" ) );
+        addDbField ( "telproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono" ) );
+        addDbField ( "faxproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de fax" ) );
+        addDbField ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion electronica" ) );
+        addDbField ( "urlproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "URL" ) );
+        addDbField ( "comentproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+        addDbField ( "codproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo" ) );
+        addDbField ( "regimenfiscalproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Regimen Fiscal" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma_Pago" ) );
+        addDbField ( "recargoeqproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Recargo de Equivalencia" ) );
+        addDbField ( "irpfproveedor", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "IRPF" ) );
 
         setupUi ( this );
 
@@ -75,11 +75,11 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idforma_pago->setId ( "0" );
 
         mui_idprovincia->setMainCompany ( mainCompany() );
-    mui_idprovincia->setQuery("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
-    mui_idprovincia->setTableName ("provincia");
-    mui_idprovincia->setFieldId ("idprovincia");
-    mui_idprovincia->m_valores["provincia"] = "";
-    mui_idprovincia->m_valores["descpais"] = "";
+        mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
+        mui_idprovincia->setTableName ( "provincia" );
+        mui_idprovincia->setFieldId ( "idprovincia" );
+        mui_idprovincia->m_valores["provincia"] = "";
+        mui_idprovincia->m_valores["descpais"] = "";
         mui_idprovincia->setId ( "" );
 
 
@@ -89,7 +89,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins.
         g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el proveedor" ) );
+        mensajeInfo ( _ ( "Error al crear el proveedor" ) );
     } // end try
 
     _depura ( "END ProveedorView::ProveedorView", 0 );
@@ -113,10 +113,10 @@ ProveedorView::~ProveedorView()
 void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
     _depura ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
-	QChar digito;
-	if (!validarCIFNIF(mui_cifproveedor->text(), digito)) {
-		mensajeInfo("Error en el CIF del proveedor. Digito:" + QString(digito));
-	} // end if
+    QChar digito;
+    if ( !validarCIFNIF ( mui_cifproveedor->text(), digito ) ) {
+        mensajeInfo ( "Error en el CIF del proveedor. Digito:" + QString ( digito ) );
+    } // end if
     _depura ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 }
 
@@ -134,7 +134,7 @@ int ProveedorView::cargarPost ( QString idprov )
 {
     _depura ( "ProveedorView::cargar", 0, idprov );
     /// Lanzamos los plugins de carga
-    g_plugins->lanza("ProveedorView_cargarPost_Post", this);
+    g_plugins->lanza ( "ProveedorView_cargarPost_Post", this );
     _depura ( "END ProveedorView::cargar", 0 );
     return 0;
 }

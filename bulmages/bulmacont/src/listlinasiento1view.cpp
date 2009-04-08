@@ -36,30 +36,30 @@ ListLinAsiento1View::ListLinAsiento1View ( QWidget *parent, const char * )
     setDbTableName ( "borrador" );
     setFileConfig ( "asientotabla" );
     setDbFieldId ( "idborrador" );
-    addSubFormHeader ( "idapunte", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id apunte" ) );
-    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Fecha" ) );
-    addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Codigo" ) );
-    addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Nombre de la cuenta" ) );
-    addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Descripcion del apunte" ) );
-    addSubFormHeader ( "conceptocontable", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Concepto contable" ) );
-    addSubFormHeader ( "debe", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Debe" ) );
-    addSubFormHeader ( "haber", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Haber" ) );
-    addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Contrapartida" ) );
-    addSubFormHeader ( "comentario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Comentario" ) );
-    addSubFormHeader ( "idcanal", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "ID Canal" ) );
-    addSubFormHeader ( "nomcanal", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Canal" ) );
-    addSubFormHeader ( "marcaconciliacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Conciliacion" ) );
-    addSubFormHeader ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id centro de coste" ) );
-    addSubFormHeader ( "nomc_coste", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Centro de coste" ) );
-    addSubFormHeader ( "idtipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id tipo de IVA" ) );
-    addSubFormHeader ( "orden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Orden" ) );
-    addSubFormHeader ( "idborrador", BlDbField::DbInt,  BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id borrador" ) );
-    addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id asiento" ) );
-    addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id cuenta" ) );
-    addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Tipo de cuenta" ) );
-    addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Id. Registro IVA" ) );
-    addSubFormHeader ( "factura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Fecha Factura" ) );
-    addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "Num. Factura" ) );
+    addSubFormHeader ( "idapunte", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id apunte" ) );
+    addSubFormHeader ( "fecha", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
+    addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo" ) );
+    addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre de la cuenta" ) );
+    addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Descripcion del apunte" ) );
+    addSubFormHeader ( "conceptocontable", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Concepto contable" ) );
+    addSubFormHeader ( "debe", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Debe" ) );
+    addSubFormHeader ( "haber", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Haber" ) );
+    addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Contrapartida" ) );
+    addSubFormHeader ( "comentario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Comentario" ) );
+    addSubFormHeader ( "idcanal", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "ID Canal" ) );
+    addSubFormHeader ( "nomcanal", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Canal" ) );
+    addSubFormHeader ( "marcaconciliacion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Conciliacion" ) );
+    addSubFormHeader ( "idc_coste", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id centro de coste" ) );
+    addSubFormHeader ( "nomc_coste", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Centro de coste" ) );
+    addSubFormHeader ( "idtipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id tipo de IVA" ) );
+    addSubFormHeader ( "orden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Orden" ) );
+    addSubFormHeader ( "idborrador", BlDbField::DbInt,  BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id borrador" ) );
+    addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id asiento" ) );
+    addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id cuenta" ) );
+    addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Tipo de cuenta" ) );
+    addSubFormHeader ( "idregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id. Registro IVA" ) );
+    addSubFormHeader ( "factura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Fecha Factura" ) );
+    addSubFormHeader ( "ffactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Num. Factura" ) );
     setinsercion ( TRUE );
     setOrdenEnabled ( FALSE );
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
@@ -86,11 +86,11 @@ void ListLinAsiento1View::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _( "Mostrar asiento" ) );
+    menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
-    menu->addAction ( _( "Mostrar extracto (dia)" ) );
-    menu->addAction ( _( "Mostrar extracto (mes)" ) );
-    menu->addAction ( _( "Mostrar extracto (ano)" ) );
+    menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
+    menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
+    menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
 }
 
@@ -103,13 +103,13 @@ void ListLinAsiento1View::s_trataMenu ( QAction *action )
 {
     _depura ( "ListLinAsiento1View::s_trataMenu", 0 );
     if ( !action ) return;
-    if ( action->text() == _( "Mostrar asiento" ) )
+    if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
-    if ( action->text() == _( "Mostrar extracto (dia)" ) )
+    if ( action->text() == _ ( "Mostrar extracto (dia)" ) )
         boton_extracto1 ( 0 );
-    if ( action->text() == _( "Mostrar extracto (mes)" ) )
+    if ( action->text() == _ ( "Mostrar extracto (mes)" ) )
         boton_extracto1 ( 1 );
-    if ( action->text() == _( "Mostrar extracto (ano)" ) )
+    if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
     _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );

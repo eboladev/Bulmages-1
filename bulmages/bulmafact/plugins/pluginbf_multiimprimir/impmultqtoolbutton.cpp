@@ -86,8 +86,8 @@ void ImpQToolButton::setBoton()
     _depura ( "ImpQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( _("Imprimir elementos seleccionados" ));
-    setToolTip ( _("Imprimir elementos seleccionados" ));
+    setStatusTip ( _ ( "Imprimir elementos seleccionados" ) );
+    setToolTip ( _ ( "Imprimir elementos seleccionados" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_print1.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -121,25 +121,25 @@ void ImpQToolButton::click()
                 QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idpresupuesto" );
-					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPresupuestoView", m_companyact);
-					if (!resur) {
-						mensajeInfo("no se pudo crear instancia de presupuesto");
-						return;
-					} // end if
-                    PresupuestoView *pres = (PresupuestoView *) g_plugParams;
+                    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
+                    if ( !resur ) {
+                        mensajeInfo ( "no se pudo crear instancia de presupuesto" );
+                        return;
+                    } // end if
+                    PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if (pres->generaRML()) {
+                    if ( pres->generaRML() ) {
 
-	
-			generaPDF ( "presupuesto" );
-	
-			QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
-			system ( cad.toAscii().data() );
-			res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
-		    } // end if
-		    pres->close();
+
+                        generaPDF ( "presupuesto" );
+
+                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+                        system ( cad.toAscii().data() );
+                        res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+                    } // end if
+                    pres->close();
                 } // end if
             } // end for
         }
@@ -158,25 +158,25 @@ void ImpQToolButton::click()
 
 
 
-					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
-					if (!resur) {
-						mensajeInfo(_("no se pudo crear instancia de factura"));
-						return;
-					} // end if
-					FacturaView *pres = (FacturaView *) g_plugParams;
+                    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
+                    if ( !resur ) {
+                        mensajeInfo ( _ ( "no se pudo crear instancia de factura" ) );
+                        return;
+                    } // end if
+                    FacturaView *pres = ( FacturaView * ) g_plugParams;
 
                     pres->cargar ( id );
 
-                    if (pres->generaRML()) {
+                    if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "factura" );
+                        generaPDF ( "factura" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf";
-                    system ( cad.toAscii().data() );
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf ";
-		    } // end if
+                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf";
+                        system ( cad.toAscii().data() );
+                        res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf ";
+                    } // end if
                     pres->close();
                 } // end if
             } // end for
@@ -194,24 +194,24 @@ void ImpQToolButton::click()
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idpedidocliente" );
 
-					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
-					if (!resur) {
-						mensajeInfo(_("no se pudo crear instancia de pedido cliente"));
-						return;
-					} // end if
-					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;
+                    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
+                    if ( !resur ) {
+                        mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                        return;
+                    } // end if
+                    PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if (pres->generaRML()) {
+                    if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "pedidocliente" );
+                        generaPDF ( "pedidocliente" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
-                    system ( cad.toAscii().data() );
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
-			} // end if
+                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                        system ( cad.toAscii().data() );
+                        res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+                    } // end if
                     pres->close();
                 } // end if
             } // end for
@@ -224,31 +224,31 @@ void ImpQToolButton::click()
 
             /// Reseteamos los valores
             for ( int i = 0; i < sub->rowCount(); i++ ) {
-              
+
                 BlDbSubFormRecord *rec = sub->lineaat ( i );
                 rec->refresh();
                 QString val = rec->dbValue ( "selector" );
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idalbaran" );
 
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewAlbaranClienteView", m_companyact);
-				if (!resur) {
-					mensajeInfo(_("no se pudo crear instancia de albaran"));
-					return;
-				} // end if
-                    AlbaranClienteView *pres = (AlbaranClienteView *) g_plugParams;
+                    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ( "SNewAlbaranClienteView", m_companyact );
+                    if ( !resur ) {
+                        mensajeInfo ( _ ( "no se pudo crear instancia de albaran" ) );
+                        return;
+                    } // end if
+                    AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if (pres->generaRML()) {
+                    if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "albaran" );
+                        generaPDF ( "albaran" );
 
-                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
-                    system ( cad.toAscii().data() );
-                    res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
-			} // end if
+                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                        system ( cad.toAscii().data() );
+                        res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+                    } // end if
                     pres->close();
                 } // end if
             } // end for
@@ -306,15 +306,15 @@ void ImpQToolButton::click()
 
                 if ( val == "TRUE" ) {
                     QString id = rec->dbValue ( "idcobro" );
-               /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewCobroView", m_companyact);
-               if (!resur) {
-                  mensajeInfo("no se pudo crear instancia de cobro");
-                  return;
-               } // end if
-                    CobroView *pres = (CobroView *) g_plugParams;
+                    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ( "SNewCobroView", m_companyact );
+                    if ( !resur ) {
+                        mensajeInfo ( "no se pudo crear instancia de cobro" );
+                        return;
+                    } // end if
+                    CobroView *pres = ( CobroView * ) g_plugParams;
                     pres->cargar ( id );
-                   
+
 
                     int col1 = j % 3;
                     double col = 0;
@@ -357,7 +357,7 @@ void ImpQToolButton::click()
 
                     txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.6 ) + "cm\">a</drawString>\n";
                     txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.2 ) + "cm\">" + num2texto ( pres->dbValue ( "cantcobro" ) ) + "</drawString>\n";
-                            
+
                     txt += " </storyPlace>\n";
 
                     if ( col1 == 2 )
@@ -453,8 +453,8 @@ void SelQToolButton::setBoton()
 {
     _depura ( "SelQToolButton::setBoton", 0 );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( _("Invertir seleccion de elementos"));
-    setToolTip ( _("Invertir seleccion de elementos") );
+    setStatusTip ( _ ( "Invertir seleccion de elementos" ) );
+    setToolTip ( _ ( "Invertir seleccion de elementos" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/selection-invert.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -601,8 +601,8 @@ void EmailQToolButton::setBoton()
     _depura ( "EmailQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( _("Enviar elementos seleccionados por e-mail") );
-    setToolTip (_( "Enviar elementos seleccionados por e-mail") );
+    setStatusTip ( _ ( "Enviar elementos seleccionados por e-mail" ) );
+    setToolTip ( _ ( "Enviar elementos seleccionados por e-mail" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -640,27 +640,27 @@ void EmailQToolButton::click()
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPresupuestoView", m_companyact);
-					if (!resur) {
-						mensajeInfo(_("no se pudo crear instancia de presupuesto"));
-						return;
-					} // end if
-                    PresupuestoView *pres = (PresupuestoView *) g_plugParams;
+                /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
+                if ( !resur ) {
+                    mensajeInfo ( _ ( "no se pudo crear instancia de presupuesto" ) );
+                    return;
+                } // end if
+                PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
                 pres->cargar ( id );
 
-                if (pres->generaRML()) {
+                if ( pres->generaRML() ) {
 
 
-                generaPDF ( "presupuesto" );
+                    generaPDF ( "presupuesto" );
 
-                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
-                system ( cad.toAscii().data() );
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
+                    system ( cad.toAscii().data() );
 
-                cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
-                system ( cad.toAscii().data() );
-                res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
-		} // end if
+                    cad = "kmail -s \"Presupuesto " + id + "\" --body \" Adjunto remito presupuesto numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf " + email;
+                    system ( cad.toAscii().data() );
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf ";
+                } // end if
                 pres->close();
             } // end if
         } // end for
@@ -684,27 +684,27 @@ void EmailQToolButton::click()
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
-					if (!resur) {
-						mensajeInfo(_("no se pudo crear instancia de pedido cliente"));
-						return;
-					} // end if
-					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;
+                /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
+                if ( !resur ) {
+                    mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                    return;
+                } // end if
+                PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
                 pres->cargar ( id );
 
-                if (pres->generaRML()) {
+                if ( pres->generaRML() ) {
 
 
-                generaPDF ( "pedidocliente" );
+                    generaPDF ( "pedidocliente" );
 
-                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
-                system ( cad.toAscii().data() );
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
+                    system ( cad.toAscii().data() );
 
-                cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
-                system ( cad.toAscii().data() );
-                res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
-		} // end if
+                    cad = "kmail -s \"Pedido Cliente " + id + "\" --body \" Adjunto remito pedido numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf " + email;
+                    system ( cad.toAscii().data() );
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf ";
+                } // end if
                 pres->close();
             } // end if
         } // end for
@@ -729,26 +729,26 @@ void EmailQToolButton::click()
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-					/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-                    int resur = g_plugins->lanza ("SNewPedidoClienteView", m_companyact);
-					if (!resur) {
-						mensajeInfo(_("no se pudo crear instancia de pedido cliente"));
-						return;
-					} // end if
-					PedidoClienteView *pres = (PedidoClienteView *) g_plugParams;                pres->cargar ( id );
+                /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
+                if ( !resur ) {
+                    mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                    return;
+                } // end if
+                PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;                pres->cargar ( id );
 
-                if (pres->generaRML()) {
+                if ( pres->generaRML() ) {
 
 
-                generaPDF ( "albaran" );
+                    generaPDF ( "albaran" );
 
-                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
-                system ( cad.toAscii().data() );
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
+                    system ( cad.toAscii().data() );
 
-                cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
-                system ( cad.toAscii().data() );
-                res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
-		} // end if
+                    cad = "kmail -s \"Albaran Cliente " + id + "\" --body \" Adjunto remito albaran numero " + id + "\n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf " + email;
+                    system ( cad.toAscii().data() );
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf ";
+                } // end if
                 pres->close();
             } // end if
         } // end for
@@ -778,33 +778,33 @@ void EmailQToolButton::click()
                 BlDbRecordSet *curs = m_companyact->loadQuery ( query );
                 QString email = curs->valor ( "mailcliente" );
 
-				/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
-				int resur = g_plugins->lanza ("SNewFacturaView", m_companyact);
-				if (!resur) {
-					mensajeInfo(_("no se pudo crear instancia de factura"));
-					return;
-				} // end if
-				FacturaView *pres = (FacturaView *) g_plugParams;
+                /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
+                if ( !resur ) {
+                    mensajeInfo ( _ ( "no se pudo crear instancia de factura" ) );
+                    return;
+                } // end if
+                FacturaView *pres = ( FacturaView * ) g_plugParams;
                 pres->cargar ( id );
 
-                if (pres->generaRML()) {
+                if ( pres->generaRML() ) {
 
 
-                generaPDF ( "factura" );
+                    generaPDF ( "factura" );
 
-                QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
-                system ( cad.toAscii().data() );
+                    QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+                    system ( cad.toAscii().data() );
 
 
-                cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
-                cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
-                cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
-                cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
-				
-                system ( cad.toAscii().data() );
+                    cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
+                    cad += "Adjunto le enviamos la factura numero " + serie + num + " con fecha " + fecha + "\n";
+                    cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
+                    cad += " --attach " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
 
-                res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
-		} // end if
+                    system ( cad.toAscii().data() );
+
+                    res += g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf ";
+                } // end if
                 pres->close();
             } // end if
         } // end for

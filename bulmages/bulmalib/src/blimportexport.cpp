@@ -397,7 +397,7 @@ int BlImportExport::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
         linea += ( "F" + strblancomax ).left ( LEN_NOCONV );
         linea += ( strblancomax ).left ( LEN_NUMEROINV );
         linea += "\n";
-        mensajeria ( _( "Exportando :" ) + curas->valor ( "codigo" ) + "--" + fecha + "\n" );
+        mensajeria ( _ ( "Exportando :" ) + curas->valor ( "codigo" ) + "--" + fecha + "\n" );
         streamas << linea;
         curas->nextRecord();
     } // end while
@@ -478,10 +478,10 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
                     return 1;
                 } // end if
                 dbConnection->commit();
-                mensajeria ( _( "<LI>Se ha insertado la cuenta " ) + cod + "</LI>\n" );
+                mensajeria ( _ ( "<LI>Se ha insertado la cuenta " ) + cod + "</LI>\n" );
             } // end if
         } else {
-            mensajeria ( _( "<LI>Ya hay una cuenta con el codigo " ) + cod + "</LI>\n" );
+            mensajeria ( _ ( "<LI>Ya hay una cuenta con el codigo " ) + cod + "</LI>\n" );
         } // end if
         delete cursaux;
     } // end while
@@ -590,7 +590,7 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
                 napunte = 0;
                 lastasiento = asiento;
                 orden = 0;
-                mensajeria ( _( "<LI>Insercion de asiento" ) + idasiento + "</LI>\n" );
+                mensajeria ( _ ( "<LI>Insercion de asiento" ) + idasiento + "</LI>\n" );
             } // end if
         } // end if
         napunte++;
@@ -618,9 +618,9 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
                     } // end if
                     dbConnection->commit();
                 } // end if
-                mensajeria ( _( "<LI>Insercion de apunte" ) + subcta + "," + concepto + "</LI>\n" );
+                mensajeria ( _ ( "<LI>Insercion de apunte" ) + subcta + "," + concepto + "</LI>\n" );
             } else {
-                mensajeria ( _( "<LI>Apunte fuera de fecha</LI>\n" ) );
+                mensajeria ( _ ( "<LI>Apunte fuera de fecha</LI>\n" ) );
             } // end if
         } // end if
     } // end while
@@ -631,7 +631,7 @@ int BlImportExport::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
             delete cur;
         } // end if
     } // end if
-    mensajeria ( _( "<LI>Terminado</LI>\n" ) );
+    mensajeria ( _ ( "<LI>Terminado</LI>\n" ) );
     alerta ( subcuentas.size() + asientos.size(), subcuentas.size() + asientos.size() );
     _depura ( "END BlImportExport::contaplus2Bulmages", 0 );
     return 0;
@@ -695,7 +695,7 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
             stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             stream << "</FORMA_PAGO>\n";
-            mensajeria ( _( "<LI>Exportando Nueva Forma de Pago</LI>\n" ) );
+            mensajeria ( _ ( "<LI>Exportando Nueva Forma de Pago</LI>\n" ) );
             curc->nextRecord();
         } // end while
         delete curc;
@@ -1410,7 +1410,7 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                     curreg->nextRecord();
                 } // end while
                 delete curreg;
-                mensajeria ( _( "Exportando :" ) + curap->valor ( "codigo" ) + "--" + fecha + "\n" );
+                mensajeria ( _ ( "Exportando :" ) + curap->valor ( "codigo" ) + "--" + fecha + "\n" );
                 curap->nextRecord();
                 stream << "\t</APUNTE>\n";
             } // end while
@@ -1467,7 +1467,7 @@ int BlImportExport::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
     reader.setContentHandler ( &handler );
     noerror = reader.parse ( source );
     if ( !noerror ) {
-        QMessageBox::warning ( 0, _( "Application name" ), _( "Error en el XML.\nDocumento mal formado." ), "OK", 0, 0 );
+        QMessageBox::warning ( 0, _ ( "Application name" ), _ ( "Error en el XML.\nDocumento mal formado." ), "OK", 0, 0 );
     }
     alerta ( 100, 100 );
     _depura ( "END BlImportExport::XML2BulmaFact", 0 );
@@ -1898,7 +1898,7 @@ int ImportBulmaFact::trataCliente()
 {
     _depura ( "ImportBulmaFact::trataCliente", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( _( "<HR><B>Tratando el cliente " ) + valores["CIFCLIENTE"] + " " + valores["NOMCLIENTE"] + "</B><BR>" );
+    pgimport->mensajeria ( _ ( "<HR><B>Tratando el cliente " ) + valores["CIFCLIENTE"] + " " + valores["NOMCLIENTE"] + "</B><BR>" );
     /// En la importacion de un cliente hay que hacer la comprobacion del DNI para saber si existe o no.
     QString dcif = valores["CIFCLIENTE"];
     if ( dcif != "" ) {
@@ -1906,12 +1906,12 @@ int ImportBulmaFact::trataCliente()
         BlDbRecordSet *cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
             /// El cliente ya existe se pueden hacer modificaciones.
-            pgimport->mensajeria ( _( "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n" ) );
+            pgimport->mensajeria ( _ ( "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n" ) );
             QString query1 = "UPDATE cliente SET nomcliente = '" + valores["NOMCLIENTE"] + "' WHERE cifcliente = '" + valores["CIFCLIENTE"] + "'";
             dbConnection->runQuery ( query1 );
         } else {
             /// El cliente no existe, se debe hacer una insercion de este.
-            pgimport->mensajeria ( _( "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n" ) );
+            pgimport->mensajeria ( _ ( "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n" ) );
             QString query1 = "INSERT INTO cliente (cifcliente, nomcliente) VALUES ('" + valores["CIFCLIENTE"] + "','" + valores["NOMCLIENTE"] + "')";
             dbConnection->runQuery ( query1 );
         } // end if
@@ -1933,7 +1933,7 @@ int ImportBulmaFact::trataProveedor()
     _depura ( "ImportBulmaFact::trataProveedor", 0 );
 
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando el proveedor" ) + " " + valores["CIFPROVEEDOR"] + "</b><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando el proveedor" ) + " " + valores["CIFPROVEEDOR"] + "</b><BR>" );
     /// En la importacion de un proveedor hay que hacer la comprobacion del DNI para saber si existe o no.
     QString cifprov = valores["CIFPROVEEDOR"];
     if ( cifprov != "" ) {
@@ -1941,12 +1941,12 @@ int ImportBulmaFact::trataProveedor()
         BlDbRecordSet *cur = dbConnection->loadQuery ( query );
         if ( !cur->eof() ) {
             /// El cliente ya existe se pueden hacer modificaciones.
-            pgimport->mensajeria ( "<LI>" + _( "El proveedor ya existe, se pueden hacer modificaciones") + "<LI>\n" );
+            pgimport->mensajeria ( "<LI>" + _ ( "El proveedor ya existe, se pueden hacer modificaciones" ) + "<LI>\n" );
             QString query1 = "UPDATE proveedor SET nomproveedor = '" + valores["NOMPROVEEDOR"] + "' WHERE cifproveedor = '" + valores["CIFPROVEEDOR"] + "'";
             dbConnection->runQuery ( query1 );
         } else {
             /// El cliente no existe, se debe hacer una insercion de este.
-            pgimport->mensajeria ( "<LI>" +  _( "El proveedor no existe, se debe hacer una insercion de este" ) + "<LI>\n" );
+            pgimport->mensajeria ( "<LI>" +  _ ( "El proveedor no existe, se debe hacer una insercion de este" ) + "<LI>\n" );
             QString query1 = "INSERT INTO proveedor (cifproveedor, nomproveedor) VALUES ('" + valores["CIFPROVEEDOR"] + "','" + valores["NOMPROVEEDOR"] + "')";
             dbConnection->runQuery ( query1 );
         } // end if
@@ -1967,7 +1967,7 @@ int ImportBulmaFact::trataFormaPago()
 {
     _depura ( "ImportBulmaFact::trataFormaPago", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<BR><B>" + _( "Tratando la forma de pago" ) + " " + valores["DESCFORMA_PAGO"] + "</B><BR>" );
+    pgimport->mensajeria ( "<BR><B>" + _ ( "Tratando la forma de pago" ) + " " + valores["DESCFORMA_PAGO"] + "</B><BR>" );
     QString idforma_pago = valores["IDFORMA_PAGO"];
     QString descforma_pago = valores["DESCFORMA_PAGO"];
     QString dias1tforma_pago = valores["DIAS1TFORMA_PAGO"];
@@ -1975,7 +1975,7 @@ int ImportBulmaFact::trataFormaPago()
 
     /// Comprobamos que hayan datos suficientes.
     if ( descforma_pago == "" || dias1tforma_pago == "" || descuentoforma_pago == "" ) {
-        pgimport->mensajeria ( "<LI>" + _( "Datos insuficientes para tratar la forma de pago." ) );
+        pgimport->mensajeria ( "<LI>" + _ ( "Datos insuficientes para tratar la forma de pago." ) );
         valores.clear();
         return 1;
     } // end if
@@ -1984,7 +1984,7 @@ int ImportBulmaFact::trataFormaPago()
     QString query = "SELECT * FROM forma_pago WHERE dias1tforma_pago = " + dias1tforma_pago + " AND descuentoforma_pago = " + descuentoforma_pago;
     BlDbRecordSet *cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        pgimport->mensajeria ( "<LI>" + _( "Ya existe esta forma de pago." ) );
+        pgimport->mensajeria ( "<LI>" + _ ( "Ya existe esta forma de pago." ) );
         delete cur;
         valores.clear();
         return 1;
@@ -1994,7 +1994,7 @@ int ImportBulmaFact::trataFormaPago()
     /// Hacemos la insercion de la forma de Pago.
     query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('" + descforma_pago + "'," + dias1tforma_pago + "," + descuentoforma_pago + ")";
     dbConnection->runQuery ( query );
-    pgimport->mensajeria ( "<LI>" + _( "Forma de pago" ) + " <B>" + descforma_pago + "</B> " + _( "Insertada" ) );
+    pgimport->mensajeria ( "<LI>" + _ ( "Forma de pago" ) + " <B>" + descforma_pago + "</B> " + _ ( "Insertada" ) );
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
     _depura ( "END ImportBulmaFact::trataFormaPago", 0 );
@@ -2010,7 +2010,7 @@ int ImportBulmaFact::trataAlmacen()
 {
     _depura ( "ImportBulmaFact::trataAlmacen", 0 );
     /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando almacen" ) + " " + valores["CODIGOALMACEN"] + " " + valores["NOMALMACEN"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando almacen" ) + " " + valores["CODIGOALMACEN"] + " " + valores["NOMALMACEN"] + "</B><BR>" );
     /// Primero hacemos la recoleccion de valores.
     QString idalmacen = valores["IDALMACEN"];
     QString codigoalmacen = valores["CODIGOALMACEN"];
@@ -2024,7 +2024,7 @@ int ImportBulmaFact::trataAlmacen()
     QString inactivoalmacen = valores["INACTIVOALMACEN"];
     /// Comprobamos que hayan suficientes datos para procesar.
     if ( codigoalmacen == "" || nomalmacen == "" ) {
-        pgimport->mensajeria ( "<LI>" + _( "Datos insuficientes para tratar el almacen." ) );
+        pgimport->mensajeria ( "<LI>" + _ ( "Datos insuficientes para tratar el almacen." ) );
         valores.clear();
         return 1;
     } // end if
@@ -2032,7 +2032,7 @@ int ImportBulmaFact::trataAlmacen()
     QString query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     BlDbRecordSet *cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        pgimport->mensajeria ( "<LI>" + _( "Ya existe este almacen." ) );
+        pgimport->mensajeria ( "<LI>" + _ ( "Ya existe este almacen." ) );
         delete cur;
         valores.clear();
         return 1;
@@ -2041,7 +2041,7 @@ int ImportBulmaFact::trataAlmacen()
     /// Hacemos la insercion del almacen.
     query = "INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen) VALUES ('" + codigoalmacen + "','" + nomalmacen + "','" + diralmacen + "')";
     dbConnection->runQuery ( query );
-    pgimport->mensajeria ( "<LI> " + _( "Almacen" ) + " <B>" + codigoalmacen + "</B> " + _( "insertado" ) );
+    pgimport->mensajeria ( "<LI> " + _ ( "Almacen" ) + " <B>" + codigoalmacen + "</B> " + _ ( "insertado" ) );
     /// Finalizamos.
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
@@ -2060,7 +2060,7 @@ int ImportBulmaFact::trataFamilia()
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando familia" ) + " " + valores["CODIGOCOMPLETOFAMILIA"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando familia" ) + " " + valores["CODIGOCOMPLETOFAMILIA"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
     /// Primero hacemos la recoleccion de valores.
     QString idfamilia = valores["IDFAMILIA"];
     QString codigofamilia = valores["CODIGOFAMILIA"];
@@ -2080,12 +2080,12 @@ int ImportBulmaFact::trataFamilia()
         if ( !cur->eof() ) {
             idpadre = cur->valor ( "idfamilia" );
         } else {
-            pgimport->mensajeria ( "<P> " + _( "No se ha encontrado el padre de esta familia." ) + "</P>" );
+            pgimport->mensajeria ( "<P> " + _ ( "No se ha encontrado el padre de esta familia." ) + "</P>" );
         } // end if
         delete cur;
     } // end if
     if ( codigocompletofamilia == "" || nombrefamilia == "" || idpadre == "" ) {
-        pgimport->mensajeria ( "<P>" + _( "Datos insuficientes para tratar la familia." ) + "</P>" );
+        pgimport->mensajeria ( "<P>" + _ ( "Datos insuficientes para tratar la familia." ) + "</P>" );
         valores.clear();
         return 1;
     } // end if
@@ -2093,7 +2093,7 @@ int ImportBulmaFact::trataFamilia()
     query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigocompletofamilia + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        pgimport->mensajeria ( "<P>" + _( "Ya existe esta familia." ) + "</P>" );
+        pgimport->mensajeria ( "<P>" + _ ( "Ya existe esta familia." ) + "</P>" );
         delete cur;
         valores.clear();
         return 1;
@@ -2102,7 +2102,7 @@ int ImportBulmaFact::trataFamilia()
     /// Hacemos la insercion del familia.
     query = "INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('" + codigofamilia + "','" + nombrefamilia + "'," + idpadre + ")";
     dbConnection->runQuery ( query );
-    pgimport->mensajeria ( "<P>" + _( "Familia" ) + " <B>" + codigocompletofamilia + "</B> " + _( "insertada" ) + "</P>" );
+    pgimport->mensajeria ( "<P>" + _ ( "Familia" ) + " <B>" + codigocompletofamilia + "</B> " + _ ( "insertada" ) + "</P>" );
     /// Finalizamos.
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
@@ -2121,7 +2121,7 @@ int ImportBulmaFact::trataArticulo()
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando articulo" ) + " " + valores["CODIGOCOMPLETOARTICULO"] + " </B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando articulo" ) + " " + valores["CODIGOCOMPLETOARTICULO"] + " </B><BR>" );
     /// Primero hacemos la recoleccion de valores.
     QString idarticulo = valores["IDARTICULO"];
     QString codarticulo =  valores["CODARTICULO"];
@@ -2148,7 +2148,7 @@ int ImportBulmaFact::trataArticulo()
     if ( !cur->eof() ) {
         idfamilia = cur->valor ( "idfamilia" );
     } else {
-        pgimport->mensajeria ( _( "La familia del articulo no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "La familia del articulo no existe" ) + "<BR>\n" );
         idfamilia = "";
     } // end if
     delete cur;
@@ -2173,7 +2173,7 @@ int ImportBulmaFact::trataArticulo()
 
     /// Comprobamos que hayan suficientes datos para procesar.
     if ( codigocompletoarticulo == "" || nomarticulo == "" || idfamilia == "" ) {
-        pgimport->mensajeria ( "<P>" + _( "Datos insuficientes para tratar el articulo." ) + "</P>" );
+        pgimport->mensajeria ( "<P>" + _ ( "Datos insuficientes para tratar el articulo." ) + "</P>" );
         valores.clear();
         return 1;
     } // end if
@@ -2182,7 +2182,7 @@ int ImportBulmaFact::trataArticulo()
     query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
-        pgimport->mensajeria ( "<P>" + _( "Ya existe este articulo." ) + "</P>" );
+        pgimport->mensajeria ( "<P>" + _ ( "Ya existe este articulo." ) + "</P>" );
         delete cur;
         valores.clear();
         return 1;
@@ -2204,7 +2204,7 @@ int ImportBulmaFact::trataArticulo()
     query += "," + idtipo_iva;
     query += ")";
     dbConnection->runQuery ( query );
-    pgimport->mensajeria ( "<P>" + _( "Articulo" ) + " <B>" + codigocompletoarticulo + "</B> " + _( "insertado" ) + "</P>" );
+    pgimport->mensajeria ( "<P>" + _ ( "Articulo" ) + " <B>" + codigocompletoarticulo + "</B> " + _ ( "insertado" ) + "</P>" );
     valores.clear();
     _depura ( "END ImportBulmaFact::trataArticulo", 0 );
     return 0;
@@ -2219,7 +2219,7 @@ int ImportBulmaFact::trataLPedidoCliente()
 {
     _depura ( "ImportBulmaFact::trataLPedidoCliente", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando LPedidoCliente" ) + " " + valores["IDLPEDIDOCLIENTE"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LPedidoCliente" ) + " " + valores["IDLPEDIDOCLIENTE"] + "</B><BR>" );
     tvalores lpedidoclientemap;
     lpedidoclientemap.insert ( "IDLPEDIDOCLIENTE", valores["IDLPEDIDOCLIENTE"] );
     lpedidoclientemap.insert ( "DESCLPEDIDOCLIENTE", valores["DESCLPEDIDOCLIENTE"] );
@@ -2247,7 +2247,7 @@ int ImportBulmaFact::trataDPedidoCliente()
 {
     _depura ( "ImportBulmaFact::trataDPedidoCliente", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando DPedidoCliente" ) + " " + valores["IDDPEDIDOCLIENTE"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DPedidoCliente" ) + " " + valores["IDDPEDIDOCLIENTE"] + "</B><BR>" );
     tvalores dpedidoclientemap;
     dpedidoclientemap.insert ( "IDDPEDIDOCLIENTE", valores["IDDPEDIDOCLIENTE"] );
     dpedidoclientemap.insert ( "CONCEPTDPEDIDOCLIENTE", valores["CONCEPTDPEDIDOCLIENTE"] );
@@ -2268,7 +2268,7 @@ int ImportBulmaFact::trataPedidoCliente()
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando pedido cliente" ) + " " + valores["IDPEDIDOCLIENTE"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando pedido cliente" ) + " " + valores["IDPEDIDOCLIENTE"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
     QString idpedidocliente = valores["IDPEDIDOCLIENTE"];
     QString numpedidocliente = valores["NUMPEDIDOCLIENTE"];
     QString refpedidocliente = valores["REFPEDIDOCLIENTE"];
@@ -2318,7 +2318,7 @@ int ImportBulmaFact::trataPedidoCliente()
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
-        pgimport->mensajeria ( _( "El almacen del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
     } // end if
     delete cur;
@@ -2328,7 +2328,7 @@ int ImportBulmaFact::trataPedidoCliente()
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
-        pgimport->mensajeria ( _( "El cliente del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
     } // end if
     delete cur;
@@ -2338,7 +2338,7 @@ int ImportBulmaFact::trataPedidoCliente()
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
-        pgimport->mensajeria ( _( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
     } // end if
     delete cur;
@@ -2348,7 +2348,7 @@ int ImportBulmaFact::trataPedidoCliente()
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
-        pgimport->mensajeria ( _( "El empleado del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
     } // end if
     delete cur;
@@ -2399,7 +2399,7 @@ int ImportBulmaFact::trataPedidoCliente()
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
-            pgimport->mensajeria ( _( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
+            pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
         } // end if
         delete cur;
@@ -2446,7 +2446,7 @@ int ImportBulmaFact::trataLAlbaran()
 {
     _depura ( "ImportBulmaFact::trataLAlbaran", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando LAlbaran" ) + " " + valores["IDLALBARAN"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LAlbaran" ) + " " + valores["IDLALBARAN"] + "</B><BR>" );
     tvalores lalbaranmap;
     lalbaranmap.insert ( "IDLALBARAN", valores["IDLALBARAN"] );
     lalbaranmap.insert ( "DESCLALBARAN", valores["DESCLALBARAN"] );
@@ -2474,7 +2474,7 @@ int ImportBulmaFact::trataDAlbaran()
 {
     _depura ( "ImportBulmaFact::trataDAlbaran", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando DAlbaran" ) + " " + valores["IDDALBARAN"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DAlbaran" ) + " " + valores["IDDALBARAN"] + "</B><BR>" );
     tvalores dalbaranmap;
     dalbaranmap.insert ( "IDDALBARAN", valores["IDDALBARAN"] );
     dalbaranmap.insert ( "CONCEPTDALBARAN", valores["CONCEPTDALBARAN"] );
@@ -2495,7 +2495,7 @@ int ImportBulmaFact::trataAlbaran()
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando albaran" ) + " " + valores["IDALBARAN"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando albaran" ) + " " + valores["IDALBARAN"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
     QString idalbaran = valores["IDALBARAN"];
     QString numalbaran = valores["NUMALBARAN"];
     QString refalbaran = valores["REFALBARAN"];
@@ -2547,7 +2547,7 @@ int ImportBulmaFact::trataAlbaran()
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
-        pgimport->mensajeria ( _( "El almacen del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
     } // end if
     delete cur;
@@ -2557,7 +2557,7 @@ int ImportBulmaFact::trataAlbaran()
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
-        pgimport->mensajeria ( _( "El cliente del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
     } // end if
     delete cur;
@@ -2566,7 +2566,7 @@ int ImportBulmaFact::trataAlbaran()
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
-        pgimport->mensajeria ( _( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
     } // end if
     delete cur;
@@ -2575,7 +2575,7 @@ int ImportBulmaFact::trataAlbaran()
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
-        pgimport->mensajeria ( _( "El empleado del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
     } // end if
     delete cur;
@@ -2625,7 +2625,7 @@ int ImportBulmaFact::trataAlbaran()
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
-            pgimport->mensajeria ( _( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
+            pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
         } // end if
         delete cur;
@@ -2672,7 +2672,7 @@ int ImportBulmaFact::trataLFactura()
 {
     _depura ( "ImportBulmaFact::trataLFactura", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando LFactura" ) + " " + valores["IDLFACTURA"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LFactura" ) + " " + valores["IDLFACTURA"] + "</B><BR>" );
     tvalores lfacturamap;
     lfacturamap.insert ( "IDLFACTURA", valores["IDLFACTURA"] );
     lfacturamap.insert ( "DESCLFACTURA", valores["DESCLFACTURA"] );
@@ -2700,7 +2700,7 @@ int ImportBulmaFact::trataDFactura()
 {
     _depura ( "ImportBulmaFact::trataDFactura", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando DFactura" ) + " " + valores["IDDFACTURA"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DFactura" ) + " " + valores["IDDFACTURA"] + "</B><BR>" );
     tvalores dfacturamap;
     dfacturamap.insert ( "IDDFACTURA", valores["IDDFACTURA"] );
     dfacturamap.insert ( "CONCEPTDFACTURA", valores["CONCEPTDFACTURA"] );
@@ -2721,7 +2721,7 @@ int ImportBulmaFact::trataFactura()
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando factura" ) + " " + valores["IDFACTURA"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando factura" ) + " " + valores["IDFACTURA"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>" );
     QString idfactura = valores["IDFACTURA"];
     QString codigoserie_factura = valores["CODIGOSERIE_FACTURA"];
     QString numfactura = valores["NUMFACTURA"];
@@ -2772,7 +2772,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
-        pgimport->mensajeria ( _( "El almacen del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
     } // end if
     delete cur;
@@ -2781,7 +2781,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
-        pgimport->mensajeria ( _( "El cliente del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
     } // end if
     delete cur;
@@ -2790,7 +2790,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
-        pgimport->mensajeria ( _( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
     } // end if
     delete cur;
@@ -2800,7 +2800,7 @@ int ImportBulmaFact::trataFactura()
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
-        pgimport->mensajeria ( _( "El empleado del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
     } // end if
     delete cur;
@@ -2810,7 +2810,7 @@ int ImportBulmaFact::trataFactura()
     cur = dbConnection->loadQuery ( query );
     if ( !cur->eof() ) {
         delete cur;
-        pgimport->mensajeria ( _( "La factura ya existe y no se va a insertar." ) );
+        pgimport->mensajeria ( _ ( "La factura ya existe y no se va a insertar." ) );
         valores.clear();
         return 1;
     } // end if
@@ -2863,7 +2863,7 @@ int ImportBulmaFact::trataFactura()
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
-            pgimport->mensajeria ( _( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
+            pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
         } // end if
         delete cur;
@@ -2910,7 +2910,7 @@ int ImportBulmaFact::trataLPresupuesto()
 {
     _depura ( "ImportBulmaFact::trataLPresupuesto", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando LPresupuesto" ) + " " + valores["IDLPRESUPUESTO"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando LPresupuesto" ) + " " + valores["IDLPRESUPUESTO"] + "</B><BR>" );
     tvalores lpresupuestomap;
     lpresupuestomap.insert ( "IDLPRESUPUESTO", valores["IDLPRESUPUESTO"] );
     lpresupuestomap.insert ( "DESCLPRESUPUESTO", valores["DESCLPRESUPUESTO"] );
@@ -2938,7 +2938,7 @@ int ImportBulmaFact::trataDPresupuesto()
 {
     _depura ( "ImportBulmaFact::trataDPresupuesto", 0 );
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando DPresupuesto" ) + " " + valores["IDDPRESUPUESTO"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando DPresupuesto" ) + " " + valores["IDDPRESUPUESTO"] + "</B><BR>" );
     tvalores dpresupuestomap;
     dpresupuestomap.insert ( "IDDPRESUPUESTO", valores["IDDPRESUPUESTO"] );
     dpresupuestomap.insert ( "CONCEPTDPRESUPUESTO", valores["CONCEPTDPRESUPUESTO"] );
@@ -2959,7 +2959,7 @@ int ImportBulmaFact::trataPresupuesto()
     QString query;
     BlDbRecordSet *cur;
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
-    pgimport->mensajeria ( "<HR><B>" + _( "Tratando presupuesto" ) + " " + valores["IDPRESUPUESTO"] + "</B><BR>" );
+    pgimport->mensajeria ( "<HR><B>" + _ ( "Tratando presupuesto" ) + " " + valores["IDPRESUPUESTO"] + "</B><BR>" );
     /// Primero hacemos la recoleccion de valores.
     QString idpresupuesto = valores["IDPRESUPUESTO"];
     QString numpresupuesto = valores["NUMPRESUPUESTO"];
@@ -3010,7 +3010,7 @@ int ImportBulmaFact::trataPresupuesto()
     if ( !cur->eof() ) {
         idalmacen = cur->valor ( "idalmacen" );
     } else {
-        pgimport->mensajeria ( _( "El almacen del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El almacen del presupuesto no existe" ) + "<BR>\n" );
         idalmacen = "NULL";
     } // end if
     delete cur;
@@ -3020,7 +3020,7 @@ int ImportBulmaFact::trataPresupuesto()
     if ( !cur->eof() ) {
         idcliente = cur->valor ( "idcliente" );
     } else {
-        pgimport->mensajeria ( _( "El cliente del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El cliente del presupuesto no existe" ) + "<BR>\n" );
         idcliente = "NULL";
     } // end if
     delete cur;
@@ -3030,7 +3030,7 @@ int ImportBulmaFact::trataPresupuesto()
     if ( !cur->eof() ) {
         idforma_pago = cur->valor ( "idforma_pago" );
     } else {
-        pgimport->mensajeria ( _( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "La forma de pago del presupuesto no existe" ) + "<BR>\n" );
         idforma_pago = "NULL";
     } // end if
     delete cur;
@@ -3040,7 +3040,7 @@ int ImportBulmaFact::trataPresupuesto()
     if ( !cur->eof() ) {
         idtrabajador = cur->valor ( "idtrabajador" );
     } else {
-        pgimport->mensajeria ( _( "El empleado del presupuesto no existe" ) + "<BR>\n" );
+        pgimport->mensajeria ( _ ( "El empleado del presupuesto no existe" ) + "<BR>\n" );
         idtrabajador = "NULL";
     } // end if
     delete cur;
@@ -3092,7 +3092,7 @@ int ImportBulmaFact::trataPresupuesto()
         if ( !cur->eof() ) {
             idarticulo = cur->valor ( "idarticulo" );
         } else {
-            pgimport->mensajeria ( _( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
+            pgimport->mensajeria ( _ ( "El articulo de la linea de presupuesto no existe" ) + "<BR>\n" );
             idarticulo = "NULL";
         } // end if
         delete cur;

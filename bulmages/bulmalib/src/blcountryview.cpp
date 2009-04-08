@@ -45,10 +45,10 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
     /// Preparamos la lista de paises.
     mui_list->setDbTableName ( "pais" );
     mui_list->setDbFieldId ( "idpais" );
-    mui_list->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id pais" ) );
-    mui_list->addSubFormHeader ( "descpais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre pais" ) );
-    mui_list->addSubFormHeader ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo 2 digitos" ) );
-    mui_list->addSubFormHeader ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo 3 digitos" ) );
+    mui_list->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pais" ) );
+    mui_list->addSubFormHeader ( "descpais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre pais" ) );
+    mui_list->addSubFormHeader ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo 2 digitos" ) );
+    mui_list->addSubFormHeader ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo 3 digitos" ) );
     mui_list->setinsercion ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
@@ -56,21 +56,21 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
     /// Preparamos la lista de provincias.
     mui_listprovincias->setDbTableName ( "provincia" );
     mui_listprovincias->setDbFieldId ( "idprovincia" );
-    mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id provincia" ) );
-    mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id pais" ) );
-    mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "Provincia" ) );
+    mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id provincia" ) );
+    mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pais" ) );
+    mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Provincia" ) );
     mui_listprovincias->setinsercion ( TRUE );
     mui_listprovincias->setDelete ( TRUE );
     mui_listprovincias->setSortingEnabled ( FALSE );
 
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setTitleName ( _( "Pais" ) );
+    setTitleName ( _ ( "Pais" ) );
     setDbTableName ( "pais" );
     setDbFieldId ( "idpais" );
-    addDbField ( "idpais", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id pais" ) );
-    addDbField ( "descpais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre pais" ) );
-    addDbField ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo 2 digitos" ) );
-    addDbField ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Codigo 3 digitos" ) );
+    addDbField ( "idpais", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id pais" ) );
+    addDbField ( "descpais", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre pais" ) );
+    addDbField ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo 2 digitos" ) );
+    addDbField ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo 3 digitos" ) );
 
     m_countryId = "0";
 
@@ -113,9 +113,9 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
 
     if ( m_countryId != "0" && dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    _( "Guardar pais" ),
-                                    _( "Desea guardar los cambios?" ),
-                                    _( "&Guardar" ), _( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
+                                    _ ( "Guardar pais" ),
+                                    _ ( "Desea guardar los cambios?" ),
+                                    _ ( "&Guardar" ), _ ( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
             on_mui_guardar_clicked();
         } // end if
     } // end if
@@ -157,7 +157,7 @@ int BlCountryView::guardar()
     QString id;
 
     if ( dbValue ( "idpais" ).isEmpty() ) {
-        mensajeInfo ( _( "Seleccione un pais para guardar" ) );
+        mensajeInfo ( _ ( "Seleccione un pais para guardar" ) );
     } else {
         setDbValue ( "descpais", mui_descpais->text() );
         setDbValue ( "cod2pais", mui_cod2pais->text() );
@@ -185,8 +185,8 @@ void BlCountryView::on_mui_crear_clicked()
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() ) {
             if ( QMessageBox::warning ( this,
-                                        _( "Guardar pais" ),
-                                        _( "Desea guardar los cambios?" ),
+                                        _ ( "Guardar pais" ),
+                                        _ ( "Desea guardar los cambios?" ),
                                         QMessageBox::Ok,
                                         QMessageBox::Cancel ) == QMessageBox::Ok ) {
                 on_mui_guardar_clicked();
@@ -203,7 +203,7 @@ void BlCountryView::on_mui_crear_clicked()
         mostrarplantilla();
         _depura ( "END BlCountryView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el banco" ) );
+        mensajeInfo ( _ ( "Error al crear el banco" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -216,13 +216,13 @@ void BlCountryView::on_mui_borrar_clicked()
 {
     _depura ( "BlCountryView::on_mui_borrar_clicked", 0 );
     if ( m_countryId == "" | m_countryId == "0" ) {
-        mensajeInfo ( _( "Debe seleccionar un elemento de la lista" ) );
+        mensajeInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
         return;
     } // end if
     switch ( QMessageBox::warning ( this,
-                                    _( "Borrar pais" ),
-                                    _( "Se va a borrar el pais seleccionado.\nEsta operacion puede ocasionar perdida de datos." ),
-                                    _( "&Borrar" ), _( "&Cancelar" ), 0, 0, 1 ) ) {
+                                    _ ( "Borrar pais" ),
+                                    _ ( "Se va a borrar el pais seleccionado.\nEsta operacion puede ocasionar perdida de datos." ),
+                                    _ ( "&Borrar" ), _ ( "&Cancelar" ), 0, 0, 1 ) ) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         try {
@@ -234,7 +234,7 @@ void BlCountryView::on_mui_borrar_clicked()
             pintar();
             mui_datospais->setDisabled ( TRUE );
         } catch ( ... ) {
-            mensajeInfo ( _( "Error al intentar borrar el pais" ) );
+            mensajeInfo ( _ ( "Error al intentar borrar el pais" ) );
             mainCompany() ->rollback();
         } // end try
     } // end switch

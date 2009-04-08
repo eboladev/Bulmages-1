@@ -72,9 +72,9 @@ void mytiptrab::inicializa ( Bulmacont *bges )
 {
     /// Creamos el men&uacute;.
     m_bulmacont = bges;
-    QAction *accion = new QAction ( _("&Proyectos"), 0 );
-    accion->setStatusTip ( _("Proyectos") );
-    accion->setWhatsThis ( _("Proyectos") );
+    QAction *accion = new QAction ( _ ( "&Proyectos" ), 0 );
+    accion->setStatusTip ( _ ( "Proyectos" ) );
+    accion->setWhatsThis ( _ ( "Proyectos" ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuMaestro->insertAction ( bges->actionPaises, accion );
@@ -91,8 +91,8 @@ int entryPoint ( Bulmacont *bges )
     _depura ( "Estoy dentro del plugin de proyectos", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginproyectos", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginproyectos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     mytiptrab *plug = new mytiptrab();
     plug->inicializa ( bges );
@@ -113,7 +113,7 @@ int ccosteview_ccosteview ( ccosteview *ccoste )
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
     l->mui_actualizar->setDisabled ( TRUE );
 //    l->setModoEdicion();
-    ccoste->tabWidget->addTab ( l, _("Proyectos asociados") );
+    ccoste->tabWidget->addTab ( l, _ ( "Proyectos asociados" ) );
     return 0;
 }
 

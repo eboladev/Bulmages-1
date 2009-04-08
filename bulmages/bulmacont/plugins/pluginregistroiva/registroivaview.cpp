@@ -66,38 +66,38 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
 
     mui_listIva->setDbTableName ( "iva" );
     mui_listIva->setDbFieldId ( "idiva" );
-    mui_listIva->addSubFormHeader ( "idiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _( "idiva" ) );
-    mui_listIva->addSubFormHeader ( "idtipoiva", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _( "idtipoiva" ) );
-    mui_listIva->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idcuenta" ) );
-    mui_listIva->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "codigo" ) );
-    mui_listIva->addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "tipocuenta" ) );
-    mui_listIva->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "nombretipoiva" ) );
-    mui_listIva->addSubFormHeader ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "idregistroiva" ) );
-    mui_listIva->addSubFormHeader ( "baseiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "baseiva" ) );
-    mui_listIva->addSubFormHeader ( "ivaiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "ivaiva" ) );
+    mui_listIva->addSubFormHeader ( "idiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _ ( "idiva" ) );
+    mui_listIva->addSubFormHeader ( "idtipoiva", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "idtipoiva" ) );
+    mui_listIva->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idcuenta" ) );
+    mui_listIva->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "codigo" ) );
+    mui_listIva->addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "tipocuenta" ) );
+    mui_listIva->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "nombretipoiva" ) );
+    mui_listIva->addSubFormHeader ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "idregistroiva" ) );
+    mui_listIva->addSubFormHeader ( "baseiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "baseiva" ) );
+    mui_listIva->addSubFormHeader ( "ivaiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "ivaiva" ) );
     mui_listIva->setinsercion ( FALSE );
 
     mui_listPrevCobro->setDbTableName ( "prevcobro" );
     mui_listPrevCobro->setDbFieldId ( "idprevcobro" );
-    mui_listPrevCobro->addSubFormHeader ( "idprevcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _( "idprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _( "fprevistaprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "fcobroprevcobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "fcobroprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "idfpago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "idfpago" ) );
-    mui_listPrevCobro->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "idcuenta" ) );
-    mui_listPrevCobro->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "idasiento" ) );
-    mui_listPrevCobro->addSubFormHeader ( "cantidadprevistaprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "cantidadprevistaprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "cantidadprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "cantidadprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "idregistroiva" ) );
-    mui_listPrevCobro->addSubFormHeader ( "tipoprevcobro", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "tipoprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "docprevcobro", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "docprevcobro" ) );
-    mui_listPrevCobro->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "codigo" ) );
-    mui_listIva->addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _( "tipocuenta" ) );
-    mui_listPrevCobro->addSubFormHeader ( "descripcion", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "descripcion" ) );
-    mui_listPrevCobro->addSubFormHeader ( "idctacliente", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "idctacliente" ) );
-    mui_listPrevCobro->addSubFormHeader ( "codigoctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "codigoctacliente" ) );
-    mui_listPrevCobro->addSubFormHeader ( "nomctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "nomctacliente" ) );
-    mui_listPrevCobro->addSubFormHeader ( "tipoctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "tipoctacliente" ) );
-    mui_listPrevCobro->addSubFormHeader ( "tipocuenta", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "tipocuenta" ) );
+    mui_listPrevCobro->addSubFormHeader ( "idprevcobro", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _ ( "idprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "fprevistaprevcobro", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "fprevistaprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "fcobroprevcobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "fcobroprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "idfpago", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "idfpago" ) );
+    mui_listPrevCobro->addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idcuenta" ) );
+    mui_listPrevCobro->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "idasiento" ) );
+    mui_listPrevCobro->addSubFormHeader ( "cantidadprevistaprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "cantidadprevistaprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "cantidadprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "cantidadprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "idregistroiva" ) );
+    mui_listPrevCobro->addSubFormHeader ( "tipoprevcobro", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "tipoprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "docprevcobro", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "docprevcobro" ) );
+    mui_listPrevCobro->addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "codigo" ) );
+    mui_listIva->addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "tipocuenta" ) );
+    mui_listPrevCobro->addSubFormHeader ( "descripcion", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "descripcion" ) );
+    mui_listPrevCobro->addSubFormHeader ( "idctacliente", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "idctacliente" ) );
+    mui_listPrevCobro->addSubFormHeader ( "codigoctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "codigoctacliente" ) );
+    mui_listPrevCobro->addSubFormHeader ( "nomctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "nomctacliente" ) );
+    mui_listPrevCobro->addSubFormHeader ( "tipoctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipoctacliente" ) );
+    mui_listPrevCobro->addSubFormHeader ( "tipocuenta", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipocuenta" ) );
 
     mui_listPrevCobro->setinsercion ( TRUE );
     mainCompany() ->meteWindow ( windowTitle(), this );
@@ -183,7 +183,7 @@ int RegistroIvaView::cargar ( QString id )
                                 " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente, tipocuenta AS tipoctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                                 " WHERE idregistroiva = " + id + " ORDER BY fcobroprevcobro " );
 
-    setWindowTitle ( _( "Registro factura" ) + " " + factura() );
+    setWindowTitle ( _ ( "Registro factura" ) + " " + factura() );
     dialogChanges_cargaInicial();
     return 0;
 }

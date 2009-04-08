@@ -129,7 +129,7 @@ adocumental::adocumental ( BcCompany *emp, QWidget *parent )
     m_listado->setColumnCount ( 7 );
 
     QStringList cabecerasHorizontal;
-    cabecerasHorizontal << _( "Id archivo documental" ) << _( "Id asiento" ) << _( "Descripcion" ) << _( "Fecha doc." ) << _( "Fecha asoc." ) << _( "Archivo" ) << _( "Asiento" );
+    cabecerasHorizontal << _ ( "Id archivo documental" ) << _ ( "Id asiento" ) << _ ( "Descripcion" ) << _ ( "Fecha doc." ) << _ ( "Fecha asoc." ) << _ ( "Archivo" ) << _ ( "Asiento" );
     m_listado->setHorizontalHeaderLabels ( cabecerasHorizontal );
 
     m_listado->setColumnWidth ( COL_IDADOCUMENTAL, 200 );
@@ -239,9 +239,9 @@ void adocumental::newADocumental ( QString archivo )
 void adocumental::boton_newadocumental()
 {
     _depura ( "adocumental::boton_newadocumental", 0 );
-    QString fn = QFileDialog::getOpenFileName ( this, _( "Elija el nombre del archivo" ),
+    QString fn = QFileDialog::getOpenFileName ( this, _ ( "Elija el nombre del archivo" ),
                  g_confpr->valor ( CONF_DIR_USER ),
-                 _( "Todos (*.*)" ) );
+                 _ ( "Todos (*.*)" ) );
 
     if ( !fn.isEmpty() ) {
         newADocumental ( fn );
@@ -363,7 +363,7 @@ void adocumental::s_saveADocumental()
 void adocumental::s_agregarDirectorio()
 {
     _depura ( "adocumental::s_agregarDirectorio", 0 );
-    QString fn = QFileDialog::getExistingDirectory ( this, _( "Elija un directorio" ),
+    QString fn = QFileDialog::getExistingDirectory ( this, _ ( "Elija un directorio" ),
                  g_confpr->valor ( CONF_DIR_USER ),
                  QFileDialog::ShowDirsOnly
                  | QFileDialog::DontResolveSymlinks );

@@ -45,26 +45,26 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _( "Convocatoria" ) );
+        setTitleName ( _ ( "Convocatoria" ) );
         setDbTableName ( "actividad" );
         setDbFieldId ( "idactividad" );
-        addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID actividad" ) );
-        addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del actividad" ) );
-	addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
+        addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID actividad" ) );
+        addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del actividad" ) );
+        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id profesor" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
 
-		/// Establecemos los parametros de busqueda de Profesor
-	mui_idprofesor->setMainCompany(comp);
-    mui_idprofesor->setLabel ( _( "Profesor:" ) );
-	mui_idprofesor->setTableName( "profesor" );
-	mui_idprofesor->m_valores["nombreprofesor"] = "";
+        /// Establecemos los parametros de busqueda de Profesor
+        mui_idprofesor->setMainCompany ( comp );
+        mui_idprofesor->setLabel ( _ ( "Profesor:" ) );
+        mui_idprofesor->setTableName ( "profesor" );
+        mui_idprofesor->m_valores["nombreprofesor"] = "";
 
 
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el actividad" ), this );
+        mensajeInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
     _depura ( "END ConvocatoriaView::ConvocatoriaView", 0 );
 }
@@ -79,9 +79,9 @@ ConvocatoriaView::~ConvocatoriaView()
 }
 
 
-QString ConvocatoriaView::nombrePlantilla(void) 
+QString ConvocatoriaView::nombrePlantilla ( void )
 {
-   return QString("recibo");
+    return QString ( "recibo" );
 }
 
 void ConvocatoriaView::imprimir()
@@ -92,9 +92,9 @@ void ConvocatoriaView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
-    } 
+    }
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
@@ -106,10 +106,11 @@ void ConvocatoriaView::imprimir()
 }
 
 
-int ConvocatoriaView::guardarPost() {
-	_depura(" ConvocatoriaView::guardarPost", 0);
+int ConvocatoriaView::guardarPost()
+{
+    _depura ( " ConvocatoriaView::guardarPost", 0 );
 
-	_depura("END ConvocatoriaView::guardarPost", 0);
+    _depura ( "END ConvocatoriaView::guardarPost", 0 );
 
 }
 

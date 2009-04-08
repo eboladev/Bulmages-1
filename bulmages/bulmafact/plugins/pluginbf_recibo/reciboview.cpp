@@ -45,30 +45,30 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _( "Recibo" ) );
+        setTitleName ( _ ( "Recibo" ) );
         setDbTableName ( "recibo" );
         setDbFieldId ( "idrecibo" );
-        addDbField ( "idrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID recibo" ) );
-        addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
-        
-	addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _("Id cliente"));
+        addDbField ( "idrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID recibo" ) );
+        addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Cantidad" ) );
+
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cliente" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
 
-      /// Inicializamos el subformulario de alumnos
+        /// Inicializamos el subformulario de alumnos
 //      mui_alumnosList->setMainCompany(comp);
-      
-		/// Establecemos los parametros de busqueda de Profesor
-	mui_idcliente->setMainCompany(comp);
-    mui_idcliente->setLabel ( _( "Tutor/Socio:" ) );
-	mui_idcliente->setTableName( "cliente" );
-	mui_idcliente->m_valores["nomcliente"] = "";
+
+        /// Establecemos los parametros de busqueda de Profesor
+        mui_idcliente->setMainCompany ( comp );
+        mui_idcliente->setLabel ( _ ( "Tutor/Socio:" ) );
+        mui_idcliente->setTableName ( "cliente" );
+        mui_idcliente->m_valores["nomcliente"] = "";
 
 
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el recibo" ), this );
+        mensajeInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
     _depura ( "END ReciboView::ReciboView", 0 );
 }
@@ -83,9 +83,9 @@ ReciboView::~ReciboView()
 }
 
 
-QString ReciboView::nombrePlantilla(void) 
+QString ReciboView::nombrePlantilla ( void )
 {
-   return QString("recibo");
+    return QString ( "recibo" );
 }
 
 void ReciboView::imprimir()
@@ -96,9 +96,9 @@ void ReciboView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
-    } 
+    }
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
@@ -110,26 +110,29 @@ void ReciboView::imprimir()
 }
 
 
-int ReciboView::guardarPost() {
-	_depura(" ReciboView::guardarPost", 0);
+int ReciboView::guardarPost()
+{
+    _depura ( " ReciboView::guardarPost", 0 );
 //  mui_alumnosList->setColumnValue("idrecibo", dbValue("idrecibo"));
 //  mui_alumnosList->guardar();
-	_depura("END ReciboView::guardarPost", 0);
+    _depura ( "END ReciboView::guardarPost", 0 );
 }
 
 
-int ReciboView::borrarPre() {
+int ReciboView::borrarPre()
+{
 
     return 0;
 }
 
 
 
-int ReciboView::cargarPost(QString id) {
-   _depura(" ReciboView::cargarPost", 0);
+int ReciboView::cargarPost ( QString id )
+{
+    _depura ( " ReciboView::cargarPost", 0 );
 
-   _depura("END ReciboView::cargarPost", 0);
-  return 0;
+    _depura ( "END ReciboView::cargarPost", 0 );
+    return 0;
 }
 
 

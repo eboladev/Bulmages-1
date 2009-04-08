@@ -41,7 +41,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
 {
     _depura ( "TrabajadorView::TrabajadorView", 0 );
 
-    setTitleName ( _( "Trabajador" ) );
+    setTitleName ( _ ( "Trabajador" ) );
     setDbTableName ( "trabajador" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -195,13 +195,13 @@ void TrabajadorView::on_mui_guardar_clicked()
             system ( cadena.toAscii().constData() );
         } // end if
 
-		/// Emitimos la senyal apropiada en el qapplication2
-		g_theApp->tablaCambiada1("trabajador");
+        /// Emitimos la senyal apropiada en el qapplication2
+        g_theApp->tablaCambiada1 ( "trabajador" );
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al guardar el trabajador" ) );
+        mensajeInfo ( _ ( "Error al guardar el trabajador" ) );
         mainCompany() ->rollback();
     } // end try
     _depura ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
@@ -218,9 +218,9 @@ bool TrabajadorView::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    _( "Guardar datos del trabajador" ),
-                                    _( "Desea guardar los cambios?" ),
-                                    _( "&Si" ), _( "&No" ), 0, 0, 1 ) == 0 )
+                                    _ ( "Guardar datos del trabajador" ),
+                                    _ ( "Desea guardar los cambios?" ),
+                                    _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
@@ -250,7 +250,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         pintar();
         _depura ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear un nuevo Trabajador" ) );
+        mensajeInfo ( _ ( "Error al crear un nuevo Trabajador" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -275,7 +275,7 @@ void TrabajadorView::on_mui_borrar_clicked()
         pintar();
         _depura ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el Trabajador" ) );
+        mensajeInfo ( _ ( "Error al borrar el Trabajador" ) );
         mainCompany() ->rollback();
     }// end try
 }
@@ -289,9 +289,9 @@ void TrabajadorView::on_mui_imagen_clicked()
 {
     _depura ( "TrabajadorView::on_mui_imagen_clicked", 0 );
     m_archivoimagen = QFileDialog::getOpenFileName ( this,
-                      _( "Seleccione archivo" ),
+                      _ ( "Seleccione archivo" ),
                       "",
-                      _( "Imagenes (*.jpg)" ) );
+                      _ ( "Imagenes (*.jpg)" ) );
     m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
     _depura ( "END TrabajadorView::on_mui_imagen_clicked", 0 );
 }

@@ -44,11 +44,11 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginartgraficos", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginartgraficos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
-	/// Ponemos el widget de pantallas.
+    /// Ponemos el widget de pantallas.
     g_pantallas = new BlDockWidget ( "Pantallas", tpv, "pantallasdock" );
     g_pantallas->setObjectName ( "pantallasdock" );
     g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );

@@ -52,16 +52,16 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "ZView_ZView", this ) ) return;
 
-        setTitleName ( _( "Cuadre de caja" ) );
+        setTitleName ( _ ( "Cuadre de caja" ) );
         setDbTableName ( "z" );
         setDbFieldId ( "idz" );
-        addDbField ( "idz", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id" ) );
-        addDbField ( "fechaz", BlDbField::DbDate, BlDbField::DbNotNull, _( "Fecha" ) );
-        addDbField ( "horaz", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Hora" ) );
-        addDbField ( "totalz", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Total" ) );
-        addDbField ( "numtickets", BlDbField::DbInt, BlDbField::DbNotNull, _( "Num. tickets" ) );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, _( "Id. almacen" ) );
-        addDbField ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Almacen" ) );
+        addDbField ( "idz", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id" ) );
+        addDbField ( "fechaz", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha" ) );
+        addDbField ( "horaz", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Hora" ) );
+        addDbField ( "totalz", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Total" ) );
+        addDbField ( "numtickets", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Num. tickets" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id. almacen" ) );
+        addDbField ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Almacen" ) );
 
         mui_idalmacen->setMainCompany ( comp );
 
@@ -69,19 +69,19 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         mui_list->setMainCompany ( comp );
         mui_list->setDbTableName ( "albaran" );
         mui_list->setDbFieldId ( "idalbaran" );
-        mui_list->addSubFormHeader ( "idalbaran",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Id albaran" ) );
-        mui_list->addSubFormHeader ( "numalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Numero" ) );
-        mui_list->addSubFormHeader ( "descalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Descripcion" ) );
-        mui_list->addSubFormHeader ( "refalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
-        mui_list->addSubFormHeader ( "fechaalbaran",  BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Fecha" ) );
-        mui_list->addSubFormHeader ( "procesadoalbaran",  BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Procesado" ) );
-        mui_list->addSubFormHeader ( "idforma_pago",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Id forma de pago" ) );
-        mui_list->addSubFormHeader ( "descforma_pago",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite,  _( "Forma de pago" ) );
-        mui_list->addSubFormHeader ( "anuladoalbaran",  BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Anulado" ) );
-        mui_list->addSubFormHeader ( "horaalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Hora" ) );
-        mui_list->addSubFormHeader ( "totalalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Total" ) );
-        mui_list->addSubFormHeader ( "bimpalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Base Imponible" ) );
-        mui_list->addSubFormHeader ( "impalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _( "Impuestos" ) );
+        mui_list->addSubFormHeader ( "idalbaran",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
+        mui_list->addSubFormHeader ( "numalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Numero" ) );
+        mui_list->addSubFormHeader ( "descalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Descripcion" ) );
+        mui_list->addSubFormHeader ( "refalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Referencia" ) );
+        mui_list->addSubFormHeader ( "fechaalbaran",  BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+        mui_list->addSubFormHeader ( "procesadoalbaran",  BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Procesado" ) );
+        mui_list->addSubFormHeader ( "idforma_pago",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Id forma de pago" ) );
+        mui_list->addSubFormHeader ( "descforma_pago",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite,  _ ( "Forma de pago" ) );
+        mui_list->addSubFormHeader ( "anuladoalbaran",  BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Anulado" ) );
+        mui_list->addSubFormHeader ( "horaalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Hora" ) );
+        mui_list->addSubFormHeader ( "totalalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
+        mui_list->addSubFormHeader ( "bimpalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Base Imponible" ) );
+        mui_list->addSubFormHeader ( "impalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
 
         mui_list->setinsercion ( FALSE );
         mui_list->setDelete ( FALSE );
@@ -90,7 +90,7 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el almacen" ) );
+        mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     _depura ( "END ZView::ZView", 0 );
 }
@@ -140,21 +140,22 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
     _depura ( "ZView::on_mui_list_doubleClicked", 0 );
 
     QString idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
-	if (g_plugins->lanza("SNewAlbaranClienteView", mainCompany()) ) {
-	
-        AlbaranClienteView * prov = (AlbaranClienteView *) g_plugParams;
+    if ( g_plugins->lanza ( "SNewAlbaranClienteView", mainCompany() ) ) {
+
+        AlbaranClienteView * prov = ( AlbaranClienteView * ) g_plugParams;
         if ( prov->cargar ( idalbaran ) ) {
             delete prov;
             return;
         } // end if
         mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
-	} // end if
+    } // end if
     _depura ( "END ZView::on_mui_list_doubleClicked", 0 );
 }
 
 
-void ZView::on_mui_actualizar_released() {
-	cargar(dbValue("idz"));
-} 
+void ZView::on_mui_actualizar_released()
+{
+    cargar ( dbValue ( "idz" ) );
+}
 

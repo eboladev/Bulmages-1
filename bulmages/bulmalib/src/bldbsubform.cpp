@@ -168,8 +168,8 @@ int BlDbSubFormField::set ( QString val )
         if ( restrictcampo() == BlSubFormHeader::DbNoWrite ) {
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
-	
-	
+
+
         if ( val == "TRUE" || val == "t" ) {
             setCheckState ( Qt::Checked );
         } else {

@@ -54,23 +54,23 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( _( "Presupuesto" ) );
+        setTitleName ( _ ( "Presupuesto" ) );
         setDbTableName ( "presupuesto" );
         setDbFieldId ( "idpresupuesto" );
-        addDbField ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID presupuesto" ) );
-        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Cliente" ) );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Almacen" ) );
-        addDbField ( "numpresupuesto", BlDbField::DbInt, BlDbField::DbNothing, _( "Numero de presupuesto" ) );
-        addDbField ( "fpresupuesto", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de creacion" ) );
-        addDbField ( "vencpresupuesto", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de vencimiento" ) );
-        addDbField ( "contactpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Persona de contacto" ) );
-        addDbField ( "telpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Numero de telefono" ) );
-        addDbField ( "comentpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentarios" ) );
-        addDbField ( "procesadopresupuesto", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Procesado" ) );
-        addDbField ( "descpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _( "% Descuento" ) );
-        addDbField ( "refpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _( "Forma de pago" ) );
-        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _( "Trabajador" ) );
+        addDbField ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID presupuesto" ) );
+        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Cliente" ) );
+        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Almacen" ) );
+        addDbField ( "numpresupuesto", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero de presupuesto" ) );
+        addDbField ( "fpresupuesto", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de creacion" ) );
+        addDbField ( "vencpresupuesto", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de vencimiento" ) );
+        addDbField ( "contactpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Persona de contacto" ) );
+        addDbField ( "telpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono" ) );
+        addDbField ( "comentpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+        addDbField ( "procesadopresupuesto", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Procesado" ) );
+        addDbField ( "descpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "% Descuento" ) );
+        addDbField ( "refpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Forma de pago" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PresupuestoView_PresupuestoView", this );
@@ -94,17 +94,17 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         mui_idforma_pago->setFieldValue ( "0" );
         mui_idalmacen->setFieldValue ( "0" );
         mui_idtrabajador->setFieldValue ( "0" );
-		/// Establecemos los parametros de busqueda del Cliente
-		mui_idcliente->setLabel ( _( "Cliente:" ) );
-		mui_idcliente->setTableName( "cliente" );
-		mui_idcliente->m_valores["cifcliente"] = "";
-		mui_idcliente->m_valores["nomcliente"] = "";
+        /// Establecemos los parametros de busqueda del Cliente
+        mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+        mui_idcliente->setTableName ( "cliente" );
+        mui_idcliente->m_valores["cifcliente"] = "";
+        mui_idcliente->m_valores["nomcliente"] = "";
 
         meteWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "PresupuestoView_PresupuestoView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el presupuesto" ), this );
+        mensajeInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try
     _depura ( "Fin de la inicializacion de PresupuestoView", 0 );
 }
@@ -208,120 +208,120 @@ void PresupuestoView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, B
 void PresupuestoView::generarPedidoCliente()
 {
     _depura ( "PresupuestoView::generarPedidoCliente", 0 );
-/*
-    PedidoClienteView *bud = NULL;
-    BlDbRecordSet *cur = NULL;
+    /*
+        PedidoClienteView *bud = NULL;
+        BlDbRecordSet *cur = NULL;
 
-    try {
-        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
-        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
-        /// el siguiente cur->eof() el programa fallar&aacute;.
-        /// Comprobamos que existe el pedido con esos datos, y en caso afirmativo lo mostramos.
+        try {
+            /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+            /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+            /// el siguiente cur->eof() el programa fallar&aacute;.
+            /// Comprobamos que existe el pedido con esos datos, y en caso afirmativo lo mostramos.
 
-        QString SQLQuery = "";
+            QString SQLQuery = "";
 
-        if ( dbValue ( "refpresupuesto" ).isEmpty() || dbValue ( "idcliente" ).isEmpty() ) {
-            /// El presupuesto no se ha guardado y no se dispone en la base de datos
-            /// de estos datos. Se utilizan en su lugar los del formulario.
-            /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
-                return;
+            if ( dbValue ( "refpresupuesto" ).isEmpty() || dbValue ( "idcliente" ).isEmpty() ) {
+                /// El presupuesto no se ha guardado y no se dispone en la base de datos
+                /// de estos datos. Se utilizan en su lugar los del formulario.
+                /// Verifica que exista, por lo menos, un cliente seleccionado.
+                if ( mui_idcliente->idcliente().isEmpty() ) {
+                    mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
+                    return;
+                } else {
+                    SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refpresupuesto->text() + "' AND idcliente = " + mui_idcliente->idcliente();
+                } // end if
             } else {
-                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refpresupuesto->text() + "' AND idcliente = " + mui_idcliente->idcliente();
+                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + dbValue ( "refpresupuesto" ) + "' AND idcliente = " + dbValue ( "idcliente" );
             } // end if
-        } else {
-            SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + dbValue ( "refpresupuesto" ) + "' AND idcliente = " + dbValue ( "idcliente" );
-        } // end if
 
-        cur = mainCompany()->loadQuery ( SQLQuery );
+            cur = mainCompany()->loadQuery ( SQLQuery );
 
-        if ( !cur->eof() ) {
-            /// Informamos que ya hay un pedido y lo abrimos.
-            /// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
-            if ( QMessageBox::question ( this,
-                                         _( "Pedido existente" ),
-                                         _( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
-                                         _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
+            if ( !cur->eof() ) {
+                /// Informamos que ya hay un pedido y lo abrimos.
+                /// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
+                if ( QMessageBox::question ( this,
+                                             _( "Pedido existente" ),
+                                             _( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
+                                             _( "&Si" ), _( "&No" ), QString::null, 0, 1 ) ) {
+                    return;
+                } // end if
+
+                bud = mainCompany() ->newPedidoClienteView();
+                mainCompany() ->m_pWorkspace->addWindow ( bud );
+                bud->cargar ( cur->valor ( "idpedidocliente" ) );
+                bud->show();
+                delete cur;
                 return;
             } // end if
 
-            bud = mainCompany() ->newPedidoClienteView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
-            bud->cargar ( cur->valor ( "idpedidocliente" ) );
-            bud->show();
             delete cur;
-            return;
-        } // end if
 
-        delete cur;
+            /// Creamos el pedido.
+            bud = mainCompany() ->newPedidoClienteView();
+            bud->cargar ( "0" );
+            mainCompany() ->m_pWorkspace->addWindow ( bud );
 
-        /// Creamos el pedido.
-        bud = mainCompany() ->newPedidoClienteView();
-        bud->cargar ( "0" );
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+            /// Traspasamos toda la informacion del presupuesto al pedido.
+            recogeValores();
+            bud->setDbValue ( "idcliente", dbValue ( "idcliente" ) );
+            bud->setDbValue ( "comentpedidocliente", dbValue ( "comentpresupuesto" ) );
+            bud->setDbValue ( "descpedidocliente", dbValue ( "descpresupuesto" ) );
+            bud->setDbValue ( "fechapedidocliente", dbValue ( "fpresupuesto" ) );
+            bud->setDbValue ( "idforma_pago", dbValue ( "idforma_pago" ) );
+            bud->setDbValue ( "refpedidocliente", dbValue ( "refpresupuesto" ) );
+            bud->setDbValue ( "procesadopedidocliente", dbValue ( "procesadopresupuesto" ) );
+            bud->setDbValue ( "idalmacen", dbValue ( "idalmacen" ) );
+            bud->setDbValue ( "contactpedidocliente", dbValue ( "contactpresupuesto" ) );
+            bud->setDbValue ( "telpedidocliente", dbValue ( "telpresupuesto" ) );
 
-        /// Traspasamos toda la informacion del presupuesto al pedido.
-        recogeValores();
-        bud->setDbValue ( "idcliente", dbValue ( "idcliente" ) );
-        bud->setDbValue ( "comentpedidocliente", dbValue ( "comentpresupuesto" ) );
-        bud->setDbValue ( "descpedidocliente", dbValue ( "descpresupuesto" ) );
-        bud->setDbValue ( "fechapedidocliente", dbValue ( "fpresupuesto" ) );
-        bud->setDbValue ( "idforma_pago", dbValue ( "idforma_pago" ) );
-        bud->setDbValue ( "refpedidocliente", dbValue ( "refpresupuesto" ) );
-        bud->setDbValue ( "procesadopedidocliente", dbValue ( "procesadopresupuesto" ) );
-        bud->setDbValue ( "idalmacen", dbValue ( "idalmacen" ) );
-        bud->setDbValue ( "contactpedidocliente", dbValue ( "contactpresupuesto" ) );
-        bud->setDbValue ( "telpedidocliente", dbValue ( "telpresupuesto" ) );
+            /// Traspasamos las lineas del presupuesto a lineas del pedido.
+            BlDbSubFormRecord *linea;
+            BlDbSubFormRecord *linea2;
 
-        /// Traspasamos las lineas del presupuesto a lineas del pedido.
-        BlDbSubFormRecord *linea;
-        BlDbSubFormRecord *linea2;
+            for ( int i = 0; i < m_listalineas->rowCount(); i++ ) {
+                linea = m_listalineas->lineaat ( i );
+                if ( linea->dbValue ( "idarticulo" ) != "" ) {
+                    linea2 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                    bud->getlistalineas() ->nuevoRegistro();
+                    bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                    linea2->setDbValue ( "desclpedidocliente", linea->dbValue ( "desclpresupuesto" ) );
+                    linea2->setDbValue ( "cantlpedidocliente", linea->dbValue ( "cantlpresupuesto" ) );
+                    linea2->setDbValue ( "pvplpedidocliente", linea->dbValue ( "pvplpresupuesto" ) );
+                    linea2->setDbValue ( "ivalpedidocliente", linea->dbValue ( "ivalpresupuesto" ) );
+                    linea2->setDbValue ( "descuentolpedidocliente", linea->dbValue ( "descuentolpresupuesto" ) );
+                    linea2->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+                    linea2->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+                    linea2->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+                    bud->getlistalineas() ->setProcesarCambios ( TRUE );
+                } // end if
+            } // end for
 
-        for ( int i = 0; i < m_listalineas->rowCount(); i++ ) {
-            linea = m_listalineas->lineaat ( i );
-            if ( linea->dbValue ( "idarticulo" ) != "" ) {
-                linea2 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
-                bud->getlistalineas() ->setProcesarCambios ( FALSE );
-                linea2->setDbValue ( "desclpedidocliente", linea->dbValue ( "desclpresupuesto" ) );
-                linea2->setDbValue ( "cantlpedidocliente", linea->dbValue ( "cantlpresupuesto" ) );
-                linea2->setDbValue ( "pvplpedidocliente", linea->dbValue ( "pvplpresupuesto" ) );
-                linea2->setDbValue ( "ivalpedidocliente", linea->dbValue ( "ivalpresupuesto" ) );
-                linea2->setDbValue ( "descuentolpedidocliente", linea->dbValue ( "descuentolpresupuesto" ) );
-                linea2->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
-                linea2->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
-                linea2->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
-                bud->getlistalineas() ->setProcesarCambios ( TRUE );
-            } // end if
-        } // end for
+            /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
+            BlDbSubFormRecord *linea1;
+            BlDbSubFormRecord *linea3;
+            for ( int i = 0; i < m_listadescuentos->rowCount(); i++ ) {
+                linea1 = m_listadescuentos->lineaat ( i );
+                if ( linea1->dbValue ( "proporciondpresupuesto" ) != "" ) {
+                    linea3 = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
+                    bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+                    linea3->setDbValue ( "conceptdpedidocliente", linea1->dbValue ( "conceptdpresupuesto" ) );
+                    linea3->setDbValue ( "proporciondpedidocliente", linea1->dbValue ( "proporciondpresupuesto" ) );
+                    bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+                    bud->getlistadescuentos() ->nuevoRegistro();
+                } // end if
+            } // end for
 
-        /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
-        BlDbSubFormRecord *linea1;
-        BlDbSubFormRecord *linea3;
-        for ( int i = 0; i < m_listadescuentos->rowCount(); i++ ) {
-            linea1 = m_listadescuentos->lineaat ( i );
-            if ( linea1->dbValue ( "proporciondpresupuesto" ) != "" ) {
-                linea3 = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-                bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-                linea3->setDbValue ( "conceptdpedidocliente", linea1->dbValue ( "conceptdpresupuesto" ) );
-                linea3->setDbValue ( "proporciondpedidocliente", linea1->dbValue ( "proporciondpresupuesto" ) );
-                bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                bud->getlistadescuentos() ->nuevoRegistro();
-            } // end if
-        } // end for
+            /// Pintamos el pedido y lo presentamos.
+            bud->pintar();
+            bud->calculaypintatotales();
+            bud->show();
 
-        /// Pintamos el pedido y lo presentamos.
-        bud->pintar();
-        bud->calculaypintatotales();
-        bud->show();
-
-    } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado" ), this );
-        if ( cur ) delete cur;
-        if ( bud ) delete bud;
-    } // end try
-*/
+        } catch ( ... ) {
+            mensajeInfo ( _( "Error inesperado" ), this );
+            if ( cur ) delete cur;
+            if ( bud ) delete bud;
+        } // end try
+    */
     _depura ( "END PresupuestoView::generarPedidoCliente", 0 );
 }
 

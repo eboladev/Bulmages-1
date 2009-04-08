@@ -28,7 +28,7 @@
 #include "impqtoolbutton.h"
 
 
-CobrosList *g_cobrosList=NULL;
+CobrosList *g_cobrosList = NULL;
 
 ///
 /**
@@ -56,9 +56,9 @@ myplugincob::~myplugincob()
 void myplugincob::elslot()
 {
     _depura ( "myplugincob::elslot", 0 );
-    if (g_cobrosList) {
-	g_cobrosList->hide();
-	g_cobrosList->show();
+    if ( g_cobrosList ) {
+        g_cobrosList->hide();
+        g_cobrosList->show();
     }// end if
     _depura ( "END myplugincob::elslot", 0 );
 }
@@ -69,9 +69,9 @@ void myplugincob::elslot()
 void myplugincob::elslot1()
 {
     _depura ( "myplugincob::elslot1", 0 );
-        CobroView * bud = new CobroView((BfCompany *)mainCompany(), NULL);
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->show();
+    CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END myplugincob::elslot1", 0 );
 }
 
@@ -87,28 +87,28 @@ void myplugincob::inicializa ( Bulmafact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
-	pPluginMenu->addSeparator();
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
 
-	/// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-	m_bges = bges;
-	setMainCompany ( bges->getcompany() );
-	QAction *planCuentas = new QAction ( _( "&Cobros a clientes" ), 0 );
-	planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ));
-	planCuentas->setStatusTip ( _( "Cobros a clientes" ) );
-	planCuentas->setWhatsThis ( _( "Cobros a clientes" ) );
-	pPluginMenu->addAction ( planCuentas );
-	bges->Listados->addAction (planCuentas);
-	connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        m_bges = bges;
+        setMainCompany ( bges->getcompany() );
+        QAction *planCuentas = new QAction ( _ ( "&Cobros a clientes" ), 0 );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ) );
+        planCuentas->setStatusTip ( _ ( "Cobros a clientes" ) );
+        planCuentas->setWhatsThis ( _ ( "Cobros a clientes" ) );
+        pPluginMenu->addAction ( planCuentas );
+        bges->Listados->addAction ( planCuentas );
+        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-	QAction *npago = new QAction ( _( "&Nuevo cobro a cliente" ), 0 );
-	npago->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/receive.svg" ) ));
-	npago->setStatusTip ( _( "Nuevo cobro a cliente" ) );
-	npago->setWhatsThis ( _( "Nuevo cobro a cliente" ) );
-	pPluginMenu->addAction ( npago );
-	bges->Fichas->addAction (npago);
-	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *npago = new QAction ( _ ( "&Nuevo cobro a cliente" ), 0 );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.svg" ) ) );
+        npago->setStatusTip ( _ ( "Nuevo cobro a cliente" ) );
+        npago->setWhatsThis ( _ ( "Nuevo cobro a cliente" ) );
+        pPluginMenu->addAction ( npago );
+        bges->Fichas->addAction ( npago );
+        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
     _depura ( "END myplugincob::inicializa", 0 );
 }
@@ -124,8 +124,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "Punto de Entrada del plugin de Cobros\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_clientecobro", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_clientecobro", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugincob *plug = new myplugincob();
     plug->inicializa ( bges );
@@ -133,30 +133,33 @@ int entryPoint ( Bulmafact *bges )
 }
 
 
-int BfCompany_createMainWindows_Post(BfCompany *comp) {
+int BfCompany_createMainWindows_Post ( BfCompany *comp )
+{
     if ( comp->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-	g_cobrosList = new CobrosList( comp, NULL );	
-	comp->m_pWorkspace->addWindow ( g_cobrosList );
-	g_cobrosList->hide();
+        g_cobrosList = new CobrosList ( comp, NULL );
+        comp->m_pWorkspace->addWindow ( g_cobrosList );
+        g_cobrosList->hide();
     }// end if
     return 0;
 }
 
 
-int ClienteView_ClienteView_Post (ClienteView *prov) {
+int ClienteView_ClienteView_Post ( ClienteView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-		CobrosList *pagosList = new CobrosList( (BfCompany *)prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
-		pagosList->setModoEdicion();
-		pagosList->setObjectName("listcobrosproveedor");
-		pagosList->hideBusqueda();
+        CobrosList *pagosList = new CobrosList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        pagosList->setModoEdicion();
+        pagosList->setObjectName ( "listcobrosproveedor" );
+        pagosList->hideBusqueda();
         prov->mui_tab->addTab ( pagosList, "Cobros" );
     }// end if
     return 0;
 }
 
-int ClienteView_cargarPost_Post (ClienteView *prov) {
+int ClienteView_cargarPost_Post ( ClienteView *prov )
+{
     if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-		CobrosList *pagosList = prov->findChild<CobrosList *> ( "listcobrosproveedor" );
+        CobrosList *pagosList = prov->findChild<CobrosList *> ( "listcobrosproveedor" );
         pagosList->setidcliente ( prov->dbValue ( "idcliente" ) );
         pagosList->presentar();
     }// end if
@@ -164,11 +167,12 @@ int ClienteView_cargarPost_Post (ClienteView *prov) {
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *ref) {
+int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+{
     QString SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        CobroView * bud = new CobroView((BfCompany *)ref->mainCompany(), NULL);
+        CobroView * bud = new CobroView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
         bud->cargar ( cur->valor ( "idcobro" ) );
         bud->show();
@@ -192,12 +196,12 @@ int FacturaView_FacturaView ( FacturaView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     _depura ( "END PluginPagos_FacturaView_FacturaView", 0 );
     return 0;
@@ -215,12 +219,12 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     _depura ( "END PluginPagos_AlbaranClienteView_AlbaranClienteView", 0 );
     return 0;
@@ -238,12 +242,12 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
-	if (!m_hboxLayout1) {
-		m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-		m_hboxLayout1->setSpacing ( 5 );
-		m_hboxLayout1->setMargin ( 0 );
-		m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-	}// end if
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     _depura ( "END PluginPagos_PedidoClienteView_PedidoClienteView", 0 );
     return 0;
@@ -252,9 +256,9 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
-int SNewCobroView (BfCompany *v)
+int SNewCobroView ( BfCompany *v )
 {
-   CobroView *h = new CobroView(v, 0);
-   g_plugParams = h;
-   return 1;
+    CobroView *h = new CobroView ( v, 0 );
+    g_plugParams = h;
+    return 1;
 }

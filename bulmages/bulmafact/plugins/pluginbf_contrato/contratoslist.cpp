@@ -60,17 +60,17 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
     m_modo = editmode;
-		/// Establecemos los parametros de busqueda del Cliente
-    mui_idcliente->setLabel ( _( "Cliente:" ) );
-	mui_idcliente->setTableName( "cliente" );
-	mui_idcliente->m_valores["cifcliente"] = "";
-	mui_idcliente->m_valores["nomcliente"] = "";
+    /// Establecemos los parametros de busqueda del Cliente
+    mui_idcliente->setLabel ( _ ( "Cliente:" ) );
+    mui_idcliente->setTableName ( "cliente" );
+    mui_idcliente->m_valores["cifcliente"] = "";
+    mui_idcliente->m_valores["nomcliente"] = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( m_modo == BL_EDIT_MODE ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _( "Selector de contratos" ) );
+        setWindowTitle ( _ ( "Selector de contratos" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
@@ -171,7 +171,7 @@ void ContratosList::on_mui_editar_clicked()
 void ContratosList::on_mui_imprimir_clicked()
 {
     _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _( "Listado de Contratos" ) );
+    mui_list->imprimirPDF ( _ ( "Listado de Contratos" ) );
     _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
 }
 
@@ -200,7 +200,7 @@ void ContratosList::on_mui_borrar_clicked()
                 presenta();
         */
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar un contrato" ) );
+        mensajeInfo ( _ ( "Error al borrar un contrato" ) );
     } // end try
     _depura ( "END:ContratosList::on_mui_borrar_clicked", 0 );
 }
@@ -419,15 +419,15 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : B
     _depura ( "ContratosListSubform::ContratosListSubform", 0 );
     setDbTableName ( "contrato" );
     setDbFieldId ( "idcontrato" );
-    addSubFormHeader ( "idcontrato", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID contrato" ) );
-    addSubFormHeader ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Codigo" ) );
-    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "C.I.F." ) );
-    addSubFormHeader ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Referencia" ) );
-    addSubFormHeader ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre de contrato" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre alternativo del contrato" ) );
-    addSubFormHeader ( "fincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de alta del contrato" ) );
-    addSubFormHeader ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de baja del contrato" ) );
-    addSubFormHeader ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Fecha de baja del contrato" ) );
+    addSubFormHeader ( "idcontrato", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID contrato" ) );
+    addSubFormHeader ( "codcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F." ) );
+    addSubFormHeader ( "refcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia" ) );
+    addSubFormHeader ( "nomcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de contrato" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre alternativo del contrato" ) );
+    addSubFormHeader ( "fincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de alta del contrato" ) );
+    addSubFormHeader ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del contrato" ) );
+    addSubFormHeader ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del contrato" ) );
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

@@ -64,43 +64,43 @@ void BusquedaAlmacen::setId ( QString idalmacen )
 {
     _depura ( "BusquedaAlmacen::setidalmacen", 0, idalmacen );
 
-     try {
-		/// Si no existe la mainCompany() pq aun no ha sido establecida salimos
-		if (!mainCompany()) return;
+    try {
+        /// Si no existe la mainCompany() pq aun no ha sido establecida salimos
+        if ( !mainCompany() ) return;
 
-		/// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
-		if (idalmacen.isEmpty() || idalmacen == "0") {
-			idalmacen = g_confpr->valor(CONF_IDALMACEN_DEFECTO);
-		} // end if
+        /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
+        if ( idalmacen.isEmpty() || idalmacen == "0" ) {
+            idalmacen = g_confpr->valor ( CONF_IDALMACEN_DEFECTO );
+        } // end if
 
-		/// Si ya esta creado el cursorcombo lo borramos.	
-		if ( m_comboRecordSet != NULL ) {
-			delete m_comboRecordSet;
-		} // end if
-	
-		m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM almacen ORDER BY nomalmacen" );
-		if ( !m_comboRecordSet ) return;
-		int i = 0;
-		int i1 = 0;
-		int i2 = 0;
-		clear();
-		addItem ( "--" );
-		while ( !m_comboRecordSet->eof() ) {
-			i++;
-			if ( m_comboRecordSet->valor ( "codigoalmacen" ) == m_codigoalmacen )
-				i2 = i;
-			if ( m_comboRecordSet->valor ( "idalmacen" ) == idalmacen )
-				i1 = i;
-			addItem ( m_comboRecordSet->valor ( "nomalmacen" ) );
-			m_comboRecordSet->nextRecord();
-		} //end while
-		if ( i1 != 0 ) {
-			setCurrentIndex ( i1 );
-		} else {
-			setCurrentIndex ( i2 );
-		} // end if
-    } catch(...) {
-	_depura("Error en BusquedaAlmacen::setidalmacen", 2);
+        /// Si ya esta creado el cursorcombo lo borramos.
+        if ( m_comboRecordSet != NULL ) {
+            delete m_comboRecordSet;
+        } // end if
+
+        m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+        if ( !m_comboRecordSet ) return;
+        int i = 0;
+        int i1 = 0;
+        int i2 = 0;
+        clear();
+        addItem ( "--" );
+        while ( !m_comboRecordSet->eof() ) {
+            i++;
+            if ( m_comboRecordSet->valor ( "codigoalmacen" ) == m_codigoalmacen )
+                i2 = i;
+            if ( m_comboRecordSet->valor ( "idalmacen" ) == idalmacen )
+                i1 = i;
+            addItem ( m_comboRecordSet->valor ( "nomalmacen" ) );
+            m_comboRecordSet->nextRecord();
+        } //end while
+        if ( i1 != 0 ) {
+            setCurrentIndex ( i1 );
+        } else {
+            setCurrentIndex ( i2 );
+        } // end if
+    } catch ( ... ) {
+        _depura ( "Error en BusquedaAlmacen::setidalmacen", 2 );
     } // end try
     _depura ( "END BusquedaAlmacen::setidalmacen", 0, idalmacen );
 }
@@ -221,7 +221,7 @@ void BusquedaAlmacenDelegate::set ( const QString &cod )
 
         if ( m_comboRecordSet->valor ( "nomalmacen" ) + ", " + m_comboRecordSet->valor ( "codigoalmacen" ) == cod ) {
             index = m_comboRecordSet->currentRecord();
-	} // end if
+        } // end if
 
     }// end while
 

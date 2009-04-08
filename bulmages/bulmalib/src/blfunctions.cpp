@@ -65,50 +65,53 @@ QString parsearCode ( const QString &cad )
     return result;
 }
 
-/// Escapa los minimos caracteres necesarios para 
-/// escribir a cadena a XML, sin usar CDATA, para ahorrar bytes y porque (me suena que) puede no 
+/// Escapa los minimos caracteres necesarios para
+/// escribir a cadena a XML, sin usar CDATA, para ahorrar bytes y porque (me suena que) puede no
 /// estar permitido en todos los lugares de un fichero xml segun esquemas o dtds especificos
-QString xmlEscape ( const QString& param ) {
-   QString text = param;
-   text.replace("&","&amp;");
-   text.replace('"',"&quot;");
-   text.replace("<","&lt;");
-   text.replace(">","&gt;");
-   
-   
-   return text;
+QString xmlEscape ( const QString& param )
+{
+    QString text = param;
+    text.replace ( "&", "&amp;" );
+    text.replace ( '"', "&quot;" );
+    text.replace ( "<", "&lt;" );
+    text.replace ( ">", "&gt;" );
+
+
+    return text;
 }
 /// Escapa los caracteres necesarios para que la cadena pueda ser embebida dentro de un
 /// script en python
-QString pythonEscape ( const QString& param) {
-   QString text = param;
-   text.replace("'", "\\'");
-   text.replace("\n", "\\n");
-   return text;
+QString pythonEscape ( const QString& param )
+{
+    QString text = param;
+    text.replace ( "'", "\\'" );
+    text.replace ( "\n", "\\n" );
+    return text;
 }
 
-QString genEscape ( const QString &param, int tipoEscape) {
-	QString param1;
-		switch (tipoEscape) {
-			case 1:
-	            	param1 =  xmlEscape(param );
-			break;
-			case 2:
-	            	param1 = pythonEscape(param );
-			break;
-			default:
-	            	param1 = param;
+QString genEscape ( const QString &param, int tipoEscape )
+{
+    QString param1;
+    switch ( tipoEscape ) {
+    case 1:
+        param1 =  xmlEscape ( param );
+        break;
+    case 2:
+        param1 = pythonEscape ( param );
+        break;
+    default:
+        param1 = param;
 
-		} // end switch
-	return param1;
+    } // end switch
+    return param1;
 }
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
-/// Nota: ahora ficha.cpp ya respeta el encoding del XML 
+/// Nota: ahora ficha.cpp ya respeta el encoding del XML
 /// original y pone referencias numericas de caracter solo a los caracteres
 /// no soportados en el encoding. Ya no hace tanta falta
-/// esta funcion, y creo que con escapeXml pasamos (para 
-/// listados rml al menos). Podemos tener el buffer en 
+/// esta funcion, y creo que con escapeXml pasamos (para
+/// listados rml al menos). Podemos tener el buffer en
 /// memoria en unicode hasta escribirlo a fichero en ficha::generaRML
 QString XMLProtect ( const QString &string )
 {
@@ -340,7 +343,8 @@ void generaPDF ( const QString arch )
 }
 
 /// Genera un ODS a partir de un pys sin abrirlo.
-void generaPYS ( const QString arch ) {
+void generaPYS ( const QString arch )
+{
     _depura ( "generaPYS " + arch, 0 );
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
@@ -355,8 +359,9 @@ void generaPYS ( const QString arch ) {
 
 
 /// Genera un ODS a partir de un pys usand python. y ademas lo muestra.
-void invocaPYS (const QString arch) {
-    generaPYS (arch);
+void invocaPYS ( const QString arch )
+{
+    generaPYS ( arch );
     QString cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
     system ( cadena.toAscii() );
 
@@ -414,12 +419,14 @@ QString windowID ( const QString &app )
 
 
 
-void _debugOn () {
+void _debugOn ()
+{
     g_confpr->setValor ( CONF_DEBUG, "TRUE" );
 }
 
 
-void _debugOff () {
+void _debugOff ()
+{
     g_confpr->setValor ( CONF_DEBUG, "FALSE" );
 }
 
@@ -516,11 +523,11 @@ void _depura ( const QString &cad, int nivel, const QString &param )
         if ( nivel == 2 || ( supnivel == 2 && nivel == 0 ) || nivel == 3 ) {
             out << cad << " " << param << "\n" << flush;
             int err = QMessageBox::information ( NULL,
-                                                 _( "Informacion de depuracion" ),
+                                                 _ ( "Informacion de depuracion" ),
                                                  cad + " " + param,
-                                                 _( "&Continuar" ),
-                                                 _( "&Omitir" ),
-                                                 _( "Omitir &clase" ),
+                                                 _ ( "&Continuar" ),
+                                                 _ ( "&Omitir" ),
+                                                 _ ( "Omitir &clase" ),
                                                  0, 1 );
             if ( err == 1 ) {
                 mensajesanulados[indice++] = cad;
@@ -546,8 +553,8 @@ void mensajeInfo ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.information ( parent,
-                         _( "Informacion del programa" ),
-                         cad, _( "&Continuar" ),
+                         _ ( "Informacion del programa" ),
+                         cad, _ ( "&Continuar" ),
                          QString::null, 0 );
 }
 
@@ -556,8 +563,8 @@ void mensajeAviso ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.warning ( parent,
-                     _( "Aviso del programa" ),
-                     cad, _( "&Continuar" ),
+                     _ ( "Aviso del programa" ),
+                     cad, _ ( "&Continuar" ),
                      QString::null, 0 );
 }
 
@@ -566,8 +573,8 @@ void mensajeError ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.critical ( parent,
-                      _( "Error del programa" ),
-                      cad, _( "&Continuar" ),
+                      _ ( "Error del programa" ),
+                      cad, _ ( "&Continuar" ),
                       QString::null, 0 );
 }
 
@@ -645,7 +652,7 @@ QString num2texto ( QString numero, QString moneda, QString singular )
     postfijos["10000000-1"] = " millones ";
     postfijos["100000000-1"] = " millones ";
 
-    numero = numero.replace(",",".");
+    numero = numero.replace ( ",", "." );
     QString decimal_break = ".";
     //echo "test run on ".$numero."<br>";
     QString entero = numero.split ( decimal_break ).at ( 0 );
@@ -833,7 +840,8 @@ QString ascii127 ( const QString &orig )
 
 /// Trata una cadena para ser escrita dentro de un fichero en Python sin que esta
 /// rompa la sintaxis relacionada con el indentado del lenguaje
-QString data2python(QString string) {
+QString data2python ( QString string )
+{
 
     string = string.replace ( "\n", " " );
     string = string.replace ( "\t", " " );
@@ -844,115 +852,119 @@ QString data2python(QString string) {
 
 
 /// La tabla de conversion de codigos para el CIF
-QChar codigosCIF[]= {QChar('A'), QChar('B'), QChar('C'), QChar('D'), QChar('E'), QChar('F'), QChar('G'), QChar('H'), QChar('J'), QChar('P'), QChar('Q'), QChar('R'), QChar('S'), QChar('U'), QChar('V'), QChar('N'), QChar('W')};
+QChar codigosCIF[] = {QChar ( 'A' ), QChar ( 'B' ), QChar ( 'C' ), QChar ( 'D' ), QChar ( 'E' ), QChar ( 'F' ), QChar ( 'G' ), QChar ( 'H' ), QChar ( 'J' ), QChar ( 'P' ), QChar ( 'Q' ), QChar ( 'R' ), QChar ( 'S' ), QChar ( 'U' ), QChar ( 'V' ), QChar ( 'N' ), QChar ( 'W' ) };
 
-char validacionesCIF[] = {'A','B','C','D','E','F','G','H','I','J'};
+char validacionesCIF[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
 /// La tabla de conversion de codigos para el NIF
-char codigoNIF[] = {'T', 'R', 'W', 'A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'};
+char codigoNIF[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'};
 
 
 /// Suma los digitos de un numero  y devuelve el resultado.
 /// por ejemplo sumaDigitos(56) devolveria 5 + 6 = 11
-int sumaDigitos (int val) {
-	QString cad = QString::number(val);
-	int res = 0;
-	for (int i = 0; i < cad.size(); i++) {
-		res += cad[i].digitValue();
-	} // end for
-	return res;
+int sumaDigitos ( int val )
+{
+    QString cad = QString::number ( val );
+    int res = 0;
+    for ( int i = 0; i < cad.size(); i++ ) {
+        res += cad[i].digitValue();
+    } // end for
+    return res;
 }
 
 
 /// Dependiendo de lo que se haya introducido distingue si es un CIF o un NIF y valida
-bool validarCIFNIF(QString nifcif, QChar &digit) {
-  if (nifcif[0].isDigit())
-    return validarNIF(nifcif, digit);
-   return validarCIF(nifcif, digit);
+bool validarCIFNIF ( QString nifcif, QChar &digit )
+{
+    if ( nifcif[0].isDigit() )
+        return validarNIF ( nifcif, digit );
+    return validarCIF ( nifcif, digit );
 }
 
 
 /// Valida un nif de 9 digitos. Si el nif pasado es menor de 5 digitos
-bool validarNIF (QString nif1, QChar &digit) {
+bool validarNIF ( QString nif1, QChar &digit )
+{
 
-	/// Quitamos los caracteres raros.
-	QString nif = nif1.replace("-","");
-	nif = nif.replace(".","");
-	nif = nif.replace("_","");
-	nif = nif1.left(8);
+    /// Quitamos los caracteres raros.
+    QString nif = nif1.replace ( "-", "" );
+    nif = nif.replace ( ".", "" );
+    nif = nif.replace ( "_", "" );
+    nif = nif1.left ( 8 );
 
-	/// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
-	if (nif1.size() < 5) {
-		return TRUE;
-	} // end if
+    /// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
+    if ( nif1.size() < 5 ) {
+        return TRUE;
+    } // end if
 
-	int modulo = nif.toInt() % 23;
-	digit = QChar(codigoNIF[modulo]);
-	if (nif1[8] == QChar(codigoNIF[modulo]))
-	    return TRUE;
-	return FALSE;
-  
+    int modulo = nif.toInt() % 23;
+    digit = QChar ( codigoNIF[modulo] );
+    if ( nif1[8] == QChar ( codigoNIF[modulo] ) )
+        return TRUE;
+    return FALSE;
+
 }
 
-// 
-bool validarCIF(QString cif1, QChar &digit) {
-	
-        // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
-	// Orden EHA/451/2008 de 20 de febrero.
-	// BOE Numero: 49 de martes, 26 febrero de 2008. Pagina: 11374.
-        // ------------------------------------------------------------
-        // A. Sociedades anonimas.
-        // B. Sociedades de responsabilidad limitada.
-        // C. Sociedades colectivas.
-        // D. Sociedades comanditarias.
-        // E. Comunidades de bienes y herencias yacentes.
-        // F. Sociedades cooperativas.
-        // G. Asociaciones.
-        // H. Comunidades de propietarios en regimen de propiedad horizontal.
-        // J. Sociedades civiles, con o sin personalidad juridica.
-        // P. Corporaciones Locales.
-        // Q. Organismos publicos.
-        // R. Congregaciones e instituciones religiosas.
-        // S. Organos de la Administracion del Estado y de las Comunidades Autonomas.
-	// U. Uniones Temporales de Empresas.
-        // V. Otros tipos no definidos en el resto de claves.
-	//
-	// N. Entidad extranjera. Con o sin personalidad juridica.
-	// W. Establecimiento permanente de entidad no residente en territorio espanyol.
+//
+bool validarCIF ( QString cif1, QChar &digit )
+{
 
-	QString cif = cif1.replace("-","");
-	cif = cif.replace(".","");
-	cif = cif.replace("_","");
-	/// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
-	if (cif.size() < 5) {
-		return TRUE;
-	} // end if
-	int valpar = cif[2].digitValue() + cif[4].digitValue() + cif[6].digitValue();
-	int valimpar = sumaDigitos(cif[1].digitValue() * 2) + sumaDigitos(cif[3].digitValue() *2) + sumaDigitos(cif[5].digitValue() * 2) + sumaDigitos(cif[7].digitValue() * 2);
-	int sumapar = valpar + valimpar;
-	QString textsumapar = QString::number(sumapar);
-	int c = textsumapar.right(1).toInt();
-	int d = 10 - c;
-	if (cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W') {
-		digit = codigosCIF[d-1];
-		if (cif[8] == codigosCIF[d-1]) {
-			 return TRUE;
-		} else {
-			return FALSE;
-		} // end if
-	} // end if
-	if (cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'C' || cif[0] == 'D' || cif[0] == 'E' || cif[0] == 'F' || cif[0] == 'G' || cif[0] == 'H' || cif[0] == 'I' || cif[0] == 'J' || cif[0] == 'U' || cif[0] == 'V' ) {
-		digit = QString::number(d %10)[0];
-		if (cif[8].digitValue() == d % 10) {
-			return TRUE;
-		} else {
-			return FALSE;
-		} // end if
-	} //end if
-	if (cif[8] == QChar(validacionesCIF[d-1]) || cif[8].digitValue() == d % d) {
-		return TRUE;
-	} //end if
-	return FALSE;
+    // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
+    // Orden EHA/451/2008 de 20 de febrero.
+    // BOE Numero: 49 de martes, 26 febrero de 2008. Pagina: 11374.
+    // ------------------------------------------------------------
+    // A. Sociedades anonimas.
+    // B. Sociedades de responsabilidad limitada.
+    // C. Sociedades colectivas.
+    // D. Sociedades comanditarias.
+    // E. Comunidades de bienes y herencias yacentes.
+    // F. Sociedades cooperativas.
+    // G. Asociaciones.
+    // H. Comunidades de propietarios en regimen de propiedad horizontal.
+    // J. Sociedades civiles, con o sin personalidad juridica.
+    // P. Corporaciones Locales.
+    // Q. Organismos publicos.
+    // R. Congregaciones e instituciones religiosas.
+    // S. Organos de la Administracion del Estado y de las Comunidades Autonomas.
+    // U. Uniones Temporales de Empresas.
+    // V. Otros tipos no definidos en el resto de claves.
+    //
+    // N. Entidad extranjera. Con o sin personalidad juridica.
+    // W. Establecimiento permanente de entidad no residente en territorio espanyol.
+
+    QString cif = cif1.replace ( "-", "" );
+    cif = cif.replace ( ".", "" );
+    cif = cif.replace ( "_", "" );
+    /// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
+    if ( cif.size() < 5 ) {
+        return TRUE;
+    } // end if
+    int valpar = cif[2].digitValue() + cif[4].digitValue() + cif[6].digitValue();
+    int valimpar = sumaDigitos ( cif[1].digitValue() * 2 ) + sumaDigitos ( cif[3].digitValue() * 2 ) + sumaDigitos ( cif[5].digitValue() * 2 ) + sumaDigitos ( cif[7].digitValue() * 2 );
+    int sumapar = valpar + valimpar;
+    QString textsumapar = QString::number ( sumapar );
+    int c = textsumapar.right ( 1 ).toInt();
+    int d = 10 - c;
+    if ( cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W' ) {
+        digit = codigosCIF[d-1];
+        if ( cif[8] == codigosCIF[d-1] ) {
+            return TRUE;
+        } else {
+            return FALSE;
+        } // end if
+    } // end if
+    if ( cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'C' || cif[0] == 'D' || cif[0] == 'E' || cif[0] == 'F' || cif[0] == 'G' || cif[0] == 'H' || cif[0] == 'I' || cif[0] == 'J' || cif[0] == 'U' || cif[0] == 'V' ) {
+        digit = QString::number ( d % 10 ) [0];
+        if ( cif[8].digitValue() == d % 10 ) {
+            return TRUE;
+        } else {
+            return FALSE;
+        } // end if
+    } //end if
+    if ( cif[8] == QChar ( validacionesCIF[d-1] ) || cif[8].digitValue() == d % d ) {
+        return TRUE;
+    } //end if
+    return FALSE;
 }
 
 

@@ -76,7 +76,7 @@ void myplugincont::inicializa ( Bulmafact *bges )
     m_bulmafact = bges;
 
     /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Ventas", "menuVentas", "menuMaestro");
+    QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
 
     QAction *accion = new QAction ( "&Contratos", 0 );
     accion->setStatusTip ( "Listado de Contratos" );
@@ -85,7 +85,7 @@ void myplugincont::inicializa ( Bulmafact *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
-	bges->Listados->addAction (accion);
+    bges->Listados->addAction ( accion );
     _depura ( "END myplugincont::inicializa", 0 );
 }
 
@@ -100,8 +100,8 @@ int entryPoint ( Bulmafact *bges )
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbf_contrato", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbf_contrato", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );

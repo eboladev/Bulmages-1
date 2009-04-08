@@ -106,7 +106,7 @@ void BlDbLoginDialog::validar()
         done ( 1 );
     } else {
         grpAuthError->setVisible ( TRUE );
-        lblAuthError->setText ( _( "Error: usuario y/o contrasenya incorrectos" ) );
+        lblAuthError->setText ( _ ( "Error: usuario y/o contrasenya incorrectos" ) );
         m_login->setText ( "" );
         m_password->setText ( "" );
         m_login->setFocus();

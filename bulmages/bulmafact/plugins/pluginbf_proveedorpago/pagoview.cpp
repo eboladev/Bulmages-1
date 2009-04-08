@@ -55,29 +55,29 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         mui_refpago->setMainCompany ( comp );
         mui_idbanco->setMainCompany ( comp );
 
-        setTitleName ( _( "Pago" ) );
+        setTitleName ( _ ( "Pago" ) );
         setDbTableName ( "pago" );
         setDbFieldId ( "idpago" );
-        addDbField ( "idpago", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id pago" ) );
-        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id proveedor" ) );
-        addDbField ( "previsionpago", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Previcion de pago" ) );
-        addDbField ( "fechapago", BlDbField::DbDate, BlDbField::DbNothing, _( "Fecha de pago" ) );
-        addDbField ( "refpago", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia de pago" ) );
-        addDbField ( "cantpago", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
-        addDbField ( "comentpago", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Comentario del pago" ) );
-        addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _( "Banco" ) );
+        addDbField ( "idpago", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id pago" ) );
+        addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id proveedor" ) );
+        addDbField ( "previsionpago", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Previcion de pago" ) );
+        addDbField ( "fechapago", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de pago" ) );
+        addDbField ( "refpago", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia de pago" ) );
+        addDbField ( "cantpago", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Cantidad" ) );
+        addDbField ( "comentpago", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentario del pago" ) );
+        addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Banco" ) );
 
-	/// Establecemos los parametros de busqueda del Cliente
-	mui_idproveedor->setLabel ( _( "Proveedor:" ) );
-	mui_idproveedor->setTableName( "proveedor" );
-	mui_idproveedor->m_valores["cifproveedor"] = "";
-	mui_idproveedor->m_valores["nomproveedor"] = "";
+        /// Establecemos los parametros de busqueda del Cliente
+        mui_idproveedor->setLabel ( _ ( "Proveedor:" ) );
+        mui_idproveedor->setTableName ( "proveedor" );
+        mui_idproveedor->m_valores["cifproveedor"] = "";
+        mui_idproveedor->m_valores["nomproveedor"] = "";
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el pago" ), this );
+        mensajeInfo ( _ ( "Error al crear el pago" ), this );
     } // end try
     _depura ( "Fin de la inicializacion de PagoView\n", 0 );
     _depura ( "END PagoView::PagoView", 0 );

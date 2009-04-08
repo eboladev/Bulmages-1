@@ -40,8 +40,8 @@ int entryPoint ( QApplication * )
     _depura ( "entryPoint" , 0, "Punto de Entrada del plugin de Subformods" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale(LC_ALL, "");
-    bindtextdomain ("pluginbl_subform2pdf", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_subform2pdf", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
     return 0;
@@ -76,7 +76,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformods::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _( "Imprimir" ) );
+    menu->addAction ( _ ( "Imprimir" ) );
     _depura ( "END myplugsubformods::s_pintaMenu", 0 );
 }
 
@@ -88,7 +88,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 void myplugsubformods::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugsubformods::s_trataMenu", 0 );
-    if ( action->text() == _( "Imprimir" ) ) {
+    if ( action->text() == _ ( "Imprimir" ) ) {
         imprimir();
     } // end if
     _depura ( "END myplugsubformods::s_trataMenu", 0 );

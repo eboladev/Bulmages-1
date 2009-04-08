@@ -129,7 +129,7 @@ void InformeQToolButton::click()
     BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
-    barra.setText ( _( "Generando Informe" ) );
+    barra.setText ( _ ( "Generando Informe" ) );
 
     while ( !cur->eof() ) {
         QString gen = generarCliente ( cur->valor ( "idcliente" ) );
@@ -193,11 +193,11 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
     fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 2.5cm, 2.5cm, 2.5cm, 2.5cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _( "Articulo" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Pres." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -226,10 +226,10 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
     fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _( "Articulo" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -259,11 +259,11 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
     fitxersortidatxt += "<para>Totales ventas</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"3cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _( "Pres." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Cobrado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Cobrado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.
@@ -307,10 +307,10 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
     fitxersortidatxt += "<para>Totales compras</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\" 4cm, 4cm, 4cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "Pagado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Pagado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.
@@ -460,14 +460,14 @@ QString InformeArtQToolButton::generarArticulos()
     /// Generacion del informe de ventas.
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _( "Articulo" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "C. Ped." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "C. Entr." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "C. Fact." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "V. Pres." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "V. Ped." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "V. Entr." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _( "V. Fact." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "C. Ped." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "C. Entr." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "C. Fact." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "V. Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "V. Ped." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "V. Entr." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + _ ( "V. Fact." ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     QString SQLQuery = " SELECT * FROM articulo ";
@@ -485,7 +485,7 @@ QString InformeArtQToolButton::generarArticulos()
     BlProgressBar barra;
     barra.setRange ( 0, cur->numregistros() );
     barra.show();
-    barra.setText ( _( "Generando informe" ) );
+    barra.setText ( _ ( "Generando informe" ) );
 
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";

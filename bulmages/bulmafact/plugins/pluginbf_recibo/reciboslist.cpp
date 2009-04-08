@@ -128,7 +128,7 @@ QString RecibosList::generaFiltro()
 void RecibosList::crear()
 {
     _depura ( "RecibosList::crear", 0 );
-    ReciboView *bud = new ReciboView( (BfCompany *) mainCompany(), 0);
+    ReciboView *bud = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
@@ -141,7 +141,7 @@ void RecibosList::crear()
 void RecibosList::imprimir()
 {
     _depura ( "RecibosList::imprimir", 0 );
-    mui_list->imprimirPDF ( _( "Actividades" ) );
+    mui_list->imprimirPDF ( _ ( "Actividades" ) );
     _depura ( "END RecibosList::imprimir", 0 );
 }
 
@@ -157,13 +157,13 @@ void RecibosList::borrar()
     _depura ( "RecibosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _( "Debe seleccionar una linea" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
         if ( modoEdicion() ) {
-            ReciboView * cv = new ReciboView( (BfCompany *) mainCompany(), 0);
+            ReciboView * cv = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idrecibo ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
@@ -171,7 +171,7 @@ void RecibosList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al borrar el cobro a cliente" ) );
+        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     _depura ( "END:RecibosList::borrar", 0 );
 }
@@ -187,7 +187,7 @@ void RecibosList::editar ( int )
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
         if ( modoEdicion() ) {
-            ReciboView * bud = new ReciboView( (BfCompany *) mainCompany(), 0);
+            ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( mdb_idrecibo ) ) {
                 delete bud;
                 return;
@@ -198,7 +198,7 @@ void RecibosList::editar ( int )
             emit ( selected ( mdb_idrecibo ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _( "Debe seleccionar una fila primero" ) );
+        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     _depura ( "END RecibosList::on_mui_list_cellDoubleClicked", 0 );
 
@@ -214,8 +214,8 @@ void RecibosList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _( "Editar Actividad" ) );
-    QAction *del = popup->addAction ( _( "Borrar Actividad" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar Actividad" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar Actividad" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -259,10 +259,10 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
         return;
     setDbTableName ( "recibo" );
     setDbFieldId ( "idrecibo" );
-    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Actividad" ) );
-    addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Nombre" ) );
+    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Actividad" ) );
+    addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

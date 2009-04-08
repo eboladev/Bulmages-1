@@ -45,7 +45,7 @@ Archivo::Archivo ( BlMainCompany *comp, QWidget *parent )
         setupUi ( this );
 
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear la ventana de importacion" ) );
+        mensajeInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
     _depura ( "END Archivo::Archivo", 0 );
 }
@@ -63,7 +63,7 @@ Archivo::~Archivo()
 void Archivo::on_mui_buscarArchivo_clicked()
 {
 
-    QString fileName = QFileDialog::getOpenFileName ( this, _( "Open file" ), "", _( "All files (*)" ) );
+    QString fileName = QFileDialog::getOpenFileName ( this, _ ( "Open file" ), "", _ ( "All files (*)" ) );
     mui_archivo->setText ( fileName );
 }
 
@@ -72,22 +72,22 @@ void Archivo::on_mui_buscarArchivo_clicked()
 void Archivo::on_mui_aceptar_clicked()
 {
     _depura ( "Archivo::on_mui_aceptar_clicked", 0 );
-/*
-    QFile file ( mui_archivo->text() );
-    if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
-        return;
+    /*
+        QFile file ( mui_archivo->text() );
+        if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
+            return;
 
-    if ( mui_cabeceras->isChecked() ) {
-        file.readLine();
-    } // end if
+        if ( mui_cabeceras->isChecked() ) {
+            file.readLine();
+        } // end if
 
-    mainCompany()->begin();
-    while ( !file.atEnd() ) {
-        QByteArray line = file.readLine();
-        procesarLinea ( line );
-    } // end while
-    mainCompany()->commit();
-    file.close();
-*/
+        mainCompany()->begin();
+        while ( !file.atEnd() ) {
+            QByteArray line = file.readLine();
+            procesarLinea ( line );
+        } // end while
+        mainCompany()->commit();
+        file.close();
+    */
     _depura ( "END Archivo::on_mui_aceptar_clicked", 0 );
 }
