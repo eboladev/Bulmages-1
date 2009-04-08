@@ -6,6 +6,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from gestionusuariosbase import *
 from nuevousuario import NuevoUsuario
+from modificarusuario import ModificarUsuario
 from eliminarusuario import EliminarUsuario
 
 class GestionUsuarios(QtGui.QDialog, Ui_GestionUsuarios):
@@ -18,6 +19,11 @@ class GestionUsuarios(QtGui.QDialog, Ui_GestionUsuarios):
     # Evento de hacer clic en el boton para crear un nuevo usuario
     def on_crear_usuario_postgres_released(self):
             win = NuevoUsuario()
+            win.exec_()
+            
+    # Evento de hacer clic en el boton para crear un nuevo usuario
+    def on_editar_usuario_postgres_released(self):
+            win = ModificarUsuario()
             win.exec_()
             
     # Evento de hacer clic en el boton para eliminar un usuario

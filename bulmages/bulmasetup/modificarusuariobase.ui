@@ -1,0 +1,325 @@
+<ui version="4.0" >
+ <class>ModificarUsuario</class>
+ <widget class="QDialog" name="ModificarUsuario" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>838</width>
+    <height>345</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Modificar Permisos de Usuario</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="resources.qrc" >
+    <normaloff>:/images/bulmasetup_editarusuario.xpm</normaloff>:/images/bulmasetup_editarusuario.xpm</iconset>
+  </property>
+  <widget class="QListWidget" name="listWidgetUser" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>191</width>
+     <height>311</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="mui_salir" >
+   <property name="geometry" >
+    <rect>
+     <x>720</x>
+     <y>300</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Salir</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidgetDatabase" >
+   <property name="geometry" >
+    <rect>
+     <x>200</x>
+     <y>30</y>
+     <width>191</width>
+     <height>311</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_select" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>130</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>SELECT</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_insert" >
+   <property name="geometry" >
+    <rect>
+     <x>720</x>
+     <y>130</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>INSERT</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_update" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>160</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>UPDATE</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_delete" >
+   <property name="geometry" >
+    <rect>
+     <x>720</x>
+     <y>160</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>DELETE</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_rule" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>190</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>RULE</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_references" >
+   <property name="geometry" >
+    <rect>
+     <x>720</x>
+     <y>190</y>
+     <width>91</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>REFERENCES</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_trigger" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>220</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>TRIGGER</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_create" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>70</y>
+     <width>67</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>CREATE</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_temporary" >
+   <property name="geometry" >
+    <rect>
+     <x>730</x>
+     <y>70</y>
+     <width>91</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>TEMPORARY</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="mui_guardar" >
+   <property name="geometry" >
+    <rect>
+     <x>620</x>
+     <y>300</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Guardar</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_all" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>260</y>
+     <width>121</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text" >
+    <string>MARCAR TODOS</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidgetTable" >
+   <property name="geometry" >
+    <rect>
+     <x>400</x>
+     <y>30</y>
+     <width>191</width>
+     <height>311</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label" >
+   <property name="geometry" >
+    <rect>
+     <x>50</x>
+     <y>10</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Selecciona un Usuario</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>230</x>
+     <y>10</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Selecciona una Base de Datos</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3" >
+   <property name="geometry" >
+    <rect>
+     <x>440</x>
+     <y>10</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Selecciona una Tabla</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4" >
+   <property name="geometry" >
+    <rect>
+     <x>670</x>
+     <y>100</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Permisos para la Tabla</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5" >
+   <property name="geometry" >
+    <rect>
+     <x>650</x>
+     <y>10</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Permisos para la Base de Datos</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_dball" >
+   <property name="geometry" >
+    <rect>
+     <x>640</x>
+     <y>40</y>
+     <width>81</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>GRANT ALL</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_dbrevoke" >
+   <property name="geometry" >
+    <rect>
+     <x>730</x>
+     <y>40</y>
+     <width>101</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>GRANT REVOKE</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>mui_salir</sender>
+   <signal>released()</signal>
+   <receiver>ModificarUsuario</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>495</x>
+     <y>361</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>296</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
