@@ -1,7 +1,7 @@
 --
 -- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de profesores
 --
-\echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********"
+\echo "********* INICIADO FICHERO DE ESTRUCTURA DE ASOCIACIONES DE PADRES DE ALUMNOS *********"
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
@@ -157,17 +157,39 @@ BEGIN
 	    );
 	END IF;
 
+
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''tipoactividad'';
+        IF NOT FOUND THEN
+
+        CREATE TABLE tipoactividad (
+       idtipoactividad SERIAL PRIMARY KEY,
+       nombretipoactividad VARCHAR NOT NULL
+        );
+
+        END IF;
+
         SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
         IF NOT FOUND THEN
 
         CREATE TABLE actividad (
 	    idactividad SERIAL PRIMARY KEY,
 	    idprofesor  INTEGER NOT NULL REFERENCES profesor(idprofesor),
+       idtipoactividad INTEGER REFERENCES tipoactividad(idtipoactividad),
        codigoactividad VARCHAR UNIQUE NOT NULL,
 	    nombreactividad VARCHAR NOT NULL
         );
-
         END IF;
+
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idtipoactividad'' AND relname=''actividad'';
+   IF NOT FOUND THEN
+      ALTER TABLE actividad ADD COLUMN idtipoactividad INTEGER REFERENCES tipoactividad(idtipoactividad);
+   END IF;
+
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''codigoactividad'' AND relname=''actividad'';
+   IF NOT FOUND THEN
+      ALTER TABLE actividad ADD COLUMN codigoactividad VARCHAR;
+   END IF;
+
 
            SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnoactividad'';
         IF NOT FOUND THEN

@@ -49,10 +49,13 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         setDbTableName ( "actividad" );
         setDbFieldId ( "idactividad" );
         addDbField ( "idactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "ID actividad" ) );
+        addDbField ( "idtipoactividad", BlDbField::DbInt, BlDbField::DbNothing, _( "ID tipo actividad" ) );
         addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre del actividad" ) );
         addDbField ( "codigoactividad", BlDbField::DbVarChar, BlDbField::DbNotNull, _( "Codigo" ) );
-        
-	addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
+        addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _("Id profesor"));
+
+
+
 
         meteWindow ( windowTitle(), this, FALSE );
 
@@ -64,6 +67,15 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
     mui_idprofesor->setLabel ( _( "Profesor:" ) );
 	mui_idprofesor->setTableName( "profesor" );
 	mui_idprofesor->m_valores["nombreprofesor"] = "";
+
+      /// Establecemos los parametros de busqueda de tipo de actividad.
+        mui_idtipoactividad->setMainCompany ( mainCompany() );
+    mui_idtipoactividad->setQuery("SELECT * FROM tipoactividad ORDER BY ascii(nombretipoactividad), nombretipoactividad");
+    mui_idtipoactividad->setTableName ("tipoactividad");
+    mui_idtipoactividad->setFieldId ("idtipoactividad");
+    mui_idtipoactividad->m_valores["nombretipoactividad"] = "";
+    mui_idtipoactividad->setAllowNull(FALSE);
+        mui_idtipoactividad->setId ( "" );
 
 
         pintar();

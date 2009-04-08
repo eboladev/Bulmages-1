@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2005 by Tomeu Borras Riera                              *
+*   Copyright (C) 2009 by Tomeu Borras Riera                              *
 *   tborras@conetxia.com                                                  *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -86,9 +86,9 @@ void TipoActividadView::pintar()
     if ( m_cursortipoactividades != NULL ) {
         delete m_cursortipoactividades;
     } // end if
-    m_cursortipoactividades = mainCompany() ->loadQuery ( "SELECT * FROM tipoactividad ORDER BY apellidostipoactividad" );
+    m_cursortipoactividades = mainCompany() ->loadQuery ( "SELECT * FROM tipoactividad ORDER BY ascii(nombretipoactividad), nombretipoactividad" );
     while ( !m_cursortipoactividades->eof() ) {
-        new QListWidgetItem ( m_cursortipoactividades->valor ( "apellidostipoactividad" ) + " " + m_cursortipoactividades->valor ( "nomtipoactividad" ), mui_lista );
+        new QListWidgetItem ( m_cursortipoactividades->valor ( "nombretipoactividad" ), mui_lista );
         m_cursortipoactividades->nextRecord();
     } // end while
 
@@ -124,20 +124,9 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
 
     int row = mui_lista->row ( cur );
     trataModificado();
-/*    
-    m_nomtipoactividad->setText ( m_cursortipoactividades->valor ( "nomtipoactividad", row ) );
     mdb_idtipoactividad = m_cursortipoactividades->valor ( "idtipoactividad", row );
-    m_apellidostipoactividad->setText ( m_cursortipoactividades->valor ( "apellidostipoactividad", row ) );
-    m_nsstipoactividad->setText ( m_cursortipoactividades->valor ( "nsstipoactividad", row ) );
-    m_dirtipoactividad->setText ( m_cursortipoactividades->valor ( "dirtipoactividad", row ) );
-    m_teltipoactividad->setText ( m_cursortipoactividades->valor ( "teltipoactividad", row ) );
-    m_moviltipoactividad->setText ( m_cursortipoactividades->valor ( "moviltipoactividad", row ) );
-    m_emailtipoactividad->setText ( m_cursortipoactividades->valor ( "emailtipoactividad", row ) );
-    if ( m_cursortipoactividades->valor ( "activotipoactividad", row ) == "t" ) {
-        m_activotipoactividad->setChecked ( TRUE );
-    } else {
-        m_activotipoactividad->setChecked ( FALSE );
-    } // end if
+    m_nombretipoactividad->setText ( m_cursortipoactividades->valor ( "nombretipoactividad", row ) );
+
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     /// Disparamos los plugins.
@@ -145,9 +134,9 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
     if ( res != 0 ) {
         return;
     } // end if
-*/    
+ 
     dialogChanges_cargaInicial();
-    m_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtipoactividad + ".jpg" ) );
+
     _depura ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
@@ -159,7 +148,7 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
 void TipoActividadView::on_mui_guardar_clicked()
 {
     _depura ( "TipoActividadView::on_mui_guardar_clicked", 0 );
-/*
+
 
     try {
         /// Disparamos los plugins.
@@ -168,37 +157,17 @@ void TipoActividadView::on_mui_guardar_clicked()
             return;
         } // end if
         
-        QString m_textactivotipoactividad = "FALSE";
-        if ( m_activotipoactividad->isChecked() ) {
-            m_textactivotipoactividad = "TRUE";
-        } // end if
         QString query = "UPDATE tipoactividad SET ";
-        query += "  nomtipoactividad='" + mainCompany() ->sanearCadena ( m_nomtipoactividad->text() ) + "'";
-        query += ", apellidostipoactividad= '" + mainCompany() ->sanearCadena ( m_apellidostipoactividad->text() ) + "'";
-        query += ", nsstipoactividad = '" + mainCompany() ->sanearCadena ( m_nsstipoactividad->text() ) + "'";
-        query += ", dirtipoactividad = '" + mainCompany() ->sanearCadena ( m_dirtipoactividad->text() ) + "'";
-        query += ", teltipoactividad = '" + mainCompany() ->sanearCadena ( m_teltipoactividad->text() ) + "'";
-        query += ", moviltipoactividad = '" + mainCompany() ->sanearCadena ( m_moviltipoactividad->text() ) + "'";
-        query += ", emailtipoactividad = '" + mainCompany() ->sanearCadena ( m_emailtipoactividad->text() ) + "'";
-        query += ", activotipoactividad = " + mainCompany() ->sanearCadena ( m_textactivotipoactividad );
+        query += "  nombretipoactividad='" + mainCompany() ->sanearCadena ( m_nombretipoactividad->text() ) + "'";
         query += " WHERE idtipoactividad=" + mainCompany() ->sanearCadena ( mdb_idtipoactividad );
 
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
-        if ( m_cursortipoactividades != NULL ) {
-            delete m_cursortipoactividades;
-        } // end if
+        
+        /// Si hay un cursor en activo lo borramos para recargarlo
+        pintar();
 
-        m_cursortipoactividades = mainCompany() ->loadQuery ( "SELECT * FROM tipoactividad ORDER BY apellidostipoactividad" );
-
-        if ( m_item ) {
-            m_item->setText ( m_apellidostipoactividad->text() + m_nomtipoactividad->text() );
-        } // end if
-        if ( m_archivoimagen != "" ) {
-            QString cadena = "cp " + m_archivoimagen + " " + g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtipoactividad + ".jpg";
-            system ( cadena.toAscii().constData() );
-        } // end if
 
 		/// Emitimos la senyal apropiada en el qapplication2
 		g_theApp->tablaCambiada1("tipoactividad");
@@ -210,7 +179,7 @@ void TipoActividadView::on_mui_guardar_clicked()
         mainCompany() ->rollback();
     } // end try
 
-*/
+
 _depura ( "END TipoActividadView::on_mui_guardar_clicked", 0 );
 }
 
@@ -247,7 +216,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
-        QString query = "INSERT INTO tipoactividad (nomtipoactividad, apellidostipoactividad, nsstipoactividad) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
+        QString query = "INSERT INTO tipoactividad (nombretipoactividad) VALUES ('*** NUEVO TIPO DE ACTIVIDAD ***')";
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtipoactividad) AS idtipoactividad FROM tipoactividad" );
@@ -288,20 +257,6 @@ void TipoActividadView::on_mui_borrar_clicked()
 }
 
 
-///
-/**
-\return
-**/
-void TipoActividadView::on_mui_imagen_clicked()
-{
-    _depura ( "TipoActividadView::on_mui_imagen_clicked", 0 );
-    m_archivoimagen = QFileDialog::getOpenFileName ( this,
-                      _( "Seleccione archivo" ),
-                      "",
-                      _( "Imagenes (*.jpg)" ) );
-    m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
-    _depura ( "END TipoActividadView::on_mui_imagen_clicked", 0 );
-}
 
 
 ///

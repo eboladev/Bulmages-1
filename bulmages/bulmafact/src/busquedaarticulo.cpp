@@ -197,7 +197,7 @@ void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
                     if ( pos < 0 ) 
                     {
                         
-			m_cursorcombo = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE "+codigo+"%::text ORDER BY codigocompletoarticulo",0,25 );
+			m_cursorcombo = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '"+codigo+"%'::text ORDER BY codigocompletoarticulo", 0, 25 );
 			clear();
 			while ( !m_cursorcombo->eof() )
 			{

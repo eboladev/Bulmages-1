@@ -20,7 +20,7 @@
    <string>Nueva Actividad</string>
   </property>
   <property name="windowIcon" >
-   <iconset>
+   <iconset resource="../pluginbf_profesor/gestionaula.qrc" >
     <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
@@ -50,7 +50,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap>:/ImgGestionAula/icons/actividad.svg</pixmap>
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc" >:/ImgGestionAula/icons/actividad.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -213,7 +213,7 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex" >
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
       <attribute name="title" >
@@ -376,7 +376,7 @@
         </widget>
        </item>
        <item row="6" column="1" >
-        <widget class="QComboBox" name="mui_idtipo_actividad" />
+        <widget class="BlComboBox" name="mui_idtipoactividad" />
        </item>
        <item row="6" column="0" >
         <widget class="QLabel" name="label_2" >
@@ -526,20 +526,24 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
-   <extends>QWidget</extends>
-   <header>blsearchwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ListAlumnosActividadView</class>
    <extends>QTableWidget</extends>
    <header>actividadview.h</header>
   </customwidget>
+  <customwidget>
+   <class>BlSearchWidget</class>
+   <extends>QWidget</extends>
+   <header>blsearchwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
-  <include location="../pluginprofesor/gestionaula.qrc" />
+  <include location="../pluginbf_profesor/gestionaula.qrc" />
  </resources>
  <connections/>
 </ui>

@@ -14,8 +14,8 @@
    <string>Tipos de Actividad</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
+   <iconset resource="../pluginbf_profesor/gestionaula.qrc" >
+    <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -24,226 +24,6 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="1" >
-    <widget class="QTabWidget" name="mui_tab" >
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>662</width>
-        <height>445</height>
-       </rect>
-      </property>
-      <attribute name="title" >
-       <string>General</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="6" column="1" >
-        <widget class="QLineEdit" name="m_moviltrabajador" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" >
-        <widget class="QLineEdit" name="m_nomtrabajador" />
-       </item>
-       <item row="10" column="0" colspan="3" >
-        <widget class="QFrame" name="m_frameplugin" >
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" >
-        <widget class="QLabel" name="label_4" >
-         <property name="text" >
-          <string>Telefono:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item rowspan="6" row="0" column="2" >
-        <widget class="QLabel" name="m_imagen" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize" >
-          <size>
-           <width>150</width>
-           <height>150</height>
-          </size>
-         </property>
-         <property name="frameShape" >
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="scaledContents" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2" >
-        <widget class="QCheckBox" name="m_activotrabajador" >
-         <property name="text" >
-          <string>Activo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1" colspan="2" >
-        <widget class="QLineEdit" name="m_dirtrabajador" />
-       </item>
-       <item rowspan="2" row="1" column="0" >
-        <widget class="QLabel" name="label_1" >
-         <property name="text" >
-          <string>Nombre:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" >
-        <widget class="QLineEdit" name="m_apellidostrabajador" />
-       </item>
-       <item row="7" column="0" >
-        <widget class="QLabel" name="label_6" >
-         <property name="text" >
-          <string>Direccion:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1" >
-        <widget class="QLineEdit" name="m_teltrabajador" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0" colspan="3" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0" >
-          <size>
-           <width>569</width>
-           <height>16</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="9" column="0" colspan="3" >
-        <layout class="QVBoxLayout" >
-         <property name="spacing" >
-          <number>0</number>
-         </property>
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_8" >
-           <property name="text" >
-            <string>Numero de la Seguridad Social:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="m_nsstrabajador" >
-           <property name="enabled" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="4" column="1" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Ignored</enum>
-         </property>
-         <property name="sizeHint" stdset="0" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="label_3" >
-         <property name="text" >
-          <string>Apellidos:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2" >
-        <widget class="QPushButton" name="mui_imagen" >
-         <property name="text" >
-          <string>Cambiar imagen</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" >
-        <widget class="QLabel" name="label_5" >
-         <property name="text" >
-          <string>Telefono movil:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1" colspan="2" >
-        <widget class="QLineEdit" name="m_emailtrabajador" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" >
-        <widget class="QLabel" name="label_7" >
-         <property name="text" >
-          <string>E-mail:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </item>
    <item row="1" column="0" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="sizePolicy" >
@@ -259,7 +39,7 @@
       </size>
      </property>
      <property name="title" >
-      <string>Lista de trabajadores:</string>
+      <string>Lista de Tipos:</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
@@ -287,7 +67,7 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2" >
+   <item row="0" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>
@@ -310,7 +90,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/employee-list.svg</pixmap>
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc" >:/ImgGestionAula/icons/actividad.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -363,10 +143,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar trabajador</string>
+           <string>Borrar Tipo de Actividad</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar trabajador</string>
+           <string>Borrar Tipo de Actividad</string>
           </property>
           <property name="text" >
            <string/>
@@ -398,10 +178,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar trabajador</string>
+           <string>Guardar Tipo de Actividad</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar trabajador</string>
+           <string>Guardar Tipo de Actividad</string>
           </property>
           <property name="text" >
            <string/>
@@ -433,10 +213,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nuevo trabajador</string>
+           <string>Nuevo Tipo de Actividad</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo trabajador</string>
+           <string>Nuevo Tipo de Actividad</string>
           </property>
           <property name="text" >
            <string/>
@@ -458,6 +238,101 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="1" >
+    <widget class="QTabWidget" name="mui_tab" >
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>General</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="1" column="1" >
+        <widget class="QLineEdit" name="m_nombretipoactividad" />
+       </item>
+       <item row="5" column="0" colspan="3" >
+        <widget class="QFrame" name="m_frameplugin" >
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item rowspan="2" row="0" column="0" >
+        <widget class="QLabel" name="label_1" >
+         <property name="text" >
+          <string>Nombre:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" >
+        <widget class="QLineEdit" name="m_apellidostrabajador" />
+       </item>
+       <item row="6" column="0" colspan="3" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>569</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="0" colspan="3" >
+        <layout class="QVBoxLayout" >
+         <property name="spacing" >
+          <number>0</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
+         </property>
+        </layout>
+       </item>
+       <item row="3" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Ignored</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="label_3" >
+         <property name="text" >
+          <string>Apellidos:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
@@ -465,19 +340,13 @@
   <tabstop>mui_nuevo</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
-  <tabstop>m_activotrabajador</tabstop>
-  <tabstop>m_nomtrabajador</tabstop>
+  <tabstop>m_nombretipoactividad</tabstop>
   <tabstop>m_apellidostrabajador</tabstop>
-  <tabstop>m_dirtrabajador</tabstop>
-  <tabstop>m_teltrabajador</tabstop>
-  <tabstop>m_moviltrabajador</tabstop>
-  <tabstop>m_emailtrabajador</tabstop>
-  <tabstop>m_nsstrabajador</tabstop>
-  <tabstop>mui_imagen</tabstop>
   <tabstop>mui_lista</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />
+  <include location="../pluginbf_profesor/gestionaula.qrc" />
  </resources>
  <connections/>
 </ui>

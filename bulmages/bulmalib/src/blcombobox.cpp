@@ -113,7 +113,7 @@ void BlComboBox::setId ( QString id )
     } // end while
 
     setCurrentIndex ( i1 );
-    _depura ( "END BusquedaProvincia::setIdProvincia", 0 );
+    _depura ( "END BlComboBox::setIdProvincia", 0 );
 }
 
 
