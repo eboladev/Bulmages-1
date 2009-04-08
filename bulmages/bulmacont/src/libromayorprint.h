@@ -39,7 +39,7 @@
 
 ///
 /** */
-class libromayorprint : public BlMainCompanyPointer
+class BC_EXPORT libromayorprint : public BlMainCompanyPointer
 {
 public:
     QString codinicial;

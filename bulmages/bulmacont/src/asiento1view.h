@@ -40,7 +40,7 @@ class BcCompany ;
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
-class ListAsientos : public Asiento1
+class BC_EXPORT ListAsientos : public Asiento1
 {
     Q_OBJECT
 
@@ -66,7 +66,7 @@ public:
 };
 
 
-class Asiento1View : public ListAsientos, public Ui_AsientoBase
+class BC_EXPORT Asiento1View : public ListAsientos, public Ui_AsientoBase
 {
     Q_OBJECT
 
@@ -118,7 +118,7 @@ public slots:
 
 
 /// Captura todos los eventos del SpinBox 'mui_ordenasiento'.
-class eventos_mui_ordenasiento : public QObject
+class BC_EXPORT eventos_mui_ordenasiento : public QObject
 {
     Q_OBJECT
 

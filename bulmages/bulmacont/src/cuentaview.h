@@ -43,7 +43,7 @@ class BcCompany;
 
 /// Visualiza una cuenta.
 /** */
-class CuentaView : public BcForm, public Ui_CuentaBase
+class BC_EXPORT CuentaView : public BcForm, public Ui_CuentaBase
 {
     Q_OBJECT
 

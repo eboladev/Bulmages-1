@@ -34,7 +34,7 @@ class BcSubForm;
 
 /// Clase BcSubFormDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class BcSubFormDelegate : public BlSubFormDelegate
+class BC_EXPORT BcSubFormDelegate : public BlSubFormDelegate
 {
 
 public:
@@ -46,7 +46,7 @@ public:
 };
 
 
-class BcSubForm : public BlSubForm
+class BC_EXPORT BcSubForm : public BlSubForm
 {
     Q_OBJECT
 
@@ -59,7 +59,6 @@ public:
     virtual ~BcSubForm();
     virtual void boton_asiento();
     virtual void boton_extracto1 ( int );
-//    virtual void boton_balance1 ( int );
     virtual void boton_diario1 ( int );
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );

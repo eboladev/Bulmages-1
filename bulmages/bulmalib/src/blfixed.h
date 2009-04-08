@@ -90,6 +90,8 @@ BlFixed BL_EXPORT operator + (BlFixed x, int y);
 BlFixed BL_EXPORT operator - (BlFixed x, BlFixed y);
 BlFixed BL_EXPORT operator - (BlFixed x, int y);
 
+BlFixed BL_EXPORT operator - (BlFixed x);
+
 bool BL_EXPORT operator == (BlFixed x, BlFixed y);
 bool BL_EXPORT operator == (BlFixed x, int y);
 

@@ -37,7 +37,7 @@ class BcCompany;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionSubForm : public BcSubForm
+class BC_EXPORT ListConfiguracionSubForm : public BcSubForm
 {
     Q_OBJECT
 
@@ -57,7 +57,7 @@ public slots:
 sobre la tabla configuracion en dicha empresa
  @TODO: Como estan duplicadas estas tablas tanto en bulmafact conmo en bulmacont se podria hacer una abstraccion en bulmalib.
 */
-class propiedadesempresa : public BcForm, public Ui_PropiedadesEmpresaBase
+class BC_EXPORT propiedadesempresa : public BcForm, public Ui_PropiedadesEmpresaBase
 {
     Q_OBJECT
 

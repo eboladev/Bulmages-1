@@ -17,13 +17,15 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+ 
+ 
+#include "pdefs.h"
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
 #include "provedit.h"
 #include "busquedareferencia.h"
-#include "pdefs.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);

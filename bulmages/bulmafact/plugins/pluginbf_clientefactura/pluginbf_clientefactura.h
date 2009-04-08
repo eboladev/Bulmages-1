@@ -22,7 +22,7 @@
 #define PLUGINBF_CLIENTEFACTURA_H
  
 
-#include "pdefs.h"
+#include "pdefs_clientefactura.h"
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
@@ -34,15 +34,15 @@
 #include "presupuestoview.h"
 #include "bfcompany.h"
 
-extern "C" MY_EXPORT int SNewFacturaView (BfCompany *);
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
-extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
-extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
-extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
+extern "C" MY_EXPORT_CLIENTEFACTURA int SNewFacturaView (BfCompany *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT_CLIENTEFACTURA int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" MY_EXPORT_CLIENTEFACTURA int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" MY_EXPORT_CLIENTEFACTURA int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
  
 class mypluginfact : public QObject, BlMainCompanyPointer

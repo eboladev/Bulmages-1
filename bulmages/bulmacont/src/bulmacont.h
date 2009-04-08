@@ -42,12 +42,11 @@
 #include "blworkspace.h"
 #include "blmainwindow.h"
 
-
 /// This Class is the base class for your application. It sets up the main
 /// window and providing a menubar, toolbar
 /// and statusbar. For the main view, an instance of class Bulmages01View is
 /// created which creates your view.
-class Bulmacont : public BlMainWindow, public Ui_BulmaContBase
+class BC_EXPORT Bulmacont : public BlMainWindow, public Ui_BulmaContBase
 {
     Q_OBJECT
 

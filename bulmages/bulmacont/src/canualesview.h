@@ -36,7 +36,7 @@ class BcCompany;
 /** Clase que muestra un listado de todos los balances introducidos en el sistema.
     Sirve como punto de entrada a la generaci&oacute;n de los balances permitiendo la
     importaci&oacute;n/exportaci&oacute;n de los mismos, su modificaci&oacute;n y su impresi&oacute;n. */
-class CAnualesView : public BcForm, public Ui_CAnualesBase
+class BC_EXPORT CAnualesView : public BcForm, public Ui_CAnualesBase
 {
     Q_OBJECT
 

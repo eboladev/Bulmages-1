@@ -27,11 +27,11 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-#include "pdefs.h"
+#include "pdefs_clientefactura.h"
 
 /// Muestra y administra las l&iacute;neas de detalle de una factura a un cliente.
 /** */
-class MY_EXPORT ListLinFacturaView : public BfSubForm
+class MY_EXPORT_CLIENTEFACTURA ListLinFacturaView : public BfSubForm
 {
     Q_OBJECT
 

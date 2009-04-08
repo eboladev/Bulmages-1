@@ -26,7 +26,7 @@ class QListViewItem;
 class QTable;
 class QToolButton;
 
-class PlaComptes : public QDialog
+class BC_EXPORT PlaComptes : public QDialog
 {
     Q_OBJECT
 

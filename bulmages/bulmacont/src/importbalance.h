@@ -36,7 +36,7 @@ class QString;
   * En una primera pasada introduce en el sistema las masas patrimoniales y en una segunda pasada introduce los componentes del balance
   * Es preciso mantener en memoria algunos identificadores y esto se hace mediante el uso de un mapa
   */
-class ImportBalance: public QXmlDefaultHandler, public BlMainCompanyPointer
+class BC_EXPORT ImportBalance: public QXmlDefaultHandler, public BlMainCompanyPointer
 {
 private:
 

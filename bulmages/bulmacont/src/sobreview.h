@@ -31,7 +31,7 @@
 
 /// Presenta la informaci&oacute;n sobre el programa.
 /** Esta clase muestra el di&aacute;logo de About. Presentan los cr&eacute;ditos del programa. */
-class sobreview : public QDialog, public Ui_SobreBase
+class BC_EXPORT sobreview : public QDialog, public Ui_SobreBase
 {
     Q_OBJECT
 

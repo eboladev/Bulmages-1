@@ -33,7 +33,7 @@ class empresa;
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
 /** Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales. */
-class tipoivaview : public BcForm, public Ui_TipoIvaBase
+class BC_EXPORT tipoivaview : public BcForm, public Ui_TipoIvaBase
 {
     Q_OBJECT
 
@@ -53,10 +53,7 @@ private:
 
 private slots:
     virtual void on_mui_comboTipoIVA_currentIndexChanged ( int );
-//    virtual void on_mui_guardar2_clicked();
     virtual void on_mui_crear_clicked();
-//    virtual void on_mui_borrar2_clicked();
-//    virtual bool close();
 };
 
 #endif

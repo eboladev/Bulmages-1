@@ -31,7 +31,7 @@ class BcCompany;
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public BcForm, public Ui::DiarioBase
+class BC_EXPORT DiarioView : public BcForm, public Ui::DiarioBase
 {
     Q_OBJECT
 

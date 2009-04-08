@@ -41,7 +41,7 @@
 /// Ventana de impresi&oacute; de diarios.
 /// @class DiarioPrintView diarioprintview.h
 /** Es la ventana de impresi&oacute; de diarios. */
-class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase, BlMainCompanyPointer
+class BC_EXPORT DiarioPrintView : public QDialog, public Ui_DiarioPrintBase, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -28,7 +28,7 @@
 #include "blwidget.h"
 
 
-class Listado347 : public QDialog, public Ui_Listado347Base, BlMainCompanyPointer
+class BC_EXPORT Listado347 : public QDialog, public Ui_Listado347Base, BlMainCompanyPointer
 {
     Q_OBJECT
 

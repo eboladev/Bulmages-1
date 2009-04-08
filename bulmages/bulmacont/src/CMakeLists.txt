@@ -154,7 +154,7 @@ target_link_libraries( libbulmacont bulmalib ${QT_LIBRARIES}
 				${PGSQL_LIBRARIES})
 
 
-add_executable(bulmacont ${bulmacontEx} ${bulmafact_RCC_SRCS})
+add_executable(bulmacont ${bulmacontEx} ${bulmacont_RCC_SRCS})
 
 target_link_libraries( bulmacont libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 

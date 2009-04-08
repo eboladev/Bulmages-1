@@ -28,7 +28,7 @@
 
 ///
 /** */
-class ExtractoSubForm : public BcSubForm
+class BC_EXPORT ExtractoSubForm : public BcSubForm
 {
     Q_OBJECT
 

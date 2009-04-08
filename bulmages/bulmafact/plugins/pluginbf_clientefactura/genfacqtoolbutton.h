@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "pdefs.h"
+#include "pdefs_clientefactura.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include <QtXml/QDomDocument>
@@ -32,7 +32,7 @@
 #include <QString>
 
 
-class MY_EXPORT GenFacQToolButton : public QToolButton
+class MY_EXPORT_CLIENTEFACTURA GenFacQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -52,7 +52,7 @@ public slots:
 
 };
 
-class MY_EXPORT AgFacQToolButton : public QToolButton
+class MY_EXPORT_CLIENTEFACTURA AgFacQToolButton : public QToolButton
 {
     Q_OBJECT
 

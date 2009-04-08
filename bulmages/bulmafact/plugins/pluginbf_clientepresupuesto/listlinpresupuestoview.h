@@ -24,7 +24,7 @@
 
 #include <QEvent>
 
-#include "pdefs.h"
+#include "pdefs_clientepresupuesto.h"
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
@@ -32,7 +32,7 @@
 
 /// Muestra y administra el detalle de las l&iacute;neas de un presupuesto.
 /** */
-class MY_EXPORT ListLinPresupuestoView : public BfSubForm
+class MY_EXPORT_CLIENTEPRESUPUESTO ListLinPresupuestoView : public BfSubForm
 {
     Q_OBJECT
 

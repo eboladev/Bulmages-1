@@ -30,7 +30,7 @@
 class BSelector;
 
 
-class BNuevaEmpresa : public nuevaempresadlg
+class BC_EXPORT BNuevaEmpresa : public nuevaempresadlg
 {
 
 public:

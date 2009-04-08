@@ -27,12 +27,12 @@
 #include "bcsubform.h"
 #include "bldb.h"
 #include "bcform.h"
-
+#include "bldefs.h"
 
 class empresa;
 
 
-class AmortizacionSubForm : public BcSubForm
+class BC_EXPORT AmortizacionSubForm : public BcSubForm
 {
     Q_OBJECT
 
@@ -49,7 +49,7 @@ public:
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class AmortizacionView : public BcForm, public Ui_AmortizacionBase
+class BC_EXPORT AmortizacionView : public BcForm, public Ui_AmortizacionBase
 {
     Q_OBJECT
 

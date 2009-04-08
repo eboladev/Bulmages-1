@@ -20,7 +20,7 @@
 #ifndef PLUGINBF_CLIENTEPRESUPUESTO_H
 #define PLUGINBF_CLIENTEPRESUPUESTO_H
 
-#include "pdefs.h"
+#include "pdefs_clientepresupuesto.h"
 #include "blpostgresqlclient.h"
 #include "bulmafact.h"
 #include "blwidget.h"
@@ -31,13 +31,13 @@
 #include "bfcompany.h"
 
 
-extern "C" MY_EXPORT int SNewPresupuestoView (BfCompany *);
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
-extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
-extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int SNewPresupuestoView (BfCompany *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 
 
 // 

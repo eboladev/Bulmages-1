@@ -21,18 +21,18 @@
 #ifndef GENPREQTOOLBUTTON_H
 #define GENPREQTOOLBUTTON_H
 
-#include "pdefs.h"
+
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
+#include "pdefs_clientepresupuesto.h"
 
-
-class MY_EXPORT GenPreQToolButton : public QToolButton
+class MY_EXPORT_CLIENTEPRESUPUESTO GenPreQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -52,7 +52,7 @@ public slots:
 
 };
 
-class MY_EXPORT VerPreQToolButton : public QToolButton
+class MY_EXPORT_CLIENTEPRESUPUESTO VerPreQToolButton : public QToolButton
 {
     Q_OBJECT
 

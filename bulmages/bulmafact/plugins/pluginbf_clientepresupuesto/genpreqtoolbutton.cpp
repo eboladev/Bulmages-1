@@ -30,11 +30,12 @@
 
 #include "genpreqtoolbutton.h"
 #include "blfunctions.h"
-#include "facturaview.h"
+
 #include "albaranclienteview.h"
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "facturaslist.h"
+#include "facturaview.h"
 #include "blfixed.h"
 #include "bfcompany.h"
 #include "bldb.h"
@@ -495,9 +496,6 @@ void GenPreQToolButton::generarFactura2()
 
     _depura ( "END GenPreQToolButton::generarFactura", 0 );
 }
-
-
-
 
 // ====================
 
