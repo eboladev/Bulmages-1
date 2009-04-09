@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>741</width>
-    <height>406</height>
+    <width>778</width>
+    <height>532</height>
    </rect>
   </property>
   <property name="minimumSize" >
@@ -272,7 +272,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1" colspan="5" >
+       <item row="1" column="1" colspan="4" >
         <widget class="QLineEdit" name="mui_nombreactividad" >
          <property name="maxLength" >
           <number>100</number>
@@ -292,7 +292,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1" colspan="5" >
+       <item row="2" column="1" colspan="4" >
         <widget class="QLineEdit" name="mui_corpcliente" >
          <property name="maxLength" >
           <number>200</number>
@@ -300,26 +300,6 @@
         </widget>
        </item>
        <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel2_4" >
-         <property name="text" >
-          <string>Profesor Encargado</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_nomaltcliente</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" colspan="5" >
-        <widget class="QLineEdit" name="mui_nomaltcliente" >
-         <property name="maxLength" >
-          <number>300</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" >
         <widget class="QLabel" name="textLabel2_6" >
          <property name="text" >
           <string>Direccion:</string>
@@ -332,14 +312,14 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1" colspan="3" >
+       <item row="3" column="1" colspan="3" >
         <widget class="QLineEdit" name="mui_dircliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="8" column="1" >
+       <item row="10" column="1" >
         <spacer>
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
@@ -352,7 +332,7 @@
          </property>
         </spacer>
        </item>
-       <item row="7" column="1" colspan="2" >
+       <item row="9" column="1" colspan="2" >
         <widget class="BlSearchWidget" native="1" name="mui_idprofesor" >
          <property name="sizePolicy" >
           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
@@ -368,20 +348,50 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1" >
+       <item row="4" column="1" >
         <widget class="QCheckBox" name="mui_recargoeqcliente" >
          <property name="text" >
           <string>Vigente</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="1" >
+       <item row="5" column="1" >
         <widget class="BlComboBox" name="mui_idtipoactividad" />
        </item>
-       <item row="6" column="0" >
+       <item row="5" column="0" >
         <widget class="QLabel" name="label_2" >
          <property name="text" >
           <string>Tipo de Actividad</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1" >
+        <widget class="QLineEdit" name="mui_precioactividad" />
+       </item>
+       <item row="6" column="0" >
+        <widget class="QLabel" name="label_3" >
+         <property name="text" >
+          <string>Precio Cuota</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1" >
+        <widget class="BlDateSearch" name="mui_finicialactividad" />
+       </item>
+       <item row="8" column="1" >
+        <widget class="BlDateSearch" name="mui_ffinalactividad" />
+       </item>
+       <item row="7" column="0" >
+        <widget class="QLabel" name="label_4" >
+         <property name="text" >
+          <string>Fecha Inicial</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" >
+        <widget class="QLabel" name="label_5" >
+         <property name="text" >
+          <string>Fecha Final</string>
          </property>
         </widget>
        </item>
@@ -539,6 +549,11 @@
    <class>BlComboBox</class>
    <extends>QComboBox</extends>
    <header>blcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QLineEdit</extends>
+   <header>bldatesearch.h</header>
   </customwidget>
  </customwidgets>
  <resources>

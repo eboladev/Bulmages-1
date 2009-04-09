@@ -62,7 +62,6 @@ BEGIN
 
         END IF;
 
-
         SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
         IF NOT FOUND THEN
 
@@ -98,7 +97,6 @@ BEGIN
       ALTER TABLE recibo ADD COLUMN idcliente INTEGER REFERENCES cliente(idcliente);
    END IF;
    
-   
    SELECT INTO as * FROM pg_attribute WHERE attname = ''cantrecibo'';
    IF NOT FOUND THEN
       ALTER TABLE recibo ADD COLUMN cantrecibo NUMERIC(12,2);
@@ -113,6 +111,23 @@ BEGIN
    IF FOUND THEN
       ALTER TABLE recibo DROP COLUMN nombrerecibo;
    END IF;
+
+
+  SELECT INTO as * FROM pg_tables  WHERE tablename=''lrecibo'';
+    IF NOT FOUND THEN
+    CREATE TABLE lrecibo (
+    idlrecibo SERIAL PRIMARY KEY,
+    idrecibo INTEGER NOT NULL REFERENCES recibo(idrecibo),
+    cantlrecibo NUMERIC(12,2),
+    conceptolrecibo VARCHAR
+    );
+  END IF;
+
+
+
+
+
+
 
    SELECT INTO as * FROM pg_attribute WHERE attname = ''sociocliente'';
    IF NOT FOUND THEN
@@ -176,7 +191,10 @@ BEGIN
 	    idprofesor  INTEGER NOT NULL REFERENCES profesor(idprofesor),
        idtipoactividad INTEGER REFERENCES tipoactividad(idtipoactividad),
        codigoactividad VARCHAR UNIQUE NOT NULL,
-	    nombreactividad VARCHAR NOT NULL
+	    nombreactividad VARCHAR NOT NULL,
+       precioactividad NUMERIC (12,2),
+       finicialactividad DATE,
+       ffinalactividad DATE
         );
         END IF;
 
@@ -185,13 +203,21 @@ BEGIN
       ALTER TABLE actividad ADD COLUMN idtipoactividad INTEGER REFERENCES tipoactividad(idtipoactividad);
    END IF;
 
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''precioactividad'' AND relname=''actividad'';
+   IF NOT FOUND THEN
+      ALTER TABLE actividad ADD COLUMN precioactividad NUMERIC (12,2);
+      ALTER TABLE actividad ADD COLUMN finicialactividad DATE;
+      ALTER TABLE actividad ADD COLUMN ffinalactividad DATE;
+   END IF;
+
   SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''codigoactividad'' AND relname=''actividad'';
    IF NOT FOUND THEN
       ALTER TABLE actividad ADD COLUMN codigoactividad VARCHAR;
    END IF;
-
-
-           SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnoactividad'';
+   
+   
+   
+  SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnoactividad'';
         IF NOT FOUND THEN
 
         CREATE TABLE alumnoactividad (

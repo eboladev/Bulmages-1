@@ -53,9 +53,9 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del actividad" ) );
         addDbField ( "codigoactividad", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo" ) );
         addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id profesor" ) );
-
-
-
+        addDbField ( "precioactividad", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio Actividad" ) );
+        addDbField ( "finicialactividad", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Inicial" ) );
+        addDbField ( "ffinalactividad", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Final" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
 

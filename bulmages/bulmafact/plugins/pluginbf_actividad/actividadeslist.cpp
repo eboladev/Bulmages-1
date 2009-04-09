@@ -99,7 +99,7 @@ void ActividadesList::presentar()
 {
     _depura ( "ActividadesList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM actividad WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM actividad LEFT JOIN tipoactividad ON tipoactividad.idtipoactividad = actividad.idtipoactividad LEFT JOIN profesor ON profesor.idprofesor = actividad.idprofesor WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END ActividadesList::presentar", 0 );
 }
@@ -115,7 +115,6 @@ QString ActividadesList::generaFiltro()
         filtro = " AND ( lower(nombreactividad) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro += " ) ";
     } // end if
-
     _depura ( "END ActividadesList::generaFiltro", 0 );
     return ( filtro );
 }
@@ -261,7 +260,13 @@ ActividadesListSubForm::ActividadesListSubForm ( QWidget *parent ) : BfSubForm (
     setDbFieldId ( "idactividad" );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Actividad" ) );
     addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
-
+    addSubFormHeader ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Profesor" ) );
+    addSubFormHeader ( "nombretipoactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tipo" ) );
+    
+    addSubFormHeader ( "precioactividad", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Precio" ) );
+    addSubFormHeader ( "finicialactividad", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha Inicial" ) );
+    addSubFormHeader ( "ffinalactividad", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha Final" ) );
+    
     setinsercion ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
