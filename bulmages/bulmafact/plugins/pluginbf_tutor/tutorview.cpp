@@ -62,9 +62,12 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "movilcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de Socio" ) );
         addDbField ( "faxcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de Socio" ) );
         addDbField ( "mailcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de Socio" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de Pago" ) );
+        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
 
 
         mui_alumnosList->setMainCompany ( mainCompany() );
+        mui_idforma_pago->setMainCompany( mainCompany() );
         mui_idprovincia->setMainCompany ( mainCompany() );
         mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
         mui_idprovincia->setTableName ( "provincia" );

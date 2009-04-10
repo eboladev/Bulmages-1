@@ -99,7 +99,7 @@ void RecibosList::presentar()
 {
     _depura ( "RecibosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM recibo WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END RecibosList::presentar", 0 );
 }
@@ -263,6 +263,8 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
     addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma Pago" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cliente" ) );
 
     setinsercion ( FALSE );
     setDelete ( FALSE );

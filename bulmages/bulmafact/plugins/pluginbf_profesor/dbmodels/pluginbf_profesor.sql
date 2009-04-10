@@ -88,6 +88,7 @@ BEGIN
     idrecibo SERIAL PRIMARY KEY,
     fecharecibo DATE DEFAULT now(),
     cantrecibo NUMERIC(12,2),
+    idforma_pago INTEGER REFERENCES forma_pago(idforma_pago),
     idcliente INTEGER REFERENCES cliente(idcliente)
     );
   END IF;
@@ -96,7 +97,12 @@ BEGIN
    IF NOT FOUND THEN
       ALTER TABLE recibo ADD COLUMN idcliente INTEGER REFERENCES cliente(idcliente);
    END IF;
-   
+
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idforma_pago'' AND relname=''recibo'';
+   IF NOT FOUND THEN
+      ALTER TABLE recibo ADD COLUMN idforma_pago INTEGER REFERENCES forma_pago(idforma_pago);
+   END IF;
+
    SELECT INTO as * FROM pg_attribute WHERE attname = ''cantrecibo'';
    IF NOT FOUND THEN
       ALTER TABLE recibo ADD COLUMN cantrecibo NUMERIC(12,2);

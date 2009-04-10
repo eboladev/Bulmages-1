@@ -222,14 +222,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>276</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -273,103 +265,10 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="textLabel2_2" >
-         <property name="text" >
-          <string>Nombre completo:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_nombreactividad</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="5" >
-        <widget class="QLineEdit" name="mui_nombreactividad" >
-         <property name="maxLength" >
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="textLabel2_2_2" >
-         <property name="text" >
-          <string>Lugar</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_corpcliente</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="5" >
-        <widget class="QLineEdit" name="mui_corpcliente" >
-         <property name="maxLength" >
-          <number>200</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel2_4" >
-         <property name="text" >
-          <string>Profesor Encargado</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_nomaltcliente</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" colspan="5" >
-        <widget class="QLineEdit" name="mui_nomaltcliente" >
-         <property name="maxLength" >
-          <number>300</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="textLabel2_6" >
-         <property name="text" >
-          <string>Direccion:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_dircliente</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1" colspan="3" >
-        <widget class="QLineEdit" name="mui_dircliente" >
-         <property name="maxLength" >
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="7" column="1" colspan="2" >
+       <item row="2" column="1" colspan="2" >
         <widget class="BlSearchWidget" native="1" name="mui_idcliente" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+          <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -377,39 +276,27 @@
          <property name="minimumSize" >
           <size>
            <width>150</width>
-           <height>100</height>
+           <height>50</height>
           </size>
          </property>
         </widget>
        </item>
-       <item row="5" column="1" >
-        <widget class="QCheckBox" name="mui_recargoeqcliente" >
-         <property name="text" >
-          <string>Vigente</string>
-         </property>
-        </widget>
+       <item row="3" column="0" colspan="3" >
+        <widget class="BfSubForm" name="mui_list" />
        </item>
-       <item row="6" column="1" >
-        <widget class="QComboBox" name="mui_idtipo_actividad" />
+       <item row="1" column="1" >
+        <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
        </item>
-       <item row="6" column="0" >
+       <item row="1" column="0" >
         <widget class="QLabel" name="label_2" >
          <property name="text" >
-          <string>Tipo de Actividad</string>
+          <string>Forma de Pago</string>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>276</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
@@ -452,24 +339,6 @@
           <bool>true</bool>
          </property>
         </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_4" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>727</width>
-        <height>276</height>
-       </rect>
-      </property>
-      <attribute name="title" >
-       <string>Asistencias</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_4" >
-       <item row="0" column="0" >
-        <widget class="QTableWidget" name="tableWidget_2" />
        </item>
       </layout>
      </widget>
@@ -520,10 +389,19 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>Busqueda</class>
+   <class>BlSearchWidget</class>
    <extends>QWidget</extends>
    <header>blsearchwidget.h</header>
-   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>BfSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>bfsubform.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
   </customwidget>
  </customwidgets>
  <resources>

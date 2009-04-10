@@ -52,11 +52,11 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
         addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Cantidad" ) );
 
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cliente" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id Forma PAgo" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
 
-        /// Inicializamos el subformulario de alumnos
-//      mui_alumnosList->setMainCompany(comp);
+        mui_idforma_pago->setMainCompany ( comp );
 
         /// Establecemos los parametros de busqueda de Profesor
         mui_idcliente->setMainCompany ( comp );
@@ -64,6 +64,19 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->setTableName ( "cliente" );
         mui_idcliente->m_valores["nomcliente"] = "";
 
+        /// Activamos el listado de lineas de recibo
+        mui_list->setMainCompany( comp );
+        mui_list->setDbTableName ( "lrecibo" );
+        mui_list->setDbFieldId ( "idlrecibo" );
+        mui_list->addSubFormHeader ( "idlrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
+        mui_list->addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Id recibo" ) );
+        mui_list->addSubFormHeader ( "cantlrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad Linea Recibo" ) );
+        mui_list->addSubFormHeader ( "conceptolrecibo", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto" ) );
+
+        mui_list->setinsercion ( TRUE );
+        mui_list->setOrdenEnabled ( TRUE );
+
+        // ======================================================
 
         pintar();
         dialogChanges_cargaInicial();
@@ -100,7 +113,7 @@ void ReciboView::imprimir()
         return;
     }
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->lanza ( "ReciboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -113,15 +126,15 @@ void ReciboView::imprimir()
 int ReciboView::guardarPost()
 {
     _depura ( " ReciboView::guardarPost", 0 );
-//  mui_alumnosList->setColumnValue("idrecibo", dbValue("idrecibo"));
-//  mui_alumnosList->guardar();
+    mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
+    mui_list->guardar();
     _depura ( "END ReciboView::guardarPost", 0 );
 }
 
 
 int ReciboView::borrarPre()
 {
-
+    mainCompany()->runQuery("DELETE FROM lrecibo WHERE idrecibo = " + dbValue("idrecibo") );
     return 0;
 }
 
@@ -130,7 +143,7 @@ int ReciboView::borrarPre()
 int ReciboView::cargarPost ( QString id )
 {
     _depura ( " ReciboView::cargarPost", 0 );
-
+    mui_list->cargar ("SELECT * FROM lrecibo WHERE idrecibo = " + id );
     _depura ( "END ReciboView::cargarPost", 0 );
     return 0;
 }
