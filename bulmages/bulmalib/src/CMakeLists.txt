@@ -96,15 +96,15 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blsearchwidget.h
 			blform.h			
 			blsubform.h	
-			bldbsubform.h
-			blprogressbar.h
-			blbankedit.h
-			blmaincompany.h
-			blconfiguration.h
-			bldialogchanges.h
-			blspainbankaccountnumber.h)
+			blbankedit.h)
 
 set (bulmalib_HDRS	blmaincompanypointer.h
+			bldialogchanges.h
+			blconfiguration.h
+			blspainbankaccountnumber.h
+			bldbsubform.h
+			blmaincompany.h
+			blprogressbar.h
 			bldb.h
 			blfixed.h
 			blfunctions.h
