@@ -25,7 +25,7 @@
 #include "blfunctions.h"
 #include "reciboview.h"
 #include "reciboslist.h"
-
+#include "emitirrecibosview.h"
 
 
 RecibosList *g_recibosList = NULL;
@@ -82,6 +82,9 @@ void MyPlugProf::elslot1()
 void MyPlugProf::elslot2()
 {
     _depura ( "MyPlugProf::elslot2", 0 );
+    EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugProf::elslot2", 0 );
 }
 
@@ -103,30 +106,30 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
-        QAction *planCuentas = new QAction ( _ ( "&Recibos" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        planCuentas->setStatusTip ( _ ( "Recibos" ) );
-        planCuentas->setWhatsThis ( _ ( "Recibos" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        QAction *listRecibos = new QAction ( _ ( "&Recibos" ), 0 );
+        listRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        listRecibos->setStatusTip ( _ ( "Recibos" ) );
+        listRecibos->setWhatsThis ( _ ( "Recibos" ) );
+        pPluginMenu->addAction ( listRecibos );
+        bges->Listados->addAction ( listRecibos );
+        connect ( listRecibos, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo recibo" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo recibo" ) );
-        npago->setWhatsThis ( _ ( "Nuevo recibo" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *nuevoRecibo = new QAction ( _ ( "&Nuevo recibo" ), 0 );
+        nuevoRecibo->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        nuevoRecibo->setStatusTip ( _ ( "Nuevo recibo" ) );
+        nuevoRecibo->setWhatsThis ( _ ( "Nuevo recibo" ) );
+        pPluginMenu->addAction ( nuevoRecibo );
+        bges->Fichas->addAction ( nuevoRecibo );
+        connect ( nuevoRecibo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
-        QAction *npago1 = new QAction ( _ ( "&Emitir Recibos Periodo" ), 0 );
-        npago1->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        npago1->setStatusTip ( _ ( "Emitir recibos" ) );
-        npago1->setWhatsThis ( _ ( "Emitir recibos" ) );
-        pPluginMenu->addAction ( npago1 );
-        bges->Fichas->addAction ( npago1 );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        QAction *emitirRecibos = new QAction ( _ ( "&Emitir Recibos Periodo" ), 0 );
+        emitirRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        emitirRecibos->setStatusTip ( _ ( "Emitir recibos" ) );
+        emitirRecibos->setWhatsThis ( _ ( "Emitir recibos" ) );
+        pPluginMenu->addAction ( emitirRecibos );
+        bges->Fichas->addAction ( emitirRecibos );
+        connect ( emitirRecibos, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
     }// end if
     _depura ( "END MyPlugProf::inicializa", 0 );

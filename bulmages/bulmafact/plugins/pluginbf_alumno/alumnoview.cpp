@@ -52,6 +52,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
         addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
         addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
         addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
+        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
 
         /// Datos por defecto.
         mui_tutoresList->setMainCompany ( mainCompany() );
