@@ -45,7 +45,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     int res = g_plugins->lanza ( "JDirectivaList_JDirectivaList", this );
     if ( res != 0 )
         return;
-    mdb_idrecibo = "";
+    mdb_idjdirectiva = "";
     setSubForm ( mui_list );
     hideBusqueda();
 
@@ -72,7 +72,7 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 
     setSubForm ( mui_list );
     presentar();
-    mdb_idrecibo = "";
+    mdb_idjdirectiva = "";
     if ( modoEdicion() )
         mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
@@ -99,7 +99,7 @@ void JDirectivaList::presentar()
 {
     _depura ( "JDirectivaList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM jdirectiva  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END JDirectivaList::presentar", 0 );
 }
@@ -111,10 +111,6 @@ QString JDirectivaList::generaFiltro()
 {
     _depura ( "JDirectivaList::generaFiltro", 0 );
     QString filtro = "";
-    if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(nombrerecibo) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " ) ";
-    } // end if
 
     _depura ( "END JDirectivaList::generaFiltro", 0 );
     return ( filtro );
@@ -161,10 +157,10 @@ void JDirectivaList::borrar()
         return;
     } // end if
     try {
-        mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
+        mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
         if ( modoEdicion() ) {
             JDirectivaView * cv = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idrecibo ) )
+            if ( cv->cargar ( mdb_idjdirectiva ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -185,17 +181,17 @@ void JDirectivaList::editar ( int )
 {
     _depura ( "JDirectivaList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
+        mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
         if ( modoEdicion() ) {
             JDirectivaView * bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idrecibo ) ) {
+            if ( bud->cargar ( mdb_idjdirectiva ) ) {
                 delete bud;
                 return;
             } // end if
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
-            emit ( selected ( mdb_idrecibo ) );
+            emit ( selected ( mdb_idjdirectiva ) );
         } // end if
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
@@ -214,8 +210,8 @@ void JDirectivaList::submenu ( const QPoint & )
     if ( a < 0 )
         return;
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _ ( "Editar Actividad" ) );
-    QAction *del = popup->addAction ( _ ( "Borrar Actividad" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar Junta" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar Junta" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
         on_mui_borrar_clicked();
@@ -230,16 +226,16 @@ void JDirectivaList::submenu ( const QPoint & )
 void JDirectivaList::setMainCompany ( BfCompany *comp )
 {
     BlMainCompanyPointer::setMainCompany ( comp );
-    mui_list->setMainCompany ( comp );
+//    mui_list->setMainCompany ( comp );
 }
 
 /** Devuelve el identificador del cobro seleccionado
 **/
-QString JDirectivaList::idrecibo()
+QString JDirectivaList::idjdirectiva()
 {
-    _depura ( "JDirectivaList::idrecibo", 0 );
-    _depura ( "END JDirectivaList::idrecibo", 0 );
-    return mdb_idrecibo;
+    _depura ( "JDirectivaList::idjdirectiva", 0 );
+    _depura ( "END JDirectivaList::idjdirectiva", 0 );
+    return mdb_idjdirectiva;
 }
 
 
@@ -257,16 +253,13 @@ JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( p
     int res = g_plugins->lanza ( "JDirectivaListSubForm_JDirectivaListSubForm", this );
     if ( res != 0 )
         return;
-    setDbTableName ( "recibo" );
-    setDbFieldId ( "idrecibo" );
-    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Actividad" ) );
-    addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
-    addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
-    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma Pago" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cliente" ) );
-
-    setinsercion ( FALSE );
+    setDbTableName ( "jdirectiva" );
+    setDbFieldId ( "idjdirectiva" );
+    addSubFormHeader ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
+    addSubFormHeader ( "fechainjdirectiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
+    addSubFormHeader ( "fechafinjdirectiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
+    
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     _depura ( "END JDirectivaListSubForm::JDirectivaListSubForm", 0 );

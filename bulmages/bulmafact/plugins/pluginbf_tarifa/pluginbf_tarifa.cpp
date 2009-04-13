@@ -188,7 +188,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSubFormHeader ( "cantidadmayoroigualque", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad mayor o igual que" ) );
     l->addSubFormHeader ( "porcentajevariacion", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Porcentaje variacion" ) );
 
-    l->setinsercion ( TRUE );
+    l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
     art->dialogChanges_setQObjectExcluido ( l->mui_list );

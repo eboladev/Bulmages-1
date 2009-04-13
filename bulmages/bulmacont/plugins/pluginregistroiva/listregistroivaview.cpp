@@ -65,7 +65,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablasoportado->addSubFormHeader ( "factemitida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idtipoiva" ) );
     mui_tablasoportado->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "orden" ) );
     mui_tablasoportado->addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idasiento" ) );
-    mui_tablasoportado->setinsercion ( FALSE );
+    mui_tablasoportado->setInsert ( FALSE );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Repercutido.
     mui_tablarepercutido->setMainCompany ( emp );
@@ -89,7 +89,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_tablarepercutido->addSubFormHeader ( "factemitida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "idtipoiva" ) );
     mui_tablarepercutido->addSubFormHeader ( "rectificaaregistroiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "orden" ) );
     mui_tablarepercutido->addSubFormHeader ( "idasiento", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "idasiento" ) );
-    mui_tablarepercutido->setinsercion ( FALSE );
+    mui_tablarepercutido->setInsert ( FALSE );
 
     /// Definiciones para la tabla de repercutido
     mui_totalRepercutido->setMainCompany ( emp );
@@ -98,7 +98,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_totalRepercutido->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "nombretipoiva" ) );
     mui_totalRepercutido->addSubFormHeader ( "tivaiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tivaiva" ) );
     mui_totalRepercutido->addSubFormHeader ( "tbaseiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tbaseiva" ) );
-    mui_totalRepercutido->setinsercion ( FALSE );
+    mui_totalRepercutido->setInsert ( FALSE );
 
     /// Definiciones para la tabla de soportado
     mui_totalSoportado->setMainCompany ( emp );
@@ -107,7 +107,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     mui_totalSoportado->addSubFormHeader ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "nombretipoiva" ) );
     mui_totalSoportado->addSubFormHeader ( "tivaiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tivaiva" ) );
     mui_totalSoportado->addSubFormHeader ( "tbaseiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "tbaseiva" ) );
-    mui_totalSoportado->setinsercion ( FALSE );
+    mui_totalSoportado->setInsert ( FALSE );
 
     /// Fin de las definiciones para la tabla de IVA.
     _depura ( "END ListRegistroIvaView::ListRegistroIvaView", 0 );

@@ -55,7 +55,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     mui_listado->addSubFormHeader ( "idregistroiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "idregistroiva" ) );
     mui_listado->addSubFormHeader ( "tipoprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "tipoprevcobro" ) );
     mui_listado->addSubFormHeader ( "docprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "docprevcobro" ) );
-    mui_listado->setinsercion ( FALSE );
+    mui_listado->setInsert ( FALSE );
     /// Dejamos de inicializar el listado.
     m_cuenta->setMainCompany ( emp );
     on_mui_actualizar_clicked();

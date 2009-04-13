@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,30 +19,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QMenu>
-#include <QKeyEvent>
-#include <QEvent>
+#ifndef CONVREUNIONVIEW_H
+#define CONVREUNIONVIEW_H
 
-#include "listdescalbaranprovview.h"
-#include "blfunctions.h"
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
 
 
-///
-/**
-\param parent
-**/
-ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView ( QWidget *parent )
-        : BfSubForm ( parent )
+#include "blpostgresqlclient.h"
+#include "bldatesearch.h"
+#include "bldialogchanges.h"
+#include "bfform.h"
+
+
+class BfCompany;
+
+
+extern "C++" class BusquedaProfesor;
+
+
+#include "ui_convreunionbase.h"
+
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos. */
+class ConvReunionView : public BfForm, public Ui_ConvReunionBase
 {
-    _depura ( "ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView", 0 );
-    setDbTableName ( "dalbaranp" );
-    setDbFieldId ( "iddalbaranp" );
-    addSubFormHeader ( "iddalbaranp", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
-    addSubFormHeader ( "conceptdalbaranp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
-    addSubFormHeader ( "proporciondalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
-    addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
-    setInsert ( TRUE );
-    _depura ( "END ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView", 0 );
-}
+    Q_OBJECT
 
+public:
+    ConvReunionView ( BfCompany *, QWidget * );
+    ~ConvReunionView();
+    virtual void imprimir();
+    virtual QString nombrePlantilla(void) ;
+    virtual int guardarPost();
+    virtual int borrarPre();
+    virtual int cargarPost(QString );
+};
+
+#endif

@@ -57,7 +57,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     mui_listadomantvehiculo->addSubFormHeader ( "fechamantvehiculo", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "fechamantvehiculo" ) );
     mui_listadomantvehiculo->addSubFormHeader ( "preciomantvehiculo", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "preciomantvehiculo" ) );
     mui_listadomantvehiculo->addSubFormHeader ( "idvehiculo", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "idvehiculo" ) );
-    mui_listadomantvehiculo->setinsercion ( TRUE );
+    mui_listadomantvehiculo->setInsert ( TRUE );
 
     /// Fin de nuevas amortizaciones
     mainCompany() ->meteWindow ( windowTitle(), this );

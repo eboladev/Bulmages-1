@@ -428,7 +428,7 @@ ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : B
     addSubFormHeader ( "fincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de alta del contrato" ) );
     addSubFormHeader ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del contrato" ) );
     addSubFormHeader ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del contrato" ) );
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     _depura ( "END ContratosListSubform::ContratosListSubform", 0 );

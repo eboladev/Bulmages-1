@@ -318,13 +318,13 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QMap <QString, QString> mapa_dfactura;
 
     for ( int i = 0; i < numdescuentos; i++ ) {
-        descuentos->setinsercion ( FALSE );
+        descuentos->setInsert ( FALSE );
         mapa_dfactura = lista_mapas_dfactura.at ( i );
 
         rec->setDbValue ( "conceptdfacturap", mapa_dfactura["conceptdfactura"] );
         rec->setDbValue ( "proporciondfacturap", mapa_dfactura["proporciondfactura"] );
 
-        descuentos->setinsercion ( TRUE );
+        descuentos->setInsert ( TRUE );
         descuentos->nuevoRegistro();
 
         rec = descuentos->lista() ->last();
@@ -379,7 +379,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     QString idarticulo, nomarticulo;
 
     for ( int i = 0; i < numlineas; i++ ) {
-        lineas->setinsercion ( FALSE ); /// Hace falta que este en el bucle? preguntar a Tomeu
+        lineas->setInsert ( FALSE ); /// Hace falta que este en el bucle? preguntar a Tomeu
         mapa_lfactura = lista_mapas_lfactura.at ( i );
 
         /// Comprobamos que existe un articulo con ese codigo en la BD
@@ -420,7 +420,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         rec->setDbValue ( "ivalfacturap", mapa_lfactura["ivalfactura"] );
         rec->setDbValue ( "descuentolfacturap", mapa_lfactura["descuentolfactura"] );
 
-        lineas->setinsercion ( TRUE );
+        lineas->setInsert ( TRUE );
         lineas->nuevoRegistro();
 
         rec = lineas->lista() ->last();

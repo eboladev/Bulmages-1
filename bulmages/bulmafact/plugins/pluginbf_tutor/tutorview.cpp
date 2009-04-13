@@ -224,7 +224,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     _depura ( "END ListAlumnosTutorView::ListAlumnosTutorView", 0 );
 }

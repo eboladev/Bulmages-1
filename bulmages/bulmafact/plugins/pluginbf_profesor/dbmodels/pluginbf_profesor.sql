@@ -247,13 +247,69 @@ BEGIN
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''cuotaporalumno'';
         IF NOT FOUND THEN
-
         CREATE TABLE cuotaporalumno (
        numalumnoscuotaporalumno INTEGER NOT NULL PRIMARY KEY,
        cuotacuotaporalumno NUMERIC (12,2)
         );
-
         END IF;
+
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''jdirectiva'';
+        IF NOT FOUND THEN
+        CREATE TABLE jdirectiva (
+       idjdirectiva SERIAL PRIMARY KEY,
+       fechainjdirectiva date DEFAULT now() NOT NULL,
+       fechafinjdirectiva date DEFAULT now() NOT NULL
+        );
+        END IF;
+
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''miembrojdirectiva'';
+        IF NOT FOUND THEN
+        CREATE TABLE miembrojdirectiva (
+       idmiembrojdirectiva SERIAL PRIMARY KEY,
+       fechainmiembrojdirectiva date DEFAULT now() NOT NULL,
+       fechafinmiembrojdirectiva date DEFAULT now() NOT NULL,
+       idjdirectiva INTEGER NOT NULL REFERENCES jdirectiva(idjdirectiva),
+       cargomiembrojdirectiva VARCHAR NOT NULL,
+       idcliente INTEGER NOT NULL REFERENCES cliente(idcliente)
+        );
+        END IF;
+
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cargomiembrojdirectiva'' AND relname=''miembrojdirectiva'';
+   IF NOT FOUND THEN
+      ALTER TABLE miembrojdirectiva ADD COLUMN cargomiembrojdirectiva VARCHAR;
+   END IF;
+
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''reunion'';
+        IF NOT FOUND THEN
+        CREATE TABLE reunion (
+       idreunion SERIAL PRIMARY KEY,
+       tiporeunion VARCHAR NOT NULL,
+       fecha1convocatoriareunion timestamp DEFAULT now() NOT NULL,
+       fecha2convocatoriareunion timestamp DEFAULT now() NOT NULL,
+       conceptoreunion text
+        );
+        END IF;
+
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''ordendiareunion'';
+        IF NOT FOUND THEN
+        CREATE TABLE ordendiareunion (
+       idordendiareunion SERIAL PRIMARY KEY,
+       idreunion INTEGER NOT NULL REFERENCES reunion(idreunion),
+       conceptoordendiareunion VARCHAR,
+       textoordendiareunion TEXT,
+       resolucionordendiareunion TEXT
+        );
+        END IF;
+
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''asistentereunion'';
+        IF NOT FOUND THEN
+        CREATE TABLE asistentereunion (
+       idasistentereunion SERIAL PRIMARY KEY,
+       idreunion INTEGER NOT NULL REFERENCES reunion(idreunion),
+       idcliente INTEGER NOT NULL REFERENCES cliente(idcliente)
+        );
+        END IF;
+
 
 
 	RETURN 0;

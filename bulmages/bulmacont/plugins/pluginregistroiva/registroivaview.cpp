@@ -75,7 +75,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listIva->addSubFormHeader ( "idregistroiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "idregistroiva" ) );
     mui_listIva->addSubFormHeader ( "baseiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "baseiva" ) );
     mui_listIva->addSubFormHeader ( "ivaiva", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "ivaiva" ) );
-    mui_listIva->setinsercion ( FALSE );
+    mui_listIva->setInsert ( FALSE );
 
     mui_listPrevCobro->setDbTableName ( "prevcobro" );
     mui_listPrevCobro->setDbFieldId ( "idprevcobro" );
@@ -99,7 +99,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listPrevCobro->addSubFormHeader ( "tipoctacliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipoctacliente" ) );
     mui_listPrevCobro->addSubFormHeader ( "tipocuenta", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipocuenta" ) );
 
-    mui_listPrevCobro->setinsercion ( TRUE );
+    mui_listPrevCobro->setInsert ( TRUE );
     mainCompany() ->meteWindow ( windowTitle(), this );
     g_plugins->lanza ( "RegistroIvaView_RegistroIvaView_Post", this );
     _depura ( "Fin de la inicializacion de RegistroIvaView", 0 );

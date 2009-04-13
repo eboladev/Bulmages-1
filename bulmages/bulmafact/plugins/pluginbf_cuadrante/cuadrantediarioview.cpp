@@ -84,7 +84,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
             mui_listvalidaciones->addSubFormHeader ( "idvalasterisk", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Validacion" ) );
             mui_listvalidaciones->addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "ID Trabajador" ) );
         */
-        mui_listvalidaciones->setinsercion ( FALSE );
+        mui_listvalidaciones->setInsert ( FALSE );
         mui_listvalidaciones->setDelete ( FALSE );
         mui_listvalidaciones->setSortingEnabled ( FALSE );
         dialogChanges_setQObjectExcluido ( mui_listvalidaciones->mui_list );

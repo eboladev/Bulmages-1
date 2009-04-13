@@ -56,7 +56,7 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView ( QWidget *parent ) : B
     addSubFormHeader ( "descuentolalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
     addSubFormHeader ( "ordenlalbaranp", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     setDelete ( TRUE );
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.

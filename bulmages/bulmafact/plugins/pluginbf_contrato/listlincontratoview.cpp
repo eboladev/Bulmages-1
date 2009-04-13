@@ -46,7 +46,7 @@ ListLinContratoView::ListLinContratoView ( QWidget *parent ) : BfSubForm ( paren
     addSubFormHeader ( "pvplcontrato", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "PVPl contrato" ) );
     addSubFormHeader ( "idcontrato", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id contrato" ) );
     addSubFormHeader ( "ordenlcontrato", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     _depura ( "END ListLinContratoView::ListLinContratoView", 0 );
 }

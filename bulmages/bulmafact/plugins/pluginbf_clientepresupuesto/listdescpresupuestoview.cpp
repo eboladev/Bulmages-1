@@ -41,7 +41,7 @@ ListDescuentoPresupuestoView::ListDescuentoPresupuestoView ( QWidget *parent )
     addSubFormHeader ( "conceptdpresupuesto", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id presupuesto" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     _depura ( "END ListDescuentoPresupuestoView::ListDescuentoPresupuestoView", 0 );
 }
 

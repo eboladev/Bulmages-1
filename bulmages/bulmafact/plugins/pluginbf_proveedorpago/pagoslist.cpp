@@ -258,7 +258,7 @@ PagosListSubForm::PagosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
     addSubFormHeader ( "nomtrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de trabajador" ) );
     addSubFormHeader ( "apellidostrabajador", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Apellidos trabajador" ) );
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
 }

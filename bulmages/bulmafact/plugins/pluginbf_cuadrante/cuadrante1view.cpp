@@ -75,7 +75,7 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "idcuadrante",    BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  _ ( "ID Cuadrante" ) );
         mui_list->addSubFormHeader ( "idtrabajador",   BlDbField::DbInt,     BlDbField::DbNotNull,    BlSubFormHeader::DbNone,  _ ( "ID trabajador" ) );
         mui_list->addSubFormHeader ( "idhorario",      BlDbField::DbInt,     BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  _ ( "ID horario" ) );
-        mui_list->setinsercion ( TRUE );
+        mui_list->setInsert ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
 

@@ -73,7 +73,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "cantlrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad Linea Recibo" ) );
         mui_list->addSubFormHeader ( "conceptolrecibo", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto" ) );
 
-        mui_list->setinsercion ( TRUE );
+        mui_list->setInsert ( TRUE );
         mui_list->setOrdenEnabled ( TRUE );
 
         // ======================================================

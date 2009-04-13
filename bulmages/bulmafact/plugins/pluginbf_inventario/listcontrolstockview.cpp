@@ -44,7 +44,7 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
     addSubFormHeader ( "idarticulopk", BlDbField::DbInt, BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idarticulo" );
     addSubFormHeader ( "idalmacenpk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idalmacen" );
 //    addSubFormHeader("idinventariopk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idinventario");
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     _depura ( "END ListControlStockView::ListControlStockView", 0 );
 }
 

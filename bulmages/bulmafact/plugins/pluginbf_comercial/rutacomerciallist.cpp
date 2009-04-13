@@ -302,7 +302,7 @@ RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora ruta" ) );
     addSubFormHeader ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia de la incidencia" ) );
     addSubFormHeader ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora de la incidencia" ) );
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     _depura ( "END RutaComercialListSubForm::RutaComercialListSubForm", 0 );
 };
 

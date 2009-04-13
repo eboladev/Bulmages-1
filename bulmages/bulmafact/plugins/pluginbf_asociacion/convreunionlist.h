@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef JDIRECTIVALIST_H
-#define JDIRECTIVALIST_H
+#ifndef CONVREUNIONLIST_H
+#define CONVREUNIONLIST_H
 
 #include <QLineEdit>
 
@@ -32,23 +32,23 @@
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class JDirectivaListSubForm : public BfSubForm
+class ConvReunionListSubForm : public BfSubForm
 {
     Q_OBJECT
 
 public:
-    JDirectivaListSubForm ( QWidget *parent = 0 );
-    ~JDirectivaListSubForm();
+    ConvReunionListSubForm ( QWidget *parent = 0 );
+    ~ConvReunionListSubForm();
 };
 
 
-#include "ui_jdirectivalistbase.h"
+#include "ui_convreunionlistbase.h"
 
 
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase BlFormList para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class JDirectivaList : public BlFormList, public Ui_JDirectivaListBase
+class ConvReunionList : public BlFormList, public Ui_ConvReunionListBase
 {
     Q_OBJECT
 
@@ -57,9 +57,9 @@ private:
     QString mdb_idjdirectiva;
 
 public:
-    JDirectivaList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    JDirectivaList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    ~JDirectivaList();
+    ConvReunionList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ConvReunionList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ~ConvReunionList();
     void presentar();
     void setMainCompany ( BfCompany *comp );
     QString idjdirectiva();

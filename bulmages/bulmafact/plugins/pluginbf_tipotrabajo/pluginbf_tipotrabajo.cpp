@@ -200,7 +200,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->addSubFormHeader ( "idtipotrabajo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID tipo de trabajo" ) );
     form->addSubFormHeader ( "origidtipotrabajo", BlDbField::DbInt, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Id tipo de trabajo" ) );
 
-    form->setinsercion ( TRUE );
+    form->setInsert ( TRUE );
     form->setDelete ( TRUE );
     form->setSortingEnabled ( FALSE );
 

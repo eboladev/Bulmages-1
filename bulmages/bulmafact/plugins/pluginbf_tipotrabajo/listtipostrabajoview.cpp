@@ -55,7 +55,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->addSubFormHeader ( "idtipotrabajo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id tipo trabajo" ) );
     mui_listado->addSubFormHeader ( "nomtipotrabajo", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre tipo trabajo" ) );
     mui_listado->addSubFormHeader ( "colortipotrabajo", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbNone, _ ( "Color tipo trabajo" ) );
-    mui_listado->setinsercion ( TRUE );
+    mui_listado->setInsert ( TRUE );
 
     mui_listado->cargar ( "SELECT * FROM tipotrabajo" );
     meteWindow ( windowTitle(), this );

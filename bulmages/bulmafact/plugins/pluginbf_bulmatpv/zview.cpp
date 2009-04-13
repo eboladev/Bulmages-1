@@ -83,7 +83,7 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "bimpalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Base Imponible" ) );
         mui_list->addSubFormHeader ( "impalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Impuestos" ) );
 
-        mui_list->setinsercion ( FALSE );
+        mui_list->setInsert ( FALSE );
         mui_list->setDelete ( FALSE );
         mui_list->setSortingEnabled ( TRUE );
 

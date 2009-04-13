@@ -49,7 +49,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
     addSubFormHeader ( "descuentolpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pedido" ) );
     addSubFormHeader ( "ordenlpedidoproveedor", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Orden" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );
     _depura ( "END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );

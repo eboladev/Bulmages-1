@@ -95,7 +95,7 @@ ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfS
     setDbFieldId ( "numalumnoscuotaporalumno" );
     addSubFormHeader ( "numalumnoscuotaporalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
     addSubFormHeader ( "cuotacuotaporalumno", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cuota" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     _depura ( "END ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm", 0 );
 }
 

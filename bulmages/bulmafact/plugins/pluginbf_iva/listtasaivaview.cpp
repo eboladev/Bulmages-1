@@ -96,7 +96,7 @@ ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
     addSubFormHeader ( "porcentasa_iva", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Porcentaje IVA" ) );
     addSubFormHeader ( "porcentretasa_iva", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Porcentaje Recargo Equivalencia" ) );
     addSubFormHeader ( "fechatasa_iva", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha Entrada en Vigor" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     _depura ( "END ListTasaIVASubForm::ListTasaIVASubForm", 0 );
 }
 

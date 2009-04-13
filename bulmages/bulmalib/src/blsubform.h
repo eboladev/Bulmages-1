@@ -273,7 +273,7 @@ public:
     /// Hace la impresion del subformulario en formato de tabla RML.
     QString imprimir();
     void sortItems ( int col, Qt::SortOrder orden );
-    void setinsercion ( bool b );
+    void setInsert ( bool b );
     /// Define que campo se utilizar&aacute; para unir las filas que tengan el mismo texto (rowSpan).
     /// Es &uacute;til en contabilidad para unir filas del mismo asiento.
     void setColumnToRowSpan ( QString campo );

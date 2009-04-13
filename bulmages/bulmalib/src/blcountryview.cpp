@@ -49,7 +49,7 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
     mui_list->addSubFormHeader ( "descpais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre pais" ) );
     mui_list->addSubFormHeader ( "cod2pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo 2 digitos" ) );
     mui_list->addSubFormHeader ( "cod3pais", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo 3 digitos" ) );
-    mui_list->setinsercion ( FALSE );
+    mui_list->setInsert ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
 
@@ -59,7 +59,7 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
     mui_listprovincias->addSubFormHeader ( "idprovincia", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id provincia" ) );
     mui_listprovincias->addSubFormHeader ( "idpais", BlDbField::DbInt, BlDbField::DbNotNull , BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id pais" ) );
     mui_listprovincias->addSubFormHeader ( "provincia", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Provincia" ) );
-    mui_listprovincias->setinsercion ( TRUE );
+    mui_listprovincias->setInsert ( TRUE );
     mui_listprovincias->setDelete ( TRUE );
     mui_listprovincias->setSortingEnabled ( FALSE );
 

@@ -79,7 +79,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         mui_ingresos->addSubFormHeader ( "idlingpresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _ ( "Id linea de Ingreso Presupuesto" ) );
         mui_ingresos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Proyecto" ) );
         mui_ingresos->addSubFormHeader ( "ordenlingpresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-        mui_ingresos->setinsercion ( TRUE );
+        mui_ingresos->setInsert ( TRUE );
         mui_ingresos->setOrdenEnabled ( TRUE );
         mui_ingresos->setOrdenPorQuery ( FALSE );
 
@@ -98,7 +98,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         mui_gastos->addSubFormHeader ( "idlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _ ( "Id linea de Ingreso Presupuesto" ) );
         mui_gastos->addSubFormHeader ( "idpresupuestoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Proyecto" ) );
         mui_gastos->addSubFormHeader ( "ordenlgaspresupuestoc", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-        mui_gastos->setinsercion ( TRUE );
+        mui_gastos->setInsert ( TRUE );
         mui_gastos->setOrdenEnabled ( TRUE );
         mui_gastos->setOrdenPorQuery ( FALSE );
 

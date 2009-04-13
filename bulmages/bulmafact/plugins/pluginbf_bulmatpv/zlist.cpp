@@ -61,7 +61,7 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     mui_list->addSubFormHeader ( "numtickets", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tickets" ) );
     mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id. almacen" ) );
 
-    mui_list->setinsercion ( FALSE );
+    mui_list->setInsert ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
 

@@ -136,7 +136,7 @@ void Asiento1View::asientoabiertop()
     mui_abrirasiento->setEnabled ( FALSE );
     mui_cerrarasiento->setEnabled ( TRUE );
     mui_inteligente->setEnabled ( TRUE );
-    mui_list->setinsercion ( TRUE );
+    mui_list->setInsert ( TRUE );
 
     //mui_list->mui_list->setBackgroundColor(Qt::lightGray);
     /// Los apuntes deben ser editables.
@@ -161,7 +161,7 @@ void Asiento1View::asientocerradop()
     mui_abrirasiento->setEnabled ( TRUE );
     mui_cerrarasiento->setEnabled ( FALSE );
     mui_inteligente->setEnabled ( TRUE );
-    mui_list->setinsercion ( FALSE );
+    mui_list->setInsert ( FALSE );
 
     /// Los apuntes deben dejar de ser editables (aunque no se graben sus posibles
     /// modificaciones por estar en modo CERRADO).

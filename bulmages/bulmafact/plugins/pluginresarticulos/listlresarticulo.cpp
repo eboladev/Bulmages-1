@@ -43,7 +43,7 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalfactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolfactura", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     _depura ( "END ListLResArticulo::ListLResArticulo", 0 );
@@ -86,7 +86,7 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     _depura ( "END ListEntregas::ListEntregas", 0 );
@@ -129,7 +129,7 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolfacturap", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     _depura ( "END ListCompras::ListCompras", 0 );
@@ -173,7 +173,7 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "ivalalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "IVA" ) );
     addSubFormHeader ( "descuentolalbaranp", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descuento" ) );
 
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     _depura ( "END ListRecogidas::ListRecogidas", 0 );

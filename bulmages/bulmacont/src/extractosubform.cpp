@@ -71,7 +71,7 @@ ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : BcSubForm (
     addSubFormHeader ( "nombrec_coste", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Centro Coste" ) );
     addSubFormHeader ( "idtipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "idtipoiva" ) );
     addSubFormHeader ( "orden", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Orden" ) );
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setOrdenEnabled ( FALSE );
     setOrdenPorQuery ( FALSE );
     setDelete ( FALSE );

@@ -25,7 +25,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "jdirectivaview.h"
+#include "convreunionview.h"
 #include "bfcompany.h"
 #include "blconfiguration.h"
 #include "bldatesearch.h"
@@ -36,95 +36,95 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
+ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "JDirectivaView::JDirectivaView", 0 );
+    _depura ( "ConvReunionView::ConvReunionView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _ ( "JDirectiva" ) );
-        setDbTableName ( "jdirectiva" );
-        setDbFieldId ( "idjdirectiva" );
-        addDbField ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID jdirectiva" ) );
-        addDbField ( "fechainjdirectiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
-        addDbField ( "fechafinjdirectiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Cese" ) );
+        setTitleName ( _ ( "ConvReunion" ) );
+        setDbTableName ( "reunion" );
+        setDbFieldId ( "idreunion" );
+        addDbField ( "idreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID reunion" ) );
+        addDbField ( "fechainreunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
+        addDbField ( "fechafinreunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Cese" ) );
 
         mui_list->setMainCompany( comp );
-        mui_list->setDbTableName ( "miembrojdirectiva" );
-        mui_list->setDbFieldId ( "idmiembrojdirectiva" );
-        mui_list->addSubFormHeader ( "idmiembrojdirectiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
-        mui_list->addSubFormHeader ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
-        mui_list->addSubFormHeader ( "fechainmiembrojdirectiva", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Fecha posesion" ) );
-        mui_list->addSubFormHeader ( "fechafinmiembrojdirectiva", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha Cese" ) );
+        mui_list->setDbTableName ( "miembroreunion" );
+        mui_list->setDbFieldId ( "idmiembroreunion" );
+        mui_list->addSubFormHeader ( "idmiembroreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
+        mui_list->addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
+        mui_list->addSubFormHeader ( "fechainmiembroreunion", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Fecha posesion" ) );
+        mui_list->addSubFormHeader ( "fechafinmiembroreunion", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha Cese" ) );
         mui_list->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Socio" ) );
         mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Socio" ) );
-        mui_list->addSubFormHeader ( "cargomiembrojdirectiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
+        mui_list->addSubFormHeader ( "cargomiembroreunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
 
         mui_list->setInsert ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
         
-        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
+        mui_list->cargar("SELECT * from miembroreunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el jdirectiva" ), this );
+        mensajeInfo ( _ ( "Error al crear el reunion" ), this );
     } // end try
-    _depura ( "END JDirectivaView::JDirectivaView", 0 );
+    _depura ( "END ConvReunionView::ConvReunionView", 0 );
 }
 
 
 /** No precisa acciones adicionales en el destructor.
 */
-JDirectivaView::~JDirectivaView()
+ConvReunionView::~ConvReunionView()
 {
-    _depura ( "JDirectivaView::~JDirectivaView", 0 );
-    _depura ( "END JDirectivaView::~JDirectivaView", 0 );
+    _depura ( "ConvReunionView::~ConvReunionView", 0 );
+    _depura ( "END ConvReunionView::~ConvReunionView", 0 );
 }
 
 
-QString JDirectivaView::nombrePlantilla ( void )
+QString ConvReunionView::nombrePlantilla ( void )
 {
-    return QString ( "jdirectiva" );
+    return QString ( "reunion" );
 }
 
-void JDirectivaView::imprimir()
+void ConvReunionView::imprimir()
 {
-    _depura ( "JDirectivaView::imprimir", 0 );
-    /// Comprobamos que se disponen de los datos minimos para imprimir el jdirectiva.
+    _depura ( "ConvReunionView::imprimir", 0 );
+    /// Comprobamos que se disponen de los datos minimos para imprimir el reunion.
     QString SQLQuery = "";
 
-    if ( dbValue ( "idjdirectiva" ).isEmpty() ) {
+    if ( dbValue ( "idreunion" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "JDirectivaView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if
     BfForm::imprimir();
 
-    _depura ( "END JDirectivaView::imprimir", 0 );
+    _depura ( "END ConvReunionView::imprimir", 0 );
 }
 
 
-int JDirectivaView::guardarPost()
+int ConvReunionView::guardarPost()
 {
-    _depura ( " JDirectivaView::guardarPost", 0 );
-    mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
+    _depura ( " ConvReunionView::guardarPost", 0 );
+    mui_list->setColumnValue("idreunion", dbValue("idreunion") );
     mui_list->guardar();
-    _depura ( "END JDirectivaView::guardarPost", 0 );
+    _depura ( "END ConvReunionView::guardarPost", 0 );
 }
 
 
-int JDirectivaView::borrarPre()
+int ConvReunionView::borrarPre()
 {
 
     return 0;
@@ -132,11 +132,11 @@ int JDirectivaView::borrarPre()
 
 
 
-int JDirectivaView::cargarPost ( QString id )
+int ConvReunionView::cargarPost ( QString id )
 {
-    _depura ( " JDirectivaView::cargarPost", 0 );
-    mui_list->cargar("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
-    _depura ( "END JDirectivaView::cargarPost", 0 );
+    _depura ( " ConvReunionView::cargarPost", 0 );
+    mui_list->cargar("SELECT * FROM miembroreunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
+    _depura ( "END ConvReunionView::cargarPost", 0 );
     return 0;
 }
 

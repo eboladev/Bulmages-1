@@ -57,7 +57,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
     addSubFormHeader ( "descuentolfacturap", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descuento" ) );
     addSubFormHeader ( "idfacturap", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Factura" ) );
     addSubFormHeader ( "ordenlfacturap", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Orden" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
 
     /// Disparamos los plugins.

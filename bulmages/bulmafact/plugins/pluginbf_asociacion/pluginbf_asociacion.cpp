@@ -26,6 +26,8 @@
 #include "jdirectivalist.h"
 #include "jdirectivaview.h"
 
+#include "convreunionlist.h"
+#include "convreunionview.h"
 ///
 /**
 **/
@@ -61,7 +63,7 @@ void MyPlugAsoc::elslot()
 void MyPlugAsoc::elslot1()
 {
     _depura ( "MyPlugAsoc::elslot1", 0 );
-    JDirectivaView * bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), NULL );
+    JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     _depura ( "END MyPlugAsoc::elslot1", 0 );
@@ -74,6 +76,9 @@ void MyPlugAsoc::elslot1()
 void MyPlugAsoc::elslot2()
 {
     _depura ( "MyPlugAsoc::elslot2", 0 );
+    ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
     _depura ( "END MyPlugAsoc::elslot2", 0 );
 }
 
@@ -138,13 +143,13 @@ void MyPlugAsoc::inicializa ( Bulmafact *bges )
         bges->Fichas->addAction ( convas );
         connect ( convas, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
         
-        QAction *emcom = new QAction ( _ ( "&Emitir Comunicado" ), 0 );
-        emcom->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        emcom->setStatusTip ( _ ( "Emitir Comunicado" ) );
-        emcom->setWhatsThis ( _ ( "Emitir Comunicado" ) );
-        pPluginMenu->addAction ( emcom );
-        bges->Fichas->addAction ( emcom );
-        connect ( emcom, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        QAction *convreunion = new QAction ( _ ( "&Convocar Reunion" ), 0 );
+        convreunion->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        convreunion->setStatusTip ( _ ( "Convocar Reunion" ) );
+        convreunion->setWhatsThis ( _ ( "Convocar Reunion" ) );
+        pPluginMenu->addAction ( convreunion );
+        bges->Fichas->addAction ( convreunion );
+        connect ( convreunion, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
         
     }// end if
     _depura ( "END MyPlugAsoc::inicializa", 0 );

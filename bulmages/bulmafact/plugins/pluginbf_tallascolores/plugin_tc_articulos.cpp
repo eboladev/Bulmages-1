@@ -84,7 +84,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     l->addSubFormHeader ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre talla" ) );
 
-    l->setinsercion ( TRUE );
+    l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
     art->dialogChanges_setQObjectExcluido ( l->mui_list );

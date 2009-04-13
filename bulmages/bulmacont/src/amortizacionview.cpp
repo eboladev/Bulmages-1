@@ -81,7 +81,7 @@ AmortizacionView::AmortizacionView ( BcCompany *emp, QWidget *parent )
     mui_listcuotas->addSubFormHeader ( "idasiento", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( "Id asiento" ) );
     mui_listcuotas->addSubFormHeader ( "idlinamortizacion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _ ( "Id lineas de amortizacion" ) );
     mui_listcuotas->addSubFormHeader ( "idamortizacion", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( "Id amortizacion" ) );
-    mui_listcuotas->setinsercion ( FALSE );
+    mui_listcuotas->setInsert ( FALSE );
     mui_listcuotas->setOrdenEnabled ( FALSE );
 
     /// Fin de nuevas amortizaciones
@@ -166,7 +166,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
         m_idamortizacion = idamortizacion;
         BlDbRecord::cargar ( m_idamortizacion );
 
-        mui_listcuotas->setinsercion ( TRUE );
+        mui_listcuotas->setInsert ( TRUE );
 
         /// se ha cargado de la base de datos.
         nomamortizacion->setText ( dbValue ( "nomamortizacion" ) );
@@ -235,9 +235,9 @@ void AmortizacionView::on_mui_btcalcular_clicked()
         valcuota = valorcompra->text().toDouble() / ncuotas;
         valcuotastr.sprintf ( "%10.2f", valcuota );
         for ( int i = 0; i < ncuotas; i++ ) {
-            mui_listcuotas->setinsercion ( TRUE );
+            mui_listcuotas->setInsert ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion ( FALSE );
+            mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -263,9 +263,9 @@ void AmortizacionView::on_mui_btcalcular_clicked()
         for ( int i = 1; i <= ncuotas; i++ ) {
             valcuota = valorcompra->text().toDouble() * i / total;
             valcuotastr.sprintf ( "%10.2f", valcuota );
-            mui_listcuotas->setinsercion ( TRUE );
+            mui_listcuotas->setInsert ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion ( FALSE );
+            mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -290,9 +290,9 @@ void AmortizacionView::on_mui_btcalcular_clicked()
         for ( int i = 0; i < ncuotas; i++ ) {
             valcuota = valorcompra->text().toDouble() * ( ncuotas - i ) / total;
             valcuotastr.sprintf ( "%10.2f", valcuota );
-            mui_listcuotas->setinsercion ( TRUE );
+            mui_listcuotas->setInsert ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion ( FALSE );
+            mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -322,9 +322,9 @@ void AmortizacionView::on_mui_btcalcular_clicked()
                 valcuota = valorcompra->text().toDouble() - total;
             } // end if
             valcuotastr.sprintf ( "%10.2f", valcuota );
-            mui_listcuotas->setinsercion ( TRUE );
+            mui_listcuotas->setInsert ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion ( FALSE );
+            mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
             rec->setDbValue ( "cantidad", valcuotastr );
@@ -340,7 +340,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             } // end if
         } // end for
     } // end if
-    mui_listcuotas->setinsercion ( TRUE );
+    mui_listcuotas->setInsert ( TRUE );
     _depura ( "AmortizacionView::calculaamortizacion", 0 );
 }
 

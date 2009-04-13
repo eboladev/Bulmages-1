@@ -2583,11 +2583,11 @@ void BlSubForm::on_mui_list_itemChanged ( QTableWidgetItem * )
 /**
 \param b
 **/
-void BlSubForm::setinsercion ( bool b )
+void BlSubForm::setInsert ( bool b )
 {
-    _depura ( "BlSubForm::setinsercion", 0 );
+    _depura ( "BlSubForm::setInsert", 0 );
     m_insercion = b;
-    _depura ( "END BlSubForm::setinsercion", 0 );
+    _depura ( "END BlSubForm::setInsert", 0 );
 }
 
 

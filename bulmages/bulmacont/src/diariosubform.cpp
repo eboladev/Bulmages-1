@@ -64,7 +64,7 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : BcSubForm ( par
     setColumnToRowSpan ( "ordenasientoconfecha" );
     setColorFondo1 ( g_confpr->valor ( CONF_BG_DIARIO ) );
     setColorFondo2 ( g_confpr->valor ( CONF_BG_ALT_DIARIO ) );
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setOrdenEnabled ( FALSE );
     setOrdenPorQuery ( TRUE );
     setDelete ( FALSE );

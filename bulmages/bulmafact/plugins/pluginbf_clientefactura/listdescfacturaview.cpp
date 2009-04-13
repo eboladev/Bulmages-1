@@ -41,7 +41,7 @@ ListDescuentoFacturaView::ListDescuentoFacturaView ( QWidget *parent )
     addSubFormHeader ( "conceptdfactura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
     addSubFormHeader ( "proporciondfactura", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
     addSubFormHeader ( "idfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id factura" ) );
-    setinsercion ( TRUE );
+    setInsert ( TRUE );
     _depura ( "END ListDescuentoFacturaView::ListDescuentoFacturaView", 0 );
 }
 

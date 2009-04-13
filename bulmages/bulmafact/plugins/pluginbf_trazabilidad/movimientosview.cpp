@@ -185,7 +185,7 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
     addSubFormHeader ( "idlalbaran", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Id albaran cliente" ) );
     addSubFormHeader ( "idlalbaranp", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Id albaran proveedor" ) );
 
-    setinsercion ( FALSE );
+    setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( FALSE );
     _depura ( "END MovimientosSubform::MovimientosSubform", 0 );

@@ -1,13 +1,13 @@
 <ui version="4.0" >
  <author>Alvaro de Miguel</author>
- <class>JDirectivaBase</class>
- <widget class="QWidget" name="JDirectivaBase" >
+ <class>ConvReunionBase</class>
+ <widget class="QWidget" name="ConvReunionBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>741</width>
-    <height>406</height>
+    <width>783</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="minimumSize" >
@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle" >
-   <string>Junta Directiva</string>
+   <string>Asamblea</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
@@ -155,61 +155,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Borrar cobro</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar cobro</string>
-          </property>
+         <widget class="QPushButton" name="pushButton_2" >
           <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
-            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="toolButton" >
-          <property name="text" >
-           <string>Convocar Reunion de JD</string>
+           <string>Convocar Junta</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton" >
           <property name="text" >
-           <string>Convocar Asamblea</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2" >
-          <property name="text" >
-           <string>Emitir Comunicado</string>
+           <string>Emitir Acta</string>
           </property>
          </widget>
         </item>
@@ -246,66 +201,65 @@
       <attribute name="title" >
        <string>General</string>
       </attribute>
-      <widget class="QLabel" name="label_2" >
-       <property name="geometry" >
-        <rect>
-         <x>30</x>
-         <y>20</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text" >
-        <string>Fecha Constitucion</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3" >
-       <property name="geometry" >
-        <rect>
-         <x>30</x>
-         <y>50</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text" >
-        <string>Fecha Cesion</string>
-       </property>
-      </widget>
-      <widget class="BlDateSearch" name="mui_fechainjdirectiva" >
-       <property name="geometry" >
-        <rect>
-         <x>130</x>
-         <y>20</y>
-         <width>113</width>
-         <height>25</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="BlDateSearch" name="mui_fechafinjdirectiva" >
-       <property name="geometry" >
-        <rect>
-         <x>130</x>
-         <y>50</y>
-         <width>113</width>
-         <height>25</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="Tab1" >
-      <attribute name="title" >
-       <string>&amp;Miembros</string>
-      </attribute>
-      <layout class="QGridLayout" name="_2" >
-       <property name="margin" >
-        <number>5</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item row="0" column="0" colspan="2" >
-        <widget class="BfSubForm" name="mui_list" />
+      <layout class="QGridLayout" name="gridLayout" >
+       <item row="0" column="0" >
+        <widget class="QLabel" name="label_2" >
+         <property name="text" >
+          <string>1ª Convocatoria</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <widget class="BlDateSearch" name="mui_fecha1convocatoriareunion" />
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="label_3" >
+         <property name="text" >
+          <string>2ª Convocatoria</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" >
+        <widget class="BlDateSearch" name="mui_fecha2convocatoriareunion" />
+       </item>
+       <item row="5" column="0" colspan="3" >
+        <widget class="QTextEdit" name="mui_conceptoreunion" />
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="label_4" >
+         <property name="text" >
+          <string>Tipo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="2" >
+        <widget class="QComboBox" name="comboBox" >
+         <item>
+          <property name="text" >
+           <string>Asamblea</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Junta Directiva</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Oridnaria</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Comisional</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Otros</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -333,7 +287,7 @@
        <item row="1" column="0" colspan="2" >
         <widget class="QLabel" name="textLabel2_4_2_2" >
          <property name="text" >
-          <string>Comentarios:</string>
+          <string>Resolucion</string>
          </property>
          <property name="buddy" >
           <cstring>mui_comentcliente</cstring>
@@ -357,13 +311,24 @@
      </widget>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
-       <string>Reuniones</string>
+       <string>Convocados</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="tab_2" >
+     <widget class="QWidget" name="Tab1" >
       <attribute name="title" >
-       <string>Comunicados</string>
+       <string>&amp;Orden del dia</string>
       </attribute>
+      <layout class="QGridLayout" name="_2" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item row="0" column="0" colspan="2" >
+        <widget class="BfSubForm" name="mui_list" />
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
