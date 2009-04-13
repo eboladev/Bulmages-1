@@ -35,7 +35,7 @@ extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 //extern "C" BusquedaProfesor *bp;
 
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+class MyPlugAsoc : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -43,8 +43,8 @@ public:
     Bulmafact *m_bges;
 
 public:
-    MyPlugProf();
-    ~MyPlugProf();
+    MyPlugAsoc();
+    ~MyPlugAsoc();
     void inicializa ( Bulmafact * );
 
 public slots:

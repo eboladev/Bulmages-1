@@ -23,57 +23,58 @@
 #include "pluginbf_asociacion.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-
-
-
-// RecibosList *g_recibosList=NULL;
+#include "jdirectivalist.h"
+#include "jdirectivaview.h"
 
 ///
 /**
 **/
-MyPlugProf::MyPlugProf()
+MyPlugAsoc::MyPlugAsoc()
 {
-    _depura ( "MyPlugProf::MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::MyPlugProf", 0 );
+    _depura ( "MyPlugAsoc::MyPlugAsoc", 0 );
+    _depura ( "END MyPlugAsoc::MyPlugAsoc", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugProf::~MyPlugProf()
+MyPlugAsoc::~MyPlugAsoc()
 {
-    _depura ( "MyPlugProf::~MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::~MyPlugProf", 0 );
+    _depura ( "MyPlugAsoc::~MyPlugAsoc", 0 );
+    _depura ( "END MyPlugAsoc::~MyPlugAsoc", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugProf::elslot()
+void MyPlugAsoc::elslot()
 {
-    _depura ( "MyPlugProf::elslot", 0 );
-    _depura ( "END MyPlugProf::elslot", 0 );
+    _depura ( "MyPlugAsoc::elslot", 0 );
+    _depura ( "END MyPlugAsoc::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot1()
+void MyPlugAsoc::elslot1()
 {
-    _depura ( "MyPlugProf::elslot1", 0 );
-    _depura ( "END MyPlugProf::elslot1", 0 );
+    _depura ( "MyPlugAsoc::elslot1", 0 );
+    JDirectivaView * bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
+    _depura ( "END MyPlugAsoc::elslot1", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugProf::elslot2()
+void MyPlugAsoc::elslot2()
 {
-    _depura ( "MyPlugProf::elslot2", 0 );
-    _depura ( "END MyPlugProf::elslot2", 0 );
+    _depura ( "MyPlugAsoc::elslot2", 0 );
+    _depura ( "END MyPlugAsoc::elslot2", 0 );
 }
 
 
@@ -81,9 +82,9 @@ void MyPlugProf::elslot2()
 /**
 \param bges
 **/
-void MyPlugProf::inicializa ( Bulmafact *bges )
+void MyPlugAsoc::inicializa ( Bulmafact *bges )
 {
-    _depura ( "MyPlugProf::inicializa", 0 );
+    _depura ( "MyPlugAsoc::inicializa", 0 );
 
     if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -94,33 +95,59 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
-        QAction *planCuentas = new QAction ( _ ( "&Asociacion" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        planCuentas->setStatusTip ( _ ( "Asociacion" ) );
-        planCuentas->setWhatsThis ( _ ( "Asociacion" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        QAction *asociacion = new QAction ( _ ( "&Asociacion" ), 0 );
+        asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        asociacion->setStatusTip ( _ ( "Asociacion" ) );
+        asociacion->setWhatsThis ( _ ( "Asociacion" ) );
+        pPluginMenu->addAction ( asociacion );
+        bges->Listados->addAction ( asociacion );
+        connect ( asociacion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Junta Directiva" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        npago->setStatusTip ( _ ( "Junta Directiva" ) );
-        npago->setWhatsThis ( _ ( "Junta Directiva" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *jdirectiva = new QAction ( _ ( "&Junta Directiva" ), 0 );
+        jdirectiva->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        jdirectiva->setStatusTip ( _ ( "Junta Directiva" ) );
+        jdirectiva->setWhatsThis ( _ ( "Junta Directiva" ) );
+        pPluginMenu->addAction ( jdirectiva );
+        bges->Fichas->addAction ( jdirectiva );
+        connect ( jdirectiva, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
-        QAction *npago1 = new QAction ( _ ( "&Comisiones" ), 0 );
-        npago1->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
-        npago1->setStatusTip ( _ ( "Comisiones" ) );
-        npago1->setWhatsThis ( _ ( "Comisiones" ) );
-        pPluginMenu->addAction ( npago1 );
-        bges->Fichas->addAction ( npago1 );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        QAction *comision = new QAction ( _ ( "&Comisiones" ), 0 );
+        comision->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        comision->setStatusTip ( _ ( "Comisiones" ) );
+        comision->setWhatsThis ( _ ( "Comisiones" ) );
+        pPluginMenu->addAction ( comision );
+        bges->Fichas->addAction ( comision );
+        connect ( comision, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        
+        pPluginMenu->addSeparator();
 
+        QAction *convjd = new QAction ( _ ( "&Convocar Junta" ), 0 );
+        convjd->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        convjd->setStatusTip ( _ ( "Convocar Junta" ) );
+        convjd->setWhatsThis ( _ ( "Convocar Junta" ) );
+        pPluginMenu->addAction ( convjd );
+        bges->Fichas->addAction ( convjd );
+        connect ( convjd, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        
+        QAction *convas = new QAction ( _ ( "&Convocar Asamblea" ), 0 );
+        convas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        convas->setStatusTip ( _ ( "Convocar Asamblea" ) );
+        convas->setWhatsThis ( _ ( "Convocar Asamblea" ) );
+        pPluginMenu->addAction ( convas );
+        bges->Fichas->addAction ( convas );
+        connect ( convas, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        
+        QAction *emcom = new QAction ( _ ( "&Emitir Comunicado" ), 0 );
+        emcom->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        emcom->setStatusTip ( _ ( "Emitir Comunicado" ) );
+        emcom->setWhatsThis ( _ ( "Emitir Comunicado" ) );
+        pPluginMenu->addAction ( emcom );
+        bges->Fichas->addAction ( emcom );
+        connect ( emcom, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        
     }// end if
-    _depura ( "END MyPlugProf::inicializa", 0 );
+    _depura ( "END MyPlugAsoc::inicializa", 0 );
 }
 
 
@@ -137,7 +164,7 @@ int entryPoint ( Bulmafact *bges )
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbf_asociacion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugProf *plug = new MyPlugProf();
+    MyPlugAsoc *plug = new MyPlugAsoc();
     plug->inicializa ( bges );
     return 0;
 }

@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMITIRRECIBOSVIEW_H
-#define EMITIRRECIBOSVIEW_H
+#ifndef JDIRECTIVAVIEW_H
+#define JDIRECTIVAVIEW_H
 
 #include <QLineEdit>
 #include <QLabel>
@@ -39,23 +39,25 @@ class BfCompany;
 extern "C++" class BusquedaProfesor;
 
 
-#include "ui_emitirrecibosbase.h"
+#include "ui_jdirectivabase.h"
 
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class EmitirRecibosView : public BfForm, public Ui_EmitirRecibosBase
+class JDirectivaView : public BfForm, public Ui_JDirectivaBase
 {
     Q_OBJECT
 
 public:
-    EmitirRecibosView ( BfCompany *, QWidget * );
-    ~EmitirRecibosView();
-    
-public slots:
-    virtual void on_mui_crear_released();
+    JDirectivaView ( BfCompany *, QWidget * );
+    ~JDirectivaView();
+    virtual void imprimir();
+    virtual QString nombrePlantilla(void) ;
+    virtual int guardarPost();
+    virtual int borrarPre();
+    virtual int cargarPost(QString );
 };
 
 #endif

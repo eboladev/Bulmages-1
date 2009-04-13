@@ -19,43 +19,61 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMITIRRECIBOSVIEW_H
-#define EMITIRRECIBOSVIEW_H
+#ifndef JDIRECTIVALIST_H
+#define JDIRECTIVALIST_H
 
 #include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
+
+#include "bfcompany.h"
+#include "blfunctions.h"
+#include "bfsubform.h"
+#include "blformlist.h"
 
 
-#include "blpostgresqlclient.h"
-#include "bldatesearch.h"
-#include "bldialogchanges.h"
-#include "bfform.h"
-
-
-class BfCompany;
-
-
-extern "C++" class BusquedaProfesor;
-
-
-#include "ui_emitirrecibosbase.h"
-
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
-class EmitirRecibosView : public BfForm, public Ui_EmitirRecibosBase
+/** Subformulario especializado en el trabajo con Cobros.
+*/
+class JDirectivaListSubForm : public BfSubForm
 {
     Q_OBJECT
 
 public:
-    EmitirRecibosView ( BfCompany *, QWidget * );
-    ~EmitirRecibosView();
-    
-public slots:
-    virtual void on_mui_crear_released();
+    JDirectivaListSubForm ( QWidget *parent = 0 );
+    ~JDirectivaListSubForm();
+};
+
+
+#include "ui_jdirectivalistbase.h"
+
+
+/** Clase que presenta el listado de Cobros.
+    Deriva de la clase BlFormList para estandarizacion de Formularios.
+    Controla los eventos y la sincronizacion del listado con el filtrado. */
+class JDirectivaList : public BlFormList, public Ui_JDirectivaListBase
+{
+    Q_OBJECT
+
+private:
+    /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
+    QString mdb_idrecibo;
+
+public:
+    JDirectivaList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    JDirectivaList ( BfCompany *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ~JDirectivaList();
+    void presentar();
+    void setMainCompany ( BfCompany *comp );
+    QString idrecibo();
+    void imprimir();
+    QString generaFiltro();
+    void borrar();
+    void crear();
+    void editar ( int );
+    void submenu ( const QPoint & );
+
+signals:
+    /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
+    void selected ( QString );
 };
 
 #endif
+
