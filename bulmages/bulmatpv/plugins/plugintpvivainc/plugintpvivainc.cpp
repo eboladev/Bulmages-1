@@ -31,9 +31,11 @@
 typedef QMap<QString, BlFixed> base;
 
 
-int Ticket_agregarLinea_Post ( Ticket *tick, BlDbRecord * &item )
+int Ticket_agregarLinea_Post ( Ticket *tick )
 {
-    item->addDbField ( "pvpivainclalbaran", BlDbField::DbInt, BlDbField::DbNothing, _ ( "IVA inc." ) );
+    BlDbRecord *item = (BlDbRecord *) g_plugParams;
+
+    item->addDbField ( "pvpivainclalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "IVA inc." ) );
     return 0;
 }
 
@@ -47,7 +49,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
         semaforo = 1;
 
         /// Buscamos los parametros en la base de datos.
-        QString query = "SELECT * FROM articulo WHERE idarticulo = " + tick->lineaActTicket()->dbValue ( "idarticulo" );
+        QString query = "SELECT * FROM articulo WHERE idarticulo = " + tick->lineaActTicket()->dbValue("idarticulo");
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             tick->lineaActTicket()->setDbValue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
@@ -63,13 +65,12 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
 }
 
 
-int Ticket_ponerPrecio_Post ( Ticket *tick )
-{
-    tick->lineaActTicket()->setDbValue ( "pvpivainclalbaran", tick->lineaActTicket()->dbValue ( "pvplalbaran" ) );
+int Ticket_ponerPrecio_Post ( Ticket *tick ) {
+	tick->lineaActTicket()->setDbValue("pvpivainclalbaran", tick->lineaActTicket()->dbValue("pvplalbaran"));
 }
 
 
-int Ticket_imprimir ( Ticket *tick )
+int Ticket_imprimir(Ticket *tick)
 {
 
 
@@ -169,7 +170,7 @@ int Ticket_imprimir ( Ticket *tick )
     /// Inicializamos los componentes.
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
-        BlFixed init ( "0.00" );
+	BlFixed init("0.00");
         totales[linea->dbValue ( "ivalalbaran" ) ] = init;
     } // end for
 
@@ -177,7 +178,7 @@ int Ticket_imprimir ( Ticket *tick )
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
         BlFixed cantidad = BlFixed ( linea->dbValue ( "cantlalbaran" ) );
-        BlFixed totlinea = cantidad * BlFixed ( linea->dbValue ( "pvpivainclalbaran" ) );
+	BlFixed totlinea = cantidad * BlFixed( linea->dbValue("pvpivainclalbaran"));
         total.totalIva = total.totalIva + cantidad * BlFixed ( linea->dbValue ( "pvpivainclalbaran" ) );
         totales[linea->dbValue ( "ivalalbaran" ) ] = totales[linea->dbValue ( "ivalalbaran" ) ] + totlinea;
     } // end for
@@ -201,7 +202,7 @@ int Ticket_imprimir ( Ticket *tick )
     pr.printText ( "\n" );
     pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
     pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
-    pr.printText ( "Num. Ticket:  " + tick->dbValue ( "numalbaran" ) + "\n" );
+    pr.printText ( "Num. Ticket:  " + tick->dbValue("numalbaran") + "\n" );
 
     pr.printText ( "\n" );
 
@@ -237,15 +238,15 @@ int Ticket_imprimir ( Ticket *tick )
 
     base::Iterator it;
     for ( it = totales.begin(); it != totales.end(); ++it ) {
-        QString tipoIva = it.key();
-
-        QString sqlquery = "SELECT (" + it.value().toQString ( '.' ) + "/ ( 1 + " + tipoIva.replace ( ",", "." ) + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString ( '.' ) + "- (" + it.value().toQString ( '.' ) + "/ ( 1 + " + tipoIva.replace ( ",", "." ) + "/100 ))::NUMERIC(12,2) AS iva";
-        BlDbRecordSet *cur = tick->mainCompany()->loadQuery ( sqlquery );
-//         BlFixed baseimp = Fixed(cur->valor("base"));;
-//  BlFixed totiva = it.value() - baseimp;
-        pr.printText ( "Base Imponible: " + it.key() + "%  " + cur-> valor ( "base" ) + "�\n" );
-        pr.printText ( "IVA " + it.key() + "%  " + cur->valor ( "iva" ) + "�\n" );
-        delete cur;
+		QString tipoIva = it.key();
+		
+		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS iva";
+		BlDbRecordSet *cur = tick->mainCompany()->loadQuery(sqlquery);
+//        	BlFixed baseimp = Fixed(cur->valor("base"));;
+//		BlFixed totiva = it.value() - baseimp;
+	    pr.printText ( "Base Imponible: "+ it.key() + "%  " + cur-> valor("base") + "�\n" );
+    	pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
+		delete cur;
     } // end for
 
 
@@ -258,10 +259,10 @@ int Ticket_imprimir ( Ticket *tick )
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
 
-    /*   pr.printText("Plazo maximo para cambio 15 dias, \n");
-       pr.printText(" unicamente con ticket de compra. \n");
-       pr.printText("\n");
-    */
+/*   pr.printText("Plazo maximo para cambio 15 dias, \n");
+   pr.printText(" unicamente con ticket de compra. \n");
+   pr.printText("\n");
+*/
 
 //    pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
@@ -285,7 +286,7 @@ int Ticket_imprimir ( Ticket *tick )
 
 
 
-int BtCompany_z ( BtCompany * emp )
+int BtCompany_z(BtCompany * emp)
 {
 
     emp->begin();
@@ -314,7 +315,7 @@ int BtCompany_z ( BtCompany * emp )
     if ( totalcont == "" ) totalcont = "0";
     delete cur1;
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_VISA );
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ g_confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
     BlDbRecordSet *cur2 = emp->loadQuery ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -436,30 +437,30 @@ int BtCompany_z ( BtCompany * emp )
 // Informes por familias
 
     /// Imprimimos el almacen
-    cur = emp->loadQuery ( "SELECT * FROM familia" );
+    cur = emp->loadQuery ( "SELECT * FROM familia");
     while ( !cur->eof() ) {
         file.write ( QString ( "Familia: " ).toAscii() );
-        file.write ( cur->valor ( "nombrefamilia" ).toAscii() );
+        file.write (cur->valor ( "nombrefamilia" ).toAscii() );
         file.write ( "\n", 1 );
 
-        QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz=" + idz + ")  AND idfamilia = " + cur->valor ( "idfamilia" );
-        BlDbRecordSet *cur1 = emp->loadQuery ( querycont );
-        QString numticketscont = cur1->valor ( "unidades" );
-        QString totalcont = cur1->valor ( "total" );
-        if ( totalcont == "" ) totalcont = "0";
-        delete cur1;
+	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
+	BlDbRecordSet *cur1 = emp->loadQuery ( querycont );
+	QString numticketscont = cur1->valor ( "unidades" );
+	QString totalcont = cur1->valor ( "total" );
+	if ( totalcont == "" ) totalcont = "0";
+	delete cur1;
 
-        str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
-
-        str = "Total:" + totalcont.rightJustified ( 10, ' ' );
-        file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
-        file.write ( "\n", 1 );
+	str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
+	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+	file.write ( "\n", 1 );
+	
+	str = "Total:" + totalcont.rightJustified ( 10, ' ' );
+	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+	file.write ( "\n", 1 );
 
         file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
 
-        cur-> nextRecord();
+	cur-> nextRecord();
     } // end if
     delete cur;
 // Fin informes por familias
@@ -496,12 +497,12 @@ int BtCompany_z ( BtCompany * emp )
     file.close();
 
 // ========================================
-    return -1;
+	return -1;
 }
 
 
 
-int BtCompany_x ( BtCompany *emp )
+int BtCompany_x(BtCompany *emp)
 {
 
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
@@ -519,7 +520,7 @@ int BtCompany_x ( BtCompany *emp )
     delete cur1;
 
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_VISA );
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ g_confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
     BlDbRecordSet *cur2 = emp->loadQuery ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -648,12 +649,11 @@ int BtCompany_x ( BtCompany *emp )
     file.close();
 
 // ========================================
-    return -1;
+	return -1;
 }
 
-int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *list )
-{
-    list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
-    return 0;
+int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
+	list->addSubFormHeader ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "PVP Iva Inc." );
+	return 0;
 }
 

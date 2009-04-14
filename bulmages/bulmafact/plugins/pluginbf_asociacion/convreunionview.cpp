@@ -49,25 +49,24 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent )
         setDbTableName ( "reunion" );
         setDbFieldId ( "idreunion" );
         addDbField ( "idreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID reunion" ) );
-        addDbField ( "fechainreunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
-        addDbField ( "fechafinreunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Cese" ) );
+        addDbField ( "fecha1convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 1ª Convocatoria" ) );
+        addDbField ( "fecha2convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 2ª Convocatoria" ) );
+        addDbField ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Tipo" ) );
+        addDbField ( "conceptoreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Concepto" ) );
 
         mui_list->setMainCompany( comp );
-        mui_list->setDbTableName ( "miembroreunion" );
-        mui_list->setDbFieldId ( "idmiembroreunion" );
-        mui_list->addSubFormHeader ( "idmiembroreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
+        mui_list->setDbTableName ( "asistentereunion" );
+        mui_list->setDbFieldId ( "idasistentereunion" );
+        mui_list->addSubFormHeader ( "idasistentereunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
         mui_list->addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
-        mui_list->addSubFormHeader ( "fechainmiembroreunion", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Fecha posesion" ) );
-        mui_list->addSubFormHeader ( "fechafinmiembroreunion", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha Cese" ) );
         mui_list->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Socio" ) );
         mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Socio" ) );
-        mui_list->addSubFormHeader ( "cargomiembroreunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
 
         mui_list->setInsert ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
         
-        mui_list->cargar("SELECT * from miembroreunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
+        mui_list->cargar("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
@@ -135,7 +134,7 @@ int ConvReunionView::borrarPre()
 int ConvReunionView::cargarPost ( QString id )
 {
     _depura ( " ConvReunionView::cargarPost", 0 );
-    mui_list->cargar("SELECT * FROM miembroreunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
+    mui_list->cargar("SELECT * FROM asistentereunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
     _depura ( "END ConvReunionView::cargarPost", 0 );
     return 0;
 }

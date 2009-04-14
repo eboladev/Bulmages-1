@@ -233,7 +233,7 @@
         </widget>
        </item>
        <item row="2" column="1" colspan="2" >
-        <widget class="QComboBox" name="comboBox" >
+        <widget class="QComboBox" name="mui_tiporeunion" >
          <item>
           <property name="text" >
            <string>Asamblea</string>
@@ -313,6 +313,16 @@
       <attribute name="title" >
        <string>Convocados</string>
       </attribute>
+      <widget class="BfSubForm" name="mui_list" >
+       <property name="geometry" >
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>755</width>
+         <height>357</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="Tab1" >
       <attribute name="title" >
@@ -326,7 +336,7 @@
         <number>5</number>
        </property>
        <item row="0" column="0" colspan="2" >
-        <widget class="BfSubForm" name="mui_list" />
+        <widget class="BfSubForm" name="mui_list1" />
        </item>
       </layout>
      </widget>

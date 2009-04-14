@@ -54,7 +54,7 @@ class ConvReunionList : public BlFormList, public Ui_ConvReunionListBase
 
 private:
     /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
-    QString mdb_idjdirectiva;
+    QString mdb_idreunion;
 
 public:
     ConvReunionList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
@@ -62,7 +62,7 @@ public:
     ~ConvReunionList();
     void presentar();
     void setMainCompany ( BfCompany *comp );
-    QString idjdirectiva();
+    QString idreunion();
     void imprimir();
     QString generaFiltro();
     void borrar();

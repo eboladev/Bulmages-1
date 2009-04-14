@@ -45,7 +45,7 @@ ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode edit
     int res = g_plugins->lanza ( "ConvReunionList_ConvReunionList", this );
     if ( res != 0 )
         return;
-    mdb_idjdirectiva = "";
+    mdb_idreunion = "";
     setSubForm ( mui_list );
     hideBusqueda();
 
@@ -72,7 +72,7 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 
     setSubForm ( mui_list );
     presentar();
-    mdb_idjdirectiva = "";
+    mdb_idreunion = "";
     if ( modoEdicion() )
         mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
@@ -157,10 +157,10 @@ void ConvReunionList::borrar()
         return;
     } // end if
     try {
-        mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
+        mdb_idreunion = mui_list->dbValue ( "idreunion" );
         if ( modoEdicion() ) {
             ConvReunionView * cv = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idjdirectiva ) )
+            if ( cv->cargar ( mdb_idreunion ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -181,17 +181,17 @@ void ConvReunionList::editar ( int )
 {
     _depura ( "ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
+        mdb_idreunion = mui_list->dbValue ( "idreunion" );
         if ( modoEdicion() ) {
             ConvReunionView * bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idjdirectiva ) ) {
+            if ( bud->cargar ( mdb_idreunion ) ) {
                 delete bud;
                 return;
             } // end if
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
-            emit ( selected ( mdb_idjdirectiva ) );
+            emit ( selected ( mdb_idreunion ) );
         } // end if
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
@@ -231,11 +231,11 @@ void ConvReunionList::setMainCompany ( BfCompany *comp )
 
 /** Devuelve el identificador del cobro seleccionado
 **/
-QString ConvReunionList::idjdirectiva()
+QString ConvReunionList::idreunion()
 {
-    _depura ( "ConvReunionList::idjdirectiva", 0 );
-    _depura ( "END ConvReunionList::idjdirectiva", 0 );
-    return mdb_idjdirectiva;
+    _depura ( "ConvReunionList::idreunion", 0 );
+    _depura ( "END ConvReunionList::idreunion", 0 );
+    return mdb_idreunion;
 }
 
 
@@ -255,10 +255,10 @@ ConvReunionListSubForm::ConvReunionListSubForm ( QWidget *parent ) : BfSubForm (
         return;
     setDbTableName ( "reunion" );
     setDbFieldId ( "idreunion" );
-    addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
-    addSubFormHeader ( "fecha1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
-    addSubFormHeader ( "fecha2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
-    addSubFormHeader ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
+    addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID reunion" ) );
+    addSubFormHeader ( "fecha1convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "fecha1convocatoriareunion" ) );
+    addSubFormHeader ( "fecha2convocatoriareunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "fecha2convocatoriareunion" ) );
+    addSubFormHeader ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tipo" ) );
     
     setInsert ( FALSE );
     setDelete ( FALSE );

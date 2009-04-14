@@ -70,15 +70,16 @@ BlFixed::BlFixed()
 BlFixed::scale BlFixed::SCALE;
 
 
-BlFixed::scale::scale ( void )
+BlFixed::scale::scale(void)
 {
-    int i;
-    BlFixed_numerator n;
-    n = 1;
-    for ( i = 0; i <= MAX_FIXED_PRECISION; i++ ) {
-        x[i] = n;
-        n = 10 * n;
-    }
+  int i;
+  BlFixed_numerator n;
+  n = 1;
+  for (i = 0; i <= MAX_FIXED_PRECISION; i++)
+  {
+    x[i] = n;
+    n = 10 * n;
+  }
 }
 
 
@@ -116,9 +117,9 @@ BlFixed BlFixed::operator = ( int x )
 
 BlFixed operator / ( BlFixed x, BlFixed y )
 {
-    x.setprecision ( 6 );
-    y.setprecision ( 6 );
-    x.value = ( x.value * BlFixed::SCALE.x[y.precision] ) / y.value;
+    x.setprecision(6);
+    y.setprecision(6);
+    x.value = (x.value * BlFixed::SCALE.x[y.precision]) / y.value;
     return x;
 }
 
@@ -143,11 +144,12 @@ BlFixed operator / ( int x, BlFixed y )
 QString BlFixed::toQString ( QChar separadorDecimal, int precision )
 {
     _depura ( "BlFixed::toQString", 0 );
-    /// Si no se pasa separador decimal cogemos el de las locales
-    if  ( separadorDecimal == '0' ) {
-        QLocale locale;
-        separadorDecimal = locale.decimalPoint ();
-    } // end if
+
+	/// Si no se pasa separador decimal cogemos el de las locales
+	if  ( separadorDecimal == '0' ) {
+		QLocale locale;
+		separadorDecimal = locale.decimalPoint ();
+	} // end if
 
 
     setprecision ( precision );
@@ -164,29 +166,39 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision )
         negative = false;
     BlFixed_numerator n = 0;
     BlFixed_numerator units = 0;
-    unsigned char buffer[MAX_FIXED_LENGTH + MAX_FIXED_PRECISION];
-    for ( unsigned int i = 0; i <= sizeof ( buffer ); i++ )
-        buffer[i] = 0;
+//    unsigned char buffer[MAX_FIXED_LENGTH + MAX_FIXED_PRECISION];
+    QString buffer = "";
+
+//    for ( unsigned int i = 0; i <= sizeof ( buffer ); i++ )
+//        buffer[i] = 0;
     do {
         if ( n == precision ) {
             if ( n > 0 || options & DECIMAL )
-                buffer[sizeof ( buffer ) - ++n] = separadorDecimal.toAscii();
+//                buffer[sizeof ( buffer ) - ++n] = separadorDecimal.toAscii();
+		  n ++;
+		  buffer = separadorDecimal + buffer;
             units = n;
         }
         BlFixed_numerator y;
         y = ( BlFixed_numerator ) x / 10;
-        buffer[sizeof ( buffer ) - ++n] = integer ( x - y * 10 ) + '0';
+//        buffer[sizeof ( buffer ) - ++n] = integer ( x - y * 10 ) + '0';
+	  n++;
+	  buffer = QString::number(x-y * 10) + buffer;
         x = y;
     } while ( n <= precision || x != 0 );
     if ( negative )
-        buffer[sizeof ( buffer ) - ++n] = '-';
+	  buffer = "-" + buffer;
+	  n++;
+//        buffer[sizeof ( buffer ) - ++n] = '-';
     if ( options & ALIGN ) {
         while ( n - units < MAX_FIXED_LENGTH - 2 )
-            buffer[sizeof ( buffer ) - ++n] = ' ';
-    }
-    QString a ( ( const char * ) buffer + sizeof ( buffer ) - n );
-    _depura ( "END BlFixed::toQString", 0 );
-    return a;
+	      buffer = " " + buffer;
+//            buffer[sizeof ( buffer ) - ++n] = ' ';
+	      n++;
+    } // end if
+//    QString a ( ( const char * ) buffer + sizeof ( buffer ) - n );
+    _depura ( "END BlFixed::toQString", 0, buffer );
+    return buffer;
 }
 
 

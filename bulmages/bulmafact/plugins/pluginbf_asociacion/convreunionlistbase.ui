@@ -155,7 +155,7 @@
     </widget>
    </item>
    <item row="2" column="0" >
-    <widget class="JDirectivaListSubForm" name="mui_list" />
+    <widget class="ConvReunionListSubForm" name="mui_list" />
    </item>
    <item row="0" column="0" >
     <layout class="QHBoxLayout" >
@@ -546,9 +546,9 @@
    <header>busquedabanco.h</header>
   </customwidget>
   <customwidget>
-   <class>JDirectivaListSubForm</class>
+   <class>ConvReunionListSubForm</class>
    <extends>QTableWidget</extends>
-   <header>jdirectivalist.h</header>
+   <header>convreunionlist.h</header>
   </customwidget>
  </customwidgets>
  <resources>

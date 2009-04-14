@@ -39,18 +39,18 @@ Ticket::Ticket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
     /// Inicializamos los parametros del ticket para la base de datos.
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
-    addDbField ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
-    addDbField ( "nomticket", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Nombre" ) );
-    addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id albaran" ) );
-    addDbField ( "fechaalbaran", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Id fechaalbaran" ) );
-    addDbField ( "horaalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Hora" ) );
-    addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Trabajador" ) );
-    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Cliente" ) );
-    addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Almacen" ) );
-    addDbField ( "numalbaran", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Num" ) );
-    addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
-    addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Ticket" ) );
-    addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id forma de pago" ) );
+    addDbField ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Descripcion" ) );
+    addDbField ( "nomticket", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Nombre" ) );
+    addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id albaran" ) );
+    addDbField ( "fechaalbaran", BlDbField::DbDate, BlDbField::DbNothing, _( "Id fechaalbaran" ) );
+    addDbField ( "horaalbaran", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Hora" ) );
+    addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNotNull, _( "Trabajador" ) );
+    addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _( "Cliente" ) );
+    addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Almacen" ) );
+    addDbField ( "numalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "Num" ) );
+    addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
+    addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Ticket" ) );
+    addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
 
     setDbValue ( "ticketalbaran", "TRUE" );
     setDbValue ( "idalmacen", g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
@@ -79,30 +79,34 @@ BlDbRecord * Ticket::agregarLinea()
 
     /// Creamos un nuevo BlDbRecord y lo inicializamos.
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
+    _depura ( "Hemos creado el registro", 0 );
     item->setDbTableName ( "lalbaran" );
     item->setDbFieldId ( "numlalbaran" );
-    item->addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id Albaran" ) );
-    item->addDbField ( "numlalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id lalbaran" ) );
-    item->addDbField ( "cantlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Cantidad" ) );
-    item->addDbField ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Precio" ) );
-    item->addDbField ( "ivalalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "IVA" ) );
-    item->addDbField ( "descuentolalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Descuento" ) );
-    item->addDbField ( "ordenlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Orden" ) );
-    item->addDbField ( "reqeqlalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Req. eq." ) );
+    item->addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id Albaran" ) );
+    item->addDbField ( "numlalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id lalbaran" ) );
+    item->addDbField ( "cantlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
+    item->addDbField ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Precio" ) );
+    item->addDbField ( "ivalalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "IVA" ) );
+    item->addDbField ( "descuentolalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Descuento" ) );
+    item->addDbField ( "ordenlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Orden" ) );
+    item->addDbField ( "reqeqlalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, _( "Req. eq." ) );
 //    item->addDbField ( "lotelalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Lote" ) );
-    item->addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id articulo" ) );
-    item->addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Codigo articulo" ) );
-    item->addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Nombre articulo" ) );
-    item->addDbField ( "desclalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre articulo" ) );
+    item->addDbField ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id articulo" ) );
+    item->addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Codigo articulo" ) );
+    item->addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Nombre articulo" ) );
+    item->addDbField ( "desclalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre articulo" ) );
 
 
     item->setDbValue ( "descuentolalbaran", "0" );
+
+    _depura ( "Hacemos el append", 0 );
+
     /// Agregamos el BlDbRecord a la lista de lineas de ticket.
     m_listaLineas->append ( item );
 
-
-//    g_plugins->lanza("Ticket_agregarLinea_Post", this);
-    g_plugins->lanza ( "Ticket_agregarLinea_Post", this, ( void ** ) & item );
+    g_plugParams = (void *) item;
+    g_plugins->lanza("Ticket_agregarLinea_Post", this);
+//    g_plugins->lanza ( "Ticket_agregarLinea_Post", this, ( void ** ) & item );
 
     _depura ( "END Ticket::agregarLinea", 0 );
     return item;
@@ -147,7 +151,8 @@ BlDbRecord *Ticket::insertarArticulo ( QString idArticulo, BlFixed cantidad, boo
         /// No hay ningun item con este articulo (es una insercion)
         m_lineaActual = agregarLinea();
         m_lineaActual->setDbValue ( "idarticulo", idArticulo );
-        m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString() );
+	QString a = cantidad.toQString();
+        m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString('.') );
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
@@ -233,23 +238,23 @@ void  Ticket::setDescuentoGlobal ( BlFixed descuento )
 void Ticket::abrircajon()
 {
 
-    QString filestr = "/dev/null";
-    if ( g_confpr->valor ( CONF_CASHBOX_FILE ) != "" ) {
-        filestr = g_confpr->valor ( CONF_CASHBOX_FILE );
+    QString filestr="/dev/null";
+    if (g_confpr->valor ( CONF_CASHBOX_FILE ) != "") {
+	filestr = g_confpr->valor(CONF_CASHBOX_FILE);
     } // end if
     QFile file ( filestr );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
 
-    QStringList secuencia = g_confpr->valor ( CONF_CASHBOX_OPEN_CODE ).split ( "," );
+    QStringList secuencia = g_confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
 
     /// El comando de apertura de cajon
-    for ( int i = 0; i < secuencia.size(); ++i ) {
-        QString cad = QChar ( secuencia.at ( i ).toInt() );
-        file.write ( cad.toAscii(), 1 );
+    for (int i = 0; i < secuencia.size(); ++i) {
+	    QString cad = QChar(secuencia.at(i).toInt());
+	    file.write ( cad.toAscii(), 1 );
     } // end for
-// file.write("hola mundo\n");
+//	file.write("hola mundo\n");
     file.close();
 }
 
@@ -735,11 +740,11 @@ void Ticket::imprimir()
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
 
-    /*
-       pr.printText("Plazo maximo para cambio 15 dias, \n");
-       pr.printText(" unicamente con ticket de compra. \n");
-       pr.printText("\n");
-    */
+/*
+   pr.printText("Plazo maximo para cambio 15 dias, \n");
+   pr.printText(" unicamente con ticket de compra. \n");
+   pr.printText("\n");
+*/
 
     pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
@@ -887,7 +892,7 @@ void Ticket::insertarArticuloCodigo ( QString codigo )
 
 void Ticket::insertarArticuloCodigoNL ( QString codigo )
 {
-    _depura ( "Ticket::insertarArticuloCodigoNL", 0 );
+    _depura("Ticket::insertarArticuloCodigoNL",0);
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
@@ -895,7 +900,7 @@ void Ticket::insertarArticuloCodigoNL ( QString codigo )
     } // end if
     delete cur;
     g_plugins->lanza ( "Ticket_insertarArticuloCodigoNL_Post", this );
-    _depura ( "END Ticket::insertarArticuloCodigoNL", 0 );
+    _depura("END Ticket::insertarArticuloCodigoNL",0);
 }
 
 
@@ -937,10 +942,10 @@ int Ticket::guardar()
 
     try {
 
-        if ( listaLineas() ->count() == 0 ) {
-            mensajeAviso ( _ ( "El ticket esta vacio." ) );
-            return -1;
-        } // end if
+	if ( listaLineas() ->count() == 0 ) {
+		mensajeAviso ( _( "El ticket esta vacio." ) );
+		return -1;
+	} // end if
 
         QString id;
         mainCompany() ->begin();
@@ -954,10 +959,10 @@ int Ticket::guardar()
             item->DBsave ( id1 );
         }// end for
         mainCompany() ->commit();
-        setDbValue ( "idalbaran", id );
+	setDbValue("idalbaran", id);
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM albaran WHERE idalbaran = " + id );
-        setDbValue ( "refalbaran", cur->valor ( "refalbaran" ) );
-        setDbValue ( "numalbaran", cur->valor ( "numalbaran" ) );
+	setDbValue("refalbaran", cur->valor("refalbaran"));
+	setDbValue("numalbaran", cur->valor("numalbaran"));
 
 //        DBload ( cur );
         delete cur;

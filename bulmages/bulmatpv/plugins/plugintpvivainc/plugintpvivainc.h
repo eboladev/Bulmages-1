@@ -32,7 +32,7 @@
 
 //extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( Ticket * );
-extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( Ticket *, BlDbRecord * & );
+extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( Ticket *);
 extern "C" MY_EXPORT int Ticket_ponerPrecio_Post ( Ticket * );
 extern "C" MY_EXPORT int Ticket_imprimir ( Ticket * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
