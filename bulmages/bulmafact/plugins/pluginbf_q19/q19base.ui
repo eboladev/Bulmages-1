@@ -98,7 +98,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaBanco" name="mui_idbanco" />
+      <widget class="BfBuscarBanco" name="mui_idbanco" />
      </item>
     </layout>
    </item>
@@ -223,9 +223,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BusquedaBanco</class>
+   <class>BfBuscarBanco</class>
    <extends>QComboBox</extends>
-   <header>busquedabanco.h</header>
+   <header>bfbuscarbanco.h</header>
   </customwidget>
  </customwidgets>
  <resources>

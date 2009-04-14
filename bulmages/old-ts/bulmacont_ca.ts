@@ -2415,7 +2415,7 @@ la seva feina es perd.</translation>
     </message>
   </context>
   <context>
-    <name>ListConfiguracionSubForm</name>
+    <name>BfConfiguracionSubForm</name>
     <message>
       <source>Nombre</source>
       <translation>Nom</translation>

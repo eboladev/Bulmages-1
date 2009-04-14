@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>aboutdlg</class>
- <widget class="QDialog" name="aboutdlg" >
+ <class>AboutBase</class>
+ <widget class="QDialog" name="AboutBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -719,7 +719,7 @@ p, li { white-space: pre-wrap; }
   <connection>
    <sender>pushButton_cerrar</sender>
    <signal>clicked()</signal>
-   <receiver>aboutdlg</receiver>
+   <receiver>AboutBase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
+    <normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >

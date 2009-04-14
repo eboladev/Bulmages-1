@@ -31,8 +31,8 @@
 #include "blimportexport.h"
 #include "bfcompany.h"
 #include "articuloview.h"
-#include "busquedafamilia.h"
-#include "busquedatipoarticulo.h"
+#include "bfbuscarfamilia.h"
+#include "bfbuscartipoarticulo.h"
 #include "blfunctions.h"
 #include "blplugins.h"
 

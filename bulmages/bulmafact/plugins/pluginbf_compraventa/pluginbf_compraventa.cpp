@@ -65,7 +65,7 @@ void myplugincv::elslot()
 /**
 \param bges
 **/
-void myplugincv::inicializa ( Bulmafact *bges )
+void myplugincv::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugincv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
@@ -91,7 +91,7 @@ void myplugincv::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de CompraVenta\n", 0 );
 

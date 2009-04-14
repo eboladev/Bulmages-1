@@ -24,7 +24,7 @@
 #include "bltablewidget.h"
 #include "bfsubform.h"
 #include "blwidget.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 class ListLResArticulo : public BfSubForm

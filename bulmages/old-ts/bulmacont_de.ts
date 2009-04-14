@@ -2984,7 +2984,7 @@ porque igual su trabajo se pierde.</source>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionSubForm</name>
+    <name>BfConfiguracionSubForm</name>
     <message>
         <location filename="propiedadesempresa.cpp" line="149"/>
         <source>Nombre</source>

@@ -33,7 +33,7 @@
 #include "bfcompany.h"
 #include "listlinpedidoclienteview.h"
 #include "clientslist.h"
-#include "informereferencia.h"
+#include "bfinformereferencia.h"
 #include "blfunctions.h"
 #include "blplugins.h"
 

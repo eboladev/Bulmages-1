@@ -23,7 +23,7 @@
 #include "pluginbf_seriesfactura.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "listseriefacturaview.h"
+#include "bfseriefacturaview.h"
 
 
 
@@ -54,7 +54,7 @@ MyPlugSeriesFactura::~MyPlugSeriesFactura()
 void MyPlugSeriesFactura::elslot1()
 {
     _depura ( "MyPlugSeriesFactura::elslot1", 0 );
-    ListSerieFacturaView * bud = new ListSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
+    BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     _depura ( "END MyPlugSeriesFactura::elslot1", 0 );
@@ -66,7 +66,7 @@ void MyPlugSeriesFactura::elslot1()
 /**
 \param bges
 **/
-void MyPlugSeriesFactura::inicializa ( Bulmafact *bges )
+void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugSeriesFactura::inicializa", 0 );
 
@@ -99,7 +99,7 @@ void MyPlugSeriesFactura::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
@@ -118,7 +118,7 @@ int entryPoint ( Bulmafact *bges )
 /// Sino que se llama desde multiples partes del sistema.
 int SNewTrabajadorView ( BfCompany *v )
 {
-    ListSerieFacturaView *h = new ListSerieFacturaView ( v, 0 );
+    BfSerieFacturaView *h = new BfSerieFacturaView ( v, 0 );
     g_plugParams = h;
     return 1;
 }

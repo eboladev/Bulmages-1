@@ -30,7 +30,7 @@
 
 #include "pluginbf_z2z.h"
 #include "blconfiguration.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bfcompany.h"
 #include "z2zview.h"
 
@@ -77,7 +77,7 @@ void mypluginzz::elslot (  )
 /**
 \param bcont
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 

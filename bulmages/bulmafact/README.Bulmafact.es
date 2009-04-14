@@ -4,7 +4,7 @@ Software de Gestión Empresarial BulmaGés
 (C) 2003 - 2008 Asociacion IGLUES
 http://www.iglues.org
 ========================================
-#README.Bulmafact
+#README.BfBulmaFact
 20080501
 
 BulmaFact

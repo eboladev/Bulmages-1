@@ -41,5 +41,5 @@ msgid "Muestra que es esto"
 msgstr ""
 
 #: pluginbf_example.cpp:116
-msgid "Prueba de plugin para Bulmafact."
+msgid "Prueba de plugin para BfBulmaFact."
 msgstr ""

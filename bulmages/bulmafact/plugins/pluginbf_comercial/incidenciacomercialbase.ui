@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+    <normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -120,7 +120,7 @@
          </property>
          <property name="icon" >
           <iconset resource="../../../bulmages.qrc" >
-           <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</iconset>
+           <normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</iconset>
          </property>
          <property name="iconSize" >
           <size>
@@ -238,7 +238,7 @@
         </widget>
        </item>
        <item>
-        <widget class="BusquedaTrabajador" name="mui_idtrabajador" />
+        <widget class="BfBuscarTrabajador" name="mui_idtrabajador" />
        </item>
       </layout>
      </item>
@@ -338,9 +338,9 @@
    <header>busquedaestadoincidencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaTrabajador</class>
+   <class>BfBuscarTrabajador</class>
    <extends>QComboBox</extends>
-   <header>busquedatrabajador.h</header>
+   <header>bfbuscartrabajador.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>

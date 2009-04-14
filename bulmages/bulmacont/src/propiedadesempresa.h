@@ -37,13 +37,13 @@ class BcCompany;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class BC_EXPORT ListConfiguracionSubForm : public BcSubForm
+class BC_EXPORT BfConfiguracionSubForm : public BcSubForm
 {
     Q_OBJECT
 
 public:
-    ListConfiguracionSubForm ( QWidget *parent = 0 );
-    ~ListConfiguracionSubForm();
+    BfConfiguracionSubForm ( QWidget *parent = 0 );
+    ~BfConfiguracionSubForm();
 
 public slots:
     virtual void cargar();

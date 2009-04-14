@@ -25,9 +25,9 @@
 #endif
 
 #include <QObject>
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bfcompany.h"
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_s_almacenes ( BfCompany * );
 

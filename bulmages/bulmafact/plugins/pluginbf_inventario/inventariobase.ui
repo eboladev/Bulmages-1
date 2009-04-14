@@ -365,7 +365,7 @@
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="BusquedaFamilia" name="mui_idfamilia" />
+       <widget class="BfBuscarFamilia" name="mui_idfamilia" />
       </item>
      </layout>
     </widget>
@@ -531,9 +531,9 @@
    <header>listcontrolstockview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFamilia</class>
+   <class>BfBuscarFamilia</class>
    <extends>QLineEdit</extends>
-   <header>busquedafamilia.h</header>
+   <header>bfbuscarfamilia.h</header>
   </customwidget>
  </customwidgets>
  <resources>

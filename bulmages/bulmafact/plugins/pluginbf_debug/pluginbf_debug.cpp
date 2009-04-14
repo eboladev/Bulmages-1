@@ -30,7 +30,7 @@
 
 #include "pluginbf_debug.h"
 #include "blconfiguration.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 ///
@@ -70,7 +70,7 @@ void myplugin::cambia ( bool valor )
 /**
 \param bcont
 **/
-int entryPoint ( Bulmafact *bcont )
+int entryPoint ( BfBulmaFact *bcont )
 {
     _depura ( "Entrada del plugin depuracion", 10 );
 

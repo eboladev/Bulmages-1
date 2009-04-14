@@ -63,7 +63,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="BusquedaArticulo" native="1" name="m_articulo" >
+         <widget class="BfBuscarArticulo" native="1" name="m_articulo" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
             <horstretch>0</horstretch>
@@ -689,9 +689,9 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaArticulo</class>
+   <class>BfBuscarArticulo</class>
    <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
+   <header>bfbuscararticulo.h</header>
   </customwidget>
   <customwidget>
    <class>PedidosClienteListSubform</class>

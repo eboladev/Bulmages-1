@@ -35,8 +35,8 @@
 #include "bfcompany.h"
 #include "clientslist.h"
 #include "blconfiguration.h"
-#include "busquedaformapago.h"
-#include "informereferencia.h"
+#include "bfbuscarformapago.h"
+#include "bfinformereferencia.h"
 #include "blplugins.h"
 
 

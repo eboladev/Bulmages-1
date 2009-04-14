@@ -26,14 +26,14 @@
 
 #include <QObject>
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "trabajadorview.h"
 #include "almacenview.h"
 #include "blform.h"
 #include "bfsubform.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int TrabajadorView_TrabajadorView_Post ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView * );

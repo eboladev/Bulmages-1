@@ -109,7 +109,7 @@ void MyPlugArt::elslot3()
 /**
 \param bges
 **/
-void MyPlugArt::inicializa ( Bulmafact *bges )
+void MyPlugArt::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugArt::inicializa", 0 );
 
@@ -169,7 +169,7 @@ void MyPlugArt::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Clientes\n", 0 );
 

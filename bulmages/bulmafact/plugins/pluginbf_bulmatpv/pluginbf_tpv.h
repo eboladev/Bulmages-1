@@ -30,7 +30,7 @@
 #include <QApplication>
 #include <QObject>
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 

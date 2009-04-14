@@ -34,7 +34,7 @@
 
 
 class orderslist;
-class Bulmafact;
+class BfBulmaFact;
 
 
 /// Clase company (empresa).
@@ -45,10 +45,10 @@ class BF_EXPORT BfCompany : public BlMainCompany
 {
 private:
     /// Puntero al mainWindow
-    Bulmafact *m_bulmafact;
+    BfBulmaFact *m_bulmafact;
 
 public:
-    BfCompany ( Bulmafact *bges );
+    BfCompany ( BfBulmaFact *bges );
     virtual ~BfCompany();
     void createMainWindows ( BlSplashScreen * );
     void s_FPago();
@@ -56,7 +56,7 @@ public:
     void s_trabajadores();
     void s_bancos();
     void s_seriesFactura();
-    void s_newListConfiguracionView();
+    void s_newBfConfiguracionView();
     void s_almacenes();
     void viewPagosList();
     void s_TipoIVAView();

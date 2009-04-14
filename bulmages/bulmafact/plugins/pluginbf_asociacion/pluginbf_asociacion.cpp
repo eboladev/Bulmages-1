@@ -87,7 +87,7 @@ void MyPlugAsoc::elslot2()
 /**
 \param bges
 **/
-void MyPlugAsoc::inicializa ( Bulmafact *bges )
+void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugAsoc::inicializa", 0 );
 
@@ -161,7 +161,7 @@ void MyPlugAsoc::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de entrada del plugin de asociaciones\n", 0 );
 

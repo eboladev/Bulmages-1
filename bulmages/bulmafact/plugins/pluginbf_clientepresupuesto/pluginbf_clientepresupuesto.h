@@ -22,9 +22,9 @@
 
 #include "pdefs_clientepresupuesto.h"
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blwidget.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 #include "clienteview.h"
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
@@ -32,11 +32,11 @@
 
 
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int SNewPresupuestoView (BfCompany *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 
 
@@ -46,12 +46,12 @@ class mypluginpres : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     mypluginpres();
     ~mypluginpres();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

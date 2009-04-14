@@ -1,4 +1,4 @@
-PROJECT(Bulmafact)
+PROJECT(BfBulmaFact)
 
 add_subdirectory(src)
 

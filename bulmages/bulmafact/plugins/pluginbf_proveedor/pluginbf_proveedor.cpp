@@ -81,7 +81,7 @@ void MyPlugPro::elslot1()
 /**
 \param bges
 **/
-void MyPlugPro::inicializa ( Bulmafact *bges )
+void MyPlugPro::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugPro::inicializa", 0 );
 
@@ -120,7 +120,7 @@ void MyPlugPro::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de proveedores\n", 0 );
 

@@ -116,7 +116,7 @@ Description: plugins collection for Bulmages
 Package: bulmafact-plugins
 Architecture: any
 Depends: ${shlibs:Depends}, bulmafact (>= 0.11), kmail, postgresql-contrib
-Description: plugins collection for Bulmafact
+Description: plugins collection for BfBulmaFact
  Provides a optional plugin collection for bulmafact.
  Some of them need a patched database, so read the README file.
  .

@@ -320,19 +320,19 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 
         /*
             } else if (linea->nomcampo() == "codigocompletoarticulo") {
-                BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
+                BfBuscarArticuloDelegate *editor = new BfBuscarArticuloDelegate(parent);
                 editor->setMainCompany((BfCompany *)m_subform->mainCompany());
                 return editor;
             } else if (linea->nomcampo() == "desctipo_iva") {
-                BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
+                BfBuscarTipoIVADelegate *editor = new BfBuscarTipoIVADelegate(parent);
                 editor->setMainCompany((BfCompany *)m_subform->mainCompany());
                 return editor;
             } else if (linea->nomcampo() == "nomtrabajador") {
-                BusquedaTrabajadorDelegate *editor = new BusquedaTrabajadorDelegate(parent);
+                BfBuscarTrabajadorDelegate *editor = new BfBuscarTrabajadorDelegate(parent);
                 editor->setMainCompany((BfCompany *)m_subform->mainCompany());
                 return editor;
             } else if (linea->nomcampo() == "nomalmacen") {
-                BusquedaAlmacenDelegate *editor = new BusquedaAlmacenDelegate(parent);
+                BfBuscarAlmacenDelegate *editor = new BfBuscarAlmacenDelegate(parent);
                 editor->setMainCompany((BfCompany *)m_subform->mainCompany());
                 return editor;
             } else  {
@@ -385,20 +385,20 @@ void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         model->setData ( index, value );
         /*
             } else if (linea->nomcampo() == "codigocompletoarticulo") {
-                BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
+                BfBuscarArticuloDelegate *comboBox = static_cast<BfBuscarArticuloDelegate*>(editor);
                 QString value = comboBox->currentText();
                 value = value.left(value.indexOf(".-"));
                 model->setData(index, value);
             } else if (linea->nomcampo() == "desctipo_iva") {
-                BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
+                BfBuscarTipoIVADelegate *comboBox = static_cast<BfBuscarTipoIVADelegate*>(editor);
                 QString value = comboBox->currentText();
                 model->setData(index, value);
             } else if (linea->nomcampo() == "nomtrabajador") {
-                BusquedaTrabajadorDelegate *comboBox = static_cast<BusquedaTrabajadorDelegate*>(editor);
+                BfBuscarTrabajadorDelegate *comboBox = static_cast<BfBuscarTrabajadorDelegate*>(editor);
                 QString value = comboBox->currentText();
                 model->setData(index, value);
             } else if (linea->nomcampo() == "nomalmacen") {
-                BusquedaAlmacenDelegate *comboBox = static_cast<BusquedaAlmacenDelegate*>(editor);
+                BfBuscarAlmacenDelegate *comboBox = static_cast<BfBuscarAlmacenDelegate*>(editor);
                 QString value = comboBox->currentText();
                 model->setData(index, value);
         */
@@ -440,19 +440,19 @@ void BtSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         /*
             } else if (linea->nomcampo() == "codigocompletoarticulo") {
                 QString value = index.model()->data(index, Qt::DisplayRole).toString();
-                BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
+                BfBuscarArticuloDelegate *comboBox = static_cast<BfBuscarArticuloDelegate*>(editor);
                 comboBox->addItem(value);
             } else if (linea->nomcampo() == "desctipo_iva") {
                 QString value = index.model()->data(index, Qt::DisplayRole).toString();
-                BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
+                BfBuscarTipoIVADelegate *comboBox = static_cast<BfBuscarTipoIVADelegate*>(editor);
                 comboBox->set(value);
             } else if (linea->nomcampo() == "nomtrabajador") {
                 QString value = index.model()->data(index, Qt::DisplayRole).toString();
-                BusquedaTrabajadorDelegate *comboBox = static_cast<BusquedaTrabajadorDelegate*>(editor);
+                BfBuscarTrabajadorDelegate *comboBox = static_cast<BfBuscarTrabajadorDelegate*>(editor);
                 comboBox->set(value);
             } else if (linea->nomcampo() == "nomalmacen") {
                 QString value = index.model()->data(index, Qt::DisplayRole).toString();
-                BusquedaAlmacenDelegate *comboBox = static_cast<BusquedaAlmacenDelegate*>(editor);
+                BfBuscarAlmacenDelegate *comboBox = static_cast<BfBuscarAlmacenDelegate*>(editor);
                 comboBox->set(value);
         */
     } else {

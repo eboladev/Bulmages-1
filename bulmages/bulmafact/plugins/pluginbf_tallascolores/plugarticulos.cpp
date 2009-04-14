@@ -58,7 +58,7 @@ void plugin_tc_articulos::colores()
 \param bges
 **/
 
-void plugin_tc_articulos::inicializa ( Bulmafact *bges )
+void plugin_tc_articulos::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "plugin_tc_articulos::inicializa", 0 );
 

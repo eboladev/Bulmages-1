@@ -31,7 +31,7 @@
 #include "pluginbl_importcsv.h"
 #include "mypluginimportcsv.h"
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bulmacont.h"
 
 

@@ -183,7 +183,7 @@
         <file>images/png/igualant.xpm</file>
         <file>images/png/wizard.png</file>
     </qresource>
-    <qresource prefix="/Bulmafact16x16" >
+    <qresource prefix="/BfBulmaFact16x16" >
         <file>images/png/16x16/i_bulmages_cuentas_activo.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cuentas_gastos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cuentas_ingresos.16x16.png</file>
@@ -218,7 +218,7 @@
         <file>images/png/16x16/i_bulmages_tarifa_menos.16x16.png</file>
 
     </qresource>
-    <qresource prefix="/Bulmafact32x32" >
+    <qresource prefix="/BfBulmaFact32x32" >
 
         <file>images/png/32x32/i_bulmages_cuentas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cuentas_activo.32x32.png</file>
@@ -267,7 +267,7 @@
         <file>images/png/32x32/i_bulmages_ventas_presupuesto_a_pedido.32x32.png</file>
         <file>images/png/iconbulmafact.xpm</file>
     </qresource>
-    <qresource prefix="/Bulmafact48x48" >
+    <qresource prefix="/BfBulmaFact48x48" >
         <file>images/png/48x48/i_bulmages_boton_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_menos.48x48.png</file>

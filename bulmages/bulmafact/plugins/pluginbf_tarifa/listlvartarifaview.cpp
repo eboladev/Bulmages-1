@@ -29,7 +29,7 @@
 #include "listlvartarifaview.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "busquedaalmacen.h"
+#include "bfbuscaralmacen.h"
 #include "busquedatarifa.h"
 
 
@@ -78,7 +78,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen" ) {
-        BusquedaAlmacen *editor = new BusquedaAlmacen ( parent );
+        BfBuscarAlmacen *editor = new BfBuscarAlmacen ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
 
@@ -122,7 +122,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idtarifa", idvalue );
     } else if ( linea->nomcampo() == "nomalmacen" ) {
-        BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
+        BfBuscarAlmacen *comboBox = static_cast<BfBuscarAlmacen*> ( editor );
         QString value = comboBox->currentText();
         QString idvalue = comboBox->id();
         model->setData ( index, value );
@@ -159,7 +159,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
         comboBox->setIdTarifa ( m_subform->lineaat ( index.row() ) ->dbValue ( "idtarifa" ) );
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
+        BfBuscarAlmacen *comboBox = static_cast<BfBuscarAlmacen*> ( editor );
         comboBox->setId ( m_subform->lineaat ( index.row() ) ->dbValue ( "idalmacen" ) );
 
     } else if ( linea->nomcampo() == "cantidadmayoroigualque"

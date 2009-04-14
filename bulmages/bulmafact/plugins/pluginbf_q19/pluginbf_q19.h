@@ -27,11 +27,11 @@
 
 #include "cobroslist.h"
 #include "facturaslist.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
 extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 

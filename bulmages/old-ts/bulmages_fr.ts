@@ -71,60 +71,60 @@ de données actuellment ouvèrte.</translation>
     </message>
 </context>
 <context>
-    <name>ImportExportBulmafactBase</name>
+    <name>ImportExportBfBulmaFactBase</name>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="13"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="13"/>
         <source>Importar y Exportar Datos</source>
         <translation>Imorter et exporter données</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="70"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="70"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="87"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="87"/>
         <source>Fecha Inicial</source>
         <translation>Date Initiale</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="97"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="97"/>
         <source>Fecha Final</source>
         <translation>Date finale</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="186"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="186"/>
         <source>Ca&amp;ncelar</source>
         <translation>Ca&amp;nceler</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="193"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="193"/>
         <source>Expor&amp;tar</source>
         <translation>Expor&amp;ter</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="200"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="200"/>
         <source>&amp;Importar</source>
         <translation>&amp;Impoter</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="44"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="44"/>
         <source>Archivo XML:</source>
         <translation>Archive XML:</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="125"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="125"/>
         <source>Realizar sólo &amp;una comprobación.</source>
         <translation>Réaliser seulement &amp;une comprovation.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/comun/importexportbulmafactbase.ui" line="140"/>
+        <location filename="../../../../../BULMAGES/comun/importexportbfbulmafactbase.ui" line="140"/>
         <source>Resultado:</source>
         <translation>Résultat:</translation>
     </message>
 </context>
 <context>
-    <name>ImportExportBulmafactView</name>
+    <name>ImportExportBfBulmaFactView</name>
     <message>
         <location filename="../../../../../BULMAGES/comun/importexportbulmafactview.cpp" line="64"/>
         <source>Guardar archivo</source>

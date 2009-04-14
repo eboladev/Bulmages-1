@@ -38,7 +38,7 @@ int g_minLenAlias = 0;
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
 
     _depura ( "Punto de entrada del plugin de alias\n", 0 );
@@ -196,9 +196,9 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 }
 
 
-int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel )
+int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel )
 {
-    _depura ( "BusquedaArticuloDelegate_textChanged_Post", 0 );
+    _depura ( "BfBuscarArticuloDelegate_textChanged_Post", 0 );
 
     bool encontrado = FALSE;
     if ( posibleAlias ( baDel->entrada(), baDel->mainCompany() ) ) {
@@ -218,7 +218,7 @@ int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel 
         }
         delete cur;
     }
-    _depura ( "END BusquedaArticuloDelegate_textChanged_Post", 0 );
+    _depura ( "END BfBuscarArticuloDelegate_textChanged_Post", 0 );
 
     if ( encontrado ) {
         return -1;
@@ -230,7 +230,7 @@ int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel 
 int BlSubForm_campoCompleto ( BlSubForm *grid, void **resultat )
 {
     _depura ( "BlSubForm_campoCompleto de pluginbf_alias", 0 );
-    BusquedaArticuloDelegate *baDel = dynamic_cast<BusquedaArticuloDelegate *> ( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ) );
+    BfBuscarArticuloDelegate *baDel = dynamic_cast<BfBuscarArticuloDelegate *> ( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ) );
     if ( baDel ) {
         _depura ( "camp de codi article/alias. count=" + QString::number ( baDel->count() ), 0 );
         QString elec = baDel->eligeUnico();

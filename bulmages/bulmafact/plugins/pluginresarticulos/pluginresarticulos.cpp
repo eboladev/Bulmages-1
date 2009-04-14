@@ -31,7 +31,7 @@
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Resumen de Articulos\n", 0 );
 

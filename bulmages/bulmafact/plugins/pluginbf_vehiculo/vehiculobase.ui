@@ -16,7 +16,7 @@
    <string>Nuevo vehiculo</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/pendientes/iconbulmafact.xpm</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BfBulmaFact32x32/images/pendientes/iconbulmafact.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -36,7 +36,7 @@
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_boton_mas.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_boton_mas.48x48.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -211,7 +211,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_matriculavehiculo" />
+         <widget class="BfBuscarReferencia" name="mui_matriculavehiculo" />
         </item>
        </layout>
       </widget>
@@ -473,9 +473,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaReferencia</class>
+   <class>BfBuscarReferencia</class>
    <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
+   <header>bfbuscarreferencia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

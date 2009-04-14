@@ -30,11 +30,11 @@
 #include <QObject>
 
 #include "blapplication.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 
@@ -49,7 +49,7 @@ public:
 public:
     myplugin();
     ~myplugin();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

@@ -39,7 +39,7 @@
 /**
 \param bges
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Estoy dentro del plugin de tallas y colores", 0 );
 
@@ -281,9 +281,9 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 \param subform
 \return
 **/
-int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView *subform )
+int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm *subform )
 {
-    _depura ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0 );
+    _depura ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
 
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
@@ -294,7 +294,7 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProv
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
 
-    _depura ( "END ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0 );
+    _depura ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
     return 0;
 }
 
@@ -327,9 +327,9 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 \param subform
 \return
 **/
-int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView *subform )
+int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *subform )
 {
-    _depura ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
+    _depura ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -338,12 +338,12 @@ int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteV
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    _depura ( "END ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
+    _depura ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     return 0;
 }
 
 
-int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView *subform )
+int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm *subform )
 {
     QString query = "SELECT * FROM lalbaran LEFT JOIN articulo AS t1 ON lalbaran.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lalbaran.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lalbaran.idtc_talla WHERE idalbaran=" + subform->mdb_idalbaran + "   ORDER BY ordenlalbaran";
     subform->BlSubForm::cargar ( query );

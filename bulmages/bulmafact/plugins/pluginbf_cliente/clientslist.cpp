@@ -30,7 +30,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "blimportexport.h"
-#include "informereferencia.h"
+#include "bfinformereferencia.h"
 #include "blplugins.h"
 
 

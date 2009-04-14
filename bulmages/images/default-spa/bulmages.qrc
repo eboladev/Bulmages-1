@@ -143,7 +143,7 @@
         <file>images/png/igualant.xpm</file>
         <file>images/png/wizard.png</file>
     </qresource>
-    <qresource prefix="/Bulmafact16x16" >
+    <qresource prefix="/BfBulmaFact16x16" >
         <file>images/png/16x16/i_bulmages_almacen.16x16.png</file>
         <file>images/png/16x16/i_bulmages_almacen_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_almacen_mas.16x16.png</file>
@@ -530,7 +530,7 @@
         <file>images/png/16x16/i_bulmages_ventas_presupuestos_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_ventas_presupuestos_menos.16x16.png</file>
     </qresource>
-    <qresource prefix="/Bulmafact32x32" >
+    <qresource prefix="/BfBulmaFact32x32" >
         <file>images/png/32x32/i_bulmages_almacen.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_mas.32x32.png</file>
@@ -662,7 +662,7 @@
         <file>images/png/32x32/i_bulmages_ventas_presupuestos_menos.32x32.png</file>
         <file>images/png/iconbulmafact.xpm</file>
     </qresource>
-    <qresource prefix="/Bulmafact48x48" >
+    <qresource prefix="/BfBulmaFact48x48" >
         <file>images/png/48x48/i_bulmages_almacen.48x48.png</file>
         <file>images/png/48x48/i_bulmages_almacen_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_almacen_mas.48x48.png</file>

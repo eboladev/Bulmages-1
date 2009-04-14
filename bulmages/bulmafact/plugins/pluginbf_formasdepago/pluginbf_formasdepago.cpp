@@ -66,7 +66,7 @@ void MyPlugFPago::elslot1()
 /**
 \param bges
 **/
-void MyPlugFPago::inicializa ( Bulmafact *bges )
+void MyPlugFPago::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugFPago::inicializa", 0 );
 
@@ -99,7 +99,7 @@ void MyPlugFPago::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Entra plugin pluginbf_formasdepago\n", 0 );
 

@@ -29,8 +29,8 @@
 #include "ui_facturapbase.h"
 #include "bfform.h"
 #include "bldatesearch.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
+#include "bfbuscarformapago.h"
+#include "bfbuscaralmacen.h"
 #include "blfunctions.h"
 #include "pdefs.h"
 

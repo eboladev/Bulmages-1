@@ -13,7 +13,7 @@
    <string>Importar CSV</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_boton_listado.32x32.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BfBulmaFact32x32/images/png/32x32/i_bulmages_boton_listado.32x32.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="leftMargin" >

@@ -25,7 +25,7 @@
 #endif
 
 #include "albaranproveedorview.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 
@@ -35,7 +35,7 @@ extern "C" MY_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
 
 extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
 */
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 // 

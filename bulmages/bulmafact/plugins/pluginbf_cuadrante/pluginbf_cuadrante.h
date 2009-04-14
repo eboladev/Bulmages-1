@@ -30,14 +30,14 @@
 #include <QObject>
 
 #include "blapplication.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "almacenview.h"
 #include "trabajadorview.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
 extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
@@ -51,12 +51,12 @@ class myplugin4 : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bulmafact;
+    BfBulmaFact *m_bulmafact;
 
 public:
     myplugin4();
     ~myplugin4();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

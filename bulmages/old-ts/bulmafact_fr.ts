@@ -1520,30 +1520,30 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>Bulmafact</name>
+    <name>BfBulmaFact</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafact.cpp" line="90"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafact.cpp" line="90"/>
         <source>Listo</source>
         <translation>prêt</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafact.cpp" line="138"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafact.cpp" line="138"/>
         <source>BulmaFact</source>
         <translation>BulmaFact</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafact.cpp" line="126"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafact.cpp" line="126"/>
         <source>Pulse aceptar para emitir un monton de facturas</source>
         <translation>Pressez accepter pour émettre beacoup de factures</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafact.cpp" line="139"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafact.cpp" line="139"/>
         <source>Pulse aceptar para recibir(destruir) un monton de facturas</source>
         <translation>Pressez accepter pour recevoir(détruire) beacoup de factures</translation>
     </message>
 </context>
 <context>
-    <name>BusquedaArticuloBase</name>
+    <name>BfBuscarArticuloBase</name>
     <message>
         <location filename="../../../../../../../../../../../media/disk/busquedaarticulobase.ui" line="13"/>
         <source>Form1</source>
@@ -1587,7 +1587,7 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>BusquedaFamiliaBase</name>
+    <name>BfBuscarFamiliaBase</name>
     <message>
         <location filename="../../../../../../../../../../../media/disk/busquedafamiliabase.ui" line="13"/>
         <source>Form1</source>
@@ -1623,15 +1623,15 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>BusquedaReferenciaBase</name>
+    <name>BfBuscarReferenciaBase</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/busquedareferenciabase.ui" line="30"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbuscarreferenciabase.ui" line="30"/>
         <source>Form1</source>
         <translation>Form1</translation>
     </message>
 </context>
 <context>
-    <name>BusquedaTipoArticuloBase</name>
+    <name>BfBuscarTipoArticuloBase</name>
     <message>
         <location filename="../../../../../../../../../../../media/disk/busquedatipoarticulobase.ui" line="13"/>
         <source>Form1</source>
@@ -3713,39 +3713,39 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>InformeCliente</name>
+    <name>BfInformeCliente</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="379"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="379"/>
         <source>Articulo</source>
         <translation>Article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="417"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="417"/>
         <source>Pres.</source>
         <translation>Pres.</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="465"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="465"/>
         <source>Pedido</source>
         <translation>Demandé</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="466"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="466"/>
         <source>Entregado</source>
         <translation>Remis</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="467"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="467"/>
         <source>Facturado</source>
         <translation>Facturé</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="421"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="421"/>
         <source>Cobrado</source>
         <translation>Encaissé</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="468"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="468"/>
         <source>Pagado</source>
         <translation>Payé</translation>
     </message>
@@ -3753,37 +3753,37 @@ voulez vous la créer?</translation>
 <context>
     <name>InformeReferencia</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="134"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="134"/>
         <source>Articulo</source>
         <translation>Article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="171"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="171"/>
         <source>Pres.</source>
         <translation>Pres.</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="219"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="219"/>
         <source>Pedido</source>
         <translation>Demandé</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="220"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="220"/>
         <source>Entregado</source>
         <translation>Remis</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="221"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="221"/>
         <source>Facturado</source>
         <translation>Facturé</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="175"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="175"/>
         <source>Cobrado</source>
         <translation>Encaissé</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/informereferencia.cpp" line="222"/>
+        <location filename="../../../../../../../../../../../media/disk/bfinformereferencia.cpp" line="222"/>
         <source>Pagado</source>
         <translation>Payé</translation>
     </message>
@@ -3861,63 +3861,63 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionBase</name>
+    <name>BfConfiguracionBase</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listconfiguracionbase.ui" line="57"/>
+        <location filename="../../../../../../../../../../../media/disk/bfconfiguracionbase.ui" line="57"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listconfiguracionbase.ui" line="50"/>
+        <location filename="../../../../../../../../../../../media/disk/bfconfiguracionbase.ui" line="50"/>
         <source>&amp;Aceptar</source>
         <translation>&amp;Accepter</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listconfiguracionbase.ui" line="14"/>
+        <location filename="../../../../../../../../../../../media/disk/bfconfiguracionbase.ui" line="14"/>
         <source>Propiedades de la empresa</source>
         <translation>Propriétées de l&apos;entreprise</translation>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionSubForm</name>
+    <name>BfConfiguracionSubForm</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listconfiguracionview.cpp" line="77"/>
+        <location filename="../../../../../../../../../../../media/disk/bfconfiguracionview.cpp" line="77"/>
         <source>Nombre</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listconfiguracionview.cpp" line="78"/>
+        <location filename="../../../../../../../../../../../media/disk/bfconfiguracionview.cpp" line="78"/>
         <source>Valor</source>
         <translation>Valeur</translation>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionView</name>
+    <name>BfConfiguracionView</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listconfiguracionview.cpp" line="47"/>
+        <location filename="../../../../../../../../../../../media/disk/bfconfiguracionview.cpp" line="47"/>
         <source>Configuracion</source>
         <translation>Configuration</translation>
     </message>
 </context>
 <context>
-    <name>ListDescuentoAlbaranClienteView</name>
+    <name>BfClienteAlbaranDescuentoSubForm</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listdescalbaranclienteview.cpp" line="36"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbarandescuentosubform.cpp" line="36"/>
         <source>Idd albaran</source>
         <translation>Idd bulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listdescalbaranclienteview.cpp" line="37"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbarandescuentosubform.cpp" line="37"/>
         <source>Conceptd albaran</source>
         <translation>Conceptd bulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listdescalbaranclienteview.cpp" line="38"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbarandescuentosubform.cpp" line="38"/>
         <source>Proporciond albaran</source>
         <translation>Proportiond bulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listdescalbaranclienteview.cpp" line="39"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbarandescuentosubform.cpp" line="39"/>
         <source>Id albaran</source>
         <translation>Id bulletin</translation>
     </message>
@@ -4061,127 +4061,127 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>ListLinAlbaranClienteView</name>
+    <name>BfClienteAlbaranSubForm</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="41"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="41"/>
         <source>Id articulo</source>
         <translation>Id article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="42"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="42"/>
         <source>Codigo completo articulo</source>
         <translation>Code complet article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="43"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="43"/>
         <source>Nombre articulo</source>
         <translation>Nom article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="51"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="51"/>
         <source>Id albaran</source>
         <translation>Id bulletin</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="52"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="52"/>
         <source>Orden</source>
         <translation>Ordre</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="49"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="49"/>
         <source>% Recargo E.Q.</source>
         <translation>% Recharge E.Q.</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="44"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="44"/>
         <source>N&#xc2;&#xba; linea</source>
         <translation>Nº ligne</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="45"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="45"/>
         <source>Descripcion</source>
         <translation>Description</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="46"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="46"/>
         <source>Cantidad</source>
         <translation>Cantitée</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="47"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="47"/>
         <source>P.V.P.</source>
         <translation>P.V.P.</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="48"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="48"/>
         <source>I.V.A.</source>
         <translation>T.V.A.</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranclienteview.cpp" line="50"/>
+        <location filename="../../../../../../../../../../../media/disk/bfclientealbaransubform.cpp" line="50"/>
         <source>% Descuento</source>
         <translation>% Remise</translation>
     </message>
 </context>
 <context>
-    <name>ListLinAlbaranProveedorView</name>
+    <name>BfProveedorAlbaranSubForm</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="41"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="41"/>
         <source>Id articulo</source>
         <translation>Id article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="42"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="42"/>
         <source>Codigo completo articulo</source>
         <translation>Code complet article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="43"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="43"/>
         <source>Nombre articulo</source>
         <translation>Nom article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="44"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="44"/>
         <source>Numerol albaranp</source>
         <translation>Numérol bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="45"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="45"/>
         <source>Descripcionl albaranp</source>
         <translation>Déscriptionl bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="46"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="46"/>
         <source>Cantidadl albaranp</source>
         <translation>Cantitél bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="47"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="47"/>
         <source>PVPl albaranp</source>
         <translation>PVPl bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="48"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="48"/>
         <source>IVAl albaranp</source>
         <translation>TVAl bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="50"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="50"/>
         <source>Descontl albaranp</source>
         <translation>Déduirl bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="51"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="51"/>
         <source>Id albaranp</source>
         <translation>Id bulletinp</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="52"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="52"/>
         <source>Orden</source>
         <translation>Ordre</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listlinalbaranproveedorview.cpp" line="49"/>
+        <location filename="../../../../../../../../../../../media/disk/bfproveedoralbaransubform.cpp" line="49"/>
         <source>Recargo albaranp</source>
         <translation>Recharge bulletinp</translation>
     </message>
@@ -4512,40 +4512,40 @@ voulez vous la créer?</translation>
     </message>
 </context>
 <context>
-    <name>ListSerieFacturaBase</name>
+    <name>BfSerieFacturaBase</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listseriefacturabase.ui" line="55"/>
+        <location filename="../../../../../../../../../../../media/disk/bfseriefacturabase.ui" line="55"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listseriefacturabase.ui" line="62"/>
+        <location filename="../../../../../../../../../../../media/disk/bfseriefacturabase.ui" line="62"/>
         <source>&amp;Aceptar</source>
         <translation>&amp;Accepter</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listseriefacturabase.ui" line="16"/>
+        <location filename="../../../../../../../../../../../media/disk/bfseriefacturabase.ui" line="16"/>
         <source>Series de factura</source>
         <translation>Séries de facture</translation>
     </message>
 </context>
 <context>
-    <name>ListSerieFacturaSubForm</name>
+    <name>BfSerieFacturaSubForm</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listseriefacturaview.cpp" line="66"/>
+        <location filename="../../../../../../../../../../../media/disk/bfseriefacturaview.cpp" line="66"/>
         <source>Codigo serie factura</source>
         <translation>Code série facture</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listseriefacturaview.cpp" line="67"/>
+        <location filename="../../../../../../../../../../../media/disk/bfseriefacturaview.cpp" line="67"/>
         <source>Descripcion serie factura</source>
         <translation>Déscription série facture</translation>
     </message>
 </context>
 <context>
-    <name>ListSerieFacturaView</name>
+    <name>BfSerieFacturaView</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/listseriefacturaview.cpp" line="44"/>
+        <location filename="../../../../../../../../../../../media/disk/bfseriefacturaview.cpp" line="44"/>
         <source>Serie de Factura</source>
         <translation>Série de facture</translation>
     </message>
@@ -7143,7 +7143,7 @@ D&apos;ésiré vous le crée?</translation>
     </message>
 </context>
 <context>
-    <name>aboutdlg</name>
+    <name>AboutBase</name>
     <message>
         <location filename="../../../../../../../../../../../media/disk/aboutbase.ui" line="502"/>
         <source>Acerca de BulmaFact</source>
@@ -7191,317 +7191,317 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>bulmafactbase</name>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="154"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="154"/>
         <source>Listados</source>
         <translation>Relevées</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="522"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="522"/>
         <source>Fichas</source>
         <translation>Fiches</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="86"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="86"/>
         <source>Venta&amp;na</source>
         <translation>Fenêt&amp;re</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="68"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="68"/>
         <source>A&amp;yuda</source>
         <translation>A&amp;ide</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="49"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="49"/>
         <source>&amp;Ventas</source>
         <translation>&amp;Ventes</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="257"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="257"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="327"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="327"/>
         <source>F4</source>
         <translation>F4</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="378"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="378"/>
         <source>F6</source>
         <translation>F6</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="396"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="396"/>
         <source>&amp;Tipos de articulo</source>
         <translation>&amp;Types d&apos;article</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="407"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="407"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="455"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="455"/>
         <source>Se&amp;ries de factura</source>
         <translation>Se&amp;ries de facture</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="463"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="463"/>
         <source>&amp;Trabajadores</source>
         <translation>&amp;Ouvriers</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="471"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="471"/>
         <source>Ventana &amp;completa</source>
         <translation>Fenêtre &amp;complète</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="527"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="527"/>
         <source>&amp;Formas de pago</source>
         <translation>&amp;Formes de payement</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="535"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="535"/>
         <source>&amp;Almacenes</source>
         <translation>&amp;Magasins</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="540"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="540"/>
         <source>&amp;Documentacion</source>
         <translation>&amp;Documentation</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="543"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="543"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="391"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="391"/>
         <source>Gestion de &amp;familias</source>
         <translation>Gestion de &amp;familles</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="16"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="16"/>
         <source>BulmaFact - Facturacion GPL</source>
         <translation>BulmaFact - Facturacion GPL</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="95"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="95"/>
         <source>E&amp;mpresa</source>
         <translation>E&amp;ntreprise</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="33"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="33"/>
         <source>Com&amp;pras</source>
         <translation>Acha&amp;ts</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="76"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="76"/>
         <source>Articulo&amp;s</source>
         <translation>Article&amp;s</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="102"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="102"/>
         <source>Maest&amp;ro</source>
         <translation>Maît&amp;re</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="474"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="474"/>
         <source>F11</source>
         <translation>F11</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="563"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="563"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="276"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="276"/>
         <source>Nuevo pe&amp;dido a proveedor...</source>
         <translation>Nouvelle co&amp;mmande à fournisseur...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="292"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="292"/>
         <source>Nuevo &amp;albaran de proveedor...</source>
         <translation>Nouveau &amp;bulletin de fournisseur...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="308"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="308"/>
         <source>Nueva &amp;factura de proveedor...</source>
         <translation>Nouvelle &amp;facture de founisseur...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="324"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="324"/>
         <source>Nuevo &amp;presupuesto a cliente...</source>
         <translation>Nouveau &amp;budget à client...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="343"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="343"/>
         <source>Nuevo pe&amp;dido de cliente...</source>
         <translation>Nouvelle pé&amp;tition du client...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="359"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="359"/>
         <source>Nuevo &amp;albaran a cliente...</source>
         <translation>Nouveau &amp;bulletin à client...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="375"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="375"/>
         <source>Nueva &amp;factura a cliente...</source>
         <translation>Nouvelle &amp;facture à client...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="404"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="404"/>
         <source>Nuevo &amp;articulo...</source>
         <translation>Nouveau &amp;article...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="423"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="423"/>
         <source>Nuevo &amp;proveedor...</source>
         <translation>Nouveau &amp;fournisseur...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="439"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="439"/>
         <source>Nuevo &amp;cliente...</source>
         <translation>Nouveau &amp;client...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="479"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="479"/>
         <source>&amp;Acerca de BulmaFact</source>
         <translation>&amp;A propos de BulmaFact</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="495"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="495"/>
         <source>Nuevo pa&amp;go a proveedor...</source>
         <translation>Nouveau pa&amp;yement à fournisseur...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="503"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="503"/>
         <source>Nuevo co&amp;bro a cliente...</source>
         <translation>Nouveau en&amp;caissement à client...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="254"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="254"/>
         <source>&amp;Salir del programa</source>
         <translation>&amp;Sortir du programme</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="284"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="284"/>
         <source>Pe&amp;didos a proveedores</source>
         <translation>Comman&amp;des à fournisseurs</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="300"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="300"/>
         <source>&amp;Albaranes de proveedores</source>
         <translation>&amp;Bulletins de fournisseurs</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="316"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="316"/>
         <source>&amp;Facturas de proveedores</source>
         <translation>&amp;Factures de fournisseurs</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="335"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="335"/>
         <source>&amp;Presupuestos a clientes</source>
         <translation>&amp;Budgets clients</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="351"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="351"/>
         <source>Pe&amp;didos de clientes</source>
         <translation>Comman&amp;des de clients</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="367"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="367"/>
         <source>&amp;Albaranes a clientes</source>
         <translation>&amp;Bulletins à clients</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="386"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="386"/>
         <source>&amp;Facturas a clientes</source>
         <translation>&amp;Factures à clients</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="415"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="415"/>
         <source>&amp;Articulos</source>
         <translation>&amp;Articles</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="431"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="431"/>
         <source>&amp;Proveedores</source>
         <translation>&amp;Fournisseurs</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="450"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="450"/>
         <source>&amp;Clientes</source>
         <translation>&amp;Clients</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="487"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="487"/>
         <source>Pa&amp;gos a proveedores</source>
         <translation>Pa&amp;yement à fournisseurs</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="511"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="511"/>
         <source>Co&amp;bros a clientes</source>
         <translation>En&amp;caissement à clients</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="554"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="554"/>
         <source>&amp;Indexador</source>
         <translation>&amp;Indexeur</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="560"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="560"/>
         <source>Indexador</source>
         <translation>Indexeur</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="442"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="442"/>
         <source>F3</source>
         <translation>F3</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="265"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="265"/>
         <source>&amp;Propiedades de la empresa...</source>
         <translation>&amp;Propriétées de l&apos;entreprise...</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="268"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="268"/>
         <source>Propiedades de la empresa</source>
         <translation>Propriétées de l&apos;entreprise</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="571"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="571"/>
         <source>Tipos de IVA</source>
         <translation>Types de TVA</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="579"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="579"/>
         <source>Tasas de IVA</source>
         <translation>Taux de TVA</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="587"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="587"/>
         <source>Bancos</source>
         <translation>Banques</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="592"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="592"/>
         <source>Organización en Cascada</source>
         <translation>Organisation en Cascade</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="597"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="597"/>
         <source>Ordenar Ventanas</source>
         <translation>Ordener Fenêtre</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="605"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="605"/>
         <source>Paises / Provincias</source>
         <translation>Pays / Provinces</translation>
     </message>
     <message>
-        <location filename="../../../../../../../../../../../media/disk/bulmafactbase.ui" line="608"/>
+        <location filename="../../../../../../../../../../../media/disk/bfbulmafactbase.ui" line="608"/>
         <source>Paises y Provincias</source>
         <translation>Pays et Provinces</translation>
     </message>

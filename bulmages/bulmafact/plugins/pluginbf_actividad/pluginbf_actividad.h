@@ -25,13 +25,13 @@
 #endif
 
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blwidget.h"
 #include "blsubform.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
@@ -43,12 +43,12 @@ class MyPlugProf : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     MyPlugProf();
     ~MyPlugProf();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

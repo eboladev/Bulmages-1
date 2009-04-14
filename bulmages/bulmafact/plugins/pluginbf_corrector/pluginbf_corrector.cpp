@@ -43,7 +43,7 @@ QAction *viewCorrector;
 /**
 \param bcont
 **/
-int entryPoint ( Bulmafact *bcont )
+int entryPoint ( BfBulmaFact *bcont )
 {
     _depura ( "Entrada del plugin Corrector", 10 );
 
@@ -96,7 +96,7 @@ int entryPoint ( Bulmafact *bcont )
 /**
 \param bcont
 **/
-int Bulmafact_closeEvent ( Bulmafact *bcont )
+int BfBulmaFact_closeEvent ( BfBulmaFact *bcont )
 {
     BlMainCompany * emp = bcont->getcompany();
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "plugincorrectorbf_" + emp->dbName() + ".cfn" );

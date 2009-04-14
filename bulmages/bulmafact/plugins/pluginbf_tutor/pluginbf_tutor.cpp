@@ -81,7 +81,7 @@ void MyPlugProf::elslot1()
 /**
 \param bges
 **/
-void MyPlugProf::inicializa ( Bulmafact *bges )
+void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugProf::inicializa", 0 );
 
@@ -118,7 +118,7 @@ void MyPlugProf::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de entrada del plugin de tutores\n", 0 );
 

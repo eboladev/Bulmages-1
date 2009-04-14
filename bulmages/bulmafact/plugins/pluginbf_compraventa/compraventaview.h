@@ -31,9 +31,9 @@
 #include "bldialogchanges.h"
 #include "blfixed.h"
 #include "bldatesearch.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
-#include "busquedatrabajador.h"
+#include "bfbuscarformapago.h"
+#include "bfbuscaralmacen.h"
+#include "bfbuscartrabajador.h"
 #include "ui_compraventabase.h"
 #include "bfform.h"
 

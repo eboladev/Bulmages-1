@@ -29,7 +29,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "blplugins.h"
-#include "informereferencia.h"
+#include "bfinformereferencia.h"
 
 
 /** Inicializa todos los componentes.
@@ -162,7 +162,7 @@ void ClienteView::on_mui_informe_clicked()
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
     } else {
-        InformeCliente inf ( mainCompany() );
+        BfInformeCliente inf ( mainCompany() );
         inf.setCliente ( dbValue ( "idcliente" ) );
         inf.generarInforme();
     } // end if

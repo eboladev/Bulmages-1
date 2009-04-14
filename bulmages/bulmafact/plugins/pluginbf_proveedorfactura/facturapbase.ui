@@ -245,7 +245,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_reffacturap" >
+         <widget class="BfBuscarReferencia" name="mui_reffacturap" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
             <horstretch>0</horstretch>
@@ -464,7 +464,7 @@
        </widget>
       </item>
       <item row="3" column="2" >
-       <widget class="BusquedaFormaPago" name="mui_idforma_pago" >
+       <widget class="BfBuscarFormaPago" name="mui_idforma_pago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1216,9 +1216,9 @@
    <header>listlinfacturapview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaReferencia</class>
+   <class>BfBuscarReferencia</class>
    <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
+   <header>bfbuscarreferencia.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>
@@ -1226,9 +1226,9 @@
    <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
   <customwidget>
    <class>Busqueda</class>

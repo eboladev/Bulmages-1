@@ -24,11 +24,11 @@
 # define MY_EXPORT
 #endif
 
-#include "busquedareferencia.h"
-#include "bulmafact.h"
+#include "bfbuscarreferencia.h"
+#include "bfbulmafact.h"
 
-extern "C" MY_EXPORT int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia * );
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 // 

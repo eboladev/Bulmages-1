@@ -81,7 +81,7 @@ void mypluginpedp::elslot1()
 /**
 \param bges
 **/
-void mypluginpedp::inicializa ( Bulmafact *bges )
+void mypluginpedp::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginpedp::inicializa", 0 );
 
@@ -121,7 +121,7 @@ void mypluginpedp::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de pedidos a proveedor\n", 0 );
 
@@ -169,7 +169,7 @@ int ProveedorView_cargarPost_Post ( ProveedorView *prov )
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 {
     QString SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );

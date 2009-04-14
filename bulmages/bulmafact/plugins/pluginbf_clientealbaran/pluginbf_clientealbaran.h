@@ -20,9 +20,9 @@
 
 
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blwidget.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 #include "clienteview.h"
 #include "facturaview.h"
 #include "albaranclienteview.h"
@@ -32,11 +32,11 @@
 #include "pdefs.h"
 
 extern "C" MY_EXPORT int SNewAlbaranClienteView (BfCompany *);
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
@@ -47,12 +47,12 @@ class mypluginalb : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     mypluginalb();
     ~mypluginalb();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

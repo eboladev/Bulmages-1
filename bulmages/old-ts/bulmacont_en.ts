@@ -2988,7 +2988,7 @@ because equal its work is lost.</translation>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionSubForm</name>
+    <name>BfConfiguracionSubForm</name>
     <message>
         <location filename="propiedadesempresa.cpp" line="149"/>
         <source>Nombre</source>

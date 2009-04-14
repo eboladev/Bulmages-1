@@ -24,12 +24,12 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
 #include "bfcompany.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 

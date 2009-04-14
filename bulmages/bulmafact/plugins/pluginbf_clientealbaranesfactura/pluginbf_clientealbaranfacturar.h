@@ -25,10 +25,10 @@
 #endif
 
 #include "albaranclientelist.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 extern "C" MY_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
 extern "C" MY_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 

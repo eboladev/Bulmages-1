@@ -83,7 +83,7 @@ void mypluginped::elslot1()
 /**
 \param bges
 **/
-void mypluginped::inicializa ( Bulmafact *bges )
+void mypluginped::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginped::inicializa", 0 );
 
@@ -122,7 +122,7 @@ void mypluginped::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Pedidos de Clientes\n", 0 );
 
@@ -170,7 +170,7 @@ int ClienteView_cargarPost_Post ( ClienteView *prov )
 }// end if
 
 
-int BusquedaReferencia_on_mui_abrirtodo_clicked_Post ( BusquedaReferencia *ref )
+int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 {
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );

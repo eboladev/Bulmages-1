@@ -31,10 +31,10 @@
 #include "blpostgresqlclient.h"
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
-#include "busquedaformapago.h"
+#include "bfbuscarformapago.h"
 #include "bldatesearch.h"
-#include "busquedaalmacen.h"
-#include "busquedatrabajador.h"
+#include "bfbuscaralmacen.h"
+#include "bfbuscartrabajador.h"
 #include "blfixed.h"
 #include "bfform.h"
 

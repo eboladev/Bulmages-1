@@ -56,7 +56,7 @@
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="BusquedaBanco" name="mui_idbanco" >
+       <widget class="BfBuscarBanco" name="mui_idbanco" >
         <property name="sizePolicy" >
          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
           <horstretch>0</horstretch>
@@ -541,9 +541,9 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaBanco</class>
+   <class>BfBuscarBanco</class>
    <extends>QComboBox</extends>
-   <header>busquedabanco.h</header>
+   <header>bfbuscarbanco.h</header>
   </customwidget>
   <customwidget>
    <class>TutoresListSubForm</class>

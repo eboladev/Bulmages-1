@@ -212,7 +212,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
+            <normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -274,7 +274,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_refalbaranp" >
+         <widget class="BfBuscarReferencia" name="mui_refalbaranp" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -482,7 +482,7 @@
        </widget>
       </item>
       <item row="1" column="2" >
-       <widget class="BusquedaFormaPago" name="mui_idforma_pago" >
+       <widget class="BfBuscarFormaPago" name="mui_idforma_pago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -517,7 +517,7 @@
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="BusquedaAlmacen" name="mui_idalmacen" >
+       <widget class="BfBuscarAlmacen" name="mui_idalmacen" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -560,7 +560,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="ListLinAlbaranProveedorView" native="1" name="subform2" />
+        <widget class="BfProveedorAlbaranSubForm" native="1" name="subform2" />
        </item>
       </layout>
      </widget>
@@ -1196,9 +1196,9 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListLinAlbaranProveedorView</class>
+   <class>BfProveedorAlbaranSubForm</class>
    <extends>QWidget</extends>
-   <header>listlinalbaranproveedorview.h</header>
+   <header>bfproveedoralbaransubform.h</header>
   </customwidget>
   <customwidget>
    <class>ListDescuentoAlbaranProvView</class>
@@ -1206,19 +1206,19 @@
    <header>listdescalbaranprovview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaReferencia</class>
+   <class>BfBuscarReferencia</class>
    <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
+   <header>bfbuscarreferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>BfBuscarAlmacen</class>
    <extends>QComboBox</extends>
-   <header>busquedaalmacen.h</header>
+   <header>bfbuscaralmacen.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>

@@ -65,7 +65,7 @@ public slots:
 };
 
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 /// OJO. Esta clase est&aacute; definida aqu&iacute; pero es el lanzador del plugin para las
@@ -75,12 +75,12 @@ class myplugin1 : public QObject, public BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     myplugin1();
     ~myplugin1();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

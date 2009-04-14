@@ -248,7 +248,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_refpedidocliente" >
+         <widget class="BfBuscarReferencia" name="mui_refpedidocliente" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -454,7 +454,7 @@
        </widget>
       </item>
       <item row="2" column="3" >
-       <widget class="BusquedaTrabajador" name="mui_idtrabajador" >
+       <widget class="BfBuscarTrabajador" name="mui_idtrabajador" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -546,7 +546,7 @@
        </widget>
       </item>
       <item row="4" column="3" >
-       <widget class="BusquedaFormaPago" name="mui_idforma_pago" >
+       <widget class="BfBuscarFormaPago" name="mui_idforma_pago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -603,7 +603,7 @@
        </widget>
       </item>
       <item row="5" column="3" >
-       <widget class="BusquedaAlmacen" name="mui_idalmacen" >
+       <widget class="BfBuscarAlmacen" name="mui_idalmacen" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1271,19 +1271,19 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaReferencia</class>
+   <class>BfBuscarReferencia</class>
    <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
+   <header>bfbuscarreferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>BfBuscarAlmacen</class>
    <extends>QComboBox</extends>
-   <header>busquedaalmacen.h</header>
+   <header>bfbuscaralmacen.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>
@@ -1296,9 +1296,9 @@
    <header>blsearchwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaTrabajador</class>
+   <class>BfBuscarTrabajador</class>
    <extends>QComboBox</extends>
-   <header>busquedatrabajador.h</header>
+   <header>bfbuscartrabajador.h</header>
   </customwidget>
   <customwidget>
    <class>ListDescuentoPedidoClienteView</class>

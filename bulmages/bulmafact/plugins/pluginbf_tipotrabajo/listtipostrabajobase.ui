@@ -14,7 +14,7 @@
    <string>Tipos de Trabajo</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_trabajadores.32x32.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BfBulmaFact32x32/images/png/32x32/i_bulmages_trabajadores.32x32.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -71,7 +71,7 @@
      <item>
       <widget class="QLabel" name="label" >
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_trabajadores.32x32.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact32x32/images/png/32x32/i_bulmages_trabajadores.32x32.png</pixmap>
        </property>
       </widget>
      </item>

@@ -66,7 +66,7 @@ void MyPlugTrab::elslot1()
 /**
 \param bges
 **/
-void MyPlugTrab::inicializa ( Bulmafact *bges )
+void MyPlugTrab::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugTrab::inicializa", 0 );
 
@@ -100,7 +100,7 @@ void MyPlugTrab::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 

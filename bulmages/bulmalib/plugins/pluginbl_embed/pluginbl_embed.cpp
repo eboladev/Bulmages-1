@@ -34,7 +34,7 @@
 #include <QX11EmbedContainer>
 
 #include "pluginbl_embed.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bulmacont.h"
 #include "myplugindock.h"
 #include "bldockwidget.h"

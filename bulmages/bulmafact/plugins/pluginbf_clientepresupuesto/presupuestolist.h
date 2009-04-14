@@ -26,7 +26,7 @@
 
 #include "pdefs_clientepresupuesto.h"
 #include "bfcompany.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bfsubform.h"
 #include "blformlist.h"
 

@@ -72,7 +72,7 @@ void myplugin::elslot()
 /**
 \param bges
 **/
-void myplugin::inicializa ( Bulmafact *bges )
+void myplugin::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugin::inicializa", 0 );
     QMenu *pPluginMenu;
@@ -101,7 +101,7 @@ void myplugin::inicializa ( Bulmafact *bges )
 /**
 \param bges
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Estoy dentro del plugin de demo", 0 );
 
@@ -113,7 +113,7 @@ int entryPoint ( Bulmafact *bges )
     plug->inicializa ( bges );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bges->setWindowTitle ( _ ( "Prueba de plugin para Bulmafact." ) );
+    bges->setWindowTitle ( _ ( "Prueba de plugin para BfBulmaFact." ) );
     return 0;
 }
 

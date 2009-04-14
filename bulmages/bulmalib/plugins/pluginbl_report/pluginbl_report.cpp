@@ -31,7 +31,7 @@
 #include <QTextStream>
 
 #include "pluginbl_report.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bulmacont.h"
 #include "myplugininformes.h"
 #include "blworkspace.h"

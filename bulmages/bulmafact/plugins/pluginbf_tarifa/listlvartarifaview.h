@@ -3,7 +3,7 @@
 #define LISTLVARTARIFAVIEW_H
 
 #include <QObject>
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bfsubform.h"
 
 

@@ -22,7 +22,7 @@
 #ifndef PEDIDOSCLIENTELIST_H
 #define PEDIDOSCLIENTELIST_H
 
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"

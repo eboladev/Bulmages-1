@@ -37,8 +37,8 @@ msgid "Muestra statustip"
 msgstr "Muestra statustip"
 
 #: pluginbf_example.cpp:116
-msgid "Prueba de plugin para Bulmafact."
-msgstr "Prueba de plugin para Bulmafact."
+msgid "Prueba de plugin para BfBulmaFact."
+msgstr "Prueba de plugin para BfBulmaFact."
 
 #: pluginbf_example.cpp:63
 msgid "Titulo de la ventana"

@@ -171,10 +171,10 @@ void propiedadesempresa::on_mui_modificarplan_clicked()
 ///
 /**
 **/
-ListConfiguracionSubForm::~ListConfiguracionSubForm()
+BfConfiguracionSubForm::~BfConfiguracionSubForm()
 {
-    _depura ( "ListConfiguracionSubForm::~ListConfiguracionSubForm", 0 );
-    _depura ( "END ListConfiguracionSubForm::~ListConfiguracionSubForm", 0 );
+    _depura ( "BfConfiguracionSubForm::~BfConfiguracionSubForm", 0 );
+    _depura ( "END BfConfiguracionSubForm::~BfConfiguracionSubForm", 0 );
 }
 
 
@@ -182,9 +182,9 @@ ListConfiguracionSubForm::~ListConfiguracionSubForm()
 /**
 \param parent
 **/
-ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BcSubForm ( parent )
+BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BcSubForm ( parent )
 {
-    _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
+    _depura ( "BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView, "Nombre" );
@@ -192,16 +192,16 @@ ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : BcSubFo
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
-    _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
+    _depura ( "END BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
 }
 
 
 ///
 /**
 **/
-void ListConfiguracionSubForm::cargar()
+void BfConfiguracionSubForm::cargar()
 {
-    _depura ( "ListConfiguracionSubForm::cargar", 0 );
+    _depura ( "BfConfiguracionSubForm::cargar", 0 );
     BlSubForm::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
 }
 

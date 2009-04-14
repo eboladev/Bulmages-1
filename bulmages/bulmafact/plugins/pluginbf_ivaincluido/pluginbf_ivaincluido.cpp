@@ -28,7 +28,7 @@
 /**
 \return
 **/
-int entryPoint ( Bulmafact * )
+int entryPoint ( BfBulmaFact * )
 {
     _depura ( "Estoy dentro del plugin de iva incluido", 0 );
     /// Inicializa el sistema de traducciones 'gettext'.
@@ -91,7 +91,7 @@ int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 }
 
 
-int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post ( ListLinAlbaranClienteView *l )
+int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post ( BfClienteAlbaranSubForm *l )
 {
     l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, "PVP IVA Inc" );
     return 0;

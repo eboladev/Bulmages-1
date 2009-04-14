@@ -28,8 +28,8 @@
 #include <QLabel>
 
 #include "bldatesearch.h"
-#include "busquedaformapago.h"
-#include "busquedaalmacen.h"
+#include "bfbuscarformapago.h"
+#include "bfbuscaralmacen.h"
 #include "ui_albaranproveedorbase.h"
 #include "bfform.h"
 #include "pdefs.h"

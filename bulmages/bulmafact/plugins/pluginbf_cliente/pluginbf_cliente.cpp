@@ -81,7 +81,7 @@ void MyPlugCli::elslot1()
 /**
 \param bges
 **/
-void MyPlugCli::inicializa ( Bulmafact *bges )
+void MyPlugCli::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugCli::inicializa", 0 );
 
@@ -122,7 +122,7 @@ void MyPlugCli::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Clientes\n", 0 );
 

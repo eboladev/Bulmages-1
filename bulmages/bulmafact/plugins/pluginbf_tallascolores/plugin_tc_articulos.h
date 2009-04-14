@@ -24,16 +24,16 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blsearchwidget.h"
-#include "listlinalbaranproveedorview.h"
-#include "listlinalbaranclienteview.h"
+#include "bfproveedoralbaransubform.h"
+#include "bfclientealbaransubform.h"
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
@@ -41,11 +41,11 @@ extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
 
-extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView * );
-extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView * );
+extern "C" MY_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
+extern "C" MY_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
 extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
 extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 
-extern "C" MY_EXPORT int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView * );
+extern "C" MY_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
 
 extern "C" MY_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );

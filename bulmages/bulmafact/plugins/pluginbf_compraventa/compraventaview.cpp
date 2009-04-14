@@ -36,9 +36,9 @@
 #include "facturaview.h"
 #include "facturapview.h"
 #include "blfunctions.h"
-#include "informereferencia.h"
-#include "listdescalbaranclienteview.h"
-#include "listlinalbaranclienteview.h"
+#include "bfinformereferencia.h"
+#include "bfclientealbarandescuentosubform.h"
+#include "bfclientealbaransubform.h"
 #include "blpostgresqlclient.h"
 #include "blplugins.h"
 

@@ -86,7 +86,7 @@ void myplugin4::elslot1()
 /**
 \param bges
 **/
-void myplugin4::inicializa ( Bulmafact *bges )
+void myplugin4::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
@@ -124,7 +124,7 @@ void myplugin4::inicializa ( Bulmafact *bges )
 /**
 \param bges
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "entryPoint", 0 );
 

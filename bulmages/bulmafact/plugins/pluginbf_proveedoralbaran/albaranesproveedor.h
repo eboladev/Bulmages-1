@@ -25,7 +25,7 @@
 #include <QLineEdit>
 
 #include "bfcompany.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"

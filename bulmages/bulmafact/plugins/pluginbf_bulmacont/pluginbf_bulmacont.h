@@ -24,11 +24,11 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bulmacont.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 

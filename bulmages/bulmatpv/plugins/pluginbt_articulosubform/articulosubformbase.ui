@@ -95,7 +95,7 @@
        </widget>
       </item>
       <item rowspan="3" row="0" column="1" >
-       <widget class="BusquedaTipoArticulo" native="1" name="m_tipoarticulo" >
+       <widget class="BfBuscarTipoArticulo" native="1" name="m_tipoarticulo" >
         <property name="minimumSize" >
          <size>
           <width>50</width>
@@ -105,7 +105,7 @@
        </widget>
       </item>
       <item rowspan="3" row="0" column="2" >
-       <widget class="BusquedaFamilia" native="1" name="m_familia" >
+       <widget class="BfBuscarFamilia" native="1" name="m_familia" >
         <property name="minimumSize" >
          <size>
           <width>50</width>
@@ -350,14 +350,14 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaTipoArticulo</class>
+   <class>BfBuscarTipoArticulo</class>
    <extends>QWidget</extends>
-   <header>busquedatipoarticulo.h</header>
+   <header>bfbuscartipoarticulo.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFamilia</class>
+   <class>BfBuscarFamilia</class>
    <extends>QWidget</extends>
-   <header>busquedafamilia.h</header>
+   <header>bfbuscarfamilia.h</header>
   </customwidget>
   <customwidget>
    <class>ArticuloList1SubForm1</class>

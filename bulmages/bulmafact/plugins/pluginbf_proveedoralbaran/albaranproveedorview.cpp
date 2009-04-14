@@ -31,7 +31,7 @@
 #include "bfcompany.h"
 #include "blconfiguration.h"
 #include "blfunctions.h"
-#include "listlinalbaranproveedorview.h"
+#include "bfproveedoralbaransubform.h"
 #include "pedidoproveedorview.h"
 #include "blplugins.h"
 

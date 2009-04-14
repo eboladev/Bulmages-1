@@ -1113,7 +1113,7 @@ msgstr ""
 #: ui_uivisorempresas.h:46 ui_uivisorempresas.h:70 ui_mpatrimonialbase.h:350
 #: ccosteview.cpp:49 ccosteview.cpp:76 amortizacionesview.cpp:48
 #: propiedadesempresa.cpp:191 listproyectosview.cpp:49 ticket.cpp:43
-#: listconfiguracionview.cpp:89 familiasview.cpp:51 familiasview.cpp:569
+#: bfconfiguracionview.cpp:89 familiasview.cpp:51 familiasview.cpp:569
 #: providerslist.cpp:286 tutoreslist.cpp:263 ui_tutorbase.h:458
 #: listlinfacturapview.cpp:50 convocatoriaslist.cpp:263
 #: actividadeslist.cpp:263 cobroslist.cpp:311 alumnoslist.cpp:263
@@ -1189,7 +1189,7 @@ msgstr ""
 #: ccosteview.cpp:267 modelo300.cpp:170 canalview.cpp:108 canalview.cpp:186
 #: canalview.cpp:213 canalview.cpp:238 ui_datosbase.h:142
 #: ui_proyectobase.h:282 ui_registroivabase.h:634 ui_balancesprintdlg.h:205
-#: ui_listseriefacturabase.h:83 ui_listconfiguracionbase.h:119
+#: ui_bfseriefacturabase.h:83 ui_bfconfiguracionbase.h:119
 #: incidenciacomercialview.cpp:106 ui_rutacomercialincbase.h:252
 #: ui_rutacomerciallistbase.h:372 ui_listzonacomercialbase.h:85
 #: ui_cuadrante1base.h:313 ui_clientebase.h:593
@@ -1376,8 +1376,8 @@ msgstr ""
 #: ui_tipoivabase.h:269 ui_sobrebase.h:306 ui_duplicarasientobase.h:238
 #: ui_amortizacionbase.h:687 ui_cuentabase.h:870 ui_aplinteligentesbase.h:216
 #: modelo300.cpp:160 ui_datosbase.h:141 ui_proyectobase.h:281
-#: ui_registroivabase.h:632 ui_listseriefacturabase.h:84
-#: ui_listconfiguracionbase.h:118 ui_rutacomercialincbase.h:251
+#: ui_registroivabase.h:632 ui_bfseriefacturabase.h:84
+#: ui_bfconfiguracionbase.h:118 ui_rutacomercialincbase.h:251
 #: ui_rutacomerciallistbase.h:371 ui_listzonacomercialbase.h:84
 #: ui_cuadrante1base.h:312 ui_clientebase.h:592
 #: ui_presupuestoclientebase.h:799 ui_albaranclientebase.h:788
@@ -1453,8 +1453,8 @@ msgstr ""
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_busquedacuentabase.h:86 ui_busquedaarticulobase.h:92
-#: ui_busquedareferenciabase.h:89 ui_busquedafechabase.h:86
+#: ui_busquedacuentabase.h:86 ui_bfbuscararticulobase.h:92
+#: ui_bfbuscarreferenciabase.h:89 ui_busquedafechabase.h:86
 #: ui_busquedabase.h:98
 msgid "Form1"
 msgstr ""
@@ -2017,21 +2017,21 @@ msgstr ""
 msgid "BulmaCont - Contabilidad GPL"
 msgstr ""
 
-#: ui_bulmacontbase.h:338 ui_bulmafactbase.h:152
+#: ui_bulmacontbase.h:338 ui_bfbulmafactbase.h:152
 msgid "&Propiedades de la empresa..."
 msgstr ""
 
 #: ui_bulmacontbase.h:339 ui_bulmacontbase.h:342 ui_uiconfiguracion.h:386
-#: propiedadesempresa.cpp:38 listconfiguracionview.cpp:51
+#: propiedadesempresa.cpp:38 bfconfiguracionview.cpp:51
 #: ui_configuracion.h:457
 msgid "Configuracion"
 msgstr ""
 
-#: ui_bulmacontbase.h:345 ui_bulmafactbase.h:150
+#: ui_bulmacontbase.h:345 ui_bfbulmafactbase.h:150
 msgid "&Salir del programa"
 msgstr ""
 
-#: ui_bulmacontbase.h:346 ui_bulmafactbase.h:151
+#: ui_bulmacontbase.h:346 ui_bfbulmafactbase.h:151
 msgid "Ctrl+Q"
 msgstr ""
 
@@ -2152,11 +2152,11 @@ msgstr ""
 msgid "&Pantalla completa"
 msgstr ""
 
-#: ui_bulmacontbase.h:377 ui_bulmafactbase.h:159
+#: ui_bulmacontbase.h:377 ui_bfbulmafactbase.h:159
 msgid "F11"
 msgstr ""
 
-#: ui_bulmacontbase.h:378 ui_bulmafactbase.h:172
+#: ui_bulmacontbase.h:378 ui_bfbulmafactbase.h:172
 msgid "Ordenar &ventanas"
 msgstr ""
 
@@ -2164,11 +2164,11 @@ msgstr ""
 msgid "Organizacion en &cascada"
 msgstr ""
 
-#: ui_bulmacontbase.h:380 ui_bulmacontbase.h:401 ui_bulmafactbase.h:180
+#: ui_bulmacontbase.h:380 ui_bulmacontbase.h:401 ui_bfbulmafactbase.h:180
 msgid "A&yuda"
 msgstr ""
 
-#: ui_bulmacontbase.h:381 ui_bulmafactbase.h:162
+#: ui_bulmacontbase.h:381 ui_bfbulmafactbase.h:162
 msgid "F1"
 msgstr ""
 
@@ -2208,12 +2208,12 @@ msgstr ""
 msgid "Ctrl+End"
 msgstr ""
 
-#: ui_bulmacontbase.h:391 ui_bulmafactbase.h:164 ui_bulmafactbase.h:167
+#: ui_bulmacontbase.h:391 ui_bfbulmafactbase.h:164 ui_bfbulmafactbase.h:167
 #: blwindowlistdock.cpp:149 blwindowlistdock.cpp:150
 msgid "Indexador"
 msgstr ""
 
-#: ui_bulmacontbase.h:392 ui_bulmafactbase.h:170 ui_tutorbase.h:441
+#: ui_bulmacontbase.h:392 ui_bfbulmafactbase.h:170 ui_tutorbase.h:441
 #: ui_convocatoriabase.h:444 ui_actividadbase.h:444 ui_cobrobase.h:402
 #: ui_alumnobase.h:500 ui_profesorbase.h:505
 msgid "Ctrl+I"
@@ -2263,8 +2263,8 @@ msgstr ""
 msgid "&Herramientas"
 msgstr ""
 
-#: ui_propiedadesempresabase.h:239 ui_listconfiguracionbase.h:117
-#: ui_bulmafactbase.h:155
+#: ui_propiedadesempresabase.h:239 ui_bfconfiguracionbase.h:117
+#: ui_bfbulmafactbase.h:155
 msgid "Propiedades de la empresa"
 msgstr ""
 
@@ -3052,7 +3052,7 @@ msgstr ""
 #: ccosteview.cpp:50 ccosteview.cpp:76 extractosubform.cpp:50
 #: cuentaview.cpp:45 diariosubform.cpp:40 proyectoview.cpp:78
 #: proyectoview.cpp:97 ui_tpvdlg.h:379 ticket.cpp:42
-#: listlinalbaranproveedorview.cpp:51 listlinalbaranclienteview.cpp:49
+#: bfproveedoralbaransubform.cpp:51 bfclientealbaransubform.cpp:49
 #: presupuestolist.cpp:357 listlinpresupuestoview.cpp:50
 #: listlinpedidoproveedorview.cpp:44 tiposarticuloview.cpp:46
 #: familiasview.cpp:51 listlinfacturapview.cpp:52 albaranclientelist.cpp:385
@@ -3228,8 +3228,8 @@ msgid "Fecha prevista"
 msgstr ""
 
 #: amortizacionview.cpp:80 proyectoview.cpp:74 proyectoview.cpp:93
-#: ui_tpvdlg.h:380 ticket.cpp:86 listlinalbaranproveedorview.cpp:52
-#: listlinalbaranclienteview.cpp:50 listlinpresupuestoview.cpp:51
+#: ui_tpvdlg.h:380 ticket.cpp:86 bfproveedoralbaransubform.cpp:52
+#: bfclientealbaransubform.cpp:50 listlinpresupuestoview.cpp:51
 #: listlinpedidoproveedorview.cpp:45 pagoslist.cpp:253 pagoview.cpp:66
 #: listlinfacturapview.cpp:53 movimientosview.cpp:180 cobroslist.cpp:317
 #: listlresarticulo.cpp:41 listlresarticulo.cpp:84 listlresarticulo.cpp:127
@@ -3572,8 +3572,8 @@ msgstr ""
 
 #: extractosubform.cpp:73 listlinasiento1view.cpp:55 asientolistsubform.cpp:37
 #: proyectoview.cpp:81 proyectoview.cpp:100 registroiva.cpp:52
-#: ui_registroivabase.h:618 ticket.cpp:90 listlinalbaranproveedorview.cpp:58
-#: listlinalbaranclienteview.cpp:56 listlinpresupuestoview.cpp:57
+#: ui_registroivabase.h:618 ticket.cpp:90 bfproveedoralbaransubform.cpp:58
+#: bfclientealbaransubform.cpp:56 listlinpresupuestoview.cpp:57
 #: listlinpedidoproveedorview.cpp:51 listlinfacturapview.cpp:59
 #: listlincontratoview.cpp:48 listlinpedidoclienteview.cpp:57
 #: listlinfacturaview.cpp:58
@@ -4067,7 +4067,7 @@ msgstr ""
 msgid "&No salir"
 msgstr ""
 
-#: propiedadesempresa.cpp:192 listconfiguracionview.cpp:90
+#: propiedadesempresa.cpp:192 bfconfiguracionview.cpp:90
 msgid "Valor"
 msgstr ""
 
@@ -6040,8 +6040,8 @@ msgstr ""
 msgid "Terminal Punto de Venta GPL"
 msgstr ""
 
-#: ticket.cpp:44 listlinalbaranproveedorview.cpp:57
-#: listdescalbaranclienteview.cpp:44 listlinalbaranclienteview.cpp:55
+#: ticket.cpp:44 bfproveedoralbaransubform.cpp:57
+#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:55
 #: albaranclienteview.cpp:72 zview.cpp:72 listdescalbaranprovview.cpp:43
 #: compraventaview.cpp:82
 msgid "Id albaran"
@@ -6086,7 +6086,7 @@ msgstr ""
 msgid "Num"
 msgstr ""
 
-#: ticket.cpp:51 busquedareferencia.cpp:66 rutacomercial.cpp:47
+#: ticket.cpp:51 bfbuscarreferencia.cpp:66 rutacomercial.cpp:47
 #: incidenciacomercial.cpp:48 ui_incidenciacomercialbase.h:274
 #: presupuestoview.cpp:71 presupuestolist.cpp:353 albaranclienteview.cpp:85
 #: zview.cpp:75 albaranesproveedor.cpp:383 cobroview.cpp:66
@@ -6114,7 +6114,7 @@ msgid "Id lalbaran"
 msgstr ""
 
 #: ticket.cpp:87 ui_untitled.h:300 ui_untitled.h:307
-#: listlinalbaranproveedorview.cpp:53 listlinpedidoproveedorview.cpp:46
+#: bfproveedoralbaransubform.cpp:53 listlinpedidoproveedorview.cpp:46
 #: facturapview.cpp:354 listlresarticulo.cpp:85 listlresarticulo.cpp:128
 #: listlresarticulo.cpp:172
 msgid "Precio"
@@ -6124,8 +6124,8 @@ msgstr ""
 msgid "Req. eq."
 msgstr ""
 
-#: ticket.cpp:93 listlinalbaranproveedorview.cpp:47
-#: listlinalbaranclienteview.cpp:45 listlinpresupuestoview.cpp:46
+#: ticket.cpp:93 bfproveedoralbaransubform.cpp:47
+#: bfclientealbaransubform.cpp:45 listlinpresupuestoview.cpp:46
 #: listlinpedidoproveedorview.cpp:40 listcontrolstockview.cpp:41
 #: movimientosview.cpp:177 pluginalias.cpp:110 listlincontratoview.cpp:40
 #: listlinpedidoclienteview.cpp:46 listlinfacturaview.cpp:47
@@ -6136,8 +6136,8 @@ msgstr ""
 msgid "Codigo articulo"
 msgstr ""
 
-#: ticket.cpp:95 ticket.cpp:96 listlinalbaranproveedorview.cpp:49
-#: listlinalbaranclienteview.cpp:47 listlinpedidoproveedorview.cpp:42
+#: ticket.cpp:95 ticket.cpp:96 bfproveedoralbaransubform.cpp:49
+#: bfclientealbaransubform.cpp:47 listlinpedidoproveedorview.cpp:42
 #: listltarifaview.cpp:59 listcontrolstockview.cpp:38 movimientosview.cpp:179
 #: listlincontratoview.cpp:42 listlinpedidoclienteview.cpp:48
 #: listlinfacturaview.cpp:49
@@ -6203,8 +6203,8 @@ msgid "COBRAR"
 msgstr ""
 
 #: pluginbuscaarticulo.cpp:58 plugindevolucion2.cpp:83
-#: ui_busquedaarticulobase.h:95 informereferencia.cpp:141
-#: informereferencia.cpp:174 articuloview.cpp:58 listlinfacturapview.cpp:48
+#: ui_bfbuscararticulobase.h:95 bfinformereferencia.cpp:141
+#: bfinformereferencia.cpp:174 articuloview.cpp:58 listlinfacturapview.cpp:48
 #: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
 #: informeqtoolbutton.cpp:463 blimportexport.cpp:2207
 msgid "Articulo"
@@ -6531,104 +6531,104 @@ msgstr ""
 msgid "Facturacion GPL - Version 0.11.1 -"
 msgstr ""
 
-#: ui_listseriefacturabase.h:82
+#: ui_bfseriefacturabase.h:82
 msgid "Series de factura"
 msgstr ""
 
-#: ui_busquedaarticulobase.h:93 busquedaarticulo.cpp:37
+#: ui_bfbuscararticulobase.h:93 bfbuscararticulo.cpp:37
 msgid "Articulo:"
 msgstr ""
 
-#: ui_bulmafactbase.h:149
+#: ui_bfbulmafactbase.h:149
 msgid "BulmaFact - Facturacion GPL"
 msgstr ""
 
-#: ui_bulmafactbase.h:158
+#: ui_bfbulmafactbase.h:158
 msgid "Ventana &completa"
 msgstr ""
 
-#: ui_bulmafactbase.h:160
+#: ui_bfbulmafactbase.h:160
 msgid "&Acerca de BulmaFact"
 msgstr ""
 
-#: ui_bulmafactbase.h:161
+#: ui_bfbulmafactbase.h:161
 msgid "&Documentacion"
 msgstr ""
 
-#: ui_bulmafactbase.h:163
+#: ui_bfbulmafactbase.h:163
 msgid "&Indexador"
 msgstr ""
 
-#: ui_bulmafactbase.h:171
+#: ui_bfbulmafactbase.h:171
 msgid "Organizacio&n en cascada"
 msgstr ""
 
-#: ui_bulmafactbase.h:173 ui_bulmafactbase.h:174
+#: ui_bfbulmafactbase.h:173 ui_bfbulmafactbase.h:174
 msgid "Paises / Provincias"
 msgstr ""
 
-#: ui_bulmafactbase.h:177
+#: ui_bfbulmafactbase.h:177
 msgid "Paises y provincias"
 msgstr ""
 
-#: ui_bulmafactbase.h:181
+#: ui_bfbulmafactbase.h:181
 msgid "E&mpresa"
 msgstr ""
 
-#: ui_bulmafactbase.h:182
+#: ui_bfbulmafactbase.h:182
 msgid "Maest&ro"
 msgstr ""
 
-#: ui_bulmafactbase.h:183
+#: ui_bfbulmafactbase.h:183
 msgid "Venta&na"
 msgstr ""
 
-#: ui_bulmafactbase.h:184 ui_bulmafactbase.h:187 ui_bulmafactbase.h:192
-#: ui_bulmafactbase.h:197 ui_bulmafactbase.h:202 ui_bulmafactbase.h:207
+#: ui_bfbulmafactbase.h:184 ui_bfbulmafactbase.h:187 ui_bfbulmafactbase.h:192
+#: ui_bfbulmafactbase.h:197 ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:207
 msgid "Listados"
 msgstr ""
 
-#: ui_bulmafactbase.h:210 ui_bulmafactbase.h:213 ui_bulmafactbase.h:218
-#: ui_bulmafactbase.h:223 ui_bulmafactbase.h:228 ui_bulmafactbase.h:233
+#: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:213 ui_bfbulmafactbase.h:218
+#: ui_bfbulmafactbase.h:223 ui_bfbulmafactbase.h:228 ui_bfbulmafactbase.h:233
 msgid "Fichas"
 msgstr ""
 
-#: ui_busquedareferenciabase.h:92
+#: ui_bfbuscarreferenciabase.h:92
 msgid "Informe por referencia"
 msgstr ""
 
-#: ui_busquedareferenciabase.h:97
+#: ui_bfbuscarreferenciabase.h:97
 msgid "Abre todos los documentos con esta referencia"
 msgstr ""
 
-#: busquedareferencia.cpp:65 plugininformesods.cpp:152
+#: bfbuscarreferencia.cpp:65 plugininformesods.cpp:152
 #: plugininformesods.cpp:153 plugininformes.cpp:137 plugininformes.cpp:138
 msgid "Informe"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
+#: bfproveedoralbaransubform.cpp:48 bfclientealbaransubform.cpp:46
 #: listlinpedidoproveedorview.cpp:41 listcontrolstockview.cpp:37
 #: listlincontratoview.cpp:41 listlinpedidoclienteview.cpp:47
 #: listlinfacturaview.cpp:48
 msgid "Codigo completo articulo"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:50 listlinpedidoproveedorview.cpp:43
+#: bfproveedoralbaransubform.cpp:50 listlinpedidoproveedorview.cpp:43
 msgid "Numero de linea"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:54 listlinpresupuestoview.cpp:53
+#: bfproveedoralbaransubform.cpp:54 listlinpresupuestoview.cpp:53
 #: listlinpedidoproveedorview.cpp:47 listlinfacturapview.cpp:55
 #: listlinpedidoclienteview.cpp:53
 msgid "% I.V.A."
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:55 listlinpedidoproveedorview.cpp:48
+#: bfproveedoralbaransubform.cpp:55 listlinpedidoproveedorview.cpp:48
 msgid "% R.E."
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:56 listdescalbaranclienteview.cpp:43
-#: listlinalbaranclienteview.cpp:54 presupuestoview.cpp:70
+#: bfproveedoralbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbaransubform.cpp:54 presupuestoview.cpp:70
 #: listdescpresupuestoview.cpp:42 listlinpresupuestoview.cpp:55
 #: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
 #: listdescfacturaprovview.cpp:42 listdescalbaranprovview.cpp:42
@@ -6641,11 +6641,11 @@ msgstr ""
 msgid "Facturacion GPL"
 msgstr ""
 
-#: busquedatipoarticulo.cpp:37
+#: bfbuscartipoarticulo.cpp:37
 msgid "Tipo Articulo:"
 msgstr ""
 
-#: busquedafamilia.cpp:36
+#: bfbuscarfamilia.cpp:36
 msgid "Familia:"
 msgstr ""
 
@@ -6653,7 +6653,7 @@ msgstr ""
 msgid "Total Desc."
 msgstr ""
 
-#: fichabf.cpp:383 listlinalbaranclienteview.cpp:52 listlinfacturaview.cpp:54
+#: fichabf.cpp:383 bfclientealbaransubform.cpp:52 listlinfacturaview.cpp:54
 msgid "I.V.A."
 msgstr ""
 
@@ -6673,49 +6673,49 @@ msgstr ""
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: informereferencia.cpp:142 informereferencia.cpp:212
+#: bfinformereferencia.cpp:142 bfinformereferencia.cpp:212
 #: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
 msgid "Pres."
 msgstr ""
 
-#: informereferencia.cpp:143 informereferencia.cpp:175
-#: informereferencia.cpp:213 informereferencia.cpp:260
+#: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
+#: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
 #: pedidosclientelist.cpp:329 informeqtoolbutton.cpp:198
 #: informeqtoolbutton.cpp:230 informeqtoolbutton.cpp:263
 #: informeqtoolbutton.cpp:310
 msgid "Pedido"
 msgstr ""
 
-#: informereferencia.cpp:144 informereferencia.cpp:176
-#: informereferencia.cpp:214 informereferencia.cpp:261
+#: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
+#: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
 #: informeqtoolbutton.cpp:199 informeqtoolbutton.cpp:231
 #: informeqtoolbutton.cpp:264 informeqtoolbutton.cpp:311
 msgid "Entregado"
 msgstr ""
 
-#: informereferencia.cpp:145 informereferencia.cpp:177
-#: informereferencia.cpp:215 informereferencia.cpp:262
+#: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
+#: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
 #: informeqtoolbutton.cpp:200 informeqtoolbutton.cpp:232
 #: informeqtoolbutton.cpp:265 informeqtoolbutton.cpp:312
 msgid "Facturado"
 msgstr ""
 
-#: informereferencia.cpp:216 informeqtoolbutton.cpp:266
+#: bfinformereferencia.cpp:216 informeqtoolbutton.cpp:266
 msgid "Cobrado"
 msgstr ""
 
-#: informereferencia.cpp:263 informeqtoolbutton.cpp:313
+#: bfinformereferencia.cpp:263 informeqtoolbutton.cpp:313
 msgid "Pagado"
 msgstr ""
 
-#: listdescalbaranclienteview.cpp:41 listdescpresupuestoview.cpp:40
+#: bfclientealbarandescuentosubform.cpp:41 listdescpresupuestoview.cpp:40
 #: listdescpedidoproveedorview.cpp:39 listdescfacturaprovview.cpp:40
 #: listdescalbaranprovview.cpp:40 listdescpedidoclienteview.cpp:40
 #: listdescfacturaview.cpp:40
 msgid "Id descuento"
 msgstr ""
 
-#: listdescalbaranclienteview.cpp:42 listdescpresupuestoview.cpp:41
+#: bfclientealbarandescuentosubform.cpp:42 listdescpresupuestoview.cpp:41
 #: listdescpedidoproveedorview.cpp:40 listdescfacturaprovview.cpp:41
 #: listdescalbaranprovview.cpp:41 listdescpedidoclienteview.cpp:41
 #: listdescfacturaview.cpp:41
@@ -6728,28 +6728,28 @@ msgid ""
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
 
-#: listseriefacturaview.cpp:48
+#: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
 msgstr ""
 
-#: listseriefacturaview.cpp:80
+#: bfseriefacturaview.cpp:80
 msgid "Codigo serie factura"
 msgstr ""
 
-#: listseriefacturaview.cpp:81
+#: bfseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:48
+#: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:51 listlinfacturapview.cpp:54
+#: bfclientealbaransubform.cpp:51 listlinfacturapview.cpp:54
 #: listlinfacturaview.cpp:53
 msgid "P.V.P."
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:53 listlinpresupuestoview.cpp:54
+#: bfclientealbaransubform.cpp:53 listlinpresupuestoview.cpp:54
 #: listlinpedidoclienteview.cpp:54 listlinfacturaview.cpp:55
 msgid "% Recargo E.Q."
 msgstr ""
@@ -7954,7 +7954,7 @@ msgid "&Prueba de plugin"
 msgstr ""
 
 #: pluginbf_example.cpp:116
-msgid "Prueba de plugin para Bulmafact."
+msgid "Prueba de plugin para BfBulmaFact."
 msgstr ""
 
 #: trabajadorview.cpp:204 tipoactividadview.cpp:204

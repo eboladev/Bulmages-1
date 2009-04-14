@@ -22,7 +22,7 @@
 #define TIPTRAB_H
 
 #include <QObject>
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bfsubform.h"
 
 
@@ -31,12 +31,12 @@ class mytiptrab : public QObject
     Q_OBJECT
 
 public:
-    Bulmafact *m_bulmafact;
+    BfBulmaFact *m_bulmafact;
 
 public:
     mytiptrab();
     ~mytiptrab();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

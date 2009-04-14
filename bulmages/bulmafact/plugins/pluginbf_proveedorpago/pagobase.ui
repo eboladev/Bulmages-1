@@ -188,7 +188,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_refpago">
+         <widget class="BfBuscarReferencia" name="mui_refpago">
           <property name="minimumSize">
            <size>
             <width>150</width>
@@ -366,7 +366,7 @@
        </widget>
       </item>
       <item row="4" column="1" colspan="2">
-       <widget class="BusquedaBanco" name="mui_idbanco">
+       <widget class="BfBuscarBanco" name="mui_idbanco">
         <property name="minimumSize">
          <size>
           <width>250</width>
@@ -462,9 +462,9 @@
  <layoutdefault spacing="2" margin="5"/>
  <customwidgets>
   <customwidget>
-   <class>BusquedaBanco</class>
+   <class>BfBuscarBanco</class>
    <extends>QComboBox</extends>
-   <header>busquedabanco.h</header>
+   <header>bfbuscarbanco.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>
@@ -472,9 +472,9 @@
    <header>../../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaReferencia</class>
+   <class>BfBuscarReferencia</class>
    <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
+   <header>bfbuscarreferencia.h</header>
   </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>

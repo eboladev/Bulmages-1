@@ -3,7 +3,7 @@
 #define PLUGARTICULOS_H
 
 #include <QObject>
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bfsubform.h"
 
 
@@ -13,12 +13,12 @@ class plugin_tc_articulos : public QObject
 
 public:
     BlPostgreSqlClient *dbConnection;
-    Bulmafact *m_bulmafact;
+    BfBulmaFact *m_bulmafact;
 
 public:
     plugin_tc_articulos();
     ~plugin_tc_articulos();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void tallas();

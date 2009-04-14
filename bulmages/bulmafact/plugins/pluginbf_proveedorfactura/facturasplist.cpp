@@ -25,7 +25,7 @@
 
 #include "facturasplist.h"
 #include "bfcompany.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "blconfiguration.h"
 #include "facturapview.h"
 #include "blplugins.h"

@@ -31,10 +31,10 @@
 #include <QObject>
 
 #include "bfcompany.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blsearchwidget.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 
 // cuando la usuaria escribe en la celda de código de artículo y este plugin
 // está instalado, buscaremos además de por código de artículo por alias. 
@@ -54,13 +54,13 @@
 // un valor bajo. No se si debería ser una constante o un valor más configurable...
 #define MILISEG_REFRESCO_ESTAD_ALIAS 60000 // 1 min
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
-extern "C" MY_EXPORT int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel );
+extern "C" MY_EXPORT int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel );
 
 extern "C" MY_EXPORT int BlSubForm_campoCompleto(BlSubForm *grid, void **resultat) ;
 

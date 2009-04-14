@@ -495,7 +495,7 @@
         </spacer>
        </item>
        <item row="7" column="2" >
-        <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
+        <widget class="BfBuscarFormaPago" name="mui_idforma_pago" />
        </item>
        <item row="7" column="0" >
         <widget class="QLabel" name="label_3" >
@@ -619,9 +619,9 @@
    <header>tutorview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

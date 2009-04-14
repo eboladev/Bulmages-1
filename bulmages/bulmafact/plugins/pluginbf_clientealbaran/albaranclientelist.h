@@ -22,7 +22,7 @@
 #ifndef CLIENTDELIVNOTESLIST_H
 #define CLIENTDELIVNOTESLIST_H
 
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"

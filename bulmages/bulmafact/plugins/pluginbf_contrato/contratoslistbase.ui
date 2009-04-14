@@ -41,7 +41,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_documentos_listado.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_documentos_listado.48x48.png</pixmap>
        </property>
       </widget>
      </item>
@@ -252,7 +252,7 @@
           </property>
           <property name="icon" >
            <iconset>
-            <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
+            <normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

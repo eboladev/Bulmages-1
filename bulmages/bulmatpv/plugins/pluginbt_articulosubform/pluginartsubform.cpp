@@ -29,7 +29,7 @@
 #include "ticket.h"
 #include "btcompany.h"
 #include "mticket.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 
 
 ///

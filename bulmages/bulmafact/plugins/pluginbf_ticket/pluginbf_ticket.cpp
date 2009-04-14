@@ -32,7 +32,7 @@
 /**
 \return
 **/
-int entryPoint ( Bulmafact * )
+int entryPoint ( BfBulmaFact * )
 {
     _depura ( "Estoy dentro del plugin tickets", 0 );
 

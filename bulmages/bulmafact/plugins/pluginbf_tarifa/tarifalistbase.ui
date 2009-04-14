@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</iconset>
+    <normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</normaloff>:/BfBulmaFact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -50,7 +50,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>

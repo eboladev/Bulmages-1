@@ -31,16 +31,16 @@
 #include <QObject>
 
 #include "bfcompany.h"
-#include "bulmafact.h"
-#include "listlinalbaranproveedorview.h"
-#include "listlinalbaranclienteview.h"
+#include "bfbulmafact.h"
+#include "bfproveedoralbaransubform.h"
+#include "bfclientealbaransubform.h"
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
-extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView * );
-extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" MY_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
+extern "C" MY_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
 extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
 extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
@@ -53,12 +53,12 @@ class myplugin : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bulmafact;
+    BfBulmaFact *m_bulmafact;
 
 public:
     myplugin();
     ~myplugin();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

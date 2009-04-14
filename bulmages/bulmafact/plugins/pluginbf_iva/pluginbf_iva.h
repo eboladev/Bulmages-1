@@ -25,13 +25,13 @@
 #endif
 
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blwidget.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 class MyPlugIVA : public QObject, BlMainCompanyPointer
@@ -39,12 +39,12 @@ class MyPlugIVA : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     MyPlugIVA();
     ~MyPlugIVA();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot1();

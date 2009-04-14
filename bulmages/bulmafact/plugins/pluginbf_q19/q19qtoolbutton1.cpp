@@ -34,7 +34,7 @@
 #include "blfixed.h"
 #include "bfcompany.h"
 #include "bldb.h"
-#include "busquedabanco.h"
+#include "bfbuscarbanco.h"
 #include "q19view.h"
 
 ///

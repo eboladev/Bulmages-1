@@ -16,7 +16,7 @@
    <string>Series de factura</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

@@ -21,7 +21,7 @@
 #ifndef MOVIMIENTOSVIEW_H
 #define MOVIMIENTOSVIEW_H
 
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"

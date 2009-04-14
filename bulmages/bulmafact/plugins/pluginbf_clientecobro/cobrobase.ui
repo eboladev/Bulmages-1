@@ -222,7 +222,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_refcobro" >
+         <widget class="BfBuscarReferencia" name="mui_refcobro" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -478,7 +478,7 @@
       <item row="5" column="1" >
        <layout class="QHBoxLayout" >
         <item>
-         <widget class="BusquedaBanco" name="mui_idbanco" >
+         <widget class="BfBuscarBanco" name="mui_idbanco" >
           <property name="sizePolicy" >
            <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
             <horstretch>0</horstretch>
@@ -569,14 +569,14 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaBanco</class>
+   <class>BfBuscarBanco</class>
    <extends>QComboBox</extends>
-   <header>busquedabanco.h</header>
+   <header>bfbuscarbanco.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaReferencia</class>
+   <class>BfBuscarReferencia</class>
    <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
+   <header>bfbuscarreferencia.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>

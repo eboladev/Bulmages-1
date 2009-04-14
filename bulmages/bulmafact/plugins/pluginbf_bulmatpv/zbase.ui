@@ -354,7 +354,7 @@
         </widget>
        </item>
        <item row="1" column="2" colspan="4" >
-        <widget class="BusquedaAlmacen" name="mui_idalmacen" />
+        <widget class="BfBuscarAlmacen" name="mui_idalmacen" />
        </item>
       </layout>
      </widget>
@@ -420,9 +420,9 @@
    <header>bfsubform.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>BfBuscarAlmacen</class>
    <extends>QComboBox</extends>
-   <header>busquedaalmacen.h</header>
+   <header>bfbuscaralmacen.h</header>
   </customwidget>
  </customwidgets>
  <resources>

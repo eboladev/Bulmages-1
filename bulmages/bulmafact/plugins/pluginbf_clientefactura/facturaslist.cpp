@@ -22,7 +22,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bldatesearch.h"
 #include "bfcompany.h"
 #include "blconfiguration.h"

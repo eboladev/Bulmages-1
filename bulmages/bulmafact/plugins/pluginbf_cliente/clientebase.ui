@@ -607,7 +607,7 @@
         </widget>
        </item>
        <item row="9" column="1" colspan="2" >
-        <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
+        <widget class="BfBuscarFormaPago" name="mui_idforma_pago" />
        </item>
        <item row="9" column="4" colspan="2" >
         <widget class="QCheckBox" name="mui_recargoeqcliente" >
@@ -630,7 +630,7 @@
         </widget>
        </item>
        <item row="10" column="1" colspan="2" >
-        <widget class="BusquedaRegimenFiscal" name="mui_regimenfiscalcliente" />
+        <widget class="BfBuscarRegimenFiscal" name="mui_regimenfiscalcliente" />
        </item>
        <item row="11" column="1" >
         <spacer name="sp1" >
@@ -755,14 +755,14 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaRegimenFiscal</class>
+   <class>BfBuscarRegimenFiscal</class>
    <extends>QComboBox</extends>
-   <header>busquedaregimenfiscal.h</header>
+   <header>bfbuscarregimenfiscal.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
   <customwidget>
    <class>BlBankEdit</class>

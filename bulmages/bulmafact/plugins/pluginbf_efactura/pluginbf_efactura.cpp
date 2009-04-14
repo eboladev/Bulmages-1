@@ -101,7 +101,7 @@ void efacturabf::elslot1()
 /**
 \param bges
 **/
-void efacturabf::inicializa ( Bulmafact *bges )
+void efacturabf::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "efacturabf::inicializa", 0 );
     /// Creamos la conexion de la base de datos
@@ -135,7 +135,7 @@ void efacturabf::inicializa ( Bulmafact *bges )
 /**
 \param bges
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Estoy dentro del plugin de e-factura", 0 );
 

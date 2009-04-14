@@ -27,7 +27,7 @@ file(GLOB bulmafact_SRC *.c *.cpp)
 file(GLOB bulmafact_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB bulmafact_NO_MOCS bfcompany.h informereferencia.h)
+file(GLOB bulmafact_NO_MOCS bfcompany.h bfinformereferencia.h)
 list(REMOVE_ITEM bulmafact_MOCS ${bulmafact_NO_MOCS})
 
 file(GLOB bulmafact_UIS *.ui)

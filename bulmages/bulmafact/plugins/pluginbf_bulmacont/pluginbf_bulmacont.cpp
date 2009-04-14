@@ -30,13 +30,13 @@
 
 BcCompany *g_empresaactual;
 
-Bulmafact *g_bf;
+BfBulmaFact *g_bf;
 
 ///
 /**
 \return
 **/
-int entryPoint ( Bulmafact *bf )
+int entryPoint ( BfBulmaFact *bf )
 {
     _depura ( "Estoy dentro del plugin BulmaCont", 0 );
 

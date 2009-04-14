@@ -41,7 +41,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_documentos_listado.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_documentos_listado.48x48.png</pixmap>
        </property>
       </widget>
      </item>

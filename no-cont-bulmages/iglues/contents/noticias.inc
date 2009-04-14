@@ -207,7 +207,7 @@ Más información en:
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
 <td width=100>22/11/2004</td>
-<td><center><b>Primer Screenshot de Bulmafact</b></center></td>
+<td><center><b>Primer Screenshot de BfBulmaFact</b></center></td>
 </tr>
 <tr>
 <td colspan=2>Hoy Tomeu Borràs ha mostrado la primera imagen de la futura facturación donde se pueden ver algunos de los puntos que ya se han realizado. Puede verse <A href="http://www.iglues.org/bulmafact1.png" TARGET="nueva">aquí</A>.

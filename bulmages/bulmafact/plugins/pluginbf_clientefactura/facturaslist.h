@@ -23,7 +23,7 @@
 #define FACTURASLIST_H
 
 #include "pdefs_clientefactura.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"

@@ -26,7 +26,7 @@
 #include "listtipostrabajoview.h"
 #include "tiptrab.h"
 #include "busquedatipotrabajo.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 
 
 ///
@@ -66,7 +66,7 @@ void mytiptrab::elslot()
 /**
 \param bges
 **/
-void mytiptrab::inicializa ( Bulmafact *bges )
+void mytiptrab::inicializa ( BfBulmaFact *bges )
 {
     /// Creamos el men&uacute;.
     m_bulmafact = bges;
@@ -84,7 +84,7 @@ void mytiptrab::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Estoy dentro del plugin de tipos de trabajo", 0 );
 

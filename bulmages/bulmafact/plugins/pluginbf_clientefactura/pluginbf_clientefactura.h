@@ -24,9 +24,9 @@
 
 #include "pdefs_clientefactura.h"
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blwidget.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 #include "clienteview.h"
 #include "facturaview.h"
 #include "albaranclienteview.h"
@@ -35,11 +35,11 @@
 #include "bfcompany.h"
 
 extern "C" MY_EXPORT_CLIENTEFACTURA int SNewFacturaView (BfCompany *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT_CLIENTEFACTURA int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT_CLIENTEFACTURA int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int BusquedaReferencia_on_mui_abrirtodo_clicked_Post (BusquedaReferencia *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" MY_EXPORT_CLIENTEFACTURA int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" MY_EXPORT_CLIENTEFACTURA int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" MY_EXPORT_CLIENTEFACTURA int PresupuestoView_PresupuestoView ( PresupuestoView * );
@@ -50,12 +50,12 @@ class mypluginfact : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     mypluginfact();
     ~mypluginfact();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

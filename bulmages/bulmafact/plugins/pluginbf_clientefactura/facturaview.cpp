@@ -35,7 +35,7 @@
 #include "bfcompany.h"
 #include "facturaview.h"
 #include "blfunctions.h"
-#include "informereferencia.h"
+#include "bfinformereferencia.h"
 #include "listdescfacturaview.h"
 #include "listlinfacturaview.h"
 #include "blplugins.h"

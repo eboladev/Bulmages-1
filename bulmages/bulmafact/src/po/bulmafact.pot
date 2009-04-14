@@ -44,28 +44,28 @@ msgstr ""
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr ""
 
-#: ui_busquedareferenciabase.h:89 ui_busquedaarticulobase.h:92
+#: ui_bfbuscarreferenciabase.h:89 ui_bfbuscararticulobase.h:92
 msgid "Form1"
 msgstr ""
 
-#: ui_busquedareferenciabase.h:92
+#: ui_bfbuscarreferenciabase.h:92
 msgid "Informe por referencia"
 msgstr ""
 
-#: ui_busquedareferenciabase.h:97
+#: ui_bfbuscarreferenciabase.h:97
 msgid "Abre todos los documentos con esta referencia"
 msgstr ""
 
-#: ui_busquedaarticulobase.h:93 busquedaarticulo.cpp:37
+#: ui_bfbuscararticulobase.h:93 bfbuscararticulo.cpp:37
 msgid "Articulo:"
 msgstr ""
 
-#: ui_busquedaarticulobase.h:95 informereferencia.cpp:141
-#: informereferencia.cpp:174
+#: ui_bfbuscararticulobase.h:95 bfinformereferencia.cpp:141
+#: bfinformereferencia.cpp:174
 msgid "Articulo"
 msgstr ""
 
-#: ui_bancobase.h:401 ui_bulmafactbase.h:213
+#: ui_bancobase.h:401 ui_bfbulmafactbase.h:213
 msgid "Bancos"
 msgstr ""
 
@@ -163,33 +163,33 @@ msgstr ""
 msgid "Almacenes"
 msgstr ""
 
-#: ui_listalmacenbase.h:117 ui_listseriefacturabase.h:84 ui_fpagobase.h:341
-#: ui_listconfiguracionbase.h:118
+#: ui_listalmacenbase.h:117 ui_bfseriefacturabase.h:84 ui_fpagobase.h:341
+#: ui_bfconfiguracionbase.h:118
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_listalmacenbase.h:118 ui_listseriefacturabase.h:83 ui_fpagobase.h:342
-#: ui_listconfiguracionbase.h:119
+#: ui_listalmacenbase.h:118 ui_bfseriefacturabase.h:83 ui_fpagobase.h:342
+#: ui_bfconfiguracionbase.h:119
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_listseriefacturabase.h:82
+#: ui_bfseriefacturabase.h:82
 msgid "Series de factura"
 msgstr ""
 
-#: ui_aboutbase.h:285
+#: ui_bfaboutbase.h:285
 msgid "Acerca de BulmaFact"
 msgstr ""
 
-#: ui_aboutbase.h:287
+#: ui_bfaboutbase.h:287
 msgid "Facturacion GPL - Version 0.11.1 -"
 msgstr ""
 
-#: ui_aboutbase.h:288
+#: ui_bfaboutbase.h:288
 msgid "&Acerca de"
 msgstr ""
 
-#: ui_aboutbase.h:289
+#: ui_bfaboutbase.h:289
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -203,19 +203,19 @@ msgid ""
 "size:9pt;\"></p></body></html>"
 msgstr ""
 
-#: ui_aboutbase.h:294
+#: ui_bfaboutbase.h:294
 msgid "A&utores"
 msgstr ""
 
-#: ui_aboutbase.h:295
+#: ui_bfaboutbase.h:295
 msgid "Sopor&te"
 msgstr ""
 
-#: ui_aboutbase.h:296
+#: ui_bfaboutbase.h:296
 msgid "Acuerdo de &licencia"
 msgstr ""
 
-#: ui_aboutbase.h:297
+#: ui_bfaboutbase.h:297
 msgid "&Cerrar"
 msgstr ""
 
@@ -271,110 +271,110 @@ msgstr ""
 msgid "Guardar forma de pago"
 msgstr ""
 
-#: ui_listconfiguracionbase.h:117 ui_bulmafactbase.h:193
+#: ui_bfconfiguracionbase.h:117 ui_bfbulmafactbase.h:193
 msgid "Propiedades de la empresa"
 msgstr ""
 
-#: ui_bulmafactbase.h:187
+#: ui_bfbulmafactbase.h:187
 msgid "BulmaFact - Facturacion GPL"
 msgstr ""
 
-#: ui_bulmafactbase.h:188
+#: ui_bfbulmafactbase.h:188
 msgid "&Salir del programa"
 msgstr ""
 
-#: ui_bulmafactbase.h:189
+#: ui_bfbulmafactbase.h:189
 msgid "Ctrl+Q"
 msgstr ""
 
-#: ui_bulmafactbase.h:190
+#: ui_bfbulmafactbase.h:190
 msgid "&Propiedades de la empresa..."
 msgstr ""
 
-#: ui_bulmafactbase.h:196
+#: ui_bfbulmafactbase.h:196
 msgid "Se&ries de factura"
 msgstr ""
 
-#: ui_bulmafactbase.h:197
+#: ui_bfbulmafactbase.h:197
 msgid "Ventana &completa"
 msgstr ""
 
-#: ui_bulmafactbase.h:198
+#: ui_bfbulmafactbase.h:198
 msgid "F11"
 msgstr ""
 
-#: ui_bulmafactbase.h:199
+#: ui_bfbulmafactbase.h:199
 msgid "&Acerca de BulmaFact"
 msgstr ""
 
-#: ui_bulmafactbase.h:200 ui_bulmafactbase.h:253 ui_bulmafactbase.h:256
-#: ui_bulmafactbase.h:261 ui_bulmafactbase.h:266 ui_bulmafactbase.h:271
-#: ui_bulmafactbase.h:276
+#: ui_bfbulmafactbase.h:200 ui_bfbulmafactbase.h:253 ui_bfbulmafactbase.h:256
+#: ui_bfbulmafactbase.h:261 ui_bfbulmafactbase.h:266 ui_bfbulmafactbase.h:271
+#: ui_bfbulmafactbase.h:276
 msgid "Fichas"
 msgstr ""
 
-#: ui_bulmafactbase.h:201
+#: ui_bfbulmafactbase.h:201
 msgid "&Formas de pago"
 msgstr ""
 
-#: ui_bulmafactbase.h:202
+#: ui_bfbulmafactbase.h:202
 msgid "&Almacenes"
 msgstr ""
 
-#: ui_bulmafactbase.h:203
+#: ui_bfbulmafactbase.h:203
 msgid "&Documentacion"
 msgstr ""
 
-#: ui_bulmafactbase.h:204
+#: ui_bfbulmafactbase.h:204
 msgid "F1"
 msgstr ""
 
-#: ui_bulmafactbase.h:205
+#: ui_bfbulmafactbase.h:205
 msgid "&Indexador"
 msgstr ""
 
-#: ui_bulmafactbase.h:206 ui_bulmafactbase.h:209
+#: ui_bfbulmafactbase.h:206 ui_bfbulmafactbase.h:209
 msgid "Indexador"
 msgstr ""
 
-#: ui_bulmafactbase.h:212
+#: ui_bfbulmafactbase.h:212
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_bulmafactbase.h:214
+#: ui_bfbulmafactbase.h:214
 msgid "Organizacio&n en cascada"
 msgstr ""
 
-#: ui_bulmafactbase.h:215
+#: ui_bfbulmafactbase.h:215
 msgid "Ordenar &ventanas"
 msgstr ""
 
-#: ui_bulmafactbase.h:216 ui_bulmafactbase.h:217
+#: ui_bfbulmafactbase.h:216 ui_bfbulmafactbase.h:217
 msgid "Paises / Provincias"
 msgstr ""
 
-#: ui_bulmafactbase.h:220
+#: ui_bfbulmafactbase.h:220
 msgid "Paises y provincias"
 msgstr ""
 
-#: ui_bulmafactbase.h:223
+#: ui_bfbulmafactbase.h:223
 msgid "A&yuda"
 msgstr ""
 
-#: ui_bulmafactbase.h:224
+#: ui_bfbulmafactbase.h:224
 msgid "E&mpresa"
 msgstr ""
 
-#: ui_bulmafactbase.h:225
+#: ui_bfbulmafactbase.h:225
 msgid "Maest&ro"
 msgstr ""
 
-#: ui_bulmafactbase.h:226
+#: ui_bfbulmafactbase.h:226
 msgid "Venta&na"
 msgstr ""
 
-#: ui_bulmafactbase.h:227 ui_bulmafactbase.h:230 ui_bulmafactbase.h:235
-#: ui_bulmafactbase.h:240 ui_bulmafactbase.h:245 ui_bulmafactbase.h:250
+#: ui_bfbulmafactbase.h:227 ui_bfbulmafactbase.h:230 ui_bfbulmafactbase.h:235
+#: ui_bfbulmafactbase.h:240 ui_bfbulmafactbase.h:245 ui_bfbulmafactbase.h:250
 msgid "Listados"
 msgstr ""
 
@@ -414,65 +414,65 @@ msgstr ""
 msgid "Error inesperado al borrar el banco"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:47 listlinalbaranclienteview.cpp:45
+#: bfproveedoralbaransubform.cpp:47 bfclientealbaransubform.cpp:45
 msgid "Id articulo"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:48 listlinalbaranclienteview.cpp:46
+#: bfproveedoralbaransubform.cpp:48 bfclientealbaransubform.cpp:46
 msgid "Codigo completo articulo"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:49 listlinalbaranclienteview.cpp:47
+#: bfproveedoralbaransubform.cpp:49 bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:50
+#: bfproveedoralbaransubform.cpp:50
 msgid "Numero de linea"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:51 listlinalbaranclienteview.cpp:49
+#: bfproveedoralbaransubform.cpp:51 bfclientealbaransubform.cpp:49
 msgid "Descripcion"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:52 listlinalbaranclienteview.cpp:50
+#: bfproveedoralbaransubform.cpp:52 bfclientealbaransubform.cpp:50
 msgid "Cantidad"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:53
+#: bfproveedoralbaransubform.cpp:53
 msgid "Precio"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:54
+#: bfproveedoralbaransubform.cpp:54
 msgid "% I.V.A."
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:55
+#: bfproveedoralbaransubform.cpp:55
 msgid "% R.E."
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:56 listdescalbaranclienteview.cpp:43
-#: listlinalbaranclienteview.cpp:54
+#: bfproveedoralbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbaransubform.cpp:54
 msgid "% Descuento"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:57 listdescalbaranclienteview.cpp:44
-#: listlinalbaranclienteview.cpp:55
+#: bfproveedoralbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbaransubform.cpp:55
 msgid "Id albaran"
 msgstr ""
 
-#: listlinalbaranproveedorview.cpp:58 listlinalbaranclienteview.cpp:56
+#: bfproveedoralbaransubform.cpp:58 bfclientealbaransubform.cpp:56
 msgid "Orden"
 msgstr ""
 
-#: listseriefacturaview.cpp:48
+#: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
 msgstr ""
 
-#: listseriefacturaview.cpp:80
+#: bfseriefacturaview.cpp:80
 msgid "Codigo serie factura"
 msgstr ""
 
-#: listseriefacturaview.cpp:81
+#: bfseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
 msgstr ""
 
@@ -502,47 +502,47 @@ msgstr ""
 msgid "Nombre almacen"
 msgstr ""
 
-#: busquedafamilia.cpp:36
+#: bfbuscarfamilia.cpp:36
 msgid "Familia:"
 msgstr ""
 
-#: aboutview.cpp:41
+#: bfaboutview.cpp:41
 msgid "Compilado usando la version de QT:"
 msgstr ""
 
-#: listdescalbaranclienteview.cpp:41
+#: bfclientealbarandescuentosubform.cpp:41
 msgid "Id descuento"
 msgstr ""
 
-#: listdescalbaranclienteview.cpp:42
+#: bfclientealbarandescuentosubform.cpp:42
 msgid "Concepto descuento"
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:48
+#: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:51
+#: bfclientealbaransubform.cpp:51
 msgid "P.V.P."
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:52 fichabf.cpp:383
+#: bfclientealbaransubform.cpp:52 fichabf.cpp:383
 msgid "I.V.A."
 msgstr ""
 
-#: listlinalbaranclienteview.cpp:53
+#: bfclientealbaransubform.cpp:53
 msgid "% Recargo E.Q."
 msgstr ""
 
-#: listconfiguracionview.cpp:51
+#: bfconfiguracionview.cpp:51
 msgid "Configuracion"
 msgstr ""
 
-#: listconfiguracionview.cpp:89
+#: bfconfiguracionview.cpp:89
 msgid "Nombre"
 msgstr ""
 
-#: listconfiguracionview.cpp:90
+#: bfconfiguracionview.cpp:90
 msgid "Valor"
 msgstr ""
 
@@ -582,34 +582,34 @@ msgstr ""
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: informereferencia.cpp:142 informereferencia.cpp:212
+#: bfinformereferencia.cpp:142 bfinformereferencia.cpp:212
 msgid "Pres."
 msgstr ""
 
-#: informereferencia.cpp:143 informereferencia.cpp:175
-#: informereferencia.cpp:213 informereferencia.cpp:260
+#: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
+#: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
 msgid "Pedido"
 msgstr ""
 
-#: informereferencia.cpp:144 informereferencia.cpp:176
-#: informereferencia.cpp:214 informereferencia.cpp:261
+#: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
+#: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
 msgid "Entregado"
 msgstr ""
 
-#: informereferencia.cpp:145 informereferencia.cpp:177
-#: informereferencia.cpp:215 informereferencia.cpp:262
+#: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
+#: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
 msgid "Facturado"
 msgstr ""
 
-#: informereferencia.cpp:216
+#: bfinformereferencia.cpp:216
 msgid "Cobrado"
 msgstr ""
 
-#: informereferencia.cpp:263
+#: bfinformereferencia.cpp:263
 msgid "Pagado"
 msgstr ""
 
-#: busquedatipoarticulo.cpp:37
+#: bfbuscartipoarticulo.cpp:37
 msgid "Tipo Articulo:"
 msgstr ""
 
@@ -625,10 +625,10 @@ msgstr ""
 msgid "Error al intentar borrar la forma de pago"
 msgstr ""
 
-#: busquedareferencia.cpp:65
+#: bfbuscarreferencia.cpp:65
 msgid "Informe"
 msgstr ""
 
-#: busquedareferencia.cpp:66
+#: bfbuscarreferencia.cpp:66
 msgid "Referencia"
 msgstr ""

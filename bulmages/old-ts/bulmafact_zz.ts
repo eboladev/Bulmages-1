@@ -1500,25 +1500,25 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>Bulmafact</name>
+    <name>BfBulmaFact</name>
     <message>
-        <location filename="bulmafact.cpp" line="151"/>
+        <location filename="bfbulmafact.cpp" line="151"/>
         <source>BulmaFact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="137"/>
+        <location filename="bfbulmafact.cpp" line="137"/>
         <source>Pulse aceptar para emitir un monton de facturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="152"/>
+        <location filename="bfbulmafact.cpp" line="152"/>
         <source>Pulse aceptar para recibir(destruir) un monton de facturas</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>BusquedaArticuloBase</name>
+    <name>BfBuscarArticuloBase</name>
     <message>
         <location filename="busquedaarticulobase.ui" line="13"/>
         <source>Form1</source>
@@ -1562,7 +1562,7 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>BusquedaFamiliaBase</name>
+    <name>BfBuscarFamiliaBase</name>
     <message>
         <location filename="busquedafamiliabase.ui" line="13"/>
         <source>Form1</source>
@@ -1598,15 +1598,15 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>BusquedaReferenciaBase</name>
+    <name>BfBuscarReferenciaBase</name>
     <message>
-        <location filename="busquedareferenciabase.ui" line="30"/>
+        <location filename="bfbuscarreferenciabase.ui" line="30"/>
         <source>Form1</source>
         <translation></translation>
     </message>
 </context>
 <context>
-    <name>BusquedaTipoArticuloBase</name>
+    <name>BfBuscarTipoArticuloBase</name>
     <message>
         <location filename="busquedatipoarticulobase.ui" line="13"/>
         <source>Form1</source>
@@ -3673,39 +3673,39 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>InformeCliente</name>
+    <name>BfInformeCliente</name>
     <message>
-        <location filename="informereferencia.cpp" line="420"/>
+        <location filename="bfinformereferencia.cpp" line="420"/>
         <source>Articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="458"/>
+        <location filename="bfinformereferencia.cpp" line="458"/>
         <source>Pres.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="506"/>
+        <location filename="bfinformereferencia.cpp" line="506"/>
         <source>Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="507"/>
+        <location filename="bfinformereferencia.cpp" line="507"/>
         <source>Entregado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="508"/>
+        <location filename="bfinformereferencia.cpp" line="508"/>
         <source>Facturado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="462"/>
+        <location filename="bfinformereferencia.cpp" line="462"/>
         <source>Cobrado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="509"/>
+        <location filename="bfinformereferencia.cpp" line="509"/>
         <source>Pagado</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3713,37 +3713,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InformeReferencia</name>
     <message>
-        <location filename="informereferencia.cpp" line="154"/>
+        <location filename="bfinformereferencia.cpp" line="154"/>
         <source>Articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="191"/>
+        <location filename="bfinformereferencia.cpp" line="191"/>
         <source>Pres.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="239"/>
+        <location filename="bfinformereferencia.cpp" line="239"/>
         <source>Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="240"/>
+        <location filename="bfinformereferencia.cpp" line="240"/>
         <source>Entregado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="241"/>
+        <location filename="bfinformereferencia.cpp" line="241"/>
         <source>Facturado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="195"/>
+        <location filename="bfinformereferencia.cpp" line="195"/>
         <source>Cobrado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="242"/>
+        <location filename="bfinformereferencia.cpp" line="242"/>
         <source>Pagado</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3821,63 +3821,63 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>ListConfiguracionBase</name>
+    <name>BfConfiguracionBase</name>
     <message>
-        <location filename="listconfiguracionbase.ui" line="57"/>
+        <location filename="bfconfiguracionbase.ui" line="57"/>
         <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listconfiguracionbase.ui" line="50"/>
+        <location filename="bfconfiguracionbase.ui" line="50"/>
         <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listconfiguracionbase.ui" line="14"/>
+        <location filename="bfconfiguracionbase.ui" line="14"/>
         <source>Propiedades de la empresa</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionSubForm</name>
+    <name>BfConfiguracionSubForm</name>
     <message>
-        <location filename="listconfiguracionview.cpp" line="88"/>
+        <location filename="bfconfiguracionview.cpp" line="88"/>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listconfiguracionview.cpp" line="89"/>
+        <location filename="bfconfiguracionview.cpp" line="89"/>
         <source>Valor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ListConfiguracionView</name>
+    <name>BfConfiguracionView</name>
     <message>
-        <location filename="listconfiguracionview.cpp" line="52"/>
+        <location filename="bfconfiguracionview.cpp" line="52"/>
         <source>Configuracion</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ListDescuentoAlbaranClienteView</name>
+    <name>BfClienteAlbaranDescuentoSubForm</name>
     <message>
-        <location filename="listdescalbaranclienteview.cpp" line="45"/>
+        <location filename="bfclientealbarandescuentosubform.cpp" line="45"/>
         <source>Id albaran</source>
         <translation type="unfinished">Id</translation>
     </message>
     <message>
-        <location filename="listdescalbaranclienteview.cpp" line="42"/>
+        <location filename="bfclientealbarandescuentosubform.cpp" line="42"/>
         <source>Id descuento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listdescalbaranclienteview.cpp" line="43"/>
+        <location filename="bfclientealbarandescuentosubform.cpp" line="43"/>
         <source>Concepto descuento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listdescalbaranclienteview.cpp" line="44"/>
+        <location filename="bfclientealbarandescuentosubform.cpp" line="44"/>
         <source>% Descuento</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4021,127 +4021,127 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>ListLinAlbaranClienteView</name>
+    <name>BfClienteAlbaranSubForm</name>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="45"/>
+        <location filename="bfclientealbaransubform.cpp" line="45"/>
         <source>Id articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="46"/>
+        <location filename="bfclientealbaransubform.cpp" line="46"/>
         <source>Codigo completo articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="47"/>
+        <location filename="bfclientealbaransubform.cpp" line="47"/>
         <source>Nombre articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="55"/>
+        <location filename="bfclientealbaransubform.cpp" line="55"/>
         <source>Id albaran</source>
         <translation type="unfinished">Id</translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="56"/>
+        <location filename="bfclientealbaransubform.cpp" line="56"/>
         <source>Orden</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="53"/>
+        <location filename="bfclientealbaransubform.cpp" line="53"/>
         <source>% Recargo E.Q.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="48"/>
+        <location filename="bfclientealbaransubform.cpp" line="48"/>
         <source>N&#xc2;&#xba; linea</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="49"/>
+        <location filename="bfclientealbaransubform.cpp" line="49"/>
         <source>Descripcion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="50"/>
+        <location filename="bfclientealbaransubform.cpp" line="50"/>
         <source>Cantidad</source>
         <translation type="unfinished">Toma Ya !!!! Te invitarás a algo </translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="51"/>
+        <location filename="bfclientealbaransubform.cpp" line="51"/>
         <source>P.V.P.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="52"/>
+        <location filename="bfclientealbaransubform.cpp" line="52"/>
         <source>I.V.A.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranclienteview.cpp" line="54"/>
+        <location filename="bfclientealbaransubform.cpp" line="54"/>
         <source>% Descuento</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ListLinAlbaranProveedorView</name>
+    <name>BfProveedorAlbaranSubFormBfProveedorAlbaranSubForm</name>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="47"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="47"/>
         <source>Id articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="48"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="48"/>
         <source>Codigo completo articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="49"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="49"/>
         <source>Nombre articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="58"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="58"/>
         <source>Orden</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="50"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="50"/>
         <source>Numero de linea</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="51"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="51"/>
         <source>Descripcion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="52"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="52"/>
         <source>Cantidad</source>
         <translation type="unfinished">Toma Ya !!!! Te invitarás a algo </translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="53"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="53"/>
         <source>Precio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="54"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="54"/>
         <source>% I.V.A.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="55"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="55"/>
         <source>% R.E.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="56"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="56"/>
         <source>% Descuento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinalbaranproveedorview.cpp" line="57"/>
+        <location filename="bfproveedoralbaransubform.cpp" line="57"/>
         <source>Id albaran</source>
         <translation type="unfinished">Id</translation>
     </message>
@@ -4472,40 +4472,40 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>ListSerieFacturaBase</name>
+    <name>BfSerieFacturaBase</name>
     <message>
-        <location filename="listseriefacturabase.ui" line="16"/>
+        <location filename="bfseriefacturabase.ui" line="16"/>
         <source>Series de factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listseriefacturabase.ui" line="55"/>
+        <location filename="bfseriefacturabase.ui" line="55"/>
         <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listseriefacturabase.ui" line="62"/>
+        <location filename="bfseriefacturabase.ui" line="62"/>
         <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ListSerieFacturaSubForm</name>
+    <name>BfSerieFacturaSubForm</name>
     <message>
-        <location filename="listseriefacturaview.cpp" line="79"/>
+        <location filename="bfseriefacturaview.cpp" line="79"/>
         <source>Codigo serie factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listseriefacturaview.cpp" line="80"/>
+        <location filename="bfseriefacturaview.cpp" line="80"/>
         <source>Descripcion serie factura</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ListSerieFacturaView</name>
+    <name>BfSerieFacturaView</name>
     <message>
-        <location filename="listseriefacturaview.cpp" line="49"/>
+        <location filename="bfseriefacturaview.cpp" line="49"/>
         <source>Serie de Factura</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7101,7 +7101,7 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>aboutdlg</name>
+    <name>AboutBase</name>
     <message>
         <location filename="aboutbase.ui" line="502"/>
         <source>Acerca de BulmaFact</source>
@@ -7149,317 +7149,317 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>bulmafactbase</name>
     <message>
-        <location filename="bulmafactbase.ui" line="16"/>
+        <location filename="bfbulmafactbase.ui" line="16"/>
         <source>BulmaFact - Facturacion GPL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="86"/>
+        <location filename="bfbulmafactbase.ui" line="86"/>
         <source>E&amp;mpresa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="33"/>
+        <location filename="bfbulmafactbase.ui" line="33"/>
         <source>Com&amp;pras</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="49"/>
+        <location filename="bfbulmafactbase.ui" line="49"/>
         <source>&amp;Ventas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="76"/>
+        <location filename="bfbulmafactbase.ui" line="76"/>
         <source>Articulo&amp;s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="93"/>
+        <location filename="bfbulmafactbase.ui" line="93"/>
         <source>Maest&amp;ro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="68"/>
+        <location filename="bfbulmafactbase.ui" line="68"/>
         <source>A&amp;yuda</source>
         <translation>&amp;Socooorro</translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="118"/>
+        <location filename="bfbulmafactbase.ui" line="118"/>
         <source>Venta&amp;na</source>
         <translation>Venta&amp;nucos</translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="154"/>
+        <location filename="bfbulmafactbase.ui" line="154"/>
         <source>Listados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="522"/>
+        <location filename="bfbulmafactbase.ui" line="522"/>
         <source>Fichas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="257"/>
+        <location filename="bfbulmafactbase.ui" line="257"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="327"/>
+        <location filename="bfbulmafactbase.ui" line="327"/>
         <source>F4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="378"/>
+        <location filename="bfbulmafactbase.ui" line="378"/>
         <source>F6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="391"/>
+        <location filename="bfbulmafactbase.ui" line="391"/>
         <source>Gestion de &amp;familias</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="396"/>
+        <location filename="bfbulmafactbase.ui" line="396"/>
         <source>&amp;Tipos de articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="407"/>
+        <location filename="bfbulmafactbase.ui" line="407"/>
         <source>F2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="455"/>
+        <location filename="bfbulmafactbase.ui" line="455"/>
         <source>Se&amp;ries de factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="463"/>
+        <location filename="bfbulmafactbase.ui" line="463"/>
         <source>&amp;Trabajadores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="471"/>
+        <location filename="bfbulmafactbase.ui" line="471"/>
         <source>Ventana &amp;completa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="474"/>
+        <location filename="bfbulmafactbase.ui" line="474"/>
         <source>F11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="527"/>
+        <location filename="bfbulmafactbase.ui" line="527"/>
         <source>&amp;Formas de pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="535"/>
+        <location filename="bfbulmafactbase.ui" line="535"/>
         <source>&amp;Almacenes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="540"/>
+        <location filename="bfbulmafactbase.ui" line="540"/>
         <source>&amp;Documentacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="543"/>
+        <location filename="bfbulmafactbase.ui" line="543"/>
         <source>F1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="563"/>
+        <location filename="bfbulmafactbase.ui" line="563"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="276"/>
+        <location filename="bfbulmafactbase.ui" line="276"/>
         <source>Nuevo pe&amp;dido a proveedor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="292"/>
+        <location filename="bfbulmafactbase.ui" line="292"/>
         <source>Nuevo &amp;albaran de proveedor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="308"/>
+        <location filename="bfbulmafactbase.ui" line="308"/>
         <source>Nueva &amp;factura de proveedor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="324"/>
+        <location filename="bfbulmafactbase.ui" line="324"/>
         <source>Nuevo &amp;presupuesto a cliente...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="343"/>
+        <location filename="bfbulmafactbase.ui" line="343"/>
         <source>Nuevo pe&amp;dido de cliente...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="359"/>
+        <location filename="bfbulmafactbase.ui" line="359"/>
         <source>Nuevo &amp;albaran a cliente...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="375"/>
+        <location filename="bfbulmafactbase.ui" line="375"/>
         <source>Nueva &amp;factura a cliente...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="404"/>
+        <location filename="bfbulmafactbase.ui" line="404"/>
         <source>Nuevo &amp;articulo...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="423"/>
+        <location filename="bfbulmafactbase.ui" line="423"/>
         <source>Nuevo &amp;proveedor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="439"/>
+        <location filename="bfbulmafactbase.ui" line="439"/>
         <source>Nuevo &amp;cliente...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="479"/>
+        <location filename="bfbulmafactbase.ui" line="479"/>
         <source>&amp;Acerca de BulmaFact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="495"/>
+        <location filename="bfbulmafactbase.ui" line="495"/>
         <source>Nuevo pa&amp;go a proveedor...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="503"/>
+        <location filename="bfbulmafactbase.ui" line="503"/>
         <source>Nuevo co&amp;bro a cliente...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="254"/>
+        <location filename="bfbulmafactbase.ui" line="254"/>
         <source>&amp;Salir del programa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="284"/>
+        <location filename="bfbulmafactbase.ui" line="284"/>
         <source>Pe&amp;didos a proveedores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="300"/>
+        <location filename="bfbulmafactbase.ui" line="300"/>
         <source>&amp;Albaranes de proveedores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="316"/>
+        <location filename="bfbulmafactbase.ui" line="316"/>
         <source>&amp;Facturas de proveedores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="335"/>
+        <location filename="bfbulmafactbase.ui" line="335"/>
         <source>&amp;Presupuestos a clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="351"/>
+        <location filename="bfbulmafactbase.ui" line="351"/>
         <source>Pe&amp;didos de clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="367"/>
+        <location filename="bfbulmafactbase.ui" line="367"/>
         <source>&amp;Albaranes a clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="386"/>
+        <location filename="bfbulmafactbase.ui" line="386"/>
         <source>&amp;Facturas a clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="415"/>
+        <location filename="bfbulmafactbase.ui" line="415"/>
         <source>&amp;Articulos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="431"/>
+        <location filename="bfbulmafactbase.ui" line="431"/>
         <source>&amp;Proveedores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="450"/>
+        <location filename="bfbulmafactbase.ui" line="450"/>
         <source>&amp;Clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="487"/>
+        <location filename="bfbulmafactbase.ui" line="487"/>
         <source>Pa&amp;gos a proveedores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="511"/>
+        <location filename="bfbulmafactbase.ui" line="511"/>
         <source>Co&amp;bros a clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="554"/>
+        <location filename="bfbulmafactbase.ui" line="554"/>
         <source>&amp;Indexador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="560"/>
+        <location filename="bfbulmafactbase.ui" line="560"/>
         <source>Indexador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="442"/>
+        <location filename="bfbulmafactbase.ui" line="442"/>
         <source>F3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="265"/>
+        <location filename="bfbulmafactbase.ui" line="265"/>
         <source>&amp;Propiedades de la empresa...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="268"/>
+        <location filename="bfbulmafactbase.ui" line="268"/>
         <source>Propiedades de la empresa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="571"/>
+        <location filename="bfbulmafactbase.ui" line="571"/>
         <source>Tipos de IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="579"/>
+        <location filename="bfbulmafactbase.ui" line="579"/>
         <source>Tasas de IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="587"/>
+        <location filename="bfbulmafactbase.ui" line="587"/>
         <source>Bancos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="592"/>
+        <location filename="bfbulmafactbase.ui" line="592"/>
         <source>Organizacio&amp;n en cascada</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="597"/>
+        <location filename="bfbulmafactbase.ui" line="597"/>
         <source>Ordenar &amp;ventanas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="605"/>
+        <location filename="bfbulmafactbase.ui" line="605"/>
         <source>Paises / Provincias</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmafactbase.ui" line="608"/>
+        <location filename="bfbulmafactbase.ui" line="608"/>
         <source>Paises y provincias</source>
         <translation type="unfinished"></translation>
     </message>

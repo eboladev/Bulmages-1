@@ -19,13 +19,13 @@
  ***************************************************************************/
 
 #include "blpostgresqlclient.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blwidget.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs.h"
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 extern "C" MY_EXPORT int SNewClienteView (BfCompany *);
@@ -36,12 +36,12 @@ class MyPlugCli : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmafact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     MyPlugCli();
     ~MyPlugCli();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

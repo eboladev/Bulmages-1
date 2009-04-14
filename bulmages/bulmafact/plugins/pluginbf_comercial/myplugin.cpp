@@ -74,7 +74,7 @@ void mypluginbf::elslot1()
 /**
 \param bges
 **/
-void mypluginbf::inicializa ( Bulmafact *bges )
+void mypluginbf::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginbf::inicializa", 0 );
     /// El men&uacute; de empresa.

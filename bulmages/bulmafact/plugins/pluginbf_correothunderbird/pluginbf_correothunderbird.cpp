@@ -31,7 +31,7 @@
 /**
 \return
 **/
-int entryPoint ( Bulmafact * )
+int entryPoint ( BfBulmaFact * )
 {
     _depura ( "Estoy dentro del plugin de envio de e-mail", 0 );
 

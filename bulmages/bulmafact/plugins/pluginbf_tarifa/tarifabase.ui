@@ -46,7 +46,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_tarifa.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_tarifa.48x48.png</pixmap>
        </property>
       </widget>
      </item>
@@ -237,7 +237,7 @@
        <number>5</number>
       </property>
       <item rowspan="3" row="0" column="0" >
-       <widget class="BusquedaFamilia" native="1" name="mui_idfamilia" >
+       <widget class="BfBuscarFamilia" native="1" name="mui_idfamilia" >
         <property name="minimumSize" >
          <size>
           <width>250</width>
@@ -267,7 +267,7 @@
        </spacer>
       </item>
       <item row="1" column="1" >
-       <widget class="BusquedaAlmacen" name="mui_almacen" >
+       <widget class="BfBuscarAlmacen" name="mui_almacen" >
         <property name="minimumSize" >
          <size>
           <width>250</width>
@@ -355,14 +355,14 @@
    <header>listltarifaview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>BfBuscarAlmacen</class>
    <extends>QComboBox</extends>
-   <header>busquedaalmacen.h</header>
+   <header>bfbuscaralmacen.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFamilia</class>
+   <class>BfBuscarFamilia</class>
    <extends></extends>
-   <header>busquedafamilia.h</header>
+   <header>bfbuscarfamilia.h</header>
   </customwidget>
  </customwidgets>
  <resources>

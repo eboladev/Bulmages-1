@@ -69,7 +69,7 @@ void myplugin::elslot()
 /**
 \param bges
 **/
-void myplugin::inicializa ( Bulmafact *bges )
+void myplugin::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
@@ -92,7 +92,7 @@ void myplugin::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginVehiculosBF" );
 

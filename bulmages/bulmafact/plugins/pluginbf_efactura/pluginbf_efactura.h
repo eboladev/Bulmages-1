@@ -30,13 +30,13 @@
 #include <QObject>
 
 #include "blapplication.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "bfcompany.h"
 #include "facturasplist.h"
 #include "blwidget.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
 
@@ -49,7 +49,7 @@ class efacturabf : public QObject, BlMainCompanyPointer
 public:
     efacturabf();
     ~efacturabf();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
     int FacturaView_FacturaView ( FacturaView * );
     int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
 

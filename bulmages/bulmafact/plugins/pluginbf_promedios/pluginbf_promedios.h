@@ -27,10 +27,10 @@
 #include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "articuloview.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 

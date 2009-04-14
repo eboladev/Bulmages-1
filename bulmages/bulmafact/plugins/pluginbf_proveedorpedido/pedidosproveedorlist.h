@@ -22,7 +22,7 @@
 #ifndef PEDIDOSPROVEEDORLIST_H
 #define PEDIDOSPROVEEDORLIST_H
 
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"

@@ -26,14 +26,14 @@
 #include "blfunctions.h"
 #include "q19qtoolbutton.h"
 #include "q19qtoolbutton1.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 ///
 /**
 \return
 **/
-int entryPoint ( Bulmafact * )
+int entryPoint ( BfBulmaFact * )
 {
     _depura ( "Estoy dentro del plugin de Q19", 0 );
 

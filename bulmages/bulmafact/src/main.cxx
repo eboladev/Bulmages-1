@@ -27,7 +27,7 @@
 #include "blapplication.h"
 #include "blconfiguration.h"
 #include "blplugins.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blsplashscreen.h"
 #include "bldblogindialog.h"
 #include "blfunctions.h"
@@ -51,8 +51,8 @@
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
 {
-    /// Puntero a Bulmafact
-    Bulmafact *bges;
+    /// Puntero a BfBulmaFact
+    BfBulmaFact *bges;
     try {
         fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
         Q_INIT_RESOURCE ( bulmages );
@@ -98,12 +98,12 @@ int main ( int argc, char **argv )
             pass = argv[4];
             g_confpr->setValor ( CONF_LOGIN_USER, us );
             g_confpr->setValor ( CONF_PASSWORD_USER, pass );
-            bges = new Bulmafact ( db );
+            bges = new BfBulmaFact ( db );
             bges->hide();
         } else if ( argc == 3 ) {
             /// Leemos los argumentos pasados por la linea de comandos.
             db = argv[2];
-            bges = new Bulmafact ( db );
+            bges = new BfBulmaFact ( db );
             bges->hide();
         } else {
             BlDbLoginDialog *login1 = new BlDbLoginDialog ( 0, "" );
@@ -115,7 +115,7 @@ int main ( int argc, char **argv )
                 exit ( 1 );
             } // end if
             delete login1;
-            bges = new Bulmafact ( "" );
+            bges = new BfBulmaFact ( "" );
             bges->hide();
         } // end if
         g_main = bges;

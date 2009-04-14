@@ -30,12 +30,12 @@
 #include <QApplication>
 #include <QObject>
 
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "clienteview.h"
 #include "blform.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int ClienteView_ClienteView ( ClienteView * );
 extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
 

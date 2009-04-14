@@ -25,7 +25,7 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 class myplugincont : public QObject
@@ -34,12 +34,12 @@ class myplugincont : public QObject
 
 public:
     BlPostgreSqlClient *m_dbConnection;
-    Bulmafact *m_bulmafact;
+    BfBulmaFact *m_bulmafact;
 
 public:
     myplugincont();
     ~myplugincont();
-    void inicializa ( Bulmafact * );
+    void inicializa ( BfBulmaFact * );
 
 public slots:
     void elslot();

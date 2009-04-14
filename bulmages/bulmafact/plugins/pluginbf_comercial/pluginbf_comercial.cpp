@@ -39,7 +39,7 @@
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
 

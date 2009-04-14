@@ -314,7 +314,7 @@ yyyy --> Digitos de cuenta.</string>
         <number>5</number>
        </property>
        <item>
-        <widget class="ListConfiguracionSubForm" name="mui_subform" />
+        <widget class="BfConfiguracionSubForm" name="mui_subform" />
        </item>
       </layout>
      </widget>
@@ -325,7 +325,7 @@ yyyy --> Digitos de cuenta.</string>
  <layoutdefault spacing="4" margin="4" />
  <customwidgets>
   <customwidget>
-   <class>ListConfiguracionSubForm</class>
+   <class>BfConfiguracionSubForm</class>
    <extends>QTableWidget</extends>
    <header>propiedadesempresa.h</header>
   </customwidget>

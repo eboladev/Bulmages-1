@@ -712,7 +712,7 @@
            <number>5</number>
           </property>
           <item row="0" column="0" colspan="2" >
-           <widget class="BusquedaFamilia" name="mui_idfamilia" >
+           <widget class="BfBuscarFamilia" name="mui_idfamilia" >
             <property name="sizePolicy" >
              <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
               <horstretch>0</horstretch>
@@ -857,7 +857,7 @@
            <number>5</number>
           </property>
           <item row="0" column="0" colspan="4" >
-           <widget class="BusquedaTipoArticulo" name="mui_idtipo_articulo" />
+           <widget class="BfBuscarTipoArticulo" name="mui_idtipo_articulo" />
           </item>
           <item row="1" column="0" >
            <widget class="QLabel" name="textLabel2" >
@@ -971,7 +971,7 @@
            </widget>
           </item>
           <item row="3" column="3" >
-           <widget class="BusquedaTipoIva" name="mui_idtipo_iva" >
+           <widget class="BfBuscarTipoIVA" name="mui_idtipo_iva" >
             <property name="sizePolicy" >
              <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
               <horstretch>0</horstretch>
@@ -1216,9 +1216,9 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaTipoIva</class>
+   <class>BfBuscarTipoIVA</class>
    <extends>QComboBox</extends>
-   <header>busquedatipoiva.h</header>
+   <header>bfbuscartipoiva.h</header>
   </customwidget>
   <customwidget>
    <class>ListCompArticuloView</class>
@@ -1226,14 +1226,14 @@
    <header>comparticulolistview.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFamilia</class>
+   <class>BfBuscarFamilia</class>
    <extends>QTextEdit</extends>
-   <header>busquedafamilia.h</header>
+   <header>bfbuscarfamilia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaTipoArticulo</class>
+   <class>BfBuscarTipoArticulo</class>
    <extends>QTextEdit</extends>
-   <header>busquedatipoarticulo.h</header>
+   <header>bfbuscartipoarticulo.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -24,14 +24,14 @@
 #include "pluginbf_abrereferencia.h"
 #include "blfunctions.h"
 #include "bfform.h"
-#include "busquedareferencia.h"
+#include "bfbuscarreferencia.h"
 
 
 ///
 /**
 \return
 **/
-int entryPoint ( Bulmafact * )
+int entryPoint ( BfBulmaFact * )
 {
     _depura ( _ ( "Estoy dentro del plugin de Abertura de Referencia" ), 0 );
 
@@ -48,9 +48,9 @@ int entryPoint ( Bulmafact * )
 \param l
 \return
 **/
-int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia *l )
+int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
 {
-    _depura ( "BusquedaReferencia_on_mui_rferencia_returnPressed", 0 );
+    _depura ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", 0 );
 
     /// Buscamos la ficha que corresponde al widget.
     QList<BfForm *> lista = g_main->findChildren<BfForm *>();
@@ -70,7 +70,7 @@ int BusquedaReferencia_on_mui_rferencia_returnPressed ( BusquedaReferencia *l )
         delete cur;
     }// end if
 
-    _depura ( "END BusquedaReferencia_on_mui_rferencia_returnPressed", 0 );
+    _depura ( "END BfBuscarReferencia_on_mui_rferencia_returnPressed", 0 );
     return 0;
 }
 

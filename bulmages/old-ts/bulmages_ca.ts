@@ -59,7 +59,7 @@ Desitja continuar? </translation>
     </message>
   </context>
   <context>
-    <name>ImportExportBulmafactBase</name>
+    <name>ImportExportBfBulmaFactBase</name>
     <message>
       <source>Importar y Exportar Datos</source>
       <translation>Importa i exporta dades</translation>
@@ -102,7 +102,7 @@ Desitja continuar? </translation>
     </message>
   </context>
   <context>
-    <name>ImportExportBulmafactView</name>
+    <name>ImportExportBfBulmaFactView</name>
     <message>
       <source>Guardar archivo</source>
       <translation>Desa arxiu</translation>

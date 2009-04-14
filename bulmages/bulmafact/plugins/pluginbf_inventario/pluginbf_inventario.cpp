@@ -63,7 +63,7 @@ void myplugininv::elslot()
 /**
 \param bges
 **/
-void myplugininv::inicializa ( Bulmafact *bges )
+void myplugininv::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugininv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
@@ -90,7 +90,7 @@ void myplugininv::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
 

@@ -88,7 +88,7 @@ void MyPlugIVA::elslot1()
 /**
 \param bges
 **/
-void MyPlugIVA::inicializa ( Bulmafact *bges )
+void MyPlugIVA::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugIVA::inicializa", 0 );
 
@@ -134,7 +134,7 @@ void MyPlugIVA::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de IVA\n", 0 );
 

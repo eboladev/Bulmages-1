@@ -27,7 +27,7 @@
 #include "blplugins.h"
 #include "ticket.h"
 #include "blapplication.h"
-#include "busquedaarticulo.h"
+#include "bfbuscararticulo.h"
 #include "blfixed.h"
 #include "bldockwidget.h"
 
@@ -35,7 +35,7 @@
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
-BusquedaArticulo *g_busc;
+BfBuscarArticulo *g_busc;
 BlDockWidget *g_doc1;
 BtCompany * g_emp;
 
@@ -68,14 +68,14 @@ int entryPoint ( BulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    g_busc = new BusquedaArticulo ( 0 );
+    g_busc = new BfBuscarArticulo ( 0 );
     g_busc->setMainCompany ( etpv );
     g_doc1->setWidget ( g_busc );
 
     return 0;
 }
 
-int BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post ( BusquedaArticulo *busc )
+int BfBuscarArticulo_on_m_codigocompletoarticulo_editingFinished_Post ( BfBuscarArticulo *busc )
 {
     if ( busc->idarticulo() != "" )
         g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), BlFixed ( "1" ) );

@@ -29,9 +29,9 @@
 #include "blcompanydialog.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "listconfiguracionview.h"
+#include "bfconfiguracionview.h"
 #include "blplugins.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 
 
 /** No precisa de operaciones en su construccion.
@@ -39,7 +39,7 @@
 /**
 \param bges
 **/
-BfCompany::BfCompany ( Bulmafact *bges ) : BlMainCompany()
+BfCompany::BfCompany ( BfBulmaFact *bges ) : BlMainCompany()
 {
     _depura ( "BfCompany::BfCompany", 0 );
     m_bulmafact = bges;
@@ -160,7 +160,7 @@ void BfCompany::s_seriesFactura()
 {
     _depura ( "BfCompany::s_seriesFactura", 0 );
     /*
-       ListSerieFacturaView *lser = new ListSerieFacturaView ( this, 0 );
+       BfSerieFacturaView *lser = new BfSerieFacturaView ( this, 0 );
        m_pWorkspace->addWindow ( lser );
        lser->show();
     */
@@ -193,17 +193,17 @@ void BfCompany::s_almacenes()
 }
 
 
-/** Crea una instancia de ListConfiguracionView y la presenta.
+/** Crea una instancia de BfConfiguracionView y la presenta.
 */
 /**
 **/
-void BfCompany::s_newListConfiguracionView()
+void BfCompany::s_newBfConfiguracionView()
 {
-    _depura ( "BfCompany::s_newListConfiguracionView", 0 );
-    ListConfiguracionView *lser = new ListConfiguracionView ( this, 0 );
+    _depura ( "BfCompany::s_newBfConfiguracionView", 0 );
+    BfConfiguracionView *lser = new BfConfiguracionView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
-    _depura ( "END BfCompany::s_newListConfiguracionView", 0 );
+    _depura ( "END BfCompany::s_newBfConfiguracionView", 0 );
 }
 
 

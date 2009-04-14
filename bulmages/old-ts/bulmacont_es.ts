@@ -2891,7 +2891,7 @@
     </message>
 </context>
 <context>
-    <name>ListConfiguracionSubForm</name>
+    <name>BfConfiguracionSubForm</name>
     <message>
         <location filename="propiedadesempresa.cpp" line="191"/>
         <source>Nombre</source>

@@ -30,11 +30,11 @@
 #include <QObject>
 
 #include "clientslist.h"
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "articulolist.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int ClientsList_ClientsList ( ClientsList * );
 extern "C" MY_EXPORT int ArticuloList_ArticuloList ( ArticuloList * );
 

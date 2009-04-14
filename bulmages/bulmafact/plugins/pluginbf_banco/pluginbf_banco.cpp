@@ -66,7 +66,7 @@ void MyPlugBanc::elslot1()
 /**
 \param bges
 **/
-void MyPlugBanc::inicializa ( Bulmafact *bges )
+void MyPlugBanc::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugBanc::inicializa", 0 );
 
@@ -100,7 +100,7 @@ void MyPlugBanc::inicializa ( Bulmafact *bges )
 \param bges
 \return
 **/
-int entryPoint ( Bulmafact *bges )
+int entryPoint ( BfBulmaFact *bges )
 {
     _depura ( "Punto de Entrada del plugin de bancos\n", 0 );
 

@@ -285,7 +285,7 @@
         <widget class="BfSubForm" name="mui_list" />
        </item>
        <item row="1" column="1" >
-        <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
+        <widget class="BfBuscarFormaPago" name="mui_idforma_pago" />
        </item>
        <item row="1" column="0" >
         <widget class="QLabel" name="label_2" >
@@ -399,9 +399,9 @@
    <header>bfsubform.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
  </customwidgets>
  <resources>

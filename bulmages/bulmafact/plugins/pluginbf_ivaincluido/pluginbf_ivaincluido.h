@@ -25,15 +25,15 @@
 #endif
 
 #include <QObject>
-#include "bulmafact.h"
+#include "bfbulmafact.h"
 #include "blform.h"
 #include "bfsubform.h"
 #include "articuloview.h"
 #include "articulolist.h"
-#include "listlinalbaranclienteview.h"
+#include "bfclientealbaransubform.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
-extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post (ListLinAlbaranClienteView *);
+extern "C" MY_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post (BfClienteAlbaranSubForm *);

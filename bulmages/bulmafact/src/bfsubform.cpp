@@ -28,11 +28,11 @@
 
 #include "bfsubform.h"
 #include "blfunctions.h"
-#include "busquedatipoiva.h"
+#include "bfbuscartipoiva.h"
 #include "bltexteditdelegate.h"
-#include "busquedatrabajador.h"
-#include "busquedaalmacen.h"
-#include "busquedaarticulo.h"
+#include "bfbuscartrabajador.h"
+#include "bfbuscaralmacen.h"
+#include "bfbuscararticulo.h"
 #include "blplugins.h"
 
 
@@ -564,24 +564,24 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
-        BusquedaArticuloDelegate * editor = new BusquedaArticuloDelegate ( parent );
+        BfBuscarArticuloDelegate * editor = new BfBuscarArticuloDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaArticulo" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarArticulo" );
         return editor;
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
-        BusquedaTipoIVADelegate * editor = new BusquedaTipoIVADelegate ( parent );
+        BfBuscarTipoIVADelegate * editor = new BfBuscarTipoIVADelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTipoIVA" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarTipoIVA" );
         return editor;
     } else if ( linea->nomcampo() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
-        BusquedaTrabajadorDelegate * editor = new BusquedaTrabajadorDelegate ( parent );
+        BfBuscarTrabajadorDelegate * editor = new BfBuscarTrabajadorDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarTrabajadorDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
-        BusquedaAlmacenDelegate * editor = new BusquedaAlmacenDelegate ( parent );
+        BfBuscarAlmacenDelegate * editor = new BfBuscarAlmacenDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        _depura ( "END BfSubFormDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarAlmacenDelegate" );
         return editor;
     } else  {
         _depura ( "END BfSubFormDelegate::createEditor", 0, "Default Editor" );
@@ -634,20 +634,20 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         } // end if
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
-        BusquedaArticuloDelegate * comboBox = static_cast<BusquedaArticuloDelegate*> ( editor );
+        BfBuscarArticuloDelegate * comboBox = static_cast<BfBuscarArticuloDelegate*> ( editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
         model->setData ( index, value );
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
-        BusquedaTipoIVADelegate * comboBox = static_cast<BusquedaTipoIVADelegate*> ( editor );
+        BfBuscarTipoIVADelegate * comboBox = static_cast<BfBuscarTipoIVADelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else if ( linea->nomcampo() == "nomtrabajador"  && m_subform->tableName() != "trabajador" ) {
-        BusquedaTrabajadorDelegate * comboBox = static_cast<BusquedaTrabajadorDelegate*> ( editor );
+        BfBuscarTrabajadorDelegate * comboBox = static_cast<BfBuscarTrabajadorDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else if ( linea->nomcampo() == "nomalmacen" && m_subform->tableName() != "almacen" ) {
-        BusquedaAlmacenDelegate * comboBox = static_cast<BusquedaAlmacenDelegate*> ( editor );
+        BfBuscarAlmacenDelegate * comboBox = static_cast<BfBuscarAlmacenDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else {
@@ -684,19 +684,19 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*> ( editor );
+        BfBuscarArticuloDelegate *comboBox = static_cast<BfBuscarArticuloDelegate*> ( editor );
         comboBox->addItem ( value );
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*> ( editor );
+        BfBuscarTipoIVADelegate *comboBox = static_cast<BfBuscarTipoIVADelegate*> ( editor );
         comboBox->set ( value );
     } else if ( linea->nomcampo() == "nomtrabajador"  && m_subform->tableName() != "trabajador" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaTrabajadorDelegate *comboBox = static_cast<BusquedaTrabajadorDelegate*> ( editor );
+        BfBuscarTrabajadorDelegate *comboBox = static_cast<BfBuscarTrabajadorDelegate*> ( editor );
         comboBox->set ( value );
     } else if ( linea->nomcampo() == "nomalmacen" && m_subform->tableName() != "almacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaAlmacenDelegate *comboBox = static_cast<BusquedaAlmacenDelegate*> ( editor );
+        BfBuscarAlmacenDelegate *comboBox = static_cast<BfBuscarAlmacenDelegate*> ( editor );
         comboBox->set ( value );
     } else {
         BlSubFormDelegate::setEditorData ( editor, index );

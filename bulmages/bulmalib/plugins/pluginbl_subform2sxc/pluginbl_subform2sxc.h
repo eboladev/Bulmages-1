@@ -29,7 +29,7 @@
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
-//#include "bulmafact.h"
+//#include "bfbulmafact.h"
 #include "blwidget.h"
 #include "blsubform.h"
 
