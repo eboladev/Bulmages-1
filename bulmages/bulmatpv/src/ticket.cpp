@@ -581,13 +581,17 @@ void  Ticket::imprimir()
 void Ticket::imprimir()
 {
 
-    guardar();
+    if ( guardar() == -1) {
+        _depura ( "Error en la llamada a guardar()", 0 );
+        return;
+    }
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "Ticket_imprimir", this );
     if ( res != 0 ) {
         return;
     } // end if
+    
     struct empresastr {
         QString nombre;
         QString direccionCompleta;
@@ -595,32 +599,32 @@ void Ticket::imprimir()
         QString ciudad;
         QString provincia;
         QString telefono;
-    }empresa;
+    } empresa;
 
     struct clientestr {
         QString cif;
         QString nombre;
-    }cliente;
+    } cliente;
 
     struct trabajadorstr {
         QString nombre;
         QString id;
-    }trabajador;
+    } trabajador;
 
     struct almacenstr {
         QString nombre;
-    }almacen;
+    } almacen;
 
     struct fechastr {
         QString dia;
         QString hora;
-    }fecha;
+    } fecha;
 
     struct totalstr {
         BlFixed iva;
         BlFixed baseImponible;
         BlFixed totalIva;
-    }total;
+    } total;
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
@@ -674,13 +678,17 @@ void Ticket::imprimir()
     delete cur;
 
     BlDbRecord *linea;
-    if ( listaLineas() ->size() )
+    
+    if ( listaLineas() ->size() ) {
         total.iva = BlFixed ( listaLineas()->at ( 0 )->dbValue ( "ivalalbaran" ) );
+    }
+        
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         linea = listaLineas() ->at ( i );
         BlFixed cantidad = BlFixed ( linea->dbValue ( "cantlalbaran" ) );
         total.baseImponible = total.baseImponible + cantidad * BlFixed ( linea->dbValue ( "pvplalbaran" ) );
     } // end for
+    
     total.totalIva = total.baseImponible + total.baseImponible * total.iva / BlFixed ( "100" );
 
     EscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
@@ -691,6 +699,7 @@ void Ticket::imprimir()
     if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
         pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
     } // end if
+    
     pr.printText ( empresa.nombre + "\n" );
     pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
     pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
@@ -714,6 +723,7 @@ void Ticket::imprimir()
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         if ( i == listaLineas()->size() - 1 )
             pr.setUnderlineMode ( 1 );
+            
         linea = listaLineas() ->at ( i );
         BlFixed iva = BlFixed ( linea->dbValue ( "ivalalbaran" ) );
         BlFixed pvp = BlFixed ( linea->dbValue ( "pvplalbaran" ) );
@@ -727,6 +737,7 @@ void Ticket::imprimir()
         pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', TRUE ) );
         pr.printText ( "\n" );
     }
+    
     pr.setUnderlineMode ( 0 );
     pr.setJustification ( right );
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
@@ -752,7 +763,6 @@ void Ticket::imprimir()
     pr.setJustification ( center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
-
 
     QByteArray qba = dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
@@ -942,40 +952,45 @@ int Ticket::guardar()
 
     try {
 
-	if ( listaLineas() ->count() == 0 ) {
-		mensajeAviso ( _( "El ticket esta vacio." ) );
-		return -1;
-	} // end if
+        if ( listaLineas() ->count() == 0 ) {
+                mensajeAviso ( _( "El ticket esta vacio." ) );
+                return -1;
+        } // end if
 
         QString id;
         mainCompany() ->begin();
         DBsave ( id );
         BlDbRecord *item;
+        
         for ( int i = 0; i < listaLineas() ->size(); ++i ) {
             QString id1;
             item = listaLineas() ->at ( i );
             item->setDbValue ( "idalbaran", id );
             item->setDbValue ( "ordenlalbaran", QString::number ( i ) );
             item->DBsave ( id1 );
-        }// end for
+        } // end for
+        
         mainCompany() ->commit();
-	setDbValue("idalbaran", id);
+        setDbValue("idalbaran", id);
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM albaran WHERE idalbaran = " + id );
-	setDbValue("refalbaran", cur->valor("refalbaran"));
-	setDbValue("numalbaran", cur->valor("numalbaran"));
+        setDbValue("refalbaran", cur->valor("refalbaran"));
+        setDbValue("numalbaran", cur->valor("numalbaran"));
 
-//        DBload ( cur );
         delete cur;
 
         _depura ( "END Ticket::guardar", 0 );
+        
         return 0;
+        
     } catch ( ... ) {
+    
         mensajeInfo ( "Error inesperado con la base de datos" );
         mainCompany() ->rollback();
+        
         return -1;
+        
     } // end try
 }
-
 
 void Ticket::borrarLinea ( BlDbRecord *linea )
 {

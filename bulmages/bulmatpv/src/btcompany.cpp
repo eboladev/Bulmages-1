@@ -496,11 +496,24 @@ void BtCompany::cobrar()
         return;
     } // end if
 
+    // Si el albaran existe, es que ya lo hemos sacado como ticket por la impresora
     if ( m_ticketActual->dbValue ( "idalbaran" ) != "" ) {
-        m_ticketActual->guardar();
+        
+        if ( m_ticketActual->guardar() == -1) {
+            _depura ( "Error en la llamada a guardar()", 0 );
+            return;
+        }
+        
+    // Si no, guardamos e imprimimos tambien
     } else {
-        m_ticketActual->guardar();
+    
+        if ( m_ticketActual->guardar() == -1) {
+            _depura ( "Error en la llamada a guardar()", 0 );
+            return;
+        }
+    
         m_ticketActual->imprimir();
+    
     } // end if
 
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
