@@ -53,6 +53,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent )
         addDbField ( "fecha2convocatoriareunion", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha 2ª Convocatoria" ) );
         addDbField ( "tiporeunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Tipo" ) );
         addDbField ( "conceptoreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Concepto" ) );
+        addDbField ( "resolucionreunion", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Resolucion" ) );
 
         mui_list->setMainCompany( comp );
         mui_list->setDbTableName ( "asistentereunion" );
@@ -67,7 +68,25 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent )
         mui_list->setSortingEnabled ( FALSE );
         
         mui_list->cargar("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
+
+
+        mui_ordendia->setMainCompany( comp );
+        mui_ordendia->setDbTableName ( "ordendiareunion" );
+        mui_ordendia->setDbFieldId ( "idordendiareunion" );
+        mui_ordendia->addSubFormHeader ( "idordendiareunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
+        mui_ordendia->addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
+        mui_ordendia->addSubFormHeader ( "conceptoordendiareunion", BlDbField::DbVarChar, BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Concepto" ) );
+        mui_ordendia->addSubFormHeader ( "textoordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Texto" ) );
+        mui_ordendia->addSubFormHeader ( "resolucionordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Resolucion" ) );
+
+        mui_ordendia->setInsert ( TRUE );
+        mui_ordendia->setDelete ( TRUE );
+        mui_ordendia->setSortingEnabled ( FALSE );
         
+        mui_ordendia->cargar("SELECT * from ordendiareunion  WHERE 1 = 2");
+        
+
+
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
@@ -119,6 +138,10 @@ int ConvReunionView::guardarPost()
     _depura ( " ConvReunionView::guardarPost", 0 );
     mui_list->setColumnValue("idreunion", dbValue("idreunion") );
     mui_list->guardar();
+    
+    mui_ordendia->setColumnValue("idreunion", dbValue("idreunion") );
+    mui_ordendia->guardar();
+    
     _depura ( "END ConvReunionView::guardarPost", 0 );
 }
 
@@ -135,6 +158,7 @@ int ConvReunionView::cargarPost ( QString id )
 {
     _depura ( " ConvReunionView::cargarPost", 0 );
     mui_list->cargar("SELECT * FROM asistentereunion NATURAL LEFT JOIN cliente WHERE idreunion = " + id);
+    mui_ordendia->cargar("SELECT * FROM ordendiareunion WHERE idreunion = " + id);
     _depura ( "END ConvReunionView::cargarPost", 0 );
     return 0;
 }

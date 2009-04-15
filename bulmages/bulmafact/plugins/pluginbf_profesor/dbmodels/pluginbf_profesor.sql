@@ -286,9 +286,16 @@ BEGIN
        tiporeunion VARCHAR NOT NULL,
        fecha1convocatoriareunion timestamp DEFAULT now() NOT NULL,
        fecha2convocatoriareunion timestamp DEFAULT now() NOT NULL,
-       conceptoreunion text
+       conceptoreunion TEXT,
+       resolucionreunion TEXT
         );
         END IF;
+
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''resolucionreunion'' AND relname=''reunion'';
+   IF NOT FOUND THEN
+      ALTER TABLE reunion ADD COLUMN resolucionreunion TEXT;
+   END IF;
+
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''ordendiareunion'';
         IF NOT FOUND THEN
