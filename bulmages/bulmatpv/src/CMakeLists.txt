@@ -7,11 +7,11 @@ file(GLOB bulmatpv_UIS *.ui)
 
 set(bulmatpvEx main.cxx)
 
-set(bulmatpv_MOCS bulmatpv.h 
-	   aboutview.h 
-	   ticket.h 
+set(bulmatpv_MOCS btbulmatpv.h 
+	   btaboutview.h 
+	   btticket.h 
 	   btsubform.h 
-	   input.h)
+	   btinput.h)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)

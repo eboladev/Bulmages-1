@@ -27,7 +27,7 @@
 #include "blfunctions.h"
 #include "btcompany.h"
 #include "blplugins.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "blapplication.h"
 
 
@@ -41,7 +41,7 @@ QFile *g_file;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
@@ -64,7 +64,7 @@ int entryPoint ( BulmaTPV *tpv )
 /**
 \return
 **/
-int exitPoint ( BulmaTPV *tpv )
+int exitPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginvisor::entryPoint", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
@@ -76,15 +76,15 @@ int exitPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int Ticket_insertarArticulo_Post ( Ticket *tick )
+int Ticket_insertarArticulo_Post ( BtTicket *tick )
 {
     _depura ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         QTextStream out ( g_file );
-        out <<   tick->lineaActTicket()->dbValue ( "codigocompletoarticulo" ).left ( 5 );
-        out << " " << tick->lineaActTicket()->dbValue ( "nomarticulo" ).left ( 10 );
-        out << "\n      P.V.P. : " << tick->lineaActTicket()->dbValue ( "pvplalbaran" );
+        out <<   tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).left ( 5 );
+        out << " " << tick->lineaActBtTicket()->dbValue ( "nomarticulo" ).left ( 10 );
+        out << "\n      P.V.P. : " << tick->lineaActBtTicket()->dbValue ( "pvplalbaran" );
         g_file->flush();
         g_file->close();
     } // end if

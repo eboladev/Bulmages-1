@@ -1,0 +1,86 @@
+<ui version="4.0" >
+ <class>BtBulmaTPVBase</class>
+ <widget class="QMainWindow" name="BtBulmaTPVBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>240</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Iglues/BtBulmaTPV</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/bulmatpv.svg</normaloff>:/Images/bulmatpv.svg</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget" />
+  <widget class="QStatusBar" name="statusbar" />
+  <action name="actionSobre_BtBulmaTPV" >
+   <property name="text" >
+    <string>Sobre BtBulmaTPV</string>
+   </property>
+  </action>
+  <action name="actionSobre_Bulmages" >
+   <property name="text" >
+    <string>Sobre Bulmages</string>
+   </property>
+  </action>
+  <action name="actionSobre_Qt" >
+   <property name="text" >
+    <string>Sobre Qt</string>
+   </property>
+  </action>
+  <action name="actionCerrar" >
+   <property name="text" >
+    <string>Cerrar</string>
+   </property>
+  </action>
+  <action name="actionModificar_Cliente" >
+   <property name="text" >
+    <string>Preferencias</string>
+   </property>
+  </action>
+  <action name="actionA_adir_Cliente_2" >
+   <property name="text" >
+    <string>Anyadir</string>
+   </property>
+  </action>
+  <action name="actionModificar" >
+   <property name="text" >
+    <string>Modificar</string>
+   </property>
+  </action>
+  <action name="actionBorrar" >
+   <property name="text" >
+    <string>Borrar</string>
+   </property>
+  </action>
+  <action name="actionIdentificaci_n" >
+   <property name="text" >
+    <string>Identificacion</string>
+   </property>
+  </action>
+  <action name="actionEstad_sticas" >
+   <property name="text" >
+    <string>Estadisticas</string>
+   </property>
+  </action>
+  <action name="actionCuentas_Pendientes" >
+   <property name="text" >
+    <string>Pendiente</string>
+   </property>
+  </action>
+  <action name="actionAdministrador" >
+   <property name="text" >
+    <string>Administrador</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../bulmages.qrc" />
+ </resources>
+ <connections/>
+</ui>

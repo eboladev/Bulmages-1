@@ -18,7 +18,7 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     base basesimpreqeq;
     BlDbRecord *linea;
 
-    Ticket *tick = emp->ticketActual();
+    BtTicket *tick = emp->ticketActual();
 
     /// Impresion de los contenidos.
     QString l;

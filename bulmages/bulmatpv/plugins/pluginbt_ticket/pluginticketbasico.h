@@ -25,12 +25,12 @@
 #endif
 
 #include "blfunctions.h"
-#include "bulmatpv.h"
-#include "ticket.h"
+#include "btbulmatpv.h"
+#include "btticket.h"
 #include "btcompany.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int exitPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int Ticket_pintar ( Ticket * );
+extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" MY_EXPORT int exitPoint ( BtBulmaTPV * );
+extern "C" MY_EXPORT int Ticket_pintar ( BtTicket * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );

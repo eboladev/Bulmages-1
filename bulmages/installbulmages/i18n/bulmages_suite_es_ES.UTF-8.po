@@ -1555,7 +1555,7 @@ msgstr "Actualizar listado"
 msgid "Acuerdo de &licencia"
 msgstr "Acuerdo de &licencia"
 
-#: ui_bulmatpvbase.h:99
+#: ui_btbulmatpvbase.h:99
 msgid "Administrador"
 msgstr "Administrador"
 
@@ -1661,7 +1661,7 @@ msgstr "Alias"
 msgid "All files (*)"
 msgstr "All files (*)"
 
-#: ticket.cpp:49 cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
+#: btticket.cpp:49 cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
 #: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
 #: cuadranteview.cpp:58 ui_cuadrante1base.h:311 presupuestoview.cpp:62
 #: presupuestolist.cpp:361 plugintarifas.cpp:187 plugininventario.cpp:122
@@ -1759,7 +1759,7 @@ msgstr "Anual"
 msgid "Anulado"
 msgstr "Anulado"
 
-#: ui_bulmatpvbase.h:93
+#: ui_btbulmatpvbase.h:93
 msgid "Anyadir"
 msgstr "Anyadir"
 
@@ -2154,7 +2154,7 @@ msgstr "Borra por completo una empresa"
 msgid "Borrador"
 msgstr "Borrador"
 
-#: ui_uiconfiguracion.h:456 ui_mpatrimonialesbase.h:125 ui_bulmatpvbase.h:95
+#: ui_uiconfiguracion.h:456 ui_mpatrimonialesbase.h:125 ui_btbulmatpvbase.h:95
 #: ui_clientslistbase.h:287 ui_clientslistbase.h:292 tiposarticuloview.cpp:384
 #: familiasview.cpp:478 ui_articleeditbase.h:595 ui_articleeditbase.h:600
 #: ui_providerslistbase.h:292 ui_providerslistbase.h:297 ui_tarifabase.h:247
@@ -2399,7 +2399,7 @@ msgstr "BulmaFact - Rutas comerciales"
 msgid "BulmaGes"
 msgstr "BulmaGes"
 
-#: ui_tpvdlg.h:355 ui_bulmatpvbase.h:87 ui_selectorbase.h:330
+#: ui_tpvdlg.h:355 ui_btbulmatpvbase.h:87 ui_selectorbase.h:330
 msgid "BulmaTPV"
 msgstr "BulmaTPV"
 
@@ -2662,7 +2662,7 @@ msgid "Cant."
 msgstr "Cant."
 
 #: amortizacionview.cpp:80 proyectoview.cpp:74 proyectoview.cpp:93
-#: ui_tpvdlg.h:380 ticket.cpp:86 bfproveedoralbaransubform.cpp:52
+#: ui_tpvdlg.h:380 btticket.cpp:86 bfproveedoralbaransubform.cpp:52
 #: bfclientealbaransubform.cpp:50 listlinpresupuestoview.cpp:51
 #: listlinpedidoproveedorview.cpp:45 pagoslist.cpp:253 pagoview.cpp:66
 #: listlinfacturapview.cpp:53 movimientosview.cpp:180 cobroslist.cpp:317
@@ -2774,7 +2774,7 @@ msgstr "Centros de cos&te"
 
 #: ui_cambiactabase.h:242 ui_ccostebase.h:289 ui_bbloqfechabase.h:152
 #: ui_selectccostebase.h:98 ui_selectcanalbase.h:97 ui_confreglasbase.h:294
-#: ui_bulmatpvbase.h:91 ui_fichacfgbase.h:292
+#: ui_btbulmatpvbase.h:91 ui_fichacfgbase.h:292
 msgid "Cerrar"
 msgstr "Cerrar"
 
@@ -2822,7 +2822,7 @@ msgstr "Clase"
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clave de acceso a la web del proveedor"
 
-#: ticket.cpp:48 pluginbuscacliente.cpp:57 clienteview.cpp:52
+#: btticket.cpp:48 pluginbuscacliente.cpp:57 clienteview.cpp:52
 #: ui_clientebase.h:555 presupuestoview.cpp:61 presupuestolist.cpp:352
 #: albaranclienteview.cpp:73 cobroview.cpp:62 compraventaview.cpp:83
 #: listlresarticulo.cpp:36 listlresarticulo.cpp:80 ui_contratoslistbase.h:341
@@ -2963,7 +2963,7 @@ msgstr "Codigo Inicial\n"
 msgid "Codigo almacen"
 msgstr "Codigo almacen"
 
-#: ticket.cpp:94 movimientosview.cpp:178
+#: btticket.cpp:94 movimientosview.cpp:178
 msgid "Codigo articulo"
 msgstr "Codigo articulo"
 
@@ -3874,7 +3874,7 @@ msgstr "Descripcio&n"
 
 #: ccosteview.cpp:50 ccosteview.cpp:76 extractosubform.cpp:50
 #: cuentaview.cpp:45 diariosubform.cpp:40 proyectoview.cpp:78
-#: proyectoview.cpp:97 ui_tpvdlg.h:379 ticket.cpp:42
+#: proyectoview.cpp:97 ui_tpvdlg.h:379 btticket.cpp:42
 #: bfproveedoralbaransubform.cpp:51 bfclientealbaransubform.cpp:49
 #: presupuestolist.cpp:357 listlinpresupuestoview.cpp:50
 #: listlinpedidoproveedorview.cpp:44 tiposarticuloview.cpp:46
@@ -3990,7 +3990,7 @@ msgstr "Descuadre:"
 msgid "Descuen&tos"
 msgstr "Descuen&tos"
 
-#: ui_tpvdlg.h:381 ticket.cpp:89 fichabf.cpp:336 pedidoproveedorview.cpp:338
+#: ui_tpvdlg.h:381 btticket.cpp:89 fichabf.cpp:336 pedidoproveedorview.cpp:338
 #: facturapview.cpp:399 listlinfacturapview.cpp:57 listlresarticulo.cpp:44
 #: listlresarticulo.cpp:87 listlresarticulo.cpp:130 listlresarticulo.cpp:174
 msgid "Descuento"
@@ -4416,7 +4416,7 @@ msgstr ""
 "El resultado solo sera correcto si coincide con el plan contable de su "
 "empresa."
 
-#: ticket.cpp:941
+#: btticket.cpp:941
 msgid "El ticket esta vacio."
 msgstr "El ticket esta vacio."
 
@@ -4838,7 +4838,7 @@ msgstr ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
 
-#: ui_bulmatpvbase.h:97
+#: ui_btbulmatpvbase.h:97
 msgid "Estadisticas"
 msgstr "Estadisticas"
 
@@ -5894,7 +5894,7 @@ msgstr "Hijos"
 msgid "Hoja de Compra Venta"
 msgstr "Hoja de Compra Venta"
 
-#: ticket.cpp:46 rutacomercial.cpp:46 incidenciacomercial.cpp:47
+#: btticket.cpp:46 rutacomercial.cpp:46 incidenciacomercial.cpp:47
 #: cuadrantediarioview.cpp:72 pluginasterisk.cpp:100 pluginasterisk.cpp:163
 #: zview.cpp:60 zview.cpp:81 zlist.cpp:58 ui_zbase.h:323
 msgid "Hora"
@@ -6216,7 +6216,7 @@ msgstr "IV. Pasivos por impuesto diferido."
 msgid "IV. Por ganancias y perdidas actuariales y otros ajustes"
 msgstr "IV. Por ganancias y perdidas actuariales y otros ajustes"
 
-#: registroiva.cpp:49 listregistroivaview.cpp:53 ticket.cpp:88
+#: registroiva.cpp:49 listregistroivaview.cpp:53 btticket.cpp:88
 #: listlresarticulo.cpp:43 listlresarticulo.cpp:86 listlresarticulo.cpp:129
 #: listlresarticulo.cpp:173
 msgid "IVA"
@@ -6256,7 +6256,7 @@ msgstr "IX. Otros instrumentos de patrimonio neto."
 msgid "Id"
 msgstr "Id"
 
-#: ticket.cpp:84
+#: btticket.cpp:84
 msgid "Id Albaran"
 msgstr "Id Albaran"
 
@@ -6284,7 +6284,7 @@ msgstr "Id Tasa IVA"
 msgid "Id Tipo IVA"
 msgstr "Id Tipo IVA"
 
-#: ticket.cpp:44 bfproveedoralbaransubform.cpp:57
+#: btticket.cpp:44 bfproveedoralbaransubform.cpp:57
 #: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:55
 #: albaranclienteview.cpp:72 zview.cpp:72 listdescalbaranprovview.cpp:43
 #: compraventaview.cpp:82
@@ -6318,7 +6318,7 @@ msgstr "Id amortizacion"
 msgid "Id apunte"
 msgstr "Id apunte"
 
-#: ticket.cpp:93 bfproveedoralbaransubform.cpp:47
+#: btticket.cpp:93 bfproveedoralbaransubform.cpp:47
 #: bfclientealbaransubform.cpp:45 listlinpresupuestoview.cpp:46
 #: listlinpedidoproveedorview.cpp:40 listcontrolstockview.cpp:41
 #: movimientosview.cpp:177 pluginalias.cpp:110 listlincontratoview.cpp:40
@@ -6388,11 +6388,11 @@ msgstr "Id facturap"
 msgid "Id familia"
 msgstr "Id familia"
 
-#: ticket.cpp:45
+#: btticket.cpp:45
 msgid "Id fechaalbaran"
 msgstr "Id fechaalbaran"
 
-#: ticket.cpp:53 pedidoproveedorview.cpp:63 pluginclientprov.cpp:77
+#: btticket.cpp:53 pedidoproveedorview.cpp:63 pluginclientprov.cpp:77
 #: facturapview.cpp:66 zview.cpp:78 albaranproveedorview.cpp:62
 #: compraventaview.cpp:71
 msgid "Id forma de pago"
@@ -6402,7 +6402,7 @@ msgstr "Id forma de pago"
 msgid "Id inventario"
 msgstr "Id inventario"
 
-#: ticket.cpp:85
+#: btticket.cpp:85
 msgid "Id lalbaran"
 msgstr "Id lalbaran"
 
@@ -6495,7 +6495,7 @@ msgstr "Id. Registro IVA"
 msgid "Id. almacen"
 msgstr "Id. almacen"
 
-#: ui_bulmatpvbase.h:96
+#: ui_btbulmatpvbase.h:96
 msgid "Identificacion"
 msgstr "Identificacion"
 
@@ -7193,7 +7193,7 @@ msgstr "Modelo del codigo de cuenta:"
 msgid "Modi&ficar plan contable"
 msgstr "Modi&ficar plan contable"
 
-#: ui_bulmatpvbase.h:94
+#: ui_btbulmatpvbase.h:94
 msgid "Modificar"
 msgstr "Modificar"
 
@@ -7477,7 +7477,7 @@ msgstr "Nom Presupuesto"
 
 #: ui_uivisorempresas.h:46 ui_uivisorempresas.h:70 ui_mpatrimonialbase.h:350
 #: ccosteview.cpp:49 ccosteview.cpp:76 amortizacionesview.cpp:48
-#: propiedadesempresa.cpp:191 listproyectosview.cpp:49 ticket.cpp:43
+#: propiedadesempresa.cpp:191 listproyectosview.cpp:49 btticket.cpp:43
 #: bfconfiguracionview.cpp:89 familiasview.cpp:51 familiasview.cpp:569
 #: providerslist.cpp:286 tutoreslist.cpp:263 ui_tutorbase.h:458
 #: listlinfacturapview.cpp:50 convocatoriaslist.cpp:263
@@ -7533,7 +7533,7 @@ msgstr "Nombre alternativo del contrato"
 msgid "Nombre alternativo del proveedor"
 msgstr "Nombre alternativo del proveedor"
 
-#: ticket.cpp:95 ticket.cpp:96 bfproveedoralbaransubform.cpp:49
+#: btticket.cpp:95 btticket.cpp:96 bfproveedoralbaransubform.cpp:49
 #: bfclientealbaransubform.cpp:47 listlinpedidoproveedorview.cpp:42
 #: listltarifaview.cpp:59 listcontrolstockview.cpp:38 movimientosview.cpp:179
 #: listlincontratoview.cpp:42 listlinpedidoclienteview.cpp:48
@@ -7954,7 +7954,7 @@ msgstr "Nuevo trabajador"
 msgid "Nuevo tutor"
 msgstr "Nuevo tutor"
 
-#: ticket.cpp:50
+#: btticket.cpp:50
 msgid "Num"
 msgstr "Num"
 
@@ -8154,7 +8154,7 @@ msgstr "Open file"
 
 #: extractosubform.cpp:73 listlinasiento1view.cpp:55 asientolistsubform.cpp:37
 #: proyectoview.cpp:81 proyectoview.cpp:100 registroiva.cpp:52
-#: ui_registroivabase.h:618 ticket.cpp:90 bfproveedoralbaransubform.cpp:58
+#: ui_registroivabase.h:618 btticket.cpp:90 bfproveedoralbaransubform.cpp:58
 #: bfclientealbaransubform.cpp:56 listlinpresupuestoview.cpp:57
 #: listlinpedidoproveedorview.cpp:51 listlinfacturapview.cpp:59
 #: listlincontratoview.cpp:48 listlinpedidoclienteview.cpp:57
@@ -8400,7 +8400,7 @@ msgstr "Pegar desde Hoja de Calculo"
 msgid "Pegar desde hoja de calculo"
 msgstr "Pegar desde hoja de calculo"
 
-#: ui_bulmatpvbase.h:98 busquedaestadoincidencia.cpp:35
+#: ui_btbulmatpvbase.h:98 busquedaestadoincidencia.cpp:35
 msgid "Pendiente"
 msgstr "Pendiente"
 
@@ -8542,7 +8542,7 @@ msgstr "Porcentaje:"
 msgid "Postscript"
 msgstr "Postscript"
 
-#: ticket.cpp:87 ui_untitled.h:300 ui_untitled.h:307
+#: btticket.cpp:87 ui_untitled.h:300 ui_untitled.h:307
 #: bfproveedoralbaransubform.cpp:53 listlinpedidoproveedorview.cpp:46
 #: facturapview.cpp:354 listlresarticulo.cpp:85 listlresarticulo.cpp:128
 #: listlresarticulo.cpp:172
@@ -8589,7 +8589,7 @@ msgstr "Precio de venta s/IVA"
 msgid "Precio venta. s/IVA:"
 msgstr "Precio venta. s/IVA:"
 
-#: ui_bulmatpvbase.h:92
+#: ui_btbulmatpvbase.h:92
 msgid "Preferencias"
 msgstr "Preferencias"
 
@@ -8901,7 +8901,7 @@ msgstr "Ref factura"
 msgid "Ref:"
 msgstr "Ref:"
 
-#: ticket.cpp:51 bfbuscarreferencia.cpp:66 rutacomercial.cpp:47
+#: btticket.cpp:51 bfbuscarreferencia.cpp:66 rutacomercial.cpp:47
 #: incidenciacomercial.cpp:48 ui_incidenciacomercialbase.h:274
 #: presupuestoview.cpp:71 presupuestolist.cpp:353 albaranclienteview.cpp:85
 #: zview.cpp:75 albaranesproveedor.cpp:383 cobroview.cpp:66
@@ -9032,7 +9032,7 @@ msgstr "Regularizacion"
 msgid "Relacion"
 msgstr "Relacion"
 
-#: ticket.cpp:91
+#: btticket.cpp:91
 msgid "Req. eq."
 msgstr "Req. eq."
 
@@ -9412,15 +9412,15 @@ msgstr "Siguiente"
 msgid "Sin &Tipo"
 msgstr "Sin &Tipo"
 
-#: ui_bulmatpvbase.h:88
+#: ui_btbulmatpvbase.h:88
 msgid "Sobre BulmaTPV"
 msgstr "Sobre BulmaTPV"
 
-#: ui_bulmatpvbase.h:89
+#: ui_btbulmatpvbase.h:89
 msgid "Sobre Bulmages"
 msgstr "Sobre Bulmages"
 
-#: ui_bulmatpvbase.h:90
+#: ui_btbulmatpvbase.h:90
 msgid "Sobre Qt"
 msgstr "Sobre Qt"
 
@@ -9614,7 +9614,7 @@ msgstr "Texto Plano"
 msgid "Texto para etiqueta:"
 msgstr "Texto para etiqueta:"
 
-#: ticket.cpp:52 pluginticketbasico.cpp:53 ui_devolucionbase.h:268
+#: btticket.cpp:52 pluginticketbasico.cpp:53 ui_devolucionbase.h:268
 msgid "Ticket"
 msgstr "Ticket"
 
@@ -9940,7 +9940,7 @@ msgstr "Total: "
 msgid "Totales:"
 msgstr "Totales:"
 
-#: ticket.cpp:47 incidenciacomercial.cpp:44 presupuestoview.cpp:73
+#: btticket.cpp:47 incidenciacomercial.cpp:44 presupuestoview.cpp:73
 #: trabajadorview.cpp:44 pluginasterisk.cpp:164 albaranclienteview.cpp:82
 #: compraventaview.cpp:92 pedidoclienteview.cpp:66 facturaview.cpp:71
 msgid "Trabajador"

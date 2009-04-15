@@ -26,7 +26,7 @@
 #include "btcompany.h"
 #include "cobrar.h"
 #include "blplugins.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "blapplication.h"
 #include "bldockwidget.h"
 
@@ -42,7 +42,7 @@ BlDockWidget *g_doc1;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 

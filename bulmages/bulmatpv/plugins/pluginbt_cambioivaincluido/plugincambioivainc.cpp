@@ -24,7 +24,7 @@
 #include "btcompany.h"
 #include "cambio.h"
 #include "blplugins.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "blapplication.h"
 
 
@@ -32,7 +32,7 @@
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 

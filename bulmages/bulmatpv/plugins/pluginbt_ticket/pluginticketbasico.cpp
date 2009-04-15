@@ -27,7 +27,7 @@
 #include <QTextStream>
 
 #include "pluginticketbasico.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "btcompany.h"
 #include "mticket.h"
 #include "bldockwidget.h"
@@ -41,7 +41,7 @@ MTicket *g_bud;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
@@ -72,7 +72,7 @@ int entryPoint ( BulmaTPV *tpv )
 /**
 \return
 **/
-int exitPoint ( BulmaTPV *tpv )
+int exitPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginticketbasico::exitPoint", 0 );
     delete g_doc1;
@@ -90,7 +90,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 }
 
 
-int Ticket_pintar ( Ticket * )
+int Ticket_pintar ( BtTicket * )
 {
     g_bud->pintar();
     return 0;

@@ -97,7 +97,7 @@ void Abrevs::on_mui_aparcar_clicked()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
     // El nombre del ticket no puede estar vacio.
-    if ( emp->valorInput() == "" ) {
+    if ( emp->valorBtInput() == "" ) {
         mensajeAviso ( _ ( "Asigne un nombre al ticket antes de aparcarlo." ) );
         return;
     } // end if
@@ -110,17 +110,17 @@ void Abrevs::on_mui_aparcar_clicked()
 
 
     /// Miramos que no haya ningun ticket abierto con el nombre usado
-    Ticket *ticket;
+    BtTicket *ticket;
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
-        if ( emp->valorInput() == ticket->dbValue ( "nomticket" ) ) {
+        if ( emp->valorBtInput() == ticket->dbValue ( "nomticket" ) ) {
             mensajeAviso ( _ ( "Ya existe un ticket aparcado con el mismo nombre." ) );
             return;
         }// end if
     }// end for
 
-    emp->ticketActual() ->setDbValue ( "nomticket", emp->valorInput() );
-    Ticket *tick = emp->newTicket();
+    emp->ticketActual() ->setDbValue ( "nomticket", emp->valorBtInput() );
+    BtTicket *tick = emp->newBtTicket();
     /// Ponemos al trabajador creado el trabajador del ticket actual.
     tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
     emp->setTicketActual ( tick );
@@ -142,8 +142,8 @@ void Abrevs::on_mui_cliente_clicked()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
 
-    if ( emp->valorInput() == "" ) return;
-    QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorInput() + "'";
+    if ( emp->valorBtInput() == "" ) return;
+    QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorBtInput() + "'";
     BlDbRecordSet *cur = emp->loadQuery ( query );
     if ( !cur->eof() ) {
         emp->ticketActual() ->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
@@ -152,7 +152,7 @@ void Abrevs::on_mui_cliente_clicked()
     } // end if
     delete cur;
     emp->ticketActual() ->pintar();
-    emp->setValorInput ( "" );
+    emp->setValorBtInput ( "" );
     emp->pulsaTecla ( 0, "" );
 }
 

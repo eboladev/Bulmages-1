@@ -24,10 +24,10 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmatpv.h"
+#include "btbulmatpv.h"
 #include "btcompany.h"
 
-extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" MY_EXPORT int BtCompany_cobrar ( BtCompany * );
 

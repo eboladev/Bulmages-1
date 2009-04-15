@@ -26,7 +26,7 @@
 #include "blfunctions.h"
 #include "btcompany.h"
 #include "blplugins.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "blapplication.h"
 #include "bldockwidget.h"
 
@@ -43,7 +43,7 @@ BtCompany * g_emp;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
@@ -84,7 +84,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
     if ( busc->id() != "" && busc == g_busc ) {
         g_emp->ticketActual() ->setDbValue ( "idcliente", busc->id() );
         g_emp->ticketActual() ->pintar();
-        g_emp->setValorInput ( "" );
+        g_emp->setValorBtInput ( "" );
         g_emp->pulsaTecla ( 0, "" );
     } // end if
     return 0;

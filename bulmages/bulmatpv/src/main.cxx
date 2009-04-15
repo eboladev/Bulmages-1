@@ -26,7 +26,7 @@
 #include "blapplication.h"
 #include "blconfiguration.h"
 #include "blplugins.h"
-#include "bulmatpv.h"
+#include "btbulmatpv.h"
 #include "blsplashscreen.h"
 #include "bldblogindialog.h"
 #include "blfunctions.h"
@@ -45,8 +45,8 @@
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
 {
-    /// Puntero a BulmaTPV que crea la ventana principal
-    BulmaTPV* bges;
+    /// Puntero a BtBulmaTPV que crea la ventana principal
+    BtBulmaTPV* bges;
 
     try {
         fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
@@ -66,7 +66,7 @@ int main ( int argc, char **argv )
         g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
         /// Cargamos el BlSplashScreen.
-        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTPV", CONFIG_VERSION );
+        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BtBulmaTPV", CONFIG_VERSION );
         splashScr->mensaje ( _("Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
@@ -83,11 +83,11 @@ int main ( int argc, char **argv )
             pass = argv[4];
             g_confpr->setValor ( CONF_LOGIN_USER, us );
             g_confpr->setValor ( CONF_PASSWORD_USER, pass );
-            bges = new BulmaTPV ( db );
+            bges = new BtBulmaTPV ( db );
             bges->hide();
         } else if ( argc == 3 ) {
             db = argv[2];
-            bges = new BulmaTPV ( db );
+            bges = new BtBulmaTPV ( db );
             bges->hide();
         } else {
             BlDbLoginDialog* login1 = new BlDbLoginDialog ( 0, "" );
@@ -99,7 +99,7 @@ int main ( int argc, char **argv )
                 exit ( 1 );
             } // end if
             delete login1;
-            bges = new BulmaTPV ( "" );
+            bges = new BtBulmaTPV ( "" );
             bges->hide();
         } // end if
 

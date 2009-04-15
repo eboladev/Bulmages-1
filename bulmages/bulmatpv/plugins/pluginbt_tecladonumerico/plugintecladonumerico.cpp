@@ -37,7 +37,7 @@ TecladoNumerico *g_tecl;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "plugintecladonumerico::entryPoint", 0 );
 
@@ -67,8 +67,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 }
 
 
-int Input_keyPressEvent_Post ( Input *in )
+int Input_keyPressEvent_Post ( BtInput *in )
 {
-    g_tecl->mui_display->setText ( in->valorInput() );
+    g_tecl->mui_display->setText ( in->valorBtInput() );
 }
 

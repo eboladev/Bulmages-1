@@ -4,7 +4,7 @@
 
 #include "mticket.h"
 #include "bldb.h"
-#include "bulmatpv.h"
+#include "btbulmatpv.h"
 #include "btsubform.h"
 
 
@@ -40,7 +40,7 @@ void MTicket::pintar()
         return;
     } // end if
 
-    Ticket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
+    BtTicket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
@@ -61,7 +61,7 @@ void MTicket::pintar()
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
-        if ( item == tick->lineaActTicket() ) bgcolor = "#CCCCFF";
+        if ( item == tick->lineaActBtTicket() ) bgcolor = "#CCCCFF";
         html += "<TR>";
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
@@ -205,7 +205,7 @@ void MTicket::on_mui_bajar_clicked()
 void MTicket::on_mui_borrar_clicked()
 {
 
-    Ticket * tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
+    BtTicket * tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();

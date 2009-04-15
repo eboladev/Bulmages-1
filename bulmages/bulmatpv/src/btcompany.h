@@ -31,37 +31,37 @@
 #include "blworkspace.h"
 #include "blmaincompany.h"
 #include "blsplashscreen.h"
-#include "ticket.h"
-#include "input.h"
+#include "btticket.h"
+#include "btinput.h"
 
 
-class BulmaTPV;
+class BtBulmaTPV;
 
 /// Clase company (empresa).
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class BT_EXPORT BtCompany : public BlMainCompany, public Input
+class BT_EXPORT BtCompany : public BlMainCompany, public BtInput
 {
 private:
     /// Puntero al mainWindow
-    BulmaTPV *m_bulmaTPV;
-    QList<Ticket *> m_listaTickets;
-    Ticket *m_ticketActual;
+    BtBulmaTPV *m_bulmaTPV;
+    QList<BtTicket *> m_listaTickets;
+    BtTicket *m_ticketActual;
 
 public:
-    BtCompany ( BulmaTPV *bges );
+    BtCompany ( BtBulmaTPV *bges );
     virtual ~BtCompany();
     void createMainWindows ( BlSplashScreen * );
     void guardaConf();
     void cargaConf();
-    Ticket *newTicket();
+    BtTicket *newBtTicket();
     void cobrar();
     void z();
     void x();
-    Ticket *ticketActual();
-    QList<Ticket *> *listaTickets();
-    void setTicketActual ( Ticket *tick );
+    BtTicket *ticketActual();
+    QList<BtTicket *> *listaTickets();
+    void setTicketActual ( BtTicket *tick );
 
 };
 

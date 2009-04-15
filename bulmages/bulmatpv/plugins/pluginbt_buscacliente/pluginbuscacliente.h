@@ -24,10 +24,10 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmatpv.h"
+#include "btbulmatpv.h"
 #include "btcompany.h"
 #include "blsearchwidget.h"
 
-extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget * );

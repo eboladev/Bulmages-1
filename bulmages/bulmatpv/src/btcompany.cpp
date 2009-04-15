@@ -28,7 +28,7 @@
 #include "stdio.h"
 #include "blplugins.h"
 
-#include "bulmatpv.h"
+#include "btbulmatpv.h"
 
 
 /** No precisa de operaciones en su construccion.
@@ -36,7 +36,7 @@
 /**
 \param bges
 **/
-BtCompany::BtCompany ( BulmaTPV *bges ) : BlMainCompany(), Input ( this )
+BtCompany::BtCompany ( BtBulmaTPV *bges ) : BlMainCompany(), BtInput ( this )
 {
     _depura ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;
@@ -80,7 +80,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
 
     /// Creamos los nuevos tickets.
-    m_ticketActual = newTicket();
+    m_ticketActual = newBtTicket();
     if ( !m_ticketActual )
         _depura ( "error en el sistema, reservando memoria.", 0 );
     m_listaTickets.append ( m_ticketActual );
@@ -476,15 +476,15 @@ void BtCompany::x()
 
 
 
-Ticket *BtCompany::newTicket()
+BtTicket *BtCompany::newBtTicket()
 {
-    _depura ( "BtCompany::newTicket", 0 );
+    _depura ( "BtCompany::newBtTicket", 0 );
     /// Lanzamos los plugins necesarios.
-    Ticket *bud;
-    if ( g_plugins->lanza ( "BtCompany_newTicket", this, ( void ** ) & bud ) )
+    BtTicket *bud;
+    if ( g_plugins->lanza ( "BtCompany_newBtTicket", this, ( void ** ) & bud ) )
         return bud;
-    bud = new Ticket ( this, NULL );
-    _depura ( "END BtCompany::newTicket", 0 );
+    bud = new BtTicket ( this, NULL );
+    _depura ( "END BtCompany::newBtTicket", 0 );
     return bud;
 }
 
@@ -519,8 +519,8 @@ void BtCompany::cobrar()
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
     m_ticketActual = NULL;
 
-    Ticket *ticket = NULL;
-    Ticket *ticketv = NULL;
+    BtTicket *ticket = NULL;
+    BtTicket *ticketv = NULL;
 
     /// Buscamos el ticket vacio de este trabajador y lo pintamos
     for ( int i = 0; i < m_listaTickets.size(); ++i ) {
@@ -535,7 +535,7 @@ void BtCompany::cobrar()
 
     /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
     if ( !ticketv ) {
-        Ticket * tick = newTicket();
+        BtTicket * tick = newBtTicket();
         tick->setDbValue ( "idtrabajador", idtrabajador );
         setTicketActual ( tick );
         m_listaTickets.append ( tick );
@@ -548,15 +548,15 @@ void BtCompany::cobrar()
 
 
 
-Ticket *BtCompany::ticketActual()
+BtTicket *BtCompany::ticketActual()
 {
     return m_ticketActual;
 }
-QList<Ticket *> *BtCompany::listaTickets()
+QList<BtTicket *> *BtCompany::listaTickets()
 {
     return & m_listaTickets;
 }
-void BtCompany::setTicketActual ( Ticket *tick )
+void BtCompany::setTicketActual ( BtTicket *tick )
 {
     m_ticketActual = tick;
 }

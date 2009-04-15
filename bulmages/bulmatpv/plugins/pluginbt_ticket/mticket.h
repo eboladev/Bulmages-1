@@ -25,7 +25,7 @@
 #include <QLabel>
 #include <QTableWidget>
 
-#include "ticket.h"
+#include "btticket.h"
 #include "btcompany.h"
 #include "ui_mticketbase.h"
 #include "btsubform.h"

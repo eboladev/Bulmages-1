@@ -25,11 +25,11 @@
 #endif
 
 #include "blfunctions.h"
-#include "bulmatpv.h"
+#include "btbulmatpv.h"
 #include "btcompany.h"
 #include "bfbuscararticulo.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" MY_EXPORT int BfBuscarArticulo_on_m_codigocompletoarticulo_editingFinished_Post ( BfBuscarArticulo * );

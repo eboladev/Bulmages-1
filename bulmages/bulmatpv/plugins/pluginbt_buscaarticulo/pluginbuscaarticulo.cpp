@@ -25,7 +25,7 @@
 #include "pluginbuscaarticulo.h"
 #include "btcompany.h"
 #include "blplugins.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "blapplication.h"
 #include "bfbuscararticulo.h"
 #include "blfixed.h"
@@ -44,7 +44,7 @@ BtCompany * g_emp;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginbuscaarticulo::entryPoint", 0 );
 

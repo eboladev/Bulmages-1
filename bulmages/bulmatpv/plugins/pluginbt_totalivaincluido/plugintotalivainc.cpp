@@ -24,7 +24,7 @@
 #include "btcompany.h"
 #include "total.h"
 #include "blplugins.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "blapplication.h"
 #include "bldockwidget.h"
 
@@ -40,7 +40,7 @@ BlDockWidget *g_doc1 = NULL;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "plugintotal::entryPoint", 0 );
 
@@ -77,7 +77,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 /**
 \return
 **/
-int exitPoint ( BulmaTPV *tpv )
+int exitPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "plugintotal::exitPoint", 0 );
     delete g_doc1;
@@ -85,7 +85,7 @@ int exitPoint ( BulmaTPV *tpv )
     return 0;
 }
 
-int Ticket_pintar ( Ticket *tick )
+int Ticket_pintar ( BtTicket *tick )
 {
     _depura ( "plugintotal::Ticket_pintar", 0 );
 

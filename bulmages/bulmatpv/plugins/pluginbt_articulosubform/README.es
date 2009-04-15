@@ -6,7 +6,7 @@
 
 Nombre: Introduccion de articulos con subformulario
 
-Biblioteca: libpluginartsubform.so
+Biblioteca: libpluginbt_articulosubform.so
 
 Descripción: Permite la introduccion de los componentes del ticket en forma de subformulario.
 Es incompatible con pluginartgraficos Ya que desempeñan la misma función.
@@ -19,7 +19,7 @@ ArchivoSQLdeins:
 
 Dependencias: libplugintpv.so
 
-Incompatibles: libpluginartgraficos.so
+Incompatibles: libpluginbt_articulografic.so
 
 Orden:
 

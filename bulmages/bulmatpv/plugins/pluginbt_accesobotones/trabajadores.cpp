@@ -3,7 +3,7 @@
 
 #include "trabajadores.h"
 #include "blfunctions.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "btcompany.h"
 
 
@@ -39,8 +39,8 @@ Trabajadores::~Trabajadores()
 void Trabajadores::trabajadorClicked()
 {
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
-    Ticket *ticket = NULL;
-    Ticket *ticketv = NULL;
+    BtTicket *ticket = NULL;
+    BtTicket *ticketv = NULL;
     bool encontrado = FALSE;
 
     /// Buscamos cual ha sido el trabajador pulsado.
@@ -67,7 +67,7 @@ void Trabajadores::trabajadorClicked()
 
     /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
     if ( !ticketv ) {
-        Ticket * tick = emp1->newTicket();
+        BtTicket * tick = emp1->newBtTicket();
         tick->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
         emp1->setTicketActual ( tick );
         emp1->listaTickets() ->append ( tick );

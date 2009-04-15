@@ -40,7 +40,7 @@ BlDockWidget *g_doc1;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
@@ -63,7 +63,7 @@ int entryPoint ( BulmaTPV *tpv )
 /**
 \return
 **/
-int exitPoint ( BulmaTPV *tpv )
+int exitPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginabrevs::exitPoint", 0 );
 

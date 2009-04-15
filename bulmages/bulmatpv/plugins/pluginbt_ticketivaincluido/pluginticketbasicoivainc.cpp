@@ -28,7 +28,7 @@
 
 #include "pluginticketbasicoivainc.h"
 #include "blfunctions.h"
-#include "ticket.h"
+#include "btticket.h"
 #include "btcompany.h"
 #include "mticket.h"
 #include "bldockwidget.h"
@@ -42,7 +42,7 @@ MTicket *g_bud = NULL;
 /**
 \return
 **/
-int entryPoint ( BulmaTPV *tpv )
+int entryPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginticketbasicoivainc::entryPoint", 0 );
 
@@ -51,7 +51,7 @@ int entryPoint ( BulmaTPV *tpv )
     bindtextdomain ("pluginticketbasicoivainc", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BlDockWidget ( "Ticket", tpv, "ticketbasico" );
+    g_doc1 = new BlDockWidget ( "BtTicket", tpv, "ticketbasico" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 //    g_doc1->setFeatures ( QDockWidget::DockWidgetMovable |  QDockWidget::DockWidgetFloatable);
 
@@ -75,7 +75,7 @@ int entryPoint ( BulmaTPV *tpv )
 /**
 \return
 **/
-int exitPoint ( BulmaTPV *tpv )
+int exitPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginticketbasico::exitPoint", 0 );
     delete g_doc1;
@@ -92,7 +92,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     return 0;
 }
 
-int Ticket_pintar ( Ticket * )
+int Ticket_pintar ( BtTicket * )
 {
     _depura ( "pluginticketbasico::Ticket_pintar", 0 );
     if(g_bud)
