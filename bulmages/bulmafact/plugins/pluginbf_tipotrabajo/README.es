@@ -6,7 +6,7 @@
 
 Nombre: Tipos de Trabajo
 
-Biblioteca: libplugintipostrabajo.so
+Biblioteca: libpluginbf_tipostrabajo.so
 
 Descripción: <H1>Tipos de Trabajo</H1>
 <P>Permite organizar los trabajadores en sus distintas áreas de operacion o conocimiento. Sive para clasificar los trabajadores en grupos que serán utilizados en la generación de cuadrantes.</P>
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas; Experimentales;
+Categorias: Utilidades genericas; Experimentales;
 
 Orden: 900
 

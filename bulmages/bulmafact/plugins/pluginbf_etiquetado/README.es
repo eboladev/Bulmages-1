@@ -6,7 +6,7 @@
 
 Nombre: Crear etiquetas
 
-Biblioteca: libpluginetiquetado.so
+Biblioteca: libpluginbf_etiquetado.so
 
 Descripción: Permite la creación de etiquetas para los artículos, la etiqueta es personalizable mediante el archivo RML correspondiente.
 

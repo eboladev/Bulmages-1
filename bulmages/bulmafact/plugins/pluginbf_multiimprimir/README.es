@@ -6,7 +6,7 @@
 
 Nombre: Trabajo con múltiples documentos.
 
-Biblioteca: libpluginimpresionesmultiples.so
+Biblioteca: libpluginbf_multiimprimir.so
 
 Descripción: <H1>Impresiones Multiples</H1>
 <P>Permite la selección de multiples documentos (presupuestos, pedidos, albaranes o facturas) y realizar algunas operacions comunes a todos ellos con un sólo click (imprimir, enviar por e-mail, etc).</P>
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;
+Categorias: Utilidades genericas;
 
 Orden: 900
 
