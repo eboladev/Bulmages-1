@@ -6,7 +6,7 @@
 
 Nombre: Traspaso de Z
 
-Biblioteca: libpluginz2z.so
+Biblioteca: libpluginbf_z2z.so
 
 Descripción: <H1>Traspaso de Z a Z</H1>
 <P>Mueve lineas de albaran de una facturacion a otra.</P>
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 900
 

@@ -4,9 +4,9 @@
 #README.es
 #20080501
 
-Nombre: Promedios en Artículos
+Nombre: Promedios en artículos
 
-Biblioteca: libpluginpromedios.so
+Biblioteca: libpluginbf_promedios.so
 
 Descripción: <H1>Promedios en articulos</H1>
 <P>Agrega una pestaña a la ficha de articulos que muestra información relativa a
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 900
 

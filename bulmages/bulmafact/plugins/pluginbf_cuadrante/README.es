@@ -6,7 +6,7 @@
 
 Nombre: Cuadrantes de personal
 
-Biblioteca: libplugincuadrante.so
+Biblioteca: libpluginbf_cuadrante.so
 
 Descripción: <H1>Cuadrante de personal</H1>
 <P>Gestiona la creación de cuadrantes de trabajo pudiendo asignar las horas que
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Avanzada; Experimentales;
+Categorias: Facturacion avanzada; Experimentales;
 
 Orden: 780
 

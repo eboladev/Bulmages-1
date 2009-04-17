@@ -6,7 +6,7 @@
 
 Nombre: Gestión de Inventarios.
 
-Biblioteca: libplugininventario.so
+Biblioteca: libpluginbf_inventario.so
 
 Descripción: <H1>Inventarios</H1>
 <P>Creación de inventarios y control de stock. Inventarios en múltiples almacenes y con rehubicación.</P>
@@ -16,13 +16,13 @@ ParmBD: PluginBf_Inventario
 
 ArchivoSQLpatch: pluginbf_inventario.sql
 
-ArchivoSQLdeins: pluginbf-inventario-rm.sql
+ArchivoSQLdeins: pluginbf_inventario-rm.sql
 
 Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica; Experimentales;
+Categorias: Facturacion generica; Experimentales;
 
 Orden: 550
 
