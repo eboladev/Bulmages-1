@@ -557,8 +557,8 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
                 || linea->nomcampo() == "reqeq" + m_subform->tableName() ) {
 
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
-        editor->setMinimum ( -1000000 );
-        editor->setMaximum ( 1000000 );
+        editor->setMinimum ( -10000000 );
+        editor->setMaximum ( 10000000 );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
         return editor;
 

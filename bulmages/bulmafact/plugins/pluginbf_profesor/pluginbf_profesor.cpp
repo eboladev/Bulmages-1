@@ -90,6 +90,9 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
 
+	/// Agregamos un separador
+	pPluginMenu->addSeparator();
+
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->getcompany() );

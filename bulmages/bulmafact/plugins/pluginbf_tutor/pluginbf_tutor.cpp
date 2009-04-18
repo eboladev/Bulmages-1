@@ -90,13 +90,16 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
 
+	/// Agrego un Separador
+	pPluginMenu->addSeparator();
+
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Tutores/Socios" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ) );
-        planCuentas->setStatusTip ( _ ( "Tutores" ) );
-        planCuentas->setWhatsThis ( _ ( "Tutores" ) );
+        planCuentas->setStatusTip ( _ ( "Tutores/Socios" ) );
+        planCuentas->setWhatsThis ( _ ( "Tutores/Socios" ) );
         pPluginMenu->addAction ( planCuentas );
         bges->Listados->addAction ( planCuentas );
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );

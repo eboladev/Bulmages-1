@@ -29,9 +29,11 @@
 #include <QRegExp>
 #include <QDomDocument>
 #include <QDomNode>
+#include <QSpinBox>
 
 #include "blsubform.h"
 #include "blprogressbar.h"
+#include "bldoublespinbox.h"
 #include "bltexteditdelegate.h"
 
 // Necesito exportar algunos datos.
@@ -2792,7 +2794,19 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setObjectName ( "BlTextEditDelegate" );
         _depura ( "END BlSubFormDelegate::createEditor", 0, "QTextEdit" );
         return editor;
-   } // end if
+   } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
+        BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
+        editor->setMinimum ( -100000000 );
+        editor->setMaximum ( 100000000 );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
+        return editor;
+    } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
+        QSpinBox * editor = new QSpinBox ( parent );
+        editor->setMinimum ( -100000000 );
+        editor->setMaximum ( 100000000 );
+        _depura ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
+        return editor;
+    }// end if
 
 
 
@@ -2833,12 +2847,19 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
    if (linea->dbFieldType() == BlDbField::DbVarChar) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-        _depura ( "END BlSubFormDelegate::setModelData", 0, "BlTextEditDelegate" );
-        return;
-   } // end if
-
-
-    QItemDelegate::setModelData ( editor, model, index );
+   } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
+        BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
+        spinBox->interpretText();
+        QString value = spinBox->text();
+        model->setData ( index, value );
+    } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
+        QSpinBox * spinBox = static_cast<QSpinBox*> ( editor );
+        spinBox->interpretText();
+        QString value = QString::number(spinBox->value());
+        model->setData ( index, value );
+    } else {
+        QItemDelegate::setModelData ( editor, model, index );
+    } // end if
 
     _depura ( "END BlSubFormDelegate::setModelData", 0 );
 }
@@ -2869,12 +2890,22 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
-        _depura ( "END BlSubFormDelegate::setEditorData", 0, "BlTextEditDelegate" );
-        return;
-   } // end if
+   } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
+        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
+        spinBox->setValue ( value.toDouble() );
+        spinBox->selectAll();
+    } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
+        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        QSpinBox *spinBox = static_cast<QSpinBox*> ( editor );
+        spinBox->setValue ( value.toInt() );
+        spinBox->selectAll();
+    } else {
+        QItemDelegate::setEditorData ( editor, index );
+    }// end if
 
 
-    QItemDelegate::setEditorData ( editor, index );
+
     _depura ( "END BlSubFormDelegate::setEditorData", 0 );
 }
 
@@ -2904,6 +2935,7 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
                if (mod & Qt::ShiftModifier) {
                    obj->event ( event );
                } else {
+		   ((QWidget*)obj)->clearFocus();
                    QApplication::sendEvent ( m_subform->mui_list, event );
                } // end if
                 return TRUE;
@@ -2928,12 +2960,14 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
                if (mod & Qt::ShiftModifier) {
                    obj->event ( event );
                } else {
+		   ((QWidget*)obj)->clearFocus();
                    QApplication::sendEvent ( m_subform->mui_list, event );
                } // end if
                 return TRUE;
             } // end if
 
         case Qt::Key_Tab:
+ 	    ((QWidget *)obj)->clearFocus();
             QApplication::sendEvent ( m_subform->mui_list, event );
             return TRUE;
 

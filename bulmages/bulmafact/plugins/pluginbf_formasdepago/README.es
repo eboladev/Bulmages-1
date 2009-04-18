@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de Formas de Pago
+Nombre: Formas de pago
 
 Biblioteca: libpluginbf_formasdepago.so
 
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 823
 
