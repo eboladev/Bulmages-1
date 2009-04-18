@@ -75,9 +75,9 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent )
         mui_ordendia->setDbFieldId ( "idordendiareunion" );
         mui_ordendia->addSubFormHeader ( "idordendiareunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
         mui_ordendia->addSubFormHeader ( "idreunion", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
-        mui_ordendia->addSubFormHeader ( "conceptoordendiareunion", BlDbField::DbVarChar, BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Concepto" ) );
-        mui_ordendia->addSubFormHeader ( "textoordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Texto" ) );
-        mui_ordendia->addSubFormHeader ( "resolucionordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Resolucion" ) );
+        mui_ordendia->addSubFormHeader ( "conceptoordendiareunion", BlDbField::DbVarChar, BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Concepto" ) );
+        mui_ordendia->addSubFormHeader ( "textoordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Texto" ) );
+        mui_ordendia->addSubFormHeader ( "resolucionordendiareunion", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Resolucion" ) );
 
         mui_ordendia->setInsert ( TRUE );
         mui_ordendia->setDelete ( TRUE );

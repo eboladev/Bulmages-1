@@ -32,7 +32,7 @@
 
 #include "blsubform.h"
 #include "blprogressbar.h"
-
+#include "bltexteditdelegate.h"
 
 // Necesito exportar algunos datos.
 QModelIndex BL_EXPORT g_index;
@@ -1002,16 +1002,20 @@ void BlSubForm::pintaCabeceras()
 void BlSubForm::situarse ( unsigned int row, unsigned int col )
 {
     _depura ( "BlSubForm::situarse", 0, QString::number ( row ) + " " + QString::number ( col ) );
+
     unsigned int nrow = row;
     unsigned int ncol = col;
     BlSubFormHeader *linea = m_lcabecera.at ( ncol );
-    if ( !linea )
+    if ( !linea ) {
+        _depura ( "END BlSubForm::situarse", 0, QString::number ( nrow ) + " " + QString::number ( ncol ) );
         return;
+    } // end if
     bool invalido = TRUE;
 
-    /// Mientras no se encuentre un candidato y haya candidatos
+    /// Mientras no se encuentre un candidato y haya candidatos vamos recorriendo celdas.
     while ( invalido && nrow < row + 2 ) {
         ncol++;
+        /// Si estamos al final de la linea cogemos el principio de la linea siguiente
         if ( ncol == ( unsigned int ) m_lcabecera.count() ) {
             ncol = 0;
             nrow++;
@@ -1023,7 +1027,12 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col )
         if ( linea->options() & BlSubFormHeader::DbNoWrite )
             invalido = TRUE;
     } // end while
-    mui_list->setCurrentCell ( nrow, ncol );
+
+    if (!invalido) {
+       mui_list->setCurrentCell ( nrow, ncol );
+    } else {
+       _depura("No hay más elementos editables en el subformulario", 2);
+    } // end if
     _depura ( "END BlSubForm::situarse", 0, QString::number ( nrow ) + " " + QString::number ( ncol ) );
 }
 
@@ -1564,7 +1573,7 @@ bool BlSubForm::campoCompleto ( int row )
 
 /// M&eacute;todo que se dispara cuando se va a reposicionar en el formulario.
 /// Se encarga de resituar el cursor al lugar que se haya indicado.
-/// Con el fin de evitar problemas de reposicionado le activamos un semaforo.
+/// Con el fin de evitar problemas de reposicionado le activamos un semaforo y bloqueamos signals.
 /**
 \param row
 \param col
@@ -1579,10 +1588,15 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
         return;
     semaforo = TRUE;
 
+    /// Bloqueamos la emision de signals
+    mui_list->blockSignals(TRUE);
+
+
     bool creado = FALSE;
 
     int key = mui_list->m_teclasalida;
 
+    /// Miramos si hemos completado la linea y si es asi creamos una linea nueva
     if ( row == mui_list->rowCount() - 1 && campoCompleto ( row ) ) {
         nuevoRegistro();
         creado = TRUE;
@@ -1596,6 +1610,9 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
             /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
             /// La accion simulada.
             QTableWidgetItem * item = mui_list->currentItem();
+            /// Desbloqueamos la emision de signals
+            mui_list->blockSignals(FALSE);
+            /// Emitimos las signals de dobleclick
             emit itemDoubleClicked ( item );
             emit cellDoubleClicked ( row, col );
         } else {
@@ -1613,6 +1630,8 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 
     semaforo = FALSE;
 
+    /// Desbloqueamos la emision de signals
+    mui_list->blockSignals(FALSE);
     _depura ( "END BlSubForm::on_mui_list_cellRePosition", 0 );
 }
 
@@ -2764,8 +2783,19 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
     g_editor = parent;
 
     if ( g_plugins->lanza ( "BlSubFormDelegate_createEditor", ( void * ) this ) ) {
+        _depura ( "END BlSubFormDelegate::createEditor", 0, "Salida por Plugins" );
         return ( QWidget * ) g_plugParams;
     } // end if
+
+   if (linea->dbFieldType() == BlDbField::DbVarChar) {
+        BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
+        editor->setObjectName ( "BlTextEditDelegate" );
+        _depura ( "END BlSubFormDelegate::createEditor", 0, "QTextEdit" );
+        return editor;
+   } // end if
+
+
+
     _depura ( "END BlSubFormDelegate::createEditor", 0, "Default Editor" );
     return QItemDelegate::createEditor ( parent, option, index );
 }
@@ -2795,8 +2825,18 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     g_nomcampo = linea->nomcampo();
 
     if ( g_plugins->lanza ( "BlSubFormDelegate_setModelData", ( void * ) this ) ) {
+        _depura ( "END BlSubFormDelegate::setModelData", 0, "Salida por plugins" );
         return;
     } // end if
+
+
+   if (linea->dbFieldType() == BlDbField::DbVarChar) {
+        BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
+        model->setData ( index, textedit->toPlainText() );
+        _depura ( "END BlSubFormDelegate::setModelData", 0, "BlTextEditDelegate" );
+        return;
+   } // end if
+
 
     QItemDelegate::setModelData ( editor, model, index );
 
@@ -2821,8 +2861,18 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     g_nomcampo = linea->nomcampo();
 
     if ( g_plugins->lanza ( "BlSubFormDelegate_setEditorData", ( void * ) this ) ) {
+        _depura ( "END BlSubFormDelegate::setEditorData", 0, "Salida por plugins" );
         return;
     } // end if
+
+   if (linea->dbFieldType() == BlDbField::DbVarChar) {
+        QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
+        textedit->setText ( data );
+        _depura ( "END BlSubFormDelegate::setEditorData", 0, "BlTextEditDelegate" );
+        return;
+   } // end if
+
 
     QItemDelegate::setEditorData ( editor, index );
     _depura ( "END BlSubFormDelegate::setEditorData", 0 );
@@ -2844,39 +2894,50 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         int key = keyEvent->key();
         _depura ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// Anulamos el caso de una pulsacion de tabulador o de enter
+        /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
+        /// Si hemos pulsado ademas el Shift se lo pasamos al editor de texto para que haga un salto de linea
+        /// Si no hemos pulsado el Shift se lo pasamos al BlTableWidget para que haga un saldo de celda.
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
             if ( obj->objectName() == "BlTextEditDelegate" ) {
-                obj->event ( event );
+               if (mod & Qt::ShiftModifier) {
+                   obj->event ( event );
+               } else {
+                   QApplication::sendEvent ( m_subform->mui_list, event );
+               } // end if
                 return TRUE;
             } // end if
+
         case Qt::Key_Tab:
             return TRUE;
         } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
-    } // end if
-
-    if ( event->type() == QEvent::KeyRelease ) {
+    } else if ( event->type() == QEvent::KeyRelease ) {
         _depura ( "BlSubFormDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number ( event->type() ) );
         QKeyEvent *keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
         _depura ( "BlSubFormDelegate::key = : ", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
+        /// Si hemos pulsado ademas el Shift se lo pasamos al editor de texto para que haga un salto de linea
+        /// Si no hemos pulsado el Shift se lo pasamos al BlTableWidget para que haga un saldo de celda.
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
             if ( obj->objectName() == "BlTextEditDelegate" ) {
-                obj->event ( event );
+               if (mod & Qt::ShiftModifier) {
+                   obj->event ( event );
+               } else {
+                   QApplication::sendEvent ( m_subform->mui_list, event );
+               } // end if
                 return TRUE;
             } // end if
+
         case Qt::Key_Tab:
             QApplication::sendEvent ( m_subform->mui_list, event );
             return TRUE;
+
         } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
     } // end if
 
     return QItemDelegate::eventFilter ( obj, event );

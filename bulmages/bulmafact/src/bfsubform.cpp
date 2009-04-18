@@ -550,7 +550,6 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setObjectName ( "BlTextEditDelegate" );
         _depura ( "END BfSubFormDelegate::createEditor", 0, "QTextEdit" );
         return editor;
-
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
                 || linea->nomcampo() == "pvp" + m_subform->tableName()
                 || linea->nomcampo() == "descuento" + m_subform->tableName()

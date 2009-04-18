@@ -59,17 +59,19 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
     if ( event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        _depura ( "BlTextEditDelegate::key = :", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /*
+
+              /// Quitamos la pulsacion del Enter ya que lo que debe funcionar es el Shift + Enter
               switch ( key ) {
                 case Qt::Key_Return:
                 case Qt::Key_Enter:
-               event->ignore();
+                      mensajeInfo("BlTextEditDelegate::eventFilter Se ha pulsado return");
+                      event->ignore();
                       return TRUE;
                     break;
                 } // end switch
-        */
+
+
     } // end if
     _depura ( "END BlTextEditDelegate::eventFilter()", 0 );
     return QTextEdit::eventFilter ( obj, event );
