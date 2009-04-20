@@ -1,0 +1,110 @@
+# Copyright (C) 2008 by Leopold Palomo-Avellaneda
+# leo@alaxarxa.net
+# http://www.iglues.org                                                 #
+#                                                                       #
+# This program is free software; you can redistribute it and/or modify  #
+# it under the terms of the GNU General Public License as published by  #
+# the Free Software Foundation; either version 2 of the License, or     #
+# (at your option) any later version.                                   #
+#                                                                       #
+# This program is distributed in the hope that it will be useful,       #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+# GNU General Public License for more details.                          #
+#                                                                       #
+# You should have received a copy of the GNU General Public License     #
+# along with this program; if not, write to the                         #
+# Free Software Foundation, Inc.,                                       #
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#                                                                       #
+
+
+###########################################
+# Plugin for bulmacont                    #
+###########################################
+# plugincanualesods
+
+set (plugin pluginbc_caaslods)
+set (docs README.es) #add the README.nn files
+
+file(GLOB plugin_SRC *.c *.cpp *.cxx)
+file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
+
+set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTXML true)
+
+INCLUDE(   ${QT_USE_FILE}   )
+
+include_directories(
+      ${QT_INCLUDE_DIR}
+      ${PGSQL_INCLUDE_DIR}
+      ${QT_QTXML_INCLUDE_DIR}
+      ${QT_QTASSISTANT_INCLUDE_DIR}
+      ${CMAKE_CURRENT_BINARY_DIR}
+      ${CMAKE_CURRENT_SOURCE_DIR}
+      ${CMAKE_BINARY_DIR}/bulmalib/src/
+      ${CMAKE_SOURCE_DIR}/bulmalib/src/
+      ${CMAKE_BINARY_DIR}/bulmacont/src/
+      ${CMAKE_SOURCE_DIR}/bulmacont/src/)
+
+# generate rules for building source files from the resources
+#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+
+# generate rules for building source files that moc generates
+QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
+
+#ADD_DEFINITIONS(${QT_DEFINITIONS})
+ADD_DEFINITIONS(-DQT_SHARED)
+# build sources, moc'd sources, and rcc'd sources
+
+if(APPLE)
+  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+endif(APPLE)
+
+# i18n
+if(WIN32)
+ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"${plugin}\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"${plugin}\\\",String)" )
+endif(WIN32)
+
+if(NOT WIN32)
+ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"${plugin}\",String)'" )
+endif(NOT WIN32)
+
+
+if(USE_GETTEXT)
+   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
+                        ${plugin_SRCS} ${plugin_MOCS})
+   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
+                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+endif(USE_GETTEXT)
+
+add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
+   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+
+set_target_properties( ${plugin} PROPERTIES 
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}")
+
+target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+
+#think to put here which modules must be compiled "before" this
+add_dependencies(${plugin} bulmacont bulmalib)
+
+install_targets(/lib/bulmacont/plugins ${plugin})
+foreach(dfile ${docs})
+ install (FILES ${dfile}
+DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
+
+file(GLOB report_files openreports/*.pys openreports/*.rml)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)
