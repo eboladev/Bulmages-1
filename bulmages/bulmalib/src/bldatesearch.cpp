@@ -204,7 +204,7 @@ void BlDateSearch::s_fechatextChanged ( const QString &texto )
         s_searchFecha();
     if ( texto == "*" )
         mui_textoFecha->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-    mui_textoFecha->setText ( normalizafecha ( texto ).toString ( "dd/MM/yyyy" ) );
+        mui_textoFecha->setText ( normalizafecha ( texto ).toString ( "dd/MM/yyyy" ) );
     if ( texto == "" ) {
         mui_textoFecha->setText ( "" );
         return;
@@ -226,3 +226,14 @@ void BlDateSearch::s_fechalostFocus()
     _depura ( "END BlDateSearch::s_fechalostFocus", 0 );
 }
 
+
+///
+/**
+\return
+**/
+QDate BlDateSearch::date()
+{
+    _depura ( "BlDateSearch::fecha", 0 );
+    _depura ( "END BlDateSearch::fecha", 0 );
+    return QDate::fromString(mui_textoFecha->text(), "dd/MM/yyyy");
+}

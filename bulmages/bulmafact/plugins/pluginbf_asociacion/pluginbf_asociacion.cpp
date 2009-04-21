@@ -69,11 +69,38 @@ void MyPlugAsoc::elslot1()
     _depura ( "END MyPlugAsoc::elslot1", 0 );
 }
 
+///
+/** Convocar Asamblea
+**/
+void MyPlugAsoc::convjunta()
+{
+    _depura ( "MyPlugAsoc::convjuna", 0 );
+    ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
+    bud->pintar();
+    bud->junta();
+    _depura ( "END MyPlugAsoc::convjuna", 0 );
+}
 
 ///
-/**
+/** Convocar Asamblea
 **/
 void MyPlugAsoc::elslot2()
+{
+    _depura ( "MyPlugAsoc::elslot2", 0 );
+    ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
+    bud->pintar();
+    _depura ( "END MyPlugAsoc::elslot2", 0 );
+}
+
+
+///
+/** Lista de Reuniones
+**/
+void MyPlugAsoc::elslot3()
 {
     _depura ( "MyPlugAsoc::elslot2", 0 );
     ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) mainCompany(), NULL );
@@ -81,7 +108,6 @@ void MyPlugAsoc::elslot2()
     bud->show();
     _depura ( "END MyPlugAsoc::elslot2", 0 );
 }
-
 
 ///
 /**
@@ -91,7 +117,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugAsoc::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Asociacion", "menuAsociacion", "menuMaestro" );
@@ -101,7 +127,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *asociacion = new QAction ( _ ( "&Asociacion" ), 0 );
-        asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
         asociacion->setStatusTip ( _ ( "Asociacion" ) );
         asociacion->setWhatsThis ( _ ( "Asociacion" ) );
         pPluginMenu->addAction ( asociacion );
@@ -109,7 +135,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         connect ( asociacion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *jdirectiva = new QAction ( _ ( "&Junta Directiva" ), 0 );
-        jdirectiva->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        jdirectiva->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
         jdirectiva->setStatusTip ( _ ( "Junta Directiva" ) );
         jdirectiva->setWhatsThis ( _ ( "Junta Directiva" ) );
         pPluginMenu->addAction ( jdirectiva );
@@ -118,7 +144,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 
 
         QAction *comision = new QAction ( _ ( "&Comisiones" ), 0 );
-        comision->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        comision->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
         comision->setStatusTip ( _ ( "Comisiones" ) );
         comision->setWhatsThis ( _ ( "Comisiones" ) );
         pPluginMenu->addAction ( comision );
@@ -128,29 +154,38 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
 
         QAction *convjd = new QAction ( _ ( "&Convocar Junta" ), 0 );
-        convjd->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        convjd->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
         convjd->setStatusTip ( _ ( "Convocar Junta" ) );
         convjd->setWhatsThis ( _ ( "Convocar Junta" ) );
         pPluginMenu->addAction ( convjd );
         bges->Fichas->addAction ( convjd );
-        connect ( convjd, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        connect ( convjd, SIGNAL ( activated() ), this, SLOT ( convjunta() ) );
         
         QAction *convas = new QAction ( _ ( "&Convocar Asamblea" ), 0 );
-        convas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        convas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
         convas->setStatusTip ( _ ( "Convocar Asamblea" ) );
         convas->setWhatsThis ( _ ( "Convocar Asamblea" ) );
         pPluginMenu->addAction ( convas );
         bges->Fichas->addAction ( convas );
-        connect ( convas, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        connect ( convas, SIGNAL ( activated() ), this, SLOT ( convjunta() ) );
         
         QAction *convreunion = new QAction ( _ ( "&Convocar Reunion" ), 0 );
-        convreunion->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        convreunion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
         convreunion->setStatusTip ( _ ( "Convocar Reunion" ) );
         convreunion->setWhatsThis ( _ ( "Convocar Reunion" ) );
         pPluginMenu->addAction ( convreunion );
         bges->Fichas->addAction ( convreunion );
         connect ( convreunion, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
         
+        pPluginMenu->addSeparator();
+        QAction *reuniones = new QAction ( _ ( "&Reuniones" ), 0 );
+        reuniones->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
+        reuniones->setStatusTip ( _ ( "Reuniones" ) );
+        reuniones->setWhatsThis ( _ ( "Reuniones" ) );
+        pPluginMenu->addAction ( reuniones );
+        bges->Fichas->addAction ( reuniones );
+        connect ( reuniones, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
+
     }// end if
     _depura ( "END MyPlugAsoc::inicializa", 0 );
 }

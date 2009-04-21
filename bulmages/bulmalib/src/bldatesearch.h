@@ -43,6 +43,7 @@ public:
     virtual QString fecha();
     virtual QString text();
     virtual QString fieldValue();
+    virtual QDate date();
 
 public slots:
     virtual void s_searchFecha();

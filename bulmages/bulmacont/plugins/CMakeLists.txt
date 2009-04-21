@@ -25,6 +25,7 @@ add_subdirectory(plugindebugbc)
 add_subdirectory(pluginbalancetree)
 #add_subdirectory(plugincanualesods)
 add_subdirectory(pluginbc_caaslods)
+add_subdirectory(pluginbc_caaslods)
 add_subdirectory(pluginbalance)
 add_subdirectory(pluginresumcta)
 

@@ -50,7 +50,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         setDbFieldId ( "idjdirectiva" );
         addDbField ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID jdirectiva" ) );
         addDbField ( "fechainjdirectiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
-        addDbField ( "fechafinjdirectiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Cese" ) );
+        addDbField ( "fechafinjdirectiva", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Cese" ) );
 
         mui_list->setMainCompany( comp );
         mui_list->setDbTableName ( "miembrojdirectiva" );
@@ -60,7 +60,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "fechainmiembrojdirectiva", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Fecha posesion" ) );
         mui_list->addSubFormHeader ( "fechafinmiembrojdirectiva", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha Cese" ) );
         mui_list->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Socio" ) );
-        mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Socio" ) );
+        mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Socio" ) );
         mui_list->addSubFormHeader ( "cargomiembrojdirectiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
 
         mui_list->setInsert ( TRUE );
@@ -139,6 +139,7 @@ int JDirectivaView::cargarPost ( QString id )
     _depura ( "END JDirectivaView::cargarPost", 0 );
     return 0;
 }
+
 
 
 

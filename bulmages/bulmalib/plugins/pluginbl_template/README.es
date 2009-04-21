@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Impresion de informes personalizados
+Nombre: Informes personalizados por ficha
 
 Biblioteca: libpluginbl_template.so
 

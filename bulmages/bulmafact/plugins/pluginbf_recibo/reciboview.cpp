@@ -50,9 +50,9 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent )
         setDbFieldId ( "idrecibo" );
         addDbField ( "idrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID recibo" ) );
         addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Cantidad" ) );
-
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cliente" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id Forma PAgo" ) );
+        addDbField ( "descrecibo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
 
@@ -98,7 +98,7 @@ ReciboView::~ReciboView()
 
 QString ReciboView::nombrePlantilla ( void )
 {
-    return QString ( "recibo" );
+    return QString ( "recibod" );
 }
 
 void ReciboView::imprimir()
@@ -148,5 +148,16 @@ int ReciboView::cargarPost ( QString id )
     return 0;
 }
 
+
+
+///
+/**
+**/
+void ReciboView::on_mui_list_editFinish ( int, int )
+{
+    _depura ( "FacturaView::on_subform2_editFinish", 0 );
+    mui_cantrecibo->setText(mui_list->sumarCampo("cantlrecibo").toQString());
+    _depura ( "END FacturaView::on_subform2_editFinish", 0 );
+}
 
 

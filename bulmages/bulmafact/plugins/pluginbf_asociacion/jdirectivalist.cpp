@@ -40,6 +40,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
         : BlFormList ( NULL, parent, flag, editmodo )
 {
     _depura ( "JDirectivaList::JDirectivaList", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "JDirectivaList_JDirectivaList", this );
@@ -61,6 +62,7 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
         : BlFormList ( comp, parent, flag, editmodo )
 {
     _depura ( "JDirectivaList::JDirectivaList", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "JDirectivaList_JDirectivaList", this );

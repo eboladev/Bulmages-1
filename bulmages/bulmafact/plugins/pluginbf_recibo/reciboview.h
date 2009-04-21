@@ -58,6 +58,8 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString );
+public slots:
+    virtual void on_mui_list_editFinish ( int, int );
 };
 
 #endif

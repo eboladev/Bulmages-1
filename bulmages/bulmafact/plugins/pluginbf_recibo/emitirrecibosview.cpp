@@ -77,6 +77,13 @@ void EmitirRecibosView::on_mui_crear_released() {
     BlDbRecordSet *cur = mainCompany() -> loadQuery( query );
     while (! cur -> eof () ) {
       mensajeInfo ("Procesando el Cliente " + cur->valor("nomcliente") + "Numero de hijos: " + cur -> valor ("numhijos") + "Cuota: " + cur->valor("cuotacuotaporalumno") );
+
+	mensajeInfo(m_fechain->text());
+	mensajeInfo(m_fechafin->text());
+
+	QDate fechain = m_fechain->date();
+	QDate fechafin = m_fechafin->date();
+
       cur -> nextRecord();
     } // end while
     delete cur;

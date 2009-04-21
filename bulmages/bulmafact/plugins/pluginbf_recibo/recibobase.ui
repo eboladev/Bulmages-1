@@ -222,6 +222,14 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>727</width>
+        <height>284</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -232,39 +240,6 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="textLabel2_5" >
-         <property name="text" >
-          <string>Cantidad</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_cantrecibo</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QLineEdit" name="mui_cantrecibo" >
-         <property name="maxLength" >
-          <number>200</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="2" column="1" colspan="2" >
         <widget class="BlSearchWidget" native="1" name="mui_idcliente" >
          <property name="sizePolicy" >
@@ -294,9 +269,60 @@
          </property>
         </widget>
        </item>
+       <item row="4" column="2" >
+        <widget class="QLineEdit" name="mui_cantrecibo" >
+         <property name="font" >
+          <font>
+           <pointsize>19</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="maxLength" >
+          <number>200</number>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" >
+        <widget class="QLabel" name="textLabel2_5" >
+         <property name="text" >
+          <string>Total</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_cantrecibo</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>320</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>

@@ -89,6 +89,7 @@ BEGIN
     fecharecibo DATE DEFAULT now(),
     cantrecibo NUMERIC(12,2),
     idforma_pago INTEGER REFERENCES forma_pago(idforma_pago),
+    descrecibo VARCHAR,
     idcliente INTEGER REFERENCES cliente(idcliente)
     );
   END IF;
@@ -102,6 +103,13 @@ BEGIN
    IF NOT FOUND THEN
       ALTER TABLE recibo ADD COLUMN idforma_pago INTEGER REFERENCES forma_pago(idforma_pago);
    END IF;
+
+
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''descrecibo'' AND relname=''recibo'';
+   IF NOT FOUND THEN
+      ALTER TABLE recibo ADD COLUMN descrecibo VARCHAR;
+   END IF;
+
 
    SELECT INTO as * FROM pg_attribute WHERE attname = ''cantrecibo'';
    IF NOT FOUND THEN
@@ -284,18 +292,25 @@ BEGIN
         CREATE TABLE reunion (
        idreunion SERIAL PRIMARY KEY,
        tiporeunion VARCHAR NOT NULL,
-       fecha1convocatoriareunion timestamp DEFAULT now() NOT NULL,
-       fecha2convocatoriareunion timestamp DEFAULT now() NOT NULL,
+       fecha1convocatoriareunion date DEFAULT now() NOT NULL,
+       fecha2convocatoriareunion date DEFAULT now() NOT NULL,
+       hora1convocatoriareunion date DEFAULT now() NOT NULL,
+       hora2convocatoriareunion date DEFAULT now() NOT NULL,
        conceptoreunion TEXT,
        resolucionreunion TEXT
         );
         END IF;
 
+  SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hora1convocatoriareunion'' AND relname=''reunion'';
+   IF NOT FOUND THEN
+      ALTER TABLE reunion ADD COLUMN hora1convocatoriareunion time;
+      ALTER TABLE reunion ADD COLUMN hora2convocatoriareunion time;
+   END IF;
+
   SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''resolucionreunion'' AND relname=''reunion'';
    IF NOT FOUND THEN
       ALTER TABLE reunion ADD COLUMN resolucionreunion TEXT;
    END IF;
-
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''ordendiareunion'';
         IF NOT FOUND THEN

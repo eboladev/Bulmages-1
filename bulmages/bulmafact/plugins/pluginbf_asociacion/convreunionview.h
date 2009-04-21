@@ -58,6 +58,10 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString );
+    virtual int junta();
+public slots:
+    virtual void on_mui_email_clicked();
+    virtual void on_m_agregarconvocados_clicked();
 };
 
 #endif

@@ -41,6 +41,7 @@ ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode edit
 {
     _depura ( "ConvReunionList::ConvReunionList", 0 );
     setupUi ( this );
+    setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ConvReunionList_ConvReunionList", this );
     if ( res != 0 )
@@ -62,6 +63,7 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 {
     _depura ( "ConvReunionList::ConvReunionList", 0 );
     setupUi ( this );
+    setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ConvReunionList_ConvReunionList", this );
     if ( res != 0 )
