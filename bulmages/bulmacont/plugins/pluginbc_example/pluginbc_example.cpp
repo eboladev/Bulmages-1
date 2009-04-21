@@ -72,7 +72,7 @@ void myplugin::elslot()
 /**
 \param bcont
 **/
-void myplugin::inicializa ( Bulmacont *bcont )
+void myplugin::inicializa ( BcBulmaCont *bcont )
 {
     _depura ( "myplugin::inicializa", 0 );
 
@@ -82,7 +82,7 @@ void myplugin::inicializa ( Bulmacont *bcont )
 
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = new QMenu ( _ ( "&Plugin" ) );
-    QAction *accion = new QAction ( _ ( "&Prueba de plugin Bulmacont" ), 0 );
+    QAction *accion = new QAction ( _ ( "&Prueba de plugin BcBulmaCont" ), 0 );
     accion->setStatusTip ( _ ( "Muestra statustip" ) );
     accion->setWhatsThis ( _ ( "Muestra que es esto" ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
@@ -97,7 +97,7 @@ void myplugin::inicializa ( Bulmacont *bcont )
 /**
 \param bcont
 **/
-int entryPoint ( Bulmacont *bcont )
+int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
     myplugin *plug = new myplugin();

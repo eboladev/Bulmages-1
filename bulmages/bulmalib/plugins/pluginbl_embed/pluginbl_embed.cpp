@@ -35,7 +35,7 @@
 
 #include "pluginbl_embed.h"
 #include "bfbulmafact.h"
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "myplugindock.h"
 #include "bldockwidget.h"
 #include "blworkspace.h"

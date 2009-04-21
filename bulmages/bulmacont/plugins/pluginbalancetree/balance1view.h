@@ -28,19 +28,19 @@
 #include <QTreeWidgetItem>
 
 #include "qlayout.h"
-#include "listcuentasview1.h"
-#include "diarioview.h"
-#include "extractoview1.h"
+#include "bcplancontablelistview.h"
+#include "bcdiarioview.h"
+#include "bcextractoview.h"
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "ui_balancetreebase.h"
 #include "bcform.h"
-#include "arbol.h"
+#include "bcplancontablearbol.h"
 
 
 class intapunts3view;
 class diarioview1;
-class extractoview1;
+class BcExtractoView;
 class BcCompany ;
 
 
@@ -68,7 +68,7 @@ private:
 //     int m_cidcuenta;
 //     int m_cnivel;
 //     int m_cpadre;
-    Arbol *arbol; /// el arbol de cuentas
+    BcPlanContableArbol *arbol; /// el arbol de cuentas
 
 public:
     BalanceTreeView ( BcCompany *, QWidget *parent = 0, int flags = 0 );

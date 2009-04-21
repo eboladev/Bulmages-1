@@ -33,7 +33,7 @@
 #include "pluginresumcta.h"
 #include "correctorwidget.h"
 #include "bccompany.h"
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "bldockwidget.h"
 
 
@@ -45,7 +45,7 @@ QAction *viewCorrector;
 /**
 \param bcont
 **/
-int entryPoint ( Bulmacont *bcont )
+int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "Entrada del plugin ResumCta", 10 );
 
@@ -101,7 +101,7 @@ int entryPoint ( Bulmacont *bcont )
 /**
 \return
 **/
-int BusquedaCuenta_setidcuenta_post ( BusquedaCuenta * )
+int BcBuscarCuenta_setidcuenta_post ( BcBuscarCuenta * )
 {
     g_res->setMensaje ( "<HTML><BODY>No hay cuenta.</BODY></HTML>" );
     return 0;
@@ -113,9 +113,9 @@ int BusquedaCuenta_setidcuenta_post ( BusquedaCuenta * )
 \param bcta
 \return
 **/
-int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta *bcta )
+int BcBuscarCuenta_s_lostFocus_post ( BcBuscarCuenta *bcta )
 {
-    _depura ( "BusquedaCuenta_s_lostFocus_post", 0 );
+    _depura ( "BcBuscarCuenta_s_lostFocus_post", 0 );
     QString cod = bcta->codigocuenta();
     QString nom = bcta->nomcuenta();
     QString id  = bcta->idcuenta();
@@ -134,7 +134,7 @@ int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta *bcta )
         g_res->setMensaje ( mensaje );
     } // end if
     delete cur;
-    _depura ( "END BusquedaCuenta_s_lostFocus_post", 0 );
+    _depura ( "END BcBuscarCuenta_s_lostFocus_post", 0 );
     return 0;
 }
 
@@ -177,7 +177,7 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 /**
 \param bcont
 **/
-int Bulmacont_closeEvent ( Bulmacont *bcont )
+int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )
 {
     BcCompany * emp = bcont->empresaactual();
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );

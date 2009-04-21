@@ -28,9 +28,9 @@
 #include <QTreeWidgetItem>
 
 #include "qlayout.h"
-#include "listcuentasview1.h"
-#include "diarioview.h"
-#include "extractoview1.h"
+#include "bcplancontablelistview.h"
+#include "bcdiarioview.h"
+#include "bcextractoview.h"
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "ui_balancebase.h"
@@ -39,7 +39,7 @@
 
 class intapunts3view;
 class diarioview1;
-class extractoview1;
+class BcExtractoView;
 class BcCompany ;
 
 

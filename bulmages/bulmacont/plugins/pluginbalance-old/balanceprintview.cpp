@@ -30,12 +30,12 @@
 #include <bldatesearch.h>
 
 #include "balanceprintview.h"
-#include "listcuentasview1.h"
+#include "bcplancontablelistview.h"
 #include "bccompany.h"
-#include "arbol.h"
-#include "busquedacuenta.h"
-#include "selectcanalview.h"
-#include "selectccosteview.h"
+#include "bcplancontablearbol.h"
+#include "bcbuscarcuenta.h"
+#include "bccanalseleccionarview.h"
+#include "bccentrocosteseleccionarview.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -176,8 +176,8 @@ void BalancePrintView::presentar ( const char *tipus )
             query.sprintf ( "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo" );
             BlDbRecordSet *ramas;
             ramas = mainCompany()->loadQuery ( query, "Ramas" );
-            Arbol *arbol;
-            arbol = new Arbol;
+            BcPlanContableArbol *arbol;
+            arbol = new BcPlanContableArbol;
             while ( !ramas->eof() ) {
                 if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
                     arbol->nuevaRama ( ramas );
@@ -410,13 +410,13 @@ void BalancePrintView::presentar ( const char *tipus )
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de canal.
-/** Presenta la ventana de selecci&oacute;n de canales \ref selectcanalview. */
+/** Presenta la ventana de selecci&oacute;n de canales \ref BcCanalSeleccionarView. */
 /**
 **/
 void BalancePrintView::on_mui_canales_clicked()
 {
     _depura ( "BalancePrintView::on_mui_canales_clicked", 0 );
-    selectcanalview *selcanales = ( ( BcCompany * ) mainCompany() )->getselcanales();
+    BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() )->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
     _depura ( "END BalancePrintView::on_mui_canales_clicked", 0 );
@@ -425,13 +425,13 @@ void BalancePrintView::on_mui_canales_clicked()
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de
 /// centros de coste.
-/** Presenta la ventana de selecci&oacute;n de centros de coste \ref SelectCCosteView. */
+/** Presenta la ventana de selecci&oacute;n de centros de coste \ref BcCentroCosteSeleccionarView. */
 /**
 **/
 void BalancePrintView::on_mui_ccostes_clicked()
 {
     _depura ( "BalancePrintView::on_mui_ccostes_clicked", 0 );
-    SelectCCosteView *selccostes = ( ( BcCompany * ) mainCompany() )->getselccostes();
+    BcCentroCosteSeleccionarView *selccostes = ( ( BcCompany * ) mainCompany() )->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
     _depura ( "END BalancePrintView::on_mui_ccostes_clicked", 0 );

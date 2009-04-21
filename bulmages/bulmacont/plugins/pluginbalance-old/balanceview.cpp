@@ -24,13 +24,13 @@
 #include <bldatesearch.h>
 
 #include "balanceview.h"
-#include "listcuentasview1.h"
+#include "bcplancontablelistview.h"
 #include "bccompany.h"
-#include "busquedacuenta.h"
+#include "bcbuscarcuenta.h"
 #include "asiento1view.h"
 
-#include "selectcanalview.h"
-#include "selectccosteview.h"
+#include "bccanalseleccionarview.h"
+#include "bccentrocosteseleccionarview.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 
@@ -270,8 +270,8 @@ void BalanceView::generarBalance()
 
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
     // Consideraciones para centros de coste y canales
-    selectcanalview *scanal = mainCompany() ->getselcanales();
-    SelectCCosteView *scoste = mainCompany() ->getselccostes();
+    BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
+    BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
     QString ccostes = scoste->cadcoste();
     QString logicand = "";
     if ( ccostes != "" ) {

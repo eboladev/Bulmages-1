@@ -72,7 +72,7 @@ void pluginbalancemyplugin4::elslot()
 /**
 \param bges
 **/
-void pluginbalancemyplugin4::inicializa ( Bulmacont *bges )
+void pluginbalancemyplugin4::inicializa ( BcBulmaCont *bges )
 {
     _depura ( "pluginbalancemyplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
@@ -106,7 +106,7 @@ void pluginbalancemyplugin4::inicializa ( Bulmacont *bges )
 /**
 \param bcont
 **/
-int entryPoint ( Bulmacont *bcont )
+int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "entryPoint::entryPoint", 0 );
 

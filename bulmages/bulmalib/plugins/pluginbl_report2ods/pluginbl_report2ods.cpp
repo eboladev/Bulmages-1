@@ -32,7 +32,7 @@
 
 #include "pluginbl_report2ods.h"
 #include "bfbulmafact.h"
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "myplugininformesods.h"
 #include "blworkspace.h"
 #include "blform.h"

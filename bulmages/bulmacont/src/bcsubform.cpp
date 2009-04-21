@@ -28,13 +28,13 @@
 #include "blfunctions.h"
 #include "bccompany.h"
 #include "asiento1view.h"
-#include "extractoview1.h"
+#include "bcextractoview.h"
 #include "bltexteditdelegate.h"
 #include "bldoublespinbox.h"
-#include "busquedacanal.h"
-#include "busquedaccoste.h"
-#include "cuentalistview.h"
-#include "diarioview.h"
+#include "bcbuscarcanal.h"
+#include "bcbuscarcentrocoste.h"
+#include "bccuentalistview.h"
+#include "bcdiarioview.h"
 
 
 /// Constructor de la clase
@@ -167,7 +167,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-    CuentaListView *listcuentas = new CuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, BL_SELECT_MODE );
+    BcCuentaListView *listcuentas = new BcCuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, BL_SELECT_MODE );
 //    listcuentas->inicializa();
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
@@ -532,19 +532,19 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
-        BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
+        BcBuscarCuentaDelegate * editor = new BcBuscarCuentaDelegate ( parent );
         editor->setMainCompany ( ( BcCompany * ) m_subform->mainCompany() );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCuentaDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
-        BusquedaCanalDelegate * editor = new BusquedaCanalDelegate ( parent );
+        BcBuscarCanalDelegate * editor = new BcBuscarCanalDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCanalDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCanalDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomc_coste" ) {
-        BusquedaCCosteDelegate * editor = new BusquedaCCosteDelegate ( parent );
+        BcBuscarCentroCosteDelegate * editor = new BcBuscarCentroCosteDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
+        _depura ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCentroCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         BlDateLineEdit * editor = new BlDateLineEdit ( parent );
@@ -604,17 +604,17 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = spinBox->text();
         model->setData ( index, value );
     } else if ( linea->nomcampo() == "codigo" ) {
-        BusquedaCuentaDelegate * comboBox = static_cast<BusquedaCuentaDelegate*> ( editor );
+        BcBuscarCuentaDelegate * comboBox = static_cast<BcBuscarCuentaDelegate*> ( editor );
         QString value = comboBox->currentText();
         value = value.left ( value.indexOf ( ".-" ) );
         QString codigoext = extiendecodigo ( value, ( ( BcSubForm* ) m_subform )->mainCompany() ->numdigitosempresa() );
         model->setData ( index, codigoext );
     } else if ( linea->nomcampo() == "nomcanal" ) {
-        BusquedaCanalDelegate * comboBox = static_cast<BusquedaCanalDelegate*> ( editor );
+        BcBuscarCanalDelegate * comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else if ( linea->nomcampo() == "nomc_coste" ) {
-        BusquedaCCosteDelegate * comboBox = static_cast<BusquedaCCosteDelegate*> ( editor );
+        BcBuscarCentroCosteDelegate * comboBox = static_cast<BcBuscarCentroCosteDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
@@ -666,17 +666,17 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         spinBox->selectAll();
     } else if ( linea->nomcampo() == "codigo" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*> ( editor );
+        BcBuscarCuentaDelegate *comboBox = static_cast<BcBuscarCuentaDelegate*> ( editor );
         comboBox->addItem ( value );
         //comboBox->lineEdit()->setText(value);
         comboBox->lineEdit() ->selectAll();
     } else if ( linea->nomcampo() == "nomcanal" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaCanalDelegate *comboBox = static_cast<BusquedaCanalDelegate*> ( editor );
+        BcBuscarCanalDelegate *comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
         comboBox->set ( value );
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BusquedaCCosteDelegate *comboBox = static_cast<BusquedaCCosteDelegate*> ( editor );
+        BcBuscarCentroCosteDelegate *comboBox = static_cast<BcBuscarCentroCosteDelegate*> ( editor );
         comboBox->set ( value );
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();

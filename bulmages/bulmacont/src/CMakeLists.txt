@@ -27,60 +27,60 @@ file(GLOB bulmacont_UIS *.ui)
 
 set(bulmacontEx main.cxx)
 
-set(bulmacont_MOCS bulmacont.h 
-           sobreview.h 
-           listcuentasview1.h 
-           cuentaview.h 
-           diarioview.h 
-           extractoview1.h 
-           aplinteligentesview.h 
+set(bulmacont_MOCS bcbulmacont.h 
+           bcaboutview.h 
+           bcplancontablelistview.h 
+           bccuentaview.h 
+           bcdiarioview.h 
+           bcextractoview.h 
+           bcasientointeligenteview.h 
            asientosview.h 
-           regivaprintview.h 
-           mpatrimonialview.h 
-           mpatrimonialesview.h 
-           canualesprintview.h 
-           canualesview.h 
-           canalview.h 
-           ccosteview.h 
-           propiedadesempresa.h 
-           extractoprintview.h 
-           diarioprintview.h 
-           cambiactaview.h 
-           duplicarasientoview.h 
-           amortizacionview.h 
-           listado347.h 
-           amortizacionesview.h 
-           selectccosteview.h 
-           selectcanalview.h 
-           modelo300.h 
-           bbloqfecha.h 
-           tipoivaview.h 
-           fpagoview.h 
-		   busquedacuenta.h 
+           bcregistroivaimprimirview.h 
+           bcmasapatrimonialview.h 
+           bcmasapatrimoniallistview.h 
+           bccuentasanualesimprimirview.h 
+           bccuentasanualesview.h 
+           bccanalview.h 
+           bccentrocosteview.h 
+           bcconfiguracionview.h 
+           bcextractoimprimirview.h 
+           bcdiarioprintview.h 
+           bccambiacuentaview.h 
+           bcasientoduplicarview.h 
+           bcamortizacionview.h 
+           bcmodelo347listview.h 
+           bcamortizacionlistview.h 
+           bccentrocosteseleccionarview.h 
+           bccanalseleccionarview.h 
+           bcmodelo300imprimir2ps.h 
+           bcbloqueafechaview.h 
+           bctipoivaview.h 
+           bcformapagoview.h 
+		   bcbuscarcuenta.h 
 		   asiento1.h 
 		   asiento1view.h 
 	   	   listlinasiento1view.h 
   	   	   bcsubform.h 
-	   	   diariosubform.h 
-	   	   extractosubform.h 
+	   	   bcdiariosubform.h 
+	   	   bcextractosubform.h 
 	   	   asientolistsubform.h 
-		   busquedaccoste.h 
-	       busquedacanal.h 
+		   bcbuscarcentrocoste.h 
+	       bcbuscarcanal.h 
 	       bcform.h
-	       cuentalistview.h)
+	       bccuentalistview.h)
 
 # ficheros no MOc's
 #           bccompany.h 
 #           qlineedit1.h 
 #           qlistviewitem1.h 
-#           libromayorprint.h 
-#           diarioprint.h 
-#           libromayorprint.h 
-#           diarioprint.h 
+#           bclibromayorimprimir.h 
+#           bcdiarioprint.h 
+#           bclibromayorimprimir.h 
+#           bcdiarioprint.h 
 #           modelosps.h 
-#           importainteligente.h 
-#           importbalance.h 
-#           arbol.h 
+#           bcasientointeligenteimportarxml.h 
+#           bcbalanceimportarxml.h 
+#           bcplancontablearbol.h 
 #           balance1view.h 
 #           balanceview.h 
 #           balanceprintview.h 

@@ -24,7 +24,7 @@
 
 #include "pluginbf_bulmacont.h"
 #include "blfunctions.h"
-#include "listcuentasview1.h"
+#include "bcplancontablelistview.h"
 #include "bfcompany.h"
 
 
@@ -58,7 +58,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     g_empresaactual->setListVentanas ( comp->listVentanas() );
 
 
-    listcuentasview1 *listcuentas = new listcuentasview1 ( g_empresaactual, 0 );
+    BcPlanContableListView *listcuentas = new BcPlanContableListView ( g_empresaactual, 0 );
     listcuentas->inicializa();
     g_bf->workspace()->addWindow ( listcuentas );
 

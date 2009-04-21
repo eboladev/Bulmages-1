@@ -32,7 +32,7 @@
 #include "mypluginimportcsv.h"
 
 #include "bfbulmafact.h"
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 
 
 QMainWindow *g_bges_importcsv = NULL;

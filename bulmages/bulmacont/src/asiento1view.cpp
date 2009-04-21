@@ -33,8 +33,8 @@
 
 #include "asiento1view.h"
 #include "bldatesearch.h"
-#include "duplicarasientoview.h"
-#include "aplinteligentesview.h"
+#include "bcasientoduplicarview.h"
+#include "bcasientointeligenteview.h"
 #include "listlinasiento1view.h"
 #include "bccompany.h"
 
@@ -288,7 +288,7 @@ void Asiento1View::on_mui_duplicar_clicked()
 
 
 /// Se ha pulsado sobre el bot&oacute;n de generar asientos inteligentes.
-/** Se inicializa la clase \ref aplinteligentesview y se muestra ese di&aacute;logo
+/** Se inicializa la clase \ref BcAsientoInteligenteView y se muestra ese di&aacute;logo
     para que se opere con los asientos plantilla. */
 /**
 **/
@@ -303,7 +303,7 @@ void Asiento1View::on_mui_inteligente_clicked()
     } else {
         numasiento = 0;
     } // end if
-    aplinteligentesview *nueva = new aplinteligentesview ( mainCompany(), 0 );
+    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( mainCompany(), 0 );
     nueva->inicializa ( numasiento );
     nueva->show();
     _depura ( "END Asiento1View::on_mui_inteligente_clicked", 0 );

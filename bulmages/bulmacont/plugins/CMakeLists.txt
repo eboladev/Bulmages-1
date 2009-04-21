@@ -18,21 +18,21 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
 
-add_subdirectory(pluginregistroiva)
-add_subdirectory(plugincorrector)
+add_subdirectory(pluginbc_registroiva)
+add_subdirectory(pluginbc_corrector)
 add_subdirectory(pluginbc_example)
-add_subdirectory(plugindebugbc)
+add_subdirectory(pluginbc_depuracion)
 add_subdirectory(pluginbalancetree)
-#add_subdirectory(plugincanualesods)
+#add_subdirectory(pluginbc_cuentasanuales2ods)
 add_subdirectory(pluginbc_caaslods)
 add_subdirectory(pluginbc_caaslods)
-add_subdirectory(pluginbalance)
+add_subdirectory(pluginbc_balance)
 add_subdirectory(pluginresumcta)
 
 # pluginadocumental deprecated.
-#add_subdirectory(pluginadocumental)
+#add_subdirectory(pluginbc_documentoadjunto)
 # pluginproyectos bajo desarrollo.
-add_subdirectory(pluginproyectos)
+add_subdirectory(pluginbc_proyectos)
 # pluginimportcontaplus bajo desarrollo.
 #add_subdirectory(pluginimportcontaplus)
 # pluginbalance-old pendiente de fusionar con pluginbalance

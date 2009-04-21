@@ -28,12 +28,12 @@
 #include <bldatesearch.h>
 
 #include "balance1view.h"
-#include "listcuentasview1.h"
+#include "bcplancontablelistview.h"
 #include "bccompany.h"
-#include "busquedacuenta.h"
+#include "bcbuscarcuenta.h"
 #include "asiento1view.h"
-#include "selectcanalview.h"
-#include "selectccosteview.h"
+#include "bccanalseleccionarview.h"
+#include "bccentrocosteseleccionarview.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 
@@ -270,7 +270,7 @@ bool BalanceTreeView::generaBalance()
 {
     _depura ( "BalanceTreeView::generaBalance", 0 );
 
-    /// Vamos a crear una estructura tipo arbol (usando la clase Arbol).
+    /// Vamos a crear una estructura tipo arbol (usando la clase BcPlanContableArbol).
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     /// numero de cuentas de nivel 2) y las vamos creando.
@@ -284,7 +284,7 @@ bool BalanceTreeView::generaBalance()
         return 0;
     }
 
-    arbol = new Arbol;
+    arbol = new BcPlanContableArbol;
     while ( !ramas->eof() ) {
         if ( ramas->valor ( "nivel" ).toInt() == 2 )
             arbol->nuevaRama ( ramas );
@@ -300,8 +300,8 @@ bool BalanceTreeView::generaBalance()
 
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
     /// Consideraciones para centros de coste y canales
-    selectcanalview *scanal = mainCompany() ->getselcanales();
-    SelectCCosteView *scoste = mainCompany() ->getselccostes();
+    BcCanalSeleccionarView *scanal = mainCompany() ->getselcanales();
+    BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
     QString ccostes = scoste->cadcoste();
     QString logicand = "";
     if ( ccostes != "" ) {

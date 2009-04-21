@@ -39,16 +39,16 @@
 #include "bldefs.h"
 
 
-class SelectCCosteView;
-class selectcanalview;
+class BcCentroCosteSeleccionarView;
+class BcCanalSeleccionarView;
 class Asiento1View;
-class DiarioView;
+class BcDiarioView;
 class AsientosView;
-class CuentaView;
+class BcCuentaView;
 class BlCountryView;
-class extractoview1;
-class listcuentasview1;
-class Bulmacont;
+class BcExtractoView;
+class BcPlanContableListView;
+class BcBulmaCont;
 
 
 /// Soporte principal para cada empresa contable.
@@ -65,31 +65,31 @@ class Bulmacont;
 class BC_EXPORT BcCompany : public BlMainCompany
 {
 private:
-    Bulmacont *m_bulmacont;
+    BcBulmaCont *m_bulmacont;
     QString nombre;
     int ano;
     QString contrasenya;
-    DiarioView *diario;
-    extractoview1 *extracto;
+    BcDiarioView *diario;
+    BcExtractoView *extracto;
     Asiento1View *introapunts2;
     AsientosView *m_listasientos;
-    listcuentasview1 *m_listcuentas;
+    BcPlanContableListView *m_listcuentas;
     unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
     /// luego estos selectores generales se podr&aacute;n invocar desde distintas partes.
-    SelectCCosteView *selccostes;
-    selectcanalview *selcanales;
+    BcCentroCosteSeleccionarView *selccostes;
+    BcCanalSeleccionarView *selcanales;
 
 public:
     QString nombreDB;
 
 public:
-    BcCompany ( Bulmacont *bcont );
+    BcCompany ( BcBulmaCont *bcont );
     virtual ~BcCompany();
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
-    extractoview1 *extractoempresa();
-    DiarioView *diarioempresa();
+    BcExtractoView *extractoempresa();
+    BcDiarioView *diarioempresa();
     Asiento1View *intapuntsempresa();
     Asiento1View *intapuntsempresa2();
     int numdigitosempresa();
@@ -132,11 +132,11 @@ public:
     void centrocostedefecto();
     void canaldefecto();
     void bloqueoFechas();
-    SelectCCosteView *getselccostes();
-    selectcanalview *getselcanales();
+    BcCentroCosteSeleccionarView *getselccostes();
+    BcCanalSeleccionarView *getselcanales();
     void recalculasaldos();
     virtual void s_asiento1();
-    CuentaView *newcuentaview();
+    BcCuentaView *newcuentaview();
     void guardaConf();
     void cargaConf();
 };

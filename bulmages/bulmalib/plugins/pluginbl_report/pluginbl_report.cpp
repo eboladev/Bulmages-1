@@ -32,7 +32,7 @@
 
 #include "pluginbl_report.h"
 #include "bfbulmafact.h"
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "myplugininformes.h"
 #include "blworkspace.h"
 #include "blform.h"

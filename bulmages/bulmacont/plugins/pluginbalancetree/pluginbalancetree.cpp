@@ -72,7 +72,7 @@ void myplugin4::elslot()
 /**
 \param bges
 **/
-void myplugin4::inicializa ( Bulmacont *bges )
+void myplugin4::inicializa ( BcBulmaCont *bges )
 {
     _depura ( "myplugin4::inicializa", 0 );
 
@@ -112,7 +112,7 @@ void myplugin4::inicializa ( Bulmacont *bges )
 /**
 \param bcont
 **/
-int entryPoint ( Bulmacont *bcont )
+int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "entryPoint::entryPoint", 0 );
 

@@ -1,0 +1,215 @@
+<ui version="4.0" >
+ <class>BcDiarioPrintBase</class>
+ <widget class="QDialog" name="BcDiarioPrintBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>578</width>
+    <height>177</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Impresion del Diario</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="title" >
+      <string>Documento:</string>
+     </property>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="radiotexto" >
+        <property name="text" >
+         <string>&amp;Texto Plano</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radiohtml" >
+        <property name="mouseTracking" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>HT&amp;ML</string>
+        </property>
+        <property name="autoRepeat" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radiokugar" >
+        <property name="mouseTracking" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>&amp;Kugar</string>
+        </property>
+        <property name="autoRepeat" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radiopropietario" >
+        <property name="mouseTracking" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>Propietario</string>
+        </property>
+        <property name="autoRepeat" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Formato del listado:</string>
+     </property>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="radionormal" >
+        <property name="text" >
+         <string>Formato &amp;normal</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioaprendizaje" >
+        <property name="text" >
+         <string>&amp;Formato de aprendizaje</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>568</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>384</width>
+         <height>27</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton1" >
+       <property name="text" >
+        <string>&amp;Imprimir</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton2" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>BcDiarioPrintBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>441</x>
+     <y>235</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>419</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton1</sender>
+   <signal>clicked()</signal>
+   <receiver>BcDiarioPrintBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>535</x>
+     <y>239</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>524</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

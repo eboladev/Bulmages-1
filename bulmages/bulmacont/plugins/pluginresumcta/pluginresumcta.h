@@ -24,15 +24,15 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
-#include "busquedacuenta.h"
+#include "bcbuscarcuenta.h"
 #include "bcsubform.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
-extern "C" MY_EXPORT int BusquedaCuenta_setidcuenta_post ( BusquedaCuenta * );
-extern "C" MY_EXPORT int BusquedaCuenta_s_lostFocus_post ( BusquedaCuenta * );
+extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" MY_EXPORT int BcBuscarCuenta_setidcuenta_post ( BcBuscarCuenta * );
+extern "C" MY_EXPORT int BcBuscarCuenta_s_lostFocus_post ( BcBuscarCuenta * );
 extern "C" MY_EXPORT int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm * );
-extern "C" MY_EXPORT int Bulmacont_closeEvent ( Bulmacont * );
+extern "C" MY_EXPORT int BcBulmaCont_closeEvent ( BcBulmaCont * );

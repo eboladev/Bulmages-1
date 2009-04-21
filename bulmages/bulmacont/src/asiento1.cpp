@@ -28,7 +28,7 @@
 #include "blfunctions.h"
 #include "blplugins.h"
 #include "bccompany.h"
-#include "arbol.h"
+#include "bcplancontablearbol.h"
 #include "blmainwindow.h"
 
 ///

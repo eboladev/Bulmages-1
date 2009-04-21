@@ -25,7 +25,7 @@
 #endif
 
 #include "bfbulmafact.h"
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );

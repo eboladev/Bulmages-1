@@ -30,12 +30,12 @@
 #include <QApplication>
 #include <QObject>
 
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 
@@ -49,7 +49,7 @@ public:
 public:
     myplugin();
     ~myplugin();
-    void inicializa ( Bulmacont * );
+    void inicializa ( BcBulmaCont * );
 
 public slots:
     void elslot();

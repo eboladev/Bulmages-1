@@ -24,10 +24,10 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class pluginbalancemyplugin4 : public QObject, BlMainCompanyPointer
@@ -35,12 +35,12 @@ class pluginbalancemyplugin4 : public QObject, BlMainCompanyPointer
     Q_OBJECT
 
 public:
-    Bulmacont *m_bulmacont;
+    BcBulmaCont *m_bulmacont;
 
 public:
     pluginbalancemyplugin4();
     ~pluginbalancemyplugin4();
-    void inicializa ( Bulmacont * );
+    void inicializa ( BcBulmaCont * );
 
 public slots:
     void elslot();

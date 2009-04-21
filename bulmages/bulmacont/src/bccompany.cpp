@@ -24,28 +24,28 @@
 
 #include "bccompany.h"
 #include "blcompanydialog.h"
-#include "listcuentasview1.h"
+#include "bcplancontablelistview.h"
 #include "asiento1view.h"
 #include "asientosview.h"
-#include "amortizacionesview.h"
-#include "canualesview.h"
-#include "cuentaview.h"
-#include "canalview.h"
-#include "ccosteview.h"
-#include "mpatrimonialesview.h"
-#include "propiedadesempresa.h"
-#include "cambiactaview.h"
-#include "tipoivaview.h"
-#include "fpagoview.h"
-#include "selectccosteview.h"
-#include "selectcanalview.h"
+#include "bcamortizacionlistview.h"
+#include "bccuentasanualesview.h"
+#include "bccuentaview.h"
+#include "bccanalview.h"
+#include "bccentrocosteview.h"
+#include "bcmasapatrimoniallistview.h"
+#include "bcconfiguracionview.h"
+#include "bccambiacuentaview.h"
+#include "bctipoivaview.h"
+#include "bcformapagoview.h"
+#include "bccentrocosteseleccionarview.h"
+#include "bccanalseleccionarview.h"
 #include "blplugins.h"
-#include "bbloqfecha.h"
-#include "diarioview.h"
-#include "listado347.h"
+#include "bcbloqueafechaview.h"
+#include "bcdiarioview.h"
+#include "bcmodelo347listview.h"
 #include "blcountryview.h"
-#include "bulmacont.h"
-#include "extractoview1.h"
+#include "bcbulmacont.h"
+#include "bcextractoview.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -69,7 +69,7 @@ void BcCompany ::s_asiento1()
 /**
 \param bcont
 **/
-BcCompany ::BcCompany ( Bulmacont *bcont ) : BlMainCompany()
+BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
 {
     _depura ( "BcCompany ::BcCompany ", 0 );
     m_bulmacont = bcont;
@@ -112,7 +112,7 @@ BlPostgreSqlClient *BcCompany::bdempresa()
 /**
 \return
 **/
-extractoview1 *BcCompany::extractoempresa()
+BcExtractoView *BcCompany::extractoempresa()
 {
     return extracto;
 }
@@ -122,7 +122,7 @@ extractoview1 *BcCompany::extractoempresa()
 /**
 \return
 **/
-DiarioView *BcCompany::diarioempresa()
+BcDiarioView *BcCompany::diarioempresa()
 {
     return diario;
 }
@@ -202,8 +202,8 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         } // end if
 
         /// Inicializamos los selectores de centros de coste y canales.
-        selccostes = new SelectCCosteView ( this, 0 );
-        selcanales = new selectcanalview ( this, 0 );
+        selccostes = new BcCentroCosteSeleccionarView ( this, 0 );
+        selcanales = new BcCanalSeleccionarView ( this, 0 );
 
         /// Inicializamos las ventanas de uso generalizado.
 
@@ -212,14 +212,14 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         splash->mensaje ( _ ( "Inicializando extracto" ) );
         splash->setBarraProgreso ( 7 );
         m_progressbar->setValue ( 0 );
-        extracto = new extractoview1 ( this, 0 );
+        extracto = new BcExtractoView ( this, 0 );
         m_pWorkspace->addWindow ( extracto );
 
         /// pb = 20%
         splash->mensaje ( _ ( "Inicializando diario" ) );
         splash->setBarraProgreso ( 20 );
         m_progressbar->setValue ( 20 );
-        diario = new DiarioView ( this, 0 );
+        diario = new BcDiarioView ( this, 0 );
         m_pWorkspace->addWindow ( diario );
         /*
                 /// pb = 35%
@@ -257,7 +257,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         splash->mensaje ( _ ( "Inicializando cuentas" ) );
         splash->setBarraProgreso ( 90 );
         m_progressbar->setValue ( 90 );
-        m_listcuentas = new listcuentasview1 ( this, 0 );
+        m_listcuentas = new BcPlanContableListView ( this, 0 );
         m_listcuentas->inicializa();
         m_pWorkspace->addWindow ( m_listcuentas );
 
@@ -317,7 +317,7 @@ int BcCompany::muestracuentas()
 int BcCompany::ccostes()
 {
     _depura ( "BcCompany::ccostes", 0 );
-    ccosteview *ccoste = new ccosteview ( this, 0 );
+    BcCentroCosteView *ccoste = new BcCentroCosteView ( this, 0 );
     m_pWorkspace->addWindow ( ccoste );
     ccoste->show();
     _depura ( "END BcCompany::ccostes", 0 );
@@ -333,7 +333,7 @@ int BcCompany::ccostes()
 int BcCompany::canales()
 {
     _depura ( "BcCompany::canales", 0 );
-    canalview *canal = new canalview ( this, 0 );
+    BcCanalView *canal = new BcCanalView ( this, 0 );
     m_pWorkspace->addWindow ( canal );
     canal->show();
     _depura ( "END BcCompany::canales", 0 );
@@ -348,7 +348,7 @@ int BcCompany::canales()
 void BcCompany::bloqueoFechas()
 {
     _depura ( "BcCompany::bloqueoFechas", 0 );
-    BbloqFecha *tip = new BbloqFecha ( this, 0 );
+    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( this, 0 );
     m_pWorkspace->addWindow ( tip );
     tip->show();
     _depura ( "END BcCompany::bloqueoFechas", 0 );
@@ -363,7 +363,7 @@ void BcCompany::bloqueoFechas()
 int BcCompany::tiposIVA()
 {
     _depura ( "BcCompany::tiposIVA", 0 );
-    tipoivaview *tip = new tipoivaview ( this, 0 );
+    BcTipoIVAView *tip = new BcTipoIVAView ( this, 0 );
     m_pWorkspace->addWindow ( tip );
     tip->show();
     _depura ( "END BcCompany::tiposIVA", 0 );
@@ -379,7 +379,7 @@ int BcCompany::tiposIVA()
 int BcCompany::fPago()
 {
     _depura ( "BcCompany::fPago", 0 );
-    fpagoview *fp = new fpagoview ( this, 0 );
+    BcFormaPagoView *fp = new BcFormaPagoView ( this, 0 );
     m_pWorkspace->addWindow ( fp );
     fp->show();
     _depura ( "END BcCompany::fPago", 0 );
@@ -406,10 +406,10 @@ int BcCompany::cambioejercicio()
 /**
 \return
 **/
-CuentaView* BcCompany::newcuentaview()
+BcCuentaView* BcCompany::newcuentaview()
 {
     _depura ( "BcCompany::newcuentaview", 0 );
-    CuentaView *nuevae = new CuentaView ( this, 0 );
+    BcCuentaView *nuevae = new BcCuentaView ( this, 0 );
     _depura ( "END BcCompany::newcuentaview", 0 );
     return nuevae;
 }
@@ -422,7 +422,7 @@ CuentaView* BcCompany::newcuentaview()
 int BcCompany::nuevacuenta()
 {
     _depura ( "BcCompany::nuevacuenta", 0 );
-    CuentaView *nuevae = newcuentaview();
+    BcCuentaView *nuevae = newcuentaview();
     m_pWorkspace->addWindow ( nuevae );
     nuevae->show();
     _depura ( "END BcCompany::nuevacuenta", 0 );
@@ -463,7 +463,7 @@ int BcCompany::muestraasientos()
 int BcCompany::propiedadempresa()
 {
     _depura ( "BcCompany::propiedadempresa", 0 );
-    propiedadesempresa *nuevae = new propiedadesempresa ( this, 0 );
+    BcConfiguracionView *nuevae = new BcConfiguracionView ( this, 0 );
     m_pWorkspace->addWindow ( nuevae );
     nuevae->show();
     _depura ( "END BcCompany::propiedadempresa", 0 );
@@ -478,7 +478,7 @@ int BcCompany::propiedadempresa()
 int BcCompany::amortizaciones()
 {
     _depura ( "BcCompany::amortizaciones", 0 );
-    AmortizacionesView *amors = new AmortizacionesView ( this, 0 );
+    BcAmortizacionListView *amors = new BcAmortizacionListView ( this, 0 );
     m_pWorkspace->addWindow ( amors );
     amors->show();
     _depura ( "END BcCompany::amortizaciones", 0 );
@@ -494,7 +494,7 @@ int BcCompany::amortizaciones()
 int BcCompany::mpatrimoniales()
 {
     _depura ( "BcCompany::mpatrimoniales", 0 );
-    mpatrimonialesview *nuevae = new mpatrimonialesview ( this, 0 );
+    BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( this, 0 );
     nuevae->inicializa();
     nuevae->exec();
     delete nuevae;
@@ -511,7 +511,7 @@ int BcCompany::mpatrimoniales()
 int BcCompany::compbalance()
 {
     _depura ( "BcCompany::compbalance", 0 );
-    CAnualesView *nueva = new CAnualesView ( this, 0 );
+    BcCuentasAnualesView *nueva = new BcCuentasAnualesView ( this, 0 );
     m_pWorkspace->addWindow ( nueva );
     nueva->show();
     _depura ( "END BcCompany::compbalance", 0 );
@@ -759,7 +759,7 @@ void BcCompany::Ordenarasientos()
 int BcCompany::listado347()
 {
     _depura ( "BcCompany::modelo347", 0 );
-    Listado347 *dlg347 = new Listado347 ( this, "0" );
+    BcModelo347ListView *dlg347 = new BcModelo347ListView ( this, "0" );
     dlg347->exec();
     delete dlg347;
     _depura ( "END BcCompany::modelo347", 0 );
@@ -893,7 +893,7 @@ void BcCompany::Filtro()
 void BcCompany::reemplazacuentaenasientos()
 {
     _depura ( "BcCompany::reemplazacuentaenasientos", 0 );
-    CambiaCtaView *ctac = new CambiaCtaView ( this, 0, false );
+    BcCambiaCuentaView *ctac = new BcCambiaCuentaView ( this, 0, false );
     ctac->exec();
     _depura ( "END BcCompany::reemplazacuentaenasientos", 0 );
 }
@@ -916,7 +916,7 @@ void BcCompany::recalculasaldos()
 /**
 \return
 **/
-SelectCCosteView *BcCompany::getselccostes()
+BcCentroCosteSeleccionarView *BcCompany::getselccostes()
 {
     _depura ( "BcCompany::getselccostes", 0 );
     _depura ( "END BcCompany::getselccostes", 0 );
@@ -928,7 +928,7 @@ SelectCCosteView *BcCompany::getselccostes()
 /**
 \return
 **/
-selectcanalview *BcCompany::getselcanales()
+BcCanalSeleccionarView *BcCompany::getselcanales()
 {
     _depura ( "BcCompany::getselcanales", 0 );
     _depura ( "END BcCompany::getselcanales", 0 );

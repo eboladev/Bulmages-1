@@ -33,7 +33,7 @@
 #include <unistd.h>
 #endif
 
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "blsplashscreen.h"
 #include "blconfiguration.h"
 #include "qtextcodec.h"
@@ -68,7 +68,7 @@ int main ( int argc, char **argv )
     QString db = "";
     QString us = "";
     QString pass = "";
-    Bulmacont *bges;
+    BcBulmaCont *bges;
 
     try {
         /// Inicializa el sistema de traducciones 'gettext'.
@@ -100,11 +100,11 @@ int main ( int argc, char **argv )
 	    pass = argv[4];
             g_confpr->setValor ( CONF_LOGIN_USER, us );
             g_confpr->setValor ( CONF_PASSWORD_USER, pass );
-            bges = new Bulmacont ( NULL, 0, db );
+            bges = new BcBulmaCont ( NULL, 0, db );
             bges->hide();
         } else if ( argc == 3 ) {
             db = argv[2];
-            bges = new Bulmacont ( NULL, 0, db );
+            bges = new BcBulmaCont ( NULL, 0, db );
             bges->hide();
         } else {
             BlDbLoginDialog *login1 = new BlDbLoginDialog ( 0, "" );
@@ -113,7 +113,7 @@ int main ( int argc, char **argv )
             if ( !login1->authOK() )
                 exit ( 1 );
             delete login1;
-            bges = new Bulmacont ( NULL, 0, "" );
+            bges = new BcBulmaCont ( NULL, 0, "" );
             bges->hide();
         } // end if
         g_main = bges;
