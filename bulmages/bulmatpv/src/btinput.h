@@ -8,9 +8,7 @@
 #include "bldb.h"
 #include "blfixed.h"
 
-
 class BtCompany;
-
 
 class BT_EXPORT BtInput : public QLineEdit
 {
@@ -32,4 +30,3 @@ signals:
 };
 
 #endif
-

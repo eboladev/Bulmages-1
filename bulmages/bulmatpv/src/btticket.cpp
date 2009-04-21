@@ -28,7 +28,6 @@
 #include "blplugins.h"
 #include "btescprinter.h"
 
-
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
@@ -96,7 +95,6 @@ BlDbRecord * BtTicket::agregarLinea()
     item->addDbField ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _( "Nombre articulo" ) );
     item->addDbField ( "desclalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Nombre articulo" ) );
 
-
     item->setDbValue ( "descuentolalbaran", "0" );
 
     _depura ( "Hacemos el append", 0 );
@@ -151,12 +149,13 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         /// No hay ningun item con este articulo (es una insercion)
         m_lineaActual = agregarLinea();
         m_lineaActual->setDbValue ( "idarticulo", idArticulo );
-	QString a = cantidad.toQString();
+	    QString a = cantidad.toQString();
         m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString('.') );
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+        
         if ( !cur->eof() ) {
             m_lineaActual->setDbValue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
             m_lineaActual->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -174,10 +173,8 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         delete cur;
     } // end if
 
-
     /// Disparamos los plugins.
     g_plugins->lanza ( "BtTicket_insertarArticulo_Post", this );
-
 
     /// Pintamos el ticket ya que se ha modificado.
     pintar();
@@ -195,9 +192,7 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
     }
 
     m_lineaActual->borrar();
-
 }
-
 
 void  BtTicket::vaciarBtTicket()
 {}
@@ -214,12 +209,10 @@ void  BtTicket::inicioPosBtTicket ( BlDbRecord * )
 void  BtTicket::finPosBtTicket ( BlDbRecord * )
 {}
 
-
 BlDbRecord * BtTicket::lineaBtTicket ( int posicion )
 {
     return NULL;
 }
-
 
 BlDbRecord *BtTicket::lineaActBtTicket()
 {
@@ -231,18 +224,19 @@ void BtTicket::setLineaActual ( BlDbRecord *rec )
     m_lineaActual = rec;
 }
 
-
 void  BtTicket::setDescuentoGlobal ( BlFixed descuento )
 {}
 
 void BtTicket::abrircajon()
 {
-
-    QString filestr="/dev/null";
+    QString filestr = "/dev/null";
+    
     if (g_confpr->valor ( CONF_CASHBOX_FILE ) != "") {
-	filestr = g_confpr->valor(CONF_CASHBOX_FILE);
+	    filestr = g_confpr->valor(CONF_CASHBOX_FILE);
     } // end if
+    
     QFile file ( filestr );
+    
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
@@ -254,7 +248,7 @@ void BtTicket::abrircajon()
 	    QString cad = QChar(secuencia.at(i).toInt());
 	    file.write ( cad.toAscii(), 1 );
     } // end for
-//	file.write("hola mundo\n");
+
     file.close();
 }
 
@@ -573,10 +567,7 @@ void  BtTicket::imprimir()
 }
 */
 
-
-
 // =========================
-
 
 void BtTicket::imprimir()
 {
@@ -626,32 +617,32 @@ void BtTicket::imprimir()
         BlFixed totalIva;
     } total;
 
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
         empresa.direccionCompleta = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
         empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
         empresa.ciudad = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
         empresa.telefono = cur->valor ( "valor" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
         empresa.provincia = cur->valor ( "valor" );
     delete cur;
@@ -660,31 +651,31 @@ void BtTicket::imprimir()
     fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
     trabajador.id = dbValue ( "idtrabajador" );
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + dbValue ( "idtrabajador" ) );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
         trabajador.nombre = cur->valor ( "nomtrabajador" );
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + dbValue ( "idcliente" ) );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + dbValue ( "idalmacen" ) );
+    cur = mainCompany()->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
         almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
     delete cur;
 
     BlDbRecord *linea;
     
-    if ( listaLineas() ->size() ) {
+    if ( listaLineas()->size() ) {
         total.iva = BlFixed ( listaLineas()->at ( 0 )->dbValue ( "ivalalbaran" ) );
     }
         
-    for ( int i = 0; i < listaLineas() ->size(); ++i ) {
-        linea = listaLineas() ->at ( i );
+    for ( int i = 0; i < listaLineas()->size(); ++i ) {
+        linea = listaLineas()->at ( i );
         BlFixed cantidad = BlFixed ( linea->dbValue ( "cantlalbaran" ) );
         total.baseImponible = total.baseImponible + cantidad * BlFixed ( linea->dbValue ( "pvplalbaran" ) );
     } // end for
@@ -795,17 +786,19 @@ void BtTicket::bajar()
     } // end if
 }
 
-
 void BtTicket::agregarCantidad ( QString cantidad )
 {
     BlFixed cant ( cantidad );
+    
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         mensajeAviso ( "No existe linea" );
         return;
     } // end if
+    
     BlFixed cantorig ( m_lineaActual->dbValue ( "cantlalbaran" ) );
     BlFixed suma = cant + cantorig;
+    
     if ( suma == BlFixed ( "0.00" ) ) {
         borrarLinea ( m_lineaActual );
         //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
@@ -813,7 +806,9 @@ void BtTicket::agregarCantidad ( QString cantidad )
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
     } // end if
+    
     pintar();
+    
     /*
         BlFixed cant ( cantidad );
         /// Comprueba la existencia de la linea de ticket.
@@ -836,6 +831,7 @@ void BtTicket::agregarCantidad ( QString cantidad )
 void BtTicket::ponerCantidad ( QString cantidad )
 {
     BlFixed cant ( cantidad );
+    
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         mensajeAviso ( "No existe linea" );
@@ -849,7 +845,9 @@ void BtTicket::ponerCantidad ( QString cantidad )
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString() );
     } // end if
+    
     pintar();
+    
     /*
         BlFixed cant ( cantidad );
         /// Comprueba la existencia de la linea de ticket.
@@ -871,11 +869,13 @@ void BtTicket::ponerCantidad ( QString cantidad )
 void BtTicket::ponerPrecio ( QString precio )
 {
     BlFixed valor ( precio );
+    
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         mensajeAviso ( "No existe linea" );
         return;
     } // end if
+    
     m_lineaActual->setDbValue ( "pvplalbaran", valor.toQString() );
 
     g_plugins->lanza ( "BtTicket_ponerPrecio_Post", this );
@@ -889,12 +889,15 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
 
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+    
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
+    
     delete cur;
 
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigo_Post", this );
+    
     _depura ( "END BtTicket::insertarArticuloCodigo", 0 );
 
 }
@@ -903,13 +906,18 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
 void BtTicket::insertarArticuloCodigoNL ( QString codigo )
 {
     _depura("BtTicket::insertarArticuloCodigoNL",0);
+    
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+    
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
     } // end if
+    
     delete cur;
+    
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigoNL_Post", this );
+    
     _depura("END BtTicket::insertarArticuloCodigoNL",0);
 }
 
@@ -917,27 +925,33 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
 int BtTicket::cargar ( QString id )
 {
     try {
+        
         QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+        
         if ( cur ) {
             if ( !cur->eof() ) {
                 DBload ( cur );
             }
             delete cur;
         } // end if
+        
         cur = mainCompany() ->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
+        
         while ( !cur->eof() ) {
             BlDbRecord *l = agregarLinea();
             l->DBload ( cur );
             cur->nextRecord();
         } // end while
+        
         delete cur;
+        
     } catch ( ... ) {
         mensajeInfo ( "Error en la carga" );
     }
+    
     return 0;
 }
-
 
 /// Guarda los datos de la ficha en la base de datos.
 /**
@@ -979,6 +993,7 @@ int BtTicket::guardar()
         delete cur;
 
         _depura ( "END BtTicket::guardar", 0 );
+        
         return 0;
         
     } catch ( ... ) {
@@ -991,15 +1006,16 @@ int BtTicket::guardar()
     } // end try
 }
 
-
 void BtTicket::borrarLinea ( BlDbRecord *linea )
 {
     if ( linea == NULL )
         return;
+    
     int numlinea = listaLineas()->indexOf ( linea );
 
     if ( linea == m_lineaActual ) {
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
+        
         if ( numlinea > listaLineas()->count() - 1 ) {
             m_lineaActual = listaLineas()->count() > 0 ? listaLineas()->at ( listaLineas()->count() - 1 ) : NULL;
         } else {
@@ -1009,6 +1025,3 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
     }
 }
-
-
-

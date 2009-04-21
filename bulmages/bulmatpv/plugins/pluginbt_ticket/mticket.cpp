@@ -187,9 +187,10 @@ void MTicket::pintar()
 }
 
 
+
 void MTicket::on_mui_subir_clicked()
 {
-/// Simulamos la pulsacion de la techa arriba
+    /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Up );
 
 }
@@ -197,16 +198,21 @@ void MTicket::on_mui_subir_clicked()
 
 void MTicket::on_mui_bajar_clicked()
 {
-/// Simulamos la pulsacion de la techa arriba
+    /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Down );
 }
 
 
 void MTicket::on_mui_borrar_clicked()
 {
-
     BtTicket * tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
+}
+
+void MTicket::on_mui_imprimir_clicked()
+{
+    /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
+    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F2 );
 }

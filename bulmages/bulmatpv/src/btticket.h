@@ -31,7 +31,6 @@
 #include "bldb.h"
 #include "blfixed.h"
 
-
 class BT_EXPORT BtTicket :  public BlWidget, public BlDbRecord
 {
     Q_OBJECT
@@ -78,4 +77,3 @@ public slots:
 };
 
 #endif
-
