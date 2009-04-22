@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Avanzadas;
+Categorias: Utilidades avanzadas;
 
 Orden: 90
 

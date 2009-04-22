@@ -42,7 +42,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Avanzadas; Experimentales;
+Categorias: Utilidades avanzadas; Experimentales;
 
 Orden: 900
 

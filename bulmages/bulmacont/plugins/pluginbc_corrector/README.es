@@ -27,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades Genericas;Experimentales;
+Categorias: Utilidades genericas;Experimentales;
 
 Orden: 80
 

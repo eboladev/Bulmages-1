@@ -69,6 +69,7 @@
 	<file alias="bulmafact.svg">images/default-spa/mimetypes/bulmafact.svg</file>
 	<file alias="bulmacont.svg">images/default-spa/mimetypes/bulmacont.svg</file>
 	<file alias="bulmatpv.svg">images/default-spa/mimetypes/bulmatpv.svg</file>
+   <file alias="bulmages.png">images/default-spa/mimetypes/bulmages.png</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

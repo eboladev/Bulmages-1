@@ -32,7 +32,7 @@ BulmaGes::BulmaGes()
     setWindowTitle ( "Lanzador BulmaGes" );
 
     createTrayIcon();
-    trayIcon->setIcon ( QIcon ( ":/images/iconbulmafact.png" ) );
+    trayIcon->setIcon ( QIcon ( ":/images/iconbulmages.png" ) );
     trayIcon->show();
 }
 

@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Orden: 70
 

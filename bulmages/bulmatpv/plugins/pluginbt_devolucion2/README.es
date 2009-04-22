@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles: libpluginbt_devolucion.so
 
-Categorias: Utilidades Genericas; Experimentales;
+Categorias: Utilidades genericas; Experimentales;
 
 Orden: 50
 

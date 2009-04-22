@@ -26,6 +26,6 @@ Incompatibles:
 
 Orden: 301
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Comentarios:

@@ -32,6 +32,6 @@ Incompatibles:
 
 Orden: 60
 
-Categorias: Facturacion Generica;
+Categorias: Facturacion generica;
 
 Comentarios:

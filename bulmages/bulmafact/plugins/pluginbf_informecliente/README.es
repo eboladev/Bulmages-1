@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Avanzada; 
+Categorias: Facturacion avanzada; 
 
 Orden: 900
 

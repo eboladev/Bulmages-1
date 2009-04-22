@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion Avanzada; Experimentales;
+Categorias: Facturacion avanzada; Experimentales;
 
 Orden: 860
 
