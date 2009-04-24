@@ -53,4 +53,5 @@ public slots:
     void elslot2();
     void elslot3();
     void convjunta();
+    void comision();
 };

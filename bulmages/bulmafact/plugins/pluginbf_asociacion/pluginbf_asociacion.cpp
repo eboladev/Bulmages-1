@@ -25,9 +25,10 @@
 #include "blfunctions.h"
 #include "jdirectivalist.h"
 #include "jdirectivaview.h"
-
 #include "convreunionlist.h"
 #include "convreunionview.h"
+#include "comisioneslist.h"
+
 ///
 /**
 **/
@@ -68,6 +69,24 @@ void MyPlugAsoc::elslot1()
     bud->show();
     _depura ( "END MyPlugAsoc::elslot1", 0 );
 }
+
+
+
+
+///
+/**
+**/
+void MyPlugAsoc::comision()
+{
+    _depura ( "MyPlugAsoc::comision", 0 );
+    ComisionesList * bud = new ComisionesList ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
+    _depura ( "END MyPlugAsoc::comision", 0 );
+}
+
+
+
 
 ///
 /** Convocar Asamblea
@@ -149,7 +168,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         comision->setWhatsThis ( _ ( "Comisiones" ) );
         pPluginMenu->addAction ( comision );
         bges->Fichas->addAction ( comision );
-        connect ( comision, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        connect ( comision, SIGNAL ( activated() ), this, SLOT ( comision() ) );
         
         pPluginMenu->addSeparator();
 

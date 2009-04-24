@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/">
+   <file>images/iconbulmages.svg</file>
    <file>images/iconbulmages.png</file>
    <file>images/iconbulmafact.png</file>
    <file>images/iconbulmacont.png</file>
