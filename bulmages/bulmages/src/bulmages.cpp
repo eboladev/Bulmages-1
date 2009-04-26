@@ -22,9 +22,10 @@
 #include <stdlib.h>
 
 #include <QAction>
+#include <QFile>
+#include <QMessageBox>
 
 #include "bulmages.h"
-
 
 BulmaGes::BulmaGes()
 {
@@ -143,7 +144,18 @@ void BulmaGes::launchBulmaTPV()
 void BulmaGes::launchBulmaSetup()
 {
     hide();
-    runCommand ( "kdesu -c bulmasetup --" );
+    /// Entre distintas versiones de KDE el kdesudo cambia de nombre.
+    QFile f("/usr/bin/kdesu");
+    QFile j("/usr/bin/kdesudo");
+    if (f.exists()) {
+      runCommand ( "kdesu -c bulmasetup --" );
+    } else if (j.exists()) {
+      runCommand ( "kdesudo -c bulmasetup" );
+    } else {
+      QMessageBox msgBox;
+      msgBox.setText("No se encuentra kdesudo");
+      msgBox.exec();    
+    } // end if
 }
 
 
