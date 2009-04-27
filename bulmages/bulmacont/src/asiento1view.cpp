@@ -1098,8 +1098,10 @@ void Asiento1View::asiento_apertura ( QString ffinal )
         QString fecha = ffinal;
         QString idasientocierre;
 
-        /// Buscamos el asiento anterior a este.
-        QString SQLQuery = "SELECT * FROM asiento WHERE fecha < '" + fecha + "' AND idasiento < " + QString::number ( idasiento ) + " ORDER BY ordenasiento DESC";
+        /// Buscamos el asiento de cierre del ejercicio anterior a la fecha introducida.
+//         QString SQLQuery = "SELECT * FROM asiento WHERE fecha < '" + fecha + "' AND idasiento < " + QString::number ( idasiento ) + " ORDER BY ordenasiento DESC";
+	int anyo = fecha.right( 4 ).toInt () - 1;
+	QString SQLQuery = "SELECT * FROM asiento WHERE descripcion similar to 'Asiento de Cierre%' AND EXTRACT(YEAR FROM fecha)=" + QString::number ( anyo ) + " ORDER BY ordenasiento DESC";
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
             idasientocierre = cur->valor ( "idasiento" );

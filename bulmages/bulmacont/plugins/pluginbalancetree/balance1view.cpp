@@ -602,7 +602,7 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
 void BalanceTreeView::imprimir()
 {
     _depura ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
-    QString queryalance();
+//      QString queryalance();
 //
     generaRML ( "balance.rml" );
     invocaPDF ( "balance" );

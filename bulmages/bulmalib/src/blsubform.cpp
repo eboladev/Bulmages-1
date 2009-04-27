@@ -2446,8 +2446,10 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     _depura ( "BlSubForm::imprimir", 0 );
 
     /// Los listados siempre usan la misma plantilla para imprimir listado.
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
+//     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
+    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + titular + ".rml";
+//     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
+    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + titular + ".rml";
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -2497,7 +2499,7 @@ void BlSubForm::imprimirPDF ( const QString &titular )
         file.close();
     } // end if
 
-    invocaPDF ( "listado" );
+    invocaPDF ( titular );
     _depura ( "END BlSubForm::imprimir", 0 );
 }
 
