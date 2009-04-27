@@ -134,7 +134,7 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
             _depura ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
             a = myFunction1 ( clase, ret );
         } else {
-            _depura ( "Plugins_lanza ", 0, "No ha entrado la libreria" );
+            _depura ( "Plugins_lanza ", 0, "No hay funcion correspondiente con el prototipo" );
         } // end if
     } // end for
     _depura ( "END BlPlugins::lanza", 0 );

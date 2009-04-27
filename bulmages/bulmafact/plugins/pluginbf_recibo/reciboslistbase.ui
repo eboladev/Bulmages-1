@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Images/receive.svg</normaloff>:/Images/receive.svg</iconset>
+    <normaloff>:/Images/receive-list.svg</normaloff>:/Images/receive-list.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -183,7 +183,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/receive.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/receive-list.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>

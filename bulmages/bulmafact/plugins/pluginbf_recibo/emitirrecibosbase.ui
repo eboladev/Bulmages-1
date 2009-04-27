@@ -14,11 +14,11 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Recibos</string>
+   <string>Recibos Automaticos</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Images/receive.svg</normaloff>:/Images/receive.svg</iconset>
+    <normaloff>:/Images/client-delivery-note-to-invoice.svg</normaloff>:/Images/client-delivery-note-to-invoice.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -167,7 +167,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/receive.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/supplier-delivery-note-to-invoice.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -265,9 +265,9 @@
     </layout>
    </item>
    <item row="3" column="0" >
-    <widget class="QProgressBar" name="progressBar" >
+    <widget class="QProgressBar" name="m_progreso" >
      <property name="value" >
-      <number>24</number>
+      <number>0</number>
      </property>
     </widget>
    </item>
