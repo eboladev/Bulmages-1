@@ -210,10 +210,10 @@ QString ArticuloList1::codigocompletoarticulo()
 **/
 void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 {
-    _depura ( "myplugin::elslot", 0 );
+    _depura ( "ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    _depura ( "END myplugin::elslot", 0 );
+    _depura ( "END ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
 }
 
 /// =============================================================================

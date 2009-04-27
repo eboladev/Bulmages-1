@@ -30,7 +30,7 @@
 
 extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int exitPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int Ticket_pintar ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_pintar ( BtTicket * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 
 

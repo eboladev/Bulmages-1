@@ -92,12 +92,12 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     return 0;
 }
 
-int Ticket_pintar ( BtTicket * )
+int BtTicket_pintar ( BtTicket * )
 {
-    _depura ( "pluginticketbasico::Ticket_pintar", 0 );
+    _depura ( "pluginticketbasico::BtTicket_pintar", 0 );
     if(g_bud)
       g_bud->pintar();
-    _depura ( "END pluginticketbasico::Ticket_pintar", 0 );
+    _depura ( "END pluginticketbasico::BtTicket_pintar", 0 );
     return 0;
 }
 

@@ -31,10 +31,10 @@
 
 
 //extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( BtTicket * );
-extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( BtTicket *);
-extern "C" MY_EXPORT int Ticket_ponerPrecio_Post ( BtTicket * );
-extern "C" MY_EXPORT int Ticket_imprimir ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
+extern "C" MY_EXPORT int BtTicket_ponerPrecio_Post ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_imprimir ( BtTicket * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
 extern "C" MY_EXPORT int BtCompany_x ( BtCompany * );
 extern "C" MY_EXPORT int BtCompany_z ( BtCompany * );

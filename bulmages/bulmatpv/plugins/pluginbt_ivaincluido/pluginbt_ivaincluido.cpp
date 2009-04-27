@@ -31,7 +31,7 @@
 typedef QMap<QString, BlFixed> base;
 
 
-int Ticket_agregarLinea_Post ( BtTicket *tick )
+int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
@@ -40,7 +40,7 @@ int Ticket_agregarLinea_Post ( BtTicket *tick )
 }
 
 
-int Ticket_insertarArticulo_Post ( BtTicket *tick )
+int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
     int valor = -1;
     _depura ( "PluginBt_AliasTallasYColores::Ticket_insertarArticulo_Post", 0 );
@@ -65,12 +65,12 @@ int Ticket_insertarArticulo_Post ( BtTicket *tick )
 }
 
 
-int Ticket_ponerPrecio_Post ( BtTicket *tick ) {
+int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
 	tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", tick->lineaActBtTicket()->dbValue("pvplalbaran"));
 }
 
 
-int Ticket_imprimir(BtTicket *tick)
+int BtTicket_imprimir(BtTicket *tick)
 {
 
 
