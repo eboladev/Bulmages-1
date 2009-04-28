@@ -2,7 +2,6 @@
 
 import sys
 import os
-#from config import *
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from modificarusuariobase import *
@@ -15,11 +14,18 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         QtGui.QDialog.__init__(self,parent)
         self.setupUi(self)
         self.process = QtCore.QProcess()
+        self.inicio()
+
+    def inicio(self): 
+        self.tabWidget.setTabEnabled(1, False)
+        self.tabWidget.setTabEnabled(2, False)
+        self.tabWidget.setCurrentIndex(0)
         self.initListaUsuarios()
         self.desactivaCheckboxDB()
-        self.desactivaCheckboxTable()
-        
+        self.desactivaCheckboxTable()      
         self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
+        self.connect(self.checkBox_dball, SIGNAL("stateChanged(int)"), self.checkBox_dball_Change)
+        self.connect(self.checkBox_dbrevoke, SIGNAL("stateChanged(int)"), self.checkBox_dbrevoke_Change)
         self.connect(self.listWidgetDatabase, SIGNAL("itemSelectionChanged()"), self.capturaDatabase)
         self.connect(self.listWidgetUser, SIGNAL("itemSelectionChanged()"), self.capturaUsuario)
         self.connect(self.listWidgetTable, SIGNAL("itemSelectionChanged()"), self.capturaTabla)
@@ -51,11 +57,9 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         # Rellenamos la lista con los usuarios de PostgreSQL
         for row in usuarios:
             texto = row[0]
-            if (str(texto) != 'root') and (str(texto) != 'postgres'):
-            
+            if (str(texto) != 'root') and (str(texto) != 'postgres'):            
                 if (row[3] == True):
-                    texto = texto + "  (su)"
-                
+                    texto = texto + "  (su)"                
                 self.listWidgetUser.addItem(QString(texto))
             
     def initListaDatabase(self):
@@ -98,14 +102,13 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                     
                 # Rellenamos la lista de bases de datos.
                 if str(tipo) == "('BulmaFact',)":
-                    texto = "BulmaFact  -  " + str(row[0])
-            
+                    texto = "BulmaFact  -  " + str(row[0])            
                     self.listWidgetDatabase.addItem(QString(texto))
                     
                 if str(tipo) == "('BulmaCont',)":
-                    texto = "BulmaCont  -  " + str(row[0])
-            
+                    texto = "BulmaCont  -  " + str(row[0])            
                     self.listWidgetDatabase.addItem(QString(texto))
+                    
         conn.close()
 
     def initListaTablas(self):
@@ -128,12 +131,11 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
               
         # Rellenamos la lista con los usuarios de PostgreSQL
         for row in tablas:
-            texto = row[0]
-                        
+            texto = row[0]                        
             self.listWidgetTable.addItem(QString(texto))
             
-        
-        
+        self.listWidgetTable.setSelectionMode(self.listWidgetTable.MultiSelection) 
+
     def capturaUsuario(self): 
         # Vaciamos la lista de bbdd, ya que esta se regenera cada vez que cambiamos el usuario seleccionado
         self.listWidgetDatabase.clear()
@@ -158,6 +160,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
     def capturaDatabase(self):
         # Vaciamos la lista de las tablas, ya que esta se regenera cada vez que cambiamos la base de datos seleccionada
         self.listWidgetTable.clear()
+        
         # Pasamos el nombre de la base de datos seleccionada en listWidgetDatabase a la variable database
         numero = self.listWidgetDatabase.count()
         temp = QtGui.QListWidgetItem()
@@ -171,7 +174,8 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                 break
                         
         if dbase.contains("BulmaFact  -  "):
-            dbase.remove("BulmaFact  -  ")            
+            dbase.remove("BulmaFact  -  ")
+            
         if dbase.contains("BulmaCont  -  "):
             dbase.remove("BulmaCont  -  ")
             
@@ -179,22 +183,30 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.actualizarCheckboxDB()
         self.desactivaCheckboxTable()
         self.initListaTablas()
-        
+        self.tabWidget.setTabEnabled(1, True)
+        self.tabWidget.setCurrentIndex(1)
+
     def capturaTabla(self):
-        # Pasamos el nombre de la tabla seleccionada en listWidgetTable a la variable table
-        numero = self.listWidgetTable.count()
-        global table
-        
-        for x in range (numero):
-                temp = self.listWidgetTable.item(x)
-                
-                if (temp.isSelected()):
-                        table = temp.text()
-                        break
-                        
         self.activaCheckboxTable()
         self.actualizarCheckboxTable()
         
+    def on_seleccionarTablas_released(self):
+    
+        numero = self.listWidgetTable.count()
+
+        for x in range (numero):
+            item = self.listWidgetTable.item(x)
+            self.listWidgetTable.setCurrentItem(item)
+            self.listWidgetTable.item(x).setSelected(True)
+            
+
+    def on_deseleccionarTablas_released(self):
+    
+        numero = self.listWidgetTable.count()
+
+        for x in range (numero):
+            self.listWidgetTable.item(x).setSelected(False)
+
     def actualizarCheckboxDB(self):
         #Conectamos con la base de datos
         try:
@@ -229,6 +241,10 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         conn.close()
         
     def actualizarCheckboxTable(self):
+
+        temp = self.listWidgetTable.currentItem()
+        table = temp.text()
+        
         #Conectamos con la base de datos
         try:
             conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
@@ -317,6 +333,18 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             self.checkBox_references.setCheckState(Qt.Unchecked)
             self.checkBox_trigger.setCheckState(Qt.Unchecked)
             
+    def checkBox_dball_Change(self):
+        if (self.checkBox_dball.isChecked()):
+            self.checkBox_dbrevoke.setCheckState(Qt.Unchecked)
+            self.checkBox_create.setCheckState(Qt.Checked)
+            self.checkBox_temporary.setCheckState(Qt.Checked)
+            
+    def checkBox_dbrevoke_Change(self):
+        if (self.checkBox_dbrevoke.isChecked()):
+            self.checkBox_dball.setCheckState(Qt.Unchecked)
+            self.checkBox_create.setCheckState(Qt.Unchecked)
+            self.checkBox_temporary.setCheckState(Qt.Unchecked)
+            
     def desactivaCheckboxDB(self):
         self.checkBox_dball.setEnabled(False)
         self.checkBox_dbrevoke.setEnabled(False)
@@ -352,9 +380,141 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.checkBox_all.setEnabled(True)
         self.checkBox_all.setCheckState(Qt.Unchecked)
 
- 
     def on_mui_guardar_released(self):
-        #Conectamos con la base de datos seleccionada
+        # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado cuando termine de procesar
+        self.tabWidget.setTabEnabled(2, True)
+        self.tabWidget.setCurrentIndex(2)
+        global command
+        self.writeDB()
+
+        #Creamos la bara de progreso
+        self.progress = QtGui.QProgressBar()
+        self.progress.setGeometry(QtCore.QRect(10,320,201,20))
+        self.progress.show()
+
+        #Calculamos el % de aumento de la barra de progreso
+        total_tablas = 0.0
+        numero = self.listWidgetTable.count()
+
+        for x in range (numero):
+            temp = self.listWidgetTable.item(x)
+            
+            if (temp.isSelected()):
+                total_tablas = total_tablas + 1.0
+         
+        actual = 0.0
+        if (total_tablas != 0.0):
+            mas = 100.0/(total_tablas*6.0)
+
+        #Empezamos a conceder permisos, primero a la base de datos seleccionada.
+        if (self.checkBox_dball.isChecked()):
+            command = 'psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"'
+            self.execQuery()
+            
+        self.progress.setValue(actual)
+
+        if (self.checkBox_dbrevoke.isChecked()):
+            command = 'psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"'
+            self.execQuery()
+            
+        self.progress.setValue(actual)
+
+        if (self.checkBox_create.isChecked()):
+            command = 'psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"'
+            self.execQuery()
+        else:
+            command = 'psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"'
+            self.execQuery()
+
+        self.progress.setValue(actual)
+            
+        if (self.checkBox_temporary.isChecked()):
+            command = 'psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"'
+            self.execQuery()
+        else:
+            command = 'psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"'
+            self.execQuery()
+            
+        self.progress.setValue(actual)
+            
+        global table
+
+        #Ahora pasamos a conceder los permisos por cada tabla seleccionada en la lista.
+        numero = self.listWidgetTable.count()
+
+        for x in range (numero):
+            temp = self.listWidgetTable.item(x)
+            
+            if (temp.isSelected()):
+                table = temp.text()
+                self.writeTable()
+        
+                if (self.checkBox_select.isChecked()):
+                    command = 'psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"'
+                    self.execQuery()
+                else:
+                    command = 'psql ' + str(dbase) + ' -c "REVOKE select on ' + str(table) + ' from ' + str(username) + '"'
+                    self.execQuery()
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_insert.isChecked()):
+                    command = 'psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"'
+                    self.execQuery()
+                else:
+                    command = 'psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"'
+                    self.execQuery()
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_update.isChecked()):
+                    command = 'psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"'
+                    self.execQuery()
+                else:
+                    command = 'psql ' + str(dbase) + ' -c "REVOKE update on ' + str(table) + ' from ' + str(username) + '"'
+                    self.execQuery()
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_delete.isChecked()):
+                    command = 'psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"'
+                    self.execQuery()
+                else:
+                    command = 'psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"'
+                    self.execQuery()
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_references.isChecked()):
+                    command = 'psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"'
+                    self.execQuery()
+                else:
+                    command = 'psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"'
+                    self.execQuery()
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_trigger.isChecked()):
+                    command = 'psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"'
+                    self.execQuery()
+                else:
+                    command = 'psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"'
+                    self.execQuery()
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+        self.progress.hide()
+                    
+        # LAS SIGUIENTES 80 LINEAS ES LO MISMO QUE LO ANTERIOR, PERO SE CONCEDEN LOS PERMISOS 
+        # A TRAVES DE UNA CONEXION DIRECTA CON POSTGRES, QUE SERIA LO CORRECTO, COMO NO FUNCIONA
+        # PASO A APLICAR LOS PERMISOS DIRECTAMENTE CON COMANDOS DESDE EL SHELL,
+        # PROVISIONALEMENTE, HASTA ENCONTRAR PORQUE NO FUNCIONA HACIENDOLO CON CONEXIONES A POSTGRES.
+                    
         #try:
             #conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
         #except:
@@ -432,79 +592,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             #except:
                 #print "Se produjo un error al intentar cambiar los permisos (temporary) de las bases de datos de PostgreSQL."
                 #sys.exit()
-                
-                
-                # COMENTO TODO LO ANTERIOR YA QUE NO FUNCIONA
-                # Y PASO A APLICAR LOS PERMISOS DIRECTAMENTE CON COMANDOS DESDE EL SHELL,
-                # PROVISIONALEMENTE, HASTA ENCONTRAR PORQUE NO FUNCIONA HACIENDOLO CON CONEXIONES A POSTGRES.
-
-        global command
-        
-        self.writeDB()
-
-        if (self.checkBox_dball.isChecked()):
-            command = 'psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"'
-            self.execQuery()
-
-        if (self.checkBox_dbrevoke.isChecked()):
-            command = 'psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execQuery()
-
-        if (self.checkBox_create.isChecked()):
-            command = 'psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_temporary.isChecked()):
-            command = 'psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_select.isChecked()):
-            command = 'psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql ' + str(dbase) + ' -c "REVOKE select on ' + str(table) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_insert.isChecked()):
-            command = 'psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_update.isChecked()):
-            command = 'psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql ' + str(dbase) + ' -c "REVOKE update on ' + str(table) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_delete.isChecked()):
-            command = 'psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_references.isChecked()):
-            command = 'psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"'
-            self.execQuery()
-            
-        if (self.checkBox_trigger.isChecked()):
-            command = 'psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"'
-            self.execQuery()
-        else:
-            command = 'psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"'
-            self.execQuery()
 
     def execQuery(self):
         self.writecommand()
@@ -522,7 +609,10 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.mui_textBrowser.append("<font color =\"#0000FF\">" + str(command) + "</font>")
         
     def writeDB(self):
-        self.mui_textBrowser.append("<font color =\"#008000\">---- Aplicando permisos en la base de datos " + str(dbase) + " a " + str(username) + " ----</font>")
+        self.mui_textBrowser.append("<font color =\"#00A000\">====== Aplicando permisos en la base de datos " + str(dbase) + " a " + str(username) + " ======</font>")
+        
+    def writeTable(self):
+        self.mui_textBrowser.append("<font color =\"#008000\">---- Aplicando permisos en la tabla " + str(table) + " a " + str(username) + " ----</font>")
             
 def main(args):
     app=QtGui.QApplication(args)
