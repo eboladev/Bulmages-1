@@ -170,34 +170,16 @@ void myplugsubformods::sacaods()
             if ( subf->mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
-                QString textocontenido = ( subf->mui_list->item ( i, j ) ->text() );
+                QString textocontenido = data2python( subf->mui_list->item ( i, j ) ->text() );
 
 
                 //TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
-
-                /// Detecta el tipo de dato que es para configurar el formato de la celda.
-                /// Comprueba que esta alineado a la derecha para saber si es un numero o un texto.
-                if ( subf->mui_list->item ( i, j ) ->textAlignment() == Qt::AlignRight ) {
-                    /// Prueba con 'double'.
-                    resultadodouble = textocontenido.toDouble ( &resultconvdouble );
-                    /// Prueba con 'integer'.
-                    resultadointeger = textocontenido.toInt ( &resultconvinteger );
-                    /// Prueba con un porcentaje.
-                    //TODO:
-                    /// Prueba con una fecha.
-                    //TODO:
-
-                    if ( resultconvdouble )  {
+                if ( subf->cabecera() -> at ( j )-> dbFieldType() == BlDbField::DbNumeric) {
                         /// Es 'double'.
-                        fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido + "')\n\n";
-                    } else if ( resultconvinteger ) {
-                        /// Es un 'integer'.
-                        fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido + "')\n\n";
-                    } else {
-                        /// Es tratado como un 'string'.
-                        textocontenido.replace ( QString ( "\n" ), QString ( "\\n\\\n" ) );
-                        fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', '" + textocontenido + "')\n\n";
-                    } // end if
+                        fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido.replace(".","").replace(",",".") + "')\n\n";
+                } else if ( subf->cabecera() -> at ( j )-> dbFieldType() == BlDbField::DbInt) {
+                        /// Es 'double'.
+                        fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'float' , '" + textocontenido.replace(".","").replace(",",".") + "')\n\n";
                 } else {
                     /// Es tratado como un 'string'.
                     textocontenido.replace ( QString ( "\n" ), QString ( "\\n\\\n" ) );
