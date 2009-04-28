@@ -33,10 +33,8 @@
 #include "mticket.h"
 #include "bldockwidget.h"
 
-
 BlDockWidget *g_doc1 = NULL;
 MTicket *g_bud = NULL;
-
 
 ///
 /**
@@ -51,7 +49,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     bindtextdomain ("pluginticketbasicoivainc", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BlDockWidget ( "BtTicket", tpv, "ticketbasico" );
+    g_doc1 = new BlDockWidget ( "Ticket", tpv, "ticketbasico" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 //    g_doc1->setFeatures ( QDockWidget::DockWidgetMovable |  QDockWidget::DockWidgetFloatable);
 
@@ -65,11 +63,9 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     g_doc1->show();
 
-
     _depura ( "END pluginticketbasicoivainc::entryPoint", 0 );
     return 0;
 }
-
 
 ///
 /**

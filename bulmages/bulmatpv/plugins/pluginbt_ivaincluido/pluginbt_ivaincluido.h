@@ -2,6 +2,10 @@
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -38,4 +42,3 @@ extern "C" MY_EXPORT int BtTicket_imprimir ( BtTicket * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
 extern "C" MY_EXPORT int BtCompany_x ( BtCompany * );
 extern "C" MY_EXPORT int BtCompany_z ( BtCompany * );
-
