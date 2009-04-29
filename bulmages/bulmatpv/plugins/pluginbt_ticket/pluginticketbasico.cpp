@@ -3,6 +3,9 @@
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2006 by Fco. Javier M. C.                               *
  *   fcojavmc@todo-redes.com                                               *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -32,10 +35,8 @@
 #include "mticket.h"
 #include "bldockwidget.h"
 
-
 BlDockWidget *g_doc1;
 MTicket *g_bud;
-
 
 ///
 /**
@@ -43,7 +44,7 @@ MTicket *g_bud;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    _depura ( "pluginticketbasico::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -63,7 +64,8 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->cargaconf();
     g_doc1->show();
 
-    _depura ( "END entryPoint", 0 );
+    _depura ( "END pluginticketbasico::entryPoint", 0 );
+    
     return 0;
 }
 
@@ -75,24 +77,37 @@ int entryPoint ( BtBulmaTPV *tpv )
 int exitPoint ( BtBulmaTPV *tpv )
 {
     _depura ( "pluginticketbasico::exitPoint", 0 );
+    
     delete g_doc1;
+    
     _depura ( "END pluginticketbasico::exitPoint", 0 );
+    
     return 0;
 }
 
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
+    _depura ( "pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
+    
     g_bud =  new MTicket ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
+    
+    _depura ( "END pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }
 
 
-int Ticket_pintar ( BtTicket * )
+int BtTicket_pintar ( BtTicket * )
 {
-    g_bud->pintar();
+    _depura ( "pluginticketbasico::BtTicket_pintar", 0 );
+    
+    if (g_bud)
+        g_bud->pintar();
+    
+    _depura ( "END pluginticketbasico::BtTicket_pintar", 0 );
+    
     return 0;
 }
 
