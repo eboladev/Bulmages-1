@@ -31,6 +31,8 @@
 #include <QDomNode>
 #include <QSpinBox>
 
+#include <QDebug>
+
 #include "blsubform.h"
 #include "blprogressbar.h"
 #include "bldoublespinbox.h"
@@ -1271,7 +1273,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     /// Ponemos la consulta a la vista para que pueda ser editada.
     mui_query->setPlainText ( cur->pristineQuery() );
 
-    /// Tratramos con la paginacion.
+    /// Tratamos con la paginacion.
     int filpag = mui_filaspagina->text().toInt();
     if ( filpag <= 0 ) {
         filpag = 500;
@@ -2265,7 +2267,7 @@ QString BlSubForm::imprimir()
     _depura ( "BlSubForm::imprimir", 0 );
     BlProgressBar barra;
     barra.show();
-    barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
+    barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->columnCount() - 2 );
     barra.setText ( _ ( "Imprimiendo " ) +  m_tablename );
     barra.setValue ( 0 );
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
@@ -2274,21 +2276,21 @@ QString BlSubForm::imprimir()
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
-            fitxersortidarml += "    <td>" + XMLProtect ( mui_listcolumnas->item ( h, 0 ) ->text() ) + "</td>\n";
+            fitxersortidarml += "    <td>" +  mui_listcolumnas->item ( h, 0 ) ->text() + "</td>\n";
         } // end if
         barra.setValue ( barra.value() + 1 );
     } // end for
     fitxersortidarml += "</tr>\n";
+    
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
         fitxersortidarml += "<tr>\n";
         for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
-            if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
-                QString restante;
-                BlDbSubFormField *valor = ( BlDbSubFormField * ) mui_list->item ( i, j );
+            if ( mui_listcolumnas->item ( j, 0 )->checkState() == Qt::Checked ) {
+		BlDbSubFormField *valor = ( BlDbSubFormField * ) mui_list->item ( i, mui_listcolumnas->item ( j, 3)->text().toInt() );
                 if ( valor->dbFieldType() & BlDbField::DbNumeric )
-                    fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString ( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
+                    fitxersortidarml += "    <td>" +  spanish.toString ( valor->text().toDouble(), 'f', 2 ) + "</td>\n";
                 else
-                    fitxersortidarml += "    <td>" + XMLProtect ( valor->text() ) + "</td>\n";
+                    fitxersortidarml += "    <td>" +  valor->text() + "</td>\n";
             } // end if
         } // end for
         fitxersortidarml += "</tr>\n";

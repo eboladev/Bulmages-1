@@ -38,6 +38,7 @@ BcDiarioSubForm::BcDiarioSubForm ( QWidget *parent, const char * ) : BcSubForm (
     addSubFormHeader ( "fecha", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
     addSubFormHeader ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cuenta" ) );
     addSubFormHeader ( "descripcion", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion" ) );
+    addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion de Cuenta" ) );
     addSubFormHeader ( "conceptocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Concepto contable" ) );
     addSubFormHeader ( "debe", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Debe" ) );
     addSubFormHeader ( "haber", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Haber" ) );
@@ -45,7 +46,6 @@ BcDiarioSubForm::BcDiarioSubForm ( QWidget *parent, const char * ) : BcSubForm (
     addSubFormHeader ( "idborrador", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "idborrador" ) );
     addSubFormHeader ( "codigoborrador", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "codigoborrador" ) );
     addSubFormHeader ( "tipocuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "tipocuenta" ) );
-    addSubFormHeader ( "descripcioncuenta", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Descripcion de Cuenta" ) );
     addSubFormHeader ( "contrapartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Contrapartida" ) );
     addSubFormHeader ( "codcontrapartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Contrapartida" ) );
     addSubFormHeader ( "nombrecanal", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Canal" ) );
@@ -61,7 +61,7 @@ BcDiarioSubForm::BcDiarioSubForm ( QWidget *parent, const char * ) : BcSubForm (
     addSubFormHeader ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "idcuenta" ) );
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
     setListadoPijama ( FALSE );
-    setColumnToRowSpan ( "ordenasientoconfecha" );
+    setColumnToRowSpan ( "ordenasiento" );
     setColorFondo1 ( g_confpr->valor ( CONF_BG_DIARIO ) );
     setColorFondo2 ( g_confpr->valor ( CONF_BG_ALT_DIARIO ) );
     setInsert ( FALSE );

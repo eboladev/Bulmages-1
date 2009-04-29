@@ -540,8 +540,8 @@ doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
 doc.set_cell_value(2,31, 'string', '17. Impuestos sobre beneficios.')\n\
-doc.set_cell_value(4,31, 'float', '" + ( -saldoCuenta ( 6300 ) + saldoCuenta ( 6301 ) - saldoCuenta ( 633 ) + saldoCuenta ( 638 ) ).toQString ( '.' ) + "')\n\
-doc.set_cell_value(5,31, 'float', '" + ( -saldoCuentaAnt ( 6300 ) + saldoCuentaAnt ( 6301 ) - saldoCuentaAnt ( 633 ) + saldoCuentaAnt ( 638 ) ).toQString ( '.' ) + "')\n\
+doc.set_cell_value(4,31, 'float', '" + ( -saldoCuenta ( 6300 ) - saldoCuenta ( 6301 ) - saldoCuenta ( 633 ) + saldoCuenta ( 638 ) ).toQString ( '.' ) + "')\n\
+doc.set_cell_value(5,31, 'float', '" + ( -saldoCuentaAnt ( 6300 ) - saldoCuentaAnt ( 6301 ) - saldoCuentaAnt ( 633 ) + saldoCuentaAnt ( 638 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
 \
 \
