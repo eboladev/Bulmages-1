@@ -21,6 +21,9 @@ CONF_CASHBOX_FILE		/dev/null
 CONF_CASHBOX_OPEN_CODE		27,112,0,60,240
 CONF_TPV_FULLSCREEN		FALSE
 
+#Bloqueo del esquema de ventanas
+CONF_BLOCK_WINDOWS		FALSE
+
 # El logotipo para la ticketera.
 CONF_TPV_PRINTER_LOGO		@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/logo.jpg
 

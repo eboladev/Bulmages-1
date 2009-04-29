@@ -40,7 +40,6 @@
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmatpv_")
 #endif
 
-
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
@@ -49,6 +48,7 @@ int main ( int argc, char **argv )
     BtBulmaTPV* bges;
 
     try {
+        
         fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
         Q_INIT_RESOURCE ( bulmages );
 
@@ -66,7 +66,7 @@ int main ( int argc, char **argv )
         g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
         /// Cargamos el BlSplashScreen.
-        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BtBulmaTPV", CONFIG_VERSION );
+        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTPV", CONFIG_VERSION );
         splashScr->mensaje ( _("Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
@@ -112,6 +112,7 @@ int main ( int argc, char **argv )
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
         QString confEsp = CONFGLOBAL + bges->empresaTPV()->dbName() + ".conf";
         QDir archivoConf;
+        
         if (!archivoConf.exists(confEsp)) {
             QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
             fprintf(stderr, mensaje.toAscii().constData());
@@ -119,23 +120,24 @@ int main ( int argc, char **argv )
             g_confpr->leeconfig(confEsp);
         } // end if
 
-	// Pone el color de fondo del workspace si esta definido y es un color valido.
-	if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
-	    bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
-	} // end if
+	    // Pone el color de fondo del workspace si esta definido y es un color valido.
+	    if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
+	        bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
+	    } // end if
 
-	// Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-	if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-	    bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
-	} // end if
+	    // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
+	    if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
+	        bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+	    } // end if
 
 
-	/// Hacemos la carga de las hojas de estilo.
-	QFile arch(g_confpr->valor(CONF_STYLESHEET));
-	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
-	  QString style = arch.readAll();
-	  g_theApp->setStyleSheet(style);
-	} // end if
+	    /// Hacemos la carga de las hojas de estilo.
+	    QFile arch(g_confpr->valor(CONF_STYLESHEET));
+        
+	    if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
+	      QString style = arch.readAll();
+	      g_theApp->setStyleSheet(style);
+	    } // end if
 
         splashScr->mensaje ( _( "Cargando plugins" ) );
         splashScr->setBarraProgreso ( 4 );
@@ -159,16 +161,35 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 100 );
 
         delete splashScr;
-	if (g_confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
-	        bges->showFullScreen();
-	} else {
-		bges->showMaximized();
-	} // end if
+        
+	    if (g_confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
+	            bges->showFullScreen();
+	    } else {
+		    bges->showMaximized();
+	    } // end if
+
+        // Bloqueamos el esquema de ventanas si asi se nos pide
+        if (g_confpr->valor(CONF_BLOCK_WINDOWS) == "TRUE") {
+        
+            QList<QDockWidget *> dockedList = bges->findChildren<QDockWidget *>();
+            int listItems = dockedList.count();
+            
+            QDockWidget *dock = NULL;
+
+            for (int i = 0; i < listItems; i++) {
+                
+                dock = dockedList.value(i);
+                dock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+                
+            }
+            
+        } // end if
 
         g_theApp->exec();
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "exitPoint", bges );
+        
     } catch ( ... ) {
         mensajeInfo ( _( "Error inesperado en BulmaTPV. El programa se cerrara." ) );
     } // end try

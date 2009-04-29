@@ -226,6 +226,8 @@
 #define CONF_BACKGROUND_COLOR        528
 #define CONF_BACKGROUND_IMAGE        529
 
+#define CONF_BLOCK_WINDOWS	     530
+
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550
 ///Indica el color de fondo alternativo del pijama del libro diario.
