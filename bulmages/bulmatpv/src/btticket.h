@@ -60,7 +60,7 @@ public:
     BlDbRecord *lineaActBtTicket();
     void setLineaActual ( BlDbRecord * );
     void setDescuentoGlobal ( BlFixed descuento );
-    virtual void imprimir();
+    virtual void imprimir(bool save = TRUE);
     virtual void abrircajon();
     int guardar();
     int cargar ( QString );

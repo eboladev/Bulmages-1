@@ -89,7 +89,7 @@ void MTicket::pintar()
         totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
         html += "</TR>";
-    }// end for
+    } // end for
     
     html += "</TABLE>";
 
@@ -104,7 +104,7 @@ void MTicket::pintar()
     QString l;
     BlFixed irpf ( "0" );
 
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     
     if ( cur ) {
         if ( !cur->eof() ) {
@@ -112,7 +112,6 @@ void MTicket::pintar()
         } // end if
         delete cur;
     } // end if
-
 
     BlFixed descuentolinea ( "0.00" );
     
@@ -213,33 +212,71 @@ void MTicket::pintar()
     _depura ( "END MTicket::pintar", 0 );
 }
 
-
-
 void MTicket::on_mui_subir_clicked()
 {
+    _depura ( "MTicket::on_mui_subir_clicked", 0 );
+    
     /// Simulamos la pulsacion de la tecla arriba
-    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Up );
-
+    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
+    
+    _depura ( "END MTicket::on_mui_subir_clicked", 0 );
 }
-
 
 void MTicket::on_mui_bajar_clicked()
 {
+     _depura ( "MTicket::on_mui_bajar_clicked", 0 );
+    
     /// Simulamos la pulsacion de la tecla abajo
-    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Down );
+    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
+    
+    _depura ( "END MTicket::on_mui_bajar_clicked", 0 );
 }
-
 
 void MTicket::on_mui_borrar_clicked()
 {
-    BtTicket * tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
+     _depura ( "MTicket::on_mui_borrar_clicked", 0 );
+    
+    BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
+    
+    _depura ( "END MTicket::on_mui_borrar_clicked", 0 );
 }
 
 void MTicket::on_mui_imprimir_clicked()
 {
+     _depura ( "MTicket::on_mui_imprimir_clicked", 0 );
+    
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
-    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F2 );
+    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
+    
+    _depura ( "END MTicket::on_mui_imprimir_clicked", 0 );
+}
+
+void MTicket::on_mui_reimprimir_clicked()
+{
+    _depura ( "MTicket::on_mui_reimprimir_clicked", 0 );
+    
+    BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
+    BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
+    
+    previousTicket->setDbValue("idalbaran", cur->valor("idalbaran"));
+    
+    // Cargamos las lineas de albaran
+    cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->valor("idalbaran") );
+        
+    while ( !cur->eof() ) {
+        BlDbRecord *l = previousTicket->agregarLinea();
+        l->DBload( cur );
+        cur->nextRecord();
+    } // end while
+    
+    delete cur;
+    
+    previousTicket->imprimir(FALSE);
+    
+    delete previousTicket;
+
+    _depura ( "END MTicket::on_mui_reimprimir_clicked", 0 );
 }

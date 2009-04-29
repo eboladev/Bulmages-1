@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
+    <width>321</width>
     <height>503</height>
    </rect>
   </property>
@@ -22,16 +22,7 @@
    <property name="spacing" >
     <number>0</number>
    </property>
-   <property name="leftMargin" >
-    <number>9</number>
-   </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
+   <property name="margin" >
     <number>9</number>
    </property>
    <item>
@@ -46,16 +37,7 @@
       <property name="spacing" >
        <number>0</number>
       </property>
-      <property name="leftMargin" >
-       <number>9</number>
-      </property>
-      <property name="topMargin" >
-       <number>9</number>
-      </property>
-      <property name="rightMargin" >
-       <number>9</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>9</number>
       </property>
       <item>
@@ -85,7 +67,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -122,7 +105,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_up.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/BulmaCont32x32/images/png/i_up.png</normaloff>:/BulmaCont32x32/images/png/i_up.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -159,7 +143,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_down.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/BulmaCont32x32/images/png/i_down.png</normaloff>:/BulmaCont32x32/images/png/i_down.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -196,7 +181,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_editDelete.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/BulmaCont32x32/images/png/i_editDelete.png</normaloff>:/BulmaCont32x32/images/png/i_editDelete.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -207,14 +193,43 @@
        </widget>
       </item>
       <item>
-       <spacer>
+       <widget class="QToolButton" name="mui_reimprimir" >
+        <property name="minimumSize" >
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>...</string>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer" >
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
-          <width>91</width>
-          <height>48</height>
+          <width>40</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>

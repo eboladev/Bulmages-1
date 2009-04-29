@@ -51,7 +51,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _( "Almacen" ) );
     addDbField ( "numalbaran", BlDbField::DbInt, BlDbField::DbNothing, _( "Num" ) );
     addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
-    addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _( "BtTicket" ) );
+    addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Ticket" ) );
     addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
 
     setDbValue ( "ticketalbaran", "TRUE" );
@@ -572,12 +572,16 @@ void  BtTicket::imprimir()
 
 // =========================
 
-void BtTicket::imprimir()
+void BtTicket::imprimir(bool save)
 {
 
-    if ( guardar() == -1) {
-        _depura ( "Error en la llamada a guardar()", 0 );
-        return;
+    if (save) {
+        
+        if ( guardar() == -1) {
+            _depura ( "Error en la llamada a guardar()", 0 );
+            return;
+        }
+        
     }
 
     /// Disparamos los plugins.
@@ -623,6 +627,11 @@ void BtTicket::imprimir()
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
         empresa.nombre = cur->valor ( "valor" );
+    delete cur;
+    
+    cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    if ( !cur->eof() )
+        empresa.nombre += "\n" + cur->valor ( "valor" );
     delete cur;
 
     cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
@@ -708,7 +717,7 @@ void BtTicket::imprimir()
     pr.printText ( "\n" );
 
     pr.turnWhiteBlack ( 1 );
-    pr.printText ( " Uds. PRODUCTO � � � � � � �P.U. �IMPORTE \n" );
+    pr.printText ( " Uds. PRODUCTO � � � � � �    P.U. IMPORTE\n" );
 
     pr.turnWhiteBlack ( 0 );
     pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
@@ -723,7 +732,7 @@ void BtTicket::imprimir()
         BlFixed pvp = BlFixed ( linea->dbValue ( "pvplalbaran" ) );
         pvp = pvp + pvp * iva / BlFixed ( "100" );
         BlFixed pvptotal = BlFixed ( linea->dbValue ( "cantlalbaran" ) ) * pvp;
-        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
+        pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + "  " );
         pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
         QString pvpstr = pvp.toQString();
         QString pvptotalstr = pvptotal.toQString();
