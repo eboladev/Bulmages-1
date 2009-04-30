@@ -212,6 +212,9 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
         botonCancelar->setText ( _ ( "&Cierra el programa" ) );
     // end if
     cargaArchivo();
+    /// Seleccionar la primera empresa de la lista inicialmente, de este modo,
+    /// si s&oacute;lo hay una empresa o se quiere entrar a la primera bastar&aacute; con pulsar la tecla intro.
+    mui_empresas->selectRow(0);
     _depura ( "END BlCompanyDialog::BlCompanyDialog", 0 );
 }
 
