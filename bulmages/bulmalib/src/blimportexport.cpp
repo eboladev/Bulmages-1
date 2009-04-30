@@ -695,7 +695,7 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
             stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             stream << "</FORMA_PAGO>\n";
-            mensajeria ( _ ( "<LI>Exportando Nueva Forma de Pago</LI>\n" ) );
+            mensajeria ( "<LI>" + _("Exportando nueva forma de pago") + "</LI>\n" );
             curc->nextRecord();
         } // end while
         delete curc;
