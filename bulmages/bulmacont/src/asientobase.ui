@@ -781,11 +781,6 @@
           </property>
           <item>
            <property name="text" >
-            <string>Apertura</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
             <string>Normal</string>
            </property>
           </item>
@@ -797,6 +792,11 @@
           <item>
            <property name="text" >
             <string>Cierre</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Apertura</string>
            </property>
           </item>
          </widget>

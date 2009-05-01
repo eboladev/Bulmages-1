@@ -763,14 +763,15 @@ void Asiento1View::pintaordenasiento ( QString val )
 }
 
 
-///
+/// Pintamos la clase del asiento
+/// 0 = Normal, 1 = Regularizacion, 2 = Cierre, 3 = Apertura
 /**
 \param val
 **/
 void Asiento1View::pintaclase ( QString val )
 {
     _depura ( "Asiento1View::pintaclase", 0 );
-    mui_claseAsiento->setCurrentIndex ( val.toInt() );
+    mui_claseAsiento->setCurrentIndex ( val.toInt() - 1 );
     _depura ( "END Asiento1View::pintaclase", 0 );
 }
 
@@ -912,8 +913,19 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
 
         mainCompany() ->begin();
 
+        QString querycomp = "SELECT * FROM asiento where clase = 1 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
+        BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
+        while (!curcomp -> eof() ) {                                                       
+                mensajeInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
+                muestraasiento(curcomp->valor("idasiento").toInt());                       
+                Asiento1::borrar ( FALSE );                                                
+                curcomp->nextRecord();                                              
+        } // end if                                                                        
+        delete curcomp; 
+
+
         /// Creamos un asiento nuevo con la fecha final indicada.
-        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "')";
+        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 'Asiento de Regularizacion " + finicial + "--" + ffinal + "', 1)";
         mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
@@ -1017,8 +1029,18 @@ void Asiento1View::asiento_cierre ( QString finicial, QString ffinal )
     try {
         mainCompany() ->begin();
 
+        QString querycomp = "SELECT * FROM asiento where clase = 2 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
+        BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
+        while (!curcomp -> eof() ) {                                                       
+                mensajeInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
+                muestraasiento(curcomp->valor("idasiento").toInt());                       
+                Asiento1::borrar ( FALSE );                                                
+                curcomp->nextRecord();                                              
+        } // end if                                                                        
+        delete curcomp; 
+
         /// Creamos un asiento nuevo con la fecha final indicada.
-        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "')";
+        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 'Asiento de Cierre " + finicial + "--" + ffinal + "', 2)";
         mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
@@ -1085,8 +1107,19 @@ void Asiento1View::asiento_apertura ( QString ffinal )
     try {
         mainCompany() ->begin();
 
+        QString querycomp = "SELECT * FROM asiento where clase = 3 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
+        BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
+        while (!curcomp -> eof() ) {                                                       
+                mensajeInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
+                muestraasiento(curcomp->valor("idasiento").toInt());                       
+                Asiento1::borrar ( FALSE );                                                
+                curcomp->nextRecord();                                              
+        } // end if                                                                        
+        delete curcomp; 
+
+
         /// Creamos un asiento nuevo con la fecha final indicada.
-        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('" + ffinal + "', 'Asiento de Apertura " + ffinal + "', 'Asiento de Apertura " + ffinal + "')";
+        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('" + ffinal + "', 'Asiento de Apertura " + ffinal + "', 'Asiento de Apertura " + ffinal + "', 3)";
         mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
