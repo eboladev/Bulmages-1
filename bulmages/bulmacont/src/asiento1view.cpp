@@ -771,7 +771,7 @@ void Asiento1View::pintaordenasiento ( QString val )
 void Asiento1View::pintaclase ( QString val )
 {
     _depura ( "Asiento1View::pintaclase", 0 );
-    mui_claseAsiento->setCurrentIndex ( val.toInt() - 1 );
+    mui_claseAsiento->setCurrentIndex ( val.toInt() );
     _depura ( "END Asiento1View::pintaclase", 0 );
 }
 
@@ -937,7 +937,10 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
         /// Buscamos la cuenta de regularizacion. Normalmente es la 129
         QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
         cur = mainCompany() ->loadQuery ( query );
-        if ( cur->eof() ) throw - 1;
+        if ( cur->eof() ) {
+          mensajeInfo(_("Cuenta de Regularizacion incorrecta. Revise la configuracion"));
+          throw - 1;
+        } // end if
         idcuenta1 = cur->valor ( "idcuenta" ).toInt();
         delete cur;
 
