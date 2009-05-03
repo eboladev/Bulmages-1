@@ -54,7 +54,7 @@ class ComisionesList : public BlFormList, public Ui_ComisionesListBase
 
 private:
     /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
-    QString mdb_idjdirectiva;
+    QString mdb_idcomision;
 
 public:
     ComisionesList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
@@ -62,7 +62,7 @@ public:
     ~ComisionesList();
     void presentar();
     void setMainCompany ( BfCompany *comp );
-    QString idjdirectiva();
+    QString idcomision();
     void imprimir();
     QString generaFiltro();
     void borrar();

@@ -46,34 +46,34 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         centrarEnPantalla ( this );
 
         setTitleName ( _ ( "Comision" ) );
-        setDbTableName ( "jdirectiva" );
-        setDbFieldId ( "idjdirectiva" );
-        addDbField ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID jdirectiva" ) );
-        addDbField ( "fechainjdirectiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
-        addDbField ( "fechafinjdirectiva", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Cese" ) );
+        setDbTableName ( "comision" );
+        setDbFieldId ( "idcomision" );
+        addDbField ( "idcomision", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID comision" ) );
+        addDbField ( "fechaincomision", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
+        addDbField ( "fechafincomision", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Cese" ) );
 
         mui_list->setMainCompany( comp );
-        mui_list->setDbTableName ( "miembrojdirectiva" );
-        mui_list->setDbFieldId ( "idmiembrojdirectiva" );
-        mui_list->addSubFormHeader ( "idmiembrojdirectiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
-        mui_list->addSubFormHeader ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
-        mui_list->addSubFormHeader ( "fechainmiembrojdirectiva", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Fecha posesion" ) );
-        mui_list->addSubFormHeader ( "fechafinmiembrojdirectiva", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha Cese" ) );
+        mui_list->setDbTableName ( "miembrocomision" );
+        mui_list->setDbFieldId ( "idmiembrocomision" );
+        mui_list->addSubFormHeader ( "idmiembrocomision", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Miembro" ) );
+        mui_list->addSubFormHeader ( "idcomision", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
+        mui_list->addSubFormHeader ( "fechainmiembrocomision", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "Fecha posesion" ) );
+        mui_list->addSubFormHeader ( "fechafinmiembrocomision", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Fecha Cese" ) );
         mui_list->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Socio" ) );
         mui_list->addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Socio" ) );
-        mui_list->addSubFormHeader ( "cargomiembrojdirectiva", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
+        mui_list->addSubFormHeader ( "cargomiembrocomision", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Cargo" ) );
 
         mui_list->setInsert ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
         
-        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
+        mui_list->cargar("SELECT * from miembrocomision NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el jdirectiva" ), this );
+        mensajeInfo ( _ ( "Error al crear el comision" ), this );
     } // end try
     _depura ( "END ComisionView::ComisionView", 0 );
 }
@@ -90,16 +90,16 @@ ComisionView::~ComisionView()
 
 QString ComisionView::nombrePlantilla ( void )
 {
-    return QString ( "jdirectiva" );
+    return QString ( "comision" );
 }
 
 void ComisionView::imprimir()
 {
     _depura ( "ComisionView::imprimir", 0 );
-    /// Comprobamos que se disponen de los datos minimos para imprimir el jdirectiva.
+    /// Comprobamos que se disponen de los datos minimos para imprimir el comision.
     QString SQLQuery = "";
 
-    if ( dbValue ( "idjdirectiva" ).isEmpty() ) {
+    if ( dbValue ( "idcomision" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
@@ -118,7 +118,7 @@ void ComisionView::imprimir()
 int ComisionView::guardarPost()
 {
     _depura ( " ComisionView::guardarPost", 0 );
-    mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
+    mui_list->setColumnValue("idcomision", dbValue("idcomision") );
     mui_list->guardar();
     _depura ( "END ComisionView::guardarPost", 0 );
 }
@@ -135,7 +135,7 @@ int ComisionView::borrarPre()
 int ComisionView::cargarPost ( QString id )
 {
     _depura ( " ComisionView::cargarPost", 0 );
-    mui_list->cargar("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
+    mui_list->cargar("SELECT * FROM miembrocomision NATURAL LEFT JOIN cliente WHERE idcomision = " + id);
     _depura ( "END ComisionView::cargarPost", 0 );
     return 0;
 }

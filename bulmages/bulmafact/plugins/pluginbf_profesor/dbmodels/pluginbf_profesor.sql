@@ -332,7 +332,26 @@ BEGIN
         );
         END IF;
 
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''comision'';
+        IF NOT FOUND THEN
+        CREATE TABLE comision (
+       idcomision SERIAL PRIMARY KEY,
+       fechaincomision date DEFAULT now() NOT NULL,
+       fechafincomision date DEFAULT now() NOT NULL
+        );
+        END IF;
 
+        SELECT INTO as * FROM pg_tables  WHERE tablename=''miembrocomision'';
+        IF NOT FOUND THEN
+        CREATE TABLE miembrocomision (
+       idmiembrocomision SERIAL PRIMARY KEY,
+       fechainmiembrocomision date DEFAULT now() NOT NULL,
+       fechafinmiembrocomision date DEFAULT now() NOT NULL,
+       idcomision INTEGER NOT NULL REFERENCES comision(idcomision),
+       cargomiembrocomision VARCHAR NOT NULL,
+       idcliente INTEGER NOT NULL REFERENCES cliente(idcliente)
+        );
+        END IF;
 
 	RETURN 0;
 END;

@@ -46,7 +46,7 @@ ComisionesList::ComisionesList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     int res = g_plugins->lanza ( "ComisionesList_ComisionesList", this );
     if ( res != 0 )
         return;
-    mdb_idjdirectiva = "";
+    mdb_idcomision = "";
     setSubForm ( mui_list );
     hideBusqueda();
 
@@ -74,7 +74,7 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 
     setSubForm ( mui_list );
     presentar();
-    mdb_idjdirectiva = "";
+    mdb_idcomision = "";
     if ( modoEdicion() )
         mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
@@ -101,7 +101,7 @@ void ComisionesList::presentar()
 {
     _depura ( "ComisionesList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM jdirectiva  WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM comision  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     _depura ( "END ComisionesList::presentar", 0 );
 }
@@ -159,10 +159,10 @@ void ComisionesList::borrar()
         return;
     } // end if
     try {
-        mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
+        mdb_idcomision = mui_list->dbValue ( "idcomision" );
         if ( modoEdicion() ) {
             ComisionView * cv = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( cv->cargar ( mdb_idjdirectiva ) )
+            if ( cv->cargar ( mdb_idcomision ) )
                 throw - 1;
             cv->on_mui_borrar_clicked();
             cv->close();
@@ -183,17 +183,17 @@ void ComisionesList::editar ( int )
 {
     _depura ( "ComisionesList::on_mui_list_cellDoubleClicked", 0 );
     try {
-        mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
+        mdb_idcomision = mui_list->dbValue ( "idcomision" );
         if ( modoEdicion() ) {
             ComisionView * bud = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
-            if ( bud->cargar ( mdb_idjdirectiva ) ) {
+            if ( bud->cargar ( mdb_idcomision ) ) {
                 delete bud;
                 return;
             } // end if
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
-            emit ( selected ( mdb_idjdirectiva ) );
+            emit ( selected ( mdb_idcomision ) );
         } // end if
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
@@ -233,11 +233,11 @@ void ComisionesList::setMainCompany ( BfCompany *comp )
 
 /** Devuelve el identificador del cobro seleccionado
 **/
-QString ComisionesList::idjdirectiva()
+QString ComisionesList::idcomision()
 {
-    _depura ( "ComisionesList::idjdirectiva", 0 );
-    _depura ( "END ComisionesList::idjdirectiva", 0 );
-    return mdb_idjdirectiva;
+    _depura ( "ComisionesList::idcomision", 0 );
+    _depura ( "END ComisionesList::idcomision", 0 );
+    return mdb_idcomision;
 }
 
 
@@ -255,11 +255,11 @@ ComisionesListSubForm::ComisionesListSubForm ( QWidget *parent ) : BfSubForm ( p
     int res = g_plugins->lanza ( "ComisionesListSubForm_ComisionesListSubForm", this );
     if ( res != 0 )
         return;
-    setDbTableName ( "jdirectiva" );
-    setDbFieldId ( "idjdirectiva" );
-    addSubFormHeader ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
-    addSubFormHeader ( "fechainjdirectiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
-    addSubFormHeader ( "fechafinjdirectiva", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
+    setDbTableName ( "comision" );
+    setDbFieldId ( "idcomision" );
+    addSubFormHeader ( "idcomision", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Junta Directiva" ) );
+    addSubFormHeader ( "fechaincomision", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
+    addSubFormHeader ( "fechafincomision", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Constitucion" ) );
     
     setInsert ( FALSE );
     setDelete ( FALSE );
