@@ -34,6 +34,9 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
       <item>
        <spacer name="horizontalSpacer" >
         <property name="orientation" >
@@ -84,6 +87,11 @@
       <layout class="QHBoxLayout" name="horizontalLayout" >
        <item>
         <widget class="QGroupBox" name="group_bulmasetup" >
+         <property name="font" >
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
          <property name="layoutDirection" >
           <enum>Qt::LeftToRight</enum>
          </property>
@@ -99,9 +107,9 @@
                <colorrole role="Base" >
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>0</blue>
+                  <red>216</red>
+                  <green>216</green>
+                  <blue>216</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -110,9 +118,9 @@
                <colorrole role="Base" >
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>0</blue>
+                  <red>216</red>
+                  <green>216</green>
+                  <blue>216</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -130,6 +138,11 @@
               </disabled>
              </palette>
             </property>
+            <property name="font" >
+             <font>
+              <pointsize>7</pointsize>
+             </font>
+            </property>
             <property name="frameShape" >
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -140,13 +153,18 @@
              <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Programa para la &lt;span style=" font-weight:600;">configuración&lt;/span> general de la Suite BulmaGés. Adminitra la base de datos, gestión de permisos de usuario y altas/bajas de funcionalidades del resto de programas mediante el uso de 'plugins'.&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:7pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;">Programa para la &lt;span style=" font-weight:600;">configuración&lt;/span> general de la Suite BulmaGés. Adminitra la base de datos, gestión de permisos de usuario y altas/bajas de funcionalidades del resto de programas mediante el uso de 'plugins'.&lt;/p>&lt;/body>&lt;/html></string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="mui_lanzabulmasetup" >
+            <property name="font" >
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
             <property name="text" >
              <string>Lanzar Bulma&amp;Setup</string>
             </property>
@@ -157,6 +175,75 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QGroupBox" name="group_bulmatpv" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>85</red>
+               <green>255</green>
+               <blue>127</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>85</red>
+               <green>255</green>
+               <blue>127</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>85</red>
+               <green>255</green>
+               <blue>127</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>85</red>
+               <green>255</green>
+               <blue>127</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
+         <property name="font" >
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
          <property name="layoutDirection" >
           <enum>Qt::LeftToRight</enum>
          </property>
@@ -165,6 +252,19 @@ p, li { white-space: pre-wrap; }
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5" >
           <item>
+           <widget class="QLabel" name="label_2" >
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="pixmap" >
+             <pixmap resource="bulmages.qrc" >:/images/iconbulmatpv.svg</pixmap>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QTextEdit" name="mui_textbulmatpv" >
             <property name="palette" >
              <palette>
@@ -172,9 +272,9 @@ p, li { white-space: pre-wrap; }
                <colorrole role="Base" >
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
-                  <red>0</red>
+                  <red>167</red>
                   <green>255</green>
-                  <blue>0</blue>
+                  <blue>129</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -183,9 +283,9 @@ p, li { white-space: pre-wrap; }
                <colorrole role="Base" >
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
-                  <red>0</red>
+                  <red>167</red>
                   <green>255</green>
-                  <blue>0</blue>
+                  <blue>129</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -213,13 +313,18 @@ p, li { white-space: pre-wrap; }
              <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Programa para la gestión de un Terminal Punto de Venta &lt;span style=" font-weight:600;">(TPV).&lt;/span> Admite la impresión de tickets y lector de código de barras.&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;">Programa para la gestión de un Terminal Punto de Venta &lt;span style=" font-weight:600;">(TPV).&lt;/span> Admite la impresión de tickets y lector de código de barras.&lt;/p>&lt;/body>&lt;/html></string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="mui_lanzabulmatpv" >
+            <property name="font" >
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
             <property name="text" >
              <string>Lanzar Bulma&amp;TPV</string>
             </property>
@@ -230,15 +335,142 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QGroupBox" name="group_bulmafact" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>170</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Shadow" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>170</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Shadow" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>170</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>170</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Shadow" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>0</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
+         <property name="font" >
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
          <property name="layoutDirection" >
           <enum>Qt::LeftToRight</enum>
          </property>
          <property name="title" >
           <string>BulmaFact</string>
          </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_3" >
           <item>
+           <widget class="QLabel" name="label" >
+            <property name="maximumSize" >
+             <size>
+              <width>15000</width>
+              <height>15000</height>
+             </size>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="pixmap" >
+             <pixmap resource="bulmages.qrc" >:/images/iconbulmafact.svg</pixmap>
+            </property>
+            <property name="scaledContents" >
+             <bool>false</bool>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QTextEdit" name="mui_textbulmafact" >
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="palette" >
              <palette>
               <active>
@@ -254,8 +486,8 @@ p, li { white-space: pre-wrap; }
                <colorrole role="Base" >
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
-                  <red>0</red>
-                  <green>0</green>
+                  <red>85</red>
+                  <green>170</green>
                   <blue>255</blue>
                  </color>
                 </brush>
@@ -274,8 +506,8 @@ p, li { white-space: pre-wrap; }
                <colorrole role="Base" >
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
-                  <red>0</red>
-                  <green>0</green>
+                  <red>85</red>
+                  <green>170</green>
                   <blue>255</blue>
                  </color>
                 </brush>
@@ -313,13 +545,18 @@ p, li { white-space: pre-wrap; }
              <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Programa para emitir &lt;span style=" font-weight:600;">facturas&lt;/span>. Lleva un control de clientes y proveedores y todos los documentos relacionados con el comercio: Presupuestos, pedidos, albaranes, cobros y pagos, etc.&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;">Programa para emitir &lt;span style=" font-weight:600;">facturas&lt;/span>. Lleva un control de clientes y proveedores y todos los documentos relacionados con el comercio.&lt;/p>&lt;/body>&lt;/html></string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="mui_lanzabulmafact" >
+            <property name="font" >
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
             <property name="text" >
              <string>Lanzar Bulma&amp;Fact</string>
             </property>
@@ -394,6 +631,11 @@ p, li { white-space: pre-wrap; }
            </disabled>
           </palette>
          </property>
+         <property name="font" >
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
          <property name="layoutDirection" >
           <enum>Qt::LeftToRight</enum>
          </property>
@@ -401,6 +643,31 @@ p, li { white-space: pre-wrap; }
           <string>BulmaCont</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2" >
+          <item>
+           <widget class="QLabel" name="label_3" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>16777215</width>
+              <height>152000</height>
+             </size>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="pixmap" >
+             <pixmap resource="bulmages.qrc" >:/images/iconbulmacont.svg</pixmap>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QTextEdit" name="mui_textbulmacont" >
             <property name="palette" >
@@ -419,8 +686,8 @@ p, li { white-space: pre-wrap; }
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
                   <red>255</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <green>129</green>
+                  <blue>131</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -439,8 +706,8 @@ p, li { white-space: pre-wrap; }
                 <brush brushstyle="SolidPattern" >
                  <color alpha="255" >
                   <red>255</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <green>129</green>
+                  <blue>131</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -477,13 +744,18 @@ p, li { white-space: pre-wrap; }
              <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Programa de &lt;span style=" font-weight:600;">contabilidad&lt;/span>. Adaptado al plan contable Español.&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;">Programa de &lt;span style=" font-weight:600;">contabilidad&lt;/span>. Adaptado al plan contable Español.&lt;/p>&lt;/body>&lt;/html></string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="mui_lanzabulmacont" >
+            <property name="font" >
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
             <property name="text" >
              <string>Lanzar BulmaC&amp;ont</string>
             </property>
@@ -498,6 +770,73 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources/>
- <connections/>
+ <resources>
+  <include location="bulmages.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>group_bulmacont</sender>
+   <signal>clicked()</signal>
+   <receiver>mui_lanzabulmacont</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>83</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>172</x>
+     <y>388</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>group_bulmafact</sender>
+   <signal>clicked()</signal>
+   <receiver>mui_lanzabulmafact</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>260</x>
+     <y>121</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>324</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>group_bulmatpv</sender>
+   <signal>clicked()</signal>
+   <receiver>mui_lanzabulmatpv</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>430</x>
+     <y>120</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>512</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>group_bulmasetup</sender>
+   <signal>clicked()</signal>
+   <receiver>mui_lanzabulmasetup</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>637</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>725</x>
+     <y>391</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

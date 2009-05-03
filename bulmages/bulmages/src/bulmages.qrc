@@ -3,6 +3,11 @@
    <file>images/iconbulmages.svg</file>
    <file>images/iconbulmages.png</file>
    <file>images/iconbulmafact.png</file>
+   <file>images/iconbulmafact.svg</file>
    <file>images/iconbulmacont.png</file>
+   <file>images/iconbulmacont.svg</file>
+   <file>images/iconbulmatpv.png</file>
+   <file>images/iconbulmatpv.svg</file>
+   
 </qresource>
 </RCC>

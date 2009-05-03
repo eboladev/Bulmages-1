@@ -93,8 +93,11 @@ void BulmaGes::createTrayIcon()
     QAction *salirAction;
 
     bulmaContAction = new QAction ( tr ( "BulmaCont" ), this );
+    bulmaContAction->setIcon ( QIcon ( ":/images/iconbulmacont.svg" ) );
     bulmaFactAction = new QAction ( tr ( "BulmaFact" ), this );
+    bulmaFactAction->setIcon ( QIcon ( ":/images/iconbulmafact.svg" ) );
     bulmaTPVAction = new QAction ( tr ( "BulmaTPV" ), this );
+    bulmaTPVAction->setIcon ( QIcon ( ":/images/iconbulmatpv.svg" ) );
     bulmaSetupAction = new QAction ( tr ( "BulmaSetup" ), this );
     salirAction = new QAction ( tr ( "&Salir" ), this );
 
@@ -108,6 +111,7 @@ void BulmaGes::createTrayIcon()
     trayIconMenu->addAction ( bulmaContAction );
     trayIconMenu->addAction ( bulmaFactAction );
     trayIconMenu->addAction ( bulmaTPVAction );
+    trayIconMenu->addSeparator();
     trayIconMenu->addAction ( bulmaSetupAction );
     trayIconMenu->addSeparator();
     trayIconMenu->addAction ( salirAction );
