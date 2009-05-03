@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Contabilidad General;
+Categorias: Contabilidad general;
 
 Orden: 70
 

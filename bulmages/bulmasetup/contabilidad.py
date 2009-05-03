@@ -135,7 +135,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
          if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
             self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
-            if (len(self.pluginsbulmacont[self.i][4]) > 0):
+	    # En realidad deberia comprobar que el archivo existe.
+            if (len(self.pluginsbulmacont[self.i][4]) > 4):
                self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][4] + ' ' + self.database + '\"'
                self.writecommand(self.command)
                self.process.start(self.command)
@@ -143,7 +144,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                self.writecommand(self.process.readAllStandardOutput())
          else:
             # Si no esta chequeado hacemos un borrado del plugin
-            if (len(self.pluginsbulmacont[self.i][9]) > 0):
+            if (len(self.pluginsbulmacont[self.i][9]) > 4 ):
               # Aplicamos el parche  de borrado.
               self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][9] +' '+ self.database +'\"'
               self.writecommand(self.command)

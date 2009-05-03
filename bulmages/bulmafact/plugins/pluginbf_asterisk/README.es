@@ -17,9 +17,9 @@ puestos en marcha en la centralita con agi.</P>
 
 ParmBD: PluginBf_Asterisk
 
-ArchivoSQLpatch: pluginasterisk.sql
+ArchivoSQLpatch: pluginbf_asterisk.sql
 
-ArchivoSQLdeins: pluginasterisk-rm.sql
+ArchivoSQLdeins: pluginbf_asterisk-rm.sql
 
 Dependencias: libpluginalmacen.so libplugincuadrante.so
 

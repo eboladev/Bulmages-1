@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Contabilidad General;Experimentales;
+Categorias: Contabilidad general;Experimentales;
 
 Orden: 90
 

@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas; Experimentales;
+Categorias: Utilidades genericas;Experimentales;
 
 Orden: 900
 

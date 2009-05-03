@@ -284,7 +284,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
           self.writecommand('Actualizando ' + self.pluginsbulmafact[self.i][0])
           self.writecommand('============ \n ' )
           # Si hay parche de actualizacion lo aplicamos
-          if (len(self.pluginsbulmafact[self.i][4]) > 0):
+	  # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
+	  # lugar de comprobar la longitud del archivo.
+          if (len(self.pluginsbulmafact[self.i][4]) > 4):
             self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
             self.writecommand(self.command)
             self.process.start(self.command)
@@ -292,7 +294,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.writecommand(self.process.readAllStandardOutput())
         else:
           # Si no esta chequeado hacemos un borrado del plugin
-          if (len(self.pluginsbulmafact[self.i][9]) > 0):
+          if (len(self.pluginsbulmafact[self.i][9]) > 4):
             # Aplicamos el parche  de borrado.
             self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][9] +' '+ self.database +'\"'
             self.writecommand(self.command)
@@ -307,7 +309,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.i < self.mui_plugins1.rowCount()):
           self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
           if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            if (len(self.pluginsbulmatpv[self.i][4]) >0):
+            if (len(self.pluginsbulmatpv[self.i][4]) > 4):
               self.writecommand('Actualizando ' + self.pluginsbulmatpv[self.i][0])
               self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][4] +' '+ self.database +'\"'
               self.writecommand(self.command)
@@ -316,7 +318,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
               self.writecommand(self.process.readAllStandardOutput())
           else:
             # Si no esta chequeado hacemos un borrado del plugin
-            if (len(self.pluginsbulmatpv[self.i][9]) > 0):
+            if (len(self.pluginsbulmatpv[self.i][9]) > 4):
               # Aplicamos el parche  de borrado.
               self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][9] +' '+ self.database +'\"'
               self.writecommand(self.command)
@@ -335,8 +337,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
       self.progress.setRange(0, len(self.pluginsbulmafact)+len(self.pluginsbulmatpv))
       self.progress.show()
-          
-      
       self.semaforo = 0
       self.mui_plugins.setRowCount(len(self.pluginsbulmafact))
       self.i = 0

@@ -22,7 +22,7 @@ Dependencias: libpluginabrevs.so
 
 Incompatibles:
 
-Categorias: Facturacion generica; Experimentales
+Categorias: Facturacion generica; Experimentales;
 
 Orden: 50
 
