@@ -261,6 +261,12 @@ AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setDbFieldId ( "idalumno" );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    addSubFormHeader ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "1er apellido" ) );
+    addSubFormHeader ( "apellido2alumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "2o apellido" ) );
+    addSubFormHeader ( "diralumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion" ) );
+    addSubFormHeader ( "cpalumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "CP" ) );
+    addSubFormHeader ( "municipioalumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Municipio" ) );
+    addSubFormHeader ( "fechanacimientoalumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "F. Nacimiento" ) );
 
     setInsert ( FALSE );
     setDelete ( FALSE );

@@ -70,6 +70,14 @@ BEGIN
 	    nombrealumno VARCHAR NOT NULL,
 	    idprovincia INTEGER REFERENCES provincia(idprovincia),
        apellido1alumno VARCHAR,
+       apellido2alumno VARCHAR,
+       diralumno VARCHAR,
+       cpalumno VARCHAR,
+       municipioalumno VARCHAR,
+       observalumno VARCHAR,
+       telalumno VARCHAR,
+       movilalumno VARCHAR,
+       emailalumno VARCHAR,
        fechanacimientoalumno DATE
         );
         END IF;
@@ -80,7 +88,17 @@ BEGIN
       ALTER TABLE alumno ADD COLUMN fechanacimientoalumno DATE;
    END IF;
 
-
+   SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido2alumno'';
+   IF NOT FOUND THEN
+      ALTER TABLE alumno ADD COLUMN apellido2alumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN diralumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN cpalumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN municipioalumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN observalumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN telalumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN movilalumno VARCHAR;
+      ALTER TABLE alumno ADD COLUMN emailalumno VARCHAR;
+   END IF;
 
   SELECT INTO as * FROM pg_tables  WHERE tablename=''recibo'';
     IF NOT FOUND THEN

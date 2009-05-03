@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="248"
+   height="248"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docbase="/home/anna/Desktop/elferrer/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006"
+   sodipodi:docname="iglues.svg"
+   inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true"
+   version="1.0">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective52" />
+    <linearGradient
+       id="linearGradient3286">
+      <stop
+         id="stop3288"
+         offset="0"
+         style="stop-color:#005b99;stop-opacity:1;" />
+      <stop
+         id="stop3290"
+         offset="1"
+         style="stop-color:#005b99;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5761">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5763" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5765" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient2369"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,-485.8917,715.1012)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient5039"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,-485.8917,715.1012)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1635"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,-517.6013,695.2827)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1656"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,-517.6013,695.2827)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1678"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,264.5016,691.8005)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1681"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,577.589,688.1279)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1695"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,-517.6013,695.2827)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1698"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,573.0997,653.7322)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient4043"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,573.0997,653.7322)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient4943"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-4.817017e-7,-0.14263,0.14263,-4.817017e-7,127.7738,907.1157)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient4966"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-4.817017e-7,-0.14263,0.14263,-4.817017e-7,526.9488,907.1921)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1672"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,1051.786,400.6338)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient3193"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,346.1469,677.4057)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient4125"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,346.1469,677.4057)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient4127"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,346.1469,677.4057)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1431"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,-874.291,1073.162)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient3204"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.425676e-6,-0.422137,-0.422137,-1.425676e-6,827.4633,688.1003)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5761"
+       id="radialGradient1432"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.425676e-6,-0.422137,0.422137,-1.425676e-6,-75.89276,688.1003)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3286"
+       id="radialGradient3237"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-3.377282e-6,-1,1,-3.377282e-6,2.10725,691.8916)"
+       cx="609.01288"
+       cy="601.34766"
+       fx="609.01288"
+       fy="601.34766"
+       r="74.342102" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.3286765"
+     inkscape:cx="114.6867"
+     inkscape:cy="124"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="973"
+     inkscape:window-height="668"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     showgrid="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3239"
+       transform="translate(-499.76053,-303.65369)">
+      <g
+         style="fill:#ffffff;fill-opacity:1"
+         transform="translate(3.3391409,297.96009)"
+         id="g2441">
+        <text
+           inkscape:export-ydpi="144.53"
+           inkscape:export-xdpi="144.53"
+           inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+           xml:space="preserve"
+           style="font-size:87.91007233px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Gentium"
+           x="524.01221"
+           y="212.03618"
+           id="text2443"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan2445"
+             x="524.01221"
+             y="212.03618">iglues</tspan></text>
+        <path
+           id="path2447"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+           d="M 680.02555,159.33538 C 699.61325,139.69488 711.73185,112.58808 711.73195,82.70799 C 711.73195,52.79119 699.58435,25.69882 679.95495,6.0966204 L 657.41785,28.74369 C 671.24035,42.57079 679.79445,61.66719 679.79445,82.73919 C 679.79435,103.78278 671.26105,122.85168 657.46925,136.66998 L 680.02555,159.33538 z M 577.53615,56.99955 C 570.98425,63.59525 566.94245,72.70387 566.94245,82.74955 C 566.94245,92.92545 571.11505,102.11848 577.81745,108.74955 L 586.72365,99.9683 C 582.24695,95.61091 579.44245,89.5234 579.44245,82.7808 C 579.44245,76.2182 582.08045,70.24378 586.34865,65.9058 L 577.53615,56.99955 z"
+           sodipodi:nodetypes="csccscccsccscc"
+           inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+           inkscape:export-xdpi="144.53"
+           inkscape:export-ydpi="144.53" />
+        <path
+           id="path2449"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+           d="M 630.77845,109.94408 C 637.72625,102.96618 642.02685,93.35029 642.02685,82.74969 C 642.02685,72.14629 637.72405,62.54129 630.77295,55.57609 L 656.13845,30.28619 C 669.52225,43.73019 677.79495,62.26669 677.79495,82.73399 C 677.79485,103.34668 669.40425,122.00098 655.85245,135.46758 L 630.77845,109.94408 z M 551.15665,135.57008 C 537.54405,122.09578 529.11075,103.39898 529.11075,82.73399 C 529.11075,62.21499 537.42535,43.63649 550.86885,30.18429 L 576.25985,55.50009 C 569.27725,62.47139 564.95635,72.10769 564.95625,82.74969 C 564.95625,93.46529 569.33725,103.17458 576.40505,110.17018 L 551.15665,135.57008 z"
+           inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+           inkscape:export-xdpi="144.53"
+           inkscape:export-ydpi="144.53" />
+      </g>
+      <g
+         transform="translate(3.3391399,297.96009)"
+         id="g3225">
+        <text
+           inkscape:export-ydpi="144.53"
+           inkscape:export-xdpi="144.53"
+           inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+           xml:space="preserve"
+           style="font-size:87.91007233px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;fill:#005b99;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;font-family:Gentium"
+           x="524.01221"
+           y="212.03618"
+           id="text3227"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3229"
+             x="524.01221"
+             y="212.03618">iglues</tspan></text>
+        <path
+           id="path3231"
+           style="fill:#005b99;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+           d="M 680.02555,159.33538 C 699.61325,139.69488 711.73185,112.58808 711.73195,82.70799 C 711.73195,52.79119 699.58435,25.69882 679.95495,6.0966204 L 657.41785,28.74369 C 671.24035,42.57079 679.79445,61.66719 679.79445,82.73919 C 679.79435,103.78278 671.26105,122.85168 657.46925,136.66998 L 680.02555,159.33538 z M 577.53615,56.99955 C 570.98425,63.59525 566.94245,72.70387 566.94245,82.74955 C 566.94245,92.92545 571.11505,102.11848 577.81745,108.74955 L 586.72365,99.9683 C 582.24695,95.61091 579.44245,89.5234 579.44245,82.7808 C 579.44245,76.2182 582.08045,70.24378 586.34865,65.9058 L 577.53615,56.99955 z"
+           sodipodi:nodetypes="csccscccsccscc"
+           inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+           inkscape:export-xdpi="144.53"
+           inkscape:export-ydpi="144.53" />
+        <path
+           id="path3233"
+           style="fill:url(#radialGradient3237);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.625;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+           d="M 630.77845,109.94408 C 637.72625,102.96618 642.02685,93.35029 642.02685,82.74969 C 642.02685,72.14629 637.72405,62.54129 630.77295,55.57609 L 656.13845,30.28619 C 669.52225,43.73019 677.79495,62.26669 677.79495,82.73399 C 677.79485,103.34668 669.40425,122.00098 655.85245,135.46758 L 630.77845,109.94408 z M 551.15665,135.57008 C 537.54405,122.09578 529.11075,103.39898 529.11075,82.73399 C 529.11075,62.21499 537.42535,43.63649 550.86885,30.18429 L 576.25985,55.50009 C 569.27725,62.47139 564.95635,72.10769 564.95625,82.74969 C 564.95625,93.46529 569.33725,103.17458 576.40505,110.17018 L 551.15665,135.57008 z"
+           inkscape:export-filename="/home/raul/Documents/iglues/Nuevo logotipo IGLUES - 12 06 2006/IGLUES definitivo - color azul.png"
+           inkscape:export-xdpi="144.53"
+           inkscape:export-ydpi="144.53" />
+      </g>
+    </g>
+  </g>
+</svg>

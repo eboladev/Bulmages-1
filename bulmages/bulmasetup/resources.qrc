@@ -12,5 +12,6 @@
         <file>bulmasetup_nuevousuario.xpm</file>
         <file>bulmasetup_editarusuario.xpm</file>
         <file>bulmasetup_eliminarusuario.xpm</file>
+        <file>iglues.org.svg</file>
     </qresource>
 </RCC>

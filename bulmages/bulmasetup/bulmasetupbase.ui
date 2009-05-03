@@ -18,6 +18,10 @@
   <property name="windowTitle" >
    <string>BulmaSetup</string>
   </property>
+  <property name="windowIcon" >
+   <iconset resource="resources.qrc" >
+    <normaloff>:/images/iglues.org.svg</normaloff>:/images/iglues.org.svg</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget" >
    <widget class="QLabel" name="label" >
     <property name="geometry" >
@@ -25,13 +29,13 @@
       <x>20</x>
       <y>20</y>
       <width>209</width>
-      <height>150</height>
+      <height>200</height>
      </rect>
     </property>
     <property name="minimumSize" >
      <size>
       <width>209</width>
-      <height>150</height>
+      <height>200</height>
      </size>
     </property>
     <property name="maximumSize" >
@@ -44,7 +48,10 @@
      <string/>
     </property>
     <property name="pixmap" >
-     <pixmap resource="resources.qrc" >:/images/bulmasetup_iglues.jpg</pixmap>
+     <pixmap resource="resources.qrc" >:/images/iglues.org.svg</pixmap>
+    </property>
+    <property name="scaledContents" >
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="mui_gestionusuarios" >
@@ -138,7 +145,7 @@
     <property name="geometry" >
      <rect>
       <x>30</x>
-      <y>210</y>
+      <y>250</y>
       <width>171</width>
       <height>81</height>
      </rect>

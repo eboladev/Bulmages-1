@@ -99,8 +99,10 @@ void BulmaGes::createTrayIcon()
     bulmaTPVAction = new QAction ( tr ( "BulmaTPV" ), this );
     bulmaTPVAction->setIcon ( QIcon ( ":/images/iconbulmatpv.svg" ) );
     bulmaSetupAction = new QAction ( tr ( "BulmaSetup" ), this );
+    bulmaSetupAction->setIcon ( QIcon ( ":/images/iconiglues.svg" ) );
     salirAction = new QAction ( tr ( "&Salir" ), this );
-
+    salirAction->setIcon ( QIcon ( ":images/iconexit.png" ) );
+    
     connect ( bulmaContAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaCont() ) );
     connect ( bulmaFactAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaFact() ) );
     connect ( bulmaTPVAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaTPV() ) );

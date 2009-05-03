@@ -50,8 +50,16 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
         setDbFieldId ( "idalumno" );
         addDbField ( "idalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id alumno" ) );
         addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
-        addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
-        addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
+        addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "1er apellido" ) );
+        addDbField ( "apellido2alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "2o apellido" ) );
+        addDbField ( "diralumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
+        addDbField ( "cpalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "CP" ) );
+        addDbField ( "municipioalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Municipio" ) );
+        addDbField ( "telalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono" ) );
+        addDbField ( "movilalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Movil" ) );
+        addDbField ( "observalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Observaciones" ) );
+        addDbField ( "emailalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "E-Mail" ) );
+        addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Nacimiento" ) );
         addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
 
         /// Datos por defecto.

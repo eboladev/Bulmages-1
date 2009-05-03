@@ -5,12 +5,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>425</height>
+    <width>767</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Dialog</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="bulmages.qrc" >
+    <normaloff>:/images/iconbulmages.svg</normaloff>:/images/iconbulmages.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
@@ -61,6 +65,16 @@
         <property name="text" >
          <string>&amp;Cerrar</string>
         </property>
+        <property name="icon" >
+         <iconset resource="bulmages.qrc" >
+          <normaloff>:/images/iconexit.png</normaloff>:/images/iconexit.png</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
        </widget>
       </item>
      </layout>
@@ -98,7 +112,32 @@
          <property name="title" >
           <string>BulmaSetup</string>
          </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_4" >
+          <item>
+           <widget class="QLabel" name="label_4" >
+            <property name="maximumSize" >
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="pixmap" >
+             <pixmap resource="bulmages.qrc" >:/images/iconiglues.svg</pixmap>
+            </property>
+            <property name="scaledContents" >
+             <bool>true</bool>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QTextEdit" name="mui_textbulmasetup" >
             <property name="palette" >
