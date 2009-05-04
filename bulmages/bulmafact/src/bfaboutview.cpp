@@ -24,7 +24,6 @@
 
 #include "bfaboutview.h"
 
-
 /// Rellena con datos los QTextEdit y muestra el formulario.
 /**
 \param parent

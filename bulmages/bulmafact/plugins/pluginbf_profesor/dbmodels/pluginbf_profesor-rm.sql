@@ -41,7 +41,9 @@ END;
 '
 language 'plpgsql';
 
-
+DROP FUNCTION actualizacantrecibo_insert() CASCADE;
+DROP FUNCTION actualizacantrecibo_update() CASCADE;
+DROP FUNCTION actualizacantrecibo_delete() CASCADE;
 
 -- ========================== VARIACION DE TARIFA =======================
 
