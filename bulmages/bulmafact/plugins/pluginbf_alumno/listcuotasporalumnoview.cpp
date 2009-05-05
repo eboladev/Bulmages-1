@@ -36,7 +36,6 @@
 #include "bldatesearch.h"
 #include "blfunctions.h"
 
-
 ///
 /**
 \param comp
@@ -46,6 +45,7 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
         : BfForm ( comp, parent )
 {
     _depura ( "ListCuotasPorAlumnoView::ListCuotasPorAlumnoView", 1 );
+    
     setTitleName ( _ ( "CuotasPorAlumno" ) );
     setDbTableName ( "cuotaporalumno" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -53,9 +53,9 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
+    
     _depura ( "END ListCuotasPorAlumnoView::ListCuotasPorAlumnoView", 1 );
 }
-
 
 ///
 /**
@@ -63,15 +63,16 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
 void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
 {
     _depura ( "ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );
+    
     try {
         mui_listado->guardar();
         close();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar las cuotas" ) );
     } // end try
+    
     _depura ( "END ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );
 }
-
 
 ///
 /**
@@ -82,7 +83,6 @@ ListCuotasPorAlumnoView::~ListCuotasPorAlumnoView()
     _depura ( "END ListCuotasPorAlumnoView::~ListCuotasPorAlumnoView", 0 );
 }
 
-
 /// ===================================== SUBFORMULARIO ===============================================
 ///
 /**
@@ -91,14 +91,15 @@ ListCuotasPorAlumnoView::~ListCuotasPorAlumnoView()
 ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm", 0 );
+    
     setDbTableName ( "cuotaporalumno" );
     setDbFieldId ( "numalumnoscuotaporalumno" );
-    addSubFormHeader ( "numalumnoscuotaporalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
+    addSubFormHeader ( "numalumnoscuotaporalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Número de alumnos" ) );
     addSubFormHeader ( "cuotacuotaporalumno", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cuota" ) );
     setInsert ( TRUE );
+    
     _depura ( "END ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm", 0 );
 }
-
 
 ///
 /**
@@ -106,7 +107,8 @@ ListCuotasPorAlumnoSubForm::ListCuotasPorAlumnoSubForm ( QWidget *parent ) : BfS
 void ListCuotasPorAlumnoSubForm::cargar()
 {
     _depura ( "ListCuotasPorAlumnoSubForm::cargar", 0 );
+    
     BlSubForm::cargar ( "SELECT * FROM cuotaporalumno" );
+    
     _depura ( "END ListCuotasPorAlumnoSubForm::cargar", 0 );
 }
-

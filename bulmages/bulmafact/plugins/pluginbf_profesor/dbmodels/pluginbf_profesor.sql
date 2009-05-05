@@ -181,6 +181,7 @@ BEGIN
     cantrecibo NUMERIC(12,2),
     idforma_pago INTEGER REFERENCES forma_pago(idforma_pago),
     descrecibo VARCHAR,
+    pagadorecibo BOOLEAN DEFAULT false,
     idcliente INTEGER REFERENCES cliente(idcliente)
     );
   END IF;

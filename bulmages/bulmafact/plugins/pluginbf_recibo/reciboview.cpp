@@ -54,6 +54,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "ID Forma Pago" ) );
         addDbField ( "descrecibo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
         addDbField ( "fecharecibo", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de creacion" ) );
+        addDbField ( "pagadorecibo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Pagado" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
 
@@ -100,6 +101,7 @@ QString ReciboView::nombrePlantilla ( void )
 {
     _depura ( "ReciboView::nombrePlantilla", 0 );
     _depura ( "END ReciboView::nombrePlantilla", 0 );
+    
     return QString ( "recibod" );
 }
 

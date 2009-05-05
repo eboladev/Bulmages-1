@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Almacenes</string>
+   <string>Cuotas por alumno</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
