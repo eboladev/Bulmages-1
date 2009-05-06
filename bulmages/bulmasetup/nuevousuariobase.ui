@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>355</width>
-    <height>118</height>
+    <width>300</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -31,62 +31,64 @@
    <iconset resource="resources.qrc" >
     <normaloff>:/images/bulmasetup_nuevousuario.xpm</normaloff>:/images/bulmasetup_nuevousuario.xpm</iconset>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="4" column="0" colspan="2" >
-    <widget class="QDialogButtonBox" name="mui_botonera" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons" >
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="mui_password" >
-     <property name="echoMode" >
-      <enum>QLineEdit::Password</enum>
-     </property>
-    </widget>
+  <layout class="QGridLayout" name="gridLayout_3" >
+   <item row="0" column="0" >
+    <layout class="QGridLayout" name="gridLayout" >
+     <item row="0" column="0" >
+      <widget class="QLabel" name="label" >
+       <property name="text" >
+        <string>Nombre</string>
+       </property>
+       <property name="buddy" >
+        <cstring>mui_nombre</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QLineEdit" name="mui_nombre" />
+     </item>
+     <item row="1" column="0" >
+      <widget class="QLabel" name="label_2" >
+       <property name="text" >
+        <string>Password</string>
+       </property>
+       <property name="buddy" >
+        <cstring>mui_password</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QLineEdit" name="mui_password" >
+       <property name="echoMode" >
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="1" column="0" >
-    <widget class="QLabel" name="label_2" >
-     <property name="text" >
-      <string>Password</string>
-     </property>
-     <property name="buddy" >
-      <cstring>mui_password</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="mui_nombre" />
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="text" >
-      <string>Nombre</string>
-     </property>
-     <property name="buddy" >
-      <cstring>mui_nombre</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QCheckBox" name="mui_superusuario" >
-     <property name="focusPolicy" >
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="text" >
-      <string>Super Usuario</string>
-     </property>
-    </widget>
+    <layout class="QGridLayout" name="gridLayout_2" >
+     <item row="0" column="0" >
+      <widget class="QCheckBox" name="mui_superusuario" >
+       <property name="focusPolicy" >
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="text" >
+        <string>Super Usuario</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QDialogButtonBox" name="mui_botonera" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons" >
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

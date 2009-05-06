@@ -21,6 +21,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.tabWidget.setTabEnabled(2, False)
         self.tabWidget.setCurrentIndex(0)
         self.initListaDatabase()
+        self.initListaUsuarios()
         self.desactivaCheckboxTable()
         self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
         self.connect(self.checkBox_dball, SIGNAL("stateChanged(int)"), self.checkBox_dball_Change)
@@ -80,35 +81,31 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                     
         conn.close()
         
-    def abrirPermisosDesdeFacturacion(self):
-        # Pasamos el nombre de la base de datos seleccionada en ModificarFacturacion a la variable database y seleccionamos el Item correspondiente
-        numero = self.listWidgetDatabase.count()
-        temp = QtGui.QListWidgetItem()
-        global dbase
-        dbase = self.database
-        print str(dbase)
+    #def abrirPermisosDesdeFacturacion(self):
+        ## Pasamos el nombre de la base de datos seleccionada en ModificarFacturacion a la variable database y seleccionamos el Item correspondiente
+        #numero = self.listWidgetDatabase.count()
+        #temp = QtGui.QListWidgetItem()
+        #global dbase
+        #dbase = self.database
+        #print str(dbase)
         
-        for x in range (numero):
-            temp = self.listWidgetDatabase.item(x)
+        #for x in range (numero):
+            #temp = self.listWidgetDatabase.item(x)
             
-            if (temp.isSelected()):
-                dbase = temp.text()
-                break
+            #if (temp.isSelected()):
+                #dbase = temp.text()
+                #break
                         
-        if dbase.contains("BulmaFact  -  "):
-            dbase.remove("BulmaFact  -  ")
+        #if dbase.contains("BulmaFact  -  "):
+            #dbase.remove("BulmaFact  -  ")
             
-        if dbase.contains("BulmaCont  -  "):
-            dbase.remove("BulmaCont  -  ")
+        #if dbase.contains("BulmaCont  -  "):
+            #dbase.remove("BulmaCont  -  ")
             
-        self.initListaUsuarios()
-        self.desactivaCheckboxTable()
-        
-    
+        #self.initListaUsuarios()
+        #self.desactivaCheckboxTable()
         
     def capturaDatabase(self):
-        # Vaciamos la lista de las usuarios, ya que esta se regenera cada vez que cambiamos la base de datos seleccionada
-        self.listWidgetUser.clear()
         # Pasamos el nombre de la base de datos seleccionada en listWidgetDatabase a la variable database
         numero = self.listWidgetDatabase.count()
         temp = QtGui.QListWidgetItem()
@@ -126,9 +123,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             
         if dbase.contains("BulmaCont  -  "):
             dbase.remove("BulmaCont  -  ")
-            
-        self.initListaUsuarios()
-        self.desactivaCheckboxTable()
 
     def initListaUsuarios(self):
         try:
@@ -164,7 +158,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                 self.listWidgetUser.addItem(QString(texto))
             
     def capturaUsuario(self): 
-        # Vaciamos la lista de bbdd, ya que esta se regenera cada vez que cambiamos el usuario seleccionado
+        # Vaciamos la lista de tablas, ya que esta se regenera cada vez que cambiamos el usuario seleccionado
         self.listWidgetTable.clear()
         # Pasamos el nombre del usuario seleccionado en listWidgetUser a la variable username
         numero = self.listWidgetUser.count()
@@ -181,6 +175,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         if username.contains("  (su)"):
             username.remove("  (su)")
             
+        self.capturaDatabase
         self.initListaTablas()
         self.actualizarCheckboxDB()
         self.tabWidget.setTabEnabled(1, True)
