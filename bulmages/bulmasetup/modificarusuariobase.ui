@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="currentIndex" >
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab" >
     <attribute name="title" >
@@ -42,7 +42,7 @@
         </font>
        </property>
        <property name="text" >
-        <string>Selecciona un Usuario</string>
+        <string>Selecciona una Base de Datos</string>
        </property>
       </widget>
      </item>
@@ -55,17 +55,21 @@
         </font>
        </property>
        <property name="text" >
-        <string>Selecciona una Base de Datos</string>
+        <string>Selecciona un Usuario</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0" >
-      <widget class="QListWidget" name="listWidgetUser" />
-     </item>
-     <item row="1" column="1" >
       <widget class="QListWidget" name="listWidgetDatabase" />
      </item>
+     <item row="1" column="1" >
+      <widget class="QListWidget" name="listWidgetUser" />
+     </item>
     </layout>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>listWidgetDatabase</zorder>
+    <zorder>listWidgetUser</zorder>
    </widget>
    <widget class="QWidget" name="tab_3" >
     <attribute name="title" >
@@ -239,7 +243,7 @@
         </property>
         <property name="icon" >
          <iconset resource="resources.qrc" >
-          <normaloff>:/images/bulmasetup_save.png</normaloff>:/images/bulmasetup_save.png</iconset>
+          <normaloff>:/images/bulmasetup_aceptar.xpm</normaloff>:/images/bulmasetup_aceptar.xpm</iconset>
         </property>
        </widget>
       </item>

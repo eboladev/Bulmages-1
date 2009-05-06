@@ -20,9 +20,8 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.tabWidget.setTabEnabled(1, False)
         self.tabWidget.setTabEnabled(2, False)
         self.tabWidget.setCurrentIndex(0)
-        self.initListaUsuarios()
-        self.desactivaCheckboxDB()
-        self.desactivaCheckboxTable()      
+        self.initListaDatabase()
+        self.desactivaCheckboxTable()
         self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
         self.connect(self.checkBox_dball, SIGNAL("stateChanged(int)"), self.checkBox_dball_Change)
         self.connect(self.checkBox_dbrevoke, SIGNAL("stateChanged(int)"), self.checkBox_dbrevoke_Change)
@@ -30,38 +29,8 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.connect(self.listWidgetUser, SIGNAL("itemSelectionChanged()"), self.capturaUsuario)
         self.connect(self.listWidgetTable, SIGNAL("itemSelectionChanged()"), self.capturaTabla)
         self.connect(self.process, SIGNAL("readyReadStandardError()"), self.readErrors)
-
-    def initListaUsuarios(self):
-        try:
-            # Aqui puede verse que hace falta agregar al usuario root como
-            # superusuario de bases de datos de postgres para que este script
-            # funcione correctamente. Con el usuario postgres basta con poner:
-            # createuser root
-            conn = psycopg2.connect("dbname='template1' user='root'")
-        except:
-            print "Fallo en la conexion con PostgreSQL."
-            sys.exit()
-
-        cur = conn.cursor()
         
-        try:
-            cur.execute("SELECT * FROM pg_user")
-        except:
-            print "Fallo en la consulta para obtener los usuarios de PostgreSQL del sistema."
-            sys.exit()
-            
-        usuarios = cur.fetchall()
-        conn.close()
-        texto = ""
-        
-        # Rellenamos la lista con los usuarios de PostgreSQL
-        for row in usuarios:
-            texto = row[0]
-            if (str(texto) != 'root') and (str(texto) != 'postgres'):            
-                if (row[3] == True):
-                    texto = texto + "  (su)"                
-                self.listWidgetUser.addItem(QString(texto))
-            
+                    
     def initListaDatabase(self):
         try:
             conn = psycopg2.connect("dbname='template1' user='root'")
@@ -110,7 +79,113 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                     self.listWidgetDatabase.addItem(QString(texto))
                     
         conn.close()
+        
+    def abrirPermisosDesdeFacturacion(self):
+        # Pasamos el nombre de la base de datos seleccionada en ModificarFacturacion a la variable database y seleccionamos el Item correspondiente
+        numero = self.listWidgetDatabase.count()
+        temp = QtGui.QListWidgetItem()
+        global dbase
+        dbase = self.database
+        print str(dbase)
+        
+        for x in range (numero):
+            temp = self.listWidgetDatabase.item(x)
+            
+            if (temp.isSelected()):
+                dbase = temp.text()
+                break
+                        
+        if dbase.contains("BulmaFact  -  "):
+            dbase.remove("BulmaFact  -  ")
+            
+        if dbase.contains("BulmaCont  -  "):
+            dbase.remove("BulmaCont  -  ")
+            
+        self.initListaUsuarios()
+        self.desactivaCheckboxTable()
+        
+    
+        
+    def capturaDatabase(self):
+        # Vaciamos la lista de las usuarios, ya que esta se regenera cada vez que cambiamos la base de datos seleccionada
+        self.listWidgetUser.clear()
+        # Pasamos el nombre de la base de datos seleccionada en listWidgetDatabase a la variable database
+        numero = self.listWidgetDatabase.count()
+        temp = QtGui.QListWidgetItem()
+        global dbase
+        
+        for x in range (numero):
+            temp = self.listWidgetDatabase.item(x)
+            
+            if (temp.isSelected()):
+                dbase = temp.text()
+                break
+                        
+        if dbase.contains("BulmaFact  -  "):
+            dbase.remove("BulmaFact  -  ")
+            
+        if dbase.contains("BulmaCont  -  "):
+            dbase.remove("BulmaCont  -  ")
+            
+        self.initListaUsuarios()
+        self.desactivaCheckboxTable()
 
+    def initListaUsuarios(self):
+        try:
+            """Aqui puede verse que hace falta agregar al usuario root como
+            superusuario de bases de datos de postgres para que este script
+            funcione correctamente. Con el usuario postgres basta con poner:
+            createuser root"""
+            conn = psycopg2.connect("dbname='template1' user='root'")
+        except:
+            print "Fallo en la conexion con PostgreSQL."
+            print "Para poder administrar los permisos debes tener creado el usuario ROOT en Postgres:"
+            print "Como SuperUsuario escribe: createuser root"
+            sys.exit()
+
+        cur = conn.cursor()
+        
+        try:
+            cur.execute("SELECT * FROM pg_user")
+        except:
+            print "Fallo en la consulta para obtener los usuarios de PostgreSQL del sistema."
+            sys.exit()
+            
+        usuarios = cur.fetchall()
+        conn.close()
+        texto = ""
+        
+        # Rellenamos la lista con los usuarios de PostgreSQL
+        for row in usuarios:
+            texto = row[0]
+            if (str(texto) != 'root') and (str(texto) != 'postgres'):            
+                if (row[3] == True):
+                    texto = texto + "  (su)"                
+                self.listWidgetUser.addItem(QString(texto))
+            
+    def capturaUsuario(self): 
+        # Vaciamos la lista de bbdd, ya que esta se regenera cada vez que cambiamos el usuario seleccionado
+        self.listWidgetTable.clear()
+        # Pasamos el nombre del usuario seleccionado en listWidgetUser a la variable username
+        numero = self.listWidgetUser.count()
+        temp = QtGui.QListWidgetItem()
+        global username
+        
+        for x in range (numero):
+            temp = self.listWidgetUser.item(x)
+                
+            if (temp.isSelected()):
+                username = temp.text()
+                break
+
+        if username.contains("  (su)"):
+            username.remove("  (su)")
+            
+        self.initListaTablas()
+        self.actualizarCheckboxDB()
+        self.tabWidget.setTabEnabled(1, True)
+        self.tabWidget.setCurrentIndex(1)
+        
     def initListaTablas(self):
         try:
             conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
@@ -135,56 +210,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             self.listWidgetTable.addItem(QString(texto))
             
         self.listWidgetTable.setSelectionMode(self.listWidgetTable.MultiSelection) 
-
-    def capturaUsuario(self): 
-        # Vaciamos la lista de bbdd, ya que esta se regenera cada vez que cambiamos el usuario seleccionado
-        self.listWidgetDatabase.clear()
-        # Pasamos el nombre del usuario seleccionado en listWidgetUser a la variable username
-        numero = self.listWidgetUser.count()
-        temp = QtGui.QListWidgetItem()
-        global username
-        
-        for x in range (numero):
-            temp = self.listWidgetUser.item(x)
-                
-            if (temp.isSelected()):
-                username = temp.text()
-                break
-
-        if username.contains("  (su)"):
-            username.remove("  (su)")
-            
-        self.desactivaCheckboxDB()
-        self.initListaDatabase()        
-
-    def capturaDatabase(self):
-        # Vaciamos la lista de las tablas, ya que esta se regenera cada vez que cambiamos la base de datos seleccionada
-        self.listWidgetTable.clear()
-        
-        # Pasamos el nombre de la base de datos seleccionada en listWidgetDatabase a la variable database
-        numero = self.listWidgetDatabase.count()
-        temp = QtGui.QListWidgetItem()
-        global dbase
-        
-        for x in range (numero):
-            temp = self.listWidgetDatabase.item(x)
-            
-            if (temp.isSelected()):
-                dbase = temp.text()
-                break
-                        
-        if dbase.contains("BulmaFact  -  "):
-            dbase.remove("BulmaFact  -  ")
-            
-        if dbase.contains("BulmaCont  -  "):
-            dbase.remove("BulmaCont  -  ")
-            
-        self.activaCheckboxDB()
-        self.actualizarCheckboxDB()
-        self.desactivaCheckboxTable()
-        self.initListaTablas()
-        self.tabWidget.setTabEnabled(1, True)
-        self.tabWidget.setCurrentIndex(1)
 
     def capturaTabla(self):
         self.activaCheckboxTable()
@@ -344,22 +369,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             self.checkBox_dball.setCheckState(Qt.Unchecked)
             self.checkBox_create.setCheckState(Qt.Unchecked)
             self.checkBox_temporary.setCheckState(Qt.Unchecked)
-            
-    def desactivaCheckboxDB(self):
-        self.checkBox_dball.setEnabled(False)
-        self.checkBox_dbrevoke.setEnabled(False)
-        self.checkBox_create.setEnabled(False)
-        self.checkBox_temporary.setEnabled(False)
-        self.mui_guardar.setEnabled(False)
-        
-    def activaCheckboxDB(self):
-        self.checkBox_dball.setEnabled(True)
-        self.checkBox_dbrevoke.setEnabled(True)
-        self.checkBox_create.setEnabled(True)
-        self.checkBox_temporary.setEnabled(True)
-        self.checkBox_dball.setCheckState(Qt.Unchecked)
-        self.checkBox_dbrevoke.setCheckState(Qt.Unchecked)
-        self.mui_guardar.setEnabled(True)
 
     def desactivaCheckboxTable(self):
         self.checkBox_select.setEnabled(False)
@@ -369,6 +378,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.checkBox_references.setEnabled(False)
         self.checkBox_trigger.setEnabled(False)
         self.checkBox_all.setEnabled(False)
+        self.mui_guardar.setEnabled(False)
         
     def activaCheckboxTable(self):
         self.checkBox_select.setEnabled(True)
@@ -378,6 +388,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.checkBox_references.setEnabled(True)
         self.checkBox_trigger.setEnabled(True)
         self.checkBox_all.setEnabled(True)
+        self.mui_guardar.setEnabled(True)
         self.checkBox_all.setCheckState(Qt.Unchecked)
 
     def on_mui_guardar_released(self):
@@ -388,8 +399,8 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.writeDB()
 
         #Creamos la bara de progreso
-        self.progress = QtGui.QProgressBar()
-        self.progress.setGeometry(QtCore.QRect(10,320,201,20))
+        self.progress = QtGui.QProgressBar(self)
+        self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 20)
         self.progress.show()
 
         #Calculamos el % de aumento de la barra de progreso

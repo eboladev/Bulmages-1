@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarusuariobase.ui'
 #
-# Created: Mon Apr 27 13:43:26 2009
+# Created: Wed May  6 12:40:00 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,12 +37,12 @@ class Ui_ModificarUsuario(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 0, 1, 1, 1)
-        self.listWidgetUser = QtGui.QListWidget(self.tab)
-        self.listWidgetUser.setObjectName("listWidgetUser")
-        self.gridLayout.addWidget(self.listWidgetUser, 1, 0, 1, 1)
         self.listWidgetDatabase = QtGui.QListWidget(self.tab)
         self.listWidgetDatabase.setObjectName("listWidgetDatabase")
-        self.gridLayout.addWidget(self.listWidgetDatabase, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.listWidgetDatabase, 1, 0, 1, 1)
+        self.listWidgetUser = QtGui.QListWidget(self.tab)
+        self.listWidgetUser.setObjectName("listWidgetUser")
+        self.gridLayout.addWidget(self.listWidgetUser, 1, 1, 1, 1)
         self.tabWidget.addTab(self.tab, "")
         self.tab_3 = QtGui.QWidget()
         self.tab_3.setObjectName("tab_3")
@@ -122,7 +122,7 @@ class Ui_ModificarUsuario(object):
         self.gridLayout_2.addWidget(self.checkBox_create, 4, 0, 1, 1)
         self.mui_guardar = QtGui.QPushButton(self.groupBox)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_aceptar.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_guardar.setIcon(icon1)
         self.mui_guardar.setObjectName("mui_guardar")
         self.gridLayout_2.addWidget(self.mui_guardar, 15, 0, 1, 1)
@@ -187,14 +187,14 @@ class Ui_ModificarUsuario(object):
         self.mui_salir.setObjectName("mui_salir")
 
         self.retranslateUi(ModificarUsuario)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.mui_salir, QtCore.SIGNAL("released()"), ModificarUsuario.close)
         QtCore.QMetaObject.connectSlotsByName(ModificarUsuario)
 
     def retranslateUi(self, ModificarUsuario):
         ModificarUsuario.setWindowTitle(QtGui.QApplication.translate("ModificarUsuario", "Modificar Permisos de Usuario", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona un Usuario", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona una Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona una Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona un Usuario", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("ModificarUsuario", "Usuario / Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarUsuario", "Permisos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona permisos para la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'eliminarusuariobase.ui'
 #
-# Created: Thu Apr  2 17:11:30 2009
+# Created: Wed May  6 12:38:34 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,9 +25,13 @@ class Ui_EliminarUsuario(object):
         EliminarUsuario.setWindowIcon(icon)
         self.mui_eliminarusuario = QtGui.QPushButton(EliminarUsuario)
         self.mui_eliminarusuario.setGeometry(QtCore.QRect(290, 70, 91, 24))
+        self.mui_eliminarusuario.setIcon(icon)
         self.mui_eliminarusuario.setObjectName("mui_eliminarusuario")
         self.mui_cancelar = QtGui.QPushButton(EliminarUsuario)
         self.mui_cancelar.setGeometry(QtCore.QRect(290, 110, 91, 24))
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_cancelar.setIcon(icon1)
         self.mui_cancelar.setObjectName("mui_cancelar")
         self.listWidget = QtGui.QListWidget(EliminarUsuario)
         self.listWidget.setGeometry(QtCore.QRect(10, 10, 261, 181))

@@ -188,14 +188,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>664</width>
-        <height>405</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Plugins BulmaFact</string>
       </attribute>
@@ -237,14 +229,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>512</width>
-        <height>240</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Plugins BulmaTPV</string>
       </attribute>
@@ -286,14 +270,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>512</width>
-        <height>240</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Consola</string>
       </attribute>
@@ -305,17 +281,20 @@
      </widget>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2" >
+   <item row="5" column="0" >
     <widget class="QPushButton" name="mui_aceptar" >
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text" >
       <string>Aplicar cambios</string>
      </property>
-    </widget>
-   </item>
-   <item row="5" column="2" colspan="2" >
-    <widget class="QPushButton" name="mui_hacerbackup" >
-     <property name="text" >
-      <string>Hacer copia de seguridad</string>
+     <property name="icon" >
+      <iconset resource="resources.qrc" >
+       <normaloff>:/images/bulmasetup_aceptar.xpm</normaloff>:/images/bulmasetup_aceptar.xpm</iconset>
      </property>
     </widget>
    </item>
@@ -324,11 +303,45 @@
      <property name="text" >
       <string>Cerrar</string>
      </property>
+     <property name="icon" >
+      <iconset resource="resources.qrc" >
+       <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2" >
+    <widget class="QPushButton" name="mui_permisos" >
+     <property name="minimumSize" >
+      <size>
+       <width>170</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>Administrar Permisos</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="resources.qrc" >
+       <normaloff>:/images/bulmasetup_editarusuario.xpm</normaloff>:/images/bulmasetup_editarusuario.xpm</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3" >
+    <widget class="QPushButton" name="mui_hacerbackup" >
+     <property name="text" >
+      <string>Hacer copia de seguridad</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="resources.qrc" >
+       <normaloff>:/images/bulmasetup_save.png</normaloff>:/images/bulmasetup_save.png</iconset>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_cancelar</sender>
