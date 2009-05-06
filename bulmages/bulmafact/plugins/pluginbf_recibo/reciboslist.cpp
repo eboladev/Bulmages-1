@@ -2,6 +2,9 @@
  *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -50,6 +53,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     mdb_idrecibo = "";
     setSubForm ( mui_list );
     hideBusqueda();
+    iniciaForm();
 
     _depura ( "END RecibosList::RecibosList", 0 );
 }
@@ -77,11 +81,13 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     mdb_idrecibo = "";
     
     if ( modoEdicion() )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany()->meteWindow ( windowTitle(), this );
         
     hideBusqueda();
+    iniciaForm();
+    
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos ( "cobro" );
+    trataPermisos ( "recibo" );
     
     _depura ( "END RecibosList::RecibosList", 0 );
 }
@@ -94,8 +100,25 @@ RecibosList::~RecibosList()
     _depura ( "END RecibosList::~RecibosList", 0 );
 }
 
-/** Hace la carag del listado.
-    PAra ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
+void RecibosList::iniciaForm()
+{
+    _depura ( "RecibosList::iniciaForm" );
+    
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "RecibosList_iniciaForm", this );
+    if ( res != 0 )
+        return;
+        
+    mui_procesada->insertItem ( 0, _ ( "Todos los recibos" ) );
+    mui_procesada->insertItem ( 1, _ ( "Recibos pagados" ) );
+    mui_procesada->insertItem ( 2, _ ( "Recibos no pagados" ) );
+    mui_procesada->setCurrentIndex ( 0 );
+    
+    _depura ( "END RecibosList::iniciaForm" );
+}
+
+/** Hace la carga del listado.
+    Para ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
     Tambien hace un select de calculo de totales y lo presenta en el textEdit correspondiente.
 */
 void RecibosList::presentar()
@@ -119,9 +142,23 @@ QString RecibosList::generaFiltro()
     QString filtro = "";
     
     if ( m_filtro->text() != "" ) {
-        filtro = " AND ( lower(nombrerecibo) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro += " ) ";
+        filtro += " AND ( lower(cliente.nomcliente) LIKE lower('%" + m_filtro->text() + "%') OR lower(recibo.descrecibo) LIKE lower('%" + m_filtro->text() + "%') )";
     } // end if
+    
+    /// Tratamos los elementos procesados y no procesados.
+    if ( mui_procesada->currentIndex() == 1 ) {
+        /// Muestra solo las procesadas.
+        filtro += " AND pagadorecibo";
+    } else if ( mui_procesada->currentIndex() == 2 ) {
+        /// Muestra solo las NO procesadas.
+        filtro += " AND NOT pagadorecibo ";
+    } // end if
+
+    if ( m_fechain->text() != "" )
+        filtro += " AND fecharecibo >= '" + m_fechain->text() + "' ";
+
+    if ( m_fechafin->text() != "" )
+        filtro += " AND fecharecibo <= '" + m_fechafin->text() + "' ";
 
     _depura ( "END RecibosList::generaFiltro", 0 );
     
@@ -140,7 +177,7 @@ void RecibosList::crear()
     bud->show();
     bud->pintar();
     
-    _depura ( "RecibosList::crear", 0 );
+    _depura ( "END RecibosList::crear", 0 );
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
@@ -149,7 +186,7 @@ void RecibosList::imprimir()
 {
     _depura ( "RecibosList::imprimir", 0 );
     
-    mui_list->imprimirPDF ( _ ( "Actividades" ) );
+    mui_list->imprimirPDF ( _ ( "Recibos" ) );
     
     _depura ( "END RecibosList::imprimir", 0 );
 }
@@ -193,7 +230,7 @@ void RecibosList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void RecibosList::editar ( int )
 {
-    _depura ( "RecibosList::on_mui_list_cellDoubleClicked", 0 );
+    _depura ( "RecibosList::editar", 0 );
     
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
@@ -212,7 +249,7 @@ void RecibosList::editar ( int )
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    _depura ( "END RecibosList::on_mui_list_cellDoubleClicked", 0 );
+    _depura ( "END RecibosList::editar", 0 );
 }
 
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
@@ -220,15 +257,15 @@ void RecibosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void RecibosList::submenu ( const QPoint & )
 {
-    _depura ( "RecibosList::on_mui_list_customContextMenuRequested", 0 );
+    _depura ( "RecibosList::submenu", 0 );
     
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
         
     QMenu *popup = new QMenu ( this );
-    QAction *edit = popup->addAction ( _ ( "Editar Actividad" ) );
-    QAction *del = popup->addAction ( _ ( "Borrar Actividad" ) );
+    QAction *edit = popup->addAction ( _ ( "Editar recibo" ) );
+    QAction *del = popup->addAction ( _ ( "Borrar recibo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     
     if ( opcion == del )
@@ -239,7 +276,7 @@ void RecibosList::submenu ( const QPoint & )
         
     delete popup;
     
-    _depura ( "RecibosList::on_mui_list_customContextMenuRequested", 0 );
+    _depura ( "END RecibosList::submenu", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -281,12 +318,12 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
         
     setDbTableName ( "recibo" );
     setDbFieldId ( "idrecibo" );
-    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Actividad" ) );
+    addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Recibo" ) );
     addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cantidad" ) );
     addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
-    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID Cliente" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID Tutor" ) );
     addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cliente" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tutor" ) );
 
     setInsert ( FALSE );
     setDelete ( FALSE );
