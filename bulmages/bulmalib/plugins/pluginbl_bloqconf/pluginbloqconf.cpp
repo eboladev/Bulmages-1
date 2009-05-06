@@ -91,7 +91,7 @@ void MyPluginBloqConf::elslot1( )
     _depura ( "END MyPluginBloqConf::elslot", 0 );
 }
 
-void entryPoint ( BlMainWindow *bges )
+int entryPoint ( BlMainWindow *bges )
 {
     _depura ( "Entrada del plugin Bloqconf", 0 );
 
@@ -123,6 +123,7 @@ void entryPoint ( BlMainWindow *bges )
 
 
     _depura ( "Iniciado correctamente el plugin dock", 10 );
+    return 0;
 }
 
 
