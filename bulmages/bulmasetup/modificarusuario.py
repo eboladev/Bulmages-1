@@ -33,12 +33,28 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         
                     
     def initListaDatabase(self):
+        """Hacemos una conexion de prueba para comprobar que si esta creado el usuario ROOT en PostgreSQL
+        Ya que es necesario para poder administrar los permisos de las Bases de Datos.
+        Si no existe, saltara un QMessageBox preguntando si se quiere crear el usuario ROOT."""
+        try:
+            conn = psycopg2.connect("dbname='template1' user='root'")
+            conn.close()
+        except:
+            reply = QtGui.QMessageBox.question(self, 'Atencion!', "Desea agregar el usuario Root a PostgreSQL?\n\nEste usuario es necesario para poder administrar los permisos.", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+            if reply == QtGui.QMessageBox.Yes:
+                comandoroot = "su postgres -c \"createuser -s root\""
+                self.process.start(comandoroot)
+                self.process.waitForFinished(-1)
+            else:
+                print "Para poder modificar los permisos de las bases de datos es necesario agregar el usuario ROOT a PostgreSQL"
+                print "Cerrando la aplicacion"
+                sys.exit()
+                
         try:
             conn = psycopg2.connect("dbname='template1' user='root'")
         except:
-            print "Fallo en la conexion con PostgreSQL."
             sys.exit()
-
+                
         cur = conn.cursor()
         
         #Buscamos todas las bases de datos y las guardamos en un array.
@@ -133,8 +149,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             conn = psycopg2.connect("dbname='template1' user='root'")
         except:
             print "Fallo en la conexion con PostgreSQL."
-            print "Para poder administrar los permisos debes tener creado el usuario ROOT en Postgres:"
-            print "Como SuperUsuario escribe: createuser root"
             sys.exit()
 
         cur = conn.cursor()
@@ -390,7 +404,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado cuando termine de procesar
         self.tabWidget.setTabEnabled(2, True)
         self.tabWidget.setCurrentIndex(2)
-        global command
         self.writeDB()
 
         #Creamos la bara de progreso
@@ -412,6 +425,8 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         if (total_tablas != 0.0):
             mas = 100.0/(total_tablas*6.0)
 
+        global command
+        
         #Empezamos a conceder permisos, primero a la base de datos seleccionada.
         if (self.checkBox_dball.isChecked()):
             command = 'psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"'
@@ -609,7 +624,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
 
     def readErrors(self):
-        self.mui_textBrowser.append("<font color =\"#FF0000\">error: " + QString(self.process.readAllStandardError()) + "</font>")
+        self.mui_textBrowser.append("<font color =\"#FF0000\">" + QString(self.process.readAllStandardError()) + "</font>")
 
     def writecommand(self):
         self.mui_textBrowser.append("<font color =\"#0000FF\">" + str(command) + "</font>")
