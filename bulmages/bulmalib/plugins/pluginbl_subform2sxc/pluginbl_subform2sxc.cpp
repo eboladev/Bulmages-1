@@ -40,7 +40,6 @@ int entryPoint ( QApplication * )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_subform2sxc", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
     _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
     return 0;
 }

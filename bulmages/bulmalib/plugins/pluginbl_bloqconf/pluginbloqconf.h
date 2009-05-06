@@ -28,9 +28,10 @@
 #include "blfunctions.h"
 #include "bccompany.h"
 #include "bfcompany.h"
-
+#include "blsubform.h"
 
 extern "C" MY_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 

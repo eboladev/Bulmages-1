@@ -91,6 +91,64 @@ void MyPluginBloqConf::elslot1( )
     _depura ( "END MyPluginBloqConf::elslot", 0 );
 }
 
+
+
+///
+/**
+\param menu
+**/
+void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "MyPluginBloqConf::s_pintaMenu", 0 );
+    
+    BlSubForm *sub = (BlSubForm *) sender();
+    int modo = !sub->modoEdicion();
+    
+    
+    menu->addSeparator();
+    QAction * ac = new QAction("Bloqueo Configuracion" , menu);
+    ac -> setCheckable(TRUE);
+            QString archivo = g_confpr->valor ( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
+            QFile file ( archivo );
+            if (file.permissions() & QFile::WriteOwner) {
+              ac->setChecked(FALSE);
+            } else {
+              ac->setChecked(TRUE);
+            } // end if
+    
+    
+    menu->addAction ( ac );
+    _depura ( "END MyPluginBloqConf::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPluginBloqConf::s_trataMenu ( QAction *action )
+{
+    _depura ( "MyPluginBloqConf::s_trataMenu", 0 );
+    if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
+            BlSubForm *sub = (BlSubForm *) sender();
+            int modo = !sub->modoEdicion();
+            QString archivo = g_confpr->valor ( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
+            QFile file ( archivo );
+            if (file.permissions() & QFile::WriteOwner) {
+              sub->guardaconfig();
+              QString cad = "chmod a-w " + archivo;
+              system ( cad.toAscii().constData() );
+            } else {
+              sub->guardaconfig();
+              QString cad = "chmod a+w " + archivo;
+              system ( cad.toAscii().constData() );
+            } // end if
+    } // end if
+    _depura ( "END MyPluginBloqConf::s_trataMenu", 0 );
+}
+
+
+
 int entryPoint ( BlMainWindow *bges )
 {
     _depura ( "Entrada del plugin Bloqconf", 0 );
@@ -141,4 +199,19 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
     return 0;
 }
 
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPluginBloqConf *subformods = new MyPluginBloqConf (  );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
 

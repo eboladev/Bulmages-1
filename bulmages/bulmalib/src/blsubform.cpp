@@ -2696,6 +2696,13 @@ void BlSubForm::pressedSlash ( int, int, BlDbSubFormRecord *, BlDbSubFormField *
     _depura ( "END BlSubForm::pressedSlash", 0 );
 }
 
+/// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+QString BlSubForm::fileConfig (  )
+{
+    _depura ( "BlSubForm::fileConfig", 0 );
+    _depura ( "END BlSubForm::fileConfig", 0 );
+    return m_fileconfig;
+}
 
 ///
 /**

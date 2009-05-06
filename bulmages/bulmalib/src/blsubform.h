@@ -175,12 +175,6 @@ public:
     int m_prevCol;
 
 protected:
-    /// Guarda la configuraci&oacute;n de presentaci&oacute;n del subformulario
-    /// en el directorio .bulmages situado dentro del directorio 'home' del usuario.
-    void guardaconfig();
-    /// Carga la configuraci&oacute;n que ten&iacute;a el formulario la &uacute;ltima
-    /// vez que fue utilizado por el usuario.
-    void cargaconfig();
     /// Carga la configuración de especificaciones.
     /// Los specs son archivos en /etc/bulmages que suplen o Incrementan los campos presentados en un subformulario.
     /// Son utiles para hacer ampliaciones sin programacion.
@@ -190,6 +184,12 @@ protected:
     virtual void pintaCabeceras();
 
 public:
+    /// Guarda la configuraci&oacute;n de presentaci&oacute;n del subformulario
+    /// en el directorio .bulmages situado dentro del directorio 'home' del usuario.
+    void guardaconfig();
+    /// Carga la configuraci&oacute;n que ten&iacute;a el formulario la &uacute;ltima
+    /// vez que fue utilizado por el usuario.
+    void cargaconfig();
     /// Devuelve la lista de registros de la base de datos que
     /// se presentan en el subformulario.
     QList<BlDbSubFormRecord *> *lista();
@@ -280,6 +280,7 @@ public:
     void setDbTableName ( QString nom );
     QString tableName();
     void setFileConfig ( QString nom );
+    QString fileConfig();
     void setDbFieldId ( QString nom );
     void clear();
     void setRowCount ( int i );
