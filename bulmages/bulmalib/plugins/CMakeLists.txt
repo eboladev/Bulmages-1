@@ -11,6 +11,7 @@ add_subdirectory(pluginbl_report2ods)
 add_subdirectory(pluginbl_formlock)
 add_subdirectory(pluginbl_subform2pdf)
 add_subdirectory(pluginbl_attachdocument)
+add_subdirectory(pluginbl_bloqconf)
 
 if(NOT WIN32)
 if(NOT APPLE)
