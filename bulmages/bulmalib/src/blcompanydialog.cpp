@@ -43,7 +43,7 @@
 
 /// Este es el archivo en el que se almacenan las mui_empresas que existen.
 /// Es un archivo separado por tabuladores, que se suele alojar en
-/// el 'home/.bulmages/' del usuario.
+/// el directorio '.bulmages/' del home del usuario (perfil del usuario en Windows).
 #define LISTEMPRESAS QString("listempresas.lst")
 /// N&uacute;mero de columna para el nombre en la lista.
 #define ABRE_NOMBRE  0
@@ -353,12 +353,13 @@ void BlCompanyDialog::cargaArchivo()
 void BlCompanyDialog::guardaArchivo()
 {
     _depura ( "BlCompanyDialog::guardaArchivo", 0 );
+
 #ifndef WINDOWS
-    QString dir1 = getenv ( "HOME" );
-    dir1 = dir1 + "/.bulmages/" + LISTEMPRESAS;
+    QString dirusuario = getenv ( "HOME" );
 #else
-    QString dir1 = "C:\\bulmages\\" + LISTEMPRESAS;
+    QString dirusuario = getenv ( "UserProfile" );
 #endif
+    QString dir1 = dirusuario + "/.bulmages/" + LISTEMPRESAS;
 
     QFile file ( dir1 );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )

@@ -54,8 +54,13 @@ void initConfiguration ( QString config )
 /// archivos que pueden tener informacion de configuracion. Como parametro
 /// reciben el nombre del programa y buscan en este orden su archivo de configuracion.
 ///
+/// En Linux:
 /// 1) /etc/bulmages/ -> Opciones genericas para todos los usuarios.
 /// 2) /home/~/.bulmages/  -> Opciones especificas para cada usuario.
+///
+/// En Windows:
+/// 1) %ProgramFiles%\bulmages\etc\ -> Opciones genericas para todos los usuarios.
+/// 2) %USERPROFILE%\.bulmages\  -> Opciones especificas para cada usuario.
 ///
 /// Las opciones se iran cargando desde las mas genericas a las mas especificas.
 /// Estas ultimas prevaleceran a las genericas cuando existan.
@@ -79,18 +84,21 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
 //    _depura("BlConfiguration::BlConfiguration", 0);
 
     /// Definimos los directorios donde buscar primero.
-#ifdef WIN32
-    m_dirGlobalConf = "C:/bulmages/";
-#else
     m_dirGlobalConf = CONFIG_DIR_CONFIG;
-#endif
+
     QString mensaje;
     QFile genericGlobalConfFile;
     QFile programGlobalConfFile;
     QFile genericLocalConfFile;
     QFile programLocalConfFile;
     QDir dirGlobalConf ( m_dirGlobalConf );
-    QString dirusuario = getenv ( "HOME" );
+
+    #ifndef WIN32
+    QString dirusuario = getenv ( "HOME" );    
+    #else
+    QString dirusuario = getenv ( "UserProfile" );  
+    #endif
+
     m_dirLocalConf = dirusuario + "/.bulmages/";
     m_genericGlobalConfFile = "bulmages.conf";
     m_programGlobalConfFile = nombreprograma + ".conf";

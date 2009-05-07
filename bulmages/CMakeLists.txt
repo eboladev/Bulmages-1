@@ -91,8 +91,13 @@ if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
 endif(NOT PGSQL_FOUND)
 
+if(WIN32)
+set( BULMAGES_CONFIG_DIR $ENV{ProgramFiles}/bulmages/etc CACHE PATH "The location of bulmages configuration dir")
+endif(WIN32)
 
+if(NOT WIN32)
 set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
+endif(NOT WIN32)
 
 # Remove directory to prevent that css files can grow with plugins css merge.
 FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
