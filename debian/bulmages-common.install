@@ -3,6 +3,7 @@ usr/share/bulmages/version
 usr/bin/bgtrml2pdf
 usr/share/bulmages/bgtrml2pdf/bgcolor.py
 usr/share/bulmages/bgtrml2pdf/bgutils.py
+usr/share/bulmages/bgtrml2pdf/svgimage.py
 usr/share/bulmages/openreports/albaran.rml
 usr/share/bulmages/openreports/albarancliente.rml
 usr/share/bulmages/openreports/articulos.rml

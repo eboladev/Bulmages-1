@@ -5,6 +5,9 @@
 # bgtrml2pdf is distributed under LGPL licence like trml2pdf
 # It has minor changes used by Bulmages project.
 
+# It includes changes reusing svgimage.py by Roberto Alsina, from rst2pdf
+# at http://rst2pdf.googlecode.com
+
 # trml2pdf - An RML to PDF converter
 # Copyright (C) 2003, Fabien Pinckaers, UCL, FSA
 # Contributors
@@ -40,6 +43,7 @@ from bgutils import strSafe, encoding
 import bgutils
 import bgcolor
 
+from svgimage import SVGImage
 
 #
 # Change this to UTF-8 if you plan tu use Reportlab's UTF-8 support
@@ -329,6 +333,25 @@ class _rml_canvas(object):
 				args['height'] = sy * args['width'] / sx
 		self.canvas.drawImage(img, **args)
 
+	def _svgimage(self, node):
+                args = {'width' : None , 'height' : None }
+ 		for tag in ('width','height','x','y'):
+ 			if node.hasAttribute(tag):
+ 				args[tag] = bgutils.unit_get(node.getAttribute(tag))
+
+                s = SVGImage(strSafe(node.getAttribute('filename')),args['width'],args['height'])
+                br=s.doc.BoundingRect()
+
+ 		
+
+                if (not 'x' in args):
+                       args['x']=br[0]
+                if (not 'y' in args):
+                       args['y']=br[1]
+                if (node.hasAttribute('hAlign')):
+                   s.hAlign=node.hAlign 
+                s.drawOn(self.canvas,args['x'],args['y'],args['width'])
+ 
 	def _path(self, node):
 		self.path = self.canvas.beginPath()
 		self.path.moveTo(**bgutils.attr_get(node, ['x','y']))
@@ -373,7 +396,8 @@ class _rml_canvas(object):
 			'path': self._path,
 			'rotate': lambda node: self.canvas.rotate(float(node.getAttribute('degrees'))),
 			'translate': self._translate,
-			'image': self._image
+			'image': self._image,
+                        'svgimage': self._svgimage
 		}
 		for nd in node.childNodes:
 			if nd.nodeType==nd.ELEMENT_NODE:
@@ -579,6 +603,15 @@ class _rml_flowable(object):
 				else:
 					args['height'] = sy * args['width'] / sx
 			return platypus.Image(name, mask=(250,255,250,255,250,255), **args)
+                elif node.localName=='svgimageFlowable':
+                        args = {}
+ 		        for tag in ('width','height'):
+ 			    if node.hasAttribute(tag):
+				    args[tag] = bgutils.unit_get(node.getAttribute(tag))
+			    else:
+				    args[tag] = None
+ 	
+                        return SVGImage(strSafe(node.getAttribute('filename')),args['width'],args['height'])
 		elif node.localName=='spacer':
 			if node.hasAttribute('width'):
 				width = bgutils.unit_get(node.getAttribute('width'))
