@@ -96,7 +96,8 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     #ifndef WIN32
     QString dirusuario = getenv ( "HOME" );    
     #else
-    QString dirusuario = getenv ( "UserProfile" );  
+    QString dirusuario = getenv ( "UserProfile" );
+    dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
     #endif
 
     m_dirLocalConf = dirusuario + "/.bulmages/";
