@@ -2,18 +2,18 @@
 
 import sys
 import os
+from config import *
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from modificarusuariobase import *
-# Libreria de acceso a bases de datos PostgreSQL
+from empresa import Empresa
 import psycopg2
 
-class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
+class ModificarUsuario(Ui_ModificarUsuario, Empresa):
 
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
+        Empresa.__init__(self,parent)
         self.setupUi(self)
-        self.process = QtCore.QProcess()
         self.inicio()
 
     def inicio(self): 
@@ -21,63 +21,27 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.tabWidget.setTabEnabled(2, False)
         self.tabWidget.setCurrentIndex(0)
         self.initListaDatabase()
-        self.initListaUsuarios()
+        #self.initListaUsuarios()
         self.desactivaCheckboxTable()
+        
         self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
         self.connect(self.checkBox_dball, SIGNAL("stateChanged(int)"), self.checkBox_dball_Change)
         self.connect(self.checkBox_dbrevoke, SIGNAL("stateChanged(int)"), self.checkBox_dbrevoke_Change)
         self.connect(self.listWidgetDatabase, SIGNAL("itemSelectionChanged()"), self.capturaDatabase)
         self.connect(self.listWidgetUser, SIGNAL("itemSelectionChanged()"), self.capturaUsuario)
         self.connect(self.listWidgetTable, SIGNAL("itemSelectionChanged()"), self.capturaTabla)
-        self.connect(self.process, SIGNAL("readyReadStandardError()"), self.readErrors)
-        
                     
     def initListaDatabase(self):
-        """Hacemos una conexion de prueba para comprobar que si esta creado el usuario ROOT en PostgreSQL
-        Ya que es necesario para poder administrar los permisos de las Bases de Datos.
-        Si no existe, saltara un QMessageBox preguntando si se quiere crear el usuario ROOT."""
-        try:
-            conn = psycopg2.connect("dbname='template1' user='root'")
-            conn.close()
-        except:
-            reply = QtGui.QMessageBox.question(self, 'Atencion!', "Desea agregar el usuario Root a PostgreSQL?\n\nEste usuario es necesario para poder administrar los permisos.", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-            if reply == QtGui.QMessageBox.Yes:
-                comandoroot = "su postgres -c \"createuser -s root\""
-                self.process.start(comandoroot)
-                self.process.waitForFinished(-1)
-            else:
-                print "Para poder modificar los permisos de las bases de datos es necesario agregar el usuario ROOT a PostgreSQL"
-                print "Cerrando la aplicacion"
-                sys.exit()
-                
-        try:
-            conn = psycopg2.connect("dbname='template1' user='root'")
-        except:
-            sys.exit()
-                
-        cur = conn.cursor()
-        
-        #Buscamos todas las bases de datos y las guardamos en un array.
-        try:
-            cur.execute("SELECT datname FROM pg_database ORDER BY datname")
-        except:
-            print "Fallo en la consulta para obtener las bases de datos de PostgreSQL."
-            sys.exit()
-            
-        dbs = cur.fetchall()
+
+        dbs = self.querytemplate1("SELECT datname FROM pg_database ORDER BY datname")
                 
         # Recorremos todas las bases de datos a partir del array
         for row in dbs:
         
             # Conectamos a cada base de datos excepto a template0 que no permite conexiones
             if str(row[0]) != 'template0':
-                try:
-                    conn2 = psycopg2.connect("dbname='" + str(row[0]) + "' user='root'")
-                except:
-                    print "Se produjo un error al intentar conectar con la base de datos " + str(row[0]) + " de PostgreSQL."
-                    sys.exit()
-                    
-                cur = conn2.cursor()
+                self.conectar( str(row[0]) )
+                cur = self.conn.cursor()
 
                 # Averiguamos el tipo de base de datos con la cual estamos tratando.
                 try:
@@ -94,34 +58,11 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                 if str(tipo) == "('BulmaCont',)":
                     texto = "BulmaCont  -  " + str(row[0])            
                     self.listWidgetDatabase.addItem(QString(texto))
-                    
-        conn.close()
-        
-    #def abrirPermisosDesdeFacturacion(self):
-        ## Pasamos el nombre de la base de datos seleccionada en ModificarFacturacion a la variable database y seleccionamos el Item correspondiente
-        #numero = self.listWidgetDatabase.count()
-        #temp = QtGui.QListWidgetItem()
-        #global dbase
-        #dbase = self.database
-        #print str(dbase)
-        
-        #for x in range (numero):
-            #temp = self.listWidgetDatabase.item(x)
-            
-            #if (temp.isSelected()):
-                #dbase = temp.text()
-                #break
-                        
-        #if dbase.contains("BulmaFact  -  "):
-            #dbase.remove("BulmaFact  -  ")
-            
-        #if dbase.contains("BulmaCont  -  "):
-            #dbase.remove("BulmaCont  -  ")
-            
-        #self.initListaUsuarios()
-        #self.desactivaCheckboxTable()
         
     def capturaDatabase(self):
+    
+        self.listWidgetUser.clear()
+    
         # Pasamos el nombre de la base de datos seleccionada en listWidgetDatabase a la variable database
         numero = self.listWidgetDatabase.count()
         temp = QtGui.QListWidgetItem()
@@ -139,28 +80,12 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             
         if dbase.contains("BulmaCont  -  "):
             dbase.remove("BulmaCont  -  ")
+            
+        self.initListaUsuarios()
 
     def initListaUsuarios(self):
-        try:
-            """Aqui puede verse que hace falta agregar al usuario root como
-            superusuario de bases de datos de postgres para que este script
-            funcione correctamente. Con el usuario postgres basta con poner:
-            createuser root"""
-            conn = psycopg2.connect("dbname='template1' user='root'")
-        except:
-            print "Fallo en la conexion con PostgreSQL."
-            sys.exit()
-
-        cur = conn.cursor()
-        
-        try:
-            cur.execute("SELECT * FROM pg_user")
-        except:
-            print "Fallo en la consulta para obtener los usuarios de PostgreSQL del sistema."
-            sys.exit()
-            
-        usuarios = cur.fetchall()
-        conn.close()
+       
+        usuarios = self.querytemplate1("SELECT * FROM pg_user")
         texto = ""
         
         # Rellenamos la lista con los usuarios de PostgreSQL
@@ -193,25 +118,14 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.initListaTablas()
         self.actualizarCheckboxDB()
         self.tabWidget.setTabEnabled(1, True)
-        self.tabWidget.setCurrentIndex(1)
+        for x in range (numero):
+            temp = self.listWidgetUser.item(x)
+            if (temp.isSelected()):
+                self.tabWidget.setCurrentIndex(1)
         
     def initListaTablas(self):
-        try:
-            conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
-        except:
-            print "Fallo en la conexion con PostgreSQL."
-            sys.exit()
-
-        cur = conn.cursor()
-        
-        #Buscamos todas las tablas de la base de datos seleccionada y las guardamos en un array.
-        try:
-            cur.execute("SELECT relname FROM pg_class WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
-        except:
-            print "Fallo en la consulta para obtener tablas de PostgreSQL."
-            sys.exit()              
-        tablas = cur.fetchall()
-        conn.close()
+        self.conectar(str(dbase))
+        tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
               
         # Rellenamos la lista con los usuarios de PostgreSQL
         for row in tablas:
@@ -232,7 +146,6 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
             item = self.listWidgetTable.item(x)
             self.listWidgetTable.setCurrentItem(item)
             self.listWidgetTable.item(x).setSelected(True)
-            
 
     def on_deseleccionarTablas_released(self):
     
@@ -243,36 +156,19 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
 
     def actualizarCheckboxDB(self):
         #Conectamos con la base de datos
-        try:
-            conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
-        except:
-            print "Fallo en la conexion con PostgreSQL."
-            sys.exit()
-            
-        cur = conn.cursor()
-            
-        #Sacamos los permisos del Usuario y la BBDD seleccionados, para despues actualizar los Checkbox's
-        try:
-            cur.execute("select has_database_privilege('" + str(username) + "', '" + str(dbase) + "', 'create');")
-        except:
-            print "Fallo en la consulta para obtener permisos (create) de PostgreSQL."
-        permiso = cur.fetchone()
+        self.conectar( str(dbase))
+        permiso = self.execute("select has_database_privilege('" + str(username) + "', '" + str(dbase) + "', 'create');")
         if str(permiso) == "(True,)":
             self.checkBox_create.setCheckState(Qt.Checked)
         else:
             self.checkBox_create.setCheckState(Qt.Unchecked)    
             
-        try:
-            cur.execute("select has_database_privilege('" + str(username) + "', '" + str(dbase) + "', 'temporary');")
-        except:
-            print "Fallo en la consulta para obtener permisos (temporary) de PostgreSQL."
-        permiso = cur.fetchone()
+        permiso = self.execute("select has_database_privilege('" + str(username) + "', '" + str(dbase) + "', 'temporary');")
         if str(permiso) == "(True,)":
             self.checkBox_temporary.setCheckState(Qt.Checked)
         else:
             self.checkBox_temporary.setCheckState(Qt.Unchecked) 
 
-        conn.close()
         
     def actualizarCheckboxTable(self):
 
@@ -280,76 +176,43 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         table = temp.text()
         
         #Conectamos con la base de datos
-        try:
-            conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
-        except:
-            print "Fallo en la conexion con PostgreSQL."
-            sys.exit()
-            
-        cur = conn.cursor()
+        self.conectar(str(dbase))
+        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
 
-        #Sacamos los permisos del Usuario y la BBDD seleccionados, para despues actualizar los Checkbox's
-        try:
-            cur.execute("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
-        except:
-            print "Fallo en la consulta para obtener permisos (select) de PostgreSQL."        
-        permiso = cur.fetchone()  
         if str(permiso) == "(True,)":
             self.checkBox_select.setCheckState(Qt.Checked)
         else:
             self.checkBox_select.setCheckState(Qt.Unchecked)    
             
-        try:
-            cur.execute("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'insert');")
-        except:
-            print "Fallo en la consulta para obtener permisos (insert) de PostgreSQL."
-        permiso = cur.fetchone()
+        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'insert');")
         if str(permiso) == "(True,)":
             self.checkBox_insert.setCheckState(Qt.Checked)
         else:
             self.checkBox_insert.setCheckState(Qt.Unchecked)
             
-        try:
-            cur.execute("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'update');")
-        except:
-            print "Fallo en la consulta para obtener permisos (update) de PostgreSQL."
-        permiso = cur.fetchone()
+        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'update');")
         if str(permiso) == "(True,)":
             self.checkBox_update.setCheckState(Qt.Checked)
         else:
             self.checkBox_update.setCheckState(Qt.Unchecked)
-            
-        try:
-            cur.execute("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'delete');")
-        except:
-            print "Fallo en la consulta para obtener permisos (delete) de PostgreSQL."
-        permiso = cur.fetchone()
+
+        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'delete');")
         if str(permiso) == "(True,)":
             self.checkBox_delete.setCheckState(Qt.Checked)
         else:
             self.checkBox_delete.setCheckState(Qt.Unchecked)        
-             
-        try:
-            cur.execute("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'references');")
-        except:
-            print "Fallo en la consulta para obtener permisos (references) de PostgreSQL."
-        permiso = cur.fetchone()
+
+        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'references');")
         if str(permiso) == "(True,)":
             self.checkBox_references.setCheckState(Qt.Checked)
         else:
             self.checkBox_references.setCheckState(Qt.Unchecked)              
 
-        try:
-            cur.execute("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'trigger');")
-        except:
-            print "Fallo en la consulta para obtener permisos (trigger) de PostgreSQL."
-        permiso = cur.fetchone()
+        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'trigger');")
         if str(permiso) == "(True,)":
             self.checkBox_trigger.setCheckState(Qt.Checked)
         else:
             self.checkBox_trigger.setCheckState(Qt.Unchecked)   
-
-        conn.close()
         
     def checkBox_change(self):
         if (self.checkBox_all.isChecked()):
@@ -401,7 +264,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         self.checkBox_all.setCheckState(Qt.Unchecked)
 
     def on_mui_guardar_released(self):
-        # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado cuando termine de procesar
+        # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado de los comandos
         self.tabWidget.setTabEnabled(2, True)
         self.tabWidget.setCurrentIndex(2)
         self.writeDB()
@@ -430,31 +293,31 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         #Empezamos a conceder permisos, primero a la base de datos seleccionada.
         if (self.checkBox_dball.isChecked()):
             command = 'psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"'
-            self.execQuery()
+            self.execComand()
             
         self.progress.setValue(actual)
 
         if (self.checkBox_dbrevoke.isChecked()):
             command = 'psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execQuery()
+            self.execComand()
             
         self.progress.setValue(actual)
 
         if (self.checkBox_create.isChecked()):
             command = 'psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"'
-            self.execQuery()
+            self.execComand()
         else:
             command = 'psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execQuery()
+            self.execComand()
 
         self.progress.setValue(actual)
             
         if (self.checkBox_temporary.isChecked()):
             command = 'psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"'
-            self.execQuery()
+            self.execComand()
         else:
             command = 'psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execQuery()
+            self.execComand()
             
         self.progress.setValue(actual)
             
@@ -472,60 +335,60 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
         
                 if (self.checkBox_select.isChecked()):
                     command = 'psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                 else:
                     command = 'psql ' + str(dbase) + ' -c "REVOKE select on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_insert.isChecked()):
                     command = 'psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                 else:
                     command = 'psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_update.isChecked()):
                     command = 'psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                 else:
                     command = 'psql ' + str(dbase) + ' -c "REVOKE update on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_delete.isChecked()):
                     command = 'psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                 else:
                     command = 'psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_references.isChecked()):
                     command = 'psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                 else:
                     command = 'psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_trigger.isChecked()):
                     command = 'psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                 else:
                     command = 'psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execQuery()
+                    self.execComand()
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
@@ -614,7 +477,7 @@ class ModificarUsuario(QtGui.QDialog, Ui_ModificarUsuario):
                 #print "Se produjo un error al intentar cambiar los permisos (temporary) de las bases de datos de PostgreSQL."
                 #sys.exit()
 
-    def execQuery(self):
+    def execComand(self):
         self.writecommand()
         self.process.start(command)
         self.process.waitForFinished(-1)
