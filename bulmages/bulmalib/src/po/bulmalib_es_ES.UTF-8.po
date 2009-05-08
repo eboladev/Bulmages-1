@@ -1,26 +1,25 @@
-#, fuzzy
+# , 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: bulmalib_es_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-02-26 01:04+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-05-08 23:36+0200\n"
+"Last-Translator: \n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_blsubformbase.h:621
-#, fuzzy
 msgid "!Opcion reservada a expertos!"
 msgstr "¡Opción reservada a expertos!"
 
 #: paisview.cpp:225
-#, fuzzy
 msgid "&Borrar"
-msgstr "&Cerrar"
+msgstr "&Borrar"
 
 #: ui_blcompanydialogbase.h:205 blform.cpp:372 paisview.cpp:119
 #: paisview.cpp:225
@@ -53,9 +52,8 @@ msgid "&Entra"
 msgstr "&Entra"
 
 #: paisview.cpp:119
-#, fuzzy
 msgid "&Guardar"
-msgstr "&Validar"
+msgstr "&Guardar"
 
 #: blform.cpp:372
 msgid "&No"
@@ -79,11 +77,11 @@ msgstr " <HR><B>Tratando el cliente"
 
 #: blimportexport.cpp:1914
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
-msgstr "<LI> El cliente no existe, se debe hacer una inserción de este</LI>\n"
+msgstr "<LI> El cliente no existe, se debe hacer una inserción de éste</LI>\n"
 
 #: blimportexport.cpp:1909
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
-msgstr "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI> El cliente ya existe, se pueden hacer modificaciones</LI>\n"
 
 #: blimportexport.cpp:623
 msgid "<LI>Apunte fuera de fecha</LI>\n"
@@ -91,15 +89,15 @@ msgstr "<LI>Apunte fuera de fecha</LI>\n"
 
 #: blimportexport.cpp:698
 msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
-msgstr "<LI>Exportando Nueva Forma de Pago</LI>\n"
+msgstr "<LI>Exportando nueva <B>Forma de pago</B></LI>\n"
 
 #: blimportexport.cpp:621
 msgid "<LI>Insercion de apunte"
-msgstr "<LI>Inserción de apunte"
+msgstr "<LI>Insertar apunte"
 
 #: blimportexport.cpp:593
 msgid "<LI>Insercion de asiento"
-msgstr "<LI>Inserción de asiento"
+msgstr "<LI>Insertar asiento"
 
 #: blimportexport.cpp:481
 msgid "<LI>Se ha insertado la cuenta "
@@ -111,15 +109,15 @@ msgstr "<LI>Terminado</LI>\n"
 
 #: blimportexport.cpp:484
 msgid "<LI>Ya hay una cuenta con el codigo "
-msgstr "(sp)<LI>Ya hay una cuenta con el código"
+msgstr " <LI>Ya hay una cuenta con dicho código"
 
 #: ui_blcompanydialogbase.h:193
 msgid "Actualizar Listado"
-msgstr "Actualizar Listado"
+msgstr "Actualizar listado"
 
 #: ui_blcompanydialogbase.h:198
 msgid "Actualizar Listado de Empresas"
-msgstr "Actualizar Listado de Empresas"
+msgstr "Actualizar <B>Listado de empresas</B>"
 
 #: blsubform.cpp:2435
 msgid "Ajustar altura"
@@ -148,7 +146,7 @@ msgstr "Anual"
 
 #: blcompanydialog.cpp:490
 msgid "Anyo"
-msgstr "Anyo"
+msgstr "Año"
 
 #: ui_blsubformbase.h:624
 msgid "Aplicar"
@@ -176,13 +174,12 @@ msgid "Bienal"
 msgstr "Bienal"
 
 #: blform.cpp:341 blformlist.cpp:378
-#, fuzzy
 msgid "Borrar"
-msgstr "&Cerrar"
+msgstr "Borrar"
 
 #: ui_blcountrybase.h:289 ui_blcountrybase.h:294 paisview.cpp:223
 msgid "Borrar pais"
-msgstr "Borrar pais"
+msgstr "Borrar país"
 
 #: blsubform.cpp:2431
 msgid "Borrar registro"
@@ -190,50 +187,47 @@ msgstr "Borrar registro"
 
 #: ui_busquedabase.h:99
 msgid "Busqueda"
-msgstr "Busqueda"
+msgstr "Búsqueda"
 
 #: ui_fichacfgbase.h:285
 msgid "Campo Indice"
-msgstr "Campo Indice"
+msgstr "Campo índice"
 
 #: ui_blcountrybase.h:274
-#, fuzzy
 msgid "Cancelar"
-msgstr "&Cancelar"
+msgstr "Cancelar"
 
 #: blsubform.cpp:1179
-#, fuzzy
 msgid "Cargando SubFormulario "
-msgstr "Configuración Subformularios"
+msgstr "Cargando subformularios"
 
 #: ui_fichacfgbase.h:292
-#, fuzzy
 msgid "Cerrar"
-msgstr "&Cerrar"
+msgstr "Cerrar"
 
 #: paisview.cpp:50
 msgid "Codigo 2 Digitos"
-msgstr "Codigo 2 Digitos"
+msgstr "Código de 2 dígitos"
 
 #: paisview.cpp:72
 msgid "Codigo 2 digitos"
-msgstr "Codigo 2 digitos"
+msgstr "Código de 2 dígitos"
 
 #: ui_blcountrybase.h:262
 msgid "Codigo 2 letras:"
-msgstr "Codigo 2 letras:"
+msgstr "Código de 2 letras:"
 
 #: paisview.cpp:51
 msgid "Codigo 3 Digitos"
-msgstr "Codigo 3 Digitos"
+msgstr "Código de 3 dígitos"
 
 #: paisview.cpp:73
 msgid "Codigo 3 digitos"
-msgstr "Codigo 3 digitos"
+msgstr "Código de 3 dígitos"
 
 #: ui_blcountrybase.h:261
 msgid "Codigo 3 letras:"
-msgstr "Codigo 3 letras:"
+msgstr "Código de 3 letras:"
 
 #: ui_blsubformbase.h:607
 msgid "Columnas visibles"
@@ -241,7 +235,7 @@ msgstr "Columnas visibles"
 
 #: ui_blsubformbase.h:601
 msgid "Configuracion Subformularios"
-msgstr "Configuración Subformularios"
+msgstr "Configuración subformularios"
 
 #: ui_bldblogindialogbase.h:154
 msgid "Contrasenya:"
@@ -273,27 +267,23 @@ msgstr "Databse Scripting"
 
 #: ui_blcountrybase.h:259
 msgid "Datos del pais:"
-msgstr "Datos del pais:"
+msgstr "Datos del país:"
 
 #: blimportexport.cpp:2027
-#, fuzzy
 msgid "Datos insuficientes para tratar el almacen."
-msgstr "<LI>Datos insuficientes para tratar el almacén."
+msgstr "Datos insuficientes para tratar el almacén."
 
 #: blimportexport.cpp:2176
-#, fuzzy
 msgid "Datos insuficientes para tratar el articulo."
-msgstr "<P>Datos insuficientes para tratar el artículo.</P>"
+msgstr "Datos insuficientes para tratar el artículo."
 
 #: blimportexport.cpp:2088
-#, fuzzy
 msgid "Datos insuficientes para tratar la familia."
-msgstr "<P>Datos insuficientes para tratar la familia.</P>"
+msgstr "Datos insuficientes para tratar la familia."
 
 #: blimportexport.cpp:1978
-#, fuzzy
 msgid "Datos insuficientes para tratar la forma de pago."
-msgstr "<LI>Datos insuficientes para tratar la forma de pago."
+msgstr "Datos insuficientes para tratar la forma de pago."
 
 #: paisview.cpp:219
 msgid "Debe seleccionar un elemento de la lista"
@@ -317,39 +307,31 @@ msgstr "Ejecutar consulta"
 
 #: blimportexport.cpp:2321 blimportexport.cpp:2550 blimportexport.cpp:2775
 #: blimportexport.cpp:3013
-#, fuzzy
 msgid "El almacen del presupuesto no existe"
-msgstr "El almacén del presupuesto no existe<BR>(new line)"
+msgstr "El almacén indicado en el presupuesto no existe"
 
 #: blimportexport.cpp:2402 blimportexport.cpp:2628 blimportexport.cpp:2866
 #: blimportexport.cpp:3095
-#, fuzzy
 msgid "El articulo de la linea de presupuesto no existe"
-msgstr "El artículo de la línea de presupuesto no existe<BR>(new line)"
+msgstr "El artículo indicado en la línea del presupuesto no existe"
 
 #: blimportexport.cpp:2331 blimportexport.cpp:2560 blimportexport.cpp:2784
 #: blimportexport.cpp:3023
-#, fuzzy
 msgid "El cliente del presupuesto no existe"
-msgstr "El cliente del presupuesto no existe<BR>\n"
+msgstr "El cliente indicado en el presupuesto no existe"
 
 #: blimportexport.cpp:2351 blimportexport.cpp:2578 blimportexport.cpp:2803
 #: blimportexport.cpp:3043
-#, fuzzy
 msgid "El empleado del presupuesto no existe"
-msgstr "El empleado del presupuesto no existe<BR>\n"
+msgstr "El empleado indicado en el presupuesto no existe"
 
 #: blimportexport.cpp:1949
-#, fuzzy
 msgid "El proveedor no existe, se debe hacer una insercion de este"
-msgstr ""
-"<LI> El proveedor no existe, se debe hacer una inserción de este</LI>(new "
-"line)"
+msgstr "El proveedor no existe, se debe hacer una inserción de éste"
 
 #: blimportexport.cpp:1944
-#, fuzzy
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
-msgstr "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "El proveedor ya existe, se pueden hacer modificaciones"
 
 #: ui_blcompanydialogbase.h:203
 msgid "Empresas disponibles:"
@@ -365,7 +347,7 @@ msgstr "Error al hacer la consulta con la base de datos."
 
 #: paisview.cpp:237
 msgid "Error al intentar borrar el pais"
-msgstr "Error al intentar borrar el pais"
+msgstr "Error al intentar borrar el país"
 
 #: blfunctions.cpp:573
 msgid "Error del programa"
@@ -377,7 +359,7 @@ msgid ""
 "Documento mal formado."
 msgstr ""
 "Error en el XML.\n"
-"Documento mal formado."
+"Documento mal formateado."
 
 #: bldblogindialog.cpp:109
 msgid "Error: usuario y/o contrasenya incorrectos"
@@ -396,18 +378,16 @@ msgid "Exportando :"
 msgstr "Exportando :"
 
 #: blimportexport.cpp:2105
-#, fuzzy
 msgid "Familia"
-msgstr "<P> Familia <B>"
+msgstr "Familia"
 
 #: ui_blsubformbase.h:609
 msgid "Filas por pagina:"
 msgstr "Filas por página:"
 
 #: ui_fichacfgbase.h:281 ui_blbankbase.h:89
-#, fuzzy
 msgid "Form"
-msgstr "Busqueda Fecha"
+msgstr "Form"
 
 #: ui_fichacfgbase.h:286
 msgid "Form Elements"
@@ -415,12 +395,11 @@ msgstr "Form Elements"
 
 #: ui_busquedafechabase.h:86 ui_busquedabase.h:98
 msgid "Form1"
-msgstr "Busqueda Fecha"
+msgstr "Búsqueda de fecha"
 
 #: blimportexport.cpp:1997
-#, fuzzy
 msgid "Forma de pago"
-msgstr "<LI> Forma de pago <B>"
+msgstr "Forma de pago"
 
 #: blform.cpp:370
 msgid "Guardar"
@@ -428,15 +407,15 @@ msgstr "Guardar"
 
 #: ui_blcountrybase.h:301 ui_blcountrybase.h:306 paisview.cpp:117 paisview.cpp:188
 msgid "Guardar pais"
-msgstr "Guardar pais"
+msgstr "Guardar país"
 
 #: paisview.cpp:48 paisview.cpp:60
 msgid "Id. Pais"
-msgstr "Id. Pais"
+msgstr "Id. país"
 
 #: paisview.cpp:59
 msgid "Id. Provincia"
-msgstr "Id. Provincia"
+msgstr "Id. provincia"
 
 #: blsubform.cpp:2172
 msgid "Imprimiendo "
@@ -459,24 +438,21 @@ msgid "Informacion del programa"
 msgstr "Información del programa"
 
 #: blimportexport.cpp:1997
-#, fuzzy
 msgid "Insertada"
-msgstr "</B> Insertada"
+msgstr "Insertada"
 
 #: blimportexport.cpp:2813
 msgid "La factura ya existe y no se va a insertar."
 msgstr "La factura ya existe y no se va a insertar."
 
 #: blimportexport.cpp:2151
-#, fuzzy
 msgid "La familia del articulo no existe"
-msgstr "La familia del artículo no existe<BR>(new line)"
+msgstr "La familia del artículo no existe"
 
 #: blimportexport.cpp:2341 blimportexport.cpp:2569 blimportexport.cpp:2793
 #: blimportexport.cpp:3033
-#, fuzzy
 msgid "La forma de pago del presupuesto no existe"
-msgstr "La forma de pago del presupuesto no existe<BR>\n"
+msgstr "La forma de pago indicada en el presupuesto no existe"
 
 #: ui_bldblogindialogbase.h:149
 msgid "Lanzador Bulmages"
@@ -495,17 +471,16 @@ msgid "Mensaje de error:"
 msgstr "Mensaje de error:"
 
 #: blperiodicitycombobox.cpp:72
-#, fuzzy
 msgid "Mensual"
-msgstr "Mensaje"
+msgstr "Mensual"
 
 #: ui_busquedabase.h:102
 msgid "Mostrar listado de profesors"
-msgstr "Mostrar listado de profesors"
+msgstr "Mostrar listado de profesores"
 
 #: ui_blcountrybase.h:265 ui_blcountrybase.h:270
 msgid "Mostrar/ocultar detalle"
-msgstr "Mostrar/ocultar detalle"
+msgstr "Mostrar/ocultar el detalle"
 
 #: blimportexport.cpp:2083
 msgid "No se ha encontrado el padre de esta familia."
@@ -524,32 +499,28 @@ msgid "Nombre"
 msgstr "Nombre"
 
 #: paisview.cpp:49
-#, fuzzy
 msgid "Nombre Pais"
-msgstr "Nombre de usuario:"
+msgstr "Nombre país"
 
 #: blsubform.cpp:197
-#, fuzzy
 msgid "Nombre de campo"
-msgstr "Nombre de usuario:"
+msgstr "Nombre del campo"
 
 #: ui_fichacfgbase.h:282 ui_fichacfgbase.h:284
-#, fuzzy
 msgid "Nombre de la Tabla"
-msgstr "Nombre de usuario:"
+msgstr "Nombre de la tabla"
 
 #: ui_bldblogindialogbase.h:153
 msgid "Nombre de usuario:"
 msgstr "Nombre de usuario:"
 
 #: ui_blcountrybase.h:260
-#, fuzzy
 msgid "Nombre del pais:"
-msgstr "Nombre de usuario:"
+msgstr "Nombre del país:"
 
 #: ui_blcountrybase.h:277 ui_blcountrybase.h:282
 msgid "Nuevo pais"
-msgstr "Nuevo pais"
+msgstr "Nuevo país"
 
 #: blfunctions.cpp:527
 msgid "Omitir &clase"
@@ -577,11 +548,11 @@ msgstr "Paginación"
 
 #: paisview.cpp:67 paisview.cpp:71
 msgid "Pais"
-msgstr "Pais"
+msgstr "País"
 
 #: ui_blcountrybase.h:258
 msgid "Paises"
-msgstr "Paises"
+msgstr "Países"
 
 #: blcompanydialog.cpp:281
 msgid "Para entrar, antes tiene que seleccionar una empresa."
@@ -621,8 +592,8 @@ msgid ""
 "Se va a borrar el pais seleccionado.\n"
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
-"Se va a borrar el pais seleccionado.\n"
-"Esta operacion puede ocasionar perdida de datos."
+"Se va a borrar el país seleccionado.\n"
+"Esta operación puede ocasionar la pérdida de datos."
 
 #: bldatesearch.cpp:182
 msgid "Seleccione fecha"
@@ -630,7 +601,7 @@ msgstr "Seleccione fecha"
 
 #: paisview.cpp:160
 msgid "Seleccione un pais para guardar"
-msgstr "Seleccione un pais para guardar"
+msgstr "Debe seleccionar un país para poder guardar"
 
 #: ui_blcompanydialogbase.h:184 ui_blcompanydialogbase.h:187
 msgid "Seleccione una empresa"
@@ -649,9 +620,8 @@ msgid "TextLabel"
 msgstr "TextLabel"
 
 #: blformlist.cpp:326
-#, fuzzy
 msgid "Tiene que seleccionar un elemento"
-msgstr "Para entrar, antes tiene que seleccionar una empresa."
+msgstr "Debe seleccionar un elemento"
 
 #: blcompanydialog.cpp:490
 msgid "Tipo"
@@ -672,87 +642,71 @@ msgstr "Trabajando"
 #: blimportexport.cpp:2477
 #, fuzzy
 msgid "Tratando DAlbaran"
-msgstr " <HR><B>Tratando DAlbaran"
+msgstr "Tratando albarán"
 
 #: blimportexport.cpp:2703
-#, fuzzy
 msgid "Tratando DFactura"
-msgstr " <HR><B>Tratando DFactura"
+msgstr "Tratando factura"
 
 #: blimportexport.cpp:2250
-#, fuzzy
 msgid "Tratando DPedidoCliente"
-msgstr " <HR><B>Tratando DPedidoCliente"
+msgstr "Tratando pedido del cliente"
 
 #: blimportexport.cpp:2941
-#, fuzzy
 msgid "Tratando DPresupuesto"
-msgstr " <HR><B>Tratando DPresupuesto"
+msgstr "Tratando presupuesto"
 
 #: blimportexport.cpp:2449
-#, fuzzy
 msgid "Tratando LAlbaran"
-msgstr " <HR><B>Tratando LAlbaran"
+msgstr "Tratando albarán"
 
 #: blimportexport.cpp:2675
-#, fuzzy
 msgid "Tratando LFactura"
-msgstr " <HR><B>Tratando LFactura"
+msgstr "Tratando factura"
 
 #: blimportexport.cpp:2222
-#, fuzzy
 msgid "Tratando LPedidoCliente"
-msgstr " <HR><B>Tratando LPedidoCliente"
+msgstr "Tratando pedido del cliente"
 
 #: blimportexport.cpp:2913
-#, fuzzy
 msgid "Tratando LPresupuesto"
-msgstr " <HR><B>Tratando LPresupuesto"
+msgstr "Tratando presupuesto"
 
 #: blimportexport.cpp:2498
-#, fuzzy
 msgid "Tratando albaran"
-msgstr " <HR><B>Tratando Albaran"
+msgstr "Tratando albarán"
 
 #: blimportexport.cpp:2013
-#, fuzzy
 msgid "Tratando almacen"
-msgstr " <HR><B>Tratando almacén"
+msgstr "Tratando almacén"
 
 #: blimportexport.cpp:2124
-#, fuzzy
 msgid "Tratando articulo"
-msgstr " <HR><B>Tratando Artículo"
+msgstr "Tratando artículo"
 
 #: blimportexport.cpp:1936
-#, fuzzy
 msgid "Tratando el proveedor"
-msgstr " <HR><B>Tratando el proveedor"
+msgstr "Tratando el proveedor"
 
 #: blimportexport.cpp:2724
-#, fuzzy
 msgid "Tratando factura"
-msgstr " <HR><B>Tratando Factura"
+msgstr "Tratando factura"
 
 #: blimportexport.cpp:2063
-#, fuzzy
 msgid "Tratando familia"
-msgstr "(sp)<HR><B>Tratando familia"
+msgstr "Tratando familia"
 
 #: blimportexport.cpp:1970
-#, fuzzy
 msgid "Tratando la forma de pago"
-msgstr " <HR><B>Tratando la froma de pago"
+msgstr "Tratando la froma de pago"
 
 #: blimportexport.cpp:2271
-#, fuzzy
 msgid "Tratando pedido cliente"
-msgstr " <HR><B>Tratando Pedido Cliente"
+msgstr "Tratando el pedido del cliente"
 
 #: blimportexport.cpp:2962
-#, fuzzy
 msgid "Tratando presupuesto"
-msgstr " <HR><B>Tratando Presupuesto"
+msgstr "Tratando presupuesto"
 
 #: blperiodicitycombobox.cpp:73
 msgid "Trimestral"
@@ -760,54 +714,47 @@ msgstr "Trimestral"
 
 #: ui_fichacfgbase.h:289
 msgid "User Preferences"
-msgstr "User Preferences"
+msgstr "Preferencias de usuario"
 
 #: ui_fichacfgbase.h:287
 msgid "Usuario Actual"
-msgstr "Usuario Actual"
+msgstr "Usuario actual"
 
 #: blsubform.cpp:2441
-#, fuzzy
 msgid "Ver/Ocultar configurador de subformulario"
-msgstr "Configuración Subformularios"
+msgstr "Ver/Ocultar configurador de subformulario"
 
 #: blsubform.cpp:197
 msgid "Visible"
 msgstr "Visible"
 
 #: blimportexport.cpp:2096
-#, fuzzy
 msgid "Ya existe esta familia."
-msgstr "<LI> Ya existe este almacén."
+msgstr "Ya existe esta familia."
 
 #: blimportexport.cpp:1987
-#, fuzzy
 msgid "Ya existe esta forma de pago."
-msgstr "<LI> Ya existe esta forma de pago."
+msgstr "Ya existe esta forma de pago."
 
 #: blimportexport.cpp:2035
-#, fuzzy
 msgid "Ya existe este almacen."
-msgstr "<LI> Ya existe este almacén."
+msgstr "Ya existe este almacén."
 
 #: blimportexport.cpp:2185
-#, fuzzy
 msgid "Ya existe este articulo."
-msgstr "<P> Ya existe este artículo.</P>"
+msgstr "Ya existe este artículo."
 
 #: paisview.cpp:70
 msgid "idpais"
 msgstr "idpais"
 
 #: blimportexport.cpp:2105
-#, fuzzy
 msgid "insertada"
-msgstr "</B> Insertada"
+msgstr "insertada"
 
 #: blimportexport.cpp:2044 blimportexport.cpp:2207
-#, fuzzy
 msgid "insertado"
-msgstr "</B> Insertado"
+msgstr "insertado"
 
 #~ msgid "</B> Insertado</P>"
 #~ msgstr "</B> Insertado</P>"
