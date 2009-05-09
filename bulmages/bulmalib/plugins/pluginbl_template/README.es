@@ -15,8 +15,8 @@ marcas en el RML.</P>
 <P style="align:justify;">Una vez instalado al pulsar con el boton derecho en cualquier parte vacia de una ficha
 aparecera la opcion informes personales que desplegara todos los informes disponibles para
 dicha ficha</P>
-<P style="align:justify;">Se pueden crear informes personalizados generando plantillas RML que tengan el nombre
-impers_tabla.rml en el directorio de plantillas donde (tabla) es la tabla sobre la que actua el informe (Ver opciones avanzadas de ficha
+<P style="align:justify;">Se pueden crear informes personalizados generando plantillas RML que contengan la subcadena
+impers_tabla en el nombre del fichero .rml, en el directorio de plantillas, donde (tabla) es la tabla sobre la que actua el informe (Ver opciones avanzadas de ficha
 si se desconoce el nombre de la tabla</P>
 <HR>
 
