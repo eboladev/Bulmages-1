@@ -207,6 +207,7 @@ public:
     int runQuery ( QString );
     /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
     static QString sanearCadena ( QString cadena );
+    QString sanearCadenaUtf8 ( QString cadena );
     void terminar();
     QString propiedadempresa ( QString );
     /// Returns the parent of a determinated account code.

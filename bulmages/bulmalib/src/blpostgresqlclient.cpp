@@ -722,7 +722,7 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
             newParamValues[numParams] =  QString::number ( limit );
             query += " LIMIT $" + QString::number ( ++numParams ) + "::int4";
         };
-        if ( offset != 0 && !query.contains ( "OFFSET", Qt::CaseInsensitive ) ) {
+        if ( offset != 0 ) {
             newParamValues[numParams] =  QString::number ( offset );
             query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
         };
@@ -844,6 +844,32 @@ QString BlPostgreSqlClient::sanearCadena ( QString cadena )
     cadenaLimpia = QString::fromAscii ( buffer );
     free ( buffer );
     _depura ( "END BlPostgreSqlClient::sanearCadena", 0 );
+    return cadenaLimpia;
+}
+
+/// Esta funci&oacute;n est&eacute;tica devuelve una cadena "saneada" para pasarsela
+/// a Postgresql. Neutraliza (escapes) los car&aacute;cteres problem&aacute;tics por
+/// ser car&aacute;cteres especiales de Postgresql. Ejemplo, comillas, barras ivertidas, ...
+/// Però respeta los caràcters no ascii o no en ISO-8859-1.
+/**
+\param cadena
+\return
+**/
+QString BlPostgreSqlClient::sanearCadenaUtf8 ( QString cadena )
+{
+    _depura ( "postgresiface2::sanearCadenaUtf8", 0 );
+    int longitud = 0;
+    char *buffer = NULL;
+    QString cadenaLimpia = "";
+    QByteArray ba = cadena.toUtf8();
+    longitud = ba.size();
+    /// Reservamos (la funci&oacute;n de postgres lo necesita) un buffer del
+    /// doble de car&aacute;cteres + 1 que la cadena original.
+    buffer = ( char * ) malloc ( ( sizeof ( char ) * longitud * 2 ) + 1 );
+    PQescapeStringConn ( conn, buffer, ba.constData(), longitud , 0 );
+    cadenaLimpia = QString::fromUtf8 ( buffer );
+    free ( buffer );
+    _depura ( "END postgresiface2::sanearCadenaUtf8", 0 );
     return cadenaLimpia;
 }
 
