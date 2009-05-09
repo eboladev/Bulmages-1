@@ -902,6 +902,39 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
                     addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
                     setDbValue ( nombre, valor );
                 } // end while
+		QVariant exportaRML = iface->property("exportaRML");
+		if (exportaRML.isValid() ) {
+			QStringList props = exportaRML.toStringList();
+		
+			QListIterator<QString> iProps(props);
+			while (iProps.hasNext()) {
+				QString camp = iProps.next();
+				QStringList cami = camp.split(".");
+				QObject *actual=iface;
+				QListIterator<QString> iCami(cami);
+				while(iCami.hasNext() && actual) {
+				QString nom = iCami.next();
+				QObject *fill = actual->findChild<QObject *>("mui_"+nom);
+				if (!fill) {
+					fill = actual->findChild<QObject *>(nom);
+				}
+				if (fill) {
+				actual = fill;
+				} else {
+				QVariant valor =  actual->property(nom.toUtf8().data());
+				m_variables[camp] =valor.toString();
+				if (valor.canConvert<QObject*>()) {
+					actual = valor.value<QObject*>();
+					} else {
+					actual = NULL;
+					}
+				
+				}
+				} // while components nom prop
+				
+			} // while props
+		}
+
             } // end if
             delete diag;
             // Si se ha pulsado cancelar entonce se sale del informe.
