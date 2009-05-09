@@ -18,25 +18,39 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         self.mui_listado.resizeColumnsToContents()
 
     def buscarEmpresas(self):
-        self.databases = self.querytemplate1("SELECT datname FROM pg_database ORDER BY datname")
+    
+        # Ponemos la pestanya de consola como la visible
+        self.tabWidget.setCurrentIndex(1)
+        
+        self.conectar('template1')
+        self.databases = self.execute("SELECT datname FROM pg_database ORDER BY datname")
+        #Desconectamos la base de datos
+        self.desconectar()
+        
         self.i = 0
         for row in self.databases:
             self.i = self.i + 1
         self.mui_listado.setRowCount(self.i -4)
         self.i = 0
+        
         for row in self.databases:
             if (str(row[0]) != 'template0') and (str(row[0]) != 'template1') and (str(row[0]) != 'mustopalma') and (str(row[0]) != 'talvarez'):
                 self.conectar(str(row[0]))
                 nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
                 tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
                 databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
-                self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre)))
+                self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
                 self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
-                self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo)))
-                self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision)))
+                self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
+                self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
                 self.i = self.i + 1
                 if (tipo == ''):
                     self.mui_listado.hideRow(self.i)
+                self.desconectar()
+                    
+        # Ponemos la pestanya principal como la visible
+        self.tabWidget.setCurrentIndex(0)
+
 
   #def buscarEmpresas(self):
     #self.command = 'su - postgres -c \"echo \'SELECT datname FROM pg_database\' | psql -t template1\"'
@@ -69,12 +83,11 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
     #self.progress.hide()
 
     def on_mui_listado_cellDoubleClicked(self, row, col):
-        self.mui_textBrowser.append(QString("<font color =\"#0000FF\">DOBLECLICK ")+QString.number(row)+QString("</font>"))
-        if (self.mui_listado.item(row,2).text() == QString('(\'BulmaFact\',)')):
-            self.fact = ModificarFacturacion(self.mui_listado.item(row,1).text())
+        if (self.mui_listado.item(row,2).text() == QString('BulmaFact')):
+            self.fact = ModificarFacturacion(str(self.mui_listado.item(row,1).text()))
             self.fact.exec_()
-        if (self.mui_listado.item(row,2).text() == QString('(\'BulmaCont\',)')):
-            self.cont = ModificarContabilidad(self.mui_listado.item(row,1).text())
+        if (self.mui_listado.item(row,2).text() == QString('BulmaCont')):
+            self.cont = ModificarContabilidad(str(self.mui_listado.item(row,1).text()))
             self.cont.exec_()
 
 def main(args):

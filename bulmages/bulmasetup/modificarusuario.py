@@ -33,7 +33,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                     
     def initListaDatabase(self):
 
-        dbs = self.querytemplate1("SELECT datname FROM pg_database ORDER BY datname")
+        self.conectar('template1')
+        dbs = self.execute("SELECT datname FROM pg_database ORDER BY datname")
                 
         # Recorremos todas las bases de datos a partir del array
         for row in dbs:
@@ -84,8 +85,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         self.initListaUsuarios()
 
     def initListaUsuarios(self):
-       
-        usuarios = self.querytemplate1("SELECT * FROM pg_user")
+        self.conectar('template1')
+        usuarios = self.execute("SELECT * FROM pg_user")
         texto = ""
         
         # Rellenamos la lista con los usuarios de PostgreSQL

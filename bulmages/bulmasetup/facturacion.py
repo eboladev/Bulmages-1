@@ -20,6 +20,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.mui_plugins.hideColumn(1)
       self.mui_plugins1.hideColumn(1)
 
+      # Ponemos la pestanya de consola como la visible
+      self.tabWidget.setCurrentIndex(2)
+
       # Buscamos los Plugins
       self.buscaPlugins()
       # Ajustamos la presentacion
@@ -51,7 +54,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
          if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
             self.mui_categoria.addItem( self.arra[self.j])
          self.j = self.j + 1
- 
+         
+      #Ponemos la pestanya de seleccion de plugins como la visible.
+      self.tabWidget.setCurrentIndex(0)
+
       
    def writeConfig(self):
       self.writecommand('ESCRIBIENDO CONFIGURACION')
@@ -331,6 +337,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
    def buscaPlugins(self):
       self.writecommand("Buscando Pluggins")
+
+      #Conectamos con la base de datos
+      if (self.database <> None):
+        self.conectar(self.database)
       
       #Creamos la bara de progreso
       self.progress = QtGui.QProgressBar()
@@ -373,12 +383,22 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.semaforo = 1
       self.progress.hide()
       
+      #Desconectamos la base de datos
+      if (self.database <> None):
+        self.desconectar()
       
    def buscaPluginInstalado(self, plugin, libreria):
-      self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
-      if (len(self.version) > 2):
-        return self.version
+   
+      # Si la base de datos no existe no hace falta comprobar nada.
+      if (self.database == None):
+        return ''
+        
+      self.version = self.executeone('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'')
+
+      if (self.version <> None):
+        return self.version[0]
       
+      self.version = ''
       if (libreria == ''):
         return ''
       

@@ -38,12 +38,13 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
                 sys.exit()
                 
         try:
-            self.conntemplate1 = psycopg2.connect("dbname='template1' user='root'")
+            conn = psycopg2.connect("dbname='template1' user='root'")
         except:
             print "Error"
             sys.exit()
             
-        self.curtemplate1 = self.conntemplate1.cursor()
+        conn.close()
+        
         
         #self.connect(self.process, SIGNAL("readyReadStandardOutput()"), self.readOutput)
         self.connect(self.process, SIGNAL("readyReadStandardError()"), self.readErrors)
@@ -58,13 +59,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             sys.exit()
         self.cur = self.conn.cursor()
 
-    def querytemplate1(self, query):
-        try:
-            self.curtemplate1.execute(query)
-        except:
-            print "Fallo en la consulta: " + query
-            sys.exit()
-        return self.curtemplate1.fetchall()
+    def desconectar(self):
+      self.conn.close()
 
     def execute(self, query):
         try:

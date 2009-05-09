@@ -27,10 +27,13 @@ class ModificarFacturacion( Facturacion):
             self.mui_soporteTPV.setCheckState(Qt.Checked)
         else:
             self.mui_soporteTPV.setCheckState(Qt.Unchecked)
-
+        
 
   
     def on_mui_hacerbackup_released(self):
+        # Ponemos la pestanya de consola como la visible
+        self.tabWidget.setCurrentIndex(2)
+        
         self.writecommand("Backup")
         self.savefile = QFileDialog.getSaveFileName(self,  QString("Guardar  Elija archivo destino"), QString("/home"), QString("SQL (*.sql *.pgdump)") )
         self.command = 'su postgres -c \"pg_dump -f ' + self.savefile + ' ' + self.database  + '\"'
@@ -41,6 +44,9 @@ class ModificarFacturacion( Facturacion):
 
 
     def on_mui_aceptar_released(self):
+        # Ponemos la pestanya de consola como la visible
+        self.tabWidget.setCurrentIndex(2)
+    
         if (self.mui_actualizarDB.checkState() == Qt.Checked ):
             self.actualizarDatabase()
         self.mui_textBrowser.clear()
@@ -53,7 +59,7 @@ class ModificarFacturacion( Facturacion):
 
 def main(args):
     app=QtGui.QApplication(args)
-    win=ModificarFacturacion('bulmafact')
+    win=ModificarFacturacion('superpruebas')
     win.exec_()
     sys.exit(app.exec_())
 

@@ -11,7 +11,7 @@ import plugins
 
 class NuevaFacturacion(Facturacion):
   def __init__(self, parent = None):
-    Facturacion.__init__(self,'', parent)
+    Facturacion.__init__(self,None, parent)
      
     self.mui_soporteTPV.setCheckState(Qt.Unchecked)
     # Oculto los campos que solo pertenecen a modificacion
@@ -22,6 +22,10 @@ class NuevaFacturacion(Facturacion):
     self.mui_nomdb.setReadOnly(False)
 
   def on_mui_aceptar_released(self):
+  
+    # Ponemos la pestanya de consola como la visible
+    self.tabWidget.setCurrentIndex(2)
+
     self.mui_textBrowser.clear()
     
     self.database = self.mui_nomdb.text()
