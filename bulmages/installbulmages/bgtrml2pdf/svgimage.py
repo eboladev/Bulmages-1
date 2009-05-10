@@ -31,7 +31,15 @@ from reportlab.platypus import *
 
 HAS_UNICONVERTOR=False
 
+class DummyOut:
+   def write( m):
+      pass
+ 
+sortida=sys.stdout
+xungo=sys.exit
 try:
+    sys.stdout=DummyOut()
+    sys.exit=lambda x:1 
     import uniconvertor
     sys.path.insert(1, os.path.dirname( uniconvertor.__file__))
     from app.io import load
@@ -41,16 +49,14 @@ try:
     app.init_lib()
     plugins.load_plugin_configuration()
     HAS_UNICONVERTOR=True
-except ImportError:
-    pass
 
 ## workaround for a bug that stops bgtrml2pdf from working with svg
 ## files winth font properties in style attributes, even if they apply
 ## to no text because all text is empty or transformed to paths
 ## see http://svn.berlios.de/viewcvs/bulmages/branches/docsMonolitic/bulmages/installbulmages/openreports/ca/
 
-class FakeFont(app.Graphics.font.Font):
-    def __init__(self, name):
+    class FakeFont(app.Graphics.font.Font):
+      def __init__(self, name):
         self.name = name
         self.family = name
         self.font_attrs = 'Regular Italic'
@@ -60,19 +66,23 @@ class FakeFont(app.Graphics.font.Font):
         self.ref_count = 0
         app.Graphics.font.font_cache[self.name] = self
 
+    def ensure_there_is_at_least_a_fake_fallback_font():
+       fallback = 'Slim';
+       if (not (app.config is  None)) and (hasattr(app.config,'preferences'))  and (hasattr(app.config.preferences,'fallback_font')):
+               fallback = app.config.preferences.fallback_font
+       if not app.Graphics.font.font_cache.has_key(fallback):
+              return FakeFont(fallback)
+       return app.Graphics.font.font_cache[fallback]
+    
+    
+    fallbackFont = ensure_there_is_at_least_a_fake_fallback_font()
 
 
+except :
+    pass
 
-def ensure_there_is_at_least_a_fake_fallback_font():
-   fallback = 'Slim';
-   if (not (app.config is  None)) and (hasattr(app.config,'preferences'))  and (hasattr(app.config.preferences,'fallback_font')):
-           fallback = app.config.preferences.fallback_font
-   if not app.Graphics.font.font_cache.has_key(fallback):
-          return FakeFont(fallback)
-   return app.Graphics.font.font_cache[fallback]
-
-
-fallbackFont = ensure_there_is_at_least_a_fake_fallback_font()
+sys.exit=xungo
+sys.stdout=sortida
 
 ## end of font workaround
 
@@ -89,7 +99,7 @@ class SVGImage(Flowable):
             if not self.width: self.width=self._w
             if not self.height: self.height=self._h
         else:
-            raise ImportError("SVG image support not enabled, install uniconvertor")
+            raise ImportError("SVG image support not enabled, install uniconvertor >= 1.1.3")
    
     def wrap(self,aW,aH):
         if HAS_UNICONVERTOR:
