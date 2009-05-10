@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(29.7cm,21cm)" 
+          leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" 
+          title="Albarans per famílies d'articles" author="Xavi Drudis Ferran" allowSplitting="20">
+
+	<pageTemplate id="main">
+		<pageGraphics>
+		<!-- EL LOGO DE CABECERA -->
+		<image x="3cm" y="26cm" width="8cm" file="logo.jpg"/>
+
+                <!--IFACE SRC="[CONF_DIR_OPENREPORTS]/inf_VendesFamilia.ui"-->
+		<!-- EL PIE DE PAGINA -->
+                <setFont name="Helvetica" size="8"/>
+	        
+                <drawCentredString x="14.85cm" y="20cm">Pàg. <pageNumber/></drawCentredString> 
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<setFont name="Helvetica" size="16"/>
+
+		<drawString x="1.5cm" y="19cm">Albarans per família d'articles</drawString>
+
+		<setFont name="Helvetica" size="8"/>
+
+<!--QUERY="SELECT * from cliente WHERE    
+('[idcliente]'::varchar <> ('[id'::varchar||'cliente]'::varchar))
+             AND (idcliente::varchar = '[idcliente]'::varchar )
+"-->
+		<setFont name="Helvetica" size="12"/>
+		<drawString x="10cm" y="19.5cm">[nomcliente] ([cifcliente]) [mailcliente] - Tel. [telcliente] [teltrabcliente] [movilcliente] Fax: [faxcliente] </drawString>
+	        <drawString x="10cm" y="19cm">[dircliente]. [cpcliente] [poblcliente]</drawString>
+<!--END QUERY-->
+
+                </pageGraphics>
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="2cm" width="27.7cm" height="17cm"/>
+	</pageTemplate>	
+</template>
+<stylesheet>
+
+	<blockTableStyle id="tablatotales">	
+		<blockAlignment value="LEFT" start="0,0" stop="1,-1"/>
+		<blockAlignment value="RIGHT" start="1,0" stop="-1,-1"/>
+		<blockValign value="BOTTOM" start="0,0" stop="-1,0"/>
+		<blockValign value="MIDDLE" start="0,1" stop="-1,-1"/>
+	        <blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,-1"/>
+		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="12" start="0,1" stop="-2,-1"/>
+		<blockFont name="Helvetica-Bold" size="12" start="-1,1" stop="-1,-1"/>
+		<lineStyle kind="INNERGRID" colorName="(1,1,1)"  start="0,0" stop="-1,-1"/>
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>	
+                <lineStyle kind="LINEBELOW" colorName="black" thicknss="2px" start="0,1" stop="-1,1"/>
+                <blockLeftPadding length="0.1cm" start="0,0" stop="-1,0"/>
+                <blockRightPadding length="0.1cm" start="0,0" stop="-1,0"/>
+                <blockBottomPadding length="0.1cm" start="0,0" stop="-1,0"/>
+                <blockTopPadding length="0.1cm" start="0,0" stop="-1,0"/>
+                <blockLeftPadding length="0cm" start="0,1" stop="-1,-1"/>
+                <blockRightPadding length="0cm" start="0,1" stop="-1,-1"/>
+                <blockBottomPadding length="0.05cm" start="0,1" stop="-1,-1"/>
+                <blockTopPadding length="0.05cm" start="0,1" stop="-1,-1"/>
+	</blockTableStyle>	
+
+        <paraStyle name="import" fontName="Helvetica-Bold" fontSize="10" alignment="RIGHT"/>
+
+        <paraStyle name="petit" fontName="Helvetica" fontSize="6" leading="8" alignment="CENTER"/>
+        <paraStyle name="petitgris" textColor="(0.4,0.4,0.4)" fontName="Helvetica" fontSize="6" leading="8" alignment="CENTER"/>
+        <paraStyle name="desc" fontName="Helvetica" fontSize="8" leading="8" alignment="JUSTIFY"/>
+
+        <paraStyle name="num" fontName="Helvetica-Oblique" fontSize="8" leading="9" alignment="CENTER"/>
+
+
+<!-- QUERY="
+SELECT *,mida+2 as leading FROM 
+(
+SELECT 0 as profunditat, 'Helvetica-Bold' as font, 14 as mida, '1,0.396078431372549,0.396078431372549'::varchar as color
+UNION
+SELECT 1 as profunditat, 'Helvetica' as font, 14 as mida, '1,0.396078431372549,0.956862745098039'::varchar as color
+UNION
+SELECT 2 as profunditat, 'Helvetica' as font, 13 as mida, '0.67843137254902,0.396078431372549,1'::varchar as color
+UNION
+SELECT 3 as profunditat, 'Helvetica' as font, 12 as mida, '0.396078431372549,0.419607843137255,1'::varchar as color
+UNION
+SELECT 4 as profunditat, 'Helvetica' as font, 11 as mida, '0.396078431372549,0.768627450980392,1'::varchar as color
+UNION
+SELECT 5 as profunditat, 'Helvetica' as font, 10 as mida, '0.396078431372549,1,0.8'::varchar as color
+UNION
+SELECT 6 as profunditat, 'Helvetica' as font, 10 as mida, '0.419607843137255,1,0.388235294117647'::varchar as color
+UNION
+SELECT 7 as profunditat, 'Helvetica' as font, 10 as mida, '1,0.647058823529412,0.376470588235294'::varchar as color
+UNION
+SELECT 8 as profunditat, 'Helvetica' as font, 10 as mida, '0.874509803921569,0.898039215686275,0.572549019607843'::varchar as color
+UNION
+SELECT 9 as profunditat, 'Helvetica' as font, 10 as mida, '0.8,0.643137254901961,0.6'::varchar as color
+UNION
+SELECT 10 as profunditat, 'Helvetica' as font, 10 as mida, '1,0.396078431372549,0.517647058823529'::varchar as color
+UNION
+SELECT 11 as profunditat, 'Helvetica' as font, 10 as mida, '0.8,0.588235294117647,0.694117647058824'::varchar as color
+UNION
+SELECT 12 as profunditat, 'Helvetica' as font, 10 as mida, '0.701960784313725,0.580392156862745,0.8'::varchar as color
+UNION
+SELECT 13  as profunditat, 'Helvetica' as font, 10 as mida, '0.580392156862745,0.603921568627451,0.807843137254902'::varchar as color
+UNION
+SELECT 14 as profunditat, 'Helvetica' as font, 10 as mida, '0.580392156862745,0.768627450980392,0.827450980392157'::varchar as color
+UNION
+SELECT 15  as profunditat, 'Helvetica' as font, 10 as mida, '0.576470588235294,0.847058823529412,0.725490196078431'::varchar as color
+UNION
+SELECT 16 as profunditat, 'Helvetica' as font, 10 as mida, '0.6,0.866666666666667,0.572549019607843'::varchar as color
+UNION
+SELECT 17 as profunditat, 'Helvetica' as font, 10 as mida, '0.886274509803922,0.568627450980392,0.568627450980392'::varchar as color
+UNION
+SELECT 18 as profunditat, 'Helvetica' as font, 10 as mida, '1,0.858823529411765,0.396078431372549'::varchar as color
+) estils
+"-->
+        <paraStyle name="nombrefamilia[profunditat]" spaceAfter="0cm" spaceBefore="0cm" fontName="[font]" fontSize="[mida]" alignment="LEFT" backColor="([color])" leading="[leading]"/>
+        <paraStyle name="codi[profunditat]"  spaceAfter="0cm" spaceBefore="0cm" fontName="[font]" fontSize="[mida]" alignment="LEFT" backColor="([color])" leading="[leading]"/>
+        <paraStyle name="dada[profunditat]"  spaceAfter="0cm" spaceBefore="0cm" fontName="[font]" fontSize="[mida]" alignment="RIGHT" backColor="([color])" leading="[leading]"/>
+        <paraStyle name="gris[profunditat]"  spaceAfter="0cm" spaceBefore="0cm" textColor="(0.3,0.3,0.3)" fontName="[font]" fontSize="[mida]" alignment="RIGHT" backColor="([color])" leading="[leading]"/>
+        <paraStyle name="petit[profunditat]"  spaceAfter="0cm" spaceBefore="0cm" fontName="Helvetica" fontSize="6" leading="7" alignment="CENTER"  backColor="([color])"/>
+        <paraStyle name="petitgris[profunditat]"  spaceAfter="0cm" spaceBefore="0cm" textColor="(0.3,0.3,0.3)" fontName="Helvetica" fontSize="6" leading="7" alignment="CENTER" backColor="([color])"/>
+
+<!-- END QUERY-->
+
+
+</stylesheet>
+
+<!--SETVAR NAME="comprovacio" VALUE="
+select 'La família amb codi ' || fill.codigocompletofamilia 
+       ||' sembla tenir '||(fill.profunditat-1)::varchar||' families antecesores, però '
+       ||(CASE when pare.codigocompletofamilia IS NULL THEN 'no en té cap.' ELSE 'la més immediata és la de codi '
+           ||pare.codigocompletofamilia ||' que sembla tenir '||pare.profunditat||' antecessors.' END) as error
+from
+(select f1.codigocompletofamilia, f1.padrefamilia,   count(*)::int as profunditat 
+  from  familia f1,  familia f2
+  where f1.codigocompletofamilia like f2.codigocompletofamilia||'%'
+group by f1.codigocompletofamilia, f1.padrefamilia
+order by codigocompletofamilia
+) fill
+left outer join
+(select f1.codigocompletofamilia,f1.idfamilia,count(*)::int as profunditat
+  from  familia f1,  familia f2
+  where f1.codigocompletofamilia like f2.codigocompletofamilia||'%'
+group by f1.codigocompletofamilia, f1.idfamilia, f1.nombrefamilia
+order by codigocompletofamilia
+) pare on fill.padrefamilia=pare.idfamilia 
+where fill.profunditat <> coalesce(pare.profunditat,0)+1
+
+
+"--> 
+
+<story>
+
+<!--IF QUERY="select 1 FROM ([comprovacio]) a LIMIT 1"-->
+<para>
+Vaja, veureu: aquest llistat no us funcionarà. Teniu famílies d'articles o articles que no podem determinar de quines famílies són només pel codi complet i tot i que el que s'hauria de fer és anar mirant pas a pas qui és el pare de qui, l'autor és una mica dropo, i s'agafa a l'excusa que aquesta codificació de families pot portar confusions també als humans i val més canviar-la. De fet una propera versió de la base de dades (postgresql 8.4 ?) farà més senzill aquest llistat  en casos com el vostre, i potser llavors algú m'arregli. Però ara per ara res de res. Em sap greu. No sé si us servirà de gaire, però ve't aquí les famílies que fan que aquest llistat no funcioni:
+</para>
+<!--QUERY="[comprovacio]"-->
+<para>[error]</para>
+<!-- END QUERY -->
+<!-- END IF QUERY -->
+
+<!--SETVAR NAME="where" VALUE="
+WHERE ( ((NOT [usaDesde.checked]) 
+         OR coalesce(to_date('[desde.selectedDate]','YYYY-MM-DD')
+             <=al.fechaalbaran,true) )
+        AND 
+        ((NOT [usaHasta.checked]) 
+         OR coalesce(to_date('[hasta.selectedDate]','YYYY-MM-DD')+'1 day'::interval 
+            >al.fechaalbaran,true) )
+   AND (
+('[idcliente]'::varchar = ('[id'::varchar||'cliente]'::varchar))
+             OR (al.idcliente::varchar = '[idcliente]'::varchar )
+       ))
+       
+" -->
+
+
+<!--IF QUERY="select 1 WHERE NOT EXISTS ([comprovacio])"-->
+
+<spacer length="15"/>
+<blockTable style="tablatotales" colWidths="6.1cm, 3cm, 2cm, 3.7cm, 3cm,3cm,3.5cm,3.5cm" repeatRows="1">
+<!--QUERY="SELECT to_char(current_timestamp,'dd.MM.yyyy') as avui,
+(CASE WHEN (NOT [usaDesde.checked]) AND (NOT [usaHasta.checked]) THEN '' ELSE  ( CASE WHEN [usaDesde.checked] THEN 'des del '||to_char(to_date('[desde.selectedDate]','YYYY-MM-DD'),'DD.MM.YYYY') ELSE 
+      'des de sempre' END) 
+ || ' ' || ( CASE WHEN [usaHasta.checked] THEN 'fins al '||to_char(to_date('[hasta.selectedDate]','YYYY-MM-DD'),'DD.MM.YYYY') ELSE 
+      'fins a sempre' END) END) as periode  
+"-->
+
+<tr>
+<td><para>Nom de la família</para></td>
+<td><para>Codi família</para></td>
+<td><para>Núm.art. [avui]</para></td>
+<td><para>Stock [avui]</para></td>
+<td><para>Impostos [periode]</para></td>
+<td><para>Descomptes<super>(1)</super> [periode]</para></td>
+<td><para>Lliurat [periode]</para></td>
+<td><para>Import<super>(2)</super> (preu - desc) [periode]</para></td>
+
+</tr>
+<!--END QUERY-->
+
+<!--SETVAR NAME="select" VALUE="
+
+
+select (CASE WHEN codigocompletofamilia='' THEN '·' ELSE codigocompletofamilia END) as codigocompletofamilia, nombrefamilia, profunditat, 
+       coalesce(articles,0) as articles,
+       (CASE WHEN coalesce(articles,0) <> coalesce(articles_stock,0) THEN '('||coalesce(articles_stock,0)||' ctrl.stock)' ELSE '.' END) as articles_stock,
+       rtrim(TO_CHAR(coalesce(unitats_stock,0),'FM99999990D99'),'., ') as unitats_stock,
+       TO_CHAR(coalesce(preu_stock,0),'FM99999990D00') as preu_stock,
+       rtrim(TO_CHAR(coalesce(cantlalbaran,0),'FM99999990D99'),'., ') as cantlalbaran,
+       TO_CHAR(coalesce(pvplalbaran,0),'FM99999990D00') as pvplalbaran,
+       TO_CHAR(coalesce(ivalalbaran,0),'FM99999990D00') as ivalalbaran,
+       TO_CHAR(coalesce(reqeqlalbaran,0),'FM99999990D00') as reqeqlalbaran,
+       TO_CHAR(coalesce(ivalalbaran,0)+coalesce(reqeqlalbaran,0),'FM99999990D00') as impostos,
+       TO_CHAR(coalesce(descuentolalbaran,0),'FM99999990D00') as descuentolalbaran,
+       rtrim(TO_CHAR(coalesce(numlal,0),'FM99999990D99'),'., ') as numlal,
+       coalesce((CASE WHEN minfal = maxfal THEN to_char(minfal,'DD.MM.YY') ELSE 
+to_char(minfal,'DD.MM.YY')||' - '||to_char(maxfal,'DD.MM.YY') END),'.') as fal, 
+
+       to_char(coalesce(pvplalbaran,0)-coalesce(descuentolalbaran,0),'FM99999990D00') as importelabaran,
+       profunditat*12 as indentacio  
+from 
+(select f1.codigocompletofamilia,f1.nombrefamilia, f1.idfamilia, count(*)::int as profunditat
+  from  familia f1,  familia f2
+  where f1.codigocompletofamilia like f2.codigocompletofamilia||'%'
+group by f1.codigocompletofamilia, f1.idfamilia, f1.nombrefamilia
+union
+select '' as codigocompletofamilia,'TOTAL' as nombrefamilia, -1 as idfamilia, 0 as profunditat
+  
+order by codigocompletofamilia
+) families 
+left outer join
+(select fa.idfamilia, 
+        count(*) as articles , 
+        sum(CASE WHEN controlstockarticulo THEN 1 ELSE 0 END) as articles_stock, 
+        sum(CASE WHEN controlstockarticulo THEN stockarticulo ELSE NULL END) as unitats_stock, 
+        sum(CASE WHEN controlstockarticulo THEN stockarticulo*pvparticulo ELSE NULL END) as preu_stock,
+       sum(cantlalbaran) as cantlalbaran,
+       sum(pvplalbaran) as pvplalbaran, 
+       sum(ivalalbaran) as ivalalbaran, 
+       sum(reqeqlalbaran) as reqeqlalbaran, 
+       sum(descuentolalbaran) as descuentolalbaran,
+       sum(numlal) as numlal,
+       min(minfal) as minfal,
+       max(maxfal) as maxfal
+FROM articulo art 
+left outer join 
+ (select lal.idarticulo ,
+       sum(cantlalbaran) as cantlalbaran,
+       sum(pvplalbaran*cantlalbaran) as pvplalbaran, 
+       sum(ivalalbaran*(pvplalbaran*cantlalbaran*(100-descuentolalbaran)/100)/100) as ivalalbaran, 
+       sum(reqeqlalbaran*(pvplalbaran*cantlalbaran*(100-descuentolalbaran)/100)/100) as reqeqlalbaran, 
+       sum(pvplalbaran*cantlalbaran*descuentolalbaran/100) as descuentolalbaran,
+       count(*) as numlal,
+       min(al.fechaalbaran) as minfal, 
+       max(al.fechaalbaran) as maxfal 
+from lalbaran lal 
+      left outer join albaran  al on lal.idalbaran  = al.idalbaran 
+[where]
+ group by lal.idarticulo
+) albart on albart.idarticulo = art.idarticulo 
+  left outer join 
+(
+ select f.idfamilia,f.codigocompletofamilia
+   from  familia f 
+   union
+   select -1 as idfamilia, '' as codigocompletofamilia
+)
+  fa on art.codigocompletoarticulo like fa.codigocompletofamilia||'%'
+group by fa.idfamilia) vendstock 
+on families.idfamilia = vendstock.idfamilia  
+order by codigocompletofamilia
+"-->
+
+
+<!--QUERY="
+[select]
+"--> 
+
+<tr>
+<td>
+<para style="nombrefamilia[profunditat]" leftIndent="[indentacio]">[nombrefamilia]</para>
+<para style="petit[profunditat]" leftIndent="[indentacio]">. </para>
+</td>
+<td>
+<para style="codi[profunditat]">[codigocompletofamilia]</para>
+<para style="petit[profunditat]">. </para>
+</td>
+ <td>
+<para style="gris[profunditat]" >[articles]</para>
+<para style="petitgris[profunditat]"  >[articles_stock]</para>
+</td>
+<td>
+<para style="dada[profunditat]">[preu_stock] €</para>
+<para style="petit[profunditat]">[unitats_stock] un.</para>
+</td>
+<td>
+<para style="gris[profunditat]"  >[impostos] €</para>
+<para style="petitgris[profunditat]">([ivalalbaran] iva + [reqeqlalbaran] rec.eq.) </para>
+</td>
+<td>
+<para style="gris[profunditat]" >[descuentolalbaran] €</para>
+<para style="petitgris[profunditat]">. </para>
+</td>
+<td>
+<para style="dada[profunditat]">[pvplalbaran] €</para>
+<para style="petit[profunditat]">[cantlalbaran] un. [numlal] lín.alb.</para>
+</td>
+<td>
+<para style="dada[profunditat]">[importelabaran] €</para>
+<para style="petit[profunditat]">[fal]</para>
+</td>
+
+</tr> 
+<!--END QUERY-->
+</blockTable>
+<!-- END IF QUERY -->
+
+<para spaceBefore="12"><super>(1)</super>Els descomptes inclouen només els associats a articles a les línies d'albarà. S'exclouen les linies de descompte addicionals que afecten tot l'albarà.</para> 
+<para spaceBefore="12"><super>(2)</super>L'import no inclou els impostos. És la diferència entre les columnes "Lliurat" i "Descomptes"</para>
+</story>
+</document>
