@@ -20,6 +20,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.mui_plugins.hideColumn(1)
       self.mui_plugins1.hideColumn(1)
 
+      # Hacemos un Show y así el padre recupera el control.
+      self.show()
+
+      self.inicializar()
+
+   def inicializar(self):
       # Ponemos la pestanya de consola como la visible
       self.tabWidget.setCurrentIndex(2)
 

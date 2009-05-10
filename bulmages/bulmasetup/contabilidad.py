@@ -20,8 +20,13 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.buscaPlugins()
       # Ajustamos la presentacion
       self.mui_plugins.resizeColumnsToContents()
+      # Mostramos la ventana para que el padre tome el control
+      self.show()
+      # iniciialzamos
+      self.inicializar()
 
-
+      
+   def inicializar(self):
       # Inicializamos el combo de categoria.
       self.mui_categoria.clear()
       self.i =0 ;
