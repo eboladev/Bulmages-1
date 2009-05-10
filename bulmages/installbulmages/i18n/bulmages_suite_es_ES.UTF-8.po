@@ -1,24 +1,24 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# , 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: bulmages_suite_es_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-05-01 14:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-05-09 22:31+0200\n"
+"Last-Translator: \n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ui_blsubformbase.h:614
 msgid "!Opcion reservada a expertos!"
-msgstr "!Opcion reservada a expertos!"
+msgstr "¡Opción reservada a expertos!"
 
 #: ui_bcbulmacontbase.h:393
 msgid "\""
@@ -51,7 +51,7 @@ msgstr "% Recargo"
 #: bfclientealbaransubform.cpp:53 listlinpresupuestoview.cpp:54
 #: listlinpedidoclienteview.cpp:54 listlinfacturaview.cpp:55
 msgid "% Recargo E.Q."
-msgstr "% Recargo E.Q."
+msgstr "% Recargo E."
 
 #: ui_bccuentabase.h:863 ui_bcamortizacionbase.h:680
 #: ui_bcasientoduplicarbase.h:239 ui_bcasientointeligentebase.h:215
@@ -81,11 +81,11 @@ msgstr "&Acerca de"
 
 #: ui_bcbulmacontbase.h:381
 msgid "&Acerca de Iglues/BulmaCont"
-msgstr ""
+msgstr "&Acerca de Iglues/BulmaCont"
 
 #: ui_bfbulmafactbase.h:163
 msgid "&Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "&Acerca de Iglues/BulmaFact"
 
 #: pluginbf_actividad.cpp:119
 msgid "&Actividades"
@@ -117,11 +117,11 @@ msgstr "&Amortizaciones"
 
 #: ui_proveditbase.h:797
 msgid "&Aplicar Recargo de Equivalencia."
-msgstr "&Aplicar Recargo de Equivalencia."
+msgstr "&Aplicar Recargo de equivalencia."
 
 #: pluginbf_articulo.cpp:125
 msgid "&Articulos"
-msgstr "&Articulos"
+msgstr "&Artículos"
 
 #: ui_bcbulmacontbase.h:355 ui_bcbulmacontbase.h:398
 msgid "&Asientos"
@@ -133,7 +133,7 @@ msgstr "&Balance"
 
 #: pluginbc_balance.cpp:91 pluginbalancetree.cpp:96
 msgid "&Balance jerarquico"
-msgstr "&Balance jerarquico"
+msgstr "&Balance jerárquico"
 
 #: ui_bcbulmacontbase.h:372
 msgid "&Bloquear fechas/Crear ejercicio"
@@ -203,7 +203,7 @@ msgstr "&Clientes"
 
 #: ui_registroivabase.h:631
 msgid "&Cobros / Pagos"
-msgstr "&Cobros / Pagos"
+msgstr "&Cobros/pagos"
 
 #: pluginbf_clientecobro.cpp:97
 msgid "&Cobros a clientes"
@@ -215,7 +215,7 @@ msgstr "&Cobros y pagos"
 
 #: ui_proveditbase.h:779
 msgid "&Codigo:"
-msgstr "&Codigo:"
+msgstr "&Código:"
 
 #: plugarticulos.cpp:83
 msgid "&Colores"
@@ -236,7 +236,7 @@ msgstr "&Comercial"
 
 #: pluginbf_compraventa.cpp:78
 msgid "&CompraVenta"
-msgstr "&CompraVenta"
+msgstr "&Compra/venta"
 
 #: ui_asientolistbase.h:421
 msgid "&Concepto:"
@@ -257,19 +257,19 @@ msgstr "&Corrector"
 
 #: pluginbc_cuentasanuales2ods.cpp:414
 msgid "&Cuentas Anuales"
-msgstr "&Cuentas Anuales"
+msgstr "&Cuentas anuales"
 
 #: pluginbc_cuentasanuales2ods.cpp:419 pluginbc_cuentasanuales2ods.cpp:436
 msgid "&Cuentas Anuales PGC"
-msgstr "&Cuentas Anuales PGC"
+msgstr "&Cuentas anuales PGC"
 
 #: pluginbf_alumno.cpp:128
 msgid "&Cuotas por Alumno"
-msgstr ""
+msgstr "&Cuotas por Alumno"
 
 #: ui_registroivabase.h:625
 msgid "&Datos Factura"
-msgstr "&Datos Factura"
+msgstr "&Datos factura"
 
 #: ui_bccuentabase.h:850
 msgid "&Datos contables"
@@ -294,11 +294,11 @@ msgstr "&Detalle"
 
 #: ui_compraventabase.h:906
 msgid "&Detalle Compras"
-msgstr "&Detalle Compras"
+msgstr "&Detalle de compras"
 
 #: ui_compraventabase.h:889
 msgid "&Detalle Ventas"
-msgstr "&Detalle Ventas"
+msgstr "&Detalle de ventas"
 
 #: ui_blerrordialogbase.h:112
 msgid "&Detalles"
@@ -306,11 +306,11 @@ msgstr "&Detalles"
 
 #: pluginbl_embed.cpp:134
 msgid "&Dock Aplicacion"
-msgstr "&Dock Aplicacion"
+msgstr "A&dherir la aplicación"
 
 #: ui_bfbulmafactbase.h:164
 msgid "&Documentacion"
-msgstr "&Documentacion"
+msgstr "&Documentación"
 
 #: ui_asientolistbase.h:420
 msgid "&Ejercicio:"
@@ -318,7 +318,7 @@ msgstr "&Ejercicio:"
 
 #: pluginbl_embed.cpp:139
 msgid "&Embeber Aplicacion"
-msgstr "&Embeber Aplicacion"
+msgstr "&Embeber la aplicación"
 
 #: ui_bcbulmacontbase.h:402
 msgid "&Empresa"
@@ -342,7 +342,7 @@ msgstr "&Facturas a clientes"
 
 #: pluginbf_proveedorfactura.cpp:96
 msgid "&Facturas proveedores"
-msgstr "&Facturas proveedores"
+msgstr "&Facturas de proveedores"
 
 #: pluginbf_articulo.cpp:151
 msgid "&Familias"
@@ -376,11 +376,11 @@ msgstr "&Herramientas"
 
 #: ui_proveditbase.h:793
 msgid "&IRPF que aplica:"
-msgstr "&IRPF que aplica:"
+msgstr "&IRPF que se aplica:"
 
 #: pluginbl_importcsv.cpp:55
 msgid "&Importacion CSV"
-msgstr "&Importacion CSV"
+msgstr "&Importación CSV"
 
 #: ui_bcdiarioprintbase.h:158 ui_bcextractoimprimirbase.h:140
 #: ui_bcbulmacontbase.h:366
@@ -389,7 +389,7 @@ msgstr "&Imprimir"
 
 #: ui_bccuentabase.h:835
 msgid "&Imputacion"
-msgstr "&Imputacion"
+msgstr "&Imputación"
 
 #: ui_bcdiariobase.h:370 ui_bcextractobase.h:631
 msgid "&Incluir asientos abiertos"
@@ -397,7 +397,7 @@ msgstr "&Incluir asientos abiertos"
 
 #: ui_articleeditbase.h:615
 msgid "&Incluir en el catalogo."
-msgstr "&Incluir en el catalogo."
+msgstr "&Incluir en el catálogo."
 
 #: ui_bcamortizacionbase.h:671
 msgid "&Incremental"
@@ -405,7 +405,7 @@ msgstr "&Incremental"
 
 #: ui_bfbulmafactbase.h:166
 msgid "&Indexador"
-msgstr "&Indexador"
+msgstr "&Indexado"
 
 #: pluginbl_report.cpp:99
 msgid "&Informes"
@@ -433,7 +433,7 @@ msgstr "&Maestro"
 
 #: pluginbc_depuracion.cpp:84
 msgid "&Modo debug"
-msgstr "&Modo debug"
+msgstr "&Modo depuración"
 
 #: ui_asientolistbase.h:419
 msgid "&Mostrar:"
@@ -465,7 +465,7 @@ msgstr "&No salir"
 
 #: ui_proveditbase.h:781
 msgid "&Nombre empresa:"
-msgstr "&Nombre empresa:"
+msgstr "&Nombre de la empresa:"
 
 #: pluginbf_actividad.cpp:127
 msgid "&Nueva actividad"
@@ -485,15 +485,15 @@ msgstr "&Nuevo artículo"
 
 #: pluginbf_proveedorpedido.cpp:105
 msgid "&Nuevo Pedido a Proveedor"
-msgstr "&Nuevo Pedido a Proveedor"
+msgstr "&Nuevo pedido a proveedor"
 
 #: pluginbf_clientealbaran.cpp:106
 msgid "&Nuevo albaran a cliente"
-msgstr "&Nuevo albaran a cliente"
+msgstr "&Nuevo albarán a cliente"
 
 #: pluginbf_proveedoralbaran.cpp:104
 msgid "&Nuevo albaran de proveedor"
-msgstr "&Nuevo albaran de proveedor"
+msgstr "&Nuevo albarán de proveedor"
 
 #: pluginbf_alumno.cpp:119
 msgid "&Nuevo alumno"
@@ -501,7 +501,7 @@ msgstr "&Nuevo alumno"
 
 #: pluginbf_cliente.cpp:104
 msgid "&Nuevo cliente"
-msgstr ""
+msgstr "&Nuevo cliente"
 
 #: pluginbf_clientecobro.cpp:105
 msgid "&Nuevo cobro a cliente"
@@ -513,7 +513,7 @@ msgstr "&Nuevo pago a proveedor"
 
 #: pluginbf_clientepedido.cpp:106
 msgid "&Nuevo pedido de cliente"
-msgstr ""
+msgstr "&Nuevo pedido de cliente"
 
 #: pluginbf_clientepresupuesto.cpp:108
 msgid "&Nuevo presupuesto a cliente"
@@ -521,15 +521,15 @@ msgstr "&Nuevo presupuesto a cliente"
 
 #: pluginbf_profesor.cpp:107
 msgid "&Nuevo profesor"
-msgstr ""
+msgstr "&Nuevo profesor"
 
 #: pluginbf_proveedor.cpp:104
 msgid "&Nuevo proveedor"
-msgstr ""
+msgstr "&Nuevo proveedor"
 
 #: pluginbf_tutor.cpp:107
 msgid "&Nuevo tutor/socio"
-msgstr ""
+msgstr "&Nuevo tutor/socio"
 
 #: blfunctions.cpp:529
 msgid "&Omitir"
@@ -545,7 +545,7 @@ msgstr "&Otros datos"
 
 #: pluginbc_cuentasanuales2ods.cpp:416
 msgid "&PGC 2008"
-msgstr "&PGC 2008"
+msgstr "&PGC 2007"
 
 #: pluginbf_proveedorpago.cpp:96
 msgid "&Pagos a proveedores"
@@ -581,7 +581,7 @@ msgstr "&Plantilla:"
 
 #: pluginbc_example.cpp:84
 msgid "&Plugin"
-msgstr "&Plugin"
+msgstr "<I>&Plug-in</I>"
 
 #: pluginbf_clientepresupuesto.cpp:100
 msgid "&Presupuestos a clientes"
@@ -605,11 +605,11 @@ msgstr "&Proyectos"
 
 #: pluginbf_example.cpp:89
 msgid "&Prueba de plugin"
-msgstr "&Prueba de plugin"
+msgstr "&Prueba de <I>plug-in</I>"
 
 #: pluginbc_example.cpp:85
 msgid "&Prueba de plugin BcBulmaCont"
-msgstr ""
+msgstr "&Prueba de <I>plugin</I> <B>BcBulmaCont</B>"
 
 #: ui_bcbulmacontbase.h:370
 msgid "&Recalcular saldos iniciales"
@@ -625,7 +625,7 @@ msgstr "&Repercutido"
 
 #: pluginresumcta.cpp:76
 msgid "&Resumen Cta"
-msgstr "&Resumen Cta"
+msgstr "&Resumen cuenta"
 
 #: myplugin.cpp:93
 msgid "&Rutas comerciales"
@@ -649,11 +649,11 @@ msgstr "&Salir del programa"
 #: genpedqtoolbutton.cpp:152 genfacqtoolbutton.cpp:166
 #: genfacqtoolbutton.cpp:294 genfacqtoolbutton.cpp:423 blform.cpp:373
 msgid "&Si"
-msgstr "&Si"
+msgstr "&Sí"
 
 #: ui_listregistroivabase.h:354
 msgid "&Sopotado"
-msgstr "&Sopotado"
+msgstr "&Soportado"
 
 #: ui_bcbulmacontbase.h:371
 msgid "&Sustituir cuentas"
@@ -677,7 +677,7 @@ msgstr "&Tasas de IVA"
 
 #: ui_proveditbase.h:789
 msgid "&Telefono:"
-msgstr "&Telefono:"
+msgstr "&Teléfono:"
 
 #: ui_registroivabase.h:611
 msgid "&Tener en cuenta para el registro de IVA"
@@ -686,11 +686,11 @@ msgstr "&Tener en cuenta para el registro de IVA"
 #: ui_bcdiarioprintbase.h:151 ui_bcextractoimprimirbase.h:137
 #: ui_balanceprintbase.h:314
 msgid "&Texto Plano"
-msgstr "&Texto Plano"
+msgstr "&Texto plano"
 
 #: pluginbf_actividad.cpp:107
 msgid "&Tipos de Actividad"
-msgstr ""
+msgstr "&Tipos de actividad"
 
 #: pluginbf_articulo.cpp:142
 msgid "&Tipos de Articulo"
@@ -710,7 +710,7 @@ msgstr "&Trabajadores"
 
 #: pluginbf_tutor.cpp:99
 msgid "&Tutores/Socios"
-msgstr ""
+msgstr "Tutores/socios"
 
 #: ui_bldblogindialogbase.h:156
 msgid "&Validar"
@@ -859,7 +859,7 @@ msgstr "1. Obligaciones y otros valores negociables."
 
 #: pcapgc08.cpp:611
 msgid "1. Proveedores"
-msgstr "1. Proveedores"
+msgstr "1. Proveedores."
 
 #: pcapgc08.cpp:418
 msgid "1. Remanente."
@@ -875,7 +875,7 @@ msgstr "1. Terrenos."
 
 #: pcapgc08.cpp:324
 msgid "1. Tesoreria."
-msgstr "1. Tesoreria."
+msgstr "1. Tesorería."
 
 #: pcapgc08.cpp:1034
 msgid "1.Activos financieros disponibles para la venta."
@@ -907,7 +907,7 @@ msgstr "13. Gastos financieros."
 
 #: pcapgc08.cpp:872
 msgid "14. Variacion de valor razonable en instrumentos financieros."
-msgstr "14. Variacion de valor razonable en instrumentos financieros."
+msgstr "14. Variación de valor razonable en instrumentos financieros."
 
 #: pcapgc08.cpp:886
 msgid "15. Diferencias de cambio."
@@ -933,11 +933,11 @@ msgstr ""
 
 #: ui_alumnobase.h:509
 msgid "1er. apellido:"
-msgstr ""
+msgstr "1.<sup>er</sup> apellido:"
 
 #: ui_bcmodelo300base.h:190
 msgid "1º trimestre"
-msgstr "1º trimestre"
+msgstr "1.<sup>er</sup> trimestre"
 
 #: ui_bccuentalistbase.h:247 ui_tecladonumericobase.h:351 ui_cobrarbase.h:460
 #: ui_cambiobase.h:517
@@ -970,23 +970,23 @@ msgstr "2. Construcciones."
 
 #: pcapgc08.cpp:296
 msgid "2. Creditos a empresas"
-msgstr "2. Creditos a empresas"
+msgstr "2. Créditos a empresas"
 
 #: pcapgc08.cpp:137 pcapgc08.cpp:272
 msgid "2. Creditos a empresas."
-msgstr "2. Creditos a empresas."
+msgstr "2. Créditos a empresas."
 
 #: pcapgc08.cpp:160
 msgid "2. Creditos a terceros"
-msgstr "2. Creditos a terceros"
+msgstr "2. Créditos a terceros"
 
 #: pcapgc08.cpp:516 pcapgc08.cpp:583
 msgid "2. Deudas con entidades de credito."
-msgstr "2. Deudas con entidades de credito."
+msgstr "2. Deudas con entidades de crédito."
 
 #: pcapgc08.cpp:105
 msgid "2. Instalaciones tecnicas, y otro inmovilizado material."
-msgstr "2. Instalaciones tecnicas, y otro inmovilizado material."
+msgstr "2. Instalaciones técnicas y otro inmovilizado material."
 
 #: pcapgc08.cpp:208
 msgid "2. Materias primas y otros aprovisionamientos."
@@ -998,7 +998,7 @@ msgstr "2. Otras reservas."
 
 #: pcapgc08.cpp:328
 msgid "2. Otros activos liquidos equivalentes."
-msgstr "2. Otros activos liquidos equivalentes."
+msgstr "2. Otros activos líquidos equivalentes."
 
 #: pcapgc08.cpp:988 pcapgc08.cpp:1038
 msgid "2. Otros ingresos/gastos."
@@ -1013,12 +1013,12 @@ msgid ""
 "2. Variacion de existencias de productos terminados y en curso de "
 "fabricacion."
 msgstr ""
-"2. Variacion de existencias de productos terminados y en curso de "
-"fabricacion."
+"2. Variación de existencias de productos terminados y en curso de "
+"fabricación."
 
 #: ui_bcmodelo300base.h:191
 msgid "2º trimestre"
-msgstr "2º trimestre"
+msgstr "2.º trimestre"
 
 #: ui_bccuentalistbase.h:248 ui_tecladonumericobase.h:349 ui_cobrarbase.h:461
 #: ui_cambiobase.h:518
@@ -1051,7 +1051,7 @@ msgstr "3. Productos en curso."
 
 #: pcapgc08.cpp:498
 msgid "3. Provisiones por reestructuracion."
-msgstr "3. Provisiones por reestructuracion."
+msgstr "3. Provisiones por reestructuración."
 
 #: pcapgc08.cpp:699
 msgid "3. Trabajos realizados por la empresa para su activo."
@@ -1067,7 +1067,7 @@ msgstr "3. Valores representativos de deuda."
 
 #: ui_bcmodelo300base.h:192
 msgid "3º trimestre"
-msgstr "3º trimestre"
+msgstr "3.<sup>er</sup> trimestre"
 
 #: ui_bccuentalistbase.h:249 ui_tecladonumericobase.h:355 ui_cobrarbase.h:456
 #: ui_cambiobase.h:513
@@ -1093,7 +1093,7 @@ msgstr "4. Otras provisiones."
 
 #: pcapgc08.cpp:623
 msgid "4. Personal (remuneraciones pendientes de pago)."
-msgstr "4. Personal (remuneraciones pendientes de pago)."
+msgstr "4. Personal, remuneraciones pendientes de pago."
 
 #: pcapgc08.cpp:246
 msgid "4. Personal."
@@ -1105,7 +1105,7 @@ msgstr "4. Productos terminados."
 
 #: ui_bcmodelo300base.h:193
 msgid "4º trimestre"
-msgstr "4º trimestre"
+msgstr "4.º trimestre"
 
 #: ui_bccuentalistbase.h:250 ui_tecladonumericobase.h:356 ui_cobrarbase.h:457
 #: ui_cambiobase.h:514
@@ -1118,7 +1118,7 @@ msgstr "5. Activos por impuesto corriente."
 
 #: pcapgc08.cpp:87
 msgid "5. Aplicaciones informaticas."
-msgstr "5. Aplicaciones informaticas."
+msgstr "5. Aplicaciones informáticas."
 
 #: pcapgc08.cpp:147 pcapgc08.cpp:172 pcapgc08.cpp:282 pcapgc08.cpp:308
 msgid "5. Otros activos financieros."
@@ -1126,7 +1126,7 @@ msgstr "5. Otros activos financieros."
 
 #: pcapgc08.cpp:727
 msgid "5. Otros ingresos de explotacion."
-msgstr "5. Otros ingresos de explotacion."
+msgstr "5. Otros ingresos de explotación."
 
 #: pcapgc08.cpp:528 pcapgc08.cpp:595
 msgid "5. Otros pasivos financieros."
@@ -1155,7 +1155,7 @@ msgstr "6. Gastos de personal."
 
 #: pcapgc08.cpp:631
 msgid "6. Otras deudas con las Administraciones Publicas."
-msgstr "6. Otras deudas con las Administraciones Publicas."
+msgstr "6. Otras deudas con las Administraciones Públicas."
 
 #: pcapgc08.cpp:91
 msgid "6. Otro inmovilizado intangible."
@@ -1163,7 +1163,7 @@ msgstr "6. Otro inmovilizado intangible."
 
 #: pcapgc08.cpp:254
 msgid "6. Otros creditos con las Administraciones Publicas."
-msgstr "6. Otros creditos con las Administraciones Publicas."
+msgstr "6. Otros créditos con las Administraciones Públicas."
 
 #: ui_bccuentalistbase.h:245 ui_tecladonumericobase.h:354 ui_cobrarbase.h:453
 #: ui_cambiobase.h:510
@@ -1180,7 +1180,7 @@ msgstr "7. Anticipos de clientes."
 
 #: pcapgc08.cpp:759
 msgid "7. Otros gastos de explotacion."
-msgstr "7. Otros gastos de explotacion."
+msgstr "7. Otros gastos de explotación."
 
 #: ui_bccuentalistbase.h:244 ui_tecladonumericobase.h:352 ui_cobrarbase.h:454
 #: ui_cambiobase.h:511
@@ -1189,7 +1189,7 @@ msgstr "8"
 
 #: pcapgc08.cpp:781
 msgid "8. Amortizacion del inmovilizado."
-msgstr "8. Amortizacion del inmovilizado."
+msgstr "8. Amortización del inmovilizado."
 
 #: ui_tecladonumericobase.h:350 ui_cobrarbase.h:455 ui_cambiobase.h:512
 msgid "9"
@@ -1197,7 +1197,7 @@ msgstr "9"
 
 #: pcapgc08.cpp:787
 msgid "9. Imputacion de subvenciones de inmovilizado no financiero y otras."
-msgstr "9. Imputacion de subvenciones de inmovilizado no financiero y otras."
+msgstr "9. Imputación de subvenciones de inmovilizado no financiero y otras."
 
 #: ui_bcaboutbase.h:299 ui_btaboutbase.h:280 ui_bfaboutbase.h:289
 msgid ""
@@ -1233,11 +1233,11 @@ msgstr "<HR><B>Tratando el cliente "
 
 #: blimportexport.cpp:1914
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
-msgstr "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
+msgstr "<LI> El cliente no existe, se debe añadir</LI>\n"
 
 #: blimportexport.cpp:1909
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
-msgstr "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
+msgstr "<LI> El cliente ya existe, se pueden hacer modificaciones</LI>\n"
 
 #: blimportexport.cpp:623
 msgid "<LI>Apunte fuera de fecha</LI>\n"
@@ -1245,11 +1245,11 @@ msgstr "<LI>Apunte fuera de fecha</LI>\n"
 
 #: blimportexport.cpp:621
 msgid "<LI>Insercion de apunte"
-msgstr "<LI>Insercion de apunte"
+msgstr "<LI>Insertar apunte"
 
 #: blimportexport.cpp:593
 msgid "<LI>Insercion de asiento"
-msgstr "<LI>Insercion de asiento"
+msgstr "<LI>Insertar asiento"
 
 #: blimportexport.cpp:481
 msgid "<LI>Se ha insertado la cuenta "
@@ -1261,7 +1261,7 @@ msgstr "<LI>Terminado</LI>\n"
 
 #: blimportexport.cpp:484
 msgid "<LI>Ya hay una cuenta con el codigo "
-msgstr "<LI>Ya hay una cuenta con el codigo "
+msgstr "<LI>Ya hay una cuenta con el código "
 
 #: ui_bcaboutbase.h:294
 msgid ""
@@ -1289,7 +1289,7 @@ msgstr "A DEVOLVER"
 
 #: ui_devolucionbase.h:274
 msgid "A Devolver"
-msgstr "A Devolver"
+msgstr "A devolver"
 
 #: ui_cobrarbase.h:451 ui_cambiobase.h:509
 msgid "A devolver:"
@@ -1321,7 +1321,7 @@ msgstr "A) PATRIMONIO NETO"
 
 #: pcapgc08.cpp:969
 msgid "A) Resultado de la cuenta de perdidas y ganancias"
-msgstr "A) Resultado de la cuenta de perdidas y ganancias"
+msgstr "A) Resultado de la cuenta de pérdidas y ganancias"
 
 #: pcapgc08.cpp:367
 msgid "A-1) Fondos propios."
@@ -1363,7 +1363,7 @@ msgstr "ABRIL"
 
 #: ui_totalbase.h:111
 msgid "ABRIR CAJON"
-msgstr "ABRIR CAJON"
+msgstr "ABRIR CAJÓN"
 
 #: pcapymes08.cpp:69 pcapgc08.cpp:43 pcapgc08.cpp:49
 msgid "ACTIVO"
@@ -1375,7 +1375,7 @@ msgstr "AGOSTO"
 
 #: impqtoolbutton.cpp:150 facturaview.cpp:207
 msgid "ALBARAN: Num "
-msgstr "ALBARAN: Num "
+msgstr "ALBARÁN: Número "
 
 #: ui_abrevsbase.h:98
 msgid "APARCAR"
@@ -1383,7 +1383,7 @@ msgstr "APARCAR"
 
 #: ui_tecladonumericobase.h:362
 msgid "ARTIC"
-msgstr "ARTIC"
+msgstr "ARTÍCULO"
 
 #: bcbloqueafechaview.cpp:82
 msgid "Abierto"
@@ -1399,7 +1399,7 @@ msgstr "Abre todos los documentos con esta referencia"
 
 #: articuloview.cpp:64
 msgid "Abreviacion"
-msgstr "Abreviacion"
+msgstr "Abreviación"
 
 #: bcbloqueafechaview.cpp:179 pcapgc07.cpp:42
 msgid "Abril"
@@ -1411,7 +1411,7 @@ msgstr "Abrir asiento"
 
 #: rutacomercialincview.cpp:130
 msgid "Accion comercial"
-msgstr "Accion comercial"
+msgstr "Acción comercial"
 
 #: ui_bccuentasanualesimprimirbase.h:202 ui_balancesprintdlg.h:205
 msgid "Acep&tar"
@@ -1432,23 +1432,23 @@ msgstr "Acerca de BulmaFact"
 
 #: ui_bfaboutbase.h:285
 msgid "Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "Acerca de Iglues/BulmaFact"
 
 #: pluginbc_depuracion.cpp:93
 msgid "Activa/Desactiva el modo debug"
-msgstr "Activa/Desactiva el modo debug"
+msgstr "Activa/desactiva el modo de depuración"
 
 #: pluginbf_debug.cpp:94
 msgid "Activa/desactiva el modo de depuracion"
-msgstr ""
+msgstr "Activa/desactiva el modo de depuración"
 
 #: ui_articleeditbase.h:619
 msgid "Activar el &control de stock."
-msgstr "Activar el &control de stock."
+msgstr "Activar el &control de <i>stock</i>."
 
 #: ui_articleeditbase.h:617
 msgid "Activar el control de stock para este articulo."
-msgstr "Activar el control de stock para este articulo."
+msgstr "Activar el control de <i>stock</i> para este artículo."
 
 #: actividadview.cpp:48
 msgid "Actividad"
@@ -1476,11 +1476,11 @@ msgstr "Actualizar"
 #: ui_rutacomerciallistbase.h:338 ui_rutacomerciallistbase.h:341
 #: ui_blcompanydialogbase.h:191
 msgid "Actualizar Listado"
-msgstr "Actualizar Listado"
+msgstr "Actualizar listado"
 
 #: ui_blcompanydialogbase.h:194
 msgid "Actualizar Listado de Empresas"
-msgstr "Actualizar Listado de Empresas"
+msgstr "Actualizar listado de empresas"
 
 #: pluginbf_preciocoste.cpp:55
 msgid "Actualizar PVP"
@@ -1529,7 +1529,7 @@ msgstr "Administrador"
 
 #: pluginbc_cuentasanuales2ods.cpp:601
 msgid "Advertencia: ha escojido las "
-msgstr "Advertencia: ha escojido las "
+msgstr "Advertencia: ha escogido las "
 
 #: bcbloqueafechaview.cpp:163 pcapgc07.cpp:42
 msgid "Agosto"
@@ -1549,19 +1549,19 @@ msgstr "Agregar a factura"
 
 #: ui_facturabase.h:667 ui_facturabase.h:670
 msgid "Agregar albaran a la factura"
-msgstr "Agregar albaran a la factura"
+msgstr "Agregar albarán a la factura"
 
 #: ui_bcbloqueafechabase.h:139
 msgid "Agregar ejercicio"
-msgstr "Agregar ejercicio"
+msgstr "Agregar Ejercicio"
 
 #: bcamortizacionview.cpp:70
 msgid "Agrupacion"
-msgstr "Agrupacion"
+msgstr "Agrupación"
 
 #: ui_bcamortizacionbase.h:653
 msgid "Agrupacion:"
-msgstr "Agrupacion:"
+msgstr "Agrupación:"
 
 #: balancesubform.cpp:80 blsubform.cpp:2540
 msgid "Ajustar altura"
@@ -1581,24 +1581,24 @@ msgstr "Ajustar columnas"
 
 #: facturaview.cpp:75
 msgid "Al&macen"
-msgstr "Al&macen"
+msgstr "Al&macén"
 
 #: albaranclienteview.cpp:69
 msgid "Albaran"
-msgstr "Albaran"
+msgstr "Albarán"
 
 #: albaranproveedorview.cpp:54
 msgid "Albaran de proveedor"
-msgstr "Albaran de proveedor"
+msgstr "Albarán de proveedor"
 
 #: genalbpqtoolbutton.cpp:148
 msgid "Albaran de proveedor existente"
-msgstr "Albaran de proveedor existente"
+msgstr "Albarán de proveedor existente"
 
 #: genpreqtoolbutton.cpp:294 genalbqtoolbutton.cpp:158
 #: genfacqtoolbutton.cpp:292
 msgid "Albaran ya existe"
-msgstr "Albaran ya existe"
+msgstr "El albarán ya existe"
 
 #: ui_albaranclientelistbase.h:435 pluginbf_clientealbaran.cpp:100
 #: pluginbf_clientealbaran.cpp:101 albaranclientelist.cpp:311
@@ -1627,7 +1627,7 @@ msgstr "Alias"
 
 #: importcsv.cpp:68 archivo.cpp:66
 msgid "All files (*)"
-msgstr "All files (*)"
+msgstr "Todos los archivos (*)"
 
 #: btticket.cpp:51 presupuestoview.cpp:62 presupuestolist.cpp:361
 #: compraventaview.cpp:84 cuadrantediarioview.cpp:60
@@ -1639,17 +1639,17 @@ msgstr "All files (*)"
 #: pluginbf_inventario.cpp:122 facturaview.cpp:63 almacenview.cpp:54
 #: ui_almacenbase.h:337 blimportexport.cpp:2044
 msgid "Almacen"
-msgstr "Almacen"
+msgstr "Almacén"
 
 #: ui_pedidoproveedorbase.h:699
 msgid "Almacen de destino:"
-msgstr "Almacen de destino:"
+msgstr "Almacén de destino:"
 
 #: ui_presupuestoclientebase.h:763 ui_albaranclientebase.h:743
 #: ui_pedidoclientebase.h:675 ui_facturabase.h:686 ui_compraventabase.h:888
 #: ui_tarifabase.h:258 ui_albaranproveedorbase.h:607
 msgid "Almacen:"
-msgstr "Almacen:"
+msgstr "Almacén:"
 
 #: zlist.cpp:190 ui_listcuotasporalumnobase.h:117 pluginbf_almacen.cpp:84
 #: pluginbf_almacen.cpp:85 ui_listalmacenbase.h:117 almaceneslistview.cpp:218
@@ -1700,11 +1700,11 @@ msgstr "Alumnos"
 
 #: ui_bcamortizacionbase.h:679
 msgid "Amor&tizacion"
-msgstr "Amor&tizacion"
+msgstr "Amor&tización"
 
 #: ui_bcamortizacionbase.h:635 bcamortizacionview.cpp:55
 msgid "Amortizacion"
-msgstr "Amortizacion"
+msgstr "Amortización"
 
 #: ui_bcamortizacionbase.h:677
 msgid "Amortizado:"
@@ -1726,16 +1726,16 @@ msgstr "Anulado"
 
 #: ui_btbulmatpvbase.h:94
 msgid "Anyadir"
-msgstr "Anyadir"
+msgstr "Añadir"
 
 #: blcompanydialog.cpp:493
 msgid "Anyo"
-msgstr "Anyo"
+msgstr "Año"
 
 #: informeqtoolbutton.cpp:96 informeqtoolbutton.cpp:350
 #: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
 msgid "Anyo:"
-msgstr "Anyo:"
+msgstr "Año:"
 
 #: ui_bcextractobase.h:639
 msgid "Ap&untes punteados"
@@ -1743,7 +1743,7 @@ msgstr "Ap&untes punteados"
 
 #: cuadrante1view.cpp:63
 msgid "Apartura tarde"
-msgstr "Apartura tarde"
+msgstr "Apertura tarde"
 
 #: pluginbf_asterisk.cpp:165
 msgid "Apellidos"
@@ -1755,7 +1755,7 @@ msgstr "Apellidos del trabajador"
 
 #: pagoslist.cpp:260
 msgid "Apellidos trabajador"
-msgstr "Apellidos trabajador"
+msgstr "Apellidos del trabajador"
 
 #: ui_trabajadorbase.h:346 ui_tipoactividadbase.h:259
 msgid "Apellidos:"
@@ -1767,19 +1767,19 @@ msgstr "Apertura"
 
 #: ui_cuadrante1base.h:328
 msgid "Apertura Manyana"
-msgstr "Apertura Manyana"
+msgstr "Apertura mañana"
 
 #: ui_cuadrante1base.h:330
 msgid "Apertura Tarde"
-msgstr "Apertura Tarde"
+msgstr "Apertura tarde"
 
 #: cuadrante1view.cpp:61
 msgid "Apertura manyana"
-msgstr "Apertura manyana"
+msgstr "Apertura mañana"
 
 #: pluginbf_asterisk.cpp:102
 msgid "Apertura manyanas"
-msgstr "Apertura manyanas"
+msgstr "Apertura mañanas"
 
 #: pluginbf_asterisk.cpp:104
 msgid "Apertura tardes"
@@ -1791,7 +1791,7 @@ msgstr "Aplicar"
 
 #: ui_bcasientointeligentebase.h:210
 msgid "Aplicar Asiento Inteligente"
-msgstr "Aplicar Asiento Inteligente"
+msgstr "Aplicar asiento inteligente"
 
 #: ui_clientebase.h:597
 msgid "Aplicar Recargo de Equivalencia"
@@ -1807,7 +1807,7 @@ msgstr "Apunte con Cuenta"
 
 #: ui_confreglasbase.h:292
 msgid "Apunte con Descripcion"
-msgstr "Apunte con Descripcion"
+msgstr "Apunte con Descripción"
 
 #: ui_confreglasbase.h:285
 msgid "Apunte con Saldo"
@@ -1848,17 +1848,17 @@ msgstr "Archivo"
 #: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
 #: informeqtoolbutton.cpp:463 blimportexport.cpp:2207
 msgid "Articulo"
-msgstr "Articulo"
+msgstr "Artículo"
 
 #: ui_bfbuscararticulobase.h:94 bfbuscararticulo.cpp:37
 msgid "Articulo:"
-msgstr "Articulo:"
+msgstr "Artículo:"
 
 #: ui_bccuentalistbase.h:210 ui_articulosubformbase.h:219
 #: pluginbf_articulo.cpp:127 pluginbf_articulo.cpp:128
 #: ui_articleslistbase.h:285
 msgid "Articulos"
-msgstr "Articulos"
+msgstr "Artículos"
 
 #: ui_asientobase.h:490 bcextractosubform.cpp:49 bcdiariosubform.cpp:37
 #: bcasientointeligenteview.cpp:58
@@ -1867,15 +1867,15 @@ msgstr "Asiento"
 
 #: asiento1.cpp:42 balanceview.cpp:69
 msgid "Asiento Contable"
-msgstr "Asiento Contable"
+msgstr "Asiento contable"
 
 #: ui_bccambiacuentabase.h:236
 msgid "Asiento Final"
-msgstr "Asiento Final"
+msgstr "Asiento final"
 
 #: ui_bccambiacuentabase.h:237
 msgid "Asiento Inicial"
-msgstr "Asiento Inicial"
+msgstr "Asiento inicial"
 
 #: ui_bcbulmacontbase.h:350
 msgid "Asiento de &cierre"
@@ -1883,7 +1883,7 @@ msgstr "Asiento de &cierre"
 
 #: ui_bcbulmacontbase.h:349
 msgid "Asiento de &regularizacion"
-msgstr "Asiento de &regularizacion"
+msgstr "Asiento de &regularización"
 
 #: ui_bcbulmacontbase.h:348
 msgid "Asiento de a&pertura"
@@ -1911,7 +1911,7 @@ msgstr "Asientos"
 
 #: ui_asientobase.h:575 ui_asientobase.h:578 ui_bcbulmacontbase.h:365
 msgid "Asientos Inteligentes"
-msgstr "Asientos Inteligentes"
+msgstr "Asientos inteligentes"
 
 #: asientosview.cpp:46
 msgid "Asientos abiertos"
@@ -1931,7 +1931,7 @@ msgstr "Asistencias"
 
 #: pluginbf_asterisk.cpp:106 pluginbf_asterisk.cpp:166
 msgid "Audicion"
-msgstr "Audicion"
+msgstr "Audición"
 
 #: blfunctions.cpp:566
 msgid "Aviso del programa"
@@ -1942,7 +1942,7 @@ msgid ""
 "Aviso: El numero de cuenta bancario introducido\n"
 "no se corresponde con un CCC correcto."
 msgstr ""
-"Aviso: El numero de cuenta bancario introducido\n"
+"Aviso: El número de cuenta bancario introducido\n"
 "no se corresponde con un CCC correcto."
 
 #: pcapgc08.cpp:185
@@ -1988,7 +1988,7 @@ msgstr "Balance"
 
 #: balance1view.cpp:73
 msgid "Balance Jerarquico"
-msgstr "Balance Jerarquico"
+msgstr "Balance jerárquico"
 
 #: ui_balancebase.h:410 ui_balancebase.h:400
 msgid "Balance de cuentas"
@@ -1996,11 +1996,11 @@ msgstr "Balance de cuentas"
 
 #: ui_balancebase.h:438
 msgid "Balance jerarquico"
-msgstr "Balance jerarquico"
+msgstr "Balance jerárquico"
 
 #: ui_balancetreebase.h:376 ui_balancetreebase.h:387
 msgid "Balance jerarquico de Cuentas"
-msgstr "Balance jerarquico de Cuentas"
+msgstr "Balance jerárquico de Cuentas"
 
 #: pagoslist.cpp:254 pagoview.cpp:68 cobroview.cpp:69 cobroslist.cpp:318
 #: ui_q19base.h:221
@@ -2049,7 +2049,7 @@ msgstr "Bienal"
 
 #: ui_blsearchwidgetbase.h:100
 msgid "BlSearchWidget"
-msgstr ""
+msgstr "BlSearchWidget"
 
 #: ui_bccuentabase.h:832 bccuentaview.cpp:48 bcplancontablelistview.cpp:62
 msgid "Bloqueada"
@@ -2061,7 +2061,7 @@ msgstr "Bloqueado"
 
 #: bcbloqueafechaview.cpp:77
 msgid "Bloquear Fechas"
-msgstr "Bloquear Fechas"
+msgstr "Bloquear fechas"
 
 #: ui_bcbloqueafechabase.h:134
 msgid "Bloquear fechas"
@@ -2083,47 +2083,47 @@ msgstr "Borrar"
 #: ui_convocatoriaslistbase.h:336 ui_actividadeslistbase.h:333
 #: ui_actividadeslistbase.h:336
 msgid "Borrar Actividad"
-msgstr "Borrar Actividad"
+msgstr "Borrar actividad"
 
 #: alumnoslist.cpp:218 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
 msgid "Borrar Alumno"
-msgstr "Borrar Alumno"
+msgstr "Borrar alumno"
 
 #: ui_contratobase.h:465 ui_contratobase.h:468
 msgid "Borrar Contrato"
-msgstr "Borrar Contrato"
+msgstr "Borrar contrato"
 
 #: convocatoriaslist.cpp:218
 msgid "Borrar Convocatoria"
-msgstr ""
+msgstr "Borrar convocatoria"
 
 #: ui_rutacomercialincbase.h:214 ui_rutacomercialincbase.h:217
 msgid "Borrar Factura"
-msgstr "Borrar Factura"
+msgstr "Borrar factura"
 
 #: ui_familiasbase.h:329 ui_familiasbase.h:332
 msgid "Borrar Familia"
-msgstr "Borrar Familia"
+msgstr "Borrar familia"
 
 #: ui_rutacomerciallistbase.h:317 ui_rutacomerciallistbase.h:320
 msgid "Borrar Pedido"
-msgstr "Borrar Pedido"
+msgstr "Borrar pedido"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
 msgid "Borrar Profesor"
-msgstr "Borrar Profesor"
+msgstr "Borrar profesor"
 
 #: ui_tipoactividadbase.h:238 ui_tipoactividadbase.h:241
 msgid "Borrar Tipo de Actividad"
-msgstr ""
+msgstr "Borrar tipo de actividad"
 
 #: ui_tiposarticulobase.h:264 ui_tiposarticulobase.h:267
 msgid "Borrar Tipo de articulo"
-msgstr "Borrar Tipo de articulo"
+msgstr "Borrar tipo de artículo"
 
 #: tutoreslist.cpp:218 ui_tutoreslistbase.h:333 ui_tutoreslistbase.h:336
 msgid "Borrar Tutor"
-msgstr "Borrar Tutor"
+msgstr "Borrar tutor"
 
 #: ui_balancetreebase.h:378 ui_balancetreebase.h:381
 #: ui_albaranclientelistbase.h:458 ui_albaranclientelistbase.h:461
@@ -2132,13 +2132,13 @@ msgstr "Borrar Tutor"
 #: ui_albaranproveedorbase.h:580 ui_albaranproveedorbase.h:583
 #: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
 msgid "Borrar albaran"
-msgstr "Borrar albaran"
+msgstr "Borrar albarán"
 
 #: ui_cuadrante1base.h:321 ui_cuadrante1base.h:324 ui_zbase.h:294
 #: ui_zbase.h:297 ui_almacenbase.h:328 ui_almacenbase.h:331
 #: ui_almaceneslistbase.h:349 ui_almaceneslistbase.h:352
 msgid "Borrar almacen"
-msgstr "Borrar almacen"
+msgstr "Borrar almacén"
 
 #: ui_bcamortizacionbase.h:645 ui_bcamortizacionbase.h:648
 #: ui_bcamortizacionlistbase.h:143 ui_bcamortizacionlistbase.h:146
@@ -2146,13 +2146,13 @@ msgstr "Borrar almacen"
 #: ui_listproyectosbase.h:146 ui_listproyectosbase.h:149
 #: ui_listproyectosbase.h:154 ui_listproyectosbase.h:157
 msgid "Borrar amortizacion"
-msgstr "Borrar amortizacion"
+msgstr "Borrar amortización"
 
 #: bccuentalistview.cpp:310 ui_mticketbase.h:165 ui_mticketbase.h:168
 #: articulolisttpv.cpp:161 articulolist.cpp:167 articulolist.cpp:291
 #: ui_articleslistbase.h:306 ui_articleslistbase.h:309
 msgid "Borrar articulo"
-msgstr "Borrar articulo"
+msgstr "Borrar artículo"
 
 #: ui_asientobase.h:545 ui_asientobase.h:548 bcamortizacionview.cpp:386
 #: bcamortizacionview.cpp:427 bcamortizacionview.cpp:436
@@ -2215,7 +2215,7 @@ msgstr "Borrar imagen"
 
 #: articuloview.cpp:309
 msgid "Borrar imagen del articulo"
-msgstr "Borrar imagen del articulo"
+msgstr "Borrar imagen del artículo"
 
 #: inventarioview.cpp:105 ui_inventariosbase.h:179 ui_inventariosbase.h:182
 #: ui_inventariobase.h:304 ui_inventariobase.h:307
@@ -2224,7 +2224,7 @@ msgstr "Borrar inventario"
 
 #: listlinprevcobroview.cpp:269 listivaview.cpp:171
 msgid "Borrar linea"
-msgstr "Borrar linea"
+msgstr "Borrar línea"
 
 #: ui_pagoslistbase.h:392 ui_pagoslistbase.h:395 ui_pagobase.h:319
 #: ui_pagobase.h:322
@@ -2233,7 +2233,7 @@ msgstr "Borrar pago"
 
 #: ui_blcountrybase.h:281 ui_blcountrybase.h:284 blcountryview.cpp:223
 msgid "Borrar pais"
-msgstr "Borrar pais"
+msgstr "Borrar país"
 
 #: ui_pedidoclientebase.h:646 ui_pedidoclientebase.h:649
 #: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
@@ -2299,7 +2299,7 @@ msgstr "Buscar:"
 
 #: ui_bcplancontablelistbase.h:330
 msgid "Busqueda:"
-msgstr "Busqueda:"
+msgstr "Búsqueda:"
 
 #: ui_tecladonumericobase.h:361 ui_cobrarbase.h:464 ui_cambiobase.h:521
 msgid "C"
@@ -2317,7 +2317,7 @@ msgstr "C) PASIVO CORRIENTE"
 msgid ""
 "C) Total transferencias a la cuenta de perdidas y ganancias (VI+VII+VIII+IX)"
 msgstr ""
-"C) Total transferencias a la cuenta de perdidas y ganancias (VI+VII+VIII+IX)"
+"C) Total transferencias a la cuenta de pérdidas y ganancias (VI+VII+VIII+IX)"
 
 #: listproyectosview.cpp:47
 msgid "C. Coste"
@@ -2420,7 +2420,7 @@ msgstr "COBROS"
 
 #: bcmasapatrimoniallistview.cpp:133 bcplancontablelistview.cpp:88
 msgid "CODIGO"
-msgstr "CODIGO"
+msgstr "CÓDIGO"
 
 #: listivaview.cpp:91
 msgid "COL_BASEIVA"
@@ -2488,7 +2488,7 @@ msgstr "Cambiando a modo de pantalla completa..."
 
 #: ui_bccambiacuentabase.h:235
 msgid "Cambiar Cuenta"
-msgstr "Cambiar Cuenta"
+msgstr "Cambiar cuenta"
 
 #: ui_trabajadorbase.h:347
 msgid "Cambiar imagen"
@@ -2496,15 +2496,15 @@ msgstr "Cambiar imagen"
 
 #: bcbulmacont.cpp:669
 msgid "Cambinado barra de estado..."
-msgstr "Cambinado barra de estado..."
+msgstr "Cambindo barra de estado..."
 
 #: busquedaestadoincidencia.cpp:39
 msgid "Cambio datos"
-msgstr "Cambio datos"
+msgstr "Cambio de datos"
 
 #: ui_blformconfigbase.h:286
 msgid "Campo Indice"
-msgstr "Campo Indice"
+msgstr "Campo índice"
 
 #: bcextractosubform.cpp:68 bcdiariosubform.cpp:51 listlinasiento1view.cpp:50
 #: bccanalview.cpp:36
@@ -2542,15 +2542,15 @@ msgstr "Cantidad"
 
 #: ui_promediobase.h:297 ui_promediobase.h:312
 msgid "Cantidad Media"
-msgstr "Cantidad Media"
+msgstr "Cantidad media"
 
 #: ui_promediobase.h:299 ui_promediobase.h:309
 msgid "Cantidad Menor"
-msgstr "Cantidad Menor"
+msgstr "Cantidad menor"
 
 #: comparticulolistview.cpp:44
 msgid "Cantidad de componente de articulo"
-msgstr "Cantidad de componente de articulo"
+msgstr "Cantidad de componente de artículo"
 
 #: ui_promediobase.h:298 ui_promediobase.h:306
 msgid "Cantidad mayor"
@@ -2562,27 +2562,27 @@ msgstr "Cantidad mayor o igual que"
 
 #: listlincontratoview.cpp:45
 msgid "Cantidadl contrato"
-msgstr "Cantidadl contrato"
+msgstr "Cantidad contrato"
 
 #: ui_importcsvbase.h:202
 msgid "Caracter separador"
-msgstr "Caracter separador"
+msgstr "Carácter separador"
 
 #: bcextractoview.cpp:472
 msgid "Cargando Extracto de Cuentas"
-msgstr "Cargando Extracto de Cuentas"
+msgstr "Cargando Extracto de cuentas"
 
 #: blsubform.cpp:1237
 msgid "Cargando SubFormulario "
-msgstr "Cargando SubFormulario "
+msgstr "Cargando subformulario "
 
 #: main.cxx:142 main.cxx:155
 msgid "Cargando plugins"
-msgstr "Cargando plugins"
+msgstr "Cargando <i>plug-ins</i>"
 
 #: ui_bccuentabase.h:816
 msgid "Cargar Asiento"
-msgstr "Cargar Asiento"
+msgstr "Cargar asiento"
 
 #: ui_bcextractobase.h:684 ui_bcextractobase.h:687 bcextractoview.cpp:570
 msgid "Cargar punteo"
@@ -2590,11 +2590,11 @@ msgstr "Cargar punteo"
 
 #: ui_bcextractobase.h:670 ui_bcextractobase.h:673
 msgid "Casacion"
-msgstr "Casacion"
+msgstr "Casación"
 
 #: bcextractosubform.cpp:71 bcdiariosubform.cpp:53
 msgid "Centro Coste"
-msgstr "Centro Coste"
+msgstr "Centro de coste"
 
 #: bccentrocosteview.cpp:44
 msgid "Centro de Coste"
@@ -2618,11 +2618,11 @@ msgstr "Centro de coste:"
 
 #: ui_bccentrocostebase.h:286
 msgid "Centros Distribuidos"
-msgstr "Centros Distribuidos"
+msgstr "Centros distribuidos"
 
 #: ui_bccentrocostebase.h:267
 msgid "Centros de Coste"
-msgstr "Centros de Coste"
+msgstr "Centros de coste"
 
 #: ui_bcbulmacontbase.h:363
 msgid "Centros de cos&te"
@@ -2637,7 +2637,7 @@ msgstr "Cerrar"
 
 #: ui_bcbulmacontbase.h:396
 msgid "Cerrar Asientos"
-msgstr "Cerrar Asientos"
+msgstr "Cerrar asientos"
 
 #: ui_asientobase.h:500 ui_asientobase.h:503
 msgid "Cerrar asiento"
@@ -2649,19 +2649,19 @@ msgstr "Cierre"
 
 #: ui_cuadrante1base.h:329
 msgid "Cierre Manyana"
-msgstr "Cierre Manyana"
+msgstr "Cierre mañana"
 
 #: ui_cuadrante1base.h:331
 msgid "Cierre Tarde"
-msgstr "Cierre Tarde"
+msgstr "Cierre tarde"
 
 #: cuadrante1view.cpp:62
 msgid "Cierre manyana"
-msgstr "Cierre manyana"
+msgstr "Cierre mañana"
 
 #: pluginbf_asterisk.cpp:103
 msgid "Cierre manyanas"
-msgstr "Cierre manyanas"
+msgstr "Cierre mañanas"
 
 #: cuadrante1view.cpp:64
 msgid "Cierre tarde"
@@ -2760,125 +2760,125 @@ msgstr "Cobros y pagos"
 #: providerslist.cpp:288 provedit.cpp:60 pluginbf_clienteproveedor.cpp:75
 #: tutoreslist.cpp:266 facturapview.cpp:351 actividadview.cpp:54
 msgid "Codigo"
-msgstr "Codigo"
+msgstr "Código"
 
 #: ui_proveditbase.h:786
 msgid "Codigo &postal:"
-msgstr "Codigo &postal:"
+msgstr "Código &postal:"
 
 #: blcountryview.cpp:50 blcountryview.cpp:72
 msgid "Codigo 2 digitos"
-msgstr "Codigo 2 digitos"
+msgstr "Código de 2 dígitos"
 
 #: ui_blcountrybase.h:263
 msgid "Codigo 2 letras:"
-msgstr "Codigo 2 letras:"
+msgstr "Código de 2 letras:"
 
 #: blcountryview.cpp:51 blcountryview.cpp:73
 msgid "Codigo 3 digitos"
-msgstr "Codigo 3 digitos"
+msgstr "Código de 3 dígitos"
 
 #: ui_blcountrybase.h:262
 msgid "Codigo 3 letras:"
-msgstr "Codigo 3 letras:"
+msgstr "Código de 3 letras:"
 
 #: ui_convocatoriabase.h:432 ui_actividadbase.h:443
 msgid "Codigo Actividad"
-msgstr "Codigo Actividad"
+msgstr "Código actividad"
 
 #: ui_almacenbase.h:343
 msgid "Codigo Almacen"
-msgstr "Codigo Almacen"
+msgstr "Código almacén"
 
 #: bccuentalistview.cpp:387
 msgid "Codigo Cuenta"
-msgstr "Codigo Cuenta"
+msgstr "Código cuenta"
 
 #: ui_balanceprintbase.h:308
 msgid "Codigo Final"
-msgstr "Codigo Final"
+msgstr "Código final"
 
 #: ui_balanceprintbase.h:305
 msgid "Codigo Inicial\n"
-msgstr "Codigo Inicial\n"
+msgstr "Código inicial\n"
 
 #: contratoview.cpp:414 movimientosview.cpp:183 listcuotasporalumnoview.cpp:96
 #: listalmacenview.cpp:97 listcontrolstockview.cpp:35 facturaslist.cpp:375
 #: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:91
 msgid "Codigo almacen"
-msgstr "Codigo almacen"
+msgstr "Código almacén"
 
 #: btticket.cpp:97 movimientosview.cpp:178
 msgid "Codigo articulo"
-msgstr "Codigo articulo"
+msgstr "Código artículo"
 
 #: provedit.cpp:49 pluginbf_clienteproveedor.cpp:64
 msgid "Codigo cliente"
-msgstr "Codigo cliente"
+msgstr "Código cliente"
 
 #: listlinpresupuestoview.cpp:47 articuloview.cpp:70 familiasview.cpp:51
 #: listlinfacturapview.cpp:49
 msgid "Codigo completo"
-msgstr "Codigo completo"
+msgstr "Código completo"
 
 #: bfclientealbaransubform.cpp:46 bfproveedoralbaransubform.cpp:48
 #: listlincontratoview.cpp:41 listlinpedidoproveedorview.cpp:41
 #: listlinpedidoclienteview.cpp:47 listcontrolstockview.cpp:37
 #: listlinfacturaview.cpp:48
 msgid "Codigo completo articulo"
-msgstr "Codigo completo articulo"
+msgstr "Código completo del artículo"
 
 #: articulolisttpv.cpp:242 articulolist.cpp:370 comparticulolistview.cpp:42
 #: listltarifaview.cpp:41 listltarifaview.cpp:58
 msgid "Codigo completo del articulo"
-msgstr "Codigo completo del articulo"
+msgstr "Código completo del artículo"
 
 #: ui_articleeditbase.h:595 ui_familiasbase.h:362
 msgid "Codigo completo:"
-msgstr "Codigo completo:"
+msgstr "Código completo"
 
 #: bccuentaview.cpp:44 bcplancontablelistview.cpp:62
 msgid "Codigo cuenta"
-msgstr "Codigo cuenta"
+msgstr "Código cuenta"
 
 #: ui_bccuentabase.h:856
 msgid "Codigo cuenta corriente.:"
-msgstr "Codigo cuenta corriente.:"
+msgstr "Código cuenta corriente:"
 
 #: pedidosproveedorlist.cpp:321 albaranclientelist.cpp:383
 msgid "Codigo de almacen"
-msgstr "Codigo de almacen"
+msgstr "Código almacén"
 
 #: ui_clientebase.h:582
 msgid "Codigo de cliente:"
-msgstr "Codigo de cliente:"
+msgstr "Código de cliente:"
 
 #: ui_articleeditbase.h:596
 msgid "Codigo del articulo:"
-msgstr "Codigo del articulo:"
+msgstr "Código del artículo:"
 
 #: clientslist.cpp:283 clienteview.cpp:63 providerslist.cpp:293
 #: provedit.cpp:54 pluginbf_clienteproveedor.cpp:69 tutoreslist.cpp:272
 #: almacenview.cpp:62
 msgid "Codigo postal"
-msgstr "Codigo postal"
+msgstr "Código postal"
 
 #: ui_clientebase.h:587 ui_tutorbase.h:513 ui_alumnobase.h:513
 #: ui_profesorbase.h:497
 msgid "Codigo postal:"
-msgstr "Codigo postal:"
+msgstr "Código postal:"
 
 #: ui_familiasbase.h:361
 msgid "Codigo reducido:"
-msgstr "Codigo reducido:"
+msgstr "Código reducido:"
 
 #: bfseriefacturaview.cpp:80
 msgid "Codigo serie factura"
-msgstr "Codigo serie factura"
+msgstr "Código de la serie de la factura"
 
 #: ui_bccuentabase.h:827 ui_tiposarticulobase.h:245
 msgid "Codigo:"
-msgstr "Codigo:"
+msgstr "Código:"
 
 #: pluginbt_aliastallasycolores.cpp:38 pluginbt_aliastallasycolores.cpp:40
 #: pluginbt_aliastallasycolores2.cpp:35
@@ -2907,7 +2907,7 @@ msgstr "Comentario"
 
 #: compraventaview.cpp:69 albaranproveedorview.cpp:60
 msgid "Comentario albaran proveedor"
-msgstr "Comentario albaran proveedor"
+msgstr "Comentario albarán proveedor"
 
 #: rutacomerciallist.cpp:296
 msgid "Comentario de la incidencia comercial"
@@ -2967,7 +2967,7 @@ msgstr "Comentarios de la cuenta"
 
 #: albaranclientelist.cpp:393
 msgid "Comentarios del albaran"
-msgstr "Comentarios del albaran"
+msgstr "Comentarios del albarán"
 
 #: asiento1.cpp:48
 msgid "Comentarios del asiento"
@@ -2985,7 +2985,7 @@ msgstr "Comentarios privados:"
 #: ui_albaranclientebase.h:746 ui_compraventabase.h:891
 #: ui_compraventabase.h:908
 msgid "Comentarios publicos:"
-msgstr "Comentarios publicos:"
+msgstr "Comentarios públicos:"
 
 #: rutacomerciallist.cpp:294
 msgid "Comentarios ruta comercial"
@@ -3000,19 +3000,19 @@ msgstr "Comentarios:"
 
 #: bcaboutview.cpp:42 btaboutview.cpp:38 bfaboutview.cpp:41
 msgid "Compilado usando la version de QT:"
-msgstr "Compilado usando la version de QT:"
+msgstr "Compilado usando QT, versión:"
 
 #: ui_importcsvbase.h:205
 msgid "Composicion de Campos"
-msgstr "Composicion de Campos"
+msgstr "Composición de campos"
 
 #: compraventaview.cpp:79
 msgid "Compra Venta"
-msgstr "Compra Venta"
+msgstr "Compra/venta"
 
 #: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
 msgid "CompraVenta"
-msgstr "CompraVenta"
+msgstr "Compra/venta"
 
 #: ui_bcmodelo347listbase.h:265 ui_promediobase.h:295
 msgid "Compras"
@@ -3020,7 +3020,7 @@ msgstr "Compras"
 
 #: ui_confreglasbase.h:281
 msgid "Comprobacion por asientos"
-msgstr "Comprobacion por asientos"
+msgstr "Comprobación por asientos"
 
 #: bcextractosubform.cpp:53 facturapview.cpp:352
 msgid "Concepto"
@@ -3028,7 +3028,7 @@ msgstr "Concepto"
 
 #: listregistroivaview.cpp:75
 msgid "Concepto Contable"
-msgstr "Concepto Contable"
+msgstr "Concepto contable"
 
 #: bcdiariosubform.cpp:42 listlinasiento1view.cpp:44
 #: listregistroivaview.cpp:51
@@ -3045,20 +3045,20 @@ msgstr "Concepto descuento"
 #: listlinasiento1view.cpp:51 listregistroivaview.cpp:62
 #: listregistroivaview.cpp:86
 msgid "Conciliacion"
-msgstr "Conciliacion"
+msgstr "Conciliación"
 
 #: ui_confreglasbase.h:282
 msgid "Condicion:"
-msgstr "Condicion:"
+msgstr "Condición:"
 
 #: ui_bcbulmacontbase.h:340 ui_bcbulmacontbase.h:342
 #: bcconfiguracionview.cpp:38 bfconfiguracionview.cpp:51
 msgid "Configuracion"
-msgstr "Configuracion"
+msgstr "Configuración"
 
 #: ui_blsubformbase.h:598
 msgid "Configuracion Subformularios"
-msgstr "Configuracion Subformularios"
+msgstr "Configuración subformularios"
 
 #: ui_asientolistbase.h:445 ui_asientolistbase.h:448 ui_asientobase.h:538
 #: ui_asientobase.h:541 ui_bcextractobase.h:656 ui_bcextractobase.h:659
@@ -3094,7 +3094,7 @@ msgstr "Configurar listado"
 
 #: contratoview.cpp:415 facturaslist.cpp:376
 msgid "Contact factura"
-msgstr "Contact factura"
+msgstr "Contacto factura"
 
 #: pedidoclienteview.cpp:67
 msgid "Contacto"
@@ -3111,7 +3111,7 @@ msgstr "Contrapartida"
 
 #: ui_bldblogindialogbase.h:155
 msgid "Contrasenya:"
-msgstr "Contrasenya:"
+msgstr "Contraseña:"
 
 #: contratoview.cpp:118 contrato.cpp:39
 msgid "Contrato"
@@ -3123,15 +3123,15 @@ msgstr "Contratos"
 
 #: convocatoriaview.cpp:48
 msgid "Convocatoria"
-msgstr ""
+msgstr "Convocatoria"
 
 #: convocatoriaslist.cpp:144
 msgid "Convocatorias"
-msgstr ""
+msgstr "Convocatorias"
 
 #: bcbulmacont.cpp:644
 msgid "Copiando la seleccion al portapapeles..."
-msgstr "Copiando la seleccion al portapapeles..."
+msgstr "Copiando la selección al portapapeles..."
 
 #: pluginbc_corrector.cpp:55 ui_correctorbase.h:93
 msgid "Corrector"
@@ -3154,11 +3154,11 @@ msgstr "Corregir"
 #: ui_bccuentabase.h:857 ui_clientebase.h:595 ui_alumnobase.h:517
 #: ui_profesorbase.h:505
 msgid "Correo electronico:"
-msgstr "Correo electronico:"
+msgstr "Correo electrónico:"
 
 #: bcbulmacont.cpp:632
 msgid "Cortando seleccion..."
-msgstr "Cortando seleccion..."
+msgstr "Cortando selección..."
 
 #: bcmodelo300imprimir2ps.cpp:170
 msgid "Creando formulario"
@@ -3316,11 +3316,11 @@ msgstr "Cuadrante"
 
 #: ui_cuadrante1base.h:302
 msgid "Cuadrante y Uso Horario"
-msgstr "Cuadrante y Uso Horario"
+msgstr "Cuadrante y uso horario"
 
 #: ui_zbase.h:283
 msgid "Cuadre de Caja"
-msgstr "Cuadre de Caja"
+msgstr "Cuadre de caja"
 
 #: zview.cpp:55
 msgid "Cuadre de caja"
@@ -3328,7 +3328,7 @@ msgstr "Cuadre de caja"
 
 #: ui_zlistbase.h:220
 msgid "Cuadres de Caja"
-msgstr "Cuadres de Caja"
+msgstr "Cuadres de caja"
 
 #: ui_bccuentabase.h:805 ui_bcbuscarcuentabase.h:89
 #: ui_bcmasapatrimonialbase.h:352 bcextractosubform.cpp:48
@@ -3340,11 +3340,11 @@ msgstr "Cuenta"
 
 #: ui_bccambiacuentabase.h:240
 msgid "Cuenta Destino"
-msgstr "Cuenta Destino"
+msgstr "Cuenta destino"
 
 #: ui_bccambiacuentabase.h:241
 msgid "Cuenta Origen"
-msgstr "Cuenta Origen"
+msgstr "Cuenta origen"
 
 #: ui_bcmodelo300base.h:198
 msgid "Cuenta a devolver:"
@@ -3352,7 +3352,7 @@ msgstr "Cuenta a devolver:"
 
 #: ui_registroivabase.h:608
 msgid "Cuenta cliente / Proveedor:"
-msgstr "Cuenta cliente / Proveedor:"
+msgstr "Cuenta cliente/proveedor:"
 
 #: ui_bcamortizacionbase.h:664
 msgid "Cuenta de activo:"
@@ -3360,7 +3360,7 @@ msgstr "Cuenta de activo:"
 
 #: ui_bcamortizacionbase.h:667
 msgid "Cuenta de amortizacion:"
-msgstr "Cuenta de amortizacion:"
+msgstr "Cuenta de amortización:"
 
 #: ui_bcextractobase.h:636 ui_balancebase.h:447 ui_balancetreebase.h:398
 #: ui_balancebase.h:436 ui_balancetreebase.h:416
@@ -3382,7 +3382,7 @@ msgstr "Cuenta:"
 
 #: pluginbc_cuentasanuales2ods.cpp:441
 msgid "Cuentas A. Abreviadas &Sin lucro"
-msgstr "Cuentas A. Abreviadas &Sin lucro"
+msgstr "Cuentas Anuales Abreviadas, &sin lucro"
 
 #: ui_bccuentasanualesbase.h:57 bccuentasanualesview.cpp:41
 msgid "Cuentas Anuales"
@@ -3390,51 +3390,51 @@ msgstr "Cuentas Anuales"
 
 #: pluginbc_cuentasanuales2ods.cpp:424
 msgid "Cuentas Anuales &Abreviadas PGC"
-msgstr "Cuentas Anuales &Abreviadas PGC"
+msgstr "Cuentas Anuales &Abreviadas, PGC"
 
 #: pluginbc_cuentasanuales2ods.cpp:429
 msgid "Cuentas Anuales &PYMES"
-msgstr "Cuentas Anuales &PYMES"
+msgstr "Cuentas Anuales, &PYMES"
 
 #: pluginbc_cuentasanuales2ods.cpp:442 pluginbc_cuentasanuales2ods.cpp:443
 msgid "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
-msgstr "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
+msgstr "Cuentas Anuales Abreviadas, Asociación sin ánimo de lucro"
 
 #: pluginbc_cuentasanuales2ods.cpp:425 pluginbc_cuentasanuales2ods.cpp:426
 msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
-msgstr "Cuentas Anuales Abreviadas Plan General Contable 2008"
+msgstr "Cuentas Anuales Abreviadas, Plan General Contable 2007"
 
 #: pluginbc_cuentasanuales2ods.cpp:589
 msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
-msgstr "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+msgstr "Cuentas Anuales Abreviadas del Plan General Contable 2007. "
 
 #: pluginbc_cuentasanuales2ods.cpp:577
 msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
-msgstr "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+msgstr "Cuentas Anuales Abreviadas para Asociación sin ánimo de lucro. "
 
 #: pluginbc_cuentasanuales2ods.cpp:430 pluginbc_cuentasanuales2ods.cpp:431
 msgid "Cuentas Anuales PYMES 2008"
-msgstr "Cuentas Anuales PYMES 2008"
+msgstr "Cuentas Anuales PYMES 2007"
 
 #: pluginbc_cuentasanuales2ods.cpp:420 pluginbc_cuentasanuales2ods.cpp:421
 msgid "Cuentas Anuales Plan General Contable 2008"
-msgstr "Cuentas Anuales Plan General Contable 2008"
+msgstr "Cuentas Anuales Plan General Contable 2007"
 
 #: pluginbc_cuentasanuales2ods.cpp:437 pluginbc_cuentasanuales2ods.cpp:438
 msgid "Cuentas Anuales Plan General Contable hasta 2007"
-msgstr "Cuentas Anuales Plan General Contable hasta 2007"
+msgstr "Cuentas Anuales Plan General Contable hasta 2007 (PGC 1990)"
 
 #: pluginbc_cuentasanuales2ods.cpp:593
 msgid "Cuentas Anuales del Plan General Contable 2008. "
-msgstr "Cuentas Anuales del Plan General Contable 2008. "
+msgstr "Cuentas Anuales del Plan General Contable 2007. "
 
 #: pluginbc_cuentasanuales2ods.cpp:581
 msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
-msgstr "Cuentas Anuales del Plan General Contable hasta 2007. "
+msgstr "Cuentas Anuales del Plan General Contable hasta 2007 (PGC 1990) "
 
 #: pluginbc_cuentasanuales2ods.cpp:585
 msgid "Cuentas Anuales para PYMES 2008. "
-msgstr "Cuentas Anuales para PYMES 2008. "
+msgstr "Cuentas Anuales para PYMES 2007. "
 
 #: ui_bcbulmacontbase.h:351
 msgid "Cuentas a&nuales"
@@ -3442,11 +3442,11 @@ msgstr "Cuentas a&nuales"
 
 #: listcuotasporalumnoview.cpp:97
 msgid "Cuota"
-msgstr ""
+msgstr "Cuota"
 
 #: pluginbf_alumno.cpp:130 pluginbf_alumno.cpp:131
 msgid "Cuotas por alumno"
-msgstr ""
+msgstr "Cuotas por alumno"
 
 #: ui_bcamortizacionbase.h:676
 msgid "Cuotas:"
@@ -3454,7 +3454,7 @@ msgstr "Cuotas:"
 
 #: listcuotasporalumnoview.cpp:49
 msgid "CuotasPorAlumno"
-msgstr ""
+msgstr "Cuotas por alumno"
 
 #: ui_tecladonumericobase.h:360
 msgid "DEL"
@@ -3466,7 +3466,7 @@ msgstr "DICIEMBRE"
 
 #: ui_tutorbase.h:521
 msgid "DNI / NIf"
-msgstr "DNI / NIf"
+msgstr "DNI/NIF"
 
 #: ui_blformconfigbase.h:284
 msgid "Database Table"
@@ -3474,7 +3474,7 @@ msgstr "Database Table"
 
 #: ui_blformconfigbase.h:291
 msgid "Databse Scripting"
-msgstr "Databse Scripting"
+msgstr "Database Scripting"
 
 #: ui_proveditbase.h:795
 msgid "Datos &bancarios:"
@@ -3494,15 +3494,15 @@ msgstr "Datos comerciales:"
 
 #: ui_proveditbase.h:799
 msgid "Datos de comercio &electronico:"
-msgstr "Datos de comercio &electronico:"
+msgstr "Datos de comercio &electrónico:"
 
 #: clienteview.cpp:73
 msgid "Datos de comercio electronico"
-msgstr "Datos de comercio electronico"
+msgstr "Datos de comercio electrónico"
 
 #: ui_clientebase.h:601 ui_profesorbase.h:508
 msgid "Datos de comercio electronico:"
-msgstr "Datos de comercio electronico:"
+msgstr "Datos de comercio electrónico:"
 
 #: ui_bccuentabase.h:824
 msgid "Datos de la cuenta:"
@@ -3526,15 +3526,15 @@ msgstr "Datos del listado:"
 
 #: ui_blcountrybase.h:260
 msgid "Datos del pais:"
-msgstr "Datos del pais:"
+msgstr "Datos del país:"
 
 #: blimportexport.cpp:2027
 msgid "Datos insuficientes para tratar el almacen."
-msgstr "Datos insuficientes para tratar el almacen."
+msgstr "Datos insuficientes para tratar el almacén."
 
 #: blimportexport.cpp:2176
 msgid "Datos insuficientes para tratar el articulo."
-msgstr "Datos insuficientes para tratar el articulo."
+msgstr "Datos insuficientes para tratar el artículo."
 
 #: blimportexport.cpp:2088
 msgid "Datos insuficientes para tratar la familia."
@@ -3603,7 +3603,7 @@ msgstr "Debe seleccionar una fila primero"
 #: profesoreslist.cpp:160 pedidosclientelist.cpp:255 facturaslist.cpp:259
 #: almaceneslistview.cpp:232
 msgid "Debe seleccionar una linea"
-msgstr "Debe seleccionar una linea"
+msgstr "Debe seleccionar una línea"
 
 #: ui_bccuentabase.h:848 ui_bcextractobase.h:698 ui_balancebase.h:452
 #: ui_balancebase.h:445
@@ -3612,7 +3612,7 @@ msgstr "Debe:"
 
 #: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
-msgstr "Deben existir registros que cumplan esta condicion en el periodo"
+msgstr "Deben existir registros que cumplan esta condición en el período"
 
 #: pluginbc_depuracion.cpp:94
 msgid ""
@@ -3620,13 +3620,13 @@ msgid ""
 "\n"
 "Activa/Desactiva el modo debug"
 msgstr ""
-"Debug.\n"
+"Depuración.\n"
 "\n"
-"Activa/Desactiva el modo debug"
+"Activa/desactiva el modo depuración"
 
 #: balanceview.cpp:259
 msgid "Denominacion"
-msgstr "Denominacion"
+msgstr "Denominación"
 
 #: pluginbf_debug.cpp:95
 msgid ""
@@ -3634,6 +3634,9 @@ msgid ""
 "\n"
 "Activa/desactiva el modo de depuracion"
 msgstr ""
+"Depuración.\n"
+"\n"
+"Activa/desactiva el modo depuración"
 
 #: bloqmenu.cpp:70
 msgid "Desbloquear ficha"
@@ -3646,11 +3649,11 @@ msgstr "Desc&uentos"
 
 #: facturapview.cpp:355
 msgid "Desc."
-msgstr "Desc."
+msgstr "Descripción"
 
 #: ui_articleeditbase.h:622
 msgid "Descripcio&n"
-msgstr "Descripcio&n"
+msgstr "Descripció&n"
 
 #: bccentrocosteview.cpp:50 bccentrocosteview.cpp:76 bcextractosubform.cpp:50
 #: bcdiariosubform.cpp:40 bccuentaview.cpp:45 proyectoview.cpp:78
@@ -3665,88 +3668,88 @@ msgstr "Descripcio&n"
 #: listlinpedidoclienteview.cpp:50 facturaslist.cpp:370 facturaview.cpp:70
 #: listlinfacturaview.cpp:51
 msgid "Descripcion"
-msgstr "Descripcion"
+msgstr "Descripción"
 
 #: bcextractosubform.cpp:51
 msgid "Descripcion Apunte"
-msgstr "Descripcion Apunte"
+msgstr "Descripción apunte"
 
 #: bcextractosubform.cpp:52
 msgid "Descripcion Asiento"
-msgstr "Descripcion Asiento"
+msgstr "Descripción asiento"
 
 #: articulolisttpv.cpp:244 articulolist.cpp:372
 msgid "Descripcion abreviada del articulo"
-msgstr "Descripcion abreviada del articulo"
+msgstr "Descripción abreviada del artículo"
 
 #: compraventaview.cpp:74 albaranproveedorview.cpp:65
 msgid "Descripcion albaran proveedor"
-msgstr "Descripcion albaran proveedor"
+msgstr "Descripción albarán del proveedor"
 
 #: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
 #: contrato.cpp:49 contrato.cpp:50
 msgid "Descripcion contrato"
-msgstr "Descripcion contrato"
+msgstr "Descripción contrato"
 
 #: bcdiariosubform.cpp:41
 msgid "Descripcion de Cuenta"
-msgstr "Descripcion de Cuenta"
+msgstr "Descripción de cuenta"
 
 #: albaranclientelist.cpp:389
 msgid "Descripcion de forma de pago"
-msgstr "Descripcion de forma de pago"
+msgstr "Descripción de forma de pago"
 
 #: bcamortizacionview.cpp:59
 msgid "Descripcion de la amortizacion"
-msgstr "Descripcion de la amortizacion"
+msgstr "Descripción de la amortización"
 
 #: albaranesproveedor.cpp:392
 msgid "Descripcion de la forma de pago"
-msgstr "Descripcion de la forma de pago"
+msgstr "Descripción de la forma de pago"
 
 #: listlinasiento1view.cpp:43
 msgid "Descripcion del apunte"
-msgstr "Descripcion del apunte"
+msgstr "Descripción del apunte"
 
 #: asiento1.cpp:46
 msgid "Descripcion del asiento"
-msgstr "Descripcion del asiento"
+msgstr "Descripción del asiento"
 
 #: cobroview.cpp:68
 msgid "Descripcion del cobro"
-msgstr "Descripcion del cobro"
+msgstr "Descripción del cobro"
 
 #: ui_cobrobase.h:394
 msgid "Descripcion del cobro:"
-msgstr "Descripcion del cobro:"
+msgstr "Descripción del cobro:"
 
 #: ui_pagobase.h:328
 msgid "Descripcion del pago:"
-msgstr "Descripcion del pago:"
+msgstr "Descripción del pago:"
 
 #: articulolisttpv.cpp:246 articulolist.cpp:374
 msgid "Descripcion del tipo de articulo"
-msgstr "Descripcion del tipo de articulo"
+msgstr "Descripción del tipo de artículo"
 
 #: facturapview.cpp:64
 msgid "Descripcion facturap"
-msgstr "Descripcion facturap"
+msgstr "Descripción factura"
 
 #: pedidoproveedorview.cpp:61
 msgid "Descripcion pedido"
-msgstr "Descripcion pedido"
+msgstr "Descripción pedido"
 
 #: pedidosproveedorlist.cpp:320
 msgid "Descripcion pedido proveedor"
-msgstr "Descripcion pedido proveedor"
+msgstr "Descripción pedido proveedor"
 
 #: bfseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
-msgstr "Descripcion serie factura"
+msgstr "Descripción serie factura"
 
 #: articulolisttpv.cpp:247 articulolist.cpp:375
 msgid "Descripcion tipo de I.V.A."
-msgstr "Descripcion tipo de I.V.A."
+msgstr "Descripción tipo de I.V.A."
 
 #: ui_bccentrocostebase.h:284 ui_bccanalbase.h:245 ui_contratobase.h:486
 #: ui_presupuestoclientebase.h:754 ui_albaranclientebase.h:735
@@ -3755,11 +3758,11 @@ msgstr "Descripcion tipo de I.V.A."
 #: ui_familiasbase.h:359 ui_facturapbase.h:604 ui_albaranproveedorbase.h:603
 #: ui_inventariobase.h:338
 msgid "Descripcion:"
-msgstr "Descripcion:"
+msgstr "Descripción:"
 
 #: listlincontratoview.cpp:44
 msgid "Descripcionl contrato"
-msgstr "Descripcionl contrato"
+msgstr "Descripción contrato"
 
 #: ui_asientobase.h:584
 msgid "Descuadre:"
@@ -3785,23 +3788,23 @@ msgstr "Descuentos:"
 
 #: rutacomercialincview.cpp:79
 msgid "Desea borrar esta ruta?"
-msgstr "Desea borrar esta ruta?"
+msgstr "¿Desea borrar esta ruta?"
 
 #: asiento1view.cpp:332
 msgid "Desea crear un nuevo asiento en esa posicion?"
-msgstr "Desea crear un nuevo asiento en esa posicion?"
+msgstr "¿Desea crear un nuevo asiento en esa posición?"
 
 #: tiposarticuloview.cpp:385 familiasview.cpp:479
 msgid "Desea eliminar"
-msgstr "Desea eliminar"
+msgstr "¿Desea eliminar"
 
 #: blform.cpp:342
 msgid "Desea eliminar '"
-msgstr "Desea eliminar '"
+msgstr "¿Desea eliminar '"
 
 #: bccanalview.cpp:107 bccanalview.cpp:185
 msgid "Desea guardar los cambios."
-msgstr "Desea guardar los cambios."
+msgstr "¿Desea guardar los cambios?"
 
 #: bccentrocosteview.cpp:167 bccentrocosteview.cpp:227 bcformapagoview.cpp:147
 #: bcformapagoview.cpp:209 bctipoivaview.cpp:110 bctipoivaview.cpp:153
@@ -3810,15 +3813,15 @@ msgstr "Desea guardar los cambios."
 #: tiposarticuloview.cpp:291 familiasview.cpp:320 tipoactividadview.cpp:198
 #: blform.cpp:372 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
-msgstr "Desea guardar los cambios?"
+msgstr "¿Desea guardar los cambios?"
 
 #: ui_registroivabase.h:629
 msgid "DesgloseIVA"
-msgstr "DesgloseIVA"
+msgstr "Desglose IVA"
 
 #: bcbulmacont.cpp:620
 msgid "Deshaciendo la ultima accion..."
-msgstr "Deshaciendo la ultima accion..."
+msgstr "Deshaciendo la última acción..."
 
 #: bccentrocosteview.cpp:60
 msgid "Destinatario"
@@ -3839,7 +3842,7 @@ msgstr "Detalle"
 
 #: pluginbt_devolucion.cpp:75
 msgid "Devolucion"
-msgstr "Devolucion"
+msgstr "Devolución"
 
 #: ui_devolucion.h:379
 msgid "Devoluciones"
@@ -3847,11 +3850,11 @@ msgstr "Devoluciones"
 
 #: ui_bcconfiguracionbase.h:253
 msgid "Di&gitos de cuentas"
-msgstr "Di&gitos de cuentas"
+msgstr "Dí&gitos de cuentas"
 
 #: ui_proveditbase.h:784
 msgid "Di&vision:"
-msgstr "Di&vision:"
+msgstr "Di&visión:"
 
 #: ui_proveditbase.h:806
 msgid "Di&visiones"
@@ -3876,66 +3879,66 @@ msgstr "Diciembre"
 
 #: ui_bcconfiguracionbase.h:249
 msgid "Digitos estanda&r"
-msgstr "Digitos estanda&r"
+msgstr "Dígitos estánda&r"
 
 #: ui_proveditbase.h:785
 msgid "Direccio&n:"
-msgstr "Direccio&n:"
+msgstr "Direcció&n:"
 
 #: clientslist.cpp:281 clienteview.cpp:60 providerslist.cpp:291
 #: provedit.cpp:51 pluginbf_clienteproveedor.cpp:66 tutoreslist.cpp:270
 msgid "Direccion"
-msgstr "Direccion"
+msgstr "Dirección"
 
 #: ui_almacenbase.h:341
 msgid "Direccion Almacen"
-msgstr "Direccion Almacen"
+msgstr "Dirección almacén"
 
 #: clientslist.cpp:287 tutoreslist.cpp:276
 msgid "Direccion URL"
-msgstr "Direccion URL"
+msgstr "Dirección URL"
 
 #: almacenview.cpp:60
 msgid "Direccion almacen"
-msgstr "Direccion almacen"
+msgstr "Dirección almacén"
 
 #: providerslist.cpp:297
 msgid "Direccion de URL"
-msgstr "Direccion de URL"
+msgstr "Dirección de URL"
 
 #: clientslist.cpp:286 tutoreslist.cpp:275
 msgid "Direccion de correo electronica"
-msgstr "Direccion de correo electronica"
+msgstr "Dirección de correo electrónico"
 
 #: providerslist.cpp:296 cobroslist.cpp:314
 msgid "Direccion de correo electronico"
-msgstr "Direccion de correo electronico"
+msgstr "Dirección de correo electrónico"
 
 #: bccuentaview.cpp:64
 msgid "Direccion de la cuenta"
-msgstr "Direccion de la cuenta"
+msgstr "Dirección de la cuenta"
 
 #: bcamortizacionview.cpp:68
 msgid "Direccion del proveedor"
-msgstr "Direccion del proveedor"
+msgstr "Dirección del proveedor"
 
 #: clienteview.cpp:68 provedit.cpp:57 pluginbf_clienteproveedor.cpp:72
 msgid "Direccion electronica"
-msgstr "Direccion electronica"
+msgstr "Dirección electrónica"
 
 #: ui_bccuentabase.h:853 ui_clientebase.h:586 ui_trabajadorbase.h:344
 #: ui_tutorbase.h:510 ui_convocatoriabase.h:436 ui_actividadbase.h:446
 #: ui_alumnobase.h:511 ui_profesorbase.h:496
 msgid "Direccion:"
-msgstr "Direccion:"
+msgstr "Dirección:"
 
 #: articulolisttpv.cpp:249 articulolist.cpp:377
 msgid "Disponible en stock"
-msgstr "Disponible en stock"
+msgstr "Disponible en <i>stock</i>"
 
 #: pluginbl_embed.cpp:135 pluginbl_embed.cpp:136
 msgid "Dockear Aplicacion"
-msgstr "Dockear Aplicacion"
+msgstr "Adherir la aplicación"
 
 #: ui_bcdiarioprintbase.h:150
 msgid "Documento:"
@@ -3947,11 +3950,11 @@ msgstr "Domingo"
 
 #: ui_bccuentabase.h:812
 msgid "Duplicar Asiento"
-msgstr "Duplicar Asiento"
+msgstr "Duplicar asiento"
 
 #: ui_bcasientoduplicarbase.h:229
 msgid "Duplicar Asientos"
-msgstr "Duplicar Asientos"
+msgstr "Duplicar asientos"
 
 #: ui_asientobase.h:553 ui_asientobase.h:556
 msgid "Duplicar asiento"
@@ -3967,11 +3970,11 @@ msgstr "E-&mail:"
 
 #: bccuentaview.cpp:63
 msgid "E-Mail de la cuenta"
-msgstr "E-Mail de la cuenta"
+msgstr "E-mail de la cuenta"
 
 #: ui_tutorbase.h:516
 msgid "E-Mail:"
-msgstr ""
+msgstr "E-mail:"
 
 #: ui_trabajadorbase.h:349
 msgid "E-mail:"
@@ -3996,7 +3999,7 @@ msgstr "ERROR: Debe introducir una fecha en el balance anterior."
 
 #: pluginbc_cuentasanuales2ods.cpp:372 pluginbc_cuentasanuales2ods.cpp:597
 msgid "ERROR: Funcion no implementada todavia."
-msgstr "ERROR: Funcion no implementada todavia."
+msgstr "ERROR: Función no implementada todavía."
 
 #: pluginbc_cuentasanuales2ods.cpp:390
 msgid "ERROR: No se ha podido crear el archivo"
@@ -4022,42 +4025,42 @@ msgstr "Editar"
 #: ui_convocatoriaslistbase.h:328 ui_actividadeslistbase.h:325
 #: ui_actividadeslistbase.h:328
 msgid "Editar Actividad"
-msgstr "Editar Actividad"
+msgstr "Editar actividad"
 
 #: alumnoslist.cpp:217 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
 msgid "Editar Alumno"
-msgstr "Editar Alumno"
+msgstr "Editar alumno"
 
 #: convocatoriaslist.cpp:217
 msgid "Editar Convocatoria"
-msgstr ""
+msgstr "Editar convocatoria"
 
 #: ui_rutacomerciallistbase.h:310 ui_rutacomerciallistbase.h:313
 msgid "Editar Pedido"
-msgstr "Editar Pedido"
+msgstr "Editar pedido"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
 msgid "Editar Profesor"
-msgstr "Editar Profesor"
+msgstr "Editar profesor"
 
 #: tutoreslist.cpp:217 ui_tutoreslistbase.h:325 ui_tutoreslistbase.h:328
 msgid "Editar Tutor"
-msgstr "Editar Tutor"
+msgstr "Editar tutor"
 
 #: ui_albaranclientelistbase.h:450 ui_albaranclientelistbase.h:453
 #: ui_albaranesproveedorlistbase.h:436 ui_albaranesproveedorlistbase.h:439
 msgid "Editar albaran"
-msgstr "Editar albaran"
+msgstr "Editar albarán"
 
 #: ui_almaceneslistbase.h:341 ui_almaceneslistbase.h:344
 msgid "Editar almacen"
-msgstr "Editar almacen"
+msgstr "Editar almacén"
 
 #: bccuentalistview.cpp:309 articulolisttpv.cpp:160 articulolist.cpp:290
 #: pluginbf_articulo.cpp:390 pluginbf_articulo.cpp:407
 #: ui_articleslistbase.h:299 ui_articleslistbase.h:302
 msgid "Editar articulo"
-msgstr "Editar articulo"
+msgstr "Editar artículo"
 
 #: clientslist.cpp:254
 msgid "Editar cliente"
@@ -4141,17 +4144,17 @@ msgstr "Ejercicio del Informe"
 
 #: bcbloqueafechaview.cpp:267
 msgid "Ejercicios ya contemplado"
-msgstr "Ejercicios ya contemplado"
+msgstr "Ejercicio ya contemplado"
 
 #: blimportexport.cpp:2321 blimportexport.cpp:2550 blimportexport.cpp:2775
 #: blimportexport.cpp:3013
 msgid "El almacen del presupuesto no existe"
-msgstr "El almacen del presupuesto no existe"
+msgstr "El almacén del presupuesto no existe"
 
 #: blimportexport.cpp:2402 blimportexport.cpp:2628 blimportexport.cpp:2866
 #: blimportexport.cpp:3095
 msgid "El articulo de la linea de presupuesto no existe"
-msgstr "El articulo de la linea de presupuesto no existe"
+msgstr "El artículo de la línea del presupuesto no existe"
 
 #: asiento1.cpp:411
 msgid "El asiento se ha guardado correctamente."
@@ -4167,8 +4170,8 @@ msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
-"El codigo del articulo no existe.\n"
-"ATENCION: No se guadara bien el documento hasta que sea valido."
+"El código del artículo no existe.\n"
+"ATENCIÓN: No se guardará bien el documento hasta que sea válido."
 
 #: blimportexport.cpp:2351 blimportexport.cpp:2578 blimportexport.cpp:2803
 #: blimportexport.cpp:3043
@@ -4177,7 +4180,7 @@ msgstr "El empleado del presupuesto no existe"
 
 #: blimportexport.cpp:1949
 msgid "El proveedor no existe, se debe hacer una insercion de este"
-msgstr "El proveedor no existe, se debe hacer una insercion de este"
+msgstr "El proveedor no existe, se debe hacer una inserción de éste"
 
 #: blimportexport.cpp:1944
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
@@ -4193,11 +4196,11 @@ msgstr ""
 
 #: btticket.cpp:982
 msgid "El ticket esta vacio."
-msgstr "El ticket esta vacio."
+msgstr "El ticket está vacío."
 
 #: abrevs.cpp:107
 msgid "El ticket esta vacio. No se puede aparcar."
-msgstr "El ticket esta vacio. No se puede aparcar."
+msgstr "El ticket está vacío. No se puede aparcar."
 
 #: bcplancontablelistview.cpp:544 bcplancontablelistview.cpp:563
 #: clientslist.cpp:169 clientslist.cpp:192 articulolist.cpp:237
@@ -4211,15 +4214,15 @@ msgstr "Em&itida"
 
 #: ui_almacenbase.h:338
 msgid "Email Almacen"
-msgstr "Email Almacen"
+msgstr "E-mail almacén"
 
 #: pagoslist.cpp:251
 msgid "Email proveedor"
-msgstr "Email proveedor"
+msgstr "E-mail proveedor"
 
 #: pluginbl_embed.cpp:140 pluginbl_embed.cpp:141
 msgid "Embeber Aplicacion"
-msgstr "Embeber Aplicacion"
+msgstr "Embeber aplicación"
 
 #: ui_pedidoproveedorbase.h:694
 msgid "Emisor responsable:"
@@ -4274,32 +4277,32 @@ msgstr "Enviar por e-mail con Thunderbird al cliente"
 
 #: albaranesproveedor.cpp:347
 msgid "Error al borrar albaran de proveedor"
-msgstr "Error al borrar albaran de proveedor"
+msgstr "Error al borrar albarán de proveedor"
 
 #: tipoactividadview.cpp:254
 msgid "Error al borrar el TipoActividad"
-msgstr ""
+msgstr "Error al borrar el tipo actividad"
 
 #: trabajadorview.cpp:278
 msgid "Error al borrar el Trabajador"
-msgstr "Error al borrar el Trabajador"
+msgstr "Error al borrar el trabajador"
 
 #: albaranclientelist.cpp:300
 msgid "Error al borrar el albaran a cliente"
-msgstr "Error al borrar el albaran a cliente"
+msgstr "Error al borrar el albarán a cliente"
 
 #: almaceneslistview.cpp:254
 msgid "Error al borrar el almacen"
-msgstr "Error al borrar el almacen"
+msgstr "Error al borrar el almacén"
 
 #: articulolist.cpp:178
 msgid "Error al borrar el articulo"
-msgstr "Error al borrar el articulo"
+msgstr "Error al borrar el artículo"
 
 #: tutoreslist.cpp:174 convocatoriaslist.cpp:174 actividadeslist.cpp:173
 #: cobroslist.cpp:211 alumnoslist.cpp:174 profesoreslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error al borrar el cobro a cliente"
+msgstr "Error al borrar el cobro al cliente"
 
 #: pagoslist.cpp:209
 msgid "Error al borrar el pago"
@@ -4307,7 +4310,7 @@ msgstr "Error al borrar el pago"
 
 #: pedidosproveedorlist.cpp:217
 msgid "Error al borrar el pedido a proveedor"
-msgstr "Error al borrar el pedido a proveedor"
+msgstr "Error al borrar el pedido al proveedor"
 
 #: pedidosclientelist.cpp:270
 msgid "Error al borrar el pedido de cliente"
@@ -4323,15 +4326,15 @@ msgstr "Error al borrar el proveedor"
 
 #: bcamortizacionlistview.cpp:107 listproyectosview.cpp:114
 msgid "Error al borrar la amortizacion"
-msgstr "Error al borrar la amortizacion"
+msgstr "Error al borrar la amortización"
 
 #: facturaslist.cpp:273
 msgid "Error al borrar la factura a cliente"
-msgstr "Error al borrar la factura a cliente"
+msgstr "Error al borrar la factura del cliente"
 
 #: facturasplist.cpp:254
 msgid "Error al borrar la factura de proveedor"
-msgstr "Error al borrar la factura de proveedor"
+msgstr "Error al borrar la factura del proveedor"
 
 #: tiposarticuloview.cpp:425 familiasview.cpp:518
 msgid "Error al borrar la familia"
@@ -4363,16 +4366,16 @@ msgstr "Error al crear el actividad"
 
 #: compraventaview.cpp:137 albaranclienteview.cpp:119
 msgid "Error al crear el albaran a cliente"
-msgstr "Error al crear el albaran a cliente"
+msgstr "Error al crear el albarán a cliente"
 
 #: albaranproveedorview.cpp:101
 msgid "Error al crear el albaran proveedor"
-msgstr "Error al crear el albaran proveedor"
+msgstr "Error al crear el albarán del proveedor"
 
 #: proyectoview.cpp:109 cuadrante1view.cpp:85 cuadranteview.cpp:70
 #: zview.cpp:93 almacenview.cpp:76
 msgid "Error al crear el almacen"
-msgstr "Error al crear el almacen"
+msgstr "Error al crear el almacén"
 
 #: alumnoview.cpp:74
 msgid "Error al crear el alumno"
@@ -4384,7 +4387,7 @@ msgstr "Error al crear el archivo"
 
 #: articuloview.cpp:107
 msgid "Error al crear el articulo"
-msgstr "Error al crear el articulo"
+msgstr "Error al crear el artículo"
 
 #: bcasientointeligenteview.cpp:615
 msgid "Error al crear el asiento"
@@ -4408,11 +4411,11 @@ msgstr "Error al crear el pago"
 
 #: pedidoproveedorview.cpp:100
 msgid "Error al crear el pedido a proveedor"
-msgstr "Error al crear el pedido a proveedor"
+msgstr "Error al crear el pedido del proveedor"
 
 #: pedidoclienteview.cpp:97
 msgid "Error al crear el pedido cliente"
-msgstr "Error al crear el pedido cliente"
+msgstr "Error al crear el pedido del cliente"
 
 #: presupuestoview.cpp:107
 msgid "Error al crear el presupuesto"
@@ -4448,19 +4451,19 @@ msgstr "Error al crear la familia"
 
 #: importcsv.cpp:50 archivo.cpp:48
 msgid "Error al crear la ventana de importacion"
-msgstr "Error al crear la ventana de importacion"
+msgstr "Error al crear la ventana de importación"
 
 #: tipoactividadview.cpp:229
 msgid "Error al crear un nuevo TipoActividad"
-msgstr ""
+msgstr "Error al crear un nuevo tipo de actividad"
 
 #: trabajadorview.cpp:253
 msgid "Error al crear un nuevo Trabajador"
-msgstr "Error al crear un nuevo Trabajador"
+msgstr "Error al crear un nuevo trabajador"
 
 #: zlist.cpp:178 almaceneslistview.cpp:207
 msgid "Error al editar el almacen"
-msgstr "Error al editar el almacen"
+msgstr "Error al editar el almacén"
 
 #: presupuestolist.cpp:284
 msgid "Error al editar el presupuesto"
@@ -4468,7 +4471,7 @@ msgstr "Error al editar el presupuesto"
 
 #: tipoactividadview.cpp:178
 msgid "Error al guardar el tipoactividad"
-msgstr ""
+msgstr "Error al guardar el tipo de actividad"
 
 #: trabajadorview.cpp:204
 msgid "Error al guardar el trabajador"
@@ -4480,7 +4483,7 @@ msgstr "Error al guardar la familia"
 
 #: listcuotasporalumnoview.cpp:70
 msgid "Error al guardar las cuotas"
-msgstr ""
+msgstr "Error al guardar las cuotas"
 
 #: listtasaivaview.cpp:70
 msgid "Error al guardar las tasas de IVA"
@@ -4508,7 +4511,7 @@ msgstr "Error al iniciar el cuadrante"
 
 #: blcountryview.cpp:237
 msgid "Error al intentar borrar el pais"
-msgstr "Error al intentar borrar el pais"
+msgstr "Error al intentar borrar el país"
 
 #: balance1view.cpp:283 balance1view.cpp:336
 #: pluginbc_cuentasanuales2ods.cpp:74 pluginbc_cuentasanuales2ods.cpp:103
@@ -4526,7 +4529,7 @@ msgid ""
 "Documento mal formado."
 msgstr ""
 "Error en el XML.\n"
-"Documento mal formado."
+"Documento mal formateado."
 
 #: tiposarticuloview.cpp:139
 msgid "Error en la carga"
@@ -4534,15 +4537,15 @@ msgstr "Error en la carga"
 
 #: bccentrocosteview.cpp:142
 msgid "Error en la carga de centros de coste"
-msgstr "Error en la carga de centros de coste"
+msgstr "Error en la carga de los centros de coste"
 
 #: bcamortizacionview.cpp:211
 msgid "Error en la carga de la amortizacion"
-msgstr "Error en la carga de la amortizacion"
+msgstr "Error en la carga de la amortización"
 
 #: tiposarticuloview.cpp:366
 msgid "Error en la creacion"
-msgstr "Error en la creacion"
+msgstr "Error en la creación"
 
 #: genpreqtoolbutton.cpp:236 genpreqtoolbutton.cpp:362
 #: genpreqtoolbutton.cpp:491 compraventaview.cpp:533 compraventaview.cpp:684
@@ -4556,15 +4559,15 @@ msgstr "Error inesperado"
 
 #: main.cxx:184
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
-msgstr "Error inesperado en BulmaFact. El programa se cerrara."
+msgstr "Error inesperado en BulmaFact. El programa se cerrará."
 
 #: main.cxx:194
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
-msgstr "Error inesperado en BulmaTPV. El programa se cerrara."
+msgstr "Error inesperado en BulmaTPV. El programa se cerrará."
 
 #: bfform.cpp:852 compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
-msgstr "Error inesperado en la impresion"
+msgstr "Error inesperado en la impresión"
 
 #: genpreqtoolbutton.cpp:623
 msgid "Error inesperado."
@@ -4572,11 +4575,11 @@ msgstr "Error inesperado."
 
 #: bldblogindialog.cpp:109
 msgid "Error: usuario y/o contrasenya incorrectos"
-msgstr "Error: usuario y/o contrasenya incorrectos"
+msgstr "Error: usuario y/o contraseña incorrectos"
 
 #: tutorview.cpp:54
 msgid "Es Socio"
-msgstr ""
+msgstr "Es socio"
 
 #: blworkspace.cpp:90
 msgid "Esc"
@@ -4584,35 +4587,35 @@ msgstr "Esc"
 
 #: ui_blsubformbase.h:611
 msgid "Escriba aqui la consulta SQL"
-msgstr "Escriba aqui la consulta SQL"
+msgstr "Escriba aquí la consulta SQL"
 
 #: bccanalview.cpp:190
 msgid "Escriba su descripcion"
-msgstr "Escriba su descripcion"
+msgstr "Escriba su descripción"
 
 #: articulolist.cpp:168
 msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-msgstr "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+msgstr "Está a punto de borrar un artículo. Estos datos pueden dar problemas."
 
 #: inventarioview.cpp:106
 msgid "Esta a punto de borrar un inventario. Desea continuar?"
-msgstr "Esta a punto de borrar un inventario. Desea continuar?"
+msgstr "Está a punto de borrar un inventario. ¿Desea continuar?"
 
 #: tarifaview.cpp:243
 msgid "Esta a punto de borrar una tarifa. Desea continuar?"
-msgstr "Esta a punto de borrar una tarifa. Desea continuar?"
+msgstr "Está a punto de borrar una tarifa. ¿Desea continuar?"
 
 #: articuloview.cpp:310
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
 msgstr ""
-"Esta seguro que quiere borrar\n"
-"la imagen asociada a este articulo?"
+"¿Está seguro que quiere borrar\n"
+"la imagen asociada a este artículo?"
 
 #: ui_btbulmatpvbase.h:98
 msgid "Estadisticas"
-msgstr "Estadisticas"
+msgstr "Estadísticas"
 
 #: bcbloqueafechaview.cpp:115 incidenciacomercial.cpp:46
 msgid "Estado"
@@ -4628,15 +4631,15 @@ msgstr "Estado de la incidencia:"
 
 #: pluginbf_abrereferencia.cpp:36
 msgid "Estoy dentro del plugin de Abertura de Referencia"
-msgstr "Estoy dentro del plugin de Abertura de Referencia"
+msgstr "Estoy dentro del <i>plug-in</i> de Apertura de referencia"
 
 #: ui_z2zbase.h:395
 msgid "Excluir Articulo"
-msgstr "Excluir Articulo"
+msgstr "Excluir artículo"
 
 #: ui_z2zbase.h:392
 msgid "Excluir Familias"
-msgstr "Excluir Familias"
+msgstr "Excluir familias"
 
 #: genpreqtoolbutton.cpp:295 genalbqtoolbutton.cpp:159
 #: genfacqtoolbutton.cpp:293
@@ -4644,40 +4647,41 @@ msgid ""
 "Existe un albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
-"Existe un albaran a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
+"Existe un albarán a este cliente con la misma referencia que este pedido. "
+"¿Desea abrirlo para verificarlo?"
 
 #: genalbpqtoolbutton.cpp:149
 msgid ""
 "Existe un albaran de este proveedor con la misma referencia que este pedido. "
 "Desea abrirla para verificar?"
 msgstr ""
-"Existe un albaran de este proveedor con la misma referencia que este pedido. "
-"Desea abrirla para verificar?"
+"Existe un albarán de este proveedor con la misma referencia que este pedido. "
+"¿Desea abrirlo para verificarlo?"
 
 #: genpedqtoolbutton.cpp:151
 msgid ""
 "Existe un pedidocliente a este cliente con la misma referencia que este "
 "pedido. Desea abrirlo para verificar?"
 msgstr ""
-"Existe un pedidocliente a este cliente con la misma referencia que este "
-"pedido. Desea abrirlo para verificar?"
+"Existe un pedido a este cliente con la misma referencia que este "
+"pedido. "
+"¿Desea abrirlo para verificarlo?"
 
 #: genalbqtoolbutton.cpp:288
 msgid ""
 "Existe una albaran a este cliente con la misma referencia que este pedido. "
 "Desea abrirlo para verificar?"
 msgstr ""
-"Existe una albaran a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
+"Existe una albarán a este cliente con la misma referencia que este pedido. "
+"¿Desea abrirlo para verificarlo?"
 
 #: genpreqtoolbutton.cpp:167 compraventaview.cpp:587 genfacqtoolbutton.cpp:165
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
-"Existe una factura a este cliente con la misma referencia que este albaran. "
-"Desea abrirla para verificar?"
+"Existe una factura a este cliente con la misma referencia que este albarán. "
+"¿Desea abrirla para verificarlo?"
 
 #: genpreqtoolbutton.cpp:424 genfacqtoolbutton.cpp:422
 msgid ""
@@ -4685,7 +4689,7 @@ msgid ""
 "Desea abrirlo para verificar?"
 msgstr ""
 "Existe una factura a este cliente con la misma referencia que este pedido. "
-"Desea abrirlo para verificar?"
+"¿Desea abrirlo para verificarlo?"
 
 #: genfactqtoolbutton.cpp:153 genfactqtoolbutton.cpp:259
 msgid ""
@@ -4693,7 +4697,7 @@ msgid ""
 "albaran. Desea abrirla para verificar?"
 msgstr ""
 "Existe una factura de este proveedor con la misma referencia que este "
-"albaran. Desea abrirla para verificar?"
+"albarán. ¿Desea abrirla para verificarlo?"
 
 #: compraventaview.cpp:466
 msgid ""
@@ -4701,7 +4705,7 @@ msgid ""
 "albaran. Desea rehacerla ?"
 msgstr ""
 "Existe una factura de este proveedor con la misma referencia que este "
-"albaran. Desea rehacerla ?"
+"albarán. ¿Desea rehacerla?"
 
 #: blimportexport.cpp:400 blimportexport.cpp:1413
 msgid "Exportando :"
@@ -4713,7 +4717,7 @@ msgstr "Exportando datos a SXC"
 
 #: blimportexport.cpp:698
 msgid "Exportando nueva forma de pago"
-msgstr ""
+msgstr "Exportando nueva forma de pago"
 
 #: ui_clientslistbase.h:314 ui_clientslistbase.h:317 ui_clientslistbase.h:326
 #: ui_articleslistbase.h:353 ui_providerslistbase.h:319
@@ -4723,19 +4727,19 @@ msgstr "Exportar"
 
 #: ui_balancetreebase.h:410 ui_balancetreebase.h:413
 msgid "Exportar a Hoja de Calculo"
-msgstr "Exportar a Hoja de Calculo"
+msgstr "Exportar a Hoja de cálculo"
 
 #: pluginbl_subform2ods.cpp:79 pluginbl_subform2ods.cpp:91
 msgid "Exportar a hoja de calculo (ODS)"
-msgstr "Exportar a hoja de calculo (ODS)"
+msgstr "Exportar a Hoja de cálculo (ODS)"
 
 #: pluginbl_subform2sxc.cpp:78 pluginbl_subform2sxc.cpp:90
 msgid "Exportar a hoja de calculo (SXC)"
-msgstr "Exportar a hoja de calculo (SXC)"
+msgstr "Exportar a Hoja de cálculo (SXC)"
 
 #: ui_articleslistbase.h:341 ui_articleslistbase.h:344
 msgid "Exportar articulos"
-msgstr "Exportar articulos"
+msgstr "Exportar artículos"
 
 #: ui_asientobase.h:561 ui_asientobase.h:564
 msgid "Exportar asiento"
@@ -4751,11 +4755,11 @@ msgstr "Extender asiento"
 
 #: pluginbf_asterisk.cpp:128
 msgid "Extension."
-msgstr "Extension."
+msgstr "Extensión."
 
 #: ui_bcextractobase.h:623 bcextractoview.cpp:55
 msgid "Extracto de Cuentas"
-msgstr "Extracto de Cuentas"
+msgstr "Extracto de cuentas"
 
 #: ui_bcbulmacontbase.h:380 ui_bfbulmafactbase.h:165
 msgid "F1"
@@ -4790,7 +4794,7 @@ msgstr "Factura"
 
 #: facturapview.cpp:54
 msgid "Factura Proveedor"
-msgstr "Factura Proveedor"
+msgstr "Factura de proveedor"
 
 #: compraventaview.cpp:465 genfactqtoolbutton.cpp:152
 #: genfactqtoolbutton.cpp:258
@@ -4808,19 +4812,19 @@ msgstr "Factura existente"
 #: genpreqtoolbutton.cpp:423 genalbqtoolbutton.cpp:287
 #: genfacqtoolbutton.cpp:421
 msgid "Factura ya existe"
-msgstr "Factura ya existe"
+msgstr "La factura ya existe"
 
 #: bfcompany.cpp:98
 msgid "Facturacion GPL"
-msgstr "Facturacion GPL"
+msgstr "Facturación GPL"
 
 #: ui_btaboutbase.h:278
 msgid "Facturacion GPL - Version 0.10.1 -"
-msgstr "Facturacion GPL - Version 0.10.1 -"
+msgstr "Facturación GPL - Versión 0.10.1 -"
 
 #: ui_bfaboutbase.h:287
 msgid "Facturacion GPL - Version 0.11.1 -"
-msgstr "Facturacion GPL - Version 0.11.1 -"
+msgstr "Facturación GPL - Versión 0.11.1 -"
 
 #: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
 #: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
@@ -4832,7 +4836,7 @@ msgstr "Facturado"
 #: ui_contratoslistbase.h:300 ui_contratoslistbase.h:303 ui_contratobase.h:472
 #: ui_contratobase.h:475
 msgid "Facturar Periodos Pendientes"
-msgstr "Facturar Periodos Pendientes"
+msgstr "Facturar períodos pendientes"
 
 #: ui_facturaslistbase.h:428 movimientosview.cpp:149 facturaslist.cpp:240
 #: pluginbf_clientefactura.cpp:100 pluginbf_clientefactura.cpp:101
@@ -4867,11 +4871,11 @@ msgstr "Familias"
 
 #: ui_almacenbase.h:339
 msgid "Fax Almacen"
-msgstr "Fax Almacen"
+msgstr "Fax almacén"
 
 #: almacenview.cpp:64
 msgid "Fax almacen"
-msgstr "Fax almacen"
+msgstr "Fax almacén"
 
 #: bcbloqueafechaview.cpp:187 pcapgc07.cpp:42
 msgid "Febrero"
@@ -4900,49 +4904,49 @@ msgstr "Fecha &inicial:"
 
 #: bcamortizacionlistview.cpp:50
 msgid "Fecha 1 cuota"
-msgstr "Fecha 1 cuota"
+msgstr "Fecha 1.ª cuota"
 
 #: bcamortizacionview.cpp:61
 msgid "Fecha 1a cuota"
-msgstr "Fecha 1a cuota"
+msgstr "Fecha 1.ª cuota"
 
 #: ui_bcamortizacionbase.h:663
 msgid "Fecha 1ª cuota:"
-msgstr "Fecha 1ª cuota:"
+msgstr "Fecha 1.ª cuota"
 
 #: listtasaivaview.cpp:98
 msgid "Fecha Entrada en Vigor"
-msgstr "Fecha Entrada en Vigor"
+msgstr "Fecha entrada en vigor"
 
 #: listlinasiento1view.cpp:61 ui_registroivabase.h:616
 msgid "Fecha Factura"
-msgstr "Fecha Factura"
+msgstr "Fecha factura"
 
 #: ui_bcregistroivaimprimirbase.h:218 ui_bccambiacuentabase.h:238
 #: ui_bccuentasanualesimprimirbase.h:198 ui_bccuentasanualesimprimirbase.h:201
 #: ui_cobropagobase.h:400 ui_balanceprintbase.h:309 ui_balancesprintdlg.h:200
 #: actividadeslist.cpp:268 actividadview.cpp:58 ui_actividadbase.h:451
 msgid "Fecha Final"
-msgstr "Fecha Final"
+msgstr "Fecha final"
 
 #: ui_bcregistroivaimprimirbase.h:216 ui_bccambiacuentabase.h:239
 #: ui_bccuentasanualesimprimirbase.h:197 ui_bccuentasanualesimprimirbase.h:200
 #: ui_cobropagobase.h:399 ui_balanceprintbase.h:307 ui_balancesprintdlg.h:199
 #: actividadeslist.cpp:267 actividadview.cpp:57 ui_actividadbase.h:450
 msgid "Fecha Inicial"
-msgstr "Fecha Inicial"
+msgstr "Fecha inicial"
 
 #: ui_alumnobase.h:508
 msgid "Fecha Nacimiento:"
-msgstr ""
+msgstr "Fecha nacimiento:"
 
 #: compraventaview.cpp:68 albaranproveedorview.cpp:59
 msgid "Fecha albaran proveedor"
-msgstr "Fecha albaran proveedor"
+msgstr "Fecha del albarán del proveedor"
 
 #: almacenview.cpp:66
 msgid "Fecha almacen"
-msgstr "Fecha almacen"
+msgstr "Fecha almacén"
 
 #: ui_datosbase.h:139 ui_datosbase.h:141
 msgid "Fecha balance:"
@@ -4962,15 +4966,15 @@ msgstr "Fecha compra"
 
 #: ui_bcasientoduplicarbase.h:235
 msgid "Fecha con la que quedara el asiento:"
-msgstr "Fecha con la que quedara el asiento:"
+msgstr "Fecha con la que quedará el asiento:"
 
 #: ui_inventariobase.h:339
 msgid "Fecha creacion:"
-msgstr "Fecha creacion:"
+msgstr "Fecha creación:"
 
 #: albaranclientelist.cpp:386
 msgid "Fecha de albaran"
-msgstr "Fecha de albaran"
+msgstr "Fecha de albarán"
 
 #: clientslist.cpp:289 clienteview.cpp:70 tutoreslist.cpp:278
 msgid "Fecha de alta del cliente"
@@ -4998,13 +5002,13 @@ msgstr "Fecha de compra:"
 
 #: presupuestoview.cpp:64 compraventaview.cpp:86 albaranclienteview.cpp:76
 msgid "Fecha de creacion"
-msgstr "Fecha de creacion"
+msgstr "Fecha creación:"
 
 #: ui_contratobase.h:490 ui_presupuestoclientebase.h:758
 #: ui_albaranclientebase.h:739 ui_pedidoclientebase.h:671 ui_facturabase.h:684
 #: ui_compraventabase.h:884 ui_albaranproveedorbase.h:605
 msgid "Fecha de creacion:"
-msgstr "Fecha de creacion:"
+msgstr "Fecha creación:"
 
 #: listregistroivaview.cpp:54
 msgid "Fecha de factura"
@@ -5016,7 +5020,7 @@ msgstr "Fecha de factura:"
 
 #: ui_contratobase.h:489
 msgid "Fecha de finalizacion:"
-msgstr "Fecha de finalizacion:"
+msgstr "Fecha de finalización:"
 
 #: bcamortizacionview.cpp:60
 msgid "Fecha de la compra"
@@ -5064,7 +5068,7 @@ msgstr "Fecha del pedido:"
 
 #: registroiva.cpp:61
 msgid "Fecha emision"
-msgstr "Fecha emision"
+msgstr "Fecha de emisión"
 
 #: registroiva.cpp:50 facturasplist.cpp:355
 msgid "Fecha factura"
@@ -5084,7 +5088,7 @@ msgstr "Fecha final ejercicio:"
 
 #: bccompany.cpp:849
 msgid "Fecha final regularizacion:"
-msgstr "Fecha final regularizacion:"
+msgstr "Fecha final regularización:"
 
 #: ui_bcmodelo347listbase.h:262 ui_bcdiariobase.h:372 ui_bcextractobase.h:634
 #: ui_listregistroivabase.h:353 ui_balancebase.h:444 ui_balancetreebase.h:399
@@ -5118,7 +5122,7 @@ msgstr "Fecha inicial ejercicio:"
 
 #: bccompany.cpp:840
 msgid "Fecha inicial regularizacion:"
-msgstr "Fecha inicial regularizacion:"
+msgstr "Fecha inicial regularización:"
 
 #: ui_bcmodelo347listbase.h:263 ui_bcasientoduplicarbase.h:231
 #: ui_bcdiariobase.h:371 ui_bcextractobase.h:633 ui_listregistroivabase.h:352
@@ -5137,7 +5141,7 @@ msgstr "Fecha inicial:"
 
 #: ui_convocatoriabase.h:445
 msgid "Fecha inscripcion"
-msgstr "Fecha inscripcion"
+msgstr "Fecha inscripción"
 
 #: inventario.cpp:42
 msgid "Fecha inventario"
@@ -5153,7 +5157,7 @@ msgstr "Fecha prevista"
 
 #: ui_registroivabase.h:617
 msgid "Fecha recepcion:"
-msgstr "Fecha recepcion:"
+msgstr "Fecha recepción:"
 
 #: rutacomerciallist.cpp:287
 msgid "Fecha ruta comercial"
@@ -5174,7 +5178,7 @@ msgstr "Fecha: "
 
 #: ui_devolucion.h:383 ui_untitled.h:296
 msgid "Fecha: del ticket"
-msgstr "Fecha: del ticket"
+msgstr "Fecha del ticket"
 
 #: cuadrante1view.cpp:65 ui_cuadrante1base.h:333
 msgid "Festivo"
@@ -5182,11 +5186,11 @@ msgstr "Festivo"
 
 #: facturaview.cpp:65
 msgid "Ffactura"
-msgstr "Ffactura"
+msgstr "Factura"
 
 #: pluginbl_formlock.cpp:64
 msgid "Ficha bloqueada por otro usuario, no podra hacer modificaciones"
-msgstr "Ficha bloqueada por otro usuario, no podra hacer modificaciones"
+msgstr "Ficha bloqueada por otro usuario, no podrá hacer modificaciones"
 
 #: ui_bfbulmafactbase.h:199 ui_bfbulmafactbase.h:201 ui_bfbulmafactbase.h:204
 #: ui_bfbulmafactbase.h:207 ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:213
@@ -5199,11 +5203,11 @@ msgstr "Fiesta general"
 
 #: ui_blsubformbase.h:604
 msgid "Filas por pagina:"
-msgstr "Filas por pagina:"
+msgstr "Filas por página:"
 
 #: ui_tarifabase.h:257
 msgid "Filtrado de articulos:"
-msgstr "Filtrado de articulos:"
+msgstr "Filtrado de artículos:"
 
 #: ui_asientolistbase.h:438 ui_asientolistbase.h:441 ui_balancetreebase.h:396
 #: ui_balancetreebase.h:399 ui_movimientosbase.h:276 ui_movimientosbase.h:279
@@ -5213,23 +5217,23 @@ msgstr "Filtrar"
 #: ui_convocatoriaslistbase.h:349 ui_convocatoriaslistbase.h:352
 #: ui_actividadeslistbase.h:349 ui_actividadeslistbase.h:352
 msgid "Filtrar Actividades"
-msgstr "Filtrar Actividades"
+msgstr "Filtrar actividades"
 
 #: ui_alumnoslistbase.h:349 ui_alumnoslistbase.h:352
 msgid "Filtrar Alumnos"
-msgstr "Filtrar Alumnos"
+msgstr "Filtrar alumnos"
 
 #: ui_rutacomerciallistbase.h:331
 msgid "Filtrar Pedidos"
-msgstr "Filtrar Pedidos"
+msgstr "Filtrar pedidos"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
 msgid "Filtrar Profesores"
-msgstr "Filtrar Profesores"
+msgstr "Filtrar profesores"
 
 #: ui_tutoreslistbase.h:349 ui_tutoreslistbase.h:352
 msgid "Filtrar Tutores"
-msgstr "Filtrar Tutores"
+msgstr "Filtrar tutores"
 
 #: ui_albaranclientelistbase.h:474 ui_albaranclientelistbase.h:477
 #: ui_albaranesproveedorlistbase.h:460 ui_albaranesproveedorlistbase.h:463
@@ -5276,7 +5280,7 @@ msgstr "Filtrar pedidos"
 
 #: ui_rutacomerciallistbase.h:334
 msgid "FiltrarPedidos"
-msgstr "FiltrarPedidos"
+msgstr "Filtrar pedidos"
 
 #: ui_bcbulmacontbase.h:388
 msgid "Fin"
@@ -5305,11 +5309,11 @@ msgstr "Form1"
 
 #: ui_tutorbase.h:517
 msgid "Forma Pago"
-msgstr ""
+msgstr "Forma de pago"
 
 #: bcformapagoview.cpp:36 tutorview.cpp:65
 msgid "Forma de Pago"
-msgstr "Forma de Pago"
+msgstr "Forma de pago"
 
 #: registroiva.cpp:54 clienteview.cpp:78 presupuestoview.cpp:72
 #: compraventaview.cpp:91 albaranclienteview.cpp:81 zview.cpp:79
@@ -5326,7 +5330,7 @@ msgstr "Forma de pago:"
 
 #: pedidoclienteview.cpp:65
 msgid "Forma pago"
-msgstr "Forma pago"
+msgstr "Forma de pago"
 
 #: provedit.cpp:62
 msgid "Forma_Pago"
@@ -5363,7 +5367,7 @@ msgstr "Formulario 300"
 
 #: ui_alumnobase.h:520
 msgid "Fotografia"
-msgstr "Fotografia"
+msgstr "Fotografía"
 
 #: ui_proyectobase.h:268
 msgid "Gastos"
@@ -5371,7 +5375,7 @@ msgstr "Gastos"
 
 #: ui_q19base.h:220
 msgid "Generacion Q19"
-msgstr "Generacion Q19"
+msgstr "Generación Q19"
 
 #: ui_bccentrocostebase.h:285 ui_bcmasapatrimonialbase.h:362
 #: ui_proyectobase.h:267 ui_trabajadorbase.h:350 ui_tipoactividadbase.h:260
@@ -5381,16 +5385,16 @@ msgstr "General"
 
 #: bcextractoview.cpp:836
 msgid "Generando Extracto "
-msgstr "Generando Extracto "
+msgstr "Generando extracto "
 
 #: cuadranteview.cpp:159 informeqtoolbutton.cpp:132 informeqtoolbutton.cpp:179
 #: informeqtoolbutton1.cpp:179
 msgid "Generando Informe"
-msgstr "Generando Informe"
+msgstr "Generando informe"
 
 #: catalogoqtoolbutton.cpp:146
 msgid "Generando catalogo"
-msgstr "Generando catalogo"
+msgstr "Generando catálogo"
 
 #: informeqtoolbutton.cpp:488 informeqtoolbutton.cpp:432
 #: informeqtoolbutton1.cpp:434
@@ -5399,7 +5403,7 @@ msgstr "Generando informe"
 
 #: ui_cobropagobase.h:362 ui_cobropagobase.h:365
 msgid "Generar Asiento"
-msgstr "Generar Asiento"
+msgstr "Generar asiento"
 
 #: bcamortizacionview.cpp:381 bcamortizacionview.cpp:447
 msgid "Generar asiento"
@@ -5419,11 +5423,11 @@ msgstr "Generar de todas formas"
 
 #: ui_compraventabase.h:850 ui_compraventabase.h:853
 msgid "Generar factura a partir de este albaran"
-msgstr "Generar factura a partir de este albaran"
+msgstr "Generar factura a partir de este albarán"
 
 #: ui_cobropagobase.h:359
 msgid "Gestion de Cobros y Pagos"
-msgstr "Gestion de Cobros y Pagos"
+msgstr "Gestión de cobros y pagos"
 
 #: ui_balancebase.h:448 ui_balancebase.h:441
 msgid "GroupBox"
@@ -5441,15 +5445,15 @@ msgstr "Guardar"
 
 #: ui_contratobase.h:458 ui_contratobase.h:461
 msgid "Guardar Contrato"
-msgstr "Guardar Contrato"
+msgstr "Guardar contrato"
 
 #: ui_rutacomercialincbase.h:207 ui_rutacomercialincbase.h:210
 msgid "Guardar Factura"
-msgstr "Guardar Factura"
+msgstr "Guardar factura"
 
 #: ui_familiasbase.h:336 ui_familiasbase.h:339
 msgid "Guardar Familia"
-msgstr "Guardar Familia"
+msgstr "Guardar familia"
 
 #: bcdiarioview.cpp:162
 msgid "Guardar Libro Diario"
@@ -5457,34 +5461,34 @@ msgstr "Guardar Libro Diario"
 
 #: ui_proyectobase.h:244 ui_proyectobase.h:247
 msgid "Guardar Proyecto"
-msgstr "Guardar Proyecto"
+msgstr "Guardar proyecto"
 
 #: ui_tipoactividadbase.h:245 ui_tipoactividadbase.h:248
 msgid "Guardar Tipo de Actividad"
-msgstr ""
+msgstr "Guardar tipo de actividad"
 
 #: tiposarticuloview.cpp:290
 msgid "Guardar Tipo de Articulo"
-msgstr "Guardar Tipo de Articulo"
+msgstr "Guardar tipo de artículo"
 
 #: ui_tiposarticulobase.h:256 ui_tiposarticulobase.h:259
 msgid "Guardar Tipo de articulo"
-msgstr "Guardar Tipo de articulo"
+msgstr "Guardar tipo de artículo"
 
 #: ui_albaranclientebase.h:700 ui_albaranclientebase.h:703
 #: ui_compraventabase.h:822 ui_compraventabase.h:825
 #: ui_albaranproveedorbase.h:572 ui_albaranproveedorbase.h:575
 msgid "Guardar albaran"
-msgstr "Guardar albaran"
+msgstr "Guardar albarán"
 
 #: ui_cuadrante1base.h:313 ui_cuadrante1base.h:316 ui_zbase.h:286
 #: ui_zbase.h:289 ui_almacenbase.h:320 ui_almacenbase.h:323
 msgid "Guardar almacen"
-msgstr "Guardar almacen"
+msgstr "Guardar almacén"
 
 #: ui_bcamortizacionbase.h:637 ui_bcamortizacionbase.h:640
 msgid "Guardar amortizacion"
-msgstr "Guardar amortizacion"
+msgstr "Guardar amortización"
 
 #: ui_asientobase.h:508 ui_asientobase.h:511
 msgid "Guardar asiento"
@@ -5519,7 +5523,7 @@ msgstr "Guardar cuenta"
 
 #: tipoactividadview.cpp:197
 msgid "Guardar datos del tipoactividad"
-msgstr ""
+msgstr "Guardar datos del tipo de actividad"
 
 #: trabajadorview.cpp:221
 msgid "Guardar datos del trabajador"
@@ -5548,7 +5552,7 @@ msgstr "Guardar la incidencia"
 
 #: bcextractoview.cpp:244
 msgid "Guardar libro diario"
-msgstr "Guardar libro diario"
+msgstr "Guardar Libro Diario"
 
 #: ui_pagobase.h:312 ui_pagobase.h:315
 msgid "Guardar pago"
@@ -5557,7 +5561,7 @@ msgstr "Guardar pago"
 #: ui_blcountrybase.h:289 ui_blcountrybase.h:292 blcountryview.cpp:116
 #: blcountryview.cpp:188
 msgid "Guardar pais"
-msgstr "Guardar pais"
+msgstr "Guardar país"
 
 #: ui_pedidoclientebase.h:639 ui_pedidoclientebase.h:642
 #: ui_pedidoproveedorbase.h:659 ui_pedidoproveedorbase.h:662
@@ -5627,7 +5631,7 @@ msgstr "Hijos"
 
 #: ui_compraventabase.h:820
 msgid "Hoja de Compra Venta"
-msgstr "Hoja de Compra Venta"
+msgstr "Hoja de compra/venta"
 
 #: btticket.cpp:48 rutacomercial.cpp:46 incidenciacomercial.cpp:47
 #: cuadrantediarioview.cpp:72 pluginbf_asterisk.cpp:100
@@ -5638,11 +5642,11 @@ msgstr "Hora"
 
 #: cuadrante1view.cpp:74
 msgid "Hora Fin"
-msgstr "Hora Fin"
+msgstr "Hora fin"
 
 #: cuadrante1view.cpp:73
 msgid "Hora Inicio"
-msgstr "Hora Inicio"
+msgstr "Hora inicio"
 
 #: rutacomerciallist.cpp:304
 msgid "Hora de la incidencia"
@@ -5684,7 +5688,7 @@ msgstr ""
 
 #: pcaapgc08.cpp:581 pcapgc08.cpp:979
 msgid "I. Por valoracion de instrumentos financieros."
-msgstr "I. Por valoracion de instrumentos financieros."
+msgstr "I. Por valoración de instrumentos financieros."
 
 #: pcapgc08.cpp:485
 msgid "I. Provisiones a largo plazo."
@@ -5692,7 +5696,7 @@ msgstr "I. Provisiones a largo plazo."
 
 #: bfform.cpp:406
 msgid "I.R.P.F (-"
-msgstr "I.R.P.F (-"
+msgstr "I.R.P.F. (-"
 
 #: ui_albaranproveedorbase.h:613
 msgid "I.R.P.F."
@@ -5710,28 +5714,28 @@ msgstr "I.V.A."
 
 #: actividadeslist.cpp:261
 msgid "ID Actividad"
-msgstr "ID Actividad"
+msgstr "ID actividad"
 
 #: listlinasiento1view.cpp:49 listregistroivaview.cpp:61
 #: listregistroivaview.cpp:85
 msgid "ID Canal"
-msgstr "ID Canal"
+msgstr "ID canal"
 
 #: convocatoriaslist.cpp:262
 msgid "ID Convocatoria"
-msgstr ""
+msgstr "ID convocatoria"
 
 #: cuadrante1view.cpp:75
 msgid "ID Cuadrante"
-msgstr "ID Cuadrante"
+msgstr "ID cuadrante"
 
 #: pluginbf_inventario.cpp:126
 msgid "ID Trabajador"
-msgstr "ID Trabajador"
+msgstr "ID trabajador"
 
 #: pluginbf_inventario.cpp:125
 msgid "ID Validacion"
-msgstr "ID Validacion"
+msgstr "ID validación"
 
 #: zlist.cpp:56
 msgid "ID Z"
@@ -5743,7 +5747,7 @@ msgstr "ID actividad"
 
 #: albaranclientelist.cpp:392 albaranesproveedor.cpp:380
 msgid "ID albaran"
-msgstr "ID albaran"
+msgstr "ID albarán"
 
 #: proyectoview.cpp:56 presupuestolist.cpp:364 pluginbf_tarifa.cpp:186
 #: listltarifaview.cpp:38 listltarifaview.cpp:62 albaranclientelist.cpp:394
@@ -5751,12 +5755,12 @@ msgstr "ID albaran"
 #: pluginbf_tipotrabajo.cpp:199 almacenview.cpp:57 almaceneslistview.cpp:56
 #: almaceneslistview.cpp:90
 msgid "ID almacen"
-msgstr "ID almacen"
+msgstr "ID almacén"
 
 #: articulolisttpv.cpp:241 articulolist.cpp:369 comparticulolistview.cpp:46
 #: pluginbf_tarifa.cpp:183 listltarifaview.cpp:37 listltarifaview.cpp:61
 msgid "ID articulo"
-msgstr "ID articulo"
+msgstr "ID artículo"
 
 #: pluginbf_cuadrante.cpp:249
 msgid "ID ausencia"
@@ -5836,7 +5840,7 @@ msgstr "ID tarifa"
 
 #: actividadview.cpp:52
 msgid "ID tipo actividad"
-msgstr ""
+msgstr "ID tipo actividad"
 
 #: pluginbf_tipotrabajo.cpp:200
 msgid "ID tipo de trabajo"
@@ -5844,7 +5848,7 @@ msgstr "ID tipo de trabajo"
 
 #: bctipoivaview.cpp:43
 msgid "ID tipo iva"
-msgstr "ID tipo iva"
+msgstr "ID tipo IVA"
 
 #: rutacomerciallist.cpp:292 presupuestolist.cpp:362
 #: pluginbf_cuadrante.cpp:250 cuadrante1view.cpp:76 albaranclientelist.cpp:390
@@ -5858,7 +5862,7 @@ msgstr "ID tutor"
 
 #: pluginbf_tarifa.cpp:182
 msgid "ID variacion tarifa"
-msgstr "ID variacion tarifa"
+msgstr "ID variación de tarifa"
 
 #: listzonacomercialview.cpp:77 rutacomerciallist.cpp:286
 msgid "ID zona comercial"
@@ -5886,7 +5890,7 @@ msgstr "II. Por coberturas de flujos de efectivo."
 
 #: pcapgc08.cpp:387
 msgid "II. Prima de emision."
-msgstr "II. Prima de emision."
+msgstr "II. Prima de emisión."
 
 #: pcapgc08.cpp:567
 msgid "II. Provisiones a corto plazo."
@@ -5954,7 +5958,7 @@ msgstr "IV. Pasivos por impuesto diferido."
 
 #: pcapgc08.cpp:1005
 msgid "IV. Por ganancias y perdidas actuariales y otros ajustes"
-msgstr "IV. Por ganancias y perdidas actuariales y otros ajustes"
+msgstr "IV. Por ganancias y pérdidas actuariales y otros ajustes"
 
 #: registroiva.cpp:49 listregistroivaview.cpp:53 btticket.cpp:91
 #: listlresarticulo.cpp:43 listlresarticulo.cpp:86 listlresarticulo.cpp:129
@@ -5968,7 +5972,7 @@ msgstr "IVA "
 
 #: pluginbt_ivaincluido.cpp:43
 msgid "IVA inc."
-msgstr "IVA inc."
+msgstr "IVA incluido"
 
 #: ui_listregistroivabase.h:359
 msgid "IVA repercutido:"
@@ -5998,75 +6002,75 @@ msgstr "Id"
 
 #: actividadview.cpp:172
 msgid "Id Actividad"
-msgstr ""
+msgstr "ID actividad"
 
 #: btticket.cpp:87
 msgid "Id Albaran"
-msgstr "Id Albaran"
+msgstr "ID albarán"
 
 #: pluginbf_inventario.cpp:123
 msgid "Id Almacen"
-msgstr "Id Almacen"
+msgstr "ID almacén"
 
 #: plugin_tc_articulos.cpp:78
 msgid "Id Articulo"
-msgstr "Id Articulo"
+msgstr "ID artículo"
 
 #: proyectoview.cpp:57
 msgid "Id CCoste"
-msgstr "Id CCoste"
+msgstr "ID centro de coste"
 
 #: listcoloresview.cpp:99
 msgid "Id Color"
-msgstr "Id Color"
+msgstr "ID color"
 
 #: listtasaivaview.cpp:93
 msgid "Id Tasa IVA"
-msgstr "Id Tasa IVA"
+msgstr "ID tasa IVA"
 
 #: listtipoivaview.cpp:105 listtasaivaview.cpp:95
 msgid "Id Tipo IVA"
-msgstr "Id Tipo IVA"
+msgstr "ID tipo IVA"
 
 #: alumnoview.cpp:205
 msgid "Id actividad"
-msgstr ""
+msgstr "ID actividad"
 
 #: btticket.cpp:46 bfclientealbaransubform.cpp:55
 #: bfproveedoralbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
 #: compraventaview.cpp:82 albaranclienteview.cpp:72 zview.cpp:72
 #: listdescalbaranprovview.cpp:43
 msgid "Id albaran"
-msgstr "Id albaran"
+msgstr "ID albarán"
 
 #: movimientosview.cpp:185
 msgid "Id albaran cliente"
-msgstr "Id albaran cliente"
+msgstr "ID albarán cliente"
 
 #: compraventaview.cpp:66 movimientosview.cpp:186 albaranproveedorview.cpp:57
 msgid "Id albaran proveedor"
-msgstr "Id albaran proveedor"
+msgstr "ID albarán proveedor"
 
 #: contratoview.cpp:419 compraventaview.cpp:72 pedidosproveedorlist.cpp:328
 #: pedidoproveedorview.cpp:56 pluginbf_asterisk.cpp:107
 #: pluginbf_asterisk.cpp:167 movimientosview.cpp:182
 #: albaranproveedorview.cpp:63 listalmacenview.cpp:96 facturaslist.cpp:380
 msgid "Id almacen"
-msgstr "Id almacen"
+msgstr "ID almacén"
 
 #: tutorview.cpp:223 actividadview.cpp:170 alumnoview.cpp:51
 #: alumnoview.cpp:170 alumnoview.cpp:203 alumnoslist.cpp:262
 msgid "Id alumno"
-msgstr "Id alumno"
+msgstr "ID alumno"
 
 #: bcamortizacionview.cpp:71 bcamortizacionview.cpp:83
 #: bcamortizacionlistview.cpp:47
 msgid "Id amortizacion"
-msgstr "Id amortizacion"
+msgstr "ID amortización"
 
 #: listlinasiento1view.cpp:39
 msgid "Id apunte"
-msgstr "Id apunte"
+msgstr "ID apunte"
 
 #: btticket.cpp:96 bfclientealbaransubform.cpp:45
 #: bfproveedoralbaransubform.cpp:47 listlincontratoview.cpp:40
@@ -6075,185 +6079,185 @@ msgstr "Id apunte"
 #: listlinpedidoclienteview.cpp:46 listcontrolstockview.cpp:41
 #: listlinfacturaview.cpp:47
 msgid "Id articulo"
-msgstr "Id articulo"
+msgstr "ID artículo"
 
 #: bcamortizacionview.cpp:81 asiento1.cpp:45 listlinasiento1view.cpp:57
 #: asientolistsubform.cpp:44
 msgid "Id asiento"
-msgstr "Id asiento"
+msgstr "ID asiento"
 
 #: listlinasiento1view.cpp:56
 msgid "Id borrador"
-msgstr "Id borrador"
+msgstr "ID borrador"
 
 #: bccentrocosteview.cpp:76 listlinasiento1view.cpp:52
 msgid "Id centro de coste"
-msgstr "Id centro de coste"
+msgstr "ID centro de coste"
 
 #: contratoview.cpp:418 contrato.cpp:43 facturaslist.cpp:379
 msgid "Id cliente"
-msgstr "Id cliente"
+msgstr "ID cliente"
 
 #: cobroview.cpp:61
 msgid "Id cobro"
-msgstr "Id cobro"
+msgstr "ID cobro"
 
 #: listtallasview.cpp:99
 msgid "Id color"
-msgstr "Id color"
+msgstr "ID color"
 
 #: bcextractosubform.cpp:64
 msgid "Id contrapartida"
-msgstr "Id contrapartida"
+msgstr "ID contrapartida"
 
 #: listlincontratoview.cpp:47 contrato.cpp:42
 msgid "Id contrato"
-msgstr "Id contrato"
+msgstr "ID contrato"
 
 #: listlinasiento1view.cpp:58
 msgid "Id cuenta"
-msgstr "Id cuenta"
+msgstr "ID cuenta"
 
 #: bcamortizacionview.cpp:73
 msgid "Id cuenta amortizacion"
-msgstr "Id cuenta amortizacion"
+msgstr "ID cuenta amortización"
 
 #: bfclientealbarandescuentosubform.cpp:41 listdescpresupuestoview.cpp:40
 #: listdescpedidoproveedorview.cpp:39 listdescfacturaprovview.cpp:40
 #: listdescalbaranprovview.cpp:40 listdescpedidoclienteview.cpp:40
 #: listdescfacturaview.cpp:40
 msgid "Id descuento"
-msgstr "Id descuento"
+msgstr "ID descuento"
 
 #: contratoview.cpp:410 facturasplist.cpp:352 listdescfacturaprovview.cpp:43
 #: facturaslist.cpp:371 facturaview.cpp:61 listlinfacturaview.cpp:57
 #: listdescfacturaview.cpp:43
 msgid "Id factura"
-msgstr "Id factura"
+msgstr "ID factura"
 
 #: facturapview.cpp:57
 msgid "Id facturap"
-msgstr "Id facturap"
+msgstr "ID factura"
 
 #: familiasview.cpp:51
 msgid "Id familia"
-msgstr "Id familia"
+msgstr "ID familia"
 
 #: btticket.cpp:47
 msgid "Id fechaalbaran"
-msgstr "Id fechaalbaran"
+msgstr "ID fecha albarán"
 
 #: btticket.cpp:55 compraventaview.cpp:71 pedidoproveedorview.cpp:63
 #: pluginbf_clienteproveedor.cpp:77 facturapview.cpp:66 zview.cpp:78
 #: albaranproveedorview.cpp:62
 msgid "Id forma de pago"
-msgstr "Id forma de pago"
+msgstr "ID forma de pago"
 
 #: inventariosview.cpp:279
 msgid "Id inventario"
-msgstr "Id inventario"
+msgstr "ID inventario"
 
 #: btticket.cpp:88
 msgid "Id lalbaran"
-msgstr "Id lalbaran"
+msgstr "ID albarán"
 
 #: proyectoview.cpp:79 proyectoview.cpp:98
 msgid "Id linea de Ingreso Presupuesto"
-msgstr "Id linea de Ingreso Presupuesto"
+msgstr "ID línea de ingreso presupuesto"
 
 #: bcamortizacionview.cpp:82
 msgid "Id lineas de amortizacion"
-msgstr "Id lineas de amortizacion"
+msgstr "ID líneas de amortización"
 
 #: pagoslist.cpp:246 pagoview.cpp:61
 msgid "Id pago"
-msgstr "Id pago"
+msgstr "ID pago"
 
 #: blcountryview.cpp:48 blcountryview.cpp:60 blcountryview.cpp:70
 msgid "Id pais"
-msgstr ""
+msgstr "ID país"
 
 #: pedidosproveedorlist.cpp:325 listdescpedidoproveedorview.cpp:42
 #: listlinpedidoproveedorview.cpp:50 listdescpedidoclienteview.cpp:43
 msgid "Id pedido"
-msgstr "Id pedido"
+msgstr "ID pedido"
 
 #: listlinpedidoclienteview.cpp:56
 msgid "Id pedido cliente"
-msgstr "Id pedido cliente"
+msgstr "ID pedido cliente"
 
 #: pedidoproveedorview.cpp:54
 msgid "Id pedido proveedor"
-msgstr "Id pedido proveedor"
+msgstr "ID pedido proveedor"
 
 #: listdescpresupuestoview.cpp:43 listlinpresupuestoview.cpp:56
 msgid "Id presupuesto"
-msgstr "Id presupuesto"
+msgstr "ID presupuesto"
 
 #: convocatoriaview.cpp:53 actividadview.cpp:55 profesoreslist.cpp:262
 msgid "Id profesor"
-msgstr "Id profesor"
+msgstr "ID profesor"
 
 #: compraventaview.cpp:70 pedidosproveedorlist.cpp:327
 #: pedidoproveedorview.cpp:55 pagoslist.cpp:247 pagoview.cpp:62
 #: facturapview.cpp:58 facturasplist.cpp:360 albaranproveedorview.cpp:61
 msgid "Id proveedor"
-msgstr "Id proveedor"
+msgstr "ID proveedor"
 
 #: blcountryview.cpp:59
 msgid "Id provincia"
-msgstr ""
+msgstr "ID provincia"
 
 #: listlinasiento1view.cpp:54
 msgid "Id tipo de IVA"
-msgstr "Id tipo de IVA"
+msgstr "ID tipo de IVA"
 
 #: pluginbf_tipotrabajo.cpp:201
 msgid "Id tipo de trabajo"
-msgstr "Id tipo de trabajo"
+msgstr "ID tipo de trabajo"
 
 #: listtipostrabajoview.cpp:55
 msgid "Id tipo trabajo"
-msgstr "Id tipo trabajo"
+msgstr "ID tipo trabajo"
 
 #: contratoview.cpp:417 pedidosproveedorlist.cpp:326
 #: pedidoproveedorview.cpp:64 pagoslist.cpp:258 facturapview.cpp:65
 #: facturasplist.cpp:359 pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
 #: facturaslist.cpp:378
 msgid "Id trabajador"
-msgstr "Id trabajador"
+msgstr "ID trabajador"
 
 #: tutorview.cpp:225 alumnoview.cpp:172
 msgid "Id tutor"
-msgstr ""
+msgstr "ID tutor"
 
 #: pluginbf_asterisk.cpp:108 pluginbf_asterisk.cpp:168 pluginbf_alias.cpp:114
 msgid "Id validacion"
-msgstr "Id validacion"
+msgstr "ID validación"
 
 #: bccentrocosteview.cpp:48
 msgid "Id. Centro Coste"
-msgstr "Id. Centro Coste"
+msgstr "ID centro de coste"
 
 #: proyectoview.cpp:71 proyectoview.cpp:90
 msgid "Id. Cuenta"
-msgstr "Id. Cuenta"
+msgstr "ID cuenta"
 
 #: proyectoview.cpp:80 proyectoview.cpp:99
 msgid "Id. Proyecto"
-msgstr "Id. Proyecto"
+msgstr "ID proyecto"
 
 #: listlinasiento1view.cpp:60
 msgid "Id. Registro IVA"
-msgstr "Id. Registro IVA"
+msgstr "ID registro IVA"
 
 #: zview.cpp:63 zlist.cpp:62
 msgid "Id. almacen"
-msgstr "Id. almacen"
+msgstr "ID almacén"
 
 #: ui_btbulmatpvbase.h:97
 msgid "Identificacion"
-msgstr "Identificacion"
+msgstr "Identificación"
 
 #: bcamortizacionview.cpp:72 registroiva.cpp:46 listproyectosview.cpp:46
 #: rutacomercial.cpp:42 incidenciacomercial.cpp:41 articuloview.cpp:61
@@ -6276,40 +6280,40 @@ msgstr "Identificador presupuesto"
 
 #: listlincontratoview.cpp:43
 msgid "Idl contrato"
-msgstr "Idl contrato"
+msgstr "ID contrato"
 
 #: listlinfacturaview.cpp:50
 msgid "Idl factura"
-msgstr "Idl factura"
+msgstr "ID factura"
 
 #: ui_btbulmatpvbase.h:88
 msgid "Iglues/BtBulmaTPV"
-msgstr ""
+msgstr "Iglues/BulmaTPV"
 
 #: ui_bcbulmacontbase.h:338
 msgid "Iglues/BulmaCont - Contabilidad GPL"
-msgstr ""
+msgstr "Iglues/BulmaCont - Contabilidad GPL"
 
 #: ui_bfbulmafactbase.h:154
 msgid "Iglues/BulmaFact - Facturacion GPL"
-msgstr ""
+msgstr "Iglues/BulmaFact - Facturación GPL"
 
 #: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287 ui_cuadrantediariobase.h:320
 #: ui_cuadrantediariobase.h:323
 msgid "Igual que la Semana Anterior"
-msgstr "Igual que la Semana Anterior"
+msgstr "Igual que la semana anterior"
 
 #: ui_articleeditbase.h:598
 msgid "Imagen del articulo:"
-msgstr "Imagen del articulo:"
+msgstr "Imagen del artículo:"
 
 #: trabajadorview.cpp:294 articuloview.cpp:279
 msgid "Imagenes (*.jpg)"
-msgstr "Imagenes (*.jpg)"
+msgstr "Imágenes (*.jpg)"
 
 #: pluginbl_importcsv.cpp:56 pluginbl_importcsv.cpp:57
 msgid "Importacion CSV"
-msgstr "Importacion CSV"
+msgstr "Importación CSV"
 
 #: ui_clientslistbase.h:321 ui_clientslistbase.h:324
 #: ui_providerslistbase.h:326 ui_providerslistbase.h:329
@@ -6322,7 +6326,7 @@ msgstr "Importar CSV"
 
 #: ui_articleslistbase.h:348 ui_articleslistbase.h:351
 msgid "Importar articulos"
-msgstr "Importar articulos"
+msgstr "Importar artículos"
 
 #: ui_asientobase.h:568 ui_asientobase.h:571
 msgid "Importar asiento"
@@ -6338,23 +6342,23 @@ msgstr "Importe:"
 
 #: ui_bccuentasanualesimprimirbase.h:194 ui_balancesprintdlg.h:197
 msgid "Impresion de Balances"
-msgstr "Impresion de Balances"
+msgstr "Impresión de Balances"
 
 #: ui_balanceprintbase.h:300
 msgid "Impresion del Balance de Sumas y Saldos"
-msgstr "Impresion del Balance de Sumas y Saldos"
+msgstr "Impresión del Balance de Sumas y Saldos"
 
 #: ui_bcdiarioprintbase.h:149
 msgid "Impresion del Diario"
-msgstr "Impresion del Diario"
+msgstr "Impresión del Diario"
 
 #: ui_bcextractoimprimirbase.h:135
 msgid "Impresion del Extracto"
-msgstr "Impresion del Extracto"
+msgstr "Impresión del extracto"
 
 #: ui_bcregistroivaimprimirbase.h:214
 msgid "Impresion del Registro de IVA"
-msgstr "Impresion del Registro de IVA"
+msgstr "Impresión del Registro de IVA"
 
 #: blsubform.cpp:2271
 msgid "Imprimiendo "
@@ -6372,32 +6376,32 @@ msgstr "Imprimir"
 
 #: ticketqtoolbutton.cpp:64 ticketqtoolbutton.cpp:65
 msgid "Imprimir Etiquetas"
-msgstr "Imprimir Etiquetas"
+msgstr "Imprimir etiquetas"
 
 #: ui_familiasbase.h:343 ui_familiasbase.h:346
 msgid "Imprimir Familias"
-msgstr "Imprimir Familias"
+msgstr "Imprimir familias"
 
 #: ui_rutacomerciallistbase.h:324 ui_rutacomerciallistbase.h:327
 msgid "Imprimir Listado"
-msgstr "Imprimir Listado"
+msgstr "Imprimir listado"
 
 #: ui_inventariosbase.h:186 ui_inventariosbase.h:189 ui_inventariosbase.h:193
 #: ui_inventariosbase.h:196
 msgid "Imprimir Stocks Actuales"
-msgstr "Imprimir Stocks Actuales"
+msgstr "Imprimir <i>stocks</i> actuales"
 
 #: ticketqtoolbutton.cpp:80 ticketqtoolbutton.cpp:81 ticketqtoolbutton.cpp:65
 #: ticketqtoolbutton.cpp:66
 msgid "Imprimir Ticket"
-msgstr "Imprimir Ticket"
+msgstr "Imprimir ticket"
 
 #: ui_balancetreebase.h:385 ui_balancetreebase.h:388 ui_balancetreebase.h:392
 #: ui_balancetreebase.h:395 ui_albaranclientebase.h:714
 #: ui_albaranclientebase.h:717 ui_compraventabase.h:836
 #: ui_compraventabase.h:839
 msgid "Imprimir albaran"
-msgstr "Imprimir albaran"
+msgstr "Imprimir albarán"
 
 #: ui_balancebase.h:428 ui_balancebase.h:431 ui_balancebase.h:418
 #: ui_balancebase.h:421
@@ -6476,7 +6480,7 @@ msgstr "Impuestos:"
 
 #: bccuentaview.cpp:47 bcplancontablelistview.cpp:62
 msgid "Imputacion"
-msgstr "Imputacion"
+msgstr "Imputación"
 
 #: articuloview.cpp:73
 msgid "Inactivo"
@@ -6484,7 +6488,7 @@ msgstr "Inactivo"
 
 #: registroiva.cpp:55
 msgid "Inc registro"
-msgstr "Inc registro"
+msgstr "Incidencia registro"
 
 #: incidenciacomercialview.cpp:162 incidenciacomercial.cpp:38
 msgid "Incidencia comercial"
@@ -6504,7 +6508,7 @@ msgstr "Incluir &niveles superiores."
 
 #: articuloview.cpp:67
 msgid "Incluir en control de stock"
-msgstr "Incluir en control de stock"
+msgstr "Incluir en control de <i>stock</i>"
 
 #: articuloview.cpp:66
 msgid "Incluir en presentaciones"
@@ -6512,7 +6516,7 @@ msgstr "Incluir en presentaciones"
 
 #: ui_articleeditbase.h:613
 msgid "Incluir este articulo en el catalogo."
-msgstr "Incluir este articulo en el catalogo."
+msgstr "Incluir este artículo en el catálogo."
 
 #: ui_bcregistroivaimprimirbase.h:220
 msgid "Incluir resultados parciales"
@@ -6521,31 +6525,31 @@ msgstr "Incluir resultados parciales"
 #: ui_bcbulmacontbase.h:390 ui_bfbulmafactbase.h:167 ui_bfbulmafactbase.h:169
 #: blwindowlistdock.cpp:149 blwindowlistdock.cpp:150
 msgid "Indexador"
-msgstr "Indexador"
+msgstr "Indexado"
 
 #: eqtoolbutton.cpp:68
 msgid "Inf. personales por e-mail"
-msgstr "Inf. personales por e-mail"
+msgstr "Informaciónes personales por e-mail"
 
 #: blfunctions.cpp:526
 msgid "Informacion de depuracion"
-msgstr "Informacion de depuracion"
+msgstr "Información de depuración"
 
 #: ui_articleeditbase.h:604
 msgid "Informacion del articulo:"
-msgstr "Informacion del articulo:"
+msgstr "Información del artículo:"
 
 #: ui_bccanalbase.h:243
 msgid "Informacion del canal:"
-msgstr "Informacion del canal:"
+msgstr "Información del canal:"
 
 #: blfunctions.cpp:556
 msgid "Informacion del programa"
-msgstr "Informacion del programa"
+msgstr "Información del programa"
 
 #: ui_bctipoivabase.h:266
 msgid "Informacion del tipo de IVA:"
-msgstr "Informacion del tipo de IVA:"
+msgstr "Información del tipo de IVA:"
 
 #: bfbuscarreferencia.cpp:65 pluginbl_report2ods.cpp:152
 #: pluginbl_report2ods.cpp:153 pluginbl_report.cpp:137 pluginbl_report.cpp:138
@@ -6555,7 +6559,7 @@ msgstr "Informe"
 #: ui_incidenciacomercialbase.h:275 ui_incidenciacomercialbase.h:278
 #: ui_rutacomercialbase.h:222 ui_rutacomercialbase.h:225
 msgid "Informe por Referencia"
-msgstr "Informe por Referencia"
+msgstr "Informe por referencia"
 
 #: ui_bfbuscarreferenciabase.h:92
 msgid "Informe por referencia"
@@ -6603,7 +6607,7 @@ msgstr "Inicializando extracto"
 
 #: btcompany.cpp:77
 msgid "Inicializando listado de articulos"
-msgstr "Inicializando listado de articulos"
+msgstr "Inicializando listado de artículos"
 
 #: main.cxx:92 main.cxx:70 main.cxx:84
 msgid "Iniciando clases"
@@ -6623,19 +6627,19 @@ msgstr "Insertando el contenido del portapapeles..."
 
 #: bcbloqueafechaview.cpp:253
 msgid "Introduzca Ejercicio a Crear"
-msgstr "Introduzca Ejercicio a Crear"
+msgstr "Introduzca ejercicio a crear"
 
 #: pluginbf_abrecodigobarras.cpp:73
 msgid "Introduzca codigo"
-msgstr "Introduzca codigo"
+msgstr "Introduzca código"
 
 #: balance1view.cpp:325
 msgid "Introduzca la Fecha Final"
-msgstr "Introduzca la Fecha Final"
+msgstr "Introduzca la fecha final"
 
 #: balance1view.cpp:320
 msgid "Introduzca la Fecha Inicial"
-msgstr "Introduzca la Fecha Inicial"
+msgstr "Introduzca la fecha inicial"
 
 #: inventario.cpp:38 ui_inventariobase.h:295
 msgid "Inventario"
@@ -6651,11 +6655,11 @@ msgstr "Invertir"
 
 #: impmultqtoolbutton.cpp:456 impmultqtoolbutton.cpp:457
 msgid "Invertir seleccion de elementos"
-msgstr "Invertir seleccion de elementos"
+msgstr "Invertir selección de elementos"
 
 #: pedidoproveedorview.cpp:383
 msgid "Iva "
-msgstr "Iva "
+msgstr "IVA "
 
 #: pcapymes08.cpp:35
 msgid "JULIO"
@@ -6667,7 +6671,7 @@ msgstr "JUNIO"
 
 #: ui_balancetreebase.h:421
 msgid "Jerarquico"
-msgstr "Jerarquico"
+msgstr "Jerárquico"
 
 #: cuadrantediarioview.cpp:168 cuadranteview.cpp:151
 msgid "Jueves"
@@ -6687,7 +6691,7 @@ msgstr "La factura ya existe y no se va a insertar."
 
 #: blimportexport.cpp:2151
 msgid "La familia del articulo no existe"
-msgstr "La familia del articulo no existe"
+msgstr "La familia del artículo no existe"
 
 #: asientosview.cpp:233
 msgid "La fecha inicial es posterior a la fecha final."
@@ -6700,15 +6704,15 @@ msgstr "La forma de pago del presupuesto no existe"
 
 #: ui_bldblogindialogbase.h:150
 msgid "Lanzador Bulmages"
-msgstr "Lanzador Bulmages"
+msgstr "Lanzador BulmaGes"
 
 #: main.cxx:156 main.cxx:148 main.cxx:161
 msgid "Lanzando plugins"
-msgstr "Lanzando plugins"
+msgstr "Lanzando <i>plug-ins</i>"
 
 #: main.cxx:122 main.cxx:109 main.cxx:124
 msgid "Leyendo configuracion"
-msgstr "Leyendo configuracion"
+msgstr "Leyendo configuración"
 
 #: ui_bcamortizacionbase.h:673
 msgid "Li&neal"
@@ -6725,7 +6729,7 @@ msgstr "Libro &Mayor"
 #: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279 ui_cuadrantediariobase.h:312
 #: ui_cuadrantediariobase.h:315
 msgid "Limpiar Cuadrante"
-msgstr "Limpiar Cuadrante"
+msgstr "Limpiar cuadrante"
 
 #: ui_blsearchwidgetbase.h:104
 msgid "Limpiar campo"
@@ -6733,19 +6737,19 @@ msgstr "Limpiar campo"
 
 #: devolucion2.cpp:232 devolucion2.cpp:247 listlinfacturapview.cpp:51
 msgid "Linea"
-msgstr "Linea"
+msgstr "Línea"
 
 #: ui_devolucion.h:385 ui_untitled.h:298
 msgid "Lineas Ticket"
-msgstr "Lineas Ticket"
+msgstr "Líneas Ticket"
 
 #: ui_devolucion.h:389 ui_untitled.h:308
 msgid "Lineas a devolver"
-msgstr "Lineas a devolver"
+msgstr "Líneas a devolver"
 
 #: ui_tipoactividadbase.h:236
 msgid "Lista de Tipos:"
-msgstr ""
+msgstr "Lista de tipos:"
 
 #: ui_trabajadorbase.h:351
 msgid "Lista de trabajadores:"
@@ -6757,19 +6761,19 @@ msgstr "Listado &347"
 
 #: clientslist.cpp:130
 msgid "Listado de Clientes"
-msgstr "Listado de Clientes"
+msgstr "Listado de clientes"
 
 #: contratoslist.cpp:174
 msgid "Listado de Contratos"
-msgstr "Listado de Contratos"
+msgstr "Listado de contratos"
 
 #: providerslist.cpp:204
 msgid "Listado de Proveedores"
-msgstr "Listado de Proveedores"
+msgstr "Listado de proveedores"
 
 #: ui_listproyectosbase.h:136
 msgid "Listado de Proyectos"
-msgstr "Listado de Proyectos"
+msgstr "Listado de proyectos"
 
 #: ui_bcamortizacionlistbase.h:133
 msgid "Listado de amortizaciones"
@@ -6798,7 +6802,7 @@ msgstr "Listados"
 
 #: ui_listadocuentas1.h:62
 msgid "Listados de Cuentas"
-msgstr "Listados de Cuentas"
+msgstr "Listados de cuentas"
 
 #: ui_listregistroivabase.h:347
 msgid "Listados de IVA"
@@ -6818,9 +6822,9 @@ msgid ""
 "~/.bulmages/formularios/."
 msgstr ""
 "Lo siento, no encuentro el formulario original en pdf.\n"
-"Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
-"/usr/share/bulmages/formularios/ o en\n"
-"~/.bulmages/formularios/."
+"Pruebe a descargarlo desde www.aeat.es y guárdelo en\n"
+"<b>/usr/share/bulmages/formularios/</b> o en\n"
+"<b>~/.bulmages/formularios/</b>"
 
 #: movimientosview.cpp:181
 msgid "Lote"
@@ -6852,11 +6856,11 @@ msgstr "Maest&ro"
 
 #: ui_bcasientoduplicarbase.h:238
 msgid "Mantener distacia entre fechas"
-msgstr "Mantener distacia entre fechas"
+msgstr "Mantener distancia entre fechas"
 
 #: bcdiariosubform.cpp:52
 msgid "MarcaConciliacion"
-msgstr "MarcaConciliacion"
+msgstr "Marca conciliación"
 
 #: pluginbf_preciocoste.cpp:54
 msgid "Margen"
@@ -6872,7 +6876,7 @@ msgstr "Marzo"
 
 #: ui_bcmasapatrimonialbase.h:348 ui_bcmasapatrimonialbase.h:354
 msgid "Masa Patrimonial"
-msgstr "Masa Patrimonial"
+msgstr "Masa patrimonial"
 
 #: bcmasapatrimoniallistview.cpp:133
 msgid "Masa patrimonial"
@@ -6884,7 +6888,7 @@ msgstr "Masas &patrimoniales"
 
 #: ui_bcmasapatrimoniallistbase.h:123
 msgid "Masas Patrimoniales"
-msgstr "Masas Patrimoniales"
+msgstr "Masas patrimoniales"
 
 #: bcbloqueafechaview.cpp:175 pcapgc07.cpp:42
 msgid "Mayo"
@@ -6910,23 +6914,23 @@ msgstr "Mensual"
 
 #: bcamortizacionview.cpp:65
 msgid "Metodo"
-msgstr "Metodo"
+msgstr "Método"
 
 #: ui_bcamortizacionbase.h:668
 msgid "Metodo:"
-msgstr "Metodo:"
+msgstr "Método:"
 
 #: cuadrantediarioview.cpp:167 cuadranteview.cpp:151
 msgid "Miercoles"
-msgstr "Miercoles"
+msgstr "Miércoles"
 
 #: pluginbf_inventario.cpp:124
 msgid "Minimo"
-msgstr "Minimo"
+msgstr "Mínimo"
 
 #: pluginbf_inventario.cpp:118
 msgid "Minimos almacen"
-msgstr "Minimos almacen"
+msgstr "Mínimos almacén"
 
 #: ui_bcmodelo300base.h:185
 msgid "Modelo 300"
@@ -6934,11 +6938,11 @@ msgstr "Modelo 300"
 
 #: ui_bcconfiguracionbase.h:248
 msgid "Modelo del codigo de cuenta:"
-msgstr "Modelo del codigo de cuenta:"
+msgstr "Modelo del código de cuenta:"
 
 #: ui_bcconfiguracionbase.h:252
 msgid "Modi&ficar plan contable"
-msgstr "Modi&ficar plan contable"
+msgstr "Modi&ficar Plan Contable"
 
 #: ui_btbulmatpvbase.h:95
 msgid "Modificar"
@@ -6947,11 +6951,11 @@ msgstr "Modificar"
 #: ui_bccentrocostebase.h:277 ui_bccentrocostebase.h:280 ui_familiasbase.h:352
 #: ui_familiasbase.h:355
 msgid "Mostrar / Ocultar Detalle"
-msgstr "Mostrar / Ocultar Detalle"
+msgstr "Mostrar/ocultar detalle"
 
 #: ui_tiposarticulobase.h:248 ui_tiposarticulobase.h:251
 msgid "Mostrar / Ocultar detalle"
-msgstr "Mostrar / Ocultar detalle"
+msgstr "Mostrar/ocultar el detalle"
 
 #: bcextractosubform.cpp:94 bcextractosubform.cpp:111 bcdiariosubform.cpp:96
 #: bcdiariosubform.cpp:113 listlinasiento1view.cpp:89
@@ -6962,11 +6966,11 @@ msgstr "Mostrar asiento"
 
 #: bcextractosubform.cpp:98 bcextractosubform.cpp:117
 msgid "Mostrar diario (ano)"
-msgstr "Mostrar diario (ano)"
+msgstr "Mostrar diario (año)"
 
 #: bcextractosubform.cpp:96 bcextractosubform.cpp:113
 msgid "Mostrar diario (dia)"
-msgstr "Mostrar diario (dia)"
+msgstr "Mostrar diario (día)"
 
 #: bcextractosubform.cpp:97 bcextractosubform.cpp:115
 msgid "Mostrar diario (mes)"
@@ -6976,13 +6980,13 @@ msgstr "Mostrar diario (mes)"
 #: listlinasiento1view.cpp:112 asientolistsubform.cpp:81
 #: asientolistsubform.cpp:100
 msgid "Mostrar extracto (ano)"
-msgstr "Mostrar extracto (ano)"
+msgstr "Mostrar extracto (año)"
 
 #: bcdiariosubform.cpp:98 bcdiariosubform.cpp:115 listlinasiento1view.cpp:91
 #: listlinasiento1view.cpp:108 asientolistsubform.cpp:79
 #: asientolistsubform.cpp:96
 msgid "Mostrar extracto (dia)"
-msgstr "Mostrar extracto (dia)"
+msgstr "Mostrar extracto (día)"
 
 #: bcdiariosubform.cpp:99 bcdiariosubform.cpp:117 listlinasiento1view.cpp:92
 #: listlinasiento1view.cpp:110 asientolistsubform.cpp:80
@@ -6992,11 +6996,11 @@ msgstr "Mostrar extracto (mes)"
 
 #: ui_bcextractobase.h:649 ui_bcextractobase.h:652
 msgid "Mostrar/Oculatar filtro"
-msgstr "Mostrar/Oculatar filtro"
+msgstr "Mostrar/ocultar filtro"
 
 #: ui_presupuestoclientebase.h:747 ui_presupuestoclientebase.h:750
 msgid "Mostrar/Ocultar cabecera"
-msgstr "Mostrar/Ocultar cabecera"
+msgstr "Mostrar/ocultar cabecera"
 
 #: ui_contratobase.h:480 ui_contratobase.h:483 ui_albaranclientebase.h:729
 #: ui_albaranclientebase.h:732 ui_pedidoclientebase.h:661
@@ -7038,7 +7042,7 @@ msgstr "Muestra que es esto"
 
 #: pluginbc_example.cpp:86 pluginbf_example.cpp:90
 msgid "Muestra statustip"
-msgstr "Muestra statustip"
+msgstr "Muestra <i>status</i>"
 
 #: pluginbc_corrector.cpp:74
 msgid "Muestra/oculta el corrector"
@@ -7050,11 +7054,11 @@ msgstr "Muestra/oculta el resumen de cuenta"
 
 #: ui_facturabase.h:681
 msgid "N&umero de factura:"
-msgstr "N&umero de factura:"
+msgstr "N&úmero de factura:"
 
 #: ui_alumnobase.h:507
 msgid "N.I.F:"
-msgstr ""
+msgstr "N.I.F.:"
 
 #: bcamortizacionview.cpp:66
 msgid "NIF del proveedor"
@@ -7062,7 +7066,7 @@ msgstr "NIF del proveedor"
 
 #: ui_tutorbase.h:506
 msgid "NIF:"
-msgstr ""
+msgstr "N.I.F.:"
 
 #: devolucion2.cpp:441
 msgid "NO IMPLEMENTADO"
@@ -7086,11 +7090,11 @@ msgstr "NOVIEMBRE"
 
 #: ui_balanceprintbase.h:310
 msgid "Nivel de Cuentas"
-msgstr "Nivel de Cuentas"
+msgstr "Nivel de cuentas"
 
 #: ui_bccuentalistbase.h:241
 msgid "Nivel minimo"
-msgstr "Nivel minimo"
+msgstr "Nivel mínimo"
 
 #: ui_balancebase.h:443 ui_balancetreebase.h:402 ui_balancebase.h:437
 #: ui_balancetreebase.h:420
@@ -7103,19 +7107,19 @@ msgstr "No"
 
 #: ui_bccuentabase.h:830
 msgid "No Debe"
-msgstr "No Debe"
+msgstr "N. Debe"
 
 #: ui_bccuentabase.h:834
 msgid "No Haber"
-msgstr "No Haber"
+msgstr "N. Haber"
 
 #: ui_z2zbase.h:397
 msgid "No cambiar precios de articulos"
-msgstr "No cambiar precios de articulos"
+msgstr "No cambiar precios de artículos"
 
 #: listlinpresupuestoview.cpp:49 listlinpedidoclienteview.cpp:49
 msgid "No de linea"
-msgstr "No de linea"
+msgstr "N. de línea"
 
 #: facturaview.cpp:264
 msgid "No hay albaranes con esta referencia"
@@ -7159,7 +7163,7 @@ msgid ""
 "Compruebe que la imagen sea valida."
 msgstr ""
 "No se ha podido cargar la imagen.\n"
-"Compruebe que la imagen sea valida."
+"Compruebe que la imagen sea válida."
 
 #: articuloview.cpp:223
 msgid ""
@@ -7168,12 +7172,12 @@ msgid ""
 "de espacio libre suficiente en el disco duro."
 msgstr ""
 "No se ha podido guardar la imagen.\n"
-"Revise los permisos de escritura y que disponga\n"
+"Revise los permisos de escritura y si tiene\n"
 "de espacio libre suficiente en el disco duro."
 
 #: bccentrocosteview.cpp:278
 msgid "No se pudo borrar el Centro de Coste"
-msgstr "No se pudo borrar el Centro de Coste"
+msgstr "No se pudo borrar el centro de coste"
 
 #: blform.cpp:386
 msgid "No se pudo cerrar la ventana debido a un error"
@@ -7185,23 +7189,23 @@ msgstr "No se puede acceder al error"
 
 #: bccuentaview.cpp:49
 msgid "NoDebe"
-msgstr "NoDebe"
+msgstr "N. Debe"
 
 #: bccuentaview.cpp:50
 msgid "NoHaber"
-msgstr "NoHaber"
+msgstr "N. Haber"
 
 #: bcplancontablelistview.cpp:62
 msgid "Nodebe"
-msgstr "Nodebe"
+msgstr "N. Debe"
 
 #: bcplancontablelistview.cpp:62
 msgid "Nohaber"
-msgstr "Nohaber"
+msgstr "N. Haber"
 
 #: proyectoview.cpp:58
 msgid "Nom Presupuesto"
-msgstr "Nom Presupuesto"
+msgstr "Número presupuesto"
 
 #: ui_bcmasapatrimonialbase.h:351 bccentrocosteview.cpp:49
 #: bccentrocosteview.cpp:76 bcamortizacionlistview.cpp:48
@@ -7216,33 +7220,33 @@ msgstr "Nombre"
 
 #: ui_almacenbase.h:342
 msgid "Nombre Almacen"
-msgstr "Nombre Almacen"
+msgstr "Nombre almacén"
 
 #: listcoloresview.cpp:101
 msgid "Nombre Color"
-msgstr "Nombre Color"
+msgstr "Nombre color"
 
 #: bccentrocosteview.cpp:57
 msgid "Nombre Destinatario"
-msgstr "Nombre Destinatario"
+msgstr "Nombre destinatario"
 
 #: bctipoivaview.cpp:44
 msgid "Nombre Tipo"
-msgstr "Nombre Tipo"
+msgstr "Nombre tipo"
 
 #: cuadrante1view.cpp:72
 msgid "Nombre Trabajador"
-msgstr "Nombre Trabajador"
+msgstr "Nombre trabajador"
 
 #: alumnoview.cpp:204
 msgid "Nombre actividad"
-msgstr ""
+msgstr "Nombre actividad"
 
 #: listltarifaview.cpp:35 listltarifaview.cpp:57 movimientosview.cpp:184
 #: listalmacenview.cpp:98 listcontrolstockview.cpp:36 almacenview.cpp:59
 #: almaceneslistview.cpp:58 almaceneslistview.cpp:92
 msgid "Nombre almacen"
-msgstr "Nombre almacen"
+msgstr "Nombre almacén"
 
 #: providerslist.cpp:287
 msgid "Nombre alternativo"
@@ -7262,7 +7266,7 @@ msgstr "Nombre alternativo del proveedor"
 
 #: tutorview.cpp:224 actividadview.cpp:171 alumnoview.cpp:171
 msgid "Nombre alumno"
-msgstr ""
+msgstr "Nombre alumno"
 
 #: btticket.cpp:98 btticket.cpp:99 bfclientealbaransubform.cpp:47
 #: bfproveedoralbaransubform.cpp:49 listlincontratoview.cpp:42
@@ -7270,7 +7274,7 @@ msgstr ""
 #: movimientosview.cpp:179 listlinpedidoclienteview.cpp:48
 #: listcontrolstockview.cpp:38 listlinfacturaview.cpp:49
 msgid "Nombre articulo"
-msgstr "Nombre articulo"
+msgstr "Nombre artículo"
 
 #: contratoview.cpp:404 facturaslist.cpp:364
 msgid "Nombre cliente"
@@ -7313,11 +7317,11 @@ msgstr "Nombre de contrato"
 
 #: ui_blformconfigbase.h:283 ui_blformconfigbase.h:285
 msgid "Nombre de la Tabla"
-msgstr "Nombre de la Tabla"
+msgstr "Nombre de la tabla"
 
 #: bcamortizacionview.cpp:58
 msgid "Nombre de la amortizacion"
-msgstr "Nombre de la amortizacion"
+msgstr "Nombre de la amortización"
 
 #: bccuentalistview.cpp:388 listlinasiento1view.cpp:42 balance1view.cpp:93
 msgid "Nombre de la cuenta"
@@ -7361,11 +7365,11 @@ msgstr "Nombre de usuario:"
 
 #: convocatoriaview.cpp:52 actividadview.cpp:53
 msgid "Nombre del actividad"
-msgstr "Nombre del actividad"
+msgstr "Nombre de la actividad"
 
 #: albaranesproveedor.cpp:391
 msgid "Nombre del almacen"
-msgstr "Nombre del almacen"
+msgstr "Nombre del almacén"
 
 #: alumnoview.cpp:52 alumnoview.cpp:53 alumnoview.cpp:54
 msgid "Nombre del alumno"
@@ -7374,11 +7378,11 @@ msgstr "Nombre del alumno"
 #: articulolisttpv.cpp:243 listlinpresupuestoview.cpp:48 articulolist.cpp:371
 #: articuloview.cpp:63 comparticulolistview.cpp:43 listltarifaview.cpp:42
 msgid "Nombre del articulo"
-msgstr "Nombre del articulo"
+msgstr "Nombre del artículo"
 
 #: ui_articleeditbase.h:605
 msgid "Nombre del articulo:"
-msgstr "Nombre del articulo:"
+msgstr "Nombre del artículo:"
 
 #: rutacomerciallist.cpp:285 clienteview.cpp:56
 msgid "Nombre del cliente"
@@ -7390,7 +7394,7 @@ msgstr "Nombre del inventario"
 
 #: ui_blcountrybase.h:261
 msgid "Nombre del pais:"
-msgstr "Nombre del pais:"
+msgstr "Nombre del país:"
 
 #: profesorview.cpp:52
 msgid "Nombre del profesor"
@@ -7415,7 +7419,7 @@ msgstr "Nombre inventario"
 
 #: blcountryview.cpp:49 blcountryview.cpp:71
 msgid "Nombre pais"
-msgstr ""
+msgstr "Nombre país"
 
 #: pagoslist.cpp:248 facturasplist.cpp:354
 msgid "Nombre proveedor"
@@ -7456,15 +7460,15 @@ msgstr "Noviembre"
 
 #: ui_proveditbase.h:780
 msgid "Nuestro codigo de c&liente:"
-msgstr "Nuestro codigo de c&liente:"
+msgstr "Nuestro código de c&liente:"
 
 #: ui_convocatoriabase.h:406 ui_actividadbase.h:417
 msgid "Nueva Actividad"
-msgstr "Nueva Actividad"
+msgstr "Nueva actividad"
 
 #: ui_familiasbase.h:322 ui_familiasbase.h:325
 msgid "Nueva Familia"
-msgstr "Nueva Familia"
+msgstr "Nueva familia"
 
 #: pluginbf_actividad.cpp:129 pluginbf_actividad.cpp:130
 msgid "Nueva actividad"
@@ -7473,7 +7477,7 @@ msgstr "Nueva actividad"
 #: ui_bcamortizacionlistbase.h:135 ui_bcamortizacionlistbase.h:138
 #: ui_listproyectosbase.h:138 ui_listproyectosbase.h:141
 msgid "Nueva amortizacion"
-msgstr "Nueva amortizacion"
+msgstr "Nueva amortización"
 
 #: ui_bcplancontablelistbase.h:277 ui_bcplancontablelistbase.h:280
 msgid "Nueva cuenta"
@@ -7515,63 +7519,63 @@ msgstr "Nuevo"
 #: ui_convocatoriaslistbase.h:317 ui_convocatoriaslistbase.h:320
 #: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:320
 msgid "Nuevo Actividad"
-msgstr "Nuevo Actividad"
+msgstr "Nueva actividad"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:481
 msgid "Nuevo Alumno"
-msgstr "Nuevo Alumno"
+msgstr "Nuevo alumno"
 
 #: articulolist.cpp:311
 msgid "Nuevo Articulo"
-msgstr "Nuevo Articulo"
+msgstr "Nuevo artículo"
 
 #: ui_contratobase.h:456
 msgid "Nuevo Contrato"
-msgstr "Nuevo Contrato"
+msgstr "Nuevo contrato"
 
 #: ui_rutacomerciallistbase.h:303 ui_rutacomerciallistbase.h:306
 msgid "Nuevo Pedido"
-msgstr "Nuevo Pedido"
+msgstr "Nuevo pedido"
 
 #: ui_profesorbase.h:467 ui_profesoreslistbase.h:317
 #: ui_profesoreslistbase.h:320
 msgid "Nuevo Profesor"
-msgstr "Nuevo Profesor"
+msgstr "Nuevo profesor"
 
 #: ui_tipoactividadbase.h:252 ui_tipoactividadbase.h:255
 msgid "Nuevo Tipo de Actividad"
-msgstr ""
+msgstr "Nuevo tipo de actividad"
 
 #: ui_tiposarticulobase.h:272 ui_tiposarticulobase.h:275
 msgid "Nuevo Tipo de articulo"
-msgstr "Nuevo Tipo de articulo"
+msgstr "Nuevo tipo de artículo"
 
 #: ui_devolucionbase.h:273
 msgid "Nuevo Total"
-msgstr "Nuevo Total"
+msgstr "Nuevo total"
 
 #: ui_tutorbase.h:478 ui_tutoreslistbase.h:317 ui_tutoreslistbase.h:320
 msgid "Nuevo Tutor"
-msgstr "Nuevo Tutor"
+msgstr "Nuevo tutor"
 
 #: ui_albaranclientelistbase.h:442 ui_albaranclientelistbase.h:445
 #: ui_albaranesproveedorlistbase.h:428 ui_albaranesproveedorlistbase.h:431
 msgid "Nuevo albaran"
-msgstr "Nuevo albaran"
+msgstr "Nuevo albarán"
 
 #: ui_albaranclientebase.h:698 pluginbf_clientealbaran.cpp:108
 #: pluginbf_clientealbaran.cpp:109
 msgid "Nuevo albaran a cliente"
-msgstr "Nuevo albaran a cliente"
+msgstr "Nuevo albarán a cliente"
 
 #: pluginbf_proveedoralbaran.cpp:106 pluginbf_proveedoralbaran.cpp:107
 #: ui_albaranproveedorbase.h:569
 msgid "Nuevo albaran de proveedor"
-msgstr "Nuevo albaran de proveedor"
+msgstr "Nuevo albarán de proveedor"
 
 #: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 msgid "Nuevo almacen"
-msgstr "Nuevo almacen"
+msgstr "Nuevo almacén"
 
 #: pluginbf_alumno.cpp:121 pluginbf_alumno.cpp:122
 msgid "Nuevo alumno"
@@ -7582,7 +7586,7 @@ msgstr "Nuevo alumno"
 #: ui_articleslistbase.h:292 ui_articleslistbase.h:295
 #: ui_articleeditbase.h:579
 msgid "Nuevo articulo"
-msgstr "Nuevo articulo"
+msgstr "Nuevo artículo"
 
 #: ui_asientobase.h:516 ui_asientobase.h:519 ui_asientobase.h:522
 #: ui_asientobase.h:525
@@ -7629,7 +7633,7 @@ msgstr "Nuevo pago a proveedor"
 
 #: ui_blcountrybase.h:273 ui_blcountrybase.h:276
 msgid "Nuevo pais"
-msgstr "Nuevo pais"
+msgstr "Nuevo país"
 
 #: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
 msgid "Nuevo pedido"
@@ -7673,174 +7677,174 @@ msgstr "Nuevo trabajador"
 
 #: pluginbf_tutor.cpp:109 pluginbf_tutor.cpp:110
 msgid "Nuevo tutor/socio"
-msgstr ""
+msgstr "Nuevo tutor/socio"
 
 #: btticket.cpp:52
 msgid "Num"
-msgstr "Num"
+msgstr "Núm."
 
 #: ui_z2zbase.h:396
 msgid "Num Minimo lineas ticket"
-msgstr "Num Minimo lineas ticket"
+msgstr "Número mínimo de líneas para el ticket"
 
 #: bcamortizacionlistview.cpp:51
 msgid "Num cuotas"
-msgstr "Num cuotas"
+msgstr "Número cuotas"
 
 #: listltarifaview.cpp:40 listltarifaview.cpp:64
 msgid "Num de linea"
-msgstr "Num de linea"
+msgstr "Número de línea"
 
 #: listlinasiento1view.cpp:62 ui_registroivabase.h:615 listlresarticulo.cpp:38
 msgid "Num. Factura"
-msgstr "Num. Factura"
+msgstr "Número de factura"
 
 #: ui_q19base.h:225
 msgid "Num. Operaciones"
-msgstr "Num. Operaciones"
+msgstr "Número de operaciones"
 
 #: ui_zbase.h:311
 msgid "Num. Tickets"
-msgstr "Num. Tickets"
+msgstr "Número de Tickets"
 
 #: listlresarticulo.cpp:81 listlresarticulo.cpp:168 genfacqtoolbutton.cpp:605
 msgid "Num. albaran"
-msgstr "Num. albaran"
+msgstr "Número de albarán"
 
 #: listlresarticulo.cpp:124
 msgid "Num. factura"
-msgstr "Num. factura"
+msgstr "Número de factura"
 
 #: zview.cpp:62
 msgid "Num. tickets"
-msgstr "Num. tickets"
+msgstr "Número de Tickets"
 
 #: contratoview.cpp:402 facturapview.cpp:59 zview.cpp:73 facturaslist.cpp:362
 msgid "Numero"
-msgstr "Numero"
+msgstr "Número"
 
 #: tutoreslist.cpp:264
 msgid "Numero Socio"
-msgstr ""
+msgstr "Número de socio"
 
 #: compraventaview.cpp:67 albaranproveedorview.cpp:58
 msgid "Numero albaran proveedor"
-msgstr "Numero albaran proveedor"
+msgstr "Número albarán del proveedor"
 
 #: clientslist.cpp:280 clienteview.cpp:59 tutoreslist.cpp:269
 msgid "Numero cuenta corriente"
-msgstr "Numero cuenta corriente"
+msgstr "Número cuenta corriente"
 
 #: ui_proveditbase.h:791
 msgid "Numero de &fax:"
-msgstr "Numero de &fax:"
+msgstr "Número de &fax:"
 
 #: tutorview.cpp:55 tutorview.cpp:56 tutorview.cpp:57 tutorview.cpp:58
 #: tutorview.cpp:59 tutorview.cpp:60 tutorview.cpp:61 tutorview.cpp:62
 #: tutorview.cpp:63 tutorview.cpp:64
 msgid "Numero de Socio"
-msgstr ""
+msgstr "Número de socio"
 
 #: compraventaview.cpp:85 albaranclientelist.cpp:384 albaranclienteview.cpp:75
 #: albaranesproveedor.cpp:381
 msgid "Numero de albaran"
-msgstr "Numero de albaran"
+msgstr "Número de albarán"
 
 #: ui_albaranclientebase.h:736 ui_compraventabase.h:879
 #: ui_albaranproveedorbase.h:604
 msgid "Numero de albaran:"
-msgstr "Numero de albaran:"
+msgstr "Número de albarán:"
 
 #: pluginbf_tipotrabajo.cpp:198
 msgid "Numero de cargos necesarios"
-msgstr "Numero de cargos necesarios"
+msgstr "Número de cargos necesarios"
 
 #: providerslist.cpp:289
 msgid "Numero de cuenta corriente"
-msgstr "Numero de cuenta corriente"
+msgstr "Número de cuenta corriente"
 
 #: bcamortizacionview.cpp:64
 msgid "Numero de cuotas"
-msgstr "Numero de cuotas"
+msgstr "Número de cuotas"
 
 #: ui_facturapbase.h:605
 msgid "Numero de factura:"
-msgstr "Numero de factura:"
+msgstr "Número de factura:"
 
 #: clientslist.cpp:285 clienteview.cpp:67 providerslist.cpp:295
 #: provedit.cpp:56 pluginbf_clienteproveedor.cpp:71 tutoreslist.cpp:274
 msgid "Numero de fax"
-msgstr "Numero de fax"
+msgstr "Número de fax"
 
 #: ui_clientebase.h:591 ui_profesorbase.h:501
 msgid "Numero de fax:"
-msgstr "Numero de fax:"
+msgstr "Número de fax:"
 
 #: ui_trabajadorbase.h:345
 msgid "Numero de la Seguridad Social:"
-msgstr "Numero de la Seguridad Social:"
+msgstr "Número de la Seguridad Social:"
 
 #: bfproveedoralbaransubform.cpp:50 listlinpedidoproveedorview.cpp:43
 msgid "Numero de linea"
-msgstr "Numero de linea"
+msgstr "Número de línea"
 
 #: pedidosproveedorlist.cpp:313
 msgid "Numero de pedido"
-msgstr "Numero de pedido"
+msgstr "Número de pedido"
 
 #: ui_pedidoclientebase.h:668 ui_pedidoproveedorbase.h:692
 msgid "Numero de pedido:"
-msgstr "Numero de pedido:"
+msgstr "Número de pedido:"
 
 #: ui_bcformapagobase.h:300
 msgid "Numero de plazos:"
-msgstr "Numero de plazos:"
+msgstr "Número de plazos:"
 
 #: presupuestoview.cpp:63
 msgid "Numero de presupuesto"
-msgstr "Numero de presupuesto"
+msgstr "Número de presupuesto"
 
 #: ui_presupuestoclientebase.h:755
 msgid "Numero de presupuesto:"
-msgstr "Numero de presupuesto:"
+msgstr "Número de presupuesto:"
 
 #: clientslist.cpp:284 clienteview.cpp:64 presupuestoview.cpp:67
 #: providerslist.cpp:294 provedit.cpp:55 pluginbf_clienteproveedor.cpp:70
 #: tutoreslist.cpp:273 cobroslist.cpp:313
 msgid "Numero de telefono"
-msgstr "Numero de telefono"
+msgstr "Número de teléfono"
 
 #: clienteview.cpp:65
 msgid "Numero de telefono en el trabajo"
-msgstr "Numero de telefono en el trabajo"
+msgstr "Número de teléfono en el trabajo"
 
 #: clienteview.cpp:66
 msgid "Numero de telefono movil"
-msgstr "Numero de telefono movil"
+msgstr "Número de teléfono móvil"
 
 #: facturasplist.cpp:353 facturaview.cpp:64
 msgid "Numero factura"
-msgstr "Numero factura"
+msgstr "Número factura"
 
 #: pedidoclienteview.cpp:62
 msgid "Numero pedido cliente"
-msgstr "Numero pedido cliente"
+msgstr "Número pedido cliente"
 
 #: pedidoproveedorview.cpp:57
 msgid "Numero pedido proveedor"
-msgstr "Numero pedido proveedor"
+msgstr "Número pedido proveedor"
 
 #: ui_tutorbase.h:508
 msgid "Nº Socio"
-msgstr ""
+msgstr "Número de socio"
 
 #: ui_bcamortizacionbase.h:654
 msgid "Nº de cuotas:"
-msgstr "Nº de cuotas:"
+msgstr "Número de cuotas:"
 
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
-msgstr "Nº linea"
+msgstr "Número de línea"
 
 #: pcapymes08.cpp:35
 msgid "OCTUBRE"
@@ -7852,7 +7856,7 @@ msgstr "Observaciones"
 
 #: articulolisttpv.cpp:245 articulolist.cpp:373
 msgid "Observaciones sobre el articulo"
-msgstr "Observaciones sobre el articulo"
+msgstr "Observaciones sobre el artículo"
 
 #: bcbloqueafechaview.cpp:155 pcapgc07.cpp:42
 msgid "Octubre"
@@ -7861,7 +7865,7 @@ msgstr "Octubre"
 #: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295 ui_cuadrantediariobase.h:328
 #: ui_cuadrantediariobase.h:331
 msgid "Ocultar Panel"
-msgstr "Ocultar Panel"
+msgstr "Ocultar panel"
 
 #: blfunctions.cpp:530
 msgid "Omitir &clase"
@@ -7869,7 +7873,7 @@ msgstr "Omitir &clase"
 
 #: correctorwidget.cpp:210
 msgid "Opcion no implementada"
-msgstr "Opcion no implementada"
+msgstr "Opción no implementada"
 
 #: ui_z2zbase.h:398
 msgid "Opciones"
@@ -7885,7 +7889,7 @@ msgstr "Opciones de cuenta:"
 
 #: importcsv.cpp:68 archivo.cpp:66
 msgid "Open file"
-msgstr "Open file"
+msgstr "Abrir archivo"
 
 #: bcextractosubform.cpp:73 listlinasiento1view.cpp:55
 #: asientolistsubform.cpp:37 registroiva.cpp:52 ui_registroivabase.h:619
@@ -7903,7 +7907,7 @@ msgstr "Orden de asiento"
 
 #: ui_asientobase.h:583
 msgid "Orden del asiento:"
-msgstr "Orden del asiento:"
+msgstr "Orden de asiento:"
 
 #: ui_bcbulmacontbase.h:377 ui_bfbulmafactbase.h:173
 msgid "Ordenar &ventanas"
@@ -7911,11 +7915,11 @@ msgstr "Ordenar &ventanas"
 
 #: ui_bfbulmafactbase.h:172
 msgid "Organizacio&n en cascada"
-msgstr "Organizacio&n en cascada"
+msgstr "Organizació&n en cascada"
 
 #: ui_bcbulmacontbase.h:378
 msgid "Organizacion en &cascada"
-msgstr "Organizacion en &cascada"
+msgstr "Organización en &cascada"
 
 #: bccentrocosteview.cpp:61
 msgid "Origen"
@@ -7945,7 +7949,7 @@ msgstr "P.V.P."
 
 #: articulolisttpv.cpp:248 articulolist.cpp:376
 msgid "P.V.P. articulo"
-msgstr "P.V.P. articulo"
+msgstr "P.V.P. artículo"
 
 #: articuloview.cpp:74
 msgid "P.V.P. base"
@@ -7965,7 +7969,7 @@ msgstr "PERDIDAS_Y_GANANCIAS"
 
 #: pluginbc_cuentasanuales2ods.cpp:417
 msgid "PGC &Anterior 2008"
-msgstr "PGC &Anterior 2008"
+msgstr "PGC &anterior 2007 (PGC 1990)"
 
 #: ui_tecladonumericobase.h:364
 msgid "PRECIO"
@@ -7977,7 +7981,7 @@ msgstr "PROCESADO"
 
 #: listlincontratoview.cpp:46
 msgid "PVPl contrato"
-msgstr "PVPl contrato"
+msgstr "PVP contrato"
 
 #: bccuentaview.cpp:46
 msgid "Padre"
@@ -7985,7 +7989,7 @@ msgstr "Padre"
 
 #: ui_alumnobase.h:528
 msgid "Padres/Tutores"
-msgstr "Padres/Tutores"
+msgstr "Padres/tutores"
 
 #: bfinformereferencia.cpp:263 informeqtoolbutton.cpp:313
 msgid "Pagado"
@@ -7993,27 +7997,27 @@ msgstr "Pagado"
 
 #: ui_proveditbase.h:790
 msgid "Pagina &web:"
-msgstr "Pagina &web:"
+msgstr "Página &web:"
 
 #: ui_blsubformbase.h:605
 msgid "Pagina actual:"
-msgstr "Pagina actual:"
+msgstr "Página actual:"
 
 #: ui_blsubformbase.h:607
 msgid "Pagina anterior"
-msgstr "Pagina anterior"
+msgstr "Página anterior"
 
 #: ui_blsubformbase.h:608
 msgid "Pagina siguiente"
-msgstr "Pagina siguiente"
+msgstr "Página siguiente"
 
 #: ui_clientebase.h:594 ui_profesorbase.h:504
 msgid "Pagina web:"
-msgstr "Pagina web:"
+msgstr "Página web:"
 
 #: ui_blsubformbase.h:609
 msgid "Paginacion"
-msgstr "Paginacion"
+msgstr "Paginación"
 
 #: listlinprevcobroview.cpp:191 listlinprevcobroview.cpp:275
 #: listlinprevcobroview.cpp:468 pagoview.cpp:58
@@ -8022,7 +8026,7 @@ msgstr "Pago"
 
 #: ui_tutorbase.h:528
 msgid "Pagos"
-msgstr ""
+msgstr "Pagos"
 
 #: pagoslist.cpp:187 pluginbf_proveedorpago.cpp:98
 #: pluginbf_proveedorpago.cpp:99 ui_pagoslistbase.h:370
@@ -8035,19 +8039,19 @@ msgstr "Pagos efectivos"
 
 #: blcountryview.cpp:67
 msgid "Pais"
-msgstr "Pais"
+msgstr "País"
 
 #: ui_bcbulmacontbase.h:395 ui_blcountrybase.h:259
 msgid "Paises"
-msgstr "Paises"
+msgstr "Países"
 
 #: ui_bfbulmafactbase.h:174 ui_bfbulmafactbase.h:175
 msgid "Paises / Provincias"
-msgstr "Paises / Provincias"
+msgstr "Países/provincias"
 
 #: ui_bfbulmafactbase.h:177
 msgid "Paises y provincias"
-msgstr "Paises y provincias"
+msgstr "Países y provincias"
 
 #: blcompanydialog.cpp:284
 msgid "Para entrar, antes tiene que seleccionar una empresa."
@@ -8063,11 +8067,11 @@ msgstr ""
 "Para que los cambios tengan efecto\n"
 "debe salir del programa y volver a entrar.\n"
 "\n"
-"Salir ahora?"
+"¿Desea salir ahora?"
 
 #: pluginbf_asterisk.cpp:53
 msgid "Password."
-msgstr "Password."
+msgstr "Contraseña"
 
 #: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
 #: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
@@ -8083,11 +8087,11 @@ msgstr "Pedido &tramitado"
 
 #: pedidoclienteview.cpp:56
 msgid "Pedido Cliente"
-msgstr "Pedido Cliente"
+msgstr "Pedido cliente"
 
 #: pedidoproveedorview.cpp:51
 msgid "Pedido Proveedor"
-msgstr "Pedido Proveedor"
+msgstr "Pedido proveedor"
 
 #: pedidoproveedorview.cpp:60
 msgid "Pedido procesado"
@@ -8095,7 +8099,7 @@ msgstr "Pedido procesado"
 
 #: genpedqtoolbutton.cpp:150
 msgid "Pedido ya existe"
-msgstr "Pedido ya existe"
+msgstr "El pedido ya existe"
 
 #: pedidosproveedorlist.cpp:188 pluginbf_proveedorpedido.cpp:99
 #: pluginbf_proveedorpedido.cpp:100 ui_pedidosproveedorlistbase.h:356
@@ -8117,11 +8121,11 @@ msgstr "Pedidos procesados"
 
 #: pluginbl_clipboard.cpp:114
 msgid "Pegar desde Hoja de Calculo"
-msgstr "Pegar desde Hoja de Calculo"
+msgstr "Pegar desde Hoja de cálculo"
 
 #: pluginbl_clipboard.cpp:102
 msgid "Pegar desde hoja de calculo"
-msgstr "Pegar desde hoja de calculo"
+msgstr "Pegar desde Hoja de cálculo"
 
 #: ui_btbulmatpvbase.h:99 busquedaestadoincidencia.cpp:35
 msgid "Pendiente"
@@ -8137,7 +8141,7 @@ msgstr "Periodicidad"
 
 #: ui_contratobase.h:487
 msgid "Periodicidad Facturas:"
-msgstr "Periodicidad Facturas:"
+msgstr "Periodicidad facturas:"
 
 #: ui_bcamortizacionbase.h:665
 msgid "Periodicidad:"
@@ -8145,15 +8149,15 @@ msgstr "Periodicidad:"
 
 #: pluginbf_comercial.cpp:68
 msgid "Periodo"
-msgstr "Periodo"
+msgstr "Período"
 
 #: ui_bcmodelo300base.h:187
 msgid "Periodo a declarar"
-msgstr "Periodo a declarar"
+msgstr "Período a declarar"
 
 #: ui_comercialclientebase.h:137
 msgid "Periodo de visitas:"
-msgstr "Periodo de visitas:"
+msgstr "Período de visitas:"
 
 #: pluginbalance.cpp:92 pluginbc_balance.cpp:92 pluginbalancetree.cpp:97
 msgid "Permite realizar balances"
@@ -8184,7 +8188,7 @@ msgstr "Peso (kg):"
 
 #: articuloview.cpp:75
 msgid "Peso Unidad"
-msgstr "Peso Unidad"
+msgstr "Peso unidad"
 
 #: ui_bcplancontablelistbase.h:333
 msgid "Plan &contable"
@@ -8200,37 +8204,37 @@ msgstr "Plan de cuentas"
 
 #: ui_bcformapagobase.h:299
 msgid "Plazo del primer recibo (dias):"
-msgstr "Plazo del primer recibo (dias):"
+msgstr "Plazo del primer recibo (días):"
 
 #: ui_bcformapagobase.h:302
 msgid "Plazo entre recibos (dias):"
-msgstr "Plazo entre recibos (dias):"
+msgstr "Plazo entre recibos (días):"
 
 #: ui_proveditbase.h:787
 msgid "Poblacio&n:"
-msgstr "Poblacio&n:"
+msgstr "Població&n:"
 
 #: clientslist.cpp:282 clienteview.cpp:61 providerslist.cpp:292
 #: provedit.cpp:52 pluginbf_clienteproveedor.cpp:67 tutoreslist.cpp:271
 msgid "Poblacion"
-msgstr "Poblacion"
+msgstr "Población"
 
 #: almacenview.cpp:61
 msgid "Poblacion almacen"
-msgstr "Poblacion almacen"
+msgstr "Población almacén"
 
 #: ui_bccuentabase.h:860 ui_clientebase.h:588 ui_tutorbase.h:512
 #: ui_alumnobase.h:512 ui_profesorbase.h:498
 msgid "Poblacion:"
-msgstr "Poblacion:"
+msgstr "Población:"
 
 #: pluginbalance.cpp:93 pluginbc_balance.cpp:93 pluginbalancetree.cpp:98
 msgid "Podra disponer de la informacion del balance"
-msgstr "Podra disponer de la informacion del balance"
+msgstr "Podrá disponer de la información del balance"
 
 #: bcbloqueafechaview.cpp:254
 msgid "Ponga el anyo:"
-msgstr "Ponga el anyo:"
+msgstr "Ponga el año:"
 
 #: ui_bcamortizacionbase.h:669
 msgid "Porcent&ual"
@@ -8247,15 +8251,15 @@ msgstr "Porcentaje IVA"
 
 #: listtasaivaview.cpp:97
 msgid "Porcentaje Recargo Equivalencia"
-msgstr "Porcentaje Recargo Equivalencia"
+msgstr "Porcentaje Recargo de Equivalencia"
 
 #: ui_tutorbase.h:527
 msgid "Porcentaje de facturacion"
-msgstr "Porcentaje de facturacion"
+msgstr "Porcentaje de facturación"
 
 #: pluginbf_tarifa.cpp:189
 msgid "Porcentaje variacion"
-msgstr "Porcentaje variacion"
+msgstr "Porcentaje variación"
 
 #: ui_bctipoivabase.h:268
 msgid "Porcentaje:"
@@ -8263,7 +8267,7 @@ msgstr "Porcentaje:"
 
 #: ui_bcregistroivaimprimirbase.h:224
 msgid "Postscript"
-msgstr "Postscript"
+msgstr "PostScript"
 
 #: btticket.cpp:90 ui_untitled.h:304 ui_untitled.h:314
 #: bfproveedoralbaransubform.cpp:53 listlinpedidoproveedorview.cpp:46
@@ -8274,35 +8278,35 @@ msgstr "Precio"
 
 #: actividadview.cpp:56
 msgid "Precio Actividad"
-msgstr ""
+msgstr "Precio actividad"
 
 #: pluginbf_preciocoste.cpp:53
 msgid "Precio Coste"
-msgstr "Precio Coste"
+msgstr "Precio coste"
 
 #: ui_actividadbase.h:449
 msgid "Precio Cuota"
-msgstr ""
+msgstr "Precio cuota"
 
 #: ui_promediobase.h:302 ui_promediobase.h:310
 msgid "Precio Mayor"
-msgstr "Precio Mayor"
+msgstr "Precio mayor"
 
 #: ui_promediobase.h:301 ui_promediobase.h:307
 msgid "Precio Medio"
-msgstr "Precio Medio"
+msgstr "Precio medio"
 
 #: ui_promediobase.h:303 ui_promediobase.h:308
 msgid "Precio Menor"
-msgstr "Precio Menor"
+msgstr "Precio menor"
 
 #: proyectoview.cpp:75 proyectoview.cpp:94
 msgid "Precio Und"
-msgstr "Precio Und"
+msgstr "Precio unidad"
 
 #: listlresarticulo.cpp:42
 msgid "Precio Venta"
-msgstr "Precio Venta"
+msgstr "Precio de venta"
 
 #: pluginbf_ivaincluido.cpp:55
 msgid "Precio de coste"
@@ -8314,11 +8318,11 @@ msgstr "Precio de venta"
 
 #: listlinpresupuestoview.cpp:52 listlinpedidoclienteview.cpp:52
 msgid "Precio de venta s/IVA"
-msgstr "Precio de venta s/IVA"
+msgstr "Precio de venta sin IVA"
 
 #: ui_articleeditbase.h:607
 msgid "Precio venta. s/IVA:"
-msgstr "Precio venta. s/IVA:"
+msgstr "Precio de venta sin IVA:"
 
 #: ui_btbulmatpvbase.h:93
 msgid "Preferencias"
@@ -8331,7 +8335,7 @@ msgstr "Pregenerar inventario"
 #: bfinformereferencia.cpp:142 bfinformereferencia.cpp:212
 #: informeqtoolbutton.cpp:197 informeqtoolbutton.cpp:262
 msgid "Pres."
-msgstr "Pres."
+msgstr "Presupuesto"
 
 #: presupuestoview.cpp:57 presupuestolist.cpp:350
 msgid "Presupuesto"
@@ -8352,27 +8356,27 @@ msgstr "Presupuestos procesados"
 
 #: pagoview.cpp:63
 msgid "Previcion de pago"
-msgstr "Previcion de pago"
+msgstr "Previsión de pago"
 
 #: cobroview.cpp:63
 msgid "Prevision"
-msgstr "Prevision"
+msgstr "Previsión"
 
 #: cobroslist.cpp:320
 msgid "Prevision de cobro"
-msgstr "Prevision de cobro"
+msgstr "Previsión de cobro"
 
 #: pagoslist.cpp:256
 msgid "Prevision pago"
-msgstr "Prevision pago"
+msgstr "Previsión pago"
 
 #: ui_pagoslistbase.h:372
 msgid "Previsiones de Pago"
-msgstr "Previsiones de Pago"
+msgstr "Previsiones de pago"
 
 #: ui_bccuentasanualesimprimirbase.h:196
 msgid "Primer Periodo"
-msgstr "Primer Periodo"
+msgstr "Primer período"
 
 #: ui_importcsvbase.h:203
 msgid "Primera fila son cabeceras"
@@ -8397,11 +8401,11 @@ msgstr "Procesada"
 
 #: facturaview.cpp:66
 msgid "Procesada factura"
-msgstr "Procesada factura"
+msgstr "Factura procesada"
 
 #: facturapview.cpp:61
 msgid "Procesada facturap"
-msgstr "Procesada facturap"
+msgstr "Factura procesada"
 
 #: ui_cobropagobase.h:385 presupuestoview.cpp:69 ui_albaranclientebase.h:737
 #: ui_pedidoclientebase.h:669 compraventaview.cpp:93 ui_compraventabase.h:882
@@ -8432,7 +8436,7 @@ msgstr "Profesor"
 
 #: ui_convocatoriabase.h:435
 msgid "Profesor Encargado"
-msgstr "Profesor Encargado"
+msgstr "Profesor encargado"
 
 #: convocatoriaview.cpp:59 actividadview.cpp:67
 msgid "Profesor:"
@@ -8495,7 +8499,7 @@ msgstr "Provincia:"
 
 #: ui_pagobase.h:327 ui_cobrobase.h:392
 msgid "Provision de fondos"
-msgstr "Provision de fondos"
+msgstr "Provisión de fondos"
 
 #: proyectoview.cpp:53
 msgid "Proyecto"
@@ -8511,11 +8515,11 @@ msgstr "Proyectos asociados"
 
 #: pluginbc_example.cpp:107
 msgid "Prueba de plugin Bulmacont."
-msgstr "Prueba de plugin Bulmacont."
+msgstr "Prueba de <i>plug-in</i> BulmaCont."
 
 #: pluginbf_example.cpp:116
 msgid "Prueba de plugin para BfBulmaFact."
-msgstr "Prueba de plugin para BfBulmaFact."
+msgstr "Prueba de <i>plug-in</i> para BulmaFact."
 
 #: listcontrolstockview.cpp:34
 msgid "Punteado"
@@ -8575,19 +8579,19 @@ msgstr "RECUPERAR"
 
 #: listcoloresview.cpp:100
 msgid "RGB Color"
-msgstr "RGB Color"
+msgstr "Color RGB"
 
 #: ui_rutacomercialincbase.h:228 ui_rutacomercialincbase.h:231
 msgid "Realizar Cobro"
-msgstr "Realizar Cobro"
+msgstr "Realizar cobro"
 
 #: admin.cpp:20
 msgid "Realmente desea Realizar la Z?"
-msgstr "Realmente desea Realizar la Z?"
+msgstr "¿Realmente desea realizar la Z?"
 
 #: admin.cpp:37
 msgid "Realmente desea abandonar el programa?"
-msgstr "Realmente desea abandonar el programa?"
+msgstr "¿Realmente desea abandonar el programa?"
 
 #: ui_bcmodelo347listbase.h:253
 msgid "Recalcular"
@@ -8611,7 +8615,7 @@ msgstr "Rectifica a"
 
 #: contratoview.cpp:411 facturaslist.cpp:372
 msgid "Ref factura"
-msgstr "Ref factura"
+msgstr "Referencia factura"
 
 #: impqtoolbutton.cpp:150 facturaview.cpp:207
 msgid "Ref:"
@@ -8632,7 +8636,7 @@ msgstr "Referencia Ticket"
 
 #: compraventaview.cpp:73 albaranproveedorview.cpp:64
 msgid "Referencia albaran proveedor"
-msgstr "Referencia albaran proveedor"
+msgstr "Referencia albarán proveedor"
 
 #: contrato.cpp:44
 msgid "Referencia contrato"
@@ -8640,7 +8644,7 @@ msgstr "Referencia contrato"
 
 #: albaranclientelist.cpp:382
 msgid "Referencia de albaran"
-msgstr "Referencia de albaran"
+msgstr "Referencia de albarán"
 
 #: rutacomerciallist.cpp:303
 msgid "Referencia de la incidencia"
@@ -8660,7 +8664,7 @@ msgstr "Referencia factura"
 
 #: facturapview.cpp:63
 msgid "Referencia facturap"
-msgstr "Referencia facturap"
+msgstr "Referencia factura"
 
 #: pedidosproveedorlist.cpp:316 pedidoproveedorview.cpp:62
 msgid "Referencia pedido"
@@ -8684,23 +8688,23 @@ msgstr "Referencias"
 
 #: ui_bccuentabase.h:833
 msgid "Reg&ularizacion"
-msgstr "Reg&ularizacion"
+msgstr "Reg&ularización"
 
 #: ui_proveditbase.h:796
 msgid "Regimen &fiscal:"
-msgstr "Regimen &fiscal:"
+msgstr "Régimen &fiscal:"
 
 #: provedit.cpp:61
 msgid "Regimen Fiscal"
-msgstr "Regimen Fiscal"
+msgstr "Régimen fiscal"
 
 #: clienteview.cpp:75 pluginbf_clienteproveedor.cpp:76
 msgid "Regimen fiscal"
-msgstr "Regimen fiscal"
+msgstr "Régimen fiscal"
 
 #: ui_clientebase.h:598
 msgid "Regimen fiscal:"
-msgstr "Regimen fiscal:"
+msgstr "Régimen fiscal:"
 
 #: ui_compraventabase.h:864 ui_compraventabase.h:867
 msgid "Registrar cobro a cliente"
@@ -8712,7 +8716,7 @@ msgstr "Registro IVA"
 
 #: ui_registroivabase.h:603
 msgid "Registro de Facturas"
-msgstr "Registro de Facturas"
+msgstr "Registro de facturas"
 
 #: pluginbc_registroiva.cpp:100 pluginbc_registroiva.cpp:101
 #: regivaqtoolbutton.cpp:74 regivaqtoolbutton.cpp:75
@@ -8733,24 +8737,24 @@ msgstr "Regla:"
 
 #: ui_confreglasbase.h:276
 msgid "Reglas de Corrector"
-msgstr "Reglas de Corrector"
+msgstr "Reglas de corrector"
 
 #: ui_confreglasbase.h:293
 msgid "Reglas sobre Apuntes"
-msgstr "Reglas sobre Apuntes"
+msgstr "Reglas sobre apuntes"
 
 #: ui_asientobase.h:589 bccuentaview.cpp:51 bcplancontablelistview.cpp:62
 #: registroiva.cpp:56
 msgid "Regularizacion"
-msgstr "Regularizacion"
+msgstr "Regularización"
 
 #: ui_tutorbase.h:525
 msgid "Relacion"
-msgstr "Relacion"
+msgstr "Relación"
 
 #: btticket.cpp:94
 msgid "Req. eq."
-msgstr "Req. eq."
+msgstr "Recargo de Equivalencia"
 
 #: ui_listregistroivabase.h:362
 msgid "Res&umen"
@@ -8766,11 +8770,11 @@ msgstr "Resumen cuenta"
 
 #: ui_correctorbase.h:52
 msgid "Resumen de Cuenta"
-msgstr "Resumen de Cuenta"
+msgstr "Resumen de cuenta"
 
 #: ui_proveditbase.h:824
 msgid "Resumen por articulos"
-msgstr "Resumen por articulos"
+msgstr "Resumen por artículos"
 
 #: ui_bcasientointeligentebase.h:216
 msgid "Return"
@@ -8824,7 +8828,7 @@ msgstr "SQL"
 
 #: cuadrantediarioview.cpp:170 cuadranteview.cpp:151
 msgid "Sabado"
-msgstr "Sabado"
+msgstr "Sábado"
 
 #: bcextractosubform.cpp:56 balanceview.cpp:259 balance1view.cpp:97
 msgid "Saldo"
@@ -8870,7 +8874,7 @@ msgstr "Salir del programa"
 
 #: q19qtoolbutton.cpp:89
 msgid "Save file"
-msgstr "Save file"
+msgstr "Guardar archivo"
 
 #: bcextractoview.cpp:543
 msgid ""
@@ -8882,7 +8886,7 @@ msgstr ""
 "Se dispone a borrar el punteo. Este "
 "cambio                                                 es irrecuperable si "
 "no ha guardado su punteo.                                                 "
-"Desea continuar?"
+"¿Desea continuar?"
 
 #: bcextractoview.cpp:554
 msgid "Se ha producido un error"
@@ -8902,11 +8906,11 @@ msgstr "Se han ordenado los asientos"
 
 #: bcplancontablelistview.cpp:409
 msgid "Se procedera a borrar la cuenta."
-msgstr "Se procedera a borrar la cuenta."
+msgstr "Se procederá a borrar la cuenta."
 
 #: asiento1.cpp:160
 msgid "Se va a borrar el asiento. Esta seguro?"
-msgstr "Se va a borrar el asiento. Esta seguro?"
+msgstr "Se va a borrar el asiento. ¿Está seguro?"
 
 #: bccentrocosteview.cpp:266
 msgid ""
@@ -8914,15 +8918,15 @@ msgid ""
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
 "Se va a borrar el centro de coste.\n"
-"Esta operacion puede ocasionar perdida de datos."
+"Esta operación puede ocasionar pérdida de datos."
 
 #: blcountryview.cpp:224
 msgid ""
 "Se va a borrar el pais seleccionado.\n"
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
-"Se va a borrar el pais seleccionado.\n"
-"Esta operacion puede ocasionar perdida de datos."
+"Se va a borrar el país seleccionado.\n"
+"Esta operación puede ocasionar pérdida de datos."
 
 #: bccanalview.cpp:212
 msgid ""
@@ -8930,7 +8934,7 @@ msgid ""
 "Esto puede ocasionar perdida de datos."
 msgstr ""
 "Se va a borrar este canal.\n"
-"Esto puede ocasionar perdida de datos."
+"Esto puede ocasionar pérdida de datos."
 
 #: bcformapagoview.cpp:243
 msgid ""
@@ -8938,19 +8942,19 @@ msgid ""
 "Esto puede ocasionar perdida de datos.\n"
 msgstr ""
 "Se va a borrar la forma de pago.\n"
-"Esto puede ocasionar perdida de datos.\n"
+"Esto puede ocasionar pérdida de datos.\n"
 
 #: ui_bccuentasanualesimprimirbase.h:199
 msgid "Segundo Periodo"
-msgstr "Segundo Periodo"
+msgstr "Segundo período"
 
 #: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
 msgid "Seleccion"
-msgstr "Seleccion"
+msgstr "Selección"
 
 #: pluginbf_articulo.cpp:392 pluginbf_articulo.cpp:411
 msgid "Seleccionar articulo"
-msgstr ""
+msgstr "Seleccionar artículo"
 
 #: trabajadorview.cpp:292
 msgid "Seleccione archivo"
@@ -8966,11 +8970,11 @@ msgstr "Seleccione fecha"
 
 #: genfacqtoolbutton.cpp:580
 msgid "Seleccione la factura a la que agregar el albaran."
-msgstr "Seleccione la factura a la que agregar el albaran."
+msgstr "Seleccione la factura a la que agregar el albarán."
 
 #: ui_bcmodelo300base.h:196
 msgid "Seleccione periodo de declaracion"
-msgstr "Seleccione periodo de declaracion"
+msgstr "Seleccione el período de la declaración"
 
 #: articuloview.cpp:277
 msgid "Seleccione un archivo de imagen"
@@ -8978,7 +8982,7 @@ msgstr "Seleccione un archivo de imagen"
 
 #: blcountryview.cpp:160
 msgid "Seleccione un pais para guardar"
-msgstr "Seleccione un pais para guardar"
+msgstr "Seleccione un país para guardar"
 
 #: ui_blcompanydialogbase.h:185 ui_blcompanydialogbase.h:187
 msgid "Seleccione una empresa"
@@ -8986,23 +8990,23 @@ msgstr "Seleccione una empresa"
 
 #: ui_bccanalseleccionarbase.h:94
 msgid "Selector de Canales"
-msgstr "Selector de Canales"
+msgstr "Selector de canales"
 
 #: ui_bccentrocosteseleccionarbase.h:95
 msgid "Selector de Centros de Coste"
-msgstr "Selector de Centros de Coste"
+msgstr "Selector de centros de coste"
 
 #: inventariosview.cpp:97
 msgid "Selector de Inventarios"
-msgstr "Selector de Inventarios"
+msgstr "Selector de inventarios"
 
 #: listproyectosview.cpp:58
 msgid "Selector de Proyectos"
-msgstr "Selector de Proyectos"
+msgstr "Selector de proyectos"
 
 #: bccuentalistview.cpp:68 articulolist.cpp:74
 msgid "Selector de articulos"
-msgstr "Selector de articulos"
+msgstr "Selector de artículos"
 
 #: clientslist.cpp:62
 msgid "Selector de clientes"
@@ -9045,11 +9049,11 @@ msgstr "Serie"
 
 #: listlresarticulo.cpp:37
 msgid "Serie Factura"
-msgstr "Serie Factura"
+msgstr "Serie de factura"
 
 #: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
-msgstr "Serie de Factura"
+msgstr "Serie de factura"
 
 #: ui_facturabase.h:683
 msgid "Serie:"
@@ -9065,7 +9069,7 @@ msgstr "Servicio."
 
 #: inventarioview.cpp:107
 msgid "Si"
-msgstr "Si"
+msgstr "Sí"
 
 #: ui_bcbulmacontbase.h:382
 msgid "Siguiente"
@@ -9073,15 +9077,15 @@ msgstr "Siguiente"
 
 #: ui_bccuentabase.h:846
 msgid "Sin &Tipo"
-msgstr "Sin &Tipo"
+msgstr "Sin &tipo"
 
 #: ui_btbulmatpvbase.h:89
 msgid "Sobre BtBulmaTPV"
-msgstr ""
+msgstr "Sobre BulmaTPV"
 
 #: ui_btbulmatpvbase.h:90
 msgid "Sobre Bulmages"
-msgstr "Sobre Bulmages"
+msgstr "Sobre BulmaGes"
 
 #: ui_btbulmatpvbase.h:91
 msgid "Sobre Qt"
@@ -9089,7 +9093,7 @@ msgstr "Sobre Qt"
 
 #: ui_tutorbase.h:507
 msgid "Socio"
-msgstr ""
+msgstr "Socio"
 
 #: ui_articulosubformbase.h:220 ui_articleslistbase.h:286
 msgid "Solo usados"
@@ -9101,27 +9105,27 @@ msgstr "Sopor&te"
 
 #: bccanalseleccionarview.cpp:45 bccentrocosteseleccionarview.cpp:43
 msgid "Status"
-msgstr "Status"
+msgstr "<i>Status</i>"
 
 #: articuloview.cpp:72
 msgid "Stock"
-msgstr "Stock"
+msgstr "<i>Stock</i>"
 
 #: listcontrolstockview.cpp:39
 msgid "Stock anterior"
-msgstr "Stock anterior"
+msgstr "<i>Stock</i> anterior"
 
 #: pluginbf_inventario.cpp:211
 msgid "Stock minimo superado"
-msgstr "Stock minimo superado"
+msgstr "<i>Stock</i> mínimo superado"
 
 #: listcontrolstockview.cpp:40
 msgid "Stock revisado"
-msgstr "Stock revisado"
+msgstr "<i>Stock</i> revisado"
 
 #: ui_articleeditbase.h:597
 msgid "Subcodigo:"
-msgstr "Subcodigo:"
+msgstr "Subcódigo:"
 
 #: ui_mticketbase.h:151 ui_mticketbase.h:154
 msgid "Subir"
@@ -9129,7 +9133,7 @@ msgstr "Subir"
 
 #: bcsubform.cpp:468
 msgid "Submenu de contabilidad"
-msgstr "Submenu de contabilidad"
+msgstr "Submenú de contabilidad"
 
 #: ui_bcmasapatrimonialbase.h:358
 msgid "Suman"
@@ -9157,7 +9161,7 @@ msgstr "TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)"
 
 #: ui_importcsvbase.h:204
 msgid "Tabla Destino"
-msgstr "Tabla Destino"
+msgstr "Tabla destino"
 
 #: pluginbt_aliastallasycolores.cpp:37 pluginbt_aliastallasycolores.cpp:39
 #: pluginbt_aliastallasycolores2.cpp:34 plugin_tc_articulos.cpp:80
@@ -9178,7 +9182,7 @@ msgstr "Tarifa"
 
 #: tarifaview.cpp:67
 msgid "Tarifa edicion"
-msgstr "Tarifa edicion"
+msgstr "Tarifa edición"
 
 #: tarifalistview.cpp:43 pluginbf_tarifa.cpp:82 pluginbf_tarifa.cpp:83
 #: pluginbf_tarifa.cpp:166 ui_tarifalistbase.h:147
@@ -9199,59 +9203,59 @@ msgstr "Teclado"
 
 #: presupuestolist.cpp:359 pedidoclienteview.cpp:68 pedidosclientelist.cpp:338
 msgid "Telefono"
-msgstr "Telefono"
+msgstr "Teléfono"
 
 #: ui_almacenbase.h:340
 msgid "Telefono Almacen"
-msgstr "Telefono Almacen"
+msgstr "Teléfono almacén"
 
 #: almacenview.cpp:63
 msgid "Telefono almacen"
-msgstr "Telefono almacen"
+msgstr "Teléfono almacén"
 
 #: compraventaview.cpp:88 albaranclienteview.cpp:78
 msgid "Telefono de contacto"
-msgstr "Telefono de contacto"
+msgstr "Teléfono de contacto"
 
 #: ui_presupuestoclientebase.h:762 ui_albaranclientebase.h:742
 #: ui_pedidoclientebase.h:674 ui_compraventabase.h:887
 #: ui_pedidoproveedorbase.h:698
 msgid "Telefono de contacto:"
-msgstr "Telefono de contacto:"
+msgstr "Teléfono de contacto:"
 
 #: bccuentaview.cpp:59
 msgid "Telefono de la cuenta"
-msgstr "Telefono de la cuenta"
+msgstr "Teléfono de la cuenta"
 
 #: bcamortizacionview.cpp:69
 msgid "Telefono del proveedor"
-msgstr "Telefono del proveedor"
+msgstr "Teléfono del proveedor"
 
 #: ui_clientebase.h:592 ui_profesorbase.h:502
 msgid "Telefono del trabajo:"
-msgstr "Telefono del trabajo:"
+msgstr "Teléfono del trabajo:"
 
 #: contratoview.cpp:405 facturasplist.cpp:357 facturaslist.cpp:365
 msgid "Telefono factura"
-msgstr "Telefono factura"
+msgstr "Teléfono factura"
 
 #: ui_clientebase.h:590 ui_tutorbase.h:514 ui_alumnobase.h:515
 #: ui_profesorbase.h:500
 msgid "Telefono fijo:"
-msgstr "Telefono fijo:"
+msgstr "Teléfono fijo:"
 
 #: ui_clientebase.h:593 ui_trabajadorbase.h:348 ui_tutorbase.h:515
 #: ui_alumnobase.h:516 ui_profesorbase.h:503
 msgid "Telefono movil:"
-msgstr "Telefono movil:"
+msgstr "Teléfono movil:"
 
 #: pedidosproveedorlist.cpp:323 pedidoproveedorview.cpp:66 pagoslist.cpp:250
 msgid "Telefono proveedor"
-msgstr "Telefono proveedor"
+msgstr "Teléfono proveedor"
 
 #: ui_bccuentabase.h:854 ui_trabajadorbase.h:341
 msgid "Telefono:"
-msgstr "Telefono:"
+msgstr "Teléfono:"
 
 #: busquedaestadoincidencia.cpp:36
 msgid "Terminada"
@@ -9271,7 +9275,7 @@ msgstr "TextLabel"
 
 #: ui_bcregistroivaimprimirbase.h:222
 msgid "Texto Plano"
-msgstr "Texto Plano"
+msgstr "Texto plano"
 
 #: ui_articleeditbase.h:606
 msgid "Texto para etiqueta:"
@@ -9295,7 +9299,7 @@ msgstr "Tienda"
 
 #: inventarioview.cpp:74
 msgid "Tiene que escribir una descripcion de inventario antes de guardar"
-msgstr "Tiene que escribir una descripcion de inventario antes de guardar"
+msgstr "Tiene que escribir una descripción de inventario antes de guardar"
 
 #: clienteview.cpp:163 pedidoproveedorview.cpp:239 tutorview.cpp:126
 #: convocatoriaview.cpp:95 actividadview.cpp:112 cobroview.cpp:122
@@ -9309,7 +9313,7 @@ msgstr "Tiene que guardar el documento antes de poder procesarlo."
 
 #: articulolist.cpp:161
 msgid "Tiene que seleccionar un articulo"
-msgstr "Tiene que seleccionar un articulo"
+msgstr "Tiene que seleccionar un artículo"
 
 #: genpreqtoolbutton.cpp:151 genpreqtoolbutton.cpp:279
 #: genpreqtoolbutton.cpp:408 genpreqtoolbutton.cpp:593 compraventaview.cpp:571
@@ -9343,15 +9347,15 @@ msgstr "Tipo"
 
 #: ui_cobropagobase.h:392
 msgid "Tipo (Cobro / Pago)"
-msgstr "Tipo (Cobro / Pago)"
+msgstr "Tipo (cobro/pago)"
 
 #: bfbuscartipoarticulo.cpp:37
 msgid "Tipo Articulo:"
-msgstr "Tipo Articulo:"
+msgstr "Tipo artículo:"
 
 #: ui_familiasbase.h:363
 msgid "Tipo Articulos"
-msgstr "Tipo Articulos"
+msgstr "Tipo artículos"
 
 #: bctipoivaview.cpp:39 listtipoivaview.cpp:49 listtipoivaview.cpp:106
 #: listtasaivaview.cpp:94
@@ -9360,7 +9364,7 @@ msgstr "Tipo IVA"
 
 #: almacenview.cpp:69
 msgid "Tipo almacen"
-msgstr "Tipo almacen"
+msgstr "Tipo almacén"
 
 #: bcplancontablelistview.cpp:62
 msgid "Tipo cuenta"
@@ -9368,15 +9372,15 @@ msgstr "Tipo cuenta"
 
 #: ui_convocatoriabase.h:438 ui_actividadbase.h:448
 msgid "Tipo de Actividad"
-msgstr ""
+msgstr "Tipo de actividad"
 
 #: ui_almacenbase.h:335
 msgid "Tipo de Almacen"
-msgstr "Tipo de Almacen"
+msgstr "Tipo de almacén"
 
 #: bccuentaview.cpp:52
 msgid "Tipo de Cuenta"
-msgstr "Tipo de Cuenta"
+msgstr "Tipo de cuenta"
 
 #: articuloview.cpp:69
 msgid "Tipo de I.V.A."
@@ -9392,11 +9396,11 @@ msgstr "Tipo de IVA:"
 
 #: articuloview.cpp:68
 msgid "Tipo de articulo"
-msgstr "Tipo de articulo"
+msgstr "Tipo de artículo"
 
 #: ui_tiposarticulobase.h:244
 msgid "Tipo de articulo:"
-msgstr "Tipo de articulo:"
+msgstr "Tipo de artículo:"
 
 #: asiento1.cpp:50
 msgid "Tipo de asiento"
@@ -9424,7 +9428,7 @@ msgstr "Tipo plazo primer pago:"
 
 #: tipoactividadview.cpp:44
 msgid "TipoActividad"
-msgstr ""
+msgstr "Tipo actividad"
 
 #: ui_bcbulmacontbase.h:362
 msgid "Tipos de &IVA"
@@ -9433,7 +9437,7 @@ msgstr "Tipos de &IVA"
 #: pluginbf_actividad.cpp:109 pluginbf_actividad.cpp:110
 #: ui_tipoactividadbase.h:235
 msgid "Tipos de Actividad"
-msgstr ""
+msgstr "Tipos de actividad"
 
 #: pluginbf_articulo.cpp:144 pluginbf_articulo.cpp:145
 msgid "Tipos de Articulo"
@@ -9446,15 +9450,15 @@ msgstr "Tipos de IVA"
 
 #: ui_listtipostrabajobase.h:113
 msgid "Tipos de Trabajo"
-msgstr "Tipos de Trabajo"
+msgstr "Tipos de trabajo"
 
 #: ui_tiposarticulobase.h:239
 msgid "Tipos de articulo"
-msgstr "Tipos de articulo"
+msgstr "Tipos de artículo"
 
 #: pluginbc_example.cpp:63 pluginbf_example.cpp:63
 msgid "Titulo de la ventana"
-msgstr "Titulo de la ventana"
+msgstr "Título de la ventana"
 
 #: facturasplist.cpp:121 movimientosview.cpp:88 facturaslist.cpp:116
 msgid "Todas las facturas"
@@ -9508,7 +9512,7 @@ msgstr "Total Base Imponible:"
 
 #: ui_cobropagobase.h:401
 msgid "Total Cobros"
-msgstr "Total Cobros"
+msgstr "Total cobros"
 
 #: ui_bcdiariobase.h:373 ui_asientolistbase.h:428 ui_asientobase.h:593
 #: ui_balancetreebase.h:405 ui_balancetreebase.h:425
@@ -9517,7 +9521,7 @@ msgstr "Total Debe:"
 
 #: bfform.cpp:339
 msgid "Total Desc."
-msgstr "Total Desc."
+msgstr "Total descuento"
 
 #: ui_bcdiariobase.h:374 ui_asientolistbase.h:429 ui_asientobase.h:594
 #: ui_balancetreebase.h:406 ui_balancetreebase.h:426
@@ -9530,19 +9534,19 @@ msgstr "Total IVA:"
 
 #: ui_devolucionbase.h:272
 msgid "Total Original"
-msgstr "Total Original"
+msgstr "Total original"
 
 #: ui_cobropagobase.h:402
 msgid "Total Pagos"
-msgstr "Total Pagos"
+msgstr "Total pagos"
 
 #: ui_z2zbase.h:387
 msgid "Total Tickets"
-msgstr "Total Tickets"
+msgstr "Total <i>Tickets</i>"
 
 #: ui_z2zbase.h:388
 msgid "Total Traspasable"
-msgstr "Total Traspasable"
+msgstr "Total traspasable"
 
 #: ui_cobrarbase.h:447 ui_cambiobase.h:507
 msgid "Total a cobrar:"
@@ -9550,11 +9554,11 @@ msgstr "Total a cobrar:"
 
 #: albaranesproveedor.cpp:395
 msgid "Total albaran"
-msgstr "Total albaran"
+msgstr "Total albarán"
 
 #: ui_z2zbase.h:389
 msgid "Total aprox a Traspasar"
-msgstr "Total aprox a Traspasar"
+msgstr "Total aproximado a traspasar"
 
 #: cobroview.cpp:67
 msgid "Total cobro"
@@ -9574,7 +9578,7 @@ msgstr "Total filas:"
 
 #: ui_blsubformbase.h:606
 msgid "Total paginas:"
-msgstr "Total paginas:"
+msgstr "Total páginas:"
 
 #: ui_pagobase.h:329
 msgid "Total pago:"
@@ -9626,7 +9630,7 @@ msgstr "Trabajando"
 
 #: pcapgc08.cpp:1023
 msgid "Transferencias a la cuenta de perdidas y ganancias"
-msgstr "Transferencias a la cuenta de perdidas y ganancias"
+msgstr "Transferencias a la cuenta de pérdidas y ganancias"
 
 #: ui_z2zbase.h:390
 msgid "Traspasar"
@@ -9642,47 +9646,47 @@ msgstr "Tratamiento de la fecha:"
 
 #: blimportexport.cpp:2477
 msgid "Tratando DAlbaran"
-msgstr "Tratando DAlbaran"
+msgstr "Tratando albarán"
 
 #: blimportexport.cpp:2703
 msgid "Tratando DFactura"
-msgstr "Tratando DFactura"
+msgstr "Tratando factura"
 
 #: blimportexport.cpp:2250
 msgid "Tratando DPedidoCliente"
-msgstr "Tratando DPedidoCliente"
+msgstr "Tratando pedido cliente"
 
 #: blimportexport.cpp:2941
 msgid "Tratando DPresupuesto"
-msgstr "Tratando DPresupuesto"
+msgstr "Tratando presupuesto"
 
 #: blimportexport.cpp:2449
 msgid "Tratando LAlbaran"
-msgstr "Tratando LAlbaran"
+msgstr "Tratando albarán"
 
 #: blimportexport.cpp:2675
 msgid "Tratando LFactura"
-msgstr "Tratando LFactura"
+msgstr "Tratando factura"
 
 #: blimportexport.cpp:2222
 msgid "Tratando LPedidoCliente"
-msgstr "Tratando LPedidoCliente"
+msgstr "Tratando pedido cliente"
 
 #: blimportexport.cpp:2913
 msgid "Tratando LPresupuesto"
-msgstr "Tratando LPresupuesto"
+msgstr "Tratando presupuesto"
 
 #: blimportexport.cpp:2498
 msgid "Tratando albaran"
-msgstr "Tratando albaran"
+msgstr "Tratando albarán"
 
 #: blimportexport.cpp:2013
 msgid "Tratando almacen"
-msgstr "Tratando almacen"
+msgstr "Tratando almacén"
 
 #: blimportexport.cpp:2124
 msgid "Tratando articulo"
-msgstr "Tratando articulo"
+msgstr "Tratando artículo"
 
 #: blimportexport.cpp:1936
 msgid "Tratando el proveedor"
@@ -9724,7 +9728,7 @@ msgstr "Tutores"
 
 #: pluginbf_tutor.cpp:101 pluginbf_tutor.cpp:102
 msgid "Tutores/Socios"
-msgstr ""
+msgstr "Tutores/socios"
 
 #: provedit.cpp:58 pluginbf_clienteproveedor.cpp:73
 msgid "URL"
@@ -9732,7 +9736,7 @@ msgstr "URL"
 
 #: ui_bccuentabase.h:859
 msgid "URL de la pagina web:"
-msgstr "URL de la pagina web:"
+msgstr "URL de la página web:"
 
 #: ui_abrevsbase.h:96
 msgid "USUARIO"
@@ -9740,31 +9744,31 @@ msgstr "USUARIO"
 
 #: ui_contratobase.h:488
 msgid "Ubicacion:"
-msgstr "Ubicacion:"
+msgstr "Ubicación:"
 
 #: ui_untitled.h:300 ui_untitled.h:310
 msgid "Und."
-msgstr "Und."
+msgstr "Unidades"
 
 #: ui_promediobase.h:296
 msgid "Und. Compradas"
-msgstr "Und. Compradas"
+msgstr "Unidades compradas"
 
 #: ui_promediobase.h:305
 msgid "Und. Vendidas"
-msgstr "Und. Vendidas"
+msgstr "Unidades vendidas"
 
 #: devolucion2.cpp:228 devolucion2.cpp:243
 msgid "Unds."
-msgstr "Unds."
+msgstr "Unidades"
 
 #: ui_blformconfigbase.h:290
 msgid "User Preferences"
-msgstr "User Preferences"
+msgstr "Preferencias de usuario"
 
 #: ui_blformconfigbase.h:288
 msgid "Usuario Actual"
-msgstr "Usuario Actual"
+msgstr "Usuario actual"
 
 #: pcapgc08.cpp:606
 msgid "V. Acreedores comerciales y otras cuentas a pagar."
@@ -9780,7 +9784,7 @@ msgstr "V. Entr."
 
 #: informeqtoolbutton.cpp:470
 msgid "V. Fact."
-msgstr "V. Fact."
+msgstr "V. Factura"
 
 #: pcapgc08.cpp:287
 msgid "V. Inversiones financieras a corto plazo."
@@ -9792,7 +9796,7 @@ msgstr "V. Inversiones financieras a largo plazo."
 
 #: informeqtoolbutton.cpp:468
 msgid "V. Ped."
-msgstr "V. Ped."
+msgstr "V. Pedido"
 
 #: pcapgc08.cpp:545
 msgid "V. Periodificaciones a largo plazo."
@@ -9800,7 +9804,7 @@ msgstr "V. Periodificaciones a largo plazo."
 
 #: informeqtoolbutton.cpp:467
 msgid "V. Pres."
-msgstr "V. Pres."
+msgstr "V. Presupuesto."
 
 #: pcapgc08.cpp:413
 msgid "V. Resultados de ejercicios anteriores."
@@ -9828,11 +9832,11 @@ msgstr "VI. Periodificaciones a corto plazo."
 
 #: pcapgc08.cpp:1029
 msgid "VI. Por valoracion de instrumentos financieros."
-msgstr "VI. Por valoracion de instrumentos financieros."
+msgstr "VI. Por valoración de instrumentos financieros."
 
 #: pcapgc08.cpp:319
 msgid "VII. Efectivo y otros activos liquidos equivalentes."
-msgstr "VII. Efectivo y otros activos liquidos equivalentes."
+msgstr "VII. Efectivo y otros activos líquidos equivalentes."
 
 #: pcapgc08.cpp:1043
 msgid "VII. Por coberturas de flujos de efectivo."
@@ -9900,15 +9904,15 @@ msgstr "Ver"
 
 #: ui_rutacomercialincbase.h:221 ui_rutacomercialincbase.h:224
 msgid "Ver Albaran"
-msgstr "Ver Albaran"
+msgstr "Ver albarán"
 
 #: balanceview.cpp:401 balance1view.cpp:566
 msgid "Ver Diario (este anyo)"
-msgstr "Ver Diario (este anyo)"
+msgstr "Ver Diario (este año)"
 
 #: balanceview.cpp:399 balance1view.cpp:564
 msgid "Ver Diario (este dia)"
-msgstr "Ver Diario (este dia)"
+msgstr "Ver Diario (este día)"
 
 #: balanceview.cpp:400 balance1view.cpp:565
 msgid "Ver Diario (este mes)"
@@ -9930,11 +9934,11 @@ msgstr "Ver configurador de subformulario"
 
 #: balanceview.cpp:405 balance1view.cpp:570
 msgid "Ver extracto (este anyo)"
-msgstr "Ver extracto (este anyo)"
+msgstr "Ver extracto (este año)"
 
 #: balanceview.cpp:403 balance1view.cpp:568
 msgid "Ver extracto (este dia)"
-msgstr "Ver extracto (este dia)"
+msgstr "Ver extracto (este día)"
 
 #: balanceview.cpp:404 balance1view.cpp:569
 msgid "Ver extracto (este mes)"
@@ -9959,7 +9963,7 @@ msgstr "Ver pedidos con la misma referencia"
 
 #: blsubform.cpp:2546
 msgid "Ver/Ocultar configurador de subformulario"
-msgstr "Ver/Ocultar configurador de subformulario"
+msgstr "Ver/ocultar configurador de subformulario"
 
 #: cuadrantediarioview.cpp:169 cuadranteview.cpp:151
 msgid "Viernes"
@@ -9979,15 +9983,15 @@ msgstr "Visible"
 
 #: ui_bcmodelo300base.h:206
 msgid "Vista Previa"
-msgstr "Vista Previa"
+msgstr "Vista previa"
 
 #: ui_articleeditbase.h:610
 msgid "Volumen (cm3):"
-msgstr "Volumen (cm3):"
+msgstr "Volumen (cm<sup>3</sup>):"
 
 #: articuloview.cpp:76
 msgid "Volumen Unidad"
-msgstr "Volumen Unidad"
+msgstr "Volumen de la unidad"
 
 #: bcmodelo300imprimir2ps.cpp:119
 msgid "Volver"
@@ -10011,15 +10015,15 @@ msgstr "Ya existe esta forma de pago."
 
 #: blimportexport.cpp:2035
 msgid "Ya existe este almacen."
-msgstr "Ya existe este almacen."
+msgstr "Ya existe este almacén."
 
 #: blimportexport.cpp:2185
 msgid "Ya existe este articulo."
-msgstr "Ya existe este articulo."
+msgstr "Ya existe este artículo."
 
 #: abrevs.cpp:117
 msgid "Ya existe un ticket aparcado con el mismo nombre."
-msgstr "Ya existe un ticket aparcado con el mismo nombre."
+msgstr "Ya existe un <i>ticket</i> aparcado con el mismo nombre."
 
 #: ui_adminbase.h:75
 msgid "Z"
@@ -10039,11 +10043,11 @@ msgstr "Zonas comerciales"
 
 #: pcapgc08.cpp:877
 msgid "a) Cartera de negociacion y otros."
-msgstr "a) Cartera de negociacion y otros."
+msgstr "a) Cartera de negociación y otros."
 
 #: pcapgc08.cpp:710
 msgid "a) Consumo de mercaderias."
-msgstr "a) Consumo de mercaderias."
+msgstr "a) Consumo de mercaderías."
 
 #: pcapgc08.cpp:829
 msgid "a) De participaciones en instrumentos de patrimonio."
@@ -10051,11 +10055,11 @@ msgstr "a) De participaciones en instrumentos de patrimonio."
 
 #: pcapgc08.cpp:804 pcapgc08.cpp:897
 msgid "a) Deterioros y perdidas."
-msgstr "a) Deterioros y perdidas."
+msgstr "a) Deterioros y pérdidas."
 
 #: pcapgc08.cpp:732
 msgid "a) Ingresos accesorios y otros de gestion corriente."
-msgstr "a) Ingresos accesorios y otros de gestion corriente."
+msgstr "a) Ingresos accesorios y otros de gestión corriente."
 
 #: pcapgc08.cpp:859
 msgid "a) Por deudas con empresas del grupo y asociadas."
@@ -10083,11 +10087,11 @@ msgstr "a2) En terceros."
 
 #: listtipostrabajoview.cpp:48
 msgid "almacen"
-msgstr "almacen"
+msgstr "almacén"
 
 #: balancesubform.cpp:36 balancesubform.cpp:40
 msgid "asaldo"
-msgstr "asaldo"
+msgstr "a saldo"
 
 #: pcapgc08.cpp:750
 msgid "b) Cargas sociales."
@@ -10106,7 +10110,7 @@ msgid ""
 "b) Imputacion al resultado del ejercicio por activos financieros disponibles "
 "para la venta."
 msgstr ""
-"b) Imputacion al resultado del ejercicio por activos financieros disponibles "
+"b) Imputación al resultado del ejercicio por activos financieros disponibles "
 "para la venta."
 
 #: pcapgc08.cpp:863
@@ -10124,7 +10128,7 @@ msgstr "b) Resultados por enajenaciones y otras."
 #: pcapgc08.cpp:736
 msgid "b) Subvenciones de explotacion incorporadas al resultado del ejercicio."
 msgstr ""
-"b) Subvenciones de explotacion incorporadas al resultado del ejercicio."
+"b) Subvenciones de explotación incorporadas al resultado del ejercicio."
 
 #: pcapgc08.cpp:768
 msgid "b) Tributos."
@@ -10147,12 +10151,12 @@ msgid ""
 "c) Perdidas, deterioro y variacion de provisiones por operaciones "
 "comerciales."
 msgstr ""
-"c) Perdidas, deterioro y variacion de provisiones por operaciones "
+"c) Pérdidas, deterioro y variación de provisiones por operaciones "
 "comerciales."
 
 #: pcapgc08.cpp:867
 msgid "c) Por actualizacion de provisiones"
-msgstr "c) Por actualizacion de provisiones"
+msgstr "c) Por actualización de provisiones"
 
 #: pcapgc08.cpp:754
 msgid "c) Provisiones."
@@ -10197,11 +10201,11 @@ msgstr "contrapartida"
 msgid ""
 "d) Deterioro de mercaderias, materias primas y otros aprovisionamientos."
 msgstr ""
-"d) Deterioro de mercaderias, materias primas y otros aprovisionamientos."
+"d) Deterioro de mercaderías, materias primas y otros aprovisionamientos."
 
 #: pcapgc08.cpp:776
 msgid "d) Otros gastos de gestion corriente"
-msgstr "d) Otros gastos de gestion corriente"
+msgstr "d) Otros gastos de gestión corriente"
 
 #: bccanalseleccionarview.cpp:45
 msgid "desc_canal"
@@ -10238,7 +10242,7 @@ msgstr "ejsaldo"
 
 #: almacenview.cpp:65
 msgid "email almacen"
-msgstr "email almacen"
+msgstr "E-mail almacén"
 
 #: cobropagoview.cpp:48 registroivaview.cpp:84
 msgid "fcobroprevcobro"
@@ -10246,7 +10250,7 @@ msgstr "fcobroprevcobro"
 
 #: proyectoview.cpp:59
 msgid "fecha"
-msgstr "fecha"
+msgstr "Fecha"
 
 #: cobropagoview.cpp:47 registroivaview.cpp:83
 msgid "fprevistaprevcobro"
@@ -10356,24 +10360,24 @@ msgstr "menuVentana"
 
 #: tiposarticuloview.cpp:394 familiasview.cpp:488
 msgid "no se ha podido borrar"
-msgstr "no se ha podido borrar"
+msgstr "No se ha podido borrar"
 
 #: impmultqtoolbutton.cpp:237
 msgid "no se pudo crear instancia de albaran"
-msgstr "no se pudo crear instancia de albaran"
+msgstr "No se pudo crear la instancia del albarán"
 
 #: impmultqtoolbutton.cpp:164 impmultqtoolbutton.cpp:784
 msgid "no se pudo crear instancia de factura"
-msgstr "no se pudo crear instancia de factura"
+msgstr "No se pudo crear la instancia de la factura"
 
 #: impmultqtoolbutton.cpp:200 impmultqtoolbutton.cpp:690
 #: impmultqtoolbutton.cpp:735
 msgid "no se pudo crear instancia de pedido cliente"
-msgstr "no se pudo crear instancia de pedido cliente"
+msgstr "No se pudo crear la instancia del pedido del cliente"
 
 #: impmultqtoolbutton.cpp:646
 msgid "no se pudo crear instancia de presupuesto"
-msgstr "no se pudo crear instancia de presupuesto"
+msgstr "No se pudo crear la instancia del presupuesto"
 
 #: bccanalseleccionarview.cpp:45
 msgid "nom_canal"
@@ -10451,8 +10455,8 @@ msgid ""
 "xxxx --> Digitos de plan contable.\n"
 "yyyy --> Digitos de cuenta."
 msgstr ""
-"xxxx --> Digitos de plan contable.\n"
-"yyyy --> Digitos de cuenta."
+"xxxx --> Dígitos de Plan Contable.\n"
+"yyyy --> Dígitos de cuenta."
 
 #: ui_asientolistbase.h:425
 msgid "y   ( >="
