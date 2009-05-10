@@ -46,74 +46,6 @@ language 'plpgsql';
 -- Empezamos con los cambios...
 --
 
--- 
--- Agregamos tres tristes triggers para que se actualice debidamente el campo
--- cantrecibo a partir de los cambios en las lineas de este
--- 
-
-\echo -n ':: Funcion que calcula el campo de totales de un recibo (INSERT)'
-CREATE FUNCTION actualizacantrecibo_insert() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-    total numeric(12,2);
-
-BEGIN
-    SELECT INTO total SUM(cantlrecibo) FROM lrecibo WHERE idrecibo = NEW.idrecibo;
-    UPDATE recibo SET cantrecibo = total WHERE idrecibo = NEW.idrecibo;
-    
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-\echo -n ':: Disparador que recalcula el campo de totales de un recibo (INSERT)'
-CREATE TRIGGER actualizacantrecibotrigger_insert
-    BEFORE INSERT ON lrecibo
-    FOR EACH ROW
-    EXECUTE PROCEDURE actualizacantrecibo_insert();
-
-\echo -n ':: Funcion que calcula/actualiza el campo de totales de un recibo (UPDATE)'
-CREATE FUNCTION actualizacantrecibo_update() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-    total numeric(12,2);
-
-BEGIN
-    SELECT INTO total SUM(cantlrecibo) FROM lrecibo WHERE idrecibo = NEW.idrecibo;
-    UPDATE recibo SET cantrecibo = total WHERE idrecibo = NEW.idrecibo;
-    
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-\echo -n ':: Disparador que calcula/actualiza el campo de totales de un recibo (UPDATE)'
-CREATE TRIGGER actualizacantrecibotrigger_update
-    BEFORE UPDATE ON lrecibo
-    FOR EACH ROW
-    EXECUTE PROCEDURE actualizacantrecibo_update();
-    
-\echo -n ':: Funcion que calcula/actualiza el campo de totales de un recibo (DELETE)'
-CREATE FUNCTION actualizacantrecibo_delete() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-    total numeric(12,2);
-
-BEGIN
-    SELECT INTO total SUM(cantlrecibo) FROM lrecibo WHERE idrecibo = OLD.idrecibo;
-    UPDATE recibo SET cantrecibo = total WHERE idrecibo = OLD.idrecibo;
-    
-    RETURN OLD;
-END;
-' LANGUAGE plpgsql;
-
-\echo -n ':: Disparador que calcula/actualiza el campo de totales de un recibo (DELETE)'
-CREATE TRIGGER actualizacantrecibotrigger_delete
-    AFTER DELETE ON lrecibo
-    FOR EACH ROW
-    EXECUTE PROCEDURE actualizacantrecibo_delete();
-    
 
 -- 
 -- Funcion que prepara la base de datos para funcionar como una AMPA
@@ -451,6 +383,83 @@ END;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Creamos la tabla profesor."
+
+
+
+-- 
+-- Agregamos tres tristes triggers para que se actualice debidamente el campo
+-- cantrecibo a partir de los cambios en las lineas de este
+-- 
+SELECT drop_if_exists_proc('actualizacantrecibo_insert', '');
+
+\echo -n ':: Funcion que calcula el campo de totales de un recibo (INSERT)'
+CREATE FUNCTION actualizacantrecibo_insert() RETURNS "trigger"
+AS '
+DECLARE
+    as RECORD;
+    total numeric(12,2);
+
+BEGIN
+    SELECT INTO total SUM(cantlrecibo) FROM lrecibo WHERE idrecibo = NEW.idrecibo;
+    UPDATE recibo SET cantrecibo = total WHERE idrecibo = NEW.idrecibo;
+    
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+\echo -n ':: Disparador que recalcula el campo de totales de un recibo (INSERT)'
+CREATE TRIGGER actualizacantrecibotrigger_insert
+    BEFORE INSERT ON lrecibo
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizacantrecibo_insert();
+
+SELECT drop_if_exists_proc('actualizacantrecibo_update', '');
+\echo -n ':: Funcion que calcula/actualiza el campo de totales de un recibo (UPDATE)'
+CREATE FUNCTION actualizacantrecibo_update() RETURNS "trigger"
+AS '
+DECLARE
+    as RECORD;
+    total numeric(12,2);
+
+BEGIN
+    SELECT INTO total SUM(cantlrecibo) FROM lrecibo WHERE idrecibo = NEW.idrecibo;
+    UPDATE recibo SET cantrecibo = total WHERE idrecibo = NEW.idrecibo;
+    
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+\echo -n ':: Disparador que calcula/actualiza el campo de totales de un recibo (UPDATE)'
+CREATE TRIGGER actualizacantrecibotrigger_update
+    BEFORE UPDATE ON lrecibo
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizacantrecibo_update();
+    
+
+SELECT drop_if_exists_proc('actualizacantrecibo_delete', '');
+\echo -n ':: Funcion que calcula/actualiza el campo de totales de un recibo (DELETE)'
+CREATE FUNCTION actualizacantrecibo_delete() RETURNS "trigger"
+AS '
+DECLARE
+    as RECORD;
+    total numeric(12,2);
+
+BEGIN
+    SELECT INTO total SUM(cantlrecibo) FROM lrecibo WHERE idrecibo = OLD.idrecibo;
+    UPDATE recibo SET cantrecibo = total WHERE idrecibo = OLD.idrecibo;
+    
+    RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+\echo -n ':: Disparador que calcula/actualiza el campo de totales de un recibo (DELETE)'
+CREATE TRIGGER actualizacantrecibotrigger_delete
+    AFTER DELETE ON lrecibo
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizacantrecibo_delete();
+    
+
+
 
 -- ======================== Actualizada la revision de la base de datos a la version. =====================
 

@@ -55,49 +55,47 @@ BEGIN
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnotutor'';
         IF FOUND THEN
-       DROP TABLE alumnotutor;
+       DROP TABLE alumnotutor CASCADE;
         END IF;
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
         IF FOUND THEN
-	    DROP TABLE alumno;
+	    DROP TABLE alumno CASCADE;
         END IF;
 
 
 	SELECT INTO as * FROM pg_tables WHERE tablename=''cuota'';
 	IF FOUND THEN
-	    DROP TABLE cuota;
+	    DROP TABLE cuota CASCADE;
 	END IF;
 	
 
 
 	SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
 	IF FOUND THEN
-	    DROP TABLE socio;
+	    DROP TABLE socio CASCADE;
 	END IF;
 
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
         IF FOUND THEN
-	    DROP TABLE tutor;
+	    DROP TABLE tutor CASCADE;
         END IF;
         
         SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
         IF FOUND THEN
-       DROP TABLE sesionactividad;
+       DROP TABLE sesionactividad CASCADE;
         END IF;
         
         SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
         IF FOUND THEN
-	    DROP TABLE actividad;
+	    DROP TABLE actividad CASCADE;
         END IF;
 
         SELECT INTO as * FROM pg_tables  WHERE tablename=''profesor'';
         IF FOUND THEN
-	    DROP TABLE profesor;
+	    DROP TABLE profesor CASCADE;
         END IF;
-
-
 
 	RETURN 0;
 END;

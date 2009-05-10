@@ -67,7 +67,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             self.cur.execute(query)
         except:
             print "Fallo en la consulta: " + query
-            sys.exit()
+	    return None
         return self.cur.fetchall()
         
     def executeone(self, query):
@@ -75,7 +75,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             self.cur.execute(query)
         except:
             print "Fallo en la consulta: " + query
-            sys.exit()
+	    return None
         return self.cur.fetchone()
         
 

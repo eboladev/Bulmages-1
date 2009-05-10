@@ -30,23 +30,26 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         self.i = 0
         for row in self.databases:
             self.i = self.i + 1
-        self.mui_listado.setRowCount(self.i -4)
+        self.mui_listado.setRowCount(self.i -2)
         self.i = 0
         
         for row in self.databases:
-            if (str(row[0]) != 'template0') and (str(row[0]) != 'template1') and (str(row[0]) != 'mustopalma') and (str(row[0]) != 'talvarez'):
+            if (str(row[0]) != 'template0' and str(row[0]) != 'template1' ):
                 self.conectar(str(row[0]))
+		print str(row[0])
                 nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
-                tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
-                databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
-                self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
-                self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
-                self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
-                self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
-                self.i = self.i + 1
-                if (tipo == ''):
-                    self.mui_listado.hideRow(self.i)
-                self.desconectar()
+		tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
+		databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
+		if (nombre != None and tipo != None and databaserevision != None):
+		  self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
+		  self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
+		  self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
+		  self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
+		  self.i = self.i + 1
+		else:
+		  self.mui_listado.hideRow(self.i)
+		self.desconectar()
+		print "Fin"
                     
         # Ponemos la pestanya principal como la visible
         self.tabWidget.setCurrentIndex(0)
