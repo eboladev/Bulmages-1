@@ -8,7 +8,7 @@
 		<!-- EL LOGO DE CABECERA -->
 		<image x="3cm" y="26cm" width="8cm" file="logo.jpg"/>
 
-                <!--IFACE SRC="[CONF_DIR_OPENREPORTS]/informeVendesReferenciesClient.ui"-->
+                <!--IFACE SRC="[CONF_DIR_OPENREPORTS]/informeVendesReferencies_cliente.ui"-->
                 <!--SETVAR NAME="where" VALUE="WHERE ((COALESCE(tfac,0) - COALESCE(tcob,0))<>0 OR (COALESCE(tfaccli,0) - COALESCE(tcobcli,0))<>0 OR (NOT [pendientes.checked])) 
 AND ((NOT [usaDesde.checked]) OR (coalesce(to_date('[desde.selectedDate]','YYYY-MM-DD')<=GREATEST(datafipres,datafiped,datafialb,datafifac,dataficob,dataficob,datafivenccob,dataficobpre,datafivenccobpre),true) ))
 AND ((NOT [usaHasta.checked]) OR coalesce(to_date('[hasta.selectedDate]','YYYY-MM-DD')+'1 day'::interval >
@@ -29,7 +29,7 @@ LEAST(datainipres,datainiped,datainialb,datainifac,datainicob,datainicob,dataini
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="16"/>
 
-		<drawString x="1.5cm" y="26.5cm">Vendes a un/a client/a per referències</drawString>
+		<drawString x="10.5cm" y="26.5cm">Vendes a un/a client/a per referències</drawString>
 
 <!--QUERY ="SELECT *, 
 ('Llista de les referències amb algun document on apareix la clienta, que inclou les pendents de cobrar '|| (CASE WHEN  [pendientes.checked] THEN 'sense les cobrades ' ELSE 'i les cobrades ' || 
