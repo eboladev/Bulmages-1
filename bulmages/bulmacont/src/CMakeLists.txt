@@ -27,70 +27,70 @@ file(GLOB bulmacont_UIS *.ui)
 
 set(bulmacontEx main.cxx)
 
-set(bulmacont_MOCS bcbulmacont.h 
-           bcaboutview.h 
-           bcplancontablelistview.h 
-           bccuentaview.h 
-           bcdiarioview.h 
-           bcextractoview.h 
-           bcasientointeligenteview.h 
-           asientosview.h 
-           bcregistroivaimprimirview.h 
-           bcmasapatrimonialview.h 
-           bcmasapatrimoniallistview.h 
-           bccuentasanualesimprimirview.h 
-           bccuentasanualesview.h 
-           bccanalview.h 
-           bccentrocosteview.h 
-           bcconfiguracionview.h 
-           bcextractoimprimirview.h 
-           bcdiarioprintview.h 
-           bccambiacuentaview.h 
-           bcasientoduplicarview.h 
-           bcamortizacionview.h 
-           bcmodelo347listview.h 
-           bcamortizacionlistview.h 
-           bccentrocosteseleccionarview.h 
-           bccanalseleccionarview.h 
-           bcmodelo300imprimir2ps.h 
-           bcbloqueafechaview.h 
-           bctipoivaview.h 
-           bcformapagoview.h 
-		   bcbuscarcuenta.h 
-		   asiento1.h 
-		   asiento1view.h 
-	   	   listlinasiento1view.h 
-  	   	   bcsubform.h 
-	   	   bcdiariosubform.h 
-	   	   bcextractosubform.h 
-	   	   asientolistsubform.h 
-		   bcbuscarcentrocoste.h 
-	       bcbuscarcanal.h 
-	       bcform.h
-	       bccuentalistview.h)
+set(bulmacont_MOCS bcbulmacont.h
+           bcaboutview.h
+           bcplancontablelistview.h
+           bccuentaview.h
+           bcdiarioview.h
+           bcextractoview.h
+           bcasientointeligenteview.h
+           asientosview.h
+           bcregistroivaimprimirview.h
+           bcmasapatrimonialview.h
+           bcmasapatrimoniallistview.h
+           bccuentasanualesimprimirview.h
+           bccuentasanualesview.h
+           bccanalview.h
+           bccentrocosteview.h
+           bcconfiguracionview.h
+           bcextractoimprimirview.h
+           bcdiarioprintview.h
+           bccambiacuentaview.h
+           bcasientoduplicarview.h
+           bcamortizacionview.h
+           bcmodelo347listview.h
+           bcamortizacionlistview.h
+           bccentrocosteseleccionarview.h
+           bccanalseleccionarview.h
+           bcmodelo300imprimir2ps.h
+           bcbloqueafechaview.h
+           bctipoivaview.h
+           bcformapagoview.h
+           bcbuscarcuenta.h
+           asiento1.h
+           asiento1view.h
+           listlinasiento1view.h
+           bcsubform.h
+           bcdiariosubform.h
+           bcextractosubform.h
+           asientolistsubform.h
+           bcbuscarcentrocoste.h
+           bcbuscarcanal.h 
+           bcform.h
+           bccuentalistview.h)
 
 # ficheros no MOc's
-#           bccompany.h 
-#           qlineedit1.h 
-#           qlistviewitem1.h 
-#           bclibromayorimprimir.h 
-#           bcdiarioprint.h 
-#           bclibromayorimprimir.h 
-#           bcdiarioprint.h 
-#           modelosps.h 
-#           bcasientointeligenteimportarxml.h 
-#           bcbalanceimportarxml.h 
-#           bcplancontablearbol.h 
-#           balance1view.h 
-#           balanceview.h 
-#           balanceprintview.h 
-#	        balancesubform.h 
-	   
+#           bccompany.h
+#           qlineedit1.h
+#           qlistviewitem1.h
+#           bclibromayorimprimir.h
+#           bcdiarioprint.h
+#           bclibromayorimprimir.h
+#           bcdiarioprint.h
+#           modelosps.h
+#           bcasientointeligenteimportarxml.h
+#           bcbalanceimportarxml.h
+#           bcplancontablearbol.h
+#           balance1view.h
+#           balanceview.h
+#           balanceprintview.h
+#           balancesubform.h
+
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -161,8 +161,8 @@ target_link_libraries( bulmacont libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_L
 add_dependencies(libbulmacont bulmalib)
 add_dependencies(bulmacont libbulmacont)
 
-install_targets(/bin bulmacont)	
-install_targets(/lib/ libbulmacont)                   
+install_targets(/bin bulmacont)
+install_targets(/lib libbulmacont)
 
 set(bulmacont_STR ${bulmacontEx} ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
                 ${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS})

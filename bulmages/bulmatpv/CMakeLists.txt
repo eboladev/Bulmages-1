@@ -1,4 +1,4 @@
-PROJECT(Bulmatpv)
+PROJECT(bulmatpv)
 
 add_subdirectory(src)
 add_subdirectory(plugins)

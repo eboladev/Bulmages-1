@@ -7,16 +7,16 @@ file(GLOB bulmatpv_UIS *.ui)
 
 set(bulmatpvEx main.cxx)
 
-set(bulmatpv_MOCS btbulmatpv.h 
-	   btaboutview.h 
-	   btticket.h 
-	   btsubform.h 
+set(bulmatpv_MOCS btbulmatpv.h
+	   btaboutview.h
+	   btticket.h
+	   btsubform.h
 	   btinput.h)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -93,5 +93,5 @@ target_link_libraries( bulmatpv libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIB
 add_dependencies(libbulmatpv bulmalib)
 add_dependencies(bulmatpv libbulmatpv )
 
-install_targets(/bin bulmatpv)	
+install_targets(/bin bulmatpv)
 install_targets(/lib libbulmatpv)

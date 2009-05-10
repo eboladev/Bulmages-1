@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "pluginonline.h"
+#include "pluginbc_online.h"
 #include "bccompany.h"
 
 #include <q3popupmenu.h>

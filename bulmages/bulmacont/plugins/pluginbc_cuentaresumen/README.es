@@ -6,7 +6,7 @@ Plugins
 
 Nombre: Resumen de una cuenta.
 
-Biblioteca: libpluginresumcta.so
+Biblioteca: libpluginbc_cuentaresumen.so
 
 Descripción: <H1>Resumen de cuentas</H1>
 <P>Muestra el resumen de la cuentas que se haya seleccionado,

@@ -119,8 +119,8 @@ msgid "&Plugin"
 msgstr "&Plugin"
 
 #: pluginbc_example.cpp:85
-msgid "&Prueba de plugin Bulmacont"
-msgstr "&Prueba de plugin Bulmacont"
+msgid "&Prueba de plugin BcBulmaCont"
+msgstr "&Prueba de plugin BcBulmaCont"
 
 #: pluginbc_example.cpp:87
 msgid "Muestra que es esto"
@@ -131,8 +131,8 @@ msgid "Muestra statustip"
 msgstr "Muestra statustip"
 
 #: pluginbc_example.cpp:107
-msgid "Prueba de plugin Bulmacont."
-msgstr "Prueba de plugin Bulmacont."
+msgid "Prueba de plugin BcBulmaCont."
+msgstr "Prueba de plugin BcBulmaCont."
 
 #: pluginbc_example.cpp:63
 msgid "Titulo de la ventana"

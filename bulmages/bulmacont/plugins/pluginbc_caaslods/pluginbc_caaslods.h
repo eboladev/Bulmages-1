@@ -36,12 +36,12 @@
 #include <QObject>
 #include <QTextStream>
 
-#include "bulmacont.h"
+#include "bcbulmacont.h"
 #include "datosview.h"
 
 
 
-extern "C" MY_EXPORT int entryPoint ( Bulmacont * );
+extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 
@@ -79,7 +79,7 @@ public:
 public:
     pluginBC_caaslODS();
     ~pluginBC_caaslODS();
-    void inicializa ( Bulmacont * );
+    void inicializa ( BcBulmaCont * );
     void formDatosBalance ( QString );
 
 public slots:

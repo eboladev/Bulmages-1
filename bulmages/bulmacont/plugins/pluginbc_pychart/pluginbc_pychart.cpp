@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "pluginestadisticas.h"
+#include "pluginbc_pychart.h"
 #include "bccompany.h"
 #include "estadisticasview.h"
 

@@ -69,7 +69,7 @@ ENDIF(WIN32)
 
 
 add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
-		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS}  ${bulmafact_RCC_SRCS})
+		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} ${bulmafact_RCC_SRCS})
 
 
 
@@ -78,8 +78,7 @@ set_target_properties( libbulmafact PROPERTIES
   VERSION "${BULMAGES_VERSION}"
   OUTPUT_NAME bulmafact )
 
-target_link_libraries( libbulmafact bulmalib ${QT_LIBRARIES}
-				${PGSQL_LIBRARIES})
+target_link_libraries(libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 
 add_executable(bulmafact ${bulmafactEx} ${bulmafact_RCC_SRCS})
@@ -108,12 +107,12 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 
-target_link_libraries( bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 add_dependencies(libbulmafact bulmalib)
 add_dependencies(bulmafact libbulmafact)
 
-install_targets(/bin bulmafact)	
-install_targets(/lib libbulmafact)                   
+install_targets(/bin bulmafact)
+install_targets(/lib libbulmafact)
 
 

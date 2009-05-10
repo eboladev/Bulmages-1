@@ -104,7 +104,7 @@ int entryPoint ( BcBulmaCont *bcont )
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bcont->setWindowTitle ( _ ( "Prueba de plugin Bulmacont." ) );
+    bcont->setWindowTitle ( _ ( "Prueba de plugin BcBulmaCont." ) );
     return 0;
 }
 

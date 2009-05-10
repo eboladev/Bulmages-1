@@ -30,7 +30,7 @@
 #include <QMenu>
 #include <QMenuBar>
 
-#include "pluginresumcta.h"
+#include "pluginbc_cuentaresumen.h"
 #include "correctorwidget.h"
 #include "bccompany.h"
 #include "bcbulmacont.h"
@@ -51,7 +51,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginresumcta", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "PluginBc_CuentaResumeb", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.

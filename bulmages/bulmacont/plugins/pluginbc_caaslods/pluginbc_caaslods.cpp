@@ -220,7 +220,7 @@ void pluginBC_caaslODS::formDatosBalance ( QString informe )
 /**
 \param bcont
 **/
-void pluginBC_caaslODS::inicializa ( Bulmacont *bcont )
+void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
 {
     _depura ( "pluginBC_caaslODS::inicializa", 0 );
 
@@ -284,7 +284,7 @@ void pluginBC_caaslODS::inicializa ( Bulmacont *bcont )
 /**
 \param bcont
 **/
-int entryPoint ( Bulmacont *bcont )
+int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
 

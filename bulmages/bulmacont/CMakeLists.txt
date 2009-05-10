@@ -19,7 +19,7 @@
 #                                                                       #
 
 
-PROJECT(Bulmacont)
+PROJECT(bulmacont)
 
 add_subdirectory(src)
 

@@ -16,10 +16,10 @@ SET(DESTDIR .)
 LIBS += -lpq 
 	    
 HEADERS += estadisticasview.h \
-	   pluginestadisticas.h
+	   pluginbc_pychart.h
 
 SOURCES += estadisticasview.cpp \
-	   pluginestadisticas.cpp
+	   pluginbc_pychart.cpp
 
 FORMS += estadisticasdlg1.ui
 

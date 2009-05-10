@@ -24,7 +24,7 @@ msgstr "&Plugin"
 
 #: pluginbc_example.cpp:85
 #, fuzzy
-msgid "&Prueba de plugin Bulmacont"
+msgid "&Prueba de plugin BcBulmaCont"
 msgstr "Quant a Bulm&aCont"
 
 #: pluginbc_example.cpp:87
@@ -37,7 +37,7 @@ msgstr "Mostra statustip"
 
 #: pluginbc_example.cpp:107
 #, fuzzy
-msgid "Prueba de plugin Bulmacont."
+msgid "Prueba de plugin BcBulmaCont."
 msgstr "Quant a BulmaCont"
 
 #: pluginbc_example.cpp:63

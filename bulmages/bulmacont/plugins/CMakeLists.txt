@@ -22,11 +22,11 @@ add_subdirectory(pluginbc_registroiva)
 add_subdirectory(pluginbc_corrector)
 add_subdirectory(pluginbc_example)
 add_subdirectory(pluginbc_depuracion)
-add_subdirectory(pluginbalancetree)
+add_subdirectory(pluginbc_balancearbol)
 add_subdirectory(pluginbc_cuentasanuales2ods)
 #add_subdirectory(pluginbc_caaslods)
 add_subdirectory(pluginbc_balance)
-add_subdirectory(pluginresumcta)
+add_subdirectory(pluginbc_cuentaresumen)
 
 # pluginadocumental deprecated.
 #add_subdirectory(pluginbc_documentoadjunto)
@@ -35,7 +35,7 @@ add_subdirectory(pluginbc_proyectos)
 # pluginimportcontaplus bajo desarrollo.
 #add_subdirectory(pluginimportcontaplus)
 # pluginbalance-old pendiente de fusionar con pluginbalance
-add_subdirectory(pluginbalance-old)
+# add_subdirectory(pluginbalance-old)
 
 # if you want to add some private code
 # simple put your add_directory in a

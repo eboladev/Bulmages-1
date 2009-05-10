@@ -25,7 +25,7 @@ msgid "&Plugin"
 msgstr ""
 
 #: pluginbc_example.cpp:85
-msgid "&Prueba de plugin Bulmacont"
+msgid "&Prueba de plugin BcBulmaCont"
 msgstr ""
 
 #: pluginbc_example.cpp:86
@@ -37,5 +37,5 @@ msgid "Muestra que es esto"
 msgstr ""
 
 #: pluginbc_example.cpp:107
-msgid "Prueba de plugin Bulmacont."
+msgid "Prueba de plugin BcBulmaCont."
 msgstr ""

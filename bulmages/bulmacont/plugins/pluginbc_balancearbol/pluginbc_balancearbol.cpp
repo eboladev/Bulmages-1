@@ -30,7 +30,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include "pluginbalancetree.h"
+#include "pluginbc_balancearbol.h"
 #include "balance1view.h"
 #include "bccompany.h"
 
@@ -78,7 +78,7 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbalancetree", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "PluginBc_BalanceArbol", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -118,7 +118,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbalancetree", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "PluginBc_BalanceArbol", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );
