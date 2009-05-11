@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>550</width>
-    <height>592</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>550</width>
-    <height>592</height>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>597</width>
-    <height>592</height>
+    <width>550</width>
+    <height>537</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -195,7 +195,7 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="icon">
           <iconset resource="resources.qrc">
-           <normaloff>:/images/bulmasetup_bulmacont.png</normaloff>:/images/bulmasetup_bulmacont.png</iconset>
+           <normaloff>:/images/iconbulmacont.svg</normaloff>:/images/iconbulmacont.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -218,7 +218,7 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="icon">
           <iconset resource="resources.qrc">
-           <normaloff>:/images/bulmasetup_bulmafact.png</normaloff>:/images/bulmasetup_bulmafact.png</iconset>
+           <normaloff>:/images/iconbulmafact.svg</normaloff>:/images/iconbulmafact.svg</iconset>
          </property>
          <property name="iconSize">
           <size>

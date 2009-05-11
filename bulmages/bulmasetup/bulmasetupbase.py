@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Mon May 11 18:45:03 2009
+# Created: Mon May 11 23:04:59 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,9 +12,9 @@ from PyQt4 import QtCore, QtGui
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(550, 592)
-        MainWindow.setMinimumSize(QtCore.QSize(550, 592))
-        MainWindow.setMaximumSize(QtCore.QSize(597, 592))
+        MainWindow.resize(550, 500)
+        MainWindow.setMinimumSize(QtCore.QSize(550, 500))
+        MainWindow.setMaximumSize(QtCore.QSize(550, 537))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/iglues.org.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -83,7 +83,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmacont.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmacont.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/images/bulmasetup_bulmacont.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/images/iconbulmacont.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_crearbulmacont.setIcon(icon5)
         self.mui_crearbulmacont.setIconSize(QtCore.QSize(48, 48))
         self.mui_crearbulmacont.setObjectName("mui_crearbulmacont")
@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmafact.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/images/bulmasetup_bulmafact.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(":/images/iconbulmafact.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_crearbulmafact.setIcon(icon6)
         self.mui_crearbulmafact.setIconSize(QtCore.QSize(48, 48))
         self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")

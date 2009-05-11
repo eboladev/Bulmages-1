@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Thu Apr  2 17:12:08 2009
+# Created: Mon May 11 23:21:43 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -59,7 +59,7 @@ class Ui_ListEmpresasBase(object):
         item = QtGui.QTableWidgetItem()
         self.mui_listado.setHorizontalHeaderItem(3, item)
         self.gridLayout_2.addWidget(self.mui_listado, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.tab, "")
+        self.tabWidget.addTab(self.tab, icon, "")
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.gridLayout = QtGui.QGridLayout(self.tab_2)
@@ -68,9 +68,14 @@ class Ui_ListEmpresasBase(object):
         self.mui_textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.mui_textBrowser.setObjectName("mui_textBrowser")
         self.gridLayout.addWidget(self.mui_textBrowser, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.tab_2, "")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/images/terminal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.tabWidget.addTab(self.tab_2, icon1, "")
         self.verticalLayout.addWidget(self.tabWidget)
         self.mui_cancelar = QtGui.QPushButton(ListEmpresasBase)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_cancelar.setIcon(icon2)
         self.mui_cancelar.setObjectName("mui_cancelar")
         self.verticalLayout.addWidget(self.mui_cancelar)
 

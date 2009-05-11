@@ -14,5 +14,9 @@
         <file>bulmasetup_eliminarusuario.xpm</file>
         <file>iglues.org.svg</file>
         <file>bulmasetup_aceptar.xpm</file>
+        <file>iconbulmafact.svg</file>
+        <file>iconbulmacont.svg</file>
+        <file>iconbulmatpv.svg</file>
+        <file>terminal.png</file>
     </qresource>
 </RCC>
