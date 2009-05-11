@@ -1,37 +1,290 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>539</width>
-    <height>385</height>
+    <width>550</width>
+    <height>592</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
-   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>592</height>
+   </size>
   </property>
-  <property name="windowTitle" >
+  <property name="maximumSize">
+   <size>
+    <width>597</width>
+    <height>592</height>
+   </size>
+  </property>
+  <property name="windowTitle">
    <string>BulmaSetup</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="resources.qrc" >
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/iglues.org.svg</normaloff>:/images/iglues.org.svg</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <layout class="QGridLayout" name="gridLayout" >
-    <item row="5" column="0" colspan="3" >
-     <layout class="QHBoxLayout" name="horizontalLayout" >
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="minimumSize">
+       <size>
+        <width>209</width>
+        <height>209</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>209</width>
+        <height>209</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/images/iglues.org.svg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>Gestión de Usuarios</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="nuevo_usuario">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Nuevos Usuario de PostgreSQL</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_nuevousuario.xpm</normaloff>:/images/bulmasetup_nuevousuario.xpm</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="editar_usuario">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Editar Usuarios de PostgreSQL</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_editarusuario.xpm</normaloff>:/images/bulmasetup_editarusuario.xpm</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="eliminar_usuario">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Eliminar Usuario de PostgreSQL</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_eliminarusuario.xpm</normaloff>:/images/bulmasetup_eliminarusuario.xpm</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="permisos_usuario">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Modificar Permisos de PostgreSQL</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_usuario.xpm</normaloff>:/images/bulmasetup_usuario.xpm</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.11&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administracion de Bases&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Datos para BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>Gestión de Empresas</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="mui_crearbulmacont">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Nueva Empresa de Contabilidad</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_bulmacont.png</normaloff>:/images/bulmasetup_bulmacont.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>48</width>
+           <height>48</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="mui_crearbulmafact">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Nueva Empresa de Facturacion / TPV</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_bulmafact.png</normaloff>:/images/bulmasetup_bulmafact.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>48</width>
+           <height>48</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="mui_adminempresas">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Administrar Empresas Existentes</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_empresa.xpm</normaloff>:/images/bulmasetup_empresa.xpm</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>48</width>
+           <height>48</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="mui_restbackup">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Restaurar una Copia de Seguridad</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/images/bulmasetup_cargarempresa.xpm</normaloff>:/images/bulmasetup_cargarempresa.xpm</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>48</width>
+           <height>48</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <spacer name="horizontalSpacer" >
-        <property name="orientation" >
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>388</width>
           <height>20</height>
@@ -40,197 +293,23 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="mui_salir" >
-        <property name="text" >
+       <widget class="QPushButton" name="mui_salir">
+        <property name="text">
          <string>Salir</string>
         </property>
-        <property name="icon" >
-         <iconset resource="resources.qrc" >
+        <property name="icon">
+         <iconset resource="resources.qrc">
           <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="0" column="2" >
-     <widget class="QPushButton" name="mui_gestionusuarios" >
-      <property name="focusPolicy" >
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="layoutDirection" >
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="text" >
-       <string>Gestionar Usuarios de PostgreSQL</string>
-      </property>
-      <property name="icon" >
-       <iconset resource="resources.qrc" >
-        <normaloff>:/images/bulmasetup_usuario.xpm</normaloff>:/images/bulmasetup_usuario.xpm</iconset>
-      </property>
-      <property name="iconSize" >
-       <size>
-        <width>48</width>
-        <height>48</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2" >
-     <widget class="QPushButton" name="mui_crearbulmacont" >
-      <property name="focusPolicy" >
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="layoutDirection" >
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="text" >
-       <string>Nueva Empresa de Contabilidad</string>
-      </property>
-      <property name="icon" >
-       <iconset resource="resources.qrc" >
-        <normaloff>:/images/bulmasetup_bulmacont.png</normaloff>:/images/bulmasetup_bulmacont.png</iconset>
-      </property>
-      <property name="iconSize" >
-       <size>
-        <width>48</width>
-        <height>48</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2" >
-     <widget class="QPushButton" name="mui_crearbulmafact" >
-      <property name="focusPolicy" >
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="layoutDirection" >
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="text" >
-       <string>Nueva Empresa de Facturacion / TPV</string>
-      </property>
-      <property name="icon" >
-       <iconset resource="resources.qrc" >
-        <normaloff>:/images/bulmasetup_bulmafact.png</normaloff>:/images/bulmasetup_bulmafact.png</iconset>
-      </property>
-      <property name="iconSize" >
-       <size>
-        <width>48</width>
-        <height>48</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" >
-     <widget class="QLabel" name="label_2" >
-      <property name="text" >
-       <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">BulmaSetup v 0.11&lt;/span>&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Administracion de Bases&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">de Datos para BulmaGes&lt;/p>&lt;/body>&lt;/html></string>
-      </property>
-      <property name="alignment" >
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item rowspan="5" row="0" column="1" >
-     <widget class="Line" name="line" >
-      <property name="orientation" >
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2" >
-     <widget class="QPushButton" name="mui_adminempresas" >
-      <property name="focusPolicy" >
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="layoutDirection" >
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="text" >
-       <string>Administrar Empresas Existentes</string>
-      </property>
-      <property name="icon" >
-       <iconset resource="resources.qrc" >
-        <normaloff>:/images/bulmasetup_empresa.xpm</normaloff>:/images/bulmasetup_empresa.xpm</iconset>
-      </property>
-      <property name="iconSize" >
-       <size>
-        <width>48</width>
-        <height>48</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2" >
-     <widget class="QPushButton" name="mui_restbackup" >
-      <property name="focusPolicy" >
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="layoutDirection" >
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="text" >
-       <string>Restaurar una Copia de Seguridad</string>
-      </property>
-      <property name="icon" >
-       <iconset resource="resources.qrc" >
-        <normaloff>:/images/bulmasetup_cargarempresa.xpm</normaloff>:/images/bulmasetup_cargarempresa.xpm</iconset>
-      </property>
-      <property name="iconSize" >
-       <size>
-        <width>48</width>
-        <height>48</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item rowspan="3" row="0" column="0" >
-     <widget class="QLabel" name="label" >
-      <property name="minimumSize" >
-       <size>
-        <width>209</width>
-        <height>209</height>
-       </size>
-      </property>
-      <property name="maximumSize" >
-       <size>
-        <width>209</width>
-        <height>209</height>
-       </size>
-      </property>
-      <property name="text" >
-       <string/>
-      </property>
-      <property name="pixmap" >
-       <pixmap resource="resources.qrc" >:/images/iglues.org.svg</pixmap>
-      </property>
-      <property name="scaledContents" >
-       <bool>true</bool>
-      </property>
-      <property name="alignment" >
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
    </layout>
-   <zorder>mui_gestionusuarios</zorder>
-   <zorder>mui_crearbulmacont</zorder>
-   <zorder>mui_crearbulmafact</zorder>
-   <zorder>label_2</zorder>
-   <zorder>line</zorder>
-   <zorder>mui_adminempresas</zorder>
-   <zorder>mui_restbackup</zorder>
-   <zorder>label</zorder>
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc" />
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -239,11 +318,11 @@ p, li { white-space: pre-wrap; }
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>503</x>
      <y>402</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>372</x>
      <y>392</y>
     </hint>

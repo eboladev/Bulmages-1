@@ -2,11 +2,11 @@
 
 import sys
 import os
-from config import *
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from modificarusuariobase import *
 from empresa import Empresa
+from config import *
 import psycopg2
 
 class ModificarUsuario(Ui_ModificarUsuario, Empresa):
@@ -23,7 +23,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         self.initListaDatabase()
         #self.initListaUsuarios()
         self.desactivaCheckboxTable()
-        
+        self.listWidgetTable.setSelectionMode(self.listWidgetTable.MultiSelection)
+
         self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
         self.connect(self.checkBox_dball, SIGNAL("stateChanged(int)"), self.checkBox_dball_Change)
         self.connect(self.checkBox_dbrevoke, SIGNAL("stateChanged(int)"), self.checkBox_dbrevoke_Change)
@@ -115,14 +116,19 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         if username.contains("  (su)"):
             username.remove("  (su)")
             
+        self.tabWidget.setTabEnabled(1, True)
         self.capturaDatabase
         self.initListaTablas()
         self.actualizarCheckboxDB()
-        self.tabWidget.setTabEnabled(1, True)
+        
         for x in range (numero):
             temp = self.listWidgetUser.item(x)
             if (temp.isSelected()):
                 self.tabWidget.setCurrentIndex(1)
+                
+        numero = self.listWidgetTable.count()
+        for x in range (numero):
+            self.listWidgetTable.item(x).setSelected(False)
         
     def initListaTablas(self):
         self.conectar(str(dbase))
@@ -132,26 +138,20 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         for row in tablas:
             texto = row[0]                        
             self.listWidgetTable.addItem(QString(texto))
-            
-        self.listWidgetTable.setSelectionMode(self.listWidgetTable.MultiSelection) 
 
     def capturaTabla(self):
         self.activaCheckboxTable()
         self.actualizarCheckboxTable()
         
     def on_seleccionarTablas_released(self):
-    
         numero = self.listWidgetTable.count()
-
         for x in range (numero):
             item = self.listWidgetTable.item(x)
             self.listWidgetTable.setCurrentItem(item)
             self.listWidgetTable.item(x).setSelected(True)
 
     def on_deseleccionarTablas_released(self):
-    
         numero = self.listWidgetTable.count()
-
         for x in range (numero):
             self.listWidgetTable.item(x).setSelected(False)
 
