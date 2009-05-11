@@ -440,78 +440,78 @@
     </message>
 </context>
 <context>
-    <name>Asiento1</name>
+    <name>BcAsientoForm</name>
     <message>
-        <location filename="asiento1.cpp" line="46"/>
+        <location filename="bcasientoform.cpp" line="46"/>
         <source>Id asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="47"/>
+        <location filename="bcasientoform.cpp" line="47"/>
         <source>Descripcion del asiento</source>
         <translation>Descripción del asiento</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="48"/>
+        <location filename="bcasientoform.cpp" line="48"/>
         <source>Fecha del asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="49"/>
+        <location filename="bcasientoform.cpp" line="49"/>
         <source>Comentarios del asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="50"/>
+        <location filename="bcasientoform.cpp" line="50"/>
         <source>Orden de asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="51"/>
+        <location filename="bcasientoform.cpp" line="51"/>
         <source>Tipo de asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="160"/>
+        <location filename="bcasientoform.cpp" line="160"/>
         <source>Borrar asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="161"/>
+        <location filename="bcasientoform.cpp" line="161"/>
         <source>Se va a borrar el asiento. Esta seguro?</source>
         <translation>Se va a borrar el asiento. ¿Está seguro?</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="383"/>
+        <location filename="bcasientoform.cpp" line="383"/>
         <source>El asiento se ha guardado correctamente.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>Asiento1View</name>
+    <name>BcAsientoView</name>
     <message>
-        <location filename="asiento1view.cpp" line="329"/>
+        <location filename="bcasientoview.cpp" line="329"/>
         <source>Asiento inexistente.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="330"/>
+        <location filename="bcasientoview.cpp" line="330"/>
         <source>Desea crear un nuevo asiento en esa posicion?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="331"/>
+        <location filename="bcasientoview.cpp" line="331"/>
         <source>&amp;Si</source>
         <translation>&amp;Sí</translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="331"/>
+        <location filename="bcasientoview.cpp" line="331"/>
         <source>&amp;No</source>
         <translation>&amp;No</translation>
     </message>
 </context>
 <context>
-    <name>AsientoBase</name>
+    <name>BcAsientoBase</name>
     <message>
         <location filename="asientobase.ui" line="161"/>
         <source>Ctrl+A</source>
@@ -665,7 +665,7 @@
     </message>
 </context>
 <context>
-    <name>AsientoListBase</name>
+    <name>BcAsientoListBase</name>
     <message>
         <location filename="asientolistbase.ui" line="13"/>
         <source>Listado de asientos</source>
@@ -748,112 +748,112 @@
     </message>
 </context>
 <context>
-    <name>AsientoListSubform</name>
+    <name>BcAsientoListSubForm</name>
     <message>
-        <location filename="asientolistsubform.cpp" line="38"/>
+        <location filename="bcasientolistsubform.cpp" line="38"/>
         <source>Fecha</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="37"/>
+        <location filename="bcasientolistsubform.cpp" line="37"/>
         <source>Orden</source>
         <translation>Orden</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="39"/>
+        <location filename="bcasientolistsubform.cpp" line="39"/>
         <source>Apuntes</source>
         <translation>Apuntes</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="40"/>
+        <location filename="bcasientolistsubform.cpp" line="40"/>
         <source>Borrador</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="42"/>
+        <location filename="bcasientolistsubform.cpp" line="42"/>
         <source>Debe</source>
         <translation>Debe</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="43"/>
+        <location filename="bcasientolistsubform.cpp" line="43"/>
         <source>Haber</source>
         <translation>Haber</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="41"/>
+        <location filename="bcasientolistsubform.cpp" line="41"/>
         <source>Comentarios</source>
         <translation>Comentarios</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="45"/>
+        <location filename="bcasientolistsubform.cpp" line="45"/>
         <source>Clase</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="87"/>
+        <location filename="bcasientolistsubform.cpp" line="87"/>
         <source>Borrar registro</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="90"/>
+        <location filename="bcasientolistsubform.cpp" line="90"/>
         <source>Ajustar columa</source>
         <translation type="unfinished">Ajustar columa</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="91"/>
+        <location filename="bcasientolistsubform.cpp" line="91"/>
         <source>Ajustar altura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="92"/>
+        <location filename="bcasientolistsubform.cpp" line="92"/>
         <source>Ajustar columnas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="93"/>
+        <location filename="bcasientolistsubform.cpp" line="93"/>
         <source>Ajustar alturas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="95"/>
+        <location filename="bcasientolistsubform.cpp" line="95"/>
         <source>Ver configurador de subformulario</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="44"/>
+        <location filename="bcasientolistsubform.cpp" line="44"/>
         <source>Id asiento</source>
         <translation></translation>
     </message>
 </context>
 <context>
-    <name>AsientosView</name>
+    <name>BcAsientoListView</name>
     <message>
-        <location filename="asientosview.cpp" line="66"/>
+        <location filename="bcasientolistview.cpp" line="66"/>
         <source>(todos)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientosview.cpp" line="229"/>
+        <location filename="bcasientolistview.cpp" line="229"/>
         <source>La fecha inicial es posterior a la fecha final.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientosview.cpp" line="296"/>
+        <location filename="bcasientolistview.cpp" line="296"/>
         <source>Asientos</source>
         <translation type="unfinished">Asientos</translation>
     </message>
     <message>
-        <location filename="asientosview.cpp" line="44"/>
+        <location filename="bcasientolistview.cpp" line="44"/>
         <source>Todos los asientos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientosview.cpp" line="45"/>
+        <location filename="bcasientolistview.cpp" line="45"/>
         <source>Asientos cerrados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientosview.cpp" line="46"/>
+        <location filename="bcasientolistview.cpp" line="46"/>
         <source>Asientos abiertos</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2987,174 +2987,174 @@
     </message>
 </context>
 <context>
-    <name>ListLinAsiento1View</name>
+    <name>BcAsientoSubForm</name>
     <message>
-        <location filename="listlinasiento1view.cpp" line="40"/>
+        <location filename="bcasientosubform.cpp" line="40"/>
         <source>Fecha</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="44"/>
+        <location filename="bcasientosubform.cpp" line="44"/>
         <source>Concepto contable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="58"/>
+        <location filename="bcasientosubform.cpp" line="58"/>
         <source>Id cuenta</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="41"/>
+        <location filename="bcasientosubform.cpp" line="41"/>
         <source>Codigo</source>
         <translation>Código</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="59"/>
+        <location filename="bcasientosubform.cpp" line="59"/>
         <source>Tipo de cuenta</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="37"/>
+        <location filename="bcasientosubform.cpp" line="37"/>
         <source>Descripcion de la cuenta</source>
         <translation type="obsolete">Descripción de la cuenta</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="38"/>
+        <location filename="bcasientosubform.cpp" line="38"/>
         <source>Descripcion</source>
         <translation type="obsolete">Descripción</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="45"/>
+        <location filename="bcasientosubform.cpp" line="45"/>
         <source>Debe</source>
         <translation>Debe</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="46"/>
+        <location filename="bcasientosubform.cpp" line="46"/>
         <source>Haber</source>
         <translation>Haber</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="47"/>
+        <location filename="bcasientosubform.cpp" line="47"/>
         <source>Contrapartida</source>
         <translation>Contrapartida</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="48"/>
+        <location filename="bcasientosubform.cpp" line="48"/>
         <source>Comentario</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="49"/>
+        <location filename="bcasientosubform.cpp" line="49"/>
         <source>ID Canal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="51"/>
+        <location filename="bcasientosubform.cpp" line="51"/>
         <source>Conciliacion</source>
         <translation>Conciliación</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="52"/>
+        <location filename="bcasientosubform.cpp" line="52"/>
         <source>Id centro de coste</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="39"/>
+        <location filename="bcasientosubform.cpp" line="39"/>
         <source>Id apunte</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="54"/>
+        <location filename="bcasientosubform.cpp" line="54"/>
         <source>Id tipo de IVA</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="55"/>
+        <location filename="bcasientosubform.cpp" line="55"/>
         <source>Orden</source>
         <translation>Orden</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="56"/>
+        <location filename="bcasientosubform.cpp" line="56"/>
         <source>Id borrador</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="57"/>
+        <location filename="bcasientosubform.cpp" line="57"/>
         <source>Id asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="106"/>
+        <location filename="bcasientosubform.cpp" line="106"/>
         <source>Mostrar asiento</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="108"/>
+        <location filename="bcasientosubform.cpp" line="108"/>
         <source>Mostrar extracto (dia)</source>
         <translation>Mostrar extracto (día)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="110"/>
+        <location filename="bcasientosubform.cpp" line="110"/>
         <source>Mostrar extracto (mes)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="112"/>
+        <location filename="bcasientosubform.cpp" line="112"/>
         <source>Mostrar extracto (ano)</source>
         <translation>Mostrar extracto (año)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="85"/>
+        <location filename="bcasientosubform.cpp" line="85"/>
         <source>Mostrar balance (dia)</source>
         <translation type="obsolete">Mostrar balance (día)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="87"/>
+        <location filename="bcasientosubform.cpp" line="87"/>
         <source>Mostrar balance (ano)</source>
         <translation type="obsolete">Mostrar balance (año)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="89"/>
+        <location filename="bcasientosubform.cpp" line="89"/>
         <source>Mostrar balance jerarquico (dia)</source>
         <translation type="obsolete">Mostrar balance jerárquico (día)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="90"/>
+        <location filename="bcasientosubform.cpp" line="90"/>
         <source>Mostrar balance jerarquico (mes)</source>
         <translation type="obsolete">Mostrar balance jerárquico (mes)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="91"/>
+        <location filename="bcasientosubform.cpp" line="91"/>
         <source>Mostrar balance jerarquico (ano)</source>
         <translation type="obsolete">Mostrar balance jerárquico (año)</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="42"/>
+        <location filename="bcasientosubform.cpp" line="42"/>
         <source>Nombre de la cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="43"/>
+        <location filename="bcasientosubform.cpp" line="43"/>
         <source>Descripcion del apunte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="50"/>
+        <location filename="bcasientosubform.cpp" line="50"/>
         <source>Canal</source>
         <translation type="unfinished">Canal</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="60"/>
+        <location filename="bcasientosubform.cpp" line="60"/>
         <source>Id. Registro IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="61"/>
+        <location filename="bcasientosubform.cpp" line="61"/>
         <source>Fecha Factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="62"/>
+        <location filename="bcasientosubform.cpp" line="62"/>
         <source>Num. Factura</source>
         <translation type="unfinished"></translation>
     </message>

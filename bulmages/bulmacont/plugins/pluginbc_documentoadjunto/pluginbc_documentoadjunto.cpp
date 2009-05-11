@@ -31,7 +31,7 @@
 
 #include "pluginbc_documentoadjunto.h"
 #include "bccompany.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "adocumental.h"
 
 /// Inclusion de imagenes.
@@ -55,7 +55,7 @@ int entryPoint ( BcBulmaCont *bcont )
     QPixmap *img1 = new QPixmap ( ndoc );
 
     BcCompany *emp = bcont->empresaactual();
-    Asiento1View *intapunts = emp->intapuntsempresa();
+    BcAsientoView *intapunts = emp->intapuntsempresa();
 
     myplugin1 *pub = new myplugin1 ( emp );
     intapunts->hide();

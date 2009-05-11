@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>AsientoListBase</class>
- <widget class="QWidget" name="AsientoListBase" >
+ <class>BcAsientoListBase</class>
+ <widget class="QWidget" name="BcAsientoListBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -675,7 +675,7 @@
     </layout>
    </item>
    <item row="2" column="0" >
-    <widget class="AsientoListSubform" name="mui_list" >
+    <widget class="BcAsientoListSubForm" name="mui_list" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Expanding" hsizetype="Ignored" >
        <horstretch>0</horstretch>
@@ -691,9 +691,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>AsientoListSubform</class>
+   <class>BcAsientoListSubForm</class>
    <extends>QTableWidget</extends>
-   <header>asientolistsubform.h</header>
+   <header>bcasientolistsubform.h</header>
   </customwidget>
   <customwidget>
    <class>BlDateSearch</class>

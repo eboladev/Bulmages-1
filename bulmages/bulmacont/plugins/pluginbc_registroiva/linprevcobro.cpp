@@ -20,7 +20,7 @@
 
 #include "linprevcobro.h"
 #include "bcasientointeligenteview.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 
 
 ///

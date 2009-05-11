@@ -22,8 +22,8 @@
 #include <QMessageBox>
 #include <QFile>
 
-#include "asiento1.h"
-#include "asiento1view.h"
+#include "bcasientoform.h"
+#include "bcasientoview.h"
 #include "blfixed.h"
 #include "blfunctions.h"
 #include "blplugins.h"
@@ -36,9 +36,9 @@
 \param comp
 \param parent
 **/
-Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
+BcAsientoForm::BcAsientoForm ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
 {
-    _depura ( "Asiento1::Asiento1", 0 );
+    _depura ( "BcAsientoForm::BcAsientoForm", 0 );
     setTitleName ( _ ( "Asiento Contable" ) );
     setDbTableName ( "asiento" );
     setDbFieldId ( "idasiento" );
@@ -49,24 +49,24 @@ Asiento1::Asiento1 ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent 
     addDbField ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Orden de asiento" ) );
     addDbField ( "clase", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Tipo de asiento" ) );
     listalineas = NULL;
-    _depura ( "END Asiento1::Asiento1", 0 );
+    _depura ( "END BcAsientoForm::BcAsientoForm", 0 );
 }
 
 
 ///
 /**
 **/
-Asiento1::~Asiento1()
+BcAsientoForm::~BcAsientoForm()
 {
-    _depura ( "Asiento1::~Asiento1", 0 );
-    _depura ( "END Asiento1::~Asiento1", 0 );
+    _depura ( "BcAsientoForm::~BcAsientoForm", 0 );
+    _depura ( "END BcAsientoForm::~BcAsientoForm", 0 );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintaidasiento ( QString )
+void BcAsientoForm::pintaidasiento ( QString )
 {
     _depura ( "funcion no implementada pintaidasiento" );
 }
@@ -75,7 +75,7 @@ void Asiento1::pintaidasiento ( QString )
 ///
 /**
 **/
-void Asiento1::pintadescripcion ( QString )
+void BcAsientoForm::pintadescripcion ( QString )
 {
     _depura ( "funcion no implementada pintadescripcion" );
 }
@@ -84,7 +84,7 @@ void Asiento1::pintadescripcion ( QString )
 ///
 /**
 **/
-void Asiento1::pintafecha ( QString )
+void BcAsientoForm::pintafecha ( QString )
 {
     _depura ( "funcion no implementada pintafecha" );
 }
@@ -93,7 +93,7 @@ void Asiento1::pintafecha ( QString )
 ///
 /**
 **/
-void Asiento1::pintacomentariosasiento ( QString )
+void BcAsientoForm::pintacomentariosasiento ( QString )
 {
     _depura ( "funcion no implementada pintacomentariosasiento", 2 );
 }
@@ -102,7 +102,7 @@ void Asiento1::pintacomentariosasiento ( QString )
 ///
 /**
 **/
-void Asiento1::pintaordenasiento ( QString )
+void BcAsientoForm::pintaordenasiento ( QString )
 {
     _depura ( "funcion no implementada pintaordenasiento", 2 );
 }
@@ -111,7 +111,7 @@ void Asiento1::pintaordenasiento ( QString )
 ///
 /**
 **/
-void Asiento1::pintaclase ( QString )
+void BcAsientoForm::pintaclase ( QString )
 {
     _depura ( "funcion no implementada pintaclase", 2 );
 }
@@ -120,7 +120,7 @@ void Asiento1::pintaclase ( QString )
 ///
 /**
 **/
-void Asiento1::calculaypintatotales()
+void BcAsientoForm::calculaypintatotales()
 {
     _depura ( "funcion no implementada calculaypintatotales", 2 );
 }
@@ -129,9 +129,9 @@ void Asiento1::calculaypintatotales()
 ///
 /**
 **/
-void Asiento1::trataestadoAsiento1()
+void BcAsientoForm::trataestadoBcAsientoForm()
 {
-    _depura ( "funcion no implementada trataestadoAsiento1", 2 );
+    _depura ( "funcion no implementada trataestadoBcAsientoForm", 2 );
 }
 
 
@@ -149,9 +149,9 @@ void Asiento1::trataestadoAsiento1()
 \param atendido
 \return
 **/
-int Asiento1::borrar ( bool atendido )
+int BcAsientoForm::borrar ( bool atendido )
 {
-    _depura ( "Asiento1::borrar", 0 );
+    _depura ( "BcAsientoForm::borrar", 0 );
     int error;
     if ( dbValue ( "idasiento" ) != "" ) {
         if ( atendido ) {
@@ -191,7 +191,7 @@ int Asiento1::borrar ( bool atendido )
             return 3;
         } // end if
     } // end if
-    _depura ( "END Asiento1::borrar", 0 );
+    _depura ( "END BcAsientoForm::borrar", 0 );
     return 0;
 }
 
@@ -199,24 +199,24 @@ int Asiento1::borrar ( bool atendido )
 ///
 /**
 **/
-void Asiento1::vaciar()
+void BcAsientoForm::vaciar()
 {
-    _depura ( "Asiento1::vaciar", 0 );
+    _depura ( "BcAsientoForm::vaciar", 0 );
     DBclear();
 
     /// Vaciamos compeltamente el subformulario para que no quede ningun tipo de restos
     listalineas->setColumnCount ( 0 );
     listalineas->setRowCount ( 0 );
-    _depura ( "END Asiento1::vaciar", 0 );
+    _depura ( "END BcAsientoForm::vaciar", 0 );
 }
 
 
 /// Se encarga del pintado del asiento.
 /**
 **/
-void Asiento1::pintar()
+void BcAsientoForm::pintar()
 {
-    _depura ( "Asiento1::pintar", 0, idasiento() );
+    _depura ( "BcAsientoForm::pintar", 0, idasiento() );
     pintaidasiento ( idasiento() );
     pintadescripcion ( dbValue ( "descripcion" ) );
     pintafecha ( dbValue ( "fecha" ) );
@@ -225,8 +225,8 @@ void Asiento1::pintar()
     pintaclase ( dbValue ( "clase" ) );
     /// Pintamos los totales.
     calculaypintatotales();
-    trataestadoAsiento1();
-    _depura ( "END Asiento1::pintar", 0 );
+    trataestadoBcAsientoForm();
+    _depura ( "END BcAsientoForm::pintar", 0 );
 }
 
 
@@ -235,9 +235,9 @@ void Asiento1::pintar()
 \param idasiento
 \return
 **/
-int Asiento1::cargar ( QString idasiento )
+int BcAsientoForm::cargar ( QString idasiento )
 {
-    _depura ( "Asiento1::cargar", 0, idasiento );
+    _depura ( "BcAsientoForm::cargar", 0, idasiento );
 
     if ( dialogChanges_hayCambios() ) {
         switch ( QMessageBox::warning ( this, "BulmaCont",
@@ -264,12 +264,12 @@ int Asiento1::cargar ( QString idasiento )
         DBload ( cur );
     } // end if
     delete cur;
-    trataestadoAsiento1();
+    trataestadoBcAsientoForm();
     listalineas->cargar ( idasiento );
     pintar();
 
     dialogChanges_cargaInicial();
-    _depura ( "END Asiento1::cargar", 0, idasiento );
+    _depura ( "END BcAsientoForm::cargar", 0, idasiento );
     return 0;
 }
 
@@ -278,7 +278,7 @@ int Asiento1::cargar ( QString idasiento )
 /**
 \return
 **/
-BlFixed Asiento1::totaldebe ( QString idasiento )
+BlFixed BcAsientoForm::totaldebe ( QString idasiento )
 {
     return listalineas->totaldebe ( idasiento );
 }
@@ -288,7 +288,7 @@ BlFixed Asiento1::totaldebe ( QString idasiento )
 /**
 \return
 **/
-BlFixed Asiento1::totalhaber ( QString idbudget )
+BlFixed BcAsientoForm::totalhaber ( QString idbudget )
 {
     return listalineas->totalhaber ( idbudget );
 }
@@ -298,22 +298,22 @@ BlFixed Asiento1::totalhaber ( QString idbudget )
 /**
 \return
 **/
-void Asiento1::abrir()
+void BcAsientoForm::abrir()
 {
-    _depura ( "Asiento1::abreAsiento1", 0 );
-    if ( estadoAsiento1() != ASCerrado ) {
-        _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Abierto" );
+    _depura ( "BcAsientoForm::abreBcAsientoForm", 0 );
+    if ( estadoBcAsientoForm() != ASCerrado ) {
+        _depura ( "END BcAsientoForm::abreBcAsientoForm", 0, "Asiento Abierto" );
         return;
     } // end if
     QString id = dbValue ( "idasiento" );
     if ( id == "" ) {
-        _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Inexistente" );
+        _depura ( "END BcAsientoForm::abreBcAsientoForm", 0, "Asiento Inexistente" );
         return;
     }
     BlDbRecordSet *cursoraux = mainCompany() ->loadQuery ( "SELECT abreasiento(" + id + ")" );
     delete cursoraux;
-    trataestadoAsiento1();
-    _depura ( "END Asiento1::abreAsiento1", 0 );
+    trataestadoBcAsientoForm();
+    _depura ( "END BcAsientoForm::abreBcAsientoForm", 0 );
 }
 
 
@@ -321,18 +321,18 @@ void Asiento1::abrir()
 /**
 \return
 **/
-void Asiento1::cerrar()
+void BcAsientoForm::cerrar()
 {
-    _depura ( "Asiento1::cerrar", 0 );
-    if ( estadoAsiento1() != ASAbierto ) {
-        _depura ( "Asiento1::cerrar" , 0, "asiento no abierto" );
+    _depura ( "BcAsientoForm::cerrar", 0 );
+    if ( estadoBcAsientoForm() != ASAbierto ) {
+        _depura ( "BcAsientoForm::cerrar" , 0, "asiento no abierto" );
         return;
     } // end if
     if ( guardar() )
         return;
     QString id = dbValue ( "idasiento" );
     if ( id == "" ) {
-        _depura ( "Asiento1::cerrar" , 0, "No hay asiento" );
+        _depura ( "BcAsientoForm::cerrar" , 0, "No hay asiento" );
         return;
     } // end if
 
@@ -341,7 +341,7 @@ void Asiento1::cerrar()
     vaciar();
     dialogChanges_cargaInicial();
     cargar ( id );
-    _depura ( "END Asiento1::cerrar", 0 );
+    _depura ( "END BcAsientoForm::cerrar", 0 );
 }
 
 
@@ -349,11 +349,11 @@ void Asiento1::cerrar()
 /**
 \return
 **/
-Asiento1::estadoasiento Asiento1::estadoAsiento1()
+BcAsientoForm::estadoasiento BcAsientoForm::estadoBcAsientoForm()
 {
-    _depura ( "Asiento1::estadoasiento", 0 );
+    _depura ( "BcAsientoForm::estadoasiento", 0 );
     if ( dbValue ( "idasiento" ) == "" ) {
-        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Vacio" );
+        _depura ( "END BcAsientoForm::estadoasiento", 0, "Asiento Vacio" );
         return ASVacio;
     } // end if
 
@@ -369,13 +369,13 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1()
 
 
     if ( numborr == "0" ) {
-        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Vacio" );
+        _depura ( "END BcAsientoForm::estadoasiento", 0, "Asiento Vacio" );
         return ASVacio;
     } else if ( numap != "0" ) {
-        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Cerrado" );
+        _depura ( "END BcAsientoForm::estadoasiento", 0, "Asiento Cerrado" );
         return ASCerrado;
     } else {
-        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Abierto" );
+        _depura ( "END BcAsientoForm::estadoasiento", 0, "Asiento Abierto" );
         return ASAbierto;
     } // end if
 }
@@ -385,9 +385,9 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1()
 /**
 \return
 **/
-int Asiento1::guardar()
+int BcAsientoForm::guardar()
 {
-    _depura ( "Asiento1::guardar", 0 );
+    _depura ( "BcAsientoForm::guardar", 0 );
     QString id;
     mainCompany() ->begin();
     try {
@@ -396,24 +396,24 @@ int Asiento1::guardar()
         listalineas->guardar();
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza ( "Asiento1_guardaAsiento1_post", this );
+        int res = g_plugins->lanza ( "BcAsientoForm_guardaAsiento1_post", this );
         if ( res != 0 )
             return 0;
 
         mainCompany() ->commit();
 
-        if ( estadoAsiento1() == ASCerrado ) {
+        if ( estadoBcAsientoForm() == ASCerrado ) {
             BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT cierraasiento(" + id + ")" );
             delete cur;
         } // end if
         dialogChanges_cargaInicial();
         cargar ( id );
         g_main->statusBar() ->showMessage ( _ ( "El asiento se ha guardado correctamente." ), 2000 );
-        _depura ( "END Asiento1::guardar", 0 );
+        _depura ( "END BcAsientoForm::guardar", 0 );
         return 0;
     } catch ( ... ) {
         mainCompany() ->rollback();
-        _depura ( "END Asiento1::guardar", 0, "Error en el guardado" );
+        _depura ( "END BcAsientoForm::guardar", 0, "Error en el guardado" );
         return -1;
     } // end try
 }
@@ -423,10 +423,10 @@ int Asiento1::guardar()
 /**
 \return
 **/
-BcCompany *Asiento1::companyact()
+BcCompany *BcAsientoForm::companyact()
 {
-    _depura ( "Asiento1::companyact", 0 );
-    _depura ( "END Asiento1::companyact", 0 );
+    _depura ( "BcAsientoForm::companyact", 0 );
+    _depura ( "END BcAsientoForm::companyact", 0 );
     return mainCompany();
 }
 
@@ -435,12 +435,12 @@ BcCompany *Asiento1::companyact()
 /**
 \param val
 **/
-void Asiento1::setidasiento ( QString val )
+void BcAsientoForm::setidasiento ( QString val )
 {
-    _depura ( "Asiento1::setidasiento", 0 );
+    _depura ( "BcAsientoForm::setidasiento", 0 );
     setDbValue ( "idasiento", val );
     listalineas->setColumnValue ( "idasiento", val );
-    _depura ( "END Asiento1::setidasiento", 0 );
+    _depura ( "END BcAsientoForm::setidasiento", 0 );
 }
 
 
@@ -448,10 +448,10 @@ void Asiento1::setidasiento ( QString val )
 /**
 \return
 **/
-QString Asiento1::idasiento()
+QString BcAsientoForm::idasiento()
 {
-    _depura ( "Asiento1::idasiento", 0 );
-    _depura ( "END Asiento1::idasiento", 0 );
+    _depura ( "BcAsientoForm::idasiento", 0 );
+    _depura ( "END BcAsientoForm::idasiento", 0 );
     return dbValue ( "idasiento" );
 }
 
@@ -460,10 +460,10 @@ QString Asiento1::idasiento()
 /**
 \param a
 **/
-void Asiento1::setListLinAsiento1 ( ListLinAsiento1View *a )
+void BcAsientoForm::setListLinAsiento1 ( BcAsientoSubForm *a )
 {
-    _depura ( "Asiento1::setListLinAsiento1", 0 );
+    _depura ( "BcAsientoForm::setListLinAsiento1", 0 );
     listalineas = a;
-    _depura ( "END Asiento1::setListLinAsiento1", 0 );
+    _depura ( "END BcAsientoForm::setListLinAsiento1", 0 );
 }
 

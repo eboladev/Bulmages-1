@@ -28,7 +28,7 @@
 #include "blfixed.h"
 #include "blpostgresqlclient.h"
 #include "bcplancontablearbol.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -156,7 +156,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
         asiento = "%Asiento de Cierre%"; /// No hay que tener en cuenta el asiento de cierre para obtener los saldos
 
     /// OJO!! Antes de nada, hay que calcular el asiento de REGULARIZACION que nos guarda el resultado en la 129
-    Asiento1View *asientoReg;
+    BcAsientoView *asientoReg;
     ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial, ffinal );
     asientoReg = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa2();
 

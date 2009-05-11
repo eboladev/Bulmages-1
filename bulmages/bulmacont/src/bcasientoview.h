@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ASIENTO1VIEW_H
-#define ASIENTO1VIEW_H
+#ifndef BCASIENTOVIEW_H
+#define BCASIENTOVIEW_H
 
 #include <QWidget>
 #include <QString>
@@ -28,19 +28,19 @@
 
 #include "blconfiguration.h"
 #include "bldatesearch.h"
-#include "asiento1.h"
-#include "ui_asientobase.h"
+#include "bcasientoform.h"
+#include "ui_bcasientobase.h"
 
 
 class BcCompany ;
 
 
-/// Clase ListAsientos. Se encarga de controlar la ventana de introducci&oacute;n de apuntes.
+/// Clase BcAsientoList. Se encarga de controlar la ventana de introducci&oacute;n de apuntes.
 /** Esta es una de las clases m&aacute;s complejas del programa porque controla toda la
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
-class BC_EXPORT ListAsientos : public Asiento1
+class BC_EXPORT BcAsientoList : public BcAsientoForm
 {
     Q_OBJECT
 
@@ -49,8 +49,8 @@ private:
     BlDbRecordSet *cursorasientos;
 
 public:
-    ListAsientos ( BcCompany *, QWidget *parent );
-    virtual ~ListAsientos();
+    BcAsientoList ( BcCompany *, QWidget *parent );
+    virtual ~BcAsientoList();
     void cargaasientos();
     void boton_inicio();
     void boton_fin();
@@ -66,7 +66,7 @@ public:
 };
 
 
-class BC_EXPORT Asiento1View : public ListAsientos, public Ui_AsientoBase
+class BC_EXPORT BcAsientoView : public BcAsientoList, public Ui_BcAsientoBase
 {
     Q_OBJECT
 
@@ -79,8 +79,8 @@ private:
     void prepguardar();
 
 public:
-    Asiento1View ( BcCompany *, QWidget *parent = 0, int flags = 0 );
-    ~Asiento1View();
+    BcAsientoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
+    ~BcAsientoView();
     void muestraasiento ( QString v );
     void muestraasiento ( int v );
     /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
@@ -89,7 +89,7 @@ public:
 
 public:
     void setFecha ( QString val );
-    virtual void trataestadoAsiento1();
+    virtual void trataestadoBcAsientoForm();
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo ( QString nuevoordenasiento = "" );
@@ -123,10 +123,10 @@ class BC_EXPORT eventos_mui_ordenasiento : public QObject
     Q_OBJECT
 
 private:
-    Asiento1View *objeto;
+    BcAsientoView *objeto;
 
 public:
-    eventos_mui_ordenasiento ( Asiento1View *ob );
+    eventos_mui_ordenasiento ( BcAsientoView *ob );
     ~eventos_mui_ordenasiento() {};
 
 protected:

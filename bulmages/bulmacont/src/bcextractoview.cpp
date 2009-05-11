@@ -30,7 +30,7 @@
 #include "bcextractoimprimirview.h"
 #include "bclibromayorimprimir.h"
 #include "bccompany.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "bcdiarioview.h"
 #include "bcplancontablelistview.h"
 #include "bccentrocosteseleccionarview.h"

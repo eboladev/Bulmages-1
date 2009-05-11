@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,57 +19,27 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ASIENTO1_H
-#define ASIENTO1_H
+#ifndef BCASIENTOLISTSUBFORM_H
+#define BCASIENTOLISTSUBFORM_H
 
-#include <QString>
-
-#include "blfixed.h"
-#include "bcform.h"
-#include "listlinasiento1view.h"
+#include "bcsubform.h"
 
 
-class BcCompany ;
-
-
-/// Clase Asiento1.
+/// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
+/// abiertos o cerrados.
 /** */
-class BC_EXPORT Asiento1 : public BcForm
+class BC_EXPORT BcAsientoListSubForm : public BcSubForm
 {
     Q_OBJECT
 
 public:
-    enum estadoasiento {ASVacio = 0, ASAbierto = 1, ASCerrado = 2};
+    BcAsientoListSubForm ( QWidget *parent = 0, const char *name = 0 );
+    virtual ~BcAsientoListSubForm();
 
-protected:
-    ListLinAsiento1View *listalineas;
-
-public:
-    Asiento1 ( BcCompany *, QWidget *parent );
-    virtual ~Asiento1();
-    BcCompany *companyact();
-    int cargar ( QString );
-    BlFixed totaldebe ( QString );
-    BlFixed totalhaber ( QString );
-    void vaciar();
-    void abrir();
-    void cerrar();
-    estadoasiento estadoAsiento1();
-    int guardar();
-    void setidasiento ( QString val );
-    QString idasiento();
-    /// Establece cual es la lista subformulario del presupuesto.
-    void setListLinAsiento1 ( ListLinAsiento1View *a );
-    virtual int borrar ( bool );
-    virtual void pintaidasiento ( QString );
-    virtual void pintadescripcion ( QString );
-    virtual void pintafecha ( QString );
-    virtual void pintacomentariosasiento ( QString );
-    virtual void pintaordenasiento ( QString );
-    virtual void pintaclase ( QString );
-    virtual void calculaypintatotales();
-    virtual void pintar();
-    virtual void trataestadoAsiento1();
+public slots:
+//    virtual void contextMenuEvent ( QContextMenuEvent * );
+    virtual void s_pintaMenu ( QMenu *menu );
+    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

@@ -22,8 +22,8 @@
 #include <QComboBox>
 #include <QDateTime>
 
-#include "asientosview.h"
-#include "asiento1view.h"
+#include "bcasientolistview.h"
+#include "bcasientoview.h"
 #include "bccompany.h"
 
 
@@ -35,10 +35,10 @@
 \param flag
 \param edmode
 **/
-AsientosView::AsientosView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode )
+BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode )
         : BlFormList ( comp, parent, flag )
 {
-    _depura ( "AsientosView::AsientosView", 0 );
+    _depura ( "BcAsientoListView::BcAsientoListView", 0 );
     setupUi ( this );
 
     mui_mostrar->insertItem ( 0, _ ( "Todos los asientos" ) );
@@ -51,16 +51,16 @@ AsientosView::AsientosView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, 
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     mainCompany() ->meteWindow ( windowTitle(), this );
-    _depura ( "END AsientosView::AsientosView", 0 );
+    _depura ( "END BcAsientoListView::BcAsientoListView", 0 );
 }
 
 
 ///
 /**
 **/
-void AsientosView::rellenaListaEjercicio()
+void BcAsientoListView::rellenaListaEjercicio()
 {
-    _depura ( "AsientosView::rellenaListaEjercicio", 0 );
+    _depura ( "BcAsientoListView::rellenaListaEjercicio", 0 );
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
     mui_ejercicio->insertItem ( 0, _ ( "(todos)" ) );
@@ -71,33 +71,33 @@ void AsientosView::rellenaListaEjercicio()
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END AsientosView::rellenaListaEjercicio", 0 );
+    _depura ( "END BcAsientoListView::rellenaListaEjercicio", 0 );
 }
 
 
 ///
 /**
 **/
-AsientosView::~AsientosView()
+BcAsientoListView::~BcAsientoListView()
 {
-    _depura ( "AsientosView::~AsientosView\n", 0 );
+    _depura ( "BcAsientoListView::~BcAsientoListView\n", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END AsientosView::~AsientosView\n", 0 );
+    _depura ( "END BcAsientoListView::~BcAsientoListView\n", 0 );
 }
 
 
 ///
 /**
 **/
-void AsientosView::on_mui_list_cellDoubleClicked ( int, int )
+void BcAsientoListView::on_mui_list_cellDoubleClicked ( int, int )
 {
-    _depura ( "AsientosView::on_mui_list_cellDoubleClicked", 0 );
+    _depura ( "BcAsientoListView::on_mui_list_cellDoubleClicked", 0 );
     QString idasiento = mui_list->dbValue ( "idasiento" );
     ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->muestraasiento ( idasiento );
     ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->show();
     ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->setFocus();
     ( ( BcCompany * ) mainCompany() ) ->muestraapuntes1();
-    _depura ( "END AsientosView::on_mui_list_cellDoubleClicked", 0 );
+    _depura ( "END BcAsientoListView::on_mui_list_cellDoubleClicked", 0 );
 }
 
 
@@ -105,9 +105,9 @@ void AsientosView::on_mui_list_cellDoubleClicked ( int, int )
 /// y presentando los resultados en pantalla.
 /**
 **/
-void AsientosView::presentar()
+void BcAsientoListView::presentar()
 {
-    _depura ( "AsientosView::presentar", 0 );
+    _depura ( "BcAsientoListView::presentar", 0 );
     QString saldototal = mui_saldoasiento->text();
     /// Pasamos el texto a minusculas para hacer la busqueda 'case insensitive'.
     QString nombreasiento = mui_nombreasiento->text().toLower();
@@ -287,18 +287,18 @@ void AsientosView::presentar()
     mui_totalDebe->setText ( td.toQString() );
     mui_totalHaber->setText ( th.toQString() );
 
-    _depura ( "END AsientosView::presentar", 0 );
+    _depura ( "END BcAsientoListView::presentar", 0 );
 }
 
 
 ///
 /**
 **/
-void AsientosView::imprimir()
+void BcAsientoListView::imprimir()
 {
-    _depura ( "AsientosView::on_mui_imprimir_clicked", 0 );
+    _depura ( "BcAsientoListView::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Asientos" ) );
-    _depura ( "END AsientosView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BcAsientoListView::on_mui_imprimir_clicked", 0 );
 }
 
 

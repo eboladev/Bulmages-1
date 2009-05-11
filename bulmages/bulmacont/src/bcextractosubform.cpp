@@ -89,14 +89,14 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
 **/
 void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
+    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar diario (dia)" ) );
     menu->addAction ( _ ( "Mostrar diario (mes)" ) );
     menu->addAction ( _ ( "Mostrar diario (ano)" ) );
-    _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
+    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -106,7 +106,7 @@ void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
 **/
 void BcExtractoSubForm::s_trataMenu ( QAction *action )
 {
-    _depura ( "ListLinAsiento1View::s_trataMenu", 0 );
+    _depura ( "BcAsientoSubForm::s_trataMenu", 0 );
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
@@ -116,6 +116,6 @@ void BcExtractoSubForm::s_trataMenu ( QAction *action )
         boton_diario1 ( 1 );
     if ( action->text() == _ ( "Mostrar diario (ano)" ) )
         boton_diario1 ( 2 );
-    _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );
+    _depura ( "END BcAsientoSubForm::s_trataMenu", 0 );
 }
 

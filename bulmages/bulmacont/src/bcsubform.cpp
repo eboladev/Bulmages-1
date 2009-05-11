@@ -27,7 +27,7 @@
 #include "bcsubform.h"
 #include "blfunctions.h"
 #include "bccompany.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "bcextractoview.h"
 #include "bltexteditdelegate.h"
 #include "bldoublespinbox.h"

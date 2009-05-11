@@ -26,7 +26,7 @@
 
 #include "blfunctions.h"
 #include "ui_bcmodelo300base.h"
-#include "modelosps.h"
+#include "bcmodeloaeat.h"
 #include "blspainbankaccountnumber.h"
 
 
@@ -34,8 +34,8 @@
 /** Clase para generar el modelo 300 de declaraci&oacute; de IVA trimestral en formato
     postscript.
     Utiliza los formularios oficiales obtenidos de la Agencia Tributaria (http://www.aeat.es)
-    convertidos de pdf a postscript. Hereda de \ref Modgenps */
-class BC_EXPORT BcModelo300Imprimir2PS: public QDialog, public Ui_BcModelo300Base, public Modgenps
+    convertidos de pdf a postscript. Hereda de \ref BcPsGenerateModel */
+class BC_EXPORT BcModelo300Imprimir2PS: public QDialog, public Ui_BcModelo300Base, public BcPsGenerateModel
 {
     Q_OBJECT
 

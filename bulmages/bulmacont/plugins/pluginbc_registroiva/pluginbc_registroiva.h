@@ -27,15 +27,15 @@
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
-#include "asiento1.h"
-#include "listlinasiento1view.h"
-#include "asiento1view.h"
+#include "bcasientoform.h"
+#include "bcasientosubform.h"
+#include "bcasientoview.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int Asiento1_guardaAsiento1_post ( Asiento1 * );
+extern "C" MY_EXPORT int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm * );
 extern "C" MY_EXPORT int empresa_cobPag ( BcCompany * );
 extern "C" MY_EXPORT int empresa_registroiva ( BcCompany * );
-extern "C" MY_EXPORT int ListLinAsiento1View_boton_iva ( ListLinAsiento1View * );
-extern "C" MY_EXPORT int Asiento1View_Asiento1View ( Asiento1View * );
+extern "C" MY_EXPORT int BcAsientoSubForm_boton_iva ( BcAsientoSubForm * );
+extern "C" MY_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
 

@@ -1101,7 +1101,7 @@ msgid "Listado para el modelo 347"
 msgstr ""
 
 #: ui_bcmodelo347listbase.h:248 ui_bcdiariobase.h:339 ui_bcdiariobase.h:342
-#: ui_asientolistbase.h:431 ui_asientolistbase.h:434
+#: ui_bcasientolistbase.h:431 ui_bcasientolistbase.h:434
 #: ui_bcregistroivaimprimirbase.h:225 ui_bcextractobase.h:642
 #: ui_bcextractobase.h:645 ui_balancetreebase.h:389 ui_balancetreebase.h:392
 #: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263 ui_cuadrantediariobase.h:296
@@ -1211,7 +1211,7 @@ msgid "Guardar cuenta"
 msgstr ""
 
 #: ui_bccuentabase.h:810 ui_bcamortizacionbase.h:643
-#: ui_bcasientointeligentebase.h:211 ui_asientobase.h:514
+#: ui_bcasientointeligentebase.h:211 ui_bcasientobase.h:514
 #: ui_bccentrocostebase.h:273 ui_bcconfiguracionbase.h:247
 #: ui_proyectobase.h:250 ui_clientebase.h:563 ui_presupuestoclientebase.h:728
 #: ui_pedidoproveedorbase.h:665 ui_tiposarticulobase.h:262
@@ -1237,7 +1237,7 @@ msgid "Borrar cuenta"
 msgstr ""
 
 #: ui_bccuentabase.h:823 ui_bcamortizacionbase.h:651
-#: ui_bcamortizacionlistbase.h:149 ui_asientobase.h:551 ui_asientobase.h:559
+#: ui_bcamortizacionlistbase.h:149 ui_bcasientobase.h:551 ui_bcasientobase.h:559
 #: ui_bccentrocostebase.h:271 ui_bcplancontablelistbase.h:299
 #: ui_proyectobase.h:258 ui_proyectobase.h:266 ui_listproyectosbase.h:152
 #: ui_clientebase.h:571 ui_presupuestoslistbase.h:387
@@ -1573,7 +1573,7 @@ msgid "Nueva amortizacion"
 msgstr ""
 
 #: ui_bcamortizacionlistbase.h:141 ui_bcbloqueafechabase.h:142
-#: ui_asientobase.h:528 ui_bccentrocostebase.h:269
+#: ui_bcasientobase.h:528 ui_bccentrocostebase.h:269
 #: ui_bcplancontablelistbase.h:283 ui_listproyectosbase.h:144
 #: ui_presupuestoslistbase.h:371 ui_albaranclientelistbase.h:448
 #: ui_pedidosclientelistbase.h:389 ui_facturaslistbase.h:443
@@ -1965,8 +1965,8 @@ msgstr ""
 msgid "Mostrar/ocultar filtro"
 msgstr ""
 
-#: ui_bcdiariobase.h:360 ui_bcdiariobase.h:363 ui_asientolistbase.h:452
-#: ui_asientolistbase.h:455 ui_bcextractobase.h:663 ui_bcextractobase.h:666
+#: ui_bcdiariobase.h:360 ui_bcdiariobase.h:363 ui_bcasientolistbase.h:452
+#: ui_bcasientolistbase.h:455 ui_bcextractobase.h:663 ui_bcextractobase.h:666
 #: ui_cobropagobase.h:369 ui_cobropagobase.h:373 ui_cobropagobase.h:377
 #: ui_cobropagobase.h:381 ui_balancetreebase.h:403 ui_balancetreebase.h:406
 #: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271 ui_cuadrantediariobase.h:304
@@ -1990,63 +1990,63 @@ msgstr ""
 msgid "&Incluir asientos abiertos"
 msgstr ""
 
-#: ui_bcdiariobase.h:373 ui_asientolistbase.h:428 ui_asientobase.h:593
+#: ui_bcdiariobase.h:373 ui_bcasientolistbase.h:428 ui_bcasientobase.h:593
 #: ui_balancetreebase.h:405 ui_balancetreebase.h:425
 msgid "Total Debe:"
 msgstr ""
 
-#: ui_bcdiariobase.h:374 ui_asientolistbase.h:429 ui_asientobase.h:594
+#: ui_bcdiariobase.h:374 ui_bcasientolistbase.h:429 ui_bcasientobase.h:594
 #: ui_balancetreebase.h:406 ui_balancetreebase.h:426
 msgid "Total Haber:"
 msgstr ""
 
-#: ui_asientolistbase.h:418
+#: ui_bcasientolistbase.h:418
 msgid "Listado de asientos"
 msgstr ""
 
-#: ui_asientolistbase.h:419
+#: ui_bcasientolistbase.h:419
 msgid "&Mostrar:"
 msgstr ""
 
-#: ui_asientolistbase.h:420
+#: ui_bcasientolistbase.h:420
 msgid "&Ejercicio:"
 msgstr ""
 
-#: ui_asientolistbase.h:421
+#: ui_bcasientolistbase.h:421
 msgid "&Concepto:"
 msgstr ""
 
-#: ui_asientolistbase.h:422
+#: ui_bcasientolistbase.h:422
 msgid "Fecha &inicial:"
 msgstr ""
 
-#: ui_asientolistbase.h:423
+#: ui_bcasientolistbase.h:423
 msgid "Fecha &final:"
 msgstr ""
 
-#: ui_asientolistbase.h:424
+#: ui_bcasientolistbase.h:424
 msgid "&Partida igual a:"
 msgstr ""
 
-#: ui_asientolistbase.h:425
+#: ui_bcasientolistbase.h:425
 msgid "y   ( >="
 msgstr ""
 
-#: ui_asientolistbase.h:426
+#: ui_bcasientolistbase.h:426
 msgid "y <="
 msgstr ""
 
-#: ui_asientolistbase.h:427
+#: ui_bcasientolistbase.h:427
 msgid ")"
 msgstr ""
 
-#: ui_asientolistbase.h:438 ui_asientolistbase.h:441 ui_balancetreebase.h:396
+#: ui_bcasientolistbase.h:438 ui_bcasientolistbase.h:441 ui_balancetreebase.h:396
 #: ui_balancetreebase.h:399 ui_movimientosbase.h:276 ui_movimientosbase.h:279
 msgid "Filtrar"
 msgstr ""
 
-#: ui_asientolistbase.h:445 ui_asientolistbase.h:448 ui_asientobase.h:538
-#: ui_asientobase.h:541 ui_bcextractobase.h:656 ui_bcextractobase.h:659
+#: ui_bcasientolistbase.h:445 ui_bcasientolistbase.h:448 ui_bcasientobase.h:538
+#: ui_bcasientobase.h:541 ui_bcextractobase.h:656 ui_bcextractobase.h:659
 #: ui_balancebase.h:436 ui_balancebase.h:439 ui_correctorbase.h:102
 #: ui_correctorbase.h:105 ui_balancebase.h:426 ui_balancebase.h:429
 msgid "Configurar"
@@ -2182,41 +2182,41 @@ msgstr ""
 msgid "Cuenta:"
 msgstr ""
 
-#: ui_asientobase.h:490 bcextractosubform.cpp:49 bcdiariosubform.cpp:37
+#: ui_bcasientobase.h:490 bcextractosubform.cpp:49 bcdiariosubform.cpp:37
 #: bcasientointeligenteview.cpp:58
 msgid "Asiento"
 msgstr ""
 
-#: ui_asientobase.h:492 ui_asientobase.h:495
+#: ui_bcasientobase.h:492 ui_bcasientobase.h:495
 msgid "Abrir asiento"
 msgstr ""
 
-#: ui_asientobase.h:498 ui_bcbulmacontbase.h:358
+#: ui_bcasientobase.h:498 ui_bcbulmacontbase.h:358
 msgid "Ctrl+A"
 msgstr ""
 
-#: ui_asientobase.h:500 ui_asientobase.h:503
+#: ui_bcasientobase.h:500 ui_bcasientobase.h:503
 msgid "Cerrar asiento"
 msgstr ""
 
-#: ui_asientobase.h:506
+#: ui_bcasientobase.h:506
 msgid "Ctrl+C"
 msgstr ""
 
-#: ui_asientobase.h:508 ui_asientobase.h:511
+#: ui_bcasientobase.h:508 ui_bcasientobase.h:511
 msgid "Guardar asiento"
 msgstr ""
 
-#: ui_asientobase.h:516 ui_asientobase.h:519 ui_asientobase.h:522
-#: ui_asientobase.h:525
+#: ui_bcasientobase.h:516 ui_bcasientobase.h:519 ui_bcasientobase.h:522
+#: ui_bcasientobase.h:525
 msgid "Nuevo asiento"
 msgstr ""
 
-#: ui_asientobase.h:530 ui_asientobase.h:533
+#: ui_bcasientobase.h:530 ui_bcasientobase.h:533
 msgid "Extender asiento"
 msgstr ""
 
-#: ui_asientobase.h:536 ui_bcplancontablelistbase.h:291
+#: ui_bcasientobase.h:536 ui_bcplancontablelistbase.h:291
 #: ui_presupuestoslistbase.h:379 ui_albaranclientelistbase.h:456
 #: ui_pedidosclientelistbase.h:397 ui_facturaslistbase.h:451
 #: ui_pedidosproveedorlistbase.h:378 ui_tutoreslistbase.h:331
@@ -2227,63 +2227,63 @@ msgstr ""
 msgid "Ctrl+E"
 msgstr ""
 
-#: ui_asientobase.h:545 ui_asientobase.h:548 bcamortizacionview.cpp:386
+#: ui_bcasientobase.h:545 ui_bcasientobase.h:548 bcamortizacionview.cpp:386
 #: bcamortizacionview.cpp:427 bcamortizacionview.cpp:436
-#: bcamortizacionview.cpp:443 asiento1.cpp:159
+#: bcamortizacionview.cpp:443 bcasientoform.cpp:159
 msgid "Borrar asiento"
 msgstr ""
 
-#: ui_asientobase.h:553 ui_asientobase.h:556
+#: ui_bcasientobase.h:553 ui_bcasientobase.h:556
 msgid "Duplicar asiento"
 msgstr ""
 
-#: ui_asientobase.h:561 ui_asientobase.h:564
+#: ui_bcasientobase.h:561 ui_bcasientobase.h:564
 msgid "Exportar asiento"
 msgstr ""
 
-#: ui_asientobase.h:568 ui_asientobase.h:571
+#: ui_bcasientobase.h:568 ui_bcasientobase.h:571
 msgid "Importar asiento"
 msgstr ""
 
-#: ui_asientobase.h:575 ui_asientobase.h:578 ui_bcbulmacontbase.h:365
+#: ui_bcasientobase.h:575 ui_bcasientobase.h:578 ui_bcbulmacontbase.h:365
 msgid "Asientos Inteligentes"
 msgstr ""
 
-#: ui_asientobase.h:581
+#: ui_bcasientobase.h:581
 msgid "Ctrl+M"
 msgstr ""
 
-#: ui_asientobase.h:582 bccompany.cpp:815 impqtoolbutton.cpp:150
+#: ui_bcasientobase.h:582 bccompany.cpp:815 impqtoolbutton.cpp:150
 #: facturaview.cpp:207
 msgid "Fecha:"
 msgstr ""
 
-#: ui_asientobase.h:583
+#: ui_bcasientobase.h:583
 msgid "Orden del asiento:"
 msgstr ""
 
-#: ui_asientobase.h:584
+#: ui_bcasientobase.h:584
 msgid "Descuadre:"
 msgstr ""
 
-#: ui_asientobase.h:587
+#: ui_bcasientobase.h:587
 msgid "Apertura"
 msgstr ""
 
-#: ui_asientobase.h:588 cuadrantediarioview.cpp:289 cuadranteview.cpp:250
+#: ui_bcasientobase.h:588 cuadrantediarioview.cpp:289 cuadranteview.cpp:250
 msgid "Normal"
 msgstr ""
 
-#: ui_asientobase.h:589 bccuentaview.cpp:51 bcplancontablelistview.cpp:62
+#: ui_bcasientobase.h:589 bccuentaview.cpp:51 bcplancontablelistview.cpp:62
 #: registroiva.cpp:56
 msgid "Regularizacion"
 msgstr ""
 
-#: ui_asientobase.h:590
+#: ui_bcasientobase.h:590
 msgid "Cierre"
 msgstr ""
 
-#: ui_asientobase.h:592 ui_bcextractobase.h:700 ui_balancebase.h:449
+#: ui_bcasientobase.h:592 ui_bcextractobase.h:700 ui_balancebase.h:449
 #: ui_balancetreebase.h:407 ui_balancebase.h:442 ui_balancetreebase.h:427
 msgid "Saldo:"
 msgstr ""
@@ -2520,7 +2520,7 @@ msgstr ""
 msgid "Restan"
 msgstr ""
 
-#: ui_bcmasapatrimonialbase.h:363 asientolistsubform.cpp:41
+#: ui_bcmasapatrimonialbase.h:363 bcasientolistsubform.cpp:41
 #: listproyectosview.cpp:50 proyectoview.cpp:60 proyectoview.cpp:77
 #: proyectoview.cpp:96 ui_devolucionbase.h:271 rutacomercial.cpp:45
 #: incidenciacomercial.cpp:45 clientslist.cpp:291 clienteview.cpp:72
@@ -2859,7 +2859,7 @@ msgstr ""
 msgid "Codigo Cuenta"
 msgstr ""
 
-#: bccuentalistview.cpp:388 listlinasiento1view.cpp:42 balance1view.cpp:93
+#: bccuentalistview.cpp:388 bcasientosubform.cpp:42 balance1view.cpp:93
 msgid "Nombre de la cuenta"
 msgstr ""
 
@@ -2929,7 +2929,7 @@ msgstr ""
 msgid "Origen"
 msgstr ""
 
-#: bccentrocosteview.cpp:76 listlinasiento1view.cpp:52
+#: bccentrocosteview.cpp:76 bcasientosubform.cpp:52
 msgid "Id centro de coste"
 msgstr ""
 
@@ -2973,8 +2973,8 @@ msgstr ""
 msgid "Punteo"
 msgstr ""
 
-#: bcextractosubform.cpp:47 bcdiariosubform.cpp:38 listlinasiento1view.cpp:40
-#: bccompany.cpp:815 asientolistsubform.cpp:38 listproyectosview.cpp:48
+#: bcextractosubform.cpp:47 bcdiariosubform.cpp:38 bcasientosubform.cpp:40
+#: bccompany.cpp:815 bcasientolistsubform.cpp:38 listproyectosview.cpp:48
 #: contratoview.cpp:403 rutacomercial.cpp:43 incidenciacomercial.cpp:42
 #: presupuestolist.cpp:351 cuadrantediarioview.cpp:71 cuadrante1view.cpp:59
 #: ui_cuadrante1base.h:332 facturapview.cpp:60 pluginbf_asterisk.cpp:99
@@ -2999,14 +2999,14 @@ msgid "Concepto"
 msgstr ""
 
 #: bcextractosubform.cpp:54 bcdiariosubform.cpp:43 bccuentaview.cpp:53
-#: listlinasiento1view.cpp:45 asientolistsubform.cpp:42
+#: bcasientosubform.cpp:45 bcasientolistsubform.cpp:42
 #: bcplancontablelistview.cpp:62 listregistroivaview.cpp:57
 #: listregistroivaview.cpp:81 balanceview.cpp:259 balance1view.cpp:95
 msgid "Debe"
 msgstr ""
 
 #: bcextractosubform.cpp:55 bcdiariosubform.cpp:44 bccuentaview.cpp:54
-#: listlinasiento1view.cpp:46 asientolistsubform.cpp:43
+#: bcasientosubform.cpp:46 bcasientolistsubform.cpp:43
 #: bcplancontablelistview.cpp:62 listregistroivaview.cpp:58
 #: listregistroivaview.cpp:82 balanceview.cpp:259 balance1view.cpp:96
 msgid "Haber"
@@ -3055,14 +3055,14 @@ msgstr ""
 msgid "contrapartida"
 msgstr ""
 
-#: bcextractosubform.cpp:66 bcdiariosubform.cpp:45 listlinasiento1view.cpp:48
+#: bcextractosubform.cpp:66 bcdiariosubform.cpp:45 bcasientosubform.cpp:48
 #: listregistroivaview.cpp:60 listregistroivaview.cpp:84
 #: presupuestolist.cpp:360 compraventaview.cpp:89 albaranclienteview.cpp:79
 #: albaranesproveedor.cpp:385 pedidosclientelist.cpp:339 facturaview.cpp:68
 msgid "Comentario"
 msgstr ""
 
-#: bcextractosubform.cpp:68 bcdiariosubform.cpp:51 listlinasiento1view.cpp:50
+#: bcextractosubform.cpp:68 bcdiariosubform.cpp:51 bcasientosubform.cpp:50
 #: bccanalview.cpp:36
 msgid "Canal"
 msgstr ""
@@ -3086,8 +3086,8 @@ msgstr ""
 msgid "idtipoiva"
 msgstr ""
 
-#: bcextractosubform.cpp:73 listlinasiento1view.cpp:55
-#: asientolistsubform.cpp:37 registroiva.cpp:52 ui_registroivabase.h:619
+#: bcextractosubform.cpp:73 bcasientosubform.cpp:55
+#: bcasientolistsubform.cpp:37 registroiva.cpp:52 ui_registroivabase.h:619
 #: proyectoview.cpp:81 proyectoview.cpp:100 btticket.cpp:93
 #: bfclientealbaransubform.cpp:56 bfproveedoralbaransubform.cpp:58
 #: listlincontratoview.cpp:48 listlinpresupuestoview.cpp:57
@@ -3097,9 +3097,9 @@ msgid "Orden"
 msgstr ""
 
 #: bcextractosubform.cpp:94 bcextractosubform.cpp:111 bcdiariosubform.cpp:96
-#: bcdiariosubform.cpp:113 listlinasiento1view.cpp:89
-#: listlinasiento1view.cpp:106 asientolistsubform.cpp:77
-#: asientolistsubform.cpp:94
+#: bcdiariosubform.cpp:113 bcasientosubform.cpp:89
+#: bcasientosubform.cpp:106 bcasientolistsubform.cpp:77
+#: bcasientolistsubform.cpp:94
 msgid "Mostrar asiento"
 msgstr ""
 
@@ -3137,27 +3137,27 @@ msgid ""
 "Esto puede ocasionar perdida de datos.\n"
 msgstr ""
 
-#: asientosview.cpp:44
+#: bcasientolistview.cpp:44
 msgid "Todos los asientos"
 msgstr ""
 
-#: asientosview.cpp:45
+#: bcasientolistview.cpp:45
 msgid "Asientos cerrados"
 msgstr ""
 
-#: asientosview.cpp:46
+#: bcasientolistview.cpp:46
 msgid "Asientos abiertos"
 msgstr ""
 
-#: asientosview.cpp:66
+#: bcasientolistview.cpp:66
 msgid "(todos)"
 msgstr ""
 
-#: asientosview.cpp:233
+#: bcasientolistview.cpp:233
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr ""
 
-#: asientosview.cpp:300
+#: bcasientolistview.cpp:300
 msgid "Asientos"
 msgstr ""
 
@@ -3250,8 +3250,8 @@ msgstr ""
 msgid "Cantidad"
 msgstr ""
 
-#: bcamortizacionview.cpp:81 asiento1.cpp:45 listlinasiento1view.cpp:57
-#: asientolistsubform.cpp:44
+#: bcamortizacionview.cpp:81 bcasientoform.cpp:45 bcasientosubform.cpp:57
+#: bcasientolistsubform.cpp:44
 msgid "Id asiento"
 msgstr ""
 
@@ -3341,7 +3341,7 @@ msgstr ""
 msgid "Descripcion de Cuenta"
 msgstr ""
 
-#: bcdiariosubform.cpp:42 listlinasiento1view.cpp:44
+#: bcdiariosubform.cpp:42 bcasientosubform.cpp:44
 #: listregistroivaview.cpp:51
 msgid "Concepto contable"
 msgstr ""
@@ -3350,7 +3350,7 @@ msgstr ""
 msgid "idborrador"
 msgstr ""
 
-#: bcdiariosubform.cpp:49 bcdiariosubform.cpp:50 listlinasiento1view.cpp:47
+#: bcdiariosubform.cpp:49 bcdiariosubform.cpp:50 bcasientosubform.cpp:47
 #: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
 msgid "Contrapartida"
 msgstr ""
@@ -3369,21 +3369,21 @@ msgstr ""
 msgid "idregistroiva"
 msgstr ""
 
-#: bcdiariosubform.cpp:98 bcdiariosubform.cpp:115 listlinasiento1view.cpp:91
-#: listlinasiento1view.cpp:108 asientolistsubform.cpp:79
-#: asientolistsubform.cpp:96
+#: bcdiariosubform.cpp:98 bcdiariosubform.cpp:115 bcasientosubform.cpp:91
+#: bcasientosubform.cpp:108 bcasientolistsubform.cpp:79
+#: bcasientolistsubform.cpp:96
 msgid "Mostrar extracto (dia)"
 msgstr ""
 
-#: bcdiariosubform.cpp:99 bcdiariosubform.cpp:117 listlinasiento1view.cpp:92
-#: listlinasiento1view.cpp:110 asientolistsubform.cpp:80
-#: asientolistsubform.cpp:98
+#: bcdiariosubform.cpp:99 bcdiariosubform.cpp:117 bcasientosubform.cpp:92
+#: bcasientosubform.cpp:110 bcasientolistsubform.cpp:80
+#: bcasientolistsubform.cpp:98
 msgid "Mostrar extracto (mes)"
 msgstr ""
 
-#: bcdiariosubform.cpp:100 bcdiariosubform.cpp:119 listlinasiento1view.cpp:93
-#: listlinasiento1view.cpp:112 asientolistsubform.cpp:81
-#: asientolistsubform.cpp:100
+#: bcdiariosubform.cpp:100 bcdiariosubform.cpp:119 bcasientosubform.cpp:93
+#: bcasientosubform.cpp:112 bcasientolistsubform.cpp:81
+#: bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (ano)"
 msgstr ""
 
@@ -3451,35 +3451,35 @@ msgstr ""
 msgid "Direccion de la cuenta"
 msgstr ""
 
-#: asiento1.cpp:42 balanceview.cpp:69
+#: bcasientoform.cpp:42 balanceview.cpp:69
 msgid "Asiento Contable"
 msgstr ""
 
-#: asiento1.cpp:46
+#: bcasientoform.cpp:46
 msgid "Descripcion del asiento"
 msgstr ""
 
-#: asiento1.cpp:47
+#: bcasientoform.cpp:47
 msgid "Fecha del asiento"
 msgstr ""
 
-#: asiento1.cpp:48
+#: bcasientoform.cpp:48
 msgid "Comentarios del asiento"
 msgstr ""
 
-#: asiento1.cpp:49
+#: bcasientoform.cpp:49
 msgid "Orden de asiento"
 msgstr ""
 
-#: asiento1.cpp:50
+#: bcasientoform.cpp:50
 msgid "Tipo de asiento"
 msgstr ""
 
-#: asiento1.cpp:160
+#: bcasientoform.cpp:160
 msgid "Se va a borrar el asiento. Esta seguro?"
 msgstr ""
 
-#: asiento1.cpp:411
+#: bcasientoform.cpp:411
 msgid "El asiento se ha guardado correctamente."
 msgstr ""
 
@@ -3625,15 +3625,15 @@ msgstr ""
 msgid "Ejercicios ya contemplado"
 msgstr ""
 
-#: asiento1view.cpp:331
+#: bcasientoview.cpp:331
 msgid "Asiento inexistente."
 msgstr ""
 
-#: asiento1view.cpp:332
+#: bcasientoview.cpp:332
 msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr ""
 
-#: asiento1view.cpp:333 bccanalview.cpp:238 incidenciacomercialview.cpp:106
+#: bcasientoview.cpp:333 bccanalview.cpp:238 incidenciacomercialview.cpp:106
 #: rutacomercialincview.cpp:80 genpreqtoolbutton.cpp:168
 #: genpreqtoolbutton.cpp:296 genpreqtoolbutton.cpp:425 trabajadorview.cpp:223
 #: compraventaview.cpp:467 compraventaview.cpp:588 tarifaview.cpp:244
@@ -3645,7 +3645,7 @@ msgstr ""
 msgid "&Si"
 msgstr ""
 
-#: asiento1view.cpp:333 bccanalview.cpp:238 incidenciacomercialview.cpp:106
+#: bcasientoview.cpp:333 bccanalview.cpp:238 incidenciacomercialview.cpp:106
 #: rutacomercialincview.cpp:80 genpreqtoolbutton.cpp:168
 #: genpreqtoolbutton.cpp:296 genpreqtoolbutton.cpp:425 trabajadorview.cpp:223
 #: compraventaview.cpp:467 compraventaview.cpp:588 tarifaview.cpp:244
@@ -3657,11 +3657,11 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: listlinasiento1view.cpp:39
+#: bcasientosubform.cpp:39
 msgid "Id apunte"
 msgstr ""
 
-#: listlinasiento1view.cpp:41 balanceview.cpp:259 proyectoview.cpp:72
+#: bcasientosubform.cpp:41 balanceview.cpp:259 proyectoview.cpp:72
 #: proyectoview.cpp:91 contratoslist.cpp:423 clientslist.cpp:276
 #: clienteview.cpp:76 tiposarticuloview.cpp:46 articuloview.cpp:62
 #: familiasview.cpp:51 familiasview.cpp:568 providerslist.cpp:284
@@ -3670,49 +3670,49 @@ msgstr ""
 msgid "Codigo"
 msgstr ""
 
-#: listlinasiento1view.cpp:43
+#: bcasientosubform.cpp:43
 msgid "Descripcion del apunte"
 msgstr ""
 
-#: listlinasiento1view.cpp:49 listregistroivaview.cpp:61
+#: bcasientosubform.cpp:49 listregistroivaview.cpp:61
 #: listregistroivaview.cpp:85
 msgid "ID Canal"
 msgstr ""
 
-#: listlinasiento1view.cpp:51 listregistroivaview.cpp:62
+#: bcasientosubform.cpp:51 listregistroivaview.cpp:62
 #: listregistroivaview.cpp:86
 msgid "Conciliacion"
 msgstr ""
 
-#: listlinasiento1view.cpp:53
+#: bcasientosubform.cpp:53
 msgid "Centro de coste"
 msgstr ""
 
-#: listlinasiento1view.cpp:54
+#: bcasientosubform.cpp:54
 msgid "Id tipo de IVA"
 msgstr ""
 
-#: listlinasiento1view.cpp:56
+#: bcasientosubform.cpp:56
 msgid "Id borrador"
 msgstr ""
 
-#: listlinasiento1view.cpp:58
+#: bcasientosubform.cpp:58
 msgid "Id cuenta"
 msgstr ""
 
-#: listlinasiento1view.cpp:59
+#: bcasientosubform.cpp:59
 msgid "Tipo de cuenta"
 msgstr ""
 
-#: listlinasiento1view.cpp:60
+#: bcasientosubform.cpp:60
 msgid "Id. Registro IVA"
 msgstr ""
 
-#: listlinasiento1view.cpp:61 ui_registroivabase.h:616
+#: bcasientosubform.cpp:61 ui_registroivabase.h:616
 msgid "Fecha Factura"
 msgstr ""
 
-#: listlinasiento1view.cpp:62 ui_registroivabase.h:615 listlresarticulo.cpp:38
+#: bcasientosubform.cpp:62 ui_registroivabase.h:615 listlresarticulo.cpp:38
 msgid "Num. Factura"
 msgstr ""
 
@@ -3796,15 +3796,15 @@ msgstr ""
 msgid "desc_coste"
 msgstr ""
 
-#: asientolistsubform.cpp:39
+#: bcasientolistsubform.cpp:39
 msgid "Apuntes"
 msgstr ""
 
-#: asientolistsubform.cpp:40 registroiva.cpp:51
+#: bcasientolistsubform.cpp:40 registroiva.cpp:51
 msgid "Borrador"
 msgstr ""
 
-#: asientolistsubform.cpp:45
+#: bcasientolistsubform.cpp:45
 msgid "Clase"
 msgstr ""
 

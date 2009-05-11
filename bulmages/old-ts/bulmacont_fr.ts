@@ -415,78 +415,78 @@
     </message>
 </context>
 <context>
-    <name>Asiento1</name>
+    <name>BcAsientoForm</name>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="39"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="39"/>
         <source>Id asiento</source>
         <translation>Id assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="40"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="40"/>
         <source>Descripcion del asiento</source>
         <translation>Déscription de l&apos;assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="41"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="41"/>
         <source>Fecha del asiento</source>
         <translation>Date de l&apos;assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="42"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="42"/>
         <source>Comentarios del asiento</source>
         <translation>Commentaires de l&apos;assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="43"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="43"/>
         <source>Orden de asiento</source>
         <translation>Ordre d&apos;assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="44"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="44"/>
         <source>Tipo de asiento</source>
         <translation>Tipe d&apos;assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="258"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="258"/>
         <source>Borrar asiento</source>
         <translation>Éraser assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="259"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="259"/>
         <source>Se va a borrar el asiento. Esta seguro?</source>
         <translation>Vous allez éraser une assiette. êtes vous sûr?</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1.cpp" line="428"/>
+        <location filename="../../../../../BULMAGES/bcasientoform.cpp" line="428"/>
         <source>El asiento se ha guardado correctamente.</source>
         <translation>L&apos;assiette est gardée correctement.</translation>
     </message>
 </context>
 <context>
-    <name>Asiento1View</name>
+    <name>BcAsientoView</name>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1view.cpp" line="263"/>
+        <location filename="../../../../../BULMAGES/bcasientoview.cpp" line="263"/>
         <source>Asiento inexistente.</source>
         <translation>Assiette inéxistente.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1view.cpp" line="264"/>
+        <location filename="../../../../../BULMAGES/bcasientoview.cpp" line="264"/>
         <source>Desea crear un nuevo asiento en esa posicion?</source>
         <translation>Désirez vous creer une nouvelle assiette dans cette position?</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1view.cpp" line="265"/>
+        <location filename="../../../../../BULMAGES/bcasientoview.cpp" line="265"/>
         <source>&amp;Si</source>
         <translation>&amp;Oui</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asiento1view.cpp" line="265"/>
+        <location filename="../../../../../BULMAGES/bcasientoview.cpp" line="265"/>
         <source>&amp;No</source>
         <translation>&amp;Non</translation>
     </message>
 </context>
 <context>
-    <name>AsientoBase</name>
+    <name>BcAsientoBase</name>
     <message>
         <location filename="../../../../../BULMAGES/asientobase.ui" line="140"/>
         <source>Ctrl+A</source>
@@ -639,7 +639,7 @@
     </message>
 </context>
 <context>
-    <name>AsientoListBase</name>
+    <name>BcAsientoListBase</name>
     <message>
         <location filename="../../../../../BULMAGES/asientolistbase.ui" line="13"/>
         <source>Listado de asientos</source>
@@ -717,97 +717,97 @@
     </message>
 </context>
 <context>
-    <name>AsientoListSubform</name>
+    <name>BcAsientoListSubForm</name>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="35"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="35"/>
         <source>Fecha</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="34"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="34"/>
         <source>Orden</source>
         <translation>Ordre</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="36"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="36"/>
         <source>Apuntes</source>
         <translation>Notes</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="37"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="37"/>
         <source>Borrador</source>
         <translation>Brouillon</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="38"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="38"/>
         <source>Debe</source>
         <translation>Débit</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="39"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="39"/>
         <source>Haber</source>
         <translation>Crédit</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="40"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="40"/>
         <source>Comentarios</source>
         <translation>Comentaires</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="41"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="41"/>
         <source>Clase</source>
         <translation>Classe</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="82"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="82"/>
         <source>Borrar registro</source>
         <translation>Éraser registre</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="85"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="85"/>
         <source>Ajustar columa</source>
         <translation>Ajuster colonne</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="86"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="86"/>
         <source>Ajustar altura</source>
         <translation>Ajuster auteur</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="87"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="87"/>
         <source>Ajustar columnas</source>
         <translation>Ajuster colonnes</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="88"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="88"/>
         <source>Ajustar alturas</source>
         <translation>Ajuster auteurs</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="90"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="90"/>
         <source>Ver configurador de subformulario</source>
         <translation>Voir configurateur de subformulaire</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientolistsubform.cpp" line="33"/>
+        <location filename="../../../../../BULMAGES/bcasientolistsubform.cpp" line="33"/>
         <source>Id asiento</source>
         <translation>Id assiette</translation>
     </message>
 </context>
 <context>
-    <name>AsientosView</name>
+    <name>BcAsientoListView</name>
     <message>
-        <location filename="../../../../../BULMAGES/asientosview.cpp" line="50"/>
+        <location filename="../../../../../BULMAGES/bcasientolistview.cpp" line="50"/>
         <source>(todos)</source>
         <translation>(touts)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientosview.cpp" line="197"/>
+        <location filename="../../../../../BULMAGES/bcasientolistview.cpp" line="197"/>
         <source>La fecha inicial es posterior a la fecha final.</source>
         <translation>La date initiale est postérieure à la date finale.</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/asientosview.cpp" line="244"/>
+        <location filename="../../../../../BULMAGES/bcasientolistview.cpp" line="244"/>
         <source>Asientos</source>
         <translation>Assiette</translation>
     </message>
@@ -3082,179 +3082,179 @@ porque igual su trabajo se pierde.</source>
     </message>
 </context>
 <context>
-    <name>ListLinAsiento1View</name>
+    <name>BcAsientoSubForm</name>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="35"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="35"/>
         <source>Fecha</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="39"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="39"/>
         <source>Concepto contable</source>
         <translation>Concept comptable</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="53"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="53"/>
         <source>Id cuenta</source>
         <translation>Id compte</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="36"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="36"/>
         <source>Codigo</source>
         <translation>Code</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="54"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="54"/>
         <source>Tipo de cuenta</source>
         <translation>Type de compte</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="37"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="37"/>
         <source>Descripcion de la cuenta</source>
         <translation>Déscription du compte</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="38"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="38"/>
         <source>Descripcion</source>
         <translation>description</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="40"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="40"/>
         <source>Debe</source>
         <translation>Débit</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="41"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="41"/>
         <source>Haber</source>
         <translation>Crédit</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="42"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="42"/>
         <source>Contrapartida</source>
         <translation>contrepartie</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="43"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="43"/>
         <source>Comentario</source>
         <translation>Comentaire</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="44"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="44"/>
         <source>ID Canal</source>
         <translation>ID Canal</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="45"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="45"/>
         <source>Conciliacion</source>
         <translation>Conciliation</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="46"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="46"/>
         <source>Id centro de coste</source>
         <translation>Id centre de finnance</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="47"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="47"/>
         <source>Id apunte</source>
         <translation>Id note</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="48"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="48"/>
         <source>Id tipo de IVA</source>
         <translation>Id type de TVA</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="49"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="49"/>
         <source>Orden</source>
         <translation>Ordre</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="50"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="50"/>
         <source>Id borrador</source>
         <translation>Ib brouillon</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="51"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="51"/>
         <source>Id asiento</source>
         <translation>Id assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="94"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="94"/>
         <source>Borrar registro</source>
         <translation>Éraser registre</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="96"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="96"/>
         <source>Ajustar columa</source>
         <translation>Ajuster colonne</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="97"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="97"/>
         <source>Ajustar altura</source>
         <translation>Ajuster auteur</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="98"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="98"/>
         <source>Ajustar columnas</source>
         <translation>Ajuster colonnes</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="99"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="99"/>
         <source>Ajustar alturas</source>
         <translation>Ajuster auteurs</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="101"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="101"/>
         <source>Ver configurador de subformulario</source>
         <translation>Voir configurateur de subformulaire</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="79"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="79"/>
         <source>Mostrar asiento</source>
         <translation>Montrer assiette</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="81"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="81"/>
         <source>Mostrar extracto (dia)</source>
         <translation>Montrer extrait (jour)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="82"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="82"/>
         <source>Mostrar extracto (mes)</source>
         <translation>Montrer extrait (mois)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="83"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="83"/>
         <source>Mostrar extracto (ano)</source>
         <translation>Montrer extrait (année)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="85"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="85"/>
         <source>Mostrar balance (dia)</source>
         <translation>Montrer bilan (jour)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="86"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="86"/>
         <source>Mostrar balance (mes)</source>
         <translation>Montrer bilan (mois)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="87"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="87"/>
         <source>Mostrar balance (ano)</source>
         <translation>Montrer bilan (année)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="89"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="89"/>
         <source>Mostrar balance jerarquico (dia)</source>
         <translation>Montrer bilan hiérarchique (jour)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="90"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="90"/>
         <source>Mostrar balance jerarquico (mes)</source>
         <translation>Montrer bilan hiérarchique (mois)</translation>
     </message>
     <message>
-        <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="91"/>
+        <location filename="../../../../../BULMAGES/bcasientosubform.cpp" line="91"/>
         <source>Mostrar balance jerarquico (ano)</source>
         <translation>Montrer bilan hiérarchique (année)</translation>
     </message>

@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Tomeu Borras</author>
- <class>AsientoBase</class>
- <widget class="QWidget" name="AsientoBase" >
+ <class>BcAsientoBase</class>
+ <widget class="QWidget" name="BcAsientoBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -820,7 +820,7 @@
     </widget>
    </item>
    <item>
-    <widget class="ListLinAsiento1View" name="mui_list" />
+    <widget class="BcAsientoSubForm" name="mui_list" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -1101,9 +1101,9 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>ListLinAsiento1View</class>
+   <class>BcAsientoSubForm</class>
    <extends>QTableWidget</extends>
-   <header>listlinasiento1view.h</header>
+   <header>bcasientosubform.h</header>
   </customwidget>
  </customwidgets>
  <resources>

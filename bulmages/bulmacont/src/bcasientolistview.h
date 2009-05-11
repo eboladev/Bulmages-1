@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2002 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,27 +19,34 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ASIENTOLISTSUBFORM
-#define ASIENTOLISTSUBFORM
+#ifndef BCASIENTOLISTVIEW_H
+#define BcASIENTOLISTVIEW_H
 
-#include "bcsubform.h"
+#include "ui_bcasientolistbase.h"
+#include "blformlist.h"
+
+
+class BcCompany ;
 
 
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class BC_EXPORT AsientoListSubform : public BcSubForm
+class BC_EXPORT BcAsientoListView : public BlFormList, public Ui_BcAsientoListBase
 {
     Q_OBJECT
 
+private:
+    void rellenaListaEjercicio();
+
 public:
-    AsientoListSubform ( QWidget *parent = 0, const char *name = 0 );
-    virtual ~AsientoListSubform();
+    BcAsientoListView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
+    ~BcAsientoListView();
+    void presentar();
+    void imprimir();
 
 public slots:
-//    virtual void contextMenuEvent ( QContextMenuEvent * );
-    virtual void s_pintaMenu ( QMenu *menu );
-    virtual void s_trataMenu ( QAction *action );
+    virtual void on_mui_list_cellDoubleClicked ( int, int );
 };
 
 #endif

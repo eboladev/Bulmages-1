@@ -41,9 +41,9 @@
 
 class BcCentroCosteSeleccionarView;
 class BcCanalSeleccionarView;
-class Asiento1View;
+class BcAsientoView;
 class BcDiarioView;
-class AsientosView;
+class BcAsientoListView;
 class BcCuentaView;
 class BlCountryView;
 class BcExtractoView;
@@ -71,8 +71,8 @@ private:
     QString contrasenya;
     BcDiarioView *diario;
     BcExtractoView *extracto;
-    Asiento1View *introapunts2;
-    AsientosView *m_listasientos;
+    BcAsientoView *introapunts2;
+    BcAsientoListView *m_listasientos;
     BcPlanContableListView *m_listcuentas;
     unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
@@ -90,8 +90,8 @@ public:
     BlPostgreSqlClient *bdempresa();
     BcExtractoView *extractoempresa();
     BcDiarioView *diarioempresa();
-    Asiento1View *intapuntsempresa();
-    Asiento1View *intapuntsempresa2();
+    BcAsientoView *intapuntsempresa();
+    BcAsientoView *intapuntsempresa2();
     int numdigitosempresa();
     QString nomuserempresa();
     QString nombreempresa();

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "adocumental.h"
 #include "bccompany.h"
 
@@ -63,7 +63,7 @@ void myplugin1::boton_nuevoasientodocumental()
     _depura ( "myplugin1::boton_nuevoasientodocumental", 10 );
     adocumental *adoc = new adocumental ( empresaactual, 0 );
     adoc->presentaprimervacio();
-    Asiento1View *intapunts = empresaactual->intapuntsempresa();
+    BcAsientoView *intapunts = empresaactual->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
     adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
@@ -81,7 +81,7 @@ void myplugin1::boton_adjuntar()
     adoc->setmodoconsulta();
     adoc->exec();
     /// Falta por resolver esta salvedad.
-    Asiento1View *intapunts = empresaactual->intapuntsempresa();
+    BcAsientoView *intapunts = empresaactual->intapuntsempresa();
     if ( intapunts->idasiento() != "-1" )
         adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "correctorwidget.h"
 
 
@@ -68,11 +68,11 @@ void ResumCtaWidget::alink ( const QUrl &url )
         ( ( BcCompany * ) mainCompany() ) ->muestracuentas();
     } else if ( linker == "asiento" ) {
         //QString ordenasiento = l.right(l.length() - 2);
-        Asiento1View * view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
+        BcAsientoView * view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
         bool ok;
         //view->muestraasiento(ordenasiento.toInt(&ok));
     } else {
-        Asiento1View *view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
+        BcAsientoView *view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
         bool ok;
         view->muestraasiento ( linker.toInt ( &ok ) );
         //QMessageBox::warning(0, tr("Opcion no implementada"), tr("No se puede acceder al error"), 0, 1, 2);

@@ -31,7 +31,7 @@
 #include "bcplancontablelistview.h"
 #include "bccompany.h"
 #include "bcbuscarcuenta.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
 

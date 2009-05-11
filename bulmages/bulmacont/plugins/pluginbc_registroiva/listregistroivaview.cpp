@@ -22,7 +22,7 @@
 #include "bcregistroivaimprimirview.h"
 #include "registroivaview.h"
 #include "bccompany.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 
 #include <QMenu>
 

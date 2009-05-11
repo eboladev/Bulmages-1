@@ -1,7 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2002 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
+ *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,34 +19,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ASIENTOSVIEW_H
-#define ASIENTOSVIEW_H
+#ifndef BCASIENTOSUBFORM_H
+#define BCASIENTOSUBFORM_H
 
-#include "ui_asientolistbase.h"
-#include "blformlist.h"
-
-
-class BcCompany ;
+#include "bldefs.h"
+#include "bcsubform.h"
+#include "blfixed.h"
 
 
-/// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
-/// abiertos o cerrados.
-/** */
-class BC_EXPORT AsientosView : public BlFormList, public Ui_AsientoListBase
+/** Implementa el subformulario de asientos contables.
+    Deriva de BcSubForm.
+*/
+class BC_EXPORT BcAsientoSubForm : public BcSubForm
 {
     Q_OBJECT
 
-private:
-    void rellenaListaEjercicio();
-
 public:
-    AsientosView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = BL_EDIT_MODE );
-    ~AsientosView();
-    void presentar();
-    void imprimir();
+    BcAsientoSubForm ( QWidget *parent = 0, const char *name = 0 );
+    ~BcAsientoSubForm();
+    virtual void cargar ( QString );
+    BlFixed totaldebe ( QString );
+    BlFixed totalhaber ( QString );
 
 public slots:
-    virtual void on_mui_list_cellDoubleClicked ( int, int );
+    virtual void s_pintaMenu ( QMenu *menu );
+    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

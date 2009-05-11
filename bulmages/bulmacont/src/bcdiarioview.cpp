@@ -33,7 +33,7 @@
 #include "bcdiarioprintview.h"
 #include "bcdiarioimprimir2txt.h"
 #include "blconfiguration.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "bcextractoview.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"

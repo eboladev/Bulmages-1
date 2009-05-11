@@ -1,7 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,31 +19,57 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LISTLINASIENTO1VIEW_H
-#define LISTLINASIENTO1VIEW_H
+#ifndef BCASIENTOFORM_H
+#define BCASIENTOFORM_H
 
-#include "bldefs.h"
-#include "bcsubform.h"
+#include <QString>
+
 #include "blfixed.h"
+#include "bcform.h"
+#include "bcasientosubform.h"
 
 
-/** Implementa el subformulario de asientos contables.
-    Deriva de BcSubForm.
-*/
-class BC_EXPORT ListLinAsiento1View : public BcSubForm
+class BcCompany ;
+
+
+/// Clase BcAsientoForm.
+/** */
+class BC_EXPORT BcAsientoForm : public BcForm
 {
     Q_OBJECT
 
 public:
-    ListLinAsiento1View ( QWidget *parent = 0, const char *name = 0 );
-    ~ListLinAsiento1View();
-    virtual void cargar ( QString );
+    enum estadoasiento {ASVacio = 0, ASAbierto = 1, ASCerrado = 2};
+
+protected:
+    BcAsientoSubForm *listalineas;
+
+public:
+    BcAsientoForm ( BcCompany *, QWidget *parent );
+    virtual ~BcAsientoForm();
+    BcCompany *companyact();
+    int cargar ( QString );
     BlFixed totaldebe ( QString );
     BlFixed totalhaber ( QString );
-
-public slots:
-    virtual void s_pintaMenu ( QMenu *menu );
-    virtual void s_trataMenu ( QAction *action );
+    void vaciar();
+    void abrir();
+    void cerrar();
+    estadoasiento estadoBcAsientoForm();
+    int guardar();
+    void setidasiento ( QString val );
+    QString idasiento();
+    /// Establece cual es la lista subformulario del presupuesto.
+    void setListLinAsiento1 ( BcAsientoSubForm *a );
+    virtual int borrar ( bool );
+    virtual void pintaidasiento ( QString );
+    virtual void pintadescripcion ( QString );
+    virtual void pintafecha ( QString );
+    virtual void pintacomentariosasiento ( QString );
+    virtual void pintaordenasiento ( QString );
+    virtual void pintaclase ( QString );
+    virtual void calculaypintatotales();
+    virtual void pintar();
+    virtual void trataestadoBcAsientoForm();
 };
 
 #endif

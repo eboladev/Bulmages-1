@@ -33,7 +33,7 @@
 #include "regivaqtoolbutton.h"
 #include "blfunctions.h"
 #include "blfixed.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "bccompany.h"
 #include "bldb.h"
 #include "registroivaview.h"
@@ -44,7 +44,7 @@
 \param as
 \param parent
 **/
-RegIVAQToolButton::RegIVAQToolButton ( Asiento1View *as , QWidget *parent ) : QToolButton ( parent )
+RegIVAQToolButton::RegIVAQToolButton ( BcAsientoView *as , QWidget *parent ) : QToolButton ( parent )
 {
     _depura ( "RegIVAQToolButton::RegIVAQToolButton", 0 );
     m_asiento1View = as;
@@ -86,7 +86,7 @@ void RegIVAQToolButton::setBoton()
 void RegIVAQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
-    ListLinAsiento1View *las = m_asiento1View->mui_list;
+    BcAsientoSubForm *las = m_asiento1View->mui_list;
     las->guardar();
     try {
         int idborrador = las->dbValue ( "idborrador" ).toInt();

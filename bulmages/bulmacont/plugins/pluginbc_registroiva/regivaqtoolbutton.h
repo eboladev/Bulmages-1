@@ -31,7 +31,7 @@
 #include <QString>
 
 
-#include "asiento1view.h"
+#include "bcasientoview.h"
 
 
 
@@ -41,10 +41,10 @@ class RegIVAQToolButton : public QToolButton
 
 private:
     BcCompany *m_companyact;
-    Asiento1View *m_asiento1View;
+    BcAsientoView *m_asiento1View;
 
 public:
-    RegIVAQToolButton ( Asiento1View * , QWidget *parent = NULL );
+    RegIVAQToolButton ( BcAsientoView * , QWidget *parent = NULL );
     ~RegIVAQToolButton();
     void setBoton();
 public slots:

@@ -39,20 +39,20 @@ enum {
 
 
 /// Clase base para rellenar todos los formularios oficiales desde el pdf de www.aeat.es
-class BC_EXPORT Genps_thread : public QThread
+class BC_EXPORT BcPsThread : public QThread
 {
 public:
-    Genps_thread ( QString, QString, QProgressDialog * );
+    BcPsThread ( QString, QString, QProgressDialog * );
     void run();
     QString m_pdfname, m_tempname;
     QProgressDialog *m_progressdia;
 };
 
 
-class BC_EXPORT Psprogressdialog : public QProgressDialog
+class BC_EXPORT BcPsProgressDialog : public QProgressDialog
 {
 public:
-    Psprogressdialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera );
+    BcPsProgressDialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera );
     //void customEvent(QCustomEvent *);
 };
 
@@ -61,13 +61,13 @@ public:
 /** Utiliza los formularios oficiales obtenidos de www.aeat.es convertidos de pdf a postscript.
     funciona insertando c&oacute;digo postscript para escribir los n&uacute;meros en las casillas.
     Usa la fuente Courier-Bold a 12 puntos. */
-class BC_EXPORT Modgenps : public QObject
+class BC_EXPORT BcPsGenerateModel : public QObject
 {
 public:
-    Modgenps();
-    ~Modgenps();
+    BcPsGenerateModel();
+    ~BcPsGenerateModel();
     void download_form ( QWidget *, QString, QString );
-    Genps_thread *convierte_a_postscript;
+    BcPsThread *convierte_a_postscript;
     /// Genera 2 cadenas con parte entera y fraccionaria del float.
     void formatdigits ( QString *, QString *, float );
     /// Escribe el texto "a la izquierda de" (o sea, alineado a la derecha).

@@ -32,8 +32,8 @@
 #include "bccompany.h"
 #include "registroivaview.h"
 #include "cobropagoview.h"
-#include "asiento1.h"
-#include "listlinasiento1view.h"
+#include "bcasientoform.h"
+#include "bcasientosubform.h"
 #include "listregistroivaview.h"
 #include "registroivaview.h"
 #include "regivaqtoolbutton.h"
@@ -136,9 +136,9 @@ int entryPoint ( BcBulmaCont *bcont )
 \param l
 \return
 **/
-int Asiento1View_Asiento1View ( Asiento1View *l )
+int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
-    _depura ( "Asiento1View_Asiento1View", 0 );
+    _depura ( "BcAsientoView_BcAsientoView", 0 );
 //================================
     RegIVAQToolButton *mui_exporta_efactura2 = new RegIVAQToolButton ( l,  l->mui_plugbotones );
 
@@ -151,7 +151,7 @@ int Asiento1View_Asiento1View ( Asiento1View *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    _depura ( "END Asiento1View_Asiento1View", 0 );
+    _depura ( "END BcAsientoView_BcAsientoView", 0 );
     return 0;
 }
 
@@ -161,9 +161,9 @@ int Asiento1View_Asiento1View ( Asiento1View *l )
 \param as
 \return
 **/
-int Asiento1_guardaAsiento1_post ( Asiento1 *as )
+int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 {
-    _depura ( "Asiento1_guardaAsiento1_post", 0 );
+    _depura ( "BcAsientoForm_guardaAsiento1_post", 0 );
     BcCompany *companyact = as->companyact();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
@@ -191,7 +191,7 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
         cursborr->nextRecord();
     } // end while
     delete cursborr;
-    _depura ( "END Asiento1_guardaAsiento1_post", 0 );
+    _depura ( "END BcAsientoForm_guardaAsiento1_post", 0 );
     return 0;
 }
 
@@ -202,9 +202,9 @@ int Asiento1_guardaAsiento1_post ( Asiento1 *as )
 \param as
 \return
 **/
-int ListLinAsiento1View_boton_iva ( ListLinAsiento1View *as )
+int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
 {
-    _depura ( "ListLinAsiento1View_boton_iva", 0 );
+    _depura ( "BcAsientoSubForm_boton_iva", 0 );
     as->guardar();
     try {
         int idborrador = as->dbValue ( "idborrador" ).toInt();
@@ -216,7 +216,7 @@ int ListLinAsiento1View_boton_iva ( ListLinAsiento1View *as )
         mensajeInfo ( _ ( "Debe seleccionar un apunte" ) );
         return 0;
     } // end try
-    _depura ( "END ListLinAsiento1View_boton_iva", 0 );
+    _depura ( "END BcAsientoSubForm_boton_iva", 0 );
     return 0;
 }
 

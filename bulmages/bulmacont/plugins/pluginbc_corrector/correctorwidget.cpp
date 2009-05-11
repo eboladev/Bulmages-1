@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "asiento1view.h"
+#include "bcasientoview.h"
 #include "correctorwidget.h"
 #include "confreglasview.h"
 
@@ -197,13 +197,13 @@ void correctorwidget::alink ( const QUrl &url )
     if ( list[0] == "ver" ) {
         empresaactual->muestracuentas();
     } else if ( list[0] == "idasiento" ) {
-        Asiento1View * view = empresaactual->intapuntsempresa();
+        BcAsientoView * view = empresaactual->intapuntsempresa();
         bool ok;
         view->muestraasiento ( list[1].toInt ( &ok ) );
         view->hide();
         view->show();
     } else {
-        /*        Asiento1View *view = empresaactual->intapuntsempresa();
+        /*        BcAsientoView *view = empresaactual->intapuntsempresa();
                 bool ok;
                 view->muestraasiento(linker.toInt(&ok));
         */

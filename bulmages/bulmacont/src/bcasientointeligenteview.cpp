@@ -24,7 +24,7 @@
 
 #include "bcasientointeligenteview.h"
 #include "bccompany.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 
 #define TIPO_CTA         0
 #define TIPO_FECHA       1

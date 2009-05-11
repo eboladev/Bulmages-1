@@ -27,7 +27,7 @@
 #include "blfunctions.h"
 #include "bcasientointeligenteview.h"
 #include "bcbuscarcuenta.h"
-#include "asiento1view.h"
+#include "bcasientoview.h"
 
 
 /// Constructor de la clase

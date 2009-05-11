@@ -336,7 +336,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 		
 					if ( parametros_story[j].trimmed() == "desc" + m_tablename ){
 						///Impresion del descripcion de los articulos
-						fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "</para><para>" ) + "</td>\n";
+						fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "</para><para>" ) + "</para></td>\n";
 					} // end if
 		
 					if ( parametros_story[j].trimmed() == "cant" + m_tablename ){
@@ -379,7 +379,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 				///Impresion de los contenidos
 				fitxersortidatxt += "<tr>";
 				fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
-				fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "</para><para>" ) + "</td>\n";
+				fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "</para><para>" ) + "</para></td>\n";
 				fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
 				fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
 				fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";

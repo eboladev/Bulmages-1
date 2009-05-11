@@ -25,8 +25,8 @@
 #include "bccompany.h"
 #include "blcompanydialog.h"
 #include "bcplancontablelistview.h"
-#include "asiento1view.h"
-#include "asientosview.h"
+#include "bcasientoview.h"
+#include "bcasientolistview.h"
 #include "bcamortizacionlistview.h"
 #include "bccuentasanualesview.h"
 #include "bccuentaview.h"
@@ -132,7 +132,7 @@ BcDiarioView *BcCompany::diarioempresa()
 /**
 \return
 **/
-Asiento1View *BcCompany::intapuntsempresa()
+BcAsientoView *BcCompany::intapuntsempresa()
 {
     return introapunts2;
 }
@@ -142,7 +142,7 @@ Asiento1View *BcCompany::intapuntsempresa()
 /**
 \return
 **/
-Asiento1View *BcCompany::intapuntsempresa2()
+BcAsientoView *BcCompany::intapuntsempresa2()
 {
     return introapunts2;
 }
@@ -242,14 +242,14 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         splash->mensaje ( _ ( "Inicializando asientos" ) );
         splash->setBarraProgreso ( 60 );
         m_progressbar->setValue ( 60 );
-        introapunts2 = new Asiento1View ( this, 0 );
+        introapunts2 = new BcAsientoView ( this, 0 );
         m_pWorkspace->addWindow ( introapunts2 );
 
         /// pb = 75%
         splash->mensaje ( _ ( "Inicializando asientos" ) );
         splash->setBarraProgreso ( 75 );
         m_progressbar->setValue ( 75 );
-        m_listasientos = new AsientosView ( this );
+        m_listasientos = new BcAsientoListView ( this );
         m_listasientos->presentar();
         m_pWorkspace->addWindow ( m_listasientos );
 

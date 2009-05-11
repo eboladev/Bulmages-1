@@ -167,8 +167,8 @@ void BcModelo300Imprimir2PS::generaps()
             command = "pdftops " + pdfname + " " + tempname;
             system ( command.toAscii().constData() );
         } else {
-            Psprogressdialog progress ( _ ( "Creando formulario" ), _ ( "&Cancelar" ), 0, 50, this, 0 );
-            this->convierte_a_postscript = new Genps_thread ( pdfname, tempname, &progress );
+            BcPsProgressDialog progress ( _ ( "Creando formulario" ), _ ( "&Cancelar" ), 0, 50, this, 0 );
+            this->convierte_a_postscript = new BcPsThread ( pdfname, tempname, &progress );
             progress.setValue ( 0 );
 
             /// LLama a la rutina para convertir el pdf en ps y conservar el dichoso

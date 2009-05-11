@@ -335,7 +335,7 @@
     </message>
   </context>
   <context>
-    <name>Asiento1</name>
+    <name>BcAsientoForm</name>
     <message>
       <source>Id asiento</source>
       <translation>Id assentament</translation>
@@ -374,7 +374,7 @@
     </message>
   </context>
   <context>
-    <name>Asiento1View</name>
+    <name>BcAsientoView</name>
     <message>
       <source>Asiento inexistente.</source>
       <translation>Assentament inexistent.</translation>
@@ -393,7 +393,7 @@
     </message>
   </context>
   <context>
-    <name>AsientoBase</name>
+    <name>BcAsientoBase</name>
     <message>
       <source>Ctrl+A</source>
       <translation>Ctrl+A</translation>
@@ -516,7 +516,7 @@
     </message>
   </context>
   <context>
-    <name>AsientoListBase</name>
+    <name>BcAsientoListBase</name>
     <message>
       <source>Listado de asientos</source>
       <translation>Llistat d'assentaments</translation>
@@ -579,7 +579,7 @@
     </message>
   </context>
   <context>
-    <name>AsientoListSubform</name>
+    <name>BcAsientoListSubForm</name>
     <message>
       <source>Fecha</source>
       <translation>Data</translation>
@@ -642,7 +642,7 @@
     </message>
   </context>
   <context>
-    <name>AsientosView</name>
+    <name>BcAsientoListView</name>
     <message>
       <source>(todos)</source>
       <translation type="unfinished" />
@@ -2493,7 +2493,7 @@ la seva feina es perd.</translation>
     </message>
   </context>
   <context>
-    <name>ListLinAsiento1View</name>
+    <name>BcAsientoSubForm</name>
     <message>
       <source>Fecha</source>
       <translation>Data</translation>

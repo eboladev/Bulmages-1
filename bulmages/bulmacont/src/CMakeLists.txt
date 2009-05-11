@@ -34,7 +34,7 @@ set(bulmacont_MOCS bcbulmacont.h
            bcdiarioview.h
            bcextractoview.h
            bcasientointeligenteview.h
-           asientosview.h
+           bcasientolistview.h
            bcregistroivaimprimirview.h
            bcmasapatrimonialview.h
            bcmasapatrimoniallistview.h
@@ -57,13 +57,13 @@ set(bulmacont_MOCS bcbulmacont.h
            bctipoivaview.h
            bcformapagoview.h
            bcbuscarcuenta.h
-           asiento1.h
-           asiento1view.h
-           listlinasiento1view.h
+           bcasientoform.h
+           bcasientoview.h
+           bcasientosubform.h
            bcsubform.h
            bcdiariosubform.h
            bcextractosubform.h
-           asientolistsubform.h
+           bcasientolistsubform.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 
            bcform.h
@@ -77,7 +77,7 @@ set(bulmacont_MOCS bcbulmacont.h
 #           bcdiarioprint.h
 #           bclibromayorimprimir.h
 #           bcdiarioprint.h
-#           modelosps.h
+#           bcmodeloaeat.h
 #           bcasientointeligenteimportarxml.h
 #           bcbalanceimportarxml.h
 #           bcplancontablearbol.h
