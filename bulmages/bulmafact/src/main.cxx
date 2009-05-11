@@ -32,6 +32,7 @@
 #include "bldblogindialog.h"
 #include "blfunctions.h"
 #include "blfixed.h"
+#include "blargparser.h"
 #include "blplugins.h"
 #include "blconfig.h"
 #include "bli18n.h"
@@ -51,145 +52,159 @@
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
 {
-    /// Puntero a BfBulmaFact
-    BfBulmaFact *bges;
-    try {
-        fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
-        Q_INIT_RESOURCE ( bulmages );
+   /// Puntero a BfBulmaFact
+   BfBulmaFact *bges;
+   try {
+      fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
+      Q_INIT_RESOURCE ( bulmages );
 
-        /// Leemos la configuracion que luego podremos usar siempre.
-//        g_confpr = new BlConfiguration ( "bulmafact" );
-        initConfiguration ("bulmafact");
+      /// Leemos la configuracion que luego podremos usar siempre.
+      //        g_confpr = new BlConfiguration ( "bulmafact" );
+      initConfiguration ("bulmafact");
 
-	/// Inicializa el sistema de traducciones 'gettext'.
-	setlocale(LC_ALL, "");
-	bindtextdomain ("bulmafact", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-	textdomain ("bulmafact");
+      /// Inicializa el sistema de traducciones 'gettext'.
+      setlocale(LC_ALL, "");
+      bindtextdomain ("bulmafact", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+      textdomain ("bulmafact");
 
-        /// Iniciamos la clase QApplication para el uso de las Qt.
-        g_theApp = new BlApplication ( argc, argv );
+      /// Iniciamos la clase QApplication para el uso de las Qt.
+      g_theApp = new BlApplication ( argc, argv );
 
-        /// Preparamos el sistema de plugins.
-//        g_plugins = new BlPlugins();
-        initPlugins();
-        
-        /// Definimos la codificacion a Unicode.
-        QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
-        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
+      /// Preparamos el sistema de plugins.
+      //        g_plugins = new BlPlugins();
+      initPlugins();
 
-        g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+      /// Definimos la codificacion a Unicode.
+      QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+      QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-        /// Cargamos el BlSplashScreen.
-        BlSplashScreen *splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
-        splashScr->mensaje ( _( "Iniciando clases" ) );
-        splashScr->setBarraProgreso ( 1 );
+      g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
-        /// Leemos los argumentos pasados por la linea de comandos.
-        QString db = "";
-        QString us = "";
-        QString pass = "";
+      /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
+      BlArgParser *argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
+      //   QTextStream(stdout)<<"DbName ["<<argParser->DbName()<<"] Host ["<<argParser->Host()<<"] Port ["<<argParser->Port()<<"] UserName ["<<argParser->UserName()<<"] Version ["<<argParser->ShowVersion()<<"] AskPassword ["<<argParser->AskPassword()<<"] ShowHelp ["<<argParser->ShowHelp()<<"]"<<endl;
+      if( ! argParser->Host().isEmpty() ) {
+         g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
+      } // end if
+      if( ! argParser->Port().isEmpty() ) {
+         g_confpr->setValor( CONF_PUERTO, argParser->Port() );
+      } // end if
 
-        /// Dependiendo de los argumentos pasados se lanza con unas opciones u otras para la
-        /// conexion con la base de datos.
-        if ( argc == 5 ) {
-            /// Leemos los argumentos pasados por la linea de comandos.
-            db = argv[2];
-            us = argv[3];
-            pass = argv[4];
-            g_confpr->setValor ( CONF_LOGIN_USER, us );
-            g_confpr->setValor ( CONF_PASSWORD_USER, pass );
-            bges = new BfBulmaFact ( db );
-            bges->hide();
-        } else if ( argc == 3 ) {
-            /// Leemos los argumentos pasados por la linea de comandos.
-            db = argv[2];
-            bges = new BfBulmaFact ( db );
-            bges->hide();
-        } else {
-            BlDbLoginDialog *login1 = new BlDbLoginDialog ( 0, "" );
-            if ( !login1->authOK() ) {
-                login1->exec();
-            } // end if
-            /// Si la autentificacion falla una segunda vez abortamos el programa.
-            if ( !login1->authOK() ) {
-                exit ( 1 );
-            } // end if
-            delete login1;
-            bges = new BfBulmaFact ( "" );
-            bges->hide();
-        } // end if
-        g_main = bges;
+      /// Mostrar las opciones de l&iacute;nea de comandos.
+      if( argParser->ShowHelp() ) {
+         QTextStream(stdout)
+               <<"Usage: bulmafact [OPTION]"<<endl
+               <<"-d, --dbname NAME     Database name"<<endl
+               <<"-h, --host ADDRESS    Server name or IP"<<endl
+               <<"-p, --port PORT       Port number"<<endl
+               <<"-U, --username NAME   User name"<<endl
+               <<"-W, --password        Force password asking"<<endl
+               <<"-V, --version         Show current version number, then exit"<<endl
+               <<"-?, --help            Show this help, then exit"<<endl;
+      } // end if
 
-        splashScr->show();
-        splashScr->mensaje ( _( "Leyendo configuracion" ) );
-        splashScr->setBarraProgreso ( 2 );
+      /// Salir ordenadamente del programa si s&oacute;lo se ha pedido ver la ayuda o la versi&oacute;n.
+      if( argParser->ShowHelp() || argParser->ShowVersion() ) {
+         QTextStream(stdout)<<"BulmaGes "<<CONFIG_VERSION<<endl;
+         delete argParser;
+         delete g_theApp;
+         delete g_confpr;
+         return 0;
+      } // end if
 
-        /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-        QString confEsp = CONFGLOBAL + bges->getcompany() ->dbName() + ".conf";
-        QDir archivoConf;
-        if ( !archivoConf.exists ( confEsp ) ) {
-            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-            fprintf ( stderr,"%s", mensaje.toAscii().constData() );
-        } else {
-            g_confpr->leeconfig ( confEsp );
-        } // end if
+      /// Cargamos el BlSplashScreen.
+      BlSplashScreen *splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
+      splashScr->mensaje ( _( "Iniciando clases" ) );
+      splashScr->setBarraProgreso ( 1 );
 
-		// Pone el color de fondo del workspace si esta definido y es un color valido.
-		if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
-			bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
-		} // end if
-	
-	
-		// Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-		if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-			bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
-		} // end if
+      /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
+      BlDbLoginDialog *login1 = new BlDbLoginDialog ( 0, "" );
+      if ( !login1->authOK() || argParser->AskPassword() ) {
+         if( !argParser->UserName().isEmpty() ) {
+            login1->m_login->setText( argParser->UserName() );
+         } // end if
+         login1->exec();
+      } // end if
+      /// Si la autentificacion falla una segunda vez abortamos el programa.
+      if ( !login1->authOK() ) {
+         exit ( 1 );
+      } // end if
+      delete login1;
 
-	/// Hacemos la carga de las hojas de estilo.
-	QFile arch(g_confpr->valor(CONF_STYLESHEET));
-	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
-	  QString style = arch.readAll();
-	  g_theApp->setStyleSheet(style);
-	} // end if
+      bges = new BfBulmaFact ( argParser->DbName() );
+      bges->hide();
+      g_main = bges;
 
-        splashScr->mensaje ( _( "Cargando plugins" ) );
-        splashScr->setBarraProgreso ( 10 );
+      splashScr->show();
+      splashScr->mensaje ( _( "Leyendo configuracion" ) );
+      splashScr->setBarraProgreso ( 2 );
 
-        /// Hacemos la carga de las librerias que contienen los plugins.
-        g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMAFACT ) );
+      /// Leemos la configuracion especifica de la base de datos que se ha abierto.
+      QString confEsp = CONFGLOBAL + bges->getcompany() ->dbName() + ".conf";
+      QDir archivoConf;
+      if ( !archivoConf.exists ( confEsp ) ) {
+         QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
+         fprintf ( stderr,"%s", mensaje.toAscii().constData() );
+      } else {
+         g_confpr->leeconfig ( confEsp );
+      } // end if
 
-        splashScr->mensaje ( _( "Lanzando plugins" ) );
-        splashScr->setBarraProgreso ( 20 );
+      // Pone el color de fondo del workspace si esta definido y es un color valido.
+      if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
+         bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
+      } // end if
 
-        /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza ( "entryPoint", bges );
 
-        splashScr->mensaje ( _( "Inicializando componentes" ) );
-        splashScr->setBarraProgreso ( 30 );
+      // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
+      if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
+         bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+      } // end if
 
-        /// Lanzamos la creacion de las ventanas principales.
-        bges->createMainWindows ( splashScr );
+      /// Hacemos la carga de las hojas de estilo.
+      QFile arch(g_confpr->valor(CONF_STYLESHEET));
+      if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
+         QString style = arch.readAll();
+         g_theApp->setStyleSheet(style);
+      } // end if
 
-        splashScr->mensaje ( _( "Terminado" ) );
-        splashScr->setBarraProgreso ( 100 );
+      splashScr->mensaje ( _( "Cargando plugins" ) );
+      splashScr->setBarraProgreso ( 10 );
 
-        delete splashScr;
-        bges->show();
+      /// Hacemos la carga de las librerias que contienen los plugins.
+      g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMAFACT ) );
 
-        g_theApp->exec();
+      splashScr->mensaje ( _( "Lanzando plugins" ) );
+      splashScr->setBarraProgreso ( 20 );
 
-        /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza ( "exitPoint", bges );
-    } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado en BulmaFact. El programa se cerrara." ) );
-    } // end try
+      /// Disparamos los plugins con entryPoint.
+      g_plugins->lanza ( "entryPoint", bges );
 
-    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
-    /// Liberamos memoria.
-    delete bges;
-    delete g_theApp;
-    delete g_confpr;
+      splashScr->mensaje ( _( "Inicializando componentes" ) );
+      splashScr->setBarraProgreso ( 30 );
 
-    return 0;
+      /// Lanzamos la creacion de las ventanas principales.
+      bges->createMainWindows ( splashScr );
+
+      splashScr->mensaje ( _( "Terminado" ) );
+      splashScr->setBarraProgreso ( 100 );
+
+      delete splashScr;
+      bges->show();
+
+      g_theApp->exec();
+
+      /// Disparamos los plugins con entryPoint.
+      g_plugins->lanza ( "exitPoint", bges );
+   } catch ( ... ) {
+      mensajeInfo ( _( "Error inesperado en BulmaFact. El programa se cerrara." ) );
+   } // end try
+
+   fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
+   /// Liberamos memoria.
+   delete bges;
+   delete g_theApp;
+   delete g_confpr;
+
+   return 0;
 }
 

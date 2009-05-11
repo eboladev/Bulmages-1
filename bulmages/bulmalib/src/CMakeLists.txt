@@ -69,7 +69,8 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blmonthcalendar.cpp
 			blsearchwidget.cpp
 			bli18n.cpp
-			blmaincompanypointer.cpp)
+         blmaincompanypointer.cpp
+         blargparser.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
@@ -96,7 +97,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blsearchwidget.h
 			blform.h			
 			blsubform.h	
-			blbankedit.h)
+         blbankedit.h)
 
 set (bulmalib_HDRS	blmaincompanypointer.h
 			bldialogchanges.h
@@ -111,6 +112,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blimportexport.h
 			blplugins.h
 			blpostgresqlclient.h
+         blargparser.h
 )
 			
 			
@@ -127,6 +129,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 #			bldbsubform.h 
 #			blmaincompany.h 
 #			blmainwindow.h
+#			blargparser.h
 
 
 set(bulmalib_RCCS ../../bulmages.qrc)
