@@ -73,7 +73,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "*" + m_BlForm->tableName() + "*.rml";
+    filters << "*impers_" + m_BlForm->tableName() + "*.rml";
     dir.setNameFilters ( filters );
 
 

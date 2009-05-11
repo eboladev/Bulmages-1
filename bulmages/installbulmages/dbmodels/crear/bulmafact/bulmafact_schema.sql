@@ -1453,7 +1453,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) * (reqeqlfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+   FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * ((ivalfactura+reqeqlfactura) / 100)  AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
 	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
