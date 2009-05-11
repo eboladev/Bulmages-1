@@ -214,7 +214,7 @@ p, li { white-space: pre-wrap; }
           <enum>Qt::LeftToRight</enum>
          </property>
          <property name="text">
-          <string>Nueva Empresa de Facturacion / TPV</string>
+          <string>Nueva Empresa de Facturación / TPV</string>
          </property>
          <property name="icon">
           <iconset resource="resources.qrc">
