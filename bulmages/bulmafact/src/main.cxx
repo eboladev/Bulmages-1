@@ -122,7 +122,8 @@ int main ( int argc, char **argv )
       if ( !login1->authOK() || argParser->AskPassword() ) {
          if( !argParser->UserName().isEmpty() ) {
             login1->m_login->setText( argParser->UserName() );
-         } // end if
+            login1->m_password->setFocus();
+        } // end if
          login1->exec();
       } // end if
       /// Si la autentificacion falla una segunda vez abortamos el programa.

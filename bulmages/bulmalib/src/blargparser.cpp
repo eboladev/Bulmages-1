@@ -37,7 +37,7 @@ BlArgParser::BlArgParser( int argc, char **argv )
 {
    _depura ( "BlArgParser::BlArgParser", 0 );
    QString argument = "";
-   char type_arg = NULL;
+   char type_arg = ' ';
 
    for(int i = 1; i < argc; i++) {
       argument = argv[i];
@@ -60,7 +60,7 @@ BlArgParser::BlArgParser( int argc, char **argv )
 
       /// Cuando se asigna una letra a la variable type_arg,
       /// se espera tomar un valor en la pr&oacute;xima iteraci&oacute;n.
-      type_arg = NULL;
+      type_arg = ' ';
 
       if (argument == "--dbname" || argument == "-d") {
          type_arg = 'd';
