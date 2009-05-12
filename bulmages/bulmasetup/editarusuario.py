@@ -45,9 +45,7 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
         self.aplicar_cambios.setEnabled(True)
                    
     def on_aplicar_cambios_released(self):
-    
-        
-    
+
         numero = self.listWidget.count()
         temp = QtGui.QListWidgetItem()
         
@@ -73,7 +71,6 @@ class EditarUsuario(Ui_EditarUsuario, Empresa):
     def execCommand(self, command):
         self.proceso.start(command)
         self.proceso.waitForFinished(-1)
-        print command
                     
 def main(args):
     app=QtGui.QApplication(args)

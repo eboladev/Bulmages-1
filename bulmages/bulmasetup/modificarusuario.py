@@ -15,14 +15,13 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         Empresa.__init__(self,parent)
         self.setupUi(self)
         self.inicio()
+        global username
 
     def inicio(self): 
         self.tabWidget.setTabEnabled(1, False)
         self.tabWidget.setTabEnabled(2, False)
         self.tabWidget.setCurrentIndex(0)
         self.initListaDatabase()
-        #self.initListaUsuarios()
-        self.desactivaCheckboxTable()
         self.listWidgetTable.setSelectionMode(self.listWidgetTable.MultiSelection)
 
         self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
@@ -30,10 +29,9 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         self.connect(self.checkBox_dbrevoke, SIGNAL("stateChanged(int)"), self.checkBox_dbrevoke_Change)
         self.connect(self.listWidgetDatabase, SIGNAL("itemSelectionChanged()"), self.capturaDatabase)
         self.connect(self.listWidgetUser, SIGNAL("itemSelectionChanged()"), self.capturaUsuario)
-        self.connect(self.listWidgetTable, SIGNAL("itemSelectionChanged()"), self.capturaTabla)
+        self.connect(self.listWidgetTable, SIGNAL("itemSelectionChanged()"), self.actualizarCheckboxTable)
                     
     def initListaDatabase(self):
-
         self.conectar('template1')
         dbs = self.execute("SELECT datname FROM pg_database ORDER BY datname")
                 
@@ -43,14 +41,7 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             # Conectamos a cada base de datos excepto a template0 que no permite conexiones
             if str(row[0]) != 'template0':
                 self.conectar( str(row[0]) )
-                cur = self.conn.cursor()
-
-                # Averiguamos el tipo de base de datos con la cual estamos tratando.
-                try:
-                    cur.execute("select valor from configuracion where nombre = 'Tipo'")
-                    tipo = cur.fetchone()
-                except:
-                    continue
+                tipo = self.executeone("select valor from configuracion where nombre = 'Tipo'")
                     
                 # Rellenamos la lista de bases de datos.
                 if str(tipo) == "('BulmaFact',)":
@@ -62,7 +53,6 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                     self.listWidgetDatabase.addItem(QString(texto))
         
     def capturaDatabase(self):
-    
         self.listWidgetUser.clear()
     
         # Pasamos el nombre de la base de datos seleccionada en listWidgetDatabase a la variable database
@@ -108,9 +98,9 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             temp = self.listWidgetUser.item(x)
                 
             if (temp.isSelected()):
-                self.username = temp.text()
-                if self.username.contains("  (su)"):
-                    self.username.remove("  (su)")
+                username = temp.text()
+                if username.contains("  (su)"):
+                    username.remove("  (su)")
                 break
             
         self.tabWidget.setTabEnabled(1, True)
@@ -123,10 +113,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             if (temp.isSelected()):
                 self.tabWidget.setCurrentIndex(1)
                 
-        numero = self.listWidgetTable.count()
-        for x in range (numero):
-            self.listWidgetTable.item(x).setSelected(False)
-        
+        self.on_deseleccionarTablas_released()
+
     def initListaTablas(self):
         self.conectar(str(dbase))
         tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
@@ -135,16 +123,10 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         for row in tablas:
             texto = row[0]                        
             self.listWidgetTable.addItem(QString(texto))
-
-    def capturaTabla(self):
-        self.activaCheckboxTable()
-        self.actualizarCheckboxTable()
         
     def on_seleccionarTablas_released(self):
         numero = self.listWidgetTable.count()
         for x in range (numero):
-            item = self.listWidgetTable.item(x)
-            self.listWidgetTable.setCurrentItem(item)
             self.listWidgetTable.item(x).setSelected(True)
 
     def on_deseleccionarTablas_released(self):
@@ -169,7 +151,6 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
 
         
     def actualizarCheckboxTable(self):
-
         temp = self.listWidgetTable.currentItem()
         table = temp.text()
         
@@ -240,27 +221,6 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             self.checkBox_create.setCheckState(Qt.Unchecked)
             self.checkBox_temporary.setCheckState(Qt.Unchecked)
 
-    def desactivaCheckboxTable(self):
-        self.checkBox_select.setEnabled(False)
-        self.checkBox_insert.setEnabled(False)
-        self.checkBox_update.setEnabled(False)
-        self.checkBox_delete.setEnabled(False)
-        self.checkBox_references.setEnabled(False)
-        self.checkBox_trigger.setEnabled(False)
-        self.checkBox_all.setEnabled(False)
-        self.mui_guardar.setEnabled(False)
-        
-    def activaCheckboxTable(self):
-        self.checkBox_select.setEnabled(True)
-        self.checkBox_insert.setEnabled(True)
-        self.checkBox_update.setEnabled(True)
-        self.checkBox_delete.setEnabled(True)
-        self.checkBox_references.setEnabled(True)
-        self.checkBox_trigger.setEnabled(True)
-        self.checkBox_all.setEnabled(True)
-        self.mui_guardar.setEnabled(True)
-        self.checkBox_all.setCheckState(Qt.Unchecked)
-
     def on_mui_guardar_released(self):
         # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado de los comandos
         self.tabWidget.setTabEnabled(2, True)
@@ -285,37 +245,29 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         actual = 0.0
         if (total_tablas != 0.0):
             mas = 100.0/(total_tablas*6.0)
-
-        global command
         
         #Empezamos a conceder permisos, primero a la base de datos seleccionada.
         if (self.checkBox_dball.isChecked()):
-            command = 'psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"'
-            self.execComand()
+            self.execComand('psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"')
             
         self.progress.setValue(actual)
 
         if (self.checkBox_dbrevoke.isChecked()):
-            command = 'psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execComand()
+            self.execComand('psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"')
             
         self.progress.setValue(actual)
 
         if (self.checkBox_create.isChecked()):
-            command = 'psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"'
-            self.execComand()
+            self.execComand('psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"')
         else:
-            command = 'psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execComand()
+            self.execComand('psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"')
 
         self.progress.setValue(actual)
             
         if (self.checkBox_temporary.isChecked()):
-            command = 'psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"'
-            self.execComand()
+            self.execComand('psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"')
         else:
-            command = 'psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"'
-            self.execComand()
+            self.execComand('psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"')
             
         self.progress.setValue(actual)
             
@@ -332,61 +284,49 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 self.writeTable()
         
                 if (self.checkBox_select.isChecked()):
-                    command = 'psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"')
                 else:
-                    command = 'psql ' + str(dbase) + ' -c "REVOKE select on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE select on ' + str(table) + ' from ' + str(username) + '"')
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_insert.isChecked()):
-                    command = 'psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"')
                 else:
-                    command = 'psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"')
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_update.isChecked()):
-                    command = 'psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"')
                 else:
-                    command = 'psql ' + str(dbase) + ' -c "REVOKE update on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE update on ' + str(table) + ' from ' + str(username) + '"')
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_delete.isChecked()):
-                    command = 'psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"')
                 else:
-                    command = 'psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"')
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_references.isChecked()):
-                    command = 'psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"')
                 else:
-                    command = 'psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"')
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_trigger.isChecked()):
-                    command = 'psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"')
                 else:
-                    command = 'psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"'
-                    self.execComand()
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"')
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
@@ -475,8 +415,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 #print "Se produjo un error al intentar cambiar los permisos (temporary) de las bases de datos de PostgreSQL."
                 #sys.exit()
 
-    def execComand(self):
-        self.writecommand()
+    def execComand(self, command):
+        self.writecommand(command)
         self.process.start(command)
         self.process.waitForFinished(-1)
         return QString(self.process.readAllStandardOutput())
@@ -487,7 +427,7 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
     def readErrors(self):
         self.mui_textBrowser.append("<font color =\"#FF0000\">" + QString(self.process.readAllStandardError()) + "</font>")
 
-    def writecommand(self):
+    def writecommand(self, command):
         self.mui_textBrowser.append("<font color =\"#0000FF\">" + str(command) + "</font>")
         
     def writeDB(self):
